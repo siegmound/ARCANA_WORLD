@@ -1,0 +1,67 @@
+{
+  "canonical_replay_authorized": false,
+  "earliest_affected_authority_candidate": "R3.11_POST_CHA1",
+  "stage": "v0.6D1-R4.5",
+  "status": "PASS_R45_EARLIEST_AUTHORITY_CAUSAL_DIAGNOSIS_AND_REPLAY_PLANNING_COMPLETE",
+  "traces": [
+    {
+      "authority_files_missing": [],
+      "authority_files_present": [
+        "CANONICAL_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CONTRACT_v0_6D1_R3_11.md",
+        "configs/world1_r311_postcha1_recovery_v0_6D1_R3_11.json",
+        "src/arcana_worldsim/scientific_engines/r311_postcha1_recovery.py",
+        "src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+        "src/d3_additive_variance_v0_6_3D3_3A.py"
+      ],
+      "authority_registry_entry": {
+        "authority_files": [
+          "CANONICAL_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CONTRACT_v0_6D1_R3_11.md",
+          "configs/world1_r311_postcha1_recovery_v0_6D1_R3_11.json",
+          "src/arcana_worldsim/scientific_engines/r311_postcha1_recovery.py",
+          "src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+          "src/d3_additive_variance_v0_6_3D3_3A.py"
+        ],
+        "replay_start": "R3.11 / 65.5 Ma post-CHA1 restart",
+        "scope": "post-CHA1 ordinary H0 lifecycle restart and production machinery"
+      },
+      "boundary": "R3.11_POST_CHA1",
+      "domain": "population_persistence",
+      "parameter_change_authorized": false,
+      "r311_causal_surface": {
+        "forbidden_shortcuts": [
+          "post_CHA1_radiation_multiplier",
+          "lower_founder_thresholds",
+          "boost_mutation",
+          "boost_VA_ceiling",
+          "insert_species",
+          "protect_winners",
+          "target_Earth_species_count"
+        ],
+        "operators_to_diagnose_before_retuning": [
+          "demography",
+          "migration_transport",
+          "trait_selection",
+          "segregation_aware_gene_flow",
+          "additive_variance_dynamics",
+          "RI_contact_isolation_clocks",
+          "reconnection_coalescence",
+          "vicariance_fission",
+          "ordinary_background_extinction",
+          "structural_speciation_gate",
+          "founder_viability_persistence",
+          "lifecycle_thaw_adapter"
+        ],
+        "scientific_constants_frozen": [
+          "mu=0.002/Myr",
+          "b=0.9876543209876544",
+          "q_ceiling=0.08",
+          "biology_cadence=125000 yr",
+          "founder_persistence=1 Myr",
+          "vicariance_persistence=2 Myr",
+          "reconnection_persistence=2 Myr"
+        ]
+      },
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    }
+  ]
+}

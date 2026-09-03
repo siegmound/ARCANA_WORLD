@@ -1,0 +1,35 @@
+{
+  "schema": "ARCANA_R320_R1_AUDIT_REPAIR_PATCH_MANIFEST_V1",
+  "stage": "v0.6D1-R3.20-R1",
+  "applies_over": "v0.6D1-R3.20 candidate after R3.19 SEALED",
+  "repair_role": "AUDIT_METRIC_AND_PARENT_SCHEMA_ONLY",
+  "governed_file_count": 16,
+  "files": {
+    "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md": "f2d7b4040871ea40ba2fc4cd9afa4cac9dd5e09246f862305ea76e887046d14b",
+    "NEXT_STAGE_HANDOFF_v0_6D1_R3_20.md": "0ce6d6f69ef33bc87f50578c0f959460346cb6216f4ab5586bdc352b39c8ae3f",
+    "PATCH_MANIFEST_v0_6D1_R3_20_OVER_R3_19.json": "f30346224b253c6d445ab69109c3ae402859aa8a912cab00bc854e956bf9c63e",
+    "R3_20_CHA2_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_AUDIT.md": "f1e05edcab0f3135f18c648cc68f42a756a7027ca7c18d858f0d2d3ce0eefb94",
+    "R3_20_R1_AUDIT_REPAIR.md": "c54c73c0b89300ebb9308a565e936d381f8fe3a8670de9d14cff59f02a46b99c",
+    "README_R3_20.md": "9b25ea4f80f6d7f379b1e9a9854ee2cfeebe94d39f74568837fa84247fb7d635",
+    "README_R3_20_R1_AUDIT_REPAIR.md": "79588c9cc91c51b43ba7190007681eb0b82782ecd47511913180d0657f9dff0c",
+    "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_20.json": "b282fa0615eb043e88a0e598e44b318596a90129606743a2274f227ad07de41f",
+    "V0_6D1_R3_20_STATUS.md": "1bf1b5cddbc9312eec55c5286ee3931350f61bbac430deb56d1b188199c75687",
+    "configs/world1_r320_cha2_yd_hydrological_hazard_v0_6D1_R3_20.json": "6827619a5b70a72fd697b2a4168da9e0d26f0f9b5df4d5344d37672e7c641364",
+    "scripts/formal_audit_v0_6D1_R3_20_candidate.py": "dabab2eab2ffef2137f50eee7071220f50c66f5b726791707bac32636d03b938",
+    "scripts/run_v0_6D1_R3_20_cha2_yd_hydrological_hazard.py": "7e6672c3e0d213dde74cd67d9c6a22efaf522026c8d64c7c2c2882ea210fe6eb",
+    "src/arcana_worldsim/late_cenozoic/cha2_hydrological_hazard.py": "220cc88245f9faf9b0f00f8e0432eb8e16471d9185c9491796c77c5d03e00448",
+    "tests/test_r320_cha2_yd_hydrological_hazard.py": "60639a0a4bd1d7db16ccab5c092b0b7999f2215803b7a2aa6d0e6fb8113f70bc",
+    "verify_v0_6D1_R3_20_patch.ps1": "579479ca0bc25133d17dc78071dffa8665ccd31d21c5cef1d995a1c1df1ee5e9",
+    "verify_v0_6D1_R3_20_R1_audit_repair.ps1": "395a663faa16ebab37478c9d5baa654963ebdbe5c223e970991c23bd889cca6e"
+  },
+  "preserved_authorities": {
+    "cha2_c1_sha256": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f",
+    "r319_checkpoint_json_sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+    "r319_checkpoint_npz_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406"
+  },
+  "scientific_parameter_changes": false,
+  "cha2_physics_changes": false,
+  "hydrological_hazard_equation_changes": false,
+  "biology_changes": false,
+  "human_or_cultural_calibration_targets": false
+}

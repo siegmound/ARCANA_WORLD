@@ -1,0 +1,20 @@
+{
+  "stage": "v0.6D1-R4.35",
+  "title": "Geonomics Native Schema Mapping, Initial-State Adapter & Seed Authority Closure",
+  "parent": "v0.6D1-R4.34 SEALED",
+  "goal": "terminally close the 19 explicit R4.34 native-schema authority gaps without executing Geonomics or interpreting ARCANA effective/proxy population as literal census individuals",
+  "authorities": {
+    "geometry": "canonical raster/grid index coordinate system only: dim from source, res=(1,1), ulc=(0,0), prj=None; no km/km2 claim",
+    "time": "bijection between integer model-step index and exact canonical age axis, retaining exact physical edge durations and forbidding interpolation/extrapolation",
+    "seed": "reuse the exact ordered four-replicate seed vector for each frozen job from R4_3_SEED_LEDGER.json; bind params.model.seed.num independently per replicate; no scalar seed selection and no new seeds",
+    "scaling": "identity values only; no automatic rescale/clip",
+    "J14_J18_population": "one nonliteral connectivity carrier per active deme; population/effective-population value retained as sidecar weight; demographic count adjudication forbidden",
+    "J14_J18_initial_state": "exact frozen coordinate injection; J18 uses x=grid_col,y=grid_row directly because R3.28 stores continuous canonical 90x180 grid-space coordinates; no random initialization and no +0.5 center shift",
+    "J14_J18_K_layer": "binary support scaffold for construction only, K_factor=1, never an ARCANA carrying-capacity claim",
+    "J21_layers": "environment and producer-support arrays become provenance-separated defined layer sets; no numeric fusion and no producer-agent synthesis"
+  },
+  "native_params_materialized": false,
+  "make_model": false,
+  "scientific_execution": false,
+  "next_action": "BUILD_R436_GEONOMICS_NATIVE_PARAMETER_MATERIALIZATION_MODEL_CONSTRUCTION_AND_EXACT_STATE_INJECTION_PREFLIGHT"
+}

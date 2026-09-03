@@ -1,0 +1,35 @@
+{
+  "schema": "ARCANA_R319_PATCH_MANIFEST_V1",
+  "stage": "v0.6D1-R3.19",
+  "overlay_parent": "v0.6D1-R3.18_SEALED",
+  "payload_file_count": 14,
+  "payload_sha256": {
+    "CANONICAL_PHASE_AWARE_TRANSPORT_H0_PRESENT_CLOSURE_CONTRACT_v0_6D1_R3_19.md": "4127f92fc3b24307f77d562b119a4b4d4f8132d78984a5111115040d70605bcf",
+    "NEXT_STAGE_HANDOFF_v0_6D1_R3_19.md": "42169508911c7e85e824d1617fa5bf57f10c3ddec655efc979d32963378bfadf",
+    "R3_19_PHASE_AWARE_TRANSPORT_PROMOTION_AUDIT.md": "d5699be67f4aba9bacc334573355fcb0f1054842b70f25145c9ac5a878f6c64a",
+    "README_R3_19.md": "94ae813f71b2aeb4d76de4399c318055ce25fc8d35302e2ff5df485788c460c3",
+    "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_19.json": "cd937bc094960ff8159148a6a01be3a2c77ee25a72b9ca729c1fd963846809d5",
+    "V0_6D1_R3_19_STATUS.md": "085aedf2e02476b28881049b5dd25a5b5967ce237a3b595c92e427e7e59065de",
+    "configs/world1_r319_phase_aware_transport_closure_v0_6D1_R3_19.json": "a6386f6c8d2af9bb48d5570179ea6b99fa338fc33d56d0798de94e05a516a9cc",
+    "outputs/v0_6D1_R3_19/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_19.json": "7d209bd9d85b25bc01d6e707047cbe92ee99e29a765d8e3f03a6b0dc96c6a68a",
+    "run_v0_6D1_R3_19_checks.ps1": "9c85ea8814674f8d7fce65ae444c8f1e96d65ab1d77b57f8252a192d2230bc54",
+    "run_v0_6D1_R3_19_phase_aware_transport_closure.ps1": "838da2b90b04a215737ae11b2db2823e575e0fda23a268d783c2fbe91a863fdf",
+    "scripts/formal_audit_v0_6D1_R3_19_candidate.py": "26f4c581b206fe9680837613a15dce074285ecbbb72030d6e23c324d28a7a4a5",
+    "scripts/run_v0_6D1_R3_19_phase_aware_transport_closure.py": "4df09f53c19302ce09726ce25164dd7fc2c53923049456c46ed158da1401740d",
+    "src/arcana_worldsim/scientific_engines/r319_phase_aware_transport_closure.py": "32788c986ead725faa5f5ab1e1350a2428c8ee29da3c9bee7a6cf0e2de6b7e20",
+    "tests/test_r319_phase_aware_transport_closure.py": "03f9e54c876b05c9ecf7a29c4cf7f2391e4a02dd6a6ebb3eaa7da0a67e1f929d"
+  },
+  "parent_requirements": {
+    "seal_stage": "v0.6D1-R3.18",
+    "seal_verdict": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_READINESS_SEALED",
+    "formal_audit_checks": "172/172",
+    "canonical_envelope_sha256": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+    "canonical_bundle_sha256": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+    "canonical_summary_sha256": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a"
+  },
+  "scientific_parameter_changes": false,
+  "biology_cadence_changes": false,
+  "transport_cadence_changes": false,
+  "deep_biological_coupling": false,
+  "promotion_gate": "CONSTANT_FORCING_BIT_EXACT_TO_SEALED_R38"
+}

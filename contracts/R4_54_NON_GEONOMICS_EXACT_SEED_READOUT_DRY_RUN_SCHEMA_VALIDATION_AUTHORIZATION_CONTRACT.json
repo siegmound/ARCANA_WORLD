@@ -1,0 +1,23 @@
+{
+  "stage": "v0.6D1-R4.54",
+  "title": "Non-Geonomics Exact Seed Injection, Readout Extraction Dry-Run, Schema Validation & Scientific Execution Authorization",
+  "dry_run_semantics": {
+    "historical_scientific_execution": false,
+    "scientific_evidence": false,
+    "purpose": "prove real runtime seed transport and R4.53 readout extraction before launching the frozen historical plan"
+  },
+  "engine_seed_interfaces": {
+    "Madingley": "R set.seed(seed) immediately before madingley_init/madingley_run",
+    "RangeShifter": "RSsim(seed=seed)",
+    "CDMetaPOP": "seed Python random and numpy.random in the same process before runpy executes pinned CDMetaPOP source",
+    "NEMO": "random_seed in isolated INI",
+    "SLiM": "slim -s seed"
+  },
+  "authorization_rule": "all five real dry-runs must pass exact seed binding, exact authorized metric IDs, finite readout schema, artifact hashes, zero numeric thresholds, and zero canonical writes",
+  "authorization_if_pass": {
+    "jobs": 20,
+    "streams": 80,
+    "readout_metrics": 10
+  },
+  "next_action": "BUILD_R455_NON_GEONOMICS_80_STREAM_SCIENTIFIC_EXECUTION_AND_EVIDENCE_CAPTURE"
+}

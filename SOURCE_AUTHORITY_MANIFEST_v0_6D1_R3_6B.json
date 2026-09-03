@@ -1,0 +1,91 @@
+{
+  "authority_note": "R3.6B adds independent reference infrastructure only; no D3 biological authority is changed.",
+  "external_reference": {
+    "NEMO": {
+      "notes": [
+        "forward-time individual-based genetically explicit reference oracle",
+        "2.4.2 required because upstream reports quant free-recombination bug fixed relative to 2.4.0/2.4.1",
+        "Windows execution through WSL2 recommended by upstream"
+      ],
+      "official_site": "https://nemo2.sourceforge.io/",
+      "required_version": "2.4.2",
+      "verified_date": "2026-08-28"
+    }
+  },
+  "new_r3_6b_sources": [
+    {
+      "bytes": 11165,
+      "path": "src/arcana_worldsim/scientific_engines/nemo242_r36b.py",
+      "sha256": "136f4bbc2f74101576890ddefeedafa4c403ceebd81e09ff4e6fae941e01f3fc"
+    },
+    {
+      "bytes": 14242,
+      "path": "src/arcana_worldsim/scientific_engines/nemo_qtl_ensemble.py",
+      "sha256": "9f430b6c0b1d15d0ee523de89b16f8d0e80b6238f3e21945b287440ce0e0683f"
+    },
+    {
+      "bytes": 9372,
+      "path": "src/arcana_worldsim/scientific_engines/nemo_benchmarks.py",
+      "sha256": "97154b1242591d1c7ee93c5eb4efe8128f77f1b54a292da78b64fa956c8836ae"
+    },
+    {
+      "bytes": 5664,
+      "path": "tests/test_nemo_qtl_ensemble_v0_6D1_R3_6B.py",
+      "sha256": "dd9a3425c51771c2388664804178fabea77177cba82ef1dfd71498f592249ac7"
+    },
+    {
+      "bytes": 5525,
+      "path": "scripts/prepare_nemo_qtl_ensemble_v0_6D1_R3_6B.py",
+      "sha256": "054cee07e74db8cf5369a4d6f940539ab5fc83795047b206e163a09c74351b24"
+    },
+    {
+      "bytes": 6864,
+      "path": "scripts/audit_v0_6D1_R3_6B.py",
+      "sha256": "a65724487e9cfe20a497391fc782ea51b6f23d816a26ca802c65a7fab9e431d0"
+    }
+  ],
+  "parent_package": {
+    "bytes": 99868526,
+    "filename": "ARCANA_WORLD1_v0_6D1_R3_6A_GOVERNED_SCIENTIFIC_ENGINE_BRIDGE_FOUNDATION_CANDIDATE.zip",
+    "sha256": "774ca73ebd27b3607529e9396d3640fb74183f91ff3f08fe9207e0d354cd8203"
+  },
+  "parent_stage": "v0.6D1-R3.6A",
+  "stage": "v0.6D1-R3.6B",
+  "unchanged_scientific_and_bridge_parent_authorities": [
+    {
+      "bytes": 51460,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "sha256": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45"
+    },
+    {
+      "bytes": 11983,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_5.py",
+      "sha256": "634237eb15383000e88180b890ead9b6facc281c0a77eb5ce00efe32f3d0bc95"
+    },
+    {
+      "bytes": 15443,
+      "path": "src/d3_additive_variance_v0_6_3D3_3A.py",
+      "sha256": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21"
+    },
+    {
+      "bytes": 8202,
+      "path": "src/d3_paleogeographic_history_v0_6_3D3_2C.py",
+      "sha256": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730"
+    },
+    {
+      "bytes": 8465,
+      "path": "src/arcana_worldsim/scientific_engines/contracts.py",
+      "sha256": "4983b25cd3311448bd1bb8dd41b957e6e2d8a2200fcd660343d3e2eda9d47a5b"
+    },
+    {
+      "bytes": 9661,
+      "path": "src/arcana_worldsim/scientific_engines/nemo242.py",
+      "sha256": "6e4cea2620cfcd475328682c5458a4a54771c36bda8488da828cb9d7004202f5"
+    },
+    {
+      "bytes": 1686,
+      "path": "src/arcana_worldsim/scientific_engines/registry.py",
+      "sha256": "6706bfbb36490460e3ba16d1c9d4ad3b0550b6f30d1db246eb341870ee771a27"
+    }
+  ]
+}

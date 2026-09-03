@@ -1,0 +1,66 @@
+from pathlib import Path
+import json,math,hashlib,sys
+import numpy as np
+ROOT=Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT/'src'))
+from rebaseline_210ma_v0_6D1_R1 import RebaselineConfig
+
+checks=[]
+def check(name, ok, detail=''):
+    checks.append({'name':name,'pass':bool(ok),'detail':str(detail)})
+
+out=ROOT/'outputs/v0_6D1_R1'
+z=np.load(out/'WORLD1_210Ma_REBASELINE_COMMON_STATE_v0_6D1_R1.npz',allow_pickle=False)
+meta=json.loads((out/'WORLD1_210Ma_REBASELINE_COMMON_STATE_METADATA_v0_6D1_R1.json').read_text())
+cons=json.loads((out/'REBASELINE_CONSERVATION_AUDIT_v0_6D1_R1.json').read_text())
+exp=json.loads((out/'INITIAL_DEEP_EXPOSURE_AUDIT_v0_6D1_R1.json').read_text())
+h0=json.loads((out/'H0_REPLAY_INITIALIZATION_v0_6D1_R1.json').read_text()); hx=json.loads((out/'HX_REPLAY_INITIALIZATION_v0_6D1_R1.json').read_text())
+delta=json.loads((out/'PAIRED_INITIALIZATION_DELTA_AUDIT_v0_6D1_R1.json').read_text())
+rad=json.loads((out/'REBASELINE_RADIUS_SENSITIVITY_v0_6D1_R1.json').read_text())
+d1=json.loads((ROOT/'references/v0_6D1_R1/D1_species_metadata_120.json').read_text())
+va_cfg=json.loads((ROOT/'references/v0_6D1_R1/D3_3A_LONG_HORIZON_VA_HOMEOSTASIS_CONFIG.json').read_text())
+source=json.loads((ROOT/'SOURCE_AUTHORITY_MANIFEST_v0_6D1_R1.json').read_text())
+
+check('age_exact_210Ma', math.isclose(float(z['age_ma']),210.0,abs_tol=0))
+check('species_count_120', z['species_population'].shape[0]==120)
+check('D1_ids_unique', len(set(z['species_id'].astype(str).tolist()))==120)
+check('HSG025_not_initial', 'HSG_025' not in z['species_id'].astype(str).tolist())
+check('no_prelabelled_Deep_adapted', not any(bool(r.get('Deep_adapted',False)) for r in d1))
+check('guild_counts_exact', {int(g):int(np.sum(z['guild_id']==g)) for g in range(1,7)}=={1:24,2:16,3:20,4:24,5:24,6:12})
+check('population_cell_closure', cons['max_cell_population_closure_abs']<1e-12, cons['max_cell_population_closure_abs'])
+check('capacity_cell_closure', cons['max_cell_capacity_closure_abs']<1e-12, cons['max_cell_capacity_closure_abs'])
+check('global_population_closure', abs(cons['global_population_A1']-cons['global_population_species'])<1e-10)
+check('global_capacity_closure', abs(cons['global_capacity_A1']-cons['global_capacity_species'])<1e-10)
+check('no_N_above_K', cons['population_exceeds_capacity_count']==0)
+check('no_nonland_population', cons['nonland_population_cells']==0)
+check('all_species_positive_population', float(z['species_population'].sum((1,2)).min())>0)
+check('Z_X_exact_zero', np.array_equal(z['deep_latent_mean'],np.zeros((120,10))))
+check('VA_X_exact_0_045', np.array_equal(z['deep_latent_additive_variance'],np.full((120,10),0.045)))
+q=math.sqrt(float(va_cfg['mutation_variance_supply_normalized_per_myr'])/float(va_cfg['nonlinear_stabilizing_variance_depletion_per_myr_per_q']))
+check('VA_X_grounded_in_D33A_equilibrium', q==0.045 and np.all(z['deep_latent_additive_variance']==q),q)
+check('physiology_zero_initial', all(np.all(z[k]==0) for k in ('deep_acclimatization','deep_remodeling','deep_recoverable_load','deep_injury')))
+check('photo_E_5pct', np.array_equal(z['deep_photo_u_DFEU'][:2],0.05*z['deep_u_base_DFEU'][:2]))
+check('photo_p_I_N_zero', np.array_equal(z['deep_photo_u_DFEU'][2:],np.zeros(3)))
+check('physical_Deep_same_both_branches', h0['physical_deep_present'] and hx['physical_deep_present'] and h0['photo_deep_additive_share_E_th']==hx['photo_deep_additive_share_E_th']==0.05)
+check('common_state_hash_same', h0['common_state_semantic_sha256']==hx['common_state_semantic_sha256']==meta['semantic_sha256'])
+check('paired_seed_same', h0['paired_rng_seed']==hx['paired_rng_seed']==917231)
+check('H0_Deep_biology_off', h0['deep_biological_coupling_enabled'] is False)
+check('HX_Deep_biology_on', hx['deep_biological_coupling_enabled'] is True)
+check('only_authorized_branch_delta', delta['pass'] and set(delta['delta'])=={'branch_id','counterfactual_role','deep_biological_coupling_enabled'},delta.get('unexpected_delta_keys'))
+check('active_magic_off', not h0['active_magic'] and not hx['active_magic'])
+check('sapience_off', not h0['sapience'] and not hx['sapience'])
+check('civilization_off', not h0['civilization'] and not hx['civilization'])
+check('initial_exposure_all_negligible', exp['regime_population_fraction']['negligible']==1.0,exp['global_population_weighted_L'])
+check('initial_no_tolerance_exceedance', exp['regime_population_fraction']['tolerance_exceeded']==0.0)
+check('initial_no_injury', exp['regime_population_fraction']['injury']==0.0)
+check('radius_sensitivity_pass', rad['status']=='PASS')
+check('radius_sensitivity_max_lt_5pct', max(v['max'] for v in rad['cases'].values())<0.05)
+check('R1_not_claimed_as_lost_history_recovery', 'BIT_IDENTITY_WITH_LOST_D1_D2' in meta['not_claimed'])
+check('authorial_governance_v0318_hash_present', source['authorities']['authorial_governance_sealed']['sha256']=='3f2728b7f8cd15db91235b9e880e35aa04587b209eb43dcb605d318ad67d8fa0')
+check('deep_v05_hash_present', source['authorities']['deep_v0_5']['sha256']=='321b0c576128a7d45e08585b9a21b9b2bb92e45f83f4b208815021b28249dcb2')
+check('D3_reference_runpack_hash_present', source['authorities']['worldsim_d1_a1_d3_reference_runpack']['sha256']=='59f52ad648cad421b971f32879bf6faa9507a6ba1c6fa0107ab301b2b34c054a')
+
+report={'version':'v0.6D1-R1','status':'PASS' if all(c['pass'] for c in checks) else 'FAIL','passed':sum(c['pass'] for c in checks),'total':len(checks),'checks':checks}
+(out/'FORMAL_AUDIT_v0_6D1_R1.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+(out/'FORMAL_AUDIT_v0_6D1_R1.txt').write_text('\n'.join([f"{'PASS' if c['pass'] else 'FAIL'} {c['name']} {c['detail']}" for c in checks])+f"\n\n{report['passed']}/{report['total']} {report['status']}\n")
+print(json.dumps(report,indent=2,sort_keys=True))
+raise SystemExit(0 if report['status']=='PASS' else 1)

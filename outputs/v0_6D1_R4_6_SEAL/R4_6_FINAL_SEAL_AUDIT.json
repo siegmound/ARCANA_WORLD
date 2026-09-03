@@ -1,0 +1,83 @@
+{
+  "audit": "FINAL_TARGETED_R311_CAUSAL_COUNTERFACTUAL_AND_R43_CDMETAPOP_FORCING_PARITY_AUDIT",
+  "checks": [
+    {
+      "detail": "PASS_R45_EARLIEST_AUTHORITY_CAUSAL_DIAGNOSIS_RECALIBRATION_AND_REPLAY_PLAN_SEALED",
+      "name": "parent_r45_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R46_TARGETED_CAUSAL_COUNTERFACTUAL_AND_FORCING_PARITY_DIAGNOSIS_COMPLETE",
+      "name": "r46_diagnosis_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r46_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": "R43_CDMETAPOP_FORCING_PARITY_SOURCE_AUDIT",
+      "name": "forcing_parity_audit_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R46_DIAGNOSTIC_COUNTERFACTUAL_EXECUTED",
+      "name": "diagnostic_counterfactual_executed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r311_recalibration_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R47_CDMETAPOP_FORCING_PARITY_REPAIR_OR_COMPARABILITY_DOWNGRADE_AND_SYMMETRIC_REEXECUTION",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 10,
+  "checks_total": 10,
+  "next_action": "BUILD_R47_CDMETAPOP_FORCING_PARITY_REPAIR_OR_COMPARABILITY_DOWNGRADE_AND_SYMMETRIC_REEXECUTION",
+  "stage": "v0.6D1-R4.6",
+  "status": "PASS_R46_TARGETED_R311_CAUSAL_COUNTERFACTUAL_AND_R43_FORCING_PARITY_AUDIT_SEALED",
+  "summary": {
+    "adapter_finding": "R43_CDMETAPOP_POPULATION_PERSISTENCE_DYNAMIC_FORCING_COVERAGE_GAP_CONFIRMED",
+    "adapter_forcing_coverage_gap_confirmed": true,
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "counterfactual_population_response": {
+      "canonical_65p5_to_55_ratio": 0.9316272616306188,
+      "canonical_direction_5pct_band": -1,
+      "counterfactual_55_ma": 1610.6025980441632,
+      "counterfactual_61_ma": 1610.8077063262317,
+      "counterfactual_65p5_to_55_ratio": 0.9959791684936666,
+      "counterfactual_direction_5pct_band": 0,
+      "counterfactual_minus_canonical_ratio": 0.06435190686304781,
+      "counterfactual_moves_toward_external_direction": true,
+      "r45_external_direction": 1,
+      "start_65p5_ma": 1617.1047035853792
+    },
+    "deep_biological_coupling": false,
+    "next_action": "BUILD_R47_CDMETAPOP_FORCING_PARITY_REPAIR_OR_COMPARABILITY_DOWNGRADE_AND_SYMMETRIC_REEXECUTION"
+  },
+  "verdict": "SEALED"
+}

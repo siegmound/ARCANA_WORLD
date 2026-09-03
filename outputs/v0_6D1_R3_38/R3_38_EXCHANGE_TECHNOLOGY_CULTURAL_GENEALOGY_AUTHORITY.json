@@ -1,0 +1,128 @@
+{
+  "candidate_cohort": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "dynamics": {
+    "borrowing_degree_normalizer": 1.4,
+    "borrowing_edge_threshold": 0.18,
+    "borrowing_rate": 0.22,
+    "cross_lineage_exchange_multiplier": 0.68,
+    "cultural_profile_relaxation_rate_per_kyr": 0.1,
+    "exchange_distance_scale_grid_cells": 28.0,
+    "fission_materialization_threshold": 0.62,
+    "fusion_materialization_threshold": 0.68,
+    "generic_hard_material_access_prior": 0.7,
+    "governance": {
+      "deep_biological_coupling": false,
+      "generic_hard_material_access_is_explicit_prior_not_geology_observation": true,
+      "implementation_families_are_not_direct_archaeological_observations": true,
+      "no_currency_or_market_materialization": true,
+      "no_language_or_religion_materialization": true,
+      "no_lineage_specific_rescaling": true,
+      "no_metallurgy_without_material_authority": true,
+      "no_named_culture_materialization": true,
+      "no_village_city_state_materialization": true,
+      "regional_lineage_codes_remain_opaque": true,
+      "require_r337_distributed_managed_forager_pathway": true,
+      "reticulate_genealogy_allows_borrowing": true,
+      "sensitivity_is_selection_gate": false,
+      "unique_human_identity_materialized": false
+    },
+    "implementation_adjustment_rate_per_kyr": 0.18,
+    "implementation_presence_threshold": 0.42,
+    "initial_implementation_fraction": 0.72,
+    "innovation_rate": 0.12,
+    "robust_borrowing_member_fraction": 0.5,
+    "robust_event_member_fraction": 0.6,
+    "robust_presence_q10_threshold": 0.3,
+    "within_lineage_exchange_multiplier": 1.0
+  },
+  "evidence_basis": {
+    "FORAGER_TOOLS_2021": {
+      "doi": "10.1111/tops.12559",
+      "source": "Sterelny, Foragers and Their Tools: Risk, Technology and Complexity, Topics in Cognitive Science 2021",
+      "use": "toolkit complexity depends on ecology, economics, skill, cooperation and transmission rather than cognition alone"
+    },
+    "HUNTER_GATHERER_TRANSMISSION_2024": {
+      "doi": "10.1073/pnas.2322883121",
+      "source": "Hewlett et al., Cultural transmission among hunter-gatherers, PNAS 121(48), 2024",
+      "use": "vertical, horizontal, oblique, conformist and cumulative transmission can coexist in forager societies; inheritance is not a simple tree"
+    },
+    "MOBILITY_TRANSMISSION_2011": {
+      "doi": "10.1016/j.jaa.2010.10.003",
+      "source": "Mobility-driven cultural transmission along the forager-collector continuum, Journal of Anthropological Archaeology 30, 2011",
+      "use": "mobility regime affects occupation intensity, raw-material transport and cultural transmission without requiring sedentism"
+    },
+    "NETWORKS_CULTURAL_TRANSMISSION_2023": {
+      "doi": "10.1093/oxfordhb/9780198854265.013.34",
+      "source": "Networks and Cultural Transmission in Hunter-Gatherer Societies, Oxford Handbook of Archaeological Network Research, 2023",
+      "use": "large-scale forager networks move material, energy and information across sparse populations"
+    },
+    "POTTERY_TRANSMISSION_2023": {
+      "doi": "10.1038/s41562-022-01491-8",
+      "source": "The transmission of pottery technology among prehistoric European hunter-gatherers, Nature Human Behaviour 7, 2023",
+      "use": "prehistoric hunter-gatherer technology can spread through contact networks and can require branching-and-blending rather than a pure tree model"
+    },
+    "R331_PARENT": {
+      "source": "R3.31 SEALED cultural-technological ecology",
+      "use": "abstract technology domain stocks, transmission, innovation and group technical access are inherited authority"
+    },
+    "R332_PARENT": {
+      "source": "R3.32 SEALED regional cultural lineages and subsistence",
+      "use": "opaque regional lineage codes, regional continuity, positions and subsistence profiles are inherited authority"
+    },
+    "R333_PARENT": {
+      "source": "R3.33 SEALED environmental and animal-partner trajectories",
+      "use": "NPP/hydrology/coastal affordances and animal contact are inherited material-affordance authorities"
+    },
+    "R337_PARENT": {
+      "source": "R3.37 SEALED distributed managed-forager economy",
+      "use": "exchange access, specialization, storage and settlement/economic network states are inherited authority"
+    }
+  },
+  "genealogy_semantics": "OPAQUE_REGIONAL_STEMS_WITH_VERTICAL_CONTINUITY_AND_HORIZONTAL_BORROWING;_NOT_NAMED_CULTURES_OR_ETHNICITIES",
+  "implementation_families": [
+    "hard_edge_mineral_cutting_processing",
+    "hafted_composite_points_and_edges",
+    "cordage_binding_netting_systems",
+    "hide_skin_flexible_thermal_goods",
+    "osseous_hard_biological_implements",
+    "grinding_pounding_food_processing",
+    "storage_containers_and_cache_systems",
+    "built_shelter_and_site_furniture",
+    "aquatic_capture_gear",
+    "overland_logistical_carriers",
+    "waterborne_transport_systems",
+    "adhesive_binding_compound_systems"
+  ],
+  "implementation_semantics": "FUNCTIONAL_IMPLEMENTATION_FAMILIES_ARE_CONCRETE_TECHNOLOGICAL_CLASSES_SUPPORTED_BY_SEALED_CAPABILITY_ECOLOGY_AND_ECONOMY;_THEY_ARE_NOT_DIRECT_ARCHAEOLOGICAL_OBSERVATIONS_OR_EXACT_ARTIFACT_TYPOLOGIES",
+  "material_semantics": "ENVIRONMENTAL_BIOTIC_AFFORDANCES_ARE_SPATIALLY_INHERITED;_HARD_MINERAL_ACCESS_USES_AN_EXPLICIT_GLOBAL_PRIOR_BECAUSE_A_HIGH_RESOLUTION_LITHIC_RAW_MATERIAL_MAP_IS_NOT_YET_AN_AUTHORITY",
+  "parent": "PASS_R337_INTENSIVE_MANAGED_FORAGER_DEMOGRAPHY_SETTLEMENT_STORAGE_EXCHANGE_SPECIALIZATION_AND_REGIONAL_ECONOMY_SEALED",
+  "parent_hashes": {
+    "r331_technology_sha256": "9f5ddb0fd1356ea681b72b52329e6804eb7ef47a269f923ba684486d5afaf941",
+    "r332_regional_sha256": "dfad48a7cdb85580fe81b6aa69cd68ca87cff17e9da491252c044b9a76ce7fd1",
+    "r333_environment_sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+    "r337_economy_sha256": "0107035b526f1e8c198d5eb752b709057da67de5722d3450c272ce4e2261c784"
+  },
+  "prohibited_materialization": [
+    "named_cultures",
+    "ethnicities",
+    "languages",
+    "religions",
+    "metallurgy",
+    "currency",
+    "markets",
+    "villages",
+    "cities",
+    "states",
+    "unique_human_identity",
+    "Deep_biological_coupling"
+  ],
+  "stage": "v0.6D1-R3.38",
+  "status": "R338_REGIONAL_EXCHANGE_CONCRETE_TECHNOLOGY_AND_CULTURAL_GENEALOGY_AUTHORITY",
+  "window_ka": [
+    20.0,
+    0.0
+  ]
+}

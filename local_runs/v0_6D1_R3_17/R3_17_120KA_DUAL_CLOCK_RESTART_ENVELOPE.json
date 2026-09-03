@@ -1,0 +1,180 @@
+{
+  "schema": "ARCANA_R317_120KA_DUAL_CLOCK_RESTART_ENVELOPE_V1",
+  "stage": "v0.6D1-R3.17",
+  "physical_restart_age_ma": 0.12,
+  "biology_state_age_ma": 0.125,
+  "biology_state_source": "R3.16_SEALED_125KA_CHECKPOINT_UNMODIFIED",
+  "biology_state_mutated": false,
+  "biology_state_relabelled_to_120ka": false,
+  "phase": {
+    "physical_age_ma": 0.12,
+    "biology_state_age_ma": 0.125,
+    "elapsed_since_last_full_biology_boundary_years": 5000.0,
+    "remaining_to_next_full_biology_boundary_years": 120000.0,
+    "next_full_biology_boundary_age_ma": 0.0,
+    "elapsed_since_last_transport_boundary_years": 5000.0,
+    "remaining_to_next_transport_boundary_years": 57500.0,
+    "next_transport_boundary_age_ma": 0.0625,
+    "gene_flow_due_at_120ka": false,
+    "transport_due_at_120ka": false,
+    "lifecycle_gate_due_at_120ka": false,
+    "speciation_gate_due_at_120ka": false,
+    "extinction_gate_due_at_120ka": false,
+    "pair_clock_advanced_to_120ka": false,
+    "demography_advanced_to_120ka": false,
+    "selection_advanced_to_120ka": false,
+    "variance_advanced_to_120ka": false,
+    "semantics": "DUAL_CLOCK_RESTART_ENVIRONMENT_AT_120KA_WITH_SEALED_BIOLOGY_STATE_CARRIED_FROM_125KA"
+  },
+  "environmental_restart": {
+    "provider": "LATE_PLEISTOCENE_BOUNDARY_CONTINUATION_v0_6_4C2",
+    "subprovider": "EXACT_v0.6.1_120KA_ENDPOINT",
+    "authority": "v0.6.1 SEALED_PALEOCLIMATE_HISTORY",
+    "restart_boundary_at_120ka": true,
+    "replay_safe_boundary_continuation": true,
+    "pre_120ka_historical_glacial_chronology_claimed": false
+  },
+  "pending_exposure": {
+    "older_age_ma": 0.125,
+    "younger_age_ma": 0.12,
+    "duration_years": 5000.0,
+    "segment_count": 10,
+    "node_count": 11,
+    "all_segments_500y": true,
+    "nodes_age_ma": [
+      0.125,
+      0.12450000000000001,
+      0.12400000000000001,
+      0.12350000000000001,
+      0.12300000000000001,
+      0.12250000000000001,
+      0.12200000000000001,
+      0.12150000000000001,
+      0.12100000000000001,
+      0.12050000000000001,
+      0.12000000000000001
+    ],
+    "averaging_rule": "TRAPEZOID_INTEGRAL_ON_R314_C2_500Y_PARTITION",
+    "accumulator_role": "PENDING_FIRST_5KYR_OF_THE_125KA_TO_0KA_SEALED_BIOLOGY_MACROSTEP",
+    "biological_state_mutated": false,
+    "total_forage_average_closure_max_abs": 1.1102230246251565e-16,
+    "endpoint_total_forage_closure_max_abs": 0.0
+  },
+  "support_transition_diagnostic": {
+    "lost_accessible_cell_count_125_to_120": 0,
+    "gained_accessible_cell_count_125_to_120": 0,
+    "parent_population_mass_on_cells_inaccessible_at_120ka": 0.0,
+    "support_reconciliation_applied_in_r317": false,
+    "role": "DIAGNOSTIC_ONLY__R317_DOES_NOT_INSERT_A_SUBCADENCE_TRANSPORT_OR_REMAP_OPERATOR"
+  },
+  "governance": {
+    "biology_cadence_changed": false,
+    "transport_cadence_changed": false,
+    "gene_flow_step_cadence_changed": false,
+    "lifecycle_gate_cadence_changed": false,
+    "partial_biology_step_executed": false,
+    "adaptive_clock_used_as_biology_timestep": false,
+    "environmental_exposure_accumulated_without_biology_update": true,
+    "deep_biological_coupling": false,
+    "scientific_parameter_changes": false,
+    "richness_target_used": false,
+    "human_lineage_target_used": false
+  },
+  "parent_r316_authority": {
+    "r316_seal_sha256": "7b9ddd1aa4e543529cbae56cc1a3a284a7115573999dd9d37375c7a53d1aeeeb",
+    "r316_audit_sha256": "bc7425d31629460d06b8dfd50c2cbba83a6f2c576c2502bd87de2dfe0f952cee",
+    "r316_summary_sha256": "4e9cd6c53ef33cd262fad86b13deabb8e683afd0e1f6100edbd4e5d119f3075f",
+    "checkpoint_json_sha256": "aaf0bab510b4bcb5fbf77707ad66201515342cf8eb25b687e8f15952d2afca32",
+    "checkpoint_npz_sha256": "de0ef549d2fc74f1546e320b3fc3e0bc2f7ca7cbf5ebac464976494ad4055593",
+    "r315_seal_sha256": "c6122377debfa47a620f1e33056c80cac9cd74f2c7815f69ed166d63e50042d4",
+    "r314_seal_sha256": "028be0b4f29c2f2ce179a4e8d57396aff23e3e092ee683ef043115351edca3fd",
+    "r314_clock_sha256": "63e4c01e35db1af5ce83d9b0e3547929f3272241805436f7c047e0db83fbd4bf"
+  },
+  "pending_exposure_artifact": {
+    "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_17\\R3_17_PENDING_125_TO_120KA_EXPOSURE_ACCUMULATOR.npz",
+    "sha256": "b191faae44b4db8bc0afaaba942b0f04087758fa554c480375eb0f753ab309cc",
+    "schema": "ARCANA_R317_PENDING_125_TO_120KA_EXPOSURE_ACCUMULATOR_V1",
+    "duration_years": 5000.0,
+    "fields": [
+      "aridity_index",
+      "browse_forage",
+      "land_support",
+      "low_forage",
+      "reference_population",
+      "temperature_c",
+      "wetland_forage"
+    ]
+  },
+  "biology_parent_identity_after_envelope_build": {
+    "equivalent": true,
+    "arrays": {
+      "guild": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "pop": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "trait": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "va": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "gen": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "current_accessible": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "reduced_state": {
+      "va_within": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "ancestry_covariance": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "neutral_segregation_potential": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "adaptive_coordinate": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "exact_fields": {
+      "component_ids": true,
+      "root_species": true,
+      "current_species": true,
+      "registry": true,
+      "child_counters": true,
+      "baselines": true,
+      "ri_state": true,
+      "clock_state": true,
+      "ext_state": true,
+      "founder_state": true,
+      "vicariance_state": true,
+      "reconnection_state": true,
+      "events": true,
+      "snapshots": true,
+      "founder_stats_last": true,
+      "gene_flow_closure": true
+    },
+    "scalar_abs_errors": {
+      "age_ma": 0.0,
+      "elapsed_year": 0.0,
+      "topology_remap_mass": 0.0,
+      "initial_total_population": 0.0
+    },
+    "atol": 0.0
+  }
+}

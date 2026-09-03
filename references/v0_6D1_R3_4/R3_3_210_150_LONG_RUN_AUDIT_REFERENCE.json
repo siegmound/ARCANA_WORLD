@@ -1,0 +1,59 @@
+{
+  "status": "FAIL_FOR_CONTINUATION__DEME_COALESCENCE_WORKS_BUT_LONG_HORIZON_VA_CAP_ATTRACTOR_PERSISTS",
+  "final_total_population": 1940.114981733686,
+  "a1_reference_population_150ma": 1940.594970703125,
+  "population_relative_error": -0.0002473370504523498,
+  "species_count": 135,
+  "component_count": 460,
+  "initial_component_count": 133,
+  "event_counts": {
+    "paleogeographic_support_loss_remap": 432,
+    "deme_fission": 340,
+    "deme_coalescence": 13,
+    "speciation": 15,
+    "ordinary_extinction": 0
+  },
+  "deme_lifecycle": {
+    "identity": "133 + 340 - 13 = 460",
+    "net_component_growth": 327,
+    "coalescence_fraction_of_fissions": 0.03823529411764706,
+    "r3_2_fission_events_preserved": "339/340 exact; one event shifted by 0.5 Myr",
+    "r3_2_speciation_events_preserved": "15/15 exact identities and ages"
+  },
+  "normalized_va": {
+    "max": 0.05000000000000001,
+    "count_gt_0p05": 0,
+    "count_ge_0p0495": 183,
+    "reservoir_count": 1380,
+    "fraction_ge_0p0495": 0.13260869565217392,
+    "thermal_fraction_ge_0p0495": 0.2717391304347826,
+    "aridity_fraction_ge_0p0495": 0.12608695652173912,
+    "body_fraction_ge_0p0495": 0.0,
+    "median": 0.044799043278717136,
+    "p95": 0.05,
+    "fission_count_vs_root_cap_fraction_correlation": 0.546863
+  },
+  "micro_demes": {
+    "lt_0p001": {"count": 6, "mass": 0.0007638025198634287},
+    "lt_0p01": {"count": 8, "mass": 0.018271803112107368},
+    "lt_0p05": {"count": 97, "mass": 2.206390526235364},
+    "lt_0p1": {"count": 123, "mass": 4.171087079357015},
+    "lt_0p5": {"count": 215, "mass": 26.98485765957193},
+    "lt_1p0": {"count": 248, "mass": 52.334631362969546}
+  },
+  "coalescence": {
+    "meaningful_events_gt_0p1_population": 6,
+    "dust_scale_events_lt_1e_6_population": 7,
+    "last_event_age_ma": 158.5,
+    "note": "Coalescence improves micro-deme cleanup but does not materially change speciation/fission trajectory or VA cap-contact."
+  },
+  "speciation": {
+    "count": 15,
+    "same_as_r3_2": true,
+    "minimum_trait_margin_above_gate": 0.0102328852513267,
+    "events_within_0p05_trait_margin": 4,
+    "events_within_0p10_trait_margin": 9
+  },
+  "next_stage": "v0.6D1-R3.4 — Long-Horizon Admixture-Variance Headroom Audit & Homeostasis Calibration",
+  "continuation_authorized": false
+}

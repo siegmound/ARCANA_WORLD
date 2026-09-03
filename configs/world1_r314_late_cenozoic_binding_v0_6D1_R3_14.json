@@ -1,0 +1,19 @@
+{
+  "stage": "v0.6D1-R3.14",
+  "parent_stage": "v0.6D1-R3.13_SEALED",
+  "boundary_age_ma": 30.0,
+  "scope": "LATE_CENOZOIC_ENVIRONMENTAL_PROVIDER_C2_BINDING_AND_ADAPTIVE_CLOCK_RESTART_ONLY",
+  "biology_advanced_in_stage": false,
+  "deep_biological_coupling": false,
+  "preview_boundary_authorized": false,
+  "exact_v061_sealed_hash_binding_required": true,
+  "rematerialize_B1_B2_from_existing_authorized_equations": true,
+  "adaptive_clock": {
+    "max_geological_step_years": 2000000,
+    "min_secular_step_years": 25000,
+    "secular_activity_threshold": 1.0,
+    "required_provider_generation": "C2",
+    "required_production_replay_ready": true
+  },
+  "acceptance_does_not_depend_on": ["species_richness", "guild_recovery", "population_target"]
+}

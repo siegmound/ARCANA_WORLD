@@ -1,0 +1,32 @@
+{
+  "stage": "v0.6D1-R5.0",
+  "stage_name": "SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY",
+  "default_resolution_profile": "NATIVE_90X180_WITH_DEME_DETAIL",
+  "default_requested_domains": [
+    "population",
+    "surface_paleogeography",
+    "climate",
+    "hydrology",
+    "resources",
+    "flora",
+    "fauna"
+  ],
+  "demonstration_queries": [
+    {
+      "query_id": "R50_DEMO_EXACT_20KA",
+      "target_age_ka": 20.0
+    },
+    {
+      "query_id": "R50_DEMO_ARBITRARY_17P5KA",
+      "target_age_ka": 17.5
+    }
+  ],
+  "governance": {
+    "canonical_write": false,
+    "allow_temporal_extrapolation": false,
+    "external_engine_execution": false,
+    "full_history_rerun": false,
+    "deep_biological_coupling": false,
+    "synthetic_spatial_upsampling": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "stage": "v0.6D1-R0",
+  "status": "PASS",
+  "fresh_extraction_manifest_before_report": {
+    "tracked_files": 77,
+    "missing": 0,
+    "hash_or_size_errors": 0,
+    "untracked": 0
+  },
+  "fresh_extraction_tests": {
+    "passed": 37,
+    "failed": 0,
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m pytest -q -p no:cacheprovider"
+  },
+  "note": "This report was added after the first fresh-extraction proof; the final package manifest was regenerated afterward."
+}

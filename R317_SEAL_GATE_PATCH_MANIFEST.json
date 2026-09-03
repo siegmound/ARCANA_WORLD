@@ -1,0 +1,22 @@
+{
+  "schema": "ARCANA_R317_SEAL_GATE_PATCH_MANIFEST_V1",
+  "stage": "v0.6D1-R3.17",
+  "purpose": "Seal exact 120 ka environmental restart with 125 ka biology state and 5 kyr pending exposure",
+  "scientific_parameter_changes": false,
+  "biology_cadence_changes": false,
+  "canonical_artifacts": {
+    "local_runs/v0_6D1_R3_17/R3_17_120KA_DUAL_CLOCK_RESTART_ENVELOPE.json": "5b800279324afdd19279fa0c395ace822b4104155690191f81c6be884d2aeca8",
+    "local_runs/v0_6D1_R3_17/R3_17_PENDING_125_TO_120KA_EXPOSURE_ACCUMULATOR.npz": "b191faae44b4db8bc0afaaba942b0f04087758fa554c480375eb0f753ab309cc"
+  },
+  "payload_hashes": {
+    "scripts/formal_audit_v0_6D1_R3_17_sealed.py": "6979bef4dbff2825071f41be3c222f3786aff32a82faae213d4ddfffb0a4817e",
+    "run_v0_6D1_R3_17_sealed_checks.ps1": "e9f370acb401799400cb07b0b771ec484b4c9e785a0ffc0f32ac89de2d0267a9",
+    "README_R3_17_SEAL_GATE.md": "41892440a9c3062c0c16e67558d9f0e2cf408114d7b09af60abe71f7bb8f173f",
+    "verify_v0_6D1_R3_17_seal_gate_patch.ps1": "1f08c53a567cb993258978c226f0b1d560c327fdfbb7b2bb85ec031f17b56b91"
+  },
+  "required_parent": {
+    "stage": "v0.6D1-R3.16",
+    "sealed_verdict": "PASS_R316_CANONICAL_250_TO_125KA_H0_C2_EXPOSURE_PRESERVING_FIXED_BIOLOGY__125KA_PRE_120KA_RESTART_BOUNDARY_SEALED",
+    "formal_audit_checks": "193/193"
+  }
+}

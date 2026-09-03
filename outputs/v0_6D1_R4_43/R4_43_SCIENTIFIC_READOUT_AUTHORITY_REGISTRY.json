@@ -1,0 +1,143 @@
+{
+  "authorized_metric_count": 8,
+  "canonical_rewrite_authorized": false,
+  "carrier_metrics": [
+    {
+      "adjudicative": false,
+      "exact_comparison_required": true,
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "role": "EXACT_INTEGRITY_ONLY",
+      "scientific_descriptive": false,
+      "semantics": "nonliteral carrier support coordinates; not observed history",
+      "shape": "N_carriers x 2",
+      "source": "Model.get_coords / Species._get_coords",
+      "unit": "grid_coordinate_units"
+    },
+    {
+      "adjudicative": false,
+      "exact_comparison_required": true,
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "role": "EXACT_INTEGRITY_ONLY",
+      "scientific_descriptive": false,
+      "semantics": "floor(y,x) native cell assignment integrity",
+      "source": "Species._cells",
+      "unit": "integer_grid_cells"
+    },
+    {
+      "adjudicative": false,
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "numeric_acceptance_threshold": null,
+      "raw_output": "one nearest-nonneighbor distance per carrier when N>=2",
+      "role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "scientific_descriptive": true,
+      "semantics": "spatial connectivity descriptor of canonical nonliteral deme supports",
+      "single_carrier_policy": "NOT_APPLICABLE_SINGLE_CARRIER_NO_FAILURE",
+      "source": "Species._kd_tree.tree.query(coords,k=2)",
+      "summary_output": [
+        "count",
+        "finite_count",
+        "min",
+        "median",
+        "mean",
+        "max"
+      ],
+      "unit": "grid_coordinate_units"
+    }
+  ],
+  "engine_result_defines_arcana_target": false,
+  "forbidden_readouts": [
+    {
+      "readout": "Species.N_or_calc_density_as_population_density",
+      "reason": "one ARCANA carrier is one active canonical deme support, not one biological individual"
+    },
+    {
+      "readout": "Species.Nt_as_population_history",
+      "reason": "autonomous biological population semantics are forbidden"
+    },
+    {
+      "readout": "births_deaths_as_scientific_history",
+      "reason": "R4.40/R4.42 authorize zero autonomous demography"
+    },
+    {
+      "readout": "age_stage_as_physical_time",
+      "reason": "ordinal Geonomics timestep is not biological age"
+    },
+    {
+      "readout": "K_as_population_carrying_capacity_adjudication",
+      "reason": "construction/support K is not authorized as canonical population capacity"
+    },
+    {
+      "readout": "fitness_genotype_heterozygosity_genetic_distance",
+      "reason": "R4.36/R4.38 carrier species is intentionally nongenomic"
+    },
+    {
+      "readout": "movement_distance_or_dispersal_history",
+      "reason": "autonomous Geonomics movement is forbidden"
+    },
+    {
+      "readout": "four_dynamic_sidecars_as_native_layer_metrics",
+      "reason": "temperature_anomaly_c, precipitation_factor, npp_factor, sea_level_anomaly_m remain external sidecars"
+    }
+  ],
+  "jobs": {
+    "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS": {
+      "authorized_metrics": [
+        "GNX_CARRIER_COORDINATE_READBACK_XY",
+        "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+        "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE"
+      ],
+      "domain": "sapient_spatial_connectivity_3Ma_to_200ka",
+      "historical_prediction_claim_authorized": false
+    },
+    "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS": {
+      "authorized_metrics": [
+        "GNX_CARRIER_COORDINATE_READBACK_XY",
+        "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+        "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE"
+      ],
+      "domain": "sapient_spatial_connectivity_200ka_to_0",
+      "historical_prediction_claim_authorized": false
+    },
+    "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS": {
+      "authorized_metrics": [
+        "GNX_NATIVE_LAYER_RASTER_READBACK",
+        "GNX_NATIVE_LAYER_DESCRIPTIVE_SUMMARY"
+      ],
+      "domain": "producer_environment_native_layer_state_20ka_to_0",
+      "historical_prediction_claim_authorized": false
+    }
+  },
+  "layer_metrics": [
+    {
+      "adjudicative": false,
+      "exact_comparison_required": true,
+      "metric_id": "GNX_NATIVE_LAYER_RASTER_READBACK",
+      "role": "EXACT_INTEGRITY_ONLY",
+      "scientific_descriptive": false,
+      "scope": "147 R4.39/R4.42 native dynamic layers only",
+      "source": "Landscape Layer.rast",
+      "unit": "canonical_native_layer_units"
+    },
+    {
+      "adjudicative": false,
+      "metric_id": "GNX_NATIVE_LAYER_DESCRIPTIVE_SUMMARY",
+      "numeric_acceptance_threshold": null,
+      "role": "SCIENTIFIC_DESCRIPTIVE_LAYER_STATE",
+      "scientific_descriptive": true,
+      "scope": "147 native layers; 4 dynamic sidecars excluded",
+      "source": "Landscape Layer.rast",
+      "summary_output": [
+        "finite_count",
+        "min",
+        "max",
+        "mean",
+        "std"
+      ],
+      "unit": "per-layer canonical units"
+    }
+  ],
+  "result_selected_metric_choice": false,
+  "stage": "v0.6D1-R4.43",
+  "status": "R443_GEONOMICS_SCIENTIFIC_READOUT_AUTHORITY_REGISTRY_FROZEN",
+  "unique_metric_definition_count": 5
+}

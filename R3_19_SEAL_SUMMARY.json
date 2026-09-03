@@ -1,0 +1,62 @@
+{
+  "schema": "ARCANA_R319_SEAL_SUMMARY_V1",
+  "stage": "v0.6D1-R3.19",
+  "verdict": "PASS_R319_CANONICAL_125KA_TO_0_H0_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY__0KA_NATURAL_CONTROL_BIOLOGY_BOUNDARY_SEALED",
+  "formal_audit": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_19\\FORMAL_AUDIT_SEALED_v0_6D1_R3_19.json",
+  "formal_audit_sha256": "f4d7bef3188d9880a6393ed00edb736b4898a4771092bed5e53100c84dbd2fa7",
+  "formal_audit_checks": "73/73",
+  "boundary": {
+    "biology_age_ma": 0.0,
+    "species": 134,
+    "components": 295,
+    "population": 1217.2506240828814,
+    "biology_cadence_years": 125000.0,
+    "transport_cadence_years": 62500.0,
+    "transport_substeps": 2,
+    "phase_aware_transport": true,
+    "constant_forcing_equivalence_bit_exact": true,
+    "endpoint_support_reconciliation_event_count": 1,
+    "exact_0ka_inaccessible_population_mass": 0.0,
+    "peak_q": 0.047601695825828454,
+    "q_ceiling": 0.08,
+    "deep_biological_coupling": false
+  },
+  "canonical_artifacts": {
+    "checkpoint_json": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.json",
+    "checkpoint_json_sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+    "checkpoint_npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz",
+    "checkpoint_npz_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+    "summary": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\R3_19_H0_PRESENT_BIOLOGY_CLOSURE_SUMMARY.json",
+    "summary_sha256": "2803044f380df3565fb2e7bc9e10de527734474e637b98c8f81678ad7595387b"
+  },
+  "parent_authority": {
+    "stage": "v0.6D1-R3.18_SEALED",
+    "r318_seal_sha256": "70457172cece552ed6191328f4803f6a705252e93b07ffe5c860f9579a8f2d61",
+    "r318_audit_sha256": "95cb1bf525e54beb64381e4bb3cf170f2e6c94bb0d9a84fc13c6cc2498faaf38",
+    "r318_summary_sha256": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a",
+    "r318_envelope_sha256": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+    "r318_bundle_sha256": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70"
+  },
+  "independent_replay": {
+    "enabled": true,
+    "state_bit_exact": true,
+    "constant_forcing_r38_equivalence": true,
+    "endpoint_support_reconciliation_applied": true,
+    "endpoint_support_reconciliation_mass": 3.403417661595834e-06,
+    "exact_0ka_inaccessible_population_mass": 0.0
+  },
+  "governance": {
+    "h0_natural_control_biology_210ma_to_0ka_closed": true,
+    "phase_aware_transport_sealed": true,
+    "exact_endpoint_support_reconciliation_sealed": true,
+    "constant_forcing_r38_equivalence_required": true,
+    "biology_cadence_changed": false,
+    "transport_cadence_changed": false,
+    "gene_flow_cadence_changed": false,
+    "lifecycle_gate_cadence_changed": false,
+    "deep_biological_coupling": false,
+    "scientific_parameter_changes": false,
+    "human_lineage_target_used": false
+  },
+  "next": "v0.6D1-R3.20 \u2014 H0 Natural-Control Final Closure, Present Lineage Registry & Functional-Phenotype Fork Readiness"
+}

@@ -1,0 +1,688 @@
+{
+  "descriptive_record_count": 8,
+  "expected_metric_record_count": 24,
+  "forbidden_readout_emission_count": 0,
+  "integrity_record_count": 16,
+  "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+  "metric_record_count": 24,
+  "metric_records": [
+    {
+      "canonical_payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 999124684,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "replicate_index": 0,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 999124684,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "replicate_index": 0,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "finite": true,
+      "frozen_seed": 999124684,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "168f9cbc78b04d24766ae7a80f379ba5cf39f6fbb41edf11fcceb95bdfcd5176",
+      "raw_vector": [
+        22.479091344164708,
+        6.079929817381174,
+        3.0146987919527195,
+        6.079929817381174,
+        46.879323261215795,
+        3.0146987919527195
+      ],
+      "replicate_index": 0,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 46.879323261215795,
+        "mean": 14.591278637341384,
+        "median": 6.079929817381174,
+        "min": 3.0146987919527195
+      },
+      "value_shape": [
+        6
+      ]
+    },
+    {
+      "canonical_payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 999124684,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "replicate_index": 0,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 999124684,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "replicate_index": 0,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "finite": true,
+      "frozen_seed": 999124684,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "ce5134f230ebfff3a7c150d5d4028a1e29edf7ae73aef2b4dea19724f28752c3",
+      "raw_vector": [
+        9.454283125186516,
+        0.4965162712510099,
+        0.4965162712510099,
+        0.9842990214056843,
+        50.67855089796132,
+        0.9842990214056843
+      ],
+      "replicate_index": 0,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 50.67855089796132,
+        "mean": 10.515744101410204,
+        "median": 0.9842990214056843,
+        "min": 0.4965162712510099
+      },
+      "value_shape": [
+        6
+      ]
+    },
+    {
+      "canonical_payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1705133798,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "replicate_index": 1,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1705133798,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "replicate_index": 1,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "finite": true,
+      "frozen_seed": 1705133798,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "168f9cbc78b04d24766ae7a80f379ba5cf39f6fbb41edf11fcceb95bdfcd5176",
+      "raw_vector": [
+        22.479091344164708,
+        6.079929817381174,
+        3.0146987919527195,
+        6.079929817381174,
+        46.879323261215795,
+        3.0146987919527195
+      ],
+      "replicate_index": 1,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 46.879323261215795,
+        "mean": 14.591278637341384,
+        "median": 6.079929817381174,
+        "min": 3.0146987919527195
+      },
+      "value_shape": [
+        6
+      ]
+    },
+    {
+      "canonical_payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1705133798,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "replicate_index": 1,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1705133798,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "replicate_index": 1,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "finite": true,
+      "frozen_seed": 1705133798,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "ce5134f230ebfff3a7c150d5d4028a1e29edf7ae73aef2b4dea19724f28752c3",
+      "raw_vector": [
+        9.454283125186516,
+        0.4965162712510099,
+        0.4965162712510099,
+        0.9842990214056843,
+        50.67855089796132,
+        0.9842990214056843
+      ],
+      "replicate_index": 1,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 50.67855089796132,
+        "mean": 10.515744101410204,
+        "median": 0.9842990214056843,
+        "min": 0.4965162712510099
+      },
+      "value_shape": [
+        6
+      ]
+    },
+    {
+      "canonical_payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1085091276,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "replicate_index": 2,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1085091276,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "replicate_index": 2,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "finite": true,
+      "frozen_seed": 1085091276,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "168f9cbc78b04d24766ae7a80f379ba5cf39f6fbb41edf11fcceb95bdfcd5176",
+      "raw_vector": [
+        22.479091344164708,
+        6.079929817381174,
+        3.0146987919527195,
+        6.079929817381174,
+        46.879323261215795,
+        3.0146987919527195
+      ],
+      "replicate_index": 2,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 46.879323261215795,
+        "mean": 14.591278637341384,
+        "median": 6.079929817381174,
+        "min": 3.0146987919527195
+      },
+      "value_shape": [
+        6
+      ]
+    },
+    {
+      "canonical_payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1085091276,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "replicate_index": 2,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 1085091276,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "replicate_index": 2,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "finite": true,
+      "frozen_seed": 1085091276,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "ce5134f230ebfff3a7c150d5d4028a1e29edf7ae73aef2b4dea19724f28752c3",
+      "raw_vector": [
+        9.454283125186516,
+        0.4965162712510099,
+        0.4965162712510099,
+        0.9842990214056843,
+        50.67855089796132,
+        0.9842990214056843
+      ],
+      "replicate_index": 2,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 50.67855089796132,
+        "mean": 10.515744101410204,
+        "median": 0.9842990214056843,
+        "min": 0.4965162712510099
+      },
+      "value_shape": [
+        6
+      ]
+    },
+    {
+      "canonical_payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 555097754,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "bb8029048b25304d86e763a75d6fe2313bc188ece0628cbadd324dedc3d8f3ed",
+      "replicate_index": 3,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 555097754,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "f1d8a5507a519f34474d028f82d37a255c0ff28163a80b2a9650476270fbe70e",
+      "replicate_index": 3,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 200.0,
+      "canonical_state_index": 0,
+      "finite": true,
+      "frozen_seed": 555097754,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "168f9cbc78b04d24766ae7a80f379ba5cf39f6fbb41edf11fcceb95bdfcd5176",
+      "raw_vector": [
+        22.479091344164708,
+        6.079929817381174,
+        3.0146987919527195,
+        6.079929817381174,
+        46.879323261215795,
+        3.0146987919527195
+      ],
+      "replicate_index": 3,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 46.879323261215795,
+        "mean": 14.591278637341384,
+        "median": 6.079929817381174,
+        "min": 3.0146987919527195
+      },
+      "value_shape": [
+        6
+      ]
+    },
+    {
+      "canonical_payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 555097754,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_COORDINATE_READBACK_XY",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "d9cd55165fe08b99d03cc3c46f8662d4011df2b3e0143084936f5d202ad408a0",
+      "replicate_index": 3,
+      "scientific_divergence_claim": false,
+      "source_object": "Model.get_coords(spp=0)",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "canonical_payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "comparison_result": "EXACT_MATCH",
+      "exact_match": true,
+      "finite": true,
+      "frozen_seed": 555097754,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NATIVE_CELL_READBACK_IJ",
+      "metric_role": "EXACT_INTEGRITY_ONLY",
+      "payload_sha256": "e540519924c38a10e7167ccff595d3c436b460ae480fb3b2965865952285e22f",
+      "replicate_index": 3,
+      "scientific_divergence_claim": false,
+      "source_object": "Species._cells",
+      "stage": "v0.6D1-R4.44",
+      "value_shape": [
+        6,
+        2
+      ]
+    },
+    {
+      "applicability": "APPLICABLE",
+      "automatic_pass_fail_from_value": false,
+      "canonical_physical_age": 125.0,
+      "canonical_state_index": 1,
+      "finite": true,
+      "frozen_seed": 555097754,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "metric_id": "GNX_CARRIER_NEAREST_NEIGHBOR_DISTANCE",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_CONNECTIVITY",
+      "numeric_acceptance_threshold": null,
+      "payload_sha256": "ce5134f230ebfff3a7c150d5d4028a1e29edf7ae73aef2b4dea19724f28752c3",
+      "raw_vector": [
+        9.454283125186516,
+        0.4965162712510099,
+        0.4965162712510099,
+        0.9842990214056843,
+        50.67855089796132,
+        0.9842990214056843
+      ],
+      "replicate_index": 3,
+      "source_object": "Species._kd_tree.tree.query(coords,k=2)",
+      "stage": "v0.6D1-R4.44",
+      "summary": {
+        "count": 6,
+        "finite_count": 6,
+        "max": 50.67855089796132,
+        "mean": 10.515744101410204,
+        "median": 0.9842990214056843,
+        "min": 0.4965162712510099
+      },
+      "value_shape": [
+        6
+      ]
+    }
+  ],
+  "model_walk_call_count": 0,
+  "replicate_count": 4,
+  "replicate_pass_count": 4,
+  "replicate_records": [
+    {
+      "all_descriptive_finite_or_na": true,
+      "all_integrity_exact": true,
+      "descriptive_record_count": 2,
+      "frozen_seed": 999124684,
+      "integrity_record_count": 4,
+      "metric_record_count": 6,
+      "model_walk_called": false,
+      "no_numeric_thresholds": true,
+      "pass": true,
+      "replicate_index": 0,
+      "scientific_execution_claimed": false
+    },
+    {
+      "all_descriptive_finite_or_na": true,
+      "all_integrity_exact": true,
+      "descriptive_record_count": 2,
+      "frozen_seed": 1705133798,
+      "integrity_record_count": 4,
+      "metric_record_count": 6,
+      "model_walk_called": false,
+      "no_numeric_thresholds": true,
+      "pass": true,
+      "replicate_index": 1,
+      "scientific_execution_claimed": false
+    },
+    {
+      "all_descriptive_finite_or_na": true,
+      "all_integrity_exact": true,
+      "descriptive_record_count": 2,
+      "frozen_seed": 1085091276,
+      "integrity_record_count": 4,
+      "metric_record_count": 6,
+      "model_walk_called": false,
+      "no_numeric_thresholds": true,
+      "pass": true,
+      "replicate_index": 2,
+      "scientific_execution_claimed": false
+    },
+    {
+      "all_descriptive_finite_or_na": true,
+      "all_integrity_exact": true,
+      "descriptive_record_count": 2,
+      "frozen_seed": 555097754,
+      "integrity_record_count": 4,
+      "metric_record_count": 6,
+      "model_walk_called": false,
+      "no_numeric_thresholds": true,
+      "pass": true,
+      "replicate_index": 3,
+      "scientific_execution_claimed": false
+    }
+  ],
+  "scientific_execution_performed": false,
+  "selection": "member_index_0_candidate_index_0_states_0_and_1",
+  "stage": "v0.6D1-R4.44",
+  "state_count_per_replicate": 2,
+  "status": "R444_CARRIER_READOUT_EXTRACTION_DRY_RUN_VALIDATED"
+}

@@ -1,0 +1,56 @@
+{
+  "stage": "v0.6D1-R4.48",
+  "title": "Geonomics J14/J18 Full-Job Revalidation Coverage Expansion Preflight",
+  "purpose": "freeze every remaining J14/J18 branch before full-coverage scientific execution",
+  "branch_authority": {
+    "order": "member index major, candidate index minor",
+    "already_executed": {
+      "J14": "M000_C00 only",
+      "J18": "M000_C00 only"
+    },
+    "remaining": {
+      "J14": 191,
+      "J18": 63,
+      "combined": 254
+    },
+    "selection_by_result": false
+  },
+  "representability_gate": [
+    "every canonical state must contain at least one active carrier",
+    "all carrier coordinates must be finite",
+    "all x coordinates must satisfy 0 <= x < 180",
+    "all y coordinates must satisfy 0 <= y < 90",
+    "branch IDs must be unique"
+  ],
+  "sharding": {
+    "policy": "deterministic contiguous frozen branch order",
+    "max_branches_per_shard": 8,
+    "all_four_seeds_per_branch": true,
+    "expected_shards": 32,
+    "resume_unit": "whole shard",
+    "execution_concurrency": "operational only; does not change scientific plan authority"
+  },
+  "expected_expansion_evidence": {
+    "streams": 1016,
+    "metric_records": 334512,
+    "integrity_records": 223008,
+    "descriptive_records": 111504
+  },
+  "post_expansion_full_geonomics_evidence": {
+    "metric_records": 346968,
+    "integrity_records": 229548,
+    "descriptive_records": 117420
+  },
+  "forbidden": [
+    "rerunning already-closed J14 M000_C00 first cohort",
+    "rerunning already-closed J18 M000_C00 first cohort",
+    "rerunning closed J21 layer job",
+    "result-selected branch or metric",
+    "retroactive numeric threshold",
+    "majority vote",
+    "external-engine target definition",
+    "canonical rewrite"
+  ],
+  "nonclaim": "R4.48 authorizes the frozen expansion plan but performs no scientific engine execution",
+  "next_action": "BUILD_R449_GEONOMICS_J14_J18_FULL_JOB_REVALIDATION_COVERAGE_EXPANSION_EXECUTION_AND_EVIDENCE_CAPTURE"
+}

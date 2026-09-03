@@ -1,0 +1,152 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs/v0_6D1_R4_2_SEAL/R4_2_FINAL_SEAL_AUDIT.json",
+      "name": "r42_parent_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R42_FROZEN_HISTORICAL_WINDOW_BASELINE_MATERIALIZATION_ADAPTER_CONTRACT_AND_MULTI_ENGINE_EXECUTION_FREEZE_SEALED",
+      "name": "r42_parent_sealed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_owner_arcana",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_external_direct_write",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_auto_promotion",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": 23,
+      "name": "exact_23_frozen_jobs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "frozen_jobs_unique",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r42_jobs_still_unexecuted",
+      "pass": true
+    },
+    {
+      "detail": "FROZEN_PRE_RESULT",
+      "name": "r42_mapping_pre_result",
+      "pass": true
+    },
+    {
+      "detail": false,
+      "name": "authority_no_majority_vote",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "seven_windows_preserved",
+      "pass": true
+    },
+    {
+      "detail": [
+        "H0_DEEP_TIME_BACKGROUND",
+        "H0_LATE_CENOZOIC",
+        "H0_POST_CHA1_RECOVERY",
+        "H0_PRE_CHA1",
+        "PRODUCER_20KA_TO_0",
+        "SAPIENT_200KA_TO_0",
+        "SAPIENT_3MA_TO_200KA"
+      ],
+      "name": "all_7_baseline_descriptors_materialized",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "all_selected_frozen_artifact_hashes_match",
+      "pass": true
+    },
+    {
+      "detail": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "name": "physical_companion_present",
+      "pass": true
+    },
+    {
+      "detail": 23,
+      "name": "exact_23_per_job_mappings",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_mappings_pre_result",
+      "pass": true
+    },
+    {
+      "detail": {
+        "R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY": 4,
+        "R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER": 6,
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP": 6,
+        "R42_J04_H0_PRE_CHA1_MADINGLEY": 4,
+        "R42_J05_H0_PRE_CHA1_RANGESHIFTER": 6,
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP": 6,
+        "R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY": 4,
+        "R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER": 6,
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP": 6,
+        "R42_J10_H0_POST_CHA1_RECOVERY_NEMO": 2,
+        "R42_J11_H0_LATE_CENOZOIC_MADINGLEY": 4,
+        "R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER": 6,
+        "R42_J13_H0_LATE_CENOZOIC_NEMO": 2,
+        "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS": 10,
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP": 7,
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM": 5,
+        "R42_J17_SAPIENT_3MA_TO_200KA_NEMO": 3,
+        "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS": 10,
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM": 5,
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP": 7,
+        "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS": 12,
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM": 7,
+        "R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER": 8
+      },
+      "name": "every_job_has_domain_authority_mapping",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "seed_ledger_exact_23",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_duplicate_seeds_global",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 21,
+  "checks_total": 21,
+  "historical_engine_execution_performed": false,
+  "job_count": 23,
+  "next_action": "EXECUTE_FROZEN_R43_23_ENGINE_WINDOW_JOBS",
+  "replicate_count": 92,
+  "stage": "v0.6D1-R4.3",
+  "status": "PASS_R43_FROZEN_23_JOB_CONTRACT_AND_UNIT_MAPPING_PREPARED",
+  "window_count": 7
+}

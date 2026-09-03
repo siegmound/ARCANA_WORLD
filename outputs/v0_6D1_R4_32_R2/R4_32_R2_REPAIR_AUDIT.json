@@ -1,0 +1,63 @@
+{
+  "stage": "v0.6D1-R4.32-R2",
+  "status": "PASS_R432_R2_R423_PROFILE_INDIRECTION_REPAIR_APPLIED",
+  "root_cause": "R432_CONSUMER_READ_R423_SUMMARY_RECORD_AS_IF_IT_CONTAINED_DETAILED_PROFILE_SOURCE_FIELDS",
+  "repair": "DEREFERENCE_FROZEN_R423_PROFILE_PATH_FOR_J18_J21_AND_USE_SUMMARY_BINDING_MATERIALIZED_AS_TERMINAL_MATERIALIZATION_AUTHORITY",
+  "target_file": "src/arcana_worldsim/scientific_engines/r432_target_authority_binding_geonomics_static.py",
+  "target_prepatch_sha256": "cfb68dd973d1098f76e86bfa18e2fa2ab605ef9d257cc9ca125bc98d0e5dd5b6",
+  "target_postpatch_sha256": "692f3fa94f06f57464789b966ebf6223316941ca9b7f5d8664e71d87d3086ab7",
+  "target_postpatch_bytes": 26124,
+  "manifest_hash_entry_updates": 1,
+  "r423_authority_proof": {
+    "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS": {
+      "summary_binding_materialized": true,
+      "profile_path": "outputs/v0_6D1_R4_23/geonomics_profiles/R42_J18_SAPIENT_200KA_TO_0_GEONOMICS/LANDSCAPE_PROFILE.json",
+      "profile_exists": true,
+      "profile_job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "profile_source_field": "canonical_spatial_source",
+      "source_count": 1,
+      "source_checks": [
+        {
+          "path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+          "exists": true,
+          "expected_sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+          "actual_sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+          "hash_match": true
+        }
+      ]
+    },
+    "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS": {
+      "summary_binding_materialized": true,
+      "profile_path": "outputs/v0_6D1_R4_23/geonomics_profiles/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/LANDSCAPE_PROFILE.json",
+      "profile_exists": true,
+      "profile_job_id": "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS",
+      "profile_source_field": "canonical_spatial_sources",
+      "source_count": 2,
+      "source_checks": [
+        {
+          "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+          "exists": true,
+          "expected_sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+          "actual_sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+          "hash_match": true
+        },
+        {
+          "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+          "exists": true,
+          "expected_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+          "actual_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+          "hash_match": true
+        }
+      ]
+    }
+  },
+  "governance": {
+    "r423_modified": false,
+    "canonical_state_changed": false,
+    "external_engine_execution_performed": false,
+    "target_numeric_execution_performed": false,
+    "readjudication_performed": false,
+    "gate_weakening_performed": false,
+    "failed_r432_evidence_preserved": true
+  }
+}

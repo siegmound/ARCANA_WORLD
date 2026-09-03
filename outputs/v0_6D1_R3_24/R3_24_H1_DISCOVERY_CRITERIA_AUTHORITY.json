@@ -1,0 +1,121 @@
+{
+  "axis_aggregation": "GEOMETRIC_MEAN_OF_WITHIN_MEMBER_CROSS_SPECIES_TRAIT_PERCENTILES",
+  "backpropagation_to_r323": false,
+  "candidate_selection": {
+    "diagnostics": [
+      "core_balance",
+      "core_regime_floor",
+      "core_threshold_floor_robustness",
+      "pareto_front1_probability",
+      "pareto_regime_floor",
+      "derived_median_floor",
+      "derived_regime_floor"
+    ],
+    "method": "ORDINAL_CONSENSUS_ACROSS_MULTIPLE_NON_EQUIVALENT_DIAGNOSTICS",
+    "no_absolute_pass_fail_human_threshold": true,
+    "no_single_readiness_score": true,
+    "ordering": "MEDIAN_DIAGNOSTIC_RANK_THEN_MEAN_DIAGNOSTIC_RANK_THEN_SPECIES_ID",
+    "percentile_threshold_grid": [
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5
+    ],
+    "shortlist_size": 12
+  },
+  "core_axes": {
+    "ecological_dietary_flexibility": [
+      "D1_resource_breadth",
+      "D2_digestive_processing_breadth",
+      "D3_resource_switching",
+      "G1_habitat_breadth",
+      "G2_climatic_tolerance_breadth",
+      "G3_disturbance_resilience",
+      "G4_colonization_breadth"
+    ],
+    "executive_causal_cognition": [
+      "C1_working_memory",
+      "C2_inhibitory_control",
+      "C3_relational_integration",
+      "C4_causal_model_depth"
+    ],
+    "learning_flexibility": [
+      "P1_acquisition_efficiency",
+      "P2_retention_stability",
+      "P3_cross_context_transfer",
+      "P4_developmental_plasticity"
+    ],
+    "life_history_learning_support": [
+      "H1_maturation_duration",
+      "H3_parental_investment",
+      "H4_adult_survival_horizon"
+    ],
+    "locomotor_effector_interface": [
+      "L3_transition_control",
+      "L4_effector_locomotor_decoupling"
+    ],
+    "manipulative_control": [
+      "M1_effector_independence",
+      "M2_force_precision_span",
+      "M3_workspace_control",
+      "M4_sensorimotor_feedback"
+    ],
+    "social_transmission": [
+      "S1_social_tolerance",
+      "S2_coordination_capacity",
+      "S3_social_learning_fidelity",
+      "S4_communication_bandwidth"
+    ]
+  },
+  "derived_diagnostics": [
+    "tool_use_potential",
+    "environmental_problem_solving"
+  ],
+  "derived_diagnostics_are_not_independent_genetic_traits": true,
+  "evidence_basis": {
+    "GRIFFIN_2016": {
+      "citation": "Griffin 2016, Philosophical Transactions B 371:20150544",
+      "doi": "10.1098/rstb.2015.0544",
+      "use": "Innovation is treated as emergent/multifactorial rather than as a direct scalar trait."
+    },
+    "MESOUDI_THORNTON_2018": {
+      "citation": "Mesoudi & Thornton 2018, Proceedings B 285:20180712",
+      "doi": "10.1098/rspb.2018.0712",
+      "use": "CCE is decomposed into explicit criteria rather than treated as a single human essence."
+    },
+    "RICHERSON_BOYD_2020": {
+      "citation": "Richerson & Boyd 2020, Philosophical Transactions B 375:20190498",
+      "doi": "10.1098/rstb.2019.0498",
+      "use": "Extended learning and adult survival motivate a life-history learning-support axis without copying Homo values."
+    },
+    "ZWIRNER_THORNTON_2015": {
+      "citation": "Zwirner & Thornton 2015, Scientific Reports 5:16781",
+      "doi": "10.1038/srep16781",
+      "use": "No single specialized teaching/imitation mechanism is imposed as a necessary gate."
+    }
+  },
+  "excluded_monotone_life_history_trait": {
+    "reason": "NO_UNIVERSAL_MONOTONE_DIRECTION_FOR_H1_READINESS",
+    "trait_id": "H2_reproductive_output_rate"
+  },
+  "governance": {
+    "candidate_status_means_followup_priority_not_human_identity": true,
+    "cha2_mutated": false,
+    "deep_biological_coupling": false,
+    "h0_mutated": false,
+    "r323_functional_state_mutated": false
+  },
+  "h1_functional_readiness_target": true,
+  "human_similarity_target": false,
+  "sensitivity_design": [
+    "BASELINE",
+    "LEAVE_EACH_CORE_AXIS_OUT_ONCE",
+    "EACH_RATE_REGIME_IN_ISOLATION",
+    "Q25_AXIS_AGGREGATION",
+    "PRIMITIVE_ONLY_WITHOUT_DERIVED_TQ"
+  ],
+  "stage": "v0.6D1-R3.24",
+  "status": "H1_DISCOVERY_CRITERIA_PRECOMMITTED",
+  "target_definition": "FUNCTIONAL_READINESS_FOR_AN_OPEN_ENDED_CUMULATIVE_TECHNOLOGICAL_CULTURAL_PATHWAY_NOT_EXTANT_HOMO_SIMILARITY"
+}

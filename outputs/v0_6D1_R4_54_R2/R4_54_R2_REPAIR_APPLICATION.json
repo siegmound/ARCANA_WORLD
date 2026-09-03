@@ -1,0 +1,45 @@
+{
+  "stage": "v0.6D1-R4.54-R2",
+  "status": "PASS_R454_R2_NEMO_RESULT_CAPTURE_AND_SLIM_DIVERGENCE_API_REPAIR_APPLIED",
+  "root_causes": {
+    "NEMO": "NEMO_DRY_RUN_PATH_COULD_EXIT_WITHOUT_STANDARD_RESULT_JSON_OBSCURING_QFREQ_OR_COLLECTOR_FAILURE",
+    "SLiM": "SLIM_ANCESTRY_COLLECTOR_FAILED_INSIDE_NEW_DIVERGENCE_READOUT_PATH_BEFORE_METRIC_MATERIALIZATION"
+  },
+  "repairs": {
+    "NEMO": [
+      "ALWAYS_MATERIALIZE_STANDARD_FAILURE_JSON",
+      "DISCOVER_EXACT_OR_ANY_NONEMPTY_QFREQ",
+      "VERIFY_FROZEN_SEED_FROM_INI_AND_NATIVE_NEMO_STDOUT",
+      "WRAP_QFREQ_COLLECTOR_WITH_SCHEMA_AND_TRACEBACK_DIAGNOSTICS"
+    ],
+    "SLiM": [
+      "PRESERVE_SAME_BETWEEN_POPULATION_DIVERGENCE_STATISTIC",
+      "USE_TSKIT_DOCUMENTED_TWO_SAMPLE_SET_DIVERGENCE_CALL",
+      "NORMALIZE_SINGLE_SCALAR_RETURN_SHAPE",
+      "VERIFY_FROZEN_SEED_FROM_NATIVE_SLIM_STDOUT"
+    ]
+  },
+  "prepatch_sha256": {
+    "benchmarks/r454/run_nemo_r454.sh": "19aecd524d8eb504a1852cec54bdd293ad5b7cc393b00b9ad57901886bd0936f",
+    "benchmarks/r454/nemo_collect_r454.py": "d943f79905cbb08c12373275966a4fe6ee2e22cfe834be5c8873229d0da24a0e",
+    "benchmarks/r454/slim_collect_r454.py": "2a8640b0fb28fb597b971411486e2dcb193bbfe5d7499b531f61b3d2f40ded43"
+  },
+  "postpatch_sha256": {
+    "benchmarks/r454/run_nemo_r454.sh": "6b4cadda339c7c253a3bbde42fa45ad7a59173cb3284309c3691e2dbf7b3930c",
+    "benchmarks/r454/nemo_collect_r454.py": "4e588c5ac9be22ef6a7de11f3f8611bd750d4d7f2a86c416ac9a73f7730c7ffb",
+    "benchmarks/r454/slim_collect_r454.py": "91dd0851b709664ed51dffdce2c65ae34ff7a0418ead57aca16cef33adb41c6e"
+  },
+  "governance": {
+    "blocked_r454_evidence_preserved": true,
+    "madingley_prior_dry_run_pass_preserved": true,
+    "rangeshifter_prior_dry_run_pass_preserved": true,
+    "cdmetapop_prior_dry_run_pass_preserved": true,
+    "historical_scientific_execution_performed": false,
+    "scientific_evidence_modified": false,
+    "authorized_metric_ids_modified": false,
+    "numeric_thresholds_added": false,
+    "automatic_scientific_pass_fail_added": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

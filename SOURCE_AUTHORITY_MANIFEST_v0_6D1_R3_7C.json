@@ -1,0 +1,137 @@
+{
+  "authority_note": "R3.7C prepares a governed NEMO 2.4.2 dynamic directional-selection oracle with matched neutral controls. It does not authorize K_eff or production runtime binding before real selection evidence is reviewed.",
+  "external_source_binding": [
+    {
+      "source": "NEMO 2.4.2 official site",
+      "url": "https://nemo2.sourceforge.io/",
+      "verified_semantics": [
+        "quantitative-trait selection",
+        "Gaussian selection",
+        "patch-specific optima"
+      ]
+    },
+    {
+      "source": "NEMO 2.4.2 LCEselection.cc public source",
+      "url": "https://github.com/ecoevocode/nemo-release/blob/master/src/LCEselection.cc",
+      "verified_parameters": [
+        "selection_trait",
+        "selection_fitness_model",
+        "selection_model",
+        "selection_variance",
+        "selection_trait_dimension",
+        "selection_local_optima"
+      ]
+    }
+  ],
+  "governance": {
+    "automatic_nemo_calibration_allowed": false,
+    "canonical_write_allowed": false,
+    "ceiling_change_authorized": false,
+    "mu_b_change_authorized": false,
+    "production_keff_authorized": false,
+    "production_runtime_binding_allowed": false
+  },
+  "new_r3_7C_sources": [
+    {
+      "bytes": 8515,
+      "path": "src/arcana_worldsim/scientific_engines/nemo242_r37c.py",
+      "sha256": "a08ab1082c9d98e0c9f23be3d79440601e266b54b7cb9bb99a73c3fd1a4f1f80"
+    },
+    {
+      "bytes": 7541,
+      "path": "src/arcana_worldsim/scientific_engines/r37c_validation.py",
+      "sha256": "b5358f676cec32abedb0bd44f4b63c1f6a27d58d98ed7194e7295a07b3a330e2"
+    },
+    {
+      "bytes": 4238,
+      "path": "src/arcana_worldsim/scientific_engines/__init__.py",
+      "sha256": "f5082343f0d07944a30508b04692b26c3d21f5d010091935deb1edb1317d9cc7"
+    },
+    {
+      "bytes": 11420,
+      "path": "scripts/run_nemo_r37c_selection_chain.py",
+      "sha256": "215be072ccb63762622881ca77f71307214036d93ae8a231ee9c50044041a3f7"
+    },
+    {
+      "bytes": 938,
+      "path": "scripts/analyze_nemo_r37c_selection_v0_6D1_R3_7C.py",
+      "sha256": "b762e1cab61658642e955e90fce8540eb76049a3ac8696699c6776766833a43a"
+    },
+    {
+      "bytes": 5209,
+      "path": "scripts/formal_audit_v0_6D1_R3_7C.py",
+      "sha256": "b36716b73f3f0cd9a5bf6299ee3c0ad075bfd91bc07bbd5e9b2ea849ea5fbf67"
+    },
+    {
+      "bytes": 6277,
+      "path": "tests/test_r37c_directional_selection_oracle.py",
+      "sha256": "96304a28f03feb96f80f353d2cfada0ffdfc0d5bc71f361e9fa1b7fdb160f836"
+    },
+    {
+      "bytes": 965,
+      "path": "configs/world1_nemo_directional_selection_oracle_v0_6D1_R3_7C.json",
+      "sha256": "31412d505790d7255c2fef7ebccd7a35c012c5e3567178bae6ade4383da178c8"
+    },
+    {
+      "bytes": 3449,
+      "path": "NEMO_DIRECTIONAL_SELECTION_ORACLE_PROTOCOL_v0_6D1_R3_7C.md",
+      "sha256": "8872dbcc1e3cc2bc7a47f277a920f839dee330e985b59ff01bce0fc3ac16e766"
+    },
+    {
+      "bytes": 1403,
+      "path": "SELECTION_PARTICIPATION_CALIBRATION_CONTRACT_v0_6D1_R3_7C.md",
+      "sha256": "665ff7b590f226af9ae16a0e5c2c82308a8bead806ec797306053c530e79978f"
+    },
+    {
+      "bytes": 935,
+      "path": "NEMO_SELECTION_SOURCE_BINDING_AUDIT_v0_6D1_R3_7C.md",
+      "sha256": "65fae83f6051a6f82da093434c404b42e97d5902bb47b4d40859d0c461c799d6"
+    },
+    {
+      "bytes": 1064,
+      "path": "V0_6D1_R3_7C_STATUS.md",
+      "sha256": "fccda843540bd7158f99e69e8e798bbbd0ebdf67fc3ebef1e5a1a330ece5fce6"
+    },
+    {
+      "bytes": 1048,
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7C.md",
+      "sha256": "8daf2a0e1c97db2faf4b1efc164a113246432f1ae45ee3bd7a7e71ee55c96677"
+    },
+    {
+      "bytes": 877,
+      "path": "README_R3_7C.md",
+      "sha256": "d48a732e9a369fea19d85a0eb57f7ef72240dc5c793862b7976e6e93875a75b0"
+    },
+    {
+      "bytes": 989,
+      "path": "run_v0_6D1_R3_7C_nemo_selection_wsl.ps1",
+      "sha256": "c1e0ec971e0bb449dbbc73af2912ba0186cef1fccffc22791fbfea61ebf7d369"
+    },
+    {
+      "bytes": 399,
+      "path": "run_v0_6D1_R3_7C_checks.ps1",
+      "sha256": "6fdc5896e2868e75846882c4cd0aa063b07ad9f823f9c4651762b6be818aeb0d"
+    },
+    {
+      "bytes": 3964,
+      "path": "README.md",
+      "sha256": "947221fabdcd0a70d3f22faa79d4b4b614c697ea7c8f6c4b5347d7497ee4eda9"
+    },
+    {
+      "bytes": 4128,
+      "path": "outputs/v0_6D1_R3_7C/FORMAL_AUDIT_v0_6D1_R3_7C.json",
+      "sha256": "45a924ef79fc8b3de9d7471fc5f76fdbc40445ea22cbea2c90779fb9a6a09262"
+    },
+    {
+      "bytes": 2306,
+      "path": "outputs/v0_6D1_R3_7C/FORMAL_AUDIT_STDOUT_v0_6D1_R3_7C.txt",
+      "sha256": "7770e343bb25c983e8a5347c45ba37c4de30d2fbe0890df4536576d798aa10fc"
+    },
+    {
+      "bytes": 812,
+      "path": "outputs/v0_6D1_R3_7C/R3_7C_PROTOCOL_SUMMARY.json",
+      "sha256": "30858a6f1058b1244ec6bda8c52d5ecc375ca29cd4b59952a0e7888390de8283"
+    }
+  ],
+  "stage": "v0.6D1-R3.7C"
+}

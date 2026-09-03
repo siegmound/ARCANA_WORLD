@@ -1,0 +1,176 @@
+{
+  "stage": "v0.6D1-R3.7H",
+  "parent_stage": "v0.6D1-R3.7G",
+  "authority_note": "R3.7H is a closed-loop production-binding candidate. It feeds segregation-aware within-VA back into unchanged trait selection and replaces only whole-trait coalescence VA pooling. Full 210->150 three-branch validation remains required before production promotion.",
+  "parent_package_manifest": {
+    "path": "PACKAGE_MANIFEST_v0_6D1_R3_7G.json",
+    "sha256": "6cc952b2745c685f81f4acb6759e3e90128b92759889dde3e6dafd93d074f209",
+    "file_count": 3370
+  },
+  "r37g_full_local_evidence": {
+    "path": "references/v0_6D1_R3_7G/v0_6D1_R3_7G_FULL_LOCAL_RESULTS.zip",
+    "sha256": "e2622c32aab63d632aa0179ab853012385fc588f2b5121da9e51320bd2fd4fbc",
+    "status": "PASS_210_TO_150_SHADOW_VALIDATION"
+  },
+  "closed_loop_branches": {
+    "K_LOW": {
+      "K_eff": 37.614,
+      "role": "UNCERTAINTY_SENTINEL"
+    },
+    "K_CENTER": {
+      "K_eff": 38.47,
+      "role": "NOMINAL_CANDIDATE_BRANCH_NOT_PHYSICAL_CONSTANT"
+    },
+    "K_HIGH": {
+      "K_eff": 41.002,
+      "role": "UNCERTAINTY_SENTINEL"
+    }
+  },
+  "smoke_evidence": {
+    "three_branch_210_to_209": "PASS",
+    "center_lifecycle_210_to_205": "PASS_WITH_FISSION_AND_COALESCENCE"
+  },
+  "governance": {
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "full_three_branch_external_validation_required": true
+  },
+  "new_r3_7H_sources_and_evidence": [
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r37h_closed_loop_binding.py",
+      "bytes": 25395,
+      "sha256": "e3ef481213c93b74c895a5b6887aac1a80799747cbe525cc32270f56a10e7beb"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_7H_closed_loop_validation.py",
+      "bytes": 5178,
+      "sha256": "b14960e023d191b7b449cdadebbb4f9249d26961f62a9a02405608dc4be141fb"
+    },
+    {
+      "path": "scripts/formal_audit_v0_6D1_R3_7H.py",
+      "bytes": 6111,
+      "sha256": "478d2034b4d88fe308f63b4324a4249450af32a06756f7aa319dc97faf83b0d1"
+    },
+    {
+      "path": "tests/test_r37h_closed_loop_binding.py",
+      "bytes": 2806,
+      "sha256": "8203b7b816f50d13d530753fe037fcc9194b2ca9369d1b7cc60b7e92f435a25a"
+    },
+    {
+      "path": "configs/world1_closed_loop_binding_validation_v0_6D1_R3_7H.json",
+      "bytes": 630,
+      "sha256": "76a4c8665aa42f6cc6674092cb2af558cb4716bb11335ac62a3b03d4f4b8e87e"
+    },
+    {
+      "path": "CLOSED_LOOP_SEGREGATION_AWARE_RUNTIME_BINDING_CONTRACT_v0_6D1_R3_7H.md",
+      "bytes": 4030,
+      "sha256": "753bc2ade58d6f2de08f11f80ed337fb74f864cc8bc315fcd9c96871086aecc9"
+    },
+    {
+      "path": "R3_7G_FULL_LOCAL_EVIDENCE_AUDIT.md",
+      "bytes": 776,
+      "sha256": "9a183eec9ada4a0e444bc5a514e3d851962d5000b564fbc775081c9fce4d9049"
+    },
+    {
+      "path": "R3_7H_DIAGNOSTIC_SMOKE_AUDIT.md",
+      "bytes": 638,
+      "sha256": "fe02bb9b6a57864d4cc45c2599c02fed7b188fa55a1985e787abdf5574c5892e"
+    },
+    {
+      "path": "README_R3_7H.md",
+      "bytes": 491,
+      "sha256": "41564feb50840de3cc611553dbc5f44afdbf888e9763e97eac0e9c8ca6a6d76e"
+    },
+    {
+      "path": "V0_6D1_R3_7H_STATUS.md",
+      "bytes": 369,
+      "sha256": "cb7aecc866486d752a6d50b10e70ad2163966e74bf172cc94e70163d4ce676ac"
+    },
+    {
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7H.md",
+      "bytes": 572,
+      "sha256": "af683957d28daf67e93157131e0bf13f583dfd78d39d3a681b984208fc7fa3e9"
+    },
+    {
+      "path": "run_v0_6D1_R3_7H_closed_loop_validation.ps1",
+      "bytes": 1107,
+      "sha256": "ba6d11b9f4e32a2ecb5fc023aeeca38aaf17ceaa02e239aa6839aaafc295535b"
+    },
+    {
+      "path": "run_v0_6D1_R3_7H_smoke.ps1",
+      "bytes": 145,
+      "sha256": "a8526c0320c46945434b2a26c0fb3a2bdc629483f1e91028997f835513fc4d97"
+    },
+    {
+      "path": "run_v0_6D1_R3_7H_checks.ps1",
+      "bytes": 299,
+      "sha256": "8c1d92c7023bc1082e8dee7893b555771753ce26d76af2898eb21d98811a52fe"
+    },
+    {
+      "path": "references/v0_6D1_R3_7G/v0_6D1_R3_7G_FULL_LOCAL_RESULTS.zip",
+      "bytes": 354013,
+      "sha256": "e2622c32aab63d632aa0179ab853012385fc588f2b5121da9e51320bd2fd4fbc"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/R3_7G_FULL_LOCAL_EVIDENCE_AUDIT.json",
+      "bytes": 2111,
+      "sha256": "025eb4619848916b17736ba5981f90b78c6479ef461baaf43f1d4f956bcf98cb"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/R3_7H_DIAGNOSTIC_SMOKE_AUDIT.json",
+      "bytes": 1216,
+      "sha256": "3643702f30be7a7b0a86dc85f8a61c42f1dd372a92b3530ef8ee77ca748e8097"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/FORMAL_AUDIT_v0_6D1_R3_7H.json",
+      "bytes": 5782,
+      "sha256": "a2149a574f278a3f53460fdc96496876cc5725a6359ca8773713cf9ca6fc4802"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/SCIENTIFIC_ENGINE_REGRESSION_v0_6D1_R3_7H.json",
+      "bytes": 255,
+      "sha256": "9cc485b49423acd0d67ff153a05ef33c05f16fd0a90a674da081add288fabd64"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/UNIT_TESTS_v0_6D1_R3_7H.json",
+      "bytes": 91,
+      "sha256": "de65f0b913ef02b2adf81dda05ae54b49aa6620aedcdb99aa625896f4547d6b2"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/UNIT_TESTS_STDOUT_v0_6D1_R3_7H.txt",
+      "bytes": 98,
+      "sha256": "7675afcbf0656da4d29291a330ffc7200eb716c466b0dd4338f6eecaa12bf6a4"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/smoke/210_to_209p0Ma_R3_7H_K_CENTER.json",
+      "bytes": 57720,
+      "sha256": "4fe5875ce1dafcea09a502dc05790fbfbc03696e4df9975cddc970c4b4b36e53"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/smoke_all/210_to_209p0Ma_R3_7H_K_LOW.json",
+      "bytes": 57694,
+      "sha256": "00d0d0e6c9aab63bf59f89c153e7fd568d8627b142eff99a60d23884346e784f"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/smoke_all/210_to_209p0Ma_R3_7H_K_CENTER.json",
+      "bytes": 57719,
+      "sha256": "44a42f8df7d67499eb75a2e858eb054fe97224844d3846d00202fb925a5696c5"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/smoke_all/210_to_209p0Ma_R3_7H_K_HIGH.json",
+      "bytes": 57714,
+      "sha256": "fdfbdbe5d781361338f2d73210b7679290cebc25873dbac8aaf642b169c92d90"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/smoke_all/210_to_209p0Ma_R3_7H_summary.json",
+      "bytes": 1550,
+      "sha256": "98136a006ba098a055d0b00cc6d56fde3e4330201d746b234b2a43ebe18bbec9"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7H/lifecycle_smoke/210_to_205p0Ma_R3_7H_K_CENTER.json",
+      "bytes": 162362,
+      "sha256": "d8f21e9eb42086f948a325a39e59d295c8e5b80ed7716d279a3e82e641e07b6e"
+    }
+  ]
+}

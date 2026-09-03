@@ -1,0 +1,121 @@
+{
+  "authority_note": "R3.7D closes repaired directional-selection evidence, corrects K_eff inference to matched geometric adaptive displacement, and authorizes only a high-N shadow sensitivity envelope. No production scalar K_eff, WorldSim-N mapping, canonical write, or R3.5 replacement is authorized.",
+  "evidence_findings": {
+    "aggregate_parent_K_diagnostic_range": [
+      35.873033959040235,
+      69.87544384867256
+    ],
+    "full_chain_count": 16,
+    "geometric_K_N2000_cv": 0.028530090820744,
+    "geometric_K_N2000_median": 38.470021611528075,
+    "geometric_K_N2000_range": [
+      37.61400288738333,
+      41.002073225051234
+    ],
+    "geometric_K_all_range": [
+      11.921770124364317,
+      41.002073225051234
+    ],
+    "reconnection_geometric_S_retention_median": 0.04185529553836531,
+    "selection_efficacy_pass_count": 16
+  },
+  "governance": {
+    "canonical_write_allowed": false,
+    "direct_worldsim_N_to_nemo_N_mapping_authorized": false,
+    "high_N_shadow_envelope_authorized": true,
+    "mu_b_ceiling_change_authorized": false,
+    "production_runtime_binding_allowed": false,
+    "scalar_K_eff_production_authorized": false
+  },
+  "new_r3_7D_sources": [
+    {
+      "bytes": 14476,
+      "path": "src/arcana_worldsim/scientific_engines/r37d_selection_closure.py",
+      "sha256": "496fe009ed2a38af6c4eeb8691478900560ae9eb0c36ec61cae7a5e032677331"
+    },
+    {
+      "bytes": 684,
+      "path": "scripts/analyze_r37c_r1_selection_v0_6D1_R3_7D.py",
+      "sha256": "e64d3f22083f23e19f181551b58d3e6db1b4798ace469fa336a940408ff4929c"
+    },
+    {
+      "bytes": 5223,
+      "path": "scripts/formal_audit_v0_6D1_R3_7D.py",
+      "sha256": "0d8829a845e58b8616e8079f80e0cf2ed7e23f8495faf031d540073f2d8e6d08"
+    },
+    {
+      "bytes": 3713,
+      "path": "tests/test_r37d_directional_selection_closure.py",
+      "sha256": "01bd65c0e9201346dc0fde6fccdc624bf30b71acd624d25ce618dce096188132"
+    },
+    {
+      "bytes": 1041,
+      "path": "configs/world1_adaptive_selection_shadow_envelope_v0_6D1_R3_7D.json",
+      "sha256": "98febfdfdfaf8c3513c8ca8539149f865f6ee7e1a5eb609c6fb3f5a2217284c1"
+    },
+    {
+      "bytes": 2441,
+      "path": "DIRECTIONAL_SELECTION_EVIDENCE_CLOSURE_CONTRACT_v0_6D1_R3_7D.md",
+      "sha256": "f31c8cd156c701f7b7ba894c1dce6b32315734e47bb721603b7a2efdebef4cb9"
+    },
+    {
+      "bytes": 1142,
+      "path": "R3_7D_NEMO_DIRECTIONAL_SELECTION_EVIDENCE_AUDIT.md",
+      "sha256": "e24e8b95434c72e6256cb4a3f617d2fbdbb893af48cebf0d3d3df196505d2f38"
+    },
+    {
+      "bytes": 604,
+      "path": "README_R3_7D.md",
+      "sha256": "7f19a001a46ac479da46f22b9b4fdc0f4d388ef2851a7fdbfd99b74e3e349e59"
+    },
+    {
+      "bytes": 637,
+      "path": "V0_6D1_R3_7D_STATUS.md",
+      "sha256": "180038984e718c122f4453ddc72da89f2c6198e52cf38d5e46840a407b977043"
+    },
+    {
+      "bytes": 639,
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7D.md",
+      "sha256": "615031aeb942cd5895fd9d6805b35285330c058fc400571d73d8196ed8ad60e8"
+    },
+    {
+      "bytes": 400,
+      "path": "run_v0_6D1_R3_7D_checks.ps1",
+      "sha256": "3810a992ccba9570a742eedc26ff9b0f09df9574d68ff6651ce0b09ae180d95d"
+    },
+    {
+      "bytes": 3429671,
+      "path": "evidence/v0_6D1_R3_7C_R1_SELECTION_RESULTS.zip",
+      "sha256": "63ee9065a0438b5e642407425a58058fc589af7b126a2a555b9538e4eb0db618"
+    },
+    {
+      "bytes": 16371,
+      "path": "outputs/v0_6D1_R3_7D/R3_7D_DIRECTIONAL_SELECTION_EVIDENCE_CLOSURE.json",
+      "sha256": "301356bf817f2ad6e0c2200432473700b536b34ede5a1897a69ab4ab611739a5"
+    },
+    {
+      "bytes": 3634,
+      "path": "outputs/v0_6D1_R3_7D/FORMAL_AUDIT_v0_6D1_R3_7D.json",
+      "sha256": "6576d8fc7e12ea4516a874c504767c9faaa81101f0e417fa5dc446d80283fef5"
+    },
+    {
+      "bytes": 174,
+      "path": "outputs/v0_6D1_R3_7D/SCIENTIFIC_ENGINE_REGRESSION_v0_6D1_R3_7D.json",
+      "sha256": "a098ce119dc4582d89592d6e2bef894056cc0f0755336d284e9406460e83ed74"
+    }
+  ],
+  "parent_manifests": [
+    {
+      "bytes": 795802,
+      "path": "PACKAGE_MANIFEST_v0_6D1_R3_7C_R1.json",
+      "sha256": "e71562ded0232f821365b4e22898a7d0af989ce315c8fb023fe2a3ec70d1be5d"
+    },
+    {
+      "bytes": 5391,
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_7C_R1.json",
+      "sha256": "5aa0a9d17a4475d52d5a53edc56f6379b0569954f0c664db62ac1ef38d03f1bc"
+    }
+  ],
+  "parent_stage": "v0.6D1-R3.7C-R1",
+  "stage": "v0.6D1-R3.7D"
+}

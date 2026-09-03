@@ -1,0 +1,23 @@
+{
+  "stage": "v0.6D1-R5.4-R1",
+  "status": "R54_R1_NUMERICAL_BUILDER_REPAIR",
+  "cause": "alternating row/column Sinkhorn normalization followed by symmetrization could leave row sums outside strict stochastic tolerance on heterogeneous ARCANA family geometries",
+  "repair": "symmetry-preserving log-domain DWD balancing with damped fixed-point preconditioning, Newton refinement, and fixed predeclared relative log-affinity regularization of -60",
+  "scientific_changes": {
+    "arcana_network_cells_changed": false,
+    "stress_profiles_changed": false,
+    "seeds_changed": false,
+    "flow_mass_changed": false,
+    "distance_scale_changed": false,
+    "nemo_version_changed": false,
+    "r53_numeric_values_used_for_fitting": false,
+    "result_selected_tuning": false,
+    "canonical_state_changed": false
+  },
+  "validation": {
+    "source_manifest": "22/22 PASS",
+    "regression": "16/16 PASS",
+    "adversarial_synthetic_networks": 700,
+    "adversarial_failure_count": 0
+  }
+}

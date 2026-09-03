@@ -1,0 +1,33 @@
+{
+  "selection_gradient_per_generation": 0.0015,
+  "genetic_covariance_offdiag": 0.12,
+  "initial_va_floor": 0.035,
+  "initial_va_span": 0.055,
+  "va_ceiling": 0.14,
+  "environmental_variance_base": 0.14,
+  "mutation_replenishment_per_generation": 0.00001,
+  "selection_va_depletion_scale": 0.35,
+  "wild_gene_flow_selection_damping": 0.65,
+  "wild_reversion_rate_per_kyr": 0.018,
+  "wild_va_replenishment_per_kyr": 0.035,
+  "coevolution_feedback_rate_per_kyr": 0.20,
+  "coevolution_feedback_strength": 0.90,
+  "dependency_feedback_strength": 0.45,
+  "max_mean_shift_per_step": 0.04,
+  "generation_interval_years": {
+    "annual_seed_grass": 1.0,
+    "annual_seed_forb_pulse": 1.1,
+    "perennial_seed_grass": 3.5,
+    "geophyte_storage_root": 2.5,
+    "fruiting_woody": 8.0,
+    "wetland_aquatic_starch": 2.0
+  },
+  "governance": {
+    "inherit_r334_domestication_thresholds_exactly": true,
+    "no_named_earth_crop_analogues": true,
+    "no_lineage_specific_rescaling": true,
+    "sensitivity_is_selection_gate": false,
+    "unique_human_identity_materialized": false,
+    "deep_biological_coupling": false
+  }
+}

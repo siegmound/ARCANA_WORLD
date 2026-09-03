@@ -1,0 +1,67 @@
+{
+  "stage": "v0.6D1-R4.9",
+  "title": "Additional Matched-Control Replicate Expansion & Causal Direction Resolution",
+  "parent_stage": "v0.6D1-R4.8",
+  "required_parent_status": "PASS_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS_AND_MATCHED_CONTROL_SEALED",
+  "required_parent_diagnosis_class": "MATCHED_CONTROL_EFFECT_UNCERTAIN",
+  "required_parent_next_action": "EXECUTE_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "policy_freeze": {
+    "status": "FROZEN_BEFORE_R49_ADDITIONAL_MATCHED_CONTROL_EXECUTION",
+    "result_selected": false,
+    "reason": "R4.8 produced an uncertainty-limited paired causal diagnosis from four frozen pairs. R4.9 performs one fixed, pre-result replicate expansion and reuses the already frozen R4.4 neutral band and R4.8 q10-q90 robustness rule."
+  },
+  "authorized_case": {
+    "window_id": "H0_POST_CHA1_RECOVERY",
+    "domain": "population_persistence",
+    "engine": "CDMetaPOP",
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "earliest_boundary": "R3.11_POST_CHA1"
+  },
+  "replicate_expansion": {
+    "parent_pair_count": 4,
+    "additional_pair_count": 16,
+    "final_pair_count": 20,
+    "rerun_parent_pairs": false,
+    "same_dynamic_adapter_semantics_as_r47": true,
+    "same_neutral_adapter_semantics_as_r48": true,
+    "same_dynamic_end_support_ratio_as_r47": true,
+    "neutral_end_support_ratio": 1.0,
+    "comparison_target_injection_forbidden": true,
+    "additional_replicates": [
+      {"replicate_index": 4, "seed": 1166989281},
+      {"replicate_index": 5, "seed": 1246776956},
+      {"replicate_index": 6, "seed": 1210625923},
+      {"replicate_index": 7, "seed": 71721983},
+      {"replicate_index": 8, "seed": 1366173606},
+      {"replicate_index": 9, "seed": 139248058},
+      {"replicate_index": 10, "seed": 2116392631},
+      {"replicate_index": 11, "seed": 432203749},
+      {"replicate_index": 12, "seed": 2092099438},
+      {"replicate_index": 13, "seed": 1925168285},
+      {"replicate_index": 14, "seed": 462210758},
+      {"replicate_index": 15, "seed": 1783600812},
+      {"replicate_index": 16, "seed": 1678546588},
+      {"replicate_index": 17, "seed": 164105413},
+      {"replicate_index": 18, "seed": 279459156},
+      {"replicate_index": 19, "seed": 843742872}
+    ]
+  },
+  "diagnosis_policy": {
+    "reuse_r44_ratio_neutral_factor": true,
+    "reuse_r48_q10_q90_robustness_rule": true,
+    "robust_direction_requires_q10_q90_outside_neutral_band": true,
+    "classes": [
+      "EXPANDED_MATCHED_CONTROL_SAME_DIRECTION_ROBUST",
+      "EXPANDED_MATCHED_CONTROL_OPPOSITE_DIRECTION_ROBUST",
+      "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN"
+    ],
+    "no_adaptive_stopping": true,
+    "no_automatic_further_replicate_escalation_if_uncertain": true
+  }
+}

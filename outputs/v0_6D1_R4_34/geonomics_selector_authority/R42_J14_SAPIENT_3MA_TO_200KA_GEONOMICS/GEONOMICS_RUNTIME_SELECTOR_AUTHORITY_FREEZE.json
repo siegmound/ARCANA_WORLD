@@ -1,0 +1,51 @@
+{
+  "comparison_result_used": false,
+  "default_selector_values_used": false,
+  "engine": "Geonomics",
+  "exhaustive_enumeration_only": true,
+  "geonomics_execution_authorized_in_r434": false,
+  "job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+  "majority_vote_forbidden": true,
+  "parent_runtime_binding_package_file": "outputs/v0_6D1_R4_33/geonomics_runtime/R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS/GEONOMICS_RUNTIME_PARAMETER_BINDING_PACKAGE.json",
+  "parent_runtime_binding_package_hash_match": true,
+  "parent_runtime_binding_package_sha256": "d3ce50b857ced90b67744b2e3ead9f97f08f7d6291de86f744f37b56ab386cff",
+  "selector_authorities": [
+    {
+      "authority_status": "FROZEN_PRE_RESULT",
+      "averaging_performed": false,
+      "cardinality_if_known": 141,
+      "comparison_result_used": false,
+      "enumeration_order": "CANONICAL_STORAGE_ORDER",
+      "ranking_performed": false,
+      "rule": "FULL_ORDERED_CANONICAL_AXIS_PRESERVATION",
+      "selection_mode": "NO_SINGLE_VALUE_SELECTION",
+      "selector_dimension": "age_ma",
+      "values_if_small_and_already_frozen": null
+    },
+    {
+      "authority_status": "FROZEN_PRE_RESULT",
+      "averaging_performed": false,
+      "cardinality_if_known": 2,
+      "comparison_result_used": false,
+      "enumeration_order": "CANONICAL_STORAGE_ORDER",
+      "majority_vote_performed": false,
+      "ranking_performed": false,
+      "rule": "EXHAUSTIVE_ENUMERATION_ALL_HASH_BOUND_MEMBERS",
+      "selection_mode": "ALL_MEMBERS_INDEPENDENT_NONADJUDICATIVE_BUNDLES",
+      "selector_dimension": "candidate_ids",
+      "values_if_small_and_already_frozen": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ]
+    }
+  ],
+  "selector_requirements": [
+    "age_ma",
+    "candidate_ids"
+  ],
+  "single_best_member_selection_forbidden": true,
+  "stage": "v0.6D1-R4.34",
+  "status": "R434_RUNTIME_SELECTOR_AUTHORITY_FROZEN_PRE_RESULT",
+  "target_fit_ranking_forbidden": true,
+  "window_id": "SAPIENT_3MA_TO_200KA"
+}

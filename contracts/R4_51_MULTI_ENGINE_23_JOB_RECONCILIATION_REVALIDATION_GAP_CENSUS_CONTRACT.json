@@ -1,0 +1,32 @@
+{
+  "stage": "v0.6D1-R4.51",
+  "title": "Multi-Engine 23-Job Reconciliation & Revalidation Gap Census",
+  "purpose": "derive an exact, conservative job-by-job revalidation status from the immutable R4.2 registry and all locally preserved R4 evidence",
+  "frozen_registry": {
+    "job_count": 23,
+    "engines": {
+      "Madingley": 4,
+      "RangeShifter": 5,
+      "CDMetaPOP": 5,
+      "NEMO": 3,
+      "Geonomics": 3,
+      "SLiM": 3
+    }
+  },
+  "closure_rule": "only explicit R4.50 Geonomics full-job closure is promoted automatically in R4.51",
+  "prior_evidence_rule": "prior non-Geonomics scientific-looking evidence may become an R4.52 promotion candidate but cannot close a job in R4.51",
+  "important_distinctions": [
+    "process returncode zero is not scientific revalidation",
+    "runtime READY is not scientific revalidation",
+    "preflight or mapping authority is not scientific revalidation",
+    "failed evidence remains preserved and visible",
+    "valid scientific evidence candidates are adjudicated before deciding to rerun"
+  ],
+  "expected_current_closure": {
+    "closed": 3,
+    "closure_gaps": 20,
+    "multi_engine_full_revalidation_closed": false
+  },
+  "nonclaim": "R4.51 performs a census only; it neither promotes historical non-Geonomics evidence nor executes an engine",
+  "next_action": "BUILD_R452_NON_GEONOMICS_JOB_SPECIFIC_EVIDENCE_ADJUDICATION_AND_EXECUTION_PLAN"
+}

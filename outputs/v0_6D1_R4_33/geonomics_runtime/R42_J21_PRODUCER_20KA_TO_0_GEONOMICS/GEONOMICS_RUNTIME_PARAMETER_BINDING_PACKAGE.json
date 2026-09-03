@@ -1,0 +1,205 @@
+{
+  "canonical_source_inventories": [
+    {
+      "array_count": 3,
+      "arrays": [
+        {
+          "axis_values_if_small": [
+            20.0,
+            15.0,
+            14.0,
+            13.0,
+            12.0,
+            11.0,
+            10.0,
+            5.0,
+            0.0
+          ],
+          "dtype": "float64",
+          "key": "anchor_age_ka",
+          "shape": [
+            9
+          ]
+        },
+        {
+          "dtype": "float64",
+          "key": "environment_fields",
+          "shape": [
+            9,
+            90,
+            180,
+            7
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "temperature_anomaly_c",
+            "precipitation_factor",
+            "npp_factor",
+            "land_fraction",
+            "hydroclimate_resource_index",
+            "coastal_edge_index",
+            "sea_level_anomaly_m"
+          ],
+          "dtype": "<U27",
+          "key": "environment_variable_names",
+          "shape": [
+            7
+          ]
+        }
+      ],
+      "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+    },
+    {
+      "array_count": 4,
+      "arrays": [
+        {
+          "axis_values_if_small": [
+            20.0,
+            15.0,
+            14.0,
+            13.0,
+            12.0,
+            11.0,
+            10.0,
+            5.0,
+            0.0
+          ],
+          "dtype": "float64",
+          "key": "anchor_age_ka",
+          "shape": [
+            9
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "suitability",
+            "resource_abundance",
+            "harvest_return",
+            "propagation_opportunity"
+          ],
+          "dtype": "<U23",
+          "key": "landscape_variable_names",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "dtype": "float32",
+          "key": "producer_landscape",
+          "shape": [
+            36,
+            9,
+            90,
+            180,
+            4
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "PRD_01_01",
+            "PRD_01_02",
+            "PRD_01_03",
+            "PRD_01_04",
+            "PRD_01_05",
+            "PRD_01_06",
+            "PRD_02_01",
+            "PRD_02_02",
+            "PRD_02_03",
+            "PRD_02_04",
+            "PRD_02_05",
+            "PRD_02_06",
+            "PRD_03_01",
+            "PRD_03_02",
+            "PRD_03_03",
+            "PRD_03_04",
+            "PRD_03_05",
+            "PRD_03_06",
+            "PRD_04_01",
+            "PRD_04_02",
+            "PRD_04_03",
+            "PRD_04_04",
+            "PRD_04_05",
+            "PRD_04_06",
+            "PRD_05_01",
+            "PRD_05_02",
+            "PRD_05_03",
+            "PRD_05_04",
+            "PRD_05_05",
+            "PRD_05_06",
+            "PRD_06_01",
+            "PRD_06_02",
+            "PRD_06_03",
+            "PRD_06_04",
+            "PRD_06_05",
+            "PRD_06_06"
+          ],
+          "dtype": "<U9",
+          "key": "producer_taxon_ids",
+          "shape": [
+            36
+          ]
+        }
+      ],
+      "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+    }
+  ],
+  "canonical_sources": [
+    {
+      "current_sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+      "expected_sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+      "hash_match": true,
+      "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "role": "HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE"
+    },
+    {
+      "current_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+      "expected_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+      "hash_match": true,
+      "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "role": "PRODUCER_RESOURCE_LANDSCAPE"
+    }
+  ],
+  "canonical_write": false,
+  "comparison_target_used": false,
+  "cross_layer_numeric_mixing_performed": false,
+  "default_model_used": false,
+  "engine": "Geonomics",
+  "engine_version_required": "1.4.9",
+  "geonomics_scientific_execution_authorized_in_r433": false,
+  "geonomics_scientific_execution_performed": false,
+  "job_id": "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS",
+  "mapping_fields": {
+    "domain_mapping": "producer resource landscape",
+    "population_mapping": "producer_landscape resource_abundance/suitability as producer support only, not agent count synthesis",
+    "space_mapping": "shared raster grid index; no cross-layer interpolation",
+    "time_mapping": "anchor_age_ka exact shared anchors",
+    "uncertainty_mapping": "environment and producer layers remain provenance-separate; cross-layer numeric mixing forbidden without later explicit authority"
+  },
+  "native_geonomics_params_file": null,
+  "native_geonomics_params_materialized_in_r433": false,
+  "package_status": "RUNTIME_PARAMETER_BINDING_PACKAGE_COMPILED_SELECTOR_AUTHORITY_REQUIRED_BEFORE_NATIVE_PARAMS",
+  "parent_static_parameter_manifest_file": "outputs/v0_6D1_R4_32/geonomics_profiles/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/GEONOMICS_CANONICAL_PARAMETER_MANIFEST.json",
+  "parent_static_parameter_manifest_hash_match": true,
+  "parent_static_parameter_manifest_sha256": "29853041273e9575fbf1d04e46f451bee9d930a06ed6512282b434ef7278db29",
+  "runtime_make_model_authorized_in_r433": false,
+  "runtime_make_model_validation_performed": false,
+  "selector_authority": {
+    "comparison_target_selected_selector_forbidden": true,
+    "default_selector_values": null,
+    "explicit_frozen_selector_bundle_required_before_native_params": true,
+    "result_selected_selector_forbidden": true,
+    "selector_requirements": [
+      "anchor_age_ka",
+      "producer_taxon_ids",
+      "environment_layer_set",
+      "producer_layer_set",
+      "cross_layer_combination_policy"
+    ]
+  },
+  "source_authority_kind": "R3_33_R3_34_CANONICAL_HOLOCENE_RESOURCE_LANDSCAPE_BINDING",
+  "stage": "v0.6D1-R4.33",
+  "window_id": "PRODUCER_20KA_TO_0"
+}

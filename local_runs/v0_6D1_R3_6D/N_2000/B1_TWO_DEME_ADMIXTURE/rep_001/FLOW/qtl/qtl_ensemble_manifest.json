@@ -1,0 +1,27 @@
+{
+  "authority": {
+    "calibration_status": "REFERENCE_EVIDENCE_ONLY",
+    "canonical_write_allowed": false,
+    "species_identity_authority": false
+  },
+  "model": {
+    "expected_additive_variance": "sum_l 2*a_l^2*p_l*(1-p_l)",
+    "expected_mean": "sum_l a_l*(2*p_l-1)",
+    "genotype_count": "g_in_{0,1,2}",
+    "locus_contribution": "a*(g-1)",
+    "locus_model": "DIALLELIC_ADDITIVE_REFERENCE",
+    "nemo_import_semantics": "REQUIRES_VERSION_VALIDATED_NEMO_2_4_2_TEMPLATE_OR_SOURCE_BINDING",
+    "ploidy": 2
+  },
+  "patch_ids": [
+    "P000",
+    "P001"
+  ],
+  "schema": "ARCANA_NEMO_QTL_ENSEMBLE_REALIZATION_V1",
+  "seed": 38242277,
+  "semantic_sha256": "1b6c2048c7780037299f9c504c01e93c20b0dd620475a0d554482454f05ef8de",
+  "trait_axes": [
+    0,
+    1
+  ]
+}

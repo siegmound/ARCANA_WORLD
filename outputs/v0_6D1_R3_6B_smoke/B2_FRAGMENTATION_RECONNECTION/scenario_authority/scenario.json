@@ -1,0 +1,76 @@
+{
+  "authority": {
+    "canonical_write_allowed": false,
+    "speciation_authority": false
+  },
+  "generation_time_years": 5.0,
+  "generations": 1200,
+  "name": "B2_FRAGMENTATION_RECONNECTION",
+  "normalized_additive_variance": [
+    [
+      0.045,
+      0.045
+    ],
+    [
+      0.045,
+      0.045
+    ],
+    [
+      0.045,
+      0.045
+    ],
+    [
+      0.045,
+      0.045
+    ]
+  ],
+  "normalized_trait_means": [
+    [
+      -0.6,
+      -0.2
+    ],
+    [
+      -0.2,
+      0.2
+    ],
+    [
+      0.2,
+      -0.2
+    ],
+    [
+      0.6,
+      0.2
+    ]
+  ],
+  "notes": [
+    "Controlled connected-fragmented-reconnected metapopulation",
+    "No ARCANA speciation authority is delegated"
+  ],
+  "phases": [
+    {
+      "end_generation": 250,
+      "exchange_file": "exchange_phase_00_CONNECTED_BURNIN.tsv",
+      "name": "CONNECTED_BURNIN",
+      "start_generation": 0
+    },
+    {
+      "end_generation": 650,
+      "exchange_file": "exchange_phase_01_FRAGMENTED.tsv",
+      "name": "FRAGMENTED",
+      "start_generation": 250
+    },
+    {
+      "end_generation": 1200,
+      "exchange_file": "exchange_phase_02_RECONNECTED.tsv",
+      "name": "RECONNECTED",
+      "start_generation": 650
+    }
+  ],
+  "population_individuals": [
+    200,
+    200,
+    200,
+    200
+  ],
+  "schema": "ARCANA_NEMO_R36B_BENCHMARK_SCENARIO_V1"
+}

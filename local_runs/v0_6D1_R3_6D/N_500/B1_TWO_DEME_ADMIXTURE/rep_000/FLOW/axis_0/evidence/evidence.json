@@ -1,0 +1,36 @@
+{
+  "arrays_file": "evidence_arrays.npz",
+  "arrays_file_sha256": "b109b9e0f76a7f1298f5083cdef301bfd80841003c6c200897ff3b989cc5f253",
+  "assumptions": [
+    "Primary R3.6D NEMO reference isolates admixture/recombination/drift with mutation=0 and no selection.",
+    "Cross-engine inference uses matched no-flow controls and population-size sensitivity."
+  ],
+  "canonical_write_allowed": false,
+  "engine": {
+    "name": "NEMO",
+    "role": "REFERENCE_ORACLE",
+    "version": "2.4.2"
+  },
+  "engine_run_id": "0d234abb3ff8c5dbcd65556276709270120cab756934c5534cdf9c4860b07596",
+  "experiment_sha256": "06752f99a0cd3928f7b9a321cbce471fde9731d702b0c9e1dd67643d05490fe7",
+  "metrics": {
+    "execution_attempted": true,
+    "final_max_va": 0.001127896340515137,
+    "final_mean_va": 0.0005639481702575684,
+    "final_trait_spread": 0.5239111423060654,
+    "qfreq_file_count": 1,
+    "qfreq_sha256": "5f26658d976d29e5bd1af4a27d012da7436cd064c382ef7705bf2f9164324f53",
+    "returncode": 0
+  },
+  "promotion_status": "REVIEW_REQUIRED",
+  "schema": "ARCANA_SCIENTIFIC_EVIDENCE_V1",
+  "semantic_sha256": "1bbe74021cd1f9cff05dda5e9d0719c42bd83e3bdd8bf2c4382278d0df3a9c41",
+  "status": "ENGINE_COMPLETED_QFREQ_PARSED",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "0a70b46a0a72985c8909bbbdc4ef7c9441b01b49d5eae8da23a64367c9d92003",
+  "unsupported_mappings": [
+    "R3.6D does not map ARCANA mu/b Riccati homeostasis to NEMO mutation-selection parameters.",
+    "NEMO breed_disperse is a backward/gametic migration reference; it is not asserted to be ontologically identical to ARCANA deme exchange.",
+    "NEMO evidence cannot define ARCANA species identity/speciation or write canonical state."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "cell_count": 4,
+  "context_only_or_no_metric_count": 4,
+  "readjudication_authorized_in_r423": false,
+  "records": [
+    {
+      "adjudicative_in_r423": false,
+      "canonical_change_authorized": false,
+      "disposition": "NO_AUTHORIZED_DOMAIN_METRIC_FROM_R422_NORMALIZATION",
+      "domain": "managed_wild_isolation",
+      "engine": "SLiM",
+      "metric_name": null,
+      "normalized_evidence_present": true,
+      "normalized_job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+      "reason": "NO_EXPLICIT_DOMAIN_IDENTITY_TRANSFORM_FROZEN",
+      "source_stage": "R4.15-R1",
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "adjudicative_in_r423": false,
+      "canonical_change_authorized": false,
+      "disposition": "NO_AUTHORIZED_DOMAIN_METRIC_FROM_R422_NORMALIZATION",
+      "domain": "producer_divergence",
+      "engine": "SLiM",
+      "metric_name": null,
+      "normalized_evidence_present": true,
+      "normalized_job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+      "reason": "NO_EXPLICIT_DOMAIN_IDENTITY_TRANSFORM_FROZEN",
+      "source_stage": "R4.15-R1",
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "adjudicative_in_r423": false,
+      "canonical_change_authorized": false,
+      "disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+      "domain": "additive_variance",
+      "engine": "NEMO",
+      "metric_name": "mean_expected_heterozygosity",
+      "normalized_evidence_present": true,
+      "normalized_job_id": "R42_J13_H0_LATE_CENOZOIC_NEMO",
+      "reason": "HETEROZYGOSITY_IS_NOT_ADDITIVE_VARIANCE",
+      "source_stage": "R4.17",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "adjudicative_in_r423": false,
+      "canonical_change_authorized": false,
+      "disposition": "NO_AUTHORIZED_DOMAIN_METRIC_FROM_R422_NORMALIZATION",
+      "domain": "admixture",
+      "engine": "CDMetaPOP",
+      "metric_name": null,
+      "normalized_evidence_present": true,
+      "normalized_job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+      "reason": "NO_EXPLICIT_DOMAIN_IDENTITY_TRANSFORM_FROZEN",
+      "source_stage": "R4.17",
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "semantic_promotion_gate_candidate_count": 0,
+  "stage": "v0.6D1-R4.23",
+  "status": "R423_AUTHORIZED_P2_CELL_NORMALIZED_EVIDENCE_CANDIDATES_FROZEN"
+}

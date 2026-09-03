@@ -1,0 +1,30 @@
+{
+  "stage": "v0.6D1-R4.34",
+  "title": "Geonomics Runtime Selector Authority Freeze & Native Parameter Materialization Preflight",
+  "parent": "v0.6D1-R4.33 SEALED",
+  "selector_authority": {
+    "candidate_member_dimensions": "EXHAUSTIVE_ENUMERATION_ALL_HASH_BOUND_MEMBERS",
+    "time_axes": "FULL_ORDERED_CANONICAL_AXIS_PRESERVATION",
+    "j21_layer_sets": "PRESERVE_ALL_LAYERS_AS_PROVENANCE_SEPARATE_CHANNELS",
+    "j21_cross_layer_policy": "NO_CROSS_LAYER_NUMERIC_COMBINATION",
+    "result_selected_choice": "FORBIDDEN",
+    "majority_vote": "FORBIDDEN"
+  },
+  "native_parameter_preflight": {
+    "materialize_native_params_in_r434": false,
+    "call_read_parameters_file_in_r434": false,
+    "call_make_model_in_r434": false,
+    "execute_geonomics_in_r434": false,
+    "required_authority_closure_next": [
+      "landscape geometry/unit authority",
+      "physical time -> integer timestep mapping",
+      "exact frozen job seed binding",
+      "lossless layer scaling/normalization policy",
+      "J14/J18 population -> literal individual representation",
+      "J14/J18 exact spatial initial-state injection",
+      "J14/J18 K_layer/K_factor semantic role",
+      "J21 producer/environment -> Geonomics layer-role semantics"
+    ]
+  },
+  "next_action": "BUILD_R435_GEONOMICS_NATIVE_SCHEMA_MAPPING_INITIAL_STATE_ADAPTER_AND_SEED_AUTHORITY_CLOSURE"
+}

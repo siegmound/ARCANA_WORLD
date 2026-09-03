@@ -1,0 +1,1182 @@
+{
+  "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+  "adapter_path": "benchmarks/r421/cdmetapop_r421_matched.py",
+  "adapter_sha256": "d26a5b0d0e4198dc93f64f96fbef6d9525e0f41c2fb59992e346159afcf271a8",
+  "canonical_state_changed": false,
+  "engine": "CDMetaPOP",
+  "errors": [],
+  "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+  "metric_record_count": 8,
+  "metric_records": [
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 1869692640,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "PATCH_POPULATION_STATE_ENGINE_NATIVE",
+        "states": [
+          {
+            "patch_vector": [
+              768.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "patch_vector": [
+              1460.0,
+              219.0,
+              240.0,
+              256.0,
+              245.0,
+              248.0,
+              252.0,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "patch_vector": [
+              934.0,
+              161.0,
+              155.0,
+              156.0,
+              159.0,
+              145.0,
+              158.0,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "patch_vector": [
+              1339.0,
+              229.0,
+              230.0,
+              226.0,
+              207.0,
+              226.0,
+              221.0,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "patch_vector": [
+              966.0,
+              161.0,
+              174.0,
+              164.0,
+              160.0,
+              162.0,
+              145.0,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 0,
+      "source_artifacts": [
+        "runtime_work/rep_000/dynamic/example_files/R421_dynamic_18696926401788284254/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 1869692640,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "ALLELES_HE_HO_DESCRIPTIVE_NOT_ADDITIVE_VARIANCE",
+        "states": [
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4990806579589844,
+              0.446746826171875,
+              0.498870849609375,
+              0.49822998046875,
+              0.498626708984375,
+              0.497772216796875,
+              0.4990692138671875,
+              0.0
+            ],
+            "ho": [
+              0.4837239583333333,
+              0.4375,
+              0.53125,
+              0.484375,
+              0.4921875,
+              0.484375,
+              0.47265625,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49941335147307186,
+              0.4864421092137361,
+              0.4975824652777777,
+              0.49847412109375,
+              0.4995835068721366,
+              0.49908542533818934,
+              0.49843710632401106,
+              0.0
+            ],
+            "ho": [
+              0.49383561643835616,
+              0.4269406392694064,
+              0.4979166666666667,
+              0.50390625,
+              0.49387755102040815,
+              0.5463709677419355,
+              0.4861111111111111,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49954118502079414,
+              0.49465684194282633,
+              0.49448491155046825,
+              0.4993733563445102,
+              0.4971421225426209,
+              0.49959571938168845,
+              0.49422167921807403,
+              0.0
+            ],
+            "ho": [
+              0.5112419700214133,
+              0.5341614906832298,
+              0.5161290322580645,
+              0.5096153846153846,
+              0.5062893081761006,
+              0.5310344827586206,
+              0.47151898734177217,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4987947042842379,
+              0.4923676131271333,
+              0.49810491493383746,
+              0.49955947999060235,
+              0.49900814488086065,
+              0.4949095465580703,
+              0.4901210048934297,
+              0.0
+            ],
+            "ho": [
+              0.5018670649738611,
+              0.49563318777292575,
+              0.5195652173913043,
+              0.504424778761062,
+              0.5120772946859904,
+              0.4823008849557522,
+              0.497737556561086,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49787120267136464,
+              0.4847999691369932,
+              0.4969860615669177,
+              0.4980945121951219,
+              0.49169921875,
+              0.4986187319006249,
+              0.4883828775267538,
+              0.0
+            ],
+            "ho": [
+              0.510351966873706,
+              0.5093167701863354,
+              0.46264367816091956,
+              0.5457317073170732,
+              0.5375,
+              0.49074074074074076,
+              0.5206896551724138,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 0,
+      "source_artifacts": [
+        "runtime_work/rep_000/dynamic/example_files/R421_dynamic_18696926401788284254/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 573266817,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "PATCH_POPULATION_STATE_ENGINE_NATIVE",
+        "states": [
+          {
+            "patch_vector": [
+              768.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "patch_vector": [
+              1427.0,
+              239.0,
+              224.0,
+              223.0,
+              249.0,
+              261.0,
+              231.0,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "patch_vector": [
+              935.0,
+              158.0,
+              161.0,
+              158.0,
+              149.0,
+              149.0,
+              160.0,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "patch_vector": [
+              1285.0,
+              206.0,
+              188.0,
+              199.0,
+              248.0,
+              242.0,
+              202.0,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "patch_vector": [
+              1005.0,
+              184.0,
+              189.0,
+              172.0,
+              152.0,
+              148.0,
+              160.0,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 1,
+      "source_artifacts": [
+        "runtime_work/rep_001/dynamic/example_files/R421_dynamic_5732668171788284323/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 573266817,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "ALLELES_HE_HO_DESCRIPTIVE_NOT_ADDITIVE_VARIANCE",
+        "states": [
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4977306789822049,
+              0.404022216796875,
+              0.4990081787109375,
+              0.498504638671875,
+              0.4979248046875,
+              0.4977874755859375,
+              0.4984130859375,
+              0.0
+            ],
+            "ho": [
+              0.48828125,
+              0.375,
+              0.46484375,
+              0.515625,
+              0.546875,
+              0.50390625,
+              0.5234375,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49945293712361805,
+              0.47972286899739147,
+              0.4998156489158163,
+              0.49934645780128295,
+              0.49906453121723837,
+              0.4988513087006944,
+              0.49928318434811936,
+              0.0
+            ],
+            "ho": [
+              0.5045550105115627,
+              0.4707112970711297,
+              0.5022321428571429,
+              0.5112107623318386,
+              0.5261044176706827,
+              0.5076628352490421,
+              0.5086580086580087,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4997903857702537,
+              0.4880928537093414,
+              0.49937309517379735,
+              0.4997496394808525,
+              0.49868249177964963,
+              0.498367190667087,
+              0.49734375,
+              0.0
+            ],
+            "ho": [
+              0.47967914438502673,
+              0.4588607594936709,
+              0.468944099378882,
+              0.509493670886076,
+              0.4798657718120805,
+              0.49328859060402686,
+              0.46875,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49988251146875806,
+              0.4734600339334527,
+              0.48448110004526945,
+              0.49936238983864045,
+              0.4976424297606661,
+              0.498249778020627,
+              0.49585824919125576,
+              0.0
+            ],
+            "ho": [
+              0.4933852140077821,
+              0.4975728155339806,
+              0.46808510638297873,
+              0.5,
+              0.5040322580645161,
+              0.5082644628099173,
+              0.4752475247524752,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49922452414544194,
+              0.4868560964083175,
+              0.47602950645278685,
+              0.4974986479177934,
+              0.4977817693905817,
+              0.4969754382761139,
+              0.49435546875,
+              0.0
+            ],
+            "ho": [
+              0.518905472636816,
+              0.5380434782608695,
+              0.4947089947089947,
+              0.5406976744186046,
+              0.4967105263157895,
+              0.5371621621621622,
+              0.50625,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 1,
+      "source_artifacts": [
+        "runtime_work/rep_001/dynamic/example_files/R421_dynamic_5732668171788284323/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 1549947756,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "PATCH_POPULATION_STATE_ENGINE_NATIVE",
+        "states": [
+          {
+            "patch_vector": [
+              768.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "patch_vector": [
+              1466.0,
+              249.0,
+              265.0,
+              240.0,
+              241.0,
+              227.0,
+              244.0,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "patch_vector": [
+              946.0,
+              171.0,
+              138.0,
+              155.0,
+              150.0,
+              171.0,
+              161.0,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "patch_vector": [
+              1289.0,
+              206.0,
+              244.0,
+              219.0,
+              216.0,
+              209.0,
+              195.0,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "patch_vector": [
+              976.0,
+              173.0,
+              149.0,
+              161.0,
+              161.0,
+              171.0,
+              161.0,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 2,
+      "source_artifacts": [
+        "runtime_work/rep_002/dynamic/example_files/R421_dynamic_15499477561788284387/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 1549947756,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "ALLELES_HE_HO_DESCRIPTIVE_NOT_ADDITIVE_VARIANCE",
+        "states": [
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49706480238172746,
+              0.4401092529296875,
+              0.4989013671875,
+              0.4982147216796875,
+              0.49847412109375,
+              0.4985198974609375,
+              0.499237060546875,
+              0.0
+            ],
+            "ho": [
+              0.5032552083333334,
+              0.50390625,
+              0.5078125,
+              0.47265625,
+              0.53125,
+              0.48828125,
+              0.515625,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4989394674002259,
+              0.48806470863373175,
+              0.4981167675329299,
+              0.49745659722222224,
+              0.4995652623060898,
+              0.49941295192998114,
+              0.49814398011287286,
+              0.0
+            ],
+            "ho": [
+              0.5044338335607094,
+              0.4779116465863454,
+              0.5113207547169811,
+              0.4666666666666667,
+              0.5373443983402489,
+              0.5220264317180616,
+              0.5122950819672131,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4991524344184258,
+              0.490142265996375,
+              0.4986347406007141,
+              0.49916753381893864,
+              0.49977777777777777,
+              0.4993074792243768,
+              0.4980517726939546,
+              0.0
+            ],
+            "ho": [
+              0.5158562367864693,
+              0.5058479532163743,
+              0.4855072463768116,
+              0.4645161290322581,
+              0.5266666666666666,
+              0.5467836257309941,
+              0.5590062111801242,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49675944511083525,
+              0.46049934018286365,
+              0.4936299045955388,
+              0.4970340484977378,
+              0.4987568587105624,
+              0.49635425013163625,
+              0.4964168310322157,
+              0.0
+            ],
+            "ho": [
+              0.5015515903801396,
+              0.39563106796116504,
+              0.5266393442622951,
+              0.4954337899543379,
+              0.5277777777777778,
+              0.5239234449760766,
+              0.5358974358974359,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49478965457874224,
+              0.47002071569380866,
+              0.4995833521012567,
+              0.4973766444195826,
+              0.4983700474518731,
+              0.4813617865326083,
+              0.4932680066355465,
+              0.0
+            ],
+            "ho": [
+              0.4923155737704918,
+              0.430635838150289,
+              0.5469798657718121,
+              0.5279503105590062,
+              0.48757763975155277,
+              0.4502923976608187,
+              0.5217391304347826,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 2,
+      "source_artifacts": [
+        "runtime_work/rep_002/dynamic/example_files/R421_dynamic_15499477561788284387/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 1073281537,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "PATCH_POPULATION_STATE_ENGINE_NATIVE",
+        "states": [
+          {
+            "patch_vector": [
+              768.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              128.0,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "patch_vector": [
+              1482.0,
+              247.0,
+              257.0,
+              259.0,
+              241.0,
+              233.0,
+              245.0,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "patch_vector": [
+              929.0,
+              151.0,
+              144.0,
+              152.0,
+              162.0,
+              158.0,
+              162.0,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "patch_vector": [
+              1333.0,
+              220.0,
+              223.0,
+              231.0,
+              208.0,
+              219.0,
+              232.0,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "patch_vector": [
+              960.0,
+              155.0,
+              165.0,
+              153.0,
+              174.0,
+              159.0,
+              154.0,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 3,
+      "source_artifacts": [
+        "runtime_work/rep_003/dynamic/example_files/R421_dynamic_10732815371788284455/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "CDMetaPOP",
+      "finite": true,
+      "frozen_seed": 1073281537,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "arm": "DYNAMIC_R421_MATCHED_PAIR_PRIMARY_ARM",
+        "semantic_guard": "ALLELES_HE_HO_DESCRIPTIVE_NOT_ADDITIVE_VARIANCE",
+        "states": [
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4996028476291233,
+              0.445648193359375,
+              0.4969940185546875,
+              0.4988861083984375,
+              0.499481201171875,
+              0.49822998046875,
+              0.4937591552734375,
+              0.0
+            ],
+            "ho": [
+              0.486328125,
+              0.4453125,
+              0.52734375,
+              0.48828125,
+              0.4453125,
+              0.4921875,
+              0.51953125,
+              0.0
+            ],
+            "year": 0
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49973216611028237,
+              0.4905177924568507,
+              0.49848218746688067,
+              0.49968321879518796,
+              0.4979123982025103,
+              0.49931846230359744,
+              0.4982923781757601,
+              0.0
+            ],
+            "ho": [
+              0.48616734143049933,
+              0.46963562753036436,
+              0.4883268482490272,
+              0.49613899613899615,
+              0.470954356846473,
+              0.5021459227467812,
+              0.4897959183673469,
+              0.0
+            ],
+            "year": 1
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4998719643678574,
+              0.48867374237972017,
+              0.4970582561728395,
+              0.4996862015235457,
+              0.499609434537418,
+              0.4970357314532927,
+              0.498390108215211,
+              0.0
+            ],
+            "ho": [
+              0.4876210979547901,
+              0.5066225165562914,
+              0.4861111111111111,
+              0.46381578947368424,
+              0.49074074074074076,
+              0.47468354430379744,
+              0.5030864197530864,
+              0.0
+            ],
+            "year": 2
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.49984101426707017,
+              0.4898088842975207,
+              0.49569164873615,
+              0.4996814152658309,
+              0.4994857156065089,
+              0.4979097600133442,
+              0.49527162604042807,
+              0.0
+            ],
+            "ho": [
+              0.5138784696174044,
+              0.5204545454545455,
+              0.4910313901345291,
+              0.5151515151515151,
+              0.5168269230769231,
+              0.5273972602739726,
+              0.5129310344827587,
+              0.0
+            ],
+            "year": 3
+          },
+          {
+            "alleles": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              0.0
+            ],
+            "he": [
+              0.4993174913194445,
+              0.4912070759625391,
+              0.4989348025711662,
+              0.4999038831218763,
+              0.4997605363984674,
+              0.4880048257584747,
+              0.4915668746837578,
+              0.0
+            ],
+            "ho": [
+              0.5104166666666666,
+              0.4870967741935484,
+              0.5272727272727272,
+              0.5849673202614379,
+              0.47413793103448276,
+              0.4937106918238994,
+              0.5,
+              0.0
+            ],
+            "year": 4
+          }
+        ]
+      },
+      "replicate_index": 3,
+      "source_artifacts": [
+        "runtime_work/rep_003/dynamic/example_files/R421_dynamic_10732815371788284455/run0batch0mc0species0/summary_popAllTime.csv",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "H0_PRE_CHA1"
+    }
+  ],
+  "numeric_scientific_adjudication_performed": false,
+  "parent_execution_plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+  "parent_readout_registry_sha256": "f39bb36251a95f2d9e310113a9286608d72188374d7d9bc73fe90aa697e5d380",
+  "scientific_divergence_claimed": false,
+  "scientific_stream_count": 4,
+  "stage": "v0.6D1-R4.55",
+  "status": "PASS_R455_JOB_SCIENTIFIC_READOUT_EVIDENCE",
+  "stream_records": [
+    {
+      "canonical_state_changed": false,
+      "engine": "CDMetaPOP",
+      "frozen_seed": 1869692640,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 0,
+      "scientific_evidence": true,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "status": "PASS",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "canonical_state_changed": false,
+      "engine": "CDMetaPOP",
+      "frozen_seed": 573266817,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 1,
+      "scientific_evidence": true,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "status": "PASS",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "canonical_state_changed": false,
+      "engine": "CDMetaPOP",
+      "frozen_seed": 1549947756,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 2,
+      "scientific_evidence": true,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "status": "PASS",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "canonical_state_changed": false,
+      "engine": "CDMetaPOP",
+      "frozen_seed": 1073281537,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 3,
+      "scientific_evidence": true,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "status": "PASS",
+      "window_id": "H0_PRE_CHA1"
+    }
+  ],
+  "window_id": "H0_PRE_CHA1"
+}

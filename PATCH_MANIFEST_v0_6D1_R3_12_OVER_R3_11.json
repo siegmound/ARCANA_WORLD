@@ -1,0 +1,143 @@
+{
+  "patch": "v0.6D1-R3.12_OVER_R3.11_SEALED",
+  "base_release": "v0.6D1-R3.11_SEALED",
+  "base_zip_sha256": "02c1ba8c9d42b4e8a1d5bd6090826f5d31ec0b55ecd8735ae9ddf3cf2e690a8a",
+  "target_stage": "v0.6D1-R3.12_CANDIDATE",
+  "integration": "extract/copy these files over the root of the R3.11 SEALED directory; preserve all other R3.11 files",
+  "note": "The full-package PACKAGE_MANIFEST_v0_6D1_R3_12.json is intentionally omitted because an overlay retains additional sealed parent artifacts. This PATCH_MANIFEST governs only changed/new files.",
+  "file_count": 22,
+  "files": [
+    {
+      "path": "CANONICAL_POST_CHA1_H0_DIVERSITY_RECOVERY_CONTRACT_v0_6D1_R3_12.md",
+      "action": "add",
+      "sha256": "4709e62af0a5b801e08c22c955ae930ffeb5f982bcd2ad1e9de6e4c522dd1dbc",
+      "size_bytes": 4181
+    },
+    {
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_12.md",
+      "action": "add",
+      "sha256": "17be923f052db593474ab1ecb53107aa6962e2980807ab0139d97924b0132176",
+      "size_bytes": 1272
+    },
+    {
+      "path": "R3_12_DIAGNOSTIC_SMOKE_AUDIT.md",
+      "action": "add",
+      "sha256": "b61c07ba95a87822918119ca9bf48affefdd95cdfc9973f0b25b4c528f7348d3",
+      "size_bytes": 918
+    },
+    {
+      "path": "README.md",
+      "action": "replace",
+      "sha256": "5c575710760fd89f97b5aadc4d2fdd71da0c87fa6d778de045b77bf112d64d9e",
+      "size_bytes": 4440
+    },
+    {
+      "path": "README_R3_12.md",
+      "action": "add",
+      "sha256": "2635f7d48987da3e930d3f59ed89aea0c86d693948911d2ac02367f5e4096965",
+      "size_bytes": 1416
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_12.json",
+      "action": "add",
+      "sha256": "44629de779c7c96f54839825d200c536d287358fd8eb0010d05d5bfddae0ec9f",
+      "size_bytes": 3204
+    },
+    {
+      "path": "V0_6D1_R3_12_STATUS.md",
+      "action": "add",
+      "sha256": "2c31151f8593fdb42ba9246d106de7b8ce7d89f6c4e20d07752c53fabd3a8d0b",
+      "size_bytes": 1070
+    },
+    {
+      "path": "configs/world1_r312_postcha1_diversity_recovery_v0_6D1_R3_12.json",
+      "action": "add",
+      "sha256": "12df26bddb2179e7be62e8e2aea49db51dca4ea0ea944826b735bd27261b6abe",
+      "size_bytes": 769
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_12/R3_12_SMOKE_SUMMARY.json",
+      "action": "add",
+      "sha256": "53e6cd4eaeb3c290abcb23f679c72287a8810fd484e4d823376be02579d89a25",
+      "size_bytes": 10264
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_12/WORLD1_H0_60P5Ma_R3_12_SMOKE_CHECKPOINT.json",
+      "action": "add",
+      "sha256": "64fd78f5555715b382a5d4933b2b1541093cfa5e798ce125df45782b1cdd81d8",
+      "size_bytes": 1818542
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_12/WORLD1_H0_60P5Ma_R3_12_SMOKE_CHECKPOINT.npz",
+      "action": "add",
+      "sha256": "bd131bb3a186547cfc2809d9fb47c29b77a6dc9b7c36856f08a30c55dac17da5",
+      "size_bytes": 5353533
+    },
+    {
+      "path": "outputs/v0_6D1_R3_12/FORMAL_AUDIT_v0_6D1_R3_12.json",
+      "action": "add",
+      "sha256": "6932e1a702c897856355f158644939f0e08349ae3197fdd15045601a1c112cb4",
+      "size_bytes": 9024
+    },
+    {
+      "path": "outputs/v0_6D1_R3_12/R3_12_AND_PARENT_REGRESSION.txt",
+      "action": "add",
+      "sha256": "207d82e1e81b31695c5fa2f96982d2361daef6c918e73557500c974933a4b8f7",
+      "size_bytes": 100
+    },
+    {
+      "path": "references/v0_6D1_R3_11/R3_11_POST_CHA1_RECOVERY_SUMMARY.json",
+      "action": "add",
+      "sha256": "b8194132711925d7ea2f67d0bf9bd7d9ad995ae37bef2f18df6c2fab49524bbd",
+      "size_bytes": 15960
+    },
+    {
+      "path": "references/v0_6D1_R3_11/R3_11_SEAL_SUMMARY.json",
+      "action": "add",
+      "sha256": "9a70db78084a85e65c5b86e6af719d3fad00c1008736d98a1595a99d5c8364fd",
+      "size_bytes": 1410
+    },
+    {
+      "path": "references/v0_6D1_R3_11/WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.json",
+      "action": "add",
+      "sha256": "bdf75d08bd39181dee3331f91b1dd6864ab8e0c1e88c94eed7813d148aebda3b",
+      "size_bytes": 1884438
+    },
+    {
+      "path": "references/v0_6D1_R3_11/WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.npz",
+      "action": "add",
+      "sha256": "4f4582ca7f83926941f7224033a83356b2f5df196dcb8d3dbafae2e9b16e987c",
+      "size_bytes": 5387315
+    },
+    {
+      "path": "run_v0_6D1_R3_12_checks.ps1",
+      "action": "add",
+      "sha256": "f229e6f20f16fc6d278ee1d7c7b6962788263a4c5dcf7c5869f355bd07a8e61c",
+      "size_bytes": 378
+    },
+    {
+      "path": "run_v0_6D1_R3_12_diversity_recovery.ps1",
+      "action": "add",
+      "sha256": "0af75b717b200c864bf1fc09525d29e90a9aeedd91a4da6d40ad668452017568",
+      "size_bytes": 312
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_12_diversity_recovery.py",
+      "action": "add",
+      "sha256": "d8c3686dc7419bd5413a6f64977522ba7836b4b285a9c1fe0bd986a9034e910f",
+      "size_bytes": 9723
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r312_postcha1_diversity_recovery.py",
+      "action": "add",
+      "sha256": "2793733f05ab640d3fb9b0387f35aab54943a5e1aeb99d4990c41fdd4589b5d8",
+      "size_bytes": 20734
+    },
+    {
+      "path": "tests/test_r312_postcha1_diversity_recovery.py",
+      "action": "add",
+      "sha256": "39b617c5221bb74d39f7344b85025616d23173593decf616678edd1661cbb5f4",
+      "size_bytes": 4572
+    }
+  ]
+}

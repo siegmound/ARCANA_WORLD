@@ -1,0 +1,76 @@
+{
+  "status": "AUTHOR_SIDE_NUMERICAL_IMPLEMENTATION_CANDIDATE",
+  "input": "Z_H",
+  "output": "J_hard_W",
+  "interpolation": "monotone PCHIP on (Z_H threshold, ln J_lower)",
+  "nodes": [
+    {
+      "CB_entry": 2,
+      "Z_H": -3.090232306167813,
+      "J_lower_W": 50.0
+    },
+    {
+      "CB_entry": 3,
+      "Z_H": -2.3263478740408416,
+      "J_lower_W": 250.0
+    },
+    {
+      "CB_entry": 4,
+      "Z_H": -1.3407550336902165,
+      "J_lower_W": 1250.0
+    },
+    {
+      "CB_entry": 5,
+      "Z_H": 0.38532046640756773,
+      "J_lower_W": 12330.0
+    },
+    {
+      "CB_entry": 6,
+      "Z_H": 2.3263478740408408,
+      "J_lower_W": 231013.0
+    },
+    {
+      "CB_entry": 7,
+      "Z_H": 3.157324589877885,
+      "J_lower_W": 6353753.0
+    },
+    {
+      "CB_entry": 8,
+      "Z_H": 3.719016485455709,
+      "J_lower_W": 174752857.0
+    },
+    {
+      "CB_entry": 9,
+      "Z_H": 4.151613129810535,
+      "J_lower_W": 4806381272.0
+    },
+    {
+      "CB_entry": 10,
+      "Z_H": 4.507098918357788,
+      "J_lower_W": 132194124140.0
+    },
+    {
+      "CB_entry": 11,
+      "Z_H": 4.8108630030262365,
+      "J_lower_W": 3635851062651.0
+    },
+    {
+      "CB_entry": 12,
+      "Z_H": 5.350730285616379,
+      "J_lower_W": 100000000000000.0
+    }
+  ],
+  "low_tail": {
+    "type": "endpoint_tangent",
+    "slope_dlnJ_dZH": 2.3138557397742487
+  },
+  "high_tail": {
+    "type": "endpoint_tangent",
+    "slope_dlnJ_dZH": 3.085579905635656
+  },
+  "CB12_terminal_label_lower_W": 100000000000000.0,
+  "notes": [
+    "CB labels are downstream diagnostics; continuous J_hard is retained.",
+    "Endpoint tangent tails are positive, monotone, C1 and unbounded."
+  ]
+}

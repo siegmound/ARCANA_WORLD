@@ -1,0 +1,106 @@
+{
+  "cb_semantics": "DOWNSTREAM_DIAGNOSTIC_ONLY",
+  "continuous_mapping": {
+    "CB12_terminal_label_lower_W": 100000000000000.0,
+    "high_tail": {
+      "slope_dlnJ_dZH": 3.085579905635656,
+      "type": "endpoint_tangent"
+    },
+    "input": "Z_H",
+    "interpolation": "monotone PCHIP on (Z_H threshold, ln J_lower)",
+    "low_tail": {
+      "slope_dlnJ_dZH": 2.3138557397742487,
+      "type": "endpoint_tangent"
+    },
+    "nodes": [
+      {
+        "CB_entry": 2,
+        "J_lower_W": 50.0,
+        "Z_H": -3.090232306167813
+      },
+      {
+        "CB_entry": 3,
+        "J_lower_W": 250.0,
+        "Z_H": -2.3263478740408416
+      },
+      {
+        "CB_entry": 4,
+        "J_lower_W": 1250.0,
+        "Z_H": -1.3407550336902165
+      },
+      {
+        "CB_entry": 5,
+        "J_lower_W": 12330.0,
+        "Z_H": 0.38532046640756773
+      },
+      {
+        "CB_entry": 6,
+        "J_lower_W": 231013.0,
+        "Z_H": 2.3263478740408408
+      },
+      {
+        "CB_entry": 7,
+        "J_lower_W": 6353753.0,
+        "Z_H": 3.157324589877885
+      },
+      {
+        "CB_entry": 8,
+        "J_lower_W": 174752857.0,
+        "Z_H": 3.719016485455709
+      },
+      {
+        "CB_entry": 9,
+        "J_lower_W": 4806381272.0,
+        "Z_H": 4.151613129810535
+      },
+      {
+        "CB_entry": 10,
+        "J_lower_W": 132194124140.0,
+        "Z_H": 4.507098918357788
+      },
+      {
+        "CB_entry": 11,
+        "J_lower_W": 3635851062651.0,
+        "Z_H": 4.8108630030262365
+      },
+      {
+        "CB_entry": 12,
+        "J_lower_W": 100000000000000.0,
+        "Z_H": 5.350730285616379
+      }
+    ],
+    "notes": [
+      "CB labels are downstream diagnostics; continuous J_hard is retained.",
+      "Endpoint tangent tails are positive, monotone, C1 and unbounded."
+    ],
+    "output": "J_hard_W",
+    "status": "AUTHOR_SIDE_NUMERICAL_IMPLEMENTATION_CANDIDATE"
+  },
+  "deep_biological_coupling": false,
+  "formula": {
+    "U_R_formula": "U_R = (Z_R - 0.35*Z_inf)/sqrt(1-0.35^2)",
+    "formula": "Z_H = sqrt(0.75)*Z_inf + sqrt(0.15)*U_R + sqrt(0.10)*epsilon_mar",
+    "rho_Zinf_ZR": 0.35,
+    "variance_shares": {
+      "U_R": 0.15,
+      "Z_inf": 0.75,
+      "epsilon_mar": 0.1
+    }
+  },
+  "hard_ceiling_policy": "SAME_RATIFIED_REFERENCE_LAW_NO_LINEAGE_RESCALE",
+  "human_similarity_target": false,
+  "parent": "PASS_R325_H2_DETAILED_CANDIDATE_BIOLOGY_EMBODIMENT_FEASIBILITY_AND_H3_PRIORITY_COHORT_SEALED",
+  "reproduction_kernel": {
+    "epsilon_mar": "PERSISTENT_INDIVIDUAL_RESIDUAL_NOT_DIRECTLY_INHERITED",
+    "mutation": "NOT_CALIBRATED_OR_MATERIALIZED_IN_R3_26",
+    "offspring_kernel": "0.5*(mother+father)+sqrt(0.5)*segregation_noise",
+    "selection": "NOT_APPLIED_IN_R3_26",
+    "upstream_breeding_values": [
+      "Z_inf",
+      "U_R"
+    ]
+  },
+  "source_canon": "ARCANA_UNIVERSE_CANON_v0_3_73_MC_FAMILY_H3_CHARACTER_AUTHORIAL_RATIFICATION_RATIFIED",
+  "stage": "v0.6D1-R3.26",
+  "status": "H3_CANONICAL_BRIDGE_AUTHORITY"
+}

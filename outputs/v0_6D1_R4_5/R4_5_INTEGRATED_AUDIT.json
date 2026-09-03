@@ -1,0 +1,111 @@
+{
+  "calibration_offset_count": 5,
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_4_SEAL\\R4_4_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r44_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R44_CROSS_ENGINE_DOMAIN_DISCORDANCE_MATRIX_AND_SCIENTIFIC_ADJUDICATION_SEALED",
+      "name": "parent_r44_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R44_CROSS_ENGINE_DOMAIN_DISCORDANCE_MATRIX_AND_ADJUDICATION_COMPLETE",
+      "name": "parent_r44_adjudication_complete",
+      "pass": true
+    },
+    {
+      "detail": {
+        "declared": 75,
+        "loaded": 75
+      },
+      "name": "parent_matrix_nonempty",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "policy_not_result_selected",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": {
+        "cells": 1,
+        "diagnosed": 1
+      },
+      "name": "all_r44_structural_cells_resolved_to_primary_rows",
+      "pass": true
+    },
+    {
+      "detail": [
+        {
+          "boundary": "R3.11_POST_CHA1",
+          "missing": []
+        }
+      ],
+      "name": "all_structural_boundaries_trace_to_present_authority_files",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_structural_row_diagnoses_use_frozen_class",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": 5,
+        "registered": 5
+      },
+      "name": "all_calibration_offsets_registered",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": 69,
+        "planned": 69
+      },
+      "name": "all_evidence_gaps_have_closure_plan",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_parameter_change_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_canonical_replay_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_majority_vote_anywhere",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 16,
+  "checks_total": 16,
+  "evidence_gap_count": 69,
+  "next_action": "EXECUTE_R46_TARGETED_CAUSAL_COUNTERFACTUAL_FROM_R3_11_POST_CHA1",
+  "robust_structural_cell_count": 1,
+  "stage": "v0.6D1-R4.5",
+  "status": "PASS_R45_EARLIEST_AUTHORITY_CAUSAL_DIAGNOSIS_AND_REPLAY_PLANNING_COMPLETE"
+}

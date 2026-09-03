@@ -1,0 +1,33 @@
+{
+  "stage": "v0.6D1-R4.54",
+  "policy": "R454_REAL_FIVE_ENGINE_DISPOSABLE_DRY_RUN_THEN_AUTHORIZE_FROZEN_80_STREAM_PLAN",
+  "parent_required": {
+    "r453_integrated": "39/39 PASS",
+    "r453_final_seal": "23/23 SEALED",
+    "r452_plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+    "r453_registry_sha256": "f39bb36251a95f2d9e310113a9286608d72188374d7d9bc73fe90aa697e5d380"
+  },
+  "dry_run_scope": {
+    "engines": [
+      "Madingley",
+      "RangeShifter",
+      "CDMetaPOP",
+      "NEMO",
+      "SLiM"
+    ],
+    "probe_selection": "first frozen R4.52 job per engine + first frozen seed for that job",
+    "historical_job_execution": false,
+    "scientific_evidence": false
+  },
+  "authorization_on_pass": {
+    "job_count": 20,
+    "scientific_stream_count": 80,
+    "metric_definition_count": 10
+  },
+  "scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "next_action": "BUILD_R455_NON_GEONOMICS_80_STREAM_SCIENTIFIC_EXECUTION_AND_EVIDENCE_CAPTURE"
+}

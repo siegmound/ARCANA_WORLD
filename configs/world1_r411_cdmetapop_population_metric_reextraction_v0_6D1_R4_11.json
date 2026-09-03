@@ -1,0 +1,27 @@
+{
+  "stage": "v0.6D1-R4.11",
+  "required_parent_status": "PASS_R410_MATCHED_CONTROL_PRECISION_ALTERNATE_EVIDENCE_AND_POPULATION_METRIC_INTEGRITY_AUDIT_SEALED",
+  "required_parent_finding": "R43_R49_CDMETAPOP_POPULATION_METRIC_FILENAME_SELECTOR_COLLISION_CONFIRMED",
+  "affected_frozen_cdmetapop_jobs": [
+    "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+    "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+    "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+  ],
+  "repair_policy": {
+    "reextract_retained_runtime_before_any_rerun": true,
+    "engine_rerun_in_r411": false,
+    "preserve_r43_r49_historical_outputs": true,
+    "population_metric_source": "CDMetaPOP summary_popAllTime.csv",
+    "initial_population_semantics": "first row N_Initial total component",
+    "final_population_semantics": "last row N_Initial total component multiplied by last row GrowthRate",
+    "occupancy_metric_from_legacy_broad_filename_selector_promotable": false,
+    "comparison_target_injection": false
+  },
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false
+}

@@ -1,0 +1,123 @@
+{
+  "stage": "v0.6D1-R3.7F",
+  "parent_stage": "v0.6D1-R3.7E",
+  "authority_note": "R3.7F is a governed shadow stress-window extension. It closes the externally executed 210->205 Ma R3.7E evidence, then prepares 210->188 Ma to cross the historical R3.5 q=0.08 clipping onset near 191.25 Ma. No canonical or production authority is changed.",
+  "parent_package_manifest": {
+    "path": "PACKAGE_MANIFEST_v0_6D1_R3_7E.json",
+    "sha256": "99a6d758a26f4986f05b2b475ad70557b58bc309b1929c14ada6203eb3ab5f19"
+  },
+  "r37e_full_local_evidence": {
+    "path": "references/v0_6D1_R3_7E/v0_6D1_R3_7E_FULL_LOCAL_RESULTS.zip",
+    "sha256": "2fcae7379de11ec8f7454e245a411dc8348f240dcedd047f98bb64d50ed70470",
+    "status": "PASS_210_TO_205_40_STEPS_CANONICAL_PARITY_ZERO_SHADOW_CEILING_CONTACTS"
+  },
+  "governed_stress_window": {
+    "start_age_ma": 210.0,
+    "end_age_ma": 188.0,
+    "biology_steps": 176,
+    "legacy_clipping_onset_reference_ma_approx": 191.25,
+    "status": "PENDING_EXTERNAL_LOCAL_EXECUTION"
+  },
+  "gate_semantics": {
+    "must_reproduce_legacy_clipping": true,
+    "must_preserve_bit_exact_canonical_parity": true,
+    "must_keep_all_shadow_K_variants_below_existing_q_ceiling": true,
+    "K_spreads_in_S_ancestry_and_adaptive_coordinate_are_reported_without_new_fit_thresholds": true
+  },
+  "governance": {
+    "shadow_only": true,
+    "canonical_write_allowed": false,
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "direct_WorldSim_N_to_NEMO_N_mapping_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "recombination_fraction_is_reference_shadow_architecture_not_world1_constant": true
+  },
+  "new_r3_7F_sources_and_evidence": [
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r37f_stress_window_shadow_replay.py",
+      "bytes": 9420,
+      "sha256": "9983a3c297c7a7bf5bc9539549ac4406b049f0443a4a769bb10b965254b84466"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_7F_stress_shadow.py",
+      "bytes": 3056,
+      "sha256": "c75384e181a944bea276c0f12fac05571395417717f5a053e3ab41e3ff6ddb35"
+    },
+    {
+      "path": "scripts/formal_audit_v0_6D1_R3_7F.py",
+      "bytes": 5183,
+      "sha256": "0022c48b57e6a22e0c5616270083ef7602ff0ba83a620ef6a8a5cd66c83532e4"
+    },
+    {
+      "path": "tests/test_r37f_stress_window_shadow.py",
+      "bytes": 3290,
+      "sha256": "59064499082b4a9e1db8a8488dedfccd294ac46792a840a06f3f0702fd48d6c0"
+    },
+    {
+      "path": "configs/world1_stress_window_adaptive_genetic_shadow_replay_v0_6D1_R3_7F.json",
+      "bytes": 677,
+      "sha256": "f9106303a47c4e7342a52cb53974de9573b61a16d254c974775c54aa7d718de6"
+    },
+    {
+      "path": "SHORT_WORLD1_STRESS_WINDOW_SHADOW_REPLAY_CONTRACT_v0_6D1_R3_7F.md",
+      "bytes": 1991,
+      "sha256": "0bbb01518edfa43a778f46bd3b8d8d9624f166b0e70d00c198b1a448a861925a"
+    },
+    {
+      "path": "R3_7E_FULL_LOCAL_EVIDENCE_AUDIT.md",
+      "bytes": 959,
+      "sha256": "95f5575bd7f4a4677ff2ddd4f1e159890c7eb6849a54d382dbdfbf8b42a54d97"
+    },
+    {
+      "path": "README_R3_7F.md",
+      "bytes": 399,
+      "sha256": "3eacd451e0c1c8f3b4147ccfaad5e15d7aa9487ff5efced95b652d97df6cdb38"
+    },
+    {
+      "path": "V0_6D1_R3_7F_STATUS.md",
+      "bytes": 301,
+      "sha256": "e585bcfd6521d9c03b1c3e6800829562d413c7fbbbc137d94609345049b88c14"
+    },
+    {
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7F.md",
+      "bytes": 499,
+      "sha256": "a77399fd780e0b9bd378fc4e64ba29701ced1bcdc54fa21618cf3b17df71baa9"
+    },
+    {
+      "path": "run_v0_6D1_R3_7F_stress_shadow.ps1",
+      "bytes": 251,
+      "sha256": "ce6de3eb4648477070b12141e106c6747c298424fe12fa5148e4f6ecdeeacd00"
+    },
+    {
+      "path": "run_v0_6D1_R3_7F_smoke.ps1",
+      "bytes": 250,
+      "sha256": "197fc7b0591e93ca79e61efd642b80a23faac2c8c7be089bea6bc05f11d5d075"
+    },
+    {
+      "path": "run_v0_6D1_R3_7F_checks.ps1",
+      "bytes": 300,
+      "sha256": "942ad21369cbe6dd524f9c09fa51537de713493c129158e0445d793c09e73a15"
+    },
+    {
+      "path": "references/v0_6D1_R3_7E/v0_6D1_R3_7E_FULL_LOCAL_RESULTS.zip",
+      "bytes": 33178,
+      "sha256": "2fcae7379de11ec8f7454e245a411dc8348f240dcedd047f98bb64d50ed70470"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7F/R3_7E_FULL_LOCAL_EVIDENCE_AUDIT.json",
+      "bytes": 2790,
+      "sha256": "9e2df44a06d07a35620e85d0e5e849f2f87c6b58afe6ed3ce06d31d872349a5e"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7F/FORMAL_AUDIT_v0_6D1_R3_7F.json",
+      "bytes": 4498,
+      "sha256": "da7e15c2e355b12d10a77ad36e330296c5321be6dcff5aac26da55dbc3772bd7"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7F/UNIT_TESTS_v0_6D1_R3_7F.json",
+      "bytes": 144,
+      "sha256": "61892a2c766e5a001e2906bc225587c20b7a53a93ac0c48eb5035ebe5052f28e"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "stage": "v0.6D1-R4.29",
+  "policy_freeze": "FROZEN_PRE_TARGET_NUMERIC_MATERIALIZATION_AND_PRE_J14_SPATIAL_AUTHORITY_EXECUTION",
+  "engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "canonical_spatial_replay_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "selector_rules_are_pre_result_exact_only": true,
+  "fuzzy_selector_forbidden": true,
+  "synonym_fallback_forbidden": true,
+  "external_result_selector_choice_forbidden": true,
+  "ambiguous_selector_match_is_deferral": true,
+  "schemaless_source_selector_synthesis_forbidden": true,
+  "target_design_validation_is_nonnumeric": true,
+  "j14_replay_construction_may_not_use_r315_or_r328_spatial_coordinates": true,
+  "geonomics_execution_authorized": false,
+  "r42_j14_mutation_forbidden": true,
+  "j14_authority_algorithm": {
+    "name": "MINIMUM_DISPLACEMENT_MAXIMUM_ENTROPY_SPATIALIZATION",
+    "initialization": "MAXIMUM_ENTROPY_OVER_AGE_MATCHED_CANONICAL_LAND_SUPPORT",
+    "persistence": "KEEP_PRIOR_DEME_CELL_WHILE_CANONICALLY_ACCESSIBLE",
+    "support_loss": "MINIMUM_GRID_DISTANCE_REMAP_TO_ACCESSIBLE_SUPPORT",
+    "deme_fission": "DETERMINISTIC_FARTHEST_POINT_ADDITION_ON_ACCESSIBLE_SUPPORT",
+    "deme_contraction": "DETERMINISTIC_LOWEST_SEPARATION_REMOVAL",
+    "population_allocation": "MAXIMUM_ENTROPY_EQUAL_SHARE_OF_R327_EFFECTIVE_POPULATION",
+    "future_spatial_anchor_usage": "FORBIDDEN_IN_CONSTRUCTION",
+    "external_engine_usage": "FORBIDDEN"
+  },
+  "exact_selector_authority_catalog": {
+    "additive_variance": [
+      {"selector":"additive_variance","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"additive_genetic_variance","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"normalized_va_delta","transform_id":"IDENTITY_STANDARDIZED_DELTA","authority_class":"NORMALIZABLE_CANDIDATE"}
+    ],
+    "admixture": [
+      {"selector":"admixture_fraction","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"ancestry_mixture_fraction","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"}
+    ],
+    "ancestry": [
+      {"selector":"lineage_ancestry_fraction","transform_id":"IDENTITY_REQUIRES_EXPLICIT_LINEAGE_LABEL_BINDING","authority_class":"DIRECT_CANDIDATE"}
+    ],
+    "biomass": [
+      {"selector":"total_biomass","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"biomass","transform_id":"IDENTITY_REQUIRES_GUILD_AND_SUPPORT_BINDING","authority_class":"NORMALIZABLE_CANDIDATE"}
+    ],
+    "connectivity": [
+      {"selector":"corridor_connectivity","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"connectivity_index","transform_id":"IDENTITY_NAMED_INDEX","authority_class":"DIRECT_CANDIDATE"}
+    ],
+    "extinction_risk": [
+      {"selector":"extinction_probability","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"extinction_risk","transform_id":"IDENTITY_NAMED_RISK","authority_class":"DIRECT_CANDIDATE"}
+    ],
+    "founder_persistence": [],
+    "gene_flow": [
+      {"selector":"gene_flow_rate","transform_id":"IDENTITY_RATE","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"migration_fraction","transform_id":"IDENTITY_RATE_OR_FRACTION_REQUIRES_CLOCK_BINDING","authority_class":"NORMALIZABLE_CANDIDATE"}
+    ],
+    "managed_wild_isolation": [
+      {"selector":"managed_wild_isolation","transform_id":"IDENTITY_NAMED_STATISTIC","authority_class":"DIRECT_CANDIDATE"}
+    ],
+    "population_persistence": [
+      {"selector":"total_population","transform_id":"END_OVER_START","authority_class":"NORMALIZABLE_CANDIDATE"},
+      {"selector":"population_proxy","transform_id":"END_OVER_START_SAME_CENSUS_SEMANTICS","authority_class":"NORMALIZABLE_CANDIDATE"}
+    ],
+    "producer_divergence": [
+      {"selector":"producer_divergence","transform_id":"IDENTITY_NAMED_STATISTIC","authority_class":"DIRECT_CANDIDATE"}
+    ],
+    "range_occupancy": [
+      {"selector":"occupied_fraction","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"occupied_cell_count","transform_id":"NORMALIZE_BY_FROZEN_SUPPORT_DENOMINATOR","authority_class":"NORMALIZABLE_CANDIDATE"}
+    ],
+    "range_shift_rate": [],
+    "trait_response": [
+      {"selector":"trait_response","transform_id":"IDENTITY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"trait_mean","transform_id":"END_MINUS_START_OR_EXPLICIT_ENDPOINT","authority_class":"NORMALIZABLE_CANDIDATE"}
+    ],
+    "trophic_opportunity": [
+      {"selector":"trophic_opportunity","transform_id":"IDENTITY_FROZEN_B2_1_CURRENCY","authority_class":"DIRECT_CANDIDATE"},
+      {"selector":"opportunity_currency","transform_id":"IDENTITY_FROZEN_B2_1_CURRENCY","authority_class":"DIRECT_CANDIDATE"}
+    ]
+  }
+}

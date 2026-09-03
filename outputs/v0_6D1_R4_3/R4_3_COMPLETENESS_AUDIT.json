@@ -1,0 +1,63 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "PASS_R43_FROZEN_23_JOB_CONTRACT_AND_UNIT_MAPPING_PREPARED",
+      "name": "r43_prepared",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "exact_23_frozen_jobs_collect",
+      "pass": true
+    },
+    {
+      "detail": 23,
+      "name": "all_23_jobs_have_terminal_audit",
+      "pass": true
+    },
+    {
+      "detail": {
+        "ADAPTER_FAILURE": 0,
+        "ENGINE_EXECUTION_FAILURE": 0,
+        "MISSING_EVIDENCE": 0,
+        "SCIENTIFIC_RESULT": 20,
+        "SEMANTIC_NONCOMPARABILITY": 3
+      },
+      "name": "all_23_jobs_terminal_nonblocked",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_evidence_bundle_identities_match",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_evidence_seed_ledgers_match",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_raw_evidence_declares_no_canonical_write",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_scientific_adjudication_in_r43",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 8,
+  "checks_total": 8,
+  "stage": "v0.6D1-R4.3",
+  "status": "PASS_R43_FROZEN_23_ENGINE_WINDOW_EXECUTION_COMPLETE",
+  "terminal_counts": {
+    "ADAPTER_FAILURE": 0,
+    "ENGINE_EXECUTION_FAILURE": 0,
+    "MISSING_EVIDENCE": 0,
+    "SCIENTIFIC_RESULT": 20,
+    "SEMANTIC_NONCOMPARABILITY": 3
+  }
+}

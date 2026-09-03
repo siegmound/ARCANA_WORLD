@@ -1,0 +1,53 @@
+{
+  "capabilities": [
+    {
+      "aggregation_function": null,
+      "aggregation_status": "UNDEFINED_UNTIL_EMPIRICAL_CALIBRATION",
+      "capability_id": "T_tool_use_potential",
+      "definition": "Potential for object-mediated alteration of the environment given manipulative control, causal/relational cognition, learning, sensorimotor feedback, and locally available object affordances.",
+      "direct_genetic_state": false,
+      "direct_selection_state": false,
+      "domain": "tool_use_potential",
+      "required_dependencies": [
+        "M1_effector_independence",
+        "M2_force_precision_span",
+        "M3_workspace_control",
+        "M4_sensorimotor_feedback",
+        "C3_relational_integration",
+        "C4_causal_model_depth",
+        "P1_acquisition_efficiency",
+        "P3_cross_context_transfer",
+        "ENV_object_affordance_opportunity"
+      ],
+      "role": "DERIVED_CONTEXTUAL_CAPABILITY_NOT_DIRECTLY_HERITABLE_STATE",
+      "value": null
+    },
+    {
+      "aggregation_function": null,
+      "aggregation_status": "UNDEFINED_UNTIL_EMPIRICAL_CALIBRATION",
+      "capability_id": "Q_environmental_problem_solving",
+      "definition": "Capacity to discover effective behavior under ecological novelty by combining cognitive integration, learning, behavioral plasticity, sensorimotor exploration, and environmental opportunity.",
+      "direct_genetic_state": false,
+      "direct_selection_state": false,
+      "domain": "environmental_problem_solving_capability",
+      "required_dependencies": [
+        "C1_working_memory",
+        "C2_inhibitory_control",
+        "C3_relational_integration",
+        "C4_causal_model_depth",
+        "P1_acquisition_efficiency",
+        "P2_retention_stability",
+        "P3_cross_context_transfer",
+        "P4_developmental_plasticity",
+        "L2_substrate_breadth",
+        "M4_sensorimotor_feedback",
+        "ENV_novelty_problem_opportunity"
+      ],
+      "role": "DERIVED_CONTEXTUAL_CAPABILITY_NOT_DIRECTLY_HERITABLE_STATE",
+      "value": null
+    }
+  ],
+  "capability_count": 2,
+  "stage": "v0.6D1-R3.22",
+  "status": "DEPENDENCY_GRAPH_ONLY_NO_VALUES"
+}

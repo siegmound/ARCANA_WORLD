@@ -1,0 +1,38 @@
+{
+  "stage": "v0.6D1-R5.6",
+  "objective": "TARGETED_ANCESTRY_AND_ADMIXTURE_CHALLENGES_FROM_R55_CONTACT_OPPORTUNITY_HISTORY",
+  "external_engine": "SLiM",
+  "external_engine_version": "5.2",
+  "required_postprocessor": "tskit",
+  "required_tskit_version": "1.0.3",
+  "contact_active_rule": "ONE_CELL_MATCHED_ENSEMBLE_SUPPORT_GT_ZERO_AT_STATE",
+  "contact_support_fraction_used_as_migration_magnitude": false,
+  "schedule_deduplication": "IDENTICAL_BINARY_CONTACT_SCHEDULES_ONLY",
+  "variants": {
+    "NO_FLOW": 0.0,
+    "LOW_BIDIRECTIONAL": 0.005,
+    "HIGH_BIDIRECTIONAL": 0.02
+  },
+  "seeds": [560601, 560602],
+  "model": {
+    "founder_size_per_population": 200,
+    "sequence_length_bp": 1000000,
+    "recombination_rate_per_bp": 1e-8,
+    "mutation_rate_per_bp": 0.0,
+    "tree_sequence_recording": true,
+    "remember_founders": true,
+    "slim_time_semantics": "ONE_R55_J14_AGE_STATE_TO_ONE_STANDARDIZED_SLIM_REPRODUCTIVE_TRANSITION_NOT_LITERAL_GENERATION_TIME"
+  },
+  "selection_rules": {
+    "result_selected_tuning": false,
+    "majority_vote": false,
+    "single_pair_winner": false,
+    "single_admixture_history_winner": false,
+    "automatic_numeric_scientific_pass_fail": false,
+    "external_engine_defines_arcana_target": false
+  },
+  "canonical_state_changed": false,
+  "derived_refinement_promoted_to_canon": false,
+  "deep_biological_coupling": false,
+  "closure_policy": "CANDIDATE_THEN_SINGLE_LARGE_R53_R56_BLOCK_SEAL"
+}

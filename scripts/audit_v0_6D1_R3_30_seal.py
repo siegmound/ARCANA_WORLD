@@ -1,0 +1,29 @@
+from pathlib import Path
+import argparse,json,hashlib,numpy as np,sys
+from arcana_worldsim.scientific_engines.r330_census_group_abm import *
+from arcana_worldsim.scientific_engines.r330_census_group_abm import _close_manifest
+p=argparse.ArgumentParser();p.add_argument('--root',required=True);a=p.parse_args();root=Path(a.root);out=root/'outputs'/'v0_6D1_R3_30';seal=root/'outputs'/'v0_6D1_R3_30_SEAL';seal.mkdir(parents=True,exist_ok=True)
+checks=[]
+def ck(n,c,d=None):checks.append({'name':n,'pass':bool(c),'detail':d})
+try:
+ inp=validate_inputs(root);cfg=json.loads((root/'configs/world1_r330_census_group_abm_v0_6D1_R3_30.json').read_text());_close_manifest(out,'R3_30_OUTPUT_MANIFEST.json')
+ audit=load_json(out/'R3_30_INTEGRATED_AUDIT.json');outcomes=load_json(out/'R3_30_LINEAGE_CENSUS_AND_GROUP_OUTCOMES.json');sens=load_json(out/'R3_30_SENSITIVITY_AND_ROBUSTNESS.json');cp=load_json(out/'R3_30_COMMUNITY_HISTORY_CHECKPOINT.json');auth=load_json(out/'R3_30_CENSUS_CALIBRATION_AUTHORITY.json')
+ z=np.load(out/'R3_30_CENSUS_AND_GROUP_TIMESERIES.npz',allow_pickle=False);g=np.load(out/'R3_30_WEIGHTED_GROUP_ABM.npz',allow_pickle=False)
+ ck('parent_authorities_validate',True);ck('output_manifest_closure',True);ck('integrated_audit_all_pass',audit['checks_failed']==0 and audit['checks_passed']==audit['checks_total'],[audit['checks_passed'],audit['checks_total']]);ck('candidate_order_exact',list(map(str,z['candidate_ids']))==EXPECTED_CANDIDATES);ck('member_mapping_exact',np.array_equal(z['parent_member_indices'],inp['z29']['parent_member_indices']))
+ ck('time_axis_exact',np.array_equal(z['age_ka'],inp['z29']['age_ka']));ck('census_keys_exact',set(z.files)=={'candidate_ids','parent_member_indices','age_ka','census_variable_names','census_group_series','ne_to_total_census_ratio','census_200ka_anchor'});ck('census_geometry',z['census_group_series'].shape==(32,2,175,6),z['census_group_series'].shape);ck('ratio_bounds',np.min(z['ne_to_total_census_ratio'])>=.18 and np.max(z['ne_to_total_census_ratio'])<=.60)
+ # Independently recompute census from R3.28 relative trajectory.
+ age=np.asarray(z['age_ka'],float);age28=np.asarray(inp['z28']['age_ka'],float);ix=np.array([int(np.where(np.isclose(age28,x,atol=1e-10))[0][0]) for x in age]);p=np.asarray(inp['z28']['species_summary'][:,:,ix,0],float);p0=np.asarray(inp['z28']['species_summary'][:,:,0,0],float);r=np.asarray(z['ne_to_total_census_ratio'],float);rec=(p0/r)[:,:,None]*(p/np.maximum(p0[:,:,None],1.0));diff=float(np.max(np.abs(rec-z['census_group_series'][...,0])));ck('census_independently_recomputed',diff<1e-8,diff)
+ ck('group_abm_keys_exact',set(g.files)=={'candidate_ids','parent_member_indices','anchor_age_ka','agent_variable_names','agent_state','agent_active','history_variable_names','history_summary'});ck('anchor_axis_exact',np.array_equal(g['anchor_age_ka'],inp['z29']['anchor_age_ka']));ck('agent_geometry',g['agent_state'].shape==(32,2,11,48,12),g['agent_state'].shape);ck('history_geometry',g['history_summary'].shape==(32,2,11,10),g['history_summary'].shape);ck('all_numeric_finite',np.isfinite(z['census_group_series']).all() and np.isfinite(g['agent_state']).all())
+ # Agent represented people must close anchor census.
+ errs=[]
+ for ai,x in enumerate(g['anchor_age_ka']):
+  ti=int(np.where(np.isclose(z['age_ka'],x,atol=1e-10))[0][0]);errs.append(np.max(np.abs(np.sum(g['agent_state'][:,:,ai,:,0]*g['agent_active'][:,:,ai,:],axis=-1)-z['census_group_series'][:,:,ti,0])))
+ ck('weighted_agent_census_closure',max(errs)<1e-8,float(max(errs)))
+ ck('sensitivity_25',sens['variant_count']==25);ck('sensitivity_not_selection_gate',sens['selection_gate'] is False);ck('both_lineages_retained',sens['candidate_retention']==EXPECTED_CANDIDATES);ck('checkpoint_two_lineages_no_unique_identity',cp['candidate_cohort']==EXPECTED_CANDIDATES and cp['unique_human_identity_materialized'] is False);ck('census_semantics_explicit',auth['census_semantics'].startswith('UNCERTAINTY_AWARE'));ck('weighted_abm_semantics_explicit',auth['group_abm_semantics'].startswith('WEIGHTED_'));ck('no_archaeological_observation_claim',cp['archaeological_census_observation_claimed'] is False);ck('no_language_religion_agriculture_city',all(cp[k] is False for k in ('language_materialized','religion_materialized','agriculture_materialized','city_state_materialized')));ck('deep_off',auth['deep_biological_coupling'] is False);ck('no_unique_human_identity',auth['unique_human_identity_materialized'] is False);ck('evidence_multisource',len(auth['evidence_basis'])>=8)
+except Exception as e:
+ ck('audit_exception',False,repr(e))
+failed=[x for x in checks if not x['pass']];status=FINAL_PASS if not failed else 'FAIL_R330_FINAL_SEAL_AUDIT';res={'stage':STAGE,'audit':'FINAL_SINGLE_STAGE_CENSUS_CALIBRATION_WEIGHTED_GROUP_ABM_AND_COMMUNITY_HISTORY_AUTHORITY_CLOSURE','status':status,'verdict':'SEALED' if not failed else 'FAIL','checks_passed':len(checks)-len(failed),'checks_total':len(checks),'checks_failed':len(failed),'summary':{'candidate_lineages':2,'absolute_census_equivalent_materialized':True,'literal_archaeological_census_claimed':False,'weighted_group_abm_materialized':True,'person_level_abm_materialized':False,'unique_human_identity_materialized':False,'deep_biological_coupling':False,'next_stage':'LATE_PLEISTOCENE_TO_EARLY_HOLOCENE_CULTURAL_TECHNOLOGICAL_ECOLOGY'},'checks':checks};write_json(seal/'R3_30_FINAL_SEAL_AUDIT.json',res);(seal/'R3_30_FINAL_SEAL_AUDIT.md').write_text(f"# R3.30 Final Seal\n\n- Status: `{status}`\n- Checks: **{res['checks_passed']}/{res['checks_total']}**\n",encoding='utf-8')
+files={};
+for n in ['R3_30_FINAL_SEAL_AUDIT.json','R3_30_FINAL_SEAL_AUDIT.md']:
+ q=seal/n;files[n]={'bytes':q.stat().st_size,'sha256':sha256_file(q)}
+write_json(seal/'R3_30_FINAL_SEAL_MANIFEST.json',{'stage':STAGE,'status':status,'files':files});print(json.dumps(res,indent=2));sys.exit(1 if failed else 0)

@@ -1,0 +1,109 @@
+{
+  "authorized_engine_families": [
+    "CDMetaPOP",
+    "NEMO",
+    "SLiM"
+  ],
+  "authorized_job_count": 11,
+  "canonical_parameter_change_authorized": false,
+  "canonical_replay_authorized": false,
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "PASS_R421_P2_ADAPTER_IMPLEMENTATION_STATIC_VALIDATION_AND_SYMMETRIC_REEXECUTION_AUTHORIZATION_SEALED",
+      "name": "parent_r421_sealed",
+      "pass": true
+    },
+    {
+      "detail": "R422_EXACT_AUTHORIZED_EXECUTION_PLAN_FROZEN",
+      "name": "preexecution_plan_frozen",
+      "pass": true
+    },
+    {
+      "detail": 11,
+      "name": "exact_11_planned_jobs",
+      "pass": true
+    },
+    {
+      "detail": [
+        "CDMetaPOP",
+        "NEMO",
+        "SLiM"
+      ],
+      "name": "geonomics_not_in_execution_plan",
+      "pass": true
+    },
+    {
+      "detail": 11,
+      "name": "exact_11_job_audits",
+      "pass": true
+    },
+    {
+      "detail": {
+        "pass": 8,
+        "total": 11
+      },
+      "name": "all_11_authorized_jobs_pass",
+      "pass": false
+    },
+    {
+      "detail": {
+        "CDMetaPOP": 5,
+        "NEMO": 3,
+        "SLiM": 3
+      },
+      "name": "engine_execution_scope_exact_5_3_3",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_seed_ledgers_exactly_reused",
+      "pass": false
+    },
+    {
+      "detail": null,
+      "name": "all_results_target_independent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_results_noncanonical",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_engine_specific_semantic_guards_pass",
+      "pass": true
+    },
+    {
+      "detail": "R422_GEONOMICS_DEFERRED_IMPLEMENTATION_COMPLETION_AUDITED",
+      "name": "geonomics_deferred_completion_audit_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_readjudication_in_r422",
+      "pass": true
+    }
+  ],
+  "checks_failed": 2,
+  "checks_passed": 11,
+  "checks_total": 13,
+  "deep_biological_coupling": false,
+  "deferred_engine_families": [
+    "Geonomics"
+  ],
+  "engine_job_counts": {
+    "CDMetaPOP": 5,
+    "NEMO": 3,
+    "SLiM": 3
+  },
+  "geonomics_family_ready_for_execution": false,
+  "next_action": "REPAIR_R422_AUTHORIZED_ENGINE_EXECUTION_FAILURES",
+  "p3_execution_performed": false,
+  "readjudication_performed": false,
+  "stage": "v0.6D1-R4.22",
+  "status": "BLOCKED_R422_AUTHORIZED_EXECUTION_OR_DEFERRED_COMPLETION_FAILURE",
+  "successful_authorized_job_count": 8,
+  "target_repair_execution_performed": false
+}

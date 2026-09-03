@@ -1,0 +1,65 @@
+{
+  "authorized_case": {
+    "domain": "population_persistence",
+    "earliest_boundary": "R3.11_POST_CHA1",
+    "end_age_ma": 55.0,
+    "engine": "CDMetaPOP",
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "start_age_ma": 65.5,
+    "window_id": "H0_POST_CHA1_RECOVERY"
+  },
+  "canonical_parameter_change_authorized": false,
+  "canonical_replay_authorized": false,
+  "canonical_state_changed": false,
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "counterfactual": {
+    "change_scientific_parameters": false,
+    "id": "DIAGNOSTIC_ONLY_REFERENCE_POPULATION_HOLD",
+    "interpretation": "Diagnostic causal intervention only. It does not authorize a canonical replay or replacement of the A1 reference-population trajectory.",
+    "intervention": "Hold only env.reference_population at its exact 65.5 Ma value for 65.5->55 Ma while all other R3.11/R3.12 physical, habitat, climate, forage, migration, selection, gene-flow, variance, RI, founder, vicariance, reconnection, extinction and speciation machinery remains active.",
+    "reuse_exact_r310_parent": true,
+    "reuse_r311_and_r312_production_operators": true,
+    "write_canonical_checkpoint": false
+  },
+  "deep_biological_coupling": false,
+  "forcing_parity_policy": {
+    "configured_driver_presence_is_checked_against_actual_adapter_source": true,
+    "omitted_changed_normalized_habitat_fraction_end_is_a_forcing_coverage_gap": true,
+    "omitted_nonzero_normalized_environment_change_is_a_forcing_coverage_gap": true,
+    "population_persistence_requires_dynamic_end_forcing_coverage_or_explicit_comparability_downgrade": true,
+    "source_gap_does_not_auto_define_a_repair_transform": true,
+    "source_gap_does_not_prove_arcana_mechanics_wrong": true,
+    "start_state_only_parameterization_is_not_sufficient_for_dynamic_population_persistence_normalizability": true,
+    "target_adapter": "benchmarks/r43/cdmetapop_r43.py"
+  },
+  "majority_vote": false,
+  "parent_stage": "v0.6D1-R4.5",
+  "policy_freeze": {
+    "note": "R4.6-R1 corrects the blocked R4.6 candidate scope to the exact robust PRIMARY row already authorized and SEALED by R4.5. It does not select a new scientific result. Counterfactual outcome values cannot change the intervention or source-parity criteria.",
+    "result_selected": false,
+    "status": "R45_AUTHORIZED_CASE_INHERITED__R46_R1_SCOPE_REPAIR"
+  },
+  "r311_scientific_constants_frozen": {
+    "b": 0.9876543209876544,
+    "biology_cadence_years": 125000.0,
+    "founder_persistence_years": 1000000.0,
+    "mu_per_myr": 0.002,
+    "q_ceiling": 0.08,
+    "reconnection_persistence_years": 2000000.0,
+    "vicariance_persistence_years": 2000000.0
+  },
+  "r47_symmetry_policy": {
+    "affected_frozen_jobs": [
+      "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+      "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+    ],
+    "if_common_cdmetapop_adapter_changes": "All frozen R4.3 jobs that used benchmarks/r43/cdmetapop_r43.py must be re-evaluated symmetrically in a new evidence namespace; do not repair only the result-selected J09 cell."
+  },
+  "required_parent_next_action": "EXECUTE_R46_TARGETED_CAUSAL_COUNTERFACTUAL_FROM_R3_11_POST_CHA1",
+  "required_parent_status": "PASS_R45_EARLIEST_AUTHORITY_CAUSAL_DIAGNOSIS_RECALIBRATION_AND_REPLAY_PLAN_SEALED",
+  "stage": "v0.6D1-R4.6",
+  "title": "Targeted R3.11 Causal Counterfactual & R4.3 CDMetaPOP Forcing-Parity Audit (R4.6-R1 scope repair)"
+}

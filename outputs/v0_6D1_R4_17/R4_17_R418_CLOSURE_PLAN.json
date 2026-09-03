@@ -1,0 +1,33 @@
+{
+  "next_action": "BUILD_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE",
+  "r418_work_batches": {
+    "A_TARGET_COMPARABILITY_VALIDATION": {
+      "cell_count": 1,
+      "readjudication_authorized_in_r417": false
+    },
+    "B_PROXY_TARGET_CONTEXT_ONLY": {
+      "cell_count": 2
+    },
+    "C_SOURCE_CANDIDATE_EXHAUSTION_TARGET_DESIGN": {
+      "cell_count": 44
+    },
+    "D_NO_SOURCE_CANDIDATE_TARGET_DESIGN": {
+      "cell_count": 12
+    },
+    "E_P2_ADAPTER_BACKLOG": {
+      "cell_count": 6,
+      "includes_nonpromoted_recovered_metrics": 2
+    },
+    "F_P3_EXTENSION_BACKLOG": {
+      "cell_count": 6
+    }
+  },
+  "rules": [
+    "R4.18 validates metric/target comparability before any partial readjudication",
+    "no target is selected by numerical agreement",
+    "proxy-only materializations remain contextual",
+    "P2/P3 execution remains separately authorized"
+  ],
+  "stage": "v0.6D1-R4.17",
+  "status": "R417_TARGET_EXTRACTION_AND_PROMOTION_CLOSURE_FROZEN"
+}

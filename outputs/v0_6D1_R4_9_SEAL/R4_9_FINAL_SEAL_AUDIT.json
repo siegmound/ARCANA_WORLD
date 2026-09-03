@@ -1,0 +1,89 @@
+{
+  "audit": "FINAL_ADDITIONAL_MATCHED_CONTROL_REPLICATES_AND_CAUSAL_DIRECTION_RESOLUTION",
+  "checks": [
+    {
+      "detail": "PASS_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS_AND_MATCHED_CONTROL_SEALED",
+      "name": "parent_r48_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES_AND_CAUSAL_DIRECTION_RESOLUTION_COMPLETE",
+      "name": "r49_resolution_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r49_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+      "name": "diagnosis_class_valid",
+      "pass": true
+    },
+    {
+      "detail": 20,
+      "name": "fixed_total_pair_count",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r47_structural_parent_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r48_uncertain_parent_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R410_MATCHED_CONTROL_PRECISION_AND_ALTERNATE_EVIDENCE_CLOSURE_PLAN",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "next_action": "BUILD_R410_MATCHED_CONTROL_PRECISION_AND_ALTERNATE_EVIDENCE_CLOSURE_PLAN",
+  "stage": "v0.6D1-R4.9",
+  "status": "PASS_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES_AND_CAUSAL_DIRECTION_RESOLUTION_SEALED",
+  "summary": {
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "deep_biological_coupling": false,
+    "diagnosis_class": "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+    "next_action": "BUILD_R410_MATCHED_CONTROL_PRECISION_AND_ALTERNATE_EVIDENCE_CLOSURE_PLAN",
+    "paired_effect_summary": {
+      "max": 1.0016433853738702,
+      "median": 0.9261766194331984,
+      "min": 0.8788109756097561,
+      "n": 20,
+      "q10": 0.8837508460770704,
+      "q90": 0.9690978411398663
+    },
+    "total_pair_count": 20
+  },
+  "verdict": "SEALED"
+}

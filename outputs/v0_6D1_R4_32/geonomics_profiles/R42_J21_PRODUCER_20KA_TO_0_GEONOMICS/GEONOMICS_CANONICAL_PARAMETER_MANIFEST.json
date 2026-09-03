@@ -1,0 +1,36 @@
+{
+  "canonical_spatial_sources": [
+    {
+      "hash_match": true,
+      "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "role": "HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE",
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+    },
+    {
+      "hash_match": true,
+      "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "role": "PRODUCER_RESOURCE_LANDSCAPE",
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+    }
+  ],
+  "canonical_write": false,
+  "comparison_target_used": false,
+  "default_model_used": false,
+  "engine": "Geonomics",
+  "external_engine_execution_authorized_in_r432": false,
+  "geonomics_execution_ready": false,
+  "geonomics_parameters_file": null,
+  "job_id": "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS",
+  "mapping_fields": {
+    "domain_mapping": "producer resource landscape",
+    "population_mapping": "producer_landscape resource_abundance/suitability as producer support only, not agent count synthesis",
+    "space_mapping": "shared raster grid index; no cross-layer interpolation",
+    "time_mapping": "anchor_age_ka exact shared anchors",
+    "uncertainty_mapping": "environment and producer layers remain provenance-separate; cross-layer numeric mixing forbidden without later explicit authority"
+  },
+  "profile_status": "CANONICAL_PARAMETER_MANIFEST_STATIC_VALIDATED_PENDING_RUNTIME_COMPILATION",
+  "runtime_make_model_validation_performed": false,
+  "source_authority_kind": "R3_33_R3_34_CANONICAL_HOLOCENE_RESOURCE_LANDSCAPE_BINDING",
+  "stage": "v0.6D1-R4.32",
+  "window_id": "PRODUCER_20KA_TO_0"
+}

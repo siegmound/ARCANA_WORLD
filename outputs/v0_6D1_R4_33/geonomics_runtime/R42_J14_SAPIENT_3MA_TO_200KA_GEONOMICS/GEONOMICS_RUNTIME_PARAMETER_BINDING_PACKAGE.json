@@ -1,0 +1,99 @@
+{
+  "canonical_source_inventories": [
+    {
+      "array_count": 4,
+      "arrays": [
+        {
+          "dtype": "float64",
+          "key": "age_ma",
+          "shape": [
+            141
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "RPT_010_D02",
+            "RPT_009_D02"
+          ],
+          "dtype": "<U11",
+          "key": "candidate_ids",
+          "shape": [
+            2
+          ]
+        },
+        {
+          "dtype": "float32",
+          "key": "spatial_state",
+          "shape": [
+            96,
+            2,
+            141,
+            8,
+            4
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "population_proxy",
+            "grid_row",
+            "grid_col",
+            "active"
+          ],
+          "dtype": "<U16",
+          "key": "state_variable_names",
+          "shape": [
+            4
+          ]
+        }
+      ],
+      "path": "outputs/v0_6D1_R4_30/authority/R4_30_J14_SPATIAL_AUTHORITY_REPLAY_CANDIDATE.npz",
+      "sha256": "eed2d1e350783f1d2dc31c5b7e697330ccbfcf63024062bc9f4ed2f8905f4756"
+    }
+  ],
+  "canonical_sources": [
+    {
+      "current_sha256": "eed2d1e350783f1d2dc31c5b7e697330ccbfcf63024062bc9f4ed2f8905f4756",
+      "expected_sha256": "eed2d1e350783f1d2dc31c5b7e697330ccbfcf63024062bc9f4ed2f8905f4756",
+      "hash_match": true,
+      "path": "outputs/v0_6D1_R4_30/authority/R4_30_J14_SPATIAL_AUTHORITY_REPLAY_CANDIDATE.npz",
+      "role": null
+    }
+  ],
+  "canonical_write": false,
+  "comparison_target_used": false,
+  "cross_layer_numeric_mixing_performed": false,
+  "default_model_used": false,
+  "engine": "Geonomics",
+  "engine_version_required": "1.4.9",
+  "geonomics_scientific_execution_authorized_in_r433": false,
+  "geonomics_scientific_execution_performed": false,
+  "job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+  "mapping_fields": {
+    "domain_mapping": "SAPIENT_3MA_TO_200KA spatial population support",
+    "population_mapping": "population per active deme preserving R3.27 effective_population",
+    "space_mapping": "deme_state grid_row/grid_col on age-matched canonical support",
+    "time_mapping": "age_ma exact R3.27 axis",
+    "uncertainty_mapping": "candidate/forcing-regime ensemble retained as explicit authority dimensions"
+  },
+  "native_geonomics_params_file": null,
+  "native_geonomics_params_materialized_in_r433": false,
+  "package_status": "RUNTIME_PARAMETER_BINDING_PACKAGE_COMPILED_SELECTOR_AUTHORITY_REQUIRED_BEFORE_NATIVE_PARAMS",
+  "parent_static_parameter_manifest_file": "outputs/v0_6D1_R4_32/geonomics_profiles/R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS/GEONOMICS_CANONICAL_PARAMETER_MANIFEST.json",
+  "parent_static_parameter_manifest_hash_match": true,
+  "parent_static_parameter_manifest_sha256": "356a8f5bfd84743f7c96da409bb52802a33cc039cc535507def35cfdde2f5c8a",
+  "runtime_make_model_authorized_in_r433": false,
+  "runtime_make_model_validation_performed": false,
+  "selector_authority": {
+    "comparison_target_selected_selector_forbidden": true,
+    "default_selector_values": null,
+    "explicit_frozen_selector_bundle_required_before_native_params": true,
+    "result_selected_selector_forbidden": true,
+    "selector_requirements": [
+      "age_ma",
+      "candidate_ids"
+    ]
+  },
+  "source_authority_kind": "R431_SEALED_DERIVED_CANONICAL_SPATIAL_AUTHORITY",
+  "stage": "v0.6D1-R4.33",
+  "window_id": "SAPIENT_3MA_TO_200KA"
+}

@@ -1,0 +1,35 @@
+{
+  "canonical_spatial_sources": [
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "role": "HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE",
+      "sha256": "05548f29ffff0e3562f72a4e2125b17a4c662e7727f0c5a6a5a87cac85cb0cbf"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "role": "PRODUCER_RESOURCE_LANDSCAPE",
+      "sha256": "7cff1a327ad1fdb7ea9db06c7859ce7c9d888bf338554b349a47217c20225483"
+    }
+  ],
+  "comparison_target_used": false,
+  "geonomics_execution_ready": false,
+  "geonomics_parameter_materialization_authorized_in_r423": false,
+  "geonomics_parameters_file": null,
+  "job_id": "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS",
+  "profile_status": "CANONICAL_SPATIAL_BINDING_TRANSLATION_FROZEN",
+  "stage": "v0.6D1-R4.23",
+  "translation": {
+    "cross_layer_numeric_mixing": "FORBIDDEN_WITHOUT_EXPLICIT_R424_AUTHORITY",
+    "environment_tensor": "environment_fields",
+    "environment_variable_names": [
+      "resource"
+    ],
+    "producer_tensor": "producer_landscape",
+    "producer_variable_names": [
+      "producer"
+    ],
+    "spatial_interpolation": "FORBIDDEN_IN_R423",
+    "time_axis": "anchor_age_ka"
+  },
+  "window_id": "PRODUCER_20KA_TO_0"
+}

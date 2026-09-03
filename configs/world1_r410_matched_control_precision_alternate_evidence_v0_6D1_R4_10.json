@@ -1,0 +1,53 @@
+{
+  "stage": "v0.6D1-R4.10",
+  "title": "Matched-Control Precision & Alternate-Evidence Closure Plan with CDMetaPOP Population-Metric Extraction Integrity Audit",
+  "parent_stage": "v0.6D1-R4.9",
+  "required_parent_status": "PASS_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES_AND_CAUSAL_DIRECTION_RESOLUTION_SEALED",
+  "required_parent_diagnosis_class": "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+  "required_parent_next_action": "BUILD_R410_MATCHED_CONTROL_PRECISION_AND_ALTERNATE_EVIDENCE_CLOSURE_PLAN",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "policy_freeze": {
+    "status": "FROZEN_BEFORE_R410_SOURCE_AND_OUTPUT_INTEGRITY_AUDIT",
+    "result_selected": false,
+    "reason": "R4.9 explicitly forbids automatic further replicate escalation. R4.10 therefore audits precision limits and alternate evidence, including population-metric extraction integrity, before any new execution."
+  },
+  "authorized_case": {
+    "window_id": "H0_POST_CHA1_RECOVERY",
+    "domain": "population_persistence",
+    "engine": "CDMetaPOP",
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "earliest_boundary": "R3.11_POST_CHA1"
+  },
+  "precision_policy": {
+    "preserve_r49_diagnosis_without_posthoc_reclassification": true,
+    "automatic_additional_replicates_forbidden": true,
+    "reuse_r44_ratio_neutral_factor": true,
+    "descriptive_counts_only": true,
+    "paired_effect_precision_is_not_adjudicative_if_metric_extraction_integrity_fails": true
+  },
+  "cdmetapop_population_metric_integrity_policy": {
+    "broad_filename_substring_selector_forbidden": true,
+    "strict_individual_filename_regex": "^ind-?[0-9]+\\.csv$",
+    "preferred_population_tracking_artifact": "summary_popAllTime.csv",
+    "preferred_population_tracking_field": "N_Initial",
+    "preferred_total_semantics": "FIRST_PIPE_COMPONENT_IS_TOTAL_ACROSS_PATCHES",
+    "same_lifecycle_phase_required_for_start_and_end": true,
+    "copied_input_files_must_never_be_population_outputs": true,
+    "historical_invalid_metrics_preserved_but_not_promoted": true
+  },
+  "r411_closure_policy": {
+    "reextract_existing_runtime_outputs_before_any_rerun": true,
+    "rerun_only_if_required_summary_artifacts_are_missing": true,
+    "repair_applies_symmetrically_to_all_five_cdmetapop_jobs": true,
+    "rebuild_j09_dynamic_neutral_paired_effect_from_repaired_population_tracking": true,
+    "readjudicate_with_frozen_r44_rules": true,
+    "no_new_thresholds": true,
+    "no_majority_vote": true,
+    "no_canonical_write": true
+  }
+}

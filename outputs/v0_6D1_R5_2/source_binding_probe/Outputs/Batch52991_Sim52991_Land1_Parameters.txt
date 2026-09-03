@@ -1,0 +1,72 @@
+RangeShifter 3.0 
+================    =====================
+
+BATCH MODE 	yes
+SEED 	520201
+REPLICATES 	1
+YEARS 	1
+REPRODUCTIVE SEASONS / YEAR	1
+CELL-BASED MODEL
+BOUNDARIES 	reflective
+
+LANDSCAPE:	imported map
+TYPE: 	habitat codes
+FILE NAME: habitat_000.asc
+No. HABITATS:	2
+RESOLUTION (m): 	100
+DIMENSIONS:  X 180  Y 90
+AVAILABLE:   min.X 0 min.Y 0  max.X 179 max.Y 89
+
+SPECIES DISTRIBUTION LOADED: 	yes
+RESOLUTION (m)	100
+FILE NAME: source.asc
+
+ENVIRONMENTAL GRADIENT:	 no
+ENVIRONMENTAL STOCHASTICITY:	no
+LOCAL EXTINCTION PROBABILITY:	0.0
+
+SPECIES' PARAMETERS.
+REPRODUCTION:
+TYPE: Asexual / Only female model
+STAGE STRUCTURE:	no
+Rmax	1.5
+bc	1
+
+CARRYING CAPACITIES:
+Habitat 1: 	K 10
+Habitat 2: 	K 0
+
+DISPERSAL - EMIGRATION:	density-independent
+USE FULL KERNEL TO DETERMINE EMIGRATION: no
+SEX-DEPENDENT:   no
+STAGE-DEPENDENT: no
+EMIGRATION PROB.:	0.1
+
+DISPERSAL - TRANSFER: 	dispersal kernel
+TYPE: 	negative exponential
+SEX-DEPENDENT:   no
+STAGE-DEPENDENT: no
+MEAN DISTANCE I: 	100
+DISPERSAL MORTALITY:   constant
+MORTALITY PROBABILITY: 0
+
+DISPERSAL - SETTLEMENT:
+SEX-DEPENDENT:   no
+STAGE-DEPENDENT: no
+IF THE ARRIVAL CELL/PATCH IS UNSUITABLE: die
+MATING REQUIREMENTS: no
+
+GENETICS:
+No genetics simulated
+
+INITIALISATION CONDITIONS:
+From species distribution: 	
+all presence cells/patches
+INITIAL NO. OF INDIVIDUALS: 	at half carrying capacity
+GEOGRAPHICAL CONSTRAINTS (cell numbers): 
+min X: 0 max X: 179
+min Y: 0 max Y: 89
+
+OUTPUTS:
+Range - every 1 year
+Populations - every 1 year

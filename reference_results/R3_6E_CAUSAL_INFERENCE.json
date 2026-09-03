@@ -1,0 +1,338 @@
+{
+  "analytic_polygenic_reference": [
+    {
+      "analytic_polygenic_delta_va": 0.00037414352454961594,
+      "axis": 0,
+      "cross_copy_spread": 0.0,
+      "loci": 64,
+      "pair": "B1_TWO_DEME_ADMIXTURE"
+    },
+    {
+      "analytic_polygenic_delta_va": 0.00018327290502264879,
+      "axis": 1,
+      "cross_copy_spread": 0.0,
+      "loci": 64,
+      "pair": "B1_TWO_DEME_ADMIXTURE"
+    },
+    {
+      "analytic_polygenic_delta_va": 0.0007119768425644969,
+      "axis": 0,
+      "cross_copy_spread": 0.0,
+      "loci": 64,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS"
+    },
+    {
+      "analytic_polygenic_delta_va": 0.0004189836102680509,
+      "axis": 1,
+      "cross_copy_spread": 0.0,
+      "loci": 64,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS"
+    }
+  ],
+  "automatic_calibration_allowed": false,
+  "canonical_write_allowed": false,
+  "ceiling_change_authorized": false,
+  "mechanism": {
+    "arcana_operator_semantics": "whole_trait_mixture_second_moment_includes_between_deme_mean_variance",
+    "causal_interpretation": "ARCANA current moment mixing promotes population-structure / ancestry covariance into within-deme VA; free recombination in NEMO does not preserve that covariance as standing additive variance.",
+    "not_attributed_to": [
+      "Riccati b",
+      "mutation mu",
+      "VA ceiling",
+      "cadence alone"
+    ],
+    "polygenic_reference_semantics": "within_deme_genic_additive_variance_after_allele_frequency_mixing"
+  },
+  "mu_b_recalibration_authorized": false,
+  "nemo_flow_structure": [
+    {
+      "axis": 0,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.991375,
+      "nemo_stat_Qst_min": 0.983827,
+      "nemo_stat_Va_mean": 0.0003340545,
+      "nemo_stat_Vb_mean": 0.13088535,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 500
+    },
+    {
+      "axis": 1,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.993564,
+      "nemo_stat_Qst_min": 0.991725,
+      "nemo_stat_Va_mean": 7.964645e-05,
+      "nemo_stat_Vb_mean": 0.02464245,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 500
+    },
+    {
+      "axis": 0,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.995595,
+      "nemo_stat_Qst_min": 0.993408,
+      "nemo_stat_Va_mean": 0.000525245,
+      "nemo_stat_Vb_mean": 0.192105,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 2000
+    },
+    {
+      "axis": 1,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.9817885,
+      "nemo_stat_Qst_min": 0.972096,
+      "nemo_stat_Va_mean": 0.0007018325000000001,
+      "nemo_stat_Vb_mean": 0.10733065,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 2000
+    },
+    {
+      "axis": 0,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.9961895000000001,
+      "nemo_stat_Qst_min": 0.9948,
+      "nemo_stat_Va_mean": 0.0005683215,
+      "nemo_stat_Vb_mean": 0.2916535,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 500
+    },
+    {
+      "axis": 1,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.9943219999999999,
+      "nemo_stat_Qst_min": 0.993298,
+      "nemo_stat_Va_mean": 0.000833894,
+      "nemo_stat_Vb_mean": 0.295141,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 500
+    },
+    {
+      "axis": 0,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.9891985,
+      "nemo_stat_Qst_min": 0.985285,
+      "nemo_stat_Va_mean": 0.00174394,
+      "nemo_stat_Vb_mean": 0.380891,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 2000
+    },
+    {
+      "axis": 1,
+      "n": 2,
+      "nemo_stat_Qst_mean": 0.9866729999999999,
+      "nemo_stat_Qst_min": 0.980498,
+      "nemo_stat_Va_mean": 0.00113722,
+      "nemo_stat_Vb_mean": 0.2260645,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 2000
+    }
+  ],
+  "next_required_stage": "R3.6F / R3.7 segregation-aware admixture operator design and governed calibration, with larger-N/replicate validation before production promotion",
+  "population_size_sensitivity": [
+    {
+      "axis": 0,
+      "converged": false,
+      "delta_va_range_across_N": 0.00017976222015895848,
+      "note": "R3.6D reports N sensitivity; convergence thresholds are not authorially inferred.",
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_sizes": [
+        500,
+        2000
+      ]
+    },
+    {
+      "axis": 1,
+      "converged": false,
+      "delta_va_range_across_N": 0.0004071603001052855,
+      "note": "R3.6D reports N sensitivity; convergence thresholds are not authorially inferred.",
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_sizes": [
+        500,
+        2000
+      ]
+    },
+    {
+      "axis": 0,
+      "converged": false,
+      "delta_va_range_across_N": 0.0011075635447010989,
+      "note": "R3.6D reports N sensitivity; convergence thresholds are not authorially inferred.",
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_sizes": [
+        500,
+        2000
+      ]
+    },
+    {
+      "axis": 1,
+      "converged": false,
+      "delta_va_range_across_N": 0.0003027861181497573,
+      "note": "R3.6D reports N sensitivity; convergence thresholds are not authorially inferred.",
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_sizes": [
+        500,
+        2000
+      ]
+    }
+  ],
+  "production_r3_5_replay_authorized": false,
+  "schema": "ARCANA_R36E_CAUSAL_INFERENCE_V1",
+  "source_executed_count": 40,
+  "source_job_count": 40,
+  "source_parsed_complete_count": 40,
+  "source_r36d_status": "NEMO_EVIDENCE_COMPLETE_REVIEW_REQUIRED",
+  "stage": "v0.6D1-R3.6E",
+  "three_way_causal_comparison": [
+    {
+      "analytic_polygenic_delta_va": 0.00037414352454961594,
+      "arcana_1x125k_over_analytic": 126.95662729210463,
+      "arcana_5x25k_over_analytic": 124.52398411955454,
+      "arcana_admixture_only_1x125k_delta_va": 0.04749999999999999,
+      "arcana_admixture_only_5x25k_delta_va": 0.04658984230945054,
+      "axis": 0,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 0.0004423699940625001,
+      "nemo_delta_va_mean": 0.0003382491936950684,
+      "nemo_delta_va_sd": 0.0003191865536684149,
+      "nemo_fraction_of_arcana_1x125k": 0.007121035656738284,
+      "nemo_minus_arcana_1x125k": -0.04716175080630492,
+      "nemo_minus_arcana_5x25k": -0.046251593115755475,
+      "nemo_over_analytic": 0.9040626698063098,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 500,
+      "replicates": 2
+    },
+    {
+      "analytic_polygenic_delta_va": 0.00018327290502264879,
+      "arcana_1x125k_over_analytic": 126.996404608328,
+      "arcana_5x25k_over_analytic": 124.56299925408825,
+      "arcana_admixture_only_1x125k_delta_va": 0.023274999999999976,
+      "arcana_admixture_only_5x25k_delta_va": 0.022829022731630788,
+      "axis": 1,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 5.2670771584716884e-05,
+      "nemo_delta_va_mean": 8.328966189422611e-05,
+      "nemo_delta_va_sd": 3.8003938528450027e-05,
+      "nemo_fraction_of_arcana_1x125k": 0.0035785031963147668,
+      "nemo_minus_arcana_1x125k": -0.02319171033810575,
+      "nemo_minus_arcana_5x25k": -0.02274573306973656,
+      "nemo_over_analytic": 0.45445703981138513,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 500,
+      "replicates": 2
+    },
+    {
+      "analytic_polygenic_delta_va": 0.00037414352454961594,
+      "arcana_1x125k_over_analytic": 126.95662729210463,
+      "arcana_5x25k_over_analytic": 124.52398411955454,
+      "arcana_admixture_only_1x125k_delta_va": 0.04749999999999999,
+      "arcana_admixture_only_5x25k_delta_va": 0.04658984230945054,
+      "axis": 0,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 0.0008007408755389023,
+      "nemo_delta_va_mean": 0.0005180114138540269,
+      "nemo_delta_va_sd": 0.0005777645949661338,
+      "nemo_fraction_of_arcana_1x125k": 0.010905503449558464,
+      "nemo_minus_arcana_1x125k": -0.04698198858614596,
+      "nemo_minus_arcana_5x25k": -0.046071830895596515,
+      "nemo_over_analytic": 1.3845259368783551,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 2000,
+      "replicates": 2
+    },
+    {
+      "analytic_polygenic_delta_va": 0.00018327290502264879,
+      "arcana_1x125k_over_analytic": 126.996404608328,
+      "arcana_5x25k_over_analytic": 124.56299925408825,
+      "arcana_admixture_only_1x125k_delta_va": 0.023274999999999976,
+      "arcana_admixture_only_5x25k_delta_va": 0.022829022731630788,
+      "axis": 1,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 0.0003056014990455549,
+      "nemo_delta_va_mean": 0.0004904499619995116,
+      "nemo_delta_va_sd": 0.00022050295134274094,
+      "nemo_fraction_of_arcana_1x125k": 0.021071963995682584,
+      "nemo_minus_arcana_1x125k": -0.022784550038000465,
+      "nemo_minus_arcana_5x25k": -0.022338572769631276,
+      "nemo_over_analytic": 2.676063665487826,
+      "pair": "B1_TWO_DEME_ADMIXTURE",
+      "population_size": 2000,
+      "replicates": 2
+    },
+    {
+      "analytic_polygenic_delta_va": 0.0007119768425644969,
+      "arcana_1x125k_over_analytic": 114.48317433730477,
+      "arcana_5x25k_over_analytic": 111.90746730668829,
+      "arcana_admixture_only_1x125k_delta_va": 0.0815093689914351,
+      "arcana_admixture_only_5x25k_delta_va": 0.07967552523240559,
+      "axis": 0,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 0.00047675142848858617,
+      "nemo_delta_va_mean": 0.0005760905813278197,
+      "nemo_delta_va_sd": 0.00034399404900474766,
+      "nemo_fraction_of_arcana_1x125k": 0.0070677835990652135,
+      "nemo_minus_arcana_1x125k": -0.08093327841010728,
+      "nemo_minus_arcana_5x25k": -0.07909943465107777,
+      "nemo_over_analytic": 0.8091423019501263,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 500,
+      "replicates": 2
+    },
+    {
+      "analytic_polygenic_delta_va": 0.0004189836102680509,
+      "arcana_1x125k_over_analytic": 118.17512394952723,
+      "arcana_5x25k_over_analytic": 115.61198304021381,
+      "arcana_admixture_only_1x125k_delta_va": 0.04951344007624733,
+      "arcana_admixture_only_5x25k_delta_va": 0.04843952604443745,
+      "axis": 1,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 0.00021110205219268793,
+      "nemo_delta_va_mean": 0.0008193118829727174,
+      "nemo_delta_va_sd": 0.00015231805370188382,
+      "nemo_fraction_of_arcana_1x125k": 0.016547262353636363,
+      "nemo_minus_arcana_1x125k": -0.04869412819327461,
+      "nemo_minus_arcana_5x25k": -0.04762021416146473,
+      "nemo_over_analytic": 1.955474779666323,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 500,
+      "replicates": 2
+    },
+    {
+      "analytic_polygenic_delta_va": 0.0007119768425644969,
+      "arcana_1x125k_over_analytic": 114.48317433730477,
+      "arcana_5x25k_over_analytic": 111.90746730668829,
+      "arcana_admixture_only_1x125k_delta_va": 0.0815093689914351,
+      "arcana_admixture_only_5x25k_delta_va": 0.07967552523240559,
+      "axis": 0,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 0.0004568652128224521,
+      "nemo_delta_va_mean": 0.0016836541260289186,
+      "nemo_delta_va_sd": 0.00032964539803570525,
+      "nemo_fraction_of_arcana_1x125k": 0.020655958288743895,
+      "nemo_minus_arcana_1x125k": -0.07982571486540618,
+      "nemo_minus_arcana_5x25k": -0.07799187110637668,
+      "nemo_over_analytic": 2.3647596738743633,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 2000,
+      "replicates": 2
+    },
+    {
+      "analytic_polygenic_delta_va": 0.0004189836102680509,
+      "arcana_1x125k_over_analytic": 118.17512394952723,
+      "arcana_5x25k_over_analytic": 115.61198304021381,
+      "arcana_admixture_only_1x125k_delta_va": 0.04951344007624733,
+      "arcana_admixture_only_5x25k_delta_va": 0.04843952604443745,
+      "axis": 1,
+      "inference_authority": "REVIEW_ONLY_NO_AUTOMATIC_CALIBRATION",
+      "nemo_delta_va_ci95_halfwidth": 0.00022561808489799496,
+      "nemo_delta_va_mean": 0.0011220980011224747,
+      "nemo_delta_va_sd": 0.0001627919161119331,
+      "nemo_fraction_of_arcana_1x125k": 0.022662493242128202,
+      "nemo_minus_arcana_1x125k": -0.048391342075124855,
+      "nemo_minus_arcana_5x25k": -0.04731742804331498,
+      "nemo_over_analytic": 2.6781429478938237,
+      "pair": "C3_EMBEDDABLE_HIGH_ADMIXTURE_STRESS",
+      "population_size": 2000,
+      "replicates": 2
+    }
+  ],
+  "verdict": "STRUCTURAL_ADMIXTURE_OPERATOR_MISMATCH_SUPPORTED__CALIBRATION_NOT_YET_AUTHORIZED"
+}

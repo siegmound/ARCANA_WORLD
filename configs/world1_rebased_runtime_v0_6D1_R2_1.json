@@ -1,0 +1,22 @@
+{
+  "stage": "v0.6D1-R2.1",
+  "start_age_ma": 210.0,
+  "end_age_ma": 180.0,
+  "macrostep_years": 500000.0,
+  "biology_cadence_years": 125000.0,
+  "transport_cadence_years": 62500.0,
+  "speciation_check_interval_years": 500000.0,
+  "ordinary_extinction_check_interval_years": 500000.0,
+  "deme_fission_check_interval_years": 500000.0,
+  "persistent_vicariance_fission_enabled": false,
+  "persistent_vicariance_activation_reason": "R2.1 has only 210/180 Ma paleogeographic keyframes; actuator is implemented/tested but production activation waits for R3 resolved barrier history",
+  "speciation_authority": "D3.0C structural gate + D3.2B founder viability",
+  "ordinary_extinction_authority": "D3.2D persistent deterministic nonviability semantics",
+  "reproductive_components_backend": "scipy.sparse.csgraph.connected_components",
+  "raster_components_backend": "scipy.ndimage.label + explicit longitude seam union",
+  "remap_backend": "scipy.spatial.cKDTree",
+  "deep_biological_coupling": false,
+  "global_speciation_rate": null,
+  "global_extinction_rate": null,
+  "seed": 917231
+}

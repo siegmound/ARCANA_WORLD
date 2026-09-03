@@ -1,0 +1,249 @@
+{
+  "canonical_source_inventories": [
+    {
+      "array_count": 14,
+      "arrays": [
+        {
+          "dtype": "float32",
+          "key": "admixture_opportunity_cumulative",
+          "shape": [
+            32,
+            280
+          ]
+        },
+        {
+          "dtype": "float64",
+          "key": "age_ka",
+          "shape": [
+            280
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "RPT_010_D02",
+            "RPT_009_D02"
+          ],
+          "dtype": "<U11",
+          "key": "candidate_ids",
+          "shape": [
+            2
+          ]
+        },
+        {
+          "dtype": "uint8",
+          "key": "cha2_active",
+          "shape": [
+            32,
+            2,
+            80,
+            6
+          ]
+        },
+        {
+          "dtype": "float64",
+          "key": "cha2_age_ka",
+          "shape": [
+            80
+          ]
+        },
+        {
+          "dtype": "float32",
+          "key": "cha2_deme_state",
+          "shape": [
+            32,
+            2,
+            80,
+            6,
+            7
+          ]
+        },
+        {
+          "dtype": "float32",
+          "key": "contact_index",
+          "shape": [
+            32,
+            280
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            15,
+            18,
+            21,
+            24,
+            27,
+            30,
+            33,
+            36,
+            39,
+            42,
+            45,
+            48,
+            51,
+            54,
+            57,
+            60,
+            63,
+            66,
+            69,
+            72,
+            75,
+            78,
+            81,
+            84,
+            87,
+            90,
+            93
+          ],
+          "dtype": "int64",
+          "key": "parent_member_indices",
+          "shape": [
+            32
+          ]
+        },
+        {
+          "dtype": "uint8",
+          "key": "snapshot_active",
+          "shape": [
+            32,
+            2,
+            15,
+            6
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            200.0,
+            125.0,
+            100.0,
+            75.0,
+            50.0,
+            30.0,
+            20.0,
+            15.0,
+            14.0,
+            13.0,
+            12.0,
+            11.0,
+            10.0,
+            5.0,
+            0.0
+          ],
+          "dtype": "float64",
+          "key": "snapshot_age_ka",
+          "shape": [
+            15
+          ]
+        },
+        {
+          "dtype": "float32",
+          "key": "snapshot_deme_state",
+          "shape": [
+            32,
+            2,
+            15,
+            6,
+            7
+          ]
+        },
+        {
+          "dtype": "float32",
+          "key": "species_summary",
+          "shape": [
+            32,
+            2,
+            280,
+            8
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "population_proxy",
+            "active_demes",
+            "spatial_spread",
+            "genetic_diversity_proxy",
+            "adaptive_integration",
+            "admixture_fraction_proxy",
+            "cha2_population_weighted_hazard",
+            "cha2_displacement_pressure"
+          ],
+          "dtype": "<U31",
+          "key": "species_summary_variable_names",
+          "shape": [
+            8
+          ]
+        },
+        {
+          "axis_values_if_small": [
+            "population_proxy",
+            "grid_row",
+            "grid_col",
+            "local_suitability",
+            "genetic_diversity_proxy",
+            "adaptive_integration",
+            "lineage0_ancestry_fraction"
+          ],
+          "dtype": "<U26",
+          "key": "state_variable_names",
+          "shape": [
+            7
+          ]
+        }
+      ],
+      "path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+      "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a"
+    }
+  ],
+  "canonical_sources": [
+    {
+      "current_sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+      "expected_sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+      "hash_match": true,
+      "path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+      "role": null
+    }
+  ],
+  "canonical_write": false,
+  "comparison_target_used": false,
+  "cross_layer_numeric_mixing_performed": false,
+  "default_model_used": false,
+  "engine": "Geonomics",
+  "engine_version_required": "1.4.9",
+  "geonomics_scientific_execution_authorized_in_r433": false,
+  "geonomics_scientific_execution_performed": false,
+  "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+  "mapping_fields": {
+    "domain_mapping": "sapient spatial population support",
+    "population_mapping": "population_proxy",
+    "space_mapping": "snapshot_deme_state:grid_row,grid_col + snapshot_active",
+    "time_mapping": "snapshot_age_ka",
+    "uncertainty_mapping": "preserve replay/candidate dimensions; no target-derived tuning"
+  },
+  "native_geonomics_params_file": null,
+  "native_geonomics_params_materialized_in_r433": false,
+  "package_status": "RUNTIME_PARAMETER_BINDING_PACKAGE_COMPILED_SELECTOR_AUTHORITY_REQUIRED_BEFORE_NATIVE_PARAMS",
+  "parent_static_parameter_manifest_file": "outputs/v0_6D1_R4_32/geonomics_profiles/R42_J18_SAPIENT_200KA_TO_0_GEONOMICS/GEONOMICS_CANONICAL_PARAMETER_MANIFEST.json",
+  "parent_static_parameter_manifest_hash_match": true,
+  "parent_static_parameter_manifest_sha256": "5a4ea18632d255c9f67f6bc4a0fc745eb075e86d8f5bcb58fa56911ab4431cab",
+  "runtime_make_model_authorized_in_r433": false,
+  "runtime_make_model_validation_performed": false,
+  "selector_authority": {
+    "comparison_target_selected_selector_forbidden": true,
+    "default_selector_values": null,
+    "explicit_frozen_selector_bundle_required_before_native_params": true,
+    "result_selected_selector_forbidden": true,
+    "selector_requirements": [
+      "parent_member_indices",
+      "candidate_ids",
+      "snapshot_age_ka"
+    ]
+  },
+  "source_authority_kind": "R3_28_CANONICAL_HIGH_RESOLUTION_SPATIAL_REPLAY",
+  "stage": "v0.6D1-R4.33",
+  "window_id": "SAPIENT_200KA_TO_0"
+}

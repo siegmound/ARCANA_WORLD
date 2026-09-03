@@ -1,0 +1,118 @@
+{
+  "stage": "v0.6D1-R4.37-R1",
+  "status": "PASS_R437_R1_LIVE_FAILURE_DETAIL_DIAGNOSTIC_CAPTURED",
+  "source_r437_status": "BLOCKED_R437_CANONICAL_LAYER_BINDING_OR_EXACT_STATE_INJECTION_DRY_RUN_VALIDATION_FAILURE",
+  "scientific_claim": false,
+  "diagnostic_only": true,
+  "j21": {
+    "status": "BLOCKED_R437_J21_IDENTITY_VALUES_NOT_NATIVE_GEONOMICS_RANGE",
+    "range_record_count": 151,
+    "out_of_native_range_or_invalid_count": 2,
+    "bad_records": [
+      {
+        "payload_file": "outputs/v0_6D1_R4_36/geonomics_canonical_payload/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/initial_layers/ENV_000_temperature_anomaly_c.npy",
+        "payload_sha256": "c61afc8632c0c30b9c2337f3fbf1320fe1852948cbbf3085b353894842534758",
+        "hash_match": true,
+        "finite": true,
+        "min": -7.011648067406246,
+        "max": -4.009307117334434,
+        "range_0_1": false
+      },
+      {
+        "payload_file": "outputs/v0_6D1_R4_36/geonomics_canonical_payload/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/initial_layers/ENV_006_sea_level_anomaly_m.npy",
+        "payload_sha256": "42e2e8f7207097218cd72a8f3aef724394d96b3e6f19035d29b8aaf096ea16f6",
+        "hash_match": true,
+        "finite": true,
+        "min": -104.68354702532497,
+        "max": -104.68354702532497,
+        "range_0_1": false
+      }
+    ],
+    "automatic_rescaling_performed": false,
+    "cross_layer_numeric_fusion_performed": null,
+    "replicate_count": null,
+    "replicate_pass_count": null
+  },
+  "j14": {
+    "status": "BLOCKED_R437_CANONICAL_LAYER_BINDING_OR_EXACT_STATE_INJECTION_DRY_RUN_VALIDATION_FAILURE",
+    "replicate_count": 4,
+    "replicate_pass_count": 0,
+    "failures": [
+      {
+        "replicate_index": 0,
+        "frozen_seed": 310746493,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      },
+      {
+        "replicate_index": 1,
+        "frozen_seed": 1894477382,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      },
+      {
+        "replicate_index": 2,
+        "frozen_seed": 1291996560,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      },
+      {
+        "replicate_index": 3,
+        "frozen_seed": 1554786554,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      }
+    ]
+  },
+  "j18": {
+    "status": "BLOCKED_R437_CANONICAL_LAYER_BINDING_OR_EXACT_STATE_INJECTION_DRY_RUN_VALIDATION_FAILURE",
+    "replicate_count": 4,
+    "replicate_pass_count": 0,
+    "failures": [
+      {
+        "replicate_index": 0,
+        "frozen_seed": 999124684,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      },
+      {
+        "replicate_index": 1,
+        "frozen_seed": 1705133798,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      },
+      {
+        "replicate_index": 2,
+        "frozen_seed": 1085091276,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      },
+      {
+        "replicate_index": 3,
+        "frozen_seed": 555097754,
+        "model_seed_match": null,
+        "model_unrun_before_dry_run": null,
+        "error": "NameError(\"name 'species' is not defined\")"
+      }
+    ]
+  },
+  "governance": {
+    "r437_outputs_modified": false,
+    "geonomics_execution_performed": false,
+    "model_construction_performed": false,
+    "payload_values_modified": false,
+    "automatic_rescaling_performed": false,
+    "target_numeric_execution_performed": false,
+    "readjudication_performed": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  },
+  "next_action": "BUILD_R437_R2_TARGETED_REPAIR_FROM_LIVE_FAILURE_DETAIL"
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "ARCANA_R318_SEAL_SUMMARY_V1",
+  "stage": "v0.6D1-R3.18",
+  "verdict": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_READINESS_SEALED",
+  "formal_audit": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_18\\FORMAL_AUDIT_SEALED_v0_6D1_R3_18.json",
+  "formal_audit_sha256": "95cb1bf525e54beb64381e4bb3cf170f2e6c94bb0d9a84fc13c6cc2498faaf38",
+  "formal_audit_checks": "172/172",
+  "boundary": {
+    "physical_environment_age_ma": 0.0,
+    "biology_state_age_ma": 0.125,
+    "species": 134,
+    "components": 295,
+    "population": 1217.8946033288662,
+    "transport_boundary_age_ma": 0.0625,
+    "transport_phase_years": [
+      62500.0,
+      62500.0
+    ],
+    "phase_aware_transport_operator_required": true,
+    "phase_environment_global_max_abs_difference": 1.5816467428221057,
+    "population_mass_inaccessible_at_62p5ka": 0.0,
+    "population_mass_inaccessible_at_0ka": 3.5009958898334106e-11
+  },
+  "canonical_artifacts": {
+    "readiness_envelope": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_ENVELOPE.json",
+    "readiness_envelope_sha256": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+    "integral_bundle": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_125KA_TO_0_EXPOSURE_AND_TRANSPORT_PHASES.npz",
+    "integral_bundle_sha256": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+    "summary": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json",
+    "summary_sha256": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a"
+  },
+  "parent_authority": {
+    "stage": "v0.6D1-R3.17",
+    "r317_seal_sha256": "3248c598874728c2988b883dd3622150778af003e895d427b5daa1862d97a11e",
+    "r317_audit_sha256": "4c01acf77e4c2ed4c57b6197e405d22002254b0511c250c3dbff5d0161a427ac",
+    "r317_summary_sha256": "fa4fb8981c06ae1ea05fb833e2dfa3aafdce4f74beb1c719a8a68288930b9e78",
+    "r317_envelope_sha256": "5b800279324afdd19279fa0c395ace822b4104155690191f81c6be884d2aeca8",
+    "r317_accumulator_sha256": "b191faae44b4db8bc0afaaba942b0f04087758fa554c480375eb0f753ab309cc"
+  },
+  "independent_replay": {
+    "enabled": true,
+    "biology_state_identity_exact": true,
+    "integral_bundle_array_identity_exact": true,
+    "envelope_core_identity_exact": true
+  },
+  "governance": {
+    "recent_environmental_exposure_to_0ka_sealed": true,
+    "biology_state_remains_at_125ka": true,
+    "two_62p5k_transport_phase_integrals_sealed": true,
+    "phase_aware_transport_operator_required": true,
+    "biology_advanced": false,
+    "transport_advanced": false,
+    "support_remap_applied": false,
+    "biology_cadence_changed": false,
+    "transport_cadence_changed": false,
+    "gene_flow_cadence_changed": false,
+    "deep_biological_coupling": false,
+    "scientific_parameter_changes": false
+  },
+  "next": "v0.6D1-R3.19 \u2014 Phase-Aware Two-Transport-Substep Operator Validation & H0 Biology Closure Candidate"
+}

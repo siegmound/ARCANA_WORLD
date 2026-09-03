@@ -1,0 +1,21 @@
+{
+  "stage": "v0.6D1-R3.7F",
+  "start_age_ma": 210.0,
+  "end_age_ma": 188.0,
+  "biology_cadence_years": 125000.0,
+  "expected_biology_steps": 176,
+  "K_envelope": {"K_LOW": 37.614, "K_CENTER": 38.470, "K_HIGH": 41.002},
+  "legacy_stress_target": {
+    "source_stage": "v0.6D1-R3.5",
+    "q_ceiling": 0.08,
+    "historical_first_clipping_onset_approx_ma": 191.25,
+    "purpose": "cross the historical legacy clipping onset by ~3 Myr"
+  },
+  "governance": {
+    "shadow_only": true,
+    "canonical_write_allowed": false,
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false
+  }
+}

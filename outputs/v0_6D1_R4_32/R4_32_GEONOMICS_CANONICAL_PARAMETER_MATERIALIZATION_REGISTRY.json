@@ -1,0 +1,88 @@
+{
+  "external_engine_execution_authorized": false,
+  "geonomics_execution_ready_count": 0,
+  "record_count": 3,
+  "records": [
+    {
+      "canonical_parameter_manifest_file": "outputs/v0_6D1_R4_32/geonomics_profiles/R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS/GEONOMICS_CANONICAL_PARAMETER_MANIFEST.json",
+      "canonical_parameter_manifest_sha256": "356a8f5bfd84743f7c96da409bb52802a33cc039cc535507def35cfdde2f5c8a",
+      "job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+      "required_mappings": {
+        "domain_mapping": "SAPIENT_3MA_TO_200KA spatial population support",
+        "population_mapping": "population per active deme preserving R3.27 effective_population",
+        "space_mapping": "deme_state grid_row/grid_col on age-matched canonical support",
+        "time_mapping": "age_ma exact R3.27 axis",
+        "uncertainty_mapping": "candidate/forcing-regime ensemble retained as explicit authority dimensions"
+      },
+      "source_authority_kind": "R431_SEALED_DERIVED_CANONICAL_SPATIAL_AUTHORITY",
+      "sources": [
+        {
+          "hash_match_and_authority_sealed": true,
+          "path": "outputs/v0_6D1_R4_30/authority/R4_30_J14_SPATIAL_AUTHORITY_REPLAY_CANDIDATE.npz",
+          "sha256": "eed2d1e350783f1d2dc31c5b7e697330ccbfcf63024062bc9f4ed2f8905f4756"
+        }
+      ],
+      "static_parameter_manifest_valid": true,
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "canonical_parameter_manifest_file": "outputs/v0_6D1_R4_32/geonomics_profiles/R42_J18_SAPIENT_200KA_TO_0_GEONOMICS/GEONOMICS_CANONICAL_PARAMETER_MANIFEST.json",
+      "canonical_parameter_manifest_sha256": "5a4ea18632d255c9f67f6bc4a0fc745eb075e86d8f5bcb58fa56911ab4431cab",
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "r423_binding_materialized": true,
+      "r423_profile_path": "outputs/v0_6D1_R4_23/geonomics_profiles/R42_J18_SAPIENT_200KA_TO_0_GEONOMICS/LANDSCAPE_PROFILE.json",
+      "required_mappings": {
+        "domain_mapping": "sapient spatial population support",
+        "population_mapping": "population_proxy",
+        "space_mapping": "snapshot_deme_state:grid_row,grid_col + snapshot_active",
+        "time_mapping": "snapshot_age_ka",
+        "uncertainty_mapping": "preserve replay/candidate dimensions; no target-derived tuning"
+      },
+      "source_authority_kind": "R3_28_CANONICAL_HIGH_RESOLUTION_SPATIAL_REPLAY",
+      "sources": [
+        {
+          "hash_match": true,
+          "path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+          "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a"
+        }
+      ],
+      "static_parameter_manifest_valid": true,
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "canonical_parameter_manifest_file": "outputs/v0_6D1_R4_32/geonomics_profiles/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/GEONOMICS_CANONICAL_PARAMETER_MANIFEST.json",
+      "canonical_parameter_manifest_sha256": "29853041273e9575fbf1d04e46f451bee9d930a06ed6512282b434ef7278db29",
+      "job_id": "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS",
+      "r423_binding_materialized": true,
+      "r423_profile_path": "outputs/v0_6D1_R4_23/geonomics_profiles/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/LANDSCAPE_PROFILE.json",
+      "required_mappings": {
+        "domain_mapping": "producer resource landscape",
+        "population_mapping": "producer_landscape resource_abundance/suitability as producer support only, not agent count synthesis",
+        "space_mapping": "shared raster grid index; no cross-layer interpolation",
+        "time_mapping": "anchor_age_ka exact shared anchors",
+        "uncertainty_mapping": "environment and producer layers remain provenance-separate; cross-layer numeric mixing forbidden without later explicit authority"
+      },
+      "source_authority_kind": "R3_33_R3_34_CANONICAL_HOLOCENE_RESOURCE_LANDSCAPE_BINDING",
+      "sources": [
+        {
+          "hash_match": true,
+          "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+          "role": "HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE",
+          "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+        },
+        {
+          "hash_match": true,
+          "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+          "role": "PRODUCER_RESOURCE_LANDSCAPE",
+          "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+        }
+      ],
+      "static_parameter_manifest_valid": true,
+      "window_id": "PRODUCER_20KA_TO_0"
+    }
+  ],
+  "runtime_parameter_compiled_count": 0,
+  "stage": "v0.6D1-R4.32",
+  "static_valid_count": 3,
+  "status": "R432_GEONOMICS_CANONICAL_PARAMETER_MATERIALIZATION_STATIC_VALIDATION_COMPLETE"
+}

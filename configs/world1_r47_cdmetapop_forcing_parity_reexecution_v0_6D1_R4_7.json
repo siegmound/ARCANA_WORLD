@@ -1,0 +1,49 @@
+{
+  "stage": "v0.6D1-R4.7",
+  "title": "CDMetaPOP Dynamic-Forcing Parity Repair, Symmetric Five-Job Reexecution & Targeted Readjudication",
+  "parent_stage": "v0.6D1-R4.6",
+  "required_parent_status": "PASS_R46_TARGETED_R311_CAUSAL_COUNTERFACTUAL_AND_R43_FORCING_PARITY_AUDIT_SEALED",
+  "required_parent_finding": "R43_CDMETAPOP_POPULATION_PERSISTENCE_DYNAMIC_FORCING_COVERAGE_GAP_CONFIRMED",
+  "affected_frozen_jobs": [
+    "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+    "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+    "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+  ],
+  "repair_policy": {
+    "source_tree_modification": false,
+    "adapter_namespace": "benchmarks/r47/cdmetapop_r47.py",
+    "preserve_r43_evidence": true,
+    "preserve_original_r43_job_contract": true,
+    "use_existing_cdclimate_knots": true,
+    "dynamic_parameter": "PatchVars.K",
+    "initial_N0_is_not_reinjected_at_later_cdclimate_knots": true,
+    "start_state_K_scale_same_as_r43": "0.70 + 0.60 * normalized_habitat_fraction_start",
+    "h0_dynamic_support_source": "A1_exogenous_reference_population_ratio_from_R43_window_descriptor",
+    "sapient_dynamic_support_source": "R43_frozen_habitat_ratio_times_one_plus_normalized_environment_change",
+    "comparison_target_end_state_may_not_enter_engine_configuration": true,
+    "fixed_safety_support_ratio_min": 0.25,
+    "fixed_safety_support_ratio_max": 4.0,
+    "note": "The repaired adapter changes only dynamic K support through CDClimate using exogenous/frozen forcing. It never injects the ARCANA comparison-target end population into CDMetaPOP."
+  },
+  "readjudication_policy": {
+    "reuse_exact_r44_frozen_effect_policy": true,
+    "reuse_exact_r44_domain_metric_candidates": true,
+    "replace_only_rows_from_the_five_affected_cdmetapop_jobs": true,
+    "do_not_modify_r44_sealed_outputs": true,
+    "majority_vote": false,
+    "canonical_change_authorized": false
+  },
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "policy_freeze": {
+    "status": "R46_CONFIRMED_ADAPTER_GAP_CAUSAL_REPAIR_POLICY_FROZEN_PRE_R47_REEXECUTION",
+    "result_selected": false,
+    "note": "J09 motivated diagnosis, but the common adapter repair is applied symmetrically to all five frozen CDMetaPOP jobs. R4.7 outcomes cannot change the forcing transform or which jobs are rerun."
+  }
+}

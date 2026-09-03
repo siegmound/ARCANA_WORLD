@@ -1,0 +1,53 @@
+{
+  "stage": "v0.6D1-R3.8",
+  "state": "SEALED",
+  "parent_stage": "v0.6D1-R3.7I_SEALED",
+  "authority_note": "R3.8 seals the canonical restartable World-1 H0 150 Ma boundary. R3.7I remains the scientific production authority; R3.8 adds serialized continuation authority only.",
+  "parent_package_manifest": {
+    "path": "PACKAGE_MANIFEST_v0_6D1_R3_7I.json",
+    "sha256": "745ae6b38b44dc644cf404b71820781cfad3c9d639373e14e601f386f0fc45d4"
+  },
+  "promotion_seal": {
+    "path": "outputs/v0_6D1_R3_7I/PRODUCTION_PROMOTION_SEAL_v0_6D1_R3_7I.json",
+    "sha256": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d"
+  },
+  "sealed_r37h_center_reference": {
+    "path": "references/v0_6D1_R3_8/R37H_210_150_K_CENTER_SEALED_REFERENCE.json",
+    "sha256": "73cdba842aa6156c6162b026c047a5eb49d0d052ee0b541c7f25b23372b4fe2b"
+  },
+  "new_runtime_source": {
+    "path": "src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+    "sha256": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698"
+  },
+  "governance": {
+    "canonical_150ma_checkpoint_authorized": true,
+    "post_150_continuation_authorized": true,
+    "scientific_runtime_authority": "R3.7I_SEALED_SEGREGATION_AWARE_RUNTIME",
+    "scalar_k_physical_constant_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "deep_biological_coupling": false
+  },
+  "evidence_paths": [
+    "outputs/v0_6D1_R3_8/R3_8_DIAGNOSTIC_SMOKE_AUDIT.json",
+    "outputs/v0_6D1_R3_8/FORMAL_AUDIT_v0_6D1_R3_8.json",
+    "outputs/v0_6D1_R3_8/R3_8_TESTS.txt",
+    "outputs/v0_6D1_R3_8/PARENT_R37F_TO_I_REGRESSION.txt",
+    "R3_8_FULL_CHECKPOINT_EVIDENCE_AUDIT.md",
+    "outputs/v0_6D1_R3_8/FORMAL_AUDIT_SEALED_v0_6D1_R3_8.json",
+    "local_runs/v0_6D1_R3_8/R3_8_CHECKPOINT_VALIDATION_SUMMARY.json"
+  ],
+  "canonical_checkpoint": {
+    "json": {
+      "path": "local_runs/v0_6D1_R3_8/WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.json",
+      "sha256": "8a8fbe9da857c6b278c2c8856a4b989a40a0a5ec2087af64a2ce0e9c1a6a2853"
+    },
+    "npz": {
+      "path": "local_runs/v0_6D1_R3_8/WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.npz",
+      "sha256": "0d253babcd74bdfcf4590bb6f51ac4ce99aabcb8f224d00a4c59fd148021cc32"
+    },
+    "summary": {
+      "path": "local_runs/v0_6D1_R3_8/R3_8_CHECKPOINT_VALIDATION_SUMMARY.json",
+      "sha256": "58019980b3c28903b9ffd4836f0be9dfc35e0621be764fc974e13974e7117796"
+    }
+  }
+}

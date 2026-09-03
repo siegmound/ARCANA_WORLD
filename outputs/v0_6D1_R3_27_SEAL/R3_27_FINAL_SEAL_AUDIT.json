@@ -1,0 +1,181 @@
+{
+  "audit": "FINAL_SINGLE_STAGE_HOMININ_MACRO_REPLAY_TO_200KA_AUTHORITY_CLOSURE",
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_authorities_validate",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R3_27_AUDIT.md",
+        "R3_27_CANDIDATE_OUTCOMES.json",
+        "R3_27_HUMAN_200KA_CHECKPOINT.json",
+        "R3_27_INTEGRATED_AUDIT.json",
+        "R3_27_MACRO_REPLAY_AUTHORITY.json",
+        "R3_27_MACRO_REPLAY_TRAJECTORIES.npz",
+        "R3_27_OUTPUT_MANIFEST.json",
+        "R3_27_SENSITIVITY_AND_ROBUSTNESS.json"
+      ],
+      "name": "output_file_set_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "output_manifest_closure",
+      "pass": true
+    },
+    {
+      "detail": [
+        25,
+        25
+      ],
+      "name": "integrated_audit_all_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_parent_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_window_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_no_human_bodyplan_target",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_common_forcing",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_fork_does_not_overwrite_h0",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_h3_no_rescale",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "npz_keys_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "npz_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_order_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "time_axis_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_numeric_finite",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "population_nonnegative",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "bounded_indices",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "outcomes_six_unique",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sensitivity_10_variants",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint_age_200ka",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint_candidate_count_consistent",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "name": "checkpoint_subset_parent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint_not_final_identity",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "name": "checkpoint_qualification_independently_recomputed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_direct_cb_selection",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_h0_cha2_parents_immutable",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "evidence_multisource",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 28,
+  "checks_total": 28,
+  "stage": "v0.6D1-R3.27",
+  "status": "PASS_R327_HOMININ_MACRO_EVOLUTION_REPLAY_TO_200KA_ROBUSTNESS_AND_HUMAN_200KA_CHECKPOINT_SEALED",
+  "summary": {
+    "deep_biological_coupling": false,
+    "human_200ka_candidate_cohort": [
+      "RPT_010_D02",
+      "RPT_009_D02"
+    ],
+    "human_200ka_candidate_count": 2,
+    "human_similarity_target": false,
+    "input_candidate_lineages": 6,
+    "next_stage": "HIGH_RESOLUTION_200KA_TO_0_REPLAY",
+    "unique_human_identity_materialized": false
+  },
+  "verdict": "SEALED"
+}

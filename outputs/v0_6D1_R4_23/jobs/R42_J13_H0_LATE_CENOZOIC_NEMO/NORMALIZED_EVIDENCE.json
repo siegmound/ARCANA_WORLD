@@ -1,0 +1,52 @@
+{
+  "adjudicative_promotion_authorized_in_r423": false,
+  "canonical_write": false,
+  "engine": "NEMO",
+  "finite_metric_count": 2,
+  "job_id": "R42_J13_H0_LATE_CENOZOIC_NEMO",
+  "metric_count": 2,
+  "normalized_metrics": {
+    "mean_expected_heterozygosity": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+      "kind": "ratio",
+      "name": "mean_expected_heterozygosity",
+      "semantics": "RAW_EXPECTED_HETEROZYGOSITY_NOT_ADDITIVE_GENETIC_VARIANCE",
+      "summary": {
+        "max": 0.483375875,
+        "median": 0.471697375,
+        "min": 0.422734,
+        "n": 4,
+        "q10": 0.43667421250000005,
+        "q90": 0.48062112500000004
+      }
+    },
+    "mean_population_frequency_range": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+      "kind": "ratio",
+      "name": "mean_population_frequency_range",
+      "semantics": "RAW_ALLELE_FREQUENCY_DIFFERENTIATION_NOT_GENE_FLOW_RATE",
+      "summary": {
+        "max": 0.08512499999999999,
+        "median": 0.069,
+        "min": 0.046750000000000014,
+        "n": 4,
+        "q10": 0.05181250000000001,
+        "q90": 0.0819
+      }
+    }
+  },
+  "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/RAW_EVIDENCE.json",
+  "raw_evidence_sha256": "f3b8efcb0bfb11103d64b0a5c0fd72cefc4c4b9ef570fc5e0c5c2d9d64a11d46",
+  "raw_hash_matches_r422_audit": true,
+  "readjudication_authorized_in_r423": false,
+  "replicate_count": 4,
+  "seed_ledger_exactly_reused": true,
+  "semantic_guards": [
+    "heterozygosity != additive_variance",
+    "allele_frequency_differentiation != gene_flow_rate"
+  ],
+  "stage": "v0.6D1-R4.23",
+  "window_id": "H0_LATE_CENOZOIC"
+}

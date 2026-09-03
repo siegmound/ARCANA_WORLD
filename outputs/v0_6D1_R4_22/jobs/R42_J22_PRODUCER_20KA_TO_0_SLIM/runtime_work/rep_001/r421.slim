@@ -1,0 +1,16 @@
+initialize() {
+ initializeTreeSeq();
+ initializeMutationRate(1e-7);
+ initializeMutationType("m1", 0.5, "f", 0.0);
+ initializeMutationType("m2", 0.5, "f", 0.0000000000);
+ initializeGenomicElementType("g1", c(m1,m2), c(0.99,0.01));
+ initializeGenomicElement(g1, 0, 19999);
+ initializeRecombinationRate(1e-8);
+}
+1 early() {
+ sim.addSubpop("p1", 200); sim.addSubpop("p2", 200);
+ p1.setMigrationRates(p2, 0.0210684363); p2.setMigrationRates(p1, 0.0210684363);
+}
+61 late() {
+ sim.treeSeqOutput("r421.trees"); sim.simulationFinished();
+}

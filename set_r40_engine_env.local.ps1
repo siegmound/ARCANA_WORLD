@@ -1,0 +1,6 @@
+$env:ARCANA_NEMO_CONDA_ENV = "arcana-nemo242"
+$env:ARCANA_GEONOMICS_CONDA_ENV = "arcana-geonomics-149"
+$env:ARCANA_R40_R_CONDA_ENV = "arcana-r40-r"
+$env:ARCANA_CDMETAPOP_CONDA_ENV = "arcana-cdmetapop-308"
+$env:ARCANA_CDMETAPOP_ROOT = "F:\corsiiiuu\Magistrale\Arcana\ArcanaWorld\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\.arcana_engines\CDMetaPOP-3.08"
+$env:ARCANA_SLIM_CONDA_ENV = "arcana-slim52"

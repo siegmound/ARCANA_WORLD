@@ -1,0 +1,41 @@
+{
+  "stage": "v0.6D1-R4.38",
+  "title": "Geonomics Exact Initialization Adapter & Construction Probe Elimination Preflight",
+  "parent_required": [
+    "R4.37 40/40 complete",
+    "R4.37 28/28 SEALED",
+    "R4.37-R3 17/17 verified"
+  ],
+  "scope": {
+    "J14": {
+      "branches": 192,
+      "carriers": 854,
+      "replicates": 4
+    },
+    "J18": {
+      "branches": 64,
+      "carriers": 319,
+      "replicates": 4
+    }
+  },
+  "adapter_contract": [
+    "construct governed R4.36 native model",
+    "require one nongenomic construction probe",
+    "clone probe only as structural Individual template",
+    "replace Species OrderedDict with one nonliteral carrier per canonical active deme",
+    "preserve exact x=grid_col and y=grid_row",
+    "never consume population_proxy as Individual count",
+    "rebuild Geonomics native derived caches",
+    "replace orig_comm with deepcopy(adapted comm)",
+    "verify K, Landscape, RNG and model counters unchanged",
+    "discard validation model without run"
+  ],
+  "nonclaims": [
+    "carrier count is not biological population size",
+    "population_proxy remains sidecar",
+    "validation model is not production execution state",
+    "R4.38 does not authorize run/walk",
+    "R4.38 does not change ARCANA canonical state"
+  ],
+  "next_action": "BUILD_R439_GEONOMICS_RUNTIME_TIME_MAPPING_NONLITERAL_CARRIER_DYNAMICS_AND_DYNAMIC_LAYER_CHANGE_PREFLIGHT"
+}

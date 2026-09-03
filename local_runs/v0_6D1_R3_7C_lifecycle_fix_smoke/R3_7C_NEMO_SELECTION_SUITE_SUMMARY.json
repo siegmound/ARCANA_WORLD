@@ -1,0 +1,261 @@
+{
+  "canonical_write_allowed": false,
+  "chain_count": 2,
+  "complete_chain_count": 2,
+  "nemo_run_count_expected": 10,
+  "production_runtime_binding_authorized": false,
+  "records": [
+    {
+      "automatic_calibration_allowed": false,
+      "axis": 0,
+      "canonical_write_allowed": false,
+      "chain_id": "N500_r000_a0_sv1",
+      "common_burnin": {
+        "binding_manifest_sha256": "86d581805d5ec560383708f1ae3153edd7d89ba78bccc895a232e18cf862c229",
+        "final_additive_variance": [
+          0.043440915853125,
+          0.043092174086718754,
+          0.042175877723437505,
+          0.04184712669375
+        ],
+        "final_trait_mean": [
+          0.015435000000000025,
+          0.06969375,
+          -0.020160000000000053,
+          -0.019372499999999928
+        ],
+        "phase": "COMMON_BURNIN",
+        "qfreq_file": "arcana_r37c_N500_r000_a0_sv1_common_burnin_1.qfreq",
+        "qfreq_relpath": "phase_00_COMMON_BURNIN/arcana_r37c_N500_r000_a0_sv1_common_burnin_1.qfreq",
+        "returncode": 0,
+        "transitions": 200
+      },
+      "genetic_seed": 37702026,
+      "loci_per_trait": 64,
+      "matched_branch_seed": 57702026,
+      "matched_reconnection_seed": 67702026,
+      "neutral_branch": {
+        "fragmented": {
+          "binding_manifest_sha256": "99280e43b778ed346eebfc78071918970b087232fa2fe1b0e61b28a243a42e10",
+          "final_additive_variance": [
+            0.036997253655468756,
+            0.03769871859140625,
+            0.03865915457578126,
+            0.03871589267109375
+          ],
+          "final_trait_mean": [
+            -0.10150874999999991,
+            -0.1180462500000001,
+            0.10166624999999996,
+            0.08717625000000005
+          ],
+          "phase": "FRAGMENTED_MATCHED_NEUTRAL",
+          "qfreq_file": "arcana_r37c_N500_r000_a0_sv1_CTL_fragmented_matched_neutral_1.qfreq",
+          "qfreq_relpath": "neutral/phase_01_FRAGMENTED_MATCHED_NEUTRAL/arcana_r37c_N500_r000_a0_sv1_CTL_fragmented_matched_neutral_1.qfreq",
+          "returncode": 0,
+          "transitions": 300
+        },
+        "reconnected": {
+          "binding_manifest_sha256": "a2bcf7ee99783ea463c0c98b2ec473b00770d8029a35694346b1780cbbdf88da",
+          "final_additive_variance": [
+            0.03864021500390625,
+            0.03877187727656249,
+            0.038532577584375005,
+            0.0376342130390625
+          ],
+          "final_trait_mean": [
+            0.001496250000000008,
+            0.03858750000000002,
+            -0.007875000000000056,
+            -0.03937500000000003
+          ],
+          "phase": "RECONNECTED_RELAXED",
+          "qfreq_file": "arcana_r37c_N500_r000_a0_sv1_CTL_reconnected_relaxed_1.qfreq",
+          "qfreq_relpath": "neutral/phase_02_RECONNECTED_RELAXED/arcana_r37c_N500_r000_a0_sv1_CTL_reconnected_relaxed_1.qfreq",
+          "returncode": 0,
+          "transitions": 400
+        }
+      },
+      "optimum_amplitude": 0.6,
+      "phase_boundary_semantics": "QFREQ_FREQUENCY_STATE_CHAIN__LD_AND_GENOTYPE_PHASE_STATE_NOT_PRESERVED",
+      "population_size": 500,
+      "replicate": 0,
+      "scalar_K_eff_authorized": false,
+      "schema": "ARCANA_R37C_NEMO_SELECTION_CHAIN_V1",
+      "selected_branch": {
+        "fragmented": {
+          "binding_manifest_sha256": "8a71a5074cf354537cee44a58aaf3f51faad8531e2494c730aa8ce48510afff6",
+          "final_additive_variance": [
+            0.036997253655468756,
+            0.03769871859140625,
+            0.03865915457578126,
+            0.03871589267109375
+          ],
+          "final_trait_mean": [
+            -0.10150874999999991,
+            -0.1180462500000001,
+            0.10166624999999996,
+            0.08717625000000005
+          ],
+          "phase": "FRAGMENTED_DIVERGENT_SELECTION",
+          "qfreq_file": "arcana_r37c_N500_r000_a0_sv1_SEL_fragmented_divergent_selection_1.qfreq",
+          "qfreq_relpath": "selected/phase_01_FRAGMENTED_DIVERGENT_SELECTION/arcana_r37c_N500_r000_a0_sv1_SEL_fragmented_divergent_selection_1.qfreq",
+          "returncode": 0,
+          "transitions": 300
+        },
+        "reconnected": {
+          "binding_manifest_sha256": "1685a3b2d860701a5576c0ed43bbc3cc962d0317ea8198e5d05fb052a9060c84",
+          "final_additive_variance": [
+            0.03864021500390625,
+            0.03877187727656249,
+            0.038532577584375005,
+            0.0376342130390625
+          ],
+          "final_trait_mean": [
+            0.001496250000000008,
+            0.03858750000000002,
+            -0.007875000000000056,
+            -0.03937500000000003
+          ],
+          "phase": "RECONNECTED_RELAXED",
+          "qfreq_file": "arcana_r37c_N500_r000_a0_sv1_SEL_reconnected_relaxed_1.qfreq",
+          "qfreq_relpath": "selected/phase_02_RECONNECTED_RELAXED/arcana_r37c_N500_r000_a0_sv1_SEL_reconnected_relaxed_1.qfreq",
+          "returncode": 0,
+          "transitions": 400
+        }
+      },
+      "selection_semantics": "GAUSSIAN_PATCH_LOCAL_OPTIMA__RELATIVE_LOCAL_FITNESS",
+      "selection_variance": 1.0,
+      "stage": "v0.6D1-R3.7C",
+      "status": "ENGINE_COMPLETED_SELECTION_CHAIN"
+    },
+    {
+      "automatic_calibration_allowed": false,
+      "axis": 1,
+      "canonical_write_allowed": false,
+      "chain_id": "N500_r000_a1_sv1",
+      "common_burnin": {
+        "binding_manifest_sha256": "32b343574778326cbcb7398e90529eec241aa60e97f992ed8a949381bccb5e97",
+        "final_additive_variance": [
+          0.04322777125078125,
+          0.04361938441875,
+          0.0440200239609375,
+          0.043636789103906254
+        ],
+        "final_trait_mean": [
+          0.03677624999999998,
+          0.056699999999999966,
+          0.06111000000000007,
+          0.11993625
+        ],
+        "phase": "COMMON_BURNIN",
+        "qfreq_file": "arcana_r37c_N500_r000_a1_sv1_common_burnin_1.qfreq",
+        "qfreq_relpath": "phase_00_COMMON_BURNIN/arcana_r37c_N500_r000_a1_sv1_common_burnin_1.qfreq",
+        "returncode": 0,
+        "transitions": 200
+      },
+      "genetic_seed": 37702036,
+      "loci_per_trait": 64,
+      "matched_branch_seed": 57702036,
+      "matched_reconnection_seed": 67702036,
+      "neutral_branch": {
+        "fragmented": {
+          "binding_manifest_sha256": "c80c1d847a8eeac2f3ee9de9fe9f8d405eb71cee2744e4a6a08b301f1879b9de",
+          "final_additive_variance": [
+            0.039000026559375,
+            0.03985214295234375,
+            0.03829917557812501,
+            0.037802086235156254
+          ],
+          "final_trait_mean": [
+            -0.1677375,
+            -0.14434874999999997,
+            0.09308249999999998,
+            0.08150624999999995
+          ],
+          "phase": "FRAGMENTED_MATCHED_NEUTRAL",
+          "qfreq_file": "arcana_r37c_N500_r000_a1_sv1_CTL_fragmented_matched_neutral_1.qfreq",
+          "qfreq_relpath": "neutral/phase_01_FRAGMENTED_MATCHED_NEUTRAL/arcana_r37c_N500_r000_a1_sv1_CTL_fragmented_matched_neutral_1.qfreq",
+          "returncode": 0,
+          "transitions": 300
+        },
+        "reconnected": {
+          "binding_manifest_sha256": "0601e0f75146ac1ce043015be41d32b5b359ab914e842db036804f63ae99b351",
+          "final_additive_variance": [
+            0.038395436231249996,
+            0.038407312223437504,
+            0.038843111524218744,
+            0.038271442190625005
+          ],
+          "final_trait_mean": [
+            -0.09387,
+            -0.09166499999999986,
+            -0.05378624999999992,
+            0.012442499999999995
+          ],
+          "phase": "RECONNECTED_RELAXED",
+          "qfreq_file": "arcana_r37c_N500_r000_a1_sv1_CTL_reconnected_relaxed_1.qfreq",
+          "qfreq_relpath": "neutral/phase_02_RECONNECTED_RELAXED/arcana_r37c_N500_r000_a1_sv1_CTL_reconnected_relaxed_1.qfreq",
+          "returncode": 0,
+          "transitions": 400
+        }
+      },
+      "optimum_amplitude": 0.6,
+      "phase_boundary_semantics": "QFREQ_FREQUENCY_STATE_CHAIN__LD_AND_GENOTYPE_PHASE_STATE_NOT_PRESERVED",
+      "population_size": 500,
+      "replicate": 0,
+      "scalar_K_eff_authorized": false,
+      "schema": "ARCANA_R37C_NEMO_SELECTION_CHAIN_V1",
+      "selected_branch": {
+        "fragmented": {
+          "binding_manifest_sha256": "6fab12305f42679364dd16a54ed12f0b31d71e12146a3234615322d6f674ee8e",
+          "final_additive_variance": [
+            0.039000026559375,
+            0.03985214295234375,
+            0.03829917557812501,
+            0.037802086235156254
+          ],
+          "final_trait_mean": [
+            -0.1677375,
+            -0.14434874999999997,
+            0.09308249999999998,
+            0.08150624999999995
+          ],
+          "phase": "FRAGMENTED_DIVERGENT_SELECTION",
+          "qfreq_file": "arcana_r37c_N500_r000_a1_sv1_SEL_fragmented_divergent_selection_1.qfreq",
+          "qfreq_relpath": "selected/phase_01_FRAGMENTED_DIVERGENT_SELECTION/arcana_r37c_N500_r000_a1_sv1_SEL_fragmented_divergent_selection_1.qfreq",
+          "returncode": 0,
+          "transitions": 300
+        },
+        "reconnected": {
+          "binding_manifest_sha256": "c7998230c0b2da7cd95328d075552aeb9ceb06c305ab7ef662222cc838656693",
+          "final_additive_variance": [
+            0.038395436231249996,
+            0.038407312223437504,
+            0.038843111524218744,
+            0.038271442190625005
+          ],
+          "final_trait_mean": [
+            -0.09387,
+            -0.09166499999999986,
+            -0.05378624999999992,
+            0.012442499999999995
+          ],
+          "phase": "RECONNECTED_RELAXED",
+          "qfreq_file": "arcana_r37c_N500_r000_a1_sv1_SEL_reconnected_relaxed_1.qfreq",
+          "qfreq_relpath": "selected/phase_02_RECONNECTED_RELAXED/arcana_r37c_N500_r000_a1_sv1_SEL_reconnected_relaxed_1.qfreq",
+          "returncode": 0,
+          "transitions": 400
+        }
+      },
+      "selection_semantics": "GAUSSIAN_PATCH_LOCAL_OPTIMA__RELATIVE_LOCAL_FITNESS",
+      "selection_variance": 1.0,
+      "stage": "v0.6D1-R3.7C",
+      "status": "ENGINE_COMPLETED_SELECTION_CHAIN"
+    }
+  ],
+  "scalar_K_eff_authorized": false,
+  "schema": "ARCANA_R37C_NEMO_SELECTION_SUITE_V1",
+  "stage": "v0.6D1-R3.7C",
+  "status": "NEMO_SELECTION_EVIDENCE_COMPLETE_REVIEW_REQUIRED"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ARCANA WorldSim R3.21 Functional Phenotype Fork Interface",
+  "type": "object",
+  "required": ["stage", "interface_status", "scope", "domains_reserved_for_r3_22", "composite_human_readiness_score", "deep_coupling"],
+  "properties": {
+    "stage": {"const": "v0.6D1-R3.21"},
+    "interface_status": {"const": "SCHEMA_ONLY_NOT_MATERIALIZED"},
+    "scope": {"const": "GENERIC_ALL_LINEAGES_NO_HUMAN_TARGET"},
+    "composite_human_readiness_score": {"type": "null"},
+    "deep_coupling": {"const": "OFF"},
+    "domains_reserved_for_r3_22": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["domain", "value", "status"],
+        "properties": {
+          "domain": {"type": "string"},
+          "value": {"type": "null"},
+          "heritability": {"type": "null"},
+          "evolvability": {"type": "null"},
+          "metabolic_ecological_cost": {"type": "null"},
+          "correlations": {"type": "null"},
+          "status": {"const": "UNDEFINED_UNTIL_R3_22"}
+        }
+      }
+    }
+  }
+}

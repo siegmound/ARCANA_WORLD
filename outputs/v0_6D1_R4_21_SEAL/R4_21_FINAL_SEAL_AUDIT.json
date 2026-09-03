@@ -1,0 +1,97 @@
+{
+  "audit": "FINAL_P2_ADAPTER_IMPLEMENTATION_STATIC_VALIDATION_AND_SYMMETRIC_REEXECUTION_AUTHORIZATION",
+  "checks": [
+    {
+      "detail": "PASS_R420_P2_ADAPTER_IMPLEMENTATION_PREFLIGHT_AND_TARGET_DESIGN_PROTOCOL_REPAIR_SEALED",
+      "name": "parent_r420_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R421_P2_ADAPTER_IMPLEMENTATION_STATIC_VALIDATION_AND_SYMMETRIC_REEXECUTION_AUTHORIZATION_COMPLETE",
+      "name": "r421_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r421_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": {
+        "authorized": 4,
+        "deferred": 2
+      },
+      "name": "all_six_p2_terminally_disposed",
+      "pass": true
+    },
+    {
+      "detail": "R421_SYMMETRIC_REEXECUTION_AUTHORIZATION_FROZEN",
+      "name": "authorization_registry_frozen",
+      "pass": true
+    },
+    {
+      "detail": "ALL_FROZEN_R4_2_JOBS_FOR_EACH_AUTHORIZED_SHARED_ENGINE_ADAPTER",
+      "name": "authorized_scope_full_engine_sets",
+      "pass": true
+    },
+    {
+      "detail": 57,
+      "name": "target_active_repairs_57",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "target_execution_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "p3_execution_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_engine_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R422_AUTHORIZED_P2_SYMMETRIC_REEXECUTION_AND_DEFERRED_IMPLEMENTATION_COMPLETION",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "next_action": "BUILD_R422_AUTHORIZED_P2_SYMMETRIC_REEXECUTION_AND_DEFERRED_IMPLEMENTATION_COMPLETION",
+  "stage": "v0.6D1-R4.21",
+  "status": "PASS_R421_P2_ADAPTER_IMPLEMENTATION_STATIC_VALIDATION_AND_SYMMETRIC_REEXECUTION_AUTHORIZATION_SEALED",
+  "summary": {
+    "active_target_protocol_repair_count": 57,
+    "authorized_engine_families": [
+      "CDMetaPOP",
+      "NEMO",
+      "SLiM"
+    ],
+    "authorized_job_count": 11,
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "deep_biological_coupling": false,
+    "deferred_engine_families": [
+      "Geonomics"
+    ],
+    "engine_execution_performed": false,
+    "next_action": "BUILD_R422_AUTHORIZED_P2_SYMMETRIC_REEXECUTION_AND_DEFERRED_IMPLEMENTATION_COMPLETION",
+    "p2_authorized_cell_count": 4,
+    "p2_deferred_cell_count": 2,
+    "p3_backlog_cell_count": 6,
+    "proxy_context_only_count": 2
+  },
+  "verdict": "SEALED"
+}

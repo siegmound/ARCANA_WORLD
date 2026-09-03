@@ -1,0 +1,484 @@
+{
+  "schema": "ARCANA_R313_LONGTERM_POST_CHA1_REASSEMBLY_V1",
+  "stage": "v0.6D1-R3.13",
+  "mode": "CANONICAL_46P0_TO_30P0",
+  "verdict": "PASS_CANONICAL_POST_CHA1_46_TO_30_H0_LONGTERM_DIVERSIFICATION_REASSEMBLY__30MA_LATE_CENOZOIC_HANDOFF_CHECKPOINT_READY",
+  "wall_seconds": 245.50173592567444,
+  "parent_r312_authority": {
+    "seal_verdict": "PASS_R312_CANONICAL_POST_CHA1_61_TO_46_H0_DIVERSITY_RECOVERY__46MA_RESTART_BOUNDARY_SEALED",
+    "seal_summary_sha256": "daa718f5f8fb4f98e37a3dd70b29205bc796e20623b9fbd18c7ef227f7e8397e",
+    "summary_sha256": "404c43c80af5f10ff1d00ad0cfc51f21abbe3e566e3d040e4faa2e84d33a6230",
+    "checkpoint_json": "local_runs\\v0_6D1_R3_12\\WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.json",
+    "checkpoint_npz": "local_runs\\v0_6D1_R3_12\\WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.npz",
+    "checkpoint_json_sha256": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269",
+    "checkpoint_npz_sha256": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948"
+  },
+  "run": {
+    "start_age_ma": 46.0,
+    "end_age_ma": 30.0,
+    "ordinary_biology_steps": 128,
+    "parent_species": 104,
+    "parent_components": 223,
+    "parent_total_population": 1433.7874046435222,
+    "final_species": 111,
+    "final_components": 219,
+    "final_total_population": 1304.4717354192449,
+    "event_counts_before": {
+      "paleogeographic_support_loss_remap": 1176,
+      "deme_coalescence": 77,
+      "deme_fission": 708,
+      "speciation": 198,
+      "ordinary_background_extinction": 2,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "event_counts_after": {
+      "paleogeographic_support_loss_remap": 1296,
+      "deme_coalescence": 85,
+      "deme_fission": 712,
+      "speciation": 205,
+      "ordinary_background_extinction": 2,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "event_counts_delta": {
+      "paleogeographic_support_loss_remap": 120,
+      "deme_coalescence": 8,
+      "deme_fission": 4,
+      "speciation": 7,
+      "ordinary_background_extinction": 0,
+      "CHA1_species_extinction": 0,
+      "CHA1_high_resolution_event_bridge_complete": 0,
+      "post_CHA1_ordinary_lifecycle_thaw": 0
+    },
+    "peak_q_recorded": 0.047307019500333794,
+    "peak_unclipped_q_recorded": 0.047307019500333794,
+    "clipping_steps": 0,
+    "clipping_contacts": 0,
+    "invariants": {
+      "population_min": 0.0,
+      "population_on_inaccessible_cells": 0.0,
+      "q_max": 0.04571969655256531,
+      "q_median": 0.04487829251603056,
+      "q_ceiling": 0.08,
+      "q_headroom": 0.03428030344743469,
+      "s_symmetry_max_abs": 0.0,
+      "s_diagonal_max_abs": 0.0,
+      "s_min": 0.0
+    },
+    "ecological_reassembly": {
+      "descriptive_not_acceptance_target": true,
+      "guilds": {
+        "1": {
+          "species_at_46Ma": 50,
+          "species_at_end": 51,
+          "net_species_change": 1,
+          "components_at_46Ma": 96,
+          "components_at_end": 94,
+          "population_at_46Ma": 510.50757591136176,
+          "population_at_end": 469.9519683140346
+        },
+        "2": {
+          "species_at_46Ma": 1,
+          "species_at_end": 1,
+          "net_species_change": 0,
+          "components_at_46Ma": 1,
+          "components_at_end": 1,
+          "population_at_46Ma": 232.02353978010694,
+          "population_at_end": 208.36618396319625
+        },
+        "3": {
+          "species_at_46Ma": 6,
+          "species_at_end": 7,
+          "net_species_change": 1,
+          "components_at_46Ma": 9,
+          "components_at_end": 9,
+          "population_at_46Ma": 269.94526894272246,
+          "population_at_end": 218.07929057978842
+        },
+        "4": {
+          "species_at_46Ma": 42,
+          "species_at_end": 45,
+          "net_species_change": 3,
+          "components_at_46Ma": 99,
+          "components_at_end": 98,
+          "population_at_46Ma": 195.845432430651,
+          "population_at_end": 173.2418638266642
+        },
+        "5": {
+          "species_at_46Ma": 5,
+          "species_at_end": 7,
+          "net_species_change": 2,
+          "components_at_46Ma": 18,
+          "components_at_end": 17,
+          "population_at_46Ma": 225.46558757868007,
+          "population_at_end": 234.83242873556136
+        },
+        "6": {
+          "species_at_46Ma": 0,
+          "species_at_end": 0,
+          "net_species_change": 0,
+          "components_at_46Ma": 0,
+          "components_at_end": 0,
+          "population_at_46Ma": 0.0,
+          "population_at_end": 0.0
+        }
+      },
+      "active_guild_count_at_46Ma": 5,
+      "active_guild_count_at_end": 5,
+      "guilds_absent_at_46Ma": [
+        6
+      ],
+      "guilds_absent_at_end": [
+        6
+      ],
+      "root_lineages_at_46Ma": {
+        "active_root_lineages": 55,
+        "root_lineages_with_multiple_current_species": 27,
+        "max_current_species_per_root_lineage": 6,
+        "mean_current_species_per_root_lineage": 1.8909090909090909
+      },
+      "root_lineages_at_end": {
+        "active_root_lineages": 55,
+        "root_lineages_with_multiple_current_species": 30,
+        "max_current_species_per_root_lineage": 6,
+        "mean_current_species_per_root_lineage": 2.018181818181818
+      },
+      "cross_guild_recreation_authorized": false,
+      "cross_guild_guard": "R3.7I/R3.8 speciation inherits parent guild_id. R3.13 does not activate the separate historical trophic-mode/cross-guild operator; therefore an already absent guild is not expected to reappear in this stage. This is an inherited model-scope fact, not a recovery target."
+    },
+    "speciation_origin_diagnostic": {
+      "founder_candidates_at_46Ma": 2,
+      "matched_46Ma_founder_carryover_speciations": 0,
+      "not_matched_to_46Ma_founder_state": 7,
+      "rows": [
+        {
+          "age_ma": 43.0,
+          "parent_species_id": "RPT_023_D03",
+          "daughter_species_id": "RPT_023_D04",
+          "classification": "NOT_MATCHED_TO_R312_BOUNDARY_FOUNDER_STATE"
+        },
+        {
+          "age_ma": 42.5,
+          "parent_species_id": "RPT_020_D02",
+          "daughter_species_id": "RPT_020_D06",
+          "classification": "NOT_MATCHED_TO_R312_BOUNDARY_FOUNDER_STATE"
+        },
+        {
+          "age_ma": 40.5,
+          "parent_species_id": "LVF_019",
+          "daughter_species_id": "LVF_019_D02",
+          "classification": "NOT_MATCHED_TO_R312_BOUNDARY_FOUNDER_STATE"
+        },
+        {
+          "age_ma": 40.0,
+          "parent_species_id": "HSG_010_D06",
+          "daughter_species_id": "HSG_010_D07",
+          "classification": "NOT_MATCHED_TO_R312_BOUNDARY_FOUNDER_STATE"
+        },
+        {
+          "age_ma": 38.0,
+          "parent_species_id": "CAR_001_D02",
+          "daughter_species_id": "CAR_001_D04",
+          "classification": "NOT_MATCHED_TO_R312_BOUNDARY_FOUNDER_STATE"
+        },
+        {
+          "age_ma": 35.5,
+          "parent_species_id": "CAR_010_D02",
+          "daughter_species_id": "CAR_010_D03",
+          "classification": "NOT_MATCHED_TO_R312_BOUNDARY_FOUNDER_STATE"
+        },
+        {
+          "age_ma": 30.5,
+          "parent_species_id": "RPT_020_D02",
+          "daughter_species_id": "RPT_020_D07",
+          "classification": "NOT_MATCHED_TO_R312_BOUNDARY_FOUNDER_STATE"
+        }
+      ],
+      "interpretation_guard": "Boundary-founder matching is timing provenance only; it is not a causal attribution to CHA-1 or to ecological opportunity."
+    },
+    "speciation_chronology": [
+      {
+        "age_ma": 43.0,
+        "elapsed_year": 167000000.0,
+        "parent_species_id": "RPT_023_D03",
+        "daughter_species_id": "RPT_023_D04"
+      },
+      {
+        "age_ma": 42.5,
+        "elapsed_year": 167500000.0,
+        "parent_species_id": "RPT_020_D02",
+        "daughter_species_id": "RPT_020_D06"
+      },
+      {
+        "age_ma": 40.5,
+        "elapsed_year": 169500000.0,
+        "parent_species_id": "LVF_019",
+        "daughter_species_id": "LVF_019_D02"
+      },
+      {
+        "age_ma": 40.0,
+        "elapsed_year": 170000000.0,
+        "parent_species_id": "HSG_010_D06",
+        "daughter_species_id": "HSG_010_D07"
+      },
+      {
+        "age_ma": 38.0,
+        "elapsed_year": 172000000.0,
+        "parent_species_id": "CAR_001_D02",
+        "daughter_species_id": "CAR_001_D04"
+      },
+      {
+        "age_ma": 35.5,
+        "elapsed_year": 174500000.0,
+        "parent_species_id": "CAR_010_D02",
+        "daughter_species_id": "CAR_010_D03"
+      },
+      {
+        "age_ma": 30.5,
+        "elapsed_year": 179500000.0,
+        "parent_species_id": "RPT_020_D02",
+        "daughter_species_id": "RPT_020_D07"
+      }
+    ],
+    "ordinary_extinction_chronology": [],
+    "fission_chronology": [
+      {
+        "age_ma": 41.0,
+        "elapsed_year": 169000000.0,
+        "parent_component_id": "CAR_014_C001_F01_F01",
+        "daughter_component_id": "CAR_014_C001_F01_F01_F02"
+      },
+      {
+        "age_ma": 38.5,
+        "elapsed_year": 171500000.0,
+        "parent_component_id": "HSG_008_C001_F01",
+        "daughter_component_id": "HSG_008_C001_F01_F03"
+      },
+      {
+        "age_ma": 37.0,
+        "elapsed_year": 173000000.0,
+        "parent_component_id": "RPT_020_C001_F01",
+        "daughter_component_id": "RPT_020_C001_F01_F05"
+      },
+      {
+        "age_ma": 31.5,
+        "elapsed_year": 178500000.0,
+        "parent_component_id": "RPT_012_C001_F02_F01",
+        "daughter_component_id": "RPT_012_C001_F02_F01_F02"
+      }
+    ],
+    "coalescence_chronology": [
+      {
+        "age_ma": 45.5,
+        "elapsed_year": 164500000.0,
+        "species_id": "HSG_019",
+        "retained_component_id": "HSG_019_C001",
+        "absorbed_component_ids": [
+          "HSG_019_C001_F01_F02"
+        ]
+      },
+      {
+        "age_ma": 45.5,
+        "elapsed_year": 164500000.0,
+        "species_id": "RPT_016_D01",
+        "retained_component_id": "RPT_016_C001_F01",
+        "absorbed_component_ids": [
+          "RPT_016_C001_F02_F01"
+        ]
+      },
+      {
+        "age_ma": 41.0,
+        "elapsed_year": 169000000.0,
+        "species_id": "HSG_019",
+        "retained_component_id": "HSG_019_C001_F02",
+        "absorbed_component_ids": [
+          "HSG_019_C001_F06"
+        ]
+      },
+      {
+        "age_ma": 38.5,
+        "elapsed_year": 171500000.0,
+        "species_id": "CAR_014_D01",
+        "retained_component_id": "CAR_014_C001_F01_F01",
+        "absorbed_component_ids": [
+          "CAR_014_C001_F01_F01_F02"
+        ]
+      },
+      {
+        "age_ma": 34.0,
+        "elapsed_year": 176000000.0,
+        "species_id": "CAR_010_D02",
+        "retained_component_id": "CAR_010_C001_F01",
+        "absorbed_component_ids": [
+          "CAR_010_C001_F02_F01"
+        ]
+      },
+      {
+        "age_ma": 33.5,
+        "elapsed_year": 176500000.0,
+        "species_id": "RPT_005",
+        "retained_component_id": "RPT_005_C001",
+        "absorbed_component_ids": [
+          "RPT_005_C001_F01_F02"
+        ]
+      },
+      {
+        "age_ma": 32.0,
+        "elapsed_year": 178000000.0,
+        "species_id": "HSG_019",
+        "retained_component_id": "HSG_019_C001_F02_F01_F01",
+        "absorbed_component_ids": [
+          "HSG_019_C001_F02_F01_F02"
+        ]
+      },
+      {
+        "age_ma": 30.5,
+        "elapsed_year": 179500000.0,
+        "species_id": "RPT_004",
+        "retained_component_id": "RPT_004_C001_F02",
+        "absorbed_component_ids": [
+          "RPT_004_C001_F01_F02"
+        ]
+      }
+    ],
+    "late_cenozoic_30ma_environment_handoff": {
+      "age_ma": 30.0,
+      "environmental_endpoint_identity_exact": true,
+      "fields": {
+        "land_support": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "temperature_c": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "aridity_index": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "browse_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "low_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "wetland_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "total_edible_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        }
+      },
+      "current_provider": "D3_2C_PLATE_CORE_CONSTRAINED_ENDPOINT_EVENT_RECONSTRUCTION_MULTI_BRACKET_ADAPTER",
+      "next_provider_source": "arcana_worldsim.late_cenozoic.environment.late_cenozoic_environment_state",
+      "next_provider_domain_starts_at_30Ma": true,
+      "biology_switched_in_r313": false,
+      "interpretation": "R3.13 stops at the exact common 30 Ma environmental endpoint. The late-Cenozoic provider is not activated inside R3.13."
+    }
+  },
+  "checkpoint": {
+    "json": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_13\\WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.json",
+    "npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_13\\WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.npz",
+    "json_sha256": "2c1cc49f04b7b489b6deab45caedf1cc3144a153d518e7646a4bc02ea235f869",
+    "npz_sha256": "2c576735a8268476cb5da91095a1bb549cf4edd1940ac539777144a156f66226"
+  },
+  "serialization_identity": {
+    "equivalent": true,
+    "arrays": {
+      "guild": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "pop": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "trait": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "va": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "gen": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "current_accessible": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "reduced_state": {
+      "va_within": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "ancestry_covariance": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "neutral_segregation_potential": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "adaptive_coordinate": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "exact_fields": {
+      "component_ids": true,
+      "root_species": true,
+      "current_species": true,
+      "registry": true,
+      "child_counters": true,
+      "baselines": true,
+      "ri_state": true,
+      "clock_state": true,
+      "ext_state": true,
+      "founder_state": true,
+      "vicariance_state": true,
+      "reconnection_state": true,
+      "events": true,
+      "snapshots": true,
+      "founder_stats_last": true,
+      "gene_flow_closure": true
+    },
+    "scalar_abs_errors": {
+      "age_ma": 0.0,
+      "elapsed_year": 0.0,
+      "topology_remap_mass": 0.0,
+      "initial_total_population": 0.0
+    },
+    "atol": 2e-12
+  },
+  "governance": {
+    "cha1_already_applied": true,
+    "cha1_reapplied": false,
+    "lifecycle_thaw_reapplied": false,
+    "deep_biological_coupling": false,
+    "ordinary_lifecycle_continued": true,
+    "richness_target_used": false,
+    "guild_target_used": false,
+    "positive_diversification_required_for_pass": false,
+    "cross_guild_transition_operator_activated": false,
+    "late_cenozoic_provider_activated_inside_stage": false,
+    "late_cenozoic_30ma_boundary_identity_required": true,
+    "production_r37i_r38_runtime_used": true,
+    "biology_cadence_years": 125000.0,
+    "mu_changed": false,
+    "b_changed": false,
+    "q_ceiling_changed": false,
+    "K_center_reinterpreted_as_physical_constant": false
+  }
+}

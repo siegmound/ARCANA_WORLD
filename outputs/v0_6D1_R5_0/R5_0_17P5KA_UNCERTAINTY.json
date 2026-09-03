@@ -1,0 +1,77 @@
+{
+  "global_rules": {
+    "derived_state_is_not_canonical": true,
+    "no_extrapolation": true,
+    "no_hidden_interpolation": true,
+    "no_invented_numeric_uncertainty": true
+  },
+  "query_id": "R50_DEMO_ARBITRARY_17P5KA",
+  "records": [
+    {
+      "method": "EXACT",
+      "note": "No numeric confidence interval is invented when the sealed parent does not provide one.",
+      "product": "population_summary",
+      "quantified_uncertainty_available": false,
+      "source_ages_ka": [
+        17.5
+      ],
+      "uncertainty_class": "PARENT_EXACT_STATE"
+    },
+    {
+      "method": "BOUNDED_SPATIAL_RECONSTRUCTION",
+      "note": "No numeric confidence interval is invented when the sealed parent does not provide one.",
+      "product": "population_detail",
+      "quantified_uncertainty_available": false,
+      "source_ages_ka": [
+        20.0,
+        15.0
+      ],
+      "uncertainty_class": "DERIVED_SPATIAL_DETAIL_CONSTRAINED_BY_AUTHORIZED_SUMMARY"
+    },
+    {
+      "method": "EXACT",
+      "note": "No numeric confidence interval is invented when the sealed parent does not provide one.",
+      "product": "contact_admixture",
+      "quantified_uncertainty_available": false,
+      "source_ages_ka": [
+        17.5
+      ],
+      "uncertainty_class": "PARENT_EXACT_STATE"
+    },
+    {
+      "method": "BRACKETED_LINEAR",
+      "note": "No numeric confidence interval is invented when the sealed parent does not provide one.",
+      "product": "environment",
+      "quantified_uncertainty_available": false,
+      "source_ages_ka": [
+        20.0,
+        15.0
+      ],
+      "uncertainty_class": "DERIVED_BETWEEN_SEALED_ANCHORS"
+    },
+    {
+      "method": "BRACKETED_LINEAR",
+      "note": "No numeric confidence interval is invented when the sealed parent does not provide one.",
+      "product": "flora",
+      "quantified_uncertainty_available": false,
+      "source_ages_ka": [
+        20.0,
+        15.0
+      ],
+      "uncertainty_class": "DERIVED_BETWEEN_SEALED_ANCHORS"
+    },
+    {
+      "method": "BRACKETED_LINEAR",
+      "note": "No numeric confidence interval is invented when the sealed parent does not provide one.",
+      "product": "fauna",
+      "quantified_uncertainty_available": false,
+      "source_ages_ka": [
+        20.0,
+        15.0
+      ],
+      "uncertainty_class": "DERIVED_BETWEEN_SEALED_ANCHORS"
+    }
+  ],
+  "stage": "v0.6D1-R5.0",
+  "target_age_ka": 17.5
+}

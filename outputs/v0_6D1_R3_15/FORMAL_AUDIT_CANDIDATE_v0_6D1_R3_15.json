@@ -1,0 +1,1112 @@
+{
+  "schema": "ARCANA_R315_FORMAL_CANDIDATE_INTEGRATION_AUDIT_V1",
+  "stage": "v0.6D1-R3.15",
+  "verdict": "PASS_R315_CANDIDATE_INTEGRATION_AUDIT__READY_FOR_LOCAL_30MA_TO_250KA_C2_BOUND_REPLAY",
+  "checks": "149/149",
+  "failed": [],
+  "scheduler_separation": {
+    "biology_cadence_years": 125000.0,
+    "biology_interval_count": 238,
+    "biology_checkpoint_count": 239,
+    "biology_start_age_ma": 30.0,
+    "biology_end_age_ma": 0.25,
+    "all_r315_biology_checkpoints_older_than_c2_bridge_start": true,
+    "adaptive_clock_contains_200ka": true,
+    "adaptive_clock_contains_120ka": true,
+    "adaptive_clock_checkpoint_promoted_to_biology_step": false,
+    "adaptive_clock_used_as_biology_timestep": false,
+    "fixed_r37i_r38_biology_cadence_preserved": true,
+    "c2_200_120ka_bridge_crossed": false,
+    "recent_120ka_restart_crossed": false,
+    "next_nominal_biology_checkpoint_age_ma": 0.125,
+    "next_nominal_biology_step_would_cross_c2_200ka_bridge_start": true,
+    "stop_reason": "250KA_IS_LAST_125KYR_BIOLOGY_BOUNDARY_BEFORE_200KA_C2_BRIDGE; NO_UNAUTHORIZED_ENVIRONMENTAL_SUBSTEP_TO_BIOLOGY_STEP_PROMOTION"
+  },
+  "proxy_integration": {
+    "scientific_arrays_exact": true,
+    "reduced_state_exact": true,
+    "telemetry_records_exact": true,
+    "snapshot_difference_semantics": "DIAGNOSTIC_PROVIDER_BRACKET_LABEL_ONLY"
+  },
+  "governance": {
+    "canonical_run_performed_here": false,
+    "reason": "R3.15 canonical run requires the user's materialized R3.14 SEALED v0.6.1/B1/B2 binding surface.",
+    "biology_cadence_changed": false,
+    "scientific_parameters_changed": false,
+    "adaptive_clock_promoted_to_biology_cadence": false,
+    "c2_bridge_crossed_in_stage": false
+  },
+  "check_rows": [
+    {
+      "name": "stage",
+      "pass": true,
+      "detail": "v0.6D1-R3.15"
+    },
+    {
+      "name": "start_30ma",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "end_250ka",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "bridge_start_200ka",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "recent_restart_120ka",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "expected_steps_238",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "biology_cadence_125k",
+      "pass": true,
+      "detail": 125000.0
+    },
+    {
+      "name": "transport_cadence_62500",
+      "pass": true,
+      "detail": 62500.0
+    },
+    {
+      "name": "adaptive_clock_not_biology_dt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "fixed_biology_cadence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "only_shared_config_change_is_endpoint",
+      "pass": true,
+      "detail": [
+        "end_age_ma"
+      ]
+    },
+    {
+      "name": "inherited_cfg:adaptive_k_eff",
+      "pass": true,
+      "detail": {
+        "r315": 38.47,
+        "r313": 38.47
+      }
+    },
+    {
+      "name": "inherited_cfg:barrier_phase_max",
+      "pass": true,
+      "detail": {
+        "r315": 0.95,
+        "r313": 0.95
+      }
+    },
+    {
+      "name": "inherited_cfg:barrier_phase_min",
+      "pass": true,
+      "detail": {
+        "r315": 0.05,
+        "r313": 0.05
+      }
+    },
+    {
+      "name": "inherited_cfg:barrier_transition_width_years",
+      "pass": true,
+      "detail": {
+        "r315": 1000000.0,
+        "r313": 1000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:biology_cadence_years",
+      "pass": true,
+      "detail": {
+        "r315": 125000.0,
+        "r313": 125000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:body_mass_scale",
+      "pass": true,
+      "detail": {
+        "r315": 0.35,
+        "r313": 0.35
+      }
+    },
+    {
+      "name": "inherited_cfg:branch_label",
+      "pass": true,
+      "detail": {
+        "r315": "K_CENTER",
+        "r313": "K_CENTER"
+      }
+    },
+    {
+      "name": "inherited_cfg:connectivity_land_support_threshold",
+      "pass": true,
+      "detail": {
+        "r315": 0.25,
+        "r313": 0.25
+      }
+    },
+    {
+      "name": "inherited_cfg:connectivity_softness",
+      "pass": true,
+      "detail": {
+        "r315": 0.1,
+        "r313": 0.1
+      }
+    },
+    {
+      "name": "inherited_cfg:deme_fission_check_interval_years",
+      "pass": true,
+      "detail": {
+        "r315": 500000.0,
+        "r313": 500000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:deme_fission_min_absolute_population",
+      "pass": true,
+      "detail": {
+        "r315": 0.01,
+        "r313": 0.01
+      }
+    },
+    {
+      "name": "inherited_cfg:deme_fission_min_component_fraction",
+      "pass": true,
+      "detail": {
+        "r315": 0.02,
+        "r313": 0.02
+      }
+    },
+    {
+      "name": "inherited_cfg:deme_fission_min_root_species_fraction",
+      "pass": true,
+      "detail": {
+        "r315": 0.01,
+        "r313": 0.01
+      }
+    },
+    {
+      "name": "inherited_cfg:diagnostic_unclipped_ceiling",
+      "pass": true,
+      "detail": {
+        "r315": 1000000.0,
+        "r313": 1000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:drift_individual_equivalents_per_population_unit",
+      "pass": true,
+      "detail": {
+        "r315": 250000000.0,
+        "r313": 250000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:drift_min_effective_size",
+      "pass": true,
+      "detail": {
+        "r315": 500.0,
+        "r313": 500.0
+      }
+    },
+    {
+      "name": "inherited_cfg:dt_years",
+      "pass": true,
+      "detail": {
+        "r315": 125000.0,
+        "r313": 125000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:effective_connectivity_core_threshold",
+      "pass": true,
+      "detail": {
+        "r315": 0.2,
+        "r313": 0.2
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_base_minimum_population_units",
+      "pass": true,
+      "detail": {
+        "r315": 0.075,
+        "r313": 0.075
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_generation_reference_years",
+      "pass": true,
+      "detail": {
+        "r315": 5.0,
+        "r313": 5.0
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_maximum_persistent_decline_fraction",
+      "pass": true,
+      "detail": {
+        "r315": 0.5,
+        "r313": 0.5
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_minimum_effective_size_proxy",
+      "pass": true,
+      "detail": {
+        "r315": 500.0,
+        "r313": 500.0
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_minimum_normalized_additive_variance",
+      "pass": true,
+      "detail": {
+        "r315": 0.005,
+        "r313": 0.005
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_minimum_occupied_cells",
+      "pass": true,
+      "detail": {
+        "r315": 10,
+        "r313": 10
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_minimum_persistence_years",
+      "pass": true,
+      "detail": {
+        "r315": 1000000.0,
+        "r313": 1000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_reproduction_reference",
+      "pass": true,
+      "detail": {
+        "r315": 1.0,
+        "r313": 1.0
+      }
+    },
+    {
+      "name": "inherited_cfg:founder_reset_on_reconnection",
+      "pass": true,
+      "detail": {
+        "r315": true,
+        "r313": true
+      }
+    },
+    {
+      "name": "inherited_cfg:gene_flow_ceiling_per_step",
+      "pass": true,
+      "detail": {
+        "r315": 0.15,
+        "r313": 0.15
+      }
+    },
+    {
+      "name": "inherited_cfg:habitat_connectivity_power",
+      "pass": true,
+      "detail": {
+        "r315": 0.5,
+        "r313": 0.5
+      }
+    },
+    {
+      "name": "inherited_cfg:habitat_floor",
+      "pass": true,
+      "detail": {
+        "r315": 1e-12,
+        "r313": 1e-12
+      }
+    },
+    {
+      "name": "inherited_cfg:isolation_reconnection_erosion",
+      "pass": true,
+      "detail": {
+        "r315": 1.0,
+        "r313": 1.0
+      }
+    },
+    {
+      "name": "inherited_cfg:macrostep_years",
+      "pass": true,
+      "detail": {
+        "r315": 500000.0,
+        "r313": 500000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:maximum_effective_exchange_pressure",
+      "pass": true,
+      "detail": {
+        "r315": 0.25,
+        "r313": 0.25
+      }
+    },
+    {
+      "name": "inherited_cfg:migration_fraction_ceiling",
+      "pass": true,
+      "detail": {
+        "r315": 0.3,
+        "r313": 0.3
+      }
+    },
+    {
+      "name": "inherited_cfg:migration_reference_years",
+      "pass": true,
+      "detail": {
+        "r315": 250000.0,
+        "r313": 250000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:minimum_absolute_population",
+      "pass": true,
+      "detail": {
+        "r315": 0.01,
+        "r313": 0.01
+      }
+    },
+    {
+      "name": "inherited_cfg:minimum_branch_population_fraction",
+      "pass": true,
+      "detail": {
+        "r315": 0.05,
+        "r313": 0.05
+      }
+    },
+    {
+      "name": "inherited_cfg:minimum_complement_population_fraction",
+      "pass": true,
+      "detail": {
+        "r315": 0.05,
+        "r313": 0.05
+      }
+    },
+    {
+      "name": "inherited_cfg:minimum_effective_isolation_generations",
+      "pass": true,
+      "detail": {
+        "r315": 50000.0,
+        "r313": 50000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:minimum_intrinsic_ri",
+      "pass": true,
+      "detail": {
+        "r315": 0.65,
+        "r313": 0.65
+      }
+    },
+    {
+      "name": "inherited_cfg:minimum_trait_distance",
+      "pass": true,
+      "detail": {
+        "r315": 1.0,
+        "r313": 1.0
+      }
+    },
+    {
+      "name": "inherited_cfg:mutation_variance_supply_normalized_per_myr",
+      "pass": true,
+      "detail": {
+        "r315": 0.002,
+        "r313": 0.002
+      }
+    },
+    {
+      "name": "inherited_cfg:nonlinear_stabilizing_variance_depletion_per_myr_per_q",
+      "pass": true,
+      "detail": {
+        "r315": 0.9876543209876544,
+        "r313": 0.9876543209876544
+      }
+    },
+    {
+      "name": "inherited_cfg:occupancy_floor",
+      "pass": true,
+      "detail": {
+        "r315": 1e-09,
+        "r313": 1e-09
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_check_interval_years",
+      "pass": true,
+      "detail": {
+        "r315": 500000.0,
+        "r313": 500000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_founder_floor_fraction",
+      "pass": true,
+      "detail": {
+        "r315": 0.05,
+        "r313": 0.05
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_max_density_ratio",
+      "pass": true,
+      "detail": {
+        "r315": 0.15,
+        "r313": 0.15
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_max_opportunity_ratio",
+      "pass": true,
+      "detail": {
+        "r315": 0.15,
+        "r313": 0.15
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_max_population_ratio_to_episode_start",
+      "pass": true,
+      "detail": {
+        "r315": 0.9,
+        "r313": 0.9
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_max_range_ratio",
+      "pass": true,
+      "detail": {
+        "r315": 0.1,
+        "r313": 0.1
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_minimum_persistence_years",
+      "pass": true,
+      "detail": {
+        "r315": 2000000.0,
+        "r313": 2000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_minimum_species_age_years",
+      "pass": true,
+      "detail": {
+        "r315": 2000000.0,
+        "r313": 2000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:ordinary_extinction_recovery_reset_factor",
+      "pass": true,
+      "detail": {
+        "r315": 1.25,
+        "r313": 1.25
+      }
+    },
+    {
+      "name": "inherited_cfg:persistent_reconnection_coalescence_enabled",
+      "pass": true,
+      "detail": {
+        "r315": true,
+        "r313": true
+      }
+    },
+    {
+      "name": "inherited_cfg:persistent_vicariance_fission_enabled",
+      "pass": true,
+      "detail": {
+        "r315": true,
+        "r313": true
+      }
+    },
+    {
+      "name": "inherited_cfg:reconnection_check_interval_years",
+      "pass": true,
+      "detail": {
+        "r315": 500000.0,
+        "r313": 500000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:reconnection_persistence_min_years",
+      "pass": true,
+      "detail": {
+        "r315": 2000000.0,
+        "r313": 2000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:ri_build_rate_per_generation",
+      "pass": true,
+      "detail": {
+        "r315": 2e-05,
+        "r313": 2e-05
+      }
+    },
+    {
+      "name": "inherited_cfg:ri_decay_rate_per_generation",
+      "pass": true,
+      "detail": {
+        "r315": 5e-05,
+        "r313": 5e-05
+      }
+    },
+    {
+      "name": "inherited_cfg:seed",
+      "pass": true,
+      "detail": {
+        "r315": 917231,
+        "r313": 917231
+      }
+    },
+    {
+      "name": "inherited_cfg:segregation_recombination_fraction_per_generation",
+      "pass": true,
+      "detail": {
+        "r315": 0.5,
+        "r313": 0.5
+      }
+    },
+    {
+      "name": "inherited_cfg:selection_variance_depletion_per_generation",
+      "pass": true,
+      "detail": {
+        "r315": 2e-08,
+        "r313": 2e-08
+      }
+    },
+    {
+      "name": "inherited_cfg:snapshot_interval_years",
+      "pass": true,
+      "detail": {
+        "r315": 1000000.0,
+        "r313": 1000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:speciation_check_interval_years",
+      "pass": true,
+      "detail": {
+        "r315": 500000.0,
+        "r313": 500000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:start_age_ma",
+      "pass": true,
+      "detail": {
+        "r315": 210.0,
+        "r313": 210.0
+      }
+    },
+    {
+      "name": "inherited_cfg:telemetry_enabled",
+      "pass": true,
+      "detail": {
+        "r315": true,
+        "r313": true
+      }
+    },
+    {
+      "name": "inherited_cfg:telemetry_near_ceiling_fraction",
+      "pass": true,
+      "detail": {
+        "r315": 0.99,
+        "r313": 0.99
+      }
+    },
+    {
+      "name": "inherited_cfg:topology_switch_age_ma",
+      "pass": true,
+      "detail": {
+        "r315": 195.0,
+        "r313": 195.0
+      }
+    },
+    {
+      "name": "inherited_cfg:trait_drive_onset",
+      "pass": true,
+      "detail": {
+        "r315": 0.5,
+        "r313": 0.5
+      }
+    },
+    {
+      "name": "inherited_cfg:trait_drive_saturation",
+      "pass": true,
+      "detail": {
+        "r315": 1.5,
+        "r313": 1.5
+      }
+    },
+    {
+      "name": "inherited_cfg:trait_response_timescale_years",
+      "pass": true,
+      "detail": {
+        "r315": 300000.0,
+        "r313": 300000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:transport_cadence_years",
+      "pass": true,
+      "detail": {
+        "r315": 62500.0,
+        "r313": 62500.0
+      }
+    },
+    {
+      "name": "inherited_cfg:variance_ceiling_normalized",
+      "pass": true,
+      "detail": {
+        "r315": 0.08,
+        "r313": 0.08
+      }
+    },
+    {
+      "name": "inherited_cfg:vicariance_persistence_min_years",
+      "pass": true,
+      "detail": {
+        "r315": 2000000.0,
+        "r313": 2000000.0
+      }
+    },
+    {
+      "name": "inherited_cfg:vicariance_persistence_reset_on_reconnection",
+      "pass": true,
+      "detail": {
+        "r315": true,
+        "r313": true
+      }
+    },
+    {
+      "name": "scheduler_true:all_r315_biology_checkpoints_older_than_c2_bridge_start",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "scheduler_true:fixed_r37i_r38_biology_cadence_preserved",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "scheduler_true:next_nominal_biology_step_would_cross_c2_200ka_bridge_start",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "scheduler_false:adaptive_clock_checkpoint_promoted_to_biology_step",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "scheduler_false:adaptive_clock_used_as_biology_timestep",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "scheduler_false:c2_200_120ka_bridge_crossed",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "scheduler_false:recent_120ka_restart_crossed",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "scheduler_238_intervals",
+      "pass": true,
+      "detail": 238
+    },
+    {
+      "name": "scheduler_end_250ka",
+      "pass": true,
+      "detail": 0.25
+    },
+    {
+      "name": "next_nominal_age_125ka",
+      "pass": true,
+      "detail": 0.125
+    },
+    {
+      "name": "inherited_exists:src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\scientific_engines\\r38_restartable_checkpoint.py"
+    },
+    {
+      "name": "inherited_sha_present:src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+      "pass": true,
+      "detail": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698"
+    },
+    {
+      "name": "inherited_exists:src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\scientific_engines\\r314_late_cenozoic_binding.py"
+    },
+    {
+      "name": "inherited_sha_present:src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py",
+      "pass": true,
+      "detail": "e80ef0d5389315bc7e8a756e0d5b97a305c050505e3557256f10572c43d618e8"
+    },
+    {
+      "name": "inherited_exists:src/arcana_worldsim/late_cenozoic/production_interface.py",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\production_interface.py"
+    },
+    {
+      "name": "inherited_sha_present:src/arcana_worldsim/late_cenozoic/production_interface.py",
+      "pass": true,
+      "detail": "d99a4c6b0150d3c90be0593b93162cb8d02d8ce2f34d7ccf84cf4ef9a27ac903"
+    },
+    {
+      "name": "inherited_exists:src/arcana_worldsim/late_cenozoic/integrated_provider.py",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\integrated_provider.py"
+    },
+    {
+      "name": "inherited_sha_present:src/arcana_worldsim/late_cenozoic/integrated_provider.py",
+      "pass": true,
+      "detail": "205d3ad15989aaaa71fde3f73efc3f5f0b41ca57735e342a723691f10073841c"
+    },
+    {
+      "name": "inherited_exists:src/arcana_worldsim/late_cenozoic/late_pleistocene_boundary.py",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\late_pleistocene_boundary.py"
+    },
+    {
+      "name": "inherited_sha_present:src/arcana_worldsim/late_cenozoic/late_pleistocene_boundary.py",
+      "pass": true,
+      "detail": "5357cafa87319f62362f6b1bfbf1b6359ba7423aa94698d079d89b7bba8ce473"
+    },
+    {
+      "name": "inherited_exists:src/arcana_worldsim/late_cenozoic/adaptive_clock_c2.py",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\adaptive_clock_c2.py"
+    },
+    {
+      "name": "inherited_sha_present:src/arcana_worldsim/late_cenozoic/adaptive_clock_c2.py",
+      "pass": true,
+      "detail": "6d131f80f16038ec0238ce8863a31f8ae391921db802c07ad6d953ce93696759"
+    },
+    {
+      "name": "inherited_exists:src/arcana_worldsim/late_cenozoic/cha2_nested_50y.py",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\cha2_nested_50y.py"
+    },
+    {
+      "name": "inherited_sha_present:src/arcana_worldsim/late_cenozoic/cha2_nested_50y.py",
+      "pass": true,
+      "detail": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f"
+    },
+    {
+      "name": "proxy_array_exact:guild",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_array_exact:pop",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_array_exact:trait",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_array_exact:va",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_array_exact:gen",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_array_exact:current_accessible",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_reduced_exact:va_within",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_reduced_exact:ancestry_covariance",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_reduced_exact:neutral_segregation_potential",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_reduced_exact:adaptive_coordinate",
+      "pass": true,
+      "detail": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_exact_field:component_ids",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:root_species",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:current_species",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:registry",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:child_counters",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:baselines",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:ri_state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:clock_state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:ext_state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:founder_state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:vicariance_state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:reconnection_state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:events",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_snapshot_only_diagnostic_label_changes",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "proxy_exact_field:founder_stats_last",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_exact_field:gene_flow_closure",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "proxy_records_exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "proxy_population_exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "proxy_events_exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "proxy_30ma_full_d3_handoff_exact",
+      "pass": true,
+      "detail": {
+        "age_ma": 30.0,
+        "full_d3_substrate_identity_exact": true,
+        "fields": {
+          "land_support": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "accessible": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "temperature_c": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "aridity_index": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "browse_forage": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "low_forage": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "wetland_forage": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "total_edible_forage": {
+            "exact": true,
+            "max_abs_error": 0.0
+          },
+          "reference_population": {
+            "exact": true,
+            "max_abs_error": 0.0
+          }
+        },
+        "biology_state_advanced_during_handoff_check": false
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:land_support",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:accessible",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:temperature_c",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:aridity_index",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:browse_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:low_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:wetland_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:total_edible_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "proxy_30ma_field_exact:reference_population",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    }
+  ]
+}

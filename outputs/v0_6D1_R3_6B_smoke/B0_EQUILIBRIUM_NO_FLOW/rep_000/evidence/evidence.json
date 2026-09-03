@@ -1,0 +1,37 @@
+{
+  "arrays_file": "evidence_arrays.npz",
+  "arrays_file_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+  "assumptions": [
+    "Normalized benchmark axes use trait scale 1.0 so q equals VA numerically",
+    "NEMO is reference evidence only and cannot alter ARCANA canonical state",
+    "No NEMO-derived species identity/speciation decision is authoritative"
+  ],
+  "canonical_write_allowed": false,
+  "engine": {
+    "name": "NEMO",
+    "role": "REFERENCE_ORACLE",
+    "version": "2.4.2"
+  },
+  "engine_run_id": "R36B-B0_EQUILIBRIUM_NO_FLOW-r000:rep0",
+  "experiment_sha256": "3d790c4ff1c3b9e50f564ddc522894c518c918520fe1dd63bf2b926424d79bd9",
+  "metrics": {
+    "bridge_manifest_sha256": "65408f337854e867173d87de1786ec458abc75a3101692b0b215aab0ff9a159a",
+    "deme_count": 2,
+    "execution_attempted": false,
+    "quantitative_trait_axes": [
+      0,
+      1
+    ],
+    "returncode": 0
+  },
+  "promotion_status": "REVIEW_REQUIRED",
+  "schema": "ARCANA_SCIENTIFIC_EVIDENCE_V1",
+  "semantic_sha256": "d85c83ef3fae53dbdc0c788ded6cc3c8153411fd17483b917a850d1fe8989b09",
+  "status": "PREPARED_REFERENCE_INPUTS",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "702d6a9718145012a0553742b0e13873f3e16be6f1a6391582ad8ec0c9fb89bb",
+  "unsupported_mappings": [
+    "ARCANA moment state does not uniquely determine a NEMO genome/QTL realization; executable references must use a governed ensemble mapping.",
+    "NEMO output never defines ARCANA species identity or speciation events."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "adapter_source": "benchmarks\\r43\\cdmetapop_r43.py",
+  "audit": "R43_CDMETAPOP_FORCING_PARITY_SOURCE_AUDIT",
+  "canonical_state_changed": false,
+  "configured_drivers": {
+    "arcana_start_population_descriptor": {
+      "configured_value": 1617.1047035853792,
+      "explicitly_consumed_by_adapter": false
+    },
+    "engine_gene_flow_rate": {
+      "configured_value": 0.024099537037037037,
+      "explicitly_consumed_by_adapter": true
+    },
+    "engine_selection_strength": {
+      "configured_value": 0.0,
+      "explicitly_consumed_by_adapter": false
+    },
+    "normalized_connectivity_start": {
+      "configured_value": 0.44199074074074074,
+      "explicitly_consumed_by_adapter": false
+    },
+    "normalized_environment_change": {
+      "configured_value": -0.04036275007387083,
+      "explicitly_consumed_by_adapter": false
+    },
+    "normalized_habitat_fraction_end": {
+      "configured_value": 0.25623456790123456,
+      "explicitly_consumed_by_adapter": false
+    },
+    "normalized_habitat_fraction_start": {
+      "configured_value": 0.25598765432098763,
+      "explicitly_consumed_by_adapter": true
+    },
+    "normalized_initial_genetic_diversity": {
+      "configured_value": 0.35,
+      "explicitly_consumed_by_adapter": false
+    },
+    "normalized_initial_population_scale": {
+      "configured_value": 1.0,
+      "explicitly_consumed_by_adapter": false
+    }
+  },
+  "driver_application_declared_by_r43": "start_state_K_N0_and_migration_probability_on_isolated_pinned_generic_patch_network",
+  "dynamic_end_forcing_explicitly_consumed": false,
+  "explicit_config_keys_consumed": [
+    "engine_gene_flow_rate",
+    "normalized_habitat_fraction_start"
+  ],
+  "finding": "R43_CDMETAPOP_POPULATION_PERSISTENCE_DYNAMIC_FORCING_COVERAGE_GAP_CONFIRMED",
+  "forcing_coverage_gap_confirmed": true,
+  "habitat_fraction_end": 0.25623456790123456,
+  "habitat_fraction_end_changed": true,
+  "habitat_fraction_start": 0.25598765432098763,
+  "interpretation_guard": "This is an adapter/input-semantic coverage finding. It is not a scientific verdict against CDMetaPOP and does not prove the ARCANA R3.11 mechanics correct or incorrect.",
+  "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+  "normalized_environment_change_explicitly_consumed": false,
+  "normalized_environment_change_nonzero": true,
+  "normalized_environment_change_value": -0.04036275007387083,
+  "normalized_habitat_fraction_end_explicitly_consumed": false,
+  "population_persistence_authority_role": "PRIMARY",
+  "population_persistence_comparability": "NORMALIZABLE",
+  "shared_adapter_symmetry_required": true,
+  "stage": "v0.6D1-R4.6",
+  "start_state_only_parameterization_detected": true,
+  "symmetrically_affected_frozen_jobs_if_adapter_semantics_change": [
+    "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+    "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+    "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ARCANA WorldSim R3.23 Functional Ensemble Summary",
+  "type": "object",
+  "required": ["stage", "status", "ensemble", "traits", "components", "species", "governance"],
+  "properties": {
+    "stage": {"const": "v0.6D1-R3.23"},
+    "status": {"type": "string"},
+    "ensemble": {"type": "object"},
+    "traits": {"type": "array", "minItems": 31, "maxItems": 31},
+    "components": {"type": "array", "minItems": 295, "maxItems": 295},
+    "species": {"type": "array", "minItems": 134, "maxItems": 134},
+    "governance": {"type": "object"}
+  }
+}

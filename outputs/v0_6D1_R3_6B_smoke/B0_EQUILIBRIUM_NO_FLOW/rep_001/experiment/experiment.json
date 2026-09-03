@@ -1,0 +1,92 @@
+{
+  "age_ma": 191.0,
+  "arcana_stage": "v0.6D1-R3.6B",
+  "arrays": {
+    "additive_variance": {
+      "dtype": "float64",
+      "shape": [
+        2,
+        3
+      ]
+    },
+    "component_ids": {
+      "dtype": "<U4",
+      "shape": [
+        2
+      ]
+    },
+    "component_species": {
+      "dtype": "<U17",
+      "shape": [
+        2
+      ]
+    },
+    "exchange_matrix": {
+      "dtype": "float64",
+      "shape": [
+        2,
+        2
+      ]
+    },
+    "generation_time_years": {
+      "dtype": "float64",
+      "shape": [
+        2
+      ]
+    },
+    "population_total": {
+      "dtype": "float64",
+      "shape": [
+        2
+      ]
+    },
+    "trait_mean": {
+      "dtype": "float64",
+      "shape": [
+        2,
+        3
+      ]
+    }
+  },
+  "arrays_file": "arrays.npz",
+  "arrays_file_sha256": "9d67ff37f83f2164eb922238903180d1b5acdc0e42d712da677c484b33b07037",
+  "assumptions": [
+    "Normalized benchmark axes use trait scale 1.0 so q equals VA numerically",
+    "NEMO is reference evidence only and cannot alter ARCANA canonical state",
+    "No NEMO-derived species identity/speciation decision is authoritative"
+  ],
+  "engine": {
+    "canonical_write_allowed": false,
+    "execution_mode": "EXTERNAL_EXECUTABLE_SIDECAR",
+    "license_id": "GPL-3.0-or-later",
+    "name": "NEMO",
+    "notes": [
+      "Quantitative-genetics/metapopulation independent reference",
+      "Do not use NEMO 2.4.0/2.4.1 for quant free-recombination benchmarks"
+    ],
+    "role": "REFERENCE_ORACLE",
+    "version": "2.4.2"
+  },
+  "experiment_id": "R36B-B0_EQUILIBRIUM_NO_FLOW-r001",
+  "metadata": {
+    "generation_count": 1000,
+    "normalized_trait_space": true,
+    "phase_count": 1,
+    "purpose": "CONTROLLED_NEMO_QTL_REFERENCE_MICROBENCHMARK",
+    "q_star": 0.045,
+    "scenario": "B0_EQUILIBRIUM_NO_FLOW"
+  },
+  "random_seed": 36062027,
+  "replicate_id": 1,
+  "requested_outputs": [
+    "trait_mean",
+    "additive_variance",
+    "allele_frequencies",
+    "heterozygosity",
+    "population_per_patch"
+  ],
+  "schema": "ARCANA_SCIENTIFIC_EXPERIMENT_V1",
+  "semantic_sha256": "ec4d8a0ca52843436c581dd3f05c354ca7ad232332449f5a4644362e0d22747c",
+  "source_state_sha256": "0363443003160dcbb0376015fad10a8fd291a7ab13004b44f4d65924b9cff6d8",
+  "spatial_domain": {}
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "ARCANA_R37_SEGREGATION_AWARE_ADMIXTURE_CONFIG_V1",
+  "stage": "v0.6D1-R3.7",
+  "status": "REFERENCE_VALIDATION_ONLY",
+  "maximum_total_exchange_fraction_per_deme": 0.45,
+  "reference_recombination_fraction_per_generation": 0.5,
+  "reference_recombination_authority": "NEMO_2_4_2_FREE_RECOMBINATION_BENCHMARK_ONLY",
+  "state": {
+    "within_additive_variance": "deme_x_trait",
+    "ancestry_ld_covariance": "deme_x_trait_signed",
+    "segregation_potential": "deme_x_deme_x_trait_squared_euclidean"
+  },
+  "governance": {
+    "canonical_write_allowed": false,
+    "production_runtime_binding_allowed": false,
+    "mu_b_change_authorized": false,
+    "ceiling_change_authorized": false,
+    "state_initialization_authorized": false,
+    "state_evolution_authorized": false
+  }
+}

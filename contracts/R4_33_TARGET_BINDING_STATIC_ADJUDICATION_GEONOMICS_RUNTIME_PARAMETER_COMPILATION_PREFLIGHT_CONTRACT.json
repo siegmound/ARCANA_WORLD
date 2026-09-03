@@ -1,0 +1,29 @@
+{
+  "stage": "v0.6D1-R4.33",
+  "title": "Target Authority Binding Static Adjudication & Geonomics Runtime Parameter Compilation Preflight",
+  "parent": "v0.6D1-R4.32 SEALED",
+  "scope": {
+    "target_binding_static_adjudication": true,
+    "geonomics_runtime_parameter_binding_package_compilation": true,
+    "native_geonomics_params_materialization": false,
+    "gnx_make_model": false,
+    "geonomics_scientific_execution": false,
+    "numeric_target_execution": false,
+    "readjudication": false,
+    "canonical_state_change": false
+  },
+  "geonomics_jobs": [
+    "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+    "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+    "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS"
+  ],
+  "required_mapping_classes": [
+    "time_mapping",
+    "space_mapping",
+    "population_mapping",
+    "domain_mapping",
+    "uncertainty_mapping"
+  ],
+  "scientific_guard": "R4.32 explicitly preserves candidate/replay uncertainty dimensions and provenance-separated environment/producer layers. R4.33 therefore compiles hash-bound runtime binding packages but MUST NOT invent default selectors, collapse candidate dimensions, mix layers numerically, create native Geonomics params, or call make_model until explicit selector/layer-combination authority is frozen.",
+  "next_action": "BUILD_R434_GEONOMICS_RUNTIME_SELECTOR_AUTHORITY_FREEZE_AND_NATIVE_PARAMETER_MATERIALIZATION_PREFLIGHT"
+}

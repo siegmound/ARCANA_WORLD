@@ -1,0 +1,39 @@
+{
+  "schema": "ARCANA_R316_SEAL_SUMMARY_V1",
+  "stage": "v0.6D1-R3.16",
+  "verdict": "PASS_R316_CANONICAL_250_TO_125KA_H0_C2_EXPOSURE_PRESERVING_FIXED_BIOLOGY__125KA_PRE_120KA_RESTART_BOUNDARY_SEALED",
+  "checks": "193/193",
+  "parent_stage": "v0.6D1-R3.15_SEALED",
+  "boundary": {
+    "age_ma": 0.125,
+    "species": 134,
+    "components": 295,
+    "population": 1217.8946033288662,
+    "q_max": 0.047631033446597144,
+    "q_headroom": 0.03236896655340286
+  },
+  "multirate_closure": {
+    "biology_steps": 1,
+    "biology_cadence_years": 125000.0,
+    "c2_500y_substeps_consumed": 150,
+    "c2_500y_substeps_remaining_to_120ka": 10,
+    "remaining_environmental_bridge_years": 5000.0,
+    "adaptive_clock_as_biology_timestep": false,
+    "biology_advanced_to_120ka": false
+  },
+  "interpretation_guard": {
+    "exact_120ka_biology_claimed": false,
+    "c2_historical_glacial_chronology_claimed": false,
+    "high_resolution_200ka_historical_paleoclimate_claimed": false,
+    "endpoint_only_shadow_is_authority": false,
+    "deep_biological_coupling": false
+  },
+  "artifact_hashes": {
+    "canonical_summary": "4e9cd6c53ef33cd262fad86b13deabb8e683afd0e1f6100edbd4e5d119f3075f",
+    "checkpoint_json": "aaf0bab510b4bcb5fbf77707ad66201515342cf8eb25b687e8f15952d2afca32",
+    "checkpoint_npz": "de0ef549d2fc74f1546e320b3fc3e0bc2f7ca7cbf5ebac464976494ad4055593",
+    "source_authority_manifest": "e1c5b3424fc7538755a30c3c8da22bf6cc665634df704c8b7eb59dd0e8319134"
+  },
+  "formal_audit_sha256": "bc7425d31629460d06b8dfd50c2cbba83a6f2c576c2502bd87de2dfe0f952cee",
+  "next_stage": "v0.6D1-R3.17 \u2014 125->120 ka Exact Recent-Restart Biological Synchronization"
+}

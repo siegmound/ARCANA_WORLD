@@ -1,0 +1,113 @@
+{
+  "stage": "v0.6D1-R2.1",
+  "speciation": {
+    "timeline": [
+      {
+        "elapsed_year": 0.0,
+        "birth_count": 0,
+        "species": [
+          "R",
+          "R"
+        ],
+        "active_founder_timers": 1
+      },
+      {
+        "elapsed_year": 500000.0,
+        "birth_count": 0,
+        "species": [
+          "R",
+          "R"
+        ],
+        "active_founder_timers": 1
+      },
+      {
+        "elapsed_year": 1000000.0,
+        "birth_count": 1,
+        "species": [
+          "R_D01",
+          "R"
+        ],
+        "active_founder_timers": 0
+      }
+    ],
+    "event": {
+      "event": "speciation",
+      "elapsed_year": 1000000.0,
+      "age_ma": 209.0,
+      "parent_species_id": "R",
+      "daughter_species_id": "R_D01",
+      "root_species_id": "R",
+      "daughter_component_ids": [
+        "R_C1"
+      ],
+      "daughter_population": 0.24,
+      "parent_remainder_population": 0.24000000000000002,
+      "structural_gate": {
+        "gate_ready": true,
+        "checks": {
+          "all_cross_pairs_biological_time": true,
+          "all_cross_pairs_intrinsic_RI": true,
+          "all_cross_pairs_trait_distance": true,
+          "all_cross_pairs_effective_exchange": true,
+          "branch_viability": true,
+          "complement_viability": true
+        },
+        "cross_pair_count": 1,
+        "max_effective_exchange_pressure": 0.0,
+        "min_intrinsic_RI": 0.9,
+        "min_isolation_clock_generations": 100000.0,
+        "min_trait_distance": 2.0
+      },
+      "founder_viability": {
+        "gate_ready": true,
+        "checks": {
+          "founder_persistence": true,
+          "founder_life_history_population": true,
+          "complement_life_history_population": true,
+          "founder_effective_size_proxy": true,
+          "founder_genetic_variance": true,
+          "founder_spatial_support": true,
+          "founder_no_persistent_collapse": true
+        },
+        "branch_population": 0.24,
+        "complement_population": 0.24000000000000002,
+        "life_history_minimum_population": 0.075,
+        "complement_minimum_population": 0.075,
+        "effective_size_proxy": 60000000.0,
+        "normalized_additive_variance": 0.045000000000000005,
+        "occupied_cells": 12,
+        "minimum_to_first_population_ratio": 1.0,
+        "generation_time_proxy_years": 5.0
+      },
+      "population_conservation_error": 0.0,
+      "authority": "D3_0C_STRUCTURAL_GATE_PLUS_D3_2B_FOUNDER_VIABILITY"
+    },
+    "pass": true
+  },
+  "fission": {
+    "event": {
+      "event": "deme_fission",
+      "elapsed_year": 2000000.0,
+      "age_ma": 208.0,
+      "parent_component_id": "R_C1",
+      "daughter_component_id": "R_C1_F01",
+      "species_id_at_fission": "R",
+      "root_species_id": "R",
+      "population": 0.24,
+      "component_rank": 1,
+      "centroid_lat_deg": 7.000000000000001,
+      "centroid_lon_deg": 69.39473684210527,
+      "vicariance_first_seen_elapsed_year": 0.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    "pass": true
+  },
+  "extinction": {
+    "mature_species": [
+      "R"
+    ],
+    "pass": true
+  },
+  "verdict": "PASS"
+}

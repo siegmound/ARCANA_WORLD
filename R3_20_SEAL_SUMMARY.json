@@ -1,0 +1,73 @@
+{
+  "schema": "ARCANA_R320_SEAL_SUMMARY_V1",
+  "stage": "v0.6D1-R3.20",
+  "verdict": "PASS_R320_CHA2_YOUNGER_DRYAS_CLASS_MAGNITUDE_AND_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_LAYER_SEALED",
+  "formal_audit": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_20\\FORMAL_AUDIT_SEALED_v0_6D1_R3_20.json",
+  "formal_audit_sha256": "f3e70bb3a53e68d62d615106b4159d8dc7ee1454a85895b5511e49e7e9522368",
+  "formal_audit_checks": "108/108",
+  "canonical_artifacts": {
+    "summary": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_20\\R3_20_CHA2_YD_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_SUMMARY.json",
+    "summary_sha256": "ab5abbe28bccab3df2d18384ff9563e71d82af4d6a59a4e5484ab5c2b5116cab",
+    "hazard_npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_20\\R3_20_CHA2_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_FIELDS.npz",
+    "hazard_npz_sha256": "4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14"
+  },
+  "magnitude": {
+    "classification": "YOUNGER_DRYAS_CLASS",
+    "metrics": {
+      "baseline_overturning_strength": 0.98922412840008,
+      "freshwater_peak_sv": 0.20270779797753885,
+      "freshwater_peak_year_before_book": -12900,
+      "minimum_overturning_strength": 0.3756271044587676,
+      "minimum_overturning_fraction_of_baseline": 0.3797189066407908,
+      "minimum_overturning_year_before_book": -12850,
+      "strong_suppression_duration_years": 1300.0,
+      "strong_suppression_start_year_before_book": -13200,
+      "strong_suppression_end_year_before_book": -11950,
+      "event_exit_fraction_of_baseline": 0.8,
+      "event_exit_year_before_book": -11900,
+      "event_exit_timing_within_reference_window_diagnostic": true,
+      "full_recovery_fraction_of_baseline_diagnostic": 0.9,
+      "full_recovery_year_before_book_diagnostic": -10500,
+      "full_recovery_detected_by_diagnostic_horizon": true,
+      "maximum_northern_local_cooling_c": 4.918580792825181,
+      "maximum_northern_local_cooling_year_before_book": -12850,
+      "northern_active_land_fraction_cooling_at_least_2c_at_peak": 1.0,
+      "maximum_global_state_cooling_c_diagnostic": 0.09231673360365544,
+      "maximum_global_state_cooling_year_before_book_diagnostic": -12750,
+      "maximum_global_cooling_c": 0.09231673360365544,
+      "maximum_global_cooling_year_before_book": -12750,
+      "recovery_year_before_book": -11900
+    }
+  },
+  "hazard": {
+    "start_year_before_book": -14950,
+    "end_year_before_book": -11000,
+    "step_years": 50,
+    "state_count": 80,
+    "peak_severe_fraction": 0.0005143151037202125,
+    "peak_severe_fraction_year_before_book": -11300,
+    "active_10deg_latitude_bands_at_peak": [
+      0,
+      5,
+      12
+    ]
+  },
+  "parent_authority": {
+    "r319_seal": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R3_19_SEAL_SUMMARY.json",
+    "r319_json_sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+    "r319_npz_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+    "cha2_c1_sha256": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f"
+  },
+  "governance": {
+    "cha2_c1_modified": false,
+    "r319_h0_state_modified": false,
+    "biology_modified": false,
+    "impact_origin_required": false,
+    "human_population_used": false,
+    "settlement_target_used": false,
+    "flood_myth_target_used": false,
+    "religion_target_used": false,
+    "hazard_indices_are_diagnostic_rankings_not_flood_depths": true
+  },
+  "next": "v0.6D1-R3.21 \u2014 Late-Pleistocene Human-Readiness Functional Phenotype Layer & High-Resolution Replay Interface"
+}

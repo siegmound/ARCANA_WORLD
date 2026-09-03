@@ -1,0 +1,151 @@
+{
+  "authority_note": "R3.7A closes reduced-order segregation-potential lifecycle semantics and prepares independent NEMO B2 evidence. Production runtime binding and production K_eff remain unauthorized.",
+  "governance": {
+    "automatic_nemo_calibration_allowed": false,
+    "canonical_write_allowed": false,
+    "ceiling_change_authorized": false,
+    "mu_b_change_authorized": false,
+    "production_keff_authorized": false,
+    "production_runtime_binding_allowed": false
+  },
+  "new_r3_7A_sources": [
+    {
+      "bytes": 19052,
+      "path": "src/arcana_worldsim/scientific_engines/segregation_potential_lifecycle.py",
+      "sha256": "efa5dd19a0db881f0f16f42613365aa65960309b0451d0126afc9c6d0da1d045"
+    },
+    {
+      "bytes": 5708,
+      "path": "src/arcana_worldsim/scientific_engines/r37a_validation.py",
+      "sha256": "bf7f816da8501e659c8dd11e2dcfd921cadd53460dc403f30c3ac0b32be95546"
+    },
+    {
+      "bytes": 6782,
+      "path": "src/arcana_worldsim/scientific_engines/nemo242_r37a.py",
+      "sha256": "5ef28437052e6be959874d0e11561a5f90c995e3e2b2196a355b5aefcc5daecf"
+    },
+    {
+      "bytes": 3631,
+      "path": "src/arcana_worldsim/scientific_engines/__init__.py",
+      "sha256": "3f3c8ef2b66a9d606832e5c332f69d63bcacd9b3b834786dad24cb99e18e2f17"
+    },
+    {
+      "bytes": 7641,
+      "path": "scripts/run_nemo_r37a_b2_chain.py",
+      "sha256": "bc3ca5615ae73fd82d0538ee6a1e600b16d1e917c3734cfa295918d1fdd2e53a"
+    },
+    {
+      "bytes": 600,
+      "path": "scripts/analyze_r37a_parent_reference.py",
+      "sha256": "ebf66aa51c59e6b6c473628c2bdbf08df5cfe8bb1d6dc49cfc8c38abcc5a02e5"
+    },
+    {
+      "bytes": 4584,
+      "path": "scripts/formal_audit_v0_6D1_R3_7A.py",
+      "sha256": "ab8f2b5ab512ae1c23ad47781c073dede7b0ee1d00c25b9eed780917a988eb15"
+    },
+    {
+      "bytes": 5308,
+      "path": "tests/test_segregation_potential_lifecycle_v0_6D1_R3_7A.py",
+      "sha256": "0ee22843da7a2e37774311e6f545bf9e6d2c726cab562283e9894dd621bbb973"
+    },
+    {
+      "bytes": 2059,
+      "path": "tests/test_nemo_r37a_b2_binding.py",
+      "sha256": "ed3f579a3fd1423e91299df9ff6ca44efe005c594ab3429288854b0febb685aa"
+    },
+    {
+      "bytes": 1436,
+      "path": "configs/world1_segregation_potential_lifecycle_v0_6D1_R3_7A.json",
+      "sha256": "f85091d588592ade4f34c5f78484c2d6c065b97503b4593f34a786d756e64da2"
+    },
+    {
+      "bytes": 3528,
+      "path": "SEGREGATION_POTENTIAL_LIFECYCLE_CONTRACT_v0_6D1_R3_7A.md",
+      "sha256": "bd12a596128b8a41762deddcae5f10cd9af7b224da140073bdc323300390f70e"
+    },
+    {
+      "bytes": 1552,
+      "path": "NEMO_B2_ISOLATION_RECONNECTION_PROTOCOL_v0_6D1_R3_7A.md",
+      "sha256": "6d8e2ff45bd5f3d73cfaa719309fb681292b252c8fd4c463bd7632f85854d279"
+    },
+    {
+      "bytes": 1146,
+      "path": "R3_7A_PARENT_NEMO_DRIFT_AND_POLYGENIC_SCALE_AUDIT.md",
+      "sha256": "992a902ff9b495cb1d041f61441ea417f1b6630398aac54eddcbdf2e5086de28"
+    },
+    {
+      "bytes": 1504,
+      "path": "V0_6D1_R3_7A_STATUS.md",
+      "sha256": "487013df4cc4a1885502a157ed7fe176a97505ba7aaaff1e5ce412e0ad09eba4"
+    },
+    {
+      "bytes": 2319,
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7A.md",
+      "sha256": "3a41dbda103d670a9545f96507bcaa572190f11f79612dbeb6beb17f88b14f4d"
+    },
+    {
+      "bytes": 705,
+      "path": "README_R3_7A.md",
+      "sha256": "b7a2d875efed60db5d69b8a5d0791744c28315c22fadf8656e624fe4a6e88fba"
+    },
+    {
+      "bytes": 6751,
+      "path": "reference_results/R3_7A_PARENT_NEMO_DRIFT_AND_KEFF_REFERENCE.json",
+      "sha256": "c8f57d47a71feeeadc7aba98e3e59470b244a7bcd73b46a2ade29c9c602873fd"
+    },
+    {
+      "bytes": 742,
+      "path": "run_v0_6D1_R3_7A_checks.ps1",
+      "sha256": "79a8313529514ab1346172451a43bccf8c03b89952ce2a8969ccbd5ac15f3ba2"
+    },
+    {
+      "bytes": 743,
+      "path": "run_v0_6D1_R3_7A_nemo_b2_wsl.ps1",
+      "sha256": "36f033c9d6d6492f8155684f9b5df6b58ac1edc671551237bd94f05ae3ccae45"
+    },
+    {
+      "bytes": 3474,
+      "path": "README.md",
+      "sha256": "d8424f16c367dfd7fb437b9c3cf251f3ae2709f04247de5d6de615d610300f39"
+    }
+  ],
+  "parent_nemo_reference": {
+    "executed": 40,
+    "parsed": 40,
+    "raw_results_sha256": "9a72d25b2b8518a44d04d389c1cb8fce671d60ebf46baada18e0de6e048fbe15"
+  },
+  "parent_package": {
+    "filename": "ARCANA_WORLD1_v0_6D1_R3_7_SEGREGATION_AWARE_ADMIXTURE_VARIANCE_REPAIR_CANDIDATE.zip",
+    "sha256": "d71948a387646c8e549e06f60fe3dc310573526b0adeb86846ad2a3c22665dd7"
+  },
+  "parent_stage": "v0.6D1-R3.7",
+  "stage": "v0.6D1-R3.7A",
+  "unchanged_parent_authorities": [
+    {
+      "bytes": 15443,
+      "path": "src/d3_additive_variance_v0_6_3D3_3A.py",
+      "sha256": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21"
+    },
+    {
+      "bytes": 8202,
+      "path": "src/d3_paleogeographic_history_v0_6_3D3_2C.py",
+      "sha256": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730"
+    },
+    {
+      "bytes": 51460,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "sha256": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45"
+    },
+    {
+      "bytes": 11983,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_5.py",
+      "sha256": "634237eb15383000e88180b890ead9b6facc281c0a77eb5ce00efe32f3d0bc95"
+    },
+    {
+      "bytes": 15151,
+      "path": "src/arcana_worldsim/scientific_engines/segregation_aware_admixture.py",
+      "sha256": "c08f206c3866f030c71b3d6cb08e6f5859a8ed1fe38fc6b34ff27bb4813c56ce"
+    }
+  ]
+}

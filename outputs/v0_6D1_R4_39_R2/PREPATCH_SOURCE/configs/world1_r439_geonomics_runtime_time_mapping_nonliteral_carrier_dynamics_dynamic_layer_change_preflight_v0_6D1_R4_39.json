@@ -1,0 +1,52 @@
+{
+  "stage": "v0.6D1-R4.39",
+  "policy": "R439_TIME_AND_LAYER_MACHINERY_PREFLIGHT_CARRIER_DYNAMICS_NOT_AUTHORIZED",
+  "parent_required": "R4.38 29/29 COMPLETE + 21/21 SEALED",
+  "geonomics_required_version": "1.4.9",
+  "time_mapping": {
+    "initial_canonical_state_model_t": -1,
+    "future_state_i_model_t": "i-1",
+    "J14_expected_state_count": 141,
+    "J14_expected_T": 140,
+    "J18_expected_state_count": 15,
+    "J18_expected_T": 14,
+    "J21_expected_state_count": 9,
+    "J21_expected_T": 8,
+    "interpolation": false,
+    "physical_rate_mapping_authority_created": false
+  },
+  "j21_dynamic_layers": {
+    "native_identity_layers": 149,
+    "physical_unit_sidecars": 2,
+    "anchor_count": 9,
+    "native_anchor_states": 1341,
+    "future_exact_change_targets": 1192,
+    "replicates": 4,
+    "compiled_exact_targets_all_replicates": 4768,
+    "change_event_semantics": "EXACT_JUMP_AT_CANONICAL_TRANSITION",
+    "start_t_equals_end_t": true,
+    "n_steps": 1,
+    "automatic_rescaling": false,
+    "clipping": false,
+    "cross_layer_numeric_fusion": false,
+    "result_selected_transform": false
+  },
+  "carrier_dynamics": {
+    "carrier_count_literal_population": false,
+    "population_proxy_is_carrier_count": false,
+    "autonomous_movement_authorized": false,
+    "autonomous_population_dynamics_authorized": false,
+    "autonomous_ageing_interpretation_authorized": false,
+    "default_main_fn_queue_scientific_execution_authorized": false
+  },
+  "model_run_forbidden": true,
+  "walk_forbidden": true,
+  "run_default_model_forbidden": true,
+  "scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "geonomics_execution_ready": false,
+  "next_action": "BUILD_R440_GEONOMICS_DOMAIN_SPECIFIC_CARRIER_DYNAMICS_AUTHORITY_AND_EXECUTION_QUEUE_PREFLIGHT"
+}

@@ -1,0 +1,43 @@
+{
+  "stage": "v0.6D1-R4.43",
+  "title": "Geonomics Scientific Readout Authority, Metric Extraction & Adjudication Schema Preflight",
+  "principle": "no Geonomics output becomes scientific evidence merely because the API can emit it",
+  "J14_J18_authorized": {
+    "integrity": [
+      "continuous carrier coordinate readback",
+      "native floor-cell assignment readback"
+    ],
+    "scientific_descriptive": [
+      "nearest-neighbor distance from native Geonomics KDTree"
+    ]
+  },
+  "J21_authorized": {
+    "integrity": [
+      "147 native Layer.rast exact readback"
+    ],
+    "scientific_descriptive": [
+      "per-native-layer finite/min/max/mean/std summary"
+    ],
+    "dynamic_sidecars": "excluded"
+  },
+  "forbidden_scientific_interpretations": [
+    "carrier density as biological population density",
+    "Nt as historical population size",
+    "birth/death history",
+    "age-stage as physical time",
+    "K as adjudicative population carrying capacity",
+    "fitness/genetic metrics on nongenomic carriers",
+    "movement/dispersal history",
+    "four dynamic sidecars as Geonomics-native metrics"
+  ],
+  "adjudication": {
+    "exact_integrity_mismatch": "adapter_or_runtime_integrity_failure, not scientific divergence",
+    "descriptive_metrics": "recorded without numeric acceptance threshold",
+    "majority_vote": false,
+    "result_selected_threshold": false,
+    "engine_output_can_define_target": false,
+    "canonical_rewrite": false
+  },
+  "nonclaim": "R4.43 freezes authority/schema only; it does not extract live metrics",
+  "next_action": "BUILD_R444_GEONOMICS_READOUT_EXTRACTION_DRY_RUN_AND_ADJUDICATION_INPUT_VALIDATION"
+}

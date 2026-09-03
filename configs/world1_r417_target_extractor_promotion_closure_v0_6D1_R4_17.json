@@ -1,0 +1,91 @@
+{
+  "stage": "v0.6D1-R4.17",
+  "title": "ARCANA Target Extractor Implementation & Recovered Metric Promotion Closure",
+  "parent_stage": "v0.6D1-R4.16",
+  "required_parent_status": "PASS_R416_RECOVERED_METRIC_PROMOTION_GATE_AND_ARCANA_TARGET_SEMANTIC_PROTOCOL_FORMALIZATION_SEALED",
+  "required_recovered_metric_count": 2,
+  "required_p1_protocolized_cells": 59,
+  "required_p1_source_candidate_cells": 47,
+  "required_p1_no_source_candidate_cells": 12,
+  "policy_freeze": "FROZEN_PRE_TARGET_EXTRACTION_AND_PROMOTION_CLOSURE",
+  "engine_execution_performed": false,
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "rules": {
+    "no_engine_execution": true,
+    "no_r42_registry_mutation": true,
+    "no_target_leakage": true,
+    "no_result_selected_transform": true,
+    "filename_hit_never_defines_numeric_target": true,
+    "r43_window_descriptor_is_pre_result_canonical_materialization_bridge_only": true,
+    "proxy_only_never_adjudicative": true,
+    "readjudication_forbidden_in_r417": true,
+    "recovered_metric_requires_explicit_pre_result_domain_identity": true,
+    "target_requires_value_unit_time_space_population_transform_and_provenance": true
+  },
+  "r43_descriptor_domain_bridges": {
+    "additive_variance": {
+      "allowed_descriptor_types": ["H0_SNAPSHOT_WINDOW"],
+      "value_path": "comparison_only_derived.normalized_va_delta",
+      "source_semantics": "delta of median_normalized_va across the frozen H0 window",
+      "unit_basis": "dimensionless normalized additive-variance delta",
+      "candidate_comparability": "NORMALIZABLE_CANDIDATE"
+    },
+    "population_persistence": {
+      "H0_SNAPSHOT_WINDOW": {
+        "value_path": "comparison_only_derived.population_ratio",
+        "source_semantics": "canonical total_population end/start ratio",
+        "unit_basis": "dimensionless N_end/N_start",
+        "candidate_comparability": "DIRECT_CANDIDATE"
+      },
+      "R327_SAPIENT_MACRO_ENSEMBLE_WINDOW": {
+        "value_path": "comparison_only_derived.population_ratio_median",
+        "source_semantics": "median effective_population end/start ratio across the frozen ensemble",
+        "unit_basis": "dimensionless median effective-population ratio",
+        "candidate_comparability": "NORMALIZABLE_CANDIDATE"
+      },
+      "R328_SAPIENT_HIGH_RES_ENSEMBLE_WINDOW": {
+        "value_path": "comparison_only_derived.population_ratio_median",
+        "source_semantics": "median population_proxy end/start ratio across the frozen ensemble",
+        "unit_basis": "dimensionless proxy ratio",
+        "candidate_comparability": "PROXY_ONLY"
+      }
+    },
+    "connectivity": {
+      "R327_SAPIENT_MACRO_ENSEMBLE_WINDOW": {
+        "start_path": "exogenous_forcing.corridor_connectivity_start.median",
+        "end_path": "exogenous_forcing.corridor_connectivity_end.median",
+        "source_semantics": "median canonical corridor_connectivity start/end",
+        "unit_basis": "dimensionless connectivity index",
+        "candidate_comparability": "DIRECT_CANDIDATE"
+      }
+    },
+    "admixture": {
+      "R328_SAPIENT_HIGH_RES_ENSEMBLE_WINDOW": {
+        "value_path": "comparison_only_derived.admixture_delta",
+        "source_semantics": "delta of admixture_fraction_proxy median",
+        "unit_basis": "dimensionless proxy delta",
+        "candidate_comparability": "PROXY_ONLY"
+      }
+    },
+    "producer_divergence": {
+      "R334_PRODUCER_COEVOLUTION_WINDOW": {
+        "value_path": "comparison_only_derived.selective_divergence_delta",
+        "source_semantics": "R3.34 selective_divergence proxy delta",
+        "unit_basis": "dimensionless proxy delta",
+        "candidate_comparability": "PROXY_ONLY"
+      }
+    },
+    "gene_flow": {
+      "R334_PRODUCER_COEVOLUTION_WINDOW": {
+        "value_path": "comparison_only_derived.wild_gene_flow_delta",
+        "source_semantics": "wild_gene_flow_pressure delta, not a migration flux",
+        "unit_basis": "dimensionless pressure delta",
+        "candidate_comparability": "PROXY_ONLY"
+      }
+    }
+  }
+}

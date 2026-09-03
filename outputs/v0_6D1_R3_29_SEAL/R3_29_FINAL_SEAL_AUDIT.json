@@ -1,0 +1,258 @@
+{
+  "audit": "FINAL_SINGLE_STAGE_POPULATION_MOBILITY_SETTLEMENT_AND_CULTURAL_PRECONDITION_AUTHORITY_CLOSURE",
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_authorities_validate",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R3_29_AUDIT.md",
+        "R3_29_COMMUNITY_NETWORK_REPLAY.npz",
+        "R3_29_COMMUNITY_PRECONDITION_AUTHORITY.json",
+        "R3_29_COMMUNITY_PRECONDITION_CHECKPOINT.json",
+        "R3_29_INTEGRATED_AUDIT.json",
+        "R3_29_LINEAGE_COMMUNITY_OUTCOMES.json",
+        "R3_29_OUTPUT_MANIFEST.json",
+        "R3_29_SENSITIVITY_AND_ROBUSTNESS.json"
+      ],
+      "name": "output_file_set_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "output_manifest_closure",
+      "pass": true
+    },
+    {
+      "detail": [
+        24,
+        24
+      ],
+      "name": "integrated_audit_all_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_parent_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_candidate_cohort_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_time_window_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_population_proxy_not_census",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_preconditions_only",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_spatial_anchor_semantics",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_cha2_parent_direct",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_no_human_target",
+      "pass": true
+    },
+    {
+      "detail": [
+        "age_ka",
+        "anchor_age_ka",
+        "candidate_ids",
+        "community_anchor_active",
+        "community_anchor_state",
+        "community_anchor_variable_names",
+        "community_summary",
+        "community_variable_names",
+        "functional_prior_names",
+        "functional_priors",
+        "parent_member_indices"
+      ],
+      "name": "npz_keys_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_order_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_member_indices_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "time_window_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        2,
+        175,
+        10
+      ],
+      "name": "community_geometry",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        2,
+        11,
+        6,
+        7
+      ],
+      "name": "anchor_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_numeric_finite",
+      "pass": true
+    },
+    {
+      "detail": [
+        0.0,
+        1.0
+      ],
+      "name": "community_bounded_0_1",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "anchor_indices_bounded",
+      "pass": true
+    },
+    {
+      "detail": 0.0,
+      "name": "community_timeseries_recomputed",
+      "pass": true
+    },
+    {
+      "detail": 0.0,
+      "name": "community_anchors_recomputed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "outcomes_recomputed_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sensitivity_recomputed_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sensitivity_11",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint_age_0",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "name": "checkpoint_cohort_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "name": "baseline_capable_lineages_retained",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02"
+      ],
+      "name": "robust_priority_is_diagnostic_subset",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint_no_unique_identity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_culture_identity_artifacts",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_absolute_census_or_camp_counts",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_parent_mutation",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off_and_no_human_similarity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "evidence_multisource",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 37,
+  "checks_total": 37,
+  "stage": "v0.6D1-R3.29",
+  "status": "PASS_R329_POPULATION_MOBILITY_SETTLEMENT_CULTURAL_TRANSMISSION_PRECONDITIONS_AND_CHA2_COMMUNITY_EXPOSURE_SEALED",
+  "summary": {
+    "absolute_census_materialized": false,
+    "community_precondition_cohort": [
+      "RPT_010_D02",
+      "RPT_009_D02"
+    ],
+    "community_precondition_count": 2,
+    "deep_biological_coupling": false,
+    "input_candidate_lineages": 2,
+    "language_religion_agriculture_city_materialized": false,
+    "next_stage": "CENSUS_CALIBRATION_GROUP_ABM_AND_LATE_PLEISTOCENE_COMMUNITY_HISTORY",
+    "robust_priority_cohort": [
+      "RPT_010_D02"
+    ],
+    "unique_human_identity_materialized": false
+  },
+  "verdict": "SEALED"
+}

@@ -1,0 +1,90 @@
+{
+  "stage": "v0.6D1-R3.10",
+  "state": "SEALED",
+  "parent_stage": "v0.6D1-R3.9_SEALED",
+  "authority_note": "R3.10 crosses the exact 66.0 Ma event boundary with a dedicated high-resolution rebased CHA-1 provider. Historical D2.2 supplies recovered event semantics/RAW quantitative anchors, not a reusable survivor list and not a bit-identical executable solver.",
+  "parent_r39_authority": {
+    "checkpoint_json": "references/v0_6D1_R3_9/WORLD1_H0_66Ma_PRE_CHA1_CANONICAL_CHECKPOINT_v0_6D1_R3_9.json",
+    "checkpoint_npz": "references/v0_6D1_R3_9/WORLD1_H0_66Ma_PRE_CHA1_CANONICAL_CHECKPOINT_v0_6D1_R3_9.npz",
+    "checkpoint_json_sha256": "19d7e860befe55affec8416e8f881b3a83dd4fd238760e20157e41e8ed4ef118",
+    "checkpoint_npz_sha256": "38aab41f8e7b3edecbba214c7d064d9f688aafaeb8be5762be63b23ec694005e",
+    "summary_sha256": "7ac858bced99c9e4ea84017522bce7298ebbe3f23b5f53be8ccd4b6653bfa1f4"
+  },
+  "historical_cha1_authority": {
+    "stage": "v0.6.3D2.2",
+    "historical_archive_sha256": "42f6c506dcb81ed06549713bdf6f2313aa51bd2cb55fe17571fce493923394a8",
+    "solver_bytes_recovered": false,
+    "implementation_semantics": "D2_2_RAW_ANCHORED_REBASED_EVENT_PROVIDER",
+    "reporting_window_year": [
+      -100000.0,
+      500000.0
+    ],
+    "reporting_checkpoints": 917,
+    "historical_survivor_ids_authority_for_r310": false
+  },
+  "runtime": {
+    "source": {
+      "path": "src/arcana_worldsim/scientific_engines/r310_cha1_highres_bridge.py",
+      "sha256": "4380436e520a74b2aace8189bcb90ec7662f136054e6a368c6cd586efb0bd804"
+    },
+    "runner": {
+      "path": "scripts/run_v0_6D1_R3_10_cha1_highres_bridge.py",
+      "sha256": "1759300d9f05dd0783313cc8d22fbcd537bae0b50bcae2edfc9ffd5ff4e135a1"
+    },
+    "sensitivity_runner": {
+      "path": "scripts/run_v0_6D1_R3_10_sensitivity.py",
+      "sha256": "70d63319274b2ceaafd1fcd3f57431c4d5dd6919ec918cab84ea0227711fcc35"
+    },
+    "test": {
+      "path": "tests/test_r310_cha1_highres_bridge.py",
+      "sha256": "9e4ecf2fe7bbf23f1a41a780e27d5c7ea6b7848716d4f8c8e4f3484c00223cdd"
+    }
+  },
+  "canonical_result": {
+    "summary": {
+      "path": "local_runs/v0_6D1_R3_10/R3_10_CHA1_EVENT_BRIDGE_SUMMARY.json",
+      "sha256": "622ef056887e28e1aaa98894f5de241cb6e34e4db671050163187da6a453037f"
+    },
+    "checkpoint_json": {
+      "path": "local_runs/v0_6D1_R3_10/WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.json",
+      "sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469"
+    },
+    "checkpoint_npz": {
+      "path": "local_runs/v0_6D1_R3_10/WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.npz",
+      "sha256": "d31ae5aaeb53422809e173c20308e69af334ef8d2d535484ae51141b9dff58a8"
+    },
+    "sensitivity": {
+      "path": "local_runs/v0_6D1_R3_10/R3_10_CHA1_SENSITIVITY_SUMMARY.json",
+      "sha256": "996494c7fe223c6760ea287694d05b7eefff91e0e9f6f8e38e1552668988f1cd"
+    },
+    "physical_anchor_audit": {
+      "path": "local_runs/v0_6D1_R3_10/R3_10_CHA1_PHYSICAL_ANCHOR_AUDIT.json",
+      "sha256": "ac9c393cb3fa6c5ea54403972089fb60f7580040df82143b00b1bafe4f6b21be"
+    },
+    "formal_seal_audit": {
+      "path": "outputs/v0_6D1_R3_10/FORMAL_AUDIT_v0_6D1_R3_10.json",
+      "sha256": "f6060f16094175750f269d56906a60b485497c1054e7686b2c6ab703eb0dd9fc"
+    },
+    "full_regression": {
+      "path": "outputs/v0_6D1_R3_10/FULL_REGRESSION_SEGMENTED_271_TESTS.txt",
+      "sha256": "0d8edb4fc5754410693002bc9f0c7db5c51f5274b400d13d0b6f790a92f93d4f",
+      "tests_passed": 271
+    }
+  },
+  "governance": {
+    "cha1_applied": true,
+    "deep_biological_coupling": false,
+    "ordinary_125kyr_crossing_authorized": false,
+    "historical_d22_survivor_lookup_authorized": false,
+    "historical_d22_bit_identity_claimed": false,
+    "ordinary_speciation_inside_event": false,
+    "adaptive_radiation_inside_event": false,
+    "impact_distance_mortality_enabled": false,
+    "mu_changed": false,
+    "b_changed": false,
+    "q_ceiling_changed": false,
+    "scalar_k_physical_constant_authorized": false,
+    "post_cha1_restart_boundary_authorized": true,
+    "post_cha1_restart_boundary_age_ma": 65.5
+  }
+}

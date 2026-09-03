@@ -1,0 +1,155 @@
+{
+  "blocking_reason": "FULL_FROZEN_GEONOMICS_JOB_SET_LACKS_MATERIALIZED_CANONICAL_SPATIAL_BINDING",
+  "geonomics_execution_authorized_in_r422": false,
+  "geonomics_family_ready_for_execution": false,
+  "next_required_work": "R423_CANONICAL_SPATIAL_BINDING_PARAMETER_TRANSLATION_AND_J14_PRE_200KA_SPATIAL_SOURCE_CLOSURE",
+  "record_count": 3,
+  "records": [
+    {
+      "canonical_spatial_sources": [
+        {
+          "keys": [
+            "candidate_ids",
+            "age_ma",
+            "forcing_regime",
+            "variable_names",
+            "state",
+            "environmental_stress",
+            "corridor_connectivity",
+            "bottleneck_multiplier",
+            "variability_index"
+          ],
+          "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R3_27/R3_27_MACRO_REPLAY_TRAJECTORIES.npz",
+          "present": true,
+          "required_keys": [
+            "age_ma",
+            "state",
+            "candidate_ids"
+          ],
+          "required_keys_present": true,
+          "sha256": "fac973bd233c49facedb2d32e1c561800e65e27da1e940f967d680a36c1b47f3"
+        },
+        {
+          "keys": [
+            "candidate_ids",
+            "parent_member_indices",
+            "age_ka",
+            "state_variable_names",
+            "species_summary_variable_names",
+            "species_summary",
+            "contact_index",
+            "admixture_opportunity_cumulative",
+            "snapshot_age_ka",
+            "snapshot_deme_state",
+            "snapshot_active",
+            "cha2_age_ka",
+            "cha2_deme_state",
+            "cha2_active"
+          ],
+          "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+          "present": true,
+          "required_keys": [
+            "snapshot_deme_state",
+            "snapshot_active",
+            "snapshot_age_ka",
+            "state_variable_names"
+          ],
+          "required_keys_present": true,
+          "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a"
+        }
+      ],
+      "default_geonomics_model_forbidden_for_adjudication": true,
+      "engine_execution_authorized_in_r422": false,
+      "job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+      "parameter_translation_authorized_for_future_stage": false,
+      "scalar_descriptor_synthesis_forbidden": true,
+      "status": "DEFERRED_WINDOW_START_SPATIAL_BINDING_INCOMPLETE",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "canonical_spatial_sources": [
+        {
+          "keys": [
+            "candidate_ids",
+            "parent_member_indices",
+            "age_ka",
+            "state_variable_names",
+            "species_summary_variable_names",
+            "species_summary",
+            "contact_index",
+            "admixture_opportunity_cumulative",
+            "snapshot_age_ka",
+            "snapshot_deme_state",
+            "snapshot_active",
+            "cha2_age_ka",
+            "cha2_deme_state",
+            "cha2_active"
+          ],
+          "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+          "present": true,
+          "required_keys": [
+            "snapshot_deme_state",
+            "snapshot_active",
+            "snapshot_age_ka",
+            "state_variable_names"
+          ],
+          "required_keys_present": true,
+          "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a"
+        }
+      ],
+      "default_geonomics_model_forbidden_for_adjudication": true,
+      "engine_execution_authorized_in_r422": false,
+      "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+      "parameter_translation_authorized_for_future_stage": true,
+      "scalar_descriptor_synthesis_forbidden": true,
+      "status": "CANONICAL_SPATIAL_SOURCE_AVAILABLE_PARAMETER_TRANSLATION_REQUIRED",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "canonical_spatial_sources": [
+        {
+          "keys": [
+            "anchor_age_ka",
+            "environment_variable_names",
+            "environment_fields"
+          ],
+          "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+          "present": true,
+          "required_keys": [
+            "anchor_age_ka",
+            "environment_fields",
+            "environment_variable_names"
+          ],
+          "required_keys_present": true,
+          "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+        },
+        {
+          "keys": [
+            "anchor_age_ka",
+            "producer_taxon_ids",
+            "landscape_variable_names",
+            "producer_landscape"
+          ],
+          "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+          "present": true,
+          "required_keys": [
+            "anchor_age_ka",
+            "producer_landscape",
+            "landscape_variable_names"
+          ],
+          "required_keys_present": true,
+          "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+        }
+      ],
+      "default_geonomics_model_forbidden_for_adjudication": true,
+      "engine_execution_authorized_in_r422": false,
+      "job_id": "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS",
+      "parameter_translation_authorized_for_future_stage": true,
+      "scalar_descriptor_synthesis_forbidden": true,
+      "status": "CANONICAL_SPATIAL_SOURCE_AVAILABLE_PARAMETER_TRANSLATION_REQUIRED",
+      "window_id": "PRODUCER_20KA_TO_0"
+    }
+  ],
+  "stage": "v0.6D1-R4.22",
+  "status": "R422_GEONOMICS_DEFERRED_IMPLEMENTATION_COMPLETION_AUDITED"
+}

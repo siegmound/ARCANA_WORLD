@@ -1,0 +1,40 @@
+{
+  "schema": "ARCANA_R314_FINAL_SOURCE_AUTHORITY_MANIFEST_V2",
+  "stage": "v0.6D1-R3.14-R2",
+  "parent": "v0.6D1-R3.13_SEALED",
+  "governance": {
+    "biology_modified": false,
+    "scientific_parameters_changed": false,
+    "sealed_v061_payload_hashes_changed": false,
+    "r1_validation_portability_repair": "C1 formula replay uses strict numerical-equivalence gating across host libm/NumPy while SHA-verified 100-y sealed anchors remain authoritative",
+    "r2_binding_guard_repair": "R3.14 validates that the actual C2.parent instance is IntegratedLateCenozoicProviderC1"
+  },
+  "r314_final_files": {
+    "src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py": "e80ef0d5389315bc7e8a756e0d5b97a305c050505e3557256f10572c43d618e8",
+    "src/arcana_worldsim/late_cenozoic/cha2_nested_50y.py": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f",
+    "scripts/run_v0_6D1_R3_14_late_cenozoic_binding.py": "ac767bbe3f60cc70d7037c8d98dc6498fc34fb35dd3b897f51c4c2e2164fd870",
+    "tests/test_r314_late_cenozoic_binding.py": "780ee0f168e4ec58ab3fbb7d4687aa9252e57649006f85ef31902bc235f979b7",
+    "tests/test_r314_c1_numeric_portability.py": "1b2229861a9af442344861c8f47e175018037f27883e522f6fdb0480fa92915d",
+    "configs/world1_r314_late_cenozoic_binding_v0_6D1_R3_14.json": "1979b8fa6ca2a3fb7d2feb9d8461929238ce1b998354c553767d1df01f98da0e",
+    "run_v0_6D1_R3_14_late_cenozoic_binding.ps1": "fe57901206503d6c2689795845e98dac55d4b397e57745f5406287d700bb7111",
+    "run_v0_6D1_R3_14_checks.ps1": "6e6ea0c0c428ae15484f6653e972e389fa748c7f8ae4b5b3c223404b91ba54c5"
+  },
+  "late_cenozoic_authorities_unchanged_except_declared_r1_validation_repair": {
+    "src/arcana_worldsim/late_cenozoic/environment.py": "b2796f39ef8309cae5d7c1316930f2b87c2ce538edb9a30badcb5319570d74b5",
+    "src/arcana_worldsim/late_cenozoic/sealed_120ka_boundary.py": "28e93bbbaf914bf4830f64642abd4a5d88d41aaeaa970908e745eb34228927c5",
+    "src/arcana_worldsim/late_cenozoic/eustatic_land_bridge.py": "078259ca9b334801294177db30e0dae93a909310282526317ed66059b1c50438",
+    "src/arcana_worldsim/late_cenozoic/integrated_provider.py": "205d3ad15989aaaa71fde3f73efc3f5f0b41ca57735e342a723691f10073841c",
+    "src/arcana_worldsim/late_cenozoic/late_pleistocene_boundary.py": "5357cafa87319f62362f6b1bfbf1b6359ba7423aa94698d079d89b7bba8ce473",
+    "src/arcana_worldsim/late_cenozoic/adaptive_clock.py": "45be2634512c7daee25ec8848f6f010932ea5c02b0341648fde24ea362e21ba3",
+    "src/arcana_worldsim/late_cenozoic/adaptive_clock_c1.py": "3656082b0a853412f7cd8fbcdb98f266f3351c936e4342cf29a450e3f37bc3c6",
+    "src/arcana_worldsim/late_cenozoic/adaptive_clock_c2.py": "6d131f80f16038ec0238ce8863a31f8ae391921db802c07ad6d953ce93696759",
+    "src/arcana_worldsim/late_cenozoic/production_interface.py": "d99a4c6b0150d3c90be0593b93162cb8d02d8ce2f34d7ccf84cf4ef9a27ac903"
+  },
+  "frozen_v061_payload_hashes": {
+    "authorial_seal": "d097f83ce53fb298689c63458dfa1012d26b3983254ccf25085b91f882e55a2a",
+    "model_py": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f",
+    "recent_history": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+    "spatial_snapshots": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+    "shoreline": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+  }
+}

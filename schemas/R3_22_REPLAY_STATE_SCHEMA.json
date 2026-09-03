@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ARCANA WorldSim R3.22 future functional phenotype replay state",
+  "description": "Schema contract only. No state arrays are materialized in R3.22.",
+  "type": "object",
+  "required": [
+    "functional_applicability_code",
+    "functional_mean_z",
+    "functional_va",
+    "functional_gcov",
+    "functional_plasticity_beta"
+  ],
+  "properties": {
+    "functional_applicability_code": {
+      "description": "component x trait applicability enum: ACTIVE, STRUCTURAL_ZERO, NOT_APPLICABLE, UNKNOWN"
+    },
+    "functional_mean_z": {
+      "description": "component x trait latent mean; valid only under applicability governance"
+    },
+    "functional_va": {
+      "description": "component x trait additive variance; nonnegative where active"
+    },
+    "functional_gcov": {
+      "description": "component x trait x trait genetic covariance; active submatrix symmetric PSD"
+    },
+    "functional_plasticity_beta": {
+      "description": "component x trait x environment-driver reaction-norm slopes"
+    }
+  },
+  "additionalProperties": true
+}

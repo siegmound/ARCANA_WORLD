@@ -1,0 +1,47 @@
+{
+  "stage": "v0.6D1-R4.13",
+  "title": "CDMetaPOP Absolute-Response Comparability Downgrade & Symmetric Readjudication",
+  "required_parent_status": "PASS_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS_SEALED",
+  "required_parent_finding": "R412_CDMETAPOP_ABSOLUTE_POPULATION_RESPONSE_NEUTRAL_INVARIANCE_FAILURE_CONFIRMED",
+  "required_parent_plan_status": "R413_COMPARABILITY_DOWNGRADE_PLAN_FROZEN",
+  "affected_frozen_cdmetapop_jobs": [
+    "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+    "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+    "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+  ],
+  "comparability_override": {
+    "engine": "CDMetaPOP",
+    "metric_name": "population_agent_response_ratio",
+    "from": ["DIRECT", "NORMALIZABLE"],
+    "to": "PROXY_ONLY",
+    "reason": "R412_NEUTRAL_INVARIANCE_FAILURE_CONFIRMED",
+    "scope_rule": "ALL_ROWS_IN_ALL_FIVE_FROZEN_CDMETAPOP_JOBS_WHERE_SELECTED_METRIC_IS_population_agent_response_ratio",
+    "parent_r43_mapping_files_are_not_modified": true,
+    "parent_r411_matrix_is_not_modified": true,
+    "matched_control_global_metric_promotion": false
+  },
+  "readjudication_policy": {
+    "reuse_frozen_r44_policy_exactly": true,
+    "reuse_frozen_five_discordance_classes": true,
+    "proxy_only_rows_are_contextual_not_adjudicative": true,
+    "proxy_only_cannot_establish_structural_disagreement": true,
+    "majority_vote": false,
+    "severity_precedence_is_not_voting": true
+  },
+  "completion_policy": {
+    "all_75_cells_must_be_readjudicated": true,
+    "every_downgraded_row_must_be_audited": true,
+    "non_downgraded_parent_rows_must_be_preserved_semantically": true,
+    "no_engine_execution": true,
+    "no_canonical_replay": true,
+    "no_canonical_parameter_change": true
+  },
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "engine_execution_performed": false
+}

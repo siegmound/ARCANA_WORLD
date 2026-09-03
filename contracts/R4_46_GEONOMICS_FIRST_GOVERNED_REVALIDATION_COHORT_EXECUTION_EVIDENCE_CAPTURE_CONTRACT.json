@@ -1,0 +1,32 @@
+{
+  "stage": "v0.6D1-R4.46",
+  "title": "Geonomics First Governed Revalidation Cohort Execution & Evidence Capture",
+  "parent_plan_sha256": "9a33a40c178a816526ca8aec053aae5a393086d7a18b9a3122bd453a4f592ec0",
+  "execution_rule": "consume the exact sealed R4.45 plan; abort before execution if its recomputed digest differs",
+  "scientific_execution_scope": {
+    "J14": "member0/candidate0 full 141-state canonical replay, four frozen seeds",
+    "J18": "member0/candidate0 full 15-state canonical replay, four frozen seeds",
+    "J21": "full 9-state 147-native-layer canonical replay, four frozen seeds"
+  },
+  "expected_evidence_transport": {
+    "streams": 12,
+    "metric_records": 12456,
+    "integrity_records": 6540,
+    "descriptive_records": 5916
+  },
+  "evidence_semantics": {
+    "integrity": "must exact-match canonical replay authority or fail closed as adapter/runtime integrity failure",
+    "descriptive": "valid Geonomics-native scientific evidence capture with no automatic numeric PASS/FAIL"
+  },
+  "claim_limits": [
+    "J14/J18 evidence applies only to the predeclared first frozen cohort",
+    "J14 derived spatial authority is not observed historical truth",
+    "J21 sidecars remain outside Geonomics-native layer evidence",
+    "zero descriptive numeric thresholds",
+    "zero majority vote",
+    "zero engine-defined ARCANA targets",
+    "zero canonical rewrite"
+  ],
+  "r446_nonclaim": "R4.46 captures scientific evidence but does not yet perform a scientific adjudication over descriptive values",
+  "next_action": "BUILD_R447_GEONOMICS_FIRST_GOVERNED_REVALIDATION_EVIDENCE_REVIEW_AND_COHORT_ADJUDICATION_CLOSURE"
+}

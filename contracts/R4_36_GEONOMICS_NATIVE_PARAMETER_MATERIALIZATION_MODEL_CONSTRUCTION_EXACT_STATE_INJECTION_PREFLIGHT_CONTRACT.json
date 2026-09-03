@@ -1,0 +1,44 @@
+{
+  "stage": "v0.6D1-R4.36",
+  "title": "Geonomics Native Parameter Materialization, Model Construction & Exact-State Injection Preflight",
+  "parent": "v0.6D1-R4.35 SEALED",
+  "scope": {
+    "materialize_native_construction_parameter_modules": true,
+    "parameter_modules_per_job": 4,
+    "total_parameter_modules": 12,
+    "bind_exact_frozen_replicate_seed": true,
+    "gnx_make_params_dict": true,
+    "gnx_make_model": true,
+    "verify_model_unrun_state": true,
+    "enumerate_all_J14_initial_selector_branches": true,
+    "enumerate_all_J18_initial_selector_branches": true,
+    "materialize_J21_initial_identity_value_layer_payloads": true,
+    "perform_exact_state_injection": false,
+    "bind_J21_payload_layers_into_model": false,
+    "run_or_walk_model": false,
+    "scientific_execution": false
+  },
+  "construction_semantics": {
+    "one_probe_individual": "construction-only artifact, never scientific population evidence",
+    "support_layer": "construction scaffold only; not an adjudicative environmental or carrying-capacity claim",
+    "dynamics_defaults": "schema-required construction scaffold only; cannot authorize a scientific run",
+    "seed": "exact R4.35 frozen replicate seed, verified on constructed Model.seed"
+  },
+  "injection_preflight": {
+    "J14": "192 initial storage-axis0 \u00d7 candidate branches, all active demes retained; model-derived authority remains explicitly non-observed",
+    "J18": "64 parent-member \u00d7 candidate branches at 200 ka, exact continuous grid_row/grid_col retained",
+    "population_proxy": "sidecar weight only, never literal census count",
+    "api": "Model.add_individuals(n, coords, ...)",
+    "mutation_of_constructed_model_in_r436": false
+  },
+  "J21": {
+    "initial_environment_payloads": 7,
+    "initial_producer_support_payloads": 144,
+    "total_initial_payloads": 151,
+    "identity_values": true,
+    "automatic_rescaling": false,
+    "cross_layer_numeric_fusion": false,
+    "binding_into_constructed_model": false
+  },
+  "next_action": "BUILD_R437_GEONOMICS_CANONICAL_LAYER_BINDING_AND_EXACT_STATE_INJECTION_DRY_RUN_VALIDATION"
+}

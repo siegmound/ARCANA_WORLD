@@ -1,0 +1,410 @@
+{
+  "schema": "ARCANA_R310_FORMAL_SEAL_AUDIT_V1",
+  "stage": "v0.6D1-R3.10",
+  "release_state": "SEALED",
+  "verdict": "PASS_R310_FORMAL_SEAL_AUDIT",
+  "checks_passed": 67,
+  "checks_total": 67,
+  "checks_failed": [],
+  "checks": [
+    {
+      "name": "parent_checkpoint_json_exists",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "parent_checkpoint_npz_exists",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "parent_checkpoint_json_sha256",
+      "pass": true,
+      "details": "19d7e860befe55affec8416e8f881b3a83dd4fd238760e20157e41e8ed4ef118"
+    },
+    {
+      "name": "parent_checkpoint_npz_sha256",
+      "pass": true,
+      "details": "38aab41f8e7b3edecbba214c7d064d9f688aafaeb8be5762be63b23ec694005e"
+    },
+    {
+      "name": "parent_summary_sha256",
+      "pass": true,
+      "details": "7ac858bced99c9e4ea84017522bce7298ebbe3f23b5f53be8ccd4b6653bfa1f4"
+    },
+    {
+      "name": "stage_exact",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "verdict_pass",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "age_65p5",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "event_side",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "reporting_checkpoints_917",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "preimpact_species_305",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "direct_extinctions_212",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "survivors_93",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "species_closure",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "components_207",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "extinctions_all_acute",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "cha1_applied",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "deep_off",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "no_ordinary_125k_crossing",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "no_historical_survivor_lookup",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "no_false_bit_identity_claim",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "no_speciation_inside_event",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "no_radiation_inside_event",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "mu_unchanged",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "b_unchanged",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "q_ceiling_unchanged",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "scalar_k_not_authorized",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "checkpoint_json_hash_matches_summary",
+      "pass": true,
+      "details": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469"
+    },
+    {
+      "name": "checkpoint_npz_hash_matches_summary",
+      "pass": true,
+      "details": "d31ae5aaeb53422809e173c20308e69af334ef8d2d535484ae51141b9dff58a8"
+    },
+    {
+      "name": "serialization_identity",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "serialization_arrays_zero_error",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "serialization_reduced_zero_error",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "serialization_exact_fields",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "hazard_repeat_identity",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "checkpoint_metadata_stage",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "checkpoint_metadata_event_side",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "checkpoint_metadata_parent",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "state_age",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "state_species_93",
+      "pass": true,
+      "details": 93
+    },
+    {
+      "name": "state_components_207",
+      "pass": true,
+      "details": 207
+    },
+    {
+      "name": "population_finite",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "population_nonnegative",
+      "pass": true,
+      "details": 0.0
+    },
+    {
+      "name": "population_on_inaccessible_zero",
+      "pass": true,
+      "details": 0.0
+    },
+    {
+      "name": "population_mass_closed",
+      "pass": true,
+      "details": 1617.1047035853792
+    },
+    {
+      "name": "S_finite",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "S_nonnegative_tol",
+      "pass": true,
+      "details": 0.0
+    },
+    {
+      "name": "S_symmetric",
+      "pass": true,
+      "details": 0.0
+    },
+    {
+      "name": "S_zero_diagonal",
+      "pass": true,
+      "details": 0.0
+    },
+    {
+      "name": "q_below_ceiling",
+      "pass": true,
+      "details": {
+        "q_max": 0.04575032753015043,
+        "ceiling": 0.08
+      }
+    },
+    {
+      "name": "q_headroom_positive",
+      "pass": true,
+      "details": 0.03424967246984957
+    },
+    {
+      "name": "physical_anchor_impact_exact",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "physical_anchor_machine_precision",
+      "pass": true,
+      "details": 9.288814090637974e-16
+    },
+    {
+      "name": "foodweb_minima_oracle",
+      "pass": true,
+      "details": {
+        "plant": 0.39500002038368903,
+        "herbivore": 0.43301538929487277,
+        "mesopredator": 0.7819996593328783,
+        "apex": 0.9740000223988694
+      }
+    },
+    {
+      "name": "foodweb_endpoint_recovered",
+      "pass": true,
+      "details": {
+        "plant": 1.0,
+        "herbivore": 1.0,
+        "mesopredator": 1.0,
+        "apex": 1.0
+      }
+    },
+    {
+      "name": "sensitivity_pass",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "sensitivity_not_select_canonical",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "sensitivity_no_historical_ids",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "sensitivity_range",
+      "pass": true,
+      "details": [
+        75,
+        111
+      ]
+    },
+    {
+      "name": "sensitivity_canonical_93",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "sensitivity_monotonic_scale_amp_0.15",
+      "pass": true,
+      "details": [
+        108,
+        89,
+        75
+      ]
+    },
+    {
+      "name": "sensitivity_monotonic_scale_amp_0.25",
+      "pass": true,
+      "details": [
+        110,
+        93,
+        79
+      ]
+    },
+    {
+      "name": "sensitivity_monotonic_scale_amp_0.35",
+      "pass": true,
+      "details": [
+        111,
+        102,
+        83
+      ]
+    },
+    {
+      "name": "artifact_exists_R3_10_CHA1_SPECIES_DIAGNOSTICS.json",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "artifact_exists_R3_10_CHA1_EXTINCTION_EVENTS.json",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "artifact_exists_R3_10_CHA1_PHYSICAL_FOODWEB_TIMESERIES.csv",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "artifact_exists_R3_10_CHA1_PHYSICAL_ANCHOR_AUDIT.json",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "artifact_exists_R3_10_CHA1_SENSITIVITY_SUMMARY.json",
+      "pass": true,
+      "details": null
+    }
+  ],
+  "evidence_hashes": {
+    "summary": "622ef056887e28e1aaa98894f5de241cb6e34e4db671050163187da6a453037f",
+    "sensitivity": "996494c7fe223c6760ea287694d05b7eefff91e0e9f6f8e38e1552668988f1cd",
+    "physical_anchor_audit": "ac9c393cb3fa6c5ea54403972089fb60f7580040df82143b00b1bafe4f6b21be",
+    "checkpoint_json": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+    "checkpoint_npz": "d31ae5aaeb53422809e173c20308e69af334ef8d2d535484ae51141b9dff58a8",
+    "runtime_source": "4380436e520a74b2aace8189bcb90ec7662f136054e6a368c6cd586efb0bd804",
+    "runtime_test": "9e4ecf2fe7bbf23f1a41a780e27d5c7ea6b7848716d4f8c8e4f3484c00223cdd",
+    "immediate_parent_regression_log": "9592938cc3967be07f8c78ce4e649cb8860d50ba9008cc14c965d174facf0ed6"
+  },
+  "canonical_outcome": {
+    "preimpact_species": 305,
+    "direct_extinctions": 212,
+    "survivors": 93,
+    "components": 207,
+    "age_ma": 65.5,
+    "event_side": "POST_CHA1_500KY",
+    "q_max": 0.04575032753015043,
+    "q_ceiling": 0.08,
+    "q_headroom": 0.03424967246984957
+  },
+  "provenance_limitation": "Historical D2.2 executable solver bytes were not recovered; R3.10 seals a RAW-anchored rebased provider and does not claim bit-identical D2.2 source reuse.",
+  "full_regression": {
+    "mode": "segmented_to_avoid_single-process_timeout",
+    "groups": [
+      86,
+      38,
+      30,
+      34,
+      83
+    ],
+    "tests_passed": 271,
+    "tests_failed": 0,
+    "log": "outputs/v0_6D1_R3_10/FULL_REGRESSION_SEGMENTED_271_TESTS.txt",
+    "log_sha256": "0d8edb4fc5754410693002bc9f0c7db5c51f5274b400d13d0b6f790a92f93d4f"
+  }
+}

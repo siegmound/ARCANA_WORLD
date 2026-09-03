@@ -1,0 +1,54 @@
+{
+  "stage": "v0.6D1-R4.44",
+  "policy": "R444_READOUT_EXTRACTION_DRY_RUN_TWO_STATES_FOUR_SEEDS",
+  "parent_required": {
+    "r443_integrated": "48/48 PASS",
+    "r443_final_seal": "29/29 SEALED"
+  },
+  "dry_run_scope": {
+    "J14": {
+      "branch": "member0_candidate0",
+      "canonical_states": [
+        0,
+        1
+      ],
+      "frozen_seeds": 4,
+      "metrics_per_state": 3,
+      "expected_metric_records": 24
+    },
+    "J18": {
+      "branch": "member0_candidate0",
+      "canonical_states": [
+        0,
+        1
+      ],
+      "frozen_seeds": 4,
+      "metrics_per_state": 3,
+      "expected_metric_records": 24
+    },
+    "J21": {
+      "canonical_states": [
+        "20ka",
+        "15ka"
+      ],
+      "frozen_seeds": 4,
+      "native_layers": 147,
+      "metrics_per_layer_state": 2,
+      "expected_metric_records": 2352
+    }
+  },
+  "expected_total_metric_records": 2400,
+  "expected_integrity_records": 1208,
+  "expected_descriptive_records": 1192,
+  "adjudicative_numeric_threshold_count": 0,
+  "automatic_scientific_pass_fail_count": 0,
+  "dry_run_is_scientific_evidence": false,
+  "scientific_execution_authorized": false,
+  "geonomics_execution_ready": false,
+  "scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "next_action": "BUILD_R445_GEONOMICS_SCIENTIFIC_EXECUTION_AUTHORIZATION_AND_FIRST_GOVERNED_REVALIDATION_RUN_PREFLIGHT"
+}

@@ -1,0 +1,67 @@
+{
+  "adjudicative_promotion_authorized_in_r423": false,
+  "canonical_write": false,
+  "engine": "CDMetaPOP",
+  "finite_metric_count": 3,
+  "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+  "metric_count": 3,
+  "normalized_metrics": {
+    "dynamic_population_response_ratio": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "PROXY_ONLY",
+      "kind": "ratio",
+      "name": "dynamic_population_response_ratio",
+      "semantics": "ABSOLUTE_DYNAMIC_POPULATION_RESPONSE; R4.12 NEUTRAL-INVARIANCE FAILURE PREVENTS GLOBAL ADJUDICATIVE USE",
+      "summary": {
+        "max": 1.0567375886524824,
+        "median": 1.0041371158392436,
+        "min": 0.983451536643026,
+        "n": 4,
+        "q10": 0.9866430260047282,
+        "q90": 1.043971631205674
+      }
+    },
+    "matched_control_population_effect_ratio": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "NORMALIZABLE_CANDIDATE_PENDING_ARCANA_CAUSAL_TARGET",
+      "kind": "ratio",
+      "name": "matched_control_population_effect_ratio",
+      "semantics": "DYNAMIC_POPULATION_RESPONSE_DIVIDED_BY_MATCHED_NEUTRAL_RESPONSE; DIAGNOSTIC_DOMAIN_CANDIDATE_REQUIRES_ARCANA_CAUSAL_TARGET",
+      "summary": {
+        "max": 0.6501818181818182,
+        "median": 0.6173154324455992,
+        "min": 0.6028673835125448,
+        "n": 4,
+        "q10": 0.6032707850165155,
+        "q90": 0.644252915636898
+      }
+    },
+    "neutral_population_response_ratio": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY",
+      "kind": "ratio",
+      "name": "neutral_population_response_ratio",
+      "semantics": "MATCHED_NEUTRAL_CONTROL RESPONSE; CONTEXT FOR CAUSAL NORMALIZATION ONLY",
+      "summary": {
+        "max": 1.648936170212766,
+        "median": 1.6264775413711585,
+        "min": 1.6087470449172576,
+        "n": 4,
+        "q10": 1.6137115839243499,
+        "q90": 1.6425531914893619
+      }
+    }
+  },
+  "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/RAW_EVIDENCE.json",
+  "raw_evidence_sha256": "b995316532d8ab1ac295aaa31a796fddf6a0c409ec700f0374ca7205f95b9cf6",
+  "raw_hash_matches_r422_audit": true,
+  "readjudication_authorized_in_r423": false,
+  "replicate_count": 4,
+  "seed_ledger_exactly_reused": true,
+  "semantic_guards": [
+    "absolute_population_response != adjudicative_population_persistence",
+    "matched_control_effect requires explicit ARCANA causal target before promotion"
+  ],
+  "stage": "v0.6D1-R4.23",
+  "window_id": "SAPIENT_200KA_TO_0"
+}

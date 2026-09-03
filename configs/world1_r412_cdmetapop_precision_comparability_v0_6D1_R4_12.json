@@ -1,0 +1,44 @@
+{
+  "stage": "v0.6D1-R4.12",
+  "title": "CDMetaPOP Metric-Repaired Precision, Absolute-Response Comparability & Neutral-Invariance Diagnosis",
+  "required_parent_status": "PASS_R411_CDMETAPOP_POPULATION_METRIC_EXTRACTION_REPAIR_AND_SYMMETRIC_READJUDICATION_SEALED",
+  "required_parent_next_action": "BUILD_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS",
+  "authorized_case": {
+    "window_id": "H0_POST_CHA1_RECOVERY",
+    "domain": "population_persistence",
+    "engine": "CDMetaPOP",
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "earliest_boundary": "R3.11_POST_CHA1"
+  },
+  "affected_frozen_cdmetapop_jobs": [
+    "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+    "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+    "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+  ],
+  "precision_policy": {
+    "preserve_r411_readjudication_without_posthoc_reclassification": true,
+    "automatic_additional_engine_replicates_forbidden": true,
+    "use_frozen_r44_ratio_neutral_factor": true,
+    "bootstrap_median_draws": 20000,
+    "bootstrap_rng_seed": 41220260831,
+    "bootstrap_is_descriptive_not_adjudicative": true
+  },
+  "comparability_policy": {
+    "tested_metric": "population_agent_response_ratio",
+    "neutral_invariance_requirement": "A NORMALIZABLE absolute response metric must not show a robust non-neutral response in a matched neutral-forcing control under the same start state/runtime.",
+    "robust_neutral_drift_rule": "q10 > upper neutral band OR q90 < lower neutral band",
+    "stable_neutral_rule": "q10 >= lower neutral band AND q90 <= upper neutral band",
+    "if_robust_neutral_drift": "DOWNGRADE_ABSOLUTE_POPULATION_RESPONSE_TO_PROXY_ONLY_PENDING_MATCHED_CONTROL_SEMANTIC_PROTOCOL",
+    "global_matched_control_metric_promotion_in_r412": false,
+    "r413_if_downgrade": "BUILD_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION",
+    "r413_symmetry_scope": "ALL_FIVE_FROZEN_CDMETAPOP_JOBS_AND_ALL_ROWS_USING_population_agent_response_ratio"
+  },
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "engine_execution_performed": false
+}

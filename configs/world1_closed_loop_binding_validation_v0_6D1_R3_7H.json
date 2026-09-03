@@ -1,0 +1,14 @@
+{
+  "stage": "v0.6D1-R3.7H",
+  "window": {"start_age_ma": 210.0, "end_age_ma": 150.0, "biology_cadence_years": 125000.0},
+  "branches": {"K_LOW": 37.614, "K_CENTER": 38.470, "K_HIGH": 41.002},
+  "closed_loop": true,
+  "segregation_recombination_fraction_per_generation": 0.5,
+  "recombination_semantics": "diagnostic ancestry/LD reservoir only; does not control persistent within-VA dynamics",
+  "governance": {
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "full_three_branch_external_validation_required": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "adjudicative_promotion_authorized_in_r423": false,
+  "canonical_write": false,
+  "engine": "CDMetaPOP",
+  "finite_metric_count": 3,
+  "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+  "metric_count": 3,
+  "normalized_metrics": {
+    "dynamic_population_response_ratio": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "PROXY_ONLY",
+      "kind": "ratio",
+      "name": "dynamic_population_response_ratio",
+      "semantics": "ABSOLUTE_DYNAMIC_POPULATION_RESPONSE; R4.12 NEUTRAL-INVARIANCE FAILURE PREVENTS GLOBAL ADJUDICATIVE USE",
+      "summary": {
+        "max": 2.1238095238095243,
+        "median": 2.1,
+        "min": 2.011904761904762,
+        "n": 4,
+        "q10": 2.033333333333333,
+        "q90": 2.121666666666667
+      }
+    },
+    "matched_control_population_effect_ratio": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "NORMALIZABLE_CANDIDATE_PENDING_ARCANA_CAUSAL_TARGET",
+      "kind": "ratio",
+      "name": "matched_control_population_effect_ratio",
+      "semantics": "DYNAMIC_POPULATION_RESPONSE_DIVIDED_BY_MATCHED_NEUTRAL_RESPONSE; DIAGNOSTIC_DOMAIN_CANDIDATE_REQUIRES_ARCANA_CAUSAL_TARGET",
+      "summary": {
+        "max": 1.3002915451895047,
+        "median": 1.2700618899099214,
+        "min": 1.2393767705382437,
+        "n": 4,
+        "q10": 1.2434622594613374,
+        "q90": 1.2963426954940394
+      }
+    },
+    "neutral_population_response_ratio": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY",
+      "kind": "ratio",
+      "name": "neutral_population_response_ratio",
+      "semantics": "MATCHED_NEUTRAL_CONTROL RESPONSE; CONTEXT FOR CAUSAL NORMALIZATION ONLY",
+      "summary": {
+        "max": 1.6892857142857143,
+        "median": 1.657142857142857,
+        "min": 1.563095238095238,
+        "n": 4,
+        "q10": 1.5841666666666665,
+        "q90": 1.6867857142857143
+      }
+    }
+  },
+  "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/RAW_EVIDENCE.json",
+  "raw_evidence_sha256": "4b0d528a97670661e2a6ca71576f764b3e90d5dab7e2886d76ca365b43cbb29d",
+  "raw_hash_matches_r422_audit": true,
+  "readjudication_authorized_in_r423": false,
+  "replicate_count": 4,
+  "seed_ledger_exactly_reused": true,
+  "semantic_guards": [
+    "absolute_population_response != adjudicative_population_persistence",
+    "matched_control_effect requires explicit ARCANA causal target before promotion"
+  ],
+  "stage": "v0.6D1-R4.23",
+  "window_id": "SAPIENT_3MA_TO_200KA"
+}

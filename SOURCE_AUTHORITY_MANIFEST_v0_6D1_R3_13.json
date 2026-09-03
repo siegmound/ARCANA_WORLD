@@ -1,0 +1,41 @@
+{
+  "schema": "ARCANA_R313_SOURCE_AUTHORITY_MANIFEST_V1",
+  "stage": "v0.6D1-R3.13",
+  "state": "SEALED",
+  "parent": "v0.6D1-R3.12_SEALED",
+  "canonical_window_ma": [
+    46.0,
+    30.0
+  ],
+  "scientific_changes": {
+    "new_operator": false,
+    "parameter_changes": false,
+    "late_cenozoic_provider_activated_inside_stage": false,
+    "new_stage_logic": "restart/observation/30Ma-handoff diagnostics only"
+  },
+  "files": {
+    "src/arcana_worldsim/scientific_engines/r313_longterm_postcha1_reassembly.py": "57de39a83c9fa552866a3060ea4594f957a0d6351861015208b9824034fef671",
+    "src/arcana_worldsim/scientific_engines/r312_postcha1_diversity_recovery.py": "2793733f05ab640d3fb9b0387f35aab54943a5e1aeb99d4990c41fdd4589b5d8",
+    "src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698",
+    "src/arcana_worldsim/scientific_engines/r37i_production_runtime.py": "24d580f7598b49762a8456f68141f7e4c059ef2f2db24028916c911aac3b3b09",
+    "src/rebased_natural_control_runtime_v0_6D1_R3_5.py": "634237eb15383000e88180b890ead9b6facc281c0a77eb5ce00efe32f3d0bc95",
+    "src/rebased_natural_control_runtime_v0_6D1_R3_4.py": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45",
+    "src/rebased_deep_time_barrier_provider_v0_6D1_R3.py": "1eace956da7254be21e5513a5c75f2efc360b80410f4c72dafedef01f584ce0c",
+    "src/arcana_worldsim/late_cenozoic/environment.py": "b2796f39ef8309cae5d7c1316930f2b87c2ce538edb9a30badcb5319570d74b5",
+    "R3_12_SEAL_SUMMARY.json": "daa718f5f8fb4f98e37a3dd70b29205bc796e20623b9fbd18c7ef227f7e8397e",
+    "local_runs/v0_6D1_R3_12/WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.json": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269",
+    "local_runs/v0_6D1_R3_12/WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.npz": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948"
+  },
+  "evidence": {
+    "immediate_regression": "50/50 PASS",
+    "full_unique_regression": "287/287 PASS",
+    "sealed_formal_audit": "223/223 PASS",
+    "30ma_environmental_endpoint_identity": "EXACT_ALL_7_FIELDS",
+    "serialization_identity": "EXACT"
+  },
+  "canonical_output": {
+    "summary_sha256": "2406b0c8fa374bcf4d77db368475e2da1a60368f93d42f8c0f8818d64944f3c9",
+    "checkpoint_json_sha256": "2c1cc49f04b7b489b6deab45caedf1cc3144a153d518e7646a4bc02ea235f869",
+    "checkpoint_npz_sha256": "2c576735a8268476cb5da91095a1bb549cf4edd1940ac539777144a156f66226"
+  }
+}

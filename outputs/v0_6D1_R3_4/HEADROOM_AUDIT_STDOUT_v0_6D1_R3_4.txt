@@ -1,0 +1,87 @@
+{
+  "stage": "v0.6D1-R3.4",
+  "scope": "LONG_HORIZON_ADMIXTURE_VARIANCE_HEADROOM_AND_SPECIES_BOUND_GENE_FLOW",
+  "verdict": "PASS_HEADROOM_SUPPORTS_0P08_NONBINDING_SAFETY_CEILING_CANDIDATE",
+  "semantic_identity_audit": {
+    "cross_current_species_contact_edges_within_same_root": 131,
+    "max_cross_current_species_contact": 0.2432096298357045,
+    "sum_cross_current_species_contact": 2.2768178983258203,
+    "required_semantics": "GENE_FLOW_AND_PAIR_STATE_ARE_CURRENT_SPECIES_BOUND; ROOT_SPECIES_IS_PROVENANCE_ONLY"
+  },
+  "homeostasis_authority_unchanged": {
+    "mutation_variance_supply_normalized_per_myr": 0.002,
+    "nonlinear_stabilizing_variance_depletion_per_myr_per_q": 0.9876543209876544,
+    "no_flow_equilibrium_q": 0.045
+  },
+  "experiments": [
+    {
+      "ceiling": 0.05,
+      "years": 1000000.0,
+      "max_q": 0.05000000000000001,
+      "median_q": 0.04481315769484145,
+      "p95_q": 0.05,
+      "p99_q": 0.05000000000000001,
+      "fraction_ge_99pct_ceiling": 0.1355072463768116,
+      "fraction_ge_0p0495": 0.1355072463768116,
+      "edge_count_last_step": 772,
+      "exchange_mass_last_step": 2.944758302911462
+    },
+    {
+      "ceiling": 0.06,
+      "years": 5000000.0,
+      "max_q": 0.060000000000000005,
+      "median_q": 0.04485636298295101,
+      "p95_q": 0.05259521719307581,
+      "p99_q": 0.06,
+      "fraction_ge_99pct_ceiling": 0.017391304347826087,
+      "fraction_ge_0p0495": 0.10797101449275362,
+      "edge_count_last_step": 772,
+      "exchange_mass_last_step": 2.944758302911462
+    },
+    {
+      "ceiling": 0.075,
+      "years": 20000000.0,
+      "max_q": 0.07435062666931849,
+      "median_q": 0.044926105016421504,
+      "p95_q": 0.050065805328403004,
+      "p99_q": 0.060505372139936286,
+      "fraction_ge_99pct_ceiling": 0.0007246376811594203,
+      "fraction_ge_0p0495": 0.060144927536231886,
+      "edge_count_last_step": 772,
+      "exchange_mass_last_step": 2.944758302911462
+    },
+    {
+      "ceiling": 0.08,
+      "years": 20000000.0,
+      "max_q": 0.07435062666931849,
+      "median_q": 0.044926105016421504,
+      "p95_q": 0.050065805328403004,
+      "p99_q": 0.060505372139936286,
+      "fraction_ge_99pct_ceiling": 0.0,
+      "fraction_ge_0p0495": 0.060144927536231886,
+      "edge_count_last_step": 772,
+      "exchange_mass_last_step": 2.944758302911462
+    },
+    {
+      "ceiling": 0.1,
+      "years": 20000000.0,
+      "max_q": 0.07435062666931849,
+      "median_q": 0.044926105016421504,
+      "p95_q": 0.050065805328403004,
+      "p99_q": 0.060505372139936286,
+      "fraction_ge_99pct_ceiling": 0.0,
+      "fraction_ge_0p0495": 0.060144927536231886,
+      "edge_count_last_step": 772,
+      "exchange_mass_last_step": 2.944758302911462
+    }
+  ],
+  "calibration_decision": {
+    "selected_candidate_ceiling": 0.08,
+    "reason": "0.075 still contacts 99% of the ceiling in the 20 Myr frozen-admixture audit, while 0.08 and 0.10 yield the same natural maximum q and 0% >=99% ceiling. Raising the safety ceiling leaves mu, b, and q*=0.045 unchanged.",
+    "b_recalibration_required": false
+  },
+  "limitations": [
+    "Frozen 150 Ma demographic/contact geometry is a diagnostic equilibrium probe, not a historical rerun.",
+    "The 210->150 Ma production replay must be rerun with R3.4 before 150 Ma can be promoted."
+  ]
+}

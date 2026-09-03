@@ -1,0 +1,44 @@
+{
+  "stage": "v0.6D1-R4.40",
+  "policy": "R440_EXACT_CANONICAL_ANCHOR_REPLAY_ZERO_AUTONOMOUS_CARRIER_DYNAMICS",
+  "parent_required": {
+    "r439_integrated": "44/44 PASS",
+    "r439_final_seal": "32/32 SEALED",
+    "r439_r5_reseal": "16/16 PASS"
+  },
+  "jobs": {
+    "J14": {
+      "mode": "CANONICAL_ANCHOR_CARRIER_STATE_REPLAY",
+      "autonomous_movement": false,
+      "autonomous_population_dynamics": false,
+      "autonomous_ageing": false,
+      "coordinate_interpolation": false,
+      "population_proxy_to_carrier_count": false
+    },
+    "J18": {
+      "mode": "CANONICAL_ANCHOR_CARRIER_STATE_REPLAY",
+      "autonomous_movement": false,
+      "autonomous_population_dynamics": false,
+      "autonomous_ageing": false,
+      "coordinate_interpolation": false,
+      "population_proxy_to_carrier_count": false
+    },
+    "J21": {
+      "mode": "CANONICAL_ANCHOR_LAYER_REPLAY_ONLY",
+      "native_dynamic_layers": 147,
+      "dynamic_sidecars": 4,
+      "future_exact_layer_targets": 1176
+    }
+  },
+  "default_geonomics_queue_authorized": false,
+  "single_transition_dry_run_validated": false,
+  "production_execution_queue_authorized": false,
+  "geonomics_execution_ready": false,
+  "model_run_performed_count": 0,
+  "scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "next_action": "BUILD_R441_GEONOMICS_DOMAIN_SPECIFIC_EXECUTION_QUEUE_SINGLE_TRANSITION_DRY_RUN_AND_STATE_INVARIANT_VALIDATION"
+}

@@ -1,0 +1,346 @@
+{
+  "schema": "ARCANA_R37G_PRODUCTION_BINDING_VALIDATION_V1",
+  "stage": "v0.6D1-R3.7G",
+  "parent_stage": "v0.6D1-R3.7F",
+  "verdict": "PASS_R37G_DIAGNOSTIC_SMOKE__CANONICAL_PARITY",
+  "config": {
+    "start_age_ma": 210.0,
+    "end_age_ma": 209.0,
+    "dt_years": 125000.0,
+    "snapshot_interval_years": 1000000.0,
+    "topology_switch_age_ma": 195.0,
+    "occupancy_floor": 1e-09,
+    "habitat_floor": 1e-12,
+    "migration_reference_years": 250000.0,
+    "migration_fraction_ceiling": 0.3,
+    "gene_flow_ceiling_per_step": 0.15,
+    "trait_response_timescale_years": 300000.0,
+    "body_mass_scale": 0.35,
+    "mutation_variance_supply_normalized_per_myr": 0.002,
+    "variance_ceiling_normalized": 0.08,
+    "nonlinear_stabilizing_variance_depletion_per_myr_per_q": 0.9876543209876544,
+    "selection_variance_depletion_per_generation": 2e-08,
+    "drift_individual_equivalents_per_population_unit": 250000000.0,
+    "drift_min_effective_size": 500.0,
+    "speciation_check_interval_years": 500000.0,
+    "ordinary_extinction_check_interval_years": 500000.0,
+    "ordinary_extinction_minimum_persistence_years": 2000000.0,
+    "ordinary_extinction_founder_floor_fraction": 0.05,
+    "ordinary_extinction_max_opportunity_ratio": 0.15,
+    "ordinary_extinction_max_range_ratio": 0.1,
+    "ordinary_extinction_max_density_ratio": 0.15,
+    "ordinary_extinction_max_population_ratio_to_episode_start": 0.9,
+    "ordinary_extinction_recovery_reset_factor": 1.25,
+    "ordinary_extinction_minimum_species_age_years": 2000000.0,
+    "minimum_effective_isolation_generations": 50000.0,
+    "minimum_intrinsic_ri": 0.65,
+    "minimum_trait_distance": 1.0,
+    "maximum_effective_exchange_pressure": 0.25,
+    "minimum_branch_population_fraction": 0.05,
+    "minimum_complement_population_fraction": 0.05,
+    "minimum_absolute_population": 0.01,
+    "ri_build_rate_per_generation": 2e-05,
+    "ri_decay_rate_per_generation": 5e-05,
+    "isolation_reconnection_erosion": 1.0,
+    "trait_drive_onset": 0.5,
+    "trait_drive_saturation": 1.5,
+    "seed": 917231,
+    "macrostep_years": 500000.0,
+    "biology_cadence_years": 125000.0,
+    "transport_cadence_years": 62500.0,
+    "persistent_vicariance_fission_enabled": true,
+    "deme_fission_check_interval_years": 500000.0,
+    "deme_fission_min_component_fraction": 0.02,
+    "deme_fission_min_absolute_population": 0.01,
+    "deme_fission_min_root_species_fraction": 0.01,
+    "vicariance_persistence_min_years": 2000000.0,
+    "vicariance_persistence_reset_on_reconnection": true,
+    "habitat_connectivity_power": 0.5,
+    "effective_connectivity_core_threshold": 0.2,
+    "founder_minimum_persistence_years": 1000000.0,
+    "founder_base_minimum_population_units": 0.075,
+    "founder_generation_reference_years": 5.0,
+    "founder_reproduction_reference": 1.0,
+    "founder_minimum_effective_size_proxy": 500.0,
+    "founder_minimum_normalized_additive_variance": 0.005,
+    "founder_minimum_occupied_cells": 10,
+    "founder_maximum_persistent_decline_fraction": 0.5,
+    "founder_reset_on_reconnection": true,
+    "barrier_phase_min": 0.05,
+    "barrier_phase_max": 0.95,
+    "barrier_transition_width_years": 1000000.0,
+    "connectivity_land_support_threshold": 0.25,
+    "connectivity_softness": 0.1,
+    "persistent_reconnection_coalescence_enabled": true,
+    "reconnection_check_interval_years": 500000.0,
+    "reconnection_persistence_min_years": 2000000.0,
+    "telemetry_enabled": true,
+    "telemetry_near_ceiling_fraction": 0.99,
+    "diagnostic_unclipped_ceiling": 1000000.0,
+    "adaptive_k_low": 37.614,
+    "adaptive_k_center": 38.47,
+    "adaptive_k_high": 41.002,
+    "shadow_recombination_fraction_per_generation": 0.5,
+    "diagnostic_smoke": true
+  },
+  "initialization": {
+    "semantic_status": "MINIMUM_INFORMATION_210MA_INITIALIZATION",
+    "same_species_authoritative_pair_count": 34,
+    "cross_species_pair_count_non_authoritative": 8744,
+    "hidden_genomic_divergence_invented": false,
+    "canonical_write_allowed": false,
+    "production_runtime_bound": false
+  },
+  "canonical_parity": {
+    "bit_exact_core_arrays": {
+      "population": true,
+      "trait": true,
+      "va": true,
+      "generation_time": true,
+      "ri": true,
+      "clock": true,
+      "contact": true,
+      "trait_distance": true
+    },
+    "exact_identity_lists": {
+      "component_ids": true,
+      "component_root_species": true,
+      "component_species": true,
+      "species_ids": true
+    },
+    "events_exact": true,
+    "all_core_parity": true
+  },
+  "canonical_r35_headroom": {
+    "record_count": 8,
+    "biology_cadence_years": 125000.0,
+    "ceiling_q": 0.08,
+    "near_ceiling_fraction": 0.99,
+    "peak_after_homeostasis_q": 0.021964362863513203,
+    "peak_after_homeostasis_age_ma": 209.0,
+    "peak_after_homeostasis_root_species": "BRW_005",
+    "peak_after_gene_flow_q": 0.021773414102784935,
+    "peak_after_gene_flow_age_ma": 209.0,
+    "peak_unclipped_homeostasis_q": 0.021964362863513203,
+    "peak_unclipped_homeostasis_age_ma": 209.0,
+    "steps_with_homeostasis_clipping": 0,
+    "fraction_steps_with_homeostasis_clipping": 0.0,
+    "total_clipped_reservoir_step_contacts": 0,
+    "steps_with_ge_99pct_ceiling_after_homeostasis": 0,
+    "fraction_steps_with_ge_99pct_ceiling_after_homeostasis": 0.0,
+    "per_axis_peak_after_homeostasis": [
+      0.008345931696521059,
+      0.00834593175672396,
+      0.021964362863513203
+    ],
+    "event_context_at_peak": {}
+  },
+  "canonical_final": {
+    "population": 1823.6891859919865,
+    "species_count": 120,
+    "component_count": 133
+  },
+  "legacy_stress_diagnostics": {
+    "step_count": 8,
+    "steps_with_clipping": 0,
+    "total_clipped_reservoir_step_contacts": 0,
+    "first_clipping_age_ma": null,
+    "last_clipping_age_ma": null,
+    "first_clipping_step_index": null,
+    "legacy_clipping_reproduced": false
+  },
+  "legacy_peak_q": 0.021964362863513203,
+  "shadow_peak_q": {
+    "K_LOW": 0.02196436286351262,
+    "K_CENTER": 0.02196436286351262,
+    "K_HIGH": 0.02196436286351262
+  },
+  "center_headroom_to_existing_ceiling": 0.05803563713648738,
+  "shadow": {
+    "window": {
+      "start_age_ma": 210.0,
+      "end_age_ma": 209.0,
+      "biology_steps": 8
+    },
+    "K_envelope": {
+      "K_LOW": 37.614,
+      "K_CENTER": 38.47,
+      "K_HIGH": 41.002
+    },
+    "final_variants": {
+      "K_LOW": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02196436286351262,
+        "median_normalized_va": 0.00834459358592339,
+        "p99_normalized_va": 0.021964327333455953,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.22486548188235114,
+        "same_species_S_median": 0.002894385807684993,
+        "ancestry_abs_total": 6.622385438633832e-06,
+        "adaptive_coordinate_abs_max": 0.015488914970555451
+      },
+      "K_CENTER": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02196436286351262,
+        "median_normalized_va": 0.00834459358592339,
+        "p99_normalized_va": 0.021964327333455953,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2248653813132583,
+        "same_species_S_median": 0.002894385807684993,
+        "ancestry_abs_total": 6.62238294174809e-06,
+        "adaptive_coordinate_abs_max": 0.015315622827419184
+      },
+      "K_HIGH": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02196436286351262,
+        "median_normalized_va": 0.00834459358592339,
+        "p99_normalized_va": 0.021964327333455953,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.22486510841613955,
+        "same_species_S_median": 0.002894385807684993,
+        "ancestry_abs_total": 6.622376166377046e-06,
+        "adaptive_coordinate_abs_max": 0.014835194175102434
+      }
+    },
+    "trajectory_max_q": {
+      "peak_by_variant": {
+        "K_LOW": 0.02196436286351262,
+        "K_CENTER": 0.02196436286351262,
+        "K_HIGH": 0.02196436286351262
+      },
+      "maximum_absolute_K_envelope_spread": 0.0
+    },
+    "ceiling_contacts_by_variant": {
+      "K_LOW": 0,
+      "K_CENTER": 0,
+      "K_HIGH": 0
+    },
+    "canonical_event_counts": {},
+    "component_count_final": 133,
+    "species_count_final": 120,
+    "governance": {
+      "shadow_only": true,
+      "canonical_write_allowed": false,
+      "production_runtime_replacement_authorized": false,
+      "scalar_K_eff_production_authorized": false,
+      "direct_WorldSim_N_to_NEMO_N_mapping_authorized": false,
+      "mu_b_or_ceiling_change_authorized": false,
+      "recombination_fraction_is_reference_shadow_architecture_not_world1_constant": true
+    }
+  },
+  "k_envelope_sensitivity": {
+    "max_normalized_va": {
+      "maximum_absolute_envelope_spread": 0.0,
+      "age_ma_at_maximum_absolute_spread": null,
+      "final_by_variant": {
+        "K_LOW": 0.02196436286351262,
+        "K_CENTER": 0.02196436286351262,
+        "K_HIGH": 0.02196436286351262
+      },
+      "final_relative_span_vs_abs_center": 0.0
+    },
+    "median_normalized_va": {
+      "maximum_absolute_envelope_spread": 0.0,
+      "age_ma_at_maximum_absolute_spread": null,
+      "final_by_variant": {
+        "K_LOW": 0.00834459358592339,
+        "K_CENTER": 0.00834459358592339,
+        "K_HIGH": 0.00834459358592339
+      },
+      "final_relative_span_vs_abs_center": 0.0
+    },
+    "p99_normalized_va": {
+      "maximum_absolute_envelope_spread": 0.0,
+      "age_ma_at_maximum_absolute_spread": null,
+      "final_by_variant": {
+        "K_LOW": 0.021964327333455953,
+        "K_CENTER": 0.021964327333455953,
+        "K_HIGH": 0.021964327333455953
+      },
+      "final_relative_span_vs_abs_center": 0.0
+    },
+    "same_species_S_max": {
+      "maximum_absolute_envelope_spread": 4.286928663443934e-07,
+      "age_ma_at_maximum_absolute_spread": 209.625,
+      "final_by_variant": {
+        "K_LOW": 0.22486548188235114,
+        "K_CENTER": 0.2248653813132583,
+        "K_HIGH": 0.22486510841613955
+      },
+      "final_relative_span_vs_abs_center": 1.6608435207498246e-06
+    },
+    "same_species_S_median": {
+      "maximum_absolute_envelope_spread": 0.0,
+      "age_ma_at_maximum_absolute_spread": null,
+      "final_by_variant": {
+        "K_LOW": 0.002894385807684993,
+        "K_CENTER": 0.002894385807684993,
+        "K_HIGH": 0.002894385807684993
+      },
+      "final_relative_span_vs_abs_center": 0.0
+    },
+    "ancestry_abs_total": {
+      "maximum_absolute_envelope_spread": 9.27225678541406e-12,
+      "age_ma_at_maximum_absolute_spread": 209.0,
+      "final_by_variant": {
+        "K_LOW": 6.622385438633832e-06,
+        "K_CENTER": 6.62238294174809e-06,
+        "K_HIGH": 6.622376166377046e-06
+      },
+      "final_relative_span_vs_abs_center": 1.400139023516887e-06
+    },
+    "adaptive_coordinate_abs_max": {
+      "maximum_absolute_envelope_spread": 0.0006537207954530177,
+      "age_ma_at_maximum_absolute_spread": 209.0,
+      "final_by_variant": {
+        "K_LOW": 0.015488914970555451,
+        "K_CENTER": 0.015315622827419184,
+        "K_HIGH": 0.014835194175102434
+      },
+      "final_relative_span_vs_abs_center": 0.042683265500811196
+    }
+  },
+  "production_validation_gate": {
+    "expected_biology_steps": 8,
+    "valid_biology_steps": true,
+    "canonical_parity": true,
+    "legacy_clipping_reproduced": false,
+    "shadow_all_variants_clear_of_ceiling": true,
+    "shadow_ceiling_contacts_by_variant": {
+      "K_LOW": 0,
+      "K_CENTER": 0,
+      "K_HIGH": 0
+    },
+    "center_positive_headroom_to_existing_ceiling": true,
+    "no_qualitative_k_headroom_divergence": true,
+    "governed_validation_pass": false
+  },
+  "branch_semantics": {
+    "K_CENTER": "NOMINAL_VALIDATION_BRANCH_NOT_CANONICAL_CONSTANT",
+    "K_LOW": "LOW_UNCERTAINTY_SENTINEL",
+    "K_HIGH": "HIGH_UNCERTAINTY_SENTINEL"
+  },
+  "authority": {
+    "trait_response": "R3.5/R3.4_EXISTING_SELECTION_AUTHORITY_UNCHANGED",
+    "migration": "R3.4_CURRENT_SPECIES_BOUND_GENE_FLOW_AND_45PCT_CAP_UNCHANGED",
+    "nonflow_variance": "D3.3A_MU_B_DRIFT_AND_CEILING_UNCHANGED",
+    "deme_lifecycle": "R3.3/R3.2C_PARENT_EVENTS_ONLY",
+    "adaptive_participation": "R3.7D_HIGH_N_SHADOW_ENVELOPE",
+    "stress_evidence": "R3.7F_210_TO_188_EXTERNAL_PASS"
+  },
+  "governance": {
+    "shadow_only": true,
+    "canonical_write_allowed": false,
+    "production_runtime_replacement_authorized": false,
+    "production_promotion_may_be_reviewed_only_after_governed_validation_pass": true,
+    "scalar_K_eff_production_authorized": false,
+    "nominal_K_center_is_not_a_world1_constant": true,
+    "direct_WorldSim_N_to_NEMO_N_mapping_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "recombination_fraction_is_reference_shadow_architecture_not_world1_constant": true
+  },
+  "wall_seconds": 25.09762692451477
+}

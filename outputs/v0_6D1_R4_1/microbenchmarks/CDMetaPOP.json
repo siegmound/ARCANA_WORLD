@@ -1,0 +1,51 @@
+{
+  "command": [
+    "/home/jose/miniforge3/envs/arcana-cdmetapop-308/bin/python",
+    "/mnt/f/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/.arcana_engines/CDMetaPOP-3.08/src/CDmetaPOP.py",
+    "/mnt/f/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R4_1/runtime_work/CDMetaPOP/example_files",
+    "RunVars_R41.csv",
+    "R41_smoke"
+  ],
+  "engine_log_tail": "--- example_files/R41_smoke1788134381/CDmetaPOP0.log ---\n\nCDmetaPOP Release 2025.07.28-09:09:09 Version version 3.08\n\nAuthor(s): Erin L Landguth, Casey Day, et al.\n\nSession runtime inputs from: /mnt/f/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R4_1/runtime_work/CDMetaPOP/example_files/RunVars_R41.csv\n\n\nSession popvars inputs from: popvars/PopVars_R41.csv\n\n\nOn run: 0\n\n\nDoPreProcess(): 0:00:00.093746\nGetMetrics() Initial: 0:00:00.007703\nThe file ind-1.csv has been created\nDoUpdate(): 0:00:00.035521\nDoCDClimate(): 0:00:00.060886\nDoMate() and DoOffspring: 0:00:00.043735\nThe file ind0.csv has been created\nSecond DoUpdate(): 0:00:02.118908\nDoEmigration(): 0:00:00.442356\nDoOutMortality(): 0:00:00.010174\nThe file ind0.csv has been created\nThird DoUpdate(): 0:00:06.844594\nDoImmigration(): 0:00:00.118783\nDoInMortality(): 0:00:00.013450\nGetMetrics(): 0:00:00.011189\nEnd Generation/Year Loop0: 0:00:09.664984\n\nDoCDClimate(): 0:00:00.072029\nDoMate() and DoOffspring: 0:00:00.085482\nThe file ind1.csv has been created\nSecond DoUpdate(): 0:00:05.304267\nDoEmigration(): 0:00:00.321669\nDoOutMortality(): 0:00:00.012449\nThe file ind1.csv has been created\nThird DoUpdate(): 0:00:04.388035\nDoImmigration(): 0:00:00.068582\nDoInMortality(): 0:00:00.010176\nGetMetrics(): 0:00:00.009518\nEnd Generation/Year Loop1: 0:00:10.272654\n\nDoCDClimate(): 0:00:00.071550\nDoMate() and DoOffspring: 0:00:00.051042\nThe file ind2.csv has been created\nSecond DoUpdate(): 0:00:03.770946\nDoEmigration(): 0:00:00.211992\nDoOutMortality(): 0:00:00.016756\nThe file ind2.csv has been created\nThird DoUpdate(): 0:00:04.670376\nDoImmigration(): 0:00:00.080568\nDoInMortality(): 0:00:00.014423\nGetMetrics(): 0:00:00.011746\nEnd Generation/Year Loop2: 0:00:08.899877\n\nDoCDClimate(): 0:00:00.001256\nDoMate() and DoOffspring: 0:00:00.071856\nThe file ind3.csv has been created\nSecond DoUpdate(): 0:00:03.811560\nDoEmigration(): 0:00:00.191928\nDoOutMortality(): 0:00:00.013177\nThe file ind3.csv has been created\nThird DoUpdate(): 0:00:04.255481\nDoImmigration(): 0:00:00.075195\nDoInMortality(): 0:00:00.011008\nGetMetrics(): 0:00:00.011303\nEnd Generation/Year Loop3: 0:00:08.443265\n\nDoCDClimate(): 0:00:00.001734\nDoMate() and DoOffspring: 0:00:00.059542\nThe file ind4.csv has been created\nSecond DoUpdate(): 0:00:03.842795\nDoEmigration(): 0:00:00.230820\nDoOutMortality(): 0:00:00.016232\nThe file ind4.csv has been created\nThird DoUpdate(): 0:00:05.065420\nDoImmigration(): 0:00:00.092864\nDoInMortality(): 0:00:00.011178\nGetMetrics(): 0:00:00.011548\nEnd Generation/Year Loop4: 0:00:09.332681\n\nThe file summary_popAllTime.csv has been created\nThe file summary_classAllTime.csv has been created\nDoPostProcess(): 0:00:00.009240\nEnd Monte Carlo Loop0: 0:00:46.759829\n\n",
+  "metrics": {
+    "benchmark_popvars_isolated_first_row": true,
+    "benchmark_runvars": "RunVars_R41.csv",
+    "compatibility_shim_applied": true,
+    "compatibility_shim_value": "N",
+    "csv_output_files": 13,
+    "generic_classvars_present": true,
+    "generic_patchvars_present": true,
+    "new_output_files": 14,
+    "output_root_directories": 1,
+    "runtime_generations": 5,
+    "sample_outputs": [
+      "example_files/R41_smoke1788134381/CDmetaPOP0.log",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/ind-1.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/ind0.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/ind1.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/ind2.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/ind3.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/ind4.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/indSample0.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/indSample1.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/indSample2.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/indSample3.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/indSample4.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/summary_classAllTime.csv",
+      "example_files/R41_smoke1788134381/run0batch0mc0species0/summary_popAllTime.csv"
+    ],
+    "scenario_rows": 1,
+    "selected_popvars": "popvars/PopVars_R41.csv",
+    "selected_popvars_has_implement_disease": true,
+    "selected_popvars_rows": 1,
+    "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118",
+    "source_entrypoint": "CDmetaPOP.py",
+    "source_tree_modified": false,
+    "upstream_generic_popvars_rows": 4,
+    "upstream_runvars_source": "RunVars.csv"
+  },
+  "returncode": 0,
+  "status": "PASS",
+  "stderr_tail": "",
+  "stdout_tail": "On run: 0\n\n('DoPreProcess(): ', '0:00:00.093774', '')\nEnd Generation/Year Loop0: 0:00:09.664984\n\nEnd Generation/Year Loop1: 0:00:10.272654\n\nEnd Generation/Year Loop2: 0:00:08.899877\n\nEnd Generation/Year Loop3: 0:00:08.443265\n\nEnd Generation/Year Loop4: 0:00:09.332681\n\nDoPostProcess(): 0:00:00.009240\nEnd Monte Carlo Loop0: 0:00:46.759829\n\n"
+}

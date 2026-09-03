@@ -1,0 +1,45 @@
+{
+  "stage": "v0.6D1-R5.4",
+  "objective": "CROSS_ENGINE_FIXED_N_GENETIC_ROBUSTNESS_AND_GENE_FLOW_VALIDATION",
+  "engine": {
+    "name": "NEMO",
+    "required_version": "2.4.2",
+    "default_conda_env": "arcana-nemo242"
+  },
+  "challenge": {
+    "family_count": 12,
+    "stress_profiles": {
+      "D0_STANDARDIZED_BASELINE": 60,
+      "D1_STANDARDIZED_MODERATE_BOTTLENECK": 30,
+      "D2_STANDARDIZED_SEVERE_BOTTLENECK": 12
+    },
+    "variants": ["FLOW", "MATCHED_NO_FLOW"],
+    "seeds": [540401, 540402],
+    "marker_loci": 16,
+    "initial_frequency_pattern": "ALTERNATING_0P25_0P75",
+    "transitions": 40,
+    "nemo_generations_parameter": 41,
+    "flow_mass": 0.05,
+    "mutation_rate": 0.0,
+    "selection": false,
+    "recombination_rate": 0.5,
+    "planned_stream_count": 144
+  },
+  "authority": {
+    "network_geometry": "RECONSTRUCT_DIRECTLY_FROM_R51_Q99_CORE_PLUS_J14_OCCUPANCY_SUPPORT",
+    "r53_cdmetapop_values_used_to_fit_nemo": false,
+    "r53_used_only_for_side_by_side_reporting": true,
+    "fixed_n_is_literal_arcana_demography": false,
+    "markers_are_arcana_canonical_genome": false,
+    "nemo_generation_is_literal_arcana_time": false
+  },
+  "governance": {
+    "majority_vote": false,
+    "single_winner": false,
+    "result_selected_tuning": false,
+    "forced_cross_engine_metric_equality": false,
+    "automatic_numeric_scientific_pass_fail": false,
+    "canonical_write": false,
+    "micro_seal": false
+  }
+}

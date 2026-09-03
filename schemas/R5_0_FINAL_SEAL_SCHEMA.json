@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ARCANA WorldSim R5.0 Final Seal",
+  "type": "object",
+  "required": [
+    "stage", "status", "sealed", "scientific_candidate_eligible",
+    "checks_passed", "checks_total", "checks_failed", "summary",
+    "candidate_output_manifest_sha256", "source_authority_manifest_sha256"
+  ],
+  "properties": {
+    "stage": {"const": "v0.6D1-R5.0"},
+    "status": {"const": "PASS_R50_SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY_SEALED"},
+    "sealed": {"const": true},
+    "scientific_candidate_eligible": {"const": true},
+    "checks_passed": {"type": "integer", "minimum": 1},
+    "checks_total": {"type": "integer", "minimum": 1},
+    "checks_failed": {"const": 0},
+    "candidate_output_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_authority_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "summary": {
+      "type": "object",
+      "required": [
+        "r456_runtime_verified", "exact_parent_hash_count", "candidate_artifact_count",
+        "20ka_semantic_state_sha256", "17p5ka_semantic_state_sha256",
+        "full_history_rerun_performed", "external_engine_execution_performed",
+        "canonical_state_changed", "deep_biological_coupling"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

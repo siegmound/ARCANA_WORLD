@@ -1,0 +1,92 @@
+{
+  "audit": "FINAL_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_ABSOLUTE_RESPONSE_COMPARABILITY_DIAGNOSIS",
+  "checks": [
+    {
+      "detail": "PASS_R411_CDMETAPOP_POPULATION_METRIC_EXTRACTION_REPAIR_AND_SYMMETRIC_READJUDICATION_SEALED",
+      "name": "parent_r411_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS_COMPLETE",
+      "name": "r412_diagnosis_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r412_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "precision_preserves_r411_classification",
+      "pass": true
+    },
+    {
+      "detail": "R412_CDMETAPOP_ABSOLUTE_POPULATION_RESPONSE_NEUTRAL_INVARIANCE_FAILURE_CONFIRMED",
+      "name": "comparability_diagnosis_present",
+      "pass": true
+    },
+    {
+      "detail": "R413_COMPARABILITY_DOWNGRADE_PLAN_FROZEN",
+      "name": "r413_plan_present",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_engine_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "next_action": "BUILD_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION",
+  "stage": "v0.6D1-R4.12",
+  "status": "PASS_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS_SEALED",
+  "summary": {
+    "absolute_population_response_comparability": "PROXY_ONLY_PENDING_MATCHED_CONTROL_SEMANTIC_PROTOCOL",
+    "arcana_causal_forcing_effect_ratio": 0.9353883003794401,
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "corrected_paired_effect_summary": {
+      "max": 1.001670843776107,
+      "mean": 0.9253354297424613,
+      "median": 0.9231475102492575,
+      "min": 0.87597503900156,
+      "n": 20,
+      "q10": 0.8800727271011101,
+      "q90": 0.972860524283888
+    },
+    "deep_biological_coupling": false,
+    "finding": "R412_CDMETAPOP_ABSOLUTE_POPULATION_RESPONSE_NEUTRAL_INVARIANCE_FAILURE_CONFIRMED",
+    "neutral_control_class": "NEUTRAL_CONTROL_ROBUST_UPWARD_RELAXATION",
+    "next_action": "BUILD_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION"
+  },
+  "verdict": "SEALED"
+}

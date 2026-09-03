@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ARCANA WorldSim R3.22 Generic Functional Phenotype Specification",
+  "type": "object",
+  "required": [
+    "stage",
+    "status",
+    "parent_authority",
+    "scope",
+    "state_granularity",
+    "domain_count",
+    "primitive_trait_count",
+    "derived_capability_count",
+    "values_materialized",
+    "new_biology_executed",
+    "human_target",
+    "deep_biological_coupling"
+  ],
+  "properties": {
+    "stage": {"const": "v0.6D1-R3.22"},
+    "status": {"const": "CANDIDATE_SPECIFICATION_ONLY_NO_PHENOTYPE_VALUES"},
+    "scope": {"const": "GENERIC_ALL_LINEAGES_NO_HUMAN_TARGET"},
+    "state_granularity": {"const": "COMPONENT_PRIMARY_SPECIES_SUMMARY_DERIVED"},
+    "domain_count": {"const": 10},
+    "primitive_trait_count": {"const": 31},
+    "derived_capability_count": {"const": 2},
+    "values_materialized": {"const": false},
+    "new_biology_executed": {"const": false},
+    "human_target": {"const": false},
+    "deep_biological_coupling": {"const": false}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,143 @@
+{
+  "stage": "v0.6D1-R4.5",
+  "title": "Earliest-Affected-Authority Causal Diagnosis, Evidence-Robustness Gate & Minimal Replay Plan",
+  "parent_stage": "v0.6D1-R4.4",
+  "required_parent_status": "PASS_R44_CROSS_ENGINE_DOMAIN_DISCORDANCE_MATRIX_AND_SCIENTIFIC_ADJUDICATION_SEALED",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "automatic_parameter_change": false,
+  "canonical_replay_authorized": false,
+  "diagnostic_counterfactual_may_be_authorized": true,
+  "policy_freeze": {
+    "status": "FROZEN_BEFORE_R45_PARENT_NUMERICAL_ROW_INSPECTION",
+    "result_selected": false,
+    "note": "R4.5 robustness and replay-authorization rules are fixed independently of the identity/value of the R4.4 structural cell."
+  },
+  "robustness_policy": {
+    "minimum_external_replicates": 4,
+    "ratio_neutral_factor": 1.05,
+    "delta_neutral_abs": 0.02,
+    "require_primary_authority": true,
+    "eligible_mapping_comparability": [
+      "DIRECT",
+      "NORMALIZABLE"
+    ],
+    "eligible_target_comparability": [
+      "DIRECT",
+      "NORMALIZABLE"
+    ],
+    "require_r44_structural_class": true,
+    "require_q10_q90_entirely_on_opposite_meaningful_side": true,
+    "median_only_is_not_sufficient_for_canonical_replay": true
+  },
+  "structural_diagnosis_classes": [
+    "ROBUST_PRIMARY_STRUCTURAL_DISAGREEMENT",
+    "STRUCTURAL_CANDIDATE_UNCERTAINTY_OVERLAP",
+    "STRUCTURAL_CANDIDATE_INSUFFICIENT_REPLICATES",
+    "STRUCTURAL_CANDIDATE_CONTRACT_MISMATCH"
+  ],
+  "replay_policy": {
+    "r45_executes_no_replay": true,
+    "r45_modifies_no_r3_parameter": true,
+    "robust_structural_can_authorize_only_targeted_diagnostic_counterfactual": true,
+    "canonical_replay_requires_later_causal_counterfactual_confirmation": true,
+    "calibration_offsets_cannot_trigger_parameter_change_in_r45": true,
+    "evidence_gaps_are_preserved_and_planned_for_closure": true
+  },
+  "boundary_authority_registry": {
+    "H0_210MA": {
+      "replay_start": "210 Ma",
+      "authority_files": [
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz"
+      ],
+      "scope": "full H0 natural-control boundary"
+    },
+    "R3.9_PRE_CHA1": {
+      "replay_start": "R3.9 / 66 Ma pre-CHA1",
+      "authority_files": [
+        "CANONICAL_150_TO_66_PRE_CHA1_CONTINUATION_CONTRACT_v0_6D1_R3_9.md",
+        "configs/world1_r39_precha1_v0_6D1_R3_9.json"
+      ],
+      "scope": "pre-CHA1 continuation"
+    },
+    "R3.11_POST_CHA1": {
+      "replay_start": "R3.11 / 65.5 Ma post-CHA1 restart",
+      "authority_files": [
+        "CANONICAL_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CONTRACT_v0_6D1_R3_11.md",
+        "configs/world1_r311_postcha1_recovery_v0_6D1_R3_11.json",
+        "src/arcana_worldsim/scientific_engines/r311_postcha1_recovery.py",
+        "src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+        "src/d3_additive_variance_v0_6_3D3_3A.py"
+      ],
+      "scope": "post-CHA1 ordinary H0 lifecycle restart and production machinery"
+    },
+    "R3.14_LATE_CENOZOIC": {
+      "replay_start": "R3.14 / late-Cenozoic boundary",
+      "authority_files": [
+        "CANONICAL_LATE_CENOZOIC_PROVIDER_BINDING_ADAPTIVE_CLOCK_RESTART_CONTRACT_v0_6D1_R3_14.md",
+        "src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py"
+      ],
+      "scope": "late-Cenozoic provider binding / adaptive restart"
+    },
+    "R3.27": {
+      "replay_start": "R3.27 / 3 Ma",
+      "authority_files": [
+        "R3_27_HOMININ_MACRO_REPLAY_CONTRACT.md",
+        "configs/world1_r327_hominin_macro_replay_to_200ka_v0_6D1_R3_27.json"
+      ],
+      "scope": "3 Ma to 200 ka sapient macro replay"
+    },
+    "R3.28": {
+      "replay_start": "R3.28 / 200 ka",
+      "authority_files": [
+        "R3_28_HIGH_RESOLUTION_200KA_TO_0_CONTRACT.md",
+        "configs/world1_r328_high_resolution_200ka_to_0_v0_6D1_R3_28.json"
+      ],
+      "scope": "200 ka to 0 high-resolution sapient replay"
+    },
+    "R3.34": {
+      "replay_start": "R3.34 / 20 ka producer layer",
+      "authority_files": [
+        "R3_34_PRODUCER_DOMESTICATION_CONTRACT.md",
+        "configs/world1_r334_producer_domestication_v0_6D1_R3_34.json"
+      ],
+      "scope": "producer coevolution / managed-wild dynamics"
+    }
+  },
+  "r311_causal_surface": {
+    "scientific_constants_frozen": [
+      "mu=0.002/Myr",
+      "b=0.9876543209876544",
+      "q_ceiling=0.08",
+      "biology_cadence=125000 yr",
+      "founder_persistence=1 Myr",
+      "vicariance_persistence=2 Myr",
+      "reconnection_persistence=2 Myr"
+    ],
+    "operators_to_diagnose_before_retuning": [
+      "demography",
+      "migration_transport",
+      "trait_selection",
+      "segregation_aware_gene_flow",
+      "additive_variance_dynamics",
+      "RI_contact_isolation_clocks",
+      "reconnection_coalescence",
+      "vicariance_fission",
+      "ordinary_background_extinction",
+      "structural_speciation_gate",
+      "founder_viability_persistence",
+      "lifecycle_thaw_adapter"
+    ],
+    "forbidden_shortcuts": [
+      "post_CHA1_radiation_multiplier",
+      "lower_founder_thresholds",
+      "boost_mutation",
+      "boost_VA_ceiling",
+      "insert_species",
+      "protect_winners",
+      "target_Earth_species_count"
+    ]
+  }
+}

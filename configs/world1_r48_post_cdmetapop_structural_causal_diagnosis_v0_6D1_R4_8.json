@@ -1,0 +1,49 @@
+{
+  "stage": "v0.6D1-R4.8",
+  "title": "Post-CDMetaPOP-Repair Structural Causal Diagnosis, Matched Neutral-Forcing Control & Transient-Relaxation Audit",
+  "parent_stage": "v0.6D1-R4.7",
+  "required_parent_status": "PASS_R47_CDMETAPOP_FORCING_PARITY_REPAIR_SYMMETRIC_REEXECUTION_AND_READJUDICATION_SEALED",
+  "required_parent_next_action": "BUILD_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "policy_freeze": {
+    "status": "FROZEN_BEFORE_R48_MATCHED_NEUTRAL_CONTROL_EXECUTION",
+    "result_selected": false,
+    "reason": "R4.8 is a causal diagnostic of the sole R4.7 structural cell. It changes no canonical parameter and uses a paired neutral-forcing control to remove start-state relaxation from the external-engine response."
+  },
+  "authorized_structural_case": {
+    "window_id": "H0_POST_CHA1_RECOVERY",
+    "domain": "population_persistence",
+    "engine": "CDMetaPOP",
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "earliest_boundary": "R3.11_POST_CHA1"
+  },
+  "matched_control_policy": {
+    "same_frozen_job_contract": true,
+    "same_seed_ledger": true,
+    "same_runtime_generations": true,
+    "same_start_habitat_support": true,
+    "same_gene_flow": true,
+    "same_initial_n0_policy": true,
+    "only_change": "dynamic_end_support_ratio -> 1.0",
+    "neutral_forcing_end_support_ratio": 1.0,
+    "paired_effect_metric": "(dynamic_final/dynamic_initial)/(neutral_final/neutral_initial)",
+    "secondary_equivalent_metric": "dynamic_final/neutral_final when paired initial populations match",
+    "comparison_target_injection_forbidden": true
+  },
+  "diagnosis_policy": {
+    "reuse_r44_ratio_neutral_factor": true,
+    "robust_direction_requires_q10_q90_outside_neutral_band": true,
+    "classes": [
+      "TRANSIENT_RELAXATION_CONFOUND_CONFIRMED",
+      "MODEL_RESPONSE_DISAGREEMENT_PERSISTS_AFTER_MATCHED_CONTROL",
+      "MATCHED_CONTROL_EFFECT_UNCERTAIN"
+    ],
+    "r47_matrix_is_immutable_parent_evidence": true,
+    "r48_may_not_reclassify_r47_matrix": true
+  }
+}

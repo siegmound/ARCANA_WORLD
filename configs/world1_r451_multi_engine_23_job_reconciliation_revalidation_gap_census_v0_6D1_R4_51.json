@@ -1,0 +1,41 @@
+{
+  "stage": "v0.6D1-R4.51",
+  "policy": "R451_CONSERVATIVE_23_JOB_EVIDENCE_RECONCILIATION_NO_AUTOMATIC_PROMOTION",
+  "parent_required": {
+    "r450_integrated": "50/50 PASS",
+    "r450_final_seal": "25/25 SEALED",
+    "geonomics_full_job_revalidation_closed": true
+  },
+  "frozen_registry": {
+    "source": "outputs/v0_6D1_R4_2/R4_2_ENGINE_WINDOW_JOB_MATRIX.json",
+    "job_count": 23,
+    "engine_counts": {
+      "Madingley": 4,
+      "RangeShifter": 5,
+      "CDMetaPOP": 5,
+      "NEMO": 3,
+      "Geonomics": 3,
+      "SLiM": 3
+    }
+  },
+  "classification_policy": {
+    "R450_Geonomics_jobs": "FULLY_REVALIDATED_CLOSED_R450",
+    "valid_prior_scientific_candidate": "SCIENTIFIC_EVIDENCE_PRESENT_CLOSURE_NOT_PROVEN",
+    "process_success_without_scientific_validity": "PROCESS_EXECUTION_EVIDENCE_ONLY",
+    "failed_or_invalid": "FAILED_OR_INVALID_EVIDENCE_ONLY",
+    "preflight_only": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+    "none": "NO_JOB_SPECIFIC_SCIENTIFIC_EVIDENCE_FOUND",
+    "automatic_prior_evidence_promotion": false
+  },
+  "expected_closure_state": {
+    "Geonomics_closed_jobs": 3,
+    "non_Geonomics_closure_gaps": 20,
+    "multi_engine_full_revalidation_closed": false
+  },
+  "new_scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "next_action": "BUILD_R452_NON_GEONOMICS_JOB_SPECIFIC_EVIDENCE_ADJUDICATION_AND_EXECUTION_PLAN"
+}

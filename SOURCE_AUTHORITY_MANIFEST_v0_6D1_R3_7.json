@@ -1,0 +1,132 @@
+{
+  "authority_note": "R3.7 validates a segregation-aware reduced-order admixture operator. It does not bind the new state into the production World-1 replay.",
+  "governance": {
+    "canonical_write_allowed": false,
+    "ceiling_change_authorized": false,
+    "mu_b_change_authorized": false,
+    "production_runtime_binding_allowed": false,
+    "state_evolution_authorized": false,
+    "state_initialization_authorized": false
+  },
+  "new_r3_7_sources": [
+    {
+      "bytes": 15151,
+      "path": "src/arcana_worldsim/scientific_engines/segregation_aware_admixture.py",
+      "sha256": "c08f206c3866f030c71b3d6cb08e6f5859a8ed1fe38fc6b34ff27bb4813c56ce"
+    },
+    {
+      "bytes": 7520,
+      "path": "src/arcana_worldsim/scientific_engines/r37_validation.py",
+      "sha256": "995ccfdc80f1cce2af765b7a5d28ffceb1f2501ad9fc4da44d6b1d9655238928"
+    },
+    {
+      "bytes": 2751,
+      "path": "src/arcana_worldsim/scientific_engines/__init__.py",
+      "sha256": "f24a51cbab75e43fefc3251a4e1a9ac5bd826ca6bbc46cc6001efe9a32b71140"
+    },
+    {
+      "bytes": 752,
+      "path": "scripts/analyze_segregation_aware_reference_v0_6D1_R3_7.py",
+      "sha256": "0877f5dc9756e192dcb929a6aa5dd53c9843ab61e70b46e2524e9712fe5b6558"
+    },
+    {
+      "bytes": 3078,
+      "path": "scripts/formal_audit_v0_6D1_R3_7.py",
+      "sha256": "6000d9caa5b48d4e154774f57c42732e55c31e60986ffc5071d8463f995bba21"
+    },
+    {
+      "bytes": 5947,
+      "path": "tests/test_segregation_aware_admixture_v0_6D1_R3_7.py",
+      "sha256": "da18dc8a9e63adbe9e574119c4605a2319f6f12a58e9ec83a9d250b81a499979"
+    },
+    {
+      "bytes": 1197,
+      "path": "tests/test_r37_reference_validation.py",
+      "sha256": "39740479869b61b3a000c0bb5877c4668182843cd45bfc4c2e8f9d862d7cce1c"
+    },
+    {
+      "bytes": 792,
+      "path": "configs/world1_segregation_aware_admixture_v0_6D1_R3_7.json",
+      "sha256": "5e6fd10ee310bc9ccba01ce85a3e97c4b48fc795ef6889945755c07fde7b7ced"
+    },
+    {
+      "bytes": 4507,
+      "path": "SEGREGATION_AWARE_ADMIXTURE_VARIANCE_CONTRACT_v0_6D1_R3_7.md",
+      "sha256": "2dd249b07aa8b3e31b4ec2b95ff5c6b5af1a93f4b71046a9c96d35d0ed659da1"
+    },
+    {
+      "bytes": 1367,
+      "path": "REDUCED_ORDER_GENETIC_STATE_AUDIT_v0_6D1_R3_7.md",
+      "sha256": "52c89639521a37b3c17eba21c5f1ad0adaa3c5831de8c3a1b790b2e33c025145"
+    },
+    {
+      "bytes": 975,
+      "path": "V0_6D1_R3_7_STATUS.md",
+      "sha256": "f6d691caea1f50bb45009a15c30a014fda9b37fa8c526905e128b6786c46e0c9"
+    },
+    {
+      "bytes": 1525,
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7.md",
+      "sha256": "b8127cc1cbae05055e479550add33ba938ad657a7936858f2aff06668e963148"
+    },
+    {
+      "bytes": 563,
+      "path": "README_R3_7.md",
+      "sha256": "95c2430c2bcffe6e3f9718527de96e9f33f5e11ae5eaba972e06d7e395e02734"
+    },
+    {
+      "bytes": 3010,
+      "path": "README.md",
+      "sha256": "029df15e49de1be5d74a297ebb1257d515ffe649aee223b2e8dab092ce082e5f"
+    },
+    {
+      "bytes": 4865,
+      "path": "reference_results/R3_7_SEGREGATION_AWARE_REFERENCE_CLOSURE.json",
+      "sha256": "daff1d9bf4ddc4717d45c9db080655bc190554d5a4611854ca0ada17ae7c28cb"
+    },
+    {
+      "bytes": 685,
+      "path": "run_v0_6D1_R3_7_checks.ps1",
+      "sha256": "c42d07b4bf824f513c94ea559621f3f3af59441ebe7bd713672460c0b755697a"
+    }
+  ],
+  "parent_package": {
+    "filename": "ARCANA_WORLD1_v0_6D1_R3_6E_NEMO_EVIDENCE_CLOSURE_AND_CAUSAL_INFERENCE_CANDIDATE.zip",
+    "sha256": "2c460639b7315252998fce4cc2efb961addac42a786f8ec7d5c69dd5c8680500"
+  },
+  "parent_stage": "v0.6D1-R3.6E",
+  "source_r36d_results": {
+    "executed": 40,
+    "job_count": 40,
+    "parsed": 40,
+    "sha256": "9a72d25b2b8518a44d04d389c1cb8fce671d60ebf46baada18e0de6e048fbe15"
+  },
+  "stage": "v0.6D1-R3.7",
+  "unchanged_parent_authorities": [
+    {
+      "bytes": 15443,
+      "path": "src/d3_additive_variance_v0_6_3D3_3A.py",
+      "sha256": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21"
+    },
+    {
+      "bytes": 8202,
+      "path": "src/d3_paleogeographic_history_v0_6_3D3_2C.py",
+      "sha256": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730"
+    },
+    {
+      "bytes": 51460,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "sha256": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45"
+    },
+    {
+      "bytes": 11983,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_5.py",
+      "sha256": "634237eb15383000e88180b890ead9b6facc281c0a77eb5ce00efe32f3d0bc95"
+    },
+    {
+      "bytes": 10980,
+      "path": "src/arcana_worldsim/scientific_engines/r36e_inference.py",
+      "sha256": "599a7e09e4373ac64d98f202dd2936481433284100bce3f629edfa0fb1349ebc"
+    }
+  ]
+}

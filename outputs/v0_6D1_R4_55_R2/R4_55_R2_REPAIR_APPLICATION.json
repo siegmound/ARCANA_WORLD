@@ -1,0 +1,21 @@
+{
+  "stage": "v0.6D1-R4.55-R2",
+  "status": "PASS_R455_R2_POWERSHELL_BRIDGE_PARSER_REPAIR_APPLIED",
+  "prepatch_bridge_sha256": "40314e492426c55043a68ea147444933c83076b420957591bf1c22db1f079799",
+  "postpatch_bridge_sha256": "e3e607a5a9a9d1154d507797ce93f70f12680f1041ba6d7672e771cddc2d7111",
+  "root_cause": "MINIFIED_POWERSHELL_BRIDGE_EMITTED_TOKEN_ADJACENCIES_INVALID_FOR_POWERSHELL_PARSER",
+  "observed_failure": "CONVERT_WSL_PATH_BLOCK_CLOSED_DIRECTLY_INTO_THROW_TOKEN",
+  "repair": "FORMAT_PRESERVING_FULL_BRIDGE_REWRITE_WITH_EXPLICIT_POWERSHELL_TOKEN_BOUNDARIES",
+  "governance": {
+    "r455_r1_preflight_pass_preserved": true,
+    "scientific_engine_execution_before_parser_failure": false,
+    "adapter_dispatch_modified": false,
+    "timeouts_modified": false,
+    "resume_semantics_modified": false,
+    "r452_scope_or_seed_modified": false,
+    "r453_metric_authority_modified": false,
+    "numeric_thresholds_added": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

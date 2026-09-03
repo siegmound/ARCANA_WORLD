@@ -1,0 +1,37 @@
+{
+  "stage": "v0.6D1-R4.53",
+  "title": "Non-Geonomics Scientific Execution Interface & Readout Authority Preflight",
+  "purpose": "freeze engine-specific execution contracts and scientific readouts before any of the 80 R4.52 historical streams are launched",
+  "engine_readout_summary": {
+    "Madingley": [
+      "functional cohort-count trajectory",
+      "functional stock-count trajectory"
+    ],
+    "RangeShifter": [
+      "abundance trajectory",
+      "occupied-cell trajectory"
+    ],
+    "CDMetaPOP": [
+      "summary_popAllTime population trajectory",
+      "summary_popAllTime Alleles/He/Ho genetic diversity trajectory"
+    ],
+    "NEMO": [
+      "raw qfreq/allele-frequency trajectory",
+      "realized frequency-change summary"
+    ],
+    "SLiM": [
+      "raw tree sequence as primary evidence",
+      "structural plus ancestry/gene-flow summaries derived under frozen extractor"
+    ]
+  },
+  "semantics": [
+    "R4.1 microbenchmarks prove executable semantics only and are not historical scientific evidence",
+    "Madingley cohorts/stocks never define ARCANA species identity",
+    "cross-engine literal population-N equality is forbidden",
+    "explicit time/generation mapping is required",
+    "descriptive values have zero numeric acceptance thresholds",
+    "CDMetaPOP output-file count is runtime integrity only, never biological scientific evidence"
+  ],
+  "execution_authorization": "not granted until R4.54 proves exact frozen-seed injection and authorized readout extraction on disposable dry runs",
+  "next_action": "BUILD_R454_NON_GEONOMICS_EXACT_SEED_INJECTION_READOUT_EXTRACTION_DRY_RUN_AND_SCHEMA_VALIDATION"
+}

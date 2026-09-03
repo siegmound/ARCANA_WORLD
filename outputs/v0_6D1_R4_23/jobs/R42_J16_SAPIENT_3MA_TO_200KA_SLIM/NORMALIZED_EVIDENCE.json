@@ -1,0 +1,52 @@
+{
+  "adjudicative_promotion_authorized_in_r423": false,
+  "canonical_write": false,
+  "engine": "SLiM",
+  "finite_metric_count": 2,
+  "job_id": "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+  "metric_count": 2,
+  "normalized_metrics": {
+    "fst_between_current_population_samples": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+      "kind": "ratio",
+      "name": "fst_between_current_population_samples",
+      "semantics": "DIFFERENTIATION_NOT_MIGRATION_RATE",
+      "summary": {
+        "max": 0.005007118491790252,
+        "median": 0.0033212157692636413,
+        "min": 0.0021873076521689017,
+        "n": 4,
+        "q10": 0.002250992623344894,
+        "q90": 0.004777835138984699
+      }
+    },
+    "global_diversity_per_site": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+      "kind": "ratio",
+      "name": "global_diversity_per_site",
+      "semantics": "DIVERSITY_NOT_ANCESTRY_CONTRIBUTION",
+      "summary": {
+        "max": 1.3348247809762204e-05,
+        "median": 1.1032931789737171e-05,
+        "min": 6.634386733416771e-06,
+        "n": 4,
+        "q10": 7.291786608260326e-06,
+        "q90": 1.331581664580726e-05
+      }
+    }
+  },
+  "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J16_SAPIENT_3MA_TO_200KA_SLIM/RAW_EVIDENCE.json",
+  "raw_evidence_sha256": "ba6b0e8b6fafa3498d713e87dfb31a2d3d8b0473196ac1653148f88a6885fa7f",
+  "raw_hash_matches_r422_audit": true,
+  "readjudication_authorized_in_r423": false,
+  "replicate_count": 4,
+  "seed_ledger_exactly_reused": true,
+  "semantic_guards": [
+    "diversity != ancestry",
+    "FST != migration_rate"
+  ],
+  "stage": "v0.6D1-R4.23",
+  "window_id": "SAPIENT_3MA_TO_200KA"
+}

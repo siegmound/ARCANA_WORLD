@@ -1,0 +1,45 @@
+{
+  "stage": "v0.6D1-R4.2",
+  "title": "Frozen Historical Window Baseline Materialization, Adapter Contract & Multi-Engine Execution Freeze",
+  "parent_stage": "v0.6D1-R4.1",
+  "required_parent_status": "PASS_R41_MULTI_ENGINE_SEMANTIC_CALIBRATION_CONTROLLED_MICROBENCHMARKS_AND_HISTORICAL_REVALIDATION_GATE_SEALED",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "external_engine_direct_canonical_write": false,
+  "automatic_external_evidence_promotion": false,
+  "deep_biological_coupling": false,
+  "baseline_a": "ARCANA_REDUCED_ORDER_R3_19_TO_R3_39",
+  "purpose": "Freeze the exact ARCANA baseline inputs and engine-domain mappings required for historical revalidation before any cross-engine historical result can be interpreted.",
+  "windows": [
+    {"id":"H0_DEEP_TIME_BACKGROUND","start_ma":210.0,"end_ma":200.0,"engines":["Madingley","RangeShifter","CDMetaPOP"],"earliest_replay_boundary":"H0_210MA"},
+    {"id":"H0_PRE_CHA1","start_ma":70.0,"end_ma":66.0,"engines":["Madingley","RangeShifter","CDMetaPOP"],"earliest_replay_boundary":"R3.9_PRE_CHA1"},
+    {"id":"H0_POST_CHA1_RECOVERY","start_ma":65.5,"end_ma":55.0,"engines":["Madingley","RangeShifter","CDMetaPOP","NEMO"],"earliest_replay_boundary":"R3.11_POST_CHA1"},
+    {"id":"H0_LATE_CENOZOIC","start_ma":30.0,"end_ma":0.2,"engines":["Madingley","RangeShifter","NEMO"],"earliest_replay_boundary":"R3.14_LATE_CENOZOIC"},
+    {"id":"SAPIENT_3MA_TO_200KA","start_ma":3.0,"end_ma":0.2,"engines":["Geonomics","CDMetaPOP","SLiM","NEMO"],"earliest_replay_boundary":"R3.27"},
+    {"id":"SAPIENT_200KA_TO_0","start_ka":200.0,"end_ka":0.0,"engines":["Geonomics","SLiM","CDMetaPOP"],"earliest_replay_boundary":"R3.28"},
+    {"id":"PRODUCER_20KA_TO_0","start_ka":20.0,"end_ka":0.0,"engines":["Geonomics","SLiM","RangeShifter"],"earliest_replay_boundary":"R3.34"}
+  ],
+  "comparison_domains": ["population_persistence","range_occupancy","range_shift_rate","connectivity","gene_flow","additive_variance","trait_response","admixture","ancestry","biomass","trophic_opportunity","extinction_risk","founder_persistence","managed_wild_isolation","producer_divergence"],
+  "discordance_classes": ["CONCORDANT","CALIBRATION_OFFSET","STRUCTURAL_DISAGREEMENT","SEMANTICALLY_NONCOMPARABLE","INSUFFICIENT_EVIDENCE"],
+  "materialization_policy": {
+    "hash_every_baseline_artifact": true,
+    "copy_baseline_artifacts": false,
+    "require_parent_r41_gate_authorized": true,
+    "require_exact_7_windows": true,
+    "require_exact_23_engine_window_jobs": true,
+    "result_selected_windows_forbidden": true,
+    "majority_vote": false,
+    "historical_execution_in_r42": false,
+    "next_stage": "v0.6D1-R4.3",
+    "reason": "Historical engine execution is authorized only after R4.2 freezes source-artifact hashes, unit mappings, time/generation mappings and domain interpretation contracts per engine-window job."
+  },
+  "artifact_discovery_hints": {
+    "H0_DEEP_TIME_BACKGROUND": ["R3_19","210","200"],
+    "H0_PRE_CHA1": ["R3_9","CHA1","PRE_CHA1"],
+    "H0_POST_CHA1_RECOVERY": ["R3_11","POST_CHA1","RECOVERY"],
+    "H0_LATE_CENOZOIC": ["R3_14","LATE_CENOZOIC","30Ma"],
+    "SAPIENT_3MA_TO_200KA": ["R3_27","3Ma","200ka"],
+    "SAPIENT_200KA_TO_0": ["R3_28","200ka"],
+    "PRODUCER_20KA_TO_0": ["R3_34","20ka","producer"]
+  }
+}

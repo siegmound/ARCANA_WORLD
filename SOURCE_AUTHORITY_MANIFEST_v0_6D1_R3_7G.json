@@ -1,0 +1,159 @@
+{
+  "stage": "v0.6D1-R3.7G",
+  "parent_stage": "v0.6D1-R3.7F",
+  "authority_note": "R3.7G closes the externally executed R3.7F stress-window evidence and prepares the governed 210->150 Ma validation. It does not yet replace the production runtime. K_CENTER is nominal validation only; LOW/HIGH remain uncertainty sentinels.",
+  "parent_package_manifest": {
+    "path": "PACKAGE_MANIFEST_v0_6D1_R3_7F.json",
+    "sha256": "ad9afce3ae8441259bc68353cbcfd8294478501112cdedebe73bf1fd8bc9c7bf"
+  },
+  "r37f_full_local_evidence": {
+    "path": "references/v0_6D1_R3_7F/v0_6D1_R3_7F_FULL_LOCAL_RESULTS.zip",
+    "sha256": "9528d7c6c8eb25ae4ad0df7b819e9535cf449cfb0a0a09304dce08e5ca2752d3",
+    "status": "PASS_210_TO_188_176_STEPS_LEGACY_CLIPPING_REPRODUCED_SHADOW_CLEAR"
+  },
+  "governed_validation_window": {
+    "start_age_ma": 210.0,
+    "end_age_ma": 150.0,
+    "biology_steps": 480,
+    "status": "PENDING_EXTERNAL_LOCAL_EXECUTION"
+  },
+  "branch_semantics": {
+    "K_LOW": {
+      "value": 37.614,
+      "role": "LOW_UNCERTAINTY_SENTINEL"
+    },
+    "K_CENTER": {
+      "value": 38.47,
+      "role": "NOMINAL_VALIDATION_BRANCH_NOT_CANONICAL_CONSTANT"
+    },
+    "K_HIGH": {
+      "value": 41.002,
+      "role": "HIGH_UNCERTAINTY_SENTINEL"
+    }
+  },
+  "gate_semantics": {
+    "must_preserve_bit_exact_canonical_parity": true,
+    "must_reproduce_legacy_clipping": true,
+    "must_keep_all_shadow_K_variants_below_existing_q_ceiling": true,
+    "must_keep_positive_center_headroom": true,
+    "must_avoid_qualitative_K_headroom_divergence": true,
+    "S_ancestry_h_spreads_reported_without_new_fit_thresholds": true
+  },
+  "governance": {
+    "shadow_only": true,
+    "canonical_write_allowed": false,
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "nominal_K_center_is_not_a_world1_constant": true,
+    "direct_WorldSim_N_to_NEMO_N_mapping_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "recombination_fraction_is_reference_shadow_architecture_not_world1_constant": true
+  },
+  "new_r3_7G_sources_and_evidence": [
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r37g_production_validation.py",
+      "bytes": 8087,
+      "sha256": "b7b3f526f74f394a41f48e3623f6e341994adbaabb4cf229391054acf3ba7024"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_7G_production_validation.py",
+      "bytes": 3140,
+      "sha256": "0c5307a96aa094472a6fc24e52ab661457790d9282164bfddb14829fe0977f68"
+    },
+    {
+      "path": "scripts/formal_audit_v0_6D1_R3_7G.py",
+      "bytes": 6883,
+      "sha256": "493f0796598e8737c8f207abaa3e95d4491b6bfc7f95ced833e6528a7e400151"
+    },
+    {
+      "path": "tests/test_r37g_production_validation.py",
+      "bytes": 1718,
+      "sha256": "572118e23ac3ae89b8a996951d94da1e9c70413d60cbe0c8d00c97e3a419fb26"
+    },
+    {
+      "path": "configs/world1_production_binding_validation_v0_6D1_R3_7G.json",
+      "bytes": 655,
+      "sha256": "4fe2c188d23f221a38d8802d227c35f94a4dbdac96b382f1d35ca2f1aa41b849"
+    },
+    {
+      "path": "PRODUCTION_BINDING_READINESS_CONTRACT_v0_6D1_R3_7G.md",
+      "bytes": 2690,
+      "sha256": "939add5f860003abda0d7b3f368d2dca436f9233e338027b7167989755462cb6"
+    },
+    {
+      "path": "R3_7F_FULL_LOCAL_EVIDENCE_AUDIT.md",
+      "bytes": 1276,
+      "sha256": "e1ad5b184e6a39244fda4fc2314d01bbc1480527912812ebb5857ec57558db73"
+    },
+    {
+      "path": "R3_7G_DIAGNOSTIC_SMOKE_AUDIT.md",
+      "bytes": 626,
+      "sha256": "cb0ebf1ecea4f0d9c0d32b7198feebffd02bf6d0e5ff4a2c5c7263143c3be2b7"
+    },
+    {
+      "path": "README_R3_7G.md",
+      "bytes": 469,
+      "sha256": "743c1b13e25e0e942f7b7f65ec36fbaf77b478d1dc70383cc26f91eab55e4e97"
+    },
+    {
+      "path": "V0_6D1_R3_7G_STATUS.md",
+      "bytes": 309,
+      "sha256": "ddc3dc61deb57eee11c4398cffe16e497f74f55d247f6abf92803f0e09dca1e0"
+    },
+    {
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7G.md",
+      "bytes": 544,
+      "sha256": "a163815cd8c43c190a601a4d5ad2c625505e0dc564d9990f20f1be022b0865b6"
+    },
+    {
+      "path": "run_v0_6D1_R3_7G_production_validation.ps1",
+      "bytes": 270,
+      "sha256": "1ebcbf5d17509124ba01bb099907e1304d2ac6a33314eb1c5d917c935d403a17"
+    },
+    {
+      "path": "run_v0_6D1_R3_7G_smoke.ps1",
+      "bytes": 258,
+      "sha256": "e9d67cf229b39d8581fe1af6a551cec5328b57dfe8c1b316c4d9ab9ef873408d"
+    },
+    {
+      "path": "run_v0_6D1_R3_7G_checks.ps1",
+      "bytes": 301,
+      "sha256": "9463ba669c4b143befa4d980fbb307d164363e815c57b63af5be1fae99ddeb0a"
+    },
+    {
+      "path": "references/v0_6D1_R3_7F/v0_6D1_R3_7F_FULL_LOCAL_RESULTS.zip",
+      "bytes": 129111,
+      "sha256": "9528d7c6c8eb25ae4ad0df7b819e9535cf449cfb0a0a09304dce08e5ca2752d3"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7G/R3_7F_FULL_LOCAL_EVIDENCE_AUDIT.json",
+      "bytes": 4517,
+      "sha256": "604235a63dd2e025284ec99fc333ab9fbb4fb0edd409b684ee983fc3c032d0a0"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7G/FORMAL_AUDIT_v0_6D1_R3_7G.json",
+      "bytes": 6326,
+      "sha256": "83b05f56f4762d0a26c08384c76411914e1e50c415ea5bf50b8a2ac1c423242b"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7G/UNIT_TESTS_v0_6D1_R3_7G.json",
+      "bytes": 168,
+      "sha256": "1436b52eae6d468b28470394eb3bd3f41b080f0aa50820a91b10b82222270a29"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7G/SCIENTIFIC_ENGINE_REGRESSION_v0_6D1_R3_7G.json",
+      "bytes": 258,
+      "sha256": "9e9eb15c4fb49df94a935b2b93c397f0600088b4822ffe67e3033a1dfce0ecb1"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7G/smoke/210_to_209p0Ma_R3_7G_summary.json",
+      "bytes": 12808,
+      "sha256": "6909c5d256cd3935d78031d6295414d45bce4bed852559e86bf431a18777a8c9"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7G/smoke/210_to_209p0Ma_R3_7G_validation.json",
+      "bytes": 73653,
+      "sha256": "3393083a36c8ba7ed50553d155fa3040c8c2940517b7c6188cbdd118c543e129"
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+  "adapter_path": "benchmarks/r421/slim_r421.py",
+  "adapter_sha256": "a0c078c7f5604b353641bdaa61f73b140bc20b0a771c66ac5d5735972d62ef62",
+  "canonical_state_changed": false,
+  "engine": "SLiM",
+  "errors": [],
+  "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+  "metric_record_count": 8,
+  "metric_records": [
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1114782693,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "edges": 1435,
+        "individuals": 400,
+        "mutations": 14,
+        "nodes": 1462,
+        "sequence_length": 20000.0,
+        "trees": 1
+      },
+      "replicate_index": 0,
+      "source_artifacts": [
+        "runtime_work/rep_000/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1114782693,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "between_population_divergence": 1.5533125e-05,
+        "divergence_mode": "site",
+        "population_ids": [
+          1,
+          2
+        ],
+        "sample_counts": [
+          400,
+          400
+        ],
+        "semantic_guard": "DESCRIPTIVE_GENEALOGICAL_DIVERGENCE_NOT_MIGRATION_RATE"
+      },
+      "replicate_index": 0,
+      "source_artifacts": [
+        "runtime_work/rep_000/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1114642738,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "edges": 1455,
+        "individuals": 400,
+        "mutations": 12,
+        "nodes": 1474,
+        "sequence_length": 20000.0,
+        "trees": 4
+      },
+      "replicate_index": 1,
+      "source_artifacts": [
+        "runtime_work/rep_001/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1114642738,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "between_population_divergence": 1.9555625e-05,
+        "divergence_mode": "site",
+        "population_ids": [
+          1,
+          2
+        ],
+        "sample_counts": [
+          400,
+          400
+        ],
+        "semantic_guard": "DESCRIPTIVE_GENEALOGICAL_DIVERGENCE_NOT_MIGRATION_RATE"
+      },
+      "replicate_index": 1,
+      "source_artifacts": [
+        "runtime_work/rep_001/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1222478282,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "edges": 1440,
+        "individuals": 400,
+        "mutations": 9,
+        "nodes": 1458,
+        "sequence_length": 20000.0,
+        "trees": 3
+      },
+      "replicate_index": 2,
+      "source_artifacts": [
+        "runtime_work/rep_002/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1222478282,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "between_population_divergence": 9.615625e-06,
+        "divergence_mode": "site",
+        "population_ids": [
+          1,
+          2
+        ],
+        "sample_counts": [
+          400,
+          400
+        ],
+        "semantic_guard": "DESCRIPTIVE_GENEALOGICAL_DIVERGENCE_NOT_MIGRATION_RATE"
+      },
+      "replicate_index": 2,
+      "source_artifacts": [
+        "runtime_work/rep_002/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1071453763,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "edges": 1432,
+        "individuals": 400,
+        "mutations": 12,
+        "nodes": 1452,
+        "sequence_length": 20000.0,
+        "trees": 3
+      },
+      "replicate_index": 3,
+      "source_artifacts": [
+        "runtime_work/rep_003/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "automatic_pass_fail_from_value": false,
+      "engine": "SLiM",
+      "finite": true,
+      "frozen_seed": 1071453763,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+      "metric_role": "SCIENTIFIC_DESCRIPTIVE_REVALIDATION_READOUT",
+      "numeric_acceptance_threshold": null,
+      "payload": {
+        "between_population_divergence": 4.9918749999999995e-06,
+        "divergence_mode": "site",
+        "population_ids": [
+          1,
+          2
+        ],
+        "sample_counts": [
+          400,
+          400
+        ],
+        "semantic_guard": "DESCRIPTIVE_GENEALOGICAL_DIVERGENCE_NOT_MIGRATION_RATE"
+      },
+      "replicate_index": 3,
+      "source_artifacts": [
+        "runtime_work/rep_003/r421.trees",
+        "RAW_ENGINE_EVIDENCE.json"
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "numeric_scientific_adjudication_performed": false,
+  "parent_execution_plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+  "parent_readout_registry_sha256": "f39bb36251a95f2d9e310113a9286608d72188374d7d9bc73fe90aa697e5d380",
+  "scientific_divergence_claimed": false,
+  "scientific_stream_count": 4,
+  "stage": "v0.6D1-R4.55",
+  "status": "PASS_R455_JOB_SCIENTIFIC_READOUT_EVIDENCE",
+  "stream_records": [
+    {
+      "canonical_state_changed": false,
+      "engine": "SLiM",
+      "frozen_seed": 1114782693,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_ids": [
+        "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+        "SLIM_ANCESTRY_GENE_FLOW_SUMMARY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 0,
+      "scientific_evidence": true,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "status": "PASS",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "canonical_state_changed": false,
+      "engine": "SLiM",
+      "frozen_seed": 1114642738,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_ids": [
+        "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+        "SLIM_ANCESTRY_GENE_FLOW_SUMMARY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 1,
+      "scientific_evidence": true,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "status": "PASS",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "canonical_state_changed": false,
+      "engine": "SLiM",
+      "frozen_seed": 1222478282,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_ids": [
+        "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+        "SLIM_ANCESTRY_GENE_FLOW_SUMMARY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 2,
+      "scientific_evidence": true,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "status": "PASS",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "canonical_state_changed": false,
+      "engine": "SLiM",
+      "frozen_seed": 1071453763,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_ids": [
+        "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+        "SLIM_ANCESTRY_GENE_FLOW_SUMMARY"
+      ],
+      "numeric_scientific_adjudication_performed": false,
+      "replicate_index": 3,
+      "scientific_evidence": true,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "status": "PASS",
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "window_id": "SAPIENT_200KA_TO_0"
+}

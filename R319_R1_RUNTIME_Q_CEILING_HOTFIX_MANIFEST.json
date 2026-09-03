@@ -1,0 +1,24 @@
+{
+  "schema": "ARCANA_R319_R1_RUNTIME_Q_CEILING_HOTFIX_MANIFEST_V1",
+  "stage": "v0.6D1-R3.19-R1",
+  "parent_stage": "v0.6D1-R3.19_CANDIDATE_OVER_R3.18_SEALED",
+  "repair": "CANONICAL_RUNNER_STALE_Q_CEILING_ATTRIBUTE_NAME",
+  "payload_hashes": {
+    "scripts/run_v0_6D1_R3_19_phase_aware_transport_closure.py": "5c7ecdafd9d4c63e8c60b7953fe908cddd5f1aa529476b1a80a6a598d3d0764e",
+    "tests/test_r319_phase_aware_transport_closure.py": "226c0cd634d5d5e83652b69e153276b35a448f22e427d84bb66d1c502b7f98a2",
+    "scripts/formal_audit_v0_6D1_R3_19_candidate.py": "70a153379b5764dee1492fc643ea139c244b0be0d9381fe143fd50e54bfc0a8f",
+    "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_19.json": "f663d96a9c33216bc780b118807cb301afd0bb917781330cae29cdf04a50a35b",
+    "R3_19_R1_RUNTIME_Q_CEILING_REPAIR_AUDIT.md": "39c514fd63d960bf55808dbbe1a751704823342a76721e039b688602e6820c7f",
+    "README_R3_19_R1_RUNTIME_Q_CEILING_HOTFIX.md": "167086fe032a705294849e028e27c256afea5b8a62230e283fc957fbee741609"
+  },
+  "expected_r319_engine_sha256": "32788c986ead725faa5f5ab1e1350a2428c8ee29da3c9bee7a6cf0e2de6b7e20",
+  "expected_r38_sha256": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698",
+  "expected_r318_seal_verdict": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_READINESS_SEALED",
+  "expected_r318_sealed_checks": "172/172",
+  "scientific_parameter_changes": false,
+  "biology_changes": false,
+  "transport_operator_changes": false,
+  "biology_cadence_changes": false,
+  "transport_cadence_changes": false,
+  "deep_biological_coupling": false
+}

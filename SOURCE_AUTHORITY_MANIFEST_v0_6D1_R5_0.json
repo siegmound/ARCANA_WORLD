@@ -1,0 +1,128 @@
+{
+  "files": {
+    "R5_0_FINAL_SEAL_AUTHORITY.json": {
+      "bytes": 1844,
+      "sha256": "38f562e727a3a2919773d24fdc52726d39f8fa2caf427498305e065a670531d5"
+    },
+    "R5_0_SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY_CONTRACT.md": {
+      "bytes": 6165,
+      "sha256": "506d66f9be882f9492cd195a6f612494b87a7ca66c0e374838425a2cab3eb573"
+    },
+    "README_R5_0.md": {
+      "bytes": 789,
+      "sha256": "ccec129635fa39666f2b90077e399428ae31b3c299f0d7d8ec84ae1ea4c4d403"
+    },
+    "configs/world1_r50_state_query_v0_6D1_R5_0.json": {
+      "bytes": 797,
+      "sha256": "546f7c4497759b20053d016c918b428831447aab1dac10309a5957327d9b5c3b"
+    },
+    "run_v0_6D1_R5_0.ps1": {
+      "bytes": 1151,
+      "sha256": "458937a30365f7a4a3f0e525ac1a3e5da7b7c6262cde4145bc01a7f29a804934"
+    },
+    "schemas/R5_0_DERIVED_STATE_PACKAGE_SCHEMA.json": {
+      "bytes": 1322,
+      "sha256": "45e61235e77d19ae7898a754465a8299b1aa009ddef762308d14fff383a2e8c2"
+    },
+    "schemas/R5_0_FINAL_SEAL_SCHEMA.json": {
+      "bytes": 1348,
+      "sha256": "7d4a607c088a1a86e915a7088cea94418988af40f59aaff5296f548de07d9638"
+    },
+    "schemas/R5_0_PROVENANCE_SCHEMA.json": {
+      "bytes": 1171,
+      "sha256": "f089be7186104d724ef1bbe5925d6e2efcdd476112b6de349501c3cb06611320"
+    },
+    "schemas/R5_0_QUERY_CONTRACT_SCHEMA.json": {
+      "bytes": 1469,
+      "sha256": "0349e3b8b01b48fd0f611662484623bb18d3ea6eee86040cb708c44a9616e9aa"
+    },
+    "scripts/check_v0_6D1_R5_0_source_manifest.py": {
+      "bytes": 1104,
+      "sha256": "3d24ec7bac9160d43b7d83d3cf62311c27bc975de7135d9e86d2eb5e7ad18d68"
+    },
+    "scripts/query_v0_6D1_R5_0.py": {
+      "bytes": 1856,
+      "sha256": "04f02e334c2e6e8df6978183ed0e4341970bab6ae013d7ce4211b0c5508d3c3f"
+    },
+    "scripts/run_v0_6D1_R5_0.py": {
+      "bytes": 1087,
+      "sha256": "adfcb1549576c16deea130436628b1f44aed50de7189c0caeb32a08d5cf71f1f"
+    },
+    "scripts/seal_v0_6D1_R5_0.py": {
+      "bytes": 14998,
+      "sha256": "53db8c76e7c5854efd5698a3af370a5d6072f12a8b59dfe04ee407461e807d58"
+    },
+    "src/arcana_worldsim/state_query/__init__.py": {
+      "bytes": 389,
+      "sha256": "0c0b72c7359d774373b7ec84eaf39a401a2a10d718817eebf80c1f09ff6ad718"
+    },
+    "src/arcana_worldsim/state_query/r50_query.py": {
+      "bytes": 46844,
+      "sha256": "02b606d81f318da4e45a63619c063e3a5924f3a0a2e5305210b152eda09ee26e"
+    },
+    "tests/test_r50_arbitrary_age_state_query.py": {
+      "bytes": 7014,
+      "sha256": "8b28580d438dc11c477ae585c40a7df6032c410240efaf9664e0705ef57a49d2"
+    }
+  },
+  "final_seal": {
+    "candidate_artifact_count": 15,
+    "candidate_manifest_policy": "EXACT_ALLOWLIST_NO_DIRECTORY_SWEEP",
+    "final_verdict": "PASS_R50_SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY_SEALED",
+    "semantic_state_sha256": {
+      "17p5ka": "bc70bf068154be48f5d3ffe981d02833f55b8448b59ae3bf9f78d6b34a9313ef",
+      "20ka": "ad0770c10074a5030a74f641ff3852372aab6806089f5512b605a718cb6c5554"
+    }
+  },
+  "immutable_parent_artifacts": {
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz": {
+      "bytes": 975043,
+      "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a"
+    },
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_REPLAY_AUTHORITY.json": {
+      "bytes": 4062,
+      "sha256": "f81755225fe301fb5519c3ca4e6e6ce715937e35a42a48a4e5c184c85879b29a"
+    },
+    "outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_TRAJECTORIES.npz": {
+      "bytes": 885538,
+      "sha256": "175959669ba5daa84ab0937b4b213c1633ee674e89e67690915dbc622b2e1b84"
+    },
+    "outputs/v0_6D1_R3_33/R3_33_ECOLOGICAL_PARTNER_CANDIDATE_REGISTRY.json": {
+      "bytes": 15331,
+      "sha256": "ab3d6e50966946c95ffa60bdf48115275b3b7669640715b99836570828886711"
+    },
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz": {
+      "bytes": 858951,
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+    },
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY.json": {
+      "bytes": 4987,
+      "sha256": "17cc1bf7c0096b51eb333c0de7bbc4f0a827f7a4a0f821868f9db3bfa4b2936a"
+    },
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json": {
+      "bytes": 5872,
+      "sha256": "5851a7e2d0822bab8c006bc8cd6f49f506138a3aab0533b000ecc603f9e4c39e"
+    },
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz": {
+      "bytes": 17450885,
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+    },
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_TAXON_REGISTRY.json": {
+      "bytes": 42730,
+      "sha256": "b24960a86a745a028c1096fe636885310d1ecaa3213a612696c7687ebb2e535c"
+    }
+  },
+  "r456_runtime_authority": {
+    "canonical_state_changed": false,
+    "closed_jobs": 23,
+    "closure_gaps": 0,
+    "deep_biological_coupling": false,
+    "exact_frozen_jobs": 23,
+    "expected_verdict": "ARCANA_MULTI_ENGINE_23_JOB_FULLY_REVALIDATED_WITH_EXACT_INTEGRITY_AND_GOVERNED_DESCRIPTIVE_EVIDENCE_NO_NUMERIC_CORROBORATION_CLAIM",
+    "multi_engine_full_revalidation_closed": true,
+    "numeric_cross_engine_corroboration_claimed": false,
+    "verification_mode": "SEMANTIC_FAIL_CLOSED_RUNTIME_SCAN_BECAUSE_HANDOFF_DOES_NOT_SUPPLY_ONE_R456_FILE_HASH"
+  },
+  "stage": "v0.6D1-R5.0",
+  "stage_name": "SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY"
+}

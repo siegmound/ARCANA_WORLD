@@ -1,0 +1,559 @@
+{
+  "stage": "v0.6D1-R3.5",
+  "status": "PASS",
+  "passed": 110,
+  "total": 110,
+  "checks": [
+    {
+      "check": "stage_id",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "deep_biological_off",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "default_ceiling_0p08",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu_unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "b_unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "biology_cadence_unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "transport_cadence_unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "parent_parameter_unchanged::start_age_ma",
+      "pass": true,
+      "detail": "210.0 vs 210.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::end_age_ma",
+      "pass": true,
+      "detail": "180.0 vs 180.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::dt_years",
+      "pass": true,
+      "detail": "125000.0 vs 125000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::snapshot_interval_years",
+      "pass": true,
+      "detail": "1000000.0 vs 1000000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::topology_switch_age_ma",
+      "pass": true,
+      "detail": "195.0 vs 195.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::occupancy_floor",
+      "pass": true,
+      "detail": "1e-09 vs 1e-09"
+    },
+    {
+      "check": "parent_parameter_unchanged::habitat_floor",
+      "pass": true,
+      "detail": "1e-12 vs 1e-12"
+    },
+    {
+      "check": "parent_parameter_unchanged::migration_reference_years",
+      "pass": true,
+      "detail": "250000.0 vs 250000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::migration_fraction_ceiling",
+      "pass": true,
+      "detail": "0.3 vs 0.3"
+    },
+    {
+      "check": "parent_parameter_unchanged::gene_flow_ceiling_per_step",
+      "pass": true,
+      "detail": "0.15 vs 0.15"
+    },
+    {
+      "check": "parent_parameter_unchanged::trait_response_timescale_years",
+      "pass": true,
+      "detail": "300000.0 vs 300000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::body_mass_scale",
+      "pass": true,
+      "detail": "0.35 vs 0.35"
+    },
+    {
+      "check": "parent_parameter_unchanged::mutation_variance_supply_normalized_per_myr",
+      "pass": true,
+      "detail": "0.002 vs 0.002"
+    },
+    {
+      "check": "parent_parameter_unchanged::nonlinear_stabilizing_variance_depletion_per_myr_per_q",
+      "pass": true,
+      "detail": "0.9876543209876544 vs 0.9876543209876544"
+    },
+    {
+      "check": "parent_parameter_unchanged::selection_variance_depletion_per_generation",
+      "pass": true,
+      "detail": "2e-08 vs 2e-08"
+    },
+    {
+      "check": "parent_parameter_unchanged::drift_individual_equivalents_per_population_unit",
+      "pass": true,
+      "detail": "250000000.0 vs 250000000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::drift_min_effective_size",
+      "pass": true,
+      "detail": "500.0 vs 500.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::speciation_check_interval_years",
+      "pass": true,
+      "detail": "500000.0 vs 500000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_check_interval_years",
+      "pass": true,
+      "detail": "500000.0 vs 500000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_minimum_persistence_years",
+      "pass": true,
+      "detail": "2000000.0 vs 2000000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_founder_floor_fraction",
+      "pass": true,
+      "detail": "0.05 vs 0.05"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_max_opportunity_ratio",
+      "pass": true,
+      "detail": "0.15 vs 0.15"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_max_range_ratio",
+      "pass": true,
+      "detail": "0.1 vs 0.1"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_max_density_ratio",
+      "pass": true,
+      "detail": "0.15 vs 0.15"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_max_population_ratio_to_episode_start",
+      "pass": true,
+      "detail": "0.9 vs 0.9"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_recovery_reset_factor",
+      "pass": true,
+      "detail": "1.25 vs 1.25"
+    },
+    {
+      "check": "parent_parameter_unchanged::ordinary_extinction_minimum_species_age_years",
+      "pass": true,
+      "detail": "2000000.0 vs 2000000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::minimum_effective_isolation_generations",
+      "pass": true,
+      "detail": "50000.0 vs 50000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::minimum_intrinsic_ri",
+      "pass": true,
+      "detail": "0.65 vs 0.65"
+    },
+    {
+      "check": "parent_parameter_unchanged::minimum_trait_distance",
+      "pass": true,
+      "detail": "1.0 vs 1.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::maximum_effective_exchange_pressure",
+      "pass": true,
+      "detail": "0.25 vs 0.25"
+    },
+    {
+      "check": "parent_parameter_unchanged::minimum_branch_population_fraction",
+      "pass": true,
+      "detail": "0.05 vs 0.05"
+    },
+    {
+      "check": "parent_parameter_unchanged::minimum_complement_population_fraction",
+      "pass": true,
+      "detail": "0.05 vs 0.05"
+    },
+    {
+      "check": "parent_parameter_unchanged::minimum_absolute_population",
+      "pass": true,
+      "detail": "0.01 vs 0.01"
+    },
+    {
+      "check": "parent_parameter_unchanged::ri_build_rate_per_generation",
+      "pass": true,
+      "detail": "2e-05 vs 2e-05"
+    },
+    {
+      "check": "parent_parameter_unchanged::ri_decay_rate_per_generation",
+      "pass": true,
+      "detail": "5e-05 vs 5e-05"
+    },
+    {
+      "check": "parent_parameter_unchanged::isolation_reconnection_erosion",
+      "pass": true,
+      "detail": "1.0 vs 1.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::trait_drive_onset",
+      "pass": true,
+      "detail": "0.5 vs 0.5"
+    },
+    {
+      "check": "parent_parameter_unchanged::trait_drive_saturation",
+      "pass": true,
+      "detail": "1.5 vs 1.5"
+    },
+    {
+      "check": "parent_parameter_unchanged::seed",
+      "pass": true,
+      "detail": "917231 vs 917231"
+    },
+    {
+      "check": "parent_parameter_unchanged::macrostep_years",
+      "pass": true,
+      "detail": "500000.0 vs 500000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::biology_cadence_years",
+      "pass": true,
+      "detail": "125000.0 vs 125000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::transport_cadence_years",
+      "pass": true,
+      "detail": "62500.0 vs 62500.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::persistent_vicariance_fission_enabled",
+      "pass": true,
+      "detail": "True vs True"
+    },
+    {
+      "check": "parent_parameter_unchanged::deme_fission_check_interval_years",
+      "pass": true,
+      "detail": "500000.0 vs 500000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::deme_fission_min_component_fraction",
+      "pass": true,
+      "detail": "0.02 vs 0.02"
+    },
+    {
+      "check": "parent_parameter_unchanged::deme_fission_min_absolute_population",
+      "pass": true,
+      "detail": "0.01 vs 0.01"
+    },
+    {
+      "check": "parent_parameter_unchanged::deme_fission_min_root_species_fraction",
+      "pass": true,
+      "detail": "0.01 vs 0.01"
+    },
+    {
+      "check": "parent_parameter_unchanged::vicariance_persistence_min_years",
+      "pass": true,
+      "detail": "2000000.0 vs 2000000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::vicariance_persistence_reset_on_reconnection",
+      "pass": true,
+      "detail": "True vs True"
+    },
+    {
+      "check": "parent_parameter_unchanged::habitat_connectivity_power",
+      "pass": true,
+      "detail": "0.5 vs 0.5"
+    },
+    {
+      "check": "parent_parameter_unchanged::effective_connectivity_core_threshold",
+      "pass": true,
+      "detail": "0.2 vs 0.2"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_minimum_persistence_years",
+      "pass": true,
+      "detail": "1000000.0 vs 1000000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_base_minimum_population_units",
+      "pass": true,
+      "detail": "0.075 vs 0.075"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_generation_reference_years",
+      "pass": true,
+      "detail": "5.0 vs 5.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_reproduction_reference",
+      "pass": true,
+      "detail": "1.0 vs 1.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_minimum_effective_size_proxy",
+      "pass": true,
+      "detail": "500.0 vs 500.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_minimum_normalized_additive_variance",
+      "pass": true,
+      "detail": "0.005 vs 0.005"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_minimum_occupied_cells",
+      "pass": true,
+      "detail": "10 vs 10"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_maximum_persistent_decline_fraction",
+      "pass": true,
+      "detail": "0.5 vs 0.5"
+    },
+    {
+      "check": "parent_parameter_unchanged::founder_reset_on_reconnection",
+      "pass": true,
+      "detail": "True vs True"
+    },
+    {
+      "check": "parent_parameter_unchanged::barrier_phase_min",
+      "pass": true,
+      "detail": "0.05 vs 0.05"
+    },
+    {
+      "check": "parent_parameter_unchanged::barrier_phase_max",
+      "pass": true,
+      "detail": "0.95 vs 0.95"
+    },
+    {
+      "check": "parent_parameter_unchanged::barrier_transition_width_years",
+      "pass": true,
+      "detail": "1000000.0 vs 1000000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::connectivity_land_support_threshold",
+      "pass": true,
+      "detail": "0.25 vs 0.25"
+    },
+    {
+      "check": "parent_parameter_unchanged::connectivity_softness",
+      "pass": true,
+      "detail": "0.1 vs 0.1"
+    },
+    {
+      "check": "parent_parameter_unchanged::persistent_reconnection_coalescence_enabled",
+      "pass": true,
+      "detail": "True vs True"
+    },
+    {
+      "check": "parent_parameter_unchanged::reconnection_check_interval_years",
+      "pass": true,
+      "detail": "500000.0 vs 500000.0"
+    },
+    {
+      "check": "parent_parameter_unchanged::reconnection_persistence_min_years",
+      "pass": true,
+      "detail": "2000000.0 vs 2000000.0"
+    },
+    {
+      "check": "parent_runtime_called_not_reimplemented",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "d3_gene_flow_wrapped",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "d3_homeostasis_wrapped",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "diagnostic_unclipped_not_fed_back",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_restores_functions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "near_ceiling_lineage_telemetry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "same_step_event_context",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::population",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::trait",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::va",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::generation_time",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::ri",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::clock",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::contact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::trait_distance",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_bit_exact::component_guild",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_events_bit_exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_component_ids_bit_exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_component_species_bit_exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "instrumentation_records_present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "pre_contact_population_identical",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "pre_contact_event_counts_identical",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "pre_contact_peak_q_identical",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "pre_contact_no_clipping_0p08",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "pre_contact_no_clipping_0p10",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "eventful_window_contains_fission",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "eventful_window_contains_coalescence",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "eventful_window_no_clipping",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "eventful_window_headroom_below_cap",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "primary_dual_runner_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "single_runner_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "comparison_script_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "r3_4_long_run_audit_reference_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "full_210_150_dynamic_sensitivity_not_falsely_claimed",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "verdict": "PASS_TIME_RESOLVED_VA_HEADROOM_INSTRUMENTATION_AND_DYNAMIC_SENSITIVITY_RUNPACK_CANDIDATE__FULL_210_TO_150_DUAL_REPLAY_PENDING"
+}

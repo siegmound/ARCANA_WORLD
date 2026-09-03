@@ -1,0 +1,36 @@
+{
+  "stage": "v0.6D1-R4.52",
+  "title": "Non-Geonomics Job-Specific Evidence Adjudication & Execution Plan",
+  "r451_result": {
+    "promotion_candidates": 0,
+    "execution_required_jobs": 20
+  },
+  "execution_plan": {
+    "Madingley": 4,
+    "RangeShifter": 5,
+    "CDMetaPOP": 5,
+    "NEMO": 3,
+    "SLiM": 3,
+    "total_jobs": 20,
+    "four_frozen_seeds_per_job": true,
+    "planned_scientific_streams": 80
+  },
+  "authority_binding": [
+    "each job is bound to a SHA256 of its immutable R4.2 job record",
+    "each job must recover exactly four frozen R4.3/R4.35 seeds",
+    "all 80 non-Geonomics frozen seeds must be unique",
+    "no reseeding is allowed"
+  ],
+  "important_nonclaim": "R4.52 does not yet authorize or execute the 80 scientific streams because engine-specific readout authority must be frozen first",
+  "r453_scope": "freeze scientific execution interface and authorized scientific readouts for Madingley, RangeShifter, CDMetaPOP, NEMO, and SLiM",
+  "forbidden": [
+    "automatic evidence promotion",
+    "result-selected job selection",
+    "result-selected metric",
+    "majority vote",
+    "engine-defined ARCANA target",
+    "canonical rewrite",
+    "reopening Geonomics"
+  ],
+  "next_action": "BUILD_R453_NON_GEONOMICS_SCIENTIFIC_EXECUTION_INTERFACE_AND_READOUT_AUTHORITY_PREFLIGHT"
+}

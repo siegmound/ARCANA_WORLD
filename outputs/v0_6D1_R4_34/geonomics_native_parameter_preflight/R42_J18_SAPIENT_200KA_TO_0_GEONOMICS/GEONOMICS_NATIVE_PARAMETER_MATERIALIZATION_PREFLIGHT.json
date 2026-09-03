@@ -1,0 +1,60 @@
+{
+  "all_authority_gaps_explicit": true,
+  "automatic_layer_rescaling_used": false,
+  "canonical_state_changed": false,
+  "default_parameter_values_used": false,
+  "engine": "Geonomics",
+  "engine_version_required": "1.4.9",
+  "geonomics_native_schema_obligations": [
+    {
+      "obligation": "LANDSCAPE_GEOMETRY_DIM_RES_ULC_PRJ",
+      "reason": "grid indices/raster shape do not by themselves authorize physical resolution, upper-left coordinates, or projection",
+      "status": "DEFERRED_EXPLICIT_GRID_GEOMETRY_AND_UNIT_AUTHORITY_REQUIRED"
+    },
+    {
+      "obligation": "MODEL_PHYSICAL_TIME_TO_INTEGER_TIMESTEP_MAPPING",
+      "reason": "canonical age axes must not be silently converted to Geonomics integer timesteps",
+      "status": "DEFERRED_EXPLICIT_TIME_DISCRETIZATION_AUTHORITY_REQUIRED"
+    },
+    {
+      "obligation": "MODEL_RANDOM_SEED_LEDGER_BINDING",
+      "reason": "native model.num must be bound to the frozen historical job seed ledger, not generated ad hoc",
+      "status": "DEFERRED_EXACT_FROZEN_JOB_SEED_AUTHORITY_BINDING_REQUIRED"
+    },
+    {
+      "obligation": "LAYER_VALUE_SCALING_NORMALIZATION",
+      "reason": "no automatic [0,1] rescaling or clipping may change canonical layer semantics",
+      "status": "DEFERRED_EXPLICIT_NO_LOSS_SCALING_AUTHORITY_REQUIRED"
+    },
+    {
+      "obligation": "SPECIES_INIT_N_FROM_CANONICAL_POPULATION",
+      "reason": "ARCANA effective/proxy population is not automatically literal Geonomics individual count",
+      "status": "DEFERRED_POPULATION_TO_INTEGER_INDIVIDUAL_REPRESENTATION_AUTHORITY_REQUIRED"
+    },
+    {
+      "obligation": "EXACT_SPATIAL_INITIAL_STATE_INJECTION",
+      "reason": "random initialization from a carrying-capacity surface would discard the frozen per-deme spatial state",
+      "status": "DEFERRED_DEME_TO_INDIVIDUAL_COORDINATE_ADAPTER_AUTHORITY_REQUIRED"
+    },
+    {
+      "obligation": "SPECIES_K_LAYER_AND_K_FACTOR_SEMANTIC_BINDING",
+      "reason": "no canonical source layer may be silently reinterpreted as K_layer/K_factor",
+      "status": "DEFERRED_CARRYING_CAPACITY_ROLE_AUTHORITY_REQUIRED"
+    }
+  ],
+  "gnx_make_model_performed": false,
+  "gnx_read_parameters_file_performed": false,
+  "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+  "native_geonomics_params_file": null,
+  "native_geonomics_params_materialized_in_r434": false,
+  "random_spatial_initialization_used": false,
+  "ready_obligation_count": 0,
+  "scientific_execution_performed": false,
+  "selector_authority_file": "outputs/v0_6D1_R4_34/geonomics_selector_authority/R42_J18_SAPIENT_200KA_TO_0_GEONOMICS/GEONOMICS_RUNTIME_SELECTOR_AUTHORITY_FREEZE.json",
+  "selector_authority_hash_match": true,
+  "selector_authority_sha256": "0faebd6d9e36b59d981dc6fe5192979458a4f6053838f373537e9f719bd2fb29",
+  "stage": "v0.6D1-R4.34",
+  "status": "R434_NATIVE_PARAMETER_MATERIALIZATION_PREFLIGHT_COMPLETE_WITH_EXPLICIT_AUTHORITY_GAPS",
+  "unresolved_authority_gap_count": 7,
+  "window_id": "SAPIENT_200KA_TO_0"
+}

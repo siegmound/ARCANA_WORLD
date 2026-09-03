@@ -1,0 +1,209 @@
+{
+  "audit": "FINAL_SINGLE_STAGE_H3_QUANT_GENETICS_BRIDGE_AUTHORITY_CLOSURE",
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_and_authorities_validate",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R3_26_AUDIT.md",
+        "R3_26_H3_CANDIDATE_BRIDGE_DOSSIERS.json",
+        "R3_26_H3_CANONICAL_BRIDGE_AUTHORITY.json",
+        "R3_26_H3_CHARACTER_REGRESSION_FIXTURE.json",
+        "R3_26_H3_DIAGNOSTIC_ARRAYS.npz",
+        "R3_26_H3_NEUTRAL_REFERENCE_VALIDATION.json",
+        "R3_26_H3_RARE_TAIL_EXPECTATION_TABLE.json",
+        "R3_26_H3_REPRODUCTION_KERNEL_VALIDATION.json",
+        "R3_26_INTEGRATED_AUDIT.json",
+        "R3_26_OUTPUT_MANIFEST.json"
+      ],
+      "name": "output_file_set_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "output_manifest_closure",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        32
+      ],
+      "name": "integrated_audit_all_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_formula_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_rho_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "cb_downstream_only",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_lineage_rescale",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "neutral_reference_geometry",
+      "pass": true
+    },
+    {
+      "detail": {
+        "mean": 0.00034177595634565615,
+        "std": 0.9988668753974101
+      },
+      "name": "neutral_ZH_reference",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "neutral_correlation_structure",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "reproduction_upstream_only",
+      "pass": true
+    },
+    {
+      "detail": {
+        "child_ZH_mean": -0.0005243952911410012,
+        "child_ZH_std": 1.0006632844042436,
+        "corr_child_father_ZH": 0.44927151001711385,
+        "corr_child_mother_ZH": 0.4501170166260764,
+        "corr_child_mother_Zinf": 0.49879779146464076,
+        "epsilon_mar_inherited_directly": false,
+        "expected_parent_ZH_corr": 0.45,
+        "families": 400000,
+        "offspring_from_upstream_latents_only": true,
+        "parental_CB_label_input": false,
+        "seed": 326232
+      },
+      "name": "reproduction_parent_child_ZH",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "epsilon_not_directly_inherited",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "six_candidates_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_six_retained",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_hard_distribution_unshifted",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_realization_support_separate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_human_identity_claim",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "rare_tail_expectation_not_person_events",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "rare_tail_billion_cb12",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "mc_character_fixture_only",
+      "pass": true
+    },
+    {
+      "detail": 133.58842316824962,
+      "name": "mc_mapping_value",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "diagnostic_npz_keys_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "diagnostic_candidate_order_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "mapping_nodes_recompute_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "reference_probs_exact",
+      "pass": true
+    },
+    {
+      "detail": 0.0,
+      "name": "h3_algebra_roundtrip",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "h3_variance_weight_identity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "continuous_mapping_strict_monotone",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_and_parent_immutable",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "human_200ka_not_materialized",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 32,
+  "checks_total": 32,
+  "stage": "v0.6D1-R3.26",
+  "status": "PASS_R326_H3_QUANTITATIVE_GENETICS_BRIDGE_NEUTRAL_REFERENCE_RARE_TAIL_AND_CANDIDATE_COMPATIBILITY_SEALED",
+  "summary": {
+    "deep_biological_coupling": false,
+    "direct_cb_heredity": false,
+    "h3_bridge_compatible_lineages": 6,
+    "h3_candidate_lineages": 6,
+    "human_200ka_materialized": false,
+    "human_similarity_target": false,
+    "next_stage": "HOMININ_MACRO_EVOLUTION_REPLAY_TO_200KA"
+  },
+  "verdict": "SEALED"
+}

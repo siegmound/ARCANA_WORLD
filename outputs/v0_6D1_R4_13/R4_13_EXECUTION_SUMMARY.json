@@ -1,0 +1,63 @@
+{
+  "calibration_offset_count_after_comparability_downgrade": 2,
+  "canonical_parameter_change_authorized": false,
+  "canonical_replay_authorized": false,
+  "canonical_state_changed": false,
+  "changed_cell_count": 5,
+  "changed_cells": [
+    {
+      "domain": "population_persistence",
+      "new_class": "CONCORDANT",
+      "old_class": "CALIBRATION_OFFSET",
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "domain": "population_persistence",
+      "new_class": "CONCORDANT",
+      "old_class": "CALIBRATION_OFFSET",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "domain": "population_persistence",
+      "new_class": "CALIBRATION_OFFSET",
+      "old_class": "STRUCTURAL_DISAGREEMENT",
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "domain": "population_persistence",
+      "new_class": "INSUFFICIENT_EVIDENCE",
+      "old_class": "CONCORDANT",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "domain": "population_persistence",
+      "new_class": "INSUFFICIENT_EVIDENCE",
+      "old_class": "CALIBRATION_OFFSET",
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "class_counts_after_comparability_downgrade": {
+    "CALIBRATION_OFFSET": 2,
+    "CONCORDANT": 2,
+    "INSUFFICIENT_EVIDENCE": 69,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 0
+  },
+  "deep_biological_coupling": false,
+  "downgraded_evidence_row_count": 15,
+  "downgraded_job_ids": [
+    "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+    "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+    "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+  ],
+  "engine_execution_performed": false,
+  "evidence_gap_count_after_comparability_downgrade": 71,
+  "j09_population_persistence_class_after_comparability_downgrade": "CALIBRATION_OFFSET",
+  "j09_population_persistence_mapping_comparability": "PROXY_ONLY",
+  "next_action": "BUILD_R414_MULTI_ENGINE_EVIDENCE_GAP_CLOSURE_AND_TARGETED_ADAPTER_ENHANCEMENT",
+  "stage": "v0.6D1-R4.13",
+  "status": "PASS_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION_COMPLETE",
+  "structural_disagreement_count_after_comparability_downgrade": 0
+}

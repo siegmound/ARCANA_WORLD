@@ -1,0 +1,124 @@
+{
+  "automatic_calibration_allowed": false,
+  "axis": 0,
+  "canonical_write_allowed": false,
+  "chain_id": "N2000_r000_a0_sv4",
+  "common_burnin": {
+    "binding_manifest_sha256": "c26a8f989a11c89197d7b693e4b940bfe0771b2c21a97accc8d56f83d2008eaf",
+    "final_additive_variance": [
+      0.04418367796274414,
+      0.04442218618051759,
+      0.04442393424594727,
+      0.044394482444238284
+    ],
+    "final_trait_mean": [
+      0.010335937499999934,
+      -0.004547812499999922,
+      0.005414062499999919,
+      0.00047249999999990355
+    ],
+    "phase": "COMMON_BURNIN",
+    "qfreq_file": "arcana_r37c_N2000_r000_a0_sv4_common_burnin_1.qfreq",
+    "qfreq_relpath": "phase_00_COMMON_BURNIN/arcana_r37c_N2000_r000_a0_sv4_common_burnin_1.qfreq",
+    "returncode": 0,
+    "transitions": 200
+  },
+  "genetic_seed": 39202026,
+  "loci_per_trait": 64,
+  "matched_branch_seed": 59202026,
+  "matched_reconnection_seed": 69202026,
+  "neutral_branch": {
+    "fragmented": {
+      "binding_manifest_sha256": "9dd4a5e2133e29a0e90569c3e7a32cdcb2e8097cfa38d1327a3f7b2f874f9140",
+      "final_additive_variance": [
+        0.04295767614960938,
+        0.042974830640478516,
+        0.04214554123007812,
+        0.042130259417285154
+      ],
+      "final_trait_mean": [
+        -0.07674187499999995,
+        -0.06723281250000002,
+        -0.0050793750000000144,
+        -0.010867499999999922
+      ],
+      "phase": "FRAGMENTED_MATCHED_NEUTRAL",
+      "qfreq_file": "arcana_r37c_N2000_r000_a0_sv4_CTL_fragmented_matched_neutral_1.qfreq",
+      "qfreq_relpath": "neutral/phase_01_FRAGMENTED_MATCHED_NEUTRAL/arcana_r37c_N2000_r000_a0_sv4_CTL_fragmented_matched_neutral_1.qfreq",
+      "returncode": 0,
+      "transitions": 300
+    },
+    "reconnected": {
+      "binding_manifest_sha256": "c825f85607825d8b72ee4e29f06a6a39f3d043591014fa80c56baaded4b5b914",
+      "final_additive_variance": [
+        0.04152745513916015,
+        0.041471010261474595,
+        0.04161044115395508,
+        0.0415856254078125
+      ],
+      "final_trait_mean": [
+        -0.0722925,
+        -0.0632559375,
+        -0.06435843750000005,
+        -0.06284249999999997
+      ],
+      "phase": "RECONNECTED_RELAXED",
+      "qfreq_file": "arcana_r37c_N2000_r000_a0_sv4_CTL_reconnected_relaxed_1.qfreq",
+      "qfreq_relpath": "neutral/phase_02_RECONNECTED_RELAXED/arcana_r37c_N2000_r000_a0_sv4_CTL_reconnected_relaxed_1.qfreq",
+      "returncode": 0,
+      "transitions": 400
+    }
+  },
+  "optimum_amplitude": 0.6,
+  "phase_boundary_semantics": "QFREQ_FREQUENCY_STATE_CHAIN__LD_AND_GENOTYPE_PHASE_STATE_NOT_PRESERVED",
+  "population_size": 2000,
+  "replicate": 0,
+  "scalar_K_eff_authorized": false,
+  "schema": "ARCANA_R37C_NEMO_SELECTION_CHAIN_V1",
+  "selected_branch": {
+    "fragmented": {
+      "binding_manifest_sha256": "8d268fbbd641095861b76351ebdf1707a9b0f2bc227d05b32bb64a06faefc515",
+      "final_additive_variance": [
+        0.04295767614960938,
+        0.042974830640478516,
+        0.04214554123007812,
+        0.042130259417285154
+      ],
+      "final_trait_mean": [
+        -0.07674187499999995,
+        -0.06723281250000002,
+        -0.0050793750000000144,
+        -0.010867499999999922
+      ],
+      "phase": "FRAGMENTED_DIVERGENT_SELECTION",
+      "qfreq_file": "arcana_r37c_N2000_r000_a0_sv4_SEL_fragmented_divergent_selection_1.qfreq",
+      "qfreq_relpath": "selected/phase_01_FRAGMENTED_DIVERGENT_SELECTION/arcana_r37c_N2000_r000_a0_sv4_SEL_fragmented_divergent_selection_1.qfreq",
+      "returncode": 0,
+      "transitions": 300
+    },
+    "reconnected": {
+      "binding_manifest_sha256": "8e9d8512996eed47fc75598851899732813eda9a1c6d7a2972776940c4d22283",
+      "final_additive_variance": [
+        0.04152745513916015,
+        0.041471010261474595,
+        0.04161044115395508,
+        0.0415856254078125
+      ],
+      "final_trait_mean": [
+        -0.0722925,
+        -0.0632559375,
+        -0.06435843750000005,
+        -0.06284249999999997
+      ],
+      "phase": "RECONNECTED_RELAXED",
+      "qfreq_file": "arcana_r37c_N2000_r000_a0_sv4_SEL_reconnected_relaxed_1.qfreq",
+      "qfreq_relpath": "selected/phase_02_RECONNECTED_RELAXED/arcana_r37c_N2000_r000_a0_sv4_SEL_reconnected_relaxed_1.qfreq",
+      "returncode": 0,
+      "transitions": 400
+    }
+  },
+  "selection_semantics": "GAUSSIAN_PATCH_LOCAL_OPTIMA__RELATIVE_LOCAL_FITNESS",
+  "selection_variance": 4.0,
+  "stage": "v0.6D1-R3.7C",
+  "status": "ENGINE_COMPLETED_SELECTION_CHAIN"
+}

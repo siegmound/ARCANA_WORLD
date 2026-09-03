@@ -1,0 +1,41 @@
+{
+  "stage": "v0.6D1-R3.30",
+  "parent": "v0.6D1-R3.29",
+  "phase": "CENSUS_EQUIVALENT_CALIBRATION_WEIGHTED_GROUP_ABM_LATE_PLEISTOCENE_COMMUNITY_HISTORY",
+  "start_age_ka": 50.0,
+  "ne_to_total_census_ratio_prior": {
+    "distribution": "triangular",
+    "low": 0.18,
+    "mode": 0.34,
+    "high": 0.60,
+    "seed": 330029
+  },
+  "residential_group_size": {
+    "minimum": 10.0,
+    "dispersed_reference": 14.0,
+    "central_reference": 30.0,
+    "aggregated_reference": 42.0,
+    "maximum": 80.0
+  },
+  "active_network_reference": 150.0,
+  "regional_network_reference": 550.0,
+  "weighted_agents_per_deme": 8,
+  "sensitivity_ratio_multipliers": [0.80, 0.90, 1.00, 1.10, 1.20],
+  "sensitivity_group_size_multipliers": [0.80, 0.90, 1.00, 1.10, 1.20],
+  "census_semantics": "UNCERTAINTY_AWARE_CENSUS_EQUIVALENT_POSTERIOR_NOT_ARCHAEOLOGICAL_OBSERVATION",
+  "group_abm_semantics": "WEIGHTED_RESIDENTIAL_GROUP_AGENTS_NOT_PERSON_LEVEL",
+  "language_materialized": false,
+  "religion_materialized": false,
+  "agriculture_materialized": false,
+  "city_state_materialized": false,
+  "ethnicity_materialized": false,
+  "named_culture_materialized": false,
+  "unique_human_identity_materialized": false,
+  "human_similarity_target": false,
+  "deep_biological_coupling": false,
+  "h0_mutation": false,
+  "cha2_mutation": false,
+  "r327_mutation": false,
+  "r328_mutation": false,
+  "r329_mutation": false
+}

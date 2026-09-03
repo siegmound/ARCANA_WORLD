@@ -1,0 +1,52 @@
+{
+  "stage": "v0.6D1-R4.37",
+  "title": "Geonomics Canonical Layer Binding & Exact-State Injection Dry-Run Validation",
+  "parent": "R4.36 SEALED and R4.36-R3 repair chain CLOSED",
+  "J21": {
+    "bind_all_151_canonical_initial_payloads": true,
+    "replicates": 4,
+    "construction_support_layer_extra": 1,
+    "expected_native_layers_per_model": 152,
+    "identity_value_binding": true,
+    "native_geonomics_range_must_already_be_0_1": true,
+    "automatic_rescaling": false,
+    "cross_layer_numeric_fusion": false,
+    "verify_np_array_equal_after_make_model": true,
+    "total_canonical_payloads": 151,
+    "native_identity_layers": 149,
+    "canonical_physical_unit_sidecars": 2,
+    "physical_unit_sidecar_variables": [
+      "temperature_anomaly_c",
+      "sea_level_anomaly_m"
+    ],
+    "physical_unit_sidecars_bound_as_geonomics_layers": false,
+    "result_selected_transform": false
+  },
+  "J14_J18": {
+    "all_canonical_branches": true,
+    "all_canonical_carriers": true,
+    "validation_mode": "native coordinate representability + Geonomics 1.4.9 public initializer incompatibility proof",
+    "construct_all_four_frozen_seed_models": true,
+    "verify_model_unrun": true,
+    "verify_seed_exact": true,
+    "verify_all_coordinates_within_actual_native_landscape_bounds": true,
+    "public_model_add_individuals_called": false,
+    "private_remove_or_add_called_by_arcana": false,
+    "test_only_recipient_burned_guard_override": false,
+    "construction_probe_is_nongenomic": true,
+    "public_source_spp_add_path_requires_genomic_architecture": true,
+    "public_api_exact_state_injection_compatible": false,
+    "construction_probe_removed": false,
+    "scientific_exact_initial_state_installed": false,
+    "r438_adapter_required": true
+  },
+  "explicit_nonclaims": [
+    "R4.37 does not establish a final exact initialization path",
+    "R4.37 does not call Model.add_individuals after live incompatibility was proven",
+    "R4.37 does not alter burned flags",
+    "R4.37 does not remove the construction probe",
+    "R4.37 does not call private Geonomics mutation methods from ARCANA",
+    "R4.37 does not run or walk any model"
+  ],
+  "next_action": "BUILD_R438_GEONOMICS_EXACT_INITIALIZATION_ADAPTER_AND_CONSTRUCTION_PROBE_ELIMINATION_PREFLIGHT"
+}

@@ -1,0 +1,36 @@
+{
+  "actual_sha256": "c32d78efcffccf60dd0a70870dc6d9555a9eed823ec4fa5e7fb3c2e61705fc40",
+  "automatic_rescaling_authorized": false,
+  "checks": {
+    "exact_source_sha256": true,
+    "hydro_uses_broader_npp_clip_1p2": true,
+    "hydro_uses_broader_precip_clip_1p5": true,
+    "npp_interpolated_without_output_clip": true,
+    "npp_provider_relative_book": true,
+    "npp_written_directly_to_canonical_field": true,
+    "precip_interpolated_without_output_clip": true,
+    "precip_provider_relative_book": true,
+    "precip_written_directly_to_canonical_field": true
+  },
+  "checks_passed": 9,
+  "checks_total": 9,
+  "clipping_authorized": false,
+  "dynamic_sidecar_variables": [
+    "npp_factor",
+    "precipitation_factor",
+    "sea_level_anomaly_m",
+    "temperature_anomaly_c"
+  ],
+  "expected_sha256": "c32d78efcffccf60dd0a70870dc6d9555a9eed823ec4fa5e7fb3c2e61705fc40",
+  "live_minmax_used_to_define_transform": false,
+  "pass": true,
+  "r437_static_initial_sidecar_variables": [
+    "sea_level_anomaly_m",
+    "temperature_anomaly_c"
+  ],
+  "result_selected_transform_authorized": false,
+  "semantic_conclusion": "PRECIPITATION_AND_NPP_RELATIVE_FACTORS_HAVE_NO_SEALED_R3_33_0_1_CANONICAL_BOUND_AND_MUST_NOT_BE_GEONOMICS_DYNAMIC_LAYER_RAST",
+  "source_path": "src/arcana_worldsim/scientific_engines/r333_holocene_environment_domestication.py",
+  "stage": "v0.6D1-R4.39",
+  "status": "R439_R333_SOURCE_SEMANTIC_DYNAMIC_REPRESENTABILITY_AUTHORITY_VALIDATED"
+}

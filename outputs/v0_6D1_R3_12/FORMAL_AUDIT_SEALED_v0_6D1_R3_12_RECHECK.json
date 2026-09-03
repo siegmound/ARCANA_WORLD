@@ -1,0 +1,1630 @@
+{
+  "schema": "ARCANA_R312_SEALED_POST_RUN_AUDIT_V1",
+  "stage": "v0.6D1-R3.12",
+  "verdict": "PASS_R312_CANONICAL_POST_CHA1_61_TO_46_H0_DIVERSITY_RECOVERY__46MA_RESTART_BOUNDARY_SEALED",
+  "checks_passed": 218,
+  "checks_total": 218,
+  "all_pass": true,
+  "artifact_hashes": {
+    "summary": "404c43c80af5f10ff1d00ad0cfc51f21abbe3e566e3d040e4faa2e84d33a6230",
+    "checkpoint_json": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269",
+    "checkpoint_npz": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948"
+  },
+  "boundary": {
+    "age_ma": 46.0,
+    "event_side": "POST_CHA1_20MY_DIVERSITY_RECOVERY",
+    "species": 104,
+    "components": 223,
+    "population": 1433.7874046435222
+  },
+  "telemetry": {
+    "peak_q": 0.04694482744771825,
+    "final_q_max": 0.045689600031135334,
+    "final_q_headroom": 0.03431039996886467,
+    "clipping_steps": 0,
+    "clipping_contacts": 0
+  },
+  "diversity": {
+    "reference_only_not_acceptance_targets": true,
+    "pre_CHA1_species_reference": 305,
+    "post_CHA1_500ky_species_reference": 93,
+    "R3_11_61Ma_species": 95,
+    "final_species": 104,
+    "net_species_recovered_since_post_CHA1_500ky": 11,
+    "net_species_change_since_R3_11_61Ma": 9,
+    "fraction_of_direct_CHA1_species_loss_recovered": 0.05188679245283019,
+    "fraction_of_pre_CHA1_species_richness_present": 0.34098360655737703,
+    "guild_richness": {
+      "1": {
+        "pre_CHA1_species": 107,
+        "post_CHA1_500ky_species": 42,
+        "species_at_61Ma": 43,
+        "species_at_end": 50,
+        "net_change_61Ma_to_end": 7,
+        "fraction_of_pre_CHA1_richness_at_end": 0.4672897196261682,
+        "fraction_of_CHA1_guild_loss_recovered_by_end": 0.12307692307692308
+      },
+      "2": {
+        "pre_CHA1_species": 17,
+        "post_CHA1_500ky_species": 1,
+        "species_at_61Ma": 1,
+        "species_at_end": 1,
+        "net_change_61Ma_to_end": 0,
+        "fraction_of_pre_CHA1_richness_at_end": 0.058823529411764705,
+        "fraction_of_CHA1_guild_loss_recovered_by_end": 0.0
+      },
+      "3": {
+        "pre_CHA1_species": 27,
+        "post_CHA1_500ky_species": 6,
+        "species_at_61Ma": 6,
+        "species_at_end": 6,
+        "net_change_61Ma_to_end": 0,
+        "fraction_of_pre_CHA1_richness_at_end": 0.2222222222222222,
+        "fraction_of_CHA1_guild_loss_recovered_by_end": 0.0
+      },
+      "4": {
+        "pre_CHA1_species": 84,
+        "post_CHA1_500ky_species": 37,
+        "species_at_61Ma": 38,
+        "species_at_end": 42,
+        "net_change_61Ma_to_end": 4,
+        "fraction_of_pre_CHA1_richness_at_end": 0.5,
+        "fraction_of_CHA1_guild_loss_recovered_by_end": 0.10638297872340426
+      },
+      "5": {
+        "pre_CHA1_species": 58,
+        "post_CHA1_500ky_species": 5,
+        "species_at_61Ma": 5,
+        "species_at_end": 5,
+        "net_change_61Ma_to_end": 0,
+        "fraction_of_pre_CHA1_richness_at_end": 0.08620689655172414,
+        "fraction_of_CHA1_guild_loss_recovered_by_end": 0.0
+      },
+      "6": {
+        "pre_CHA1_species": 12,
+        "post_CHA1_500ky_species": 2,
+        "species_at_61Ma": 2,
+        "species_at_end": 0,
+        "net_change_61Ma_to_end": -2,
+        "fraction_of_pre_CHA1_richness_at_end": 0.0,
+        "fraction_of_CHA1_guild_loss_recovered_by_end": -0.2
+      }
+    },
+    "root_lineages_parent": {
+      "active_root_lineages": 57,
+      "root_lineages_with_multiple_current_species": 23,
+      "max_current_species_per_root_lineage": 6,
+      "mean_current_species_per_root_lineage": 1.6666666666666667
+    },
+    "root_lineages_final": {
+      "active_root_lineages": 55,
+      "root_lineages_with_multiple_current_species": 27,
+      "max_current_species_per_root_lineage": 6,
+      "mean_current_species_per_root_lineage": 1.8909090909090909
+    },
+    "interpretation_guard": "These are descriptive recovery metrics only. No richness level, positive net diversification, or Earth analogue value is required for PASS."
+  },
+  "speciation_origin": {
+    "founder_candidates_at_61Ma": 1,
+    "matched_61Ma_founder_carryover_speciations": 0,
+    "not_matched_to_61Ma_founder_state": 11,
+    "rows": [
+      {
+        "age_ma": 56.0,
+        "parent_species_id": "HSG_006_D01",
+        "daughter_species_id": "HSG_006_D03",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 56.0,
+        "parent_species_id": "HSG_024_D05",
+        "daughter_species_id": "HSG_024_D06",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 54.5,
+        "parent_species_id": "HSG_007_D09",
+        "daughter_species_id": "HSG_007_D11",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 54.0,
+        "parent_species_id": "RPT_020_D02",
+        "daughter_species_id": "RPT_020_D04",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 53.0,
+        "parent_species_id": "HSG_010_D02",
+        "daughter_species_id": "HSG_010_D06",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 53.0,
+        "parent_species_id": "HSG_019",
+        "daughter_species_id": "HSG_019_D04",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 51.5,
+        "parent_species_id": "HSG_009_D02",
+        "daughter_species_id": "HSG_009_D05",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 51.5,
+        "parent_species_id": "HSG_017_D03",
+        "daughter_species_id": "HSG_017_D04",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 51.5,
+        "parent_species_id": "RPT_008_D03",
+        "daughter_species_id": "RPT_008_D06",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 51.5,
+        "parent_species_id": "RPT_010_D02",
+        "daughter_species_id": "RPT_010_D04",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      },
+      {
+        "age_ma": 46.5,
+        "parent_species_id": "RPT_020_D02",
+        "daughter_species_id": "RPT_020_D05",
+        "classification": "NOT_MATCHED_TO_R311_BOUNDARY_FOUNDER_STATE",
+        "causal_note": "Candidate is not matched to the founder state present at 61 Ma; this is not by itself proof of CHA-1 empty-niche causation."
+      }
+    ],
+    "interpretation_guard": "Speciation provenance is structural timing evidence, not a causal attribution to CHA-1."
+  },
+  "ordinary_extinctions": [
+    {
+      "age_ma": 57.0,
+      "elapsed_year": 153000000.0,
+      "species_id": "APX_005"
+    },
+    {
+      "age_ma": 56.5,
+      "elapsed_year": 153500000.0,
+      "species_id": "APX_001"
+    }
+  ],
+  "checks": [
+    {
+      "name": "file_exists::R3_12_POST_CHA1_DIVERSITY_RECOVERY_SUMMARY.json",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "file_exists::WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.json",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "file_exists::WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.npz",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "summary_schema",
+      "pass": true,
+      "actual": "ARCANA_R312_POST_CHA1_H0_DIVERSITY_RECOVERY_V1",
+      "expected": "ARCANA_R312_POST_CHA1_H0_DIVERSITY_RECOVERY_V1"
+    },
+    {
+      "name": "summary_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.12",
+      "expected": "v0.6D1-R3.12"
+    },
+    {
+      "name": "summary_mode",
+      "pass": true,
+      "actual": "CANONICAL_61P0_TO_46P0",
+      "expected": "CANONICAL_61P0_TO_46P0"
+    },
+    {
+      "name": "summary_verdict",
+      "pass": true,
+      "actual": "PASS_CANONICAL_POST_CHA1_61_TO_46_H0_DIVERSITY_RECOVERY_OBSERVATION__46MA_CHECKPOINT_READY",
+      "expected": null
+    },
+    {
+      "name": "run_start_age",
+      "pass": true,
+      "actual": 61.0,
+      "expected": 61.0
+    },
+    {
+      "name": "run_end_age",
+      "pass": true,
+      "actual": 46.0,
+      "expected": 46.0
+    },
+    {
+      "name": "biology_steps",
+      "pass": true,
+      "actual": 120,
+      "expected": 120
+    },
+    {
+      "name": "parent_species",
+      "pass": true,
+      "actual": 95,
+      "expected": 95
+    },
+    {
+      "name": "parent_components",
+      "pass": true,
+      "actual": 236,
+      "expected": 236
+    },
+    {
+      "name": "final_species",
+      "pass": true,
+      "actual": 104,
+      "expected": 104
+    },
+    {
+      "name": "final_components",
+      "pass": true,
+      "actual": 223,
+      "expected": 223
+    },
+    {
+      "name": "finite_final_population",
+      "pass": true,
+      "actual": 1433.7874046435222,
+      "expected": null
+    },
+    {
+      "name": "checkpoint_json_hash",
+      "pass": true,
+      "actual": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269",
+      "expected": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269"
+    },
+    {
+      "name": "checkpoint_npz_hash",
+      "pass": true,
+      "actual": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948",
+      "expected": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948"
+    },
+    {
+      "name": "checkpoint_json_hash_expected",
+      "pass": true,
+      "actual": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269",
+      "expected": null
+    },
+    {
+      "name": "checkpoint_npz_hash_expected",
+      "pass": true,
+      "actual": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948",
+      "expected": null
+    },
+    {
+      "name": "parent_age",
+      "pass": true,
+      "actual": 61.0,
+      "expected": 61.0
+    },
+    {
+      "name": "parent_json_hash",
+      "pass": true,
+      "actual": "bdf75d08bd39181dee3331f91b1dd6864ab8e0c1e88c94eed7813d148aebda3b",
+      "expected": null
+    },
+    {
+      "name": "parent_npz_hash",
+      "pass": true,
+      "actual": "4f4582ca7f83926941f7224033a83356b2f5df196dcb8d3dbafae2e9b16e987c",
+      "expected": null
+    },
+    {
+      "name": "parent_summary_hash",
+      "pass": true,
+      "actual": "b8194132711925d7ea2f67d0bf9bd7d9ad995ae37bef2f18df6c2fab49524bbd",
+      "expected": null
+    },
+    {
+      "name": "parent_seal_verdict",
+      "pass": true,
+      "actual": "PASS_R311_CANONICAL_POST_CHA1_65P5_TO_61_H0_RECOVERY__61MA_RESTART_BOUNDARY_SEALED",
+      "expected": null
+    },
+    {
+      "name": "checkpoint_schema",
+      "pass": true,
+      "actual": "ARCANA_R312_WORLD1_H0_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_V1",
+      "expected": "ARCANA_R312_WORLD1_H0_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_V1"
+    },
+    {
+      "name": "checkpoint_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.12",
+      "expected": null
+    },
+    {
+      "name": "checkpoint_parent_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.11_SEALED",
+      "expected": "v0.6D1-R3.11_SEALED"
+    },
+    {
+      "name": "checkpoint_age",
+      "pass": true,
+      "actual": 46.0,
+      "expected": 46.0
+    },
+    {
+      "name": "checkpoint_event_side",
+      "pass": true,
+      "actual": "POST_CHA1_20MY_DIVERSITY_RECOVERY",
+      "expected": null
+    },
+    {
+      "name": "checkpoint_elapsed",
+      "pass": true,
+      "actual": 164000000.0,
+      "expected": 164000000.0
+    },
+    {
+      "name": "npz_filename",
+      "pass": true,
+      "actual": "WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.npz",
+      "expected": "WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.npz"
+    },
+    {
+      "name": "loaded_age",
+      "pass": true,
+      "actual": 46.0,
+      "expected": 46.0
+    },
+    {
+      "name": "loaded_elapsed",
+      "pass": true,
+      "actual": 164000000.0,
+      "expected": null
+    },
+    {
+      "name": "loaded_components",
+      "pass": true,
+      "actual": 223,
+      "expected": 223
+    },
+    {
+      "name": "loaded_species_unique",
+      "pass": true,
+      "actual": 104,
+      "expected": 104
+    },
+    {
+      "name": "loaded_population_sum",
+      "pass": true,
+      "actual": 1433.7874046435222,
+      "expected": 1433.7874046435222
+    },
+    {
+      "name": "population_nonnegative",
+      "pass": true,
+      "actual": 0.0,
+      "expected": ">=-1e-14"
+    },
+    {
+      "name": "population_inaccessible_zero",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "q_max_recomputed",
+      "pass": true,
+      "actual": 0.045689600031135334,
+      "expected": 0.045689600031135334
+    },
+    {
+      "name": "q_median_recomputed",
+      "pass": true,
+      "actual": 0.04487415260797027,
+      "expected": 0.04487415260797027
+    },
+    {
+      "name": "q_below_ceiling",
+      "pass": true,
+      "actual": 0.045689600031135334,
+      "expected": 0.08
+    },
+    {
+      "name": "q_positive_headroom",
+      "pass": true,
+      "actual": 0.03431039996886467,
+      "expected": null
+    },
+    {
+      "name": "S_symmetry",
+      "pass": true,
+      "actual": 0.0,
+      "expected": null
+    },
+    {
+      "name": "S_diagonal_zero",
+      "pass": true,
+      "actual": 0.0,
+      "expected": null
+    },
+    {
+      "name": "S_nonnegative",
+      "pass": true,
+      "actual": 0.0,
+      "expected": null
+    },
+    {
+      "name": "npz_key::guild",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::guild",
+      "pass": true,
+      "actual": [
+        223
+      ],
+      "expected": [
+        223
+      ]
+    },
+    {
+      "name": "npz_finite::guild",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::population",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::population",
+      "pass": true,
+      "actual": [
+        223,
+        90,
+        180
+      ],
+      "expected": [
+        223,
+        90,
+        180
+      ]
+    },
+    {
+      "name": "npz_finite::population",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::trait",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::trait",
+      "pass": true,
+      "actual": [
+        223,
+        3
+      ],
+      "expected": [
+        223,
+        3
+      ]
+    },
+    {
+      "name": "npz_finite::trait",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::va",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::va",
+      "pass": true,
+      "actual": [
+        223,
+        3
+      ],
+      "expected": [
+        223,
+        3
+      ]
+    },
+    {
+      "name": "npz_finite::va",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::generation_time",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::generation_time",
+      "pass": true,
+      "actual": [
+        223
+      ],
+      "expected": [
+        223
+      ]
+    },
+    {
+      "name": "npz_finite::generation_time",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::current_accessible",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::current_accessible",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "npz_finite::current_accessible",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::reduced_va_within",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::reduced_va_within",
+      "pass": true,
+      "actual": [
+        223,
+        3
+      ],
+      "expected": [
+        223,
+        3
+      ]
+    },
+    {
+      "name": "npz_finite::reduced_va_within",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::reduced_ancestry_covariance",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::reduced_ancestry_covariance",
+      "pass": true,
+      "actual": [
+        223,
+        3
+      ],
+      "expected": [
+        223,
+        3
+      ]
+    },
+    {
+      "name": "npz_finite::reduced_ancestry_covariance",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::reduced_neutral_segregation_potential",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::reduced_neutral_segregation_potential",
+      "pass": true,
+      "actual": [
+        223,
+        223,
+        3
+      ],
+      "expected": [
+        223,
+        223,
+        3
+      ]
+    },
+    {
+      "name": "npz_finite::reduced_neutral_segregation_potential",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::reduced_adaptive_coordinate",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::reduced_adaptive_coordinate",
+      "pass": true,
+      "actual": [
+        223,
+        3
+      ],
+      "expected": [
+        223,
+        3
+      ]
+    },
+    {
+      "name": "npz_finite::reduced_adaptive_coordinate",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::lat",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::lat",
+      "pass": true,
+      "actual": [
+        90
+      ],
+      "expected": [
+        90
+      ]
+    },
+    {
+      "name": "npz_finite::lat",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_key::lon",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "npz_shape::lon",
+      "pass": true,
+      "actual": [
+        180
+      ],
+      "expected": [
+        180
+      ]
+    },
+    {
+      "name": "npz_finite::lon",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "guild6_absent_final",
+      "pass": true,
+      "actual": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "events_before::paleogeographic_support_loss_remap",
+      "pass": true,
+      "actual": 1072,
+      "expected": 1072
+    },
+    {
+      "name": "events_before::deme_coalescence",
+      "pass": true,
+      "actual": 58,
+      "expected": 58
+    },
+    {
+      "name": "events_before::deme_fission",
+      "pass": true,
+      "actual": 693,
+      "expected": 693
+    },
+    {
+      "name": "events_before::speciation",
+      "pass": true,
+      "actual": 187,
+      "expected": 187
+    },
+    {
+      "name": "events_before::ordinary_background_extinction",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "events_before::CHA1_species_extinction",
+      "pass": true,
+      "actual": 212,
+      "expected": 212
+    },
+    {
+      "name": "events_before::CHA1_high_resolution_event_bridge_complete",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "events_before::post_CHA1_ordinary_lifecycle_thaw",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "events_after::paleogeographic_support_loss_remap",
+      "pass": true,
+      "actual": 1176,
+      "expected": 1176
+    },
+    {
+      "name": "events_after::deme_coalescence",
+      "pass": true,
+      "actual": 77,
+      "expected": 77
+    },
+    {
+      "name": "events_after::deme_fission",
+      "pass": true,
+      "actual": 708,
+      "expected": 708
+    },
+    {
+      "name": "events_after::speciation",
+      "pass": true,
+      "actual": 198,
+      "expected": 198
+    },
+    {
+      "name": "events_after::ordinary_background_extinction",
+      "pass": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "events_after::CHA1_species_extinction",
+      "pass": true,
+      "actual": 212,
+      "expected": 212
+    },
+    {
+      "name": "events_after::CHA1_high_resolution_event_bridge_complete",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "events_after::post_CHA1_ordinary_lifecycle_thaw",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "events_delta::paleogeographic_support_loss_remap",
+      "pass": true,
+      "actual": 104,
+      "expected": 104
+    },
+    {
+      "name": "events_delta::deme_coalescence",
+      "pass": true,
+      "actual": 19,
+      "expected": 19
+    },
+    {
+      "name": "events_delta::deme_fission",
+      "pass": true,
+      "actual": 15,
+      "expected": 15
+    },
+    {
+      "name": "events_delta::speciation",
+      "pass": true,
+      "actual": 11,
+      "expected": 11
+    },
+    {
+      "name": "events_delta::ordinary_background_extinction",
+      "pass": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "events_delta::CHA1_species_extinction",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "events_delta::CHA1_high_resolution_event_bridge_complete",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "events_delta::post_CHA1_ordinary_lifecycle_thaw",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "no_new_CHA1_species_extinction",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "exactly_one_historical_CHA1_bridge",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "no_second_CHA1_bridge",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "exactly_one_historical_thaw",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "no_second_thaw",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "speciation_count_11",
+      "pass": true,
+      "actual": 11,
+      "expected": 11
+    },
+    {
+      "name": "ordinary_extinction_count_2",
+      "pass": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "peak_q",
+      "pass": true,
+      "actual": 0.04694482744771825,
+      "expected": null
+    },
+    {
+      "name": "peak_unclipped_q",
+      "pass": true,
+      "actual": 0.04694482744771825,
+      "expected": 0.04694482744771825
+    },
+    {
+      "name": "clipping_steps_zero",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "clipping_contacts_zero",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "recovery_not_target",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "pre_CHA1_reference_305",
+      "pass": true,
+      "actual": 305,
+      "expected": 305
+    },
+    {
+      "name": "post_CHA1_reference_93",
+      "pass": true,
+      "actual": 93,
+      "expected": 93
+    },
+    {
+      "name": "R311_reference_95",
+      "pass": true,
+      "actual": 95,
+      "expected": 95
+    },
+    {
+      "name": "final_reference_104",
+      "pass": true,
+      "actual": 104,
+      "expected": 104
+    },
+    {
+      "name": "net_since_immediate_11",
+      "pass": true,
+      "actual": 11,
+      "expected": 11
+    },
+    {
+      "name": "net_since_R311_9",
+      "pass": true,
+      "actual": 9,
+      "expected": 9
+    },
+    {
+      "name": "fraction_direct_loss_recovered",
+      "pass": true,
+      "actual": 0.05188679245283019,
+      "expected": 0.05188679245283019
+    },
+    {
+      "name": "fraction_pre_CHA1_present",
+      "pass": true,
+      "actual": 0.34098360655737703,
+      "expected": 0.34098360655737703
+    },
+    {
+      "name": "guild_final_sum",
+      "pass": true,
+      "actual": 104,
+      "expected": 104
+    },
+    {
+      "name": "guild_final::1",
+      "pass": true,
+      "actual": 50,
+      "expected": 50
+    },
+    {
+      "name": "guild_final::2",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "guild_final::3",
+      "pass": true,
+      "actual": 6,
+      "expected": 6
+    },
+    {
+      "name": "guild_final::4",
+      "pass": true,
+      "actual": 42,
+      "expected": 42
+    },
+    {
+      "name": "guild_final::5",
+      "pass": true,
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "name": "guild_final::6",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "root_lineages_final_55",
+      "pass": true,
+      "actual": 55,
+      "expected": 55
+    },
+    {
+      "name": "multi_species_roots_27",
+      "pass": true,
+      "actual": 27,
+      "expected": 27
+    },
+    {
+      "name": "founders_at_61_1",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "carryover_speciations_zero",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "new_boundary_unmatched_11",
+      "pass": true,
+      "actual": 11,
+      "expected": 11
+    },
+    {
+      "name": "origin_rows_11",
+      "pass": true,
+      "actual": 11,
+      "expected": 11
+    },
+    {
+      "name": "origin_rows_all_unmatched",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "first_speciation_56Ma",
+      "pass": true,
+      "actual": 56.0,
+      "expected": 56.0
+    },
+    {
+      "name": "first_extinction_57Ma",
+      "pass": true,
+      "actual": 57.0,
+      "expected": 57.0
+    },
+    {
+      "name": "extinction_species_exact",
+      "pass": true,
+      "actual": [
+        "APX_005",
+        "APX_001"
+      ],
+      "expected": [
+        "APX_005",
+        "APX_001"
+      ]
+    },
+    {
+      "name": "config_exact_R312",
+      "pass": true,
+      "actual": "exact compare",
+      "expected": null
+    },
+    {
+      "name": "config::biology_cadence_years",
+      "pass": true,
+      "actual": 125000.0,
+      "expected": 125000.0
+    },
+    {
+      "name": "config::speciation_check_interval_years",
+      "pass": true,
+      "actual": 500000.0,
+      "expected": 500000.0
+    },
+    {
+      "name": "config::founder_minimum_persistence_years",
+      "pass": true,
+      "actual": 1000000.0,
+      "expected": 1000000.0
+    },
+    {
+      "name": "config::vicariance_persistence_min_years",
+      "pass": true,
+      "actual": 2000000.0,
+      "expected": 2000000.0
+    },
+    {
+      "name": "config::reconnection_persistence_min_years",
+      "pass": true,
+      "actual": 2000000.0,
+      "expected": 2000000.0
+    },
+    {
+      "name": "config::mutation_variance_supply_normalized_per_myr",
+      "pass": true,
+      "actual": 0.002,
+      "expected": 0.002
+    },
+    {
+      "name": "config::nonlinear_stabilizing_variance_depletion_per_myr_per_q",
+      "pass": true,
+      "actual": 0.9876543209876544,
+      "expected": 0.9876543209876544
+    },
+    {
+      "name": "config::variance_ceiling_normalized",
+      "pass": true,
+      "actual": 0.08,
+      "expected": 0.08
+    },
+    {
+      "name": "config::adaptive_k_eff",
+      "pass": true,
+      "actual": 38.47,
+      "expected": 38.47
+    },
+    {
+      "name": "config::end_age_ma",
+      "pass": true,
+      "actual": 46.0,
+      "expected": 46.0
+    },
+    {
+      "name": "config::recovery_observation_start_age_ma",
+      "pass": true,
+      "actual": 61.0,
+      "expected": 61.0
+    },
+    {
+      "name": "config::recovery_horizon_myr_after_impact",
+      "pass": true,
+      "actual": 20.0,
+      "expected": 20.0
+    },
+    {
+      "name": "summary_governance_false::cha1_reapplied",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::lifecycle_thaw_reapplied",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::deep_biological_coupling",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::post_cha1_radiation_multiplier_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::richness_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::positive_diversification_required_for_pass",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::earth_analogue_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::mu_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::b_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::q_ceiling_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::K_center_reinterpreted_as_physical_constant",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_true::cha1_already_applied",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_governance_true::ordinary_lifecycle_continued",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_governance_true::ordinary_speciation_enabled",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_governance_true::ordinary_background_extinction_enabled",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_governance_true::persistent_vicariance_fission_enabled",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_governance_true::persistent_reconnection_coalescence_enabled",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_governance_true::production_r37i_r38_runtime_used",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "checkpoint_governance::cha1_already_applied",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "checkpoint_governance::cha1_reapplied",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::post_cha1_lifecycle_thaw_reapplied",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::deep_biological_coupling",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::ordinary_lifecycle_continued",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "checkpoint_governance::post_cha1_radiation_multiplier_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::richness_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::earth_analogue_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::r37i_r38_production_runtime_reused",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "checkpoint_governance::mu_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::b_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::q_ceiling_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "checkpoint_governance::scalar_k_physical_constant_authorized",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "independent_roundtrip_equivalent",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_array::guild",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_array::pop",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_array::trait",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_array::va",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_array::gen",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_array::current_accessible",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_reduced::va_within",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_reduced::ancestry_covariance",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_reduced::neutral_segregation_potential",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_reduced::adaptive_coordinate",
+      "pass": true,
+      "actual": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "expected": null
+    },
+    {
+      "name": "roundtrip_exact::component_ids",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::root_species",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::current_species",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::registry",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::child_counters",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::baselines",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::ri_state",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::clock_state",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::ext_state",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::founder_state",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::vicariance_state",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::reconnection_state",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::events",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::snapshots",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::founder_stats_last",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_exact::gene_flow_closure",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "roundtrip_scalar::age_ma",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "roundtrip_scalar::elapsed_year",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "roundtrip_scalar::topology_remap_mass",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "roundtrip_scalar::initial_total_population",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    }
+  ]
+}

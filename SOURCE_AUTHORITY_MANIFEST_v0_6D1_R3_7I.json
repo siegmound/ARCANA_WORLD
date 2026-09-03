@@ -1,0 +1,50 @@
+{
+  "stage": "v0.6D1-R3.7I",
+  "state": "SEALED",
+  "parent_stage": "v0.6D1-R3.7H",
+  "authority_note": "Real R3.7H closed-loop evidence reviewed and explicitly approved. Canonical segregation-aware gene-flow variance and coalescence pooling are promoted for World 1 production. K_CENTER remains an operational reduced-order reference, not a physical constant.",
+  "candidate_package": {
+    "zip_sha256": "11c97c7ba9fb30eb4521a5fcd25da1b66c40cb800b8075b3e24e4881a94af65c",
+    "candidate_package_manifest_sha256": "6e4cfa6d5a55752886dc1e47293b0ba9671ebd5757d61e4f9b0fcb34c33e694a"
+  },
+  "parent_package_manifest": {
+    "path": "PACKAGE_MANIFEST_v0_6D1_R3_7H.json",
+    "sha256": "6e21ca1e40ef4f01a1707de82814f44a22387a358cf88baf0edabaeaf039c471",
+    "file_count": 3405
+  },
+  "promotion": {
+    "review_status": "PASS_R37H_FULL_EVIDENCE_REVIEW",
+    "review_checks_passed": 38,
+    "review_check_count": 38,
+    "seal_status": "PASS_PRODUCTION_PROMOTION_SEAL",
+    "seal_sha256": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d",
+    "sealed_source_zip_sha256": "0a736ea6b1b35ecd92416c968b34a5830167890ad7bbae6efffc06778fcf2287",
+    "uploaded_repacked_evidence_zip_sha256": "3d223c68ae86a7e351f07a9b4e878c4509a836edb8188950e605d0be5c3dd2c3",
+    "json_content_identity_verified": true
+  },
+  "production_binding_semantics": {
+    "segregation_aware_gene_flow_variance": "CANONICAL_WORLD1_PRODUCTION_AUTHORITY",
+    "segregation_aware_coalescence_pooling": "CANONICAL_WORLD1_PRODUCTION_AUTHORITY",
+    "nominal_reduced_order_K_reference": 38.47,
+    "K_LOW_release_sentinel": 37.614,
+    "K_HIGH_release_sentinel": 41.002,
+    "scalar_K_physical_constant_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "migration_selection_ri_speciation_paleogeography_authority_changed": false
+  },
+  "post_seal_validation": {
+    "formal_sealed_audit": "32/32 PASS",
+    "r37i_tests": "6/6 PASS",
+    "canonical_smoke": "8/8 steps PASS, zero clipping",
+    "canonical_smoke_sha256": "5f98837622f7f72d5788669342012d9d99991fdbf0d2c4ea72f06c7d2bb9a823"
+  },
+  "evidence_paths": [
+    "outputs/v0_6D1_R3_7I/PRODUCTION_PROMOTION_REVIEW_v0_6D1_R3_7I.json",
+    "outputs/v0_6D1_R3_7I/PRODUCTION_PROMOTION_SEAL_v0_6D1_R3_7I.json",
+    "outputs/v0_6D1_R3_7I/FORMAL_AUDIT_v0_6D1_R3_7I_SEALED.json",
+    "outputs/v0_6D1_R3_7I/R3_7I_REAL_PROMOTION_EVIDENCE_AUDIT.json",
+    "local_runs/v0_6D1_R3_7I/210_to_209p0Ma_R3_7I_canonical.json",
+    "reference_results/v0_6D1_R3_7H_REAL_PROMOTION_EVIDENCE/v0_6D1_R3_7H_uploaded_container.zip",
+    "reference_results/v0_6D1_R3_7H_REAL_PROMOTION_EVIDENCE/v0_6D1_R3_7I_post_seal_outputs.zip"
+  ]
+}

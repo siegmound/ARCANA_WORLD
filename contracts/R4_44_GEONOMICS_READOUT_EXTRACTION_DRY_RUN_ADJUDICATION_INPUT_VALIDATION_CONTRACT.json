@@ -1,0 +1,35 @@
+{
+  "stage": "v0.6D1-R4.44",
+  "title": "Geonomics Readout Extraction Dry Run & Adjudication Input Validation",
+  "scope": "two consecutive canonical states per job, all four frozen seeds",
+  "expected_records": {
+    "J14": 24,
+    "J18": 24,
+    "J21": 2352,
+    "total": 2400,
+    "integrity": 1208,
+    "descriptive": 1192
+  },
+  "integrity_rules": [
+    "Model.get_coords must exactly match canonical x,y",
+    "Species._cells must exactly equal floor(canonical x,y)",
+    "Layer.rast must exactly match canonical native-layer target",
+    "integrity mismatch is adapter/runtime failure, never scientific divergence"
+  ],
+  "descriptive_rules": [
+    "nearest-neighbor raw vector is preserved",
+    "layer summaries preserve exact source raster digest",
+    "all descriptive metrics have no numeric acceptance threshold",
+    "descriptive values cannot automatically PASS or FAIL ARCANA"
+  ],
+  "adjudication_input_rules": [
+    "every metric id must be pre-authorized for that job by R4.43",
+    "all R4.43 common record fields must be present",
+    "majority vote forbidden",
+    "engine output cannot define target",
+    "canonical rewrite forbidden",
+    "no result-selected threshold"
+  ],
+  "nonclaim": "R4.44 validates extraction and adjudication-input mechanics only; dry-run outputs are not scientific evidence",
+  "next_action": "BUILD_R445_GEONOMICS_SCIENTIFIC_EXECUTION_AUTHORIZATION_AND_FIRST_GOVERNED_REVALIDATION_RUN_PREFLIGHT"
+}

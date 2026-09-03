@@ -1,0 +1,110 @@
+{
+  "cha2_binding": "DIRECT_R320_80_STATE_50_YEAR_HYDROLOGICAL_HAZARD_FIELDS_SAMPLED_AT_INTERPOLATED_REGIONAL_STEM_LOCATIONS",
+  "dynamics": {
+    "borrowing_scale": 0.2,
+    "boundary_relaxation_per_kyr": 0.14,
+    "cha2_event_memory_gain": 8.0,
+    "collective_event_memory_weight": 0.3,
+    "cross_contact_scale": 0.06,
+    "event_memory_decay_per_kyr": 0.12,
+    "governance": {
+      "cha2_direct_50y_fields_required": true,
+      "deep_biological_coupling": false,
+      "identity_marker_is_not_ethnicity": true,
+      "language_precondition_is_not_materialized_language": true,
+      "no_ethnicity_or_people_materialization": true,
+      "no_lineage_specific_rescaling": true,
+      "no_named_culture_materialization": true,
+      "no_named_language_or_language_family_materialization": true,
+      "no_religion_materialization": true,
+      "r338_parent_immutable": true,
+      "sensitivity_is_selection_gate": false,
+      "symbolic_memory_is_not_named_myth": true,
+      "unique_human_identity_materialized": false
+    },
+    "identity_boundary_threshold": 0.3,
+    "identity_marker_threshold": 0.38,
+    "identity_relaxation_per_kyr": 0.16,
+    "language_divergence_precondition_threshold": 0.34,
+    "language_precondition_relaxation_per_kyr": 0.12,
+    "mnemonic_rehearsal_relaxation_per_kyr": 0.18,
+    "regional_distinctiveness_scale": 0.08,
+    "rehearsal_decay_reduction": 0.65,
+    "robust_cha2_memory_member_fraction": 0.5,
+    "robust_cha2_memory_threshold": 0.08,
+    "robust_language_member_fraction": 0.6,
+    "robust_symbolic_memory_median_threshold": 0.38,
+    "robust_symbolic_memory_q10_threshold": 0.3,
+    "symbolic_encoding_relaxation_per_kyr": 0.2,
+    "technology_profile_contrast_scale": 0.12
+  },
+  "evidence_basis": {
+    "DIVERGENCE_UNDER_CONTACT": {
+      "source": "Evans, Linguistic divergence under contact, Dynamics of Linguistic Diversity, 2018",
+      "use": "contact can support divergence when linguistic choices signal group-membership distinctions; convergence is not the only possible outcome"
+    },
+    "LANGUAGE_CONTACT_POPULATION": {
+      "source": "Mufwene & Escobar, Language Contact in Population Structure, Cambridge Handbook of Language Contact, 2022",
+      "use": "contact can produce borrowing, structural change, mixed varieties, language shift or stability depending on population structure"
+    },
+    "LANGUAGE_NETWORK_VARIATION": {
+      "doi": "10.1146/annurev-linguistics-011619-030524",
+      "source": "Sharma & Dodsworth, Language Variation and Social Networks, Annual Review of Linguistics 6, 2020",
+      "use": "linguistic diffusion depends on social-network structure and socially mediated uptake rather than isolation alone"
+    },
+    "MESOLITHIC_ORNAMENT_NETWORKS": {
+      "doi": "10.1007/s12520-022-01641-z",
+      "source": "Lozano et al., Reconstructing Mesolithic social networks on the Iberian Peninsula using ornaments, Archaeological and Anthropological Sciences 14, 2022",
+      "use": "symbolic objects can encode affiliation and participate in hunter-gatherer exchange networks; R3.39 uses only abstract marker salience, not direct ornament claims"
+    },
+    "ORAL_TRADITION_CRISIS_MEMORY": {
+      "doi": "10.1016/0278-4165(86)90010-3",
+      "source": "Minc, Scarcity and survival: The role of oral tradition in mediating subsistence crises, Journal of Anthropological Archaeology 5, 1986",
+      "use": "nonliterate traditions can preserve practical memory of recurrent environmental/subsistence crises across generations; memory persistence depends on repetition and formalization"
+    },
+    "R320_PARENT": {
+      "source": "R3.20 SEALED CHA-2 50-year hydrological hazard authority",
+      "use": "direct regional event-memory seeding from immutable physical hazard fields"
+    },
+    "R329_PARENT": {
+      "source": "R3.29 SEALED community/cultural preconditions",
+      "use": "social learning, cognition, cultural transmission, settlement and CHA-2 community disruption context"
+    },
+    "R332_PARENT": {
+      "source": "R3.32 SEALED opaque regional cultural lineages",
+      "use": "regional continuity and population-weighted regional codes remain non-ethnic analytical identities"
+    },
+    "R338_PARENT": {
+      "source": "R3.38 SEALED regional exchange, concrete technology and reticulate cultural genealogy",
+      "use": "12 opaque regional stems, implementation support, retention, innovation, borrowing and exchange topology"
+    }
+  },
+  "identity_semantics": "CONVENTIONAL_AFFILIATION_AND_BOUNDARY_SALIENCE;_NOT_ETHNICITY_RACE_PEOPLE_OR_CASTE",
+  "language_semantics": "COMMUNICATIVE_CONVENTIONALIZATION_AND_DIVERGENCE_PRECONDITIONS_ONLY;_NO_LANGUAGE_GRAMMAR_LEXICON_OR_LANGUAGE_FAMILY_MATERIALIZED",
+  "parent": "PASS_R338_REGIONAL_EXCHANGE_NETWORKS_CONCRETE_TECHNOLOGY_RETICULATE_CULTURAL_GENEALOGIES_AND_BORROWING_SEALED",
+  "parent_hashes": {
+    "r320_cha2_hazard_sha256": "4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14",
+    "r329_community_sha256": "bbdde55933575153a88e570e3dc5709b38a09f696ffc2777c28299fc3cd3112a",
+    "r332_regional_sha256": "dfad48a7cdb85580fe81b6aa69cd68ca87cff17e9da491252c044b9a76ce7fd1",
+    "r338_regional_network_sha256": "ba799cb037dad3b684d3af72adae2dcb0b6c1e11c9178cd2af598170476686d1",
+    "r338_technology_sha256": "0c24735a9615a647a87a5b4c64e7a0b71ad78f43d33f9c695a0382b0d263ae2b"
+  },
+  "prohibited_materialization": [
+    "named_myths",
+    "religions",
+    "ethnicities",
+    "named_peoples",
+    "languages",
+    "language_families",
+    "states",
+    "unique_human_identity",
+    "Deep_biological_coupling"
+  ],
+  "stage": "v0.6D1-R3.39",
+  "status": "R339_CULTURAL_SYMBOLIC_MEMORY_LANGUAGE_PRECONDITION_AND_IDENTITY_AUTHORITY",
+  "symbolic_memory_semantics": "ABSTRACT_COLLECTIVE_AND_EVENT_MEMORY_CAPACITY;_NOT_A_NAMED_MYTH_RITUAL_RELIGION_OR_DIRECT_ARCHAEOLOGICAL_SYMBOL_OBSERVATION",
+  "window_ka": [
+    20.0,
+    0.0
+  ]
+}

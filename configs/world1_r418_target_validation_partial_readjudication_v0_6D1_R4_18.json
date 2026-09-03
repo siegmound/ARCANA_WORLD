@@ -1,0 +1,38 @@
+{
+  "stage": "v0.6D1-R4.18",
+  "title": "Target Materialization Validation, Partial Readjudication & P2 Backlog Freeze",
+  "parent_stage": "v0.6D1-R4.17",
+  "required_parent_status": "PASS_R417_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE_SEALED",
+  "expected_parent_counts": {
+    "p1_target_materialized_cell_count": 3,
+    "r418_target_comparability_validation_candidate_count": 1,
+    "p1_proxy_only_materialized_count": 2,
+    "p1_source_candidate_exhausted_count": 44,
+    "p1_target_design_gap_count": 12,
+    "p2_backlog_cell_count": 6,
+    "p3_backlog_cell_count": 6
+  },
+  "policy_freeze": "FROZEN_PRE_TARGET_VALIDATION_AND_PARTIAL_READJUDICATION",
+  "candidate_comparability_promotion": {
+    "DIRECT_CANDIDATE": "DIRECT",
+    "NORMALIZABLE_CANDIDATE": "NORMALIZABLE"
+  },
+  "engine_execution_performed": false,
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "rules": {
+    "no_engine_execution": true,
+    "no_result_selected_target_validation": true,
+    "r43_bridge_requires_frozen_artifact_hash_integrity": true,
+    "generic_target_provenance_must_not_be_external_result": true,
+    "only_primary_direct_or_normalizable_metric_rows_may_be_readjudicated": true,
+    "proxy_targets_remain_context_only": true,
+    "only_validated_candidate_cells_may_change": true,
+    "parent_r413_matrix_is_immutable": true,
+    "p2_backlog_is_frozen_not_executed": true,
+    "p3_backlog_is_frozen_not_executed": true
+  }
+}

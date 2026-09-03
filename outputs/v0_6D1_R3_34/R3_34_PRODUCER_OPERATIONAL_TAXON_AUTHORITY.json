@@ -1,0 +1,124 @@
+{
+  "agriculture_rule": "AGRICULTURE_ONLY_IF_AT_LEAST_ONE_FUNCTIONAL_PRODUCER_DOMESTICATE_MATERIALIZES_AND_PLANT_FOOD_SUPPORT_EXCEEDS_PREDECLARED_THRESHOLD",
+  "archetypes": [
+    "annual_seed_grass",
+    "annual_seed_forb_pulse",
+    "perennial_seed_grass",
+    "geophyte_storage_root",
+    "fruiting_woody",
+    "wetland_aquatic_starch"
+  ],
+  "candidate_cohort": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "coevolution_semantics": "RESOURCE_CONTACT_TO_RECURRENT_HARVEST_TO_MANAGEMENT_TO_CONTROLLED_PROPAGATION_TO_SELECTION_AND_DIVERGENCE",
+  "deep_biological_coupling": false,
+  "dynamics": {
+    "abandonment_rate_per_kyr": 0.018,
+    "agriculture_food_support_threshold": 0.3,
+    "contact_adjustment_rate_per_kyr": 0.35,
+    "dependency_rate_per_kyr": 0.08,
+    "domestication_divergence_threshold": 0.22,
+    "domestication_index_threshold": 0.48,
+    "domestication_propagation_threshold": 0.38,
+    "food_production_frequency_threshold": 0.5,
+    "governance": {
+      "agriculture_requires_materialized_functional_producer_domesticate": true,
+      "deep_biological_coupling": false,
+      "human_similarity_target": false,
+      "no_named_earth_crop_analogues": true,
+      "producer_taxa_are_operational_not_retroactive_phylogeny": true,
+      "sensitivity_is_selection_gate": false
+    },
+    "harvest_selection_rate_per_kyr": 0.13,
+    "incipient_divergence_threshold": 0.12,
+    "incipient_domestication_index_threshold": 0.36,
+    "incipient_frequency_threshold": 0.25,
+    "incipient_propagation_threshold": 0.28,
+    "managed_stand_threshold": 0.25,
+    "materialization_frequency_threshold": 0.5,
+    "max_wild_gene_flow_for_domestication": 0.58,
+    "plant_food_production_threshold": 0.22,
+    "propagation_control_rate_per_kyr": 0.16,
+    "propagation_control_threshold": 0.15,
+    "recurrent_harvest_rate_per_kyr": 0.32,
+    "recurrent_harvest_threshold": 0.24,
+    "selective_divergence_rate_per_kyr": 0.11,
+    "stand_management_rate_per_kyr": 0.22
+  },
+  "evidence_basis": {
+    "CORE_DOMESTICATION_QUESTIONS": {
+      "pmcid": "PMC4371924",
+      "source": "Larson et al. 2014 Core questions in domestication research",
+      "use": "cultivation can precede archaeologically visible domestication traits; dormancy and dispersal changes need not appear simultaneously"
+    },
+    "DOMESTICATION_MULTISPECIES_NETWORK": {
+      "pmcid": "PMC4035915",
+      "source": "Current perspectives and the future of domestication studies (2014)",
+      "use": "humans act as dispersal agents, selective agents and ecosystem modifiers; domestication is modeled as a multispecies relationship"
+    },
+    "NO_RETROACTIVE_FLORA_PHYLOGENY": {
+      "source": "R3.33 audit finding",
+      "use": "H0 lacks explicit flora; R3.34 creates anonymous operational producer taxa and does not claim a 210 Ma plant fossil/phylogenetic history"
+    },
+    "PLANT_ADAPTATION_GENETICS": {
+      "pmcid": "PMC1876441",
+      "source": "Plant domestication, a unique opportunity to identify the genetic basis of adaptation (2007)",
+      "use": "unconscious selection, reduced dormancy/dispersal and altered reproductive timing motivate continuous trait response"
+    },
+    "PLANT_DOMESTICATION_SYNDROME_2025": {
+      "pmcid": "PMC12799793",
+      "source": "Plant domestication revisited: Genomic insights into origins, mechanisms, and convergent evolution (2025)",
+      "use": "loss of shattering, increased propagule size, reduced dormancy, phenology and architecture are treated as possible outcomes of selection, not prerequisites"
+    },
+    "PROTRACTED_PROCESS": {
+      "source": "R3.33 evidence basis + Fuller-related protracted domestication literature",
+      "use": "no instantaneous agriculture flag; management, propagation control and selective divergence are separate states"
+    },
+    "SEALED_ENVIRONMENT": {
+      "source": "R3.33 SEALED Holocene environmental resource landscape",
+      "use": "producer niches are anchored only to SEALED temperature/precipitation/NPP/land/hydroclimate fields"
+    },
+    "SEALED_HUMAN_SUBSISTENCE": {
+      "source": "R3.32 SEALED subsistence/regional transition replay",
+      "use": "processing, landscape management, storage, scheduling, settlement and regional continuity are consumed as human-side drivers"
+    }
+  },
+  "landscape_semantics": "DIRECT_R333_SEALED_ENVIRONMENT_X_PRODUCER_NICHE_TRAITS",
+  "parent": "PASS_R333_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE_ANIMAL_ECOLOGICAL_PARTNERS_DOMESTICATION_TRAJECTORIES_AND_FOOD_PRODUCTION_EMERGENCE_SEALED",
+  "parent_hashes": {
+    "r332_regional_sha256": "dfad48a7cdb85580fe81b6aa69cd68ca87cff17e9da491252c044b9a76ce7fd1",
+    "r332_subsistence_sha256": "77c9296953b44a3cd1e1b90a7c07e89f6b6fe6b33010be1083cfcb2364b5639a",
+    "r333_environment_sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+  },
+  "producer_authority_semantics": "36_ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCER_TAXA_DERIVED_FROM_SEALED_RESOURCE_NICHES_AND_LIFE_HISTORY_PRIORS",
+  "retroactive_h0_flora_phylogeny_claimed": false,
+  "stage": "v0.6D1-R3.34",
+  "status": "R334_PRODUCER_OPERATIONAL_TAXON_AUTHORITY",
+  "taxonomic_claim": "NO_NAMED_OR_DEEP_PHYLOGENETIC_PLANT_SPECIES_CLAIM",
+  "time_window_ka": [
+    20.0,
+    0.0
+  ],
+  "trait_names": [
+    "edible_yield",
+    "harvestability",
+    "propagation_controllability",
+    "annuality",
+    "maturation_speed",
+    "seed_or_propagule_size",
+    "dormancy",
+    "shattering_or_dispersal",
+    "selfing_compatibility",
+    "clonal_propagation",
+    "disturbance_affinity",
+    "defense_toxicity",
+    "genetic_responsiveness",
+    "wild_gene_flow_base",
+    "temperature_optimum",
+    "precipitation_optimum",
+    "niche_breadth"
+  ],
+  "unique_human_identity_materialized": false
+}

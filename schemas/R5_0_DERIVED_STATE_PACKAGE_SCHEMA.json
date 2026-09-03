@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ARCANA/R5_0_DERIVED_STATE_PACKAGE_SCHEMA.json",
+  "title": "ARCANA WorldSim R5.0 Derived State Package Metadata",
+  "type": "object",
+  "required": ["stage", "status", "query_id", "target_age_ka", "semantic_state_sha256", "domain_coverage", "provenance_modes", "governance"],
+  "properties": {
+    "stage": {"const": "v0.6D1-R5.0"},
+    "status": {"const": "R50_DERIVED_STATE_QUERY_COMPLETE"},
+    "query_id": {"type": "string"},
+    "target_age_ka": {"type": "number", "minimum": 0},
+    "semantic_state_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "array_shapes": {"type": "object"},
+    "domain_coverage": {"type": "object"},
+    "provenance_modes": {"type": "object"},
+    "governance": {
+      "type": "object",
+      "required": ["canonical_state_changed", "full_history_rerun_performed", "external_engine_execution_performed", "temporal_extrapolation_performed", "deep_biological_coupling"],
+      "properties": {
+        "canonical_state_changed": {"const": false},
+        "full_history_rerun_performed": {"const": false},
+        "external_engine_execution_performed": {"const": false},
+        "temporal_extrapolation_performed": {"const": false},
+        "deep_biological_coupling": {"const": false}
+      }
+    }
+  }
+}

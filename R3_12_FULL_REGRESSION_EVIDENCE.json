@@ -1,0 +1,33 @@
+{
+  "schema": "ARCANA_R312_FULL_REGRESSION_EVIDENCE_V1",
+  "stage": "v0.6D1-R3.12",
+  "all_pass": true,
+  "full_unique_suite": {
+    "passed": 281,
+    "failed": 0,
+    "blocks": [
+      {
+        "name": "cross_engine_nemo_r310_r312",
+        "passed": 108
+      },
+      {
+        "name": "r37_core_r38_r39",
+        "passed": 60
+      },
+      {
+        "name": "r37e_to_r37h_shadow_production",
+        "passed": 30
+      },
+      {
+        "name": "r31_to_r36_rebased_and_segregation",
+        "passed": 83
+      }
+    ]
+  },
+  "immediate_post_run_regression": {
+    "passed": 44,
+    "failed": 0,
+    "scope": "R3.12 + R3.11 + R3.10 + R3.9 + R3.8 + R3.7I"
+  },
+  "note": "The 281-test total counts each inherited test file once. Some aggregate invocations were split because long-lived worker/process teardown exceeded the wrapper timeout after pytest had already reported PASS; final evidence was rerun in smaller groups/file-by-file with normal PASS completion."
+}

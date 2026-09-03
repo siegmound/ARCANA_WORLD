@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ARCANA/R5_0_QUERY_CONTRACT_SCHEMA.json",
+  "title": "ARCANA WorldSim R5.0 Arbitrary-Age Query Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["query_id", "target_age_ka"],
+  "properties": {
+    "query_id": {"type": "string", "minLength": 1},
+    "target_age_ka": {"type": "number", "minimum": 0},
+    "requested_domains": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": ["population", "surface_paleogeography", "climate", "hydrology", "resources", "flora", "fauna"]
+      }
+    },
+    "resolution_profile": {"const": "NATIVE_90X180_WITH_DEME_DETAIL"},
+    "region": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["grid_row_min", "grid_row_max", "grid_col_min", "grid_col_max"],
+          "properties": {
+            "grid_row_min": {"type": "integer", "minimum": 0, "maximum": 89},
+            "grid_row_max": {"type": "integer", "minimum": 0, "maximum": 89},
+            "grid_col_min": {"type": "integer", "minimum": 0, "maximum": 179},
+            "grid_col_max": {"type": "integer", "minimum": 0, "maximum": 179}
+          }
+        }
+      ]
+    },
+    "allow_temporal_interpolation": {"type": "boolean", "default": true},
+    "allow_temporal_extrapolation": {"const": false},
+    "canonical_write": {"const": false}
+  }
+}

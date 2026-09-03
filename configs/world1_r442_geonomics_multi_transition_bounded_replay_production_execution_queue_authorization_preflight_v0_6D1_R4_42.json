@@ -1,0 +1,58 @@
+{
+  "stage": "v0.6D1-R4.42",
+  "policy": "R442_BOUNDED_FULL_SEQUENCE_REPLAY_BEFORE_PRODUCTION_QUEUE_AUTHORIZATION",
+  "parent_required": {
+    "r441_integrated": "28/28 PASS",
+    "r441_final_seal": "21/21 SEALED"
+  },
+  "bounded_replay": {
+    "J14": {
+      "selection": "first frozen branch only",
+      "canonical_states_per_seed": 141,
+      "transitions_per_seed": 140,
+      "frozen_seeds": 4,
+      "expected_transition_validations": 560
+    },
+    "J18": {
+      "selection": "first frozen branch only",
+      "canonical_states_per_seed": 15,
+      "transitions_per_seed": 14,
+      "frozen_seeds": 4,
+      "expected_transition_validations": 56
+    },
+    "J21": {
+      "selection": "full canonical layer sequence",
+      "canonical_states_per_seed": 9,
+      "transitions_per_seed": 8,
+      "native_layers": 147,
+      "dynamic_sidecars": 4,
+      "frozen_seeds": 4,
+      "expected_transition_validations": 32
+    }
+  },
+  "expected_total_transition_validations": 648,
+  "authorization_target": "ARCANA_EXACT_CANONICAL_ANCHOR_REPLAY_QUEUE",
+  "default_geonomics_queue_authorized": false,
+  "bounded_replay_is_scientific_evidence": false,
+  "scientific_readout_authority_closed": false,
+  "scientific_execution_authorized": false,
+  "geonomics_execution_ready": false,
+  "scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "next_action": "BUILD_R443_GEONOMICS_SCIENTIFIC_READOUT_AUTHORITY_METRIC_EXTRACTION_AND_ADJUDICATION_SCHEMA_PREFLIGHT",
+  "r442_r1_clock_validation": {
+    "root_cause": "R441_SINGLE_TRANSITION_HELPER_PASS_CONTRACT_HARD_CODED_TO_MINUS1_TO_0",
+    "repair": "R442_LOCAL_MULTI_STEP_CLOCK_VALIDATOR_EXPECTS_T_MINUS1_TO_T_PER_TRANSITION",
+    "authorized_primitives": [
+      "Model._set_t",
+      "Model._set_comm_t",
+      "Model._set_spp_t"
+    ],
+    "autonomous_ageing": false,
+    "autonomous_movement": false,
+    "autonomous_population_dynamics": false
+  }
+}

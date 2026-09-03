@@ -1,0 +1,256 @@
+{
+  "schema": "ARCANA_R37I_SEALED_RELEASE_AUDIT_V1",
+  "stage": "v0.6D1-R3.7I",
+  "status": "PASS_R37I_CANONICAL_PRODUCTION_SEAL",
+  "checks_passed": 32,
+  "check_count": 32,
+  "checks": [
+    {
+      "name": "exists_PRODUCTION_PROMOTION_SEAL_v0_6D1_R3_7I.json",
+      "pass": true,
+      "detail": "/mnt/data/r37i_sealed_work/outputs/v0_6D1_R3_7I/PRODUCTION_PROMOTION_SEAL_v0_6D1_R3_7I.json"
+    },
+    {
+      "name": "exists_PRODUCTION_PROMOTION_REVIEW_v0_6D1_R3_7I.json",
+      "pass": true,
+      "detail": "/mnt/data/r37i_sealed_work/outputs/v0_6D1_R3_7I/PRODUCTION_PROMOTION_REVIEW_v0_6D1_R3_7I.json"
+    },
+    {
+      "name": "exists_210_to_209p0Ma_R3_7I_canonical.json",
+      "pass": true,
+      "detail": "/mnt/data/r37i_sealed_work/local_runs/v0_6D1_R3_7I/210_to_209p0Ma_R3_7I_canonical.json"
+    },
+    {
+      "name": "exists_v0_6D1_R3_7H_uploaded_container.zip",
+      "pass": true,
+      "detail": "/mnt/data/r37i_sealed_work/reference_results/v0_6D1_R3_7H_REAL_PROMOTION_EVIDENCE/v0_6D1_R3_7H_uploaded_container.zip"
+    },
+    {
+      "name": "exists_v0_6D1_R3_7I_post_seal_outputs.zip",
+      "pass": true,
+      "detail": "/mnt/data/r37i_sealed_work/reference_results/v0_6D1_R3_7H_REAL_PROMOTION_EVIDENCE/v0_6D1_R3_7I_post_seal_outputs.zip"
+    },
+    {
+      "name": "seal_validates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "seal_sha_expected",
+      "pass": true,
+      "detail": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d"
+    },
+    {
+      "name": "review_38_of_38",
+      "pass": true,
+      "detail": [
+        38,
+        38
+      ]
+    },
+    {
+      "name": "review_promotion_eligible",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "parent_r37h_3405_files",
+      "pass": true,
+      "detail": 3405
+    },
+    {
+      "name": "parent_r37h_all_unchanged",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "sealed_json_identity_summary",
+      "pass": true,
+      "detail": {
+        "actual": "2890242b224294b457c79248191d9f96d32a01ee40650967ce2243068cd276aa",
+        "expected": "2890242b224294b457c79248191d9f96d32a01ee40650967ce2243068cd276aa"
+      }
+    },
+    {
+      "name": "sealed_json_identity_K_LOW",
+      "pass": true,
+      "detail": {
+        "actual": "81bd6db0a33e6c5b38f8d5c3a0aecc771adbec7ab5bc35a7c742033a89f1619d",
+        "expected": "81bd6db0a33e6c5b38f8d5c3a0aecc771adbec7ab5bc35a7c742033a89f1619d"
+      }
+    },
+    {
+      "name": "sealed_json_identity_K_CENTER",
+      "pass": true,
+      "detail": {
+        "actual": "73cdba842aa6156c6162b026c047a5eb49d0d052ee0b541c7f25b23372b4fe2b",
+        "expected": "73cdba842aa6156c6162b026c047a5eb49d0d052ee0b541c7f25b23372b4fe2b"
+      }
+    },
+    {
+      "name": "sealed_json_identity_K_HIGH",
+      "pass": true,
+      "detail": {
+        "actual": "6ad42d6d5fad30788c725dd8ed71e9ecfd0d20188e516942194cd0a6bfe62eaa",
+        "expected": "6ad42d6d5fad30788c725dd8ed71e9ecfd0d20188e516942194cd0a6bfe62eaa"
+      }
+    },
+    {
+      "name": "repacked_container_hash_recorded",
+      "pass": true,
+      "detail": "3d223c68ae86a7e351f07a9b4e878c4509a836edb8188950e605d0be5c3dd2c3"
+    },
+    {
+      "name": "sealed_original_container_hash_recorded",
+      "pass": true,
+      "detail": "0a736ea6b1b35ecd92416c968b34a5830167890ad7bbae6efffc06778fcf2287"
+    },
+    {
+      "name": "container_repack_is_not_false_byte_identity",
+      "pass": true,
+      "detail": {
+        "uploaded_repacked": "3d223c68ae86a7e351f07a9b4e878c4509a836edb8188950e605d0be5c3dd2c3",
+        "sealed_source": "0a736ea6b1b35ecd92416c968b34a5830167890ad7bbae6efffc06778fcf2287"
+      }
+    },
+    {
+      "name": "canonical_smoke_stage",
+      "pass": true,
+      "detail": "v0.6D1-R3.7I"
+    },
+    {
+      "name": "canonical_smoke_binding_true",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "canonical_smoke_8_steps",
+      "pass": true,
+      "detail": 8
+    },
+    {
+      "name": "canonical_smoke_zero_clipping",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "canonical_smoke_seal_hash_exact",
+      "pass": true,
+      "detail": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d"
+    },
+    {
+      "name": "canonical_smoke_nominal_k_exact",
+      "pass": true,
+      "detail": {
+        "label": "K_CENTER",
+        "K_eff": 38.47,
+        "semantic_role": "OPERATIONAL_REDUCED_ORDER_COORDINATE_REFERENCE_NOT_PHYSICAL_CONSTANT"
+      }
+    },
+    {
+      "name": "canonical_binding_authorized",
+      "pass": true,
+      "detail": {
+        "canonical_runtime_binding_authorized": true,
+        "segregation_aware_gene_flow_variance_authorized": true,
+        "segregation_aware_coalescence_pooling_authorized": true,
+        "nominal_reduced_order_k_reference_authorized": true,
+        "scalar_k_physical_constant_authorized": false,
+        "k_low_high_release_sentinels_retained": true,
+        "mu_b_or_ceiling_change_authorized": false,
+        "migration_selection_ri_speciation_paleogeography_authority_changed": false
+      }
+    },
+    {
+      "name": "gene_flow_variance_promoted",
+      "pass": true,
+      "detail": {
+        "canonical_runtime_binding_authorized": true,
+        "segregation_aware_gene_flow_variance_authorized": true,
+        "segregation_aware_coalescence_pooling_authorized": true,
+        "nominal_reduced_order_k_reference_authorized": true,
+        "scalar_k_physical_constant_authorized": false,
+        "k_low_high_release_sentinels_retained": true,
+        "mu_b_or_ceiling_change_authorized": false,
+        "migration_selection_ri_speciation_paleogeography_authority_changed": false
+      }
+    },
+    {
+      "name": "coalescence_pooling_promoted",
+      "pass": true,
+      "detail": {
+        "canonical_runtime_binding_authorized": true,
+        "segregation_aware_gene_flow_variance_authorized": true,
+        "segregation_aware_coalescence_pooling_authorized": true,
+        "nominal_reduced_order_k_reference_authorized": true,
+        "scalar_k_physical_constant_authorized": false,
+        "k_low_high_release_sentinels_retained": true,
+        "mu_b_or_ceiling_change_authorized": false,
+        "migration_selection_ri_speciation_paleogeography_authority_changed": false
+      }
+    },
+    {
+      "name": "scalar_k_still_not_physical_constant",
+      "pass": true,
+      "detail": {
+        "canonical_runtime_binding_authorized": true,
+        "segregation_aware_gene_flow_variance_authorized": true,
+        "segregation_aware_coalescence_pooling_authorized": true,
+        "nominal_reduced_order_k_reference_authorized": true,
+        "scalar_k_physical_constant_authorized": false,
+        "k_low_high_release_sentinels_retained": true,
+        "mu_b_or_ceiling_change_authorized": false,
+        "migration_selection_ri_speciation_paleogeography_authority_changed": false
+      }
+    },
+    {
+      "name": "mu_b_ceiling_unchanged",
+      "pass": true,
+      "detail": {
+        "canonical_runtime_binding_authorized": true,
+        "segregation_aware_gene_flow_variance_authorized": true,
+        "segregation_aware_coalescence_pooling_authorized": true,
+        "nominal_reduced_order_k_reference_authorized": true,
+        "scalar_k_physical_constant_authorized": false,
+        "k_low_high_release_sentinels_retained": true,
+        "mu_b_or_ceiling_change_authorized": false,
+        "migration_selection_ri_speciation_paleogeography_authority_changed": false
+      }
+    },
+    {
+      "name": "other_authorities_unchanged",
+      "pass": true,
+      "detail": {
+        "canonical_runtime_binding_authorized": true,
+        "segregation_aware_gene_flow_variance_authorized": true,
+        "segregation_aware_coalescence_pooling_authorized": true,
+        "nominal_reduced_order_k_reference_authorized": true,
+        "scalar_k_physical_constant_authorized": false,
+        "k_low_high_release_sentinels_retained": true,
+        "mu_b_or_ceiling_change_authorized": false,
+        "migration_selection_ri_speciation_paleogeography_authority_changed": false
+      }
+    },
+    {
+      "name": "legacy_gene_flow_variance_retired",
+      "pass": true,
+      "detail": {
+        "legacy_whole_trait_gene_flow_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+        "legacy_whole_trait_coalescence_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+        "r3_7h_closed_loop_binding": "PROMOTED_AS_R3_7I_CANONICAL_RUNTIME_IMPLEMENTATION"
+      }
+    },
+    {
+      "name": "legacy_coalescence_variance_retired",
+      "pass": true,
+      "detail": {
+        "legacy_whole_trait_gene_flow_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+        "legacy_whole_trait_coalescence_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+        "r3_7h_closed_loop_binding": "PROMOTED_AS_R3_7I_CANONICAL_RUNTIME_IMPLEMENTATION"
+      }
+    }
+  ],
+  "sealed_state": "CANONICAL_SEGREGATION_AWARE_RUNTIME_PROMOTED",
+  "seal_sha256": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d",
+  "canonical_smoke_sha256": "5f98837622f7f72d5788669342012d9d99991fdbf0d2c4ea72f06c7d2bb9a823"
+}

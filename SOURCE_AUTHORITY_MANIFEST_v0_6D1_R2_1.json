@@ -1,0 +1,43 @@
+{
+  "authorities": {
+    "parent_r2_runtime": {
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R2.py",
+      "sha256": "2a56552a0121c9a66d42357887bc8ecf18bf90f0063a7e9face002a21b205cb0",
+      "size_bytes": 27302
+    },
+    "r1_common_state": {
+      "path": "outputs/v0_6D1_R1/WORLD1_210Ma_REBASELINE_COMMON_STATE_v0_6D1_R1.npz",
+      "sha256": "51115b9144e33603340680758aaca835211403f8875a09306468c50d96bdc116",
+      "size_bytes": 13738083
+    },
+    "r2_1_runtime": {
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R2_1.py",
+      "sha256": "ca7e0f80d303eac474cfea99b9867733d901fc5a5533b2e9a4fa5d08e2bfb019",
+      "size_bytes": 54990
+    },
+    "sealed_d3_0c_speciation_gate": {
+      "path": "src/d3_speciation_gate_v0_6_3D3_0C.py",
+      "sha256": "1927744f10e39c8c2af39b6e72799bef8b7b8466bea123d1aa28d38c812af028",
+      "size_bytes": 13029
+    }
+  },
+  "library_policy": {
+    "land_remap": "scipy.spatial.cKDTree",
+    "matrix_exponential_transport_used": false,
+    "networkx_added": false,
+    "raster_components": "scipy.ndimage.label",
+    "reproductive_graph_components": "scipy.sparse.csgraph.connected_components"
+  },
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "scipy": "1.17.0",
+  "scope": {
+    "deep_biological_coupling": false,
+    "ordinary_extinction_actuator": true,
+    "persistent_vicariance_fission_implemented": true,
+    "persistent_vicariance_fission_production_enabled": false,
+    "speciation_actuator": true
+  },
+  "stage": "v0.6D1-R2.1"
+}

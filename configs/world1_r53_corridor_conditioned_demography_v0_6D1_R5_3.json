@@ -1,0 +1,31 @@
+{
+  "stage": "v0.6D1-R5.3",
+  "title": "Corridor-Conditioned Demographic Persistence and Bottleneck Validation",
+  "primary_engine": "CDMetaPOP 3.08",
+  "engine_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118",
+  "robust_family_count": 12,
+  "max_patches_per_family": 32,
+  "engine_runtime_generations": 40,
+  "neutral_loci": 16,
+  "neutral_alleles_per_locus": 2,
+  "seeds": [530301, 530302],
+  "stress_profiles": {
+    "D0_STANDARDIZED_BASELINE": {"source_n0": 60, "patch_k": 120},
+    "D1_STANDARDIZED_MODERATE_BOTTLENECK": {"source_n0": 30, "patch_k": 90},
+    "D2_STANDARDIZED_SEVERE_BOTTLENECK": {"source_n0": 12, "patch_k": 60}
+  },
+  "authorized_cdmetapop_fields": ["Year", "N_Initial", "Alleles", "He", "Ho"],
+  "governance": {
+    "r52_range_geometry_used_as_cdmetapop_input": false,
+    "r52_used_only_for_reporting_stratification": true,
+    "engine_counts_are_literal_arcana_population": false,
+    "engine_generations_are_literal_arcana_time": false,
+    "neutral_loci_are_arcana_canonical_genome": false,
+    "external_engine_defines_arcana_target": false,
+    "majority_vote": false,
+    "automatic_numeric_scientific_pass_fail": false,
+    "canonical_write": false,
+    "deep_biological_coupling": false
+  },
+  "seal_policy": "NO_R53_MICRO_SEAL; RETAIN_AS_CANDIDATE/AUDIT AND SEAL ONLY AFTER A LARGER DEMOGRAPHIC-GENETIC BLOCK"
+}

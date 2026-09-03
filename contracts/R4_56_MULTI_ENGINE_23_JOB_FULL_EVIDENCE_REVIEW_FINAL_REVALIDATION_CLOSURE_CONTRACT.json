@@ -1,0 +1,33 @@
+{
+  "stage": "v0.6D1-R4.56",
+  "title": "Multi-Engine 23-Job Full Evidence Review & Final Revalidation Closure",
+  "scope": {
+    "r42_frozen_jobs": 23,
+    "r450_geonomics_jobs": 3,
+    "r455_non_geonomics_jobs": 20
+  },
+  "non_geonomics_review": {
+    "independent_job_bundle_review": true,
+    "bundle_files_per_job": [
+      "RAW_ENGINE_EVIDENCE.json",
+      "SCIENTIFIC_READOUT_EVIDENCE.json",
+      "JOB_AUDIT.json",
+      "JOB_COMPLETE.json"
+    ],
+    "reconstruct_r455_corpus_from_job_bundles": true,
+    "verify_metric_source_artifacts": true
+  },
+  "geonomics_review": {
+    "reuse_authoritative_r450_closure": true,
+    "rehash_all_r450_corpus_manifest_files": true,
+    "new_engine_execution": false
+  },
+  "scientific_claim": {
+    "full_revalidation_closure_allowed": true,
+    "numeric_corroboration_claim": false,
+    "numeric_thresholds": 0,
+    "majority_vote": false,
+    "divergence_claims": 0,
+    "canonical_rewrite": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "ARCANA_R37H_CLOSED_LOOP_THREE_BRANCH_VALIDATION_V1",
+  "stage": "v0.6D1-R3.7H",
+  "verdict": "REVIEW_CLOSED_LOOP_THREE_BRANCH_VALIDATION__PROMOTION_NOT_AUTHORIZED",
+  "end_age_ma": 209.0,
+  "diagnostic_smoke": true,
+  "comparison": {
+    "all_branches_valid": true,
+    "all_branches_clear_of_ceiling": true,
+    "qualitative_ceiling_coherence": true,
+    "peak_q_by_branch": {
+      "K_LOW": 0.02196436286351262,
+      "K_CENTER": 0.02196436286351262,
+      "K_HIGH": 0.02196436286351262
+    },
+    "max_peak_q_spread": 0.0,
+    "final_population_by_branch": {
+      "K_LOW": 1823.6891859777973,
+      "K_CENTER": 1823.6891859777973,
+      "K_HIGH": 1823.6891859777973
+    },
+    "final_population_relative_span_vs_center": 0.0,
+    "species_count_by_branch": {
+      "K_LOW": 120,
+      "K_CENTER": 120,
+      "K_HIGH": 120
+    },
+    "component_count_by_branch": {
+      "K_LOW": 133,
+      "K_CENTER": 133,
+      "K_HIGH": 133
+    },
+    "event_counts_by_branch": {
+      "K_LOW": {},
+      "K_CENTER": {},
+      "K_HIGH": {}
+    },
+    "species_count_exactly_equal": true,
+    "component_count_exactly_equal": true,
+    "event_counts_exactly_equal": true
+  },
+  "production_promotion_gate": {
+    "all_branches_valid": true,
+    "all_branches_clear_of_ceiling": true,
+    "qualitative_ceiling_coherence": true,
+    "governed_closed_loop_pass": false
+  },
+  "governance": {
+    "production_runtime_replacement_authorized": false,
+    "promotion_requires_post_run_review": true,
+    "scalar_K_eff_production_authorized": false
+  }
+}

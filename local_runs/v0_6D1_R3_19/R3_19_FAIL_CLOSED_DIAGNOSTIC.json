@@ -1,0 +1,275 @@
+{
+  "stage": "v0.6D1-R3.19",
+  "verdict": "FAIL_CLOSED_R319_PHASE_AWARE_TRANSPORT_OR_ENDPOINT_SUPPORT_GATE",
+  "wall_seconds": 17.43760371208191,
+  "report": {
+    "start_age_ma": 0.125,
+    "end_age_ma": 0.0,
+    "ordinary_biology_steps": 1,
+    "biology_cadence_years": 125000.0,
+    "transport_substeps": 2,
+    "transport_cadence_years": 62500.0,
+    "phase_aware_transport": true,
+    "transport_trace": [
+      {
+        "phase_index": 1,
+        "dt_years": 62500.0,
+        "forcing_role": "R318_TRANSPORT_PHASE1_125_TO_62P5_EFFECTIVE_FORCING",
+        "population_after_phase": 1217.241447649682
+      },
+      {
+        "phase_index": 2,
+        "dt_years": 62500.0,
+        "forcing_role": "R318_TRANSPORT_PHASE2_62P5_TO_0_EFFECTIVE_FORCING",
+        "population_after_phase": 1217.241447649682
+      }
+    ],
+    "constant_forcing_equivalence_gate": {
+      "state_bit_exact": true,
+      "state_comparison": {
+        "equivalent": true,
+        "arrays": {
+          "guild": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "pop": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "trait": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "va": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "gen": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "current_accessible": {
+            "same": true,
+            "max_abs_error": 0.0
+          }
+        },
+        "reduced_state": {
+          "va_within": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "ancestry_covariance": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "neutral_segregation_potential": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "adaptive_coordinate": {
+            "same": true,
+            "max_abs_error": 0.0
+          }
+        },
+        "exact_fields": {
+          "component_ids": true,
+          "root_species": true,
+          "current_species": true,
+          "registry": true,
+          "child_counters": true,
+          "baselines": true,
+          "ri_state": true,
+          "clock_state": true,
+          "ext_state": true,
+          "founder_state": true,
+          "vicariance_state": true,
+          "reconnection_state": true,
+          "events": true,
+          "snapshots": true,
+          "founder_stats_last": true,
+          "gene_flow_closure": true
+        },
+        "scalar_abs_errors": {
+          "age_ma": 0.0,
+          "elapsed_year": 0.0,
+          "topology_remap_mass": 0.0,
+          "initial_total_population": 0.0
+        },
+        "atol": 0.0
+      },
+      "records_exact": true,
+      "events_exact": true,
+      "snapshots_exact": true,
+      "transport_trace": [
+        {
+          "phase_index": 1,
+          "dt_years": 62500.0,
+          "forcing_role": "R318_FULL_125_TO_0_EFFECTIVE_FORCING_FOR_NONTRANSPORT_R38_OPERATORS",
+          "population_after_phase": 1217.2414476496817
+        },
+        {
+          "phase_index": 2,
+          "dt_years": 62500.0,
+          "forcing_role": "R318_FULL_125_TO_0_EFFECTIVE_FORCING_FOR_NONTRANSPORT_R38_OPERATORS",
+          "population_after_phase": 1217.241447649682
+        }
+      ],
+      "passed": true
+    },
+    "single_environment_shadow": {
+      "role": "DIAGNOSTIC_NON_AUTHORITATIVE_OLD_SINGLE_ENVIRONMENT_COUPLING",
+      "state_exactly_equal_to_phase_aware": false,
+      "state_comparison": {
+        "equivalent": false,
+        "arrays": {
+          "guild": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "pop": {
+            "same": false,
+            "max_abs_error": 0.03636528367056968
+          },
+          "trait": {
+            "same": false,
+            "max_abs_error": 6.068774852963088e-05
+          },
+          "va": {
+            "same": false,
+            "max_abs_error": 8.836267491041383e-07
+          },
+          "gen": {
+            "same": true,
+            "max_abs_error": 0.0
+          },
+          "current_accessible": {
+            "same": true,
+            "max_abs_error": 0.0
+          }
+        },
+        "reduced_state": {
+          "va_within": {
+            "same": false,
+            "max_abs_error": 8.836267491041383e-07
+          },
+          "ancestry_covariance": {
+            "same": false,
+            "max_abs_error": 6.938148925284167e-10
+          },
+          "neutral_segregation_potential": {
+            "same": false,
+            "max_abs_error": 1.1749710542054148e-06
+          },
+          "adaptive_coordinate": {
+            "same": false,
+            "max_abs_error": 6.918706932257379e-06
+          }
+        },
+        "exact_fields": {
+          "component_ids": true,
+          "root_species": true,
+          "current_species": true,
+          "registry": true,
+          "child_counters": true,
+          "baselines": true,
+          "ri_state": false,
+          "clock_state": false,
+          "ext_state": true,
+          "founder_state": false,
+          "vicariance_state": false,
+          "reconnection_state": false,
+          "events": true,
+          "snapshots": true,
+          "founder_stats_last": false,
+          "gene_flow_closure": false
+        },
+        "scalar_abs_errors": {
+          "age_ma": 0.0,
+          "elapsed_year": 0.0,
+          "topology_remap_mass": 0.0,
+          "initial_total_population": 0.0
+        },
+        "atol": 0.0
+      },
+      "species": 134,
+      "components": 295,
+      "population": 1217.241447649682,
+      "records": 1
+    },
+    "r318_phase_environment_global_max_abs_difference": 1.5816467428221057,
+    "parent_species": 134,
+    "parent_components": 295,
+    "parent_total_population": 1217.8946033288662,
+    "final_species": 134,
+    "final_components": 295,
+    "final_total_population": 1217.241447649682,
+    "event_counts_before": {
+      "paleogeographic_support_loss_remap": 1512,
+      "deme_coalescence": 130,
+      "deme_fission": 838,
+      "speciation": 228,
+      "ordinary_background_extinction": 2,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "event_counts_after": {
+      "paleogeographic_support_loss_remap": 1512,
+      "deme_coalescence": 130,
+      "deme_fission": 838,
+      "speciation": 228,
+      "ordinary_background_extinction": 2,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "event_counts_delta": {
+      "paleogeographic_support_loss_remap": 0,
+      "deme_coalescence": 0,
+      "deme_fission": 0,
+      "speciation": 0,
+      "ordinary_background_extinction": 0,
+      "CHA1_species_extinction": 0,
+      "CHA1_high_resolution_event_bridge_complete": 0,
+      "post_CHA1_ordinary_lifecycle_thaw": 0
+    },
+    "peak_q_recorded": 0.047601695825828454,
+    "peak_unclipped_q_recorded": 0.047601695825828454,
+    "clipping_steps": 0,
+    "clipping_contacts": 0,
+    "invariants": {
+      "population_min": 0.0,
+      "population_on_inaccessible_cells": 0.0,
+      "q_max": 0.047601695825828454,
+      "q_median": 0.04481909523635388,
+      "q_ceiling": 0.08,
+      "q_headroom": 0.03239830417417155,
+      "s_symmetry_max_abs": 0.0,
+      "s_diagonal_max_abs": 0.0,
+      "s_min": 0.0
+    },
+    "guild_species": {
+      "1": 61,
+      "2": 1,
+      "3": 7,
+      "4": 56,
+      "5": 9
+    },
+    "speciation_chronology": [],
+    "ordinary_extinction_chronology": [],
+    "fission_chronology": [],
+    "coalescence_chronology": [],
+    "support_remap_semantics": "R38_MACRO_EFFECTIVE_ENVIRONMENT_BOUNDARY_REMAP_PRESERVED",
+    "exact_0ka_endpoint_support_diagnostic": {
+      "population_mass_on_exact_0ka_inaccessible_cells": 3.4292999049868904e-06,
+      "numerical_audit_tolerance": 1e-08,
+      "pass": false,
+      "additional_endpoint_remap_applied": false
+    },
+    "deep_biological_coupling": false,
+    "scientific_parameter_changes": false,
+    "human_lineage_target_used": false
+  },
+  "checkpoint_written": false
+}

@@ -1,0 +1,799 @@
+{
+  "schema": "ARCANA_R320_FORMAL_SEALED_AUDIT_V1",
+  "stage": "v0.6D1-R3.20",
+  "verdict": "PASS_R320_CHA2_YOUNGER_DRYAS_CLASS_MAGNITUDE_AND_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_LAYER_SEALED",
+  "checks": "108/108",
+  "failed": [],
+  "decision": "CHA2_YOUNGER_DRYAS_CLASS_MAGNITUDE_CONFIRMED_AND_DERIVED_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_SEALED_WITHOUT_CULTURAL_TARGETING",
+  "canonical_artifacts": {
+    "summary": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_20\\R3_20_CHA2_YD_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_SUMMARY.json",
+    "summary_sha256": "ab5abbe28bccab3df2d18384ff9563e71d82af4d6a59a4e5484ab5c2b5116cab",
+    "hazard_npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_20\\R3_20_CHA2_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_FIELDS.npz",
+    "hazard_npz_sha256": "4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14"
+  },
+  "magnitude": {
+    "classification": "YOUNGER_DRYAS_CLASS",
+    "metrics": {
+      "baseline_overturning_strength": 0.98922412840008,
+      "freshwater_peak_sv": 0.20270779797753885,
+      "freshwater_peak_year_before_book": -12900,
+      "minimum_overturning_strength": 0.3756271044587676,
+      "minimum_overturning_fraction_of_baseline": 0.3797189066407908,
+      "minimum_overturning_year_before_book": -12850,
+      "strong_suppression_duration_years": 1300.0,
+      "strong_suppression_start_year_before_book": -13200,
+      "strong_suppression_end_year_before_book": -11950,
+      "event_exit_fraction_of_baseline": 0.8,
+      "event_exit_year_before_book": -11900,
+      "event_exit_timing_within_reference_window_diagnostic": true,
+      "full_recovery_fraction_of_baseline_diagnostic": 0.9,
+      "full_recovery_year_before_book_diagnostic": -10500,
+      "full_recovery_detected_by_diagnostic_horizon": true,
+      "maximum_northern_local_cooling_c": 4.918580792825181,
+      "maximum_northern_local_cooling_year_before_book": -12850,
+      "northern_active_land_fraction_cooling_at_least_2c_at_peak": 1.0,
+      "maximum_global_state_cooling_c_diagnostic": 0.09231673360365544,
+      "maximum_global_state_cooling_year_before_book_diagnostic": -12750,
+      "maximum_global_cooling_c": 0.09231673360365544,
+      "maximum_global_cooling_year_before_book": -12750,
+      "recovery_year_before_book": -11900
+    }
+  },
+  "hazard": {
+    "start_year_before_book": -14950,
+    "end_year_before_book": -11000,
+    "step_years": 50,
+    "state_count": 80,
+    "peak_severe_fraction": 0.0005143151037202125,
+    "peak_severe_fraction_year_before_book": -11300,
+    "active_10deg_latitude_bands_at_peak": [
+      0,
+      5,
+      12
+    ]
+  },
+  "independent_replay": {
+    "enabled": true,
+    "magnitude_exact": true,
+    "hazard_array_bit_exact": true
+  },
+  "governance": {
+    "cha2_c1_modified": false,
+    "r319_h0_state_modified": false,
+    "biology_modified": false,
+    "impact_origin_required": false,
+    "human_population_used": false,
+    "settlement_target_used": false,
+    "flood_myth_target_used": false,
+    "religion_target_used": false,
+    "hazard_indices_are_diagnostic_rankings_not_flood_depths": true
+  },
+  "check_rows": [
+    {
+      "name": "summary_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_20\\R3_20_CHA2_YD_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_SUMMARY.json",
+      "expected": "file"
+    },
+    {
+      "name": "npz_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_20\\R3_20_CHA2_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_FIELDS.npz",
+      "expected": "file"
+    },
+    {
+      "name": "summary_sha_exact",
+      "pass": true,
+      "actual": "ab5abbe28bccab3df2d18384ff9563e71d82af4d6a59a4e5484ab5c2b5116cab",
+      "expected": "ab5abbe28bccab3df2d18384ff9563e71d82af4d6a59a4e5484ab5c2b5116cab"
+    },
+    {
+      "name": "npz_sha_exact",
+      "pass": true,
+      "actual": "4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14",
+      "expected": "4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14"
+    },
+    {
+      "name": "summary_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.20",
+      "expected": "v0.6D1-R3.20"
+    },
+    {
+      "name": "summary_schema",
+      "pass": true,
+      "actual": "ARCANA_R320_CHA2_YD_CLASS_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_V1",
+      "expected": "ARCANA_R320_CHA2_YD_CLASS_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_V1"
+    },
+    {
+      "name": "summary_verdict",
+      "pass": true,
+      "actual": "PASS_R320_CHA2_YOUNGER_DRYAS_CLASS_MAGNITUDE_CONFIRMED__15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_LAYER_READY",
+      "expected": "PASS_R320_CHA2_YOUNGER_DRYAS_CLASS_MAGNITUDE_CONFIRMED__15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_LAYER_READY"
+    },
+    {
+      "name": "cha2_c1_hash_pointer",
+      "pass": true,
+      "actual": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f",
+      "expected": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f"
+    },
+    {
+      "name": "magnitude_schema_v2",
+      "pass": true,
+      "actual": "ARCANA_R320_YD_CLASS_MAGNITUDE_AUDIT_V2",
+      "expected": "ARCANA_R320_YD_CLASS_MAGNITUDE_AUDIT_V2"
+    },
+    {
+      "name": "magnitude_r1_revision",
+      "pass": true,
+      "actual": "R1_METRIC_AND_PARENT_SCHEMA_REPAIR",
+      "expected": "R1_METRIC_AND_PARENT_SCHEMA_REPAIR"
+    },
+    {
+      "name": "magnitude_class_yd",
+      "pass": true,
+      "actual": "YOUNGER_DRYAS_CLASS",
+      "expected": "YOUNGER_DRYAS_CLASS"
+    },
+    {
+      "name": "magnitude_passed",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::freshwater_peak_magnitude",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::freshwater_peak_timing",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::overturning_suppression_magnitude",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::overturning_minimum_timing",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::suppression_duration",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::northern_cooling_magnitude",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::northern_cooling_timing",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::event_exit_detected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "magnitude_gate::global_state_cooling_direction",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "metric_exact::baseline_overturning_strength",
+      "pass": true,
+      "actual": 0.98922412840008,
+      "expected": 0.98922412840008
+    },
+    {
+      "name": "metric_exact::freshwater_peak_sv",
+      "pass": true,
+      "actual": 0.20270779797753885,
+      "expected": 0.20270779797753885
+    },
+    {
+      "name": "metric_exact::freshwater_peak_year_before_book",
+      "pass": true,
+      "actual": -12900,
+      "expected": -12900
+    },
+    {
+      "name": "metric_exact::minimum_overturning_strength",
+      "pass": true,
+      "actual": 0.3756271044587676,
+      "expected": 0.3756271044587676
+    },
+    {
+      "name": "metric_exact::minimum_overturning_fraction_of_baseline",
+      "pass": true,
+      "actual": 0.3797189066407908,
+      "expected": 0.3797189066407908
+    },
+    {
+      "name": "metric_exact::minimum_overturning_year_before_book",
+      "pass": true,
+      "actual": -12850,
+      "expected": -12850
+    },
+    {
+      "name": "metric_exact::strong_suppression_duration_years",
+      "pass": true,
+      "actual": 1300.0,
+      "expected": 1300.0
+    },
+    {
+      "name": "metric_exact::strong_suppression_start_year_before_book",
+      "pass": true,
+      "actual": -13200,
+      "expected": -13200
+    },
+    {
+      "name": "metric_exact::strong_suppression_end_year_before_book",
+      "pass": true,
+      "actual": -11950,
+      "expected": -11950
+    },
+    {
+      "name": "metric_exact::event_exit_year_before_book",
+      "pass": true,
+      "actual": -11900,
+      "expected": -11900
+    },
+    {
+      "name": "metric_exact::full_recovery_year_before_book_diagnostic",
+      "pass": true,
+      "actual": -10500,
+      "expected": -10500
+    },
+    {
+      "name": "metric_exact::maximum_northern_local_cooling_c",
+      "pass": true,
+      "actual": 4.918580792825181,
+      "expected": 4.918580792825181
+    },
+    {
+      "name": "metric_exact::maximum_northern_local_cooling_year_before_book",
+      "pass": true,
+      "actual": -12850,
+      "expected": -12850
+    },
+    {
+      "name": "metric_exact::northern_active_land_fraction_cooling_at_least_2c_at_peak",
+      "pass": true,
+      "actual": 1.0,
+      "expected": 1.0
+    },
+    {
+      "name": "metric_exact::maximum_global_state_cooling_c_diagnostic",
+      "pass": true,
+      "actual": 0.09231673360365544,
+      "expected": 0.09231673360365544
+    },
+    {
+      "name": "metric_exact::maximum_global_state_cooling_year_before_book_diagnostic",
+      "pass": true,
+      "actual": -12750,
+      "expected": -12750
+    },
+    {
+      "name": "magnitude_governance_false::impact_origin_required",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::human_population_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::settlement_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::flood_myth_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::religion_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::biology_modified",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::cha2_c1_modified",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::global_temperature_scalar_magnitude_is_hard_gate",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "magnitude_governance_false::full_90pct_overturning_recovery_is_hard_gate",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "event_exit_same_80pct_regime",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "hazard_start",
+      "pass": true,
+      "actual": -14950,
+      "expected": -14950
+    },
+    {
+      "name": "hazard_end",
+      "pass": true,
+      "actual": -11000,
+      "expected": -11000
+    },
+    {
+      "name": "hazard_step_50",
+      "pass": true,
+      "actual": 50,
+      "expected": 50
+    },
+    {
+      "name": "hazard_state_count_80",
+      "pass": true,
+      "actual": 80,
+      "expected": 80
+    },
+    {
+      "name": "hazard_peak_severe_fraction",
+      "pass": true,
+      "actual": 0.0005143151037202125,
+      "expected": 0.0005143151037202125
+    },
+    {
+      "name": "hazard_peak_severe_year",
+      "pass": true,
+      "actual": -11300,
+      "expected": -11300
+    },
+    {
+      "name": "hazard_compound_peak_1",
+      "pass": true,
+      "actual": 1.0,
+      "expected": 1.0
+    },
+    {
+      "name": "hazard_active_band_count_3",
+      "pass": true,
+      "actual": 3,
+      "expected": 3
+    },
+    {
+      "name": "hazard_active_bands_exact",
+      "pass": true,
+      "actual": [
+        0,
+        5,
+        12
+      ],
+      "expected": [
+        0,
+        5,
+        12
+      ]
+    },
+    {
+      "name": "summary_governance_false::cha2_c1_modified",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::r319_h0_state_modified",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::biology_modified",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::impact_origin_required",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::human_population_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::settlement_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::flood_myth_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_governance_false::religion_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "hazard_rankings_not_depths",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "future_human_replay_allowed",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "r319_seal_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R3_19_SEAL_SUMMARY.json",
+      "expected": "file"
+    },
+    {
+      "name": "r319_seal_verdict",
+      "pass": true,
+      "actual": "PASS_R319_CANONICAL_125KA_TO_0_H0_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY__0KA_NATURAL_CONTROL_BIOLOGY_BOUNDARY_SEALED",
+      "expected": "PASS_R319_CANONICAL_125KA_TO_0_H0_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY__0KA_NATURAL_CONTROL_BIOLOGY_BOUNDARY_SEALED"
+    },
+    {
+      "name": "r319_seal_73_73",
+      "pass": true,
+      "actual": "73/73",
+      "expected": "73/73"
+    },
+    {
+      "name": "r319_json_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.json",
+      "expected": "file"
+    },
+    {
+      "name": "r319_npz_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz",
+      "expected": "file"
+    },
+    {
+      "name": "r319_json_sha_exact",
+      "pass": true,
+      "actual": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+      "expected": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71"
+    },
+    {
+      "name": "r319_npz_sha_exact",
+      "pass": true,
+      "actual": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+      "expected": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406"
+    },
+    {
+      "name": "c1_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\cha2_nested_50y.py",
+      "expected": "file"
+    },
+    {
+      "name": "c1_sha_frozen",
+      "pass": true,
+      "actual": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f",
+      "expected": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f"
+    },
+    {
+      "name": "v061_binding_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL",
+      "expected": "dir"
+    },
+    {
+      "name": "a1_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\references\\v0_6D1_R3\\FULL_A1_REFERENCE_210_0Ma.npz",
+      "expected": "file"
+    },
+    {
+      "name": "v061_sha::authorial_seal",
+      "pass": true,
+      "actual": "d097f83ce53fb298689c63458dfa1012d26b3983254ccf25085b91f882e55a2a",
+      "expected": "d097f83ce53fb298689c63458dfa1012d26b3983254ccf25085b91f882e55a2a"
+    },
+    {
+      "name": "v061_sha::model_py",
+      "pass": true,
+      "actual": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f",
+      "expected": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f"
+    },
+    {
+      "name": "v061_sha::recent_history",
+      "pass": true,
+      "actual": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+      "expected": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1"
+    },
+    {
+      "name": "v061_sha::spatial_snapshots",
+      "pass": true,
+      "actual": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "expected": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd"
+    },
+    {
+      "name": "v061_sha::shoreline",
+      "pass": true,
+      "actual": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "expected": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+    },
+    {
+      "name": "replay_mag_pass",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "replay_mag_class",
+      "pass": true,
+      "actual": "YOUNGER_DRYAS_CLASS",
+      "expected": "YOUNGER_DRYAS_CLASS"
+    },
+    {
+      "name": "replay_mag_exact_summary",
+      "pass": true,
+      "actual": {
+        "baseline_overturning_strength": 0.98922412840008,
+        "freshwater_peak_sv": 0.20270779797753885,
+        "freshwater_peak_year_before_book": -12900,
+        "minimum_overturning_strength": 0.3756271044587676,
+        "minimum_overturning_fraction_of_baseline": 0.3797189066407908,
+        "minimum_overturning_year_before_book": -12850,
+        "strong_suppression_duration_years": 1300.0,
+        "strong_suppression_start_year_before_book": -13200,
+        "strong_suppression_end_year_before_book": -11950,
+        "event_exit_fraction_of_baseline": 0.8,
+        "event_exit_year_before_book": -11900,
+        "event_exit_timing_within_reference_window_diagnostic": true,
+        "full_recovery_fraction_of_baseline_diagnostic": 0.9,
+        "full_recovery_year_before_book_diagnostic": -10500,
+        "full_recovery_detected_by_diagnostic_horizon": true,
+        "maximum_northern_local_cooling_c": 4.918580792825181,
+        "maximum_northern_local_cooling_year_before_book": -12850,
+        "northern_active_land_fraction_cooling_at_least_2c_at_peak": 1.0,
+        "maximum_global_state_cooling_c_diagnostic": 0.09231673360365544,
+        "maximum_global_state_cooling_year_before_book_diagnostic": -12750,
+        "maximum_global_cooling_c": 0.09231673360365544,
+        "maximum_global_cooling_year_before_book": -12750,
+        "recovery_year_before_book": -11900
+      },
+      "expected": {
+        "baseline_overturning_strength": 0.98922412840008,
+        "freshwater_peak_sv": 0.20270779797753885,
+        "freshwater_peak_year_before_book": -12900,
+        "minimum_overturning_strength": 0.3756271044587676,
+        "minimum_overturning_fraction_of_baseline": 0.3797189066407908,
+        "minimum_overturning_year_before_book": -12850,
+        "strong_suppression_duration_years": 1300.0,
+        "strong_suppression_start_year_before_book": -13200,
+        "strong_suppression_end_year_before_book": -11950,
+        "event_exit_fraction_of_baseline": 0.8,
+        "event_exit_year_before_book": -11900,
+        "event_exit_timing_within_reference_window_diagnostic": true,
+        "full_recovery_fraction_of_baseline_diagnostic": 0.9,
+        "full_recovery_year_before_book_diagnostic": -10500,
+        "full_recovery_detected_by_diagnostic_horizon": true,
+        "maximum_northern_local_cooling_c": 4.918580792825181,
+        "maximum_northern_local_cooling_year_before_book": -12850,
+        "northern_active_land_fraction_cooling_at_least_2c_at_peak": 1.0,
+        "maximum_global_state_cooling_c_diagnostic": 0.09231673360365544,
+        "maximum_global_state_cooling_year_before_book_diagnostic": -12750,
+        "maximum_global_cooling_c": 0.09231673360365544,
+        "maximum_global_cooling_year_before_book": -12750,
+        "recovery_year_before_book": -11900
+      }
+    },
+    {
+      "name": "npz_keys_exact",
+      "pass": true,
+      "actual": [
+        "years_before_book",
+        "severe_flood_candidate_fraction",
+        "pluvial_flood_potential_index",
+        "coastal_inundation_potential_index",
+        "compound_flood_hazard_index",
+        "drying_hazard_index",
+        "ecosystem_hydrological_shock_index",
+        "hydrological_disruption_index",
+        "meltwater_system_pressure_index",
+        "raw_support_loss_fraction"
+      ],
+      "expected": [
+        "years_before_book",
+        "severe_flood_candidate_fraction",
+        "pluvial_flood_potential_index",
+        "coastal_inundation_potential_index",
+        "compound_flood_hazard_index",
+        "drying_hazard_index",
+        "ecosystem_hydrological_shock_index",
+        "hydrological_disruption_index",
+        "meltwater_system_pressure_index",
+        "raw_support_loss_fraction"
+      ]
+    },
+    {
+      "name": "npz_years_bit_exact",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_severe_fraction_bit_exact",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::pluvial_flood_potential_index",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::coastal_inundation_potential_index",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::compound_flood_hazard_index",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::drying_hazard_index",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::ecosystem_hydrological_shock_index",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::hydrological_disruption_index",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::meltwater_system_pressure_index",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_field_bit_exact::raw_support_loss_fraction",
+      "pass": true,
+      "actual": null,
+      "expected": "array_equal"
+    },
+    {
+      "name": "npz_finite::years_before_book",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::severe_flood_candidate_fraction",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::pluvial_flood_potential_index",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::coastal_inundation_potential_index",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::compound_flood_hazard_index",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::drying_hazard_index",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::ecosystem_hydrological_shock_index",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::hydrological_disruption_index",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::meltwater_system_pressure_index",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "npz_finite::raw_support_loss_fraction",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "replay_peak_severe_fraction",
+      "pass": true,
+      "actual": 0.0005143151037202125,
+      "expected": 0.0005143151037202125
+    },
+    {
+      "name": "replay_peak_severe_year",
+      "pass": true,
+      "actual": -11300,
+      "expected": -11300
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "stage": "v0.6D1-R5.0",
+  "stage_name": "SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY",
+  "authority_type": "AUTHORIAL_SCIENTIFIC_SEAL_CONTRACT",
+  "candidate_status_required": "PASS_R50_QUERY_CONTRACT_AUTHORITY_RESOLVER_AND_20KA_17P5KA_END_TO_END_CANDIDATE",
+  "candidate_artifact_count_required": 15,
+  "exact_parent_hash_count_required": 9,
+  "semantic_state_sha256": {
+    "20ka": "ad0770c10074a5030a74f641ff3852372aab6806089f5512b605a718cb6c5554",
+    "17p5ka": "bc70bf068154be48f5d3ffe981d02833f55b8448b59ae3bf9f78d6b34a9313ef"
+  },
+  "required_provenance_modes": {
+    "20ka": {
+      "population_summary": "EXACT",
+      "population_detail": "EXACT",
+      "contact_admixture": "EXACT",
+      "environment": "EXACT",
+      "flora": "EXACT",
+      "fauna": "EXACT"
+    },
+    "17p5ka": {
+      "population_summary": "EXACT",
+      "population_detail": "BOUNDED_SPATIAL_RECONSTRUCTION",
+      "contact_admixture": "EXACT",
+      "environment": "BRACKETED_LINEAR",
+      "flora": "BRACKETED_LINEAR",
+      "fauna": "BRACKETED_LINEAR"
+    }
+  },
+  "required_governance_false": [
+    "canonical_state_changed",
+    "canonical_write",
+    "deep_biological_coupling",
+    "external_engine_execution_performed",
+    "full_history_rerun_performed",
+    "randomness_used",
+    "readjudication_of_arcana_canonical_target_performed",
+    "renderer_or_visualization_execution_performed",
+    "target_numeric_execution_performed",
+    "temporal_extrapolation_performed"
+  ],
+  "final_verdict": "PASS_R50_SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY_SEALED",
+  "scientific_meaning": "R5.0 seals the deterministic derived-state query capability and its 20 ka / 17.5 ka demonstrations. It does not rewrite canonical WorldSim history and does not promote derived refinements into canonical state."
+}

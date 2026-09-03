@@ -1,0 +1,20 @@
+{
+  "stage": "v0.6D1-R4.46-R1",
+  "status": "PASS_R446_R1_EVIDENCE_MANIFEST_METRIC_ID_ORDER_REPAIR_APPLIED",
+  "prepatch_module_sha256": "846b1c7d621bb4aa5c48787441b831e4303c2ee166d2f64e5a192249a5c4b423",
+  "postpatch_module_sha256": "5b17d1ee8ef3cb18741764557d8534e72045983edf0109790876a5b9f7f3ecdb",
+  "root_cause": "R446_EVIDENCE_MANIFEST_SORTED_ACTUAL_METRIC_IDS_BUT_COMPARED_AGAINST_NONCANONICALLY_ORDERED_HARD_CODED_LIST",
+  "repair": "COMPARE_SORTED_ACTUAL_METRIC_IDS_TO_SORTED_EXACT_FIVE_AUTHORIZED_METRIC_IDS",
+  "governance": {
+    "failed_r446_evidence_preserved": true,
+    "scientific_execution_rerun_performed": false,
+    "scientific_evidence_values_modified": false,
+    "metric_records_modified": false,
+    "metric_ids_added_or_removed": false,
+    "numeric_thresholds_added": false,
+    "automatic_scientific_pass_fail_added": false,
+    "readjudication_performed": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

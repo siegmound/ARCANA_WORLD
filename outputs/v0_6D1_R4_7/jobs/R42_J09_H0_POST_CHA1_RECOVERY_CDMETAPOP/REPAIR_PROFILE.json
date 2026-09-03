@@ -1,0 +1,48 @@
+{
+  "canonical_write": false,
+  "engine": "CDMetaPOP",
+  "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+  "original_r43_contract": "outputs\\v0_6D1_R4_3\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP\\JOB_CONTRACT.json",
+  "original_r43_contract_sha256": "a3d6b4d21e78820c775911dbc59ecf9055c0882c15a523abb08d8b5b6ae70d7d",
+  "original_seed_ledger": [
+    {
+      "replicate_index": 0,
+      "seed": 55525513
+    },
+    {
+      "replicate_index": 1,
+      "seed": 66696762
+    },
+    {
+      "replicate_index": 2,
+      "seed": 413622220
+    },
+    {
+      "replicate_index": 3,
+      "seed": 72612355
+    }
+  ],
+  "repair_profile": {
+    "bounded_end_support_ratio": 0.9346173303061878,
+    "cdclimate_knot_policy": "REUSE_EXISTING_GENERIC_CDCLIMATE_KNOTS_AND_LINEARLY_INTERPOLATE_RELATIVE_K_SUPPORT_ACROSS_KNOT_INDEX",
+    "comparison_target_used": false,
+    "dynamic_parameter": "PatchVars.K",
+    "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+    "initial_n0_policy": "SCALAR_START_ONLY_NO_LATER_REINJECTION",
+    "provenance": {
+      "artifact": "references\\v0_6D1_R3\\FULL_A1_REFERENCE_210_0Ma.npz",
+      "artifact_sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "end_mean_reference_population": 0.015486438041700756,
+      "start_mean_reference_population": 0.01656981690744733
+    },
+    "raw_end_support_ratio": 0.9346173303061878,
+    "safety_bound_active": false,
+    "safety_bounds": [
+      0.25,
+      4.0
+    ],
+    "start_k_scale_formula": "0.70 + 0.60 * normalized_habitat_fraction_start"
+  },
+  "stage": "v0.6D1-R4.7",
+  "window_id": "H0_POST_CHA1_RECOVERY"
+}

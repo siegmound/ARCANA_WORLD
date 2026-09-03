@@ -1,0 +1,28 @@
+{
+  "stage": "v0.6D1-R4.55-R1",
+  "status": "PASS_R455_R1_SEED_LEDGER_ORDER_AND_R43_CONFIG_INDEX_REPAIR_APPLIED",
+  "prepatch_module_sha256": "cca9ac0297cd574531651a62e814c0d9cebbcd1d3b8b6c274976943eedcfa353",
+  "postpatch_module_sha256": "870001cabd0708ca1c2ccb8c1fc23987af6daf7635fe2fb590901ed63df57a20",
+  "root_causes": [
+    "R455_PREFLIGHT_TREATED_R452_SEED_LIST_ORDER_AS_SCIENTIFIC_AUTHORITY",
+    "R455_R43_CONFIG_PARSER_ASSUMED_SEED_1_THROUGH_SEED_4_INSTEAD_OF_EXACT_FOUR_SEED_INDEX_KEYS"
+  ],
+  "repair": {
+    "job_seed_authority": "EXACT_FOUR_UNIQUE_SEED_MEMBERSHIP_PER_JOB",
+    "seed_order_authority": false,
+    "r43_config_seed_parser": "EXACTLY_FOUR_DISTINCT_SEED_INDEX_KEYS_SORTED_BY_NUMERIC_INDEX",
+    "raw_evidence_seed_validation": "EXACT_MEMBERSHIP_NOT_LIST_ORDER"
+  },
+  "governance": {
+    "blocked_r455_preexecution_evidence_preserved": true,
+    "scientific_engine_execution_in_blocked_r455": false,
+    "r452_seed_values_modified": false,
+    "r452_job_scope_modified": false,
+    "r453_metric_authority_modified": false,
+    "adapter_source_modified": false,
+    "job_contract_modified": false,
+    "numeric_thresholds_added": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

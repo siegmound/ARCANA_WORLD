@@ -1,0 +1,85 @@
+{
+  "authority_note": "R3.6C adds cadence-normalized three-way validation infrastructure only; no canonical D3 authority is changed.",
+  "external_reference": {
+    "NEMO": {
+      "notes": [
+        "per-generation dispersal must be cadence-normalized from ARCANA finite-step exchange",
+        "actual engine execution pending validated NEMO configuration"
+      ],
+      "official_site": "https://nemo2.sourceforge.io/",
+      "required_version": "2.4.2",
+      "verified_date": "2026-08-28"
+    }
+  },
+  "hard_locks": {
+    "automatic_calibration_allowed": false,
+    "b_per_myr_per_q": 0.9876543209876544,
+    "canonical_write_allowed": false,
+    "mu_q_per_myr": 0.002,
+    "q_star": 0.045
+  },
+  "new_r3_6c_sources": [
+    {
+      "bytes": 13975,
+      "path": "src/arcana_worldsim/scientific_engines/cadence_validation.py",
+      "sha256": "a7a26e868c417bbc35349d2884dc15828a64dfbde8ceb04203f21e1533232f9a"
+    },
+    {
+      "bytes": 3981,
+      "path": "tests/test_cross_engine_cadence_v0_6D1_R3_6C.py",
+      "sha256": "bdf0205d69d3a3a8ccfcff4b7cf04ad57cb1eaca0dc4ce48c8ce9f065c95d7fd"
+    },
+    {
+      "bytes": 3733,
+      "path": "scripts/run_cross_engine_cadence_v0_6D1_R3_6C.py",
+      "sha256": "d82bbf6da5665babdacde10c26e492c568bb6ae1ea3a9b27b4076d8ca11eb8f3"
+    },
+    {
+      "bytes": 5249,
+      "path": "scripts/audit_v0_6D1_R3_6C.py",
+      "sha256": "7dadd837099acab723f2b16f30e0986214f09302352919cb244e788c9ed14735"
+    },
+    {
+      "bytes": 2056,
+      "path": "QUANTITATIVE_GENETICS_THREE_WAY_CADENCE_VALIDATION_CONTRACT_v0_6D1_R3_6C.md",
+      "sha256": "362e8742280e308a2064d60960ff5ec02918b6e6ba3e302259ddfca449d9580b"
+    },
+    {
+      "bytes": 979,
+      "path": "NEMO_PER_GENERATION_CADENCE_MAPPING_AUDIT_v0_6D1_R3_6C.md",
+      "sha256": "950afa27c3fc50d9d5f878408380a839727787bcc07d9533fa24ffdc6ae05b72"
+    },
+    {
+      "bytes": 636,
+      "path": "CROSS_ENGINE_POPULATION_SCALE_CONTRACT_v0_6D1_R3_6C.md",
+      "sha256": "9b2821971e0e91ff30ff22415a135c54c22e85d3edb4149b0da6b74e12acff81"
+    },
+    {
+      "bytes": 523,
+      "path": "README_R3_6C.md",
+      "sha256": "1a7e66f1f8e62039aeddbebd34938c6e1db825f4c4be4b2e626e36c802dcbcf5"
+    },
+    {
+      "bytes": 773,
+      "path": "V0_6D1_R3_6C_STATUS.md",
+      "sha256": "a4edce7d0865c4914e21c1633865140f320f051d0b13d4766a9579c1b1eec41a"
+    },
+    {
+      "bytes": 836,
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_6C.md",
+      "sha256": "ee85f56bf5408a0046529aecd60cf9c5f3c50b1e74388659d9588f84e3b2cab7"
+    },
+    {
+      "bytes": 752,
+      "path": "configs/world1_cross_engine_cadence_v0_6D1_R3_6C.json",
+      "sha256": "d1f02a1deef71859c483ae2a1721af5fdda4beff62705005ca15da4d4592cf83"
+    },
+    {
+      "bytes": 228,
+      "path": "run_v0_6D1_R3_6C_checks.ps1",
+      "sha256": "f7c4c1e49942cf82f0765364f8e9bf79504685cb105f200d3c59d46a6756d9ed"
+    }
+  ],
+  "parent_stage": "v0.6D1-R3.6B",
+  "stage": "v0.6D1-R3.6C"
+}

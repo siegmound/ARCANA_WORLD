@@ -1,0 +1,93 @@
+{
+  "audit": "FINAL_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE",
+  "checks": [
+    {
+      "detail": "PASS_R416_RECOVERED_METRIC_PROMOTION_GATE_AND_ARCANA_TARGET_SEMANTIC_PROTOCOL_FORMALIZATION_SEALED",
+      "name": "parent_r416_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R417_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE_COMPLETE",
+      "name": "r417_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r417_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": 2,
+      "name": "exact_two_recovered_metric_closures",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "zero_result_selected_metric_promotions",
+      "pass": true
+    },
+    {
+      "detail": 59,
+      "name": "exact_59_target_extractor_records",
+      "pass": true
+    },
+    {
+      "detail": {
+        "with": 47,
+        "without": 12
+      },
+      "name": "target_candidate_accounting_47_12",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_readjudication",
+      "pass": true
+    },
+    {
+      "detail": "R417_TARGET_EXTRACTION_AND_PROMOTION_CLOSURE_FROZEN",
+      "name": "r418_plan_frozen",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_engine_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "next_action": "BUILD_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE",
+  "stage": "v0.6D1-R4.17",
+  "status": "PASS_R417_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE_SEALED",
+  "summary": {
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "deep_biological_coupling": false,
+    "engine_execution_performed": false,
+    "next_action": "BUILD_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE",
+    "p1_proxy_only_materialized_count": 2,
+    "p1_source_candidate_exhausted_count": 44,
+    "p1_target_design_gap_count": 12,
+    "p1_target_materialized_cell_count": 3,
+    "p2_backlog_cell_count": 6,
+    "p3_backlog_cell_count": 6,
+    "r418_target_comparability_validation_candidate_count": 1,
+    "readjudication_performed": false,
+    "recovered_metric_adjudicative_promotion_count": 0,
+    "recovered_metric_nonadjudicative_closure_count": 2
+  },
+  "verdict": "SEALED"
+}

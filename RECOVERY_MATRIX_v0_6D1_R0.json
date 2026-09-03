@@ -1,0 +1,109 @@
+{
+  "stage": "v0.6D1-R0 \u2014 Historical Artifact Recovery Audit",
+  "verdict": "PASS_RECOVERY_AUDIT_WITH_PARTIAL_RAW_SURVIVAL_AND_EXECUTABLE_HISTORY_STILL_MISSING",
+  "full_210_to_0_HX_authorized": false,
+  "authority_policy": {
+    "executable_parent": "SHA256 exact match required where historical hash is recorded",
+    "raw_artifact": "raw bytes may validate/output history but do not substitute for executable parity authority",
+    "summary_document": "evidence only; never reconstruct populations/traits/solver state from summary prose"
+  },
+  "expected_historical_package_hashes": {
+    "v0.6.3D1": "75a8bd4e90103e20ff308ef052871289eb3a608a558288abf1622c36a3b7fb1c",
+    "v0.6.3D2.T": "3b236d3a0a3a048b300d1fcd818006bedc93130c6a17abf9378635f0b6d76aa8",
+    "v0.6.3D2.1": "e751668c7a8232cf67b791b93312ad89050d8a7b2fd8cd4f9da4422fc0bc8828",
+    "v0.6.3D2.1.1": "918b5693efb0db81628efaba3f7f63b6365c1f975aba36d123401c2aede52905",
+    "v0.6.3D2.2": "42f6c506dcb81ed06549713bdf6f2313aa51bd2cb55fe17571fce493923394a8",
+    "v0.6.3D2_original": "HASH_NOT_RECOVERED_FROM_SURVIVING_RECORDS"
+  },
+  "recovery_classes": [
+    {
+      "class": "FOUND_LOCAL_SUPPORT",
+      "items": [
+        {
+          "item": "D1 species_metadata.json",
+          "evidence": "present inside all three mounted later runpacks",
+          "use": "exact 120 identity/parameter metadata surface; not 210 Ma population raster"
+        },
+        {
+          "item": "D3.0A post_cha1_spatial_bridge_state.npz",
+          "evidence": "present inside all three mounted later runpacks",
+          "use": "real 31 survivor -> 115 deme seed boundary"
+        },
+        {
+          "item": "D3.0A spatial_bridge_diagnostics.json",
+          "evidence": "present inside all three mounted later runpacks",
+          "use": "population conservation and bridge provenance"
+        }
+      ]
+    },
+    {
+      "class": "FOUND_FILE_LIBRARY_RAW_REFERENCE",
+      "items": [
+        {
+          "item": "species_population_timeseries.csv",
+          "use": "D2.2 species-level population trajectory"
+        },
+        {
+          "item": "physical_foodweb_timeseries.csv",
+          "use": "D2.2 physical/food-web forcing and abundance trajectory"
+        },
+        {
+          "item": "CHA1_survivor_registry.json",
+          "use": "preferred D2.2 survivor identity authority output"
+        },
+        {
+          "item": "species_diagnostics.json",
+          "use": "D2.2 vulnerability/frailty/extinction diagnostics"
+        }
+      ],
+      "note": "These are File Library references in this session, not mounted local bytes in the generated package."
+    },
+    {
+      "class": "DOCUMENTED_BUT_BYTES_NOT_FOUND",
+      "items": [
+        "outputs/stores/arcana_rawfirst.sqlite",
+        "outputs/raw/physical_reference_cube.nc",
+        "frozen D2 species raster NPZ",
+        "cha1_highres_state.npz",
+        "extinction_events.json",
+        "recovery_milestones.json",
+        "solver_diagnostics.json",
+        "reptiloid_survivor_E_M.json",
+        "cha1_spatial_survivor_footprint_66Ma.npz",
+        "cha1_highres_audit.json",
+        "cha1_highres_manifest.json",
+        "exact D1/D2.T/D2.1/D2.1.1/D2.2 executable packages"
+      ]
+    },
+    {
+      "class": "UNSAFE_TO_RECONSTRUCT",
+      "items": [
+        "D1 210 Ma population raster/state from metadata or prose",
+        "D2 210->66 Ma population/trait trajectory from summaries",
+        "D2.2 continuous-hazard solver from CSV/JSON outputs",
+        "historical HSG_025 Deep state from HSG_003 structural proxy",
+        "original H0 bit-identical history from post-CHA1 D3 geometry"
+      ]
+    },
+    {
+      "class": "SAFE_DERIVABLE_OR_VERIFIABLE",
+      "items": [
+        "D1 exact species identity/metadata surface",
+        "D2 historical topology counts: 120 initial, 121 ever, 1 ordinary extinction, 1 speciation",
+        "D2 branch topology HSG_003 -> HSG_025 and recorded gate metrics",
+        "D2.2 120 -> 89 extinct -> 31 survivor output validation",
+        "D2.2 -> D3.0A 31 -> 115 representation bridge validation"
+      ]
+    }
+  ],
+  "current_local_scan_summary": {
+    "authorization_note": "R0 never authorizes production HX by itself. The original pre-CHA1 D2 executable/runtime authority must also be bound and Deep-OFF parity must pass.",
+    "exact_packages_found": 0,
+    "minimum_exact_parent_set_found": false,
+    "production_historical_hx_authorized": false,
+    "raw_targets_found": 0,
+    "support_targets_found": 3
+  },
+  "recommended_next_stage": "v0.6D1-R1 \u2014 Local Archive Recovery Scanner & Source Rehydration Gate",
+  "fallback_if_original_history_is_unrecoverable": "Create an explicitly NEW paired historical baseline H0-R and HX-R from the earliest authoritative reconstructible state; never label it bit-identical original D2 history."
+}

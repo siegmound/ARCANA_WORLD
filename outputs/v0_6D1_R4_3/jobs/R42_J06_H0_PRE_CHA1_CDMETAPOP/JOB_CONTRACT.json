@@ -1,0 +1,295 @@
+{
+  "baseline_descriptor": {
+    "comparison_only_derived": {
+      "component_ratio": 1.0,
+      "normalized_va_delta": 8.886868716209695e-06,
+      "population_ratio": 0.9840750546061285,
+      "richness_ratio": 1.0445205479452055
+    },
+    "comparison_target_end_state": {
+      "coalescence_events_cumulative": 53,
+      "component_count": 739,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 659,
+      "fractional_support_cells": 0,
+      "max_intrinsic_ri": 1.0,
+      "max_isolation_clock_generations": 60411862.26361452,
+      "median_normalized_va": 0.04485950591670373,
+      "speciation_events_cumulative": 185,
+      "species_richness": 305,
+      "total_population": 1617.104703585379
+    },
+    "descriptor_type": "H0_SNAPSHOT_WINDOW",
+    "exogenous_physical_forcing": {
+      "delta": {
+        "mean_aridity_index": 0.0008930051308355114,
+        "mean_carrying_capacity": -0.00029701644011941725,
+        "mean_population": -0.00026970937924204047,
+        "mean_temperature_c": -0.034220781047778814,
+        "mean_total_edible_forage": -0.00026527860420353516
+      },
+      "end": {
+        "land_anchor_age_ma": 66.0,
+        "land_fraction_nearest_anchor": 0.25598765432098763,
+        "mean_aridity_index": 0.2333293511102229,
+        "mean_carrying_capacity": 0.03028070662136155,
+        "mean_population": 0.016630552398571172,
+        "mean_temperature_c": 3.306419240577882,
+        "mean_total_edible_forage": 0.022893597867201874
+      },
+      "interpolation": "LINEAR_ON_GLOBAL_SCALAR_SUMMARIES_BETWEEN_A1_ANCHORS;_LAND_NEAREST_ANCHOR_ONLY",
+      "role": "PREEXISTING_CANONICAL_EXOGENOUS_PHYSICAL_COMPANION_FROZEN_IN_R43_PRE_RESULT",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "source": "references\\v0_6D1_R3\\FULL_A1_REFERENCE_210_0Ma.npz",
+      "start": {
+        "land_anchor_age_ma": 66.0,
+        "land_fraction_nearest_anchor": 0.25598765432098763,
+        "mean_aridity_index": 0.2324363459793874,
+        "mean_carrying_capacity": 0.030577723061480967,
+        "mean_population": 0.016900261777813213,
+        "mean_temperature_c": 3.340640021625661,
+        "mean_total_edible_forage": 0.02315887647140541
+      }
+    },
+    "materialized": {
+      "end_age": 66.0,
+      "start_age": 70.0
+    },
+    "selected_frozen_artifact": {
+      "bytes": 1734982,
+      "exists": true,
+      "hash_match": true,
+      "observed_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+      "path": "local_runs\\v0_6D1_R3_10\\WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.json",
+      "registered_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469"
+    },
+    "selection_rule": "TEMPORAL_COVERAGE_ONLY_PRE_RESULT_NO_SCIENTIFIC_VALUE_SELECTION",
+    "start_state": {
+      "coalescence_events_cumulative": 51,
+      "component_count": 739,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 657,
+      "fractional_support_cells": 63,
+      "max_intrinsic_ri": 1.0,
+      "max_isolation_clock_generations": 58689873.42162405,
+      "median_normalized_va": 0.04485061904798752,
+      "speciation_events_cumulative": 172,
+      "species_richness": 292,
+      "total_population": 1643.2737482941457
+    },
+    "target": {
+      "end": 66.0,
+      "start": 70.0,
+      "unit": "Ma"
+    },
+    "temporal_gap": {
+      "end_ma": 0.0,
+      "start_ma": 0.0
+    }
+  },
+  "canonical_write": false,
+  "comparison_target": {
+    "arcana_end_state": {
+      "coalescence_events_cumulative": 53,
+      "component_count": 739,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 659,
+      "fractional_support_cells": 0,
+      "max_intrinsic_ri": 1.0,
+      "max_isolation_clock_generations": 60411862.26361452,
+      "median_normalized_va": 0.04485950591670373,
+      "speciation_events_cumulative": 185,
+      "species_richness": 305,
+      "total_population": 1617.104703585379
+    },
+    "derived_end_response": {
+      "component_ratio": 1.0,
+      "normalized_va_delta": 8.886868716209695e-06,
+      "population_ratio": 0.9840750546061285,
+      "richness_ratio": 1.0445205479452055
+    },
+    "use": "POST_EXECUTION_NORMALIZATION_AND_R4.4_ADJUDICATION_ONLY"
+  },
+  "engine_input": {
+    "derived_from": "ARCANA_START_STATE_AND_EXOGENOUS_FORCING_ONLY",
+    "drivers": {
+      "arcana_start_population_descriptor": 1643.2737482941457,
+      "engine_gene_flow_rate": 0.024099537037037037,
+      "engine_selection_strength": 0.0,
+      "normalized_connectivity_start": 0.44199074074074074,
+      "normalized_environment_change": -0.01058410896513658,
+      "normalized_habitat_fraction_end": 0.25598765432098763,
+      "normalized_habitat_fraction_start": 0.25598765432098763,
+      "normalized_initial_genetic_diversity": 0.5606327380998439,
+      "normalized_initial_population_scale": 1.0
+    },
+    "end_state_leakage": false,
+    "replicates": [
+      {
+        "replicate_index": 0,
+        "seed": 1869692640
+      },
+      {
+        "replicate_index": 1,
+        "seed": 573266817
+      },
+      {
+        "replicate_index": 2,
+        "seed": 1549947756
+      },
+      {
+        "replicate_index": 3,
+        "seed": 1073281537
+      }
+    ],
+    "representative_runtime": {
+      "steps": 5,
+      "unit": "generations"
+    }
+  },
+  "execution_semantics": {
+    "arcana_end_state_use": "COMPARISON_TARGET_ONLY",
+    "description": "Each external engine is run on a reproducible engine-native representative response experiment parameterized from the frozen ARCANA historical-window start state and exogenous forcing. Historical duration is mapped explicitly to representative engine time; the mapping never asserts literal equality of years, generations, model steps, cohorts, cells or individual counts.",
+    "discordance_adjudication_in_r43": false,
+    "end_state_leakage_forbidden": true,
+    "literal_multi_myr_engine_replay": false,
+    "mode": "NORMALIZED_BOUNDARY_RESPONSE_REVALIDATION",
+    "scientific_agreement_claimed": false
+  },
+  "frozen_parent_job": {
+    "canonical_write": false,
+    "earliest_replay_boundary": "R3.9_PRE_CHA1",
+    "engine": "CDMetaPOP",
+    "execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+    "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "required_mapping_fields": [
+      "time_mapping",
+      "space_mapping",
+      "population_mapping",
+      "domain_mapping",
+      "uncertainty_mapping"
+    ],
+    "result_selected": false,
+    "window_id": "H0_PRE_CHA1"
+  },
+  "historical_duration_years": 4000000.0,
+  "r43_execution_id": "R43_J06_H0_PRE_CHA1_CDMETAPOP",
+  "scientific_agreement_claimed": false,
+  "stage": "v0.6D1-R4.3",
+  "unit_mapping": {
+    "arcana_metrics": [
+      "population_persistence",
+      "range_occupancy",
+      "connectivity",
+      "gene_flow",
+      "extinction_risk",
+      "founder_persistence"
+    ],
+    "baseline_artifacts": [
+      {
+        "bytes": 1734982,
+        "exists": true,
+        "hash_match": true,
+        "observed_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+        "path": "local_runs\\v0_6D1_R3_10\\WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.json",
+        "registered_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469"
+      }
+    ],
+    "caveats": [
+      "NORMALIZED_BOUNDARY_RESPONSE_NOT_LITERAL_MULTI_MYR_ENGINE_REPLAY",
+      "ARCANA_END_STATE_IS_COMPARISON_TARGET_ONLY",
+      "NO_MAJORITY_VOTE"
+    ],
+    "comparability_class": [
+      "NORMALIZABLE",
+      "PROXY_ONLY"
+    ],
+    "domain_mapping": [
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "population_persistence",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "SECONDARY",
+        "comparability_class": "PROXY_ONLY",
+        "domain": "range_occupancy",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "SECONDARY",
+        "comparability_class": "PROXY_ONLY",
+        "domain": "connectivity",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "gene_flow",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "extinction_risk",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "founder_persistence",
+        "majority_vote": false
+      }
+    ],
+    "engine": "CDMetaPOP",
+    "engine_raw_metrics": "ENGINE_SPECIFIC_RAW_EVIDENCE_PRESERVED_UNALTERED",
+    "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+    "normalized_units": "DIMENSIONLESS_RELATIVE_RESPONSE_OR_DECLARED_DOMAIN_METRIC",
+    "population_mapping": {
+      "engine_raw_semantics": "patch_population_genetic_demography",
+      "literal_arcana_N_equivalence": false,
+      "normalized_semantics": "relative_change_distribution_or_dimensionless_response_only",
+      "transform": "ratios/deltas within engine replicate; never raw-N cross-engine equality"
+    },
+    "pre_result_frozen": true,
+    "r43_execution_id": "R43_J06_H0_PRE_CHA1_CDMETAPOP",
+    "raw_units": "ENGINE_NATIVE",
+    "space_mapping": {
+      "cell_area_mapping": "PATCH_NETWORK_NO_KM2_EQUIVALENCE",
+      "comparability_caveat": "patch-network response only.",
+      "eligible_habitat_denominator": "configured_patches",
+      "engine_basis": "pinned_generic_patch_network",
+      "normalized_basis": "relative_patch_persistence_and_gene_flow"
+    },
+    "time_mapping": {
+      "caveat": "Representative engine time is a response scale, not a claim that one engine step equals the reported historical-year compression factor physically.",
+      "engine_representative_steps": 5,
+      "engine_temporal_unit": "generations",
+      "generation_time_assumption_years": "NOT_USED_AS_LITERAL_CALENDAR_EQUIVALENCE_IN_R43_RESPONSE_EXPERIMENT",
+      "historical_window_duration_years": 4000000.0,
+      "historical_years_per_representative_engine_step": 800000.0,
+      "literal_history_replay": false,
+      "mapping_class": "EXPLICIT_COMPRESSED_REPRESENTATIVE_RESPONSE"
+    },
+    "transform_formula": "PER_DOMAIN_IN_NORMALIZER;_RAW_COUNTS_NEVER_CROSS_ENGINE_COMPARED",
+    "transform_provenance": "R4.1_SEMANTIC_AUTHORITY_MATRIX_PLUS_R4.3_PRE_RESULT_MAPPING",
+    "uncertainty_mapping": {
+      "distribution_required": true,
+      "replicates": 4,
+      "single_run_promotional": false
+    },
+    "window_id": "H0_PRE_CHA1"
+  },
+  "window": {
+    "earliest_replay_boundary": "R3.9_PRE_CHA1",
+    "end_ma": 66.0,
+    "engines": [
+      "Madingley",
+      "RangeShifter",
+      "CDMetaPOP"
+    ],
+    "id": "H0_PRE_CHA1",
+    "start_ma": 70.0
+  }
+}

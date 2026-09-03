@@ -1,0 +1,24 @@
+{
+  "stage": "v0.6D1-R3.7G",
+  "start_age_ma": 210.0,
+  "end_age_ma": 150.0,
+  "biology_cadence_years": 125000.0,
+  "expected_biology_steps": 480,
+  "K_envelope": {
+    "K_LOW": 37.614,
+    "K_CENTER": 38.470,
+    "K_HIGH": 41.002
+  },
+  "branch_semantics": {
+    "K_CENTER": "NOMINAL_VALIDATION_BRANCH_NOT_CANONICAL_CONSTANT",
+    "K_LOW": "LOW_UNCERTAINTY_SENTINEL",
+    "K_HIGH": "HIGH_UNCERTAINTY_SENTINEL"
+  },
+  "governance": {
+    "shadow_only": true,
+    "canonical_write_allowed": false,
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "stage": "v0.6D1-R3.7E_FULL_LOCAL_EVIDENCE_AUDIT",
+  "source_zip": "references/v0_6D1_R3_7E/v0_6D1_R3_7E_FULL_LOCAL_RESULTS.zip",
+  "source_zip_sha256": "2fcae7379de11ec8f7454e245a411dc8348f240dcedd047f98bb64d50ed70470",
+  "parent_stage": "v0.6D1-R3.7E",
+  "verdict": "PASS_SHORT_WORLD1_ADAPTIVE_GENETIC_SHADOW_REPLAY__K_ENVELOPE_NO_QUALITATIVE_HEADROOM_DIVERGENCE__PRODUCTION_BINDING_NOT_YET_AUTHORIZED",
+  "biology_steps": 40,
+  "canonical_parity": true,
+  "event_counts": {
+    "paleogeographic_support_loss_remap": 24,
+    "deme_coalescence": 4,
+    "deme_fission": 18
+  },
+  "legacy_peak_q": 0.02751790407147075,
+  "shadow_peak_q": {
+    "K_LOW": 0.027517904071468247,
+    "K_CENTER": 0.027517904071468247,
+    "K_HIGH": 0.027517904071468247
+  },
+  "ceiling_contacts": {
+    "K_LOW": 0,
+    "K_CENTER": 0,
+    "K_HIGH": 0
+  },
+  "max_K_envelope_q_spread": 0.0,
+  "final_population": 1826.25902064523,
+  "final_species_count": 120,
+  "final_component_count": 147,
+  "k_sensitivity": {
+    "max_normalized_va": {
+      "maximum_absolute_K_spread": 0.0,
+      "age_ma_at_maximum_absolute_K_spread": 209.875,
+      "final_by_variant": {
+        "K_LOW": 0.027517904071468247,
+        "K_CENTER": 0.027517904071468247,
+        "K_HIGH": 0.027517904071468247
+      }
+    },
+    "same_species_S_max": {
+      "maximum_absolute_K_spread": 4.28692866372149e-07,
+      "age_ma_at_maximum_absolute_K_spread": 209.625,
+      "final_by_variant": {
+        "K_LOW": 0.2984053112479616,
+        "K_CENTER": 0.298405274149633,
+        "K_HIGH": 0.2984051734822521
+      }
+    },
+    "same_species_S_median": {
+      "maximum_absolute_K_spread": 4.4132589468686e-06,
+      "age_ma_at_maximum_absolute_K_spread": 205.75,
+      "final_by_variant": {
+        "K_LOW": 0.0002277487252208207,
+        "K_CENTER": 0.00022769843581803636,
+        "K_HIGH": 0.0002275619740814439
+      },
+      "final_relative_span_vs_center": 0.0008201687407551685
+    },
+    "ancestry_abs_total": {
+      "maximum_absolute_K_spread": 4.4156072654708014e-10,
+      "age_ma_at_maximum_absolute_K_spread": 205.0,
+      "final_by_variant": {
+        "K_LOW": 7.147898791670656e-07,
+        "K_CENTER": 7.149087851362873e-07,
+        "K_HIGH": 7.152314398936127e-07
+      }
+    },
+    "adaptive_coordinate_abs_max": {
+      "maximum_absolute_K_spread": 0.004753827427903895,
+      "age_ma_at_maximum_absolute_K_spread": 205.0,
+      "final_by_variant": {
+        "K_LOW": 0.11263467420287843,
+        "K_CENTER": 0.11137450174269146,
+        "K_HIGH": 0.10788084677497453
+      },
+      "final_relative_span_vs_center": 0.04268326550081152
+    }
+  },
+  "finding": "FULL_210_205_PASS__K_UNCERTAINTY_PROPAGATES_IN_GENETIC_GEOMETRY_BUT_NOT_YET_IN_VA_HEADROOM",
+  "governance": "EVIDENCE_ONLY__NO_PRODUCTION_BINDING_AUTHORIZED"
+}

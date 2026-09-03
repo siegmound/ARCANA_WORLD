@@ -1,0 +1,42 @@
+{
+  "stage": "v0.6D1-R4.38",
+  "policy": "R438_EXACT_NONGENOMIC_CARRIER_INITIALIZATION_ADAPTER_PREFLIGHT_NO_EXECUTION",
+  "geonomics_required_version": "1.4.9",
+  "parent": "R4.37 SEALED + R4.37-R3 verified",
+  "jobs": [
+    "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+    "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS"
+  ],
+  "adapter": {
+    "direct_ordereddict_individual_replacement": true,
+    "clone_single_construction_probe_as_structural_template": true,
+    "coordinates_only_from_canonical_manifest": true,
+    "population_proxy_used_as_count": false,
+    "population_proxy_used_as_biology": false,
+    "update_orig_comm": true,
+    "rebuild_native_caches": [
+      "coords_cells",
+      "kd_tree",
+      "density_grids",
+      "N_density",
+      "environment_samples"
+    ],
+    "preserve_K": true,
+    "preserve_landscape": true,
+    "preserve_rng_state": true
+  },
+  "all_branches_required": true,
+  "all_four_frozen_seeds_required": true,
+  "zero_carrier_branch_policy": "BLOCK",
+  "model_run_forbidden": true,
+  "walk_forbidden": true,
+  "run_default_model_forbidden": true,
+  "scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "production_execution_state_materialized": false,
+  "geonomics_execution_ready": false,
+  "next_action": "BUILD_R439_GEONOMICS_RUNTIME_TIME_MAPPING_NONLITERAL_CARRIER_DYNAMICS_AND_DYNAMIC_LAYER_CHANGE_PREFLIGHT"
+}

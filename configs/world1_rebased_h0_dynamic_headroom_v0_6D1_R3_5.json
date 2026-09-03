@@ -1,0 +1,34 @@
+{
+  "stage": "v0.6D1-R3.5",
+  "role": "TIME_RESOLVED_VA_HEADROOM_INSTRUMENTATION_AND_DYNAMIC_CEILING_SENSITIVITY",
+  "common_state": "outputs/v0_6D1_R1/WORLD1_210Ma_REBASELINE_COMMON_STATE_v0_6D1_R1.npz",
+  "primary_interval_ma": [210.0, 150.0],
+  "biology_cadence_years": 125000.0,
+  "transport_cadence_years": 62500.0,
+  "dynamic_sensitivity_ceilings_q": [0.08, 0.10],
+  "optional_confirmation_ceiling_q": 0.12,
+  "near_ceiling_fraction": 0.99,
+  "mu_q_per_myr": 0.002,
+  "nonlinear_homeostasis_b_per_myr_per_q": 0.9876543209876544,
+  "no_flow_equilibrium_q": 0.045,
+  "scientific_runtime_parent": "v0.6D1-R3.4",
+  "instrumentation": {
+    "pre_gene_flow_q": true,
+    "post_gene_flow_q": true,
+    "post_homeostasis_unclipped_diagnostic_q": true,
+    "post_homeostasis_q": true,
+    "homeostasis_clipping_count": true,
+    "fraction_ge_99pct_ceiling": true,
+    "per_axis_maxima": true,
+    "root_lineage_near_ceiling_records": true,
+    "event_context_same_biology_step": true
+  },
+  "hard_locks": {
+    "do_not_change_mu": true,
+    "do_not_change_b": true,
+    "do_not_change_barrier_history": true,
+    "do_not_change_fission_coalescence": true,
+    "do_not_change_speciation_extinction": true,
+    "gene_flow_identity": "CURRENT_SPECIES_BOUND"
+  }
+}

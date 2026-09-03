@@ -1,0 +1,27 @@
+{
+  "schema": "ARCANA_R312_BASETEMP_HOTFIX_MANIFEST_V1",
+  "stage": "v0.6D1-R3.12",
+  "hotfix": "SEALED_CHECKS_PYTEST_LOCAL_BASETEMP",
+  "scientific_change": false,
+  "reason": "Windows PermissionError on pytest default temp root C:/Users/<user>/AppData/Local/Temp/pytest-of-<user>",
+  "expected_pytest": "44 passed",
+  "expected_formal_audit": "218/218 PASS",
+  "payload_file_count": 3,
+  "files": [
+    {
+      "path": "run_v0_6D1_R3_12_sealed_checks.ps1",
+      "sha256": "8de5adf6940fcd57a23b305ba13a331165a0e2fb8bf8f72613bb57d5ff5f3031",
+      "bytes": 1418
+    },
+    {
+      "path": "README_R3_12_BASETEMP_HOTFIX.md",
+      "sha256": "c3e3bca55710d300eed4f762b145372f98da15f49e95af733f3dd335bff07d8b",
+      "bytes": 642
+    },
+    {
+      "path": "verify_v0_6D1_R3_12_basetemp_hotfix.ps1",
+      "sha256": "565d1ebe3995a9e9dfd5e39f0037fee45d1ab50bdb013a97506f45facd28f8a8",
+      "bytes": 739
+    }
+  ]
+}

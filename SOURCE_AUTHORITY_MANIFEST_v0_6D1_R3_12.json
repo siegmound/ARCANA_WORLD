@@ -1,0 +1,98 @@
+{
+  "schema": "ARCANA_R312_SOURCE_AUTHORITY_MANIFEST_V1",
+  "stage": "v0.6D1-R3.12",
+  "state": "SEALED_CANONICAL_46MA_POST_CHA1_DIVERSITY_RECOVERY_RESTART_BOUNDARY",
+  "parent": {
+    "stage": "v0.6D1-R3.11_SEALED",
+    "sealed_zip_sha256": "02c1ba8c9d42b4e8a1d5bd6090826f5d31ec0b55ecd8735ae9ddf3cf2e690a8a",
+    "checkpoint_json_sha256": "bdf75d08bd39181dee3331f91b1dd6864ab8e0c1e88c94eed7813d148aebda3b",
+    "checkpoint_npz_sha256": "4f4582ca7f83926941f7224033a83356b2f5df196dcb8d3dbafae2e9b16e987c",
+    "summary_sha256": "b8194132711925d7ea2f67d0bf9bd7d9ad995ae37bef2f18df6c2fab49524bbd"
+  },
+  "production_authorities": {
+    "R3_7I_promotion_seal_sha256": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d",
+    "D3_3A_additive_variance_source_sha256": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21",
+    "r38_restartable_runtime_source_sha256": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698"
+  },
+  "historical_window_evidence": {
+    "old_D3_2B_source_path": "references/v0_6D1_R2_1/d3_sealed/diversification_adequacy_v0_6_3D3_2B.py",
+    "old_D3_2B_source_sha256": "9c2338cd8904bd6f9972c253be375384f6ec57193b4e3f5acf404f1ef2f344b2",
+    "use": "temporal scope +5 to +20 Myr only; old D3.2B solver is not reactivated as production authority"
+  },
+  "r312_sources": {
+    "runtime": {
+      "path": "src/arcana_worldsim/scientific_engines/r312_postcha1_diversity_recovery.py",
+      "sha256": "2793733f05ab640d3fb9b0387f35aab54943a5e1aeb99d4990c41fdd4589b5d8"
+    },
+    "runner": {
+      "path": "scripts/run_v0_6D1_R3_12_diversity_recovery.py",
+      "sha256": "d8c3686dc7419bd5413a6f64977522ba7836b4b285a9c1fe0bd986a9034e910f"
+    },
+    "tests": {
+      "path": "tests/test_r312_postcha1_diversity_recovery.py",
+      "sha256": "39b617c5221bb74d39f7344b85025616d23173593decf616678edd1661cbb5f4"
+    },
+    "powershell": {
+      "path": "run_v0_6D1_R3_12_diversity_recovery.ps1",
+      "sha256": "0af75b717b200c864bf1fc09525d29e90a9aeedd91a4da6d40ad668452017568"
+    },
+    "contract": {
+      "path": "CANONICAL_POST_CHA1_H0_DIVERSITY_RECOVERY_CONTRACT_v0_6D1_R3_12.md",
+      "sha256": "4709e62af0a5b801e08c22c955ae930ffeb5f982bcd2ad1e9de6e4c522dd1dbc"
+    }
+  },
+  "governance": {
+    "deep_biological_coupling": false,
+    "cha1_reapplication_authorized": false,
+    "lifecycle_thaw_reapplication_authorized": false,
+    "post_cha1_radiation_multiplier_authorized": false,
+    "richness_target_authorized": false,
+    "earth_analogue_target_authorized": false,
+    "scientific_parameter_retuning_authorized": false,
+    "canonical_long_run_required_before_seal": false,
+    "sealed": true
+  },
+  "candidate_evidence": {
+    "immediate_regression": "22/22 PASS",
+    "formal_audit": "64/64 PASS",
+    "smoke": {
+      "summary_path": "local_runs/v0_6D1_R3_12/R3_12_SMOKE_SUMMARY.json",
+      "summary_sha256": "53e6cd4eaeb3c290abcb23f679c72287a8810fd484e4d823376be02579d89a25",
+      "checkpoint_json_sha256": "64fd78f5555715b382a5d4933b2b1541093cfa5e798ce125df45782b1cdd81d8",
+      "checkpoint_npz_sha256": "bd131bb3a186547cfc2809d9fb47c29b77a6dc9b7c36856f08a30c55dac17da5",
+      "serialization_identity": true,
+      "clipping_steps": 0
+    }
+  },
+  "canonical_run_evidence": {
+    "returned_evidence_zip_sha256": "85ace28f79e7de2ec9119fe1afd4c1a8e57d517c05132f3f6281addb6291d43c",
+    "summary": {
+      "path": "local_runs/v0_6D1_R3_12/R3_12_POST_CHA1_DIVERSITY_RECOVERY_SUMMARY.json",
+      "sha256": "404c43c80af5f10ff1d00ad0cfc51f21abbe3e566e3d040e4faa2e84d33a6230"
+    },
+    "checkpoint_json": {
+      "path": "local_runs/v0_6D1_R3_12/WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.json",
+      "sha256": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269"
+    },
+    "checkpoint_npz": {
+      "path": "local_runs/v0_6D1_R3_12/WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.npz",
+      "sha256": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948"
+    },
+    "formal_audit": "218/218 PASS",
+    "full_regression": "281/281 PASS",
+    "immediate_regression": "44/44 PASS",
+    "boundary": {
+      "age_ma": 46.0,
+      "event_side": "POST_CHA1_20MY_DIVERSITY_RECOVERY",
+      "species": 104,
+      "components": 223
+    }
+  },
+  "next_stage_authority": {
+    "start_directly_from_46Ma_checkpoint": true,
+    "cha1_reapplication_authorized": false,
+    "lifecycle_thaw_reapplication_authorized": false,
+    "richness_target_authorized": false,
+    "deep_biological_coupling": false
+  }
+}

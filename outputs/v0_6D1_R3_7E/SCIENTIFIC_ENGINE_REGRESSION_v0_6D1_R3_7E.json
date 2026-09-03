@@ -1,0 +1,22 @@
+{
+  "stage": "v0.6D1-R3.7E",
+  "suite": "scientific-engine parent R3.6A through R3.7D + R3.7E targeted tests",
+  "parent_regression": {
+    "reported_passed": 87,
+    "reported_failed": 0,
+    "clean_exit": true
+  },
+  "r37e_targeted": {
+    "reported_passed": 8,
+    "reported_failed": 0,
+    "clean_exit": true
+  },
+  "formal_audit": {
+    "reported_passed": 53,
+    "reported_failed": 0,
+    "clean_exit": true
+  },
+  "combined_reported_passed": 95,
+  "combined_reported_failed": 0,
+  "note": "The single combined pytest invocation was not used as authority because it reached the container timeout; the same logical groups were rerun separately with clean exits."
+}

@@ -1,0 +1,95 @@
+{
+  "candidate_cohort": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "coevolution_feedback": "GENETIC_RESPONSE_CAN_INCREASE_EFFECTIVE_PROPAGATION_CONTROL_BUT_NEVER_REDUCE_R334_BASELINE",
+  "deep_biological_coupling": false,
+  "dynamics": {
+    "coevolution_feedback_rate_per_kyr": 0.2,
+    "coevolution_feedback_strength": 0.9,
+    "dependency_feedback_strength": 0.45,
+    "environmental_variance_base": 0.14,
+    "generation_interval_years": {
+      "annual_seed_forb_pulse": 1.1,
+      "annual_seed_grass": 1.0,
+      "fruiting_woody": 8.0,
+      "geophyte_storage_root": 2.5,
+      "perennial_seed_grass": 3.5,
+      "wetland_aquatic_starch": 2.0
+    },
+    "genetic_covariance_offdiag": 0.12,
+    "governance": {
+      "deep_biological_coupling": false,
+      "inherit_r334_domestication_thresholds_exactly": true,
+      "no_lineage_specific_rescaling": true,
+      "no_named_earth_crop_analogues": true,
+      "sensitivity_is_selection_gate": false,
+      "unique_human_identity_materialized": false
+    },
+    "initial_va_floor": 0.035,
+    "initial_va_span": 0.055,
+    "max_mean_shift_per_step": 0.04,
+    "mutation_replenishment_per_generation": 1e-05,
+    "selection_gradient_per_generation": 0.0015,
+    "selection_va_depletion_scale": 0.35,
+    "va_ceiling": 0.14,
+    "wild_gene_flow_selection_damping": 0.65,
+    "wild_reversion_rate_per_kyr": 0.018,
+    "wild_va_replenishment_per_kyr": 0.035
+  },
+  "evidence_basis": {
+    "BREEDERS_EQUATION": {
+      "pmcid": "PMC6439161",
+      "source": "Cobb et al. 2019 Enhancing the rate of genetic gain in public-sector plant breeding programs: lessons from the breeder equation",
+      "use": "response is governed by additive genetic variation, selection intensity/accuracy and generation interval"
+    },
+    "CROP_DOMESTICATION_GENETICS": {
+      "doi": "10.1038/nrg3605",
+      "source": "Meyer & Purugganan 2013 Evolution of crop species: genetics of domestication and diversification",
+      "use": "domestication is a genetic response to selection on multiple traits and can involve selective sweeps, introgression and demographic change"
+    },
+    "DEMOGRAPHY_AND_VARIATION": {
+      "doi": "10.1038/s41477-018-0210-1",
+      "source": "Gaut et al. 2018 Demography and its effects on genomic variation in crop domestication",
+      "use": "demography, bottlenecks and long pre-domestication human impacts shape standing genomic variation"
+    },
+    "NO_RETROACTIVE_PHYLOGENY": {
+      "source": "R3.34 governance",
+      "use": "genetic state is operational for managed producer populations and is not a reconstructed 210 Ma flora phylogeny"
+    },
+    "R334_PARENT": {
+      "source": "R3.34 SEALED Producer Operational Taxon Authority",
+      "use": "36 taxa, resource contact/management/propagation history and all domestication thresholds are immutable parent authority"
+    },
+    "SELECTION_DURING_DOMESTICATION": {
+      "doi": "10.1038/nature07895",
+      "source": "Purugganan & Fuller 2009 The nature of selection during plant domestication",
+      "use": "plant domestication is modeled as plant-human coevolution under selection rather than an instantaneous state change"
+    }
+  },
+  "genetic_model": "MULTIVARIATE_BREEDER_EQUATION_DELTA_Z_EQUALS_G_BETA_TIMES_GENERATIONS",
+  "genetic_trait_names": [
+    "propagule_size_shift",
+    "dormancy_reduction",
+    "reduced_shattering_dispersal",
+    "maturation_phenology_shift",
+    "edible_yield_allocation_shift",
+    "defense_toxicity_reduction"
+  ],
+  "managed_population_reference": "GENETIC_MEAN_SHIFTS_ARE_FOR_MANAGED_PRODUCER_SUBPOPULATIONS_RELATIVE_TO_WILD_REFERENCE",
+  "parent": "PASS_R334_PRODUCER_OPERATIONAL_TAXON_AUTHORITY_PLANT_COEVOLUTION_DOMESTICATION_AND_FOOD_PRODUCTION_REASSESSMENT_SEALED",
+  "parent_hashes": {
+    "r334_checkpoint_sha256": "34123dee12fc8db32c750a5ca691a7ea674795919565ae83070063a8516a5f39",
+    "r334_registry_sha256": "b24960a86a745a028c1096fe636885310d1ecaa3213a612696c7687ebb2e535c",
+    "r334_trajectory_sha256": "a0af97467058ec78fbc38a39b9001715b3fdbd2c74ef2e54c1585762d66c3227"
+  },
+  "producer_taxon_count": 36,
+  "r334_domestication_thresholds_inherited_exactly": true,
+  "retroactive_h0_flora_phylogeny_claimed": false,
+  "stage": "v0.6D1-R3.35",
+  "status": "R335_PRODUCER_QUANTITATIVE_GENETICS_AUTHORITY",
+  "unique_human_identity_materialized": false,
+  "variance_semantics": "ADDITIVE_VARIANCE_DEPLETED_BY_DIRECTIONAL_RESPONSE_AND_REPLENISHED_BY_MUTATION_RECOMBINATION_AND_WILD_INTROGRESSION",
+  "wild_gene_flow_semantics": "R334_WILD_GENE_FLOW_PRESSURE_ATTENUATES_SELECTION_RESPONSE_AND_PULLS_MANAGED_MEAN_TOWARD_WILD_REFERENCE"
+}

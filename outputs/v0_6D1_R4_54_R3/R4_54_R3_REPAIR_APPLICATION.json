@@ -1,0 +1,34 @@
+{
+  "stage": "v0.6D1-R4.54-R3",
+  "status": "PASS_R454_R3_NEMO_EXPLICIT_COLLECTOR_PYTHON_AND_BRIDGE_DIAGNOSTIC_REPAIR_APPLIED",
+  "diagnosis": "R41_NEMO_PASS_LAUNCHER_REQUIRED_NO_PYTHON_IN_NEMO_ENV_WHILE_R454_INTRODUCED_IMPLICIT_PYTHON_COMMAND_BEFORE_NEMO_AND_FOR_COLLECTOR",
+  "repair": {
+    "nemo_engine_runtime": "UNCHANGED_ARCANA_NEMO242",
+    "collector_python": "EXPLICIT_CONDA_BASE_PYTHON_DERIVED_FROM_GOVERNED_CONDA_BINDING",
+    "implicit_python_dependency_removed": true,
+    "bridge_fallback_stdout_stderr_capture_added": true,
+    "bridge_fallback_job_seed_metadata_added": true
+  },
+  "prepatch_sha256": {
+    "capture_v0_6D1_R4_54_dry_runs.ps1": "9f8e09c2122b41cab224412b478adfd1e1e816122a2b2652a3c8668246feeaf8",
+    "benchmarks/r454/run_nemo_r454.sh": "6b4cadda339c7c253a3bbde42fa45ad7a59173cb3284309c3691e2dbf7b3930c"
+  },
+  "postpatch_sha256": {
+    "capture_v0_6D1_R4_54_dry_runs.ps1": "cea5fbb81a92937e904d0d36acc6be8c826d169fa74c92e43903c6f7f0a81e9c",
+    "benchmarks/r454/run_nemo_r454.sh": "04ebb845d7c5f8c6678d5ac5028729fdd83e0146cdd433fa4de1c9c775843fa4"
+  },
+  "governance": {
+    "blocked_r454_r2_evidence_preserved": true,
+    "madingley_pass_preserved": true,
+    "rangeshifter_pass_preserved": true,
+    "cdmetapop_pass_preserved": true,
+    "slim_pass_preserved": true,
+    "historical_scientific_execution_performed": false,
+    "authorized_metric_ids_modified": false,
+    "nemo_collector_scientific_semantics_modified": false,
+    "seed_semantics_modified": false,
+    "numeric_thresholds_added": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

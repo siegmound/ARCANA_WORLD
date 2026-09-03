@@ -1,0 +1,36 @@
+{
+  "stage": "v0.6D1-R4.37",
+  "title": "Geonomics Canonical Layer Binding & Exact-State Injection Dry-Run Validation",
+  "parent": "R4.36 SEALED and R4.36-R3 repair chain CLOSED",
+  "J21": {
+    "bind_all_151_canonical_initial_payloads": true,
+    "replicates": 4,
+    "construction_support_layer_extra": 1,
+    "expected_native_layers_per_model": 152,
+    "identity_value_binding": true,
+    "native_geonomics_range_must_already_be_0_1": true,
+    "automatic_rescaling": false,
+    "cross_layer_numeric_fusion": false,
+    "verify_np_array_equal_after_make_model": true
+  },
+  "J14_J18": {
+    "mechanical_coordinate_injection_dry_run": true,
+    "public_api": "Model.add_individuals",
+    "all_canonical_branches": true,
+    "all_canonical_carriers": true,
+    "private_remove_or_add_called_by_arcana": false,
+    "test_only_recipient_burned_guard_override": true,
+    "test_only_override_scientific_evidence": false,
+    "construction_probe_removed": false,
+    "scientific_exact_initial_state_installed": false,
+    "dry_run_model_discarded": true
+  },
+  "explicit_nonclaims": [
+    "R4.37 does not establish a final exact initialization path",
+    "R4.37 does not authorize setting burned=True in scientific execution",
+    "R4.37 does not remove the construction probe",
+    "R4.37 does not call private Geonomics mutation methods from ARCANA",
+    "R4.37 does not run or walk any model"
+  ],
+  "next_action": "BUILD_R438_GEONOMICS_EXACT_INITIALIZATION_ADAPTER_AND_CONSTRUCTION_PROBE_ELIMINATION_PREFLIGHT"
+}

@@ -1,0 +1,30 @@
+
+  N E M O 2.4.2 [03 Aug 2026]
+
+  Copyright (C) 2006-2026 The Authors
+  This is free software; see the source for copying
+  conditions. There is NO warranty; not even for 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  https://nemo2.sourceforge.io; nemo-simul@googlegroups.com
+-----------------------------------------------------------
+reading parameters from "Nemo2_ARCANA_R37C.ini"
+setting random seed from input value: 57702026
+
+--- SIMULATION 1/1 ---- [ arcana_r37c_N500_r000_a0_sv1_SEL_fragmented_divergent_selection ]
+
+    start: 28-08-2026 21:19:09
+    mode: overwrite
+    population: 2 stages, 4 patches, Wright-Fisher
+    traits: quant(0)
+    LCEs: quanti_init(1), viability_selection(2), breed_disperse(3), save_stats(4), save_files(5)
+    outputs: ./{*.log, ./*.qfreq, *.txt}
+
+
+    replicate 1/1 [21:19:09] 1/301                
+    replicate 1/1 [21:19:09] 1/301
+    replicate 1/1 [21:19:09] 2/301
+    replicate 1/1 [21:19:09] 2/301 -> Pop extinction !
+
+
+    end: 28-08-2026 21:19:10
+--- done (CPU time: 00:00:00s)

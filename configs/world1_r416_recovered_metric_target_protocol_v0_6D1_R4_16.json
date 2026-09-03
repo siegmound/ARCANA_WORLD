@@ -1,0 +1,138 @@
+{
+  "stage": "v0.6D1-R4.16",
+  "title": "Recovered Metric Promotion Gate & ARCANA Target Semantic Protocol Formalization",
+  "parent_stage": "v0.6D1-R4.15",
+  "required_parent_status": "PASS_R415_RETAINED_RUNTIME_METRIC_RECOVERY_AND_TARGET_SEMANTIC_MATERIALIZATION_AUDIT_SEALED",
+  "required_parent_repair_revision": "R4.15-R1",
+  "required_parent_p0_resolved": 4,
+  "required_parent_p0_recovered": 2,
+  "required_parent_p0_exhausted_to_p2": 2,
+  "required_parent_p1_audited": 59,
+  "required_parent_p1_source_candidates": 47,
+  "policy_freeze": "FROZEN_PRE_PROMOTION_AND_TARGET_EXTRACTOR_IMPLEMENTATION",
+  "engine_execution_performed": false,
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "rules": {
+    "no_engine_execution": true,
+    "no_r42_registry_mutation": true,
+    "no_target_leakage": true,
+    "no_external_result_may_define_arcana_target": true,
+    "recovered_raw_metric_requires_domain_identity_before_promotion": true,
+    "candidate_filename_hit_is_not_target_evidence": true,
+    "target_value_unit_temporal_spatial_population_basis_must_be_explicit": true,
+    "proxy_only_remains_nonadjudicative": true,
+    "no_readjudication_in_r416": true,
+    "no_result_selected_transform": true
+  },
+  "domain_protocols": {
+    "additive_variance": {
+      "canonical_quantity": "additive genetic variance for the explicitly bound trait/locus model",
+      "required_unit_basis": "trait^2 or explicitly dimensionless standardized trait variance",
+      "required_temporal_basis": "same window endpoints or explicitly frozen aggregation",
+      "required_spatial_population_basis": "same population/deme aggregation and weights",
+      "forbidden_substitutes": ["expected heterozygosity alone", "allele-frequency gap alone", "generic diversity"]
+    },
+    "admixture": {
+      "canonical_quantity": "ancestry-mixture proportion or explicitly defined admixture statistic",
+      "required_unit_basis": "fraction/proportion or named dimensionless statistic",
+      "required_temporal_basis": "explicit observation time or window endpoint",
+      "required_spatial_population_basis": "explicit source/recipient population labels",
+      "forbidden_substitutes": ["FST alone", "generic diversity", "unlabelled population counts"]
+    },
+    "ancestry": {
+      "canonical_quantity": "lineage ancestry contribution with explicit source lineage labels",
+      "required_unit_basis": "fraction/proportion or genealogical contribution",
+      "required_temporal_basis": "explicit time depth and observation endpoint",
+      "required_spatial_population_basis": "explicit target population and lineage registry",
+      "forbidden_substitutes": ["FST alone", "generic tree count"]
+    },
+    "biomass": {
+      "canonical_quantity": "total biomass for the explicitly bound trophic guild/spatial support",
+      "required_unit_basis": "mass or normalized mass with declared denominator",
+      "required_temporal_basis": "same window endpoint/mean convention",
+      "required_spatial_population_basis": "same geographic mask and guild definition",
+      "forbidden_substitutes": ["population count without mass mapping", "trophic opportunity proxy"]
+    },
+    "connectivity": {
+      "canonical_quantity": "explicit graph/spatial connectivity statistic",
+      "required_unit_basis": "named dimensionless connectivity index or physical conductance-like metric",
+      "required_temporal_basis": "same window/state snapshot",
+      "required_spatial_population_basis": "same graph nodes, barriers and support mask",
+      "forbidden_substitutes": ["allele-frequency difference alone", "FST alone"]
+    },
+    "extinction_risk": {
+      "canonical_quantity": "extinction probability/fraction over an explicit horizon",
+      "required_unit_basis": "probability/fraction",
+      "required_temporal_basis": "same explicit horizon",
+      "required_spatial_population_basis": "same lineage/species set and geographic scope",
+      "forbidden_substitutes": ["single final population count", "occupancy alone"]
+    },
+    "founder_persistence": {
+      "canonical_quantity": "persistence/survival of explicitly identified founder lineages",
+      "required_unit_basis": "fraction/probability/count with declared denominator",
+      "required_temporal_basis": "same persistence horizon",
+      "required_spatial_population_basis": "same founder cohort and recipient system",
+      "forbidden_substitutes": ["total population persistence", "generic ancestry diversity"]
+    },
+    "gene_flow": {
+      "canonical_quantity": "effective migration/gene-flow flux or explicitly normalized migration statistic",
+      "required_unit_basis": "fraction per generation/time or named flow statistic",
+      "required_temporal_basis": "same generation/time mapping and window",
+      "required_spatial_population_basis": "same donor/recipient population labels",
+      "forbidden_substitutes": ["FST alone", "allele-frequency gap alone", "connectivity alone"]
+    },
+    "managed_wild_isolation": {
+      "canonical_quantity": "explicit managed-vs-wild isolation/divergence statistic",
+      "required_unit_basis": "named dimensionless statistic or migration fraction",
+      "required_temporal_basis": "same observation endpoint/horizon",
+      "required_spatial_population_basis": "explicit managed and wild population labels",
+      "forbidden_substitutes": ["unlabelled FST", "generic diversity"]
+    },
+    "population_persistence": {
+      "canonical_quantity": "population persistence response with baseline semantics invariant to the neutral comparator",
+      "required_unit_basis": "N_end/N_start or explicitly matched causal response ratio",
+      "required_temporal_basis": "same window endpoints",
+      "required_spatial_population_basis": "same population scope and census semantics",
+      "forbidden_substitutes": ["CDMetaPOP absolute response after R4.12 neutral-invariance failure", "occupancy-only proxy"]
+    },
+    "producer_divergence": {
+      "canonical_quantity": "genetic/phenotypic divergence between explicitly identified producer groups",
+      "required_unit_basis": "named divergence statistic",
+      "required_temporal_basis": "same observation endpoint/horizon",
+      "required_spatial_population_basis": "same producer group labels",
+      "forbidden_substitutes": ["unlabelled FST", "generic diversity"]
+    },
+    "range_occupancy": {
+      "canonical_quantity": "occupied spatial support under an explicitly shared mask",
+      "required_unit_basis": "area, cell count, or occupied fraction with declared denominator",
+      "required_temporal_basis": "same snapshot/aggregation",
+      "required_spatial_population_basis": "same raster/grid/support mask",
+      "forbidden_substitutes": ["population count", "centroid shift"]
+    },
+    "range_shift_rate": {
+      "canonical_quantity": "range centroid/front displacement per explicit time interval",
+      "required_unit_basis": "distance/time",
+      "required_temporal_basis": "same interval and clock mapping",
+      "required_spatial_population_basis": "same coordinate system and range definition",
+      "forbidden_substitutes": ["occupancy change alone", "connectivity"]
+    },
+    "trait_response": {
+      "canonical_quantity": "explicit trait mean/response under a bound forcing",
+      "required_unit_basis": "trait unit or standardized effect with declared transform",
+      "required_temporal_basis": "same forcing interval and endpoint",
+      "required_spatial_population_basis": "same population weighting",
+      "forbidden_substitutes": ["generic genetic diversity", "allele frequency without trait effect mapping"]
+    },
+    "trophic_opportunity": {
+      "canonical_quantity": "common trophic energy/opportunity currency under the frozen B2.1 semantics",
+      "required_unit_basis": "explicit energy/opportunity currency",
+      "required_temporal_basis": "same interval/aggregation",
+      "required_spatial_population_basis": "same guild and geographic support",
+      "forbidden_substitutes": ["biomass alone unless the transform is frozen", "population count"]
+    }
+  }
+}

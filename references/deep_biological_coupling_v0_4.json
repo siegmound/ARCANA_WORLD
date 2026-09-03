@@ -1,0 +1,116 @@
+{
+  "authority": {
+    "canon_exposure_parent": "ARCANA Universe Canon v0.3.27 files 11 and 34",
+    "geology_parent": "ARCANA Deep Geological Provenance Layer v0.3",
+    "speciation_authority": "SEALED D3 ONLY"
+  },
+  "controlled_benchmark": {
+    "deep_free_energy_multipliers": [
+      0.25,
+      1.0,
+      4.0,
+      8.0
+    ],
+    "selection_generations": 20,
+    "semantics": "SYNTHETIC_DIMENSIONLESS_ENERGY_AVAILABILITY_ONLY_NOT_WORLD1_PRODUCTION_HISTORY"
+  },
+  "governance": {
+    "Deep_does_not_create_consciousness": true,
+    "direct_lineage_bonus": false,
+    "direct_mutation_direction_operator": false,
+    "direct_speciation_operator": false,
+    "full_simulation_in_v0_4": false,
+    "technical_magic_knowledge_generated": false
+  },
+  "inheritance": {
+    "directional_mutation_forbidden": true,
+    "latent_mutation_sigma": 0.08,
+    "mutation_mean": 0.0,
+    "trait_heritability_candidate": {
+      "coupling_E": 0.45,
+      "coupling_I": 0.4,
+      "coupling_N": 0.35,
+      "coupling_p": 0.45,
+      "coupling_th": 0.45,
+      "plasticity": 0.45,
+      "regulation": 0.55,
+      "repair": 0.5,
+      "tolerance": 0.6,
+      "uptake": 0.45
+    }
+  },
+  "latent_traits": [
+    "coupling_E",
+    "coupling_th",
+    "coupling_p",
+    "coupling_I",
+    "coupling_N",
+    "uptake",
+    "regulation",
+    "tolerance",
+    "plasticity",
+    "repair"
+  ],
+  "mode_load_weights": {
+    "E": 0.28,
+    "I": 0.18,
+    "N": 0.14,
+    "p": 0.22,
+    "th": 0.18
+  },
+  "modes": [
+    "E",
+    "th",
+    "p",
+    "I",
+    "N"
+  ],
+  "phenotype_map": "sigmoid_of_unbounded_latent_trait",
+  "production_requirements": {
+    "full_deep_coupled_210_0Ma_replay_authorized": false,
+    "geological_A_X_may_not_be_substituted_for_energy": true,
+    "missing_energy_field_behavior": "FAIL_CLOSED",
+    "time_resolved_deep_free_energy_availability_required": true
+  },
+  "regulation": {
+    "acclimatized_operating_fraction": 0.6,
+    "baseline_operating_fraction": 0.4,
+    "load_reduction_gain": 0.55
+  },
+  "response": {
+    "injury_risk_at_injury_threshold_minus": 0.25,
+    "maintenance_cost": {
+      "coupling": 0.006,
+      "regulation": 0.004,
+      "repair": 0.002,
+      "tolerance": 0.003
+    },
+    "post_injury_exponential_steepness": 2.5,
+    "post_optimum_stimulus_floor_at_tolerance": 0.2,
+    "stress_at_tolerance": 0.6,
+    "viability_injury_cost": 2.0,
+    "viability_stress_cost": 0.55
+  },
+  "state_dynamics": {
+    "acclimatization_tau_off_year": 3.0,
+    "acclimatization_tau_on_year": 1.0,
+    "injury_repair_tau_year": 5.0,
+    "recoverable_load_tau_year": 0.5,
+    "structural_atrophy_tau_year": 20.0,
+    "structural_remodeling_max_rate_per_year": 0.01
+  },
+  "status": "BIOLOGICAL_COUPLING_INTERFACE_CANDIDATE",
+  "threshold_base_load_units": {
+    "L_injury": 0.1,
+    "L_min": 0.004,
+    "L_opt": 0.015,
+    "L_tol": 0.05
+  },
+  "tolerance_scale": {
+    "heritable_tolerance": 1.35,
+    "intercept": 0.65,
+    "persistent_remodeling": 0.35,
+    "reversible_acclimatization_x_regulation": 0.25
+  },
+  "version": "v0.4"
+}

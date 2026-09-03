@@ -1,0 +1,663 @@
+{
+  "all_raw_hashes_match_r422": true,
+  "all_seed_ledgers_preserved": true,
+  "automatic_adjudicative_promotion_count": 0,
+  "engine_job_counts": {
+    "CDMetaPOP": 5,
+    "NEMO": 3,
+    "SLiM": 3
+  },
+  "job_count": 11,
+  "readjudication_performed": false,
+  "records": [
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "finite_metric_count": 3,
+      "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "metric_count": 3,
+      "normalized_metrics": {
+        "dynamic_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "PROXY_ONLY",
+          "kind": "ratio",
+          "name": "dynamic_population_response_ratio",
+          "semantics": "ABSOLUTE_DYNAMIC_POPULATION_RESPONSE; R4.12 NEUTRAL-INVARIANCE FAILURE PREVENTS GLOBAL ADJUDICATIVE USE",
+          "summary": {
+            "max": 1.6626666666666667,
+            "median": 1.5853333333333333,
+            "min": 1.548,
+            "n": 4,
+            "q10": 1.5575999999999999,
+            "q90": 1.6410666666666667
+          }
+        },
+        "matched_control_population_effect_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "NORMALIZABLE_CANDIDATE_PENDING_ARCANA_CAUSAL_TARGET",
+          "kind": "ratio",
+          "name": "matched_control_population_effect_ratio",
+          "semantics": "DYNAMIC_POPULATION_RESPONSE_DIVIDED_BY_MATCHED_NEUTRAL_RESPONSE; DIAGNOSTIC_DOMAIN_CANDIDATE_REQUIRES_ARCANA_CAUSAL_TARGET",
+          "summary": {
+            "max": 1.0246507806080527,
+            "median": 0.9896556812183332,
+            "min": 0.959504132231405,
+            "n": 4,
+            "q10": 0.9656975575743905,
+            "q90": 1.0170042901442298
+          }
+        },
+        "neutral_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY",
+          "kind": "ratio",
+          "name": "neutral_population_response_ratio",
+          "semantics": "MATCHED_NEUTRAL_CONTROL RESPONSE; CONTEXT FOR CAUSAL NORMALIZATION ONLY",
+          "summary": {
+            "max": 1.6226666666666667,
+            "median": 1.6126666666666667,
+            "min": 1.592,
+            "n": 4,
+            "q10": 1.598,
+            "q90": 1.6198666666666668
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "5a6233c0fd0b89d62ba65e1e9e213f2fc0ac3d38e4e5519e882befe525bda058",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "absolute_population_response != adjudicative_population_persistence",
+        "matched_control_effect requires explicit ARCANA causal target before promotion"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "finite_metric_count": 3,
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_count": 3,
+      "normalized_metrics": {
+        "dynamic_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "PROXY_ONLY",
+          "kind": "ratio",
+          "name": "dynamic_population_response_ratio",
+          "semantics": "ABSOLUTE_DYNAMIC_POPULATION_RESPONSE; R4.12 NEUTRAL-INVARIANCE FAILURE PREVENTS GLOBAL ADJUDICATIVE USE",
+          "summary": {
+            "max": 1.6744791666666667,
+            "median": 1.625,
+            "min": 1.5520833333333333,
+            "n": 4,
+            "q10": 1.5638020833333335,
+            "q90": 1.6697916666666668
+          }
+        },
+        "matched_control_population_effect_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "NORMALIZABLE_CANDIDATE_PENDING_ARCANA_CAUSAL_TARGET",
+          "kind": "ratio",
+          "name": "matched_control_population_effect_ratio",
+          "semantics": "DYNAMIC_POPULATION_RESPONSE_DIVIDED_BY_MATCHED_NEUTRAL_RESPONSE; DIAGNOSTIC_DOMAIN_CANDIDATE_REQUIRES_ARCANA_CAUSAL_TARGET",
+          "summary": {
+            "max": 1.0110062893081762,
+            "median": 1.0081327365400266,
+            "min": 0.9698412698412698,
+            "n": 4,
+            "q10": 0.9809159159159159,
+            "q90": 1.0105570174127123
+          }
+        },
+        "neutral_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY",
+          "kind": "ratio",
+          "name": "neutral_population_response_ratio",
+          "semantics": "MATCHED_NEUTRAL_CONTROL RESPONSE; CONTEXT FOR CAUSAL NORMALIZATION ONLY",
+          "summary": {
+            "max": 1.65625,
+            "median": 1.6419270833333335,
+            "min": 1.5416666666666667,
+            "n": 4,
+            "q10": 1.5713541666666666,
+            "q90": 1.65234375
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "18cdcc3e9210e393494e7a1484093bbf3f7d0365b7829900e6d08d74170265ef",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "absolute_population_response != adjudicative_population_persistence",
+        "matched_control_effect requires explicit ARCANA causal target before promotion"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "finite_metric_count": 3,
+      "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "metric_count": 3,
+      "normalized_metrics": {
+        "dynamic_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "PROXY_ONLY",
+          "kind": "ratio",
+          "name": "dynamic_population_response_ratio",
+          "semantics": "ABSOLUTE_DYNAMIC_POPULATION_RESPONSE; R4.12 NEUTRAL-INVARIANCE FAILURE PREVENTS GLOBAL ADJUDICATIVE USE",
+          "summary": {
+            "max": 1.5611979166666667,
+            "median": 1.5162760416666665,
+            "min": 1.4518229166666667,
+            "n": 4,
+            "q10": 1.4709635416666669,
+            "q90": 1.5479166666666668
+          }
+        },
+        "matched_control_population_effect_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "NORMALIZABLE_CANDIDATE_PENDING_ARCANA_CAUSAL_TARGET",
+          "kind": "ratio",
+          "name": "matched_control_population_effect_ratio",
+          "semantics": "DYNAMIC_POPULATION_RESPONSE_DIVIDED_BY_MATCHED_NEUTRAL_RESPONSE; DIAGNOSTIC_DOMAIN_CANDIDATE_REQUIRES_ARCANA_CAUSAL_TARGET",
+          "summary": {
+            "max": 1.001670843776107,
+            "median": 0.9296373269587554,
+            "min": 0.9013742926434924,
+            "n": 4,
+            "q10": 0.905059336090633,
+            "q90": 0.9848546555783398
+          }
+        },
+        "neutral_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY",
+          "kind": "ratio",
+          "name": "neutral_population_response_ratio",
+          "semantics": "MATCHED_NEUTRAL_CONTROL RESPONSE; CONTEXT FOR CAUSAL NORMALIZATION ONLY",
+          "summary": {
+            "max": 1.6588541666666667,
+            "median": 1.607421875,
+            "min": 1.55859375,
+            "n": 4,
+            "q10": 1.572265625,
+            "q90": 1.6444010416666668
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "bb2eba02442595e30921b1a945fc8d4613a5a31a5c4e02a4aa278c82a475bc08",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "absolute_population_response != adjudicative_population_persistence",
+        "matched_control_effect requires explicit ARCANA causal target before promotion"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "NEMO",
+      "finite_metric_count": 2,
+      "job_id": "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+      "metric_count": 2,
+      "normalized_metrics": {
+        "mean_expected_heterozygosity": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "mean_expected_heterozygosity",
+          "semantics": "RAW_EXPECTED_HETEROZYGOSITY_NOT_ADDITIVE_GENETIC_VARIANCE",
+          "summary": {
+            "max": 0.483430125,
+            "median": 0.481226,
+            "min": 0.4701155,
+            "n": 4,
+            "q10": 0.47290355,
+            "q90": 0.4833139875
+          }
+        },
+        "mean_population_frequency_range": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "mean_population_frequency_range",
+          "semantics": "RAW_ALLELE_FREQUENCY_DIFFERENTIATION_NOT_GENE_FLOW_RATE",
+          "summary": {
+            "max": 0.07874999999999999,
+            "median": 0.062499999999999986,
+            "min": 0.05437500000000002,
+            "n": 4,
+            "q10": 0.05621250000000001,
+            "q90": 0.07447499999999999
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "8ac8e048fef0a5a579c3b021c14e4a0aaf5d476e09854f22ee8b57440acb8f89",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "heterozygosity != additive_variance",
+        "allele_frequency_differentiation != gene_flow_rate"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "NEMO",
+      "finite_metric_count": 2,
+      "job_id": "R42_J13_H0_LATE_CENOZOIC_NEMO",
+      "metric_count": 2,
+      "normalized_metrics": {
+        "mean_expected_heterozygosity": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "mean_expected_heterozygosity",
+          "semantics": "RAW_EXPECTED_HETEROZYGOSITY_NOT_ADDITIVE_GENETIC_VARIANCE",
+          "summary": {
+            "max": 0.483375875,
+            "median": 0.471697375,
+            "min": 0.422734,
+            "n": 4,
+            "q10": 0.43667421250000005,
+            "q90": 0.48062112500000004
+          }
+        },
+        "mean_population_frequency_range": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "mean_population_frequency_range",
+          "semantics": "RAW_ALLELE_FREQUENCY_DIFFERENTIATION_NOT_GENE_FLOW_RATE",
+          "summary": {
+            "max": 0.08512499999999999,
+            "median": 0.069,
+            "min": 0.046750000000000014,
+            "n": 4,
+            "q10": 0.05181250000000001,
+            "q90": 0.0819
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "f3b8efcb0bfb11103d64b0a5c0fd72cefc4c4b9ef570fc5e0c5c2d9d64a11d46",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "heterozygosity != additive_variance",
+        "allele_frequency_differentiation != gene_flow_rate"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "finite_metric_count": 3,
+      "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+      "metric_count": 3,
+      "normalized_metrics": {
+        "dynamic_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "PROXY_ONLY",
+          "kind": "ratio",
+          "name": "dynamic_population_response_ratio",
+          "semantics": "ABSOLUTE_DYNAMIC_POPULATION_RESPONSE; R4.12 NEUTRAL-INVARIANCE FAILURE PREVENTS GLOBAL ADJUDICATIVE USE",
+          "summary": {
+            "max": 2.1238095238095243,
+            "median": 2.1,
+            "min": 2.011904761904762,
+            "n": 4,
+            "q10": 2.033333333333333,
+            "q90": 2.121666666666667
+          }
+        },
+        "matched_control_population_effect_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "NORMALIZABLE_CANDIDATE_PENDING_ARCANA_CAUSAL_TARGET",
+          "kind": "ratio",
+          "name": "matched_control_population_effect_ratio",
+          "semantics": "DYNAMIC_POPULATION_RESPONSE_DIVIDED_BY_MATCHED_NEUTRAL_RESPONSE; DIAGNOSTIC_DOMAIN_CANDIDATE_REQUIRES_ARCANA_CAUSAL_TARGET",
+          "summary": {
+            "max": 1.3002915451895047,
+            "median": 1.2700618899099214,
+            "min": 1.2393767705382437,
+            "n": 4,
+            "q10": 1.2434622594613374,
+            "q90": 1.2963426954940394
+          }
+        },
+        "neutral_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY",
+          "kind": "ratio",
+          "name": "neutral_population_response_ratio",
+          "semantics": "MATCHED_NEUTRAL_CONTROL RESPONSE; CONTEXT FOR CAUSAL NORMALIZATION ONLY",
+          "summary": {
+            "max": 1.6892857142857143,
+            "median": 1.657142857142857,
+            "min": 1.563095238095238,
+            "n": 4,
+            "q10": 1.5841666666666665,
+            "q90": 1.6867857142857143
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "4b0d528a97670661e2a6ca71576f764b3e90d5dab7e2886d76ca365b43cbb29d",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "absolute_population_response != adjudicative_population_persistence",
+        "matched_control_effect requires explicit ARCANA causal target before promotion"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "SLiM",
+      "finite_metric_count": 2,
+      "job_id": "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+      "metric_count": 2,
+      "normalized_metrics": {
+        "fst_between_current_population_samples": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "fst_between_current_population_samples",
+          "semantics": "DIFFERENTIATION_NOT_MIGRATION_RATE",
+          "summary": {
+            "max": 0.005007118491790252,
+            "median": 0.0033212157692636413,
+            "min": 0.0021873076521689017,
+            "n": 4,
+            "q10": 0.002250992623344894,
+            "q90": 0.004777835138984699
+          }
+        },
+        "global_diversity_per_site": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "global_diversity_per_site",
+          "semantics": "DIVERSITY_NOT_ANCESTRY_CONTRIBUTION",
+          "summary": {
+            "max": 1.3348247809762204e-05,
+            "median": 1.1032931789737171e-05,
+            "min": 6.634386733416771e-06,
+            "n": 4,
+            "q10": 7.291786608260326e-06,
+            "q90": 1.331581664580726e-05
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J16_SAPIENT_3MA_TO_200KA_SLIM/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "ba6b0e8b6fafa3498d713e87dfb31a2d3d8b0473196ac1653148f88a6885fa7f",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "diversity != ancestry",
+        "FST != migration_rate"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "NEMO",
+      "finite_metric_count": 2,
+      "job_id": "R42_J17_SAPIENT_3MA_TO_200KA_NEMO",
+      "metric_count": 2,
+      "normalized_metrics": {
+        "mean_expected_heterozygosity": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "mean_expected_heterozygosity",
+          "semantics": "RAW_EXPECTED_HETEROZYGOSITY_NOT_ADDITIVE_GENETIC_VARIANCE",
+          "summary": {
+            "max": 0.475120125,
+            "median": 0.462076,
+            "min": 0.457826,
+            "n": 4,
+            "q10": 0.45846556250000003,
+            "q90": 0.471842325
+          }
+        },
+        "mean_population_frequency_range": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "mean_population_frequency_range",
+          "semantics": "RAW_ALLELE_FREQUENCY_DIFFERENTIATION_NOT_GENE_FLOW_RATE",
+          "summary": {
+            "max": 0.076875,
+            "median": 0.0715625,
+            "min": 0.06437500000000002,
+            "n": 4,
+            "q10": 0.06493750000000001,
+            "q90": 0.076875
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J17_SAPIENT_3MA_TO_200KA_NEMO/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "f94dbc86e6e66dbb5fdd1da46824eec635324996143cba19114efc1275981207",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "heterozygosity != additive_variance",
+        "allele_frequency_differentiation != gene_flow_rate"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "SLiM",
+      "finite_metric_count": 2,
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_count": 2,
+      "normalized_metrics": {
+        "fst_between_current_population_samples": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "fst_between_current_population_samples",
+          "semantics": "DIFFERENTIATION_NOT_MIGRATION_RATE",
+          "summary": {
+            "max": 0.035447215628357176,
+            "median": 0.017500504031523867,
+            "min": 0.007399143929178953,
+            "n": 4,
+            "q10": 0.009911255481114444,
+            "q90": 0.03058149862807517
+          }
+        },
+        "global_diversity_per_site": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "global_diversity_per_site",
+          "semantics": "DIVERSITY_NOT_ANCESTRY_CONTRIBUTION",
+          "summary": {
+            "max": 1.9252346683354196e-05,
+            "median": 1.2218241551939923e-05,
+            "min": 4.955256570713392e-06,
+            "n": 4,
+            "q10": 6.299014392991239e-06,
+            "q90": 1.797725281602003e-05
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J19_SAPIENT_200KA_TO_0_SLIM/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "16c15d5a2b42a0779a79d482ba184297b18f5201f83b0bb1cf4a41eb8de01dae",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "diversity != ancestry",
+        "FST != migration_rate"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "finite_metric_count": 3,
+      "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+      "metric_count": 3,
+      "normalized_metrics": {
+        "dynamic_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "PROXY_ONLY",
+          "kind": "ratio",
+          "name": "dynamic_population_response_ratio",
+          "semantics": "ABSOLUTE_DYNAMIC_POPULATION_RESPONSE; R4.12 NEUTRAL-INVARIANCE FAILURE PREVENTS GLOBAL ADJUDICATIVE USE",
+          "summary": {
+            "max": 1.0567375886524824,
+            "median": 1.0041371158392436,
+            "min": 0.983451536643026,
+            "n": 4,
+            "q10": 0.9866430260047282,
+            "q90": 1.043971631205674
+          }
+        },
+        "matched_control_population_effect_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "NORMALIZABLE_CANDIDATE_PENDING_ARCANA_CAUSAL_TARGET",
+          "kind": "ratio",
+          "name": "matched_control_population_effect_ratio",
+          "semantics": "DYNAMIC_POPULATION_RESPONSE_DIVIDED_BY_MATCHED_NEUTRAL_RESPONSE; DIAGNOSTIC_DOMAIN_CANDIDATE_REQUIRES_ARCANA_CAUSAL_TARGET",
+          "summary": {
+            "max": 0.6501818181818182,
+            "median": 0.6173154324455992,
+            "min": 0.6028673835125448,
+            "n": 4,
+            "q10": 0.6032707850165155,
+            "q90": 0.644252915636898
+          }
+        },
+        "neutral_population_response_ratio": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY",
+          "kind": "ratio",
+          "name": "neutral_population_response_ratio",
+          "semantics": "MATCHED_NEUTRAL_CONTROL RESPONSE; CONTEXT FOR CAUSAL NORMALIZATION ONLY",
+          "summary": {
+            "max": 1.648936170212766,
+            "median": 1.6264775413711585,
+            "min": 1.6087470449172576,
+            "n": 4,
+            "q10": 1.6137115839243499,
+            "q90": 1.6425531914893619
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "b995316532d8ab1ac295aaa31a796fddf6a0c409ec700f0374ca7205f95b9cf6",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "absolute_population_response != adjudicative_population_persistence",
+        "matched_control_effect requires explicit ARCANA causal target before promotion"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "canonical_write": false,
+      "engine": "SLiM",
+      "finite_metric_count": 2,
+      "job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+      "metric_count": 2,
+      "normalized_metrics": {
+        "fst_between_current_population_samples": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "fst_between_current_population_samples",
+          "semantics": "DIFFERENTIATION_NOT_MIGRATION_RATE",
+          "summary": {
+            "max": 0.009717063687249894,
+            "median": 0.008409141520292984,
+            "min": 0.006402793946449381,
+            "n": 4,
+            "q10": 0.006747485442490897,
+            "q90": 0.009581899813274387
+          }
+        },
+        "global_diversity_per_site": {
+          "adjudicative_promotion_authorized_in_r423": false,
+          "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+          "kind": "ratio",
+          "name": "global_diversity_per_site",
+          "semantics": "DIVERSITY_NOT_ANCESTRY_CONTRIBUTION",
+          "summary": {
+            "max": 3.3109824780976214e-05,
+            "median": 1.242459324155194e-05,
+            "min": 4.844023779724657e-06,
+            "n": 4,
+            "q10": 6.809699624530664e-06,
+            "q90": 2.7212750312891112e-05
+          }
+        }
+      },
+      "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J22_PRODUCER_20KA_TO_0_SLIM/RAW_EVIDENCE.json",
+      "raw_evidence_sha256": "84d3a77b4eeb840af4517aa84251b43ab6caa8b8c6e9081815142a83bedf47ec",
+      "raw_hash_matches_r422_audit": true,
+      "readjudication_authorized_in_r423": false,
+      "replicate_count": 4,
+      "seed_ledger_exactly_reused": true,
+      "semantic_guards": [
+        "diversity != ancestry",
+        "FST != migration_rate"
+      ],
+      "stage": "v0.6D1-R4.23",
+      "window_id": "PRODUCER_20KA_TO_0"
+    }
+  ],
+  "stage": "v0.6D1-R4.23",
+  "status": "R423_P2_REEXECUTION_EVIDENCE_NORMALIZATION_COMPLETE"
+}

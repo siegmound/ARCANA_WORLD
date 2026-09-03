@@ -1,0 +1,86 @@
+{
+  "audit": "FINAL_FROZEN_23_ENGINE_WINDOW_HISTORICAL_REVALIDATION_EXECUTION_AND_NORMALIZATION",
+  "checks": [
+    {
+      "detail": "PASS_R42_FROZEN_HISTORICAL_WINDOW_BASELINE_MATERIALIZATION_ADAPTER_CONTRACT_AND_MULTI_ENGINE_EXECUTION_FREEZE_SEALED",
+      "name": "parent_r42_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R43_FROZEN_23_ENGINE_WINDOW_EXECUTION_COMPLETE",
+      "name": "r43_completeness_audit_pass",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r43_completeness_zero_failed_checks",
+      "pass": true
+    },
+    {
+      "detail": 23,
+      "name": "exact_23_terminal_jobs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "ADAPTER_FAILURE": 0,
+        "ENGINE_EXECUTION_FAILURE": 0,
+        "MISSING_EVIDENCE": 0,
+        "SCIENTIFIC_RESULT": 20,
+        "SEMANTIC_NONCOMPARABILITY": 3
+      },
+      "name": "zero_blocked_terminal_jobs",
+      "pass": true
+    },
+    {
+      "detail": "ARCANA_REDUCED_ORDER_R3_19_TO_R3_39",
+      "name": "baseline_a_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_biological_coupling_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "scientific_agreement_not_claimed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "discordance_adjudication_not_performed",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 10,
+  "checks_total": 10,
+  "stage": "v0.6D1-R4.3",
+  "status": "PASS_R43_FROZEN_23_ENGINE_WINDOW_HISTORICAL_REVALIDATION_EXECUTION_AND_NORMALIZATION_SEALED",
+  "summary": {
+    "all_jobs_terminal_nonblocked": true,
+    "baseline_a_preserved": true,
+    "canonical_state_changed": false,
+    "deep_biological_coupling": false,
+    "discordance_adjudication_performed": false,
+    "frozen_job_count": 23,
+    "historical_execution_performed": true,
+    "next_action": "BUILD_R44_CROSS_ENGINE_DOMAIN_DISCORDANCE_MATRIX_AND_ADJUDICATION",
+    "parent_r42_sealed": true,
+    "scientific_agreement_claimed": false,
+    "terminal_counts": {
+      "ADAPTER_FAILURE": 0,
+      "ENGINE_EXECUTION_FAILURE": 0,
+      "MISSING_EVIDENCE": 0,
+      "SCIENTIFIC_RESULT": 20,
+      "SEMANTIC_NONCOMPARABILITY": 3
+    }
+  },
+  "verdict": "SEALED"
+}

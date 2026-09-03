@@ -1,0 +1,546 @@
+{
+  "schema": "ARCANA_R319_FORMAL_SEALED_AUDIT_V1",
+  "stage": "v0.6D1-R3.19",
+  "verdict": "PASS_R319_CANONICAL_125KA_TO_0_H0_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY__0KA_NATURAL_CONTROL_BIOLOGY_BOUNDARY_SEALED",
+  "checks": "73/73",
+  "failed": [],
+  "decision": "H0_NATURAL_CONTROL_210MA_TO_0KA_BIOLOGY_CLOSED__PHASE_AWARE_TWO_TRANSPORT_SUBSTEPS_AND_EXACT_ENDPOINT_TOPOLOGY_SEALED",
+  "boundary": {
+    "biology_age_ma": 0.0,
+    "species": 134,
+    "components": 295,
+    "population": 1217.2506240828814,
+    "biology_cadence_years": 125000.0,
+    "transport_cadence_years": 62500.0,
+    "transport_substeps": 2,
+    "phase_aware_transport": true,
+    "constant_forcing_equivalence_bit_exact": true,
+    "endpoint_support_reconciliation_event_count": 1,
+    "exact_0ka_inaccessible_population_mass": 0.0,
+    "peak_q": 0.047601695825828454,
+    "q_ceiling": 0.08,
+    "deep_biological_coupling": false
+  },
+  "canonical_artifacts": {
+    "checkpoint_json": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.json",
+    "checkpoint_json_sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+    "checkpoint_npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz",
+    "checkpoint_npz_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+    "summary": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\R3_19_H0_PRESENT_BIOLOGY_CLOSURE_SUMMARY.json",
+    "summary_sha256": "2803044f380df3565fb2e7bc9e10de527734474e637b98c8f81678ad7595387b"
+  },
+  "parent_authority": {
+    "stage": "v0.6D1-R3.18_SEALED",
+    "r318_seal_sha256": "70457172cece552ed6191328f4803f6a705252e93b07ffe5c860f9579a8f2d61",
+    "r318_audit_sha256": "95cb1bf525e54beb64381e4bb3cf170f2e6c94bb0d9a84fc13c6cc2498faaf38",
+    "r318_summary_sha256": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a",
+    "r318_envelope_sha256": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+    "r318_bundle_sha256": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70"
+  },
+  "independent_replay": {
+    "enabled": true,
+    "state_bit_exact": true,
+    "constant_forcing_r38_equivalence": true,
+    "endpoint_support_reconciliation_applied": true,
+    "endpoint_support_reconciliation_mass": 3.403417661595834e-06,
+    "exact_0ka_inaccessible_population_mass": 0.0
+  },
+  "scientific_parameter_changes": false,
+  "biology_cadence_changes": false,
+  "transport_cadence_changes": false,
+  "gene_flow_cadence_changes": false,
+  "lifecycle_gate_cadence_changes": false,
+  "deep_biological_coupling": false,
+  "check_rows": [
+    {
+      "name": "checkpoint_json_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.json",
+      "expected": "file"
+    },
+    {
+      "name": "checkpoint_npz_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz",
+      "expected": "file"
+    },
+    {
+      "name": "summary_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\R3_19_H0_PRESENT_BIOLOGY_CLOSURE_SUMMARY.json",
+      "expected": "file"
+    },
+    {
+      "name": "checkpoint_json_sha_exact",
+      "pass": true,
+      "actual": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+      "expected": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71"
+    },
+    {
+      "name": "checkpoint_npz_sha_exact",
+      "pass": true,
+      "actual": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+      "expected": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406"
+    },
+    {
+      "name": "summary_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.19",
+      "expected": "v0.6D1-R3.19"
+    },
+    {
+      "name": "summary_verdict",
+      "pass": true,
+      "actual": "PASS_CANONICAL_R319_125KA_TO_0_H0_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY__0KA_NATURAL_CONTROL_BIOLOGY_CHECKPOINT_READY",
+      "expected": "PASS_CANONICAL_R319_125KA_TO_0_H0_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY__0KA_NATURAL_CONTROL_BIOLOGY_CHECKPOINT_READY"
+    },
+    {
+      "name": "summary_biology_steps_1",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "summary_biology_age_0",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "summary_species",
+      "pass": true,
+      "actual": 134,
+      "expected": 134
+    },
+    {
+      "name": "summary_components",
+      "pass": true,
+      "actual": 295,
+      "expected": 295
+    },
+    {
+      "name": "summary_population",
+      "pass": true,
+      "actual": 1217.2506240828814,
+      "expected": 1217.2506240828814
+    },
+    {
+      "name": "summary_peak_q",
+      "pass": true,
+      "actual": 0.047601695825828454,
+      "expected": 0.047601695825828454
+    },
+    {
+      "name": "summary_peak_unclipped_q",
+      "pass": true,
+      "actual": 0.047601695825828454,
+      "expected": 0.047601695825828454
+    },
+    {
+      "name": "summary_clipping_zero",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "summary_transport_substeps_2",
+      "pass": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "summary_transport_phase_years",
+      "pass": true,
+      "actual": [
+        62500.0,
+        62500.0
+      ],
+      "expected": [
+        62500.0,
+        62500.0
+      ]
+    },
+    {
+      "name": "summary_phase_aware",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_constant_forcing_bit_exact",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_shadow_differs",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_shadow_population",
+      "pass": true,
+      "actual": 1217.241447649682,
+      "expected": 1217.241447649682
+    },
+    {
+      "name": "summary_endpoint_inaccessible_zero",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "summary_serialization_identity",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_deep_off",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_science_unchanged",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_human_target_off",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_event_delta_exact",
+      "pass": true,
+      "actual": {
+        "paleogeographic_support_loss_remap": 1,
+        "deme_coalescence": 0,
+        "deme_fission": 0,
+        "speciation": 0,
+        "ordinary_background_extinction": 0,
+        "CHA1_species_extinction": 0,
+        "CHA1_high_resolution_event_bridge_complete": 0,
+        "post_CHA1_ordinary_lifecycle_thaw": 0
+      },
+      "expected": {
+        "paleogeographic_support_loss_remap": 1,
+        "deme_coalescence": 0,
+        "deme_fission": 0,
+        "speciation": 0,
+        "ordinary_background_extinction": 0,
+        "CHA1_species_extinction": 0,
+        "CHA1_high_resolution_event_bridge_complete": 0,
+        "post_CHA1_ordinary_lifecycle_thaw": 0
+      }
+    },
+    {
+      "name": "checkpoint_schema",
+      "pass": true,
+      "actual": "ARCANA_R319_WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_CHECKPOINT_V1",
+      "expected": "ARCANA_R319_WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_CHECKPOINT_V1"
+    },
+    {
+      "name": "checkpoint_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.19",
+      "expected": "v0.6D1-R3.19"
+    },
+    {
+      "name": "checkpoint_age_0",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "gov_biology_125k",
+      "pass": true,
+      "actual": 125000.0,
+      "expected": 125000.0
+    },
+    {
+      "name": "gov_biology_steps_1",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "gov_transport_62500",
+      "pass": true,
+      "actual": 62500.0,
+      "expected": 62500.0
+    },
+    {
+      "name": "gov_transport_substeps_2",
+      "pass": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "gov_phase_aware",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "gov_false::gene_flow_step_cadence_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "gov_false::lifecycle_gate_cadence_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "gov_false::adaptive_clock_used_as_biology_timestep",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "gov_false::deep_biological_coupling",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "gov_false::scientific_parameters_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "gov_false::human_lineage_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "canonical_age_0",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "canonical_species",
+      "pass": true,
+      "actual": 134,
+      "expected": 134
+    },
+    {
+      "name": "canonical_components",
+      "pass": true,
+      "actual": 295,
+      "expected": 295
+    },
+    {
+      "name": "canonical_population",
+      "pass": true,
+      "actual": 1217.2506240828814,
+      "expected": 1217.2506240828814
+    },
+    {
+      "name": "canonical_population_nonnegative",
+      "pass": true,
+      "actual": 0.0,
+      "expected": ">=0"
+    },
+    {
+      "name": "canonical_population_inaccessible_zero",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "canonical_q_under_ceiling",
+      "pass": true,
+      "actual": 0.047601695825828454,
+      "expected": "<=0.08"
+    },
+    {
+      "name": "canonical_q_matches",
+      "pass": true,
+      "actual": 0.047601695825828454,
+      "expected": 0.047601695825828454
+    },
+    {
+      "name": "canonical_s_symmetric",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "canonical_s_diagonal_zero",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "canonical_s_nonnegative",
+      "pass": true,
+      "actual": 0.0,
+      "expected": ">=0"
+    },
+    {
+      "name": "parent_age_125ka",
+      "pass": true,
+      "actual": 0.125,
+      "expected": 0.125
+    },
+    {
+      "name": "parent_species_134",
+      "pass": true,
+      "actual": 134,
+      "expected": 134
+    },
+    {
+      "name": "parent_components_295",
+      "pass": true,
+      "actual": 295,
+      "expected": 295
+    },
+    {
+      "name": "parent_population",
+      "pass": true,
+      "actual": 1217.8946033288662,
+      "expected": 1217.8946033288662
+    },
+    {
+      "name": "replay_constant_forcing_gate",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "replay_constant_state_bit_exact",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "replay_constant_records_exact",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "replay_constant_events_exact",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "replay_constant_snapshots_exact",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "independent_replay_state_bit_exact",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "independent_replay_records_1",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "independent_replay_transport_trace_2",
+      "pass": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "independent_replay_transport_dt",
+      "pass": true,
+      "actual": [
+        62500.0,
+        62500.0
+      ],
+      "expected": [
+        62500.0,
+        62500.0
+      ]
+    },
+    {
+      "name": "endpoint_reconciliation_applied",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "endpoint_reconciliation_mass_positive",
+      "pass": true,
+      "actual": 3.403417661595834e-06,
+      "expected": ">0"
+    },
+    {
+      "name": "endpoint_reconciliation_after_zero",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_replay_event_delta_exact",
+      "pass": true,
+      "actual": {
+        "paleogeographic_support_loss_remap": 1,
+        "deme_coalescence": 0,
+        "deme_fission": 0,
+        "speciation": 0,
+        "ordinary_background_extinction": 0,
+        "CHA1_species_extinction": 0,
+        "CHA1_high_resolution_event_bridge_complete": 0,
+        "post_CHA1_ordinary_lifecycle_thaw": 0
+      },
+      "expected": {
+        "paleogeographic_support_loss_remap": 1,
+        "deme_coalescence": 0,
+        "deme_fission": 0,
+        "speciation": 0,
+        "ordinary_background_extinction": 0,
+        "CHA1_species_extinction": 0,
+        "CHA1_high_resolution_event_bridge_complete": 0,
+        "post_CHA1_ordinary_lifecycle_thaw": 0
+      }
+    },
+    {
+      "name": "independent_replay_exact_endpoint_support",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_replay_q_under_ceiling",
+      "pass": true,
+      "actual": 0.047601695825828454,
+      "expected": "<=0.08"
+    },
+    {
+      "name": "independent_replay_no_clipping",
+      "pass": true,
+      "actual": [
+        0
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "name": "checkpoint_roundtrip_bit_exact",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    }
+  ]
+}

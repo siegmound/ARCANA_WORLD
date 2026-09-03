@@ -1,0 +1,18 @@
+{
+  "biology_changed": false,
+  "files": {
+    "R3_14_R2_C1_BINDING_TYPE_GUARD_AUDIT.md": "dfe13b4b6c83159815e5d5e1dd994ebd5cc74885d64a43cf45b6e563739ff919",
+    "README_R3_14_R2_C1_BINDING_TYPE_GUARD_HOTFIX.md": "01b14ad572f18f6333277dd5798854810d424fda0169ace7e8e0880c192a66fd",
+    "run_v0_6D1_R3_14_checks.ps1": "6e6ea0c0c428ae15484f6653e972e389fa748c7f8ae4b5b3c223404b91ba54c5",
+    "src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py": "e80ef0d5389315bc7e8a756e0d5b97a305c050505e3557256f10572c43d618e8",
+    "tests/test_r314_late_cenozoic_binding.py": "780ee0f168e4ec58ab3fbb7d4687aa9252e57649006f85ef31902bc235f979b7"
+  },
+  "focused_regression": "24/24 PASS",
+  "parent": "v0.6D1-R3.14-R1",
+  "repair_semantics": "require actual C2.parent instance to be IntegratedLateCenozoicProviderC1",
+  "schema": "ARCANA_R314_R2_C1_BINDING_TYPE_GUARD_HOTFIX_V1",
+  "scientific_parameters_changed": false,
+  "sealed_payload_hashes_changed": false,
+  "stage": "v0.6D1-R3.14-R2",
+  "trigger": "stale C1 class reference in validate_30ma_binding; manual Copilot repair confirmed operationally"
+}

@@ -1,0 +1,92 @@
+{
+  "source_canon": "ARCANA_UNIVERSE_CANON_v0_3_73_MC_FAMILY_H3_CHARACTER_AUTHORIAL_RATIFICATION_RATIFIED",
+  "h3": {
+    "rho_Zinf_ZR": 0.35,
+    "variance_shares": {
+      "Z_inf": 0.75,
+      "U_R": 0.15,
+      "epsilon_mar": 0.10
+    },
+    "formula": "Z_H = sqrt(0.75)*Z_inf + sqrt(0.15)*U_R + sqrt(0.10)*epsilon_mar",
+    "U_R_formula": "U_R = (Z_R - 0.35*Z_inf)/sqrt(1-0.35^2)"
+  },
+  "mapping": {
+    "type": "PCHIP_in_ln_J",
+    "low_tail_endpoint_slope": 2.313855740,
+    "high_tail_endpoint_slope": 3.085579906
+  },
+  "gaussian_entry_thresholds": {
+    "CB2": -3.090232306,
+    "CB3": -2.326347874,
+    "CB4": -1.340755034,
+    "CB5": 0.385320466,
+    "CB6": 2.326347874,
+    "CB7": 3.157324590,
+    "CB8": 3.719016485,
+    "CB9": 4.151613130,
+    "CB10": 4.507098918,
+    "CB11": 4.810863003,
+    "CB12": 5.350730286
+  },
+  "reference_hard_ceiling_probabilities": {
+    "CB1": 0.001,
+    "CB2": 0.009,
+    "CB3": 0.080,
+    "CB4": 0.560,
+    "CB5": 0.340,
+    "CB6": 0.00920388,
+    "CB7": 0.00069612,
+    "CB8": 0.000083493,
+    "CB9": 0.000013221,
+    "CB10": 0.0000025346,
+    "CB11": 0.0000007076,
+    "CB12": 0.00000004398
+  },
+  "lifetime": {
+    "k_mat": 0.868,
+    "k_tr": 0.954,
+    "L_coefficient": 0.086,
+    "M_segments": {
+      "6_7": 1.030,
+      "7_8": 1.070,
+      "8_9": 1.100,
+      "9_10": 1.075,
+      "10_11": 1.060
+    },
+    "Q_cons_base": 0.90,
+    "Q_cons_amplitude": 0.10,
+    "Q_cons_tau_years": 25.0,
+    "Q_phys_exponent_multiplier": 1.20,
+    "Q_phys_clip": [0.5, 2.5],
+    "T_apex_min_c": 10.0,
+    "Q_apex_cons_base": 0.18,
+    "Q_apex_cons_amplitude": 0.82,
+    "Q_apex_cons_tau_years": 30.0,
+    "Q_phys_applies_above_c": 11.0,
+    "CB12_reach_by_86_given_compatible_elite_reference": 0.24594,
+    "CB12_reference_achievers_per_billion": 10.82
+  },
+  "required_human_checkpoints": [
+    "-200 ka",
+    "-120 ka",
+    "0"
+  ],
+  "character_regression_fixtures": {
+    "MC": {
+      "Z_H": 5.4445840918,
+      "hard_CB": "CB12",
+      "J_hard_TW_approx": 133.59,
+      "current_J_TW": 10.33,
+      "current_CB": "CB11-C",
+      "use": "regression_or_conditional_character_realization_only"
+    },
+    "MC_father": {
+      "hard_CB": "CB9 probable / CB10 conditional",
+      "use": "character_specific_only"
+    },
+    "MC_mother": {
+      "hard_CB": "CB8 probable / CB9 conditional",
+      "use": "character_specific_only"
+    }
+  }
+}

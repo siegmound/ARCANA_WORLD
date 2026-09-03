@@ -1,0 +1,95 @@
+{
+  "stage": "v0.6D1-R4.4",
+  "title": "Cross-Engine / Domain Discordance Matrix & Scientific Adjudication",
+  "parent_stage": "v0.6D1-R4.3",
+  "required_parent_status": "PASS_R43_FROZEN_23_ENGINE_WINDOW_HISTORICAL_REVALIDATION_EXECUTION_AND_NORMALIZATION_SEALED",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "external_engine_direct_canonical_write": false,
+  "automatic_external_evidence_promotion": false,
+  "deep_biological_coupling": false,
+  "baseline_a": "ARCANA_REDUCED_ORDER_R3_19_TO_R3_39",
+  "majority_vote": false,
+  "policy_freeze": {
+    "status": "FROZEN_BEFORE_R44_NUMERICAL_METRIC_INSPECTION",
+    "note": "The adjudication rules are fixed independently of the numerical R4.3 response values. R4.3 terminal counts and seal status do not select thresholds or domain outcomes.",
+    "result_selected": false
+  },
+  "discordance_classes": [
+    "CONCORDANT",
+    "CALIBRATION_OFFSET",
+    "STRUCTURAL_DISAGREEMENT",
+    "SEMANTICALLY_NONCOMPARABLE",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "effect_policy": {
+    "ratio_neutral_factor": 1.05,
+    "delta_neutral_abs": 0.02,
+    "concordant_ratio_factor": 1.5,
+    "calibration_ratio_factor": 4.0,
+    "structural_disagreement_requires_opposite_direction": true,
+    "proxy_only_can_trigger_structural_disagreement": false,
+    "compressed_representative_runtime_forbids_literal_multi_myr_magnitude_claim": true
+  },
+  "authority_precedence": {
+    "PRIMARY": "ADJUDICATIVE",
+    "SECONDARY": "CONTEXT_ONLY",
+    "rule": "A secondary engine cannot override or create a primary-authority domain verdict. No engine counting or majority vote is permitted.",
+    "primary_resolution": "STRUCTURAL_DISAGREEMENT > CALIBRATION_OFFSET > CONCORDANT; if no evaluable primary evidence, classify semantic noncomparability or insufficiency. This is severity precedence, not voting."
+  },
+  "target_policy": {
+    "DIRECT": "eligible for domain adjudication",
+    "NORMALIZABLE": "eligible for domain adjudication with declared transform",
+    "PROXY_ONLY": "contextual support only; cannot alone establish structural disagreement or a promoted global agreement",
+    "NONCOMPARABLE": "SEMANTICALLY_NONCOMPARABLE"
+  },
+  "domain_metric_candidates": {
+    "Madingley": {
+      "population_persistence": ["cohort_response_ratio"],
+      "biomass": ["heterotroph_biomass_response_ratio", "autotroph_biomass_response_ratio"],
+      "trophic_opportunity": ["autotroph_biomass_response_ratio"],
+      "extinction_risk": ["cohort_response_ratio"]
+    },
+    "RangeShifter": {
+      "population_persistence": ["population_response_ratio"],
+      "range_occupancy": ["occupancy_response_ratio"],
+      "connectivity": ["occupancy_response_ratio"],
+      "extinction_risk": ["population_response_ratio", "occupancy_response_ratio"],
+      "founder_persistence": ["population_response_ratio", "occupancy_response_ratio"]
+    },
+    "CDMetaPOP": {
+      "population_persistence": ["population_agent_response_ratio"],
+      "range_occupancy": ["patch_occupancy_response_ratio"],
+      "connectivity": ["patch_occupancy_response_ratio"],
+      "extinction_risk": ["population_agent_response_ratio", "patch_occupancy_response_ratio"],
+      "founder_persistence": ["population_agent_response_ratio", "patch_occupancy_response_ratio"]
+    },
+    "NEMO": {
+      "gene_flow": ["genetic_gap_response_ratio", "allele_frequency_gap_delta"],
+      "admixture": ["genetic_gap_response_ratio", "allele_frequency_gap_delta"]
+    },
+    "SLiM": {
+      "population_persistence": ["population_agent_response_ratio"]
+    },
+    "Geonomics": {}
+  },
+  "replay_boundary_order": [
+    "H0_210MA",
+    "R3.9_PRE_CHA1",
+    "R3.11_POST_CHA1",
+    "R3.14_LATE_CENOZOIC",
+    "R3.27",
+    "R3.28",
+    "R3.34"
+  ],
+  "completion_policy": {
+    "all_parent_jobs_must_be_terminal_nonblocked": true,
+    "every_window_domain_scope_cell_must_receive_one_frozen_class": true,
+    "semantic_noncomparability_is_valid_scientific_output": true,
+    "insufficient_evidence_is_valid_scientific_output": true,
+    "structural_disagreement_does_not_fail_r44_process_seal": true,
+    "r44_may_not_modify_r3_parameters": true,
+    "r44_may_not_execute_replay": true,
+    "r44_may_only_nominate_earliest_affected_authority_candidates": true
+  }
+}

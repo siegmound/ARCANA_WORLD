@@ -1,0 +1,77 @@
+{
+  "stage": "v0.6D1-R4.39-R1",
+  "status": "PASS_R439_R1_DYNAMIC_REPRESENTABILITY_FAILURE_DIAGNOSTIC_CAPTURED",
+  "source_r439_status": "BLOCKED_R439_RUNTIME_TIME_MAPPING_CARRIER_DYNAMICS_OR_DYNAMIC_LAYER_CHANGE_PREFLIGHT_FAILURE",
+  "diagnostic_only": true,
+  "scientific_claim": false,
+  "j21_dynamic_payload": {
+    "status": "BLOCKED_R439_RUNTIME_TIME_MAPPING_CARRIER_DYNAMICS_OR_DYNAMIC_LAYER_CHANGE_PREFLIGHT_FAILURE",
+    "native_identity_layer_count": 149,
+    "anchor_state_count": 9,
+    "native_identity_anchor_state_count": 1341,
+    "future_exact_change_target_count": 1192,
+    "bad_state_count": 1,
+    "bad_field_count": 1,
+    "bad_by_variable": {
+      "precipitation_factor": 1
+    },
+    "bad_by_age_ka": {
+      "0.0": 1
+    },
+    "bad_by_family": {
+      "environment": 1
+    },
+    "field_summaries": [
+      {
+        "layer_family": "environment",
+        "variable_name": "precipitation_factor",
+        "taxon_id": null,
+        "bad_anchor_count": 1,
+        "bad_age_ka": [
+          0.0
+        ],
+        "global_min_across_bad_states": 0.9999995827674866,
+        "global_max_across_bad_states": 1.0000001192092896,
+        "all_bad_states_finite": true
+      }
+    ],
+    "bad_states": [
+      {
+        "native_layer_name": "R437_ENV_000",
+        "layer_family": "environment",
+        "variable_name": "precipitation_factor",
+        "taxon_id": null,
+        "anchor_index": 8,
+        "age_ka": 0.0,
+        "sha256": "c9966564910a52815986ffe41254c5f13f567c385d3bc30356cd3b4b804ee1d5",
+        "finite": true,
+        "min": 0.9999995827674866,
+        "max": 1.0000001192092896,
+        "native_range_0_1": false
+      }
+    ]
+  },
+  "j21_dynamic_model_preflight": {
+    "status": "BLOCKED_R439_RUNTIME_TIME_MAPPING_CARRIER_DYNAMICS_OR_DYNAMIC_LAYER_CHANGE_PREFLIGHT_FAILURE",
+    "replicate_count": null,
+    "replicate_pass_count": 0,
+    "model_run_performed_count": null,
+    "records": null
+  },
+  "time_mapping_status": "R439_EXACT_ORDINAL_TIME_MAPPING_VALIDATED",
+  "carrier_dynamics_gate_status": "R439_NONLITERAL_CARRIER_DYNAMICS_AUTHORITY_GAP_FROZEN",
+  "governance": {
+    "r439_outputs_modified": false,
+    "geonomics_execution_performed": false,
+    "model_construction_performed": false,
+    "changer_executed": false,
+    "canonical_values_modified": false,
+    "automatic_rescaling_performed": false,
+    "clipping_performed": false,
+    "result_selected_transform_performed": false,
+    "readjudication_performed": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  },
+  "next_action": "BUILD_R439_R2_REPRESENTABILITY_AUTHORITY_REPAIR_FROM_LIVE_DYNAMIC_RANGE_EVIDENCE"
+}

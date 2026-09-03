@@ -1,0 +1,203 @@
+{
+  "stage": "v0.6D1-R4.0",
+  "title": "ARCANA Multi-Engine Scientific Revalidation & Orchestrator Consolidation",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "external_engine_direct_canonical_write": false,
+  "automatic_external_evidence_promotion": false,
+  "baseline_a": "ARCANA_REDUCED_ORDER_R3_19_TO_R3_39",
+  "deep_biological_coupling": false,
+  "required_engines_for_r40_seal": [
+    "NEMO",
+    "Geonomics",
+    "Madingley",
+    "RangeShifter",
+    "CDMetaPOP",
+    "SLiM"
+  ],
+  "engines": {
+    "NEMO": {
+      "version": "2.4.2",
+      "role": "REFERENCE_ORACLE",
+      "probe": "NEMO_WSL",
+      "required": true,
+      "provisioning": {
+        "host": "WSL2",
+        "conda_env": "arcana-nemo242",
+        "channels": [
+          "conda-forge",
+          "ecoevo"
+        ]
+      }
+    },
+    "Geonomics": {
+      "version": "1.4.9",
+      "role": "REGIONAL_BACKEND",
+      "probe": "PYTHON_PACKAGE",
+      "package": "geonomics",
+      "required": true,
+      "provisioning": {
+        "host": "WSL2",
+        "conda_env": "arcana-geonomics-149",
+        "python": "3.11"
+      }
+    },
+    "Madingley": {
+      "version": "MadingleyR-1.0.6__CPP-2.02",
+      "role": "ECOSYSTEM_PROVIDER",
+      "probe": "R_MADINGLEY",
+      "required": true,
+      "provisioning": {
+        "host": "WSL2",
+        "conda_env": "arcana-r40-r",
+        "r": "4.5"
+      }
+    },
+    "RangeShifter": {
+      "version": "3.0.1",
+      "role": "DISPERSAL_RANGE_SPECIALIST",
+      "probe": "R_PACKAGE",
+      "package": "RangeShiftR",
+      "required": true,
+      "provisioning": {
+        "host": "WSL2",
+        "conda_env": "arcana-r40-r",
+        "r": "4.5",
+        "install_ref": "d01f1b6",
+        "required_package_version": "3.0.1"
+      }
+    },
+    "CDMetaPOP": {
+      "version": "3.08",
+      "role": "SECONDARY_DEMOGENETIC_ORACLE",
+      "probe": "CDMETAPOP",
+      "required": true,
+      "provisioning": {
+        "host": "WSL2",
+        "conda_env": "arcana-cdmetapop-308",
+        "python": "3.8",
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      }
+    },
+    "SLiM": {
+      "version": "5.2",
+      "role": "GENOMIC_ANCESTRY_ORACLE",
+      "probe": "SLIM_TOOLCHAIN",
+      "required": true,
+      "python_minimums": {
+        "tskit": "1.0.2",
+        "msprime": "1.4.1",
+        "pyslim": "1.1.1"
+      },
+      "provisioning": {
+        "host": "WSL2",
+        "conda_env": "arcana-slim52",
+        "python": "3.11",
+        "channel": "conda-forge"
+      }
+    }
+  },
+  "frozen_revalidation_windows": [
+    {
+      "id": "H0_DEEP_TIME_BACKGROUND",
+      "age_start_ma": 210.0,
+      "age_end_ma": 200.0,
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "earliest_replay_boundary": "H0_210MA"
+    },
+    {
+      "id": "H0_PRE_CHA1",
+      "age_start_ma": 70.0,
+      "age_end_ma": 66.0,
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "earliest_replay_boundary": "R3.9_PRE_CHA1"
+    },
+    {
+      "id": "H0_POST_CHA1_RECOVERY",
+      "age_start_ma": 65.5,
+      "age_end_ma": 55.0,
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP",
+        "NEMO"
+      ],
+      "earliest_replay_boundary": "R3.11_POST_CHA1"
+    },
+    {
+      "id": "H0_LATE_CENOZOIC",
+      "age_start_ma": 30.0,
+      "age_end_ma": 0.2,
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "NEMO"
+      ],
+      "earliest_replay_boundary": "R3.14_LATE_CENOZOIC"
+    },
+    {
+      "id": "SAPIENT_3MA_TO_200KA",
+      "age_start_ma": 3.0,
+      "age_end_ma": 0.2,
+      "engines": [
+        "Geonomics",
+        "CDMetaPOP",
+        "SLiM",
+        "NEMO"
+      ],
+      "earliest_replay_boundary": "R3.27"
+    },
+    {
+      "id": "SAPIENT_200KA_TO_0",
+      "age_start_ka": 200.0,
+      "age_end_ka": 0.0,
+      "engines": [
+        "Geonomics",
+        "SLiM",
+        "CDMetaPOP"
+      ],
+      "earliest_replay_boundary": "R3.28"
+    },
+    {
+      "id": "PRODUCER_20KA_TO_0",
+      "age_start_ka": 20.0,
+      "age_end_ka": 0.0,
+      "engines": [
+        "Geonomics",
+        "SLiM",
+        "RangeShifter"
+      ],
+      "earliest_replay_boundary": "R3.34"
+    }
+  ],
+  "comparison_domains": [
+    "population_persistence",
+    "range_occupancy",
+    "range_shift_rate",
+    "connectivity",
+    "gene_flow",
+    "additive_variance",
+    "trait_response",
+    "admixture",
+    "ancestry",
+    "biomass",
+    "trophic_opportunity",
+    "extinction_risk",
+    "founder_persistence",
+    "managed_wild_isolation",
+    "producer_divergence"
+  ],
+  "decision_policy": {
+    "no_auto_promotion": true,
+    "retain_all_engine_evidence": true,
+    "replay_when_material_disagreement": true,
+    "preserve_superseded_seals_as_provenance": true
+  }
+}

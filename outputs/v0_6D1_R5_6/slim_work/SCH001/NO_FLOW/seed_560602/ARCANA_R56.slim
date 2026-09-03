@@ -1,0 +1,44 @@
+// ARCANA WorldSim v0.6D1-R5.6 standardized ancestry/admixture challenge
+// Contact schedule comes only from R5.5 one-cell contact opportunity (>0 matched-ensemble support).
+// One SLiM reproductive transition per R5.5 age state is computational indexing, NOT literal biological time.
+initialize() {
+    initializeTreeSeq();
+    initializeMutationRate(0.0);
+    initializeMutationType("m1", 0.5, "f", 0.0);
+    initializeGenomicElementType("g1", m1, 1.0);
+    initializeGenomicElement(g1, 0, 999999);
+    initializeRecombinationRate(1e-08);
+    defineConstant("CONTACT", c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1));
+    defineConstant("STATE_COUNT", 141);
+    defineConstant("MIGRATION_RATE", 0);
+}
+1 early() {
+    sim.addSubpop("p1", 200);
+    sim.addSubpop("p2", 200);
+    sim.treeSeqRememberIndividuals(p1.individuals);
+    sim.treeSeqRememberIndividuals(p2.individuals);
+    if (CONTACT[0] == 1) {
+        p1.setMigrationRates(p2, MIGRATION_RATE);
+        p2.setMigrationRates(p1, MIGRATION_RATE);
+    } else {
+        p1.setMigrationRates(p2, 0.0);
+        p2.setMigrationRates(p1, 0.0);
+    }
+}
+2:STATE_COUNT early() {
+    idx = community.tick - 1;
+    if (CONTACT[idx] == 1) {
+        p1.setMigrationRates(p2, MIGRATION_RATE);
+        p2.setMigrationRates(p1, MIGRATION_RATE);
+    } else {
+        p1.setMigrationRates(p2, 0.0);
+        p2.setMigrationRates(p1, 0.0);
+    }
+}
+(STATE_COUNT + 1) late() {
+    catn("R56_FINAL_P1=" + p1.individualCount);
+    catn("R56_FINAL_P2=" + p2.individualCount);
+    catn("R56_ACTIVE_STATES=" + sum(CONTACT));
+    sim.treeSeqOutput("r56.trees");
+    sim.simulationFinished();
+}

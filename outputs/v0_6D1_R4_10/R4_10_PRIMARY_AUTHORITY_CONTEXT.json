@@ -1,0 +1,60 @@
+{
+  "domain": "population_persistence",
+  "interpretation": "Context only. R4.10 does not combine authority rows by vote or promote a new canonical conclusion.",
+  "majority_vote": false,
+  "primary_rows": [
+    {
+      "authority_role": "PRIMARY",
+      "discordance_class": "CALIBRATION_OFFSET",
+      "engine": "RangeShifter",
+      "external_direction": 0,
+      "job_id": "R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER",
+      "mapping_comparability": "NORMALIZABLE",
+      "reason": "ONE_RESPONSE_NEUTRAL_OTHER_MEANINGFUL",
+      "target_direction": -1
+    },
+    {
+      "authority_role": "PRIMARY",
+      "discordance_class": "STRUCTURAL_DISAGREEMENT",
+      "engine": "CDMetaPOP",
+      "external_direction": 1,
+      "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "mapping_comparability": "NORMALIZABLE",
+      "reason": "OPPOSITE_MEANINGFUL_RESPONSE_DIRECTION",
+      "target_direction": -1
+    }
+  ],
+  "rows": [
+    {
+      "authority_role": "SECONDARY",
+      "discordance_class": "CONCORDANT",
+      "engine": "Madingley",
+      "external_direction": 0,
+      "job_id": "R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY",
+      "mapping_comparability": "PROXY_ONLY",
+      "reason": "PROXY_DIRECTIONAL_COMPARISON_ONLY",
+      "target_direction": -1
+    },
+    {
+      "authority_role": "PRIMARY",
+      "discordance_class": "CALIBRATION_OFFSET",
+      "engine": "RangeShifter",
+      "external_direction": 0,
+      "job_id": "R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER",
+      "mapping_comparability": "NORMALIZABLE",
+      "reason": "ONE_RESPONSE_NEUTRAL_OTHER_MEANINGFUL",
+      "target_direction": -1
+    },
+    {
+      "authority_role": "PRIMARY",
+      "discordance_class": "STRUCTURAL_DISAGREEMENT",
+      "engine": "CDMetaPOP",
+      "external_direction": 1,
+      "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "mapping_comparability": "NORMALIZABLE",
+      "reason": "OPPOSITE_MEANINGFUL_RESPONSE_DIRECTION",
+      "target_direction": -1
+    }
+  ],
+  "window_id": "H0_POST_CHA1_RECOVERY"
+}

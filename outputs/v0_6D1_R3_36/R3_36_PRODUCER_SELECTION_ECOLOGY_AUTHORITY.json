@@ -1,0 +1,80 @@
+{
+  "candidate_cohort": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "deep_biological_coupling": false,
+  "dynamics": {
+    "dependency_adjustment_rate_per_kyr": 0.16,
+    "dependency_return_feedback_strength": 0.12,
+    "governance": {
+      "deep_biological_coupling": false,
+      "inherit_r334_r335_domestication_gates_exactly": true,
+      "no_domestication_threshold_relaxation": true,
+      "no_lineage_specific_rescaling": true,
+      "no_named_earth_crop_analogues": true,
+      "sensitivity_is_selection_gate": false,
+      "unique_human_identity_materialized": false
+    },
+    "managed_forager_food_support_threshold": 0.2,
+    "managed_forager_min_managed_taxa": 4.0,
+    "managed_patch_persistence_rate_per_kyr": 0.12,
+    "managed_population_isolation_rate_per_kyr": 0.14,
+    "propagation_ecology_feedback_strength": 0.18,
+    "resource_concentration_food_gain": 0.2,
+    "resource_concentration_selection_gain": 0.3,
+    "resource_concentration_top_fraction": 0.1,
+    "wild_gene_flow_floor_fraction": 0.3,
+    "wild_gene_flow_reduction_strength": 0.7
+  },
+  "evidence_basis": {
+    "DOMESTICATION_ECOLOGY_2024": {
+      "pmcid": "PMC11062453",
+      "source": "Domestication and the evolution of crops: variable syndromes, complex genetic architectures, and ecological entanglements (2024)",
+      "use": "domestication is treated as an ecological mutualism in which control over propagation/reproduction, genetic constraints and wild gene flow jointly regulate the transition"
+    },
+    "ECO_EVOLUTIONARY_GENE_FLOW": {
+      "pmcid": "PMC5182429",
+      "source": "The eco-evolutionary impacts of domestication and agricultural practices on wild species (2017)",
+      "use": "even modest migration can homogenize populations, motivating explicit effective wild-gene-flow closure rather than a binary isolation flag"
+    },
+    "PATHWAY_GOVERNANCE": {
+      "source": "R3.36 governance",
+      "use": "food-production, incipient-domestication and intensive-managed-forager outcomes are all valid; no threshold is relaxed after observing the baseline"
+    },
+    "POPULATION_STRUCTURE": {
+      "pmcid": "PMC7373799",
+      "source": "Genomic, Transcriptomic and Epigenomic Tools to Study the Domestication of Plants and Animals (2020)",
+      "use": "managed/wild differentiation depends on generations, selection intensity, bottlenecks/structure and gene-flow frequency"
+    },
+    "R334_RESOURCE_LANDSCAPE": {
+      "source": "R3.34 SEALED Producer Resource Landscape",
+      "use": "spatial resource concentration and temporal patch persistence are derived from the existing 90x180 producer landscape; no new Holocene environment is invented"
+    },
+    "R335_PARENT": {
+      "source": "R3.35 SEALED Producer Heritable Variation and Domestication Genetics",
+      "use": "36 producer taxa, six-trait quantitative genetics, R3.34 gate thresholds and parent genetic replay are immutable authority"
+    },
+    "WILD_CROP_GENE_FLOW": {
+      "pmcid": "PMC7211868",
+      "source": "The relevance of gene flow with wild relatives in understanding the domestication process (2020)",
+      "use": "domestication can be protracted and recurrent wild-to-managed gene flow can slow or reshape divergence rather than disappear abruptly"
+    }
+  },
+  "parent": "PASS_R335_PRODUCER_HERITABLE_VARIATION_MULTIVARIATE_SELECTION_RESPONSE_WILD_GENE_FLOW_AND_DOMESTICATION_GENETICS_SEALED",
+  "parent_hashes": {
+    "r334_landscape_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+    "r335_checkpoint_sha256": "e23ff4e822425ab87c8b353e837ed9c466b19555ad7721c81929d47e8b25d5bc",
+    "r335_replay_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839"
+  },
+  "pathway_resolution_semantics": "FOOD_PRODUCTION_AND_INTENSIVE_MANAGED_FORAGING_ARE_BOTH_VALID_CANONICAL_OUTCOMES",
+  "producer_taxon_count": 36,
+  "r334_r335_domestication_gates_inherited_exactly": true,
+  "resource_semantics": "ALL_RESOURCE_CONCENTRATION_AND_PERSISTENCE_TERMS_ARE_DERIVED_FROM_R3_34_SEALED_90x180_PRODUCER_RESOURCE_LANDSCAPE",
+  "retroactive_flora_phylogeny_claimed": false,
+  "selection_ecology_model": "RESOURCE_CONCENTRATION_AND_PERSISTENCE_PLUS_MANAGED_PATCH_MEMORY_PLUS_MANAGED_POPULATION_ISOLATION_MODULATE_WILD_GENE_FLOW_AND_SELECTION_RESPONSE",
+  "stage": "v0.6D1-R3.36",
+  "status": "R336_PRODUCER_SELECTION_ECOLOGY_AUTHORITY",
+  "unique_human_identity_materialized": false,
+  "wild_gene_flow_semantics": "EFFECTIVE_WILD_GENE_FLOW_IS_NEVER_GREATER_THAN_R3_34_WILD_GENE_FLOW_PRESSURE_AND_REMAINS_NONZERO_UNLESS_PARENT_IS_ZERO"
+}

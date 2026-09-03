@@ -1,0 +1,52 @@
+{
+  "adjudicative_promotion_authorized_in_r423": false,
+  "canonical_write": false,
+  "engine": "NEMO",
+  "finite_metric_count": 2,
+  "job_id": "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+  "metric_count": 2,
+  "normalized_metrics": {
+    "mean_expected_heterozygosity": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+      "kind": "ratio",
+      "name": "mean_expected_heterozygosity",
+      "semantics": "RAW_EXPECTED_HETEROZYGOSITY_NOT_ADDITIVE_GENETIC_VARIANCE",
+      "summary": {
+        "max": 0.483430125,
+        "median": 0.481226,
+        "min": 0.4701155,
+        "n": 4,
+        "q10": 0.47290355,
+        "q90": 0.4833139875
+      }
+    },
+    "mean_population_frequency_range": {
+      "adjudicative_promotion_authorized_in_r423": false,
+      "comparability_disposition": "CONTEXT_ONLY_SEMANTIC_MISMATCH",
+      "kind": "ratio",
+      "name": "mean_population_frequency_range",
+      "semantics": "RAW_ALLELE_FREQUENCY_DIFFERENTIATION_NOT_GENE_FLOW_RATE",
+      "summary": {
+        "max": 0.07874999999999999,
+        "median": 0.062499999999999986,
+        "min": 0.05437500000000002,
+        "n": 4,
+        "q10": 0.05621250000000001,
+        "q90": 0.07447499999999999
+      }
+    }
+  },
+  "raw_evidence_path": "outputs/v0_6D1_R4_22/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/RAW_EVIDENCE.json",
+  "raw_evidence_sha256": "8ac8e048fef0a5a579c3b021c14e4a0aaf5d476e09854f22ee8b57440acb8f89",
+  "raw_hash_matches_r422_audit": true,
+  "readjudication_authorized_in_r423": false,
+  "replicate_count": 4,
+  "seed_ledger_exactly_reused": true,
+  "semantic_guards": [
+    "heterozygosity != additive_variance",
+    "allele_frequency_differentiation != gene_flow_rate"
+  ],
+  "stage": "v0.6D1-R4.23",
+  "window_id": "H0_POST_CHA1_RECOVERY"
+}

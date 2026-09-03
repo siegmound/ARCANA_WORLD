@@ -1,0 +1,34 @@
+{
+  "stage": "v0.6D1-R4.52",
+  "policy": "R452_FREEZE_EXACT_20_JOB_NON_GEONOMICS_EXECUTION_PLAN_WITHOUT_RUNNING",
+  "parent_required": {
+    "r451_integrated": "24/24 PASS",
+    "r451_final_seal": "18/18 SEALED",
+    "promotion_candidates": 0,
+    "scientific_execution_required_jobs": 20
+  },
+  "engine_jobs": {
+    "Madingley": 4,
+    "RangeShifter": 5,
+    "CDMetaPOP": 5,
+    "NEMO": 3,
+    "SLiM": 3
+  },
+  "seed_authority": {
+    "expected_frozen_seed_count_per_job": 4,
+    "expected_non_geonomics_seed_count": 80,
+    "expected_seed_uniqueness": true,
+    "source_scope": "R4.3/R4.35 locally preserved frozen seed authority"
+  },
+  "scientific_execution": {
+    "planned_stream_count": 80,
+    "authorized_in_r452": false,
+    "performed_in_r452": false,
+    "reason": "engine-specific scientific execution interface and readout authority must be frozen in R4.53 first"
+  },
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "next_action": "BUILD_R453_NON_GEONOMICS_SCIENTIFIC_EXECUTION_INTERFACE_AND_READOUT_AUTHORITY_PREFLIGHT"
+}

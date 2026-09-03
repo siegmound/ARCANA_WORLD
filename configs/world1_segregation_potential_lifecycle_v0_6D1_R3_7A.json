@@ -1,0 +1,44 @@
+{
+  "stage": "v0.6D1-R3.7A",
+  "status": "CALIBRATION_CANDIDATE",
+  "initialization": {
+    "same_current_species_S": 0.0,
+    "cross_species_pairs_authoritative": false,
+    "hidden_pre210_genomics_invented": false
+  },
+  "drift": {
+    "authority": "D3.3A lambda_drift = 1/(2 Ne generation_time)",
+    "new_rate_introduced": false
+  },
+  "mutation": {
+    "deterministic_between_deme_S_increment": 0.0,
+    "reason": "D3.3A mu is within-deme standing-variance supply, not a locus-frequency mutation matrix"
+  },
+  "directional_selection": {
+    "mapping": "dh = dz / sqrt(2 K_eff)",
+    "K_eff_production_value": null,
+    "parent_nemo_reference_min": 46.646449039727734,
+    "parent_nemo_reference_median": 59.61518021888823,
+    "parent_nemo_reference_max": 63.498202295843996,
+    "production_authorized": false
+  },
+  "b2_nemo_reference": {
+    "nemo_version": "2.4.2",
+    "phases": [
+      {"name": "CONNECTED_BURNIN", "generations": 250},
+      {"name": "FRAGMENTED", "generations": 400},
+      {"name": "RECONNECTED", "generations": 550}
+    ],
+    "default_population_sizes": [500, 2000],
+    "default_replicates": 2,
+    "default_loci_per_trait": 64,
+    "status": "PENDING_EXTERNAL_WSL"
+  },
+  "governance": {
+    "canonical_write_allowed": false,
+    "production_runtime_binding_allowed": false,
+    "mu_b_change_authorized": false,
+    "ceiling_change_authorized": false,
+    "automatic_calibration_allowed": false
+  }
+}

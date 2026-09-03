@@ -1,0 +1,109 @@
+{
+  "schema": "ARCANA_R315_INCREMENTAL_PATCH_MANIFEST_V1",
+  "patch": "v0.6D1-R3.15_OVER_R3.14_SEALED",
+  "base_release": "v0.6D1-R3.14_SEALED",
+  "target_stage": "v0.6D1-R3.15_CANDIDATE",
+  "integration": "Extract/copy patch files over the root of the current R3.14 SEALED working directory; preserve all existing files and materialized local_bindings.",
+  "payload_file_count": 15,
+  "payload": [
+    {
+      "path": "CANONICAL_LATE_CENOZOIC_SECULAR_BIOLOGY_INTEGRATION_CONTRACT_v0_6D1_R3_15.md",
+      "sha256": "61857c014fb30feebfaab778019b5dab295d83345d55fb98e5831b81bab7acfc",
+      "size": 3828,
+      "operation": "ADD"
+    },
+    {
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_15.md",
+      "sha256": "242ccb642a4855be6b1e7d0a6f1acd52f72b600db0446fea31b4da036a6e123b",
+      "size": 963,
+      "operation": "ADD"
+    },
+    {
+      "path": "R3_15_INTEGRATION_GATE_AUDIT.md",
+      "sha256": "f3f0fd0fd93d5a5b83f0b548eba314339d6189efc2870c08e2abb4c6829ecbd0",
+      "size": 1344,
+      "operation": "ADD"
+    },
+    {
+      "path": "README_R3_15.md",
+      "sha256": "213b48d609448b806a28771c5eedfd30c655e9ed0bf3bcd614ae2e50b2426231",
+      "size": 707,
+      "operation": "ADD"
+    },
+    {
+      "path": "V0_6D1_R3_15_STATUS.md",
+      "sha256": "0de39c75b2ac4aa4146eaf7d8fe8e19cd97196d2c56fb4d443015df1b5114457",
+      "size": 702,
+      "operation": "ADD"
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_15.json",
+      "sha256": "3baedb31d54bff398f2c095b888528d63569a4201d195646d9531e89aadc97ca",
+      "size": 4072,
+      "operation": "ADD"
+    },
+    {
+      "path": "configs/world1_r315_late_cenozoic_secular_biology_v0_6D1_R3_15.json",
+      "sha256": "f5f92e25706eb18473f49f2a205829dce8d833f527197d783d9dff00c3706c81",
+      "size": 576,
+      "operation": "ADD"
+    },
+    {
+      "path": "run_v0_6D1_R3_15_checks.ps1",
+      "sha256": "6b1a4f6383eebb120b0e93140a3bd12c62b3a51a5ec04a08043479e96d52cfe8",
+      "size": 937,
+      "operation": "ADD"
+    },
+    {
+      "path": "run_v0_6D1_R3_15_secular_biology.ps1",
+      "sha256": "a74bb4b20333503f3d6eed7d121d3c49683eb0555433b522536fa869bf889ee2",
+      "size": 390,
+      "operation": "ADD"
+    },
+    {
+      "path": "scripts/formal_audit_v0_6D1_R3_15_candidate.py",
+      "sha256": "f248b26f749eb7057554289ca936ace5ec6180f157252e047aa04a276c61aa5e",
+      "size": 7782,
+      "operation": "ADD"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_15_secular_biology.py",
+      "sha256": "2e1331ce10b242c70620bd474afe63bcb4e4f56639b2ead1cbdfd11767af2578",
+      "size": 9946,
+      "operation": "ADD"
+    },
+    {
+      "path": "tests/test_r315_late_cenozoic_secular_biology.py",
+      "sha256": "165644bc6e930cab2b3ad777b330c909bd3a1ec5d4f6ceb315f5bc06a839cf33",
+      "size": 6727,
+      "operation": "ADD"
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r315_late_cenozoic_secular_biology.py",
+      "sha256": "f861d856f628b2f33a77e0ad58ec700ee0ecf91a472e0532bc64f9083a922dcb",
+      "size": 21198,
+      "operation": "ADD"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_15/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_15.json",
+      "sha256": "dff6c1dd83a6a71b00ccd08ff533432d8046a72046b626838bc65e4a4b90338c",
+      "size": 25809,
+      "operation": "ADD"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_15/R3_15_FOCUSED_REGRESSION.txt",
+      "sha256": "71d147f616ca3e67efae490d3335c477a93d57e7707d06178e4aaa2da8b9f1ed",
+      "size": 100,
+      "operation": "ADD"
+    }
+  ],
+  "governance": {
+    "scientific_parameter_changes": "NONE",
+    "biology_cadence_changes": "NONE",
+    "deep_biological_coupling": "OFF",
+    "canonical_run_included": false,
+    "canonical_run_scope": "30.0 Ma -> 0.25 Ma, 238 x 125 kyr biology steps",
+    "c2_bridge_crossed": false,
+    "adaptive_clock_promoted_to_biology_step": false
+  }
+}

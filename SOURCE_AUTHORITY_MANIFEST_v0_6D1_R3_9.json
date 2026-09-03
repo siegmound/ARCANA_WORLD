@@ -1,0 +1,49 @@
+{
+  "stage": "v0.6D1-R3.9",
+  "state": "CANDIDATE",
+  "parent_stage": "v0.6D1-R3.8_SEALED",
+  "authority_note": "R3.9 continues H0 from the sealed 150 Ma R3.8 restart boundary to the exact 66.0 Ma PRE_IMPACT side of CHA-1. It does not apply the CHA-1 event and changes no scientific authority.",
+  "parent_package_manifest": {
+    "path": "PACKAGE_MANIFEST_v0_6D1_R3_8.json",
+    "sha256": "9e0298f91cc0d143f63810369c2fad905a41c3d5d5e95634ea1c85070be30fa5"
+  },
+  "canonical_150ma_checkpoint": {
+    "json": {
+      "path": "local_runs/v0_6D1_R3_8/WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.json",
+      "sha256": "8a8fbe9da857c6b278c2c8856a4b989a40a0a5ec2087af64a2ce0e9c1a6a2853"
+    },
+    "npz": {
+      "path": "local_runs/v0_6D1_R3_8/WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.npz",
+      "sha256": "0d253babcd74bdfcf4590bb6f51ac4ce99aabcb8f224d00a4c59fd148021cc32"
+    },
+    "summary": {
+      "path": "local_runs/v0_6D1_R3_8/R3_8_CHECKPOINT_VALIDATION_SUMMARY.json",
+      "sha256": "58019980b3c28903b9ffd4836f0be9dfc35e0621be764fc974e13974e7117796"
+    }
+  },
+  "cha1_exact_event_authority": {
+    "path": "outputs/CHA1_PULSE_REFERENCE_AUDIT_v0_6D.json",
+    "sha256": "3c313eaa3f50f245e11002ed3b7f7ed7c64523fde87305d5c382f01d6218e184",
+    "exact_event_time_ma": 66.0,
+    "event_side": "PRE_IMPACT_66P0_MINUS"
+  },
+  "new_runtime_source": {
+    "path": "src/arcana_worldsim/scientific_engines/r39_precha1_continuation.py",
+    "sha256": "f790a3bc75905e76e436d38b7254ccc53752f2f1982b62e75821733641b46897"
+  },
+  "governance": {
+    "pre_cha1_66ma_checkpoint_authorized": false,
+    "authorization_condition": "FULL_GOVERNED_672_STEP_150_TO_66_RUN_PLUS_SERIALIZATION_IDENTITY_PASS",
+    "cha1_applied": false,
+    "deep_biological_coupling": false,
+    "ordinary_continuation_past_66_authorized": false,
+    "scalar_k_physical_constant_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false
+  },
+  "evidence_paths": [
+    "outputs/v0_6D1_R3_9/R3_9_DIAGNOSTIC_SMOKE.json",
+    "outputs/v0_6D1_R3_9/FORMAL_AUDIT_v0_6D1_R3_9.json",
+    "outputs/v0_6D1_R3_9/R3_9_TESTS.txt",
+    "outputs/v0_6D1_R3_9/PARENT_R37I_R38_REGRESSION.txt"
+  ]
+}

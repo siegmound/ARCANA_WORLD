@@ -1,0 +1,594 @@
+{
+  "baseline_descriptor": {
+    "comparison_only_derived": {
+      "domestication_index_delta": 0.10330899804830551,
+      "selective_divergence_delta": 0.03439551033079624,
+      "wild_gene_flow_delta": -0.05229482054710388
+    },
+    "comparison_target_end_state": {
+      "dependency_symbiosis": {
+        "max": 0.011324744671583176,
+        "mean": 0.006775869003831758,
+        "median": 0.007568241562694311,
+        "min": 0.0014802393270656466,
+        "n": 2304,
+        "q10": 0.003382460679858923,
+        "q90": 0.009698676690459252
+      },
+      "domestication_index": {
+        "max": 0.13267295062541962,
+        "mean": 0.10074416683993251,
+        "median": 0.10330899804830551,
+        "min": 0.058895498514175415,
+        "n": 2304,
+        "q10": 0.08046689257025719,
+        "q90": 0.11970704272389412
+      },
+      "harvest_selection": {
+        "max": 0.10136646032333374,
+        "mean": 0.06720648741530669,
+        "median": 0.06696291267871857,
+        "min": 0.03493039309978485,
+        "n": 2304,
+        "q10": 0.049862181022763255,
+        "q90": 0.08396493643522263
+      },
+      "plant_food_contribution": {
+        "max": 0.06813246011734009,
+        "mean": 0.029271347211660113,
+        "median": 0.027258473448455334,
+        "min": 0.00215030531398952,
+        "n": 2304,
+        "q10": 0.01373134795576334,
+        "q90": 0.04690413326025009
+      },
+      "propagation_control": {
+        "max": 0.2051415890455246,
+        "mean": 0.14912965981380288,
+        "median": 0.1513492316007614,
+        "min": 0.08625274151563644,
+        "n": 2304,
+        "q10": 0.11967521831393242,
+        "q90": 0.1777709424495697
+      },
+      "recurrent_harvest": {
+        "max": 0.6379092931747437,
+        "mean": 0.5638175222945089,
+        "median": 0.5686975717544556,
+        "min": 0.455740362405777,
+        "n": 2304,
+        "q10": 0.513372951745987,
+        "q90": 0.6112864673137666
+      },
+      "resource_contact": {
+        "max": 0.36658817529678345,
+        "mean": 0.20468265977170733,
+        "median": 0.21103502064943314,
+        "min": 0.017725428566336632,
+        "n": 2304,
+        "q10": 0.08744917064905167,
+        "q90": 0.30877785086631776
+      },
+      "selective_divergence": {
+        "max": 0.04907221347093582,
+        "mean": 0.030495590949916124,
+        "median": 0.03439551033079624,
+        "min": 0.007283495273441076,
+        "n": 2304,
+        "q10": 0.015517325978726149,
+        "q90": 0.042820530384778975
+      },
+      "stand_management": {
+        "max": 0.36725085973739624,
+        "mean": 0.287968595395796,
+        "median": 0.2910034656524658,
+        "min": 0.19003795087337494,
+        "n": 2304,
+        "q10": 0.2478131264448166,
+        "q90": 0.32285477221012115
+      },
+      "wild_gene_flow_pressure": {
+        "max": 0.5024093389511108,
+        "mean": 0.25464839631806374,
+        "median": 0.26551245152950287,
+        "min": 0.01552563812583685,
+        "n": 2304,
+        "q10": 0.0972546823322773,
+        "q90": 0.4056862384080887
+      }
+    },
+    "descriptor_type": "R334_PRODUCER_COEVOLUTION_WINDOW",
+    "exogenous_forcing": {
+      "harvest_return_end": {
+        "max": 0.28005239367485046,
+        "mean": 0.040670883758586136,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.16107028722763062
+      },
+      "harvest_return_start": {
+        "max": 0.07338123768568039,
+        "mean": 0.006749491075701986,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.028045824356377112
+      },
+      "propagation_opportunity_end": {
+        "max": 0.4909221827983856,
+        "mean": 0.0663833477635195,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.30937057733535767
+      },
+      "propagation_opportunity_start": {
+        "max": 0.1554296463727951,
+        "mean": 0.015286769791121224,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.06574733555316925
+      },
+      "resource_abundance_end": {
+        "max": 0.5887598991394043,
+        "mean": 0.11908584832101515,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.531076192855835
+      },
+      "resource_abundance_start": {
+        "max": 0.19827596843242645,
+        "mean": 0.020906094358619943,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.09553442224860188
+      },
+      "suitability_end": {
+        "max": 0.7850132584571838,
+        "mean": 0.1587811428001212,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.7081016898155212
+      },
+      "suitability_start": {
+        "max": 0.3383074104785919,
+        "mean": 0.03765809287475488,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 583200,
+        "q10": 0.0,
+        "q90": 0.17414362877607342
+      }
+    },
+    "materialized": {
+      "end_age": 0.0,
+      "ensemble_members": 32,
+      "producer_taxa": 36,
+      "start_age": 20.0
+    },
+    "selected_frozen_artifacts": [
+      {
+        "bytes": 12509426,
+        "exists": true,
+        "hash_match": true,
+        "observed_sha256": "a0af97467058ec78fbc38a39b9001715b3fdbd2c74ef2e54c1585762d66c3227",
+        "path": "outputs\\v0_6D1_R3_34\\R3_34_PLANT_COEVOLUTION_DOMESTICATION_TRAJECTORIES.npz",
+        "registered_sha256": "a0af97467058ec78fbc38a39b9001715b3fdbd2c74ef2e54c1585762d66c3227"
+      },
+      {
+        "bytes": 17450885,
+        "exists": true,
+        "hash_match": true,
+        "observed_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+        "path": "outputs\\v0_6D1_R3_34\\R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+        "registered_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+      }
+    ],
+    "start_state": {
+      "dependency_symbiosis": {
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 2304,
+        "q10": 0.0,
+        "q90": 0.0
+      },
+      "domestication_index": {
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 2304,
+        "q10": 0.0,
+        "q90": 0.0
+      },
+      "harvest_selection": {
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 2304,
+        "q10": 0.0,
+        "q90": 0.0
+      },
+      "plant_food_contribution": {
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 2304,
+        "q10": 0.0,
+        "q90": 0.0
+      },
+      "propagation_control": {
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 2304,
+        "q10": 0.0,
+        "q90": 0.0
+      },
+      "recurrent_harvest": {
+        "max": 0.660691499710083,
+        "mean": 0.5884165815336423,
+        "median": 0.595983237028122,
+        "min": 0.5026641488075256,
+        "n": 2304,
+        "q10": 0.5287404477596283,
+        "q90": 0.64034304022789
+      },
+      "resource_contact": {
+        "max": 0.14012984931468964,
+        "mean": 0.045969302037342966,
+        "median": 0.03398327715694904,
+        "min": 0.0008768560364842415,
+        "n": 2304,
+        "q10": 0.004552899301052094,
+        "q90": 0.10095850303769115
+      },
+      "selective_divergence": {
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 2304,
+        "q10": 0.0,
+        "q90": 0.0
+      },
+      "stand_management": {
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "n": 2304,
+        "q10": 0.0,
+        "q90": 0.0
+      },
+      "wild_gene_flow_pressure": {
+        "max": 0.46868449449539185,
+        "mean": 0.3182320445193909,
+        "median": 0.31780727207660675,
+        "min": 0.13307499885559082,
+        "n": 2304,
+        "q10": 0.1899635076522827,
+        "q90": 0.42959379851818097
+      }
+    },
+    "target": {
+      "end": 0.0,
+      "start": 20.0,
+      "unit": "ka"
+    }
+  },
+  "canonical_write": false,
+  "comparison_target": {
+    "arcana_end_state": {
+      "dependency_symbiosis": {
+        "max": 0.011324744671583176,
+        "mean": 0.006775869003831758,
+        "median": 0.007568241562694311,
+        "min": 0.0014802393270656466,
+        "n": 2304,
+        "q10": 0.003382460679858923,
+        "q90": 0.009698676690459252
+      },
+      "domestication_index": {
+        "max": 0.13267295062541962,
+        "mean": 0.10074416683993251,
+        "median": 0.10330899804830551,
+        "min": 0.058895498514175415,
+        "n": 2304,
+        "q10": 0.08046689257025719,
+        "q90": 0.11970704272389412
+      },
+      "harvest_selection": {
+        "max": 0.10136646032333374,
+        "mean": 0.06720648741530669,
+        "median": 0.06696291267871857,
+        "min": 0.03493039309978485,
+        "n": 2304,
+        "q10": 0.049862181022763255,
+        "q90": 0.08396493643522263
+      },
+      "plant_food_contribution": {
+        "max": 0.06813246011734009,
+        "mean": 0.029271347211660113,
+        "median": 0.027258473448455334,
+        "min": 0.00215030531398952,
+        "n": 2304,
+        "q10": 0.01373134795576334,
+        "q90": 0.04690413326025009
+      },
+      "propagation_control": {
+        "max": 0.2051415890455246,
+        "mean": 0.14912965981380288,
+        "median": 0.1513492316007614,
+        "min": 0.08625274151563644,
+        "n": 2304,
+        "q10": 0.11967521831393242,
+        "q90": 0.1777709424495697
+      },
+      "recurrent_harvest": {
+        "max": 0.6379092931747437,
+        "mean": 0.5638175222945089,
+        "median": 0.5686975717544556,
+        "min": 0.455740362405777,
+        "n": 2304,
+        "q10": 0.513372951745987,
+        "q90": 0.6112864673137666
+      },
+      "resource_contact": {
+        "max": 0.36658817529678345,
+        "mean": 0.20468265977170733,
+        "median": 0.21103502064943314,
+        "min": 0.017725428566336632,
+        "n": 2304,
+        "q10": 0.08744917064905167,
+        "q90": 0.30877785086631776
+      },
+      "selective_divergence": {
+        "max": 0.04907221347093582,
+        "mean": 0.030495590949916124,
+        "median": 0.03439551033079624,
+        "min": 0.007283495273441076,
+        "n": 2304,
+        "q10": 0.015517325978726149,
+        "q90": 0.042820530384778975
+      },
+      "stand_management": {
+        "max": 0.36725085973739624,
+        "mean": 0.287968595395796,
+        "median": 0.2910034656524658,
+        "min": 0.19003795087337494,
+        "n": 2304,
+        "q10": 0.2478131264448166,
+        "q90": 0.32285477221012115
+      },
+      "wild_gene_flow_pressure": {
+        "max": 0.5024093389511108,
+        "mean": 0.25464839631806374,
+        "median": 0.26551245152950287,
+        "min": 0.01552563812583685,
+        "n": 2304,
+        "q10": 0.0972546823322773,
+        "q90": 0.4056862384080887
+      }
+    },
+    "derived_end_response": {
+      "domestication_index_delta": 0.10330899804830551,
+      "selective_divergence_delta": 0.03439551033079624,
+      "wild_gene_flow_delta": -0.05229482054710388
+    },
+    "use": "POST_EXECUTION_NORMALIZATION_AND_R4.4_ADJUDICATION_ONLY"
+  },
+  "engine_input": {
+    "derived_from": "ARCANA_START_STATE_AND_EXOGENOUS_FORCING_ONLY",
+    "drivers": {
+      "arcana_start_population_descriptor": 1.0,
+      "engine_gene_flow_rate": 0.0210684363245964,
+      "engine_selection_strength": 0.0,
+      "normalized_connectivity_start": 0.31780727207660675,
+      "normalized_environment_change": 0.0,
+      "normalized_habitat_fraction_end": 0.5,
+      "normalized_habitat_fraction_start": 0.5,
+      "normalized_initial_genetic_diversity": 0.31780727207660675,
+      "normalized_initial_population_scale": 1.0
+    },
+    "end_state_leakage": false,
+    "replicates": [
+      {
+        "replicate_index": 0,
+        "seed": 1087167018
+      },
+      {
+        "replicate_index": 1,
+        "seed": 882721373
+      },
+      {
+        "replicate_index": 2,
+        "seed": 1329415137
+      },
+      {
+        "replicate_index": 3,
+        "seed": 143055247
+      }
+    ],
+    "representative_runtime": {
+      "steps": 60,
+      "unit": "generations"
+    }
+  },
+  "execution_semantics": {
+    "arcana_end_state_use": "COMPARISON_TARGET_ONLY",
+    "description": "Each external engine is run on a reproducible engine-native representative response experiment parameterized from the frozen ARCANA historical-window start state and exogenous forcing. Historical duration is mapped explicitly to representative engine time; the mapping never asserts literal equality of years, generations, model steps, cohorts, cells or individual counts.",
+    "discordance_adjudication_in_r43": false,
+    "end_state_leakage_forbidden": true,
+    "literal_multi_myr_engine_replay": false,
+    "mode": "NORMALIZED_BOUNDARY_RESPONSE_REVALIDATION",
+    "scientific_agreement_claimed": false
+  },
+  "frozen_parent_job": {
+    "canonical_write": false,
+    "earliest_replay_boundary": "R3.34",
+    "engine": "SLiM",
+    "execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+    "job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+    "required_mapping_fields": [
+      "time_mapping",
+      "space_mapping",
+      "population_mapping",
+      "domain_mapping",
+      "uncertainty_mapping"
+    ],
+    "result_selected": false,
+    "window_id": "PRODUCER_20KA_TO_0"
+  },
+  "historical_duration_years": 20000.0,
+  "r43_execution_id": "R43_J22_PRODUCER_20KA_TO_0_SLIM",
+  "scientific_agreement_claimed": false,
+  "stage": "v0.6D1-R4.3",
+  "unit_mapping": {
+    "arcana_metrics": [
+      "gene_flow",
+      "additive_variance",
+      "trait_response",
+      "admixture",
+      "ancestry",
+      "managed_wild_isolation",
+      "producer_divergence"
+    ],
+    "baseline_artifacts": [
+      {
+        "bytes": 12509426,
+        "exists": true,
+        "hash_match": true,
+        "observed_sha256": "a0af97467058ec78fbc38a39b9001715b3fdbd2c74ef2e54c1585762d66c3227",
+        "path": "outputs\\v0_6D1_R3_34\\R3_34_PLANT_COEVOLUTION_DOMESTICATION_TRAJECTORIES.npz",
+        "registered_sha256": "a0af97467058ec78fbc38a39b9001715b3fdbd2c74ef2e54c1585762d66c3227"
+      },
+      {
+        "bytes": 17450885,
+        "exists": true,
+        "hash_match": true,
+        "observed_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+        "path": "outputs\\v0_6D1_R3_34\\R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+        "registered_sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+      }
+    ],
+    "caveats": [
+      "NORMALIZED_BOUNDARY_RESPONSE_NOT_LITERAL_MULTI_MYR_ENGINE_REPLAY",
+      "ARCANA_END_STATE_IS_COMPARISON_TARGET_ONLY",
+      "NO_MAJORITY_VOTE"
+    ],
+    "comparability_class": [
+      "NORMALIZABLE"
+    ],
+    "domain_mapping": [
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "gene_flow",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "additive_variance",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "trait_response",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "admixture",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "ancestry",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "managed_wild_isolation",
+        "majority_vote": false
+      },
+      {
+        "authority_role": "PRIMARY",
+        "comparability_class": "NORMALIZABLE",
+        "domain": "producer_divergence",
+        "majority_vote": false
+      }
+    ],
+    "engine": "SLiM",
+    "engine_raw_metrics": "ENGINE_SPECIFIC_RAW_EVIDENCE_PRESERVED_UNALTERED",
+    "job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+    "normalized_units": "DIMENSIONLESS_RELATIVE_RESPONSE_OR_DECLARED_DOMAIN_METRIC",
+    "population_mapping": {
+      "engine_raw_semantics": "diploid_simulated_individuals_for_engine_only",
+      "literal_arcana_N_equivalence": false,
+      "normalized_semantics": "relative_change_distribution_or_dimensionless_response_only",
+      "transform": "ratios/deltas within engine replicate; never raw-N cross-engine equality"
+    },
+    "pre_result_frozen": true,
+    "r43_execution_id": "R43_J22_PRODUCER_20KA_TO_0_SLIM",
+    "raw_units": "ENGINE_NATIVE",
+    "space_mapping": {
+      "cell_area_mapping": "POPULATIONS_NO_KM2_EQUIVALENCE",
+      "comparability_caveat": "SLiM subpopulations are not literal ARCANA geographic cells.",
+      "eligible_habitat_denominator": "2_subpopulations",
+      "engine_basis": "two_population_tree_sequence_response",
+      "normalized_basis": "ancestry_gene_flow_variance_response"
+    },
+    "time_mapping": {
+      "caveat": "Representative engine time is a response scale, not a claim that one engine step equals the reported historical-year compression factor physically.",
+      "engine_representative_steps": 60,
+      "engine_temporal_unit": "generations",
+      "generation_time_assumption_years": "NOT_USED_AS_LITERAL_CALENDAR_EQUIVALENCE_IN_R43_RESPONSE_EXPERIMENT",
+      "historical_window_duration_years": 20000.0,
+      "historical_years_per_representative_engine_step": 333.3333333333333,
+      "literal_history_replay": false,
+      "mapping_class": "EXPLICIT_COMPRESSED_REPRESENTATIVE_RESPONSE"
+    },
+    "transform_formula": "PER_DOMAIN_IN_NORMALIZER;_RAW_COUNTS_NEVER_CROSS_ENGINE_COMPARED",
+    "transform_provenance": "R4.1_SEMANTIC_AUTHORITY_MATRIX_PLUS_R4.3_PRE_RESULT_MAPPING",
+    "uncertainty_mapping": {
+      "distribution_required": true,
+      "replicates": 4,
+      "single_run_promotional": false
+    },
+    "window_id": "PRODUCER_20KA_TO_0"
+  },
+  "window": {
+    "earliest_replay_boundary": "R3.34",
+    "end_ka": 0.0,
+    "engines": [
+      "Geonomics",
+      "SLiM",
+      "RangeShifter"
+    ],
+    "id": "PRODUCER_20KA_TO_0",
+    "start_ka": 20.0
+  }
+}

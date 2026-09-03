@@ -1,0 +1,69 @@
+{
+  "stage": "v0.6D1-R3B",
+  "materialized_210_205": {
+    "baseline_fission_count": 18,
+    "width_0p5_fission_count": 18,
+    "parent_identity_exact": true,
+    "parent_ids": [
+      "CAR_001_C001",
+      "CAR_004_C001",
+      "CAR_013_C001",
+      "CAR_015_C001",
+      "CAR_018_C001",
+      "HSG_007_C001",
+      "HSG_021_C001",
+      "HSG_022_C001",
+      "HSG_024_C001",
+      "LVF_013_C001",
+      "LVF_014_C001",
+      "LVF_020_C001",
+      "RPT_008_C001",
+      "RPT_013_C001",
+      "RPT_020_C001",
+      "RPT_022_C001"
+    ],
+    "exact_parent_age_pair_overlap_fraction": 0.7777777777777778,
+    "timing_changes": [
+      {
+        "parent_component_id": "CAR_018_C001",
+        "baseline_ages": [
+          206.5
+        ],
+        "width_0p5_ages": [
+          206.0
+        ]
+      },
+      {
+        "parent_component_id": "HSG_024_C001",
+        "baseline_ages": [
+          206.5
+        ],
+        "width_0p5_ages": [
+          206.0
+        ]
+      }
+    ]
+  },
+  "preactuation_210_206": {
+    "baseline_count": 13,
+    "wide_envelope_count": 13,
+    "width_2myr_count": 13,
+    "all_parent_candidate_sets_exact": true,
+    "candidate_parent_ids": [
+      "CAR_001_C001",
+      "CAR_013_C001",
+      "CAR_018_C001",
+      "HSG_007_C001",
+      "HSG_021_C001",
+      "HSG_022_C001",
+      "HSG_024_C001",
+      "LVF_013_C001",
+      "LVF_014_C001",
+      "RPT_008_C001",
+      "RPT_013_C001",
+      "RPT_020_C001",
+      "RPT_022_C001"
+    ]
+  },
+  "interpretation": "PARENT_IDENTITY_ROBUST_ACROSS_TESTED_EVENT_ENVELOPE_AND_TRANSITION_WIDTH;_TIMING_DIAGNOSTIC_NOT_SEALED_TO_SUB_MYR_PRECISION"
+}

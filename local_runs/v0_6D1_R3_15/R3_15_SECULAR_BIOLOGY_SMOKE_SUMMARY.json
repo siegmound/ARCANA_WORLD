@@ -1,0 +1,265 @@
+{
+  "schema": "ARCANA_R315_LATE_CENOZOIC_SECULAR_BIOLOGY_REPLAY_V1",
+  "stage": "v0.6D1-R3.15",
+  "mode": "SMOKE_30P0_TO_29P5",
+  "verdict": "PASS_R315_LATE_CENOZOIC_SECULAR_BIOLOGY_SMOKE__C2_SUBSTRATE_FIXED_125KYR_CADENCE_VALID",
+  "wall_seconds": 11.504515647888184,
+  "parent_r314_authority": {
+    "seal_verdict": "PASS_R314_LATE_CENOZOIC_PROVIDER_C2_AND_ADAPTIVE_CLOCK_BOUND__30MA_H0_BIOLOGY_RESTART_BOUNDARY_SEALED",
+    "seal_sha256": "028be0b4f29c2f2ce179a4e8d57396aff23e3e092ee683ef043115351edca3fd",
+    "formal_audit_sha256": "4a97e2c5aa7e0d7583aff89b3507bbe9555abe151aec96ed1667045080a468f0",
+    "artifact_hashes": {
+      "binding_summary": "07507693877f50528725ac99d858d9b3c66e4694a23f67b77644aa7f2caebc80",
+      "adaptive_clock_json": "63e4c01e35db1af5ce83d9b0e3547929f3272241805436f7c047e0db83fbd4bf",
+      "B1_boundary_npz": "82d94312bdf205ed975b548be96428e2029ea9c44c10279f43a7fc4436356510",
+      "B2_boundary_npz": "52ba09b2d0f58b25d5edf96e3f0286160764d1b2b6a0d554f65f14cc3371f718",
+      "formal_audit": "4a97e2c5aa7e0d7583aff89b3507bbe9555abe151aec96ed1667045080a468f0"
+    },
+    "v061_payload_hashes": {
+      "authorial_seal": "d097f83ce53fb298689c63458dfa1012d26b3983254ccf25085b91f882e55a2a",
+      "model_py": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f",
+      "recent_history": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+      "spatial_snapshots": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "shoreline": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+    },
+    "binding_summary_sha256": "07507693877f50528725ac99d858d9b3c66e4694a23f67b77644aa7f2caebc80",
+    "clock_sha256": "63e4c01e35db1af5ce83d9b0e3547929f3272241805436f7c047e0db83fbd4bf"
+  },
+  "run": {
+    "start_age_ma": 30.0,
+    "end_age_ma": 29.5,
+    "ordinary_biology_steps": 4,
+    "biology_cadence_years": 125000.0,
+    "adaptive_clock_used_as_biology_timestep": false,
+    "parent_species": 111,
+    "parent_components": 219,
+    "parent_total_population": 1304.4717354192449,
+    "final_species": 111,
+    "final_components": 219,
+    "final_total_population": 1303.024159501375,
+    "event_counts_before": {
+      "paleogeographic_support_loss_remap": 1296,
+      "deme_coalescence": 85,
+      "deme_fission": 712,
+      "speciation": 205,
+      "ordinary_background_extinction": 2,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "event_counts_after": {
+      "paleogeographic_support_loss_remap": 1296,
+      "deme_coalescence": 85,
+      "deme_fission": 712,
+      "speciation": 205,
+      "ordinary_background_extinction": 2,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "event_counts_delta": {
+      "paleogeographic_support_loss_remap": 0,
+      "deme_coalescence": 0,
+      "deme_fission": 0,
+      "speciation": 0,
+      "ordinary_background_extinction": 0,
+      "CHA1_species_extinction": 0,
+      "CHA1_high_resolution_event_bridge_complete": 0,
+      "post_CHA1_ordinary_lifecycle_thaw": 0
+    },
+    "peak_q_recorded": 0.04571762331582304,
+    "peak_unclipped_q_recorded": 0.04571762331582304,
+    "clipping_steps": 0,
+    "clipping_contacts": 0,
+    "invariants": {
+      "population_min": 0.0,
+      "population_on_inaccessible_cells": 0.0,
+      "q_max": 0.045713509364059705,
+      "q_median": 0.04487845800709625,
+      "q_ceiling": 0.08,
+      "q_headroom": 0.034286490635940296,
+      "s_symmetry_max_abs": 0.0,
+      "s_diagonal_max_abs": 0.0,
+      "s_min": 0.0
+    },
+    "guild_species": {
+      "1": 51,
+      "2": 1,
+      "3": 7,
+      "4": 45,
+      "5": 7
+    },
+    "speciation_chronology": [],
+    "ordinary_extinction_chronology": [],
+    "fission_chronology": [],
+    "coalescence_chronology": [],
+    "full_d3_substrate_30ma_handoff": {
+      "age_ma": 30.0,
+      "full_d3_substrate_identity_exact": true,
+      "fields": {
+        "land_support": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "accessible": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "temperature_c": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "aridity_index": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "browse_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "low_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "wetland_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "total_edible_forage": {
+          "exact": true,
+          "max_abs_error": 0.0
+        },
+        "reference_population": {
+          "exact": true,
+          "max_abs_error": 0.0
+        }
+      },
+      "biology_state_advanced_during_handoff_check": false
+    },
+    "scheduler_biology_separation": {
+      "biology_cadence_years": 125000.0,
+      "biology_interval_count": 238,
+      "biology_checkpoint_count": 239,
+      "biology_start_age_ma": 30.0,
+      "biology_end_age_ma": 0.25,
+      "all_r315_biology_checkpoints_older_than_c2_bridge_start": true,
+      "adaptive_clock_contains_200ka": true,
+      "adaptive_clock_contains_120ka": true,
+      "adaptive_clock_checkpoint_promoted_to_biology_step": false,
+      "adaptive_clock_used_as_biology_timestep": false,
+      "fixed_r37i_r38_biology_cadence_preserved": true,
+      "c2_200_120ka_bridge_crossed": false,
+      "recent_120ka_restart_crossed": false,
+      "next_nominal_biology_checkpoint_age_ma": 0.125,
+      "next_nominal_biology_step_would_cross_c2_200ka_bridge_start": true,
+      "stop_reason": "250KA_IS_LAST_125KYR_BIOLOGY_BOUNDARY_BEFORE_200KA_C2_BRIDGE; NO_UNAUTHORIZED_ENVIRONMENTAL_SUBSTEP_TO_BIOLOGY_STEP_PROMOTION"
+    },
+    "endpoint_provider": {
+      "age_ma": 29.5,
+      "provider": "INTEGRATED_LATE_CENOZOIC_ENVIRONMENTAL_PROVIDER_v0_6_4C",
+      "subprovider": "v0.6.4A+B_SECULAR_ENVIRONMENT",
+      "production_substrate_adapter": "D3LateCenozoicSubstrateAdapter_v0_6_4D",
+      "adaptive_clock_checkpoint_promoted_to_biology_step": false,
+      "biology_forcing_sample_semantics": "ENDPOINT_STATE_ON_FIXED_125KYR_R38_CADENCE",
+      "c2_bridge_supports_endpoint": false
+    }
+  },
+  "checkpoint": {
+    "json": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_15\\WORLD1_H0_29P5Ma_R3_15_LATE_CENOZOIC_SECULAR_SMOKE_CHECKPOINT.json",
+    "npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_15\\WORLD1_H0_29P5Ma_R3_15_LATE_CENOZOIC_SECULAR_SMOKE_CHECKPOINT.npz",
+    "json_sha256": "60d48b4c769ca5b8f087b6b07a45f98d0144dc9b239c702d5808bfe2b370278e",
+    "npz_sha256": "9153ec71369a5e07883ed976351ac4fa9c19333d7aca05bffd2ac65dd7822bce"
+  },
+  "serialization_identity": {
+    "equivalent": true,
+    "arrays": {
+      "guild": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "pop": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "trait": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "va": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "gen": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "current_accessible": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "reduced_state": {
+      "va_within": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "ancestry_covariance": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "neutral_segregation_potential": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "adaptive_coordinate": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "exact_fields": {
+      "component_ids": true,
+      "root_species": true,
+      "current_species": true,
+      "registry": true,
+      "child_counters": true,
+      "baselines": true,
+      "ri_state": true,
+      "clock_state": true,
+      "ext_state": true,
+      "founder_state": true,
+      "vicariance_state": true,
+      "reconnection_state": true,
+      "events": true,
+      "snapshots": true,
+      "founder_stats_last": true,
+      "gene_flow_closure": true
+    },
+    "scalar_abs_errors": {
+      "age_ma": 0.0,
+      "elapsed_year": 0.0,
+      "topology_remap_mass": 0.0,
+      "initial_total_population": 0.0
+    },
+    "atol": 2e-12
+  },
+  "governance": {
+    "r314_c2_provider_bound": true,
+    "adaptive_clock_is_scheduler_not_biology_cadence": true,
+    "adaptive_clock_checkpoint_promoted_to_biology_step": false,
+    "biology_cadence_years": 125000.0,
+    "biology_cadence_changed": false,
+    "c2_200_120ka_bridge_crossed": false,
+    "recent_120ka_restart_crossed": false,
+    "high_resolution_200ka_historical_paleoclimate_claimed": false,
+    "c2_bridge_historical_glacial_chronology_claimed": false,
+    "deep_biological_coupling": false,
+    "cha1_reapplied": false,
+    "lifecycle_thaw_reapplied": false,
+    "richness_target_used": false,
+    "guild_target_used": false,
+    "positive_diversification_required_for_pass": false,
+    "cross_guild_transition_operator_activated": false,
+    "production_r37i_r38_runtime_used": true,
+    "scientific_parameter_changes": false
+  }
+}

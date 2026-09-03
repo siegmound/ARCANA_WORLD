@@ -1,0 +1,77 @@
+{
+  "candidate_cohort": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "census_semantics": "UNCERTAINTY_AWARE_CENSUS_EQUIVALENT_POSTERIOR_NOT_ARCHAEOLOGICAL_OBSERVATION",
+  "cha2_semantics": "R329_INHERITED_DIRECT_R328_50Y_COMMUNITY_DISRUPTION_CONVERTED_TO_GROUP_EQUIVALENT_PRESSURE_NOT_DESTROYED_CAMPS",
+  "deep_biological_coupling": false,
+  "evidence_basis": {
+    "AURIGNACIAN_DEMOGRAPHY_2019": {
+      "pmcid": "PMC6373918",
+      "source": "Schmidt & Zimmermann 2019 PLoS One",
+      "use": "archaeological demographic reconstruction can map group counts to census using ethnographic group-size calibration"
+    },
+    "HG_ABM_FISSION_FUSION_2023": {
+      "pmcid": "PMC10618055",
+      "source": "Meyer et al. 2023/PMC",
+      "use": "camp-level ABM architecture with fission/fusion and carrying support as demographic mechanisms"
+    },
+    "HG_CULTURAL_TRANSMISSION_2024": {
+      "pmcid": "PMC11621818",
+      "source": "Hewlett et al. 2024",
+      "use": "camps commonly around 25-35 with seasonal aggregation relevant to transmission"
+    },
+    "HG_GROUP_SIZES_2014": {
+      "pmcid": "PMC4157217",
+      "source": "Pearce et al. 2014 PLoS One/PMC",
+      "use": "Binford-based dispersed/aggregated band and periodic-network size distributions"
+    },
+    "HG_NETWORK_HIERARCHY_2009": {
+      "pmcid": "PMC2706200",
+      "source": "Hamilton et al. 2009 Proc R Soc B",
+      "use": "nested fission-fusion group hierarchy and regional network scaling"
+    },
+    "HUMAN_LIFE_HISTORY_NE_N": {
+      "pmcid": "PMC1775005",
+      "source": "Waples et al. overlapping-generation comparison",
+      "use": "human model illustrates strong dependence of Ne/N on whether total or reproductive-adult census is used"
+    },
+    "NE_CENSUS_REVIEW_2024": {
+      "pmcid": "PMC11078298",
+      "source": "Waples 2024 Evolutionary Applications",
+      "use": "adult census/effective-size definitions and age/spatial structure require explicit semantics"
+    },
+    "NE_CENSUS_UNCERTAINTY_2012": {
+      "pmcid": "PMC3488685",
+      "source": "Palstra & Fraser 2012 Ecology and Evolution",
+      "use": "Ne/N estimates are definition-sensitive and uncertain; supports broad conversion prior rather than one fixed ratio"
+    }
+  },
+  "group_abm_semantics": "WEIGHTED_RESIDENTIAL_GROUP_AGENTS_NOT_PERSON_LEVEL",
+  "group_size_calibration": {
+    "aggregated_reference": 42.0,
+    "central_reference": 30.0,
+    "dispersed_reference": 14.0,
+    "maximum": 80.0,
+    "minimum": 10.0
+  },
+  "human_similarity_target": false,
+  "ne_to_total_census_ratio_prior": {
+    "distribution": "triangular",
+    "high": 0.6,
+    "low": 0.18,
+    "mode": 0.34,
+    "seed": 330029
+  },
+  "parent": "PASS_R329_POPULATION_MOBILITY_SETTLEMENT_CULTURAL_TRANSMISSION_PRECONDITIONS_AND_CHA2_COMMUNITY_EXPOSURE_SEALED",
+  "spatial_semantics": "R329_ELEVEN_SEALED_DEME_ANCHORS_ONLY",
+  "stage": "v0.6D1-R3.30",
+  "status": "CENSUS_EQUIVALENT_CALIBRATION_AND_WEIGHTED_GROUP_ABM_AUTHORITY",
+  "time_window_ka": [
+    50.0,
+    0.0
+  ],
+  "trajectory_semantics": "R327_R328_EFFECTIVE_SIZE_DERIVED_200KA_ANCHOR_PLUS_R328_RELATIVE_POPULATION_TRAJECTORY",
+  "unique_human_identity_materialized": false
+}

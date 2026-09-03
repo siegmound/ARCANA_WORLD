@@ -1,0 +1,56 @@
+{
+  "stage": "v0.6D1-R5.2",
+  "objective": "TARGETED_EXPANSION_CORRIDOR_VALIDATION",
+  "parent_stage": "v0.6D1-R5.1 SEALED",
+  "external_engine": {
+    "name": "RangeShiftR",
+    "required_version": "3.0.1",
+    "role": "GOVERNED_DESCRIPTIVE_CONNECTIVITY_EVIDENCE_NOT_CANONICAL_AUTHORITY"
+  },
+  "origin_selection": "ALL_R51_ALL_THRESHOLD_ROBUST_FAMILIES",
+  "target_selection": "J14_ARCANA_MODEL_DERIVED_OCCUPIED_CELLS_AT_EACH_20KYR_STATE",
+  "time_mapping": {
+    "engine_step_to_arcana_kyr": 20.0,
+    "literal_biological_year_claim": false
+  },
+  "space_mapping": {
+    "engine_resolution": 100,
+    "units_semantics": "NORMALIZED_ENGINE_SPACE_NOT_GEODESIC",
+    "longitude_seam_handling": "ROLL_EACH_FAMILY_SO_SOURCE_IS_NEAR_GRID_CENTER"
+  },
+  "habitat_profiles": [
+    "LAND_SUPPORT_UPPER_BOUND",
+    "OCCUPIED_ENVELOPE_CORE_DIAGNOSTIC"
+  ],
+  "movement_profiles": {
+    "D1_STANDARDIZED_1_CELL_CHARACTERISTIC": 100.0,
+    "D2_STANDARDIZED_2_CELL_CHARACTERISTIC": 200.0
+  },
+  "seeds": [
+    520201,
+    520202
+  ],
+  "replicates_per_stream": 1,
+  "r41_parameter_reuse": {
+    "Rmax": 1.5,
+    "EmigProb": 0.1,
+    "K": 10.0
+  },
+  "forbidden": [
+    "EXTERNAL_ENGINE_DEFINES_ARCANA_TARGET",
+    "RESULT_SELECTED_TUNING",
+    "MAJORITY_VOTE",
+    "SINGLE_CORRIDOR_WINNER_SELECTION",
+    "AUTOMATIC_SCIENTIFIC_PASS_FAIL_FROM_DESCRIPTIVE_NUMERIC_VALUES",
+    "CANONICAL_STATE_REWRITE",
+    "DEEP_BIOLOGICAL_COUPLING"
+  ],
+  "source_initialization_contract": {
+    "mode": "SPDIST_INITTYPE1_SPTYPE0",
+    "InitType": 1,
+    "SpType": 0,
+    "InitDens": 1,
+    "source": "GROUP_INPUT_SOURCE_ASC_SPDISTFILE",
+    "repair_semantics": "R52_R1_REPAIR_FREE_INITIALISATION_DEFECT_NO_ORIGIN_HABITAT_MOVEMENT_SEED_OR_TARGET_CHANGED"
+  }
+}

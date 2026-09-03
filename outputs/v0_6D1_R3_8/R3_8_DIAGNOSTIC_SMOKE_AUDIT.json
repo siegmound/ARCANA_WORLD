@@ -1,0 +1,158 @@
+{
+  "stage": "v0.6D1-R3.8",
+  "verdict": "PASS_R38_DIAGNOSTIC_SMOKE__R37I_PARITY__SERIALIZATION_AND_RESTART_IDENTITY",
+  "r37i_210_209_equivalence": {
+    "biology_steps_equal": true,
+    "population_abs_error": 0.0,
+    "q_max_abs_error": 0.0,
+    "species_count_equal": true,
+    "component_count_equal": true,
+    "event_counts_equal": true
+  },
+  "checkpoint_serialization_identity": {
+    "equivalent": true,
+    "arrays": {
+      "guild": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "pop": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "trait": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "va": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "gen": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "current_accessible": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "reduced_state": {
+      "va_within": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "ancestry_covariance": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "neutral_segregation_potential": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "adaptive_coordinate": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "exact_fields": {
+      "component_ids": true,
+      "root_species": true,
+      "current_species": true,
+      "registry": true,
+      "child_counters": true,
+      "baselines": true,
+      "ri_state": true,
+      "clock_state": true,
+      "ext_state": true,
+      "founder_state": true,
+      "vicariance_state": true,
+      "reconnection_state": true,
+      "events": true,
+      "snapshots": true,
+      "founder_stats_last": true
+    },
+    "scalar_abs_errors": {
+      "age_ma": 0.0,
+      "elapsed_year": 0.0,
+      "topology_remap_mass": 0.0,
+      "initial_total_population": 0.0
+    },
+    "atol": 2e-12
+  },
+  "restart_209_to_208_identity": {
+    "equivalent": true,
+    "arrays": {
+      "guild": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "pop": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "trait": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "va": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "gen": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "current_accessible": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "reduced_state": {
+      "va_within": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "ancestry_covariance": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "neutral_segregation_potential": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "adaptive_coordinate": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "exact_fields": {
+      "component_ids": true,
+      "root_species": true,
+      "current_species": true,
+      "registry": true,
+      "child_counters": true,
+      "baselines": true,
+      "ri_state": true,
+      "clock_state": true,
+      "ext_state": true,
+      "founder_state": true,
+      "vicariance_state": true,
+      "reconnection_state": true,
+      "events": true,
+      "snapshots": true,
+      "founder_stats_last": true
+    },
+    "scalar_abs_errors": {
+      "age_ma": 0.0,
+      "elapsed_year": 0.0,
+      "topology_remap_mass": 0.0,
+      "initial_total_population": 0.0
+    },
+    "atol": 2e-12
+  },
+  "governance": {
+    "canonical_150ma_checkpoint_authorized": false,
+    "diagnostic_smoke_only": true
+  }
+}

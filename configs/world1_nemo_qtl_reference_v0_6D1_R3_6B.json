@@ -1,0 +1,43 @@
+{
+  "stage": "v0.6D1-R3.6B",
+  "title": "NEMO 2.4.2 Governed QTL-Ensemble Reference Benchmark",
+  "parent_stage": "v0.6D1-R3.6A",
+  "engine": "NEMO",
+  "engine_version_required": "2.4.2",
+  "role": "REFERENCE_ORACLE",
+  "canonical_write_allowed": false,
+  "automatic_calibration_allowed": false,
+  "reference_space": "NORMALIZED_TRAIT_SPACE_SCALE_1",
+  "q_star": 0.045,
+  "trait_axes": [0, 1],
+  "qtl": {
+    "ploidy": 2,
+    "locus_model": "DIALLELIC_ADDITIVE_REFERENCE",
+    "loci_per_trait": 64,
+    "effect_headroom": 1.05,
+    "allele_frequency_floor": 0.0001,
+    "default_individuals_per_patch": 2000,
+    "default_replicates_per_scenario": 8
+  },
+  "scenarios": [
+    "B0_EQUILIBRIUM_NO_FLOW",
+    "B1_TWO_DEME_ADMIXTURE",
+    "B2_FRAGMENTATION_RECONNECTION",
+    "B3_HIGH_ADMIXTURE_STRESS"
+  ],
+  "dispersal_mapping": {
+    "arcana_input": "OFF_DIAGONAL_EFFECTIVE_EXCHANGE_ZERO_DIAGONAL_ROW_SUM_LE_1",
+    "nemo_forward_matrix": "ROW_STOCHASTIC",
+    "self_retention": "diag_i = 1 - sum_j ARCANA_exchange_ij"
+  },
+  "execution_gate": {
+    "nemo_ini_template": "MUST_BE_VALIDATED_AGAINST_NEMO_2_4_2",
+    "unvalidated_template_guessing": false,
+    "windows_execution": "WSL2_RECOMMENDED_BY_NEMO_UPSTREAM"
+  },
+  "r3_6c_required_comparison": [
+    "ARCANA_CURRENT_125KYR",
+    "ARCANA_5X25KYR",
+    "NEMO_2_4_2_QTL_ENSEMBLE"
+  ]
+}

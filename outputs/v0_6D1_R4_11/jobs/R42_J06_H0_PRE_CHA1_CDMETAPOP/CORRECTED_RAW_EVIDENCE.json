@@ -1,0 +1,176 @@
+{
+  "adapter_status": "PASS",
+  "canonical_write": false,
+  "comparison_target_used": false,
+  "compatibility_shim": "implement_disease=N benchmark-local only",
+  "driver_application": "R47_dynamic_PatchVars.K_via_existing_CDClimate_knots__start_state_N0_once__migration_from_frozen_gene_flow",
+  "dynamic_end_support_ratio": 0.9840411123337677,
+  "engine": "CDMetaPOP",
+  "engine_rerun_performed": false,
+  "evidence_namespace": "R4_11_REEXTRACTED_FROM_RETAINED_R47_RUNTIME_SUMMARIES",
+  "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+  "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+  "legacy_source_raw_sha256": "cc619727f88fab92ece5d566fdbf9a5e23344acbd97042a6b846ffcc5d594bb7",
+  "population_metric_repaired": true,
+  "population_metric_source": "CDMetaPOP summary_popAllTime.csv",
+  "replicates": [
+    {
+      "metric_reextraction_status": "PASS",
+      "metric_reextraction_summary_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R4_7\\jobs\\R42_J06_H0_PRE_CHA1_CDMETAPOP\\runtime_work\\rep_000\\example_files\\R47_0001788171611\\run0batch0mc0species0\\summary_popAllTime.csv",
+      "metrics": {
+        "cdclimate_knots": [
+          "0",
+          "1",
+          "2"
+        ],
+        "configured_gene_flow_rate": 0.024099537037037037,
+        "configured_habitat_support_start": 0.25598765432098763,
+        "dynamic_k_end_support_ratio": 0.9840411123337677,
+        "example_patch_k_series": [
+          256,
+          254,
+          252
+        ],
+        "final_occupied_patches": null,
+        "final_population": 1286.0,
+        "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+        "individual_output_files": 13,
+        "initial_occupied_patches": null,
+        "initial_population": 768.0,
+        "legacy_buggy_final_population": 1306,
+        "legacy_buggy_initial_population": 2,
+        "new_output_files": 14,
+        "population_metric_extraction_semantics": "summary_popAllTime.N_Initial total at row0; final = last N_Initial total * last GrowthRate; GrowthRate[i] is N_Init[i+1]/N_Init[i] in pinned CDMetaPOP PostProcess",
+        "population_metric_source": "summary_popAllTime.csv:N_Initial+GrowthRate",
+        "population_metric_summary_sha256": "241ef111d4a72445c7d3b47bcbf37aa81952a2118701c592e258bd1c1ae2212b",
+        "runtime_generations": 5,
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "replicate_index": 0,
+      "returncode": 0,
+      "seed": 1869692640,
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "On run: 0\n\n('DoPreProcess(): ', '0:00:00.064485', '')\nEnd Generation/Year Loop0: 0:00:04.979621\n\nEnd Generation/Year Loop1: 0:00:05.235526\n\nEnd Generation/Year Loop2: 0:00:04.991970\n\nEnd Generation/Year Loop3: 0:00:05.014861\n\nEnd Generation/Year Loop4: 0:00:04.841518\n\nDoPostProcess(): 0:00:00.009888\nEnd Monte Carlo Loop0: 0:00:25.171162\n\n"
+    },
+    {
+      "metric_reextraction_status": "PASS",
+      "metric_reextraction_summary_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R4_7\\jobs\\R42_J06_H0_PRE_CHA1_CDMETAPOP\\runtime_work\\rep_001\\example_files\\R47_0011788171642\\run0batch0mc0species0\\summary_popAllTime.csv",
+      "metrics": {
+        "cdclimate_knots": [
+          "0",
+          "1",
+          "2"
+        ],
+        "configured_gene_flow_rate": 0.024099537037037037,
+        "configured_habitat_support_start": 0.25598765432098763,
+        "dynamic_k_end_support_ratio": 0.9840411123337677,
+        "example_patch_k_series": [
+          256,
+          254,
+          252
+        ],
+        "final_occupied_patches": null,
+        "final_population": 1222.0,
+        "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+        "individual_output_files": 13,
+        "initial_occupied_patches": null,
+        "initial_population": 768.0,
+        "legacy_buggy_final_population": 1242,
+        "legacy_buggy_initial_population": 2,
+        "new_output_files": 14,
+        "population_metric_extraction_semantics": "summary_popAllTime.N_Initial total at row0; final = last N_Initial total * last GrowthRate; GrowthRate[i] is N_Init[i+1]/N_Init[i] in pinned CDMetaPOP PostProcess",
+        "population_metric_source": "summary_popAllTime.csv:N_Initial+GrowthRate",
+        "population_metric_summary_sha256": "1455620a334b4ea207631141d7c9a9db2f8595b59e82ec161c70f2cd63dc1091",
+        "runtime_generations": 5,
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "replicate_index": 1,
+      "returncode": 0,
+      "seed": 573266817,
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "On run: 0\n\n('DoPreProcess(): ', '0:00:00.065401', '')\nEnd Generation/Year Loop0: 0:00:06.131645\n\nEnd Generation/Year Loop1: 0:00:04.931580\n\nEnd Generation/Year Loop2: 0:00:04.850422\n\nEnd Generation/Year Loop3: 0:00:05.082814\n\nEnd Generation/Year Loop4: 0:00:04.765543\n\nDoPostProcess(): 0:00:00.008312\nEnd Monte Carlo Loop0: 0:00:25.868389\n\n"
+    },
+    {
+      "metric_reextraction_status": "PASS",
+      "metric_reextraction_summary_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R4_7\\jobs\\R42_J06_H0_PRE_CHA1_CDMETAPOP\\runtime_work\\rep_002\\example_files\\R47_0021788171674\\run0batch0mc0species0\\summary_popAllTime.csv",
+      "metrics": {
+        "cdclimate_knots": [
+          "0",
+          "1",
+          "2"
+        ],
+        "configured_gene_flow_rate": 0.024099537037037037,
+        "configured_habitat_support_start": 0.25598765432098763,
+        "dynamic_k_end_support_ratio": 0.9840411123337677,
+        "example_patch_k_series": [
+          256,
+          254,
+          252
+        ],
+        "final_occupied_patches": null,
+        "final_population": 1192.0,
+        "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+        "individual_output_files": 13,
+        "initial_occupied_patches": null,
+        "initial_population": 768.0,
+        "legacy_buggy_final_population": 1213,
+        "legacy_buggy_initial_population": 2,
+        "new_output_files": 14,
+        "population_metric_extraction_semantics": "summary_popAllTime.N_Initial total at row0; final = last N_Initial total * last GrowthRate; GrowthRate[i] is N_Init[i+1]/N_Init[i] in pinned CDMetaPOP PostProcess",
+        "population_metric_source": "summary_popAllTime.csv:N_Initial+GrowthRate",
+        "population_metric_summary_sha256": "efb4a632618b36fdcbb24be1c3f20fd818163d50cb31c2089b55148907117d1f",
+        "runtime_generations": 5,
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "replicate_index": 2,
+      "returncode": 0,
+      "seed": 1549947756,
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "On run: 0\n\n('DoPreProcess(): ', '0:00:00.067111', '')\nEnd Generation/Year Loop0: 0:00:06.353913\n\nEnd Generation/Year Loop1: 0:00:05.195731\n\nEnd Generation/Year Loop2: 0:00:04.966001\n\nEnd Generation/Year Loop3: 0:00:04.846479\n\nEnd Generation/Year Loop4: 0:00:04.615290\n\nDoPostProcess(): 0:00:00.008031\nEnd Monte Carlo Loop0: 0:00:26.084264\n\n"
+    },
+    {
+      "metric_reextraction_status": "PASS",
+      "metric_reextraction_summary_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R4_7\\jobs\\R42_J06_H0_PRE_CHA1_CDMETAPOP\\runtime_work\\rep_003\\example_files\\R47_0031788171706\\run0batch0mc0species0\\summary_popAllTime.csv",
+      "metrics": {
+        "cdclimate_knots": [
+          "0",
+          "1",
+          "2"
+        ],
+        "configured_gene_flow_rate": 0.024099537037037037,
+        "configured_habitat_support_start": 0.25598765432098763,
+        "dynamic_k_end_support_ratio": 0.9840411123337677,
+        "example_patch_k_series": [
+          256,
+          254,
+          252
+        ],
+        "final_occupied_patches": null,
+        "final_population": 1274.0,
+        "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+        "individual_output_files": 13,
+        "initial_occupied_patches": null,
+        "initial_population": 768.0,
+        "legacy_buggy_final_population": 1292,
+        "legacy_buggy_initial_population": 2,
+        "new_output_files": 14,
+        "population_metric_extraction_semantics": "summary_popAllTime.N_Initial total at row0; final = last N_Initial total * last GrowthRate; GrowthRate[i] is N_Init[i+1]/N_Init[i] in pinned CDMetaPOP PostProcess",
+        "population_metric_source": "summary_popAllTime.csv:N_Initial+GrowthRate",
+        "population_metric_summary_sha256": "c4489d16b30180122efdd4f503f8b74aa025a29de6f3b10fd15131c4ad25b392",
+        "runtime_generations": 5,
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "replicate_index": 3,
+      "returncode": 0,
+      "seed": 1073281537,
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "On run: 0\n\n('DoPreProcess(): ', '0:00:00.064935', '')\nEnd Generation/Year Loop0: 0:00:06.481922\n\nEnd Generation/Year Loop1: 0:00:05.092067\n\nEnd Generation/Year Loop2: 0:00:04.887325\n\nEnd Generation/Year Loop3: 0:00:04.827712\n\nEnd Generation/Year Loop4: 0:00:04.832035\n\nDoPostProcess(): 0:00:00.008321\nEnd Monte Carlo Loop0: 0:00:26.229220\n\n"
+    }
+  ],
+  "source_tree_modified": false,
+  "stage": "v0.6D1-R4.11"
+}

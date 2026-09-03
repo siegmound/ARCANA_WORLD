@@ -1,0 +1,22 @@
+{
+  "stage": "v0.6D1-R4.42-R1",
+  "status": "PASS_R442_R1_MULTI_STEP_CLOCK_VALIDATION_REPAIR_APPLIED",
+  "prepatch_module_sha256": "3c331b020aa07cab54419968c19477a1db5c6da50bbd31cec3c5c65f94a0d6d9",
+  "postpatch_module_sha256": "ca499d8af63b46d432a8974e887650a4b0af1d8538e279f5ae8b2d0d7da0c166",
+  "root_cause": "R441_SINGLE_TRANSITION_CLOCK_HELPER_PASS_CONTRACT_REQUIRED_MINUS1_TO_0_AND_WAS_REUSED_ACROSS_R442_MULTI_TRANSITION_SEQUENCE",
+  "repair": "LOCAL_R442_EXPECTED_T_MINUS1_TO_T_CLOCK_VALIDATOR_USING_ONLY_R440_AUTHORIZED_CLOCK_PRIMITIVES",
+  "governance": {
+    "failed_r442_evidence_preserved": true,
+    "r441_sealed_source_modified": false,
+    "canonical_values_modified": false,
+    "autonomous_movement_introduced": false,
+    "autonomous_population_dynamics_introduced": false,
+    "autonomous_ageing_introduced": false,
+    "default_geonomics_walk_authorized": false,
+    "scientific_execution_performed": false,
+    "target_numeric_execution_performed": false,
+    "readjudication_performed": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

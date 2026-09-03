@@ -1,0 +1,8 @@
+param([string]$Python="python",[string]$GeonomicsWslPython="/home/jose/miniforge3/envs/arcana-geonomics-149/bin/python")
+$ErrorActionPreference="Stop";$Root=(Get-Location).Path;$env:PYTHONPATH=(Join-Path $Root "src");$Base=Join-Path $Root ".pytest_tmp_r438";if(Test-Path $Base){Remove-Item -Recurse -Force $Base}
+Write-Host "=== R4.38 source authority ===";& $Python ".\scripts\check_v0_6D1_R4_38_source_manifest.py";if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}
+Write-Host "=== R4.38 regression ===";& $Python -m pytest -q ".\tests\test_r438_geonomics_exact_initialization_adapter_probe_elimination_preflight.py" --basetemp $Base;if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}
+Write-Host "=== R4.38 governed Geonomics 1.4.9 WSL runtime preflight ===";$V=& wsl.exe -e $GeonomicsWslPython -c "import geonomics as gnx; print(gnx.__version__)";if($LASTEXITCODE -ne 0){exit 20};$VL=@($V|ForEach-Object{"$_".Trim()}|Where-Object{$_ -ne ""});$RV=if($VL.Count -gt 0){$VL[-1]}else{""};if($RV -ne "1.4.9"){Write-Host "R4.38 BLOCKED: expected 1.4.9 got '$RV'";exit 21}
+$WslRoot=(& wsl.exe -e wslpath -a $Root).Trim();if($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($WslRoot)){exit 22};$Cmd="cd '$WslRoot' && PYTHONPATH='$WslRoot/src' '$GeonomicsWslPython' '$WslRoot/scripts/run_v0_6D1_R4_38.py'"
+Write-Host "=== R4.38 exact initialization adapter + construction probe elimination preflight ===";& wsl.exe -e bash -lc $Cmd;if($LASTEXITCODE -ne 0){Write-Host "R4.38 BLOCKED";exit $LASTEXITCODE}
+Write-Host "=== R4.38 final fail-closed seal ===";& $Python ".\scripts\audit_v0_6D1_R4_38_seal.py";if($LASTEXITCODE -ne 0){exit $LASTEXITCODE};Write-Host "PASS_R438_INTEGRATED_AND_FINAL_SEAL_RUN"

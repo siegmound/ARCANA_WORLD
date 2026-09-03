@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ARCANA/R5_0_PROVENANCE_SCHEMA.json",
+  "title": "ARCANA WorldSim R5.0 Product Provenance",
+  "type": "object",
+  "required": ["stage", "query_id", "target_age_ka", "parent_hashes", "products", "domain_coverage", "canonical_write"],
+  "properties": {
+    "stage": {"const": "v0.6D1-R5.0"},
+    "query_id": {"type": "string"},
+    "target_age_ka": {"type": "number", "minimum": 0},
+    "canonical_write": {"const": false},
+    "parent_hashes": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "products": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["authority", "mode", "source_ages_ka"],
+        "properties": {
+          "authority": {"type": "string"},
+          "mode": {"enum": ["EXACT", "BRACKETED_LINEAR", "BOUNDED_SPATIAL_RECONSTRUCTION"]},
+          "source_ages_ka": {"type": "array", "items": {"type": "number"}},
+          "weight_younger": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "domain_coverage": {"type": "object"}
+  }
+}

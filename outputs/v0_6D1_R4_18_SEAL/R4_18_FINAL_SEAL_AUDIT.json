@@ -1,0 +1,100 @@
+{
+  "audit": "FINAL_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE",
+  "checks": [
+    {
+      "detail": "PASS_R417_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE_SEALED",
+      "name": "parent_r417_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE_COMPLETE",
+      "name": "r418_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r418_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": 1,
+      "name": "exact_one_target_validation_disposition",
+      "pass": true
+    },
+    {
+      "detail": 2,
+      "name": "proxy_context_count_two",
+      "pass": true
+    },
+    {
+      "detail": 75,
+      "name": "readjudicated_matrix_75_cells",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CALIBRATION_OFFSET": 2,
+        "CONCORDANT": 2,
+        "INSUFFICIENT_EVIDENCE": 69,
+        "SEMANTICALLY_NONCOMPARABLE": 2,
+        "STRUCTURAL_DISAGREEMENT": 0
+      },
+      "name": "class_accounting_complete",
+      "pass": true
+    },
+    {
+      "detail": 6,
+      "name": "p2_backlog_frozen_six",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "p2_execution_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_engine_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R419_P2_ADAPTER_ENHANCEMENT_AND_TARGET_DESIGN_BACKLOG_EXECUTION_PLAN",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "next_action": "BUILD_R419_P2_ADAPTER_ENHANCEMENT_AND_TARGET_DESIGN_BACKLOG_EXECUTION_PLAN",
+  "stage": "v0.6D1-R4.18",
+  "status": "PASS_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE_SEALED",
+  "summary": {
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "class_counts_after_partial_readjudication": {
+      "CALIBRATION_OFFSET": 2,
+      "CONCORDANT": 2,
+      "INSUFFICIENT_EVIDENCE": 69,
+      "SEMANTICALLY_NONCOMPARABLE": 2,
+      "STRUCTURAL_DISAGREEMENT": 0
+    },
+    "deep_biological_coupling": false,
+    "engine_execution_performed": false,
+    "next_action": "BUILD_R419_P2_ADAPTER_ENHANCEMENT_AND_TARGET_DESIGN_BACKLOG_EXECUTION_PLAN",
+    "p2_backlog_cell_count": 6,
+    "p3_backlog_cell_count": 6,
+    "partial_readjudication_changed_cell_count": 0,
+    "proxy_target_context_only_count": 2,
+    "structural_disagreement_count_after_partial_readjudication": 0,
+    "target_validated_for_partial_readjudication_count": 0,
+    "target_validation_candidate_count": 1
+  },
+  "verdict": "SEALED"
+}

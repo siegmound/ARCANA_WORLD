@@ -1,0 +1,230 @@
+{
+  "authority_rule": "Only FOUND_HASH_EXACT historical packages can restore executable authority. RAW name hits are evidence/data, not executable parity authority.",
+  "errors": [],
+  "packages": [
+    {
+      "expected_sha256": "75a8bd4e90103e20ff308ef052871289eb3a608a558288abf1622c36a3b7fb1c",
+      "matches": [],
+      "stage": "v0.6.3D1",
+      "status": "NOT_FOUND_HASH_EXACT"
+    },
+    {
+      "expected_sha256": "3b236d3a0a3a048b300d1fcd818006bedc93130c6a17abf9378635f0b6d76aa8",
+      "matches": [],
+      "stage": "v0.6.3D2.T",
+      "status": "NOT_FOUND_HASH_EXACT"
+    },
+    {
+      "expected_sha256": "e751668c7a8232cf67b791b93312ad89050d8a7b2fd8cd4f9da4422fc0bc8828",
+      "matches": [],
+      "stage": "v0.6.3D2.1",
+      "status": "NOT_FOUND_HASH_EXACT"
+    },
+    {
+      "expected_sha256": "918b5693efb0db81628efaba3f7f63b6365c1f975aba36d123401c2aede52905",
+      "matches": [],
+      "stage": "v0.6.3D2.1.1",
+      "status": "NOT_FOUND_HASH_EXACT"
+    },
+    {
+      "expected_sha256": "42f6c506dcb81ed06549713bdf6f2313aa51bd2cb55fe17571fce493923394a8",
+      "matches": [],
+      "stage": "v0.6.3D2.2",
+      "status": "NOT_FOUND_HASH_EXACT"
+    }
+  ],
+  "raw_targets": [
+    {
+      "description": "D2.T population/event query store",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "arcana_rawfirst.sqlite",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.T physical reference cube",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "physical_reference_cube.nc",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 full high-resolution state",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "cha1_highres_state.npz",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 species population timeseries",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "species_population_timeseries.csv",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 physical/food-web timeseries",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "physical_foodweb_timeseries.csv",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 extinction event ledger",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "extinction_events.json",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 survivor registry",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "CHA1_survivor_registry.json",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 species diagnostics",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "species_diagnostics.json",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 recovery milestones",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "recovery_milestones.json",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 solver diagnostics",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "solver_diagnostics.json",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 derived reptiloid diagnostic",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "reptiloid_survivor_E_M.json",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 survivor spatial footprint",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "cha1_spatial_survivor_footprint_66Ma.npz",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 audit",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "cha1_highres_audit.json",
+      "zip_matches": []
+    },
+    {
+      "description": "D2.2 manifest",
+      "direct_matches": [],
+      "status": "NOT_FOUND",
+      "target": "cha1_highres_manifest.json",
+      "zip_matches": []
+    }
+  ],
+  "roots": [
+    "/mnt/data/ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK(1).zip",
+    "/mnt/data/ARCANA_WorldSim_v0_6_4D_Late_Cenozoic_Environmental_Provider_Closure_Audit_Production_Replay_Seal_Candidate(1).zip",
+    "/mnt/data/ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK(1).zip"
+  ],
+  "schema": "ARCANA_HISTORICAL_ARTIFACT_RECOVERY_SCAN_v0_6D1_R0",
+  "summary": {
+    "authorization_note": "R0 never authorizes production HX by itself. The original pre-CHA1 D2 executable/runtime authority must also be bound and Deep-OFF parity must pass.",
+    "exact_packages_found": 0,
+    "minimum_exact_parent_set_found": false,
+    "production_historical_hx_authorized": false,
+    "raw_targets_found": 0,
+    "support_targets_found": 3
+  },
+  "support_targets": [
+    {
+      "description": "D1 metadata surface",
+      "direct_matches": [],
+      "status": "FOUND_IN_ZIP",
+      "target": "species_metadata.json",
+      "zip_matches": [
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK/inputs/D1_METADATA/species_metadata.json",
+          "target": "species_metadata.json",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK(1).zip"
+        },
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_4D_Late_Cenozoic_Environmental_Provider_Closure_Audit_Production_Replay_Seal_Candidate/inputs/D1_METADATA/species_metadata.json",
+          "target": "species_metadata.json",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_4D_Late_Cenozoic_Environmental_Provider_Closure_Audit_Production_Replay_Seal_Candidate(1).zip"
+        },
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK/inputs/D1_METADATA/species_metadata.json",
+          "target": "species_metadata.json",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK(1).zip"
+        }
+      ]
+    },
+    {
+      "description": "D3.0A 31->115 spatial bridge state",
+      "direct_matches": [],
+      "status": "FOUND_IN_ZIP",
+      "target": "post_cha1_spatial_bridge_state.npz",
+      "zip_matches": [
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK/inputs/D3_0A_BASELINE/post_cha1_spatial_bridge_state.npz",
+          "target": "post_cha1_spatial_bridge_state.npz",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK(1).zip"
+        },
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_4D_Late_Cenozoic_Environmental_Provider_Closure_Audit_Production_Replay_Seal_Candidate/inputs/D3_0A_BASELINE/post_cha1_spatial_bridge_state.npz",
+          "target": "post_cha1_spatial_bridge_state.npz",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_4D_Late_Cenozoic_Environmental_Provider_Closure_Audit_Production_Replay_Seal_Candidate(1).zip"
+        },
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK/inputs/D3_0A_BASELINE/post_cha1_spatial_bridge_state.npz",
+          "target": "post_cha1_spatial_bridge_state.npz",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK(1).zip"
+        }
+      ]
+    },
+    {
+      "description": "D3.0A bridge diagnostics",
+      "direct_matches": [],
+      "status": "FOUND_IN_ZIP",
+      "target": "spatial_bridge_diagnostics.json",
+      "zip_matches": [
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK/inputs/D3_0A_BASELINE/spatial_bridge_diagnostics.json",
+          "target": "spatial_bridge_diagnostics.json",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK(1).zip"
+        },
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_4D_Late_Cenozoic_Environmental_Provider_Closure_Audit_Production_Replay_Seal_Candidate/inputs/D3_0A_BASELINE/spatial_bridge_diagnostics.json",
+          "target": "spatial_bridge_diagnostics.json",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_4D_Late_Cenozoic_Environmental_Provider_Closure_Audit_Production_Replay_Seal_Candidate(1).zip"
+        },
+        {
+          "kind": "SUPPORT",
+          "member": "ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK/inputs/D3_0A_BASELINE/spatial_bridge_diagnostics.json",
+          "target": "spatial_bridge_diagnostics.json",
+          "zip": "/mnt/data/ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK(1).zip"
+        }
+      ]
+    }
+  ]
+}

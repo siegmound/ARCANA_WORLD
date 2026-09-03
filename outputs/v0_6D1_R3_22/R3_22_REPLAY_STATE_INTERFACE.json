@@ -1,0 +1,136 @@
+{
+  "applicability_model": {
+    "activation_requires": "SEPARATELY_GOVERNED_MORPHOLOGICAL_OR_FUNCTIONAL_INNOVATION_EVENT",
+    "authority": "MORPHOLOGICAL_LIFE_HISTORY_ARCHITECTURE_PLUS_EMPIRICAL_CALIBRATION",
+    "continuous_drift_can_activate_not_applicable_trait": false,
+    "materialized_in_r3_22": false,
+    "states": [
+      "ACTIVE",
+      "STRUCTURAL_ZERO",
+      "NOT_APPLICABLE",
+      "UNKNOWN"
+    ]
+  },
+  "component_count_parent": 295,
+  "cross_covariance_status": "FORBIDDEN_TO_INVENT_REQUIRES_LATER_EMPIRICAL_CALIBRATION",
+  "cross_covariance_with_existing_three_ecological_traits": null,
+  "deep_biological_coupling": "OFF",
+  "derived_capabilities": [
+    "T_tool_use_potential",
+    "Q_environmental_problem_solving"
+  ],
+  "derived_capabilities_are_direct_genetic_state": false,
+  "evolution_model_family": {
+    "equation": "delta_z = G_functional @ beta_selection + gene_flow + drift + mutation_input",
+    "numeric_parameters": null,
+    "status": "FORM_DEFINED_PARAMETERS_UNCALIBRATED",
+    "time_base": "GENERATIONS_WITH_WORLD_CLOCK_CONVERSION"
+  },
+  "existing_r319_reduced_ecological_state_repurposed": false,
+  "expression_model": {
+    "equation": "z_expressed = z_genetic_mean + B_plasticity @ E_centered + developmental_residual",
+    "numeric_parameters": null,
+    "status": "FORM_DEFINED_PARAMETERS_UNCALIBRATED"
+  },
+  "future_state_arrays": {
+    "functional_applicability_code": {
+      "constraints": [
+        "VALID_ENUM_ONLY"
+      ],
+      "dtype": "uint8_or_enum",
+      "materialized_in_r3_22": false,
+      "shape": [
+        "n_component",
+        "n_functional_trait"
+      ]
+    },
+    "functional_gcov": {
+      "constraints": [
+        "FINITE_WHERE_ACTIVE",
+        "SYMMETRIC_ACTIVE_SUBMATRIX",
+        "POSITIVE_SEMIDEFINITE_ACTIVE_SUBMATRIX"
+      ],
+      "dtype": "float64",
+      "materialized_in_r3_22": false,
+      "shape": [
+        "n_component",
+        "n_functional_trait",
+        "n_functional_trait"
+      ]
+    },
+    "functional_mean_z": {
+      "dtype": "float64",
+      "materialized_in_r3_22": false,
+      "semantics": "population mean latent genetic-functional coordinate",
+      "shape": [
+        "n_component",
+        "n_functional_trait"
+      ]
+    },
+    "functional_plasticity_beta": {
+      "constraints": [
+        "FINITE_WHERE_ACTIVE"
+      ],
+      "dtype": "float64",
+      "materialized_in_r3_22": false,
+      "shape": [
+        "n_component",
+        "n_functional_trait",
+        "n_environment_driver"
+      ]
+    },
+    "functional_va": {
+      "constraints": [
+        "FINITE_AND_NONNEGATIVE_WHERE_ACTIVE"
+      ],
+      "dtype": "float64",
+      "materialized_in_r3_22": false,
+      "shape": [
+        "n_component",
+        "n_functional_trait"
+      ]
+    }
+  },
+  "human_target": false,
+  "primitive_trait_count": 31,
+  "primitive_trait_order": [
+    "M1_effector_independence",
+    "M2_force_precision_span",
+    "M3_workspace_control",
+    "M4_sensorimotor_feedback",
+    "L1_locomotor_mode_breadth",
+    "L2_substrate_breadth",
+    "L3_transition_control",
+    "L4_effector_locomotor_decoupling",
+    "C1_working_memory",
+    "C2_inhibitory_control",
+    "C3_relational_integration",
+    "C4_causal_model_depth",
+    "P1_acquisition_efficiency",
+    "P2_retention_stability",
+    "P3_cross_context_transfer",
+    "P4_developmental_plasticity",
+    "S1_social_tolerance",
+    "S2_coordination_capacity",
+    "S3_social_learning_fidelity",
+    "S4_communication_bandwidth",
+    "D1_resource_breadth",
+    "D2_digestive_processing_breadth",
+    "D3_resource_switching",
+    "H1_maturation_duration",
+    "H2_reproductive_output_rate",
+    "H3_parental_investment",
+    "H4_adult_survival_horizon",
+    "G1_habitat_breadth",
+    "G2_climatic_tolerance_breadth",
+    "G3_disturbance_resilience",
+    "G4_colonization_breadth"
+  ],
+  "species_aggregation": {
+    "mean": "POPULATION_WEIGHTED_COMPONENT_MEAN_OVER_ACTIVE_APPLICABLE_COMPONENTS",
+    "single_species_scalar_forbidden": true,
+    "variance": "WITHIN_AND_BETWEEN_COMPONENT_DECOMPOSITION_OVER_ACTIVE_APPLICABLE_COMPONENTS"
+  },
+  "stage": "v0.6D1-R3.22",
+  "state_level": "COMPONENT"
+}

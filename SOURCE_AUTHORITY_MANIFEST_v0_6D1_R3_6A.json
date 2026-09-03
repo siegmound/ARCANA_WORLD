@@ -1,0 +1,94 @@
+{
+  "stage": "v0.6D1-R3.6A",
+  "parent_stage": "v0.6D1-R3.5",
+  "parent_package": {
+    "filename": "ARCANA_WORLD1_REBASED_NATURAL_CONTROL_v0_6D1_R3_5_TIME_RESOLVED_VA_HEADROOM_AND_DYNAMIC_CEILING_SENSITIVITY_CANDIDATE(1).zip",
+    "sha256": "3818fb5e64ce3c65a98f79654d21e547601c4b7c3a7473b7d247ac37e33a959b",
+    "bytes": 100399668
+  },
+  "parent_authorities_unchanged": [
+    {
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "sha256": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45",
+      "bytes": 51460
+    },
+    {
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_5.py",
+      "sha256": "634237eb15383000e88180b890ead9b6facc281c0a77eb5ce00efe32f3d0bc95",
+      "bytes": 11983
+    },
+    {
+      "path": "src/d3_additive_variance_v0_6_3D3_3A.py",
+      "sha256": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21",
+      "bytes": 15443
+    },
+    {
+      "path": "src/rebased_deep_time_barrier_provider_v0_6D1_R3.py",
+      "sha256": "1eace956da7254be21e5513a5c75f2efc360b80410f4c72dafedef01f584ce0c",
+      "bytes": 7332
+    },
+    {
+      "path": "src/d3_paleogeographic_history_v0_6_3D3_2C.py",
+      "sha256": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730",
+      "bytes": 8202
+    },
+    {
+      "path": "outputs/v0_6D1_R1/WORLD1_210Ma_REBASELINE_COMMON_STATE_v0_6D1_R1.npz",
+      "sha256": "51115b9144e33603340680758aaca835211403f8875a09306468c50d96bdc116",
+      "bytes": 13738083
+    },
+    {
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "bytes": 2928319
+    }
+  ],
+  "integration_sources": [
+    {
+      "path": "src/arcana_worldsim/scientific_engines/contracts.py",
+      "sha256": "4983b25cd3311448bd1bb8dd41b957e6e2d8a2200fcd660343d3e2eda9d47a5b",
+      "bytes": 8465
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/serialization.py",
+      "sha256": "573664e8d0fe854fdc3a41bac946350dec9e6bafe6a2963117f63ab3b8b2984b",
+      "bytes": 3720
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/governance.py",
+      "sha256": "fbc3323e8dfa011559f4c70c4b805d1aa3093aba849ee951c7bcd81aca86ce79",
+      "bytes": 979
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/registry.py",
+      "sha256": "6706bfbb36490460e3ba16d1c9d4ad3b0550b6f30d1db246eb341870ee771a27",
+      "bytes": 1686
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/base.py",
+      "sha256": "c5dec2d1d4d02d4ecc350df1dc0c0d5f40879bfd7e7ef758ee8991f94250e837",
+      "bytes": 2251
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/arcana_bridge.py",
+      "sha256": "dc5ef1a89007b0dd5dfb13956f34b1aa347b7ddade2ae74bef5f41bc4b0973c4",
+      "bytes": 5688
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/nemo242.py",
+      "sha256": "6e4cea2620cfcd475328682c5458a4a54771c36bda8488da828cb9d7004202f5",
+      "bytes": 9661
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/sidecars.py",
+      "sha256": "5e4d75b1430a68b90913fa8739397d523e8ff70ccee09397d79fbe162de17ea8",
+      "bytes": 3417
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/__init__.py",
+      "sha256": "08ae88c721607ebf487223d01569dd46ecc3c71f756b0362d9bb35358ae259b7",
+      "bytes": 1346
+    }
+  ],
+  "authority_note": "Scientific-engine integration sources are orchestration/evidence infrastructure, not replacements for sealed D3 scientific authorities."
+}

@@ -1,0 +1,106 @@
+{
+  "stage": "v0.6D1-R3.4 long-run audit",
+  "verdict": "NOT_YET_AUTHORIZED_FOR_CONTINUATION__DYNAMIC_VA_HEADROOM_TRANSIENTS_REQUIRE_TIME_RESOLVED_AUDIT",
+  "run": {
+    "start_age_ma": 210.0,
+    "end_age_ma": 150.0,
+    "wall_seconds": 927.7452483177185,
+    "final_total_population": 1940.114872120044,
+    "a1_reference_population_150ma": 1940.5949189504408,
+    "relative_population_error": -0.0002473681945684375,
+    "species_count": 136,
+    "component_count": 458,
+    "event_counts": {
+      "paleogeographic_support_loss_remap": 432,
+      "deme_coalescence": 14,
+      "deme_fission": 339,
+      "speciation": 16,
+      "ordinary_extinction": 0
+    }
+  },
+  "component_ledger": {
+    "initial_components": 133,
+    "fissions": 339,
+    "coalescences": 14,
+    "final_components": 458,
+    "closure": "133 + 339 - 14 = 458"
+  },
+  "variance_headroom": {
+    "ceiling_q": 0.08,
+    "reservoir_count": 1374,
+    "max_q": 0.08000000000000002,
+    "median_q": 0.0448028764533494,
+    "p95_q": 0.06583814,
+    "p99_q": 0.08,
+    "count_ge_99pct_ceiling": 28,
+    "fraction_ge_99pct_ceiling": 0.020378457059679767,
+    "count_at_ceiling": 26,
+    "per_axis": {
+      "thermal": {
+        "max_q": 0.08,
+        "fraction_ge_99pct_ceiling": 0.056768558951965066
+      },
+      "aridity": {
+        "max_q": 0.08,
+        "fraction_ge_99pct_ceiling": 0.004366812227074236
+      },
+      "body": {
+        "max_q": 0.044835714910299515,
+        "fraction_ge_99pct_ceiling": 0.0
+      }
+    }
+  },
+  "species_bound_gene_flow": {
+    "cross_current_species_positive_contact_edges_within_same_root": 0,
+    "status": "PASS"
+  },
+  "gene_flow_closure": {
+    "first_moment_conservation_max_abs": 8.003553375601768e-11,
+    "second_moment_conservation_max_abs": 1.1641532182693481e-10,
+    "edge_count": 783
+  },
+  "micro_demes": {
+    "count_lt_0p001": 6,
+    "count_lt_0p01": 8,
+    "count_lt_0p05": 96,
+    "count_lt_0p1": 121,
+    "population_mass_lt_0p05": 2.1976491983353093
+  },
+  "frozen_endpoint_headroom_probe_20myr": {
+    "q_ceiling_0p08": {
+      "max_q": 0.07357887060306746,
+      "fraction_ge_99pct_ceiling": 0.0
+    },
+    "q_ceiling_0p10": {
+      "max_q": 0.07358738050844689,
+      "fraction_ge_99pct_ceiling": 0.0
+    },
+    "q_ceiling_0p12": {
+      "max_q": 0.07358738050844689,
+      "fraction_ge_99pct_ceiling": 0.0
+    },
+    "interpretation": "The 150 Ma endpoint relaxes below 0.08 under frozen geometry; observed ceiling contact during the historical run is therefore transient/dynamic rather than a stable endpoint equilibrium."
+  },
+  "macrohistory_change_vs_r3_3": {
+    "r3_3_species_count": 135,
+    "r3_4_species_count": 136,
+    "common_speciation_identities": 15,
+    "new_r3_4_speciation": "HSG_010 -> HSG_010_D02 at 151 Ma",
+    "material_timing_shifts": [
+      "HSG_010_D01: 150 Ma -> 178 Ma",
+      "HSG_024_D01: 182 Ma -> 186 Ma",
+      "RPT_017_D01: 176.5 Ma -> 180 Ma"
+    ],
+    "interpretation": "Raising the ceiling materially changes trait-response/speciation history, so a further ceiling change must be validated with full dynamic sensitivity rather than frozen endpoint tests alone."
+  },
+  "next_stage": {
+    "name": "v0.6D1-R3.5 \u2014 Time-Resolved VA Headroom Instrumentation & Dynamic Ceiling Sensitivity",
+    "required": [
+      "Record per internal biology step: max q before gene flow, after gene flow, after homeostasis, number clipped by ceiling, fraction >=99% ceiling, per-axis maxima.",
+      "Record event-context around fission/coalescence/speciation and barrier transitions.",
+      "Run matched 210->150 Ma sensitivities at q_ceiling=0.08 and 0.10 with identical initial state/seed.",
+      "Do not change mu or b.",
+      "Promote a ceiling only if it is non-binding over the full dynamic replay and macrohistory is numerically stable under additional headroom."
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "adapter_forcing_coverage_gap_confirmed": true,
+  "adapter_forcing_parity_finding": "R43_CDMETAPOP_POPULATION_PERSISTENCE_DYNAMIC_FORCING_COVERAGE_GAP_CONFIRMED",
+  "authorized_structural_case": {
+    "domain": "population_persistence",
+    "earliest_boundary": "R3.11_POST_CHA1",
+    "engine": "CDMetaPOP",
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "window_id": "H0_POST_CHA1_RECOVERY"
+  },
+  "canonical_r311_recalibration_authorized": false,
+  "canonical_replay_authorized": false,
+  "canonical_state_changed": false,
+  "causal_interpretation": "R4.3 CDMetaPOP population-persistence evidence for J09 used a common adapter that parameterized only the START-state patch K/N0 and migration/gene-flow controls; it did not explicitly consume the nonzero normalized_environment_change or the changed normalized_habitat_fraction_end. The R3.11 reference-population-hold branch is preserved as diagnostic sensitivity evidence. Repair or comparability downgrade of the shared CDMetaPOP adapter must precede any canonical R3.11 recalibration decision.",
+  "counterfactual_population_response": {
+    "canonical_65p5_to_55_ratio": 0.9316272616306188,
+    "canonical_direction_5pct_band": -1,
+    "counterfactual_55_ma": 1610.6025980441632,
+    "counterfactual_61_ma": 1610.8077063262317,
+    "counterfactual_65p5_to_55_ratio": 0.9959791684936666,
+    "counterfactual_direction_5pct_band": 0,
+    "counterfactual_minus_canonical_ratio": 0.06435190686304781,
+    "counterfactual_moves_toward_external_direction": true,
+    "r45_external_direction": 1,
+    "start_65p5_ma": 1617.1047035853792
+  },
+  "counterfactual_status": "PASS_R46_DIAGNOSTIC_COUNTERFACTUAL_EXECUTED",
+  "next_action": "BUILD_R47_CDMETAPOP_FORCING_PARITY_REPAIR_OR_COMPARABILITY_DOWNGRADE_AND_SYMMETRIC_REEXECUTION",
+  "stage": "v0.6D1-R4.6"
+}

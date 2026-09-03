@@ -1,0 +1,749 @@
+{
+  "concurrency_semantics": "OPERATIONAL_ONLY_NOT_SCIENTIFIC_AUTHORITY",
+  "errors": [],
+  "execution_order": "R452_PLAN_ORDER",
+  "expected_metric_record_count": 160,
+  "job_count": 20,
+  "jobs": [
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "adapter_path": "benchmarks/r43/madingley_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "55c5819c74f31ed1c325c9d2f5f635907a4d5742d728530149a36f25e478d9a5",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1525893576,
+        1647150775,
+        1920638819,
+        1519467421
+      ],
+      "engine": "Madingley",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        1525893576,
+        1647150775,
+        1920638819,
+        1519467421
+      ],
+      "engine_config_sha256": "100e0532c9e2cb7df5d22aad4bf987faf2ef9ea09ff665049310f61456b6ee52",
+      "frozen_seeds": [
+        1519467421,
+        1525893576,
+        1647150775,
+        1920638819
+      ],
+      "job_id": "R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY",
+      "metric_ids": [
+        "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+        "MADINGLEY_STOCK_COUNT_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 0,
+      "r42_job_record_sha256": "9d556718cd4756b132d4f0c2587a87afc096b6968edca1ca22b092fcdc0963f4",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "R_SET_SEED_BEFORE_MADINGLEY_INIT_AND_RUN",
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "20f964932c694585fe691cccef4ba5a3b5561f7951a0b792611e49b29744ac36",
+      "adapter_path": "benchmarks/r43/rangeshiftr_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "26f534bb8b91767d6dc67e7fcf57747c0ff7938dbadd5023fe2badb01e883963",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        725095482,
+        1934559854,
+        292331116,
+        893604105
+      ],
+      "engine": "RangeShifter",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        725095482,
+        1934559854,
+        292331116,
+        893604105
+      ],
+      "engine_config_sha256": "974bf518df47da22f881cf4cff94e1efe214b800f0e07b6cbce5ed7609979a34",
+      "frozen_seeds": [
+        292331116,
+        725095482,
+        893604105,
+        1934559854
+      ],
+      "job_id": "R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER",
+      "metric_ids": [
+        "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+        "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 1,
+      "r42_job_record_sha256": "4d1f1227ae26d9a2100ed5d2ef8fdd877483c1c41ca201108dd29743acec3767",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "RANGESHIFTR_RSSIM_SEED_ARGUMENT",
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "d26a5b0d0e4198dc93f64f96fbef6d9525e0f41c2fb59992e346159afcf271a8",
+      "adapter_path": "benchmarks/r421/cdmetapop_r421_matched.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "03da13f620e5187db1991968f99c28928c241d40ed29554b87a26c9e4f8fb126",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        318998501,
+        1197234520,
+        126964583,
+        1060527186
+      ],
+      "engine": "CDMetaPOP",
+      "frozen_seeds": [
+        126964583,
+        318998501,
+        1060527186,
+        1197234520
+      ],
+      "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 2,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "fd440c3a6819bd92f8201fe76c2207fa26a407978e1f5c932b85a26f922c2d4d",
+      "repair_profile_path": "outputs/v0_6D1_R4_7/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/REPAIR_PROFILE.json",
+      "repair_profile_sha256": "cc27098ed11f778efa12bafae80d3cb5c7590c655307ee80d6099ff29c3992a4",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "adapter_path": "benchmarks/r43/madingley_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "e193648799f7d77c9d437848e8a07c15eda32a404af7cd8e1e8f40fe5738240a",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J04_H0_PRE_CHA1_MADINGLEY/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1081350395,
+        1913936439,
+        1179722647,
+        1287608194
+      ],
+      "engine": "Madingley",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J04_H0_PRE_CHA1_MADINGLEY/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        1081350395,
+        1913936439,
+        1179722647,
+        1287608194
+      ],
+      "engine_config_sha256": "630de65888893e306944e70e6e0ec126292113bd297f9305b375b24dfa36372e",
+      "frozen_seeds": [
+        1081350395,
+        1179722647,
+        1287608194,
+        1913936439
+      ],
+      "job_id": "R42_J04_H0_PRE_CHA1_MADINGLEY",
+      "metric_ids": [
+        "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+        "MADINGLEY_STOCK_COUNT_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 3,
+      "r42_job_record_sha256": "24d26468cdea404430957c980fd284cad49c2d09311009e450d2b683b4a6c81f",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "R_SET_SEED_BEFORE_MADINGLEY_INIT_AND_RUN",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "20f964932c694585fe691cccef4ba5a3b5561f7951a0b792611e49b29744ac36",
+      "adapter_path": "benchmarks/r43/rangeshiftr_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "2e2ff1c1d61bc2a9883ef15b6c1c03f2e0b046b031282d644448214ebc046ce6",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J05_H0_PRE_CHA1_RANGESHIFTER/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        544529936,
+        349785667,
+        50972012,
+        1956928900
+      ],
+      "engine": "RangeShifter",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J05_H0_PRE_CHA1_RANGESHIFTER/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        544529936,
+        349785667,
+        50972012,
+        1956928900
+      ],
+      "engine_config_sha256": "6782f6a2b988a0a915a6a159f69074d575ae2be91a15ad9f72880268664d6f8b",
+      "frozen_seeds": [
+        50972012,
+        349785667,
+        544529936,
+        1956928900
+      ],
+      "job_id": "R42_J05_H0_PRE_CHA1_RANGESHIFTER",
+      "metric_ids": [
+        "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+        "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 4,
+      "r42_job_record_sha256": "6dd99d4bfdf7199e096ff90292a34ba0b6325e88ab1daeabe89fad7097ea7260",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "RANGESHIFTR_RSSIM_SEED_ARGUMENT",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "d26a5b0d0e4198dc93f64f96fbef6d9525e0f41c2fb59992e346159afcf271a8",
+      "adapter_path": "benchmarks/r421/cdmetapop_r421_matched.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "ca769ab817478d9e5412d24253630e8535d4d1da108e19428eee837de8ad3cd4",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1869692640,
+        573266817,
+        1549947756,
+        1073281537
+      ],
+      "engine": "CDMetaPOP",
+      "frozen_seeds": [
+        573266817,
+        1073281537,
+        1549947756,
+        1869692640
+      ],
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 5,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "16e36efb44c03a2ebbbc6b8a8c6ed3c96a24db245018e990e536b53d82c74f52",
+      "repair_profile_path": "outputs/v0_6D1_R4_7/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/REPAIR_PROFILE.json",
+      "repair_profile_sha256": "ed7bedaac80d69b801a977d594b756aba5c795a5c0afac30894bc04aed1914db",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "adapter_path": "benchmarks/r43/madingley_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "252d00ffab1a530c5d252ab57cc2b8591a642f04691ba167da5f95037669a1d4",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        153786027,
+        122008137,
+        1225717256,
+        1320592225
+      ],
+      "engine": "Madingley",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        153786027,
+        122008137,
+        1225717256,
+        1320592225
+      ],
+      "engine_config_sha256": "2fe921a0f996203831bf819aa8decfbbf90c2c909288271bf294b8a7c54b9fbc",
+      "frozen_seeds": [
+        122008137,
+        153786027,
+        1225717256,
+        1320592225
+      ],
+      "job_id": "R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY",
+      "metric_ids": [
+        "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+        "MADINGLEY_STOCK_COUNT_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 6,
+      "r42_job_record_sha256": "d78462f777220a17858312e3a9f21ac22c838b5849b0415da1e3d96716f8cdf0",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "R_SET_SEED_BEFORE_MADINGLEY_INIT_AND_RUN",
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "20f964932c694585fe691cccef4ba5a3b5561f7951a0b792611e49b29744ac36",
+      "adapter_path": "benchmarks/r43/rangeshiftr_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "694e02f593264b7a7bd33738f4de00360bf33a363e0793b9433fb452733d496b",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        567654286,
+        68848419,
+        1811851455,
+        1474248279
+      ],
+      "engine": "RangeShifter",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        567654286,
+        68848419,
+        1811851455,
+        1474248279
+      ],
+      "engine_config_sha256": "fbafcac7f22132b7b556a83a5d7318e5e1db5a21851ee470237bee408c4b06f7",
+      "frozen_seeds": [
+        68848419,
+        567654286,
+        1474248279,
+        1811851455
+      ],
+      "job_id": "R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER",
+      "metric_ids": [
+        "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+        "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 7,
+      "r42_job_record_sha256": "b3bcf107715756aa8053f87a7c4613a519233b1f396b44057cf2cea023f27976",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "RANGESHIFTR_RSSIM_SEED_ARGUMENT",
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "d26a5b0d0e4198dc93f64f96fbef6d9525e0f41c2fb59992e346159afcf271a8",
+      "adapter_path": "benchmarks/r421/cdmetapop_r421_matched.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "a3d6b4d21e78820c775911dbc59ecf9055c0882c15a523abb08d8b5b6ae70d7d",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        55525513,
+        66696762,
+        413622220,
+        72612355
+      ],
+      "engine": "CDMetaPOP",
+      "frozen_seeds": [
+        55525513,
+        66696762,
+        72612355,
+        413622220
+      ],
+      "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 8,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "549a6f733b74adc784e56b5a754c85d88bba5095e542e03ceeb4c14ced105001",
+      "repair_profile_path": "outputs/v0_6D1_R4_7/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/REPAIR_PROFILE.json",
+      "repair_profile_sha256": "a45b7ab0e169a9ee5282415a372cee43221ba290a2999f399a1708e6e23ef7cb",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "70fc53655d741ed2cd918df2dd1a06713bfa17c660492c7f8fa4b035ac5aa1a6",
+      "adapter_path": "benchmarks/r421/nemo_r421.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "0701719682880a28a07336cfe606ce150f9d50547bd07d0b591ecff32309de25",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        869622111,
+        974828641,
+        125184549,
+        1155047829
+      ],
+      "engine": "NEMO",
+      "frozen_seeds": [
+        125184549,
+        869622111,
+        974828641,
+        1155047829
+      ],
+      "job_id": "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+      "metric_ids": [
+        "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+        "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 9,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "eb4d9dd94f465101cafd5df42ed42575d3a19e61d42b81053a27fc3be22873c2",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "NEMO_RANDOM_SEED_INI_PARAMETER",
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "adapter_path": "benchmarks/r43/madingley_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "e653a6dd6871b5f0ccc8966e775f718e7c38944033805d6bf31d0deb927e1e37",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J11_H0_LATE_CENOZOIC_MADINGLEY/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        388335602,
+        1159058904,
+        1115067710,
+        200120263
+      ],
+      "engine": "Madingley",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J11_H0_LATE_CENOZOIC_MADINGLEY/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        388335602,
+        1159058904,
+        1115067710,
+        200120263
+      ],
+      "engine_config_sha256": "b2e252dabc5356bbd45822463519ee17ca165b3cc019f5b920ed49e44949b0a8",
+      "frozen_seeds": [
+        200120263,
+        388335602,
+        1115067710,
+        1159058904
+      ],
+      "job_id": "R42_J11_H0_LATE_CENOZOIC_MADINGLEY",
+      "metric_ids": [
+        "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+        "MADINGLEY_STOCK_COUNT_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 10,
+      "r42_job_record_sha256": "e27fbff01ef56d43b69bb840e7590af79f93dd239c2a55a8f5ea8b57392774dc",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "R_SET_SEED_BEFORE_MADINGLEY_INIT_AND_RUN",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "20f964932c694585fe691cccef4ba5a3b5561f7951a0b792611e49b29744ac36",
+      "adapter_path": "benchmarks/r43/rangeshiftr_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "e87792dcb51e6dfb8620c7e1156b71f960a7d39b5e81f2206b9dc58cf47860f4",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1549632387,
+        704096182,
+        893749483,
+        709439403
+      ],
+      "engine": "RangeShifter",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        1549632387,
+        704096182,
+        893749483,
+        709439403
+      ],
+      "engine_config_sha256": "e318b963465b632c43c98f7ca25368f91eec39b31bdc66ff10bdfa9b80f0482f",
+      "frozen_seeds": [
+        704096182,
+        709439403,
+        893749483,
+        1549632387
+      ],
+      "job_id": "R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER",
+      "metric_ids": [
+        "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+        "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 11,
+      "r42_job_record_sha256": "2b019ebf7c9526b817e35cfddfb4fd740748edf334c5c66012fa0f42a0d9da10",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "RANGESHIFTR_RSSIM_SEED_ARGUMENT",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "70fc53655d741ed2cd918df2dd1a06713bfa17c660492c7f8fa4b035ac5aa1a6",
+      "adapter_path": "benchmarks/r421/nemo_r421.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "596e2f8d2a5f248e23baacb56477e2ed3ee23ce08cf9c2478da5c34511a0c3bb",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1465029780,
+        1614466852,
+        689027931,
+        1899635522
+      ],
+      "engine": "NEMO",
+      "frozen_seeds": [
+        689027931,
+        1465029780,
+        1614466852,
+        1899635522
+      ],
+      "job_id": "R42_J13_H0_LATE_CENOZOIC_NEMO",
+      "metric_ids": [
+        "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+        "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 12,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "8dbfb9ef2e0b915512c8802a845bff227a6d9c9a28019ab922ffc845109e4a02",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "NEMO_RANDOM_SEED_INI_PARAMETER",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "d26a5b0d0e4198dc93f64f96fbef6d9525e0f41c2fb59992e346159afcf271a8",
+      "adapter_path": "benchmarks/r421/cdmetapop_r421_matched.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "ac0031c6ad050f1c512d01a94cb3ad142db49b9cee98aea9f2802c6f90526041",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1753445705,
+        1059627548,
+        60353502,
+        785850499
+      ],
+      "engine": "CDMetaPOP",
+      "frozen_seeds": [
+        60353502,
+        785850499,
+        1059627548,
+        1753445705
+      ],
+      "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 13,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "4b391cb6b4dfc48b1366c625b03ccde87a2f5f9cbcc6b74fd7dafe6e1b2e5628",
+      "repair_profile_path": "outputs/v0_6D1_R4_7/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/REPAIR_PROFILE.json",
+      "repair_profile_sha256": "165ca297776adf567ec641498519bbc1cee69734403dcb78347088e8d59f56f0",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "a0c078c7f5604b353641bdaa61f73b140bc20b0a771c66ac5d5735972d62ef62",
+      "adapter_path": "benchmarks/r421/slim_r421.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "5dd853bd85919f81cecaeaf761967e5cdf7933401d2deeeab70e5c59fef18a2f",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J16_SAPIENT_3MA_TO_200KA_SLIM/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        162419087,
+        1041058041,
+        1903370093,
+        375760264
+      ],
+      "engine": "SLiM",
+      "frozen_seeds": [
+        162419087,
+        375760264,
+        1041058041,
+        1903370093
+      ],
+      "job_id": "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+      "metric_ids": [
+        "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+        "SLIM_ANCESTRY_GENE_FLOW_SUMMARY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 14,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "3bc51ac5bc32ba45c0b9d26908be08e62dda39379bfca1a65d4a79ae3e44a0f0",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "70fc53655d741ed2cd918df2dd1a06713bfa17c660492c7f8fa4b035ac5aa1a6",
+      "adapter_path": "benchmarks/r421/nemo_r421.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "6592b7a7d70d89b97e47389f38b58604f75447319722da64296892a74c87aa07",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J17_SAPIENT_3MA_TO_200KA_NEMO/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        431138667,
+        135683159,
+        113402767,
+        62159366
+      ],
+      "engine": "NEMO",
+      "frozen_seeds": [
+        62159366,
+        113402767,
+        135683159,
+        431138667
+      ],
+      "job_id": "R42_J17_SAPIENT_3MA_TO_200KA_NEMO",
+      "metric_ids": [
+        "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+        "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 15,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "3cc2c81512beedd671d108177a8ea6b5ab48bc22d4b90cda22732835f696174a",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "NEMO_RANDOM_SEED_INI_PARAMETER",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "a0c078c7f5604b353641bdaa61f73b140bc20b0a771c66ac5d5735972d62ef62",
+      "adapter_path": "benchmarks/r421/slim_r421.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "29f95841ed4048c2b33223891d3f3bd297898781e6ed0907f47164c6556e3924",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J19_SAPIENT_200KA_TO_0_SLIM/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1114782693,
+        1114642738,
+        1222478282,
+        1071453763
+      ],
+      "engine": "SLiM",
+      "frozen_seeds": [
+        1071453763,
+        1114642738,
+        1114782693,
+        1222478282
+      ],
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "metric_ids": [
+        "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+        "SLIM_ANCESTRY_GENE_FLOW_SUMMARY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 16,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "213cb24d0d50cf6853f93b49cc9d548ea4034f77e5680734f9e7fdc8f22b41b8",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "d26a5b0d0e4198dc93f64f96fbef6d9525e0f41c2fb59992e346159afcf271a8",
+      "adapter_path": "benchmarks/r421/cdmetapop_r421_matched.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "11d8139aa2c923707401a4a26dbb169d6dc819a3207213149afb1ce67c3ac0eb",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1576323019,
+        1614078828,
+        1562581070,
+        1724087276
+      ],
+      "engine": "CDMetaPOP",
+      "frozen_seeds": [
+        1562581070,
+        1576323019,
+        1614078828,
+        1724087276
+      ],
+      "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+      "metric_ids": [
+        "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+        "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 17,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "3e7b6e095b53f3b96c22ec7d228503ea64b02e8f471e88a9f057e7d89f7d648d",
+      "repair_profile_path": "outputs/v0_6D1_R4_7/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/REPAIR_PROFILE.json",
+      "repair_profile_sha256": "486011002ad43fc9e294c728fccff4795dd78cab1c06a27506909f58fcc5a9b8",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "adapter_authority": "R4.21_STATICALLY_AUTHORIZED_R4.22_EXECUTION_ADAPTER",
+      "adapter_expected_sha256": "a0c078c7f5604b353641bdaa61f73b140bc20b0a771c66ac5d5735972d62ef62",
+      "adapter_path": "benchmarks/r421/slim_r421.py",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "fd6a0d8e3c2be5105d6166617030756c07613ebae7033d5766f87c280e6bd7fe",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J22_PRODUCER_20KA_TO_0_SLIM/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        1087167018,
+        882721373,
+        1329415137,
+        143055247
+      ],
+      "engine": "SLiM",
+      "frozen_seeds": [
+        143055247,
+        882721373,
+        1087167018,
+        1329415137
+      ],
+      "job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+      "metric_ids": [
+        "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+        "SLIM_ANCESTRY_GENE_FLOW_SUMMARY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 18,
+      "r422_authorized": true,
+      "r42_job_record_sha256": "c921e9091e57d097ae2c4f58109e426be55a1d5e6e3169817c493aac0885cf09",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "adapter_authority": "R4.3_FROZEN_HISTORICAL_ADAPTER",
+      "adapter_expected_sha256": "20f964932c694585fe691cccef4ba5a3b5561f7951a0b792611e49b29744ac36",
+      "adapter_path": "benchmarks/r43/rangeshiftr_r43.R",
+      "canonical_write_authorized": false,
+      "contract_expected_sha256": "e2316ab0b6d28959f12f79e6b8397e7f47d21190d48a7a728f66093abec5fd60",
+      "contract_path": "outputs/v0_6D1_R4_3/jobs/R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER/JOB_CONTRACT.json",
+      "contract_seed_order": [
+        732920388,
+        298927478,
+        1851954729,
+        1269645923
+      ],
+      "engine": "RangeShifter",
+      "engine_config_path": "outputs/v0_6D1_R4_3/jobs/R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER/ENGINE_CONFIG.tsv",
+      "engine_config_seeds": [
+        732920388,
+        298927478,
+        1851954729,
+        1269645923
+      ],
+      "engine_config_sha256": "2680c1fe9a5cd87e9aaacba5cda0e25e6a677b5bbd8ab24fd65a4017bc50223e",
+      "frozen_seeds": [
+        298927478,
+        732920388,
+        1269645923,
+        1851954729
+      ],
+      "job_id": "R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER",
+      "metric_ids": [
+        "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+        "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY"
+      ],
+      "metric_record_count": 8,
+      "plan_index": 19,
+      "r42_job_record_sha256": "f577932a52460af17ea7efb250a825d4c4745c75130f49e4b7975ba93df2752f",
+      "scientific_stream_count": 4,
+      "seed_injection_mode": "RANGESHIFTR_RSSIM_SEED_ARGUMENT",
+      "window_id": "PRODUCER_20KA_TO_0"
+    }
+  ],
+  "parent_execution_plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+  "parent_readout_registry_sha256": "f39bb36251a95f2d9e310113a9286608d72188374d7d9bc73fe90aa697e5d380",
+  "resume_semantics": "SKIP_ONLY_HASH_VALID_JOB_COMPLETE; PARTIAL_ARCHIVE_AND_RESTART; INVALID_COMPLETE_FAIL_CLOSED",
+  "scientific_stream_count": 80,
+  "seed_list_order_semantics": "NON_SCIENTIFIC; EXACT_JOB_SEED_MEMBERSHIP_ONLY",
+  "stage": "v0.6D1-R4.55",
+  "status": "R455_EXACT_20_JOB_80_STREAM_EXECUTION_MANIFEST_FROZEN"
+}

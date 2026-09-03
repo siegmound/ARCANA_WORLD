@@ -1,0 +1,1939 @@
+{
+  "schema": "ARCANA_R316_CANDIDATE_FORMAL_AUDIT_V1",
+  "stage": "v0.6D1-R3.16",
+  "verdict": "PASS_R316_CANDIDATE_FORMAL_AUDIT__READY_FOR_LOCAL_250_TO_125KA_EXPOSURE_PRESERVING_BRIDGE_RUN",
+  "checks": "318/318",
+  "failed": [],
+  "focused_regression": "36/36 PASS",
+  "interpretation_guard": {
+    "canonical_biology_endpoint_ma": 0.125,
+    "exact_120ka_biology_claimed": false,
+    "environmental_500y_substeps_are_biology_steps": false,
+    "c2_historical_glacial_chronology_claimed": false,
+    "endpoint_only_shadow_is_authority": false
+  },
+  "check_rows": [
+    {
+      "name": "stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.16",
+      "expected": null
+    },
+    {
+      "name": "start_250ka",
+      "pass": true,
+      "actual": 0.25,
+      "expected": null
+    },
+    {
+      "name": "biology_end_125ka",
+      "pass": true,
+      "actual": 0.125,
+      "expected": null
+    },
+    {
+      "name": "c2_start_200ka",
+      "pass": true,
+      "actual": 0.2,
+      "expected": null
+    },
+    {
+      "name": "c2_end_120ka",
+      "pass": true,
+      "actual": 0.12,
+      "expected": null
+    },
+    {
+      "name": "fixed_biology_125k",
+      "pass": true,
+      "actual": 125000.0,
+      "expected": null
+    },
+    {
+      "name": "adaptive_not_biology",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "gene_flow_cadence_unchanged",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "lifecycle_cadence_unchanged",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "expected_c2_consumed_150",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "expected_c2_total_160",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "expected_c2_remaining_10",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "r315_json_hash_pinned",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "r315_npz_hash_pinned",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "r316_runtime_a1_preserves_npz_files_contract",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "r316_runtime_a1_required_channels",
+      "pass": true,
+      "actual": [
+        "age_ma",
+        "aridity_index",
+        "browse_forage",
+        "carrying_capacity",
+        "land_mask",
+        "lat",
+        "lon",
+        "low_forage",
+        "plate_code",
+        "population",
+        "temperature_c",
+        "total_edible_forage",
+        "wetland_forage"
+      ],
+      "expected": null
+    },
+    {
+      "name": "r316_adapter_accepts_125ka",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "r316_adapter_accepts_exact_120ka_environment",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "r316_adapter_fails_closed_below_120ka",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "r315_250ka_scope_guard_preserved",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "inherited_config::start_age_ma",
+      "pass": true,
+      "actual": 210.0,
+      "expected": 210.0
+    },
+    {
+      "name": "inherited_config::end_age_ma",
+      "pass": true,
+      "actual": 0.125,
+      "expected": 0.125
+    },
+    {
+      "name": "inherited_config::dt_years",
+      "pass": true,
+      "actual": 125000.0,
+      "expected": 125000.0
+    },
+    {
+      "name": "inherited_config::snapshot_interval_years",
+      "pass": true,
+      "actual": 1000000.0,
+      "expected": 1000000.0
+    },
+    {
+      "name": "inherited_config::topology_switch_age_ma",
+      "pass": true,
+      "actual": 195.0,
+      "expected": 195.0
+    },
+    {
+      "name": "inherited_config::occupancy_floor",
+      "pass": true,
+      "actual": 1e-09,
+      "expected": 1e-09
+    },
+    {
+      "name": "inherited_config::habitat_floor",
+      "pass": true,
+      "actual": 1e-12,
+      "expected": 1e-12
+    },
+    {
+      "name": "inherited_config::migration_reference_years",
+      "pass": true,
+      "actual": 250000.0,
+      "expected": 250000.0
+    },
+    {
+      "name": "inherited_config::migration_fraction_ceiling",
+      "pass": true,
+      "actual": 0.3,
+      "expected": 0.3
+    },
+    {
+      "name": "inherited_config::gene_flow_ceiling_per_step",
+      "pass": true,
+      "actual": 0.15,
+      "expected": 0.15
+    },
+    {
+      "name": "inherited_config::trait_response_timescale_years",
+      "pass": true,
+      "actual": 300000.0,
+      "expected": 300000.0
+    },
+    {
+      "name": "inherited_config::body_mass_scale",
+      "pass": true,
+      "actual": 0.35,
+      "expected": 0.35
+    },
+    {
+      "name": "inherited_config::mutation_variance_supply_normalized_per_myr",
+      "pass": true,
+      "actual": 0.002,
+      "expected": 0.002
+    },
+    {
+      "name": "inherited_config::variance_ceiling_normalized",
+      "pass": true,
+      "actual": 0.08,
+      "expected": 0.08
+    },
+    {
+      "name": "inherited_config::nonlinear_stabilizing_variance_depletion_per_myr_per_q",
+      "pass": true,
+      "actual": 0.9876543209876544,
+      "expected": 0.9876543209876544
+    },
+    {
+      "name": "inherited_config::selection_variance_depletion_per_generation",
+      "pass": true,
+      "actual": 2e-08,
+      "expected": 2e-08
+    },
+    {
+      "name": "inherited_config::drift_individual_equivalents_per_population_unit",
+      "pass": true,
+      "actual": 250000000.0,
+      "expected": 250000000.0
+    },
+    {
+      "name": "inherited_config::drift_min_effective_size",
+      "pass": true,
+      "actual": 500.0,
+      "expected": 500.0
+    },
+    {
+      "name": "inherited_config::speciation_check_interval_years",
+      "pass": true,
+      "actual": 500000.0,
+      "expected": 500000.0
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_check_interval_years",
+      "pass": true,
+      "actual": 500000.0,
+      "expected": 500000.0
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_minimum_persistence_years",
+      "pass": true,
+      "actual": 2000000.0,
+      "expected": 2000000.0
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_founder_floor_fraction",
+      "pass": true,
+      "actual": 0.05,
+      "expected": 0.05
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_max_opportunity_ratio",
+      "pass": true,
+      "actual": 0.15,
+      "expected": 0.15
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_max_range_ratio",
+      "pass": true,
+      "actual": 0.1,
+      "expected": 0.1
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_max_density_ratio",
+      "pass": true,
+      "actual": 0.15,
+      "expected": 0.15
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_max_population_ratio_to_episode_start",
+      "pass": true,
+      "actual": 0.9,
+      "expected": 0.9
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_recovery_reset_factor",
+      "pass": true,
+      "actual": 1.25,
+      "expected": 1.25
+    },
+    {
+      "name": "inherited_config::ordinary_extinction_minimum_species_age_years",
+      "pass": true,
+      "actual": 2000000.0,
+      "expected": 2000000.0
+    },
+    {
+      "name": "inherited_config::minimum_effective_isolation_generations",
+      "pass": true,
+      "actual": 50000.0,
+      "expected": 50000.0
+    },
+    {
+      "name": "inherited_config::minimum_intrinsic_ri",
+      "pass": true,
+      "actual": 0.65,
+      "expected": 0.65
+    },
+    {
+      "name": "inherited_config::minimum_trait_distance",
+      "pass": true,
+      "actual": 1.0,
+      "expected": 1.0
+    },
+    {
+      "name": "inherited_config::maximum_effective_exchange_pressure",
+      "pass": true,
+      "actual": 0.25,
+      "expected": 0.25
+    },
+    {
+      "name": "inherited_config::minimum_branch_population_fraction",
+      "pass": true,
+      "actual": 0.05,
+      "expected": 0.05
+    },
+    {
+      "name": "inherited_config::minimum_complement_population_fraction",
+      "pass": true,
+      "actual": 0.05,
+      "expected": 0.05
+    },
+    {
+      "name": "inherited_config::minimum_absolute_population",
+      "pass": true,
+      "actual": 0.01,
+      "expected": 0.01
+    },
+    {
+      "name": "inherited_config::ri_build_rate_per_generation",
+      "pass": true,
+      "actual": 2e-05,
+      "expected": 2e-05
+    },
+    {
+      "name": "inherited_config::ri_decay_rate_per_generation",
+      "pass": true,
+      "actual": 5e-05,
+      "expected": 5e-05
+    },
+    {
+      "name": "inherited_config::isolation_reconnection_erosion",
+      "pass": true,
+      "actual": 1.0,
+      "expected": 1.0
+    },
+    {
+      "name": "inherited_config::trait_drive_onset",
+      "pass": true,
+      "actual": 0.5,
+      "expected": 0.5
+    },
+    {
+      "name": "inherited_config::trait_drive_saturation",
+      "pass": true,
+      "actual": 1.5,
+      "expected": 1.5
+    },
+    {
+      "name": "inherited_config::seed",
+      "pass": true,
+      "actual": 917231,
+      "expected": 917231
+    },
+    {
+      "name": "inherited_config::macrostep_years",
+      "pass": true,
+      "actual": 500000.0,
+      "expected": 500000.0
+    },
+    {
+      "name": "inherited_config::biology_cadence_years",
+      "pass": true,
+      "actual": 125000.0,
+      "expected": 125000.0
+    },
+    {
+      "name": "inherited_config::transport_cadence_years",
+      "pass": true,
+      "actual": 62500.0,
+      "expected": 62500.0
+    },
+    {
+      "name": "inherited_config::persistent_vicariance_fission_enabled",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inherited_config::deme_fission_check_interval_years",
+      "pass": true,
+      "actual": 500000.0,
+      "expected": 500000.0
+    },
+    {
+      "name": "inherited_config::deme_fission_min_component_fraction",
+      "pass": true,
+      "actual": 0.02,
+      "expected": 0.02
+    },
+    {
+      "name": "inherited_config::deme_fission_min_absolute_population",
+      "pass": true,
+      "actual": 0.01,
+      "expected": 0.01
+    },
+    {
+      "name": "inherited_config::deme_fission_min_root_species_fraction",
+      "pass": true,
+      "actual": 0.01,
+      "expected": 0.01
+    },
+    {
+      "name": "inherited_config::vicariance_persistence_min_years",
+      "pass": true,
+      "actual": 2000000.0,
+      "expected": 2000000.0
+    },
+    {
+      "name": "inherited_config::vicariance_persistence_reset_on_reconnection",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inherited_config::habitat_connectivity_power",
+      "pass": true,
+      "actual": 0.5,
+      "expected": 0.5
+    },
+    {
+      "name": "inherited_config::effective_connectivity_core_threshold",
+      "pass": true,
+      "actual": 0.2,
+      "expected": 0.2
+    },
+    {
+      "name": "inherited_config::founder_minimum_persistence_years",
+      "pass": true,
+      "actual": 1000000.0,
+      "expected": 1000000.0
+    },
+    {
+      "name": "inherited_config::founder_base_minimum_population_units",
+      "pass": true,
+      "actual": 0.075,
+      "expected": 0.075
+    },
+    {
+      "name": "inherited_config::founder_generation_reference_years",
+      "pass": true,
+      "actual": 5.0,
+      "expected": 5.0
+    },
+    {
+      "name": "inherited_config::founder_reproduction_reference",
+      "pass": true,
+      "actual": 1.0,
+      "expected": 1.0
+    },
+    {
+      "name": "inherited_config::founder_minimum_effective_size_proxy",
+      "pass": true,
+      "actual": 500.0,
+      "expected": 500.0
+    },
+    {
+      "name": "inherited_config::founder_minimum_normalized_additive_variance",
+      "pass": true,
+      "actual": 0.005,
+      "expected": 0.005
+    },
+    {
+      "name": "inherited_config::founder_minimum_occupied_cells",
+      "pass": true,
+      "actual": 10,
+      "expected": 10
+    },
+    {
+      "name": "inherited_config::founder_maximum_persistent_decline_fraction",
+      "pass": true,
+      "actual": 0.5,
+      "expected": 0.5
+    },
+    {
+      "name": "inherited_config::founder_reset_on_reconnection",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inherited_config::barrier_phase_min",
+      "pass": true,
+      "actual": 0.05,
+      "expected": 0.05
+    },
+    {
+      "name": "inherited_config::barrier_phase_max",
+      "pass": true,
+      "actual": 0.95,
+      "expected": 0.95
+    },
+    {
+      "name": "inherited_config::barrier_transition_width_years",
+      "pass": true,
+      "actual": 1000000.0,
+      "expected": 1000000.0
+    },
+    {
+      "name": "inherited_config::connectivity_land_support_threshold",
+      "pass": true,
+      "actual": 0.25,
+      "expected": 0.25
+    },
+    {
+      "name": "inherited_config::connectivity_softness",
+      "pass": true,
+      "actual": 0.1,
+      "expected": 0.1
+    },
+    {
+      "name": "inherited_config::persistent_reconnection_coalescence_enabled",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inherited_config::reconnection_check_interval_years",
+      "pass": true,
+      "actual": 500000.0,
+      "expected": 500000.0
+    },
+    {
+      "name": "inherited_config::reconnection_persistence_min_years",
+      "pass": true,
+      "actual": 2000000.0,
+      "expected": 2000000.0
+    },
+    {
+      "name": "inherited_config::telemetry_enabled",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inherited_config::telemetry_near_ceiling_fraction",
+      "pass": true,
+      "actual": 0.99,
+      "expected": 0.99
+    },
+    {
+      "name": "inherited_config::diagnostic_unclipped_ceiling",
+      "pass": true,
+      "actual": 1000000.0,
+      "expected": 1000000.0
+    },
+    {
+      "name": "inherited_config::adaptive_k_eff",
+      "pass": true,
+      "actual": 38.47,
+      "expected": 38.47
+    },
+    {
+      "name": "inherited_config::branch_label",
+      "pass": true,
+      "actual": "K_CENTER",
+      "expected": "K_CENTER"
+    },
+    {
+      "name": "inherited_config::segregation_recombination_fraction_per_generation",
+      "pass": true,
+      "actual": 0.5,
+      "expected": 0.5
+    },
+    {
+      "name": "partition_total_125k",
+      "pass": true,
+      "actual": 124999.99999999993,
+      "expected": null
+    },
+    {
+      "name": "partition_c2_150",
+      "pass": true,
+      "actual": 150,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::000",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::001",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::002",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::003",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::004",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::005",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::006",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::007",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::008",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::009",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::010",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::011",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::012",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::013",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::014",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::015",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::016",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::017",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::018",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::019",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::020",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::021",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::022",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::023",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::024",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::025",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::026",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::027",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::028",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::029",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::030",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::031",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::032",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::033",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::034",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::035",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::036",
+      "pass": true,
+      "actual": 499.9999999999727,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::037",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::038",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::039",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::040",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::041",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::042",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::043",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::044",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::045",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::046",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::047",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::048",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::049",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::050",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::051",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::052",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::053",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::054",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::055",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::056",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::057",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::058",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::059",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::060",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::061",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::062",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::063",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::064",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::065",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::066",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::067",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::068",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::069",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::070",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::071",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::072",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::073",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::074",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::075",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::076",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::077",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::078",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::079",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::080",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::081",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::082",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::083",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::084",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::085",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::086",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::087",
+      "pass": true,
+      "actual": 499.9999999999727,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::088",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::089",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::090",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::091",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::092",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::093",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::094",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::095",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::096",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::097",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::098",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::099",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::100",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::101",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::102",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::103",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::104",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::105",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::106",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::107",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::108",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::109",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::110",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::111",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::112",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::113",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::114",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::115",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::116",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::117",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::118",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::119",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::120",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::121",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::122",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::123",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::124",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::125",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::126",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::127",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::128",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::129",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::130",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::131",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::132",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::133",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::134",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::135",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::136",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::137",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::138",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::139",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::140",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::141",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::142",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::143",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::144",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::145",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::146",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::147",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::148",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "c2_segment_500y::149",
+      "pass": true,
+      "actual": 500.00000000000045,
+      "expected": null
+    },
+    {
+      "name": "remainder_10",
+      "pass": true,
+      "actual": 10,
+      "expected": null
+    },
+    {
+      "name": "remainder_5000y",
+      "pass": true,
+      "actual": 4999.999999999991,
+      "expected": null
+    },
+    {
+      "name": "remainder_biology_frozen",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "constant_identity::land_support",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "constant_identity::temperature_c",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "constant_identity::aridity_index",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "constant_identity::browse_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "constant_identity::low_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "constant_identity::wetland_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "constant_identity::reference_population",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "forage_closure_constant",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "linear_trapezoid_exact",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "endpoint_only_information_loss_detected",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "linear_refinement_converges",
+      "pass": true,
+      "actual": 0.0,
+      "expected": null
+    },
+    {
+      "name": "config_file_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\configs\\world1_r316_c2_bridge_fixed_biology_v0_6D1_R3_16.json",
+      "expected": null
+    },
+    {
+      "name": "config_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.16",
+      "expected": null
+    },
+    {
+      "name": "config_biology_steps",
+      "pass": true,
+      "actual": 1,
+      "expected": null
+    },
+    {
+      "name": "config_no_scientific_change",
+      "pass": true,
+      "actual": false,
+      "expected": null
+    },
+    {
+      "name": "required_exists::src/arcana_worldsim/scientific_engines/r316_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "src/arcana_worldsim/scientific_engines/r316_c2_bridge_fixed_biology.py",
+      "expected": null
+    },
+    {
+      "name": "required_exists::scripts/run_v0_6D1_R3_16_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "scripts/run_v0_6D1_R3_16_c2_bridge_fixed_biology.py",
+      "expected": null
+    },
+    {
+      "name": "required_exists::tests/test_r316_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "tests/test_r316_c2_bridge_fixed_biology.py",
+      "expected": null
+    },
+    {
+      "name": "required_exists::run_v0_6D1_R3_16_c2_bridge_fixed_biology.ps1",
+      "pass": true,
+      "actual": "run_v0_6D1_R3_16_c2_bridge_fixed_biology.ps1",
+      "expected": null
+    },
+    {
+      "name": "required_exists::CANONICAL_C2_BRIDGE_EXPOSURE_PRESERVING_FIXED_BIOLOGY_CONTRACT_v0_6D1_R3_16.md",
+      "pass": true,
+      "actual": "CANONICAL_C2_BRIDGE_EXPOSURE_PRESERVING_FIXED_BIOLOGY_CONTRACT_v0_6D1_R3_16.md",
+      "expected": null
+    },
+    {
+      "name": "source_manifest_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_16.json",
+      "expected": null
+    },
+    {
+      "name": "manifest_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.16",
+      "expected": null
+    },
+    {
+      "name": "manifest_no_scientific_parameter_changes",
+      "pass": true,
+      "actual": false,
+      "expected": null
+    },
+    {
+      "name": "authority_exists::src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\scientific_engines\\r38_restartable_checkpoint.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+      "pass": true,
+      "actual": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698",
+      "expected": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698"
+    },
+    {
+      "name": "authority_exists::src/arcana_worldsim/scientific_engines/r315_late_cenozoic_secular_biology.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\scientific_engines\\r315_late_cenozoic_secular_biology.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/arcana_worldsim/scientific_engines/r315_late_cenozoic_secular_biology.py",
+      "pass": true,
+      "actual": "f861d856f628b2f33a77e0ad58ec700ee0ecf91a472e0532bc64f9083a922dcb",
+      "expected": "f861d856f628b2f33a77e0ad58ec700ee0ecf91a472e0532bc64f9083a922dcb"
+    },
+    {
+      "name": "authority_exists::src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\scientific_engines\\r314_late_cenozoic_binding.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py",
+      "pass": true,
+      "actual": "e80ef0d5389315bc7e8a756e0d5b97a305c050505e3557256f10572c43d618e8",
+      "expected": "e80ef0d5389315bc7e8a756e0d5b97a305c050505e3557256f10572c43d618e8"
+    },
+    {
+      "name": "authority_exists::src/arcana_worldsim/late_cenozoic/production_interface.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\production_interface.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/arcana_worldsim/late_cenozoic/production_interface.py",
+      "pass": true,
+      "actual": "d99a4c6b0150d3c90be0593b93162cb8d02d8ce2f34d7ccf84cf4ef9a27ac903",
+      "expected": "d99a4c6b0150d3c90be0593b93162cb8d02d8ce2f34d7ccf84cf4ef9a27ac903"
+    },
+    {
+      "name": "authority_exists::src/arcana_worldsim/late_cenozoic/late_pleistocene_boundary.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\late_pleistocene_boundary.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/arcana_worldsim/late_cenozoic/late_pleistocene_boundary.py",
+      "pass": true,
+      "actual": "5357cafa87319f62362f6b1bfbf1b6359ba7423aa94698d079d89b7bba8ce473",
+      "expected": "5357cafa87319f62362f6b1bfbf1b6359ba7423aa94698d079d89b7bba8ce473"
+    },
+    {
+      "name": "authority_exists::src/arcana_worldsim/late_cenozoic/cha2_nested_50y.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\cha2_nested_50y.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/arcana_worldsim/late_cenozoic/cha2_nested_50y.py",
+      "pass": true,
+      "actual": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f",
+      "expected": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f"
+    },
+    {
+      "name": "authority_exists::src/arcana_worldsim/late_cenozoic/adaptive_clock_c2.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\adaptive_clock_c2.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/arcana_worldsim/late_cenozoic/adaptive_clock_c2.py",
+      "pass": true,
+      "actual": "6d131f80f16038ec0238ce8863a31f8ae391921db802c07ad6d953ce93696759",
+      "expected": "6d131f80f16038ec0238ce8863a31f8ae391921db802c07ad6d953ce93696759"
+    },
+    {
+      "name": "authority_exists::src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "pass": true,
+      "actual": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45",
+      "expected": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45"
+    },
+    {
+      "name": "authority_exists::src/rebased_natural_control_runtime_v0_6D1_R2_1.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\rebased_natural_control_runtime_v0_6D1_R2_1.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/rebased_natural_control_runtime_v0_6D1_R2_1.py",
+      "pass": true,
+      "actual": "ca7e0f80d303eac474cfea99b9867733d901fc5a5533b2e9a4fa5d08e2bfb019",
+      "expected": "ca7e0f80d303eac474cfea99b9867733d901fc5a5533b2e9a4fa5d08e2bfb019"
+    },
+    {
+      "name": "authority_exists::src/rebased_natural_control_runtime_v0_6D1_R2.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\rebased_natural_control_runtime_v0_6D1_R2.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/rebased_natural_control_runtime_v0_6D1_R2.py",
+      "pass": true,
+      "actual": "2a56552a0121c9a66d42357887bc8ecf18bf90f0063a7e9face002a21b205cb0",
+      "expected": "2a56552a0121c9a66d42357887bc8ecf18bf90f0063a7e9face002a21b205cb0"
+    },
+    {
+      "name": "authority_exists::src/d3_additive_variance_v0_6_3D3_3A.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\d3_additive_variance_v0_6_3D3_3A.py",
+      "expected": null
+    },
+    {
+      "name": "authority_sha::src/d3_additive_variance_v0_6_3D3_3A.py",
+      "pass": true,
+      "actual": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21",
+      "expected": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21"
+    },
+    {
+      "name": "r316_file_exists::src/arcana_worldsim/scientific_engines/r316_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\scientific_engines\\r316_c2_bridge_fixed_biology.py",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::src/arcana_worldsim/scientific_engines/r316_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "2a89a2b3b29670297e646a5549bd614e2adc54dfa229d58e7aef0e64ed04369e",
+      "expected": "2a89a2b3b29670297e646a5549bd614e2adc54dfa229d58e7aef0e64ed04369e"
+    },
+    {
+      "name": "r316_file_exists::scripts/run_v0_6D1_R3_16_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\scripts\\run_v0_6D1_R3_16_c2_bridge_fixed_biology.py",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::scripts/run_v0_6D1_R3_16_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "f05e77071e040a13a0f125ec65714cb9acea7026f80a632ea1a617fdc878ac7a",
+      "expected": "f05e77071e040a13a0f125ec65714cb9acea7026f80a632ea1a617fdc878ac7a"
+    },
+    {
+      "name": "r316_file_exists::tests/test_r316_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\tests\\test_r316_c2_bridge_fixed_biology.py",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::tests/test_r316_c2_bridge_fixed_biology.py",
+      "pass": true,
+      "actual": "0c45b4ca00416a69310fcb5de7960af6d911ecc638fcd5bd25a0f0ddcc6865a8",
+      "expected": "0c45b4ca00416a69310fcb5de7960af6d911ecc638fcd5bd25a0f0ddcc6865a8"
+    },
+    {
+      "name": "r316_file_exists::run_v0_6D1_R3_16_c2_bridge_fixed_biology.ps1",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\run_v0_6D1_R3_16_c2_bridge_fixed_biology.ps1",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::run_v0_6D1_R3_16_c2_bridge_fixed_biology.ps1",
+      "pass": true,
+      "actual": "c5d4682cd8eb0e7399e6729f9617be45414bc6b6e11a7dfafef2182452ca14ee",
+      "expected": "c5d4682cd8eb0e7399e6729f9617be45414bc6b6e11a7dfafef2182452ca14ee"
+    },
+    {
+      "name": "r316_file_exists::configs/world1_r316_c2_bridge_fixed_biology_v0_6D1_R3_16.json",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\configs\\world1_r316_c2_bridge_fixed_biology_v0_6D1_R3_16.json",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::configs/world1_r316_c2_bridge_fixed_biology_v0_6D1_R3_16.json",
+      "pass": true,
+      "actual": "effbf25d6824c83a41165ceecd2fa594b1ccd10fe8a108029b6c242da5f85f82",
+      "expected": "effbf25d6824c83a41165ceecd2fa594b1ccd10fe8a108029b6c242da5f85f82"
+    },
+    {
+      "name": "r316_file_exists::CANONICAL_C2_BRIDGE_EXPOSURE_PRESERVING_FIXED_BIOLOGY_CONTRACT_v0_6D1_R3_16.md",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\CANONICAL_C2_BRIDGE_EXPOSURE_PRESERVING_FIXED_BIOLOGY_CONTRACT_v0_6D1_R3_16.md",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::CANONICAL_C2_BRIDGE_EXPOSURE_PRESERVING_FIXED_BIOLOGY_CONTRACT_v0_6D1_R3_16.md",
+      "pass": true,
+      "actual": "99c03aaf951192c9746e5d2cbbe1c15d5092289308ab76a13417dc25d97664b1",
+      "expected": "99c03aaf951192c9746e5d2cbbe1c15d5092289308ab76a13417dc25d97664b1"
+    },
+    {
+      "name": "r316_file_exists::README_R3_16.md",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\README_R3_16.md",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::README_R3_16.md",
+      "pass": true,
+      "actual": "e4247dbebf7c50070b54ac4d5c7e1682d3a172d54e7e1cd3bceaf627876b4f35",
+      "expected": "e4247dbebf7c50070b54ac4d5c7e1682d3a172d54e7e1cd3bceaf627876b4f35"
+    },
+    {
+      "name": "r316_file_exists::V0_6D1_R3_16_STATUS.md",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\V0_6D1_R3_16_STATUS.md",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::V0_6D1_R3_16_STATUS.md",
+      "pass": true,
+      "actual": "a817b40b8c0e42a4b95da5a90dfe07aab3777bd7f2f756ba4134478f72b11611",
+      "expected": "a817b40b8c0e42a4b95da5a90dfe07aab3777bd7f2f756ba4134478f72b11611"
+    },
+    {
+      "name": "r316_file_exists::NEXT_STAGE_HANDOFF_v0_6D1_R3_16.md",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\NEXT_STAGE_HANDOFF_v0_6D1_R3_16.md",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::NEXT_STAGE_HANDOFF_v0_6D1_R3_16.md",
+      "pass": true,
+      "actual": "a8d6f48219d5ddd1d40d95b89578a8142bb0196f658e920ee72cc6e320e0176e",
+      "expected": "a8d6f48219d5ddd1d40d95b89578a8142bb0196f658e920ee72cc6e320e0176e"
+    },
+    {
+      "name": "r316_file_exists::scripts/formal_audit_v0_6D1_R3_16_candidate.py",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\scripts\\formal_audit_v0_6D1_R3_16_candidate.py",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::scripts/formal_audit_v0_6D1_R3_16_candidate.py",
+      "pass": true,
+      "actual": "1b545f9b83bb8e555fbf229c42860f679bd20ccc436b5e1aa82b03c9efec1a96",
+      "expected": "1b545f9b83bb8e555fbf229c42860f679bd20ccc436b5e1aa82b03c9efec1a96"
+    },
+    {
+      "name": "r316_file_exists::R3_16_R3_RUNTIME_A1_NPZFILE_REPAIR_AUDIT.md",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R3_16_R3_RUNTIME_A1_NPZFILE_REPAIR_AUDIT.md",
+      "expected": null
+    },
+    {
+      "name": "r316_file_sha::R3_16_R3_RUNTIME_A1_NPZFILE_REPAIR_AUDIT.md",
+      "pass": true,
+      "actual": "f48de9315b77cc791108ef2f951e83ff6846bf6480c0bbcf38a0ec7374900680",
+      "expected": "f48de9315b77cc791108ef2f951e83ff6846bf6480c0bbcf38a0ec7374900680"
+    }
+  ]
+}

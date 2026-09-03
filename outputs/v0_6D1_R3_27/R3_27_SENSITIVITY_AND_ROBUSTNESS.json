@@ -1,0 +1,87 @@
+{
+  "qualification_frequency": {
+    "RPT_006_D04": 0.1,
+    "RPT_007_D05": 0.0,
+    "RPT_009_D02": 0.9,
+    "RPT_010_D02": 1.0,
+    "RPT_019_D02": 0.1,
+    "RPT_020_D02": 0.1
+  },
+  "stage": "v0.6D1-R3.27",
+  "status": "MACRO_REPLAY_SENSITIVITY_COMPLETE",
+  "variant_count": 10,
+  "variants": [
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "BASELINE"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "LEAVE_ONE_GATE_OUT::survival"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "LEAVE_ONE_GATE_OUT::final_ne"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02",
+        "RPT_020_D02",
+        "RPT_019_D02",
+        "RPT_006_D04"
+      ],
+      "variant": "LEAVE_ONE_GATE_OUT::bottleneck"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "LEAVE_ONE_GATE_OUT::demes"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "LEAVE_ONE_GATE_OUT::adaptation"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "LEAVE_ONE_GATE_OUT::structured_stem"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "FORCING_REGIME_ONLY::BASELINE_VARIABILITY"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02"
+      ],
+      "variant": "FORCING_REGIME_ONLY::HIGH_VARIABILITY"
+    },
+    {
+      "qualified": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "variant": "FORCING_REGIME_ONLY::MILD_VARIABILITY"
+    }
+  ]
+}

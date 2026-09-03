@@ -1,0 +1,31 @@
+{
+  "stage": "v0.6D1-R4.42",
+  "title": "Geonomics Multi-Transition Bounded Replay & Production Execution Queue Authorization Preflight",
+  "authorization_rule": "production queue may be authorized only if every transition in the bounded full-sequence replay passes all R4.41 invariants for all four frozen seeds",
+  "bounded_scope": {
+    "J14": "first branch in frozen canonical order, all 140 transitions, four seeds",
+    "J18": "first branch in frozen canonical order, all 14 transitions, four seeds",
+    "J21": "all 8 canonical layer transitions, all 147 native layers, four seeds"
+  },
+  "authorized_queue_if_pass": "ARCANA_EXACT_CANONICAL_ANCHOR_REPLAY_QUEUE",
+  "explicitly_not_authorized": [
+    "default Geonomics Model.walk queue",
+    "autonomous movement",
+    "autonomous population dynamics",
+    "autonomous ageing",
+    "coordinate interpolation",
+    "population_proxy to carrier-count conversion",
+    "dynamic sidecar injection",
+    "scientific readout/adjudication before R4.43"
+  ],
+  "important_nonclaim": "production queue authorization means the mechanics are authorized; scientific execution remains forbidden until readout metrics and adjudication schema are frozen",
+  "next_action": "BUILD_R443_GEONOMICS_SCIENTIFIC_READOUT_AUTHORITY_METRIC_EXTRACTION_AND_ADJUDICATION_SCHEMA_PREFLIGHT",
+  "multi_step_clock_validation": {
+    "transition_index_ti_before_clock": "ti-1",
+    "transition_index_ti_after_clock": "ti",
+    "first_transition": "-1 -> 0",
+    "subsequent_transitions": "0->1, 1->2, ...",
+    "single_transition_r441_helper_reused": false,
+    "r441_sealed_source_modified": false
+  }
+}

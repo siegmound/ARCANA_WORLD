@@ -1,0 +1,515 @@
+{
+  "stage": "v0.6D1-R4.54",
+  "evidence_type": "NON_SCIENTIFIC_FIVE_ENGINE_SEED_AND_READOUT_DRY_RUN_EVIDENCE",
+  "generated_by": "capture_v0_6D1_R4_54_dry_runs.ps1",
+  "parent_execution_plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+  "parent_readout_registry_sha256": "f39bb36251a95f2d9e310113a9286608d72188374d7d9bc73fe90aa697e5d380",
+  "dry_run_count": 5,
+  "passed_dry_run_count": 4,
+  "historical_job_execution_performed": false,
+  "scientific_engine_execution_performed": false,
+  "scientific_evidence_claimed": false,
+  "numeric_acceptance_threshold_count": 0,
+  "automatic_scientific_pass_fail_count": 0,
+  "canonical_state_changed": false,
+  "dry_runs": [
+    {
+      "stage": "v0.6D1-R4.54",
+      "engine": "Madingley",
+      "probe_job_id": "R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY",
+      "frozen_seed": 1519467421,
+      "seed_injection_mode": "R_SET_SEED_BEFORE_MADINGLEY_INIT_AND_RUN",
+      "seed_binding_verified": true,
+      "dry_run": true,
+      "scientific_evidence": false,
+      "status": "PASS",
+      "returncode": 0,
+      "metrics": [
+        {
+          "metric_id": "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "payload": {
+            "time_index": [
+              0,
+              1
+            ],
+            "values": [
+              495,
+              100
+            ]
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        },
+        {
+          "metric_id": "MADINGLEY_STOCK_COUNT_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "payload": {
+            "time_index": [
+              0,
+              1
+            ],
+            "values": [
+              2,
+              2
+            ]
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        }
+      ],
+      "unauthorized_metric_count": 0,
+      "numeric_acceptance_threshold_count": 0,
+      "automatic_scientific_pass_fail_count": 0,
+      "artifact_materialization_count": 150,
+      "canonical_state_changed": false,
+      "error": "",
+      "confirmed_version": "MadingleyR-1.0.6__CPP-2.02",
+      "bridge_exit_code": 0,
+      "artifact_hashes": {
+        "dry_run_result_json": "99939a95c465c298e7699b73afeb44942ad693ceece758ebe096812f804d30c9"
+      }
+    },
+    {
+      "stage": "v0.6D1-R4.54",
+      "engine": "RangeShifter",
+      "probe_job_id": "R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER",
+      "frozen_seed": 292331116,
+      "seed_injection_mode": "RANGESHIFTR_RSSIM_SEED_ARGUMENT",
+      "seed_binding_verified": true,
+      "dry_run": true,
+      "scientific_evidence": false,
+      "status": "PASS",
+      "returncode": 0,
+      "metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "payload": {
+            "year": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "values": [
+              1560,
+              1820,
+              2017,
+              2178,
+              2115,
+              2180,
+              2173,
+              2195,
+              2219,
+              2232
+            ]
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "payload": {
+            "year": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "values": [
+              312,
+              311,
+              310,
+              307,
+              306,
+              305,
+              307,
+              307,
+              304,
+              300
+            ],
+            "occupancy_semantics": "single_replicate_positive_abundance_cells"
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        }
+      ],
+      "unauthorized_metric_count": 0,
+      "numeric_acceptance_threshold_count": 0,
+      "automatic_scientific_pass_fail_count": 0,
+      "artifact_materialization_count": 4,
+      "canonical_state_changed": false,
+      "error": "",
+      "confirmed_version": "3.0.1",
+      "bridge_exit_code": 0,
+      "artifact_hashes": {
+        "dry_run_result_json": "45508484e023d76dd7d8258ef8268cd667a5065bbea4a694c5442e979ab6c367"
+      }
+    },
+    {
+      "artifact_hashes": {
+        "summary_classAllTime.csv": "b4e1da83f629a1d24ec79f354cd4c680d14312b46356f7f339b60aa1b1586974",
+        "summary_popAllTime.csv": "730dee42a04fcdc7f14416473f634b67f1e529d72d6917a213c5355160215a23"
+      },
+      "automatic_scientific_pass_fail_count": 0,
+      "canonical_state_changed": false,
+      "dry_run": true,
+      "engine": "CDMetaPOP",
+      "frozen_seed": 126964583,
+      "metrics": [
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "states": [
+              {
+                "patch_vector": [
+                  900.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  0.0
+                ],
+                "year": 0
+              },
+              {
+                "patch_vector": [
+                  1790.0,
+                  304.0,
+                  286.0,
+                  249.0,
+                  317.0,
+                  312.0,
+                  322.0,
+                  0.0
+                ],
+                "year": 1
+              },
+              {
+                "patch_vector": [
+                  1400.0,
+                  216.0,
+                  242.0,
+                  255.0,
+                  204.0,
+                  226.0,
+                  257.0,
+                  0.0
+                ],
+                "year": 2
+              },
+              {
+                "patch_vector": [
+                  1534.0,
+                  260.0,
+                  241.0,
+                  235.0,
+                  291.0,
+                  262.0,
+                  245.0,
+                  0.0
+                ],
+                "year": 3
+              },
+              {
+                "patch_vector": [
+                  1472.0,
+                  270.0,
+                  244.0,
+                  238.0,
+                  243.0,
+                  204.0,
+                  273.0,
+                  0.0
+                ],
+                "year": 4
+              }
+            ]
+          }
+        },
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "states": [
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4982098765432099,
+                  0.4423555555555556,
+                  0.4966111111111111,
+                  0.49855555555555553,
+                  0.4987111111111111,
+                  0.4981777777777777,
+                  0.49741111111111114,
+                  0.0
+                ],
+                "ho": [
+                  0.49,
+                  0.48,
+                  0.49,
+                  0.5133333333333333,
+                  0.52,
+                  0.4533333333333333,
+                  0.48333333333333334,
+                  0.0
+                ],
+                "year": 0
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4996496676133704,
+                  0.4925932738919667,
+                  0.49849320260159424,
+                  0.49991935613941707,
+                  0.4995521897919175,
+                  0.49839486768573305,
+                  0.4991078662088654,
+                  0.0
+                ],
+                "ho": [
+                  0.49553072625698324,
+                  0.48026315789473684,
+                  0.48426573426573427,
+                  0.5261044176706827,
+                  0.501577287066246,
+                  0.48878205128205127,
+                  0.4968944099378882,
+                  0.0
+                ],
+                "year": 1
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4998156887755101,
+                  0.49214999142661175,
+                  0.49807902465678566,
+                  0.49975009611687815,
+                  0.49965157631680124,
+                  0.49976016132821677,
+                  0.4991975654438372,
+                  0.0
+                ],
+                "ho": [
+                  0.4975,
+                  0.4930555555555556,
+                  0.5289256198347108,
+                  0.492156862745098,
+                  0.46078431372549017,
+                  0.5110619469026548,
+                  0.49416342412451364,
+                  0.0
+                ],
+                "year": 2
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.49985190102143673,
+                  0.49791050295857986,
+                  0.494585148327336,
+                  0.4937845178813943,
+                  0.4991202276779916,
+                  0.49814623273701997,
+                  0.49739691795085383,
+                  0.0
+                ],
+                "ho": [
+                  0.4980443285528031,
+                  0.48653846153846153,
+                  0.48132780082987553,
+                  0.5212765957446809,
+                  0.5085910652920962,
+                  0.4599236641221374,
+                  0.5326530612244897,
+                  0.0
+                ],
+                "year": 3
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4997553978615311,
+                  0.49888545953360763,
+                  0.49993281375974197,
+                  0.49808894145893645,
+                  0.49935223289132746,
+                  0.4919982698961938,
+                  0.4965617410672356,
+                  0.0
+                ],
+                "ho": [
+                  0.4986413043478261,
+                  0.5314814814814814,
+                  0.48770491803278687,
+                  0.5105042016806722,
+                  0.5288065843621399,
+                  0.46078431372549017,
+                  0.46703296703296704,
+                  0.0
+                ],
+                "year": 4
+              }
+            ]
+          }
+        }
+      ],
+      "numeric_acceptance_threshold_count": 0,
+      "probe_job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "returncode": 0,
+      "scientific_evidence": false,
+      "seed_binding_verified": true,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118",
+      "stage": "v0.6D1-R4.54",
+      "status": "PASS",
+      "unauthorized_metric_count": 0,
+      "confirmed_version": "3.08",
+      "bridge_exit_code": 0
+    },
+    {
+      "engine": "NEMO",
+      "status": "FAIL",
+      "returncode": 127,
+      "metrics": [],
+      "error": "missing/unparseable result",
+      "artifact_hashes": {}
+    },
+    {
+      "artifact_hashes": {
+        "SLIM_TREE_SEQUENCE_RAW": "462ac09300324b3725a2f656eeb3188f28fadae4b34e39b8bdd8e1fd1f53388f"
+      },
+      "automatic_scientific_pass_fail_count": 0,
+      "canonical_state_changed": false,
+      "dry_run": true,
+      "engine": "SLiM",
+      "frozen_seed": 162419087,
+      "metrics": [
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "edges": 1455,
+            "individuals": 400,
+            "mutations": 6,
+            "nodes": 1487,
+            "sequence_length": 10000.0,
+            "trees": 1
+          }
+        },
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "between_population_divergence": 9.868750000000001E-06,
+            "divergence_mode": "site",
+            "population_ids": [
+              1,
+              2
+            ],
+            "sample_counts": [
+              400,
+              400
+            ],
+            "sample_set_pair": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "numeric_acceptance_threshold_count": 0,
+      "probe_job_id": "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+      "returncode": 0,
+      "scientific_evidence": false,
+      "seed_binding_verified": true,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "seed_readback": 162419087,
+      "stage": "v0.6D1-R4.54",
+      "status": "PASS",
+      "unauthorized_metric_count": 0,
+      "confirmed_version": "5.2",
+      "bridge_exit_code": 0
+    }
+  ]
+}

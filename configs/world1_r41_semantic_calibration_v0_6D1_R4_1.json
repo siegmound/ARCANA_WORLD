@@ -1,0 +1,124 @@
+{
+  "stage": "v0.6D1-R4.1",
+  "title": "ARCANA Multi-Engine Semantic Calibration, Controlled Microbenchmarks & Historical Window Execution Gate",
+  "parent_stage": "v0.6D1-R4.0",
+  "required_parent_status": "PASS_R40_ARCANA_MULTI_ENGINE_SCIENTIFIC_REVALIDATION_ORCHESTRATOR_AND_RUNTIME_GOVERNANCE_SEALED",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "canonical_state_changed": false,
+  "external_engine_direct_canonical_write": false,
+  "automatic_external_evidence_promotion": false,
+  "deep_biological_coupling": false,
+  "baseline_a": "ARCANA_REDUCED_ORDER_R3_19_TO_R3_39",
+  "r40_frozen_matrix_sha256": "021afffff5f51a8e08dc7c54effa26cf8723e005bcd33a9a54843a1b45530622",
+  "required_engines": {
+    "NEMO": "2.4.2",
+    "Geonomics": "1.4.9",
+    "Madingley": "MadingleyR-1.0.6__CPP-2.02",
+    "RangeShifter": "3.0.1",
+    "CDMetaPOP": "3.08",
+    "SLiM": "5.2"
+  },
+  "microbenchmarks": [
+    {
+      "id": "R41_NEMO_B1_ADMIXTURE_CONVERGENCE",
+      "engine": "NEMO",
+      "purpose": "Validate executable forward-time finite-N migration/recombination semantics and extract realized allele-frequency convergence.",
+      "required_metrics": ["initial_mean_frequency_gap", "final_mean_frequency_gap", "qfreq_rows", "generations", "patches"],
+      "pass_policy": "finite_metrics_and_final_gap_lt_initial_gap",
+      "scientific_domains": ["gene_flow", "additive_variance", "admixture"]
+    },
+    {
+      "id": "R41_GEONOMICS_DEFAULT_SPATIAL_DEMOGRAPHY",
+      "engine": "Geonomics",
+      "purpose": "Execute a real spatially explicit forward-time model and extract terminal species abundance and occupied-cell support.",
+      "required_metrics": ["species_count", "terminal_population_total", "occupied_cells_total", "model_class"],
+      "pass_policy": "model_completed_and_positive_terminal_support",
+      "scientific_domains": ["population_persistence", "range_occupancy", "connectivity"]
+    },
+    {
+      "id": "R41_MADINGLEY_ONE_YEAR_ECOSYSTEM",
+      "engine": "Madingley",
+      "purpose": "Execute Madingley init plus one simulated year on a small terrestrial window and verify heterotroph/autotroph state production.",
+      "required_metrics": ["initial_cohort_count", "final_cohort_count", "initial_stock_count", "final_stock_count", "years"],
+      "pass_policy": "model_completed_and_nonempty_ecosystem_state",
+      "scientific_domains": ["biomass", "trophic_opportunity", "extinction_risk"]
+    },
+    {
+      "id": "R41_RANGESHIFTR_DEFAULT_RANGE_DYNAMICS",
+      "engine": "RangeShifter",
+      "purpose": "Execute a real RangeShiftR simulation and extract abundance/occupied-cell range trajectory.",
+      "required_metrics": ["initial_abundance", "final_abundance", "initial_occupied_cells", "final_occupied_cells", "years"],
+      "pass_policy": "simulation_completed_and_positive_range_support",
+      "scientific_domains": ["range_occupancy", "range_shift_rate", "connectivity", "founder_persistence"]
+    },
+    {
+      "id": "R41_CDMETAPOP_BUNDLED_5GEN_EXAMPLE",
+      "engine": "CDMetaPOP",
+      "purpose": "Execute the pinned 3.08 bundled demographic-genetic example suite and verify generated population/genetic evidence files.",
+      "required_metrics": ["scenario_rows", "runtime_generations", "new_output_files", "csv_output_files", "source_commit"],
+      "pass_policy": "example_completed_and_outputs_materialized",
+      "scientific_domains": ["population_persistence", "connectivity", "gene_flow", "founder_persistence"]
+    },
+    {
+      "id": "R41_SLIM_TWO_POP_TREESEQ_GENE_FLOW",
+      "engine": "SLiM",
+      "purpose": "Execute two-population forward-time migration with tree-sequence recording and validate ancestry pipeline materialization.",
+      "required_metrics": ["tree_nodes", "tree_edges", "tree_individuals", "tree_mutations", "sequence_length", "generations"],
+      "pass_policy": "simulation_completed_and_nonempty_tree_sequence",
+      "scientific_domains": ["gene_flow", "admixture", "ancestry", "producer_divergence"]
+    }
+  ],
+  "semantic_rules": {
+    "population_scale": {
+      "rule": "NO_LITERAL_CROSS_ENGINE_N_EQUIVALENCE",
+      "comparison": ["persistence_probability", "relative_abundance_change", "normalized_occupancy", "distributional_summary"],
+      "forbidden": ["direct_N_equality", "NEMO_individuals_equal_ARCANA_population_units"]
+    },
+    "time_scale": {
+      "rule": "EXPLICIT_GENERATION_OR_TIMESTEP_MAPPING_REQUIRED",
+      "historical_window_execution_requires_generation_interval": true,
+      "no_implicit_year_generation_equivalence": true
+    },
+    "space_scale": {
+      "rule": "EXPLICIT_CELL_AREA_AND_ELIGIBLE_HABITAT_DENOMINATOR_REQUIRED",
+      "comparison": ["occupied_fraction", "centroid_shift", "connectivity_index", "support_persistence"]
+    },
+    "genetic_scale": {
+      "rule": "PARAMETER_SEMANTICS_ARE_NOT_ASSUMED_IDENTICAL",
+      "comparison": ["realized_allele_frequency_change", "realized_gene_flow", "variance_response", "ancestry_fraction", "distributional_effect_size"]
+    },
+    "ecosystem_scale": {
+      "rule": "MADINGLEY_FUNCTIONAL_COHORTS_AND_STOCKS_DO_NOT_DEFINE_ARCANA_SPECIES_IDENTITY",
+      "comparison": ["biomass_response", "trophic_opportunity_response", "functional_persistence"]
+    },
+    "uncertainty": {
+      "rule": "REPLICATE_DISTRIBUTIONS_REQUIRED_BEFORE_HISTORICAL_PROMOTION",
+      "single_run_use": "SEMANTIC_AND_EXECUTABLE_GATE_ONLY"
+    }
+  },
+  "domain_authority": {
+    "population_persistence": {"primary": ["RangeShifter", "CDMetaPOP"], "secondary": ["Geonomics", "Madingley"], "vote": false},
+    "range_occupancy": {"primary": ["RangeShifter"], "secondary": ["Geonomics", "CDMetaPOP"], "vote": false},
+    "range_shift_rate": {"primary": ["RangeShifter"], "secondary": ["Geonomics"], "vote": false},
+    "connectivity": {"primary": ["RangeShifter", "Geonomics"], "secondary": ["CDMetaPOP"], "vote": false},
+    "gene_flow": {"primary": ["NEMO", "SLiM", "CDMetaPOP"], "secondary": ["Geonomics"], "vote": false},
+    "additive_variance": {"primary": ["NEMO", "SLiM"], "secondary": ["Geonomics"], "vote": false},
+    "trait_response": {"primary": ["SLiM", "Geonomics"], "secondary": [], "vote": false},
+    "admixture": {"primary": ["SLiM", "NEMO", "CDMetaPOP"], "secondary": ["Geonomics"], "vote": false},
+    "ancestry": {"primary": ["SLiM"], "secondary": ["Geonomics"], "vote": false},
+    "biomass": {"primary": ["Madingley"], "secondary": [], "vote": false},
+    "trophic_opportunity": {"primary": ["Madingley"], "secondary": [], "vote": false},
+    "extinction_risk": {"primary": ["RangeShifter", "CDMetaPOP"], "secondary": ["Madingley"], "vote": false},
+    "founder_persistence": {"primary": ["RangeShifter", "CDMetaPOP"], "secondary": ["Geonomics"], "vote": false},
+    "managed_wild_isolation": {"primary": ["Geonomics", "SLiM", "CDMetaPOP"], "secondary": ["RangeShifter"], "vote": false},
+    "producer_divergence": {"primary": ["SLiM", "Geonomics"], "secondary": ["RangeShifter"], "vote": false}
+  },
+  "historical_window_gate": {
+    "window_count": 7,
+    "execute_in_r41": false,
+    "next_stage": "v0.6D1-R4.2",
+    "authorization_condition": "ALL_R41_MICROBENCHMARKS_PASS_AND_SEMANTIC_AUTHORITY_MATRIX_SEALED",
+    "selection_based_on_microbenchmark_results": false,
+    "no_majority_vote": true
+  }
+}

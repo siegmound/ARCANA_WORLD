@@ -1,0 +1,57 @@
+{
+  "canonical_replay_authorized_in_r424": false,
+  "closure_routes_in_priority_order": [
+    {
+      "acceptance": [
+        "source belongs to sealed canonical R3 evidence, not external-engine output",
+        "explicit spatial coordinates or grid indices are stored, not inferred from scalar deme_count",
+        "explicit time authority reaches the 3 Ma J14 window start or an exact 3 Ma checkpoint",
+        "population/habitat support needed by the Geonomics binding is present",
+        "source provenance and hash are frozen before any Geonomics result exists"
+      ],
+      "execution_authorized_in_r424": false,
+      "priority": 1,
+      "route": "EXISTING_SEALED_EXPLICIT_3MA_SPATIAL_AUTHORITY_DISCOVERY"
+    },
+    {
+      "acceptance": [
+        "used only if no existing sealed 3 Ma spatial authority exists",
+        "requires separate explicit authorization before replay/materialization",
+        "must be engine-independent and may not tune toward Geonomics outputs",
+        "does not retroactively rewrite R3 parent evidence"
+      ],
+      "execution_authorized_in_r424": false,
+      "priority": 2,
+      "route": "NEW_CANONICAL_SPATIAL_REPLAY_AUTHORITY_REQUEST"
+    },
+    {
+      "acceptance": [
+        "new namespace only; frozen R4.2 J14 is not mutated",
+        "cannot substitute for the original J14 3 Ma to 200 ka evidence cell",
+        "may be used only as additional diagnostic/extension evidence after explicit authorization"
+      ],
+      "execution_authorized_in_r424": false,
+      "priority": 3,
+      "route": "NEW_NAMESPACE_GEONOMICS_EXTENSION_FROM_EARLIEST_VALID_SPATIAL_ANCHOR"
+    }
+  ],
+  "current_geonomics_family_execution_ready": false,
+  "forbidden_shortcuts": [
+    "SYNTHESIZE_3MA_SPATIAL_COORDINATES_FROM_R3_27_SCALAR_MACRO_STATE",
+    "INTERPOLATE_BACKWARD_FROM_R3_15_250KA_OR_R3_28_200KA_TO_3MA_WITHOUT_EXPLICIT_AUTHORITY",
+    "USE_GEONOMICS_DEFAULT_MODEL_AS_ADJUDICATIVE_EVIDENCE",
+    "MUTATE_R4_2_J14_WINDOW_OR_JOB_ID",
+    "EXECUTE_ONLY_J18_J21_AS_IF_FULL_R4_2_GEONOMICS_SHARED_ADAPTER_SCOPE_WERE_SATISFIED",
+    "USE_EXTERNAL_ENGINE_RESULTS_TO_DEFINE_CANONICAL_SPATIAL_BINDING"
+  ],
+  "geonomics_execution_authorized_in_r424": false,
+  "j14_job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+  "j14_parent_gap_confirmed": true,
+  "j14_window_id": "SAPIENT_3MA_TO_200KA",
+  "j18_binding_translation_preserved": true,
+  "j21_binding_translation_preserved": true,
+  "r425_required_operation": "READ_ONLY_DISCOVERY_OF_EXISTING_SEALED_3MA_SPATIAL_AUTHORITY_BEFORE_ANY_REPLAY_OR_EXTENSION_AUTHORITY",
+  "r42_registry_mutation_authorized": false,
+  "stage": "v0.6D1-R4.24",
+  "status": "R424_GEONOMICS_J14_SPATIAL_AUTHORITY_CLOSURE_PLAN_FROZEN"
+}

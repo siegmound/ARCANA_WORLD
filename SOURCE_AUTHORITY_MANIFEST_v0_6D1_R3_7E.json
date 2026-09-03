@@ -1,0 +1,119 @@
+{
+  "stage": "v0.6D1-R3.7E",
+  "parent_stage": "v0.6D1-R3.7D",
+  "authority_note": "R3.7E binds the R3.7 reduced genetic state to a short World-1 replay in shadow only. The full governed 210->205 Ma run remains pending local execution. No production scalar K, WorldSim-to-NEMO population mapping, recombination constant, mu/b/ceiling change, or canonical write is authorized.",
+  "governed_full_window": {
+    "start_age_ma": 210.0,
+    "end_age_ma": 205.0,
+    "biology_steps": 40,
+    "status": "PENDING_EXTERNAL_LOCAL_EXECUTION"
+  },
+  "diagnostic_smoke": {
+    "window": "210->209 Ma",
+    "biology_steps": 8,
+    "canonical_parity": true,
+    "legacy_peak_q": 0.021964362863513203,
+    "shadow_peak_q": {
+      "K_LOW": 0.02196436286351262,
+      "K_CENTER": 0.02196436286351262,
+      "K_HIGH": 0.02196436286351262
+    },
+    "ceiling_contacts": {
+      "K_LOW": 0,
+      "K_CENTER": 0,
+      "K_HIGH": 0
+    },
+    "verdict": "PASS_SHORT_WORLD1_ADAPTIVE_GENETIC_SHADOW_REPLAY__K_ENVELOPE_NO_QUALITATIVE_HEADROOM_DIVERGENCE__PRODUCTION_BINDING_NOT_YET_AUTHORIZED"
+  },
+  "governance": {
+    "shadow_only": true,
+    "canonical_write_allowed": false,
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "direct_WorldSim_N_to_NEMO_N_mapping_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "recombination_fraction_is_reference_shadow_architecture_not_world1_constant": true
+  },
+  "new_r3_7E_sources_and_evidence": [
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r37e_short_shadow_replay.py",
+      "bytes": 20001,
+      "sha256": "fe6da893f5c3a6f2d2c47c3a3780dafb87d99b7d0f3b11a89d4e92e7ce513d79"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_7E_short_shadow.py",
+      "bytes": 2218,
+      "sha256": "d1b0c4120226ddedb63d0c3758841ab270de15e41c92b8b778a51576797824f8"
+    },
+    {
+      "path": "scripts/formal_audit_v0_6D1_R3_7E.py",
+      "bytes": 3830,
+      "sha256": "949bdcef78884e52fb87fa22b917a3cb2fd281afe0ad76c66e4ba6e9d77ab396"
+    },
+    {
+      "path": "tests/test_r37e_short_world1_shadow.py",
+      "bytes": 2065,
+      "sha256": "852796d4aa0f46143b571ee57b6bad309f6e892e24c9fb2973cf6c63846ec9b1"
+    },
+    {
+      "path": "configs/world1_short_adaptive_genetic_shadow_replay_v0_6D1_R3_7E.json",
+      "bytes": 688,
+      "sha256": "fe3c5eb8005e4ecac6bafa61ce620aeb6e1144da91d7bdacd58dad8159f8ea08"
+    },
+    {
+      "path": "SHORT_WORLD1_ADAPTIVE_GENETIC_SHADOW_REPLAY_CONTRACT_v0_6D1_R3_7E.md",
+      "bytes": 2044,
+      "sha256": "d6ad05e728ddfa44fe89a97fd39e3333acfb65558bacd867f54e0cd5dc77feec"
+    },
+    {
+      "path": "R3_7E_DIAGNOSTIC_SMOKE_AUDIT.md",
+      "bytes": 794,
+      "sha256": "ba604bb3d062a6076a85ac39fb59b61f949090b0f6b86bcb3f9407f09a375fc8"
+    },
+    {
+      "path": "README_R3_7E.md",
+      "bytes": 397,
+      "sha256": "a44e92d42d1610ba62f42c48aa4ad06db6cd3e0cf3d4efbf7477848542b04c9e"
+    },
+    {
+      "path": "V0_6D1_R3_7E_STATUS.md",
+      "bytes": 280,
+      "sha256": "a24fb605b7efa93a8e6886fb4d2ecf5ebe92f84c78bca65cfd6acd0807eb09b0"
+    },
+    {
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7E.md",
+      "bytes": 437,
+      "sha256": "c383cf87b36df3c3fbced289d60c2af0121bad3bfdc3176bb7857ab2f909cc23"
+    },
+    {
+      "path": "run_v0_6D1_R3_7E_short_shadow.ps1",
+      "bytes": 238,
+      "sha256": "625ed38c1351e5bf1bf333db189916fb7816b5dcd7311fa30032f402df4f7019"
+    },
+    {
+      "path": "run_v0_6D1_R3_7E_smoke.ps1",
+      "bytes": 249,
+      "sha256": "9555e7df70f02c08bf2411fb9b54b76d32d58de1f4ed3f6b683aa3e248f4309f"
+    },
+    {
+      "path": "run_v0_6D1_R3_7E_checks.ps1",
+      "bytes": 303,
+      "sha256": "0ea3a5ab0ad58358428ef8e567f0c93580b7c2cddf781e0e358b65b5ca8b3fc8"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7E/DIAGNOSTIC_SMOKE_210_209.json",
+      "bytes": 69669,
+      "sha256": "bae25b3bcb53cca29917b3ac3620c5632cb79f442b35534ece7a9e9ebe1cf30b"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7E/FORMAL_AUDIT_v0_6D1_R3_7E.json",
+      "bytes": 8352,
+      "sha256": "8c24dc14aa78475d3448be4b33582141c272a6f2f22cb53745bd38037e3b6cde"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_7E/SCIENTIFIC_ENGINE_REGRESSION_v0_6D1_R3_7E.json",
+      "bytes": 669,
+      "sha256": "3bbad465c0254eb8d21e7336cbbcb4c0ee2cb0074ab8b07cfd6c766137280770"
+    }
+  ]
+}

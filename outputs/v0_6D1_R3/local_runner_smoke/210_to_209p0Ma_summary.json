@@ -1,0 +1,1343 @@
+{
+  "stage": "v0.6D1-R3",
+  "config": {
+    "start_age_ma": 210.0,
+    "end_age_ma": 209.0,
+    "dt_years": 125000.0,
+    "snapshot_interval_years": 1000000.0,
+    "topology_switch_age_ma": 195.0,
+    "occupancy_floor": 1e-09,
+    "habitat_floor": 1e-12,
+    "migration_reference_years": 250000.0,
+    "migration_fraction_ceiling": 0.3,
+    "gene_flow_ceiling_per_step": 0.15,
+    "trait_response_timescale_years": 300000.0,
+    "body_mass_scale": 0.35,
+    "mutation_variance_supply_normalized_per_myr": 0.002,
+    "variance_ceiling_normalized": 0.05,
+    "nonlinear_stabilizing_variance_depletion_per_myr_per_q": 0.9876543209876544,
+    "selection_variance_depletion_per_generation": 2e-08,
+    "drift_individual_equivalents_per_population_unit": 250000000.0,
+    "drift_min_effective_size": 500.0,
+    "speciation_check_interval_years": 500000.0,
+    "ordinary_extinction_check_interval_years": 500000.0,
+    "ordinary_extinction_minimum_persistence_years": 2000000.0,
+    "ordinary_extinction_founder_floor_fraction": 0.05,
+    "ordinary_extinction_max_opportunity_ratio": 0.15,
+    "ordinary_extinction_max_range_ratio": 0.1,
+    "ordinary_extinction_max_density_ratio": 0.15,
+    "ordinary_extinction_max_population_ratio_to_episode_start": 0.9,
+    "ordinary_extinction_recovery_reset_factor": 1.25,
+    "ordinary_extinction_minimum_species_age_years": 2000000.0,
+    "minimum_effective_isolation_generations": 50000.0,
+    "minimum_intrinsic_ri": 0.65,
+    "minimum_trait_distance": 1.0,
+    "maximum_effective_exchange_pressure": 0.25,
+    "minimum_branch_population_fraction": 0.05,
+    "minimum_complement_population_fraction": 0.05,
+    "minimum_absolute_population": 0.01,
+    "ri_build_rate_per_generation": 2e-05,
+    "ri_decay_rate_per_generation": 5e-05,
+    "isolation_reconnection_erosion": 1.0,
+    "trait_drive_onset": 0.5,
+    "trait_drive_saturation": 1.5,
+    "seed": 917231,
+    "macrostep_years": 500000.0,
+    "biology_cadence_years": 125000.0,
+    "transport_cadence_years": 62500.0,
+    "persistent_vicariance_fission_enabled": true,
+    "deme_fission_check_interval_years": 500000.0,
+    "deme_fission_min_component_fraction": 0.02,
+    "deme_fission_min_absolute_population": 0.01,
+    "deme_fission_min_root_species_fraction": 0.01,
+    "vicariance_persistence_min_years": 2000000.0,
+    "vicariance_persistence_reset_on_reconnection": true,
+    "habitat_connectivity_power": 0.5,
+    "effective_connectivity_core_threshold": 0.2,
+    "founder_minimum_persistence_years": 1000000.0,
+    "founder_base_minimum_population_units": 0.075,
+    "founder_generation_reference_years": 5.0,
+    "founder_reproduction_reference": 1.0,
+    "founder_minimum_effective_size_proxy": 500.0,
+    "founder_minimum_normalized_additive_variance": 0.005,
+    "founder_minimum_occupied_cells": 10,
+    "founder_maximum_persistent_decline_fraction": 0.5,
+    "founder_reset_on_reconnection": true,
+    "barrier_phase_min": 0.05,
+    "barrier_phase_max": 0.95,
+    "barrier_transition_width_years": 1000000.0,
+    "connectivity_land_support_threshold": 0.25,
+    "connectivity_softness": 0.1
+  },
+  "initial_total_population": 1823.1595076876783,
+  "final_total_population": 1823.6891827753016,
+  "species_count": 120,
+  "component_count": 133,
+  "species_ids": [
+    "APX_001",
+    "APX_002",
+    "APX_003",
+    "APX_004",
+    "APX_005",
+    "APX_006",
+    "APX_007",
+    "APX_008",
+    "APX_009",
+    "APX_010",
+    "APX_011",
+    "APX_012",
+    "BRW_001",
+    "BRW_002",
+    "BRW_003",
+    "BRW_004",
+    "BRW_005",
+    "BRW_006",
+    "BRW_007",
+    "BRW_008",
+    "BRW_009",
+    "BRW_010",
+    "BRW_011",
+    "BRW_012",
+    "BRW_013",
+    "BRW_014",
+    "BRW_015",
+    "BRW_016",
+    "CAR_001",
+    "CAR_002",
+    "CAR_003",
+    "CAR_004",
+    "CAR_005",
+    "CAR_006",
+    "CAR_007",
+    "CAR_008",
+    "CAR_009",
+    "CAR_010",
+    "CAR_011",
+    "CAR_012",
+    "CAR_013",
+    "CAR_014",
+    "CAR_015",
+    "CAR_016",
+    "CAR_017",
+    "CAR_018",
+    "CAR_019",
+    "CAR_020",
+    "CAR_021",
+    "CAR_022",
+    "CAR_023",
+    "CAR_024",
+    "HSG_001",
+    "HSG_002",
+    "HSG_003",
+    "HSG_004",
+    "HSG_005",
+    "HSG_006",
+    "HSG_007",
+    "HSG_008",
+    "HSG_009",
+    "HSG_010",
+    "HSG_011",
+    "HSG_012",
+    "HSG_013",
+    "HSG_014",
+    "HSG_015",
+    "HSG_016",
+    "HSG_017",
+    "HSG_018",
+    "HSG_019",
+    "HSG_020",
+    "HSG_021",
+    "HSG_022",
+    "HSG_023",
+    "HSG_024",
+    "LVF_001",
+    "LVF_002",
+    "LVF_003",
+    "LVF_004",
+    "LVF_005",
+    "LVF_006",
+    "LVF_007",
+    "LVF_008",
+    "LVF_009",
+    "LVF_010",
+    "LVF_011",
+    "LVF_012",
+    "LVF_013",
+    "LVF_014",
+    "LVF_015",
+    "LVF_016",
+    "LVF_017",
+    "LVF_018",
+    "LVF_019",
+    "LVF_020",
+    "RPT_001",
+    "RPT_002",
+    "RPT_003",
+    "RPT_004",
+    "RPT_005",
+    "RPT_006",
+    "RPT_007",
+    "RPT_008",
+    "RPT_009",
+    "RPT_010",
+    "RPT_011",
+    "RPT_012",
+    "RPT_013",
+    "RPT_014",
+    "RPT_015",
+    "RPT_016",
+    "RPT_017",
+    "RPT_018",
+    "RPT_019",
+    "RPT_020",
+    "RPT_021",
+    "RPT_022",
+    "RPT_023",
+    "RPT_024"
+  ],
+  "event_counts": {},
+  "events": [],
+  "snapshots": [
+    {
+      "age_ma": 210.0,
+      "elapsed_myr": 0.0,
+      "species_richness": 120,
+      "component_count": 133,
+      "total_population": 1823.1595076876783,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 0,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 0
+    },
+    {
+      "age_ma": 209.0,
+      "elapsed_myr": 1.0,
+      "species_richness": 120,
+      "component_count": 133,
+      "total_population": 1823.6891827753016,
+      "median_normalized_va": 0.00834459358587214,
+      "max_intrinsic_ri": 0.0,
+      "max_isolation_clock_generations": 290775.9477809907,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 0,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 0
+    }
+  ],
+  "registry": [
+    {
+      "species_id": "APX_001",
+      "parent_species_id": null,
+      "root_species_id": "APX_001",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_002",
+      "parent_species_id": null,
+      "root_species_id": "APX_002",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_003",
+      "parent_species_id": null,
+      "root_species_id": "APX_003",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_004",
+      "parent_species_id": null,
+      "root_species_id": "APX_004",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_005",
+      "parent_species_id": null,
+      "root_species_id": "APX_005",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_006",
+      "parent_species_id": null,
+      "root_species_id": "APX_006",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_007",
+      "parent_species_id": null,
+      "root_species_id": "APX_007",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_008",
+      "parent_species_id": null,
+      "root_species_id": "APX_008",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_009",
+      "parent_species_id": null,
+      "root_species_id": "APX_009",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_010",
+      "parent_species_id": null,
+      "root_species_id": "APX_010",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_011",
+      "parent_species_id": null,
+      "root_species_id": "APX_011",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "APX_012",
+      "parent_species_id": null,
+      "root_species_id": "APX_012",
+      "guild_id": 6,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_001",
+      "parent_species_id": null,
+      "root_species_id": "BRW_001",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_002",
+      "parent_species_id": null,
+      "root_species_id": "BRW_002",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_003",
+      "parent_species_id": null,
+      "root_species_id": "BRW_003",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_004",
+      "parent_species_id": null,
+      "root_species_id": "BRW_004",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_005",
+      "parent_species_id": null,
+      "root_species_id": "BRW_005",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_006",
+      "parent_species_id": null,
+      "root_species_id": "BRW_006",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_007",
+      "parent_species_id": null,
+      "root_species_id": "BRW_007",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_008",
+      "parent_species_id": null,
+      "root_species_id": "BRW_008",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_009",
+      "parent_species_id": null,
+      "root_species_id": "BRW_009",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_010",
+      "parent_species_id": null,
+      "root_species_id": "BRW_010",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_011",
+      "parent_species_id": null,
+      "root_species_id": "BRW_011",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_012",
+      "parent_species_id": null,
+      "root_species_id": "BRW_012",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_013",
+      "parent_species_id": null,
+      "root_species_id": "BRW_013",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_014",
+      "parent_species_id": null,
+      "root_species_id": "BRW_014",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_015",
+      "parent_species_id": null,
+      "root_species_id": "BRW_015",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "BRW_016",
+      "parent_species_id": null,
+      "root_species_id": "BRW_016",
+      "guild_id": 2,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_001",
+      "parent_species_id": null,
+      "root_species_id": "CAR_001",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_002",
+      "parent_species_id": null,
+      "root_species_id": "CAR_002",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_003",
+      "parent_species_id": null,
+      "root_species_id": "CAR_003",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_004",
+      "parent_species_id": null,
+      "root_species_id": "CAR_004",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_005",
+      "parent_species_id": null,
+      "root_species_id": "CAR_005",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_006",
+      "parent_species_id": null,
+      "root_species_id": "CAR_006",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_007",
+      "parent_species_id": null,
+      "root_species_id": "CAR_007",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_008",
+      "parent_species_id": null,
+      "root_species_id": "CAR_008",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_009",
+      "parent_species_id": null,
+      "root_species_id": "CAR_009",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_010",
+      "parent_species_id": null,
+      "root_species_id": "CAR_010",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_011",
+      "parent_species_id": null,
+      "root_species_id": "CAR_011",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_012",
+      "parent_species_id": null,
+      "root_species_id": "CAR_012",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_013",
+      "parent_species_id": null,
+      "root_species_id": "CAR_013",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_014",
+      "parent_species_id": null,
+      "root_species_id": "CAR_014",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_015",
+      "parent_species_id": null,
+      "root_species_id": "CAR_015",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_016",
+      "parent_species_id": null,
+      "root_species_id": "CAR_016",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_017",
+      "parent_species_id": null,
+      "root_species_id": "CAR_017",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_018",
+      "parent_species_id": null,
+      "root_species_id": "CAR_018",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_019",
+      "parent_species_id": null,
+      "root_species_id": "CAR_019",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_020",
+      "parent_species_id": null,
+      "root_species_id": "CAR_020",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_021",
+      "parent_species_id": null,
+      "root_species_id": "CAR_021",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_022",
+      "parent_species_id": null,
+      "root_species_id": "CAR_022",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_023",
+      "parent_species_id": null,
+      "root_species_id": "CAR_023",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "CAR_024",
+      "parent_species_id": null,
+      "root_species_id": "CAR_024",
+      "guild_id": 5,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_001",
+      "parent_species_id": null,
+      "root_species_id": "HSG_001",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_002",
+      "parent_species_id": null,
+      "root_species_id": "HSG_002",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_003",
+      "parent_species_id": null,
+      "root_species_id": "HSG_003",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_004",
+      "parent_species_id": null,
+      "root_species_id": "HSG_004",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_005",
+      "parent_species_id": null,
+      "root_species_id": "HSG_005",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_006",
+      "parent_species_id": null,
+      "root_species_id": "HSG_006",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_007",
+      "parent_species_id": null,
+      "root_species_id": "HSG_007",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_008",
+      "parent_species_id": null,
+      "root_species_id": "HSG_008",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_009",
+      "parent_species_id": null,
+      "root_species_id": "HSG_009",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_010",
+      "parent_species_id": null,
+      "root_species_id": "HSG_010",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_011",
+      "parent_species_id": null,
+      "root_species_id": "HSG_011",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_012",
+      "parent_species_id": null,
+      "root_species_id": "HSG_012",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_013",
+      "parent_species_id": null,
+      "root_species_id": "HSG_013",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_014",
+      "parent_species_id": null,
+      "root_species_id": "HSG_014",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_015",
+      "parent_species_id": null,
+      "root_species_id": "HSG_015",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_016",
+      "parent_species_id": null,
+      "root_species_id": "HSG_016",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_017",
+      "parent_species_id": null,
+      "root_species_id": "HSG_017",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_018",
+      "parent_species_id": null,
+      "root_species_id": "HSG_018",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_019",
+      "parent_species_id": null,
+      "root_species_id": "HSG_019",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_020",
+      "parent_species_id": null,
+      "root_species_id": "HSG_020",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_021",
+      "parent_species_id": null,
+      "root_species_id": "HSG_021",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_022",
+      "parent_species_id": null,
+      "root_species_id": "HSG_022",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_023",
+      "parent_species_id": null,
+      "root_species_id": "HSG_023",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "HSG_024",
+      "parent_species_id": null,
+      "root_species_id": "HSG_024",
+      "guild_id": 1,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_001",
+      "parent_species_id": null,
+      "root_species_id": "LVF_001",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_002",
+      "parent_species_id": null,
+      "root_species_id": "LVF_002",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_003",
+      "parent_species_id": null,
+      "root_species_id": "LVF_003",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_004",
+      "parent_species_id": null,
+      "root_species_id": "LVF_004",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_005",
+      "parent_species_id": null,
+      "root_species_id": "LVF_005",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_006",
+      "parent_species_id": null,
+      "root_species_id": "LVF_006",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_007",
+      "parent_species_id": null,
+      "root_species_id": "LVF_007",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_008",
+      "parent_species_id": null,
+      "root_species_id": "LVF_008",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_009",
+      "parent_species_id": null,
+      "root_species_id": "LVF_009",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_010",
+      "parent_species_id": null,
+      "root_species_id": "LVF_010",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_011",
+      "parent_species_id": null,
+      "root_species_id": "LVF_011",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_012",
+      "parent_species_id": null,
+      "root_species_id": "LVF_012",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_013",
+      "parent_species_id": null,
+      "root_species_id": "LVF_013",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_014",
+      "parent_species_id": null,
+      "root_species_id": "LVF_014",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_015",
+      "parent_species_id": null,
+      "root_species_id": "LVF_015",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_016",
+      "parent_species_id": null,
+      "root_species_id": "LVF_016",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_017",
+      "parent_species_id": null,
+      "root_species_id": "LVF_017",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_018",
+      "parent_species_id": null,
+      "root_species_id": "LVF_018",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_019",
+      "parent_species_id": null,
+      "root_species_id": "LVF_019",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "LVF_020",
+      "parent_species_id": null,
+      "root_species_id": "LVF_020",
+      "guild_id": 3,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_001",
+      "parent_species_id": null,
+      "root_species_id": "RPT_001",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_002",
+      "parent_species_id": null,
+      "root_species_id": "RPT_002",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_003",
+      "parent_species_id": null,
+      "root_species_id": "RPT_003",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_004",
+      "parent_species_id": null,
+      "root_species_id": "RPT_004",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_005",
+      "parent_species_id": null,
+      "root_species_id": "RPT_005",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_006",
+      "parent_species_id": null,
+      "root_species_id": "RPT_006",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_007",
+      "parent_species_id": null,
+      "root_species_id": "RPT_007",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_008",
+      "parent_species_id": null,
+      "root_species_id": "RPT_008",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_009",
+      "parent_species_id": null,
+      "root_species_id": "RPT_009",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_010",
+      "parent_species_id": null,
+      "root_species_id": "RPT_010",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_011",
+      "parent_species_id": null,
+      "root_species_id": "RPT_011",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_012",
+      "parent_species_id": null,
+      "root_species_id": "RPT_012",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_013",
+      "parent_species_id": null,
+      "root_species_id": "RPT_013",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_014",
+      "parent_species_id": null,
+      "root_species_id": "RPT_014",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_015",
+      "parent_species_id": null,
+      "root_species_id": "RPT_015",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_016",
+      "parent_species_id": null,
+      "root_species_id": "RPT_016",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_017",
+      "parent_species_id": null,
+      "root_species_id": "RPT_017",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_018",
+      "parent_species_id": null,
+      "root_species_id": "RPT_018",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_019",
+      "parent_species_id": null,
+      "root_species_id": "RPT_019",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_020",
+      "parent_species_id": null,
+      "root_species_id": "RPT_020",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_021",
+      "parent_species_id": null,
+      "root_species_id": "RPT_021",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_022",
+      "parent_species_id": null,
+      "root_species_id": "RPT_022",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_023",
+      "parent_species_id": null,
+      "root_species_id": "RPT_023",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    },
+    {
+      "species_id": "RPT_024",
+      "parent_species_id": null,
+      "root_species_id": "RPT_024",
+      "guild_id": 4,
+      "birth_elapsed_year": 0.0,
+      "birth_age_ma": null,
+      "semantic_status": "REBASED_210MA_ANCESTRAL_SPECIES"
+    }
+  ],
+  "gate_diagnostics": {
+    "reproductively_disconnected_species_count": 0,
+    "structural_speciation_ready_species_count": 0
+  },
+  "gene_flow_closure": {
+    "first_moment_conservation_max_abs": 7.275957614183426e-12,
+    "second_moment_conservation_max_abs": 1.1641532182693481e-10
+  },
+  "topology_remap_mass": 0.0,
+  "barrier_history": {
+    "bracket_count": 10,
+    "event_cluster_count": 801,
+    "transition_cells_counted_across_brackets": 12366
+  },
+  "authority": {
+    "paleogeographic_event_provider": "D3.2C_SOURCE_REUSED_BYTE_FOR_BYTE_AND_GENERALIZED_OVER_ALL_A1_BRACKETS",
+    "paleogeographic_source_sha256": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730",
+    "barrier_effective_connectivity": "D3.2B_PERMEABILITY_X_HABITAT_POWER_SEMANTICS",
+    "persistent_vicariance_fission_enabled": true,
+    "speciation_structural_gate": "D3.0C_SEALED_SOURCE_REUSED",
+    "ordinary_extinction": "D3.2D_PERSISTENT_DETERMINISTIC_NONVIABILITY_SEMANTICS",
+    "global_speciation_rate": null,
+    "global_extinction_rate": null,
+    "Deep_biological_coupling": false
+  },
+  "wall_seconds": 9.60973858833313
+}

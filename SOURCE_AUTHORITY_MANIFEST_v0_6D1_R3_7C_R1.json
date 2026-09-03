@@ -1,0 +1,143 @@
+{
+  "authority_note": "R3.7C-R1 repairs only the NEMO directional-selection oracle. Parent R3.7C source/test are restored byte-for-byte. No WorldSim production authority or K_eff calibration is granted before external repaired NEMO evidence passes the efficacy gate.",
+  "external_source_binding": [
+    {
+      "source": "NEMO 2.4.2 LCEcomposite.cc/h",
+      "url": "https://github.com/ecoevocode/nemo-release",
+      "verified_semantics": [
+        "breed_disperse performs WF generation transition",
+        "breed_selection_disperse combines breeding, dispersal and selection",
+        "composite uses inherited breed_disperse parameter family"
+      ]
+    },
+    {
+      "source": "NEMO 2.4.2 LCEselection.cc",
+      "url": "https://github.com/ecoevocode/nemo-release/blob/master/src/LCEselection.cc",
+      "verified_semantics": [
+        "standalone viability selection acts on offspring",
+        "Gaussian fitness surface",
+        "absolute fitness model supported"
+      ]
+    }
+  ],
+  "governance": {
+    "automatic_nemo_calibration_allowed": false,
+    "canonical_write_allowed": false,
+    "ceiling_change_authorized": false,
+    "mu_b_change_authorized": false,
+    "production_keff_authorized": false,
+    "production_runtime_binding_allowed": false
+  },
+  "invalid_parent_evidence": {
+    "byte_identical_pairs": 32,
+    "calibration_authority": false,
+    "chain_count": 16,
+    "path": "local_runs/v0_6D1_R3_7C_SELECTION",
+    "selected_neutral_qfreq_checkpoint_pairs": 32
+  },
+  "new_r3_7C_R1_sources": [
+    {
+      "bytes": 9393,
+      "path": "src/arcana_worldsim/scientific_engines/nemo242_r37c_r1.py",
+      "sha256": "de4e5968c5de4f9b1eeac2cf6b31b25ce2edc0e05b534f80e934dce8014db4f7"
+    },
+    {
+      "bytes": 12355,
+      "path": "scripts/run_nemo_r37c_r1_selection_chain.py",
+      "sha256": "233e38de7e8dafb5c7df13798a549db8d88ecfdb23a2b24e3994fba45ce80dea"
+    },
+    {
+      "bytes": 8291,
+      "path": "scripts/formal_audit_v0_6D1_R3_7C_R1.py",
+      "sha256": "a0e09f6960e5bdb9bc9343ac41bb94c7036d511332ec9a62aea85846702951e0"
+    },
+    {
+      "bytes": 5723,
+      "path": "tests/test_r37c_r1_composite_selection_repair.py",
+      "sha256": "ba9f297f7145eec446efe2b5055be4b45b7be093553b89b3b33e97bac6685379"
+    },
+    {
+      "bytes": 1407,
+      "path": "configs/world1_nemo_directional_selection_oracle_v0_6D1_R3_7C_R1.json",
+      "sha256": "de51631beacb1b8becde309525471c3ae4ba98739e9c9d419616084097048c04"
+    },
+    {
+      "bytes": 1019,
+      "path": "run_v0_6D1_R3_7C_R1_nemo_selection_wsl.ps1",
+      "sha256": "92c7067d86cce610f332052797cfde647f679e0dd4ba7c39aa43bd8ed390d2b2"
+    },
+    {
+      "bytes": 611,
+      "path": "run_v0_6D1_R3_7C_R1_checks.ps1",
+      "sha256": "8fc3e76d107a83d2b7c0a7e77f32bc00bd0e1f541e83c8ce8a58455a0790dff8"
+    },
+    {
+      "bytes": 2845,
+      "path": "NEMO_COMPOSITE_SELECTION_LIFECYCLE_REPAIR_v0_6D1_R3_7C_R1.md",
+      "sha256": "5688bc04f99669bf87bab2d6643c6b6ae63fd8348d8bcc31ce6f21e51dbd5106"
+    },
+    {
+      "bytes": 830,
+      "path": "NEMO_SELECTION_SOURCE_BINDING_AUDIT_v0_6D1_R3_7C_R1.md",
+      "sha256": "ce927b060dd104ff8bd1bce043fff9173da6cda23058a5ce2e507c586e2031b0"
+    },
+    {
+      "bytes": 1498,
+      "path": "R3_7C_INVALID_SELECTION_EVIDENCE_AUDIT_v0_6D1_R3_7C_R1.md",
+      "sha256": "2815e51f9b1b540a90ddb972d51013474eede500edd7aa005a2cdbc4aa0388d4"
+    },
+    {
+      "bytes": 1126,
+      "path": "README_R3_7C_R1.md",
+      "sha256": "203c51501f65b96557eabcea074c59acc7187c320cf66376f7de27fa98982de6"
+    },
+    {
+      "bytes": 1178,
+      "path": "V0_6D1_R3_7C_R1_STATUS.md",
+      "sha256": "ca127f8c69a98ea924680f05edad9ff35a4c6d6cddb44e8e7562e68c9192fccb"
+    },
+    {
+      "bytes": 979,
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_7C_R1.md",
+      "sha256": "790bca04f29bb8b7badf7dedc2d2f2a812fbdb60e3bfd4a76a785f5cf64f35eb"
+    },
+    {
+      "bytes": 10091,
+      "path": "outputs/v0_6D1_R3_7C_R1/R3_7C_INVALID_SELECTION_EVIDENCE_AUDIT.json",
+      "sha256": "9c0ec2774f3258573967e559c940ff243cd66c56d10d8fdae1a47b746e0eef24"
+    },
+    {
+      "bytes": 5459,
+      "path": "outputs/v0_6D1_R3_7C_R1/FORMAL_AUDIT_v0_6D1_R3_7C_R1.json",
+      "sha256": "d4ed87af3984ed13d9a56451563fd191f44cee263f6641ee55c2f2504522cbee"
+    },
+    {
+      "bytes": 413,
+      "path": "outputs/v0_6D1_R3_7C_R1/SCIENTIFIC_ENGINE_REGRESSION_v0_6D1_R3_7C_R1.json",
+      "sha256": "ad297af4c13fd53dc59f744c0f23098d20604fee21a2e5b7ada57ccd9bb828cb"
+    },
+    {
+      "bytes": 4000,
+      "path": "outputs/v0_6D1_R3_7C_R1/LOCAL_RESULTS_INVENTORY_v0_6D1_R3_7C_R1.json",
+      "sha256": "fa8b4208092325ed3f9a52e564a3801bc6e220597eaba2fc86f63d1e37df53a9"
+    }
+  ],
+  "parent_manifests": [
+    {
+      "bytes": 135205,
+      "path": "PACKAGE_MANIFEST_v0_6D1_R3_7C.json",
+      "sha256": "4265451102718144efef601c3d5c6a9519280aa47de0dc5883e2b78db227e33b"
+    },
+    {
+      "bytes": 4801,
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_7C.json",
+      "sha256": "dc13fa8ccb222f7bc234cc6c1814caf5a6d16e8bfd7c8159ea4c99b7bb7966f1"
+    }
+  ],
+  "parent_restoration": {
+    "src/arcana_worldsim/scientific_engines/nemo242_r37c.py": "a08ab1082c9d98e0c9f23be3d79440601e266b54b7cb9bb99a73c3fd1a4f1f80",
+    "tests/test_r37c_directional_selection_oracle.py": "96304a28f03feb96f80f353d2cfada0ffdfc0d5bc71f361e9fa1b7fdb160f836"
+  },
+  "parent_stage": "v0.6D1-R3.7C",
+  "stage": "v0.6D1-R3.7C-R1"
+}

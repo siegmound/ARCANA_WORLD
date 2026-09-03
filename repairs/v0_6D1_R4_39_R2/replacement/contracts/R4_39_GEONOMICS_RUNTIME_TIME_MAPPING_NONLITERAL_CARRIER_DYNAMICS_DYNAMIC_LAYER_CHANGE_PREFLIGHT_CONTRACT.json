@@ -1,0 +1,43 @@
+{
+  "stage": "v0.6D1-R4.39",
+  "title": "Geonomics Runtime Time Mapping, Nonliteral Carrier Dynamics & Dynamic Layer Change Preflight",
+  "parent": "R4.38 SEALED",
+  "time_contract": [
+    "canonical state index 0 is the installed unrun state at model t=-1",
+    "canonical state index i>0 maps to Geonomics main timestep i-1",
+    "integer model timesteps are ordinal transition labels",
+    "variable physical durations are preserved explicitly for J18/J21",
+    "no generation-time or physical rate is invented"
+  ],
+  "j21_dynamic_contract": [
+    "R4.37 20 ka static evidence remains 149 native + 2 sidecars and is preserved historically",
+    "SEALED R3.33 source semantics govern full-trajectory dynamic representability",
+    "precipitation_factor and npp_factor are direct relative-book canonical fields without a sealed [0,1] output bound",
+    "dynamic Geonomics authority therefore uses 147 native fields + 4 canonical sidecars",
+    "the four dynamic sidecars are temperature_anomaly_c, precipitation_factor, npp_factor, sea_level_anomaly_m",
+    "149x9 initial static classification is not reused as dynamic-domain authority",
+    "147x9=1323 canonical dynamic native anchor states must remain finite in [0,1]",
+    "147x8=1176 future targets are compiled as exact one-step jump events",
+    "two R4.37-bound relative-factor layers are removed from dynamic params before model construction",
+    "start_t=end_t and n_steps=1 forbids intermediate interpolation",
+    "all 1176 compiled target rasters are compared back to canonical arrays",
+    "no scaling, clipping, or result-selected transform is authorized",
+    "the changer is constructed but never executed"
+  ],
+  "carrier_dynamics_contract": [
+    "nonliteral carriers are connectivity representations, not literal population",
+    "population_proxy is not an Individual count",
+    "autonomous movement remains unauthorized",
+    "autonomous population dynamics remain unauthorized",
+    "autonomous ageing interpretation remains unauthorized",
+    "default Geonomics main queue remains scientifically unauthorized"
+  ],
+  "nonclaims": [
+    "R4.39 does not run or walk a model",
+    "R4.39 does not claim a physical rate per Geonomics timestep",
+    "R4.39 does not turn physical-unit sidecars into normalized Layers",
+    "R4.39 does not close nonliteral carrier dynamics authority",
+    "R4.39 does not authorize the production execution queue"
+  ],
+  "next_action": "BUILD_R440_GEONOMICS_DOMAIN_SPECIFIC_CARRIER_DYNAMICS_AUTHORITY_AND_EXECUTION_QUEUE_PREFLIGHT"
+}

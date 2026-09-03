@@ -1,0 +1,47 @@
+{
+  "schema": "ARCANA_R311_SOURCE_AUTHORITY_MANIFEST_V1",
+  "stage": "v0.6D1-R3.11",
+  "state": "CANDIDATE_PRE_LONG_RUN",
+  "parent": {
+    "stage": "v0.6D1-R3.10_SEALED",
+    "sealed_zip_sha256": "e7b50164205a26685ee88450a2f72d7690f8d80db9c7979b9dc3e9f721bfcaf3",
+    "checkpoint_json_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+    "checkpoint_npz_sha256": "d31ae5aaeb53422809e173c20308e69af334ef8d2d535484ae51141b9dff58a8"
+  },
+  "production_authorities": {
+    "R3_7I_promotion_seal_sha256": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d",
+    "D3_3A_additive_variance_source_sha256": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21",
+    "r38_restartable_runtime_source_sha256": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698"
+  },
+  "historical_window_evidence": {
+    "old_D3_1_source_path": "references/v0_6D1_R2_1/d3_sealed/adaptive_radiation_v0_6_3D3_1A.py",
+    "old_D3_1_source_sha256": "f58b19db9846e88deedc9ab9771ac4aebd685da07c2137e9c4e8128467756187",
+    "use": "temporal scope +0.5 to +5 Myr only; old solver not production authority"
+  },
+  "r311_sources": {
+    "runtime": {
+      "path": "src/arcana_worldsim/scientific_engines/r311_postcha1_recovery.py",
+      "sha256": "22a4aa1e4592a5bb9b1a05187ff56d75eb9f692864bf9063fec16e6fcb0da045"
+    },
+    "runner": {
+      "path": "scripts/run_v0_6D1_R3_11_postcha1_recovery.py",
+      "sha256": "81d857abc529f2e846d2d56b113d9cdee6ca3432c7f26c6337fd33578a2b0e5f"
+    },
+    "tests": {
+      "path": "tests/test_r311_postcha1_recovery.py",
+      "sha256": "488519acbb6af734255330c2342846ebaa32419681b1b6b66902ebf8928a3468"
+    },
+    "powershell": {
+      "path": "run_v0_6D1_R3_11_postcha1_recovery.ps1",
+      "sha256": "019ff7c40a41bfd7e0f6242be6bbe7ee08a9380875b00a0bbab420d8667e9ad8"
+    }
+  },
+  "governance": {
+    "deep_biological_coupling": false,
+    "cha1_reapplication_authorized": false,
+    "post_cha1_radiation_multiplier_authorized": false,
+    "old_d31_solver_production_authorized": false,
+    "scientific_parameter_retuning_authorized": false,
+    "canonical_long_run_required_before_seal": true
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "audit": "INTEGRATED_POPULATION_MOBILITY_SETTLEMENT_AND_CULTURAL_PRECONDITIONS",
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_r328_sealed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r323_functional_parent_sealed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_cohort_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "member_count_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "time_window_50ka_to_0",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "time_subset_parent_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        2,
+        175,
+        10
+      ],
+      "name": "community_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_indices_finite",
+      "pass": true
+    },
+    {
+      "detail": [
+        0.0,
+        1.0
+      ],
+      "name": "bounded_indices",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        2,
+        11,
+        6,
+        7
+      ],
+      "name": "spatial_anchor_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "spatial_anchor_parent_positions_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "functional_priors_from_r323_only",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_literal_census_materialized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_literal_camp_headcounts_materialized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "preconditions_not_culture_identity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_unique_human_identity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parents_immutable",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "cha2_inherited_from_direct_parent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sensitivity_count",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "outcomes_two_unique",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "name": "cohort_subset_parent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_forced_single_lineage",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "evidence_multisource",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 24,
+  "checks_total": 24,
+  "stage": "v0.6D1-R3.29",
+  "status": "PASS_R329_POPULATION_MOBILITY_SETTLEMENT_AND_CULTURAL_PRECONDITIONS_CANDIDATE",
+  "summary": {
+    "absolute_census_materialized": false,
+    "candidate_lineages": 2,
+    "community_precondition_cohort": [
+      "RPT_010_D02",
+      "RPT_009_D02"
+    ],
+    "cultural_identity_materialized": false,
+    "deep_biological_coupling": false,
+    "ensemble_members": 32,
+    "robust_priority_cohort": [
+      "RPT_010_D02"
+    ],
+    "time_states": 175
+  }
+}

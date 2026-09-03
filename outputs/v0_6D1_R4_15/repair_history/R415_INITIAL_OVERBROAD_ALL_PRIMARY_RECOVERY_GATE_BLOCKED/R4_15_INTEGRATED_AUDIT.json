@@ -1,0 +1,128 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_14_SEAL\\R4_14_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r414_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R414_MULTI_ENGINE_EVIDENCE_GAP_CLOSURE_AND_TARGETED_ADAPTER_ENHANCEMENT_PLAN_SEALED",
+      "name": "parent_r414_sealed",
+      "pass": true
+    },
+    {
+      "detail": 71,
+      "name": "parent_gap_count_71",
+      "pass": true
+    },
+    {
+      "detail": 4,
+      "name": "exact_p0_count_4",
+      "pass": true
+    },
+    {
+      "detail": 59,
+      "name": "exact_p1_count_59",
+      "pass": true
+    },
+    {
+      "detail": "R414_GAP_CLOSURE_PLAN_FROZEN",
+      "name": "parent_plan_frozen",
+      "pass": true
+    },
+    {
+      "detail": 4,
+      "name": "parent_retained_candidate_count_4",
+      "pass": true
+    },
+    {
+      "detail": "FROZEN_PRE_RECOVERY_EXECUTION",
+      "name": "policy_frozen",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_execution_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    },
+    {
+      "detail": 4,
+      "name": "all_four_p0_cells_attempted",
+      "pass": true
+    },
+    {
+      "detail": {
+        "pass": 1,
+        "total": 4
+      },
+      "name": "all_four_p0_have_retained_recovery_evidence",
+      "pass": false
+    },
+    {
+      "detail": null,
+      "name": "all_recovered_metrics_nonadjudicative_until_r416",
+      "pass": true
+    },
+    {
+      "detail": 59,
+      "name": "all_59_p1_cells_audited",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_p1_targets_nonadjudicative_until_explicit_transform",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_engine_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_target_leakage_rule",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "proxy_not_promoted",
+      "pass": true
+    }
+  ],
+  "checks_failed": 1,
+  "checks_passed": 21,
+  "checks_total": 22,
+  "engine_execution_performed": false,
+  "next_action": "BUILD_R416_RECOVERED_METRIC_PROMOTION_GATE_AND_ARCANA_TARGET_SEMANTIC_PROTOCOL_FORMALIZATION",
+  "p0_recovered_cell_count": 1,
+  "p1_target_source_candidate_cell_count": 47,
+  "parent_gap_count": 71,
+  "stage": "v0.6D1-R4.15",
+  "status": "BLOCKED_R415_PARENT_RECOVERY_OR_TARGET_MATERIALIZATION_FAILURE"
+}

@@ -1,0 +1,70 @@
+{
+  "active_contact_state_count": 141,
+  "automatic_scientific_pass_fail_from_ancestry_value": false,
+  "checks": {
+    "p1_ancestry_fraction_bounded": true,
+    "p1_final_haplotype_count_exact": true,
+    "p2_ancestry_fraction_bounded": true,
+    "p2_final_haplotype_count_exact": true,
+    "sequence_length_exact": true,
+    "tree_sequence_nonempty": true
+  },
+  "failed": [],
+  "interpretation_semantics": "TRUE_LOCAL_ANCESTRY_FROM_REMEMBERED_FOUNDER_ROOTS_UNDER_STANDARDIZED_SLIM_CHALLENGE_NOT_REALIZED_HISTORICAL_ADMIXTURE",
+  "migration_rate": 0.0,
+  "p1_from_p2": {
+    "donor_ancestry_fraction_haplotype_minmax": [
+      0.0,
+      0.0
+    ],
+    "donor_ancestry_fraction_mean": 0.0,
+    "donor_slim_population_id": 2,
+    "donor_tract_count_total": 0,
+    "donor_tract_length_max_bp": 0.0,
+    "donor_tract_length_mean_bp": 0.0,
+    "final_recipient_haplotype_count": 400,
+    "recipient_haplotype_count": 400,
+    "recipient_haplotype_with_any_donor_ancestry_fraction": 0.0,
+    "recipient_slim_population_id": 1,
+    "recipient_tskit_population_index": 1,
+    "root_population_observation_counts": {
+      "1": 26000
+    }
+  },
+  "p2_from_p1": {
+    "donor_ancestry_fraction_haplotype_minmax": [
+      0.0,
+      0.0
+    ],
+    "donor_ancestry_fraction_mean": 0.0,
+    "donor_slim_population_id": 1,
+    "donor_tract_count_total": 0,
+    "donor_tract_length_max_bp": 0.0,
+    "donor_tract_length_mean_bp": 0.0,
+    "final_recipient_haplotype_count": 400,
+    "recipient_haplotype_count": 400,
+    "recipient_haplotype_with_any_donor_ancestry_fraction": 0.0,
+    "recipient_slim_population_id": 2,
+    "recipient_tskit_population_index": 2,
+    "root_population_observation_counts": {
+      "2": 26000
+    }
+  },
+  "schedule_id": "SCH001",
+  "seed": 560602,
+  "stage": "v0.6D1-R5.6",
+  "status": "PASS_R56_ANCESTRY_RESULT",
+  "stdout_tail": "// Initial random seed:\n560602\n\n// RunInitializeCallbacks():\ninitializeTreeSeq();\ninitializeMutationRate(0);\ninitializeMutationType(1, 0.5, \"f\", 0);\ninitializeGenomicElementType(1, m1, 1);\ninitializeGenomicElement(g1, 0, 999999);\ninitializeRecombinationRate(1e-08);\n\n// Starting run at tick <start>:\n1 \n\nR56_FINAL_P1=200\nR56_FINAL_P2=200\nR56_ACTIVE_STATES=141\n",
+  "tree_sequence": {
+    "edges": 1660,
+    "individuals": 800,
+    "mutations": 0,
+    "nodes": 2295,
+    "sequence_length": 1000000.0,
+    "slim_cycle": 142,
+    "slim_tick": 142,
+    "tree_sha256": "3b9544e4f5fe71fd45a50fa5311d42485cbcf4b9a396e052b83ffb4f92136283",
+    "trees": 65
+  },
+  "variant": "NO_FLOW"
+}

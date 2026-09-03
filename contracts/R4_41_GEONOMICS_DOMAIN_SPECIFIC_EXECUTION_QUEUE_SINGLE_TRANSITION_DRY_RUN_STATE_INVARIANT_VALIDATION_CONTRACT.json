@@ -1,0 +1,41 @@
+{
+  "stage": "v0.6D1-R4.41",
+  "title": "Geonomics Domain-Specific Execution Queue Single-Transition Dry Run & State Invariant Validation",
+  "required_transition_order": [
+    "construct disposable governed model with exact frozen seed",
+    "install exact canonical initial state",
+    "increment model/community/species ordinal clocks only",
+    "apply exact next canonical carrier or native-layer state",
+    "rebuild only required derived spatial caches for carrier replay",
+    "validate invariants",
+    "discard model"
+  ],
+  "J14_J18_invariants": [
+    "target coordinates exactly equal canonical next anchor",
+    "carrier count equals active canonical deme count, not population_proxy",
+    "orig_comm remains exact initial anchor",
+    "birth/death logs remain empty",
+    "ages remain zero",
+    "RNG unchanged during transition",
+    "landscape and K unchanged",
+    "clock is exactly -1 -> 0"
+  ],
+  "J21_invariants": [
+    "147 initial native layers exact",
+    "147 next native layers exact after replay",
+    "4 sidecars absent from Geonomics layers",
+    "construction-support raster unchanged",
+    "carrier coordinates unchanged",
+    "K unchanged",
+    "LandscapeChanger absent",
+    "RNG unchanged during transition",
+    "clock is exactly -1 -> 0"
+  ],
+  "nonclaims": [
+    "single transition dry-run is not scientific evidence",
+    "production queue is not authorized",
+    "Geonomics is not allowed to invent between-anchor dynamics",
+    "canonical state is not modified"
+  ],
+  "next_action": "BUILD_R442_GEONOMICS_MULTI_TRANSITION_BOUNDED_REPLAY_AND_PRODUCTION_EXECUTION_QUEUE_AUTHORIZATION_PREFLIGHT"
+}

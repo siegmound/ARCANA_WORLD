@@ -1,0 +1,25 @@
+{
+  "stage": "v0.6D1-R4.55",
+  "scope": {
+    "non_geonomics_jobs": 20,
+    "frozen_seeds_per_job": 4,
+    "scientific_streams": 80,
+    "metrics_per_stream": 2,
+    "metric_records": 160
+  },
+  "dispatch": {
+    "Madingley": "R4.3",
+    "RangeShifter": "R4.3",
+    "NEMO": "R4.21/R4.22",
+    "SLiM": "R4.21/R4.22",
+    "CDMetaPOP": "R4.21/R4.22 + R4.7 profile"
+  },
+  "governance": {
+    "majority_vote": false,
+    "numeric_acceptance_thresholds": 0,
+    "automatic_scientific_pass_fail_from_values": false,
+    "external_engine_defines_arcana_target": false,
+    "canonical_write": false,
+    "readjudication": false
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "authorization_scope": {
+    "J14": "exact anchor carrier replay; no autonomous dynamics",
+    "J18": "exact anchor carrier replay; no autonomous dynamics",
+    "J21": "exact native-layer anchor replay; four sidecars external"
+  },
+  "authorized_queue": "ARCANA_EXACT_CANONICAL_ANCHOR_REPLAY_QUEUE",
+  "bounded_validation_scope": {
+    "J14": "first frozen branch, all 140 transitions, four seeds",
+    "J18": "first frozen branch, all 14 transitions, four seeds",
+    "J21": "all 8 transitions, all 147 native layers, four seeds"
+  },
+  "checks": {
+    "j14_full_sequence_bounded_replay": false,
+    "j18_full_sequence_bounded_replay": false,
+    "j21_full_sequence_bounded_replay": false,
+    "no_default_walk": true,
+    "zero_autonomous_ageing": true,
+    "zero_autonomous_movement": true,
+    "zero_autonomous_population_dynamics": true
+  },
+  "checks_passed": 4,
+  "checks_total": 7,
+  "default_geonomics_queue_authorized": false,
+  "geonomics_execution_ready": false,
+  "production_execution_queue_authorized": false,
+  "reason_not_ready": "SCIENTIFIC_READOUT_METRICS_AND_ADJUDICATION_SCHEMA_NOT_YET_FROZEN",
+  "scientific_execution_authorized": false,
+  "scientific_readout_authority_closed": false,
+  "stage": "v0.6D1-R4.42",
+  "status": "BLOCKED_R442_MULTI_TRANSITION_REPLAY_OR_PRODUCTION_QUEUE_AUTHORIZATION_PREFLIGHT_FAILURE"
+}

@@ -1,0 +1,102 @@
+{
+  "authority_note": "R3.6E is diagnostic/governance only. No D3 biological constant or runtime authority is changed.",
+  "governance": {
+    "automatic_calibration_allowed": false,
+    "canonical_write_allowed": false,
+    "ceiling_change_authorized": false,
+    "mu_b_recalibration_authorized": false,
+    "production_replay_authorized": false
+  },
+  "new_r3_6e_sources": [
+    {
+      "bytes": 10980,
+      "path": "src/arcana_worldsim/scientific_engines/r36e_inference.py",
+      "sha256": "599a7e09e4373ac64d98f202dd2936481433284100bce3f629edfa0fb1349ebc"
+    },
+    {
+      "bytes": 584,
+      "path": "scripts/analyze_nemo_causal_inference_v0_6D1_R3_6E.py",
+      "sha256": "29e5c54fa46ca6dea77a90eded915b9294ae7a6681f10cfe45d45f124cea398c"
+    },
+    {
+      "bytes": 1917,
+      "path": "scripts/formal_audit_v0_6D1_R3_6E.py",
+      "sha256": "77f472849de59eadf967f6bbd3342c454a9a5121cb953c25647def13b466ef5d"
+    },
+    {
+      "bytes": 1606,
+      "path": "tests/test_nemo_causal_inference_v0_6D1_R3_6E.py",
+      "sha256": "67611d8843a7b9aace360a025477856bbd8ccbca2ff4a6d9cd4327e64ca865d4"
+    },
+    {
+      "bytes": 3850,
+      "path": "QUANTITATIVE_GENETICS_CAUSAL_INFERENCE_GATE_v0_6D1_R3_6E.md",
+      "sha256": "f237c3a942e6483d724aee83e5c9520d1578abce1dec3771f4e24d06b8869a0a"
+    },
+    {
+      "bytes": 871,
+      "path": "V0_6D1_R3_6E_STATUS.md",
+      "sha256": "0c7ba934b0de576f86b682c743f67c86a067cb00b166fb0cdeeeea4d2dd48785"
+    },
+    {
+      "bytes": 1335,
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_6E.md",
+      "sha256": "eeaa829d36b55b6042368a85a32812fdeacf926629f187f816cfe24d00a8e032"
+    },
+    {
+      "bytes": 596,
+      "path": "README_R3_6E.md",
+      "sha256": "18c5e65b4d11e75136c2ff611b6d22ede55863a8d11d6c893d2ee8d4e60fe0e1"
+    },
+    {
+      "bytes": 12794,
+      "path": "reference_results/R3_6E_CAUSAL_INFERENCE.json",
+      "sha256": "ec108f9c28849b671eff5c1dd49cebf5470dded9f579b2f7945b8275cbf4fc16"
+    },
+    {
+      "bytes": 3040499,
+      "path": "reference_results/v0_6D1_R3_6D_RAW_RESULTS.zip",
+      "sha256": "9a72d25b2b8518a44d04d389c1cb8fce671d60ebf46baada18e0de6e048fbe15"
+    }
+  ],
+  "parent_package": {
+    "filename": "ARCANA_WORLD1_v0_6D1_R3_6D_NEMO_EXECUTABLE_REFERENCE_RUNPACK_R2_QFREQ_FINALIZATION_FIX.zip",
+    "sha256": "d892fb30cde34239fefe6bbe8098fb78fa778e1b6cf369434459ea6a15fdcdea"
+  },
+  "parent_stage": "v0.6D1-R3.6D-R2",
+  "source_r36d_results": {
+    "executed": 40,
+    "filename": "v0_6D1_R3_6D.zip",
+    "job_count": 40,
+    "parsed": 40,
+    "sha256": "9a72d25b2b8518a44d04d389c1cb8fce671d60ebf46baada18e0de6e048fbe15"
+  },
+  "stage": "v0.6D1-R3.6E",
+  "unchanged_parent_authorities": [
+    {
+      "bytes": 51460,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "sha256": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45"
+    },
+    {
+      "bytes": 11983,
+      "path": "src/rebased_natural_control_runtime_v0_6D1_R3_5.py",
+      "sha256": "634237eb15383000e88180b890ead9b6facc281c0a77eb5ce00efe32f3d0bc95"
+    },
+    {
+      "bytes": 15443,
+      "path": "src/d3_additive_variance_v0_6_3D3_3A.py",
+      "sha256": "3b235b186e234f66a77443bec3a46c80ef699ecd715737be7d36103db01b4c21"
+    },
+    {
+      "bytes": 8202,
+      "path": "src/d3_paleogeographic_history_v0_6_3D3_2C.py",
+      "sha256": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730"
+    },
+    {
+      "bytes": 22288,
+      "path": "src/arcana_worldsim/scientific_engines/nemo242_r36d.py",
+      "sha256": "6015b2cb9975a68199cb441016c0f96deea6282f08c31fadaa5955231fd379ae"
+    }
+  ]
+}

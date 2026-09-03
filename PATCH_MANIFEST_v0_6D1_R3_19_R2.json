@@ -1,0 +1,32 @@
+{
+  "schema": "ARCANA_R319_R2_ENDPOINT_SUPPORT_RECONCILIATION_PATCH_MANIFEST_V1",
+  "stage": "v0.6D1-R3.19-R2",
+  "base": "R3.19-R1 over R3.18 SEALED",
+  "payload_file_count": 13,
+  "files": {
+    "src/arcana_worldsim/scientific_engines/r319_phase_aware_transport_closure.py": "9d5ab41af8d0711f5010c029b83d5add31a02536e5994b117dd96ff8ebb8e1a8",
+    "tests/test_r319_phase_aware_transport_closure.py": "d75de0ef63419b6b7770cf762cc96d094f84442a0d978ce63ac517f5c9c1390a",
+    "scripts/run_v0_6D1_R3_19_phase_aware_transport_closure.py": "3222669c7dedb8cc2082a698586614af955f488cedf389c412eeb7e061b5ec18",
+    "scripts/formal_audit_v0_6D1_R3_19_candidate.py": "53ed9dc12fe8c7d69a965d0dde59850caf91dfa12db9e8ea28ca7faa697495c4",
+    "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_19.json": "1d7763c05a49e7a14b71f5197b8d4427872ccd4b3314f28b281fe39534aa968b",
+    "configs/world1_r319_phase_aware_transport_closure_v0_6D1_R3_19.json": "4d86313a85fad88fa363dc26447e4735cb08c1e82bf835c25090d9117695c2c7",
+    "CANONICAL_PHASE_AWARE_TRANSPORT_H0_PRESENT_CLOSURE_CONTRACT_v0_6D1_R3_19.md": "c908238087a4fe2b7a2f190c4e7fd251d219e66cc01a5cf6d25f5097482c581f",
+    "R3_19_PHASE_AWARE_TRANSPORT_PROMOTION_AUDIT.md": "b9a72617766b302ad751b3b6d89befdd155830c3365d6bdd98783813f268b1e9",
+    "README_R3_19.md": "7b6c38a345e2abc7c647668986e64463ec12a78b848ac879691ec8f839494b00",
+    "V0_6D1_R3_19_STATUS.md": "5329ab0b19ad6f458eb68d71e2442599b16aefa88e73174e658237f7e77d4dd1",
+    "NEXT_STAGE_HANDOFF_v0_6D1_R3_19.md": "a201ee8c25d944ecfd3b6d5aa82b4639f6538c1692ddd8c9622c7438631e1282",
+    "R3_19_R2_ENDPOINT_SUPPORT_RECONCILIATION_AUDIT.md": "a9c179d2c10f801846edb8ade16fff84db70529ca6a32785e4c0e584ef339da3",
+    "README_R3_19_R2_ENDPOINT_SUPPORT_RECONCILIATION.md": "faa69c704682c854759b7a01227369887eac2af64ef105889b21c0aadfde5349"
+  },
+  "parent_r318_sealed_checks": "172/172",
+  "r318_canonical_hashes": {
+    "envelope": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+    "bundle": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+    "summary": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a"
+  },
+  "r38_sealed_sha256": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698",
+  "scientific_parameter_changes": false,
+  "biology_cadence_changes": false,
+  "transport_cadence_changes": false,
+  "support_semantics_change": "continuous forcing time-averaged; discrete accessible topology exact at 0 ka; conservative post-phase2 reconciliation via SEALED remap_to_land"
+}

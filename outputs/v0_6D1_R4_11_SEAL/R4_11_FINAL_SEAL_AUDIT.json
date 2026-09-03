@@ -1,0 +1,119 @@
+{
+  "audit": "FINAL_CDMETAPOP_POPULATION_METRIC_EXTRACTION_REPAIR_AND_SYMMETRIC_READJUDICATION",
+  "checks": [
+    {
+      "detail": "PASS_R410_MATCHED_CONTROL_PRECISION_ALTERNATE_EVIDENCE_AND_POPULATION_METRIC_INTEGRITY_AUDIT_SEALED",
+      "name": "parent_r410_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R411_CDMETAPOP_POPULATION_METRIC_REEXTRACTION_AND_SYMMETRIC_READJUDICATION_COMPLETE",
+      "name": "r411_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r411_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": 56,
+      "name": "retained_summary_count_56",
+      "pass": true
+    },
+    {
+      "detail": 5,
+      "name": "five_symmetric_cdmetapop_jobs",
+      "pass": true
+    },
+    {
+      "detail": 75,
+      "name": "readjudicated_matrix_75_cells",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CALIBRATION_OFFSET": 4,
+        "CONCORDANT": 1,
+        "INSUFFICIENT_EVIDENCE": 67,
+        "SEMANTICALLY_NONCOMPARABLE": 2,
+        "STRUCTURAL_DISAGREEMENT": 1
+      },
+      "name": "class_accounting_complete",
+      "pass": true
+    },
+    {
+      "detail": 20,
+      "name": "corrected_matched_control_20_pairs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "historical_r43_r49_outputs_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_rerun_not_performed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 15,
+  "checks_total": 15,
+  "next_action": "BUILD_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS",
+  "stage": "v0.6D1-R4.11",
+  "status": "PASS_R411_CDMETAPOP_POPULATION_METRIC_EXTRACTION_REPAIR_AND_SYMMETRIC_READJUDICATION_SEALED",
+  "summary": {
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "class_counts_after_metric_repair": {
+      "CALIBRATION_OFFSET": 4,
+      "CONCORDANT": 1,
+      "INSUFFICIENT_EVIDENCE": 67,
+      "SEMANTICALLY_NONCOMPARABLE": 2,
+      "STRUCTURAL_DISAGREEMENT": 1
+    },
+    "corrected_matched_control_diagnosis": "R411_CORRECTED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+    "corrected_matched_control_summary": {
+      "max": 1.001670843776107,
+      "median": 0.9231475102492575,
+      "min": 0.87597503900156,
+      "n": 20,
+      "q10": 0.8800727271011101,
+      "q90": 0.972860524283888
+    },
+    "deep_biological_coupling": false,
+    "engine_rerun_performed": false,
+    "j09_population_persistence_class_after_metric_repair": "STRUCTURAL_DISAGREEMENT",
+    "next_action": "BUILD_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS",
+    "structural_disagreement_count_after_metric_repair": 1
+  },
+  "verdict": "SEALED"
+}

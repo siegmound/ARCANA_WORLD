@@ -1,0 +1,104 @@
+{
+  "background_total_reservoir_j": {
+    "E": 827738888429151.5,
+    "I": 827738888429151.5,
+    "N": 827738888429151.5,
+    "p": 827738888429151.5,
+    "th": 827738888429151.5
+  },
+  "book_background_calibration": {
+    "book_background_dfeu": 0.35767353279919833,
+    "target_load": 0.005300000000000001,
+    "target_quantile": 0.9,
+    "unit_energy_book_load_quantile": 0.014817982081373285
+  },
+  "book_background_partition": {
+    "closure_error_j": 0.0,
+    "deep_buffer_j": 3167848276971752.0,
+    "mode_deep_buffer_j": {
+      "E": 633569655394350.4,
+      "I": 633569655394350.4,
+      "N": 633569655394350.4,
+      "p": 633569655394350.4,
+      "th": 633569655394350.4
+    },
+    "mode_surface_background_j": {
+      "E": 194169233034801.1,
+      "I": 194169233034801.1,
+      "N": 194169233034801.1,
+      "p": 194169233034801.1,
+      "th": 194169233034801.1
+    },
+    "mode_total_background_j": {
+      "E": 827738888429151.5,
+      "I": 827738888429151.5,
+      "N": 827738888429151.5,
+      "p": 827738888429151.5,
+      "th": 827738888429151.5
+    },
+    "surface_background_j": 970846165174005.5,
+    "total_background_j": 4138694442145757.5
+  },
+  "cha1_high_resolution_checkpoint_count": 15,
+  "cha1_reference": {
+    "joule_per_global_dfeu": 542867210540316.2,
+    "metastable_fraction": 0.08,
+    "metastable_tau_year": 20000.0,
+    "mode_partition": {
+      "E": 0.5,
+      "I": 0.07,
+      "N": 0.03,
+      "p": 0.2,
+      "th": 0.2
+    },
+    "pulse_amplitude_dfeu": {
+      "E": 10.0,
+      "I": 1.4000000000000001,
+      "N": 0.6,
+      "p": 4.0,
+      "th": 4.0
+    },
+    "surface_coupled_energy_j": 1.0857344210806324e+16,
+    "surface_coupled_fraction": 0.1,
+    "total_deep_energy_j": 1.0857344210806323e+17,
+    "transient_fraction": 0.92,
+    "transient_tau_year": 30.0
+  },
+  "direct_speciation_operator": false,
+  "directional_mutation_operator": false,
+  "energy_semantics": "DFEU is normalized non-equilibrium Deep free-energy excess before local accessibility; canonical accessible field is zeta*DFEU; geological A_X is never redefined as energy",
+  "full_evolutionary_replay_performed": false,
+  "initial_210Ma_background_partition": {
+    "closure_error_j": 0.0,
+    "deep_buffer_j": 3414009045326035.0,
+    "mode_deep_buffer_j": {
+      "E": 682801809065207.0,
+      "I": 682801809065207.0,
+      "N": 682801809065207.0,
+      "p": 682801809065207.0,
+      "th": 682801809065207.0
+    },
+    "mode_surface_background_j": {
+      "E": 144937079363944.44,
+      "I": 144937079363944.44,
+      "N": 144937079363944.44,
+      "p": 144937079363944.44,
+      "th": 144937079363944.44
+    },
+    "mode_total_background_j": {
+      "E": 827738888429151.5,
+      "I": 827738888429151.5,
+      "N": 827738888429151.5,
+      "p": 827738888429151.5,
+      "th": 827738888429151.5
+    },
+    "surface_background_j": 724685396819722.2,
+    "total_background_j": 4138694442145757.5
+  },
+  "keyframe_count": 69,
+  "next_blocker": "D3_POPULATION_TO_PASSIVE_DEEP_UPTAKE_BINDING_AND_SELECTION_INTEGRATION",
+  "physical_scale_semantics": "J/DFEU reference is fixed by the candidate 10% surface-coupled share of the already-conserved v0.2 CHA-1 Deep-energy injection and the 4-DFEU global-mean reference pulse; sensitivity in surface-coupled fraction changes physical J scale but not normalized exposure calibration",
+  "population_depleting_sink_bound": false,
+  "status": "PASS_TIME_RESOLVED_DEEP_FREE_ENERGY_AND_EXPOSURE_CALIBRATION_CANDIDATE",
+  "version": "v0.5"
+}

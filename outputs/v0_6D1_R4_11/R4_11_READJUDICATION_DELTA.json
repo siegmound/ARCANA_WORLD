@@ -1,0 +1,71 @@
+{
+  "canonical_change_authorized": false,
+  "changed_cell_count": 1,
+  "changed_cells": [
+    {
+      "domain": "population_persistence",
+      "new_class": "CONCORDANT",
+      "old_class": "CALIBRATION_OFFSET",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    }
+  ],
+  "corrected_matched_control_diagnosis": "R411_CORRECTED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+  "j09_population_persistence_primary_row": {
+    "authority_role": "PRIMARY",
+    "canonical_write": false,
+    "combined_comparability": "NORMALIZABLE",
+    "discordance_class": "STRUCTURAL_DISAGREEMENT",
+    "domain": "population_persistence",
+    "engine": "CDMetaPOP",
+    "evidence_namespace": "R4_11_CDMETAPOP_POPULATION_METRIC_REEXTRACTION",
+    "external_direction": 1,
+    "external_median": 1.5162760416666665,
+    "external_q10": 1.4709635416666667,
+    "external_q90": 1.5479166666666666,
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "magnitude_comparison_used": true,
+    "majority_vote": false,
+    "mapping_comparability": "NORMALIZABLE",
+    "metric": {
+      "name": "population_agent_response_ratio",
+      "summary": {
+        "max": 1.5611979166666667,
+        "mean": 1.5113932291666667,
+        "median": 1.5162760416666665,
+        "min": 1.4518229166666667,
+        "n": 4,
+        "q10": 1.4709635416666667,
+        "q90": 1.5479166666666666
+      }
+    },
+    "parent_terminal_class": "SCIENTIFIC_RESULT",
+    "reason": "OPPOSITE_MEANINGFUL_RESPONSE_DIRECTION",
+    "stage": "v0.6D1-R4.11",
+    "target": {
+      "comparability": "NORMALIZABLE",
+      "kind": "ratio",
+      "metric": "ARCANA_total_population_ratio",
+      "value": 0.9316272616306188
+    },
+    "target_direction": -1,
+    "target_value": 0.9316272616306188,
+    "window_id": "H0_POST_CHA1_RECOVERY"
+  },
+  "new_class_counts": {
+    "CALIBRATION_OFFSET": 4,
+    "CONCORDANT": 1,
+    "INSUFFICIENT_EVIDENCE": 67,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 1
+  },
+  "next_action": "BUILD_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS",
+  "old_class_counts": {
+    "CALIBRATION_OFFSET": 5,
+    "CONCORDANT": 0,
+    "INSUFFICIENT_EVIDENCE": 67,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 1
+  },
+  "stage": "v0.6D1-R4.11",
+  "status": "PASS_R411_CDMETAPOP_POPULATION_METRIC_REEXTRACTION_AND_SYMMETRIC_READJUDICATION_COMPLETE"
+}

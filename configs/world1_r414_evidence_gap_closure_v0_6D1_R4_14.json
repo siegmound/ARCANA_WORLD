@@ -1,0 +1,71 @@
+{
+  "stage": "v0.6D1-R4.14",
+  "title": "Multi-Engine Evidence-Gap Closure Census & Targeted Adapter Enhancement Freeze",
+  "parent_stage": "v0.6D1-R4.13",
+  "required_parent_status": "PASS_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION_SEALED",
+  "required_parent_structural_disagreement_count": 0,
+  "canonical_state_owner": "ARCANA",
+  "canonical_state_changed": false,
+  "canonical_replay_authorized": false,
+  "canonical_parameter_change_authorized": false,
+  "deep_biological_coupling": false,
+  "majority_vote": false,
+  "engine_execution_performed": false,
+  "policy_freeze": "FROZEN_PRE_CLOSURE_EXECUTION",
+  "closure_priority": [
+    "P0_RETAINED_RUNTIME_REEXTRACTION_NO_ENGINE_RERUN",
+    "P1_ARCANA_TARGET_SEMANTIC_MATERIALIZATION_FROM_EXISTING_CANONICAL_ARTIFACTS",
+    "P2_EXISTING_FROZEN_JOB_ADAPTER_ENHANCEMENT_AND_SYMMETRIC_REEXECUTION",
+    "P3_NEW_EXTENSION_JOB_IN_NEW_NAMESPACE_NO_R42_FREEZE_MUTATION",
+    "P4_SEMANTIC_NONCOMPARABILITY_PRESERVED_IF_NO_VALID_BRIDGE_EXISTS"
+  ],
+  "rules": {
+    "r42_exact_23_job_registry_is_immutable": true,
+    "new_extension_jobs_must_use_new_namespace": true,
+    "retained_raw_evidence_must_be_preferred_to_rerun": true,
+    "proxy_only_evidence_cannot_be_promoted_without_new_semantic_protocol": true,
+    "geonomics_default_landscape_cannot_be_reinterpreted_as_arcana_history": true,
+    "no_new_metric_is_adjudicative_without_declared_arcana_target_and_primary_authority": true,
+    "no_target_leakage": true,
+    "no_result_selected_adapter_enhancement": true,
+    "no_majority_vote": true
+  },
+  "retained_runtime_capability_candidates": {
+    "NEMO": {
+      "patterns": ["r43_nemo_1.qfreq", "R43.ini"],
+      "candidate_domains": ["additive_variance", "gene_flow", "admixture"],
+      "confidence": "HIGH_FOR_ALLELE_FREQUENCY_DERIVATIVES",
+      "note": "Final qfreq plus frozen initial frequencies/effect sizes can support audited allele-frequency-derived summaries without engine rerun."
+    },
+    "SLiM": {
+      "patterns": ["r43.trees"],
+      "candidate_domains": ["additive_variance", "admixture", "ancestry", "gene_flow", "producer_divergence", "managed_wild_isolation"],
+      "confidence": "SEMANTIC_AUDIT_REQUIRED",
+      "note": "Retained tree sequences preserve population/genetic history, but domain transforms must be frozen before promotion."
+    },
+    "RangeShifter": {
+      "patterns": ["PatchFile*", "*Patch*", "*Output*"],
+      "candidate_domains": ["range_shift_rate", "range_occupancy", "connectivity"],
+      "confidence": "SEMANTIC_AUDIT_REQUIRED",
+      "note": "Spatial outputs may permit centroid/connectivity post-processing if retained; ARCANA target semantics remain independently required."
+    },
+    "CDMetaPOP": {
+      "patterns": ["summary_popAllTime.csv", "*gen*", "*Gdmatrix*", "*ind*"],
+      "candidate_domains": ["gene_flow", "admixture", "founder_persistence", "range_occupancy"],
+      "confidence": "SEMANTIC_AUDIT_REQUIRED",
+      "note": "Population absolute response remains PROXY_ONLY after R4.12/R4.13; other retained outputs require metric-specific integrity audits."
+    },
+    "Madingley": {
+      "patterns": ["*"],
+      "candidate_domains": ["biomass", "trophic_opportunity"],
+      "confidence": "ENGINE_METRICS_ALREADY_AVAILABLE_TARGET_SIDE_LIMITED",
+      "note": "Primary gap source is usually missing/non-adjudicative ARCANA target semantics rather than missing engine output."
+    },
+    "Geonomics": {
+      "patterns": ["*"],
+      "candidate_domains": ["connectivity", "trait_response", "managed_wild_isolation", "producer_divergence"],
+      "confidence": "REEXECUTION_REQUIRED_AFTER_ARCANA_LANDSCAPE_ADAPTER",
+      "note": "R4.3 default-model executions are intentionally semantic noncomparability and cannot be post-hoc promoted."
+    }
+  }
+}

@@ -1,0 +1,5262 @@
+{
+  "schema": "ARCANA_R37H_CLOSED_LOOP_BRANCH_V1",
+  "stage": "v0.6D1-R3.7H",
+  "parent_stage": "v0.6D1-R3.7G",
+  "branch_label": "K_CENTER",
+  "K_eff": 38.47,
+  "config": {
+    "start_age_ma": 210.0,
+    "end_age_ma": 205.0,
+    "dt_years": 125000.0,
+    "snapshot_interval_years": 1000000.0,
+    "topology_switch_age_ma": 195.0,
+    "occupancy_floor": 1e-09,
+    "habitat_floor": 1e-12,
+    "migration_reference_years": 250000.0,
+    "migration_fraction_ceiling": 0.3,
+    "gene_flow_ceiling_per_step": 0.15,
+    "trait_response_timescale_years": 300000.0,
+    "body_mass_scale": 0.35,
+    "mutation_variance_supply_normalized_per_myr": 0.002,
+    "variance_ceiling_normalized": 0.08,
+    "nonlinear_stabilizing_variance_depletion_per_myr_per_q": 0.9876543209876544,
+    "selection_variance_depletion_per_generation": 2e-08,
+    "drift_individual_equivalents_per_population_unit": 250000000.0,
+    "drift_min_effective_size": 500.0,
+    "speciation_check_interval_years": 500000.0,
+    "ordinary_extinction_check_interval_years": 500000.0,
+    "ordinary_extinction_minimum_persistence_years": 2000000.0,
+    "ordinary_extinction_founder_floor_fraction": 0.05,
+    "ordinary_extinction_max_opportunity_ratio": 0.15,
+    "ordinary_extinction_max_range_ratio": 0.1,
+    "ordinary_extinction_max_density_ratio": 0.15,
+    "ordinary_extinction_max_population_ratio_to_episode_start": 0.9,
+    "ordinary_extinction_recovery_reset_factor": 1.25,
+    "ordinary_extinction_minimum_species_age_years": 2000000.0,
+    "minimum_effective_isolation_generations": 50000.0,
+    "minimum_intrinsic_ri": 0.65,
+    "minimum_trait_distance": 1.0,
+    "maximum_effective_exchange_pressure": 0.25,
+    "minimum_branch_population_fraction": 0.05,
+    "minimum_complement_population_fraction": 0.05,
+    "minimum_absolute_population": 0.01,
+    "ri_build_rate_per_generation": 2e-05,
+    "ri_decay_rate_per_generation": 5e-05,
+    "isolation_reconnection_erosion": 1.0,
+    "trait_drive_onset": 0.5,
+    "trait_drive_saturation": 1.5,
+    "seed": 917231,
+    "macrostep_years": 500000.0,
+    "biology_cadence_years": 125000.0,
+    "transport_cadence_years": 62500.0,
+    "persistent_vicariance_fission_enabled": true,
+    "deme_fission_check_interval_years": 500000.0,
+    "deme_fission_min_component_fraction": 0.02,
+    "deme_fission_min_absolute_population": 0.01,
+    "deme_fission_min_root_species_fraction": 0.01,
+    "vicariance_persistence_min_years": 2000000.0,
+    "vicariance_persistence_reset_on_reconnection": true,
+    "habitat_connectivity_power": 0.5,
+    "effective_connectivity_core_threshold": 0.2,
+    "founder_minimum_persistence_years": 1000000.0,
+    "founder_base_minimum_population_units": 0.075,
+    "founder_generation_reference_years": 5.0,
+    "founder_reproduction_reference": 1.0,
+    "founder_minimum_effective_size_proxy": 500.0,
+    "founder_minimum_normalized_additive_variance": 0.005,
+    "founder_minimum_occupied_cells": 10,
+    "founder_maximum_persistent_decline_fraction": 0.5,
+    "founder_reset_on_reconnection": true,
+    "barrier_phase_min": 0.05,
+    "barrier_phase_max": 0.95,
+    "barrier_transition_width_years": 1000000.0,
+    "connectivity_land_support_threshold": 0.25,
+    "connectivity_softness": 0.1,
+    "persistent_reconnection_coalescence_enabled": true,
+    "reconnection_check_interval_years": 500000.0,
+    "reconnection_persistence_min_years": 2000000.0,
+    "telemetry_enabled": true,
+    "telemetry_near_ceiling_fraction": 0.99,
+    "diagnostic_unclipped_ceiling": 1000000.0,
+    "adaptive_k_eff": 38.47,
+    "branch_label": "K_CENTER",
+    "segregation_recombination_fraction_per_generation": 0.5,
+    "diagnostic_smoke": true
+  },
+  "initialization": {
+    "semantic_status": "MINIMUM_INFORMATION_210MA_INITIALIZATION",
+    "same_species_authoritative_pair_count": 34,
+    "cross_species_pair_count_non_authoritative": 8744,
+    "hidden_genomic_divergence_invented": false,
+    "canonical_write_allowed": false,
+    "production_runtime_bound": true,
+    "binding_status": "CLOSED_LOOP_VALIDATION_CANDIDATE_NOT_YET_PRODUCTION_AUTHORITY"
+  },
+  "closed_loop": true,
+  "valid_biology_steps": true,
+  "expected_biology_steps": 40,
+  "biology_steps": 40,
+  "peak_q": 0.027517904071469212,
+  "clipping_contacts": 0,
+  "final_q_max": 0.027517904071469212,
+  "final_q_median": 0.01574012163607449,
+  "final_state": {
+    "deme_count": 147,
+    "max_normalized_va": 0.027517904071469212,
+    "median_normalized_va": 0.01574012163607449,
+    "p99_normalized_va": 0.027517733294007703,
+    "count_ge_99pct_ceiling": 0,
+    "count_ge_ceiling": 0,
+    "same_species_S_max": 0.2984056056382716,
+    "same_species_S_median": 0.00016640474639099766,
+    "ancestry_abs_total": 0.003004582215292382,
+    "adaptive_coordinate_abs_max": 0.11137434341766932
+  },
+  "final_total_population": 1826.2590127007993,
+  "species_count": 120,
+  "component_count": 147,
+  "event_counts": {
+    "paleogeographic_support_loss_remap": 24,
+    "deme_coalescence": 4,
+    "deme_fission": 18
+  },
+  "events": [
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.875,
+      "elapsed_year": 2125000.0,
+      "remapped_population_mass": 0.18161657258045305,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.75,
+      "elapsed_year": 2250000.0,
+      "remapped_population_mass": 0.1430872361903225,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.625,
+      "elapsed_year": 2375000.0,
+      "remapped_population_mass": 0.11736488180706779,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.5,
+      "elapsed_year": 2500000.0,
+      "remapped_population_mass": 0.18430303691222713,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "deme_coalescence",
+      "elapsed_year": 2500000.0,
+      "age_ma": 207.5,
+      "retained_component_id": "RPT_011_C005",
+      "absorbed_component_ids": [
+        "RPT_011_C007"
+      ],
+      "species_id": "RPT_011",
+      "root_species_id": "RPT_011",
+      "population": 2.861133096469288e-09,
+      "population_conservation_error": 0.0,
+      "first_moment_conservation_max_abs": 1.3234889800848443e-23,
+      "genic_segregation_increment": [
+        0.010750680663766358,
+        7.142119541940656e-06,
+        0.00025567901846982916
+      ],
+      "ancestry_covariance_injection": [
+        -0.010750672332169612,
+        -7.142111465567752e-06,
+        -0.00025567901846982916
+      ],
+      "max_normalized_va_after_pooling": 0.0020943997896129755,
+      "reconnection_minimum_persistence_years": 2000000.0,
+      "semantic_status": "SEGREGATION_AWARE_PERSISTENT_SECONDARY_CONTACT_DEME_COALESCENCE_NOT_DESPECIATION"
+    },
+    {
+      "event": "deme_coalescence",
+      "elapsed_year": 2500000.0,
+      "age_ma": 207.5,
+      "retained_component_id": "RPT_015_C003",
+      "absorbed_component_ids": [
+        "RPT_015_C004"
+      ],
+      "species_id": "RPT_015",
+      "root_species_id": "RPT_015",
+      "population": 4.585764374798227e-09,
+      "population_conservation_error": 0.0,
+      "first_moment_conservation_max_abs": 2.6469779601696886e-23,
+      "genic_segregation_increment": [
+        0.004911986473426299,
+        4.043540025754445e-06,
+        0.00011212594687105845
+      ],
+      "ancestry_covariance_injection": [
+        -0.004911977701804648,
+        -4.043526901086426e-06,
+        -0.00011212594687105498
+      ],
+      "max_normalized_va_after_pooling": 0.0009236685942012748,
+      "reconnection_minimum_persistence_years": 2000000.0,
+      "semantic_status": "SEGREGATION_AWARE_PERSISTENT_SECONDARY_CONTACT_DEME_COALESCENCE_NOT_DESPECIATION"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.375,
+      "elapsed_year": 2625000.0,
+      "remapped_population_mass": 0.1177143098922003,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.25,
+      "elapsed_year": 2750000.0,
+      "remapped_population_mass": 0.09415080802087061,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.125,
+      "elapsed_year": 2875000.0,
+      "remapped_population_mass": 0.09601466223411764,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 207.0,
+      "elapsed_year": 3000000.0,
+      "remapped_population_mass": 0.08543092995915394,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "deme_coalescence",
+      "elapsed_year": 3000000.0,
+      "age_ma": 207.0,
+      "retained_component_id": "RPT_011_C002",
+      "absorbed_component_ids": [
+        "RPT_011_C004"
+      ],
+      "species_id": "RPT_011",
+      "root_species_id": "RPT_011",
+      "population": 5.090443201025039e-09,
+      "population_conservation_error": 0.0,
+      "first_moment_conservation_max_abs": 0.0,
+      "genic_segregation_increment": [
+        0.010480707518410699,
+        6.962855234046156e-06,
+        0.0002471640104215542
+      ],
+      "ancestry_covariance_injection": [
+        -0.010480673000187752,
+        -6.962771825321785e-06,
+        -0.00024716401042156115
+      ],
+      "max_normalized_va_after_pooling": 0.0020248895198311384,
+      "reconnection_minimum_persistence_years": 2000000.0,
+      "semantic_status": "SEGREGATION_AWARE_PERSISTENT_SECONDARY_CONTACT_DEME_COALESCENCE_NOT_DESPECIATION"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 3000000.0,
+      "age_ma": 207.0,
+      "parent_component_id": "LVF_013_C001",
+      "daughter_component_id": "LVF_013_C001_F01",
+      "species_id_at_fission": "LVF_013",
+      "root_species_id": "LVF_013",
+      "population": 0.7199687345782215,
+      "component_rank": 1,
+      "centroid_lat_deg": -20.510011498562385,
+      "centroid_lon_deg": 58.29725513729196,
+      "vicariance_first_seen_elapsed_year": 1000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 3000000.0,
+      "age_ma": 207.0,
+      "parent_component_id": "CAR_001_C001",
+      "daughter_component_id": "CAR_001_C001_F01",
+      "species_id_at_fission": "CAR_001",
+      "root_species_id": "CAR_001",
+      "population": 0.035691823339114775,
+      "component_rank": 1,
+      "centroid_lat_deg": -24.17662784024899,
+      "centroid_lon_deg": 63.703466298937926,
+      "vicariance_first_seen_elapsed_year": 1000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.875,
+      "elapsed_year": 3125000.0,
+      "remapped_population_mass": 0.12031753685113594,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.75,
+      "elapsed_year": 3250000.0,
+      "remapped_population_mass": 0.10908602587330558,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.625,
+      "elapsed_year": 3375000.0,
+      "remapped_population_mass": 0.04082402161308155,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.5,
+      "elapsed_year": 3500000.0,
+      "remapped_population_mass": 0.007282051287962415,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 3500000.0,
+      "age_ma": 206.5,
+      "parent_component_id": "HSG_021_C001",
+      "daughter_component_id": "HSG_021_C001_F01",
+      "species_id_at_fission": "HSG_021",
+      "root_species_id": "HSG_021",
+      "population": 12.746630561986752,
+      "component_rank": 1,
+      "centroid_lat_deg": -1.1485057819947717,
+      "centroid_lon_deg": 9.767283365902507,
+      "vicariance_first_seen_elapsed_year": 1500000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 3500000.0,
+      "age_ma": 206.5,
+      "parent_component_id": "HSG_024_C001",
+      "daughter_component_id": "HSG_024_C001_F01",
+      "species_id_at_fission": "HSG_024",
+      "root_species_id": "HSG_024",
+      "population": 1.78000353023083,
+      "component_rank": 1,
+      "centroid_lat_deg": -9.36432049429709,
+      "centroid_lon_deg": 5.603185132930315,
+      "vicariance_first_seen_elapsed_year": 1500000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 3500000.0,
+      "age_ma": 206.5,
+      "parent_component_id": "CAR_018_C001",
+      "daughter_component_id": "CAR_018_C001_F01",
+      "species_id_at_fission": "CAR_018",
+      "root_species_id": "CAR_018",
+      "population": 0.01086332667370197,
+      "component_rank": 1,
+      "centroid_lat_deg": 16.502745564176625,
+      "centroid_lon_deg": 20.78108968191701,
+      "vicariance_first_seen_elapsed_year": 1500000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.375,
+      "elapsed_year": 3625000.0,
+      "remapped_population_mass": 0.11018445396396112,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.25,
+      "elapsed_year": 3750000.0,
+      "remapped_population_mass": 0.1884172328419544,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.125,
+      "elapsed_year": 3875000.0,
+      "remapped_population_mass": 0.07450231965626837,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 206.0,
+      "elapsed_year": 4000000.0,
+      "remapped_population_mass": 0.13315826802662686,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "HSG_007_C001",
+      "daughter_component_id": "HSG_007_C001_F01",
+      "species_id_at_fission": "HSG_007",
+      "root_species_id": "HSG_007",
+      "population": 4.94116853025261,
+      "component_rank": 1,
+      "centroid_lat_deg": 0.3970177907850372,
+      "centroid_lon_deg": 53.49239689397458,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "HSG_022_C001",
+      "daughter_component_id": "HSG_022_C001_F01",
+      "species_id_at_fission": "HSG_022",
+      "root_species_id": "HSG_022",
+      "population": 3.9990635622536477,
+      "component_rank": 1,
+      "centroid_lat_deg": 5.514710816191822,
+      "centroid_lon_deg": 41.22905926724835,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "LVF_014_C001",
+      "daughter_component_id": "LVF_014_C001_F01",
+      "species_id_at_fission": "LVF_014",
+      "root_species_id": "LVF_014",
+      "population": 0.7259599483715464,
+      "component_rank": 1,
+      "centroid_lat_deg": 20.21644019188287,
+      "centroid_lon_deg": -14.371138283014714,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "RPT_008_C001",
+      "daughter_component_id": "RPT_008_C001_F01",
+      "species_id_at_fission": "RPT_008",
+      "root_species_id": "RPT_008",
+      "population": 1.4138749625329377,
+      "component_rank": 1,
+      "centroid_lat_deg": 34.412607239477744,
+      "centroid_lon_deg": -25.079411803763946,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "RPT_008_C001",
+      "daughter_component_id": "RPT_008_C001_F02",
+      "species_id_at_fission": "RPT_008",
+      "root_species_id": "RPT_008",
+      "population": 0.9981691779383599,
+      "component_rank": 2,
+      "centroid_lat_deg": -38.97014884786927,
+      "centroid_lon_deg": -36.68187511126897,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "RPT_013_C001",
+      "daughter_component_id": "RPT_013_C001_F01",
+      "species_id_at_fission": "RPT_013",
+      "root_species_id": "RPT_013",
+      "population": 5.003006677059975,
+      "component_rank": 1,
+      "centroid_lat_deg": 10.227165826572541,
+      "centroid_lon_deg": 40.52878612454233,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "RPT_020_C001",
+      "daughter_component_id": "RPT_020_C001_F01",
+      "species_id_at_fission": "RPT_020",
+      "root_species_id": "RPT_020",
+      "population": 1.2565346305988674,
+      "component_rank": 1,
+      "centroid_lat_deg": 18.318627773736218,
+      "centroid_lon_deg": 19.860926972293576,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "RPT_022_C001",
+      "daughter_component_id": "RPT_022_C001_F01",
+      "species_id_at_fission": "RPT_022",
+      "root_species_id": "RPT_022",
+      "population": 1.7632647407658677,
+      "component_rank": 1,
+      "centroid_lat_deg": 8.940477175539648,
+      "centroid_lon_deg": 35.54087568495408,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "CAR_013_C001",
+      "daughter_component_id": "CAR_013_C001_F01",
+      "species_id_at_fission": "CAR_013",
+      "root_species_id": "CAR_013",
+      "population": 0.04181396274399596,
+      "component_rank": 1,
+      "centroid_lat_deg": 15.183529764518731,
+      "centroid_lon_deg": 32.37995926045886,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "parent_component_id": "CAR_013_C001",
+      "daughter_component_id": "CAR_013_C001_F02",
+      "species_id_at_fission": "CAR_013",
+      "root_species_id": "CAR_013",
+      "population": 0.012284033166059055,
+      "component_rank": 2,
+      "centroid_lat_deg": -37.69192916264013,
+      "centroid_lon_deg": -34.516755680239775,
+      "vicariance_first_seen_elapsed_year": 2000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.875,
+      "elapsed_year": 4125000.0,
+      "remapped_population_mass": 0.08116877532150399,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.75,
+      "elapsed_year": 4250000.0,
+      "remapped_population_mass": 0.1834516302199523,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.625,
+      "elapsed_year": 4375000.0,
+      "remapped_population_mass": 0.19136651334724739,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.5,
+      "elapsed_year": 4500000.0,
+      "remapped_population_mass": 0.2017465278257019,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.375,
+      "elapsed_year": 4625000.0,
+      "remapped_population_mass": 0.12036847341135094,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.25,
+      "elapsed_year": 4750000.0,
+      "remapped_population_mass": 0.13712652664930886,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.125,
+      "elapsed_year": 4875000.0,
+      "remapped_population_mass": 0.09784202532853015,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "paleogeographic_support_loss_remap",
+      "age_ma": 205.0,
+      "elapsed_year": 5000000.0,
+      "remapped_population_mass": 0.2984799704988484,
+      "semantic_status": "D3_2C_EVENT_RECONSTRUCTED_CONSERVATIVE_SUPPORT_REMAP"
+    },
+    {
+      "event": "deme_coalescence",
+      "elapsed_year": 5000000.0,
+      "age_ma": 205.0,
+      "retained_component_id": "RPT_011_C003",
+      "absorbed_component_ids": [
+        "RPT_011_C005"
+      ],
+      "species_id": "RPT_011",
+      "root_species_id": "RPT_011",
+      "population": 5.272397042821521e-09,
+      "population_conservation_error": 0.0,
+      "first_moment_conservation_max_abs": 1.3234889800848443e-23,
+      "genic_segregation_increment": [
+        0.0029439482769641027,
+        1.956127153949476e-06,
+        5.809021899479278e-05
+      ],
+      "ancestry_covariance_injection": [
+        -0.0029439482552499167,
+        -1.956126999461942e-06,
+        -5.809021899479278e-05
+      ],
+      "max_normalized_va_after_pooling": 0.0004814299979800227,
+      "reconnection_minimum_persistence_years": 2000000.0,
+      "semantic_status": "SEGREGATION_AWARE_PERSISTENT_SECONDARY_CONTACT_DEME_COALESCENCE_NOT_DESPECIATION"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 5000000.0,
+      "age_ma": 205.0,
+      "parent_component_id": "LVF_020_C001",
+      "daughter_component_id": "LVF_020_C001_F01",
+      "species_id_at_fission": "LVF_020",
+      "root_species_id": "LVF_020",
+      "population": 0.6591799683641403,
+      "component_rank": 1,
+      "centroid_lat_deg": 22.07512891755286,
+      "centroid_lon_deg": 7.69014451620705,
+      "vicariance_first_seen_elapsed_year": 3000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 5000000.0,
+      "age_ma": 205.0,
+      "parent_component_id": "CAR_004_C001",
+      "daughter_component_id": "CAR_004_C001_F01",
+      "species_id_at_fission": "CAR_004",
+      "root_species_id": "CAR_004",
+      "population": 0.041372017254622355,
+      "component_rank": 1,
+      "centroid_lat_deg": -10.610219673923002,
+      "centroid_lon_deg": 15.933355427112566,
+      "vicariance_first_seen_elapsed_year": 3000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    },
+    {
+      "event": "deme_fission",
+      "elapsed_year": 5000000.0,
+      "age_ma": 205.0,
+      "parent_component_id": "CAR_015_C001",
+      "daughter_component_id": "CAR_015_C001_F01",
+      "species_id_at_fission": "CAR_015",
+      "root_species_id": "CAR_015",
+      "population": 0.020943158181042032,
+      "component_rank": 1,
+      "centroid_lat_deg": 13.058835120224126,
+      "centroid_lon_deg": 26.16497613232189,
+      "vicariance_first_seen_elapsed_year": 3000000.0,
+      "vicariance_continuous_persistence_years": 2000000.0,
+      "semantic_status": "D3_2C_EVENT_HISTORY_BOUND_PERSISTENT_VICARIANCE_DEMOGRAPHIC_FRAGMENT_NOT_SPECIES"
+    }
+  ],
+  "snapshots": [
+    {
+      "age_ma": 210.0,
+      "elapsed_myr": 0.0,
+      "species_richness": 120,
+      "component_count": 133,
+      "total_population": 1823.1595076876783,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 0,
+      "coalescence_events_cumulative": 0,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 0
+    },
+    {
+      "age_ma": 209.0,
+      "elapsed_myr": 1.0,
+      "species_richness": 120,
+      "component_count": 133,
+      "total_population": 1823.6891859777973,
+      "median_normalized_va": 0.00834459358592339,
+      "max_intrinsic_ri": 0.0,
+      "max_isolation_clock_generations": 292932.68831232586,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 0,
+      "coalescence_events_cumulative": 0,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 0
+    },
+    {
+      "age_ma": 208.0,
+      "elapsed_myr": 2.0,
+      "species_richness": 120,
+      "component_count": 133,
+      "total_population": 1824.376034790505,
+      "median_normalized_va": 0.010257217431530071,
+      "max_intrinsic_ri": 0.0,
+      "max_isolation_clock_generations": 551045.2274674635,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 0,
+      "coalescence_events_cumulative": 0,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 49
+    },
+    {
+      "age_ma": 207.0,
+      "elapsed_myr": 3.0,
+      "species_richness": 120,
+      "component_count": 132,
+      "total_population": 1824.9271916303198,
+      "median_normalized_va": 0.01213151697494685,
+      "max_intrinsic_ri": 0.0,
+      "max_isolation_clock_generations": 826197.7085037593,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 2,
+      "coalescence_events_cumulative": 3,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 50
+    },
+    {
+      "age_ma": 206.0,
+      "elapsed_myr": 4.0,
+      "species_richness": 120,
+      "component_count": 145,
+      "total_population": 1825.605831683057,
+      "median_normalized_va": 0.013960723868363145,
+      "max_intrinsic_ri": 0.0,
+      "max_isolation_clock_generations": 1101163.216854608,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 15,
+      "coalescence_events_cumulative": 3,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 49
+    },
+    {
+      "age_ma": 205.0,
+      "elapsed_myr": 5.0,
+      "species_richness": 120,
+      "component_count": 147,
+      "total_population": 1826.2590127007993,
+      "median_normalized_va": 0.01574012163607449,
+      "max_intrinsic_ri": 0.0,
+      "max_isolation_clock_generations": 1514996.6946991605,
+      "speciation_events_cumulative": 0,
+      "extinction_events_cumulative": 0,
+      "fission_events_cumulative": 18,
+      "coalescence_events_cumulative": 4,
+      "barrier_bracket": [
+        210.0,
+        180.0
+      ],
+      "fractional_support_cells": 49
+    }
+  ],
+  "trait": [
+    [
+      10.807705879858029,
+      0.6530741252441998,
+      0.007339925470274511
+    ],
+    [
+      11.836984787132362,
+      0.5362821060867432,
+      -0.2696830843414498
+    ],
+    [
+      12.73816727799002,
+      0.6039580576827384,
+      -0.3347414410362
+    ],
+    [
+      13.636941306168508,
+      0.3678983969433469,
+      -0.060371962800647355
+    ],
+    [
+      14.124755008463767,
+      0.23980946690268554,
+      -0.40939164017770585
+    ],
+    [
+      15.452631207112988,
+      0.26787501734523744,
+      -0.3154033460346625
+    ],
+    [
+      15.930552916023359,
+      0.3191273888452992,
+      -0.01931347728967369
+    ],
+    [
+      17.148073559770936,
+      0.3458589688161814,
+      -0.2630270857350347
+    ],
+    [
+      18.359555990093998,
+      0.5064116760990914,
+      0.04389089190225426
+    ],
+    [
+      19.311021571153166,
+      0.31606425066552624,
+      0.09569983551689087
+    ],
+    [
+      20.183107913478967,
+      0.5747719914281259,
+      -0.30109603410401187
+    ],
+    [
+      20.97820662771342,
+      0.4084661327088001,
+      -0.3811801244949705
+    ],
+    [
+      21.382333154382525,
+      0.6433007869603099,
+      -0.352045378042014
+    ],
+    [
+      22.440082436153297,
+      0.4430216013040484,
+      -0.4306034776942931
+    ],
+    [
+      22.813840708243685,
+      0.4857855522903482,
+      -0.17478206082511544
+    ],
+    [
+      23.153908717435577,
+      0.4692494406497804,
+      -0.4905705974599562
+    ],
+    [
+      23.649395132507145,
+      0.511392616776892,
+      -0.28352087125367564
+    ],
+    [
+      24.185186012889005,
+      0.430640064993682,
+      -0.3840023519673037
+    ],
+    [
+      24.454234522731102,
+      0.5615417229654367,
+      -0.3999854626165983
+    ],
+    [
+      25.608936579490763,
+      0.5279298927060245,
+      -0.2073472818939317
+    ],
+    [
+      26.62246043274542,
+      0.28049327589623535,
+      -0.02342526779090026
+    ],
+    [
+      26.920651407877045,
+      0.5844004207603989,
+      -0.542778218680767
+    ],
+    [
+      27.167894464678227,
+      0.6195362586970856,
+      -0.29562536137669787
+    ],
+    [
+      27.72837899984973,
+      0.6680206449875968,
+      -0.46836605329488856
+    ],
+    [
+      28.20518776090789,
+      0.6789620928310012,
+      -0.46836605329488806
+    ],
+    [
+      11.44582365011409,
+      0.34206872609850203,
+      1.1040141987568564
+    ],
+    [
+      12.586643649646263,
+      0.43656264733062483,
+      0.8272169837578092
+    ],
+    [
+      13.632483719060188,
+      0.28889430060752874,
+      1.035590956609522
+    ],
+    [
+      15.845660939745876,
+      0.26059408689501623,
+      0.8866585455385662
+    ],
+    [
+      19.50084605739572,
+      0.2787832777815037,
+      1.0383839290017758
+    ],
+    [
+      22.00650341741282,
+      0.3622543492622901,
+      0.9361435685791861
+    ],
+    [
+      23.965069398344266,
+      0.3301161936197296,
+      0.7400321089590862
+    ],
+    [
+      25.115426885554786,
+      0.2976128627988312,
+      0.9311551373168248
+    ],
+    [
+      25.79052397570994,
+      0.250076653891162,
+      0.9667553251032998
+    ],
+    [
+      26.16225646540273,
+      0.5358679603749111,
+      1.0717557169277807
+    ],
+    [
+      26.815232893175345,
+      0.600905526011676,
+      1.135900072614114
+    ],
+    [
+      27.438393416056382,
+      0.2187875790567786,
+      1.142138301325923
+    ],
+    [
+      27.668051088530586,
+      0.3819542476351485,
+      0.9638000299901268
+    ],
+    [
+      28.29354281353256,
+      0.46729878975864764,
+      1.0300868445956208
+    ],
+    [
+      28.612502010651408,
+      0.40535313145942703,
+      0.9083168469325796
+    ],
+    [
+      29.23575875513511,
+      0.31063064179561833,
+      0.9424009425562334
+    ],
+    [
+      12.836172967621097,
+      0.6496728330854554,
+      0.3471519028319316
+    ],
+    [
+      13.557795689624607,
+      0.4867755569636669,
+      0.11836521049706772
+    ],
+    [
+      14.832625533173418,
+      0.6805033110118718,
+      0.5913797310456909
+    ],
+    [
+      15.562792157313407,
+      0.5899184678546537,
+      0.4654169763535571
+    ],
+    [
+      16.276088922667345,
+      0.4808707048874069,
+      0.5645860495797772
+    ],
+    [
+      17.247866672199923,
+      0.667185146001341,
+      0.3526730763275486
+    ],
+    [
+      18.108105554523004,
+      0.5700126146606072,
+      0.7021943756011682
+    ],
+    [
+      18.980420271555992,
+      0.6235339000294924,
+      0.5024149695682996
+    ],
+    [
+      19.743273654973876,
+      0.6374528176955434,
+      0.2566119930692795
+    ],
+    [
+      20.446781973502855,
+      0.608258838943662,
+      0.4937869799252584
+    ],
+    [
+      21.006510498452673,
+      0.3880925469672178,
+      0.5858182622016214
+    ],
+    [
+      21.470136096350153,
+      0.5539361515241584,
+      0.21164508306147053
+    ],
+    [
+      22.043867479567826,
+      0.5341057145095738,
+      0.6425261380277925
+    ],
+    [
+      22.357774595600837,
+      0.4396876962332405,
+      -0.003568462324178733
+    ],
+    [
+      22.782302879658467,
+      0.6933848498308238,
+      0.3975281644276289
+    ],
+    [
+      23.235514811550974,
+      0.5817962241673109,
+      0.3986272239567251
+    ],
+    [
+      23.897624272964144,
+      0.4631282277325568,
+      0.37077637529059865
+    ],
+    [
+      24.422914580959784,
+      0.5393411768505011,
+      0.6662887772991875
+    ],
+    [
+      25.175306584205742,
+      0.5066377981945844,
+      0.7676101909252313
+    ],
+    [
+      26.328973700229177,
+      0.5174937763652652,
+      0.09849619416155557
+    ],
+    [
+      26.37425642664175,
+      0.5145048139572158,
+      0.0984961941615556
+    ],
+    [
+      12.205235225084273,
+      0.5109020565501774,
+      -0.11872557996137616
+    ],
+    [
+      13.579839929168022,
+      0.44833193505202457,
+      -0.2855820278850919
+    ],
+    [
+      14.771205820693373,
+      0.30650802899495266,
+      -0.14042024943214568
+    ],
+    [
+      16.493184494260873,
+      0.2886759596679807,
+      -0.297451991520326
+    ],
+    [
+      17.430120784996227,
+      0.30313372532615196,
+      -0.13723366933402825
+    ],
+    [
+      18.555385837652047,
+      0.5335618716110402,
+      -0.15472332481992587
+    ],
+    [
+      19.7443863489875,
+      0.42229784641095747,
+      -0.1782498765229832
+    ],
+    [
+      20.740413697457782,
+      0.3947345333245062,
+      -0.12610670790614376
+    ],
+    [
+      21.26749717884133,
+      0.3355404637030468,
+      0.004252965669347103
+    ],
+    [
+      21.723824672745664,
+      0.48639214333430875,
+      -0.10680308667368368
+    ],
+    [
+      22.015555811656398,
+      0.6326793643310443,
+      -0.18331188886729669
+    ],
+    [
+      22.238318583138806,
+      0.632766577086481,
+      -0.1833118888672968
+    ],
+    [
+      22.23827242957093,
+      0.6327643812168005,
+      -0.1833118888672968
+    ],
+    [
+      22.238434217944622,
+      0.6327715144735148,
+      -0.18331188886729682
+    ],
+    [
+      22.172812619004674,
+      0.6072254240217935,
+      -0.17237112125991114
+    ],
+    [
+      23.281710161989412,
+      0.3693296038614625,
+      -0.07155859138946344
+    ],
+    [
+      23.403285798586403,
+      0.25224937539257264,
+      -0.23538925911870495
+    ],
+    [
+      24.03789690796691,
+      0.5757157284437046,
+      -0.10750296882306005
+    ],
+    [
+      24.138825380006182,
+      0.5774245659114166,
+      -0.10750296882305999
+    ],
+    [
+      24.126876135143792,
+      0.5766500174987644,
+      -0.10750296882305994
+    ],
+    [
+      24.12687451181071,
+      0.5766512239650851,
+      -0.10750296882305999
+    ],
+    [
+      24.806364554638506,
+      0.26848887161089136,
+      -0.26946170115295787
+    ],
+    [
+      24.814586982144952,
+      0.6471913520277466,
+      -0.08125879706715326
+    ],
+    [
+      25.69321777294355,
+      0.4923234422412446,
+      -0.1347060676656755
+    ],
+    [
+      26.190528600828817,
+      0.4648280622909382,
+      -0.1027194499395436
+    ],
+    [
+      26.710467668009336,
+      0.6555914539264864,
+      0.019416504311399546
+    ],
+    [
+      26.982221899668854,
+      0.5542211187982637,
+      -0.3406362161863209
+    ],
+    [
+      27.806911882423904,
+      0.5321515854822918,
+      -0.20673203250378347
+    ],
+    [
+      28.173038453994103,
+      0.5762526161458056,
+      -0.3952298644558822
+    ],
+    [
+      28.455521626643588,
+      0.6643335387420095,
+      0.1517557773220309
+    ],
+    [
+      14.80244599697499,
+      0.5183988556952605,
+      0.5033103361016589
+    ],
+    [
+      15.855413409076158,
+      0.3368315952959087,
+      0.45438556145008463
+    ],
+    [
+      16.644013960962532,
+      0.5093856540570296,
+      0.4230195317924216
+    ],
+    [
+      17.86684979386052,
+      0.26978106307048627,
+      0.3652946493646486
+    ],
+    [
+      18.77263708188951,
+      0.6357602833673963,
+      0.4807148166976467
+    ],
+    [
+      19.799159409476733,
+      0.4644858277534796,
+      0.49844160780926783
+    ],
+    [
+      20.429216991795577,
+      0.6050763949030881,
+      0.4902771945578738
+    ],
+    [
+      20.967152551986818,
+      0.5795048753942385,
+      0.27482457176242603
+    ],
+    [
+      21.719484703249034,
+      0.30457613131759353,
+      0.24487334191747473
+    ],
+    [
+      21.986920891179828,
+      0.5643583100009045,
+      0.3063097564292912
+    ],
+    [
+      22.199236365509805,
+      0.6782437302802371,
+      0.4634567823835758
+    ],
+    [
+      22.538075502176262,
+      0.5513651278757865,
+      0.3876875765144574
+    ],
+    [
+      23.21965105839062,
+      0.37146663790319556,
+      0.22775607052617075
+    ],
+    [
+      23.076971377902975,
+      0.6191438928709181,
+      0.33128121935062443
+    ],
+    [
+      23.725097921298207,
+      0.5285668942958738,
+      0.4434242927742963
+    ],
+    [
+      24.198722978817923,
+      0.474231989887201,
+      0.4247809735190943
+    ],
+    [
+      24.657531043285136,
+      0.4077312105807331,
+      0.17044771845817486
+    ],
+    [
+      25.08274671941399,
+      0.4913557670077869,
+      0.35691491956543914
+    ],
+    [
+      25.093702670126333,
+      0.4905855565602804,
+      0.3569149195654389
+    ],
+    [
+      25.32977038253259,
+      0.6475773738372628,
+      0.5157297994223871
+    ],
+    [
+      25.93042642194013,
+      0.5369813090899341,
+      0.5458448058032781
+    ],
+    [
+      26.518852089802085,
+      0.5794282666324566,
+      0.37574261489228383
+    ],
+    [
+      27.228806066167373,
+      0.44354254090601564,
+      0.6440225729976182
+    ],
+    [
+      28.046052253479473,
+      0.28246146308984904,
+      0.33288837768384133
+    ],
+    [
+      28.101066639300736,
+      0.6579355288167964,
+      0.5487245514590886
+    ],
+    [
+      14.757748917744609,
+      0.30929007941728726,
+      1.2821581325163511
+    ],
+    [
+      16.58412199746524,
+      0.474791502903679,
+      1.0416361699995986
+    ],
+    [
+      18.935994112080685,
+      0.5795078962308294,
+      1.3316601231451337
+    ],
+    [
+      20.652790082011965,
+      0.5021398546622352,
+      1.0041983051731196
+    ],
+    [
+      21.67321792281827,
+      0.6077845026256669,
+      1.0531695209333358
+    ],
+    [
+      22.59549202692166,
+      0.42989136533540684,
+      1.0941263911613772
+    ],
+    [
+      23.11065288783837,
+      0.674171691598319,
+      0.8784214704336976
+    ],
+    [
+      24.00590361880484,
+      0.5272425734100379,
+      1.1393776372437212
+    ],
+    [
+      25.094440785136484,
+      0.27084703554344713,
+      1.1195987892888697
+    ],
+    [
+      26.133895148963244,
+      0.5497367892397382,
+      1.2349838734133722
+    ],
+    [
+      27.339587591841767,
+      0.35441449992794516,
+      1.1050892066435618
+    ],
+    [
+      28.001176139565708,
+      0.6405245005274076,
+      1.041137211316838
+    ],
+    [
+      22.035060960701784,
+      0.5333094790867143,
+      0.6425261380277926
+    ],
+    [
+      14.941947200976792,
+      0.520231676903663,
+      0.5033103361016592
+    ],
+    [
+      26.70357262043965,
+      0.2809760121235006,
+      -0.02342526779090026
+    ],
+    [
+      27.86984060165008,
+      0.6682881422128893,
+      -0.4683660532948886
+    ],
+    [
+      25.002261124657377,
+      0.4927072821052008,
+      0.35691491956543886
+    ],
+    [
+      16.266873015130596,
+      0.3219263042641394,
+      -0.0193134772896737
+    ],
+    [
+      26.85793297961315,
+      0.5840423032305594,
+      -0.5427782186807671
+    ],
+    [
+      22.30579182161194,
+      0.4416508356466199,
+      -0.0035684623241787334
+    ],
+    [
+      20.370726796001925,
+      0.394822424150821,
+      -0.12610670790614376
+    ],
+    [
+      20.317526037281826,
+      0.39424719552803256,
+      -0.12610670790614378
+    ],
+    [
+      23.246360154950374,
+      0.3695412050657135,
+      -0.07155859138946345
+    ],
+    [
+      26.644784615877747,
+      0.6566000479822898,
+      0.019416504311399546
+    ],
+    [
+      27.751285659377935,
+      0.5321806189891918,
+      -0.2067320325037835
+    ],
+    [
+      23.121067262760224,
+      0.3715584707544894,
+      0.2277560705261707
+    ],
+    [
+      22.915909885048805,
+      0.3724398684172964,
+      0.22775607052617078
+    ],
+    [
+      26.328973700229177,
+      0.5174937763652652,
+      0.09849619416155557
+    ],
+    [
+      17.86684979386052,
+      0.26978106307048627,
+      0.3652946493646486
+    ],
+    [
+      23.725097921298207,
+      0.5285668942958738,
+      0.4434242927742963
+    ]
+  ],
+  "va": [
+    [
+      0.3042963874364347,
+      0.0006793307879244773,
+      0.0033697165552492485
+    ],
+    [
+      0.9245209269377098,
+      0.001017922765159517,
+      0.003370718595274374
+    ],
+    [
+      1.2562274057718772,
+      0.0006445882551805713,
+      0.0033707536753076073
+    ],
+    [
+      0.9741579716103401,
+      0.0004680813183303948,
+      0.0033706542955141278
+    ],
+    [
+      0.27807888479038867,
+      0.0008498310288308613,
+      0.00337035676596747
+    ],
+    [
+      1.165695267342697,
+      0.0007728439103795228,
+      0.00337067521893411
+    ],
+    [
+      0.6605479533433307,
+      0.0004564585722788298,
+      0.0033704299833561685
+    ],
+    [
+      0.7872755637787425,
+      0.000725064930919581,
+      0.003370701509354935
+    ],
+    [
+      0.7478822266383183,
+      0.0003129409674404112,
+      0.0033704588792569158
+    ],
+    [
+      0.2932287471007459,
+      0.000612045075788455,
+      0.0033701981382993507
+    ],
+    [
+      0.8618748132597438,
+      0.0008789092788253166,
+      0.003370746804996089
+    ],
+    [
+      0.8557647744491064,
+      0.0010636819693589721,
+      0.0033707586748959236
+    ],
+    [
+      1.1640130444721648,
+      0.0006598257338891132,
+      0.003370792565828554
+    ],
+    [
+      1.0026917183290511,
+      0.0007003466198344478,
+      0.0033704270247806953
+    ],
+    [
+      0.34675762922408004,
+      0.000435977860173911,
+      0.0033706219452706754
+    ],
+    [
+      1.1136835559161025,
+      0.00025723589347572377,
+      0.0033706224122840855
+    ],
+    [
+      0.7273867152527798,
+      0.0010227381796466734,
+      0.0033707529622303174
+    ],
+    [
+      0.9707323231214644,
+      0.000975915973669924,
+      0.003370711882309461
+    ],
+    [
+      1.0135722564203438,
+      0.00020942270530280595,
+      0.0033704592635174237
+    ],
+    [
+      0.5786286177867688,
+      0.00040303823738036,
+      0.0033704503623020166
+    ],
+    [
+      0.5781938148640597,
+      0.001060812939384883,
+      0.003370630383932076
+    ],
+    [
+      0.3400844080714,
+      0.00041547755938929387,
+      0.0033704968035597025
+    ],
+    [
+      0.8154521648182137,
+      0.0005428843897786389,
+      0.0033704936622479405
+    ],
+    [
+      0.30392338862166707,
+      0.00030629622839988197,
+      0.0033678154482302707
+    ],
+    [
+      9.362065937682646e-05,
+      9.253528535657946e-08,
+      5.691093713308879e-07
+    ],
+    [
+      0.7613196235677604,
+      0.0008016670369087673,
+      0.003370921297169636
+    ],
+    [
+      0.5404650108181399,
+      0.0008339235296712335,
+      0.0033709115133096538
+    ],
+    [
+      0.6056265097504746,
+      0.0005884665439959085,
+      0.003370923016080148
+    ],
+    [
+      0.6857162005917821,
+      0.00018338476553610264,
+      0.0033708268999787855
+    ],
+    [
+      1.135609153317241,
+      0.0009610423143854353,
+      0.003370943248754978
+    ],
+    [
+      1.0114503507116208,
+      0.0007226859695043691,
+      0.0033709299123243913
+    ],
+    [
+      0.3009130541033778,
+      0.00035394000080855447,
+      0.0033708356931752954
+    ],
+    [
+      0.4763025296555158,
+      0.00018035685054094977,
+      0.003370897630983217
+    ],
+    [
+      0.37469123368468105,
+      0.0008709868488958799,
+      0.0033708738941610507
+    ],
+    [
+      0.6708951399319198,
+      0.00037203989685982524,
+      0.0033708964182544766
+    ],
+    [
+      0.28989132049677774,
+      0.000718707488924972,
+      0.0033708597116431783
+    ],
+    [
+      0.30533792811828436,
+      0.0008911917623646946,
+      0.0033709282679805492
+    ],
+    [
+      1.0994761247717597,
+      0.0005947712051906262,
+      0.0033709104534868205
+    ],
+    [
+      0.3062596584068534,
+      0.00035382322877825477,
+      0.003370870064119939
+    ],
+    [
+      1.1789409709127008,
+      0.0004389760053706227,
+      0.0033709007943768057
+    ],
+    [
+      0.3507856030825468,
+      0.000997144907501699,
+      0.0033709321962481433
+    ],
+    [
+      0.8735742201002276,
+      0.00087489438294997,
+      0.003370857029692528
+    ],
+    [
+      0.5087443782896311,
+      0.00020533718708589969,
+      0.00337083542222497
+    ],
+    [
+      0.3640152341149987,
+      0.0007069376175511834,
+      0.0033708597835261857
+    ],
+    [
+      1.0287119815857788,
+      0.0006485879577866761,
+      0.0033708979313714
+    ],
+    [
+      0.3052792911209648,
+      0.0002588412340973533,
+      0.003370475306730603
+    ],
+    [
+      0.8774839786103317,
+      0.00028835222352021787,
+      0.003370838694924152
+    ],
+    [
+      0.2637028750548656,
+      0.0004824794297422028,
+      0.0033708251692361807
+    ],
+    [
+      0.7701149533765264,
+      0.0009126714502880226,
+      0.003370848634770278
+    ],
+    [
+      1.0891453934287596,
+      0.00030259980586145517,
+      0.0033708581529667226
+    ],
+    [
+      0.892809561323609,
+      0.000267602618548656,
+      0.003370863641964655
+    ],
+    [
+      0.6370829808310469,
+      0.0010092250941611132,
+      0.0033708619434285867
+    ],
+    [
+      1.1028590142786538,
+      0.0010995692753726838,
+      0.0033708944159667287
+    ],
+    [
+      0.5215030148831907,
+      0.0008155574452659464,
+      0.0033708381924521767
+    ],
+    [
+      0.9342121882629378,
+      0.0007572910431072209,
+      0.003370862834118307
+    ],
+    [
+      0.5737378492445434,
+      0.0005204098710740345,
+      0.0033708297246557027
+    ],
+    [
+      0.4188144895337615,
+      0.0002281331285944654,
+      0.0033708369161729416
+    ],
+    [
+      0.33122329599678896,
+      0.001076918024589391,
+      0.0033708339125381724
+    ],
+    [
+      0.3752813126572689,
+      0.0002845425601268505,
+      0.0033708462483544935
+    ],
+    [
+      0.8966143324853553,
+      0.0006513767884153099,
+      0.0033708638083517926
+    ],
+    [
+      0.40693002187392846,
+      0.0009524473685489077,
+      0.0033707677825705953
+    ],
+    [
+      0.14382370170353884,
+      0.0003372383646597498,
+      0.0009987136898623882
+    ],
+    [
+      0.2752619411123153,
+      0.000872478728166159,
+      0.003370367160200562
+    ],
+    [
+      0.2737472005174431,
+      0.000796207322762104,
+      0.0033703357701766407
+    ],
+    [
+      0.47854820251755276,
+      0.0002438046672788392,
+      0.0033698071884709904
+    ],
+    [
+      0.5953019662681109,
+      0.0007823890270220985,
+      0.0033700626011678907
+    ],
+    [
+      1.1033179239118347,
+      0.0009111312765199284,
+      0.003370418965881456
+    ],
+    [
+      0.5687624237182201,
+      0.0006191047493731732,
+      0.003370656022011077
+    ],
+    [
+      0.6364292092525711,
+      0.00027163582175864155,
+      0.0033703886966774677
+    ],
+    [
+      0.6351661941075009,
+      0.00025983536113921373,
+      0.0033702169344580657
+    ],
+    [
+      1.1936067532895354,
+      0.0007322837712041676,
+      0.0033704895621618942
+    ],
+    [
+      0.444440010908261,
+      0.0008352345588423669,
+      0.0033707458951096397
+    ],
+    [
+      0.25270773365425253,
+      0.00016838443949521962,
+      0.00337017827869026
+    ],
+    [
+      0.00011629593158886278,
+      7.725514396823615e-08,
+      8.849557577599748e-07
+    ],
+    [
+      0.0030602442085529663,
+      2.0333822979177127e-06,
+      5.897517475255277e-05
+    ],
+    [
+      0.0001162959315888634,
+      7.725514396823656e-08,
+      8.849557577599885e-07
+    ],
+    [
+      0.9857663463423937,
+      0.0003263593766523189,
+      0.003370121630739477
+    ],
+    [
+      0.270999454043488,
+      0.001012303158207713,
+      0.0033705457354846393
+    ],
+    [
+      1.2490910176852732,
+      0.0004837134734380887,
+      0.003370465372491502
+    ],
+    [
+      0.2581223011995839,
+      0.00021262631769048104,
+      0.003370158875890649
+    ],
+    [
+      0.0028182803219342243,
+      2.3212357977841366e-06,
+      2.1068820791151187e-05
+    ],
+    [
+      0.00013706273986971825,
+      1.1282947538559027e-07,
+      1.0234559185898144e-06
+    ],
+    [
+      0.00013706273986974937,
+      1.1282947538561585e-07,
+      1.0234559185902748e-06
+    ],
+    [
+      0.7945982588494692,
+      0.0007512960585549484,
+      0.0033705568462975696
+    ],
+    [
+      0.9641673433606848,
+      0.00027084455111603883,
+      0.0033704439290964277
+    ],
+    [
+      0.6203489826278155,
+      0.0011236793011315002,
+      0.003370684866866229
+    ],
+    [
+      1.0940179395663012,
+      0.0002654672795746623,
+      0.003370638500344796
+    ],
+    [
+      0.29061984948229064,
+      0.0004158641251381923,
+      0.003370240887564744
+    ],
+    [
+      1.075248061442474,
+      0.0004235155806089947,
+      0.003370518077337949
+    ],
+    [
+      0.5082358930550708,
+      0.0006625627931300266,
+      0.003370565435205902
+    ],
+    [
+      0.5887577049207134,
+      0.0010807698784132769,
+      0.0033706250553512443
+    ],
+    [
+      0.3011809300356689,
+      0.00048207358243622156,
+      0.0033693030794491804
+    ],
+    [
+      0.8752466735512212,
+      0.0008586845546667844,
+      0.003362712871781588
+    ],
+    [
+      0.781282350454463,
+      0.0005332923146964344,
+      0.003355252626585994
+    ],
+    [
+      0.5348663736713792,
+      0.0007855063366497701,
+      0.0033627096408003635
+    ],
+    [
+      0.9591427647589749,
+      0.000549061048856796,
+      0.003357860143588756
+    ],
+    [
+      1.137415468494005,
+      0.0003165835970923654,
+      0.003361022621487489
+    ],
+    [
+      1.2464562700872357,
+      0.0007835177029488678,
+      0.003364036299798973
+    ],
+    [
+      0.2610917385732522,
+      0.0008607027196722612,
+      0.00336238746392185
+    ],
+    [
+      1.2383097875862004,
+      0.0001683606551157677,
+      0.0033645001231840843
+    ],
+    [
+      0.678030367085537,
+      0.00021206112462969858,
+      0.0033588188644336488
+    ],
+    [
+      0.47102418724127926,
+      0.0005939518627652202,
+      0.0033626595372163643
+    ],
+    [
+      0.2950982789410601,
+      0.0004942302052546475,
+      0.003358002415624641
+    ],
+    [
+      1.1412945727732096,
+      0.0003424712647372594,
+      0.003364819668465709
+    ],
+    [
+      0.640714005401794,
+      0.00037732394162545333,
+      0.003361518768484254
+    ],
+    [
+      1.2615803752384827,
+      0.0002423701292005654,
+      0.003362654350890067
+    ],
+    [
+      0.3117007195919819,
+      0.0006479931676875272,
+      0.0033618679711424314
+    ],
+    [
+      0.42246174387896046,
+      0.000750630086874116,
+      0.003363075655021042
+    ],
+    [
+      0.34551521683954534,
+      0.00024956009288842884,
+      0.0033575820375147023
+    ],
+    [
+      0.26742791134988714,
+      0.00040149344198183644,
+      0.003356532399143272
+    ],
+    [
+      0.0003514747594270104,
+      5.276618744758471e-07,
+      2.5263483592911367e-06
+    ],
+    [
+      0.9565479046614966,
+      0.0004851575390831432,
+      0.00336418508080173
+    ],
+    [
+      0.8493926130428152,
+      0.00020508244239894228,
+      0.0033518713513149318
+    ],
+    [
+      0.9264889299068676,
+      0.001092677134017575,
+      0.0033632725506299362
+    ],
+    [
+      1.1504255054016401,
+      0.0003117162966972597,
+      0.003362499273555398
+    ],
+    [
+      0.7263108687171564,
+      0.0002692481795627136,
+      0.0033611070801807517
+    ],
+    [
+      1.2072429229132196,
+      0.0007921758699440599,
+      0.003363152882777285
+    ],
+    [
+      0.9534860840026314,
+      0.0009163756059472934,
+      0.00336391816515823
+    ],
+    [
+      0.32292679895549187,
+      0.00022471659829386675,
+      0.0033575239871488018
+    ],
+    [
+      0.7041978728356681,
+      0.001059795608548754,
+      0.0033655269103402756
+    ],
+    [
+      0.9676196708320428,
+      0.0009354997040177431,
+      0.0033637096639927435
+    ],
+    [
+      0.3569611663479774,
+      0.0006307427131981318,
+      0.00336433467939758
+    ],
+    [
+      0.6384669635244598,
+      0.00016776275877357144,
+      0.003360482245231919
+    ],
+    [
+      0.46568587788503546,
+      0.0001939820900048547,
+      0.0033579890732605543
+    ],
+    [
+      0.6362216986379476,
+      0.00024866165142764724,
+      0.003361387918661737
+    ],
+    [
+      1.1114080503971444,
+      0.0007855707299000763,
+      0.0033635141774384257
+    ],
+    [
+      0.8351104700629548,
+      0.0002709934152658218,
+      0.0033610522429087767
+    ],
+    [
+      0.8150733112113292,
+      0.0002663554953951754,
+      0.003363870855769171
+    ],
+    [
+      0.6874032063889753,
+      0.00018102813918628564,
+      0.0033414243388533347
+    ],
+    [
+      0.5210677934612269,
+      0.0008150039352528522,
+      0.0033680722234197195
+    ],
+    [
+      0.8679051162557436,
+      0.0008522980672112486,
+      0.0033367761148174117
+    ],
+    [
+      0.578191792895963,
+      0.0010606326232113674,
+      0.00337050865699037
+    ],
+    [
+      0.3071903836380565,
+      0.0003063904264377277,
+      0.0033670190518710077
+    ],
+    [
+      0.2614778566747786,
+      0.00039278125358540135,
+      0.0032814046622737627
+    ],
+    [
+      0.6595158706765817,
+      0.0004555702887811564,
+      0.0033701312310831138
+    ],
+    [
+      0.3391207672180147,
+      0.0004152760115792658,
+      0.0033700437288485974
+    ],
+    [
+      0.9335995920233722,
+      0.000756388457687878,
+      0.0033696579433873095
+    ],
+    [
+      0.6340921308073979,
+      0.000259755577915781,
+      0.0033693416900603007
+    ],
+    [
+      0.6328298152699461,
+      0.00025979797481354806,
+      0.0033688791992392774
+    ],
+    [
+      0.2710531153800563,
+      0.0010121762889179849,
+      0.0033703783723856777
+    ],
+    [
+      0.28965017952422095,
+      0.00041608122975912747,
+      0.0033692536366920055
+    ],
+    [
+      0.5074374908867736,
+      0.000662416700286474,
+      0.003369774465606529
+    ],
+    [
+      0.63882680281099,
+      0.00037621471090048235,
+      0.003351503144023306
+    ],
+    [
+      0.6313569264816322,
+      0.00037280847317729934,
+      0.0033215930192801546
+    ],
+    [
+      0.40693002187392846,
+      0.0009524473685489077,
+      0.0033707677825705953
+    ],
+    [
+      0.9591427647589749,
+      0.000549061048856796,
+      0.003357860143588756
+    ],
+    [
+      0.3117007195919819,
+      0.0006479931676875272,
+      0.0033618679711424314
+    ]
+  ],
+  "component_ids": [
+    "HSG_001_C001",
+    "HSG_002_C001",
+    "HSG_003_C001",
+    "HSG_004_C001",
+    "HSG_005_C001",
+    "HSG_006_C001",
+    "HSG_007_C001",
+    "HSG_008_C001",
+    "HSG_009_C001",
+    "HSG_010_C001",
+    "HSG_011_C001",
+    "HSG_012_C001",
+    "HSG_013_C001",
+    "HSG_014_C001",
+    "HSG_015_C001",
+    "HSG_016_C001",
+    "HSG_017_C001",
+    "HSG_018_C001",
+    "HSG_019_C001",
+    "HSG_020_C001",
+    "HSG_021_C001",
+    "HSG_022_C001",
+    "HSG_023_C001",
+    "HSG_024_C001",
+    "HSG_024_C002",
+    "BRW_001_C001",
+    "BRW_002_C001",
+    "BRW_003_C001",
+    "BRW_004_C001",
+    "BRW_005_C001",
+    "BRW_006_C001",
+    "BRW_007_C001",
+    "BRW_008_C001",
+    "BRW_009_C001",
+    "BRW_010_C001",
+    "BRW_011_C001",
+    "BRW_012_C001",
+    "BRW_013_C001",
+    "BRW_014_C001",
+    "BRW_015_C001",
+    "BRW_016_C001",
+    "LVF_001_C001",
+    "LVF_002_C001",
+    "LVF_003_C001",
+    "LVF_004_C001",
+    "LVF_005_C001",
+    "LVF_006_C001",
+    "LVF_007_C001",
+    "LVF_008_C001",
+    "LVF_009_C001",
+    "LVF_010_C001",
+    "LVF_011_C001",
+    "LVF_012_C001",
+    "LVF_013_C001",
+    "LVF_014_C001",
+    "LVF_015_C001",
+    "LVF_016_C001",
+    "LVF_017_C001",
+    "LVF_018_C001",
+    "LVF_019_C001",
+    "LVF_020_C001",
+    "LVF_020_C002",
+    "RPT_001_C001",
+    "RPT_002_C001",
+    "RPT_003_C001",
+    "RPT_004_C001",
+    "RPT_005_C001",
+    "RPT_006_C001",
+    "RPT_007_C001",
+    "RPT_008_C001",
+    "RPT_009_C001",
+    "RPT_010_C001",
+    "RPT_011_C001",
+    "RPT_011_C002",
+    "RPT_011_C003",
+    "RPT_011_C006",
+    "RPT_012_C001",
+    "RPT_013_C001",
+    "RPT_014_C001",
+    "RPT_015_C001",
+    "RPT_015_C002",
+    "RPT_015_C003",
+    "RPT_015_C005",
+    "RPT_016_C001",
+    "RPT_017_C001",
+    "RPT_018_C001",
+    "RPT_019_C001",
+    "RPT_020_C001",
+    "RPT_021_C001",
+    "RPT_022_C001",
+    "RPT_023_C001",
+    "RPT_024_C001",
+    "CAR_001_C001",
+    "CAR_002_C001",
+    "CAR_003_C001",
+    "CAR_004_C001",
+    "CAR_005_C001",
+    "CAR_006_C001",
+    "CAR_007_C001",
+    "CAR_008_C001",
+    "CAR_009_C001",
+    "CAR_010_C001",
+    "CAR_011_C001",
+    "CAR_012_C001",
+    "CAR_013_C001",
+    "CAR_014_C001",
+    "CAR_015_C001",
+    "CAR_016_C001",
+    "CAR_017_C001",
+    "CAR_018_C001",
+    "CAR_018_C002",
+    "CAR_019_C001",
+    "CAR_020_C001",
+    "CAR_021_C001",
+    "CAR_022_C001",
+    "CAR_023_C001",
+    "CAR_024_C001",
+    "APX_001_C001",
+    "APX_002_C001",
+    "APX_003_C001",
+    "APX_004_C001",
+    "APX_005_C001",
+    "APX_006_C001",
+    "APX_007_C001",
+    "APX_008_C001",
+    "APX_009_C001",
+    "APX_010_C001",
+    "APX_011_C001",
+    "APX_012_C001",
+    "LVF_013_C001_F01",
+    "CAR_001_C001_F01",
+    "HSG_021_C001_F01",
+    "HSG_024_C001_F01",
+    "CAR_018_C001_F01",
+    "HSG_007_C001_F01",
+    "HSG_022_C001_F01",
+    "LVF_014_C001_F01",
+    "RPT_008_C001_F01",
+    "RPT_008_C001_F02",
+    "RPT_013_C001_F01",
+    "RPT_020_C001_F01",
+    "RPT_022_C001_F01",
+    "CAR_013_C001_F01",
+    "CAR_013_C001_F02",
+    "LVF_020_C001_F01",
+    "CAR_004_C001_F01",
+    "CAR_015_C001_F01"
+  ],
+  "component_root_species": [
+    "HSG_001",
+    "HSG_002",
+    "HSG_003",
+    "HSG_004",
+    "HSG_005",
+    "HSG_006",
+    "HSG_007",
+    "HSG_008",
+    "HSG_009",
+    "HSG_010",
+    "HSG_011",
+    "HSG_012",
+    "HSG_013",
+    "HSG_014",
+    "HSG_015",
+    "HSG_016",
+    "HSG_017",
+    "HSG_018",
+    "HSG_019",
+    "HSG_020",
+    "HSG_021",
+    "HSG_022",
+    "HSG_023",
+    "HSG_024",
+    "HSG_024",
+    "BRW_001",
+    "BRW_002",
+    "BRW_003",
+    "BRW_004",
+    "BRW_005",
+    "BRW_006",
+    "BRW_007",
+    "BRW_008",
+    "BRW_009",
+    "BRW_010",
+    "BRW_011",
+    "BRW_012",
+    "BRW_013",
+    "BRW_014",
+    "BRW_015",
+    "BRW_016",
+    "LVF_001",
+    "LVF_002",
+    "LVF_003",
+    "LVF_004",
+    "LVF_005",
+    "LVF_006",
+    "LVF_007",
+    "LVF_008",
+    "LVF_009",
+    "LVF_010",
+    "LVF_011",
+    "LVF_012",
+    "LVF_013",
+    "LVF_014",
+    "LVF_015",
+    "LVF_016",
+    "LVF_017",
+    "LVF_018",
+    "LVF_019",
+    "LVF_020",
+    "LVF_020",
+    "RPT_001",
+    "RPT_002",
+    "RPT_003",
+    "RPT_004",
+    "RPT_005",
+    "RPT_006",
+    "RPT_007",
+    "RPT_008",
+    "RPT_009",
+    "RPT_010",
+    "RPT_011",
+    "RPT_011",
+    "RPT_011",
+    "RPT_011",
+    "RPT_012",
+    "RPT_013",
+    "RPT_014",
+    "RPT_015",
+    "RPT_015",
+    "RPT_015",
+    "RPT_015",
+    "RPT_016",
+    "RPT_017",
+    "RPT_018",
+    "RPT_019",
+    "RPT_020",
+    "RPT_021",
+    "RPT_022",
+    "RPT_023",
+    "RPT_024",
+    "CAR_001",
+    "CAR_002",
+    "CAR_003",
+    "CAR_004",
+    "CAR_005",
+    "CAR_006",
+    "CAR_007",
+    "CAR_008",
+    "CAR_009",
+    "CAR_010",
+    "CAR_011",
+    "CAR_012",
+    "CAR_013",
+    "CAR_014",
+    "CAR_015",
+    "CAR_016",
+    "CAR_017",
+    "CAR_018",
+    "CAR_018",
+    "CAR_019",
+    "CAR_020",
+    "CAR_021",
+    "CAR_022",
+    "CAR_023",
+    "CAR_024",
+    "APX_001",
+    "APX_002",
+    "APX_003",
+    "APX_004",
+    "APX_005",
+    "APX_006",
+    "APX_007",
+    "APX_008",
+    "APX_009",
+    "APX_010",
+    "APX_011",
+    "APX_012",
+    "LVF_013",
+    "CAR_001",
+    "HSG_021",
+    "HSG_024",
+    "CAR_018",
+    "HSG_007",
+    "HSG_022",
+    "LVF_014",
+    "RPT_008",
+    "RPT_008",
+    "RPT_013",
+    "RPT_020",
+    "RPT_022",
+    "CAR_013",
+    "CAR_013",
+    "LVF_020",
+    "CAR_004",
+    "CAR_015"
+  ],
+  "component_species": [
+    "HSG_001",
+    "HSG_002",
+    "HSG_003",
+    "HSG_004",
+    "HSG_005",
+    "HSG_006",
+    "HSG_007",
+    "HSG_008",
+    "HSG_009",
+    "HSG_010",
+    "HSG_011",
+    "HSG_012",
+    "HSG_013",
+    "HSG_014",
+    "HSG_015",
+    "HSG_016",
+    "HSG_017",
+    "HSG_018",
+    "HSG_019",
+    "HSG_020",
+    "HSG_021",
+    "HSG_022",
+    "HSG_023",
+    "HSG_024",
+    "HSG_024",
+    "BRW_001",
+    "BRW_002",
+    "BRW_003",
+    "BRW_004",
+    "BRW_005",
+    "BRW_006",
+    "BRW_007",
+    "BRW_008",
+    "BRW_009",
+    "BRW_010",
+    "BRW_011",
+    "BRW_012",
+    "BRW_013",
+    "BRW_014",
+    "BRW_015",
+    "BRW_016",
+    "LVF_001",
+    "LVF_002",
+    "LVF_003",
+    "LVF_004",
+    "LVF_005",
+    "LVF_006",
+    "LVF_007",
+    "LVF_008",
+    "LVF_009",
+    "LVF_010",
+    "LVF_011",
+    "LVF_012",
+    "LVF_013",
+    "LVF_014",
+    "LVF_015",
+    "LVF_016",
+    "LVF_017",
+    "LVF_018",
+    "LVF_019",
+    "LVF_020",
+    "LVF_020",
+    "RPT_001",
+    "RPT_002",
+    "RPT_003",
+    "RPT_004",
+    "RPT_005",
+    "RPT_006",
+    "RPT_007",
+    "RPT_008",
+    "RPT_009",
+    "RPT_010",
+    "RPT_011",
+    "RPT_011",
+    "RPT_011",
+    "RPT_011",
+    "RPT_012",
+    "RPT_013",
+    "RPT_014",
+    "RPT_015",
+    "RPT_015",
+    "RPT_015",
+    "RPT_015",
+    "RPT_016",
+    "RPT_017",
+    "RPT_018",
+    "RPT_019",
+    "RPT_020",
+    "RPT_021",
+    "RPT_022",
+    "RPT_023",
+    "RPT_024",
+    "CAR_001",
+    "CAR_002",
+    "CAR_003",
+    "CAR_004",
+    "CAR_005",
+    "CAR_006",
+    "CAR_007",
+    "CAR_008",
+    "CAR_009",
+    "CAR_010",
+    "CAR_011",
+    "CAR_012",
+    "CAR_013",
+    "CAR_014",
+    "CAR_015",
+    "CAR_016",
+    "CAR_017",
+    "CAR_018",
+    "CAR_018",
+    "CAR_019",
+    "CAR_020",
+    "CAR_021",
+    "CAR_022",
+    "CAR_023",
+    "CAR_024",
+    "APX_001",
+    "APX_002",
+    "APX_003",
+    "APX_004",
+    "APX_005",
+    "APX_006",
+    "APX_007",
+    "APX_008",
+    "APX_009",
+    "APX_010",
+    "APX_011",
+    "APX_012",
+    "LVF_013",
+    "CAR_001",
+    "HSG_021",
+    "HSG_024",
+    "CAR_018",
+    "HSG_007",
+    "HSG_022",
+    "LVF_014",
+    "RPT_008",
+    "RPT_008",
+    "RPT_013",
+    "RPT_020",
+    "RPT_022",
+    "CAR_013",
+    "CAR_013",
+    "LVF_020",
+    "CAR_004",
+    "CAR_015"
+  ],
+  "records": [
+    {
+      "step_index": 0,
+      "elapsed_year": 125000.0,
+      "age_ma": 209.875,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.020606236276164983,
+      "median_q": 0.00664458371180608,
+      "max_unclipped_q": 0.020606236276164983,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.020606236276164983,
+        "median_normalized_va": 0.00664458371180608,
+        "p99_normalized_va": 0.020606231839318593,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.20950386297694926,
+        "same_species_S_median": 0.004999999999999496,
+        "ancestry_abs_total": 6.253210652379643e-10,
+        "adaptive_coordinate_abs_max": 0.006025805373368302
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 20,
+          "total_pair_exchange_mass": 3.184323043448148e-07,
+          "maximum_single_edge_out_fraction": 0.020849915965335183,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 20,
+        "total_pair_exchange_mass": 3.184323043448148e-07,
+        "maximum_single_edge_out_fraction": 0.020849915965335183,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 2.775002450050579e-13,
+        "genic_injection_total": [
+          2.611664875438589e-07,
+          1.956320304560099e-10,
+          0.0
+        ],
+        "ancestry_injection_total": [
+          1.9832982989246474e-05,
+          1.4856296450935022e-08,
+          -6.765421556309548e-17
+        ],
+        "ancestry_abs_before_recombination_total": [
+          1.9832983445849193e-05,
+          1.4856296673081205e-08,
+          1.2663481374630692e-16
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.248624218776973e-10,
+          4.586433536564691e-13,
+          6.610677214263957e-21
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 1,
+      "elapsed_year": 250000.0,
+      "age_ma": 209.75,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.020803304007243173,
+      "median_q": 0.0068887651237105356,
+      "max_unclipped_q": 0.020803304007243173,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.020803304007243173,
+        "median_normalized_va": 0.0068887651237105356,
+        "p99_normalized_va": 0.020803295123308738,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2083100376786356,
+        "same_species_S_median": 0.004771695565657985,
+        "ancestry_abs_total": 3.028297145460539e-06,
+        "adaptive_coordinate_abs_max": 0.005978405136495748
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 27,
+          "total_pair_exchange_mass": 8.650853249217592e-07,
+          "maximum_single_edge_out_fraction": 0.040893848807677824,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 27,
+        "total_pair_exchange_mass": 8.650853249217592e-07,
+        "maximum_single_edge_out_fraction": 0.040893848807677824,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 8.027053414322305e-14,
+        "genic_injection_total": [
+          0.06794659623444885,
+          4.97828487509733e-05,
+          0.0016295706777702305
+        ],
+        "ancestry_injection_total": [
+          -0.06793086268341084,
+          -4.9768730669685924e-05,
+          -0.0016295706777702704
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.0679308620680444,
+          4.9768730217976786e-05,
+          0.0016295706777702704
+        ],
+        "ancestry_abs_after_recombination_total": [
+          2.955094036804545e-06,
+          2.1771085050253324e-09,
+          7.102600015096794e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 2,
+      "elapsed_year": 375000.0,
+      "age_ma": 209.625,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.020999362022562522,
+      "median_q": 0.007132525968990813,
+      "max_unclipped_q": 0.020999362022562522,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.020999362022562522,
+        "median_normalized_va": 0.007132525968990813,
+        "p99_normalized_va": 0.0209993486881565,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.21208089975221145,
+        "same_species_S_median": 0.004478675590604437,
+        "ancestry_abs_total": 4.2235267131516495e-06,
+        "adaptive_coordinate_abs_max": 0.005964779773001718
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 29,
+          "total_pair_exchange_mass": 1.2985582880746975e-06,
+          "maximum_single_edge_out_fraction": 0.058730680685744566,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 29,
+        "total_pair_exchange_mass": 1.2985582880746975e-06,
+        "maximum_single_edge_out_fraction": 0.058730680685744566,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 1.190523374328123e-13,
+        "genic_injection_total": [
+          0.09492225423088392,
+          6.929328585402161e-05,
+          0.0022762618837592692
+        ],
+        "ancestry_injection_total": [
+          -0.09491363230074874,
+          -6.928281096939525e-05,
+          -0.00227626188375933
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.09491655825172991,
+          6.928496573709275e-05,
+          0.002276332216667428
+        ],
+        "ancestry_abs_after_recombination_total": [
+          4.121480424783462e-06,
+          3.026733516798682e-09,
+          9.901955485138942e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 3,
+      "elapsed_year": 500000.0,
+      "age_ma": 209.5,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.021194406056468735,
+      "median_q": 0.007375861504836402,
+      "max_unclipped_q": 0.021194406056468735,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.021194406056468735,
+        "median_normalized_va": 0.007375861504836402,
+        "p99_normalized_va": 0.02119438826988994,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.21539524107465988,
+        "same_species_S_median": 0.004153810166972034,
+        "ancestry_abs_total": 5.153302709976326e-06,
+        "adaptive_coordinate_abs_max": 0.007218008497521179
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 1.60881061127694e-06,
+          "maximum_single_edge_out_fraction": 0.07409884217738562,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 1.60881061127694e-06,
+        "maximum_single_edge_out_fraction": 0.07409884217738562,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.099120794378905e-13,
+        "genic_injection_total": [
+          0.11606019406172352,
+          8.445665641187107e-05,
+          0.0027822545995766132
+        ],
+        "ancestry_injection_total": [
+          -0.11604695200957538,
+          -8.444385863492178e-05,
+          -0.0027822545995765803
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.11605102482584972,
+          8.444684821569588e-05,
+          0.0027823524620311717
+        ],
+        "ancestry_abs_after_recombination_total": [
+          5.028851999346895e-06,
+          3.6827034325142716e-09,
+          1.207680071969163e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 4,
+      "elapsed_year": 625000.0,
+      "age_ma": 209.375,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.0213884320093921,
+      "median_q": 0.007618751421985827,
+      "max_unclipped_q": 0.0213884320093921,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.0213884320093921,
+        "median_normalized_va": 0.007618751421985827,
+        "p99_normalized_va": 0.021388409771147202,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.21792810165715415,
+        "same_species_S_median": 0.0038193948172887265,
+        "ancestry_abs_total": 5.819624329241393e-06,
+        "adaptive_coordinate_abs_max": 0.009161796301248316
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 2.022429054255438e-06,
+          "maximum_single_edge_out_fraction": 0.08713477997825625,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 2.022429054255438e-06,
+        "maximum_single_edge_out_fraction": 0.08713477997825625,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 1.1685097334179773e-13,
+        "genic_injection_total": [
+          0.1313491266866521,
+          9.536315148651913e-05,
+          0.0031469565468956657
+        ],
+        "ancestry_injection_total": [
+          -0.13131037116250754,
+          -9.533617029398894e-05,
+          -0.003146956546895636
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.13131533347552368,
+          9.533980231425559e-05,
+          0.0031470757335815653
+        ],
+        "ancestry_abs_after_recombination_total": [
+          5.679162170684029e-06,
+          4.151399433335602e-09,
+          1.363107591240279e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 5,
+      "elapsed_year": 750000.0,
+      "age_ma": 209.25,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.021581435949436706,
+      "median_q": 0.007861174429699972,
+      "max_unclipped_q": 0.021581435949436706,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.021581435949436706,
+        "median_normalized_va": 0.007861174429699972,
+        "p99_normalized_va": 0.02158140926196236,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2202745421739185,
+        "same_species_S_median": 0.003491609436335835,
+        "ancestry_abs_total": 6.248996204003273e-06,
+        "adaptive_coordinate_abs_max": 0.011159824881861912
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 2.318170736385346e-06,
+          "maximum_single_edge_out_fraction": 0.09803221197545607,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 2.318170736385346e-06,
+        "maximum_single_edge_out_fraction": 0.09803221197545607,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.792177517501159e-13,
+        "genic_injection_total": [
+          0.14136140796183008,
+          0.00010245697816706572,
+          0.0033841618608221294
+        ],
+        "ancestry_injection_total": [
+          -0.14127097848183348,
+          -0.00010240110183950085,
+          -0.0033841618608221415
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.14127657693267642,
+          0.00010240519179569556,
+          0.0033842962549095234
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.098261990569204e-06,
+          4.4521067742124195e-09,
+          1.4628210665985577e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 6,
+      "elapsed_year": 875000.0,
+      "age_ma": 209.125,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.021773414102784352,
+      "median_q": 0.00810312750396469,
+      "max_unclipped_q": 0.021773414102784352,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.021773414102784352,
+        "median_normalized_va": 0.00810312750396469,
+        "p99_normalized_va": 0.021773382981525903,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2225757828613591,
+        "same_species_S_median": 0.0031803129773273217,
+        "ancestry_abs_total": 6.500594876099678e-06,
+        "adaptive_coordinate_abs_max": 0.013211351124912826
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 2.663939918475766e-06,
+          "maximum_single_edge_out_fraction": 0.10974022269088263,
+          "population_weighted_transition_closure_max_abs": 4.1359030627651384e-25
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 2.663939918475766e-06,
+        "maximum_single_edge_out_fraction": 0.10974022269088263,
+        "population_weighted_transition_closure_max_abs": 4.1359030627651384e-25,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 9.903189379656396e-14,
+        "genic_injection_total": [
+          0.14743483745394115,
+          0.00010670347238349556,
+          0.003526074217779602
+        ],
+        "ancestry_injection_total": [
+          -0.14726431473883195,
+          -0.00010660213021861345,
+          -0.0035260742177796057
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.1472703226156525,
+          0.00010660651348489339,
+          0.0035262183554900842
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.343896666317402e-06,
+          4.626991219892311e-09,
+          1.520712185623815e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 7,
+      "elapsed_year": 1000000.0,
+      "age_ma": 209.0,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02196436286351262,
+      "median_q": 0.00834459358592339,
+      "max_unclipped_q": 0.02196436286351262,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02196436286351262,
+        "median_normalized_va": 0.00834459358592339,
+        "p99_normalized_va": 0.021964327333455953,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.22486538131266623,
+        "same_species_S_median": 0.0028943858076849937,
+        "ancestry_abs_total": 6.6223831047779735e-06,
+        "adaptive_coordinate_abs_max": 0.015315622827753738
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 2.9063524369710645e-06,
+          "maximum_single_edge_out_fraction": 0.12023111453174065,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 2.9063524369710645e-06,
+        "maximum_single_edge_out_fraction": 0.12023111453174065,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.4130515334220828e-13,
+        "genic_injection_total": [
+          0.1505414413015318,
+          0.00010878560073108529,
+          0.0035968848971287136
+        ],
+        "ancestry_injection_total": [
+          -0.15026851515296347,
+          -0.00010862568080833662,
+          -0.0035968848971286893
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.15027476271964166,
+          0.00010863023434910397,
+          0.0035970346845259037
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.462845065841943e-06,
+          4.70964634282128e-09,
+          1.548283925932084e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 8,
+      "elapsed_year": 1125000.0,
+      "age_ma": 208.875,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.022154278793509598,
+      "median_q": 0.0085855593193214,
+      "max_unclipped_q": 0.022154278793509598,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.022154278793509598,
+        "median_normalized_va": 0.0085855593193214,
+        "p99_normalized_va": 0.022154238883862983,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.22715173363195149,
+        "same_species_S_median": 0.002674489372116567,
+        "ancestry_abs_total": 6.646220149869547e-06,
+        "adaptive_coordinate_abs_max": 0.017471876691970884
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0388050616159175e-06,
+          "maximum_single_edge_out_fraction": 0.12936382375674457,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0388050616159175e-06,
+        "maximum_single_edge_out_fraction": 0.12936382375674457,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 1.1368683772161603e-13,
+        "pre_recombination_total_variance_closure_max_abs": 1.2637113577795844e-13,
+        "genic_injection_total": [
+          0.15140558070391222,
+          0.00010921725174226303,
+          0.003614124911023194
+        ],
+        "ancestry_injection_total": [
+          -0.1510154635963127,
+          -0.0001089899494159131,
+          -0.0036141249110231803
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.15102182733562466,
+          0.00010899458344554247,
+          0.003614277390165518
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.48619402949819e-06,
+          4.7217416839006255e-09,
+          1.5530437868745649e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 9,
+      "elapsed_year": 1250000.0,
+      "age_ma": 208.75,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.022343158621884147,
+      "median_q": 0.008826011483839543,
+      "max_unclipped_q": 0.022343158621884147,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.022343158621884147,
+        "median_normalized_va": 0.008826011483839543,
+        "p99_normalized_va": 0.022343114359414412,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.22943657203842277,
+        "same_species_S_median": 0.002551588127907534,
+        "ancestry_abs_total": 6.598328408379129e-06,
+        "adaptive_coordinate_abs_max": 0.01967933091019747
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0950290730180116e-06,
+          "maximum_single_edge_out_fraction": 0.13663687118963097,
+          "population_weighted_transition_closure_max_abs": 2.0679515313825692e-25
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0950290730180116e-06,
+        "maximum_single_edge_out_fraction": 0.13663687118963097,
+        "population_weighted_transition_closure_max_abs": 2.0679515313825692e-25,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.910416269623738e-13,
+        "genic_injection_total": [
+          0.1506607419389157,
+          0.00010852190760913416,
+          0.003592210777140991
+        ],
+        "ancestry_injection_total": [
+          -0.15013432925304376,
+          -0.00010821634155331483,
+          -0.003592210777140993
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.15014071599550868,
+          0.00010822098737946242,
+          0.0035923637241310116
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.439548683938514e-06,
+          4.684053986424108e-09,
+          1.540956704541905e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 10,
+      "elapsed_year": 1375000.0,
+      "age_ma": 208.625,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02253099924082865,
+      "median_q": 0.009065937017609877,
+      "max_unclipped_q": 0.02253099924082865,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02253099924082865,
+        "median_normalized_va": 0.009065937017609877,
+        "p99_normalized_va": 0.022530950651492528,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.23171999624183914,
+        "same_species_S_median": 0.0025440300536560745,
+        "ancestry_abs_total": 6.503991297664524e-06,
+        "adaptive_coordinate_abs_max": 0.021937176590998368
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.1069216884994015e-06,
+          "maximum_single_edge_out_fraction": 0.14273553745109763,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.1069216884994015e-06,
+        "maximum_single_edge_out_fraction": 0.14273553745109763,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.0524914273446484e-13,
+        "genic_injection_total": [
+          0.14887842361150522,
+          0.00010709997024918907,
+          0.003544962060658085
+        ],
+        "ancestry_injection_total": [
+          -0.14819755330353107,
+          -0.00010670568711712882,
+          -0.0035449620606580502
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.14820389463650915,
+          0.00010671029611369476,
+          0.0035451138286406096
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.3475797882569195e-06,
+          4.614063712834911e-09,
+          1.5179744569476953e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 11,
+      "elapsed_year": 1500000.0,
+      "age_ma": 208.5,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.022717797704865254,
+      "median_q": 0.009305326343910481,
+      "max_unclipped_q": 0.022717797704865254,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.022717797704865254,
+        "median_normalized_va": 0.009305326343910481,
+        "p99_normalized_va": 0.022717744815236307,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.23400220361411245,
+        "same_species_S_median": 0.0025470829637879375,
+        "ancestry_abs_total": 6.371927993051474e-06,
+        "adaptive_coordinate_abs_max": 0.024244584300226375
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.099719531385464e-06,
+          "maximum_single_edge_out_fraction": 0.1480112137153109,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.099719531385464e-06,
+        "maximum_single_edge_out_fraction": 0.1480112137153109,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.4595442909826062e-13,
+        "genic_injection_total": [
+          0.14624634674523723,
+          0.00010509344143255792,
+          0.0034768941283067323
+        ],
+        "ancestry_injection_total": [
+          -0.1453937971271208,
+          -0.0001046003998992908,
+          -0.0034768941283066664
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.14540004885637267,
+          0.00010460494059510152,
+          0.003477043654690914
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.218796938492497e-06,
+          4.518403127281378e-09,
+          1.486126514316973e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 12,
+      "elapsed_year": 1625000.0,
+      "age_ma": 208.375,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.022903551226578236,
+      "median_q": 0.009544161478980675,
+      "max_unclipped_q": 0.022903551226578236,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.022903551226578236,
+        "median_normalized_va": 0.009544161478980675,
+        "p99_normalized_va": 0.022903494066859306,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.23628291901578835,
+        "same_species_S_median": 0.002525662048927316,
+        "ancestry_abs_total": 6.214046161085076e-06,
+        "adaptive_coordinate_abs_max": 0.02660072450131629
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.091819996869449e-06,
+          "maximum_single_edge_out_fraction": 0.1524835736914586,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.091819996869449e-06,
+        "maximum_single_edge_out_fraction": 0.1524835736914586,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.4169568296473756e-13,
+        "genic_injection_total": [
+          0.14302966372608944,
+          0.00010269309629521808,
+          0.0033943957328228507
+        ],
+        "ancestry_injection_total": [
+          -0.14198912555387005,
+          -0.00010209164580042099,
+          -0.003394395732822816
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.14199525165838295,
+          0.00010209609311188161,
+          0.003394542149844704
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.064821121155085e-06,
+          4.405655210845965e-09,
+          1.44819384719146e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 13,
+      "elapsed_year": 1750000.0,
+      "age_ma": 208.25,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.0230882571801071,
+      "median_q": 0.009782425284531753,
+      "max_unclipped_q": 0.0230882571801071,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.0230882571801071,
+        "median_normalized_va": 0.009782425284531753,
+        "p99_normalized_va": 0.02308819577898191,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.23856361945365492,
+        "same_species_S_median": 0.0025279442641021723,
+        "ancestry_abs_total": 6.036412589400819e-06,
+        "adaptive_coordinate_abs_max": 0.029004778331734888
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0811258707028278e-06,
+          "maximum_single_edge_out_fraction": 0.15664948376093782,
+          "population_weighted_transition_closure_max_abs": 8.271806125530277e-25
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0811258707028278e-06,
+        "maximum_single_edge_out_fraction": 0.15664948376093782,
+        "population_weighted_transition_closure_max_abs": 8.271806125530277e-25,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 9.57007910418195e-14,
+        "genic_injection_total": [
+          0.13936193007070813,
+          9.999555896049285e-05,
+          0.003300711977654833
+        ],
+        "ancestry_injection_total": [
+          -0.13811796481734234,
+          -9.927648454470363e-05,
+          -0.0033007119776547393
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.13812394022801552,
+          9.928082150926244e-05,
+          0.003300854679478532
+        ],
+        "ancestry_abs_after_recombination_total": [
+          5.891571638594747e-06,
+          4.280123384973332e-09,
+          1.4056082742109999e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 14,
+      "elapsed_year": 1875000.0,
+      "age_ma": 208.125,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02327191309863285,
+      "median_q": 0.010020116371760018,
+      "max_unclipped_q": 0.02327191309863285,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02327191309863285,
+        "median_normalized_va": 0.010020116371760018,
+        "p99_normalized_va": 0.023271847480698743,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2408454763127791,
+        "same_species_S_median": 0.0025148955153404384,
+        "ancestry_abs_total": 5.842463242998555e-06,
+        "adaptive_coordinate_abs_max": 0.03145593375972427
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0702073033974213e-06,
+          "maximum_single_edge_out_fraction": 0.16184851133120035,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0702073033974213e-06,
+        "maximum_single_edge_out_fraction": 0.16184851133120035,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.7580381594939354e-13,
+        "genic_injection_total": [
+          0.13531631767702992,
+          9.705607682921972e-05,
+          0.003197621228240631
+        ],
+        "ancestry_injection_total": [
+          -0.13385438430211752,
+          -9.621061877212814e-05,
+          -0.0031976212282406624
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.13386018961465157,
+          9.621483254809435e-05,
+          0.0031977597460865915
+        ],
+        "ancestry_abs_after_recombination_total": [
+          5.702401302747066e-06,
+          4.144377281022952e-09,
+          1.35917562970467e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 15,
+      "elapsed_year": 2000000.0,
+      "age_ma": 208.0,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.023454516673106236,
+      "median_q": 0.010257217431530071,
+      "max_unclipped_q": 0.023454516673106236,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.023454516673106236,
+        "median_normalized_va": 0.010257217431530071,
+        "p99_normalized_va": 0.02345444685885511,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.24312996517302346,
+        "same_species_S_median": 0.0025159785995498125,
+        "ancestry_abs_total": 5.633792810621021e-06,
+        "adaptive_coordinate_abs_max": 0.03395336206950229
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0592515380034697e-06,
+          "maximum_single_edge_out_fraction": 0.16537654365731128,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0592515380034697e-06,
+        "maximum_single_edge_out_fraction": 0.16537654365731128,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 2.1827872842550278e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.2140288774276087e-13,
+        "genic_injection_total": [
+          0.13092469008028196,
+          9.390069676884553e-05,
+          0.0030859016613550257
+        ],
+        "ancestry_injection_total": [
+          -0.12923115685452025,
+          -9.292055911877599e-05,
+          -0.0030859016613550084
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.1292367762116079,
+          9.292463955183724e-05,
+          0.003086035611736151
+        ],
+        "ancestry_abs_after_recombination_total": [
+          5.498866377169538e-06,
+          3.99970098179134e-09,
+          1.309267324696915e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 16,
+      "elapsed_year": 2125000.0,
+      "age_ma": 207.875,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.023636065748001443,
+      "median_q": 0.010493715506016717,
+      "max_unclipped_q": 0.023636065748001443,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.023636065748001443,
+        "median_normalized_va": 0.010493715506016717,
+        "p99_normalized_va": 0.02363599175886149,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.245416686183923,
+        "same_species_S_median": 0.0025170621799156627,
+        "ancestry_abs_total": 5.416675259182341e-06,
+        "adaptive_coordinate_abs_max": 0.03649619322975738
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.047955009743619e-06,
+          "maximum_single_edge_out_fraction": 0.16853672915834442,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.047955009743619e-06,
+        "maximum_single_edge_out_fraction": 0.16853672915834442,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 3.410605131648481e-13,
+        "pre_recombination_total_variance_closure_max_abs": 1.714461905777398e-13,
+        "genic_injection_total": [
+          0.12633001392772406,
+          9.062788677204476e-05,
+          0.002969010725739682
+        ],
+        "ancestry_injection_total": [
+          -0.1243920273224254,
+          -8.950516620752775e-05,
+          -0.002969010725739701
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.12439744643188046,
+          8.950910442322686e-05,
+          0.0029691397625501367
+        ],
+        "ancestry_abs_after_recombination_total": [
+          5.287089057947371e-06,
+          3.85032330528408e-09,
+          1.2573587792968564e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 17,
+      "elapsed_year": 2250000.0,
+      "age_ma": 207.75,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02381655832284117,
+      "median_q": 0.010729562908969956,
+      "max_unclipped_q": 0.02381655832284117,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02381655832284117,
+        "median_normalized_va": 0.010729562908969956,
+        "p99_normalized_va": 0.023816480179372785,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.24770664174324863,
+        "same_species_S_median": 0.0025180878328197867,
+        "ancestry_abs_total": 5.192923243333386e-06,
+        "adaptive_coordinate_abs_max": 0.0390835220475649
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0387484974039317e-06,
+          "maximum_single_edge_out_fraction": 0.17137248879620978,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0387484974039317e-06,
+        "maximum_single_edge_out_fraction": 0.17137248879620978,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.2359557821639555e-13,
+        "genic_injection_total": [
+          0.12157004129504453,
+          8.726666680973647e-05,
+          0.002847870333961517
+        ],
+        "ancestry_injection_total": [
+          -0.11937566129829288,
+          -8.599394016391302e-05,
+          -0.0028478703339615465
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.11938087179511891,
+          8.599773137479085e-05,
+          0.0028479942539862734
+        ],
+        "ancestry_abs_after_recombination_total": [
+          5.068838378880417e-06,
+          3.697636882902334e-09,
+          1.2038722757006737e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 18,
+      "elapsed_year": 2375000.0,
+      "age_ma": 207.625,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02399599255097596,
+      "median_q": 0.010964793465535827,
+      "max_unclipped_q": 0.02399599255097596,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02399599255097596,
+        "median_normalized_va": 0.010964793465535827,
+        "p99_normalized_va": 0.023995910270292478,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.25000054421317663,
+        "same_species_S_median": 0.002519157957349944,
+        "ancestry_abs_total": 4.964191415381066e-06,
+        "adaptive_coordinate_abs_max": 0.041714423017456086
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0320864033367816e-06,
+          "maximum_single_edge_out_fraction": 0.17392196238973961,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0320864033367816e-06,
+        "maximum_single_edge_out_fraction": 0.17392196238973961,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.8044506860936949e-13,
+        "genic_injection_total": [
+          0.11668173264288612,
+          8.38430642409078e-05,
+          0.0027233820903591922
+        ],
+        "ancestry_injection_total": [
+          -0.11421972080981163,
+          -8.241327455687018e-05,
+          -0.0027233820903591523
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.1142247160554464,
+          8.241691533249378e-05,
+          0.002723500731606911
+        ],
+        "ancestry_abs_after_recombination_total": [
+          4.845728970692317e-06,
+          3.542787024742919e-09,
+          1.1491965766400697e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 19,
+      "elapsed_year": 2500000.0,
+      "age_ma": 207.5,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02417436673579124,
+      "median_q": 0.011199391992041542,
+      "max_unclipped_q": 0.02417436673579124,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 133,
+        "max_normalized_va": 0.02417436673579124,
+        "median_normalized_va": 0.011199391992041542,
+        "p99_normalized_va": 0.024174280334888488,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2522962479795714,
+        "same_species_S_median": 0.0025201265680661476,
+        "ancestry_abs_total": 4.73140070665786e-06,
+        "adaptive_coordinate_abs_max": 0.04438797202570627
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 31,
+          "total_pair_exchange_mass": 3.0267534421657197e-06,
+          "maximum_single_edge_out_fraction": 0.17621867135014946,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 31,
+        "total_pair_exchange_mass": 3.0267534421657197e-06,
+        "maximum_single_edge_out_fraction": 0.17621867135014946,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 1.1513012765362873e-13,
+        "genic_injection_total": [
+          0.11168579913430923,
+          8.037113974902106e-05,
+          0.0025960636072580308
+        ],
+        "ancestry_injection_total": [
+          -0.10894561923993498,
+          -7.877761253664202e-05,
+          -0.0025960636072580308
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.10895039429760561,
+          7.878110064461655e-05,
+          0.002596176848772311
+        ],
+        "ancestry_abs_after_recombination_total": [
+          4.61865909306684e-06,
+          3.3863701183189095e-09,
+          1.0935524347269928e-07
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 20,
+      "elapsed_year": 2625000.0,
+      "age_ma": 207.375,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02435167933719179,
+      "median_q": 0.0114335335266808,
+      "max_unclipped_q": 0.02435167933719179,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 131,
+        "max_normalized_va": 0.02435167933719179,
+        "median_normalized_va": 0.0114335335266808,
+        "p99_normalized_va": 0.024351590584662203,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.25457399317024343,
+        "same_species_S_median": 0.0025214174696650197,
+        "ancestry_abs_total": 2.7839616107063605e-06,
+        "adaptive_coordinate_abs_max": 0.0471032078654166
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 22,
+          "total_pair_exchange_mass": 3.0203079823263703e-06,
+          "maximum_single_edge_out_fraction": 0.12736664473751816,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 22,
+        "total_pair_exchange_mass": 3.0203079823263703e-06,
+        "maximum_single_edge_out_fraction": 0.12736664473751816,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 7.26640969617165e-14,
+        "genic_injection_total": [
+          0.067737377862679,
+          4.9805854320835356e-05,
+          0.0015478077622286376
+        ],
+        "ancestry_injection_total": [
+          -0.06471611788396983,
+          -4.803832755546818e-05,
+          -0.0015478077622286463
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.08111823178794487,
+          5.979067301550973e-05,
+          0.0019327465004071256
+        ],
+        "ancestry_abs_after_recombination_total": [
+          2.717648212994786e-06,
+          2.0588482347066882e-09,
+          6.425454947686787e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 21,
+      "elapsed_year": 2750000.0,
+      "age_ma": 207.25,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02452792896418038,
+      "median_q": 0.011666798493733628,
+      "max_unclipped_q": 0.02452792896418038,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 131,
+        "max_normalized_va": 0.02452792896418038,
+        "median_normalized_va": 0.011666798493733628,
+        "p99_normalized_va": 0.024527836159571412,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2568771885688762,
+        "same_species_S_median": 0.002522492633317816,
+        "ancestry_abs_total": 2.832143845713192e-06,
+        "adaptive_coordinate_abs_max": 0.04985916867161028
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 22,
+          "total_pair_exchange_mass": 3.0144027988341043e-06,
+          "maximum_single_edge_out_fraction": 0.12955639692526616,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 22,
+        "total_pair_exchange_mass": 3.0144027988341043e-06,
+        "maximum_single_edge_out_fraction": 0.12955639692526616,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 1.5437651157412802e-13,
+        "genic_injection_total": [
+          0.0690480299239057,
+          5.08155145670384e-05,
+          0.0015713042615960004
+        ],
+        "ancestry_injection_total": [
+          -0.06573185400320382,
+          -4.887288912230984e-05,
+          -0.0015713042615959796
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.06573453605454084,
+          4.887491801967987e-05,
+          0.0015713676594213018
+        ],
+        "ancestry_abs_after_recombination_total": [
+          2.7647881996691554e-06,
+          2.098515175074179e-09,
+          6.525713086896269e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 22,
+      "elapsed_year": 2875000.0,
+      "age_ma": 207.125,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02470311435922706,
+      "median_q": 0.011899387739581244,
+      "max_unclipped_q": 0.02470311435922706,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 131,
+        "max_normalized_va": 0.02470311435922706,
+        "median_normalized_va": 0.011899387739581244,
+        "p99_normalized_va": 0.024703017506683467,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2591792532145249,
+        "same_species_S_median": 0.0024642696566996806,
+        "ancestry_abs_total": 2.6940395004445298e-06,
+        "adaptive_coordinate_abs_max": 0.052654837348768996
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 22,
+          "total_pair_exchange_mass": 3.008015277998242e-06,
+          "maximum_single_edge_out_fraction": 0.13164317544769102,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 22,
+        "total_pair_exchange_mass": 3.008015277998242e-06,
+        "maximum_single_edge_out_fraction": 0.13164317544769102,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.0445984355289539e-13,
+        "genic_injection_total": [
+          0.06613111713199804,
+          4.888875897719796e-05,
+          0.0014947812208677342
+        ],
+        "ancestry_injection_total": [
+          -0.06251126526235427,
+          -4.676527037660077e-05,
+          -0.0014947812208677012
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.06251399548577037,
+          4.67673393886668e-05,
+          0.0014948456436184934
+        ],
+        "ancestry_abs_after_recombination_total": [
+          2.6300594617214957e-06,
+          2.011142059398447e-09,
+          6.19688966636361e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 23,
+      "elapsed_year": 3000000.0,
+      "age_ma": 207.0,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02487723440733997,
+      "median_q": 0.012131337184120863,
+      "max_unclipped_q": 0.02487723440733997,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 131,
+        "max_normalized_va": 0.02487723440733997,
+        "median_normalized_va": 0.012131337184120863,
+        "p99_normalized_va": 0.024877133520053284,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.26148112638699655,
+        "same_species_S_median": 0.0023676843984339426,
+        "ancestry_abs_total": 2.5608319040956887e-06,
+        "adaptive_coordinate_abs_max": 0.055489121544838295
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 22,
+          "total_pair_exchange_mass": 3.0030925106814823e-06,
+          "maximum_single_edge_out_fraction": 0.13363687127220328,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 22,
+        "total_pair_exchange_mass": 3.0030925106814823e-06,
+        "maximum_single_edge_out_fraction": 0.13363687127220328,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 7.763407972039005e-14,
+        "genic_injection_total": [
+          0.06332407497876902,
+          4.7048031387844554e-05,
+          0.0014207405361931996
+        ],
+        "ancestry_injection_total": [
+          -0.05939286790936949,
+          -4.473840301418e-05,
+          -0.0014207405361932135
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.059395465669557244,
+          4.474038627838943e-05,
+          0.0014208017200238537
+        ],
+        "ancestry_abs_after_recombination_total": [
+          2.5001089901252052e-06,
+          1.9275171648783855e-09,
+          5.8795396805604776e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 24,
+      "elapsed_year": 3125000.0,
+      "age_ma": 206.875,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.025050288143631222,
+      "median_q": 0.012362757983281607,
+      "max_unclipped_q": 0.025050288143631222,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 132,
+        "max_normalized_va": 0.025050288143631222,
+        "median_normalized_va": 0.012362757983281607,
+        "p99_normalized_va": 0.025050182242168102,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2637841299201259,
+        "same_species_S_median": 0.002033439565607529,
+        "ancestry_abs_total": 1.5537654804342098e-06,
+        "adaptive_coordinate_abs_max": 0.058360845912741106
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 19,
+          "total_pair_exchange_mass": 1.0725085563418972e-05,
+          "maximum_single_edge_out_fraction": 0.13554642743741296,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 19,
+        "total_pair_exchange_mass": 1.0725085563418972e-05,
+        "maximum_single_edge_out_fraction": 0.13554642743741296,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 1.2866053708537883e-13,
+        "genic_injection_total": [
+          0.040041272028361795,
+          3.161631317283475e-05,
+          0.0008632758529336086
+        ],
+        "ancestry_injection_total": [
+          -0.03579859441779894,
+          -2.911497671315322e-05,
+          -0.0008632758529337369
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.04806317902987838,
+          3.726313763047937e-05,
+          0.0011525092176630184
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.5170093116055843e-06,
+          1.27741446472532e-09,
+          3.547875436389994e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 25,
+      "elapsed_year": 3250000.0,
+      "age_ma": 206.75,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02522227474561014,
+      "median_q": 0.012593132003232088,
+      "max_unclipped_q": 0.02522227474561014,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 132,
+        "max_normalized_va": 0.02522227474561014,
+        "median_normalized_va": 0.012593132003232088,
+        "p99_normalized_va": 0.025222164815524507,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.26608772615456683,
+        "same_species_S_median": 0.0018636208992667464,
+        "ancestry_abs_total": 1.630418367600732e-06,
+        "adaptive_coordinate_abs_max": 0.061268739021473125
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 19,
+          "total_pair_exchange_mass": 1.6492826198837603e-05,
+          "maximum_single_edge_out_fraction": 0.13737994900254794,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 19,
+        "total_pair_exchange_mass": 1.6492826198837603e-05,
+        "maximum_single_edge_out_fraction": 0.13737994900254794,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 1.8554602299047929e-13,
+        "genic_injection_total": [
+          0.04213628165032097,
+          3.305500559461349e-05,
+          0.0009062319159500586
+        ],
+        "ancestry_injection_total": [
+          -0.03757242804242984,
+          -3.03586825857196e-05,
+          -0.0009062319159500308
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.03757390785402866,
+          3.0359929026939557e-05,
+          0.0009062664878412729
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.5918854630976774e-06,
+          1.330785128829786e-09,
+          3.720211937422476e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 26,
+      "elapsed_year": 3375000.0,
+      "age_ma": 206.625,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.025393193534329946,
+      "median_q": 0.012822974632400678,
+      "max_unclipped_q": 0.025393193534329946,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 132,
+        "max_normalized_va": 0.025393193534329946,
+        "median_normalized_va": 0.012822974632400678,
+        "p99_normalized_va": 0.025393079597820972,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2683919364032081,
+        "same_species_S_median": 0.0016995893829947774,
+        "ancestry_abs_total": 1.5243255753870423e-06,
+        "adaptive_coordinate_abs_max": 0.06421137282231143
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 19,
+          "total_pair_exchange_mass": 2.104983907009121e-05,
+          "maximum_single_edge_out_fraction": 0.13914479140343416,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 19,
+        "total_pair_exchange_mass": 2.104983907009121e-05,
+        "maximum_single_edge_out_fraction": 0.13914479140343416,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 2.1827872842550278e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.908473379330644e-13,
+        "genic_injection_total": [
+          0.0399484810373833,
+          3.16581545089254e-05,
+          0.000847993957153019
+        ],
+        "ancestry_injection_total": [
+          -0.03505794023260317,
+          -2.8762372284776086e-05,
+          -0.0008479939571528316
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.03505949676700711,
+          2.876367336330064e-05,
+          0.0008480302925819126
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.48834451051822e-06,
+          1.266027719656726e-09,
+          3.4715037149165565e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 27,
+      "elapsed_year": 3500000.0,
+      "age_ma": 206.5,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.025563043968640117,
+      "median_q": 0.013052085927541538,
+      "max_unclipped_q": 0.025563043968640117,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 132,
+        "max_normalized_va": 0.025563043968640117,
+        "median_normalized_va": 0.013052085927541538,
+        "p99_normalized_va": 0.025562926054787216,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2706969933147441,
+        "same_species_S_median": 0.0020014628247812336,
+        "ancestry_abs_total": 1.4264050083092627e-06,
+        "adaptive_coordinate_abs_max": 0.06718725745186901
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 19,
+          "total_pair_exchange_mass": 2.4783135373313182e-05,
+          "maximum_single_edge_out_fraction": 0.1408476312282681,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 19,
+        "total_pair_exchange_mass": 2.4783135373313182e-05,
+        "maximum_single_edge_out_fraction": 0.1408476312282681,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 2.2737367544323206e-13,
+        "pre_recombination_total_variance_closure_max_abs": 1.5193402091995267e-13,
+        "genic_injection_total": [
+          0.037948132349986376,
+          3.0394256732622267e-05,
+          0.0007941955801793828
+        ],
+        "ancestry_injection_total": [
+          -0.03272714596750357,
+          -2.7295383072748664e-05,
+          -0.0007941955801792804
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.03272860138710446,
+          2.7296621024842815e-05,
+          0.0007942294822837159
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.3927774982361212e-06,
+          1.2069130922657418e-09,
+          3.242059698087557e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 28,
+      "elapsed_year": 3625000.0,
+      "age_ma": 206.375,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02573182564756033,
+      "median_q": 0.013280444587233613,
+      "max_unclipped_q": 0.02573182564756033,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 135,
+        "max_normalized_va": 0.02573182564756033,
+        "median_normalized_va": 0.013280444587233613,
+        "p99_normalized_va": 0.02573170143216975,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.27300297800520246,
+        "same_species_S_median": 0.0009173485618705324,
+        "ancestry_abs_total": 1.3167788242684701e-06,
+        "adaptive_coordinate_abs_max": 0.07070146722795831
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 23,
+          "total_pair_exchange_mass": 0.0008591239083930133,
+          "maximum_single_edge_out_fraction": 0.1424945230087864,
+          "population_weighted_transition_closure_max_abs": 2.7755575615628914e-17
+        },
+        "edge_count": 23,
+        "total_pair_exchange_mass": 0.0008591239083930133,
+        "maximum_single_edge_out_fraction": 0.1424945230087864,
+        "population_weighted_transition_closure_max_abs": 2.7755575615628914e-17,
+        "first_moment_conservation_max_abs": 2.2737367544323206e-13,
+        "pre_recombination_total_variance_closure_max_abs": 1.6655801087298028e-13,
+        "genic_injection_total": [
+          0.034818442408057974,
+          2.79509629363322e-05,
+          0.0007250546891503976
+        ],
+        "ancestry_injection_total": [
+          -0.029924047796347372,
+          -2.511019931997754e-05,
+          -0.0007250546891502467
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.02992547241933091,
+          2.511138241945143e-05,
+          0.0007250863733650428
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.2858986951135978e-06,
+          1.128338702768223e-09,
+          2.975179045210423e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 29,
+      "elapsed_year": 3750000.0,
+      "age_ma": 206.25,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.025899538305979408,
+      "median_q": 0.013508069994739906,
+      "max_unclipped_q": 0.025899538305979408,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 135,
+        "max_normalized_va": 0.025899538305979408,
+        "median_normalized_va": 0.013508069994739906,
+        "p99_normalized_va": 0.02589941013222828,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2753097294276337,
+        "same_species_S_median": 0.000944149314581778,
+        "ancestry_abs_total": 1.2279308109142284e-06,
+        "adaptive_coordinate_abs_max": 0.07424900236739777
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 23,
+          "total_pair_exchange_mass": 0.0014031155221731102,
+          "maximum_single_edge_out_fraction": 0.14409095049786,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 23,
+        "total_pair_exchange_mass": 0.0014031155221731102,
+        "maximum_single_edge_out_fraction": 0.14409095049786,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 8.965050923848139e-14,
+        "genic_injection_total": [
+          0.03310327612331153,
+          2.6871430623520045e-05,
+          0.0006788759418860858
+        ],
+        "ancestry_injection_total": [
+          -0.02771876359733317,
+          -2.3804568174134346e-05,
+          -0.0006788759418859332
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.02772038805802411,
+          2.3805673411139666e-05,
+          0.0006789050255535835
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.1990618712311531e-06,
+          1.0773190885564907e-09,
+          2.779162059451872e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 30,
+      "elapsed_year": 3875000.0,
+      "age_ma": 206.125,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.026066181819068824,
+      "median_q": 0.013734935407520788,
+      "max_unclipped_q": 0.026066181819068824,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 135,
+        "max_normalized_va": 0.026066181819068824,
+        "median_normalized_va": 0.013734935407520788,
+        "p99_normalized_va": 0.02606604971376086,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2776165414937531,
+        "same_species_S_median": 0.0008885361819376525,
+        "ancestry_abs_total": 1.1452592310237429e-06,
+        "adaptive_coordinate_abs_max": 0.07782882668857896
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 23,
+          "total_pair_exchange_mass": 0.0017828882941305446,
+          "maximum_single_edge_out_fraction": 0.14564064150191594,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 23,
+        "total_pair_exchange_mass": 0.0017828882941305446,
+        "maximum_single_edge_out_fraction": 0.14564064150191594,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 7.275957614183426e-12,
+        "pre_recombination_total_variance_closure_max_abs": 1.835395984500776e-13,
+        "genic_injection_total": [
+          0.03153863483019608,
+          2.5898619306229768e-05,
+          0.0006362491363313618
+        ],
+        "ancestry_injection_total": [
+          -0.02565057881808502,
+          -2.259871249349548e-05,
+          -0.0006362491363313219
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.025652843977818564,
+          2.2599768052494456e-05,
+          0.0006362763027924848
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.1182451024315206e-06,
+          1.030594695481683e-09,
+          2.5983533896740612e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 31,
+      "elapsed_year": 4000000.0,
+      "age_ma": 206.0,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.026231756189144556,
+      "median_q": 0.013961030868724519,
+      "max_unclipped_q": 0.026231756189144556,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 135,
+        "max_normalized_va": 0.026231756189144556,
+        "median_normalized_va": 0.013961030868724519,
+        "p99_normalized_va": 0.026231620180701447,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2799238207766876,
+        "same_species_S_median": 0.0007982114089471603,
+        "ancestry_abs_total": 1.0685065674448456e-06,
+        "adaptive_coordinate_abs_max": 0.08144024583660947
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 23,
+          "total_pair_exchange_mass": 0.002062137656408562,
+          "maximum_single_edge_out_fraction": 0.14714496441969166,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 23,
+        "total_pair_exchange_mass": 0.002062137656408562,
+        "maximum_single_edge_out_fraction": 0.14714496441969166,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 2.1827872842550278e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.8368639942423215e-13,
+        "genic_injection_total": [
+          0.030119023717076518,
+          2.5028309983334606e-05,
+          0.0005970374419937466
+        ],
+        "ancestry_injection_total": [
+          -0.023714743973129546,
+          -2.1488518436870495e-05,
+          -0.0005970374419938004
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.023718113495247318,
+          2.148952849594183e-05,
+          0.000597062839534981
+        ],
+        "ancestry_abs_after_recombination_total": [
+          1.0431975650068527e-06,
+          9.879576707731506e-10,
+          2.432104476721984e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 32,
+      "elapsed_year": 4125000.0,
+      "age_ma": 205.875,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.026396261551696887,
+      "median_q": 0.014185984479139426,
+      "max_unclipped_q": 0.026396261551696887,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.026396261551696887,
+        "median_normalized_va": 0.014185984479139426,
+        "p99_normalized_va": 0.026396117456478595,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2822318719899439,
+        "same_species_S_median": 9.802538549807863e-05,
+        "ancestry_abs_total": 9.975600799236228e-07,
+        "adaptive_coordinate_abs_max": 0.08508260361623399
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 1.0658141036401503e-14,
+        "transition": {
+          "edge_count": 33,
+          "total_pair_exchange_mass": 0.0030496084909403575,
+          "maximum_single_edge_out_fraction": 0.14858975124406396,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 33,
+        "total_pair_exchange_mass": 0.0030496084909403575,
+        "maximum_single_edge_out_fraction": 0.14858975124406396,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 2.1827872842550278e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.574296248918472e-13,
+        "genic_injection_total": [
+          0.02883363716387235,
+          2.4252495666998244e-05,
+          0.0005610031838351668
+        ],
+        "ancestry_injection_total": [
+          -0.021901759663423358,
+          -2.046755892383631e-05,
+          -0.000561003183835165
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.021910909622458508,
+          2.0468578899421073e-05,
+          0.0005610269545071197
+        ],
+        "ancestry_abs_after_recombination_total": [
+          9.738164312598696e-07,
+          9.49186735433413e-10,
+          2.279446192831975e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 33,
+      "elapsed_year": 4250000.0,
+      "age_ma": 205.75,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02655969815888345,
+      "median_q": 0.01441045348929266,
+      "max_unclipped_q": 0.02655969815888345,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.02655969815888345,
+        "median_normalized_va": 0.01441045348929266,
+        "p99_normalized_va": 0.026559550197547466,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.28453897148113777,
+        "same_species_S_median": 0.00015445307768336875,
+        "ancestry_abs_total": 9.326737079983601e-07,
+        "adaptive_coordinate_abs_max": 0.08875504855925845
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 33,
+          "total_pair_exchange_mass": 0.0037445963238532955,
+          "maximum_single_edge_out_fraction": 0.14998971405012823,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 33,
+        "total_pair_exchange_mass": 0.0037445963238532955,
+        "maximum_single_edge_out_fraction": 0.14998971405012823,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.701971896750365e-13,
+        "genic_injection_total": [
+          0.02768097612116182,
+          2.3571652761427138e-05,
+          0.0005280286710127352
+        ],
+        "ancestry_injection_total": [
+          -0.02020209411964035,
+          -1.9534590882579468e-05,
+          -0.0005280286710127215
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.02023226909673332,
+          1.95356483193217e-05,
+          0.000528050947391388
+        ],
+        "ancestry_abs_after_recombination_total": [
+          9.103608668227543e-07,
+          9.142994615744335e-10,
+          2.139854171403131e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 34,
+      "elapsed_year": 4375000.0,
+      "age_ma": 205.625,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.026722066390185907,
+      "median_q": 0.014633583381120583,
+      "max_unclipped_q": 0.026722066390185907,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.026722066390185907,
+        "median_normalized_va": 0.014633583381120583,
+        "p99_normalized_va": 0.02672191460604154,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2868482488230767,
+        "same_species_S_median": 0.00019272270155451407,
+        "ancestry_abs_total": 8.738481489702891e-07,
+        "adaptive_coordinate_abs_max": 0.09245690848032295
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 34,
+          "total_pair_exchange_mass": 0.004185763090662429,
+          "maximum_single_edge_out_fraction": 0.15136102625193348,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 34,
+        "total_pair_exchange_mass": 0.004185763090662429,
+        "maximum_single_edge_out_fraction": 0.15136102625193348,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 2.1827872842550278e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.7080781233858033e-13,
+        "genic_injection_total": [
+          0.026644975027314503,
+          2.2971687908039557e-05,
+          0.0004978296686290126
+        ],
+        "ancestry_injection_total": [
+          -0.018603198844762976,
+          -1.8679381373322322e-05,
+          -0.0004978296686291773
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.018677198736168688,
+          1.868062348592582e-05,
+          0.0004978505783699399
+        ],
+        "ancestry_abs_after_recombination_total": [
+          8.528436246539838e-07,
+          8.8281347511691e-10,
+          2.012171084118845e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 35,
+      "elapsed_year": 4500000.0,
+      "age_ma": 205.5,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02688336675265181,
+      "median_q": 0.014856410884940592,
+      "max_unclipped_q": 0.02688336675265181,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.02688336675265181,
+        "median_normalized_va": 0.014856410884940592,
+        "p99_normalized_va": 0.02688321119958591,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.28915955274847827,
+        "same_species_S_median": 0.00020507927134375597,
+        "ancestry_abs_total": 8.209547271024217e-07,
+        "adaptive_coordinate_abs_max": 0.09618726887322893
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 34,
+          "total_pair_exchange_mass": 0.004522357858868587,
+          "maximum_single_edge_out_fraction": 0.15270634116404208,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 34,
+        "total_pair_exchange_mass": 0.004522357858868587,
+        "maximum_single_edge_out_fraction": 0.15270634116404208,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.490231549272636e-13,
+        "genic_injection_total": [
+          0.025728423676744466,
+          2.2458372894421488e-05,
+          0.0004703525595822302
+        ],
+        "ancestry_injection_total": [
+          -0.017098446001474837,
+          -1.7900949419275394e-05,
+          -0.0004703525595822876
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.017243019012505315,
+          1.790250213801649e-05,
+          0.0004703722189054891
+        ],
+        "ancestry_abs_after_recombination_total": [
+          8.011421997658136e-07,
+          8.545113309888725e-10,
+          1.89580160056191e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 36,
+      "elapsed_year": 4625000.0,
+      "age_ma": 205.375,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.027043599881623172,
+      "median_q": 0.015078418176424089,
+      "max_unclipped_q": 0.027043599881623172,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.027043599881623172,
+        "median_normalized_va": 0.015078418176424089,
+        "p99_normalized_va": 0.02704344062173494,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2914718679685995,
+        "same_species_S_median": 0.00021672356381437105,
+        "ancestry_abs_total": 7.740887360945019e-07,
+        "adaptive_coordinate_abs_max": 0.09994517230526788
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 34,
+          "total_pair_exchange_mass": 0.004800742848807546,
+          "maximum_single_edge_out_fraction": 0.15402782396754883,
+          "population_weighted_transition_closure_max_abs": 8.881784197001252e-16
+        },
+        "edge_count": 34,
+        "total_pair_exchange_mass": 0.004800742848807546,
+        "maximum_single_edge_out_fraction": 0.15402782396754883,
+        "population_weighted_transition_closure_max_abs": 8.881784197001252e-16,
+        "first_moment_conservation_max_abs": 2.9103830456733704e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.4327428132787645e-13,
+        "genic_injection_total": [
+          0.024922401755153513,
+          2.202176951766399e-05,
+          0.00044547105452796273
+        ],
+        "ancestry_injection_total": [
+          -0.015685409033485503,
+          -1.7194756272066013e-05,
+          -0.0004454710545281398
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.01593021261116374,
+          1.7196771916686278e-05,
+          0.00044548957365485276
+        ],
+        "ancestry_abs_after_recombination_total": [
+          7.553558273460446e-07,
+          8.292181012503449e-10,
+          1.7903690647207006e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 37,
+      "elapsed_year": 4750000.0,
+      "age_ma": 205.25,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02720276653567993,
+      "median_q": 0.015299596254748775,
+      "max_unclipped_q": 0.02720276653567993,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.02720276653567993,
+        "median_normalized_va": 0.015299596254748775,
+        "p99_normalized_va": 0.02720260364052463,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2937833957515048,
+        "same_species_S_median": 0.0002203305014525367,
+        "ancestry_abs_total": 7.449490752513238e-07,
+        "adaptive_coordinate_abs_max": 0.10372964398463254
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 34,
+          "total_pair_exchange_mass": 0.005031473627761266,
+          "maximum_single_edge_out_fraction": 0.15532771211822954,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 34,
+        "total_pair_exchange_mass": 0.005031473627761266,
+        "maximum_single_edge_out_fraction": 0.15532771211822954,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 2.1827872842550278e-11,
+        "pre_recombination_total_variance_closure_max_abs": 1.7469359292476838e-13,
+        "genic_injection_total": [
+          0.024212474991416866,
+          2.164939635044422e-05,
+          0.00042292078257233183
+        ],
+        "ancestry_injection_total": [
+          -0.0143546064772565,
+          -1.6552731695616944e-05,
+          -0.00042292078257259876
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.01517813040329689,
+          1.655535956798857e-05,
+          0.00042293826851415615
+        ],
+        "ancestry_abs_after_recombination_total": [
+          7.271936171414005e-07,
+          8.06620420395588e-10,
+          1.6948837689527458e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 38,
+      "elapsed_year": 4875000.0,
+      "age_ma": 205.125,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.02736086759773796,
+      "median_q": 0.015520002219462103,
+      "max_unclipped_q": 0.02736086759773796,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.02736086759773796,
+        "median_normalized_va": 0.015520002219462103,
+        "p99_normalized_va": 0.027360701144075898,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2960943395025518,
+        "same_species_S_median": 0.0002239879883538371,
+        "ancestry_abs_total": 7.276344705009041e-07,
+        "adaptive_coordinate_abs_max": 0.10753969822928784
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 7.105427357601002e-15,
+        "transition": {
+          "edge_count": 36,
+          "total_pair_exchange_mass": 0.005229935073830759,
+          "maximum_single_edge_out_fraction": 0.15660764063172952,
+          "population_weighted_transition_closure_max_abs": 3.552713678800501e-15
+        },
+        "edge_count": 36,
+        "total_pair_exchange_mass": 0.005229935073830759,
+        "maximum_single_edge_out_fraction": 0.15660764063172952,
+        "population_weighted_transition_closure_max_abs": 3.552713678800501e-15,
+        "first_moment_conservation_max_abs": 0.0,
+        "pre_recombination_total_variance_closure_max_abs": 1.5171197631502764e-13,
+        "genic_injection_total": [
+          0.02360900969328839,
+          2.135263862253564e-05,
+          0.000402792590932606
+        ],
+        "ancestry_injection_total": [
+          -0.01310730104690095,
+          -1.5978604862385752e-05,
+          -0.00040279259093302914
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.014765920077508371,
+          1.5982001572322307e-05,
+          0.0004028091408759724
+        ],
+        "ancestry_abs_after_recombination_total": [
+          7.107536882401136e-07,
+          7.867545680220079e-10,
+          1.6094027692768687e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    },
+    {
+      "step_index": 39,
+      "elapsed_year": 5000000.0,
+      "age_ma": 205.0,
+      "branch_label": "K_CENTER",
+      "K_eff": 38.47,
+      "max_q": 0.027517904071469212,
+      "median_q": 0.01573965269694961,
+      "max_unclipped_q": 0.027517904071469212,
+      "clipping_count": 0,
+      "state": {
+        "deme_count": 145,
+        "max_normalized_va": 0.027517904071469212,
+        "median_normalized_va": 0.01573965269694961,
+        "p99_normalized_va": 0.027517734135923056,
+        "count_ge_99pct_ceiling": 0,
+        "count_ge_ceiling": 0,
+        "same_species_S_max": 0.2984056056382716,
+        "same_species_S_median": 0.0002276983966712994,
+        "ancestry_abs_total": 7.155306716755765e-07,
+        "adaptive_coordinate_abs_max": 0.11137434341766932
+      },
+      "flow": {
+        "mean_authority_closure_max_abs": 3.552713678800501e-15,
+        "transition": {
+          "edge_count": 37,
+          "total_pair_exchange_mass": 0.005406443008222375,
+          "maximum_single_edge_out_fraction": 0.1578682584194505,
+          "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15
+        },
+        "edge_count": 37,
+        "total_pair_exchange_mass": 0.005406443008222375,
+        "maximum_single_edge_out_fraction": 0.1578682584194505,
+        "population_weighted_transition_closure_max_abs": 1.7763568394002505e-15,
+        "first_moment_conservation_max_abs": 1.4551915228366852e-11,
+        "pre_recombination_total_variance_closure_max_abs": 2.120525977034049e-13,
+        "genic_injection_total": [
+          0.023110934663569848,
+          2.1133624257970765e-05,
+          0.0003849945496109361
+        ],
+        "ancestry_injection_total": [
+          -0.011941446448978672,
+          -1.5472824798356587e-05,
+          -0.00038499454961096307
+        ],
+        "ancestry_abs_before_recombination_total": [
+          0.014444886284521565,
+          1.547715265488804e-05,
+          0.0003850102611390562
+        ],
+        "ancestry_abs_after_recombination_total": [
+          6.994260614434762e-07,
+          7.69701051067577e-10,
+          1.5334909181033115e-08
+        ],
+        "recombination_fraction_per_generation": 0.5,
+        "minimum_inherited_ancestry_retention": 0.0,
+        "maximum_uniform_injection_retention": 0.0005718451034320058,
+        "canonical_write_allowed": false,
+        "production_runtime_bound": false
+      }
+    }
+  ],
+  "closed_loop_gate_pass": true,
+  "authority": {
+    "trait_response": "R3.4_SELECT_TRAITS_UNCHANGED_BUT_NOW_CONSUMES_SEGREGATION_AWARE_WITHIN_VA",
+    "mean_migration": "R3.4_MEAN_EXCHANGE_AUTHORITY_UNCHANGED",
+    "variance_migration": "R3.7_SEGREGATION_AWARE_WITHIN_VA_PLUS_ANCESTRY_LD",
+    "nonflow_variance": "D3.3A_MU_B_DRIFT_AND_CEILING_UNCHANGED",
+    "coalescence": "R3.7A_SEGREGATION_AWARE_POOLING_WITH_R3.3_RECONNECTION_TRIGGER",
+    "fission_extinction_speciation": "PARENT_LIFECYCLE_AUTHORITY_UNCHANGED"
+  },
+  "governance": {
+    "production_candidate_only": true,
+    "production_runtime_replacement_authorized": false,
+    "scalar_K_eff_production_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false,
+    "final_promotion_requires_full_three_branch_review": true
+  },
+  "wall_seconds": 32.439547061920166
+}

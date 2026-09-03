@@ -1,0 +1,44 @@
+{
+  "stage": "v0.6C",
+  "runtime": {
+    "deep_enabled_default": true,
+    "photo_deep_additive_share_E_th": 0.05,
+    "photo_deep_modes": [
+      "E",
+      "th"
+    ],
+    "photo_deep_zero_modes": [
+      "p",
+      "I",
+      "N"
+    ],
+    "return_flow_fraction_candidate": 0.5,
+    "restore_time_years": {
+      "E": 80.0,
+      "th": 120.0,
+      "p": 100.0,
+      "I": 250.0,
+      "N": 500.0
+    },
+    "physiology_fixed_point_tolerance": 1e-11,
+    "physiology_fixed_point_max_iterations": 128,
+    "physiology_long_step_tau_multiple": 10.0
+  },
+  "governance": {
+    "D3_source_modified": false,
+    "Deep_direct_speciation": false,
+    "Deep_traits_in_D3_RI": false,
+    "directional_mutation": false,
+    "historical_proxy_may_be_labeled_HX": false,
+    "Deep_OFF_exact_bypass_required": true,
+    "D3_fission_birth_authority_only": true,
+    "checkpoint_source_fingerprint_required": true
+  },
+  "historical_scope": {
+    "D3_post_CHA1_runtime_adapter": "validated",
+    "D1_210Ma_state_binding": "pending",
+    "D2_pre_CHA1_deep_time_adapter": "pending",
+    "D2_2_CHA1_high_resolution_adapter": "pending",
+    "full_210_0Ma_HX_authorized": false
+  }
+}

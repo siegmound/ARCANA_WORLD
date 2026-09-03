@@ -1,0 +1,51 @@
+{
+  "stage": "v0.6D1-R4.41",
+  "policy": "R441_SINGLE_TRANSITION_DISPOSABLE_DRY_RUN_NO_DEFAULT_WALK",
+  "parent_required": {
+    "r440_integrated": "38/38 PASS",
+    "r440_final_seal": "25/25 SEALED"
+  },
+  "dry_run_scope": {
+    "J14": {
+      "branch_selection": "first branch in frozen canonical order",
+      "replicates": 4,
+      "transition": "canonical state 0 -> state 1"
+    },
+    "J18": {
+      "branch_selection": "first branch in frozen canonical order",
+      "replicates": 4,
+      "transition": "canonical snapshot 0 -> snapshot 1"
+    },
+    "J21": {
+      "replicates": 4,
+      "transition": "20 ka native layers -> 15 ka native layers",
+      "native_layer_count": 147,
+      "sidecar_count": 4
+    }
+  },
+  "authorized_clock_primitives": [
+    "Model._set_t",
+    "Model._set_comm_t",
+    "Model._set_spp_t"
+  ],
+  "forbidden": [
+    "Model.walk",
+    "Model.run",
+    "run_default_model",
+    "Species._do_movement",
+    "Species._do_pop_dynamics",
+    "Species._set_age_stage",
+    "LandscapeChanger._make_change",
+    "population_proxy_to_carrier_count",
+    "coordinate_interpolation"
+  ],
+  "dry_run_is_scientific_evidence": false,
+  "production_execution_queue_authorized": false,
+  "geonomics_execution_ready": false,
+  "scientific_engine_execution_performed": false,
+  "target_numeric_execution_performed": false,
+  "readjudication_performed": false,
+  "canonical_state_changed": false,
+  "deep_biological_coupling": false,
+  "next_action": "BUILD_R442_GEONOMICS_MULTI_TRANSITION_BOUNDED_REPLAY_AND_PRODUCTION_EXECUTION_QUEUE_AUTHORIZATION_PREFLIGHT"
+}

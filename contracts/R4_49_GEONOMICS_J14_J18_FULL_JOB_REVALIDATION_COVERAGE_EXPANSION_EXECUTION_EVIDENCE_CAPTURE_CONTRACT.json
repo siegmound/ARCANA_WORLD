@@ -1,0 +1,39 @@
+{
+  "stage": "v0.6D1-R4.49",
+  "title": "Geonomics J14/J18 Full-Job Revalidation Coverage Expansion Execution & Evidence Capture",
+  "execution_authority": "consume exactly the R4.48 plan SHA256 3a6e1d5b7d454f7c4ecd79c357bc6a2e8cd6e6514c61db07a5d06267834766e5",
+  "scientific_scope": {
+    "J14": "191 predeclared missing branches x 4 frozen seeds",
+    "J18": "63 predeclared missing branches x 4 frozen seeds",
+    "J21": "no execution; reuse SEALED R4.46 evidence"
+  },
+  "resumability": {
+    "unit": "whole R4.48 shard",
+    "completed_shard_reuse": "allowed only if summary, plan SHA, branch IDs, counts, and evidence-file SHA all match",
+    "invalid_or_partial_existing_shard": "preserve then re-execute the same frozen shard",
+    "scientific_plan_change_on_resume": false
+  },
+  "expected_new_evidence": {
+    "shards": 32,
+    "streams": 1016,
+    "metric_records": 334512,
+    "integrity_records": 223008,
+    "descriptive_records": 111504
+  },
+  "expected_full_geonomics_evidence_after_merge": {
+    "metric_records": 346968,
+    "integrity_records": 229548,
+    "descriptive_records": 117420
+  },
+  "governance": [
+    "exact-integrity mismatch fails the stream",
+    "descriptive metrics must remain finite and threshold-free",
+    "no automatic scientific PASS/FAIL from descriptive values",
+    "no result-selected branch or metric",
+    "no rerun of J14/J18 M000_C00 first cohort",
+    "no rerun of J21",
+    "no canonical rewrite"
+  ],
+  "nonclaim": "R4.49 captures complete scientific coverage evidence; full-job scientific adjudication remains for R4.50",
+  "next_action": "BUILD_R450_GEONOMICS_FULL_JOB_REVALIDATION_EVIDENCE_REVIEW_AND_FINAL_GEONOMICS_CLOSURE"
+}

@@ -1,0 +1,117 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_10_SEAL\\R4_10_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r410_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R410_MATCHED_CONTROL_PRECISION_ALTERNATE_EVIDENCE_AND_POPULATION_METRIC_INTEGRITY_AUDIT_SEALED",
+      "name": "parent_r410_sealed",
+      "pass": true
+    },
+    {
+      "detail": "R43_R49_CDMETAPOP_POPULATION_METRIC_FILENAME_SELECTOR_COLLISION_CONFIRMED",
+      "name": "parent_population_metric_collision_confirmed",
+      "pass": true
+    },
+    {
+      "detail": "R411_PLAN_FROZEN",
+      "name": "parent_r411_plan_frozen",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "name": "exact_five_symmetric_cdmetapop_jobs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "growth_pop_definition_present": true,
+        "initial_metrics_before_loop_present": true,
+        "post_generation_metrics_gen_plus_one_present": true,
+        "summary_n_initial_write_present": true
+      },
+      "name": "pinned_cdmetapop_summary_semantics_confirmed",
+      "pass": true
+    },
+    {
+      "detail": 56,
+      "name": "retained_runtime_exact_56_replicate_records",
+      "pass": true
+    },
+    {
+      "detail": {
+        "failed": 0,
+        "pass": 56
+      },
+      "name": "retained_runtime_all_56_reextractable",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_reextracted_initials_match_configured_n0",
+      "pass": false
+    },
+    {
+      "detail": null,
+      "name": "all_summary_lifecycle_chains_consistent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "reextract_before_rerun",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_rerun_forbidden_in_r411",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "historical_evidence_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    }
+  ],
+  "checks_failed": 1,
+  "checks_passed": 17,
+  "checks_total": 18,
+  "engine_rerun_performed": false,
+  "next_action": "RESTORE_OR_TARGETED_RERUN_ONLY_MISSING_RETAINED_CDMETAPOP_RUNTIME_EVIDENCE",
+  "retained_summary_count": 56,
+  "stage": "v0.6D1-R4.11",
+  "status": "BLOCKED_R411_PARENT_RETAINED_RUNTIME_OR_METRIC_REEXTRACTION_FAILURE"
+}
