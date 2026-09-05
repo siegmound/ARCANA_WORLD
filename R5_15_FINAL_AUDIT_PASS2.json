@@ -1,0 +1,43 @@
+{
+  "stage": "v0.6D1-R5.15",
+  "audit": "BULK_LEGACY_RECONCILIATION_PASS_2",
+  "status": "PASS_R515_R334_TO_R339_BULK_LEGACY_RECONCILIATION_CANDIDATE",
+  "checks": {
+    "scope_is_r3_34_through_r3_39": true,
+    "six_stage_artifact_directories_present": true,
+    "six_final_seal_directories_present": true,
+    "six_final_seal_audits_present": true,
+    "all_six_final_seal_verdicts_are_sealed": true,
+    "internal_dependency_edges_repository_verified": true,
+    "parent_hash_exactness_preserved": true,
+    "output_manifest_closure_preserved": true,
+    "negative_results_preserved": true,
+    "deep_coupling_remains_off": true,
+    "unique_human_identity_not_materialized": true,
+    "named_culture_language_religion_not_invented": true,
+    "reuse_class_assigned_to_all_stages": true,
+    "all_stages_exact_artifact_reuse_class_A": true,
+    "remaining_provenance_gap_count_zero": true,
+    "scientific_incompatibility_count_zero": true,
+    "new_simulation_not_required": true,
+    "external_runtime_not_required": true,
+    "repair_block_not_required": true,
+    "auto_seal_not_performed": true
+  },
+  "result_counts": {
+    "stages": 6,
+    "class_A": 6,
+    "class_B": 0,
+    "class_C": 0,
+    "class_D": 0,
+    "scientific_incompatibility_proven": 0,
+    "remaining_gaps": 0
+  },
+  "r5_15_completed": true,
+  "r5_15_status": "CANDIDATE",
+  "r5_15_sealed": false,
+  "repair_block_required": false,
+  "next_stage": "v0.6D1-R5.16",
+  "next_stage_scope": "R5.8-to-R3.39 integrated end-of-legacy reconciliation and seal review",
+  "governance_note": "R5.16 is not an empty repair stage; because no repair is required, the next non-empty identifier is used for the integrated seal review. A seal must be explicit and separately audited."
+}
