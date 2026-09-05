@@ -1,0 +1,20 @@
+{
+  "stage": "v0.6D1-R5.15",
+  "classification_pass": 1,
+  "status": "BLOCKED_ON_PROVENANCE",
+  "classes": {
+    "R3.34": {"class": "D", "subtype": "D_PROVENANCE_GAP", "scientific_incompatibility_proven": false},
+    "R3.35": {"class": "D", "subtype": "D_PROVENANCE_GAP", "scientific_incompatibility_proven": false},
+    "R3.36": {"class": "D", "subtype": "D_PROVENANCE_GAP", "scientific_incompatibility_proven": false},
+    "R3.37": {"class": "D", "subtype": "D_PROVENANCE_GAP", "scientific_incompatibility_proven": false},
+    "R3.38": {"class": "D", "subtype": "D_PROVENANCE_GAP", "scientific_incompatibility_proven": false},
+    "R3.39": {"class": "D", "subtype": "D_PROVENANCE_GAP", "scientific_incompatibility_proven": false}
+  },
+  "counts": {"A": 0, "B": 0, "C": 0, "D": 6, "D_PROVENANCE_GAP": 6, "SCIENTIFIC_INCOMPATIBILITY_PROVEN": 0},
+  "governance": {
+    "new_simulation_authorized": false,
+    "external_runtime_authorized": false,
+    "r5_16_repair_block_authorized": false,
+    "reason": "A provenance-only D cannot yet justify scientific repair. Direct legacy artifacts must be recovered/bound first."
+  }
+}
