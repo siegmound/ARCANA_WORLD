@@ -1,0 +1,17 @@
+{
+  "stage": "v0.6D1-R5.15",
+  "status": "PASS_1_PARTIAL_PROVENANCE",
+  "nodes": ["R3.34", "R3.35", "R3.36", "R3.37", "R3.38", "R3.39"],
+  "recovered_stage_order": ["R3.34", "R3.35", "R3.36", "R3.37", "R3.38", "R3.39"],
+  "verified_repository_dependency_edges": [],
+  "unresolved_dependency_edges": [
+    ["R3.34", "R3.35"],
+    ["R3.35", "R3.36"],
+    ["R3.36", "R3.37"],
+    ["R3.37", "R3.38"],
+    ["R3.38", "R3.39"]
+  ],
+  "note": "The listed unresolved edges reflect recovered stage ordering only; they are not promoted to verified scientific dependencies until direct artifacts are bound.",
+  "r5_context_parent": "v0.6D1-R5.14 CANDIDATE",
+  "scientific_dependency_graph_complete": false
+}
