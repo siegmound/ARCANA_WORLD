@@ -1,0 +1,30 @@
+{
+  "stage": "v0.6D1-R5.15",
+  "audit": "CENSUS_PASS_1",
+  "status": "PASS_CENSUS_PASS_1_BLOCKED_PROVENANCE",
+  "checks": {
+    "scope_is_r3_34_through_r3_39": true,
+    "six_stages_censused": true,
+    "repository_tree_used_instead_of_unindexed_code_search": true,
+    "missing_provenance_distinguished_from_scientific_incompatibility": true,
+    "reuse_class_assigned_to_all_stages": true,
+    "dependency_graph_recorded_without_promoting_unverified_edges": true,
+    "gap_register_recorded": true,
+    "negative_results_preserved": true,
+    "new_simulation_not_authorized_without_scientific_gap": true,
+    "external_runtime_not_authorized_without_scientific_need": true,
+    "auto_seal_not_performed": true
+  },
+  "result_counts": {
+    "stages": 6,
+    "class_A": 0,
+    "class_B": 0,
+    "class_C": 0,
+    "class_D_provenance_gap": 6,
+    "scientific_incompatibility_proven": 0
+  },
+  "r5_15_completed": false,
+  "r5_15_blocker": "Direct repository-bound provenance for R3.34-R3.39 remains incomplete.",
+  "r5_16_authorized": false,
+  "next_action": "Recover or mirror existing sealed R3.34-R3.39 artifact sets; then execute classification pass 2."
+}
