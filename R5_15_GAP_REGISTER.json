@@ -1,0 +1,17 @@
+{
+  "stage": "v0.6D1-R5.15",
+  "status": "OPEN",
+  "gap_type": "PROVENANCE_BINDING",
+  "gaps": [
+    {"stage": "R3.34", "blocking": true, "need": "direct source/config/runner/test/output/manifest artifact binding"},
+    {"stage": "R3.35", "blocking": true, "need": "direct source/config/runner/test/output/manifest artifact binding"},
+    {"stage": "R3.36", "blocking": true, "need": "direct source/config/runner/test/output/manifest artifact binding"},
+    {"stage": "R3.37", "blocking": true, "need": "direct source/config/runner/test/output/manifest artifact binding"},
+    {"stage": "R3.38", "blocking": true, "need": "direct artifact set supporting known 44/44 PASS and regional-stem semantics"},
+    {"stage": "R3.39", "blocking": true, "need": "direct artifact set matching known SHA256 e575cf85e15b069e6a0ebbc1e6d895fc6a9f9bb122af0ac02703ae59d50888a1 and 9/9 + 22/22 + 40/40 validation record"}
+  ],
+  "scientific_gaps_proven": 0,
+  "simulation_repair_needed": "not established",
+  "preferred_resolution": "recover/mirror existing sealed artifacts before any rerun",
+  "r5_16_authorization": false
+}
