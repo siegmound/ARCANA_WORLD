@@ -1,0 +1,25 @@
+{
+  "stage": "v0.6D1-R5.15",
+  "pass": "DEPENDENCY_GRAPH_PASS_2",
+  "status": "PASS_REPOSITORY_VERIFIED",
+  "nodes": ["R3.34", "R3.35", "R3.36", "R3.37", "R3.38", "R3.39"],
+  "verified_internal_edges": [
+    ["R3.34", "R3.35"],
+    ["R3.35", "R3.36"],
+    ["R3.36", "R3.37"],
+    ["R3.37", "R3.38"],
+    ["R3.38", "R3.39"]
+  ],
+  "edge_evidence": {
+    "R3.34_to_R3.35": "R3.35 final seal: parent_authority_validate, r334_thresholds_inherited, parent_hash_exact",
+    "R3.35_to_R3.36": "R3.36 final seal: r334_r335_gates_inherited, r335_parent_hash_exact",
+    "R3.36_to_R3.37": "R3.37 final seal: r336_pathway_exact, authority_parent_exact, parent_hashes_exact",
+    "R3.37_to_R3.38": "R3.38 final seal: r337_pathway_exact, authority_parent_exact, parent_hashes_exact",
+    "R3.38_to_R3.39": "R3.39 final seal: authority_parent_exact, parent_hashes_exact, regional_anchor_exact"
+  },
+  "important_external_anchors": {
+    "R3.34": ["R3.33 environmental/resource authority"],
+    "R3.39": ["direct CHA-2 source authority", "R3.38 regional cultural genealogy authority"]
+  },
+  "scientific_dependency_graph_complete_for_scope": true
+}
