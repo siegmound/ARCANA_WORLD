@@ -10,6 +10,8 @@ REPOSITORY: siegmound/ARCANA_WORLD
 BRANCH: main
 BASELINE_IMPORT_COMMIT: 15ef285e554658125744056ec9266d9b0ed4c0ba
 RECOVERY_LEDGER: R5_15_R5_17_RECOVERY_LEDGER.md
+R5_15_CONTRACT: R5_15_BULK_LEGACY_RECONCILIATION_CONTRACT.md
+R5_15_CONTRACT_COMMIT: 7611ff98e79fdb2a10ae9b5126685f385e7c4501
 ```
 
 ## Authoritative continuation state
@@ -18,11 +20,12 @@ RECOVERY_LEDGER: R5_15_R5_17_RECOVERY_LEDGER.md
 LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.7
 LATEST_COMPLETED: v0.6D1-R5.14
 LATEST_STATUS: CANDIDATE
-NEXT_STAGE: v0.6D1-R5.15
-NEXT_STAGE_SCOPE: R3.34-R3.39 BULK LEGACY RECONCILIATION
+ACTIVE_STAGE: v0.6D1-R5.15
+ACTIVE_STAGE_STATUS: AUTHORIZED_NOT_COMPLETED
+ACTIVE_STAGE_SCOPE: R3.34-R3.39 BULK LEGACY RECONCILIATION
 ```
 
-### Why this supersedes the earlier R5.17 recovery claim
+### Recovery correction
 
 A targeted recovery on 2026-09-05 found a contemporaneous 2026-09-03 WorldSim handoff stating that:
 
@@ -30,9 +33,7 @@ A targeted recovery on 2026-09-05 found a contemporaneous 2026-09-03 WorldSim ha
 - the global R3.34–R3.39 census had been started but not completed;
 - R5.15/R5.16/R5.17 were a proposed future layout, not completed stage artifacts.
 
-No repository artifacts for R5.15, R5.16 or R5.17 were found. Later assistant-side summaries assigning unrelated scopes to those identifiers are treated as context drift.
-
-Therefore the prior temporary ledger entry `LATEST_RECOVERED_COMPLETED_ID: R5.17` is withdrawn.
+No repository artifacts proving completed R5.15, R5.16 or R5.17 stages were found. Later assistant-side summaries assigning unrelated scopes to those identifiers are context drift and have no authority.
 
 ## Continuation chain
 
@@ -45,7 +46,7 @@ v0.6D1-R5.7   SEALED
   -> v0.6D1-R5.12   CANDIDATE completed
   -> v0.6D1-R5.13   CANDIDATE completed
   -> v0.6D1-R5.14   CANDIDATE completed
-  -> v0.6D1-R5.15   NEXT / NOT YET COMPLETED
+  -> v0.6D1-R5.15   AUTHORIZED / NOT COMPLETED
 ```
 
 ## R5.14 summary
@@ -72,15 +73,13 @@ UNIQUE_HUMAN_IDENTITY: false
 DEEP_COUPLING: OFF
 ```
 
-## R5.15 contract direction
+## R5.15 authorized contract
 
-R5.15 is the first unfinished operation after R5.14:
+Scientific question:
 
-`R3.34–R3.39 BULK LEGACY RECONCILIATION`
+> Can the complete sealed legacy block R3.34–R3.39 be reused under the R5 continuation without silently changing its scientific meaning, and if not, what is the minimum repair actually required?
 
-The work must census and classify R3.34–R3.39 together, rather than automatically mapping one R5 stage per legacy stage.
-
-Required classification for each legacy stage:
+Required classification per legacy stage:
 
 ```text
 A — exact deterministic reuse
@@ -91,13 +90,23 @@ D — scientifically incompatible / missing evidence
 
 Only class D justifies new simulation/repair.
 
-R5.16 remains a conditional targeted gap/repair block if the census finds real problems. A later integrated end-of-legacy seal should use the next appropriate identifier without creating empty stages merely to preserve old numbering expectations.
+Expected outputs:
+
+```text
+R5_15_R3_34_TO_R3_39_CENSUS.json
+R5_15_DEPENDENCY_GRAPH.json
+R5_15_REUSE_CLASSIFICATION.json
+R5_15_GAP_REGISTER.json
+R5_15_FINAL_AUDIT.json
+```
+
+R5.16 is conditional: create a targeted gap/repair block only if R5.15 identifies genuine class-D gaps. Do not create empty stages merely to preserve numbering.
 
 ## Repository tracking rule
 
-From now on every scientific, implementation, governance, calibration, replay, audit or continuation change must be represented in this repository.
+Every scientific, implementation, governance, calibration, replay, audit or continuation change must be represented in this repository.
 
-1. Commit the relevant contract/source/artifact/result.
+1. Commit relevant contract/source/artifact/result.
 2. Update this state ledger in the same change or immediately following bookkeeping commit.
 3. Record parent, status, seal status and next stage.
 4. Never infer `SEALED` from PASS alone.
