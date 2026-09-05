@@ -1,0 +1,72 @@
+{
+  "stage": "v0.6D1-R5.15",
+  "pass": "CENSUS_PASS_2",
+  "status": "PASS_REPOSITORY_BOUND_PROVENANCE_RECOVERED",
+  "scope": ["R3.34", "R3.35", "R3.36", "R3.37", "R3.38", "R3.39"],
+  "discovery_correction": "Pass 1 incorrectly treated unindexed code search as absence. Direct GitHub Contents API inspection showed complete stage and final-seal artifact directories for all six stages.",
+  "stages": {
+    "R3.34": {
+      "artifact_directory": "outputs/v0_6D1_R3_34",
+      "seal_directory": "outputs/v0_6D1_R3_34_SEAL",
+      "final_seal_audit": "outputs/v0_6D1_R3_34_SEAL/R3_34_FINAL_SEAL_AUDIT.json",
+      "final_seal_status": "PASS_R334_PRODUCER_OPERATIONAL_TAXON_AUTHORITY_PLANT_COEVOLUTION_DOMESTICATION_AND_FOOD_PRODUCTION_REASSESSMENT_SEALED",
+      "final_checks": "25/25 PASS",
+      "parent_binding": "exact",
+      "output_manifest_closure": true,
+      "key_findings": ["36 operational producer taxa", "6 producer archetypes", "0 plant domesticates", "agriculture=false", "Deep=false", "unique human identity=false"]
+    },
+    "R3.35": {
+      "artifact_directory": "outputs/v0_6D1_R3_35",
+      "seal_directory": "outputs/v0_6D1_R3_35_SEAL",
+      "final_seal_audit": "outputs/v0_6D1_R3_35_SEAL/R3_35_FINAL_SEAL_AUDIT.json",
+      "final_seal_status": "PASS_R335_PRODUCER_HERITABLE_VARIATION_MULTIVARIATE_SELECTION_RESPONSE_WILD_GENE_FLOW_AND_DOMESTICATION_GENETICS_SEALED",
+      "final_checks": "29/29 PASS",
+      "parent_binding": "exact",
+      "output_manifest_closure": true,
+      "key_findings": ["36 producer taxa", "6 genetic traits", "parent hash exact", "no baseline domesticates", "agriculture=false", "Deep=false"]
+    },
+    "R3.36": {
+      "artifact_directory": "outputs/v0_6D1_R3_36",
+      "seal_directory": "outputs/v0_6D1_R3_36_SEAL",
+      "final_seal_audit": "outputs/v0_6D1_R3_36_SEAL/R3_36_FINAL_SEAL_AUDIT.json",
+      "final_seal_status": "PASS_R336_PRODUCER_DOMESTICATION_SELECTION_ECOLOGY_RESOURCE_PERSISTENCE_WILD_GENE_FLOW_CLOSURE_AND_FORAGER_VS_FOOD_PRODUCTION_PATHWAY_RESOLUTION_SEALED",
+      "final_checks": "32/32 PASS",
+      "parent_binding": "R3.34 and R3.35 hashes exact",
+      "output_manifest_closure": true,
+      "key_findings": ["INTENSIVE_MANAGED_FORAGER_PATHWAY", "agriculture=false", "thresholds not relaxed", "Deep=false"]
+    },
+    "R3.37": {
+      "artifact_directory": "outputs/v0_6D1_R3_37",
+      "seal_directory": "outputs/v0_6D1_R3_37_SEAL",
+      "final_seal_audit": "outputs/v0_6D1_R3_37_SEAL/R3_37_FINAL_SEAL_AUDIT.json",
+      "final_seal_status": "PASS_R337_INTENSIVE_MANAGED_FORAGER_DEMOGRAPHY_SETTLEMENT_STORAGE_EXCHANGE_SPECIALIZATION_AND_REGIONAL_ECONOMY_SEALED",
+      "final_checks": "38/38 PASS",
+      "parent_binding": "exact",
+      "output_manifest_closure": true,
+      "key_findings": ["DISTRIBUTED_MANAGED_FORAGER_ECONOMY for both retained lineages", "no agriculture", "no village/city/state", "no class hierarchy", "no currency/market", "Deep=false"]
+    },
+    "R3.38": {
+      "artifact_directory": "outputs/v0_6D1_R3_38",
+      "seal_directory": "outputs/v0_6D1_R3_38_SEAL",
+      "final_seal_audit": "outputs/v0_6D1_R3_38_SEAL/R3_38_FINAL_SEAL_AUDIT.json",
+      "final_seal_status": "PASS_R338_REGIONAL_EXCHANGE_NETWORKS_CONCRETE_TECHNOLOGY_RETICULATE_CULTURAL_GENEALOGIES_AND_BORROWING_SEALED",
+      "final_checks": "44/44 PASS",
+      "parent_binding": "exact",
+      "output_manifest_closure": true,
+      "key_findings": ["12 implementation families", "12 regional stems", "REGIONAL_TECHNOLOGICAL_TRADITIONS_WITH_LIMITED_BORROWING", "0 robust borrowing edges", "no named culture/language/religion", "Deep=false"]
+    },
+    "R3.39": {
+      "artifact_directory": "outputs/v0_6D1_R3_39",
+      "seal_directory": "outputs/v0_6D1_R3_39_SEAL",
+      "final_seal_audit": "outputs/v0_6D1_R3_39_SEAL/R3_39_FINAL_SEAL_AUDIT.json",
+      "final_seal_status": "PASS_R339_CULTURAL_SYMBOLIC_MEMORY_DIRECT_CHA2_EVENT_MEMORY_LANGUAGE_DIVERGENCE_PRECONDITIONS_AND_INTERLINEAGE_IDENTITY_DYNAMICS_SEALED",
+      "final_checks": "40/40 PASS",
+      "parent_binding": "exact",
+      "output_manifest_closure": true,
+      "key_findings": ["direct CHA-2 source hash verified", "one robust persistent CHA-2 memory stem", "010 emergent identity marking", "009 weak identity boundaries", "no named myth/religion/ethnicity/language", "no unique human identity", "Deep=false"]
+    }
+  },
+  "scientific_incompatibilities": 0,
+  "new_simulation_required": false,
+  "external_engine_execution_required": false
+}
