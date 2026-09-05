@@ -1,6 +1,6 @@
 # ARCANA WorldSim — Current State Authority
 
-> Compact repository-resident continuation ledger. This file is the default bootstrap for future ARCANA WorldSim work; historical R3/R4/R5 artifacts are archive/provenance material and should be opened only when specifically needed.
+> Compact repository-resident continuation ledger. Historical R3/R4/R5 material is provenance/archive unless specifically required.
 
 ## Repository
 
@@ -8,77 +8,102 @@
 PROJECT: ARCANA WorldSim
 REPOSITORY: siegmound/ARCANA_WORLD
 BRANCH: main
-LAST_REPOSITORY_BASELINE_BEFORE_CONTINUITY_SYNC: 15ef285e554658125744056ec9266d9b0ed4c0ba
+BASELINE_IMPORT_COMMIT: 15ef285e554658125744056ec9266d9b0ed4c0ba
 RECOVERY_LEDGER: R5_15_R5_17_RECOVERY_LEDGER.md
 ```
 
-## Current continuation state
+## Authoritative continuation state
 
 ```yaml
 LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.7
-LATEST_RECOVERED_COMPLETED_ID: v0.6D1-R5.17
-LATEST_COMPLETION_SOURCE: project/chat continuity recovered 2026-09-05
-R5_15_TO_R5_17_REPOSITORY_ARTIFACT_MIRROR: BLOCKED_PENDING_REAL_ARTIFACT_RECOVERY
-R5_17_METADATA_CONFLICT: true
-REPOSITORY_ARTIFACT_COMPLETENESS_THROUGH_R5_17: incomplete
-NEXT_STAGE_ID: v0.6D1-R5.18
-NEXT_STAGE_SCOPE: unresolved_pending_parent_recovery
-NEXT_STAGE_STATUS: NOT_COMPLETED
+LATEST_COMPLETED: v0.6D1-R5.14
+LATEST_STATUS: CANDIDATE
+NEXT_STAGE: v0.6D1-R5.15
+NEXT_STAGE_SCOPE: R3.34-R3.39 BULK LEGACY RECONCILIATION
 ```
 
-### Recovered recent chain
+### Why this supersedes the earlier R5.17 recovery claim
+
+A targeted recovery on 2026-09-05 found a contemporaneous 2026-09-03 WorldSim handoff stating that:
+
+- R5.14 was the last completed PASS CANDIDATE stage;
+- the global R3.34–R3.39 census had been started but not completed;
+- R5.15/R5.16/R5.17 were a proposed future layout, not completed stage artifacts.
+
+No repository artifacts for R5.15, R5.16 or R5.17 were found. Later assistant-side summaries assigning unrelated scopes to those identifiers are treated as context drift.
+
+Therefore the prior temporary ledger entry `LATEST_RECOVERED_COMPLETED_ID: R5.17` is withdrawn.
+
+## Continuation chain
 
 ```text
-v0.6D1-R5.14  completed candidate (previous state authority)
-  -> v0.6D1-R5.15  recovered as completed/verified; repository artifacts absent
-  -> v0.6D1-R5.16  recovered as completed/verified; repository artifacts absent
-  -> v0.6D1-R5.17  recovered as completed/verified; exact metadata conflicts across old chats
-  -> v0.6D1-R5.18  next identifier; exact scientific scope not yet authorized/reconstructed
+v0.6D1-R5.7   SEALED
+  -> v0.6D1-R5.8    CANDIDATE completed
+  -> v0.6D1-R5.9    CANDIDATE completed
+  -> v0.6D1-R5.10   CANDIDATE completed
+  -> v0.6D1-R5.11   CANDIDATE completed
+  -> v0.6D1-R5.12   CANDIDATE completed
+  -> v0.6D1-R5.13   CANDIDATE completed
+  -> v0.6D1-R5.14   CANDIDATE completed
+  -> v0.6D1-R5.15   NEXT / NOT YET COMPLETED
 ```
 
-Do **not** promote R5.15–R5.17 to `SEALED` from chat summaries alone. `R5.7` remains the last explicitly confirmed seal in this compact repository authority until direct evidence establishes a later seal.
+## R5.14 summary
 
-## Verified recovery findings
+```yaml
+STAGE: v0.6D1-R5.14
+STATUS: CANDIDATE
+SOURCE_AUTHORITY: 36/36 PASS
+REGRESSION: 4/4 PASS
+RECONCILIATION: 37/37 PASS
+ECOLOGICAL_PARTNER_CANDIDATES: 24
+ENSEMBLE_MEMBERS: 32
+ENVIRONMENT_TRAJECTORY_ANCHORS: 9
+MAX_DOMESTICATION_STAGE: 1
+INCIPIENT_DOMESTICATED_SPECIES: 0
+MATERIALIZED_DOMESTICATED_SPECIES: 0
+ANIMAL_FOOD_PRODUCTION_EMERGENCE: false
+PLANT_REGISTRY: absent
+PLANT_DOMESTICATION: false
+AGRICULTURE: false
+SENSITIVITY_VARIANTS: 18
+NON_EMERGENCE_ROBUST_ACROSS_ALL_VARIANTS: true
+UNIQUE_HUMAN_IDENTITY: false
+DEEP_COUPLING: OFF
+```
 
-The 2026-09-05 targeted recovery audit established:
+## R5.15 contract direction
 
-- no `R5_15`, `R5_16` or `R5_17` paths are present in the current repository tree;
-- the current GitHub repository has only the `main` branch, so there is no alternate branch carrying those stage artifacts;
-- targeted File Library recovery found no relevant ARCANA artifact for these stages;
-- historical chat records disagree on R5.17/R5.18 titles and scientific scope;
-- a prior-chat commit claim `3f2c0b7` does not resolve in the current GitHub repository.
+R5.15 is the first unfinished operation after R5.14:
 
-See `R5_15_R5_17_RECOVERY_LEDGER.md` for the conservative recovery record.
+`R3.34–R3.39 BULK LEGACY RECONCILIATION`
+
+The work must census and classify R3.34–R3.39 together, rather than automatically mapping one R5 stage per legacy stage.
+
+Required classification for each legacy stage:
+
+```text
+A — exact deterministic reuse
+B — deterministic reuse within strict numerical tolerance
+C — semantically reusable but requires R5 reconciliation wrapper
+D — scientifically incompatible / missing evidence
+```
+
+Only class D justifies new simulation/repair.
+
+R5.16 remains a conditional targeted gap/repair block if the census finds real problems. A later integrated end-of-legacy seal should use the next appropriate identifier without creating empty stages merely to preserve old numbering expectations.
 
 ## Repository tracking rule
 
-From the continuity synchronization onward, **no WorldSim modification is authoritative only because it exists in chat**.
+From now on every scientific, implementation, governance, calibration, replay, audit or continuation change must be represented in this repository.
 
-For every scientific, implementation, governance, calibration, replay, audit, or continuation change:
-
-1. commit the relevant source/artifact/contract to this repository;
-2. update this file in the same repository change, or in an immediately following bookkeeping commit when atomic inclusion is technically impossible;
-3. record stage identifier, completion status, seal status, parent stage, and next stage;
-4. preserve explicit `SEALED` versus `CANDIDATE`/unsealed distinctions;
-5. never reconstruct the current head from old R3/R4/R5 chat history when this ledger and newer repository evidence are available;
-6. retrieve historical large artifacts only for targeted provenance/audit needs rather than preloading them into chat context;
-7. never convert conflicting old-chat metadata into canonical scientific evidence without direct provenance.
-
-## R5.18 continuation gate
-
-```yaml
-NEXT_STAGE_ID: v0.6D1-R5.18
-PARENT_CONTINUATION_ID: v0.6D1-R5.17
-PARENT_METADATA_CONFIDENCE: partial
-PARENT_ARTIFACT_PROVENANCE: incomplete
-SPECIFICATION_WORK: allowed_with_explicit_provenance_gap
-SCIENTIFIC_EXECUTION:
-  allowed: only when required inputs are repository-supported or newly supplied as direct evidence
-  blocked: when exact missing R5.17 artifacts are required
-AUTO_SEAL: forbidden
-```
-
-Bookkeeping or recovery work does not consume the R5.18 stage number.
+1. Commit the relevant contract/source/artifact/result.
+2. Update this state ledger in the same change or immediately following bookkeeping commit.
+3. Record parent, status, seal status and next stage.
+4. Never infer `SEALED` from PASS alone.
+5. Never let chat-only metadata override repository evidence or stronger contemporaneous handoffs.
+6. Retrieve large historical artifacts only for targeted provenance/audit work.
+7. Do not introduce an external runtime unless the scientific question shows it is useful.
 
 ---
 
