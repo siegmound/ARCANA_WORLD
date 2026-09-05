@@ -11,29 +11,26 @@ BRANCH: main
 BASELINE_IMPORT_COMMIT: 15ef285e554658125744056ec9266d9b0ed4c0ba
 RECOVERY_LEDGER: R5_15_R5_17_RECOVERY_LEDGER.md
 R5_15_CONTRACT: R5_15_BULK_LEGACY_RECONCILIATION_CONTRACT.md
-R5_15_CONTRACT_COMMIT: 7611ff98e79fdb2a10ae9b5126685f385e7c4501
+R5_15_FINAL_AUDIT_PASS2: R5_15_FINAL_AUDIT_PASS2.json
+R5_15_FINAL_AUDIT_COMMIT: fba2b90142cd3895ad2ef982d3fb19df22150d8a
 ```
 
 ## Authoritative continuation state
 
 ```yaml
 LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.7
-LATEST_COMPLETED: v0.6D1-R5.14
+LATEST_COMPLETED: v0.6D1-R5.15
 LATEST_STATUS: CANDIDATE
-ACTIVE_STAGE: v0.6D1-R5.15
-ACTIVE_STAGE_STATUS: AUTHORIZED_NOT_COMPLETED
-ACTIVE_STAGE_SCOPE: R3.34-R3.39 BULK LEGACY RECONCILIATION
+LATEST_VERDICT: PASS_R515_R334_TO_R339_BULK_LEGACY_RECONCILIATION_CANDIDATE
+NEXT_STAGE: v0.6D1-R5.16
+NEXT_STAGE_SCOPE: R5.8-to-R3.39 integrated end-of-legacy reconciliation and seal review
 ```
 
-### Recovery correction
+## Recovery and discovery correction
 
-A targeted recovery on 2026-09-05 found a contemporaneous 2026-09-03 WorldSim handoff stating that:
+A targeted recovery on 2026-09-05 established that R5.14 was the last completed stage in the contemporaneous handoff and that R5.15 was the unfinished R3.34–R3.39 bulk legacy reconciliation.
 
-- R5.14 was the last completed PASS CANDIDATE stage;
-- the global R3.34–R3.39 census had been started but not completed;
-- R5.15/R5.16/R5.17 were a proposed future layout, not completed stage artifacts.
-
-No repository artifacts proving completed R5.15, R5.16 or R5.17 stages were found. Later assistant-side summaries assigning unrelated scopes to those identifiers are context drift and have no authority.
+R5.15 pass 1 initially reported provenance gaps because GitHub code search was not indexed. Direct repository Contents API inspection then found complete artifact directories and final-seal directories for every stage R3.34 through R3.39. Pass 2 therefore supersedes the pass-1 discovery result while preserving pass 1 as audit history.
 
 ## Continuation chain
 
@@ -46,61 +43,47 @@ v0.6D1-R5.7   SEALED
   -> v0.6D1-R5.12   CANDIDATE completed
   -> v0.6D1-R5.13   CANDIDATE completed
   -> v0.6D1-R5.14   CANDIDATE completed
-  -> v0.6D1-R5.15   AUTHORIZED / NOT COMPLETED
+  -> v0.6D1-R5.15   CANDIDATE completed
+  -> v0.6D1-R5.16   NEXT / NOT COMPLETED
 ```
 
-## R5.14 summary
+## R5.15 completed result
 
 ```yaml
-STAGE: v0.6D1-R5.14
+STAGE: v0.6D1-R5.15
 STATUS: CANDIDATE
-SOURCE_AUTHORITY: 36/36 PASS
-REGRESSION: 4/4 PASS
-RECONCILIATION: 37/37 PASS
-ECOLOGICAL_PARTNER_CANDIDATES: 24
-ENSEMBLE_MEMBERS: 32
-ENVIRONMENT_TRAJECTORY_ANCHORS: 9
-MAX_DOMESTICATION_STAGE: 1
-INCIPIENT_DOMESTICATED_SPECIES: 0
-MATERIALIZED_DOMESTICATED_SPECIES: 0
-ANIMAL_FOOD_PRODUCTION_EMERGENCE: false
-PLANT_REGISTRY: absent
-PLANT_DOMESTICATION: false
-AGRICULTURE: false
-SENSITIVITY_VARIANTS: 18
-NON_EMERGENCE_ROBUST_ACROSS_ALL_VARIANTS: true
-UNIQUE_HUMAN_IDENTITY: false
-DEEP_COUPLING: OFF
+SCOPE: R3.34-R3.39 BULK LEGACY RECONCILIATION
+REUSE_CLASSIFICATION:
+  A: 6
+  B: 0
+  C: 0
+  D: 0
+REMAINING_PROVENANCE_GAPS: 0
+SCIENTIFIC_INCOMPATIBILITIES: 0
+NEW_SIMULATION_REQUIRED: false
+EXTERNAL_RUNTIME_REQUIRED: false
+REPAIR_BLOCK_REQUIRED: false
+AUTO_SEAL_PERFORMED: false
 ```
 
-## R5.15 authorized contract
+Class A means exact reuse of immutable repository-resident SEALED artifacts and their manifest/hash-bound semantics; it does not require a fresh scientific rerun.
 
-Scientific question:
-
-> Can the complete sealed legacy block R3.34–R3.39 be reused under the R5 continuation without silently changing its scientific meaning, and if not, what is the minimum repair actually required?
-
-Required classification per legacy stage:
+Repository-verified internal legacy chain:
 
 ```text
-A — exact deterministic reuse
-B — deterministic reuse within strict numerical tolerance
-C — semantically reusable but requires R5 reconciliation wrapper
-D — scientifically incompatible / missing evidence
+R3.34 -> R3.35 -> R3.36 -> R3.37 -> R3.38 -> R3.39
 ```
 
-Only class D justifies new simulation/repair.
+The final-seal audits verify exact parent/hash bindings across the chain, output-manifest closure, exact keys/axes/geometries where applicable, preservation of negative outcomes, Deep coupling OFF, and no forced unique human identity.
 
-Expected outputs:
+## R5.16 direction
 
-```text
-R5_15_R3_34_TO_R3_39_CENSUS.json
-R5_15_DEPENDENCY_GRAPH.json
-R5_15_REUSE_CLASSIFICATION.json
-R5_15_GAP_REGISTER.json
-R5_15_FINAL_AUDIT.json
-```
+Because R5.15 found no class-D gap, a targeted repair stage is not justified. The next non-empty identifier is therefore R5.16, used for an integrated end-of-legacy reconciliation and explicit seal review over the R5.8-to-R5.15 continuation and the reconciled sealed legacy authority through R3.39.
 
-R5.16 is conditional: create a targeted gap/repair block only if R5.15 identifies genuine class-D gaps. Do not create empty stages merely to preserve numbering.
+R5.16 must not auto-seal. It must either:
+
+- explicitly PASS and produce a separately audited integrated seal, or
+- remain blocked/CANDIDATE with the exact failing dependency recorded.
 
 ## Repository tracking rule
 
