@@ -1,0 +1,468 @@
+{
+  "a1_inventory": {
+    "a1_commit": "7b25d57a599c513b8404c0aeaf5693cfc77ac3e8",
+    "a1_source_is_ancestor_of_a2": true,
+    "inventory_source_commit": "9ae9beaebf4ad28550e4f9e48a6091d84e2ae497",
+    "path": "R5_16_SOURCE_AUTHORITY_INVENTORY.json"
+  },
+  "branch": "main",
+  "method": {
+    "a1_git_blob_identity_rechecked": true,
+    "automatic_repair": false,
+    "canonical_mutation": false,
+    "existing_stage_sha256_checkers_executed_for_r5_8_to_r5_14": true,
+    "external_engine_execution": false,
+    "external_engine_governance_final_adjudication": false,
+    "legacy_reconciliation_adjudication": false,
+    "negative_result_adjudication": false,
+    "parent_chain_adjudication": false,
+    "r5_15_pass2_audit_shape_respected": true,
+    "scientific_reinterpretation": false,
+    "seal_action": false
+  },
+  "next_if_pass": "R5.16-B_PARENT_CHAIN_AUDIT",
+  "open_provenance_gap_count": 0,
+  "open_provenance_gaps": [],
+  "repository": "siegmound/ARCANA_WORLD",
+  "repository_provenance_complete": true,
+  "schema": "ARCANA_R5_16_SOURCE_AUTHORITY_V1",
+  "scope": {
+    "first_stage": "v0.6D1-R5.8",
+    "last_stage": "v0.6D1-R5.15",
+    "stage_count": 8
+  },
+  "source_commit": "7b25d57a599c513b8404c0aeaf5693cfc77ac3e8",
+  "stage": "v0.6D1-R5.16",
+  "stages": [
+    {
+      "completion": {
+        "checks_passed": 23,
+        "checks_total": 23,
+        "failed": [],
+        "path": "outputs/v0_6D1_R5_8/R5_8_INTEGRATED_RECONCILIATION.json",
+        "scientific_candidate_eligible": true,
+        "stage": "v0.6D1-R5.8",
+        "status": "PASS_R58_3MA_200KA_HOMINID_HISTORY_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "completion_artifact": "outputs/v0_6D1_R5_8/R5_8_INTEGRATED_RECONCILIATION.json",
+        "config": "configs/world1_r58_hominid_history_reconciliation_v0_6D1_R5_8.json",
+        "contract": "R5_8_3MA_TO_200KA_HOMINID_HISTORY_RECONCILIATION_CONTRACT.md",
+        "output_manifest": "outputs/v0_6D1_R5_8/R5_8_OUTPUT_MANIFEST.json",
+        "parent_authority_binding": "outputs/v0_6D1_R5_8/R5_8_PARENT_AUTHORITY_BINDING.json",
+        "reconciliation_authority": "R5_8_RECONCILIATION_AUTHORITY.json",
+        "source_authority_manifest": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R5_8.json",
+        "source_manifest_checker": {
+          "passed": true,
+          "returncode": 0,
+          "script": "scripts/check_v0_6D1_R5_8_source_manifest.py",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"stage\": \"v0.6D1-R5.8\",",
+            "  \"status\": \"PASS_R58_SOURCE_MANIFEST\",",
+            "  \"checks_passed\": 43,",
+            "  \"checks_total\": 43,",
+            "  \"failed\": []",
+            "}"
+          ]
+        }
+      },
+      "external_engine_evidence": null,
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 16,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.8",
+      "status": "PASS"
+    },
+    {
+      "completion": {
+        "checks_passed": 30,
+        "checks_total": 30,
+        "failed": [],
+        "path": "outputs/v0_6D1_R5_9/R5_9_INTEGRATED_RECONCILIATION.json",
+        "scientific_candidate_eligible": true,
+        "stage": "v0.6D1-R5.9",
+        "status": "PASS_R59_R58_TO_R328_200KA_0KA_HIGH_RESOLUTION_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "completion_artifact": "outputs/v0_6D1_R5_9/R5_9_INTEGRATED_RECONCILIATION.json",
+        "config": "configs/world1_r59_recent_human_history_reconciliation_v0_6D1_R5_9.json",
+        "contract": "R5_9_R58_R328_HIGH_RESOLUTION_RECONCILIATION_CONTRACT.md",
+        "output_manifest": "outputs/v0_6D1_R5_9/R5_9_OUTPUT_MANIFEST.json",
+        "parent_authority_binding": "outputs/v0_6D1_R5_9/R5_9_PARENT_AUTHORITY_BINDING.json",
+        "reconciliation_authority": "R5_9_RECONCILIATION_AUTHORITY.json",
+        "source_authority_manifest": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R5_9.json",
+        "source_manifest_checker": {
+          "passed": true,
+          "returncode": 0,
+          "script": "scripts/check_v0_6D1_R5_9_source_manifest.py",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"stage\": \"v0.6D1-R5.9\",",
+            "  \"status\": \"PASS_R59_SOURCE_MANIFEST\",",
+            "  \"checks_passed\": 39,",
+            "  \"checks_total\": 39,",
+            "  \"failed\": []",
+            "}"
+          ]
+        }
+      },
+      "external_engine_evidence": {
+        "considered": {
+          "CDMetaPOP_3_08": "NOT_RERUN_NO_NEW_DEMOGRAPHIC_PERSISTENCE_QUESTION",
+          "Geonomics_1_4_9": "NOT_REQUIRED_FOR_SEALED_REPLAY_RECONCILIATION",
+          "Madingley": "NOT_REQUIRED_FOR_SEALED_REPLAY_RECONCILIATION",
+          "NEMO_2_4_2": "NOT_RERUN_NO_NEW_METAPOPULATION_GENETIC_QUESTION",
+          "RangeShiftR_3_0_1": "NOT_RERUN_NO_NEW_CORRIDOR_REACHABILITY_QUESTION",
+          "SLiM_5_2": "NOT_RERUN_R56_ALREADY_PROVIDES_PRE200KA_TRUE_LOCAL_ANCESTRY_CHALLENGES_AND_R328_POST200KA_ADMIXTURE_IS_ONLY_DIAGNOSTIC"
+        },
+        "decision": "NO_NEW_ENGINE_REQUIRED_FOR_RECONCILIATION",
+        "new_external_engine_execution_performed": false,
+        "path": "outputs/v0_6D1_R5_9/R5_9_RUNTIME_UTILITY_REVIEW.json",
+        "role_adjudication": "DEFERRED_TO_R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT",
+        "stage": "v0.6D1-R5.9",
+        "status": "PASS_R59_RUNTIME_UTILITY_REVIEW_NO_NEW_ENGINE_REQUIRED"
+      },
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 16,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.9",
+      "status": "PASS"
+    },
+    {
+      "completion": {
+        "checks_passed": 33,
+        "checks_total": 33,
+        "failed": [],
+        "path": "outputs/v0_6D1_R5_10/R5_10_INTEGRATED_RECONCILIATION.json",
+        "scientific_candidate_eligible": true,
+        "stage": "v0.6D1-R5.10",
+        "status": "PASS_R510_R59_TO_R329_POPULATION_SETTLEMENT_CULTURAL_PRECONDITION_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "completion_artifact": "outputs/v0_6D1_R5_10/R5_10_INTEGRATED_RECONCILIATION.json",
+        "config": "configs/world1_r510_r329_settlement_cultural_reconciliation_v0_6D1_R5_10.json",
+        "contract": "R5_10_R59_R329_POPULATION_SETTLEMENT_CULTURAL_PRECONDITION_RECONCILIATION_CONTRACT.md",
+        "output_manifest": "outputs/v0_6D1_R5_10/R5_10_OUTPUT_MANIFEST.json",
+        "parent_authority_binding": "outputs/v0_6D1_R5_10/R5_10_PARENT_AUTHORITY_BINDING.json",
+        "reconciliation_authority": "R5_10_RECONCILIATION_AUTHORITY.json",
+        "source_authority_manifest": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R5_10.json",
+        "source_manifest_checker": {
+          "passed": true,
+          "returncode": 0,
+          "script": "scripts/check_v0_6D1_R5_10_source_manifest.py",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"stage\": \"v0.6D1-R5.10\",",
+            "  \"status\": \"PASS_R510_SOURCE_MANIFEST\",",
+            "  \"checks_passed\": 39,",
+            "  \"checks_total\": 39,",
+            "  \"failed\": []",
+            "}"
+          ]
+        }
+      },
+      "external_engine_evidence": {
+        "considered": {
+          "CDMetaPOP_3_08": "NOT_RERUN_NO_NEW_DEMOGRAPHIC_PERSISTENCE_QUESTION",
+          "NEMO_2_4_2": "NOT_RERUN_NO_NEW_GENE_FLOW_ROBUSTNESS_QUESTION",
+          "RangeShiftR_3_0_1": "NOT_RERUN_NO_NEW_CORRIDOR_QUESTION",
+          "SLiM_5_2": "NOT_RERUN_NO_NEW_ANCESTRY_QUESTION",
+          "agent_based_runtime": "NOT_INTRODUCED_R329_IS_RECONCILED_AS_SEALED_DIAGNOSTIC_PRECONDITION_LAYER"
+        },
+        "decision": "NO_NEW_ENGINE_REQUIRED_FOR_R329_RECONCILIATION",
+        "new_external_engine_execution_performed": false,
+        "path": "outputs/v0_6D1_R5_10/R5_10_RUNTIME_UTILITY_REVIEW.json",
+        "role_adjudication": "DEFERRED_TO_R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT",
+        "stage": "v0.6D1-R5.10",
+        "status": "PASS_R510_RUNTIME_UTILITY_REVIEW_NO_NEW_ENGINE_REQUIRED"
+      },
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 15,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.10",
+      "status": "PASS"
+    },
+    {
+      "completion": {
+        "checks_passed": 36,
+        "checks_total": 36,
+        "failed": [],
+        "path": "outputs/v0_6D1_R5_11/R5_11_INTEGRATED_RECONCILIATION.json",
+        "scientific_candidate_eligible": true,
+        "stage": "v0.6D1-R5.11",
+        "status": "PASS_R511_R510_TO_R330_CENSUS_GROUP_ABM_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "completion_artifact": "outputs/v0_6D1_R5_11/R5_11_INTEGRATED_RECONCILIATION.json",
+        "config": "configs/world1_r511_r330_census_group_reconciliation_v0_6D1_R5_11.json",
+        "contract": "R5_11_R510_R330_CENSUS_GROUP_ABM_RECONCILIATION_CONTRACT.md",
+        "output_manifest": "outputs/v0_6D1_R5_11/R5_11_OUTPUT_MANIFEST.json",
+        "parent_authority_binding": "outputs/v0_6D1_R5_11/R5_11_PARENT_AUTHORITY_BINDING.json",
+        "reconciliation_authority": "R5_11_RECONCILIATION_AUTHORITY.json",
+        "source_authority_manifest": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R5_11.json",
+        "source_manifest_checker": {
+          "passed": true,
+          "returncode": 0,
+          "script": "scripts/check_v0_6D1_R5_11_source_manifest.py",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"checks_passed\": 36,",
+            "  \"checks_total\": 36,",
+            "  \"failed\": [],",
+            "  \"stage\": \"v0.6D1-R5.11\",",
+            "  \"status\": \"PASS_R511_SOURCE_MANIFEST\"",
+            "}"
+          ]
+        }
+      },
+      "external_engine_evidence": {
+        "considered": {
+          "CDMetaPOP_3_08": "NOT_RERUN_NO_NEW_PERSISTENCE_QUESTION",
+          "NEMO_2_4_2": "NOT_RERUN_NO_NEW_GENE_FLOW_QUESTION",
+          "RangeShiftR_3_0_1": "NOT_RERUN_NO_NEW_CORRIDOR_QUESTION",
+          "SLiM_5_2": "NOT_RERUN_NO_NEW_ANCESTRY_QUESTION",
+          "new_ABM_runtime": "NOT_REQUIRED_R330_WEIGHTED_GROUP_ABM_IS_RECONCILED_NOT_REEXECUTED"
+        },
+        "decision": "NO_NEW_ENGINE_OR_R330_RERUN_REQUIRED",
+        "new_external_engine_execution_performed": false,
+        "path": "outputs/v0_6D1_R5_11/R5_11_RUNTIME_UTILITY_REVIEW.json",
+        "role_adjudication": "DEFERRED_TO_R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT",
+        "stage": "v0.6D1-R5.11",
+        "status": "PASS_R511_RUNTIME_UTILITY_REVIEW_NO_NEW_ENGINE_REQUIRED"
+      },
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 15,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.11",
+      "status": "PASS"
+    },
+    {
+      "completion": {
+        "checks_passed": 43,
+        "checks_total": 43,
+        "failed": [],
+        "path": "outputs/v0_6D1_R5_12/R5_12_INTEGRATED_RECONCILIATION.json",
+        "scientific_candidate_eligible": true,
+        "stage": "v0.6D1-R5.12",
+        "status": "PASS_R512_R511_TO_R331_ABSTRACT_CULTURAL_TECHNOLOGICAL_ECOLOGY_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "completion_artifact": "outputs/v0_6D1_R5_12/R5_12_INTEGRATED_RECONCILIATION.json",
+        "config": "configs/world1_r512_r331_abstract_technological_ecology_reconciliation_v0_6D1_R5_12.json",
+        "contract": "R5_12_R511_R331_ABSTRACT_CULTURAL_TECHNOLOGICAL_ECOLOGY_RECONCILIATION_CONTRACT.md",
+        "output_manifest": "outputs/v0_6D1_R5_12/R5_12_OUTPUT_MANIFEST.json",
+        "parent_authority_binding": "outputs/v0_6D1_R5_12/R5_12_PARENT_AUTHORITY_BINDING.json",
+        "reconciliation_authority": "R5_12_RECONCILIATION_AUTHORITY.json",
+        "source_authority_manifest": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R5_12.json",
+        "source_manifest_checker": {
+          "passed": true,
+          "returncode": 0,
+          "script": "scripts/check_v0_6D1_R5_12_source_manifest.py",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"checks_passed\": 38,",
+            "  \"checks_total\": 38,",
+            "  \"failed\": [],",
+            "  \"stage\": \"v0.6D1-R5.12\",",
+            "  \"status\": \"PASS_R512_SOURCE_MANIFEST\"",
+            "}"
+          ]
+        }
+      },
+      "external_engine_evidence": {
+        "considered": {
+          "CDMetaPOP_3_08": "NOT_RERUN_NO_NEW_PERSISTENCE_QUESTION",
+          "NEMO_2_4_2": "NOT_RERUN_NO_NEW_GENE_FLOW_QUESTION",
+          "RangeShiftR_3_0_1": "NOT_RERUN_NO_NEW_CORRIDOR_QUESTION",
+          "SLiM_5_2": "NOT_RERUN_NO_NEW_ANCESTRY_QUESTION",
+          "new_cultural_ABM_runtime": "NOT_REQUIRED_R331_IS_DETERMINISTIC_ARCANA_NATIVE_FUNCTIONAL_ECOLOGY"
+        },
+        "decision": "NO_NEW_ENGINE_OR_R331_SCIENTIFIC_RERUN_REQUIRED",
+        "new_external_engine_execution_performed": false,
+        "path": "outputs/v0_6D1_R5_12/R5_12_RUNTIME_UTILITY_REVIEW.json",
+        "role_adjudication": "DEFERRED_TO_R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT",
+        "stage": "v0.6D1-R5.12",
+        "status": "PASS_R512_RUNTIME_UTILITY_REVIEW_NO_NEW_ENGINE_REQUIRED"
+      },
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 15,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.12",
+      "status": "PASS"
+    },
+    {
+      "completion": {
+        "checks_passed": 44,
+        "checks_total": 44,
+        "failed": [],
+        "path": "outputs/v0_6D1_R5_13/R5_13_INTEGRATED_RECONCILIATION.json",
+        "scientific_candidate_eligible": true,
+        "stage": "v0.6D1-R5.13",
+        "status": "PASS_R513_R512_TO_R332_SUBSISTENCE_REGIONAL_READINESS_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "completion_artifact": "outputs/v0_6D1_R5_13/R5_13_INTEGRATED_RECONCILIATION.json",
+        "config": "configs/world1_r513_r332_subsistence_regional_readiness_reconciliation_v0_6D1_R5_13.json",
+        "contract": "R5_13_R512_R332_SUBSISTENCE_REGIONAL_READINESS_RECONCILIATION_CONTRACT.md",
+        "output_manifest": "outputs/v0_6D1_R5_13/R5_13_OUTPUT_MANIFEST.json",
+        "parent_authority_binding": "outputs/v0_6D1_R5_13/R5_13_PARENT_AUTHORITY_BINDING.json",
+        "reconciliation_authority": "R5_13_RECONCILIATION_AUTHORITY.json",
+        "source_authority_manifest": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R5_13.json",
+        "source_manifest_checker": {
+          "passed": true,
+          "returncode": 0,
+          "script": "scripts/check_v0_6D1_R5_13_source_manifest.py",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"checks_passed\": 36,",
+            "  \"checks_total\": 36,",
+            "  \"failed\": [],",
+            "  \"stage\": \"v0.6D1-R5.13\",",
+            "  \"status\": \"PASS_R513_SOURCE_MANIFEST\"",
+            "}"
+          ]
+        }
+      },
+      "external_engine_evidence": {
+        "considered": {
+          "CDMetaPOP_3_08": "NOT_RERUN_NO_NEW_DEMOGRAPHIC_PERSISTENCE_QUESTION",
+          "NEMO_2_4_2": "NOT_RERUN_NO_NEW_GENE_FLOW_QUESTION",
+          "RangeShiftR_3_0_1": "NOT_RERUN_NO_NEW_CORRIDOR_QUESTION",
+          "SLiM_5_2": "NOT_RERUN_NO_NEW_ANCESTRY_QUESTION",
+          "new_subsistence_ABM_runtime": "NOT_REQUIRED_R332_IS_DETERMINISTIC_ARCANA_NATIVE_READINESS_ECOLOGY"
+        },
+        "decision": "NO_NEW_ENGINE_OR_R332_SCIENTIFIC_RERUN_REQUIRED",
+        "new_external_engine_execution_performed": false,
+        "path": "outputs/v0_6D1_R5_13/R5_13_RUNTIME_UTILITY_REVIEW.json",
+        "role_adjudication": "DEFERRED_TO_R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT",
+        "stage": "v0.6D1-R5.13",
+        "status": "PASS_R513_RUNTIME_UTILITY_REVIEW_NO_NEW_ENGINE_REQUIRED"
+      },
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 15,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.13",
+      "status": "PASS"
+    },
+    {
+      "completion": {
+        "checks_passed": 37,
+        "checks_total": 37,
+        "failed": [],
+        "path": "outputs/v0_6D1_R5_14/R5_14_INTEGRATED_RECONCILIATION.json",
+        "scientific_candidate_eligible": true,
+        "stage": "v0.6D1-R5.14",
+        "status": "PASS_R514_R513_TO_R333_HOLOCENE_DOMESTICATION_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "completion_artifact": "outputs/v0_6D1_R5_14/R5_14_INTEGRATED_RECONCILIATION.json",
+        "config": "configs/world1_r514_r333_holocene_domestication_reconciliation_v0_6D1_R5_14.json",
+        "contract": "R5_14_R513_R333_HOLOCENE_DOMESTICATION_RECONCILIATION_CONTRACT.md",
+        "output_manifest": "outputs/v0_6D1_R5_14/R5_14_OUTPUT_MANIFEST.json",
+        "parent_authority_binding": "outputs/v0_6D1_R5_14/R5_14_PARENT_AUTHORITY_BINDING.json",
+        "reconciliation_authority": "R5_14_RECONCILIATION_AUTHORITY.json",
+        "source_authority_manifest": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R5_14.json",
+        "source_manifest_checker": {
+          "passed": true,
+          "returncode": 0,
+          "script": "scripts/check_v0_6D1_R5_14_source_manifest.py",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"checks_passed\": 36,",
+            "  \"checks_total\": 36,",
+            "  \"failed\": [],",
+            "  \"stage\": \"v0.6D1-R5.14\",",
+            "  \"status\": \"PASS_R514_SOURCE_MANIFEST\"",
+            "}"
+          ]
+        }
+      },
+      "external_engine_evidence": {
+        "considered": null,
+        "decision": null,
+        "new_external_engine_execution_performed": null,
+        "path": "outputs/v0_6D1_R5_14/R5_14_RUNTIME_UTILITY_REVIEW.json",
+        "role_adjudication": "DEFERRED_TO_R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT",
+        "stage": "v0.6D1-R5.14",
+        "status": "NO_NEW_EXTERNAL_ENGINE_REQUIRED"
+      },
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 15,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.14",
+      "status": "PASS"
+    },
+    {
+      "completion": {
+        "path": "R5_15_FINAL_AUDIT_PASS2.json",
+        "r5_15_completed": true,
+        "r5_15_sealed": false,
+        "r5_15_status": "CANDIDATE",
+        "repair_block_required": false,
+        "result_counts": {
+          "class_A": 6,
+          "class_B": 0,
+          "class_C": 0,
+          "class_D": 0,
+          "remaining_gaps": 0,
+          "scientific_incompatibility_proven": 0,
+          "stages": 6
+        },
+        "stage": "v0.6D1-R5.15",
+        "status": "PASS_R515_R334_TO_R339_BULK_LEGACY_RECONCILIATION_CANDIDATE"
+      },
+      "evidence": {
+        "config": null,
+        "contract": "R5_15_BULK_LEGACY_RECONCILIATION_CONTRACT.md",
+        "dependency_graph_pass2": "R5_15_DEPENDENCY_GRAPH_PASS2.json",
+        "final_audit_pass2": "R5_15_FINAL_AUDIT_PASS2.json",
+        "gap_register_pass2": "R5_15_GAP_REGISTER_PASS2.json",
+        "legacy_census_pass2": "R5_15_R3_34_TO_R3_39_CENSUS_PASS2.json",
+        "output_manifest": null,
+        "parent_authority_binding": "R5_15_DEPENDENCY_GRAPH_PASS2.json",
+        "reuse_classification_pass2": "R5_15_REUSE_CLASSIFICATION_PASS2.json",
+        "schema_note": "R5.15 is an audit/reconciliation stage; PASS2 dependency/final-audit/census/reuse/gap artifacts are the required source-authority evidence.",
+        "source_authority_manifest": null
+      },
+      "external_engine_evidence": {
+        "decision": "EXTERNAL_RUNTIME_NOT_REQUIRED",
+        "new_external_engine_execution_performed": false,
+        "path": "R5_15_FINAL_AUDIT_PASS2.json",
+        "role_adjudication": "DEFERRED_TO_R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT"
+      },
+      "failures": [],
+      "inventory_blob_drift": [],
+      "inventory_blob_drift_count": 0,
+      "inventory_file_count": 12,
+      "provenance_complete": true,
+      "stage": "v0.6D1-R5.15",
+      "status": "PASS"
+    }
+  ],
+  "stages_expected": 8,
+  "stages_verified": 8,
+  "status": "PASS_R516_SOURCE_AUTHORITY",
+  "subphase": "R5.16-A2"
+}
