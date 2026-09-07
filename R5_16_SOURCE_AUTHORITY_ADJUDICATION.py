@@ -90,7 +90,7 @@ def exact_path(paths: list[str], expected: str, label: str) -> tuple[str | None,
 
 def checker_result(script_path: str) -> dict[str, Any]:
     proc = subprocess.run(
-        [sys.executable, script_path],
+        [sys.executable, script_path, "--root", "."],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
