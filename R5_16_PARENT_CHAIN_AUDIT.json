@@ -1,0 +1,333 @@
+{
+  "branch": "main",
+  "continuation_edge_count_expected": 8,
+  "continuation_edge_count_verified": 8,
+  "continuation_edges": [
+    {
+      "actual_sha256": "3914d106b67a070bd4f7beb6ba7289302cf4b11fcb0fad8a91c10a5eb97d8d53",
+      "binding_path": "outputs/v0_6D1_R5_8/R5_8_PARENT_AUTHORITY_BINDING.json",
+      "claim_key": "r57_final_seal_sha256",
+      "claimed_sha256": "3914d106b67a070bd4f7beb6ba7289302cf4b11fcb0fad8a91c10a5eb97d8d53",
+      "edge_type": "SEALED_PARENT_EXACT_ARTIFACT_HASH",
+      "exact": true,
+      "from": "v0.6D1-R5.7",
+      "resolved_path": "outputs/v0_6D1_R5_7/R5_7_FINAL_BLOCK_SEAL.json",
+      "status": "PASS",
+      "to": "v0.6D1-R5.8"
+    },
+    {
+      "binding_path": "outputs/v0_6D1_R5_9/R5_9_PARENT_AUTHORITY_BINDING.json",
+      "claims": [
+        {
+          "claim_key": "r58_handoff_sha256",
+          "claimed_sha256": "c41de4e39c8840440f7c71a2c8d809333c1c3bbbc4b57e062be1ddffb351c380",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_8/R5_8_200KA_RECONCILED_HANDOFF.json"
+          ],
+          "status": "PASS"
+        },
+        {
+          "claim_key": "r58_output_manifest_sha256",
+          "claimed_sha256": "be156b22ba485fed4585dc61ecf2b4447918d7e5b6a813483c7f0c57b21f0e5e",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_8/R5_8_OUTPUT_MANIFEST.json"
+          ],
+          "status": "PASS"
+        },
+        {
+          "claim_key": "r58_parent_binding_sha256",
+          "claimed_sha256": "ed72873aa7908d40d20b6a395099d21531ed79e62cfa48c5f0040c0263a67c82",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_8/R5_8_PARENT_AUTHORITY_BINDING.json"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "edge_type": "DIRECT_PARENT_EXACT_ARTIFACT_HASH",
+      "from": "v0.6D1-R5.8",
+      "non_continuation_claim_adjudication": "DEFERRED_TO_R5_16_C_LEGACY_RECONCILIATION_AUDIT",
+      "non_continuation_hash_claims": [
+        "r327_trajectories_sha256",
+        "r328_0ka_checkpoint_sha256",
+        "r328_final_seal_audit_sha256",
+        "r328_output_manifest_sha256",
+        "r328_replay_sha256"
+      ],
+      "parent_output_directory": "outputs/v0_6D1_R5_8",
+      "status": "PASS",
+      "to": "v0.6D1-R5.9"
+    },
+    {
+      "binding_path": "outputs/v0_6D1_R5_10/R5_10_PARENT_AUTHORITY_BINDING.json",
+      "claims": [
+        {
+          "claim_key": "r59_handoff_sha256",
+          "claimed_sha256": "0ef0cb6346c59808a2a01112658b4cbc2f5a16d70389a9aab0bceb0b8e40a040",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_9/R5_9_0KA_RECONCILED_HANDOFF.json"
+          ],
+          "status": "PASS"
+        },
+        {
+          "claim_key": "r59_output_manifest_sha256",
+          "claimed_sha256": "019a4dfee2b59d7bf12be7a3c8405534919bab9c5bffb9914fe880d95aeb5f47",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_9/R5_9_OUTPUT_MANIFEST.json"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "edge_type": "DIRECT_PARENT_EXACT_ARTIFACT_HASH",
+      "from": "v0.6D1-R5.9",
+      "non_continuation_claim_adjudication": "DEFERRED_TO_R5_16_C_LEGACY_RECONCILIATION_AUDIT",
+      "non_continuation_hash_claims": [
+        "r328_replay_sha256",
+        "r329_checkpoint_sha256",
+        "r329_final_seal_audit_sha256",
+        "r329_output_manifest_sha256",
+        "r329_replay_sha256"
+      ],
+      "parent_output_directory": "outputs/v0_6D1_R5_9",
+      "status": "PASS",
+      "to": "v0.6D1-R5.10"
+    },
+    {
+      "binding_path": "outputs/v0_6D1_R5_11/R5_11_PARENT_AUTHORITY_BINDING.json",
+      "claims": [
+        {
+          "claim_key": "r510_handoff_sha256",
+          "claimed_sha256": "146a786350a65e551ff09ecd1c8b22e46f6523a5c7d2198dce754fd4b1f17983",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_10/R5_10_0KA_COMMUNITY_PRECONDITION_HANDOFF.json"
+          ],
+          "status": "PASS"
+        },
+        {
+          "claim_key": "r510_output_manifest_sha256",
+          "claimed_sha256": "666f640bec90ee342a02c884a924d7710e1b62806f475a5e29518d64d1c01f07",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_10/R5_10_OUTPUT_MANIFEST.json"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "edge_type": "DIRECT_PARENT_EXACT_ARTIFACT_HASH",
+      "from": "v0.6D1-R5.10",
+      "non_continuation_claim_adjudication": "DEFERRED_TO_R5_16_C_LEGACY_RECONCILIATION_AUDIT",
+      "non_continuation_hash_claims": [
+        "r328_replay_sha256",
+        "r329_replay_sha256",
+        "r330_abm_npz_sha256",
+        "r330_census_npz_sha256",
+        "r330_final_seal_audit_sha256",
+        "r330_output_manifest_sha256"
+      ],
+      "parent_output_directory": "outputs/v0_6D1_R5_10",
+      "status": "PASS",
+      "to": "v0.6D1-R5.11"
+    },
+    {
+      "binding_path": "outputs/v0_6D1_R5_12/R5_12_PARENT_AUTHORITY_BINDING.json",
+      "claims": [
+        {
+          "claim_key": "r511_handoff_sha256",
+          "claimed_sha256": "6a3d56dd1b0a341c6136ce0ded9c34cb2386e024a60f3e51c3c61e42892ec7eb",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_11/R5_11_0KA_CENSUS_GROUP_RECONCILED_HANDOFF.json"
+          ],
+          "status": "PASS"
+        },
+        {
+          "claim_key": "r511_output_manifest_sha256",
+          "claimed_sha256": "68083651524524a576f97d4581b5a02adf73fc2846d1210a0163342f8d84cbee",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_11/R5_11_OUTPUT_MANIFEST.json"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "edge_type": "DIRECT_PARENT_EXACT_ARTIFACT_HASH",
+      "from": "v0.6D1-R5.11",
+      "non_continuation_claim_adjudication": "DEFERRED_TO_R5_16_C_LEGACY_RECONCILIATION_AUDIT",
+      "non_continuation_hash_claims": [
+        "r329_replay_sha256",
+        "r330_census_sha256",
+        "r330_group_sha256",
+        "r331_final_seal_audit_sha256",
+        "r331_group_anchor_sha256",
+        "r331_output_manifest_sha256",
+        "r331_replay_sha256"
+      ],
+      "parent_output_directory": "outputs/v0_6D1_R5_11",
+      "status": "PASS",
+      "to": "v0.6D1-R5.12"
+    },
+    {
+      "binding_path": "outputs/v0_6D1_R5_13/R5_13_PARENT_AUTHORITY_BINDING.json",
+      "claims": [
+        {
+          "claim_key": "r512_handoff_sha256",
+          "claimed_sha256": "e33bbddede7e358a239ad2bbacabf3b166e2636e7bac0211d7c3e24acf95f2f1",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_12/R5_12_0KA_ABSTRACT_TECHNOLOGICAL_ECOLOGY_RECONCILED_HANDOFF.json"
+          ],
+          "status": "PASS"
+        },
+        {
+          "claim_key": "r512_output_manifest_sha256",
+          "claimed_sha256": "80cf4c7511fa02fc27ab58430a01434eeefbe69ea2860fc2aff0eb0546504a2b",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_12/R5_12_OUTPUT_MANIFEST.json"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "edge_type": "DIRECT_PARENT_EXACT_ARTIFACT_HASH",
+      "from": "v0.6D1-R5.12",
+      "non_continuation_claim_adjudication": "DEFERRED_TO_R5_16_C_LEGACY_RECONCILIATION_AUDIT",
+      "non_continuation_hash_claims": [
+        "r330_group_sha256",
+        "r331_group_sha256",
+        "r331_replay_sha256",
+        "r332_final_seal_audit_sha256",
+        "r332_output_manifest_sha256",
+        "r332_regional_anchor_sha256",
+        "r332_replay_sha256"
+      ],
+      "parent_output_directory": "outputs/v0_6D1_R5_12",
+      "status": "PASS",
+      "to": "v0.6D1-R5.13"
+    },
+    {
+      "binding_path": "outputs/v0_6D1_R5_14/R5_14_PARENT_AUTHORITY_BINDING.json",
+      "claims": [
+        {
+          "claim_key": "r513_handoff_sha256",
+          "claimed_sha256": "f99d2c3db41747a251eacc6eb349b077d90b71d4421e2cbb95befd75b0a2aa37",
+          "resolved_paths": [
+            "outputs/v0_6D1_R5_13/R5_13_0KA_SUBSISTENCE_REGIONAL_READINESS_RECONCILED_HANDOFF.json"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "edge_type": "DIRECT_PARENT_EXACT_ARTIFACT_HASH",
+      "from": "v0.6D1-R5.13",
+      "non_continuation_claim_adjudication": "DEFERRED_TO_R5_16_C_LEGACY_RECONCILIATION_AUDIT",
+      "non_continuation_hash_claims": [
+        "r333_final_seal_audit_sha256",
+        "r333_output_manifest_sha256"
+      ],
+      "parent_output_directory": "outputs/v0_6D1_R5_13",
+      "status": "PASS",
+      "to": "v0.6D1-R5.14"
+    },
+    {
+      "checks": {
+        "auto_seal_forbidden": true,
+        "parent_exact": true,
+        "sealed_ancestor_exact": true,
+        "stage_exact": true
+      },
+      "contract_path": "R5_15_BULK_LEGACY_RECONCILIATION_CONTRACT.md",
+      "edge_type": "GOVERNANCE_PARENT_CONTRACT_BOUND",
+      "from": "v0.6D1-R5.14",
+      "status": "PASS",
+      "to": "v0.6D1-R5.15"
+    }
+  ],
+  "legacy_dependencies_explicit": true,
+  "legacy_dependency_graph": {
+    "adjudication": "GRAPH_IDENTITY_ONLY_SCIENTIFIC_RECONCILIATION_DEFERRED_TO_R5_16_C",
+    "checks": {
+      "internal_edges_exact": true,
+      "nodes_exact": true,
+      "pass_exact": true,
+      "repository_verified_status": true,
+      "scope_complete": true,
+      "stage_exact": true
+    },
+    "important_external_anchors": {
+      "R3.34": [
+        "R3.33 environmental/resource authority"
+      ],
+      "R3.39": [
+        "direct CHA-2 source authority",
+        "R3.38 regional cultural genealogy authority"
+      ]
+    },
+    "nodes": [
+      "R3.34",
+      "R3.35",
+      "R3.36",
+      "R3.37",
+      "R3.38",
+      "R3.39"
+    ],
+    "path": "R5_15_DEPENDENCY_GRAPH_PASS2.json",
+    "status": "PASS",
+    "verified_internal_edges": [
+      [
+        "R3.34",
+        "R3.35"
+      ],
+      [
+        "R3.35",
+        "R3.36"
+      ],
+      [
+        "R3.36",
+        "R3.37"
+      ],
+      [
+        "R3.37",
+        "R3.38"
+      ],
+      [
+        "R3.38",
+        "R3.39"
+      ]
+    ]
+  },
+  "method": {
+    "automatic_repair": false,
+    "canonical_mutation": false,
+    "external_engine_execution": false,
+    "external_engine_governance_final_adjudication": false,
+    "human_lineage_governance_adjudication": false,
+    "legacy_dependency_graph_identity_checked": true,
+    "legacy_scientific_reconciliation_adjudication": false,
+    "negative_result_adjudication": false,
+    "numerical_replay_adjudication": false,
+    "r514_to_r515_governance_parent_read_from_contract": true,
+    "r57_explicit_seal_authority_checked": true,
+    "r57_to_r58_final_seal_sha256_exact_checked": true,
+    "r58_to_r514_direct_parent_hashes_resolved_against_tracked_parent_outputs": true,
+    "seal_action": false
+  },
+  "next_if_pass": "R5.16-C_LEGACY_RECONCILIATION_AUDIT",
+  "open_parent_chain_gap_count": 0,
+  "open_parent_chain_gaps": [],
+  "parent_chain_integrity": true,
+  "prerequisite": {
+    "open_provenance_gap_count": 0,
+    "pass": true,
+    "path": "R5_16_SOURCE_AUTHORITY.json",
+    "repository_provenance_complete": true,
+    "stages_verified": 8,
+    "status": "PASS_R516_SOURCE_AUTHORITY"
+  },
+  "repository": "siegmound/ARCANA_WORLD",
+  "schema": "ARCANA_R5_16_PARENT_CHAIN_AUDIT_V1",
+  "sealed_root": {
+    "authority_final_verdict": "PASS_R57_R53_R56_HOMINID_DEMOGRAPHY_GENE_FLOW_ANCESTRY_BLOCK_SEALED",
+    "authority_path": "R5_7_FINAL_BLOCK_SEAL_AUTHORITY.json",
+    "authority_sealed": true,
+    "final_seal_path": "outputs/v0_6D1_R5_7/R5_7_FINAL_BLOCK_SEAL.json",
+    "stage": "v0.6D1-R5.7",
+    "status": "PASS"
+  },
+  "source_commit": "ec6c259427af188bd4f7232c21d0f4404c82380d",
+  "stage": "v0.6D1-R5.16",
+  "status": "PASS_R516_PARENT_CHAIN_AUDIT",
+  "subphase": "R5.16-B"
+}
