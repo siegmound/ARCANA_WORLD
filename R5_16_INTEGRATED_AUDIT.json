@@ -1,0 +1,125 @@
+{
+  "branch": "main",
+  "candidate_eligible_for_explicit_final_seal": true,
+  "canonical_mutation_audit": {
+    "earlier_sealed_scientific_law_changed": false,
+    "earlier_sealed_stage_rerun_or_mutated": false,
+    "threshold_relaxation_to_force_outcome_detected": false,
+    "untracked_canonical_rewrite_detected": false,
+    "unauthorized_canonical_mutation": false
+  },
+  "canonical_mutation_stage_evidence": {
+    "r5_8": {
+      "canonical_state_changed": false,
+      "derived_refinement_promoted_to_canon": false
+    },
+    "r5_9": {
+      "canonical_state_changed": false,
+      "derived_refinement_promoted_to_canon": false,
+      "legacy_stage_rerun_or_mutated": false
+    },
+    "r5_10": {
+      "canonical_state_changed": false,
+      "derived_refinement_promoted_to_canon": false,
+      "legacy_stage_rerun_or_mutated": false
+    },
+    "r5_11": {
+      "canonical_state_changed": false,
+      "derived_refinement_promoted_to_canon": false,
+      "legacy_stage_rerun_or_mutated": false
+    },
+    "r5_12": {
+      "canonical_state_changed": false,
+      "derived_refinement_promoted_to_canon": false,
+      "legacy_stage_rerun_or_mutated": false
+    },
+    "r5_13": {
+      "canonical_state_changed": false,
+      "derived_refinement_promoted_to_canon": false,
+      "legacy_stage_rerun_or_mutated": false
+    },
+    "r5_14": {
+      "canonical_state_changed": false,
+      "derived_refinement_promoted_to_canon": false,
+      "legacy_stage_rerun_or_mutated": false
+    },
+    "r5_15": {
+      "all_legacy_reuse_class_A_exact": true,
+      "new_simulation_required": false,
+      "repair_block_required": false,
+      "scientific_incompatibility_count": 0
+    }
+  },
+  "contract_domains": {
+    "external_engine_governance_preserved": true,
+    "human_lineage_governance_preserved": true,
+    "legacy_reconciliation_integrity": true,
+    "negative_results_preserved": true,
+    "numerical_replay_claims_supported": true,
+    "parent_chain_integrity": true,
+    "repository_provenance_complete": true,
+    "unauthorized_canonical_mutation": false
+  },
+  "explicit_final_seal": {
+    "audit_performed": false,
+    "manifest_created": false,
+    "required_next": true,
+    "r5_16_sealed": false
+  },
+  "gate_inputs": {
+    "A_repository_provenance": {
+      "open_gap_count": 0,
+      "path": "R5_16_SOURCE_AUTHORITY.json",
+      "pass": true,
+      "status": "PASS_R516_SOURCE_AUTHORITY"
+    },
+    "B_parent_chain": {
+      "continuation_edges_verified": 8,
+      "open_gap_count": 0,
+      "path": "R5_16_PARENT_CHAIN_AUDIT.json",
+      "pass": true,
+      "status": "PASS_R516_PARENT_CHAIN_AUDIT"
+    },
+    "C_legacy_reconciliation": {
+      "legacy_stages_verified": 6,
+      "open_gap_count": 0,
+      "path": "R5_16_LEGACY_RECONCILIATION_AUDIT.json",
+      "pass": true,
+      "status": "PASS_R516_LEGACY_RECONCILIATION_AUDIT"
+    },
+    "D_negative_and_human_governance": {
+      "open_gap_count": 0,
+      "path": "R5_16_NEGATIVE_RESULT_PRESERVATION.json",
+      "pass": true,
+      "status": "PASS_R516_NEGATIVE_RESULT_AND_HUMAN_GOVERNANCE_AUDIT"
+    },
+    "E_numerical_and_engine_governance": {
+      "open_gap_count": 0,
+      "path": "R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT.json",
+      "pass": true,
+      "status": "PASS_R516_NUMERICAL_REPLAY_AND_EXTERNAL_ENGINE_GOVERNANCE_AUDIT"
+    }
+  },
+  "integrated_audit_pass": true,
+  "method": {
+    "all_required_r5_16_gate_artifacts_repository_bound": true,
+    "automatic_repair": false,
+    "canonical_mutation": false,
+    "external_engine_execution": false,
+    "fresh_scientific_rerun": false,
+    "seal_action": false,
+    "stage_level_canonical_mutation_evidence_checked": true,
+    "threshold_forcing_checked_against_sealed_legacy_and_reconciliation_evidence": true
+  },
+  "next_if_pass": "R5.16-G_EXPLICIT_FINAL_SEAL_AUDIT_AND_MANIFEST",
+  "open_integrated_gap_count": 0,
+  "open_integrated_gaps": [],
+  "open_provenance_gap_count": 0,
+  "open_scientific_gap_count": 0,
+  "repository": "siegmound/ARCANA_WORLD",
+  "schema": "ARCANA_R5_16_INTEGRATED_AUDIT_V1",
+  "source_commit": "b7384eda2062da9356a86850247642df1723beb8",
+  "stage": "v0.6D1-R5.16",
+  "status": "PASS_R516_INTEGRATED_AUDIT_ELIGIBLE_FOR_EXPLICIT_FINAL_SEAL",
+  "subphase": "R5.16-F"
+}
