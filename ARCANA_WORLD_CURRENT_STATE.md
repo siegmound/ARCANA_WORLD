@@ -22,21 +22,25 @@ R5_17_CONTRACT: R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md
 R5_17_CONTRACT_COMMIT: 2b733d308d01e18991f9ec16f2781a5f88f004e9
 R5_17_INPUT_CAPABILITY_CENSUS: R5_17_INPUT_CAPABILITY_CENSUS.json
 R5_17_INPUT_CAPABILITY_CENSUS_COMMIT: b211c5acb8fcaf7cd977d63dc2ba2671700251ea
+R5_17_B_SOURCE_BINDING: R5_17_B_SOURCE_BINDING.json
+R5_17_B_SOURCE_BINDING_COMMIT: 01cb913daed22cf0c6207700b97e199a7ca3b7de
+R5_17_B_LOCAL_INSPECTION_TOOL: R5_17_B_INSPECT_CANONICAL_INPUTS.py
+R5_17_B_LOCAL_INSPECTION_TOOL_COMMIT: b88595a0f8ef45e0b811b863dc8d05eaa57d0335
 ```
 
 ## Authoritative continuation state
 
 ```yaml
 LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.16
-LATEST_COMPLETED: v0.6D1-R5.17-A
+LATEST_COMPLETED: v0.6D1-R5.17-B1
 LATEST_STATUS: PASS
-LATEST_VERDICT: PASS_R517_A_INPUT_CAPABILITY_CENSUS
+LATEST_VERDICT: PASS_R517_B1_ENVIRONMENTAL_HYDROLOGICAL_SOURCE_BINDING
 ACTIVE_STAGE: v0.6D1-R5.17
 ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
 ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
-ACTIVE_SUBPHASE: R5.17-B
-ACTIVE_SUBPHASE_STATUS: AUTHORIZED_NOT_COMPLETED
-ACTIVE_SUBPHASE_SCOPE: ENVIRONMENTAL_AND_WATER_SUPPORT_BINDING
+ACTIVE_SUBPHASE: R5.17-B2
+ACTIVE_SUBPHASE_STATUS: READY_FOR_LOCAL_CANONICAL_PAYLOAD_INSPECTION
+ACTIVE_SUBPHASE_SCOPE: LOCAL_CANONICAL_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
 NEXT_PHASE_OBJECTIVE: SIMULATION_DERIVED_MACROHISTORICAL_REFERENCE_TO_YEAR_0
 ```
 
@@ -54,8 +58,9 @@ v0.6D1-R5.7   SEALED
   -> v0.6D1-R5.15   CANDIDATE completed
   -> v0.6D1-R5.16   SEALED integrated end-of-legacy closure
   -> v0.6D1-R5.17   AUTHORIZED_IN_PROGRESS post-legacy human-support bridge
-       -> R5.17-A  PASS input/capability census
-       -> R5.17-B  AUTHORIZED_NOT_COMPLETED environmental + water support binding
+       -> R5.17-A   PASS input/capability census
+       -> R5.17-B1  PASS environmental/hydrological source binding
+       -> R5.17-B2  READY_FOR_LOCAL_CANONICAL_PAYLOAD_INSPECTION
 ```
 
 R5.16 explicitly seals the integrated R5.8–R5.15 continuation reconciled against the SEALED legacy authorities R3.34–R3.39. Earlier candidate labels remain historical stage statuses; they are contained in the explicit integrated R5.16 seal and must not be independently promoted or rewritten.
@@ -152,31 +157,52 @@ STATUS: PASS_R517_A_INPUT_CAPABILITY_CENSUS
 NEW_HISTORICAL_SIMULATION_REQUIRED_NOW: false
 EXTERNAL_ENGINE_EXECUTION_REQUIRED_NOW: false
 PRIMARY_BLOCKER: no calibrated human-support/carrying-capacity bridge currently exists
-NEXT: R5.17-B environmental and water support binding
 ```
 
-The census distinguishes raw WorldSim state from human-facing layers. In particular:
+### R5.17-B1 result
 
-- exact present support/coast/accessibility geometry is reusable;
-- climate/environmental state is reusable but needs human-support semantics;
-- the existing 15–11 ka hydrological hazard layer is valuable but is not a complete freshwater-reliability/navigation model;
-- biological state exists but cannot yet be equated directly to edible human productivity;
-- material-resource opportunity needs explicit derivation from exact raw sources;
-- human transport/strategic connectivity needs new derivation from physical geography rather than biological migration semantics;
-- Deep physical/runtime state exists but must be converted into separate accessibility/intensity/stability/value/hazard settlement dimensions;
-- baseline human carrying capacity remains the principal missing product.
+`R5_17_B_SOURCE_BINDING.json` binds the exact SEALED authorities for the first bridge calculation.
 
-## Active work rule — R5.17-B
-
-The next work is the smallest bridge computation with direct downstream value:
+The important new finding is that R3.18 already provides a directly relevant environmental integral bundle with four temporal groups and these validated fields:
 
 ```text
-bind exact raw environmental/hydrological/ecological artifacts
--> define human-facing environmental support semantics
--> derive freshwater/support/reliability components
--> preserve hazards separately
--> validate temporal/spatial units and uncertainty
+aridity_index
+browse_forage
+land_support
+low_forage
+reference_population
+temperature_c
+wetland_forage
 ```
+
+Its canonical NPZ SHA256 is:
+
+`54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70`
+
+R3.19 provides the exact present biological/support boundary; its checkpoint NPZ SHA256 is:
+
+`f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406`
+
+R3.20 provides the 15–11 ka / 50-year hydrological-hazard payload; its NPZ SHA256 is:
+
+`4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14`
+
+The SEALED audits and hashes are repository-resident, but these canonical binary payloads are intentionally/local historically stored rather than committed to Git. This is not a provenance failure, but numeric derivation must not proceed until the local payloads are revalidated against those hashes.
+
+## Active work rule — R5.17-B2
+
+`R5_17_B_INSPECT_CANONICAL_INPUTS.py` is the repository-tracked fail-closed inspection tool.
+
+R5.17-B2 must:
+
+1. locate the three canonical NPZ payloads on the user's local WorldSim tree;
+2. verify their SHA256 values exactly against SEALED authority;
+3. load with `allow_pickle=False`;
+4. record every array key, shape, dtype, finite/nonfinite count and numeric range;
+5. write `R5_17_B_LOCAL_CANONICAL_PAYLOAD_INSPECTION.json`;
+6. import that manifest back into the repository before R5.17-B3 derives any human-support variable.
+
+The inspection is not a simulation and should be cheap. A hash mismatch fails closed and must not be bypassed by choosing a similar file.
 
 R5.17-B must not yet:
 
@@ -185,6 +211,7 @@ R5.17-B must not yet:
 - infer trade networks or polities;
 - use an external engine merely because it is available;
 - generalize the R3.20 15–11 ka hazard evidence beyond its supported window without explicit derivation;
+- treat R3.18 `reference_population` as physical human population or carrying capacity;
 - call a relative support proxy physical carrying capacity before calibration.
 
 If native ARCANA layers are sufficient, no external runtime is needed for R5.17-B. If a later subquestion genuinely needs Geonomics, SLiM, NEMO, RangeShiftR or CDMetaPOP, long local execution remains explicitly permitted under repository-tracked configuration and evidence.
