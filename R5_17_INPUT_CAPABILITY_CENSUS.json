@@ -1,0 +1,302 @@
+{
+  "schema": "ARCANA_R5_17_INPUT_CAPABILITY_CENSUS_V1",
+  "stage": "v0.6D1-R5.17",
+  "subphase": "R5.17-A",
+  "parent_authority": "v0.6D1-R5.16 SEALED",
+  "contract": "R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md",
+  "contract_commit": "2b733d308d01e18991f9ec16f2781a5f88f004e9",
+  "purpose": "Classify repository-proven inputs needed to bridge SEALED WorldSim state to human support capacity and baseline K(x,t), without new historical simulation or target population.",
+  "classification_enum": [
+    "READY",
+    "PARTIAL",
+    "MISSING",
+    "NEEDS_NEW_COMPUTE"
+  ],
+  "domains": {
+    "land_coast_accessibility_geometry": {
+      "status": "READY",
+      "authoritative_sources": [
+        "CANONICAL_PHASE_AWARE_TRANSPORT_H0_PRESENT_CLOSURE_CONTRACT_v0_6D1_R3_19.md"
+      ],
+      "existing_quantities": [
+        "exact_0ka_provider_accessible_support",
+        "phase_aware_transport_support",
+        "support_remap_governance"
+      ],
+      "missing_quantities": [],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": false,
+      "external_provider_required": false,
+      "notes": "Suitable as the spatial support mask/baseline geometry. Additional route/chokepoint analysis is a derived connectivity task, not a missing base geometry task."
+    },
+    "climate_environmental_support": {
+      "status": "PARTIAL",
+      "authoritative_sources": [
+        "CANONICAL_PHASE_AWARE_TRANSPORT_H0_PRESENT_CLOSURE_CONTRACT_v0_6D1_R3_19.md",
+        "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md"
+      ],
+      "existing_quantities": [
+        "macro_environment_for_present_closure",
+        "phase_environment_means",
+        "younger_dryas_class_hydroclimate_hazard_diagnostics"
+      ],
+      "missing_quantities": [
+        "explicit_human_climate_suitability_semantics",
+        "civilization_facing_environmental_stability_field"
+      ],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Raw environmental authority exists, but it must be translated into human-support variables rather than reused as an opaque suitability score."
+    },
+    "hydrology_water_reliability": {
+      "status": "PARTIAL",
+      "authoritative_sources": [
+        "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md"
+      ],
+      "existing_quantities": [
+        "pluvial_flood_potential",
+        "coastal_inundation_potential",
+        "compound_flood_hazard",
+        "drying_hazard",
+        "ecosystem_hydrological_shock",
+        "raw_support_loss"
+      ],
+      "missing_quantities": [
+        "freshwater_support",
+        "freshwater_reliability",
+        "persistent_water_access",
+        "navigable_water_opportunity"
+      ],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Existing hazard fields are valuable but are explicitly diagnostic/ranking variables and are not a complete water-supply or navigation model."
+    },
+    "ecology_biological_food_support": {
+      "status": "PARTIAL",
+      "authoritative_sources": [
+        "CANONICAL_PHASE_AWARE_TRANSPORT_H0_PRESENT_CLOSURE_CONTRACT_v0_6D1_R3_19.md",
+        "ARCANA_WORLD_CURRENT_STATE.md"
+      ],
+      "existing_quantities": [
+        "H0_present_biology_closure",
+        "retained_human_lineage_state",
+        "environment_coupled_biological_state"
+      ],
+      "missing_quantities": [
+        "human_edible_terrestrial_productivity",
+        "human_edible_marine_productivity",
+        "foraging_support_conversion",
+        "seasonal_food_reliability"
+      ],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Biological state exists, but no source currently authorizes a direct conversion from generic biological abundance/roles to edible human carrying capacity."
+    },
+    "human_lineage_population_support_state": {
+      "status": "READY",
+      "authoritative_sources": [
+        "ARCANA_WORLD_CURRENT_STATE.md",
+        "R5_16_FINAL_SEAL_AUDIT.json"
+      ],
+      "existing_quantities": [
+        "RPT_010_D02",
+        "RPT_009_D02",
+        "R5_16_human_lineage_governance",
+        "unique_human_identity_not_materialized"
+      ],
+      "missing_quantities": [
+        "post_R5_16_macrohistorical_population_trajectory"
+      ],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": false,
+      "external_provider_required": false,
+      "notes": "The lineage baseline is ready as a parent condition. The missing population trajectory belongs downstream of R5.17 carrying-capacity construction."
+    },
+    "material_resources": {
+      "status": "NEEDS_NEW_COMPUTE",
+      "authoritative_sources": [
+        "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md"
+      ],
+      "existing_quantities": [
+        "world_geological_and_ecological_context_exists_in_repository_history"
+      ],
+      "missing_quantities": [
+        "timber_biomass_opportunity",
+        "stone_opportunity",
+        "clay_opportunity",
+        "salt_opportunity",
+        "metal_ore_opportunity",
+        "civilization_facing_resource_accessibility"
+      ],
+      "can_reuse_without_rerun": false,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "The macrohistory objective requires these axes, but R5.17 must bind exact raw source artifacts before numerical derivation. No narrative resource placement is permitted."
+    },
+    "connectivity_transport_strategic_geography": {
+      "status": "NEEDS_NEW_COMPUTE",
+      "authoritative_sources": [
+        "CANONICAL_PHASE_AWARE_TRANSPORT_H0_PRESENT_CLOSURE_CONTRACT_v0_6D1_R3_19.md",
+        "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md"
+      ],
+      "existing_quantities": [
+        "accessible_support_geometry",
+        "inherited_biological_transport_operator_context"
+      ],
+      "missing_quantities": [
+        "human_land_route_cost",
+        "coastal_route_opportunity",
+        "river_navigation_opportunity",
+        "harbour_opportunity",
+        "mountain_pass_opportunity",
+        "strait_isthmus_chokepoints",
+        "resource_access_network",
+        "strategic_centrality",
+        "defensibility_exposure"
+      ],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Base geometry can be reused, but human transport/trade/strategic metrics must be newly derived and must not be copied from biological migration semantics."
+    },
+    "hazards": {
+      "status": "PARTIAL",
+      "authoritative_sources": [
+        "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md"
+      ],
+      "existing_quantities": [
+        "hydrological_hazard_15_to_11ka_50y",
+        "drying_hazard",
+        "coastal_support_loss"
+      ],
+      "missing_quantities": [
+        "generalized_human_settlement_hazard_composite_with_explicit_components",
+        "time_binding_outside_existing_high_resolution_hazard_window_where_needed"
+      ],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Existing high-resolution hazard evidence should be preserved as components, not generalized beyond its supported temporal window without explicit derivation."
+    },
+    "deep_physical_and_settlement_geography": {
+      "status": "PARTIAL",
+      "authoritative_sources": [
+        "DEEP_PRODUCTION_RUNTIME_CONTRACT_v0_6C.md",
+        "ARCANA_WORLD_CURRENT_STATE.md"
+      ],
+      "existing_quantities": [
+        "geological_background_energy",
+        "geological_equilibrium_target",
+        "finite_geological_source_buffer",
+        "deep_energy_depletion_runtime_semantics",
+        "deep_biological_coupling_off"
+      ],
+      "missing_quantities": [
+        "DEEP_ACCESSIBILITY",
+        "DEEP_INTENSITY_settlement_semantics",
+        "DEEP_STABILITY",
+        "DEEP_RESOURCE_VALUE",
+        "DEEP_HAZARD"
+      ],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Physical Deep state cannot be treated as a generic settlement bonus. A dedicated settlement-facing derivation is required while biological coupling remains OFF."
+    },
+    "baseline_human_carrying_capacity": {
+      "status": "MISSING",
+      "authoritative_sources": [
+        "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md",
+        "R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md"
+      ],
+      "existing_quantities": [],
+      "missing_quantities": [
+        "K_x_t_definition",
+        "absolute_or_relative_unit_calibration",
+        "support_component_equations",
+        "uncertainty_propagation",
+        "time_interpolation_semantics",
+        "shock_response_semantics"
+      ],
+      "can_reuse_without_rerun": false,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "This is the principal new product of R5.17. It must not be called physical population carrying capacity until its units/calibration are defensible."
+    },
+    "civilization_settlement_potential": {
+      "status": "MISSING",
+      "authoritative_sources": [
+        "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md"
+      ],
+      "existing_quantities": [],
+      "missing_quantities": [
+        "settlement_opportunity_classification",
+        "civilization_attractor_registry"
+      ],
+      "can_reuse_without_rerun": false,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Downstream derived interpretation of validated independent axes. It must not precede or replace K/support-layer construction."
+    },
+    "trade_polity_warfare_macrohistory": {
+      "status": "MISSING",
+      "authoritative_sources": [
+        "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md"
+      ],
+      "existing_quantities": [],
+      "missing_quantities": [
+        "endogenous_trade_network",
+        "settlement_hierarchy",
+        "polity_dynamics",
+        "warfare",
+        "collapse_and_successor_state_dynamics"
+      ],
+      "can_reuse_without_rerun": false,
+      "new_compute_required": true,
+      "external_provider_required": false,
+      "notes": "Explicitly downstream. These mechanisms must not be introduced as calibration targets during R5.17."
+    },
+    "external_population_engines": {
+      "status": "READY",
+      "authoritative_sources": [
+        "ARCANA_WORLD_CURRENT_STATE.md",
+        "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md"
+      ],
+      "existing_quantities": [
+        "Geonomics_available_for_justified_subquestions",
+        "SLiM_tskit_msprime_pyslim_available_for_justified_subquestions",
+        "NEMO_available_for_justified_subquestions",
+        "RangeShiftR_available_for_justified_subquestions",
+        "CDMetaPOP_available_for_justified_subquestions"
+      ],
+      "missing_quantities": [],
+      "can_reuse_without_rerun": true,
+      "new_compute_required": false,
+      "external_provider_required": false,
+      "notes": "Availability does not imply execution requirement. Long local runs are authorized when a later subquestion demonstrates information gain."
+    }
+  },
+  "summary": {
+    "ready_domains": 3,
+    "partial_domains": 5,
+    "missing_domains": 3,
+    "needs_new_compute_domains": 2,
+    "new_historical_simulation_required_now": false,
+    "external_engine_execution_required_now": false,
+    "primary_blocker": "No calibrated human-support/carrying-capacity bridge currently exists.",
+    "smallest_next_computation": "Bind exact raw environmental/hydrological/ecological source artifacts and derive the first environmental-and-water human-support layer before attempting material-resource or K(x,t) calibration."
+  },
+  "governance": {
+    "population_target_imposed": false,
+    "civilization_target_imposed": false,
+    "canonical_mutation": false,
+    "seal_action": false,
+    "deep_biological_coupling_changed": false,
+    "named_culture_or_polity_materialized": false
+  },
+  "status": "PASS_R517_A_INPUT_CAPABILITY_CENSUS",
+  "next_if_pass": "R5.17-B_ENVIRONMENTAL_AND_WATER_SUPPORT_BINDING"
+}
