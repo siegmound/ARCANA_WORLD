@@ -18,22 +18,29 @@ R5_16_FINAL_SEAL_AUDIT_COMMIT: d96235d8425c0f0fb9322ea01213cccb0c6e02f2
 R5_16_FINAL_SEAL_AUDIT_GIT_BLOB_SHA: 33555e64b741a19853c8ba190f956499a9dcb861
 POST_R5_16_OBJECTIVE: ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md
 POST_R5_16_OBJECTIVE_COMMIT: 692f44f2b2854db15e87424630122129c083b865
+R5_17_CONTRACT: R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md
+R5_17_CONTRACT_COMMIT: 2b733d308d01e18991f9ec16f2781a5f88f004e9
+R5_17_INPUT_CAPABILITY_CENSUS: R5_17_INPUT_CAPABILITY_CENSUS.json
+R5_17_INPUT_CAPABILITY_CENSUS_COMMIT: b211c5acb8fcaf7cd977d63dc2ba2671700251ea
 ```
 
 ## Authoritative continuation state
 
 ```yaml
 LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.16
-LATEST_COMPLETED: v0.6D1-R5.16
-LATEST_STATUS: SEALED
-LATEST_VERDICT: PASS_R516_END_OF_LEGACY_INTEGRATED_RECONCILIATION_SEALED
-ACTIVE_STAGE: none
-ACTIVE_STAGE_STATUS: NOT_AUTHORIZED
-NEXT_PHASE: UNNUMBERED_OBJECTIVE_FIXED_NOT_YET_AUTHORIZED
+LATEST_COMPLETED: v0.6D1-R5.17-A
+LATEST_STATUS: PASS
+LATEST_VERDICT: PASS_R517_A_INPUT_CAPABILITY_CENSUS
+ACTIVE_STAGE: v0.6D1-R5.17
+ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
+ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
+ACTIVE_SUBPHASE: R5.17-B
+ACTIVE_SUBPHASE_STATUS: AUTHORIZED_NOT_COMPLETED
+ACTIVE_SUBPHASE_SCOPE: ENVIRONMENTAL_AND_WATER_SUPPORT_BINDING
 NEXT_PHASE_OBJECTIVE: SIMULATION_DERIVED_MACROHISTORICAL_REFERENCE_TO_YEAR_0
 ```
 
-## Continuation chain now sealed
+## Continuation chain
 
 ```text
 v0.6D1-R5.7   SEALED
@@ -46,9 +53,14 @@ v0.6D1-R5.7   SEALED
   -> v0.6D1-R5.14   CANDIDATE completed
   -> v0.6D1-R5.15   CANDIDATE completed
   -> v0.6D1-R5.16   SEALED integrated end-of-legacy closure
+  -> v0.6D1-R5.17   AUTHORIZED_IN_PROGRESS post-legacy human-support bridge
+       -> R5.17-A  PASS input/capability census
+       -> R5.17-B  AUTHORIZED_NOT_COMPLETED environmental + water support binding
 ```
 
-R5.16 explicitly seals the integrated R5.8–R5.15 continuation reconciled against the SEALED legacy authorities R3.34–R3.39. Earlier candidate labels remain historical stage statuses; they are now contained in the explicit integrated R5.16 seal and must not be independently promoted or rewritten.
+R5.16 explicitly seals the integrated R5.8–R5.15 continuation reconciled against the SEALED legacy authorities R3.34–R3.39. Earlier candidate labels remain historical stage statuses; they are contained in the explicit integrated R5.16 seal and must not be independently promoted or rewritten.
+
+R5.17 is the first authorized post-R5.16 scientific implementation stage. It is not a civilization, polity or warfare simulation. It builds the bridge from SEALED WorldSim state to explicit human-support layers and baseline carrying-capacity semantics.
 
 ## R5.16 final result
 
@@ -99,15 +111,15 @@ bulk legacy reconciliation
 -> integrated end-of-legacy seal
 ```
 
-R5.15 completed the bulk reconciliation with six Class-A exact sealed-artifact reuses and zero repair requirement. Because no repair block was required, numbering compressed and R5.16 became the integrated end-of-legacy seal review. R5.16 has now completed that objective and is explicitly SEALED.
+R5.15 completed the bulk reconciliation with six Class-A exact sealed-artifact reuses and zero repair requirement. Because no repair block was required, numbering compressed and R5.16 became the integrated end-of-legacy seal review. R5.16 has completed that objective and is explicitly SEALED.
 
 ## Fixed post-R5.16 scientific objective
 
-The post-R5.16 WorldSim program now has a repository-fixed objective charter:
+The post-R5.16 WorldSim program has a repository-fixed objective charter:
 
 `ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md`
 
-The long-term target is a simulation-derived macrohistorical reference to narrative Year 0, not a prewritten exact history. The simulation should allow population, settlement geography, trade networks, civilization/polity structure, warfare, collapse and recovery to emerge from WorldSim geography, climate, hydrology, ecology, resources, human state and Deep.
+The long-term target is a simulation-derived macrohistorical reference to narrative Year 0, not a prewritten exact history. Population, settlement geography, trade networks, civilization/polity structure, warfare, collapse and recovery are intended to emerge from WorldSim geography, climate, hydrology, ecology, resources, human state and Deep.
 
 Key fixed principles are:
 
@@ -123,20 +135,59 @@ Key fixed principles are:
 
 The broader objective is complete when ARCANA can defensibly use the simulation to answer where large populations and civilizations are plausible, approximately how many people the world supports by Year 0, how major regions are connected by resources/trade/Deep, and what broad demographic/political history plausibly produced that state.
 
-## Next work rule
+## R5.17 bridge objective
 
-There is currently no authorized post-R5.16 stage, but the scientific destination is now fixed by the post-R5.16 macrohistory objective charter.
+R5.17 is governed by:
 
-Before assigning a new stage number:
+`R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md`
 
-1. choose the smallest scientifically useful unresolved component of the fixed macrohistorical objective;
-2. inspect what sealed R5.16 and existing WorldSim layers already provide;
-3. determine whether existing ARCANA outputs are sufficient or whether a new simulation/provider is justified;
-4. design scaling/ensemble semantics before any downscaled demographic run is treated as a world-population result;
-5. write a repository-tracked contract for that phase;
-6. only then authorize and number the next stage.
+Its purpose is to translate existing SEALED WorldSim evidence into independent civilization-facing support layers and ultimately a baseline `K(x,t)` or bounded capacity proxy. R5.17 must not tune the world to a desired population or civilization outcome.
 
-No repair or rerun is required by the R5.16 seal itself. New computation is permitted when it materially advances the fixed macrohistorical objective.
+### R5.17-A result
+
+`R5_17_INPUT_CAPABILITY_CENSUS.json` records:
+
+```yaml
+STATUS: PASS_R517_A_INPUT_CAPABILITY_CENSUS
+NEW_HISTORICAL_SIMULATION_REQUIRED_NOW: false
+EXTERNAL_ENGINE_EXECUTION_REQUIRED_NOW: false
+PRIMARY_BLOCKER: no calibrated human-support/carrying-capacity bridge currently exists
+NEXT: R5.17-B environmental and water support binding
+```
+
+The census distinguishes raw WorldSim state from human-facing layers. In particular:
+
+- exact present support/coast/accessibility geometry is reusable;
+- climate/environmental state is reusable but needs human-support semantics;
+- the existing 15–11 ka hydrological hazard layer is valuable but is not a complete freshwater-reliability/navigation model;
+- biological state exists but cannot yet be equated directly to edible human productivity;
+- material-resource opportunity needs explicit derivation from exact raw sources;
+- human transport/strategic connectivity needs new derivation from physical geography rather than biological migration semantics;
+- Deep physical/runtime state exists but must be converted into separate accessibility/intensity/stability/value/hazard settlement dimensions;
+- baseline human carrying capacity remains the principal missing product.
+
+## Active work rule — R5.17-B
+
+The next work is the smallest bridge computation with direct downstream value:
+
+```text
+bind exact raw environmental/hydrological/ecological artifacts
+-> define human-facing environmental support semantics
+-> derive freshwater/support/reliability components
+-> preserve hazards separately
+-> validate temporal/spatial units and uncertainty
+```
+
+R5.17-B must not yet:
+
+- calibrate a desired global population;
+- materialize agriculture/cities/states;
+- infer trade networks or polities;
+- use an external engine merely because it is available;
+- generalize the R3.20 15–11 ka hazard evidence beyond its supported window without explicit derivation;
+- call a relative support proxy physical carrying capacity before calibration.
+
+If native ARCANA layers are sufficient, no external runtime is needed for R5.17-B. If a later subquestion genuinely needs Geonomics, SLiM, NEMO, RangeShiftR or CDMetaPOP, long local execution remains explicitly permitted under repository-tracked configuration and evidence.
 
 ## Repository tracking rule
 
