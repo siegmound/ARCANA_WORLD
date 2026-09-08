@@ -1,0 +1,82 @@
+{
+  "schema": "ARCANA_R5_17_B_SOURCE_BINDING_V1",
+  "stage": "v0.6D1-R5.17",
+  "subphase": "R5.17-B1",
+  "parent": "PASS_R517_A_INPUT_CAPABILITY_CENSUS",
+  "purpose": "Bind the exact SEALED environmental, endpoint-support and hydrological payload authorities required before deriving human-facing environmental and water support.",
+  "bound_sources": {
+    "r3_18_recent_environment_integrals": {
+      "audit": "outputs/v0_6D1_R3_18/FORMAL_AUDIT_SEALED_v0_6D1_R3_18.json",
+      "audit_git_blob_sha": "726c0f3f1df132fa979f4fee86c475faf3039181",
+      "verdict": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_READINESS_SEALED",
+      "canonical_payload_filename": "R3_18_125KA_TO_0_EXPOSURE_AND_TRANSPORT_PHASES.npz",
+      "canonical_payload_sha256": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+      "payload_repository_resident": false,
+      "supported_groups": [
+        "full_125_to_0",
+        "recent_120_to_0",
+        "transport_phase1_125_to_62p5",
+        "transport_phase2_62p5_to_0"
+      ],
+      "supported_fields": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ],
+      "role_in_r5_17_b": "PRIMARY_ENVIRONMENTAL_SUPPORT_INPUT"
+    },
+    "r3_19_present_endpoint_support": {
+      "audit": "outputs/v0_6D1_R3_19/FORMAL_AUDIT_SEALED_v0_6D1_R3_19.json",
+      "audit_git_blob_sha": "ce6ee39a0c576f0e1bf4b3dacd2e3d527c31b589",
+      "verdict": "PASS_R319_CANONICAL_125KA_TO_0_H0_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY__0KA_NATURAL_CONTROL_BIOLOGY_BOUNDARY_SEALED",
+      "canonical_payload_filename": "WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz",
+      "canonical_payload_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+      "payload_repository_resident": false,
+      "exact_0ka_inaccessible_population_mass": 0.0,
+      "role_in_r5_17_b": "PRESENT_ENDPOINT_SUPPORT_AND_BIOLOGICAL_BOUNDARY_VALIDATION"
+    },
+    "r3_20_hydrological_hazard": {
+      "audit": "outputs/v0_6D1_R3_20/FORMAL_AUDIT_SEALED_v0_6D1_R3_20.json",
+      "audit_git_blob_sha": "1d5ade7d43d4c416b45953e4f332c62c9806d141",
+      "verdict": "PASS_R320_CHA2_YOUNGER_DRYAS_CLASS_MAGNITUDE_AND_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_LAYER_SEALED",
+      "canonical_payload_filename": "R3_20_CHA2_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_FIELDS.npz",
+      "canonical_payload_sha256": "4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14",
+      "payload_repository_resident": false,
+      "time_window_year_before_book": [-14950, -11000],
+      "step_years": 50,
+      "state_count": 80,
+      "semantics": "DIAGNOSTIC_RANKING_HAZARDS_NOT_FLOOD_DEPTHS_OR_GUARANTEED_INUNDATION",
+      "role_in_r5_17_b": "HIGH_RESOLUTION_HYDROLOGICAL_HAZARD_COMPONENT"
+    }
+  },
+  "scientific_interpretation": {
+    "r3_18_environment_bundle_is_directly_relevant": true,
+    "r3_18_environment_fields_may_be_reused_as_raw_inputs": true,
+    "r3_18_reference_population_is_not_physical_human_population_or_K": true,
+    "r3_20_hazard_may_be_used_as_water_reliability_penalty_without_conversion": false,
+    "freshwater_reliability_already_materialized": false,
+    "navigable_water_already_materialized": false,
+    "human_food_support_already_materialized": false,
+    "blind_proxy_to_K_conversion_authorized": false
+  },
+  "repository_payload_gap": {
+    "sealed_audits_repository_resident": true,
+    "canonical_npz_payloads_repository_resident": false,
+    "scientific_provenance_gap": false,
+    "interactive_numeric_derivation_blocked_until_payload_validation": true,
+    "resolution": "Validate the local canonical NPZ payloads against the SEALED SHA256 values, inspect keys/shapes/dtypes/finite ranges, then create a repository-tracked inspection manifest before deriving R5.17-B support layers."
+  },
+  "governance": {
+    "new_historical_simulation": false,
+    "external_engine_execution": false,
+    "population_target_imposed": false,
+    "canonical_mutation": false,
+    "seal_action": false
+  },
+  "status": "PASS_R517_B1_ENVIRONMENTAL_HYDROLOGICAL_SOURCE_BINDING",
+  "next_if_pass": "R5.17-B2_LOCAL_CANONICAL_PAYLOAD_HASH_AND_SCHEMA_INSPECTION"
+}
