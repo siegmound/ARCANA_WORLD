@@ -16,6 +16,8 @@ R5_16_FINAL_SEAL_MANIFEST_COMMIT: adab41b3d8385374a90a575c683ba16e49484945
 R5_16_FINAL_SEAL_AUDIT: R5_16_FINAL_SEAL_AUDIT.json
 R5_16_FINAL_SEAL_AUDIT_COMMIT: d96235d8425c0f0fb9322ea01213cccb0c6e02f2
 R5_16_FINAL_SEAL_AUDIT_GIT_BLOB_SHA: 33555e64b741a19853c8ba190f956499a9dcb861
+POST_R5_16_OBJECTIVE: ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md
+POST_R5_16_OBJECTIVE_COMMIT: 692f44f2b2854db15e87424630122129c083b865
 ```
 
 ## Authoritative continuation state
@@ -27,7 +29,8 @@ LATEST_STATUS: SEALED
 LATEST_VERDICT: PASS_R516_END_OF_LEGACY_INTEGRATED_RECONCILIATION_SEALED
 ACTIVE_STAGE: none
 ACTIVE_STAGE_STATUS: NOT_AUTHORIZED
-NEXT_PHASE: UNNUMBERED_NOT_YET_AUTHORIZED
+NEXT_PHASE: UNNUMBERED_OBJECTIVE_FIXED_NOT_YET_AUTHORIZED
+NEXT_PHASE_OBJECTIVE: SIMULATION_DERIVED_MACROHISTORICAL_REFERENCE_TO_YEAR_0
 ```
 
 ## Continuation chain now sealed
@@ -98,21 +101,42 @@ bulk legacy reconciliation
 
 R5.15 completed the bulk reconciliation with six Class-A exact sealed-artifact reuses and zero repair requirement. Because no repair block was required, numbering compressed and R5.16 became the integrated end-of-legacy seal review. R5.16 has now completed that objective and is explicitly SEALED.
 
+## Fixed post-R5.16 scientific objective
+
+The post-R5.16 WorldSim program now has a repository-fixed objective charter:
+
+`ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md`
+
+The long-term target is a simulation-derived macrohistorical reference to narrative Year 0, not a prewritten exact history. The simulation should allow population, settlement geography, trade networks, civilization/polity structure, warfare, collapse and recovery to emerge from WorldSim geography, climate, hydrology, ecology, resources, human state and Deep.
+
+Key fixed principles are:
+
+- Year-0 global and regional human population is an emergent result, not a preset target;
+- carrying capacity changes through time with environment, resources, trade, technology, infrastructure, Deep, war, disaster and degradation/recovery;
+- population may be represented computationally through weighted units, super-individuals, settlements or regional stocks rather than literal person-level agents;
+- downscaled/local simulations and interpolation/scaling are allowed only with explicit scaling semantics and validation of important nonlinear effects;
+- long or multi-seed simulations may be executed on local hardware and imported with repository-tracked configs, runtime identity, logs/manifests/hashes and adjudication;
+- Geonomics, SLiM, NEMO, RangeShiftR, CDMetaPOP and other justified providers remain evidence providers rather than implicit canonical writers;
+- macrohistory should support migration, trade, strategic settlement, civilization emergence, polity dynamics, war, collapse and successor states where later stages scientifically authorize those mechanisms;
+- final Year-0 outputs should preferentially report uncertainty/ensemble distributions rather than false exactness;
+- named cultures, religions, languages, ethnicities and detailed individual history are not required for objective completion unless separately materialized later.
+
+The broader objective is complete when ARCANA can defensibly use the simulation to answer where large populations and civilizations are plausible, approximately how many people the world supports by Year 0, how major regions are connected by resources/trade/Deep, and what broad demographic/political history plausibly produced that state.
+
 ## Next work rule
 
-There is currently no authorized post-R5.16 stage.
-
-The next scientific phase must be selected from the state actually established by sealed R5.16. It must not be inherited automatically from old roadmap labels or recovered chat-only numbering.
+There is currently no authorized post-R5.16 stage, but the scientific destination is now fixed by the post-R5.16 macrohistory objective charter.
 
 Before assigning a new stage number:
 
-1. inspect the sealed R5.16 scientific state and unresolved *future* questions, not closed audit gaps;
-2. choose the next scientifically useful question;
+1. choose the smallest scientifically useful unresolved component of the fixed macrohistorical objective;
+2. inspect what sealed R5.16 and existing WorldSim layers already provide;
 3. determine whether existing ARCANA outputs are sufficient or whether a new simulation/provider is justified;
-4. write a repository-tracked contract for that phase;
-5. only then authorize and number the next stage.
+4. design scaling/ensemble semantics before any downscaled demographic run is treated as a world-population result;
+5. write a repository-tracked contract for that phase;
+6. only then authorize and number the next stage.
 
-No repair, rerun, external engine, or new historical materialization is currently required by the R5.16 seal itself.
+No repair or rerun is required by the R5.16 seal itself. New computation is permitted when it materially advances the fixed macrohistorical objective.
 
 ## Repository tracking rule
 
