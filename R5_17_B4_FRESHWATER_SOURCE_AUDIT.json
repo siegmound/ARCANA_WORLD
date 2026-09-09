@@ -1,0 +1,48 @@
+{
+  "schema": "ARCANA_R5_17_B4_FRESHWATER_SOURCE_AUDIT_V1",
+  "stage": "v0.6D1-R5.17",
+  "subphase": "R5.17-B4",
+  "status": "PASS_R517_B4_FRESHWATER_SOURCE_GAP_CONFIRMED",
+  "purpose": "Determine whether the sources already bound to R5.17 provide a direct, governed persistent freshwater availability/reliability field suitable for civilization-facing human support.",
+  "scope_rule": "This audit evaluates currently bound and explicitly identified SEALED authorities. It does not claim that no freshwater-relevant quantity exists anywhere in historical archives.",
+  "authorities_reviewed": [
+    "R5_17_INPUT_CAPABILITY_CENSUS.json",
+    "R5_17_B_SOURCE_BINDING.json",
+    "CANONICAL_LATE_CENOZOIC_PROVIDER_BINDING_ADAPTIVE_CLOCK_RESTART_CONTRACT_v0_6D1_R3_14.md",
+    "CANONICAL_EXACT_120KA_ENVIRONMENTAL_RESTART_DEFERRED_BIOLOGY_CONTRACT_v0_6D1_R3_17.md",
+    "CANONICAL_RECENT_H0_EXPOSURE_COMPLETION_TRANSPORT_PHASE_READINESS_CONTRACT_v0_6D1_R3_18.md",
+    "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md",
+    "outputs/v0_6D1_R3_20/FORMAL_AUDIT_SEALED_v0_6D1_R3_20.json",
+    "R5_17_B3_ENVIRONMENTAL_SUPPORT_EXPOSURES_MANIFEST.json"
+  ],
+  "findings": {
+    "direct_bound_freshwater_supply_field": false,
+    "direct_bound_freshwater_reliability_field": false,
+    "persistent_water_access_field": false,
+    "navigable_water_opportunity_field": false,
+    "r318_environmental_fields_are_supply_equivalent": false,
+    "r320_hazard_fields_are_supply_equivalent": false,
+    "r320_temporal_scope_is_generalizable_without_derivation": false,
+    "new_compute_required": true,
+    "external_provider_required_at_this_stage": false
+  },
+  "evidence_summary": {
+    "r5_17_a": "Hydrology/water reliability is PARTIAL; freshwater_support, freshwater_reliability, persistent_water_access and navigable_water_opportunity are explicitly missing and require new compute.",
+    "r5_17_b1_b3": "The bound R3.18/R3.19/R3.20 inputs supply environmental exposure integrals, a 0-ka accessibility endpoint and a 15-11 ka hazard layer; none is authorized as direct human freshwater supply.",
+    "r3_20": "Hydrological outputs are diagnostic/ranking hazard variables, not flood depths, guaranteed inundation, freshwater availability or a generic human-support penalty.",
+    "r3_14": "The late-Cenozoic binding points to exact historical v0.6.1 paleoclimate payloads whose raw array inventory has not yet been promoted into R5.17 freshwater semantics."
+  },
+  "governance": {
+    "wetland_forage_must_not_be_relabelled_freshwater": true,
+    "aridity_index_must_not_be_inverted_and_called_freshwater_without_model": true,
+    "r320_hazard_must_not_be_interpreted_as_water_supply": true,
+    "r320_must_not_be_extrapolated_outside_15_to_11ka_without_derivation": true,
+    "k_x_t_materialized": false,
+    "human_population_target_used": false,
+    "new_historical_simulation": false,
+    "canonical_mutation": false
+  },
+  "decision": "NO_DIRECT_BOUND_FRESHWATER_SUPPLY_AUTHORITY__INSPECT_EXACT_SEALED_PALEOCLIMATE_PAYLOADS_BEFORE_NATIVE_DERIVATION",
+  "next_subphase": "R5.17-B5_SEALED_PALEOCLIMATE_PAYLOAD_HASH_AND_SCHEMA_INSPECTION",
+  "next_question": "Do the exact R3.14-bound v0.6.1 paleoclimate payloads contain precipitation, moisture, runoff, drainage, storage, lake, river or other physically interpretable fields that can support a native freshwater derivation?"
+}
