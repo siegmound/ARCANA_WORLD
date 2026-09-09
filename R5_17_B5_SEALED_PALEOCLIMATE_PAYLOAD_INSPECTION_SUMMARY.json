@@ -1,0 +1,76 @@
+{
+  "schema": "ARCANA_R5_17_B5_SEALED_PALEOCLIMATE_PAYLOAD_INSPECTION_SUMMARY_V1",
+  "stage": "v0.6D1-R5.17",
+  "subphase": "R5.17-B5",
+  "status": "PASS_R517_B5_SEALED_PALEOCLIMATE_PAYLOAD_HASH_AND_SCHEMA_INSPECTION",
+  "evidence_origin": "Local execution of R5_17_B5_LOCATE_AND_INSPECT_SEALED_PALEOCLIMATE_INPUTS.py and R5_17_B5_INSPECT_SEALED_PALEOCLIMATE_INPUTS.py; full generated manifest remains local/untracked at time of promotion.",
+  "all_sha256_match": true,
+  "allow_pickle": false,
+  "blocked_allow_pickle_false": {},
+  "inputs": {
+    "recent_paleoclimate_history": {
+      "filename": "recent_paleoclimate_history.npz",
+      "sha256": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+      "array_count": 23,
+      "shape_time": [1201],
+      "time_year_before_book_range": [-120000.0, 0.0],
+      "hydrology_lexical_candidate_keys": [
+        "biosphere_soil_carbon_gtc",
+        "canonical_freshwater_pulse_sv",
+        "freshwater_forcing_sv",
+        "ice_volume_index"
+      ],
+      "semantic_guard": "Freshwater pulse/forcing in Sverdrups is climate/ocean-circulation forcing evidence and is not promoted as local terrestrial freshwater supply."
+    },
+    "paleoclimate_spatial_snapshots": {
+      "filename": "paleoclimate_spatial_snapshots.npz",
+      "sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "array_count": 11,
+      "grid_shape": [720, 1440],
+      "snapshot_count": 5,
+      "hydrology_lexical_candidate_keys": [
+        "precipitation_factor_relative_book"
+      ],
+      "precipitation_factor_relative_book": {
+        "shape": [5, 720, 1440],
+        "dtype": "float32",
+        "min": 0.5259038805961609,
+        "max": 1.0000001192092896,
+        "mean": 0.8486381453894952
+      },
+      "related_fields": [
+        "snapshot_year_before_book",
+        "paleo_land_mask",
+        "temperature_anomaly_c",
+        "npp_factor_relative_book"
+      ],
+      "semantic_guard": "Relative precipitation forcing is a physically relevant input candidate but is not yet freshwater supply, runoff, storage, river flow or reliability."
+    },
+    "shoreline_state_I": {
+      "filename": "shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "array_count": 17,
+      "grid_shape": [720, 1440],
+      "resolution_deg": 0.25,
+      "subgrid_resolution_deg": 0.125,
+      "hydrology_lexical_candidate_keys": [],
+      "physically_relevant_geometry": [
+        "elevation_m",
+        "effective_land_mask",
+        "land_fraction",
+        "ocean_mask",
+        "closed_basin_below_sea_mask",
+        "lat",
+        "lon"
+      ]
+    }
+  },
+  "decision": "B5_PASS__PRECIPITATION_RELATIVE_FORCING_AND_HIGH_RESOLUTION_GEOMETRY_EXIST__SOURCE_SEMANTICS_REQUIRED_BEFORE_FRESHWATER_DERIVATION",
+  "freshwater_support_materialized": false,
+  "hydrological_reliability_materialized": false,
+  "k_x_t_materialized": false,
+  "new_historical_simulation": false,
+  "external_engine_execution": false,
+  "canonical_mutation": false,
+  "next_subphase": "R5.17-B6_FRESHWATER_PHYSICAL_INPUT_SEMANTIC_BINDING_AND_DERIVATION_DESIGN"
+}
