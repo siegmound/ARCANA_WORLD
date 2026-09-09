@@ -1,6 +1,6 @@
 # ARCANA WorldSim — Current State Authority
 
-> Compact repository-resident continuation ledger. Historical R3/R4/R5 material is provenance/archive unless specifically required.
+> Compact repository-resident continuation ledger. Historical R3/R4/R5 artifacts are provenance/archive unless specifically required. This file, together with the pointed repository artifacts, is the default bootstrap for new ARCANA WorldSim chats.
 
 ## Repository
 
@@ -10,14 +10,14 @@ REPOSITORY: siegmound/ARCANA_WORLD
 BRANCH: main
 BASELINE_IMPORT_COMMIT: 15ef285e554658125744056ec9266d9b0ed4c0ba
 RECOVERY_LEDGER: R5_15_R5_17_RECOVERY_LEDGER.md
-R5_16_CONTRACT: R5_16_INTEGRATED_END_OF_LEGACY_SEAL_REVIEW_CONTRACT.md
+
 R5_16_FINAL_SEAL_MANIFEST: R5_16_FINAL_SEAL_MANIFEST.json
-R5_16_FINAL_SEAL_MANIFEST_COMMIT: adab41b3d8385374a90a575c683ba16e49484945
 R5_16_FINAL_SEAL_AUDIT: R5_16_FINAL_SEAL_AUDIT.json
 R5_16_FINAL_SEAL_AUDIT_COMMIT: d96235d8425c0f0fb9322ea01213cccb0c6e02f2
-R5_16_FINAL_SEAL_AUDIT_GIT_BLOB_SHA: 33555e64b741a19853c8ba190f956499a9dcb861
+
 POST_R5_16_OBJECTIVE: ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md
 POST_R5_16_OBJECTIVE_COMMIT: 692f44f2b2854db15e87424630122129c083b865
+
 R5_17_CONTRACT: R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md
 R5_17_CONTRACT_COMMIT: 2b733d308d01e18991f9ec16f2781a5f88f004e9
 R5_17_INPUT_CAPABILITY_CENSUS: R5_17_INPUT_CAPABILITY_CENSUS.json
@@ -26,21 +26,29 @@ R5_17_B_SOURCE_BINDING: R5_17_B_SOURCE_BINDING.json
 R5_17_B_SOURCE_BINDING_COMMIT: 01cb913daed22cf0c6207700b97e199a7ca3b7de
 R5_17_B_LOCAL_INSPECTION_TOOL: R5_17_B_INSPECT_CANONICAL_INPUTS.py
 R5_17_B_LOCAL_INSPECTION_TOOL_COMMIT: b88595a0f8ef45e0b811b863dc8d05eaa57d0335
+R5_17_B_LOCAL_INSPECTION_MANIFEST: R5_17_B_LOCAL_CANONICAL_PAYLOAD_INSPECTION.json
+R5_17_B_LOCAL_INSPECTION_MANIFEST_COMMIT: 8b31046b38f6cebe10a97f07e5757dee6a16c278
+R5_17_B3_DESIGN: R5_17_B3_HUMAN_ENVIRONMENTAL_WATER_SUPPORT_DESIGN.md
+R5_17_B3_DESIGN_COMMIT: eeddb3961b8543d5886730b76718e5b8d5585ba6
 ```
 
 ## Authoritative continuation state
 
 ```yaml
 LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.16
-LATEST_COMPLETED: v0.6D1-R5.17-B1
+LATEST_COMPLETED: v0.6D1-R5.17-B2
 LATEST_STATUS: PASS
-LATEST_VERDICT: PASS_R517_B1_ENVIRONMENTAL_HYDROLOGICAL_SOURCE_BINDING
+LATEST_VERDICT: PASS_R517_B2_LOCAL_CANONICAL_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
+
 ACTIVE_STAGE: v0.6D1-R5.17
 ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
 ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
-ACTIVE_SUBPHASE: R5.17-B2
-ACTIVE_SUBPHASE_STATUS: READY_FOR_LOCAL_CANONICAL_PAYLOAD_INSPECTION
-ACTIVE_SUBPHASE_SCOPE: LOCAL_CANONICAL_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
+
+ACTIVE_SUBPHASE: R5.17-B3
+ACTIVE_SUBPHASE_STATUS: DESIGN_READY
+ACTIVE_SUBPHASE_SCOPE: HUMAN_ENVIRONMENTAL_AND_WATER_SUPPORT_DERIVATION
+NEXT_ACTION: IMPLEMENT_SMALLEST_NATIVE_ARCANA_B3_NUMERIC_DERIVATION
+
 NEXT_PHASE_OBJECTIVE: SIMULATION_DERIVED_MACROHISTORICAL_REFERENCE_TO_YEAR_0
 ```
 
@@ -48,109 +56,59 @@ NEXT_PHASE_OBJECTIVE: SIMULATION_DERIVED_MACROHISTORICAL_REFERENCE_TO_YEAR_0
 
 ```text
 v0.6D1-R5.7   SEALED
-  -> v0.6D1-R5.8    CANDIDATE completed
-  -> v0.6D1-R5.9    CANDIDATE completed
-  -> v0.6D1-R5.10   CANDIDATE completed
-  -> v0.6D1-R5.11   CANDIDATE completed
-  -> v0.6D1-R5.12   CANDIDATE completed
-  -> v0.6D1-R5.13   CANDIDATE completed
-  -> v0.6D1-R5.14   CANDIDATE completed
-  -> v0.6D1-R5.15   CANDIDATE completed
+  -> R5.8–R5.15 completed candidate continuation
   -> v0.6D1-R5.16   SEALED integrated end-of-legacy closure
   -> v0.6D1-R5.17   AUTHORIZED_IN_PROGRESS post-legacy human-support bridge
        -> R5.17-A   PASS input/capability census
        -> R5.17-B1  PASS environmental/hydrological source binding
-       -> R5.17-B2  READY_FOR_LOCAL_CANONICAL_PAYLOAD_INSPECTION
+       -> R5.17-B2  PASS local canonical payload hash/schema inspection
+       -> R5.17-B3  DESIGN_READY environmental/water support derivation
 ```
 
-R5.16 explicitly seals the integrated R5.8–R5.15 continuation reconciled against the SEALED legacy authorities R3.34–R3.39. Earlier candidate labels remain historical stage statuses; they are contained in the explicit integrated R5.16 seal and must not be independently promoted or rewritten.
+R5.16 explicitly seals the integrated R5.8–R5.15 continuation reconciled against the SEALED legacy authorities. Earlier individual candidate labels remain historical statuses and must not be rewritten.
 
-R5.17 is the first authorized post-R5.16 scientific implementation stage. It is not a civilization, polity or warfare simulation. It builds the bridge from SEALED WorldSim state to explicit human-support layers and baseline carrying-capacity semantics.
+R5.17 is the first post-R5.16 scientific implementation stage. It is not yet a civilization, polity, trade or warfare simulation. It builds the bridge from SEALED WorldSim evidence to explicit human-support layers and, later in R5.17, baseline carrying-capacity semantics.
 
-## R5.16 final result
+## R5.16 fixed parent state
 
 ```yaml
 STAGE: v0.6D1-R5.16
 STATUS: SEALED
 FINAL_STATUS: PASS_R516_END_OF_LEGACY_INTEGRATED_RECONCILIATION_SEALED
 FINAL_SEAL_CHECKS: 16/16 PASS
-
-REPOSITORY_PROVENANCE_COMPLETE: true
-PARENT_CHAIN_INTEGRITY: true
-LEGACY_RECONCILIATION_INTEGRITY: true
-NEGATIVE_RESULTS_PRESERVED: true
-HUMAN_LINEAGE_GOVERNANCE_PRESERVED: true
-NUMERICAL_REPLAY_CLAIMS_SUPPORTED: true
-EXTERNAL_ENGINE_GOVERNANCE_PRESERVED: true
-UNAUTHORIZED_CANONICAL_MUTATION: false
 OPEN_SCIENTIFIC_GAPS: 0
 OPEN_PROVENANCE_GAPS: 0
-```
-
-### Preserved scientific/governance state
-
-```yaml
 RETAINED_LINEAGES:
   - RPT_010_D02
   - RPT_009_D02
-
 DEEP_BIOLOGICAL_COUPLING: false
 UNIQUE_HUMAN_IDENTITY_MATERIALIZED: false
-NEW_EXTERNAL_ENGINE_EXECUTION_IN_R5_16: false
-FRESH_SCIENTIFIC_RERUN_IN_R5_16: false
 ```
 
-The seal preserves the negative outcomes and identity-governance constraints established by the reconciled chain. It does not create agriculture, reproductive-control domestication, plant domesticates, village/city/state, class hierarchy, currency/market, named culture, named language, named religion/myth, ethnicity, or a unique human identity where those states were not validly materialized.
+The seal does not itself materialize agriculture, cities, states, named cultures, religions, languages, ethnicities, trade systems, or a unique human identity.
 
-Numerical claims retain their original semantics. In particular, tolerance-based compatibility is not upgraded to exact equality; the R5.14 continuous domestication trajectories remain qualified as within one float64 epsilon while its explicitly exact replay/recomputation claims remain exact.
+## Fixed post-R5.16 objective
 
-External-engine evidence remains provider/evidence output unless explicitly promoted by ARCANA-owned authority. No engine majority vote or implicit canonical writer is introduced by R5.16.
+`ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md` fixes the long-term target as a **simulation-derived macrohistorical reference to narrative Year 0**, not a prewritten exact history.
 
-## End-of-legacy objective status
-
-The recovered completion strategy targeted:
-
-```text
-bulk legacy reconciliation
--> repair only if real gaps exist
--> integrated end-of-legacy seal
-```
-
-R5.15 completed the bulk reconciliation with six Class-A exact sealed-artifact reuses and zero repair requirement. Because no repair block was required, numbering compressed and R5.16 became the integrated end-of-legacy seal review. R5.16 has completed that objective and is explicitly SEALED.
-
-## Fixed post-R5.16 scientific objective
-
-The post-R5.16 WorldSim program has a repository-fixed objective charter:
-
-`ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md`
-
-The long-term target is a simulation-derived macrohistorical reference to narrative Year 0, not a prewritten exact history. Population, settlement geography, trade networks, civilization/polity structure, warfare, collapse and recovery are intended to emerge from WorldSim geography, climate, hydrology, ecology, resources, human state and Deep.
-
-Key fixed principles are:
-
-- Year-0 global and regional human population is an emergent result, not a preset target;
-- carrying capacity changes through time with environment, resources, trade, technology, infrastructure, Deep, war, disaster and degradation/recovery;
-- population may be represented computationally through weighted units, super-individuals, settlements or regional stocks rather than literal person-level agents;
-- downscaled/local simulations and interpolation/scaling are allowed only with explicit scaling semantics and validation of important nonlinear effects;
-- long or multi-seed simulations may be executed on local hardware and imported with repository-tracked configs, runtime identity, logs/manifests/hashes and adjudication;
-- Geonomics, SLiM, NEMO, RangeShiftR, CDMetaPOP and other justified providers remain evidence providers rather than implicit canonical writers;
-- macrohistory should support migration, trade, strategic settlement, civilization emergence, polity dynamics, war, collapse and successor states where later stages scientifically authorize those mechanisms;
-- final Year-0 outputs should preferentially report uncertainty/ensemble distributions rather than false exactness;
-- named cultures, religions, languages, ethnicities and detailed individual history are not required for objective completion unless separately materialized later.
-
-The broader objective is complete when ARCANA can defensibly use the simulation to answer where large populations and civilizations are plausible, approximately how many people the world supports by Year 0, how major regions are connected by resources/trade/Deep, and what broad demographic/political history plausibly produced that state.
+Population, settlement geography, resource access, trade, polity structure, warfare, collapse and recovery are intended to emerge from WorldSim geography, climate, hydrology, ecology, resources, human state and Deep. Year-0 population must remain emergent rather than a calibration target. External runtimes remain evidence providers only and are used only when a defined subquestion benefits from them.
 
 ## R5.17 bridge objective
 
-R5.17 is governed by:
+`R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md` requires independent, inspectable civilization-facing axes before any baseline `K(x,t)` or bounded support-capacity proxy is created.
 
-`R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md`
+Important governance rules:
 
-Its purpose is to translate existing SEALED WorldSim evidence into independent civilization-facing support layers and ultimately a baseline `K(x,t)` or bounded capacity proxy. R5.17 must not tune the world to a desired population or civilization outcome.
+- no target global/regional population;
+- no target civilization or settlement outcome;
+- no single opaque civilization score as primary authority;
+- no invented missing hydrology/resources/Deep variables;
+- no blind proxy-to-`K` conversion;
+- no external runtime merely because it is installed;
+- uncertainty and original proxy semantics must be preserved;
+- a relative/bounded support proxy may precede physical persons/cell calibration if clearly labeled.
 
-### R5.17-A result
-
-`R5_17_INPUT_CAPABILITY_CENSUS.json` records:
+## R5.17-A result
 
 ```yaml
 STATUS: PASS_R517_A_INPUT_CAPABILITY_CENSUS
@@ -159,75 +117,110 @@ EXTERNAL_ENGINE_EXECUTION_REQUIRED_NOW: false
 PRIMARY_BLOCKER: no calibrated human-support/carrying-capacity bridge currently exists
 ```
 
-### R5.17-B1 result
+The census established that base geometry and lineage state are reusable, while climate/environment, hydrology, food support, hazards and Deep require explicit civilization-facing derivations. Freshwater support/reliability and navigable-water opportunity are not already materialized.
 
-`R5_17_B_SOURCE_BINDING.json` binds the exact SEALED authorities for the first bridge calculation.
+## R5.17-B1 source binding
 
-The important new finding is that R3.18 already provides a directly relevant environmental integral bundle with four temporal groups and these validated fields:
+Three exact SEALED authorities are bound for the first bridge work:
 
-```text
-aridity_index
-browse_forage
-land_support
-low_forage
-reference_population
-temperature_c
-wetland_forage
+```yaml
+R3_18_ENVIRONMENT_INTEGRAL_BUNDLE_SHA256: 54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70
+R3_19_0KA_CHECKPOINT_SHA256: f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406
+R3_20_HYDROLOGICAL_HAZARD_SHA256: 4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14
 ```
 
-Its canonical NPZ SHA256 is:
+R3.18 provides four temporal groups with `aridity_index`, `browse_forage`, `land_support`, `low_forage`, `reference_population`, `temperature_c`, and `wetland_forage`.
 
-`54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70`
+R3.18 `reference_population` is not physical human population and not `K`. R3.20 diagnostic hazard fields are not flood depths, guaranteed inundation, freshwater support, or a direct reliability penalty.
 
-R3.19 provides the exact present biological/support boundary; its checkpoint NPZ SHA256 is:
+## R5.17-B2 completed result
 
-`f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406`
+The user's local canonical payloads were inspected by the repository-tracked fail-closed tool and the resulting manifest was imported into the repository.
 
-R3.20 provides the 15–11 ka / 50-year hydrological-hazard payload; its NPZ SHA256 is:
+```yaml
+STATUS: PASS_R517_B2_LOCAL_CANONICAL_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
+ALL_SHA256_MATCH: true
+R3_18_ARRAY_COUNT: 31
+R3_19_ARRAY_COUNT: 12
+R3_20_ARRAY_COUNT: 10
+NONFINITE_VALUES_FOUND: false
+FILENAME_MISMATCH_FOUND: false
+NEW_HISTORICAL_SIMULATION: false
+EXTERNAL_ENGINE_EXECUTION: false
+CANONICAL_MUTATION: false
+```
 
-`4319f6464f96014e372e241a9c4b8d801bc945124153a3c9cef6dd25fcb5fb14`
+Important structural evidence:
 
-The SEALED audits and hashes are repository-resident, but these canonical binary payloads are intentionally/local historically stored rather than committed to Git. This is not a provenance failure, but numeric derivation must not proceed until the local payloads are revalidated against those hashes.
+- native spatial grid is 90 × 180;
+- R3.19 supplies exact `lat`, `lon`, and 0-ka `current_accessible` with 4130 accessible cells;
+- R3.20 supplies 80 hazard states at 50-year cadence from 14,950 to 11,000 years before book;
+- all inspected arrays are finite.
 
-## Active work rule — R5.17-B2
+### Critical R3.18 semantic clarification
 
-`R5_17_B_INSPECT_CANONICAL_INPUTS.py` is the repository-tracked fail-closed inspection tool.
+The R3.18 SEALED audit explicitly defines the canonical NPZ as an **integral bundle** and the decision as recent exposure plus two 62.5-kyr transport-phase integrals. Therefore its large `temperature_c`, `aridity_index`, forage and land-support values are cumulative exposure/integral quantities, not instantaneous snapshots.
 
-R5.17-B2 must:
+R5.17 must preserve that meaning. Duration-normalized quantities may be derived transparently using the SEALED window durations, but must initially remain labelled duration-normalized exposures unless the source unit convention supports promotion to a physical temporal mean.
 
-1. locate the three canonical NPZ payloads on the user's local WorldSim tree;
-2. verify their SHA256 values exactly against SEALED authority;
-3. load with `allow_pickle=False`;
-4. record every array key, shape, dtype, finite/nonfinite count and numeric range;
-5. write `R5_17_B_LOCAL_CANONICAL_PAYLOAD_INSPECTION.json`;
-6. import that manifest back into the repository before R5.17-B3 derives any human-support variable.
+## Active work — R5.17-B3
 
-The inspection is not a simulation and should be cheap. A hash mismatch fails closed and must not be bypassed by choosing a similar file.
+Design authority:
 
-R5.17-B must not yet:
+`R5_17_B3_HUMAN_ENVIRONMENTAL_WATER_SUPPORT_DESIGN.md`
 
-- calibrate a desired global population;
-- materialize agriculture/cities/states;
-- infer trade networks or polities;
-- use an external engine merely because it is available;
-- generalize the R3.20 15–11 ka hazard evidence beyond its supported window without explicit derivation;
-- treat R3.18 `reference_population` as physical human population or carrying capacity;
-- call a relative support proxy physical carrying capacity before calibration.
+B3 keeps independent axes for:
 
-If native ARCANA layers are sufficient, no external runtime is needed for R5.17-B. If a later subquestion genuinely needs Geonomics, SLiM, NEMO, RangeShiftR or CDMetaPOP, long local execution remains explicitly permitted under repository-tracked configuration and evidence.
+```text
+LAND_SUPPORT_EXPOSURE
+TEMPERATURE_EXPOSURE
+ARIDITY_EXPOSURE
+LOW_FORAGE_EXPOSURE
+BROWSE_FORAGE_EXPOSURE
+WETLAND_FORAGE_EXPOSURE
+BIOLOGICAL_SUPPORT_DIAGNOSTICS
+HYDROLOGICAL_HAZARD_VECTOR
+ENVIRONMENTAL_STABILITY_DIAGNOSTICS
+```
+
+The first numeric B3 computation may:
+
+1. load the already validated R3.18/R3.19/R3.20 payloads;
+2. divide R3.18 integral fields by their explicit window durations to create duration-normalized exposure fields;
+3. compute transparent phase-difference diagnostics;
+4. retain R3.19 `current_accessible` only as the exact 0-ka endpoint boundary;
+5. preserve R3.20 hazards unchanged by component and supported 15–11 ka coverage;
+6. write a repository-importable output/manifest.
+
+It must **not** yet:
+
+- generate `K`;
+- convert forage directly to human calories/persons;
+- sum forage channels blindly;
+- treat `reference_population` as humans;
+- back-project the 0-ka accessibility mask across 125 kyr;
+- extrapolate R3.20 hazards outside 15–11 ka;
+- infer freshwater availability from low hazard;
+- materialize settlements/cities/states/trade/polities.
+
+### Explicit unresolved B3 quantities
+
+```yaml
+FRESHWATER_SUPPORT: MISSING_NEEDS_NEW_DERIVATION
+HYDROLOGICAL_RELIABILITY: PARTIAL_NEEDS_NEW_DERIVATION
+NAVIGABLE_WATER_OPPORTUNITY: NOT_MATERIALIZED
+HUMAN_EDIBLE_PRODUCTIVITY: NOT_MATERIALIZED
+PHYSICAL_PERSONS_PER_CELL_K: NOT_MATERIALIZED
+```
+
+These must remain explicit gaps until source-supported derivations are bound.
 
 ## Repository tracking rule
 
-Every scientific, implementation, governance, calibration, replay, audit or continuation change must be represented in this repository.
+Every scientific, implementation, governance, calibration, replay, audit or continuation change must be represented in this repository. Commit the artifact/result, update this ledger, preserve parent/status/seal distinctions, and never infer `SEALED` from PASS alone.
 
-1. Commit relevant contract/source/artifact/result.
-2. Update this state ledger in the same change or immediately following bookkeeping commit.
-3. Record parent, status, seal status and next stage.
-4. Never infer `SEALED` from PASS alone.
-5. Never let chat-only metadata override repository evidence or stronger contemporaneous handoffs.
-6. Retrieve large historical artifacts only for targeted provenance/audit work.
-7. Do not introduce an external runtime unless the scientific question shows it is useful.
+Large historical R3/R4/R5 artifacts should be retrieved only for targeted provenance or semantic questions. Do not bootstrap new chats from old uploaded package names when this ledger and current repository evidence are available.
 
 ---
 
-Updated: 2026-09-08 (Europe/Rome project date).
+Updated: 2026-09-09 (Europe/Rome project date).
