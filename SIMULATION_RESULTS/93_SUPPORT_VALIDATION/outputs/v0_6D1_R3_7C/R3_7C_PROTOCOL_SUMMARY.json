@@ -1,0 +1,23 @@
+{
+  "stage": "v0.6D1-R3.7C",
+  "verdict": "PASS_SELECTION_ORACLE_PROTOCOL_AND_BINDING__EXTERNAL_NEMO_SELECTION_EVIDENCE_PENDING",
+  "nemo_required": "2.4.2",
+  "population_sizes": [500, 2000],
+  "replicates": 2,
+  "trait_axes": 2,
+  "selection_variances": [1.0, 4.0],
+  "chain_count": 16,
+  "nemo_runs_per_chain": 5,
+  "nemo_run_count": 80,
+  "common_burnin_transitions": 200,
+  "fragmented_selection_transitions": 300,
+  "reconnected_relaxed_transitions": 400,
+  "optimum_amplitude": 0.6,
+  "matched_neutral_controls": true,
+  "synthetic_collector_fixture": "PASS_K_EFF_AND_RECONNECTION_RETENTION_RECOVERY",
+  "scientific_engine_regression": "87/87 PASS",
+  "formal_audit": "44/44 PASS",
+  "scalar_K_eff_authorized": false,
+  "production_runtime_binding_authorized": false,
+  "canonical_write_allowed": false
+}

@@ -1,0 +1,698 @@
+{
+  "deep_biological_coupling": false,
+  "evidence_sources": {
+    "AMNIOTE_LIFE_HISTORY": {
+      "citation": "Myhrvold et al. 2015, Ecology 96:3109",
+      "doi": "10.1890/15-0846R.1",
+      "scope": "bird/mammal/reptile life history"
+    },
+    "ANIMAL_CULTURE_DATABASE": {
+      "citation": "Basava & Roman-Palacios 2025, Ecology and Evolution 15:e71913",
+      "doi": "10.1002/ece3.71913",
+      "scope": "socially transmitted animal behaviour"
+    },
+    "ATLAS_COMPARATIVE_COGNITION": {
+      "citation": "Atlas of Comparative Cognition",
+      "doi": null,
+      "scope": "systematic comparative cognition evidence coverage"
+    },
+    "AVONET": {
+      "citation": "Tobias et al. 2022, Ecology Letters 25:581-597",
+      "doi": "10.1111/ele.13898",
+      "scope": "avian morphology/ecology"
+    },
+    "DOCHTERMANN_2019": {
+      "citation": "Dochtermann et al. 2019, Journal of Heredity 110:403-410",
+      "doi": "10.1093/jhered/esz023",
+      "scope": "phylogenetically controlled behavioural heritability meta-analysis"
+    },
+    "ELTONTRAITS": {
+      "citation": "Wilman et al. 2014, Ecology 95:2027",
+      "doi": "10.1890/13-1917.1",
+      "scope": "bird/mammal diet, foraging, activity, body mass"
+    },
+    "MOUSSEAU_ROFF_1987": {
+      "citation": "Mousseau & Roff 1987, Heredity 59:181-197",
+      "doi": "10.1038/hdy.1987.113",
+      "scope": "1120 heritability estimates across wild outbred animals"
+    },
+    "PANTHERIA": {
+      "citation": "Jones et al. 2009, Ecology 90:2648",
+      "doi": "10.1890/08-1494.1",
+      "scope": "mammal ecology and life history"
+    }
+  },
+  "heritability_priors": {
+    "BEHAVIOURAL": {
+      "mean_h2": 0.235,
+      "source": "DOCHTERMANN_2019"
+    },
+    "FORAGING": {
+      "mean_h2": 0.196,
+      "source": "DOCHTERMANN_2019"
+    },
+    "LIFE_HISTORY": {
+      "mean_h2": 0.262,
+      "source": "MOUSSEAU_ROFF_1987"
+    },
+    "MORPHOLOGY_LIKE": {
+      "mean_h2": 0.461,
+      "source": "MOUSSEAU_ROFF_1987"
+    }
+  },
+  "human_anchor": false,
+  "rate_regimes": {
+    "BASELINE": {
+      "diffusion_per_sqrt_myr": 0.115,
+      "half_life_myr": 20.0
+    },
+    "CONSERVATIVE": {
+      "diffusion_per_sqrt_myr": 0.085,
+      "half_life_myr": 30.0
+    },
+    "LABILE": {
+      "diffusion_per_sqrt_myr": 0.15,
+      "half_life_myr": 12.0
+    }
+  },
+  "stage": "v0.6D1-R3.23",
+  "status": "COMPARATIVE_PRIOR_CALIBRATION_CANDIDATE",
+  "trait_calibration": [
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "manipulative_capability",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "M1_effector_independence",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "manipulative_capability",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "M2_force_precision_span",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "manipulative_capability",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "M3_workspace_control",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "manipulative_capability",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "M4_sensorimotor_feedback",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "locomotor_flexibility",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "L1_locomotor_mode_breadth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "locomotor_flexibility",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "L2_substrate_breadth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "locomotor_flexibility",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "L3_transition_control",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "locomotor_flexibility",
+      "empirical_source_set": [
+        "AVONET",
+        "ELTONTRAITS",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "B_COMPARATIVE_PRIOR_PLUS_WEAK_WORLD_PROXY",
+      "heritability_or_va_model": {
+        "class": "MORPHOLOGY_LIKE",
+        "mean_h2_reference": 0.461,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "L4_effector_locomotor_decoupling",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "cognitive_capacity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "C1_working_memory",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "cognitive_capacity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "C2_inhibitory_control",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "cognitive_capacity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "C3_relational_integration",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "cognitive_capacity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "C4_causal_model_depth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "learning_plasticity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "P1_acquisition_efficiency",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "learning_plasticity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "P2_retention_stability",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "learning_plasticity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "P3_cross_context_transfer",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "learning_plasticity",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ATLAS_COMPARATIVE_COGNITION"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "P4_developmental_plasticity",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "sociality",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ANIMAL_CULTURE_DATABASE",
+        "PANTHERIA"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "S1_social_tolerance",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "sociality",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ANIMAL_CULTURE_DATABASE",
+        "PANTHERIA"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "S2_coordination_capacity",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "sociality",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ANIMAL_CULTURE_DATABASE",
+        "PANTHERIA"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "S3_social_learning_fidelity",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "sociality",
+      "empirical_source_set": [
+        "DOCHTERMANN_2019",
+        "ANIMAL_CULTURE_DATABASE",
+        "PANTHERIA"
+      ],
+      "epistemic_class": "C_COMPARATIVE_PRIOR_HIGH_UNCERTAINTY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "S4_communication_bandwidth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "dietary_flexibility",
+      "empirical_source_set": [
+        "ELTONTRAITS",
+        "PANTHERIA",
+        "DOCHTERMANN_2019"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_ECOLOGICAL_PROXY",
+      "heritability_or_va_model": {
+        "class": "FORAGING",
+        "mean_h2_reference": 0.196,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "D1_resource_breadth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "dietary_flexibility",
+      "empirical_source_set": [
+        "ELTONTRAITS",
+        "PANTHERIA",
+        "DOCHTERMANN_2019"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_ECOLOGICAL_PROXY",
+      "heritability_or_va_model": {
+        "class": "FORAGING",
+        "mean_h2_reference": 0.196,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "D2_digestive_processing_breadth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "dietary_flexibility",
+      "empirical_source_set": [
+        "ELTONTRAITS",
+        "PANTHERIA",
+        "DOCHTERMANN_2019"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_ECOLOGICAL_PROXY",
+      "heritability_or_va_model": {
+        "class": "FORAGING",
+        "mean_h2_reference": 0.196,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "D3_resource_switching",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "life_history",
+      "empirical_source_set": [
+        "AMNIOTE_LIFE_HISTORY",
+        "PANTHERIA",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_DIRECT_PROXY",
+      "heritability_or_va_model": {
+        "class": "LIFE_HISTORY",
+        "mean_h2_reference": 0.262,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "H1_maturation_duration",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "life_history",
+      "empirical_source_set": [
+        "AMNIOTE_LIFE_HISTORY",
+        "PANTHERIA",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_DIRECT_PROXY",
+      "heritability_or_va_model": {
+        "class": "LIFE_HISTORY",
+        "mean_h2_reference": 0.262,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "H2_reproductive_output_rate",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "life_history",
+      "empirical_source_set": [
+        "AMNIOTE_LIFE_HISTORY",
+        "PANTHERIA",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_DIRECT_PROXY",
+      "heritability_or_va_model": {
+        "class": "LIFE_HISTORY",
+        "mean_h2_reference": 0.262,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "H3_parental_investment",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "life_history",
+      "empirical_source_set": [
+        "AMNIOTE_LIFE_HISTORY",
+        "PANTHERIA",
+        "MOUSSEAU_ROFF_1987"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_DIRECT_PROXY",
+      "heritability_or_va_model": {
+        "class": "LIFE_HISTORY",
+        "mean_h2_reference": 0.262,
+        "source": "MOUSSEAU_ROFF_1987",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "H4_adult_survival_horizon",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "ecological_generalism",
+      "empirical_source_set": [
+        "ELTONTRAITS",
+        "PANTHERIA",
+        "AVONET",
+        "DOCHTERMANN_2019"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_ECOLOGICAL_PROXY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "G1_habitat_breadth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "ecological_generalism",
+      "empirical_source_set": [
+        "ELTONTRAITS",
+        "PANTHERIA",
+        "AVONET",
+        "DOCHTERMANN_2019"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_ECOLOGICAL_PROXY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "G2_climatic_tolerance_breadth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "ecological_generalism",
+      "empirical_source_set": [
+        "ELTONTRAITS",
+        "PANTHERIA",
+        "AVONET",
+        "DOCHTERMANN_2019"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_ECOLOGICAL_PROXY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "G3_disturbance_resilience",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    },
+    {
+      "cost_model_if_non_negligible": "NOT_USED_AS_DIRECT_FITNESS_TARGET_IN_R3_23;_R3_22_TRADEOFFS_REMAIN_GOVERNING_SEMANTICS",
+      "domain": "ecological_generalism",
+      "empirical_source_set": [
+        "ELTONTRAITS",
+        "PANTHERIA",
+        "AVONET",
+        "DOCHTERMANN_2019"
+      ],
+      "epistemic_class": "A_COMPARATIVE_PLUS_WORLD_ECOLOGICAL_PROXY",
+      "heritability_or_va_model": {
+        "class": "BEHAVIOURAL",
+        "mean_h2_reference": 0.235,
+        "source": "DOCHTERMANN_2019",
+        "type": "HERITABILITY_PRIOR_METADATA_ONLY_NOT_COMPONENT_VA"
+      },
+      "observable_to_latent_mapping": "STANDARDIZED_MONOTONE_LATENT_Z_WITH_WEAK_WORLD_PROXY_CONDITIONING",
+      "trait_id": "G4_colonization_breadth",
+      "uncertainty_model": "THREE_MACROEVOLUTIONARY_RATE_REGIMES_PLUS_ROOT_AND_COMPONENT_PRIOR_NOISE",
+      "validation_result": "COMPARATIVE_PRIOR_WITH_EXPLICIT_EPISTEMIC_CLASS;_FICTIONAL_LINEAGES_HAVE_NO_DIRECT_OBSERVED_FUNCTIONAL_LABELS"
+    }
+  ]
+}

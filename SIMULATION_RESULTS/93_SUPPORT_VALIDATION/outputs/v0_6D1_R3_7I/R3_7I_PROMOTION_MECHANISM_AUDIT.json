@@ -1,0 +1,33 @@
+{
+  "stage": "v0.6D1-R3.7I",
+  "status": "PASS_PROMOTION_MECHANISM_AND_FAIL_CLOSED_GATE__R37H_FULL_EVIDENCE_PENDING",
+  "current_real_evidence_state": {
+    "r37h_full_210_150_results_present_in_candidate": false,
+    "promotion_seal_present": false,
+    "canonical_runtime_can_start_without_seal": false,
+    "expected_block_status": "BLOCKED_R37H_FULL_EVIDENCE_PATH_REQUIRED"
+  },
+  "synthetic_end_to_end_mechanism_test": {
+    "valid_three_branch_review": "PASS_R37H_EVIDENCE__EXPLICIT_PROMOTION_APPROVAL_REQUIRED",
+    "explicit_approval_materializes_seal": true,
+    "generated_seal_validates": true,
+    "scalar_k_physical_constant_authorized": false,
+    "synthetic_seal_retained_in_candidate": false
+  },
+  "test_evidence": {
+    "r37_chain_group_1": "42/42 PASS clean",
+    "r37_chain_group_2": "33/33 PASS clean",
+    "r37_chain_group_3": "20/20 PASS clean",
+    "r37_total": "95/95 PASS split clean",
+    "r37h_formal_audit": "56/56 PASS",
+    "r37i_formal_audit": "29/29 PASS"
+  },
+  "governance": {
+    "production_runtime_replacement_authorized_now": false,
+    "promotion_requires_real_r37h_full_closed_loop_evidence": true,
+    "explicit_promotion_approval_required": true,
+    "nominal_k_reference_semantics": "OPERATIONAL_REDUCED_ORDER_REFERENCE_NOT_PHYSICAL_CONSTANT",
+    "scalar_k_physical_constant_authorized": false,
+    "mu_b_or_ceiling_change_authorized": false
+  }
+}

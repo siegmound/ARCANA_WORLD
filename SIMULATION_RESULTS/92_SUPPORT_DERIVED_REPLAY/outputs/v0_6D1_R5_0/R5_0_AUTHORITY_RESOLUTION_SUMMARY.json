@@ -1,0 +1,298 @@
+{
+  "exact_parent_hashes": {
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_REPLAY_AUTHORITY.json": "f81755225fe301fb5519c3ca4e6e6ce715937e35a42a48a4e5c184c85879b29a",
+    "outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_TRAJECTORIES.npz": "175959669ba5daa84ab0937b4b213c1633ee674e89e67690915dbc622b2e1b84",
+    "outputs/v0_6D1_R3_33/R3_33_ECOLOGICAL_PARTNER_CANDIDATE_REGISTRY.json": "ab3d6e50966946c95ffa60bdf48115275b3b7669640715b99836570828886711",
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY.json": "17cc1bf7c0096b51eb333c0de7bbc4f0a827f7a4a0f821868f9db3bfa4b2936a",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json": "5851a7e2d0822bab8c006bc8cd6f49f506138a3aab0533b000ecc603f9e4c39e",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_TAXON_REGISTRY.json": "b24960a86a745a028c1096fe636885310d1ecaa3213a612696c7687ebb2e535c"
+  },
+  "queries": {
+    "17p5ka": {
+      "array_shapes": {
+        "admixture_opportunity_cumulative": [
+          32
+        ],
+        "candidate_ids": [
+          2
+        ],
+        "contact_index": [
+          32
+        ],
+        "deme_active": [
+          32,
+          2,
+          6
+        ],
+        "deme_state": [
+          32,
+          2,
+          6,
+          7
+        ],
+        "deme_state_variable_names": [
+          7
+        ],
+        "environment_fields": [
+          90,
+          180,
+          7
+        ],
+        "environment_variable_names": [
+          7
+        ],
+        "fauna_partner_species_ids": [
+          24
+        ],
+        "fauna_partner_trait_names": [
+          8
+        ],
+        "fauna_partner_traits": [
+          24,
+          8
+        ],
+        "fauna_partner_trajectory_state": [
+          32,
+          2,
+          24,
+          9
+        ],
+        "fauna_trajectory_variable_names": [
+          9
+        ],
+        "grid_col_indices": [
+          180
+        ],
+        "grid_row_indices": [
+          90
+        ],
+        "parent_member_indices": [
+          32
+        ],
+        "population_summary": [
+          32,
+          2,
+          8
+        ],
+        "population_summary_variable_names": [
+          8
+        ],
+        "producer_landscape": [
+          36,
+          90,
+          180,
+          4
+        ],
+        "producer_taxon_ids": [
+          36
+        ],
+        "producer_variable_names": [
+          4
+        ],
+        "target_age_ka": [
+          1
+        ]
+      },
+      "domain_coverage": {
+        "climate": "R3_33_TEMPERATURE_ANOMALY_PLUS_PRECIPITATION_FACTOR",
+        "fauna": "PARTIAL_R3_33_24_ECOLOGICAL_PARTNER_CANDIDATES_AND_INTERACTION_TRAJECTORIES_NO_GLOBAL_FAUNA_RASTER",
+        "flora": "R3_34_36_ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCER_TAXA",
+        "hydrology": "PARTIAL_R3_33_HYDROCLIMATE_RESOURCE_PLUS_COASTAL_EDGE_NO_RIVER_NETWORK",
+        "population": "FULL_R3_28_TWO_CANDIDATE_COHORT_SUMMARY_PLUS_MAX_6_DEME_DETAIL",
+        "resources": "R3_33_NPP_PRECIPITATION_HYDROCLIMATE_RESOURCE_FIELDS",
+        "surface_paleogeography": "PARTIAL_LAND_FRACTION_PLUS_SEA_LEVEL_SURFACE_SUPPORT_NOT_DEEP_GEOLOGY"
+      },
+      "governance": {
+        "canonical_state_changed": false,
+        "canonical_write": false,
+        "deep_biological_coupling": false,
+        "external_engine_execution_performed": false,
+        "full_history_rerun_performed": false,
+        "randomness_used": false,
+        "readjudication_of_arcana_canonical_target_performed": false,
+        "renderer_or_visualization_execution_performed": false,
+        "target_numeric_execution_performed": false,
+        "temporal_extrapolation_performed": false
+      },
+      "provenance_modes": {
+        "contact_admixture": "EXACT",
+        "environment": "BRACKETED_LINEAR",
+        "fauna": "BRACKETED_LINEAR",
+        "flora": "BRACKETED_LINEAR",
+        "population_detail": "BOUNDED_SPATIAL_RECONSTRUCTION",
+        "population_summary": "EXACT"
+      },
+      "query_id": "R50_DEMO_ARBITRARY_17P5KA",
+      "semantic_state_sha256": "bc70bf068154be48f5d3ffe981d02833f55b8448b59ae3bf9f78d6b34a9313ef",
+      "stage": "v0.6D1-R5.0",
+      "status": "R50_DERIVED_STATE_QUERY_COMPLETE",
+      "target_age_ka": 17.5
+    },
+    "20ka": {
+      "array_shapes": {
+        "admixture_opportunity_cumulative": [
+          32
+        ],
+        "candidate_ids": [
+          2
+        ],
+        "contact_index": [
+          32
+        ],
+        "deme_active": [
+          32,
+          2,
+          6
+        ],
+        "deme_state": [
+          32,
+          2,
+          6,
+          7
+        ],
+        "deme_state_variable_names": [
+          7
+        ],
+        "environment_fields": [
+          90,
+          180,
+          7
+        ],
+        "environment_variable_names": [
+          7
+        ],
+        "fauna_partner_species_ids": [
+          24
+        ],
+        "fauna_partner_trait_names": [
+          8
+        ],
+        "fauna_partner_traits": [
+          24,
+          8
+        ],
+        "fauna_partner_trajectory_state": [
+          32,
+          2,
+          24,
+          9
+        ],
+        "fauna_trajectory_variable_names": [
+          9
+        ],
+        "grid_col_indices": [
+          180
+        ],
+        "grid_row_indices": [
+          90
+        ],
+        "parent_member_indices": [
+          32
+        ],
+        "population_summary": [
+          32,
+          2,
+          8
+        ],
+        "population_summary_variable_names": [
+          8
+        ],
+        "producer_landscape": [
+          36,
+          90,
+          180,
+          4
+        ],
+        "producer_taxon_ids": [
+          36
+        ],
+        "producer_variable_names": [
+          4
+        ],
+        "target_age_ka": [
+          1
+        ]
+      },
+      "domain_coverage": {
+        "climate": "R3_33_TEMPERATURE_ANOMALY_PLUS_PRECIPITATION_FACTOR",
+        "fauna": "PARTIAL_R3_33_24_ECOLOGICAL_PARTNER_CANDIDATES_AND_INTERACTION_TRAJECTORIES_NO_GLOBAL_FAUNA_RASTER",
+        "flora": "R3_34_36_ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCER_TAXA",
+        "hydrology": "PARTIAL_R3_33_HYDROCLIMATE_RESOURCE_PLUS_COASTAL_EDGE_NO_RIVER_NETWORK",
+        "population": "FULL_R3_28_TWO_CANDIDATE_COHORT_SUMMARY_PLUS_MAX_6_DEME_DETAIL",
+        "resources": "R3_33_NPP_PRECIPITATION_HYDROCLIMATE_RESOURCE_FIELDS",
+        "surface_paleogeography": "PARTIAL_LAND_FRACTION_PLUS_SEA_LEVEL_SURFACE_SUPPORT_NOT_DEEP_GEOLOGY"
+      },
+      "governance": {
+        "canonical_state_changed": false,
+        "canonical_write": false,
+        "deep_biological_coupling": false,
+        "external_engine_execution_performed": false,
+        "full_history_rerun_performed": false,
+        "randomness_used": false,
+        "readjudication_of_arcana_canonical_target_performed": false,
+        "renderer_or_visualization_execution_performed": false,
+        "target_numeric_execution_performed": false,
+        "temporal_extrapolation_performed": false
+      },
+      "provenance_modes": {
+        "contact_admixture": "EXACT",
+        "environment": "EXACT",
+        "fauna": "EXACT",
+        "flora": "EXACT",
+        "population_detail": "EXACT",
+        "population_summary": "EXACT"
+      },
+      "query_id": "R50_DEMO_EXACT_20KA",
+      "semantic_state_sha256": "ad0770c10074a5030a74f641ff3852372aab6806089f5512b605a718cb6c5554",
+      "stage": "v0.6D1-R5.0",
+      "status": "R50_DERIVED_STATE_QUERY_COMPLETE",
+      "target_age_ka": 20.0
+    }
+  },
+  "r456_authority": {
+    "checks": {
+      "canonical_state_unchanged": true,
+      "closed_jobs_23": true,
+      "closure_gaps_0": true,
+      "deep_biological_coupling_off": true,
+      "exact_frozen_jobs_23": true,
+      "full_revalidation_closed": true,
+      "numeric_corroboration_not_claimed": true,
+      "verdict_exact": true
+    },
+    "evidence_files": [
+      {
+        "bytes": 9978,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_FINAL_MULTI_ENGINE_REVALIDATION_CLOSURE.json",
+        "sha256": "6eac8bbdebce95d1da645eb80e2bc7464262e608e53fab8fec8bc97a922a3dc9"
+      },
+      {
+        "bytes": 2104,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_GEONOMICS_CLOSURE_REUSE_REVIEW.json",
+        "sha256": "007ffee94e3cf1b4d53d42db43564b0dd8a70e686efcf2d32dfb5bbfd38e7347"
+      },
+      {
+        "bytes": 2580,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_INTEGRATED_AUDIT.json",
+        "sha256": "e641ffd8fac862b95b4cca1ff70cb402faae1b6929ad190657d107a8a8f946ec"
+      },
+      {
+        "bytes": 37504,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_NON_GEONOMICS_INDEPENDENT_BUNDLE_REVIEW.json",
+        "sha256": "b60dda40e4b0849883805383784090800f0c127bb4b5a335726f908e98d9200b"
+      },
+      {
+        "bytes": 2274,
+        "path": "outputs\\v0_6D1_R4_56_SEAL\\R4_56_FINAL_SEAL_AUDIT.json",
+        "sha256": "a9a87b792a57f5d9c0785b4f652252a5e2a7000ba0eee9a788d6887143693e8f"
+      }
+    ],
+    "expected_verdict": "ARCANA_MULTI_ENGINE_23_JOB_FULLY_REVALIDATED_WITH_EXACT_INTEGRITY_AND_GOVERNED_DESCRIPTIVE_EVIDENCE_NO_NUMERIC_CORROBORATION_CLAIM",
+    "status": "R456_RUNTIME_AUTHORITY_VERIFIED"
+  },
+  "stage": "v0.6D1-R5.0",
+  "status": "R50_AUTHORITY_RESOLUTION_COMPLETE"
+}

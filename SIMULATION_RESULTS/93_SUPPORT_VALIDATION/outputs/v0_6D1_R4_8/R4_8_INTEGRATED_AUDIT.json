@@ -1,0 +1,177 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "PASS_R48_POST_REPAIR_STRUCTURAL_MATCHED_CONTROL_PLAN_PREPARED",
+      "name": "r48_prepared",
+      "pass": true
+    },
+    {
+      "detail": "PASS",
+      "name": "dynamic_r47_adapter_pass",
+      "pass": true
+    },
+    {
+      "detail": "PASS",
+      "name": "neutral_control_adapter_pass",
+      "pass": true
+    },
+    {
+      "detail": "MATCHED_NEUTRAL_FORCING",
+      "name": "neutral_control_declares_matched_control",
+      "pass": true
+    },
+    {
+      "detail": 1.0,
+      "name": "neutral_control_ratio_exact_one",
+      "pass": true
+    },
+    {
+      "detail": [
+        [
+          0,
+          55525513
+        ],
+        [
+          1,
+          66696762
+        ],
+        [
+          2,
+          413622220
+        ],
+        [
+          3,
+          72612355
+        ]
+      ],
+      "name": "exact_four_paired_replicates",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": [
+          [
+            0,
+            55525513
+          ],
+          [
+            1,
+            66696762
+          ],
+          [
+            2,
+            413622220
+          ],
+          [
+            3,
+            72612355
+          ]
+        ],
+        "paired": [
+          [
+            0,
+            55525513
+          ],
+          [
+            1,
+            66696762
+          ],
+          [
+            2,
+            413622220
+          ],
+          [
+            3,
+            72612355
+          ]
+        ]
+      },
+      "name": "paired_seed_ledger_matches_frozen",
+      "pass": true
+    },
+    {
+      "detail": [
+        [
+          55525513,
+          2.0,
+          2.0
+        ],
+        [
+          66696762,
+          2.0,
+          2.0
+        ],
+        [
+          413622220,
+          2.0,
+          2.0
+        ],
+        [
+          72612355,
+          2.0,
+          2.0
+        ]
+      ],
+      "name": "all_paired_initial_populations_match",
+      "pass": true
+    },
+    {
+      "detail": [
+        0.9077167859984089,
+        1.0016433853738702,
+        0.9209914794732765,
+        0.944755804643715
+      ],
+      "name": "all_paired_effects_finite",
+      "pass": true
+    },
+    {
+      "detail": 0.9353883003794401,
+      "name": "arcana_causal_effect_available",
+      "pass": true
+    },
+    {
+      "detail": 1.05,
+      "name": "diagnosis_uses_frozen_r44_neutral_factor",
+      "pass": true
+    },
+    {
+      "detail": "MATCHED_CONTROL_EFFECT_UNCERTAIN",
+      "name": "diagnosis_class_valid",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r47_matrix_not_reclassified_in_r48",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_majority_vote",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 17,
+  "checks_total": 17,
+  "diagnosis_class": "MATCHED_CONTROL_EFFECT_UNCERTAIN",
+  "next_action": "EXECUTE_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES",
+  "stage": "v0.6D1-R4.8",
+  "status": "PASS_R48_POST_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS_COMPLETE"
+}

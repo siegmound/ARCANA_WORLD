@@ -1,0 +1,474 @@
+{
+  "schema": "ARCANA_R311_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_V1",
+  "stage": "v0.6D1-R3.11",
+  "mode": "CANONICAL_65P5_TO_61P0",
+  "verdict": "PASS_CANONICAL_POST_CHA1_65P5_TO_61_H0_RECOVERY__ORDINARY_ADAPTIVE_RADIATION_RESTART__61MA_CHECKPOINT_READY",
+  "wall_seconds": 75.42399764060974,
+  "parent_r310_authority": {
+    "checkpoint_json": "references\\v0_6D1_R3_10\\WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.json",
+    "checkpoint_npz": "references\\v0_6D1_R3_10\\WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.npz",
+    "checkpoint_json_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+    "checkpoint_npz_sha256": "d31ae5aaeb53422809e173c20308e69af334ef8d2d535484ae51141b9dff58a8",
+    "summary_sha256": "622ef056887e28e1aaa98894f5de241cb6e34e4db671050163187da6a453037f"
+  },
+  "lifecycle_thaw": {
+    "frozen_interval_years": 500000.0,
+    "preimpact_last_ordinary_elapsed_year": 144000000.0,
+    "thaw_elapsed_year": 144500000.0,
+    "shifted": {
+      "founder": 3,
+      "vicariance": 207,
+      "reconnection": 2,
+      "ordinary_extinction": 0
+    },
+    "max_existing_last_seen_elapsed_year": 144000000.0,
+    "persistence_values_changed": false
+  },
+  "run": {
+    "start_age_ma": 65.5,
+    "end_age_ma": 61.0,
+    "ordinary_biology_steps": 36,
+    "parent_species": 93,
+    "parent_components": 207,
+    "final_species": 95,
+    "final_components": 236,
+    "final_total_population": 1558.913894120661,
+    "event_counts_before": {
+      "paleogeographic_support_loss_remap": 1038,
+      "deme_coalescence": 53,
+      "deme_fission": 659,
+      "speciation": 185,
+      "ordinary_background_extinction": 0,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 0
+    },
+    "event_counts_after": {
+      "paleogeographic_support_loss_remap": 1072,
+      "deme_coalescence": 58,
+      "deme_fission": 693,
+      "speciation": 187,
+      "ordinary_background_extinction": 0,
+      "CHA1_species_extinction": 212,
+      "CHA1_high_resolution_event_bridge_complete": 1,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "event_counts_delta": {
+      "paleogeographic_support_loss_remap": 34,
+      "deme_coalescence": 5,
+      "deme_fission": 34,
+      "speciation": 2,
+      "ordinary_background_extinction": 0,
+      "CHA1_species_extinction": 0,
+      "CHA1_high_resolution_event_bridge_complete": 0,
+      "post_CHA1_ordinary_lifecycle_thaw": 1
+    },
+    "peak_q_recorded": 0.04626364593979513,
+    "peak_unclipped_q_recorded": 0.04626364593979513,
+    "clipping_steps": 0,
+    "clipping_contacts": 0,
+    "invariants": {
+      "population_min": 0.0,
+      "population_on_inaccessible_cells": 0.0,
+      "q_max": 0.04626364593979513,
+      "q_median": 0.04480356089788102,
+      "q_ceiling": 0.08,
+      "q_headroom": 0.03373635406020487,
+      "s_symmetry_max_abs": 0.0,
+      "s_diagonal_max_abs": 0.0,
+      "s_min": 0.0
+    },
+    "first_speciation_age_ma": 65.0,
+    "first_ordinary_extinction_age_ma": null,
+    "speciation_chronology": [
+      {
+        "age_ma": 65.0,
+        "elapsed_year": 145000000.0,
+        "parent_species_id": "RPT_004",
+        "daughter_species_id": "RPT_004_D04"
+      },
+      {
+        "age_ma": 61.0,
+        "elapsed_year": 149000000.0,
+        "parent_species_id": "HSG_003_D01",
+        "daughter_species_id": "HSG_003_D03"
+      }
+    ],
+    "speciation_origin_diagnostic": {
+      "initial_pre_cha1_founder_candidates": 3,
+      "matched_pre_cha1_carryover_speciations": 1,
+      "not_matched_to_initial_pre_cha1_founder_state": 1,
+      "rows": [
+        {
+          "age_ma": 65.0,
+          "parent_species_id": "RPT_004",
+          "daughter_species_id": "RPT_004_D04",
+          "classification": "MATCHED_PRE_CHA1_FOUNDER_CARRYOVER",
+          "causal_note": "Founder structural candidate existed before CHA-1; frozen 500 kyr was not credited to persistence."
+        },
+        {
+          "age_ma": 61.0,
+          "parent_species_id": "HSG_003_D01",
+          "daughter_species_id": "HSG_003_D03",
+          "classification": "NOT_MATCHED_TO_INITIAL_PRE_CHA1_FOUNDER_STATE",
+          "causal_note": "Not an initial founder-state carryover. This is compatible with post-CHA1 initiation but is not by itself proof of empty-niche causation."
+        }
+      ],
+      "interpretation_guard": "NOT_MATCHED is not equivalent to proven CHA1-caused adaptive radiation; causality requires later H0/HX or counterfactual analysis."
+    },
+    "ordinary_extinction_chronology": [],
+    "fission_chronology": [
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_006_C001",
+        "daughter_component_id": "RPT_006_C001_F05"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_018_C001",
+        "daughter_component_id": "RPT_018_C001_F08"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "APX_005_C001",
+        "daughter_component_id": "APX_005_C001_F04"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "LVF_013_C001_F01",
+        "daughter_component_id": "LVF_013_C001_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_020_C001_F01",
+        "daughter_component_id": "RPT_020_C001_F01_F02"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_020_C001_F01",
+        "daughter_component_id": "RPT_020_C001_F01_F03"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_020_C001_F01",
+        "daughter_component_id": "RPT_020_C001_F01_F04"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_022_C001_F01",
+        "daughter_component_id": "RPT_022_C001_F01_F05"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_022_C001_F01",
+        "daughter_component_id": "RPT_022_C001_F01_F06"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_015_C001_F01",
+        "daughter_component_id": "HSG_015_C001_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_023_C001_F01",
+        "daughter_component_id": "RPT_023_C001_F01_F06"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_009_C001_F01",
+        "daughter_component_id": "RPT_009_C001_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_010_C001_F01",
+        "daughter_component_id": "CAR_010_C001_F01_F02"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_010_C001_F01",
+        "daughter_component_id": "CAR_010_C001_F01_F03"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_010_C001_F01",
+        "daughter_component_id": "CAR_010_C001_F01_F04"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_008_C001_F02_F01",
+        "daughter_component_id": "RPT_008_C001_F02_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_024_C001_F02",
+        "daughter_component_id": "HSG_024_C001_F02_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_014_C001_F02",
+        "daughter_component_id": "CAR_014_C001_F02_F02"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_019_C001_F02",
+        "daughter_component_id": "HSG_019_C001_F02_F04"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_024_C001_F03",
+        "daughter_component_id": "HSG_024_C001_F03_F03"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_010_C001_F01_F02",
+        "daughter_component_id": "HSG_010_C001_F01_F02_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_014_C001_F01_F01",
+        "daughter_component_id": "CAR_014_C001_F01_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_014_C001_F01_F01",
+        "daughter_component_id": "CAR_014_C001_F01_F01_F02"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_007_C001_F01_F01",
+        "daughter_component_id": "HSG_007_C001_F01_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_001_C001_F02_F01",
+        "daughter_component_id": "CAR_001_C001_F02_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_019_C001_F02_F01",
+        "daughter_component_id": "HSG_019_C001_F02_F01_F02"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_009_C001_F01_F02",
+        "daughter_component_id": "HSG_009_C001_F01_F02_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_009_C001_F01_F02",
+        "daughter_component_id": "HSG_009_C001_F01_F02_F02"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_009_C001_F01_F02",
+        "daughter_component_id": "HSG_009_C001_F01_F02_F03"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "HSG_006_C001_F01_F01",
+        "daughter_component_id": "HSG_006_C001_F01_F01_F02"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "CAR_010_C001_F01_F01_F01",
+        "daughter_component_id": "CAR_010_C001_F01_F01_F01_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_023_C001_F01_F04",
+        "daughter_component_id": "RPT_023_C001_F01_F04_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_021_C001_F01_F05",
+        "daughter_component_id": "RPT_021_C001_F01_F05_F01"
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "parent_component_id": "RPT_010_C001_F01_F01_F03",
+        "daughter_component_id": "RPT_010_C001_F01_F01_F03_F01"
+      }
+    ],
+    "coalescence_chronology": [
+      {
+        "age_ma": 65.0,
+        "elapsed_year": 145000000.0,
+        "species_id": "HSG_017_D03",
+        "retained_component_id": "HSG_017_C001_F03",
+        "absorbed_component_ids": [
+          "HSG_017_C001_F01_F01"
+        ]
+      },
+      {
+        "age_ma": 63.5,
+        "elapsed_year": 146500000.0,
+        "species_id": "HSG_019",
+        "retained_component_id": "HSG_019_C001_F04",
+        "absorbed_component_ids": [
+          "HSG_019_C001_F04_F01"
+        ]
+      },
+      {
+        "age_ma": 63.0,
+        "elapsed_year": 147000000.0,
+        "species_id": "HSG_011_D03",
+        "retained_component_id": "HSG_011_C001_F02_F02",
+        "absorbed_component_ids": [
+          "HSG_011_C001_F03_F01"
+        ]
+      },
+      {
+        "age_ma": 62.5,
+        "elapsed_year": 147500000.0,
+        "species_id": "RPT_023_D02",
+        "retained_component_id": "RPT_023_C001_F03",
+        "absorbed_component_ids": [
+          "RPT_023_C001_F01_F01"
+        ]
+      },
+      {
+        "age_ma": 61.5,
+        "elapsed_year": 148500000.0,
+        "species_id": "RPT_023_D03",
+        "retained_component_id": "RPT_023_C001_F01",
+        "absorbed_component_ids": [
+          "RPT_023_C001_F01_F05"
+        ]
+      }
+    ]
+  },
+  "checkpoint": {
+    "json": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_11\\WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.json",
+    "npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_11\\WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.npz",
+    "json_sha256": "bdf75d08bd39181dee3331f91b1dd6864ab8e0c1e88c94eed7813d148aebda3b",
+    "npz_sha256": "4f4582ca7f83926941f7224033a83356b2f5df196dcb8d3dbafae2e9b16e987c"
+  },
+  "serialization_identity": {
+    "equivalent": true,
+    "arrays": {
+      "guild": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "pop": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "trait": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "va": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "gen": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "current_accessible": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "reduced_state": {
+      "va_within": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "ancestry_covariance": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "neutral_segregation_potential": {
+        "same": true,
+        "max_abs_error": 0.0
+      },
+      "adaptive_coordinate": {
+        "same": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "exact_fields": {
+      "component_ids": true,
+      "root_species": true,
+      "current_species": true,
+      "registry": true,
+      "child_counters": true,
+      "baselines": true,
+      "ri_state": true,
+      "clock_state": true,
+      "ext_state": true,
+      "founder_state": true,
+      "vicariance_state": true,
+      "reconnection_state": true,
+      "events": true,
+      "snapshots": true,
+      "founder_stats_last": true,
+      "gene_flow_closure": true
+    },
+    "scalar_abs_errors": {
+      "age_ma": 0.0,
+      "elapsed_year": 0.0,
+      "topology_remap_mass": 0.0,
+      "initial_total_population": 0.0
+    },
+    "atol": 2e-12
+  },
+  "governance": {
+    "cha1_already_applied": true,
+    "cha1_reapplied": false,
+    "deep_biological_coupling": false,
+    "ordinary_lifecycle_reenabled": true,
+    "ordinary_speciation_enabled": true,
+    "ordinary_background_extinction_enabled": true,
+    "persistent_vicariance_fission_enabled": true,
+    "persistent_reconnection_coalescence_enabled": true,
+    "post_cha1_radiation_multiplier_used": false,
+    "old_d31_50kyr_solver_used": false,
+    "production_r37i_r38_runtime_used": true,
+    "biology_cadence_years": 125000.0,
+    "speciation_check_interval_years": 500000.0,
+    "founder_minimum_persistence_years": 1000000.0,
+    "vicariance_persistence_min_years": 2000000.0,
+    "reconnection_persistence_min_years": 2000000.0,
+    "mu_changed": false,
+    "b_changed": false,
+    "q_ceiling_changed": false,
+    "K_center_reinterpreted_as_physical_constant": false
+  }
+}

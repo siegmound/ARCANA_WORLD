@@ -1,0 +1,125 @@
+{
+  "adapter_source_audit": {
+    "benchmarks\\r43\\cdmetapop_r43.py": {
+      "broad_ind_substring_selector_detected": true,
+      "present": true
+    },
+    "benchmarks\\r47\\cdmetapop_r47.py": {
+      "broad_ind_substring_selector_detected": true,
+      "present": true
+    },
+    "benchmarks\\r48\\cdmetapop_r48_neutral.py": {
+      "broad_ind_substring_selector_detected": true,
+      "present": true
+    },
+    "benchmarks\\r49\\cdmetapop_r49_dynamic.py": {
+      "broad_ind_substring_selector_detected": true,
+      "present": true
+    },
+    "benchmarks\\r49\\cdmetapop_r49_neutral.py": {
+      "broad_ind_substring_selector_detected": true,
+      "present": true
+    }
+  },
+  "collision_input_files": [
+    "genes/wildtype_hindex1.csv",
+    "genes/yytype_hindex0.csv"
+  ],
+  "finding": "R43_R49_CDMETAPOP_POPULATION_METRIC_FILENAME_SELECTOR_COLLISION_CONFIRMED",
+  "finding_confirmed": true,
+  "impact": {
+    "canonical_state": "UNCHANGED",
+    "r43_r47_absolute_population_response_ratio": "NOT_ADMISSIBLE_FOR_NEW_ADJUDICATION_UNTIL_REEXTRACTED",
+    "r47_structural_disagreement": "PRESERVE_HISTORICALLY_BUT_DO_NOT_USE_TO_AUTHORIZE_CANONICAL_REPLAY",
+    "r48_r49_paired_effect": "PRESERVE_AS_HISTORICAL_DIAGNOSTIC_BUT_REBUILD_FROM_REPAIRED_TRACKING"
+  },
+  "preferred_repair_artifact": "summary_popAllTime.csv",
+  "preferred_repair_field": "N_Initial",
+  "raw_r47_adapter_status": "PASS",
+  "reported_r49_dynamic_initial_populations": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+  ],
+  "runtime_summary_inventory": {
+    "R47_ALL_CDMETAPOP_JOBS": {
+      "job_count": 5,
+      "jobs": [
+        {
+          "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+          "summary_popAllTime_count": 4
+        },
+        {
+          "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+          "summary_popAllTime_count": 4
+        },
+        {
+          "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+          "summary_popAllTime_count": 4
+        },
+        {
+          "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+          "summary_popAllTime_count": 4
+        },
+        {
+          "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+          "summary_popAllTime_count": 4
+        }
+      ],
+      "jobs_with_summary": 5
+    },
+    "R47_DYNAMIC_J09": {
+      "base": "outputs\\v0_6D1_R4_7\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "examples": [
+        "runtime_work/rep_000/example_files/R47_0001788171741/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work/rep_001/example_files/R47_0011788171772/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work/rep_002/example_files/R47_0021788171804/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work/rep_003/example_files/R47_0031788171835/run0batch0mc0species0/summary_popAllTime.csv"
+      ],
+      "summary_popAllTime_count": 4
+    },
+    "R48_NEUTRAL_J09": {
+      "base": "outputs\\v0_6D1_R4_8\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "examples": [
+        "runtime_work_neutral/rep_000/example_files/R48_0001788172875/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_neutral/rep_001/example_files/R48_0011788172904/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_neutral/rep_002/example_files/R48_0021788172934/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_neutral/rep_003/example_files/R48_0031788172963/run0batch0mc0species0/summary_popAllTime.csv"
+      ],
+      "summary_popAllTime_count": 4
+    },
+    "R49_ADDITIONAL_J09": {
+      "base": "outputs\\v0_6D1_R4_9\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "examples": [
+        "runtime_work_additional_dynamic/rep_004/example_files/R49D_0041788173587/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_additional_dynamic/rep_005/example_files/R49D_0051788173619/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_additional_dynamic/rep_006/example_files/R49D_0061788173650/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_additional_dynamic/rep_007/example_files/R49D_0071788173682/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_additional_dynamic/rep_008/example_files/R49D_0081788173712/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_additional_dynamic/rep_009/example_files/R49D_0091788173743/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_additional_dynamic/rep_010/example_files/R49D_0101788173773/run0batch0mc0species0/summary_popAllTime.csv",
+        "runtime_work_additional_dynamic/rep_011/example_files/R49D_0111788173804/run0batch0mc0species0/summary_popAllTime.csv"
+      ],
+      "summary_popAllTime_count": 32
+    }
+  },
+  "stage": "v0.6D1-R4.10",
+  "strict_allowed_individual_output_regex": "^ind-?[0-9]+\\.csv$"
+}

@@ -1,0 +1,39 @@
+{
+  "canonical_change_authorized": false,
+  "engine_execution_authorized": false,
+  "next_action": "BUILD_R417_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE",
+  "promotion_preconditions": [
+    "metric identity and transform frozen before looking at adjudication outcome",
+    "ARCANA target value/unit/time/space/population semantics explicitly extracted from canonical artifacts",
+    "both sides share a declared comparability class DIRECT or NORMALIZABLE",
+    "PROXY_ONLY remains contextual only",
+    "readjudication occurs only in a later namespace after both gates pass"
+  ],
+  "r417_work_batches": {
+    "A_RECOVERED_METRIC_DOMAIN_TRANSFORM_IMPLEMENTATION": {
+      "cell_count": 2,
+      "engine_execution_authorized": false,
+      "readjudication_authorized": false
+    },
+    "B_CANONICAL_TARGET_EXTRACTOR_IMPLEMENTATION": {
+      "cell_count": 47,
+      "external_engine_results_forbidden_as_target_sources": true,
+      "source_candidate_only": true
+    },
+    "C_NO_SOURCE_CANDIDATE_TARGET_DESIGN": {
+      "cell_count": 12,
+      "new_canonical_target_creation_not_authorized_in_r416": true
+    },
+    "D_P2_ADAPTER_BACKLOG": {
+      "cell_count": 4,
+      "engine_execution_authorized": false,
+      "note": "R4.17 may design, but not silently execute, symmetric adapter-enhancement reruns."
+    },
+    "E_P3_EXTENSION_JOB_BACKLOG": {
+      "cell_count": 6,
+      "r42_registry_mutation_forbidden": true
+    }
+  },
+  "stage": "v0.6D1-R4.16",
+  "status": "R416_PROMOTION_AND_TARGET_SEMANTIC_PROTOCOL_FROZEN"
+}

@@ -1,0 +1,169 @@
+{
+  "all_threshold_family_count": 12,
+  "candidate_ids": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "candidate_output_integrity": {
+    "checks": {
+      "audit_atlas_hash_matches": true,
+      "audit_canonical_unchanged": true,
+      "audit_deep_coupling_off": true,
+      "audit_scientific_candidate_eligible": true,
+      "audit_status_exact": true,
+      "manifest_exact_candidate_allowlist": true,
+      "manifest_file_hashes_match": true,
+      "present::atlas": true,
+      "present::audit": true,
+      "present::manifest": true,
+      "present::registry": true,
+      "registry_no_single_winner_semantics": true,
+      "registry_threshold_family_exact": true
+    },
+    "checks_passed": 13,
+    "checks_total": 13,
+    "failed": [],
+    "stage": "v0.6D1-R5.1",
+    "status": "PASS_R51_CANDIDATE_OUTPUT_INTEGRITY"
+  },
+  "canonical_state_changed": false,
+  "closure_readiness": "READY_FOR_R51_SEAL_NO_NEW_EXTERNAL_ENGINE_REQUIRED",
+  "cross_lineage_all_threshold_core_overlap": {
+    "max_jaccard": 0.5,
+    "nonzero_overlap_pair_count": 4,
+    "pairs": [
+      {
+        "family_a": "RPT_010_D02__F0002",
+        "family_b": "RPT_009_D02__F0002",
+        "intersection_cell_count": 1,
+        "jaccard": 0.5,
+        "union_cell_count": 2
+      },
+      {
+        "family_a": "RPT_010_D02__F0059",
+        "family_b": "RPT_009_D02__F0061",
+        "intersection_cell_count": 1,
+        "jaccard": 0.3333333333333333,
+        "union_cell_count": 3
+      },
+      {
+        "family_a": "RPT_010_D02__F0077",
+        "family_b": "RPT_009_D02__F0081",
+        "intersection_cell_count": 2,
+        "jaccard": 0.3333333333333333,
+        "union_cell_count": 6
+      },
+      {
+        "family_a": "RPT_010_D02__F0078",
+        "family_b": "RPT_009_D02__F0081",
+        "intersection_cell_count": 2,
+        "jaccard": 0.3333333333333333,
+        "union_cell_count": 6
+      }
+    ]
+  },
+  "deep_biological_coupling": false,
+  "derived_refinement_promoted_to_canon": false,
+  "engine_adjudication": {
+    "CDMetaPOP": {
+      "action": "DEFER_TO_PERSISTENCE_BOTTLENECK_CONTACT_STAGE"
+    },
+    "Geonomics": {
+      "action": "NO_NEW_EXECUTION_REUSE_SEALED_J14_AND_R4_EVIDENCE"
+    },
+    "Madingley": {
+      "action": "DEFER_TARGETED_TROPHIC_CORROBORATION_UNLESS_A_LATER_QUESTION_REQUIRES_IT"
+    },
+    "NEMO": {
+      "action": "DEFER_TO_GENETIC_PERSISTENCE_GENE_FLOW_STAGE"
+    },
+    "RangeShifter": {
+      "action": "DEFER_NEW_EXECUTION_TO_R5_2_TARGETED_CORRIDOR_VALIDATION",
+      "reason": "Both R3.27 human-cohort lineages retain at least one spatial family across every pre-frozen threshold; external engines are not needed to repair or define R5.1 cradle-opportunity geography."
+    },
+    "SLiM": {
+      "action": "DEFER_TO_ANCESTRY_ADMIXTURE_STAGE"
+    },
+    "external_engine_defines_arcana_target": false,
+    "majority_vote": false,
+    "new_external_engine_execution_authorized_in_r51": false,
+    "new_external_engine_execution_required_for_r51_closure": false
+  },
+  "family_count": 161,
+  "pareto_front_is_final_selection": false,
+  "pareto_region_record_count": 157,
+  "per_candidate": {
+    "RPT_009_D02": {
+      "all_threshold_family_count": 5,
+      "family_count": 82,
+      "q99_survivor_count": 5,
+      "three_plus_threshold_family_count": 19
+    },
+    "RPT_010_D02": {
+      "all_threshold_family_count": 7,
+      "family_count": 79,
+      "q99_survivor_count": 7,
+      "three_plus_threshold_family_count": 19
+    }
+  },
+  "recommended_next_action": "SEAL_R51_THEN_USE_RANGESHIFTER_IN_R52_FOR_TARGETED_EXPANSION_CORRIDOR_VALIDATION",
+  "region_record_count": 300,
+  "registry_reconstruction_details": {
+    "RPT_009_D02": {
+      "expected_region_count": 150,
+      "registry_region_count": 150,
+      "thresholds": {
+        "0.9": {
+          "component_count": 82,
+          "exact_structure_match": true,
+          "registry_count": 82
+        },
+        "0.95": {
+          "component_count": 43,
+          "exact_structure_match": true,
+          "registry_count": 43
+        },
+        "0.975": {
+          "component_count": 20,
+          "exact_structure_match": true,
+          "registry_count": 20
+        },
+        "0.99": {
+          "component_count": 5,
+          "exact_structure_match": true,
+          "registry_count": 5
+        }
+      }
+    },
+    "RPT_010_D02": {
+      "expected_region_count": 150,
+      "registry_region_count": 150,
+      "thresholds": {
+        "0.9": {
+          "component_count": 79,
+          "exact_structure_match": true,
+          "registry_count": 79
+        },
+        "0.95": {
+          "component_count": 40,
+          "exact_structure_match": true,
+          "registry_count": 40
+        },
+        "0.975": {
+          "component_count": 22,
+          "exact_structure_match": true,
+          "registry_count": 22
+        },
+        "0.99": {
+          "component_count": 9,
+          "exact_structure_match": true,
+          "registry_count": 9
+        }
+      }
+    }
+  },
+  "registry_reconstruction_exact": true,
+  "semantics": "THRESHOLD_NESTED_REGION_FAMILIES_AND_TEMPORAL_SUPPORT_NO_WEIGHTED_SCORE_NO_SINGLE_WINNER",
+  "stage": "v0.6D1-R5.1",
+  "status": "PASS_R51_CRADLE_STRUCTURE_AND_ENGINE_ADJUDICATION"
+}

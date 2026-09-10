@@ -1,0 +1,205 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_13_SEAL\\R4_13_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r413_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION_SEALED",
+      "name": "parent_r413_sealed",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CALIBRATION_OFFSET": 2,
+        "CONCORDANT": 2,
+        "INSUFFICIENT_EVIDENCE": 69,
+        "SEMANTICALLY_NONCOMPARABLE": 2,
+        "STRUCTURAL_DISAGREEMENT": 0
+      },
+      "name": "parent_r413_zero_structural_disagreements",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R414_MULTI_ENGINE_EVIDENCE_GAP_CLOSURE_AND_TARGETED_ADAPTER_ENHANCEMENT",
+      "name": "parent_r413_next_action_matches_r414",
+      "pass": true
+    },
+    {
+      "detail": {
+        "matrix": 75,
+        "scope": 75
+      },
+      "name": "parent_matrix_exact_scoped_cells",
+      "pass": true
+    },
+    {
+      "detail": {
+        "classes": {
+          "CALIBRATION_OFFSET": 2,
+          "CONCORDANT": 2,
+          "INSUFFICIENT_EVIDENCE": 69,
+          "SEMANTICALLY_NONCOMPARABLE": 2,
+          "STRUCTURAL_DISAGREEMENT": 0
+        },
+        "gaps": 71
+      },
+      "name": "parent_gap_count_matches_classes",
+      "pass": true
+    },
+    {
+      "detail": 71,
+      "name": "parent_expected_71_gap_cells",
+      "pass": true
+    },
+    {
+      "detail": 23,
+      "name": "r42_frozen_job_registry_still_exact_23",
+      "pass": true
+    },
+    {
+      "detail": 23,
+      "name": "r43_mapping_still_exact_23",
+      "pass": true
+    },
+    {
+      "detail": 15,
+      "name": "authority_matrix_present",
+      "pass": true
+    },
+    {
+      "detail": "FROZEN_PRE_CLOSURE_EXECUTION",
+      "name": "policy_frozen_pre_closure_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_execution_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    },
+    {
+      "detail": 71,
+      "name": "all_71_gap_cells_censused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "ARCANA_TARGET_NONADJUDICATIVE_PROXY_OR_NONCOMPARABLE": 27,
+        "NO_ARCANA_DECLARED_TARGET": 30,
+        "NO_PRIMARY_AUTHORITY_JOB_IN_FROZEN_WINDOW": 6,
+        "PRIMARY_ENGINE_SEMANTIC_NONCOMPARABILITY": 2,
+        "PRIMARY_MAPPING_NONADJUDICATIVE_PROXY_ONLY": 2,
+        "PRIMARY_NORMALIZED_METRIC_MISSING": 4
+      },
+      "name": "every_gap_has_root_cause",
+      "pass": true
+    },
+    {
+      "detail": {
+        "P0_RETAINED_RUNTIME_REEXTRACTION_NO_ENGINE_RERUN": 4,
+        "P1_ARCANA_TARGET_SEMANTIC_MATERIALIZATION_FROM_EXISTING_CANONICAL_ARTIFACTS": 59,
+        "P2_EXISTING_FROZEN_JOB_ADAPTER_ENHANCEMENT_AND_SYMMETRIC_REEXECUTION": 2,
+        "P3_NEW_EXTENSION_JOB_IN_NEW_NAMESPACE_NO_R42_FREEZE_MUTATION": 6
+      },
+      "name": "every_gap_has_closure_priority",
+      "pass": true
+    },
+    {
+      "detail": {
+        "ARCANA_TARGET_PROTOCOL_REQUIRED": 57,
+        "GEONOMICS_ARCANA_LANDSCAPE_ADAPTER_REQUIRED": 2,
+        "MAPPING_OR_MATCHED_CONTROL_SEMANTIC_PROTOCOL_REQUIRED": 2,
+        "NEW_PRIMARY_EXTENSION_JOB_REQUIRED": 6,
+        "RETAINED_CDMETAPOP_RUNTIME_METRIC_RECOVERY_CANDIDATE": 1,
+        "RETAINED_NEMO_RUNTIME_METRIC_RECOVERY_CANDIDATE": 1,
+        "RETAINED_SLIM_RUNTIME_METRIC_RECOVERY_CANDIDATE": 2
+      },
+      "name": "every_gap_has_closure_action",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_r414_engine_rerun_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_r42_freeze_mutation_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "new_jobs_require_new_namespace",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "retained_evidence_preferred_before_rerun",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "geonomics_default_model_not_promotable",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_target_leakage",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_result_selected_enhancement",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 28,
+  "checks_total": 28,
+  "closure_priority_counts": {
+    "P0_RETAINED_RUNTIME_REEXTRACTION_NO_ENGINE_RERUN": 4,
+    "P1_ARCANA_TARGET_SEMANTIC_MATERIALIZATION_FROM_EXISTING_CANONICAL_ARTIFACTS": 59,
+    "P2_EXISTING_FROZEN_JOB_ADAPTER_ENHANCEMENT_AND_SYMMETRIC_REEXECUTION": 2,
+    "P3_NEW_EXTENSION_JOB_IN_NEW_NAMESPACE_NO_R42_FREEZE_MUTATION": 6
+  },
+  "gap_count": 71,
+  "next_action": "BUILD_R415_RETAINED_RUNTIME_METRIC_RECOVERY_AND_TARGET_SEMANTIC_MATERIALIZATION",
+  "retained_reextraction_candidate_cell_count": 4,
+  "root_cause_counts": {
+    "ARCANA_TARGET_NONADJUDICATIVE_PROXY_OR_NONCOMPARABLE": 27,
+    "NO_ARCANA_DECLARED_TARGET": 30,
+    "NO_PRIMARY_AUTHORITY_JOB_IN_FROZEN_WINDOW": 6,
+    "PRIMARY_ENGINE_SEMANTIC_NONCOMPARABILITY": 2,
+    "PRIMARY_MAPPING_NONADJUDICATIVE_PROXY_ONLY": 2,
+    "PRIMARY_NORMALIZED_METRIC_MISSING": 4
+  },
+  "stage": "v0.6D1-R4.14",
+  "status": "PASS_R414_MULTI_ENGINE_EVIDENCE_GAP_CENSUS_AND_TARGETED_ADAPTER_ENHANCEMENT_PLAN_COMPLETE"
+}

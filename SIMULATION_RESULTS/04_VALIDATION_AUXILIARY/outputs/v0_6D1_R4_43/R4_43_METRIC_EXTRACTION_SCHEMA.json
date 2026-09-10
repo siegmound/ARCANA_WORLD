@@ -1,0 +1,59 @@
+{
+  "carrier_nn_distance_schema": {
+    "N_lt_2_policy": "NOT_APPLICABLE_SINGLE_CARRIER_NO_FAILURE",
+    "normalization_authorized": false,
+    "raw_vector_order": "current Species carrier-key iteration order",
+    "raw_vector_preserved": true,
+    "rounding_authorized": false,
+    "self_neighbor_removed_by_k2_second_column": true,
+    "summary_fields": [
+      "count",
+      "finite_count",
+      "min",
+      "median",
+      "mean",
+      "max"
+    ],
+    "thresholding_authorized": false
+  },
+  "common_record_fields": [
+    "stage",
+    "job_id",
+    "replicate_index",
+    "frozen_seed",
+    "canonical_state_index",
+    "canonical_physical_age",
+    "metric_id",
+    "metric_role",
+    "source_object",
+    "value_shape",
+    "finite",
+    "payload_sha256"
+  ],
+  "integrity_payloads": {
+    "cells": "exact integer cell sequence plus SHA256",
+    "coordinates": "exact float64 x,y sequence plus SHA256",
+    "native_layers": "exact raster shape/dtype/bytes plus SHA256"
+  },
+  "layer_summary_schema": {
+    "clipping_authorized": false,
+    "four_sidecars_excluded": true,
+    "layer_order": "frozen R4.39 dynamic native authority order",
+    "normalization_authorized": false,
+    "per_layer": true,
+    "raster_digest_required": true,
+    "rounding_authorized": false,
+    "summary_fields": [
+      "finite_count",
+      "min",
+      "max",
+      "mean",
+      "std"
+    ]
+  },
+  "metric_extraction_dry_run_validated": false,
+  "schema_version": 1,
+  "scientific_execution_performed": false,
+  "stage": "v0.6D1-R4.43",
+  "status": "R443_GEONOMICS_METRIC_EXTRACTION_SCHEMA_FROZEN"
+}

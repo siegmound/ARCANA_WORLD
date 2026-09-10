@@ -1,0 +1,64 @@
+{
+  "canonical_change_authorized": false,
+  "changed_cell_count": 0,
+  "changed_cells": [],
+  "j09_population_persistence_primary_row": {
+    "authority_role": "PRIMARY",
+    "canonical_write": false,
+    "combined_comparability": "NORMALIZABLE",
+    "discordance_class": "STRUCTURAL_DISAGREEMENT",
+    "domain": "population_persistence",
+    "engine": "CDMetaPOP",
+    "evidence_namespace": "R4_7_CDMETAPOP_FORCING_PARITY_REEXECUTION",
+    "external_direction": 1,
+    "external_median": 592.25,
+    "external_q10": 576.35,
+    "external_q90": 605.0,
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "magnitude_comparison_used": true,
+    "majority_vote": false,
+    "mapping_comparability": "NORMALIZABLE",
+    "metric": {
+      "name": "population_agent_response_ratio",
+      "summary": {
+        "max": 609.5,
+        "mean": 591.125,
+        "median": 592.25,
+        "min": 570.5,
+        "n": 4,
+        "q10": 576.35,
+        "q90": 605.0
+      }
+    },
+    "parent_terminal_class": "SCIENTIFIC_RESULT",
+    "reason": "OPPOSITE_MEANINGFUL_RESPONSE_DIRECTION",
+    "stage": "v0.6D1-R4.7",
+    "target": {
+      "comparability": "NORMALIZABLE",
+      "kind": "ratio",
+      "metric": "ARCANA_total_population_ratio",
+      "value": 0.9316272616306188
+    },
+    "target_direction": -1,
+    "target_value": 0.9316272616306188,
+    "window_id": "H0_POST_CHA1_RECOVERY"
+  },
+  "new_class_counts": {
+    "CALIBRATION_OFFSET": 5,
+    "CONCORDANT": 0,
+    "INSUFFICIENT_EVIDENCE": 67,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 1
+  },
+  "next_action": "BUILD_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS",
+  "old_class_counts": {
+    "CALIBRATION_OFFSET": 5,
+    "CONCORDANT": 0,
+    "INSUFFICIENT_EVIDENCE": 67,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 1
+  },
+  "stage": "v0.6D1-R4.7",
+  "status": "PASS_R47_CDMETAPOP_SYMMETRIC_REEXECUTION_AND_READJUDICATION_COMPLETE",
+  "structural_disagreement_count_after_repair": 1
+}

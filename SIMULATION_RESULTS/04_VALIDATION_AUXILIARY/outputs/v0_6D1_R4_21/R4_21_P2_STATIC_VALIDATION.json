@@ -1,0 +1,630 @@
+{
+  "authorized_engine_family_count": 3,
+  "authorized_p2_cell_count": 4,
+  "cells": [
+    {
+      "authorization_disposition": "DEFERRED_STATIC_IMPLEMENTATION_OR_BINDING_COMPLETION_REQUIRED",
+      "domain": "connectivity",
+      "engine": "Geonomics",
+      "frozen_engine_job_ids": [
+        "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+        "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+        "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS"
+      ],
+      "source_stage": "R4.14",
+      "static_validation_pass": false,
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "authorization_disposition": "DEFERRED_STATIC_IMPLEMENTATION_OR_BINDING_COMPLETION_REQUIRED",
+      "domain": "connectivity",
+      "engine": "Geonomics",
+      "frozen_engine_job_ids": [
+        "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+        "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+        "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS"
+      ],
+      "source_stage": "R4.14",
+      "static_validation_pass": false,
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "authorization_disposition": "AUTHORIZED_FOR_R422_SYMMETRIC_REEXECUTION_PREPARE",
+      "domain": "managed_wild_isolation",
+      "engine": "SLiM",
+      "frozen_engine_job_ids": [
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM"
+      ],
+      "source_stage": "R4.15-R1",
+      "static_validation_pass": true,
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "authorization_disposition": "AUTHORIZED_FOR_R422_SYMMETRIC_REEXECUTION_PREPARE",
+      "domain": "producer_divergence",
+      "engine": "SLiM",
+      "frozen_engine_job_ids": [
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM"
+      ],
+      "source_stage": "R4.15-R1",
+      "static_validation_pass": true,
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "authorization_disposition": "AUTHORIZED_FOR_R422_SYMMETRIC_REEXECUTION_PREPARE",
+      "domain": "additive_variance",
+      "engine": "NEMO",
+      "frozen_engine_job_ids": [
+        "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+        "R42_J13_H0_LATE_CENOZOIC_NEMO",
+        "R42_J17_SAPIENT_3MA_TO_200KA_NEMO"
+      ],
+      "source_stage": "R4.17",
+      "static_validation_pass": true,
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "authorization_disposition": "AUTHORIZED_FOR_R422_SYMMETRIC_REEXECUTION_PREPARE",
+      "domain": "admixture",
+      "engine": "CDMetaPOP",
+      "frozen_engine_job_ids": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "source_stage": "R4.17",
+      "static_validation_pass": true,
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "deferred_engine_family_count": 1,
+  "deferred_p2_cell_count": 2,
+  "engine_execution_performed": false,
+  "engine_families": [
+    {
+      "authorization_disposition": "AUTHORIZED_FOR_R422_SYMMETRIC_REEXECUTION_PREPARE",
+      "candidate_adapter": {
+        "engine": "CDMetaPOP",
+        "forbidden_tokens_absent": true,
+        "forbidden_tokens_found": [],
+        "missing_required_tokens": [],
+        "path": "benchmarks\\r421\\cdmetapop_r421_matched.py",
+        "present": true,
+        "python_syntax_ok": true,
+        "required_tokens": [
+          "engine_input",
+          "replicates",
+          "seed",
+          "summary_popAllTime.csv",
+          "matched_control_population_effect_ratio",
+          "PROXY_ONLY",
+          "REPAIR_PROFILE",
+          "comparison_target_used"
+        ],
+        "required_tokens_ok": true,
+        "sha256": "d26a5b0d0e4198dc93f64f96fbef6d9525e0f41c2fb59992e346159afcf271a8"
+      },
+      "declared_frozen_job_ids": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "engine": "CDMetaPOP",
+      "engine_execution_performed_in_r421": false,
+      "engine_specific_binding": {
+        "audit": {
+          "all_profiles_valid": true,
+          "records": [
+            {
+              "detail": {
+                "bounded_end_support_ratio": 1.0036576397189094,
+                "comparison_target_used": false,
+                "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+                "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP"
+              },
+              "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+              "path": "outputs\\v0_6D1_R4_7\\jobs\\R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP\\REPAIR_PROFILE.json",
+              "present": true,
+              "valid": true
+            },
+            {
+              "detail": {
+                "bounded_end_support_ratio": 0.9840411123337677,
+                "comparison_target_used": false,
+                "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+                "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP"
+              },
+              "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+              "path": "outputs\\v0_6D1_R4_7\\jobs\\R42_J06_H0_PRE_CHA1_CDMETAPOP\\REPAIR_PROFILE.json",
+              "present": true,
+              "valid": true
+            },
+            {
+              "detail": {
+                "bounded_end_support_ratio": 0.9346173303061878,
+                "comparison_target_used": false,
+                "forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+                "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP"
+              },
+              "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+              "path": "outputs\\v0_6D1_R4_7\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP\\REPAIR_PROFILE.json",
+              "present": true,
+              "valid": true
+            },
+            {
+              "detail": {
+                "bounded_end_support_ratio": 1.3068070686540865,
+                "comparison_target_used": false,
+                "forcing_source": "FROZEN_R43_HABITAT_X_ENVIRONMENT_RELATIVE_SUPPORT",
+                "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP"
+              },
+              "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+              "path": "outputs\\v0_6D1_R4_7\\jobs\\R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP\\REPAIR_PROFILE.json",
+              "present": true,
+              "valid": true
+            },
+            {
+              "detail": {
+                "bounded_end_support_ratio": 0.6191185751194023,
+                "comparison_target_used": false,
+                "forcing_source": "FROZEN_R43_HABITAT_X_ENVIRONMENT_RELATIVE_SUPPORT",
+                "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+              },
+              "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+              "path": "outputs\\v0_6D1_R4_7\\jobs\\R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP\\REPAIR_PROFILE.json",
+              "present": true,
+              "valid": true
+            }
+          ],
+          "required_job_count": 5,
+          "valid_profile_count": 5
+        },
+        "ready": true,
+        "type": "R47_REPAIR_PROFILE_BINDING"
+      },
+      "expected_frozen_job_ids": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "p2_cell_count": 1,
+      "parent_source_integrity": {
+        "all_present_and_hash_match": true,
+        "engine": "CDMetaPOP",
+        "source_count": 11,
+        "sources": [
+          {
+            "hash_match": true,
+            "observed_sha256": "6bee8522371e53e236246e26648d33617ddf233a61f92327cd451c2ebb3bb260",
+            "path": "benchmarks\\r41\\cdmetapop_r41.py",
+            "present": true,
+            "registered_sha256": "6bee8522371e53e236246e26648d33617ddf233a61f92327cd451c2ebb3bb260"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "2b9d3f6ca9fdd3d4111f3446d65d076f1804fcb4315159903441eed4c85f4aae",
+            "path": "benchmarks\\r43\\cdmetapop_r43.py",
+            "present": true,
+            "registered_sha256": "2b9d3f6ca9fdd3d4111f3446d65d076f1804fcb4315159903441eed4c85f4aae"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "8cf272b8bd1962a4a925145f39f9895eb85cab7c73cd948ed4edebd4b139472b",
+            "path": "benchmarks\\r47\\cdmetapop_r47.py",
+            "present": true,
+            "registered_sha256": "8cf272b8bd1962a4a925145f39f9895eb85cab7c73cd948ed4edebd4b139472b"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "765fc2b0d4dd1945c55998788ad6c9ad7d3b82c6c93f1b011e4725148aa21428",
+            "path": "benchmarks\\r48\\cdmetapop_r48_neutral.py",
+            "present": true,
+            "registered_sha256": "765fc2b0d4dd1945c55998788ad6c9ad7d3b82c6c93f1b011e4725148aa21428"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "47cf37908f29e1c45cab39a8d6f3da2a53bc02beb4afc48a8051e77100bd342d",
+            "path": "benchmarks\\r49\\cdmetapop_r49_dynamic.py",
+            "present": true,
+            "registered_sha256": "47cf37908f29e1c45cab39a8d6f3da2a53bc02beb4afc48a8051e77100bd342d"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "0f471072e6b2f7bbb9a56a1584ebd4b0f2e8776e8b1e528c2027182fd40a9cfd",
+            "path": "benchmarks\\r49\\cdmetapop_r49_neutral.py",
+            "present": true,
+            "registered_sha256": "0f471072e6b2f7bbb9a56a1584ebd4b0f2e8776e8b1e528c2027182fd40a9cfd"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "600b5e7ffaa3bf30493e12899cf5f0be1262f3375b7b572a5f30ca51b8c9b390",
+            "path": "src\\arcana_worldsim\\scientific_engines\\r411_cdmetapop_population_metric_repair.py",
+            "present": true,
+            "registered_sha256": "600b5e7ffaa3bf30493e12899cf5f0be1262f3375b7b572a5f30ca51b8c9b390"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "bd5dac7948e83dfb7ceb9400d63a36074574bb187ecc0027d2997fa6c1d41934",
+            "path": "src\\arcana_worldsim\\scientific_engines\\r412_cdmetapop_precision_comparability_diagnosis.py",
+            "present": true,
+            "registered_sha256": "bd5dac7948e83dfb7ceb9400d63a36074574bb187ecc0027d2997fa6c1d41934"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "d3fa2146c3163b5bb134219fa0047e31e1a15aecf585e2f816d55cfbad0e7bed",
+            "path": "src\\arcana_worldsim\\scientific_engines\\r413_cdmetapop_comparability_downgrade.py",
+            "present": true,
+            "registered_sha256": "d3fa2146c3163b5bb134219fa0047e31e1a15aecf585e2f816d55cfbad0e7bed"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "0e1b274823d0558d39f9c79de0c5f6735b66b6dbfef5c62d9f5add8563c8c37a",
+            "path": "src\\arcana_worldsim\\scientific_engines\\r47_cdmetapop_forcing_parity.py",
+            "present": true,
+            "registered_sha256": "0e1b274823d0558d39f9c79de0c5f6735b66b6dbfef5c62d9f5add8563c8c37a"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "a06fab09b24ad52074458fbc25c85c81c0fd7b79e0c171e2aa2d0790626388ae",
+            "path": "src\\arcana_worldsim\\scientific_engines\\r48_post_cdmetapop_structural_diagnosis.py",
+            "present": true,
+            "registered_sha256": "a06fab09b24ad52074458fbc25c85c81c0fd7b79e0c171e2aa2d0790626388ae"
+          }
+        ]
+      },
+      "static_validation_pass": true,
+      "symmetric_scope_exact": true
+    },
+    {
+      "authorization_disposition": "DEFERRED_STATIC_IMPLEMENTATION_OR_BINDING_COMPLETION_REQUIRED",
+      "candidate_adapter": {
+        "engine": "Geonomics",
+        "forbidden_tokens_absent": true,
+        "forbidden_tokens_found": [],
+        "missing_required_tokens": [],
+        "path": "benchmarks\\r421\\geonomics_r421.py",
+        "present": true,
+        "python_syntax_ok": true,
+        "required_tokens": [
+          "engine_input",
+          "replicates",
+          "seed",
+          "CANONICAL_SPATIAL_BINDING_MATERIALIZED",
+          "make_model",
+          "default_model_used",
+          "comparison_target_used"
+        ],
+        "required_tokens_ok": true,
+        "sha256": "428f196b223e659d82e288113cc08a294a2786b72af90e6fd8bca6e2ea5dc11d"
+      },
+      "declared_frozen_job_ids": [
+        "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+        "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+        "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS"
+      ],
+      "engine": "Geonomics",
+      "engine_execution_performed_in_r421": false,
+      "engine_specific_binding": {
+        "audit": {
+          "all_profiles_valid": false,
+          "records": [
+            {
+              "detail": null,
+              "job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+              "present": false,
+              "profile_path": null,
+              "valid": false
+            },
+            {
+              "detail": null,
+              "job_id": "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+              "present": false,
+              "profile_path": null,
+              "valid": false
+            },
+            {
+              "detail": null,
+              "job_id": "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS",
+              "present": false,
+              "profile_path": null,
+              "valid": false
+            }
+          ],
+          "required_job_count": 3,
+          "scalar_descriptor_synthesis_forbidden": true,
+          "valid_profile_count": 0
+        },
+        "ready": false,
+        "type": "CANONICAL_SPATIAL_BINDING_PROFILE"
+      },
+      "expected_frozen_job_ids": [
+        "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+        "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+        "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS"
+      ],
+      "p2_cell_count": 2,
+      "parent_source_integrity": {
+        "all_present_and_hash_match": true,
+        "engine": "Geonomics",
+        "source_count": 2,
+        "sources": [
+          {
+            "hash_match": true,
+            "observed_sha256": "391939c54afbbf05cff075b88a9708bcf654e4c4d47df4e3d91adfddc4024d32",
+            "path": "benchmarks\\r41\\geonomics_r41.py",
+            "present": true,
+            "registered_sha256": "391939c54afbbf05cff075b88a9708bcf654e4c4d47df4e3d91adfddc4024d32"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "958f28fc1ba33f49867da54774c268cd3f01a133e3c1d1f48162e624be4e41b2",
+            "path": "benchmarks\\r43\\geonomics_r43.py",
+            "present": true,
+            "registered_sha256": "958f28fc1ba33f49867da54774c268cd3f01a133e3c1d1f48162e624be4e41b2"
+          }
+        ]
+      },
+      "static_validation_pass": false,
+      "symmetric_scope_exact": true
+    },
+    {
+      "authorization_disposition": "AUTHORIZED_FOR_R422_SYMMETRIC_REEXECUTION_PREPARE",
+      "candidate_adapter": {
+        "engine": "NEMO",
+        "forbidden_tokens_absent": true,
+        "forbidden_tokens_found": [],
+        "missing_required_tokens": [],
+        "path": "benchmarks\\r421\\nemo_r421.py",
+        "present": true,
+        "python_syntax_ok": true,
+        "required_tokens": [
+          "engine_input",
+          "replicates",
+          "seed",
+          "qfreq",
+          "mean_expected_heterozygosity",
+          "mean_population_frequency_range",
+          "comparison_target_used"
+        ],
+        "required_tokens_ok": true,
+        "sha256": "70fc53655d741ed2cd918df2dd1a06713bfa17c660492c7f8fa4b035ac5aa1a6"
+      },
+      "declared_frozen_job_ids": [
+        "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+        "R42_J13_H0_LATE_CENOZOIC_NEMO",
+        "R42_J17_SAPIENT_3MA_TO_200KA_NEMO"
+      ],
+      "engine": "NEMO",
+      "engine_execution_performed_in_r421": false,
+      "engine_specific_binding": {
+        "ready": true,
+        "type": "NONE"
+      },
+      "expected_frozen_job_ids": [
+        "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+        "R42_J13_H0_LATE_CENOZOIC_NEMO",
+        "R42_J17_SAPIENT_3MA_TO_200KA_NEMO"
+      ],
+      "p2_cell_count": 1,
+      "parent_source_integrity": {
+        "all_present_and_hash_match": true,
+        "engine": "NEMO",
+        "source_count": 19,
+        "sources": [
+          {
+            "hash_match": true,
+            "observed_sha256": "65d4e2bb412626595f3d263be25244bb5500af959374562f7e918509f229d83a",
+            "path": "benchmarks\\r43\\nemo_r43.py",
+            "present": true,
+            "registered_sha256": "65d4e2bb412626595f3d263be25244bb5500af959374562f7e918509f229d83a"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "29e5c54fa46ca6dea77a90eded915b9294ae7a6681f10cfe45d45f124cea398c",
+            "path": "scripts\\analyze_nemo_causal_inference_v0_6D1_R3_6E.py",
+            "present": true,
+            "registered_sha256": "29e5c54fa46ca6dea77a90eded915b9294ae7a6681f10cfe45d45f124cea398c"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "b762e1cab61658642e955e90fce8540eb76049a3ac8696699c6776766833a43a",
+            "path": "scripts\\analyze_nemo_r37c_selection_v0_6D1_R3_7C.py",
+            "present": true,
+            "registered_sha256": "b762e1cab61658642e955e90fce8540eb76049a3ac8696699c6776766833a43a"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "f0888494a1962574713bc89f7b00281a4f81d6a74691656eed160267133052df",
+            "path": "scripts\\collect_nemo_242_evidence_v0_6D1_R3_6D.py",
+            "present": true,
+            "registered_sha256": "f0888494a1962574713bc89f7b00281a4f81d6a74691656eed160267133052df"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "8ec876ad932ad4c8069a072481231058ab02039598ed1de7fd54add1ee6f85a4",
+            "path": "scripts\\preflight_nemo_242_v0_6D1_R3_6D.py",
+            "present": true,
+            "registered_sha256": "8ec876ad932ad4c8069a072481231058ab02039598ed1de7fd54add1ee6f85a4"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "6017d86c22abdf7f1344563d4933a5497172cd1ed94d9e233e1058d8b9540324",
+            "path": "scripts\\prepare_nemo_242_executable_suite_v0_6D1_R3_6D.py",
+            "present": true,
+            "registered_sha256": "6017d86c22abdf7f1344563d4933a5497172cd1ed94d9e233e1058d8b9540324"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "054cee07e74db8cf5369a4d6f940539ab5fc83795047b206e163a09c74351b24",
+            "path": "scripts\\prepare_nemo_qtl_ensemble_v0_6D1_R3_6B.py",
+            "present": true,
+            "registered_sha256": "054cee07e74db8cf5369a4d6f940539ab5fc83795047b206e163a09c74351b24"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "e56adad6fc1cadf4d2f0ea12d4da0274c43aa5d7d3d32d179118346d35031203",
+            "path": "scripts\\prepare_nemo_reference_v0_6D1_R3_6A.py",
+            "present": true,
+            "registered_sha256": "e56adad6fc1cadf4d2f0ea12d4da0274c43aa5d7d3d32d179118346d35031203"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "bc3ca5615ae73fd82d0538ee6a1e600b16d1e917c3734cfa295918d1fdd2e53a",
+            "path": "scripts\\run_nemo_r37a_b2_chain.py",
+            "present": true,
+            "registered_sha256": "bc3ca5615ae73fd82d0538ee6a1e600b16d1e917c3734cfa295918d1fdd2e53a"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "233e38de7e8dafb5c7df13798a549db8d88ecfdb23a2b24e3994fba45ce80dea",
+            "path": "scripts\\run_nemo_r37c_r1_selection_chain.py",
+            "present": true,
+            "registered_sha256": "233e38de7e8dafb5c7df13798a549db8d88ecfdb23a2b24e3994fba45ce80dea"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "215be072ccb63762622881ca77f71307214036d93ae8a231ee9c50044041a3f7",
+            "path": "scripts\\run_nemo_r37c_selection_chain.py",
+            "present": true,
+            "registered_sha256": "215be072ccb63762622881ca77f71307214036d93ae8a231ee9c50044041a3f7"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "6e4cea2620cfcd475328682c5458a4a54771c36bda8488da828cb9d7004202f5",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo242.py",
+            "present": true,
+            "registered_sha256": "6e4cea2620cfcd475328682c5458a4a54771c36bda8488da828cb9d7004202f5"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "136f4bbc2f74101576890ddefeedafa4c403ceebd81e09ff4e6fae941e01f3fc",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo242_r36b.py",
+            "present": true,
+            "registered_sha256": "136f4bbc2f74101576890ddefeedafa4c403ceebd81e09ff4e6fae941e01f3fc"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "6015b2cb9975a68199cb441016c0f96deea6282f08c31fadaa5955231fd379ae",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo242_r36d.py",
+            "present": true,
+            "registered_sha256": "6015b2cb9975a68199cb441016c0f96deea6282f08c31fadaa5955231fd379ae"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "5ef28437052e6be959874d0e11561a5f90c995e3e2b2196a355b5aefcc5daecf",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo242_r37a.py",
+            "present": true,
+            "registered_sha256": "5ef28437052e6be959874d0e11561a5f90c995e3e2b2196a355b5aefcc5daecf"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "a08ab1082c9d98e0c9f23be3d79440601e266b54b7cb9bb99a73c3fd1a4f1f80",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo242_r37c.py",
+            "present": true,
+            "registered_sha256": "a08ab1082c9d98e0c9f23be3d79440601e266b54b7cb9bb99a73c3fd1a4f1f80"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "de4e5968c5de4f9b1eeac2cf6b31b25ce2edc0e05b534f80e934dce8014db4f7",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo242_r37c_r1.py",
+            "present": true,
+            "registered_sha256": "de4e5968c5de4f9b1eeac2cf6b31b25ce2edc0e05b534f80e934dce8014db4f7"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "97154b1242591d1c7ee93c5eb4efe8128f77f1b54a292da78b64fa956c8836ae",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo_benchmarks.py",
+            "present": true,
+            "registered_sha256": "97154b1242591d1c7ee93c5eb4efe8128f77f1b54a292da78b64fa956c8836ae"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "9f430b6c0b1d15d0ee523de89b16f8d0e80b6238f3e21945b287440ce0e0683f",
+            "path": "src\\arcana_worldsim\\scientific_engines\\nemo_qtl_ensemble.py",
+            "present": true,
+            "registered_sha256": "9f430b6c0b1d15d0ee523de89b16f8d0e80b6238f3e21945b287440ce0e0683f"
+          }
+        ]
+      },
+      "static_validation_pass": true,
+      "symmetric_scope_exact": true
+    },
+    {
+      "authorization_disposition": "AUTHORIZED_FOR_R422_SYMMETRIC_REEXECUTION_PREPARE",
+      "candidate_adapter": {
+        "engine": "SLiM",
+        "forbidden_tokens_absent": true,
+        "forbidden_tokens_found": [],
+        "missing_required_tokens": [],
+        "path": "benchmarks\\r421\\slim_r421.py",
+        "present": true,
+        "python_syntax_ok": true,
+        "required_tokens": [
+          "engine_input",
+          "replicates",
+          "seed",
+          "treeSeqOutput",
+          "ts.Fst",
+          "DIVERSITY_NOT_ANCESTRY_CONTRIBUTION",
+          "comparison_target_used"
+        ],
+        "required_tokens_ok": true,
+        "sha256": "a0c078c7f5604b353641bdaa61f73b140bc20b0a771c66ac5d5735972d62ef62"
+      },
+      "declared_frozen_job_ids": [
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM"
+      ],
+      "engine": "SLiM",
+      "engine_execution_performed_in_r421": false,
+      "engine_specific_binding": {
+        "ready": true,
+        "type": "NONE"
+      },
+      "expected_frozen_job_ids": [
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM"
+      ],
+      "p2_cell_count": 2,
+      "parent_source_integrity": {
+        "all_present_and_hash_match": true,
+        "engine": "SLiM",
+        "source_count": 2,
+        "sources": [
+          {
+            "hash_match": true,
+            "observed_sha256": "5052df288dc464f261cdc25944ba8f691efd4b5af576542f35f88a0640819a1b",
+            "path": "benchmarks\\r41\\slim_collect_r41.py",
+            "present": true,
+            "registered_sha256": "5052df288dc464f261cdc25944ba8f691efd4b5af576542f35f88a0640819a1b"
+          },
+          {
+            "hash_match": true,
+            "observed_sha256": "c54fc2d7e996a83918121d6ecb7eba9060d400512cf4f96aaa3e8da386eb2456",
+            "path": "benchmarks\\r43\\slim_r43.py",
+            "present": true,
+            "registered_sha256": "c54fc2d7e996a83918121d6ecb7eba9060d400512cf4f96aaa3e8da386eb2456"
+          }
+        ]
+      },
+      "static_validation_pass": true,
+      "symmetric_scope_exact": true
+    }
+  ],
+  "engine_family_count": 4,
+  "p2_cell_count": 6,
+  "stage": "v0.6D1-R4.21",
+  "status": "R421_P2_STATIC_VALIDATION_COMPLETE"
+}

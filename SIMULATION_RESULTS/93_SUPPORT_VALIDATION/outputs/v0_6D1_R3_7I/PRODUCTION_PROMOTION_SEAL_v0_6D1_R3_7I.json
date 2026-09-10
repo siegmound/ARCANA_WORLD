@@ -1,0 +1,93 @@
+{
+  "schema": "ARCANA_R37I_PRODUCTION_PROMOTION_SEAL_V1",
+  "stage": "v0.6D1-R3.7I",
+  "parent_stage": "v0.6D1-R3.7H",
+  "status": "PASS_PRODUCTION_PROMOTION_SEAL",
+  "promotion_basis": "R3.7H_FULL_210_TO_150_THREE_BRANCH_CLOSED_LOOP_EVIDENCE_PLUS_R3.7A_G_CHAIN",
+  "r37h_full_closed_loop_evidence": {
+    "governed_closed_loop_pass": true,
+    "source_zip_sha256": "0a736ea6b1b35ecd92416c968b34a5830167890ad7bbae6efffc06778fcf2287",
+    "json_sha256": {
+      "summary": "2890242b224294b457c79248191d9f96d32a01ee40650967ce2243068cd276aa",
+      "K_LOW": "81bd6db0a33e6c5b38f8d5c3a0aecc771adbec7ab5bc35a7c742033a89f1619d",
+      "K_CENTER": "73cdba842aa6156c6162b026c047a5eb49d0d052ee0b541c7f25b23372b4fe2b",
+      "K_HIGH": "6ad42d6d5fad30788c725dd8ed71e9ecfd0d20188e516942194cd0a6bfe62eaa"
+    },
+    "review_status": "PASS_R37H_FULL_EVIDENCE_REVIEW",
+    "checks_passed": 38,
+    "check_count": 38
+  },
+  "nominal_reduced_order_reference": {
+    "label": "K_CENTER",
+    "K_eff": 38.47,
+    "semantic_role": "OPERATIONAL_REDUCED_ORDER_COORDINATE_REFERENCE_NOT_PHYSICAL_CONSTANT"
+  },
+  "uncertainty_sentinels": {
+    "K_LOW": 37.614,
+    "K_HIGH": 41.002,
+    "release_validation_required": true
+  },
+  "authority": {
+    "canonical_runtime_binding_authorized": true,
+    "segregation_aware_gene_flow_variance_authorized": true,
+    "segregation_aware_coalescence_pooling_authorized": true,
+    "nominal_reduced_order_k_reference_authorized": true,
+    "scalar_k_physical_constant_authorized": false,
+    "k_low_high_release_sentinels_retained": true,
+    "mu_b_or_ceiling_change_authorized": false,
+    "migration_selection_ri_speciation_paleogeography_authority_changed": false
+  },
+  "supersession": {
+    "legacy_whole_trait_gene_flow_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+    "legacy_whole_trait_coalescence_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+    "r3_7h_closed_loop_binding": "PROMOTED_AS_R3_7I_CANONICAL_RUNTIME_IMPLEMENTATION"
+  },
+  "macro_and_event_review": {
+    "peak_q_by_branch": {
+      "K_LOW": 0.048476407460347704,
+      "K_CENTER": 0.048355783869918005,
+      "K_HIGH": 0.04802326522297417
+    },
+    "max_peak_q_spread": 0.00045314223737353415,
+    "final_population_by_branch": {
+      "K_LOW": 1940.1122020968696,
+      "K_CENTER": 1940.1122015319092,
+      "K_HIGH": 1940.112199330987
+    },
+    "final_population_relative_span_vs_center": 1.4256301904971018e-09,
+    "species_count_by_branch": {
+      "K_LOW": 133,
+      "K_CENTER": 133,
+      "K_HIGH": 133
+    },
+    "component_count_by_branch": {
+      "K_LOW": 454,
+      "K_CENTER": 454,
+      "K_HIGH": 454
+    },
+    "event_counts_by_branch": {
+      "K_LOW": {
+        "paleogeographic_support_loss_remap": 432,
+        "deme_coalescence": 14,
+        "deme_fission": 335,
+        "speciation": 13
+      },
+      "K_CENTER": {
+        "paleogeographic_support_loss_remap": 432,
+        "deme_coalescence": 14,
+        "deme_fission": 335,
+        "speciation": 13
+      },
+      "K_HIGH": {
+        "paleogeographic_support_loss_remap": 432,
+        "deme_coalescence": 14,
+        "deme_fission": 335,
+        "speciation": 13
+      }
+    },
+    "species_count_exactly_equal": true,
+    "component_count_exactly_equal": true,
+    "event_counts_exactly_equal": true,
+    "review_semantics": "REPORTED_NOT_THRESHOLD_FITTED"
+  }
+}

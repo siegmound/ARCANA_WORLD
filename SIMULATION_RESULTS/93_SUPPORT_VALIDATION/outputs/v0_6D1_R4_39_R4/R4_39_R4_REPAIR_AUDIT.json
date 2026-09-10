@@ -1,0 +1,24 @@
+{
+  "stage": "v0.6D1-R4.39-R4",
+  "status": "PASS_R439_R4_GEONOMICS_LYR_SERIES_TIMESTEP_RASTER_TUPLE_COMPAT_REPAIR_APPLIED",
+  "prepatch_module_sha256": "ab2bc731d30f21114993360113c271bf2431bc7bb576a89875617c6ec9171f99",
+  "postpatch_module_sha256": "310f23aadbbf4887e0576efd04ab579eafa49fd0dd38ea39a9f1ffe320099b23",
+  "root_cause": "R439_R3_ADAPTER_MISTOOK_GEONOMICS_MAKE_LYR_SERIES_LIST_OF_TIMESTEP_RASTER_TUPLES_FOR_LIST_OF_BARE_RASTERS",
+  "repair": "VALIDATE_STEP_0_TIMESTEP_AND_STEP_1_NDARRAY_SHAPE_WHILE_ONLY_REPAIRING_RETURNED_DIM_METADATA",
+  "governance": {
+    "failed_r439_r3_evidence_preserved": true,
+    "r439_r2_source_semantics_preserved": true,
+    "canonical_values_modified": false,
+    "timestep_labels_modified": false,
+    "raster_transpose_performed": false,
+    "raster_values_modified": false,
+    "geonomics_installed_files_modified": false,
+    "changer_executed": false,
+    "model_run_performed": false,
+    "scientific_execution_performed": false,
+    "target_numeric_execution_performed": false,
+    "readjudication_performed": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

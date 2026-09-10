@@ -1,0 +1,70 @@
+{
+  "schema": "ARCANA_R318_RECENT_EXPOSURE_COMPLETION_SUMMARY_V1",
+  "stage": "v0.6D1-R3.18",
+  "verdict": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_OPERATOR_AUDIT_READY",
+  "wall_seconds": 47.367239475250244,
+  "physical_start_age_ma": 0.12,
+  "physical_end_age_ma": 0.0,
+  "biology_state_age_ma": 0.125,
+  "biology_state_identity_exact": true,
+  "species": 134,
+  "components": 295,
+  "population": 1217.8946033288662,
+  "recent_environmental_years_integrated": 120000.0,
+  "r317_pending_environmental_years_inherited": 5000.0,
+  "full_macrostep_environmental_years": 125000.0,
+  "transport_boundary_age_ma": 0.0625,
+  "transport_phase_years": [
+    62500.0,
+    62500.0
+  ],
+  "transport_phase_environment_roundoff_equivalent": false,
+  "phase_aware_transport_operator_required": true,
+  "integral_phase_closure_max_abs": 6.984919309616089e-09,
+  "support_diagnostics": {
+    "125_to_120": {
+      "label": "125ka_TO_120ka",
+      "lost_accessible_cell_count": 0,
+      "gained_accessible_cell_count": 0,
+      "population_mass_on_cells_lost_at_boundary": 0.0,
+      "remap_applied": false
+    },
+    "120_to_62p5": {
+      "label": "120ka_TO_62p5ka",
+      "lost_accessible_cell_count": 0,
+      "gained_accessible_cell_count": 81,
+      "population_mass_on_cells_lost_at_boundary": 0.0,
+      "remap_applied": false
+    },
+    "62p5_to_0": {
+      "label": "62p5ka_TO_0ka",
+      "lost_accessible_cell_count": 1758,
+      "gained_accessible_cell_count": 0,
+      "population_mass_on_cells_lost_at_boundary": 3.500995889833411e-11,
+      "remap_applied": false
+    }
+  },
+  "parent_population_endpoint_inaccessible_mass": {
+    "at_62p5ka": 0.0,
+    "at_0ka": 3.5009958898334106e-11
+  },
+  "biology_advanced": false,
+  "transport_advanced": false,
+  "production_biology_closure_authorized_in_r318": false,
+  "artifacts": {
+    "readiness_envelope": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_ENVELOPE.json",
+    "readiness_envelope_sha256": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+    "integral_bundle": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_125KA_TO_0_EXPOSURE_AND_TRANSPORT_PHASES.npz",
+    "integral_bundle_sha256": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+    "bundle_roundtrip_exact": true
+  },
+  "parent_r317_authority": {
+    "r317_seal_sha256": "3248c598874728c2988b883dd3622150778af003e895d427b5daa1862d97a11e",
+    "r317_audit_sha256": "4c01acf77e4c2ed4c57b6197e405d22002254b0511c250c3dbff5d0161a427ac",
+    "r317_summary_sha256": "fa4fb8981c06ae1ea05fb833e2dfa3aafdce4f74beb1c719a8a68288930b9e78",
+    "r317_envelope_sha256": "5b800279324afdd19279fa0c395ace822b4104155690191f81c6be884d2aeca8",
+    "r317_accumulator_sha256": "b191faae44b4db8bc0afaaba942b0f04087758fa554c480375eb0f753ab309cc",
+    "r316_seal_sha256": "7b9ddd1aa4e543529cbae56cc1a3a284a7115573999dd9d37375c7a53d1aeeeb"
+  },
+  "next_stage_constraint": "R3.19_MUST_VALIDATE_A_PHASE_AWARE_TRANSPORT_COUPLING_OPERATOR_AGAINST_CONSTANT_FORCING_EQUIVALENCE_BEFORE_THE_125KA_TO_0KA_BIOLOGY_MACROSTEP_CAN_BE_PROMOTED"
+}

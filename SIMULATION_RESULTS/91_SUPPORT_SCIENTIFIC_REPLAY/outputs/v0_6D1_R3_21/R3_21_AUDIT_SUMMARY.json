@@ -1,0 +1,68 @@
+{
+  "all_present_species_have_registry_entry": true,
+  "ancestry_graph_acyclic_and_parent_complete": true,
+  "deep_biological_coupling_off": true,
+  "deep_evidence": [
+    {
+      "path": "config.deep_biological_coupling",
+      "value": false
+    },
+    {
+      "path": "run_report.deep_biological_coupling",
+      "value": false
+    },
+    {
+      "path": "governance.deep_biological_coupling",
+      "value": false
+    }
+  ],
+  "historical_events": 2925,
+  "historical_registry_species": 348,
+  "inaccessible_population_0ka": 0.0,
+  "no_extinct_species_present": true,
+  "no_functional_phenotype_values_materialized": true,
+  "no_h0_or_cha2_mutation": true,
+  "no_human_target": true,
+  "no_new_biology_executed": true,
+  "population_accounting_error": -2.2737367544323206e-13,
+  "present_components": 295,
+  "present_species": 134,
+  "reduced_state_presence": {
+    "adaptive_coordinate_present": true,
+    "ancestry_covariance_present": true,
+    "canonical_npz_keys": {
+      "adaptive_coordinate": "reduced_adaptive_coordinate",
+      "ancestry_covariance": "reduced_ancestry_covariance",
+      "neutral_segregation_potential": "reduced_neutral_segregation_potential",
+      "va_within": "reduced_va_within"
+    },
+    "neutral_segregation_potential_present": true,
+    "shapes": {
+      "reduced_adaptive_coordinate": [
+        295,
+        3
+      ],
+      "reduced_ancestry_covariance": [
+        295,
+        3
+      ],
+      "reduced_neutral_segregation_potential": [
+        295,
+        295,
+        3
+      ],
+      "reduced_va_within": [
+        295,
+        3
+      ]
+    },
+    "va_within_present": true
+  },
+  "source_checkpoint": {
+    "json_sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+    "npz_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406"
+  },
+  "stage": "v0.6D1-R3.21",
+  "status": "PASS_R321_PRESENT_LINEAGE_REGISTRY_CLOSURE_CANDIDATE",
+  "total_population": 1217.2506240828814
+}

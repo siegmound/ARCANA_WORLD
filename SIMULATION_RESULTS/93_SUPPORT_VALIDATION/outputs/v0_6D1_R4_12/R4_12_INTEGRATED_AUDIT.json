@@ -1,0 +1,171 @@
+{
+  "absolute_population_response_comparability": "PROXY_ONLY_PENDING_MATCHED_CONTROL_SEMANTIC_PROTOCOL",
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_11_SEAL\\R4_11_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r411_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R411_CDMETAPOP_POPULATION_METRIC_EXTRACTION_REPAIR_AND_SYMMETRIC_READJUDICATION_SEALED",
+      "name": "parent_r411_sealed",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS",
+      "name": "parent_next_action_matches_r412",
+      "pass": true
+    },
+    {
+      "detail": 75,
+      "name": "parent_corrected_matrix_75_cells",
+      "pass": true
+    },
+    {
+      "detail": 1,
+      "name": "parent_structural_cell_still_one",
+      "pass": true
+    },
+    {
+      "detail": "STRUCTURAL_DISAGREEMENT",
+      "name": "parent_j09_population_persistence_structural",
+      "pass": true
+    },
+    {
+      "detail": "R411_CORRECTED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+      "name": "parent_corrected_matched_control_uncertain",
+      "pass": true
+    },
+    {
+      "detail": {
+        "dynamic": 20,
+        "neutral": 20,
+        "paired": 20,
+        "rows": 20
+      },
+      "name": "exact_20_corrected_pairs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "r411": 1.05,
+        "r44": 1.05
+      },
+      "name": "frozen_r44_neutral_factor_reused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "benchmarks\\r47\\cdmetapop_r47.py": {
+          "arcana_start_population_descriptor_referenced_in_adapter": false,
+          "n0_half_k_initialization_detected": true,
+          "present": true
+        },
+        "benchmarks\\r48\\cdmetapop_r48_neutral.py": {
+          "arcana_start_population_descriptor_referenced_in_adapter": false,
+          "n0_half_k_initialization_detected": true,
+          "present": true
+        },
+        "benchmarks\\r49\\cdmetapop_r49_dynamic.py": {
+          "arcana_start_population_descriptor_referenced_in_adapter": false,
+          "n0_half_k_initialization_detected": true,
+          "present": true
+        },
+        "benchmarks\\r49\\cdmetapop_r49_neutral.py": {
+          "arcana_start_population_descriptor_referenced_in_adapter": false,
+          "n0_half_k_initialization_detected": true,
+          "present": true
+        }
+      },
+      "name": "common_adapter_half_k_initialization_confirmed",
+      "pass": true
+    },
+    {
+      "detail": {
+        "arcana_start_population_descriptor": 1617.1047035853792
+      },
+      "name": "arcana_start_descriptor_not_used_for_adapter_n0",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "name": "all_five_symmetric_cdmetapop_jobs_mapped",
+      "pass": true
+    },
+    {
+      "detail": [
+        {
+          "authority_role": "PRIMARY",
+          "discordance_class": "STRUCTURAL_DISAGREEMENT",
+          "domain": "population_persistence",
+          "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+          "mapping_comparability": "NORMALIZABLE",
+          "reason": "OPPOSITE_MEANINGFUL_RESPONSE_DIRECTION",
+          "window_id": "H0_POST_CHA1_RECOVERY"
+        }
+      ],
+      "name": "j09_corrected_primary_population_row_resolved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r412_does_not_reclassify_parent_matrix",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "automatic_more_engine_replicates_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "matched_control_global_promotion_forbidden_in_r412",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_execution_not_performed",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 22,
+  "checks_total": 22,
+  "finding": "R412_CDMETAPOP_ABSOLUTE_POPULATION_RESPONSE_NEUTRAL_INVARIANCE_FAILURE_CONFIRMED",
+  "neutral_control_class": "NEUTRAL_CONTROL_ROBUST_UPWARD_RELAXATION",
+  "next_action": "BUILD_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION",
+  "stage": "v0.6D1-R4.12",
+  "status": "PASS_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS_COMPLETE"
+}

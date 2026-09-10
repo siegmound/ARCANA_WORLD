@@ -1,0 +1,1184 @@
+{
+  "automatic_evidence_promotion_performed": false,
+  "canonical_rewrite_authorized": false,
+  "engine_batches": [
+    {
+      "batch_index": 0,
+      "batch_order_is_scientific_authority": false,
+      "engine": "Madingley",
+      "job_count": 4,
+      "job_ids": [
+        "R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY",
+        "R42_J04_H0_PRE_CHA1_MADINGLEY",
+        "R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY",
+        "R42_J11_H0_LATE_CENOZOIC_MADINGLEY"
+      ],
+      "job_membership_is_scientific_authority": true,
+      "parallelism_is_scientific_authority": false,
+      "scientific_stream_count": 16
+    },
+    {
+      "batch_index": 1,
+      "batch_order_is_scientific_authority": false,
+      "engine": "RangeShifter",
+      "job_count": 5,
+      "job_ids": [
+        "R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER",
+        "R42_J05_H0_PRE_CHA1_RANGESHIFTER",
+        "R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER",
+        "R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER",
+        "R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER"
+      ],
+      "job_membership_is_scientific_authority": true,
+      "parallelism_is_scientific_authority": false,
+      "scientific_stream_count": 20
+    },
+    {
+      "batch_index": 2,
+      "batch_order_is_scientific_authority": false,
+      "engine": "CDMetaPOP",
+      "job_count": 5,
+      "job_ids": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "job_membership_is_scientific_authority": true,
+      "parallelism_is_scientific_authority": false,
+      "scientific_stream_count": 20
+    },
+    {
+      "batch_index": 3,
+      "batch_order_is_scientific_authority": false,
+      "engine": "NEMO",
+      "job_count": 3,
+      "job_ids": [
+        "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+        "R42_J13_H0_LATE_CENOZOIC_NEMO",
+        "R42_J17_SAPIENT_3MA_TO_200KA_NEMO"
+      ],
+      "job_membership_is_scientific_authority": true,
+      "parallelism_is_scientific_authority": false,
+      "scientific_stream_count": 12
+    },
+    {
+      "batch_index": 4,
+      "batch_order_is_scientific_authority": false,
+      "engine": "SLiM",
+      "job_count": 3,
+      "job_ids": [
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM"
+      ],
+      "job_membership_is_scientific_authority": true,
+      "parallelism_is_scientific_authority": false,
+      "scientific_stream_count": 12
+    }
+  ],
+  "engine_count": 5,
+  "engine_output_defines_arcana_target": false,
+  "execution_required_job_count": 20,
+  "expected_engine_job_counts": {
+    "CDMetaPOP": 5,
+    "Madingley": 4,
+    "NEMO": 3,
+    "RangeShifter": 5,
+    "SLiM": 3
+  },
+  "expected_scientific_stream_count": 80,
+  "jobs": [
+    {
+      "canonical_write": false,
+      "engine": "Madingley",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        1519467421,
+        1525893576,
+        1647150775,
+        1920638819
+      ],
+      "job_id": "R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "9d556718cd4756b132d4f0c2587a87afc096b6968edca1ca22b092fcdc0963f4",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1525893576
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1647150775
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1920638819
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1519467421
+          ]
+        }
+      ],
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "canonical_write": false,
+      "engine": "RangeShifter",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        292331116,
+        725095482,
+        893604105,
+        1934559854
+      ],
+      "job_id": "R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "4d1f1227ae26d9a2100ed5d2ef8fdd877483c1c41ca201108dd29743acec3767",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            725095482
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            1934559854
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            292331116
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            893604105
+          ]
+        }
+      ],
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        126964583,
+        318998501,
+        1060527186,
+        1197234520
+      ],
+      "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "fd440c3a6819bd92f8201fe76c2207fa26a407978e1f5c932b85a26f922c2d4d",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            318998501
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1197234520
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            126964583
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1060527186
+          ]
+        }
+      ],
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "canonical_write": false,
+      "engine": "Madingley",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        1081350395,
+        1179722647,
+        1287608194,
+        1913936439
+      ],
+      "job_id": "R42_J04_H0_PRE_CHA1_MADINGLEY",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "24d26468cdea404430957c980fd284cad49c2d09311009e450d2b683b4a6c81f",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J04_H0_PRE_CHA1_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1081350395
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J04_H0_PRE_CHA1_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1913936439
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J04_H0_PRE_CHA1_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1179722647
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J04_H0_PRE_CHA1_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1287608194
+          ]
+        }
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "canonical_write": false,
+      "engine": "RangeShifter",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        50972012,
+        349785667,
+        544529936,
+        1956928900
+      ],
+      "job_id": "R42_J05_H0_PRE_CHA1_RANGESHIFTER",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "6dd99d4bfdf7199e096ff90292a34ba0b6325e88ab1daeabe89fad7097ea7260",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J05_H0_PRE_CHA1_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            544529936
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J05_H0_PRE_CHA1_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            349785667
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J05_H0_PRE_CHA1_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            50972012
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J05_H0_PRE_CHA1_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            1956928900
+          ]
+        }
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        573266817,
+        1073281537,
+        1549947756,
+        1869692640
+      ],
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "16e36efb44c03a2ebbbc6b8a8c6ed3c96a24db245018e990e536b53d82c74f52",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1869692640
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            573266817
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1549947756
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1073281537
+          ]
+        }
+      ],
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "canonical_write": false,
+      "engine": "Madingley",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        122008137,
+        153786027,
+        1225717256,
+        1320592225
+      ],
+      "job_id": "R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "d78462f777220a17858312e3a9f21ac22c838b5849b0415da1e3d96716f8cdf0",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            153786027
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            122008137
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1225717256
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1320592225
+          ]
+        }
+      ],
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "canonical_write": false,
+      "engine": "RangeShifter",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        68848419,
+        567654286,
+        1474248279,
+        1811851455
+      ],
+      "job_id": "R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "b3bcf107715756aa8053f87a7c4613a519233b1f396b44057cf2cea023f27976",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            567654286
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            68848419
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            1811851455
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            1474248279
+          ]
+        }
+      ],
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        55525513,
+        66696762,
+        72612355,
+        413622220
+      ],
+      "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "549a6f733b74adc784e56b5a754c85d88bba5095e542e03ceeb4c14ced105001",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            55525513
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            66696762
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            413622220
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            72612355
+          ]
+        }
+      ],
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "canonical_write": false,
+      "engine": "NEMO",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        125184549,
+        869622111,
+        974828641,
+        1155047829
+      ],
+      "job_id": "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "eb4d9dd94f465101cafd5df42ed42575d3a19e61d42b81053a27fc3be22873c2",
+      "r451_classification": "FAILED_OR_INVALID_EVIDENCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            869622111
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            974828641
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            125184549
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            1155047829
+          ]
+        }
+      ],
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "canonical_write": false,
+      "engine": "Madingley",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        200120263,
+        388335602,
+        1115067710,
+        1159058904
+      ],
+      "job_id": "R42_J11_H0_LATE_CENOZOIC_MADINGLEY",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "e27fbff01ef56d43b69bb840e7590af79f93dd239c2a55a8f5ea8b57392774dc",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J11_H0_LATE_CENOZOIC_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            388335602
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J11_H0_LATE_CENOZOIC_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1159058904
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J11_H0_LATE_CENOZOIC_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            1115067710
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J11_H0_LATE_CENOZOIC_MADINGLEY/RAW_EVIDENCE.json",
+          "seed_values": [
+            200120263
+          ]
+        }
+      ],
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "canonical_write": false,
+      "engine": "RangeShifter",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        704096182,
+        709439403,
+        893749483,
+        1549632387
+      ],
+      "job_id": "R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "2b019ebf7c9526b817e35cfddfb4fd740748edf334c5c66012fa0f42a0d9da10",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            1549632387
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            704096182
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            893749483
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            709439403
+          ]
+        }
+      ],
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "canonical_write": false,
+      "engine": "NEMO",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        689027931,
+        1465029780,
+        1614466852,
+        1899635522
+      ],
+      "job_id": "R42_J13_H0_LATE_CENOZOIC_NEMO",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "8dbfb9ef2e0b915512c8802a845bff227a6d9c9a28019ab922ffc845109e4a02",
+      "r451_classification": "FAILED_OR_INVALID_EVIDENCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            1465029780
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            1614466852
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            689027931
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            1899635522
+          ]
+        }
+      ],
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        60353502,
+        785850499,
+        1059627548,
+        1753445705
+      ],
+      "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "4b391cb6b4dfc48b1366c625b03ccde87a2f5f9cbcc6b74fd7dafe6e1b2e5628",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1753445705
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1059627548
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            60353502
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            785850499
+          ]
+        }
+      ],
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "canonical_write": false,
+      "engine": "SLiM",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        162419087,
+        375760264,
+        1041058041,
+        1903370093
+      ],
+      "job_id": "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "3bc51ac5bc32ba45c0b9d26908be08e62dda39379bfca1a65d4a79ae3e44a0f0",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J16_SAPIENT_3MA_TO_200KA_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            162419087
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J16_SAPIENT_3MA_TO_200KA_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1041058041
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J16_SAPIENT_3MA_TO_200KA_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1903370093
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J16_SAPIENT_3MA_TO_200KA_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            375760264
+          ]
+        }
+      ],
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "canonical_write": false,
+      "engine": "NEMO",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        62159366,
+        113402767,
+        135683159,
+        431138667
+      ],
+      "job_id": "R42_J17_SAPIENT_3MA_TO_200KA_NEMO",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "3cc2c81512beedd671d108177a8ea6b5ab48bc22d4b90cda22732835f696174a",
+      "r451_classification": "FAILED_OR_INVALID_EVIDENCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J17_SAPIENT_3MA_TO_200KA_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            431138667
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J17_SAPIENT_3MA_TO_200KA_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            135683159
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J17_SAPIENT_3MA_TO_200KA_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            113402767
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J17_SAPIENT_3MA_TO_200KA_NEMO/RAW_EVIDENCE.json",
+          "seed_values": [
+            62159366
+          ]
+        }
+      ],
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "canonical_write": false,
+      "engine": "SLiM",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        1071453763,
+        1114642738,
+        1114782693,
+        1222478282
+      ],
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "213cb24d0d50cf6853f93b49cc9d548ea4034f77e5680734f9e7fdc8f22b41b8",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J19_SAPIENT_200KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1114782693
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J19_SAPIENT_200KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1114642738
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J19_SAPIENT_200KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1222478282
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J19_SAPIENT_200KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1071453763
+          ]
+        }
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "canonical_write": false,
+      "engine": "CDMetaPOP",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        1562581070,
+        1576323019,
+        1614078828,
+        1724087276
+      ],
+      "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "3e7b6e095b53f3b96c22ec7d228503ea64b02e8f471e88a9f057e7d89f7d648d",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1576323019
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1614078828
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1562581070
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP/RAW_EVIDENCE.json",
+          "seed_values": [
+            1724087276
+          ]
+        }
+      ],
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "canonical_write": false,
+      "engine": "SLiM",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        143055247,
+        882721373,
+        1087167018,
+        1329415137
+      ],
+      "job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "c921e9091e57d097ae2c4f58109e426be55a1d5e6e3169817c493aac0885cf09",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J22_PRODUCER_20KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1087167018
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J22_PRODUCER_20KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            882721373
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J22_PRODUCER_20KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            1329415137
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J22_PRODUCER_20KA_TO_0_SLIM/RAW_EVIDENCE.json",
+          "seed_values": [
+            143055247
+          ]
+        }
+      ],
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "canonical_write": false,
+      "engine": "RangeShifter",
+      "execution_interface_state": "ENGINE_SPECIFIC_SCIENTIFIC_INTERFACE_REQUIRED_R453",
+      "expected_scientific_stream_count": 4,
+      "frozen_seed_count": 4,
+      "frozen_seeds": [
+        298927478,
+        732920388,
+        1269645923,
+        1851954729
+      ],
+      "job_id": "R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER",
+      "new_scientific_execution_required": true,
+      "promotion_candidate": false,
+      "r42_execution_status": "FROZEN_NOT_EXECUTED_IN_R42",
+      "r42_job_record_sha256": "f577932a52460af17ea7efb250a825d4c4745c75130f49e4b7975ba93df2752f",
+      "r451_classification": "PREFLIGHT_OR_GOVERNANCE_ONLY",
+      "r451_execution_decision": "SCIENTIFIC_REVALIDATION_EXECUTION_REQUIRED",
+      "readout_authority_state": "ENGINE_SPECIFIC_READOUT_AUTHORITY_REQUIRED_R453",
+      "result_selected": false,
+      "scientific_execution_authorized_in_r452": false,
+      "seed_authority_sources": [
+        {
+          "json_path": "$.replicates[0]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            732920388
+          ]
+        },
+        {
+          "json_path": "$.replicates[1]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            298927478
+          ]
+        },
+        {
+          "json_path": "$.replicates[2]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            1851954729
+          ]
+        },
+        {
+          "json_path": "$.replicates[3]",
+          "path": "outputs/v0_6D1_R4_3/jobs/R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER/RAW_EVIDENCE.json",
+          "seed_values": [
+            1269645923
+          ]
+        }
+      ],
+      "window_id": "PRODUCER_20KA_TO_0"
+    }
+  ],
+  "majority_vote_authorized": false,
+  "plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+  "promotion_candidate_count": 0,
+  "result_selected_job_choice": false,
+  "scientific_engine_execution_performed": false,
+  "scientific_execution_authorized": false,
+  "scientific_interface_policy": "FREEZE_ENGINE_SPECIFIC_EXECUTION_AND_READOUT_AUTHORITY_IN_R453_BEFORE_RUN",
+  "seed_authority_policy": "EXACT_FROZEN_R43_R435_SEEDS_NO_RESEEDING",
+  "stage": "v0.6D1-R4.52",
+  "status": "R452_NON_GEONOMICS_EXECUTION_PLAN_FROZEN"
+}

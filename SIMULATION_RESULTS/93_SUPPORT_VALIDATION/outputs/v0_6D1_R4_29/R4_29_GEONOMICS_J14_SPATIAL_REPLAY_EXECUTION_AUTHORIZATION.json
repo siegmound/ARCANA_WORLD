@@ -1,0 +1,97 @@
+{
+  "authority_algorithm": "MINIMUM_DISPLACEMENT_MAXIMUM_ENTROPY_SPATIALIZATION",
+  "canonical_spatial_replay_execution_authorized_in_r430": true,
+  "canonical_spatial_replay_execution_performed_in_r429": false,
+  "checks": {
+    "algorithm_spec_exact_and_pre_result": true,
+    "authority_inputs_static_valid": true,
+    "future_spatial_anchor_forbidden": true,
+    "geonomics_not_authorized_in_r429": true,
+    "parent_preflight_ready": true,
+    "r42_j14_mutation_forbidden": true
+  },
+  "construction_may_use_external_engine_results": false,
+  "construction_may_use_r315_or_r328_coordinates": false,
+  "geonomics_execution_authorized_in_r429": false,
+  "geonomics_execution_authorized_in_r430_by_r429": false,
+  "input_hash_freeze": {
+    "a1_full": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+    "late_cenozoic_provider": "5467ef5823876e53097f6d61344775dc682a137eef55cb02dd12d604acd213f8",
+    "paleogeographic_history_provider": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730",
+    "r327_authority": "c0f540846476b0aa3642b447cda3afcb87fb9215b68e3f208ea0db5e9b3c8017",
+    "r327_checkpoint": "9c86712ce6056515a6bfe5c25c7d382be0ccb707e92e8e0817bd6561bbbe35f9",
+    "r327_seal": "272b9b06e4bbfe99c80c7660731c58bb93ea6dc13f6bc1d98f002b27a47c7d72",
+    "r327_trajectory": "fac973bd233c49facedb2d32e1c561800e65e27da1e940f967d680a36c1b47f3"
+  },
+  "input_validation": {
+    "checks": {
+      "a1_grid_exact_90x180": true,
+      "a1_has_30ma_and_0ma_endpoints": true,
+      "a1_required_keys": true,
+      "all_required_paths_present": true,
+      "checkpoint_candidates_exist_in_trajectory": true,
+      "no_geonomics_dependency": true,
+      "provider_is_canonical_late_cenozoic_land_support": true,
+      "r327_checkpoint_candidate_cohort_exact": true,
+      "r327_geometry_exact_96_members_and_141_times": true,
+      "r327_human_200ka_candidate_cohort_nonempty": true,
+      "r327_npz_required_keys": true,
+      "r327_required_macro_variables": true,
+      "r327_sealed": true,
+      "r327_time_axis_exact_141_states": true,
+      "r327_time_axis_exact_endpoints": true,
+      "r327_window_exact_3ma_to_200ka": true
+    },
+    "details": {
+      "a1_grid_shape": [
+        90,
+        180
+      ],
+      "candidate_cohort": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "paths": {
+        "a1_full": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\references\\v0_6D1_R3\\FULL_A1_REFERENCE_210_0Ma.npz",
+        "late_cenozoic_provider": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\late_cenozoic\\paleogeography.py",
+        "paleogeographic_history_provider": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\src\\arcana_worldsim\\post_cha1\\paleogeographic_history.py",
+        "r327_authority": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_27\\R3_27_MACRO_REPLAY_AUTHORITY.json",
+        "r327_checkpoint": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_27\\R3_27_HUMAN_200KA_CHECKPOINT.json",
+        "r327_seal": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_27_SEAL\\R3_27_FINAL_SEAL_AUDIT.json",
+        "r327_trajectory": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_27\\R3_27_MACRO_REPLAY_TRAJECTORIES.npz"
+      },
+      "present": {
+        "a1_full": true,
+        "late_cenozoic_provider": true,
+        "paleogeographic_history_provider": true,
+        "r327_authority": true,
+        "r327_checkpoint": true,
+        "r327_seal": true,
+        "r327_trajectory": true
+      },
+      "r327_age_count": 141,
+      "r327_geometry": [
+        96,
+        6,
+        141,
+        8
+      ]
+    },
+    "hashes": {
+      "a1_full": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "late_cenozoic_provider": "5467ef5823876e53097f6d61344775dc682a137eef55cb02dd12d604acd213f8",
+      "paleogeographic_history_provider": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730",
+      "r327_authority": "c0f540846476b0aa3642b447cda3afcb87fb9215b68e3f208ea0db5e9b3c8017",
+      "r327_checkpoint": "9c86712ce6056515a6bfe5c25c7d382be0ccb707e92e8e0817bd6561bbbe35f9",
+      "r327_seal": "272b9b06e4bbfe99c80c7660731c58bb93ea6dc13f6bc1d98f002b27a47c7d72",
+      "r327_trajectory": "fac973bd233c49facedb2d32e1c561800e65e27da1e940f967d680a36c1b47f3"
+    },
+    "ready": true
+  },
+  "job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+  "next_priority": "R430_J14_ENGINE_INDEPENDENT_SPATIAL_AUTHORITY_EXECUTION",
+  "post_execution_r328_comparison_may_be_diagnostic_only": true,
+  "r42_j14_mutation_authorized": false,
+  "stage": "v0.6D1-R4.29",
+  "status": "R429_GEONOMICS_J14_SPATIAL_REPLAY_EXECUTION_AUTHORIZATION_COMPLETE"
+}

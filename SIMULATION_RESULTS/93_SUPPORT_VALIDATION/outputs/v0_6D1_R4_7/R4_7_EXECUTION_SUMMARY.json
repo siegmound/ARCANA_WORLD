@@ -1,0 +1,82 @@
+{
+  "calibration_offset_count_after_repair": 5,
+  "canonical_parameter_change_authorized": false,
+  "canonical_replay_authorized": false,
+  "canonical_state_changed": false,
+  "class_counts_after_repair": {
+    "CALIBRATION_OFFSET": 5,
+    "CONCORDANT": 0,
+    "INSUFFICIENT_EVIDENCE": 67,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 1
+  },
+  "evidence_gap_count_after_repair": 69,
+  "j09_population_persistence_class_after_repair": "STRUCTURAL_DISAGREEMENT",
+  "job_audits": [
+    {
+      "dynamic_end_support_ratio": 1.0036576397189094,
+      "engine": "CDMetaPOP",
+      "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "raw_canonical_write": false,
+      "reason": "PASS",
+      "repair_forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+      "seed_ledger_match": true,
+      "stage": "v0.6D1-R4.7",
+      "status": "PASS",
+      "terminal_class": "SCIENTIFIC_RESULT"
+    },
+    {
+      "dynamic_end_support_ratio": 0.9840411123337677,
+      "engine": "CDMetaPOP",
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "raw_canonical_write": false,
+      "reason": "PASS",
+      "repair_forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+      "seed_ledger_match": true,
+      "stage": "v0.6D1-R4.7",
+      "status": "PASS",
+      "terminal_class": "SCIENTIFIC_RESULT"
+    },
+    {
+      "dynamic_end_support_ratio": 0.9346173303061878,
+      "engine": "CDMetaPOP",
+      "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "raw_canonical_write": false,
+      "reason": "PASS",
+      "repair_forcing_source": "A1_EXOGENOUS_REFERENCE_POPULATION_RATIO",
+      "seed_ledger_match": true,
+      "stage": "v0.6D1-R4.7",
+      "status": "PASS",
+      "terminal_class": "SCIENTIFIC_RESULT"
+    },
+    {
+      "dynamic_end_support_ratio": 1.3068070686540865,
+      "engine": "CDMetaPOP",
+      "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+      "raw_canonical_write": false,
+      "reason": "PASS",
+      "repair_forcing_source": "FROZEN_R43_HABITAT_X_ENVIRONMENT_RELATIVE_SUPPORT",
+      "seed_ledger_match": true,
+      "stage": "v0.6D1-R4.7",
+      "status": "PASS",
+      "terminal_class": "SCIENTIFIC_RESULT"
+    },
+    {
+      "dynamic_end_support_ratio": 0.6191185751194023,
+      "engine": "CDMetaPOP",
+      "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+      "raw_canonical_write": false,
+      "reason": "PASS",
+      "repair_forcing_source": "FROZEN_R43_HABITAT_X_ENVIRONMENT_RELATIVE_SUPPORT",
+      "seed_ledger_match": true,
+      "stage": "v0.6D1-R4.7",
+      "status": "PASS",
+      "terminal_class": "SCIENTIFIC_RESULT"
+    }
+  ],
+  "job_count": 5,
+  "next_action": "BUILD_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS",
+  "stage": "v0.6D1-R4.7",
+  "status": "PASS_R47_CDMETAPOP_SYMMETRIC_REEXECUTION_AND_READJUDICATION_COMPLETE",
+  "structural_disagreement_count_after_repair": 1
+}

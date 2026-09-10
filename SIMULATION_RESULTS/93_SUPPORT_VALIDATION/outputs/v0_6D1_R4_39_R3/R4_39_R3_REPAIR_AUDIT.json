@@ -1,0 +1,27 @@
+{
+  "stage": "v0.6D1-R4.39-R3",
+  "status": "PASS_R439_R3_GEONOMICS_NDARRAY_CHANGE_DIM_METADATA_COMPAT_REPAIR_APPLIED",
+  "prepatch_module_sha256": "6b3edb4c80fc53741f6f6086e71185f4b844762d158356896bd97dc0568f8e2c",
+  "postpatch_module_sha256": "ab2bc731d30f21114993360113c271bf2431bc7bb576a89875617c6ec9171f99",
+  "root_cause": "GEONOMICS_1_4_9_NDARRAY_CHANGE_RASTER_REPORTS_NUMPY_YX_SHAPE_AS_LAYER_DIM_METADATA_BUT_LANDSCAPE_DIM_IS_XY",
+  "repair": "TEMPORARILY_ADAPT_ONLY_RETURNED_CHANGE_RASTER_DIM_METADATA_YX_TO_XY_DURING_CHANGER_COMPILATION_WITHOUT_TRANSPOSING_OR_MODIFYING_CANONICAL_RASTERS",
+  "governance": {
+    "failed_r439_r2_evidence_preserved": true,
+    "r439_r1_diagnostic_preserved": true,
+    "r439_r2_r333_semantics_preserved": true,
+    "r437_static_binding_evidence_preserved": true,
+    "canonical_values_modified": false,
+    "raster_transpose_performed": false,
+    "automatic_rescaling_performed": false,
+    "clipping_performed": false,
+    "result_selected_transform_performed": false,
+    "geonomics_installed_files_modified": false,
+    "changer_executed": false,
+    "model_run_performed": false,
+    "scientific_execution_performed": false,
+    "target_numeric_execution_performed": false,
+    "readjudication_performed": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false
+  }
+}

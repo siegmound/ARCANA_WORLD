@@ -1,0 +1,169 @@
+{
+  "recipes": [
+    {
+      "canonical_write": false,
+      "external_engine_execution": false,
+      "full_history_rerun": false,
+      "product_methods": {
+        "contact_admixture": {
+          "authority": "R3.28_HIGH_RESOLUTION_POPULATION_REPLAY.contact_index+admixture_opportunity_cumulative",
+          "mode": "EXACT",
+          "source_ages_ka": [
+            20.0
+          ],
+          "weight_younger": 0.0
+        },
+        "environment": {
+          "authority": "R3.33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE",
+          "mode": "EXACT",
+          "semantic": "DIRECT_SEALED_PALEOCLIMATE_PROVIDER_DOWNSAMPLED_TO_WORLD1_90X180_AND_INTERPOLATED_ONLY_BETWEEN_PROVIDER_SNAPSHOTS",
+          "source_ages_ka": [
+            20.0
+          ],
+          "weight_younger": 0.0
+        },
+        "fauna": {
+          "authority": "R3.33_DOMESTICATION_TRAJECTORIES_ANIMAL_ECOLOGICAL_PARTNERS",
+          "mode": "EXACT",
+          "semantic": "PARTIAL_FAUNA_AUTHORITY_24_H0_DERIVED_ECOLOGICAL_PARTNER_CANDIDATES_AND_INTERACTION_TRAJECTORIES_ONLY_NO_GLOBAL_FAUNA_RASTER_CLAIM",
+          "source_ages_ka": [
+            20.0
+          ],
+          "weight_younger": 0.0
+        },
+        "flora": {
+          "authority": "R3.34_PRODUCER_RESOURCE_LANDSCAPE",
+          "mode": "EXACT",
+          "semantic": "36_ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCER_TAXA_DERIVED_FROM_SEALED_RESOURCE_NICHES_AND_LIFE_HISTORY_PRIORS",
+          "source_ages_ka": [
+            20.0
+          ],
+          "weight_younger": 0.0
+        },
+        "population_detail": {
+          "authority": "R3.28.snapshot_deme_state",
+          "constraints": [
+            "parent_state_direct"
+          ],
+          "mode": "EXACT",
+          "source_ages_ka": [
+            20.0
+          ],
+          "weight_younger": 0.0
+        },
+        "population_summary": {
+          "authority": "R3.28_HIGH_RESOLUTION_POPULATION_REPLAY.species_summary",
+          "mode": "EXACT",
+          "semantic": "POPULATION_SUMMARY_EXACT_WHEN_TARGET_ON_R3_28_HIGH_RESOLUTION_AXIS_OTHERWISE_BOUNDED_LINEAR_DERIVATION",
+          "source_ages_ka": [
+            20.0
+          ],
+          "weight_younger": 0.0
+        }
+      },
+      "query_id": "R50_DEMO_EXACT_20KA",
+      "randomness_used": false,
+      "recipe_sha256": "76f2d662d43075b1279c0713759b5cd4e06e3490507bb7c051eb1d483f88af6a",
+      "stage": "v0.6D1-R5.0",
+      "steps": [
+        "verify_R4_56_governance_baseline",
+        "verify_exact_R3_parent_hashes",
+        "resolve_each_requested_product_independently",
+        "use_exact_parent_state_when_target_age_exists",
+        "otherwise_use_only_bounded_bracketing_authorities",
+        "for_population_spatial_detail_use_cyclic_longitude_and_constrain_population_total_and_active_deme_count_to_R3_28_summary",
+        "apply_optional_native_grid_region_slice",
+        "emit_derived_state_without_canonical_write"
+      ],
+      "target_age_ka": 20.0
+    },
+    {
+      "canonical_write": false,
+      "external_engine_execution": false,
+      "full_history_rerun": false,
+      "product_methods": {
+        "contact_admixture": {
+          "authority": "R3.28_HIGH_RESOLUTION_POPULATION_REPLAY.contact_index+admixture_opportunity_cumulative",
+          "mode": "EXACT",
+          "source_ages_ka": [
+            17.5
+          ],
+          "weight_younger": 0.0
+        },
+        "environment": {
+          "authority": "R3.33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE",
+          "mode": "BRACKETED_LINEAR",
+          "semantic": "DIRECT_SEALED_PALEOCLIMATE_PROVIDER_DOWNSAMPLED_TO_WORLD1_90X180_AND_INTERPOLATED_ONLY_BETWEEN_PROVIDER_SNAPSHOTS",
+          "source_ages_ka": [
+            20.0,
+            15.0
+          ],
+          "weight_younger": 0.5
+        },
+        "fauna": {
+          "authority": "R3.33_DOMESTICATION_TRAJECTORIES_ANIMAL_ECOLOGICAL_PARTNERS",
+          "mode": "BRACKETED_LINEAR",
+          "semantic": "PARTIAL_FAUNA_AUTHORITY_24_H0_DERIVED_ECOLOGICAL_PARTNER_CANDIDATES_AND_INTERACTION_TRAJECTORIES_ONLY_NO_GLOBAL_FAUNA_RASTER_CLAIM",
+          "source_ages_ka": [
+            20.0,
+            15.0
+          ],
+          "weight_younger": 0.5
+        },
+        "flora": {
+          "authority": "R3.34_PRODUCER_RESOURCE_LANDSCAPE",
+          "mode": "BRACKETED_LINEAR",
+          "semantic": "36_ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCER_TAXA_DERIVED_FROM_SEALED_RESOURCE_NICHES_AND_LIFE_HISTORY_PRIORS",
+          "source_ages_ka": [
+            20.0,
+            15.0
+          ],
+          "weight_younger": 0.5
+        },
+        "population_detail": {
+          "authority": "R3.28.snapshot_deme_state",
+          "constraints": [
+            "cyclic_longitude_shortest_path",
+            "target_population_total_constrained_to_population_summary",
+            "target_active_deme_count_constrained_to_population_summary",
+            "no_new_deme_slots",
+            "no_stochastic_motion"
+          ],
+          "mode": "BOUNDED_SPATIAL_RECONSTRUCTION",
+          "semantic": "DERIVED_SPATIAL_DETAIL_BETWEEN_SEALED_SNAPSHOTS_NOT_A_CANONICAL_REWRITE",
+          "source_ages_ka": [
+            20.0,
+            15.0
+          ],
+          "weight_younger": 0.5
+        },
+        "population_summary": {
+          "authority": "R3.28_HIGH_RESOLUTION_POPULATION_REPLAY.species_summary",
+          "mode": "EXACT",
+          "semantic": "POPULATION_SUMMARY_EXACT_WHEN_TARGET_ON_R3_28_HIGH_RESOLUTION_AXIS_OTHERWISE_BOUNDED_LINEAR_DERIVATION",
+          "source_ages_ka": [
+            17.5
+          ],
+          "weight_younger": 0.0
+        }
+      },
+      "query_id": "R50_DEMO_ARBITRARY_17P5KA",
+      "randomness_used": false,
+      "recipe_sha256": "070d194aa853191853977f2598cf24b5e9f0a1ef04c31f2a50a3eb1074cff46d",
+      "stage": "v0.6D1-R5.0",
+      "steps": [
+        "verify_R4_56_governance_baseline",
+        "verify_exact_R3_parent_hashes",
+        "resolve_each_requested_product_independently",
+        "use_exact_parent_state_when_target_age_exists",
+        "otherwise_use_only_bounded_bracketing_authorities",
+        "for_population_spatial_detail_use_cyclic_longitude_and_constrain_population_total_and_active_deme_count_to_R3_28_summary",
+        "apply_optional_native_grid_region_slice",
+        "emit_derived_state_without_canonical_write"
+      ],
+      "target_age_ka": 17.5
+    }
+  ],
+  "stage": "v0.6D1-R5.0",
+  "status": "R50_DETERMINISTIC_REPLAY_RECIPES"
+}

@@ -1,0 +1,49 @@
+{
+  "checks": {
+    "checkpoint_recomputed_exact": true,
+    "environment_axis_exact": true,
+    "environment_names_exact": true,
+    "environment_replay_exact": true,
+    "observed_no_animal_food_production_emergence": true,
+    "observed_no_materialized_or_incipient_species": true,
+    "observed_no_reproductive_control_or_domestication_stage": true,
+    "observed_stage_max_exactly_management_level_1": true,
+    "outcomes_recomputed_exact": true,
+    "partner_registry_exact": true,
+    "plant_registry_absent": true,
+    "sensitivity_recomputed_exact": true,
+    "stage_replay_exact": true,
+    "trajectory_axis_exact": true,
+    "trajectory_candidate_ids_exact": true,
+    "trajectory_names_exact": true,
+    "trajectory_partner_ids_exact": true,
+    "trajectory_replay_within_one_float64_epsilon": true
+  },
+  "failed": [],
+  "metrics": {
+    "environment_anchor_states": 9,
+    "max_animal_food_contribution": 0.02526523026446802,
+    "max_domestication_index": 0.18317361762425824,
+    "max_management_intensity": 0.40772776709945097,
+    "max_reproductive_control": 0.1103579416116344,
+    "max_selective_divergence": 0.023753979964682675,
+    "max_stage": 1,
+    "partner_candidates": 24,
+    "stage_shape": [
+      32,
+      2,
+      24
+    ],
+    "trajectory_replay_max_abs_error": 0.0,
+    "trajectory_replay_tolerance": 2.220446049250313e-16,
+    "trajectory_shape": [
+      32,
+      2,
+      24,
+      9,
+      9
+    ]
+  },
+  "stage": "v0.6D1-R5.14",
+  "status": "PASS_R514_R333_EXACT_DETERMINISTIC_REVALIDATION"
+}

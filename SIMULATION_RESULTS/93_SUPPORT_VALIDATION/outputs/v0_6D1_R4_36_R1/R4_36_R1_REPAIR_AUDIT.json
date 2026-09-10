@@ -1,0 +1,23 @@
+{
+  "stage": "v0.6D1-R4.36-R1",
+  "status": "PASS_R436_R1_GOVERNED_WSL_HOST_RUNTIME_BRIDGE_REPAIR_APPLIED",
+  "prepatch_runner_sha256": "cee21b79f621cab8c02373e9ace5eff0a6e2b9dbbf2d80b87cf11c6f9cfdda46",
+  "postpatch_runner_sha256": "6bd672d2110ee36fa489582937f8918a12ef9c1ff31eeb8bb2d1c84a576bdad9",
+  "root_cause": "R436_WINDOWS_PROJECT_PYTHON_CANNOT_IMPORT_GOVERNED_GEONOMICS_RUNTIME_INSTALLED_IN_R40_WSL_CONDA_ENV",
+  "repair": "ROUTE_ONLY_R436_GEONOMICS_IMPORT_AND_MODEL_CONSTRUCTION_BUILD_THROUGH_EXISTING_R40_WINDOWS_TO_WSL_RUNTIME_BOUNDARY",
+  "governance": {
+    "geonomics_reinstalled": false,
+    "new_environment_created": false,
+    "r435_modified": false,
+    "r40_runtime_identity_modified": false,
+    "native_parameter_semantics_modified": false,
+    "seed_authority_modified": false,
+    "canonical_payload_modified": false,
+    "scientific_execution_performed": false,
+    "target_numeric_execution_performed": false,
+    "readjudication_performed": false,
+    "canonical_state_changed": false,
+    "gate_weakening_performed": false,
+    "failed_r436_evidence_preserved": true
+  }
+}

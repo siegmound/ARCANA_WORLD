@@ -1,0 +1,169 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_9_SEAL\\R4_9_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r49_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES_AND_CAUSAL_DIRECTION_RESOLUTION_SEALED",
+      "name": "parent_r49_sealed",
+      "pass": true
+    },
+    {
+      "detail": "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+      "name": "parent_r49_diagnosis_uncertain",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R410_MATCHED_CONTROL_PRECISION_AND_ALTERNATE_EVIDENCE_CLOSURE_PLAN",
+      "name": "parent_next_action_matches_r410",
+      "pass": true
+    },
+    {
+      "detail": 20,
+      "name": "parent_exact_20_pairs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r410_does_not_posthoc_reclassify_r49",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "automatic_further_replicates_forbidden",
+      "pass": true
+    },
+    {
+      "detail": {
+        "benchmarks\\r43\\cdmetapop_r43.py": {
+          "broad_ind_substring_selector_detected": true,
+          "present": true
+        },
+        "benchmarks\\r47\\cdmetapop_r47.py": {
+          "broad_ind_substring_selector_detected": true,
+          "present": true
+        },
+        "benchmarks\\r48\\cdmetapop_r48_neutral.py": {
+          "broad_ind_substring_selector_detected": true,
+          "present": true
+        },
+        "benchmarks\\r49\\cdmetapop_r49_dynamic.py": {
+          "broad_ind_substring_selector_detected": true,
+          "present": true
+        },
+        "benchmarks\\r49\\cdmetapop_r49_neutral.py": {
+          "broad_ind_substring_selector_detected": true,
+          "present": true
+        }
+      },
+      "name": "all_cdmetapop_population_adapter_sources_present",
+      "pass": true
+    },
+    {
+      "detail": [
+        "benchmarks\\r43\\cdmetapop_r43.py",
+        "benchmarks\\r47\\cdmetapop_r47.py",
+        "benchmarks\\r48\\cdmetapop_r48_neutral.py",
+        "benchmarks\\r49\\cdmetapop_r49_dynamic.py",
+        "benchmarks\\r49\\cdmetapop_r49_neutral.py"
+      ],
+      "name": "broad_ind_filename_selector_detected",
+      "pass": true
+    },
+    {
+      "detail": [
+        "genes/wildtype_hindex1.csv",
+        "genes/yytype_hindex0.csv"
+      ],
+      "name": "copied_input_filename_collision_exists",
+      "pass": true
+    },
+    {
+      "detail": ".arcana_engines\\CDMetaPOP-3.08\\src\\CDmetaPOP_PostProcess.py",
+      "name": "cdmetapop_summary_population_tracking_supported",
+      "pass": true
+    },
+    {
+      "detail": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "name": "r49_reported_initial_population_is_incompatible_with_adapter_min_n0",
+      "pass": true
+    },
+    {
+      "detail": "R43_R49_CDMETAPOP_POPULATION_METRIC_FILENAME_SELECTOR_COLLISION_CONFIRMED",
+      "name": "population_metric_selector_collision_finding_confirmed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "historical_evidence_preserved_not_deleted",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r411_reextract_before_rerun",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r411_symmetric_five_job_repair",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 21,
+  "checks_total": 21,
+  "finding": "R43_R49_CDMETAPOP_POPULATION_METRIC_FILENAME_SELECTOR_COLLISION_CONFIRMED",
+  "next_action": "BUILD_R411_CDMETAPOP_POPULATION_METRIC_EXTRACTION_REPAIR_AND_SYMMETRIC_READJUDICATION",
+  "parent_r49_diagnosis_preserved": "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+  "stage": "v0.6D1-R4.10",
+  "status": "PASS_R410_MATCHED_CONTROL_PRECISION_ALTERNATE_EVIDENCE_AND_POPULATION_METRIC_INTEGRITY_AUDIT_COMPLETE"
+}

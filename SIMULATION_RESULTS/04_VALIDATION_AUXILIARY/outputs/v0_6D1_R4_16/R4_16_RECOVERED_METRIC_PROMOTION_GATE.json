@@ -1,0 +1,46 @@
+{
+  "adjudicative_promotion_count": 0,
+  "interpretation": "R4.16 freezes semantic dispositions. Numerical/domain transforms remain deferred to R4.17; no raw derivative is promoted merely because it was recovered.",
+  "promotion_performed": false,
+  "records": [
+    {
+      "authorized_recovery_engine": "NEMO",
+      "disposition": {
+        "adjudicative_promotion_authorized": false,
+        "domain": "additive_variance",
+        "engine": "NEMO",
+        "promotion_gate": "TRANSFORM_REQUIRED_EFFECT_SIZE_MODEL_ABSENT",
+        "promotion_performed": false,
+        "reason": "qfreq-derived heterozygosity/frequency structure is not additive genetic variance without trait effect sizes, ploidy/trait binding and aggregation semantics.",
+        "recovery_class": "ALLELE_FREQUENCY_DERIVATIVES_RECOVERED_RAW_ONLY",
+        "requires_explicit_target_semantics": true
+      },
+      "domain": "additive_variance",
+      "engine": "NEMO",
+      "recovery_class": "ALLELE_FREQUENCY_DERIVATIVES_RECOVERED_RAW_ONLY",
+      "source_record_semantic_status": "RECOVERED_RAW_METRIC_REQUIRES_R416_DOMAIN_TRANSFORM_PROMOTION_GATE",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "authorized_recovery_engine": "CDMetaPOP",
+      "disposition": {
+        "adjudicative_promotion_authorized": false,
+        "domain": "admixture",
+        "engine": "CDMetaPOP",
+        "promotion_gate": "NO_DOMAIN_IDENTITY_FROM_SUMMARY_POPULATION_DERIVATIVE",
+        "promotion_performed": false,
+        "reason": "Recovered CDMetaPOP summary population derivatives do not identify this domain.",
+        "recovery_class": "SUMMARY_POPULATION_DERIVATIVES_RECOVERED_RAW_ONLY",
+        "requires_explicit_target_semantics": true
+      },
+      "domain": "admixture",
+      "engine": "CDMetaPOP",
+      "recovery_class": "SUMMARY_POPULATION_DERIVATIVES_RECOVERED_RAW_ONLY",
+      "source_record_semantic_status": "RECOVERED_RAW_METRIC_REQUIRES_R416_DOMAIN_TRANSFORM_PROMOTION_GATE",
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "recovered_metric_count": 2,
+  "stage": "v0.6D1-R4.16",
+  "status": "PASS_R416_RECOVERED_METRIC_PROMOTION_GATE_AND_ARCANA_TARGET_SEMANTIC_PROTOCOL_FORMALIZATION_COMPLETE"
+}

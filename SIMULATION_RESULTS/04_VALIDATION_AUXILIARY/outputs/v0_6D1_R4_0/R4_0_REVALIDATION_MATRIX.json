@@ -1,0 +1,123 @@
+{
+  "comparison_domains": [
+    "population_persistence",
+    "range_occupancy",
+    "range_shift_rate",
+    "connectivity",
+    "gene_flow",
+    "additive_variance",
+    "trait_response",
+    "admixture",
+    "ancestry",
+    "biomass",
+    "trophic_opportunity",
+    "extinction_risk",
+    "founder_persistence",
+    "managed_wild_isolation",
+    "producer_divergence"
+  ],
+  "decision_policy": {
+    "no_auto_promotion": true,
+    "preserve_superseded_seals_as_provenance": true,
+    "replay_when_material_disagreement": true,
+    "retain_all_engine_evidence": true
+  },
+  "stage": "v0.6D1-R4.0",
+  "status": "R40_FROZEN_REVALIDATION_MATRIX",
+  "window_count": 7,
+  "windows": [
+    {
+      "age_end_ma": 200.0,
+      "age_start_ma": 210.0,
+      "earliest_replay_boundary": "H0_210MA",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "id": "H0_DEEP_TIME_BACKGROUND",
+      "selection_based_on_result": false,
+      "status": "FROZEN_PRE_RESULT"
+    },
+    {
+      "age_end_ma": 66.0,
+      "age_start_ma": 70.0,
+      "earliest_replay_boundary": "R3.9_PRE_CHA1",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "id": "H0_PRE_CHA1",
+      "selection_based_on_result": false,
+      "status": "FROZEN_PRE_RESULT"
+    },
+    {
+      "age_end_ma": 55.0,
+      "age_start_ma": 65.5,
+      "earliest_replay_boundary": "R3.11_POST_CHA1",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP",
+        "NEMO"
+      ],
+      "id": "H0_POST_CHA1_RECOVERY",
+      "selection_based_on_result": false,
+      "status": "FROZEN_PRE_RESULT"
+    },
+    {
+      "age_end_ma": 0.2,
+      "age_start_ma": 30.0,
+      "earliest_replay_boundary": "R3.14_LATE_CENOZOIC",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "NEMO"
+      ],
+      "id": "H0_LATE_CENOZOIC",
+      "selection_based_on_result": false,
+      "status": "FROZEN_PRE_RESULT"
+    },
+    {
+      "age_end_ma": 0.2,
+      "age_start_ma": 3.0,
+      "earliest_replay_boundary": "R3.27",
+      "engines": [
+        "Geonomics",
+        "CDMetaPOP",
+        "SLiM",
+        "NEMO"
+      ],
+      "id": "SAPIENT_3MA_TO_200KA",
+      "selection_based_on_result": false,
+      "status": "FROZEN_PRE_RESULT"
+    },
+    {
+      "age_end_ka": 0.0,
+      "age_start_ka": 200.0,
+      "earliest_replay_boundary": "R3.28",
+      "engines": [
+        "Geonomics",
+        "SLiM",
+        "CDMetaPOP"
+      ],
+      "id": "SAPIENT_200KA_TO_0",
+      "selection_based_on_result": false,
+      "status": "FROZEN_PRE_RESULT"
+    },
+    {
+      "age_end_ka": 0.0,
+      "age_start_ka": 20.0,
+      "earliest_replay_boundary": "R3.34",
+      "engines": [
+        "Geonomics",
+        "SLiM",
+        "RangeShifter"
+      ],
+      "id": "PRODUCER_20KA_TO_0",
+      "selection_based_on_result": false,
+      "status": "FROZEN_PRE_RESULT"
+    }
+  ]
+}

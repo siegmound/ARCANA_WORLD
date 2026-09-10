@@ -1,0 +1,102 @@
+{
+  "agriculture_materialized": false,
+  "candidate_cohort": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "deep_biological_coupling": false,
+  "domestication_semantics": "WILD_CONTACT_TO_MANAGEMENT_TO_REPRODUCTIVE_CONTROL_TO_SELECTIVE_DIVERGENCE_CONTINUOUS_TRAJECTORY",
+  "dynamics": {
+    "abandonment_rate_per_kyr": 0.022,
+    "animal_food_production_threshold": 0.2,
+    "dependency_rate_per_kyr": 0.1,
+    "domestication_index_threshold": 0.46,
+    "governance": {
+      "agriculture_requires_explicit_plant_or_equivalent_domesticate": true,
+      "deep_biological_coupling": false,
+      "human_similarity_target": false,
+      "no_species_invention": true,
+      "plant_species_registry_available": false,
+      "sensitivity_is_selection_gate": false
+    },
+    "habituation_rate_per_kyr": 0.2,
+    "incipient_frequency_threshold": 0.25,
+    "management_rate_per_kyr": 0.24,
+    "materialization_frequency_threshold": 0.5,
+    "reproductive_control_rate_per_kyr": 0.15,
+    "reproductive_control_threshold": 0.38,
+    "selective_divergence_rate_per_kyr": 0.1,
+    "selective_divergence_threshold": 0.22
+  },
+  "environment_anchor_ages_ka": [
+    20.0,
+    15.0,
+    14.0,
+    13.0,
+    12.0,
+    11.0,
+    10.0,
+    5.0,
+    0.0
+  ],
+  "environmental_semantics": "DIRECT_SEALED_PALEOCLIMATE_PROVIDER_DOWNSAMPLED_TO_WORLD1_90X180_AND_INTERPOLATED_ONLY_BETWEEN_PROVIDER_SNAPSHOTS",
+  "evidence_basis": {
+    "ANIMAL_DOMESTICABILITY_REVIEW_2024": {
+      "pmcid": "PMC11350691",
+      "source": "Steklis et al. 2024 Why Were Zebras Not Domesticated?",
+      "use": "animal domesticability is multivariate; response to humans/capture stress, social system and captive breeding can facilitate or block domestication"
+    },
+    "ANIMAL_DOMESTICATION_TIMESCALE": {
+      "pmcid": "PMC8214435",
+      "source": "Larson/Frantz-related review 2021 Animal domestication: from distant past to current development and issues",
+      "use": "animal domestication is a multi-millennial process; major livestock domestications cluster around 10.5–10 ka while dog domestication is older"
+    },
+    "DOMESTICATION_PROCESS_REVIEW": {
+      "pmcid": "PMC6151037",
+      "source": "Kantar et al. 2018 Genomic approaches for studying crop evolution",
+      "use": "wild-managed gene flow and evolutionary divergence are retained as separate processes"
+    },
+    "DOMESTICATION_REPRODUCTIVE_REGIME": {
+      "pmcid": "PMC10031412",
+      "source": "Lord et al. 2023 Shared reproductive disruption, not neural crest or tameness, explains the domestication syndrome",
+      "use": "sustained reproductive control is treated as a causal transition rather than a cosmetic domestication-syndrome label"
+    },
+    "FUNCTIONAL_PRIOR_AUTHORITY": {
+      "source": "R3.23 SEALED comparative functional ensemble",
+      "use": "sociality, life history, dietary flexibility and ecological generalism inform partner-screening priors with explicit latent uncertainty"
+    },
+    "H0_SPECIES_AUTHORITY": {
+      "source": "R3.21 SEALED present lineage/component registry",
+      "use": "all ecological partner candidates are drawn from the 134 present H0 species; no new biological species are invented"
+    },
+    "HOLOCENE_DELTA_RESOURCE_CONTEXT": {
+      "doi": "10.1038/s41893-024-01426-3",
+      "source": "Nature Sustainability 2024 Delta sustainability from the Holocene to the Anthropocene",
+      "use": "postglacial sea-level stabilization and productive lowland/delta landscapes can alter resource accessibility and settlement opportunity"
+    },
+    "PALEOCLIMATE_PROVIDER": {
+      "source": "SEALED ARCANA v0.6.1 recent paleoclimate provider",
+      "use": "100-year global history and 21/14/12.9/12/0 ka spatial temperature, precipitation, NPP and land-mask snapshots are consumed directly"
+    },
+    "PROTRACTED_DOMESTICATION": {
+      "pmcid": "PMC5665816",
+      "source": "Fuller et al. 2017 Geographic mosaics and changing rates of cereal domestication",
+      "use": "domestication is modeled as a prolonged trajectory rather than an instantaneous threshold"
+    }
+  },
+  "paleoclimate_provider": {
+    "recent_history_sha256": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+    "spatial_snapshots_sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd"
+  },
+  "parent": "PASS_R332_SUBSISTENCE_INTENSIFICATION_REGIONAL_CULTURAL_LINEAGES_MANAGED_RESOURCE_TRANSITIONS_AND_HOLOCENE_READINESS_SEALED",
+  "partner_semantics": "24_STRATIFIED_ANIMAL_ECOLOGICAL_PARTNER_CANDIDATES_DRAWN_ONLY_FROM_134_H0_PRESENT_SPECIES",
+  "plant_resource_semantics": "NPP_AND_PRECIPITATION_RESOURCE_FIELD_ONLY_NOT_EXPLICIT_PLANT_SPECIES",
+  "plant_species_registry_available": false,
+  "stage": "v0.6D1-R3.33",
+  "status": "R333_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY",
+  "time_window_ka": [
+    20.0,
+    0.0
+  ],
+  "unique_human_identity_materialized": false
+}

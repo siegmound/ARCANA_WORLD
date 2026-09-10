@@ -1,0 +1,128 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "PASS_R411_RETAINED_CDMETAPOP_RUNTIME_SUMMARY_REEXTRACTION_PLAN_PREPARED",
+      "name": "r411_prepared",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "exact_five_symmetric_jobs",
+      "pass": true
+    },
+    {
+      "detail": 5,
+      "name": "all_five_corrected_job_audits_present",
+      "pass": true
+    },
+    {
+      "detail": {
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP": "PASS",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP": "PASS",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP": "PASS",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP": "PASS",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP": "PASS"
+      },
+      "name": "all_five_corrected_job_audits_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_five_corrected_seed_ledgers_match",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_five_corrected_population_metrics_present",
+      "pass": true
+    },
+    {
+      "detail": {
+        "cells": 75,
+        "rows": 136
+      },
+      "name": "parent_r44_matrix_present",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "only_five_cdmetapop_rows_replaced",
+      "pass": true
+    },
+    {
+      "detail": 75,
+      "name": "corrected_matrix_exact_75_cells",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CALIBRATION_OFFSET": 4,
+        "CONCORDANT": 1,
+        "INSUFFICIENT_EVIDENCE": 67,
+        "SEMANTICALLY_NONCOMPARABLE": 2,
+        "STRUCTURAL_DISAGREEMENT": 1
+      },
+      "name": "five_class_accounting_complete",
+      "pass": true
+    },
+    {
+      "detail": "STRUCTURAL_DISAGREEMENT",
+      "name": "j09_population_persistence_readjudicated",
+      "pass": true
+    },
+    {
+      "detail": 20,
+      "name": "corrected_matched_control_exact_20_pairs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "corrected_matched_control_initials_match",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_secondary_only_promotion",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_majority_vote_anywhere",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_rerun_not_performed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 19,
+  "checks_total": 19,
+  "class_counts": {
+    "CALIBRATION_OFFSET": 4,
+    "CONCORDANT": 1,
+    "INSUFFICIENT_EVIDENCE": 67,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 1
+  },
+  "next_action": "BUILD_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS",
+  "stage": "v0.6D1-R4.11",
+  "status": "PASS_R411_CDMETAPOP_POPULATION_METRIC_REEXTRACTION_AND_SYMMETRIC_READJUDICATION_COMPLETE"
+}

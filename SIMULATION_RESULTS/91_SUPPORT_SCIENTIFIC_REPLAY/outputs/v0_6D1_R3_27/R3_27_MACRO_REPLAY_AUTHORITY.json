@@ -1,0 +1,88 @@
+{
+  "deep_biological_coupling": false,
+  "ensemble": {
+    "forcing_regimes": [
+      "MILD_VARIABILITY",
+      "BASELINE_VARIABILITY",
+      "HIGH_VARIABILITY"
+    ],
+    "members": 96,
+    "members_per_regime": 32
+  },
+  "evidence_basis": {
+    "BOTTLENECK_UNCERTAINTY_2025": {
+      "pmcid": [
+        "PMC11708913",
+        "PMC11848514",
+        "PMC11844452"
+      ],
+      "source": "Cousins/Durvasula and independent ARG analyses 2025",
+      "use": "forces model averaging across mild/moderate/severe bottleneck histories because severe FitCoal bottleneck is contested"
+    },
+    "DEEP_ANCESTRAL_STRUCTURE_2025": {
+      "pmcid": "PMC11985351",
+      "source": "structured coalescent model, 2025",
+      "use": "deep ancestral structure and admixture as admissible macro-history"
+    },
+    "EARLY_PLEISTOCENE_BOTTLENECK_2024": {
+      "pmcid": "PMC10990135",
+      "source": "Kent et al. 2024 PNAS",
+      "use": "one admissible severe Early Pleistocene bottleneck scenario, not a fixed event"
+    },
+    "GENERATION_TIME_RANGE": {
+      "pmcid": [
+        "PMC3465451",
+        "PMC9821931"
+      ],
+      "source": "Langergraber et al. 2012 PNAS; Moorjani et al. 2023 Science Advances",
+      "use": "generation-time sensitivity context only; no Homo-specific generation time imposed on candidate biology"
+    },
+    "PLEISTOCENE_CLIMATE_HABITAT_2022": {
+      "pmcid": "PMC9021022",
+      "source": "Timmermann et al. 2022 Nature",
+      "use": "climate variability and habitat shifts as macro-replay forcing architecture"
+    },
+    "PLEISTOCENE_LOW_NE_2009": {
+      "pmcid": "PMC2629215",
+      "source": "Premo & Hublin 2009 PNAS",
+      "use": "order-of-magnitude reference for long-term low hominin effective population size"
+    },
+    "STRUCTURED_STEM_2023": {
+      "doi": "10.1038/s41586-023-06055-y",
+      "source": "Ragsdale et al. 2023 Nature",
+      "use": "weakly structured stems with long-lived gene flow as admissible demographic topology"
+    }
+  },
+  "forcing_semantics": "COMMON_PER_REPLICATE_ACROSS_ALL_CANDIDATES",
+  "fork_semantics": "RECENT_DERIVED_HOMININ_LIKE_SUBLINEAGE_FORK_CONDITIONED_ON_SEALED_H0_LINEAGE_BACKGROUND_DOES_NOT_OVERWRITE_H0",
+  "h3_semantics": "UNIVERSAL_REFERENCE_LAW_NO_LINEAGE_RESCALE_NO_DIRECT_CB_SELECTION",
+  "human_similarity_target": false,
+  "parent": "PASS_R326_H3_QUANTITATIVE_GENETICS_BRIDGE_NEUTRAL_REFERENCE_RARE_TAIL_AND_CANDIDATE_COMPATIBILITY_SEALED",
+  "qualification": {
+    "adaptive_integration_median_min": 0.52,
+    "bottleneck_ne_q10_min": 1200.0,
+    "final_deme_median_min": 3.0,
+    "final_ne_median_min": 8000.0,
+    "sensitivity_qualification_frequency_min": 0.7,
+    "structured_stem_frequency_min": 0.65,
+    "survival_frequency_min": 0.8
+  },
+  "stage": "v0.6D1-R3.27",
+  "state_variables": [
+    "effective_population",
+    "deme_count",
+    "ecological_breadth",
+    "cumulative_buffering",
+    "dispersal_capacity",
+    "developmental_investment",
+    "genetic_diversity_proxy",
+    "adaptive_integration"
+  ],
+  "status": "HOMININ_MACRO_REPLAY_AUTHORITY",
+  "unique_human_body_plan_target": false,
+  "window": {
+    "end_age_ma": 0.2,
+    "macrostep_kyr": 20.0,
+    "start_age_ma": 3.0
+  }
+}

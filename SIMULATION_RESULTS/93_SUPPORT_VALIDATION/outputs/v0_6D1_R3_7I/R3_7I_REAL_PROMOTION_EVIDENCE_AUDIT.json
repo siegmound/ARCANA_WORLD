@@ -1,0 +1,52 @@
+{
+  "schema": "ARCANA_R37I_REAL_PROMOTION_EVIDENCE_AUDIT_V1",
+  "stage": "v0.6D1-R3.7I",
+  "status": "PASS_REAL_PROMOTION_EVIDENCE_AND_CANONICAL_SMOKE",
+  "r37h_evidence": {
+    "sealed_source_zip_sha256": "0a736ea6b1b35ecd92416c968b34a5830167890ad7bbae6efffc06778fcf2287",
+    "uploaded_repacked_zip_sha256": "3d223c68ae86a7e351f07a9b4e878c4509a836edb8188950e605d0be5c3dd2c3",
+    "container_byte_identity": false,
+    "interpretation": "UPLOADED_ZIP_CONTAINER_DIFFERS_FROM_SEALED_SOURCE; SCIENTIFIC JSON CONTENT IDENTITY VERIFIED AGAINST SEAL",
+    "sealed_json_sha256": {
+      "summary": "2890242b224294b457c79248191d9f96d32a01ee40650967ce2243068cd276aa",
+      "K_LOW": "81bd6db0a33e6c5b38f8d5c3a0aecc771adbec7ab5bc35a7c742033a89f1619d",
+      "K_CENTER": "73cdba842aa6156c6162b026c047a5eb49d0d052ee0b541c7f25b23372b4fe2b",
+      "K_HIGH": "6ad42d6d5fad30788c725dd8ed71e9ecfd0d20188e516942194cd0a6bfe62eaa"
+    },
+    "review_status": "PASS_R37H_FULL_EVIDENCE_REVIEW",
+    "review_checks": "38/38"
+  },
+  "r37i_outputs": {
+    "uploaded_post_seal_outputs_zip_sha256": "f9bc2e22f1deb06f9b4035708489c5fd13661b0397402f5d01dc37b1e4fcc1ea",
+    "review_sha256": "b3cd883d8350c1af5fd08ef76d917547d756d55692f01168317142d02879e762",
+    "seal_sha256": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d"
+  },
+  "canonical_smoke": {
+    "sha256": "5f98837622f7f72d5788669342012d9d99991fdbf0d2c4ea72f06c7d2bb9a823",
+    "biology_steps": 8,
+    "canonical_runtime_binding": true,
+    "peak_q": 0.02196436286351262,
+    "clipping_contacts": 0,
+    "promotion_seal_sha256": "9fd95e1849b7df3d9a5021b457cda723daca760fc782eb0ea2a6199ba70e4c9d"
+  },
+  "sealed_formal_audit": {
+    "status": "PASS_R37I_CANONICAL_PRODUCTION_SEAL",
+    "checks": "32/32"
+  },
+  "authority": {
+    "canonical_runtime_binding_authorized": true,
+    "segregation_aware_gene_flow_variance_authorized": true,
+    "segregation_aware_coalescence_pooling_authorized": true,
+    "nominal_reduced_order_k_reference_authorized": true,
+    "scalar_k_physical_constant_authorized": false,
+    "k_low_high_release_sentinels_retained": true,
+    "mu_b_or_ceiling_change_authorized": false,
+    "migration_selection_ri_speciation_paleogeography_authority_changed": false
+  },
+  "supersession": {
+    "legacy_whole_trait_gene_flow_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+    "legacy_whole_trait_coalescence_variance_production_authority": "RETIRED_FOR_WORLD1_RUNTIME",
+    "r3_7h_closed_loop_binding": "PROMOTED_AS_R3_7I_CANONICAL_RUNTIME_IMPLEMENTATION"
+  },
+  "sealed_regression": "95/95 PASS clean (51+24+20)"
+}

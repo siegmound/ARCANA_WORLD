@@ -1,0 +1,104 @@
+{
+  "authorization_condition": "ALL_R41_MICROBENCHMARKS_PASS_AND_SEMANTIC_AUTHORITY_MATRIX_SEALED",
+  "canonical_state_changed": false,
+  "next_stage": "v0.6D1-R4.2",
+  "scientific_agreement_claimed": false,
+  "stage": "v0.6D1-R4.1",
+  "status": "AUTHORIZED_FOR_R42",
+  "window_count": 7,
+  "windows": [
+    {
+      "age_end_ma": 200.0,
+      "age_start_ma": 210.0,
+      "authorized_for_r42_execution": true,
+      "earliest_replay_boundary": "H0_210MA",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "id": "H0_DEEP_TIME_BACKGROUND",
+      "selection_based_on_r41_results": false
+    },
+    {
+      "age_end_ma": 66.0,
+      "age_start_ma": 70.0,
+      "authorized_for_r42_execution": true,
+      "earliest_replay_boundary": "R3.9_PRE_CHA1",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "id": "H0_PRE_CHA1",
+      "selection_based_on_r41_results": false
+    },
+    {
+      "age_end_ma": 55.0,
+      "age_start_ma": 65.5,
+      "authorized_for_r42_execution": true,
+      "earliest_replay_boundary": "R3.11_POST_CHA1",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "CDMetaPOP",
+        "NEMO"
+      ],
+      "id": "H0_POST_CHA1_RECOVERY",
+      "selection_based_on_r41_results": false
+    },
+    {
+      "age_end_ma": 0.2,
+      "age_start_ma": 30.0,
+      "authorized_for_r42_execution": true,
+      "earliest_replay_boundary": "R3.14_LATE_CENOZOIC",
+      "engines": [
+        "Madingley",
+        "RangeShifter",
+        "NEMO"
+      ],
+      "id": "H0_LATE_CENOZOIC",
+      "selection_based_on_r41_results": false
+    },
+    {
+      "age_end_ma": 0.2,
+      "age_start_ma": 3.0,
+      "authorized_for_r42_execution": true,
+      "earliest_replay_boundary": "R3.27",
+      "engines": [
+        "Geonomics",
+        "CDMetaPOP",
+        "SLiM",
+        "NEMO"
+      ],
+      "id": "SAPIENT_3MA_TO_200KA",
+      "selection_based_on_r41_results": false
+    },
+    {
+      "age_end_ka": 0.0,
+      "age_start_ka": 200.0,
+      "authorized_for_r42_execution": true,
+      "earliest_replay_boundary": "R3.28",
+      "engines": [
+        "Geonomics",
+        "SLiM",
+        "CDMetaPOP"
+      ],
+      "id": "SAPIENT_200KA_TO_0",
+      "selection_based_on_r41_results": false
+    },
+    {
+      "age_end_ka": 0.0,
+      "age_start_ka": 20.0,
+      "authorized_for_r42_execution": true,
+      "earliest_replay_boundary": "R3.34",
+      "engines": [
+        "Geonomics",
+        "SLiM",
+        "RangeShifter"
+      ],
+      "id": "PRODUCER_20KA_TO_0",
+      "selection_based_on_r41_results": false
+    }
+  ]
+}

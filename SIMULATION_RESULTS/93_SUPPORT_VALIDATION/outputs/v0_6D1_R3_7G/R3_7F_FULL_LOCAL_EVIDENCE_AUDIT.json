@@ -1,0 +1,133 @@
+{
+  "stage": "v0.6D1-R3.7F",
+  "source_zip_sha256": "9528d7c6c8eb25ae4ad0df7b819e9535cf449cfb0a0a09304dce08e5ca2752d3",
+  "source_zip_name": "v0_6D1_R3_7F_FULL_LOCAL_RESULTS.zip",
+  "verdict": "PASS_STRESS_WINDOW_CROSSING__LEGACY_CLIPPING_REPRODUCED__SEGREGATION_AWARE_SHADOW_HEADROOM_CLEAR__K_ENVELOPE_ROBUST__PRODUCTION_BINDING_READINESS_REVIEW_REQUIRED",
+  "biology_steps": 176,
+  "canonical_parity": true,
+  "event_counts": {
+    "paleogeographic_support_loss_remap": 160,
+    "deme_coalescence": 7,
+    "deme_fission": 172,
+    "speciation": 1
+  },
+  "canonical_final": {
+    "population": 1837.6270202004052,
+    "species_count": 121,
+    "component_count": 298
+  },
+  "legacy": {
+    "peak_q": 0.08,
+    "peak_after_gene_flow_q": 0.09193084982566972,
+    "peak_unclipped_homeostasis_q": 0.0909976545317815,
+    "steps_with_clipping": 27,
+    "total_clipped_contacts": 45,
+    "first_clipping_age_ma": 191.25,
+    "last_clipping_age_ma": 188.0
+  },
+  "shadow": {
+    "peak_q": {
+      "K_LOW": 0.04045322395945772,
+      "K_CENTER": 0.04045322395945772,
+      "K_HIGH": 0.04045322395945772
+    },
+    "ceiling_contacts": {
+      "K_LOW": 0,
+      "K_CENTER": 0,
+      "K_HIGH": 0
+    },
+    "headroom_gain_vs_legacy_peak_q": 0.039546776040542284
+  },
+  "k_sensitivity": {
+    "max_normalized_va": {
+      "maximum_absolute_envelope_spread": 0.0,
+      "age_ma_at_maximum_absolute_spread": null,
+      "final_by_variant": {
+        "K_LOW": 0.04045322395945772,
+        "K_CENTER": 0.04045322395945772,
+        "K_HIGH": 0.04045322395945772
+      },
+      "final_relative_span_vs_abs_center": 0.0
+    },
+    "median_normalized_va": {
+      "maximum_absolute_envelope_spread": 1.7553468788719662e-06,
+      "age_ma_at_maximum_absolute_spread": 189.5,
+      "final_by_variant": {
+        "K_LOW": 0.03630454326774254,
+        "K_CENTER": 0.03630453293439871,
+        "K_HIGH": 0.03630450489457385
+      },
+      "final_relative_span_vs_abs_center": 1.0569800955860624e-06
+    },
+    "p99_normalized_va": {
+      "maximum_absolute_envelope_spread": 0.0,
+      "age_ma_at_maximum_absolute_spread": null,
+      "final_by_variant": {
+        "K_LOW": 0.04045188766192099,
+        "K_CENTER": 0.04045188766192099,
+        "K_HIGH": 0.04045188766192099
+      },
+      "final_relative_span_vs_abs_center": 0.0
+    },
+    "same_species_S_max": {
+      "maximum_absolute_envelope_spread": 0.11009558466855185,
+      "age_ma_at_maximum_absolute_spread": 188.5,
+      "final_by_variant": {
+        "K_LOW": 0.9758661420367121,
+        "K_CENTER": 0.9576169203927659,
+        "K_HIGH": 0.9080971172336307
+      },
+      "final_relative_span_vs_abs_center": 0.07076840786740267
+    },
+    "same_species_S_median": {
+      "maximum_absolute_envelope_spread": 5.694373918139876e-06,
+      "age_ma_at_maximum_absolute_spread": 204.625,
+      "final_by_variant": {
+        "K_LOW": 9.233752289841689e-05,
+        "K_CENTER": 9.189713135414992e-05,
+        "K_HIGH": 9.159126139262496e-05
+      },
+      "final_relative_span_vs_abs_center": 0.008120618073658995
+    },
+    "ancestry_abs_total": {
+      "maximum_absolute_envelope_spread": 1.195519346826264e-07,
+      "age_ma_at_maximum_absolute_spread": 190.75,
+      "final_by_variant": {
+        "K_LOW": 6.831599087750827e-05,
+        "K_CENTER": 6.833778396353289e-05,
+        "K_HIGH": 6.839692015768975e-05
+      },
+      "final_relative_span_vs_abs_center": 0.0011842537976452941
+    },
+    "adaptive_coordinate_abs_max": {
+      "maximum_absolute_envelope_spread": 0.03280499349679433,
+      "age_ma_at_maximum_absolute_spread": 188.0,
+      "final_by_variant": {
+        "K_LOW": 0.7772641751886413,
+        "K_CENTER": 0.7685680350808575,
+        "K_HIGH": 0.744459181691847
+      },
+      "final_relative_span_vs_abs_center": 0.04268326550081291
+    }
+  },
+  "stress_gate": {
+    "expected_biology_steps": 176,
+    "valid_biology_steps": true,
+    "legacy_clipping_reproduced": true,
+    "shadow_all_variants_clear_of_ceiling": true,
+    "shadow_ceiling_contact_state_by_variant": {
+      "K_LOW": false,
+      "K_CENTER": false,
+      "K_HIGH": false
+    },
+    "no_qualitative_k_headroom_divergence": true,
+    "governed_stress_pass": true
+  },
+  "production_binding_readiness": {
+    "stress_evidence_sufficient_for_210_to_150_validation": true,
+    "scalar_K_eff_authorized": false,
+    "nominal_center_branch_may_be_used_for_validation_only": true,
+    "low_high_must_remain_uncertainty_sentinels": true,
+    "production_runtime_replacement_authorized": false
+  }
+}

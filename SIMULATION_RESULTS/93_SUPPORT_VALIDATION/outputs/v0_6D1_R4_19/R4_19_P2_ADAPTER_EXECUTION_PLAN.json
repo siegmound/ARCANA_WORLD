@@ -1,0 +1,143 @@
+{
+  "cell_count": 6,
+  "engine_families": [
+    "CDMetaPOP",
+    "Geonomics",
+    "NEMO",
+    "SLiM"
+  ],
+  "execution_authorized": false,
+  "r42_registry_mutation_authorized": false,
+  "records": [
+    {
+      "adapter_implementation_authorized_in_r419": false,
+      "closure_action": "GEONOMICS_ARCANA_LANDSCAPE_ADAPTER_REQUIRED",
+      "domain": "connectivity",
+      "engine": null,
+      "engine_reexecution_authorized_in_r419": false,
+      "engine_resolution_basis": "CLOSURE_ACTION_ENGINE_BINDING",
+      "enhancement_mechanism": "INPUT_SEMANTIC_ADAPTER_ENHANCEMENT",
+      "frozen_engine_job_ids": [
+        "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+        "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+        "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS"
+      ],
+      "r42_registry_mutation_authorized": false,
+      "reason": "PRIMARY_ENGINE_SEMANTIC_NONCOMPARABILITY",
+      "resolved_engine": "Geonomics",
+      "result_selected_scope": false,
+      "source_stage": "R4.14",
+      "symmetric_reexecution_scope": "ALL_FROZEN_R4_2_JOBS_FOR_SHARED_ENGINE_ADAPTER",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adapter_implementation_authorized_in_r419": false,
+      "closure_action": "GEONOMICS_ARCANA_LANDSCAPE_ADAPTER_REQUIRED",
+      "domain": "connectivity",
+      "engine": null,
+      "engine_reexecution_authorized_in_r419": false,
+      "engine_resolution_basis": "CLOSURE_ACTION_ENGINE_BINDING",
+      "enhancement_mechanism": "INPUT_SEMANTIC_ADAPTER_ENHANCEMENT",
+      "frozen_engine_job_ids": [
+        "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+        "R42_J18_SAPIENT_200KA_TO_0_GEONOMICS",
+        "R42_J21_PRODUCER_20KA_TO_0_GEONOMICS"
+      ],
+      "r42_registry_mutation_authorized": false,
+      "reason": "PRIMARY_ENGINE_SEMANTIC_NONCOMPARABILITY",
+      "resolved_engine": "Geonomics",
+      "result_selected_scope": false,
+      "source_stage": "R4.14",
+      "symmetric_reexecution_scope": "ALL_FROZEN_R4_2_JOBS_FOR_SHARED_ENGINE_ADAPTER",
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "adapter_implementation_authorized_in_r419": false,
+      "closure_action": "EXISTING_FROZEN_JOB_ADAPTER_ENHANCEMENT_AND_SYMMETRIC_REEXECUTION",
+      "domain": "managed_wild_isolation",
+      "engine": "SLiM",
+      "engine_reexecution_authorized_in_r419": false,
+      "engine_resolution_basis": "EXPLICIT_PARENT_BACKLOG_ENGINE",
+      "enhancement_mechanism": "OUTPUT_METRIC_EXTRACTION_OR_RUNTIME_BINDING_ENHANCEMENT",
+      "frozen_engine_job_ids": [
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM"
+      ],
+      "r42_registry_mutation_authorized": false,
+      "reason": "R414_PREDECLARED_RETAINED_CANDIDATE_COULD_NOT_BE_CLEANLY_RECOVERED_BY_FROZEN_DOMAIN_EXTRACTOR",
+      "resolved_engine": "SLiM",
+      "result_selected_scope": false,
+      "source_stage": "R4.15-R1",
+      "symmetric_reexecution_scope": "ALL_FROZEN_R4_2_JOBS_FOR_SHARED_ENGINE_ADAPTER",
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "adapter_implementation_authorized_in_r419": false,
+      "closure_action": "EXISTING_FROZEN_JOB_ADAPTER_ENHANCEMENT_AND_SYMMETRIC_REEXECUTION",
+      "domain": "producer_divergence",
+      "engine": "SLiM",
+      "engine_reexecution_authorized_in_r419": false,
+      "engine_resolution_basis": "EXPLICIT_PARENT_BACKLOG_ENGINE",
+      "enhancement_mechanism": "OUTPUT_METRIC_EXTRACTION_OR_RUNTIME_BINDING_ENHANCEMENT",
+      "frozen_engine_job_ids": [
+        "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+        "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+        "R42_J22_PRODUCER_20KA_TO_0_SLIM"
+      ],
+      "r42_registry_mutation_authorized": false,
+      "reason": "R414_PREDECLARED_RETAINED_CANDIDATE_COULD_NOT_BE_CLEANLY_RECOVERED_BY_FROZEN_DOMAIN_EXTRACTOR",
+      "resolved_engine": "SLiM",
+      "result_selected_scope": false,
+      "source_stage": "R4.15-R1",
+      "symmetric_reexecution_scope": "ALL_FROZEN_R4_2_JOBS_FOR_SHARED_ENGINE_ADAPTER",
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "adapter_implementation_authorized_in_r419": false,
+      "closure_action": "CLOSED_NONADJUDICATIVE_REQUIRED_TRANSFORM_NOT_FROZEN",
+      "domain": "additive_variance",
+      "engine": "NEMO",
+      "engine_reexecution_authorized_in_r419": false,
+      "engine_resolution_basis": "EXPLICIT_PARENT_BACKLOG_ENGINE",
+      "enhancement_mechanism": "DOMAIN_METRIC_SEMANTIC_ADAPTER_OR_MATCHED_PROTOCOL_ENHANCEMENT",
+      "frozen_engine_job_ids": [
+        "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+        "R42_J13_H0_LATE_CENOZOIC_NEMO",
+        "R42_J17_SAPIENT_3MA_TO_200KA_NEMO"
+      ],
+      "r42_registry_mutation_authorized": false,
+      "reason": "qfreq-derived heterozygosity/frequency structure is not additive genetic variance without trait effect sizes, ploidy/trait binding and aggregation semantics.",
+      "resolved_engine": "NEMO",
+      "result_selected_scope": false,
+      "source_stage": "R4.17",
+      "symmetric_reexecution_scope": "ALL_FROZEN_R4_2_JOBS_FOR_SHARED_ENGINE_ADAPTER",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "adapter_implementation_authorized_in_r419": false,
+      "closure_action": "CLOSED_NONADJUDICATIVE_DOMAIN_IDENTITY_NOT_ESTABLISHED",
+      "domain": "admixture",
+      "engine": "CDMetaPOP",
+      "engine_reexecution_authorized_in_r419": false,
+      "engine_resolution_basis": "EXPLICIT_PARENT_BACKLOG_ENGINE",
+      "enhancement_mechanism": "DOMAIN_METRIC_SEMANTIC_ADAPTER_OR_MATCHED_PROTOCOL_ENHANCEMENT",
+      "frozen_engine_job_ids": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "r42_registry_mutation_authorized": false,
+      "reason": "Recovered CDMetaPOP summary population derivatives do not identify this domain.",
+      "resolved_engine": "CDMetaPOP",
+      "result_selected_scope": false,
+      "source_stage": "R4.17",
+      "symmetric_reexecution_scope": "ALL_FROZEN_R4_2_JOBS_FOR_SHARED_ENGINE_ADAPTER",
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "stage": "v0.6D1-R4.19",
+  "status": "R419_P2_EXECUTION_PLAN_FROZEN"
+}

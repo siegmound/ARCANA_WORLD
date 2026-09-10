@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "density_is_species_density": true,
+    "kdtree_wraps_scipy_ckdtree": true,
+    "public_model_get_coords_exists": true,
+    "species_cells_floor_coords": true,
+    "species_get_coords_uses_stored_continuous_coords": true,
+    "species_kdtree_built_from_coords": true,
+    "version_1_4_9": true
+  },
+  "checks_passed": 7,
+  "checks_total": 7,
+  "pass": true,
+  "source_semantics": {
+    "coordinate_readback": "CONTINUOUS_XY_COORDINATES_FROM_SPECIES_INDIVIDUAL_STORAGE",
+    "density_semantics": "BIOLOGICAL_SPECIES_DENSITY_NOT_LITERAL_FOR_ARCANA_CARRIERS",
+    "native_cell_assignment": "FLOOR_CONTINUOUS_XY_TO_INTEGER_CELLS",
+    "native_neighbor_index": "GEONOMICS_KDTREE_WRAPPER_AROUND_SCIPY_CKDTREE"
+  },
+  "stage": "v0.6D1-R4.43",
+  "status": "R443_GEONOMICS_149_READOUT_SOURCE_SURFACE_AUDITED"
+}

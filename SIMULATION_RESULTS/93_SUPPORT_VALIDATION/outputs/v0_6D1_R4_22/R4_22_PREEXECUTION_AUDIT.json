@@ -1,0 +1,155 @@
+{
+  "authorized_engine_families": [
+    "CDMetaPOP",
+    "NEMO",
+    "SLiM"
+  ],
+  "authorized_job_count": 11,
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_21_SEAL\\R4_21_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r421_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R421_P2_ADAPTER_IMPLEMENTATION_STATIC_VALIDATION_AND_SYMMETRIC_REEXECUTION_AUTHORIZATION_SEALED",
+      "name": "parent_r421_sealed",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R422_AUTHORIZED_P2_SYMMETRIC_REEXECUTION_AND_DEFERRED_IMPLEMENTATION_COMPLETION",
+      "name": "parent_next_action_matches_r422",
+      "pass": true
+    },
+    {
+      "detail": "R421_SYMMETRIC_REEXECUTION_AUTHORIZATION_FROZEN",
+      "name": "authorization_registry_frozen",
+      "pass": true
+    },
+    {
+      "detail": 11,
+      "name": "authorized_job_count_exact_11",
+      "pass": true
+    },
+    {
+      "detail": [
+        "CDMetaPOP",
+        "NEMO",
+        "SLiM"
+      ],
+      "name": "authorized_engine_families_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        "Geonomics"
+      ],
+      "name": "geonomics_deferred",
+      "pass": true
+    },
+    {
+      "detail": 23,
+      "name": "r42_frozen_registry_exact_23",
+      "pass": true
+    },
+    {
+      "detail": "FROZEN_R421_AUTHORIZATION_ONLY_EXACT_11_JOBS",
+      "name": "policy_frozen",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "target_repair_execution_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "p3_execution_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": 11,
+      "name": "exact_11_authorized_jobs_materialized",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "all_authorized_jobs_are_r42_subset",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_job_contracts_present_and_job_bound",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_seed_ledgers_nonempty",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_executed_adapter_hashes_match_r421_authorization",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_cdmetapop_jobs_have_valid_r47_profiles",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_result_selected_job_expansion",
+      "pass": true
+    },
+    {
+      "detail": 3,
+      "name": "geonomics_deferred_audit_exact_three_jobs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "geonomics_execution_still_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "geonomics_scalar_descriptor_synthesis_forbidden",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 26,
+  "checks_total": 26,
+  "engine_execution_performed": false,
+  "geonomics_family_ready_for_execution": false,
+  "next_action": "EXECUTE_R422_AUTHORIZED_11_JOBS",
+  "stage": "v0.6D1-R4.22",
+  "status": "PASS_R422_PREEXECUTION_AUTHORIZATION_MATERIALIZED"
+}

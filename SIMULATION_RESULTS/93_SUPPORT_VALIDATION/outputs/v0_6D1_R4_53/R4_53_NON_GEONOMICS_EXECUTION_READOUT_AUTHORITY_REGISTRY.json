@@ -1,0 +1,1158 @@
+{
+  "automatic_scientific_pass_fail_count": 0,
+  "canonical_rewrite_authorized": false,
+  "dry_run_validated": false,
+  "engine_authority": {
+    "CDMetaPOP": {
+      "authorized_artifacts": [
+        "summary_popAllTime.csv",
+        "summary_classAllTime.csv"
+      ],
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_PYTHON38_CDMETAPOP_3_08_PINNED_COMMIT",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED",
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "integrity_fields": [
+        "runtime_version",
+        "source_commit",
+        "frozen_seed",
+        "Year",
+        "summary_schema",
+        "output_artifact_hashes"
+      ],
+      "metrics": [
+        {
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "semantics": "native patch-vector demographic state; no literal ARCANA population-unit equality",
+          "source_fields": [
+            "Year",
+            "N_Initial"
+          ]
+        },
+        {
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native genetic diversity trajectory where populated by the job configuration",
+          "source_fields": [
+            "Year",
+            "Alleles",
+            "He",
+            "Ho"
+          ]
+        }
+      ]
+    },
+    "Madingley": {
+      "authorized_artifacts": [
+        "MADINGLEY_NATIVE_GRID_AND_COHORT_STOCK_OUTPUTS"
+      ],
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_MADINGLEYR_1_0_6_CPP_2_02",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "metrics": [
+        {
+          "metric_id": "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional cohort count trajectory; not ARCANA species identity"
+        },
+        {
+          "metric_id": "MADINGLEY_STOCK_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional autotroph stock count trajectory; not ARCANA species identity"
+        }
+      ]
+    },
+    "NEMO": {
+      "authorized_artifacts": [
+        "NEMO_NATIVE_QFREQ_OUTPUT"
+      ],
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_NEMO_2_4_2",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "patch_axis",
+        "locus_axis",
+        "output_artifact_hashes"
+      ],
+      "metrics": [
+        {
+          "metric_id": "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "raw realized qfreq/allele-frequency trajectory"
+        },
+        {
+          "metric_id": "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "distributional summary derived only from the raw authorized qfreq trajectory"
+        }
+      ]
+    },
+    "RangeShifter": {
+      "authorized_artifacts": [
+        "RANGESHIFTER_NATIVE_RANGE_OUTPUTS"
+      ],
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_RANGESHIFTR_3_0_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native abundance trajectory; no literal ARCANA population-unit equality"
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native occupied-cell trajectory under explicit eligible-habitat denominator"
+        }
+      ]
+    },
+    "SLiM": {
+      "authorized_artifacts": [
+        "SLIM_TREE_SEQUENCE_RAW"
+      ],
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_SLIM_5_2_TSKIT_1_0_3_MSPRIME_1_4_2_PYSLIM_1_1_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "sequence_length",
+        "raw_tree_sequence_hash"
+      ],
+      "metrics": [
+        {
+          "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native tree-sequence structural state; raw tree sequence remains primary evidence",
+          "source_fields": [
+            "nodes",
+            "edges",
+            "individuals",
+            "mutations",
+            "sequence_length"
+          ]
+        },
+        {
+          "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "derived from the raw tree sequence under a frozen R4.54 extractor; no result-selected statistic"
+        }
+      ]
+    }
+  },
+  "engine_count": 5,
+  "engine_output_defines_arcana_target": false,
+  "forbidden_readouts_and_claims": [
+    "LITERAL_CROSS_ENGINE_POPULATION_N_EQUALITY",
+    "IMPLICIT_YEAR_GENERATION_EQUIVALENCE",
+    "RESULT_SELECTED_METRIC",
+    "RESULT_SELECTED_THRESHOLD",
+    "MAJORITY_VOTE",
+    "ENGINE_OUTPUT_DEFINES_ARCANA_TARGET",
+    "DIRECT_EXTERNAL_ENGINE_CANONICAL_WRITE",
+    "MADINGLEY_COHORT_AS_ARCANA_SPECIES_IDENTITY",
+    "CDMETAPOP_OUTPUT_FILE_COUNT_AS_SCIENTIFIC_BIOLOGICAL_EVIDENCE",
+    "R41_MICROBENCHMARK_VALUE_AS_HISTORICAL_SCIENTIFIC_EVIDENCE"
+  ],
+  "job_count": 20,
+  "jobs": [
+    {
+      "authorized_artifacts": [
+        "MADINGLEY_NATIVE_GRID_AND_COHORT_STOCK_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional cohort count trajectory; not ARCANA species identity"
+        },
+        {
+          "metric_id": "MADINGLEY_STOCK_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional autotroph stock count trajectory; not ARCANA species identity"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "Madingley",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_MADINGLEYR_1_0_6_CPP_2_02",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        1519467421,
+        1525893576,
+        1647150775,
+        1920638819
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "9d556718cd4756b132d4f0c2587a87afc096b6968edca1ca22b092fcdc0963f4",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "authorized_artifacts": [
+        "RANGESHIFTER_NATIVE_RANGE_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native abundance trajectory; no literal ARCANA population-unit equality"
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native occupied-cell trajectory under explicit eligible-habitat denominator"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "RangeShifter",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_RANGESHIFTR_3_0_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        292331116,
+        725095482,
+        893604105,
+        1934559854
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "4d1f1227ae26d9a2100ed5d2ef8fdd877483c1c41ca201108dd29743acec3767",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "authorized_artifacts": [
+        "summary_popAllTime.csv",
+        "summary_classAllTime.csv"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "semantics": "native patch-vector demographic state; no literal ARCANA population-unit equality",
+          "source_fields": [
+            "Year",
+            "N_Initial"
+          ]
+        },
+        {
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native genetic diversity trajectory where populated by the job configuration",
+          "source_fields": [
+            "Year",
+            "Alleles",
+            "He",
+            "Ho"
+          ]
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "CDMetaPOP",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_PYTHON38_CDMETAPOP_3_08_PINNED_COMMIT",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED",
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "frozen_seeds": [
+        126964583,
+        318998501,
+        1060527186,
+        1197234520
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "source_commit",
+        "frozen_seed",
+        "Year",
+        "summary_schema",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "fd440c3a6819bd92f8201fe76c2207fa26a407978e1f5c932b85a26f922c2d4d",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_DEEP_TIME_BACKGROUND"
+    },
+    {
+      "authorized_artifacts": [
+        "MADINGLEY_NATIVE_GRID_AND_COHORT_STOCK_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional cohort count trajectory; not ARCANA species identity"
+        },
+        {
+          "metric_id": "MADINGLEY_STOCK_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional autotroph stock count trajectory; not ARCANA species identity"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "Madingley",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_MADINGLEYR_1_0_6_CPP_2_02",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        1081350395,
+        1179722647,
+        1287608194,
+        1913936439
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J04_H0_PRE_CHA1_MADINGLEY",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "24d26468cdea404430957c980fd284cad49c2d09311009e450d2b683b4a6c81f",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "authorized_artifacts": [
+        "RANGESHIFTER_NATIVE_RANGE_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native abundance trajectory; no literal ARCANA population-unit equality"
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native occupied-cell trajectory under explicit eligible-habitat denominator"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "RangeShifter",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_RANGESHIFTR_3_0_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        50972012,
+        349785667,
+        544529936,
+        1956928900
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J05_H0_PRE_CHA1_RANGESHIFTER",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "6dd99d4bfdf7199e096ff90292a34ba0b6325e88ab1daeabe89fad7097ea7260",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "authorized_artifacts": [
+        "summary_popAllTime.csv",
+        "summary_classAllTime.csv"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "semantics": "native patch-vector demographic state; no literal ARCANA population-unit equality",
+          "source_fields": [
+            "Year",
+            "N_Initial"
+          ]
+        },
+        {
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native genetic diversity trajectory where populated by the job configuration",
+          "source_fields": [
+            "Year",
+            "Alleles",
+            "He",
+            "Ho"
+          ]
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "CDMetaPOP",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_PYTHON38_CDMETAPOP_3_08_PINNED_COMMIT",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED",
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "frozen_seeds": [
+        573266817,
+        1073281537,
+        1549947756,
+        1869692640
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "source_commit",
+        "frozen_seed",
+        "Year",
+        "summary_schema",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "16e36efb44c03a2ebbbc6b8a8c6ed3c96a24db245018e990e536b53d82c74f52",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_PRE_CHA1"
+    },
+    {
+      "authorized_artifacts": [
+        "MADINGLEY_NATIVE_GRID_AND_COHORT_STOCK_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional cohort count trajectory; not ARCANA species identity"
+        },
+        {
+          "metric_id": "MADINGLEY_STOCK_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional autotroph stock count trajectory; not ARCANA species identity"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "Madingley",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_MADINGLEYR_1_0_6_CPP_2_02",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        122008137,
+        153786027,
+        1225717256,
+        1320592225
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "d78462f777220a17858312e3a9f21ac22c838b5849b0415da1e3d96716f8cdf0",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "authorized_artifacts": [
+        "RANGESHIFTER_NATIVE_RANGE_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native abundance trajectory; no literal ARCANA population-unit equality"
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native occupied-cell trajectory under explicit eligible-habitat denominator"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "RangeShifter",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_RANGESHIFTR_3_0_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        68848419,
+        567654286,
+        1474248279,
+        1811851455
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "b3bcf107715756aa8053f87a7c4613a519233b1f396b44057cf2cea023f27976",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "authorized_artifacts": [
+        "summary_popAllTime.csv",
+        "summary_classAllTime.csv"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "semantics": "native patch-vector demographic state; no literal ARCANA population-unit equality",
+          "source_fields": [
+            "Year",
+            "N_Initial"
+          ]
+        },
+        {
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native genetic diversity trajectory where populated by the job configuration",
+          "source_fields": [
+            "Year",
+            "Alleles",
+            "He",
+            "Ho"
+          ]
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "CDMetaPOP",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_PYTHON38_CDMETAPOP_3_08_PINNED_COMMIT",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED",
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "frozen_seeds": [
+        55525513,
+        66696762,
+        72612355,
+        413622220
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "source_commit",
+        "frozen_seed",
+        "Year",
+        "summary_schema",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "549a6f733b74adc784e56b5a754c85d88bba5095e542e03ceeb4c14ced105001",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "authorized_artifacts": [
+        "NEMO_NATIVE_QFREQ_OUTPUT"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "raw realized qfreq/allele-frequency trajectory"
+        },
+        {
+          "metric_id": "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "distributional summary derived only from the raw authorized qfreq trajectory"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "NEMO",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_NEMO_2_4_2",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        125184549,
+        869622111,
+        974828641,
+        1155047829
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "patch_axis",
+        "locus_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "eb4d9dd94f465101cafd5df42ed42575d3a19e61d42b81053a27fc3be22873c2",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "authorized_artifacts": [
+        "MADINGLEY_NATIVE_GRID_AND_COHORT_STOCK_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional cohort count trajectory; not ARCANA species identity"
+        },
+        {
+          "metric_id": "MADINGLEY_STOCK_COUNT_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "semantics": "functional autotroph stock count trajectory; not ARCANA species identity"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "Madingley",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_MADINGLEYR_1_0_6_CPP_2_02",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        200120263,
+        388335602,
+        1115067710,
+        1159058904
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J11_H0_LATE_CENOZOIC_MADINGLEY",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "e27fbff01ef56d43b69bb840e7590af79f93dd239c2a55a8f5ea8b57392774dc",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "authorized_artifacts": [
+        "RANGESHIFTER_NATIVE_RANGE_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native abundance trajectory; no literal ARCANA population-unit equality"
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native occupied-cell trajectory under explicit eligible-habitat denominator"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "RangeShifter",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_RANGESHIFTR_3_0_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        704096182,
+        709439403,
+        893749483,
+        1549632387
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "2b019ebf7c9526b817e35cfddfb4fd740748edf334c5c66012fa0f42a0d9da10",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "authorized_artifacts": [
+        "NEMO_NATIVE_QFREQ_OUTPUT"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "raw realized qfreq/allele-frequency trajectory"
+        },
+        {
+          "metric_id": "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "distributional summary derived only from the raw authorized qfreq trajectory"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "NEMO",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_NEMO_2_4_2",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        689027931,
+        1465029780,
+        1614466852,
+        1899635522
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "patch_axis",
+        "locus_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J13_H0_LATE_CENOZOIC_NEMO",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "8dbfb9ef2e0b915512c8802a845bff227a6d9c9a28019ab922ffc845109e4a02",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "authorized_artifacts": [
+        "summary_popAllTime.csv",
+        "summary_classAllTime.csv"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "semantics": "native patch-vector demographic state; no literal ARCANA population-unit equality",
+          "source_fields": [
+            "Year",
+            "N_Initial"
+          ]
+        },
+        {
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native genetic diversity trajectory where populated by the job configuration",
+          "source_fields": [
+            "Year",
+            "Alleles",
+            "He",
+            "Ho"
+          ]
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "CDMetaPOP",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_PYTHON38_CDMETAPOP_3_08_PINNED_COMMIT",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED",
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "frozen_seeds": [
+        60353502,
+        785850499,
+        1059627548,
+        1753445705
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "source_commit",
+        "frozen_seed",
+        "Year",
+        "summary_schema",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "4b391cb6b4dfc48b1366c625b03ccde87a2f5f9cbcc6b74fd7dafe6e1b2e5628",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "authorized_artifacts": [
+        "SLIM_TREE_SEQUENCE_RAW"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native tree-sequence structural state; raw tree sequence remains primary evidence",
+          "source_fields": [
+            "nodes",
+            "edges",
+            "individuals",
+            "mutations",
+            "sequence_length"
+          ]
+        },
+        {
+          "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "derived from the raw tree sequence under a frozen R4.54 extractor; no result-selected statistic"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "SLiM",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_SLIM_5_2_TSKIT_1_0_3_MSPRIME_1_4_2_PYSLIM_1_1_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        162419087,
+        375760264,
+        1041058041,
+        1903370093
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "sequence_length",
+        "raw_tree_sequence_hash"
+      ],
+      "job_id": "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "3bc51ac5bc32ba45c0b9d26908be08e62dda39379bfca1a65d4a79ae3e44a0f0",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "authorized_artifacts": [
+        "NEMO_NATIVE_QFREQ_OUTPUT"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "raw realized qfreq/allele-frequency trajectory"
+        },
+        {
+          "metric_id": "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "distributional summary derived only from the raw authorized qfreq trajectory"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "NEMO",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_NEMO_2_4_2",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        62159366,
+        113402767,
+        135683159,
+        431138667
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "patch_axis",
+        "locus_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J17_SAPIENT_3MA_TO_200KA_NEMO",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "3cc2c81512beedd671d108177a8ea6b5ab48bc22d4b90cda22732835f696174a",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "authorized_artifacts": [
+        "SLIM_TREE_SEQUENCE_RAW"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native tree-sequence structural state; raw tree sequence remains primary evidence",
+          "source_fields": [
+            "nodes",
+            "edges",
+            "individuals",
+            "mutations",
+            "sequence_length"
+          ]
+        },
+        {
+          "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "derived from the raw tree sequence under a frozen R4.54 extractor; no result-selected statistic"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "SLiM",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_SLIM_5_2_TSKIT_1_0_3_MSPRIME_1_4_2_PYSLIM_1_1_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        1071453763,
+        1114642738,
+        1114782693,
+        1222478282
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "sequence_length",
+        "raw_tree_sequence_hash"
+      ],
+      "job_id": "R42_J19_SAPIENT_200KA_TO_0_SLIM",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "213cb24d0d50cf6853f93b49cc9d548ea4034f77e5680734f9e7fdc8f22b41b8",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "authorized_artifacts": [
+        "summary_popAllTime.csv",
+        "summary_classAllTime.csv"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "semantics": "native patch-vector demographic state; no literal ARCANA population-unit equality",
+          "source_fields": [
+            "Year",
+            "N_Initial"
+          ]
+        },
+        {
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native genetic diversity trajectory where populated by the job configuration",
+          "source_fields": [
+            "Year",
+            "Alleles",
+            "He",
+            "Ho"
+          ]
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "CDMetaPOP",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_PYTHON38_CDMETAPOP_3_08_PINNED_COMMIT",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED",
+        "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+      },
+      "frozen_seeds": [
+        1562581070,
+        1576323019,
+        1614078828,
+        1724087276
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "source_commit",
+        "frozen_seed",
+        "Year",
+        "summary_schema",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "3e7b6e095b53f3b96c22ec7d228503ea64b02e8f471e88a9f057e7d89f7d648d",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "authorized_artifacts": [
+        "SLIM_TREE_SEQUENCE_RAW"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "native tree-sequence structural state; raw tree sequence remains primary evidence",
+          "source_fields": [
+            "nodes",
+            "edges",
+            "individuals",
+            "mutations",
+            "sequence_length"
+          ]
+        },
+        {
+          "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "semantics": "derived from the raw tree sequence under a frozen R4.54 extractor; no result-selected statistic"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "SLiM",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_WSL_SLIM_5_2_TSKIT_1_0_3_MSPRIME_1_4_2_PYSLIM_1_1_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        143055247,
+        882721373,
+        1087167018,
+        1329415137
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "generation_axis",
+        "sequence_length",
+        "raw_tree_sequence_hash"
+      ],
+      "job_id": "R42_J22_PRODUCER_20KA_TO_0_SLIM",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "c921e9091e57d097ae2c4f58109e426be55a1d5e6e3169817c493aac0885cf09",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "authorized_artifacts": [
+        "RANGESHIFTER_NATIVE_RANGE_OUTPUTS"
+      ],
+      "authorized_metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native abundance trajectory; no literal ARCANA population-unit equality"
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "semantics": "native occupied-cell trajectory under explicit eligible-habitat denominator"
+        }
+      ],
+      "automatic_scientific_pass_fail_count": 0,
+      "engine": "RangeShifter",
+      "execution_interface": {
+        "isolated_output_root_required": true,
+        "runtime": "GOVERNED_RSCRIPT_RANGESHIFTR_3_0_1",
+        "seed_requirement": "EXACT_R452_FROZEN_SEED_INJECTION_REQUIRED"
+      },
+      "frozen_seeds": [
+        298927478,
+        732920388,
+        1269645923,
+        1851954729
+      ],
+      "historical_prediction_claim": false,
+      "integrity_fields": [
+        "runtime_version",
+        "frozen_seed",
+        "time_axis",
+        "output_artifact_hashes"
+      ],
+      "job_id": "R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER",
+      "numeric_acceptance_threshold_count": 0,
+      "r42_job_record_sha256": "f577932a52460af17ea7efb250a825d4c4745c75130f49e4b7975ba93df2752f",
+      "r454_seed_and_readout_dry_run_required": true,
+      "scientific_execution_authorized": false,
+      "window_id": "PRODUCER_20KA_TO_0"
+    }
+  ],
+  "majority_vote_authorized": false,
+  "numeric_acceptance_threshold_count": 0,
+  "parent_execution_plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+  "r41_microbenchmarks_are_historical_scientific_evidence": false,
+  "registry_sha256": "f39bb36251a95f2d9e310113a9286608d72188374d7d9bc73fe90aa697e5d380",
+  "result_selected_metric_authorized": false,
+  "result_selected_threshold_authorized": false,
+  "scientific_execution_authorized": false,
+  "stage": "v0.6D1-R4.53",
+  "status": "R453_NON_GEONOMICS_EXECUTION_AND_READOUT_AUTHORITY_FROZEN"
+}

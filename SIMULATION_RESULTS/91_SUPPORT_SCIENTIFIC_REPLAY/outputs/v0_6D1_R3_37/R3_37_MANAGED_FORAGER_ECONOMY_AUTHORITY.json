@@ -1,0 +1,99 @@
+{
+  "agriculture_materialized": false,
+  "candidate_cohort": [
+    "RPT_010_D02",
+    "RPT_009_D02"
+  ],
+  "census_semantics": "ECONOMY_COUPLED_CENSUS_EQUIVALENT_IS_A_BOUNDED_DOWNSTREAM_POSTERIOR_AND_NOT_AN_ARCHAEOLOGICAL_HEADCOUNT_OBSERVATION",
+  "deep_biological_coupling": false,
+  "dynamics": {
+    "asymmetry_pressure_materialization_forbidden": true,
+    "central_place_threshold": 0.52,
+    "demographic_support_adjustment_rate_per_kyr": 0.1,
+    "economy_census_multiplier_max": 1.1,
+    "economy_census_multiplier_min": 0.9,
+    "exchange_economy_threshold": 0.42,
+    "exchange_state_adjustment_rate_per_kyr": 0.2,
+    "governance": {
+      "deep_biological_coupling": false,
+      "economy_coupled_census_is_posterior_not_observation": true,
+      "no_agriculture_or_domesticate_materialization": true,
+      "no_class_hierarchy_materialization": true,
+      "no_currency_or_market_materialization": true,
+      "no_lineage_specific_rescaling": true,
+      "no_named_culture_language_religion": true,
+      "no_village_city_state_materialization": true,
+      "r330_census_remains_parent_authority": true,
+      "require_r336_intensive_managed_forager_pathway": true,
+      "sensitivity_is_selection_gate": false,
+      "unique_human_identity_materialized": false
+    },
+    "redistribution_state_adjustment_rate_per_kyr": 0.13,
+    "regional_complexity_threshold": 0.48,
+    "settlement_state_adjustment_rate_per_kyr": 0.14,
+    "specialization_state_adjustment_rate_per_kyr": 0.16,
+    "storage_state_adjustment_rate_per_kyr": 0.18
+  },
+  "economy_semantics": "DIMENSIONLESS_ECONOMIC_CAPACITY_AND_PRESSURE_STATES_DERIVED_FROM_SEALED_CENSUS_GROUP_TECHNOLOGY_SUBSISTENCE_AND_MANAGED_RESOURCE_AUTHORITIES",
+  "evidence_basis": {
+    "COMPLEX_FORAGER_STORAGE": {
+      "doi": "10.1086/202894",
+      "source": "Testart et al., The Significance of Food Storage Among Hunter-Gatherers (1982)",
+      "use": "predictable seasonal resources and storage can support higher density, sedentism and socioeconomic complexity without agriculture"
+    },
+    "FORAGING_NETWORKS": {
+      "pmcid": "PMC8692955",
+      "source": "Hunter-gatherer foraging networks promote information transmission (2021)",
+      "use": "central-place foraging and intermediate mobility can increase network efficiency and information exchange"
+    },
+    "MESOLITHIC_MOBILITY_SEDENTISM_2025": {
+      "doi": "10.1093/oxfordhb/9780198853657.013.30",
+      "source": "Holst, Hunter-Gatherer Mobility and Sedentism, Oxford Handbook of Mesolithic Europe (2025)",
+      "use": "reduced residential mobility can coexist with individual mobility, managed territories, storage and long-distance exchange"
+    },
+    "R330_PARENT": {
+      "source": "R3.30 SEALED census-equivalent and weighted group ABM",
+      "use": "census-equivalent, group counts, network counts, locations and organization modes are inherited authority"
+    },
+    "R331_PARENT": {
+      "source": "R3.31 SEALED cultural-technological ecology",
+      "use": "storage, transport/logistics, shelter/site engineering and specialization capacities are inherited authority"
+    },
+    "R332_PARENT": {
+      "source": "R3.32 SEALED subsistence/regional transitions",
+      "use": "delayed-return economy, settlement commitment, regional continuity/differentiation and subsistence resilience are inherited authority"
+    },
+    "R336_PARENT": {
+      "source": "R3.36 SEALED intensive managed-forager pathway",
+      "use": "managed producer support, patch persistence and no-agriculture pathway are immutable parent authority"
+    },
+    "SOCIAL_NETWORK_MOBILITY": {
+      "doi": "10.1016/j.jaa.2005.11.004",
+      "source": "Social networks and information: Non-utilitarian mobility among hunter-gatherers (2006)",
+      "use": "mobility maintains risk-buffering information and exchange networks, so settlement persistence does not imply network collapse"
+    },
+    "STORAGE_HUNTER_GATHERERS": {
+      "doi": "10.1016/j.jaa.2010.12.005",
+      "source": "Morgan, Caching your savings: small-scale storage in European prehistory (2011)",
+      "use": "storage is possible in mobile and semi-sedentary forager systems and must not be equated automatically with farming"
+    }
+  },
+  "inequality_semantics": "RESOURCE_CONTROL_ASYMMETRY_PRESSURE_IS_DIAGNOSTIC_ONLY_AND_NEVER_MATERIALIZED_SOCIAL_CLASS_OR_HIERARCHY",
+  "parent": "PASS_R336_PRODUCER_DOMESTICATION_SELECTION_ECOLOGY_RESOURCE_PERSISTENCE_WILD_GENE_FLOW_CLOSURE_AND_FORAGER_VS_FOOD_PRODUCTION_PATHWAY_RESOLUTION_SEALED",
+  "parent_hashes": {
+    "r330_census_sha256": "f890169abce22641dddf95d82ff34d641c9bbde1362cd15e13cb0a8f34e6a919",
+    "r331_technology_sha256": "9f5ddb0fd1356ea681b72b52329e6804eb7ef47a269f923ba684486d5afaf941",
+    "r332_subsistence_sha256": "77c9296953b44a3cd1e1b90a7c07e89f6b6fe6b33010be1083cfcb2364b5639a",
+    "r336_replay_sha256": "67a21d79b99f138b4ca9c92701e3172d4858f58e0c4402d96a9b5c04ae3953c5"
+  },
+  "required_parent_pathway": "INTENSIVE_MANAGED_FORAGER_PATHWAY",
+  "settlement_semantics": "PERSISTENT_CENTRAL_PLACE_POTENTIAL_IS_NOT_A_VILLAGE_TOWN_OR_CITY",
+  "stage": "v0.6D1-R3.37",
+  "status": "R337_INTENSIVE_MANAGED_FORAGER_ECONOMY_AUTHORITY",
+  "surplus_semantics": "RESOURCE_SURPLUS_BUFFER_IS_A_BUFFERING_CAPACITY_INDEX_NOT_LITERAL_STORED_CALORIES",
+  "unique_human_identity_materialized": false,
+  "window_ka": [
+    20.0,
+    0.0
+  ]
+}

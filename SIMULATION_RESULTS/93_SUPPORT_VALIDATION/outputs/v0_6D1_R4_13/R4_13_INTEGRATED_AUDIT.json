@@ -1,0 +1,219 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_12_SEAL\\R4_12_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r412_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R412_CDMETAPOP_METRIC_REPAIRED_PRECISION_AND_COMPARABILITY_DIAGNOSIS_SEALED",
+      "name": "parent_r412_sealed",
+      "pass": true
+    },
+    {
+      "detail": "R412_CDMETAPOP_ABSOLUTE_POPULATION_RESPONSE_NEUTRAL_INVARIANCE_FAILURE_CONFIRMED",
+      "name": "parent_r412_finding_matches",
+      "pass": true
+    },
+    {
+      "detail": "R413_COMPARABILITY_DOWNGRADE_PLAN_FROZEN",
+      "name": "parent_r413_plan_frozen",
+      "pass": true
+    },
+    {
+      "detail": "PROXY_ONLY_PENDING_MATCHED_CONTROL_SEMANTIC_PROTOCOL",
+      "name": "parent_absolute_response_proxy_only_pending",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "name": "exact_five_symmetric_cdmetapop_jobs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "declared": 75,
+        "loaded": 75
+      },
+      "name": "parent_matrix_exact_75_cells",
+      "pass": true
+    },
+    {
+      "detail": 136,
+      "name": "parent_matrix_has_evidence_rows",
+      "pass": true
+    },
+    {
+      "detail": "population_agent_response_ratio",
+      "name": "downgrade_metric_exact",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "downgrade_scope_only_affected_jobs",
+      "pass": true
+    },
+    {
+      "detail": 15,
+      "name": "at_least_one_population_response_row_selected",
+      "pass": true
+    },
+    {
+      "detail": [
+        "NORMALIZABLE"
+      ],
+      "name": "selected_rows_match_authorized_from_comparability",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "matched_control_global_promotion_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_mapping_files_not_modified_by_contract",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_r411_matrix_not_modified_by_contract",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_execution_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    },
+    {
+      "detail": {
+        "downgraded": 15,
+        "selected": 15
+      },
+      "name": "all_selected_rows_downgraded_to_proxy_only",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "proxy_rows_cannot_remain_structural",
+      "pass": true
+    },
+    {
+      "detail": {
+        "new": 121,
+        "parent": 121
+      },
+      "name": "non_target_parent_rows_preserved_semantically",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+        "R42_J06_H0_PRE_CHA1_CDMETAPOP",
+        "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+        "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+        "R42_J20_SAPIENT_200KA_TO_0_CDMETAPOP"
+      ],
+      "name": "all_five_jobs_covered_where_metric_selected",
+      "pass": true
+    },
+    {
+      "detail": 75,
+      "name": "revised_matrix_exact_75_cells",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CALIBRATION_OFFSET": 2,
+        "CONCORDANT": 2,
+        "INSUFFICIENT_EVIDENCE": 69,
+        "SEMANTICALLY_NONCOMPARABLE": 2,
+        "STRUCTURAL_DISAGREEMENT": 0
+      },
+      "name": "five_class_accounting_complete",
+      "pass": true
+    },
+    {
+      "detail": [
+        "PROXY_ONLY"
+      ],
+      "name": "all_downgraded_rows_are_nonadjudicative_by_frozen_mapping_class",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_secondary_only_promotion",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_majority_vote_anywhere",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_execution_not_performed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_still_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_still_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_still_not_authorized",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 34,
+  "checks_total": 34,
+  "class_counts": {
+    "CALIBRATION_OFFSET": 2,
+    "CONCORDANT": 2,
+    "INSUFFICIENT_EVIDENCE": 69,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 0
+  },
+  "next_action": "BUILD_R414_MULTI_ENGINE_EVIDENCE_GAP_CLOSURE_AND_TARGETED_ADAPTER_ENHANCEMENT",
+  "stage": "v0.6D1-R4.13",
+  "status": "PASS_R413_CDMETAPOP_ABSOLUTE_RESPONSE_COMPARABILITY_DOWNGRADE_AND_READJUDICATION_COMPLETE"
+}

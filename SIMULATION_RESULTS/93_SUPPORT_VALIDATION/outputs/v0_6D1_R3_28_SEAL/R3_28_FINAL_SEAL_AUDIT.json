@@ -1,0 +1,293 @@
+{
+  "audit": "FINAL_SINGLE_STAGE_HIGH_RESOLUTION_200KA_TO_0_POPULATION_AND_CHA2_AUTHORITY_CLOSURE",
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_and_environment_authorities_validate",
+      "pass": true
+    },
+    {
+      "detail": [
+        "R3_28_AUDIT.md",
+        "R3_28_CANDIDATE_POPULATION_OUTCOMES.json",
+        "R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+        "R3_28_HIGH_RESOLUTION_REPLAY_AUTHORITY.json",
+        "R3_28_HUMAN_0KA_CHECKPOINT.json",
+        "R3_28_INTEGRATED_AUDIT.json",
+        "R3_28_OUTPUT_MANIFEST.json",
+        "R3_28_SENSITIVITY_AND_ROBUSTNESS.json"
+      ],
+      "name": "output_file_set_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "output_manifest_closure",
+      "pass": true
+    },
+    {
+      "detail": [
+        28,
+        28
+      ],
+      "name": "integrated_audit_all_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_parent_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_candidates_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_r318_hashes_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_r320_hashes_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_forcing_semantics",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_cha2_direct",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_no_human_target",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_deep_off",
+      "pass": true
+    },
+    {
+      "detail": [
+        "admixture_opportunity_cumulative",
+        "age_ka",
+        "candidate_ids",
+        "cha2_active",
+        "cha2_age_ka",
+        "cha2_deme_state",
+        "contact_index",
+        "parent_member_indices",
+        "snapshot_active",
+        "snapshot_age_ka",
+        "snapshot_deme_state",
+        "species_summary",
+        "species_summary_variable_names",
+        "state_variable_names"
+      ],
+      "name": "npz_keys_exact",
+      "pass": true
+    },
+    {
+      "detail": {
+        "T": 280,
+        "cha2": [
+          32,
+          2,
+          80,
+          6,
+          7
+        ],
+        "species": [
+          32,
+          2,
+          280,
+          8
+        ]
+      },
+      "name": "npz_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_order_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24,
+        27,
+        30,
+        33,
+        36,
+        39,
+        42,
+        45,
+        48,
+        51,
+        54,
+        57,
+        60,
+        63,
+        66,
+        69,
+        72,
+        75,
+        78,
+        81,
+        84,
+        87,
+        90,
+        93
+      ],
+      "name": "parent_member_indices_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "time_axis_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "cha2_time_axis_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_numeric_finite",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "population_nonnegative",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_outcomes_two_unique",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sensitivity_11",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint_age_0",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "name": "checkpoint_subset_parent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint_count_consistent",
+      "pass": true
+    },
+    {
+      "detail": {
+        "age_ka": 0.0,
+        "candidate_cohort": [
+          "RPT_010_D02",
+          "RPT_009_D02"
+        ],
+        "candidate_count": 2,
+        "interpretation": "ROBUST_HIGH_RESOLUTION_POPULATION_COHORT_AT_0KA;_UNIQUE_IDENTITY_ONLY_IF_SINGLE_LINEAGE_QUALIFIES",
+        "stage": "v0.6D1-R3.28",
+        "status": "HUMAN_0KA_POPULATION_CHECKPOINT",
+        "unique_human_identity": null,
+        "unique_human_identity_materialized": false
+      },
+      "name": "unique_identity_rule",
+      "pass": true
+    },
+    {
+      "detail": [
+        "RPT_010_D02",
+        "RPT_009_D02"
+      ],
+      "name": "checkpoint_qualification_independently_recomputed",
+      "pass": true
+    },
+    {
+      "detail": 3.5054667502087966e-09,
+      "name": "cha2_50y_population_weighted_hazard_recomputed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "cha2_fields_exact_80",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "contact_bounded",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_forced_replacement",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_direct_cb_selection",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_and_parents_immutable",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r318_not_misrepresented",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "evidence_multisource",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 35,
+  "checks_total": 35,
+  "stage": "v0.6D1-R3.28",
+  "status": "PASS_R328_HIGH_RESOLUTION_200KA_TO_0_POPULATION_STRUCTURE_MIGRATION_ADMIXTURE_CHA2_EXPOSURE_AND_HUMAN_0KA_CHECKPOINT_SEALED",
+  "summary": {
+    "cha2_direct_50y_consumed": true,
+    "deep_biological_coupling": false,
+    "human_0ka_candidate_cohort": [
+      "RPT_010_D02",
+      "RPT_009_D02"
+    ],
+    "human_0ka_candidate_count": 2,
+    "human_similarity_target": false,
+    "input_candidate_lineages": 2,
+    "next_stage": "POPULATION_MIGRATION_SETTLEMENT_AND_CULTURAL_PRECONDITIONS",
+    "unique_human_identity": null,
+    "unique_human_identity_materialized": false
+  },
+  "verdict": "SEALED"
+}

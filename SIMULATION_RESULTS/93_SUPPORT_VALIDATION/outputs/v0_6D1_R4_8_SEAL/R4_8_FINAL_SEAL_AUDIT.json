@@ -1,0 +1,70 @@
+{
+  "audit": "FINAL_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS_AND_MATCHED_NEUTRAL_CONTROL",
+  "checks": [
+    {
+      "detail": "PASS_R47_CDMETAPOP_FORCING_PARITY_REPAIR_SYMMETRIC_REEXECUTION_AND_READJUDICATION_SEALED",
+      "name": "parent_r47_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R48_POST_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS_COMPLETE",
+      "name": "r48_diagnosis_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r48_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": "MATCHED_CONTROL_EFFECT_UNCERTAIN",
+      "name": "diagnosis_class_valid",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r47_structural_parent_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": "EXECUTE_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 10,
+  "checks_total": 10,
+  "next_action": "EXECUTE_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES",
+  "stage": "v0.6D1-R4.8",
+  "status": "PASS_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS_AND_MATCHED_CONTROL_SEALED",
+  "summary": {
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "deep_biological_coupling": false,
+    "diagnosis_class": "MATCHED_CONTROL_EFFECT_UNCERTAIN",
+    "next_action": "EXECUTE_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES"
+  },
+  "verdict": "SEALED"
+}

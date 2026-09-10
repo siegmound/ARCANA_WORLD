@@ -1,0 +1,214 @@
+{
+  "all_required_ready": true,
+  "baseline_semantics": "R3.19-R3.39 preserved as ARCANA_REDUCED_ORDER_BASELINE_A; no result promoted by this inventory",
+  "canonical_state_owner": "ARCANA_WorldSim",
+  "deep_biological_coupling": false,
+  "engine_probes": [
+    {
+      "confirmed_version": "2.4.2",
+      "details": "/home/jose/miniforge3/envs/arcana-nemo242/bin/nemo2.4.2\n# packages in environment at /home/jose/miniforge3/envs/arcana-nemo242:\n#\n# Name                     Version          Build            Channel\nnemo                       2.4.2            h80b0018_0       ecoevo",
+      "engine": "NEMO",
+      "expected_version": "2.4.2",
+      "invocation": "PowerShell->WSL conda:arcana-nemo242/nemo2.4.2",
+      "returncode": 0,
+      "status": "READY"
+    },
+    {
+      "confirmed_version": "1.4.9",
+      "details": "NOTE: Module 'pykrige' not found. Yosemite demo 3d plots cannot be produced.\n1.4.9",
+      "engine": "Geonomics",
+      "expected_version": "1.4.9",
+      "invocation": "PowerShell->WSL conda:arcana-geonomics-149/python",
+      "returncode": 0,
+      "status": "READY"
+    },
+    {
+      "confirmed_version": "MadingleyR-1.0.6__CPP-2.02",
+      "details": "1.0.6 \n                             \nMadingleyR           -> 1.0.6\nMadingley C++ source ->  2.02",
+      "engine": "Madingley",
+      "expected_version": "MadingleyR-1.0.6__CPP-2.02",
+      "invocation": "PowerShell->WSL conda:arcana-r40-r/Rscript+runtime-libs",
+      "returncode": 0,
+      "status": "READY"
+    },
+    {
+      "confirmed_version": "3.0.1",
+      "details": "3.0.1",
+      "engine": "RangeShifter",
+      "expected_version": "3.0.1",
+      "invocation": "PowerShell->WSL conda:arcana-r40-r/RangeShiftR",
+      "returncode": 0,
+      "status": "READY"
+    },
+    {
+      "confirmed_version": "3.08",
+      "details": "3.8.20\n1.24.4\n1.10.1\nCOMMIT=3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118",
+      "engine": "CDMetaPOP",
+      "expected_version": "3.08",
+      "invocation": "PowerShell->WSL conda:arcana-cdmetapop-308 + source:/mnt/f/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/.arcana_engines/CDMetaPOP-3.08@3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118",
+      "returncode": 0,
+      "status": "READY"
+    },
+    {
+      "confirmed_version": "5.2",
+      "details": "SLiM version 5.2, built Apr 12 2026 02:46:55\nGit commit SHA-1: unknown (built from a non-Git source archive)\ntskit=1.0.3\nmsprime=1.4.2\npyslim=1.1.1",
+      "engine": "SLiM",
+      "expected_version": "5.2",
+      "invocation": "PowerShell->WSL conda:arcana-slim52/slim+python",
+      "returncode": 0,
+      "status": "READY"
+    }
+  ],
+  "external_engine_direct_canonical_write": false,
+  "host": {
+    "machine": "AMD64",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15"
+  },
+  "parent_hashes": {
+    "r339_final_seal_sha256": "33191642f13b54277a7a3fc393ab341b56b9a2eedf0b9046869add4c0f011358",
+    "r36a_bridge_sha256": "4bd6407830053a2bf76b86caad29e0dc471bf3eea5e501febcdf462e80fa020b"
+  },
+  "provisioning_actions": [],
+  "ready_engines": [
+    "CDMetaPOP",
+    "Geonomics",
+    "Madingley",
+    "NEMO",
+    "RangeShifter",
+    "SLiM"
+  ],
+  "required_engines": [
+    "CDMetaPOP",
+    "Geonomics",
+    "Madingley",
+    "NEMO",
+    "RangeShifter",
+    "SLiM"
+  ],
+  "revalidation_matrix": {
+    "comparison_domains": [
+      "population_persistence",
+      "range_occupancy",
+      "range_shift_rate",
+      "connectivity",
+      "gene_flow",
+      "additive_variance",
+      "trait_response",
+      "admixture",
+      "ancestry",
+      "biomass",
+      "trophic_opportunity",
+      "extinction_risk",
+      "founder_persistence",
+      "managed_wild_isolation",
+      "producer_divergence"
+    ],
+    "decision_policy": {
+      "no_auto_promotion": true,
+      "preserve_superseded_seals_as_provenance": true,
+      "replay_when_material_disagreement": true,
+      "retain_all_engine_evidence": true
+    },
+    "stage": "v0.6D1-R4.0",
+    "status": "R40_FROZEN_REVALIDATION_MATRIX",
+    "window_count": 7,
+    "windows": [
+      {
+        "age_end_ma": 200.0,
+        "age_start_ma": 210.0,
+        "earliest_replay_boundary": "H0_210MA",
+        "engines": [
+          "Madingley",
+          "RangeShifter",
+          "CDMetaPOP"
+        ],
+        "id": "H0_DEEP_TIME_BACKGROUND",
+        "selection_based_on_result": false,
+        "status": "FROZEN_PRE_RESULT"
+      },
+      {
+        "age_end_ma": 66.0,
+        "age_start_ma": 70.0,
+        "earliest_replay_boundary": "R3.9_PRE_CHA1",
+        "engines": [
+          "Madingley",
+          "RangeShifter",
+          "CDMetaPOP"
+        ],
+        "id": "H0_PRE_CHA1",
+        "selection_based_on_result": false,
+        "status": "FROZEN_PRE_RESULT"
+      },
+      {
+        "age_end_ma": 55.0,
+        "age_start_ma": 65.5,
+        "earliest_replay_boundary": "R3.11_POST_CHA1",
+        "engines": [
+          "Madingley",
+          "RangeShifter",
+          "CDMetaPOP",
+          "NEMO"
+        ],
+        "id": "H0_POST_CHA1_RECOVERY",
+        "selection_based_on_result": false,
+        "status": "FROZEN_PRE_RESULT"
+      },
+      {
+        "age_end_ma": 0.2,
+        "age_start_ma": 30.0,
+        "earliest_replay_boundary": "R3.14_LATE_CENOZOIC",
+        "engines": [
+          "Madingley",
+          "RangeShifter",
+          "NEMO"
+        ],
+        "id": "H0_LATE_CENOZOIC",
+        "selection_based_on_result": false,
+        "status": "FROZEN_PRE_RESULT"
+      },
+      {
+        "age_end_ma": 0.2,
+        "age_start_ma": 3.0,
+        "earliest_replay_boundary": "R3.27",
+        "engines": [
+          "Geonomics",
+          "CDMetaPOP",
+          "SLiM",
+          "NEMO"
+        ],
+        "id": "SAPIENT_3MA_TO_200KA",
+        "selection_based_on_result": false,
+        "status": "FROZEN_PRE_RESULT"
+      },
+      {
+        "age_end_ka": 0.0,
+        "age_start_ka": 200.0,
+        "earliest_replay_boundary": "R3.28",
+        "engines": [
+          "Geonomics",
+          "SLiM",
+          "CDMetaPOP"
+        ],
+        "id": "SAPIENT_200KA_TO_0",
+        "selection_based_on_result": false,
+        "status": "FROZEN_PRE_RESULT"
+      },
+      {
+        "age_end_ka": 0.0,
+        "age_start_ka": 20.0,
+        "earliest_replay_boundary": "R3.34",
+        "engines": [
+          "Geonomics",
+          "SLiM",
+          "RangeShifter"
+        ],
+        "id": "PRODUCER_20KA_TO_0",
+        "selection_based_on_result": false,
+        "status": "FROZEN_PRE_RESULT"
+      }
+    ]
+  },
+  "stage": "v0.6D1-R4.0",
+  "status": "PASS_R40_MULTI_ENGINE_RUNTIME_READINESS"
+}

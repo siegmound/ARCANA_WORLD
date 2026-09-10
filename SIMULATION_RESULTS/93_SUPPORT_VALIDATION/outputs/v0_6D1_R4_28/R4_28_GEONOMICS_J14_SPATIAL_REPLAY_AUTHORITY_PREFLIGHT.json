@@ -1,0 +1,349 @@
+{
+  "active_deferred_p2_cell_count": 2,
+  "aggregate_invariants_to_preserve_or_explain": [
+    "EFFECTIVE_POPULATION",
+    "DEME_COUNT",
+    "ECOLOGICAL_BREADTH",
+    "DISPERSAL_CAPACITY"
+  ],
+  "authority_kind": "NEW_ENGINE_INDEPENDENT_CANONICAL_SPATIAL_REPLAY_AUTHORITY",
+  "authority_namespace": "R429_PLUS_NEW_ENGINE_INDEPENDENT_CANONICAL_SPATIAL_REPLAY_AUTHORITY",
+  "canonical_spatial_replay_execution_authorized_in_r428": false,
+  "checks": {
+    "canonical_source_audit_context_present": true,
+    "new_namespace_required": true,
+    "r327_macro_state_explicitly_nonspatial": true,
+    "r427_preflight_authorized": true,
+    "r42_job_mutation_forbidden": true,
+    "request_kind_engine_independent": true,
+    "temporal_support_exact_3ma_to_200ka": true,
+    "window_start_spatial_state_absent_confirmed": true
+  },
+  "forbidden_shortcuts": [
+    "SYNTHESIZE_3MA_COORDINATES_FROM_R3_27_SCALARS",
+    "BACKWARD_INTERPOLATE_FROM_R3_15_250KA",
+    "BACKWARD_EXTRAPOLATE_FROM_R3_28_200KA",
+    "USE_GEONOMICS_DEFAULT_MODEL_AS_CANONICAL_AUTHORITY",
+    "USE_EXTERNAL_ENGINE_RESULTS_TO_DEFINE_CANONICAL_SPATIAL_STATE",
+    "MUTATE_R4_2_J14_WINDOW_OR_JOB_ID",
+    "EXECUTE_J18_J21_AS_SUBSTITUTE_FOR_FULL_SHARED_GEONOMICS_SCOPE"
+  ],
+  "geonomics_execution_authorized_in_r428": false,
+  "implementation_preflight_ready": true,
+  "job_id": "R42_J14_SAPIENT_3MA_TO_200KA_GEONOMICS",
+  "next_priority": "R429_J14_SPATIAL_REPLAY_EXECUTION_AUTHORIZATION_GATE",
+  "parent_canonical_source_audit_context": [
+    {
+      "age_count": 141,
+      "age_max": 3.0,
+      "age_min": 0.1999999999999975,
+      "dtypes": {
+        "age_ma": "float64",
+        "bottleneck_multiplier": "float64",
+        "candidate_ids": "<U11",
+        "corridor_connectivity": "float64",
+        "environmental_stress": "float64",
+        "forcing_regime": "<U20",
+        "state": "float64",
+        "variability_index": "float64",
+        "variable_names": "<U24"
+      },
+      "keys": [
+        "candidate_ids",
+        "age_ma",
+        "forcing_regime",
+        "variable_names",
+        "state",
+        "environmental_stress",
+        "corridor_connectivity",
+        "bottleneck_multiplier",
+        "variability_index"
+      ],
+      "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R3_27/R3_27_MACRO_REPLAY_TRAJECTORIES.npz",
+      "present": true,
+      "required_keys": [
+        "age_ma",
+        "state",
+        "candidate_ids",
+        "variable_names"
+      ],
+      "required_keys_present": true,
+      "sha256": "fac973bd233c49facedb2d32e1c561800e65e27da1e940f967d680a36c1b47f3",
+      "shapes": {
+        "age_ma": [
+          141
+        ],
+        "bottleneck_multiplier": [
+          96,
+          141
+        ],
+        "candidate_ids": [
+          6
+        ],
+        "corridor_connectivity": [
+          96,
+          141
+        ],
+        "environmental_stress": [
+          96,
+          141
+        ],
+        "forcing_regime": [
+          96
+        ],
+        "state": [
+          96,
+          6,
+          141,
+          8
+        ],
+        "variability_index": [
+          96,
+          141
+        ],
+        "variable_names": [
+          8
+        ]
+      },
+      "variable_names": [
+        "effective_population",
+        "deme_count",
+        "ecological_breadth",
+        "cumulative_buffering",
+        "dispersal_capacity",
+        "developmental_investment",
+        "genetic_diversity_proxy",
+        "adaptive_integration"
+      ]
+    },
+    {
+      "age_count": 15,
+      "age_max": 200.0,
+      "age_min": 0.0,
+      "dtypes": {
+        "admixture_opportunity_cumulative": "float32",
+        "age_ka": "float64",
+        "candidate_ids": "<U11",
+        "cha2_active": "uint8",
+        "cha2_age_ka": "float64",
+        "cha2_deme_state": "float32",
+        "contact_index": "float32",
+        "parent_member_indices": "int64",
+        "snapshot_active": "uint8",
+        "snapshot_age_ka": "float64",
+        "snapshot_deme_state": "float32",
+        "species_summary": "float32",
+        "species_summary_variable_names": "<U31",
+        "state_variable_names": "<U26"
+      },
+      "keys": [
+        "candidate_ids",
+        "parent_member_indices",
+        "age_ka",
+        "state_variable_names",
+        "species_summary_variable_names",
+        "species_summary",
+        "contact_index",
+        "admixture_opportunity_cumulative",
+        "snapshot_age_ka",
+        "snapshot_deme_state",
+        "snapshot_active",
+        "cha2_age_ka",
+        "cha2_deme_state",
+        "cha2_active"
+      ],
+      "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+      "present": true,
+      "required_keys": [
+        "snapshot_age_ka",
+        "snapshot_deme_state",
+        "snapshot_active",
+        "state_variable_names"
+      ],
+      "required_keys_present": true,
+      "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+      "shapes": {
+        "admixture_opportunity_cumulative": [
+          32,
+          280
+        ],
+        "age_ka": [
+          280
+        ],
+        "candidate_ids": [
+          2
+        ],
+        "cha2_active": [
+          32,
+          2,
+          80,
+          6
+        ],
+        "cha2_age_ka": [
+          80
+        ],
+        "cha2_deme_state": [
+          32,
+          2,
+          80,
+          6,
+          7
+        ],
+        "contact_index": [
+          32,
+          280
+        ],
+        "parent_member_indices": [
+          32
+        ],
+        "snapshot_active": [
+          32,
+          2,
+          15,
+          6
+        ],
+        "snapshot_age_ka": [
+          15
+        ],
+        "snapshot_deme_state": [
+          32,
+          2,
+          15,
+          6,
+          7
+        ],
+        "species_summary": [
+          32,
+          2,
+          280,
+          8
+        ],
+        "species_summary_variable_names": [
+          8
+        ],
+        "state_variable_names": [
+          7
+        ]
+      },
+      "variable_names": [
+        "population_proxy",
+        "grid_row",
+        "grid_col",
+        "local_suitability",
+        "genetic_diversity_proxy",
+        "adaptive_integration",
+        "lineage0_ancestry_fraction"
+      ]
+    },
+    {
+      "dtypes": {
+        "current_accessible": "uint8",
+        "generation_time": "float64",
+        "guild": "uint8",
+        "lat": "float64",
+        "lon": "float64",
+        "population": "float64",
+        "reduced_adaptive_coordinate": "float64",
+        "reduced_ancestry_covariance": "float64",
+        "reduced_neutral_segregation_potential": "float64",
+        "reduced_va_within": "float64",
+        "trait": "float64",
+        "va": "float64"
+      },
+      "keys": [
+        "guild",
+        "population",
+        "trait",
+        "va",
+        "generation_time",
+        "current_accessible",
+        "reduced_va_within",
+        "reduced_ancestry_covariance",
+        "reduced_neutral_segregation_potential",
+        "reduced_adaptive_coordinate",
+        "lat",
+        "lon"
+      ],
+      "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/local_runs/v0_6D1_R3_15/WORLD1_H0_250ka_LATE_CENOZOIC_SECULAR_BIOLOGY_PRE_C2_BRIDGE_CHECKPOINT_v0_6D1_R3_15.npz",
+      "present": true,
+      "required_keys": [
+        "population",
+        "current_accessible",
+        "lat",
+        "lon"
+      ],
+      "required_keys_present": true,
+      "sha256": "f8e79ea862de6c48f01784c727ca15abf9d8fd53b07f47d1aaab5bf589ee5692",
+      "shapes": {
+        "current_accessible": [
+          90,
+          180
+        ],
+        "generation_time": [
+          295
+        ],
+        "guild": [
+          295
+        ],
+        "lat": [
+          90
+        ],
+        "lon": [
+          180
+        ],
+        "population": [
+          295,
+          90,
+          180
+        ],
+        "reduced_adaptive_coordinate": [
+          295,
+          3
+        ],
+        "reduced_ancestry_covariance": [
+          295,
+          3
+        ],
+        "reduced_neutral_segregation_potential": [
+          295,
+          295,
+          3
+        ],
+        "reduced_va_within": [
+          295,
+          3
+        ],
+        "trait": [
+          295,
+          3
+        ],
+        "va": [
+          295,
+          3
+        ]
+      }
+    }
+  ],
+  "r42_j14_mutation_authorized": false,
+  "required_authority_properties": [
+    "ARCANA_ENGINE_INDEPENDENT",
+    "FORWARD_OR_EXPLICITLY_AUTHORIZED_RECONSTRUCTION_FROM_CANONICAL_PROVIDERS",
+    "R3_27_MACRO_TRAJECTORY_AGGREGATE_INVARIANT_AUDIT",
+    "PALEOGEOGRAPHIC_AND_ENVIRONMENTAL_PROVIDER_PROVENANCE",
+    "HASH_BOUND_INPUT_OUTPUT_PROVENANCE",
+    "SEALED_BEFORE_ANY_GEONOMICS_EXECUTION"
+  ],
+  "required_spatial_support": [
+    "EXPLICIT_LAT_LON_OR_GRID_ROW_COL",
+    "TIME_INDEXED_POPULATION_OR_DEME_STATE",
+    "EXPLICIT_CANONICAL_SPATIAL_SUPPORT_IDENTITY"
+  ],
+  "required_temporal_support": {
+    "end_age_ka": 200.0,
+    "start_age_ma": 3.0,
+    "time_indexed": true
+  },
+  "stage": "v0.6D1-R4.28",
+  "status": "R428_GEONOMICS_J14_SPATIAL_REPLAY_AUTHORITY_PREFLIGHT_COMPLETE",
+  "window_id": "SAPIENT_3MA_TO_200KA"
+}

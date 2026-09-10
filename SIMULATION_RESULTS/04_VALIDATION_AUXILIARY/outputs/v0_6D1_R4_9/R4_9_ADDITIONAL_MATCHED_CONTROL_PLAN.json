@@ -1,0 +1,265 @@
+{
+  "additional_pair_count": 16,
+  "authorized_case": {
+    "domain": "population_persistence",
+    "earliest_boundary": "R3.11_POST_CHA1",
+    "engine": "CDMetaPOP",
+    "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+    "window_id": "H0_POST_CHA1_RECOVERY"
+  },
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_8_SEAL\\R4_8_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r48_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS_AND_MATCHED_CONTROL_SEALED",
+      "name": "parent_r48_sealed",
+      "pass": true
+    },
+    {
+      "detail": "MATCHED_CONTROL_EFFECT_UNCERTAIN",
+      "name": "parent_diagnosis_uncertain",
+      "pass": true
+    },
+    {
+      "detail": "EXECUTE_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES",
+      "name": "parent_next_action_matches_r49",
+      "pass": true
+    },
+    {
+      "detail": 4,
+      "name": "parent_exact_four_paired_effects",
+      "pass": true
+    },
+    {
+      "detail": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+      "name": "authorized_job_contract_present",
+      "pass": true
+    },
+    {
+      "detail": "outputs\\v0_6D1_R4_7\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP\\RAW_EVIDENCE.json",
+      "name": "r47_dynamic_parent_present",
+      "pass": true
+    },
+    {
+      "detail": "outputs\\v0_6D1_R4_8\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP\\RAW_NEUTRAL_CONTROL_EVIDENCE.json",
+      "name": "r48_neutral_parent_present",
+      "pass": true
+    },
+    {
+      "detail": "outputs\\v0_6D1_R4_7\\jobs\\R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP\\REPAIR_PROFILE.json",
+      "name": "r47_repair_profile_present",
+      "pass": true
+    },
+    {
+      "detail": 0.9346173303061878,
+      "name": "dynamic_support_ratio_present",
+      "pass": true
+    },
+    {
+      "detail": 16,
+      "name": "fixed_additional_pair_count",
+      "pass": true
+    },
+    {
+      "detail": 20,
+      "name": "fixed_final_pair_count",
+      "pass": true
+    },
+    {
+      "detail": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "name": "additional_indices_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        1166989281,
+        1246776956,
+        1210625923,
+        71721983,
+        1366173606,
+        139248058,
+        2116392631,
+        432203749,
+        2092099438,
+        1925168285,
+        462210758,
+        1783600812,
+        1678546588,
+        164105413,
+        279459156,
+        843742872
+      ],
+      "name": "additional_seeds_unique",
+      "pass": true
+    },
+    {
+      "detail": {
+        "additional": [
+          [
+            4,
+            1166989281
+          ],
+          [
+            5,
+            1246776956
+          ],
+          [
+            6,
+            1210625923
+          ],
+          [
+            7,
+            71721983
+          ],
+          [
+            8,
+            1366173606
+          ],
+          [
+            9,
+            139248058
+          ],
+          [
+            10,
+            2116392631
+          ],
+          [
+            11,
+            432203749
+          ],
+          [
+            12,
+            2092099438
+          ],
+          [
+            13,
+            1925168285
+          ],
+          [
+            14,
+            462210758
+          ],
+          [
+            15,
+            1783600812
+          ],
+          [
+            16,
+            1678546588
+          ],
+          [
+            17,
+            164105413
+          ],
+          [
+            18,
+            279459156
+          ],
+          [
+            19,
+            843742872
+          ]
+        ],
+        "parent": [
+          [
+            0,
+            55525513
+          ],
+          [
+            1,
+            66696762
+          ],
+          [
+            2,
+            413622220
+          ],
+          [
+            3,
+            72612355
+          ]
+        ]
+      },
+      "name": "additional_seeds_do_not_overlap_parent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_pairs_not_rerun",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_adaptive_stopping",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_automatic_further_escalation",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "policy_not_result_selected",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "comparison_target_injection_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 25,
+  "checks_total": 25,
+  "final_pair_count": 20,
+  "next_action": "EXECUTE_R49_FIXED_16_ADDITIONAL_DYNAMIC_NEUTRAL_PAIRS",
+  "parent_pair_count": 4,
+  "stage": "v0.6D1-R4.9",
+  "status": "PASS_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATE_EXPANSION_PREPARED"
+}

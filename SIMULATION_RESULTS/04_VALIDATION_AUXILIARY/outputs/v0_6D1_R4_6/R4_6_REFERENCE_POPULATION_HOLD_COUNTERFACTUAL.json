@@ -1,0 +1,70 @@
+{
+  "canonical_replay_authorized": false,
+  "canonical_state_changed": false,
+  "clipping_contacts": {
+    "r311": 0,
+    "r312_to_55": 0
+  },
+  "counterfactual_id": "DIAGNOSTIC_ONLY_REFERENCE_POPULATION_HOLD",
+  "end_age_ma": 55.0,
+  "event_counts_delta": {
+    "r311_65p5_to_61": {
+      "CHA1_high_resolution_event_bridge_complete": 0,
+      "CHA1_species_extinction": 0,
+      "deme_coalescence": 5,
+      "deme_fission": 39,
+      "ordinary_background_extinction": 0,
+      "paleogeographic_support_loss_remap": 34,
+      "post_CHA1_ordinary_lifecycle_thaw": 1,
+      "speciation": 2
+    },
+    "r312_61_to_55": {
+      "CHA1_high_resolution_event_bridge_complete": 0,
+      "CHA1_species_extinction": 0,
+      "deme_coalescence": 12,
+      "deme_fission": 12,
+      "ordinary_background_extinction": 0,
+      "paleogeographic_support_loss_remap": 32,
+      "post_CHA1_ordinary_lifecycle_thaw": 0,
+      "speciation": 2
+    }
+  },
+  "interpretation_guard": "This branch measures sensitivity to the canonical reference-population forcing path. It is not a replacement history and does not authorize changing A1 or R3.11.",
+  "intervention": {
+    "all_other_environment_fields_dynamic": true,
+    "all_r311_r312_scientific_parameters_unchanged": true,
+    "canonical_checkpoint_written": false,
+    "held_at_age_ma": 65.5,
+    "held_field": "env.reference_population"
+  },
+  "numerical_invariants_at_55ma": {
+    "population_min": 0.0,
+    "population_on_inaccessible_cells": 0.0,
+    "q_ceiling": 0.08,
+    "q_headroom": 0.03367305917933289,
+    "q_max": 0.046326940820667115,
+    "q_median": 0.04485344938206901,
+    "s_diagonal_max_abs": 0.0,
+    "s_min": 0.0,
+    "s_symmetry_max_abs": 0.0
+  },
+  "ordinary_steps_r311": 36,
+  "ordinary_steps_r312_to_55ma": 48,
+  "population": {
+    "canonical_65p5_to_55_ratio": 0.9316272616306188,
+    "canonical_direction_5pct_band": -1,
+    "counterfactual_55_ma": 1610.6025980441632,
+    "counterfactual_61_ma": 1610.8077063262317,
+    "counterfactual_65p5_to_55_ratio": 0.9959791684936666,
+    "counterfactual_direction_5pct_band": 0,
+    "counterfactual_minus_canonical_ratio": 0.06435190686304781,
+    "counterfactual_moves_toward_external_direction": true,
+    "r45_external_direction": 1,
+    "start_65p5_ma": 1617.1047035853792
+  },
+  "r311_boundary_age_ma": 61.0,
+  "stage": "v0.6D1-R4.6",
+  "start_age_ma": 65.5,
+  "status": "PASS_R46_DIAGNOSTIC_COUNTERFACTUAL_EXECUTED",
+  "wall_seconds": 172.32916259765625
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "ARCANA_R37H_PARENT_R37G_EXTERNAL_EVIDENCE_AUDIT_V1",
+  "source_zip_sha256": "e2622c32aab63d632aa0179ab853012385fc588f2b5121da9e51320bd2fd4fbc",
+  "stage": "v0.6D1-R3.7G",
+  "verdict": "PASS_210_TO_150_PRODUCTION_BINDING_VALIDATION__LEGACY_CLIPPING_REPRODUCED__SEGREGATION_AWARE_HEADROOM_CLEAR__K_ENVELOPE_SENTINELS_COHERENT__PRODUCTION_PROMOTION_REVIEW_REQUIRED",
+  "biology_steps": 480,
+  "record_age_first_ma": 209.875,
+  "record_age_last_ma": 150.0,
+  "all_record_scalars_finite": true,
+  "canonical_parity": true,
+  "canonical_final": {
+    "population": 1940.114872120044,
+    "species_count": 136,
+    "component_count": 458
+  },
+  "legacy": {
+    "peak_q": 0.08000000000000002,
+    "steps_with_clipping": 331,
+    "first_clipping_age_ma": 191.25,
+    "last_clipping_age_ma": 150.0
+  },
+  "shadow": {
+    "peak_q": {
+      "K_LOW": 0.046670089492112966,
+      "K_CENTER": 0.04661981984068642,
+      "K_HIGH": 0.046483384120532996
+    },
+    "ceiling_contacts": {
+      "K_LOW": 0,
+      "K_CENTER": 0,
+      "K_HIGH": 0
+    },
+    "center_headroom": 0.03338018015931358
+  },
+  "k_sensitivity": {
+    "max_q_maximum_absolute_spread": 0.00041340930132559295,
+    "final_median_va_relative_span": 9.110568925450329e-05,
+    "final_S_max_relative_span": 0.054402453167471644,
+    "final_S_median_relative_span": 0.021464607782983484,
+    "final_ancestry_relative_span": 0.0011876764326269505,
+    "final_h_relative_span": 0.04268326550081111
+  },
+  "production_validation_gate": {
+    "expected_biology_steps": 480,
+    "valid_biology_steps": true,
+    "canonical_parity": true,
+    "legacy_clipping_reproduced": true,
+    "shadow_all_variants_clear_of_ceiling": true,
+    "shadow_ceiling_contacts_by_variant": {
+      "K_LOW": 0,
+      "K_CENTER": 0,
+      "K_HIGH": 0
+    },
+    "center_positive_headroom_to_existing_ceiling": true,
+    "no_qualitative_k_headroom_divergence": true,
+    "governed_validation_pass": true
+  },
+  "review": {
+    "parent_validation_pass_confirmed": true,
+    "promotion_automatically_authorized": false,
+    "closed_loop_feedback_validation_required": true
+  }
+}

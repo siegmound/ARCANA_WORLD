@@ -1,0 +1,62 @@
+{
+  "candidate_count": 1,
+  "proxy_context_only_count": 2,
+  "readjudication_authorized_only_for_validated_candidates": true,
+  "records": [
+    {
+      "candidate_comparability": "NORMALIZABLE_CANDIDATE",
+      "domain": "population_persistence",
+      "eligible_primary_row_count": 0,
+      "materialized_target": {
+        "candidate_comparability": "NORMALIZABLE_CANDIDATE",
+        "extractor": "R43_PRE_RESULT_CANONICAL_WINDOW_DESCRIPTOR_BRIDGE",
+        "hash_check": {
+          "actual_artifact_present": true,
+          "actual_sha256_match": true,
+          "declared_hash_match": true
+        },
+        "provenance": {
+          "bridge": "outputs/v0_6D1_R4_3/R4_3_WINDOW_BASELINE_DESCRIPTORS.json",
+          "selected_frozen_artifact": "outputs\\v0_6D1_R3_27\\R3_27_MACRO_REPLAY_TRAJECTORIES.npz",
+          "selected_frozen_artifact_sha256": "fac973bd233c49facedb2d32e1c561800e65e27da1e940f967d680a36c1b47f3"
+        },
+        "source_semantics": "median effective_population end/start ratio across the frozen ensemble",
+        "spatial_population_basis": "Frozen ARCANA population/spatial aggregation encoded by the R4.3 pre-result window baseline descriptor and its selected canonical artifact.",
+        "temporal_basis": {
+          "end": 0.2,
+          "start": 3.0,
+          "unit": "Ma",
+          "window_id": "SAPIENT_3MA_TO_200KA"
+        },
+        "transform": "comparison_only_derived.population_ratio_median",
+        "unit_basis": "dimensionless median effective-population ratio",
+        "value": 1.792778375105343
+      },
+      "primary_rows": [
+        {
+          "eligible": false,
+          "engine": "CDMetaPOP",
+          "job_id": "R42_J15_SAPIENT_3MA_TO_200KA_CDMETAPOP",
+          "mapping_comparability": "PROXY_ONLY",
+          "metric_authorized_for_domain": true,
+          "metric_name": "population_agent_response_ratio",
+          "target_scalar_available": true
+        }
+      ],
+      "protocol_record_present": true,
+      "provenance_integrity_pass": true,
+      "reason": "TARGET_OR_PRIMARY_METRIC_SEMANTIC_VALIDATION_FAILED",
+      "result_selected_validation": false,
+      "source": "R4_3_WINDOW_BASELINE_DESCRIPTORS",
+      "strict_target_fields_present": true,
+      "temporal_basis_matches_window": true,
+      "validated_comparability": null,
+      "validation_status": "REJECTED_REMAINS_NONADJUDICATIVE",
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    }
+  ],
+  "rejected_count": 1,
+  "stage": "v0.6D1-R4.18",
+  "status": "PASS_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE_COMPLETE",
+  "validated_count": 0
+}

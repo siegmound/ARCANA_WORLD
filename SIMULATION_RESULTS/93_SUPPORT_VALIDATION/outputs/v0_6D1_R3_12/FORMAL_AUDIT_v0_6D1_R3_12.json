@@ -1,0 +1,350 @@
+{
+  "schema": "ARCANA_R312_CANDIDATE_FORMAL_AUDIT_V1",
+  "stage": "v0.6D1-R3.12",
+  "verdict": "PASS_R312_CANDIDATE_FORMAL_AUDIT__READY_FOR_LOCAL_61_TO_46_RUN",
+  "passed": 64,
+  "total": 64,
+  "checks": [
+    {
+      "name": "file_exists:references/v0_6D1_R3_11/R3_11_POST_CHA1_RECOVERY_SUMMARY.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:references/v0_6D1_R3_11/WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:references/v0_6D1_R3_11/WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.npz",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:references/v0_6D1_R3_11/R3_11_SEAL_SUMMARY.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:src/arcana_worldsim/scientific_engines/r312_postcha1_diversity_recovery.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:scripts/run_v0_6D1_R3_12_diversity_recovery.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:run_v0_6D1_R3_12_diversity_recovery.ps1",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:tests/test_r312_postcha1_diversity_recovery.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file_exists:CANONICAL_POST_CHA1_H0_DIVERSITY_RECOVERY_CONTRACT_v0_6D1_R3_12.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_age_61Ma",
+      "pass": true,
+      "detail": 61.0
+    },
+    {
+      "name": "parent_elapsed_149Myr",
+      "pass": true,
+      "detail": 149000000.0
+    },
+    {
+      "name": "parent_species_95",
+      "pass": true,
+      "detail": 95
+    },
+    {
+      "name": "parent_components_236",
+      "pass": true,
+      "detail": 236
+    },
+    {
+      "name": "parent_json_hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_npz_hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_summary_hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cha1_extinction_cumulative_212",
+      "pass": true,
+      "detail": 212
+    },
+    {
+      "name": "cha1_bridge_cumulative_1",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "thaw_cumulative_1",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "window_start_61",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "window_end_46",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "impact_relative_start_5",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "impact_relative_end_20",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "expected_steps_120",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "biology_cadence_125k",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_parameter_unchanged:mutation_variance_supply_normalized_per_myr",
+      "pass": true,
+      "detail": 0.002
+    },
+    {
+      "name": "parent_parameter_unchanged:nonlinear_stabilizing_variance_depletion_per_myr_per_q",
+      "pass": true,
+      "detail": 0.9876543209876544
+    },
+    {
+      "name": "parent_parameter_unchanged:variance_ceiling_normalized",
+      "pass": true,
+      "detail": 0.08
+    },
+    {
+      "name": "parent_parameter_unchanged:adaptive_k_eff",
+      "pass": true,
+      "detail": 38.47
+    },
+    {
+      "name": "parent_parameter_unchanged:migration_fraction_ceiling",
+      "pass": true,
+      "detail": 0.3
+    },
+    {
+      "name": "parent_parameter_unchanged:gene_flow_ceiling_per_step",
+      "pass": true,
+      "detail": 0.15
+    },
+    {
+      "name": "parent_parameter_unchanged:minimum_effective_isolation_generations",
+      "pass": true,
+      "detail": 50000.0
+    },
+    {
+      "name": "parent_parameter_unchanged:minimum_intrinsic_ri",
+      "pass": true,
+      "detail": 0.65
+    },
+    {
+      "name": "parent_parameter_unchanged:minimum_trait_distance",
+      "pass": true,
+      "detail": 1.0
+    },
+    {
+      "name": "parent_parameter_unchanged:maximum_effective_exchange_pressure",
+      "pass": true,
+      "detail": 0.25
+    },
+    {
+      "name": "parent_parameter_unchanged:founder_minimum_persistence_years",
+      "pass": true,
+      "detail": 1000000.0
+    },
+    {
+      "name": "parent_parameter_unchanged:vicariance_persistence_min_years",
+      "pass": true,
+      "detail": 2000000.0
+    },
+    {
+      "name": "parent_parameter_unchanged:reconnection_persistence_min_years",
+      "pass": true,
+      "detail": 2000000.0
+    },
+    {
+      "name": "no_richness_target_semantics",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "inherited_byte_identity:src/arcana_worldsim/scientific_engines/r38_restartable_checkpoint.py",
+      "pass": true,
+      "detail": "67211772a20bd942569d7bb8cc3e8c19c6a4071e0bca8ca0cfb1fe15b5d79698"
+    },
+    {
+      "name": "inherited_byte_identity:src/arcana_worldsim/scientific_engines/r311_postcha1_recovery.py",
+      "pass": true,
+      "detail": "22a4aa1e4592a5bb9b1a05187ff56d75eb9f692864bf9063fec16e6fcb0da045"
+    },
+    {
+      "name": "inherited_byte_identity:src/arcana_worldsim/scientific_engines/r310_cha1_highres_bridge.py",
+      "pass": true,
+      "detail": "4380436e520a74b2aace8189bcb90ec7662f136054e6a368c6cd586efb0bd804"
+    },
+    {
+      "name": "inherited_byte_identity:src/arcana_worldsim/scientific_engines/r37h_closed_loop_binding.py",
+      "pass": true,
+      "detail": "e3ef481213c93b74c895a5b6887aac1a80799747cbe525cc32270f56a10e7beb"
+    },
+    {
+      "name": "inherited_byte_identity:src/rebased_natural_control_runtime_v0_6D1_R2.py",
+      "pass": true,
+      "detail": "2a56552a0121c9a66d42357887bc8ecf18bf90f0063a7e9face002a21b205cb0"
+    },
+    {
+      "name": "inherited_byte_identity:src/rebased_natural_control_runtime_v0_6D1_R2_1.py",
+      "pass": true,
+      "detail": "ca7e0f80d303eac474cfea99b9867733d901fc5a5533b2e9a4fa5d08e2bfb019"
+    },
+    {
+      "name": "inherited_byte_identity:src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+      "pass": true,
+      "detail": "087d05f532d84f53f8c99d08ae0099657792526eb3aa97bab7cb9e64cb342e45"
+    },
+    {
+      "name": "inherited_byte_identity:src/rebased_natural_control_runtime_v0_6D1_R3_5.py",
+      "pass": true,
+      "detail": "634237eb15383000e88180b890ead9b6facc281c0a77eb5ce00efe32f3d0bc95"
+    },
+    {
+      "name": "inherited_byte_identity:src/rebased_deep_time_barrier_provider_v0_6D1_R3.py",
+      "pass": true,
+      "detail": "1eace956da7254be21e5513a5c75f2efc360b80410f4c72dafedef01f584ce0c"
+    },
+    {
+      "name": "smoke_verdict_pass",
+      "pass": true,
+      "detail": "PASS_R312_DIVERSITY_RECOVERY_SMOKE__ORDINARY_CONTINUATION_VALID"
+    },
+    {
+      "name": "smoke_steps_4",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "smoke_age_60p5",
+      "pass": true,
+      "detail": 60.5
+    },
+    {
+      "name": "smoke_no_cha1_reapplication",
+      "pass": true,
+      "detail": {
+        "paleogeographic_support_loss_remap": 4,
+        "deme_coalescence": 2,
+        "deme_fission": 0,
+        "speciation": 0,
+        "ordinary_background_extinction": 0,
+        "CHA1_species_extinction": 0,
+        "CHA1_high_resolution_event_bridge_complete": 0,
+        "post_CHA1_ordinary_lifecycle_thaw": 0
+      }
+    },
+    {
+      "name": "smoke_no_second_thaw",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "smoke_population_nonnegative",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "smoke_no_inaccessible_population",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "smoke_q_below_ceiling",
+      "pass": true,
+      "detail": 0.046771712887413816
+    },
+    {
+      "name": "smoke_zero_clipping",
+      "pass": true,
+      "detail": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "smoke_S_symmetric",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "smoke_S_diag_zero",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "smoke_S_nonnegative",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "smoke_serialization_identity",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "smoke_richness_not_forced",
+      "pass": true,
+      "detail": 95
+    },
+    {
+      "name": "smoke_recovery_reference_not_target",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "immediate_regression_22_pass",
+      "pass": true,
+      "detail": "22 passed in 14.28s"
+    }
+  ],
+  "governance": {
+    "canonical_run_executed_in_chatgpt": false,
+    "canonical_long_run_reserved_for_local_execution": true,
+    "richness_target_used": false,
+    "positive_net_diversification_required_for_pass": false,
+    "deep_biological_coupling": false,
+    "cha1_reapplication": false,
+    "lifecycle_thaw_reapplication": false
+  }
+}

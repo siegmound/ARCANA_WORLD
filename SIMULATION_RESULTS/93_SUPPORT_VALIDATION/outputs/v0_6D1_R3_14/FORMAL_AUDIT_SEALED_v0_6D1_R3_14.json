@@ -1,0 +1,909 @@
+{
+  "schema": "ARCANA_R314_FORMAL_SEALED_BINDING_AUDIT_V1",
+  "stage": "v0.6D1-R3.14",
+  "verdict": "PASS_R314_LATE_CENOZOIC_PROVIDER_C2_AND_ADAPTIVE_CLOCK_BOUND__30MA_H0_BIOLOGY_RESTART_BOUNDARY_SEALED",
+  "checks": "129/129",
+  "failed": [],
+  "binding_summary_sha256": "07507693877f50528725ac99d858d9b3c66e4694a23f67b77644aa7f2caebc80",
+  "adaptive_clock_sha256": "63e4c01e35db1af5ce83d9b0e3547929f3272241805436f7c047e0db83fbd4bf",
+  "b1_sha256": "82d94312bdf205ed975b548be96428e2029ea9c44c10279f43a7fc4436356510",
+  "b2_sha256": "52ba09b2d0f58b25d5edf96e3f0286160764d1b2b6a0d554f65f14cc3371f718",
+  "source_authority_manifest_sha256": "f091a31cc1cd09735343835a7a2bca65cbd8a17b1ad93948e1b95a5850aff0d2",
+  "parent_r313": {
+    "seal": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R3_13_SEAL_SUMMARY.json",
+    "summary": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_13\\R3_13_LONGTERM_POST_CHA1_REASSEMBLY_SUMMARY.json",
+    "checkpoint_json": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_13\\WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.json",
+    "checkpoint_npz": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_13\\WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.npz",
+    "hashes": {
+      "summary": "2406b0c8fa374bcf4d77db368475e2da1a60368f93d42f8c0f8818d64944f3c9",
+      "checkpoint_json": "2c1cc49f04b7b489b6deab45caedf1cc3144a153d518e7646a4bc02ea235f869",
+      "checkpoint_npz": "2c576735a8268476cb5da91095a1bb549cf4edd1940ac539777144a156f66226"
+    },
+    "species": 111,
+    "components": 219,
+    "population": 1304.4717354192449,
+    "age_ma": 30.0
+  },
+  "clock_summary": {
+    "status": "PASS_ADAPTIVE_CLOCK_WITH_200_120KA_REPLAY_SAFE_BOUNDARY_CONTINUATION",
+    "checkpoint_count": 374,
+    "interval_count": 373,
+    "start_age_ma": 30.0,
+    "end_age_ma": 0.0,
+    "contains_200ka": true,
+    "contains_120ka": true,
+    "min_dt_years": 50,
+    "max_dt_years": 2000000,
+    "domain_interval_counts": {
+      "SECULAR_30MA_TO_200KA": 18,
+      "LATE_PLEISTOCENE_200_120KA_REPLAY_SAFE_BOUNDARY_CONTINUATION": 160,
+      "RECENT_WITH_CHA2_50Y_NESTED_AUTHORITY": 195
+    },
+    "validation": {
+      "status": "PASS",
+      "errors": [],
+      "production_replay_blockers": [],
+      "production_replay_ready": true,
+      "production_replay_ready_scope": "COARSE_NATURAL_HISTORY_30MA_TO_BOOK_WITH_C2_BOUNDARY_CONTINUATION",
+      "high_resolution_200ka_historical_paleoclimate_sealed": false,
+      "c2_bridge_is_historical_glacial_chronology": false,
+      "c2_bridge_step_years": 500,
+      "c2_bridge_interval_count": 160,
+      "c2_last_500y_effective_land_support_delta": 0.0020012378599858494,
+      "d21_windows": [
+        {
+          "older_year": 25000,
+          "younger_year": 15000,
+          "required_max_dt": 250,
+          "actual_max_dt": 200,
+          "pass": true
+        },
+        {
+          "older_year": 15000,
+          "younger_year": 11000,
+          "required_max_dt": 50,
+          "actual_max_dt": 50,
+          "pass": true
+        },
+        {
+          "older_year": 11000,
+          "younger_year": 8000,
+          "required_max_dt": 100,
+          "actual_max_dt": 100,
+          "pass": true
+        },
+        {
+          "older_year": 8000,
+          "younger_year": 0,
+          "required_max_dt": 500,
+          "actual_max_dt": 500,
+          "pass": true
+        }
+      ],
+      "time_roundtrip_max_abs_age_ma": 2.7755575615628914e-17,
+      "checkpoint_count": 374,
+      "interval_count": 373,
+      "120ka_nonphysical_restart_removed": true,
+      "C1_50y_CHA2_authority_preserved": true,
+      "canonical_catastrophes_added": 0,
+      "biology_modified": false
+    }
+  },
+  "binding_30ma": {
+    "age_ma": 30.0,
+    "r313_old_to_late_endpoint_identity_exact": true,
+    "r314_bound_c2_endpoint_identity_exact": true,
+    "fields": {
+      "land_support": {
+        "exact": true,
+        "max_abs_error": 0.0
+      },
+      "temperature_c": {
+        "exact": true,
+        "max_abs_error": 0.0
+      },
+      "aridity_index": {
+        "exact": true,
+        "max_abs_error": 0.0
+      },
+      "browse_forage": {
+        "exact": true,
+        "max_abs_error": 0.0
+      },
+      "low_forage": {
+        "exact": true,
+        "max_abs_error": 0.0
+      },
+      "wetland_forage": {
+        "exact": true,
+        "max_abs_error": 0.0
+      },
+      "total_edible_forage": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    "biology_advanced": false
+  },
+  "interpretation_guard": {
+    "biology_replay_started": false,
+    "adaptive_clock_is_scheduler_not_new_physics": true,
+    "production_replay_ready_does_not_mean_high_resolution_historical_paleoclimate_sealed": true,
+    "c2_200_120ka_bridge_is_replay_safe_boundary_continuation_not_historical_glacial_chronology": true
+  },
+  "check_rows": [
+    {
+      "name": "exists:binding_summary",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\R3_14_LATE_CENOZOIC_BINDING_SUMMARY.json"
+    },
+    {
+      "name": "exists:adaptive_clock",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\R3_14_ADAPTIVE_CLOCK_C2_30Ma_TO_BOOK.json"
+    },
+    {
+      "name": "exists:v061_root",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL"
+    },
+    {
+      "name": "exists:B1_boundary",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_4B1\\exact_120ka_A1_boundary_state.npz"
+    },
+    {
+      "name": "exists:B2_boundary",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_4B2\\relative_eustatic_shoreline_anomaly_120ka_A1.npz"
+    },
+    {
+      "name": "exists:source_manifest",
+      "pass": true,
+      "detail": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_14.json"
+    },
+    {
+      "name": "summary_stage",
+      "pass": true,
+      "detail": "v0.6D1-R3.14"
+    },
+    {
+      "name": "summary_verdict",
+      "pass": true,
+      "detail": "PASS_R314_LATE_CENOZOIC_PROVIDER_C2_AND_ADAPTIVE_CLOCK_BOUND__BIOLOGY_REPLAY_NOT_STARTED"
+    },
+    {
+      "name": "summary_no_blocker",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_age_30ma",
+      "pass": true,
+      "detail": 30.0
+    },
+    {
+      "name": "parent_species_111",
+      "pass": true,
+      "detail": 111
+    },
+    {
+      "name": "parent_components_219",
+      "pass": true,
+      "detail": 219
+    },
+    {
+      "name": "parent_population_positive",
+      "pass": true,
+      "detail": 1304.4717354192449
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py",
+      "pass": true,
+      "detail": {
+        "expected": "e80ef0d5389315bc7e8a756e0d5b97a305c050505e3557256f10572c43d618e8",
+        "actual": "e80ef0d5389315bc7e8a756e0d5b97a305c050505e3557256f10572c43d618e8"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/cha2_nested_50y.py",
+      "pass": true,
+      "detail": {
+        "expected": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f",
+        "actual": "d0b121f0b0fe7214d6c6f4736176d1c64f419c77dd991659291fe12b633ada0f"
+      }
+    },
+    {
+      "name": "source_sha:scripts/run_v0_6D1_R3_14_late_cenozoic_binding.py",
+      "pass": true,
+      "detail": {
+        "expected": "ac767bbe3f60cc70d7037c8d98dc6498fc34fb35dd3b897f51c4c2e2164fd870",
+        "actual": "ac767bbe3f60cc70d7037c8d98dc6498fc34fb35dd3b897f51c4c2e2164fd870"
+      }
+    },
+    {
+      "name": "source_sha:tests/test_r314_late_cenozoic_binding.py",
+      "pass": true,
+      "detail": {
+        "expected": "780ee0f168e4ec58ab3fbb7d4687aa9252e57649006f85ef31902bc235f979b7",
+        "actual": "780ee0f168e4ec58ab3fbb7d4687aa9252e57649006f85ef31902bc235f979b7"
+      }
+    },
+    {
+      "name": "source_sha:tests/test_r314_c1_numeric_portability.py",
+      "pass": true,
+      "detail": {
+        "expected": "1b2229861a9af442344861c8f47e175018037f27883e522f6fdb0480fa92915d",
+        "actual": "1b2229861a9af442344861c8f47e175018037f27883e522f6fdb0480fa92915d"
+      }
+    },
+    {
+      "name": "source_sha:configs/world1_r314_late_cenozoic_binding_v0_6D1_R3_14.json",
+      "pass": true,
+      "detail": {
+        "expected": "1979b8fa6ca2a3fb7d2feb9d8461929238ce1b998354c553767d1df01f98da0e",
+        "actual": "1979b8fa6ca2a3fb7d2feb9d8461929238ce1b998354c553767d1df01f98da0e"
+      }
+    },
+    {
+      "name": "source_sha:run_v0_6D1_R3_14_late_cenozoic_binding.ps1",
+      "pass": true,
+      "detail": {
+        "expected": "fe57901206503d6c2689795845e98dac55d4b397e57745f5406287d700bb7111",
+        "actual": "fe57901206503d6c2689795845e98dac55d4b397e57745f5406287d700bb7111"
+      }
+    },
+    {
+      "name": "source_sha:run_v0_6D1_R3_14_checks.ps1",
+      "pass": true,
+      "detail": {
+        "expected": "6e6ea0c0c428ae15484f6653e972e389fa748c7f8ae4b5b3c223404b91ba54c5",
+        "actual": "6e6ea0c0c428ae15484f6653e972e389fa748c7f8ae4b5b3c223404b91ba54c5"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/environment.py",
+      "pass": true,
+      "detail": {
+        "expected": "b2796f39ef8309cae5d7c1316930f2b87c2ce538edb9a30badcb5319570d74b5",
+        "actual": "b2796f39ef8309cae5d7c1316930f2b87c2ce538edb9a30badcb5319570d74b5"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/sealed_120ka_boundary.py",
+      "pass": true,
+      "detail": {
+        "expected": "28e93bbbaf914bf4830f64642abd4a5d88d41aaeaa970908e745eb34228927c5",
+        "actual": "28e93bbbaf914bf4830f64642abd4a5d88d41aaeaa970908e745eb34228927c5"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/eustatic_land_bridge.py",
+      "pass": true,
+      "detail": {
+        "expected": "078259ca9b334801294177db30e0dae93a909310282526317ed66059b1c50438",
+        "actual": "078259ca9b334801294177db30e0dae93a909310282526317ed66059b1c50438"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/integrated_provider.py",
+      "pass": true,
+      "detail": {
+        "expected": "205d3ad15989aaaa71fde3f73efc3f5f0b41ca57735e342a723691f10073841c",
+        "actual": "205d3ad15989aaaa71fde3f73efc3f5f0b41ca57735e342a723691f10073841c"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/late_pleistocene_boundary.py",
+      "pass": true,
+      "detail": {
+        "expected": "5357cafa87319f62362f6b1bfbf1b6359ba7423aa94698d079d89b7bba8ce473",
+        "actual": "5357cafa87319f62362f6b1bfbf1b6359ba7423aa94698d079d89b7bba8ce473"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/adaptive_clock.py",
+      "pass": true,
+      "detail": {
+        "expected": "45be2634512c7daee25ec8848f6f010932ea5c02b0341648fde24ea362e21ba3",
+        "actual": "45be2634512c7daee25ec8848f6f010932ea5c02b0341648fde24ea362e21ba3"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/adaptive_clock_c1.py",
+      "pass": true,
+      "detail": {
+        "expected": "3656082b0a853412f7cd8fbcdb98f266f3351c936e4342cf29a450e3f37bc3c6",
+        "actual": "3656082b0a853412f7cd8fbcdb98f266f3351c936e4342cf29a450e3f37bc3c6"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/adaptive_clock_c2.py",
+      "pass": true,
+      "detail": {
+        "expected": "6d131f80f16038ec0238ce8863a31f8ae391921db802c07ad6d953ce93696759",
+        "actual": "6d131f80f16038ec0238ce8863a31f8ae391921db802c07ad6d953ce93696759"
+      }
+    },
+    {
+      "name": "source_sha:src/arcana_worldsim/late_cenozoic/production_interface.py",
+      "pass": true,
+      "detail": {
+        "expected": "d99a4c6b0150d3c90be0593b93162cb8d02d8ce2f34d7ccf84cf4ef9a27ac903",
+        "actual": "d99a4c6b0150d3c90be0593b93162cb8d02d8ce2f34d7ccf84cf4ef9a27ac903"
+      }
+    },
+    {
+      "name": "formula_replay_rtol_frozen",
+      "pass": true,
+      "detail": 1e-10
+    },
+    {
+      "name": "formula_replay_atol_frozen",
+      "pass": true,
+      "detail": 1e-12
+    },
+    {
+      "name": "biology_not_modified_manifest",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scientific_parameters_not_changed_manifest",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "v061_sha:authorial_seal",
+      "pass": true,
+      "detail": {
+        "expected": "d097f83ce53fb298689c63458dfa1012d26b3983254ccf25085b91f882e55a2a",
+        "actual": "d097f83ce53fb298689c63458dfa1012d26b3983254ccf25085b91f882e55a2a"
+      }
+    },
+    {
+      "name": "manifest_v061_sha:authorial_seal",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_discovery_v061_sha:authorial_seal",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_materialized_v061_sha:authorial_seal",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "v061_sha:model_py",
+      "pass": true,
+      "detail": {
+        "expected": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f",
+        "actual": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f"
+      }
+    },
+    {
+      "name": "manifest_v061_sha:model_py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_discovery_v061_sha:model_py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_materialized_v061_sha:model_py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "v061_sha:recent_history",
+      "pass": true,
+      "detail": {
+        "expected": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+        "actual": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1"
+      }
+    },
+    {
+      "name": "manifest_v061_sha:recent_history",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_discovery_v061_sha:recent_history",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_materialized_v061_sha:recent_history",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "v061_sha:spatial_snapshots",
+      "pass": true,
+      "detail": {
+        "expected": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+        "actual": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd"
+      }
+    },
+    {
+      "name": "manifest_v061_sha:spatial_snapshots",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_discovery_v061_sha:spatial_snapshots",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_materialized_v061_sha:spatial_snapshots",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "v061_sha:shoreline",
+      "pass": true,
+      "detail": {
+        "expected": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+        "actual": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+      }
+    },
+    {
+      "name": "manifest_v061_sha:shoreline",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_discovery_v061_sha:shoreline",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_materialized_v061_sha:shoreline",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b1_sha_matches_summary",
+      "pass": true,
+      "detail": {
+        "actual": "82d94312bdf205ed975b548be96428e2029ea9c44c10279f43a7fc4436356510",
+        "summary": "82d94312bdf205ed975b548be96428e2029ea9c44c10279f43a7fc4436356510"
+      }
+    },
+    {
+      "name": "b2_sha_matches_summary",
+      "pass": true,
+      "detail": {
+        "actual": "52ba09b2d0f58b25d5edf96e3f0286160764d1b2b6a0d554f65f14cc3371f718",
+        "summary": "52ba09b2d0f58b25d5edf96e3f0286160764d1b2b6a0d554f65f14cc3371f718"
+      }
+    },
+    {
+      "name": "b1_age_120ka",
+      "pass": true,
+      "detail": [
+        0.12
+      ]
+    },
+    {
+      "name": "b2_age_120ka",
+      "pass": true,
+      "detail": [
+        0.12
+      ]
+    },
+    {
+      "name": "b1_finite:temperature_c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b1_finite:aridity_index",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b1_finite:browse_forage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b1_finite:low_forage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b1_finite:wetland_forage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b1_finite:total_edible_forage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b1_finite:paleo_land_fraction",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b2_finite:effective_land_support_120ka",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "b2_finite:colonizable_shelf_support_120ka",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "actual_c2_type",
+      "pass": true,
+      "detail": "IntegratedLateCenozoicProviderC2"
+    },
+    {
+      "name": "actual_c2_parent_is_c1",
+      "pass": true,
+      "detail": "IntegratedLateCenozoicProviderC1"
+    },
+    {
+      "name": "30ma_r313_old_to_late_exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "30ma_c2_endpoint_exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "30ma_exact:land_support",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "30ma_zero_error:land_support",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "30ma_exact:temperature_c",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "30ma_zero_error:temperature_c",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "30ma_exact:aridity_index",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "30ma_zero_error:aridity_index",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "30ma_exact:browse_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "30ma_zero_error:browse_forage",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "30ma_exact:low_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "30ma_zero_error:low_forage",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "30ma_exact:wetland_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "30ma_zero_error:wetland_forage",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "30ma_exact:total_edible_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "30ma_zero_error:total_edible_forage",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "clock_status",
+      "pass": true,
+      "detail": "PASS_ADAPTIVE_CLOCK_WITH_200_120KA_REPLAY_SAFE_BOUNDARY_CONTINUATION"
+    },
+    {
+      "name": "clock_checkpoint_count_374",
+      "pass": true,
+      "detail": 374
+    },
+    {
+      "name": "clock_interval_count_373",
+      "pass": true,
+      "detail": 373
+    },
+    {
+      "name": "clock_start_30ma",
+      "pass": true,
+      "detail": 30.0
+    },
+    {
+      "name": "clock_end_book",
+      "pass": true,
+      "detail": 0.0
+    },
+    {
+      "name": "clock_contains_200ka",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "clock_contains_120ka",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "clock_min_dt_50y",
+      "pass": true,
+      "detail": 50
+    },
+    {
+      "name": "clock_max_dt_2my",
+      "pass": true,
+      "detail": 2000000
+    },
+    {
+      "name": "clock_domain_counts",
+      "pass": true,
+      "detail": {
+        "SECULAR_30MA_TO_200KA": 18,
+        "LATE_PLEISTOCENE_200_120KA_REPLAY_SAFE_BOUNDARY_CONTINUATION": 160,
+        "RECENT_WITH_CHA2_50Y_NESTED_AUTHORITY": 195
+      }
+    },
+    {
+      "name": "clock_validation_pass",
+      "pass": true,
+      "detail": "PASS"
+    },
+    {
+      "name": "clock_no_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "clock_no_production_blockers",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "clock_production_replay_ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "clock_scope_coarse_natural_history",
+      "pass": true,
+      "detail": "COARSE_NATURAL_HISTORY_30MA_TO_BOOK_WITH_C2_BOUNDARY_CONTINUATION"
+    },
+    {
+      "name": "historical_highres_not_claimed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "c2_not_historical_glacial_chronology",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "c2_step_500y",
+      "pass": true,
+      "detail": 500
+    },
+    {
+      "name": "c2_interval_count_160",
+      "pass": true,
+      "detail": 160
+    },
+    {
+      "name": "120ka_nonphysical_restart_removed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "c1_cha2_50y_authority_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_canonical_catastrophes_added",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "clock_biology_not_modified",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "d21_window_0_pass",
+      "pass": true,
+      "detail": {
+        "older_year": 25000,
+        "younger_year": 15000,
+        "required_max_dt": 250,
+        "actual_max_dt": 200,
+        "pass": true
+      }
+    },
+    {
+      "name": "d21_window_1_pass",
+      "pass": true,
+      "detail": {
+        "older_year": 15000,
+        "younger_year": 11000,
+        "required_max_dt": 50,
+        "actual_max_dt": 50,
+        "pass": true
+      }
+    },
+    {
+      "name": "d21_window_2_pass",
+      "pass": true,
+      "detail": {
+        "older_year": 11000,
+        "younger_year": 8000,
+        "required_max_dt": 100,
+        "actual_max_dt": 100,
+        "pass": true
+      }
+    },
+    {
+      "name": "d21_window_3_pass",
+      "pass": true,
+      "detail": {
+        "older_year": 8000,
+        "younger_year": 0,
+        "required_max_dt": 500,
+        "actual_max_dt": 500,
+        "pass": true
+      }
+    },
+    {
+      "name": "d21_window_count_4",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "clock_json_exact_rebuild",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "clock_sha_matches_summary",
+      "pass": true,
+      "detail": {
+        "actual": "63e4c01e35db1af5ce83d9b0e3547929f3272241805436f7c047e0db83fbd4bf",
+        "summary": "63e4c01e35db1af5ce83d9b0e3547929f3272241805436f7c047e0db83fbd4bf"
+      }
+    },
+    {
+      "name": "summary_clock_matches_rebuild",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_binding_matches_rebuild",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "governance_false:biology_advanced",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_false:deep_biological_coupling",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_false:cha1_reapplied",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_false:lifecycle_thaw_reapplied",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_false:preview_boundary_used",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_false:richness_target_used",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_false:guild_target_used",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_false:cross_guild_transition_operator_activated",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "governance_true:exact_v061_hash_binding_required",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "governance_true:b1_b2_rematerialized_from_existing_authorized_equations",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "governance_true:c2_120ka_replay_safe_boundary_required",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "governance_true:adaptive_clock_is_scheduler_not_new_physics",
+      "pass": true,
+      "detail": true
+    }
+  ]
+}

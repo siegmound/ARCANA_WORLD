@@ -1,0 +1,25 @@
+{
+  "stage": "v0.6D1-R4.35-R2",
+  "status": "PASS_R435_R2_SCHEMA_TRUE_REPAIR_APPLIED",
+  "prepatch_source_sha256": "585000783b12d41dc8415c657ac9e44348d212959fccf46a8ef608030e372f0d",
+  "postpatch_source_sha256": "4acc5e0909c86a374138e3358d401d46b9c5b0bd5fccf1e880122f0eb4a050e5",
+  "root_causes": [
+    "R43_LEDGER_IS_23_JOBS_X_4_REPLICATE_SEEDS_NOT_ONE_SCALAR_SEED_PER_JOB",
+    "J18_R423_TRANSLATION_SELECTS_SNAPSHOT_DEME_STATE_NOT_GENERIC_STATE_DISCOVERY",
+    "J18_COORDINATES_ARE_CONTINUOUS_IN_EXPLICIT_R328_90X180_GRID",
+    "J21_FEATURE_AXES_WERE_MISREAD_AS_X_DIMENSION",
+    "J21_TWO_ANCHOR_AGE_AXES_ARE_EXACT_EQUIVALENT_CANONICAL_COPIES"
+  ],
+  "governance": {
+    "r43_modified": false,
+    "r328_modified": false,
+    "r423_modified": false,
+    "r431_modified": false,
+    "canonical_state_changed": false,
+    "external_engine_execution_performed": false,
+    "target_numeric_execution_performed": false,
+    "readjudication_performed": false,
+    "gate_weakening_performed": false,
+    "failed_r435_evidence_preserved": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "ARCANA_R315_FULL_REGRESSION_EVIDENCE_V1",
+  "stage": "v0.6D1-R3.15",
+  "verdict": "PASS",
+  "total": "312/312",
+  "groups": [
+    {"name": "historical_rebased_r31_to_r36a", "passed": 111, "failed": 0},
+    {"name": "r37_core_r38_r39", "passed": 77, "failed": 0},
+    {"name": "r37e_to_r37h_shadow_production", "passed": 30, "failed": 0},
+    {"name": "cross_engine_nemo", "passed": 41, "failed": 0},
+    {"name": "r310_to_r315_postcha1_late_cenozoic", "passed": 53, "failed": 0}
+  ],
+  "note": "One earlier aggregate invocation timed out during a later pytest tranche after the first 111 tests had passed. The remaining non-overlapping groups were rerun separately with plugin autoload disabled and local basetemp; all terminated normally."
+}

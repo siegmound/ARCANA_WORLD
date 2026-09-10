@@ -1,0 +1,104 @@
+{
+  "constraint_edges": [
+    {
+      "class": "METABOLIC_ALLOCATION_COST",
+      "constraint_id": "K_NEURAL_ENERGETIC_BUDGET",
+      "numeric_strength": null,
+      "sign": "COST_INCREASES_WITH_COMBINED_EXPRESSION",
+      "status": "EMPIRICAL_CALIBRATION_REQUIRED",
+      "traits": [
+        "C1_working_memory",
+        "C2_inhibitory_control",
+        "C3_relational_integration",
+        "C4_causal_model_depth",
+        "P1_acquisition_efficiency",
+        "P2_retention_stability",
+        "P3_cross_context_transfer",
+        "S3_social_learning_fidelity",
+        "S4_communication_bandwidth"
+      ]
+    },
+    {
+      "class": "FINITE_REPRODUCTIVE_BUDGET_FRONTIER",
+      "constraint_id": "K_OFFSPRING_NUMBER_INVESTMENT",
+      "numeric_strength": null,
+      "sign": "CONDITIONAL_NEGATIVE_FEASIBLE_SET_COUPLING",
+      "status": "EMPIRICAL_CALIBRATION_REQUIRED",
+      "traits": [
+        "H2_reproductive_output_rate",
+        "H3_parental_investment"
+      ]
+    },
+    {
+      "class": "MORPHOLOGICAL_SHARED_STRUCTURE_CONSTRAINT",
+      "constraint_id": "K_SHARED_EFFECTOR_FUNCTION",
+      "numeric_strength": null,
+      "sign": "MORPHOLOGY_DEPENDENT_NOT_UNIVERSALLY_NEGATIVE",
+      "status": "EMPIRICAL_CALIBRATION_REQUIRED",
+      "traits": [
+        "M1_effector_independence",
+        "M3_workspace_control",
+        "L4_effector_locomotor_decoupling"
+      ]
+    },
+    {
+      "class": "GENERALIST_SPECIALIST_FRONTIER",
+      "constraint_id": "K_DIET_BREADTH_SPECIALIST_EFFICIENCY",
+      "numeric_strength": null,
+      "sign": "ENVIRONMENT_DEPENDENT_FRONTIER",
+      "status": "EMPIRICAL_CALIBRATION_REQUIRED",
+      "traits": [
+        "D1_resource_breadth",
+        "D2_digestive_processing_breadth",
+        "D3_resource_switching"
+      ]
+    },
+    {
+      "class": "GENERALIST_SPECIALIST_FRONTIER",
+      "constraint_id": "K_ECOLOGICAL_BREADTH_SPECIALIZATION",
+      "numeric_strength": null,
+      "sign": "ENVIRONMENT_DEPENDENT_FRONTIER",
+      "status": "EMPIRICAL_CALIBRATION_REQUIRED",
+      "traits": [
+        "G1_habitat_breadth",
+        "G2_climatic_tolerance_breadth",
+        "G4_colonization_breadth"
+      ]
+    },
+    {
+      "class": "ECOLOGICAL_SOCIAL_COST",
+      "constraint_id": "K_SOCIALITY_DENSITY_COST",
+      "numeric_strength": null,
+      "sign": "BENEFIT_AND_COST_BOTH_CONTEXT_DEPENDENT",
+      "status": "EMPIRICAL_CALIBRATION_REQUIRED",
+      "traits": [
+        "S1_social_tolerance",
+        "S2_coordination_capacity",
+        "S3_social_learning_fidelity",
+        "S4_communication_bandwidth"
+      ]
+    },
+    {
+      "class": "DEVELOPMENTAL_TIME_ALLOCATION",
+      "constraint_id": "K_DEVELOPMENT_LEARNING_WINDOW",
+      "numeric_strength": null,
+      "sign": "MECHANISTIC_LINK_SIGN_NOT_FIXED_A_PRIORI",
+      "status": "EMPIRICAL_CALIBRATION_REQUIRED",
+      "traits": [
+        "H1_maturation_duration",
+        "P4_developmental_plasticity",
+        "P1_acquisition_efficiency"
+      ]
+    }
+  ],
+  "direct_cross_trait_numeric_correlations": null,
+  "principles": [
+    "NO_TRAIT_IS_MONOTONICALLY_BETTER_IN_ALL_ENVIRONMENTS",
+    "NO_NUMERIC_GENETIC_CORRELATION_IS_AUTHOR_ASSIGNED_IN_R3_22",
+    "MECHANISTIC_CONSTRAINTS_DEFINE_WHAT_MUST_BE_CALIBRATED_NOT_THEIR_MAGNITUDES",
+    "GENETIC_COVARIANCE_MUST_BE_EMPIRICALLY_ESTIMATED_AND_POSITIVE_SEMIDEFINITE",
+    "METABOLIC_AND_ECOLOGICAL_COSTS_ENTER_FITNESS_DOWNSTREAM_NOT_AS_HUMAN_TARGETS"
+  ],
+  "stage": "v0.6D1-R3.22",
+  "status": "STRUCTURE_DEFINED_NUMERICS_UNMATERIALIZED"
+}

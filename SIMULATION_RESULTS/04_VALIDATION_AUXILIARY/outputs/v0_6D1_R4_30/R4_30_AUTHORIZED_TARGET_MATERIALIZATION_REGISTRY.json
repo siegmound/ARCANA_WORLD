@@ -1,0 +1,822 @@
+{
+  "adjudicative_target_count": 0,
+  "authorized_selector_attempt_count": 5,
+  "numeric_target_materialized_count": 0,
+  "records": [
+    {
+      "adjudicative_in_r430": false,
+      "domain": "additive_variance",
+      "domain_protocol": {
+        "canonical_quantity": "additive genetic variance for the explicitly bound trait/locus model",
+        "forbidden_substitutes": [
+          "expected heterozygosity alone",
+          "allele-frequency gap alone",
+          "generic diversity"
+        ],
+        "required_spatial_population_basis": "same population/deme aggregation and weights",
+        "required_temporal_basis": "same window endpoints or explicitly frozen aggregation",
+        "required_unit_basis": "trait^2 or explicitly dimensionless standardized trait variance"
+      },
+      "external_engine_result_used_to_define_target": false,
+      "frozen_authority_class": "DIRECT_CANDIDATE",
+      "frozen_selector": "additive_variance",
+      "frozen_transform_id": "IDENTITY",
+      "hash_valid_parent_source_packet_count": 6,
+      "materialization_disposition": "DEFERRED_IDENTITY_REQUIRES_SCALAR_SELECTOR_VALUE",
+      "materialization_reason": "shape=[32, 2, 36, 145, 6]",
+      "next_priority": "R431_AUTHORIZED_SELECTOR_TRANSFORM_DEPENDENCY_CLOSURE",
+      "nonbinding_parent_source_packet_drift_count": 0,
+      "numeric_target_materialized": false,
+      "numeric_value": null,
+      "raw_value_shape": [
+        32,
+        2,
+        36,
+        145,
+        6
+      ],
+      "readjudication_authorized_in_r430": false,
+      "result_selected_transform_used": false,
+      "selected_source": {
+        "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "hash_match": true,
+        "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+        "present": true,
+        "selector_present": true,
+        "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+      },
+      "selector_authority_disposition": "EXPLICIT_PRE_RESULT_SELECTOR_AUTHORITY_FROZEN",
+      "source_binding_rule": "UNIQUE_HASH_VALID_EXACT_SELECTOR_SOURCE_REQUIRED; ZERO_EXACT_BINDING_WITH_SOME_HASH_VALID_PARENT_SOURCE_IS_DEFERRED_AUTHORITY_GAP; ALL_PARENT_SOURCE_INTEGRITY_FAILURE_BLOCKS",
+      "source_candidates": [
+        {
+          "expected_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "hash_match": true,
+          "observed_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE.npz"
+        },
+        {
+          "expected_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "hash_match": true,
+          "observed_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE_SUMMARY.json"
+        },
+        {
+          "expected_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "hash_match": true,
+          "observed_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_DOMESTICATION_GENETICS_OUTCOMES.json"
+        },
+        {
+          "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "hash_match": true,
+          "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": true,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+        },
+        {
+          "expected_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "hash_match": true,
+          "observed_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_GENETIC_PRIORS.npz"
+        },
+        {
+          "expected_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "hash_match": true,
+          "observed_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_QUANTITATIVE_GENETICS_AUTHORITY.json"
+        }
+      ],
+      "source_integrity_blocked": false,
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    },
+    {
+      "adjudicative_in_r430": false,
+      "domain": "additive_variance",
+      "domain_protocol": {
+        "canonical_quantity": "additive genetic variance for the explicitly bound trait/locus model",
+        "forbidden_substitutes": [
+          "expected heterozygosity alone",
+          "allele-frequency gap alone",
+          "generic diversity"
+        ],
+        "required_spatial_population_basis": "same population/deme aggregation and weights",
+        "required_temporal_basis": "same window endpoints or explicitly frozen aggregation",
+        "required_unit_basis": "trait^2 or explicitly dimensionless standardized trait variance"
+      },
+      "external_engine_result_used_to_define_target": false,
+      "frozen_authority_class": "DIRECT_CANDIDATE",
+      "frozen_selector": "additive_variance",
+      "frozen_transform_id": "IDENTITY",
+      "hash_valid_parent_source_packet_count": 6,
+      "materialization_disposition": "DEFERRED_IDENTITY_REQUIRES_SCALAR_SELECTOR_VALUE",
+      "materialization_reason": "shape=[32, 2, 36, 145, 6]",
+      "next_priority": "R431_AUTHORIZED_SELECTOR_TRANSFORM_DEPENDENCY_CLOSURE",
+      "nonbinding_parent_source_packet_drift_count": 0,
+      "numeric_target_materialized": false,
+      "numeric_value": null,
+      "raw_value_shape": [
+        32,
+        2,
+        36,
+        145,
+        6
+      ],
+      "readjudication_authorized_in_r430": false,
+      "result_selected_transform_used": false,
+      "selected_source": {
+        "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "hash_match": true,
+        "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+        "present": true,
+        "selector_present": true,
+        "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+      },
+      "selector_authority_disposition": "EXPLICIT_PRE_RESULT_SELECTOR_AUTHORITY_FROZEN",
+      "source_binding_rule": "UNIQUE_HASH_VALID_EXACT_SELECTOR_SOURCE_REQUIRED; ZERO_EXACT_BINDING_WITH_SOME_HASH_VALID_PARENT_SOURCE_IS_DEFERRED_AUTHORITY_GAP; ALL_PARENT_SOURCE_INTEGRITY_FAILURE_BLOCKS",
+      "source_candidates": [
+        {
+          "expected_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "hash_match": true,
+          "observed_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE.npz"
+        },
+        {
+          "expected_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "hash_match": true,
+          "observed_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE_SUMMARY.json"
+        },
+        {
+          "expected_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "hash_match": true,
+          "observed_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_DOMESTICATION_GENETICS_OUTCOMES.json"
+        },
+        {
+          "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "hash_match": true,
+          "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": true,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+        },
+        {
+          "expected_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "hash_match": true,
+          "observed_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_GENETIC_PRIORS.npz"
+        },
+        {
+          "expected_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "hash_match": true,
+          "observed_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_QUANTITATIVE_GENETICS_AUTHORITY.json"
+        }
+      ],
+      "source_integrity_blocked": false,
+      "window_id": "SAPIENT_3MA_TO_200KA"
+    },
+    {
+      "adjudicative_in_r430": false,
+      "domain": "additive_variance",
+      "domain_protocol": {
+        "canonical_quantity": "additive genetic variance for the explicitly bound trait/locus model",
+        "forbidden_substitutes": [
+          "expected heterozygosity alone",
+          "allele-frequency gap alone",
+          "generic diversity"
+        ],
+        "required_spatial_population_basis": "same population/deme aggregation and weights",
+        "required_temporal_basis": "same window endpoints or explicitly frozen aggregation",
+        "required_unit_basis": "trait^2 or explicitly dimensionless standardized trait variance"
+      },
+      "external_engine_result_used_to_define_target": false,
+      "frozen_authority_class": "DIRECT_CANDIDATE",
+      "frozen_selector": "additive_variance",
+      "frozen_transform_id": "IDENTITY",
+      "hash_valid_parent_source_packet_count": 6,
+      "materialization_disposition": "DEFERRED_IDENTITY_REQUIRES_SCALAR_SELECTOR_VALUE",
+      "materialization_reason": "shape=[32, 2, 36, 145, 6]",
+      "next_priority": "R431_AUTHORIZED_SELECTOR_TRANSFORM_DEPENDENCY_CLOSURE",
+      "nonbinding_parent_source_packet_drift_count": 0,
+      "numeric_target_materialized": false,
+      "numeric_value": null,
+      "raw_value_shape": [
+        32,
+        2,
+        36,
+        145,
+        6
+      ],
+      "readjudication_authorized_in_r430": false,
+      "result_selected_transform_used": false,
+      "selected_source": {
+        "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "hash_match": true,
+        "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+        "present": true,
+        "selector_present": true,
+        "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+      },
+      "selector_authority_disposition": "EXPLICIT_PRE_RESULT_SELECTOR_AUTHORITY_FROZEN",
+      "source_binding_rule": "UNIQUE_HASH_VALID_EXACT_SELECTOR_SOURCE_REQUIRED; ZERO_EXACT_BINDING_WITH_SOME_HASH_VALID_PARENT_SOURCE_IS_DEFERRED_AUTHORITY_GAP; ALL_PARENT_SOURCE_INTEGRITY_FAILURE_BLOCKS",
+      "source_candidates": [
+        {
+          "expected_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "hash_match": true,
+          "observed_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE.npz"
+        },
+        {
+          "expected_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "hash_match": true,
+          "observed_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE_SUMMARY.json"
+        },
+        {
+          "expected_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "hash_match": true,
+          "observed_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_DOMESTICATION_GENETICS_OUTCOMES.json"
+        },
+        {
+          "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "hash_match": true,
+          "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": true,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+        },
+        {
+          "expected_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "hash_match": true,
+          "observed_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_GENETIC_PRIORS.npz"
+        },
+        {
+          "expected_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "hash_match": true,
+          "observed_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_QUANTITATIVE_GENETICS_AUTHORITY.json"
+        }
+      ],
+      "source_integrity_blocked": false,
+      "window_id": "SAPIENT_200KA_TO_0"
+    },
+    {
+      "adjudicative_in_r430": false,
+      "domain": "population_persistence",
+      "domain_protocol": {
+        "canonical_quantity": "population persistence response with baseline semantics invariant to the neutral comparator",
+        "forbidden_substitutes": [
+          "CDMetaPOP absolute response after R4.12 neutral-invariance failure",
+          "occupancy-only proxy"
+        ],
+        "required_spatial_population_basis": "same population scope and census semantics",
+        "required_temporal_basis": "same window endpoints",
+        "required_unit_basis": "N_end/N_start or explicitly matched causal response ratio"
+      },
+      "external_engine_result_used_to_define_target": false,
+      "frozen_authority_class": "NORMALIZABLE_CANDIDATE",
+      "frozen_selector": "snapshots[].total_population",
+      "frozen_transform_id": "END_OVER_START",
+      "hash_valid_parent_source_packet_count": 40,
+      "materialization_disposition": "DEFERRED_AUTHORIZED_SELECTOR_SOURCE_BINDING_AUTHORITY_NOT_FROZEN_BY_R429",
+      "materialization_reason": "eligible_sources=0; hash_valid_parent_packets=40; drifted_parent_packets=0; frozen_selector=snapshots[].total_population",
+      "next_priority": "R431_AUTHORIZED_SELECTOR_TRANSFORM_DEPENDENCY_CLOSURE",
+      "nonbinding_parent_source_packet_drift_count": 0,
+      "numeric_target_materialized": false,
+      "numeric_value": null,
+      "raw_value_shape": null,
+      "readjudication_authorized_in_r430": false,
+      "result_selected_transform_used": false,
+      "selected_source": null,
+      "selector_authority_disposition": "EXPLICIT_PRE_RESULT_SELECTOR_AUTHORITY_FROZEN",
+      "source_binding_rule": "UNIQUE_HASH_VALID_EXACT_SELECTOR_SOURCE_REQUIRED; ZERO_EXACT_BINDING_WITH_SOME_HASH_VALID_PARENT_SOURCE_IS_DEFERRED_AUTHORITY_GAP; ALL_PARENT_SOURCE_INTEGRITY_FAILURE_BLOCKS",
+      "source_candidates": [
+        {
+          "expected_sha256": "9c86712ce6056515a6bfe5c25c7d382be0ccb707e92e8e0817bd6561bbbe35f9",
+          "hash_match": true,
+          "observed_sha256": "9c86712ce6056515a6bfe5c25c7d382be0ccb707e92e8e0817bd6561bbbe35f9",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_27\\R3_27_HUMAN_200KA_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "50fab1ee50dd001e922ecc028276d2187b831ff336c4ad1cbd1012d0627182e4",
+          "hash_match": true,
+          "observed_sha256": "50fab1ee50dd001e922ecc028276d2187b831ff336c4ad1cbd1012d0627182e4",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_28\\R3_28_CANDIDATE_POPULATION_OUTCOMES.json"
+        },
+        {
+          "expected_sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+          "hash_match": true,
+          "observed_sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_28\\R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz"
+        },
+        {
+          "expected_sha256": "d1bf47352b33ec028acafc57134d2aa42c2373d6ed72cc517494208038c0f1cc",
+          "hash_match": true,
+          "observed_sha256": "d1bf47352b33ec028acafc57134d2aa42c2373d6ed72cc517494208038c0f1cc",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_28\\R3_28_HUMAN_0KA_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "3da6f2225eda800608995e74373c955f91504b9bef6845db4234845d471165e2",
+          "hash_match": true,
+          "observed_sha256": "3da6f2225eda800608995e74373c955f91504b9bef6845db4234845d471165e2",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_29\\R3_29_COMMUNITY_PRECONDITION_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "f890169abce22641dddf95d82ff34d641c9bbde1362cd15e13cb0a8f34e6a919",
+          "hash_match": true,
+          "observed_sha256": "f890169abce22641dddf95d82ff34d641c9bbde1362cd15e13cb0a8f34e6a919",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_30\\R3_30_CENSUS_AND_GROUP_TIMESERIES.npz"
+        },
+        {
+          "expected_sha256": "a61598fd4c7864138cae3e414cd717b71f267de23bad7e36f68e022519f6edf9",
+          "hash_match": true,
+          "observed_sha256": "a61598fd4c7864138cae3e414cd717b71f267de23bad7e36f68e022519f6edf9",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_30\\R3_30_CENSUS_CALIBRATION_AUTHORITY.json"
+        },
+        {
+          "expected_sha256": "eb1fb23af98a6eda36bc1bf8fe4982e4c4c95fec7b03063b93abd56a5bfc0122",
+          "hash_match": true,
+          "observed_sha256": "eb1fb23af98a6eda36bc1bf8fe4982e4c4c95fec7b03063b93abd56a5bfc0122",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_30\\R3_30_COMMUNITY_HISTORY_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "28a29f624911eb4c526734d8defd45ff3db40e0532b3093b7baa13d04609fc01",
+          "hash_match": true,
+          "observed_sha256": "28a29f624911eb4c526734d8defd45ff3db40e0532b3093b7baa13d04609fc01",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_30\\R3_30_LINEAGE_CENSUS_AND_GROUP_OUTCOMES.json"
+        },
+        {
+          "expected_sha256": "a804f388c2e656e4abec9fc1fb55cdb710824b686526a1780cfd67cec95fabf8",
+          "hash_match": true,
+          "observed_sha256": "a804f388c2e656e4abec9fc1fb55cdb710824b686526a1780cfd67cec95fabf8",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_31\\R3_31_CULTURAL_TECHNOLOGICAL_ECOLOGY_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "99a7f1027a780d204c9957212b5753fee8a5417feda1ad4b8b0419275eca083b",
+          "hash_match": true,
+          "observed_sha256": "99a7f1027a780d204c9957212b5753fee8a5417feda1ad4b8b0419275eca083b",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_32\\R3_32_SUBSISTENCE_REGIONAL_TRANSITION_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "31a58c26af8e8fb43f9be9ed9bc430568a95a50696d75aecf73e955295fff898",
+          "hash_match": true,
+          "observed_sha256": "31a58c26af8e8fb43f9be9ed9bc430568a95a50696d75aecf73e955295fff898",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_33\\R3_33_FOOD_PRODUCTION_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "34123dee12fc8db32c750a5ca691a7ea674795919565ae83070063a8516a5f39",
+          "hash_match": true,
+          "observed_sha256": "34123dee12fc8db32c750a5ca691a7ea674795919565ae83070063a8516a5f39",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_34\\R3_34_FOOD_PRODUCTION_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "e23ff4e822425ab87c8b353e837ed9c466b19555ad7721c81929d47e8b25d5bc",
+          "hash_match": true,
+          "observed_sha256": "e23ff4e822425ab87c8b353e837ed9c466b19555ad7721c81929d47e8b25d5bc",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_FOOD_PRODUCTION_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "074b7198ecd662abcc89a6cf09e4d621906140253697b5d532a74629878272c4",
+          "hash_match": true,
+          "observed_sha256": "074b7198ecd662abcc89a6cf09e4d621906140253697b5d532a74629878272c4",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_36\\R3_36_PATHWAY_RESOLUTION_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "2227faa24ea17993aaf61f16149a8b0edf04ae7e5a7211bfa6ee0b642fc1951d",
+          "hash_match": true,
+          "observed_sha256": "2227faa24ea17993aaf61f16149a8b0edf04ae7e5a7211bfa6ee0b642fc1951d",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_37\\R3_37_ECONOMY_PATHWAY_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+          "hash_match": true,
+          "observed_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_10\\WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.json"
+        },
+        {
+          "expected_sha256": "d31ae5aaeb53422809e173c20308e69af334ef8d2d535484ae51141b9dff58a8",
+          "hash_match": true,
+          "observed_sha256": "d31ae5aaeb53422809e173c20308e69af334ef8d2d535484ae51141b9dff58a8",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_10\\WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.npz"
+        },
+        {
+          "expected_sha256": "bdf75d08bd39181dee3331f91b1dd6864ab8e0c1e88c94eed7813d148aebda3b",
+          "hash_match": true,
+          "observed_sha256": "bdf75d08bd39181dee3331f91b1dd6864ab8e0c1e88c94eed7813d148aebda3b",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_11\\WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.json"
+        },
+        {
+          "expected_sha256": "4f4582ca7f83926941f7224033a83356b2f5df196dcb8d3dbafae2e9b16e987c",
+          "hash_match": true,
+          "observed_sha256": "4f4582ca7f83926941f7224033a83356b2f5df196dcb8d3dbafae2e9b16e987c",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_11\\WORLD1_H0_61Ma_POST_CHA1_5MY_RECOVERY_CHECKPOINT_v0_6D1_R3_11.npz"
+        },
+        {
+          "expected_sha256": "64be879574ebdf8f0fab1b8cb60b11aaeca0381411878ed40362f0b15f22109d",
+          "hash_match": true,
+          "observed_sha256": "64be879574ebdf8f0fab1b8cb60b11aaeca0381411878ed40362f0b15f22109d",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_11\\WORLD1_H0_65P0Ma_R3_11_SMOKE_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "6a6de2c98f3b3ea446e7dccc7d605f6bf1438a4d555c10d76ca9b1057ec5a0e3",
+          "hash_match": true,
+          "observed_sha256": "6a6de2c98f3b3ea446e7dccc7d605f6bf1438a4d555c10d76ca9b1057ec5a0e3",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_11\\WORLD1_H0_65P0Ma_R3_11_SMOKE_CHECKPOINT.npz"
+        },
+        {
+          "expected_sha256": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269",
+          "hash_match": true,
+          "observed_sha256": "6189f16fd3d7b390ad33afb57eaa36fef0bdbcf7f1498fa7396d3d1f81843269",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_12\\WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.json"
+        },
+        {
+          "expected_sha256": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948",
+          "hash_match": true,
+          "observed_sha256": "92b410ce3258c44ba0f4b911776628d880fbe5a5fe3be3b9b6fe13dc34973948",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_12\\WORLD1_H0_46Ma_POST_CHA1_20MY_DIVERSITY_RECOVERY_CHECKPOINT_v0_6D1_R3_12.npz"
+        },
+        {
+          "expected_sha256": "64fd78f5555715b382a5d4933b2b1541093cfa5e798ce125df45782b1cdd81d8",
+          "hash_match": true,
+          "observed_sha256": "64fd78f5555715b382a5d4933b2b1541093cfa5e798ce125df45782b1cdd81d8",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_12\\WORLD1_H0_60P5Ma_R3_12_SMOKE_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "bd131bb3a186547cfc2809d9fb47c29b77a6dc9b7c36856f08a30c55dac17da5",
+          "hash_match": true,
+          "observed_sha256": "bd131bb3a186547cfc2809d9fb47c29b77a6dc9b7c36856f08a30c55dac17da5",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_12\\WORLD1_H0_60P5Ma_R3_12_SMOKE_CHECKPOINT.npz"
+        },
+        {
+          "expected_sha256": "2c1cc49f04b7b489b6deab45caedf1cc3144a153d518e7646a4bc02ea235f869",
+          "hash_match": true,
+          "observed_sha256": "2c1cc49f04b7b489b6deab45caedf1cc3144a153d518e7646a4bc02ea235f869",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_13\\WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.json"
+        },
+        {
+          "expected_sha256": "2c576735a8268476cb5da91095a1bb549cf4edd1940ac539777144a156f66226",
+          "hash_match": true,
+          "observed_sha256": "2c576735a8268476cb5da91095a1bb549cf4edd1940ac539777144a156f66226",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_13\\WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.npz"
+        },
+        {
+          "expected_sha256": "4fb4ffdd711b7a5439ffff15a0a6f381e42ca560b00a2338d70edb77d848bcf6",
+          "hash_match": true,
+          "observed_sha256": "4fb4ffdd711b7a5439ffff15a0a6f381e42ca560b00a2338d70edb77d848bcf6",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_15\\WORLD1_H0_250ka_LATE_CENOZOIC_SECULAR_BIOLOGY_PRE_C2_BRIDGE_CHECKPOINT_v0_6D1_R3_15.json"
+        },
+        {
+          "expected_sha256": "f8e79ea862de6c48f01784c727ca15abf9d8fd53b07f47d1aaab5bf589ee5692",
+          "hash_match": true,
+          "observed_sha256": "f8e79ea862de6c48f01784c727ca15abf9d8fd53b07f47d1aaab5bf589ee5692",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_15\\WORLD1_H0_250ka_LATE_CENOZOIC_SECULAR_BIOLOGY_PRE_C2_BRIDGE_CHECKPOINT_v0_6D1_R3_15.npz"
+        },
+        {
+          "expected_sha256": "60d48b4c769ca5b8f087b6b07a45f98d0144dc9b239c702d5808bfe2b370278e",
+          "hash_match": true,
+          "observed_sha256": "60d48b4c769ca5b8f087b6b07a45f98d0144dc9b239c702d5808bfe2b370278e",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_15\\WORLD1_H0_29P5Ma_R3_15_LATE_CENOZOIC_SECULAR_SMOKE_CHECKPOINT.json"
+        },
+        {
+          "expected_sha256": "9153ec71369a5e07883ed976351ac4fa9c19333d7aca05bffd2ac65dd7822bce",
+          "hash_match": true,
+          "observed_sha256": "9153ec71369a5e07883ed976351ac4fa9c19333d7aca05bffd2ac65dd7822bce",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_15\\WORLD1_H0_29P5Ma_R3_15_LATE_CENOZOIC_SECULAR_SMOKE_CHECKPOINT.npz"
+        },
+        {
+          "expected_sha256": "aaf0bab510b4bcb5fbf77707ad66201515342cf8eb25b687e8f15952d2afca32",
+          "hash_match": true,
+          "observed_sha256": "aaf0bab510b4bcb5fbf77707ad66201515342cf8eb25b687e8f15952d2afca32",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_16\\WORLD1_H0_125ka_C2_EXPOSURE_PRESERVING_FIXED_BIOLOGY_PRE_120KA_RESTART_CHECKPOINT_v0_6D1_R3_16.json"
+        },
+        {
+          "expected_sha256": "de0ef549d2fc74f1546e320b3fc3e0bc2f7ca7cbf5ebac464976494ad4055593",
+          "hash_match": true,
+          "observed_sha256": "de0ef549d2fc74f1546e320b3fc3e0bc2f7ca7cbf5ebac464976494ad4055593",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_16\\WORLD1_H0_125ka_C2_EXPOSURE_PRESERVING_FIXED_BIOLOGY_PRE_120KA_RESTART_CHECKPOINT_v0_6D1_R3_16.npz"
+        },
+        {
+          "expected_sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+          "hash_match": true,
+          "observed_sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.json"
+        },
+        {
+          "expected_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+          "hash_match": true,
+          "observed_sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_19\\WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz"
+        },
+        {
+          "expected_sha256": "58019980b3c28903b9ffd4836f0be9dfc35e0621be764fc974e13974e7117796",
+          "hash_match": true,
+          "observed_sha256": "58019980b3c28903b9ffd4836f0be9dfc35e0621be764fc974e13974e7117796",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_8\\R3_8_CHECKPOINT_VALIDATION_SUMMARY.json"
+        },
+        {
+          "expected_sha256": "8a8fbe9da857c6b278c2c8856a4b989a40a0a5ec2087af64a2ce0e9c1a6a2853",
+          "hash_match": true,
+          "observed_sha256": "8a8fbe9da857c6b278c2c8856a4b989a40a0a5ec2087af64a2ce0e9c1a6a2853",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_8\\WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.json"
+        },
+        {
+          "expected_sha256": "0d253babcd74bdfcf4590bb6f51ac4ce99aabcb8f224d00a4c59fd148021cc32",
+          "hash_match": true,
+          "observed_sha256": "0d253babcd74bdfcf4590bb6f51ac4ce99aabcb8f224d00a4c59fd148021cc32",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_8\\WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.npz"
+        },
+        {
+          "expected_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+          "hash_match": true,
+          "observed_sha256": "5ea3f6cad09e2b6e09a6ff795a89dbd370ca0ca049f20c04e8d53fbeb8dd6469",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\references\\v0_6D1_R3_10\\WORLD1_H0_65P5Ma_POST_CHA1_500KY_CANONICAL_CHECKPOINT_v0_6D1_R3_10.json"
+        }
+      ],
+      "source_integrity_blocked": false,
+      "window_id": "PRODUCER_20KA_TO_0"
+    },
+    {
+      "adjudicative_in_r430": false,
+      "domain": "additive_variance",
+      "domain_protocol": {
+        "canonical_quantity": "additive genetic variance for the explicitly bound trait/locus model",
+        "forbidden_substitutes": [
+          "expected heterozygosity alone",
+          "allele-frequency gap alone",
+          "generic diversity"
+        ],
+        "required_spatial_population_basis": "same population/deme aggregation and weights",
+        "required_temporal_basis": "same window endpoints or explicitly frozen aggregation",
+        "required_unit_basis": "trait^2 or explicitly dimensionless standardized trait variance"
+      },
+      "external_engine_result_used_to_define_target": false,
+      "frozen_authority_class": "DIRECT_CANDIDATE",
+      "frozen_selector": "additive_variance",
+      "frozen_transform_id": "IDENTITY",
+      "hash_valid_parent_source_packet_count": 6,
+      "materialization_disposition": "DEFERRED_IDENTITY_REQUIRES_SCALAR_SELECTOR_VALUE",
+      "materialization_reason": "shape=[32, 2, 36, 145, 6]",
+      "next_priority": "R431_AUTHORIZED_SELECTOR_TRANSFORM_DEPENDENCY_CLOSURE",
+      "nonbinding_parent_source_packet_drift_count": 0,
+      "numeric_target_materialized": false,
+      "numeric_value": null,
+      "raw_value_shape": [
+        32,
+        2,
+        36,
+        145,
+        6
+      ],
+      "readjudication_authorized_in_r430": false,
+      "result_selected_transform_used": false,
+      "selected_source": {
+        "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "hash_match": true,
+        "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+        "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+        "present": true,
+        "selector_present": true,
+        "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+      },
+      "selector_authority_disposition": "EXPLICIT_PRE_RESULT_SELECTOR_AUTHORITY_FROZEN",
+      "source_binding_rule": "UNIQUE_HASH_VALID_EXACT_SELECTOR_SOURCE_REQUIRED; ZERO_EXACT_BINDING_WITH_SOME_HASH_VALID_PARENT_SOURCE_IS_DEFERRED_AUTHORITY_GAP; ALL_PARENT_SOURCE_INTEGRITY_FAILURE_BLOCKS",
+      "source_candidates": [
+        {
+          "expected_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "hash_match": true,
+          "observed_sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE.npz"
+        },
+        {
+          "expected_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "hash_match": true,
+          "observed_sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_21\\R3_21_REDUCED_GENETIC_STATE_SUMMARY.json"
+        },
+        {
+          "expected_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "hash_match": true,
+          "observed_sha256": "21b7f611db7a28b1b8d351f73676e3cabae76980b6f125c78d338168cb9f6c52",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_DOMESTICATION_GENETICS_OUTCOMES.json"
+        },
+        {
+          "expected_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "hash_match": true,
+          "observed_sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": true,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz"
+        },
+        {
+          "expected_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "hash_match": true,
+          "observed_sha256": "0b29379fddfa5a9d04b989ade9d32e02446f068765f5b0fb1f3ec2b0f55ef7de",
+          "parser_family": "READ_ONLY_NPZ_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_GENETIC_PRIORS.npz"
+        },
+        {
+          "expected_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "hash_match": true,
+          "observed_sha256": "106f61eb22706e83022e6739bb3d5584f428087b916ba1e0238fe94e4ff4cf31",
+          "parser_family": "READ_ONLY_JSON_DESCRIPTOR_EXTRACTOR",
+          "present": true,
+          "selector_present": false,
+          "source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\outputs\\v0_6D1_R3_35\\R3_35_PRODUCER_QUANTITATIVE_GENETICS_AUTHORITY.json"
+        }
+      ],
+      "source_integrity_blocked": false,
+      "window_id": "PRODUCER_20KA_TO_0"
+    }
+  ],
+  "semantic_dependency_or_source_ambiguity_deferred_count": 5,
+  "source_integrity_blocked_count": 0,
+  "stage": "v0.6D1-R4.30",
+  "status": "R430_AUTHORIZED_TARGET_MATERIALIZATION_COMPLETE"
+}

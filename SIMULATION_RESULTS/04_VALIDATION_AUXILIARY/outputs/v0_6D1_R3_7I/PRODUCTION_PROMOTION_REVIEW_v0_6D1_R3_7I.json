@@ -1,0 +1,253 @@
+{
+  "stage": "v0.6D1-R3.7I",
+  "status": "PASS_R37H_FULL_EVIDENCE_REVIEW",
+  "checks_passed": 38,
+  "check_count": 38,
+  "checks": [
+    {
+      "name": "summary_stage_r37h",
+      "pass": true,
+      "detail": "v0.6D1-R3.7H"
+    },
+    {
+      "name": "summary_governed_closed_loop_pass",
+      "pass": true,
+      "detail": {
+        "all_branches_valid": true,
+        "all_branches_clear_of_ceiling": true,
+        "qualitative_ceiling_coherence": true,
+        "governed_closed_loop_pass": true
+      }
+    },
+    {
+      "name": "summary_all_branches_valid",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_all_branches_clear_of_ceiling",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary_qualitative_ceiling_coherence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "K_LOW_stage",
+      "pass": true,
+      "detail": "v0.6D1-R3.7H"
+    },
+    {
+      "name": "K_LOW_label",
+      "pass": true,
+      "detail": "K_LOW"
+    },
+    {
+      "name": "K_LOW_K_exact",
+      "pass": true,
+      "detail": 37.614
+    },
+    {
+      "name": "K_LOW_480_steps",
+      "pass": true,
+      "detail": 480
+    },
+    {
+      "name": "K_LOW_valid_steps",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "K_LOW_closed_loop_gate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "K_LOW_zero_clipping",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "K_LOW_finite_peak_q",
+      "pass": true,
+      "detail": 0.048476407460347704
+    },
+    {
+      "name": "K_LOW_finite_positive_population",
+      "pass": true,
+      "detail": 1940.1122020968696
+    },
+    {
+      "name": "K_LOW_positive_species_count",
+      "pass": true,
+      "detail": 133
+    },
+    {
+      "name": "K_LOW_positive_component_count",
+      "pass": true,
+      "detail": 454
+    },
+    {
+      "name": "K_CENTER_stage",
+      "pass": true,
+      "detail": "v0.6D1-R3.7H"
+    },
+    {
+      "name": "K_CENTER_label",
+      "pass": true,
+      "detail": "K_CENTER"
+    },
+    {
+      "name": "K_CENTER_K_exact",
+      "pass": true,
+      "detail": 38.47
+    },
+    {
+      "name": "K_CENTER_480_steps",
+      "pass": true,
+      "detail": 480
+    },
+    {
+      "name": "K_CENTER_valid_steps",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "K_CENTER_closed_loop_gate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "K_CENTER_zero_clipping",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "K_CENTER_finite_peak_q",
+      "pass": true,
+      "detail": 0.048355783869918005
+    },
+    {
+      "name": "K_CENTER_finite_positive_population",
+      "pass": true,
+      "detail": 1940.1122015319092
+    },
+    {
+      "name": "K_CENTER_positive_species_count",
+      "pass": true,
+      "detail": 133
+    },
+    {
+      "name": "K_CENTER_positive_component_count",
+      "pass": true,
+      "detail": 454
+    },
+    {
+      "name": "K_HIGH_stage",
+      "pass": true,
+      "detail": "v0.6D1-R3.7H"
+    },
+    {
+      "name": "K_HIGH_label",
+      "pass": true,
+      "detail": "K_HIGH"
+    },
+    {
+      "name": "K_HIGH_K_exact",
+      "pass": true,
+      "detail": 41.002
+    },
+    {
+      "name": "K_HIGH_480_steps",
+      "pass": true,
+      "detail": 480
+    },
+    {
+      "name": "K_HIGH_valid_steps",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "K_HIGH_closed_loop_gate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "K_HIGH_zero_clipping",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "K_HIGH_finite_peak_q",
+      "pass": true,
+      "detail": 0.04802326522297417
+    },
+    {
+      "name": "K_HIGH_finite_positive_population",
+      "pass": true,
+      "detail": 1940.112199330987
+    },
+    {
+      "name": "K_HIGH_positive_species_count",
+      "pass": true,
+      "detail": 133
+    },
+    {
+      "name": "K_HIGH_positive_component_count",
+      "pass": true,
+      "detail": 454
+    }
+  ],
+  "macro_and_event_divergence_review": {
+    "peak_q_by_branch": {
+      "K_LOW": 0.048476407460347704,
+      "K_CENTER": 0.048355783869918005,
+      "K_HIGH": 0.04802326522297417
+    },
+    "max_peak_q_spread": 0.00045314223737353415,
+    "final_population_by_branch": {
+      "K_LOW": 1940.1122020968696,
+      "K_CENTER": 1940.1122015319092,
+      "K_HIGH": 1940.112199330987
+    },
+    "final_population_relative_span_vs_center": 1.4256301904971018e-09,
+    "species_count_by_branch": {
+      "K_LOW": 133,
+      "K_CENTER": 133,
+      "K_HIGH": 133
+    },
+    "component_count_by_branch": {
+      "K_LOW": 454,
+      "K_CENTER": 454,
+      "K_HIGH": 454
+    },
+    "event_counts_by_branch": {
+      "K_LOW": {
+        "paleogeographic_support_loss_remap": 432,
+        "deme_coalescence": 14,
+        "deme_fission": 335,
+        "speciation": 13
+      },
+      "K_CENTER": {
+        "paleogeographic_support_loss_remap": 432,
+        "deme_coalescence": 14,
+        "deme_fission": 335,
+        "speciation": 13
+      },
+      "K_HIGH": {
+        "paleogeographic_support_loss_remap": 432,
+        "deme_coalescence": 14,
+        "deme_fission": 335,
+        "speciation": 13
+      }
+    },
+    "species_count_exactly_equal": true,
+    "component_count_exactly_equal": true,
+    "event_counts_exactly_equal": true,
+    "review_semantics": "REPORTED_NOT_THRESHOLD_FITTED"
+  },
+  "promotion_eligible": true,
+  "source_zip_sha256": "0a736ea6b1b35ecd92416c968b34a5830167890ad7bbae6efffc06778fcf2287"
+}

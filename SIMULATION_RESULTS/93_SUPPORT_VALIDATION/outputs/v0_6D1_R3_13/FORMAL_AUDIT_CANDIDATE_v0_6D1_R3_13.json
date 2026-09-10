@@ -1,0 +1,402 @@
+{
+  "stage": "v0.6D1-R3.13",
+  "verdict": "PASS_R313_CANDIDATE_FORMAL_AUDIT",
+  "checks": "61/61",
+  "items": [
+    {
+      "name": "stage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "start_age",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "end_age",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "steps",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_species",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_components",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_json_hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "parent_npz_hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cha1_extinction_cumulative",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cha1_bridge_once",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "thaw_once",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "param_biology_cadence_years",
+      "pass": true,
+      "detail": [
+        125000.0,
+        125000.0
+      ]
+    },
+    {
+      "name": "param_transport_cadence_years",
+      "pass": true,
+      "detail": [
+        62500.0,
+        62500.0
+      ]
+    },
+    {
+      "name": "param_speciation_check_interval_years",
+      "pass": true,
+      "detail": [
+        500000.0,
+        500000.0
+      ]
+    },
+    {
+      "name": "param_ordinary_extinction_check_interval_years",
+      "pass": true,
+      "detail": [
+        500000.0,
+        500000.0
+      ]
+    },
+    {
+      "name": "param_ordinary_extinction_minimum_persistence_years",
+      "pass": true,
+      "detail": [
+        2000000.0,
+        2000000.0
+      ]
+    },
+    {
+      "name": "param_founder_minimum_persistence_years",
+      "pass": true,
+      "detail": [
+        1000000.0,
+        1000000.0
+      ]
+    },
+    {
+      "name": "param_vicariance_persistence_min_years",
+      "pass": true,
+      "detail": [
+        2000000.0,
+        2000000.0
+      ]
+    },
+    {
+      "name": "param_reconnection_persistence_min_years",
+      "pass": true,
+      "detail": [
+        2000000.0,
+        2000000.0
+      ]
+    },
+    {
+      "name": "param_mutation_variance_supply_normalized_per_myr",
+      "pass": true,
+      "detail": [
+        0.002,
+        0.002
+      ]
+    },
+    {
+      "name": "param_nonlinear_stabilizing_variance_depletion_per_myr_per_q",
+      "pass": true,
+      "detail": [
+        0.9876543209876544,
+        0.9876543209876544
+      ]
+    },
+    {
+      "name": "param_selection_variance_depletion_per_generation",
+      "pass": true,
+      "detail": [
+        2e-08,
+        2e-08
+      ]
+    },
+    {
+      "name": "param_variance_ceiling_normalized",
+      "pass": true,
+      "detail": [
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "name": "param_migration_reference_years",
+      "pass": true,
+      "detail": [
+        250000.0,
+        250000.0
+      ]
+    },
+    {
+      "name": "param_migration_fraction_ceiling",
+      "pass": true,
+      "detail": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "name": "param_gene_flow_ceiling_per_step",
+      "pass": true,
+      "detail": [
+        0.15,
+        0.15
+      ]
+    },
+    {
+      "name": "param_minimum_effective_isolation_generations",
+      "pass": true,
+      "detail": [
+        50000.0,
+        50000.0
+      ]
+    },
+    {
+      "name": "param_minimum_intrinsic_ri",
+      "pass": true,
+      "detail": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "name": "param_minimum_trait_distance",
+      "pass": true,
+      "detail": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "param_maximum_effective_exchange_pressure",
+      "pass": true,
+      "detail": [
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "name": "param_adaptive_k_eff",
+      "pass": true,
+      "detail": [
+        38.47,
+        38.47
+      ]
+    },
+    {
+      "name": "param_segregation_recombination_fraction_per_generation",
+      "pass": true,
+      "detail": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "name": "param_deme_fission_check_interval_years",
+      "pass": true,
+      "detail": [
+        500000.0,
+        500000.0
+      ]
+    },
+    {
+      "name": "param_reconnection_check_interval_years",
+      "pass": true,
+      "detail": [
+        500000.0,
+        500000.0
+      ]
+    },
+    {
+      "name": "handoff_exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "handoff_land_support",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "handoff_temperature_c",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "handoff_aridity_index",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "handoff_browse_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "handoff_low_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "handoff_wetland_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "handoff_total_edible_forage",
+      "pass": true,
+      "detail": {
+        "exact": true,
+        "max_abs_error": 0.0
+      }
+    },
+    {
+      "name": "smoke_verdict",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_steps",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_age",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_no_clipping",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_no_cha1",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_no_thaw",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_population_nonnegative",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_inaccessible_zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_q_below_ceiling",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_s_symmetric",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_s_diag_zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_s_nonnegative",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smoke_serialization",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_crossguild_authority",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "guild6_absent_recorded",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_richness_target",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_guild_target",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "deep_off",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_crossguild_activation",
+      "pass": true,
+      "detail": null
+    }
+  ]
+}

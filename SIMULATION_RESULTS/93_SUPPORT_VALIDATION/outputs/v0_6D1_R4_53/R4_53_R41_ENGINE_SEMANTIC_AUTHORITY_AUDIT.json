@@ -1,0 +1,129 @@
+{
+  "checks": {
+    "CDMetaPOP_benchmark_id_exact": true,
+    "CDMetaPOP_benchmark_spec_present": true,
+    "CDMetaPOP_host_row_present": true,
+    "CDMetaPOP_microbenchmark_pass": true,
+    "CDMetaPOP_runtime_version_exact": true,
+    "Madingley_benchmark_id_exact": true,
+    "Madingley_benchmark_spec_present": true,
+    "Madingley_host_row_present": true,
+    "Madingley_microbenchmark_pass": true,
+    "Madingley_runtime_version_exact": true,
+    "NEMO_benchmark_id_exact": true,
+    "NEMO_benchmark_spec_present": true,
+    "NEMO_host_row_present": true,
+    "NEMO_microbenchmark_pass": true,
+    "NEMO_runtime_version_exact": true,
+    "RangeShifter_benchmark_id_exact": true,
+    "RangeShifter_benchmark_spec_present": true,
+    "RangeShifter_host_row_present": true,
+    "RangeShifter_microbenchmark_pass": true,
+    "RangeShifter_runtime_version_exact": true,
+    "SLiM_benchmark_id_exact": true,
+    "SLiM_benchmark_spec_present": true,
+    "SLiM_host_row_present": true,
+    "SLiM_microbenchmark_pass": true,
+    "SLiM_runtime_version_exact": true,
+    "r41_single_runs_not_promotional": true,
+    "semantic_explicit_space_denominator": true,
+    "semantic_explicit_time_mapping": true,
+    "semantic_madingley_no_species_identity": true,
+    "semantic_no_identical_genetic_parameter_assumption": true,
+    "semantic_no_literal_N_equivalence": true
+  },
+  "checks_passed": 31,
+  "checks_total": 31,
+  "details": {
+    "CDMetaPOP": {
+      "benchmark_id": "R41_CDMETAPOP_BUNDLED_5GEN_EXAMPLE",
+      "confirmed_version": "3.08",
+      "purpose": "Execute the pinned 3.08 bundled demographic-genetic example suite and verify generated population/genetic evidence files.",
+      "required_metrics": [
+        "scenario_rows",
+        "runtime_generations",
+        "new_output_files",
+        "csv_output_files",
+        "source_commit"
+      ],
+      "scientific_domains": [
+        "population_persistence",
+        "connectivity",
+        "gene_flow",
+        "founder_persistence"
+      ]
+    },
+    "Madingley": {
+      "benchmark_id": "R41_MADINGLEY_ONE_YEAR_ECOSYSTEM",
+      "confirmed_version": "MadingleyR-1.0.6__CPP-2.02",
+      "purpose": "Execute Madingley init plus one simulated year on a small terrestrial window and verify heterotroph/autotroph state production.",
+      "required_metrics": [
+        "initial_cohort_count",
+        "final_cohort_count",
+        "initial_stock_count",
+        "final_stock_count",
+        "years"
+      ],
+      "scientific_domains": [
+        "biomass",
+        "trophic_opportunity",
+        "extinction_risk"
+      ]
+    },
+    "NEMO": {
+      "benchmark_id": "R41_NEMO_B1_ADMIXTURE_CONVERGENCE",
+      "confirmed_version": "2.4.2",
+      "purpose": "Validate executable forward-time finite-N migration/recombination semantics and extract realized allele-frequency convergence.",
+      "required_metrics": [
+        "initial_mean_frequency_gap",
+        "final_mean_frequency_gap",
+        "qfreq_rows",
+        "generations",
+        "patches"
+      ],
+      "scientific_domains": [
+        "gene_flow",
+        "additive_variance",
+        "admixture"
+      ]
+    },
+    "RangeShifter": {
+      "benchmark_id": "R41_RANGESHIFTR_DEFAULT_RANGE_DYNAMICS",
+      "confirmed_version": "3.0.1",
+      "purpose": "Execute a real RangeShiftR simulation and extract abundance/occupied-cell range trajectory.",
+      "required_metrics": [
+        "initial_abundance",
+        "final_abundance",
+        "initial_occupied_cells",
+        "final_occupied_cells",
+        "years"
+      ],
+      "scientific_domains": [
+        "range_occupancy",
+        "range_shift_rate",
+        "connectivity",
+        "founder_persistence"
+      ]
+    },
+    "SLiM": {
+      "benchmark_id": "R41_SLIM_TWO_POP_TREESEQ_GENE_FLOW",
+      "confirmed_version": "5.2",
+      "purpose": "Execute two-population forward-time migration with tree-sequence recording and validate ancestry pipeline materialization.",
+      "required_metrics": [
+        "tree_nodes",
+        "tree_edges",
+        "tree_individuals",
+        "tree_mutations",
+        "sequence_length",
+        "generations"
+      ],
+      "scientific_domains": [
+        "gene_flow",
+        "admixture",
+        "ancestry",
+        "producer_divergence"
+      ]
+    }
+  },
+  "pass": true
+}

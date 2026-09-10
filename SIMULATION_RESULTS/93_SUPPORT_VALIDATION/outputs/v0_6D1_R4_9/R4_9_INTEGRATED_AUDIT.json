@@ -1,0 +1,322 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "PASS_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATE_EXPANSION_PREPARED",
+      "name": "r49_prepared",
+      "pass": true
+    },
+    {
+      "detail": "PASS",
+      "name": "parent_dynamic_adapter_pass",
+      "pass": true
+    },
+    {
+      "detail": "PASS",
+      "name": "parent_neutral_adapter_pass",
+      "pass": true
+    },
+    {
+      "detail": "PASS",
+      "name": "additional_dynamic_adapter_pass",
+      "pass": true
+    },
+    {
+      "detail": "PASS",
+      "name": "additional_neutral_adapter_pass",
+      "pass": true
+    },
+    {
+      "detail": 16,
+      "name": "additional_dynamic_exact_16",
+      "pass": true
+    },
+    {
+      "detail": 16,
+      "name": "additional_neutral_exact_16",
+      "pass": true
+    },
+    {
+      "detail": {
+        "dynamic": [
+          [
+            4,
+            1166989281
+          ],
+          [
+            5,
+            1246776956
+          ],
+          [
+            6,
+            1210625923
+          ],
+          [
+            7,
+            71721983
+          ],
+          [
+            8,
+            1366173606
+          ],
+          [
+            9,
+            139248058
+          ],
+          [
+            10,
+            2116392631
+          ],
+          [
+            11,
+            432203749
+          ],
+          [
+            12,
+            2092099438
+          ],
+          [
+            13,
+            1925168285
+          ],
+          [
+            14,
+            462210758
+          ],
+          [
+            15,
+            1783600812
+          ],
+          [
+            16,
+            1678546588
+          ],
+          [
+            17,
+            164105413
+          ],
+          [
+            18,
+            279459156
+          ],
+          [
+            19,
+            843742872
+          ]
+        ],
+        "expected": [
+          [
+            4,
+            1166989281
+          ],
+          [
+            5,
+            1246776956
+          ],
+          [
+            6,
+            1210625923
+          ],
+          [
+            7,
+            71721983
+          ],
+          [
+            8,
+            1366173606
+          ],
+          [
+            9,
+            139248058
+          ],
+          [
+            10,
+            2116392631
+          ],
+          [
+            11,
+            432203749
+          ],
+          [
+            12,
+            2092099438
+          ],
+          [
+            13,
+            1925168285
+          ],
+          [
+            14,
+            462210758
+          ],
+          [
+            15,
+            1783600812
+          ],
+          [
+            16,
+            1678546588
+          ],
+          [
+            17,
+            164105413
+          ],
+          [
+            18,
+            279459156
+          ],
+          [
+            19,
+            843742872
+          ]
+        ],
+        "neutral": [
+          [
+            4,
+            1166989281
+          ],
+          [
+            5,
+            1246776956
+          ],
+          [
+            6,
+            1210625923
+          ],
+          [
+            7,
+            71721983
+          ],
+          [
+            8,
+            1366173606
+          ],
+          [
+            9,
+            139248058
+          ],
+          [
+            10,
+            2116392631
+          ],
+          [
+            11,
+            432203749
+          ],
+          [
+            12,
+            2092099438
+          ],
+          [
+            13,
+            1925168285
+          ],
+          [
+            14,
+            462210758
+          ],
+          [
+            15,
+            1783600812
+          ],
+          [
+            16,
+            1678546588
+          ],
+          [
+            17,
+            164105413
+          ],
+          [
+            18,
+            279459156
+          ],
+          [
+            19,
+            843742872
+          ]
+        ]
+      },
+      "name": "additional_seed_ledgers_match",
+      "pass": true
+    },
+    {
+      "detail": 20,
+      "name": "exact_20_total_paired_replicates",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": 20,
+        "paired": 20
+      },
+      "name": "all_expected_pairs_present",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "all_paired_initial_populations_match",
+      "pass": true
+    },
+    {
+      "detail": 20,
+      "name": "all_20_paired_effects_finite",
+      "pass": true
+    },
+    {
+      "detail": 0.9353883003794401,
+      "name": "arcana_causal_effect_available",
+      "pass": true
+    },
+    {
+      "detail": 1.05,
+      "name": "diagnosis_uses_frozen_r44_neutral_factor",
+      "pass": true
+    },
+    {
+      "detail": "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+      "name": "diagnosis_class_valid",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_adaptive_stopping_used",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_majority_vote",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 20,
+  "checks_total": 20,
+  "diagnosis_class": "EXPANDED_MATCHED_CONTROL_EFFECT_UNCERTAIN",
+  "next_action": "BUILD_R410_MATCHED_CONTROL_PRECISION_AND_ALTERNATE_EVIDENCE_CLOSURE_PLAN",
+  "paired_effect_summary": {
+    "max": 1.0016433853738702,
+    "median": 0.9261766194331984,
+    "min": 0.8788109756097561,
+    "n": 20,
+    "q10": 0.8837508460770704,
+    "q90": 0.9690978411398663
+  },
+  "stage": "v0.6D1-R4.9",
+  "status": "PASS_R49_ADDITIONAL_MATCHED_CONTROL_REPLICATES_AND_CAUSAL_DIRECTION_RESOLUTION_COMPLETE"
+}

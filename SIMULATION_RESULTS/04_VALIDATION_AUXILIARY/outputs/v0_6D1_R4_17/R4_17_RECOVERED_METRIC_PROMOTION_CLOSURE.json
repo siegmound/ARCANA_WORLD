@@ -1,0 +1,36 @@
+{
+  "adjudicative_promotion_count": 0,
+  "nonadjudicative_terminal_closure_count": 2,
+  "p2_increment_from_nonpromoted_recovered_metrics": 2,
+  "records": [
+    {
+      "adjudicative_promotion_authorized": false,
+      "closure_status": "CLOSED_NONADJUDICATIVE_REQUIRED_TRANSFORM_NOT_FROZEN",
+      "contextual_evidence_preserved": true,
+      "domain": "additive_variance",
+      "engine": "NEMO",
+      "next_priority": "P2_EXISTING_FROZEN_JOB_ADAPTER_ENHANCEMENT_AND_SYMMETRIC_REEXECUTION",
+      "promotion_performed": false,
+      "r416_promotion_gate": "TRANSFORM_REQUIRED_EFFECT_SIZE_MODEL_ABSENT",
+      "reason": "qfreq-derived heterozygosity/frequency structure is not additive genetic variance without trait effect sizes, ploidy/trait binding and aggregation semantics.",
+      "recovery_class": "ALLELE_FREQUENCY_DERIVATIVES_RECOVERED_RAW_ONLY",
+      "window_id": "H0_LATE_CENOZOIC"
+    },
+    {
+      "adjudicative_promotion_authorized": false,
+      "closure_status": "CLOSED_NONADJUDICATIVE_DOMAIN_IDENTITY_NOT_ESTABLISHED",
+      "contextual_evidence_preserved": true,
+      "domain": "admixture",
+      "engine": "CDMetaPOP",
+      "next_priority": "P2_EXISTING_FROZEN_JOB_ADAPTER_ENHANCEMENT_AND_SYMMETRIC_REEXECUTION",
+      "promotion_performed": false,
+      "r416_promotion_gate": "NO_DOMAIN_IDENTITY_FROM_SUMMARY_POPULATION_DERIVATIVE",
+      "reason": "Recovered CDMetaPOP summary population derivatives do not identify this domain.",
+      "recovery_class": "SUMMARY_POPULATION_DERIVATIVES_RECOVERED_RAW_ONLY",
+      "window_id": "SAPIENT_200KA_TO_0"
+    }
+  ],
+  "recovered_metric_count": 2,
+  "stage": "v0.6D1-R4.17",
+  "status": "PASS_R417_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE_COMPLETE"
+}

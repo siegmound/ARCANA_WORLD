@@ -1,0 +1,80 @@
+{
+  "stage": "v0.6D1-R4.0",
+  "evidence_type": "HOST_RUNTIME_IDENTITY_EVIDENCE",
+  "generated_by": "capture_v0_6D1_R4_0_runtime_evidence.ps1",
+  "generated_at_utc": "2026-08-30T22:27:03.0017716Z",
+  "root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE",
+  "wsl_executable": "C:\\WINDOWS\\system32\\wsl.exe",
+  "conda_binding": "/home/jose/miniforge3/bin/conda",
+  "all_required_engines_ready": true,
+  "ready_engines": [
+    "CDMetaPOP",
+    "Geonomics",
+    "Madingley",
+    "NEMO",
+    "RangeShifter",
+    "SLiM"
+  ],
+  "engines": [
+    {
+      "engine": "NEMO",
+      "expected_version": "2.4.2",
+      "confirmed_version": "2.4.2",
+      "status": "READY",
+      "invocation": "PowerShell->WSL conda:arcana-nemo242/nemo2.4.2",
+      "returncode": 0,
+      "stdout": "/home/jose/miniforge3/envs/arcana-nemo242/bin/nemo2.4.2\n# packages in environment at /home/jose/miniforge3/envs/arcana-nemo242:\n#\n# Name                     Version          Build            Channel\nnemo                       2.4.2            h80b0018_0       ecoevo\n",
+      "stderr": ""
+    },
+    {
+      "engine": "Geonomics",
+      "expected_version": "1.4.9",
+      "confirmed_version": "1.4.9",
+      "status": "READY",
+      "invocation": "PowerShell->WSL conda:arcana-geonomics-149/python",
+      "returncode": 0,
+      "stdout": "NOTE: Module 'pykrige' not found. Yosemite demo 3d plots cannot be produced.\n1.4.9\n",
+      "stderr": ""
+    },
+    {
+      "engine": "Madingley",
+      "expected_version": "MadingleyR-1.0.6__CPP-2.02",
+      "confirmed_version": "MadingleyR-1.0.6__CPP-2.02",
+      "status": "READY",
+      "invocation": "PowerShell->WSL conda:arcana-r40-r/Rscript+runtime-libs",
+      "returncode": 0,
+      "stdout": "1.0.6 \n                             \nMadingleyR           -> 1.0.6\nMadingley C++ source ->  2.02\n",
+      "stderr": ""
+    },
+    {
+      "engine": "RangeShifter",
+      "expected_version": "3.0.1",
+      "confirmed_version": "3.0.1",
+      "status": "READY",
+      "invocation": "PowerShell->WSL conda:arcana-r40-r/RangeShiftR",
+      "returncode": 0,
+      "stdout": "3.0.1 \n",
+      "stderr": ""
+    },
+    {
+      "engine": "CDMetaPOP",
+      "expected_version": "3.08",
+      "confirmed_version": "3.08",
+      "status": "READY",
+      "invocation": "PowerShell->WSL conda:arcana-cdmetapop-308 + source:/mnt/f/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/.arcana_engines/CDMetaPOP-3.08@3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118",
+      "returncode": 0,
+      "stdout": "3.8.20\n1.24.4\n1.10.1\nCOMMIT=3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118\n",
+      "stderr": ""
+    },
+    {
+      "engine": "SLiM",
+      "expected_version": "5.2",
+      "confirmed_version": "5.2",
+      "status": "READY",
+      "invocation": "PowerShell->WSL conda:arcana-slim52/slim+python",
+      "returncode": 0,
+      "stdout": "SLiM version 5.2, built Apr 12 2026 02:46:55\nGit commit SHA-1: unknown (built from a non-Git source archive)\ntskit=1.0.3\nmsprime=1.4.2\npyslim=1.1.1\n",
+      "stderr": ""
+    }
+  ]
+}

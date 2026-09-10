@@ -1,0 +1,178 @@
+{
+  "audit": "INTEGRATED_CENSUS_CALIBRATION_WEIGHTED_GROUP_ABM_AND_COMMUNITY_HISTORY",
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_r329_sealed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r328_r327_sealed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_cohort_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "member_count_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        2,
+        175,
+        6
+      ],
+      "name": "census_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "census_all_finite_positive",
+      "pass": true
+    },
+    {
+      "detail": [
+        0.19566052006843926,
+        0.5471147093145752
+      ],
+      "name": "ne_census_ratio_prior_bounds",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r328_relative_trajectory_preserved",
+      "pass": true
+    },
+    {
+      "detail": 0.0,
+      "name": "census_recomputed_exact",
+      "pass": true
+    },
+    {
+      "detail": [
+        21.671100050210953,
+        38.723541140556335
+      ],
+      "name": "group_size_bounds",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "group_count_positive",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        2,
+        11,
+        48,
+        12
+      ],
+      "name": "agent_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "agent_all_finite",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "agent_active_bounded",
+      "pass": true
+    },
+    {
+      "detail": 2.9103830456733704e-11,
+      "name": "weighted_agents_conserve_census",
+      "pass": true
+    },
+    {
+      "detail": [
+        32,
+        2,
+        11,
+        10
+      ],
+      "name": "history_geometry",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "history_nonnegative_counts",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sensitivity_25_variants",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sensitivity_no_selection_gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "both_lineages_retained",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "census_not_observation",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "weighted_not_person_level",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_culture_identity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_unique_human_identity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_immutable",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "evidence_multisource",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 27,
+  "checks_total": 27,
+  "stage": "v0.6D1-R3.30",
+  "status": "PASS_R330_CENSUS_GROUP_ABM_AND_COMMUNITY_HISTORY_CANDIDATE",
+  "summary": {
+    "absolute_census_equivalent_materialized": true,
+    "anchor_states": 11,
+    "candidate_lineages": 2,
+    "deep_biological_coupling": false,
+    "ensemble_members": 32,
+    "literal_archaeological_census_claimed": false,
+    "time_states": 175,
+    "unique_human_identity_materialized": false,
+    "weighted_agents_max_per_lineage_member": 48
+  }
+}

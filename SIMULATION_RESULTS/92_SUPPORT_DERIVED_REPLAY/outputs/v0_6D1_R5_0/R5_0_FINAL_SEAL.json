@@ -1,0 +1,521 @@
+{
+  "candidate_artifact_hashes": {
+    "R5_0_17P5KA_DERIVED_STATE.npz": {
+      "bytes": 2176444,
+      "sha256": "e9064df73694397ac87d3cac6f98d5aeb9dcce3b619655b73551c68b9f246550"
+    },
+    "R5_0_17P5KA_PROVENANCE.json": {
+      "bytes": 4398,
+      "sha256": "d2cd90131424b0c2049a351aa7aa9c31108b64855059acc044d523cf82c001cb"
+    },
+    "R5_0_17P5KA_QUERY.json": {
+      "bytes": 520,
+      "sha256": "80f3ec6ce70536d1df7ccc7b886c534624d3037c289415239edb61114bce5401"
+    },
+    "R5_0_17P5KA_QUERY_SUMMARY.json": {
+      "bytes": 2924,
+      "sha256": "7577b213e4afcf2d572f9baa800c53c8b78f8a23768e12552e7b7a22d1057a4a"
+    },
+    "R5_0_17P5KA_REPLAY_RECIPE.json": {
+      "bytes": 3137,
+      "sha256": "6d7a3206df6d75f62e2f23b9e4aeaf7a6f4da662b81b6578062daec5f3631fc0"
+    },
+    "R5_0_17P5KA_UNCERTAINTY.json": {
+      "bytes": 2488,
+      "sha256": "8b7a343e92178f1ccdacadc185694aa4615c963f85c3652a73f4dbb5cfae3808"
+    },
+    "R5_0_20KA_DERIVED_STATE.npz": {
+      "bytes": 2050986,
+      "sha256": "9da9d773d5ac65c79123f5227e1333a4b705ddb99bf5304a7339bed820937bf5"
+    },
+    "R5_0_20KA_PROVENANCE.json": {
+      "bytes": 3965,
+      "sha256": "323033eed17e1aa536709040b04bf9069a0ffa48406bdc1e8c63a042351a40dd"
+    },
+    "R5_0_20KA_QUERY.json": {
+      "bytes": 514,
+      "sha256": "48ef17a20ee90726209a0094d44d56411e8feaad1d5ed0b38363e4368b1c646e"
+    },
+    "R5_0_20KA_QUERY_SUMMARY.json": {
+      "bytes": 2860,
+      "sha256": "efebab401b343dc4e6b2338557cca8710813346dd6c900ba4bdd6f61732b9101"
+    },
+    "R5_0_20KA_REPLAY_RECIPE.json": {
+      "bytes": 2704,
+      "sha256": "ac232edb30b01768a6cab02fae15e8551b82615489fb4da63071df031235b62a"
+    },
+    "R5_0_20KA_UNCERTAINTY.json": {
+      "bytes": 2290,
+      "sha256": "23f1af5e32e1bd64a58fc2d5f71ebc276f29de6faa41b92656a5de24b1185bae"
+    },
+    "R5_0_AUTHORITY_RESOLUTION_SUMMARY.json": {
+      "bytes": 9842,
+      "sha256": "96d14da424d191bd4a11527df03a008753ca97755070d62216b67574b3574c1f"
+    },
+    "R5_0_DETERMINISTIC_REPLAY_RECIPES.json": {
+      "bytes": 6597,
+      "sha256": "c053d0f6805dbdbfae4d80a44a19ee088279d9d281af9e1b3bd2e993612054d7"
+    },
+    "R5_0_INTEGRATED_AUDIT.json": {
+      "bytes": 3337,
+      "sha256": "e152b6878d6c94a1925a0c789a8518e0e90b00a0c10e3fa369b038c326bcb8dc"
+    }
+  },
+  "candidate_output_manifest_sha256": "2a9dbf00f11920706a14191cf58655fc61eae5ac4e081476765318cc57c72994",
+  "checks": [
+    {
+      "detail": [],
+      "name": "required_seal_inputs_present",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "seal_authority_stage_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "seal_authority_final_verdict_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "seal_authority_candidate_status_exact",
+      "pass": true
+    },
+    {
+      "detail": "R456_RUNTIME_AUTHORITY_VERIFIED",
+      "name": "r456_runtime_authority_verified_now",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r456_expected_verdict_bound",
+      "pass": true
+    },
+    {
+      "detail": {
+        "canonical_state_unchanged": true,
+        "closed_jobs_23": true,
+        "closure_gaps_0": true,
+        "deep_biological_coupling_off": true,
+        "exact_frozen_jobs_23": true,
+        "full_revalidation_closed": true,
+        "numeric_corroboration_not_claimed": true,
+        "verdict_exact": true
+      },
+      "name": "r456_all_semantic_checks_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "exact_parent_count_is_9",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_immutable_parent_hashes_match_now",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R50_QUERY_CONTRACT_AUTHORITY_RESOLVER_AND_20KA_17P5KA_END_TO_END_CANDIDATE",
+      "name": "candidate_manifest_status_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_manifest_scientific_eligible",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_manifest_allowlist_policy",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_manifest_artifact_count_exact",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "candidate_manifest_filename_set_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_manifest_excludes_seal_outputs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_15_candidate_artifacts_match_manifest_bytes_and_hashes",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R50_QUERY_CONTRACT_AUTHORITY_RESOLVER_AND_20KA_17P5KA_END_TO_END_CANDIDATE",
+      "name": "integrated_audit_candidate_status_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "integrated_audit_scientific_eligible",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "integrated_audit_23_of_23",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "integrated_audit_all_individual_checks_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "integrated_audit_r456_verified",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "integrated_audit_parent_count_9",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "audit_20ka_semantic_hash_authorially_pinned",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "audit_17p5ka_semantic_hash_authorially_pinned",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "audit_governance_full_history_rerun_performed_false",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "audit_governance_external_engine_execution_performed_false",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "audit_governance_canonical_state_changed_false",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "audit_governance_deep_biological_coupling_false",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_resolution_complete",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_resolution_parent_hashes_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_resolution_r456_verified",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "authority_resolution_r456_semantic_checks_pass",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_query_target_age_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_query_no_canonical_write",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_query_no_extrapolation_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_summary_target_age_exact",
+      "pass": true
+    },
+    {
+      "detail": "ad0770c10074a5030a74f641ff3852372aab6806089f5512b605a718cb6c5554",
+      "name": "20ka_npz_semantic_hash_matches_authority",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_summary_semantic_hash_matches_npz",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_provenance_parent_hashes_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_provenance_no_canonical_write",
+      "pass": true
+    },
+    {
+      "detail": {
+        "contact_admixture": "EXACT",
+        "environment": "EXACT",
+        "fauna": "EXACT",
+        "flora": "EXACT",
+        "population_detail": "EXACT",
+        "population_summary": "EXACT"
+      },
+      "name": "20ka_provenance_modes_exact",
+      "pass": true
+    },
+    {
+      "detail": {
+        "canonical_state_changed": false,
+        "canonical_write": false,
+        "deep_biological_coupling": false,
+        "external_engine_execution_performed": false,
+        "full_history_rerun_performed": false,
+        "randomness_used": false,
+        "readjudication_of_arcana_canonical_target_performed": false,
+        "renderer_or_visualization_execution_performed": false,
+        "target_numeric_execution_performed": false,
+        "temporal_extrapolation_performed": false
+      },
+      "name": "20ka_all_forbidden_governance_flags_false",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_uncertainty_rules_fail_closed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_recipe_hash_self_consistent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "20ka_recipe_governance_clean",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_query_target_age_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_query_no_canonical_write",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_query_no_extrapolation_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_summary_target_age_exact",
+      "pass": true
+    },
+    {
+      "detail": "bc70bf068154be48f5d3ffe981d02833f55b8448b59ae3bf9f78d6b34a9313ef",
+      "name": "17p5ka_npz_semantic_hash_matches_authority",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_summary_semantic_hash_matches_npz",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_provenance_parent_hashes_exact",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_provenance_no_canonical_write",
+      "pass": true
+    },
+    {
+      "detail": {
+        "contact_admixture": "EXACT",
+        "environment": "BRACKETED_LINEAR",
+        "fauna": "BRACKETED_LINEAR",
+        "flora": "BRACKETED_LINEAR",
+        "population_detail": "BOUNDED_SPATIAL_RECONSTRUCTION",
+        "population_summary": "EXACT"
+      },
+      "name": "17p5ka_provenance_modes_exact",
+      "pass": true
+    },
+    {
+      "detail": {
+        "canonical_state_changed": false,
+        "canonical_write": false,
+        "deep_biological_coupling": false,
+        "external_engine_execution_performed": false,
+        "full_history_rerun_performed": false,
+        "randomness_used": false,
+        "readjudication_of_arcana_canonical_target_performed": false,
+        "renderer_or_visualization_execution_performed": false,
+        "target_numeric_execution_performed": false,
+        "temporal_extrapolation_performed": false
+      },
+      "name": "17p5ka_all_forbidden_governance_flags_false",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_uncertainty_rules_fail_closed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_recipe_hash_self_consistent",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "17p5ka_recipe_governance_clean",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "combined_recipe_registry_exactly_two",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "combined_recipe_registry_hashes_valid",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "combined_recipe_registry_matches_individual_recipes",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 61,
+  "checks_total": 61,
+  "immutable_parent_hashes": {
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_REPLAY_AUTHORITY.json": "f81755225fe301fb5519c3ca4e6e6ce715937e35a42a48a4e5c184c85879b29a",
+    "outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_TRAJECTORIES.npz": "175959669ba5daa84ab0937b4b213c1633ee674e89e67690915dbc622b2e1b84",
+    "outputs/v0_6D1_R3_33/R3_33_ECOLOGICAL_PARTNER_CANDIDATE_REGISTRY.json": "ab3d6e50966946c95ffa60bdf48115275b3b7669640715b99836570828886711",
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY.json": "17cc1bf7c0096b51eb333c0de7bbc4f0a827f7a4a0f821868f9db3bfa4b2936a",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json": "5851a7e2d0822bab8c006bc8cd6f49f506138a3aab0533b000ecc603f9e4c39e",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_TAXON_REGISTRY.json": "b24960a86a745a028c1096fe636885310d1ecaa3213a612696c7687ebb2e535c"
+  },
+  "packages": {
+    "17p5ka": {
+      "derived_state_file_sha256": "e9064df73694397ac87d3cac6f98d5aeb9dcce3b619655b73551c68b9f246550",
+      "provenance_modes": {
+        "contact_admixture": "EXACT",
+        "environment": "BRACKETED_LINEAR",
+        "fauna": "BRACKETED_LINEAR",
+        "flora": "BRACKETED_LINEAR",
+        "population_detail": "BOUNDED_SPATIAL_RECONSTRUCTION",
+        "population_summary": "EXACT"
+      },
+      "recipe_sha256": "070d194aa853191853977f2598cf24b5e9f0a1ef04c31f2a50a3eb1074cff46d",
+      "semantic_state_sha256": "bc70bf068154be48f5d3ffe981d02833f55b8448b59ae3bf9f78d6b34a9313ef",
+      "target_age_ka": 17.5
+    },
+    "20ka": {
+      "derived_state_file_sha256": "9da9d773d5ac65c79123f5227e1333a4b705ddb99bf5304a7339bed820937bf5",
+      "provenance_modes": {
+        "contact_admixture": "EXACT",
+        "environment": "EXACT",
+        "fauna": "EXACT",
+        "flora": "EXACT",
+        "population_detail": "EXACT",
+        "population_summary": "EXACT"
+      },
+      "recipe_sha256": "76f2d662d43075b1279c0713759b5cd4e06e3490507bb7c051eb1d483f88af6a",
+      "semantic_state_sha256": "ad0770c10074a5030a74f641ff3852372aab6806089f5512b605a718cb6c5554",
+      "target_age_ka": 20.0
+    }
+  },
+  "r456_runtime_authority": {
+    "checks": {
+      "canonical_state_unchanged": true,
+      "closed_jobs_23": true,
+      "closure_gaps_0": true,
+      "deep_biological_coupling_off": true,
+      "exact_frozen_jobs_23": true,
+      "full_revalidation_closed": true,
+      "numeric_corroboration_not_claimed": true,
+      "verdict_exact": true
+    },
+    "evidence_files": [
+      {
+        "bytes": 9978,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_FINAL_MULTI_ENGINE_REVALIDATION_CLOSURE.json",
+        "sha256": "6eac8bbdebce95d1da645eb80e2bc7464262e608e53fab8fec8bc97a922a3dc9"
+      },
+      {
+        "bytes": 2104,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_GEONOMICS_CLOSURE_REUSE_REVIEW.json",
+        "sha256": "007ffee94e3cf1b4d53d42db43564b0dd8a70e686efcf2d32dfb5bbfd38e7347"
+      },
+      {
+        "bytes": 2580,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_INTEGRATED_AUDIT.json",
+        "sha256": "e641ffd8fac862b95b4cca1ff70cb402faae1b6929ad190657d107a8a8f946ec"
+      },
+      {
+        "bytes": 37504,
+        "path": "outputs\\v0_6D1_R4_56\\R4_56_NON_GEONOMICS_INDEPENDENT_BUNDLE_REVIEW.json",
+        "sha256": "b60dda40e4b0849883805383784090800f0c127bb4b5a335726f908e98d9200b"
+      },
+      {
+        "bytes": 2274,
+        "path": "outputs\\v0_6D1_R4_56_SEAL\\R4_56_FINAL_SEAL_AUDIT.json",
+        "sha256": "a9a87b792a57f5d9c0785b4f652252a5e2a7000ba0eee9a788d6887143693e8f"
+      }
+    ],
+    "expected_verdict": "ARCANA_MULTI_ENGINE_23_JOB_FULLY_REVALIDATED_WITH_EXACT_INTEGRITY_AND_GOVERNED_DESCRIPTIVE_EVIDENCE_NO_NUMERIC_CORROBORATION_CLAIM",
+    "status": "R456_RUNTIME_AUTHORITY_VERIFIED"
+  },
+  "scientific_candidate_eligible": true,
+  "scientific_meaning": "R5.0 seals the deterministic derived-state query capability and its 20 ka / 17.5 ka demonstrations. It does not rewrite canonical WorldSim history and does not promote derived refinements into canonical state.",
+  "sealed": true,
+  "source_authority_manifest_sha256": "235b0ff34dd4440babdd793761499c685becf4f2ae62092dbc8a8301691a65eb",
+  "stage": "v0.6D1-R5.0",
+  "stage_name": "SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY",
+  "status": "PASS_R50_SELECTIVE_HIGH_RESOLUTION_NESTED_REPLAY_AND_ARBITRARY_AGE_STATE_QUERY_SEALED",
+  "summary": {
+    "17p5ka_semantic_state_sha256": "bc70bf068154be48f5d3ffe981d02833f55b8448b59ae3bf9f78d6b34a9313ef",
+    "20ka_semantic_state_sha256": "ad0770c10074a5030a74f641ff3852372aab6806089f5512b605a718cb6c5554",
+    "candidate_artifact_count": 15,
+    "canonical_state_changed": false,
+    "deep_biological_coupling": false,
+    "derived_refinement_promoted_to_canon": false,
+    "exact_parent_hash_count": 9,
+    "external_engine_execution_performed": false,
+    "full_history_rerun_performed": false,
+    "r456_runtime_verified": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "canonical_replay_authorized": false,
+  "canonical_state_changed": false,
+  "diagnostic_counterfactual_authorized": true,
+  "next_action": "EXECUTE_R46_TARGETED_CAUSAL_COUNTERFACTUAL_FROM_R3_11_POST_CHA1",
+  "parent_r44_class_counts": {
+    "CALIBRATION_OFFSET": 5,
+    "CONCORDANT": 0,
+    "INSUFFICIENT_EVIDENCE": 67,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 1
+  },
+  "robust_structural_cell_count": 1,
+  "stage": "v0.6D1-R4.5",
+  "status": "PASS_R45_EARLIEST_AUTHORITY_CAUSAL_DIAGNOSIS_AND_REPLAY_PLANNING_COMPLETE",
+  "structural_cell_count": 1,
+  "structural_diagnoses": [
+    {
+      "canonical_replay_authorized": false,
+      "diagnostic_counterfactual_authorized": true,
+      "domain": "population_persistence",
+      "earliest_affected_authority_candidate": "R3.11_POST_CHA1",
+      "primary_structural_row_count": 1,
+      "robust_structural_disagreement": true,
+      "row_diagnoses": [
+        {
+          "authority_role": "PRIMARY",
+          "canonical_change_authorized": false,
+          "diagnosis_class": "ROBUST_PRIMARY_STRUCTURAL_DISAGREEMENT",
+          "diagnostic_counterfactual_authorized": true,
+          "domain": "population_persistence",
+          "engine": "CDMetaPOP",
+          "external_direction": 1,
+          "job_id": "R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP",
+          "mapping_comparability": "NORMALIZABLE",
+          "metric": {
+            "name": "population_agent_response_ratio",
+            "summary": {
+              "max": 645.5,
+              "mean": 626.75,
+              "median": 626.5,
+              "min": 608.5,
+              "n": 4,
+              "q10": 613.3,
+              "q90": 640.4
+            }
+          },
+          "quantile_direction": 1,
+          "quantile_reason": "Q10_Q90_FULLY_POSITIVE_OUTSIDE_RATIO_NEUTRAL_BAND",
+          "r44_discordance_class": "STRUCTURAL_DISAGREEMENT",
+          "reason": "PRIMARY_NORMALIZABLE_SIGN_FLIP_CONFIRMED_ACROSS_Q10_Q90",
+          "replicate_count": 4,
+          "target": {
+            "comparability": "NORMALIZABLE",
+            "kind": "ratio",
+            "metric": "ARCANA_total_population_ratio",
+            "value": 0.9316272616306188
+          },
+          "target_direction": -1,
+          "window_id": "H0_POST_CHA1_RECOVERY"
+        }
+      ],
+      "window_id": "H0_POST_CHA1_RECOVERY"
+    }
+  ],
+  "uncertain_or_contract_limited_structural_row_count": 0
+}

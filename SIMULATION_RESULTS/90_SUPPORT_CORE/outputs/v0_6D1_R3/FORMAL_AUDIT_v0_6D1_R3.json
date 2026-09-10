@@ -1,0 +1,71 @@
+{
+  "stage": "v0.6D1-R3",
+  "status": "PASS_REBASED_DEEP_TIME_BARRIER_HISTORY_BINDING_AND_FISSION_ACTIVATION_CANDIDATE",
+  "checks": {
+    "d3_2c_source_hash_exact": true,
+    "full_a1_age_sequence_exact": true,
+    "ten_adjacent_barrier_brackets": true,
+    "event_cluster_inventory_801": true,
+    "transition_inventory_12366": true,
+    "all_events_marked_derived_not_observed": true,
+    "all_land_support_endpoints_exact": true,
+    "parent_d3_2c_physical_audit_pass": true,
+    "parent_d3_2c_25_vs_12p5_birth_identity_preserved": true,
+    "r3_210_205_species_richness_preserved": true,
+    "r3_210_205_no_speciation": true,
+    "r3_210_205_no_ordinary_extinction": true,
+    "r3_210_205_fission_count_18": true,
+    "r3_fission_is_deme_only": true,
+    "width0p5_preserves_materialized_parent_identity": true,
+    "wide_envelope_and_width2_preserve_candidate_parents": true,
+    "sub_myr_fission_timing_not_sealed": true,
+    "deep_biological_coupling_off": true,
+    "no_global_speciation_rate": true,
+    "no_global_extinction_rate": true,
+    "d3_2b_connectivity_threshold_reused": true,
+    "d3_2c_event_envelope_reused": true,
+    "initial_fragmentation_is_grandfathered": true,
+    "local_runner_smoke_210_209_richness_120": true,
+    "local_runner_smoke_no_events": true
+  },
+  "detail": {
+    "d3_2c_source_hash_exact": "5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730",
+    "full_a1_age_sequence_exact": [
+      210.0,
+      180.0,
+      150.0,
+      140.0,
+      130.0,
+      120.0,
+      90.0,
+      66.0,
+      60.0,
+      30.0,
+      0.0
+    ],
+    "ten_adjacent_barrier_brackets": {
+      "bracket_count": 10,
+      "event_cluster_count": 801,
+      "transition_cells_counted_across_brackets": 12366
+    },
+    "event_cluster_inventory_801": 801,
+    "transition_inventory_12366": 12366,
+    "r3_210_205_species_richness_preserved": 120,
+    "r3_210_205_no_speciation": {
+      "deme_fission": 18,
+      "speciation": 0,
+      "ordinary_background_extinction": 0,
+      "paleogeographic_support_loss_remap": 24
+    },
+    "r3_210_205_no_ordinary_extinction": {
+      "deme_fission": 18,
+      "speciation": 0,
+      "ordinary_background_extinction": 0,
+      "paleogeographic_support_loss_remap": 24
+    },
+    "r3_210_205_fission_count_18": 18,
+    "local_runner_smoke_no_events": {}
+  },
+  "pass_count": 25,
+  "check_count": 25
+}

@@ -1,0 +1,94 @@
+{
+  "audit": "FINAL_CDMETAPOP_FORCING_PARITY_REPAIR_SYMMETRIC_REEXECUTION_AND_READJUDICATION",
+  "checks": [
+    {
+      "detail": "PASS_R46_TARGETED_R311_CAUSAL_COUNTERFACTUAL_AND_R43_FORCING_PARITY_AUDIT_SEALED",
+      "name": "parent_r46_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R47_CDMETAPOP_SYMMETRIC_REEXECUTION_AND_READJUDICATION_COMPLETE",
+      "name": "r47_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r47_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": 5,
+      "name": "five_symmetric_cdmetapop_jobs",
+      "pass": true
+    },
+    {
+      "detail": 75,
+      "name": "readjudicated_matrix_75_cells",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CALIBRATION_OFFSET": 5,
+        "CONCORDANT": 0,
+        "INSUFFICIENT_EVIDENCE": 67,
+        "SEMANTICALLY_NONCOMPARABLE": 2,
+        "STRUCTURAL_DISAGREEMENT": 1
+      },
+      "name": "class_accounting_complete",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "r44_sealed_outputs_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "next_action": "BUILD_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS",
+  "stage": "v0.6D1-R4.7",
+  "status": "PASS_R47_CDMETAPOP_FORCING_PARITY_REPAIR_SYMMETRIC_REEXECUTION_AND_READJUDICATION_SEALED",
+  "summary": {
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "class_counts_after_repair": {
+      "CALIBRATION_OFFSET": 5,
+      "CONCORDANT": 0,
+      "INSUFFICIENT_EVIDENCE": 67,
+      "SEMANTICALLY_NONCOMPARABLE": 2,
+      "STRUCTURAL_DISAGREEMENT": 1
+    },
+    "deep_biological_coupling": false,
+    "j09_population_persistence_class_after_repair": "STRUCTURAL_DISAGREEMENT",
+    "next_action": "BUILD_R48_POST_CDMETAPOP_REPAIR_STRUCTURAL_CAUSAL_DIAGNOSIS",
+    "structural_disagreement_count_after_repair": 1
+  },
+  "verdict": "SEALED"
+}

@@ -1,0 +1,217 @@
+{
+  "canonical_state_changed": false,
+  "checks": [
+    {
+      "detail": "outputs\\v0_6D1_R4_17_SEAL\\R4_17_FINAL_SEAL_AUDIT.json",
+      "name": "parent_r417_seal_present",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R417_ARCANA_TARGET_EXTRACTOR_IMPLEMENTATION_AND_RECOVERED_METRIC_PROMOTION_CLOSURE_SEALED",
+      "name": "parent_r417_sealed",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE",
+      "name": "parent_next_action_matches_r418",
+      "pass": true
+    },
+    {
+      "detail": 3,
+      "name": "parent_exact_three_materialized_targets",
+      "pass": true
+    },
+    {
+      "detail": {
+        "records": 1,
+        "seal": 1
+      },
+      "name": "parent_exact_one_validation_candidate",
+      "pass": true
+    },
+    {
+      "detail": {
+        "records": 2,
+        "seal": 2
+      },
+      "name": "parent_exact_two_proxy_materializations",
+      "pass": true
+    },
+    {
+      "detail": {
+        "design_gap": 12,
+        "exhausted": 44
+      },
+      "name": "parent_exhausted_and_design_gap_counts",
+      "pass": true
+    },
+    {
+      "detail": {
+        "p2": 6,
+        "p3": 6
+      },
+      "name": "parent_p2_p3_backlog_counts",
+      "pass": true
+    },
+    {
+      "detail": "R417_TARGET_EXTRACTION_AND_PROMOTION_CLOSURE_FROZEN",
+      "name": "parent_r418_plan_frozen",
+      "pass": true
+    },
+    {
+      "detail": {
+        "declared": 75,
+        "loaded": 75
+      },
+      "name": "parent_r413_matrix_exact_75_cells",
+      "pass": true
+    },
+    {
+      "detail": "FROZEN_PRE_TARGET_VALIDATION_AND_PARTIAL_READJUDICATION",
+      "name": "policy_frozen",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_execution_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "majority_vote_forbidden",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "proxy_materializations_remain_context_only",
+      "pass": true
+    },
+    {
+      "detail": 1,
+      "name": "exact_one_candidate_receives_terminal_validation",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_validation_is_result_independent",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "validated_candidate_count_at_most_one",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "all_proxy_targets_remain_nonadjudicative",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "partial_readjudication_only_on_validated_candidate_cells",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "readjudicated_rows_are_primary_only",
+      "pass": true
+    },
+    {
+      "detail": 75,
+      "name": "revised_matrix_exact_75_cells",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CALIBRATION_OFFSET": 2,
+        "CONCORDANT": 2,
+        "INSUFFICIENT_EVIDENCE": 69,
+        "SEMANTICALLY_NONCOMPARABLE": 2,
+        "STRUCTURAL_DISAGREEMENT": 0
+      },
+      "name": "five_class_accounting_complete",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_secondary_only_promotion",
+      "pass": true
+    },
+    {
+      "detail": 6,
+      "name": "p2_backlog_exact_six_and_frozen",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "p2_execution_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_nonvalidated_cells_semantically_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "engine_execution_not_performed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_still_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_still_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_still_not_authorized",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 34,
+  "checks_total": 34,
+  "class_counts_after_partial_readjudication": {
+    "CALIBRATION_OFFSET": 2,
+    "CONCORDANT": 2,
+    "INSUFFICIENT_EVIDENCE": 69,
+    "SEMANTICALLY_NONCOMPARABLE": 2,
+    "STRUCTURAL_DISAGREEMENT": 0
+  },
+  "engine_execution_performed": false,
+  "next_action": "BUILD_R419_P2_ADAPTER_ENHANCEMENT_AND_TARGET_DESIGN_BACKLOG_EXECUTION_PLAN",
+  "p2_backlog_cell_count": 6,
+  "p3_backlog_cell_count": 6,
+  "partial_readjudication_changed_cell_count": 0,
+  "proxy_target_context_only_count": 2,
+  "stage": "v0.6D1-R4.18",
+  "status": "PASS_R418_TARGET_MATERIALIZATION_VALIDATION_PARTIAL_READJUDICATION_AND_P2_BACKLOG_FREEZE_COMPLETE",
+  "structural_disagreement_count_after_partial_readjudication": 0,
+  "target_validated_for_partial_readjudication_count": 0,
+  "target_validation_candidate_count": 1
+}

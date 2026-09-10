@@ -1,0 +1,120 @@
+{
+  "audit": "FINAL_AUTHORIZED_P2_SYMMETRIC_REEXECUTION_AND_DEFERRED_IMPLEMENTATION_COMPLETION",
+  "checks": [
+    {
+      "detail": "PASS_R421_P2_ADAPTER_IMPLEMENTATION_STATIC_VALIDATION_AND_SYMMETRIC_REEXECUTION_AUTHORIZATION_SEALED",
+      "name": "parent_r421_sealed",
+      "pass": true
+    },
+    {
+      "detail": "PASS_R422_AUTHORIZED_P2_SYMMETRIC_REEXECUTION_AND_DEFERRED_IMPLEMENTATION_COMPLETION_COMPLETE",
+      "name": "r422_complete",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "r422_zero_process_failures",
+      "pass": true
+    },
+    {
+      "detail": {
+        "jobs": 11,
+        "pass": 11
+      },
+      "name": "exact_11_authorized_jobs_successful",
+      "pass": true
+    },
+    {
+      "detail": {
+        "CDMetaPOP": 5,
+        "NEMO": 3,
+        "SLiM": 3
+      },
+      "name": "exact_engine_execution_scope",
+      "pass": true
+    },
+    {
+      "detail": "FULL_FROZEN_GEONOMICS_JOB_SET_LACKS_MATERIALIZED_CANONICAL_SPATIAL_BINDING",
+      "name": "geonomics_remains_deferred",
+      "pass": true
+    },
+    {
+      "detail": "R422_R423_POSTEXECUTION_PLAN_FROZEN",
+      "name": "r423_plan_frozen",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_readjudication",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_target_repair_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_p3_execution",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_state_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_replay_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "canonical_parameter_change_not_authorized",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "deep_off",
+      "pass": true
+    },
+    {
+      "detail": "BUILD_R423_P2_REEXECUTION_EVIDENCE_NORMALIZATION_AND_GEONOMICS_CANONICAL_SPATIAL_BINDING_COMPLETION",
+      "name": "next_action_present",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 15,
+  "checks_total": 15,
+  "next_action": "BUILD_R423_P2_REEXECUTION_EVIDENCE_NORMALIZATION_AND_GEONOMICS_CANONICAL_SPATIAL_BINDING_COMPLETION",
+  "stage": "v0.6D1-R4.22",
+  "status": "PASS_R422_AUTHORIZED_P2_SYMMETRIC_REEXECUTION_AND_DEFERRED_IMPLEMENTATION_COMPLETION_SEALED",
+  "summary": {
+    "authorized_engine_families": [
+      "CDMetaPOP",
+      "NEMO",
+      "SLiM"
+    ],
+    "authorized_job_count": 11,
+    "canonical_parameter_change_authorized": false,
+    "canonical_replay_authorized": false,
+    "canonical_state_changed": false,
+    "deep_biological_coupling": false,
+    "deferred_engine_families": [
+      "Geonomics"
+    ],
+    "engine_job_counts": {
+      "CDMetaPOP": 5,
+      "NEMO": 3,
+      "SLiM": 3
+    },
+    "geonomics_family_ready_for_execution": false,
+    "next_action": "BUILD_R423_P2_REEXECUTION_EVIDENCE_NORMALIZATION_AND_GEONOMICS_CANONICAL_SPATIAL_BINDING_COMPLETION",
+    "p3_execution_performed": false,
+    "readjudication_performed": false,
+    "successful_authorized_job_count": 11,
+    "target_repair_execution_performed": false
+  },
+  "verdict": "SEALED"
+}

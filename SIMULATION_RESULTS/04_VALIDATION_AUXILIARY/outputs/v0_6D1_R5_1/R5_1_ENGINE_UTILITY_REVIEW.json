@@ -1,0 +1,84 @@
+{
+  "decision_rule": "RUN_EXTERNAL_ENGINE_ONLY_IF_IT_ADDS_DOMAIN_RELEVANT_EVIDENCE_NOT_ALREADY_AVAILABLE_FROM_SEALED_ARCANA_STATE_OR_R4_56_CORPUS",
+  "engines": [
+    {
+      "best_domains": [
+        "range_shift",
+        "connectivity",
+        "dispersal_corridors"
+      ],
+      "engine": "RangeShifter",
+      "r51_action": "DEFER_NEW_EXECUTION_TO_R5_2_EXPANSION_CORRIDORS",
+      "reason": "R5.1 locates cradle-opportunity regions first; RangeShifter becomes directly adjudicatively useful once origin regions and corridor hypotheses exist.",
+      "utility": "HIGH",
+      "version": "3.0.1"
+    },
+    {
+      "best_domains": [
+        "spatial_population_structure",
+        "connectivity",
+        "landscape_genomics"
+      ],
+      "engine": "Geonomics",
+      "r51_action": "REUSE_SEALED_J14_BINDING_AND_R4_50_EVIDENCE_NO_NEW_EXECUTION",
+      "reason": "R5.1 already has the SEALED J14 canonical spatial authority used for Geonomics binding; rerunning Geonomics cannot define ARCANA cradle truth.",
+      "utility": "HIGH_CONTEXT",
+      "version": "1.4.9"
+    },
+    {
+      "best_domains": [
+        "biomass",
+        "trophic_opportunity",
+        "ecosystem_context"
+      ],
+      "engine": "Madingley",
+      "r51_action": "REUSE_R4_55_DESCRIPTIVE_EVIDENCE_DEFER_TARGETED_EXECUTION",
+      "reason": "Canonical C2 forage/environment is sufficient for first cradle-opportunity atlas; targeted trophic checks are useful only after regions emerge.",
+      "utility": "MEDIUM_HIGH",
+      "version": "1.0.6+C++2.02"
+    },
+    {
+      "best_domains": [
+        "population_viability",
+        "landscape_demogenetics",
+        "gene_flow"
+      ],
+      "engine": "CDMetaPOP",
+      "r51_action": "DEFER_TO_PERSISTENCE_BOTTLENECK_AND_CONTACT_ANALYSIS",
+      "reason": "Does not improve initial geographic cradle discovery enough to justify a new run before candidate regions exist.",
+      "utility": "MEDIUM",
+      "version": "3.08@3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118"
+    },
+    {
+      "best_domains": [
+        "metapopulation_genetics",
+        "allele_frequency",
+        "quantitative_traits",
+        "gene_flow"
+      ],
+      "engine": "NEMO",
+      "r51_action": "DEFER_TO_GENETIC_PERSISTENCE_AND_GENE_FLOW_VALIDATION",
+      "reason": "Genetic dynamics validate later persistence/contact hypotheses; they do not supply missing canonical geography.",
+      "utility": "MEDIUM",
+      "version": "2.4.2"
+    },
+    {
+      "best_domains": [
+        "ancestry",
+        "admixture",
+        "whole_genome_gene_flow"
+      ],
+      "engine": "SLiM",
+      "r51_action": "DEFER_TO_ANCESTRY_ADMIXTURE_STAGE",
+      "reason": "Powerful after demographic/spatial hypotheses are fixed; unnecessary for initial ecology-first cradle opportunity discovery.",
+      "utility": "HIGH_LATER",
+      "version": "5.2"
+    }
+  ],
+  "external_engine_defines_arcana_target": false,
+  "majority_vote": false,
+  "new_external_engine_execution_authorized_in_r51": false,
+  "new_external_engine_execution_performed": false,
+  "stage": "v0.6D1-R5.1",
+  "status": "R51_ENGINE_UTILITY_REVIEW_FROZEN"
+}

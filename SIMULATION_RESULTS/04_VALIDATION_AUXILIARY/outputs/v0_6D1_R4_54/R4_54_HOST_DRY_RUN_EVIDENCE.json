@@ -1,0 +1,893 @@
+{
+  "stage": "v0.6D1-R4.54",
+  "evidence_type": "NON_SCIENTIFIC_FIVE_ENGINE_SEED_AND_READOUT_DRY_RUN_EVIDENCE",
+  "generated_by": "capture_v0_6D1_R4_54_dry_runs.ps1",
+  "parent_execution_plan_sha256": "f4804e9aabf2f009c9581012a136865b9cdb2e688d416f48d6a50be840dff7e6",
+  "parent_readout_registry_sha256": "f39bb36251a95f2d9e310113a9286608d72188374d7d9bc73fe90aa697e5d380",
+  "dry_run_count": 5,
+  "passed_dry_run_count": 5,
+  "historical_job_execution_performed": false,
+  "scientific_engine_execution_performed": false,
+  "scientific_evidence_claimed": false,
+  "numeric_acceptance_threshold_count": 0,
+  "automatic_scientific_pass_fail_count": 0,
+  "canonical_state_changed": false,
+  "dry_runs": [
+    {
+      "stage": "v0.6D1-R4.54",
+      "engine": "Madingley",
+      "probe_job_id": "R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY",
+      "frozen_seed": 1519467421,
+      "seed_injection_mode": "R_SET_SEED_BEFORE_MADINGLEY_INIT_AND_RUN",
+      "seed_binding_verified": true,
+      "dry_run": true,
+      "scientific_evidence": false,
+      "status": "PASS",
+      "returncode": 0,
+      "metrics": [
+        {
+          "metric_id": "MADINGLEY_COHORT_COUNT_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "payload": {
+            "time_index": [
+              0,
+              1
+            ],
+            "values": [
+              495,
+              100
+            ]
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        },
+        {
+          "metric_id": "MADINGLEY_STOCK_COUNT_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_ECOSYSTEM_STATE",
+          "payload": {
+            "time_index": [
+              0,
+              1
+            ],
+            "values": [
+              2,
+              2
+            ]
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        }
+      ],
+      "unauthorized_metric_count": 0,
+      "numeric_acceptance_threshold_count": 0,
+      "automatic_scientific_pass_fail_count": 0,
+      "artifact_materialization_count": 150,
+      "canonical_state_changed": false,
+      "error": "",
+      "confirmed_version": "MadingleyR-1.0.6__CPP-2.02",
+      "bridge_exit_code": 0,
+      "bridge_timed_out": false,
+      "bridge_stdout_tail": "Reading default input rasters from:  /home/jose/miniforge3/envs/arcana-r40-r/lib/R/library/MadingleyR/spatial_input_rasters.............\nProcessing: realm_classification, land_mask, hanpp, available_water_capacity\nProcessing: Ecto_max, Endo_C_max, Endo_H_max, Endo_O_max\nProcessing: terrestrial_net_primary_productivity_1-12\nProcessing: near-surface_temperature_1-12\nProcessing: precipitation_1-12\nProcessing: ground_frost_frequency_1-12\nProcessing: diurnal_temperature_range_1-12\nNo HANPP applied\nSpatial resolution: 1 degree\nNumber of grid cells: 1\nInitializing cohorts and stocks using cohort and stock definitions\nInitializing 1 gridcells. done\n495 cohorts and 2 stocks initialized\n     \nTotal elapsed time was 0.00921384 (sec)\n Reading default input rasters from:  /home/jose/miniforge3/envs/arcana-r40-r/lib/R/library/MadingleyR/spatial_input_rasters.............\n",
+      "bridge_stderr_tail": "",
+      "artifact_hashes": {
+        "dry_run_result_json": "99939a95c465c298e7699b73afeb44942ad693ceece758ebe096812f804d30c9"
+      }
+    },
+    {
+      "stage": "v0.6D1-R4.54",
+      "engine": "RangeShifter",
+      "probe_job_id": "R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER",
+      "frozen_seed": 292331116,
+      "seed_injection_mode": "RANGESHIFTR_RSSIM_SEED_ARGUMENT",
+      "seed_binding_verified": true,
+      "dry_run": true,
+      "scientific_evidence": false,
+      "status": "PASS",
+      "returncode": 0,
+      "metrics": [
+        {
+          "metric_id": "RANGESHIFTER_ABUNDANCE_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "payload": {
+            "year": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "values": [
+              1560,
+              1820,
+              2017,
+              2178,
+              2115,
+              2180,
+              2173,
+              2195,
+              2219,
+              2232
+            ]
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        },
+        {
+          "metric_id": "RANGESHIFTER_OCCUPIED_CELL_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_RANGE_STATE",
+          "payload": {
+            "year": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "values": [
+              312,
+              311,
+              310,
+              307,
+              306,
+              305,
+              307,
+              307,
+              304,
+              300
+            ],
+            "occupancy_semantics": "single_replicate_positive_abundance_cells"
+          },
+          "finite": true,
+          "numeric_acceptance_threshold": null,
+          "automatic_pass_fail_from_value": false
+        }
+      ],
+      "unauthorized_metric_count": 0,
+      "numeric_acceptance_threshold_count": 0,
+      "automatic_scientific_pass_fail_count": 0,
+      "artifact_materialization_count": 4,
+      "canonical_state_changed": false,
+      "error": "",
+      "confirmed_version": "3.0.1",
+      "bridge_exit_code": 0,
+      "bridge_timed_out": false,
+      "bridge_stdout_tail": "Checking Control parameters \n\nControl Parameters checked\n\nRun Simulation(s) with seed 292331116 ...\nReadLandParamsR() done\nReadParametersR() done.\nReadEmigrationR() done.\nReadTransferR() done.\nReadSettlementR() done.\nReadInitialisationR() done.\n\nRunning simulation nr. 454\nRunning replicate 1 / 1\nRunModel(): completed initialisation \nStarting year 0...\nStarting year 1...\nStarting year 2...\nStarting year 3...\n\n***** Elapsed time: 1 seconds\n\n*****\n***** Simulation completed \n***** Outputs folder: /mnt/f/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE/outputs/v0_6D1_R4_54/runtime_work/RangeShifter/Outputs/\n*****\n",
+      "bridge_stderr_tail": "",
+      "artifact_hashes": {
+        "dry_run_result_json": "45508484e023d76dd7d8258ef8268cd667a5065bbea4a694c5442e979ab6c367"
+      }
+    },
+    {
+      "artifact_hashes": {
+        "summary_classAllTime.csv": "b4e1da83f629a1d24ec79f354cd4c680d14312b46356f7f339b60aa1b1586974",
+        "summary_popAllTime.csv": "730dee42a04fcdc7f14416473f634b67f1e529d72d6917a213c5355160215a23"
+      },
+      "automatic_scientific_pass_fail_count": 0,
+      "canonical_state_changed": false,
+      "dry_run": true,
+      "engine": "CDMetaPOP",
+      "frozen_seed": 126964583,
+      "metrics": [
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "CDMETAPOP_POPULATION_STATE_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_DEMOGRAPHIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "states": [
+              {
+                "patch_vector": [
+                  900.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  150.0,
+                  0.0
+                ],
+                "year": 0
+              },
+              {
+                "patch_vector": [
+                  1790.0,
+                  304.0,
+                  286.0,
+                  249.0,
+                  317.0,
+                  312.0,
+                  322.0,
+                  0.0
+                ],
+                "year": 1
+              },
+              {
+                "patch_vector": [
+                  1400.0,
+                  216.0,
+                  242.0,
+                  255.0,
+                  204.0,
+                  226.0,
+                  257.0,
+                  0.0
+                ],
+                "year": 2
+              },
+              {
+                "patch_vector": [
+                  1534.0,
+                  260.0,
+                  241.0,
+                  235.0,
+                  291.0,
+                  262.0,
+                  245.0,
+                  0.0
+                ],
+                "year": 3
+              },
+              {
+                "patch_vector": [
+                  1472.0,
+                  270.0,
+                  244.0,
+                  238.0,
+                  243.0,
+                  204.0,
+                  273.0,
+                  0.0
+                ],
+                "year": 4
+              }
+            ]
+          }
+        },
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "CDMETAPOP_GENETIC_DIVERSITY_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "states": [
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4982098765432099,
+                  0.4423555555555556,
+                  0.4966111111111111,
+                  0.49855555555555553,
+                  0.4987111111111111,
+                  0.4981777777777777,
+                  0.49741111111111114,
+                  0.0
+                ],
+                "ho": [
+                  0.49,
+                  0.48,
+                  0.49,
+                  0.5133333333333333,
+                  0.52,
+                  0.4533333333333333,
+                  0.48333333333333334,
+                  0.0
+                ],
+                "year": 0
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4996496676133704,
+                  0.4925932738919667,
+                  0.49849320260159424,
+                  0.49991935613941707,
+                  0.4995521897919175,
+                  0.49839486768573305,
+                  0.4991078662088654,
+                  0.0
+                ],
+                "ho": [
+                  0.49553072625698324,
+                  0.48026315789473684,
+                  0.48426573426573427,
+                  0.5261044176706827,
+                  0.501577287066246,
+                  0.48878205128205127,
+                  0.4968944099378882,
+                  0.0
+                ],
+                "year": 1
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4998156887755101,
+                  0.49214999142661175,
+                  0.49807902465678566,
+                  0.49975009611687815,
+                  0.49965157631680124,
+                  0.49976016132821677,
+                  0.4991975654438372,
+                  0.0
+                ],
+                "ho": [
+                  0.4975,
+                  0.4930555555555556,
+                  0.5289256198347108,
+                  0.492156862745098,
+                  0.46078431372549017,
+                  0.5110619469026548,
+                  0.49416342412451364,
+                  0.0
+                ],
+                "year": 2
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.49985190102143673,
+                  0.49791050295857986,
+                  0.494585148327336,
+                  0.4937845178813943,
+                  0.4991202276779916,
+                  0.49814623273701997,
+                  0.49739691795085383,
+                  0.0
+                ],
+                "ho": [
+                  0.4980443285528031,
+                  0.48653846153846153,
+                  0.48132780082987553,
+                  0.5212765957446809,
+                  0.5085910652920962,
+                  0.4599236641221374,
+                  0.5326530612244897,
+                  0.0
+                ],
+                "year": 3
+              },
+              {
+                "alleles": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "he": [
+                  0.4997553978615311,
+                  0.49888545953360763,
+                  0.49993281375974197,
+                  0.49808894145893645,
+                  0.49935223289132746,
+                  0.4919982698961938,
+                  0.4965617410672356,
+                  0.0
+                ],
+                "ho": [
+                  0.4986413043478261,
+                  0.5314814814814814,
+                  0.48770491803278687,
+                  0.5105042016806722,
+                  0.5288065843621399,
+                  0.46078431372549017,
+                  0.46703296703296704,
+                  0.0
+                ],
+                "year": 4
+              }
+            ]
+          }
+        }
+      ],
+      "numeric_acceptance_threshold_count": 0,
+      "probe_job_id": "R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP",
+      "returncode": 0,
+      "scientific_evidence": false,
+      "seed_binding_verified": true,
+      "seed_injection_mode": "PYTHON_AND_NUMPY_PROCESS_RNG_SEED_BEFORE_RUNPY",
+      "source_commit": "3516aa4e124c57e2f9f4c1d9f1a3bca735ed9118",
+      "stage": "v0.6D1-R4.54",
+      "status": "PASS",
+      "unauthorized_metric_count": 0,
+      "confirmed_version": "3.08",
+      "bridge_exit_code": 0,
+      "bridge_timed_out": false,
+      "bridge_stdout_tail": "On run: 0\n\n('DoPreProcess(): ', '0:00:00.059024', '')\nEnd Generation/Year Loop0: 0:00:06.180181\n\nEnd Generation/Year Loop1: 0:00:07.326866\n\nEnd Generation/Year Loop2: 0:00:08.031835\n\nEnd Generation/Year Loop3: 0:00:06.914187\n\nEnd Generation/Year Loop4: 0:00:06.835483\n\nDoPostProcess(): 0:00:00.008757\nEnd Monte Carlo Loop0: 0:00:35.389272\n\n",
+      "bridge_stderr_tail": ""
+    },
+    {
+      "automatic_scientific_pass_fail_count": 0,
+      "canonical_state_changed": false,
+      "dry_run": true,
+      "engine": "NEMO",
+      "frozen_seed": 125184549,
+      "metrics": [
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "NEMO_ALLELE_FREQUENCY_TRAJECTORY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "generation_columns": [
+              "g10",
+              "g20",
+              "g30",
+              "g40",
+              "g50",
+              "g60",
+              "g70",
+              "g80",
+              "g90",
+              "g100"
+            ],
+            "rows": [
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.308,
+                  0.415,
+                  0.417,
+                  0.451,
+                  0.547,
+                  0.517,
+                  0.548,
+                  0.565,
+                  0.561,
+                  0.625
+                ],
+                "locus": 1,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.356,
+                  0.398,
+                  0.398,
+                  0.476,
+                  0.478,
+                  0.393,
+                  0.43,
+                  0.417,
+                  0.482,
+                  0.435
+                ],
+                "locus": 2,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.369,
+                  0.435,
+                  0.457,
+                  0.482,
+                  0.43,
+                  0.41,
+                  0.421,
+                  0.48,
+                  0.519,
+                  0.523
+                ],
+                "locus": 3,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.417,
+                  0.462,
+                  0.513,
+                  0.535,
+                  0.526,
+                  0.535,
+                  0.474,
+                  0.463,
+                  0.472,
+                  0.469
+                ],
+                "locus": 4,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.425,
+                  0.493,
+                  0.473,
+                  0.483,
+                  0.478,
+                  0.564,
+                  0.44,
+                  0.491,
+                  0.507,
+                  0.484
+                ],
+                "locus": 5,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.457,
+                  0.498,
+                  0.533,
+                  0.536,
+                  0.491,
+                  0.514,
+                  0.488,
+                  0.491,
+                  0.497,
+                  0.417
+                ],
+                "locus": 6,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.492,
+                  0.452,
+                  0.49,
+                  0.508,
+                  0.499,
+                  0.449,
+                  0.438,
+                  0.476,
+                  0.417,
+                  0.421
+                ],
+                "locus": 7,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.451,
+                  0.498,
+                  0.49,
+                  0.492,
+                  0.481,
+                  0.426,
+                  0.477,
+                  0.472,
+                  0.457,
+                  0.39
+                ],
+                "locus": 8,
+                "population": 1,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.605,
+                  0.471,
+                  0.47,
+                  0.494,
+                  0.545,
+                  0.474,
+                  0.509,
+                  0.581,
+                  0.578,
+                  0.63
+                ],
+                "locus": 1,
+                "population": 2,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.538,
+                  0.441,
+                  0.431,
+                  0.474,
+                  0.5,
+                  0.516,
+                  0.512,
+                  0.449,
+                  0.408,
+                  0.467
+                ],
+                "locus": 2,
+                "population": 2,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.597,
+                  0.561,
+                  0.527,
+                  0.521,
+                  0.458,
+                  0.424,
+                  0.435,
+                  0.45,
+                  0.498,
+                  0.505
+                ],
+                "locus": 3,
+                "population": 2,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.559,
+                  0.525,
+                  0.452,
+                  0.501,
+                  0.483,
+                  0.431,
+                  0.447,
+                  0.417,
+                  0.483,
+                  0.475
+                ],
+                "locus": 4,
+                "population": 2,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.575,
+                  0.54,
+                  0.532,
+                  0.514,
+                  0.471,
+                  0.505,
+                  0.501,
+                  0.47,
+                  0.505,
+                  0.509
+                ],
+                "locus": 5,
+                "population": 2,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.526,
+                  0.496,
+                  0.511,
+                  0.529,
+                  0.525,
+                  0.562,
+                  0.502,
+                  0.518,
+                  0.51,
+                  0.485
+                ],
+                "locus": 6,
+                "population": 2,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.574,
+                  0.564,
+                  0.528,
+                  0.531,
+                  0.539,
+                  0.517,
+                  0.484,
+                  0.417,
+                  0.445,
+                  0.435
+                ],
+                "locus": 7,
+                "population": 2,
+                "trait": 1
+              },
+              {
+                "allele": 0.05,
+                "frequencies": [
+                  0.517,
+                  0.504,
+                  0.476,
+                  0.415,
+                  0.444,
+                  0.417,
+                  0.447,
+                  0.433,
+                  0.466,
+                  0.463
+                ],
+                "locus": 8,
+                "population": 2,
+                "trait": 1
+              }
+            ]
+          }
+        },
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "NEMO_REALIZED_FREQUENCY_CHANGE_SUMMARY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "generation_columns": [
+              "g10",
+              "g20",
+              "g30",
+              "g40",
+              "g50",
+              "g60",
+              "g70",
+              "g80",
+              "g90",
+              "g100"
+            ],
+            "mean_absolute_population_gap": [
+              0.152,
+              0.056875,
+              0.04375000000000001,
+              0.032000000000000015,
+              0.026625000000000017,
+              0.05850000000000001,
+              0.039125,
+              0.03375000000000001,
+              0.021875,
+              0.030125000000000013
+            ]
+          }
+        }
+      ],
+      "numeric_acceptance_threshold_count": 0,
+      "probe_job_id": "R42_J10_H0_POST_CHA1_RECOVERY_NEMO",
+      "returncode": 0,
+      "scientific_evidence": false,
+      "seed_binding_verified": true,
+      "seed_injection_mode": "NEMO_RANDOM_SEED_INI_PARAMETER",
+      "seed_readback": {
+        "engine_stdout": 125184549,
+        "ini": 125184549
+      },
+      "stage": "v0.6D1-R4.54",
+      "status": "PASS",
+      "unauthorized_metric_count": 0,
+      "confirmed_version": "2.4.2",
+      "bridge_exit_code": 0,
+      "bridge_timed_out": false,
+      "bridge_stdout_tail": "",
+      "bridge_stderr_tail": "",
+      "artifact_hashes": {
+        "NEMO_NATIVE_QFREQ_OUTPUT": "b75f6a8c00ac019f13cd8e1bcf79029935af50ccd9bafa6ed9c85c2d42f8dec8"
+      }
+    },
+    {
+      "artifact_hashes": {
+        "SLIM_TREE_SEQUENCE_RAW": "c21b2e4ac66c84995b4e7177555e489528d9ea5aa87ee20249333290909bddb5"
+      },
+      "automatic_scientific_pass_fail_count": 0,
+      "canonical_state_changed": false,
+      "dry_run": true,
+      "engine": "SLiM",
+      "frozen_seed": 162419087,
+      "metrics": [
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "SLIM_TREE_SEQUENCE_STRUCTURAL_SUMMARY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "edges": 1455,
+            "individuals": 400,
+            "mutations": 6,
+            "nodes": 1487,
+            "sequence_length": 10000.0,
+            "trees": 1
+          }
+        },
+        {
+          "automatic_pass_fail_from_value": false,
+          "finite": true,
+          "metric_id": "SLIM_ANCESTRY_GENE_FLOW_SUMMARY",
+          "metric_role": "SCIENTIFIC_DESCRIPTIVE_GENETIC_STATE",
+          "numeric_acceptance_threshold": null,
+          "payload": {
+            "between_population_divergence": 9.868750000000001E-06,
+            "divergence_mode": "site",
+            "population_ids": [
+              1,
+              2
+            ],
+            "sample_counts": [
+              400,
+              400
+            ],
+            "sample_set_pair": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "numeric_acceptance_threshold_count": 0,
+      "probe_job_id": "R42_J16_SAPIENT_3MA_TO_200KA_SLIM",
+      "returncode": 0,
+      "scientific_evidence": false,
+      "seed_binding_verified": true,
+      "seed_injection_mode": "SLIM_COMMAND_LINE_MINUS_S_SEED",
+      "seed_readback": 162419087,
+      "stage": "v0.6D1-R4.54",
+      "status": "PASS",
+      "unauthorized_metric_count": 0,
+      "confirmed_version": "5.2",
+      "bridge_exit_code": 0,
+      "bridge_timed_out": false,
+      "bridge_stdout_tail": "",
+      "bridge_stderr_tail": ""
+    }
+  ]
+}

@@ -1,0 +1,1647 @@
+{
+  "schema": "ARCANA_R318_FORMAL_SEALED_AUDIT_V1",
+  "stage": "v0.6D1-R3.18",
+  "verdict": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_READINESS_SEALED",
+  "checks": "172/172",
+  "failed": [],
+  "decision": "RECENT_120KA_TO_0_EXPOSURE_AND_TWO_62P5KYR_TRANSPORT_PHASE_INTEGRALS_SEALED__BIOLOGY_REMAINS_125KA",
+  "boundary": {
+    "physical_environment_age_ma": 0.0,
+    "biology_state_age_ma": 0.125,
+    "species": 134,
+    "components": 295,
+    "population": 1217.8946033288662,
+    "transport_boundary_age_ma": 0.0625,
+    "transport_phase_years": [
+      62500.0,
+      62500.0
+    ],
+    "phase_aware_transport_operator_required": true,
+    "phase_environment_global_max_abs_difference": 1.5816467428221057,
+    "population_mass_inaccessible_at_62p5ka": 0.0,
+    "population_mass_inaccessible_at_0ka": 3.5009958898334106e-11
+  },
+  "canonical_artifacts": {
+    "readiness_envelope": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_ENVELOPE.json",
+    "readiness_envelope_sha256": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+    "integral_bundle": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_125KA_TO_0_EXPOSURE_AND_TRANSPORT_PHASES.npz",
+    "integral_bundle_sha256": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+    "summary": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json",
+    "summary_sha256": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a"
+  },
+  "independent_replay": {
+    "enabled": true,
+    "biology_state_identity_exact": true,
+    "integral_bundle_array_identity_exact": true,
+    "envelope_core_identity_exact": true
+  },
+  "production_biology_closure_authorized": false,
+  "scientific_parameter_changes": false,
+  "biology_cadence_changes": false,
+  "transport_cadence_changes": false,
+  "deep_biological_coupling": false,
+  "check_rows": [
+    {
+      "name": "envelope_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_ENVELOPE.json",
+      "expected": "file"
+    },
+    {
+      "name": "bundle_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_125KA_TO_0_EXPOSURE_AND_TRANSPORT_PHASES.npz",
+      "expected": "file"
+    },
+    {
+      "name": "summary_exists",
+      "pass": true,
+      "actual": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_runs\\v0_6D1_R3_18\\R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json",
+      "expected": "file"
+    },
+    {
+      "name": "envelope_sha_exact",
+      "pass": true,
+      "actual": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+      "expected": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a"
+    },
+    {
+      "name": "bundle_sha_exact",
+      "pass": true,
+      "actual": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+      "expected": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70"
+    },
+    {
+      "name": "summary_sha_exact",
+      "pass": true,
+      "actual": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a",
+      "expected": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a"
+    },
+    {
+      "name": "summary_stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.18",
+      "expected": "v0.6D1-R3.18"
+    },
+    {
+      "name": "summary_verdict",
+      "pass": true,
+      "actual": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_OPERATOR_AUDIT_READY",
+      "expected": "PASS_R318_120KA_TO_0_RECENT_H0_EXPOSURE_COMPLETED__125KA_BIOLOGY_PRESERVED_TRANSPORT_PHASE_OPERATOR_AUDIT_READY"
+    },
+    {
+      "name": "summary_physical_end_0",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "summary_biology_age_125ka",
+      "pass": true,
+      "actual": 0.125,
+      "expected": 0.125
+    },
+    {
+      "name": "summary_biology_identity",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_species_134",
+      "pass": true,
+      "actual": 134,
+      "expected": 134
+    },
+    {
+      "name": "summary_components_295",
+      "pass": true,
+      "actual": 295,
+      "expected": 295
+    },
+    {
+      "name": "summary_population",
+      "pass": true,
+      "actual": 1217.8946033288662,
+      "expected": 1217.8946033288662
+    },
+    {
+      "name": "summary_recent_120k",
+      "pass": true,
+      "actual": 120000.0,
+      "expected": 120000.0
+    },
+    {
+      "name": "summary_full_125k",
+      "pass": true,
+      "actual": 125000.0,
+      "expected": 125000.0
+    },
+    {
+      "name": "summary_transport_boundary",
+      "pass": true,
+      "actual": 0.0625,
+      "expected": 0.0625
+    },
+    {
+      "name": "summary_phase_aware_required",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "summary_biology_not_advanced",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "summary_transport_not_advanced",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "envelope_schema",
+      "pass": true,
+      "actual": "ARCANA_R318_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_V1",
+      "expected": "ARCANA_R318_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_V1"
+    },
+    {
+      "name": "envelope_biology_not_mutated",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "envelope_not_relabelled",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "phase1_62500",
+      "pass": true,
+      "actual": 62500.0,
+      "expected": 62500.0
+    },
+    {
+      "name": "phase2_62500",
+      "pass": true,
+      "actual": 62500.0,
+      "expected": 62500.0
+    },
+    {
+      "name": "phase_divergence_not_roundoff",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "phase_divergence_exact",
+      "pass": true,
+      "actual": 1.5816467428221057,
+      "expected": 1.5816467428221057
+    },
+    {
+      "name": "phase_operator_required",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "closure_under_1e6",
+      "pass": true,
+      "actual": 6.984919309616089e-09,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "closure_matches_canonical",
+      "pass": true,
+      "actual": 6.984919309616089e-09,
+      "expected": 6.984919309616089e-09
+    },
+    {
+      "name": "support_120_62_no_loss",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "support_120_62_gain_81",
+      "pass": true,
+      "actual": 81,
+      "expected": 81
+    },
+    {
+      "name": "support_62_0_loss_1758",
+      "pass": true,
+      "actual": 1758,
+      "expected": 1758
+    },
+    {
+      "name": "support_62_0_no_remap",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "mass_inaccessible_62_zero",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "mass_inaccessible_0_tiny",
+      "pass": true,
+      "actual": 3.5009958898334106e-11,
+      "expected": "<=1e-9"
+    },
+    {
+      "name": "mass_inaccessible_0_matches",
+      "pass": true,
+      "actual": 3.5009958898334106e-11,
+      "expected": 3.5009958898334106e-11
+    },
+    {
+      "name": "governance_false::biology_advanced",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::transport_advanced",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::gene_flow_advanced",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::lifecycle_gates_advanced",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::biology_cadence_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::transport_cadence_changed",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::adaptive_clock_used_as_biology_timestep",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::support_remap_applied",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::scientific_parameter_changes",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::deep_biological_coupling",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::richness_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::human_lineage_target_used",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "governance_false::production_biology_closure_authorized_in_r318",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "bundle_biology_age",
+      "pass": true,
+      "actual": 0.125,
+      "expected": 0.125
+    },
+    {
+      "name": "bundle_end_age",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "bundle_transport_boundary",
+      "pass": true,
+      "actual": 0.0625,
+      "expected": 0.0625
+    },
+    {
+      "name": "bundle_groups",
+      "pass": true,
+      "actual": [
+        "full_125_to_0",
+        "recent_120_to_0",
+        "transport_phase1_125_to_62p5",
+        "transport_phase2_62p5_to_0"
+      ],
+      "expected": [
+        "full_125_to_0",
+        "recent_120_to_0",
+        "transport_phase1_125_to_62p5",
+        "transport_phase2_62p5_to_0"
+      ]
+    },
+    {
+      "name": "bundle_fields::full_125_to_0",
+      "pass": true,
+      "actual": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ],
+      "expected": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ]
+    },
+    {
+      "name": "bundle_finite::full_125_to_0::land_support",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::full_125_to_0::temperature_c",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::full_125_to_0::aridity_index",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::full_125_to_0::browse_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::full_125_to_0::low_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::full_125_to_0::wetland_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::full_125_to_0::reference_population",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_fields::recent_120_to_0",
+      "pass": true,
+      "actual": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ],
+      "expected": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ]
+    },
+    {
+      "name": "bundle_finite::recent_120_to_0::land_support",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::recent_120_to_0::temperature_c",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::recent_120_to_0::aridity_index",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::recent_120_to_0::browse_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::recent_120_to_0::low_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::recent_120_to_0::wetland_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::recent_120_to_0::reference_population",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_fields::transport_phase1_125_to_62p5",
+      "pass": true,
+      "actual": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ],
+      "expected": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ]
+    },
+    {
+      "name": "bundle_finite::transport_phase1_125_to_62p5::land_support",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase1_125_to_62p5::temperature_c",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase1_125_to_62p5::aridity_index",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase1_125_to_62p5::browse_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase1_125_to_62p5::low_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase1_125_to_62p5::wetland_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase1_125_to_62p5::reference_population",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_fields::transport_phase2_62p5_to_0",
+      "pass": true,
+      "actual": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ],
+      "expected": [
+        "aridity_index",
+        "browse_forage",
+        "land_support",
+        "low_forage",
+        "reference_population",
+        "temperature_c",
+        "wetland_forage"
+      ]
+    },
+    {
+      "name": "bundle_finite::transport_phase2_62p5_to_0::land_support",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase2_62p5_to_0::temperature_c",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase2_62p5_to_0::aridity_index",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase2_62p5_to_0::browse_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase2_62p5_to_0::low_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase2_62p5_to_0::wetland_forage",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_finite::transport_phase2_62p5_to_0::reference_population",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "bundle_phase_closure::land_support",
+      "pass": true,
+      "actual": 1.7462298274040222e-10,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "bundle_phase_closure::temperature_c",
+      "pass": true,
+      "actual": 6.984919309616089e-09,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "bundle_phase_closure::aridity_index",
+      "pass": true,
+      "actual": 6.984919309616089e-10,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "bundle_phase_closure::browse_forage",
+      "pass": true,
+      "actual": 7.275957614183426e-11,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "bundle_phase_closure::low_forage",
+      "pass": true,
+      "actual": 2.000888343900442e-11,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "bundle_phase_closure::wetland_forage",
+      "pass": true,
+      "actual": 2.1827872842550278e-11,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "bundle_phase_closure::reference_population",
+      "pass": true,
+      "actual": 1.7462298274040222e-10,
+      "expected": "<=1e-6"
+    },
+    {
+      "name": "parent_biology_125ka",
+      "pass": true,
+      "actual": 0.125,
+      "expected": 0.125
+    },
+    {
+      "name": "parent_species_134",
+      "pass": true,
+      "actual": 134,
+      "expected": 134
+    },
+    {
+      "name": "parent_components_295",
+      "pass": true,
+      "actual": 295,
+      "expected": 295
+    },
+    {
+      "name": "parent_population",
+      "pass": true,
+      "actual": 1217.8946033288662,
+      "expected": 1217.8946033288662
+    },
+    {
+      "name": "independent_parent_state_unchanged",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "independent_envelope_core::schema",
+      "pass": true,
+      "actual": "ARCANA_R318_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_V1",
+      "expected": "ARCANA_R318_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_V1"
+    },
+    {
+      "name": "independent_envelope_core::stage",
+      "pass": true,
+      "actual": "v0.6D1-R3.18",
+      "expected": "v0.6D1-R3.18"
+    },
+    {
+      "name": "independent_envelope_core::physical_start_age_ma",
+      "pass": true,
+      "actual": 0.12,
+      "expected": 0.12
+    },
+    {
+      "name": "independent_envelope_core::physical_end_age_ma",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_envelope_core::biology_state_age_ma",
+      "pass": true,
+      "actual": 0.125,
+      "expected": 0.125
+    },
+    {
+      "name": "independent_envelope_core::biology_state_mutated",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "independent_envelope_core::biology_state_relabelled_to_0ka",
+      "pass": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "independent_envelope_core::recent_exposure",
+      "pass": true,
+      "actual": {
+        "older_age_ma": 0.12,
+        "younger_age_ma": 0.0,
+        "duration_years": 120000.00000000001,
+        "segment_count": 196,
+        "node_count": 197,
+        "contains_62p5ka_transport_boundary": true,
+        "averaging_rule": "TRAPEZOID_INTEGRAL_ON_R314_C2_RECENT_ADAPTIVE_CLOCK_WITH_EXACT_62P5KA_INSERTION"
+      },
+      "expected": {
+        "older_age_ma": 0.12,
+        "younger_age_ma": 0.0,
+        "duration_years": 120000.00000000001,
+        "segment_count": 196,
+        "node_count": 197,
+        "contains_62p5ka_transport_boundary": true,
+        "averaging_rule": "TRAPEZOID_INTEGRAL_ON_R314_C2_RECENT_ADAPTIVE_CLOCK_WITH_EXACT_62P5KA_INSERTION"
+      }
+    },
+    {
+      "name": "independent_envelope_core::full_125ka_macrostep",
+      "pass": true,
+      "actual": {
+        "duration_years": 125000.0,
+        "r317_pending_years": 5000.0,
+        "r318_recent_years": 120000.0,
+        "integral_phase_closure_max_abs": 6.984919309616089e-09,
+        "integral_phase_closure_by_field": {
+          "land_support": 1.7462298274040222e-10,
+          "temperature_c": 6.984919309616089e-09,
+          "aridity_index": 6.984919309616089e-10,
+          "browse_forage": 7.275957614183426e-11,
+          "low_forage": 2.000888343900442e-11,
+          "wetland_forage": 2.1827872842550278e-11,
+          "reference_population": 1.7462298274040222e-10
+        }
+      },
+      "expected": {
+        "duration_years": 125000.0,
+        "r317_pending_years": 5000.0,
+        "r318_recent_years": 120000.0,
+        "integral_phase_closure_max_abs": 6.984919309616089e-09,
+        "integral_phase_closure_by_field": {
+          "land_support": 1.7462298274040222e-10,
+          "temperature_c": 6.984919309616089e-09,
+          "aridity_index": 6.984919309616089e-10,
+          "browse_forage": 7.275957614183426e-11,
+          "low_forage": 2.000888343900442e-11,
+          "wetland_forage": 2.1827872842550278e-11,
+          "reference_population": 1.7462298274040222e-10
+        }
+      }
+    },
+    {
+      "name": "independent_envelope_core::transport_phases",
+      "pass": true,
+      "actual": {
+        "boundary_age_ma": 0.0625,
+        "phase1": {
+          "older_age_ma": 0.125,
+          "younger_age_ma": 0.0625,
+          "duration_years": 62500.0,
+          "recent_component": {
+            "older_age_ma": 0.12,
+            "younger_age_ma": 0.0625,
+            "duration_years": 57500.00000000002,
+            "segment_count": 12,
+            "node_count": 13,
+            "contains_62p5ka_transport_boundary": true,
+            "averaging_rule": "TRAPEZOID_INTEGRAL_ON_R314_C2_RECENT_ADAPTIVE_CLOCK_WITH_EXACT_62P5KA_INSERTION"
+          }
+        },
+        "phase2": {
+          "older_age_ma": 0.0625,
+          "younger_age_ma": 0.0,
+          "duration_years": 62500.0,
+          "recent_component": {
+            "older_age_ma": 0.0625,
+            "younger_age_ma": 0.0,
+            "duration_years": 62499.99999999999,
+            "segment_count": 184,
+            "node_count": 185,
+            "contains_62p5ka_transport_boundary": true,
+            "averaging_rule": "TRAPEZOID_INTEGRAL_ON_R314_C2_RECENT_ADAPTIVE_CLOCK_WITH_EXACT_62P5KA_INSERTION"
+          }
+        },
+        "effective_environment_divergence": {
+          "roundoff_equivalent_all_fields": false,
+          "global_max_abs_difference": 1.5816467428221057,
+          "fields": {
+            "land_support": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.2011072791543253,
+              "mean_abs_error": 0.004804028856786883
+            },
+            "temperature_c": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 1.8073125410859128e-13,
+              "max_abs_error": 1.5816467428221057,
+              "mean_abs_error": 1.2393026376122258
+            },
+            "aridity_index": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 4.326732046804185e-14,
+              "max_abs_error": 0.050018767781318196,
+              "mean_abs_error": 0.0012311715798971167
+            },
+            "browse_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.0392415492036709,
+              "mean_abs_error": 0.0006788781854263366
+            },
+            "low_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.010363060306278857,
+              "mean_abs_error": 0.0005199533497738675
+            },
+            "wetland_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.019717718999845785,
+              "mean_abs_error": 0.00019148177445110735
+            },
+            "reference_population": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.001075816278656161,
+              "mean_abs_error": 2.2670095005614068e-05
+            },
+            "total_edible_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.05315094691846611,
+              "mean_abs_error": 0.0013903133096513115
+            }
+          },
+          "single_environment_for_two_transport_substeps_is_roundoff_equivalent": false
+        },
+        "phase_aware_transport_operator_required": true
+      },
+      "expected": {
+        "boundary_age_ma": 0.0625,
+        "phase1": {
+          "older_age_ma": 0.125,
+          "younger_age_ma": 0.0625,
+          "duration_years": 62500.0,
+          "recent_component": {
+            "older_age_ma": 0.12,
+            "younger_age_ma": 0.0625,
+            "duration_years": 57500.00000000002,
+            "segment_count": 12,
+            "node_count": 13,
+            "contains_62p5ka_transport_boundary": true,
+            "averaging_rule": "TRAPEZOID_INTEGRAL_ON_R314_C2_RECENT_ADAPTIVE_CLOCK_WITH_EXACT_62P5KA_INSERTION"
+          }
+        },
+        "phase2": {
+          "older_age_ma": 0.0625,
+          "younger_age_ma": 0.0,
+          "duration_years": 62500.0,
+          "recent_component": {
+            "older_age_ma": 0.0625,
+            "younger_age_ma": 0.0,
+            "duration_years": 62499.99999999999,
+            "segment_count": 184,
+            "node_count": 185,
+            "contains_62p5ka_transport_boundary": true,
+            "averaging_rule": "TRAPEZOID_INTEGRAL_ON_R314_C2_RECENT_ADAPTIVE_CLOCK_WITH_EXACT_62P5KA_INSERTION"
+          }
+        },
+        "effective_environment_divergence": {
+          "roundoff_equivalent_all_fields": false,
+          "global_max_abs_difference": 1.5816467428221057,
+          "fields": {
+            "land_support": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.2011072791543253,
+              "mean_abs_error": 0.004804028856786883
+            },
+            "temperature_c": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 1.8073125410859128e-13,
+              "max_abs_error": 1.5816467428221057,
+              "mean_abs_error": 1.2393026376122258
+            },
+            "aridity_index": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 4.326732046804185e-14,
+              "max_abs_error": 0.050018767781318196,
+              "mean_abs_error": 0.0012311715798971167
+            },
+            "browse_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.0392415492036709,
+              "mean_abs_error": 0.0006788781854263366
+            },
+            "low_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.010363060306278857,
+              "mean_abs_error": 0.0005199533497738675
+            },
+            "wetland_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.019717718999845785,
+              "mean_abs_error": 0.00019148177445110735
+            },
+            "reference_population": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.001075816278656161,
+              "mean_abs_error": 2.2670095005614068e-05
+            },
+            "total_edible_forage": {
+              "array_equal": false,
+              "roundoff_equivalent": false,
+              "roundoff_tolerance": 7.105427357601002e-15,
+              "max_abs_error": 0.05315094691846611,
+              "mean_abs_error": 0.0013903133096513115
+            }
+          },
+          "single_environment_for_two_transport_substeps_is_roundoff_equivalent": false
+        },
+        "phase_aware_transport_operator_required": true
+      }
+    },
+    {
+      "name": "independent_envelope_core::support_diagnostics",
+      "pass": true,
+      "actual": {
+        "125_to_120": {
+          "label": "125ka_TO_120ka",
+          "lost_accessible_cell_count": 0,
+          "gained_accessible_cell_count": 0,
+          "population_mass_on_cells_lost_at_boundary": 0.0,
+          "remap_applied": false
+        },
+        "120_to_62p5": {
+          "label": "120ka_TO_62p5ka",
+          "lost_accessible_cell_count": 0,
+          "gained_accessible_cell_count": 81,
+          "population_mass_on_cells_lost_at_boundary": 0.0,
+          "remap_applied": false
+        },
+        "62p5_to_0": {
+          "label": "62p5ka_TO_0ka",
+          "lost_accessible_cell_count": 1758,
+          "gained_accessible_cell_count": 0,
+          "population_mass_on_cells_lost_at_boundary": 3.500995889833411e-11,
+          "remap_applied": false
+        }
+      },
+      "expected": {
+        "125_to_120": {
+          "label": "125ka_TO_120ka",
+          "lost_accessible_cell_count": 0,
+          "gained_accessible_cell_count": 0,
+          "population_mass_on_cells_lost_at_boundary": 0.0,
+          "remap_applied": false
+        },
+        "120_to_62p5": {
+          "label": "120ka_TO_62p5ka",
+          "lost_accessible_cell_count": 0,
+          "gained_accessible_cell_count": 81,
+          "population_mass_on_cells_lost_at_boundary": 0.0,
+          "remap_applied": false
+        },
+        "62p5_to_0": {
+          "label": "62p5ka_TO_0ka",
+          "lost_accessible_cell_count": 1758,
+          "gained_accessible_cell_count": 0,
+          "population_mass_on_cells_lost_at_boundary": 3.500995889833411e-11,
+          "remap_applied": false
+        }
+      }
+    },
+    {
+      "name": "independent_envelope_core::parent_population_endpoint_inaccessible_mass",
+      "pass": true,
+      "actual": {
+        "at_62p5ka": 0.0,
+        "at_0ka": 3.5009958898334106e-11
+      },
+      "expected": {
+        "at_62p5ka": 0.0,
+        "at_0ka": 3.5009958898334106e-11
+      }
+    },
+    {
+      "name": "independent_envelope_core::governance",
+      "pass": true,
+      "actual": {
+        "biology_advanced": false,
+        "transport_advanced": false,
+        "gene_flow_advanced": false,
+        "lifecycle_gates_advanced": false,
+        "biology_cadence_changed": false,
+        "transport_cadence_changed": false,
+        "adaptive_clock_used_as_biology_timestep": false,
+        "support_remap_applied": false,
+        "scientific_parameter_changes": false,
+        "deep_biological_coupling": false,
+        "richness_target_used": false,
+        "human_lineage_target_used": false,
+        "production_biology_closure_authorized_in_r318": false
+      },
+      "expected": {
+        "biology_advanced": false,
+        "transport_advanced": false,
+        "gene_flow_advanced": false,
+        "lifecycle_gates_advanced": false,
+        "biology_cadence_changed": false,
+        "transport_cadence_changed": false,
+        "adaptive_clock_used_as_biology_timestep": false,
+        "support_remap_applied": false,
+        "scientific_parameter_changes": false,
+        "deep_biological_coupling": false,
+        "richness_target_used": false,
+        "human_lineage_target_used": false,
+        "production_biology_closure_authorized_in_r318": false
+      }
+    },
+    {
+      "name": "independent_envelope_core::next_stage_requirement",
+      "pass": true,
+      "actual": "R3.19_MUST_VALIDATE_A_PHASE_AWARE_TRANSPORT_COUPLING_OPERATOR_AGAINST_CONSTANT_FORCING_EQUIVALENCE_BEFORE_THE_125KA_TO_0KA_BIOLOGY_MACROSTEP_CAN_BE_PROMOTED",
+      "expected": "R3.19_MUST_VALIDATE_A_PHASE_AWARE_TRANSPORT_COUPLING_OPERATOR_AGAINST_CONSTANT_FORCING_EQUIVALENCE_BEFORE_THE_125KA_TO_0KA_BIOLOGY_MACROSTEP_CAN_BE_PROMOTED"
+    },
+    {
+      "name": "independent_group_set",
+      "pass": true,
+      "actual": [
+        "full_125_to_0",
+        "recent_120_to_0",
+        "transport_phase1_125_to_62p5",
+        "transport_phase2_62p5_to_0"
+      ],
+      "expected": [
+        "full_125_to_0",
+        "recent_120_to_0",
+        "transport_phase1_125_to_62p5",
+        "transport_phase2_62p5_to_0"
+      ]
+    },
+    {
+      "name": "independent_shape::full_125_to_0::land_support",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::full_125_to_0::land_support",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::full_125_to_0::temperature_c",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::full_125_to_0::temperature_c",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::full_125_to_0::aridity_index",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::full_125_to_0::aridity_index",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::full_125_to_0::browse_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::full_125_to_0::browse_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::full_125_to_0::low_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::full_125_to_0::low_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::full_125_to_0::wetland_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::full_125_to_0::wetland_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::full_125_to_0::reference_population",
+      "pass": true,
+      "actual": [
+        6,
+        90,
+        180
+      ],
+      "expected": [
+        6,
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::full_125_to_0::reference_population",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::recent_120_to_0::land_support",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::recent_120_to_0::land_support",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::recent_120_to_0::temperature_c",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::recent_120_to_0::temperature_c",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::recent_120_to_0::aridity_index",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::recent_120_to_0::aridity_index",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::recent_120_to_0::browse_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::recent_120_to_0::browse_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::recent_120_to_0::low_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::recent_120_to_0::low_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::recent_120_to_0::wetland_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::recent_120_to_0::wetland_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::recent_120_to_0::reference_population",
+      "pass": true,
+      "actual": [
+        6,
+        90,
+        180
+      ],
+      "expected": [
+        6,
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::recent_120_to_0::reference_population",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase1_125_to_62p5::land_support",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase1_125_to_62p5::land_support",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase1_125_to_62p5::temperature_c",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase1_125_to_62p5::temperature_c",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase1_125_to_62p5::aridity_index",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase1_125_to_62p5::aridity_index",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase1_125_to_62p5::browse_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase1_125_to_62p5::browse_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase1_125_to_62p5::low_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase1_125_to_62p5::low_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase1_125_to_62p5::wetland_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase1_125_to_62p5::wetland_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase1_125_to_62p5::reference_population",
+      "pass": true,
+      "actual": [
+        6,
+        90,
+        180
+      ],
+      "expected": [
+        6,
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase1_125_to_62p5::reference_population",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase2_62p5_to_0::land_support",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase2_62p5_to_0::land_support",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase2_62p5_to_0::temperature_c",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase2_62p5_to_0::temperature_c",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase2_62p5_to_0::aridity_index",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase2_62p5_to_0::aridity_index",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase2_62p5_to_0::browse_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase2_62p5_to_0::browse_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase2_62p5_to_0::low_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase2_62p5_to_0::low_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase2_62p5_to_0::wetland_forage",
+      "pass": true,
+      "actual": [
+        90,
+        180
+      ],
+      "expected": [
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase2_62p5_to_0::wetland_forage",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "independent_shape::transport_phase2_62p5_to_0::reference_population",
+      "pass": true,
+      "actual": [
+        6,
+        90,
+        180
+      ],
+      "expected": [
+        6,
+        90,
+        180
+      ]
+    },
+    {
+      "name": "independent_exact::transport_phase2_62p5_to_0::reference_population",
+      "pass": true,
+      "actual": 0.0,
+      "expected": 0.0
+    },
+    {
+      "name": "summary_envelope_pointer",
+      "pass": true,
+      "actual": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a",
+      "expected": "45f42200faa315ad7fe69f4fa8bcb1019c8f0c8dcb90fc2a18488bd40a9df58a"
+    },
+    {
+      "name": "summary_bundle_pointer",
+      "pass": true,
+      "actual": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70",
+      "expected": "54172b22540b854115e82c041d4fb8dc2f0bdfbbc6784c669c145ba1db0c1a70"
+    },
+    {
+      "name": "summary_bundle_roundtrip",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    }
+  ]
+}

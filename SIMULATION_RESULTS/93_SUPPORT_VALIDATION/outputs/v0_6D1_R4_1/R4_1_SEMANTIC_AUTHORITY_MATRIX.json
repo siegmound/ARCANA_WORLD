@@ -1,0 +1,203 @@
+{
+  "domains": {
+    "additive_variance": {
+      "primary": [
+        "NEMO",
+        "SLiM"
+      ],
+      "secondary": [
+        "Geonomics"
+      ],
+      "vote": false
+    },
+    "admixture": {
+      "primary": [
+        "SLiM",
+        "NEMO",
+        "CDMetaPOP"
+      ],
+      "secondary": [
+        "Geonomics"
+      ],
+      "vote": false
+    },
+    "ancestry": {
+      "primary": [
+        "SLiM"
+      ],
+      "secondary": [
+        "Geonomics"
+      ],
+      "vote": false
+    },
+    "biomass": {
+      "primary": [
+        "Madingley"
+      ],
+      "secondary": [],
+      "vote": false
+    },
+    "connectivity": {
+      "primary": [
+        "RangeShifter",
+        "Geonomics"
+      ],
+      "secondary": [
+        "CDMetaPOP"
+      ],
+      "vote": false
+    },
+    "extinction_risk": {
+      "primary": [
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "secondary": [
+        "Madingley"
+      ],
+      "vote": false
+    },
+    "founder_persistence": {
+      "primary": [
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "secondary": [
+        "Geonomics"
+      ],
+      "vote": false
+    },
+    "gene_flow": {
+      "primary": [
+        "NEMO",
+        "SLiM",
+        "CDMetaPOP"
+      ],
+      "secondary": [
+        "Geonomics"
+      ],
+      "vote": false
+    },
+    "managed_wild_isolation": {
+      "primary": [
+        "Geonomics",
+        "SLiM",
+        "CDMetaPOP"
+      ],
+      "secondary": [
+        "RangeShifter"
+      ],
+      "vote": false
+    },
+    "population_persistence": {
+      "primary": [
+        "RangeShifter",
+        "CDMetaPOP"
+      ],
+      "secondary": [
+        "Geonomics",
+        "Madingley"
+      ],
+      "vote": false
+    },
+    "producer_divergence": {
+      "primary": [
+        "SLiM",
+        "Geonomics"
+      ],
+      "secondary": [
+        "RangeShifter"
+      ],
+      "vote": false
+    },
+    "range_occupancy": {
+      "primary": [
+        "RangeShifter"
+      ],
+      "secondary": [
+        "Geonomics",
+        "CDMetaPOP"
+      ],
+      "vote": false
+    },
+    "range_shift_rate": {
+      "primary": [
+        "RangeShifter"
+      ],
+      "secondary": [
+        "Geonomics"
+      ],
+      "vote": false
+    },
+    "trait_response": {
+      "primary": [
+        "SLiM",
+        "Geonomics"
+      ],
+      "secondary": [],
+      "vote": false
+    },
+    "trophic_opportunity": {
+      "primary": [
+        "Madingley"
+      ],
+      "secondary": [],
+      "vote": false
+    }
+  },
+  "majority_vote": false,
+  "note": "Authority assigns interpretation responsibility by scientific domain; it does not permit any external engine to write canonical state.",
+  "semantic_rules": {
+    "ecosystem_scale": {
+      "comparison": [
+        "biomass_response",
+        "trophic_opportunity_response",
+        "functional_persistence"
+      ],
+      "rule": "MADINGLEY_FUNCTIONAL_COHORTS_AND_STOCKS_DO_NOT_DEFINE_ARCANA_SPECIES_IDENTITY"
+    },
+    "genetic_scale": {
+      "comparison": [
+        "realized_allele_frequency_change",
+        "realized_gene_flow",
+        "variance_response",
+        "ancestry_fraction",
+        "distributional_effect_size"
+      ],
+      "rule": "PARAMETER_SEMANTICS_ARE_NOT_ASSUMED_IDENTICAL"
+    },
+    "population_scale": {
+      "comparison": [
+        "persistence_probability",
+        "relative_abundance_change",
+        "normalized_occupancy",
+        "distributional_summary"
+      ],
+      "forbidden": [
+        "direct_N_equality",
+        "NEMO_individuals_equal_ARCANA_population_units"
+      ],
+      "rule": "NO_LITERAL_CROSS_ENGINE_N_EQUIVALENCE"
+    },
+    "space_scale": {
+      "comparison": [
+        "occupied_fraction",
+        "centroid_shift",
+        "connectivity_index",
+        "support_persistence"
+      ],
+      "rule": "EXPLICIT_CELL_AREA_AND_ELIGIBLE_HABITAT_DENOMINATOR_REQUIRED"
+    },
+    "time_scale": {
+      "historical_window_execution_requires_generation_interval": true,
+      "no_implicit_year_generation_equivalence": true,
+      "rule": "EXPLICIT_GENERATION_OR_TIMESTEP_MAPPING_REQUIRED"
+    },
+    "uncertainty": {
+      "rule": "REPLICATE_DISTRIBUTIONS_REQUIRED_BEFORE_HISTORICAL_PROMOTION",
+      "single_run_use": "SEMANTIC_AND_EXECUTABLE_GATE_ONLY"
+    }
+  },
+  "stage": "v0.6D1-R4.1",
+  "status": "FROZEN_PRE_RESULT"
+}

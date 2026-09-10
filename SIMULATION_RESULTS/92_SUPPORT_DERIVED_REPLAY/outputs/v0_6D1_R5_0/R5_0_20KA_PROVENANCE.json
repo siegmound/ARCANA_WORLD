@@ -1,0 +1,83 @@
+{
+  "canonical_write": false,
+  "domain_coverage": {
+    "climate": "R3_33_TEMPERATURE_ANOMALY_PLUS_PRECIPITATION_FACTOR",
+    "fauna": "PARTIAL_R3_33_24_ECOLOGICAL_PARTNER_CANDIDATES_AND_INTERACTION_TRAJECTORIES_NO_GLOBAL_FAUNA_RASTER",
+    "flora": "R3_34_36_ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCER_TAXA",
+    "hydrology": "PARTIAL_R3_33_HYDROCLIMATE_RESOURCE_PLUS_COASTAL_EDGE_NO_RIVER_NETWORK",
+    "population": "FULL_R3_28_TWO_CANDIDATE_COHORT_SUMMARY_PLUS_MAX_6_DEME_DETAIL",
+    "resources": "R3_33_NPP_PRECIPITATION_HYDROCLIMATE_RESOURCE_FIELDS",
+    "surface_paleogeography": "PARTIAL_LAND_FRACTION_PLUS_SEA_LEVEL_SURFACE_SUPPORT_NOT_DEEP_GEOLOGY"
+  },
+  "parent_hashes": {
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+    "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_REPLAY_AUTHORITY.json": "f81755225fe301fb5519c3ca4e6e6ce715937e35a42a48a4e5c184c85879b29a",
+    "outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_TRAJECTORIES.npz": "175959669ba5daa84ab0937b4b213c1633ee674e89e67690915dbc622b2e1b84",
+    "outputs/v0_6D1_R3_33/R3_33_ECOLOGICAL_PARTNER_CANDIDATE_REGISTRY.json": "ab3d6e50966946c95ffa60bdf48115275b3b7669640715b99836570828886711",
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+    "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY.json": "17cc1bf7c0096b51eb333c0de7bbc4f0a827f7a4a0f821868f9db3bfa4b2936a",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json": "5851a7e2d0822bab8c006bc8cd6f49f506138a3aab0533b000ecc603f9e4c39e",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+    "outputs/v0_6D1_R3_34/R3_34_PRODUCER_TAXON_REGISTRY.json": "b24960a86a745a028c1096fe636885310d1ecaa3213a612696c7687ebb2e535c"
+  },
+  "products": {
+    "contact_admixture": {
+      "authority": "R3.28_HIGH_RESOLUTION_POPULATION_REPLAY.contact_index+admixture_opportunity_cumulative",
+      "mode": "EXACT",
+      "source_ages_ka": [
+        20.0
+      ],
+      "weight_younger": 0.0
+    },
+    "environment": {
+      "authority": "R3.33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE",
+      "mode": "EXACT",
+      "semantic": "DIRECT_SEALED_PALEOCLIMATE_PROVIDER_DOWNSAMPLED_TO_WORLD1_90X180_AND_INTERPOLATED_ONLY_BETWEEN_PROVIDER_SNAPSHOTS",
+      "source_ages_ka": [
+        20.0
+      ],
+      "weight_younger": 0.0
+    },
+    "fauna": {
+      "authority": "R3.33_DOMESTICATION_TRAJECTORIES_ANIMAL_ECOLOGICAL_PARTNERS",
+      "mode": "EXACT",
+      "semantic": "PARTIAL_FAUNA_AUTHORITY_24_H0_DERIVED_ECOLOGICAL_PARTNER_CANDIDATES_AND_INTERACTION_TRAJECTORIES_ONLY_NO_GLOBAL_FAUNA_RASTER_CLAIM",
+      "source_ages_ka": [
+        20.0
+      ],
+      "weight_younger": 0.0
+    },
+    "flora": {
+      "authority": "R3.34_PRODUCER_RESOURCE_LANDSCAPE",
+      "mode": "EXACT",
+      "semantic": "36_ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCER_TAXA_DERIVED_FROM_SEALED_RESOURCE_NICHES_AND_LIFE_HISTORY_PRIORS",
+      "source_ages_ka": [
+        20.0
+      ],
+      "weight_younger": 0.0
+    },
+    "population_detail": {
+      "authority": "R3.28.snapshot_deme_state",
+      "constraints": [
+        "parent_state_direct"
+      ],
+      "mode": "EXACT",
+      "source_ages_ka": [
+        20.0
+      ],
+      "weight_younger": 0.0
+    },
+    "population_summary": {
+      "authority": "R3.28_HIGH_RESOLUTION_POPULATION_REPLAY.species_summary",
+      "mode": "EXACT",
+      "semantic": "POPULATION_SUMMARY_EXACT_WHEN_TARGET_ON_R3_28_HIGH_RESOLUTION_AXIS_OTHERWISE_BOUNDED_LINEAR_DERIVATION",
+      "source_ages_ka": [
+        20.0
+      ],
+      "weight_younger": 0.0
+    }
+  },
+  "query_id": "R50_DEMO_EXACT_20KA",
+  "stage": "v0.6D1-R5.0",
+  "target_age_ka": 20.0
+}
