@@ -29,6 +29,14 @@ R5_17_B5_LOCATOR: R5_17_B5_LOCATE_AND_INSPECT_SEALED_PALEOCLIMATE_INPUTS.py
 R5_17_B5_RESULT_SUMMARY: R5_17_B5_SEALED_PALEOCLIMATE_PAYLOAD_INSPECTION_SUMMARY.json
 R5_17_B6_DESIGN: R5_17_B6_FRESHWATER_PHYSICAL_INPUT_BINDING_DESIGN.md
 R5_17_B6_SEMANTIC_INSPECTOR: R5_17_B6_INSPECT_PALEOCLIMATE_SEMANTICS.py
+R5_17_B6_SEMANTIC_LOCATOR: R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS.py
+
+SIMULATION_RESULTS_ROOT: SIMULATION_RESULTS
+SIMULATION_RESULTS_README: SIMULATION_RESULTS/README.md
+SIMULATION_RESULTS_SEMANTIC_CATALOG: SIMULATION_RESULTS/SEMANTIC_CATALOG.md
+SIMULATION_RESULTS_MANIFEST_JSON: SIMULATION_RESULTS/MANIFEST.json
+SIMULATION_RESULTS_MANIFEST_CSV: SIMULATION_RESULTS/MANIFEST.csv
+SIMULATION_RESULTS_CATALOGUE_COMMIT: 1fe30b5bd6e5d5410860710db479720485a89094
 ```
 
 ## Authoritative continuation state
@@ -188,6 +196,54 @@ HUMAN_EDIBLE_PRODUCTIVITY: NOT_MATERIALIZED
 PHYSICAL_PERSONS_PER_CELL_K: NOT_MATERIALIZED
 ```
 
+## Default simulation result catalogue
+
+`SIMULATION_RESULTS/` is the default repository catalogue for locating
+consolidated WorldSim scientific/replay results before searching historical
+stage trees or archival packages.
+
+```yaml
+CATALOGUE_RECORDS: 863
+SEMANTICALLY_VERIFIED_RECORDS: 4
+SEMANTICALLY_PENDING_RECORDS: 859
+MANIFEST_JSON: SIMULATION_RESULTS/MANIFEST.json
+MANIFEST_CSV: SIMULATION_RESULTS/MANIFEST.csv
+HUMAN_SEMANTIC_CATALOG: SIMULATION_RESULTS/SEMANTIC_CATALOG.md
+CATALOGUE_AUTHORITY_COMMIT: 1fe30b5bd6e5d5410860710db479720485a89094
+```
+
+The four currently verified semantic payload authorities are:
+
+```text
+R3.18  environmental exposure integrals
+R3.20  hydrological hazard diagnostic rankings
+R3.33  Holocene environmental/resource landscape
+R5.1   model-derived cradle opportunity atlas
+```
+
+Their machine-readable manifest records include temporal coverage, spatial
+grid, semantic class, primary use, forbidden interpretations, authority
+evidence, and seal checks.
+
+Absence of verified semantic metadata on the remaining 859 records means
+**not yet semantically catalogued**. It must not be interpreted as invalid,
+non-authoritative, or scientifically rejected.
+
+The result catalogue improves discovery and semantic routing only. It does
+not rewrite the original stage authority, promote candidate stages, alter
+payload SHA256 identities, or change scientific meaning.
+
+For new work, prefer this lookup order:
+
+1. `SIMULATION_RESULTS/MANIFEST.json` for machine-readable discovery;
+2. `SIMULATION_RESULTS/SEMANTIC_CATALOG.md` for human semantic guidance;
+3. the referenced original/seal authority artifacts for adjudication;
+4. historical repository trees only when targeted provenance requires them.
+
+This catalogue registration does not complete R5.17-B6. B5 remains the
+latest completed R5.17 subphase until exact B6 semantic inspection evidence
+is executed, reviewed, and committed.
+
 ## Forbidden shortcuts
 
 - do not relabel `wetland_forage` as freshwater;
@@ -203,4 +259,4 @@ Commit every scientific/implementation/governance result and update this ledger.
 
 ---
 
-Updated: 2026-09-09 (Europe/Rome project date).
+Updated: 2026-09-10 (Europe/Rome project date).
