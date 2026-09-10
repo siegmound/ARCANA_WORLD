@@ -160,8 +160,13 @@ def scan_zip_text(root: Path) -> list[dict[str, Any]]:
 
 
 def likely_generator(record: dict[str, Any]) -> bool:
-    name = (record.get("path") or record.get("member") or "").lower()
-    if "paleoclimate\\model.py" in name or "paleoclimate/model.py" in name:
+    name = (record.get("path") or record.get("member") or "").replace("\\", "/").lower()
+    suffix = Path(name).suffix.lower()
+    if suffix not in {".py", ".ps1"}:
+        return False
+    if "r5_17_b6_" in name:
+        return False
+    if name.endswith("/src/arcana_worldsim/paleoclimate/model.py"):
         return False
     terms = {t for hit in record.get("hits", []) for t in hit.get("terms", [])}
     physical = {
@@ -171,7 +176,7 @@ def likely_generator(record: dict[str, Any]) -> bool:
         "lake_candidate_mask",
         "depression_depth_m",
     }
-    return bool(terms & physical) and (name.endswith(".py") or name.endswith(".ps1") or "hydro" in name or "channel" in name)
+    return bool(terms & physical)
 
 
 def main() -> None:
