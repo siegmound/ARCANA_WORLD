@@ -14,6 +14,7 @@ RECOVERY_LEDGER: R5_15_R5_17_RECOVERY_LEDGER.md
 LAST_SEAL_ARTIFACT: R5_16_FINAL_SEAL_AUDIT.json
 LAST_SEAL_COMMIT: d96235d8425c0f0fb9322ea01213cccb0c6e02f2
 POST_R5_16_OBJECTIVE: ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md
+SCIENTIFIC_ENGINE_SUITABILITY_GATE: SCIENTIFIC_ENGINE_SUITABILITY_GATE.md
 R5_17_CONTRACT: R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md
 
 R5_17_A_CENSUS: R5_17_INPUT_CAPABILITY_CENSUS.json
@@ -244,6 +245,27 @@ This catalogue registration does not complete R5.17-B6. B5 remains the
 latest completed R5.17 subphase until exact B6 semantic inspection evidence
 is executed, reviewed, and committed.
 
+## Scientific provider / engine selection policy
+
+Before designing any new material scientific computation, apply `SCIENTIFIC_ENGINE_SUITABILITY_GATE.md`.
+
+Standing decision order:
+
+```text
+1. reuse scientifically sufficient governed ARCANA authority;
+2. otherwise reuse a suitable already validated specialist provider;
+3. otherwise audit and introduce a justified specialist provider;
+4. only otherwise implement the minimum custom ARCANA computation.
+```
+
+The scientific question chooses the tool. Existing engines such as NEMO, Geonomics, SLiM, CDMetaPOP and RangeShiftR/RangeShifter are routed by domain and assumptions rather than used indiscriminately. Other specialist engines/libraries may be introduced only after a suitability audit and reproducible runtime/version binding.
+
+External engines remain evidence/providers under ARCANA orchestration; they do not become implicit canonical writers and no majority vote between engines defines ARCANA history. A PASS provider run still requires explicit scientific adjudication before canonical promotion.
+
+For hydrology specifically, inspect the exact governed ARCANA channel/topography/hydrology authority and its generator before authorizing a new hydrological model. Do not duplicate or replace native hydrology until its semantics have been shown insufficient.
+
+This policy is persistent governance and does not itself advance R5.17-B6 or authorize any new provider execution.
+
 ## Forbidden shortcuts
 
 - do not relabel `wetland_forage` as freshwater;
@@ -259,4 +281,4 @@ Commit every scientific/implementation/governance result and update this ledger.
 
 ---
 
-Updated: 2026-09-10 (Europe/Rome project date).
+Updated: 2026-09-11 (Europe/Rome project date).
