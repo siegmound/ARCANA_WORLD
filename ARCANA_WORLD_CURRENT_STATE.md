@@ -31,6 +31,7 @@ R5_17_B5_RESULT_SUMMARY: R5_17_B5_SEALED_PALEOCLIMATE_PAYLOAD_INSPECTION_SUMMARY
 R5_17_B6_DESIGN: R5_17_B6_FRESHWATER_PHYSICAL_INPUT_BINDING_DESIGN.md
 R5_17_B6_SEMANTIC_INSPECTOR: R5_17_B6_INSPECT_PALEOCLIMATE_SEMANTICS.py
 R5_17_B6_SEMANTIC_LOCATOR: R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS.py
+R5_17_B6_H1_NATIVE_HYDROLOGY_INSPECTOR: R5_17_B6_H1_LOCATE_AND_INSPECT_NATIVE_HYDROLOGY.py
 
 SIMULATION_RESULTS_ROOT: SIMULATION_RESULTS
 SIMULATION_RESULTS_README: SIMULATION_RESULTS/README.md
@@ -53,9 +54,9 @@ ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
 ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
 
 ACTIVE_SUBPHASE: R5.17-B6
-ACTIVE_SUBPHASE_STATUS: READY_FOR_LOCAL_PALEOCLIMATE_SEMANTIC_INSPECTION
+ACTIVE_SUBPHASE_STATUS: H0_LOCAL_SEMANTIC_PASS__H1_NATIVE_HYDROLOGY_AUDIT_READY
 ACTIVE_SUBPHASE_SCOPE: FRESHWATER_PHYSICAL_INPUT_SEMANTIC_BINDING_AND_MINIMUM_HYDROLOGY_DESIGN
-NEXT_ACTION: RUN_B6_EXACT_SOURCE_SEMANTIC_INSPECTOR_AND_ADJUDICATE_MINIMUM_NATIVE_HYDROLOGY
+NEXT_ACTION: RUN_B6_H1_NATIVE_HYDROLOGY_DISCOVERY_THEN_AUDIT_AUTHORITY_LINEAGE_AND_GENERATOR
 ```
 
 ## Continuation chain
@@ -71,7 +72,11 @@ R5.7 SEALED
        -> B3  PASS native environmental exposure derivation
        -> B4  PASS direct-bound freshwater source-gap audit
        -> B5  PASS exact sealed paleoclimate payload inspection
-       -> B6  READY physical-input semantic binding / minimum hydrology design
+       -> B6  IN_PROGRESS
+            -> H0 local exact paleoclimate semantic evidence captured
+            -> H1 READY native channel-hydrology discovery/inspection
+            -> H2 pending authority-lineage/generator semantic audit
+            -> suitability adjudication pending
 ```
 
 R5.16 explicitly seals the integrated R5.8–R5.15 continuation. Earlier individual candidate labels remain historical stage statuses and are not independently rewritten.
@@ -172,20 +177,43 @@ B5 does not promote any of these fields to freshwater support. The full generate
 
 ## Active work — R5.17-B6
 
-B6 must verify the exact R3.14-frozen source:
+B6 H0 verifies the exact R3.14-frozen source:
 
 ```yaml
 src/arcana_worldsim/paleoclimate/model.py:
   sha256: de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f
 ```
 
-The local semantic inspector records exact snapshot years, per-snapshot precipitation statistics and bounded source evidence around precipitation/hydrology identifiers without executing the historical source.
+Local H0 evidence reported exact source/payload hash matches, five precipitation snapshots at `[-21000, -14000, -12900, -12000, 0]`, and no materialization of freshwater support, runoff, hydrological reliability or K.
+
+Critically, the inspected paleoclimate source loads:
+
+```text
+inputs/v0_5_5I_SEALED/channel_hydrology_state_I.npz
+```
+
+and consumes at least:
+
+```text
+mean_discharge_m3_s
+drainage_area_km2
+receiver_flat
+lake_candidate_mask
+depression_depth_m
+```
+
+The paleoclimate source itself does not expose a complete water-balance chain: lexical H0 evidence does not establish runoff, evapotranspiration, infiltration, recharge or storage semantics. This absence cannot be interpreted as absence of ARCANA hydrology because the model explicitly consumes the separate v0.5.5I channel-hydrology state.
+
+Therefore H1 must discover and structurally inspect all local/archive `channel_hydrology_state_I.npz` candidates before provider selection. H1 does not assume an authority SHA in advance and cannot adjudicate canonical identity merely from filename/path coincidence.
+
+After H1, H2 must recover the governed payload lineage and generator semantics, including the physical meaning of `mean_discharge_m3_s`, routing/topology construction and temporal applicability.
 
 B6 semantic rule:
 
 - relative precipitation + geometry may support a later relative hydroclimatic/drainage opportunity calculation;
+- existing native discharge/drainage evidence must be audited before any replacement or duplication;
 - physical freshwater supply requires defensible water-balance semantics (absolute precipitation or calibrated baseline, evapotranspiration, infiltration/recharge, storage/routing/reliability as applicable);
-- if these semantics are absent, R5.17 must introduce the minimum explicit hydrology model/provider rather than fabricate them.
+- only after H2 may the Scientific Engine Suitability Gate choose reuse, specialist derivation, dedicated hydrology provider or minimum custom ARCANA computation.
 
 Explicit unresolved quantities remain:
 
@@ -199,9 +227,7 @@ PHYSICAL_PERSONS_PER_CELL_K: NOT_MATERIALIZED
 
 ## Default simulation result catalogue
 
-`SIMULATION_RESULTS/` is the default repository catalogue for locating
-consolidated WorldSim scientific/replay results before searching historical
-stage trees or archival packages.
+`SIMULATION_RESULTS/` is the default repository catalogue for locating consolidated WorldSim scientific/replay results before searching historical stage trees or archival packages.
 
 ```yaml
 CATALOGUE_RECORDS: 863
@@ -222,17 +248,11 @@ R3.33  Holocene environmental/resource landscape
 R5.1   model-derived cradle opportunity atlas
 ```
 
-Their machine-readable manifest records include temporal coverage, spatial
-grid, semantic class, primary use, forbidden interpretations, authority
-evidence, and seal checks.
+Their machine-readable manifest records include temporal coverage, spatial grid, semantic class, primary use, forbidden interpretations, authority evidence, and seal checks.
 
-Absence of verified semantic metadata on the remaining 859 records means
-**not yet semantically catalogued**. It must not be interpreted as invalid,
-non-authoritative, or scientifically rejected.
+Absence of verified semantic metadata on the remaining 859 records means **not yet semantically catalogued**. It must not be interpreted as invalid, non-authoritative, or scientifically rejected.
 
-The result catalogue improves discovery and semantic routing only. It does
-not rewrite the original stage authority, promote candidate stages, alter
-payload SHA256 identities, or change scientific meaning.
+The result catalogue improves discovery and semantic routing only. It does not rewrite the original stage authority, promote candidate stages, alter payload SHA256 identities, or change scientific meaning.
 
 For new work, prefer this lookup order:
 
@@ -241,9 +261,7 @@ For new work, prefer this lookup order:
 3. the referenced original/seal authority artifacts for adjudication;
 4. historical repository trees only when targeted provenance requires them.
 
-This catalogue registration does not complete R5.17-B6. B5 remains the
-latest completed R5.17 subphase until exact B6 semantic inspection evidence
-is executed, reviewed, and committed.
+This catalogue registration does not complete R5.17-B6. B5 remains the latest completed R5.17 subphase until B6 H0/H1/H2 evidence and suitability adjudication are repository-reviewed and committed as a completed result.
 
 ## Scientific provider / engine selection policy
 
@@ -272,7 +290,8 @@ This policy is persistent governance and does not itself advance R5.17-B6 or aut
 - do not invert `aridity_index` and call it freshwater without a physical model;
 - do not interpret R3.20 hazards as water supply;
 - do not treat ocean-circulation freshwater forcing as local terrestrial supply;
-- do not extrapolate sparse snapshots into continuous physical water history without an explicit contract;
+- do not assume `mean_discharge_m3_s` is a valid persistent-human-water field before generator semantics and temporal support are verified;
+- do not extrapolate sparse snapshots or static channel state into continuous physical water history without an explicit contract;
 - do not collapse these layers into `K` yet.
 
 ## Repository tracking rule
