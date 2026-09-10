@@ -730,9 +730,17 @@
     "OriginalRelativePath": "local_runs\\v0_6D1_R3_18\\R3_18_125KA_TO_0_EXPOSURE_AND_TRANSPORT_PHASES.npz",
     "ConsolidatedPath": "01_CORE_WORLD_HISTORY\\local_runs\\v0_6D1_R3_18\\R3_18_125KA_TO_0_EXPOSURE_AND_TRANSPORT_PHASES.npz",
     "CopyVerified": true,
-    "AuthorityStatus": "PENDING_REPOSITORY_ADJUDICATION",
-    "SemanticStatus": "PENDING_CONTENT_INSPECTION",
-    "Contents": "PENDING"
+    "AuthorityStatus": "SEALED_CORE_AUTHORITY",
+    "SemanticStatus": "VERIFIED_PAYLOAD_SCHEMA_AND_REPOSITORY_AUTHORITY",
+    "Contents": "31 arrays: biology/physical/transport age scalars plus four environmental exposure-integral groups (recent_120_to_0, full_125_to_0, transport_phase1_125_to_62p5, transport_phase2_62p5_to_0); each group contains land_support, temperature_c exposure integral, aridity_index exposure, browse_forage, low_forage, wetland_forage, reference_population.",
+    "ArrayCount": 31,
+    "TemporalCoverage": "125ka_to_0ka integrated; recent window 120ka_to_0ka; transport boundary 62.5ka",
+    "SpatialGrid": "WORLD1 90x180; reference_population arrays 6x90x180",
+    "SemanticClass": "ENVIRONMENTAL_EXPOSURE_INTEGRALS",
+    "PrimaryUse": "Recent environmental exposure reconstruction; phase comparison; duration-normalized downstream derivation under explicit contract",
+    "ForbiddenInterpretations": "instantaneous temperature map; physical human population; carrying capacity/K(x,t); freshwater supply from wetland_forage or aridity alone",
+    "AuthorityEvidence": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_18/FORMAL_AUDIT_SEALED_v0_6D1_R3_18.json; SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_18/R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json; ARCANA_WORLD_CURRENT_STATE.md",
+    "SealChecks": "172/172 PASS; SEALED"
   },
   {
     "Bucket": "01_CORE_WORLD_HISTORY",
@@ -775,9 +783,17 @@
     "OriginalRelativePath": "local_runs\\v0_6D1_R3_20\\R3_20_CHA2_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_FIELDS.npz",
     "ConsolidatedPath": "01_CORE_WORLD_HISTORY\\local_runs\\v0_6D1_R3_20\\R3_20_CHA2_15_TO_11KA_50Y_HYDROLOGICAL_HAZARD_FIELDS.npz",
     "CopyVerified": true,
-    "AuthorityStatus": "PENDING_REPOSITORY_ADJUDICATION",
-    "SemanticStatus": "PENDING_CONTENT_INSPECTION",
-    "Contents": "PENDING"
+    "AuthorityStatus": "SEALED_CORE_AUTHORITY",
+    "SemanticStatus": "VERIFIED_PAYLOAD_SCHEMA_AND_REPOSITORY_AUTHORITY",
+    "Contents": "10 arrays: years_before_book, severe_flood_candidate_fraction, and eight 80x90x180 diagnostic fields for pluvial flood potential, coastal inundation potential, compound flood hazard, drying hazard, ecosystem hydrological shock, hydrological disruption, meltwater-system pressure, and raw support loss.",
+    "ArrayCount": 10,
+    "TemporalCoverage": "14950_to_11000 years before book; 80 states; exact 50-year cadence",
+    "SpatialGrid": "80x90x180 hazard timeseries on WORLD1 90x180 grid",
+    "SemanticClass": "HYDROLOGICAL_HAZARD_DIAGNOSTIC_RANKINGS",
+    "PrimaryUse": "Relative CHA2 hydrological disruption/hazard ranking and explicitly governed downstream risk terms",
+    "ForbiddenInterpretations": "flood depth; guaranteed inundation; river discharge; rainfall amount; freshwater supply; persistent water access; navigability; carrying capacity/K(x,t)",
+    "AuthorityEvidence": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_20/FORMAL_AUDIT_SEALED_v0_6D1_R3_20.json; SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_20/R3_20_CHA2_YD_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_SUMMARY.json; ARCANA_WORLD_CURRENT_STATE.md",
+    "SealChecks": "108/108 PASS; SEALED"
   },
   {
     "Bucket": "01_CORE_WORLD_HISTORY",
@@ -1570,9 +1586,17 @@
     "OriginalRelativePath": "outputs\\v0_6D1_R3_33\\R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
     "ConsolidatedPath": "02_SCIENTIFIC_REPLAY\\outputs\\v0_6D1_R3_33\\R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
     "CopyVerified": true,
-    "AuthorityStatus": "PENDING_REPOSITORY_ADJUDICATION",
-    "SemanticStatus": "PENDING_CONTENT_INSPECTION",
-    "Contents": "PENDING"
+    "AuthorityStatus": "SEALED_SCIENTIFIC_REPLAY_AUTHORITY",
+    "SemanticStatus": "VERIFIED_PAYLOAD_SCHEMA_AND_REPOSITORY_AUTHORITY",
+    "Contents": "3 arrays: anchor_age_ka, environment_variable_names, environment_fields. Seven environment channels: temperature_anomaly_c, precipitation_factor, npp_factor, land_fraction, hydroclimate_resource_index, coastal_edge_index, sea_level_anomaly_m.",
+    "ArrayCount": 3,
+    "TemporalCoverage": "20ka_to_0ka anchors at [20,15,14,13,12,11,10,5,0] ka",
+    "SpatialGrid": "WORLD1 90x180; environment_fields 9x90x180x7",
+    "SemanticClass": "HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE",
+    "PrimaryUse": "Sealed Holocene environmental/resource anchor landscape for replay and later human-support derivations",
+    "ForbiddenInterpretations": "physical water balance; terrestrial freshwater supply; explicit plant-species map; agriculture; carrying capacity/K(x,t)",
+    "AuthorityEvidence": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY.json; SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_OUTPUT_MANIFEST.json; SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_33_SEAL/R3_33_FINAL_SEAL_AUDIT.json",
+    "SealChecks": "33/33 PASS; SEALED"
   },
   {
     "Bucket": "02_SCIENTIFIC_REPLAY",
@@ -2035,9 +2059,17 @@
     "OriginalRelativePath": "outputs\\v0_6D1_R5_1\\R5_1_CRADLE_OPPORTUNITY_ATLAS.npz",
     "ConsolidatedPath": "03_DERIVED_REPLAY\\outputs\\v0_6D1_R5_1\\R5_1_CRADLE_OPPORTUNITY_ATLAS.npz",
     "CopyVerified": true,
-    "AuthorityStatus": "PENDING_REPOSITORY_ADJUDICATION",
-    "SemanticStatus": "PENDING_CONTENT_INSPECTION",
-    "Contents": "PENDING"
+    "AuthorityStatus": "SEALED_DERIVED_SCIENTIFIC_AUTHORITY",
+    "SemanticStatus": "VERIFIED_PAYLOAD_SCHEMA_AND_REPOSITORY_AUTHORITY",
+    "Contents": "29 arrays: age axis, two retained candidate IDs, WORLD1 lat/lon, spatial persistence/opportunity fields, population/presence/coverage fractions, corridor connectivity by age, environmental summaries, and per-lineage demographic/ecological/genetic time series.",
+    "ArrayCount": 29,
+    "TemporalCoverage": "3.0Ma_to_0.2Ma; 141 age states at 0.02Ma (20ka) cadence",
+    "SpatialGrid": "WORLD1 90x180; 2 candidate lineages; age-series length 141",
+    "SemanticClass": "MODEL_DERIVED_CRADLE_OPPORTUNITY_ATLAS",
+    "PrimaryUse": "Geographic/ecological opportunity and persistence analysis for retained lineages; cradle-region family discovery",
+    "ForbiddenInterpretations": "literal observed birthplace; settlement map; physical carrying capacity/K(x,t); empirical observed geography; single predetermined cradle winner",
+    "AuthorityEvidence": "SIMULATION_RESULTS/92_SUPPORT_DERIVED_REPLAY/outputs/v0_6D1_R5_1/R5_1_OUTPUT_MANIFEST.json; SIMULATION_RESULTS/92_SUPPORT_DERIVED_REPLAY/outputs/v0_6D1_R5_1/R5_1_FINAL_SEAL.json; SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R5_1/R5_1_STRUCTURE_ADJUDICATION_MANIFEST.json",
+    "SealChecks": "51/51 PASS; scientific_seal=true; sealed=true"
   },
   {
     "Bucket": "03_DERIVED_REPLAY",
