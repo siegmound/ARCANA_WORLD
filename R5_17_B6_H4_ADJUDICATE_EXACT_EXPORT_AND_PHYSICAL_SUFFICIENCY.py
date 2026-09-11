@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -43,6 +42,10 @@ PHYSICAL_TERMS = (
     "lake_candidate_mask",
     "depression_depth_m",
     "mean_discharge_m3_s",
+    "m3_s",
+    "m3_yr",
+    "mm_yr",
+    "mm_month",
     "31557600",
     "365.25",
 )
@@ -189,7 +192,6 @@ def scan_zip_links(root: Path) -> list[dict[str, Any]]:
                     member = Path(info.filename)
                     if member.suffix.lower() not in TEXT_SUFFIXES or info.file_size > MAX_TEXT_BYTES:
                         continue
-                    # Narrow the expensive ZIP scan to plausible lineage/export artifacts.
                     lname = info.filename.lower()
                     if not any(x in lname for x in ("hydro", "manifest", "seal", "final", "export", "water_balance")):
                         continue
@@ -212,7 +214,7 @@ def scan_zip_links(root: Path) -> list[dict[str, Any]]:
     return records
 
 
-def inspect_equations(exact_sources: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
+def inspect_physical_chain(exact_sources: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
     exact = {
         suffix: [r for r in records if r.get("matches_expected_sha256")]
         for suffix, records in exact_sources.items()
@@ -252,15 +254,16 @@ def inspect_equations(exact_sources: dict[str, list[dict[str, Any]]]) -> dict[st
         "lake_mask": any_term(final, "lake_candidate_mask"),
     }
 
+    unit_signals = {
+        "runoff_volume_m3_yr": any_term(water, "runoff_volume_m3_yr") or any_term(final, "runoff_volume_m3_yr"),
+        "annual_runoff_mm_yr": any_term(final, "annual_runoff_mm_yr"),
+        "mean_discharge_m3_s": any_term(final, "mean_discharge_m3_s"),
+        "seconds_per_year_literal": any_term(final, "31557600") or any_term(final, "365.25"),
+    }
+
     full_water_balance = all(
         water_signals[k]
-        for k in (
-            "precipitation",
-            "evapotranspiration",
-            "infiltration",
-            "runoff",
-            "routing",
-        )
+        for k in ("precipitation", "evapotranspiration", "infiltration", "runoff", "routing")
     )
     reliability_supporting_semantics = (
         water_signals["storage"]
@@ -268,6 +271,19 @@ def inspect_equations(exact_sources: dict[str, list[dict[str, Any]]]) -> dict[st
         or water_signals["cryo_storage"]
     )
     finalized_discharge = finalized["annual_runoff"] and finalized["mean_discharge"]
+    units_recovered = (
+        unit_signals["annual_runoff_mm_yr"]
+        and unit_signals["mean_discharge_m3_s"]
+    )
+
+    all_expected_source_hashes_recovered = all(bool(exact[s]) for s in EXPECTED_SOURCES)
+    physical_chain_evidence_complete = (
+        all_expected_source_hashes_recovered
+        and structural_chain
+        and full_water_balance
+        and finalized_discharge
+        and units_recovered
+    )
 
     return {
         "structural_chain_recovered": structural_chain,
@@ -275,8 +291,15 @@ def inspect_equations(exact_sources: dict[str, list[dict[str, Any]]]) -> dict[st
         "full_water_balance_chain_recovered": full_water_balance,
         "reliability_supporting_semantics_recovered": reliability_supporting_semantics,
         "finalization_signals": finalized,
+        "unit_signals": unit_signals,
         "finalized_discharge_chain_recovered": finalized_discharge,
-        "all_expected_source_hashes_recovered": all(bool(exact[s]) for s in EXPECTED_SOURCES),
+        "units_semantics_recovered": units_recovered,
+        "all_expected_source_hashes_recovered": all_expected_source_hashes_recovered,
+        "physical_chain_evidence_complete": physical_chain_evidence_complete,
+        "physical_sufficiency_adjudicated": False,
+        "physical_sufficiency_reason": (
+            "Source/hash/equation/unit evidence may be complete, but scientific sufficiency requires explicit review of the recovered formulas, parameter assumptions, calibration scope, and temporal applicability."
+        ),
     }
 
 
@@ -309,8 +332,8 @@ def link_classification(records: list[dict[str, Any]]) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "R5.17-B6-H4: adjudicate recovered native hydrology source identity, exact v0.5.5I export linkage, "
-            "and physical freshwater-model sufficiency without executing historical code."
+            "R5.17-B6-H4: capture exact-source, export-lineage, equation and unit evidence for native ARCANA hydrology. "
+            "Historical source is not executed and scientific sufficiency is not auto-promoted from lexical evidence."
         )
     )
     parser.add_argument("--search-root", type=Path, required=True)
@@ -327,33 +350,26 @@ def main() -> None:
     zip_links = scan_zip_links(root)
     all_links = [*direct_links, *zip_links]
 
-    physical = inspect_equations(exact_sources)
+    physical = inspect_physical_chain(exact_sources)
     links = link_classification(all_links)
-
-    physical_model_sufficient_for_bounded_freshwater_derivation = (
-        physical["all_expected_source_hashes_recovered"]
-        and physical["structural_chain_recovered"]
-        and physical["full_water_balance_chain_recovered"]
-        and physical["finalized_discharge_chain_recovered"]
-    )
 
     exact_generator_identity_adjudicated = (
         physical["all_expected_source_hashes_recovered"]
         and links["exact_export_lineage_recovered"]
     )
 
-    if exact_generator_identity_adjudicated and physical_model_sufficient_for_bounded_freshwater_derivation:
-        status = "PASS_R517_B6_H4_EXACT_EXPORT_LINEAGE_AND_PHYSICAL_SUFFICIENCY_RECOVERED"
-    elif physical_model_sufficient_for_bounded_freshwater_derivation:
-        status = "PARTIAL_R517_B6_H4_PHYSICAL_MODEL_RECOVERED_EXACT_V055I_EXPORT_LINK_NOT_ADJUDICATED"
+    if exact_generator_identity_adjudicated and physical["physical_chain_evidence_complete"]:
+        status = "PASS_R517_B6_H4_EXPORT_LINEAGE_AND_PHYSICAL_EVIDENCE_CAPTURED"
+    elif physical["physical_chain_evidence_complete"]:
+        status = "PARTIAL_R517_B6_H4_PHYSICAL_EVIDENCE_CAPTURED_EXACT_V055I_EXPORT_LINK_NOT_ADJUDICATED"
     else:
-        status = "BLOCKED_R517_B6_H4_NATIVE_HYDROLOGY_PHYSICAL_SUFFICIENCY_NOT_ESTABLISHED"
+        status = "BLOCKED_R517_B6_H4_NATIVE_HYDROLOGY_PHYSICAL_EVIDENCE_INCOMPLETE"
 
     result = {
-        "schema": "ARCANA_R5_17_B6_H4_EXACT_EXPORT_AND_PHYSICAL_SUFFICIENCY_V1",
+        "schema": "ARCANA_R5_17_B6_H4_EXACT_EXPORT_AND_PHYSICAL_EVIDENCE_V2",
         "stage": "v0.6D1-R5.17",
         "subphase": "R5.17-B6-H4",
-        "purpose": "Resolve the remaining v0.5.5I export-lineage question and determine whether recovered ARCANA hydrology is physically sufficient for a bounded freshwater-support derivation before provider selection.",
+        "purpose": "Capture exact export-lineage and physical equation/unit evidence for recovered ARCANA hydrology before a separate scientific-sufficiency and engine-suitability adjudication.",
         "search_root": str(root),
         "target_payload": TARGET_PAYLOAD,
         "target_lineage": TARGET_LINEAGE,
@@ -364,9 +380,8 @@ def main() -> None:
         "zip_link_evidence": zip_links,
         "physical_semantics": physical,
         "export_lineage": links,
-        "physical_model_sufficient_for_bounded_freshwater_derivation": physical_model_sufficient_for_bounded_freshwater_derivation,
         "exact_v0_5_5I_generator_identity_adjudicated": exact_generator_identity_adjudicated,
-        "reuse_canonical_arcana_candidate": physical_model_sufficient_for_bounded_freshwater_derivation,
+        "reuse_canonical_arcana_candidate": physical["physical_chain_evidence_complete"],
         "reuse_canonical_arcana_authorized": False,
         "external_provider_authorized": False,
         "freshwater_support_materialized": False,
@@ -375,8 +390,8 @@ def main() -> None:
         "new_historical_simulation": False,
         "canonical_mutation": False,
         "status": status,
-        "next_if_pass": "R5.17-B6-H5_SCIENTIFIC_ENGINE_SUITABILITY_AND_MINIMUM_DERIVATION_CONTRACT",
-        "next_if_partial": "R5.17-B6-H5_SCIENTIFIC_ENGINE_SUITABILITY_WITH_EXACT_EXPORT_PROVENANCE_GAP_RECORDED",
+        "next_if_pass": "R5.17-B6-H5_SCIENTIFIC_SUFFICIENCY_AND_ENGINE_SUITABILITY_ADJUDICATION",
+        "next_if_partial": "R5.17-B6-H5_SCIENTIFIC_SUFFICIENCY_AND_ENGINE_SUITABILITY_WITH_EXPORT_PROVENANCE_GAP_RECORDED",
         "next_if_blocked": "R5.17-B6_SCIENTIFIC_ENGINE_SUITABILITY_WITH_NATIVE_PHYSICAL_GAP_RECORDED",
     }
 
@@ -391,10 +406,12 @@ def main() -> None:
         "full_water_balance_chain_recovered": physical["full_water_balance_chain_recovered"],
         "reliability_supporting_semantics_recovered": physical["reliability_supporting_semantics_recovered"],
         "finalized_discharge_chain_recovered": physical["finalized_discharge_chain_recovered"],
+        "units_semantics_recovered": physical["units_semantics_recovered"],
+        "physical_chain_evidence_complete": physical["physical_chain_evidence_complete"],
+        "physical_sufficiency_adjudicated": physical["physical_sufficiency_adjudicated"],
         "exact_payload_reference_count": links["exact_payload_reference_count"],
         "strong_export_link_count": links["strong_export_link_count"],
         "exact_export_lineage_recovered": links["exact_export_lineage_recovered"],
-        "physical_model_sufficient_for_bounded_freshwater_derivation": physical_model_sufficient_for_bounded_freshwater_derivation,
         "exact_v0_5_5I_generator_identity_adjudicated": exact_generator_identity_adjudicated,
         "output": str(args.output.resolve()),
     }, indent=2))
