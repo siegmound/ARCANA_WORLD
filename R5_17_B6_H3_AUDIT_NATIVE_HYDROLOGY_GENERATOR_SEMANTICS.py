@@ -9,6 +9,7 @@ from typing import Any
 
 TARGET_RELATIVE_SUFFIXES = (
     "src/arcana_worldsim/surface/hydrology.py",
+    "src/arcana_worldsim/regional/hydrology.py",
     "src/arcana_worldsim/climate/water_balance.py",
     "src/arcana_worldsim/finalization/hydrology.py",
 )
@@ -19,6 +20,8 @@ SEMANTIC_TERMS = (
     "receiver_flat",
     "lake_candidate_mask",
     "depression_depth_m",
+    "flow_accumulation",
+    "source_area",
     "precip",
     "rain",
     "evap",
@@ -85,6 +88,11 @@ def assignment_hits(text: str) -> list[str]:
     out: list[str] = []
     patterns = (
         r"mean_discharge_m3_s\s*=",
+        r"drainage_area_km2\s*=",
+        r"receiver_flat\s*=",
+        r"depression_depth_m\s*=",
+        r"lake_candidate_mask\s*=",
+        r"flow_accumulation\s*\(",
         r"runoff[^\n]*=",
         r"evap[^\n]*=",
         r"infil[^\n]*=",
@@ -94,12 +102,13 @@ def assignment_hits(text: str) -> list[str]:
         r"_route_[A-Za-z0-9_]*\(",
         r"np\.savez(?:_compressed)?\(",
     )
+    lines = text.splitlines()
     for pattern in patterns:
         for match in re.finditer(pattern, text, flags=re.IGNORECASE):
             line = text.count("\n", 0, match.start()) + 1
-            snippet = text.splitlines()[line - 1].strip()
+            snippet = lines[line - 1].strip()
             out.append(f"L{line}: {snippet[:500]}")
-    return out[:120]
+    return out[:160]
 
 
 def inspect_source(path: Path) -> dict[str, Any]:
@@ -177,18 +186,46 @@ def classify(records: list[dict[str, Any]]) -> dict[str, Any]:
             if rp.endswith(suffix.lower()):
                 by_suffix[suffix].append(record)
 
+    surface_suffix = "src/arcana_worldsim/surface/hydrology.py"
+    regional_suffix = "src/arcana_worldsim/regional/hydrology.py"
+    wb_suffix = "src/arcana_worldsim/climate/water_balance.py"
+    final_suffix = "src/arcana_worldsim/finalization/hydrology.py"
+
     def any_term(suffix: str, term: str) -> bool:
         return any(r.get("term_presence", {}).get(term, False) for r in by_suffix[suffix])
 
-    structural = (
-        any_term(TARGET_RELATIVE_SUFFIXES[0], "receiver_flat")
-        and any_term(TARGET_RELATIVE_SUFFIXES[0], "drainage_area_km2")
-        and any_term(TARGET_RELATIVE_SUFFIXES[0], "depression_depth_m")
+    # Structural hydrology is a lineage, not a requirement that every final field
+    # be named in surface/hydrology.py. The surface layer builds the receiver graph,
+    # depression handling and flow accumulation; regional/finalization layers may
+    # materialize drainage-area and lake fields from that structure.
+    surface_network = (
+        any_term(surface_suffix, "receiver_flat")
+        and any_term(surface_suffix, "depression_depth_m")
+        and (any_term(surface_suffix, "flow_accumulation") or any_term(surface_suffix, "source_area"))
     )
-    wb_terms = ("precip", "evap", "runoff", "storage", "soil", "route")
-    water_balance_signal_count = sum(any_term(TARGET_RELATIVE_SUFFIXES[1], t) for t in wb_terms)
-    water_balance = water_balance_signal_count >= 3
-    finalized_discharge = any_term(TARGET_RELATIVE_SUFFIXES[2], "mean_discharge_m3_s")
+    drainage_materialized = (
+        any_term(surface_suffix, "drainage_area_km2")
+        or any_term(regional_suffix, "drainage_area_km2")
+        or any_term(final_suffix, "drainage_area_km2")
+    )
+    lake_materialized = (
+        any_term(surface_suffix, "lake_candidate_mask")
+        or any_term(regional_suffix, "lake_candidate_mask")
+        or any_term(final_suffix, "lake_candidate_mask")
+    )
+    structural = surface_network and drainage_materialized
+
+    wb_terms = ("precip", "evap", "runoff", "storage", "infil", "route")
+    water_balance_signal_count = sum(any_term(wb_suffix, t) for t in wb_terms)
+    water_balance = (
+        water_balance_signal_count >= 4
+        and any_term(wb_suffix, "runoff")
+        and any_term(wb_suffix, "route")
+    )
+    finalized_discharge = (
+        any_term(final_suffix, "mean_discharge_m3_s")
+        and any_term(final_suffix, "runoff")
+    )
 
     hashes_by_suffix = {
         suffix: sorted({r.get("sha256") for r in group if r.get("sha256")})
@@ -196,6 +233,9 @@ def classify(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
     return {
+        "surface_network_semantics_recovered": surface_network,
+        "drainage_area_materialization_recovered": drainage_materialized,
+        "lake_materialization_recovered": lake_materialized,
         "structural_hydrology_semantics_recovered": structural,
         "water_balance_semantics_recovered": water_balance,
         "water_balance_signal_count": water_balance_signal_count,
@@ -230,10 +270,10 @@ def main() -> None:
         status = "BLOCKED_R517_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_INCOMPLETE"
 
     result = {
-        "schema": "ARCANA_R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_V1",
+        "schema": "ARCANA_R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_V2",
         "stage": "v0.6D1-R5.17",
         "subphase": "R5.17-B6-H3",
-        "purpose": "Determine whether recovered ARCANA source already contains structural hydrology, climatic water-balance, and finalized mean-discharge semantics before any external provider is authorized.",
+        "purpose": "Determine whether recovered ARCANA source lineage already contains structural hydrology, climatic water-balance, and finalized mean-discharge semantics before any external provider is authorized.",
         "search_root": str(root),
         "target_sources": list(TARGET_RELATIVE_SUFFIXES),
         "target_payload": TARGET_PAYLOAD,
