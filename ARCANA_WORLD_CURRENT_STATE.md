@@ -23,7 +23,9 @@ R5_17_B6_H0_SEMANTIC_LOCATOR: R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS
 R5_17_B6_H1_NATIVE_HYDROLOGY_INSPECTOR: R5_17_B6_H1_LOCATE_AND_INSPECT_NATIVE_HYDROLOGY.py
 R5_17_B6_H2_PROVENANCE_AUDITOR: R5_17_B6_H2_AUDIT_NATIVE_HYDROLOGY_PROVENANCE.py
 R5_17_B6_H3_GENERATOR_SEMANTIC_AUDITOR: R5_17_B6_H3_AUDIT_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.py
-R5_17_B6_H4_EXPORT_PHYSICAL_EVIDENCE_AUDITOR: R5_17_B6_H4_ADJUDICATE_EXACT_EXPORT_AND_PHYSICAL_SUFFICIENCY.py
+R5_17_B6_H4_EXPORT_PHYSICAL_EVIDENCE_AUDITOR: R5_17_B6_H4_ADJUDICATE_V055I_EXPORT_AND_PHYSICAL_SUFFICIENCY.py
+R5_17_B6_D1_REPLAY_CONTRACT_EXTRACTOR: R5_17_B6_D1_EXTRACT_CANONICAL_HYDROLOGY_REPLAY_CONTRACT.py
+R5_17_B6_D2_INPUT_BINDING_PREFLIGHT: R5_17_B6_D2_BIND_CANONICAL_PALEOHYDROLOGY_INPUTS.py
 
 SIMULATION_RESULTS_ROOT: SIMULATION_RESULTS
 SIMULATION_RESULTS_SEMANTIC_CATALOG: SIMULATION_RESULTS/SEMANTIC_CATALOG.md
@@ -39,15 +41,17 @@ LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.16
 LATEST_COMPLETED: v0.6D1-R5.17-B5
 LATEST_STATUS: PASS
 LATEST_VERDICT: PASS_R517_B5_SEALED_PALEOCLIMATE_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
+LATEST_COMPLETED_INTERNAL_STEP: R5.17-B6-D1
+LATEST_INTERNAL_VERDICT: PASS_R517_B6_D1_CANONICAL_HYDROLOGY_REPLAY_CONTRACT_CAPTURED
 
 ACTIVE_STAGE: v0.6D1-R5.17
 ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
 ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
 
 ACTIVE_SUBPHASE: R5.17-B6
-ACTIVE_SUBPHASE_STATUS: H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_PASS__H4_READY
-ACTIVE_SUBPHASE_SCOPE: FRESHWATER_PHYSICAL_INPUT_SEMANTIC_BINDING_AND_MINIMUM_HYDROLOGY_DESIGN
-NEXT_ACTION: RUN_B6_H4_EXACT_EXPORT_LINEAGE_AND_PHYSICAL_EVIDENCE_AUDIT_THEN_APPLY_SCIENTIFIC_ENGINE_SUITABILITY_GATE
+ACTIVE_SUBPHASE_STATUS: H4_REUSE_CANONICAL_ARCANA_PASS__D1_REPLAY_CONTRACT_PASS__D2_READY
+ACTIVE_SUBPHASE_SCOPE: FRESHWATER_PHYSICAL_DERIVATION_BINDING_AND_REPLAY_PREPARATION
+NEXT_ACTION: RUN_B6_D2_CANONICAL_PALEOHYDROLOGY_INPUT_BINDING_PREFLIGHT
 ```
 
 ## Continuation chain
@@ -64,16 +68,20 @@ R5.7 SEALED
        -> B4  PASS direct-bound freshwater source-gap audit
        -> B5  PASS exact sealed paleoclimate payload inspection
        -> B6  IN_PROGRESS
-            -> H0 PASS exact paleoclimate semantic evidence
-            -> H1 BLOCKED local payload absent; absence is materialization/provenance only
+            -> H0  PASS exact paleoclimate semantic evidence
+            -> H1  BLOCKED local channel-hydrology payload absent
             -> H1R BLOCKED payload absent across local ArcanaWorld tree
-            -> H2 PASS native hydrology provenance/generator candidates recovered
-            -> H3 PASS native hydrology generator semantics recovered
-            -> H4 READY exact export-lineage + equation/unit evidence
-            -> H5 pending scientific sufficiency + engine suitability adjudication
+            -> H2  PASS native hydrology provenance/generator candidates recovered
+            -> H3  PASS native hydrology generator semantics recovered
+            -> H4  PASS exact v0.5.5I export lineage + physical sufficiency
+                    decision = REUSE_CANONICAL_ARCANA
+                    external provider = NOT AUTHORIZED
+            -> D1  PASS canonical hydrology replay contract captured
+            -> D2  READY exact replay-input binding preflight
+            -> D3  pending canonical paleohydrology replay implementation
 ```
 
-R5.16 explicitly seals the integrated R5.8–R5.15 continuation. Earlier individual candidate labels remain historical stage statuses and are not independently rewritten.
+R5.16 explicitly seals the integrated R5.8–R5.15 continuation. Earlier individual candidate labels remain historical stage statuses and are not independently rewritten. B6 is not sealed or complete yet.
 
 ## Fixed parent/governance state
 
@@ -101,7 +109,7 @@ R3.18 `reference_population` is not physical human population and not carrying c
 
 ## R5.17-B4/B5 established result
 
-B4 established that no directly bound freshwater-supply/reliability/persistent-access/navigation field exists and that a new derivation is required, but did **not** authorize an external provider.
+B4 established that no directly bound freshwater-supply/reliability/persistent-access/navigation field exists and that a new derivation is required, but did not authorize an external provider.
 
 B5 hash-validated the R3.14 frozen paleoclimate payloads:
 
@@ -119,59 +127,11 @@ ALL_SHA256_MATCH: true
 
 ## Active work — R5.17-B6
 
-### H0 — exact R3.14 paleoclimate semantics
+### H0/H1/H2/H3 — native hydrology recovery
 
-Verified frozen source:
+The R3.14 frozen paleoclimate source consumes `inputs/v0_5_5I_SEALED/channel_hydrology_state_I.npz` with at least `mean_discharge_m3_s`, `drainage_area_km2`, `receiver_flat`, `lake_candidate_mask`, and `depression_depth_m`.
 
-```yaml
-src/arcana_worldsim/paleoclimate/model.py:
-  sha256: de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f
-```
-
-The source loads:
-
-```text
-inputs/v0_5_5I_SEALED/channel_hydrology_state_I.npz
-```
-
-and consumes at least:
-
-```text
-mean_discharge_m3_s
-drainage_area_km2
-receiver_flat
-lake_candidate_mask
-depression_depth_m
-```
-
-The paleoclimate source itself is a consumer, not the full hydrology generator.
-
-### H1/H1R — materialized payload search
-
-`channel_hydrology_state_I.npz` was not found either inside the current repository tree or across the local parent `ArcanaWorld` tree, including scanned ZIPs. This is an unresolved payload-materialization/provenance gap only; it is not evidence that native ARCANA hydrology never existed.
-
-### H2 — provenance recovery
-
-Targeted provenance search recovered a substantial historical hydrology source lineage. The missing NPZ remains unmaterialized, but source-level generator candidates exist across v0.4/v0.5.5 stages.
-
-### H3 — native generator semantics PASS
-
-Local H3 V2 result:
-
-```yaml
-STATUS: PASS_R517_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_RECOVERED
-SCHEMA: ARCANA_R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_V2
-SOURCE_CANDIDATES: 11
-SURFACE_NETWORK_SEMANTICS_RECOVERED: true
-DRAINAGE_AREA_MATERIALIZATION_RECOVERED: true
-LAKE_MATERIALIZATION_RECOVERED: true
-STRUCTURAL_HYDROLOGY_SEMANTICS_RECOVERED: true
-WATER_BALANCE_SEMANTICS_RECOVERED: true
-WATER_BALANCE_SIGNAL_COUNT: 6
-FINALIZED_MEAN_DISCHARGE_SEMANTICS_RECOVERED: true
-```
-
-Recovered stable source identities:
+The payload itself is no longer materialized locally, but H2/H3 recovered a stable composed native source lineage:
 
 ```yaml
 src/arcana_worldsim/surface/hydrology.py:
@@ -184,36 +144,60 @@ src/arcana_worldsim/finalization/hydrology.py:
   sha256: 29c808bd889d3f0c6e5390775d8751f68b9c9dd2cb5bab1736d6ad6cc6486351
 ```
 
-Recovered semantics show a composed native pipeline rather than one monolithic file:
+H3 V2 recovered drainage topology, drainage-area and lake materialization, water-balance semantics and finalized mean-discharge semantics.
 
-```text
-surface/hydrology.py
-  -> drainage topology / receiver network / depression structure
-regional/hydrology.py
-  -> drainage-area materialization and regional hydrology state
-climate/water_balance.py
-  -> precipitation/evapotranspiration/infiltration/runoff/storage/routing semantics
-finalization/hydrology.py
-  -> runoff products and mean_discharge_m3_s finalization
+### H4 — exact lineage + physical sufficiency PASS
+
+Local H4 result:
+
+```yaml
+STATUS: PASS_R517_B6_H4_V055I_EXPORT_LINEAGE_AND_PHYSICAL_SUFFICIENCY_ADJUDICATED
+DECISION: REUSE_CANONICAL_ARCANA
+ALL_EXPECTED_GENERATOR_HASHES_RECOVERED: true
+STRUCTURAL_SEMANTICS_SUFFICIENT: true
+PHYSICAL_WATER_BALANCE_SUFFICIENT: true
+DISCHARGE_SEMANTICS_SUFFICIENT: true
+TARGET_PAYLOAD_LITERAL_REFERENCE_COUNT: 18
+V055I_REFERENCE_COUNT: 81
+DIRECT_V055I_PAYLOAD_BRIDGE_REFERENCE_COUNT: 17
+EXACT_V0_5_5I_GENERATOR_IDENTITY_ADJUDICATED: true
+REUSE_CANONICAL_ARCANA_AUTHORIZED: true
+EXTERNAL_PROVIDER_AUTHORIZED: false
 ```
 
-H3 demonstrates that ARCANA already contains a physically structured hydrology lineage. It does **not** yet prove that these exact recovered source identities exported the missing `v0_5_5I_SEALED/channel_hydrology_state_I.npz`, and it does not by itself authorize reuse for R5.17.
+Recovered physical components include precipitation, evapotranspiration, infiltration, groundwater return, storage, cryo-storage, runoff, network routing, receiver network, drainage area, depressions, lakes, runoff depth/volume and `mean_discharge_m3_s`.
 
-### H4 — exact export-lineage and physical evidence
+Scientific-engine selection for the hydrology core is therefore closed: reuse the governed ARCANA lineage. Do not introduce Wflow, PCR-GLOBWB, pyflwdir or another hydrology provider unless a later, new scientific requirement exceeds this adjudicated model.
 
-H4 must:
+### D1 — canonical replay contract PASS
 
-1. bind the four H3 source identities by exact SHA256;
-2. recover any direct/archival link to `channel_hydrology_state_I.npz` / `v0_5_5I_SEALED`;
-3. capture the relevant equations and unit semantics for precipitation, ET, infiltration, storage/groundwater/cryo terms, runoff routing and conversion to discharge;
-4. keep `physical_sufficiency_adjudicated=false` until those equations/assumptions are explicitly reviewed;
-5. never execute historical source, materialize freshwater support, mutate canon or authorize a provider.
+Local D1 result:
 
-H4 may legitimately return a partial result if the physical source/equation chain is recovered but the final documentary export link to the lost v0.5.5I NPZ is not.
+```yaml
+STATUS: PASS_R517_B6_D1_CANONICAL_HYDROLOGY_REPLAY_CONTRACT_CAPTURED
+ALL_EXPECTED_GENERATOR_HASHES_RECOVERED: true
+REPLAY_CONTRACT_READY_FOR_IMPLEMENTATION_DESIGN: true
+REUSE_CANONICAL_ARCANA: true
+EXTERNAL_PROVIDER_AUTHORIZED: false
+SOURCE_EXECUTED: false
+FRESHWATER_SUPPORT_MATERIALIZED: false
+```
+
+Key recovered callables include `build_climatic_hydrology(...)` and `build_channel_hydrology(project_root, coast_state, seasonal)`. D1 captures the callable/input/output contract only; it does not execute historical source.
+
+### D2 — exact replay-input binding preflight READY
+
+D2 must bind those exact callables to materialized baseline climate/coast inputs and the exact R3.14 paleoclimate snapshots before any replay. It must explicitly report unresolved inputs rather than synthesize replacements.
+
+The D2 preflight is:
+
+`R5_17_B6_D2_BIND_CANONICAL_PALEOHYDROLOGY_INPUTS.py`
+
+A D2 PASS with `replay_execution_ready=true` authorizes design of D3 canonical paleohydrology replay. A D2 evidence PASS with unresolved inputs routes to bounded input recovery first.
 
 ### B6 scientific rule
 
-Relative precipitation + geometry alone are insufficient for physical freshwater supply. Physical freshwater support requires a defensible water balance and explicit temporal/reliability assumptions. Native ARCANA discharge/drainage semantics must be evaluated before replacement or duplication.
+Do not approximate paleodischarge by multiplying book-era `mean_discharge_m3_s` by `precipitation_factor_relative_book`. The adjudicated canonical model contains ET, infiltration, groundwater return, storage, cryo-storage, runoff and routing, so time-varying hydrology must preserve those semantics or explicitly document a narrower derived product.
 
 Explicit unresolved quantities remain:
 
@@ -249,4 +233,4 @@ Before any new material scientific computation, apply `SCIENTIFIC_ENGINE_SUITABI
 4. only otherwise implement the minimum custom ARCANA computation.
 ```
 
-For B6, no external hydrology provider is authorized before H4/H5 adjudication. Candidate specialist tools may only be considered if the recovered native ARCANA model proves scientifically insufficient for the required freshwater-support derivation.
+For the R5.17-B6 hydrology core, H4 selected `REUSE_CANONICAL_ARCANA`. External hydrology-provider introduction is not authorized. The next task is input binding and time-varying replay preparation, not engine selection.
