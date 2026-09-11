@@ -26,6 +26,7 @@ R5_17_B6_H3_GENERATOR_SEMANTIC_AUDITOR: R5_17_B6_H3_AUDIT_NATIVE_HYDROLOGY_GENER
 R5_17_B6_H4_EXPORT_PHYSICAL_EVIDENCE_AUDITOR: R5_17_B6_H4_ADJUDICATE_V055I_EXPORT_AND_PHYSICAL_SUFFICIENCY.py
 R5_17_B6_D1_REPLAY_CONTRACT_EXTRACTOR: R5_17_B6_D1_EXTRACT_CANONICAL_HYDROLOGY_REPLAY_CONTRACT.py
 R5_17_B6_D2_INPUT_BINDING_PREFLIGHT: R5_17_B6_D2_BIND_CANONICAL_PALEOHYDROLOGY_INPUTS.py
+R5_17_B6_D2R_SEASONAL_BASELINE_RECOVERY: R5_17_B6_D2R_RECOVER_SEASONAL_CLIMATE_BASELINE.py
 
 SIMULATION_RESULTS_ROOT: SIMULATION_RESULTS
 SIMULATION_RESULTS_SEMANTIC_CATALOG: SIMULATION_RESULTS/SEMANTIC_CATALOG.md
@@ -41,17 +42,17 @@ LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.16
 LATEST_COMPLETED: v0.6D1-R5.17-B5
 LATEST_STATUS: PASS
 LATEST_VERDICT: PASS_R517_B5_SEALED_PALEOCLIMATE_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
-LATEST_COMPLETED_INTERNAL_STEP: R5.17-B6-D1
-LATEST_INTERNAL_VERDICT: PASS_R517_B6_D1_CANONICAL_HYDROLOGY_REPLAY_CONTRACT_CAPTURED
+LATEST_COMPLETED_INTERNAL_STEP: R5.17-B6-D2
+LATEST_INTERNAL_VERDICT: PASS_R517_B6_D2_INPUT_BINDING_EVIDENCE_CAPTURED_WITH_UNRESOLVED_INPUTS
 
 ACTIVE_STAGE: v0.6D1-R5.17
 ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
 ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
 
 ACTIVE_SUBPHASE: R5.17-B6
-ACTIVE_SUBPHASE_STATUS: H4_REUSE_CANONICAL_ARCANA_PASS__D1_REPLAY_CONTRACT_PASS__D2_READY
+ACTIVE_SUBPHASE_STATUS: D2_INPUT_BINDING_PASS_WITH_SINGLE_BASELINE_GAP__D2R_READY
 ACTIVE_SUBPHASE_SCOPE: FRESHWATER_PHYSICAL_DERIVATION_BINDING_AND_REPLAY_PREPARATION
-NEXT_ACTION: RUN_B6_D2_CANONICAL_PALEOHYDROLOGY_INPUT_BINDING_PREFLIGHT
+NEXT_ACTION: RUN_B6_D2R_TARGETED_SEASONAL_CLIMATE_BASELINE_RECOVERY
 ```
 
 ## Continuation chain
@@ -77,7 +78,12 @@ R5.7 SEALED
                     decision = REUSE_CANONICAL_ARCANA
                     external provider = NOT AUTHORIZED
             -> D1  PASS canonical hydrology replay contract captured
-            -> D2  READY exact replay-input binding preflight
+            -> D2  PASS input-binding evidence; one unresolved baseline input
+                    exact sources = bound
+                    exact paleoclimate snapshots = bound
+                    exact book-era shoreline = bound
+                    seasonal_climate_state_I baseline = NOT MATERIALIZED
+            -> D2R READY targeted seasonal-climate baseline recovery
             -> D3  pending canonical paleohydrology replay implementation
 ```
 
@@ -185,15 +191,34 @@ FRESHWATER_SUPPORT_MATERIALIZED: false
 
 Key recovered callables include `build_climatic_hydrology(...)` and `build_channel_hydrology(project_root, coast_state, seasonal)`. D1 captures the callable/input/output contract only; it does not execute historical source.
 
-### D2 — exact replay-input binding preflight READY
+### D2 — exact replay-input binding evidence PASS with one gap
 
-D2 must bind those exact callables to materialized baseline climate/coast inputs and the exact R3.14 paleoclimate snapshots before any replay. It must explicitly report unresolved inputs rather than synthesize replacements.
+Local D2 result:
 
-The D2 preflight is:
+```yaml
+STATUS: PASS_R517_B6_D2_INPUT_BINDING_EVIDENCE_CAPTURED_WITH_UNRESOLVED_INPUTS
+EXACT_SOURCES_COMPLETE: true
+ALL_CALLABLE_CONTRACTS_FOUND: true
+EXACT_PALEOCLIMATE_SNAPSHOT_FOUND: true
+EXACT_BOOK_ERA_SHORELINE_FOUND: true
+SEASONAL_CLIMATE_BASELINE_FOUND: false
+SEASONAL_CLIMATE_CANDIDATE_COUNT: 0
+REPLAY_EXECUTION_READY: false
+UNRESOLVED_INPUTS:
+  - seasonal_climate_state_I_baseline
+```
 
-`R5_17_B6_D2_BIND_CANONICAL_PALEOHYDROLOGY_INPUTS.py`
+The only remaining replay-input gap is the book-era seasonal climate baseline consumed by the channel-hydrology finalization path. D2 did not synthesize or substitute this payload.
 
-A D2 PASS with `replay_execution_ready=true` authorizes design of D3 canonical paleohydrology replay. A D2 evidence PASS with unresolved inputs routes to bounded input recovery first.
+### D2R — targeted seasonal-climate baseline recovery READY
+
+`R5_17_B6_D2R_RECOVER_SEASONAL_CLIMATE_BASELINE.py` is authorized as a read-only targeted recovery step. It may recover, in order:
+
+1. exact `seasonal_climate_state_I.npz` from direct or ZIP materialization;
+2. an alternate-name NPZ only if its schema satisfies the exact `build_channel_hydrology(..., seasonal)` contract, with identity still pending;
+3. generator/reference lineage sufficient to design a canonical baseline reconstruction if the payload itself is absent.
+
+D2R must not execute historical simulation, authorize an external provider, materialize freshwater support or silently substitute a climate baseline.
 
 ### B6 scientific rule
 
@@ -233,4 +258,4 @@ Before any new material scientific computation, apply `SCIENTIFIC_ENGINE_SUITABI
 4. only otherwise implement the minimum custom ARCANA computation.
 ```
 
-For the R5.17-B6 hydrology core, H4 selected `REUSE_CANONICAL_ARCANA`. External hydrology-provider introduction is not authorized. The next task is input binding and time-varying replay preparation, not engine selection.
+For the R5.17-B6 hydrology core, H4 selected `REUSE_CANONICAL_ARCANA`. External hydrology-provider introduction is not authorized. The next task is the bounded recovery of the single missing seasonal-climate baseline, followed by canonical time-varying replay preparation.
