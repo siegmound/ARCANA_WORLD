@@ -17,24 +17,15 @@ POST_R5_16_OBJECTIVE: ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md
 SCIENTIFIC_ENGINE_SUITABILITY_GATE: SCIENTIFIC_ENGINE_SUITABILITY_GATE.md
 R5_17_CONTRACT: R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md
 
-R5_17_A_CENSUS: R5_17_INPUT_CAPABILITY_CENSUS.json
-R5_17_B1_BINDING: R5_17_B_SOURCE_BINDING.json
-R5_17_B2_INSPECTION_TOOL: R5_17_B_INSPECT_CANONICAL_INPUTS.py
-R5_17_B2_INSPECTION_MANIFEST: R5_17_B_LOCAL_CANONICAL_PAYLOAD_INSPECTION.json
-R5_17_B3_DESIGN: R5_17_B3_HUMAN_ENVIRONMENTAL_WATER_SUPPORT_DESIGN.md
-R5_17_B3_RUNNER: R5_17_B3_DERIVE_ENVIRONMENTAL_SUPPORT.py
-R5_17_B3_MANIFEST: R5_17_B3_ENVIRONMENTAL_SUPPORT_EXPOSURES_MANIFEST.json
-R5_17_B4_FRESHWATER_SOURCE_AUDIT: R5_17_B4_FRESHWATER_SOURCE_AUDIT.json
-R5_17_B5_INSPECTION_TOOL: R5_17_B5_INSPECT_SEALED_PALEOCLIMATE_INPUTS.py
-R5_17_B5_LOCATOR: R5_17_B5_LOCATE_AND_INSPECT_SEALED_PALEOCLIMATE_INPUTS.py
-R5_17_B5_RESULT_SUMMARY: R5_17_B5_SEALED_PALEOCLIMATE_PAYLOAD_INSPECTION_SUMMARY.json
 R5_17_B6_DESIGN: R5_17_B6_FRESHWATER_PHYSICAL_INPUT_BINDING_DESIGN.md
-R5_17_B6_SEMANTIC_INSPECTOR: R5_17_B6_INSPECT_PALEOCLIMATE_SEMANTICS.py
-R5_17_B6_SEMANTIC_LOCATOR: R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS.py
+R5_17_B6_H0_SEMANTIC_INSPECTOR: R5_17_B6_INSPECT_PALEOCLIMATE_SEMANTICS.py
+R5_17_B6_H0_SEMANTIC_LOCATOR: R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS.py
 R5_17_B6_H1_NATIVE_HYDROLOGY_INSPECTOR: R5_17_B6_H1_LOCATE_AND_INSPECT_NATIVE_HYDROLOGY.py
+R5_17_B6_H2_PROVENANCE_AUDITOR: R5_17_B6_H2_AUDIT_NATIVE_HYDROLOGY_PROVENANCE.py
+R5_17_B6_H3_GENERATOR_SEMANTIC_AUDITOR: R5_17_B6_H3_AUDIT_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.py
+R5_17_B6_H4_EXPORT_PHYSICAL_EVIDENCE_AUDITOR: R5_17_B6_H4_ADJUDICATE_EXACT_EXPORT_AND_PHYSICAL_SUFFICIENCY.py
 
 SIMULATION_RESULTS_ROOT: SIMULATION_RESULTS
-SIMULATION_RESULTS_README: SIMULATION_RESULTS/README.md
 SIMULATION_RESULTS_SEMANTIC_CATALOG: SIMULATION_RESULTS/SEMANTIC_CATALOG.md
 SIMULATION_RESULTS_MANIFEST_JSON: SIMULATION_RESULTS/MANIFEST.json
 SIMULATION_RESULTS_MANIFEST_CSV: SIMULATION_RESULTS/MANIFEST.csv
@@ -54,9 +45,9 @@ ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
 ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
 
 ACTIVE_SUBPHASE: R5.17-B6
-ACTIVE_SUBPHASE_STATUS: H0_LOCAL_SEMANTIC_PASS__H1_NATIVE_HYDROLOGY_AUDIT_READY
+ACTIVE_SUBPHASE_STATUS: H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_PASS__H4_READY
 ACTIVE_SUBPHASE_SCOPE: FRESHWATER_PHYSICAL_INPUT_SEMANTIC_BINDING_AND_MINIMUM_HYDROLOGY_DESIGN
-NEXT_ACTION: RUN_B6_H1_NATIVE_HYDROLOGY_DISCOVERY_THEN_AUDIT_AUTHORITY_LINEAGE_AND_GENERATOR
+NEXT_ACTION: RUN_B6_H4_EXACT_EXPORT_LINEAGE_AND_PHYSICAL_EVIDENCE_AUDIT_THEN_APPLY_SCIENTIFIC_ENGINE_SUITABILITY_GATE
 ```
 
 ## Continuation chain
@@ -73,10 +64,13 @@ R5.7 SEALED
        -> B4  PASS direct-bound freshwater source-gap audit
        -> B5  PASS exact sealed paleoclimate payload inspection
        -> B6  IN_PROGRESS
-            -> H0 local exact paleoclimate semantic evidence captured
-            -> H1 READY native channel-hydrology discovery/inspection
-            -> H2 pending authority-lineage/generator semantic audit
-            -> suitability adjudication pending
+            -> H0 PASS exact paleoclimate semantic evidence
+            -> H1 BLOCKED local payload absent; absence is materialization/provenance only
+            -> H1R BLOCKED payload absent across local ArcanaWorld tree
+            -> H2 PASS native hydrology provenance/generator candidates recovered
+            -> H3 PASS native hydrology generator semantics recovered
+            -> H4 READY exact export-lineage + equation/unit evidence
+            -> H5 pending scientific sufficiency + engine suitability adjudication
 ```
 
 R5.16 explicitly seals the integrated R5.8–R5.15 continuation. Earlier individual candidate labels remain historical stage statuses and are not independently rewritten.
@@ -105,88 +99,36 @@ R3_20_HYDROLOGICAL_HAZARD_SHA256: 4319f6464f96014e372e241a9c4b8d801bc945124153a3
 
 R3.18 `reference_population` is not physical human population and not carrying capacity. R3.18 environmental fields are integrated exposures. R3.20 hazard indices are diagnostic/ranking fields, not flood depths, guaranteed inundation, freshwater supply or an automatic human-support penalty.
 
-## R5.17-B2 result
+## R5.17-B4/B5 established result
 
-```yaml
-STATUS: PASS_R517_B2_LOCAL_CANONICAL_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
-ALL_SHA256_MATCH: true
-R3_18_ARRAY_COUNT: 31
-R3_19_ARRAY_COUNT: 12
-R3_20_ARRAY_COUNT: 10
-ALL_INSPECTED_ARRAYS_FINITE: true
-NEW_HISTORICAL_SIMULATION: false
-EXTERNAL_ENGINE_EXECUTION: false
-CANONICAL_MUTATION: false
-```
+B4 established that no directly bound freshwater-supply/reliability/persistent-access/navigation field exists and that a new derivation is required, but did **not** authorize an external provider.
 
-Native recent grid is 90 × 180. R3.19 exact 0-ka accessible cells = 4130. R3.20 contains 80 states at exact 50-year cadence from -14950 to -11000 years before book.
-
-## R5.17-B3 result
-
-```yaml
-STATUS: PASS_R517_B3_NATIVE_ENVIRONMENTAL_SUPPORT_EXPOSURE_DERIVATION
-ALL_INPUT_SHA256_MATCH: true
-DERIVED_ARRAY_COUNT: 44
-INTEGRAL_CLOSURE: PASS_ROUNDOFF_SCALE
-FRESHWATER_SUPPORT_MATERIALIZED: false
-K_X_T_MATERIALIZED: false
-```
-
-B3 duration-normalized the governed R3.18 integrals, derived transparent phase deltas, preserved the exact R3.19 0-ka accessibility endpoint, and copied the R3.20 hazard arrays unchanged within their original 15–11 ka scope.
-
-## R5.17-B4 result
-
-```yaml
-STATUS: PASS_R517_B4_FRESHWATER_SOURCE_GAP_CONFIRMED
-DIRECT_BOUND_FRESHWATER_SUPPLY_FIELD: false
-DIRECT_BOUND_FRESHWATER_RELIABILITY_FIELD: false
-PERSISTENT_WATER_ACCESS_FIELD: false
-NAVIGABLE_WATER_OPPORTUNITY_FIELD: false
-NEW_COMPUTE_REQUIRED: true
-EXTERNAL_PROVIDER_REQUIRED_AT_THIS_STAGE: false
-```
-
-B4 is a bounded source audit. It required inspection of the exact historical R3.14-bound v0.6.1 paleoclimate payloads before choosing the minimum new hydrology computation.
-
-## R5.17-B5 completed result
-
-Exact R3.14-frozen payloads were found locally and hash-validated:
+B5 hash-validated the R3.14 frozen paleoclimate payloads:
 
 ```yaml
 recent_paleoclimate_history.npz:
   sha256: be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1
-  arrays: 23
 paleoclimate_spatial_snapshots.npz:
   sha256: a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd
-  arrays: 11
 shoreline_state_I.npz:
   sha256: f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85
-  arrays: 17
 ALL_SHA256_MATCH: true
-BLOCKED_ALLOW_PICKLE_FALSE: none
 ```
 
-Scientifically relevant B5 discoveries:
-
-- `precipitation_factor_relative_book[5,720,1440]` exists and is the only direct lexical hydrology candidate in the spatial snapshot bundle; observed overall range is approximately 0.525904–1.000000.
-- `snapshot_year_before_book[5]`, `paleo_land_mask[5,720,1440]`, `temperature_anomaly_c`, and `npp_factor_relative_book` provide related paleoclimate context.
-- `shoreline_state_I` supplies 0.25-degree `elevation_m`, land/ocean geometry and a 0.125-degree subgrid mask.
-- `canonical_freshwater_pulse_sv` and `freshwater_forcing_sv` exist in the 1201-step climate history but are freshwater/ocean-circulation forcings, not local terrestrial supply.
-
-B5 does not promote any of these fields to freshwater support. The full generated B5 inspection manifest remains local evidence; the repository stores a compact result summary to avoid duplicating a large structural dump.
+`precipitation_factor_relative_book[5,720,1440]` is a relative paleoprecipitation field, not physical freshwater volume. Ocean freshwater forcings in the climate history are not terrestrial freshwater supply.
 
 ## Active work — R5.17-B6
 
-B6 H0 verifies the exact R3.14-frozen source:
+### H0 — exact R3.14 paleoclimate semantics
+
+Verified frozen source:
 
 ```yaml
 src/arcana_worldsim/paleoclimate/model.py:
   sha256: de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f
 ```
 
-Local H0 evidence reported exact source/payload hash matches, five precipitation snapshots at `[-21000, -14000, -12900, -12000, 0]`, and no materialization of freshwater support, runoff, hydrological reliability or K.
-
-Critically, the inspected paleoclimate source loads:
+The source loads:
 
 ```text
 inputs/v0_5_5I_SEALED/channel_hydrology_state_I.npz
@@ -202,18 +144,76 @@ lake_candidate_mask
 depression_depth_m
 ```
 
-The paleoclimate source itself does not expose a complete water-balance chain: lexical H0 evidence does not establish runoff, evapotranspiration, infiltration, recharge or storage semantics. This absence cannot be interpreted as absence of ARCANA hydrology because the model explicitly consumes the separate v0.5.5I channel-hydrology state.
+The paleoclimate source itself is a consumer, not the full hydrology generator.
 
-Therefore H1 must discover and structurally inspect all local/archive `channel_hydrology_state_I.npz` candidates before provider selection. H1 does not assume an authority SHA in advance and cannot adjudicate canonical identity merely from filename/path coincidence.
+### H1/H1R — materialized payload search
 
-After H1, H2 must recover the governed payload lineage and generator semantics, including the physical meaning of `mean_discharge_m3_s`, routing/topology construction and temporal applicability.
+`channel_hydrology_state_I.npz` was not found either inside the current repository tree or across the local parent `ArcanaWorld` tree, including scanned ZIPs. This is an unresolved payload-materialization/provenance gap only; it is not evidence that native ARCANA hydrology never existed.
 
-B6 semantic rule:
+### H2 — provenance recovery
 
-- relative precipitation + geometry may support a later relative hydroclimatic/drainage opportunity calculation;
-- existing native discharge/drainage evidence must be audited before any replacement or duplication;
-- physical freshwater supply requires defensible water-balance semantics (absolute precipitation or calibrated baseline, evapotranspiration, infiltration/recharge, storage/routing/reliability as applicable);
-- only after H2 may the Scientific Engine Suitability Gate choose reuse, specialist derivation, dedicated hydrology provider or minimum custom ARCANA computation.
+Targeted provenance search recovered a substantial historical hydrology source lineage. The missing NPZ remains unmaterialized, but source-level generator candidates exist across v0.4/v0.5.5 stages.
+
+### H3 — native generator semantics PASS
+
+Local H3 V2 result:
+
+```yaml
+STATUS: PASS_R517_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_RECOVERED
+SCHEMA: ARCANA_R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS_V2
+SOURCE_CANDIDATES: 11
+SURFACE_NETWORK_SEMANTICS_RECOVERED: true
+DRAINAGE_AREA_MATERIALIZATION_RECOVERED: true
+LAKE_MATERIALIZATION_RECOVERED: true
+STRUCTURAL_HYDROLOGY_SEMANTICS_RECOVERED: true
+WATER_BALANCE_SEMANTICS_RECOVERED: true
+WATER_BALANCE_SIGNAL_COUNT: 6
+FINALIZED_MEAN_DISCHARGE_SEMANTICS_RECOVERED: true
+```
+
+Recovered stable source identities:
+
+```yaml
+src/arcana_worldsim/surface/hydrology.py:
+  sha256: 34584d0e8a8696b26e4026aad28f362850b7e9b98bb7754cc5cab8e4d282ff42
+src/arcana_worldsim/regional/hydrology.py:
+  sha256: e32d766e3e700dd2da22adda3c09b0327e503d1ab9df663eb1c23e6730832b87
+src/arcana_worldsim/climate/water_balance.py:
+  sha256: 23090416ef8234d43689171241d80d8ca2609882455bd30761de30301e5bfb61
+src/arcana_worldsim/finalization/hydrology.py:
+  sha256: 29c808bd889d3f0c6e5390775d8751f68b9c9dd2cb5bab1736d6ad6cc6486351
+```
+
+Recovered semantics show a composed native pipeline rather than one monolithic file:
+
+```text
+surface/hydrology.py
+  -> drainage topology / receiver network / depression structure
+regional/hydrology.py
+  -> drainage-area materialization and regional hydrology state
+climate/water_balance.py
+  -> precipitation/evapotranspiration/infiltration/runoff/storage/routing semantics
+finalization/hydrology.py
+  -> runoff products and mean_discharge_m3_s finalization
+```
+
+H3 demonstrates that ARCANA already contains a physically structured hydrology lineage. It does **not** yet prove that these exact recovered source identities exported the missing `v0_5_5I_SEALED/channel_hydrology_state_I.npz`, and it does not by itself authorize reuse for R5.17.
+
+### H4 — exact export-lineage and physical evidence
+
+H4 must:
+
+1. bind the four H3 source identities by exact SHA256;
+2. recover any direct/archival link to `channel_hydrology_state_I.npz` / `v0_5_5I_SEALED`;
+3. capture the relevant equations and unit semantics for precipitation, ET, infiltration, storage/groundwater/cryo terms, runoff routing and conversion to discharge;
+4. keep `physical_sufficiency_adjudicated=false` until those equations/assumptions are explicitly reviewed;
+5. never execute historical source, materialize freshwater support, mutate canon or authorize a provider.
+
+H4 may legitimately return a partial result if the physical source/equation chain is recovered but the final documentary export link to the lost v0.5.5I NPZ is not.
+
+### B6 scientific rule
+
+Relative precipitation + geometry alone are insufficient for physical freshwater supply. Physical freshwater support requires a defensible water balance and explicit temporal/reliability assumptions. Native ARCANA discharge/drainage semantics must be evaluated before replacement or duplication.
 
 Explicit unresolved quantities remain:
 
@@ -227,47 +227,20 @@ PHYSICAL_PERSONS_PER_CELL_K: NOT_MATERIALIZED
 
 ## Default simulation result catalogue
 
-`SIMULATION_RESULTS/` is the default repository catalogue for locating consolidated WorldSim scientific/replay results before searching historical stage trees or archival packages.
+`SIMULATION_RESULTS/` is the default repository catalogue before historical tree search.
 
 ```yaml
 CATALOGUE_RECORDS: 863
 SEMANTICALLY_VERIFIED_RECORDS: 4
 SEMANTICALLY_PENDING_RECORDS: 859
-MANIFEST_JSON: SIMULATION_RESULTS/MANIFEST.json
-MANIFEST_CSV: SIMULATION_RESULTS/MANIFEST.csv
-HUMAN_SEMANTIC_CATALOG: SIMULATION_RESULTS/SEMANTIC_CATALOG.md
 CATALOGUE_AUTHORITY_COMMIT: 1fe30b5bd6e5d5410860710db479720485a89094
 ```
 
-The four currently verified semantic payload authorities are:
-
-```text
-R3.18  environmental exposure integrals
-R3.20  hydrological hazard diagnostic rankings
-R3.33  Holocene environmental/resource landscape
-R5.1   model-derived cradle opportunity atlas
-```
-
-Their machine-readable manifest records include temporal coverage, spatial grid, semantic class, primary use, forbidden interpretations, authority evidence, and seal checks.
-
-Absence of verified semantic metadata on the remaining 859 records means **not yet semantically catalogued**. It must not be interpreted as invalid, non-authoritative, or scientifically rejected.
-
-The result catalogue improves discovery and semantic routing only. It does not rewrite the original stage authority, promote candidate stages, alter payload SHA256 identities, or change scientific meaning.
-
-For new work, prefer this lookup order:
-
-1. `SIMULATION_RESULTS/MANIFEST.json` for machine-readable discovery;
-2. `SIMULATION_RESULTS/SEMANTIC_CATALOG.md` for human semantic guidance;
-3. the referenced original/seal authority artifacts for adjudication;
-4. historical repository trees only when targeted provenance requires them.
-
-This catalogue registration does not complete R5.17-B6. B5 remains the latest completed R5.17 subphase until B6 H0/H1/H2 evidence and suitability adjudication are repository-reviewed and committed as a completed result.
+Verified semantic payload authorities currently cover R3.18 environmental exposures, R3.20 hydrological hazard rankings, R3.33 Holocene environmental/resource landscape and R5.1 model-derived cradle opportunity atlas. Pending semantic metadata means not yet catalogued, not invalid or rejected.
 
 ## Scientific provider / engine selection policy
 
-Before designing any new material scientific computation, apply `SCIENTIFIC_ENGINE_SUITABILITY_GATE.md`.
-
-Standing decision order:
+Before any new material scientific computation, apply `SCIENTIFIC_ENGINE_SUITABILITY_GATE.md`:
 
 ```text
 1. reuse scientifically sufficient governed ARCANA authority;
@@ -276,28 +249,4 @@ Standing decision order:
 4. only otherwise implement the minimum custom ARCANA computation.
 ```
 
-The scientific question chooses the tool. Existing engines such as NEMO, Geonomics, SLiM, CDMetaPOP and RangeShiftR/RangeShifter are routed by domain and assumptions rather than used indiscriminately. Other specialist engines/libraries may be introduced only after a suitability audit and reproducible runtime/version binding.
-
-External engines remain evidence/providers under ARCANA orchestration; they do not become implicit canonical writers and no majority vote between engines defines ARCANA history. A PASS provider run still requires explicit scientific adjudication before canonical promotion.
-
-For hydrology specifically, inspect the exact governed ARCANA channel/topography/hydrology authority and its generator before authorizing a new hydrological model. Do not duplicate or replace native hydrology until its semantics have been shown insufficient.
-
-This policy is persistent governance and does not itself advance R5.17-B6 or authorize any new provider execution.
-
-## Forbidden shortcuts
-
-- do not relabel `wetland_forage` as freshwater;
-- do not invert `aridity_index` and call it freshwater without a physical model;
-- do not interpret R3.20 hazards as water supply;
-- do not treat ocean-circulation freshwater forcing as local terrestrial supply;
-- do not assume `mean_discharge_m3_s` is a valid persistent-human-water field before generator semantics and temporal support are verified;
-- do not extrapolate sparse snapshots or static channel state into continuous physical water history without an explicit contract;
-- do not collapse these layers into `K` yet.
-
-## Repository tracking rule
-
-Commit every scientific/implementation/governance result and update this ledger. Never infer `SEALED` from PASS alone. Do not bootstrap from old uploaded package names when this repository authority is available; retrieve historical artifacts only for targeted provenance or semantic work.
-
----
-
-Updated: 2026-09-11 (Europe/Rome project date).
+For B6, no external hydrology provider is authorized before H4/H5 adjudication. Candidate specialist tools may only be considered if the recovered native ARCANA model proves scientifically insufficient for the required freshwater-support derivation.
