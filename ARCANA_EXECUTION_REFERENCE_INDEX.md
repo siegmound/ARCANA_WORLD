@@ -2,8 +2,8 @@
 
 Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`.
 
-- Repository HEAD at generation: `6a47f5f9ae3ee28e32a4cbd1fb08c61d473efdd1`
-- Generated UTC: `2026-09-12T17:27:15.547585+00:00`
+- Repository HEAD at generation: `967e0cee55a838e258edc03f3ef5d73ceb829225`
+- Generated UTC: `2026-09-12T18:30:58.652918+00:00`
 - Indexed reference files: **5240**
 
 ## Purpose
@@ -5123,7 +5123,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | POWERSHELL_RUNNER | `R5_17_B6_RECOVER_OPEN_B7_INDEX_COMPACT_EVIDENCE_WINPS51_V8.ps1` | ============================================================================ | `9d9933531c51107ea849d5cec8f0113cbea84fc6` | `1047e2c70d511c790283a0faaf448a0885193ff05b0c3ca49a0209bc29303a87` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B6_INSPECT_PALEOCLIMATE_SEMANTICS.py` | Merge nearby matching windows so the evidence stays bounded and readable. | `1a821c7ad55dac995592a10d77f96c208f9d7d72` | `7a6a3a579a02b9732e0ea723e36e90eaa68093bdd377da1f1fe82ac1763dac17` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS.py` |  | `a5f78c60734b83728fa2c98e437db1beb0c0129a` | `781b0d389c28e4a04c29782a8001a110db62b253a6efb2d3698e26600701abb6` |
-| REFERENCE | `R5_17_B6_COMPLETION_REGISTER.md` | Status | `e9c0f5926b4b917780b16f6aab6e80fd6a35a674` | `cb4a4b1364cc3b286a60d878aeb7641026ca3ae86be524c3da38530bf468bb73` |
+| REFERENCE | `R5_17_B6_COMPLETION_REGISTER.md` | R5.17-B6 - Freshwater / Paleohydrology Completion Register | `e9c0f5926b4b917780b16f6aab6e80fd6a35a674` | `bade4b9b9a49af75b30697bdcfea2dbd65277f8ffe30a90e4536f698250dd4a2` |
 | REFERENCE | `R5_17_B6_FRESHWATER_PHYSICAL_INPUT_BINDING_DESIGN.md` | R5.17-B6 — Freshwater Physical Input Semantic Binding & Derivation Design | `2c6b3c417197f97c6917da11892a1d07fef81acb` | `0aa53f4962e58ed462391ebe6ebeb509cc1b21f07a26a3c26a5baa8a89630501` |
 | REFERENCE | `R5_17_B6_PALEOCLIMATE_SEMANTIC_EVIDENCE.json` |  | `61466540a1a23e88740f6fd83c0ef9359037da0d` | `5ccfc4f21f0e914e05f6509cf024c9c0bef8af496ed3a874b69828a7415f0fa6` |
 
@@ -5956,7 +5956,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | CONTRACT_PROTOCOL | `tests/test_r416_recovered_metric_target_protocol.py` |  | `f449ee200f7bd79edb726af0b1244f943f9015b3` | `dc69e93efa1c27b34c4785350b1a4a1a89d0735f428d06883d654f78118db2b9` |
 | CONTRACT_PROTOCOL | `tests/test_r420_p2_adapter_preflight_target_protocol_repair.py` |  | `0ba9955a48465e85faa1d311231b858978b50132` | `324985956b061c29f42c9347f7997cf11d8038d809685a2b0e4fadcfb94b1a89` |
 | CONTRACT_PROTOCOL | `tests/test_r425_target_protocol_preflight_geonomics_j14_discovery.py` |  | `29948b844c3d852089e32980e3aed174b6400d18` | `70427c7a999b70dc40eb305b6389e63230760fd065cb006f5ca3a5bb867538a3` |
-| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | Repository | `4b460097b7655d555bf0354005d17c481319339b` | `29e294ba4ef5198332c6b0e4ea2b1685c3bbe316c3baef055fcc3757c901d843` |
+| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `4b460097b7655d555bf0354005d17c481319339b` | `1b59540f3b3733cabd11e59a9900d23c8aca361443e4828b3c18f1c15e65fdc1` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6C.md` | Next Stage Handoff — v0.6D | `7f40ba60fb95c58d1c2dd7b4239f27850a6b56fd` | `25a4900ac439c64373224badfa83f6eb7bc5db36dd9c4ccd88a3511963f4eb50` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6D.md` | Next Stage Handoff — v0.6D -> v0.6D1 | `fb2d13c1bdb9b5ebcdc5c48a44050ba47a9203cf` | `a3d7fb6831b065a3d805fadc9ec09e809ca311e430399877c9aa6a5bff5e996c` |
 | MANIFEST | `PACKAGE_MANIFEST_v0_6D.json` |  | `dfe247842b21021ea0e802689ffb3c2cce36a028` | `a3ac330f4825c2b4b53a8b874aaf0c83587eebbee338761d44a4f4fa21ee7241` |

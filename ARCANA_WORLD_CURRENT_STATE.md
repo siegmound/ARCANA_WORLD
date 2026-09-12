@@ -1,4 +1,4 @@
-﻿# ARCANA WorldSim — Current State Authority
+# ARCANA WorldSim — Current State Authority
 
 > Compact continuation ledger. Use this file and its repository pointers as the default bootstrap. Historical R3/R4/R5 material is archive/provenance unless a targeted audit requires it.
 
@@ -37,6 +37,13 @@ R5_17_B6_D2D3_SERIALIZED_REPLAY: R5_17_B6_D2D3_VALIDATE_SERIALIZED_MARGIN_REPLAY
 R5_17_B6_D2D4_ULP_GATE: R5_17_B6_D2D4_FLOAT32_ULP_EQUIVALENCE_AND_I_RECONSTRUCTION.py
 R5_17_B6_D2D5_FULL_CHAIN_REPLAY: R5_17_B6_D2D5_FULL_IN_MEMORY_F_CHAIN_REPLAY_AND_I_RECONSTRUCTION.py
 R5_17_B6_D3_PALEOHYDROLOGY_REPLAY: R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.py
+R5_17_B6_COMPLETION_REGISTER: R5_17_B6_COMPLETION_REGISTER.md
+R5_17_B6_EVIDENCE_MANIFEST: R5_17_B6_EVIDENCE_MANIFEST.json
+R5_17_B6_D4_FRESHWATER_RESULT: R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json
+R5_17_B7_CONTRACT: R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md
+R5_17_B7_A1_PREFLIGHT: R5_17_B7_A1_NATURAL_FOOD_SUPPORT_AUTHORITY_PREFLIGHT.json
+EXECUTION_REFERENCE_INDEX_MD: ARCANA_EXECUTION_REFERENCE_INDEX.md
+EXECUTION_REFERENCE_INDEX_JSON: ARCANA_EXECUTION_REFERENCE_INDEX.json
 
 SIMULATION_RESULTS_ROOT: SIMULATION_RESULTS
 SIMULATION_RESULTS_SEMANTIC_CATALOG: SIMULATION_RESULTS/SEMANTIC_CATALOG.md
@@ -49,9 +56,9 @@ SIMULATION_RESULTS_CATALOGUE_COMMIT: 1fe30b5bd6e5d5410860710db479720485a89094
 
 ```yaml
 LAST_EXPLICITLY_CONFIRMED_SEALED: v0.6D1-R5.16
-LATEST_COMPLETED: v0.6D1-R5.17-B5
+LATEST_COMPLETED: v0.6D1-R5.17-B6
 LATEST_STATUS: PASS
-LATEST_VERDICT: PASS_R517_B5_SEALED_PALEOCLIMATE_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
+LATEST_VERDICT: PASS_R517_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY_MATERIALIZED
 
 LATEST_COMPLETED_INTERNAL_STEP: R5.17-B7-A1
 LATEST_INTERNAL_VERDICT: PASS_R517_B7_A1_NATURAL_FOOD_SUPPORT_AUTHORITY_SCHEMA_COVERAGE_PREFLIGHT
@@ -68,49 +75,26 @@ NEXT_ACTION: RUN_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION
 
 ## Continuation chain
 
-```text
+`	ext
 R5.7 SEALED
-  -> R5.8–R5.15 completed candidate continuation
+  -> R5.8-R5.15 completed candidate continuation
   -> R5.16 SEALED integrated end-of-legacy closure
   -> R5.17 AUTHORIZED_IN_PROGRESS
-       -> A   PASS input/capability census
-       -> B1  PASS environmental/hydrological source binding
-       -> B2  PASS exact local payload hash/schema inspection
-       -> B3  PASS native environmental exposure derivation
-       -> B4  PASS direct-bound freshwater source-gap audit
-       -> B5  PASS exact sealed paleoclimate payload inspection
-       -> B6  IN_PROGRESS
-            -> H0   PASS exact paleoclimate semantic evidence
-            -> H1   BLOCKED local channel-hydrology payload absent
-            -> H1R  BLOCKED payload absent across local ArcanaWorld tree
-            -> H2   PASS native hydrology provenance/generator candidates recovered
-            -> H3   PASS native hydrology generator semantics recovered
-            -> H4   PASS exact v0.5.5I export lineage + physical sufficiency
-                     decision = REUSE_CANONICAL_ARCANA
-                     external hydrology provider = NOT AUTHORIZED
-            -> D1   PASS canonical hydrology replay contract captured
-            -> D2   PASS binding evidence; seasonal_climate_state_I originally absent
-            -> D2R  recovered two surviving F-era seasonal baselines, not historical I
-            -> D2A  identity lineage inspected; exact historical I identity not recoverable
-            -> D2B  PASS no exact promotion authority recovered
-                     decision = reconstruct with preserved provenance gap
-            -> D2C  exact seasonal generator + exact shoreline I bound
-            -> D2C1 PASS interface-only adapter authorized:
-                     coast_state.elevation_m <- shoreline.elevation_m
-                     coast_state.land_mask   <- shoreline.effective_land_mask
-            -> D2D/D2D1 runtime/import path resolved
-            -> D2D2/D2D3/D2D4 diagnosed apparent non-exactness caused by serialized reload path
-            -> D2D5 PASS exact full in-memory F chain replay
-                     margin replay exact = true
-                     seasonal replay exact = true
-                     hydrology replay exact = true
-                     tolerance promotion = false
-                     reconstructed seasonal I materialized = true
-            -> D3   READY canonical book-era + snapshot paleohydrology replay
-```
+       -> A-B5 PASS
+       -> B6 COMPLETED, NOT SEALED
+            -> canonical hydrology/paleohydrology replay completed
+            -> freshwater support materialized
+            -> hydrological reliability materialized
+            -> heavy reconstructed payloads hash-registered, not committed
+            -> K(x,t) not materialized
+       -> B7 ACTIVE
+            -> A1 PASS source/schema/coverage preflight
+            -> A2 NEXT semantic binding + temporal coverage adjudication
+`
 
-R5.16 remains the latest explicit seal. B6 is not sealed or complete yet.
-
+R5.16 remains the latest explicit seal.
+R5.17-B6 is the latest completed substantive subphase and remains intentionally unsealed.
+R5.17-B7 is active; B7-A1 is complete and B7-A2 is authorized next.
 ## Fixed parent/governance state
 
 ```yaml
@@ -139,123 +123,46 @@ V055I_SHORELINE_STATE_SHA256: f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f
 
 R3.18 `reference_population` is not physical human population and not carrying capacity. R3.18 environmental fields are integrated exposures. R3.20 hazard indices are diagnostic/ranking fields, not flood depths, guaranteed inundation, freshwater supply or an automatic human-support penalty.
 
-## R5.17-B6 native hydrology authority
+## R5.17-B6 completion authority
 
-R3.14 consumes `inputs/v0_5_5I_SEALED/channel_hydrology_state_I.npz` with at least:
+R5.17-B6 is COMPLETED and intentionally NOT SEALED.
 
-```text
-mean_discharge_m3_s
-drainage_area_km2
-receiver_flat
-lake_candidate_mask
-depression_depth_m
-```
+Primary completion pointers:
 
-The historical I payload itself is no longer materialized locally. H2/H3/H4 recovered and adjudicated the governed source lineage:
+`yaml
+COMPLETION_REGISTER: R5_17_B6_COMPLETION_REGISTER.md
+EVIDENCE_MANIFEST: R5_17_B6_EVIDENCE_MANIFEST.json
+D4_RESULT: R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json
+EXECUTION_REFERENCE_INDEX: ARCANA_EXECUTION_REFERENCE_INDEX.md
+`
 
-```yaml
-src/arcana_worldsim/surface/hydrology.py:
-  sha256: 34584d0e8a8696b26e4026aad28f362850b7e9b98bb7754cc5cab8e4d282ff42
-src/arcana_worldsim/regional/hydrology.py:
-  sha256: e32d766e3e700dd2da22adda3c09b0327e503d1ab9df663eb1c23e6730832b87
-src/arcana_worldsim/climate/water_balance.py:
-  sha256: 23090416ef8234d43689171241d80d8ca2609882455bd30761de30301e5bfb61
-src/arcana_worldsim/finalization/hydrology.py:
-  sha256: 29c808bd889d3f0c6e5390775d8751f68b9c9dd2cb5bab1736d6ad6cc6486351
-src/arcana_worldsim/finalization/seasonal.py:
-  sha256: 3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2
-src/arcana_worldsim/morphogenesis/margins.py:
-  sha256: f8998f2213938eb80a2b414300c2acc6dc298bc5327a6fb081951fde136d7d52
-```
+Terminal B6 result:
 
-H4 decision remains:
-
-```yaml
-REUSE_CANONICAL_ARCANA: true
-EXTERNAL_PROVIDER_AUTHORIZED: false
-STRUCTURAL_SEMANTICS_SUFFICIENT: true
-PHYSICAL_WATER_BALANCE_SUFFICIENT: true
-DISCHARGE_SEMANTICS_SUFFICIENT: true
-```
-
-Recovered physical semantics include precipitation, evapotranspiration, infiltration, groundwater return, storage, cryo-storage, runoff, network routing, receiver topology, drainage area, depressions, lakes, runoff depth/volume and `mean_discharge_m3_s`.
-
-## D2 reconstruction closure
-
-The original historical `seasonal_climate_state_I.npz` was not recovered. D2B established that neither surviving F baseline can honestly be promoted as the lost I payload. The provenance gap remains explicit.
-
-D2C1 authorized only an interface adapter; it does not alter grid cells:
-
-```yaml
-coast_state.elevation_m: shoreline_state_I.elevation_m
-coast_state.land_mask: shoreline_state_I.effective_land_mask
-```
-
-D2D5 then reproduced the explicit recovered F runner chain fully in memory:
-
-```text
-build_margin_morphogenesis(root, 917231)
-  -> build_seasonal_climate(root, margin)
-  -> build_channel_hydrology(root, margin, seasonal)
-```
-
-All three native serialized F outputs were array-for-array exact against their historical payloads:
-
-```yaml
-MARGIN_REPLAY_EXACT: true
-SEASONAL_REPLAY_EXACT: true
-HYDROLOGY_REPLAY_EXACT: true
-MAX_ABS_DIFFERENCE: 0.0
-ABSOLUTE_OR_RELATIVE_TOLERANCE_AUTHORIZED: false
-ULP_TOLERANCE_AUTHORIZED: false
-```
-
-This proves that the earlier D2D3/D2D4 discrepancies came from an artificial serialize/reload boundary that did not exist in the historical runner, not from a generator/runtime divergence.
-
-The governed reconstructed I seasonal payload is:
-
-```yaml
-PATH: R5_17_B6_D2D_RECONSTRUCTED/seasonal_climate_state_I_RECONSTRUCTED.npz
-SHA256: bd25948db09ecc50409a7d18df1fc6d08350820fd2f0f1d06aeb5a2b98de98a7
-HYDROLOGY_FIELDS_PRESENT: true
-HISTORICAL_PAYLOAD_IDENTITY_CLAIMED: false
+`yaml
+STATUS: PASS_R517_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY_MATERIALIZED
+FRESHWATER_SUPPORT_MATERIALIZED: true
+HYDROLOGICAL_RELIABILITY_MATERIALIZED: true
+K_X_T_MATERIALIZED: false
 CANONICAL_MUTATION: false
-```
+`
 
-It is a new governed reconstructed artifact, not the original lost `seasonal_climate_state_I.npz`.
+The historical/native hydrology recovery, seasonal reconstruction, replay diagnostics,
+D3/D3R paleohydrology replay and H1-H4 provenance evidence remain available through
+the completion register, evidence manifest and execution/reference index. They are
+not repeated in this compact continuation ledger.
 
-## D3 authorized implementation
+Semantic guardrails remain:
 
-`R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.py` is authorized to:
+`	ext
+wetland_forage               != freshwater supply
+aridity_index                 != freshwater supply
+freshwater_forcing_sv         != local freshwater access
+precipitation alone           != freshwater access
+R3.20 hydrological hazard     != freshwater availability
+`
 
-1. verify the D2D5 exact-chain gate and the reconstructed I seasonal artifact;
-2. regenerate seasonal I in memory from the exact shoreline I and verify array equality with the reconstructed seasonal payload;
-3. materialize a reconstructed book-era I channel-hydrology payload through exact `build_channel_hydrology(...)`;
-4. replay the five exact R3.14 paleoclimate snapshots using:
-   - `temperature_anomaly_c`;
-   - `precipitation_factor_relative_book`;
-   - `paleo_land_mask`;
-   - sea-level anomaly bound from exact recent paleoclimate history;
-5. reuse the exact ARCANA seasonal PET temperature-response law for snapshot PET composition;
-6. require the R3.14-consumed hydrology fields and basic physical/structural validity in every output;
-7. preserve `historical_payload_identity_claimed: false` and `freshwater_support_materialized: false`.
-
-D3 must not materialize `K(x,t)`, silently call physical discharge human support, or introduce another hydrology provider.
-
-## B6 scientific rule
-
-Do not approximate paleodischarge by multiplying book-era `mean_discharge_m3_s` by `precipitation_factor_relative_book`. The adjudicated canonical model contains ET, infiltration, groundwater return, storage, cryo-storage, runoff and routing. D3 therefore reruns the governed hydrology consumer with time-specific climate and coast inputs.
-
-Explicit unresolved human-facing quantities remain:
-
-```yaml
-FRESHWATER_SUPPORT: MISSING_NEEDS_NEW_DERIVATION
-HYDROLOGICAL_RELIABILITY: PARTIAL_NEEDS_NEW_DERIVATION
-NAVIGABLE_WATER_OPPORTUNITY: NOT_MATERIALIZED
-HUMAN_EDIBLE_PRODUCTIVITY: NOT_MATERIALIZED
-PHYSICAL_PERSONS_PER_CELL_K: NOT_MATERIALIZED
-```
-
+B6 does not materialize human-edible biological food, persons/cell, settlement,
+agriculture, civilization, or K(x,t). Those remain downstream.
 ## Default simulation result catalogue
 
 `SIMULATION_RESULTS/` is the default repository catalogue before historical-tree search.
