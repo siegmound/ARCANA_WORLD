@@ -1,0 +1,3258 @@
+{
+  "schema": "ARCANA_R517_B7_A1_NATURAL_FOOD_SUPPORT_PREFLIGHT_V2",
+  "stage": "v0.6D1-R5.17",
+  "subphase": "R5.17-B7-A1",
+  "status": "PASS_R517_B7_A1_NATURAL_FOOD_SUPPORT_AUTHORITY_SCHEMA_COVERAGE_PREFLIGHT",
+  "decision": "AUTHORIZE_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION",
+  "checks": {
+    "a1_present": true,
+    "a1_known_sha": true,
+    "a1_required_channels_present": true,
+    "a1_forage_closure_consistent": true,
+    "r333_authority_surface_found": true,
+    "r334_authority_surface_found": true,
+    "h0_faunal_authority_surface_found": true,
+    "forage_semantic_source_hits_found": true,
+    "producer_semantic_source_hits_found": true
+  },
+  "a1_native_trophic_authority": {
+    "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+    "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+    "size_bytes": 2928319,
+    "keys": [
+      "age_ma",
+      "lat",
+      "lon",
+      "plate_code",
+      "land_mask",
+      "temperature_c",
+      "aridity_index",
+      "browse_forage",
+      "low_forage",
+      "wetland_forage",
+      "total_edible_forage",
+      "population",
+      "carrying_capacity"
+    ],
+    "arrays": {
+      "age_ma": {
+        "shape": [
+          11
+        ],
+        "dtype": "float32",
+        "size": 11,
+        "finite": true,
+        "min": 0.0,
+        "max": 210.0
+      },
+      "lat": {
+        "shape": [
+          90
+        ],
+        "dtype": "float32",
+        "size": 90,
+        "finite": true,
+        "min": -89.0,
+        "max": 89.0
+      },
+      "lon": {
+        "shape": [
+          180
+        ],
+        "dtype": "float32",
+        "size": 180,
+        "finite": true,
+        "min": -179.0,
+        "max": 179.0
+      },
+      "plate_code": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "uint8",
+        "size": 178200,
+        "finite": true,
+        "min": 0.0,
+        "max": 11.0
+      },
+      "land_mask": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "uint8",
+        "size": 178200,
+        "finite": true,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "temperature_c": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 178200,
+        "finite": true,
+        "min": -21.46146011352539,
+        "max": 32.54145812988281
+      },
+      "aridity_index": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 178200,
+        "finite": true,
+        "min": 0.0,
+        "max": 5.905196666717529
+      },
+      "browse_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 178200,
+        "finite": true,
+        "min": 0.0,
+        "max": 0.5194449424743652
+      },
+      "low_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 178200,
+        "finite": true,
+        "min": 0.0,
+        "max": 0.14328758418560028
+      },
+      "wetland_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 178200,
+        "finite": true,
+        "min": 0.0,
+        "max": 0.24410618841648102
+      },
+      "total_edible_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 178200,
+        "finite": true,
+        "min": 0.0,
+        "max": 0.703565239906311
+      },
+      "population": {
+        "shape": [
+          11,
+          6,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 1069200,
+        "finite": true,
+        "min": 0.0,
+        "max": 0.5163918137550354
+      },
+      "carrying_capacity": {
+        "shape": [
+          11,
+          6,
+          90,
+          180
+        ],
+        "dtype": "float32",
+        "size": 1069200,
+        "finite": true,
+        "min": 0.0,
+        "max": 0.7036429047584534
+      }
+    },
+    "forage_closure": {
+      "max_abs_error": 3.7252990581215784e-08,
+      "rtol": 1e-06,
+      "atol": 1e-06,
+      "consistent": true
+    },
+    "age_ma_values": [
+      210.0,
+      180.0,
+      150.0,
+      140.0,
+      130.0,
+      120.0,
+      90.0,
+      66.0,
+      60.0,
+      30.0,
+      0.0
+    ]
+  },
+  "r333_authority_surface": [
+    {
+      "path": "R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_CONTRACT.md",
+      "size_bytes": 2443,
+      "sha256": "8e18685646441c0e3e32d759c7c338e52df7ed9564a9133ecb533b12ae3c98cd"
+    },
+    {
+      "path": "R5_14_R513_R333_HOLOCENE_DOMESTICATION_RECONCILIATION_CONTRACT.md",
+      "size_bytes": 2560,
+      "sha256": "516cb946a07710b0a58b934e6d66571bbbf573b0eb6496ada2fee9c49e273ccf"
+    },
+    {
+      "path": "README_R3_33.md",
+      "size_bytes": 405,
+      "sha256": "c9a59bcbb0c959381b9797259373654a1d9fd39e9c57f3b9091128bfb9dadbe6"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_AND_FOOD_PRODUCTION_OUTCOMES.json",
+      "size_bytes": 22399,
+      "sha256": "1b6f166a924d284190e187c5c65e9a3c887cddfabe6355ddc3fd546581d86f16"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_TRAJECTORIES.npz",
+      "size_bytes": 885538,
+      "sha256": "175959669ba5daa84ab0937b4b213c1633ee674e89e67690915dbc622b2e1b84"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_ECOLOGICAL_PARTNER_CANDIDATE_REGISTRY.json",
+      "size_bytes": 15331,
+      "sha256": "ab3d6e50966946c95ffa60bdf48115275b3b7669640715b99836570828886711"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_FOOD_PRODUCTION_CHECKPOINT.json",
+      "size_bytes": 642,
+      "sha256": "31a58c26af8e8fb43f9be9ed9bc430568a95a50696d75aecf73e955295fff898"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 858951,
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+    },
+    {
+      "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R5_14/R5_14_R333_DOMESTICATION_EMERGENCE_CLASSIFICATION.json",
+      "size_bytes": 1142,
+      "sha256": "e29a0f879919febe2fefd97ddfcc0c14fda72470e665b26066c5d543ef32ba74"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY.json",
+      "size_bytes": 4987,
+      "sha256": "17cc1bf7c0096b51eb333c0de7bbc4f0a827f7a4a0f821868f9db3bfa4b2936a"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_INTEGRATED_AUDIT.json",
+      "size_bytes": 2852,
+      "sha256": "78313bd2793d97e51abf16d50ea6cef9d5cd57ae3a8c0d4c25fef8139a2eed11"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_OUTPUT_MANIFEST.json",
+      "size_bytes": 1655,
+      "sha256": "db1087efbc58c5bff79986792a169d8ba0731a3fe8a25c83d61bf89df62aec06"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_SENSITIVITY_AND_ROBUSTNESS.json",
+      "size_bytes": 3668,
+      "sha256": "8ef578692110ae7b1e89a91fdf976af1c3c040088eb363bc9bfb0c4e6f037d84"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_33_SEAL/R3_33_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 4317,
+      "sha256": "0e78fe1570b6fc20ef9ff1085c1810100e68a6652dc54bbec4e59349c2ef8f80"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_33_SEAL/R3_33_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 512,
+      "sha256": "098aecc67e7db00348cf71904e73f34759e477509250506179d79ef07315e5ba"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_39/R4_39_R333_DYNAMIC_REPRESENTABILITY_SEMANTIC_AUTHORITY.json",
+      "size_bytes": 1462,
+      "sha256": "19baf43068ce35d98371a3098ad49b9213a8d111d786ffb49a5853723ac3477a"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_14/R5_14_R333_DETERMINISTIC_REPLAY_ALIGNMENT.json",
+      "size_bytes": 1582,
+      "sha256": "8fa812b1fd77f55d20447f0e47b5ecdfdfe38f195e5e4d5c82abc38a8ca84685"
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_33.json",
+      "size_bytes": 1532,
+      "sha256": "7313403feb38127e78d537d53c11784822bfc9b285406897c8c59cc961002e54"
+    },
+    {
+      "path": "configs/world1_r333_holocene_environment_domestication_v0_6D1_R3_33.json",
+      "size_bytes": 787,
+      "sha256": "bd57dab5c2075762d39681d499772fa968f7855608a7dbdff55b5afbe5100245"
+    },
+    {
+      "path": "configs/world1_r514_r333_holocene_domestication_reconciliation_v0_6D1_R5_14.json",
+      "size_bytes": 611,
+      "sha256": "8b41530a6358089abbb4bccd909cd2ae8829981823e61701f1ea153a75102683"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_AUDIT.md",
+      "size_bytes": 162,
+      "sha256": "9c0e94ec62e861fb34686d2183d867620d58aff1147d4b09b126f83789e54286"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_AND_FOOD_PRODUCTION_OUTCOMES.json",
+      "size_bytes": 22399,
+      "sha256": "1b6f166a924d284190e187c5c65e9a3c887cddfabe6355ddc3fd546581d86f16"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_DOMESTICATION_TRAJECTORIES.npz",
+      "size_bytes": 885538,
+      "sha256": "175959669ba5daa84ab0937b4b213c1633ee674e89e67690915dbc622b2e1b84"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_ECOLOGICAL_PARTNER_CANDIDATE_REGISTRY.json",
+      "size_bytes": 15331,
+      "sha256": "ab3d6e50966946c95ffa60bdf48115275b3b7669640715b99836570828886711"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_FOOD_PRODUCTION_CHECKPOINT.json",
+      "size_bytes": 642,
+      "sha256": "31a58c26af8e8fb43f9be9ed9bc430568a95a50696d75aecf73e955295fff898"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 858951,
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENT_DOMESTICATION_AUTHORITY.json",
+      "size_bytes": 4987,
+      "sha256": "17cc1bf7c0096b51eb333c0de7bbc4f0a827f7a4a0f821868f9db3bfa4b2936a"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_INTEGRATED_AUDIT.json",
+      "size_bytes": 2852,
+      "sha256": "78313bd2793d97e51abf16d50ea6cef9d5cd57ae3a8c0d4c25fef8139a2eed11"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_OUTPUT_MANIFEST.json",
+      "size_bytes": 1655,
+      "sha256": "db1087efbc58c5bff79986792a169d8ba0731a3fe8a25c83d61bf89df62aec06"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33/R3_33_SENSITIVITY_AND_ROBUSTNESS.json",
+      "size_bytes": 3668,
+      "sha256": "8ef578692110ae7b1e89a91fdf976af1c3c040088eb363bc9bfb0c4e6f037d84"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33_SEAL/R3_33_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 4317,
+      "sha256": "0e78fe1570b6fc20ef9ff1085c1810100e68a6652dc54bbec4e59349c2ef8f80"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33_SEAL/R3_33_FINAL_SEAL_AUDIT.md",
+      "size_bytes": 199,
+      "sha256": "19e3d52436e6fec93cc3458928d30ab37406489e19a8b05b5b5b70ed1e5e94ee"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_33_SEAL/R3_33_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 512,
+      "sha256": "098aecc67e7db00348cf71904e73f34759e477509250506179d79ef07315e5ba"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_22/pytest_tmp/test_geonomics_deferred_audit_0/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 964,
+      "sha256": "ce1cb93e5cc75e7f5a6eac073be0b3e77e22a14aa0172703faf9fa37da0431c2"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_23/pytest_tmp/test_geonomics_binding_freezes0/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 944,
+      "sha256": "05548f29ffff0e3562f72a4e2125b17a4c662e7727f0c5a6a5a87cac85cb0cbf"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_23/pytest_tmp/test_geonomics_j18_requires_ex0/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 944,
+      "sha256": "05548f29ffff0e3562f72a4e2125b17a4c662e7727f0c5a6a5a87cac85cb0cbf"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_target_preflight_preserve0/outputs/v0_6D1_R3_33/canonical_33.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_26/pytest_tmp/test_44_1_12_2_implementation_0/outputs/v0_6D1_R3_33/canonical.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_27/pytest_tmp/test_44_extractors_static_vali0/outputs/v0_6D1_R3_33/canonical.json",
+      "size_bytes": 21,
+      "sha256": "6348ab6ff39ca1404a4684835af0b8df21c802508341617e1353d9c889dbf8a9"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_39/R4_39_R333_DYNAMIC_REPRESENTABILITY_SEMANTIC_AUTHORITY.json",
+      "size_bytes": 1462,
+      "sha256": "19baf43068ce35d98371a3098ad49b9213a8d111d786ffb49a5853723ac3477a"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_39_R3/PREPATCH_FAILED_R439_R2_OUTPUTS/R4_39_R333_DYNAMIC_REPRESENTABILITY_SEMANTIC_AUTHORITY.json",
+      "size_bytes": 1462,
+      "sha256": "19baf43068ce35d98371a3098ad49b9213a8d111d786ffb49a5853723ac3477a"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_39_R4/PREPATCH_FAILED_R439_R3_OUTPUTS/R4_39_R333_DYNAMIC_REPRESENTABILITY_SEMANTIC_AUTHORITY.json",
+      "size_bytes": 1462,
+      "sha256": "19baf43068ce35d98371a3098ad49b9213a8d111d786ffb49a5853723ac3477a"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_39_R5/PREPATCH_STOPPED_R439_R4_OUTPUTS/R4_39_R333_DYNAMIC_REPRESENTABILITY_SEMANTIC_AUTHORITY.json",
+      "size_bytes": 1462,
+      "sha256": "19baf43068ce35d98371a3098ad49b9213a8d111d786ffb49a5853723ac3477a"
+    },
+    {
+      "path": "outputs/v0_6D1_R5_14/R5_14_R333_DETERMINISTIC_REPLAY_ALIGNMENT.json",
+      "size_bytes": 1582,
+      "sha256": "8fa812b1fd77f55d20447f0e47b5ecdfdfe38f195e5e4d5c82abc38a8ca84685"
+    },
+    {
+      "path": "outputs/v0_6D1_R5_14/R5_14_R333_DOMESTICATION_EMERGENCE_CLASSIFICATION.json",
+      "size_bytes": 1142,
+      "sha256": "e29a0f879919febe2fefd97ddfcc0c14fda72470e665b26066c5d543ef32ba74"
+    },
+    {
+      "path": "run_v0_6D1_R3_33.ps1",
+      "size_bytes": 1139,
+      "sha256": "aad63035ba1f9727e578d0055cb6bf0f2295a80ccddaf48ba3a07beedcdadca3"
+    },
+    {
+      "path": "scripts/audit_v0_6D1_R3_33_seal.py",
+      "size_bytes": 6143,
+      "sha256": "d2c38ed802456a0cda80d12f2245e4378adf933ae17b722cc5e5bc07732381dd"
+    },
+    {
+      "path": "scripts/check_v0_6D1_R3_33_source_manifest.py",
+      "size_bytes": 673,
+      "sha256": "1b83f57c1982515dab83571b86cb0c20ca29e32525aca775db124454362d7931"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_33.py",
+      "size_bytes": 884,
+      "sha256": "c17de317d6aca5ddea0876aa9356d6c313293b17ce8f60736e416e397b1a142d"
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r333_holocene_environment_domestication.py",
+      "size_bytes": 27017,
+      "sha256": "c32d78efcffccf60dd0a70870dc6d9555a9eed823ec4fa5e7fb3c2e61705fc40"
+    },
+    {
+      "path": "src/arcana_worldsim/state_query/r514_r333_holocene_domestication_reconciliation.py",
+      "size_bytes": 21508,
+      "sha256": "84dc1807792c41a331cba809937f13139d5eba38467c9d0679e48daacf3456f7"
+    },
+    {
+      "path": "tests/test_r333_holocene_environment_domestication.py",
+      "size_bytes": 2096,
+      "sha256": "b86d3c297983e42c9a4864786646cca871bc0ed6cf6edccfb6aa6381f5534f06"
+    },
+    {
+      "path": "tests/test_r439_r2_r333_source_semantic_dynamic_representability_repair.py",
+      "size_bytes": 1846,
+      "sha256": "438e362679192484d6a31a6ba24645046734c3b5aea4a9d0ee895c2a1c577265"
+    },
+    {
+      "path": "tests/test_r514_r333_holocene_domestication_reconciliation.py",
+      "size_bytes": 1480,
+      "sha256": "dd1e9c144faef58eca67cf010da4328dafd65f98932e093732a790738fcd6264"
+    }
+  ],
+  "r334_authority_surface": [
+    {
+      "path": "R3_34_PRODUCER_DOMESTICATION_CONTRACT.md",
+      "size_bytes": 1864,
+      "sha256": "8cdf56880b6c0182480220f938739c6f414a818b1dccf67d679ec58fefd72950"
+    },
+    {
+      "path": "R5_15_R3_34_TO_R3_39_CENSUS.json",
+      "size_bytes": 5180,
+      "sha256": "52d5824253a9dca0741a7de4e6982334210491ad24eefe27c86b7031ced6a3b5"
+    },
+    {
+      "path": "R5_15_R3_34_TO_R3_39_CENSUS_PASS2.json",
+      "size_bytes": 4488,
+      "sha256": "0869a3815a5faf7a1ced010e40ee7e54fdee2a9834c6c94ddc03d6fd32caa038"
+    },
+    {
+      "path": "README_R3_34.md",
+      "size_bytes": 303,
+      "sha256": "0acd7c16e6c243c4dd0577bc4efbefbe36d2373f0719e392a0777393af7d654d"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_DOMESTICATION_FOOD_PRODUCTION_REASSESSMENT.json",
+      "size_bytes": 35058,
+      "sha256": "9261babe21a633b5dbde1790c0f33df9d4b040629d8358bb84ca56401805fb7f"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_FOOD_PRODUCTION_CHECKPOINT.json",
+      "size_bytes": 631,
+      "sha256": "34123dee12fc8db32c750a5ca691a7ea674795919565ae83070063a8516a5f39"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PLANT_COEVOLUTION_DOMESTICATION_TRAJECTORIES.npz",
+      "size_bytes": 12509426,
+      "sha256": "a0af97467058ec78fbc38a39b9001715b3fdbd2c74ef2e54c1585762d66c3227"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 17450885,
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_TAXON_REGISTRY.json",
+      "size_bytes": 42730,
+      "sha256": "b24960a86a745a028c1096fe636885310d1ecaa3213a612696c7687ebb2e535c"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_35/R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz",
+      "size_bytes": 33554413,
+      "sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_INTEGRATED_AUDIT.json",
+      "size_bytes": 2903,
+      "sha256": "5800a20143f7edb7eb8db0817c82b24b2fba38e66c0031fd5e8a536009509b8b"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_OUTPUT_MANIFEST.json",
+      "size_bytes": 1649,
+      "sha256": "09c07862b6ade75e6559ccabd7c8eebb181ec69449f211091c8e4a2de609510a"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json",
+      "size_bytes": 5872,
+      "sha256": "5851a7e2d0822bab8c006bc8cd6f49f506138a3aab0533b000ecc603f9e4c39e"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_SENSITIVITY_AND_ROBUSTNESS.json",
+      "size_bytes": 2307,
+      "sha256": "ca5718d1d7c098140d8f73df5db5095bf610d62a011e8e5b5f5eb2a4409ddc0a"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_34_SEAL/R3_34_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 3332,
+      "sha256": "82aa153b60cd3344d722d216c75757a91b5569d06538fb2c603632c87be4333a"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_34_SEAL/R3_34_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 488,
+      "sha256": "b2c15610c44315b68825afd63c5b91e835da3ef3fef6fa283d98b49c96176f2f"
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_34.json",
+      "size_bytes": 1485,
+      "sha256": "2a260ac6e7d0aefe825b610617a70024fb376ee60322bad73ed00461de9d8585"
+    },
+    {
+      "path": "configs/world1_r334_producer_domestication_v0_6D1_R3_34.json",
+      "size_bytes": 1320,
+      "sha256": "686e8559cd7541192d2bc48946f5b0dfaed738bb571af8e8d0e3137727731e04"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_AUDIT.md",
+      "size_bytes": 170,
+      "sha256": "70dad617771c2492a38fba3ed7a2b8d4b56c3695dcb32ddcabeb6b53e0d45544"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_DOMESTICATION_FOOD_PRODUCTION_REASSESSMENT.json",
+      "size_bytes": 35058,
+      "sha256": "9261babe21a633b5dbde1790c0f33df9d4b040629d8358bb84ca56401805fb7f"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_FOOD_PRODUCTION_CHECKPOINT.json",
+      "size_bytes": 631,
+      "sha256": "34123dee12fc8db32c750a5ca691a7ea674795919565ae83070063a8516a5f39"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_INTEGRATED_AUDIT.json",
+      "size_bytes": 2903,
+      "sha256": "5800a20143f7edb7eb8db0817c82b24b2fba38e66c0031fd5e8a536009509b8b"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_OUTPUT_MANIFEST.json",
+      "size_bytes": 1649,
+      "sha256": "09c07862b6ade75e6559ccabd7c8eebb181ec69449f211091c8e4a2de609510a"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_PLANT_COEVOLUTION_DOMESTICATION_TRAJECTORIES.npz",
+      "size_bytes": 12509426,
+      "sha256": "a0af97467058ec78fbc38a39b9001715b3fdbd2c74ef2e54c1585762d66c3227"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json",
+      "size_bytes": 5872,
+      "sha256": "5851a7e2d0822bab8c006bc8cd6f49f506138a3aab0533b000ecc603f9e4c39e"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 17450885,
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_TAXON_REGISTRY.json",
+      "size_bytes": 42730,
+      "sha256": "b24960a86a745a028c1096fe636885310d1ecaa3213a612696c7687ebb2e535c"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34/R3_34_SENSITIVITY_AND_ROBUSTNESS.json",
+      "size_bytes": 2307,
+      "sha256": "ca5718d1d7c098140d8f73df5db5095bf610d62a011e8e5b5f5eb2a4409ddc0a"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34_SEAL/R3_34_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 3332,
+      "sha256": "82aa153b60cd3344d722d216c75757a91b5569d06538fb2c603632c87be4333a"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34_SEAL/R3_34_FINAL_SEAL_AUDIT.md",
+      "size_bytes": 175,
+      "sha256": "8221cc28dae6c566ac46a5d3d7dd1e81ab9bec32d7399ea738f9c2eeecf3018b"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_34_SEAL/R3_34_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 488,
+      "sha256": "b2c15610c44315b68825afd63c5b91e835da3ef3fef6fa283d98b49c96176f2f"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_35/R3_35_PRODUCER_DOMESTICATION_GENETIC_REPLAY.npz",
+      "size_bytes": 33554413,
+      "sha256": "5a7ea35893d10348728744adc7fd6aa699539ac9a9da6be8edcf7bc9bad86839"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_22/pytest_tmp/test_geonomics_deferred_audit_0/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 952,
+      "sha256": "e7569821b4983cd5c364c5320ad2f9bc81b8cce75a0edc163fa12ec199235530"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_23/pytest_tmp/test_geonomics_binding_freezes0/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 940,
+      "sha256": "7cff1a327ad1fdb7ea9db06c7859ce7c9d888bf338554b349a47217c20225483"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_23/pytest_tmp/test_geonomics_j18_requires_ex0/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "size_bytes": 940,
+      "sha256": "7cff1a327ad1fdb7ea9db06c7859ce7c9d888bf338554b349a47217c20225483"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_target_preflight_preserve0/outputs/v0_6D1_R3_34/canonical_34.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_26/pytest_tmp/test_44_1_12_2_implementation_0/outputs/v0_6D1_R3_34/canonical.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_27/pytest_tmp/test_44_extractors_static_vali0/outputs/v0_6D1_R3_34/canonical.json",
+      "size_bytes": 21,
+      "sha256": "6348ab6ff39ca1404a4684835af0b8df21c802508341617e1353d9c889dbf8a9"
+    },
+    {
+      "path": "run_v0_6D1_R3_34.ps1",
+      "size_bytes": 1123,
+      "sha256": "05cb02fb9eca20bcb090a155b22a5d66792ce0a7563f8d88ccfb235c3e568827"
+    },
+    {
+      "path": "scripts/audit_v0_6D1_R3_34_seal.py",
+      "size_bytes": 5218,
+      "sha256": "c2d377f4f1d222b753adfad0ba9a0ebeba0a11686cc96192dd55b6f4652ad4a5"
+    },
+    {
+      "path": "scripts/check_v0_6D1_R3_34_source_manifest.py",
+      "size_bytes": 652,
+      "sha256": "a1274532a8678518ef31a3d05322ad9df111441f9d8a9afe596817f033376a63"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_34.py",
+      "size_bytes": 855,
+      "sha256": "e6db62afd96b02febf3ba2f90294efa75208a1b73cd221bae66871251a92b18d"
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r334_producer_domestication.py",
+      "size_bytes": 29154,
+      "sha256": "17655c44d79cd04d13f9e2bf214c15e331e426bf5238233d7921b1e727c3b8e7"
+    },
+    {
+      "path": "tests/test_r334_producer_domestication.py",
+      "size_bytes": 2157,
+      "sha256": "c13766469adfc7d201cfe649be3a0c0de38f78d7c230efd49c2bb0e6f717bd98"
+    }
+  ],
+  "h0_faunal_authority_surface": [
+    {
+      "path": "CANONICAL_PHASE_AWARE_TRANSPORT_H0_PRESENT_CLOSURE_CONTRACT_v0_6D1_R3_19.md",
+      "size_bytes": 2489,
+      "sha256": "c908238087a4fe2b7a2f190c4e7fd251d219e66cc01a5cf6d25f5097482c581f"
+    },
+    {
+      "path": "NEXT_STAGE_HANDOFF_v0_6D1_R3_19.md",
+      "size_bytes": 1177,
+      "sha256": "a201ee8c25d944ecfd3b6d5aa82b4639f6538c1692ddd8c9622c7438631e1282"
+    },
+    {
+      "path": "PATCH_MANIFEST_v0_6D1_R3_19_OVER_R3_18.json",
+      "size_bytes": 2652,
+      "sha256": "c193c0197a59420975fbef5d0f3de14264f13c70497e1336b9d2793f8e66adcc"
+    },
+    {
+      "path": "PATCH_MANIFEST_v0_6D1_R3_19_R2.json",
+      "size_bytes": 2519,
+      "sha256": "cb1db4dad9ee1434b53680d5e80e24580b1a88c98d4eb90a02852ba6affb7714"
+    },
+    {
+      "path": "PATCH_MANIFEST_v0_6D1_R3_20_OVER_R3_19.json",
+      "size_bytes": 2376,
+      "sha256": "f30346224b253c6d445ab69109c3ae402859aa8a912cab00bc854e956bf9c63e"
+    },
+    {
+      "path": "R3_19_CANONICAL_RUN_EVIDENCE_AUDIT.md",
+      "size_bytes": 1284,
+      "sha256": "d312b783422880953b98bfc2bcf799760f4b9733e573f98269b1181e08ceeac5"
+    },
+    {
+      "path": "R3_19_PHASE_AWARE_TRANSPORT_PROMOTION_AUDIT.md",
+      "size_bytes": 1749,
+      "sha256": "b9a72617766b302ad751b3b6d89befdd155830c3365d6bdd98783813f268b1e9"
+    },
+    {
+      "path": "R3_19_R1_RUNTIME_Q_CEILING_REPAIR_AUDIT.md",
+      "size_bytes": 1832,
+      "sha256": "39c514fd63d960bf55808dbbe1a751704823342a76721e039b688602e6820c7f"
+    },
+    {
+      "path": "R3_19_R2_ENDPOINT_SUPPORT_RECONCILIATION_AUDIT.md",
+      "size_bytes": 2245,
+      "sha256": "a9c179d2c10f801846edb8ade16fff84db70529ca6a32785e4c0e584ef339da3"
+    },
+    {
+      "path": "R3_19_SEAL_SUMMARY.json",
+      "size_bytes": 3688,
+      "sha256": "46d58d9b7ee086c633ef1877aba009bb5144dee7e06b36869f25ccdbd90ca229"
+    },
+    {
+      "path": "R3_210_150_LONG_RUN_AUDIT_v0_6D1_R3_1.md",
+      "size_bytes": 2575,
+      "sha256": "2f668caf1443b5c9a104b901e691bb4f2fabd323ce437efc4b4f7fe2de576d34"
+    },
+    {
+      "path": "R3_21_CANDIDATE_AUDIT.json",
+      "size_bytes": 4832,
+      "sha256": "55f96b3357ea21196f2917af0a33f49266e2824186af9264cd32403de7c5996f"
+    },
+    {
+      "path": "R3_21_H0_PRESENT_LINEAGE_REGISTRY_CONTRACT.md",
+      "size_bytes": 5147,
+      "sha256": "95a60bfc1541fcaef9b13cd3b5e6d2e0c54e0706adbd0a0221bf126c93e30010"
+    },
+    {
+      "path": "R3_22_CANDIDATE_AUDIT.json",
+      "size_bytes": 1260,
+      "sha256": "bfad8e726d50123a08807e8cd0fe94337905f4435bf6107f8b6b5e0a402f3360"
+    },
+    {
+      "path": "R3_22_GENERIC_FUNCTIONAL_PHENOTYPE_SPECIFICATION_CONTRACT.md",
+      "size_bytes": 9014,
+      "sha256": "0ea214418442c13d5e6456342ffa11ff9fbf722f9ceb568a9cb5c418a77ec06b"
+    },
+    {
+      "path": "R3_23_FUNCTIONAL_ENSEMBLE_CONTRACT.md",
+      "size_bytes": 7365,
+      "sha256": "64712c6bc650dda8dbcff252b6a994c582943b4478cb9311c636036b185deca9"
+    },
+    {
+      "path": "README_R3_19.md",
+      "size_bytes": 1195,
+      "sha256": "7b6c38a345e2abc7c647668986e64463ec12a78b848ac879691ec8f839494b00"
+    },
+    {
+      "path": "README_R3_19_R1_RUNTIME_Q_CEILING_HOTFIX.md",
+      "size_bytes": 559,
+      "sha256": "167086fe032a705294849e028e27c256afea5b8a62230e283fc957fbee741609"
+    },
+    {
+      "path": "README_R3_19_R2_ENDPOINT_SUPPORT_RECONCILIATION.md",
+      "size_bytes": 666,
+      "sha256": "faa69c704682c854759b7a01227369887eac2af64ef105889b21c0aadfde5349"
+    },
+    {
+      "path": "README_R3_19_SEAL_GATE.md",
+      "size_bytes": 1431,
+      "sha256": "ad3a3b4acf8cddee6a5df2fb650b8059350273d9a62c51dce5389a078703d499"
+    },
+    {
+      "path": "README_R3_21.md",
+      "size_bytes": 1967,
+      "sha256": "7e520070f546ebe4f3ce201134e6ee229f13a40581185063bda1131436179842"
+    },
+    {
+      "path": "README_R3_21_SEAL.md",
+      "size_bytes": 1093,
+      "sha256": "372bf4e83b9413c18dc0c4a50f2338857e76952d96e1f7f26702b540a02bba16"
+    },
+    {
+      "path": "README_R3_22.md",
+      "size_bytes": 1443,
+      "sha256": "a734cdbbe149c7b769fb7ed250d2aaeaf46be7cd6691105f35e5ed7354c8ec46"
+    },
+    {
+      "path": "README_R3_22_SEAL.md",
+      "size_bytes": 1506,
+      "sha256": "4ab5f17908ca147b43f336c3ea5dace4a33ebc44c318a1e20af9aeb8a115419f"
+    },
+    {
+      "path": "README_R3_23.md",
+      "size_bytes": 750,
+      "sha256": "118f44ccd4c80f863ab21e628a3eaea40a74e83420b0f98d34b8d5d9d8b1fa1d"
+    },
+    {
+      "path": "README_R3_23_SEAL.md",
+      "size_bytes": 479,
+      "sha256": "37bb918ed3ca4da8d3993106a177bcb1aa3d21cf5d6f52280a34b91f8c7fe7ac"
+    },
+    {
+      "path": "SIMULATION_RESULTS/01_CORE_WORLD_HISTORY/local_runs/v0_6D1_R3_19/WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.json",
+      "size_bytes": 2462608,
+      "sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71"
+    },
+    {
+      "path": "SIMULATION_RESULTS/01_CORE_WORLD_HISTORY/local_runs/v0_6D1_R3_19/WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz",
+      "size_bytes": 6432400,
+      "sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_FUNCTIONAL_PHENOTYPE_FORK_INTERFACE.json",
+      "size_bytes": 3058,
+      "sha256": "353024e423f4e17ba5114e4e806ea71a92004667edeaf2aab3a2006ce4d768f4"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_HISTORICAL_LINEAGE_CLOSURE.json",
+      "size_bytes": 2692076,
+      "sha256": "2dcf79131643ca441fbee6f61939782df94b895533fdb7a3e9b4e2695291b041"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_PRESENT_COMPONENT_REGISTRY.json",
+      "size_bytes": 394462,
+      "sha256": "dd81003c64c4332458bc131a162b48a4e35df85c44b9636f914979e9c1edec6f"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json",
+      "size_bytes": 194579,
+      "sha256": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_REDUCED_GENETIC_STATE.npz",
+      "size_bytes": 1968930,
+      "sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_CONSTRAINT_AND_TRADEOFF_GOVERNANCE.json",
+      "size_bytes": 3605,
+      "sha256": "b24f8a3e41828888e50fa1fcac08ecb2c94d3b0fe6f14f43f6c33bb9d9731860"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_DERIVED_CAPABILITY_GRAPH.json",
+      "size_bytes": 2191,
+      "sha256": "2f952a1ad18ada74ca38820954aede5cf52eb750f2399a5bd73c0cbc2ec6daf1"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_EMPIRICAL_CALIBRATION_REQUIREMENTS.json",
+      "size_bytes": 1338,
+      "sha256": "6bef57584b66765283553be6526121eabd5432b5a5984f8493216fd21c57a58d"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_FUNCTIONAL_PHENOTYPE_SPECIFICATION.json",
+      "size_bytes": 5809,
+      "sha256": "f30145c8def7b41a2a8218145f38cb905147d65e9b2a928a6f31fd3c61a9b246"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_PRIMITIVE_TRAIT_CATALOG.json",
+      "size_bytes": 44595,
+      "sha256": "9208d41a88a65f7fd98487851eac46378d9a8da37e05be3016467d60cc06b13e"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_REPLAY_STATE_INTERFACE.json",
+      "size_bytes": 4284,
+      "sha256": "9bc5db0e35692527e568b96b355199903fbc6c0c571c8f5d772ab8cd1f601ab4"
+    },
+    {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_PRESENT_FUNCTIONAL_ENSEMBLE.npz",
+      "size_bytes": 10201608,
+      "sha256": "d827da2b3cc283b8dcf1d65dfd430814c999229e14babba26483dad025685606"
+    },
+    {
+      "path": "SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_19/R3_19_H0_PRESENT_BIOLOGY_CLOSURE_SUMMARY.json",
+      "size_bytes": 2864,
+      "sha256": "2803044f380df3565fb2e7bc9e10de527734474e637b98c8f81678ad7595387b"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_AUDIT_SUMMARY.json",
+      "size_bytes": 2035,
+      "sha256": "3582572957c6968aa8307a08c913965cdedc9dbdeda2ecf73d2432c8ceba4c88"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_OUTPUT_MANIFEST.json",
+      "size_bytes": 1530,
+      "sha256": "9af31268f4c44b2efb2f94e5a7ab742977e83e6c398e8e14bd9846753ffa6ecb"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_REDUCED_GENETIC_STATE_SUMMARY.json",
+      "size_bytes": 947,
+      "sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_AUDIT_SUMMARY.json",
+      "size_bytes": 4059,
+      "sha256": "19c73b580e86fafa76b703fa99292f442b281a35e4b380f66a40c5f4ea54deb4"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_22/R3_22_OUTPUT_MANIFEST.json",
+      "size_bytes": 2008,
+      "sha256": "65b2c2ab6c249e1f3a136c83c4e342ccef8794bb5a9d7bae03fae6d914f5cb48"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_COMPARATIVE_CALIBRATION_AUTHORITY.json",
+      "size_bytes": 33415,
+      "sha256": "f805ef379c2b93734e0ec98a76b06aad2a92baf6a25d6576b23f16bbfb11cc82"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_INTEGRATED_AUDIT.json",
+      "size_bytes": 4160,
+      "sha256": "d82ff13f73075099b02e2a378cae63c38a9c108dbdd0e4f362176a7a6ee2baf4"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_OUTPUT_MANIFEST.json",
+      "size_bytes": 1205,
+      "sha256": "cdd613742f5d3c1d8d98e0654f63c9b018a75fe962085aeb54b4412e97f9de97"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_PRESENT_FUNCTIONAL_SUMMARY.json",
+      "size_bytes": 1099921,
+      "sha256": "1b944edfc4bb648a8356d252d5f9628a57e38a1664c00be00e5c7a7bdca6b765"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_REPLAY_PROVENANCE.json",
+      "size_bytes": 13598,
+      "sha256": "e66130e452086c8ecf0515d279713a2f4fd213b107af5856e61bf65d9855f07f"
+    },
+    {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_ROOT_ANCESTRAL_PRIOR_SUMMARY.json",
+      "size_bytes": 104045,
+      "sha256": "720880ccbd7b35e88d1fdaf8cc715a0f1c88a3506bf61a42a4b6e0d713e5202d"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_19/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_19.json",
+      "size_bytes": 838,
+      "sha256": "4bd884e6e64db168ecfa22602f895f1b5ebfcdd4a2bcd83b9ee70b59bbfecc0f"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_19/FORMAL_AUDIT_SEALED_v0_6D1_R3_19.json",
+      "size_bytes": 15498,
+      "sha256": "f4d7bef3188d9880a6393ed00edb736b4898a4771092bed5e53100c84dbd2fa7"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_21_SEAL/R3_21_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 7150,
+      "sha256": "38a4374ba5ad5aa1f2532aa6175c3ee51e748e60849463827f429e9e3c3e01f2"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_21_SEAL/R3_21_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 353,
+      "sha256": "507cc4377d4fe5dd4ac25e992b5ae0ed72286175e9a2651f9b3f39e640884d21"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_22_SEAL/R3_22_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 16092,
+      "sha256": "aae753422bbd4e601bec0f94872e72b2a9b00d3b906c3199d27e6a1eaf43417a"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_22_SEAL/R3_22_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 354,
+      "sha256": "61c4f3f66a72b777a016839318a3aa54d23bde247c5c8708c86486fc6f816594"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_23_SEAL/R3_23_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 10062,
+      "sha256": "efca9e158e0a04b2db6269286f748023187f4d452609fd1a5eaa13d09e0b2262"
+    },
+    {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_23_SEAL/R3_23_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 390,
+      "sha256": "3669dfbd08de8f9ee0f1e294d805adeb5878467356a824dbd521a316d94cb093"
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_19.json",
+      "size_bytes": 3927,
+      "sha256": "1d7763c05a49e7a14b71f5197b8d4427872ccd4b3314f28b281fe39534aa968b"
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_21.json",
+      "size_bytes": 2696,
+      "sha256": "9744a451e9031ea5b37189d8d16fc4726bd5d3cf96af21d1f40e0d1a306ef01b"
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_22.json",
+      "size_bytes": 3010,
+      "sha256": "849ff84ec4368435d771257037673197beb2f393a396a3befae7ab6a68205170"
+    },
+    {
+      "path": "SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3_23.json",
+      "size_bytes": 1524,
+      "sha256": "6c9f6a9f4d9319d32446151ca9d363ac8d43cdab7e9a71dc884c6124f6cf1141"
+    },
+    {
+      "path": "V0_6D1_R3_19_STATUS.md",
+      "size_bytes": 958,
+      "sha256": "5329ab0b19ad6f458eb68d71e2442599b16aefa88e73174e658237f7e77d4dd1"
+    },
+    {
+      "path": "configs/world1_r319_phase_aware_transport_closure_v0_6D1_R3_19.json",
+      "size_bytes": 706,
+      "sha256": "4d86313a85fad88fa363dc26447e4735cb08c1e82bf835c25090d9117695c2c7"
+    },
+    {
+      "path": "configs/world1_r321_present_lineage_registry_v0_6D1_R3_21.json",
+      "size_bytes": 891,
+      "sha256": "9628ce00043705d0e958a9d51bba51f7d1020edeaf7cafdd7a75fd3bef1f82f2"
+    },
+    {
+      "path": "configs/world1_r322_generic_functional_phenotype_spec_v0_6D1_R3_22.json",
+      "size_bytes": 887,
+      "sha256": "2baa0aa1dfc45fd0e384fa1b5a40482f6aab6d7df09828da8dd445ee806a9eeb"
+    },
+    {
+      "path": "configs/world1_r323_functional_ensemble_v0_6D1_R3_23.json",
+      "size_bytes": 1085,
+      "sha256": "3a6e5115b1df783efd5d5bc6b2aa25a57705c7fba12274969bd4d59eca7fd187"
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_19/R3_19_FAIL_CLOSED_DIAGNOSTIC.json",
+      "size_bytes": 8490,
+      "sha256": "a511ce33eed6617414713ce7004edd8998ca568a289ac2fe5d8d87616453377d"
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_19/R3_19_H0_PRESENT_BIOLOGY_CLOSURE_SUMMARY.json",
+      "size_bytes": 2864,
+      "sha256": "2803044f380df3565fb2e7bc9e10de527734474e637b98c8f81678ad7595387b"
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_19/WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.json",
+      "size_bytes": 2462608,
+      "sha256": "658e5da006f1a5c1d499090cc2a07ff0c1058f6f253b5c90d639eabbbd68fc71"
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_19/WORLD1_H0_0KA_PHASE_AWARE_TRANSPORT_FIXED_BIOLOGY_CHECKPOINT_v0_6D1_R3_19.npz",
+      "size_bytes": 6432400,
+      "sha256": "f5aa7f0828baeee2d5fd6221797229c0a4e25b787d157095e7652d3b81c56406"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_19/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_19.json",
+      "size_bytes": 838,
+      "sha256": "4bd884e6e64db168ecfa22602f895f1b5ebfcdd4a2bcd83b9ee70b59bbfecc0f"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_19/FORMAL_AUDIT_SEALED_v0_6D1_R3_19.json",
+      "size_bytes": 15498,
+      "sha256": "f4d7bef3188d9880a6393ed00edb736b4898a4771092bed5e53100c84dbd2fa7"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_AUDIT.md",
+      "size_bytes": 605,
+      "sha256": "059a9288e89a12bedcf367cade21bda9d63726e2c38b1025979678b2a007ff65"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_AUDIT_SUMMARY.json",
+      "size_bytes": 2035,
+      "sha256": "3582572957c6968aa8307a08c913965cdedc9dbdeda2ecf73d2432c8ceba4c88"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_FUNCTIONAL_PHENOTYPE_FORK_INTERFACE.json",
+      "size_bytes": 3058,
+      "sha256": "353024e423f4e17ba5114e4e806ea71a92004667edeaf2aab3a2006ce4d768f4"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_HISTORICAL_LINEAGE_CLOSURE.json",
+      "size_bytes": 2692076,
+      "sha256": "2dcf79131643ca441fbee6f61939782df94b895533fdb7a3e9b4e2695291b041"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_OUTPUT_MANIFEST.json",
+      "size_bytes": 1530,
+      "sha256": "9af31268f4c44b2efb2f94e5a7ab742977e83e6c398e8e14bd9846753ffa6ecb"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_PRESENT_COMPONENT_REGISTRY.json",
+      "size_bytes": 394462,
+      "sha256": "dd81003c64c4332458bc131a162b48a4e35df85c44b9636f914979e9c1edec6f"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json",
+      "size_bytes": 194579,
+      "sha256": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_REDUCED_GENETIC_STATE.npz",
+      "size_bytes": 1968930,
+      "sha256": "561810c43d1fd6d5576c5dfa68417338aa99d12f8029febb2c8b057515a43354"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21/R3_21_REDUCED_GENETIC_STATE_SUMMARY.json",
+      "size_bytes": 947,
+      "sha256": "d9d02eee4207cc77473a49d06d33c3e28af36df5eb8d369dd14acdf030688828"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21_SEAL/R3_21_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 7150,
+      "sha256": "38a4374ba5ad5aa1f2532aa6175c3ee51e748e60849463827f429e9e3c3e01f2"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21_SEAL/R3_21_FINAL_SEAL_AUDIT.md",
+      "size_bytes": 333,
+      "sha256": "847405b06dc27f2bc151a1b32c4c58428183c4b0c215b5407231e55963b937aa"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_21_SEAL/R3_21_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 353,
+      "sha256": "507cc4377d4fe5dd4ac25e992b5ae0ed72286175e9a2651f9b3f39e640884d21"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_AUDIT.md",
+      "size_bytes": 868,
+      "sha256": "7e1af0a3823310a7c8fd8378e8cfd31e6bae3c983c75aa1e236fc29fc9cb24fa"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_AUDIT_SUMMARY.json",
+      "size_bytes": 4059,
+      "sha256": "19c73b580e86fafa76b703fa99292f442b281a35e4b380f66a40c5f4ea54deb4"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_CONSTRAINT_AND_TRADEOFF_GOVERNANCE.json",
+      "size_bytes": 3605,
+      "sha256": "b24f8a3e41828888e50fa1fcac08ecb2c94d3b0fe6f14f43f6c33bb9d9731860"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_DERIVED_CAPABILITY_GRAPH.json",
+      "size_bytes": 2191,
+      "sha256": "2f952a1ad18ada74ca38820954aede5cf52eb750f2399a5bd73c0cbc2ec6daf1"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_EMPIRICAL_CALIBRATION_REQUIREMENTS.json",
+      "size_bytes": 1338,
+      "sha256": "6bef57584b66765283553be6526121eabd5432b5a5984f8493216fd21c57a58d"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_FUNCTIONAL_PHENOTYPE_SPECIFICATION.json",
+      "size_bytes": 5809,
+      "sha256": "f30145c8def7b41a2a8218145f38cb905147d65e9b2a928a6f31fd3c61a9b246"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_OUTPUT_MANIFEST.json",
+      "size_bytes": 2008,
+      "sha256": "65b2c2ab6c249e1f3a136c83c4e342ccef8794bb5a9d7bae03fae6d914f5cb48"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_PRIMITIVE_TRAIT_CATALOG.json",
+      "size_bytes": 44595,
+      "sha256": "9208d41a88a65f7fd98487851eac46378d9a8da37e05be3016467d60cc06b13e"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22/R3_22_REPLAY_STATE_INTERFACE.json",
+      "size_bytes": 4284,
+      "sha256": "9bc5db0e35692527e568b96b355199903fbc6c0c571c8f5d772ab8cd1f601ab4"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22_SEAL/R3_22_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 16092,
+      "sha256": "aae753422bbd4e601bec0f94872e72b2a9b00d3b906c3199d27e6a1eaf43417a"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22_SEAL/R3_22_FINAL_SEAL_AUDIT.md",
+      "size_bytes": 408,
+      "sha256": "9b1416c6a56a98508da42890c230b0e813c81273a115d15182401e104444731c"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_22_SEAL/R3_22_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 354,
+      "sha256": "61c4f3f66a72b777a016839318a3aa54d23bde247c5c8708c86486fc6f816594"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_AUDIT.md",
+      "size_bytes": 391,
+      "sha256": "0a17719bf5b0079b9f30c1a147ecbe3c3732e1351742f936f4f41d5619ae48c0"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_COMPARATIVE_CALIBRATION_AUTHORITY.json",
+      "size_bytes": 33415,
+      "sha256": "f805ef379c2b93734e0ec98a76b06aad2a92baf6a25d6576b23f16bbfb11cc82"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_INTEGRATED_AUDIT.json",
+      "size_bytes": 4160,
+      "sha256": "d82ff13f73075099b02e2a378cae63c38a9c108dbdd0e4f362176a7a6ee2baf4"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_OUTPUT_MANIFEST.json",
+      "size_bytes": 1205,
+      "sha256": "cdd613742f5d3c1d8d98e0654f63c9b018a75fe962085aeb54b4412e97f9de97"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_PRESENT_FUNCTIONAL_ENSEMBLE.npz",
+      "size_bytes": 10201608,
+      "sha256": "d827da2b3cc283b8dcf1d65dfd430814c999229e14babba26483dad025685606"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_PRESENT_FUNCTIONAL_SUMMARY.json",
+      "size_bytes": 1099921,
+      "sha256": "1b944edfc4bb648a8356d252d5f9628a57e38a1664c00be00e5c7a7bdca6b765"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_REPLAY_PROVENANCE.json",
+      "size_bytes": 13598,
+      "sha256": "e66130e452086c8ecf0515d279713a2f4fd213b107af5856e61bf65d9855f07f"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23/R3_23_ROOT_ANCESTRAL_PRIOR_SUMMARY.json",
+      "size_bytes": 104045,
+      "sha256": "720880ccbd7b35e88d1fdaf8cc715a0f1c88a3506bf61a42a4b6e0d713e5202d"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23_SEAL/R3_23_FINAL_SEAL_AUDIT.json",
+      "size_bytes": 10062,
+      "sha256": "efca9e158e0a04b2db6269286f748023187f4d452609fd1a5eaa13d09e0b2262"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23_SEAL/R3_23_FINAL_SEAL_AUDIT.md",
+      "size_bytes": 212,
+      "sha256": "7cb7e57212179bd25653bccac3218e93c5a06fbbaa299b9699edbab740fd9d62"
+    },
+    {
+      "path": "outputs/v0_6D1_R3_23_SEAL/R3_23_FINAL_SEAL_MANIFEST.json",
+      "size_bytes": 390,
+      "sha256": "3669dfbd08de8f9ee0f1e294d805adeb5878467356a824dbd521a316d94cb093"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_target_preflight_preserve0/outputs/v0_6D1_R3_19/canonical_19.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_target_preflight_preserve0/outputs/v0_6D1_R3_21/canonical_21.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_target_preflight_preserve0/outputs/v0_6D1_R3_22/canonical_22.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_target_preflight_preserve0/outputs/v0_6D1_R3_23/canonical_23.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_26/pytest_tmp/test_44_1_12_2_implementation_0/outputs/v0_6D1_R3_19/canonical.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_26/pytest_tmp/test_44_1_12_2_implementation_0/outputs/v0_6D1_R3_21/canonical.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_26/pytest_tmp/test_44_1_12_2_implementation_0/outputs/v0_6D1_R3_22/canonical.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_26/pytest_tmp/test_44_1_12_2_implementation_0/outputs/v0_6D1_R3_23/canonical.json",
+      "size_bytes": 7,
+      "sha256": "5041bf1f713df204784353e82f6a4a535931cb64f1f4b4a5aeaffcb720918b22"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_27/pytest_tmp/test_44_extractors_static_vali0/outputs/v0_6D1_R3_19/canonical.json",
+      "size_bytes": 21,
+      "sha256": "6348ab6ff39ca1404a4684835af0b8df21c802508341617e1353d9c889dbf8a9"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_27/pytest_tmp/test_44_extractors_static_vali0/outputs/v0_6D1_R3_21/canonical.json",
+      "size_bytes": 21,
+      "sha256": "6348ab6ff39ca1404a4684835af0b8df21c802508341617e1353d9c889dbf8a9"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_27/pytest_tmp/test_44_extractors_static_vali0/outputs/v0_6D1_R3_22/canonical.json",
+      "size_bytes": 21,
+      "sha256": "6348ab6ff39ca1404a4684835af0b8df21c802508341617e1353d9c889dbf8a9"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_27/pytest_tmp/test_44_extractors_static_vali0/outputs/v0_6D1_R3_23/canonical.json",
+      "size_bytes": 21,
+      "sha256": "6348ab6ff39ca1404a4684835af0b8df21c802508341617e1353d9c889dbf8a9"
+    },
+    {
+      "path": "run_v0_6D1_R3_19_checks.ps1",
+      "size_bytes": 1538,
+      "sha256": "9c85ea8814674f8d7fce65ae444c8f1e96d65ab1d77b57f8252a192d2230bc54"
+    },
+    {
+      "path": "run_v0_6D1_R3_19_phase_aware_transport_closure.ps1",
+      "size_bytes": 232,
+      "sha256": "838da2b90b04a215737ae11b2db2823e575e0fda23a268d783c2fbe91a863fdf"
+    },
+    {
+      "path": "run_v0_6D1_R3_19_sealed_checks.ps1",
+      "size_bytes": 2119,
+      "sha256": "36a37fe4314b0155f1732477d7ee4ec743b2a015612b82d6edb77ef35693933e"
+    },
+    {
+      "path": "run_v0_6D1_R3_21_checks.ps1",
+      "size_bytes": 731,
+      "sha256": "d5a004f7673fead44cc80c776af264396a8a835734cc490a153e7a733646e007"
+    },
+    {
+      "path": "run_v0_6D1_R3_21_present_lineage_registry.ps1",
+      "size_bytes": 787,
+      "sha256": "8e87b99a5e8fd0910032538143b0f77bd7af1756fc4fc4e502d967682a27872e"
+    },
+    {
+      "path": "run_v0_6D1_R3_21_seal.ps1",
+      "size_bytes": 269,
+      "sha256": "3604d8de2645e6888c507ed279060d50876b76920e54d84d48f85cd4ba0f9ecb"
+    },
+    {
+      "path": "run_v0_6D1_R3_22_checks.ps1",
+      "size_bytes": 447,
+      "sha256": "b65073e6aeb714e5140b16e23cf22eea14fbf9fb09cfab2c41537e57a8aa3192"
+    },
+    {
+      "path": "run_v0_6D1_R3_22_functional_phenotype_spec.ps1",
+      "size_bytes": 295,
+      "sha256": "6e80de681f1665e00c63727fbea1db3123413438f83a1db41dd3439881b17972"
+    },
+    {
+      "path": "run_v0_6D1_R3_22_seal.ps1",
+      "size_bytes": 269,
+      "sha256": "be077cd2b33d619f18f9d5ad1f39c25b13c7097f1dbf5f647e8cdb2f34d7ac07"
+    },
+    {
+      "path": "run_v0_6D1_R3_23.ps1",
+      "size_bytes": 783,
+      "sha256": "fe10202246f8c880a8e84ad260bf51da92ddc824aa2a520f4f50d5e1b109a45c"
+    },
+    {
+      "path": "run_v0_6D1_R3_23_seal.ps1",
+      "size_bytes": 267,
+      "sha256": "e5ad9a8b4cd47e9be1ae1348c44f8a33aae62cdbce5ae2b02705316092ffbd96"
+    },
+    {
+      "path": "schemas/R3_21_FUNCTIONAL_PHENOTYPE_FORK_SCHEMA.json",
+      "size_bytes": 1104,
+      "sha256": "77976ae88ae52c92da3d211fd37dfa499b8e83839bb9f6378996ffe6d19f1586"
+    },
+    {
+      "path": "schemas/R3_22_FUNCTIONAL_PHENOTYPE_SPEC_SCHEMA.json",
+      "size_bytes": 1080,
+      "sha256": "5be463ab668e7abff429b15f5a0f9be13bd51eb7ee49f765dd27f659ebd36950"
+    },
+    {
+      "path": "schemas/R3_22_REPLAY_STATE_SCHEMA.json",
+      "size_bytes": 1119,
+      "sha256": "1e0c45a251e95587999ac8682642a136c85ee5bb879d5547c55fd40d907dd2f8"
+    },
+    {
+      "path": "schemas/R3_23_FUNCTIONAL_ENSEMBLE_SCHEMA.json",
+      "size_bytes": 618,
+      "sha256": "0af8b3788f6f012ac0efc9b418d304ab262de11bc4f9a80893ef0e8eabdfd51c"
+    },
+    {
+      "path": "scripts/audit_v0_6D1_R3_21_seal.py",
+      "size_bytes": 17038,
+      "sha256": "7df099a61a5e483dd34df989bc72cae0f49a086f94efd81573ac7ec023b8a7ba"
+    },
+    {
+      "path": "scripts/audit_v0_6D1_R3_22_candidate.py",
+      "size_bytes": 3550,
+      "sha256": "64735dcd1fbbd1bc0ddc0d7f88ba4d44e7888dfe81777acf0226565cb9f93d39"
+    },
+    {
+      "path": "scripts/audit_v0_6D1_R3_22_seal.py",
+      "size_bytes": 23862,
+      "sha256": "af9916c38cd6c1961d1156830be54da83cdceef9809dcfb4a11f8ff846721dc7"
+    },
+    {
+      "path": "scripts/audit_v0_6D1_R3_23_seal.py",
+      "size_bytes": 12259,
+      "sha256": "8b12ce3c8da0bb4f3108ad0b8d4b46eea16539e6ddd4b031fbf5a4c5e2e4f9ba"
+    },
+    {
+      "path": "scripts/check_v0_6D1_R3_23_source_manifest.py",
+      "size_bytes": 835,
+      "sha256": "a6062c077dcd4781136f6e7e881827d5fab624b32269bc897ad82b57d1f2bbb5"
+    },
+    {
+      "path": "scripts/formal_audit_v0_6D1_R3_19_candidate.py",
+      "size_bytes": 12749,
+      "sha256": "53ed9dc12fe8c7d69a965d0dde59850caf91dfa12db9e8ea28ca7faa697495c4"
+    },
+    {
+      "path": "scripts/formal_audit_v0_6D1_R3_19_sealed.py",
+      "size_bytes": 17272,
+      "sha256": "5fea980a6171ed86f791b661a13058dfe4dff405779a2e4940fc7acc5ea4b203"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_19_phase_aware_transport_closure.py",
+      "size_bytes": 9721,
+      "sha256": "3222669c7dedb8cc2082a698586614af955f488cedf389c412eeb7e061b5ec18"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_21_present_lineage_registry.py",
+      "size_bytes": 3756,
+      "sha256": "e8c68740d78440ce0ec72a258da2248c14c21219bbdfe27a4c37d174900edd60"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_22_functional_phenotype_spec.py",
+      "size_bytes": 4544,
+      "sha256": "68b21407463cad82177de97dae27115be0e7eaf2d9ecbed9fc6e8c071350b1c7"
+    },
+    {
+      "path": "scripts/run_v0_6D1_R3_23.py",
+      "size_bytes": 6198,
+      "sha256": "845691d7001714660b008386f9a2befd92d8a3c81c0952191ef0003faeaee1f0"
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r321_present_lineage_registry.py",
+      "size_bytes": 28948,
+      "sha256": "570b69fc30e6c13889e12fa4ea0fa2bbab41995368a964fa057978e6f7c1334b"
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r322_functional_phenotype_spec.py",
+      "size_bytes": 36448,
+      "sha256": "a3acdb66f61b9f454f0a64ea8de98b869380453814887a9ceeeef4ebdee21728"
+    },
+    {
+      "path": "src/arcana_worldsim/scientific_engines/r323_functional_ensemble.py",
+      "size_bytes": 34278,
+      "sha256": "0d812742c329f6db1bb2e999b42842be4c7981fa47de08b4e6232c5f40ca4d78"
+    },
+    {
+      "path": "tests/test_r321_present_lineage_registry.py",
+      "size_bytes": 7260,
+      "sha256": "259aca168d468c4090f9da58f4a00327c7f3052f07121dafd9d84ec508c917fc"
+    },
+    {
+      "path": "tests/test_r322_functional_phenotype_spec.py",
+      "size_bytes": 4848,
+      "sha256": "a0fcc78b7966cabad50e22d5074ae4cf0de191842b13e6ff2a9f77ce3c5b7f52"
+    },
+    {
+      "path": "tests/test_r323_functional_ensemble.py",
+      "size_bytes": 3849,
+      "sha256": "db93b8ab78c37eecdcf38e1570d5c3fa1f467136f9212c1f26dbb808948963ed"
+    },
+    {
+      "path": "verify_v0_6D1_R3_19_R1_hotfix.ps1",
+      "size_bytes": 2738,
+      "sha256": "efff49ba76622c0c1335dcbcf3871201121f316e3ae7c9a997fb06d66680f096"
+    },
+    {
+      "path": "verify_v0_6D1_R3_19_R2_patch.ps1",
+      "size_bytes": 3032,
+      "sha256": "153817bf048bab316d001e6ead562b51253c349485f850eea0824b5353378cc2"
+    },
+    {
+      "path": "verify_v0_6D1_R3_19_patch.ps1",
+      "size_bytes": 4546,
+      "sha256": "0533411503d563ccd3390b8fadafcd202982fd95784b529be90a053cbe31755e"
+    },
+    {
+      "path": "verify_v0_6D1_R3_19_seal_gate_patch.ps1",
+      "size_bytes": 4513,
+      "sha256": "3f70103f57f31e800907c9dfe8be830276e69768d5d26dd7987d248e46b3ff8c"
+    }
+  ],
+  "semantic_source_hits": {
+    "forage": [
+      {
+        "path": "R5_17_B3_DERIVE_ENVIRONMENTAL_SUPPORT.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "R5_17_B3_ENVIRONMENTAL_SUPPORT_EXPOSURES_MANIFEST.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "R5_17_B3_HUMAN_ENVIRONMENTAL_WATER_SUPPORT_DESIGN.md",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "R5_17_B4_FRESHWATER_SOURCE_AUDIT.json",
+        "matched_terms": [
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "R5_17_B_LOCAL_CANONICAL_PAYLOAD_INSPECTION.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "R5_17_B_SOURCE_BINDING.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/01_CORE_WORLD_HISTORY/local_runs/v0_6D1_R3_13/WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/01_CORE_WORLD_HISTORY/local_runs/v0_6D1_R3_15/WORLD1_H0_250ka_LATE_CENOZOIC_SECULAR_BIOLOGY_PRE_C2_BRIDGE_CHECKPOINT_v0_6D1_R3_15.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/01_CORE_WORLD_HISTORY/local_runs/v0_6D1_R3_16/WORLD1_H0_125ka_C2_EXPOSURE_PRESERVING_FIXED_BIOLOGY_PRE_120KA_RESTART_CHECKPOINT_v0_6D1_R3_16.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_11/R4_11_CDMETAPOP_METRIC_REPAIRED_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_13/R4_13_CDMETAPOP_COMPARABILITY_DOWNGRADED_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_18/R4_18_PARTIAL_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_27/R4_27_TARGET_EXTRACTOR_STATIC_VALIDATION_REGISTRY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_3/R4_3_WINDOW_BASELINE_DESCRIPTORS.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_4/R4_4_CROSS_ENGINE_DOMAIN_DISCORDANCE_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_55_PREBUILD_INTROSPECTION/R4_55_EXECUTION_SOURCE_INTROSPECTION.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_7/R4_7_CDMETAPOP_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_13/R3_13_LONGTERM_POST_CHA1_REASSEMBLY_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_15/R3_15_LATE_CENOZOIC_SECULAR_BIOLOGY_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_16/R3_16_C2_BRIDGE_FIXED_BIOLOGY_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_17/R3_17_120KA_DUAL_CLOCK_RESTART_ENVELOPE.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/90_SUPPORT_CORE/local_runs/v0_6D1_R3_18/R3_18_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_ENVELOPE.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/92_SUPPORT_DERIVED_REPLAY/outputs/v0_6D1_R5_1/R5_1_OCCUPIED_ENVIRONMENT_ENVELOPES.json",
+        "matched_terms": [
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_13/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_13.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_13/FORMAL_AUDIT_SEALED_v0_6D1_R3_13_RECHECK.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_14/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_14.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_14/FORMAL_AUDIT_SEALED_v0_6D1_R3_14.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_15/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_15.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_15/FORMAL_AUDIT_SEALED_v0_6D1_R3_15.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_16/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_16.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_17/FORMAL_AUDIT_SEALED_v0_6D1_R3_17.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R3_18/FORMAL_AUDIT_SEALED_v0_6D1_R3_18.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_25/R4_25_GEONOMICS_J14_SPATIAL_AUTHORITY_DISCOVERY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_28/R4_28_TARGET_SELECTOR_AUTHORITY_IMPLEMENTATION_PREFLIGHT.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_32/R4_32_TARGET_AUTHORITY_BINDING_IMPLEMENTATION_REGISTRY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_6/R4_6_CANONICAL_FORCING_AUDIT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/MANIFEST.csv",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/MANIFEST.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/SEMANTIC_CATALOG.md",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "local_bindings/v0_6D1_R3_14/R3_14_LATE_CENOZOIC_BINDING_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_13/R3_13_LONGTERM_POST_CHA1_REASSEMBLY_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_13/WORLD1_H0_30Ma_LONG_TERM_POST_CHA1_DIVERSIFICATION_REASSEMBLY_CHECKPOINT_v0_6D1_R3_13.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_15/R3_15_LATE_CENOZOIC_SECULAR_BIOLOGY_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_15/R3_15_SECULAR_BIOLOGY_SMOKE_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_15/WORLD1_H0_250ka_LATE_CENOZOIC_SECULAR_BIOLOGY_PRE_C2_BRIDGE_CHECKPOINT_v0_6D1_R3_15.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_15/WORLD1_H0_29P5Ma_R3_15_LATE_CENOZOIC_SECULAR_SMOKE_CHECKPOINT.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_16/R3_16_C2_BRIDGE_FIXED_BIOLOGY_SUMMARY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_16/WORLD1_H0_125ka_C2_EXPOSURE_PRESERVING_FIXED_BIOLOGY_PRE_120KA_RESTART_CHECKPOINT_v0_6D1_R3_16.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_17/R3_17_120KA_DUAL_CLOCK_RESTART_ENVELOPE.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "local_runs/v0_6D1_R3_18/R3_18_RECENT_EXPOSURE_TRANSPORT_PHASE_READINESS_ENVELOPE.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_13/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_13.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_13/FORMAL_AUDIT_SEALED_v0_6D1_R3_13_RECHECK.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_14/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_14.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_14/FORMAL_AUDIT_SEALED_v0_6D1_R3_14.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_15/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_15.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_15/FORMAL_AUDIT_SEALED_v0_6D1_R3_15.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_16/FORMAL_AUDIT_CANDIDATE_v0_6D1_R3_16.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_17/FORMAL_AUDIT_SEALED_v0_6D1_R3_17.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_18/FORMAL_AUDIT_SEALED_v0_6D1_R3_18.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_11/R4_11_CDMETAPOP_METRIC_REPAIRED_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_13/R4_13_CDMETAPOP_COMPARABILITY_DOWNGRADED_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_18/R4_18_PARTIAL_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_25/R4_25_GEONOMICS_J14_SPATIAL_AUTHORITY_DISCOVERY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_27/R4_27_TARGET_EXTRACTOR_STATIC_VALIDATION_REGISTRY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_28/R4_28_TARGET_SELECTOR_AUTHORITY_IMPLEMENTATION_PREFLIGHT.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_28/repair_history/R428_INITIAL_ALL_44_EXACT_SELECTOR_INVENTORY_GATE_BLOCKED/R4_28_TARGET_SELECTOR_AUTHORITY_IMPLEMENTATION_PREFLIGHT.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/R4_3_WINDOW_BASELINE_DESCRIPTORS.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J01_H0_DEEP_TIME_BACKGROUND_MADINGLEY/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J02_H0_DEEP_TIME_BACKGROUND_RANGESHIFTER/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J03_H0_DEEP_TIME_BACKGROUND_CDMETAPOP/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J04_H0_PRE_CHA1_MADINGLEY/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J05_H0_PRE_CHA1_RANGESHIFTER/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J06_H0_PRE_CHA1_CDMETAPOP/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J08_H0_POST_CHA1_RECOVERY_RANGESHIFTER/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J09_H0_POST_CHA1_RECOVERY_CDMETAPOP/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J10_H0_POST_CHA1_RECOVERY_NEMO/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J11_H0_LATE_CENOZOIC_MADINGLEY/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J12_H0_LATE_CENOZOIC_RANGESHIFTER/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J13_H0_LATE_CENOZOIC_NEMO/JOB_CONTRACT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_32/R4_32_TARGET_AUTHORITY_BINDING_IMPLEMENTATION_REGISTRY.json",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_4/R4_4_CROSS_ENGINE_DOMAIN_DISCORDANCE_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_55_PREBUILD_INTROSPECTION/R4_55_EXECUTION_SOURCE_INTROSPECTION.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_6/R4_6_CANONICAL_FORCING_AUDIT.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_7/R4_7_CDMETAPOP_READJUDICATED_MATRIX.json",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_1/R5_1_OCCUPIED_ENVIRONMENT_ENVELOPES.json",
+        "matched_terms": [
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "references/v0_6D1_R2_1/d3_sealed/adaptive_radiation_v0_6_3D3_1A.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "references/v0_6D1_R2_1/d3_sealed/diversification_adequacy_v0_6_3D3_2B.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "scripts/formal_audit_v0_6D1_R3_14_sealed.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "scripts/formal_audit_v0_6D1_R3_16_candidate.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "scripts/formal_audit_v0_6D1_R3_17_candidate.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "scripts/formal_audit_v0_6D1_R3_18_candidate.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "scripts/formal_audit_v0_6D1_R3_19_candidate.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/adaptive_clock.py",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/cha2_hydrological_hazard.py",
+        "matched_terms": [
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/cha2_nested_50y.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/environment.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/eustatic_land_bridge.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/integrated_provider.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/late_pleistocene_boundary.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/late_cenozoic/sealed_120ka_boundary.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/post_cha1/adaptive_radiation.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/post_cha1/diversification_adequacy.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/post_cha1/diversity_recovery.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/post_cha1/dynamic_demes.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/post_cha1/trophic_mode.py",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r310_cha1_highres_bridge.py",
+        "matched_terms": [
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r313_longterm_postcha1_reassembly.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r314_late_cenozoic_binding.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r315_late_cenozoic_secular_biology.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r316_c2_bridge_fixed_biology.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r317_recent_restart_sync.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r318_recent_exposure_transport_readiness.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r328_highres_200ka_to_0.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r43_historical_revalidation.py",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r44_discordance_adjudication.py",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r46_targeted_causal_counterfactual.py",
+        "matched_terms": [
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/state_query/r51_cradle.py",
+        "matched_terms": [
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/state_query/r52_corridors.py",
+        "matched_terms": [
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/rebased_deep_time_barrier_provider_v0_6D1_R3.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/rebased_natural_control_runtime_v0_6D1_R2.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/rebased_natural_control_runtime_v0_6D1_R3.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/rebased_natural_control_runtime_v0_6D1_R3_2.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/rebased_natural_control_runtime_v0_6D1_R3_3.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/rebased_natural_control_runtime_v0_6D1_R3_4.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "src/rebaseline_210ma_v0_6D1_R1.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "tests/test_r314_late_cenozoic_binding.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "tests/test_r315_late_cenozoic_secular_biology.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "tests/test_r316_c2_bridge_fixed_biology.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "tests/test_r317_recent_restart_sync.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "tests/test_r318_recent_exposure_transport_readiness.py",
+        "matched_terms": [
+          "browse_forage",
+          "low_forage",
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "tests/test_r320_cha2_yd_hydrological_hazard.py",
+        "matched_terms": [
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      },
+      {
+        "path": "tests/test_r52_targeted_corridors.py",
+        "matched_terms": [
+          "wetland_forage",
+          "total_edible_forage"
+        ]
+      }
+    ],
+    "producer": [
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_23/R4_23_GEONOMICS_CANONICAL_SPATIAL_BINDING_REGISTRY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_27/R4_27_TARGET_EXTRACTOR_STATIC_VALIDATION_REGISTRY.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_3/R4_3_WINDOW_BASELINE_DESCRIPTORS.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_32/R4_32_GEONOMICS_CANONICAL_PARAMETER_MATERIALIZATION_REGISTRY.json",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_32/R4_32_R1B_NATIVE_GEONOMICS_STATIC_VALIDATION_INTROSPECTION.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_32/R4_32_R1C_EXACT_PRODUCER_AND_MANIFEST_CAUSE_INTROSPECTION.json",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_35_R1/R4_35_R1_LIVE_SEED_AND_SPATIAL_SCHEMA_DIAGNOSTIC.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R4_55_PREBUILD_INTROSPECTION/R4_55_EXECUTION_SOURCE_INTROSPECTION.json",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_28/R4_28_TARGET_SELECTOR_AUTHORITY_IMPLEMENTATION_PREFLIGHT.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_32/R4_32_TARGET_AUTHORITY_BINDING_IMPLEMENTATION_REGISTRY.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_35/R4_35_GEONOMICS_NATIVE_SCHEMA_INITIAL_STATE_SEED_AUTHORITY_CLOSURE.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_37/R4_37_J21_CANONICAL_NATIVE_LAYER_BINDING_AUDIT.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_39/R4_39_J21_DYNAMIC_CANONICAL_PAYLOAD_AUTHORITY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_23/R4_23_GEONOMICS_CANONICAL_SPATIAL_BINDING_REGISTRY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_23/geonomics_profiles/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/LANDSCAPE_PROFILE.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_27/R4_27_TARGET_EXTRACTOR_STATIC_VALIDATION_REGISTRY.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_28/R4_28_TARGET_SELECTOR_AUTHORITY_IMPLEMENTATION_PREFLIGHT.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_28/repair_history/R428_INITIAL_ALL_44_EXACT_SELECTOR_INVENTORY_GATE_BLOCKED/R4_28_TARGET_SELECTOR_AUTHORITY_IMPLEMENTATION_PREFLIGHT.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/R4_3_WINDOW_BASELINE_DESCRIPTORS.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/JOB_CONTRACT.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J22_PRODUCER_20KA_TO_0_SLIM/JOB_CONTRACT.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_3/jobs/R42_J23_PRODUCER_20KA_TO_0_RANGESHIFTER/JOB_CONTRACT.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_32/R4_32_GEONOMICS_CANONICAL_PARAMETER_MATERIALIZATION_REGISTRY.json",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_32/R4_32_R1B_NATIVE_GEONOMICS_STATIC_VALIDATION_INTROSPECTION.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_32/R4_32_R1C_EXACT_PRODUCER_AND_MANIFEST_CAUSE_INTROSPECTION.json",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_32/R4_32_TARGET_AUTHORITY_BINDING_IMPLEMENTATION_REGISTRY.json",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_32/geonomics_profiles/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/GEONOMICS_CANONICAL_PARAMETER_MANIFEST.json",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_32_R2/PREPATCH_r432_target_authority_binding_geonomics_static.py",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_33/geonomics_runtime/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/GEONOMICS_RUNTIME_PARAMETER_BINDING_PACKAGE.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_34/geonomics_selector_authority/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/GEONOMICS_RUNTIME_SELECTOR_AUTHORITY_FREEZE.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_35/R4_35_GEONOMICS_NATIVE_SCHEMA_INITIAL_STATE_SEED_AUTHORITY_CLOSURE.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_35_R1/R4_35_R1_LIVE_SEED_AND_SPATIAL_SCHEMA_DIAGNOSTIC.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_36/geonomics_canonical_payload/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/INITIAL_LAYER_PAYLOAD_MANIFEST.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_37/R4_37_J21_CANONICAL_NATIVE_LAYER_BINDING_AUDIT.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_37/geonomics_native/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/replicate_0/GNX_R437_CANONICAL_LAYER_BOUND_PARAMS.py",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_37/geonomics_native/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/replicate_1/GNX_R437_CANONICAL_LAYER_BOUND_PARAMS.py",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_37/geonomics_native/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/replicate_2/GNX_R437_CANONICAL_LAYER_BOUND_PARAMS.py",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_37/geonomics_native/R42_J21_PRODUCER_20KA_TO_0_GEONOMICS/replicate_3/GNX_R437_CANONICAL_LAYER_BOUND_PARAMS.py",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_39/R4_39_J21_DYNAMIC_CANONICAL_PAYLOAD_AUTHORITY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_39_R2/PREPATCH_FAILED_R439_OUTPUTS/R4_39_J21_DYNAMIC_CANONICAL_PAYLOAD_AUTHORITY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_39_R3/PREPATCH_FAILED_R439_R2_OUTPUTS/R4_39_J21_DYNAMIC_CANONICAL_PAYLOAD_AUTHORITY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_39_R4/PREPATCH_FAILED_R439_R3_OUTPUTS/R4_39_J21_DYNAMIC_CANONICAL_PAYLOAD_AUTHORITY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_39_R5/PREPATCH_STOPPED_R439_R4_OUTPUTS/R4_39_J21_DYNAMIC_CANONICAL_PAYLOAD_AUTHORITY.json",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R4_55_PREBUILD_INTROSPECTION/R4_55_EXECUTION_SOURCE_INTROSPECTION.json",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "scripts/audit_v0_6D1_R3_36_seal.py",
+        "matched_terms": [
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "scripts/run_v0_6D1_R3_34.py",
+        "matched_terms": [
+          "build_producer_landscape"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r334_producer_domestication.py",
+        "matched_terms": [
+          "resource_abundance",
+          "harvest_return",
+          "propagation_opportunity",
+          "build_producer_landscape"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r336_producer_selection_ecology.py",
+        "matched_terms": [
+          "resource_abundance",
+          "propagation_opportunity"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r432_target_authority_binding_geonomics_static.py",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      },
+      {
+        "path": "tests/test_r334_producer_domestication.py",
+        "matched_terms": [
+          "build_producer_landscape"
+        ]
+      },
+      {
+        "path": "tools/r4_32_r2_apply_profile_indirection_repair.py",
+        "matched_terms": [
+          "resource_abundance"
+        ]
+      }
+    ],
+    "human_conditioning": [
+      {
+        "path": "R5_16_EXTERNAL_ENGINE_GOVERNANCE_AUDIT.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "R5_8_RECONCILIATION_AUTHORITY.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/03_DERIVED_REPLAY/outputs/v0_6D1_R5_5/R5_5_CONTACT_ZONE_HISTORY.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R5_5/R5_5_CROSS_ENGINE_CONTACT_CONTEXT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R5_7/R5_7_BLOCK_INPUT_BINDING.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R5_8/R5_8_INTEGRATED_RECONCILIATION.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_32/R3_32_SUBSISTENCE_REGIONAL_TRANSITION_AUTHORITY.json",
+        "matched_terms": [
+          "landscape management"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json",
+        "matched_terms": [
+          "landscape management"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/92_SUPPORT_DERIVED_REPLAY/outputs/v0_6D1_R5_5/R5_5_INTEGRATED_AUDIT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/92_SUPPORT_DERIVED_REPLAY/outputs/v0_6D1_R5_5/R5_5_OUTPUT_MANIFEST.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_6/R5_6_ANCESTRY_ADMIXTURE_SENSITIVITY.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_7/R5_7_FINAL_BLOCK_SEAL.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_7/R5_7_INTEGRATED_BLOCK_AUDIT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_8/R5_8_CONTACT_SCHEDULE_ALIGNMENT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/MANIFEST.csv",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/MANIFEST.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "SIMULATION_RESULTS/README.md",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "configs/world1_r55_contact_history_v0_6D1_R5_5.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "configs/world1_r56_slim_ancestry_v0_6D1_R5_6.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_32/R3_32_SUBSISTENCE_REGIONAL_TRANSITION_AUTHORITY.json",
+        "matched_terms": [
+          "landscape management"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R3_34/R3_34_PRODUCER_OPERATIONAL_TAXON_AUTHORITY.json",
+        "matched_terms": [
+          "landscape management"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_5/R5_5_CONTACT_ZONE_HISTORY.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_5/R5_5_CROSS_ENGINE_CONTACT_CONTEXT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_5/R5_5_INTEGRATED_AUDIT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_5/R5_5_OUTPUT_MANIFEST.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_6/R5_6_ANCESTRY_ADMIXTURE_SENSITIVITY.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_7/R5_7_BLOCK_INPUT_BINDING.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_7/R5_7_FINAL_BLOCK_SEAL.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_7/R5_7_INTEGRATED_BLOCK_AUDIT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_8/R5_8_CONTACT_SCHEDULE_ALIGNMENT.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "outputs/v0_6D1_R5_8/R5_8_INTEGRATED_RECONCILIATION.json",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r332_subsistence_regional_transitions.py",
+        "matched_terms": [
+          "landscape management"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r333_holocene_environment_domestication.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r334_producer_domestication.py",
+        "matched_terms": [
+          "landscape management"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/scientific_engines/r338_exchange_technology_cultural_genealogy.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/state_query/r55_contact_history.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/state_query/r56_slim_ancestry.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/state_query/r57_block_closure.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "src/arcana_worldsim/state_query/r58_hominid_history_reconciliation.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "tests/test_r55_contact_history.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "tests/test_r56_slim_ancestry.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "tests/test_r57_integrated_block_closure.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      },
+      {
+        "path": "tests/test_r58_hominid_history_reconciliation.py",
+        "matched_terms": [
+          "contact_opportunity"
+        ]
+      }
+    ]
+  },
+  "aquatic_marine_discovery": {
+    "filename_hits": [],
+    "content_hits": [
+      {
+        "path": "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md",
+        "matched_terms": [
+          "marine resource"
+        ]
+      },
+      {
+        "path": "R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md",
+        "matched_terms": [
+          "marine resource"
+        ]
+      }
+    ],
+    "materialization_decision": "UNADJUDICATED_SOURCE_DISCOVERY_ONLY"
+  },
+  "governance": {
+    "natural_pre_management_only": true,
+    "r332_readiness_used": false,
+    "human_technology_used": false,
+    "food_processing_used": false,
+    "storage_used": false,
+    "landscape_management_used": false,
+    "domestication_used": false,
+    "agriculture_used": false,
+    "population_target_used": false,
+    "k_x_t_materialized": false,
+    "new_food_equation_materialized": false,
+    "canonical_mutation": false,
+    "external_engine_executed": false,
+    "a1_forage_interpreted_as_physical_biomass": false,
+    "a1_forage_interpreted_as_human_calories": false,
+    "r333_domestication_candidate_subset_used_as_total_wild_fauna": false,
+    "r334_propagation_opportunity_used_as_natural_food_support": false
+  }
+}

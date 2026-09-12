@@ -1,0 +1,343 @@
+{
+  "canonical_mutation": false,
+  "d2d5_gate": {
+    "full_chain_exact": true,
+    "gate_satisfied": true,
+    "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D2D5_FULL_IN_MEMORY_F_CHAIN_REPLAY_AND_I_RECONSTRUCTION.json",
+    "reconstructed_seasonal_actual_sha256": "bd25948db09ecc50409a7d18df1fc6d08350820fd2f0f1d06aeb5a2b98de98a7",
+    "reconstructed_seasonal_reported_sha256": "bd25948db09ecc50409a7d18df1fc6d08350820fd2f0f1d06aeb5a2b98de98a7",
+    "sha256": "2e1ddc02f41e9dc8a27763747a98f5a0282bfd90a736b4e7fd9da7af62236200",
+    "status": "PASS_R517_B6_D2D5_FULL_IN_MEMORY_F_CHAIN_EXACT_AND_I_BASELINE_RECONSTRUCTED"
+  },
+  "decision": "RESOLVE_CANONICAL_PALEOHYDROLOGY_REPLAY_RUNTIME",
+  "execution_error": {
+    "message": "'types.SimpleNamespace' object has no attribute 'closed_basin_below_sea_mask'",
+    "traceback": "Traceback (most recent call last):\n  File \"F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.py\", line 363, in main\n    book_hydro_state = hydro_fn(project_root, i_coast, book_seasonal_state)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\hydrology.py\", line 159, in build_channel_hydrology\n    closed=np.asarray(coast_state.closed_basin_below_sea_mask,dtype=bool)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'types.SimpleNamespace' object has no attribute 'closed_basin_below_sea_mask'\n",
+    "type": "AttributeError"
+  },
+  "external_provider_authorized": false,
+  "freshwater_support_materialized": false,
+  "historical_payload_identity_claimed": false,
+  "historical_provenance_gap_preserved": true,
+  "hydrological_reliability_materialized": false,
+  "next_if_pass": "R5.17-B6-D4_FRESHWATER_ACCESS_AND_RELIABILITY_DERIVATION",
+  "paleohydrology_materialized": false,
+  "pet_snapshot_binding": {
+    "coefficient_per_c": 0.018,
+    "log_factor_clip": [
+      -0.18,
+      0.18
+    ],
+    "minimum_monthly_pet_mm": 0.1,
+    "source_semantics": "exact seasonal.py PET temperature-response law reused for temporal anomaly composition"
+  },
+  "prerequisites_satisfied": true,
+  "purpose": "Reuse the exact governed ARCANA v0.5.5F seasonal/hydrology lineage, already validated bitwise by D2D5, to reconstruct the book-era I hydrology baseline and five physical paleoclimate snapshot hydrology states.",
+  "reconstructed_seasonal_binding_check": {
+    "a_path": "C:\\Users\\jose_\\AppData\\Local\\Temp\\arcana_r517_b6_d3_1bvbph7p\\seasonal_I_replay.npz",
+    "a_sha256": "bd25948db09ecc50409a7d18df1fc6d08350820fd2f0f1d06aeb5a2b98de98a7",
+    "all_arrays_exact": true,
+    "b_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D2D_RECONSTRUCTED\\seasonal_climate_state_I_RECONSTRUCTED.npz",
+    "b_sha256": "bd25948db09ecc50409a7d18df1fc6d08350820fd2f0f1d06aeb5a2b98de98a7",
+    "fields": {
+      "annual_pet_mm_yr": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "annual_precipitation_mm_yr": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "annual_temperature_c": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "coldest_month_temperature_c": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "driest_month_precipitation_mm": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "dry_month_count": {
+        "a_dtype": "uint8",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "uint8",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "frost_month_count": {
+        "a_dtype": "uint8",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "uint8",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "itcz_latitude_by_month_deg": {
+        "a_dtype": "float32",
+        "a_shape": [
+          12
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          12
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "lat": {
+        "a_dtype": "float64",
+        "a_shape": [
+          720
+        ],
+        "b_dtype": "float64",
+        "b_shape": [
+          720
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "lon": {
+        "a_dtype": "float64",
+        "a_shape": [
+          1440
+        ],
+        "b_dtype": "float64",
+        "b_shape": [
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "monthly_pet_mm": {
+        "a_dtype": "float32",
+        "a_shape": [
+          12,
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          12,
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "monthly_precipitation_mm": {
+        "a_dtype": "float32",
+        "a_shape": [
+          12,
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          12,
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "monthly_temperature_c": {
+        "a_dtype": "float32",
+        "a_shape": [
+          12,
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          12,
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "precipitation_seasonality_cv": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "resolution_deg": {
+        "a_dtype": "float64",
+        "a_shape": [],
+        "b_dtype": "float64",
+        "b_shape": [],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "temperature_annual_range_c": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "warmest_month_temperature_c": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      },
+      "wettest_month_precipitation_mm": {
+        "a_dtype": "float32",
+        "a_shape": [
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          720,
+          1440
+        ],
+        "exact": true,
+        "max_abs_difference": 0.0
+      }
+    },
+    "missing_from_a": [],
+    "missing_from_b": [],
+    "schema_exact": true
+  },
+  "runtime": {
+    "numpy_version": "2.4.3",
+    "python_executable": "C:\\Users\\jose_\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "python_version": "3.11.15"
+  },
+  "schema": "ARCANA_R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY_V1",
+  "selected_binding": {
+    "hydrology_sha256": "29c808bd889d3f0c6e5390775d8751f68b9c9dd2cb5bab1736d6ad6cc6486351",
+    "hydrology_source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\hydrology.py",
+    "paleoclimate_spatial": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+    "paleoclimate_spatial_sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+    "project_root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED",
+    "recent_history": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\recent_paleoclimate_history.npz",
+    "recent_history_sha256": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+    "seasonal_sha256": "3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2",
+    "seasonal_source": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py",
+    "shoreline_I": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+    "shoreline_I_sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+  },
+  "snapshot_results": [],
+  "source_candidates": {
+    "hydrology_source": [
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\hydrology.py"
+    ],
+    "i_shoreline": [
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz"
+    ],
+    "paleoclimate_spatial": [
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz"
+    ],
+    "recent_history": [
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\recent_paleoclimate_history.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\recent_paleoclimate_history.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\recent_paleoclimate_history.npz",
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\recent_paleoclimate_history.npz"
+    ],
+    "seasonal_source": [
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py"
+    ]
+  },
+  "stage": "v0.6D1-R5.17",
+  "status": "BLOCKED_R517_B6_D3_EXECUTION_ERROR",
+  "subphase": "R5.17-B6-D3"
+}

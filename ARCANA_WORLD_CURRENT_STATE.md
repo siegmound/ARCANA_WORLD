@@ -1,4 +1,4 @@
-# ARCANA WorldSim — Current State Authority
+﻿# ARCANA WorldSim — Current State Authority
 
 > Compact continuation ledger. Use this file and its repository pointers as the default bootstrap. Historical R3/R4/R5 material is archive/provenance unless a targeted audit requires it.
 
@@ -53,17 +53,17 @@ LATEST_COMPLETED: v0.6D1-R5.17-B5
 LATEST_STATUS: PASS
 LATEST_VERDICT: PASS_R517_B5_SEALED_PALEOCLIMATE_PAYLOAD_HASH_AND_SCHEMA_INSPECTION
 
-LATEST_COMPLETED_INTERNAL_STEP: R5.17-B6-D2D5
-LATEST_INTERNAL_VERDICT: PASS_R517_B6_D2D5_FULL_IN_MEMORY_F_CHAIN_EXACT_AND_I_BASELINE_RECONSTRUCTED
+LATEST_COMPLETED_INTERNAL_STEP: R5.17-B7-A1
+LATEST_INTERNAL_VERDICT: PASS_R517_B7_A1_NATURAL_FOOD_SUPPORT_AUTHORITY_SCHEMA_COVERAGE_PREFLIGHT
 
 ACTIVE_STAGE: v0.6D1-R5.17
 ACTIVE_STAGE_STATUS: AUTHORIZED_IN_PROGRESS
 ACTIVE_STAGE_SCOPE: HUMAN_SUPPORT_CAPACITY_AND_CIVILIZATION_GEOGRAPHY_FOUNDATION
 
-ACTIVE_SUBPHASE: R5.17-B6
-ACTIVE_SUBPHASE_STATUS: D2_RECONSTRUCTION_CLOSED__D3_IMPLEMENTATION_READY
-ACTIVE_SUBPHASE_SCOPE: FRESHWATER_PHYSICAL_DERIVATION_BINDING_AND_REPLAY_PREPARATION
-NEXT_ACTION: RUN_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY
+ACTIVE_SUBPHASE: R5.17-B7
+ACTIVE_SUBPHASE_STATUS: A1_PREFLIGHT_COMPLETE__A2_READY
+ACTIVE_SUBPHASE_SCOPE: NATURAL_BIOLOGICAL_FOOD_SUPPORT
+NEXT_ACTION: RUN_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION
 ```
 
 ## Continuation chain
@@ -281,3 +281,49 @@ Before any new material scientific computation, apply `SCIENTIFIC_ENGINE_SUITABI
 ```
 
 For R5.17-B6 hydrology, H4 already selected `REUSE_CANONICAL_ARCANA`; external hydrology providers are not authorized. Geonomics, NEMO, SLiM/tskit/msprime/pyslim, CDMetaPOP and RangeShiftR remain available evidence providers for later spatial-population/genetic/connectivity subquestions when their scientific domains become relevant; availability alone does not authorize their use.
+
+---
+
+<!-- R517_B6_TO_B7_TRANSITION_BEGIN -->
+
+## R5.17 authoritative subphase transition - B6 -> B7
+
+This block supersedes earlier R5.17 subphase-status statements in this file.
+
+STAGE: v0.6D1-R5.17
+STAGE_STATUS: ACTIVE
+
+R5_17_LATEST_COMPLETED_SUBPHASE: R5.17-B6
+R5_17_B6_STATUS: COMPLETED
+R5_17_B6_SEALED: false
+
+FRESHWATER_SUPPORT_MATERIALIZED: true
+HYDROLOGICAL_RELIABILITY_MATERIALIZED: true
+K_X_T_MATERIALIZED: false
+
+R5_17_ACTIVE_SUBPHASE: R5.17-B7
+R5_17_ACTIVE_SCOPE: NATURAL_BIOLOGICAL_FOOD_SUPPORT
+R5_17_B7_STATUS: ACTIVE__A1_COMPLETE
+
+NEXT_OPERATION:
+  R5.17-B7-A2
+  SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION
+
+EXECUTION_REFERENCE_INDEX:
+  ARCANA_EXECUTION_REFERENCE_INDEX.md
+  ARCANA_EXECUTION_REFERENCE_INDEX.json
+  tools/build_arcana_execution_reference_index.py
+
+MICRO_SEAL_CREATED: false
+CANONICAL_MUTATION: false
+
+B7 must construct the natural biological-resource layer before any application
+of human technology, processing, storage, management, domestication,
+agriculture or civilization dynamics.
+
+The inherited A1 forage vector is authorized only as a trophic-resource proxy.
+Its original generator is not recoverable from available repository Git
+history and it must not be relabelled as physical biomass, human calories or
+carrying capacity.
+
+<!-- R517_B6_TO_B7_TRANSITION_END -->

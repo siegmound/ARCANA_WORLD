@@ -1,0 +1,313 @@
+{
+  "canonical_mutation": false,
+  "external_engine_execution": false,
+  "freshwater_support_materialized": false,
+  "hydrological_reliability_materialized": false,
+  "inputs": {
+    "model": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\src\\arcana_worldsim\\paleoclimate\\model.py",
+      "sha256": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f",
+      "sha256_matches_r314": true
+    },
+    "spatial_snapshots": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "sha256_matches_r314": true
+    }
+  },
+  "k_x_t_materialized": false,
+  "new_historical_simulation": false,
+  "next_if_pass": "R5.17-B6_SOURCE_SEMANTIC_ADJUDICATION_AND_MINIMUM_HYDROLOGY_DESIGN",
+  "precipitation_factor_relative_book": {
+    "dtype": "float32",
+    "per_snapshot": [
+      {
+        "all_cells": {
+          "count": 1036800,
+          "finite_count": 1036800,
+          "max": 0.8694525957107544,
+          "mean": 0.8313379637069173,
+          "min": 0.7798052430152893,
+          "nonfinite_count": 0,
+          "std": 0.026929223882785503
+        },
+        "index": 0,
+        "paleo_land_cell_count": 333512,
+        "paleo_land_cells": {
+          "count": 333512,
+          "finite_count": 333512,
+          "max": 0.8694525957107544,
+          "mean": 0.8370814494124351,
+          "min": 0.7798052430152893,
+          "nonfinite_count": 0,
+          "std": 0.02505339887966887
+        },
+        "year_before_book": -21000.0
+      },
+      {
+        "all_cells": {
+          "count": 1036800,
+          "finite_count": 1036800,
+          "max": 0.8681526780128479,
+          "mean": 0.8282711902558574,
+          "min": 0.7852169871330261,
+          "nonfinite_count": 0,
+          "std": 0.029176099268177626
+        },
+        "index": 1,
+        "paleo_land_cell_count": 335361,
+        "paleo_land_cells": {
+          "count": 335361,
+          "finite_count": 335361,
+          "max": 0.8681526780128479,
+          "mean": 0.8352424886359093,
+          "min": 0.7852169871330261,
+          "nonfinite_count": 0,
+          "std": 0.025364412274592373
+        },
+        "year_before_book": -14000.0
+      },
+      {
+        "all_cells": {
+          "count": 1036800,
+          "finite_count": 1036800,
+          "max": 0.8990568518638611,
+          "mean": 0.7644372036380487,
+          "min": 0.5259038805961609,
+          "nonfinite_count": 0,
+          "std": 0.13443267731446987
+        },
+        "index": 2,
+        "paleo_land_cell_count": 334699,
+        "paleo_land_cells": {
+          "count": 334699,
+          "finite_count": 334699,
+          "max": 0.8990568518638611,
+          "mean": 0.7868055748015399,
+          "min": 0.5259038805961609,
+          "nonfinite_count": 0,
+          "std": 0.12423516725573952
+        },
+        "year_before_book": -12900.0
+      },
+      {
+        "all_cells": {
+          "count": 1036800,
+          "finite_count": 1036800,
+          "max": 0.8748327493667603,
+          "mean": 0.8191444628929466,
+          "min": 0.7199249267578125,
+          "nonfinite_count": 0,
+          "std": 0.05697848992728893
+        },
+        "index": 3,
+        "paleo_land_cell_count": 333063,
+        "paleo_land_cells": {
+          "count": 333063,
+          "finite_count": 333063,
+          "max": 0.8748327493667603,
+          "mean": 0.8305258202205543,
+          "min": 0.7199249267578125,
+          "nonfinite_count": 0,
+          "std": 0.05075586887051416
+        },
+        "year_before_book": -12000.0
+      },
+      {
+        "all_cells": {
+          "count": 1036800,
+          "finite_count": 1036800,
+          "max": 1.0000001192092896,
+          "mean": 0.9999999064537064,
+          "min": 0.9999995827674866,
+          "nonfinite_count": 0,
+          "std": 1.6431048822714524e-07
+        },
+        "index": 4,
+        "paleo_land_cell_count": 267031,
+        "paleo_land_cells": {
+          "count": 267031,
+          "finite_count": 267031,
+          "max": 1.0000001192092896,
+          "mean": 0.9999999284644263,
+          "min": 0.9999995827674866,
+          "nonfinite_count": 0,
+          "std": 1.4969290967502893e-07
+        },
+        "year_before_book": 0.0
+      }
+    ],
+    "shape": [
+      5,
+      720,
+      1440
+    ]
+  },
+  "purpose": "Verify exact R3.14 source/payload identity and collect bounded semantic evidence for precipitation/hydrology before any freshwater-support derivation.",
+  "runoff_materialized": false,
+  "schema": "ARCANA_R5_17_B6_PALEOCLIMATE_SEMANTIC_EVIDENCE_V1",
+  "snapshot_year_before_book": [
+    -21000.0,
+    -14000.0,
+    -12900.0,
+    -12000.0,
+    0.0
+  ],
+  "source_executed": false,
+  "source_semantic_evidence": {
+    "bounded_excerpts": [
+      {
+        "end_line": 37,
+        "start_line": 33,
+        "text": "33:         \"fixed_outcome\": (\n34:             \"primitive cultures already exist; multiple regions experience causally related but \"\n35:             \"non-identical megafloods, coastal transgression, extreme hydrological instability \"\n36:             \"and abrupt climatic reversal, creating the substrate for later flood-myth families\"\n37:         ),"
+      },
+      {
+        "end_line": 92,
+        "start_line": 86,
+        "text": "86:     precession, obliquity, eccentricity, summer = _orbital_forcing(t)\n87: \n88:     # Canonical CHA-2 freshwater forcing. This is a forcing pulse, not a\n89:     # prescribed temperature response. The overturning model propagates it.\n90:     freshwater_event_sv = (\n91:         0.190*np.exp(-0.5*((t+12_900.0)/180.0)**2)\n92:         + 0.045*np.exp(-0.5*((t+13_600.0)/350.0)**2)"
+      },
+      {
+        "end_line": 117,
+        "start_line": 111,
+        "text": "111: \n112:     temp = np.zeros(n)\n113:     ice = np.zeros(n)\n114:     overturning = np.ones(n)\n115:     freshwater_sv = np.zeros(n)\n116:     sea_level = np.zeros(n)\n117: "
+      },
+      {
+        "end_line": 132,
+        "start_line": 122,
+        "text": "122:     flux_fire = np.zeros(n)\n123: \n124:     ice[0] = 0.15\n125: \n126:     for i in range(1, n):\n127:         melt_rate = max(0.0, (ice[i-2] - ice[i-1]) / dt) if i > 1 else 0.0\n128:         freshwater_sv[i] = freshwater_event_sv[i] + min(0.08, melt_rate*100.0)\n129: \n130:         overturning_eq = np.clip(1.0 - 3.3*freshwater_sv[i], 0.25, 1.0)\n131:         tau_m = 150.0 if overturning_eq < overturning[i-1] else 650.0\n132:         overturning[i] = np.clip("
+      },
+      {
+        "end_line": 151,
+        "start_line": 137,
+        "text": "137:         ppm = max(atm[i-1] / 2.12, 80.0)\n138:         f_co2 = 5.35*np.log(ppm/280.0)\n139:         f_ice = -3.8*ice[i-1]\n140:         f_orbit = 0.42*summer[i]\n141:         f_overturning = -1.15*(1.0-overturning[i])\n142:         f_aerosol = -4.0*volcanic_aerosol_index[i]\n143:         t_eq = 0.85*(f_co2 + f_ice + f_orbit + f_overturning + f_aerosol)\n144:         temp[i] = temp[i-1] + dt*(t_eq-temp[i-1])/650.0\n145: \n146:         cold_index = -1.55*summer[i] - 0.50*temp[i] - 0.15\n147:         ice_eq = 1.0/(1.0 + np.exp(-cold_index/0.50))\n148:         tau_i = 6000.0 if ice_eq > ice[i-1] else 950.0\n149:         ice[i] = np.clip(ice[i-1] + dt*(ice_eq-ice[i-1])/tau_i, 0.0, 1.0)\n150: \n151:         # Net carbon fluxes, GtC/yr."
+      },
+      {
+        "end_line": 165,
+        "start_line": 161,
+        "text": "161: \n162:         # Fire is a feedback, not an independent canonical event. Its global\n163:         # strength is constrained by the v0.6 ecological fire susceptibility.\n164:         flux_fire[i] = max(0.0, 0.008*(temp[i]+1.0)*(0.5+fire_susceptibility))\n165: "
+      },
+      {
+        "end_line": 180,
+        "start_line": 175,
+        "text": "175: \n176:     # First-order eustatic relation for the analogue glacial cycle. Book-era\n177:     # sea level is the zero datum; absolute ice volume is not being claimed.\n178:     sea_level = -125.0*ice + 0.40*temp\n179: \n180:     # Report anomalies relative to the exact book-era endpoint without changing"
+      },
+      {
+        "end_line": 206,
+        "start_line": 193,
+        "text": "193:         \"atmospheric_carbon_gtc\": atm,\n194:         \"ocean_carbon_gtc\": ocean,\n195:         \"biosphere_soil_carbon_gtc\": biosphere,\n196:         \"active_geologic_carbon_gtc\": geo,\n197:         \"total_tracked_carbon_gtc\": total_carbon,\n198:         \"atmospheric_co2_ppm\": atm/2.12,\n199:         \"global_temperature_anomaly_c\": temp_anomaly,\n200:         \"ice_volume_index\": ice,\n201:         \"sea_level_anomaly_m\": sea_level_anomaly,\n202:         \"overturning_strength\": overturning,\n203:         \"freshwater_forcing_sv\": freshwater_sv,\n204:         \"canonical_freshwater_pulse_sv\": freshwater_event_sv,\n205:         \"volcanic_aerosol_index\": volcanic_aerosol_index,\n206:         \"carbon_flux_volcanic_gtc_yr\": flux_volcanic,"
+      },
+      {
+        "end_line": 222,
+        "start_line": 216,
+        "text": "216:     lon = np.asarray(sh[\"lon\"], dtype=float)\n217:     owner = sh[\"owner_code\"].astype(np.uint8)\n218:     lake = hy[\"lake_candidate_mask\"].astype(bool)\n219:     depression = np.asarray(hy[\"depression_depth_m\"], dtype=float)\n220:     drainage = np.asarray(hy[\"drainage_area_km2\"], dtype=float)\n221:     receiver = np.asarray(hy[\"receiver_flat\"], dtype=np.int64)\n222:     nlat, nlon = owner.shape"
+      },
+      {
+        "end_line": 233,
+        "start_line": 225,
+        "text": "225:     sources = []\n226: \n227:     # Four independently selected proglacial-lake analogues in distinct plate/\n228:     # continental systems. Selection is geophysical and deterministic.\n229:     for oid in (1, 2, 3, 5):\n230:         candidate = (\n231:             lake\n232:             & (owner == oid)\n233:             & (np.abs(lat)[:, None] > 40.0)"
+      },
+      {
+        "end_line": 240,
+        "start_line": 236,
+        "text": "236:         score = np.where(\n237:             candidate,\n238:             depression*np.log1p(np.maximum(drainage, 0.0)),\n239:             -1.0,\n240:         )"
+      },
+      {
+        "end_line": 264,
+        "start_line": 260,
+        "text": "260:             p_mask.ravel()[path] = 1.0\n261:             # Corridor broadens downstream and represents valley-scale damage,\n262:             # not literal water depth.\n263:             p_mask = gaussian_filter(p_mask, sigma=(2.0, 2.0), mode=(\"reflect\", \"wrap\"))\n264:             p_mask /= max(float(np.max(p_mask)), 1e-12)"
+      },
+      {
+        "end_line": 274,
+        "start_line": 270,
+        "text": "270:             \"longitude_deg\": float(lon[sj]),\n271:             \"depression_depth_m\": float(depression[si, sj]),\n272:             \"drainage_area_km2\": float(drainage[si, sj]),\n273:             \"downstream_path_cell_count\": int(len(path)),\n274:         })"
+      },
+      {
+        "end_line": 285,
+        "start_line": 277,
+        "text": "277: \n278: \n279: def _spatial_snapshots(root: Path, recent: Dict[str, np.ndarray]) -> Dict[str, Any]:\n280:     inp = root / \"inputs/v0_5_5I_SEALED\"\n281:     sh = np.load(inp / \"shoreline_state_I.npz\")\n282:     cl = np.load(inp / \"seasonal_climate_state_I.npz\")\n283:     hy = np.load(inp / \"channel_hydrology_state_I.npz\")\n284:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n285: "
+      },
+      {
+        "end_line": 315,
+        "start_line": 310,
+        "text": "310: \n311:     local_temp = np.zeros((years.size, lat.size, lon.size), dtype=np.float32)\n312:     precip_factor = np.zeros_like(local_temp)\n313:     npp_factor = np.zeros_like(local_temp)\n314:     paleo_land = np.zeros((years.size, lat.size, lon.size), dtype=np.uint8)\n315: "
+      },
+      {
+        "end_line": 339,
+        "start_line": 332,
+        "text": "332:         pf *= (1.0 - 0.27*yd*north_overturning_zone + 0.08*yd*south_compensation_zone)\n333:         pf = np.clip(pf, 0.45, 1.45)\n334:         precip_factor[k] = pf.astype(np.float32)\n335: \n336:         nf = np.clip(np.exp(-np.abs(dt_local)/12.0)*(pf**0.45), 0.05, 1.35)\n337:         npp_factor[k] = nf.astype(np.float32)\n338:         paleo_land[k] = (z > sea[i]).astype(np.uint8)\n339: "
+      },
+      {
+        "end_line": 365,
+        "start_line": 355,
+        "text": "355:     q = np.asarray(hy[\"mean_discharge_m3_s\"], dtype=float)\n356:     qn = np.clip(np.log1p(q)/max(float(np.percentile(np.log1p(q[q>0]), 99.5)), 1e-9), 0.0, 1.0)\n357:     lake = hy[\"lake_candidate_mask\"].astype(bool)\n358:     hydrologic = np.clip(0.55*floodplain + 0.30*qn + 0.15*lake.astype(float), 0.0, 1.0)\n359: \n360:     flood_exposure = np.clip(\n361:         0.50*megaflood_corridor\n362:         + 0.36*transgression_exposure\n363:         + 0.14*hydrologic,\n364:         0.0, 1.0,\n365:     )"
+      },
+      {
+        "end_line": 377,
+        "start_line": 368,
+        "text": "368:     # deliberately NOT a culture map and does not pre-write settlements.\n369:     book_t = np.asarray(cl[\"annual_temperature_c\"], dtype=float)\n370:     npp = np.asarray(eco[\"npp_potential_g_m2_yr\"], dtype=float)\n371:     riparian = np.asarray(eco[\"riparian_potential\"], dtype=float)\n372:     hab_temp = _sigmoid((book_t+8.0)/4.0)*_sigmoid((32.0-book_t)/4.0)\n373:     hab_npp = _sigmoid((npp-120.0)/140.0)\n374:     water = np.clip(0.35 + 0.65*np.maximum(riparian, hydrologic), 0.0, 1.0)\n375:     culture_habitat_potential = np.clip(hab_temp*hab_npp*water, 0.0, 1.0)\n376:     culture_habitat_potential[~land_start] = 0.0\n377: "
+      },
+      {
+        "end_line": 389,
+        "start_line": 382,
+        "text": "382: \n383:     return {\n384:         \"snapshot_year_before_book\": years,\n385:         \"temperature_anomaly_c\": local_temp,\n386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),"
+      },
+      {
+        "end_line": 403,
+        "start_line": 399,
+        "text": "399:         \"cha2_sea_level_rise_m\": float(sea[i_end]-sea[i_start]),\n400:         \"cha2_overturning_min\": float(np.min(m[(t>=-14_000)&(t<=-12_000)])),\n401:         \"cha2_freshwater_peak_sv\": float(np.max(recent[\"freshwater_forcing_sv\"][(t>=-14_000)&(t<=-12_000)])),\n402:     }\n403: "
+      },
+      {
+        "end_line": 447,
+        "start_line": 442,
+        "text": "442:     temperature_anomaly = impact_cooling + greenhouse_warming\n443: \n444:     npp_multiplier = np.ones_like(t)\n445:     npp_multiplier[active] = np.clip(\n446:         photosynthetically_active_radiation_fraction[active]**0.55\n447:         * np.exp(-np.maximum(0.0, -temperature_anomaly[active])/8.0),"
+      },
+      {
+        "end_line": 456,
+        "start_line": 452,
+        "text": "452:     extinction_pressure = np.zeros_like(t)\n453:     extinction_pressure[active] = np.clip(\n454:         0.66*(1.0-npp_multiplier[active])\n455:         + 0.24*np.clip(np.abs(temperature_anomaly[active])/10.0, 0.0, 1.0)\n456:         + 0.10*acidification_proxy[active],"
+      },
+      {
+        "end_line": 507,
+        "start_line": 503,
+        "text": "503:         \"preimpact_co2_ppm\": np.float64(preimpact_co2_ppm),\n504:         \"atmospheric_co2_ppm\": co2_ppm,\n505:         \"npp_multiplier\": npp_multiplier,\n506:         \"extinction_pressure_index\": extinction_pressure,\n507:         \"post_extinction_radiation_opportunity_index\": opportunity,"
+      },
+      {
+        "end_line": 529,
+        "start_line": 525,
+        "text": "525: \n526:     recent = _simulate_recent_history(fire_susceptibility=fire_susceptibility, seed=seed)\n527:     spatial = _spatial_snapshots(root, recent)\n528:     impact = _simulate_great_biotic_turnover()\n529: "
+      },
+      {
+        "end_line": 561,
+        "start_line": 557,
+        "text": "557:             ),\n558:             \"cha1_exact_impact_paleocoordinates\": \"PROVISIONAL_DEFERRED\",\n559:             \"cha2_primitive_cultures\": \"CANONICAL_EXISTENCE_CONSTRAINT_ONLY; settlements not generated in v0.6.1\",\n560:         },\n561:     }"
+      }
+    ],
+    "excerpt_limit": 40,
+    "interpretation_note": "Lexical/source evidence only. Semantic promotion requires review of the recorded equations and variable definitions.",
+    "matching_line_count": 51,
+    "source_line_count": 561,
+    "term_presence": {
+      "catch": false,
+      "drain": true,
+      "evap": false,
+      "hydro": true,
+      "ice": true,
+      "infil": false,
+      "lake": true,
+      "npp": true,
+      "precip": true,
+      "rain": true,
+      "recharge": false,
+      "river": false,
+      "runoff": false,
+      "snapshot": true,
+      "snow": false,
+      "soil": true,
+      "storage": false,
+      "water": true
+    }
+  },
+  "stage": "v0.6D1-R5.17",
+  "status": "PASS_R517_B6_PALEOCLIMATE_SEMANTIC_EVIDENCE_CAPTURED",
+  "subphase": "R5.17-B6"
+}

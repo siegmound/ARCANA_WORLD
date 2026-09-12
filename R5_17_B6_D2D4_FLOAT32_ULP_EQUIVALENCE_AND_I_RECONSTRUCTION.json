@@ -1,0 +1,345 @@
+{
+  "absolute_or_relative_tolerance_authorized": false,
+  "canonical_mutation": false,
+  "d2c1_gate": {
+    "adapter_mapping": {
+      "elevation_m": "elevation_m",
+      "land_mask": "effective_land_mask"
+    },
+    "decision": "EXPOSE_EFFECTIVE_LAND_MASK_AS_COAST_STATE_LAND_MASK",
+    "gate_satisfied": true,
+    "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json",
+    "sha256": "5e0aae416b1d6c8ce80900c5bb158a71e958c080df51c787f3d896c45be93aae",
+    "status": "PASS_R517_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_AUTHORIZED"
+  },
+  "d2d3_parent_status": "BLOCKED_R517_B6_D2D3_SERIALIZED_MARGIN_REPLAY_NONEXACT",
+  "d2d3_serialized_margin_replay_exact": false,
+  "decision": "RECOVER_HISTORICAL_NUMERIC_RUNTIME_OR_REEVALUATE_GENERATOR_LINEAGE",
+  "equivalence_rule": {
+    "absolute_tolerance": null,
+    "max_ulp_distance": 2,
+    "numeric_type": "IEEE-754 binary32 / numpy.float32",
+    "relative_tolerance": null,
+    "required_dtype_identity": true,
+    "required_shape_identity": true,
+    "required_special_value_mask_identity": true,
+    "scope": [
+      "monthly_pet_mm",
+      "monthly_precipitation_mm",
+      "monthly_temperature_c"
+    ]
+  },
+  "external_provider_authorized": false,
+  "freshwater_support_materialized": false,
+  "generator_candidates": [
+    "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py"
+  ],
+  "generator_project_root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED",
+  "historical_payload_identity_claimed": false,
+  "historical_provenance_gap_preserved": true,
+  "hydrology_field_ulp_validation": {
+    "all_fields_within_bound": false,
+    "fields": {
+      "monthly_pet_mm": {
+        "a_dtype": "float32",
+        "a_shape": [
+          12,
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          12,
+          720,
+          1440
+        ],
+        "differing_finite_count": 10789,
+        "differing_fraction": 0.0008671714248971194,
+        "dtype_exact": true,
+        "element_count": 12441600,
+        "eligible": true,
+        "exact_array_equal": false,
+        "finite_count": 12441600,
+        "max_abs_difference": 1.52587890625e-05,
+        "max_relative_difference": 1.1919915807250671e-07,
+        "max_ulp_distance": 1,
+        "mean_abs_difference": 4.207738387731858e-09,
+        "mean_relative_difference": 7.109023383444726e-11,
+        "nonzero_ulp_percentiles": {
+          "p100": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "p99": 1.0
+        },
+        "shape_exact": true,
+        "special_value_masks_exact": true,
+        "within_2_ulp": true
+      },
+      "monthly_precipitation_mm": {
+        "a_dtype": "float32",
+        "a_shape": [
+          12,
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          12,
+          720,
+          1440
+        ],
+        "differing_finite_count": 0,
+        "differing_fraction": 0.0,
+        "dtype_exact": true,
+        "element_count": 12441600,
+        "eligible": true,
+        "exact_array_equal": true,
+        "finite_count": 12441600,
+        "max_abs_difference": 0.0,
+        "max_relative_difference": 0.0,
+        "max_ulp_distance": 0,
+        "mean_abs_difference": 0.0,
+        "mean_relative_difference": 0.0,
+        "nonzero_ulp_percentiles": {
+          "p100": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "shape_exact": true,
+        "special_value_masks_exact": true,
+        "within_2_ulp": true
+      },
+      "monthly_temperature_c": {
+        "a_dtype": "float32",
+        "a_shape": [
+          12,
+          720,
+          1440
+        ],
+        "b_dtype": "float32",
+        "b_shape": [
+          12,
+          720,
+          1440
+        ],
+        "differing_finite_count": 987202,
+        "differing_fraction": 0.07934686856995884,
+        "dtype_exact": true,
+        "element_count": 12441600,
+        "eligible": true,
+        "exact_array_equal": false,
+        "finite_count": 12441600,
+        "max_abs_difference": 3.814697265625e-06,
+        "max_relative_difference": 0.003754820360161856,
+        "max_ulp_distance": 43925,
+        "mean_abs_difference": 6.408383532827624e-08,
+        "mean_relative_difference": 2.3259801736497626e-08,
+        "nonzero_ulp_percentiles": {
+          "p100": 43925.0,
+          "p50": 1.0,
+          "p95": 7.0,
+          "p99": 38.0
+        },
+        "shape_exact": true,
+        "special_value_masks_exact": true,
+        "within_2_ulp": false
+      }
+    },
+    "max_observed_ulp": 43925
+  },
+  "i_reconstruction_materialized": false,
+  "i_shoreline_candidates": [
+    "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+    "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+    "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+    "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz"
+  ],
+  "margin_fixture_gate": {
+    "baseline_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\seasonal_climate_state.npz",
+    "baseline_sha256": "1b32d97a0b4dad12f01f4c286461d6ca597c2d46a390a8801771735d972d93f6",
+    "candidate_count": 1,
+    "gate_satisfied": true,
+    "margin_state_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\margin_state.npz",
+    "margin_state_sha256": "e93b1245fa5fe216591957aa6bec600303df50176832bc8f4dc0592e1791e22c",
+    "source_attempt_index": 2,
+    "source_classification": "SCHEMA_OR_SHAPE_NONEXACTNESS"
+  },
+  "margin_land_mask_source_key": "land_mask",
+  "margin_native_serialization": {
+    "arrays": {
+      "annual_pet_mm_yr": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "annual_precipitation_mm_yr": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "annual_temperature_c": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "coldest_month_temperature_c": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "driest_month_precipitation_mm": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "dry_month_count": {
+        "dtype": "uint8",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "frost_month_count": {
+        "dtype": "uint8",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "itcz_latitude_by_month_deg": {
+        "dtype": "float32",
+        "shape": [
+          12
+        ]
+      },
+      "lat": {
+        "dtype": "float64",
+        "shape": [
+          720
+        ]
+      },
+      "lon": {
+        "dtype": "float64",
+        "shape": [
+          1440
+        ]
+      },
+      "monthly_pet_mm": {
+        "dtype": "float32",
+        "shape": [
+          12,
+          720,
+          1440
+        ]
+      },
+      "monthly_precipitation_mm": {
+        "dtype": "float32",
+        "shape": [
+          12,
+          720,
+          1440
+        ]
+      },
+      "monthly_temperature_c": {
+        "dtype": "float32",
+        "shape": [
+          12,
+          720,
+          1440
+        ]
+      },
+      "precipitation_seasonality_cv": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "resolution_deg": {
+        "dtype": "float64",
+        "shape": []
+      },
+      "temperature_annual_range_c": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "warmest_month_temperature_c": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      },
+      "wettest_month_precipitation_mm": {
+        "dtype": "float32",
+        "shape": [
+          720,
+          1440
+        ]
+      }
+    },
+    "keys": [
+      "annual_pet_mm_yr",
+      "annual_precipitation_mm_yr",
+      "annual_temperature_c",
+      "coldest_month_temperature_c",
+      "driest_month_precipitation_mm",
+      "dry_month_count",
+      "frost_month_count",
+      "itcz_latitude_by_month_deg",
+      "lat",
+      "lon",
+      "monthly_pet_mm",
+      "monthly_precipitation_mm",
+      "monthly_temperature_c",
+      "precipitation_seasonality_cv",
+      "resolution_deg",
+      "temperature_annual_range_c",
+      "warmest_month_temperature_c",
+      "wettest_month_precipitation_mm"
+    ],
+    "path": "C:\\Users\\jose_\\AppData\\Local\\Temp\\arcana_r517_b6_d2d4_x4kxz93d\\seasonal_climate_state.npz",
+    "save_npz_signature": "(path)",
+    "sha256": "9f40e58aaedd79812e2f05dcd99daac873740e513a7f6f9a6c99107ac89c5fbd",
+    "state_type": "arcana_worldsim.finalization.seasonal.SeasonalClimateState"
+  },
+  "next_if_pass": "R5.17-B6-D3_CANONICAL_PALEOHYDROLOGY_REPLAY_IMPLEMENTATION",
+  "prerequisites_satisfied": true,
+  "purpose": "Resolve the remaining serialized F replay discrepancy using exact float32 ULP distance rather than arbitrary absolute/relative tolerances; reconstruct I only if the hydrology-consumed interface is within the strict cross-runtime equivalence bound.",
+  "reconstructed_baseline": null,
+  "runtime": {
+    "numpy_version": "2.4.3",
+    "python_executable": "C:\\Users\\jose_\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "python_version": "3.11.15"
+  },
+  "runtime_provenance_hits": [
+    {
+      "hits": [
+        "numpy>=1.24"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\pyproject.toml",
+      "sha256": "76ef033a5d283c74d735da1d3273095a0859b445580c8c738f3daf8a7da06091"
+    }
+  ],
+  "runtime_ulp_equivalence_authorized": false,
+  "schema": "ARCANA_R5_17_B6_D2D4_FLOAT32_ULP_EQUIVALENCE_AND_I_RECONSTRUCTION_V1",
+  "selected_generator": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py",
+  "selected_generator_sha256": "3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2",
+  "stage": "v0.6D1-R5.17",
+  "status": "BLOCKED_R517_B6_D2D4_HYDROLOGY_ULP_EQUIVALENCE_NOT_PROVED",
+  "subphase": "R5.17-B6-D2D4"
+}

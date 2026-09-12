@@ -1,0 +1,2287 @@
+{
+  "attempt_diagnostics": [
+    {
+      "attempt_index": 0,
+      "baseline_kind": "physical_finalization",
+      "baseline_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\physical_finalization\\seasonal_climate_state.npz",
+      "baseline_sha256": "347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f",
+      "coast_candidate_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\physical_finalization\\coast_ocean_state.npz",
+      "coast_candidate_sha256": "0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4",
+      "diagnostics": {
+        "all_baseline_schema_keys_present_in_state": false,
+        "classification": "SCHEMA_OR_SHAPE_NONEXACTNESS",
+        "fields": [
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_pet_mm_yr",
+            "max_abs_difference": 0.0003662109375,
+            "mean_abs_difference": 4.2967046668500075e-05,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_precipitation_mm_yr",
+            "max_abs_difference": 0.0010377349663031055,
+            "mean_abs_difference": 3.6602700958780636e-05,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_temperature_c",
+            "max_abs_difference": 5.8809916190227796e-06,
+            "mean_abs_difference": 6.349162216963584e-07,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": true,
+            "field": "coldest_month_temperature_c",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "driest_month_precipitation_mm",
+            "max_abs_difference": 8.017480013222666e-09,
+            "mean_abs_difference": 8.896877139271459e-10,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "dry_month_count",
+            "max_abs_difference": 12.0,
+            "mean_abs_difference": 1.2246132330246913,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": true,
+            "field": "frost_month_count",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12
+            ],
+            "exact_array_equal": true,
+            "field": "itcz_latitude_by_month_deg",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              12
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lat",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lon",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": true,
+            "field": "monthly_pet_mm",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_precipitation_mm",
+            "max_abs_difference": 1.704768237686949e-08,
+            "mean_abs_difference": 1.3366941398865624e-09,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": true,
+            "field": "monthly_temperature_c",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "precipitation_seasonality_cv",
+            "max_abs_difference": 0.004359813356926701,
+            "mean_abs_difference": 9.222552516389397e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "resolution_deg",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "temperature_annual_range_c",
+            "max_abs_difference": 9.5367431640625e-07,
+            "mean_abs_difference": 5.3491825978841723e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": true,
+            "field": "warmest_month_temperature_c",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "wettest_month_precipitation_mm",
+            "max_abs_difference": 1.704768237686949e-08,
+            "mean_abs_difference": 1.969987482116809e-09,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          }
+        ],
+        "max_abs_difference_any_field": 12.0,
+        "max_abs_difference_required_fields": 1.704768237686949e-08,
+        "missing_fields": [
+          "lat",
+          "lon",
+          "resolution_deg"
+        ],
+        "nonexact_fields": [
+          "annual_pet_mm_yr",
+          "annual_precipitation_mm_yr",
+          "annual_temperature_c",
+          "driest_month_precipitation_mm",
+          "dry_month_count",
+          "monthly_precipitation_mm",
+          "precipitation_seasonality_cv",
+          "temperature_annual_range_c",
+          "wettest_month_precipitation_mm"
+        ],
+        "required_fields_exact": false,
+        "required_nonexact_fields": [
+          "monthly_precipitation_mm"
+        ],
+        "schema_key_set_exact": false,
+        "shape_mismatch_fields": []
+      },
+      "execution_error": null,
+      "land_mask_source_key": "land_mask",
+      "stage_aligned_pair": true,
+      "status": "NON_EXACT_REPLAY"
+    },
+    {
+      "attempt_index": 1,
+      "baseline_kind": "physical_finalization",
+      "baseline_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\physical_finalization\\seasonal_climate_state.npz",
+      "baseline_sha256": "347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f",
+      "coast_candidate_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\margin_state.npz",
+      "coast_candidate_sha256": "e93b1245fa5fe216591957aa6bec600303df50176832bc8f4dc0592e1791e22c",
+      "diagnostics": {
+        "all_baseline_schema_keys_present_in_state": false,
+        "classification": "SCHEMA_OR_SHAPE_NONEXACTNESS",
+        "fields": [
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_pet_mm_yr",
+            "max_abs_difference": 334.5095745021338,
+            "mean_abs_difference": 1.0806877481949417,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_precipitation_mm_yr",
+            "max_abs_difference": 97.7933321835435,
+            "mean_abs_difference": 1.0786265030577182,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_temperature_c",
+            "max_abs_difference": 44.658601351038605,
+            "mean_abs_difference": 0.09934033870884976,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "coldest_month_temperature_c",
+            "max_abs_difference": 44.6586,
+            "mean_abs_difference": 0.09933974533007077,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "driest_month_precipitation_mm",
+            "max_abs_difference": 4.648544451388318,
+            "mean_abs_difference": 0.059294500745221954,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "dry_month_count",
+            "max_abs_difference": 12.0,
+            "mean_abs_difference": 1.2264525462962963,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "frost_month_count",
+            "max_abs_difference": 12.0,
+            "mean_abs_difference": 0.02489969135802469,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12
+            ],
+            "exact_array_equal": true,
+            "field": "itcz_latitude_by_month_deg",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              12
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lat",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lon",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_pet_mm",
+            "max_abs_difference": 29.336847126097666,
+            "mean_abs_difference": 0.09005394400025901,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_precipitation_mm",
+            "max_abs_difference": 11.125177554285983,
+            "mean_abs_difference": 0.0898855374915717,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_temperature_c",
+            "max_abs_difference": 44.6586,
+            "mean_abs_difference": 0.09933974533007078,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "precipitation_seasonality_cv",
+            "max_abs_difference": 0.004359813356926673,
+            "mean_abs_difference": 9.222552516434212e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "resolution_deg",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "temperature_annual_range_c",
+            "max_abs_difference": 9.536743199589637e-07,
+            "mean_abs_difference": 5.349182599333031e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "warmest_month_temperature_c",
+            "max_abs_difference": 44.6586,
+            "mean_abs_difference": 0.09933974533007077,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "wettest_month_precipitation_mm",
+            "max_abs_difference": 11.125177554285983,
+            "mean_abs_difference": 0.13543122587492515,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          }
+        ],
+        "max_abs_difference_any_field": 334.5095745021338,
+        "max_abs_difference_required_fields": 44.6586,
+        "missing_fields": [
+          "lat",
+          "lon",
+          "resolution_deg"
+        ],
+        "nonexact_fields": [
+          "annual_pet_mm_yr",
+          "annual_precipitation_mm_yr",
+          "annual_temperature_c",
+          "coldest_month_temperature_c",
+          "driest_month_precipitation_mm",
+          "dry_month_count",
+          "frost_month_count",
+          "monthly_pet_mm",
+          "monthly_precipitation_mm",
+          "monthly_temperature_c",
+          "precipitation_seasonality_cv",
+          "temperature_annual_range_c",
+          "warmest_month_temperature_c",
+          "wettest_month_precipitation_mm"
+        ],
+        "required_fields_exact": false,
+        "required_nonexact_fields": [
+          "monthly_pet_mm",
+          "monthly_precipitation_mm",
+          "monthly_temperature_c"
+        ],
+        "schema_key_set_exact": false,
+        "shape_mismatch_fields": []
+      },
+      "execution_error": null,
+      "land_mask_source_key": "land_mask",
+      "stage_aligned_pair": false,
+      "status": "NON_EXACT_REPLAY"
+    },
+    {
+      "attempt_index": 2,
+      "baseline_kind": "margin_morphogenesis",
+      "baseline_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\seasonal_climate_state.npz",
+      "baseline_sha256": "1b32d97a0b4dad12f01f4c286461d6ca597c2d46a390a8801771735d972d93f6",
+      "coast_candidate_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\margin_state.npz",
+      "coast_candidate_sha256": "e93b1245fa5fe216591957aa6bec600303df50176832bc8f4dc0592e1791e22c",
+      "diagnostics": {
+        "all_baseline_schema_keys_present_in_state": false,
+        "classification": "SCHEMA_OR_SHAPE_NONEXACTNESS",
+        "fields": [
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_pet_mm_yr",
+            "max_abs_difference": 9.918212890625e-05,
+            "mean_abs_difference": 2.0782427436588825e-05,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_precipitation_mm_yr",
+            "max_abs_difference": 0.00024357391612284118,
+            "mean_abs_difference": 1.587081123987053e-05,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_temperature_c",
+            "max_abs_difference": 2.86102294921875e-06,
+            "mean_abs_difference": 3.02788360144655e-07,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "coldest_month_temperature_c",
+            "max_abs_difference": 3.311157229290984e-06,
+            "mean_abs_difference": 8.322789472837638e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "driest_month_precipitation_mm",
+            "max_abs_difference": 1.5252628031703352e-05,
+            "mean_abs_difference": 8.920777016551626e-07,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": true,
+            "field": "dry_month_count",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": true,
+            "field": "frost_month_count",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12
+            ],
+            "exact_array_equal": true,
+            "field": "itcz_latitude_by_month_deg",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              12
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lat",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lon",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_pet_mm",
+            "max_abs_difference": 9.381547585007866e-06,
+            "mean_abs_difference": 9.732972157208108e-08,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_precipitation_mm",
+            "max_abs_difference": 3.047727807370393e-05,
+            "mean_abs_difference": 1.3610425470204343e-06,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_temperature_c",
+            "max_abs_difference": 3.311157229290984e-06,
+            "mean_abs_difference": 8.118164941623652e-08,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "precipitation_seasonality_cv",
+            "max_abs_difference": 2.97995671472151e-08,
+            "mean_abs_difference": 4.7599067690688046e-09,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "resolution_deg",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "temperature_annual_range_c",
+            "max_abs_difference": 9.536743199589637e-07,
+            "mean_abs_difference": 5.349182599314441e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "warmest_month_temperature_c",
+            "max_abs_difference": 2.7923584013933578e-06,
+            "mean_abs_difference": 7.948388720356131e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "wettest_month_precipitation_mm",
+            "max_abs_difference": 3.047494328711764e-05,
+            "mean_abs_difference": 2.0319594494736303e-06,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          }
+        ],
+        "max_abs_difference_any_field": 0.00024357391612284118,
+        "max_abs_difference_required_fields": 3.047727807370393e-05,
+        "missing_fields": [
+          "lat",
+          "lon",
+          "resolution_deg"
+        ],
+        "nonexact_fields": [
+          "annual_pet_mm_yr",
+          "annual_precipitation_mm_yr",
+          "annual_temperature_c",
+          "coldest_month_temperature_c",
+          "driest_month_precipitation_mm",
+          "monthly_pet_mm",
+          "monthly_precipitation_mm",
+          "monthly_temperature_c",
+          "precipitation_seasonality_cv",
+          "temperature_annual_range_c",
+          "warmest_month_temperature_c",
+          "wettest_month_precipitation_mm"
+        ],
+        "required_fields_exact": false,
+        "required_nonexact_fields": [
+          "monthly_pet_mm",
+          "monthly_precipitation_mm",
+          "monthly_temperature_c"
+        ],
+        "schema_key_set_exact": false,
+        "shape_mismatch_fields": []
+      },
+      "execution_error": null,
+      "land_mask_source_key": "land_mask",
+      "stage_aligned_pair": true,
+      "status": "NON_EXACT_REPLAY"
+    },
+    {
+      "attempt_index": 3,
+      "baseline_kind": "margin_morphogenesis",
+      "baseline_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\seasonal_climate_state.npz",
+      "baseline_sha256": "1b32d97a0b4dad12f01f4c286461d6ca597c2d46a390a8801771735d972d93f6",
+      "coast_candidate_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\physical_finalization\\coast_ocean_state.npz",
+      "coast_candidate_sha256": "0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4",
+      "diagnostics": {
+        "all_baseline_schema_keys_present_in_state": false,
+        "classification": "SCHEMA_OR_SHAPE_NONEXACTNESS",
+        "fields": [
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_pet_mm_yr",
+            "max_abs_difference": 334.5094299316406,
+            "mean_abs_difference": 1.0806669133285314,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_precipitation_mm_yr",
+            "max_abs_difference": 97.79353322842144,
+            "mean_abs_difference": 1.0786264753369785,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "annual_temperature_c",
+            "max_abs_difference": 44.65860176458955,
+            "mean_abs_difference": 0.09934002766468276,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "coldest_month_temperature_c",
+            "max_abs_difference": 44.65860176086426,
+            "mean_abs_difference": 0.09933980319342006,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "driest_month_precipitation_mm",
+            "max_abs_difference": 4.648559563789092,
+            "mean_abs_difference": 0.0592944952848519,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "dry_month_count",
+            "max_abs_difference": 12.0,
+            "mean_abs_difference": 0.024366319444444444,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "uint8",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "frost_month_count",
+            "max_abs_difference": 12.0,
+            "mean_abs_difference": 0.02489969135802469,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "int64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12
+            ],
+            "exact_array_equal": true,
+            "field": "itcz_latitude_by_month_deg",
+            "max_abs_difference": 0.0,
+            "mean_abs_difference": 0.0,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              12
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lat",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "lon",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_pet_mm",
+            "max_abs_difference": 29.33685302734375,
+            "mean_abs_difference": 0.09005394327772374,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_precipitation_mm",
+            "max_abs_difference": 11.125183098123898,
+            "mean_abs_difference": 0.08988553960476056,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              12,
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "monthly_temperature_c",
+            "max_abs_difference": 44.65860188007355,
+            "mean_abs_difference": 0.09933980387882996,
+            "present_in_state": true,
+            "required": true,
+            "state_dtype": "float64",
+            "state_shape": [
+              12,
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "precipitation_seasonality_cv",
+            "max_abs_difference": 2.97995671472151e-08,
+            "mean_abs_difference": 4.7599067690911e-09,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": null,
+            "baseline_shape": null,
+            "exact_array_equal": null,
+            "field": "resolution_deg",
+            "max_abs_difference": null,
+            "mean_abs_difference": null,
+            "present_in_state": false,
+            "required": false,
+            "state_dtype": null,
+            "state_shape": null
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "temperature_annual_range_c",
+            "max_abs_difference": 9.5367431640625e-07,
+            "mean_abs_difference": 5.3491825978841723e-08,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "warmest_month_temperature_c",
+            "max_abs_difference": 44.65860188007355,
+            "mean_abs_difference": 0.09933980453739624,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          },
+          {
+            "baseline_dtype": "float32",
+            "baseline_shape": [
+              720,
+              1440
+            ],
+            "exact_array_equal": false,
+            "field": "wettest_month_precipitation_mm",
+            "max_abs_difference": 11.125183098123898,
+            "mean_abs_difference": 0.1354312316641428,
+            "present_in_state": true,
+            "required": false,
+            "state_dtype": "float64",
+            "state_shape": [
+              720,
+              1440
+            ]
+          }
+        ],
+        "max_abs_difference_any_field": 334.5094299316406,
+        "max_abs_difference_required_fields": 44.65860188007355,
+        "missing_fields": [
+          "lat",
+          "lon",
+          "resolution_deg"
+        ],
+        "nonexact_fields": [
+          "annual_pet_mm_yr",
+          "annual_precipitation_mm_yr",
+          "annual_temperature_c",
+          "coldest_month_temperature_c",
+          "driest_month_precipitation_mm",
+          "dry_month_count",
+          "frost_month_count",
+          "monthly_pet_mm",
+          "monthly_precipitation_mm",
+          "monthly_temperature_c",
+          "precipitation_seasonality_cv",
+          "temperature_annual_range_c",
+          "warmest_month_temperature_c",
+          "wettest_month_precipitation_mm"
+        ],
+        "required_fields_exact": false,
+        "required_nonexact_fields": [
+          "monthly_pet_mm",
+          "monthly_precipitation_mm",
+          "monthly_temperature_c"
+        ],
+        "schema_key_set_exact": false,
+        "shape_mismatch_fields": []
+      },
+      "execution_error": null,
+      "land_mask_source_key": "land_mask",
+      "stage_aligned_pair": false,
+      "status": "NON_EXACT_REPLAY"
+    }
+  ],
+  "best_diagnostic_attempt": {
+    "attempt_index": 0,
+    "baseline_kind": "physical_finalization",
+    "baseline_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\physical_finalization\\seasonal_climate_state.npz",
+    "baseline_sha256": "347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f",
+    "coast_candidate_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\physical_finalization\\coast_ocean_state.npz",
+    "coast_candidate_sha256": "0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4",
+    "diagnostics": {
+      "all_baseline_schema_keys_present_in_state": false,
+      "classification": "SCHEMA_OR_SHAPE_NONEXACTNESS",
+      "fields": [
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "annual_pet_mm_yr",
+          "max_abs_difference": 0.0003662109375,
+          "mean_abs_difference": 4.2967046668500075e-05,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "annual_precipitation_mm_yr",
+          "max_abs_difference": 0.0010377349663031055,
+          "mean_abs_difference": 3.6602700958780636e-05,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "annual_temperature_c",
+          "max_abs_difference": 5.8809916190227796e-06,
+          "mean_abs_difference": 6.349162216963584e-07,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": true,
+          "field": "coldest_month_temperature_c",
+          "max_abs_difference": 0.0,
+          "mean_abs_difference": 0.0,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "driest_month_precipitation_mm",
+          "max_abs_difference": 8.017480013222666e-09,
+          "mean_abs_difference": 8.896877139271459e-10,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "uint8",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "dry_month_count",
+          "max_abs_difference": 12.0,
+          "mean_abs_difference": 1.2246132330246913,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "int64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "uint8",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": true,
+          "field": "frost_month_count",
+          "max_abs_difference": 0.0,
+          "mean_abs_difference": 0.0,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "int64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            12
+          ],
+          "exact_array_equal": true,
+          "field": "itcz_latitude_by_month_deg",
+          "max_abs_difference": 0.0,
+          "mean_abs_difference": 0.0,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            12
+          ]
+        },
+        {
+          "baseline_dtype": null,
+          "baseline_shape": null,
+          "exact_array_equal": null,
+          "field": "lat",
+          "max_abs_difference": null,
+          "mean_abs_difference": null,
+          "present_in_state": false,
+          "required": false,
+          "state_dtype": null,
+          "state_shape": null
+        },
+        {
+          "baseline_dtype": null,
+          "baseline_shape": null,
+          "exact_array_equal": null,
+          "field": "lon",
+          "max_abs_difference": null,
+          "mean_abs_difference": null,
+          "present_in_state": false,
+          "required": false,
+          "state_dtype": null,
+          "state_shape": null
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            12,
+            720,
+            1440
+          ],
+          "exact_array_equal": true,
+          "field": "monthly_pet_mm",
+          "max_abs_difference": 0.0,
+          "mean_abs_difference": 0.0,
+          "present_in_state": true,
+          "required": true,
+          "state_dtype": "float64",
+          "state_shape": [
+            12,
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            12,
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "monthly_precipitation_mm",
+          "max_abs_difference": 1.704768237686949e-08,
+          "mean_abs_difference": 1.3366941398865624e-09,
+          "present_in_state": true,
+          "required": true,
+          "state_dtype": "float64",
+          "state_shape": [
+            12,
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            12,
+            720,
+            1440
+          ],
+          "exact_array_equal": true,
+          "field": "monthly_temperature_c",
+          "max_abs_difference": 0.0,
+          "mean_abs_difference": 0.0,
+          "present_in_state": true,
+          "required": true,
+          "state_dtype": "float64",
+          "state_shape": [
+            12,
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "precipitation_seasonality_cv",
+          "max_abs_difference": 0.004359813356926701,
+          "mean_abs_difference": 9.222552516389397e-08,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": null,
+          "baseline_shape": null,
+          "exact_array_equal": null,
+          "field": "resolution_deg",
+          "max_abs_difference": null,
+          "mean_abs_difference": null,
+          "present_in_state": false,
+          "required": false,
+          "state_dtype": null,
+          "state_shape": null
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "temperature_annual_range_c",
+          "max_abs_difference": 9.5367431640625e-07,
+          "mean_abs_difference": 5.3491825978841723e-08,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": true,
+          "field": "warmest_month_temperature_c",
+          "max_abs_difference": 0.0,
+          "mean_abs_difference": 0.0,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        },
+        {
+          "baseline_dtype": "float32",
+          "baseline_shape": [
+            720,
+            1440
+          ],
+          "exact_array_equal": false,
+          "field": "wettest_month_precipitation_mm",
+          "max_abs_difference": 1.704768237686949e-08,
+          "mean_abs_difference": 1.969987482116809e-09,
+          "present_in_state": true,
+          "required": false,
+          "state_dtype": "float64",
+          "state_shape": [
+            720,
+            1440
+          ]
+        }
+      ],
+      "max_abs_difference_any_field": 12.0,
+      "max_abs_difference_required_fields": 1.704768237686949e-08,
+      "missing_fields": [
+        "lat",
+        "lon",
+        "resolution_deg"
+      ],
+      "nonexact_fields": [
+        "annual_pet_mm_yr",
+        "annual_precipitation_mm_yr",
+        "annual_temperature_c",
+        "driest_month_precipitation_mm",
+        "dry_month_count",
+        "monthly_precipitation_mm",
+        "precipitation_seasonality_cv",
+        "temperature_annual_range_c",
+        "wettest_month_precipitation_mm"
+      ],
+      "required_fields_exact": false,
+      "required_nonexact_fields": [
+        "monthly_precipitation_mm"
+      ],
+      "schema_key_set_exact": false,
+      "shape_mismatch_fields": []
+    },
+    "execution_error": null,
+    "land_mask_source_key": "land_mask",
+    "stage_aligned_pair": true,
+    "status": "NON_EXACT_REPLAY"
+  },
+  "canonical_mutation": false,
+  "classifications_present": [
+    "SCHEMA_OR_SHAPE_NONEXACTNESS"
+  ],
+  "d2d_json": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D2D_SEASONAL_GENERATOR_REPLAY_AND_I_RECONSTRUCTION.json",
+  "d2d_json_sha256": "87f8eadcfd3933ff99ce282bf13f5be08527f335c3121d486b3b1355e76d3b7a",
+  "d2d_status": "BLOCKED_R517_B6_D2D_NO_EXACT_F_REPLAY_FIXTURE_VALIDATED",
+  "decision": "ADJUDICATE_STAGE_ALIGNED_FIXTURE_AND_NUMERIC_DIFFERENCE_WITHOUT_TOLERANCE_PROMOTION",
+  "exact_attempt_count": 0,
+  "external_provider_authorized": false,
+  "generator_inspection": {
+    "found": true,
+    "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py",
+    "project_root_reference_count_in_function_ast": 1,
+    "relevant_lines": [
+      {
+        "line": 77,
+        "text": "def build_seasonal_climate(project_root, coast_state):"
+      },
+      {
+        "line": 78,
+        "text": "    root = Path(project_root)"
+      },
+      {
+        "line": 79,
+        "text": "    base = np.load("
+      },
+      {
+        "line": 82,
+        "text": "    old_coast = np.load("
+      },
+      {
+        "line": 88,
+        "text": "    new_z = np.asarray(coast_state.elevation_m, dtype=float)"
+      },
+      {
+        "line": 89,
+        "text": "    new_land = np.asarray(coast_state.land_mask, dtype=bool)"
+      },
+      {
+        "line": 95,
+        "text": "    mt = np.asarray(base[\"monthly_temperature_c\"], dtype=float).copy()"
+      },
+      {
+        "line": 96,
+        "text": "    mp = np.asarray(base[\"monthly_precipitation_mm\"], dtype=float).copy()"
+      },
+      {
+        "line": 97,
+        "text": "    mpet = np.asarray(base[\"monthly_pet_mm\"], dtype=float).copy()"
+      },
+      {
+        "line": 103,
+        "text": "    # Preserve the E seasonal precipitation fingerprint while changing the"
+      },
+      {
+        "line": 111,
+        "text": "    # Normalize global annual precipitation to ~990 mm/yr area-weighted."
+      },
+      {
+        "line": 118,
+        "text": "    # PET follows the temperature perturbation mildly, preserving E seasonality."
+      },
+      {
+        "line": 119,
+        "text": "    pet_factor = np.exp(np.clip(0.018 * dt, -0.18, 0.18))"
+      },
+      {
+        "line": 120,
+        "text": "    mpet *= pet_factor[None,:,:]"
+      },
+      {
+        "line": 121,
+        "text": "    mpet = np.maximum(mpet, 0.1)"
+      },
+      {
+        "line": 125,
+        "text": "    annual_pet = mpet.sum(axis=0)"
+      },
+      {
+        "line": 134,
+        "text": "    # Dry month: P < 2*T for positive-temperature months, otherwise P<20 mm."
+      },
+      {
+        "line": 139,
+        "text": "    return SeasonalClimateState("
+      },
+      {
+        "line": 140,
+        "text": "        annual_temperature_c=annual_t,"
+      },
+      {
+        "line": 141,
+        "text": "        annual_precipitation_mm_yr=annual_p,"
+      },
+      {
+        "line": 142,
+        "text": "        annual_pet_mm_yr=annual_pet,"
+      },
+      {
+        "line": 143,
+        "text": "        monthly_temperature_c=mt,"
+      },
+      {
+        "line": 144,
+        "text": "        monthly_precipitation_mm=mp,"
+      },
+      {
+        "line": 145,
+        "text": "        monthly_pet_mm=mpet,"
+      },
+      {
+        "line": 146,
+        "text": "        warmest_month_temperature_c=warm,"
+      },
+      {
+        "line": 147,
+        "text": "        coldest_month_temperature_c=cold,"
+      },
+      {
+        "line": 148,
+        "text": "        wettest_month_precipitation_mm=wet,"
+      },
+      {
+        "line": 149,
+        "text": "        driest_month_precipitation_mm=dry,"
+      },
+      {
+        "line": 150,
+        "text": "        precipitation_seasonality_cv=cv,"
+      },
+      {
+        "line": 151,
+        "text": "        temperature_annual_range_c=trange,"
+      }
+    ],
+    "sha256": "3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2",
+    "signature": "def build_seasonal_climate(project_root, coast_state):"
+  },
+  "historical_pairing_evidence": [
+    {
+      "hits": [
+        {
+          "excerpt": "8:     \"byte-preserved v0.5.5E numerical parent NPZ files\",\n9:     \"recorded v0.5.5F model contract and implementation decisions\"\n10:   ],\n11:   \"parent_sha256\": {\n12:     \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\": \"0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4\",\n13:     \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\": \"347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f\",\n14:     \"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\": \"61fadf3c7098331bb00430eae439684cafe024cc388f834e5851673955e6458b\",\n15:     \"outputs/hybrid1/physical_finalization/final_georesource_state.npz\": \"2d1109c09410e1a5c8ee2bac51e5aab4af115e5e79db1e70a9876549c12c077e\"\n16:   },",
+          "line": 12,
+          "terms": [
+            "coast_ocean_state.npz",
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "9:     \"recorded v0.5.5F model contract and implementation decisions\"\n10:   ],\n11:   \"parent_sha256\": {\n12:     \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\": \"0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4\",\n13:     \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\": \"347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f\",\n14:     \"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\": \"61fadf3c7098331bb00430eae439684cafe024cc388f834e5851673955e6458b\",\n15:     \"outputs/hybrid1/physical_finalization/final_georesource_state.npz\": \"2d1109c09410e1a5c8ee2bac51e5aab4af115e5e79db1e70a9876549c12c077e\"\n16:   },\n17:   \"outputs\": {",
+          "line": 13,
+          "terms": [
+            "seasonal_climate_state.npz",
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "10:   ],\n11:   \"parent_sha256\": {\n12:     \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\": \"0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4\",\n13:     \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\": \"347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f\",\n14:     \"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\": \"61fadf3c7098331bb00430eae439684cafe024cc388f834e5851673955e6458b\",\n15:     \"outputs/hybrid1/physical_finalization/final_georesource_state.npz\": \"2d1109c09410e1a5c8ee2bac51e5aab4af115e5e79db1e70a9876549c12c077e\"\n16:   },\n17:   \"outputs\": {\n18:     \"margin_state\": \"margin_state.npz\",",
+          "line": 14,
+          "terms": [
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "11:   \"parent_sha256\": {\n12:     \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\": \"0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4\",\n13:     \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\": \"347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f\",\n14:     \"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\": \"61fadf3c7098331bb00430eae439684cafe024cc388f834e5851673955e6458b\",\n15:     \"outputs/hybrid1/physical_finalization/final_georesource_state.npz\": \"2d1109c09410e1a5c8ee2bac51e5aab4af115e5e79db1e70a9876549c12c077e\"\n16:   },\n17:   \"outputs\": {\n18:     \"margin_state\": \"margin_state.npz\",\n19:     \"seasonal_climate\": \"seasonal_climate_state.npz\",",
+          "line": 15,
+          "terms": [
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "14:     \"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\": \"61fadf3c7098331bb00430eae439684cafe024cc388f834e5851673955e6458b\",\n15:     \"outputs/hybrid1/physical_finalization/final_georesource_state.npz\": \"2d1109c09410e1a5c8ee2bac51e5aab4af115e5e79db1e70a9876549c12c077e\"\n16:   },\n17:   \"outputs\": {\n18:     \"margin_state\": \"margin_state.npz\",\n19:     \"seasonal_climate\": \"seasonal_climate_state.npz\",\n20:     \"channel_hydrology\": \"channel_hydrology_state.npz\",\n21:     \"georesource\": \"final_georesource_state.npz\",\n22:     \"audit\": \"margin_morphogenesis_audit.json\"",
+          "line": 18,
+          "terms": [
+            "margin_state.npz"
+          ]
+        },
+        {
+          "excerpt": "15:     \"outputs/hybrid1/physical_finalization/final_georesource_state.npz\": \"2d1109c09410e1a5c8ee2bac51e5aab4af115e5e79db1e70a9876549c12c077e\"\n16:   },\n17:   \"outputs\": {\n18:     \"margin_state\": \"margin_state.npz\",\n19:     \"seasonal_climate\": \"seasonal_climate_state.npz\",\n20:     \"channel_hydrology\": \"channel_hydrology_state.npz\",\n21:     \"georesource\": \"final_georesource_state.npz\",\n22:     \"audit\": \"margin_morphogenesis_audit.json\"\n23:   }",
+          "line": 19,
+          "terms": [
+            "seasonal_climate_state.npz"
+          ]
+        },
+        {
+          "excerpt": "18:     \"margin_state\": \"margin_state.npz\",\n19:     \"seasonal_climate\": \"seasonal_climate_state.npz\",\n20:     \"channel_hydrology\": \"channel_hydrology_state.npz\",\n21:     \"georesource\": \"final_georesource_state.npz\",\n22:     \"audit\": \"margin_morphogenesis_audit.json\"\n23:   }\n24: }",
+          "line": 22,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        }
+      ],
+      "matched_coast_names": [
+        "coast_ocean_state.npz",
+        "margin_state.npz"
+      ],
+      "matched_stage_terms": [
+        "margin_morphogenesis",
+        "physical_finalization"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\margin_morphogenesis_manifest.json",
+      "sha256": "f1cae7252ca633afb32d95913cea601371d7096334d075fa9e4945131a549f28"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "8:       \"sha256\": \"5323b9c16b50e3ef3272de179cb83941fccfaf532dba4c13c0ed4366021d63e3\",\n9:       \"integrity\": \"intact\"\n10:     },\n11:     \"v0_5_5E_preserved_numerical_parents\": {\n12:       \"coast_ocean_state.npz\": {\n13:         \"bytes\": 5625863,\n14:         \"sha256\": \"0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4\"\n15:       },\n16:       \"seasonal_climate_state.npz\": {",
+          "line": 12,
+          "terms": [
+            "coast_ocean_state.npz"
+          ]
+        },
+        {
+          "excerpt": "12:       \"coast_ocean_state.npz\": {\n13:         \"bytes\": 5625863,\n14:         \"sha256\": \"0431ca1d495fd344dcdfbd55c6f707349abeb9be9269f00c6ff247716074d5e4\"\n15:       },\n16:       \"seasonal_climate_state.npz\": {\n17:         \"bytes\": 78186401,\n18:         \"sha256\": \"347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f\"\n19:       },\n20:       \"channel_hydrology_state.npz\": {",
+          "line": 16,
+          "terms": [
+            "seasonal_climate_state.npz"
+          ]
+        }
+      ],
+      "matched_coast_names": [
+        "coast_ocean_state.npz"
+      ],
+      "matched_stage_terms": [],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\recovery_provenance.json",
+      "sha256": "7003a4b7316f10a93a2db480937860da965c6015891bf355ce705027ee1f873e"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "505: \n506: # 14. Authoritative v0.5.5E outputs\n507: \n508: ```text\n509: outputs/hybrid1/physical_finalization/\n510: \n511:   coast_ocean_state.npz\n512:   seasonal_climate_state.npz\n513:   channel_hydrology_state.npz",
+          "line": 509,
+          "terms": [
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "507: \n508: ```text\n509: outputs/hybrid1/physical_finalization/\n510: \n511:   coast_ocean_state.npz\n512:   seasonal_climate_state.npz\n513:   channel_hydrology_state.npz\n514:   final_georesource_state.npz\n515: ",
+          "line": 511,
+          "terms": [
+            "coast_ocean_state.npz"
+          ]
+        },
+        {
+          "excerpt": "508: ```text\n509: outputs/hybrid1/physical_finalization/\n510: \n511:   coast_ocean_state.npz\n512:   seasonal_climate_state.npz\n513:   channel_hydrology_state.npz\n514:   final_georesource_state.npz\n515: \n516:   physical_finalization_audit.json",
+          "line": 512,
+          "terms": [
+            "seasonal_climate_state.npz"
+          ]
+        },
+        {
+          "excerpt": "512:   seasonal_climate_state.npz\n513:   channel_hydrology_state.npz\n514:   final_georesource_state.npz\n515: \n516:   physical_finalization_audit.json\n517:   physical_finalization_manifest.json\n518: \n519:   maps/\n520: ```",
+          "line": 516,
+          "terms": [
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "513:   channel_hydrology_state.npz\n514:   final_georesource_state.npz\n515: \n516:   physical_finalization_audit.json\n517:   physical_finalization_manifest.json\n518: \n519:   maps/\n520: ```\n521: ",
+          "line": 517,
+          "terms": [
+            "physical_finalization"
+          ]
+        }
+      ],
+      "matched_coast_names": [
+        "coast_ocean_state.npz"
+      ],
+      "matched_stage_terms": [
+        "physical_finalization"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\recovery_parent_v0_5_5E\\README.md",
+      "sha256": "3274180984e6c66fed5217713369f243ff170413cb8e61d01e9d9a146a0e0d7f"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "2: import argparse, json, hashlib\n3: from pathlib import Path\n4: \n5: from arcana_worldsim.finalization import (\n6:     build_seasonal_climate, build_channel_hydrology, finalize_resource_coast_patch\n7: )\n8: from arcana_worldsim.morphogenesis import (\n9:     build_margin_morphogenesis, audit_margin_morphogenesis\n10: )",
+          "line": 6,
+          "terms": [
+            "build_seasonal_climate"
+          ]
+        },
+        {
+          "excerpt": "5: from arcana_worldsim.finalization import (\n6:     build_seasonal_climate, build_channel_hydrology, finalize_resource_coast_patch\n7: )\n8: from arcana_worldsim.morphogenesis import (\n9:     build_margin_morphogenesis, audit_margin_morphogenesis\n10: )\n11: \n12: def sha256(path):\n13:     h=hashlib.sha256()",
+          "line": 9,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        },
+        {
+          "excerpt": "17: \n18: def main():\n19:     ap=argparse.ArgumentParser()\n20:     ap.add_argument(\"--project-root\",default=\".\")\n21:     ap.add_argument(\"--out\",default=\"outputs/hybrid1/margin_morphogenesis\")\n22:     ap.add_argument(\"--seed\",type=int,default=917231)\n23:     args=ap.parse_args()\n24:     root=Path(args.project_root).resolve();out=root/args.out\n25:     out.mkdir(parents=True,exist_ok=True)",
+          "line": 21,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        },
+        {
+          "excerpt": "23:     args=ap.parse_args()\n24:     root=Path(args.project_root).resolve();out=root/args.out\n25:     out.mkdir(parents=True,exist_ok=True)\n26: \n27:     margin=build_margin_morphogenesis(root,args.seed);margin.save_npz(out/\"margin_state.npz\")\n28:     seasonal=build_seasonal_climate(root,margin);seasonal.save_npz(out/\"seasonal_climate_state.npz\")\n29:     hydro=build_channel_hydrology(root,margin,seasonal);hydro.save_npz(out/\"channel_hydrology_state.npz\")\n30:     resources=finalize_resource_coast_patch(root,margin);resources.save_npz(out/\"final_georesource_state.npz\")\n31:     audit=audit_margin_morphogenesis(root,margin,seasonal,hydro,resources)",
+          "line": 27,
+          "terms": [
+            "margin_state.npz",
+            "margin_morphogenesis"
+          ]
+        },
+        {
+          "excerpt": "24:     root=Path(args.project_root).resolve();out=root/args.out\n25:     out.mkdir(parents=True,exist_ok=True)\n26: \n27:     margin=build_margin_morphogenesis(root,args.seed);margin.save_npz(out/\"margin_state.npz\")\n28:     seasonal=build_seasonal_climate(root,margin);seasonal.save_npz(out/\"seasonal_climate_state.npz\")\n29:     hydro=build_channel_hydrology(root,margin,seasonal);hydro.save_npz(out/\"channel_hydrology_state.npz\")\n30:     resources=finalize_resource_coast_patch(root,margin);resources.save_npz(out/\"final_georesource_state.npz\")\n31:     audit=audit_margin_morphogenesis(root,margin,seasonal,hydro,resources)\n32:     (out/\"margin_morphogenesis_audit.json\").write_text(json.dumps(audit,indent=2),encoding=\"utf-8\")",
+          "line": 28,
+          "terms": [
+            "seasonal_climate_state.npz",
+            "build_seasonal_climate"
+          ]
+        },
+        {
+          "excerpt": "27:     margin=build_margin_morphogenesis(root,args.seed);margin.save_npz(out/\"margin_state.npz\")\n28:     seasonal=build_seasonal_climate(root,margin);seasonal.save_npz(out/\"seasonal_climate_state.npz\")\n29:     hydro=build_channel_hydrology(root,margin,seasonal);hydro.save_npz(out/\"channel_hydrology_state.npz\")\n30:     resources=finalize_resource_coast_patch(root,margin);resources.save_npz(out/\"final_georesource_state.npz\")\n31:     audit=audit_margin_morphogenesis(root,margin,seasonal,hydro,resources)\n32:     (out/\"margin_morphogenesis_audit.json\").write_text(json.dumps(audit,indent=2),encoding=\"utf-8\")\n33: \n34:     parents=[\n35:         root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\",",
+          "line": 31,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        },
+        {
+          "excerpt": "28:     seasonal=build_seasonal_climate(root,margin);seasonal.save_npz(out/\"seasonal_climate_state.npz\")\n29:     hydro=build_channel_hydrology(root,margin,seasonal);hydro.save_npz(out/\"channel_hydrology_state.npz\")\n30:     resources=finalize_resource_coast_patch(root,margin);resources.save_npz(out/\"final_georesource_state.npz\")\n31:     audit=audit_margin_morphogenesis(root,margin,seasonal,hydro,resources)\n32:     (out/\"margin_morphogenesis_audit.json\").write_text(json.dumps(audit,indent=2),encoding=\"utf-8\")\n33: \n34:     parents=[\n35:         root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\",\n36:         root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\",",
+          "line": 32,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        },
+        {
+          "excerpt": "31:     audit=audit_margin_morphogenesis(root,margin,seasonal,hydro,resources)\n32:     (out/\"margin_morphogenesis_audit.json\").write_text(json.dumps(audit,indent=2),encoding=\"utf-8\")\n33: \n34:     parents=[\n35:         root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\",\n36:         root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\",\n37:         root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\",\n38:         root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\",\n39:     ]",
+          "line": 35,
+          "terms": [
+            "coast_ocean_state.npz",
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "32:     (out/\"margin_morphogenesis_audit.json\").write_text(json.dumps(audit,indent=2),encoding=\"utf-8\")\n33: \n34:     parents=[\n35:         root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\",\n36:         root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\",\n37:         root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\",\n38:         root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\",\n39:     ]\n40:     manifest={",
+          "line": 36,
+          "terms": [
+            "seasonal_climate_state.npz",
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "33: \n34:     parents=[\n35:         root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\",\n36:         root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\",\n37:         root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\",\n38:         root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\",\n39:     ]\n40:     manifest={\n41:         \"version\":\"0.5.5F-RECOVERED\",",
+          "line": 37,
+          "terms": [
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "34:     parents=[\n35:         root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\",\n36:         root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\",\n37:         root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\",\n38:         root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\",\n39:     ]\n40:     manifest={\n41:         \"version\":\"0.5.5F-RECOVERED\",\n42:         \"status\":audit[\"status\"],",
+          "line": 38,
+          "terms": [
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "48:             \"recorded v0.5.5F model contract and implementation decisions\",\n49:         ],\n50:         \"parent_sha256\":{str(p.relative_to(root)):sha256(p) for p in parents},\n51:         \"outputs\":{\n52:             \"margin_state\":\"margin_state.npz\",\n53:             \"seasonal_climate\":\"seasonal_climate_state.npz\",\n54:             \"channel_hydrology\":\"channel_hydrology_state.npz\",\n55:             \"georesource\":\"final_georesource_state.npz\",\n56:             \"audit\":\"margin_morphogenesis_audit.json\",",
+          "line": 52,
+          "terms": [
+            "margin_state.npz"
+          ]
+        },
+        {
+          "excerpt": "49:         ],\n50:         \"parent_sha256\":{str(p.relative_to(root)):sha256(p) for p in parents},\n51:         \"outputs\":{\n52:             \"margin_state\":\"margin_state.npz\",\n53:             \"seasonal_climate\":\"seasonal_climate_state.npz\",\n54:             \"channel_hydrology\":\"channel_hydrology_state.npz\",\n55:             \"georesource\":\"final_georesource_state.npz\",\n56:             \"audit\":\"margin_morphogenesis_audit.json\",\n57:         }",
+          "line": 53,
+          "terms": [
+            "seasonal_climate_state.npz"
+          ]
+        },
+        {
+          "excerpt": "52:             \"margin_state\":\"margin_state.npz\",\n53:             \"seasonal_climate\":\"seasonal_climate_state.npz\",\n54:             \"channel_hydrology\":\"channel_hydrology_state.npz\",\n55:             \"georesource\":\"final_georesource_state.npz\",\n56:             \"audit\":\"margin_morphogenesis_audit.json\",\n57:         }\n58:     }\n59:     (out/\"margin_morphogenesis_manifest.json\").write_text(json.dumps(manifest,indent=2),encoding=\"utf-8\")\n60:     print(json.dumps({",
+          "line": 56,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        },
+        {
+          "excerpt": "55:             \"georesource\":\"final_georesource_state.npz\",\n56:             \"audit\":\"margin_morphogenesis_audit.json\",\n57:         }\n58:     }\n59:     (out/\"margin_morphogenesis_manifest.json\").write_text(json.dumps(manifest,indent=2),encoding=\"utf-8\")\n60:     print(json.dumps({\n61:         \"status\":audit[\"status\"],\n62:         \"failed\":[k for k,v in audit[\"criteria\"].items() if not v],\n63:         \"metrics\":audit[\"metrics\"],",
+          "line": 59,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        }
+      ],
+      "matched_coast_names": [
+        "coast_ocean_state.npz",
+        "margin_state.npz"
+      ],
+      "matched_stage_terms": [
+        "margin_morphogenesis",
+        "physical_finalization"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\scripts\\run_margin_morphogenesis.py",
+      "sha256": "028f2c4c423a3eabc849cb50804b5e64ab239bb4752540bc14197353fafb3453"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "73:     d = _periodic_distance_to_ocean(land_mask)\n74:     return np.clip(d / 1800.0, 0.0, 1.0)\n75: \n76: \n77: def build_seasonal_climate(project_root, coast_state):\n78:     root = Path(project_root)\n79:     base = np.load(\n80:         root / \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\"\n81:     )",
+          "line": 77,
+          "terms": [
+            "build_seasonal_climate"
+          ]
+        },
+        {
+          "excerpt": "76: \n77: def build_seasonal_climate(project_root, coast_state):\n78:     root = Path(project_root)\n79:     base = np.load(\n80:         root / \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\"\n81:     )\n82:     old_coast = np.load(\n83:         root / \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\"\n84:     )",
+          "line": 80,
+          "terms": [
+            "seasonal_climate_state.npz",
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "79:     base = np.load(\n80:         root / \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\"\n81:     )\n82:     old_coast = np.load(\n83:         root / \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\"\n84:     )\n85: \n86:     old_z = np.asarray(old_coast[\"elevation_m\"], dtype=float)\n87:     old_land = old_coast[\"land_mask\"].astype(bool)",
+          "line": 83,
+          "terms": [
+            "coast_ocean_state.npz",
+            "physical_finalization"
+          ]
+        }
+      ],
+      "matched_coast_names": [
+        "coast_ocean_state.npz"
+      ],
+      "matched_stage_terms": [
+        "physical_finalization"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py",
+      "sha256": "3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "383:     x,residual,override=_parent_close_elevation(x,target_parent,ocean,closed)\n384:     return x,land,owner,ocean,closed,residual,override\n385: \n386: \n387: def build_margin_morphogenesis(project_root,seed=917231):\n388:     root=Path(project_root);grid=_grid()\n389:     e_coast=np.load(root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\")\n390:     e_season=np.load(root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\")\n391:     e_hydro=np.load(root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\")",
+          "line": 387,
+          "terms": [
+            "margin_morphogenesis"
+          ]
+        },
+        {
+          "excerpt": "385: \n386: \n387: def build_margin_morphogenesis(project_root,seed=917231):\n388:     root=Path(project_root);grid=_grid()\n389:     e_coast=np.load(root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\")\n390:     e_season=np.load(root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\")\n391:     e_hydro=np.load(root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\")\n392:     e_res=np.load(root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\")\n393:     d_sc=np.load(root/\"outputs/hybrid1/planetary_consistency/planetary_surface_climate.npz\")",
+          "line": 389,
+          "terms": [
+            "coast_ocean_state.npz",
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "386: \n387: def build_margin_morphogenesis(project_root,seed=917231):\n388:     root=Path(project_root);grid=_grid()\n389:     e_coast=np.load(root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\")\n390:     e_season=np.load(root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\")\n391:     e_hydro=np.load(root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\")\n392:     e_res=np.load(root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\")\n393:     d_sc=np.load(root/\"outputs/hybrid1/planetary_consistency/planetary_surface_climate.npz\")\n394:     surface_g=np.load(root/\"outputs/hybrid1/surface_0Ma/surface_state.npz\")",
+          "line": 390,
+          "terms": [
+            "seasonal_climate_state.npz",
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "387: def build_margin_morphogenesis(project_root,seed=917231):\n388:     root=Path(project_root);grid=_grid()\n389:     e_coast=np.load(root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\")\n390:     e_season=np.load(root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\")\n391:     e_hydro=np.load(root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\")\n392:     e_res=np.load(root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\")\n393:     d_sc=np.load(root/\"outputs/hybrid1/planetary_consistency/planetary_surface_climate.npz\")\n394:     surface_g=np.load(root/\"outputs/hybrid1/surface_0Ma/surface_state.npz\")\n395: ",
+          "line": 391,
+          "terms": [
+            "physical_finalization"
+          ]
+        },
+        {
+          "excerpt": "388:     root=Path(project_root);grid=_grid()\n389:     e_coast=np.load(root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\")\n390:     e_season=np.load(root/\"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\")\n391:     e_hydro=np.load(root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\")\n392:     e_res=np.load(root/\"outputs/hybrid1/physical_finalization/final_georesource_state.npz\")\n393:     d_sc=np.load(root/\"outputs/hybrid1/planetary_consistency/planetary_surface_climate.npz\")\n394:     surface_g=np.load(root/\"outputs/hybrid1/surface_0Ma/surface_state.npz\")\n395: \n396:     z0=np.asarray(e_coast[\"elevation_m\"],dtype=float)",
+          "line": 392,
+          "terms": [
+            "physical_finalization"
+          ]
+        }
+      ],
+      "matched_coast_names": [
+        "coast_ocean_state.npz"
+      ],
+      "matched_stage_terms": [
+        "margin_morphogenesis",
+        "physical_finalization"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\morphogenesis\\margins.py",
+      "sha256": "f8998f2213938eb80a2b414300c2acc6dc298bc5327a6fb081951fde136d7d52"
+    }
+  ],
+  "historical_pairing_evidence_count": 6,
+  "i_reconstruction_authorized": false,
+  "i_reconstruction_materialized": false,
+  "next_if_pass": "R5.17-B6-D2D3_ADJUDICATE_F_REPLAY_DIFFERENCE_OR_HISTORICAL_RUNTIME_BINDING",
+  "purpose": "Diagnose D2D F-era non-exact replay before any tolerance or reconstructed-baseline authorization. Distinguish schema/shape mismatch from numerical divergence and recover historical stage-to-coast pairing evidence.",
+  "ranked_attempt_indices": [
+    0,
+    2,
+    1,
+    3
+  ],
+  "schema": "ARCANA_R5_17_B6_D2D2_F_REPLAY_NONEXACTNESS_DIAGNOSTICS_V1",
+  "search_root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld",
+  "stage": "v0.6D1-R5.17",
+  "stage_aligned_attempt_count": 2,
+  "status": "PASS_R517_B6_D2D2_F_REPLAY_NONEXACTNESS_DIAGNOSTICS_CAPTURED",
+  "subphase": "R5.17-B6-D2D2",
+  "tolerance_authorized": false,
+  "validation_attempt_count": 4
+}

@@ -1,0 +1,1404 @@
+{
+  "canonical_mutation": false,
+  "decision": "RESOLVE_RECONSTRUCTION_INPUT_OR_CONTRACT_GAPS",
+  "exact_generator_recovered": true,
+  "exact_i_shoreline_recovered": true,
+  "external_provider_authorized": false,
+  "freshwater_support_materialized": false,
+  "generator_candidate_count": 1,
+  "generator_candidates": [
+    "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py"
+  ],
+  "generator_contract": {
+    "argument_attribute_usage": {
+      "coast_state": [
+        "elevation_m",
+        "land_mask"
+      ],
+      "project_root": []
+    },
+    "arguments": [
+      "project_root",
+      "coast_state"
+    ],
+    "called_attributes": [
+      "(mp < np.where(mt > 0, 2.0 * np.maximum(mt, 0.0), 20.0)).sum",
+      "(mt < 0.0).sum",
+      "mp.max",
+      "mp.mean",
+      "mp.min",
+      "mp.std",
+      "mp.sum",
+      "mpet.sum",
+      "mt.max",
+      "mt.mean",
+      "mt.min",
+      "np.asarray",
+      "np.asarray(base['monthly_pet_mm'], dtype=float).copy",
+      "np.asarray(base['monthly_precipitation_mm'], dtype=float).copy",
+      "np.asarray(base['monthly_temperature_c'], dtype=float).copy",
+      "np.clip",
+      "np.cos",
+      "np.deg2rad",
+      "np.exp",
+      "np.linspace",
+      "np.load",
+      "np.maximum",
+      "np.sum",
+      "np.where",
+      "old_coast['land_mask'].astype"
+    ],
+    "called_names": [
+      "Path",
+      "SeasonalClimateState",
+      "_continentality",
+      "float",
+      "max"
+    ],
+    "found": true,
+    "function": "build_seasonal_climate",
+    "line_end": 157,
+    "line_start": 77,
+    "local_helper_definitions": {
+      "_continentality": {
+        "line_end": 74,
+        "line_start": 72,
+        "signature": "def _continentality(land_mask):"
+      }
+    },
+    "module_imports": [
+      "from __future__ import annotations",
+      "from dataclasses import dataclass",
+      "from pathlib import Path",
+      "import numpy as np",
+      "from scipy.ndimage import distance_transform_edt"
+    ],
+    "relevant_lines": [
+      {
+        "line": 77,
+        "text": "def build_seasonal_climate(project_root, coast_state):"
+      },
+      {
+        "line": 79,
+        "text": "    base = np.load("
+      },
+      {
+        "line": 80,
+        "text": "        root / \"outputs/hybrid1/physical_finalization/seasonal_climate_state.npz\""
+      },
+      {
+        "line": 82,
+        "text": "    old_coast = np.load("
+      },
+      {
+        "line": 83,
+        "text": "        root / \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\""
+      },
+      {
+        "line": 86,
+        "text": "    old_z = np.asarray(old_coast[\"elevation_m\"], dtype=float)"
+      },
+      {
+        "line": 87,
+        "text": "    old_land = old_coast[\"land_mask\"].astype(bool)"
+      },
+      {
+        "line": 88,
+        "text": "    new_z = np.asarray(coast_state.elevation_m, dtype=float)"
+      },
+      {
+        "line": 89,
+        "text": "    new_land = np.asarray(coast_state.land_mask, dtype=bool)"
+      },
+      {
+        "line": 91,
+        "text": "    old_cont = _continentality(old_land)"
+      },
+      {
+        "line": 92,
+        "text": "    new_cont = _continentality(new_land)"
+      },
+      {
+        "line": 95,
+        "text": "    mt = np.asarray(base[\"monthly_temperature_c\"], dtype=float).copy()"
+      },
+      {
+        "line": 96,
+        "text": "    mp = np.asarray(base[\"monthly_precipitation_mm\"], dtype=float).copy()"
+      },
+      {
+        "line": 97,
+        "text": "    mpet = np.asarray(base[\"monthly_pet_mm\"], dtype=float).copy()"
+      },
+      {
+        "line": 99,
+        "text": "    # Lapse response to changed coast/elevation."
+      },
+      {
+        "line": 103,
+        "text": "    # Preserve the E seasonal precipitation fingerprint while changing the"
+      },
+      {
+        "line": 105,
+        "text": "    # operation because the E monthly state itself survived byte-for-byte."
+      },
+      {
+        "line": 110,
+        "text": "    # New ocean cells do not need terrestrial corrections but retain climate."
+      },
+      {
+        "line": 111,
+        "text": "    # Normalize global annual precipitation to ~990 mm/yr area-weighted."
+      },
+      {
+        "line": 113,
+        "text": "    lat = np.linspace(-89.875,89.875,720)"
+      },
+      {
+        "line": 114,
+        "text": "    w = np.cos(np.deg2rad(lat))[:,None]"
+      },
+      {
+        "line": 118,
+        "text": "    # PET follows the temperature perturbation mildly, preserving E seasonality."
+      },
+      {
+        "line": 119,
+        "text": "    pet_factor = np.exp(np.clip(0.018 * dt, -0.18, 0.18))"
+      },
+      {
+        "line": 120,
+        "text": "    mpet *= pet_factor[None,:,:]"
+      },
+      {
+        "line": 121,
+        "text": "    mpet = np.maximum(mpet, 0.1)"
+      },
+      {
+        "line": 125,
+        "text": "    annual_pet = mpet.sum(axis=0)"
+      },
+      {
+        "line": 134,
+        "text": "    # Dry month: P < 2*T for positive-temperature months, otherwise P<20 mm."
+      },
+      {
+        "line": 139,
+        "text": "    return SeasonalClimateState("
+      },
+      {
+        "line": 140,
+        "text": "        annual_temperature_c=annual_t,"
+      },
+      {
+        "line": 141,
+        "text": "        annual_precipitation_mm_yr=annual_p,"
+      },
+      {
+        "line": 142,
+        "text": "        annual_pet_mm_yr=annual_pet,"
+      },
+      {
+        "line": 143,
+        "text": "        monthly_temperature_c=mt,"
+      },
+      {
+        "line": 144,
+        "text": "        monthly_precipitation_mm=mp,"
+      },
+      {
+        "line": 145,
+        "text": "        monthly_pet_mm=mpet,"
+      },
+      {
+        "line": 146,
+        "text": "        warmest_month_temperature_c=warm,"
+      },
+      {
+        "line": 147,
+        "text": "        coldest_month_temperature_c=cold,"
+      },
+      {
+        "line": 148,
+        "text": "        wettest_month_precipitation_mm=wet,"
+      },
+      {
+        "line": 149,
+        "text": "        driest_month_precipitation_mm=dry,"
+      },
+      {
+        "line": 150,
+        "text": "        precipitation_seasonality_cv=cv,"
+      },
+      {
+        "line": 151,
+        "text": "        temperature_annual_range_c=trange,"
+      },
+      {
+        "line": 152,
+        "text": "        frost_month_count=frost,"
+      },
+      {
+        "line": 153,
+        "text": "        dry_month_count=dry_count,"
+      },
+      {
+        "line": 154,
+        "text": "        itcz_latitude_by_month_deg=np.asarray("
+      },
+      {
+        "line": 155,
+        "text": "            base[\"itcz_latitude_by_month_deg\"], dtype=float"
+      }
+    ],
+    "signature": "def build_seasonal_climate(project_root, coast_state):",
+    "string_literals": [
+      "elevation_m",
+      "itcz_latitude_by_month_deg",
+      "land_mask",
+      "monthly_pet_mm",
+      "monthly_precipitation_mm",
+      "monthly_temperature_c",
+      "outputs/hybrid1/physical_finalization/coast_ocean_state.npz",
+      "outputs/hybrid1/physical_finalization/seasonal_climate_state.npz"
+    ]
+  },
+  "historical_provenance_gap": "Exact historical identity of seasonal_climate_state_I.npz is unrecoverable from surviving promotion/seal evidence; reconstruction must be labeled reconstructed, not recovered.",
+  "historical_source_executed": false,
+  "i_shoreline_candidate_count": 4,
+  "i_shoreline_candidates": [
+    {
+      "arrays": {
+        "changed_effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.011700424382716049,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "closed_basin_below_sea_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.002095871913580247,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "coastal_fractional_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.004741512345679012,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.2563377700617284,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "elevation_m": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 6808.51025390625,
+          "mean": -3632.3068330120327,
+          "min": -6800.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "land_fraction": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "lat": {
+          "dtype": "float32",
+          "finite_count": 720,
+          "max": 89.875,
+          "mean": 0.0,
+          "min": -89.875,
+          "shape": [
+            720
+          ],
+          "total_count": 720
+        },
+        "lon": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 179.875,
+          "mean": 0.0,
+          "min": -179.875,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "ocean_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.7436622299382716,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "owner_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 7.0,
+          "mean": 0.7741136188271605,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "refinement_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 5.0,
+          "mean": 0.7944097222222222,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.25,
+          "mean": 0.25,
+          "min": 0.25,
+          "shape": [],
+          "total_count": 1
+        },
+        "subgrid_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_lat": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 89.9375,
+          "mean": 0.0,
+          "min": -89.9375,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "subgrid_lon": {
+          "dtype": "float32",
+          "finite_count": 2880,
+          "max": 179.9375,
+          "mean": 0.0,
+          "min": -179.9375,
+          "shape": [
+            2880
+          ],
+          "total_count": 2880
+        },
+        "subgrid_owner_code": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 7.0,
+          "mean": 0.77025390625,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.125,
+          "mean": 0.125,
+          "min": 0.125,
+          "shape": [],
+          "total_count": 1
+        }
+      },
+      "key_count": 17,
+      "keys": [
+        "changed_effective_land_mask",
+        "closed_basin_below_sea_mask",
+        "coastal_fractional_mask",
+        "effective_land_mask",
+        "elevation_m",
+        "land_fraction",
+        "lat",
+        "lon",
+        "ocean_mask",
+        "owner_code",
+        "refinement_code",
+        "resolution_deg",
+        "subgrid_land_mask",
+        "subgrid_lat",
+        "subgrid_lon",
+        "subgrid_owner_code",
+        "subgrid_resolution_deg"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    },
+    {
+      "arrays": {
+        "changed_effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.011700424382716049,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "closed_basin_below_sea_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.002095871913580247,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "coastal_fractional_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.004741512345679012,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.2563377700617284,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "elevation_m": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 6808.51025390625,
+          "mean": -3632.3068330120327,
+          "min": -6800.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "land_fraction": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "lat": {
+          "dtype": "float32",
+          "finite_count": 720,
+          "max": 89.875,
+          "mean": 0.0,
+          "min": -89.875,
+          "shape": [
+            720
+          ],
+          "total_count": 720
+        },
+        "lon": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 179.875,
+          "mean": 0.0,
+          "min": -179.875,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "ocean_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.7436622299382716,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "owner_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 7.0,
+          "mean": 0.7741136188271605,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "refinement_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 5.0,
+          "mean": 0.7944097222222222,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.25,
+          "mean": 0.25,
+          "min": 0.25,
+          "shape": [],
+          "total_count": 1
+        },
+        "subgrid_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_lat": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 89.9375,
+          "mean": 0.0,
+          "min": -89.9375,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "subgrid_lon": {
+          "dtype": "float32",
+          "finite_count": 2880,
+          "max": 179.9375,
+          "mean": 0.0,
+          "min": -179.9375,
+          "shape": [
+            2880
+          ],
+          "total_count": 2880
+        },
+        "subgrid_owner_code": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 7.0,
+          "mean": 0.77025390625,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.125,
+          "mean": 0.125,
+          "min": 0.125,
+          "shape": [],
+          "total_count": 1
+        }
+      },
+      "key_count": 17,
+      "keys": [
+        "changed_effective_land_mask",
+        "closed_basin_below_sea_mask",
+        "coastal_fractional_mask",
+        "effective_land_mask",
+        "elevation_m",
+        "land_fraction",
+        "lat",
+        "lon",
+        "ocean_mask",
+        "owner_code",
+        "refinement_code",
+        "resolution_deg",
+        "subgrid_land_mask",
+        "subgrid_lat",
+        "subgrid_lon",
+        "subgrid_owner_code",
+        "subgrid_resolution_deg"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    },
+    {
+      "arrays": {
+        "changed_effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.011700424382716049,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "closed_basin_below_sea_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.002095871913580247,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "coastal_fractional_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.004741512345679012,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.2563377700617284,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "elevation_m": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 6808.51025390625,
+          "mean": -3632.3068330120327,
+          "min": -6800.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "land_fraction": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "lat": {
+          "dtype": "float32",
+          "finite_count": 720,
+          "max": 89.875,
+          "mean": 0.0,
+          "min": -89.875,
+          "shape": [
+            720
+          ],
+          "total_count": 720
+        },
+        "lon": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 179.875,
+          "mean": 0.0,
+          "min": -179.875,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "ocean_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.7436622299382716,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "owner_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 7.0,
+          "mean": 0.7741136188271605,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "refinement_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 5.0,
+          "mean": 0.7944097222222222,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.25,
+          "mean": 0.25,
+          "min": 0.25,
+          "shape": [],
+          "total_count": 1
+        },
+        "subgrid_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_lat": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 89.9375,
+          "mean": 0.0,
+          "min": -89.9375,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "subgrid_lon": {
+          "dtype": "float32",
+          "finite_count": 2880,
+          "max": 179.9375,
+          "mean": 0.0,
+          "min": -179.9375,
+          "shape": [
+            2880
+          ],
+          "total_count": 2880
+        },
+        "subgrid_owner_code": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 7.0,
+          "mean": 0.77025390625,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.125,
+          "mean": 0.125,
+          "min": 0.125,
+          "shape": [],
+          "total_count": 1
+        }
+      },
+      "key_count": 17,
+      "keys": [
+        "changed_effective_land_mask",
+        "closed_basin_below_sea_mask",
+        "coastal_fractional_mask",
+        "effective_land_mask",
+        "elevation_m",
+        "land_fraction",
+        "lat",
+        "lon",
+        "ocean_mask",
+        "owner_code",
+        "refinement_code",
+        "resolution_deg",
+        "subgrid_land_mask",
+        "subgrid_lat",
+        "subgrid_lon",
+        "subgrid_owner_code",
+        "subgrid_resolution_deg"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    },
+    {
+      "arrays": {
+        "changed_effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.011700424382716049,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "closed_basin_below_sea_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.002095871913580247,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "coastal_fractional_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.004741512345679012,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "effective_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.2563377700617284,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "elevation_m": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 6808.51025390625,
+          "mean": -3632.3068330120327,
+          "min": -6800.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "land_fraction": {
+          "dtype": "float32",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "lat": {
+          "dtype": "float32",
+          "finite_count": 720,
+          "max": 89.875,
+          "mean": 0.0,
+          "min": -89.875,
+          "shape": [
+            720
+          ],
+          "total_count": 720
+        },
+        "lon": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 179.875,
+          "mean": 0.0,
+          "min": -179.875,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "ocean_mask": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 1.0,
+          "mean": 0.7436622299382716,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "owner_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 7.0,
+          "mean": 0.7741136188271605,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "refinement_code": {
+          "dtype": "uint8",
+          "finite_count": 1036800,
+          "max": 5.0,
+          "mean": 0.7944097222222222,
+          "min": 0.0,
+          "shape": [
+            720,
+            1440
+          ],
+          "total_count": 1036800
+        },
+        "resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.25,
+          "mean": 0.25,
+          "min": 0.25,
+          "shape": [],
+          "total_count": 1
+        },
+        "subgrid_land_mask": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 1.0,
+          "mean": 0.255234375,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_lat": {
+          "dtype": "float32",
+          "finite_count": 1440,
+          "max": 89.9375,
+          "mean": 0.0,
+          "min": -89.9375,
+          "shape": [
+            1440
+          ],
+          "total_count": 1440
+        },
+        "subgrid_lon": {
+          "dtype": "float32",
+          "finite_count": 2880,
+          "max": 179.9375,
+          "mean": 0.0,
+          "min": -179.9375,
+          "shape": [
+            2880
+          ],
+          "total_count": 2880
+        },
+        "subgrid_owner_code": {
+          "dtype": "uint8",
+          "finite_count": 4147200,
+          "max": 7.0,
+          "mean": 0.77025390625,
+          "min": 0.0,
+          "shape": [
+            1440,
+            2880
+          ],
+          "total_count": 4147200
+        },
+        "subgrid_resolution_deg": {
+          "dtype": "float64",
+          "finite_count": 1,
+          "max": 0.125,
+          "mean": 0.125,
+          "min": 0.125,
+          "shape": [],
+          "total_count": 1
+        }
+      },
+      "key_count": 17,
+      "keys": [
+        "changed_effective_land_mask",
+        "closed_basin_below_sea_mask",
+        "coastal_fractional_mask",
+        "effective_land_mask",
+        "elevation_m",
+        "land_fraction",
+        "lat",
+        "lon",
+        "ocean_mask",
+        "owner_code",
+        "refinement_code",
+        "resolution_deg",
+        "subgrid_land_mask",
+        "subgrid_lat",
+        "subgrid_lon",
+        "subgrid_owner_code",
+        "subgrid_resolution_deg"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    }
+  ],
+  "known_f_baseline_hashes": {
+    "margin_morphogenesis": "1b32d97a0b4dad12f01f4c286461d6ca597c2d46a390a8801771735d972d93f6",
+    "physical_finalization": "347f07b9ff16f5c097319898c0b33b86851fc66775b9243ce0f98dce279b954f"
+  },
+  "known_f_baseline_locations": {
+    "margin_morphogenesis": [
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\margin_morphogenesis\\seasonal_climate_state.npz"
+    ],
+    "physical_finalization": [
+      "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\outputs\\hybrid1\\physical_finalization\\seasonal_climate_state.npz"
+    ]
+  },
+  "next_if_ready": "R5.17-B6-D2D_VALIDATE_CANONICAL_SEASONAL_GENERATOR_REPLAY_THEN_RECONSTRUCT_I_BASELINE",
+  "purpose": "Prepare a governed reconstruction of the lost v0.5.5I seasonal climate baseline from the recovered canonical ARCANA seasonal generator and authenticated I-era shoreline authority, while preserving the historical provenance gap and validating replay against surviving F-era fixtures before any I-era replay.",
+  "reconstructed_baseline_materialized": false,
+  "reconstruction_preflight_ready": false,
+  "schema": "ARCANA_R5_17_B6_D2C_CANONICAL_SEASONAL_BASELINE_RECONSTRUCTION_PREFLIGHT_V1",
+  "search_root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld",
+  "shoreline_contract_binding": {
+    "contract_satisfied_by_npz_keys": false,
+    "missing_attributes": [
+      "land_mask"
+    ],
+    "required_coast_attributes": [
+      "elevation_m",
+      "land_mask"
+    ],
+    "shoreline_keys": [
+      "changed_effective_land_mask",
+      "closed_basin_below_sea_mask",
+      "coastal_fractional_mask",
+      "effective_land_mask",
+      "elevation_m",
+      "land_fraction",
+      "lat",
+      "lon",
+      "ocean_mask",
+      "owner_code",
+      "refinement_code",
+      "resolution_deg",
+      "subgrid_land_mask",
+      "subgrid_lat",
+      "subgrid_lon",
+      "subgrid_owner_code",
+      "subgrid_resolution_deg"
+    ]
+  },
+  "source_dependency_candidates": [
+    {
+      "defined_called_names": [
+        "_continentality"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\seasonal.py",
+      "same_module_directory": true,
+      "sha256": "3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\ma\\core.py",
+      "same_module_directory": false,
+      "sha256": "e2be833c55b602ec103c3202b6dd78c4fecd3d493a96a1094f00f66cb4b8bedf"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\matrixlib\\defmatrix.py",
+      "same_module_directory": false,
+      "sha256": "a766d971656d0ae22697aa8afc2b027dbef631915694ceafb2725ac0b47a37fb"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\fromnumeric.py",
+      "same_module_directory": false,
+      "sha256": "94b1d8bfaca2cf8e739d433aade6a0df203753974417f9c53967b706ac4cc8aa"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\getlimits.py",
+      "same_module_directory": false,
+      "sha256": "c01955f10cd38e898ab9ce33884f65d3cb85a8d1ffe3d6102b34d3ae558aa3a1"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\ma\\core.py",
+      "same_module_directory": false,
+      "sha256": "195802dedcde00b95b0b710a5e17c23be57c300afbee40961a55e8d4d4314375"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\matrixlib\\defmatrix.py",
+      "same_module_directory": false,
+      "sha256": "1da158b471088668b828a6f0cd4270fb9ba4f976a1f094bd751562d9b647db4c"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\fromnumeric.py",
+      "same_module_directory": false,
+      "sha256": "e53fabedfc641db76f26205f5950fa9b023b6db8b613de45d33f5715e06af822"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\getlimits.py",
+      "same_module_directory": false,
+      "sha256": "b57ede0d6558df5d771c5073b6de493adb544c8df54b8fab0b46d55d82511b83"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\ma\\core.py",
+      "same_module_directory": false,
+      "sha256": "195802dedcde00b95b0b710a5e17c23be57c300afbee40961a55e8d4d4314375"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\matrixlib\\defmatrix.py",
+      "same_module_directory": false,
+      "sha256": "1da158b471088668b828a6f0cd4270fb9ba4f976a1f094bd751562d9b647db4c"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\fromnumeric.py",
+      "same_module_directory": false,
+      "sha256": "e53fabedfc641db76f26205f5950fa9b023b6db8b613de45d33f5715e06af822"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\getlimits.py",
+      "same_module_directory": false,
+      "sha256": "b57ede0d6558df5d771c5073b6de493adb544c8df54b8fab0b46d55d82511b83"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\ma\\core.py",
+      "same_module_directory": false,
+      "sha256": "195802dedcde00b95b0b710a5e17c23be57c300afbee40961a55e8d4d4314375"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\matrixlib\\defmatrix.py",
+      "same_module_directory": false,
+      "sha256": "1da158b471088668b828a6f0cd4270fb9ba4f976a1f094bd751562d9b647db4c"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\fromnumeric.py",
+      "same_module_directory": false,
+      "sha256": "e53fabedfc641db76f26205f5950fa9b023b6db8b613de45d33f5715e06af822"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\numpy\\_core\\getlimits.py",
+      "same_module_directory": false,
+      "sha256": "b57ede0d6558df5d771c5073b6de493adb544c8df54b8fab0b46d55d82511b83"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\scipy\\sparse\\_data.py",
+      "same_module_directory": false,
+      "sha256": "f2a66c679f699f02f2505540daf4a85d5f6f877f3673d6de4e9ffa3003ca2cd8"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\scipy\\_lib\\array_api_compat\\torch\\_aliases.py",
+      "same_module_directory": false,
+      "sha256": "a42a7e9361e1852e47766c8931914cc3604546137014af9b15d749d8de1a5858"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\.venv\\Lib\\site-packages\\scipy\\_lib\\array_api_extra\\_lib\\_at.py",
+      "same_module_directory": false,
+      "sha256": "05a30719a344d80aac616984b1f488afa8f66868b0095c85d898370e27a46a5f"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\d32d_release_stage\\.venv\\Lib\\site-packages\\numpy\\ma\\core.py",
+      "same_module_directory": false,
+      "sha256": "e2be833c55b602ec103c3202b6dd78c4fecd3d493a96a1094f00f66cb4b8bedf"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\d32d_release_stage\\.venv\\Lib\\site-packages\\numpy\\matrixlib\\defmatrix.py",
+      "same_module_directory": false,
+      "sha256": "a766d971656d0ae22697aa8afc2b027dbef631915694ceafb2725ac0b47a37fb"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\d32d_release_stage\\.venv\\Lib\\site-packages\\numpy\\_core\\fromnumeric.py",
+      "same_module_directory": false,
+      "sha256": "94b1d8bfaca2cf8e739d433aade6a0df203753974417f9c53967b706ac4cc8aa"
+    },
+    {
+      "defined_called_names": [
+        "max"
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\d32d_release_stage\\.venv\\Lib\\site-packages\\numpy\\_core\\getlimits.py",
+      "same_module_directory": false,
+      "sha256": "c01955f10cd38e898ab9ce33884f65d3cb85a8d1ffe3d6102b34d3ae558aa3a1"
+    }
+  ],
+  "stage": "v0.6D1-R5.17",
+  "status": "BLOCKED_R517_B6_D2C_CANONICAL_SEASONAL_BASELINE_RECONSTRUCTION_PREFLIGHT_INCOMPLETE",
+  "subphase": "R5.17-B6-D2C",
+  "target_generator_sha256": "3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2",
+  "target_generator_suffix": "src/arcana_worldsim/finalization/seasonal.py",
+  "target_i_shoreline_name": "shoreline_state_I.npz",
+  "target_i_shoreline_sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+  "validation_fixture_available": true
+}

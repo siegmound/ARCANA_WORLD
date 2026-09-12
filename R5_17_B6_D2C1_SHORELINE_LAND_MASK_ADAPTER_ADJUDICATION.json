@@ -1,0 +1,447 @@
+{
+  "adapter_authorized": true,
+  "adapter_mapping": {
+    "elevation_m": "elevation_m",
+    "land_mask": "effective_land_mask"
+  },
+  "adapter_semantics": "Interface-only mapping over the authenticated shoreline payload; no cells or physical values are created or changed.",
+  "canonical_mutation": false,
+  "decision": "EXPOSE_EFFECTIVE_LAND_MASK_AS_COAST_STATE_LAND_MASK",
+  "effective_land_mask_complements_ocean_mask": true,
+  "effective_land_mask_present": true,
+  "elevation_m_present": true,
+  "exact_generator_recovered": true,
+  "exact_paleoclimate_consumer_recovered": true,
+  "exact_shoreline_recovered": true,
+  "explicit_historical_alias_assignment_found": true,
+  "external_provider_authorized": false,
+  "freshwater_support_materialized": false,
+  "generator_hits": [
+    {
+      "excerpt": "49:         )\n50: \n51: \n52: def _periodic_distance_to_ocean(land_mask, res=0.25):\n53:     # Compute continentality on a 1-degree majority grid, then upsample.\n54:     # This preserves the >100 km signal needed by v0.5.5F while avoiding a\n55:     # memory-heavy 3x full-world distance transform.",
+      "line": 52,
+      "terms": [
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "53:     # Compute continentality on a 1-degree majority grid, then upsample.\n54:     # This preserves the >100 km signal needed by v0.5.5F while avoiding a\n55:     # memory-heavy 3x full-world distance transform.\n56:     land = np.asarray(land_mask, dtype=bool)\n57:     coarse = (\n58:         land.astype(float)\n59:         .reshape(180, 4, 360, 4)",
+      "line": 56,
+      "terms": [
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "69:     return np.repeat(np.repeat(d,4,axis=0),4,axis=1)\n70: \n71: \n72: def _continentality(land_mask):\n73:     d = _periodic_distance_to_ocean(land_mask)\n74:     return np.clip(d / 1800.0, 0.0, 1.0)\n75: ",
+      "line": 72,
+      "terms": [
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "70: \n71: \n72: def _continentality(land_mask):\n73:     d = _periodic_distance_to_ocean(land_mask)\n74:     return np.clip(d / 1800.0, 0.0, 1.0)\n75: \n76: ",
+      "line": 73,
+      "terms": [
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "83:         root / \"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\"\n84:     )\n85: \n86:     old_z = np.asarray(old_coast[\"elevation_m\"], dtype=float)\n87:     old_land = old_coast[\"land_mask\"].astype(bool)\n88:     new_z = np.asarray(coast_state.elevation_m, dtype=float)\n89:     new_land = np.asarray(coast_state.land_mask, dtype=bool)",
+      "line": 86,
+      "terms": [
+        "elevation_m"
+      ]
+    },
+    {
+      "excerpt": "84:     )\n85: \n86:     old_z = np.asarray(old_coast[\"elevation_m\"], dtype=float)\n87:     old_land = old_coast[\"land_mask\"].astype(bool)\n88:     new_z = np.asarray(coast_state.elevation_m, dtype=float)\n89:     new_land = np.asarray(coast_state.land_mask, dtype=bool)\n90: ",
+      "line": 87,
+      "terms": [
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "85: \n86:     old_z = np.asarray(old_coast[\"elevation_m\"], dtype=float)\n87:     old_land = old_coast[\"land_mask\"].astype(bool)\n88:     new_z = np.asarray(coast_state.elevation_m, dtype=float)\n89:     new_land = np.asarray(coast_state.land_mask, dtype=bool)\n90: \n91:     old_cont = _continentality(old_land)",
+      "line": 88,
+      "terms": [
+        "coast_state.elevation_m",
+        "elevation_m"
+      ]
+    },
+    {
+      "excerpt": "86:     old_z = np.asarray(old_coast[\"elevation_m\"], dtype=float)\n87:     old_land = old_coast[\"land_mask\"].astype(bool)\n88:     new_z = np.asarray(coast_state.elevation_m, dtype=float)\n89:     new_land = np.asarray(coast_state.land_mask, dtype=bool)\n90: \n91:     old_cont = _continentality(old_land)\n92:     new_cont = _continentality(new_land)",
+      "line": 89,
+      "terms": [
+        "coast_state.land_mask",
+        "land_mask"
+      ]
+    }
+  ],
+  "historical_alias_reference_count": 5,
+  "historical_alias_references": [
+    {
+      "hits": [
+        {
+          "excerpt": "40:       },\n41:       \"related_fields\": [\n42:         \"snapshot_year_before_book\",\n43:         \"paleo_land_mask\",\n44:         \"temperature_anomaly_c\",\n45:         \"npp_factor_relative_book\"\n46:       ],",
+          "line": 43,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "47:       \"semantic_guard\": \"Relative precipitation forcing is a physically relevant input candidate but is not yet freshwater supply, runoff, storage, river flow or reliability.\"\n48:     },\n49:     \"shoreline_state_I\": {\n50:       \"filename\": \"shoreline_state_I.npz\",\n51:       \"sha256\": \"f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85\",\n52:       \"array_count\": 17,\n53:       \"grid_shape\": [720, 1440],",
+          "line": 50,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "56:       \"hydrology_lexical_candidate_keys\": [],\n57:       \"physically_relevant_geometry\": [\n58:         \"elevation_m\",\n59:         \"effective_land_mask\",\n60:         \"land_fraction\",\n61:         \"ocean_mask\",\n62:         \"closed_basin_below_sea_mask\",",
+          "line": 59,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        }
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B5_SEALED_PALEOCLIMATE_PAYLOAD_INSPECTION_SUMMARY.json",
+      "sha256": "a3fcb4810aa06cf60db3efdf79c0ef3225baca6d6a5d40478eb394e2e03d4b1d"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "278: \n279: def _spatial_snapshots(root: Path, recent: Dict[str, np.ndarray]) -> Dict[str, Any]:\n280:     inp = root / \"inputs/v0_5_5I_SEALED\"\n281:     sh = np.load(inp / \"shoreline_state_I.npz\")\n282:     cl = np.load(inp / \"seasonal_climate_state_I.npz\")\n283:     hy = np.load(inp / \"channel_hydrology_state_I.npz\")\n284:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")",
+          "line": 281,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "286:     lat = np.asarray(sh[\"lat\"], dtype=float)\n287:     lon = np.asarray(sh[\"lon\"], dtype=float)\n288:     z = np.asarray(sh[\"elevation_m\"], dtype=float)\n289:     book_land = sh[\"effective_land_mask\"].astype(bool)\n290:     book_ocean = sh[\"ocean_mask\"].astype(bool)\n291:     owner = sh[\"owner_code\"].astype(np.uint8)\n292: ",
+          "line": 289,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "385:         \"temperature_anomaly_c\": local_temp,\n386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),",
+          "line": 388,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),\n392:         \"cha2_primitive_culture_habitat_potential\": culture_habitat_potential.astype(np.float32),",
+          "line": 389,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "516: def build_paleoclimate_history(project_root, seed: int = 617231) -> Dict[str, Any]:\n517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(",
+          "line": 519,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(\n523:         np.asarray(eco[\"fire_disturbance_potential\"], dtype=float), land, lat",
+          "line": 520,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        }
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\src\\arcana_worldsim\\paleoclimate\\model.py",
+      "sha256": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "278: \n279: def _spatial_snapshots(root: Path, recent: Dict[str, np.ndarray]) -> Dict[str, Any]:\n280:     inp = root / \"inputs/v0_5_5I_SEALED\"\n281:     sh = np.load(inp / \"shoreline_state_I.npz\")\n282:     cl = np.load(inp / \"seasonal_climate_state_I.npz\")\n283:     hy = np.load(inp / \"channel_hydrology_state_I.npz\")\n284:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")",
+          "line": 281,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "286:     lat = np.asarray(sh[\"lat\"], dtype=float)\n287:     lon = np.asarray(sh[\"lon\"], dtype=float)\n288:     z = np.asarray(sh[\"elevation_m\"], dtype=float)\n289:     book_land = sh[\"effective_land_mask\"].astype(bool)\n290:     book_ocean = sh[\"ocean_mask\"].astype(bool)\n291:     owner = sh[\"owner_code\"].astype(np.uint8)\n292: ",
+          "line": 289,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "385:         \"temperature_anomaly_c\": local_temp,\n386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),",
+          "line": 388,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),\n392:         \"cha2_primitive_culture_habitat_potential\": culture_habitat_potential.astype(np.float32),",
+          "line": 389,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "516: def build_paleoclimate_history(project_root, seed: int = 617231) -> Dict[str, Any]:\n517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(",
+          "line": 519,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(\n523:         np.asarray(eco[\"fire_disturbance_potential\"], dtype=float), land, lat",
+          "line": 520,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        }
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\src\\arcana_worldsim\\paleoclimate\\model.py",
+      "sha256": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "278: \n279: def _spatial_snapshots(root: Path, recent: Dict[str, np.ndarray]) -> Dict[str, Any]:\n280:     inp = root / \"inputs/v0_5_5I_SEALED\"\n281:     sh = np.load(inp / \"shoreline_state_I.npz\")\n282:     cl = np.load(inp / \"seasonal_climate_state_I.npz\")\n283:     hy = np.load(inp / \"channel_hydrology_state_I.npz\")\n284:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")",
+          "line": 281,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "286:     lat = np.asarray(sh[\"lat\"], dtype=float)\n287:     lon = np.asarray(sh[\"lon\"], dtype=float)\n288:     z = np.asarray(sh[\"elevation_m\"], dtype=float)\n289:     book_land = sh[\"effective_land_mask\"].astype(bool)\n290:     book_ocean = sh[\"ocean_mask\"].astype(bool)\n291:     owner = sh[\"owner_code\"].astype(np.uint8)\n292: ",
+          "line": 289,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "385:         \"temperature_anomaly_c\": local_temp,\n386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),",
+          "line": 388,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),\n392:         \"cha2_primitive_culture_habitat_potential\": culture_habitat_potential.astype(np.float32),",
+          "line": 389,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "516: def build_paleoclimate_history(project_root, seed: int = 617231) -> Dict[str, Any]:\n517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(",
+          "line": 519,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(\n523:         np.asarray(eco[\"fire_disturbance_potential\"], dtype=float), land, lat",
+          "line": 520,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        }
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\src\\arcana_worldsim\\paleoclimate\\model.py",
+      "sha256": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f"
+    },
+    {
+      "hits": [
+        {
+          "excerpt": "278: \n279: def _spatial_snapshots(root: Path, recent: Dict[str, np.ndarray]) -> Dict[str, Any]:\n280:     inp = root / \"inputs/v0_5_5I_SEALED\"\n281:     sh = np.load(inp / \"shoreline_state_I.npz\")\n282:     cl = np.load(inp / \"seasonal_climate_state_I.npz\")\n283:     hy = np.load(inp / \"channel_hydrology_state_I.npz\")\n284:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")",
+          "line": 281,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "286:     lat = np.asarray(sh[\"lat\"], dtype=float)\n287:     lon = np.asarray(sh[\"lon\"], dtype=float)\n288:     z = np.asarray(sh[\"elevation_m\"], dtype=float)\n289:     book_land = sh[\"effective_land_mask\"].astype(bool)\n290:     book_ocean = sh[\"ocean_mask\"].astype(bool)\n291:     owner = sh[\"owner_code\"].astype(np.uint8)\n292: ",
+          "line": 289,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "385:         \"temperature_anomaly_c\": local_temp,\n386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),",
+          "line": 388,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),\n392:         \"cha2_primitive_culture_habitat_potential\": culture_habitat_potential.astype(np.float32),",
+          "line": 389,
+          "terms": [
+            "land_mask"
+          ]
+        },
+        {
+          "excerpt": "516: def build_paleoclimate_history(project_root, seed: int = 617231) -> Dict[str, Any]:\n517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(",
+          "line": 519,
+          "terms": [
+            "shoreline_state_I.npz"
+          ]
+        },
+        {
+          "excerpt": "517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(\n523:         np.asarray(eco[\"fire_disturbance_potential\"], dtype=float), land, lat",
+          "line": 520,
+          "terms": [
+            "effective_land_mask",
+            "land_mask"
+          ]
+        }
+      ],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\src\\arcana_worldsim\\paleoclimate\\model.py",
+      "sha256": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f"
+    }
+  ],
+  "historical_source_executed": false,
+  "next_if_pass": "R5.17-B6-D2D_VALIDATE_SEASONAL_GENERATOR_ON_F_FIXTURE_THEN_RECONSTRUCT_I_BASELINE",
+  "paleoclimate_consumer_uses_effective_land_mask": true,
+  "paleoclimate_hits": [
+    {
+      "excerpt": "278: \n279: def _spatial_snapshots(root: Path, recent: Dict[str, np.ndarray]) -> Dict[str, Any]:\n280:     inp = root / \"inputs/v0_5_5I_SEALED\"\n281:     sh = np.load(inp / \"shoreline_state_I.npz\")\n282:     cl = np.load(inp / \"seasonal_climate_state_I.npz\")\n283:     hy = np.load(inp / \"channel_hydrology_state_I.npz\")\n284:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")",
+      "line": 281,
+      "terms": [
+        "shoreline_state_I.npz"
+      ]
+    },
+    {
+      "excerpt": "286:     lat = np.asarray(sh[\"lat\"], dtype=float)\n287:     lon = np.asarray(sh[\"lon\"], dtype=float)\n288:     z = np.asarray(sh[\"elevation_m\"], dtype=float)\n289:     book_land = sh[\"effective_land_mask\"].astype(bool)\n290:     book_ocean = sh[\"ocean_mask\"].astype(bool)\n291:     owner = sh[\"owner_code\"].astype(np.uint8)\n292: ",
+      "line": 289,
+      "terms": [
+        "effective_land_mask",
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "385:         \"temperature_anomaly_c\": local_temp,\n386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),",
+      "line": 388,
+      "terms": [
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "386:         \"precipitation_factor_relative_book\": precip_factor,\n387:         \"npp_factor_relative_book\": npp_factor,\n388:         \"paleo_land_mask\": paleo_land,\n389:         \"cha2_transgressed_land_mask\": transgressed.astype(np.uint8),\n390:         \"cha2_megaflood_corridor\": megaflood_corridor.astype(np.float32),\n391:         \"cha2_flood_exposure\": flood_exposure.astype(np.float32),\n392:         \"cha2_primitive_culture_habitat_potential\": culture_habitat_potential.astype(np.float32),",
+      "line": 389,
+      "terms": [
+        "land_mask"
+      ]
+    },
+    {
+      "excerpt": "516: def build_paleoclimate_history(project_root, seed: int = 617231) -> Dict[str, Any]:\n517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(",
+      "line": 519,
+      "terms": [
+        "shoreline_state_I.npz"
+      ]
+    },
+    {
+      "excerpt": "517:     root = Path(project_root)\n518:     eco = np.load(root / \"inputs/v0_6_REFERENCE/ecology_state.npz\")\n519:     sh = np.load(root / \"inputs/v0_5_5I_SEALED/shoreline_state_I.npz\")\n520:     land = sh[\"effective_land_mask\"].astype(bool)\n521:     lat = np.asarray(sh[\"lat\"], dtype=float)\n522:     fire_susceptibility = _weighted_mean(\n523:         np.asarray(eco[\"fire_disturbance_potential\"], dtype=float), land, lat",
+      "line": 520,
+      "terms": [
+        "effective_land_mask",
+        "land_mask"
+      ]
+    }
+  ],
+  "purpose": "Resolve the sole D2C shoreline interface mismatch without fabricating geometry by adjudicating whether the authenticated I-era effective_land_mask is the canonical land-mask semantic required by build_seasonal_climate.",
+  "raw_land_mask_absent": true,
+  "reconstructed_baseline_materialized": false,
+  "schema": "ARCANA_R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION_V1",
+  "search_root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld",
+  "shoreline": {
+    "effective_land_mask": {
+      "dtype": "uint8",
+      "finite_count": 1036800,
+      "max": 1.0,
+      "mean": 0.2563377700617284,
+      "min": 0.0,
+      "shape": [
+        720,
+        1440
+      ],
+      "total_count": 1036800
+    },
+    "effective_land_vs_ocean": {
+      "overlap_true_count": 0,
+      "partition_mismatch_count": 0,
+      "same_shape": true
+    },
+    "elevation_m": {
+      "dtype": "float32",
+      "finite_count": 1036800,
+      "max": 6808.51025390625,
+      "mean": -3632.3068330120327,
+      "min": -6800.0,
+      "shape": [
+        720,
+        1440
+      ],
+      "total_count": 1036800
+    },
+    "key_count": 17,
+    "keys": [
+      "changed_effective_land_mask",
+      "closed_basin_below_sea_mask",
+      "coastal_fractional_mask",
+      "effective_land_mask",
+      "elevation_m",
+      "land_fraction",
+      "lat",
+      "lon",
+      "ocean_mask",
+      "owner_code",
+      "refinement_code",
+      "resolution_deg",
+      "subgrid_land_mask",
+      "subgrid_lat",
+      "subgrid_lon",
+      "subgrid_owner_code",
+      "subgrid_resolution_deg"
+    ],
+    "land_fraction": {
+      "dtype": "float32",
+      "finite_count": 1036800,
+      "max": 1.0,
+      "mean": 0.255234375,
+      "min": 0.0,
+      "shape": [
+        720,
+        1440
+      ],
+      "total_count": 1036800
+    },
+    "ocean_mask": {
+      "dtype": "uint8",
+      "finite_count": 1036800,
+      "max": 1.0,
+      "mean": 0.7436622299382716,
+      "min": 0.0,
+      "shape": [
+        720,
+        1440
+      ],
+      "total_count": 1036800
+    },
+    "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+    "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+  },
+  "stage": "v0.6D1-R5.17",
+  "status": "PASS_R517_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_AUTHORIZED",
+  "subphase": "R5.17-B6-D2C1",
+  "target_generator_sha256": "3ec12145617ae63e6ce9d9bd123c159525f83925f9257f1138f3490bb3e70de2",
+  "target_paleoclimate_sha256": "de2399e2b92157ee98d10458db5dcd849b557c076beeed3a648154a6c62e016f",
+  "target_shoreline_sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+}

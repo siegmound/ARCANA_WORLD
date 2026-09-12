@@ -1,0 +1,2338 @@
+{
+  "all_expected_generator_hashes_recovered": true,
+  "candidate_counts": {
+    "src/arcana_worldsim/climate/water_balance.py": 3,
+    "src/arcana_worldsim/finalization/hydrology.py": 1,
+    "src/arcana_worldsim/regional/hydrology.py": 3,
+    "src/arcana_worldsim/surface/hydrology.py": 4
+  },
+  "canonical_mutation": false,
+  "expected_source_hashes": {
+    "src/arcana_worldsim/climate/water_balance.py": "23090416ef8234d43689171241d80d8ca2609882455bd30761de30301e5bfb61",
+    "src/arcana_worldsim/finalization/hydrology.py": "29c808bd889d3f0c6e5390775d8751f68b9c9dd2cb5bab1736d6ad6cc6486351",
+    "src/arcana_worldsim/regional/hydrology.py": "e32d766e3e700dd2da22adda3c09b0327e503d1ab9df663eb1c23e6730832b87",
+    "src/arcana_worldsim/surface/hydrology.py": "34584d0e8a8696b26e4026aad28f362850b7e9b98bb7754cc5cab8e4d282ff42"
+  },
+  "external_provider_authorized": false,
+  "freshwater_support_materialized": false,
+  "next_if_pass": "R5.17-B6-D2_CANONICAL_PALEOHYDROLOGY_DERIVATION_IMPLEMENTATION",
+  "purpose": "Extract the exact callable/input/output contract needed to reuse adjudicated canonical ARCANA hydrology for paleoclimate freshwater derivation without executing historical source during inspection.",
+  "replay_contract_ready_for_implementation_design": true,
+  "representative_sources": {
+    "src/arcana_worldsim/climate/water_balance.py": {
+      "io_literals": {
+        "loads_npz": [],
+        "saves_npz": [
+          {
+            "line": 35,
+            "text": "        np.savez_compressed("
+          }
+        ]
+      },
+      "line_count": 285,
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\climate\\water_balance.py",
+      "relevant_blocks": [
+        {
+          "end_line": 53,
+          "excerpts": [
+            {
+              "end_line": 18,
+              "start_line": 16,
+              "terms": [
+                "class ",
+                "hydrology"
+              ],
+              "text": "16: class ClimaticHydrology:\n17:     grid: object\n18:     actual_evapotranspiration_mm_yr: np.ndarray"
+            },
+            {
+              "end_line": 20,
+              "start_line": 16,
+              "terms": [
+                "evap"
+              ],
+              "text": "16: class ClimaticHydrology:\n17:     grid: object\n18:     actual_evapotranspiration_mm_yr: np.ndarray\n19:     climatic_runoff_mm_yr: np.ndarray\n20:     runoff_volume_m3_yr: np.ndarray"
+            },
+            {
+              "end_line": 21,
+              "start_line": 17,
+              "terms": [
+                "runoff"
+              ],
+              "text": "17:     grid: object\n18:     actual_evapotranspiration_mm_yr: np.ndarray\n19:     climatic_runoff_mm_yr: np.ndarray\n20:     runoff_volume_m3_yr: np.ndarray\n21:     routed_discharge_m3_s: np.ndarray"
+            },
+            {
+              "end_line": 22,
+              "start_line": 18,
+              "terms": [
+                "runoff"
+              ],
+              "text": "18:     actual_evapotranspiration_mm_yr: np.ndarray\n19:     climatic_runoff_mm_yr: np.ndarray\n20:     runoff_volume_m3_yr: np.ndarray\n21:     routed_discharge_m3_s: np.ndarray\n22:     actual_river_mask: np.ndarray"
+            },
+            {
+              "end_line": 23,
+              "start_line": 19,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "19:     climatic_runoff_mm_yr: np.ndarray\n20:     runoff_volume_m3_yr: np.ndarray\n21:     routed_discharge_m3_s: np.ndarray\n22:     actual_river_mask: np.ndarray\n23:     perennial_river_mask: np.ndarray"
+            },
+            {
+              "end_line": 34,
+              "start_line": 30,
+              "terms": [
+                "def "
+              ],
+              "text": "30:     provenance: Dict\n31: \n32:     def save_npz(self, path):\n33:         path = Path(path)\n34:         path.parent.mkdir(parents=True, exist_ok=True)"
+            },
+            {
+              "end_line": 37,
+              "start_line": 33,
+              "terms": [
+                "np.savez",
+                "savez_compressed"
+              ],
+              "text": "33:         path = Path(path)\n34:         path.parent.mkdir(parents=True, exist_ok=True)\n35:         np.savez_compressed(\n36:             path,\n37:             resolution_deg=self.grid.resolution_deg,"
+            },
+            {
+              "end_line": 42,
+              "start_line": 38,
+              "terms": [
+                "evap"
+              ],
+              "text": "38:             lat=self.grid.lat,\n39:             lon=self.grid.lon,\n40:             actual_evapotranspiration_mm_yr=self.actual_evapotranspiration_mm_yr,\n41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,"
+            },
+            {
+              "end_line": 43,
+              "start_line": 39,
+              "terms": [
+                "runoff"
+              ],
+              "text": "39:             lon=self.grid.lon,\n40:             actual_evapotranspiration_mm_yr=self.actual_evapotranspiration_mm_yr,\n41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,\n43:             routed_discharge_m3_s=self.routed_discharge_m3_s,"
+            },
+            {
+              "end_line": 44,
+              "start_line": 40,
+              "terms": [
+                "runoff"
+              ],
+              "text": "40:             actual_evapotranspiration_mm_yr=self.actual_evapotranspiration_mm_yr,\n41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,\n43:             routed_discharge_m3_s=self.routed_discharge_m3_s,\n44:             actual_river_mask=self.actual_river_mask.astype(np.uint8),"
+            },
+            {
+              "end_line": 45,
+              "start_line": 41,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,\n43:             routed_discharge_m3_s=self.routed_discharge_m3_s,\n44:             actual_river_mask=self.actual_river_mask.astype(np.uint8),\n45:             perennial_river_mask=self.perennial_river_mask.astype(np.uint8),"
+            }
+          ],
+          "name": "ClimaticHydrology",
+          "start_line": 16,
+          "terms": [
+            "class ",
+            "def ",
+            "discharge",
+            "evap",
+            "hydrology",
+            "np.savez",
+            "route",
+            "runoff",
+            "savez_compressed"
+          ]
+        },
+        {
+          "end_line": 53,
+          "excerpts": [
+            {
+              "end_line": 34,
+              "start_line": 32,
+              "terms": [
+                "def "
+              ],
+              "text": "32:     def save_npz(self, path):\n33:         path = Path(path)\n34:         path.parent.mkdir(parents=True, exist_ok=True)"
+            },
+            {
+              "end_line": 37,
+              "start_line": 33,
+              "terms": [
+                "np.savez",
+                "savez_compressed"
+              ],
+              "text": "33:         path = Path(path)\n34:         path.parent.mkdir(parents=True, exist_ok=True)\n35:         np.savez_compressed(\n36:             path,\n37:             resolution_deg=self.grid.resolution_deg,"
+            },
+            {
+              "end_line": 42,
+              "start_line": 38,
+              "terms": [
+                "evap"
+              ],
+              "text": "38:             lat=self.grid.lat,\n39:             lon=self.grid.lon,\n40:             actual_evapotranspiration_mm_yr=self.actual_evapotranspiration_mm_yr,\n41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,"
+            },
+            {
+              "end_line": 43,
+              "start_line": 39,
+              "terms": [
+                "runoff"
+              ],
+              "text": "39:             lon=self.grid.lon,\n40:             actual_evapotranspiration_mm_yr=self.actual_evapotranspiration_mm_yr,\n41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,\n43:             routed_discharge_m3_s=self.routed_discharge_m3_s,"
+            },
+            {
+              "end_line": 44,
+              "start_line": 40,
+              "terms": [
+                "runoff"
+              ],
+              "text": "40:             actual_evapotranspiration_mm_yr=self.actual_evapotranspiration_mm_yr,\n41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,\n43:             routed_discharge_m3_s=self.routed_discharge_m3_s,\n44:             actual_river_mask=self.actual_river_mask.astype(np.uint8),"
+            },
+            {
+              "end_line": 45,
+              "start_line": 41,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "41:             climatic_runoff_mm_yr=self.climatic_runoff_mm_yr,\n42:             runoff_volume_m3_yr=self.runoff_volume_m3_yr,\n43:             routed_discharge_m3_s=self.routed_discharge_m3_s,\n44:             actual_river_mask=self.actual_river_mask.astype(np.uint8),\n45:             perennial_river_mask=self.perennial_river_mask.astype(np.uint8),"
+            }
+          ],
+          "name": "save_npz",
+          "start_line": 32,
+          "terms": [
+            "def ",
+            "discharge",
+            "evap",
+            "np.savez",
+            "route",
+            "runoff",
+            "savez_compressed"
+          ]
+        },
+        {
+          "end_line": 66,
+          "excerpts": [
+            {
+              "end_line": 56,
+              "start_line": 54,
+              "terms": [
+                "def ",
+                "precip"
+              ],
+              "text": "54: def budyko_aet(precip_mm_yr, pet_mm_yr, omega=2.6):\n55:     \"\"\"\n56:     Fu/Budyko-style annual water-balance closure."
+            },
+            {
+              "end_line": 58,
+              "start_line": 54,
+              "terms": [
+                "annual"
+              ],
+              "text": "54: def budyko_aet(precip_mm_yr, pet_mm_yr, omega=2.6):\n55:     \"\"\"\n56:     Fu/Budyko-style annual water-balance closure.\n57:     \"\"\"\n58:     p = np.maximum(np.asarray(precip_mm_yr, dtype=float), 1e-6)"
+            },
+            {
+              "end_line": 60,
+              "start_line": 56,
+              "terms": [
+                "precip"
+              ],
+              "text": "56:     Fu/Budyko-style annual water-balance closure.\n57:     \"\"\"\n58:     p = np.maximum(np.asarray(precip_mm_yr, dtype=float), 1e-6)\n59:     pet = np.maximum(np.asarray(pet_mm_yr, dtype=float), 0.0)\n60:     phi = pet / p"
+            }
+          ],
+          "name": "budyko_aet",
+          "start_line": 54,
+          "terms": [
+            "annual",
+            "def ",
+            "precip"
+          ]
+        },
+        {
+          "end_line": 84,
+          "excerpts": [
+            {
+              "end_line": 69,
+              "start_line": 67,
+              "terms": [
+                "def ",
+                "infil"
+              ],
+              "text": "67: def lithology_infiltration_fraction(lithology_code):\n68:     \"\"\"\n69:     Fraction of climatic surplus temporarily routed through groundwater."
+            },
+            {
+              "end_line": 71,
+              "start_line": 67,
+              "terms": [
+                "groundwater",
+                "route"
+              ],
+              "text": "67: def lithology_infiltration_fraction(lithology_code):\n68:     \"\"\"\n69:     Fraction of climatic surplus temporarily routed through groundwater.\n70: \n71:     It is NOT deleted from the annual water balance: a return-flow factor"
+            },
+            {
+              "end_line": 73,
+              "start_line": 69,
+              "terms": [
+                "annual"
+              ],
+              "text": "69:     Fraction of climatic surplus temporarily routed through groundwater.\n70: \n71:     It is NOT deleted from the annual water balance: a return-flow factor\n72:     below determines how much rejoins surface drainage.\n73:     \"\"\""
+            },
+            {
+              "end_line": 74,
+              "start_line": 70,
+              "terms": [
+                "rain"
+              ],
+              "text": "70: \n71:     It is NOT deleted from the annual water balance: a return-flow factor\n72:     below determines how much rejoins surface drainage.\n73:     \"\"\"\n74:     f = np.full(lithology_code.shape, 0.20, dtype=float)"
+            }
+          ],
+          "name": "lithology_infiltration_fraction",
+          "start_line": 67,
+          "terms": [
+            "annual",
+            "def ",
+            "groundwater",
+            "infil",
+            "rain",
+            "route"
+          ]
+        },
+        {
+          "end_line": 117,
+          "excerpts": [
+            {
+              "end_line": 87,
+              "start_line": 85,
+              "terms": [
+                "def ",
+                "route",
+                "receiver_flat"
+              ],
+              "text": "85: def _route_volume(receiver_flat, local_volume):\n86:     \"\"\"\n87:     Topological routing for an acyclic functional drainage graph."
+            },
+            {
+              "end_line": 89,
+              "start_line": 85,
+              "terms": [
+                "rain"
+              ],
+              "text": "85: def _route_volume(receiver_flat, local_volume):\n86:     \"\"\"\n87:     Topological routing for an acyclic functional drainage graph.\n88:     \"\"\"\n89:     receiver = np.asarray(receiver_flat, dtype=np.int64)"
+            },
+            {
+              "end_line": 91,
+              "start_line": 87,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "87:     Topological routing for an acyclic functional drainage graph.\n88:     \"\"\"\n89:     receiver = np.asarray(receiver_flat, dtype=np.int64)\n90:     routed = np.asarray(local_volume, dtype=float).ravel().copy()\n91:     n = len(receiver)"
+            },
+            {
+              "end_line": 92,
+              "start_line": 88,
+              "terms": [
+                "route"
+              ],
+              "text": "88:     \"\"\"\n89:     receiver = np.asarray(receiver_flat, dtype=np.int64)\n90:     routed = np.asarray(local_volume, dtype=float).ravel().copy()\n91:     n = len(receiver)\n92: "
+            },
+            {
+              "end_line": 115,
+              "start_line": 111,
+              "terms": [
+                "route"
+              ],
+              "text": "111:         r = int(receiver[idx])\n112:         if r >= 0 and r != idx:\n113:             routed[r] += routed[idx]\n114: \n115:     return routed.reshape(local_volume.shape)"
+            },
+            {
+              "end_line": 117,
+              "start_line": 113,
+              "terms": [
+                "route"
+              ],
+              "text": "113:             routed[r] += routed[idx]\n114: \n115:     return routed.reshape(local_volume.shape)\n116: \n117: "
+            }
+          ],
+          "name": "_route_volume",
+          "start_line": 85,
+          "terms": [
+            "def ",
+            "rain",
+            "receiver_flat",
+            "route"
+          ]
+        },
+        {
+          "end_line": 190,
+          "excerpts": [
+            {
+              "end_line": 120,
+              "start_line": 118,
+              "terms": [
+                "def "
+              ],
+              "text": "118: def _lake_water_balance(\n119:     surface,\n120:     climate,"
+            },
+            {
+              "end_line": 123,
+              "start_line": 119,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "119:     surface,\n120:     climate,\n121:     routed_discharge_m3_s,\n122: ):\n123:     h = surface.structural_hydrology"
+            },
+            {
+              "end_line": 125,
+              "start_line": 121,
+              "terms": [
+                "hydrology"
+              ],
+              "text": "121:     routed_discharge_m3_s,\n122: ):\n123:     h = surface.structural_hydrology\n124:     g = surface.grid\n125:     area_grid = cell_area_km2(g)"
+            },
+            {
+              "end_line": 127,
+              "start_line": 123,
+              "terms": [
+                "cell_area"
+              ],
+              "text": "123:     h = surface.structural_hydrology\n124:     g = surface.grid\n125:     area_grid = cell_area_km2(g)\n126: \n127:     persistent = np.zeros(g.shape, dtype=bool)"
+            },
+            {
+              "end_line": 143,
+              "start_line": 139,
+              "terms": [
+                "precip"
+              ],
+              "text": "139:         p_lake = float(\n140:             np.average(\n141:                 climate.precipitation_mm_yr[mask],\n142:                 weights=area_grid[mask],\n143:             )"
+            },
+            {
+              "end_line": 149,
+              "start_line": 145,
+              "terms": [
+                "evap"
+              ],
+              "text": "145:         pet_lake = float(\n146:             np.average(\n147:                 climate.potential_evapotranspiration_mm_yr[mask],\n148:                 weights=area_grid[mask],\n149:             )"
+            },
+            {
+              "end_line": 154,
+              "start_line": 150,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "150:         )\n151: \n152:         # Maximum routed discharge in the connected lake cells approximates\n153:         # the catchment inflow at the spill system without double-counting\n154:         # every upstream segment."
+            },
+            {
+              "end_line": 157,
+              "start_line": 153,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "153:         # the catchment inflow at the spill system without double-counting\n154:         # every upstream segment.\n155:         inflow_m3_s = float(np.max(routed_discharge_m3_s[mask]))\n156:         inflow_m3_yr = inflow_m3_s * SECONDS_PER_YEAR\n157: "
+            },
+            {
+              "end_line": 165,
+              "start_line": 161,
+              "terms": [
+                "evap"
+              ],
+              "text": "161:         )\n162: \n163:         open_water_evap = 1.08 * pet_lake\n164:         balance_mm = inflow_equiv_mm + p_lake - open_water_evap\n165: "
+            },
+            {
+              "end_line": 166,
+              "start_line": 162,
+              "terms": [
+                "evap"
+              ],
+              "text": "162: \n163:         open_water_evap = 1.08 * pet_lake\n164:         balance_mm = inflow_equiv_mm + p_lake - open_water_evap\n165: \n166:         # Classification is intentionally broad until monthly climate exists."
+            },
+            {
+              "end_line": 168,
+              "start_line": 164,
+              "terms": [
+                "monthly"
+              ],
+              "text": "164:         balance_mm = inflow_equiv_mm + p_lake - open_water_evap\n165: \n166:         # Classification is intentionally broad until monthly climate exists.\n167:         if balance_mm >= 150.0:\n168:             cls = \"persistent\""
+            },
+            {
+              "end_line": 181,
+              "start_line": 177,
+              "terms": [
+                "precip"
+              ],
+              "text": "177:         table.append({\n178:             **lake,\n179:             \"mean_precipitation_mm_yr\": p_lake,\n180:             \"mean_open_water_pet_mm_yr\": open_water_evap,\n181:             \"inflow_m3_s_proxy\": inflow_m3_s,"
+            },
+            {
+              "end_line": 182,
+              "start_line": 178,
+              "terms": [
+                "evap"
+              ],
+              "text": "178:             **lake,\n179:             \"mean_precipitation_mm_yr\": p_lake,\n180:             \"mean_open_water_pet_mm_yr\": open_water_evap,\n181:             \"inflow_m3_s_proxy\": inflow_m3_s,\n182:             \"inflow_equivalent_mm_yr\": inflow_equiv_mm,"
+            },
+            {
+              "end_line": 185,
+              "start_line": 181,
+              "terms": [
+                "annual"
+              ],
+              "text": "181:             \"inflow_m3_s_proxy\": inflow_m3_s,\n182:             \"inflow_equivalent_mm_yr\": inflow_equiv_mm,\n183:             \"annual_balance_mm_proxy\": balance_mm,\n184:             \"climatic_class\": cls,\n185:         })"
+            }
+          ],
+          "name": "_lake_water_balance",
+          "start_line": 118,
+          "terms": [
+            "annual",
+            "cell_area",
+            "def ",
+            "discharge",
+            "evap",
+            "hydrology",
+            "monthly",
+            "precip",
+            "route"
+          ]
+        },
+        {
+          "end_line": 285,
+          "excerpts": [
+            {
+              "end_line": 193,
+              "start_line": 191,
+              "terms": [
+                "def ",
+                "hydrology"
+              ],
+              "text": "191: def build_climatic_hydrology(\n192:     surface,\n193:     climate,"
+            },
+            {
+              "end_line": 197,
+              "start_line": 193,
+              "terms": [
+                "discharge"
+              ],
+              "text": "193:     climate,\n194:     geology,\n195:     river_discharge_threshold_m3_s=45.0,\n196: ):\n197:     g = surface.grid"
+            },
+            {
+              "end_line": 203,
+              "start_line": 199,
+              "terms": [
+                "precip"
+              ],
+              "text": "199:     land = z > 0.0\n200: \n201:     p = climate.precipitation_mm_yr\n202:     pet = climate.potential_evapotranspiration_mm_yr\n203: "
+            },
+            {
+              "end_line": 204,
+              "start_line": 200,
+              "terms": [
+                "evap"
+              ],
+              "text": "200: \n201:     p = climate.precipitation_mm_yr\n202:     pet = climate.potential_evapotranspiration_mm_yr\n203: \n204:     aet = budyko_aet(p, pet)"
+            },
+            {
+              "end_line": 209,
+              "start_line": 205,
+              "terms": [
+                "infil"
+              ],
+              "text": "205:     surplus = np.maximum(p - aet, 0.0)\n206: \n207:     infiltration = lithology_infiltration_fraction(geology.lithology_code)\n208: \n209:     # Most infiltrated annual water eventually returns to the surface system;"
+            },
+            {
+              "end_line": 211,
+              "start_line": 207,
+              "terms": [
+                "infil",
+                "annual"
+              ],
+              "text": "207:     infiltration = lithology_infiltration_fraction(geology.lithology_code)\n208: \n209:     # Most infiltrated annual water eventually returns to the surface system;\n210:     # the rest is retained in deep groundwater/storage on this timescale.\n211:     groundwater_return = 0.72"
+            },
+            {
+              "end_line": 212,
+              "start_line": 208,
+              "terms": [
+                "groundwater",
+                "storage"
+              ],
+              "text": "208: \n209:     # Most infiltrated annual water eventually returns to the surface system;\n210:     # the rest is retained in deep groundwater/storage on this timescale.\n211:     groundwater_return = 0.72\n212:     effective_runoff_fraction = 1.0 - infiltration * (1.0 - groundwater_return)"
+            },
+            {
+              "end_line": 213,
+              "start_line": 209,
+              "terms": [
+                "groundwater"
+              ],
+              "text": "209:     # Most infiltrated annual water eventually returns to the surface system;\n210:     # the rest is retained in deep groundwater/storage on this timescale.\n211:     groundwater_return = 0.72\n212:     effective_runoff_fraction = 1.0 - infiltration * (1.0 - groundwater_return)\n213: "
+            },
+            {
+              "end_line": 214,
+              "start_line": 210,
+              "terms": [
+                "infil",
+                "groundwater",
+                "runoff"
+              ],
+              "text": "210:     # the rest is retained in deep groundwater/storage on this timescale.\n211:     groundwater_return = 0.72\n212:     effective_runoff_fraction = 1.0 - infiltration * (1.0 - groundwater_return)\n213: \n214:     # Permanent ice stores a larger part of annual precipitation; snow in"
+            },
+            {
+              "end_line": 216,
+              "start_line": 212,
+              "terms": [
+                "precip",
+                "snow",
+                "annual"
+              ],
+              "text": "212:     effective_runoff_fraction = 1.0 - infiltration * (1.0 - groundwater_return)\n213: \n214:     # Permanent ice stores a larger part of annual precipitation; snow in\n215:     # non-permanent-ice zones largely melts within the annual cycle.\n216:     cryo_storage = np.clip("
+            },
+            {
+              "end_line": 217,
+              "start_line": 213,
+              "terms": [
+                "annual"
+              ],
+              "text": "213: \n214:     # Permanent ice stores a larger part of annual precipitation; snow in\n215:     # non-permanent-ice zones largely melts within the annual cycle.\n216:     cryo_storage = np.clip(\n217:         0.58 * climate.ice_fraction,"
+            },
+            {
+              "end_line": 218,
+              "start_line": 214,
+              "terms": [
+                "storage",
+                "cryo"
+              ],
+              "text": "214:     # Permanent ice stores a larger part of annual precipitation; snow in\n215:     # non-permanent-ice zones largely melts within the annual cycle.\n216:     cryo_storage = np.clip(\n217:         0.58 * climate.ice_fraction,\n218:         0.0,"
+            },
+            {
+              "end_line": 224,
+              "start_line": 220,
+              "terms": [
+                "storage",
+                "cryo",
+                "runoff"
+              ],
+              "text": "220:     )\n221: \n222:     runoff = surplus * effective_runoff_fraction * (1.0 - cryo_storage)\n223:     runoff *= land\n224: "
+            },
+            {
+              "end_line": 225,
+              "start_line": 221,
+              "terms": [
+                "runoff"
+              ],
+              "text": "221: \n222:     runoff = surplus * effective_runoff_fraction * (1.0 - cryo_storage)\n223:     runoff *= land\n224: \n225:     area_km2 = cell_area_km2(g)"
+            },
+            {
+              "end_line": 227,
+              "start_line": 223,
+              "terms": [
+                "cell_area"
+              ],
+              "text": "223:     runoff *= land\n224: \n225:     area_km2 = cell_area_km2(g)\n226:     local_volume_m3_yr = runoff * 1e-3 * area_km2 * 1e6\n227: "
+            },
+            {
+              "end_line": 228,
+              "start_line": 224,
+              "terms": [
+                "runoff"
+              ],
+              "text": "224: \n225:     area_km2 = cell_area_km2(g)\n226:     local_volume_m3_yr = runoff * 1e-3 * area_km2 * 1e6\n227: \n228:     routed_volume = _route_volume("
+            },
+            {
+              "end_line": 230,
+              "start_line": 226,
+              "terms": [
+                "route"
+              ],
+              "text": "226:     local_volume_m3_yr = runoff * 1e-3 * area_km2 * 1e6\n227: \n228:     routed_volume = _route_volume(\n229:         surface.structural_hydrology.receiver_flat,\n230:         local_volume_m3_yr,"
+            },
+            {
+              "end_line": 231,
+              "start_line": 227,
+              "terms": [
+                "receiver_flat",
+                "hydrology"
+              ],
+              "text": "227: \n228:     routed_volume = _route_volume(\n229:         surface.structural_hydrology.receiver_flat,\n230:         local_volume_m3_yr,\n231:     )"
+            },
+            {
+              "end_line": 234,
+              "start_line": 230,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "230:         local_volume_m3_yr,\n231:     )\n232:     discharge = routed_volume / SECONDS_PER_YEAR\n233: \n234:     structural = surface.structural_hydrology.river_mask"
+            },
+            {
+              "end_line": 236,
+              "start_line": 232,
+              "terms": [
+                "hydrology"
+              ],
+              "text": "232:     discharge = routed_volume / SECONDS_PER_YEAR\n233: \n234:     structural = surface.structural_hydrology.river_mask\n235:     actual = structural & (discharge >= river_discharge_threshold_m3_s)\n236: "
+            },
+            {
+              "end_line": 237,
+              "start_line": 233,
+              "terms": [
+                "discharge"
+              ],
+              "text": "233: \n234:     structural = surface.structural_hydrology.river_mask\n235:     actual = structural & (discharge >= river_discharge_threshold_m3_s)\n236: \n237:     # Annual aridity and temperature decide broad persistence."
+            },
+            {
+              "end_line": 239,
+              "start_line": 235,
+              "terms": [
+                "temperature",
+                "annual"
+              ],
+              "text": "235:     actual = structural & (discharge >= river_discharge_threshold_m3_s)\n236: \n237:     # Annual aridity and temperature decide broad persistence.\n238:     perennial = (\n239:         actual"
+            },
+            {
+              "end_line": 243,
+              "start_line": 239,
+              "terms": [
+                "temperature",
+                "annual"
+              ],
+              "text": "239:         actual\n240:         & (climate.aridity_index >= 0.65)\n241:         & (climate.annual_temperature_c > -6.0)\n242:     )\n243:     seasonal = actual & ~perennial"
+            },
+            {
+              "end_line": 249,
+              "start_line": 245,
+              "terms": [
+                "runoff"
+              ],
+              "text": "245:     arheic = (\n246:         land\n247:         & (runoff < 15.0)\n248:         & (climate.aridity_index < 0.22)\n249:     )"
+            },
+            {
+              "end_line": 256,
+              "start_line": 252,
+              "terms": [
+                "discharge"
+              ],
+              "text": "252:         surface,\n253:         climate,\n254:         discharge,\n255:     )\n256: "
+            },
+            {
+              "end_line": 260,
+              "start_line": 256,
+              "terms": [
+                "annual",
+                "hydrology"
+              ],
+              "text": "256: \n257:     provenance = {\n258:         \"model\": \"ARCANA v0.5 annual climatic hydrology\",\n259:         \"river_discharge_threshold_m3_s\": float(river_discharge_threshold_m3_s),\n260:         \"groundwater_return_fraction\": groundwater_return,"
+            },
+            {
+              "end_line": 261,
+              "start_line": 257,
+              "terms": [
+                "discharge"
+              ],
+              "text": "257:     provenance = {\n258:         \"model\": \"ARCANA v0.5 annual climatic hydrology\",\n259:         \"river_discharge_threshold_m3_s\": float(river_discharge_threshold_m3_s),\n260:         \"groundwater_return_fraction\": groundwater_return,\n261:         \"notes\": ["
+            },
+            {
+              "end_line": 262,
+              "start_line": 258,
+              "terms": [
+                "groundwater"
+              ],
+              "text": "258:         \"model\": \"ARCANA v0.5 annual climatic hydrology\",\n259:         \"river_discharge_threshold_m3_s\": float(river_discharge_threshold_m3_s),\n260:         \"groundwater_return_fraction\": groundwater_return,\n261:         \"notes\": [\n262:             \"Annual runoff uses Budyko-style P/PET balance.\","
+            },
+            {
+              "end_line": 264,
+              "start_line": 260,
+              "terms": [
+                "runoff",
+                "annual"
+              ],
+              "text": "260:         \"groundwater_return_fraction\": groundwater_return,\n261:         \"notes\": [\n262:             \"Annual runoff uses Budyko-style P/PET balance.\",\n263:             \"Rivers follow v0.4 structural receiver topology.\",\n264:             \"Perennial/seasonal distinction is annual-climate proxy only.\","
+            },
+            {
+              "end_line": 266,
+              "start_line": 262,
+              "terms": [
+                "annual"
+              ],
+              "text": "262:             \"Annual runoff uses Budyko-style P/PET balance.\",\n263:             \"Rivers follow v0.4 structural receiver topology.\",\n264:             \"Perennial/seasonal distinction is annual-climate proxy only.\",\n265:             \"Lake persistence uses catchment inflow proxy versus open-water evaporation.\",\n266:             \"Monthly flood/snowmelt regimes are deferred.\","
+            },
+            {
+              "end_line": 267,
+              "start_line": 263,
+              "terms": [
+                "evap"
+              ],
+              "text": "263:             \"Rivers follow v0.4 structural receiver topology.\",\n264:             \"Perennial/seasonal distinction is annual-climate proxy only.\",\n265:             \"Lake persistence uses catchment inflow proxy versus open-water evaporation.\",\n266:             \"Monthly flood/snowmelt regimes are deferred.\",\n267:         ],"
+            },
+            {
+              "end_line": 268,
+              "start_line": 264,
+              "terms": [
+                "snow",
+                "monthly"
+              ],
+              "text": "264:             \"Perennial/seasonal distinction is annual-climate proxy only.\",\n265:             \"Lake persistence uses catchment inflow proxy versus open-water evaporation.\",\n266:             \"Monthly flood/snowmelt regimes are deferred.\",\n267:         ],\n268:     }"
+            },
+            {
+              "end_line": 272,
+              "start_line": 268,
+              "terms": [
+                "hydrology"
+              ],
+              "text": "268:     }\n269: \n270:     return ClimaticHydrology(\n271:         grid=g,\n272:         actual_evapotranspiration_mm_yr=aet,"
+            },
+            {
+              "end_line": 274,
+              "start_line": 270,
+              "terms": [
+                "evap"
+              ],
+              "text": "270:     return ClimaticHydrology(\n271:         grid=g,\n272:         actual_evapotranspiration_mm_yr=aet,\n273:         climatic_runoff_mm_yr=runoff,\n274:         runoff_volume_m3_yr=local_volume_m3_yr,"
+            },
+            {
+              "end_line": 275,
+              "start_line": 271,
+              "terms": [
+                "runoff"
+              ],
+              "text": "271:         grid=g,\n272:         actual_evapotranspiration_mm_yr=aet,\n273:         climatic_runoff_mm_yr=runoff,\n274:         runoff_volume_m3_yr=local_volume_m3_yr,\n275:         routed_discharge_m3_s=discharge,"
+            },
+            {
+              "end_line": 276,
+              "start_line": 272,
+              "terms": [
+                "runoff"
+              ],
+              "text": "272:         actual_evapotranspiration_mm_yr=aet,\n273:         climatic_runoff_mm_yr=runoff,\n274:         runoff_volume_m3_yr=local_volume_m3_yr,\n275:         routed_discharge_m3_s=discharge,\n276:         actual_river_mask=actual,"
+            },
+            {
+              "end_line": 277,
+              "start_line": 273,
+              "terms": [
+                "route",
+                "discharge"
+              ],
+              "text": "273:         climatic_runoff_mm_yr=runoff,\n274:         runoff_volume_m3_yr=local_volume_m3_yr,\n275:         routed_discharge_m3_s=discharge,\n276:         actual_river_mask=actual,\n277:         perennial_river_mask=perennial,"
+            }
+          ],
+          "name": "build_climatic_hydrology",
+          "start_line": 191,
+          "terms": [
+            "annual",
+            "cell_area",
+            "cryo",
+            "def ",
+            "discharge",
+            "evap",
+            "groundwater",
+            "hydrology",
+            "infil",
+            "monthly",
+            "precip",
+            "receiver_flat",
+            "route",
+            "runoff",
+            "snow",
+            "storage",
+            "temperature"
+          ]
+        }
+      ],
+      "sha256": "23090416ef8234d43689171241d80d8ca2609882455bd30761de30301e5bfb61",
+      "signatures": [
+        {
+          "line": 15,
+          "text": "@dataclass"
+        },
+        {
+          "line": 16,
+          "text": "class ClimaticHydrology:"
+        },
+        {
+          "line": 32,
+          "text": "    def save_npz(self, path):"
+        },
+        {
+          "line": 54,
+          "text": "def budyko_aet(precip_mm_yr, pet_mm_yr, omega=2.6):"
+        },
+        {
+          "line": 67,
+          "text": "def lithology_infiltration_fraction(lithology_code):"
+        },
+        {
+          "line": 85,
+          "text": "def _route_volume(receiver_flat, local_volume):"
+        },
+        {
+          "line": 118,
+          "text": "def _lake_water_balance("
+        },
+        {
+          "line": 191,
+          "text": "def build_climatic_hydrology("
+        }
+      ]
+    },
+    "src/arcana_worldsim/finalization/hydrology.py": {
+      "io_literals": {
+        "loads_npz": [
+          {
+            "line": 79,
+            "text": "    base=np.load("
+          },
+          {
+            "line": 82,
+            "text": "    old_coast=np.load("
+          }
+        ],
+        "saves_npz": [
+          {
+            "line": 34,
+            "text": "        np.savez_compressed("
+          }
+        ]
+      },
+      "line_count": 190,
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\hydrology.py",
+      "relevant_blocks": [
+        {
+          "end_line": 61,
+          "excerpts": [
+            {
+              "end_line": 12,
+              "start_line": 10,
+              "terms": [
+                "class ",
+                "hydrology"
+              ],
+              "text": "10: class ChannelHydrologyState:\n11:     filled_elevation_m: np.ndarray\n12:     depression_depth_m: np.ndarray"
+            },
+            {
+              "end_line": 14,
+              "start_line": 10,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "10: class ChannelHydrologyState:\n11:     filled_elevation_m: np.ndarray\n12:     depression_depth_m: np.ndarray\n13:     receiver_flat: np.ndarray\n14:     drainage_area_km2: np.ndarray"
+            },
+            {
+              "end_line": 15,
+              "start_line": 11,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "11:     filled_elevation_m: np.ndarray\n12:     depression_depth_m: np.ndarray\n13:     receiver_flat: np.ndarray\n14:     drainage_area_km2: np.ndarray\n15:     monthly_runoff_mm: np.ndarray"
+            },
+            {
+              "end_line": 16,
+              "start_line": 12,
+              "terms": [
+                "rain",
+                "drainage_area_km2"
+              ],
+              "text": "12:     depression_depth_m: np.ndarray\n13:     receiver_flat: np.ndarray\n14:     drainage_area_km2: np.ndarray\n15:     monthly_runoff_mm: np.ndarray\n16:     annual_runoff_mm_yr: np.ndarray"
+            },
+            {
+              "end_line": 17,
+              "start_line": 13,
+              "terms": [
+                "runoff",
+                "monthly"
+              ],
+              "text": "13:     receiver_flat: np.ndarray\n14:     drainage_area_km2: np.ndarray\n15:     monthly_runoff_mm: np.ndarray\n16:     annual_runoff_mm_yr: np.ndarray\n17:     monthly_discharge_m3_s: np.ndarray"
+            },
+            {
+              "end_line": 18,
+              "start_line": 14,
+              "terms": [
+                "runoff",
+                "annual"
+              ],
+              "text": "14:     drainage_area_km2: np.ndarray\n15:     monthly_runoff_mm: np.ndarray\n16:     annual_runoff_mm_yr: np.ndarray\n17:     monthly_discharge_m3_s: np.ndarray\n18:     mean_discharge_m3_s: np.ndarray"
+            },
+            {
+              "end_line": 19,
+              "start_line": 15,
+              "terms": [
+                "discharge",
+                "monthly"
+              ],
+              "text": "15:     monthly_runoff_mm: np.ndarray\n16:     annual_runoff_mm_yr: np.ndarray\n17:     monthly_discharge_m3_s: np.ndarray\n18:     mean_discharge_m3_s: np.ndarray\n19:     minimum_month_discharge_m3_s: np.ndarray"
+            },
+            {
+              "end_line": 20,
+              "start_line": 16,
+              "terms": [
+                "discharge"
+              ],
+              "text": "16:     annual_runoff_mm_yr: np.ndarray\n17:     monthly_discharge_m3_s: np.ndarray\n18:     mean_discharge_m3_s: np.ndarray\n19:     minimum_month_discharge_m3_s: np.ndarray\n20:     maximum_month_discharge_m3_s: np.ndarray"
+            },
+            {
+              "end_line": 21,
+              "start_line": 17,
+              "terms": [
+                "discharge"
+              ],
+              "text": "17:     monthly_discharge_m3_s: np.ndarray\n18:     mean_discharge_m3_s: np.ndarray\n19:     minimum_month_discharge_m3_s: np.ndarray\n20:     maximum_month_discharge_m3_s: np.ndarray\n21:     discharge_seasonality_cv: np.ndarray"
+            },
+            {
+              "end_line": 22,
+              "start_line": 18,
+              "terms": [
+                "discharge"
+              ],
+              "text": "18:     mean_discharge_m3_s: np.ndarray\n19:     minimum_month_discharge_m3_s: np.ndarray\n20:     maximum_month_discharge_m3_s: np.ndarray\n21:     discharge_seasonality_cv: np.ndarray\n22:     channel_mask: np.ndarray"
+            },
+            {
+              "end_line": 23,
+              "start_line": 19,
+              "terms": [
+                "discharge"
+              ],
+              "text": "19:     minimum_month_discharge_m3_s: np.ndarray\n20:     maximum_month_discharge_m3_s: np.ndarray\n21:     discharge_seasonality_cv: np.ndarray\n22:     channel_mask: np.ndarray\n23:     perennial_channel_mask: np.ndarray"
+            },
+            {
+              "end_line": 31,
+              "start_line": 27,
+              "terms": [
+                "lake_candidate_mask"
+              ],
+              "text": "27:     delta_candidate_mask: np.ndarray\n28:     closed_basin_water_candidate_mask: np.ndarray\n29:     lake_candidate_mask: np.ndarray\n30:     snowpack_end_mm: np.ndarray\n31: "
+            },
+            {
+              "end_line": 32,
+              "start_line": 28,
+              "terms": [
+                "snow"
+              ],
+              "text": "28:     closed_basin_water_candidate_mask: np.ndarray\n29:     lake_candidate_mask: np.ndarray\n30:     snowpack_end_mm: np.ndarray\n31: \n32:     def save_npz(self, path):"
+            },
+            {
+              "end_line": 34,
+              "start_line": 30,
+              "terms": [
+                "def "
+              ],
+              "text": "30:     snowpack_end_mm: np.ndarray\n31: \n32:     def save_npz(self, path):\n33:         p=Path(path); p.parent.mkdir(parents=True,exist_ok=True)\n34:         np.savez_compressed("
+            },
+            {
+              "end_line": 36,
+              "start_line": 32,
+              "terms": [
+                "np.savez",
+                "savez_compressed"
+              ],
+              "text": "32:     def save_npz(self, path):\n33:         p=Path(path); p.parent.mkdir(parents=True,exist_ok=True)\n34:         np.savez_compressed(\n35:             p,\n36:             resolution_deg=0.25,"
+            },
+            {
+              "end_line": 42,
+              "start_line": 38,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "38:             lon=np.linspace(-179.875,179.875,1440),\n39:             filled_elevation_m=self.filled_elevation_m.astype(np.float32),\n40:             depression_depth_m=self.depression_depth_m.astype(np.float32),\n41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),"
+            },
+            {
+              "end_line": 43,
+              "start_line": 39,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "39:             filled_elevation_m=self.filled_elevation_m.astype(np.float32),\n40:             depression_depth_m=self.depression_depth_m.astype(np.float32),\n41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),"
+            },
+            {
+              "end_line": 44,
+              "start_line": 40,
+              "terms": [
+                "rain",
+                "drainage_area_km2"
+              ],
+              "text": "40:             depression_depth_m=self.depression_depth_m.astype(np.float32),\n41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),"
+            },
+            {
+              "end_line": 45,
+              "start_line": 41,
+              "terms": [
+                "runoff",
+                "monthly"
+              ],
+              "text": "41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 46,
+              "start_line": 42,
+              "terms": [
+                "runoff",
+                "annual"
+              ],
+              "text": "42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 47,
+              "start_line": 43,
+              "terms": [
+                "discharge",
+                "monthly"
+              ],
+              "text": "43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 48,
+              "start_line": 44,
+              "terms": [
+                "discharge"
+              ],
+              "text": "44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 49,
+              "start_line": 45,
+              "terms": [
+                "discharge"
+              ],
+              "text": "45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),\n49:             discharge_seasonality_cv=self.discharge_seasonality_cv.astype(np.float32),"
+            },
+            {
+              "end_line": 50,
+              "start_line": 46,
+              "terms": [
+                "discharge"
+              ],
+              "text": "46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),\n49:             discharge_seasonality_cv=self.discharge_seasonality_cv.astype(np.float32),\n50:             channel_mask=self.channel_mask.astype(np.uint8),"
+            },
+            {
+              "end_line": 51,
+              "start_line": 47,
+              "terms": [
+                "discharge"
+              ],
+              "text": "47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),\n49:             discharge_seasonality_cv=self.discharge_seasonality_cv.astype(np.float32),\n50:             channel_mask=self.channel_mask.astype(np.uint8),\n51:             perennial_channel_mask=self.perennial_channel_mask.astype(np.uint8),"
+            },
+            {
+              "end_line": 59,
+              "start_line": 55,
+              "terms": [
+                "lake_candidate_mask"
+              ],
+              "text": "55:             delta_candidate_mask=self.delta_candidate_mask.astype(np.uint8),\n56:             closed_basin_water_candidate_mask=self.closed_basin_water_candidate_mask.astype(np.uint8),\n57:             lake_candidate_mask=self.lake_candidate_mask.astype(np.uint8),\n58:             snowpack_end_mm=self.snowpack_end_mm.astype(np.float32),\n59:         )"
+            },
+            {
+              "end_line": 60,
+              "start_line": 56,
+              "terms": [
+                "snow"
+              ],
+              "text": "56:             closed_basin_water_candidate_mask=self.closed_basin_water_candidate_mask.astype(np.uint8),\n57:             lake_candidate_mask=self.lake_candidate_mask.astype(np.uint8),\n58:             snowpack_end_mm=self.snowpack_end_mm.astype(np.float32),\n59:         )\n60: "
+            }
+          ],
+          "name": "ChannelHydrologyState",
+          "start_line": 10,
+          "terms": [
+            "annual",
+            "class ",
+            "def ",
+            "depression_depth_m",
+            "discharge",
+            "drainage_area_km2",
+            "hydrology",
+            "lake_candidate_mask",
+            "monthly",
+            "np.savez",
+            "rain",
+            "receiver_flat",
+            "runoff",
+            "savez_compressed",
+            "snow"
+          ]
+        },
+        {
+          "end_line": 61,
+          "excerpts": [
+            {
+              "end_line": 34,
+              "start_line": 32,
+              "terms": [
+                "def "
+              ],
+              "text": "32:     def save_npz(self, path):\n33:         p=Path(path); p.parent.mkdir(parents=True,exist_ok=True)\n34:         np.savez_compressed("
+            },
+            {
+              "end_line": 36,
+              "start_line": 32,
+              "terms": [
+                "np.savez",
+                "savez_compressed"
+              ],
+              "text": "32:     def save_npz(self, path):\n33:         p=Path(path); p.parent.mkdir(parents=True,exist_ok=True)\n34:         np.savez_compressed(\n35:             p,\n36:             resolution_deg=0.25,"
+            },
+            {
+              "end_line": 42,
+              "start_line": 38,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "38:             lon=np.linspace(-179.875,179.875,1440),\n39:             filled_elevation_m=self.filled_elevation_m.astype(np.float32),\n40:             depression_depth_m=self.depression_depth_m.astype(np.float32),\n41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),"
+            },
+            {
+              "end_line": 43,
+              "start_line": 39,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "39:             filled_elevation_m=self.filled_elevation_m.astype(np.float32),\n40:             depression_depth_m=self.depression_depth_m.astype(np.float32),\n41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),"
+            },
+            {
+              "end_line": 44,
+              "start_line": 40,
+              "terms": [
+                "rain",
+                "drainage_area_km2"
+              ],
+              "text": "40:             depression_depth_m=self.depression_depth_m.astype(np.float32),\n41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),"
+            },
+            {
+              "end_line": 45,
+              "start_line": 41,
+              "terms": [
+                "runoff",
+                "monthly"
+              ],
+              "text": "41:             receiver_flat=self.receiver_flat.astype(np.int32),\n42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 46,
+              "start_line": 42,
+              "terms": [
+                "runoff",
+                "annual"
+              ],
+              "text": "42:             drainage_area_km2=self.drainage_area_km2.astype(np.float32),\n43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 47,
+              "start_line": 43,
+              "terms": [
+                "discharge",
+                "monthly"
+              ],
+              "text": "43:             monthly_runoff_mm=self.monthly_runoff_mm.astype(np.float32),\n44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 48,
+              "start_line": 44,
+              "terms": [
+                "discharge"
+              ],
+              "text": "44:             annual_runoff_mm_yr=self.annual_runoff_mm_yr.astype(np.float32),\n45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),"
+            },
+            {
+              "end_line": 49,
+              "start_line": 45,
+              "terms": [
+                "discharge"
+              ],
+              "text": "45:             monthly_discharge_m3_s=self.monthly_discharge_m3_s.astype(np.float32),\n46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),\n49:             discharge_seasonality_cv=self.discharge_seasonality_cv.astype(np.float32),"
+            },
+            {
+              "end_line": 50,
+              "start_line": 46,
+              "terms": [
+                "discharge"
+              ],
+              "text": "46:             mean_discharge_m3_s=self.mean_discharge_m3_s.astype(np.float32),\n47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),\n49:             discharge_seasonality_cv=self.discharge_seasonality_cv.astype(np.float32),\n50:             channel_mask=self.channel_mask.astype(np.uint8),"
+            },
+            {
+              "end_line": 51,
+              "start_line": 47,
+              "terms": [
+                "discharge"
+              ],
+              "text": "47:             minimum_month_discharge_m3_s=self.minimum_month_discharge_m3_s.astype(np.float32),\n48:             maximum_month_discharge_m3_s=self.maximum_month_discharge_m3_s.astype(np.float32),\n49:             discharge_seasonality_cv=self.discharge_seasonality_cv.astype(np.float32),\n50:             channel_mask=self.channel_mask.astype(np.uint8),\n51:             perennial_channel_mask=self.perennial_channel_mask.astype(np.uint8),"
+            },
+            {
+              "end_line": 59,
+              "start_line": 55,
+              "terms": [
+                "lake_candidate_mask"
+              ],
+              "text": "55:             delta_candidate_mask=self.delta_candidate_mask.astype(np.uint8),\n56:             closed_basin_water_candidate_mask=self.closed_basin_water_candidate_mask.astype(np.uint8),\n57:             lake_candidate_mask=self.lake_candidate_mask.astype(np.uint8),\n58:             snowpack_end_mm=self.snowpack_end_mm.astype(np.float32),\n59:         )"
+            },
+            {
+              "end_line": 60,
+              "start_line": 56,
+              "terms": [
+                "snow"
+              ],
+              "text": "56:             closed_basin_water_candidate_mask=self.closed_basin_water_candidate_mask.astype(np.uint8),\n57:             lake_candidate_mask=self.lake_candidate_mask.astype(np.uint8),\n58:             snowpack_end_mm=self.snowpack_end_mm.astype(np.float32),\n59:         )\n60: "
+            }
+          ],
+          "name": "save_npz",
+          "start_line": 32,
+          "terms": [
+            "annual",
+            "def ",
+            "depression_depth_m",
+            "discharge",
+            "drainage_area_km2",
+            "lake_candidate_mask",
+            "monthly",
+            "np.savez",
+            "rain",
+            "receiver_flat",
+            "runoff",
+            "savez_compressed",
+            "snow"
+          ]
+        },
+        {
+          "end_line": 76,
+          "excerpts": [
+            {
+              "end_line": 64,
+              "start_line": 62,
+              "terms": [
+                "def "
+              ],
+              "text": "62: def _nearest_fill_from_old(arr, old_land, new_land, nearest=None):\n63:     \"\"\"Fill newly emerged cells from nearest old terrestrial value.\"\"\"\n64:     out = np.asarray(arr).copy()"
+            }
+          ],
+          "name": "_nearest_fill_from_old",
+          "start_line": 62,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 190,
+          "excerpts": [
+            {
+              "end_line": 79,
+              "start_line": 77,
+              "terms": [
+                "def ",
+                "hydrology"
+              ],
+              "text": "77: def build_channel_hydrology(project_root, coast_state, seasonal):\n78:     root=Path(project_root)\n79:     base=np.load("
+            },
+            {
+              "end_line": 81,
+              "start_line": 77,
+              "terms": [
+                "load("
+              ],
+              "text": "77: def build_channel_hydrology(project_root, coast_state, seasonal):\n78:     root=Path(project_root)\n79:     base=np.load(\n80:         root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\"\n81:     )"
+            },
+            {
+              "end_line": 82,
+              "start_line": 78,
+              "terms": [
+                "hydrology"
+              ],
+              "text": "78:     root=Path(project_root)\n79:     base=np.load(\n80:         root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\"\n81:     )\n82:     old_coast=np.load("
+            },
+            {
+              "end_line": 84,
+              "start_line": 80,
+              "terms": [
+                "load("
+              ],
+              "text": "80:         root/\"outputs/hybrid1/physical_finalization/channel_hydrology_state.npz\"\n81:     )\n82:     old_coast=np.load(\n83:         root/\"outputs/hybrid1/physical_finalization/coast_ocean_state.npz\"\n84:     )"
+            },
+            {
+              "end_line": 90,
+              "start_line": 86,
+              "terms": [
+                "rain"
+              ],
+              "text": "86:     land=np.asarray(coast_state.land_mask,dtype=bool)\n87: \n88:     # Recovery uses the accepted E drainage graph as parent topology, while\n89:     # recomputing runoff/discharge magnitudes and terrestrial channel masks for\n90:     # the F coast. Compute nearest old-land indices once and reuse them."
+            },
+            {
+              "end_line": 91,
+              "start_line": 87,
+              "terms": [
+                "runoff",
+                "discharge"
+              ],
+              "text": "87: \n88:     # Recovery uses the accepted E drainage graph as parent topology, while\n89:     # recomputing runoff/discharge magnitudes and terrestrial channel masks for\n90:     # the F coast. Compute nearest old-land indices once and reuse them.\n91:     _, _inds = distance_transform_edt(~old_land, return_indices=True)"
+            },
+            {
+              "end_line": 97,
+              "start_line": 93,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "93:     filled=_nearest_fill_from_old(base[\"filled_elevation_m\"],old_land,land,_nearest)\n94:     filled[~land]=coast_state.elevation_m[~land]\n95:     depression=_nearest_fill_from_old(base[\"depression_depth_m\"],old_land,land,_nearest)\n96:     drainage=_nearest_fill_from_old(base[\"drainage_area_km2\"],old_land,land,_nearest)\n97: "
+            },
+            {
+              "end_line": 98,
+              "start_line": 94,
+              "terms": [
+                "rain",
+                "drainage_area_km2"
+              ],
+              "text": "94:     filled[~land]=coast_state.elevation_m[~land]\n95:     depression=_nearest_fill_from_old(base[\"depression_depth_m\"],old_land,land,_nearest)\n96:     drainage=_nearest_fill_from_old(base[\"drainage_area_km2\"],old_land,land,_nearest)\n97: \n98:     # Monthly Budyko-like water surplus."
+            },
+            {
+              "end_line": 100,
+              "start_line": 96,
+              "terms": [
+                "monthly"
+              ],
+              "text": "96:     drainage=_nearest_fill_from_old(base[\"drainage_area_km2\"],old_land,land,_nearest)\n97: \n98:     # Monthly Budyko-like water surplus.\n99:     P=np.asarray(seasonal.monthly_precipitation_mm,dtype=float)\n100:     PET=np.asarray(seasonal.monthly_pet_mm,dtype=float)"
+            },
+            {
+              "end_line": 101,
+              "start_line": 97,
+              "terms": [
+                "precip",
+                "monthly"
+              ],
+              "text": "97: \n98:     # Monthly Budyko-like water surplus.\n99:     P=np.asarray(seasonal.monthly_precipitation_mm,dtype=float)\n100:     PET=np.asarray(seasonal.monthly_pet_mm,dtype=float)\n101:     T=np.asarray(seasonal.monthly_temperature_c,dtype=float)"
+            },
+            {
+              "end_line": 102,
+              "start_line": 98,
+              "terms": [
+                "monthly"
+              ],
+              "text": "98:     # Monthly Budyko-like water surplus.\n99:     P=np.asarray(seasonal.monthly_precipitation_mm,dtype=float)\n100:     PET=np.asarray(seasonal.monthly_pet_mm,dtype=float)\n101:     T=np.asarray(seasonal.monthly_temperature_c,dtype=float)\n102:     ratio=PET/np.maximum(P,1e-6)"
+            },
+            {
+              "end_line": 103,
+              "start_line": 99,
+              "terms": [
+                "temperature",
+                "monthly"
+              ],
+              "text": "99:     P=np.asarray(seasonal.monthly_precipitation_mm,dtype=float)\n100:     PET=np.asarray(seasonal.monthly_pet_mm,dtype=float)\n101:     T=np.asarray(seasonal.monthly_temperature_c,dtype=float)\n102:     ratio=PET/np.maximum(P,1e-6)\n103:     omega=2.6"
+            },
+            {
+              "end_line": 108,
+              "start_line": 104,
+              "terms": [
+                "runoff"
+              ],
+              "text": "104:     aet_frac=1+ratio-(1+ratio**omega)**(1/omega)\n105:     aet=np.clip(P*aet_frac,0,P)\n106:     runoff=np.maximum(P-aet,0.0)\n107:     # Mild snow storage: cold precipitation releases in first thaw months only\n108:     # approximately; sufficient for ecological seasonality recovery."
+            },
+            {
+              "end_line": 109,
+              "start_line": 105,
+              "terms": [
+                "precip",
+                "snow",
+                "storage"
+              ],
+              "text": "105:     aet=np.clip(P*aet_frac,0,P)\n106:     runoff=np.maximum(P-aet,0.0)\n107:     # Mild snow storage: cold precipitation releases in first thaw months only\n108:     # approximately; sufficient for ecological seasonality recovery.\n109:     cold=T<0"
+            },
+            {
+              "end_line": 112,
+              "start_line": 108,
+              "terms": [
+                "runoff"
+              ],
+              "text": "108:     # approximately; sufficient for ecological seasonality recovery.\n109:     cold=T<0\n110:     runoff[cold]*=0.35\n111:     runoff*=land[None,:,:]\n112: "
+            },
+            {
+              "end_line": 113,
+              "start_line": 109,
+              "terms": [
+                "runoff"
+              ],
+              "text": "109:     cold=T<0\n110:     runoff[cold]*=0.35\n111:     runoff*=land[None,:,:]\n112: \n113:     annual=runoff.sum(axis=0)"
+            },
+            {
+              "end_line": 115,
+              "start_line": 111,
+              "terms": [
+                "runoff",
+                "annual"
+              ],
+              "text": "111:     runoff*=land[None,:,:]\n112: \n113:     annual=runoff.sum(axis=0)\n114: \n115:     # Scale preserved E discharge seasonality by local runoff ratio."
+            },
+            {
+              "end_line": 117,
+              "start_line": 113,
+              "terms": [
+                "runoff",
+                "discharge"
+              ],
+              "text": "113:     annual=runoff.sum(axis=0)\n114: \n115:     # Scale preserved E discharge seasonality by local runoff ratio.\n116:     base_q=np.asarray(base[\"monthly_discharge_m3_s\"],dtype=float)\n117:     base_run=np.asarray(base[\"annual_runoff_mm_yr\"],dtype=float)"
+            },
+            {
+              "end_line": 118,
+              "start_line": 114,
+              "terms": [
+                "discharge",
+                "monthly"
+              ],
+              "text": "114: \n115:     # Scale preserved E discharge seasonality by local runoff ratio.\n116:     base_q=np.asarray(base[\"monthly_discharge_m3_s\"],dtype=float)\n117:     base_run=np.asarray(base[\"annual_runoff_mm_yr\"],dtype=float)\n118:     ratio_run=np.divide("
+            },
+            {
+              "end_line": 119,
+              "start_line": 115,
+              "terms": [
+                "runoff",
+                "annual"
+              ],
+              "text": "115:     # Scale preserved E discharge seasonality by local runoff ratio.\n116:     base_q=np.asarray(base[\"monthly_discharge_m3_s\"],dtype=float)\n117:     base_run=np.asarray(base[\"annual_runoff_mm_yr\"],dtype=float)\n118:     ratio_run=np.divide(\n119:         annual, np.maximum(base_run,1.0),"
+            },
+            {
+              "end_line": 121,
+              "start_line": 117,
+              "terms": [
+                "annual"
+              ],
+              "text": "117:     base_run=np.asarray(base[\"annual_runoff_mm_yr\"],dtype=float)\n118:     ratio_run=np.divide(\n119:         annual, np.maximum(base_run,1.0),\n120:         out=np.ones_like(annual),\n121:         where=base_run>0,"
+            },
+            {
+              "end_line": 122,
+              "start_line": 118,
+              "terms": [
+                "annual"
+              ],
+              "text": "118:     ratio_run=np.divide(\n119:         annual, np.maximum(base_run,1.0),\n120:         out=np.ones_like(annual),\n121:         where=base_run>0,\n122:     )"
+            },
+            {
+              "end_line": 134,
+              "start_line": 130,
+              "terms": [
+                "rain"
+              ],
+              "text": "130:     qcv=q.std(axis=0)/np.maximum(mean,1e-6)\n131: \n132:     drainage=np.asarray(drainage,dtype=float)\n133:     channel=land & (drainage>=8000.0) & (mean>=4.0)\n134:     perennial=channel & (qmin>=1.0) & (qcv<=1.15)"
+            },
+            {
+              "end_line": 135,
+              "start_line": 131,
+              "terms": [
+                "rain"
+              ],
+              "text": "131: \n132:     drainage=np.asarray(drainage,dtype=float)\n133:     channel=land & (drainage>=8000.0) & (mean>=4.0)\n134:     perennial=channel & (qmin>=1.0) & (qcv<=1.15)\n135:     seasonal_mask=channel & ~perennial"
+            },
+            {
+              "end_line": 146,
+              "start_line": 142,
+              "terms": [
+                "rain"
+              ],
+              "text": "142:     flood=np.clip(\n143:         0.35*np.sqrt(np.maximum(mean,0.0))\n144:         + 0.0025*np.sqrt(np.maximum(drainage,0.0)),\n145:         0.0,30.0,\n146:     )"
+            },
+            {
+              "end_line": 159,
+              "start_line": 155,
+              "terms": [
+                "rain"
+              ],
+              "text": "155:     )\n156:     coastal=land&ocean_nbr\n157:     delta=channel&coastal&(mean>=400.0)&(drainage>=30000.0)\n158: \n159:     closed=np.asarray(coast_state.closed_basin_below_sea_mask,dtype=bool)"
+            },
+            {
+              "end_line": 162,
+              "start_line": 158,
+              "terms": [
+                "annual"
+              ],
+              "text": "158: \n159:     closed=np.asarray(coast_state.closed_basin_below_sea_mask,dtype=bool)\n160:     closed_water=closed & (annual>=30.0)\n161:     lake=(depression>=8.0)&land&(annual>=25.0)\n162: "
+            },
+            {
+              "end_line": 163,
+              "start_line": 159,
+              "terms": [
+                "annual"
+              ],
+              "text": "159:     closed=np.asarray(coast_state.closed_basin_below_sea_mask,dtype=bool)\n160:     closed_water=closed & (annual>=30.0)\n161:     lake=(depression>=8.0)&land&(annual>=25.0)\n162: \n163:     snow=np.asarray(base[\"snowpack_end_mm\"],dtype=float).copy()"
+            },
+            {
+              "end_line": 165,
+              "start_line": 161,
+              "terms": [
+                "snow"
+              ],
+              "text": "161:     lake=(depression>=8.0)&land&(annual>=25.0)\n162: \n163:     snow=np.asarray(base[\"snowpack_end_mm\"],dtype=float).copy()\n164:     snow=_nearest_fill_from_old(snow,old_land,land,_nearest)\n165:     snow[~land]=0"
+            },
+            {
+              "end_line": 166,
+              "start_line": 162,
+              "terms": [
+                "snow"
+              ],
+              "text": "162: \n163:     snow=np.asarray(base[\"snowpack_end_mm\"],dtype=float).copy()\n164:     snow=_nearest_fill_from_old(snow,old_land,land,_nearest)\n165:     snow[~land]=0\n166: "
+            },
+            {
+              "end_line": 167,
+              "start_line": 163,
+              "terms": [
+                "snow"
+              ],
+              "text": "163:     snow=np.asarray(base[\"snowpack_end_mm\"],dtype=float).copy()\n164:     snow=_nearest_fill_from_old(snow,old_land,land,_nearest)\n165:     snow[~land]=0\n166: \n167:     receiver=np.asarray(base[\"receiver_flat\"],dtype=np.int32).copy()"
+            },
+            {
+              "end_line": 169,
+              "start_line": 165,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "165:     snow[~land]=0\n166: \n167:     receiver=np.asarray(base[\"receiver_flat\"],dtype=np.int32).copy()\n168: \n169:     return ChannelHydrologyState("
+            },
+            {
+              "end_line": 171,
+              "start_line": 167,
+              "terms": [
+                "hydrology"
+              ],
+              "text": "167:     receiver=np.asarray(base[\"receiver_flat\"],dtype=np.int32).copy()\n168: \n169:     return ChannelHydrologyState(\n170:         filled_elevation_m=filled,\n171:         depression_depth_m=depression,"
+            },
+            {
+              "end_line": 173,
+              "start_line": 169,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "169:     return ChannelHydrologyState(\n170:         filled_elevation_m=filled,\n171:         depression_depth_m=depression,\n172:         receiver_flat=receiver,\n173:         drainage_area_km2=drainage,"
+            },
+            {
+              "end_line": 174,
+              "start_line": 170,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "170:         filled_elevation_m=filled,\n171:         depression_depth_m=depression,\n172:         receiver_flat=receiver,\n173:         drainage_area_km2=drainage,\n174:         monthly_runoff_mm=runoff,"
+            },
+            {
+              "end_line": 175,
+              "start_line": 171,
+              "terms": [
+                "rain",
+                "drainage_area_km2"
+              ],
+              "text": "171:         depression_depth_m=depression,\n172:         receiver_flat=receiver,\n173:         drainage_area_km2=drainage,\n174:         monthly_runoff_mm=runoff,\n175:         annual_runoff_mm_yr=annual,"
+            },
+            {
+              "end_line": 176,
+              "start_line": 172,
+              "terms": [
+                "runoff",
+                "monthly"
+              ],
+              "text": "172:         receiver_flat=receiver,\n173:         drainage_area_km2=drainage,\n174:         monthly_runoff_mm=runoff,\n175:         annual_runoff_mm_yr=annual,\n176:         monthly_discharge_m3_s=q,"
+            },
+            {
+              "end_line": 177,
+              "start_line": 173,
+              "terms": [
+                "runoff",
+                "annual"
+              ],
+              "text": "173:         drainage_area_km2=drainage,\n174:         monthly_runoff_mm=runoff,\n175:         annual_runoff_mm_yr=annual,\n176:         monthly_discharge_m3_s=q,\n177:         mean_discharge_m3_s=mean,"
+            },
+            {
+              "end_line": 178,
+              "start_line": 174,
+              "terms": [
+                "discharge",
+                "monthly"
+              ],
+              "text": "174:         monthly_runoff_mm=runoff,\n175:         annual_runoff_mm_yr=annual,\n176:         monthly_discharge_m3_s=q,\n177:         mean_discharge_m3_s=mean,\n178:         minimum_month_discharge_m3_s=qmin,"
+            },
+            {
+              "end_line": 179,
+              "start_line": 175,
+              "terms": [
+                "discharge"
+              ],
+              "text": "175:         annual_runoff_mm_yr=annual,\n176:         monthly_discharge_m3_s=q,\n177:         mean_discharge_m3_s=mean,\n178:         minimum_month_discharge_m3_s=qmin,\n179:         maximum_month_discharge_m3_s=qmax,"
+            }
+          ],
+          "name": "build_channel_hydrology",
+          "start_line": 77,
+          "terms": [
+            "annual",
+            "def ",
+            "depression_depth_m",
+            "discharge",
+            "drainage_area_km2",
+            "hydrology",
+            "lake_candidate_mask",
+            "load(",
+            "monthly",
+            "precip",
+            "rain",
+            "receiver_flat",
+            "runoff",
+            "snow",
+            "storage",
+            "temperature"
+          ]
+        }
+      ],
+      "sha256": "29c808bd889d3f0c6e5390775d8751f68b9c9dd2cb5bab1736d6ad6cc6486351",
+      "signatures": [
+        {
+          "line": 9,
+          "text": "@dataclass"
+        },
+        {
+          "line": 10,
+          "text": "class ChannelHydrologyState:"
+        },
+        {
+          "line": 32,
+          "text": "    def save_npz(self, path):"
+        },
+        {
+          "line": 62,
+          "text": "def _nearest_fill_from_old(arr, old_land, new_land, nearest=None):"
+        },
+        {
+          "line": 77,
+          "text": "def build_channel_hydrology(project_root, coast_state, seasonal):"
+        }
+      ]
+    },
+    "src/arcana_worldsim/regional/hydrology.py": {
+      "io_literals": {
+        "loads_npz": [],
+        "saves_npz": []
+      },
+      "line_count": 207,
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\regional\\hydrology.py",
+      "relevant_blocks": [
+        {
+          "end_line": 24,
+          "excerpts": [
+            {
+              "end_line": 18,
+              "start_line": 16,
+              "terms": [
+                "class ",
+                "hydrology"
+              ],
+              "text": "16: class RegionalHydrology:\n17:     filled_elevation_m: np.ndarray\n18:     depression_depth_m: np.ndarray"
+            },
+            {
+              "end_line": 20,
+              "start_line": 16,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "16: class RegionalHydrology:\n17:     filled_elevation_m: np.ndarray\n18:     depression_depth_m: np.ndarray\n19:     receiver_flat: np.ndarray\n20:     drainage_area_km2: np.ndarray"
+            },
+            {
+              "end_line": 21,
+              "start_line": 17,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "17:     filled_elevation_m: np.ndarray\n18:     depression_depth_m: np.ndarray\n19:     receiver_flat: np.ndarray\n20:     drainage_area_km2: np.ndarray\n21:     river_mask: np.ndarray"
+            },
+            {
+              "end_line": 22,
+              "start_line": 18,
+              "terms": [
+                "rain",
+                "drainage_area_km2"
+              ],
+              "text": "18:     depression_depth_m: np.ndarray\n19:     receiver_flat: np.ndarray\n20:     drainage_area_km2: np.ndarray\n21:     river_mask: np.ndarray\n22:     lake_mask: np.ndarray"
+            }
+          ],
+          "name": "RegionalHydrology",
+          "start_line": 16,
+          "terms": [
+            "class ",
+            "depression_depth_m",
+            "drainage_area_km2",
+            "hydrology",
+            "rain",
+            "receiver_flat"
+          ]
+        },
+        {
+          "end_line": 37,
+          "excerpts": [
+            {
+              "end_line": 27,
+              "start_line": 25,
+              "terms": [
+                "def "
+              ],
+              "text": "25: def neighbours(i, j, nlat, nlon, periodic_lon=False):\n26:     for di, dj in NEIGHBOURS:\n27:         ni = i + di"
+            }
+          ],
+          "name": "neighbours",
+          "start_line": 25,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 48,
+          "excerpts": [
+            {
+              "end_line": 40,
+              "start_line": 38,
+              "terms": [
+                "def ",
+                "cell_area"
+              ],
+              "text": "38: def cell_area_km2(grid):\n39:     r = 6371.0\n40:     dlon = np.deg2rad(grid.resolution_deg)"
+            }
+          ],
+          "name": "cell_area_km2",
+          "start_line": 38,
+          "terms": [
+            "cell_area",
+            "def "
+          ]
+        },
+        {
+          "end_line": 101,
+          "excerpts": [
+            {
+              "end_line": 51,
+              "start_line": 49,
+              "terms": [
+                "def "
+              ],
+              "text": "49: def priority_flood_regional(elevation, ocean_mask, periodic_lon=False):\n50:     z = np.asarray(elevation, dtype=float)\n51:     nlat, nlon = z.shape"
+            }
+          ],
+          "name": "priority_flood_regional",
+          "start_line": 49,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 112,
+          "excerpts": [
+            {
+              "end_line": 104,
+              "start_line": 102,
+              "terms": [
+                "def "
+              ],
+              "text": "102: def _distance_km(grid, i, j, ni, nj):\n103:     dy = 111.195 * grid.resolution_deg * abs(ni - i)\n104:     dx = ("
+            }
+          ],
+          "name": "_distance_km",
+          "start_line": 102,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 148,
+          "excerpts": [
+            {
+              "end_line": 115,
+              "start_line": 113,
+              "terms": [
+                "def "
+              ],
+              "text": "113: def receivers(grid, filled, rank, ocean_mask):\n114:     nlat, nlon = filled.shape\n115:     receiver = np.full(filled.size, -1, dtype=np.int64)"
+            }
+          ],
+          "name": "receivers",
+          "start_line": 113,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 178,
+          "excerpts": [
+            {
+              "end_line": 151,
+              "start_line": 149,
+              "terms": [
+                "def ",
+                "route",
+                "receiver_flat"
+              ],
+              "text": "149: def route_scalar(receiver_flat, source):\n150:     receiver = np.asarray(receiver_flat, dtype=np.int64)\n151:     out = np.asarray(source, dtype=float).ravel().copy()"
+            },
+            {
+              "end_line": 152,
+              "start_line": 149,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "149: def route_scalar(receiver_flat, source):\n150:     receiver = np.asarray(receiver_flat, dtype=np.int64)\n151:     out = np.asarray(source, dtype=float).ravel().copy()\n152:     n = len(receiver)"
+            }
+          ],
+          "name": "route_scalar",
+          "start_line": 149,
+          "terms": [
+            "def ",
+            "receiver_flat",
+            "route"
+          ]
+        },
+        {
+          "end_line": 207,
+          "excerpts": [
+            {
+              "end_line": 181,
+              "start_line": 179,
+              "terms": [
+                "def ",
+                "hydrology"
+              ],
+              "text": "179: def solve_regional_hydrology(\n180:     grid,\n181:     elevation_m,"
+            },
+            {
+              "end_line": 196,
+              "start_line": 192,
+              "terms": [
+                "cell_area"
+              ],
+              "text": "192:     receiver = receivers(grid, filled, rank, ocean)\n193: \n194:     area = cell_area_km2(grid)\n195:     drainage = route_scalar(receiver, area)\n196: "
+            },
+            {
+              "end_line": 197,
+              "start_line": 193,
+              "terms": [
+                "rain",
+                "route"
+              ],
+              "text": "193: \n194:     area = cell_area_km2(grid)\n195:     drainage = route_scalar(receiver, area)\n196: \n197:     river = (~ocean) & (drainage >= float(river_threshold_km2))"
+            },
+            {
+              "end_line": 199,
+              "start_line": 195,
+              "terms": [
+                "rain"
+              ],
+              "text": "195:     drainage = route_scalar(receiver, area)\n196: \n197:     river = (~ocean) & (drainage >= float(river_threshold_km2))\n198:     lake = (~ocean) & (depression >= float(lake_depth_threshold_m))\n199: "
+            },
+            {
+              "end_line": 202,
+              "start_line": 198,
+              "terms": [
+                "hydrology"
+              ],
+              "text": "198:     lake = (~ocean) & (depression >= float(lake_depth_threshold_m))\n199: \n200:     return RegionalHydrology(\n201:         filled_elevation_m=filled,\n202:         depression_depth_m=depression,"
+            },
+            {
+              "end_line": 204,
+              "start_line": 200,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "200:     return RegionalHydrology(\n201:         filled_elevation_m=filled,\n202:         depression_depth_m=depression,\n203:         receiver_flat=receiver,\n204:         drainage_area_km2=drainage,"
+            },
+            {
+              "end_line": 205,
+              "start_line": 201,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "201:         filled_elevation_m=filled,\n202:         depression_depth_m=depression,\n203:         receiver_flat=receiver,\n204:         drainage_area_km2=drainage,\n205:         river_mask=river,"
+            },
+            {
+              "end_line": 206,
+              "start_line": 202,
+              "terms": [
+                "rain",
+                "drainage_area_km2"
+              ],
+              "text": "202:         depression_depth_m=depression,\n203:         receiver_flat=receiver,\n204:         drainage_area_km2=drainage,\n205:         river_mask=river,\n206:         lake_mask=lake,"
+            }
+          ],
+          "name": "solve_regional_hydrology",
+          "start_line": 179,
+          "terms": [
+            "cell_area",
+            "def ",
+            "depression_depth_m",
+            "drainage_area_km2",
+            "hydrology",
+            "rain",
+            "receiver_flat",
+            "route"
+          ]
+        }
+      ],
+      "sha256": "e32d766e3e700dd2da22adda3c09b0327e503d1ab9df663eb1c23e6730832b87",
+      "signatures": [
+        {
+          "line": 15,
+          "text": "@dataclass"
+        },
+        {
+          "line": 16,
+          "text": "class RegionalHydrology:"
+        },
+        {
+          "line": 25,
+          "text": "def neighbours(i, j, nlat, nlon, periodic_lon=False):"
+        },
+        {
+          "line": 38,
+          "text": "def cell_area_km2(grid):"
+        },
+        {
+          "line": 49,
+          "text": "def priority_flood_regional(elevation, ocean_mask, periodic_lon=False):"
+        },
+        {
+          "line": 102,
+          "text": "def _distance_km(grid, i, j, ni, nj):"
+        },
+        {
+          "line": 113,
+          "text": "def receivers(grid, filled, rank, ocean_mask):"
+        },
+        {
+          "line": 149,
+          "text": "def route_scalar(receiver_flat, source):"
+        },
+        {
+          "line": 179,
+          "text": "def solve_regional_hydrology("
+        }
+      ]
+    },
+    "src/arcana_worldsim/surface/hydrology.py": {
+      "io_literals": {
+        "loads_npz": [],
+        "saves_npz": []
+      },
+      "line_count": 322,
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\surface\\hydrology.py",
+      "relevant_blocks": [
+        {
+          "end_line": 29,
+          "excerpts": [
+            {
+              "end_line": 20,
+              "start_line": 18,
+              "terms": [
+                "class ",
+                "hydrology"
+              ],
+              "text": "18: class HydrologyResult:\n19:     filled_elevation_m: np.ndarray\n20:     depression_depth_m: np.ndarray"
+            },
+            {
+              "end_line": 22,
+              "start_line": 18,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "18: class HydrologyResult:\n19:     filled_elevation_m: np.ndarray\n20:     depression_depth_m: np.ndarray\n21:     receiver_flat: np.ndarray\n22:     flow_accumulation_km2: np.ndarray"
+            },
+            {
+              "end_line": 23,
+              "start_line": 19,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "19:     filled_elevation_m: np.ndarray\n20:     depression_depth_m: np.ndarray\n21:     receiver_flat: np.ndarray\n22:     flow_accumulation_km2: np.ndarray\n23:     flow_rank: np.ndarray"
+            }
+          ],
+          "name": "HydrologyResult",
+          "start_line": 18,
+          "terms": [
+            "class ",
+            "depression_depth_m",
+            "hydrology",
+            "receiver_flat"
+          ]
+        },
+        {
+          "end_line": 38,
+          "excerpts": [
+            {
+              "end_line": 32,
+              "start_line": 30,
+              "terms": [
+                "def "
+              ],
+              "text": "30: def _neighbours(i, j, nlat, nlon):\n31:     for di, dj in NEIGHBOURS:\n32:         ni = i + di"
+            }
+          ],
+          "name": "_neighbours",
+          "start_line": 30,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 96,
+          "excerpts": [
+            {
+              "end_line": 41,
+              "start_line": 39,
+              "terms": [
+                "def "
+              ],
+              "text": "39: def priority_flood(elevation_m: np.ndarray, ocean_mask: np.ndarray):\n40:     \"\"\"\n41:     Priority-Flood depression filling with periodic longitude."
+            },
+            {
+              "end_line": 47,
+              "start_line": 43,
+              "terms": [
+                "route"
+              ],
+              "text": "43:     Ocean cells are outlets and are not raised. Land depressions are filled to\n44:     their minimum spill elevation. A monotonically increasing flood rank is\n45:     also recorded so flat filled surfaces can be routed without cycles.\n46:     \"\"\"\n47:     elev = np.asarray(elevation_m, dtype=float)"
+            },
+            {
+              "end_line": 59,
+              "start_line": 55,
+              "terms": [
+                "rain"
+              ],
+              "text": "55:     counter = 0\n56: \n57:     # All ocean cells are valid global drainage outlets.\n58:     oi, oj = np.where(ocean_mask)\n59:     for i, j in zip(oi.tolist(), oj.tolist()):"
+            }
+          ],
+          "name": "priority_flood",
+          "start_line": 39,
+          "terms": [
+            "def ",
+            "rain",
+            "route"
+          ]
+        },
+        {
+          "end_line": 103,
+          "excerpts": [
+            {
+              "end_line": 99,
+              "start_line": 97,
+              "terms": [
+                "def "
+              ],
+              "text": "97: def _metric_distance_km(lat_deg, di, dj, resolution_deg):\n98:     lat = np.deg2rad(lat_deg)\n99:     dy = 111.195 * resolution_deg * abs(di)"
+            }
+          ],
+          "name": "_metric_distance_km",
+          "start_line": 97,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 151,
+          "excerpts": [
+            {
+              "end_line": 106,
+              "start_line": 104,
+              "terms": [
+                "def "
+              ],
+              "text": "104: def compute_receivers(filled, flood_rank, ocean_mask, latitudes, resolution_deg):\n105:     nlat, nlon = filled.shape\n106:     receiver = np.full(filled.size, -1, dtype=np.int64)"
+            },
+            {
+              "end_line": 143,
+              "start_line": 139,
+              "terms": [
+                "rain"
+              ],
+              "text": "139: \n140:             if best is not None:\n141:                 # Enforce acyclic lexicographic drainage.\n142:                 bi, bj = divmod(best, nlon)\n143:                 if ("
+            }
+          ],
+          "name": "compute_receivers",
+          "start_line": 104,
+          "terms": [
+            "def ",
+            "rain"
+          ]
+        },
+        {
+          "end_line": 166,
+          "excerpts": [
+            {
+              "end_line": 154,
+              "start_line": 152,
+              "terms": [
+                "def ",
+                "cell_area"
+              ],
+              "text": "152: def cell_area_km2(grid):\n153:     radius = 6371.0\n154:     dlon = np.deg2rad(grid.resolution_deg)"
+            }
+          ],
+          "name": "cell_area_km2",
+          "start_line": 152,
+          "terms": [
+            "cell_area",
+            "def "
+          ]
+        },
+        {
+          "end_line": 186,
+          "excerpts": [
+            {
+              "end_line": 169,
+              "start_line": 167,
+              "terms": [
+                "def ",
+                "receiver_flat"
+              ],
+              "text": "167: def flow_accumulation(receiver_flat, filled, flood_rank, source_area):\n168:     n = filled.size\n169:     accum = source_area.ravel().astype(float).copy()"
+            },
+            {
+              "end_line": 182,
+              "start_line": 178,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "178: \n179:     for idx in order:\n180:         r = int(receiver_flat[idx])\n181:         if r >= 0 and r != idx:\n182:             accum[r] += accum[idx]"
+            }
+          ],
+          "name": "flow_accumulation",
+          "start_line": 167,
+          "terms": [
+            "def ",
+            "receiver_flat"
+          ]
+        },
+        {
+          "end_line": 215,
+          "excerpts": [
+            {
+              "end_line": 189,
+              "start_line": 187,
+              "terms": [
+                "def "
+              ],
+              "text": "187: def _connected_components(mask):\n188:     nlat, nlon = mask.shape\n189:     ids = np.zeros(mask.shape, dtype=np.int32)"
+            }
+          ],
+          "name": "_connected_components",
+          "start_line": 187,
+          "terms": [
+            "def "
+          ]
+        },
+        {
+          "end_line": 267,
+          "excerpts": [
+            {
+              "end_line": 218,
+              "start_line": 216,
+              "terms": [
+                "def "
+              ],
+              "text": "216: def identify_lakes(\n217:     grid,\n218:     depression_depth,"
+            },
+            {
+              "end_line": 227,
+              "start_line": 223,
+              "terms": [
+                "cell_area"
+              ],
+              "text": "223:     candidate = land_mask & (depression_depth >= min_depth_m)\n224:     lake_id, comps = _connected_components(candidate)\n225:     area = cell_area_km2(grid)\n226: \n227:     table = []"
+            }
+          ],
+          "name": "identify_lakes",
+          "start_line": 216,
+          "terms": [
+            "cell_area",
+            "def "
+          ]
+        },
+        {
+          "end_line": 322,
+          "excerpts": [
+            {
+              "end_line": 270,
+              "start_line": 268,
+              "terms": [
+                "def ",
+                "hydrology"
+              ],
+              "text": "268: def solve_hydrology(\n269:     grid,\n270:     elevation_m,"
+            },
+            {
+              "end_line": 292,
+              "start_line": 288,
+              "terms": [
+                "cell_area"
+              ],
+              "text": "288:     )\n289: \n290:     area = cell_area_km2(grid)\n291:     accumulation = flow_accumulation(\n292:         receiver,"
+            },
+            {
+              "end_line": 314,
+              "start_line": 310,
+              "terms": [
+                "hydrology"
+              ],
+              "text": "310:     )\n311: \n312:     return HydrologyResult(\n313:         filled_elevation_m=filled,\n314:         depression_depth_m=depression,"
+            },
+            {
+              "end_line": 316,
+              "start_line": 312,
+              "terms": [
+                "depression_depth_m"
+              ],
+              "text": "312:     return HydrologyResult(\n313:         filled_elevation_m=filled,\n314:         depression_depth_m=depression,\n315:         receiver_flat=receiver,\n316:         flow_accumulation_km2=accumulation,"
+            },
+            {
+              "end_line": 317,
+              "start_line": 313,
+              "terms": [
+                "receiver_flat"
+              ],
+              "text": "313:         filled_elevation_m=filled,\n314:         depression_depth_m=depression,\n315:         receiver_flat=receiver,\n316:         flow_accumulation_km2=accumulation,\n317:         flow_rank=rank,"
+            }
+          ],
+          "name": "solve_hydrology",
+          "start_line": 268,
+          "terms": [
+            "cell_area",
+            "def ",
+            "depression_depth_m",
+            "hydrology",
+            "receiver_flat"
+          ]
+        }
+      ],
+      "sha256": "34584d0e8a8696b26e4026aad28f362850b7e9b98bb7754cc5cab8e4d282ff42",
+      "signatures": [
+        {
+          "line": 17,
+          "text": "@dataclass"
+        },
+        {
+          "line": 18,
+          "text": "class HydrologyResult:"
+        },
+        {
+          "line": 30,
+          "text": "def _neighbours(i, j, nlat, nlon):"
+        },
+        {
+          "line": 39,
+          "text": "def priority_flood(elevation_m: np.ndarray, ocean_mask: np.ndarray):"
+        },
+        {
+          "line": 97,
+          "text": "def _metric_distance_km(lat_deg, di, dj, resolution_deg):"
+        },
+        {
+          "line": 104,
+          "text": "def compute_receivers(filled, flood_rank, ocean_mask, latitudes, resolution_deg):"
+        },
+        {
+          "line": 152,
+          "text": "def cell_area_km2(grid):"
+        },
+        {
+          "line": 167,
+          "text": "def flow_accumulation(receiver_flat, filled, flood_rank, source_area):"
+        },
+        {
+          "line": 187,
+          "text": "def _connected_components(mask):"
+        },
+        {
+          "line": 216,
+          "text": "def identify_lakes("
+        },
+        {
+          "line": 268,
+          "text": "def solve_hydrology("
+        }
+      ]
+    }
+  },
+  "reuse_canonical_arcana": true,
+  "schema": "ARCANA_R5_17_B6_D1_CANONICAL_HYDROLOGY_REPLAY_CONTRACT_V1",
+  "search_root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld",
+  "source_executed": false,
+  "stage": "v0.6D1-R5.17",
+  "status": "PASS_R517_B6_D1_CANONICAL_HYDROLOGY_REPLAY_CONTRACT_CAPTURED",
+  "subphase": "R5.17-B6-D1"
+}

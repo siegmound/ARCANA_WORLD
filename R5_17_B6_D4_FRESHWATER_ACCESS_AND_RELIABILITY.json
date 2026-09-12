@@ -1,0 +1,695 @@
+{
+  "book_derivation": {
+    "hydrology_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_I_RECONSTRUCTED.npz",
+    "hydrology_sha256": "aa939af471ae6793d39fa1382270b9f9dffdfe7b735995e2d6caada78ac4fe25",
+    "land_cell_count": 265771,
+    "land_stats": {
+      "annual_runoff_mm_yr": {
+        "count": 265771,
+        "max": 5860.041015625,
+        "mean": 159.9242586402656,
+        "min": 0.0064352527260780334,
+        "p50": 12.58108901977539,
+        "p95": 837.0278015136719
+      },
+      "discharge_seasonality_cv": {
+        "count": 265771,
+        "max": 3.316624879837036,
+        "mean": 1.1606666000397423,
+        "min": 0.0,
+        "p50": 0.8320167660713196,
+        "p95": 3.280440926551819
+      },
+      "distance_to_any_channel_km": {
+        "count": 265771,
+        "max": 2039.705322265625,
+        "mean": 143.96532727408837,
+        "min": 0.0,
+        "p50": 61.69770431518555,
+        "p95": 562.5543212890625
+      },
+      "distance_to_lake_candidate_km": {
+        "count": 265771,
+        "max": 2358.519287109375,
+        "mean": 454.0127354018362,
+        "min": 0.0,
+        "p50": 250.04226684570312,
+        "p95": 1327.9178466796875
+      },
+      "distance_to_perennial_channel_km": {
+        "count": 265771,
+        "max": 2893.022216796875,
+        "mean": 373.87403667059726,
+        "min": 0.0,
+        "p50": 85.27613067626953,
+        "p95": 1401.3123168945312
+      },
+      "distance_to_perennial_or_lake_candidate_km": {
+        "count": 265771,
+        "max": 1975.27783203125,
+        "mean": 294.5346914919103,
+        "min": 0.0,
+        "p50": 62.15922927856445,
+        "p95": 1224.8678588867188
+      },
+      "low_flow_fraction_minimum_over_mean": {
+        "count": 265771,
+        "max": 0.8879157900810242,
+        "mean": 0.17128853158810844,
+        "min": 0.0,
+        "p50": 0.1389690339565277,
+        "p95": 0.4921627640724182
+      },
+      "mean_discharge_m3_s": {
+        "count": 265771,
+        "max": 82647.4453125,
+        "mean": 142.52940315515173,
+        "min": 0.0,
+        "p50": 0.36619335412979126,
+        "p95": 115.17507934570312
+      }
+    },
+    "resolution_deg": 0.25,
+    "source_counts": {
+      "any_channel": 25111,
+      "lake_candidate": 28860,
+      "perennial_channel": 21022,
+      "perennial_or_lake_candidate": 39884
+    }
+  },
+  "canonical_mutation": false,
+  "civilization_target_imposed": false,
+  "cross_snapshot_reliability": {
+    "any_channel_persistence_fraction_stats": {
+      "count": 335361,
+      "max": 1.0,
+      "mean": 0.07454668257094978,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 1.0
+    },
+    "lake_candidate_persistence_fraction_stats": {
+      "count": 335361,
+      "max": 1.0,
+      "mean": 0.07945094998074595,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 1.0
+    },
+    "land_snapshot_count_stats": {
+      "count": 1036800,
+      "max": 5.0,
+      "mean": 1.5467457561728395,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 5.0
+    },
+    "mean_distance_to_perennial_or_lake_candidate_km_stats": {
+      "count": 335361,
+      "max": 2180.435546875,
+      "mean": 347.3924932537529,
+      "min": 0.0,
+      "p50": 123.39798736572266,
+      "p95": 1239.3096923828125
+    },
+    "perennial_channel_persistence_fraction_stats": {
+      "count": 335361,
+      "max": 1.0,
+      "mean": 0.06257286926953749,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 1.0
+    },
+    "perennial_or_lake_candidate_persistence_fraction_stats": {
+      "count": 335361,
+      "max": 1.0,
+      "mean": 0.11420320203288963,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 1.0
+    },
+    "sampling_semantics": "five governed paleoclimate snapshots only; irregular chronology; not continuous-time probability"
+  },
+  "d3r_parent_status": "PASS_R517_B6_D3R_CANONICAL_PALEOHYDROLOGY_REPLAY_MATERIALIZED",
+  "decision": "AUTHORIZE_B6_NEXT_ENVIRONMENTAL_WATER_SUPPORT_INTEGRATION",
+  "derived_bundle": {
+    "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D4_DERIVED\\freshwater_support_reliability_bundle.npz",
+    "sha256": "e30240c1e7b6cd519763eeac6c3c0bb8d29682b0f3273fc7bbe0bfd7555ae0fe",
+    "size_bytes": 18472481,
+    "validation": {
+      "checks": {
+        "book_grid_shape": true,
+        "distance_nonnegative": true,
+        "ratio_and_persistence_ranges_0_1": true,
+        "shape_any_channel_persistence_fraction": true,
+        "shape_book_distance_to_any_channel_km": true,
+        "shape_book_distance_to_lake_candidate_km": true,
+        "shape_book_distance_to_perennial_channel_km": true,
+        "shape_book_distance_to_perennial_or_lake_candidate_km": true,
+        "shape_book_low_flow_fraction_minimum_over_mean": true,
+        "shape_lake_candidate_persistence_fraction": true,
+        "shape_mean_distance_to_perennial_or_lake_candidate_km_across_land_snapshots": true,
+        "shape_perennial_channel_persistence_fraction": true,
+        "shape_perennial_or_lake_candidate_persistence_fraction": true,
+        "shape_snapshot_distance_to_any_channel_km": true,
+        "shape_snapshot_distance_to_lake_candidate_km": true,
+        "shape_snapshot_distance_to_perennial_channel_km": true,
+        "shape_snapshot_distance_to_perennial_or_lake_candidate_km": true,
+        "shape_snapshot_low_flow_fraction_minimum_over_mean": true,
+        "snapshot_grid_shape": true,
+        "snapshot_year_count": true
+      },
+      "keys": [
+        "any_channel_persistence_fraction",
+        "book_distance_to_any_channel_km",
+        "book_distance_to_lake_candidate_km",
+        "book_distance_to_perennial_channel_km",
+        "book_distance_to_perennial_or_lake_candidate_km",
+        "book_land_mask",
+        "book_low_flow_fraction_minimum_over_mean",
+        "lake_candidate_persistence_fraction",
+        "land_snapshot_count",
+        "lat",
+        "lon",
+        "mean_distance_to_perennial_or_lake_candidate_km_across_land_snapshots",
+        "perennial_channel_persistence_fraction",
+        "perennial_or_lake_candidate_persistence_fraction",
+        "resolution_deg",
+        "snapshot_distance_to_any_channel_km",
+        "snapshot_distance_to_lake_candidate_km",
+        "snapshot_distance_to_perennial_channel_km",
+        "snapshot_distance_to_perennial_or_lake_candidate_km",
+        "snapshot_land_mask",
+        "snapshot_low_flow_fraction_minimum_over_mean",
+        "snapshot_year_before_book"
+      ],
+      "missing_required_fields": [],
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D4_DERIVED\\freshwater_support_reliability_bundle.npz",
+      "sha256": "e30240c1e7b6cd519763eeac6c3c0bb8d29682b0f3273fc7bbe0bfd7555ae0fe",
+      "valid": true
+    }
+  },
+  "external_provider_authorized": false,
+  "freshwater_support_materialized": true,
+  "historical_payload_identity_claimed": false,
+  "hydrological_reliability_materialized": true,
+  "input_authority": {
+    "book_hydrology": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_I_RECONSTRUCTED.npz",
+      "sha256": "aa939af471ae6793d39fa1382270b9f9dffdfe7b735995e2d6caada78ac4fe25"
+    },
+    "paleoclimate_spatial": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd"
+    },
+    "shoreline_I": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85"
+    },
+    "snapshot_hydrology": [
+      {
+        "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m021000ybp_RECONSTRUCTED.npz",
+        "sha256": "d578e11c74f5dad55ea4f05bfaba8963e3f70b3d055712861c96826a81c900d3",
+        "year_before_book": -21000.0
+      },
+      {
+        "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m014000ybp_RECONSTRUCTED.npz",
+        "sha256": "fe9e239c6b5c73390c24ebdd2047640bd2b210d62dedbf4a59e54636e9dc96d4",
+        "year_before_book": -14000.0
+      },
+      {
+        "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m012900ybp_RECONSTRUCTED.npz",
+        "sha256": "716fac0b3cd02f3511b215cfa6855b13de40f4c134b540e29a06b6aa3619a6b1",
+        "year_before_book": -12900.0
+      },
+      {
+        "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m012000ybp_RECONSTRUCTED.npz",
+        "sha256": "58f33e721c1f93b92a69af0600e76c31c8074eb72c735df519bc60be7f9d6cf5",
+        "year_before_book": -12000.0
+      },
+      {
+        "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_p000000y_RECONSTRUCTED.npz",
+        "sha256": "6c497dc39f145011bb1225e88770b6b647d71bf251adef4b876c55df02722a04",
+        "year_before_book": 0.0
+      }
+    ]
+  },
+  "k_materialized": false,
+  "next_if_pass": "R5.17-B6_ENVIRONMENTAL_WATER_SUPPORT_INTEGRATION_REVIEW",
+  "population_target_imposed": false,
+  "prerequisites_satisfied": true,
+  "purpose": "Translate governed physical paleohydrology into inspectable human-facing freshwater proximity and reliability axes while keeping raw hydrological evidence separate and avoiding a single opaque freshwater/civilization score.",
+  "runtime": {
+    "numpy_version": "2.4.3",
+    "python_executable": "C:\\Users\\jose_\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "python_version": "3.11.15",
+    "scipy_version": "1.17.1"
+  },
+  "schema": "ARCANA_R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY_V1",
+  "scientific_engine_suitability": {
+    "decision_class": "MINIMUM_CUSTOM_IMPLEMENTATION",
+    "existing_arcana_authority": {
+      "candidates": [
+        "R5.17-B6-D3R reconstructed book and snapshot channel hydrology"
+      ],
+      "decision": "REUSE_CANONICAL_ARCANA_AS_INPUT_AUTHORITY",
+      "exact_identity_verified": true,
+      "semantics_sufficient_as_physical_derivation_basis": true
+    },
+    "existing_validated_engines": {
+      "candidates": [
+        "NEMO",
+        "Geonomics",
+        "SLiM",
+        "tskit/msprime/pyslim",
+        "CDMetaPOP",
+        "RangeShiftR"
+      ],
+      "decision": "NOT_APPLICABLE_TO_TRANSPARENT_SURFACE_WATER_PROXIMITY_AND_PERSISTENCE_TRANSFORM",
+      "selected": null
+    },
+    "minimum_custom_scope": "periodic-grid source proximity, low-flow ratio, and five-snapshot persistence only",
+    "new_specialist_tools": {
+      "audit_required": false,
+      "selected": null
+    },
+    "scientific_question": "derive cell-level freshwater proximity and snapshot-sampled reliability from governed ARCANA physical hydrology",
+    "selected_provider": {
+      "justification": "The missing operation is raster proximity/persistence transformation, not a missing hydrological process model.",
+      "name": "ARCANA minimum transparent derived-layer transform",
+      "role": "EVIDENCE_PROVIDER_ONLY",
+      "runtime_identity": "Python 3.11.15 / NumPy 2.4.3 / SciPy 1.17.1"
+    }
+  },
+  "semantic_contract": {
+    "distance_semantics": "R3.14-compatible periodic-longitude raster proximity approximation; not route/travel cost.",
+    "freshwater_support": "A multi-axis surface-water support evidence bundle: physical distance to perennial channels, any channels, lake candidates, and perennial-or-lake candidates, retaining D3R runoff/discharge payloads by provenance. It is not safe yield, potable-water volume, irrigation capacity, or persons/cell.",
+    "hydrological_reliability": "Within-state minimum/mean discharge ratio plus cross-snapshot source persistence. Persistence is sampled only at the five governed paleoclimate snapshots and is not continuous-time reliability.",
+    "lake_semantics": "lake_candidate_mask remains a candidate-waterbody indicator and is never promoted to guaranteed permanent freshwater."
+  },
+  "snapshot_derivations": [
+    {
+      "hydrology_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m021000ybp_RECONSTRUCTED.npz",
+      "hydrology_sha256": "d578e11c74f5dad55ea4f05bfaba8963e3f70b3d055712861c96826a81c900d3",
+      "land_cell_count": 333512,
+      "land_stats": {
+        "annual_runoff_mm_yr": {
+          "count": 333512,
+          "max": 5001.7431640625,
+          "mean": 136.36025667134203,
+          "min": 0.004318887833505869,
+          "p50": 10.421003818511963,
+          "p95": 741.6042175292969
+        },
+        "discharge_seasonality_cv": {
+          "count": 333512,
+          "max": 3.316624879837036,
+          "mean": 0.9844201197742632,
+          "min": 0.0,
+          "p50": 0.7331704795360565,
+          "p95": 3.274221634864807
+        },
+        "distance_to_any_channel_km": {
+          "count": 333512,
+          "max": 1983.9193115234375,
+          "mean": 201.0958935540608,
+          "min": 0.0,
+          "p50": 84.37467956542969,
+          "p95": 743.4379455566411
+        },
+        "distance_to_lake_candidate_km": {
+          "count": 333512,
+          "max": 2247.532958984375,
+          "mean": 533.4703264202536,
+          "min": 0.0,
+          "p50": 383.5151062011719,
+          "p95": 1439.9379333496097
+        },
+        "distance_to_perennial_channel_km": {
+          "count": 333512,
+          "max": 2597.49267578125,
+          "mean": 436.9490114885011,
+          "min": 0.0,
+          "p50": 143.84854125976562,
+          "p95": 1541.7477966308595
+        },
+        "distance_to_perennial_or_lake_candidate_km": {
+          "count": 333512,
+          "max": 2180.435546875,
+          "mean": 347.184131204154,
+          "min": 0.0,
+          "p50": 118.53189086914062,
+          "p95": 1241.1823242187504
+        },
+        "low_flow_fraction_minimum_over_mean": {
+          "count": 333512,
+          "max": 0.887915849685669,
+          "mean": 0.14662456689540487,
+          "min": 0.0,
+          "p50": 0.08348733559250832,
+          "p95": 0.48483110666275026
+        },
+        "mean_discharge_m3_s": {
+          "count": 333512,
+          "max": 66833.5859375,
+          "mean": 89.8210181875467,
+          "min": 0.0,
+          "p50": 0.10168018192052841,
+          "p95": 60.662225914001624
+        }
+      },
+      "resolution_deg": 0.25,
+      "snapshot_index": 0,
+      "snapshot_year_before_book": -21000.0,
+      "source_counts": {
+        "any_channel": 24950,
+        "lake_candidate": 26130,
+        "perennial_channel": 20942,
+        "perennial_or_lake_candidate": 37902
+      }
+    },
+    {
+      "hydrology_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m014000ybp_RECONSTRUCTED.npz",
+      "hydrology_sha256": "fe9e239c6b5c73390c24ebdd2047640bd2b210d62dedbf4a59e54636e9dc96d4",
+      "land_cell_count": 335361,
+      "land_stats": {
+        "annual_runoff_mm_yr": {
+          "count": 335361,
+          "max": 4995.5849609375,
+          "mean": 135.9137325267033,
+          "min": 0.0044645266607403755,
+          "p50": 10.359678268432617,
+          "p95": 739.0936279296875
+        },
+        "discharge_seasonality_cv": {
+          "count": 335361,
+          "max": 3.316624879837036,
+          "mean": 0.9795638168170344,
+          "min": 0.0,
+          "p50": 0.7297113537788391,
+          "p95": 3.2740025520324707
+        },
+        "distance_to_any_channel_km": {
+          "count": 335361,
+          "max": 1983.9193115234375,
+          "mean": 202.73537791871092,
+          "min": 0.0,
+          "p50": 85.70317840576172,
+          "p95": 752.2017211914062
+        },
+        "distance_to_lake_candidate_km": {
+          "count": 335361,
+          "max": 2247.532958984375,
+          "mean": 535.1083094352908,
+          "min": 0.0,
+          "p50": 385.944580078125,
+          "p95": 1442.6927490234375
+        },
+        "distance_to_perennial_channel_km": {
+          "count": 335361,
+          "max": 2597.49267578125,
+          "mean": 438.2602241377431,
+          "min": 0.0,
+          "p50": 147.0290069580078,
+          "p95": 1544.4609375
+        },
+        "distance_to_perennial_or_lake_candidate_km": {
+          "count": 335361,
+          "max": 2180.435546875,
+          "mean": 348.19547500176856,
+          "min": 0.0,
+          "p50": 121.77230072021484,
+          "p95": 1241.2305908203125
+        },
+        "low_flow_fraction_minimum_over_mean": {
+          "count": 335361,
+          "max": 0.887915849685669,
+          "mean": 0.14593150246184886,
+          "min": 0.0,
+          "p50": 0.06831572949886322,
+          "p95": 0.4845147132873535
+        },
+        "mean_discharge_m3_s": {
+          "count": 335361,
+          "max": 66393.9765625,
+          "mean": 89.20494748123915,
+          "min": 0.0,
+          "p50": 0.0965956524014473,
+          "p95": 59.71619415283203
+        }
+      },
+      "resolution_deg": 0.25,
+      "snapshot_index": 1,
+      "snapshot_year_before_book": -14000.0,
+      "source_counts": {
+        "any_channel": 24909,
+        "lake_candidate": 26087,
+        "perennial_channel": 20914,
+        "perennial_or_lake_candidate": 37835
+      }
+    },
+    {
+      "hydrology_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m012900ybp_RECONSTRUCTED.npz",
+      "hydrology_sha256": "716fac0b3cd02f3511b215cfa6855b13de40f4c134b540e29a06b6aa3619a6b1",
+      "land_cell_count": 334699,
+      "land_stats": {
+        "annual_runoff_mm_yr": {
+          "count": 334699,
+          "max": 4986.01025390625,
+          "mean": 125.88135547795989,
+          "min": 0.004350188188254833,
+          "p50": 8.44847583770752,
+          "p95": 698.9848144531245
+        },
+        "discharge_seasonality_cv": {
+          "count": 334699,
+          "max": 3.316624879837036,
+          "mean": 0.9812994024481199,
+          "min": 0.0,
+          "p50": 0.7309229969978333,
+          "p95": 3.274067449569702
+        },
+        "distance_to_any_channel_km": {
+          "count": 334699,
+          "max": 1983.9193115234375,
+          "mean": 210.47696349262648,
+          "min": 0.0,
+          "p50": 87.8520278930664,
+          "p95": 810.4649047851562
+        },
+        "distance_to_lake_candidate_km": {
+          "count": 334699,
+          "max": 2306.891357421875,
+          "mean": 558.9873800218301,
+          "min": 0.0,
+          "p50": 414.67919921875,
+          "p95": 1525.0322998046868
+        },
+        "distance_to_perennial_channel_km": {
+          "count": 334699,
+          "max": 2597.49267578125,
+          "mean": 441.846926464719,
+          "min": 0.0,
+          "p50": 155.26409912109375,
+          "p95": 1546.0812622070312
+        },
+        "distance_to_perennial_or_lake_candidate_km": {
+          "count": 334699,
+          "max": 2180.435546875,
+          "mean": 358.5900882772361,
+          "min": 0.0,
+          "p50": 133.20030212402344,
+          "p95": 1255.3875732421875
+        },
+        "low_flow_fraction_minimum_over_mean": {
+          "count": 334699,
+          "max": 0.8879159092903137,
+          "mean": 0.14618387312862363,
+          "min": 0.0,
+          "p50": 0.07842638343572617,
+          "p95": 0.4846271663904188
+        },
+        "mean_discharge_m3_s": {
+          "count": 334699,
+          "max": 62084.3046875,
+          "mean": 87.28669901760485,
+          "min": 0.0,
+          "p50": 0.08320041745901108,
+          "p95": 53.90304718017575
+        }
+      },
+      "resolution_deg": 0.25,
+      "snapshot_index": 2,
+      "snapshot_year_before_book": -12900.0,
+      "source_counts": {
+        "any_channel": 24367,
+        "lake_candidate": 25083,
+        "perennial_channel": 20468,
+        "perennial_or_lake_candidate": 36675
+      }
+    },
+    {
+      "hydrology_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_m012000ybp_RECONSTRUCTED.npz",
+      "hydrology_sha256": "58f33e721c1f93b92a69af0600e76c31c8074eb72c735df519bc60be7f9d6cf5",
+      "land_cell_count": 333063,
+      "land_stats": {
+        "annual_runoff_mm_yr": {
+          "count": 333063,
+          "max": 5040.49755859375,
+          "mean": 134.35250864494918,
+          "min": 0.004703004378825426,
+          "p50": 9.931233406066895,
+          "p95": 733.4246337890622
+        },
+        "discharge_seasonality_cv": {
+          "count": 333063,
+          "max": 3.316624879837036,
+          "mean": 0.9856481686401212,
+          "min": 0.0,
+          "p50": 0.7340021729469299,
+          "p95": 3.274312710762024
+        },
+        "distance_to_any_channel_km": {
+          "count": 333063,
+          "max": 1983.9193115234375,
+          "mean": 205.34338607285224,
+          "min": 0.0,
+          "p50": 85.57452392578125,
+          "p95": 790.0582275390625
+        },
+        "distance_to_lake_candidate_km": {
+          "count": 333063,
+          "max": 2250.26025390625,
+          "mean": 537.4545722862102,
+          "min": 0.0,
+          "p50": 387.1692199707031,
+          "p95": 1457.3100830078117
+        },
+        "distance_to_perennial_channel_km": {
+          "count": 333063,
+          "max": 2597.49267578125,
+          "mean": 437.38114598076834,
+          "min": 0.0,
+          "p50": 146.13046264648438,
+          "p95": 1541.1100952148413
+        },
+        "distance_to_perennial_or_lake_candidate_km": {
+          "count": 333063,
+          "max": 2180.435546875,
+          "mean": 347.9521528980878,
+          "min": 0.0,
+          "p50": 121.69363403320312,
+          "p95": 1240.8050537109375
+        },
+        "low_flow_fraction_minimum_over_mean": {
+          "count": 333063,
+          "max": 0.887915849685669,
+          "mean": 0.14679832487077518,
+          "min": 0.0,
+          "p50": 0.08394850045442581,
+          "p95": 0.48488653600215875
+        },
+        "mean_discharge_m3_s": {
+          "count": 333063,
+          "max": 66040.125,
+          "mean": 90.48945976396067,
+          "min": 0.0,
+          "p50": 0.09806067496538162,
+          "p95": 59.608441162109365
+        }
+      },
+      "resolution_deg": 0.25,
+      "snapshot_index": 3,
+      "snapshot_year_before_book": -12000.0,
+      "source_counts": {
+        "any_channel": 24797,
+        "lake_candidate": 26021,
+        "perennial_channel": 20854,
+        "perennial_or_lake_candidate": 37696
+      }
+    },
+    {
+      "hydrology_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\R5_17_B6_D3_RECONSTRUCTED\\channel_hydrology_state_p000000y_RECONSTRUCTED.npz",
+      "hydrology_sha256": "6c497dc39f145011bb1225e88770b6b647d71bf251adef4b876c55df02722a04",
+      "land_cell_count": 267031,
+      "land_stats": {
+        "annual_runoff_mm_yr": {
+          "count": 267031,
+          "max": 5860.041015625,
+          "mean": 159.39458935827085,
+          "min": 0.0064352527260780334,
+          "p50": 12.347280502319336,
+          "p95": 840.3256530761719
+        },
+        "discharge_seasonality_cv": {
+          "count": 267031,
+          "max": 3.316624879837036,
+          "mean": 1.165946992235364,
+          "min": 0.0,
+          "p50": 0.8345112800598145,
+          "p95": 3.2804707288742065
+        },
+        "distance_to_any_channel_km": {
+          "count": 267031,
+          "max": 2039.705322265625,
+          "mean": 143.87881887059925,
+          "min": 0.0,
+          "p50": 61.6496467590332,
+          "p95": 566.7285766601562
+        },
+        "distance_to_lake_candidate_km": {
+          "count": 267031,
+          "max": 1917.1612548828125,
+          "mean": 436.60157234988344,
+          "min": 0.0,
+          "p50": 247.1466522216797,
+          "p95": 1297.9279174804688
+        },
+        "distance_to_perennial_channel_km": {
+          "count": 267031,
+          "max": 2591.5,
+          "mean": 356.4335651739988,
+          "min": 0.0,
+          "p50": 84.83014678955078,
+          "p95": 1290.4954833984375
+        },
+        "distance_to_perennial_or_lake_candidate_km": {
+          "count": 267031,
+          "max": 1917.1612548828125,
+          "mean": 283.39028778337456,
+          "min": 0.0,
+          "p50": 62.138519287109375,
+          "p95": 1185.841796875
+        },
+        "low_flow_fraction_minimum_over_mean": {
+          "count": 267031,
+          "max": 0.887915849685669,
+          "mean": 0.17176326515320606,
+          "min": 0.0,
+          "p50": 0.1398720145225525,
+          "p95": 0.4926435649394989
+        },
+        "mean_discharge_m3_s": {
+          "count": 267031,
+          "max": 82647.4375,
+          "mean": 142.2524338748906,
+          "min": 0.0,
+          "p50": 0.37344199419021606,
+          "p95": 115.8013801574707
+        }
+      },
+      "resolution_deg": 0.25,
+      "snapshot_index": 4,
+      "snapshot_year_before_book": 0.0,
+      "source_counts": {
+        "any_channel": 25245,
+        "lake_candidate": 29021,
+        "perennial_channel": 21133,
+        "perennial_or_lake_candidate": 40114
+      }
+    }
+  ],
+  "stage": "v0.6D1-R5.17",
+  "status": "PASS_R517_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY_MATERIALIZED",
+  "subphase": "R5.17-B6-D4"
+}

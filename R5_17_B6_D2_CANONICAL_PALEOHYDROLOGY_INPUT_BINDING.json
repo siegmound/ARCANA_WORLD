@@ -1,0 +1,528 @@
+{
+  "callable_contracts": {
+    "src/arcana_worldsim/climate/water_balance.py": {
+      "argument_attribute_usage": {
+        "climate": [
+          "annual_temperature_c",
+          "aridity_index",
+          "ice_fraction",
+          "potential_evapotranspiration_mm_yr",
+          "precipitation_mm_yr"
+        ],
+        "geology": [
+          "lithology_code"
+        ],
+        "river_discharge_threshold_m3_s": [],
+        "surface": [
+          "final_elevation_m",
+          "grid",
+          "structural_hydrology"
+        ]
+      },
+      "arguments": [
+        "surface",
+        "climate",
+        "geology",
+        "river_discharge_threshold_m3_s"
+      ],
+      "found": true,
+      "function": "build_climatic_hydrology",
+      "indexed_keys": [],
+      "line_end": 285,
+      "line_start": 191,
+      "npz_literals": [],
+      "path_fragments": [],
+      "relevant_equation_lines": [
+        {
+          "line": 195,
+          "text": "river_discharge_threshold_m3_s=45.0,"
+        },
+        {
+          "line": 201,
+          "text": "p = climate.precipitation_mm_yr"
+        },
+        {
+          "line": 202,
+          "text": "pet = climate.potential_evapotranspiration_mm_yr"
+        },
+        {
+          "line": 204,
+          "text": "aet = budyko_aet(p, pet)"
+        },
+        {
+          "line": 205,
+          "text": "surplus = np.maximum(p - aet, 0.0)"
+        },
+        {
+          "line": 207,
+          "text": "infiltration = lithology_infiltration_fraction(geology.lithology_code)"
+        },
+        {
+          "line": 209,
+          "text": "# Most infiltrated annual water eventually returns to the surface system;"
+        },
+        {
+          "line": 210,
+          "text": "# the rest is retained in deep groundwater/storage on this timescale."
+        },
+        {
+          "line": 211,
+          "text": "groundwater_return = 0.72"
+        },
+        {
+          "line": 212,
+          "text": "effective_runoff_fraction = 1.0 - infiltration * (1.0 - groundwater_return)"
+        },
+        {
+          "line": 214,
+          "text": "# Permanent ice stores a larger part of annual precipitation; snow in"
+        },
+        {
+          "line": 216,
+          "text": "cryo_storage = np.clip("
+        },
+        {
+          "line": 222,
+          "text": "runoff = surplus * effective_runoff_fraction * (1.0 - cryo_storage)"
+        },
+        {
+          "line": 223,
+          "text": "runoff *= land"
+        },
+        {
+          "line": 226,
+          "text": "local_volume_m3_yr = runoff * 1e-3 * area_km2 * 1e6"
+        },
+        {
+          "line": 228,
+          "text": "routed_volume = _route_volume("
+        },
+        {
+          "line": 232,
+          "text": "discharge = routed_volume / SECONDS_PER_YEAR"
+        },
+        {
+          "line": 235,
+          "text": "actual = structural & (discharge >= river_discharge_threshold_m3_s)"
+        },
+        {
+          "line": 247,
+          "text": "& (runoff < 15.0)"
+        },
+        {
+          "line": 254,
+          "text": "discharge,"
+        },
+        {
+          "line": 259,
+          "text": "\"river_discharge_threshold_m3_s\": float(river_discharge_threshold_m3_s),"
+        },
+        {
+          "line": 260,
+          "text": "\"groundwater_return_fraction\": groundwater_return,"
+        },
+        {
+          "line": 262,
+          "text": "\"Annual runoff uses Budyko-style P/PET balance.\","
+        },
+        {
+          "line": 265,
+          "text": "\"Lake persistence uses catchment inflow proxy versus open-water evaporation.\","
+        },
+        {
+          "line": 272,
+          "text": "actual_evapotranspiration_mm_yr=aet,"
+        },
+        {
+          "line": 273,
+          "text": "climatic_runoff_mm_yr=runoff,"
+        },
+        {
+          "line": 274,
+          "text": "runoff_volume_m3_yr=local_volume_m3_yr,"
+        },
+        {
+          "line": 275,
+          "text": "routed_discharge_m3_s=discharge,"
+        }
+      ],
+      "signature": "def build_climatic_hydrology("
+    },
+    "src/arcana_worldsim/finalization/hydrology.py": {
+      "argument_attribute_usage": {
+        "coast_state": [
+          "closed_basin_below_sea_mask",
+          "elevation_m",
+          "land_mask"
+        ],
+        "project_root": [],
+        "seasonal": [
+          "monthly_pet_mm",
+          "monthly_precipitation_mm",
+          "monthly_temperature_c"
+        ]
+      },
+      "arguments": [
+        "project_root",
+        "coast_state",
+        "seasonal"
+      ],
+      "found": true,
+      "function": "build_channel_hydrology",
+      "indexed_keys": [
+        "annual_runoff_mm_yr",
+        "depression_depth_m",
+        "drainage_area_km2",
+        "filled_elevation_m",
+        "land_mask",
+        "monthly_discharge_m3_s",
+        "receiver_flat",
+        "snowpack_end_mm",
+        "strahler_order"
+      ],
+      "line_end": 190,
+      "line_start": 77,
+      "npz_literals": [
+        "outputs/hybrid1/physical_finalization/channel_hydrology_state.npz",
+        "outputs/hybrid1/physical_finalization/coast_ocean_state.npz"
+      ],
+      "path_fragments": [
+        "outputs/hybrid1/physical_finalization/channel_hydrology_state.npz",
+        "outputs/hybrid1/physical_finalization/coast_ocean_state.npz"
+      ],
+      "relevant_equation_lines": [
+        {
+          "line": 89,
+          "text": "# recomputing runoff/discharge magnitudes and terrestrial channel masks for"
+        },
+        {
+          "line": 99,
+          "text": "P=np.asarray(seasonal.monthly_precipitation_mm,dtype=float)"
+        },
+        {
+          "line": 100,
+          "text": "PET=np.asarray(seasonal.monthly_pet_mm,dtype=float)"
+        },
+        {
+          "line": 102,
+          "text": "ratio=PET/np.maximum(P,1e-6)"
+        },
+        {
+          "line": 104,
+          "text": "aet_frac=1+ratio-(1+ratio**omega)**(1/omega)"
+        },
+        {
+          "line": 105,
+          "text": "aet=np.clip(P*aet_frac,0,P)"
+        },
+        {
+          "line": 106,
+          "text": "runoff=np.maximum(P-aet,0.0)"
+        },
+        {
+          "line": 107,
+          "text": "# Mild snow storage: cold precipitation releases in first thaw months only"
+        },
+        {
+          "line": 110,
+          "text": "runoff[cold]*=0.35"
+        },
+        {
+          "line": 111,
+          "text": "runoff*=land[None,:,:]"
+        },
+        {
+          "line": 113,
+          "text": "annual=runoff.sum(axis=0)"
+        },
+        {
+          "line": 115,
+          "text": "# Scale preserved E discharge seasonality by local runoff ratio."
+        },
+        {
+          "line": 116,
+          "text": "base_q=np.asarray(base[\"monthly_discharge_m3_s\"],dtype=float)"
+        },
+        {
+          "line": 117,
+          "text": "base_run=np.asarray(base[\"annual_runoff_mm_yr\"],dtype=float)"
+        },
+        {
+          "line": 174,
+          "text": "monthly_runoff_mm=runoff,"
+        },
+        {
+          "line": 175,
+          "text": "annual_runoff_mm_yr=annual,"
+        },
+        {
+          "line": 176,
+          "text": "monthly_discharge_m3_s=q,"
+        },
+        {
+          "line": 177,
+          "text": "mean_discharge_m3_s=mean,"
+        },
+        {
+          "line": 178,
+          "text": "minimum_month_discharge_m3_s=qmin,"
+        },
+        {
+          "line": 179,
+          "text": "maximum_month_discharge_m3_s=qmax,"
+        },
+        {
+          "line": 180,
+          "text": "discharge_seasonality_cv=qcv,"
+        }
+      ],
+      "signature": "def build_channel_hydrology(project_root, coast_state, seasonal):"
+    }
+  },
+  "canonical_mutation": false,
+  "exact_book_era_shoreline_found": true,
+  "exact_book_era_shoreline_sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+  "exact_paleoclimate_snapshot_found": true,
+  "exact_paleoclimate_snapshot_sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+  "exact_sources_complete": true,
+  "expected_source_hashes": {
+    "src/arcana_worldsim/climate/water_balance.py": "23090416ef8234d43689171241d80d8ca2609882455bd30761de30301e5bfb61",
+    "src/arcana_worldsim/finalization/hydrology.py": "29c808bd889d3f0c6e5390775d8751f68b9c9dd2cb5bab1736d6ad6cc6486351",
+    "src/arcana_worldsim/regional/hydrology.py": "e32d766e3e700dd2da22adda3c09b0327e503d1ab9df663eb1c23e6730832b87",
+    "src/arcana_worldsim/surface/hydrology.py": "34584d0e8a8696b26e4026aad28f362850b7e9b98bb7754cc5cab8e4d282ff42"
+  },
+  "external_provider_authorized": false,
+  "freshwater_support_materialized": false,
+  "historical_source_executed": false,
+  "next_if_ready": "R5.17-B6-D3_CANONICAL_PALEOHYDROLOGY_REPLAY_IMPLEMENTATION",
+  "next_if_unresolved": "R5.17-B6-D2R_RESOLVE_EXACT_BASELINE_INPUT_BINDINGS",
+  "paleoclimate_spatial_snapshot_candidates": [
+    {
+      "npz": {
+        "key_count": 11,
+        "keys": [
+          "cha2_flood_exposure",
+          "cha2_flood_memory_potential",
+          "cha2_megaflood_corridor",
+          "cha2_primitive_culture_habitat_potential",
+          "cha2_transgressed_land_mask",
+          "npp_factor_relative_book",
+          "owner_code",
+          "paleo_land_mask",
+          "precipitation_factor_relative_book",
+          "snapshot_year_before_book",
+          "temperature_anomaly_c"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "size_bytes": 7838247
+    },
+    {
+      "npz": {
+        "key_count": 11,
+        "keys": [
+          "cha2_flood_exposure",
+          "cha2_flood_memory_potential",
+          "cha2_megaflood_corridor",
+          "cha2_primitive_culture_habitat_potential",
+          "cha2_transgressed_land_mask",
+          "npp_factor_relative_book",
+          "owner_code",
+          "paleo_land_mask",
+          "precipitation_factor_relative_book",
+          "snapshot_year_before_book",
+          "temperature_anomaly_c"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "size_bytes": 7838247
+    },
+    {
+      "npz": {
+        "key_count": 11,
+        "keys": [
+          "cha2_flood_exposure",
+          "cha2_flood_memory_potential",
+          "cha2_megaflood_corridor",
+          "cha2_primitive_culture_habitat_potential",
+          "cha2_transgressed_land_mask",
+          "npp_factor_relative_book",
+          "owner_code",
+          "paleo_land_mask",
+          "precipitation_factor_relative_book",
+          "snapshot_year_before_book",
+          "temperature_anomaly_c"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "size_bytes": 7838247
+    },
+    {
+      "npz": {
+        "key_count": 11,
+        "keys": [
+          "cha2_flood_exposure",
+          "cha2_flood_memory_potential",
+          "cha2_megaflood_corridor",
+          "cha2_primitive_culture_habitat_potential",
+          "cha2_transgressed_land_mask",
+          "npp_factor_relative_book",
+          "owner_code",
+          "paleo_land_mask",
+          "precipitation_factor_relative_book",
+          "snapshot_year_before_book",
+          "temperature_anomaly_c"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\outputs\\hybrid1\\paleoclimate_v0_6_1\\paleoclimate_spatial_snapshots.npz",
+      "sha256": "a0ecdf8ee18ecb40883973e69b417bea3de7faead2a123a3bb09bd6c740176fd",
+      "size_bytes": 7838247
+    }
+  ],
+  "purpose": "Bind the adjudicated canonical ARCANA hydrology callable contract to exact paleoclimate and locally materialized baseline input payloads before any time-varying hydrology replay is executed.",
+  "replay_execution_ready": false,
+  "representative_source_paths": {
+    "src/arcana_worldsim/climate/water_balance.py": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\climate\\water_balance.py",
+    "src/arcana_worldsim/finalization/hydrology.py": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\finalization\\hydrology.py",
+    "src/arcana_worldsim/regional/hydrology.py": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\regional\\hydrology.py",
+    "src/arcana_worldsim/surface/hydrology.py": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_5_5F_RECOVERED\\src\\arcana_worldsim\\surface\\hydrology.py"
+  },
+  "reuse_canonical_arcana": true,
+  "schema": "ARCANA_R5_17_B6_D2_CANONICAL_PALEOHYDROLOGY_INPUT_BINDING_V1",
+  "search_root": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld",
+  "seasonal_climate_baseline_found": false,
+  "seasonal_climate_candidates": [],
+  "shoreline_candidates": [
+    {
+      "npz": {
+        "key_count": 17,
+        "keys": [
+          "changed_effective_land_mask",
+          "closed_basin_below_sea_mask",
+          "coastal_fractional_mask",
+          "effective_land_mask",
+          "elevation_m",
+          "land_fraction",
+          "lat",
+          "lon",
+          "ocean_mask",
+          "owner_code",
+          "refinement_code",
+          "resolution_deg",
+          "subgrid_land_mask",
+          "subgrid_lat",
+          "subgrid_lon",
+          "subgrid_owner_code",
+          "subgrid_resolution_deg"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\local_bindings\\v0_6D1_R3_14\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    },
+    {
+      "npz": {
+        "key_count": 17,
+        "keys": [
+          "changed_effective_land_mask",
+          "closed_basin_below_sea_mask",
+          "coastal_fractional_mask",
+          "effective_land_mask",
+          "elevation_m",
+          "land_fraction",
+          "lat",
+          "lon",
+          "ocean_mask",
+          "owner_code",
+          "refinement_code",
+          "resolution_deg",
+          "subgrid_land_mask",
+          "subgrid_lat",
+          "subgrid_lon",
+          "subgrid_owner_code",
+          "subgrid_resolution_deg"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    },
+    {
+      "npz": {
+        "key_count": 17,
+        "keys": [
+          "changed_effective_land_mask",
+          "closed_basin_below_sea_mask",
+          "coastal_fractional_mask",
+          "effective_land_mask",
+          "elevation_m",
+          "land_fraction",
+          "lat",
+          "lon",
+          "ocean_mask",
+          "owner_code",
+          "refinement_code",
+          "resolution_deg",
+          "subgrid_land_mask",
+          "subgrid_lat",
+          "subgrid_lon",
+          "subgrid_owner_code",
+          "subgrid_resolution_deg"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R1_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    },
+    {
+      "npz": {
+        "key_count": 17,
+        "keys": [
+          "changed_effective_land_mask",
+          "closed_basin_below_sea_mask",
+          "coastal_fractional_mask",
+          "effective_land_mask",
+          "elevation_m",
+          "land_fraction",
+          "lat",
+          "lon",
+          "ocean_mask",
+          "owner_code",
+          "refinement_code",
+          "resolution_deg",
+          "subgrid_land_mask",
+          "subgrid_lat",
+          "subgrid_lon",
+          "subgrid_owner_code",
+          "subgrid_resolution_deg"
+        ],
+        "ok": true
+      },
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WorldSim_v0_6_5B_R2_NATURAL_CONTROL_30Ma_0_WINDOWS_RUNPACK\\inputs\\v0_6_1_SEALED_MINIMAL\\inputs\\v0_5_5I_SEALED\\shoreline_state_I.npz",
+      "sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+      "size_bytes": 2851652
+    }
+  ],
+  "source_candidate_counts": {
+    "src/arcana_worldsim/climate/water_balance.py": 3,
+    "src/arcana_worldsim/finalization/hydrology.py": 1,
+    "src/arcana_worldsim/regional/hydrology.py": 3,
+    "src/arcana_worldsim/surface/hydrology.py": 4
+  },
+  "stage": "v0.6D1-R5.17",
+  "status": "PASS_R517_B6_D2_INPUT_BINDING_EVIDENCE_CAPTURED_WITH_UNRESOLVED_INPUTS",
+  "subphase": "R5.17-B6-D2",
+  "unresolved_inputs": [
+    "seasonal_climate_state_I_baseline"
+  ]
+}

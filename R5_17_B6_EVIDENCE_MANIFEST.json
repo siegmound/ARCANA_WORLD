@@ -1,0 +1,417 @@
+﻿{
+    "schema":  "ARCANA_R517_B6_EVIDENCE_MANIFEST_V1",
+    "stage":  "v0.6D1-R5.17",
+    "subphase":  "R5.17-B6",
+    "status":  "B6_COMPLETED_EVIDENCE_REGISTERED",
+    "repository_head_before_transition":  "6a47f5f9ae3ee28e32a4cbd1fb08c61d473efdd1",
+    "policy":  {
+                   "compact_control_plane_evidence":  "COMMIT_IN_NORMAL_GIT",
+                   "reconstructed_payloads":  "HASH_REGISTER_ONLY",
+                   "reason":  "Avoid heavyweight generated payloads in normal Git history while preserving exact identity and replay provenance.",
+                   "future_remote_payload_option":  "GIT_LFS_OR_EXTERNAL_ARTIFACT_STORAGE_IF_EXPLICITLY_AUTHORIZED"
+               },
+    "counts":  {
+                   "compact_files":  48,
+                   "payload_files":  8,
+                   "total_files":  56
+               },
+    "bytes":  {
+                  "compact_total":  2526579,
+                  "payload_total":  328363052,
+                  "payload_max_file":  116483832
+              },
+    "records":  [
+                    {
+                        "path":  "R5_17_B6_COMPLETION_REGISTER.md",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  6878,
+                        "sha256":  "cb4a4b1364cc3b286a60d878aeb7641026ca3ae86be524c3da38530bf468bb73",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D1_CANONICAL_HYDROLOGY_REPLAY_CONTRACT.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  103680,
+                        "sha256":  "62f77fa8ca39079f2ceee0e5d35717f47d7fa4b6cfb87c713bdf90051c9b647c",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D1_EXTRACT_CANONICAL_HYDROLOGY_REPLAY_CONTRACT.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  7825,
+                        "sha256":  "346750dfd59663f7d58e48b23e6cb2dbdb095c922f3855dcc4a1d7c87dd09ade",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2_BIND_CANONICAL_PALEOHYDROLOGY_INPUTS.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  11318,
+                        "sha256":  "99b81af2b6bbec5ae60c555bc589962583e9f1de98f8b0b36195ded3c78d8bfa",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2_CANONICAL_PALEOHYDROLOGY_INPUT_BINDING.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  18414,
+                        "sha256":  "3d0ba9bb8172453d9e263e2febf70c5a3f643205bc2e3e7707b46409063b46e4",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2A_ADJUDICATE_ALTERNATE_SEASONAL_BASELINE_IDENTITY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  13619,
+                        "sha256":  "935a466eee942e6cd7406cb1b85221c0ee78b210b2b0be37b01c0fe9a828f3df",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2A_SEASONAL_BASELINE_IDENTITY_ADJUDICATION.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  261600,
+                        "sha256":  "1be360eb8e47624e0840d295119701ac1c24633c0fc570d12fa22ae317806695",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2B_RECOVER_V055I_SEASONAL_PROMOTION_AUTHORITY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  14592,
+                        "sha256":  "662f47ee3e8a1afd87dd43c82ec7e407d666d1094cb0d6ebf9e123d3abaa65a9",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2B_V055I_SEASONAL_PROMOTION_AUTHORITY.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  2018,
+                        "sha256":  "5555619c3b2a994a938197f037ff09312bca470719f2ff4e76b34788bfc31356",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2C_CANONICAL_SEASONAL_BASELINE_RECONSTRUCTION_PREFLIGHT.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  42253,
+                        "sha256":  "5a144169eb5c201e7bc051bcb3744953a9576e6413f626956d574b5c5f3fc393",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2C_PREPARE_CANONICAL_SEASONAL_BASELINE_RECONSTRUCTION.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  13797,
+                        "sha256":  "e6195a6145c9141db6479272edfed07e2d9c5df7d35173e685531ddf0fca612c",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2C1_ADJUDICATE_SHORELINE_LAND_MASK_ADAPTER.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  12052,
+                        "sha256":  "f7e3b6c57ab1b0d56db033bb0d49d9c819e2b766b0f93eaff8cbd6008d771aa4",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  27558,
+                        "sha256":  "5e0aae416b1d6c8ce80900c5bb158a71e958c080df51c787f3d896c45be93aae",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D_RECONSTRUCTED/seasonal_climate_state_I_RECONSTRUCTED.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  116483832,
+                        "sha256":  "bd25948db09ecc50409a7d18df1fc6d08350820fd2f0f1d06aeb5a2b98de98a7",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D_SEASONAL_GENERATOR_REPLAY_AND_I_RECONSTRUCTION.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  45457,
+                        "sha256":  "87f8eadcfd3933ff99ce282bf13f5be08527f335c3121d486b3b1355e76d3b7a",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D_VALIDATE_SEASONAL_GENERATOR_AND_RECONSTRUCT_I.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  25343,
+                        "sha256":  "389dfdf659c8a10921cf57bf2f6c4324ea4e0116880814180334d369bfab2ae1",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D1_EXACT_SEASONAL_GENERATOR_RUNTIME_BINDING.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  2637,
+                        "sha256":  "7fcfedac728ecab0a834bbdff52f3b4cdb88dda85dd65ae56ecf4e723a6ae54c",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D1_RESOLVE_EXACT_SEASONAL_GENERATOR_RUNTIME_BINDING.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  9667,
+                        "sha256":  "50963483a949642b9386745a276073fc48e1af635e4fba3b805eab4744f2af33",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D2_DIAGNOSE_F_REPLAY_NONEXACTNESS.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  13896,
+                        "sha256":  "b0bbc3897c1f14e6a4723ee963ae6cb3d0bdd1042cb0fd6a1bd218a426a2b8fe",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D2_F_REPLAY_NONEXACTNESS_DIAGNOSTICS.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  88644,
+                        "sha256":  "cba4bdc58241b315374624ac3959e9629efbe052f7436d8b8927076c52341cc6",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D3_SERIALIZED_MARGIN_REPLAY_AND_I_RECONSTRUCTION.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  17747,
+                        "sha256":  "da14eb6e18ef16eca3fc5f8c95d3732abad0b92b897eb4c97eceba735d19930f",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D3_VALIDATE_SERIALIZED_MARGIN_REPLAY_AND_RECONSTRUCT_I.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  23583,
+                        "sha256":  "6be0b90a418cf98d41bafa11cae95c555cfba8ee85fed077ce93cc7ed20660c5",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D4_FLOAT32_ULP_EQUIVALENCE_AND_I_RECONSTRUCTION.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  11427,
+                        "sha256":  "b719b9b28e378feafe59e040aea888e7dea342609cd915c58648964991895cd9",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D4_FLOAT32_ULP_EQUIVALENCE_AND_I_RECONSTRUCTION.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  15528,
+                        "sha256":  "1098952c7402a578b39c2987b752d4c76bb73ba8094009cccaa52d8a149d30ba",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D5_FULL_IN_MEMORY_F_CHAIN_REPLAY_AND_I_RECONSTRUCTION.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  48389,
+                        "sha256":  "2e1ddc02f41e9dc8a27763747a98f5a0282bfd90a736b4e7fd9da7af62236200",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2D5_FULL_IN_MEMORY_F_CHAIN_REPLAY_AND_I_RECONSTRUCTION.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  16396,
+                        "sha256":  "51d83afcf9543e41242c1b95c62946b9b46ae0eae21e9c7bd3d128365da38d77",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2R_RECOVER_SEASONAL_CLIMATE_BASELINE.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  15219,
+                        "sha256":  "7e002198f55003bfa7002709718a190c34cb3db77b4b7dff656f85fcb0f3c742",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D2R_SEASONAL_CLIMATE_BASELINE_RECOVERY.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  55823,
+                        "sha256":  "31f691ae10a5d629a7cf4a85c3fb27e523443219cbdaf0ef4d02bbabf50b0bbf",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  14029,
+                        "sha256":  "9592be5e4e6e37f21020c9fbebe8a406a3cb4b717e812f5f2413977b60676167",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  23923,
+                        "sha256":  "18a5ec405c4a467cb10c5ff735c8ea1072031fd50e1e72c2b5b9467646e0fe89",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_RECONSTRUCTED/channel_hydrology_state_I_RECONSTRUCTED.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  29359789,
+                        "sha256":  "aa939af471ae6793d39fa1382270b9f9dffdfe7b735995e2d6caada78ac4fe25",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_RECONSTRUCTED/channel_hydrology_state_m012000ybp_RECONSTRUCTED.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  33554114,
+                        "sha256":  "58f33e721c1f93b92a69af0600e76c31c8074eb72c735df519bc60be7f9d6cf5",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_RECONSTRUCTED/channel_hydrology_state_m012900ybp_RECONSTRUCTED.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  33630533,
+                        "sha256":  "716fac0b3cd02f3511b215cfa6855b13de40f4c134b540e29a06b6aa3619a6b1",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_RECONSTRUCTED/channel_hydrology_state_m014000ybp_RECONSTRUCTED.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  33674076,
+                        "sha256":  "fe9e239c6b5c73390c24ebdd2047640bd2b210d62dedbf4a59e54636e9dc96d4",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_RECONSTRUCTED/channel_hydrology_state_m021000ybp_RECONSTRUCTED.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  33585616,
+                        "sha256":  "d578e11c74f5dad55ea4f05bfaba8963e3f70b3d055712861c96826a81c900d3",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3_RECONSTRUCTED/channel_hydrology_state_p000000y_RECONSTRUCTED.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  29602611,
+                        "sha256":  "6c497dc39f145011bb1225e88770b6b647d71bf251adef4b876c55df02722a04",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3R_I_COAST_CONTRACT_AND_REPLAY.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  60081,
+                        "sha256":  "1371bb040b53ca4c0d814ec115e73bebcb354d6e43abeab11ae8760f4f1e77ab",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D3R_RESOLVE_I_COAST_CONTRACT_AND_REPLAY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  18378,
+                        "sha256":  "410e5e2e5ceecff60a812ac5802c3a6c165cbed81344af570e5c07a9e43a1ce7",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D4_DERIVE_FRESHWATER_ACCESS_AND_RELIABILITY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  28867,
+                        "sha256":  "e063a7d2d27006d030dc161299223ce743d174945f7fbfc165de787c863a5869",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D4_DERIVED/freshwater_support_reliability_bundle.npz",
+                        "class":  "DERIVED_RECONSTRUCTED_PAYLOAD",
+                        "size_bytes":  18472481,
+                        "sha256":  "e30240c1e7b6cd519763eeac6c3c0bb8d29682b0f3273fc7bbe0bfd7555ae0fe",
+                        "repository_disposition":  "LOCAL_REPRODUCIBLE_PAYLOAD_NOT_STAGED_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  27424,
+                        "sha256":  "de6c065ad31b9e0b9405395d62c61f8bbf2ae8e22c39c5e80bbfe7b846940be2",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_EVIDENCE_MANIFEST.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  26420,
+                        "sha256":  "11ed43b6cf92409a75d3fc63e80d53f1a436f76c0c9a8881e79bf996b5999b68",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_FRESHWATER_PHYSICAL_INPUT_BINDING_DESIGN.md",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  7775,
+                        "sha256":  "0aa53f4962e58ed462391ebe6ebeb509cc1b21f07a26a3c26a5baa8a89630501",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H1_LOCATE_AND_INSPECT_NATIVE_HYDROLOGY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  8065,
+                        "sha256":  "b2aab591a58cf9f10800f6e265ddb38e152d1c9e8a471bf86aaeed850d3be9f3",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H1_NATIVE_HYDROLOGY_DISCOVERY.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  1450,
+                        "sha256":  "4810c77e8be5f29e6d37ebc7edb9ee28269e1c437860c184ecf4c9b7047d32de",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H1_NATIVE_HYDROLOGY_DISCOVERY_ARCANAWORLD.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  1363,
+                        "sha256":  "851988c9d33415ba9f9f44d6b3c89458c9e91f3cbff98ef8bdbb389d2a141b2a",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H2_AUDIT_NATIVE_HYDROLOGY_PROVENANCE.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  10076,
+                        "sha256":  "6ea8465a2e4f3d3c13532d16c4f5ba9d173f3dbf2da441b45f2728fc64452d0e",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H2_NATIVE_HYDROLOGY_PROVENANCE.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  220899,
+                        "sha256":  "66d11ae885171febe0871c17e1f84a8418cdb9d8ac9f687399097b47b5a1cba6",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H3_AUDIT_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  11337,
+                        "sha256":  "88f23f9948a5faa00e9f5e4171b91c894138766a635a3df0691845b5e158d5a8",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  465455,
+                        "sha256":  "e28404672f8f6aae54af7544341eb163e5e2266ddff896b115acf36702b4d23a",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H4_ADJUDICATE_EXACT_EXPORT_AND_PHYSICAL_SUFFICIENCY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  16865,
+                        "sha256":  "982aaae2d925a890319d446f641042a8f092952eeee49fd99028debc50fa6622",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H4_ADJUDICATE_V055I_EXPORT_AND_PHYSICAL_SUFFICIENCY.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  13123,
+                        "sha256":  "321e72996687cac2a130d7768bcadb1c399cacec19d9ef28fa6711a8fcf4777d",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_H4_V055I_EXPORT_AND_PHYSICAL_SUFFICIENCY.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  616823,
+                        "sha256":  "2845988a55e189dbe320b735938453cb6315edef3548fde8f09baf86795c7bab",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_INSPECT_PALEOCLIMATE_SEMANTICS.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  7417,
+                        "sha256":  "7a6a3a579a02b9732e0ea723e36e90eaa68093bdd377da1f1fe82ac1763dac17",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS.py",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  3704,
+                        "sha256":  "781b0d389c28e4a04c29782a8001a110db62b253a6efb2d3698e26600701abb6",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    },
+                    {
+                        "path":  "R5_17_B6_PALEOCLIMATE_SEMANTIC_EVIDENCE.json",
+                        "class":  "COMMITTABLE_CONTROL_PLANE_EVIDENCE",
+                        "size_bytes":  17745,
+                        "sha256":  "5ccfc4f21f0e914e05f6509cf024c9c0bef8af496ed3a874b69828a7415f0fa6",
+                        "repository_disposition":  "STAGE_IN_NORMAL_GIT"
+                    }
+                ]
+}
