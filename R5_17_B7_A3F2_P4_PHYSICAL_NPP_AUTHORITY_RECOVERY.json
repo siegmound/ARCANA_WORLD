@@ -1,0 +1,248 @@
+{
+  "candidate_artifacts": [
+    {
+      "artifact": "R3.33 npp_factor / related recent environmental fields",
+      "authority_status": "governed recent covariate, not physical NPP",
+      "classification": "DIMENSIONLESS_NPP_FACTOR",
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+      "temporal_domain": "recent Holocene authority; not deep-time backprojectable",
+      "tracked": true
+    },
+    {
+      "artifact": "A1 total_edible_forage",
+      "authority_status": "governed trophic proxy, not NPP",
+      "classification": "TROPHIC/FORAGE_PROXY",
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "temporal_domain": "canonical A1 anchors 210 Ma to 0 Ma",
+      "tracked": true
+    },
+    {
+      "artifact": "R3.34 producer resource landscape",
+      "authority_status": "producer resource/abundance proxy; not NPP",
+      "classification": "TROPHIC/FORAGE_PROXY",
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+      "temporal_domain": "20 ka to 0 ka",
+      "tracked": true
+    },
+    {
+      "artifact": "Madingley prior terrestrial_net_primary_productivity inputs",
+      "authority_status": "provider input files exist in prior runtime payloads, but are not ARCANA physical-NPP authority; prior runner applies normalized boundary factor",
+      "classification": "UNKNOWN",
+      "path": "benchmarks/r43/madingley_r43.R",
+      "sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "temporal_domain": "prior representative runs only",
+      "tracked": true
+    },
+    {
+      "artifact": "physical NPP/GPP/carbon-flux generator-backed ARCANA authority",
+      "authority_status": "not recovered",
+      "classification": "UNKNOWN",
+      "path": null,
+      "sha256": null,
+      "temporal_domain": "none established",
+      "tracked": false
+    }
+  ],
+  "candidate_classification": {
+    "dimensionless_npp_factor": 1,
+    "normalized_productivity_proxy": 1,
+    "physical_carbon_flux": 0,
+    "physical_gpp": 0,
+    "physical_npp": 0,
+    "trophic_forage_proxy": 2,
+    "unknown": 2
+  },
+  "decision": "BLOCKED_ONLY_NORMALIZED_PROXY_EXISTS",
+  "exact_required_npp_semantics": {
+    "dimensions": "12 monthly layers on provider spatial grid",
+    "not_equivalent_to": [
+      "normalized NPP factor",
+      "A1 total_edible_forage",
+      "R3.33 npp_factor",
+      "R3.34 resource_abundance",
+      "R3.34 harvest_return",
+      "vegetation suitability"
+    ],
+    "provider": "MadingleyR-1.0.6__CPP-2.02",
+    "quantity": "physical terrestrial net primary productivity"
+  },
+  "generator_provenance": {
+    "fail_closed_reason": "units cannot be inferred from magnitude or filename",
+    "inputs_formula_units_scaling": "no ARCANA physical NPP generator with verified carbon/time/area units recovered",
+    "known_generator": "benchmarks/r43/madingley_r43.R changes provider NPP by a bounded normalized environment factor; it does not establish ARCANA physical units",
+    "physical_candidate_found": false
+  },
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "Madingley_invoked": false,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "historical_abundance_materialized": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "normalized_proxy_rescaled": false,
+    "physical_npp_synthesized": false,
+    "population_target_used": false
+  },
+  "missing_quantity_contract": {
+    "environmental_inputs": [
+      "land/sea and shoreline state",
+      "temperature",
+      "precipitation",
+      "seasonality",
+      "radiation/PAR or equivalent if required",
+      "vegetation/productivity model inputs"
+    ],
+    "madingley_compatibility": "12 monthly provider layers with verified units and terrestrial semantics",
+    "quantity": "physical terrestrial NPP",
+    "spatial_support": "ARCANA-compatible 90x180 or losslessly area-aware regrid",
+    "temporal_anchors": "each authorized terrestrial snapshot anchor; no silent interpolation",
+    "uncertainty": "source and transformation uncertainty masks retained",
+    "units": "provider-compatible carbon mass per area per time, explicitly documented"
+  },
+  "parent_p3_decision": "BLOCKED_MISSING_PHYSICAL_NPP_AUTHORITY",
+  "physical_units_verified": false,
+  "recommended_next_operation": "R5.17-B7-A3F2-P5 PHYSICAL PRIMARY PRODUCTIVITY PROVIDER SUITABILITY GATE",
+  "repository": {
+    "branch": "main",
+    "head": "cfc5f26bb0965e87f8a43ea29ad6e27b4d43d021"
+  },
+  "search_surfaces": {
+    "order": [
+      "tracked governed authority",
+      "SIMULATION_RESULTS catalogue",
+      "provenance-linked local payloads",
+      "referenced reconstruction/census surfaces",
+      "historical Git objects where provenance-linked"
+    ],
+    "terms": [
+      "npp",
+      "net primary productivity",
+      "primary production",
+      "gpp",
+      "carbon flux",
+      "kgC",
+      "gC",
+      "photosynthesis",
+      "autotroph production",
+      "PAR",
+      "APAR",
+      "fPAR",
+      "LAI",
+      "vegetation productivity",
+      "biomass production"
+    ]
+  },
+  "source_artifacts": {
+    "a1": {
+      "available": true,
+      "git_blob_oid": "04fdaf1fe4893378809a128bf7e7ea2c4172683b",
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "role": "a1",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "size_bytes": 2928319,
+      "tracked": true
+    },
+    "catalog": {
+      "available": true,
+      "git_blob_oid": "facfe4d3c9d4f69f8b55c8abfab2da9f8ffe00be",
+      "path": "SIMULATION_RESULTS/SEMANTIC_CATALOG.md",
+      "role": "catalog",
+      "sha256": "2dd1f29e4a65094a325693475ec241c357dbeb3ba561a1d94a20793b3e91366a",
+      "size_bytes": 20527,
+      "tracked": true
+    },
+    "current_state": {
+      "available": true,
+      "git_blob_oid": "1cd2420822439fac8d1930be4508ff7b941b5b5f",
+      "path": "ARCANA_WORLD_CURRENT_STATE.md",
+      "role": "current_state",
+      "sha256": "0e4b4d186a5e1561af1f4cf4f094db047d3ca1e09fd583b27139dd0d8415c9ba",
+      "size_bytes": 12030,
+      "tracked": true
+    },
+    "index": {
+      "available": true,
+      "git_blob_oid": "ae9e03f2dbf09ab6a54a72f3352bdff0e2f0999a",
+      "path": "ARCANA_EXECUTION_REFERENCE_INDEX.json",
+      "role": "index",
+      "sha256": "2d7f895286b4f81317b4acd9afa49117d04db8cd14d91c654a958b90fa0c6632",
+      "size_bytes": 2215728,
+      "tracked": true
+    },
+    "madingley_runner": {
+      "available": true,
+      "git_blob_oid": "f69f30960d2b7e1a7837f7079a635938cbcc3b11",
+      "path": "benchmarks/r43/madingley_r43.R",
+      "role": "madingley_runner",
+      "sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "size_bytes": 4984,
+      "tracked": true
+    },
+    "manifest": {
+      "available": true,
+      "git_blob_oid": "f082076480102c603d9bb81203e614813a01af2e",
+      "path": "SIMULATION_RESULTS/MANIFEST.json",
+      "role": "manifest",
+      "sha256": "62beed857b446239b3af09b88a6cce4c0913869e8f978e52bb316ad357375d62",
+      "size_bytes": 577395,
+      "tracked": true
+    },
+    "p2": {
+      "available": true,
+      "git_blob_oid": "93a7fcd4eb225c66e168820b6495436ba2bb581a",
+      "path": "R5_17_B7_A3F2_P2_MACROECOLOGICAL_RESOURCE_PROVIDER_ADJUDICATION.json",
+      "role": "p2",
+      "sha256": "da8defe69c2c12cf248bf608c1fa72197f0da2675e252ace116c28f9eac15462",
+      "size_bytes": 15219,
+      "tracked": true
+    },
+    "p3": {
+      "available": true,
+      "git_blob_oid": "729c027a0099f7a05098fb12146bc809ea322bd3",
+      "path": "R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.json",
+      "role": "p3",
+      "sha256": "b379af0518e6e75dfc26552875274946eeb171d2bdcbb6230c8205cd4742c4ee",
+      "size_bytes": 11228,
+      "tracked": true
+    },
+    "r333": {
+      "available": true,
+      "git_blob_oid": "d3b67ac1ec0ba2f16176a1389ff8b76454743fad",
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "role": "r333",
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+      "size_bytes": 858951,
+      "tracked": true
+    },
+    "r334": {
+      "available": true,
+      "git_blob_oid": "3c8602aa8788ed2f7ed1892d6bcc4ee7e69170dc",
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "role": "r334",
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+      "size_bytes": 17450885,
+      "tracked": true
+    }
+  },
+  "spatial_compatibility": {
+    "arcana_grid": "90x180 lat/lon with changing paleogeography and latitude-dependent cell area",
+    "candidate_grid": "prior Madingley 1-degree provider grid",
+    "classification": "SEMANTICALLY_UNSAFE",
+    "production_remapping": false,
+    "required_future_transform": "area-aware, units-preserving, time-slice regrid retaining land mask, latitude, cell area, shoreline and provenance"
+  },
+  "stage": "R5.17-B7-A3F2-P4",
+  "status": "P4_RECOVERY_COMPLETE_BLOCKED_ONLY_NORMALIZED_PROXY_EXISTS",
+  "temporal_coverage": {
+    "all_required_anchors": false,
+    "coverage": "no usable physical-NPP anchors; A1 forage covers anchors only as proxy",
+    "extrapolation": false,
+    "present_day_only": false,
+    "strategy": "INDEPENDENT_ECOLOGICAL_OPPORTUNITY_SNAPSHOTS",
+    "subset_only": false
+  }
+}

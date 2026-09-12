@@ -1,0 +1,257 @@
+{
+  "arcana_input_crosswalk": {
+    "a1_forage": "PROXY_ONLY and not NPP",
+    "atmospheric_co2": "MISSING_FOR_REQUIRED_PALEO_DOMAIN",
+    "elevation": "MISSING_IF_REQUIRED",
+    "land_sea_mask": "PROXY_ONLY until time-slice provider adapter is approved",
+    "latitude": "DEFENSIBLE_TRANSFORMATION from ARCANA grid coordinate",
+    "monthly_precipitation": "PROXY_ONLY: precipitation is not soil water/hydraulic authority",
+    "monthly_sunshine_cloud": "MISSING",
+    "monthly_temperature": "PROXY_ONLY: exact physical monthly paleo climate binding not closed",
+    "r333_r334": "PROXY_ONLY/recent-domain; not silently backprojectable",
+    "soil_hydraulic_conductivity_percolation": "MISSING",
+    "soil_water_holding_capacity": "MISSING"
+  },
+  "biome4_audit": {
+    "co2": "required and not yet governed through required paleo interval",
+    "equilibrium": "potential/equilibrium productivity conditional on climate/soil/CO2, not exact historical vegetation",
+    "identity": "BIOME4 equilibrium terrestrial biogeography/productivity model; exact runtime/version/source/license not recovered in repository",
+    "overall": "leading candidate, not pilot-ready",
+    "pft_representation": "functional plant types, species-independent",
+    "physical_npp_fit": "CONDITIONAL_MATCH: process-based NPP candidate, units/runtime must be pinned",
+    "required_inputs": [
+      "monthly temperature",
+      "monthly precipitation",
+      "monthly sunshine/cloud cover",
+      "soil water holding capacity",
+      "soil hydraulic/percolation property",
+      "atmospheric CO2",
+      "latitude",
+      "optional minimum temperature",
+      "optional elevation"
+    ],
+    "spatial_fit": "CONDITIONAL: requires area-aware ARCANA adapter",
+    "temporal_fit": "STRONG_FOR_INDEPENDENT_ECOLOGICAL_OPPORTUNITY_SNAPSHOTS",
+    "water_balance": "requires soil water holding/hydraulic properties"
+  },
+  "candidate_providers": [
+    "BIOME4",
+    "LPJ-GUESS",
+    "CASA-class light-use-efficiency model",
+    "BIOME-BGC/other process model",
+    "MINIMUM_CUSTOM_ARCANA"
+  ],
+  "casa_audit": {
+    "adjudication": "not selected",
+    "arcana_coverage": "FPAR/APAR/NDVI equivalent not established; using simulated resource abundance would be circular",
+    "inputs": [
+      "solar radiation",
+      "FPAR/APAR or vegetation-cover equivalent",
+      "temperature",
+      "water stress",
+      "soil/land cover"
+    ],
+    "physical_npp_fit": "CONDITIONAL",
+    "spatial_fit": "CONDITIONAL",
+    "temporal_fit": "SNAPSHOT_COMPATIBLE_IF_INPUTS_EXIST"
+  },
+  "comparative_matrix": {
+    "BIOME4": {
+      "CO2_fit": "missing",
+      "adapter": "moderate",
+      "climate_fit": "proxy/incomplete",
+      "cost": "moderate per-cell/snapshot",
+      "paleo_applicability": "conditional",
+      "physical_NPP_semantics": "conditional strong",
+      "runtime": "not pinned",
+      "snapshot_fit": "strong",
+      "soil_fit": "missing",
+      "spatial_fit": "adapter required",
+      "species_independence": "strong",
+      "validation": "available after inputs close"
+    },
+    "CASA": {
+      "CO2_fit": "model-dependent",
+      "adapter": "high due FPAR",
+      "climate_fit": "incomplete",
+      "cost": "moderate",
+      "paleo_applicability": "weak/conditional",
+      "physical_NPP_semantics": "conditional",
+      "runtime": "not recovered",
+      "snapshot_fit": "moderate",
+      "soil_fit": "missing",
+      "spatial_fit": "adapter required",
+      "species_independence": "strong",
+      "validation": "circularity risk"
+    },
+    "LPJ-GUESS": {
+      "CO2_fit": "missing",
+      "adapter": "high",
+      "climate_fit": "incomplete",
+      "cost": "high",
+      "paleo_applicability": "conditional",
+      "physical_NPP_semantics": "strong",
+      "runtime": "not pinned",
+      "snapshot_fit": "moderate",
+      "soil_fit": "missing",
+      "spatial_fit": "adapter required",
+      "species_independence": "PFT-level",
+      "validation": "possible but spinup-sensitive"
+    }
+  },
+  "exact_npp_requirement": {
+    "area_basis": "physical land-cell area, not equal-area assumption",
+    "land_behavior": "ocean cells excluded by governed land/realm mask",
+    "missing_values": "explicit mask/uncertainty; no silent zero fill",
+    "quantity": "physical terrestrial net primary productivity",
+    "spatial_semantics": "terrestrial land-only provider grid with latitude/cell-area and time-slice provenance",
+    "temporal_semantics": "physical NPP conditional on governed paleoenvironment; not realized ARCANA species history",
+    "time_basis": "12 monthly layers for Madingley input contract",
+    "units": "provider-compatible carbon mass per area per time, e.g. gC m^-2 yr^-1 or gC m^-2 month^-1 only after exact provider compatibility is verified"
+  },
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "BIOME4_invoked": false,
+    "CASA_invoked": false,
+    "LPJ_GUESS_invoked": false,
+    "Madingley_invoked": false,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "normalized_proxy_rescaled": false,
+    "physical_npp_materialized": false,
+    "population_target_used": false
+  },
+  "implementation_disposition": "PROVIDER_SELECTED_INPUT_RECOVERY_REQUIRED",
+  "lpj_guess_audit": {
+    "adjudication": "not preferred over BIOME4 because added transient/soil/nitrogen burden is not justified by B7 snapshot target",
+    "inputs": [
+      "monthly climate",
+      "CO2",
+      "soil",
+      "PFT",
+      "often nitrogen/biogeochemical state"
+    ],
+    "physical_npp_fit": "STRONG_IN_PRINCIPLE",
+    "runtime_reproducibility": "exact current ARCANA runtime not recovered",
+    "spatial_fit": "CONDITIONAL_AREA_AWARE_ADAPTER",
+    "species_independence": "PFT-level in principle",
+    "spinup": "substantial equilibrium/spin-up and path-dependence burden",
+    "temporal_fit": "TRANSIENT_CAPABLE_BUT_EXCEEDS_CURRENT_SNAPSHOT_NEED"
+  },
+  "other_provider_audit": {
+    "BIOME-BGC": "potentially physical but greater parameter/soil/biogeochemistry burden; no exact ARCANA runtime authority recovered",
+    "minimum_custom_arcana": "rejected as first choice because custom trophic/productivity approximation is less defensible than established process-based specialist evidence"
+  },
+  "paleo_co2_authority": {
+    "constant_hold": false,
+    "next_requirement": "independent governed paleo-CO2 source or provider gate",
+    "partial_coverage": false,
+    "physical_concentration": false,
+    "status": "MISSING"
+  },
+  "parent_p4_decision": "BLOCKED_ONLY_NORMALIZED_PROXY_EXISTS",
+  "provider_decision": "INTRODUCE_BIOME4_PROVIDER",
+  "recommended_next_operation": "R5.17-B7-A3F2-P6 BIOME4 RUNTIME/SOURCE AND PALEO-CO2/SOIL AUTHORITY RECOVERY GATE",
+  "remaining_conditions": [
+    "pin exact BIOME4 runtime/version/source/license",
+    "recover physical paleo CO2",
+    "recover physical soil water/hydraulic properties",
+    "close monthly climate and sunshine/cloud crosswalk",
+    "approve area-aware 90x180 snapshot adapter",
+    "define uncertainty/missing-value semantics",
+    "pre-register validation against held-out governed evidence"
+  ],
+  "repository": {
+    "branch": "main",
+    "head": "cfc5f26bb0965e87f8a43ea29ad6e27b4d43d021"
+  },
+  "required_temporal_domain": {
+    "deep_time_context_domain": "A1 canonical anchor context 210 Ma to 0 Ma",
+    "human_support_required_domain": "B7 natural biological opportunity domain; exact human-support contribution window is not separately narrowed by the contract",
+    "madingley_required_domain": "future independent snapshot anchors selected from governed ARCANA environments; do not assume continuous 210 Ma to 0 run",
+    "strategy": "INDEPENDENT_ECOLOGICAL_OPPORTUNITY_SNAPSHOTS"
+  },
+  "selected_provider": "BIOME4",
+  "soil_authority": {
+    "available_non_equivalents": [
+      "B6 freshwater support",
+      "hydrological reliability",
+      "precipitation",
+      "geology/substrate"
+    ],
+    "next_requirement": "specialist soil/pedogenesis authority or explicit provider-specific soil gate",
+    "non_equivalence_rule": "none of these establishes field capacity, wilting point, soil depth, texture, hydraulic conductivity or percolation",
+    "physical_soil_properties": false,
+    "status": "MISSING"
+  },
+  "sources": {
+    "a1": {
+      "available": true,
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "role": "a1",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "size_bytes": 2928319,
+      "tracked": true
+    },
+    "b7_contract": {
+      "available": true,
+      "path": "R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md",
+      "role": "b7_contract",
+      "sha256": "dca7608824d227729822ed4fbf68eb6fb37245b42c9460035b5bfa0b32e37f6f",
+      "size_bytes": 4103,
+      "tracked": true
+    },
+    "madingley_runner": {
+      "available": true,
+      "path": "benchmarks/r43/madingley_r43.R",
+      "role": "madingley_runner",
+      "sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "size_bytes": 4984,
+      "tracked": true
+    },
+    "p3": {
+      "available": true,
+      "path": "R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.json",
+      "role": "p3",
+      "sha256": "b379af0518e6e75dfc26552875274946eeb171d2bdcbb6230c8205cd4742c4ee",
+      "size_bytes": 11228,
+      "tracked": true
+    },
+    "p4": {
+      "available": true,
+      "path": "R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.json",
+      "role": "p4",
+      "sha256": "0ac4ab015dbd6f46259cc85e9a758573aa13822dfe9e6e9fa1a62697ab627e7f",
+      "size_bytes": 10058,
+      "tracked": false
+    },
+    "r333": {
+      "available": true,
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_33/R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+      "role": "r333",
+      "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9",
+      "size_bytes": 858951,
+      "tracked": true
+    },
+    "r334": {
+      "available": true,
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "role": "r334",
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+      "size_bytes": 17450885,
+      "tracked": true
+    },
+    "suitability_gate": {
+      "available": true,
+      "path": "SCIENTIFIC_ENGINE_SUITABILITY_GATE.md",
+      "role": "suitability_gate",
+      "sha256": "d2a8ec5819f2610fa8c5578bd1c7004268dadf3b035531ce49a53afcbb89160c",
+      "size_bytes": 13574,
+      "tracked": true
+    }
+  },
+  "stage": "R5.17-B7-A3F2-P5",
+  "status": "P5_GATE_COMPLETE_BIOME4_SELECTED_INPUT_RECOVERY_REQUIRED"
+}

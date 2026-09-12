@@ -1,14 +1,14 @@
 {
   "schema": "ARCANA_EXECUTION_REFERENCE_INDEX_V1",
-  "generated_utc": "2026-09-12T23:31:05.401548+00:00",
-  "repository_head": "d8cbc619c8bdd3340fc174d651dbb671ba642ac0",
+  "generated_utc": "2026-09-12T23:51:09.495103+00:00",
+  "repository_head": "cfc5f26bb0965e87f8a43ea29ad6e27b4d43d021",
   "content_basis": "TRACKED_WORKTREE_CONTENT_AT_GENERATION",
   "blob_oid_semantics": "GIT_HASH_OBJECT_OF_CURRENT_FILE_BYTES",
   "purpose": "Reusable lookup surface for README/status/contracts/audits, execution runners, configs, manifests and result summaries that may be required by future replay/regression tests.",
-  "record_count": 5255,
+  "record_count": 5261,
   "category_counts": {
     "AUDIT": 991,
-    "AUTHORITY_JSON": 310,
+    "AUTHORITY_JSON": 311,
     "BENCHMARK_EXECUTOR": 41,
     "CONFIG": 110,
     "CONTRACT_PROTOCOL": 208,
@@ -16,9 +16,9 @@
     "HANDOFF": 56,
     "MANIFEST": 650,
     "POWERSHELL_RUNNER": 254,
-    "PYTHON_RUNNER_SOURCE": 384,
+    "PYTHON_RUNNER_SOURCE": 386,
     "README": 171,
-    "REFERENCE": 453,
+    "REFERENCE": 456,
     "RESULT_SUMMARY": 1583,
     "SEMANTIC_CATALOG": 1,
     "STATUS": 42
@@ -213,7 +213,7 @@
     "R5.17.B7.A1": 3,
     "R5.17.B7.A2": 3,
     "R5.17.B7.A3": 3,
-    "R5.17.B7.A3F2": 12,
+    "R5.17.B7.A3F2": 18,
     "R5.2": 125,
     "R5.3": 340,
     "R5.4": 16,
@@ -43437,6 +43437,16 @@
       "sha256": "0cf13126e4ce2ecaf16a825609e8ae6210da1fb6cffaccc70a4c1bb2694abc66"
     },
     {
+      "path": "R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.json",
+      "stage": "R5.17.B7.A3F2",
+      "category": "AUTHORITY_JSON",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 10058,
+      "git_blob_oid": "bc039549bbdf51f41d9466bcfef9ed3d602d01d4",
+      "sha256": "0ac4ab015dbd6f46259cc85e9a758573aa13822dfe9e6e9fa1a62697ab627e7f"
+    },
+    {
       "path": "R5_17_B7_A3F2_P1_ADJUDICATE_RANGE_DYNAMICS_PROVIDER.py",
       "stage": "R5.17.B7.A3F2",
       "category": "PYTHON_RUNNER_SOURCE",
@@ -43455,6 +43465,26 @@
       "size_bytes": 16322,
       "git_blob_oid": "1ddcdcb45ad25bc684a5ca117b5a5b251da541c3",
       "sha256": "2a0cd2961c18158f9e9e245931c8c5e839865828dcee5c154811c44cd7579207"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P4_RECOVER_PHYSICAL_NPP_AUTHORITY.py",
+      "stage": "R5.17.B7.A3F2",
+      "category": "PYTHON_RUNNER_SOURCE",
+      "title": "",
+      "extension": ".py",
+      "size_bytes": 9474,
+      "git_blob_oid": "d932291f3b9f4ca73f37839689c76eba637a4f3d",
+      "sha256": "aadff83bfe7f0cb5cc1e5e5c95439d881f2efbbebce59f593748320e37dfc05b"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P5_ADJUDICATE_PHYSICAL_NPP_PROVIDER.py",
+      "stage": "R5.17.B7.A3F2",
+      "category": "PYTHON_RUNNER_SOURCE",
+      "title": "",
+      "extension": ".py",
+      "size_bytes": 11388,
+      "git_blob_oid": "90ff717d762debbc2da45e97395b127ac62432be",
+      "sha256": "6edb744d0f3f9ef84653f2c0ea0f1cd78f9b7fc3cb65113a038e38a08b141380"
     },
     {
       "path": "R5_17_B7_A3F2_RECONSTRUCT_HISTORICAL_WILD_FAUNA_SPATIAL_STATE.py",
@@ -43525,6 +43555,36 @@
       "size_bytes": 1679,
       "git_blob_oid": "9ba4e3a12456bd5b90c0a732f6ab27506a891f92",
       "sha256": "057cfcbd27662300b87dc5f84e9aa23893797602cbedc346b1c49feb74a5edf3"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.md",
+      "stage": "R5.17.B7.A3F2",
+      "category": "REFERENCE",
+      "title": "R5.17-B7-A3F2-P4",
+      "extension": ".md",
+      "size_bytes": 1008,
+      "git_blob_oid": "521aa68b917659871ca322b241537601e77b4e42",
+      "sha256": "e0083fe22318aac7961080b42351949b3ba6bd9a6a6e05b9093380d616ce0974"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.json",
+      "stage": "R5.17.B7.A3F2",
+      "category": "REFERENCE",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 10988,
+      "git_blob_oid": "d9fab74c3293ff0b2831f1a2a95fc0dee8a56f14",
+      "sha256": "2a66096a00e077dae4756bbee46908487be4f6218c295e0c99d1c672bb99e3c6"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.md",
+      "stage": "R5.17.B7.A3F2",
+      "category": "REFERENCE",
+      "title": "R5.17-B7-A3F2-P5",
+      "extension": ".md",
+      "size_bytes": 1190,
+      "git_blob_oid": "59422df10f5fbe34d1d8a75ddb285844f06ba256",
+      "sha256": "cd5a0f81d3a783c4341c9985e9eea1ea20acca9f77baec3df6a2248b05b991ff"
     },
     {
       "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_2/R5_2_INTEGRATED_AUDIT.json",
@@ -49722,9 +49782,9 @@
       "category": "CURRENT_STATE",
       "title": "ARCANA WorldSim \u2014 Current State Authority",
       "extension": ".md",
-      "size_bytes": 12030,
-      "git_blob_oid": "1cd2420822439fac8d1930be4508ff7b941b5b5f",
-      "sha256": "0e4b4d186a5e1561af1f4cf4f094db047d3ca1e09fd583b27139dd0d8415c9ba"
+      "size_bytes": 12592,
+      "git_blob_oid": "b26f35de90ac0c85388905f44245a3481c847f24",
+      "sha256": "864661173786996c7d83e3d661330d565455e81e17c6fd2138b9448bb4fb7428"
     },
     {
       "path": "NEXT_STAGE_HANDOFF_v0_6C.md",
