@@ -1,0 +1,269 @@
+{
+  "authority_chain": [
+    "R3.21 present lineage registry",
+    "R3.21 present component registry",
+    "R3.21 historical lineage closure",
+    "R3.23 present functional/phenotype authority",
+    "A3F2 spatial-gap decision",
+    "SCIENTIFIC_ENGINE_SUITABILITY_GATE.md"
+  ],
+  "dynamic_landscape_compatibility": {
+    "arcana_grid": "90x180 latitude/longitude",
+    "blockers": [
+      "latitude-dependent cell area",
+      "changing land/sea and shoreline",
+      "barriers/disconnected land and permeability",
+      "temporal anchor mismatch",
+      "lineage-time masks not bound to provider initialization"
+    ],
+    "compatible": false,
+    "minimum_adapter_semantics_before_run": [
+      "equal-area or area-weighted cell semantics",
+      "versioned time-indexed land/sea mask",
+      "explicit shoreline/barrier rule",
+      "lineage origination and termination masks",
+      "governed initial occupancy cells",
+      "units-preserving time and movement parameters"
+    ],
+    "range_shiftr_prior_mapping": "one ARCANA grid cell to one normalized engine cell; 100 engine meters computational, not geodesic; longitude rolled per family",
+    "time_mapping": "one engine year represented one ARCANA 20 kyr transition in R5.2 diagnostic work, not literal biological years"
+  },
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "RangeShiftR_invoked": false,
+    "canonical_mutation": false,
+    "heavy_arrays_created": false,
+    "historical_abundance_materialized": false,
+    "historical_spatial_support_materialized": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "new_engine_invoked": false,
+    "population_target_used": false
+  },
+  "initialization_authority_audit": {
+    "available": [
+      "lineage existence interval",
+      "historical event/ancestry closure",
+      "present component identity",
+      "present spatial endpoint where recorded"
+    ],
+    "components": {
+      "ABSENT": 295,
+      "FULL": 0,
+      "PARTIAL": 0,
+      "origin_location_fields_found": 0,
+      "reason": "component identity/continuity is not a governed historical spatial initialization"
+    },
+    "not_available": [
+      "cradle/origination cells",
+      "ancestral component starting geography",
+      "founder/split geography",
+      "first occupied historical cells"
+    ],
+    "policy": "absence of historical range is UNKNOWN, never zero; present endpoint is not historical initial distribution",
+    "species": {
+      "ABSENT": 134,
+      "FULL": 0,
+      "PARTIAL": 0,
+      "origin_location_fields_found": 0,
+      "reason": "lineage intervals and present endpoints do not establish historical initial cells"
+    }
+  },
+  "next_operation": "Recover and adjudicate governed historical initialization authority; do not run RangeShiftR or materialize historical occupancy arrays until the provider gate is reopened.",
+  "parameter_authority_audit": {
+    "DEFENSIBLE_DERIVATION": {
+      "count": 0,
+      "items": []
+    },
+    "EXACT_AUTHORITY": {
+      "count": 0,
+      "items": []
+    },
+    "FUNCTIONAL_GROUP_PROXY": {
+      "count": 2,
+      "items": [
+        "present R3.23 functional/phenotype traits",
+        "present generation-time proxy where available"
+      ]
+    },
+    "MISSING": {
+      "count": 7,
+      "items": [
+        "dispersal kernel",
+        "movement/connectivity",
+        "survival",
+        "fecundity",
+        "density dependence",
+        "barriers/permeability",
+        "historical ecological tolerance/environment response"
+      ]
+    },
+    "rule": "no arbitrary constants may be promoted to historical species authority"
+  },
+  "prior_validated_provider": {
+    "adapter_reuse": "not authorized; prior source cells were fixed R5.1/J14 corridor inputs and do not initialize the 134/295 historical fauna authority",
+    "prior_design": {
+      "executable_groups": 20,
+      "groups": 24,
+      "initialization": {
+        "InitDens": 1,
+        "InitType": 1,
+        "SpType": 0,
+        "mode": "SPDIST_INITTYPE1_SPTYPE0",
+        "repair_semantics": "R52_R1_REPAIR_FREE_INITIALISATION_DEFECT_NO_ORIGIN_HABITAT_MOVEMENT_SEED_OR_TARGET_CHANGED",
+        "source": "GROUP_INPUT_SOURCE_ASC_SPDISTFILE"
+      },
+      "movement_profiles": {
+        "D1_STANDARDIZED_1_CELL_CHARACTERISTIC": 100.0,
+        "D2_STANDARDIZED_2_CELL_CHARACTERISTIC": 200.0
+      },
+      "occupancy_readout": "ENGINE_NATIVE_PER_YEAR_POPULATION_OUTPUT_X_Y_NIND",
+      "parameter_reuse": {
+        "EmigProb": 0.1,
+        "K": 10.0,
+        "Rmax": 1.5,
+        "reason": "Reuse governed executable R4.1 RangeShiftR demographic/dispersal path; R5.2-R1 corrects only the initialisation mode so the already-frozen SpDistFile source mask is actually authoritative."
+      },
+      "r1_checks_passed": 6,
+      "replicates_per_stream": 1,
+      "robust_cradle_families": 12,
+      "seeds": [
+        520201,
+        520202
+      ]
+    },
+    "prior_scope": "governed descriptive connectivity/corridor evidence, not canonical range truth",
+    "prior_semantics": "DESCRIPTIVE_COUNTS_AND_ENVELOPES_ONLY_NO_MAJORITY_VOTE_NO_WEIGHTED_SCORE_NO_NUMERIC_CORRIDOR_TRUTH",
+    "provider": "RangeShiftR",
+    "runtime": {
+      "library_path": "/home/jose/miniforge3/envs/arcana-r40-r/lib/R/library/RangeShiftR",
+      "r_version": "R version 4.5.3 (2026-03-11)"
+    },
+    "version": "3.0.1"
+  },
+  "provider_gate": {
+    "conditions_for_reopen": [
+      "recover governed historical cradle/origination cells for all applicable species/components",
+      "close parameter authority without arbitrary constants",
+      "approve a lossless dynamic-landscape adapter and units",
+      "pre-register forward validation and uncertainty propagation"
+    ],
+    "decision": "BLOCKED_MISSING_INITIALIZATION_AUTHORITY",
+    "decision_order_evaluated": [
+      "REUSE_CANONICAL_ARCANA",
+      "REUSE_ALREADY_VALIDATED_SPECIALIST_PROVIDER",
+      "AUDIT_NEW_SPECIALIST_PROVIDER",
+      "MINIMUM_CUSTOM_ARCANA"
+    ],
+    "rationale": "canonical ARCANA replay lacks the required historical spatial series; RangeShiftR is validated only for a narrower prior descriptive scope and cannot be initialized for these lineages/components"
+  },
+  "repository": {
+    "branch": "main",
+    "canonical_mutation": false,
+    "head": "43463b57209927a1d6e8aedb8cb178105ad15e2b"
+  },
+  "scope": {
+    "component_count": 295,
+    "excluded": [
+      "abundance",
+      "density",
+      "biomass",
+      "edible animal resource",
+      "human harvest",
+      "population targets",
+      "K(x,t)"
+    ],
+    "quantity": "historical range / occupancy / spatial-support state",
+    "species_count": 134
+  },
+  "sources": {
+    "a3f2": {
+      "path": "R5_17_B7_A3F2_HISTORICAL_WILD_FAUNA_SPATIAL_RECONSTRUCTION.json",
+      "role": "a3f2",
+      "sha256": "5fe246b5bca94f0d980b8105f3017c4de51cd76ad0b110a0dd6cc5d17ab5c180",
+      "size_bytes": 277452,
+      "tracked": false
+    },
+    "component_registry": {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_PRESENT_COMPONENT_REGISTRY.json",
+      "role": "component_registry",
+      "sha256": "dd81003c64c4332458bc131a162b48a4e35df85c44b9636f914979e9c1edec6f",
+      "size_bytes": 394462,
+      "tracked": true
+    },
+    "functional_summary": {
+      "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_PRESENT_FUNCTIONAL_SUMMARY.json",
+      "role": "functional_summary",
+      "sha256": "1b944edfc4bb648a8356d252d5f9628a57e38a1664c00be00e5c7a7bdca6b765",
+      "size_bytes": 1099921,
+      "tracked": true
+    },
+    "historical_closure": {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_HISTORICAL_LINEAGE_CLOSURE.json",
+      "role": "historical_closure",
+      "sha256": "2dcf79131643ca441fbee6f61939782df94b895533fdb7a3e9b4e2695291b041",
+      "size_bytes": 2692076,
+      "tracked": true
+    },
+    "lineage_registry": {
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json",
+      "role": "lineage_registry",
+      "sha256": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf",
+      "size_bytes": 194579,
+      "tracked": true
+    },
+    "r52_adjudication": {
+      "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R5_2/R5_2_EVIDENCE_STRUCTURE_AND_NEXT_ENGINE_ADJUDICATION.json",
+      "role": "r52_adjudication",
+      "sha256": "b8a4dd4a3cb599c72cc5be2d69b5e4c012046bd6d1da0075b84c5d32ab0a7d3d",
+      "size_bytes": 20943,
+      "tracked": true
+    },
+    "r52_plan": {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_2/R5_2_RANGE_EXECUTION_PLAN.json",
+      "role": "r52_plan",
+      "sha256": "49704d285c416714c0c262769e97b34300004be268482a806cd8d9baf4f990dd",
+      "size_bytes": 44159,
+      "tracked": true
+    },
+    "r52_r1": {
+      "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_2/R5_2_R1_SOURCE_BINDING_PREFLIGHT.json",
+      "role": "r52_r1",
+      "sha256": "0486a4f9179199737d39e908647700d710d1948c03efcc0f006e7d2d26714a26",
+      "size_bytes": 670,
+      "tracked": true
+    },
+    "r52_runtime": {
+      "path": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R5_2/R5_2_RANGESHIFTER_RUNTIME_IDENTITY.json",
+      "role": "r52_runtime",
+      "sha256": "11db488f286effdd0c3a4717df5f08d0e767060019d1a5dc4cb25ed8e32bb0b4",
+      "size_bytes": 267,
+      "tracked": true
+    },
+    "suitability_gate": {
+      "path": "SCIENTIFIC_ENGINE_SUITABILITY_GATE.md",
+      "role": "suitability_gate",
+      "sha256": "d2a8ec5819f2610fa8c5578bd1c7004268dadf3b035531ce49a53afcbb89160c",
+      "size_bytes": 13574,
+      "tracked": true
+    }
+  },
+  "stage": "R5.17-B7-A3F2-P1",
+  "status": "P1_ADJUDICATION_COMPLETE_BLOCKED_MISSING_INITIALIZATION_AUTHORITY",
+  "validity": {
+    "endpoint_validation": {
+      "anti_circular_rule": "never tune and validate on the same endpoint",
+      "calibration": "pre-register parameters on independent cradle/early-history evidence",
+      "metrics": [
+        "cell-wise Jaccard",
+        "commission/omission",
+        "range-size ratio",
+        "probabilistic occupancy scoring only when probabilities are authorized"
+      ],
+      "validation": "hold out later governed endpoints or intervals"
+    },
+    "forward": "conditionally valid in principle only after initialization, parameter, and spatial adapter authorities are independently closed",
+    "inverse_from_present": false,
+    "inverse_reason": "backward inference from 0 ka/present endpoint is not historical truth"
+  }
+}

@@ -2,11 +2,11 @@
 
 Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`.
 
-- Base repository HEAD at generation: `d4aebfc39e93df744ace7498c6e5cb3f321c9a0e`
+- Base repository HEAD at generation: `43463b57209927a1d6e8aedb8cb178105ad15e2b`
 - Content basis: **tracked worktree bytes at generation**
 - Git blob OIDs: **computed from current file bytes via `git hash-object`**
-- Generated UTC: `2026-09-12T21:35:27.770946+00:00`
-- Indexed reference files: **5244**
+- Generated UTC: `2026-09-12T23:04:13.236598+00:00`
+- Indexed reference files: **5256**
 
 ## Purpose
 
@@ -19,7 +19,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | Category | Count |
 |---|---:|
 | AUDIT | 989 |
-| AUTHORITY_JSON | 310 |
+| AUTHORITY_JSON | 311 |
 | BENCHMARK_EXECUTOR | 41 |
 | CONFIG | 110 |
 | CONTRACT_PROTOCOL | 208 |
@@ -27,9 +27,9 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | HANDOFF | 56 |
 | MANIFEST | 650 |
 | POWERSHELL_RUNNER | 254 |
-| PYTHON_RUNNER_SOURCE | 380 |
+| PYTHON_RUNNER_SOURCE | 384 |
 | README | 171 |
-| REFERENCE | 448 |
+| REFERENCE | 455 |
 | RESULT_SUMMARY | 1583 |
 | SEMANTIC_CATALOG | 1 |
 | STATUS | 42 |
@@ -5293,6 +5293,28 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | REFERENCE | `R5_17_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION.json` |  | `b5936cd0d2d16f8d4ac245eb4b863243da6235f3` | `6b24207750a9b6c9cbe97c5a785ef11c5c611550f8302169378f724a36b7b1df` |
 | REFERENCE | `R5_17_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION.md` | R5.17-B7-A2 - Semantic Binding & Temporal Coverage Adjudication | `8ec4e1f10af6fc30f54dfedbfff52a87a5b6ef0e` | `8c7f932c16534b7b1452efbf65162096a2d461c76dee5efc20c9aec986316fc0` |
 
+### R5.17.B7.A3
+
+| Kind | Path | Title | Git blob | SHA256 |
+|---|---|---|---|---|
+| AUTHORITY_JSON | `R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json` |  | `a972bc06edad4b50988a6af7993625fb2c6ab399` | `edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157` |
+| PYTHON_RUNNER_SOURCE | `R5_17_B7_A3_MATERIALIZE_PLANT_AND_CENSUS_WILD_FAUNA.py` |  | `4eca59097ce038741b6c03621357e0d12e8446fb` | `0b8ad5c5e3560fca40248699155bbe2433e3fa29758f8a9b713e72cefc984181` |
+| REFERENCE | `R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.md` | R5.17-B7-A3 — Plant Materialization & Wild-Fauna Authority Census | `55923fbc89511b3be860a7e9f37edd2095427fc6` | `7c152da590efcef1610a33d7fdb1a9959d0b314944ad9b9fd3f9ea39f95f4a09` |
+
+### R5.17.B7.A3F2
+
+| Kind | Path | Title | Git blob | SHA256 |
+|---|---|---|---|---|
+| PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P1_ADJUDICATE_RANGE_DYNAMICS_PROVIDER.py` |  | `182d786d891feec70b5254dccddd588c615611a4` | `1188cca7d376624cf0789a851add5b7934239859ed7dc055b5b291a0327fa954` |
+| PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P2_ADJUDICATE_MACROECOLOGICAL_RESOURCE_PROVIDER.py` |  | `1ddcdcb45ad25bc684a5ca117b5a5b251da541c3` | `2a0cd2961c18158f9e9e245931c8c5e839865828dcee5c154811c44cd7579207` |
+| PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_RECONSTRUCT_HISTORICAL_WILD_FAUNA_SPATIAL_STATE.py` |  | `5d9e9834e403242e58a177bfe3665c435b760657` | `42904f56581a5850cf44bed1e6710636f5a0e48bc737fb1dfc64f1401d3d4783` |
+| REFERENCE | `R5_17_B7_A3F2_HISTORICAL_WILD_FAUNA_SPATIAL_RECONSTRUCTION.json` |  | `74cbbea5aa90c0a27c7c956b0a919d0c5b60fe19` | `5fe246b5bca94f0d980b8105f3017c4de51cd76ad0b110a0dd6cc5d17ab5c180` |
+| REFERENCE | `R5_17_B7_A3F2_HISTORICAL_WILD_FAUNA_SPATIAL_RECONSTRUCTION.md` | R5.17-B7-A3F2 — Governed Historical Wild-Fauna Spatial Reconstruction | `aeab12dad4d57096965246fdcc225def998a68c4` | `c66bee4f22c96a115d7c46664f1f5b0d9a083e9907a008fca1d89304a7aa26f8` |
+| REFERENCE | `R5_17_B7_A3F2_P1_RANGE_DYNAMICS_PROVIDER_ADJUDICATION.json` |  | `1d094b2af22c25bef8b701cf9fb84bb299707b78` | `e746210b1652b3c68c73abd61c715169d35659e7a1061a0ed52fb6eca223eac0` |
+| REFERENCE | `R5_17_B7_A3F2_P1_RANGE_DYNAMICS_PROVIDER_ADJUDICATION.md` | R5.17-B7-A3F2-P1 | `91c69d5be0d57b1c5bc08ba26435845cf3f47c37` | `785770894d13a5b8392d062d81c09350b74a8f8cf4351fb745bb866dc9057553` |
+| REFERENCE | `R5_17_B7_A3F2_P2_MACROECOLOGICAL_RESOURCE_PROVIDER_ADJUDICATION.json` |  | `93a7fcd4eb225c66e168820b6495436ba2bb581a` | `da8defe69c2c12cf248bf608c1fa72197f0da2675e252ace116c28f9eac15462` |
+| REFERENCE | `R5_17_B7_A3F2_P2_MACROECOLOGICAL_RESOURCE_PROVIDER_ADJUDICATION.md` | R5.17-B7-A3F2-P2 | `9ba4e3a12456bd5b90c0a732f6ab27506a891f92` | `057cfcbd27662300b87dc5f84e9aa23893797602cbedc346b1c49feb74a5edf3` |
+
 ### R5.2
 
 | Kind | Path | Title | Git blob | SHA256 |
@@ -5966,7 +5988,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | CONTRACT_PROTOCOL | `tests/test_r416_recovered_metric_target_protocol.py` |  | `f449ee200f7bd79edb726af0b1244f943f9015b3` | `dc69e93efa1c27b34c4785350b1a4a1a89d0735f428d06883d654f78118db2b9` |
 | CONTRACT_PROTOCOL | `tests/test_r420_p2_adapter_preflight_target_protocol_repair.py` |  | `0ba9955a48465e85faa1d311231b858978b50132` | `324985956b061c29f42c9347f7997cf11d8038d809685a2b0e4fadcfb94b1a89` |
 | CONTRACT_PROTOCOL | `tests/test_r425_target_protocol_preflight_geonomics_j14_discovery.py` |  | `29948b844c3d852089e32980e3aed174b6400d18` | `70427c7a999b70dc40eb305b6389e63230760fd065cb006f5ca3a5bb867538a3` |
-| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `7c2e2034d1c3658e0a7e404fed2a795aca284f16` | `af640c135fddafe94c7a431695186d6e9f57c4308e9fb52574bdc6d5239790f0` |
+| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `a209267f107f09aa620167bb3f05d16eeb7c8dfb` | `38968ed360142c18ab3875d1b7504e1c7347c64802e8daa90ccefce7a277ee00` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6C.md` | Next Stage Handoff — v0.6D | `7f40ba60fb95c58d1c2dd7b4239f27850a6b56fd` | `25a4900ac439c64373224badfa83f6eb7bc5db36dd9c4ccd88a3511963f4eb50` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6D.md` | Next Stage Handoff — v0.6D -> v0.6D1 | `fb2d13c1bdb9b5ebcdc5c48a44050ba47a9203cf` | `a3d7fb6831b065a3d805fadc9ec09e809ca311e430399877c9aa6a5bff5e996c` |
 | MANIFEST | `PACKAGE_MANIFEST_v0_6D.json` |  | `dfe247842b21021ea0e802689ffb3c2cce36a028` | `a3ac330f4825c2b4b53a8b874aaf0c83587eebbee338761d44a4f4fa21ee7241` |

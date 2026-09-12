@@ -1,0 +1,311 @@
+{
+  "alternative_provider_comparison": {
+    "Madingley_functional_macroecology": "best scientific candidate for bounded opportunity; requires new stage-local runtime/input/spatial audit",
+    "RangeShiftR_species_reconstruction": "blocked by missing historical initialization; unnecessarily strong for reframed B7 target",
+    "explicitly_bounded_unmaterialized": "remains the current safe output until Madingley conditions close",
+    "mandatory_order": [
+      "REUSE_CANONICAL_ARCANA",
+      "REUSE_ALREADY_VALIDATED_SPECIALIST_PROVIDER",
+      "AUDIT_NEW_SPECIALIST_PROVIDER",
+      "MINIMUM_CUSTOM_ARCANA"
+    ],
+    "minimum_custom_arcana": "not selected merely for ease; a custom trophic-efficiency approximation is less semantically defensible than functional ecosystem evidence"
+  },
+  "environment_input_crosswalk": {
+    "changing_shoreline_paleogeography": "MISSING_AS_PROVIDER_INPUT_AUTHORITY",
+    "forbidden_mappings": [
+      "forage proxy as physical plant biomass",
+      "relative precipitation as water availability",
+      "coastal edge as marine productivity",
+      "human-conditioned or domestication fields"
+    ],
+    "land_ocean_mask": "PROXY_ONLY_OR_MISSING: available paleogeographic inputs require semantic/unit adapter; prior Madingley run was not ARCANA geography",
+    "npp_primary_productivity": "PROXY_ONLY: A1 forage/NPP-like support is not automatically physical NPP in the Madingley input contract",
+    "overall": "no exact complete crosswalk; MADINGLEY_INPUT_CROSSWALK_REQUIRED",
+    "plant_autotroph_base": "PROXY_ONLY: A3 plant materialization is a governed resource component, not automatically Madingley stock initialization",
+    "precipitation": "PROXY_ONLY: name similarity is insufficient and relative precipitation must not be treated as water availability",
+    "seasonality": "MISSING_FOR_GOVERNED_CROSSWALK: monthly/seasonal semantics and units not closed",
+    "spatial_grid_latitude_cell_area": "PROXY_ONLY: 90x180 lat/lon requires area-aware adapter",
+    "temperature": "PROXY_ONLY: Madingley requires monthly near-surface temperature; exact ARCANA historical field/domain binding not established",
+    "terrestrial_environment": "PROXY_ONLY: R3.33/R3.34 recent resource states cannot be backprojected into deep time"
+  },
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "Madingley_invoked": false,
+    "RangeShiftR_invoked": false,
+    "animal_biomass_materialized": false,
+    "canonical_mutation": false,
+    "historical_abundance_materialized": false,
+    "historical_species_range_materialized": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "population_target_used": false
+  },
+  "implementation_disposition": "MADINGLEY_STAGE_LOCAL_RUNTIME_AUDIT_REQUIRED",
+  "initialization_and_spinup_options": {
+    "continuous_transient": {
+      "assumptions": [
+        "time-continuous environmental drivers",
+        "cohort and trophic state carry-over",
+        "validated temporal units"
+      ],
+      "meaning": "transient functional ecosystem opportunity; still not ARCANA species history",
+      "species_origin_required": false
+    },
+    "ecological_spinup_equilibrium": {
+      "assumptions": [
+        "stationary environment or declared equilibration interpretation",
+        "equilibrium is relevant to opportunity"
+      ],
+      "meaning": "equilibrium ecological opportunity, not literal history",
+      "species_origin_required": false
+    },
+    "independent_time_slice_equilibration": {
+      "assumptions": [
+        "each governed environment is interpreted independently",
+        "cross-time path dependence is intentionally discarded"
+      ],
+      "meaning": "snapshot opportunity",
+      "species_origin_required": false
+    },
+    "preferred_future_pilot": "independent governed time-slice opportunity snapshots unless a transient environmental/state authority is first recovered; no option is authorized to run now",
+    "standard_functional_cohort_initialization": {
+      "assumptions": [
+        "generic cohort priors are defensible",
+        "environmental inputs are physically/unit compatible"
+      ],
+      "meaning": "model initial condition, not historical realized ecosystem",
+      "species_origin_required": false
+    },
+    "warm_start": {
+      "assumptions": [
+        "preceding anchor state is governed and compatible",
+        "state carry-over is scientifically justified"
+      ],
+      "meaning": "path-dependent opportunity",
+      "species_origin_required": false
+    }
+  },
+  "madingley_runtime_authority": {
+    "available_in_repository": true,
+    "implementation": "MadingleyR with Madingley C++ backend",
+    "language_runtime": "R package plus compiled C++ backend; prior ARCANA evidence used the arcana-r40-r conda/R environment",
+    "license_status": "not independently adjudicated in this tranche",
+    "previous_arcana_validation": {
+      "canonical_write": false,
+      "job_status": "PASS_EVIDENCE",
+      "normalization_semantics": "WITHIN_ENGINE_DIMENSIONLESS_RESPONSE_ONLY_NO_RAW_N_EQUIVALENCE",
+      "runtime_identity": null,
+      "successful_replicates": 4
+    },
+    "previous_scientific_role": "microbenchmark and bounded ecosystem response evidence; prior adapter used normalized NPP boundary-response factor and explicitly non-ARCANA Earth-reference-window geography",
+    "production_ready_for_B7": false,
+    "runtime_disposition": "MADINGLEY_STAGE_LOCAL_RUNTIME_AUDIT_REQUIRED",
+    "version": "MadingleyR-1.0.6__CPP-2.02"
+  },
+  "madingley_semantic_suitability": {
+    "abundance": "PROVIDER_OUTPUT_POSSIBLE_BUT_NOT_B7_AUTHORITY_BY_ITSELF",
+    "biomass": "PROVIDER_OUTPUT_POSSIBLE_AS_OPPORTUNITY_STATE; not human food mass",
+    "body_mass": "MATCH_AS_FUNCTIONAL_COHORT_PARAMETER",
+    "dispersal_mortality_reproduction": "MATCH_IN_MODEL_FORM; parameter authority still required",
+    "environmental_dependence": "MATCH_IN_MODEL_FORM",
+    "functional_heterotroph_groups_cohorts": "MATCH",
+    "overall": "scientifically stronger candidate than a custom trophic-efficiency scalar for natural animal opportunity, but not yet an ARCANA-authorized output",
+    "terrestrial_ecosystem_state": "MATCH",
+    "trophic_interactions": "PARTIAL_OR_MODEL-DEFINED; must be audited against requested semantics",
+    "trophic_level": "PARTIAL_PROVIDER_STATE; must be exposed and mapped without species claims"
+  },
+  "marine_scope": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "decision": "NOT_MATERIALIZED",
+    "reason": "terrestrial macroecological suitability does not promote marine authority"
+  },
+  "next_operation": "Run a non-production stage-local Madingley runtime and license audit plus a source-bound environmental input crosswalk; do not run a scientific pilot until all remaining conditions are adjudicated.",
+  "provider_decision": "INTRODUCE_SPECIALIST_PROVIDER",
+  "rangeshiftr_disposition": {
+    "current_p1_decision": "BLOCKED_MISSING_INITIALIZATION_AUTHORITY",
+    "disposition": "RETAIN_AS_BLOCKED_SPECIES_LEVEL_ALTERNATIVE",
+    "reason": "historical cradle/initialization authority is absent for 134/295; species-range reconstruction is unnecessarily strong for the reframed B7 opportunity quantity"
+  },
+  "remaining_conditions": [
+    "confirm exact runtime/package on current host without production run",
+    "complete semantic/unit crosswalk for each required environmental input",
+    "approve area-aware 90x180 adapter",
+    "select snapshot versus transient interpretation",
+    "define uncertainty propagation and bounded output schema",
+    "keep ARCANA species authority separate",
+    "separate marine adjudication"
+  ],
+  "repository": {
+    "branch": "main",
+    "canonical_mutation": false,
+    "head": "43463b57209927a1d6e8aedb8cb178105ad15e2b"
+  },
+  "scientific_target_reframe": {
+    "adjudication": "B7 does not require literal reconstruction of the 134 ARCANA species as the only route to its wild-animal support quantity; a bounded macroecological functional opportunity layer is scientifically relevant, provided it is kept separate from ARCANA species authority",
+    "b7_contract_target": "natural/pre-management biological food-resource opportunity; H0 fauna inspection includes spatial population/range state and trophic relationships",
+    "not_claimed": [
+      "historical truth about individual ARCANA species ranges",
+      "human-edible fraction",
+      "calories",
+      "hunting return",
+      "human carrying capacity",
+      "K(x,t)"
+    ],
+    "provider_output_role": "PROVIDER_EVIDENCE_FOR_NATURAL_ANIMAL_RESOURCE_OPPORTUNITY",
+    "selected_target": "NATURAL_WILD_ANIMAL_RESOURCE_SUPPORT",
+    "species_identity_requirement": "not required for a functional opportunity layer in principle; R3.21/R3.23 remain authoritative for ARCANA identity and are not replaced"
+  },
+  "sources": {
+    "a1_reference": {
+      "available": true,
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "role": "a1_reference",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "size_bytes": 2928319,
+      "tracked": true
+    },
+    "a2": {
+      "available": true,
+      "path": "R5_17_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION.json",
+      "role": "a2",
+      "sha256": "6b24207750a9b6c9cbe97c5a785ef11c5c611550f8302169378f724a36b7b1df",
+      "size_bytes": 12699,
+      "tracked": true
+    },
+    "a3": {
+      "available": true,
+      "path": "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json",
+      "role": "a3",
+      "sha256": "edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157",
+      "size_bytes": 411751,
+      "tracked": false
+    },
+    "a3f2": {
+      "available": true,
+      "path": "R5_17_B7_A3F2_HISTORICAL_WILD_FAUNA_SPATIAL_RECONSTRUCTION.json",
+      "role": "a3f2",
+      "sha256": "5fe246b5bca94f0d980b8105f3017c4de51cd76ad0b110a0dd6cc5d17ab5c180",
+      "size_bytes": 277452,
+      "tracked": false
+    },
+    "food_contract": {
+      "available": true,
+      "path": "R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md",
+      "role": "food_contract",
+      "sha256": "dca7608824d227729822ed4fbf68eb6fb37245b42c9460035b5bfa0b32e37f6f",
+      "size_bytes": 4103,
+      "tracked": true
+    },
+    "madingley_driver": {
+      "available": true,
+      "path": "benchmarks/r43/madingley_r43.R",
+      "role": "madingley_driver",
+      "sha256": "f5fd9d12a96b54831d320d78024bf2c04f2e65a725cb9ad5c4ea9f7d2dd61975",
+      "size_bytes": 4984,
+      "tracked": true
+    },
+    "madingley_job_audit": {
+      "available": true,
+      "path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/JOB_AUDIT.json",
+      "role": "madingley_job_audit",
+      "sha256": "ab1da4d0c8b92d2d70b719e2ccbb585144fbc5ca129992fee2dcb371188616c4",
+      "size_bytes": 835,
+      "tracked": true
+    },
+    "madingley_normalized": {
+      "available": true,
+      "path": "outputs/v0_6D1_R4_3/jobs/R42_J07_H0_POST_CHA1_RECOVERY_MADINGLEY/NORMALIZED_EVIDENCE.json",
+      "role": "madingley_normalized",
+      "sha256": "c7b55817853988e832701f1fdcf216a13ca9b89ca35ef8b2babc8c59a021be6c",
+      "size_bytes": 2093,
+      "tracked": true
+    },
+    "madingley_runtime": {
+      "available": true,
+      "path": "outputs/v0_6D1_R4_3/R4_3_RUNTIME_IDENTITY_EVIDENCE.json",
+      "role": "madingley_runtime",
+      "sha256": "2db43f8fc22174bcf97a954b061aad523a56930a0fea1f2861301d628e62a08b",
+      "size_bytes": 3274,
+      "tracked": true
+    },
+    "p1": {
+      "available": true,
+      "path": "R5_17_B7_A3F2_P1_RANGE_DYNAMICS_PROVIDER_ADJUDICATION.json",
+      "role": "p1",
+      "sha256": "e746210b1652b3c68c73abd61c715169d35659e7a1061a0ed52fb6eca223eac0",
+      "size_bytes": 10862,
+      "tracked": false
+    },
+    "r321_lineage": {
+      "available": true,
+      "path": "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json",
+      "role": "r321_lineage",
+      "sha256": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf",
+      "size_bytes": 194579,
+      "tracked": true
+    },
+    "r323_functional": {
+      "available": true,
+      "path": "outputs/v0_6D1_R3_23/R3_23_PRESENT_FUNCTIONAL_SUMMARY.json",
+      "role": "r323_functional",
+      "sha256": "1b944edfc4bb648a8356d252d5f9628a57e38a1664c00be00e5c7a7bdca6b765",
+      "size_bytes": 1099921,
+      "tracked": true
+    },
+    "r334_resource": {
+      "available": true,
+      "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_34/R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+      "role": "r334_resource",
+      "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86",
+      "size_bytes": 17450885,
+      "tracked": true
+    },
+    "suitability_gate": {
+      "available": true,
+      "path": "SCIENTIFIC_ENGINE_SUITABILITY_GATE.md",
+      "role": "suitability_gate",
+      "sha256": "d2a8ec5819f2610fa8c5578bd1c7004268dadf3b035531ce49a53afcbb89160c",
+      "size_bytes": 13574,
+      "tracked": true
+    }
+  },
+  "spatial_compatibility": {
+    "arcana_grid": "90x180 latitude/longitude with latitude-dependent cell area",
+    "compatible_now": false,
+    "minimum_adapter": [
+      "area-aware remapping with explicit conservation/units",
+      "time-indexed land/sea mask and shoreline rule",
+      "land-only terrestrial domain mask",
+      "latitude and cell-area fields retained",
+      "uncertainty and coverage masks propagated",
+      "no equal-area assumption"
+    ],
+    "production_remap": "not implemented or authorized",
+    "provider_assumption": "prior Madingley evidence used 1-degree Earth-reference input and non-ARCANA geography"
+  },
+  "stage": "R5.17-B7-A3F2-P2",
+  "status": "P2_ADJUDICATION_COMPLETE_CONDITIONAL_SPECIALIST_PROVIDER_INTRODUCTION",
+  "temporal_compatibility": {
+    "available_anchors": [
+      "A1 210 Ma to 0 Ma canonical anchors",
+      "R3.33/R3.34 recent 20 ka to 0 ka domain"
+    ],
+    "downstream_domain": "B7 natural support follows governed A1 deep-time anchors and separately bounded recent authorities; exact source masks remain attached",
+    "independent_snapshots": "conditionally defensible for ecological opportunity at governed environmental anchors, with explicit no-interpolation policy",
+    "neither": false,
+    "temporal_mismatch": "do not silently backproject recent producer/resource fields or interpret equilibrium snapshots as historical realized states",
+    "transient": "not currently defensible: continuous environmental/state semantics and units are not closed"
+  },
+  "terrestrial_scope": {
+    "conditions": [
+      "runtime audit",
+      "complete input crosswalk",
+      "spatial/temporal adapter",
+      "output bounds below human exploitation and K(x,t)"
+    ],
+    "decision": "CONDITIONAL_SPECIALIST_CANDIDATE",
+    "pilot_authorized": false,
+    "semantic_role": "natural terrestrial wild-animal trophic/resource opportunity"
+  }
+}
