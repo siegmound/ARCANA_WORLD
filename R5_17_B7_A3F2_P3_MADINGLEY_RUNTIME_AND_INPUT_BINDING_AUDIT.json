@@ -1,0 +1,256 @@
+{
+  "arcana_input_crosswalk": {
+    "Ecto_max / Endo_C_max / Endo_H_max / Endo_O_max": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "PROXY_ONLY",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    },
+    "available_water_capacity": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "PROXY_ONLY",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    },
+    "diurnal_temperature_range": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "PROXY_ONLY",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    },
+    "ground_frost_frequency": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "PROXY_ONLY",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    },
+    "hanpp": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "PROXY_ONLY",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    },
+    "land_mask": {
+      "authority": "A1 paleogeographic reference exists",
+      "classification": "PROXY_ONLY",
+      "reason": "not yet transformed to provider grid with time-slice provenance and shoreline semantics"
+    },
+    "near-surface_temperature": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "PROXY_ONLY",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    },
+    "precipitation": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "PROXY_ONLY",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    },
+    "realm_classification": {
+      "authority": "none exact",
+      "classification": "MISSING",
+      "reason": "terrestrial provider realm categories are not bound to ARCANA paleogeography"
+    },
+    "terrestrial_net_primary_productivity": {
+      "authority": "none sufficient for exact provider semantics",
+      "classification": "MISSING",
+      "reason": "current governed A1/R3.33/R3.34 quantities do not establish the required provider-native physical monthly input"
+    }
+  },
+  "authorized_output_semantics": {
+    "forbidden": [
+      "human-edible fraction",
+      "calories",
+      "hunting yield",
+      "harvest return",
+      "population support",
+      "K(x,t)"
+    ],
+    "minimal_future_output": "terrestrial heterotroph biomass/opportunity state with cohort/trophic descriptors where provider-native",
+    "potential": [
+      "functional cohort abundance",
+      "heterotroph biomass",
+      "trophic-group composition",
+      "environment-conditioned opportunity response"
+    ]
+  },
+  "exact_provider_input_contract": [
+    {
+      "dimensions": "1-degree spatial grid",
+      "name": "realm_classification",
+      "normalization": "provider default",
+      "required": true,
+      "spatial": "provider 1-degree Earth grid",
+      "temporal": "static per run",
+      "units": "provider-native categorical; metadata not recovered"
+    },
+    {
+      "dimensions": "1-degree spatial grid",
+      "name": "land_mask",
+      "normalization": "provider default",
+      "required": true,
+      "spatial": "provider 1-degree Earth grid",
+      "temporal": "static per run",
+      "units": "provider-native mask; metadata not recovered"
+    },
+    {
+      "dimensions": "1-degree spatial grid",
+      "name": "hanpp",
+      "normalization": "default/no-HANPP path",
+      "required": true,
+      "spatial": "provider grid",
+      "temporal": "static per run",
+      "units": "provider-native; prior evidence says no HANPP applied"
+    },
+    {
+      "dimensions": "1-degree spatial grid",
+      "name": "available_water_capacity",
+      "normalization": "provider default",
+      "required": true,
+      "spatial": "provider grid",
+      "temporal": "static per run",
+      "units": "provider-native; exact unit metadata not recovered"
+    },
+    {
+      "dimensions": "1-degree spatial grid",
+      "name": "Ecto_max / Endo_C_max / Endo_H_max / Endo_O_max",
+      "normalization": "provider functional-group defaults",
+      "required": true,
+      "spatial": "provider grid",
+      "temporal": "static per run",
+      "units": "functional-group parameter units; exact metadata not recovered"
+    },
+    {
+      "dimensions": "12 monthly rasters x provider grid",
+      "name": "terrestrial_net_primary_productivity",
+      "normalization": "prior runner multiplied by normalized boundary factor; not acceptable for B7 authority",
+      "required": true,
+      "spatial": "provider 1-degree grid",
+      "temporal": "monthly climatology per run",
+      "units": "provider physical NPP input units required; prior ARCANA adapter used normalized proxy"
+    },
+    {
+      "dimensions": "12 monthly rasters x provider grid",
+      "name": "near-surface_temperature",
+      "normalization": "provider default",
+      "required": true,
+      "spatial": "provider 1-degree grid",
+      "temporal": "monthly climatology per run",
+      "units": "provider temperature units; exact metadata not recovered"
+    },
+    {
+      "dimensions": "12 monthly rasters x provider grid",
+      "name": "precipitation",
+      "normalization": "provider default; relative precipitation cannot substitute freshwater",
+      "required": true,
+      "spatial": "provider 1-degree grid",
+      "temporal": "monthly climatology per run",
+      "units": "provider precipitation units; exact metadata not recovered"
+    },
+    {
+      "dimensions": "12 monthly rasters x provider grid",
+      "name": "ground_frost_frequency",
+      "normalization": "provider default",
+      "required": true,
+      "spatial": "provider 1-degree grid",
+      "temporal": "monthly climatology per run",
+      "units": "provider-native frequency; exact metadata not recovered"
+    },
+    {
+      "dimensions": "12 monthly rasters x provider grid",
+      "name": "diurnal_temperature_range",
+      "normalization": "provider default",
+      "required": true,
+      "spatial": "provider 1-degree grid",
+      "temporal": "monthly climatology per run",
+      "units": "provider temperature-range units; exact metadata not recovered"
+    }
+  ],
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "Madingley_invoked": false,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "historical_abundance_materialized": false,
+    "historical_species_range_materialized": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "population_target_used": false,
+    "production_madingley_run": false
+  },
+  "initialization_spinup": {
+    "sensitivity": "must be tested in future pilot; not run now",
+    "species_origin_required": false,
+    "spinup": "possible in principle but would estimate ecological opportunity, not historical realized state",
+    "standard_cohort_initialization": "possible only as generic provider initial condition after input closure",
+    "warm_start": "not required for independent snapshots; required only if transient path dependence is later chosen"
+  },
+  "next_operation": "Recover/adjudicate physical monthly NPP and complete the required ARCANA input/spatial adapter audit; only then reopen the Madingley pilot gate.",
+  "npp_adjudication": {
+    "defensible_transformation_exists": false,
+    "fail_closed": true,
+    "normalized_proxy_exists": true,
+    "physical_productivity_authority_exists": false,
+    "prohibition": "do not rescale 0..1 forage/normalized NPP into physical productivity units",
+    "result": "C_ONLY_NORMALIZED_PROXY_EXISTS_PHYSICAL_NPP_MISSING"
+  },
+  "pilot_decision": "BLOCKED_MISSING_PHYSICAL_NPP_AUTHORITY",
+  "remaining_conditions": [
+    "recover or independently authorize physical monthly NPP authority",
+    "complete all required provider input units and semantics",
+    "approve area-aware ARCANA-to-provider adapter",
+    "bind time-slice land/sea/shoreline provenance",
+    "complete runtime/compiler/license audit",
+    "define initialization/spinup sensitivity protocol",
+    "keep output below human exploitation and K(x,t)"
+  ],
+  "repository": {
+    "branch": "main",
+    "head": "d8cbc619c8bdd3340fc174d651dbb671ba642ac0"
+  },
+  "runtime_identity": {
+    "backend": "MadingleyCPP 2.02",
+    "compiler_dependency": "compiled C++ backend; compiler build identity not separately recovered",
+    "confirmed_identity": "MadingleyR-1.0.6__CPP-2.02",
+    "library_path": "/home/jose/miniforge3/envs/arcana-r40-r/lib/R/library/MadingleyR",
+    "license_status": "not adjudicated in this tranche",
+    "package": "MadingleyR",
+    "previous_success": {
+      "canonical_write": false,
+      "job_status": "PASS_EVIDENCE",
+      "microbenchmark_version": "5.2",
+      "runtime_identity_status": "READY",
+      "successful_replicates": 4
+    },
+    "provider": "Madingley",
+    "r_runtime": "PowerShell -> WSL conda:arcana-r40-r/Rscript+runtime-libs",
+    "version": "1.0.6"
+  },
+  "runtime_smoke_test": {
+    "evidence": "prior runtime identity returned MadingleyR 1.0.6 and C++ 2.02 with returncode 0; prior R4.1 microbenchmark and R4.3 evidence also passed",
+    "performed_now": false,
+    "production_run": false,
+    "scientific_evidence": false,
+    "status": "PASS_PRIOR_NONSCIENTIFIC_IDENTITY_EVIDENCE"
+  },
+  "spatial_adapter": {
+    "arcana": "90x180 lat/lon, changing land/sea and latitude-dependent cell area",
+    "compatible_now": false,
+    "executed": false,
+    "minimum_contract": [
+      "area-aware remapping",
+      "cell identity/latitude/cell area retention",
+      "time-indexed land/sea and shoreline masks",
+      "terrestrial realm validity",
+      "environmental field units preserved",
+      "time-slice provenance and uncertainty masks"
+    ],
+    "provider": "1-degree Earth grid; prior spatial semantics were non-ARCANA"
+  },
+  "stage": "R5.17-B7-A3F2-P3",
+  "status": "P3_AUDIT_COMPLETE_BLOCKED_MISSING_PHYSICAL_NPP_AUTHORITY",
+  "temporal_strategy": {
+    "available_domains": [
+      "A1 anchors 210 Ma to 0 Ma",
+      "R3.33/R3.34 recent 20 ka to 0 ka"
+    ],
+    "decision": "INDEPENDENT_ECOLOGICAL_OPPORTUNITY_SNAPSHOTS",
+    "meaning": "equilibrium/opportunity conditional on governed environment, not exact realized historical fauna",
+    "no_silent_interpolation": true,
+    "reason": "governed anchors do not support a continuous transient provider state; snapshots can be conditional on each governed paleoenvironment"
+  }
+}

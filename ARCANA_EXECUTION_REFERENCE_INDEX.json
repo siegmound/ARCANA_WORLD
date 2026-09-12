@@ -1,14 +1,14 @@
 {
   "schema": "ARCANA_EXECUTION_REFERENCE_INDEX_V1",
-  "generated_utc": "2026-09-12T23:04:13.236598+00:00",
-  "repository_head": "43463b57209927a1d6e8aedb8cb178105ad15e2b",
+  "generated_utc": "2026-09-12T23:31:05.401548+00:00",
+  "repository_head": "d8cbc619c8bdd3340fc174d651dbb671ba642ac0",
   "content_basis": "TRACKED_WORKTREE_CONTENT_AT_GENERATION",
   "blob_oid_semantics": "GIT_HASH_OBJECT_OF_CURRENT_FILE_BYTES",
   "purpose": "Reusable lookup surface for README/status/contracts/audits, execution runners, configs, manifests and result summaries that may be required by future replay/regression tests.",
-  "record_count": 5256,
+  "record_count": 5255,
   "category_counts": {
-    "AUDIT": 989,
-    "AUTHORITY_JSON": 311,
+    "AUDIT": 991,
+    "AUTHORITY_JSON": 310,
     "BENCHMARK_EXECUTOR": 41,
     "CONFIG": 110,
     "CONTRACT_PROTOCOL": 208,
@@ -18,7 +18,7 @@
     "POWERSHELL_RUNNER": 254,
     "PYTHON_RUNNER_SOURCE": 384,
     "README": 171,
-    "REFERENCE": 455,
+    "REFERENCE": 453,
     "RESULT_SUMMARY": 1583,
     "SEMANTIC_CATALOG": 1,
     "STATUS": 42
@@ -104,12 +104,12 @@
     "R4.22": 130,
     "R4.23": 27,
     "R4.24": 16,
-    "R4.25": 18,
+    "R4.25": 16,
     "R4.26": 16,
     "R4.27": 16,
     "R4.28": 25,
     "R4.28.R1": 1,
-    "R4.29": 18,
+    "R4.29": 16,
     "R4.3": 545,
     "R4.30": 22,
     "R4.30.R2": 1,
@@ -213,7 +213,7 @@
     "R5.17.B7.A1": 3,
     "R5.17.B7.A2": 3,
     "R5.17.B7.A3": 3,
-    "R5.17.B7.A3F2": 9,
+    "R5.17.B7.A3F2": 12,
     "R5.2": 125,
     "R5.3": 340,
     "R5.4": 16,
@@ -19727,26 +19727,6 @@
       "sha256": "8907eb8757ab3941a44f58f0bb61b18fd772e41fead421e516952a72808c0ffe"
     },
     {
-      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_accepts_only_se0/outputs/v0_6D1_R3_99_SEAL/FINAL_SEAL.json",
-      "stage": "R4.25",
-      "category": "REFERENCE",
-      "title": "",
-      "extension": ".json",
-      "size_bytes": 51,
-      "git_blob_oid": "e49805ed81f9e4c145658183a3a29b11735e7371",
-      "sha256": "d9ed8e450cbe4f79c58c01eb870e8294353d718f0602e5f9a7718b9eeed51299"
-    },
-    {
-      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_does_not_accept0/outputs/v0_6D1_R3_27_SEAL/FINAL_SEAL.json",
-      "stage": "R4.25",
-      "category": "REFERENCE",
-      "title": "",
-      "extension": ".json",
-      "size_bytes": 51,
-      "git_blob_oid": "c61514cce9529d17e32cc4f4a541edba3cd1b226",
-      "sha256": "86763408da11673cd62653c7bed256348b4470cba175065c9d374a7117f15879"
-    },
-    {
       "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_26/R4_26_INTEGRATED_AUDIT.json",
       "stage": "R4.26",
       "category": "AUDIT",
@@ -20357,16 +20337,6 @@
       "sha256": "f6a72e0329c03de519749dae8edc3ce4848a308589576e6319ac0a98cd34ae85"
     },
     {
-      "path": "outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27_SEAL/R3_27_FINAL_SEAL_AUDIT.json",
-      "stage": "R4.29",
-      "category": "AUDIT",
-      "title": "",
-      "extension": ".json",
-      "size_bytes": 56,
-      "git_blob_oid": "1fa3dd494656c40924ad405251fe70ca6ff7aa21",
-      "sha256": "777b111dab4a0ed7156402e8e7c52dcc20db1d8d9925a9eb05844c72c0ca2f94"
-    },
-    {
       "path": "outputs/v0_6D1_R4_29_SEAL/R4_29_FINAL_SEAL_AUDIT.json",
       "stage": "R4.29",
       "category": "AUDIT",
@@ -20445,16 +20415,6 @@
       "size_bytes": 8336,
       "git_blob_oid": "fe99d3f7ebd8a598a3f13f03b3cf69fb253814f6",
       "sha256": "33f5888a3e57017c1932fdb66c05ec2b6c80563360a129902ee9df57cdf143f5"
-    },
-    {
-      "path": "outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27/R3_27_MACRO_REPLAY_AUTHORITY.json",
-      "stage": "R4.29",
-      "category": "AUTHORITY_JSON",
-      "title": "",
-      "extension": ".json",
-      "size_bytes": 52,
-      "git_blob_oid": "35c1e979f6dbf0948022886820713fa553ea5232",
-      "sha256": "cef2538458b4fbf254b0f185ca17d7305ba9e3287fe548e8b4b5ba3bdb88b98e"
     },
     {
       "path": "R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE_SCHEMALESS_SOURCE_AUTHORITY_CLOSURE_TARGET_DESIGN_IMPLEMENTATION_VALIDATION_AND_J14_SPATIAL_REPLAY_EXECUTION_AUTHORIZATION_CONTRACT.md",
@@ -43447,6 +43407,36 @@
       "sha256": "7c152da590efcef1610a33d7fdb1a9959d0b314944ad9b9fd3f9ea39f95f4a09"
     },
     {
+      "path": "R5_17_B7_A3F2_P3_AUDIT_MADINGLEY_RUNTIME_AND_INPUT_BINDING.py",
+      "stage": "R5.17.B7.A3F2",
+      "category": "AUDIT",
+      "title": "",
+      "extension": ".py",
+      "size_bytes": 12621,
+      "git_blob_oid": "eac61c9eb6886e966461e3bbbbfad0f30c9617b2",
+      "sha256": "ee0e360fdf0dae23a32b5ef9e9c095dbbbea3ddb684eb0301b5f6ffe59dd097c"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.json",
+      "stage": "R5.17.B7.A3F2",
+      "category": "AUDIT",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 11228,
+      "git_blob_oid": "729c027a0099f7a05098fb12146bc809ea322bd3",
+      "sha256": "b379af0518e6e75dfc26552875274946eeb171d2bdcbb6230c8205cd4742c4ee"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.md",
+      "stage": "R5.17.B7.A3F2",
+      "category": "AUDIT",
+      "title": "R5.17-B7-A3F2-P3",
+      "extension": ".md",
+      "size_bytes": 1149,
+      "git_blob_oid": "1d88f5edff8b431da7068e2fb3055d600b4ae5a3",
+      "sha256": "0cf13126e4ce2ecaf16a825609e8ae6210da1fb6cffaccc70a4c1bb2694abc66"
+    },
+    {
       "path": "R5_17_B7_A3F2_P1_ADJUDICATE_RANGE_DYNAMICS_PROVIDER.py",
       "stage": "R5.17.B7.A3F2",
       "category": "PYTHON_RUNNER_SOURCE",
@@ -49732,9 +49722,9 @@
       "category": "CURRENT_STATE",
       "title": "ARCANA WorldSim \u2014 Current State Authority",
       "extension": ".md",
-      "size_bytes": 11541,
-      "git_blob_oid": "a209267f107f09aa620167bb3f05d16eeb7c8dfb",
-      "sha256": "38968ed360142c18ab3875d1b7504e1c7347c64802e8daa90ccefce7a277ee00"
+      "size_bytes": 12030,
+      "git_blob_oid": "1cd2420822439fac8d1930be4508ff7b941b5b5f",
+      "sha256": "0e4b4d186a5e1561af1f4cf4f094db047d3ca1e09fd583b27139dd0d8415c9ba"
     },
     {
       "path": "NEXT_STAGE_HANDOFF_v0_6C.md",
@@ -51682,9 +51672,9 @@
       "category": "PYTHON_RUNNER_SOURCE",
       "title": "Index only repository-authoritative paths: already tracked or staged in",
       "extension": ".py",
-      "size_bytes": 11176,
+      "size_bytes": 11166,
       "git_blob_oid": "9491813c2bd57d3af24b318b08dd239323df33b5",
-      "sha256": "490daf795113d16840730cdefb74fe26b7124cab167920c2b5d4f851acbcb9fc"
+      "sha256": "965e5c92073dba23de68d6bac1d814f6a21d611994f008cd4a7998377ad0d52d"
     },
     {
       "path": "README.md",

@@ -2,11 +2,11 @@
 
 Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`.
 
-- Base repository HEAD at generation: `43463b57209927a1d6e8aedb8cb178105ad15e2b`
+- Base repository HEAD at generation: `d8cbc619c8bdd3340fc174d651dbb671ba642ac0`
 - Content basis: **tracked worktree bytes at generation**
 - Git blob OIDs: **computed from current file bytes via `git hash-object`**
-- Generated UTC: `2026-09-12T23:04:13.236598+00:00`
-- Indexed reference files: **5256**
+- Generated UTC: `2026-09-12T23:31:05.401548+00:00`
+- Indexed reference files: **5255**
 
 ## Purpose
 
@@ -18,8 +18,8 @@ The index is navigational evidence only. It does not promote an indexed file to 
 
 | Category | Count |
 |---|---:|
-| AUDIT | 989 |
-| AUTHORITY_JSON | 311 |
+| AUDIT | 991 |
+| AUTHORITY_JSON | 310 |
 | BENCHMARK_EXECUTOR | 41 |
 | CONFIG | 110 |
 | CONTRACT_PROTOCOL | 208 |
@@ -29,7 +29,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | POWERSHELL_RUNNER | 254 |
 | PYTHON_RUNNER_SOURCE | 384 |
 | README | 171 |
-| REFERENCE | 455 |
+| REFERENCE | 453 |
 | RESULT_SUMMARY | 1583 |
 | SEMANTIC_CATALOG | 1 |
 | STATUS | 42 |
@@ -2388,8 +2388,6 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | POWERSHELL_RUNNER | `run_v0_6D1_R4_25.ps1` |  | `4b7743e8c0114339393f41bfc9506d6ae4525581` | `fca76d229cfc65e8121f2d1fe511c972d5a6540da98047565feff58f30478839` |
 | PYTHON_RUNNER_SOURCE | `scripts/run_v0_6D1_R4_25.py` |  | `656d13ffbb3313bafd7b1b41eebd122d85fe861f` | `3d9c40de02371f586880599a8bafa70b9b1a44e314d222447cf5088c332956b9` |
 | README | `README_R4_25.md` | R4.25 candidate overlay | `f94cdce3291edeca50c0c2c12d7e4cc120c7b8fa` | `8907eb8757ab3941a44f58f0bb61b18fd772e41fead421e516952a72808c0ffe` |
-| REFERENCE | `outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_accepts_only_se0/outputs/v0_6D1_R3_99_SEAL/FINAL_SEAL.json` |  | `e49805ed81f9e4c145658183a3a29b11735e7371` | `d9ed8e450cbe4f79c58c01eb870e8294353d718f0602e5f9a7718b9eeed51299` |
-| REFERENCE | `outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_does_not_accept0/outputs/v0_6D1_R3_27_SEAL/FINAL_SEAL.json` |  | `c61514cce9529d17e32cc4f4a541edba3cd1b226` | `86763408da11673cd62653c7bed256348b4470cba175065c9d374a7117f15879` |
 
 ### R4.26
 
@@ -2476,7 +2474,6 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | AUDIT | `SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29/R4_29_INTEGRATED_AUDIT.json` |  | `deb6fd54aa01401b95b5f2dcc9928c06477fc189` | `f6a72e0329c03de519749dae8edc3ce4848a308589576e6319ac0a98cd34ae85` |
 | AUDIT | `SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29_SEAL/R4_29_FINAL_SEAL_AUDIT.json` |  | `77cc41da5fea8b9184b81f1e9ac5bbf436418a25` | `c9482ee4255021d693aa208dd9c9d70a0df630041cb77d89ca64d635fff97e4d` |
 | AUDIT | `outputs/v0_6D1_R4_29/R4_29_INTEGRATED_AUDIT.json` |  | `deb6fd54aa01401b95b5f2dcc9928c06477fc189` | `f6a72e0329c03de519749dae8edc3ce4848a308589576e6319ac0a98cd34ae85` |
-| AUDIT | `outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27_SEAL/R3_27_FINAL_SEAL_AUDIT.json` |  | `1fa3dd494656c40924ad405251fe70ca6ff7aa21` | `777b111dab4a0ed7156402e8e7c52dcc20db1d8d9925a9eb05844c72c0ca2f94` |
 | AUDIT | `outputs/v0_6D1_R4_29_SEAL/R4_29_FINAL_SEAL_AUDIT.json` |  | `77cc41da5fea8b9184b81f1e9ac5bbf436418a25` | `c9482ee4255021d693aa208dd9c9d70a0df630041cb77d89ca64d635fff97e4d` |
 | AUDIT | `scripts/audit_v0_6D1_R4_29_seal.py` |  | `672829e48d08c5b95c127d2cf33a8c6abb415054` | `39299417e100593a08de9cffb93bc8c2c861fffeb4c5ec1408f56c0dd9dd5f9c` |
 | AUTHORITY_JSON | `SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json` |  | `cf300c811bc5562246e2f548262cb80a9831efd2` | `5c654319b68dea4eaa9bd62ad8c291e96b58b0b712efaa8f32475447432dccf2` |
@@ -2485,7 +2482,6 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | AUTHORITY_JSON | `configs/world1_r429_selector_authority_design_validation_j14_execution_authorization_v0_6D1_R4_29.json` |  | `02e70d20e7276d65af07f40c098ca4b4190728fd` | `aed52abed60f8bea9f6a481011566aeea149031ea446ddf5a32ac3b80f939797` |
 | AUTHORITY_JSON | `outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json` |  | `cf300c811bc5562246e2f548262cb80a9831efd2` | `5c654319b68dea4eaa9bd62ad8c291e96b58b0b712efaa8f32475447432dccf2` |
 | AUTHORITY_JSON | `outputs/v0_6D1_R4_29/R4_29_SCHEMALESS_SOURCE_AUTHORITY_CLOSURE.json` |  | `fe99d3f7ebd8a598a3f13f03b3cf69fb253814f6` | `33f5888a3e57017c1932fdb66c05ec2b6c80563360a129902ee9df57cdf143f5` |
-| AUTHORITY_JSON | `outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27/R3_27_MACRO_REPLAY_AUTHORITY.json` |  | `35c1e979f6dbf0948022886820713fa553ea5232` | `cef2538458b4fbf254b0f185ca17d7305ba9e3287fe548e8b4b5ba3bdb88b98e` |
 | CONTRACT_PROTOCOL | `R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE_SCHEMALESS_SOURCE_AUTHORITY_CLOSURE_TARGET_DESIGN_IMPLEMENTATION_VALIDATION_AND_J14_SPATIAL_REPLAY_EXECUTION_AUTHORIZATION_CONTRACT.md` | ARCANA WorldSim — v0.6D1-R4.29 Contract | `82bc8e5c5c496a71d7f29d5c2410c2a769df2cfd` | `208733ce678bfd379eb5a9ffb74c0c68aa38061f7bd5d52664d97de07e1b3833` |
 | MANIFEST | `scripts/check_v0_6D1_R4_29_source_manifest.py` |  | `a9ca712d58ef208b0b805f8776c3b7d1ded34e45` | `2d051d3a98f96d4717adfc012d2664d97d531479ed48eab43b32c30d53010017` |
 | POWERSHELL_RUNNER | `run_v0_6D1_R4_29.ps1` |  | `45a633b250c35707f0423fbc7bebe298b0415d55` | `bf4f9e8c29d1efeba6da33469b47c5b968ad45cbc21c429773361d81361921aa` |
@@ -5305,6 +5301,9 @@ The index is navigational evidence only. It does not promote an indexed file to 
 
 | Kind | Path | Title | Git blob | SHA256 |
 |---|---|---|---|---|
+| AUDIT | `R5_17_B7_A3F2_P3_AUDIT_MADINGLEY_RUNTIME_AND_INPUT_BINDING.py` |  | `eac61c9eb6886e966461e3bbbbfad0f30c9617b2` | `ee0e360fdf0dae23a32b5ef9e9c095dbbbea3ddb684eb0301b5f6ffe59dd097c` |
+| AUDIT | `R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.json` |  | `729c027a0099f7a05098fb12146bc809ea322bd3` | `b379af0518e6e75dfc26552875274946eeb171d2bdcbb6230c8205cd4742c4ee` |
+| AUDIT | `R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.md` | R5.17-B7-A3F2-P3 | `1d88f5edff8b431da7068e2fb3055d600b4ae5a3` | `0cf13126e4ce2ecaf16a825609e8ae6210da1fb6cffaccc70a4c1bb2694abc66` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P1_ADJUDICATE_RANGE_DYNAMICS_PROVIDER.py` |  | `182d786d891feec70b5254dccddd588c615611a4` | `1188cca7d376624cf0789a851add5b7934239859ed7dc055b5b291a0327fa954` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P2_ADJUDICATE_MACROECOLOGICAL_RESOURCE_PROVIDER.py` |  | `1ddcdcb45ad25bc684a5ca117b5a5b251da541c3` | `2a0cd2961c18158f9e9e245931c8c5e839865828dcee5c154811c44cd7579207` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_RECONSTRUCT_HISTORICAL_WILD_FAUNA_SPATIAL_STATE.py` |  | `5d9e9834e403242e58a177bfe3665c435b760657` | `42904f56581a5850cf44bed1e6710636f5a0e48bc737fb1dfc64f1401d3d4783` |
@@ -5988,7 +5987,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | CONTRACT_PROTOCOL | `tests/test_r416_recovered_metric_target_protocol.py` |  | `f449ee200f7bd79edb726af0b1244f943f9015b3` | `dc69e93efa1c27b34c4785350b1a4a1a89d0735f428d06883d654f78118db2b9` |
 | CONTRACT_PROTOCOL | `tests/test_r420_p2_adapter_preflight_target_protocol_repair.py` |  | `0ba9955a48465e85faa1d311231b858978b50132` | `324985956b061c29f42c9347f7997cf11d8038d809685a2b0e4fadcfb94b1a89` |
 | CONTRACT_PROTOCOL | `tests/test_r425_target_protocol_preflight_geonomics_j14_discovery.py` |  | `29948b844c3d852089e32980e3aed174b6400d18` | `70427c7a999b70dc40eb305b6389e63230760fd065cb006f5ca3a5bb867538a3` |
-| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `a209267f107f09aa620167bb3f05d16eeb7c8dfb` | `38968ed360142c18ab3875d1b7504e1c7347c64802e8daa90ccefce7a277ee00` |
+| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `1cd2420822439fac8d1930be4508ff7b941b5b5f` | `0e4b4d186a5e1561af1f4cf4f094db047d3ca1e09fd583b27139dd0d8415c9ba` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6C.md` | Next Stage Handoff — v0.6D | `7f40ba60fb95c58d1c2dd7b4239f27850a6b56fd` | `25a4900ac439c64373224badfa83f6eb7bc5db36dd9c4ccd88a3511963f4eb50` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6D.md` | Next Stage Handoff — v0.6D -> v0.6D1 | `fb2d13c1bdb9b5ebcdc5c48a44050ba47a9203cf` | `a3d7fb6831b065a3d805fadc9ec09e809ca311e430399877c9aa6a5bff5e996c` |
 | MANIFEST | `PACKAGE_MANIFEST_v0_6D.json` |  | `dfe247842b21021ea0e802689ffb3c2cce36a028` | `a3ac330f4825c2b4b53a8b874aaf0c83587eebbee338761d44a4f4fa21ee7241` |
@@ -6183,7 +6182,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | PYTHON_RUNNER_SOURCE | `tests/test_r52_final_seal.py` |  | `89ff0b4e2eabb1848c630433defd8967f2e92af6` | `ba0bb5571156fe3819f6c2ca2446d0ec3ff9665ba7e22936d8ade0b9ec4f3a11` |
 | PYTHON_RUNNER_SOURCE | `tests/test_r58_hominid_history_reconciliation.py` | R3.21 directly attested registry and history. | `c45885abf7cc14da8595aca2d6c19645dd6edfd2` | `29359d1324f892eebd4c70bbd0aecc540979a02c750d3d86b2c5c2f0c9f0d65f` |
 | PYTHON_RUNNER_SOURCE | `tests/test_r59_recent_human_history_reconciliation.py` | R3.27 trajectory used for exact same-pipeline boundary reconstruction. | `97d2c165c8247b680163bbb14d8004b0b7c9fd3d` | `9ac8f9760e2433d2062c77b5435f718fbdece46b0ca2d21f944e80dc29d9bb72` |
-| PYTHON_RUNNER_SOURCE | `tools/build_arcana_execution_reference_index.py` | Index only repository-authoritative paths: already tracked or staged in | `9491813c2bd57d3af24b318b08dd239323df33b5` | `490daf795113d16840730cdefb74fe26b7124cab167920c2b5d4f851acbcb9fc` |
+| PYTHON_RUNNER_SOURCE | `tools/build_arcana_execution_reference_index.py` | Index only repository-authoritative paths: already tracked or staged in | `9491813c2bd57d3af24b318b08dd239323df33b5` | `965e5c92073dba23de68d6bac1d814f6a21d611994f008cd4a7998377ad0d52d` |
 | README | `README.md` | ARCANA_WORLD1_v0_6D1_R3_6B | `0143cd690dc98437e38e4ffafd1c211636528f36` | `045148512dee08e5d8018b9cf085123fa17d4fbbdc490ed1f8a9544f77d158d7` |
 | README | `README_R455_PREBUILD_INTROSPECTION.md` | ARCANA — R4.55 Execution Source Introspection Helper | `bd07433ede3e774bfcebc02f8d2c3fb43f825098` | `5a508af47a7d81eb90c1bc90d27df412ffd315a6570f8a92442401d4bcf21d24` |
 | README | `SIMULATION_RESULTS/README.md` | ARCANA WorldSim — Consolidated Simulation Results | `69240e296e85ca43582a0a9c0031405075fb8515` | `905aafc904af5891e87d0c4bcbddf8c27676be81760410b9d9c16c243b7d726a` |
