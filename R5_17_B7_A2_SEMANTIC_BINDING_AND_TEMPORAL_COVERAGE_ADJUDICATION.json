@@ -1,0 +1,345 @@
+{
+  "checks": {
+    "a1_deep_time_coverage_verified": true,
+    "a1_forage_channels_verified": true,
+    "a1_sha256_verified": true,
+    "a1_status_and_decision_bound": true,
+    "aquatic_marine_gap_is_explicit_not_silently_filled": true,
+    "canonical_not_mutated": true,
+    "h0_full_present_fauna_geometry_verified": true,
+    "h0_historical_lineage_closure_present": true,
+    "human_management_not_used": true,
+    "k_x_t_not_materialized": true,
+    "population_target_not_used": true,
+    "r333_candidate_subset_not_exhaustive_wild_fauna": true,
+    "r333_exogenous_environment_semantics_verified": true,
+    "r334_landscape_schema_verified": true,
+    "r334_recent_temporal_domain_verified": true,
+    "r334_source_semantics_verified": true
+  },
+  "cross_temporal_rules": [
+    "A1 forage may support deep-time trophic resource semantics only at its governed anchors unless a later interpolation contract is explicitly authorized.",
+    "R3.33/R3.34 20-0 ka fields must not be silently backprojected into deep time.",
+    "R3.34 anonymous producer taxa must not be relabelled as historical literal flora.",
+    "Present H0 fauna registries must not be treated as time-invariant deep-time range maps.",
+    "R3.33 domestication-screening candidates must not replace the full H0 fauna inventory.",
+    "Aquatic/marine biological food support remains absent until a governed canonical source is recovered or a later new-model gate explicitly authorizes one."
+  ],
+  "decision": "AUTHORIZE_B7_A3_NATURAL_RESOURCE_COMPONENT_MATERIALIZATION_WITH_EXPLICIT_AQUATIC_MARINE_GAP",
+  "forbidden_inputs": [
+    "R3.32_SUBSISTENCE_READINESS",
+    "TECHNOLOGY_STOCKS",
+    "PROCESSING",
+    "STORAGE",
+    "LANDSCAPE_MANAGEMENT",
+    "SEASONAL_LOGISTICS",
+    "HUMAN_READINESS_WEIGHTED_CONTACT",
+    "DOMESTICATION_TRAJECTORY",
+    "PRODUCER_COEVOLUTION",
+    "AGRICULTURE",
+    "SETTLEMENT",
+    "POPULATION_TARGET",
+    "CITY_STATE_POLITY_TARGET"
+  ],
+  "governance_states": {
+    "canonical_mutation": false,
+    "canonical_not_mutated": true,
+    "human_management_not_used": true,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "k_x_t_not_materialized": true,
+    "population_target_not_used": true,
+    "population_target_used": false
+  },
+  "materialization_state": {
+    "aquatic_marine_support": "EXPLICIT_GAP",
+    "canonical_mutation": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "natural_plant_resource_support": "SEMANTICALLY_BOUND_A3_MATERIALIZATION_READY",
+    "natural_wild_animal_support": "SOURCE_FAMILY_BOUND_A3_RECONSTRUCTION_REQUIRED",
+    "population_target_used": false
+  },
+  "next_operation": {
+    "constraints": [
+      "materialize components separately before any combined food-support scalar",
+      "preserve source-specific temporal masks",
+      "do not backproject R3.34 beyond 20 ka",
+      "use full H0/historical fauna authority rather than R3.33 partner subset",
+      "keep aquatic/marine as explicit gap unless canonical authority is recovered",
+      "do not materialize K(x,t)"
+    ],
+    "name": "NATURAL_RESOURCE_COMPONENT_MATERIALIZATION",
+    "subphase": "R5.17-B7-A3"
+  },
+  "repository_head": "d4aebfc39e93df744ace7498c6e5cb3f321c9a0e",
+  "schema": "ARCANA_R517_B7_A2_SEMANTIC_TEMPORAL_ADJUDICATION_V1",
+  "semantic_bindings": {
+    "aquatic_marine_resource_support": {
+      "a1_diagnostic_provenance": {
+        "content_hits": [
+          {
+            "matched_terms": [
+              "marine resource"
+            ],
+            "path": "ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md"
+          },
+          {
+            "matched_terms": [
+              "marine resource"
+            ],
+            "path": "R5_17_HUMAN_SUPPORT_CAPACITY_BRIDGE_CONTRACT.md"
+          }
+        ],
+        "filename_hits": [],
+        "materialization_decision": "UNADJUDICATED_SOURCE_DISCOVERY_ONLY"
+      },
+      "a1_marine_content_hits": 2,
+      "a1_marine_filename_hits": 0,
+      "coastal_edge_index_is_marine_productivity": false,
+      "policy": "EXPLICIT_COVERAGE_GAP_ALLOWED_BY_B7_CONTRACT",
+      "status": "NOT_MATERIALIZED_CANONICAL_BIOLOGICAL_AUTHORITY_NOT_RECOVERED",
+      "wetland_aquatic_starch_is_marine_fauna": false
+    },
+    "plant_trophic_resource_support": {
+      "authority": {
+        "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+        "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+        "size_bytes": 2928319
+      },
+      "authorized_role": "NATIVE_TROPHIC_PLANT_RESOURCE_SUBSTRATE",
+      "channels": [
+        "browse_forage",
+        "low_forage",
+        "total_edible_forage",
+        "wetland_forage"
+      ],
+      "forbidden_relabels": [
+        "PHYSICAL_BIOMASS",
+        "HUMAN_EDIBLE_CALORIES",
+        "HUMAN_CARRYING_CAPACITY",
+        "K_X_T"
+      ],
+      "temporal_domain": {
+        "age_ma": [
+          210.0,
+          180.0,
+          150.0,
+          140.0,
+          130.0,
+          120.0,
+          90.0,
+          66.0,
+          60.0,
+          30.0,
+          0.0
+        ],
+        "coverage": "210_MA_TO_0_MA_AT_CANONICAL_A1_ANCHORS",
+        "kind": "DEEP_TIME_SPARSE_ANCHORS",
+        "silent_interpolation_authorized": false
+      }
+    },
+    "recent_exogenous_environment": {
+      "authorized_role": "RECENT_EXOGENOUS_ENVIRONMENTAL_CONTEXT",
+      "environment_fields": [
+        "temperature_anomaly_c",
+        "precipitation_factor",
+        "npp_factor",
+        "land_fraction",
+        "hydroclimate_resource_index",
+        "coastal_edge_index",
+        "sea_level_anomaly_m"
+      ],
+      "excluded_human_conditioned_fields": [
+        "contact_opportunity",
+        "management_intensity",
+        "habituation_tolerance",
+        "reproductive_control",
+        "selective_divergence",
+        "dependency_symbiosis",
+        "animal_food_production_contribution",
+        "domestication_index"
+      ],
+      "payload": {
+        "arrays": {
+          "anchor_age_ka": {
+            "dtype": "float64",
+            "finite": true,
+            "max": 20.0,
+            "min": 0.0,
+            "shape": [
+              9
+            ],
+            "size": 9
+          },
+          "environment_fields": {
+            "dtype": "float64",
+            "finite": true,
+            "max": 1.0000001192092896,
+            "min": -116.83338493209317,
+            "shape": [
+              9,
+              90,
+              180,
+              7
+            ],
+            "size": 1020600
+          },
+          "environment_variable_names": {
+            "dtype": "<U27",
+            "shape": [
+              7
+            ],
+            "size": 7
+          }
+        },
+        "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\SIMULATION_RESULTS\\02_SCIENTIFIC_REPLAY\\outputs\\v0_6D1_R3_33\\R3_33_HOLOCENE_ENVIRONMENTAL_RESOURCE_LANDSCAPE.npz",
+        "sha256": "5fd7b11df5051245551aa2d23ce334b0a540f171e85ac8a451c603eb63f685b9"
+      },
+      "source": {
+        "path": "src/arcana_worldsim/scientific_engines/r333_holocene_environment_domestication.py",
+        "sha256": "c32d78efcffccf60dd0a70870dc6d9555a9eed823ec4fa5e7fb3c2e61705fc40",
+        "size_bytes": 27017
+      },
+      "temporal_domain": {
+        "age_ka": [
+          20.0,
+          15.0,
+          14.0,
+          13.0,
+          12.0,
+          11.0,
+          10.0,
+          5.0,
+          0.0
+        ],
+        "backprojection_beyond_20ka_authorized": false,
+        "coverage": "20_KA_TO_0_KA",
+        "kind": "RECENT_HOLOCENE_LATE_PLEISTOCENE_ANCHORS"
+      }
+    },
+    "recent_plant_resource_refinement": {
+      "authorized_fields": {
+        "harvest_return": "PRE_MANAGEMENT_HUMAN_ACCESSIBLE_PLANT_RESOURCE_OPPORTUNITY_PROXY",
+        "resource_abundance": "PRE_MANAGEMENT_PRODUCER_RESOURCE_ABUNDANCE_PROXY",
+        "suitability": "ECOLOGICAL_SUPPORT_COVARIATE_NOT_FOOD_QUANTITY"
+      },
+      "excluded_field": {
+        "propagation_opportunity": "MANAGEMENT_AFFORDANCE_EXCLUDED_FROM_NATURAL_BASELINE"
+      },
+      "landscape_fields": [
+        "suitability",
+        "resource_abundance",
+        "harvest_return",
+        "propagation_opportunity"
+      ],
+      "payload": {
+        "arrays": {
+          "anchor_age_ka": {
+            "dtype": "float64",
+            "finite": true,
+            "max": 20.0,
+            "min": 0.0,
+            "shape": [
+              9
+            ],
+            "size": 9
+          },
+          "landscape_variable_names": {
+            "dtype": "<U23",
+            "shape": [
+              4
+            ],
+            "size": 4
+          },
+          "producer_landscape": {
+            "dtype": "float32",
+            "finite": true,
+            "max": 0.7850132584571838,
+            "min": 0.0,
+            "shape": [
+              36,
+              9,
+              90,
+              180,
+              4
+            ],
+            "size": 20995200
+          },
+          "producer_taxon_ids": {
+            "dtype": "<U9",
+            "shape": [
+              36
+            ],
+            "size": 36
+          }
+        },
+        "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\SIMULATION_RESULTS\\02_SCIENTIFIC_REPLAY\\outputs\\v0_6D1_R3_34\\R3_34_PRODUCER_RESOURCE_LANDSCAPE.npz",
+        "sha256": "31f5954b846be3cb4a6bb14afb2ae19e7cccafd47c90719a1434e9058bc35d86"
+      },
+      "producer_identity_semantics": "ANONYMOUS_FUNCTIONAL_OPERATIONAL_PRODUCERS_NOT_LITERAL_H0_FLORA_PHYLOGENY",
+      "source": {
+        "path": "src/arcana_worldsim/scientific_engines/r334_producer_domestication.py",
+        "sha256": "17655c44d79cd04d13f9e2bf214c15e331e426bf5238233d7921b1e727c3b8e7",
+        "size_bytes": 29154
+      },
+      "source_semantic_checks": {
+        "harvest_return_derived_from_abundance_and_taxon_traits": true,
+        "producer_taxa_are_not_retroactive_h0_phylogeny": true,
+        "propagation_opportunity_is_separate_field": true,
+        "resource_abundance_derived_from_natural_suitability_npp": true
+      },
+      "temporal_domain": {
+        "age_ka": [
+          20.0,
+          15.0,
+          14.0,
+          13.0,
+          12.0,
+          11.0,
+          10.0,
+          5.0,
+          0.0
+        ],
+        "backprojection_to_deep_time_authorized": false,
+        "coverage": "20_KA_TO_0_KA",
+        "kind": "RECENT_ONLY"
+      }
+    },
+    "wild_animal_resource_support": {
+      "authorized_role": "FULL_GOVERNED_H0_FAUNA_SOURCE_FAMILY_FOR_WILD_ANIMAL_SUPPORT",
+      "functional_species_count": 134,
+      "functional_summary": {
+        "path": "SIMULATION_RESULTS/91_SUPPORT_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_23/R3_23_PRESENT_FUNCTIONAL_SUMMARY.json",
+        "sha256": "1b944edfc4bb648a8356d252d5f9628a57e38a1664c00be00e5c7a7bdca6b765",
+        "size_bytes": 1099921
+      },
+      "historical_lineage_closure": {
+        "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_HISTORICAL_LINEAGE_CLOSURE.json",
+        "sha256": "2dcf79131643ca441fbee6f61939782df94b895533fdb7a3e9b4e2695291b041",
+        "size_bytes": 2692076
+      },
+      "present_component_count": 295,
+      "present_component_registry": {
+        "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_PRESENT_COMPONENT_REGISTRY.json",
+        "sha256": "dd81003c64c4332458bc131a162b48a4e35df85c44b9636f914979e9c1edec6f",
+        "size_bytes": 394462
+      },
+      "present_lineage_registry": {
+        "path": "SIMULATION_RESULTS/02_SCIENTIFIC_REPLAY/outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json",
+        "sha256": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf",
+        "size_bytes": 194579
+      },
+      "present_species_count": 134,
+      "r333_domestication_candidate_subset_authorized_as_exhaustive_inventory": false,
+      "temporal_domain": {
+        "historical_closure": "AUTHORIZED_PROVENANCE_SOURCE_FOR_A3_TEMPORAL_RECONSTRUCTION",
+        "present_registry": "0_KA_PRESENT_AUTHORITY",
+        "wild_food_support_materialized_in_a2": false
+      }
+    }
+  },
+  "stage": "v0.6D1-R5.17",
+  "status": "PASS_R517_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATED",
+  "subphase": "R5.17-B7-A2"
+}

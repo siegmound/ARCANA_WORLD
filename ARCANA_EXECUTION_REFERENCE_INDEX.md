@@ -2,11 +2,11 @@
 
 Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`.
 
-- Base repository HEAD at generation: `4d64df266cdd542e9598b70e1f168893ec127908`
+- Base repository HEAD at generation: `d4aebfc39e93df744ace7498c6e5cb3f321c9a0e`
 - Content basis: **tracked worktree bytes at generation**
 - Git blob OIDs: **computed from current file bytes via `git hash-object`**
-- Generated UTC: `2026-09-12T20:26:02.175923+00:00`
-- Indexed reference files: **5241**
+- Generated UTC: `2026-09-12T21:35:27.770946+00:00`
+- Indexed reference files: **5244**
 
 ## Purpose
 
@@ -27,9 +27,9 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | HANDOFF | 56 |
 | MANIFEST | 650 |
 | POWERSHELL_RUNNER | 254 |
-| PYTHON_RUNNER_SOURCE | 379 |
+| PYTHON_RUNNER_SOURCE | 380 |
 | README | 171 |
-| REFERENCE | 446 |
+| REFERENCE | 448 |
 | RESULT_SUMMARY | 1583 |
 | SEMANTIC_CATALOG | 1 |
 | STATUS | 42 |
@@ -5285,6 +5285,14 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A1_NATURAL_FOOD_SUPPORT_PREFLIGHT.py` |  | `0baa898c6c484827d559b5b4447eab61ac53b011` | `822e98589b797f479a53af48054a971227fac46f64f302d391e1090388ba443f` |
 | REFERENCE | `R5_17_B7_A1_FORAGE_PROVENANCE_DISPOSITION.md` | Authority | `d6ec6b2ad05b3ee32998346a7c15e0813183c3d3` | `95ffcb58c7b9175afa02edbfe54b199d6de7c4cfc684b92d1b1af67f5250e390` |
 
+### R5.17.B7.A2
+
+| Kind | Path | Title | Git blob | SHA256 |
+|---|---|---|---|---|
+| PYTHON_RUNNER_SOURCE | `R5_17_B7_A2_ADJUDICATE_SEMANTIC_AND_TEMPORAL_COVERAGE.py` |  | `a38f2182d59c3f388440fba108986a6f0ff50a6e` | `f337f544a254b2d4b9df8eaaab22138b571622ae0ba41e0618fbdca89d9dd1f3` |
+| REFERENCE | `R5_17_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION.json` |  | `b5936cd0d2d16f8d4ac245eb4b863243da6235f3` | `6b24207750a9b6c9cbe97c5a785ef11c5c611550f8302169378f724a36b7b1df` |
+| REFERENCE | `R5_17_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION.md` | R5.17-B7-A2 - Semantic Binding & Temporal Coverage Adjudication | `8ec4e1f10af6fc30f54dfedbfff52a87a5b6ef0e` | `8c7f932c16534b7b1452efbf65162096a2d461c76dee5efc20c9aec986316fc0` |
+
 ### R5.2
 
 | Kind | Path | Title | Git blob | SHA256 |
@@ -5958,7 +5966,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | CONTRACT_PROTOCOL | `tests/test_r416_recovered_metric_target_protocol.py` |  | `f449ee200f7bd79edb726af0b1244f943f9015b3` | `dc69e93efa1c27b34c4785350b1a4a1a89d0735f428d06883d654f78118db2b9` |
 | CONTRACT_PROTOCOL | `tests/test_r420_p2_adapter_preflight_target_protocol_repair.py` |  | `0ba9955a48465e85faa1d311231b858978b50132` | `324985956b061c29f42c9347f7997cf11d8038d809685a2b0e4fadcfb94b1a89` |
 | CONTRACT_PROTOCOL | `tests/test_r425_target_protocol_preflight_geonomics_j14_discovery.py` |  | `29948b844c3d852089e32980e3aed174b6400d18` | `70427c7a999b70dc40eb305b6389e63230760fd065cb006f5ca3a5bb867538a3` |
-| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `426eea5386beb4d0437146da8fb1221640566d53` | `a72bd5e81527b191622132f646e0943ca6e51d50fd0ec547fc149aa20bee2abe` |
+| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `7c2e2034d1c3658e0a7e404fed2a795aca284f16` | `af640c135fddafe94c7a431695186d6e9f57c4308e9fb52574bdc6d5239790f0` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6C.md` | Next Stage Handoff — v0.6D | `7f40ba60fb95c58d1c2dd7b4239f27850a6b56fd` | `25a4900ac439c64373224badfa83f6eb7bc5db36dd9c4ccd88a3511963f4eb50` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6D.md` | Next Stage Handoff — v0.6D -> v0.6D1 | `fb2d13c1bdb9b5ebcdc5c48a44050ba47a9203cf` | `a3d7fb6831b065a3d805fadc9ec09e809ca311e430399877c9aa6a5bff5e996c` |
 | MANIFEST | `PACKAGE_MANIFEST_v0_6D.json` |  | `dfe247842b21021ea0e802689ffb3c2cce36a028` | `a3ac330f4825c2b4b53a8b874aaf0c83587eebbee338761d44a4f4fa21ee7241` |

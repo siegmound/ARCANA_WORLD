@@ -1,11 +1,11 @@
 {
   "schema": "ARCANA_EXECUTION_REFERENCE_INDEX_V1",
-  "generated_utc": "2026-09-12T20:26:02.175923+00:00",
-  "repository_head": "4d64df266cdd542e9598b70e1f168893ec127908",
+  "generated_utc": "2026-09-12T21:35:27.770946+00:00",
+  "repository_head": "d4aebfc39e93df744ace7498c6e5cb3f321c9a0e",
   "content_basis": "TRACKED_WORKTREE_CONTENT_AT_GENERATION",
   "blob_oid_semantics": "GIT_HASH_OBJECT_OF_CURRENT_FILE_BYTES",
   "purpose": "Reusable lookup surface for README/status/contracts/audits, execution runners, configs, manifests and result summaries that may be required by future replay/regression tests.",
-  "record_count": 5241,
+  "record_count": 5244,
   "category_counts": {
     "AUDIT": 989,
     "AUTHORITY_JSON": 310,
@@ -16,9 +16,9 @@
     "HANDOFF": 56,
     "MANIFEST": 650,
     "POWERSHELL_RUNNER": 254,
-    "PYTHON_RUNNER_SOURCE": 379,
+    "PYTHON_RUNNER_SOURCE": 380,
     "README": 171,
-    "REFERENCE": 446,
+    "REFERENCE": 448,
     "RESULT_SUMMARY": 1583,
     "SEMANTIC_CATALOG": 1,
     "STATUS": 42
@@ -211,6 +211,7 @@
     "R5.17.B6.H4": 3,
     "R5.17.B7": 1,
     "R5.17.B7.A1": 3,
+    "R5.17.B7.A2": 3,
     "R5.2": 125,
     "R5.3": 340,
     "R5.4": 16,
@@ -43384,6 +43385,36 @@
       "sha256": "95ffcb58c7b9175afa02edbfe54b199d6de7c4cfc684b92d1b1af67f5250e390"
     },
     {
+      "path": "R5_17_B7_A2_ADJUDICATE_SEMANTIC_AND_TEMPORAL_COVERAGE.py",
+      "stage": "R5.17.B7.A2",
+      "category": "PYTHON_RUNNER_SOURCE",
+      "title": "",
+      "extension": ".py",
+      "size_bytes": 26652,
+      "git_blob_oid": "a38f2182d59c3f388440fba108986a6f0ff50a6e",
+      "sha256": "f337f544a254b2d4b9df8eaaab22138b571622ae0ba41e0618fbdca89d9dd1f3"
+    },
+    {
+      "path": "R5_17_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION.json",
+      "stage": "R5.17.B7.A2",
+      "category": "REFERENCE",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 12699,
+      "git_blob_oid": "b5936cd0d2d16f8d4ac245eb4b863243da6235f3",
+      "sha256": "6b24207750a9b6c9cbe97c5a785ef11c5c611550f8302169378f724a36b7b1df"
+    },
+    {
+      "path": "R5_17_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION.md",
+      "stage": "R5.17.B7.A2",
+      "category": "REFERENCE",
+      "title": "R5.17-B7-A2 - Semantic Binding & Temporal Coverage Adjudication",
+      "extension": ".md",
+      "size_bytes": 1218,
+      "git_blob_oid": "8ec4e1f10af6fc30f54dfedbfff52a87a5b6ef0e",
+      "sha256": "8c7f932c16534b7b1452efbf65162096a2d461c76dee5efc20c9aec986316fc0"
+    },
+    {
       "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_2/R5_2_INTEGRATED_AUDIT.json",
       "stage": "R5.2",
       "category": "AUDIT",
@@ -49579,9 +49610,9 @@
       "category": "CURRENT_STATE",
       "title": "ARCANA WorldSim \u2014 Current State Authority",
       "extension": ".md",
-      "size_bytes": 10405,
-      "git_blob_oid": "426eea5386beb4d0437146da8fb1221640566d53",
-      "sha256": "a72bd5e81527b191622132f646e0943ca6e51d50fd0ec547fc149aa20bee2abe"
+      "size_bytes": 10697,
+      "git_blob_oid": "7c2e2034d1c3658e0a7e404fed2a795aca284f16",
+      "sha256": "af640c135fddafe94c7a431695186d6e9f57c4308e9fb52574bdc6d5239790f0"
     },
     {
       "path": "NEXT_STAGE_HANDOFF_v0_6C.md",
