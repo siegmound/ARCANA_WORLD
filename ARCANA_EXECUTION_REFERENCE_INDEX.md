@@ -2,9 +2,11 @@
 
 Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`.
 
-- Repository HEAD at generation: `967e0cee55a838e258edc03f3ef5d73ceb829225`
-- Generated UTC: `2026-09-12T18:30:58.652918+00:00`
-- Indexed reference files: **5240**
+- Base repository HEAD at generation: `4d64df266cdd542e9598b70e1f168893ec127908`
+- Content basis: **tracked worktree bytes at generation**
+- Git blob OIDs: **computed from current file bytes via `git hash-object`**
+- Generated UTC: `2026-09-12T20:26:02.175923+00:00`
+- Indexed reference files: **5241**
 
 ## Purpose
 
@@ -25,7 +27,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | HANDOFF | 56 |
 | MANIFEST | 650 |
 | POWERSHELL_RUNNER | 254 |
-| PYTHON_RUNNER_SOURCE | 378 |
+| PYTHON_RUNNER_SOURCE | 379 |
 | README | 171 |
 | REFERENCE | 446 |
 | RESULT_SUMMARY | 1583 |
@@ -5123,7 +5125,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | POWERSHELL_RUNNER | `R5_17_B6_RECOVER_OPEN_B7_INDEX_COMPACT_EVIDENCE_WINPS51_V8.ps1` | ============================================================================ | `9d9933531c51107ea849d5cec8f0113cbea84fc6` | `1047e2c70d511c790283a0faaf448a0885193ff05b0c3ca49a0209bc29303a87` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B6_INSPECT_PALEOCLIMATE_SEMANTICS.py` | Merge nearby matching windows so the evidence stays bounded and readable. | `1a821c7ad55dac995592a10d77f96c208f9d7d72` | `7a6a3a579a02b9732e0ea723e36e90eaa68093bdd377da1f1fe82ac1763dac17` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B6_LOCATE_AND_INSPECT_PALEOCLIMATE_SEMANTICS.py` |  | `a5f78c60734b83728fa2c98e437db1beb0c0129a` | `781b0d389c28e4a04c29782a8001a110db62b253a6efb2d3698e26600701abb6` |
-| REFERENCE | `R5_17_B6_COMPLETION_REGISTER.md` | R5.17-B6 - Freshwater / Paleohydrology Completion Register | `e9c0f5926b4b917780b16f6aab6e80fd6a35a674` | `bade4b9b9a49af75b30697bdcfea2dbd65277f8ffe30a90e4536f698250dd4a2` |
+| REFERENCE | `R5_17_B6_COMPLETION_REGISTER.md` | R5.17-B6 - Freshwater / Paleohydrology Completion Register | `b41b70e3fdcea698550f455a2698cbe6d8816032` | `bade4b9b9a49af75b30697bdcfea2dbd65277f8ffe30a90e4536f698250dd4a2` |
 | REFERENCE | `R5_17_B6_FRESHWATER_PHYSICAL_INPUT_BINDING_DESIGN.md` | R5.17-B6 — Freshwater Physical Input Semantic Binding & Derivation Design | `2c6b3c417197f97c6917da11892a1d07fef81acb` | `0aa53f4962e58ed462391ebe6ebeb509cc1b21f07a26a3c26a5baa8a89630501` |
 | REFERENCE | `R5_17_B6_PALEOCLIMATE_SEMANTIC_EVIDENCE.json` |  | `61466540a1a23e88740f6fd83c0ef9359037da0d` | `5ccfc4f21f0e914e05f6509cf024c9c0bef8af496ed3a874b69828a7415f0fa6` |
 
@@ -5273,7 +5275,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 
 | Kind | Path | Title | Git blob | SHA256 |
 |---|---|---|---|---|
-| CONTRACT_PROTOCOL | `R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md` | Purpose | `c180d29fa718ee55f3fa4caeb8f84938e1d2f669` | `0d657e16e1c14897ad46b126993808cbf9e1da96635e7e9f11ef48d224ba0364` |
+| CONTRACT_PROTOCOL | `R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md` | R5.17-B7 - Natural Biological Food Support Contract | `4a7f05d1194435d5bfb71257f8da5c9b0a30a049` | `dca7608824d227729822ed4fbf68eb6fb37245b42c9460035b5bfa0b32e37f6f` |
 
 ### R5.17.B7.A1
 
@@ -5956,7 +5958,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | CONTRACT_PROTOCOL | `tests/test_r416_recovered_metric_target_protocol.py` |  | `f449ee200f7bd79edb726af0b1244f943f9015b3` | `dc69e93efa1c27b34c4785350b1a4a1a89d0735f428d06883d654f78118db2b9` |
 | CONTRACT_PROTOCOL | `tests/test_r420_p2_adapter_preflight_target_protocol_repair.py` |  | `0ba9955a48465e85faa1d311231b858978b50132` | `324985956b061c29f42c9347f7997cf11d8038d809685a2b0e4fadcfb94b1a89` |
 | CONTRACT_PROTOCOL | `tests/test_r425_target_protocol_preflight_geonomics_j14_discovery.py` |  | `29948b844c3d852089e32980e3aed174b6400d18` | `70427c7a999b70dc40eb305b6389e63230760fd065cb006f5ca3a5bb867538a3` |
-| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `4b460097b7655d555bf0354005d17c481319339b` | `1b59540f3b3733cabd11e59a9900d23c8aca361443e4828b3c18f1c15e65fdc1` |
+| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `426eea5386beb4d0437146da8fb1221640566d53` | `a72bd5e81527b191622132f646e0943ca6e51d50fd0ec547fc149aa20bee2abe` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6C.md` | Next Stage Handoff — v0.6D | `7f40ba60fb95c58d1c2dd7b4239f27850a6b56fd` | `25a4900ac439c64373224badfa83f6eb7bc5db36dd9c4ccd88a3511963f4eb50` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6D.md` | Next Stage Handoff — v0.6D -> v0.6D1 | `fb2d13c1bdb9b5ebcdc5c48a44050ba47a9203cf` | `a3d7fb6831b065a3d805fadc9ec09e809ca311e430399877c9aa6a5bff5e996c` |
 | MANIFEST | `PACKAGE_MANIFEST_v0_6D.json` |  | `dfe247842b21021ea0e802689ffb3c2cce36a028` | `a3ac330f4825c2b4b53a8b874aaf0c83587eebbee338761d44a4f4fa21ee7241` |
@@ -6151,6 +6153,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | PYTHON_RUNNER_SOURCE | `tests/test_r52_final_seal.py` |  | `89ff0b4e2eabb1848c630433defd8967f2e92af6` | `ba0bb5571156fe3819f6c2ca2446d0ec3ff9665ba7e22936d8ade0b9ec4f3a11` |
 | PYTHON_RUNNER_SOURCE | `tests/test_r58_hominid_history_reconciliation.py` | R3.21 directly attested registry and history. | `c45885abf7cc14da8595aca2d6c19645dd6edfd2` | `29359d1324f892eebd4c70bbd0aecc540979a02c750d3d86b2c5c2f0c9f0d65f` |
 | PYTHON_RUNNER_SOURCE | `tests/test_r59_recent_human_history_reconciliation.py` | R3.27 trajectory used for exact same-pipeline boundary reconstruction. | `97d2c165c8247b680163bbb14d8004b0b7c9fd3d` | `9ac8f9760e2433d2062c77b5435f718fbdece46b0ca2d21f944e80dc29d9bb72` |
+| PYTHON_RUNNER_SOURCE | `tools/build_arcana_execution_reference_index.py` | Index only repository-authoritative paths: already tracked or staged in | `9491813c2bd57d3af24b318b08dd239323df33b5` | `490daf795113d16840730cdefb74fe26b7124cab167920c2b5d4f851acbcb9fc` |
 | README | `README.md` | ARCANA_WORLD1_v0_6D1_R3_6B | `0143cd690dc98437e38e4ffafd1c211636528f36` | `045148512dee08e5d8018b9cf085123fa17d4fbbdc490ed1f8a9544f77d158d7` |
 | README | `README_R455_PREBUILD_INTROSPECTION.md` | ARCANA — R4.55 Execution Source Introspection Helper | `bd07433ede3e774bfcebc02f8d2c3fb43f825098` | `5a508af47a7d81eb90c1bc90d27df412ffd315a6570f8a92442401d4bcf21d24` |
 | README | `SIMULATION_RESULTS/README.md` | ARCANA WorldSim — Consolidated Simulation Results | `69240e296e85ca43582a0a9c0031405075fb8515` | `905aafc904af5891e87d0c4bcbddf8c27676be81760410b9d9c16c243b7d726a` |

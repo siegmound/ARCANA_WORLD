@@ -1,9 +1,11 @@
 {
   "schema": "ARCANA_EXECUTION_REFERENCE_INDEX_V1",
-  "generated_utc": "2026-09-12T18:30:58.652918+00:00",
-  "repository_head": "967e0cee55a838e258edc03f3ef5d73ceb829225",
+  "generated_utc": "2026-09-12T20:26:02.175923+00:00",
+  "repository_head": "4d64df266cdd542e9598b70e1f168893ec127908",
+  "content_basis": "TRACKED_WORKTREE_CONTENT_AT_GENERATION",
+  "blob_oid_semantics": "GIT_HASH_OBJECT_OF_CURRENT_FILE_BYTES",
   "purpose": "Reusable lookup surface for README/status/contracts/audits, execution runners, configs, manifests and result summaries that may be required by future replay/regression tests.",
-  "record_count": 5240,
+  "record_count": 5241,
   "category_counts": {
     "AUDIT": 989,
     "AUTHORITY_JSON": 310,
@@ -14,7 +16,7 @@
     "HANDOFF": 56,
     "MANIFEST": 650,
     "POWERSHELL_RUNNER": 254,
-    "PYTHON_RUNNER_SOURCE": 378,
+    "PYTHON_RUNNER_SOURCE": 379,
     "README": 171,
     "REFERENCE": 446,
     "RESULT_SUMMARY": 1583,
@@ -219,7 +221,7 @@
     "R5.8": 16,
     "R5.9": 17,
     "R5.9.R58": 1,
-    "UNSCOPED": 264,
+    "UNSCOPED": 265,
     "V0.6D1": 16,
     "V0.6D1.R0": 8,
     "V0.6D1.R0.STATUS": 1,
@@ -42898,7 +42900,7 @@
       "title": "R5.17-B6 - Freshwater / Paleohydrology Completion Register",
       "extension": ".md",
       "size_bytes": 3811,
-      "git_blob_oid": "e9c0f5926b4b917780b16f6aab6e80fd6a35a674",
+      "git_blob_oid": "b41b70e3fdcea698550f455a2698cbe6d8816032",
       "sha256": "bade4b9b9a49af75b30697bdcfea2dbd65277f8ffe30a90e4536f698250dd4a2"
     },
     {
@@ -43345,11 +43347,11 @@
       "path": "R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md",
       "stage": "R5.17.B7",
       "category": "CONTRACT_PROTOCOL",
-      "title": "Purpose",
+      "title": "R5.17-B7 - Natural Biological Food Support Contract",
       "extension": ".md",
-      "size_bytes": 4106,
-      "git_blob_oid": "c180d29fa718ee55f3fa4caeb8f84938e1d2f669",
-      "sha256": "0d657e16e1c14897ad46b126993808cbf9e1da96635e7e9f11ef48d224ba0364"
+      "size_bytes": 4103,
+      "git_blob_oid": "4a7f05d1194435d5bfb71257f8da5c9b0a30a049",
+      "sha256": "dca7608824d227729822ed4fbf68eb6fb37245b42c9460035b5bfa0b32e37f6f"
     },
     {
       "path": "R5_17_B7_A1_NATURAL_FOOD_SUPPORT_AUTHORITY_PREFLIGHT.json",
@@ -49577,9 +49579,9 @@
       "category": "CURRENT_STATE",
       "title": "ARCANA WorldSim \u2014 Current State Authority",
       "extension": ".md",
-      "size_bytes": 10442,
-      "git_blob_oid": "4b460097b7655d555bf0354005d17c481319339b",
-      "sha256": "1b59540f3b3733cabd11e59a9900d23c8aca361443e4828b3c18f1c15e65fdc1"
+      "size_bytes": 10405,
+      "git_blob_oid": "426eea5386beb4d0437146da8fb1221640566d53",
+      "sha256": "a72bd5e81527b191622132f646e0943ca6e51d50fd0ec547fc149aa20bee2abe"
     },
     {
       "path": "NEXT_STAGE_HANDOFF_v0_6C.md",
@@ -51520,6 +51522,16 @@
       "size_bytes": 9630,
       "git_blob_oid": "97d2c165c8247b680163bbb14d8004b0b7c9fd3d",
       "sha256": "9ac8f9760e2433d2062c77b5435f718fbdece46b0ca2d21f944e80dc29d9bb72"
+    },
+    {
+      "path": "tools/build_arcana_execution_reference_index.py",
+      "stage": "UNSCOPED",
+      "category": "PYTHON_RUNNER_SOURCE",
+      "title": "Index only repository-authoritative paths: already tracked or staged in",
+      "extension": ".py",
+      "size_bytes": 11176,
+      "git_blob_oid": "9491813c2bd57d3af24b318b08dd239323df33b5",
+      "sha256": "490daf795113d16840730cdefb74fe26b7124cab167920c2b5d4f851acbcb9fc"
     },
     {
       "path": "README.md",

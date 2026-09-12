@@ -75,7 +75,7 @@ NEXT_ACTION: RUN_B7_A2_SEMANTIC_BINDING_AND_TEMPORAL_COVERAGE_ADJUDICATION
 
 ## Continuation chain
 
-`	ext
+```text
 R5.7 SEALED
   -> R5.8-R5.15 completed candidate continuation
   -> R5.16 SEALED integrated end-of-legacy closure
@@ -90,7 +90,7 @@ R5.7 SEALED
        -> B7 ACTIVE
             -> A1 PASS source/schema/coverage preflight
             -> A2 NEXT semantic binding + temporal coverage adjudication
-`
+```
 
 R5.16 remains the latest explicit seal.
 R5.17-B6 is the latest completed substantive subphase and remains intentionally unsealed.
@@ -129,22 +129,22 @@ R5.17-B6 is COMPLETED and intentionally NOT SEALED.
 
 Primary completion pointers:
 
-`yaml
+```yaml
 COMPLETION_REGISTER: R5_17_B6_COMPLETION_REGISTER.md
 EVIDENCE_MANIFEST: R5_17_B6_EVIDENCE_MANIFEST.json
 D4_RESULT: R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json
 EXECUTION_REFERENCE_INDEX: ARCANA_EXECUTION_REFERENCE_INDEX.md
-`
+```
 
 Terminal B6 result:
 
-`yaml
+```yaml
 STATUS: PASS_R517_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY_MATERIALIZED
 FRESHWATER_SUPPORT_MATERIALIZED: true
 HYDROLOGICAL_RELIABILITY_MATERIALIZED: true
 K_X_T_MATERIALIZED: false
 CANONICAL_MUTATION: false
-`
+```
 
 The historical/native hydrology recovery, seasonal reconstruction, replay diagnostics,
 D3/D3R paleohydrology replay and H1-H4 provenance evidence remain available through
@@ -153,13 +153,13 @@ not repeated in this compact continuation ledger.
 
 Semantic guardrails remain:
 
-`	ext
+```text
 wetland_forage               != freshwater supply
 aridity_index                 != freshwater supply
 freshwater_forcing_sv         != local freshwater access
 precipitation alone           != freshwater access
 R3.20 hydrological hazard     != freshwater availability
-`
+```
 
 B6 does not materialize human-edible biological food, persons/cell, settlement,
 agriculture, civilization, or K(x,t). Those remain downstream.

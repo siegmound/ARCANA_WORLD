@@ -1,4 +1,4 @@
-﻿# R5.17-B7 - Natural Biological Food Support Contract
+# R5.17-B7 - Natural Biological Food Support Contract
 
 ## Purpose
 

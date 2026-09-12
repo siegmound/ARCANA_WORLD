@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import hashlib
 import json
@@ -57,6 +57,9 @@ def is_reference_surface(path: str) -> bool:
 
     if p.startswith(".git/"):
         return False
+
+    if p == "tools/build_arcana_execution_reference_index.py":
+        return True
 
     if upper.startswith("README"):
         return True
@@ -198,20 +201,19 @@ def title_from_file(path: Path) -> str:
 
 
 def git_blob_oid(path: str) -> str | None:
+    """Return the Git blob OID for the current worktree bytes.
+
+    `git ls-files -s` reports the index entry and can be stale when a tracked
+    file is modified before this catalogue is regenerated. `git hash-object`
+    without `-w` computes the exact blob identity of the current file without
+    mutating the object database.
+    """
     try:
-        out = run_git("ls-files", "-s", "--", path).strip()
+        out = run_git("hash-object", "--", path).strip()
     except subprocess.CalledProcessError:
         return None
 
-    if not out:
-        return None
-
-    first = out.splitlines()[0].split()
-    if len(first) >= 2:
-        return first[1]
-
-    return None
-
+    return out or None
 
 def build_record(path_str: str) -> dict[str, Any]:
     path = ROOT / path_str
@@ -268,6 +270,8 @@ def main() -> int:
         "schema": "ARCANA_EXECUTION_REFERENCE_INDEX_V1",
         "generated_utc": now,
         "repository_head": head,
+        "content_basis": "TRACKED_WORKTREE_CONTENT_AT_GENERATION",
+        "blob_oid_semantics": "GIT_HASH_OBJECT_OF_CURRENT_FILE_BYTES",
         "purpose": (
             "Reusable lookup surface for README/status/contracts/audits, "
             "execution runners, configs, manifests and result summaries "
@@ -291,7 +295,12 @@ def main() -> int:
         "Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`."
     )
     lines.append("")
-    lines.append(f"- Repository HEAD at generation: `{head}`")
+    lines.append(f"- Base repository HEAD at generation: `{head}`")
+    lines.append("- Content basis: **tracked worktree bytes at generation**")
+    lines.append(
+        "- Git blob OIDs: **computed from current file bytes via "
+        "`git hash-object`**"
+    )
     lines.append(f"- Generated UTC: `{now}`")
     lines.append(f"- Indexed reference files: **{len(records)}**")
     lines.append("")
