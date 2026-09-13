@@ -1,0 +1,241 @@
+{
+  "arcana_soil_authority_inventory": {
+    "bulk_density_authority": "ABSENT",
+    "direct_physical_soil_authority": {
+      "finding": "no governed dz/whc/Ksat arrays or physical soil profiles",
+      "paths_checked": [
+        "ARCANA_EXECUTION_REFERENCE_INDEX.json",
+        "R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.json",
+        "R5_17_B7_A3F2_P6_BIOME4_RUNTIME_SOURCE_AND_PALEO_CO2_SOIL_AUTHORITY_RECOVERY.json",
+        "R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md"
+      ],
+      "status": "ABSENT"
+    },
+    "hydraulic_authority": "ABSENT",
+    "non_equivalents_not_promoted": [
+      "geology/bedrock",
+      "precipitation",
+      "runoff/freshwater support",
+      "wetland forage",
+      "aridity",
+      "erosion potential",
+      "terrain roughness"
+    ],
+    "soil_depth_profile_authority": "ABSENT",
+    "texture_authority": "ABSENT"
+  },
+  "authority_levels": {
+    "A_DIRECT_BIOME4_EQUIVALENT": {
+      "fraction": 0.0,
+      "status": "0 governed cells"
+    },
+    "B_DIRECT_HYDRAULIC_STATE": {
+      "fraction": 0.0,
+      "status": "0 governed cells"
+    },
+    "C_PEDOTRANSFER_READY": {
+      "fraction": 0.0,
+      "status": "0 governed cells; sand/silt/clay and bulk density absent"
+    },
+    "D_PEDOGENESIS_READY": {
+      "fraction": 0.0,
+      "status": "not demonstrated; parent-material/history inputs are not sufficient as a governed soil model"
+    },
+    "E_INSUFFICIENT": {
+      "fraction": 1.0,
+      "status": "all ARCANA target cells/snapshots remain at insufficient authority"
+    },
+    "strongest_available_level": "E"
+  },
+  "biome4_soil_contract": {
+    "dz": {
+      "evidence": "smoke_soil.cdl dz:units = cm",
+      "units": "cm"
+    },
+    "ksat": {
+      "aggregated_units": "mm/hr",
+      "evidence": "biome4driver.f90 input(41:42) weighted means; source comments identify Ksat as mm/h",
+      "layer_units": "mm/hr"
+    },
+    "layer_count": 6,
+    "source_commit": "4ad9dff37eed339fce88c0fa5802757f86a3ef44",
+    "source_evidence": {
+      ".arcana_engines\\BIOME4\\README.md": {
+        "sha256": "32b7ddb813a9dc951bdda36fd9490438c5e159546320f8c6f88e48521043fc72",
+        "size_bytes": 7390
+      },
+      ".arcana_engines\\BIOME4\\biome4.f": {
+        "sha256": "23b5194b7b2ca25439f9a97e4f55c147c78ee9198c5f953ca2fac8c4ce689968",
+        "size_bytes": 105109
+      },
+      ".arcana_engines\\BIOME4\\biome4driver.f90": {
+        "sha256": "962dc05e5621f3fe3b31bbf2fe4fb82686e81613a98c766f24fd2683e0b7dece",
+        "size_bytes": 18828
+      },
+      ".arcana_engines\\BIOME4_runtime\\smoke\\smoke_soil.cdl": {
+        "sha256": "9baf83616f4e36e0362882401a064e31982ec1503764dcdbc3f791aa8d055bd8",
+        "size_bytes": 766
+      }
+    },
+    "source_repository": "jedokaplan/BIOME4",
+    "vertical_aggregation": {
+      "Ksat": "depth-weighted mean per zone",
+      "WHC": "depth-integrated sum per zone",
+      "lower": "layers 4:6",
+      "upper": "layers 1:3"
+    },
+    "whc": {
+      "aggregated_units": "mm",
+      "evidence": "biome4driver.f90 input(43:44) sums whc * dz; source comment says input whc are in mm/cm",
+      "layer_units": "mm/cm"
+    }
+  },
+  "biome4_whc_semantics": {
+    "basis": [
+      "Kaplan et al. 2003, DOI 10.1029/2002JD002559: BIOME4 uses soil texture and soil depth to determine water holding capacity and percolation",
+      "BIOME4-linked literature describes the whole-soil-column quantity as available water-holding capacity",
+      "pinned driver integrates per-layer whc by depth into the top and lower soil stores"
+    ],
+    "caveat": "historical texture-class derivation and exact field-capacity/wilting-point pressure conventions remain unrecovered",
+    "exact_model_quantity": "AVAILABLE_WATER_HOLDING_CAPACITY",
+    "field_capacity": "part of the available-water interpretation; exact pressure convention not recovered in pinned source",
+    "plant_available_water": true,
+    "resolved_semantics": "AVAILABLE_WATER_HOLDING_CAPACITY / PLANT_AVAILABLE_WATER_STORAGE",
+    "source_label": "volumetric whc / soil water holding capacity",
+    "total_pore_space": false
+  },
+  "decision": "PEDOGENESIS_PROVIDER_REQUIRED",
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "BIOME4_runtime_ready": true,
+    "BIOME4_scientific_run": false,
+    "Madingley_invoked": false,
+    "PALEO_CO2_AUTHORITY_BOUND": true,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "physical_npp_materialized": false,
+    "population_target_used": false,
+    "soil_physical_state_materialized": false
+  },
+  "new_land_handling": {
+    "land_exposure_age": "NOT_MATERIALIZED",
+    "mature_soil_instant_inheritance": false,
+    "newly_exposed_cells": "must not inherit mature present soil without authority",
+    "soil_development_eligibility": "REQUIRES_PEDOGENESIS_GATE"
+  },
+  "p7c_co2_authority": {
+    "bound": true,
+    "decision": "PALEO_CO2_AUTHORITY_READY_WITH_INTERPOLATION",
+    "values_not_recomputed": true
+  },
+  "p7t_temporal_authority": {
+    "decision": "HUMAN_SUPPORT_TEMPORAL_SNAPSHOT_AUTHORITY_READY",
+    "domain": "200 ka -> 0 ka",
+    "registry_path": "R5_17_B7_A3F2_P7T_TEMPORAL_SNAPSHOT_REGISTRY.csv",
+    "registry_sha256": "fda3bfaa162f0eac6f8739550d2eadee78112e6fcfbf457e5d4f024cfb780331",
+    "snapshot_ages_ka": [
+      200.0,
+      125.0,
+      120.0,
+      20.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      5.0,
+      0.0
+    ],
+    "snapshot_count": 12
+  },
+  "parent_head": "43731502aa210f0714473f0f71606eaf5f769375",
+  "pedogenesis_requirement": {
+    "custom_geology_to_texture_lookup": false,
+    "decision": "PEDOGENESIS_PROVIDER_REQUIRED",
+    "minimum_inputs_missing": [
+      "parent material/grain size",
+      "physical texture",
+      "weathering duration",
+      "drainage",
+      "erosion/deposition",
+      "vegetation/organic inputs",
+      "vertical profile"
+    ],
+    "provider_warning": "Rosetta3 is downstream of physical texture/profile authority; SoilGen or another pedogenesis model cannot be assumed to supply missing initial parent-material/soil conditions",
+    "required": true
+  },
+  "pedotransfer_candidate": {
+    "applicability": "NOT_APPLICABLE",
+    "inputs": [
+      "sand",
+      "silt",
+      "clay",
+      "optional bulk density",
+      "optional retention points"
+    ],
+    "invoked": false,
+    "outputs": [
+      "theta_r",
+      "theta_s",
+      "alpha",
+      "n",
+      "Ksat",
+      "K0",
+      "L"
+    ],
+    "provider": "Rosetta3",
+    "reason": "required ARCANA texture and optional bulk-density inputs are absent",
+    "runtime_source": "USDA-ARS usda-ars-ussl/rosetta-soil candidate only",
+    "scientific_reference": "Zhang & Schaap 2017, Journal of Hydrology 547:39-53, DOI 10.1016/j.jhydrol.2017.01.004",
+    "uncertainty": "would retain mean/uncertainty if later eligible",
+    "unit_crosswalk": "candidate only: Rosetta Ksat cm/day -> BIOME4 mm/hr by 10/24 after runtime contract verification"
+  },
+  "recommended_next_operation": "R5.17-B7-A3F2-P7G PEDOGENESIS / PARENT-MATERIAL PROVIDER ADJUDICATION",
+  "soil_authority_bound": false,
+  "soil_materialization_method_defined": true,
+  "spatial_resolution": {
+    "land_mask": "none bound by P7S",
+    "layer_count": 6,
+    "resampling": false,
+    "snapshot_count": 12,
+    "source_grid": "none",
+    "target_grid": "90 x 180 if/when shared BIOME4 adapter is authorized"
+  },
+  "stage": "R5.17-B7-A3F2-P7S",
+  "temporal_soil_semantics": {
+    "allowed_options": [
+      "TIME_VARYING_RECONSTRUCTED",
+      "STATIC_PHYSICAL_PROFILE",
+      "PIECEWISE_TIME_VARYING",
+      "MIXED_BY_REGION"
+    ],
+    "independent_grid_prohibited": true,
+    "materialization": "not performed",
+    "shared_snapshot_ages_ka": [
+      200.0,
+      125.0,
+      120.0,
+      20.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      5.0,
+      0.0
+    ],
+    "strategy": "UNRESOLVED"
+  },
+  "vertical_profile_status": {
+    "classification": "NO_VERTICAL_PROFILE_AUTHORITY",
+    "derivable_layered_profile": false,
+    "native_layered_profile": false,
+    "reason": "no physical soil layer depths/properties exist in ARCANA",
+    "six_layer_duplication_authorized": false,
+    "static_profile_approximation_candidate": false
+  }
+}

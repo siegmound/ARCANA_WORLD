@@ -2,18 +2,84 @@
   "record_id": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER",
   "title": "ARCANA WorldSim Scientific Authority Register",
   "purpose": "Persistent cross-cutting inventory of existing scientific authority. It is a governance register, not a scientific generator.",
-  "governance_rule": [
-    "Before declaring a scientific authority absent, consult this register.",
-    "Inspect registered producer/provenance and respect its semantic ceiling.",
-    "Perform targeted recovery only when the relevant entry is UNRESOLVED.",
-    "Do not infer absence from ARCANA_WORLD_CURRENT_STATE.md alone."
+  "authority_status_vocabulary": [
+    "ABSENT_AFTER_AUDIT",
+    "DERIVED_AUTHORITY",
+    "DIRECT_AUTHORITY",
+    "PARTIAL_AUTHORITY",
+    "PROXY_ONLY",
+    "RECOVERABLE_LEGACY",
+    "SEMANTICALLY_LIMITED",
+    "UNRESOLVED"
   ],
-  "p7q_status": "SUSPENDED_PENDING_REGISTER_REVIEW",
+  "reuse_disposition_vocabulary": [
+    "BLOCKED",
+    "NOT_REQUIRED_CURRENT_SCOPE",
+    "REQUIRES_NEW_PROVIDER",
+    "REQUIRES_NEW_SIMULATION",
+    "REQUIRES_TARGETED_RECOVERY",
+    "REUSE_ALLOWED",
+    "REUSE_WITH_ADAPTER"
+  ],
+  "governance_rules": [
+    {
+      "rule_id": "RULE_1_PRESENCE_NOT_EQUAL_SUFFICIENCY",
+      "requirement": "Presence of authority does not imply sufficiency for every downstream use."
+    },
+    {
+      "rule_id": "RULE_2_UPSTREAM_NOT_EQUAL_DOWNSTREAM_PROPERTY",
+      "requirement": "An upstream authority cannot be silently reinterpreted as a downstream physical property."
+    },
+    {
+      "rule_id": "RULE_3_ABSENT_REQUIRES_AUDIT",
+      "requirement": "ABSENT_AFTER_AUDIT requires a sufficiently scoped recovery/audit and provenance evidence."
+    },
+    {
+      "rule_id": "RULE_4_REGISTER_PREFLIGHT_REQUIRED",
+      "requirement": "Consult this register before broad recovery, provider introduction, new model, simulation, or materialization."
+    },
+    {
+      "rule_id": "RULE_5_REUSE_BEFORE_RECOMPUTE",
+      "requirement": "Prefer reusable governed authority when its semantic ceiling covers the consumer."
+    },
+    {
+      "rule_id": "RULE_6_SEMANTIC_CEILING_IS_BINDING",
+      "requirement": "No downstream stage may infer beyond the registered semantic ceiling without an explicit gate."
+    },
+    {
+      "rule_id": "RULE_7_PARTIAL_AUTHORITY_REQUIRES_GAP_DEFINITION",
+      "requirement": "PARTIAL_AUTHORITY or SEMANTICALLY_LIMITED requires an exact gap definition before a new provider or simulation."
+    },
+    {
+      "rule_id": "RULE_8_NEW_SIMULATION_REQUIRES_REGISTER_EVIDENCE",
+      "requirement": "A new simulation for a covered domain requires explicit adjudication of insufficiency."
+    }
+  ],
+  "mandatory_preflight": {
+    "procedure_id": "SCIENTIFIC_AUTHORITY_REGISTER_PREFLIGHT",
+    "steps": [
+      "REQUESTED_SCIENTIFIC_STATE",
+      "LOOKUP_DOMAIN_IN_REGISTER",
+      "IF_PRESENT_CHECK_AUTHORITY_STATUS_AND_SEMANTIC_CEILING",
+      "IF_SUFFICIENT_REUSE_OR_REUSE_WITH_ADAPTER",
+      "IF_INSUFFICIENT_DEFINE_EXACT_GAP",
+      "IF_UNRESOLVED_PERFORM_TARGETED_RECOVERY",
+      "ONLY_AFTER_ADJUDICATION_GATE_NEW_PROVIDER_OR_SIMULATION"
+    ],
+    "machine_decisions": {
+      "sufficient": "REUSE_ALLOWED_OR_REUSE_WITH_ADAPTER",
+      "insufficient": "DEFINE_EXACT_GAP_THEN_PROVIDER_GATE",
+      "unresolved": "TARGETED_RECOVERY_REQUIRED"
+    }
+  },
+  "p7q_status": "SUSPENDED__REGISTER_INTEGRATED__P7Q_REGISTER_PREFLIGHT_REVIEW_REQUIRED",
   "domain_count": 33,
   "domains": [
     {
       "domain_id": "PALEOGEOGRAPHY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "A1 / D3.2C",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -61,6 +127,8 @@
     {
       "domain_id": "PLATE_KINEMATICS",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "A1 / D3.2C",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -111,6 +179,8 @@
     {
       "domain_id": "SHORELINE_LAND_OCEAN",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "A1 / R3.14 / B6-D2C1",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY",
@@ -155,6 +225,8 @@
     {
       "domain_id": "CLIMATE",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.14 / A1",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -198,6 +270,8 @@
     {
       "domain_id": "PALEOCLIMATE",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.14",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -238,6 +312,8 @@
     {
       "domain_id": "HYDROLOGY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "Original lineage recovered in B6",
       "authority_class": [
         "CONFIRMED_ORIGINAL_AUTHORITY",
@@ -281,6 +357,8 @@
     {
       "domain_id": "PALEOHYDROLOGY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R5.17-B6-D3",
       "authority_class": [
         "RECOVERED_REPLAY_AUTHORITY"
@@ -318,6 +396,8 @@
     {
       "domain_id": "FRESHWATER",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R5.17-B6-D4",
       "authority_class": [
         "LATER_DERIVED_AUTHORITY"
@@ -358,6 +438,8 @@
     {
       "domain_id": "HYDROLOGICAL_HAZARD",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.20",
       "authority_class": [
         "CONFIRMED_ORIGINAL_AUTHORITY"
@@ -394,6 +476,8 @@
     {
       "domain_id": "FLORA",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R5.17-B7-A3",
       "authority_class": [
         "LATER_DERIVED_AUTHORITY"
@@ -431,6 +515,8 @@
     {
       "domain_id": "VEGETATION",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "A1 / B7-A3",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY",
@@ -473,6 +559,8 @@
     {
       "domain_id": "PLANT_ECOLOGY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R5.17-B7-A3",
       "authority_class": [
         "LATER_DERIVED_AUTHORITY"
@@ -508,6 +596,8 @@
     {
       "domain_id": "PLANT_TROPHIC_SUPPORT",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R5.17-B7-A3.1/A3.2",
       "authority_class": [
         "LATER_DERIVED_AUTHORITY"
@@ -544,6 +634,8 @@
     {
       "domain_id": "FAUNA",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.21 / B7-A3 census",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY",
@@ -586,6 +678,8 @@
     {
       "domain_id": "ANIMAL_ECOLOGY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.21",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -621,6 +715,8 @@
     {
       "domain_id": "BIODIVERSITY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.21",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -656,6 +752,8 @@
     {
       "domain_id": "SPECIES_EVOLUTION",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.21",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -691,6 +789,8 @@
     {
       "domain_id": "SPECIES_REGISTRY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.21",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -730,6 +830,8 @@
     {
       "domain_id": "NPP_PRODUCTIVITY",
       "status": "PROXY_ONLY",
+      "authority_status": "PROXY_ONLY",
+      "reuse_disposition": "NOT_REQUIRED_CURRENT_SCOPE",
       "origin_stage": "A1 / P4",
       "authority_class": [
         "DERIVED_PROXY_ONLY"
@@ -769,6 +871,8 @@
     {
       "domain_id": "GEOLOGY",
       "status": "ABSENT",
+      "authority_status": "ABSENT_AFTER_AUDIT",
+      "reuse_disposition": "REQUIRES_TARGETED_RECOVERY",
       "origin_stage": "P7AR / P7NC1R",
       "authority_class": [
         "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
@@ -805,6 +909,8 @@
     {
       "domain_id": "LITHOLOGY",
       "status": "ABSENT",
+      "authority_status": "ABSENT_AFTER_AUDIT",
+      "reuse_disposition": "REQUIRES_TARGETED_RECOVERY",
       "origin_stage": "P7AR",
       "authority_class": [
         "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
@@ -837,6 +943,8 @@
     {
       "domain_id": "CRUSTAL_STATE",
       "status": "UNRESOLVED",
+      "authority_status": "UNRESOLVED",
+      "reuse_disposition": "REQUIRES_TARGETED_RECOVERY",
       "origin_stage": "P7NC1R",
       "authority_class": [
         "UNRESOLVED"
@@ -872,6 +980,8 @@
     {
       "domain_id": "PARENT_MATERIAL",
       "status": "ABSENT",
+      "authority_status": "ABSENT_AFTER_AUDIT",
+      "reuse_disposition": "REQUIRES_TARGETED_RECOVERY",
       "origin_stage": "P7AR",
       "authority_class": [
         "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
@@ -906,6 +1016,8 @@
     {
       "domain_id": "REGOLITH",
       "status": "ABSENT",
+      "authority_status": "ABSENT_AFTER_AUDIT",
+      "reuse_disposition": "REQUIRES_TARGETED_RECOVERY",
       "origin_stage": "P7AR / P7G",
       "authority_class": [
         "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
@@ -941,6 +1053,8 @@
     {
       "domain_id": "SOIL_PHYSICAL",
       "status": "ABSENT",
+      "authority_status": "ABSENT_AFTER_AUDIT",
+      "reuse_disposition": "REQUIRES_TARGETED_RECOVERY",
       "origin_stage": "P7S",
       "authority_class": [
         "NOT_MATERIALIZED"
@@ -974,6 +1088,8 @@
     {
       "domain_id": "SOIL_CARBON",
       "status": "PROXY_ONLY",
+      "authority_status": "PROXY_ONLY",
+      "reuse_disposition": "BLOCKED",
       "origin_stage": "P7AR",
       "authority_class": [
         "DERIVED_PROXY_ONLY"
@@ -1009,6 +1125,8 @@
     {
       "domain_id": "WEATHERING",
       "status": "PROXY_ONLY",
+      "authority_status": "PROXY_ONLY",
+      "reuse_disposition": "BLOCKED",
       "origin_stage": "P7AR",
       "authority_class": [
         "DERIVED_PROXY_ONLY"
@@ -1045,6 +1163,8 @@
     {
       "domain_id": "BARRIERS",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "D3.2C",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -1080,6 +1200,8 @@
     {
       "domain_id": "CONNECTIVITY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "D3.2C",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -1116,6 +1238,8 @@
     {
       "domain_id": "MARINE_AQUATIC_STATE",
       "status": "NOT_MATERIALIZED",
+      "authority_status": "UNRESOLVED",
+      "reuse_disposition": "BLOCKED",
       "origin_stage": "B7 governance",
       "authority_class": [
         "NOT_MATERIALIZED"
@@ -1146,6 +1270,8 @@
     {
       "domain_id": "TOPOGRAPHY",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "ARCANA terrain lineage; P7G inventory",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -1182,6 +1308,8 @@
     {
       "domain_id": "RELIEF",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "ARCANA terrain lineage; P7G inventory",
       "authority_class": [
         "CONFIRMED_LEGACY_AUTHORITY"
@@ -1218,6 +1346,8 @@
     {
       "domain_id": "ENVIRONMENTAL_INTEGRALS",
       "status": "CONFIRMED",
+      "authority_status": "DIRECT_AUTHORITY",
+      "reuse_disposition": "REUSE_ALLOWED",
       "origin_stage": "R3.18",
       "authority_class": [
         "CONFIRMED_ORIGINAL_AUTHORITY"
@@ -1254,10 +1384,21 @@
     }
   ],
   "governance": {
-    "new_science_created": false,
-    "provider_selection_reopened": false,
-    "missing_state_inferred": false,
-    "current_state_modified": false,
-    "canonical_mutation": false
+    "scientific_authority_register_integrated": true,
+    "new_scientific_authority_created": false,
+    "new_scientific_simulation_executed": false,
+    "p7q_executed": false,
+    "gplates_executed": false,
+    "landlab_executed": false,
+    "badlands_executed": false,
+    "soilgen_executed": false,
+    "biome4_executed": false,
+    "madingley_executed": false,
+    "lithology_materialized": false,
+    "parent_material_materialized": false,
+    "regolith_materialized": false,
+    "soil_physics_materialized": false,
+    "canonical_scientific_state_mutated": false,
+    "governance_metadata_updated": true
   }
 }

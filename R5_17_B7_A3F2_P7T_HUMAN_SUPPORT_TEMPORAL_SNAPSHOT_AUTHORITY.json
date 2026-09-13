@@ -1,0 +1,269 @@
+{
+  "adaptive_temporal_resolution": true,
+  "authoritative_arcana_head": "43731502aa210f0714473f0f71606eaf5f769375",
+  "candidate_anchor_adjudication": {
+    "0": "R3.28 explicit human replay endpoint",
+    "10": "R3.28 explicit human replay snapshot",
+    "11": "R3.28 snapshot plus R3.20 hazard interval endpoint",
+    "12": "R3.28 snapshot plus R3.20 hazard interval",
+    "120": "R3.17/R3.18 exact environmental restart boundary; retained as shared environmental transition",
+    "125": "R3.28 explicit human replay snapshot and R3.19 biology boundary",
+    "13": "R3.28 snapshot plus R3.20 hazard interval",
+    "14": "R3.28 snapshot plus R3.20 hazard interval",
+    "15": "R3.28 snapshot plus R3.20 hazard interval boundary",
+    "20": "R3.28 explicit human replay snapshot",
+    "200": "R3.27/R3.28 human replay boundary",
+    "5": "R3.28 explicit human replay snapshot"
+  },
+  "co2_dependency": {
+    "BIOME4_CO2_REQUIRED_SNAPSHOT_AGES": [
+      200.0,
+      125.0,
+      120.0,
+      20.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      5.0,
+      0.0
+    ],
+    "NOAA_COVERAGE_POTENTIALLY_SUFFICIENT": true,
+    "OLDEST_CO2_SNAPSHOT": 200.0,
+    "YOUNGEST_CO2_SNAPSHOT": 0.0,
+    "coverage_years_bp": {
+      "max_age_years_bp": 805668.87,
+      "min_age_years_bp": -51.03
+    },
+    "datum": "not selected by P7T",
+    "snapshot_count": 12,
+    "values_bound": false
+  },
+  "decision": "HUMAN_SUPPORT_TEMPORAL_SNAPSHOT_AUTHORITY_READY",
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "BIOME4_scientific_run": false,
+    "Madingley_invoked": false,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "paleo_co2_values_bound": false,
+    "physical_npp_materialized": false,
+    "population_target_used": false,
+    "soil_physical_state_materialized": false
+  },
+  "human_0ka_checkpoint": {
+    "authority_status": "GOVERNED_HUMAN_REPLAY_ENDPOINT",
+    "checkpoint_path": "outputs\\v0_6D1_R3_28\\R3_28_HUMAN_0KA_CHECKPOINT.json",
+    "checkpoint_sha256": "d1bf47352b33ec028acafc57134d2aa42c2373d6ed72cc517494208038c0f1cc",
+    "path": "outputs\\v0_6D1_R3_28\\R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+    "schema_key_evidence": [
+      "admixture_opportunity_cumulative",
+      "age_ka",
+      "candidate_ids",
+      "cha2_active",
+      "cha2_age_ka",
+      "cha2_deme_state",
+      "contact_index",
+      "parent_member_indices",
+      "snapshot_active",
+      "snapshot_age_ka",
+      "snapshot_deme_state",
+      "species_summary",
+      "species_summary_variable_names",
+      "state_variable_names"
+    ],
+    "semantic_provenance": "ROBUST_HIGH_RESOLUTION_POPULATION_COHORT_AT_0KA;_UNIQUE_IDENTITY_ONLY_IF_SINGLE_LINEAGE_QUALIFIES",
+    "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+    "state_shape": {
+      "admixture_opportunity_cumulative": [
+        32,
+        280
+      ],
+      "age_ka": [
+        280
+      ],
+      "candidate_ids": [
+        2
+      ],
+      "cha2_active": [
+        32,
+        2,
+        80,
+        6
+      ],
+      "cha2_age_ka": [
+        80
+      ],
+      "cha2_deme_state": [
+        32,
+        2,
+        80,
+        6,
+        7
+      ],
+      "contact_index": [
+        32,
+        280
+      ],
+      "parent_member_indices": [
+        32
+      ],
+      "snapshot_active": [
+        32,
+        2,
+        15,
+        6
+      ],
+      "snapshot_age_ka": [
+        15
+      ],
+      "snapshot_deme_state": [
+        32,
+        2,
+        15,
+        6,
+        7
+      ],
+      "species_summary": [
+        32,
+        2,
+        280,
+        8
+      ],
+      "species_summary_variable_names": [
+        8
+      ],
+      "state_variable_names": [
+        7
+      ]
+    },
+    "verified": true
+  },
+  "human_200ka_checkpoint": {
+    "authority_status": "GOVERNED_HUMAN_REPLAY_BOUNDARY",
+    "checkpoint_path": "outputs\\v0_6D1_R3_27\\R3_27_HUMAN_200KA_CHECKPOINT.json",
+    "checkpoint_sha256": "9c86712ce6056515a6bfe5c25c7d382be0ccb707e92e8e0817bd6561bbbe35f9",
+    "path": "outputs\\v0_6D1_R3_27\\R3_27_MACRO_REPLAY_TRAJECTORIES.npz",
+    "schema_key_evidence": [
+      "age_ma",
+      "bottleneck_multiplier",
+      "candidate_ids",
+      "corridor_connectivity",
+      "environmental_stress",
+      "forcing_regime",
+      "state",
+      "variability_index",
+      "variable_names"
+    ],
+    "semantic_provenance": "QUALIFIED_MACROEVOLUTIONARY_COHORT_FOR_NEXT_HIGH_RESOLUTION_REPLAY_NOT_FINAL_HUMAN_SPECIES_IDENTITY",
+    "sha256": "fac973bd233c49facedb2d32e1c561800e65e27da1e940f967d680a36c1b47f3",
+    "state_shape": {
+      "age_ma": [
+        141
+      ],
+      "bottleneck_multiplier": [
+        96,
+        141
+      ],
+      "candidate_ids": [
+        6
+      ],
+      "corridor_connectivity": [
+        96,
+        141
+      ],
+      "environmental_stress": [
+        96,
+        141
+      ],
+      "forcing_regime": [
+        96
+      ],
+      "state": [
+        96,
+        6,
+        141,
+        8
+      ],
+      "variability_index": [
+        96,
+        141
+      ],
+      "variable_names": [
+        8
+      ]
+    },
+    "verified": true
+  },
+  "interpolation_contract": {
+    "CO2": "LINEAR_INTERPOLABLE between physical observations only after P7C resolves datum/domain; no values bound by P7T",
+    "Madingley": "same shared snapshots unless explicit provider subgrid is justified",
+    "NPP": "computed only at selected BIOME4 snapshots after inputs close",
+    "climate": "EXACT_SNAPSHOT_OR_GOVERNED_REPLAY_SEMANTICS",
+    "human_support": "component-specific; no generic interpolation",
+    "shoreline": "EVENT_DISCONTINUITY/explicit snapshots where topology changes",
+    "soil": "UNRESOLVED_P7S_DECIDES_STATIC_APPROXIMATION_TIME_VARYING_RECONSTRUCTED_OR_MIXED",
+    "species_ecological_state": "NOT_INTERPOLABLE generically"
+  },
+  "minimum_sufficient_domain": {
+    "HUMAN_SUPPORT_END_AGE": 0.0,
+    "HUMAN_SUPPORT_START_AGE": 200.0,
+    "classification": "GOVERNED_HUMAN_REPLAY_BOUNDARY",
+    "rationale": "R3.27 200 ka is the first explicit governed human-scale macro-replay checkpoint feeding R3.28; this does not claim human origins at 200 ka"
+  },
+  "recommended_next": "Resume existing P7C for coverage/datum adjudication, then run P7S using this exact shared registry",
+  "shared_temporal_registry": {
+    "BIOME4_compatible_snapshot_count": 12,
+    "Madingley_compatible_snapshot_count": 12,
+    "ages_ka_before_model_present": [
+      200.0,
+      125.0,
+      120.0,
+      20.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      5.0,
+      0.0
+    ],
+    "classification": "ADAPTIVE_TEMPORAL_SNAPSHOT_REGISTRY",
+    "count": 12,
+    "oldest": 200.0,
+    "path": "R5_17_B7_A3F2_P7T_TEMPORAL_SNAPSHOT_REGISTRY.csv",
+    "sha256": "fda3bfaa162f0eac6f8739550d2eadee78112e6fcfbf457e5d4f024cfb780331",
+    "youngest": 0.0,
+    "zero_ka_included": true
+  },
+  "soil_dependency": {
+    "SOIL_REQUIRED_SNAPSHOT_AGES": [
+      200.0,
+      125.0,
+      120.0,
+      20.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      5.0,
+      0.0
+    ],
+    "independent_grid_prohibited": true,
+    "temporal_semantics": "UNRESOLVED_FOR_P7S"
+  },
+  "stage": "R5.17-B7-A3F2-P7T",
+  "status": "HUMAN_SUPPORT_TEMPORAL_SNAPSHOT_AUTHORITY_READY",
+  "temporal_domains": {
+    "BIOLOGICAL_RESOURCE_RECONSTRUCTION_DOMAIN": "B7 remains source-heterogeneous and is not silently expanded to 210 Ma",
+    "HUMAN_SUPPORT_OPERATIONAL_DOMAIN": "200 ka -> 0 ka",
+    "WORLD_CONTEXT_DOMAIN": "210 Ma -> 0 ka model-relative context"
+  }
+}

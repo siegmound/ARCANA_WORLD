@@ -13,6 +13,17 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_JSON = ROOT / "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json"
 OUT_MD = ROOT / "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.md"
 
+AUTHORITY_STATUS_VOCABULARY = {
+    "DIRECT_AUTHORITY", "DERIVED_AUTHORITY", "PARTIAL_AUTHORITY",
+    "PROXY_ONLY", "SEMANTICALLY_LIMITED", "RECOVERABLE_LEGACY",
+    "ABSENT_AFTER_AUDIT", "UNRESOLVED",
+}
+REUSE_DISPOSITION_VOCABULARY = {
+    "REUSE_ALLOWED", "REUSE_WITH_ADAPTER", "REQUIRES_TARGETED_RECOVERY",
+    "REQUIRES_NEW_PROVIDER", "REQUIRES_NEW_SIMULATION",
+    "NOT_REQUIRED_CURRENT_SCOPE", "BLOCKED",
+}
+
 
 def digest(path: Path) -> str:
     h = hashlib.sha256()
@@ -42,9 +53,24 @@ def domain(
     consumers: list[str] | None = None,
 ) -> dict:
     evidence = source_records(artifacts)
+    authority_status = {
+        "CONFIRMED": "DIRECT_AUTHORITY",
+        "PROXY_ONLY": "PROXY_ONLY",
+        "ABSENT": "ABSENT_AFTER_AUDIT",
+        "UNRESOLVED": "UNRESOLVED",
+        "NOT_MATERIALIZED": "UNRESOLVED",
+    }[status]
+    reuse_disposition = (
+        "REUSE_ALLOWED" if reuse == "REUSE_CANONICAL_ARCANA" else
+        "REQUIRES_TARGETED_RECOVERY" if reuse == "TARGETED_RECOVERY_COMPLETE" else
+        "NOT_REQUIRED_CURRENT_SCOPE" if reuse == "DO_NOT_REUSE_AS_PHYSICAL_NPP" else
+        "BLOCKED"
+    )
     return {
         "domain_id": domain_id,
         "status": status,
+        "authority_status": authority_status,
+        "reuse_disposition": reuse_disposition,
         "origin_stage": origin_stage,
         "authority_class": authority_class,
         "producer_provider": producer,
@@ -108,29 +134,78 @@ def main() -> None:
         domain("RELIEF", "CONFIRMED", "ARCANA terrain lineage; P7G inventory", ["CONFIRMED_LEGACY_AUTHORITY"], "ARCANA elevation/topography state", ["R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json"], ["relief/elevation conditioning"], "Governed terrain support as documented by P7G", "Applicable inherited snapshot domain", "Terrain-relief conditioning state.", ["terrain conditioning"], ["lithology", "regolith", "soil profile"], "REUSE_CANONICAL_ARCANA"),
         domain("ENVIRONMENTAL_INTEGRALS", "CONFIRMED", "R3.18", ["CONFIRMED_ORIGINAL_AUTHORITY"], "R3.18 exposure-completion transport-phase authority", ["local_runs/v0_6D1_R3_18/R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json"], ["integrated exposure fields", "transport phases"], "Recent R3.18 support", "125 ka–0", "Integrated environmental exposures.", ["environmental exposure integrals"], ["physical population", "carrying capacity", "soil or geology"], "REUSE_CANONICAL_ARCANA"),
     ]
+    governance_rules = [
+        {"rule_id": "RULE_1_PRESENCE_NOT_EQUAL_SUFFICIENCY", "requirement": "Presence of authority does not imply sufficiency for every downstream use."},
+        {"rule_id": "RULE_2_UPSTREAM_NOT_EQUAL_DOWNSTREAM_PROPERTY", "requirement": "An upstream authority cannot be silently reinterpreted as a downstream physical property."},
+        {"rule_id": "RULE_3_ABSENT_REQUIRES_AUDIT", "requirement": "ABSENT_AFTER_AUDIT requires a sufficiently scoped recovery/audit and provenance evidence."},
+        {"rule_id": "RULE_4_REGISTER_PREFLIGHT_REQUIRED", "requirement": "Consult this register before broad recovery, provider introduction, new model, simulation, or materialization."},
+        {"rule_id": "RULE_5_REUSE_BEFORE_RECOMPUTE", "requirement": "Prefer reusable governed authority when its semantic ceiling covers the consumer."},
+        {"rule_id": "RULE_6_SEMANTIC_CEILING_IS_BINDING", "requirement": "No downstream stage may infer beyond the registered semantic ceiling without an explicit gate."},
+        {"rule_id": "RULE_7_PARTIAL_AUTHORITY_REQUIRES_GAP_DEFINITION", "requirement": "PARTIAL_AUTHORITY or SEMANTICALLY_LIMITED requires an exact gap definition before a new provider or simulation."},
+        {"rule_id": "RULE_8_NEW_SIMULATION_REQUIRES_REGISTER_EVIDENCE", "requirement": "A new simulation for a covered domain requires explicit adjudication of insufficiency."},
+    ]
+    preflight = {
+        "procedure_id": "SCIENTIFIC_AUTHORITY_REGISTER_PREFLIGHT",
+        "steps": [
+            "REQUESTED_SCIENTIFIC_STATE",
+            "LOOKUP_DOMAIN_IN_REGISTER",
+            "IF_PRESENT_CHECK_AUTHORITY_STATUS_AND_SEMANTIC_CEILING",
+            "IF_SUFFICIENT_REUSE_OR_REUSE_WITH_ADAPTER",
+            "IF_INSUFFICIENT_DEFINE_EXACT_GAP",
+            "IF_UNRESOLVED_PERFORM_TARGETED_RECOVERY",
+            "ONLY_AFTER_ADJUDICATION_GATE_NEW_PROVIDER_OR_SIMULATION",
+        ],
+        "machine_decisions": {"sufficient": "REUSE_ALLOWED_OR_REUSE_WITH_ADAPTER", "insufficient": "DEFINE_EXACT_GAP_THEN_PROVIDER_GATE", "unresolved": "TARGETED_RECOVERY_REQUIRED"},
+    }
     document = {
         "record_id": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER",
         "title": "ARCANA WorldSim Scientific Authority Register",
         "purpose": "Persistent cross-cutting inventory of existing scientific authority. It is a governance register, not a scientific generator.",
-        "governance_rule": [
-            "Before declaring a scientific authority absent, consult this register.",
-            "Inspect registered producer/provenance and respect its semantic ceiling.",
-            "Perform targeted recovery only when the relevant entry is UNRESOLVED.",
-            "Do not infer absence from ARCANA_WORLD_CURRENT_STATE.md alone.",
-        ],
-        "p7q_status": "SUSPENDED_PENDING_REGISTER_REVIEW",
+        "authority_status_vocabulary": sorted(AUTHORITY_STATUS_VOCABULARY),
+        "reuse_disposition_vocabulary": sorted(REUSE_DISPOSITION_VOCABULARY),
+        "governance_rules": governance_rules,
+        "mandatory_preflight": preflight,
+        "p7q_status": "SUSPENDED__REGISTER_INTEGRATED__P7Q_REGISTER_PREFLIGHT_REVIEW_REQUIRED",
         "domain_count": len(entries),
         "domains": entries,
-        "governance": {"new_science_created": False, "provider_selection_reopened": False, "missing_state_inferred": False, "current_state_modified": False, "canonical_mutation": False},
+        "governance": {"scientific_authority_register_integrated": True, "new_scientific_authority_created": False, "new_scientific_simulation_executed": False, "p7q_executed": False, "gplates_executed": False, "landlab_executed": False, "badlands_executed": False, "soilgen_executed": False, "biome4_executed": False, "madingley_executed": False, "lithology_materialized": False, "parent_material_materialized": False, "regolith_materialized": False, "soil_physics_materialized": False, "canonical_scientific_state_mutated": False, "governance_metadata_updated": True},
     }
+    validate_document(document)
     OUT_JSON.write_text(json.dumps(document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    lines = ["# ARCANA WorldSim Scientific Authority Register", "", "Governed cross-cutting authority inventory. It records only evidenced state and its semantic ceiling; it does not create science.", "", "## Mandatory gate", "", *[f"{i + 1}. {rule}" for i, rule in enumerate(document["governance_rule"])], "", "## Domain inventory", "", "| Domain | Status | Authority class | Semantic ceiling |", "|---|---|---|---|"]
+    lines = ["# ARCANA WorldSim Scientific Authority Register", "", "Governed cross-cutting authority inventory. It records only evidenced state and its semantic ceiling; it does not create science.", "", "## Mandatory preflight", "", *[f"{i + 1}. `{step}`" for i, step in enumerate(preflight["steps"])], "", "## Governance rules", "", *[f"- **{rule['rule_id']}** — {rule['requirement']}" for rule in governance_rules], "", "## Domain inventory", "", "| Domain | Primary authority status | Reuse disposition | Semantic ceiling |", "|---|---|---|---|"]
     for item in entries:
-        lines.append(f"| {item['domain_id']} | {item['status']} | {', '.join(item['authority_class'])} | {'; '.join(item['SEMANTIC_CEILING']) or 'none'} |")
+        lines.append(f"| {item['domain_id']} | {item['authority_status']} | {item['reuse_disposition']} | {'; '.join(item['SEMANTIC_CEILING']) or 'none'} |")
     lines += ["", "## P7Q", "", "P7Q is suspended pending review. The register confirms a reusable paleogeographic/kinematic scaffold, while physical geology, lithology, parent material, regolith, and physical soil remain unavailable or unresolved as explicitly stated in their entries.", ""]
     OUT_MD.write_text("\n".join(lines), encoding="utf-8")
     print(f"wrote {OUT_JSON.name} ({len(entries)} domains)")
     print(f"wrote {OUT_MD.name}")
+
+
+def validate_document(document: dict) -> None:
+    if document["domain_count"] != 33 or len(document["domains"]) != 33:
+        raise ValueError("domain count must remain exactly 33")
+    required = {"domain_id", "authority_status", "reuse_disposition", "source_artifacts", "source_hashes", "spatial_support", "temporal_support", "SEMANTIC_CEILING", "DOES_NOT_SUPPORT", "downstream_consumers"}
+    for item in document["domains"]:
+        missing = required - item.keys()
+        if missing:
+            raise ValueError(f"{item['domain_id']} missing keys: {sorted(missing)}")
+        if item["authority_status"] not in AUTHORITY_STATUS_VOCABULARY:
+            raise ValueError(f"unknown authority status: {item['authority_status']}")
+        if item["reuse_disposition"] not in REUSE_DISPOSITION_VOCABULARY:
+            raise ValueError(f"unknown reuse disposition: {item['reuse_disposition']}")
+        if "SEMANTIC_CEILING" not in item or "DOES_NOT_SUPPORT" not in item:
+            raise ValueError(f"semantic ceiling missing: {item['domain_id']}")
+        if not item["source_artifacts"] or not item["producer_provider"]:
+            raise ValueError(f"provenance missing: {item['domain_id']}")
+        if item["authority_status"] == "ABSENT_AFTER_AUDIT" and not any(item["source_presence"].values()):
+            raise ValueError(f"audited absence lacks present audit evidence: {item['domain_id']}")
+    if len(document["governance_rules"]) != 8:
+        raise ValueError("exactly eight governance rules required")
+    if document["mandatory_preflight"]["procedure_id"] != "SCIENTIFIC_AUTHORITY_REGISTER_PREFLIGHT":
+        raise ValueError("mandatory preflight missing")
+    plate = next(x for x in document["domains"] if x["domain_id"] == "PLATE_KINEMATICS")
+    if "lithology" not in plate["DOES_NOT_SUPPORT"] or "parent material" not in plate["DOES_NOT_SUPPORT"]:
+        raise ValueError("P7NC1R plate-kinematic semantic ceiling lost")
 
 
 if __name__ == "__main__":

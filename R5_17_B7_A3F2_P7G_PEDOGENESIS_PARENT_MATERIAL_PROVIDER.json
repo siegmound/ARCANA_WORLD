@@ -1,0 +1,233 @@
+{
+  "arcana_parent_material_authority": {
+    "direct_lithology": false,
+    "direct_regolith_depth": false,
+    "direct_sediment_composition": false,
+    "direct_vertical_profile": false,
+    "finding": "No governed physical parent-material/regolith profile is available for initializing a world-scale soil provider",
+    "level": "E_INSUFFICIENT",
+    "status": "BLOCKED"
+  },
+  "arcana_regolith_authority": {
+    "grain_size": false,
+    "mineralogy": false,
+    "physical_regolith_state": false,
+    "profile_depth": false,
+    "status": "ABSENT",
+    "weathering_state": false
+  },
+  "arcana_texture_authority": {
+    "clay_percent": false,
+    "sand_percent": false,
+    "silt_percent": false,
+    "status": "ABSENT"
+  },
+  "domain_restrictions": {
+    "LORICA_family": "soilscape evolution requires initialized physical layers/material",
+    "SaLEM": "periglacial and site/regional specialization; cannot be promoted globally",
+    "SoilGen": "1-D profile/pedon; not by itself a world-scale parent-state generator",
+    "global_provider": "no single evaluated provider is globally ready from current ARCANA authority; regime dispatch may be necessary but is not authorized here"
+  },
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "BIOME4_scientific_run": false,
+    "ChronoLorica_executed": false,
+    "HydroLorica_executed": false,
+    "K_x_t_materialized": false,
+    "LORICA_executed": false,
+    "Madingley_invoked": false,
+    "Rosetta3_executed": false,
+    "SaLEM_executed": false,
+    "SoilGen_executed": false,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "parent_material_arrays_materialized": false,
+    "physical_NPP_materialized": false,
+    "soil_arrays_materialized": false
+  },
+  "governed_derivations": [],
+  "lorica_family_assessment": {
+    "can_create_missing_arcana_profile": false,
+    "capability": "CONDITIONALLY_FEASIBLE_AFTER_INITIAL_PROFILE",
+    "executed": false
+  },
+  "missing_inputs": [
+    "physical parent-material class/composition",
+    "sand/silt/clay or equivalent grain-size state",
+    "initial regolith/soil depth",
+    "vertical layer boundaries",
+    "bulk density/porosity",
+    "mineralogy/carbonate/chemistry as provider requires",
+    "world-scale regime-specific boundary conditions",
+    "land-exposure and soil-development initial conditions"
+  ],
+  "non_equivalence_rules": [
+    "bedrock/lithology != soil texture",
+    "geological class != sand/silt/clay fractions",
+    "sediment presence != complete physical regolith profile",
+    "weathering indication != quantitative pedogenic state",
+    "elevation/slope != soil depth"
+  ],
+  "p7c_co2_parent": {
+    "bound": true,
+    "decision": "PALEO_CO2_AUTHORITY_READY_WITH_INTERPOLATION"
+  },
+  "p7s_parent_decision": "PEDOGENESIS_PROVIDER_REQUIRED",
+  "parent_head": "43731502aa210f0714473f0f71606eaf5f769375",
+  "primary_scientific_decision": "BLOCKED_PARENT_MATERIAL_AUTHORITY_INSUFFICIENT",
+  "provider_arcana_crosswalk": {
+    "LORICA_family": {
+      "DEM": "SATISFIED_DIRECT_OR_GOVERNED_PARENT",
+      "erosion/deposition": "PROXY_PRESENT_NOT_AUTHORIZED",
+      "initial_layers": "MISSING",
+      "initial_texture/material": "MISSING",
+      "lithology": "MISSING",
+      "world_scale": "BLOCKED_PARENT_STATE"
+    },
+    "SaLEM": {
+      "DEM": "SATISFIED_DIRECT_OR_GOVERNED_PARENT",
+      "geological_model": "MISSING",
+      "lithology": "MISSING",
+      "periglacial_domain": "DOMAIN_RESTRICTED",
+      "world_scale": "DOMAIN_RESTRICTED"
+    },
+    "SoilGen3.8.2": {
+      "climate": "PROXY_PRESENT_NOT_AUTHORIZED",
+      "hydrology": "PROXY_PRESENT_NOT_AUTHORIZED",
+      "initial_parent_material": "MISSING",
+      "physical_texture": "MISSING",
+      "profile_layers": "MISSING",
+      "world_scale": "BLOCKED_PARENT_STATE"
+    }
+  },
+  "provider_input_contracts": {
+    "LORICA_ChronoLorica_HydroLorica": {
+      "boundary_conditions": [
+        "relief/overland routing",
+        "erosion/deposition",
+        "climate/hydrology depending variant"
+      ],
+      "capability": "evolve pre-defined soil layers/material under relief, lithology and geomorphic/pedogenic processes",
+      "initial_state": [
+        "DEM",
+        "initial soil layers",
+        "texture/material composition",
+        "bulk-density relation or PTF",
+        "boundary/process parameters"
+      ],
+      "limitation": "not shown to construct missing ARCANA initial physical profile from synthetic geography alone",
+      "outputs": [
+        "dynamic layer thickness/composition and soilscape state"
+      ],
+      "runtime": "source/runtime not locally bound",
+      "source": "https://www.uibk.ac.at/en/geography/geosoil/modelling/",
+      "spatial_dimensionality": "raster soilscape evolution"
+    },
+    "SaLEM": {
+      "boundary_conditions": [
+        "periglacial palaeoclimate",
+        "weathering",
+        "erosion",
+        "transport/sedimentation"
+      ],
+      "capability": "lithologically differentiated regolith depth/parent-material evolution",
+      "domain_restriction": "specialized periglacial/temperate Northern German case-study setting; not universal ARCANA world provider",
+      "initial_state": [
+        "site DEM",
+        "geological/lithological model",
+        "initial conditions"
+      ],
+      "limitation": "does not remove the need for governed initial geological/material state",
+      "runtime": "not locally bound",
+      "source": "https://doi.org/10.5194/gmd-2017-218",
+      "spatial_dimensionality": "GIS/regolith landscape model"
+    },
+    "SoilGen3.8.2": {
+      "boundary_conditions": [
+        "climate",
+        "water/solute flow",
+        "vegetation/organic inputs",
+        "erosion/deposition where configured"
+      ],
+      "capability": "pedogenesis from an initialized soil or parent material under boundary conditions",
+      "initial_state": "requires a defined initial soil/parent material, layer/profile properties and hydraulic/chemical parameters; exact release input file not locally recovered",
+      "limitation": "published evaluations report bulk-density limitations; model output presence does not establish authority quality",
+      "outputs": [
+        "profile properties including texture/mineral/organic and bulk-density-related states"
+      ],
+      "runtime": "Pascal/FreePascal Lazarus; exact local binding absent",
+      "source": "https://zenodo.org/records/17414404",
+      "spatial_dimensionality": "1-D soil pedon/profile"
+    }
+  },
+  "recommended_next_operation": "TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY_FOR_SYNTHETIC_WORLD_REGIMES",
+  "recovered_upstream_fields": {
+    "climate": {
+      "meaning": "temperature/precipitation environmental forcing; not soil texture/profile",
+      "support": "PROXY_PRESENT_NOT_AUTHORIZED"
+    },
+    "elevation_topography": {
+      "meaning": "canonical elevation/land geometry; not soil depth or texture",
+      "support": "SATISFIED_DIRECT_OR_GOVERNED_PARENT"
+    },
+    "erosion_deposition": {
+      "meaning": "erosion-related model variables exist in replay semantics but no physical sediment budget/profile",
+      "support": "PROXY_PRESENT_NOT_AUTHORIZED"
+    },
+    "hydrology": {
+      "meaning": "palaeohydrology/freshwater and hazard fields; not Ksat or WHC",
+      "support": "PROXY_PRESENT_NOT_AUTHORIZED"
+    },
+    "land_sea_shoreline": {
+      "meaning": "land/accessibility and shoreline endpoint support; not parent material",
+      "support": "SATISFIED_GOVERNED_DERIVATION"
+    },
+    "lithology_parent_material": {
+      "meaning": "no governed material classes, mineral composition, or grain-size state",
+      "support": "MISSING"
+    }
+  },
+  "regolith_provider_assessment": {
+    "SaLEM": "DOMAIN_RESTRICTED_AND_BLOCKED_MISSING_GEOLOGICAL_INITIAL_STATE",
+    "executed": false,
+    "specialist_provider_path": "POTENTIALLY_RELEVANT_BUT_NOT_INITIALIZABLE_FROM_CURRENT_AUTHORITY"
+  },
+  "rosetta3": {
+    "downstream": true,
+    "executed": false,
+    "texture_generation": false
+  },
+  "soilgen_assessment": {
+    "SOILGEN_PARENT_STATE_CREATION_CAPABILITY": "NOT_ESTABLISHED_FROM_CURRENT_AUTHORITY",
+    "SOILGEN_PEDOGENESIS_CAPABILITY": "CONDITIONALLY_FEASIBLE",
+    "bulk_density_caveat": true,
+    "executed": false
+  },
+  "stage": "R5.17-B7-A3F2-P7G",
+  "temporal_parent": {
+    "domain": "200 ka -> 0 ka",
+    "p7t_decision": "HUMAN_SUPPORT_TEMPORAL_SNAPSHOT_AUTHORITY_READY",
+    "snapshot_ages_ka": [
+      200.0,
+      125.0,
+      120.0,
+      20.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      5.0,
+      0.0
+    ]
+  },
+  "world_scale_assessment": {
+    "conclusion": "provider-family/regime dispatch may be necessary; no dispatch authorized",
+    "long_temporal_trajectories": "temporal registry exists but soil initial state absent",
+    "multiple_climate_regimes": "boundary proxies exist but physical soil state absent",
+    "multiple_geomorphic_regimes": "not represented as physical parent classes",
+    "spatial_heterogeneity": "not initialized",
+    "tiling_reproducibility": "not assessable before provider/input binding"
+  }
+}
