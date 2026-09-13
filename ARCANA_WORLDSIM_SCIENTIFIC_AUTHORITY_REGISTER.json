@@ -1,0 +1,1263 @@
+{
+  "record_id": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER",
+  "title": "ARCANA WorldSim Scientific Authority Register",
+  "purpose": "Persistent cross-cutting inventory of existing scientific authority. It is a governance register, not a scientific generator.",
+  "governance_rule": [
+    "Before declaring a scientific authority absent, consult this register.",
+    "Inspect registered producer/provenance and respect its semantic ceiling.",
+    "Perform targeted recovery only when the relevant entry is UNRESOLVED.",
+    "Do not infer absence from ARCANA_WORLD_CURRENT_STATE.md alone."
+  ],
+  "p7q_status": "SUSPENDED_PENDING_REGISTER_REVIEW",
+  "domain_count": 33,
+  "domains": [
+    {
+      "domain_id": "PALEOGEOGRAPHY",
+      "status": "CONFIRMED",
+      "origin_stage": "A1 / D3.2C",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "A1 endpoint reference plus D3.2C adapter",
+      "source_artifacts": [
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json"
+      ],
+      "source_hashes": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": "132f809d94fcf3a7c232a70bcb090c5a28028d7f6995f8aea9e271241b03771d"
+      },
+      "source_presence": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": true,
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": true
+      },
+      "variables": [
+        "age_ma",
+        "land_mask",
+        "plate_code"
+      ],
+      "spatial_support": "90x180 global grid",
+      "temporal_support": "11 endpoints, 210–0 Ma; bracketed transitions",
+      "semantic_meaning": "Endpoint-constrained land/ocean geography.",
+      "SEMANTIC_CEILING": [
+        "land/ocean endpoint state",
+        "derived transition organization"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "lithology",
+        "crustal composition",
+        "parent material"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json"
+      ],
+      "downstream_consumers": [
+        "B6 shoreline adapter",
+        "P7Q if opened"
+      ]
+    },
+    {
+      "domain_id": "PLATE_KINEMATICS",
+      "status": "CONFIRMED",
+      "origin_stage": "A1 / D3.2C",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "A1 plate-code field and D3.2C event reconstruction",
+      "source_artifacts": [
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json",
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": "132f809d94fcf3a7c232a70bcb090c5a28028d7f6995f8aea9e271241b03771d",
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json": "381bc1c311956203dc7a3f779560e36d1ed1542d0c2495087123e21894131959"
+      },
+      "source_presence": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": true,
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": true,
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [
+        "plate_code",
+        "transition event clusters"
+      ],
+      "spatial_support": "90x180 global grid",
+      "temporal_support": "210–0 Ma, 11 endpoints; 10 brackets",
+      "semantic_meaning": "Discrete endpoint-constrained plate/cell identity and paleogeographic organization.",
+      "SEMANTIC_CEILING": [
+        "plate/cell identity",
+        "endpoint-constrained transitions",
+        "210–0 Ma kinematic scaffold"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "formal rotation/topology model",
+        "lithology",
+        "crustal composition",
+        "mineralogy",
+        "parent material"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "P7NC1R",
+        "future conditioned geological gate"
+      ]
+    },
+    {
+      "domain_id": "SHORELINE_LAND_OCEAN",
+      "status": "CONFIRMED",
+      "origin_stage": "A1 / R3.14 / B6-D2C1",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY",
+        "RECOVERED_REPLAY_AUTHORITY"
+      ],
+      "producer_provider": "A1 land mask and canonical shoreline binding",
+      "source_artifacts": [
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+        "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json"
+      ],
+      "source_hashes": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+        "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json": "5e0aae416b1d6c8ce80900c5bb158a71e958c080df51c787f3d896c45be93aae"
+      },
+      "source_presence": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": true,
+        "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json": true
+      },
+      "variables": [
+        "land_mask",
+        "shoreline state"
+      ],
+      "spatial_support": "Global A1 grid; recent binding",
+      "temporal_support": "210–0 Ma endpoints; recent detailed binding",
+      "semantic_meaning": "Land/ocean and shoreline support for governed adapters.",
+      "SEMANTIC_CEILING": [
+        "shoreline/accessibility condition"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical geology",
+        "coastal sediment composition",
+        "parent material"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "B6 hydrology",
+        "P7 parent-material gates"
+      ]
+    },
+    {
+      "domain_id": "CLIMATE",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.14 / A1",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "R3.14 sealed paleoclimate binding",
+      "source_artifacts": [
+        "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz",
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz"
+      ],
+      "source_hashes": {
+        "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f"
+      },
+      "source_presence": {
+        "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz": true,
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": true
+      },
+      "variables": [
+        "temperature_c",
+        "aridity_index"
+      ],
+      "spatial_support": "A1 global grid; R3.14 spatial snapshots",
+      "temporal_support": "A1 210–0 Ma; recent paleoclimate history",
+      "semantic_meaning": "Governed climate and environmental forcing.",
+      "SEMANTIC_CEILING": [
+        "climatic forcing and diagnostics"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "lithology",
+        "physical soil",
+        "freshwater access without hydrology replay"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "B6",
+        "B7"
+      ]
+    },
+    {
+      "domain_id": "PALEOCLIMATE",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.14",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "R3.14 sealed paleoclimate provider binding",
+      "source_artifacts": [
+        "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz"
+      ],
+      "source_hashes": {
+        "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1"
+      },
+      "source_presence": {
+        "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz": true
+      },
+      "variables": [
+        "recent paleoclimate history",
+        "spatial snapshots"
+      ],
+      "spatial_support": "Recent spatial snapshots",
+      "temporal_support": "Late-Cenozoic governed history",
+      "semantic_meaning": "Sealed recent paleoclimate authority.",
+      "SEMANTIC_CEILING": [
+        "recent paleoclimate history"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical NPP",
+        "soil state",
+        "bedrock"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "B6",
+        "P7N/P7NC conditioning"
+      ]
+    },
+    {
+      "domain_id": "HYDROLOGY",
+      "status": "CONFIRMED",
+      "origin_stage": "Original lineage recovered in B6",
+      "authority_class": [
+        "CONFIRMED_ORIGINAL_AUTHORITY",
+        "RECOVERED_REPLAY_AUTHORITY"
+      ],
+      "producer_provider": "Native hydrology generator; B6 canonical replay",
+      "source_artifacts": [
+        "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json",
+        "R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.json"
+      ],
+      "source_hashes": {
+        "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json": "9592be5e4e6e37f21020c9fbebe8a406a3cb4b717e812f5f2413977b60676167",
+        "R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.json": "e28404672f8f6aae54af7544341eb163e5e2266ddff896b115acf36702b4d23a"
+      },
+      "source_presence": {
+        "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json": true,
+        "R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.json": true
+      },
+      "variables": [
+        "paleohydrological dynamics",
+        "replay diagnostics"
+      ],
+      "spatial_support": "Governed ARCANA spatial support",
+      "temporal_support": "B6 replay temporal domain",
+      "semantic_meaning": "Canonical paleohydrological process/replay authority.",
+      "SEMANTIC_CEILING": [
+        "paleohydrological reconstruction"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "soil hydraulic parameters",
+        "geological substrate"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "B6 freshwater",
+        "P7 conditioning"
+      ]
+    },
+    {
+      "domain_id": "PALEOHYDROLOGY",
+      "status": "CONFIRMED",
+      "origin_stage": "R5.17-B6-D3",
+      "authority_class": [
+        "RECOVERED_REPLAY_AUTHORITY"
+      ],
+      "producer_provider": "B6 canonical paleohydrology replay",
+      "source_artifacts": [
+        "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json": "9592be5e4e6e37f21020c9fbebe8a406a3cb4b717e812f5f2413977b60676167"
+      },
+      "source_presence": {
+        "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json": true
+      },
+      "variables": [
+        "paleohydrology fields"
+      ],
+      "spatial_support": "Governed replay grid",
+      "temporal_support": "B6 authorized temporal domain",
+      "semantic_meaning": "Materialized canonical paleohydrology replay.",
+      "SEMANTIC_CEILING": [
+        "replayed hydrological state"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical soil",
+        "lithology"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "FRESHWATER"
+      ]
+    },
+    {
+      "domain_id": "FRESHWATER",
+      "status": "CONFIRMED",
+      "origin_stage": "R5.17-B6-D4",
+      "authority_class": [
+        "LATER_DERIVED_AUTHORITY"
+      ],
+      "producer_provider": "B6 freshwater access/reliability derivation",
+      "source_artifacts": [
+        "R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json": "de6c065ad31b9e0b9405395d62c61f8bbf2ae8e22c39c5e80bbfe7b846940be2"
+      },
+      "source_presence": {
+        "R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json": true
+      },
+      "variables": [
+        "freshwater access",
+        "hydrological reliability"
+      ],
+      "spatial_support": "Governed B6 support grid",
+      "temporal_support": "B6 temporal domain",
+      "semantic_meaning": "Materialized freshwater-support and reliability state.",
+      "SEMANTIC_CEILING": [
+        "freshwater support",
+        "hydrological reliability"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "soil moisture",
+        "Ksat",
+        "physical soil parameters"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "human-support bridge"
+      ]
+    },
+    {
+      "domain_id": "HYDROLOGICAL_HAZARD",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.20",
+      "authority_class": [
+        "CONFIRMED_ORIGINAL_AUTHORITY"
+      ],
+      "producer_provider": "R3.20 CHA-2 hydrological-hazard layer",
+      "source_artifacts": [
+        "local_runs/v0_6D1_R3_20/R3_20_CHA2_YD_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_SUMMARY.json"
+      ],
+      "source_hashes": {
+        "local_runs/v0_6D1_R3_20/R3_20_CHA2_YD_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_SUMMARY.json": "ab5abbe28bccab3df2d18384ff9563e71d82af4d6a59a4e5484ab5c2b5116cab"
+      },
+      "source_presence": {
+        "local_runs/v0_6D1_R3_20/R3_20_CHA2_YD_MAGNITUDE_AND_HYDROLOGICAL_HAZARD_SUMMARY.json": true
+      },
+      "variables": [
+        "hazard indices"
+      ],
+      "spatial_support": "R3.20 local run grid",
+      "temporal_support": "15–11 ka interval",
+      "semantic_meaning": "Diagnostic/ranking hydrological hazard state.",
+      "SEMANTIC_CEILING": [
+        "hazard ranking"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "flood depth",
+        "guaranteed inundation",
+        "freshwater supply"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "FLORA",
+      "status": "CONFIRMED",
+      "origin_stage": "R5.17-B7-A3",
+      "authority_class": [
+        "LATER_DERIVED_AUTHORITY"
+      ],
+      "producer_provider": "B7-A3 plant materialization",
+      "source_artifacts": [
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": "edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157"
+      },
+      "source_presence": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": true
+      },
+      "variables": [
+        "plant trophic materialization"
+      ],
+      "spatial_support": "Governed biological spatial support",
+      "temporal_support": "B7-A3 authorized domain",
+      "semantic_meaning": "Plant ecological/trophic authority.",
+      "SEMANTIC_CEILING": [
+        "plant trophic support"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical NPP",
+        "physical soil"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "B7 food-support work"
+      ]
+    },
+    {
+      "domain_id": "VEGETATION",
+      "status": "CONFIRMED",
+      "origin_stage": "A1 / B7-A3",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY",
+        "LATER_DERIVED_AUTHORITY"
+      ],
+      "producer_provider": "A1 forage fields and B7-A3",
+      "source_artifacts": [
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json"
+      ],
+      "source_hashes": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": "edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157"
+      },
+      "source_presence": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": true,
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": true
+      },
+      "variables": [
+        "browse_forage",
+        "low_forage",
+        "wetland_forage",
+        "total_edible_forage"
+      ],
+      "spatial_support": "90x180 global grid",
+      "temporal_support": "210–0 Ma endpoints; B7 refinement",
+      "semantic_meaning": "Ecological vegetation/forage support.",
+      "SEMANTIC_CEILING": [
+        "ecological/forage support"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical NPP",
+        "soil profile"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "PLANT_ECOLOGY",
+      "status": "CONFIRMED",
+      "origin_stage": "R5.17-B7-A3",
+      "authority_class": [
+        "LATER_DERIVED_AUTHORITY"
+      ],
+      "producer_provider": "B7-A3 plant authority",
+      "source_artifacts": [
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": "edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157"
+      },
+      "source_presence": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": true
+      },
+      "variables": [
+        "plant support state"
+      ],
+      "spatial_support": "Governed biological support",
+      "temporal_support": "B7-A3 domain",
+      "semantic_meaning": "Plant ecological state.",
+      "SEMANTIC_CEILING": [
+        "plant ecological support"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical NPP",
+        "edaphic process state"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "PLANT_TROPHIC_SUPPORT",
+      "status": "CONFIRMED",
+      "origin_stage": "R5.17-B7-A3.1/A3.2",
+      "authority_class": [
+        "LATER_DERIVED_AUTHORITY"
+      ],
+      "producer_provider": "B7-A3 materialization and refinement",
+      "source_artifacts": [
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": "edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157"
+      },
+      "source_presence": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": true
+      },
+      "variables": [
+        "trophic plant support"
+      ],
+      "spatial_support": "Governed biological support",
+      "temporal_support": "B7-A3 domain",
+      "semantic_meaning": "Completed plant trophic materialization/refinement.",
+      "SEMANTIC_CEILING": [
+        "plant trophic resource support"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "animal biomass",
+        "physical NPP",
+        "human harvest"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "FAUNA",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.21 / B7-A3 census",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY",
+        "LATER_DERIVED_AUTHORITY"
+      ],
+      "producer_provider": "R3.21 lineage registry and B7-A3 census",
+      "source_artifacts": [
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json",
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json"
+      ],
+      "source_hashes": {
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf",
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": "edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157"
+      },
+      "source_presence": {
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json": true,
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": true
+      },
+      "variables": [
+        "present lineages",
+        "component census"
+      ],
+      "spatial_support": "Registry rather than full historical range grid",
+      "temporal_support": "Historical closure plus present registry",
+      "semantic_meaning": "Biological/ecological lineage and component authority.",
+      "SEMANTIC_CEILING": [
+        "lineage and component identity"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "exact historical range for every species",
+        "exact historical abundance"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": [
+        "A3F2"
+      ]
+    },
+    {
+      "domain_id": "ANIMAL_ECOLOGY",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.21",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "R3.21 functional phenotype interface",
+      "source_artifacts": [
+        "outputs/v0_6D1_R3_21/R3_21_FUNCTIONAL_PHENOTYPE_FORK_INTERFACE.json"
+      ],
+      "source_hashes": {
+        "outputs/v0_6D1_R3_21/R3_21_FUNCTIONAL_PHENOTYPE_FORK_INTERFACE.json": "353024e423f4e17ba5114e4e806ea71a92004667edeaf2aab3a2006ce4d768f4"
+      },
+      "source_presence": {
+        "outputs/v0_6D1_R3_21/R3_21_FUNCTIONAL_PHENOTYPE_FORK_INTERFACE.json": true
+      },
+      "variables": [
+        "functional phenotype interface"
+      ],
+      "spatial_support": "Registry/interface support",
+      "temporal_support": "R3.21 closure",
+      "semantic_meaning": "Functional/phenotype evidence for extant lineage components.",
+      "SEMANTIC_CEILING": [
+        "ecological/functional traits"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "spatial abundance",
+        "historical range reconstruction"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "BIODIVERSITY",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.21",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "R3.21 present lineage registry",
+      "source_artifacts": [
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json"
+      ],
+      "source_hashes": {
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf"
+      },
+      "source_presence": {
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json": true
+      },
+      "variables": [
+        "lineage registry"
+      ],
+      "spatial_support": "Registry support",
+      "temporal_support": "Present and closure support",
+      "semantic_meaning": "Governed lineage biodiversity inventory.",
+      "SEMANTIC_CEILING": [
+        "lineage existence/identity"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "abundance",
+        "cell occupancy"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "SPECIES_EVOLUTION",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.21",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "R3.21 historical lineage closure",
+      "source_artifacts": [
+        "outputs/v0_6D1_R3_21/R3_21_HISTORICAL_LINEAGE_CLOSURE.json"
+      ],
+      "source_hashes": {
+        "outputs/v0_6D1_R3_21/R3_21_HISTORICAL_LINEAGE_CLOSURE.json": "2dcf79131643ca441fbee6f61939782df94b895533fdb7a3e9b4e2695291b041"
+      },
+      "source_presence": {
+        "outputs/v0_6D1_R3_21/R3_21_HISTORICAL_LINEAGE_CLOSURE.json": true
+      },
+      "variables": [
+        "origination/termination closure"
+      ],
+      "spatial_support": "Lineage registry support",
+      "temporal_support": "Historical lineage intervals",
+      "semantic_meaning": "Lineage temporal continuity authority.",
+      "SEMANTIC_CEILING": [
+        "existence intervals"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "range",
+        "population size"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "SPECIES_REGISTRY",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.21",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "R3.21 present component registry",
+      "source_artifacts": [
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json",
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_COMPONENT_REGISTRY.json"
+      ],
+      "source_hashes": {
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json": "0eb43167347f0b691ee703ecc5ab1bc477f26f785b26b7f47a468a7eb9b848cf",
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_COMPONENT_REGISTRY.json": "dd81003c64c4332458bc131a162b48a4e35df85c44b9636f914979e9c1edec6f"
+      },
+      "source_presence": {
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_LINEAGE_REGISTRY.json": true,
+        "outputs/v0_6D1_R3_21/R3_21_PRESENT_COMPONENT_REGISTRY.json": true
+      },
+      "variables": [
+        "species",
+        "components"
+      ],
+      "spatial_support": "Registry support",
+      "temporal_support": "Present endpoint plus historical closure",
+      "semantic_meaning": "Species/component identity registry.",
+      "SEMANTIC_CEILING": [
+        "identity continuity"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "historical occupancy",
+        "abundance"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "NPP_PRODUCTIVITY",
+      "status": "PROXY_ONLY",
+      "origin_stage": "A1 / P4",
+      "authority_class": [
+        "DERIVED_PROXY_ONLY"
+      ],
+      "producer_provider": "A1 normalized forage/NPP proxy",
+      "source_artifacts": [
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+        "R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+        "R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.json": "0ac4ab015dbd6f46259cc85e9a758573aa13822dfe9e6e9fa1a62697ab627e7f"
+      },
+      "source_presence": {
+        "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz": true,
+        "R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [
+        "normalized NPP proxy"
+      ],
+      "spatial_support": "A1 90x180 grid",
+      "temporal_support": "A1 endpoints",
+      "semantic_meaning": "Normalized productivity proxy only.",
+      "SEMANTIC_CEILING": [
+        "relative/normalized productivity proxy"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical NPP",
+        "mass/area/time NPP",
+        "BIOME4 production output"
+      ],
+      "current_reuse_status": "DO_NOT_REUSE_AS_PHYSICAL_NPP",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "GEOLOGY",
+      "status": "ABSENT",
+      "origin_stage": "P7AR / P7NC1R",
+      "authority_class": [
+        "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
+      ],
+      "producer_provider": "Targeted authority recovery",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json",
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": "a8962e89908c591f8bd52a7339291a81a5c2ed32fc2db20752956e5a326a3b48",
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json": "381bc1c311956203dc7a3f779560e36d1ed1542d0c2495087123e21894131959"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": true,
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [],
+      "spatial_support": "None recovered",
+      "temporal_support": "None recovered",
+      "semantic_meaning": "No governed physical geology authority was recovered.",
+      "SEMANTIC_CEILING": [],
+      "DOES_NOT_SUPPORT": [
+        "lithology",
+        "geological province",
+        "crustal state",
+        "parent material"
+      ],
+      "current_reuse_status": "TARGETED_RECOVERY_COMPLETE",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "LITHOLOGY",
+      "status": "ABSENT",
+      "origin_stage": "P7AR",
+      "authority_class": [
+        "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
+      ],
+      "producer_provider": "P7AR targeted recovery",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": "a8962e89908c591f8bd52a7339291a81a5c2ed32fc2db20752956e5a326a3b48"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [],
+      "spatial_support": "None",
+      "temporal_support": "None",
+      "semantic_meaning": "No governed lithology occurrence authority.",
+      "SEMANTIC_CEILING": [],
+      "DOES_NOT_SUPPORT": [
+        "bedrock lithology",
+        "mineralogy",
+        "grain-size"
+      ],
+      "current_reuse_status": "TARGETED_RECOVERY_COMPLETE",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "CRUSTAL_STATE",
+      "status": "UNRESOLVED",
+      "origin_stage": "P7NC1R",
+      "authority_class": [
+        "UNRESOLVED"
+      ],
+      "producer_provider": "P7NC1R legacy tectonic recovery",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json": "381bc1c311956203dc7a3f779560e36d1ed1542d0c2495087123e21894131959"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [
+        "plate_code only"
+      ],
+      "spatial_support": "Endpoint grid identity only",
+      "temporal_support": "210–0 Ma endpoints",
+      "semantic_meaning": "Kinematic constraint exists; crustal composition/domain authority was not recovered.",
+      "SEMANTIC_CEILING": [
+        "kinematic conditioning only"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "crustal composition",
+        "crustal domain state"
+      ],
+      "current_reuse_status": "TARGETED_RECOVERY_COMPLETE",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "PARENT_MATERIAL",
+      "status": "ABSENT",
+      "origin_stage": "P7AR",
+      "authority_class": [
+        "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
+      ],
+      "producer_provider": "P7AR targeted recovery",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": "a8962e89908c591f8bd52a7339291a81a5c2ed32fc2db20752956e5a326a3b48"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [],
+      "spatial_support": "None",
+      "temporal_support": "None",
+      "semantic_meaning": "Physical parent-material authority absent after exhaustive recovery.",
+      "SEMANTIC_CEILING": [],
+      "DOES_NOT_SUPPORT": [
+        "texture",
+        "regolith depth",
+        "bulk density",
+        "mineralogy",
+        "vertical profile"
+      ],
+      "current_reuse_status": "TARGETED_RECOVERY_COMPLETE",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "REGOLITH",
+      "status": "ABSENT",
+      "origin_stage": "P7AR / P7G",
+      "authority_class": [
+        "ABSENT_AFTER_EXHAUSTIVE_RECOVERY"
+      ],
+      "producer_provider": "P7AR recovery and P7G adjudication",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json",
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": "a8962e89908c591f8bd52a7339291a81a5c2ed32fc2db20752956e5a326a3b48",
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json": "964e4c08610be705a6ec7d44c79e17f2d0a75da8ea6a0a30c35ec126c01df431"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": true,
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json": true
+      },
+      "variables": [],
+      "spatial_support": "None",
+      "temporal_support": "None",
+      "semantic_meaning": "No regolith depth or physical profile authority.",
+      "SEMANTIC_CEILING": [],
+      "DOES_NOT_SUPPORT": [
+        "regolith depth",
+        "vertical profile",
+        "bulk density"
+      ],
+      "current_reuse_status": "TARGETED_RECOVERY_COMPLETE",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "SOIL_PHYSICAL",
+      "status": "ABSENT",
+      "origin_stage": "P7S",
+      "authority_class": [
+        "NOT_MATERIALIZED"
+      ],
+      "producer_provider": "P7S physical-soil authority gate",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7S_PHYSICAL_SOIL_AND_PEDOTRANSFER_AUTHORITY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7S_PHYSICAL_SOIL_AND_PEDOTRANSFER_AUTHORITY.json": "0e88e1840316c3c0bec98e8a9b0de04fcc2d2ed765d4c034da3b67f241efb9b5"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7S_PHYSICAL_SOIL_AND_PEDOTRANSFER_AUTHORITY.json": true
+      },
+      "variables": [],
+      "spatial_support": "None",
+      "temporal_support": "None",
+      "semantic_meaning": "No physical soil/pedotransfer input authority.",
+      "SEMANTIC_CEILING": [],
+      "DOES_NOT_SUPPORT": [
+        "texture",
+        "porosity",
+        "bulk density",
+        "hydraulic properties"
+      ],
+      "current_reuse_status": "TARGETED_RECOVERY_COMPLETE",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "SOIL_CARBON",
+      "status": "PROXY_ONLY",
+      "origin_stage": "P7AR",
+      "authority_class": [
+        "DERIVED_PROXY_ONLY"
+      ],
+      "producer_provider": "ARCANA weathering/carbon proxy lineage",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": "a8962e89908c591f8bd52a7339291a81a5c2ed32fc2db20752956e5a326a3b48"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [
+        "weathering/carbon proxy"
+      ],
+      "spatial_support": "As documented in P7AR",
+      "temporal_support": "As documented in P7AR",
+      "semantic_meaning": "Proxy/process state, not physical soil carbon.",
+      "SEMANTIC_CEILING": [
+        "proxy/process conditioning"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical soil carbon stock",
+        "soil profile"
+      ],
+      "current_reuse_status": "DO_NOT_REUSE_AS_PHYSICAL_SOIL",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "WEATHERING",
+      "status": "PROXY_ONLY",
+      "origin_stage": "P7AR",
+      "authority_class": [
+        "DERIVED_PROXY_ONLY"
+      ],
+      "producer_provider": "ARCANA weathering state",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": "a8962e89908c591f8bd52a7339291a81a5c2ed32fc2db20752956e5a326a3b48"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json": true
+      },
+      "variables": [
+        "WEATHERING_STATE"
+      ],
+      "spatial_support": "As documented in P7AR",
+      "temporal_support": "As documented in P7AR",
+      "semantic_meaning": "Weathering state is proxy-only.",
+      "SEMANTIC_CEILING": [
+        "process/proxy signal"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "lithology",
+        "parent material",
+        "mineralogy"
+      ],
+      "current_reuse_status": "DO_NOT_REUSE_AS_GEOLOGY",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "BARRIERS",
+      "status": "CONFIRMED",
+      "origin_stage": "D3.2C",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "D3.2C barrier-history adapter",
+      "source_artifacts": [
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json"
+      ],
+      "source_hashes": {
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": "132f809d94fcf3a7c232a70bcb090c5a28028d7f6995f8aea9e271241b03771d"
+      },
+      "source_presence": {
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": true
+      },
+      "variables": [
+        "land/ocean transition clusters"
+      ],
+      "spatial_support": "90x180 global grid",
+      "temporal_support": "210–0 Ma bracketed history",
+      "semantic_meaning": "Endpoint-constrained barrier history.",
+      "SEMANTIC_CEILING": [
+        "barrier/topology transitions"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "geological provinces",
+        "material transport provenance"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "CONNECTIVITY",
+      "status": "CONFIRMED",
+      "origin_stage": "D3.2C",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "D3.2C paleogeographic connectivity scaffold",
+      "source_artifacts": [
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json"
+      ],
+      "source_hashes": {
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": "132f809d94fcf3a7c232a70bcb090c5a28028d7f6995f8aea9e271241b03771d"
+      },
+      "source_presence": {
+        "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json": true
+      },
+      "variables": [
+        "transition clusters",
+        "plate/cell identity"
+      ],
+      "spatial_support": "90x180 global grid",
+      "temporal_support": "210–0 Ma bracketed history",
+      "semantic_meaning": "Paleogeographic connectivity scaffold only.",
+      "SEMANTIC_CEILING": [
+        "geographic connectivity conditioning"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "genetic connectivity output",
+        "species dispersal realization"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "MARINE_AQUATIC_STATE",
+      "status": "NOT_MATERIALIZED",
+      "origin_stage": "B7 governance",
+      "authority_class": [
+        "NOT_MATERIALIZED"
+      ],
+      "producer_provider": "B7 authority census",
+      "source_artifacts": [
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": "edbfabddbd8e0fb0813b8a659df785acbc6fd50a3e865ea2cc9bb1c95b43b157"
+      },
+      "source_presence": {
+        "R5_17_B7_A3_PLANT_MATERIALIZATION_AND_WILD_FAUNA_AUTHORITY_CENSUS.json": true
+      },
+      "variables": [],
+      "spatial_support": "None",
+      "temporal_support": "None",
+      "semantic_meaning": "Aquatic/marine resource support has not been materialized.",
+      "SEMANTIC_CEILING": [],
+      "DOES_NOT_SUPPORT": [
+        "marine/aquatic biological resource support"
+      ],
+      "current_reuse_status": "DO_NOT_INFER",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "TOPOGRAPHY",
+      "status": "CONFIRMED",
+      "origin_stage": "ARCANA terrain lineage; P7G inventory",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "ARCANA elevation/topography state",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json": "964e4c08610be705a6ec7d44c79e17f2d0a75da8ea6a0a30c35ec126c01df431"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json": true
+      },
+      "variables": [
+        "elevation/topography"
+      ],
+      "spatial_support": "Governed terrain support as documented by P7G",
+      "temporal_support": "Applicable inherited snapshot domain",
+      "semantic_meaning": "Topographic conditioning state.",
+      "SEMANTIC_CEILING": [
+        "elevation/topography conditioning"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "lithology",
+        "bedrock",
+        "soil physical state"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "RELIEF",
+      "status": "CONFIRMED",
+      "origin_stage": "ARCANA terrain lineage; P7G inventory",
+      "authority_class": [
+        "CONFIRMED_LEGACY_AUTHORITY"
+      ],
+      "producer_provider": "ARCANA elevation/topography state",
+      "source_artifacts": [
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json"
+      ],
+      "source_hashes": {
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json": "964e4c08610be705a6ec7d44c79e17f2d0a75da8ea6a0a30c35ec126c01df431"
+      },
+      "source_presence": {
+        "R5_17_B7_A3F2_P7G_PEDOGENESIS_PARENT_MATERIAL_PROVIDER.json": true
+      },
+      "variables": [
+        "relief/elevation conditioning"
+      ],
+      "spatial_support": "Governed terrain support as documented by P7G",
+      "temporal_support": "Applicable inherited snapshot domain",
+      "semantic_meaning": "Terrain-relief conditioning state.",
+      "SEMANTIC_CEILING": [
+        "terrain conditioning"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "lithology",
+        "regolith",
+        "soil profile"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    },
+    {
+      "domain_id": "ENVIRONMENTAL_INTEGRALS",
+      "status": "CONFIRMED",
+      "origin_stage": "R3.18",
+      "authority_class": [
+        "CONFIRMED_ORIGINAL_AUTHORITY"
+      ],
+      "producer_provider": "R3.18 exposure-completion transport-phase authority",
+      "source_artifacts": [
+        "local_runs/v0_6D1_R3_18/R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json"
+      ],
+      "source_hashes": {
+        "local_runs/v0_6D1_R3_18/R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json": "189007565f3f70c89b73e71bb4c23e9339bb392c550408a08b0d43c60f71317a"
+      },
+      "source_presence": {
+        "local_runs/v0_6D1_R3_18/R3_18_RECENT_EXPOSURE_COMPLETION_SUMMARY.json": true
+      },
+      "variables": [
+        "integrated exposure fields",
+        "transport phases"
+      ],
+      "spatial_support": "Recent R3.18 support",
+      "temporal_support": "125 ka–0",
+      "semantic_meaning": "Integrated environmental exposures.",
+      "SEMANTIC_CEILING": [
+        "environmental exposure integrals"
+      ],
+      "DOES_NOT_SUPPORT": [
+        "physical population",
+        "carrying capacity",
+        "soil or geology"
+      ],
+      "current_reuse_status": "REUSE_CANONICAL_ARCANA",
+      "superseded_by": null,
+      "adjudicated_by": [],
+      "downstream_consumers": []
+    }
+  ],
+  "governance": {
+    "new_science_created": false,
+    "provider_selection_reopened": false,
+    "missing_state_inferred": false,
+    "current_state_modified": false,
+    "canonical_mutation": false
+  }
+}

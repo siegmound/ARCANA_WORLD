@@ -1,0 +1,597 @@
+{
+  "record_id": "R5.17-B7-A3F2-P7NC1R",
+  "title": "Legacy Geologic / Tectonic Authority Recovery",
+  "p7nc1_parent_decision": "BLOCKED_SOURCE_MATERIAL_PRIOR_CAUSALITY",
+  "recovered_a1_authority": {
+    "path": "references\\v0_6D1_R3\\FULL_A1_REFERENCE_210_0Ma.npz",
+    "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+    "ages_ma": [
+      210.0,
+      180.0,
+      150.0,
+      140.0,
+      130.0,
+      120.0,
+      90.0,
+      66.0,
+      60.0,
+      30.0,
+      0.0
+    ],
+    "grid_shape": [
+      90,
+      180
+    ],
+    "schema": {
+      "age_ma": {
+        "shape": [
+          11
+        ],
+        "dtype": "float32"
+      },
+      "lat": {
+        "shape": [
+          90
+        ],
+        "dtype": "float32"
+      },
+      "lon": {
+        "shape": [
+          180
+        ],
+        "dtype": "float32"
+      },
+      "plate_code": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "uint8"
+      },
+      "land_mask": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "uint8"
+      },
+      "temperature_c": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "aridity_index": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "browse_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "low_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "wetland_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "total_edible_forage": {
+        "shape": [
+          11,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "population": {
+        "shape": [
+          11,
+          6,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "carrying_capacity": {
+        "shape": [
+          11,
+          6,
+          90,
+          180
+        ],
+        "dtype": "float32"
+      }
+    },
+    "plate_code_unique_by_frame": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    ],
+    "land_cell_count_by_frame": [
+      3616,
+      3365,
+      3772,
+      4213,
+      4251,
+      3988,
+      4154,
+      4147,
+      4151,
+      4199,
+      4130
+    ],
+    "plate_persistence_diagnostics": [
+      {
+        "older_ma": 210.0,
+        "younger_ma": 180.0,
+        "shared_land_cells": 2825,
+        "same_plate_code_fraction": 0.9692035398230089
+      },
+      {
+        "older_ma": 180.0,
+        "younger_ma": 150.0,
+        "shared_land_cells": 2659,
+        "same_plate_code_fraction": 0.9533659270402407
+      },
+      {
+        "older_ma": 150.0,
+        "younger_ma": 140.0,
+        "shared_land_cells": 3463,
+        "same_plate_code_fraction": 0.9948021946289345
+      },
+      {
+        "older_ma": 140.0,
+        "younger_ma": 130.0,
+        "shared_land_cells": 3760,
+        "same_plate_code_fraction": 0.9946808510638298
+      },
+      {
+        "older_ma": 130.0,
+        "younger_ma": 120.0,
+        "shared_land_cells": 3661,
+        "same_plate_code_fraction": 0.9978148046981699
+      },
+      {
+        "older_ma": 120.0,
+        "younger_ma": 90.0,
+        "shared_land_cells": 2939,
+        "same_plate_code_fraction": 0.9823069071112623
+      },
+      {
+        "older_ma": 90.0,
+        "younger_ma": 66.0,
+        "shared_land_cells": 3474,
+        "same_plate_code_fraction": 0.9827288428324698
+      },
+      {
+        "older_ma": 66.0,
+        "younger_ma": 60.0,
+        "shared_land_cells": 3976,
+        "same_plate_code_fraction": 0.9927062374245473
+      },
+      {
+        "older_ma": 60.0,
+        "younger_ma": 30.0,
+        "shared_land_cells": 3652,
+        "same_plate_code_fraction": 0.9838444687842278
+      },
+      {
+        "older_ma": 30.0,
+        "younger_ma": 0.0,
+        "shared_land_cells": 3521,
+        "same_plate_code_fraction": 0.9755751207043454
+      }
+    ]
+  },
+  "full_a1_schema": {
+    "age_ma": {
+      "shape": [
+        11
+      ],
+      "dtype": "float32"
+    },
+    "lat": {
+      "shape": [
+        90
+      ],
+      "dtype": "float32"
+    },
+    "lon": {
+      "shape": [
+        180
+      ],
+      "dtype": "float32"
+    },
+    "plate_code": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "uint8"
+    },
+    "land_mask": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "uint8"
+    },
+    "temperature_c": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    },
+    "aridity_index": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    },
+    "browse_forage": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    },
+    "low_forage": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    },
+    "wetland_forage": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    },
+    "total_edible_forage": {
+      "shape": [
+        11,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    },
+    "population": {
+      "shape": [
+        11,
+        6,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    },
+    "carrying_capacity": {
+      "shape": [
+        11,
+        6,
+        90,
+        180
+      ],
+      "dtype": "float32"
+    }
+  },
+  "plate_code_semantics": "Discrete endpoint-constrained plate/region identity used for paleogeographic event ordering; no encoded lithology or formal rotation/topology model was recovered.",
+  "plate_identity_persistence": {
+    "classification": "COHERENT_DISCRETE_ENDPOINT_SCAFFOLD",
+    "diagnostics": [
+      {
+        "older_ma": 210.0,
+        "younger_ma": 180.0,
+        "shared_land_cells": 2825,
+        "same_plate_code_fraction": 0.9692035398230089
+      },
+      {
+        "older_ma": 180.0,
+        "younger_ma": 150.0,
+        "shared_land_cells": 2659,
+        "same_plate_code_fraction": 0.9533659270402407
+      },
+      {
+        "older_ma": 150.0,
+        "younger_ma": 140.0,
+        "shared_land_cells": 3463,
+        "same_plate_code_fraction": 0.9948021946289345
+      },
+      {
+        "older_ma": 140.0,
+        "younger_ma": 130.0,
+        "shared_land_cells": 3760,
+        "same_plate_code_fraction": 0.9946808510638298
+      },
+      {
+        "older_ma": 130.0,
+        "younger_ma": 120.0,
+        "shared_land_cells": 3661,
+        "same_plate_code_fraction": 0.9978148046981699
+      },
+      {
+        "older_ma": 120.0,
+        "younger_ma": 90.0,
+        "shared_land_cells": 2939,
+        "same_plate_code_fraction": 0.9823069071112623
+      },
+      {
+        "older_ma": 90.0,
+        "younger_ma": 66.0,
+        "shared_land_cells": 3474,
+        "same_plate_code_fraction": 0.9827288428324698
+      },
+      {
+        "older_ma": 66.0,
+        "younger_ma": 60.0,
+        "shared_land_cells": 3976,
+        "same_plate_code_fraction": 0.9927062374245473
+      },
+      {
+        "older_ma": 60.0,
+        "younger_ma": 30.0,
+        "shared_land_cells": 3652,
+        "same_plate_code_fraction": 0.9838444687842278
+      },
+      {
+        "older_ma": 30.0,
+        "younger_ma": 0.0,
+        "shared_land_cells": 3521,
+        "same_plate_code_fraction": 0.9755751207043454
+      }
+    ],
+    "limitation": "Persistence is diagnostic only; a codebook or plate-rotation authority is not encoded in this NPZ."
+  },
+  "d32c_event_semantics": {
+    "path": "outputs\\v0_6D1_R3\\PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json",
+    "sha256": "132f809d94fcf3a7c232a70bcb090c5a28028d7f6995f8aea9e271241b03771d",
+    "status": "PASS_MULTI_BRACKET_D3_2C_BARRIER_HISTORY_BINDING_CANDIDATE",
+    "bracket_count": 10,
+    "event_cluster_count": 801,
+    "grid": [
+      90,
+      180
+    ],
+    "first_bracket_event_cluster_count": 69,
+    "semantic_status": "DERIVED_ENDPOINT_CONSTRAINED_EVENT_CLUSTER_NOT_INDEPENDENT_GEOLOGICAL_OBSERVATION",
+    "interpretation": "D3.2C groups endpoint land/ocean transitions and schedules derived event clusters; it is not a lithology, crust, basin, or provenance authority."
+  },
+  "historical_transport_artifact_status": {
+    "target": "outputs/v0_3/DEEP_GEOLOGICAL_TRANSPORT_KEYFRAMES_210_0Ma_v0_3.npz",
+    "current_present": false,
+    "historical_file_confirmed": false,
+    "sha256": null,
+    "status": "ARTIFACT_REFERENCED_ONLY__NO_HASH_OR_BLOB_CONFIRMED",
+    "scope": "Targeted recovery; no broad corpus scan and no checkout/restore."
+  },
+  "historical_transport_schema": {
+    "status": "UNRECOVERED",
+    "schema": null
+  },
+  "historical_transport_provenance": {
+    "status": "UNCONFIRMED",
+    "producer": null,
+    "source_commit": null
+  },
+  "producer_lineage": {
+    "a1": "R3.21 endpoint/reference lineage",
+    "d32c": "D3.2C paleogeographic event catalogue",
+    "exact_210_to_0_transport": "not confirmed in current evidence"
+  },
+  "execution_index_evidence": {
+    "A1": "FULL_A1_REFERENCE_210_0Ma.npz is present and hashable",
+    "D3.2C": "PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json is present and hashable",
+    "exact_transport": "no exact indexed match recovered"
+  },
+  "manifest_evidence": {
+    "exact_transport": "no exact manifest match recovered"
+  },
+  "git_history_evidence": {
+    "exact_path_history": "no exact path history match",
+    "name_reference": "DEEP_GEOLOGICAL_TRANSPORT string observed in historical source context; no exact NPZ blob confirmed",
+    "mutation": false
+  },
+  "seven_state_authority_matrix": {
+    "surface_geological_province_identity": "PALEOGEOGRAPHIC_CONSTRAINT_ONLY",
+    "crustal_domain_state": "KINEMATIC_CONSTRAINT_ONLY",
+    "magmatic_volcanic_province": "ABSENT_AFTER_TARGETED_RECOVERY",
+    "sedimentary_basin_province": "ABSENT_AFTER_TARGETED_RECOVERY",
+    "orogenic_metamorphic_state": "ABSENT_AFTER_TARGETED_RECOVERY",
+    "formation_exposure_persistence": "PARTIAL_EXISTING_AUTHORITY",
+    "source_to_sediment_provenance_linkage": "ABSENT_AFTER_TARGETED_RECOVERY"
+  },
+  "kinematic_causal_value": "KINEMATIC_STATE_PARTIALLY_SUFFICIENT",
+  "conditional_geology_viability": "CONDITIONALLY_VIABLE_WITH_NEW_GEOLOGICAL_PROVINCE_STATE",
+  "p7nc1_correction_assessment": "P7NC1 blocker is narrowed: A1/D3.2C recover a paleogeographic/kinematic scaffold, while source-material geological causality remains unresolved. P7NC1 was not edited.",
+  "primary_decision": "CONFIRMED_ONLY_PALEOGEOGRAPHIC_KINEMATIC_AUTHORITY",
+  "recommended_next_operation": "R5.17-B7-A3F2-P7Q_TARGETED_SYNTHETIC_GEOLOGIC_CAUSALITY_GATE",
+  "governance": {
+    "targeted_authority_recovery": true,
+    "scientific_run": false,
+    "parent_material_materialized": false,
+    "abundance_materialized": false,
+    "k_x_t_materialized": false,
+    "human_management_used": false,
+    "population_target_used": false,
+    "canonical_mutation": false,
+    "p7q_opened": false,
+    "exact_transport_recovered": false
+  }
+}
