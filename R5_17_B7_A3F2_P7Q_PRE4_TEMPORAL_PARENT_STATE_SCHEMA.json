@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arcana.invalid/schema/ARCANA_P7Q_TEMPORAL_PARENT_STATE_SCHEMA_V1",
+  "title": "ARCANA P7Q temporal parent-state record",
+  "description": "Design-only contract; contains no materialized cells or scientific values.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "cell_id", "age_ka", "snapshot_index", "land_state", "material_branch", "material_class", "genetic_class", "state_support", "temporal_rule", "formation_interval", "applicability", "source_provenance", "depth_state", "texture_state", "profile_state", "uncertainty", "conflict_flags", "missing_fields", "transition_provenance", "validation_status"],
+  "properties": {
+    "schema_version": {"const": "ARCANA_P7Q_TEMPORAL_PARENT_STATE_SCHEMA_V1"},
+    "cell_id": {"type": "string", "minLength": 1},
+    "age_ka": {"type": "number", "enum": [200, 125, 120, 20, 15, 14, 13, 12, 11, 10, 5, 0]},
+    "snapshot_index": {"type": "integer", "minimum": 0, "maximum": 11},
+    "land_state": {"enum": ["LAND", "OCEAN", "COASTAL_TRANSITION", "INLAND_WATER", "ICE_OR_CRYOSPHERE", "UNKNOWN_LAND_STATE"]},
+    "material_branch": {"enum": ["BEDROCK_EXPOSED", "RESIDUAL_REGOLITH", "SAPROLITE_OR_DEEP_WEATHERING", "TRANSPORTED_ALLUVIAL", "TRANSPORTED_COLLUVIAL", "TRANSPORTED_AEOLIAN", "GLACIAL_OR_GLACIOFLUVIAL", "LACUSTRINE", "COASTAL", "MARINE_DERIVED_EXPOSED", "ORGANIC", "EVAPORITIC", "PYROCLASTIC", "ANTHROPOGENIC", "UNKNOWN_MATERIAL", "OUTSIDE_SCOPE"]},
+    "material_class": {"type": "object", "required": ["value", "support_status"], "additionalProperties": false, "properties": {"value": {"type": "string"}, "support_status": {"type": "string"}}},
+    "genetic_class": {"type": ["string", "null"]},
+    "state_support": {"enum": ["DIRECT_SUPPORTED", "DERIVED_SUPPORTED", "CALIBRATED_SUPPORTED", "ELIGIBILITY_ONLY", "AGE_CONSTRAINED", "QUASI_STATIC_ASSUMPTION", "CONFLICTING_SOURCES", "MISSING_SOURCE", "OUTSIDE_SOURCE_COVERAGE", "SEMANTICALLY_UNSUPPORTED", "TEMPORALLY_UNSUPPORTED", "UNKNOWN", "OUTSIDE_SCOPE"]},
+    "temporal_rule": {"enum": ["QUASI_STATIC", "AGE_GATED", "EVENT_CONDITIONED", "DRIVER_ELIGIBILITY", "REDUCED_PROCESS_DERIVED", "ENDPOINT_CONSTRAINED", "UNKNOWN_TEMPORAL_RULE", "OUTSIDE_SCOPE"]},
+    "formation_interval": {"$ref": "#/$defs/interval"},
+    "applicability": {"type": "object", "required": ["snapshot_applicability", "persistence_status"], "additionalProperties": false, "properties": {"valid_from_ka": {"type": ["number", "null"]}, "valid_to_ka": {"type": ["number", "null"]}, "formation_min_ka": {"type": ["number", "null"]}, "formation_max_ka": {"type": ["number", "null"]}, "termination_min_ka": {"type": ["number", "null"]}, "termination_max_ka": {"type": ["number", "null"]}, "age_evidence_status": {"type": "string"}, "persistence_status": {"enum": ["PROVEN", "NOT_PROVEN", "UNKNOWN", "NOT_APPLICABLE"]}, "snapshot_applicability": {"enum": ["APPLIES", "DOES_NOT_APPLY", "UNKNOWN"]}}},
+    "source_provenance": {"type": "array", "items": {"$ref": "#/$defs/provenance"}},
+    "depth_state": {"$ref": "#/$defs/state_component"},
+    "texture_state": {"$ref": "#/$defs/state_component"},
+    "profile_state": {"type": "object", "required": ["support_status", "profile_kind", "layers"], "additionalProperties": false, "properties": {"support_status": {"type": "string"}, "profile_kind": {"enum": ["EXTERNAL_PROFILE", "INITIAL_PROFILE", "PROCESS_GENERATED_PROFILE", "LAYERED_DEPTH_ONLY", "UNKNOWN_PROFILE"]}, "layers": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["top_depth", "bottom_depth", "material_class", "texture_state", "density_state", "coarse_fragment_state", "source_provenance", "uncertainty"], "properties": {"top_depth": {}, "bottom_depth": {}, "material_class": {}, "texture_state": {}, "density_state": {}, "coarse_fragment_state": {}, "source_provenance": {}, "uncertainty": {}}}}}},
+    "uncertainty": {"type": "object", "required": ["categories", "representation"], "additionalProperties": false, "properties": {"categories": {"type": "array", "items": {"enum": ["SOURCE_CLASS_UNCERTAINTY", "SPATIAL_REMAP_UNCERTAINTY", "TEMPORAL_AGE_UNCERTAINTY", "PROCESS_PARAMETER_UNCERTAINTY", "MISSING_FORCING_UNCERTAINTY", "MODEL_STRUCTURAL_UNCERTAINTY", "DATASET_CONFLICT", "UNRESOLVED_HISTORY", "UNKNOWN_SOURCE_COMPLETENESS"]}}, "representation": {"enum": ["QUALITATIVE", "INTERVAL", "SOURCE_PROVIDED_NUMERIC", "ENSEMBLE_DERIVED", "UNKNOWN"]}, "derivation": {"type": "string"}}},
+    "conflict_flags": {"type": "array", "items": {"enum": ["MATERIAL_CLASS_CONFLICT", "THICKNESS_CLASS_CONFLICT", "LAND_MASK_CONFLICT", "TEMPORAL_CONFLICT", "AGE_CONFLICT", "SOURCE_COVERAGE_CONFLICT", "SEMANTIC_CONFLICT", "PROFILE_CONFLICT", "TEXTURE_CONFLICT", "DRIVER_CONFLICT"]}},
+    "missing_fields": {"type": "array", "items": {"type": "string"}},
+    "transition_provenance": {"type": "array", "items": {"$ref": "#/$defs/provenance"}},
+    "validation_status": {"enum": ["NOT_RUN", "PASS", "FAIL", "BLOCKED"]}
+  },
+  "$defs": {"interval": {"type": "object", "required": ["status"], "additionalProperties": false, "properties": {"status": {"enum": ["KNOWN", "UNKNOWN", "NOT_APPLICABLE"]}, "min_ka": {"type": ["number", "null"]}, "max_ka": {"type": ["number", "null"]}, "evidence_status": {"type": "string"}}}, "provenance": {"type": "object", "required": ["source_id", "source_type", "source_artifact", "source_version", "source_doi_or_reference", "source_hash_if_acquired", "source_native_resolution", "source_semantic_role", "adapter_id", "adapter_version", "input_state_ids", "authority_class", "semantic_ceiling", "acquisition_status"], "additionalProperties": false, "properties": {"source_id": {"type": "string"}, "source_type": {"type": "string"}, "source_artifact": {"type": "string"}, "source_version": {"type": "string"}, "source_doi_or_reference": {"type": "string"}, "source_hash_if_acquired": {"type": "string"}, "source_native_resolution": {"type": "string"}, "source_semantic_role": {"type": "string"}, "adapter_id": {"type": "string"}, "adapter_version": {"type": "string"}, "input_state_ids": {"type": "array", "items": {"type": "string"}}, "authority_class": {"type": "string"}, "semantic_ceiling": {"type": "string"}, "acquisition_status": {"enum": ["ACQUIRED", "NOT_ACQUIRED", "UNAVAILABLE"]}}}, "state_component": {"type": "object", "required": ["support_status", "value_status", "temporal_status", "uncertainty"], "additionalProperties": false, "properties": {"support_status": {"type": "string"}, "value_status": {"enum": ["KNOWN", "KNOWN_ZERO", "UNKNOWN", "NOT_APPLICABLE"]}, "temporal_status": {"type": "string"}, "uncertainty": {"type": "object"}}}}
+}

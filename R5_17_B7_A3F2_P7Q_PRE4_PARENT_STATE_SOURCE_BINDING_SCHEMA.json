@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arcana.invalid/schema/ARCANA_P7Q_PARENT_STATE_SOURCE_BINDING_SCHEMA_V1",
+  "title": "ARCANA P7Q parent-state source binding manifest",
+  "description": "Acquisition/binding contract only; PRE4 contains no populated source bindings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "acquisition_policy", "bindings"],
+  "properties": {
+    "schema_version": {"const": "ARCANA_P7Q_PARENT_STATE_SOURCE_BINDING_SCHEMA_V1"},
+    "acquisition_policy": {"enum": ["NOT_ACQUIRED_BY_PRE4", "BOUNDED_FUTURE_PRE5_ONLY"]},
+    "bindings": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["provider_id", "dataset_name", "dataset_version", "doi_or_reference", "official_source", "license", "artifact_identity", "format", "crs", "resolution", "temporal_semantics", "semantic_role", "coverage_semantics", "nodata_semantics", "checksum_status", "acquisition_status", "binding_status", "validation_status"], "properties": {"provider_id": {"type": "string"}, "dataset_name": {"type": "string"}, "dataset_version": {"type": "string"}, "doi_or_reference": {"type": "string"}, "official_source": {"type": "string"}, "license": {"type": "string"}, "artifact_identity": {"type": "string"}, "format": {"type": "string"}, "crs": {"type": "string"}, "resolution": {"type": "string"}, "temporal_semantics": {"type": "string"}, "semantic_role": {"type": "string"}, "coverage_semantics": {"type": "string"}, "nodata_semantics": {"type": "string"}, "checksum_status": {"enum": ["NOT_ACQUIRED", "VERIFIED", "MISSING", "DRIFT"]}, "acquisition_status": {"enum": ["NOT_ACQUIRED", "ACQUIRED", "UNAVAILABLE"]}, "binding_status": {"enum": ["NOT_BOUND", "BOUND", "BLOCKED"]}, "validation_status": {"enum": ["NOT_RUN", "PASS", "FAIL", "BLOCKED"]}, "source_hash_if_acquired": {"type": "string"}, "adapter_id": {"type": "string"}, "adapter_version": {"type": "string"}}}}
+  }
+}
