@@ -1,0 +1,321 @@
+{
+  "build": {
+    "compatibility_patch_applied": true,
+    "compatibility_patch_scope": "command-line link-order/dependency placement only; no source modification",
+    "compile": "make LDFLAGS= LIBS=\\\"$(nf-config --flibs)\\\"",
+    "configure": "autoreconf -if && ./configure",
+    "linker_issue": "upstream configure places -lnetcdff before objects",
+    "result": "PASS_WITH_BUILD_ONLY_LINKER_ORDER_OVERRIDE",
+    "scientific_source_modified": false
+  },
+  "co2_contract": {
+    "arcana_paleo_series_bound": false,
+    "default": "none in namelist contract",
+    "input_name": "co2",
+    "scope": "one scalar per run/snapshot",
+    "units": "not dimensionally declared in source; atmospheric concentration supplied as a scalar namelist value"
+  },
+  "decision": "BIOME4_RUNTIME_READY_WITH_BUILD_ONLY_COMPATIBILITY_ADJUSTMENT",
+  "dependency_identity": {
+    "netcdf_c_required_or_linked": true,
+    "netcdf_fortran_required": true,
+    "silent_substitution": false
+  },
+  "exact_input_contract": {
+    "Ksat": {
+      "dimensions": "depth,lat,lon",
+      "required": true,
+      "units": "mm/hr"
+    },
+    "cld_or_sun": {
+      "conversion": "sun is converted to cloud as 100 - sun; cld is used directly",
+      "dimensions": "time,lat,lon; 12 monthly layers",
+      "names": [
+        "cld",
+        "sun"
+      ],
+      "required": true,
+      "units": "percent"
+    },
+    "co2": {
+      "dimensions": "scalar",
+      "required": true,
+      "units": "provider atmospheric concentration; scalar per run namelist"
+    },
+    "elv": {
+      "dimensions": "lat,lon",
+      "fallback": "sea level 0 if absent; not authorized for ARCANA by default",
+      "required": false,
+      "units": "m"
+    },
+    "latitude": {
+      "required": true,
+      "source": "coordinate grid / input slot 1",
+      "units": "degrees_north"
+    },
+    "longitude": {
+      "required": true,
+      "source": "coordinate grid / input slot 49",
+      "units": "degrees_east"
+    },
+    "pre": {
+      "conversion": "negative decoded values clipped to 0",
+      "dimensions": "time,lat,lon; 12 monthly layers",
+      "required": true,
+      "units": "mm monthly total"
+    },
+    "tmin": {
+      "dimensions": "lat,lon",
+      "fallback": "regression from coldest monthly mean if absent; not authorized for ARCANA by default",
+      "required": false,
+      "units": "degC"
+    },
+    "tmp": {
+      "dimensions": "time,lat,lon; 12 monthly layers",
+      "missing": "source scale_factor/add_offset applied; missing_value retained as -9999",
+      "required": true,
+      "units": "degC"
+    },
+    "whc": {
+      "dimensions": "depth,lat,lon",
+      "required": true,
+      "units": "mm/m in driver documentation; source aggregates layer-weighted values"
+    }
+  },
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "BIOME4_scientific_run": false,
+    "Madingley_invoked": false,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "normalized_proxy_rescaled": false,
+    "paleo_co2_materialized": false,
+    "physical_npp_materialized": false,
+    "population_target_used": false,
+    "soil_physical_state_materialized": false
+  },
+  "license": {
+    "classification": "GNU General Public License v3",
+    "path": "LICENSE",
+    "status": "RECOVERED_FROM_PINNED_SOURCE"
+  },
+  "madingley_compatibility": {
+    "classification": [
+      "SPATIAL_TRANSFORMATION_REQUIRED",
+      "SEMANTICALLY_INCOMPATIBLE_UNTIL_PROVIDER_MAPPING_IS_APPROVED"
+    ],
+    "formula": null,
+    "reason": "BIOME4 exports annual dominant-PFT NPP in g m-2, while P3 requires exact Madingley-compatible 12 monthly physical NPP layers; no production conversion performed"
+  },
+  "npp_output_contract": {
+    "area_basis": "per unit grid area",
+    "missing_value": -9999.0,
+    "semantics": "potential/equilibrium productivity conditional on inputs, not realized historical productivity",
+    "structure": "float; output dimensions include 13 slots with annual NPP by PFT in output(301:313), while NetCDF NPP is documented as dominant-PFT annual total",
+    "time_basis": "annual total",
+    "units": "g m-2",
+    "variable": "NPP"
+  },
+  "parent_p6_decision": "BLOCKED_MISSING_BIOME4_RUNTIME_SOURCE_AND_INPUT_AUTHORITIES",
+  "recommended_next_operations": [
+    "recover or obtain an upstream-compatible bundled soil sample for the non-scientific smoke gate",
+    "after runtime readiness, run both R5.17-B7-A3F2-P7C PALEO_CO2_AUTHORITY_BINDING and R5.17-B7-A3F2-P7S PHYSICAL_SOIL_AND_PEDOTRANSFER_AUTHORITY_GATE"
+  ],
+  "repository": {
+    "branch": "main",
+    "head": "cea5c6deee24f8af5c1b7062dfd9a0c44cdd18a4"
+  },
+  "runtime_identity": {
+    "compiler": "gfortran 13.3.0",
+    "executable": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\.arcana_engines\\BIOME4_runtime\\biome4",
+    "ready": true,
+    "sha256": "2d55d3e381cb22ea0b6734cde88e1c97669ffcdc3c3eacb4332cd140dc53b9cd",
+    "size_bytes": 132192,
+    "source_commit": "4ad9dff37eed339fce88c0fa5802757f86a3ef44"
+  },
+  "scientific_core_identity": {
+    "historical_core_version": "BIOME4 v4.2b2; computational core last updated in 1999",
+    "model": "BIOME4 equilibrium global vegetation model",
+    "modern_driver": "biome4driver.f90",
+    "numeric_core_baseline_message": "squashed numerical bugs",
+    "numeric_core_fix_baseline": "3c03014223a2dff3deb264e908e3fe44a3232541",
+    "scientific_reference": "Kaplan et al. (2003), Climate change and Arctic ecosystems: 2. Modeling, paleodata-model comparisons, and future projections, JGR Atmospheres 108(D19), doi:10.1029/2002jd002559",
+    "source_commit_is_model_version": false
+  },
+  "scientific_source_history_audit": {
+    "numerical_baseline_verified": true,
+    "pinned_head_diff": "biome4worldmap.sh only",
+    "plotting_only_head_change": true,
+    "range": "3c03014223a2dff3deb264e908e3fe44a3232541..4ad9dff37eed339fce88c0fa5802757f86a3ef44",
+    "scientific_core_files_changed_after_baseline": []
+  },
+  "soil_contract": {
+    "derivation_performed": false,
+    "layers": "depth dimension; core consumes weighted top three and bottom three layers",
+    "missing_values": "no silent fill permitted; missing soil prevents cell computation",
+    "percolation_units": "mm/hr",
+    "percolation_variable": "Ksat in soil file; provider input slots 41-42 are weighted saturated-conductivity quantities",
+    "whc_semantics": "layer water holding capacity; source comments identify mm and driver README identifies mm/m",
+    "whc_variable": "whc"
+  },
+  "stage": "R5.17-B7-A3F2-P7R",
+  "status": "P7R_COMPLETE_RUNTIME_READY_WITH_BUILD_ONLY_COMPATIBILITY_ADJUSTMENT",
+  "synthetic_runtime_smoke": {
+    "classification": "NON_SCIENTIFIC_RUNTIME_EVIDENCE_ONLY",
+    "command": "./biome4 smoke.namelist -180/180/-90/90 smoke_output.nc",
+    "dimensions": {
+      "input_lat": 2,
+      "input_lon": 2,
+      "input_time": 12,
+      "output_lat": 1,
+      "output_lon": 1,
+      "output_pft": 13,
+      "soil_layers": 6
+    },
+    "exit_code": 0,
+    "fixture_manifest": [
+      {
+        "path": ".arcana_engines/BIOME4_runtime/smoke/smoke_climate.nc",
+        "sha256": "82ac71ff7a97251a2e202e087af657dcd99b1371ada1882f0df253124ccd14af",
+        "size_bytes": 10420
+      },
+      {
+        "path": ".arcana_engines/BIOME4_runtime/smoke/smoke_soil.nc",
+        "sha256": "e773d61d8297a819918e8a8d0eac88a80d70f71a82cf079054b1e071123bb9f1",
+        "size_bytes": 8246
+      },
+      {
+        "path": ".arcana_engines/BIOME4_runtime/smoke/smoke.namelist",
+        "sha256": "62053c6834d66f986412358703319ea897e1fb4b592d64ec6aab97c22eb40637",
+        "size_bytes": 107
+      },
+      {
+        "path": ".arcana_engines/BIOME4_runtime/smoke/smoke_output.nc",
+        "sha256": "98192d5c6eb882361af157c79ae8e30054e41de24cf09c7ba5fda8bfe1a18e93",
+        "size_bytes": 24338
+      },
+      {
+        "path": ".arcana_engines/BIOME4_runtime/smoke/smoke.log",
+        "sha256": "a3a281ba3fdf49b73022fc7126cf9c03705d712d378c14a20eb1a1ca13de512b",
+        "size_bytes": 924
+      }
+    ],
+    "label": "UPSTREAM_RUNTIME_SMOKE_EVIDENCE_ONLY",
+    "output_schema_validation": {
+      "expected_variables_present": [
+        "lon",
+        "lat",
+        "pft",
+        "month",
+        "biome",
+        "wdom",
+        "NPP",
+        "LAI"
+      ],
+      "netcdf_open": true,
+      "npp_dtype": "float32",
+      "npp_missing_value": -9999.0,
+      "npp_shape": [
+        13,
+        1,
+        1
+      ],
+      "npp_units": "g m-2",
+      "npp_values_finite_or_missing": true,
+      "npp_variable_present": true
+    },
+    "result": "PASS"
+  },
+  "toolchain": {
+    "available": true,
+    "commands_audited": [
+      "which gfortran",
+      "gfortran --version",
+      "which gcc",
+      "gcc --version",
+      "which make",
+      "make --version",
+      "which autoreconf",
+      "autoreconf --version",
+      "which autoconf",
+      "autoconf --version",
+      "which automake",
+      "automake --version",
+      "which pkg-config",
+      "pkg-config --version",
+      "which nc-config",
+      "nc-config --version",
+      "which nf-config",
+      "nf-config --version"
+    ],
+    "environment": "WSL2 Ubuntu 24.04.1 LTS, x86_64",
+    "missing": [],
+    "netcdf_c": "AVAILABLE",
+    "netcdf_fortran": "AVAILABLE",
+    "versions": {
+      "autoconf": "2.71",
+      "automake": "1.16.5",
+      "autoreconf": "2.71",
+      "gcc": "13.3.0",
+      "gfortran": "13.3.0",
+      "make": "4.3",
+      "netcdf_c": "4.9.2",
+      "netcdf_fortran": "4.5.4",
+      "pkg-config": "1.8.1"
+    }
+  },
+  "upstream_sample_adjudication": {
+    "compatible_with_pinned_driver": false,
+    "reason": "bundled BIOME4_inputdata.nc lacks the required separate depth/dz/Ksat-compatible soil schema"
+  },
+  "upstream_source": {
+    "clean_worktree": true,
+    "default_branch": "main",
+    "git_rev_parse_head": "4ad9dff37eed339fce88c0fa5802757f86a3ef44",
+    "git_status_porcelain": "",
+    "local_path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\ARCANA_WORLD1_v0_6D1_R3_11_POST_CHA1_H0_RECOVERY_ADAPTIVE_RADIATION_RESTART_CANDIDATE\\.arcana_engines\\BIOME4",
+    "pinned_commit": "4ad9dff37eed339fce88c0fa5802757f86a3ef44",
+    "pinned_commit_date": "2026-01-14",
+    "repository": "https://github.com/jedokaplan/BIOME4.git",
+    "source_files": {
+      "LICENSE": {
+        "git_blob_oid": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+        "size_bytes": 35149
+      },
+      "Makefile.am": {
+        "git_blob_oid": "f28c1e2c7ee941da84dfd3cb065cd52c5589e4ff",
+        "sha256": "ac094a6fb6866bb6caddb4f27260ac1f6c0453a453472ba3d7b9b38331c590e4",
+        "size_bytes": 242
+      },
+      "README.md": {
+        "git_blob_oid": "9526eb4f68ba876fc2b56844fbc4180e263fc380",
+        "sha256": "32b7ddb813a9dc951bdda36fd9490438c5e159546320f8c6f88e48521043fc72",
+        "size_bytes": 7390
+      },
+      "biome4.f": {
+        "git_blob_oid": "d2174096b8f0674b88493723a2c04c35b40d1146",
+        "sha256": "23b5194b7b2ca25439f9a97e4f55c147c78ee9198c5f953ca2fac8c4ce689968",
+        "size_bytes": 105109
+      },
+      "biome4driver.f90": {
+        "git_blob_oid": "3bc1cc7ca1a0af83512048c336f566c51526df4d",
+        "sha256": "962dc05e5621f3fe3b31bbf2fe4fb82686e81613a98c766f24fd2683e0b7dece",
+        "size_bytes": 18828
+      },
+      "configure.ac": {
+        "git_blob_oid": "24357229a8c1e68445db76327b72881fa309a196",
+        "sha256": "aa1507b67a3a9f7111e45830131d835de93dc80c0104dba6acb29e7b573c624c",
+        "size_bytes": 3326
+      },
+      "netcdfmod.f90": {
+        "git_blob_oid": "b12b940f3de2c054afda128b0ea98c9f125dc8c5",
+        "sha256": "c2fcb497ce68de824c96d114c1e948f785b0403d4fa60b40180681f14f239c63",
+        "size_bytes": 6845
+      }
+    },
+    "source_tree_manifest_sha256": "40542d37f7120fdf6a688ac821dca77fd041a83a3f75e6fcab84c7468cfc1a19"
+  }
+}

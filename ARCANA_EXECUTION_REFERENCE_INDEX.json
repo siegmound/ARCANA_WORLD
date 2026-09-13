@@ -1,14 +1,14 @@
 {
   "schema": "ARCANA_EXECUTION_REFERENCE_INDEX_V1",
   "generated_utc": "2026-09-13T00:00:00+00:00",
-  "repository_head": "3e4bf704021f2205ca1fdb3c3fe102b78304ed0a",
+  "repository_head": "cea5c6deee24f8af5c1b7062dfd9a0c44cdd18a4",
   "content_basis": "TRACKED_WORKTREE_CONTENT_AT_GENERATION",
   "blob_oid_semantics": "GIT_HASH_OBJECT_OF_CURRENT_FILE_BYTES",
   "purpose": "Reusable lookup surface for README/status/contracts/audits, execution runners, configs, manifests and result summaries that may be required by future replay/regression tests.",
-  "record_count": 5264,
+  "record_count": 5271,
   "category_counts": {
     "AUDIT": 993,
-    "AUTHORITY_JSON": 312,
+    "AUTHORITY_JSON": 313,
     "BENCHMARK_EXECUTOR": 41,
     "CONFIG": 110,
     "CONTRACT_PROTOCOL": 208,
@@ -16,9 +16,9 @@
     "HANDOFF": 56,
     "MANIFEST": 650,
     "POWERSHELL_RUNNER": 254,
-    "PYTHON_RUNNER_SOURCE": 386,
+    "PYTHON_RUNNER_SOURCE": 387,
     "README": 171,
-    "REFERENCE": 456,
+    "REFERENCE": 461,
     "RESULT_SUMMARY": 1583,
     "SEMANTIC_CATALOG": 1,
     "STATUS": 42
@@ -104,12 +104,12 @@
     "R4.22": 130,
     "R4.23": 27,
     "R4.24": 16,
-    "R4.25": 16,
+    "R4.25": 18,
     "R4.26": 16,
     "R4.27": 16,
     "R4.28": 25,
     "R4.28.R1": 1,
-    "R4.29": 16,
+    "R4.29": 18,
     "R4.3": 545,
     "R4.30": 22,
     "R4.30.R2": 1,
@@ -213,7 +213,7 @@
     "R5.17.B7.A1": 3,
     "R5.17.B7.A2": 3,
     "R5.17.B7.A3": 3,
-    "R5.17.B7.A3F2": 21,
+    "R5.17.B7.A3F2": 24,
     "R5.2": 125,
     "R5.3": 340,
     "R5.4": 16,
@@ -19727,6 +19727,26 @@
       "sha256": "8907eb8757ab3941a44f58f0bb61b18fd772e41fead421e516952a72808c0ffe"
     },
     {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_accepts_only_se0/outputs/v0_6D1_R3_99_SEAL/FINAL_SEAL.json",
+      "stage": "R4.25",
+      "category": "REFERENCE",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 51,
+      "git_blob_oid": "e49805ed81f9e4c145658183a3a29b11735e7371",
+      "sha256": "d9ed8e450cbe4f79c58c01eb870e8294353d718f0602e5f9a7718b9eeed51299"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_does_not_accept0/outputs/v0_6D1_R3_27_SEAL/FINAL_SEAL.json",
+      "stage": "R4.25",
+      "category": "REFERENCE",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 51,
+      "git_blob_oid": "c61514cce9529d17e32cc4f4a541edba3cd1b226",
+      "sha256": "86763408da11673cd62653c7bed256348b4470cba175065c9d374a7117f15879"
+    },
+    {
       "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_26/R4_26_INTEGRATED_AUDIT.json",
       "stage": "R4.26",
       "category": "AUDIT",
@@ -20337,6 +20357,16 @@
       "sha256": "f6a72e0329c03de519749dae8edc3ce4848a308589576e6319ac0a98cd34ae85"
     },
     {
+      "path": "outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27_SEAL/R3_27_FINAL_SEAL_AUDIT.json",
+      "stage": "R4.29",
+      "category": "AUDIT",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 56,
+      "git_blob_oid": "1fa3dd494656c40924ad405251fe70ca6ff7aa21",
+      "sha256": "777b111dab4a0ed7156402e8e7c52dcc20db1d8d9925a9eb05844c72c0ca2f94"
+    },
+    {
       "path": "outputs/v0_6D1_R4_29_SEAL/R4_29_FINAL_SEAL_AUDIT.json",
       "stage": "R4.29",
       "category": "AUDIT",
@@ -20415,6 +20445,16 @@
       "size_bytes": 8336,
       "git_blob_oid": "fe99d3f7ebd8a598a3f13f03b3cf69fb253814f6",
       "sha256": "33f5888a3e57017c1932fdb66c05ec2b6c80563360a129902ee9df57cdf143f5"
+    },
+    {
+      "path": "outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27/R3_27_MACRO_REPLAY_AUTHORITY.json",
+      "stage": "R4.29",
+      "category": "AUTHORITY_JSON",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 52,
+      "git_blob_oid": "35c1e979f6dbf0948022886820713fa553ea5232",
+      "sha256": "cef2538458b4fbf254b0f185ca17d7305ba9e3287fe548e8b4b5ba3bdb88b98e"
     },
     {
       "path": "R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE_SCHEMALESS_SOURCE_AUTHORITY_CLOSURE_TARGET_DESIGN_IMPLEMENTATION_VALIDATION_AND_J14_SPATIAL_REPLAY_EXECUTION_AUTHORIZATION_CONTRACT.md",
@@ -43447,16 +43487,6 @@
       "sha256": "da3c3efbf32e9d85c02112cc242df9a7f9ec8ebd4c8e439a03f600fbe4b82475"
     },
     {
-      "path": "R5_17_B7_A3F2_P6_BIOME4_RUNTIME_SOURCE_AND_PALEO_CO2_SOIL_AUTHORITY_RECOVERY.md",
-      "stage": "R5.17.B7.A3F2",
-      "category": "REFERENCE",
-      "title": "R5.17-B7-A3F2-P6",
-      "extension": ".md",
-      "size_bytes": 667,
-      "git_blob_oid": "3ce4c04a2b69df6588c76fdf7fd5ca3bab4c0d9a",
-      "sha256": "ee496a2557e899d6730342b9d78e65f86d4a641abb8f7dcbfe45be8fb6be853d"
-    },
-    {
       "path": "R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.json",
       "stage": "R5.17.B7.A3F2",
       "category": "AUTHORITY_JSON",
@@ -43515,6 +43545,16 @@
       "size_bytes": 11388,
       "git_blob_oid": "90ff717d762debbc2da45e97395b127ac62432be",
       "sha256": "6edb744d0f3f9ef84653f2c0ea0f1cd78f9b7fc3cb65113a038e38a08b141380"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P7R_BIND_BIOME4_SOURCE_AND_RUNTIME.py",
+      "stage": "R5.17.B7.A3F2",
+      "category": "PYTHON_RUNNER_SOURCE",
+      "title": "",
+      "extension": ".py",
+      "size_bytes": 12085,
+      "git_blob_oid": "da6323f704d001a2fe1bcf682bfe5febb7dab0c1",
+      "sha256": "ed30a2825cdc27cbc23a7aeed5025f3181ee5f2f2949c2769dee2221c7cda741"
     },
     {
       "path": "R5_17_B7_A3F2_RECONSTRUCT_HISTORICAL_WILD_FAUNA_SPATIAL_STATE.py",
@@ -43615,6 +43655,36 @@
       "size_bytes": 1190,
       "git_blob_oid": "59422df10f5fbe34d1d8a75ddb285844f06ba256",
       "sha256": "cd5a0f81d3a783c4341c9985e9eea1ea20acca9f77baec3df6a2248b05b991ff"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P6_BIOME4_RUNTIME_SOURCE_AND_PALEO_CO2_SOIL_AUTHORITY_RECOVERY.md",
+      "stage": "R5.17.B7.A3F2",
+      "category": "REFERENCE",
+      "title": "R5.17-B7-A3F2-P6",
+      "extension": ".md",
+      "size_bytes": 667,
+      "git_blob_oid": "3ce4c04a2b69df6588c76fdf7fd5ca3bab4c0d9a",
+      "sha256": "ee496a2557e899d6730342b9d78e65f86d4a641abb8f7dcbfe45be8fb6be853d"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P7R_BIOME4_SOURCE_AND_RUNTIME_BINDING.json",
+      "stage": "R5.17.B7.A3F2",
+      "category": "REFERENCE",
+      "title": "",
+      "extension": ".json",
+      "size_bytes": 12348,
+      "git_blob_oid": "c2f019cdeee9d6e6316ac3e40db6d5a17825b625",
+      "sha256": "76e9583e0bced454bf3f4c2ff738ba3ece6e3e77dc52a84d2b70463344eadb88"
+    },
+    {
+      "path": "R5_17_B7_A3F2_P7R_BIOME4_SOURCE_AND_RUNTIME_BINDING.md",
+      "stage": "R5.17.B7.A3F2",
+      "category": "REFERENCE",
+      "title": "R5.17-B7-A3F2-P7R",
+      "extension": ".md",
+      "size_bytes": 1442,
+      "git_blob_oid": "5e11ca0c173fdc3794b1fe41b99e673ac3024597",
+      "sha256": "1d5518bac40dcdfae78ab85b5c328d4c9a7757500008a45b4982bdba014d3356"
     },
     {
       "path": "SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R5_2/R5_2_INTEGRATED_AUDIT.json",
@@ -49812,9 +49882,9 @@
       "category": "CURRENT_STATE",
       "title": "ARCANA WorldSim \u2014 Current State Authority",
       "extension": ".md",
-      "size_bytes": 12978,
-      "git_blob_oid": "d206bb6cc01572e068bf3503652ffac73688311e",
-      "sha256": "60bf47c4022bc53ed26b3d45b2e836b325cf6ac69a64543cc2d77101f15ef3d4"
+      "size_bytes": 14043,
+      "git_blob_oid": "333994edb76d80c6aa49dbded64e328ee1b45e4f",
+      "sha256": "6c7ef50b3d33ed14f1de1d6947b0a8874f146eb6458af49dc19af74c833e401b"
     },
     {
       "path": "NEXT_STAGE_HANDOFF_v0_6C.md",

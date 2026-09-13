@@ -2,11 +2,11 @@
 
 Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`.
 
-- Base repository HEAD at generation: `3e4bf704021f2205ca1fdb3c3fe102b78304ed0a`
+- Base repository HEAD at generation: `cea5c6deee24f8af5c1b7062dfd9a0c44cdd18a4`
 - Content basis: **tracked worktree bytes at generation**
 - Git blob OIDs: **computed from current file bytes via `git hash-object`**
 - Generated UTC: `2026-09-13T00:00:00+00:00`
-- Indexed reference files: **5264**
+- Indexed reference files: **5271**
 
 ## Purpose
 
@@ -19,7 +19,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | Category | Count |
 |---|---:|
 | AUDIT | 993 |
-| AUTHORITY_JSON | 312 |
+| AUTHORITY_JSON | 313 |
 | BENCHMARK_EXECUTOR | 41 |
 | CONFIG | 110 |
 | CONTRACT_PROTOCOL | 208 |
@@ -27,9 +27,9 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | HANDOFF | 56 |
 | MANIFEST | 650 |
 | POWERSHELL_RUNNER | 254 |
-| PYTHON_RUNNER_SOURCE | 386 |
+| PYTHON_RUNNER_SOURCE | 387 |
 | README | 171 |
-| REFERENCE | 456 |
+| REFERENCE | 461 |
 | RESULT_SUMMARY | 1583 |
 | SEMANTIC_CATALOG | 1 |
 | STATUS | 42 |
@@ -2388,6 +2388,8 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | POWERSHELL_RUNNER | `run_v0_6D1_R4_25.ps1` |  | `4b7743e8c0114339393f41bfc9506d6ae4525581` | `fca76d229cfc65e8121f2d1fe511c972d5a6540da98047565feff58f30478839` |
 | PYTHON_RUNNER_SOURCE | `scripts/run_v0_6D1_R4_25.py` |  | `656d13ffbb3313bafd7b1b41eebd122d85fe861f` | `3d9c40de02371f586880599a8bafa70b9b1a44e314d222447cf5088c332956b9` |
 | README | `README_R4_25.md` | R4.25 candidate overlay | `f94cdce3291edeca50c0c2c12d7e4cc120c7b8fa` | `8907eb8757ab3941a44f58f0bb61b18fd772e41fead421e516952a72808c0ffe` |
+| REFERENCE | `outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_accepts_only_se0/outputs/v0_6D1_R3_99_SEAL/FINAL_SEAL.json` |  | `e49805ed81f9e4c145658183a3a29b11735e7371` | `d9ed8e450cbe4f79c58c01eb870e8294353d718f0602e5f9a7718b9eeed51299` |
+| REFERENCE | `outputs/v0_6D1_R4_25/pytest_tmp/test_discovery_does_not_accept0/outputs/v0_6D1_R3_27_SEAL/FINAL_SEAL.json` |  | `c61514cce9529d17e32cc4f4a541edba3cd1b226` | `86763408da11673cd62653c7bed256348b4470cba175065c9d374a7117f15879` |
 
 ### R4.26
 
@@ -2474,6 +2476,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | AUDIT | `SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29/R4_29_INTEGRATED_AUDIT.json` |  | `deb6fd54aa01401b95b5f2dcc9928c06477fc189` | `f6a72e0329c03de519749dae8edc3ce4848a308589576e6319ac0a98cd34ae85` |
 | AUDIT | `SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29_SEAL/R4_29_FINAL_SEAL_AUDIT.json` |  | `77cc41da5fea8b9184b81f1e9ac5bbf436418a25` | `c9482ee4255021d693aa208dd9c9d70a0df630041cb77d89ca64d635fff97e4d` |
 | AUDIT | `outputs/v0_6D1_R4_29/R4_29_INTEGRATED_AUDIT.json` |  | `deb6fd54aa01401b95b5f2dcc9928c06477fc189` | `f6a72e0329c03de519749dae8edc3ce4848a308589576e6319ac0a98cd34ae85` |
+| AUDIT | `outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27_SEAL/R3_27_FINAL_SEAL_AUDIT.json` |  | `1fa3dd494656c40924ad405251fe70ca6ff7aa21` | `777b111dab4a0ed7156402e8e7c52dcc20db1d8d9925a9eb05844c72c0ca2f94` |
 | AUDIT | `outputs/v0_6D1_R4_29_SEAL/R4_29_FINAL_SEAL_AUDIT.json` |  | `77cc41da5fea8b9184b81f1e9ac5bbf436418a25` | `c9482ee4255021d693aa208dd9c9d70a0df630041cb77d89ca64d635fff97e4d` |
 | AUDIT | `scripts/audit_v0_6D1_R4_29_seal.py` |  | `672829e48d08c5b95c127d2cf33a8c6abb415054` | `39299417e100593a08de9cffb93bc8c2c861fffeb4c5ec1408f56c0dd9dd5f9c` |
 | AUTHORITY_JSON | `SIMULATION_RESULTS/93_SUPPORT_VALIDATION/outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json` |  | `cf300c811bc5562246e2f548262cb80a9831efd2` | `5c654319b68dea4eaa9bd62ad8c291e96b58b0b712efaa8f32475447432dccf2` |
@@ -2482,6 +2485,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | AUTHORITY_JSON | `configs/world1_r429_selector_authority_design_validation_j14_execution_authorization_v0_6D1_R4_29.json` |  | `02e70d20e7276d65af07f40c098ca4b4190728fd` | `aed52abed60f8bea9f6a481011566aeea149031ea446ddf5a32ac3b80f939797` |
 | AUTHORITY_JSON | `outputs/v0_6D1_R4_29/R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE.json` |  | `cf300c811bc5562246e2f548262cb80a9831efd2` | `5c654319b68dea4eaa9bd62ad8c291e96b58b0b712efaa8f32475447432dccf2` |
 | AUTHORITY_JSON | `outputs/v0_6D1_R4_29/R4_29_SCHEMALESS_SOURCE_AUTHORITY_CLOSURE.json` |  | `fe99d3f7ebd8a598a3f13f03b3cf69fb253814f6` | `33f5888a3e57017c1932fdb66c05ec2b6c80563360a129902ee9df57cdf143f5` |
+| AUTHORITY_JSON | `outputs/v0_6D1_R4_29/pytest_tmp/test_j14_static_input_authoriz0/outputs/v0_6D1_R3_27/R3_27_MACRO_REPLAY_AUTHORITY.json` |  | `35c1e979f6dbf0948022886820713fa553ea5232` | `cef2538458b4fbf254b0f185ca17d7305ba9e3287fe548e8b4b5ba3bdb88b98e` |
 | CONTRACT_PROTOCOL | `R4_29_EXPLICIT_TARGET_SELECTOR_AUTHORITY_FREEZE_SCHEMALESS_SOURCE_AUTHORITY_CLOSURE_TARGET_DESIGN_IMPLEMENTATION_VALIDATION_AND_J14_SPATIAL_REPLAY_EXECUTION_AUTHORIZATION_CONTRACT.md` | ARCANA WorldSim — v0.6D1-R4.29 Contract | `82bc8e5c5c496a71d7f29d5c2410c2a769df2cfd` | `208733ce678bfd379eb5a9ffb74c0c68aa38061f7bd5d52664d97de07e1b3833` |
 | MANIFEST | `scripts/check_v0_6D1_R4_29_source_manifest.py` |  | `a9ca712d58ef208b0b805f8776c3b7d1ded34e45` | `2d051d3a98f96d4717adfc012d2664d97d531479ed48eab43b32c30d53010017` |
 | POWERSHELL_RUNNER | `run_v0_6D1_R4_29.ps1` |  | `45a633b250c35707f0423fbc7bebe298b0415d55` | `bf4f9e8c29d1efeba6da33469b47c5b968ad45cbc21c429773361d81361921aa` |
@@ -5311,6 +5315,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P2_ADJUDICATE_MACROECOLOGICAL_RESOURCE_PROVIDER.py` |  | `1ddcdcb45ad25bc684a5ca117b5a5b251da541c3` | `2a0cd2961c18158f9e9e245931c8c5e839865828dcee5c154811c44cd7579207` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P4_RECOVER_PHYSICAL_NPP_AUTHORITY.py` |  | `d932291f3b9f4ca73f37839689c76eba637a4f3d` | `aadff83bfe7f0cb5cc1e5e5c95439d881f2efbbebce59f593748320e37dfc05b` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P5_ADJUDICATE_PHYSICAL_NPP_PROVIDER.py` |  | `90ff717d762debbc2da45e97395b127ac62432be` | `6edb744d0f3f9ef84653f2c0ea0f1cd78f9b7fc3cb65113a038e38a08b141380` |
+| PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P7R_BIND_BIOME4_SOURCE_AND_RUNTIME.py` |  | `da6323f704d001a2fe1bcf682bfe5febb7dab0c1` | `ed30a2825cdc27cbc23a7aeed5025f3181ee5f2f2949c2769dee2221c7cda741` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_RECONSTRUCT_HISTORICAL_WILD_FAUNA_SPATIAL_STATE.py` |  | `5d9e9834e403242e58a177bfe3665c435b760657` | `42904f56581a5850cf44bed1e6710636f5a0e48bc737fb1dfc64f1401d3d4783` |
 | REFERENCE | `R5_17_B7_A3F2_HISTORICAL_WILD_FAUNA_SPATIAL_RECONSTRUCTION.json` |  | `74cbbea5aa90c0a27c7c956b0a919d0c5b60fe19` | `5fe246b5bca94f0d980b8105f3017c4de51cd76ad0b110a0dd6cc5d17ab5c180` |
 | REFERENCE | `R5_17_B7_A3F2_HISTORICAL_WILD_FAUNA_SPATIAL_RECONSTRUCTION.md` | R5.17-B7-A3F2 — Governed Historical Wild-Fauna Spatial Reconstruction | `aeab12dad4d57096965246fdcc225def998a68c4` | `c66bee4f22c96a115d7c46664f1f5b0d9a083e9907a008fca1d89304a7aa26f8` |
@@ -5322,6 +5327,8 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | REFERENCE | `R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.json` |  | `d9fab74c3293ff0b2831f1a2a95fc0dee8a56f14` | `2a66096a00e077dae4756bbee46908487be4f6218c295e0c99d1c672bb99e3c6` |
 | REFERENCE | `R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.md` | R5.17-B7-A3F2-P5 | `59422df10f5fbe34d1d8a75ddb285844f06ba256` | `cd5a0f81d3a783c4341c9985e9eea1ea20acca9f77baec3df6a2248b05b991ff` |
 | REFERENCE | `R5_17_B7_A3F2_P6_BIOME4_RUNTIME_SOURCE_AND_PALEO_CO2_SOIL_AUTHORITY_RECOVERY.md` | R5.17-B7-A3F2-P6 | `3ce4c04a2b69df6588c76fdf7fd5ca3bab4c0d9a` | `ee496a2557e899d6730342b9d78e65f86d4a641abb8f7dcbfe45be8fb6be853d` |
+| REFERENCE | `R5_17_B7_A3F2_P7R_BIOME4_SOURCE_AND_RUNTIME_BINDING.json` |  | `c2f019cdeee9d6e6316ac3e40db6d5a17825b625` | `76e9583e0bced454bf3f4c2ff738ba3ece6e3e77dc52a84d2b70463344eadb88` |
+| REFERENCE | `R5_17_B7_A3F2_P7R_BIOME4_SOURCE_AND_RUNTIME_BINDING.md` | R5.17-B7-A3F2-P7R | `5e11ca0c173fdc3794b1fe41b99e673ac3024597` | `1d5518bac40dcdfae78ab85b5c328d4c9a7757500008a45b4982bdba014d3356` |
 
 ### R5.2
 
@@ -5996,7 +6003,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | CONTRACT_PROTOCOL | `tests/test_r416_recovered_metric_target_protocol.py` |  | `f449ee200f7bd79edb726af0b1244f943f9015b3` | `dc69e93efa1c27b34c4785350b1a4a1a89d0735f428d06883d654f78118db2b9` |
 | CONTRACT_PROTOCOL | `tests/test_r420_p2_adapter_preflight_target_protocol_repair.py` |  | `0ba9955a48465e85faa1d311231b858978b50132` | `324985956b061c29f42c9347f7997cf11d8038d809685a2b0e4fadcfb94b1a89` |
 | CONTRACT_PROTOCOL | `tests/test_r425_target_protocol_preflight_geonomics_j14_discovery.py` |  | `29948b844c3d852089e32980e3aed174b6400d18` | `70427c7a999b70dc40eb305b6389e63230760fd065cb006f5ca3a5bb867538a3` |
-| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `d206bb6cc01572e068bf3503652ffac73688311e` | `60bf47c4022bc53ed26b3d45b2e836b325cf6ac69a64543cc2d77101f15ef3d4` |
+| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `333994edb76d80c6aa49dbded64e328ee1b45e4f` | `6c7ef50b3d33ed14f1de1d6947b0a8874f146eb6458af49dc19af74c833e401b` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6C.md` | Next Stage Handoff — v0.6D | `7f40ba60fb95c58d1c2dd7b4239f27850a6b56fd` | `25a4900ac439c64373224badfa83f6eb7bc5db36dd9c4ccd88a3511963f4eb50` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6D.md` | Next Stage Handoff — v0.6D -> v0.6D1 | `fb2d13c1bdb9b5ebcdc5c48a44050ba47a9203cf` | `a3d7fb6831b065a3d805fadc9ec09e809ca311e430399877c9aa6a5bff5e996c` |
 | MANIFEST | `PACKAGE_MANIFEST_v0_6D.json` |  | `dfe247842b21021ea0e802689ffb3c2cce36a028` | `a3ac330f4825c2b4b53a8b874aaf0c83587eebbee338761d44a4f4fa21ee7241` |
