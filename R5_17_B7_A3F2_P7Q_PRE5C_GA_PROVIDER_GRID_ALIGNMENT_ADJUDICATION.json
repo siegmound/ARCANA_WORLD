@@ -1,0 +1,12 @@
+{
+  "stage":"R5.17-B7-A3F2-P7Q-PRE5C-GA",
+  "verdict":"PASS_P7Q_PRE5C_PROVIDER_GRID_ALIGNMENT_ADJUDICATED",
+  "decision":"AUTHORIZE_P7Q_PRE5C_GUM_CLASS_SEMANTIC_DECODING_GATE_WITH_DOMINANT_OVERLAP_CROSSWALK",
+  "head_basis":"59911077726397e7dfa9c79b294ec873b5e99f93",
+  "geometry":{"gum":"720x347; xll=-179.99998074964; yll=-89.985256795408; cellsize=0.5; WGS84/EPSG:4326","glim":"720x360; xll=-180; yll=-90; cellsize=0.5; WGS84/EPSG:4326","same_crs":true,"same_cell_size":true,"directly_congruent":false,"delta_x_degrees":0.00001925036,"delta_y_degrees":0.014743204592,"delta_x_cells":0.00003850072,"delta_y_cells":0.029486409184},
+  "crosswalk":{"type":"DOMINANT_AREA_OVERLAP_CROSSWALK","minimum_dominant_overlap":0.9704762253439838,"mean_dominant_overlap":0.9704762253439838,"maximum_secondary_overlap":0.0294852739360162,"unique_mappings":249840,"ties":0,"longitude_wrap":0,"partial_outside":347,"no_overlap":0},
+  "northern_coverage":{"dimension_difference_rows":13,"full_glim_only_rows":[348,359],"full_glim_only_row_count":12,"partial_row":347,"partial_row_overlap_fraction":0.029486409184,"geographic_full_only_range_latitude_degrees":[84.0,90.0]},
+  "safeguards":{"resampling":false,"reprojection":false,"raster_values_modified":false,"canonical_grid_generated":false,"parent_materialized":false,"gum_absence_to_bedrock":false,"glim_conditioner_only":true,"gum_codes_decoded":false,"land_state_bound":false,"p7q_reopened":false,"scientific_authority_register_mutated":false,"execution_index_hashes_preserved":true},
+  "remaining_blockers":["GUM_CLASS_SEMANTIC_DECODING_REQUIRED","BLOCKED_BY_LAND_STATE_BINDING","RESIDUAL_BEDROCK_CLASSIFIER_NO_PROVIDER_AUTHORIZED","TEXTURE_TRANSFORM_NOT_AUTHORIZED","PROFILE_CONTRACT_NOT_AUTHORIZED","PELLETIER_NOT_ACQUIRED","CRYOSPHERE_UNRESOLVED","WIND_UNRESOLVED","VOLCANISM_UNRESOLVED"],
+  "next_gate":"P7Q_PRE5C_GUM_CLASS_SEMANTIC_DECODING_GATE"
+}
