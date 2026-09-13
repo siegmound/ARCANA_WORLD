@@ -2,6 +2,13 @@
   "record_id": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER",
   "title": "ARCANA WorldSim Scientific Authority Register",
   "purpose": "Persistent cross-cutting inventory of existing scientific authority. It is a governance register, not a scientific generator.",
+  "schema_version": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER_V2",
+  "register_role": "GOVERNED_SCIENTIFIC_AUTHORITY_INVENTORY",
+  "authority_basis_head": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+  "authority_basis_origin_main": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+  "authority_basis_head_matches_origin_main": true,
+  "builder_path": "tools/build_arcana_worldsim_scientific_authority_register.py",
+  "governance_status": "SCIENTIFIC_AUTHORITY_REGISTER_INTEGRATED",
   "authority_status_vocabulary": [
     "ABSENT_AFTER_AUDIT",
     "DERIVED_AUTHORITY",
@@ -72,7 +79,11 @@
       "unresolved": "TARGETED_RECOVERY_REQUIRED"
     }
   },
-  "p7q_status": "SUSPENDED__REGISTER_INTEGRATED__P7Q_REGISTER_PREFLIGHT_REVIEW_REQUIRED",
+  "p7q_status": "SUSPENDED_PENDING_EXPLICIT_P7Q_REAUTHORIZATION",
+  "future_post_commit_validation": {
+    "rule": "git rev-parse HEAD^ must equal authority_basis_head after direct governance integration",
+    "embedded_governance_commit_sha": "NOT_EMBEDDED"
+  },
   "domain_count": 33,
   "domains": [
     {

@@ -7,9 +7,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(
+    subprocess.check_output(
+        ["git", "rev-parse", "--show-toplevel"], text=True
+    ).strip()
+)
 OUT_JSON = ROOT / "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json"
 OUT_MD = ROOT / "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.md"
 
@@ -91,6 +96,12 @@ def domain(
 
 
 def main() -> None:
+    authority_basis_head = subprocess.check_output(
+        ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True
+    ).strip()
+    authority_basis_origin_main = subprocess.check_output(
+        ["git", "-C", str(ROOT), "rev-parse", "origin/main"], text=True
+    ).strip()
     a1 = "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz"
     d32c = "outputs/v0_6D1_R3/PALEOGEOGRAPHIC_EVENT_CATALOG_ALL_A1_v0_6D1_R3.json"
     climate = "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz"
@@ -161,18 +172,29 @@ def main() -> None:
         "record_id": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER",
         "title": "ARCANA WorldSim Scientific Authority Register",
         "purpose": "Persistent cross-cutting inventory of existing scientific authority. It is a governance register, not a scientific generator.",
+        "schema_version": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER_V2",
+        "register_role": "GOVERNED_SCIENTIFIC_AUTHORITY_INVENTORY",
+        "authority_basis_head": authority_basis_head,
+        "authority_basis_origin_main": authority_basis_origin_main,
+        "authority_basis_head_matches_origin_main": authority_basis_head == authority_basis_origin_main,
+        "builder_path": "tools/build_arcana_worldsim_scientific_authority_register.py",
+        "governance_status": "SCIENTIFIC_AUTHORITY_REGISTER_INTEGRATED",
         "authority_status_vocabulary": sorted(AUTHORITY_STATUS_VOCABULARY),
         "reuse_disposition_vocabulary": sorted(REUSE_DISPOSITION_VOCABULARY),
         "governance_rules": governance_rules,
         "mandatory_preflight": preflight,
-        "p7q_status": "SUSPENDED__REGISTER_INTEGRATED__P7Q_REGISTER_PREFLIGHT_REVIEW_REQUIRED",
+        "p7q_status": "SUSPENDED_PENDING_EXPLICIT_P7Q_REAUTHORIZATION",
+        "future_post_commit_validation": {
+            "rule": "git rev-parse HEAD^ must equal authority_basis_head after direct governance integration",
+            "embedded_governance_commit_sha": "NOT_EMBEDDED",
+        },
         "domain_count": len(entries),
         "domains": entries,
         "governance": {"scientific_authority_register_integrated": True, "new_scientific_authority_created": False, "new_scientific_simulation_executed": False, "p7q_executed": False, "gplates_executed": False, "landlab_executed": False, "badlands_executed": False, "soilgen_executed": False, "biome4_executed": False, "madingley_executed": False, "lithology_materialized": False, "parent_material_materialized": False, "regolith_materialized": False, "soil_physics_materialized": False, "canonical_scientific_state_mutated": False, "governance_metadata_updated": True},
     }
     validate_document(document)
     OUT_JSON.write_text(json.dumps(document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    lines = ["# ARCANA WorldSim Scientific Authority Register", "", "Governed cross-cutting authority inventory. It records only evidenced state and its semantic ceiling; it does not create science.", "", "## Mandatory preflight", "", *[f"{i + 1}. `{step}`" for i, step in enumerate(preflight["steps"])], "", "## Governance rules", "", *[f"- **{rule['rule_id']}** — {rule['requirement']}" for rule in governance_rules], "", "## Domain inventory", "", "| Domain | Primary authority status | Reuse disposition | Semantic ceiling |", "|---|---|---|---|"]
+    lines = ["# ARCANA WorldSim Scientific Authority Register", "", "Governed cross-cutting authority inventory. It records only evidenced state and its semantic ceiling; it does not create science.", "", "Authority basis commit: `" + authority_basis_head + "`", "Authority basis origin/main: `" + authority_basis_origin_main + "`", "Basis synchronized: **" + ("YES" if authority_basis_head == authority_basis_origin_main else "NO") + "**", "", "The basis commit is the validated parent authority, not the future commit containing this register.", "P7Q status: `" + document["p7q_status"] + "`", "", "## Mandatory preflight", "", *[f"{i + 1}. `{step}`" for i, step in enumerate(preflight["steps"])], "", "## Governance rules", "", *[f"- **{rule['rule_id']}** — {rule['requirement']}" for rule in governance_rules], "", "## Domain inventory", "", "| Domain | Primary authority status | Reuse disposition | Semantic ceiling |", "|---|---|---|---|"]
     for item in entries:
         lines.append(f"| {item['domain_id']} | {item['authority_status']} | {item['reuse_disposition']} | {'; '.join(item['SEMANTIC_CEILING']) or 'none'} |")
     lines += ["", "## P7Q", "", "P7Q is suspended pending review. The register confirms a reusable paleogeographic/kinematic scaffold, while physical geology, lithology, parent material, regolith, and physical soil remain unavailable or unresolved as explicitly stated in their entries.", ""]

@@ -2,6 +2,13 @@
 
 Governed cross-cutting authority inventory. It records only evidenced state and its semantic ceiling; it does not create science.
 
+Authority basis commit: `9577f1331e2f9715eb897c8330aedca58ae24f3a`
+Authority basis origin/main: `9577f1331e2f9715eb897c8330aedca58ae24f3a`
+Basis synchronized: **YES**
+
+The basis commit is the validated parent authority, not the future commit containing this register.
+P7Q status: `SUSPENDED_PENDING_EXPLICIT_P7Q_REAUTHORIZATION`
+
 ## Mandatory preflight
 
 1. `REQUESTED_SCIENTIFIC_STATE`
