@@ -1,0 +1,11 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5C",
+  "classification": "NONCANONICAL_DIAGNOSTIC_STATIC_SOURCE_STATE",
+  "maturity": {"prototype": "L2_STATIC_STATE_CANDIDATE_PARTIAL", "canonical_pipeline": "L1_SOURCE_BOUND_PARTIAL"},
+  "inputs": {"GUM_V1": {"archive_sha256": "6a2d47f2bc8f6df745c569003f1f536d37c78153e98b54005bfbcccc53d6ee63", "grid": {"ncols": 720, "nrows": 347, "xllcorner": -179.99998074964, "yllcorner": -89.985256795408, "cellsize": 0.5, "nodata": -9999}}, "GLIM_V1": {"archive_sha256": "43b4ce3276b155d804db8ff9fb227d620b4c35015a4cf564eac4d06d2b69d88e", "grid": {"ncols": 720, "nrows": 360, "xllcorner": -180.0, "yllcorner": -90.0, "cellsize": 0.5, "nodata": -9999}}},
+  "temporal": {"mode": "STATIC", "age_ka": 0, "snapshot_index": 11, "temporal_rule": "ENDPOINT_CONSTRAINED", "formation_interval": "UNKNOWN", "persistence": "NOT_PROVEN"},
+  "grid": {"name": "PRE5C_PROVIDER_DIAGNOSTIC_GRID_0P5DEG", "congruence": false, "binding_mode": "INCONGRUENT_PROVIDER_GRIDS__NO_CELLWISE_STATE", "resampling": false, "reprojection": false, "nearest_neighbor_mapping": false},
+  "diagnostic_payload": {"relative_external_path": "../_ARCANA_EXTERNAL_SOURCES/p7q_parent_state/PRE5C_STATIC_PROTOTYPE/PRE5C_PROVIDER_GRID_DIAGNOSTIC.bin", "format": "deterministic raw binary", "bytes": 2036209, "sha256": "cfec2821db8e7b9bdf0292812e67ccd047c63b11f75b748e7cceab1354e3f960", "git_excluded": true},
+  "state_limits": {"canonical_parent_material_authority_created": false, "physical_soil_created": false, "depth": "UNKNOWN", "texture": "UNKNOWN", "profile": "UNKNOWN_PROFILE", "temporal_reconstruction_executed": false, "scientific_authority_register_mutated": false, "p7q_reopened": false},
+  "decision": "REQUIRE_P7Q_PRE5C_GRID_ALIGNMENT_GATE"
+}

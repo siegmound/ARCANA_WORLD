@@ -1,0 +1,12 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5C",
+  "verdict": "BLOCKED_P7Q_PRE5C_STATIC_SOURCE_BINDING_PROTOTYPE_INSUFFICIENT",
+  "decision": "REQUIRE_P7Q_PRE5C_GRID_ALIGNMENT_GATE",
+  "source_hash_reverification": "PASS_2_OF_2",
+  "grid_diagnostic": {"total_glim_grid_cells": 259200, "glim_valid": 87098, "glim_nodata_or_nd": 172102, "total_gum_grid_cells": 249840, "gum_valid": 59233, "gum_nodata": 190607, "both_valid": "NOT_COMPUTED_DUE_GRID_INCONGRUENCE", "gum_valid_glim_missing": "NOT_COMPUTED_DUE_GRID_INCONGRUENCE", "gum_missing_glim_valid": "NOT_COMPUTED_DUE_GRID_INCONGRUENCE", "both_missing": "NOT_COMPUTED_DUE_GRID_INCONGRUENCE"},
+  "congruence_failures": ["nrows 347 != 360", "yllcorner -89.985256795408 != -90.0", "total cell counts differ"],
+  "prohibitions_verified": ["no resampling", "no reprojection", "no nearest-neighbor mapping", "no canonical grid crosswalk", "no GUM absence to bedrock", "no depth/texture/profile generation", "no temporal reconstruction"],
+  "diagnostic_payload": {"format": "deterministic raw binary", "bytes": 2036209, "sha256": "cfec2821db8e7b9bdf0292812e67ccd047c63b11f75b748e7cceab1354e3f960", "git_tracked": false},
+  "sample": {"total_records": 0, "schema_valid_records": 0, "full_state_instantiation": "BLOCKED_BY_GRID_ALIGNMENT_AND_LAND_STATE_BINDING"},
+  "governance": {"canonical_parent_material_authority_created": false, "physical_soil_created": false, "scientific_authority_register_mutated": false, "p7q_reopened": false, "commit_performed": false, "push_performed": false}
+}

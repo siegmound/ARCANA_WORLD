@@ -1,0 +1,9 @@
+{
+  "schema": "ARCANA_PRE5C_GUM_MAPPING_REGISTRY_V1",
+  "source": "GUM_V1",
+  "source_field": "XX",
+  "mapping_policy": "AMBIGUOUS_RETAIN_UNKNOWN_UNLESS_SOURCE_SEMANTICS_PROVE_EXACT_GENETIC_MAPPING",
+  "forbidden": ["GUM_NODATA_TO_BEDROCK_EXPOSED", "GLIM_ONLY_TO_PARENT_MATERIAL", "GUM_PLUS_GLIM_DIFFERENCE_AS_CONFLICT"],
+  "codes": ["Ae","Af","Al","Ap","At","Au","Ca","Cu","Du","Ea","Ed","El","Er","Eu","Gf","Gl","Gm","Gp","Gt","Gu","Iy","Lu","Mu","Op","Ou","Pg","Pp","Ps","Pu","Us","Wl","Wu","Yb","Yd","Yl","Ym","Ys","Yu","Zu"],
+  "records": "Each listed code is retained losslessly as source identity; target_material_branch=null, mapping_status=AMBIGUOUS_RETAIN_UNKNOWN, semantic_basis=encoded_source_code_without_decoded_genetic_label, support_ceiling=source_presence_only. NODATA/outside coverage maps to OUTSIDE_SOURCE_COVERAGE, never a material branch."
+}
