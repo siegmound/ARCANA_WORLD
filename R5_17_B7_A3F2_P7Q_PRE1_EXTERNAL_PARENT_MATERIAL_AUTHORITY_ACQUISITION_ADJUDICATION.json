@@ -1,0 +1,107 @@
+{
+  "record_id": "R5_17_B7_A3F2_P7Q_PRE1_EXTERNAL_PARENT_MATERIAL_AUTHORITY_ACQUISITION_ADJUDICATION",
+  "stage": "P7Q-PRE1",
+  "title": "External Parent-Material Authority Acquisition Adjudication",
+  "repository": {
+    "head": "f1ae458bbccb3fbbd8e348ffffede1b4afae3e11",
+    "origin_main": "f1ae458bbccb3fbbd8e348ffffede1b4afae3e11",
+    "basis_synchronized": true
+  },
+  "authority_chain": [
+    "ARCANA_WORLD_CURRENT_STATE.md",
+    "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json",
+    "R5_17_B7_A3F2_P7AR_TARGETED_PARENT_MATERIAL_AUTHORITY_RECOVERY.json",
+    "R5_17_B7_A3F2_P7NC1R_LEGACY_GEOLOGIC_TECTONIC_AUTHORITY_RECOVERY.json"
+  ],
+  "register_preflight": {
+    "requested_scientific_state": "Physically defensible parent-material / near-surface geological initial state for eventual pedogenesis initialization.",
+    "result": "PARENT_MATERIAL_ABSENT_AFTER_AUDIT__EXTERNAL_ACQUISITION_REQUIRED",
+    "domains_consulted": [
+      "LITHOLOGY", "PARENT_MATERIAL", "REGOLITH", "SOIL_PHYSICAL", "PALEOGEOGRAPHY", "PLATE_KINEMATICS", "CLIMATE", "PALEOCLIMATE", "TOPOGRAPHY", "RELIEF", "WEATHERING"
+    ],
+    "semantic_ceiling_respected": true,
+    "p7q_reopened": false
+  },
+  "target_temporal_domain": "200 ka to 0 ka",
+  "temporal_strategy": "No paleo interpolation or extrapolation authorized in PRE1; candidate-specific adapters are required.",
+  "requirement_matrix": [
+    {"variable": "surface_bedrock_lithology_class", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Conditioning class; not equivalent to parent material."},
+    {"variable": "unconsolidated_sediment_surficial_class", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Needed to distinguish transported/alluvial/colluvial material from bedrock."},
+    {"variable": "parent_material_genetic_origin", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Required for a defensible provenance/initial-state contract."},
+    {"variable": "parent_material_mineralogical_composition", "classification": "OPTIONAL_CONDITIONER", "basis": "Needed if mineral-specific weathering or nutrient release is modeled."},
+    {"variable": "regolith_thickness", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Controls available near-surface material volume; remains distinct from lithology."},
+    {"variable": "soil_and_sediment_thickness", "classification": "OPTIONAL_CONDITIONER", "basis": "Structural constraint for layered initialization."},
+    {"variable": "depth_to_bedrock", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Boundary condition for any vertical profile."},
+    {"variable": "grain_size_texture", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Required by physical soil initialization, not supplied by GLiM or thickness-only data."},
+    {"variable": "coarse_fragment_fraction", "classification": "OPTIONAL_CONDITIONER", "basis": "Useful physical calibration field."},
+    {"variable": "bulk_density", "classification": "OPTIONAL_CONDITIONER", "basis": "Useful for physical parameterization; not a parent-material identity field."},
+    {"variable": "vertical_profile_layer_structure", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Required for a non-single-layer pedogenesis input."},
+    {"variable": "uncertainty_information", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Governance requires uncertainty propagation or explicit refusal."},
+    {"variable": "temporal_applicability_200ka_to_0ka", "classification": "REQUIRED_FOR_INITIALIZATION", "basis": "Modern static products cannot silently become paleo trajectories."}
+  ],
+  "candidates": [
+    {
+      "candidate_id": "GLiM",
+      "authority_role": "DIRECT_SURFACE_LITHOLOGY_CONDITIONER",
+      "source": "Hartmann & Moosdorf (2012), DOI 10.1029/2012GC004370; PANGAEA DOI 10.1594/PANGAEA.788537",
+      "official_urls": ["https://doi.org/10.1029/2012GC004370", "https://doi.pangaea.de/10.1594/PANGAEA.788537"],
+      "coverage": "Global land/surface representation; gridded product at 0.5 degree; original map uses polygons.",
+      "native_representation": "polygon source plus gridded raster distribution",
+      "native_crs": "Geographic global grid; dataset-specific metadata must be bound at acquisition.",
+      "variables": ["16 first-level lithological classes", "12 and 14 subclass levels", "surface rock/lithology classes"],
+      "license_access": "PANGAEA access and citation required; rights/provenance are inherited from contributing geological agencies and must be checked at acquisition.",
+      "temporal_classification": "STATIC_VALID_OVER_TARGET_INTERVAL only as a documented bedrock-lithology approximation; not a paleo surficial-deposit history.",
+      "arcana_remap": "Categorical area-weighted or majority remap to ARCANA grid; land/water/ice masks must be explicit.",
+      "role_decisions": {"lithology": "YES_PARTIAL", "parent_material": "NO", "mineralogy": "NO_DIRECT", "texture": "NO", "regolith_depth": "NO", "bulk_density": "NO", "vertical_profile": "NO"},
+      "semantic_ceiling": ["surface lithological conditioning", "not physical parent material", "not mineralogy/texture/regolith profile"]
+    },
+    {
+      "candidate_id": "PELLETIER_2016",
+      "authority_role": "GLOBAL_THICKNESS_STRUCTURAL_CONSTRAINT",
+      "source": "Pelletier et al. (2016), DOI 10.1002/2015MS000526; ORNL DAAC 1304, DOI 10.3334/ORNLDAAC/1304",
+      "official_urls": ["https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2015MS000526", "https://catalog.data.gov/dataset/global-1-km-gridded-thickness-of-soil-regolith-and-sedimentary-deposit-layers"],
+      "coverage": "Global approximately 30 arc-second (~1 km) grid, approximately -60 to 90 latitude; ocean/upland/lowland/lake/perennial-ice mask.",
+      "native_representation": "gridded raster products by landform type",
+      "native_crs": "Global geographic 30 arc-second grid; exact acquisition metadata required.",
+      "variables": ["soil thickness", "maximum upland regolith thickness", "sedimentary deposit thickness", "landform fractions", "combined thickness product"],
+      "license_access": "Public ORNL/NASA catalog entry; dataset download and citation/terms must be bound from ORNL at acquisition; article states the data are archived and obtainable through ORNL DAAC.",
+      "temporal_classification": "PRESENT_DAY_ONLY / REQUIRES_TEMPORAL_ADAPTER; NASA catalog describes geological present, not a 200 ka trajectory.",
+      "arcana_remap": "Continuous area-weighted/conservative remap for thickness; categorical mask by majority/area fraction; nodata and water/ice remain explicit.",
+      "role_decisions": {"soil_thickness": "YES_PARTIAL", "regolith_thickness": "YES_PARTIAL", "sedimentary_deposit_thickness": "YES_PARTIAL", "depth_to_bedrock": "DERIVABLE_CONSTRAINT_ONLY", "vertical_structure": "OPTIONAL_CONDITIONER", "lithology": "NO", "mineralogy": "NO", "texture": "NO", "bulk_density": "NO"},
+      "semantic_ceiling": ["estimated thickness above bedrock", "not material identity", "not mineralogy/texture/bulk density", "not paleo persistence without adapter"]
+    },
+    {
+      "candidate_id": "SOILGRIDS_2_0",
+      "authority_role": "PRESENT_DAY_SOIL_PHYSICAL_ENDPOINT_AND_CALIBRATION_TARGET",
+      "source": "Poggio et al. (2021), SoilGrids 2.0, DOI 10.5194/soil-7-217-2021; official ISRIC documentation.",
+      "official_urls": ["https://docs.isric.org/globaldata/soilgrids/", "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html", "https://docs.isric.org/globaldata/soilgrids/wcs.html"],
+      "coverage": "Global SoilGrids250m maps at 250 m, six standard depth intervals 0-5, 5-15, 15-30, 30-60, 60-100, 100-200 cm; aggregated 1 km and 5 km products are available.",
+      "native_representation": "raster GeoTIFF/VRT and OGC WCS; REST API is beta/operationally constrained.",
+      "native_crs": "Global mapping services with documented WCS CRS negotiation; bind exact CRS at acquisition.",
+      "variables": ["sand", "silt", "clay", "bulk density", "coarse fragments", "pH", "CEC", "organic carbon", "water content", "prediction quantiles/uncertainty"],
+      "license_access": "CC BY 4.0 for SoilGrids predictions; WCS/WebDAV/portal access; full global maps are large and were not downloaded.",
+      "temporal_classification": "PRESENT_DAY_ONLY; not a 200 ka initial state, paleo parent material, or pedogenesis replay.",
+      "arcana_remap": "Continuous fields area-weighted or conservative remap; categorical/quantile fields require explicit semantic handling; uncertainty bands must be retained.",
+      "role_decisions": {"present_day_endpoint_constraint": "YES", "present_day_calibration": "YES", "present_day_validation": "QUALIFIED_SHARED_COVARIATE", "initial_state_provider": "NO", "paleo_parent_material": "NO", "historical_regolith": "NO"},
+      "semantic_ceiling": ["modern modeled soil-property endpoint", "uncertainty-aware calibration/validation", "not independent validation where covariates overlap", "not paleo state"]
+    }
+  ],
+  "additional_serious_candidates": [
+    {"candidate": "USGS World Geologic Maps / DDS60", "classification": "VALIDATION_REFERENCE_OR_COARSE_SURFACE_GEOLOGY_ONLY", "reason": "USGS describes near-global coarse-resolution surface geology; not a global unconsolidated parent-material or physical-profile authority.", "url": "https://www.usgs.gov/centers/central-energy-resources-science-center/science/world-geologic-maps"},
+    {"candidate": "CGMW/OneGeology global geological map services", "classification": "METHOD_OR_COARSE_GEOLOGY_REFERENCE", "reason": "Useful for broad geological context, but not demonstrated here as a globally harmonized, versioned surficial parent-material and vertical-profile authority."}
+  ],
+  "circularity": {
+    "soilgrids_dependency": "SoilGrids is modeled from soil profiles and many environmental covariates including terrain/climate/land-cover information; overlapping ARCANA layers cannot be claimed as independent validation without qualification.",
+    "classification": "SHARED_COVARIATE_PRODUCT",
+    "independent_provider_authority": "GLiM and Pelletier are independent external datasets for their stated variables, but their combination does not create missing genetic/mineralogical provenance automatically."
+  },
+  "composite_provider_analysis": {
+    "composition": ["GLiM lithological conditioning", "Pelletier thickness/depth structural constraint", "SoilGrids present-day physical calibration", "ARCANA climate/hydrology/topography/weathering conditioning"],
+    "result": "ADDITIONAL_PARENT_MATERIAL_AUTHORITY_REQUIRED",
+    "later_gate": "A composite initial-parent-state materialization gate could be scientifically feasible only after direct surficial-material/genetic provenance, temporal applicability, and vertical-profile contracts are recovered."
+  },
+  "remaining_authority_gaps": ["unconsolidated parent-material class", "genetic provenance/source-to-sediment mapping", "mineralogical/compositional parent-material authority", "200 ka to 0 ka temporal adapter for surficial materials", "governed vertical profile and layer identity", "validated uncertainty propagation contract"],
+  "constraints": {"downloads_performed": false, "simulation_performed": false, "materialization_performed": false, "provider_installed": false, "pedogenesis_performed": false, "p7q_reopened": false, "canonical_mutation": false},
+  "final_scientific_decision": "REQUIRE_ADDITIONAL_PARENT_MATERIAL_DATASET_RESEARCH",
+  "pass_verdict": "PASS_P7Q_PRE1_EXTERNAL_PARENT_MATERIAL_AUTHORITY_ADJUDICATED"
+}
