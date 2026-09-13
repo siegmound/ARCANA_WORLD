@@ -2,11 +2,11 @@
 
 Machine-readable companion: `ARCANA_EXECUTION_REFERENCE_INDEX.json`.
 
-- Base repository HEAD at generation: `cfc5f26bb0965e87f8a43ea29ad6e27b4d43d021`
+- Base repository HEAD at generation: `3e4bf704021f2205ca1fdb3c3fe102b78304ed0a`
 - Content basis: **tracked worktree bytes at generation**
 - Git blob OIDs: **computed from current file bytes via `git hash-object`**
-- Generated UTC: `2026-09-12T23:51:09.495103+00:00`
-- Indexed reference files: **5261**
+- Generated UTC: `2026-09-13T00:00:00+00:00`
+- Indexed reference files: **5264**
 
 ## Purpose
 
@@ -18,8 +18,8 @@ The index is navigational evidence only. It does not promote an indexed file to 
 
 | Category | Count |
 |---|---:|
-| AUDIT | 991 |
-| AUTHORITY_JSON | 311 |
+| AUDIT | 993 |
+| AUTHORITY_JSON | 312 |
 | BENCHMARK_EXECUTOR | 41 |
 | CONFIG | 110 |
 | CONTRACT_PROTOCOL | 208 |
@@ -5304,7 +5304,9 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | AUDIT | `R5_17_B7_A3F2_P3_AUDIT_MADINGLEY_RUNTIME_AND_INPUT_BINDING.py` |  | `eac61c9eb6886e966461e3bbbbfad0f30c9617b2` | `ee0e360fdf0dae23a32b5ef9e9c095dbbbea3ddb684eb0301b5f6ffe59dd097c` |
 | AUDIT | `R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.json` |  | `729c027a0099f7a05098fb12146bc809ea322bd3` | `b379af0518e6e75dfc26552875274946eeb171d2bdcbb6230c8205cd4742c4ee` |
 | AUDIT | `R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.md` | R5.17-B7-A3F2-P3 | `1d88f5edff8b431da7068e2fb3055d600b4ae5a3` | `0cf13126e4ce2ecaf16a825609e8ae6210da1fb6cffaccc70a4c1bb2694abc66` |
+| AUDIT | `R5_17_B7_A3F2_P6_AUDIT_BIOME4_RUNTIME_SOURCE_AND_PALEO_CO2_SOIL_AUTHORITY.py` |  | `780b9f4159b1c620ac6b70de969d8881536c8cfb` | `da3c3efbf32e9d85c02112cc242df9a7f9ec8ebd4c8e439a03f600fbe4b82475` |
 | AUTHORITY_JSON | `R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.json` |  | `bc039549bbdf51f41d9466bcfef9ed3d602d01d4` | `0ac4ab015dbd6f46259cc85e9a758573aa13822dfe9e6e9fa1a62697ab627e7f` |
+| AUTHORITY_JSON | `R5_17_B7_A3F2_P6_BIOME4_RUNTIME_SOURCE_AND_PALEO_CO2_SOIL_AUTHORITY_RECOVERY.json` |  | `9cd86f0bc483580bae799bca51b5df9aa2fb08f3` | `92b0541b1ccf15b4e0f51407653c8b14235b5e837fcda8284adb02a37046ed2c` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P1_ADJUDICATE_RANGE_DYNAMICS_PROVIDER.py` |  | `182d786d891feec70b5254dccddd588c615611a4` | `1188cca7d376624cf0789a851add5b7934239859ed7dc055b5b291a0327fa954` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P2_ADJUDICATE_MACROECOLOGICAL_RESOURCE_PROVIDER.py` |  | `1ddcdcb45ad25bc684a5ca117b5a5b251da541c3` | `2a0cd2961c18158f9e9e245931c8c5e839865828dcee5c154811c44cd7579207` |
 | PYTHON_RUNNER_SOURCE | `R5_17_B7_A3F2_P4_RECOVER_PHYSICAL_NPP_AUTHORITY.py` |  | `d932291f3b9f4ca73f37839689c76eba637a4f3d` | `aadff83bfe7f0cb5cc1e5e5c95439d881f2efbbebce59f593748320e37dfc05b` |
@@ -5319,6 +5321,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | REFERENCE | `R5_17_B7_A3F2_P4_PHYSICAL_NPP_AUTHORITY_RECOVERY.md` | R5.17-B7-A3F2-P4 | `521aa68b917659871ca322b241537601e77b4e42` | `e0083fe22318aac7961080b42351949b3ba6bd9a6a6e05b9093380d616ce0974` |
 | REFERENCE | `R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.json` |  | `d9fab74c3293ff0b2831f1a2a95fc0dee8a56f14` | `2a66096a00e077dae4756bbee46908487be4f6218c295e0c99d1c672bb99e3c6` |
 | REFERENCE | `R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.md` | R5.17-B7-A3F2-P5 | `59422df10f5fbe34d1d8a75ddb285844f06ba256` | `cd5a0f81d3a783c4341c9985e9eea1ea20acca9f77baec3df6a2248b05b991ff` |
+| REFERENCE | `R5_17_B7_A3F2_P6_BIOME4_RUNTIME_SOURCE_AND_PALEO_CO2_SOIL_AUTHORITY_RECOVERY.md` | R5.17-B7-A3F2-P6 | `3ce4c04a2b69df6588c76fdf7fd5ca3bab4c0d9a` | `ee496a2557e899d6730342b9d78e65f86d4a641abb8f7dcbfe45be8fb6be853d` |
 
 ### R5.2
 
@@ -5993,7 +5996,7 @@ The index is navigational evidence only. It does not promote an indexed file to 
 | CONTRACT_PROTOCOL | `tests/test_r416_recovered_metric_target_protocol.py` |  | `f449ee200f7bd79edb726af0b1244f943f9015b3` | `dc69e93efa1c27b34c4785350b1a4a1a89d0735f428d06883d654f78118db2b9` |
 | CONTRACT_PROTOCOL | `tests/test_r420_p2_adapter_preflight_target_protocol_repair.py` |  | `0ba9955a48465e85faa1d311231b858978b50132` | `324985956b061c29f42c9347f7997cf11d8038d809685a2b0e4fadcfb94b1a89` |
 | CONTRACT_PROTOCOL | `tests/test_r425_target_protocol_preflight_geonomics_j14_discovery.py` |  | `29948b844c3d852089e32980e3aed174b6400d18` | `70427c7a999b70dc40eb305b6389e63230760fd065cb006f5ca3a5bb867538a3` |
-| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `b26f35de90ac0c85388905f44245a3481c847f24` | `864661173786996c7d83e3d661330d565455e81e17c6fd2138b9448bb4fb7428` |
+| CURRENT_STATE | `ARCANA_WORLD_CURRENT_STATE.md` | ARCANA WorldSim — Current State Authority | `d206bb6cc01572e068bf3503652ffac73688311e` | `60bf47c4022bc53ed26b3d45b2e836b325cf6ac69a64543cc2d77101f15ef3d4` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6C.md` | Next Stage Handoff — v0.6D | `7f40ba60fb95c58d1c2dd7b4239f27850a6b56fd` | `25a4900ac439c64373224badfa83f6eb7bc5db36dd9c4ccd88a3511963f4eb50` |
 | HANDOFF | `NEXT_STAGE_HANDOFF_v0_6D.md` | Next Stage Handoff — v0.6D -> v0.6D1 | `fb2d13c1bdb9b5ebcdc5c48a44050ba47a9203cf` | `a3d7fb6831b065a3d805fadc9ec09e809ca311e430399877c9aa6a5bff5e996c` |
 | MANIFEST | `PACKAGE_MANIFEST_v0_6D.json` |  | `dfe247842b21021ea0e802689ffb3c2cce36a028` | `a3ac330f4825c2b4b53a8b874aaf0c83587eebbee338761d44a4f4fa21ee7241` |

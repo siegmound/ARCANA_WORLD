@@ -1,0 +1,105 @@
+{
+  "authority_recovery_gate": {
+    "biome4_runtime_source": {
+      "exact_version_pinned": false,
+      "license_provenance_recovered": false,
+      "runtime_identity_verified": false,
+      "source_provenance_recovered": false,
+      "status": "MISSING"
+    },
+    "paleo_co2": {
+      "constant_hold_or_silent_fill": false,
+      "physical_authority_present": false,
+      "required_snapshot_coverage": false,
+      "status": "MISSING",
+      "units_and_provenance_verified": false
+    },
+    "soil": {
+      "hydraulic_or_percolation_properties_present": false,
+      "physical_authority_present": false,
+      "status": "MISSING",
+      "units_and_provenance_verified": false,
+      "water_holding_capacity_present": false
+    }
+  },
+  "governance": {
+    "AQUATIC_MARINE_RESOURCE_SUPPORT": "NOT_MATERIALIZED",
+    "BIOME4_invoked": false,
+    "Madingley_invoked": false,
+    "animal_resource_support_materialized": false,
+    "canonical_mutation": false,
+    "historical_abundance_materialized": false,
+    "historical_species_range_materialized": false,
+    "human_management_used": false,
+    "k_x_t_materialized": false,
+    "population_target_used": false
+  },
+  "method": "Repository-local authority inventory with exact-file SHA256 and Git blob registration; no interpolation, extrapolation, proxy rescaling, external provider invocation, or physical-NPP synthesis.",
+  "normalized_proxy_rescaling_authorized": false,
+  "parent": {
+    "decision": "INTRODUCE_BIOME4_PROVIDER",
+    "disposition": "PROVIDER_SELECTED_INPUT_RECOVERY_REQUIRED",
+    "stage": "R5.17-B7-A3F2-P5"
+  },
+  "physical_npp_materialized": false,
+  "production_pilot_authorized": false,
+  "provider_suitability_decision": "BLOCKED_MISSING_BIOME4_RUNTIME_SOURCE_AND_INPUT_AUTHORITIES",
+  "recommended_next_operation": "R5.17-B7-A3F2-P7 BIOME4 INPUT AUTHORITY RECOVERY OR SCIENTIFIC RE-ADJUDICATION",
+  "recovered_authority": {
+    "a1_forage_and_r333_r334": "trophic/resource proxies, not physical NPP, CO2, or soil authority",
+    "arcana_climate_and_hydrology": "proxy or non-equivalent for BIOME4 physical paleo input requirements",
+    "p5_crosswalk": "BIOME4 selected, but exact runtime/source and required physical inputs remain unresolved"
+  },
+  "repository": {
+    "branch": "main",
+    "head": "3e4bf704021f2205ca1fdb3c3fe102b78304ed0a"
+  },
+  "required_next_inputs": [
+    "exact BIOME4 runtime/version/source/license authority",
+    "governed physical paleo-CO2 authority covering each authorized snapshot",
+    "governed physical soil water-holding and hydraulic/percolation authority",
+    "provider-compatible units, missing-value, uncertainty, and provenance contracts"
+  ],
+  "selected_provider": "BIOME4",
+  "sources": {
+    "b7_contract": {
+      "available": true,
+      "git_blob_oid": "4a7f05d1194435d5bfb71257f8da5c9b0a30a049",
+      "path": "R5_17_B7_BIOLOGICAL_FOOD_SUPPORT_CONTRACT.md",
+      "role": "b7_contract",
+      "sha256": "dca7608824d227729822ed4fbf68eb6fb37245b42c9460035b5bfa0b32e37f6f",
+      "size_bytes": 4103,
+      "tracked": true
+    },
+    "madingley_runtime_audit": {
+      "available": true,
+      "git_blob_oid": "729c027a0099f7a05098fb12146bc809ea322bd3",
+      "path": "R5_17_B7_A3F2_P3_MADINGLEY_RUNTIME_AND_INPUT_BINDING_AUDIT.json",
+      "role": "madingley_runtime_audit",
+      "sha256": "b379af0518e6e75dfc26552875274946eeb171d2bdcbb6230c8205cd4742c4ee",
+      "size_bytes": 11228,
+      "tracked": true
+    },
+    "p5": {
+      "available": true,
+      "git_blob_oid": "d9fab74c3293ff0b2831f1a2a95fc0dee8a56f14",
+      "path": "R5_17_B7_A3F2_P5_PHYSICAL_NPP_PROVIDER_ADJUDICATION.json",
+      "role": "p5",
+      "sha256": "2a66096a00e077dae4756bbee46908487be4f6218c295e0c99d1c672bb99e3c6",
+      "size_bytes": 10988,
+      "tracked": true
+    },
+    "suitability_gate": {
+      "available": true,
+      "git_blob_oid": "6f3ed937a6332283897cf83860c9a772017e662b",
+      "path": "SCIENTIFIC_ENGINE_SUITABILITY_GATE.md",
+      "role": "suitability_gate",
+      "sha256": "d2a8ec5819f2610fa8c5578bd1c7004268dadf3b035531ce49a53afcbb89160c",
+      "size_bytes": 13574,
+      "tracked": true
+    }
+  },
+  "stage": "R5.17-B7-A3F2-P6",
+  "status": "P6_GATE_COMPLETE_BLOCKED_INPUT_AUTHORITY_RECOVERY_REQUIRED",
+  "temporal_strategy": "INDEPENDENT_ECOLOGICAL_OPPORTUNITY_SNAPSHOTS"
+}
