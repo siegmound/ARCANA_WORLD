@@ -1,0 +1,70 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5C-LS",
+  "head_basis": "27c0e90a9b4e95d73f03c63039811b8f4405cece",
+  "source_hashes_verified": true,
+  "shoreline_source": "shoreline_state_I.npz",
+  "shoreline_sha256": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+  "gum_grid_evaluated": 249840,
+  "land_state_counts": {
+    "FULLY_LAND_SUPPORTED": 64025,
+    "FULLY_OCEAN_SUPPORTED": 180659,
+    "MIXED_LAND_OCEAN_SUPPORTED": 4809,
+    "OUTSIDE_ARCANA_SHORELINE_COVERAGE": 347
+  },
+  "overlap_conservation": {
+    "min_error": 0,
+    "max_error": 1.1102230246251565e-16,
+    "tolerance": 1e-12
+  },
+  "conflict_cross_tabs": {
+    "Mu": {
+      "land": 112,
+      "ocean": 229,
+      "mixed": 5,
+      "outside": 0
+    },
+    "coastal_family": {
+      "land": 75,
+      "ocean": 422,
+      "mixed": 5,
+      "outside": 0
+    },
+    "water_non_material": {
+      "land": 278,
+      "ocean": 785,
+      "mixed": 8,
+      "outside": 0
+    },
+    "Du": {
+      "land": 5518,
+      "ocean": 18909,
+      "mixed": 493,
+      "outside": 8
+    },
+    "Us": {
+      "land": 1273,
+      "ocean": 1736,
+      "mixed": 102,
+      "outside": 0
+    },
+    "Ea": {
+      "land": 40,
+      "ocean": 19,
+      "mixed": 1,
+      "outside": 0
+    }
+  },
+  "crosswalk_changed": false,
+  "resampling": false,
+  "reprojection": false,
+  "majority_threshold": false,
+  "land_state_bound": true,
+  "parent_materialized": false,
+  "soil_created": false,
+  "temporal_reconstruction": false,
+  "p7q_reopened": false,
+  "scientific_authority_register_mutated": false,
+  "canonical_pipeline_maturity": "L1_SOURCE_BOUND_PARTIAL",
+  "decision": "AUTHORIZE_P7Q_PRE5C_STATIC_SOURCE_BINDING_REBUILD_WITH_ARCANA_LAND_STATE_CONTRACT",
+  "verdict": "PASS_P7Q_PRE5C_ARCANA_LAND_STATE_BINDING_ADJUDICATED"
+}
