@@ -1,0 +1,367 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5D",
+  "payload_sha256_verified": true,
+  "payload_bytes": 6240025,
+  "records": 249840,
+  "terrestrial_completion_denominator": 69181,
+  "outside_terrestrial_domain": 180659,
+  "baseline": {
+    "land_state": {
+      "OCEAN": 180659,
+      "UNKNOWN_LAND_STATE": 347,
+      "COASTAL_TRANSITION": 4809,
+      "LAND": 64025
+    },
+    "material_branch": {
+      "OUTSIDE_SCOPE": 180659,
+      "UNKNOWN_MATERIAL": 64579,
+      "MARINE_DERIVED_EXPOSED": 109,
+      "TRANSPORTED_ALLUVIAL": 1702,
+      "GLACIAL_OR_GLACIOFLUVIAL": 770,
+      "COASTAL": 74,
+      "TRANSPORTED_COLLUVIAL": 205,
+      "LACUSTRINE": 108,
+      "ORGANIC": 44,
+      "TRANSPORTED_AEOLIAN": 1506,
+      "EVAPORITIC": 83,
+      "PYROCLASTIC": 1
+    },
+    "state_support": {
+      "OUTSIDE_SCOPE": 180659,
+      "ELIGIBILITY_ONLY": 5767,
+      "MISSING_SOURCE": 50568,
+      "DERIVED_SUPPORTED": 183,
+      "DIRECT_SUPPORTED": 3808,
+      "SEMANTICALLY_UNSUPPORTED": 8855
+    },
+    "applicability": {
+      "DOES_NOT_APPLY": 180659,
+      "UNKNOWN": 65190,
+      "APPLIES": 3991
+    },
+    "temporal_rule": {
+      "OUTSIDE_SCOPE": 180659,
+      "ENDPOINT_CONSTRAINED": 69181
+    },
+    "persistence": {
+      "NOT_APPLICABLE": 180659,
+      "UNKNOWN": 69181
+    },
+    "formation_interval": {
+      "NOT_APPLICABLE": 180659,
+      "UNKNOWN": 69181
+    }
+  },
+  "static_branch_completeness": {
+    "STATIC_BRANCH_RESOLVED": 4602,
+    "STATIC_BRANCH_CONDITIONAL": 1923,
+    "STATIC_BRANCH_UNKNOWN_SEMANTIC": 8855,
+    "STATIC_BRANCH_UNKNOWN_SOURCE": 50568,
+    "STATIC_BRANCH_OUTSIDE_SCOPE": 180659
+  },
+  "unknown_material_decomposition": {
+    "GUM_NODATA_TERRESTRIAL": {
+      "count": 54412,
+      "percent_terrestrial": 78.651653,
+      "land_state": {
+        "UNKNOWN_LAND_STATE": 330,
+        "COASTAL_TRANSITION": 3514,
+        "LAND": 50568
+      },
+      "support_state": {
+        "ELIGIBILITY_ONLY": 3844,
+        "MISSING_SOURCE": 50568
+      },
+      "source_code": {
+        "NODATA": 54412
+      }
+    },
+    "GUM_VALID_SEMANTICALLY_UNRESOLVED": {
+      "count": 8855,
+      "percent_terrestrial": 12.799757,
+      "land_state": {
+        "LAND": 8855
+      },
+      "support_state": {
+        "SEMANTICALLY_UNSUPPORTED": 8855
+      },
+      "source_code": {
+        "Gl": 109,
+        "Ca": 938,
+        "Wu": 275,
+        "Al": 444,
+        "Us": 1311,
+        "Ae": 1,
+        "Gp": 6,
+        "Du": 5771
+      }
+    },
+    "GUM_VALID_NON_MATERIAL": {
+      "count": 0,
+      "percent_terrestrial": 0.0,
+      "land_state": {},
+      "support_state": {},
+      "source_code": {}
+    },
+    "GUM_VALID_CONDITIONAL": {
+      "count": 1312,
+      "percent_terrestrial": 1.896474,
+      "land_state": {
+        "COASTAL_TRANSITION": 1295,
+        "UNKNOWN_LAND_STATE": 17
+      },
+      "support_state": {
+        "ELIGIBILITY_ONLY": 1312
+      },
+      "source_code": {
+        "Mu": 5,
+        "Gu": 35,
+        "Gt": 120,
+        "Cu": 55,
+        "Au": 136,
+        "Gf": 46,
+        "Gl": 29,
+        "Ca": 63,
+        "Op": 23,
+        "Yu": 4,
+        "Al": 32,
+        "Wu": 8,
+        "El": 39,
+        "Du": 505,
+        "Af": 1,
+        "Eu": 45,
+        "Us": 96,
+        "Gm": 1,
+        "Er": 9,
+        "Gp": 4,
+        "Ed": 37,
+        "Lu": 4,
+        "Ea": 2,
+        "Pu": 2,
+        "Ps": 2,
+        "Yd": 3,
+        "Ap": 6
+      }
+    }
+  },
+  "gap_counts": {
+    "G0_COMPLETE_STATIC_CLASSIFICATION": 3991,
+    "G1_SOURCE_COVERAGE_GAP": 54412,
+    "G2_SEMANTIC_CLASSIFICATION_GAP": 8855,
+    "G3_LAND_STATE_ELIGIBILITY_GAP": 5156,
+    "G4_BEDROCK_RESIDUAL_REGOLITH_CLASSIFIER_GAP": 50568,
+    "G5_DEPTH_THICKNESS_GAP": 69181,
+    "G6_TEXTURE_GRAIN_SIZE_GAP": 69181,
+    "G7_BULK_DENSITY_GAP": 69181,
+    "G8_MINERALOGY_GAP": 69181,
+    "G9_VERTICAL_PROFILE_GAP": 69181,
+    "G10_GLIM_CONDITIONER_BINDING_GAP": 50568,
+    "G11_CRYOSPHERE_PROCESS_GAP": 69181,
+    "G12_AEOLIAN_PROCESS_DRIVER_GAP": 69181,
+    "G13_DEPOSITIONAL_HISTORY_GAP": 69181,
+    "G14_TEMPORAL_PERSISTENCE_GAP": 69181,
+    "G15_SOURCE_CONFLICT_OR_AMBIGUITY": 8855,
+    "G16_OUTSIDE_ARCANA_SHORELINE_COVERAGE": 347,
+    "G17_OTHER_EXPLICIT_GAP": 0
+  },
+  "bedrock_residual_adjudication": {
+    "unknown_material_upper_bound": 64579,
+    "direct_classifier_candidate_count": 50568,
+    "direct_classifier_candidate_fraction_terrestrial": 73.095214,
+    "semantic_adjudication_before_classifier_count": 8855,
+    "land_state_blocked_before_classifier_count": 5156,
+    "classifier_not_required_for_current_branch": 4602,
+    "inferred_branch_assignments": 0,
+    "dedicated_classifier_mandatory": true
+  },
+  "glim_role": {
+    "eligible_conditioner_count": 0,
+    "status_partition": {
+      "ELIGIBLE_NOW": 0,
+      "BLOCKED_BY_CLASSIFIER": 50568,
+      "DEFERRED_PENDING_SEMANTIC_ADJUDICATION": 8855,
+      "BLOCKED_BY_LAND_STATE": 5156,
+      "NOT_REQUIRED_FOR_CURRENT_MATERIAL_BRANCH": 4602,
+      "OUTSIDE_SCOPE_OCEAN": 180659
+    },
+    "operational_candidate_cells": 50568,
+    "role": "SURFACE_LITHOLOGY_CONDITIONER_ONLY",
+    "replacement_for_gum": false,
+    "creates_bedrock": false
+  },
+  "depth": {
+    "known": 0,
+    "unknown_terrestrial": 69181,
+    "provider_candidate": "Pelletier et al. ORNL DAAC 1304",
+    "status": "OPTIONAL_FOR_L2_BUT_MANDATORY_BEFORE_PROFILE_INITIALIZATION"
+  },
+  "texture": {
+    "quantitative_known": 0,
+    "coarse_class_constraint_candidates": 4602,
+    "quantitative_unavailable": 69181,
+    "rosetta_used": false
+  },
+  "bulk_density": {
+    "known": 0,
+    "required_before_soil_initialization": true,
+    "provider_bound": false
+  },
+  "mineralogy": {
+    "known": 0,
+    "required_before_soil_initialization": true,
+    "provider_bound": false
+  },
+  "profile": {
+    "known_layers": 0,
+    "unknown_profile_terrestrial": 69181,
+    "minimum_before_pedogenesis": "INITIAL_PROFILE",
+    "generated": false
+  },
+  "blockers": {
+    "STATIC_COMPLETION_BLOCKERS": [
+      "G4_BEDROCK_RESIDUAL_REGOLITH_CLASSIFIER_GAP",
+      "G5_DEPTH_THICKNESS_GAP",
+      "G6_TEXTURE_GRAIN_SIZE_GAP",
+      "G7_BULK_DENSITY_GAP",
+      "G8_MINERALOGY_GAP",
+      "G9_VERTICAL_PROFILE_GAP"
+    ],
+    "TEMPORAL_RECONSTRUCTION_BLOCKERS": [
+      "G11_CRYOSPHERE_PROCESS_GAP",
+      "G12_AEOLIAN_PROCESS_DRIVER_GAP",
+      "G13_DEPOSITIONAL_HISTORY_GAP",
+      "G14_TEMPORAL_PERSISTENCE_GAP",
+      "G16_OUTSIDE_ARCANA_SHORELINE_COVERAGE"
+    ]
+  },
+  "maturity": {
+    "canonical": "L1_SOURCE_BOUND_PARTIAL",
+    "prototype": "L2_STATIC_STATE_CANDIDATE_PARTIAL",
+    "l3_authorized": false
+  },
+  "governance": {
+    "p7q_reopened": false,
+    "canonical_parent_material_created": false,
+    "physical_soil_created": false,
+    "new_simulation": false,
+    "external_acquisition": false,
+    "scientific_authority_register_mutated": false,
+    "human_management_used": false,
+    "population_target_used": false,
+    "k_x_t_materialized": false
+  },
+  "provider_requirement_matrix": [
+    {
+      "gap_id": "G4",
+      "gap_name": "bedrock/residual classifier",
+      "affected_cells": 50568,
+      "affected_fraction_terrestrial": 73.095214,
+      "current_authority": "PRE5C-SR aggregated state",
+      "candidate_provider": "ARCANA process classifier + researched specialist",
+      "provider_status": "MISSING",
+      "acquisition_required": true,
+      "runtime_required": false,
+      "new_simulation_required": false,
+      "can_be_solved_by_existing_ARCANA": true,
+      "can_be_solved_by_existing_external_payload": false,
+      "scientific_blocker_level": "HIGH",
+      "next_gate": "P7Q_PRE5E_RESIDUAL_BEDROCK_CLASSIFIER_PROVIDER_GATE"
+    },
+    {
+      "gap_id": "G5",
+      "gap_name": "depth/thickness",
+      "affected_cells": 69181,
+      "affected_fraction_terrestrial": 100.0,
+      "current_authority": "PRE5C-SR aggregated state",
+      "candidate_provider": "Pelletier ORNL DAAC 1304",
+      "provider_status": "NOT_ACQUIRED",
+      "acquisition_required": true,
+      "runtime_required": false,
+      "new_simulation_required": false,
+      "can_be_solved_by_existing_ARCANA": false,
+      "can_be_solved_by_existing_external_payload": false,
+      "scientific_blocker_level": "HIGH",
+      "next_gate": "P7Q_PRE5E_DEPTH_PROVIDER_ACQUISITION_GATE"
+    },
+    {
+      "gap_id": "G6",
+      "gap_name": "texture/grain size",
+      "affected_cells": 69181,
+      "affected_fraction_terrestrial": 100.0,
+      "current_authority": "PRE5C-SR aggregated state",
+      "candidate_provider": "GUM coarse constraints; quantitative specialist required",
+      "provider_status": "PARTIAL",
+      "acquisition_required": false,
+      "runtime_required": false,
+      "new_simulation_required": false,
+      "can_be_solved_by_existing_ARCANA": false,
+      "can_be_solved_by_existing_external_payload": false,
+      "scientific_blocker_level": "HIGH",
+      "next_gate": "P7Q_PRE5E_STATIC_COMPLETION_PROVIDER_PLAN"
+    },
+    {
+      "gap_id": "G7",
+      "gap_name": "bulk density",
+      "affected_cells": 69181,
+      "affected_fraction_terrestrial": 100.0,
+      "current_authority": "PRE5C-SR aggregated state",
+      "candidate_provider": "external physical provider",
+      "provider_status": "MISSING",
+      "acquisition_required": true,
+      "runtime_required": false,
+      "new_simulation_required": false,
+      "can_be_solved_by_existing_ARCANA": false,
+      "can_be_solved_by_existing_external_payload": false,
+      "scientific_blocker_level": "HIGH",
+      "next_gate": "P7Q_PRE5E_STATIC_COMPLETION_PROVIDER_PLAN"
+    },
+    {
+      "gap_id": "G8",
+      "gap_name": "mineralogy",
+      "affected_cells": 69181,
+      "affected_fraction_terrestrial": 100.0,
+      "current_authority": "PRE5C-SR aggregated state",
+      "candidate_provider": "Ito & Wagai / Journet candidate",
+      "provider_status": "MISSING",
+      "acquisition_required": true,
+      "runtime_required": false,
+      "new_simulation_required": false,
+      "can_be_solved_by_existing_ARCANA": false,
+      "can_be_solved_by_existing_external_payload": false,
+      "scientific_blocker_level": "HIGH",
+      "next_gate": "P7Q_PRE5E_STATIC_COMPLETION_PROVIDER_PLAN"
+    },
+    {
+      "gap_id": "G9",
+      "gap_name": "vertical profile",
+      "affected_cells": 69181,
+      "affected_fraction_terrestrial": 100.0,
+      "current_authority": "PRE5C-SR aggregated state",
+      "candidate_provider": "future pedogenesis initializer",
+      "provider_status": "MISSING",
+      "acquisition_required": true,
+      "runtime_required": false,
+      "new_simulation_required": false,
+      "can_be_solved_by_existing_ARCANA": false,
+      "can_be_solved_by_existing_external_payload": false,
+      "scientific_blocker_level": "HIGH",
+      "next_gate": "P7Q_PRE5E_STATIC_COMPLETION_PROVIDER_PLAN"
+    },
+    {
+      "gap_id": "G10",
+      "gap_name": "GLiM conditioner binding",
+      "affected_cells": 50568,
+      "affected_fraction_terrestrial": 73.095214,
+      "current_authority": "GUM primary; GLiM unbound",
+      "candidate_provider": "GLiM",
+      "provider_status": "BLOCKED_PENDING_CLASSIFIER",
+      "acquisition_required": false,
+      "runtime_required": false,
+      "new_simulation_required": false,
+      "can_be_solved_by_existing_ARCANA": false,
+      "can_be_solved_by_existing_external_payload": false,
+      "scientific_blocker_level": "HIGH",
+      "next_gate": "AFTER_P7Q_PRE5E_CLASSIFIER"
+    }
+  ]
+}

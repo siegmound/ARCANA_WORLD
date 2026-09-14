@@ -1,0 +1,13 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5D",
+  "ordered_dependencies": [
+    "G4_BEDROCK_RESIDUAL_REGOLITH_CLASSIFIER_GAP",
+    "G5_DEPTH_THICKNESS_GAP",
+    "G6_TEXTURE_GRAIN_SIZE_GAP",
+    "G7_BULK_DENSITY_GAP",
+    "G8_MINERALOGY_GAP",
+    "G9_VERTICAL_PROFILE_GAP"
+  ],
+  "priority_rule": "classifier before conditioner; depth before profile; texture before Rosetta; static completion before temporal replay",
+  "next_single_gate": "AUTHORIZE_P7Q_PRE5E_RESIDUAL_BEDROCK_CLASSIFIER_PROVIDER_GATE"
+}
