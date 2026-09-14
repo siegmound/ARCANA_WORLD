@@ -1,0 +1,19 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5E",
+  "nodes": [
+    "raw observations",
+    "topography/climate/geology covariates",
+    "GLiM",
+    "Pelletier",
+    "Shangguan DTB",
+    "future ARCANA classifier"
+  ],
+  "edges": [
+    "raw observations -> Shangguan",
+    "topography/climate/geology covariates -> Pelletier",
+    "topography/remote sensing/GLiM -> Shangguan",
+    "Pelletier -> comparison/related structural evidence",
+    "Shangguan + Pelletier + GLiM -> dependency-aware future classifier"
+  ],
+  "independence_rule": "Do not count dependent providers as independent evidence votes."
+}
