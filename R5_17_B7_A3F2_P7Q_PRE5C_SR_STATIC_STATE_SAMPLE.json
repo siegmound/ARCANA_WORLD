@@ -1,0 +1,490 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5C-SR",
+  "representative_records": [
+    {
+      "schema_version": "ARCANA_P7Q_TEMPORAL_PARENT_STATE_SCHEMA_V1",
+      "cell_id": "PRE5C_SR_0KA_R000_C000",
+      "age_ka": 0,
+      "snapshot_index": 11,
+      "land_state": "OCEAN",
+      "material_branch": "OUTSIDE_SCOPE",
+      "material_class": {
+        "value": "NODATA",
+        "support_status": "OUTSIDE_SCOPE"
+      },
+      "genetic_class": null,
+      "state_support": "OUTSIDE_SCOPE",
+      "temporal_rule": "OUTSIDE_SCOPE",
+      "formation_interval": {
+        "status": "NOT_APPLICABLE",
+        "min_ka": null,
+        "max_ka": null,
+        "evidence_status": "Terrestrial parent material does not apply to ocean cells."
+      },
+      "applicability": {
+        "valid_from_ka": null,
+        "valid_to_ka": null,
+        "formation_min_ka": null,
+        "formation_max_ka": null,
+        "termination_min_ka": null,
+        "termination_max_ka": null,
+        "age_evidence_status": "ENDPOINT_ONLY_0KA",
+        "persistence_status": "NOT_APPLICABLE",
+        "snapshot_applicability": "DOES_NOT_APPLY"
+      },
+      "source_provenance": [
+        {
+          "source_id": "GUM_v1.0",
+          "source_type": "dataset",
+          "source_artifact": "gum_v1.0_0point5deg.txt.asc",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "10.1002/2017GC007273; 10.1594/PANGAEA.884822",
+          "source_hash_if_acquired": "6a2d47f2bc8f6df745c569003f1f536d37c78153e98b54005bfbcccc53d6ee63",
+          "source_native_resolution": "0.5 degree raster",
+          "source_semantic_role": "partial transported unconsolidated material authority candidate",
+          "adapter_id": "GUM_ASCII_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "No physical depth, texture, density, mineralogy, or profile.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "GUM_v1.0_classnames",
+          "source_type": "dataset",
+          "source_artifact": "classnames.txt",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "GUM v1.0 official class lookup",
+          "source_hash_if_acquired": "6099d9c51251df0eb50549537f598b0962f8e4e8dd4a04ea9df1d4a5bb64108c",
+          "source_native_resolution": "lookup table",
+          "source_semantic_role": "official numeric-to-code semantic authority",
+          "adapter_id": "GUM_CLASSNAME_LOOKUP_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Code identity only; not physical soil state.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "ARCANA_B6_D2C1_SHORELINE",
+          "source_type": "dataset",
+          "source_artifact": "shoreline_state_I.npz",
+          "source_version": "v0_5_5I_SEALED",
+          "source_doi_or_reference": "ARCANA governed shoreline state",
+          "source_hash_if_acquired": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+          "source_native_resolution": "0.25 degree grid",
+          "source_semantic_role": "present land-state authority for binding",
+          "adapter_id": "ARCANA_SHORELINE_BIND_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Present endpoint land state only; no historical reconstruction.",
+          "acquisition_status": "ACQUIRED"
+        }
+      ],
+      "depth_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "texture_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "profile_state": {
+        "support_status": "MISSING_SOURCE",
+        "profile_kind": "UNKNOWN_PROFILE",
+        "layers": []
+      },
+      "uncertainty": {
+        "categories": [
+          "SOURCE_CLASS_UNCERTAINTY",
+          "SPATIAL_REMAP_UNCERTAINTY",
+          "TEMPORAL_AGE_UNCERTAINTY",
+          "UNKNOWN_SOURCE_COMPLETENESS"
+        ],
+        "representation": "QUALITATIVE",
+        "derivation": "Static source-binding candidate; no interpolation, extrapolation, resampling, or physical soil inference."
+      },
+      "conflict_flags": [],
+      "missing_fields": [],
+      "transition_provenance": [],
+      "validation_status": "PASS"
+    },
+    {
+      "schema_version": "ARCANA_P7Q_TEMPORAL_PARENT_STATE_SCHEMA_V1",
+      "cell_id": "PRE5C_SR_0KA_R000_C284",
+      "age_ka": 0,
+      "snapshot_index": 11,
+      "land_state": "OCEAN",
+      "material_branch": "OUTSIDE_SCOPE",
+      "material_class": {
+        "value": "Du",
+        "support_status": "OUTSIDE_SCOPE"
+      },
+      "genetic_class": "Du",
+      "state_support": "OUTSIDE_SCOPE",
+      "temporal_rule": "OUTSIDE_SCOPE",
+      "formation_interval": {
+        "status": "NOT_APPLICABLE",
+        "min_ka": null,
+        "max_ka": null,
+        "evidence_status": "Terrestrial parent material does not apply to ocean cells."
+      },
+      "applicability": {
+        "valid_from_ka": null,
+        "valid_to_ka": null,
+        "formation_min_ka": null,
+        "formation_max_ka": null,
+        "termination_min_ka": null,
+        "termination_max_ka": null,
+        "age_evidence_status": "ENDPOINT_ONLY_0KA",
+        "persistence_status": "NOT_APPLICABLE",
+        "snapshot_applicability": "DOES_NOT_APPLY"
+      },
+      "source_provenance": [
+        {
+          "source_id": "GUM_v1.0",
+          "source_type": "dataset",
+          "source_artifact": "gum_v1.0_0point5deg.txt.asc",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "10.1002/2017GC007273; 10.1594/PANGAEA.884822",
+          "source_hash_if_acquired": "6a2d47f2bc8f6df745c569003f1f536d37c78153e98b54005bfbcccc53d6ee63",
+          "source_native_resolution": "0.5 degree raster",
+          "source_semantic_role": "partial transported unconsolidated material authority candidate",
+          "adapter_id": "GUM_ASCII_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "No physical depth, texture, density, mineralogy, or profile.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "GUM_v1.0_classnames",
+          "source_type": "dataset",
+          "source_artifact": "classnames.txt",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "GUM v1.0 official class lookup",
+          "source_hash_if_acquired": "6099d9c51251df0eb50549537f598b0962f8e4e8dd4a04ea9df1d4a5bb64108c",
+          "source_native_resolution": "lookup table",
+          "source_semantic_role": "official numeric-to-code semantic authority",
+          "adapter_id": "GUM_CLASSNAME_LOOKUP_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Code identity only; not physical soil state.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "ARCANA_B6_D2C1_SHORELINE",
+          "source_type": "dataset",
+          "source_artifact": "shoreline_state_I.npz",
+          "source_version": "v0_5_5I_SEALED",
+          "source_doi_or_reference": "ARCANA governed shoreline state",
+          "source_hash_if_acquired": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+          "source_native_resolution": "0.25 degree grid",
+          "source_semantic_role": "present land-state authority for binding",
+          "adapter_id": "ARCANA_SHORELINE_BIND_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Present endpoint land state only; no historical reconstruction.",
+          "acquisition_status": "ACQUIRED"
+        }
+      ],
+      "depth_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "texture_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "profile_state": {
+        "support_status": "MISSING_SOURCE",
+        "profile_kind": "UNKNOWN_PROFILE",
+        "layers": []
+      },
+      "uncertainty": {
+        "categories": [
+          "SOURCE_CLASS_UNCERTAINTY",
+          "SPATIAL_REMAP_UNCERTAINTY",
+          "TEMPORAL_AGE_UNCERTAINTY",
+          "UNKNOWN_SOURCE_COMPLETENESS"
+        ],
+        "representation": "QUALITATIVE",
+        "derivation": "Static source-binding candidate; no interpolation, extrapolation, resampling, or physical soil inference."
+      },
+      "conflict_flags": [],
+      "missing_fields": [],
+      "transition_provenance": [],
+      "validation_status": "PASS"
+    },
+    {
+      "schema_version": "ARCANA_P7Q_TEMPORAL_PARENT_STATE_SCHEMA_V1",
+      "cell_id": "PRE5C_SR_0KA_R014_C494",
+      "age_ka": 0,
+      "snapshot_index": 11,
+      "land_state": "COASTAL_TRANSITION",
+      "material_branch": "UNKNOWN_MATERIAL",
+      "material_class": {
+        "value": "Mu",
+        "support_status": "ELIGIBILITY_ONLY"
+      },
+      "genetic_class": "Mu",
+      "state_support": "ELIGIBILITY_ONLY",
+      "temporal_rule": "ENDPOINT_CONSTRAINED",
+      "formation_interval": {
+        "status": "UNKNOWN",
+        "min_ka": null,
+        "max_ka": null,
+        "evidence_status": "No governed historical formation interval; endpoint-only candidate."
+      },
+      "applicability": {
+        "valid_from_ka": null,
+        "valid_to_ka": null,
+        "formation_min_ka": null,
+        "formation_max_ka": null,
+        "termination_min_ka": null,
+        "termination_max_ka": null,
+        "age_evidence_status": "ENDPOINT_ONLY_0KA",
+        "persistence_status": "UNKNOWN",
+        "snapshot_applicability": "UNKNOWN"
+      },
+      "source_provenance": [
+        {
+          "source_id": "GUM_v1.0",
+          "source_type": "dataset",
+          "source_artifact": "gum_v1.0_0point5deg.txt.asc",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "10.1002/2017GC007273; 10.1594/PANGAEA.884822",
+          "source_hash_if_acquired": "6a2d47f2bc8f6df745c569003f1f536d37c78153e98b54005bfbcccc53d6ee63",
+          "source_native_resolution": "0.5 degree raster",
+          "source_semantic_role": "partial transported unconsolidated material authority candidate",
+          "adapter_id": "GUM_ASCII_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "No physical depth, texture, density, mineralogy, or profile.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "GUM_v1.0_classnames",
+          "source_type": "dataset",
+          "source_artifact": "classnames.txt",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "GUM v1.0 official class lookup",
+          "source_hash_if_acquired": "6099d9c51251df0eb50549537f598b0962f8e4e8dd4a04ea9df1d4a5bb64108c",
+          "source_native_resolution": "lookup table",
+          "source_semantic_role": "official numeric-to-code semantic authority",
+          "adapter_id": "GUM_CLASSNAME_LOOKUP_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Code identity only; not physical soil state.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "ARCANA_B6_D2C1_SHORELINE",
+          "source_type": "dataset",
+          "source_artifact": "shoreline_state_I.npz",
+          "source_version": "v0_5_5I_SEALED",
+          "source_doi_or_reference": "ARCANA governed shoreline state",
+          "source_hash_if_acquired": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+          "source_native_resolution": "0.25 degree grid",
+          "source_semantic_role": "present land-state authority for binding",
+          "adapter_id": "ARCANA_SHORELINE_BIND_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Present endpoint land state only; no historical reconstruction.",
+          "acquisition_status": "ACQUIRED"
+        }
+      ],
+      "depth_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "texture_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "profile_state": {
+        "support_status": "MISSING_SOURCE",
+        "profile_kind": "UNKNOWN_PROFILE",
+        "layers": []
+      },
+      "uncertainty": {
+        "categories": [
+          "SOURCE_CLASS_UNCERTAINTY",
+          "SPATIAL_REMAP_UNCERTAINTY",
+          "TEMPORAL_AGE_UNCERTAINTY",
+          "UNKNOWN_SOURCE_COMPLETENESS"
+        ],
+        "representation": "QUALITATIVE",
+        "derivation": "Static source-binding candidate; no interpolation, extrapolation, resampling, or physical soil inference."
+      },
+      "conflict_flags": [
+        "LAND_MASK_CONFLICT"
+      ],
+      "missing_fields": [
+        "formation_history",
+        "depth",
+        "texture",
+        "bulk_density",
+        "mineralogy",
+        "vertical_profile"
+      ],
+      "transition_provenance": [
+        {
+          "source_id": "ARCANA_B6_D2C1_SHORELINE",
+          "source_type": "dataset",
+          "source_artifact": "shoreline_state_I.npz",
+          "source_version": "v0_5_5I_SEALED",
+          "source_doi_or_reference": "ARCANA governed shoreline state",
+          "source_hash_if_acquired": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+          "source_native_resolution": "0.25 degree grid",
+          "source_semantic_role": "present land-state authority for binding",
+          "adapter_id": "ARCANA_SHORELINE_BIND_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Present endpoint land state only; no historical reconstruction.",
+          "acquisition_status": "ACQUIRED"
+        }
+      ],
+      "validation_status": "PASS"
+    },
+    {
+      "schema_version": "ARCANA_P7Q_TEMPORAL_PARENT_STATE_SCHEMA_V1",
+      "cell_id": "PRE5C_SR_0KA_R024_C494",
+      "age_ka": 0,
+      "snapshot_index": 11,
+      "land_state": "LAND",
+      "material_branch": "MARINE_DERIVED_EXPOSED",
+      "material_class": {
+        "value": "Mu",
+        "support_status": "DERIVED_SUPPORTED"
+      },
+      "genetic_class": "Mu",
+      "state_support": "DERIVED_SUPPORTED",
+      "temporal_rule": "ENDPOINT_CONSTRAINED",
+      "formation_interval": {
+        "status": "UNKNOWN",
+        "min_ka": null,
+        "max_ka": null,
+        "evidence_status": "No governed historical formation interval; endpoint-only candidate."
+      },
+      "applicability": {
+        "valid_from_ka": null,
+        "valid_to_ka": null,
+        "formation_min_ka": null,
+        "formation_max_ka": null,
+        "termination_min_ka": null,
+        "termination_max_ka": null,
+        "age_evidence_status": "ENDPOINT_ONLY_0KA",
+        "persistence_status": "UNKNOWN",
+        "snapshot_applicability": "APPLIES"
+      },
+      "source_provenance": [
+        {
+          "source_id": "GUM_v1.0",
+          "source_type": "dataset",
+          "source_artifact": "gum_v1.0_0point5deg.txt.asc",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "10.1002/2017GC007273; 10.1594/PANGAEA.884822",
+          "source_hash_if_acquired": "6a2d47f2bc8f6df745c569003f1f536d37c78153e98b54005bfbcccc53d6ee63",
+          "source_native_resolution": "0.5 degree raster",
+          "source_semantic_role": "partial transported unconsolidated material authority candidate",
+          "adapter_id": "GUM_ASCII_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "No physical depth, texture, density, mineralogy, or profile.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "GUM_v1.0_classnames",
+          "source_type": "dataset",
+          "source_artifact": "classnames.txt",
+          "source_version": "v1.0",
+          "source_doi_or_reference": "GUM v1.0 official class lookup",
+          "source_hash_if_acquired": "6099d9c51251df0eb50549537f598b0962f8e4e8dd4a04ea9df1d4a5bb64108c",
+          "source_native_resolution": "lookup table",
+          "source_semantic_role": "official numeric-to-code semantic authority",
+          "adapter_id": "GUM_CLASSNAME_LOOKUP_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Code identity only; not physical soil state.",
+          "acquisition_status": "ACQUIRED"
+        },
+        {
+          "source_id": "ARCANA_B6_D2C1_SHORELINE",
+          "source_type": "dataset",
+          "source_artifact": "shoreline_state_I.npz",
+          "source_version": "v0_5_5I_SEALED",
+          "source_doi_or_reference": "ARCANA governed shoreline state",
+          "source_hash_if_acquired": "f99e40c41997dc67305e02c6b1be281ecc839f060a28dd045f2ae56689723f85",
+          "source_native_resolution": "0.25 degree grid",
+          "source_semantic_role": "present land-state authority for binding",
+          "adapter_id": "ARCANA_SHORELINE_BIND_V1",
+          "adapter_version": "1.0",
+          "input_state_ids": [],
+          "authority_class": "governed_candidate_input",
+          "semantic_ceiling": "Present endpoint land state only; no historical reconstruction.",
+          "acquisition_status": "ACQUIRED"
+        }
+      ],
+      "depth_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "texture_state": {
+        "support_status": "MISSING_SOURCE",
+        "value_status": "UNKNOWN",
+        "temporal_status": "NOT_MATERIALIZED",
+        "uncertainty": {}
+      },
+      "profile_state": {
+        "support_status": "MISSING_SOURCE",
+        "profile_kind": "UNKNOWN_PROFILE",
+        "layers": []
+      },
+      "uncertainty": {
+        "categories": [
+          "SOURCE_CLASS_UNCERTAINTY",
+          "SPATIAL_REMAP_UNCERTAINTY",
+          "TEMPORAL_AGE_UNCERTAINTY",
+          "UNKNOWN_SOURCE_COMPLETENESS"
+        ],
+        "representation": "QUALITATIVE",
+        "derivation": "Static source-binding candidate; no interpolation, extrapolation, resampling, or physical soil inference."
+      },
+      "conflict_flags": [],
+      "missing_fields": [
+        "formation_history",
+        "depth",
+        "texture",
+        "bulk_density",
+        "mineralogy",
+        "vertical_profile"
+      ],
+      "transition_provenance": [],
+      "validation_status": "PASS"
+    }
+  ]
+}
