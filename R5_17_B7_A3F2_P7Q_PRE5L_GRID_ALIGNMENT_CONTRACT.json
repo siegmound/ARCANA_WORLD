@@ -1,0 +1,38 @@
+{
+  "boundary_rule": "half-open xmin <= longitude < xmax and ymin <= latitude < ymax; exact global outer boundaries map to final edge cell",
+  "categorical_counts_aggregated": true,
+  "coordinate_transform": "native EPSG:8857 pixel centers inverse-transformed to EPSG:4326",
+  "future_record_schema": [
+    "cell_id",
+    "target_order_index",
+    "provider_total_pixel_centers",
+    "ocean_count",
+    "sink_count",
+    "bypass_count",
+    "source_count",
+    "missing_data_count",
+    "terrestrial_provider_count",
+    "classified_terrestrial_count",
+    "provider_class_set",
+    "provider_coverage_status",
+    "process_domain_disposition",
+    "alignment_uncertainty",
+    "source_provider",
+    "provider_version",
+    "provider_archive_sha256"
+  ],
+  "provider_crs": "EPSG:8857",
+  "provider_payload_identity": "PRE5K tile inventory hashes",
+  "provider_values_mutated": false,
+  "raster_reprojection": false,
+  "raster_resampling": false,
+  "selected_alignment": "NATIVE_PIXEL_CENTER_MEMBERSHIP_CROSSWALK",
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5L",
+  "target_grid": {
+    "cellsize": 0.5,
+    "ncols": 720,
+    "nrows": 347,
+    "xllcorner": -179.99998074964,
+    "yllcorner": -89.985256795408
+  }
+}

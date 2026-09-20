@@ -1,0 +1,11 @@
+{
+  "block_window_processing": true,
+  "crosswalk_materialization": "not executed in PRE5L",
+  "expected_native_pixels": "all pixels in 60 provider tiles, approximately 8.64 billion at 250 m global product scale",
+  "expected_tile_reads": 60,
+  "future_algorithm": "tile-centric streaming native Rasterio reads with vectorized EPSG:8857-to-EPSG:4326 pixel-center transform",
+  "future_output": "categorical counts and process disposition only",
+  "parallelism": "not required; sequential tile streaming is deterministic and avoids rereads",
+  "peak_memory": "one bounded uint8 window plus vectorized coordinate arrays",
+  "target_cell_windows": false
+}
