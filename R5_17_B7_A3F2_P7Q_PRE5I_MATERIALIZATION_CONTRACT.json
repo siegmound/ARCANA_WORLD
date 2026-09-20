@@ -1,0 +1,34 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5I",
+  "source_grid": {
+    "width": 172800,
+    "height": 67200,
+    "base_ifd_only": true,
+    "crs": "EPSG:4326"
+  },
+  "target_grid": {
+    "ncols": 720,
+    "nrows": 347,
+    "xllcorner": -179.99998074964,
+    "yllcorner": -89.985256795408,
+    "cellsize": 0.5
+  },
+  "half_open_footprints": true,
+  "universal_all_zero_predicate": true,
+  "complete_coverage_required": true,
+  "nodata_handling": "abstain",
+  "positive_value_handling": "abstain",
+  "no_interpolation": true,
+  "no_resampling": true,
+  "no_numerical_aggregation": true,
+  "no_majority_vote": true,
+  "no_fractional_area_threshold": true,
+  "transported_precedence": true,
+  "residual_rule_authorized": false,
+  "residual_regolith_branch": "RESIDUAL_REGOLITH",
+  "residual_regolith_classification": "NOT_AUTHORIZED",
+  "saprolite_authorized": false,
+  "saprolite_branch": "SAPROLITE_OR_DEEP_WEATHERING",
+  "saprolite_classification": "NOT_AUTHORIZED",
+  "deterministic_serialization": "sort_keys=true; compact separators; UTF-8; deterministic gzip mtime=0 filename=''"
+}

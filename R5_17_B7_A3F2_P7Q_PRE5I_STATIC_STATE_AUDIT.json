@@ -1,0 +1,25 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5I",
+  "schema_valid_records": 249840,
+  "non_positive_record_drift_count": 0,
+  "branch_accounting": {
+    "BEDROCK_EXPOSED": 0,
+    "UNKNOWN_MATERIAL": 64579,
+    "DERIVED_SUPPORTED": 183,
+    "MISSING_SOURCE": 50568
+  },
+  "outcomes": {
+    "BDTICM_NODATA_PRESENT": 39925,
+    "BDTICM_POSITIVE_VALUE_PRESENT": 1901,
+    "BDTICM_PARTIAL_GEOMETRIC_COVERAGE": 185,
+    "BDTICM_OUTSIDE_PROVIDER_EXTENT": 8557
+  },
+  "raster_reader": {
+    "python": "3.11.15",
+    "rasterio": "1.4.4",
+    "gdal": "3.10.3",
+    "driver": "GTiff",
+    "base_ifd_confirmed": true,
+    "windowed_native_reads": true
+  }
+}
