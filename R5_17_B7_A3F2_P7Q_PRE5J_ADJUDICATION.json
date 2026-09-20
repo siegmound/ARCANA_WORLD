@@ -1,0 +1,70 @@
+{
+  "P7Q_reopened": false,
+  "additional_provider_acquisition_required": true,
+  "authority_preflight": {
+    "erosion": {
+      "basis": "No governed EROSION domain in the register.",
+      "disposition": "REQUIRES_TARGETED_RECOVERY",
+      "status": "MISSING"
+    },
+    "geomorphology": {
+      "disposition": "REQUIRES_TARGETED_RECOVERY",
+      "status": "MISSING"
+    },
+    "landform": {
+      "disposition": "REQUIRES_TARGETED_RECOVERY",
+      "status": "MISSING"
+    },
+    "regolith": {
+      "disposition": "REQUIRES_TARGETED_RECOVERY",
+      "status": "ABSENT_AFTER_AUDIT"
+    },
+    "sediment_transport": {
+      "disposition": "REQUIRES_TARGETED_RECOVERY",
+      "status": "MISSING"
+    },
+    "soil_parent_material": {
+      "basis": "PARENT_MATERIAL and SOIL_PHYSICAL are absent after audit.",
+      "disposition": "REQUIRES_TARGETED_RECOVERY",
+      "status": "INSUFFICIENT"
+    },
+    "surface_geology": {
+      "basis": "GEOLOGY and LITHOLOGY are absent after audit.",
+      "disposition": "REQUIRES_TARGETED_RECOVERY",
+      "status": "INSUFFICIENT"
+    },
+    "topography": {
+      "disposition": "REUSE_ALLOWED",
+      "status": "DIRECT_AUTHORITY"
+    },
+    "weathering": {
+      "disposition": "BLOCKED",
+      "status": "PROXY_ONLY"
+    }
+  },
+  "classifier_executed": false,
+  "decision": "AUTHORIZE_P7Q_PRE5K_RESIDUAL_PROCESS_PROVIDER_ACQUISITION_AND_BINDING_GATE",
+  "martin_lamb_usable": true,
+  "martin_lamb_use": "process-domain conditioner only; acquisition and exact CRS/license binding required",
+  "next_action": "P7Q_PRE5K_RESIDUAL_PROCESS_PROVIDER_ACQUISITION_AND_BINDING_GATE",
+  "parent_state_assignments": 0,
+  "pelletier_martin_dependency_prevents_independent_corroboration": true,
+  "pelletier_sufficient_for_genetic_residual": false,
+  "pre5i_authority_sha256": "e25cd2b55e34e5b175aaf631849dc319448f8510b83d1407ef9f1ffab0a4caee",
+  "provider_candidates_researched": [
+    "GUM_2018",
+    "PELLETIER_2016",
+    "MARTIN_LAMB_2025",
+    "SHANGGUAN_2017",
+    "GLIM_2012"
+  ],
+  "research_scope": "geological-present/long-term-modern-process endpoint authority only; no 200 ka to 0 ka reconstruction",
+  "residual_assignments": 0,
+  "residual_classifier_feasible_in_principle": true,
+  "saprolite_assignments": 0,
+  "saprolite_classification": "NOT_AUTHORIZED",
+  "scientific_authority_register_mutated": false,
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5J",
+  "status": "COMPLETE__RESIDUAL_PROCESS_AUTHORITY_FEASIBLE__CLASSIFICATION_NOT_EXECUTED",
+  "verdict": "PASS_P7Q_PRE5J_RESIDUAL_PROCESS_AUTHORITY_COMPLETION_ADJUDICATED"
+}

@@ -1,0 +1,109 @@
+{
+  "official_source_research_completed": true,
+  "sources": [
+    {
+      "ceiling": "Mapped sediment presence/type can preempt residual eligibility; absence or white area is unknown, not bedrock or in-situ evidence.",
+      "citation": "B\u00f6rker et al. 2018",
+      "coverage": "mapped ice-free land; incomplete white areas",
+      "dataset_doi": "10.1594/PANGAEA.884822",
+      "direct_or_modeled": "compiled mapped polygons and gridded derivative",
+      "genetic_authority": "PARTIAL",
+      "id": "GUM_2018",
+      "license": "CC-BY-3.0",
+      "paper_doi": "10.1002/2017GC007273",
+      "process_authority": "INSUFFICIENT",
+      "semantic_role": "transported/unconsolidated sediment genetic and depositional preemption",
+      "spatial_resolution": "polygon database; 0.5 degree gridded product",
+      "temporal_semantics": "present surface inventory with mapped sediment ages where available",
+      "transport_deposition_authority": "SUFFICIENT_FOR_MAPPED_PRESENCE_ONLY",
+      "urls": [
+        "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017GC007273",
+        "https://doi.pangaea.de/10.1594/PANGAEA.884822"
+      ]
+    },
+    {
+      "ceiling": "Positive intact-regolith thickness plus upland-hillslope membership does not establish residual/in-situ genetic origin; useful as structural/process context only.",
+      "citation": "Pelletier et al. 2016",
+      "coverage": "global terrestrial land surface partitioned into upland hillslope, upland valley bottom and lowland",
+      "dataset_doi": "10.3334/ORNLDAAC/1304",
+      "direct_or_modeled": "modeled global gridded averages using topography, climate, geology and observations",
+      "genetic_authority": "INSUFFICIENT_ALONE",
+      "id": "PELLETIER_2016",
+      "landform_authority": "PARTIAL",
+      "paper_doi": "10.1002/2015MS000526",
+      "process_authority": "PARTIAL",
+      "semantic_role": "modeled thickness and landform/process partition",
+      "spatial_resolution": "30 arcsec, approximately 1 km",
+      "structural_authority": "PARTIAL",
+      "temporal_semantics": "long-term geological-process framing; not a 200 ka to 0 ka state reconstruction",
+      "urls": [
+        "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2015MS000526",
+        "https://daac.ornl.gov/SOILS/guides/global_regolith.html"
+      ]
+    },
+    {
+      "ceiling": "Source/bypass/sink can condition transport/process eligibility; it cannot independently establish weathering in place or residual genetic identity.",
+      "citation": "Martin and Lamb 2025",
+      "class_vocabulary": [
+        "source",
+        "bypass",
+        "sink",
+        "unclassified_residual"
+      ],
+      "coverage": "global map; approximately 0.3% of non-Antarctic land unclassified; Antarctica not mapped in the paper",
+      "dataset_doi": "10.6084/m9.figshare.28432280",
+      "dependency_note": "The published method uses Pelletier upland/lowland classifications and other products; not an independent vote against Pelletier.",
+      "direct_or_modeled": "harmonized interpreted and remotely sensed global products",
+      "genetic_authority": "INSUFFICIENT_ALONE",
+      "id": "MARTIN_LAMB_2025",
+      "license": "NOT_ESTABLISHED_FROM_REVIEWED_OFFICIAL_PAGES; verify during acquisition",
+      "paper_doi": "10.1130/G53289.1",
+      "process_authority": "PARTIAL",
+      "projection": "Equal Earth projected CRS; exact EPSG/artifact metadata must be bound during PRE5K",
+      "semantic_role": "global long-timescale sediment source/bypass/sink process-domain conditioner",
+      "spatial_resolution": "250 m; 12,000 by 12,000 pixel tiles",
+      "temporal_semantics": "long-timescale modern geomorphic process domain, not paleo-state persistence",
+      "transport_deposition_authority": "PARTIAL",
+      "urls": [
+        "https://doi.org/10.1130/G53289.1",
+        "https://doi.org/10.6084/m9.figshare.28432280",
+        "https://mapsof.rocks/source-to-sink/"
+      ]
+    },
+    {
+      "ceiling": "DTB/R-horizon evidence does not distinguish residual from transported or saprolitic material; DTB=0 supports exposed-bedrock structural evidence only under PRE5I contract.",
+      "citation": "Shangguan et al. 2017",
+      "coverage": "global modeled maps with heterogeneous observations",
+      "direct_or_modeled": "global spatial predictions from profiles, boreholes and pseudo-observations",
+      "genetic_authority": "INSUFFICIENT",
+      "id": "SHANGGUAN_2017",
+      "paper_doi": "10.1002/2016MS000686",
+      "process_authority": "INSUFFICIENT",
+      "semantic_role": "structural depth-to-bedrock and R-horizon context",
+      "spatial_resolution": "250 m products",
+      "structural_authority": "PARTIAL",
+      "temporal_semantics": "present endpoint",
+      "urls": [
+        "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016MS000686"
+      ]
+    },
+    {
+      "ceiling": "May modify compatibility/confidence after eligibility is established; cannot create residual identity.",
+      "citation": "Hartmann and Moosdorf 2012",
+      "coverage": "global mapped surface lithology with heterogeneous source quality",
+      "direct_or_modeled": "compiled global lithological map",
+      "genetic_authority": "INSUFFICIENT",
+      "id": "GLIM_2012",
+      "paper_doi": "10.1029/2012GC004370",
+      "process_authority": "INSUFFICIENT",
+      "semantic_role": "surface lithology conditioner",
+      "spatial_resolution": "global lithology map; provider-specific native grid",
+      "structural_authority": "PARTIAL",
+      "temporal_semantics": "present surface lithology",
+      "urls": [
+        "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2012GC004370"
+      ]
+    }
+  ],
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5J"
+}
