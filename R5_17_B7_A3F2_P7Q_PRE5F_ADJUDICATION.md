@@ -1,0 +1,7 @@
+# R5.17-B7-A3F2-P7Q-PRE5F
+
+Acquisition/validation only. Classified cells: `0`. Crosswalk: `false`. Thresholds: `false`.
+
+Decision: `AUTHORIZE_P7Q_PRE5G_SUBSTRATE_PROVIDER_SOURCE_CONTRACT_AND_GRID_ALIGNMENT_GATE`
+
+Verdict: `PASS_P7Q_PRE5F_SUBSTRATE_PROVIDER_BUNDLE_ACQUISITION_VALIDATED`
