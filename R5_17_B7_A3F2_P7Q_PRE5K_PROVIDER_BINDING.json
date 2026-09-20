@@ -1,0 +1,44 @@
+{
+  "band_count": 1,
+  "class_encoding": {
+    "0": "OCEAN",
+    "1": "SINK",
+    "2": "BYPASS",
+    "3": "SOURCE",
+    "4": "MISSING_DATA"
+  },
+  "crs_authority": "EPSG:8857",
+  "crs_wkt": "PROJCRS[\"WGS 84 / Equal Earth Greenwich\",BASEGEOGCRS[\"WGS 84\",ENSEMBLE[\"World Geodetic System 1984 ensemble\",MEMBER[\"World Geodetic System 1984 (Transit)\"],MEMBER[\"World Geodetic System 1984 (G730)\"],MEMBER[\"World Geodetic System 1984 (G873)\"],MEMBER[\"World Geodetic System 1984 (G1150)\"],MEMBER[\"World Geodetic System 1984 (G1674)\"],MEMBER[\"World Geodetic System 1984 (G1762)\"],MEMBER[\"World Geodetic System 1984 (G2139)\"],MEMBER[\"World Geodetic System 1984 (G2296)\"],ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ENSEMBLEACCURACY[2.0]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],ID[\"EPSG\",4326]],CONVERSION[\"Equal Earth Greenwich\",METHOD[\"Equal Earth\",ID[\"EPSG\",1078]],PARAMETER[\"Longitude of natural origin\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1]],USAGE[SCOPE[\"Very small scale equal-area mapping - Europe-Africa-centred.\"],AREA[\"World.\"],BBOX[-90,-180,90,180]],ID[\"EPSG\",8857]]",
+  "dependency_class": "METHOD_INPUT_DEPENDENCY_ON_PELLETIER_2016",
+  "dtype": "uint8",
+  "extent_projected": [
+    -17168380.5784,
+    -6564704.9814,
+    17151369.4216,
+    8292545.0186
+  ],
+  "format": "GeoTIFF tiles",
+  "nodata": null,
+  "projection": "WGS 84 / Equal Earth Greenwich",
+  "provider_id": "MARTIN_LAMB_2025",
+  "provider_values_aggregated": false,
+  "provider_values_crosswalked_to_arcana": false,
+  "provider_values_reprojected": false,
+  "provider_values_resampled": false,
+  "resolution_m": [
+    250.0,
+    250.0
+  ],
+  "semantic_ceiling": "Provider source/bypass/sink semantics only; no residual, saprolite, bedrock or genetic parent-material identity.",
+  "semantic_role": "LONG_TIMESCALE_SEDIMENT_PROCESS_DOMAIN_CONDITIONER",
+  "temporal_semantics": "LONG_TIMESCALE_MODERN_PRESENT_GEOMORPHIC_PROCESS_DOMAIN",
+  "tile_topology": {
+    "antarctica": "not mapped by source method",
+    "count": 60,
+    "gaps": "none in provider tile inventory",
+    "naming": "mask_strat_0.tif through mask_strat_59.tif",
+    "ocean_code": 0,
+    "overlap": "not observed in native bounds",
+    "unclassified_land_code": 4
+  }
+}
