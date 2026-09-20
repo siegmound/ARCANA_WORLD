@@ -1,0 +1,64 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5H",
+  "thresholds": [
+    {
+      "threshold_id": "BEDROCK_EXPOSED_DTB_ZERO",
+      "target_branch": "BEDROCK_EXPOSED",
+      "source_variable": "BDTICM",
+      "operator": "==",
+      "value": 0,
+      "unit": "cm",
+      "scientific_role": "exact surface-DTB semantic boundary",
+      "source_reference": "10.1002/2016MS000686",
+      "source_support_type": "PUBLISHED_SEMANTIC_DEFINITION",
+      "calibration_status": "NOT_REQUIRED_FOR_BOUNDARY",
+      "authorization_status": "AUTHORIZED_EXACT_SEMANTIC_BOUNDARY",
+      "notes": "Modeled surface-DTB evidence only; still requires eligibility and no transported-material preemption."
+    },
+    {
+      "threshold_id": "BEDROCK_EXPOSED_POSITIVE_DTB",
+      "target_branch": "BEDROCK_EXPOSED",
+      "source_variable": "BDTICM",
+      "operator": "<=",
+      "value": null,
+      "unit": "cm",
+      "scientific_role": "wider exposure cutoff",
+      "source_reference": "10.1002/2016MS000686",
+      "source_support_type": "NO_PUBLISHED_CALIBRATION",
+      "calibration_status": "MISSING",
+      "authorization_status": "BLOCKED_MISSING_CALIBRATION",
+      "notes": "10/25/50/200 cm cutoffs are explicitly not authorized."
+    },
+    {
+      "threshold_id": "RESIDUAL_REGOLITH_POSITIVE_THICKNESS",
+      "target_branch": "RESIDUAL_REGOLITH",
+      "source_variable": "INTACT_REGOLITH_THICKNESS",
+      "operator": ">",
+      "value": 0,
+      "unit": "m",
+      "scientific_role": "candidate structural presence rule",
+      "source_reference": "10.1002/2015MS000526",
+      "source_support_type": "STRUCTURAL_PROVIDER_ONLY",
+      "calibration_status": "NOT_A_CLASS_LABEL",
+      "authorization_status": "REJECTED_ARBITRARY",
+      "notes": "Positive modeled thickness does not establish residual/in-situ genetic identity."
+    },
+    {
+      "threshold_id": "SAPROLITE_DEEP_WEATHERING",
+      "target_branch": "SAPROLITE_OR_DEEP_WEATHERING",
+      "source_variable": "INTACT_REGOLITH_THICKNESS",
+      "operator": ">",
+      "value": null,
+      "unit": "m",
+      "scientific_role": "candidate deep-weathering rule",
+      "source_reference": "10.1002/2015MS000526",
+      "source_support_type": "INSUFFICIENT_WEATHERING_SPECIFICITY",
+      "calibration_status": "MISSING",
+      "authorization_status": "NOT_APPLICABLE",
+      "notes": "No thickness value is authorized to identify saprolite."
+    }
+  ],
+  "active_numeric_threshold_count": 0,
+  "authorized_exact_boundary_count": 1,
+  "policy": "prefer abstention over unsupported cutoff"
+}

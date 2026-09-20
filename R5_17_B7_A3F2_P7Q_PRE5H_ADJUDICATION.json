@@ -1,0 +1,133 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5H",
+  "decision": "AUTHORIZE_P7Q_PRE5I_STATIC_RESIDUAL_BEDROCK_CLASSIFIER_MATERIALIZATION_GATE",
+  "verdict": "PASS_P7Q_PRE5H_RESIDUAL_BEDROCK_CLASSIFIER_CONTRACT_AND_THRESHOLDS_ADJUDICATED",
+  "status": "COMPLETE__CLASSIFIER_CONTRACT_ADJUDICATED__NO_CLASSIFICATION",
+  "next_action": "P7Q_PRE5I_STATIC_RESIDUAL_BEDROCK_CLASSIFIER_MATERIALIZATION_GATE",
+  "direct_target_cells": 50568,
+  "target_identity_sha256": "3b139c494c2714bba5bbeecce426bb33bbcda6d7acbb5188471c9fa172ef9e28",
+  "classified_cells": 0,
+  "bedrock_exposed_assigned": 0,
+  "residual_regolith_assigned": 0,
+  "saprolite_assigned": 0,
+  "classifier_executed": false,
+  "thresholds_active": false,
+  "canonical_parent_created": false,
+  "physical_soil_created": false,
+  "temporal_reconstruction": false,
+  "new_simulation": false,
+  "P7Q_reopened": false,
+  "provider_values_resampled": false,
+  "provider_values_aggregated": false,
+  "material_crosswalk_performed": false,
+  "scientific_authority_register_mutated": false,
+  "authority_register_preflight": {
+    "present": true,
+    "sha256": "f2e25d5da34438cccd17ea5440af92fde3f04c9272e78b8ce812c97371a4528c",
+    "mutation": false
+  },
+  "authority_chain": [
+    "ARCANA_WORLD_CURRENT_STATE.md",
+    "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json",
+    "R5_17_B7_A3F2_P7Q_PRE4_TEMPORAL_PARENT_STATE_RULE_REGISTRY.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_SR_STATIC_STATE_AUDIT.json",
+    "R5_17_B7_A3F2_P7Q_PRE5D_PROVIDER_REQUIREMENT_MATRIX.json",
+    "R5_17_B7_A3F2_P7Q_PRE5E_CLASS_FEASIBILITY_MATRIX.json",
+    "R5_17_B7_A3F2_P7Q_PRE5F_PROVIDER_DEPENDENCY_RECONCILIATION.json",
+    "R5_17_B7_A3F2_P7Q_PRE5G_SOURCE_BINDING_MANIFEST.json",
+    "R5_17_B7_A3F2_P7Q_PRE5G_RASTER_METADATA_AUDIT.json",
+    "R5_17_B7_A3F2_P7Q_PRE5G_GRID_ALIGNMENT_CONTRACT.json",
+    "R5_17_B7_A3F2_P7Q_PRE5G_TARGET_COVERAGE_AUDIT.json",
+    "R5_17_B7_A3F2_P7Q_PRE5G_PROVIDER_DEPENDENCY_AND_PRECEDENCE.json",
+    "R5_17_B7_A3F2_P7Q_PRE5G_ADJUDICATION.json"
+  ],
+  "sources_consulted": [
+    {
+      "id": "SHANGGUAN_2017",
+      "doi": "10.1002/2016MS000686",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016MS000686",
+      "findings": [
+        "BDTICM is absolute DTB in cm",
+        "BDRICM is censored DTB/R-horizon evidence within 0-200 cm",
+        "BDRLOG is probability of R-horizon occurrence within 0-200 cm",
+        "rock outcrop is defined as DTB=0",
+        "positive-DTB exposure cutoff is not published or calibrated here"
+      ]
+    },
+    {
+      "id": "PELLETIER_2016",
+      "doi": "10.1002/2015MS000526",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2015MS000526",
+      "findings": [
+        "soil, intact-regolith and sedimentary-deposit thicknesses are modeled structural layers above bedrock",
+        "products are estimated using topography, climate and geology inputs",
+        "the products do not provide genetic parent-material labels"
+      ]
+    },
+    {
+      "id": "GLIM_HARTMANN_MOOSDORF_2012",
+      "doi": "10.1029/2012GC004370",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2012GC004370",
+      "findings": [
+        "GLiM represents surface lithological classes and subclasses",
+        "mapped units are heterogeneous and uncertain",
+        "GLiM cannot independently determine exposure state or deep weathering"
+      ]
+    }
+  ],
+  "weathering_authority": "INSUFFICIENT",
+  "erosion_authority": "PARTIAL",
+  "saprolite_classification": "NOT_AUTHORIZED",
+  "abstention_required": true,
+  "input_evidence": {
+    "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json": {
+      "sha256": "f2e25d5da34438cccd17ea5440af92fde3f04c9272e78b8ce812c97371a4528c",
+      "bytes": 53818
+    },
+    "R5_17_B7_A3F2_P7Q_PRE4_TEMPORAL_PARENT_STATE_RULE_REGISTRY.json": {
+      "sha256": "61752b789f48cd33ac1c4d1c013ef8943614e6828605997e1159db4215e95db2",
+      "bytes": 3873
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5C_SR_STATIC_STATE_AUDIT.json": {
+      "sha256": "de98a8786ac21dc2f11c28982b8b7fca6d1afbc6d1ff8e1ea04d3a63a8f8d482",
+      "bytes": 2276
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5D_PROVIDER_REQUIREMENT_MATRIX.json": {
+      "sha256": "8d3a03da56003724de97f96c2e1299e9396328a123a61b100dc82ee26e0346fe",
+      "bytes": 4324
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5E_CLASS_FEASIBILITY_MATRIX.json": {
+      "sha256": "0b8b9e5c88bf5689945472a713f208ffd24662960184251333b4fd11ca7a15d5",
+      "bytes": 689
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5F_PROVIDER_DEPENDENCY_RECONCILIATION.json": {
+      "sha256": "38bd6a01719eb2dc6dbe7dae89fc7f2e0976a4c73b099e1a049dc7a3281db0d7",
+      "bytes": 389
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5G_SOURCE_BINDING_MANIFEST.json": {
+      "sha256": "a17c2b99aa51b18f475a4c9c6fe49761044b489eb39632d07d79a09aa5f13a8d",
+      "bytes": 8061
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5G_RASTER_METADATA_AUDIT.json": {
+      "sha256": "9fa821b1d6a6ce420af8ce9615e6117d7cdeda0741a3c2720913bb4e8a7d1ffc",
+      "bytes": 20282
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5G_GRID_ALIGNMENT_CONTRACT.json": {
+      "sha256": "272737009b3bb181d3d81363ee2c6b94e65d5df39c44e6b2b36f99ea80e88022",
+      "bytes": 5929
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5G_TARGET_COVERAGE_AUDIT.json": {
+      "sha256": "c2fc51f9b0bf3004e4faa4dcdeb242b607a6741f9f6cfeb51db58ac5877d2718",
+      "bytes": 4692
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5G_PROVIDER_DEPENDENCY_AND_PRECEDENCE.json": {
+      "sha256": "c5e0798f1942a13d89bb2d05d8bd3ae2c96f47622f467b63533ac116a72e81ff",
+      "bytes": 609
+    },
+    "R5_17_B7_A3F2_P7Q_PRE5G_ADJUDICATION.json": {
+      "sha256": "3729a50baa66ec23a1deb567f2503e4c2580bf697bda72d584ba840e0d414b32",
+      "bytes": 2222
+    }
+  },
+  "p7q_state": "SUSPENDED_PENDING_EXPLICIT_P7Q_REAUTHORIZATION"
+}

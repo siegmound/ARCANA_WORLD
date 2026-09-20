@@ -1,0 +1,60 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5H",
+  "classifier_contract_created": true,
+  "classifier_executed": false,
+  "eligible_input_cohort": {
+    "direct_target_cells": 50568,
+    "target_identity_sha256": "3b139c494c2714bba5bbeecce426bb33bbcda6d7acbb5188471c9fa172ef9e28",
+    "unknown_material_expansion": false
+  },
+  "precedence_rules": [
+    "GUM-supported transported/material states preempt classifier",
+    "classifier runs only after land eligibility and preemption checks",
+    "GLiM cannot override material-state precedence"
+  ],
+  "required_evidence_fields": [
+    "land_state",
+    "existing_material_state",
+    "BDTICM_cm",
+    "provider_availability",
+    "source_quality",
+    "nodata_mask"
+  ],
+  "optional_conditioning_fields": [
+    "GLiM_surface_lithology_conditioner",
+    "BDRICM_censored_R_horizon",
+    "BDRLOG_R_horizon_probability",
+    "Pelletier_structural_thicknesses"
+  ],
+  "missing_provider_behavior": "ABSTAIN_OR_REDUCED_EVIDENCE_ONLY__MISSING_IS_NOT_NEGATIVE",
+  "bedrock_exposed_rule": "eligible land AND no transported-material preemption AND BDTICM_cm == 0 AND valid source evidence; otherwise UNKNOWN_MATERIAL",
+  "bedrock_exposed_support_class": "CONDITIONAL_STRUCTURAL_SUPPORT",
+  "residual_regolith_rule": "NOT_AUTHORIZED_UNTIL_INDEPENDENT_WEATHERING_AND_EROSION_AUTHORITIES_ARE_SUFFICIENT; otherwise UNKNOWN_MATERIAL",
+  "saprolite_disposition": "NOT_AUTHORIZED",
+  "provider_dependency_restrictions": [
+    "no majority voting",
+    "Shangguan and Pelletier are modeled/derived evidence",
+    "GLiM is conditioner only",
+    "provider families are not independent votes"
+  ],
+  "output_vocabulary": [
+    "BEDROCK_EXPOSED",
+    "RESIDUAL_REGOLITH",
+    "SAPROLITE_OR_DEEP_WEATHERING",
+    "UNKNOWN_MATERIAL"
+  ],
+  "provenance_requirements": [
+    "provider id and version",
+    "source variable and unit",
+    "valid/nodata mask",
+    "precedence decision",
+    "abstention reason",
+    "deterministic contract version"
+  ],
+  "determinism_requirements": [
+    "fixed cohort and identity hash",
+    "fixed precedence order",
+    "no interpolation or resampling in classifier",
+    "same inputs produce byte-equivalent decision records"
+  ]
+}
