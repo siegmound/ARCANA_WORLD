@@ -1,0 +1,489 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5G",
+  "metadata_method": "PIL GeoTIFF tags plus official ORNL DAAC 1304 user guide; no full raster load",
+  "numeric_semantics_authority": "https://daac.ornl.gov/SOILS/guides/Global_Soil_Regolith_Sediment.html",
+  "numeric_semantics_doi": "10.3334/ORNLDAAC/1304",
+  "sources": {
+    "BDRICM": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\SHANGGUAN_DTB_2017\\raw\\BDRICM_M_250m_ll.tif",
+      "bytes": 1443918663,
+      "sha256": "6c3c70f8c51fea1f2196662cf4d7bf299bb9c3ba154e629d4b228b6b68b7117e",
+      "driver": "PIL_TIFF_TAG_READER",
+      "width": 172800,
+      "height": 67200,
+      "raster_band_count": 1,
+      "overview_count": 7,
+      "ifd_count": 8,
+      "ifd_frame_interpretation": "FIRST_IFD_DATA_PLUS_REDUCED_RESOLUTION_OVERVIEWS",
+      "subdatasets": [],
+      "dtype": "L",
+      "crs": "EPSG:4326",
+      "transform": {
+        "tiepoint": [
+          0.0,
+          0.0,
+          0.0,
+          -180.0,
+          83.99916720600001,
+          0.0
+        ],
+        "pixel_scale": [
+          0.0020833330000009018,
+          0.0020833330000009018,
+          0.0
+        ]
+      },
+      "resolution": [
+        0.0020833330000009018,
+        0.0020833330000009018
+      ],
+      "extent": [
+        -180.0,
+        -56.00081039406058,
+        179.99994240015582,
+        83.99916720600001
+      ],
+      "pixel_is_area": "NOT_EXPLICITLY_REPORTED__FOOTPRINT_CONTRACT_USES_HALF_OPEN_PIXEL_AREA",
+      "nodata": "255",
+      "mask_semantics": "NODATA_TAG_ONLY__VALID_DATA_MASK_NOT_SCANNED",
+      "scale_offset": "NOT_REPORTED",
+      "units": "cm",
+      "semantic_role": "censored / bounded depth to bedrock (R horizon)",
+      "metadata_scale_present": false,
+      "metadata_offset_present": false,
+      "metadata_scale_value": "NOT_PRESENT",
+      "metadata_offset_value": "NOT_PRESENT",
+      "band_units_tag": "NOT_PRESENT",
+      "numeric_encoding": "UNRESOLVED",
+      "numeric_transform_required": "UNRESOLVED",
+      "band_description": "NOT_REPORTED",
+      "geotiff_tags": {
+        "33550": "(0.0020833330000009018, 0.0020833330000009018, 0.0)",
+        "33922": "(0.0, 0.0, 0.0, -180.0, 83.99916720600001, 0.0)",
+        "34735": "(1, 1, 0, 7, 1024, 0, 1, 2, 1025, 0, 1, 1, 2048, 0, 1, 4326, 2049, 34737, 7, 0, 2054, 0, 1, 9102, 2057, 34736, 1, 1, 2059, 34736, 1, 0)",
+        "34737": "WGS 84|",
+        "42113": "255"
+      },
+      "provider_xml": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\SHANGGUAN_DTB_2017\\raw\\BDRICM_M_250m_ll.tif.xml",
+      "read_status": "METADATA_READ",
+      "xml_semantics": {
+        "units": "cm",
+        "text_match": "5523ecf3-dbfb-4932-aad1-28fc75d71011 eng eng dataset College of Global Change and Earth System Science, Beijing Normal University / ISRIC - World Soil Information shanggv@bnu.edu.cn / tom.hengl@isric.org pointOfContact 2014-02-04 ISO 19115 2003/Cor.1:2006 SoilGrids250m : BDRICM_M : Depth to bedrock (R horizon) up to 200 cm 2017-03-10 publication BDRICM_M Codespace Depth to bedrock (R horizon) up to 200 cm ISRIC - World Soil Information tom.hengl@isric.org http://url author soil GEMET - INSPIRE themes, version 1.0 2017-03-10 publication Open Data Commons Open Database License (ODbL). This means that: You must attribute any public use of the database, or works produced from the database, in the manner specified in the ODbL. For any use or redistribution of the database, or works produced fro"
+      }
+    },
+    "BDRLOG": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\SHANGGUAN_DTB_2017\\raw\\BDRLOG_M_250m_ll.tif",
+      "bytes": 2599020881,
+      "sha256": "67998b44f7807fc8a5f1a6af28bae7b888762decb88454a5f9e559f0e0d8f57a",
+      "driver": "PIL_TIFF_TAG_READER",
+      "width": 172800,
+      "height": 67200,
+      "raster_band_count": 1,
+      "overview_count": 7,
+      "ifd_count": 8,
+      "ifd_frame_interpretation": "FIRST_IFD_DATA_PLUS_REDUCED_RESOLUTION_OVERVIEWS",
+      "subdatasets": [],
+      "dtype": "L",
+      "crs": "EPSG:4326",
+      "transform": {
+        "tiepoint": [
+          0.0,
+          0.0,
+          0.0,
+          -180.0,
+          83.99916720600001,
+          0.0
+        ],
+        "pixel_scale": [
+          0.0020833330000009018,
+          0.0020833330000009018,
+          0.0
+        ]
+      },
+      "resolution": [
+        0.0020833330000009018,
+        0.0020833330000009018
+      ],
+      "extent": [
+        -180.0,
+        -56.00081039406058,
+        179.99994240015582,
+        83.99916720600001
+      ],
+      "pixel_is_area": "NOT_EXPLICITLY_REPORTED__FOOTPRINT_CONTRACT_USES_HALF_OPEN_PIXEL_AREA",
+      "nodata": "255",
+      "mask_semantics": "NODATA_TAG_ONLY__VALID_DATA_MASK_NOT_SCANNED",
+      "scale_offset": "NOT_REPORTED",
+      "units": "percent",
+      "semantic_role": "R-horizon / bedrock occurrence-likelihood evidence",
+      "metadata_scale_present": false,
+      "metadata_offset_present": false,
+      "metadata_scale_value": "NOT_PRESENT",
+      "metadata_offset_value": "NOT_PRESENT",
+      "band_units_tag": "NOT_PRESENT",
+      "numeric_encoding": "UNRESOLVED",
+      "numeric_transform_required": "UNRESOLVED",
+      "band_description": "NOT_REPORTED",
+      "geotiff_tags": {
+        "33550": "(0.0020833330000009018, 0.0020833330000009018, 0.0)",
+        "33922": "(0.0, 0.0, 0.0, -180.0, 83.99916720600001, 0.0)",
+        "34735": "(1, 1, 0, 7, 1024, 0, 1, 2, 1025, 0, 1, 1, 2048, 0, 1, 4326, 2049, 34737, 7, 0, 2054, 0, 1, 9102, 2057, 34736, 1, 1, 2059, 34736, 1, 0)",
+        "34737": "WGS 84|",
+        "42113": "255"
+      },
+      "provider_xml": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\SHANGGUAN_DTB_2017\\raw\\BDRLOG_M_250m_ll.tif.xml",
+      "read_status": "METADATA_READ",
+      "xml_semantics": {
+        "units": "percent",
+        "text_match": "f37f1e49-4ee1-4535-838b-3cc421e61052 eng eng dataset College of Global Change and Earth System Science, Beijing Normal University / ISRIC - World Soil Information shanggv@bnu.edu.cn / tom.hengl@isric.org pointOfContact 2014-02-04 ISO 19115 2003/Cor.1:2006 SoilGrids250m : BDRLOG_M : Probability of occurence (0-100%) of R horizon 2017-03-10 publication BDRLOG_M Codespace Probability of occurence (0-100%) of R horizon ISRIC - World Soil Information tom.hengl@isric.org http://url author soil GEMET - INSPIRE themes, version 1.0 2017-03-10 publication Open Data Commons Open Database License (ODbL). This means that: You must attribute any public use of the database, or works produced from the database, in the manner specified in the ODbL. For any use or redistribution of the database, or works pr"
+      }
+    },
+    "BDTICM": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\SHANGGUAN_DTB_2017\\raw\\BDTICM_M_250m_ll.tif",
+      "bytes": 8480439859,
+      "sha256": "b099653ece2716693f6dbfa02ec5fdea38763a7f1a0a875bbe2e77526980e136",
+      "driver": "PIL_TIFF_TAG_READER",
+      "width": 172800,
+      "height": 67200,
+      "raster_band_count": 1,
+      "overview_count": 7,
+      "ifd_count": 8,
+      "ifd_frame_interpretation": "FIRST_IFD_DATA_PLUS_REDUCED_RESOLUTION_OVERVIEWS",
+      "subdatasets": [],
+      "dtype": "I",
+      "crs": "EPSG:4326",
+      "transform": {
+        "tiepoint": [
+          0.0,
+          0.0,
+          0.0,
+          -180.0,
+          83.99916720600001,
+          0.0
+        ],
+        "pixel_scale": [
+          0.0020833330000009018,
+          0.0020833330000009018,
+          0.0
+        ]
+      },
+      "resolution": [
+        0.0020833330000009018,
+        0.0020833330000009018
+      ],
+      "extent": [
+        -180.0,
+        -56.00081039406058,
+        179.99994240015582,
+        83.99916720600001
+      ],
+      "pixel_is_area": "NOT_EXPLICITLY_REPORTED__FOOTPRINT_CONTRACT_USES_HALF_OPEN_PIXEL_AREA",
+      "nodata": "-32768",
+      "mask_semantics": "NODATA_TAG_ONLY__VALID_DATA_MASK_NOT_SCANNED",
+      "scale_offset": "NOT_REPORTED",
+      "units": "cm",
+      "semantic_role": "absolute depth to bedrock structural evidence",
+      "metadata_scale_present": false,
+      "metadata_offset_present": false,
+      "metadata_scale_value": "NOT_PRESENT",
+      "metadata_offset_value": "NOT_PRESENT",
+      "band_units_tag": "NOT_PRESENT",
+      "numeric_encoding": "UNRESOLVED",
+      "numeric_transform_required": "UNRESOLVED",
+      "band_description": "NOT_REPORTED",
+      "geotiff_tags": {
+        "33550": "(0.0020833330000009018, 0.0020833330000009018, 0.0)",
+        "33922": "(0.0, 0.0, 0.0, -180.0, 83.99916720600001, 0.0)",
+        "34735": "(1, 1, 0, 7, 1024, 0, 1, 2, 1025, 0, 1, 1, 2048, 0, 1, 4326, 2049, 34737, 7, 0, 2054, 0, 1, 9102, 2057, 34736, 1, 1, 2059, 34736, 1, 0)",
+        "34737": "WGS 84|",
+        "42113": "-32768"
+      },
+      "provider_xml": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\SHANGGUAN_DTB_2017\\raw\\BDTICM_M_250m_ll.tif.xml",
+      "read_status": "METADATA_READ",
+      "xml_semantics": {
+        "units": "cm",
+        "text_match": "2f14af4a-ee17-4495-8195-61d5892f9b49 eng eng dataset College of Global Change and Earth System Science, Beijing Normal University / ISRIC - World Soil Information shanggv@bnu.edu.cn / tom.hengl@isric.org pointOfContact 2014-02-04 ISO 19115 2003/Cor.1:2006 SoilGrids250m : BDTICM_M : Absolute depth to bedrock (in cm) 2017-03-10 publication BDTICM_M Codespace Absolute depth to bedrock (in cm) ISRIC - World Soil Information tom.hengl@isric.org http://url author soil GEMET - INSPIRE themes, version 1.0 2017-03-10 publication Open Data Commons Open Database License (ODbL). This means that: You must attribute any public use of the database, or works produced from the database, in the manner specified in the ODbL. For any use or redistribution of the database, or works produced from it, you must m"
+      }
+    },
+    "SOIL_THICKNESS": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\PELLETIER_ORNL_DAAC_1304\\extracted\\Global_Soil_Regolith_Sediment_1304\\data\\upland_hill-slope_soil_thickness.tif",
+      "bytes": 217656520,
+      "sha256": "5c190ef2f6b36585ea542c76516751a8730a9e37d93fadd7b348df970bbf0002",
+      "driver": "PIL_TIFF_TAG_READER",
+      "width": 43200,
+      "height": 18000,
+      "raster_band_count": 1,
+      "overview_count": 0,
+      "ifd_count": 1,
+      "ifd_frame_interpretation": "SINGLE_DATA_IFD",
+      "subdatasets": [],
+      "dtype": "F",
+      "crs": "EPSG:4326",
+      "transform": {
+        "tiepoint": [
+          0.0,
+          0.0,
+          0.0,
+          -180.0,
+          90.0,
+          0.0
+        ],
+        "pixel_scale": [
+          0.00833333333333331,
+          0.00833333333333331,
+          0.0
+        ]
+      },
+      "resolution": [
+        0.00833333333333331,
+        0.00833333333333331
+      ],
+      "extent": [
+        -180.0,
+        -59.9999999999996,
+        179.99999999999903,
+        90.0
+      ],
+      "pixel_is_area": "NOT_EXPLICITLY_REPORTED__FOOTPRINT_CONTRACT_USES_HALF_OPEN_PIXEL_AREA",
+      "nodata": "-1",
+      "mask_semantics": "NODATA_TAG_ONLY__VALID_DATA_MASK_NOT_SCANNED",
+      "scale_offset": "NOT_REPORTED",
+      "units": "m",
+      "semantic_role": "derived soil thickness evidence",
+      "metadata_scale_present": false,
+      "metadata_offset_present": false,
+      "metadata_scale_value": "NOT_PRESENT",
+      "metadata_offset_value": "NOT_PRESENT",
+      "band_units_tag": "NOT_PRESENT",
+      "numeric_encoding": "DIRECT_STORED_PHYSICAL_VALUE",
+      "numeric_transform_required": false,
+      "band_description": "NOT_REPORTED",
+      "geotiff_tags": {
+        "33550": "(0.00833333333333331, 0.00833333333333331, 0.0)",
+        "33922": "(0.0, 0.0, 0.0, -180.0, 90.0, 0.0)",
+        "34735": "(1, 1, 0, 7, 1024, 0, 1, 2, 1025, 0, 1, 1, 2048, 0, 1, 4326, 2049, 34737, 13, 0, 2054, 0, 1, 9102, 2057, 34736, 1, 1, 2059, 34736, 1, 0)",
+        "34737": "GCS_WGS_1984|",
+        "42113": "-1"
+      },
+      "provider_xml": "NOT_APPLICABLE",
+      "read_status": "METADATA_READ",
+      "physical_units": "m",
+      "valid_range": [
+        0,
+        4.2
+      ],
+      "effective_value_semantics": "physical_value_m = stored_valid_value",
+      "numeric_semantics_authority": "ORNL_DAAC_1304_OFFICIAL_USER_GUIDE",
+      "scale_offset_tag_status": "NOT_PRESENT",
+      "numeric_transform": "IDENTITY_BY_DOCUMENTED_DIRECT_VALUE_SEMANTICS",
+      "official_data_type": "Float",
+      "storage_nodata_representation": "NOT_APPLICABLE",
+      "bounded_sample_sanity": {
+        "method": "FIVE_DETERMINISTIC_SINGLE_PIXEL_READS",
+        "sample_count": 5,
+        "non_nodata_sample_count": 1,
+        "sample_values": [
+          -1.0,
+          -1.0,
+          -1.0,
+          -1.0,
+          0.8899999856948853
+        ],
+        "valid_range": [
+          0,
+          4.2
+        ],
+        "nodata": -1,
+        "storage_nodata_representation": "NOT_APPLICABLE",
+        "status": "PASS"
+      }
+    },
+    "INTACT_REGOLITH_THICKNESS": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\PELLETIER_ORNL_DAAC_1304\\extracted\\Global_Soil_Regolith_Sediment_1304\\data\\upland_hill-slope_regolith_thickness.tif",
+      "bytes": 85980757,
+      "sha256": "0b7b78aa885eb3796bf3900d87205def2d9f9900bc1f5790a416f6668ac2f03a",
+      "driver": "PIL_TIFF_TAG_READER",
+      "width": 43200,
+      "height": 18000,
+      "raster_band_count": 1,
+      "overview_count": 0,
+      "ifd_count": 1,
+      "ifd_frame_interpretation": "SINGLE_DATA_IFD",
+      "subdatasets": [],
+      "dtype": "L",
+      "crs": "EPSG:4326",
+      "transform": {
+        "tiepoint": [
+          0.0,
+          0.0,
+          0.0,
+          -180.0,
+          90.0,
+          0.0
+        ],
+        "pixel_scale": [
+          0.00833333333333331,
+          0.00833333333333331,
+          0.0
+        ]
+      },
+      "resolution": [
+        0.00833333333333331,
+        0.00833333333333331
+      ],
+      "extent": [
+        -180.0,
+        -59.9999999999996,
+        179.99999999999903,
+        90.0
+      ],
+      "pixel_is_area": "NOT_EXPLICITLY_REPORTED__FOOTPRINT_CONTRACT_USES_HALF_OPEN_PIXEL_AREA",
+      "nodata": "-1",
+      "mask_semantics": "NODATA_TAG_ONLY__VALID_DATA_MASK_NOT_SCANNED",
+      "scale_offset": "NOT_REPORTED",
+      "units": "m",
+      "semantic_role": "derived intact-regolith thickness evidence",
+      "metadata_scale_present": false,
+      "metadata_offset_present": false,
+      "metadata_scale_value": "NOT_PRESENT",
+      "metadata_offset_value": "NOT_PRESENT",
+      "band_units_tag": "NOT_PRESENT",
+      "numeric_encoding": "DIRECT_STORED_PHYSICAL_VALUE",
+      "numeric_transform_required": false,
+      "band_description": "NOT_REPORTED",
+      "geotiff_tags": {
+        "33550": "(0.00833333333333331, 0.00833333333333331, 0.0)",
+        "33922": "(0.0, 0.0, 0.0, -180.0, 90.0, 0.0)",
+        "34735": "(1, 1, 0, 7, 1024, 0, 1, 2, 1025, 0, 1, 1, 2048, 0, 1, 4326, 2049, 34737, 13, 0, 2054, 0, 1, 9102, 2057, 34736, 1, 1, 2059, 34736, 1, 0)",
+        "34737": "GCS_WGS_1984|",
+        "42113": "-1"
+      },
+      "provider_xml": "NOT_APPLICABLE",
+      "read_status": "METADATA_READ",
+      "physical_units": "m",
+      "valid_range": [
+        0,
+        50
+      ],
+      "effective_value_semantics": "physical_value_m = stored_valid_value",
+      "numeric_semantics_authority": "ORNL_DAAC_1304_OFFICIAL_USER_GUIDE",
+      "scale_offset_tag_status": "NOT_PRESENT",
+      "numeric_transform": "IDENTITY_BY_DOCUMENTED_DIRECT_VALUE_SEMANTICS",
+      "official_data_type": "Byte",
+      "storage_nodata_representation": 255,
+      "bounded_sample_sanity": {
+        "method": "FIVE_DETERMINISTIC_SINGLE_PIXEL_READS",
+        "sample_count": 5,
+        "non_nodata_sample_count": 1,
+        "sample_values": [
+          255,
+          255,
+          255,
+          255,
+          22
+        ],
+        "valid_range": [
+          0,
+          50
+        ],
+        "nodata": -1,
+        "storage_nodata_representation": 255,
+        "status": "PASS"
+      }
+    },
+    "SEDIMENTARY_DEPOSIT_THICKNESS": {
+      "path": "F:\\corsiiiuu\\Magistrale\\Arcana\\ArcanaWorld\\_ARCANA_EXTERNAL_SOURCES\\p7q_parent_state\\PRE5F_SUBSTRATE_PROVIDER_BUNDLE\\PELLETIER_ORNL_DAAC_1304\\extracted\\Global_Soil_Regolith_Sediment_1304\\data\\upland_valley-bottom_and_lowland_sedimentary_deposit_thickness.tif",
+      "bytes": 117974104,
+      "sha256": "15ae1c95f2a943798680487e8996fdcc7b94dbc48fa05dbfc9aee48c80b7e78a",
+      "driver": "PIL_TIFF_TAG_READER",
+      "width": 43200,
+      "height": 18000,
+      "raster_band_count": 1,
+      "overview_count": 0,
+      "ifd_count": 1,
+      "ifd_frame_interpretation": "SINGLE_DATA_IFD",
+      "subdatasets": [],
+      "dtype": "L",
+      "crs": "EPSG:4326",
+      "transform": {
+        "tiepoint": [
+          0.0,
+          0.0,
+          0.0,
+          -180.0,
+          90.0,
+          0.0
+        ],
+        "pixel_scale": [
+          0.00833333333333331,
+          0.00833333333333331,
+          0.0
+        ]
+      },
+      "resolution": [
+        0.00833333333333331,
+        0.00833333333333331
+      ],
+      "extent": [
+        -180.0,
+        -59.9999999999996,
+        179.99999999999903,
+        90.0
+      ],
+      "pixel_is_area": "NOT_EXPLICITLY_REPORTED__FOOTPRINT_CONTRACT_USES_HALF_OPEN_PIXEL_AREA",
+      "nodata": "-1",
+      "mask_semantics": "NODATA_TAG_ONLY__VALID_DATA_MASK_NOT_SCANNED",
+      "scale_offset": "NOT_REPORTED",
+      "units": "m",
+      "semantic_role": "derived sedimentary-deposit thickness evidence",
+      "metadata_scale_present": false,
+      "metadata_offset_present": false,
+      "metadata_scale_value": "NOT_PRESENT",
+      "metadata_offset_value": "NOT_PRESENT",
+      "band_units_tag": "NOT_PRESENT",
+      "numeric_encoding": "DIRECT_STORED_PHYSICAL_VALUE",
+      "numeric_transform_required": false,
+      "band_description": "NOT_REPORTED",
+      "geotiff_tags": {
+        "33550": "(0.00833333333333331, 0.00833333333333331, 0.0)",
+        "33922": "(0.0, 0.0, 0.0, -180.0, 90.0, 0.0)",
+        "34735": "(1, 1, 0, 7, 1024, 0, 1, 2, 1025, 0, 1, 1, 2048, 0, 1, 4326, 2049, 34737, 13, 0, 2054, 0, 1, 9102, 2057, 34736, 1, 1, 2059, 34736, 1, 0)",
+        "34737": "GCS_WGS_1984|",
+        "42113": "-1"
+      },
+      "provider_xml": "NOT_APPLICABLE",
+      "read_status": "METADATA_READ",
+      "physical_units": "m",
+      "valid_range": [
+        0,
+        50
+      ],
+      "effective_value_semantics": "physical_value_m = stored_valid_value",
+      "numeric_semantics_authority": "ORNL_DAAC_1304_OFFICIAL_USER_GUIDE",
+      "scale_offset_tag_status": "NOT_PRESENT",
+      "numeric_transform": "IDENTITY_BY_DOCUMENTED_DIRECT_VALUE_SEMANTICS",
+      "official_data_type": "Byte",
+      "storage_nodata_representation": 255,
+      "bounded_sample_sanity": {
+        "method": "FIVE_DETERMINISTIC_SINGLE_PIXEL_READS",
+        "sample_count": 5,
+        "non_nodata_sample_count": 1,
+        "sample_values": [
+          255,
+          255,
+          255,
+          255,
+          45
+        ],
+        "valid_range": [
+          0,
+          50
+        ],
+        "nodata": -1,
+        "storage_nodata_representation": 255,
+        "status": "PASS"
+      }
+    }
+  },
+  "unresolved": []
+}

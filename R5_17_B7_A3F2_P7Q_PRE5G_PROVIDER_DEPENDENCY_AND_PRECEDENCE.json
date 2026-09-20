@@ -1,0 +1,15 @@
+{
+  "single_provider_sufficiency": false,
+  "composite_provider_classifier": "FEASIBLE_NOT_IMPLEMENTED",
+  "independent_voting": false,
+  "provider_dependencies": {
+    "Shangguan": "modeled structural evidence; covariate dependence retained",
+    "Pelletier": "modeled structural thickness evidence; covariate dependence retained",
+    "GLiM": "surface lithology conditioner only"
+  },
+  "precedence": {
+    "gum_supported_transported_material": "preempts future residual/bedrock classifier",
+    "classifier_target": "direct 50568 cohort only"
+  },
+  "forbidden_promotions_preserved": true
+}

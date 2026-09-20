@@ -1,0 +1,180 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5G",
+  "target_grid": {
+    "ncols": 720,
+    "nrows": 347,
+    "xllcorner": -179.99998074964,
+    "yllcorner": -89.985256795408,
+    "cellsize": 0.5,
+    "nodata": -9999,
+    "xmin": -179.99998074964,
+    "xmax": 180.00001925036,
+    "ymin": -89.985256795408,
+    "ymax": 83.514743204592
+  },
+  "target_cohort": {
+    "record_count": 249840,
+    "direct_target_cells": 50568,
+    "identity_order": "PRE5C JSONL order, cell_id UTF-8 with terminal newline",
+    "ordered_cell_id_sha256": "3b139c494c2714bba5bbeecce426bb33bbcda6d7acbb5188471c9fa172ef9e28",
+    "payload_sha256": "e25cd2b55e34e5b175aaf631849dc319448f8510b83d1407ef9f1ffab0a4caee"
+  },
+  "sources": {
+    "BDRICM": {
+      "bounds": [
+        -180.0,
+        -56.00081039406058,
+        179.99994240015582,
+        83.99916720600001
+      ],
+      "alignment_class": "AFFINE_REGULAR_GRID_WITH_FRACTIONAL_EDGE_OVERLAP",
+      "coverage": {
+        "all_249840_gum_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 200601,
+          "PARTIAL_GEOMETRIC_COVERAGE": 999,
+          "NO_GEOMETRIC_COVERAGE": 48240,
+          "OUTSIDE_PROVIDER_EXTENT": 48240
+        },
+        "direct_50568_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 41826,
+          "PARTIAL_GEOMETRIC_COVERAGE": 185,
+          "NO_GEOMETRIC_COVERAGE": 8557,
+          "OUTSIDE_PROVIDER_EXTENT": 8557
+        }
+      }
+    },
+    "BDRLOG": {
+      "bounds": [
+        -180.0,
+        -56.00081039406058,
+        179.99994240015582,
+        83.99916720600001
+      ],
+      "alignment_class": "AFFINE_REGULAR_GRID_WITH_FRACTIONAL_EDGE_OVERLAP",
+      "coverage": {
+        "all_249840_gum_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 200601,
+          "PARTIAL_GEOMETRIC_COVERAGE": 999,
+          "NO_GEOMETRIC_COVERAGE": 48240,
+          "OUTSIDE_PROVIDER_EXTENT": 48240
+        },
+        "direct_50568_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 41826,
+          "PARTIAL_GEOMETRIC_COVERAGE": 185,
+          "NO_GEOMETRIC_COVERAGE": 8557,
+          "OUTSIDE_PROVIDER_EXTENT": 8557
+        }
+      }
+    },
+    "BDTICM": {
+      "bounds": [
+        -180.0,
+        -56.00081039406058,
+        179.99994240015582,
+        83.99916720600001
+      ],
+      "alignment_class": "AFFINE_REGULAR_GRID_WITH_FRACTIONAL_EDGE_OVERLAP",
+      "coverage": {
+        "all_249840_gum_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 200601,
+          "PARTIAL_GEOMETRIC_COVERAGE": 999,
+          "NO_GEOMETRIC_COVERAGE": 48240,
+          "OUTSIDE_PROVIDER_EXTENT": 48240
+        },
+        "direct_50568_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 41826,
+          "PARTIAL_GEOMETRIC_COVERAGE": 185,
+          "NO_GEOMETRIC_COVERAGE": 8557,
+          "OUTSIDE_PROVIDER_EXTENT": 8557
+        }
+      }
+    },
+    "SOIL_THICKNESS": {
+      "bounds": [
+        -180.0,
+        -59.9999999999996,
+        179.99999999999903,
+        90.0
+      ],
+      "alignment_class": "AFFINE_REGULAR_GRID_WITH_FRACTIONAL_EDGE_OVERLAP",
+      "coverage": {
+        "all_249840_gum_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 206353,
+          "PARTIAL_GEOMETRIC_COVERAGE": 1007,
+          "NO_GEOMETRIC_COVERAGE": 42480,
+          "OUTSIDE_PROVIDER_EXTENT": 42480
+        },
+        "direct_50568_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 43434,
+          "PARTIAL_GEOMETRIC_COVERAGE": 219,
+          "NO_GEOMETRIC_COVERAGE": 6915,
+          "OUTSIDE_PROVIDER_EXTENT": 6915
+        }
+      }
+    },
+    "INTACT_REGOLITH_THICKNESS": {
+      "bounds": [
+        -180.0,
+        -59.9999999999996,
+        179.99999999999903,
+        90.0
+      ],
+      "alignment_class": "AFFINE_REGULAR_GRID_WITH_FRACTIONAL_EDGE_OVERLAP",
+      "coverage": {
+        "all_249840_gum_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 206353,
+          "PARTIAL_GEOMETRIC_COVERAGE": 1007,
+          "NO_GEOMETRIC_COVERAGE": 42480,
+          "OUTSIDE_PROVIDER_EXTENT": 42480
+        },
+        "direct_50568_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 43434,
+          "PARTIAL_GEOMETRIC_COVERAGE": 219,
+          "NO_GEOMETRIC_COVERAGE": 6915,
+          "OUTSIDE_PROVIDER_EXTENT": 6915
+        }
+      }
+    },
+    "SEDIMENTARY_DEPOSIT_THICKNESS": {
+      "bounds": [
+        -180.0,
+        -59.9999999999996,
+        179.99999999999903,
+        90.0
+      ],
+      "alignment_class": "AFFINE_REGULAR_GRID_WITH_FRACTIONAL_EDGE_OVERLAP",
+      "coverage": {
+        "all_249840_gum_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 206353,
+          "PARTIAL_GEOMETRIC_COVERAGE": 1007,
+          "NO_GEOMETRIC_COVERAGE": 42480,
+          "OUTSIDE_PROVIDER_EXTENT": 42480
+        },
+        "direct_50568_cells": {
+          "FULL_GEOMETRIC_COVERAGE": 43434,
+          "PARTIAL_GEOMETRIC_COVERAGE": 219,
+          "NO_GEOMETRIC_COVERAGE": 6915,
+          "OUTSIDE_PROVIDER_EXTENT": 6915
+        }
+      }
+    }
+  },
+  "geometry_contract": {
+    "algorithm": "EXACT_RECTANGULAR_FOOTPRINT_OVERLAP_GEOMETRY_ONLY",
+    "source_pixel_footprint": "half-open affine pixel area from GeoTIFF PixelScale/ModelTiepoint",
+    "target_cell_footprint": "half-open 0.5-degree GUM cell area",
+    "boundary_handling": "exact intersection; partial retained as partial",
+    "periodic_longitude": "NO_WRAP__explicit_bounds",
+    "nodata": "exclude provider nodata in future value aggregation; no aggregation here",
+    "provider_values_resampled": false,
+    "provider_values_aggregated": false,
+    "state_crosswalk_performed": false,
+    "material_crosswalk_performed": false
+  },
+  "glim_reuse": {
+    "status": "REUSED_EXISTING_GEOMETRY_AUTHORITY",
+    "contract": "PRE5C-GA-AFFINE-OVERLAP-V1",
+    "archive_sha256": "43b4ce3276b155d804db8ff9fb227d620b4c35015a4cf564eac4d06d2b69d88e",
+    "dominant_overlap_fraction": 0.9704762253439838
+  }
+}
