@@ -1,0 +1,32 @@
+{
+  "assignments": {
+    "BEDROCK_EXPOSED": 0,
+    "RESIDUAL_REGOLITH": 0,
+    "SAPROLITE_OR_DEEP_WEATHERING": 0
+  },
+  "classifier_executed": true,
+  "contract_valid": true,
+  "forbidden_promotions": [
+    "SOURCE_TO_RESIDUAL_REGOLITH",
+    "POSITIVE_THICKNESS_TO_RESIDUAL_REGOLITH",
+    "GUM_ABSENCE_TO_RESIDUAL_REGOLITH",
+    "GUM_NODATA_TO_BEDROCK",
+    "SINK_TO_ASSIGNMENT",
+    "SAPROLITE_OR_DEEP_WEATHERING"
+  ],
+  "input_cohort": {
+    "compatible_count": 560,
+    "count": 50568,
+    "identity_sha256": "3b139c494c2714bba5bbeecce426bb33bbcda6d7acbb5188471c9fa172ef9e28"
+  },
+  "predicates": {
+    "decision": "ABSTAIN until transported-material absence is explicitly distinguished from unknown",
+    "dependency": "evidence_independence=false and dependency_type=METHOD_INPUT_DEPENDENCY",
+    "gum": "GUM_ABSENCE_OR_NO_COVERAGE_ABSTAIN is unresolved, not explicit transported-material absence",
+    "process": "PROCESS_COMPATIBLE with provider class SOURCE and sink/bypass/missing counts zero",
+    "structural": "INTACT_REGOLITH_EVIDENCE_PRESENT and positive_count > 0"
+  },
+  "provider_vote_used": false,
+  "stage": "R5.17-B7-A3F2-P7Q-PRE5N",
+  "threshold_used": false
+}
