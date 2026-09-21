@@ -1,0 +1,28 @@
+{
+  "stage":"R5.17-B7-A3F2-P7Q-HRAB-AA-GAP-ACQUISITION",
+  "acquisition_status":"BOUNDED_MULTI_PROVIDER_METADATA_ACQUIRED__LIMITED_EXTERNAL_AGE_REFINEMENT_ONLY",
+  "retrieval_date":"2026-09-21",
+  "external_root":"F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld_ARCANA_EXTERNAL_SOURCES/p7q_parent_state/HRAB_AA_GAP_PROVIDERS",
+  "targeting":{"cell_driven":true,"loess_window_target_cells":32,"lake_window_target_cells":30,"total_window_target_cells":62,"complete_global_dataset_downloaded":false},
+  "payloads":[
+    {"provider":"NCEI Loess/Paleosol","file":"NCEI_LOESS/bounded_loess_headers_us_30_50_-130_-60_limit10.json","bytes":3441,"sha256":"af435b36da283064a121f238cd9e1fe8295a97e9ae713f5d5a70f704c3cde0ee","source_url":"https://www.ncei.noaa.gov/access/paleo-search/study/search.json?dataPublisher=NOAA&dataTypeId=10&headersOnly=true&minLat=30&maxLat=50&minLon=-130&maxLon=-60&limit=10"},
+    {"provider":"NCEI Loess/Paleosol","file":"NCEI_LOESS/study_22693_illinois_river_valley_loess.json","bytes":25310,"sha256":"743ea778e71d10778791feaf2ed2bf82945da4bc6f84d37301b4ac7aeaaf604d","source_url":"https://www.ncei.noaa.gov/access/paleo-search/study/search.json?NOAAStudyId=22693"},
+    {"provider":"NCEI Loess/Paleosol","file":"NCEI_LOESS/study_36580_palouse_loess.json","bytes":12292,"sha256":"d33a0ad2b389314d8671dce6faf740913e7e035cb36d0a372b10cf7f450271d5","source_url":"https://www.ncei.noaa.gov/access/paleo-search/study/search.json?NOAAStudyId=36580"},
+    {"provider":"NCEI Lake","file":"NCEI_LAKE/bounded_lake_headers_us_30_50_-130_-60_limit10.json","bytes":4359,"sha256":"bb9509f7f944752f67c5aaaef03361d5bf9a0fd4f55fe1d1fd84dad81cfc8f49","source_url":"https://www.ncei.noaa.gov/access/paleo-search/study/search.json?dataPublisher=NOAA&dataTypeId=13&headersOnly=true&minLat=30&maxLat=50&minLon=-130&maxLon=-60&limit=10"},
+    {"provider":"NCEI Lake","file":"NCEI_LAKE/study_27071_avery_lake_illinois.json","bytes":17557,"sha256":"dda3a231c68823a454124bf298d38df63d87690edb83b3f9cdee1f893edfce69","source_url":"https://www.ncei.noaa.gov/access/paleo-search/study/search.json?NOAAStudyId=27071"},
+    {"provider":"Macrostrat","file":"MACROSTRAT/alluvial_sample.json","bytes":2073,"sha256":"7238a1eb91b5d075bea33f5df7f25bc6c9fa2636950d25e09e302409ed4872fd","source_url":"https://dev.macrostrat.org/docs/guides/the-macrostrat-geologic-api","query_scope":"six bounded point queries; alluvial, glacial, coastal, lacustrine, aeolian, evaporitic"},
+    {"provider":"Macrostrat","file":"MACROSTRAT/glacial_sample.json","bytes":2073,"sha256":"7238a1eb91b5d075bea33f5df7f25bc6c9fa2636950d25e09e302409ed4872fd","source_url":"https://dev.macrostrat.org/docs/guides/the-macrostrat-geologic-api"},
+    {"provider":"Macrostrat","file":"MACROSTRAT/coastal_sample.json","bytes":2092,"sha256":"59230b081e3748008af3082b2c344ba7da9596bec35f2085e2dd3ca3f83c31e0","source_url":"https://dev.macrostrat.org/docs/guides/the-macrostrat-geologic-api"},
+    {"provider":"Macrostrat","file":"MACROSTRAT/lacustrine_sample.json","bytes":2078,"sha256":"c261bff0f0fd16a51cff2ae25f6f2cab9e9740fcd94cfc23d58d4ea8a42f1c56","source_url":"https://dev.macrostrat.org/docs/guides/the-macrostrat-geologic-api"},
+    {"provider":"Macrostrat","file":"MACROSTRAT/aeolian_sample.json","bytes":2131,"sha256":"28e446e6dd0ffc1ffcae21d662da9cda9b875949705430eb5ece5f1344ec78ec","source_url":"https://dev.macrostrat.org/docs/guides/the-macrostrat-geologic-api"},
+    {"provider":"Macrostrat","file":"MACROSTRAT/evaporitic_sample.json","bytes":1302,"sha256":"96250acd339ffc02a92b3805be70bbf2490dd726dcd5a6a66203c7bd9604aea5","source_url":"https://dev.macrostrat.org/docs/guides/the-macrostrat-geologic-api"},
+    {"provider":"OCTOPUS","file":"OCTOPUS/wfs_getcapabilities.xml","bytes":108095,"sha256":"3ef411b45b27424cc6ac09045105fb8e9b84daf896466bacf5a3c4ddba93c43c","source_url":"https://octopus-db.github.io/documentation/usage.html","query_scope":"bounded WFS Australia BBOX; four OSL layers; count=10 each"},
+    {"provider":"OCTOPUS","file":"OCTOPUS/sahulsed_aeolian_osl_bbox_sample.geojson","bytes":29409,"sha256":"abea0c28719afc59a5e743e9696d61fcef10bc848dbc19c4fe299b879d09f39b","source_url":"http://geoserver.octopusdata.org/geoserver/wfs"},
+    {"provider":"OCTOPUS","file":"OCTOPUS/sahulsed_coastal_osl_bbox_sample.geojson","bytes":25451,"sha256":"3e750b5d2b2531cb4fba7ccdb6c6c328c1923e530b25df91fe2d9b5b59845314","source_url":"http://geoserver.octopusdata.org/geoserver/wfs"},
+    {"provider":"OCTOPUS","file":"OCTOPUS/sahulsed_fluvial_osl_bbox_sample.geojson","bytes":28855,"sha256":"b164082037b721438f734614f8d49f08f91d813278f38be402f929b55c6dc59e","source_url":"http://geoserver.octopusdata.org/geoserver/wfs"},
+    {"provider":"OCTOPUS","file":"OCTOPUS/sahulsed_lacustrine_osl_bbox_sample.geojson","bytes":29298,"sha256":"171549e439fa724475295216b0f3c0db8264519dea98180f95ea1de2777aed7c","source_url":"http://geoserver.octopusdata.org/geoserver/wfs"}
+  ],
+  "total_bytes":295816,
+  "production_payloads":0,
+  "git_tracked_payloads":0
+}
