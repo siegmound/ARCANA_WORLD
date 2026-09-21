@@ -1,0 +1,8 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-EXTERNAL-PROVIDER-REQUIREMENTS",
+  "screening_type": "MANDATORY_CATEGORICAL_GATE__NO_WEIGHTED_SCORE",
+  "mandatory_criteria": ["scientific_domain_match","required_spatial_coverage","temporal_domain_relevance","formation_semantics","event_timing_semantics","persistence_semantics","removal_reworking_semantics","documented_uncertainty","machine_readable","license_or_access","stable_version_or_DOI","native_resolution","coordinate_reference","ARCANA_binding_feasibility"],
+  "outcomes": ["SUITABLE_PRIMARY","SUITABLE_PARTIAL","ELIGIBILITY_ONLY","REGIONAL_COMPLETION_ONLY","EVENT_SPECIFIC_ONLY","SEMANTICALLY_INSUFFICIENT","NOT_APPLICABLE"],
+  "fail_closed_rules": ["present class without formation semantics is not a temporal provider","climate/aridity/temperature alone is eligibility only","formation age does not authorize persistence","endpoint agreement does not prove intermediate persistence","midpoint or bound-as-exact conversion is forbidden","resampling cannot create scientific resolution","missing provenance/license/version blocks primary suitability"],
+  "provider_evidence_record": ["provider_identity","version_or_DOI","source_hash","native_temporal_resolution","age_uncertainty_representation","native_spatial_resolution","coverage_geometry","formation_role","persistence_role","removal_role","machine_readability","license_access","forbidden_proxy_substitutions","ARCANA_binding_plan"]
+}

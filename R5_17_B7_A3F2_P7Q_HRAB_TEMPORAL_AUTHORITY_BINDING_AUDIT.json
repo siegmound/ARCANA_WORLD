@@ -1,0 +1,61 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-TARGETED-TEMPORAL-AUTHORITY-BINDING",
+  "audit_type": "EXISTING_AUTHORITY_RECOVERY_ONLY",
+  "repository_head": "a5ee1d832248614c55a1075574c6f5408d3a3f46",
+  "hrab_clock_sha256": "1bdda02bb075d8e20eaeab988569e79761f849891b8c99f56e317db8e5d0e384",
+  "hrab_cell_rule_index_sha256": "6c178da8f5c1ae68b5e5f9ff9b3fbe7ac70949af33e758f3a6ec1c0446de3975",
+  "authority_chain": [
+    "R5_17_B7_A3F2_P7Q_HRAB_ADJUDICATION.json",
+    "R5_17_B7_A3F2_P7Q_HRAB_DRIVER_RECOVERY_ADJUDICATION.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_GS_GUM_OFFICIAL_SEMANTIC_REGISTRY.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_GS_GUM_TO_ARCANA_BRANCH_MAPPING_CANDIDATE.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_GUM_TO_PARENT_BRANCH_MAPPING.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_SR_GUM_RASTER_LOOKUP_BINDING.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_SR_STATIC_STATE_AUDIT.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_LS_LAND_STATE_BINDING_AUDIT.json",
+    "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json",
+    "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json",
+    "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json"
+  ],
+  "gum_upstream": {
+    "provider": "GUM v1.0",
+    "dbf_path": "_ARCANA_EXTERNAL_SOURCES/p7q_parent_state/GUM_V1/v1.0/raw/extracted/GUM_v1.0.dbf",
+    "dbf_sha256": "5b332318932bd043a17ac21cf507f0250cfb676d5283aaa189d8a7b74e957899",
+    "archive_sha256": "6a2d47f2bc8f6df745c569003f1f536d37c78153e98b54005bfbcccc53d6ee63",
+    "dbf_records": 911551,
+    "fields": ["OBJECTID", "Symbol", "Description", "XX", "YY", "ZZ", "AA", "DD", "Shape_Leng", "Shape_Area"],
+    "temporal_named_fields": [],
+    "source_metadata_dates_are_deposit_ages": false,
+    "formation_authority_recovered": false,
+    "persistence_authority_recovered": false,
+    "removal_reworking_authority_recovered": false,
+    "semantic_conclusion": "GUM provides present mapped geomaterial class identity and geometry; its retained provider schema contains no deposit formation/event chronology or persistence/removal fields."
+  },
+  "gum_1907": {
+    "total": 1907,
+    "alluvial": 1702,
+    "colluvial": 205,
+    "source_code_counts": {"Au": 1500, "Ap": 178, "At": 17, "Af": 7, "Cu": 205},
+    "source_labels": {"Au":"Alluvial, undifferentiated","Ap":"Alluvial plains","At":"Alluvial terraces","Af":"Alluvial fans","Cu":"Colluvial, undifferentiated"},
+    "provider_temporal_fields_found": false,
+    "usable_deposit_formation_authority": false,
+    "substrate_age_only_evidence": false,
+    "missing": ["formation/event age", "formation interval", "appearance timing", "persistence", "removal/reworking"],
+    "classification": "PRESENT_SURFACE_CLASS_ONLY__NO_TEMPORAL_INFORMATION",
+    "formation_authorized": 0,
+    "event_bounded": 0,
+    "persistence_authorized": 0,
+    "forward_transition_authorized": 0
+  },
+  "other_branch_recovery": {
+    "COASTAL": "EXISTING_AUTHORITY_PARTIAL__SHORELINE_ELIGIBILITY_ONLY",
+    "MARINE_DERIVED_EXPOSED": "EXISTING_AUTHORITY_PARTIAL__LAND_OCEAN_EXPOSURE_ONLY",
+    "LACUSTRINE": "ELIGIBILITY_ONLY__NO_VALIDATED_SEDIMENT_FORMATION_AUTHORITY",
+    "GLACIAL_OR_GLACIOFLUVIAL": "NO_EXISTING_TEMPORAL_AUTHORITY",
+    "TRANSPORTED_AEOLIAN": "NO_EXISTING_TEMPORAL_AUTHORITY",
+    "ORGANIC": "NO_EXISTING_TEMPORAL_AUTHORITY",
+    "EVAPORITIC": "NO_EXISTING_TEMPORAL_AUTHORITY",
+    "PYROCLASTIC": "NO_EXISTING_TEMPORAL_AUTHORITY__SINGLE_PRESENT_CLASS_ONLY"
+  },
+  "governance": {"simulation_performed": false, "forward_evolution_performed": false, "backcasting": false, "categorical_interpolation": false, "spatial_resampling": false, "p7q_reopened": false, "physical_soil_created": false, "scientific_authority_register_mutated": false}
+}

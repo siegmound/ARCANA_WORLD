@@ -1,0 +1,26 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-EXTERNAL-PROVIDER-REQUIREMENTS",
+  "purpose": "Define domain-specific acquisition requirements without selecting or acquiring a provider.",
+  "target_domain_ka": [200, 0],
+  "known_unresolved_cells": 4602,
+  "unknown_material_cells_excluded": 64579,
+  "known_material_branches": {
+    "TRANSPORTED_ALLUVIAL": 1702,
+    "TRANSPORTED_COLLUVIAL": 205,
+    "COASTAL": 74,
+    "MARINE_DERIVED_EXPOSED": 109,
+    "LACUSTRINE": 108,
+    "GLACIAL_OR_GLACIOFLUVIAL": 770,
+    "TRANSPORTED_AEOLIAN": 1506,
+    "ORGANIC": 44,
+    "EVAPORITIC": 83,
+    "PYROCLASTIC": 1
+  },
+  "fixed_hrab_clock": {"points": 280,"domain":"200_to_0_ka","native_provider_280_point_requirement":false,"hard_anchors":[200,125,120,20,15,14,13,12,11,10,5,0]},
+  "design_principles": ["formation, event timing, persistence, removal/reworking, and spatial occurrence are separate authorities","event/interval evidence may constrain HRAB without categorical 280-point interpolation","native provider resolution and uncertainty must be preserved","0 ka is an endpoint constraint, never a paleo initializer","UNKNOWN remains first-class"],
+  "minimum_plausible_provider_families": ["quaternary_fluvial_colluvial_surficial_geology","coastal_marine_depositional_event_authority","lacustrine_depositional_authority","cryosphere_and_glacial_deposits","aeolian_dust_loess_deposits","organic_and_evaporitic_formation_records","targeted_tephra_or_eruption_event_authority"],
+  "ideal_provider_families": ["global_or_mosaic_quaternary_surficial_deposit_authority","event-dated regional specialist authorities for branches not globally covered"],
+  "special_case_branches": ["PYROCLASTIC"],
+  "provider_selected": false,
+  "forward_evolution_authorized": false
+}

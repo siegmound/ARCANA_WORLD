@@ -1,0 +1,13 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-TARGETED-TEMPORAL-AUTHORITY-BINDING",
+  "provenance_mode": "COMPACT_EQUIVALENCE_CENSUS__NO_NEW_PER_CELL_LEDGER_CREATED",
+  "source_payload": "PRE5I_STATIC_PARENT_STATE_0KA.jsonl.gz",
+  "source_payload_sha256": "e25cd2b55e34e5b175aaf631849dc319448f8510b83d1407ef9f1ffab0a4caee",
+  "record_count": 1907,
+  "equivalence_classes": [
+    {"branch":"TRANSPORTED_ALLUVIAL","source_codes":["Au","Ap","At","Af"],"records":1702,"source_artifact":"gum_v1.0_0point5deg.txt.asc","source_unit_identifier":"XX code","source_description_labels":["Alluvial, undifferentiated","Alluvial plains","Alluvial terraces","Alluvial fans"],"source_temporal_fields":[],"source_temporal_semantics":"PRESENT_SURFACE_CLASS_ONLY","formation_authority":"NONE","persistence_authority":"NONE","removal_reworking_authority":"NONE"},
+    {"branch":"TRANSPORTED_COLLUVIAL","source_codes":["Cu"],"records":205,"source_artifact":"gum_v1.0_0point5deg.txt.asc","source_unit_identifier":"XX code","source_description_labels":["Colluvial, undifferentiated"],"source_temporal_fields":[],"source_temporal_semantics":"PRESENT_SURFACE_CLASS_ONLY","formation_authority":"NONE","persistence_authority":"NONE","removal_reworking_authority":"NONE"}
+  ],
+  "source_schema_finding": "The original GUM DBF has no age, year, date, formation, event, period, epoch, or unit-age field. XX/YY/ZZ/AA/DD are semantic/code fields, not temporal history.",
+  "forbidden_promotions": ["source class to exact formation age", "substrate geological age to surficial deposit age", "formation occurrence to persistence", "endpoint branch to 200 ka initializer"]
+}
