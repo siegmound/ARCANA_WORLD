@@ -1,0 +1,21 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB",
+  "architecture": "ENDPOINT_CONSTRAINED_HYBRID_TEMPORAL_PARENT_STATE_ADAPTER",
+  "objective": "Build a sparse high-resolution temporal bridge without backcasting or spatial upsampling.",
+  "temporal_domain_ka": [200.0, 0.0],
+  "hard_anchors_ka": [200.0, 125.0, 120.0, 20.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 5.0, 0.0],
+  "interval_count": 11,
+  "direction": "OLDER_TO_YOUNGER_FORWARD",
+  "endpoint_0ka_role": "CONSTRAINT_CHECK_ONLY",
+  "initialization_200ka": "INDEPENDENT_AUTHORITY_REQUIRED_OR_UNKNOWN",
+  "unknown_is_first_class": true,
+  "representation": ["HIGH_RES_TEMPORAL_CLOCK", "SPARSE_CELL_RULE_INDEX", "INTERVAL_CHECKPOINTS"],
+  "dense_cell_time_cube": false,
+  "generic_categorical_interpolation": false,
+  "present_endpoint_backcast": false,
+  "spatial_resampling": false,
+  "production_state_evolution": false,
+  "physical_soil_created": false,
+  "saprolite_authority_created": false,
+  "P7Q_reopened": false
+}

@@ -1,0 +1,9 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB",
+  "checkpoint_units": "execution_checkpoints_inside_one_HRAB_stage",
+  "intervals": [[200.0,125.0],[125.0,120.0],[120.0,20.0],[20.0,15.0],[15.0,14.0],[14.0,13.0],[13.0,12.0],[12.0,11.0],[11.0,10.0],[10.0,5.0],[5.0,0.0]],
+  "per_interval_fields": ["input_anchor_ka", "output_anchor_ka", "clock_points_ka", "driver_authorities_used", "rule_families_active", "cells_updated", "cells_preserved", "cells_unknown", "conflicts", "materialized_output_hash", "status"],
+  "state_transition_policy": "execute only explicit authorized forward rules; otherwise preserve UNKNOWN or endpoint-only metadata",
+  "endpoint_policy": "younger anchor is validation/reconciliation point, never an interpolation target",
+  "dense_material_state_output": false
+}
