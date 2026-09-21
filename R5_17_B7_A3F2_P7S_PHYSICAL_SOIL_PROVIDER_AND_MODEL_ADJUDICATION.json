@@ -1,0 +1,171 @@
+{
+  "stage": "R5.17-B7-A3F2-P7S",
+  "decision": "AUTHORIZE_TARGETED_PHYSICAL_SOIL_PROVIDER_ACQUISITION_AND_MODEL_PROOF",
+  "verdict": "PASS_PROVIDER_SCHEMA_ADJUDICATION__REQUIRE_MODEL_AND_INITIALIZATION_PROOF_BEFORE_PRODUCTION",
+  "repository_baseline": {
+    "branch": "main",
+    "head": "a489542104c2f0ec3b7e3582210b3eb8d2e7f251",
+    "origin_main": "a489542104c2f0ec3b7e3582210b3eb8d2e7f251"
+  },
+  "upstream_authority": {
+    "hrab_sparse_temporal_constraint_authority": "READY",
+    "full_temporal_parent_state_materialized": false,
+    "known_material_cells": 4602,
+    "useful_gum_aa_cells": 1980,
+    "externally_refined_cells": 2,
+    "first_order_temporal_gaps": 2622,
+    "persistence_authority_complete": false,
+    "removal_reworking_authority_complete": false,
+    "forward_parent_material_evolution_authorized": false,
+    "p7s_consumability": "PARTIAL"
+  },
+  "required_state_adjudication": {
+    "sand_fraction": "REQUIRED_FOR_PHYSICAL_SOIL",
+    "silt_fraction": "REQUIRED_FOR_PHYSICAL_SOIL",
+    "clay_fraction": "REQUIRED_FOR_PHYSICAL_SOIL",
+    "bulk_density": "REQUIRED_FOR_PHYSICAL_SOIL",
+    "coarse_fragment_fraction": "REQUIRED_FOR_PHYSICAL_SOIL",
+    "soil_depth": "REQUIRED_FOR_PHYSICAL_SOIL",
+    "rootable_depth": "REQUIRED_FOR_BIOME4_OR_NPP",
+    "profile_depth_structure": "REQUIRED_FOR_PHYSICAL_SOIL",
+    "porosity_or_saturated_water_content": "REQUIRED_FOR_BIOME4_OR_NPP",
+    "field_capacity": "REQUIRED_FOR_BIOME4_OR_NPP",
+    "wilting_point": "REQUIRED_FOR_BIOME4_OR_NPP",
+    "available_water_capacity": "REQUIRED_FOR_BIOME4_OR_NPP",
+    "saturated_hydraulic_conductivity": "REQUIRED_FOR_BIOME4_OR_NPP",
+    "pH": "OPTIONAL_CALIBRATION",
+    "CEC": "OPTIONAL_CALIBRATION",
+    "SOC_or_organic_matter": "OPTIONAL_CALIBRATION",
+    "nitrogen_state": "NOT_CURRENTLY_REQUIRED"
+  },
+  "provider_matrix": [
+    {
+      "provider": "SoilGrids 2.0",
+      "role": ["PRESENT_ENDPOINT_CONSTRAINT", "CALIBRATION_AUTHORITY", "PARAMETER_PRIOR"],
+      "present_endpoint_authority": true,
+      "historical_authority": false,
+      "direct_or_derived": "MODELLED_GLOBAL_PREDICTION_FROM_SOIL_PROFILES_AND_COVARIATES",
+      "native_resolution": "250 m",
+      "native_crs": "ISRIC service projection/output CRS must be retained per request",
+      "depths": ["0-5 cm", "5-15 cm", "15-30 cm", "30-60 cm", "60-100 cm", "100-200 cm"],
+      "usable_variables": ["sand", "silt", "clay", "bulk_density", "coarse_fragments", "pH", "CEC", "SOC", "total_nitrogen", "volumetric_water_content"],
+      "uncertainty": "Q0.05/Q0.50/mean/Q0.95 where coverage is requested",
+      "access": "official ISRIC WCS 2.0.x; bounded GetCoverage requests permitted; GEE access is secondary",
+      "limitation": "present-day mapped prediction; not a paleosol state or 200 ka initializer"
+    },
+    {
+      "provider": "HiHydroSoil v2.0",
+      "role": ["HYDRAULIC_PARAMETER_AUTHORITY", "PEDOTRANSFER_AUTHORITY"],
+      "present_endpoint_authority": true,
+      "historical_authority": false,
+      "direct_or_derived": "DERIVED_PARAMETERIZATION_SUBSTANTIALLY_BASED_ON_SOILGRIDS_INPUTS",
+      "native_resolution": "250 m",
+      "native_crs": "provider raster CRS; preserve native metadata",
+      "depths": ["six SoilGrids-aligned depth layers", "aggregated topsoil/subsoil products"],
+      "usable_variables": ["texture_class", "Ksat", "Mualem_van_Genuchten_alpha", "Mualem_van_Genuchten_n", "theta_s", "theta_r", "water_content_pF2", "water_content_pF3", "water_content_pF4.2", "hydrologic_soil_group"],
+      "uncertainty": "provider metadata/derived uncertainty must be retained; not independent from SoilGrids by default",
+      "access": "bounded provider acquisition only after model-proof gate",
+      "limitation": "do not double-count as independent evidence; no historical soil authority"
+    },
+    {
+      "provider": "HWSD v2.0/v2.01",
+      "role": ["INDEPENDENT_CROSSCHECK", "ROOTABLE_DEPTH_AUTHORITY", "PROFILE_STRUCTURE_CROSSCHECK"],
+      "present_endpoint_authority": true,
+      "historical_authority": false,
+      "direct_or_derived": "MAPPED_SOIL_UNIT_ATTRIBUTES_WITH_DATABASE_LINKAGE",
+      "native_resolution": "1 km / 30 arc-second",
+      "native_crs": "FAO/IIASA raster/database native support",
+      "depths": ["0-20 cm", "20-40 cm", "40-60 cm", "60-80 cm", "80-100 cm", "100-150 cm", "150-200 cm"],
+      "usable_variables": ["USDA_texture", "reference_bulk_density", "rootable_soil_depth", "AWC", "soil_morphology", "CEC", "total_nitrogen", "soil_unit_attributes"],
+      "uncertainty": "database error estimates/statistics where available; preserve mapping-unit support",
+      "access": "official FAO HWSD v2 database/raster; bounded acquisition only",
+      "limitation": "coarse independent cross-check; must not be upscaled into 250 m evidence"
+    },
+    {
+      "provider": "OpenLandMap",
+      "role": ["OPTIONAL_CALIBRATION", "FALLBACK_PARAMETER_SOURCE_ONLY"],
+      "present_endpoint_authority": "conditional",
+      "historical_authority": false,
+      "direct_or_derived": "COMPOSITE_OR_MODELLED_DEPENDS_ON_LAYER_AND_TRAINING_DATA",
+      "native_resolution": "layer-dependent; 30 m/100 m/250 m/1 km products exist",
+      "native_crs": "layer metadata required",
+      "depths": "layer-dependent",
+      "usable_variables": "only a property not adequately covered by the selected primary/cross-check stack",
+      "uncertainty": "layer-dependent",
+      "access": "STAC/S3/WCS metadata inspection only at this stage",
+      "limitation": "not required for the minimum architecture; provenance and dependency must be established per layer"
+    }
+  ],
+  "minimum_defensible_architecture": {
+    "components": [
+      "HRAB sparse parent-material constraint interface with explicit UNKNOWN",
+      "SoilGrids 2.0 bounded present-endpoint physical state and uncertainty",
+      "HWSD v2 bounded independent rootable-depth/profile cross-check",
+      "existing ARCANA climate, hydrology, topography, shoreline and time authorities",
+      "minimal model-proof implementation for unknown-initial-state and parameter calibration"
+    ],
+    "hihydrosoil_status": "optional_derived_hydraulic_layer_after_SoilGrids_binding; not independent evidence",
+    "openlandmap_status": "not_required_for_minimum_architecture"
+  },
+  "ideal_higher_fidelity_architecture": {
+    "components": [
+      "minimum architecture",
+      "HiHydroSoil hydraulic parameterization with explicit SoilGrids dependency",
+      "transferable process-based or state-space pedogenesis model",
+      "regional calibration/validation observations and uncertainty propagation",
+      "regime-specific parent-material transfer rules only where HRAB authority supports them"
+    ],
+    "not_authorized": true
+  },
+  "historical_vs_present_authority": {
+    "present_endpoint_authority": "SoilGrids primary; HWSD independent cross-check; HiHydroSoil derived hydraulic support",
+    "historical_soil_authority": "ABSENT",
+    "historical_parent_constraints": "SPARSE_ONLY_FROM_HRAB",
+    "soilgrids_present_state_is_paleosol": false
+  },
+  "initialization_strategy": {
+    "selected": "HYBRID_UNKNOWN_INITIAL_SOIL_WITH_ENDPOINT_CALIBRATION",
+    "allowed": ["PARENT_MATERIAL_INITIAL_CONDITION_WHERE_TRANSFER_RULE_IS_AUTHORIZED", "UNKNOWN_INITIAL_SOIL_WITH_EXPLICIT_UNCERTAINTY", "MODERN_ENDPOINT_CALIBRATION_AND_VALIDATION"],
+    "forbidden": ["COPY_0KA_SOIL_TO_200KA", "BACKCAST_PRESENT_SOIL", "INVENT_EXACT_PARENT_SWITCH_DATE"],
+    "reason": "HRAB supplies sparse constraints, not a complete oldest-time physical soil state"
+  },
+  "pedogenesis_model_adjudication": {
+    "required": true,
+    "candidate_family": "MINIMAL_TRANSFERABLE_STATE_SPACE_OR_PROCESS_BASED_PEDOGENESIS_MODEL",
+    "justification": "A temporal bridge is required between sparse parent constraints, climate/hydrology/topography forcing, and present-endpoint calibration; static endpoint copying is scientifically invalid.",
+    "must_support": ["200ka_to_0ka", "parent_material_dependency", "climate_forcing", "soil_depth_profile_evolution", "hydraulic_derivation", "explicit_uncertainty", "unknown_state_propagation", "computational_feasibility"],
+    "not_yet_demonstrated": ["transferable_global_parameterization", "initialized_physical_profile", "formation_removal_reworking_rules", "validated_historical_soil_trajectory"],
+    "production_run_authorized": false
+  },
+  "sparse_hrab_consumption": {
+    "status": "PARTIAL",
+    "accepted_states": ["ENDPOINT_ONLY", "AGE_CLASS_CONSTRAINED", "FORMATION_REFINED", "EVENT_BOUNDED", "INTERMEDIATE_STATE_UNKNOWN", "NO_TEMPORAL_AUTHORITY", "OUTSIDE_SCOPE"],
+    "unknown_behavior": "uncertainty_widens_or_state_remains_unknown",
+    "continuous_persistence_inference": false
+  },
+  "blockers": {
+    "primary": ["MODEL_GAP", "INITIALIZATION_GAP"],
+    "secondary": ["TEMPORAL_PARENT_MATERIAL_GAP", "PROVIDER_BINDING_GAP_FOR_TARGETED_PRESENT_ENDPOINT_PAYLOADS"],
+    "not_a_blocker": "provider_schema/access feasibility for bounded SoilGrids/HWSD/HiHydroSoil metadata inspection",
+    "no_blocker_for_bounded_physical_soil_replay": false
+  },
+  "engine_assessment": {
+    "rasterio_gdal": "suitable for bounded metadata/window validation; not a pedogenesis model",
+    "pedotransfer_implementations": "usable only after physical texture/profile authority is bound",
+    "process_soil_profile_models": "not selected or executed; require initialization/model-proof gate",
+    "new_engine_introduced": false
+  },
+  "governance": {
+    "large_downloads": false,
+    "physical_soil_materialized": false,
+    "biome4_run": false,
+    "madingley_invoked": false,
+    "forward_evolution_executed": false,
+    "p7q_reopened": false,
+    "canonical_mutation": false,
+    "scientific_authority_register_mutated": false,
+    "b7_complete": false,
+    "r517_sealed": false
+  },
+  "recommended_next_action": "RUN_TARGETED_PHYSICAL_SOIL_PROVIDER_ACQUISITION_AND_MODEL_PROOF"
+}
