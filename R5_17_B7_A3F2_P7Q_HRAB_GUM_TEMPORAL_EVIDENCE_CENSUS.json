@@ -1,0 +1,41 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-DRIVER-RECOVERY",
+  "source_payload": "PRE5I_STATIC_PARENT_STATE_0KA.jsonl.gz",
+  "source_payload_sha256": "e25cd2b55e34e5b175aaf631849dc319448f8510b83d1407ef9f1ffab0a4caee",
+  "candidate_records": 1907,
+  "branch_counts": {"TRANSPORTED_ALLUVIAL": 1702, "TRANSPORTED_COLLUVIAL": 205},
+  "exact_temporal_evidence_census": [
+    {
+      "classification": "PRESENT_ENDPOINT_ONLY",
+      "records": 1907,
+      "applicability.age_evidence_status": "ENDPOINT_ONLY_0KA",
+      "formation_interval.status": "UNKNOWN",
+      "formation_min_ka": null,
+      "formation_max_ka": null,
+      "valid_from_ka": null,
+      "valid_to_ka": null,
+      "termination_min_ka": null,
+      "termination_max_ka": null,
+      "persistence_status": "UNKNOWN",
+      "temporal_rule": "ENDPOINT_CONSTRAINED",
+      "semantic_conclusion": "The record identifies a present endpoint candidate only; it does not date formation, appearance, termination, persistence, or reworking."
+    }
+  ],
+  "age_semantics": {
+    "supports_existence_at_200ka": false,
+    "supports_first_possible_appearance": false,
+    "supports_latest_possible_appearance": false,
+    "supports_bounded_formation_interval": false,
+    "supports_endpoint_only": true,
+    "supports_persistence_to_0ka": false,
+    "supports_removal_or_reworking": false,
+    "endpoint_branch_alone_is_initializer": false,
+    "exact_transition_time_inferred": false
+  },
+  "authority_interpretation": {
+    "GUM_v1_0": "official semantic/class identity and present candidate branch only",
+    "PRE5C": "static source binding; no temporal reconstruction",
+    "B6_hydrology_and_shoreline": "drivers/eligibility constraints only; no explicit alluvial formation or persistence rule recovered"
+  },
+  "decision": "NO_GUM_CANDIDATE_PROMOTION"
+}

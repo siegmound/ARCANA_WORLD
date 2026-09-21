@@ -1,0 +1,82 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-DRIVER-RECOVERY",
+  "audit_type": "AUTHORITY_RECOVERY_AND_ADJUDICATION_ONLY",
+  "repository_head": "a5ee1d832248614c55a1075574c6f5408d3a3f46",
+  "expected_hrab_parent": "6e39b2aac2d82a3ef71c751c9f133d4354fde9b1",
+  "parent_is_ancestor": true,
+  "authority_chain": [
+    "R5_17_B7_A3F2_P7Q_HRAB_ADJUDICATION.json",
+    "R5_17_B7_A3F2_P7Q_HRAB_DRIVER_AUTHORITY_MATRIX.json",
+    "R5_17_B7_A3F2_P7Q_HRAB_CELL_RULE_INDEX_MANIFEST.json",
+    "R5_17_B7_A3F2_P7Q_HRAB_VALIDATION.json",
+    "R5_17_B7_A3F2_P7Q_PRE3_TEMPORAL_PARENT_MATERIAL_RECONSTRUCTION_METHOD_ADJUDICATION.json",
+    "R5_17_B7_A3F2_P7Q_PRE4_HYBRID_TEMPORAL_PARENT_STATE_ADAPTER_SCHEMA_ADJUDICATION.json",
+    "R5_17_B7_A3F2_P7T_HUMAN_SUPPORT_TEMPORAL_SNAPSHOT_AUTHORITY.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_GS_GUM_OFFICIAL_SEMANTIC_REGISTRY.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_GUM_TO_PARENT_BRANCH_MAPPING.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_SR_STATIC_STATE_AUDIT.json",
+    "R5_17_B7_A3F2_P7Q_PRE5C_LS_LAND_STATE_BINDING_AUDIT.json",
+    "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json",
+    "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json",
+    "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json"
+  ],
+  "hrab_core": {
+    "clock_points": 280,
+    "clock_sha256": "1bdda02bb075d8e20eaeab988569e79761f849891b8c99f56e317db8e5d0e384",
+    "cell_rule_records": 249840,
+    "cell_rule_sha256": "6c178da8f5c1ae68b5e5f9ff9b3fbe7ac70949af33e758f3a6ec1c0446de3975",
+    "hard_anchors_ka": [200,125,120,20,15,14,13,12,11,10,5,0],
+    "endpoint_0ka_used_as_initializer": false,
+    "unknown_preserved": true
+  },
+  "static_branch_counts": {
+    "OUTSIDE_SCOPE": 180659,
+    "UNKNOWN_MATERIAL": 64579,
+    "TRANSPORTED_ALLUVIAL": 1702,
+    "TRANSPORTED_AEOLIAN": 1506,
+    "GLACIAL_OR_GLACIOFLUVIAL": 770,
+    "TRANSPORTED_COLLUVIAL": 205,
+    "MARINE_DERIVED_EXPOSED": 109,
+    "LACUSTRINE": 108,
+    "EVAPORITIC": 83,
+    "COASTAL": 74,
+    "ORGANIC": 44,
+    "PYROCLASTIC": 1
+  },
+  "gum_candidates": {
+    "alluvial": 1702,
+    "colluvial": 205,
+    "total": 1907,
+    "temporal_evidence_states": {
+      "ENDPOINT_ONLY_0KA__FORMATION_INTERVAL_UNKNOWN__PERSISTENCE_UNKNOWN": 1907
+    },
+    "explicit_formation_age_records": 0,
+    "explicit_minimum_age_records": 0,
+    "explicit_maximum_age_records": 0,
+    "explicit_age_interval_records": 0,
+    "event_age_records": 0,
+    "usable_temporal_condition_records": 0,
+    "endpoint_only_records": 1907,
+    "missing_or_unusable_temporal_records": 1907,
+    "source_temporal_rule": "ENDPOINT_CONSTRAINED",
+    "persistence_authority": false,
+    "decision": "AGE_GATED_CANDIDATE_ONLY__NO_200KA_INITIALIZATION_OR_FORWARD_TRANSITION_AUTHORIZED"
+  },
+  "candidate_materialization": {
+    "newly_authorized_cells": 0,
+    "authorized_forward_rule_families": [],
+    "full_temporal_parent_state_materialized": false,
+    "decision_class": "REQUIRE_TARGETED_EXISTING_AUTHORITY_BINDING",
+    "unknown_dominant": true
+  },
+  "governance": {
+    "scientific_simulation_performed": false,
+    "p7q_reopened": false,
+    "physical_soil_created": false,
+    "canonical_mutation": false,
+    "scientific_authority_register_mutated": false,
+    "backcasting_used": false,
+    "categorical_interpolation_used": false,
+    "spatial_resampling_used": false
+  }
+}
