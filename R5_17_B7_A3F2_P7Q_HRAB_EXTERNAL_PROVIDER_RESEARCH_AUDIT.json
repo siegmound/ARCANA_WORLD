@@ -1,0 +1,21 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-EXTERNAL-PROVIDER-RESEARCH",
+  "research_date": "2026-09-21",
+  "baseline": {"head": "e33ce38fab81ea30bed174c72d16be6e5e11ecbf", "origin_main": "e33ce38fab81ea30bed174c72d16be6e5e11ecbf", "branch": "main"},
+  "scope": {"known_material_cells": 4602, "unknown_material_cells": 64579, "unknown_policy": "UNKNOWN_PROPAGATION_ONLY__NO_GLOBAL_PROVIDER_SEARCH", "target_domain_ka": [200, 0]},
+  "method": "LIVE_PRIMARY_SOURCE_AND_OFFICIAL_DATA_PORTAL_SCREENING_AGAINST_CATEGORICAL_CONTRACT",
+  "semantic_separation": ["FORMATION", "OCCURRENCE", "EVENT_TIMING", "PERSISTENCE", "REMOVAL", "REWORKING", "SPATIAL_EXTENT"],
+  "research_controls": {"weighted_scoring": false, "provider_voting": false, "production_payload_downloaded": false, "forward_evolution": false, "new_provider_selected": false, "unknown_cells_searched": false},
+  "domain_results": {
+    "FLUVIAL_COLLUVIAL": {"cells": 1907, "primary_candidate": "GUM_v1.0", "outcome": "SUITABLE_PARTIAL", "finding": "Global native deposit polygons and process classes are available; temporal age is present only where source mapping supplies it and the locally bound DBF has no temporal fields, so formation/event binding remains unresolved for ARCANA."},
+    "COASTAL_MARINE": {"cells": 183, "primary_candidate": "regional_quaternary_and_marine_terrace_maps", "outcome": "REGIONAL_COMPLETION_REQUIRED", "finding": "Existing shoreline authority is eligibility-only; research found no single global machine-readable deposit chronology that supplies material identity plus persistence/removal."},
+    "LACUSTRINE": {"cells": 108, "primary_candidate": "NCEI_Lake_and_OCTOPUS", "outcome": "SUITABLE_PARTIAL", "finding": "Dated lake-sediment/core records are available, but they are study/site records rather than a global deposit-footprint authority."},
+    "GLACIAL_OR_GLACIOFLUVIAL": {"cells": 770, "primary_candidate": "DATED-1_plus_regional_glacial_landform_maps", "outcome": "SUITABLE_PARTIAL", "finding": "DATED-1 supplies dated ice-margin evidence and uncertainty bounds; it does not by itself authorize surviving glacial or glaciofluvial deposit identity."},
+    "TRANSPORTED_AEOLIAN": {"cells": 1506, "primary_candidate": "GUM_v1.0_plus_NCEI_Loess_DIRTMAP", "outcome": "SUITABLE_PARTIAL", "finding": "GUM supplies global aeolian spatial classes and NCEI supplies dated loess study records; no single global footprint-plus-persistence chronology was verified."},
+    "ORGANIC": {"cells": 44, "primary_candidate": "C-PEAT_global_peat_records", "outcome": "SUITABLE_PARTIAL", "finding": "Global peat basal ages and dated core records can constrain formation/initiation at sampled sites; spatial coverage and removal/persistence remain incomplete."},
+    "EVAPORITIC": {"cells": 83, "primary_candidate": "basin_specific_quaternary_evaporite_records", "outcome": "NO_DEFENSIBLE_PROVIDER_FOUND", "finding": "No global machine-readable provider satisfying deposit identity, dated formation, spatial footprint, and preservation/removal semantics was verified."},
+    "PYROCLASTIC": {"cells": 1, "primary_candidate": "Smithsonian_Global_Volcanism_Program", "outcome": "EVENT_SPECIFIC_AUTHORITY_REQUIRED", "finding": "GVP supplies dated eruption events and locations, but cell binding still requires source-unit/tephra footprint evidence for the specific ARCANA cell."}
+  },
+  "multi_domain_finding": "GUM is the only researched global multi-branch spatial candidate, but its temporal attributes are source-dependent and the ARCANA-bound local DBF exposes no temporal fields; it cannot be promoted to a complete temporal provider.",
+  "recommended_action": "AUTHORIZE_PARTIAL_PROVIDER_ACQUISITION_WITH_UNRESOLVED_BRANCHES_PRESERVED"
+}

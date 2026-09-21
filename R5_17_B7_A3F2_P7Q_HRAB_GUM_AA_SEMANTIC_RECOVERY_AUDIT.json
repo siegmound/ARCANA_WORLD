@@ -1,0 +1,50 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-GUM-AA-SEMANTIC-RECOVERY",
+  "status": "CORRECTIVE_AUDIT_ONLY",
+  "repository_head": "e33ce38fab81ea30bed174c72d16be6e5e11ecbf",
+  "source": {
+    "dataset": "Global Unconsolidated Material (GUM) v1.0",
+    "dbf": "_ARCANA_EXTERNAL_SOURCES/p7q_parent_state/GUM_V1/v1.0/raw/extracted/GUM_v1.0.dbf",
+    "sha256": "5b332318932bd043a17ac21cf507f0250cfb676d5283aaa189d8a7b74e957899",
+    "records": 911551,
+    "header_length": 353,
+    "record_length": 1827,
+    "fields": ["OBJECTID", "Symbol", "Description", "XX", "YY", "ZZ", "AA", "DD", "Shape_Leng", "Shape_Area"]
+  },
+  "parser_correction": {
+    "prior_error": "field descriptor terminator was followed by an incorrect 32-byte skip",
+    "correct_rule": "seek(header_length) before reading records",
+    "corrected_semantics": "AA is an independent GUM age-class field; Symbol is not the XXYYZZAADD concatenation",
+    "symbol_concatenated_match_count": 0,
+    "symbol_concatenated_mismatch_count": 911551
+  },
+  "primary_source_semantics": {
+    "publication": "Börker et al. 2018, Global Unconsolidated Material map",
+    "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017GC007273",
+    "scope": "current exposed unconsolidated surface material and broad age information",
+    "age_authority": "broad AA classes, not exact event dates, persistence trajectories, or removal/reworking histories"
+  },
+  "corrected_findings": {
+    "aa_field_recovered": true,
+    "blank_or_null_count": 0,
+    "explicit_unknown_nn_count": 321980,
+    "unexpected_code_count": 0,
+    "exact_event_authority": false,
+    "persistence_authority": false,
+    "removal_reworking_authority": false,
+    "spatial_association_uncertainty_retained": true
+  },
+  "governance": {
+    "provider_acquisition_authorized": false,
+    "forward_evolution_executed": false,
+    "p7q_reopened": false,
+    "scientific_authority_register_mutated": false,
+    "current_state_updated": false,
+    "canonical_mutation": false
+  },
+  "supersession": {
+    "supersedes_only": "the prior conclusion that GUM contained no recoverable AA temporal field",
+    "historical_artifacts_preserved": true,
+    "prior_provider_research_remains_provisional": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-GUM-AA-TEMPORAL-CONSTRAINT-MATRIX",
+  "domain": "200ka_to_0ka",
+  "source": "GUM AA broad age classes; ICS Quaternary chart used only for semantic boundary context",
+  "ics_source": "https://stratigraphy.org/ICSchart/ChronostratChart2024-12.pdf",
+  "classes": {
+    "hu": {"meaning": "Holocene", "hrab_constraint": "KNOWN_TO_BE_YOUNGER_THAN_200KA", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "hm": {"meaning": "Middle Holocene", "hrab_constraint": "KNOWN_TO_BE_YOUNGER_THAN_200KA", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "hl": {"meaning": "Late Holocene", "hrab_constraint": "KNOWN_TO_BE_YOUNGER_THAN_200KA", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "pl": {"meaning": "Late/Upper Pleistocene", "hrab_constraint": "KNOWN_TO_BE_YOUNGER_THAN_200KA", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "pm": {"meaning": "Middle Pleistocene", "hrab_constraint": "OVERLAPS_200KA_DOMAIN", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "pe": {"meaning": "Early Pleistocene", "hrab_constraint": "PREDOMINANTLY_OLDER_THAN_HRAB_DOMAIN", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "pu": {"meaning": "Pleistocene", "hrab_constraint": "TOO_BROAD_TO_LOCATE_WITHIN_200KA_DOMAIN", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "qu": {"meaning": "Quaternary", "hrab_constraint": "TOO_BROAD_TO_LOCATE_WITHIN_200KA_DOMAIN", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "qt": {"meaning": "Quaternary/Tertiary", "hrab_constraint": "TOO_BROAD_TO_LOCATE_WITHIN_200KA_DOMAIN", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "pp": {"meaning": "Plio-Pleistocene", "hrab_constraint": "TOO_BROAD_TO_LOCATE_WITHIN_200KA_DOMAIN", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "tu": {"meaning": "Tertiary", "hrab_constraint": "OUTSIDE_HRAB_TEMPORAL_RELEVANCE", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "ot": {"meaning": "Older than Tertiary", "hrab_constraint": "OUTSIDE_HRAB_TEMPORAL_RELEVANCE", "exact_event": false, "persistence": false, "removal_reworking": false},
+    "nn": {"meaning": "Unknown or missing age class", "hrab_constraint": "UNKNOWN", "exact_event": false, "persistence": false, "removal_reworking": false}
+  },
+  "aggregate": {"exact_event_authority_cells": 0, "persistence_authority_cells": 0, "removal_reworking_authority_cells": 0, "hrab_domain_relevant_age_class_cells": 1980, "unknown_cells": 900},
+  "policy": "AA constrains admissible age class interpretation; it does not authorize categorical interpolation, persistence, event timing, or forward evolution."
+}

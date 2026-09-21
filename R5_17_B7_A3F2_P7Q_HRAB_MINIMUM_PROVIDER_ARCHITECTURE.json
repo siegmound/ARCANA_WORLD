@@ -1,0 +1,19 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-EXTERNAL-PROVIDER-RESEARCH",
+  "architecture": "MINIMUM_DEFENSIBLE_PROVIDER_ARCHITECTURE",
+  "status": "RECOMMENDED_FOR_TARGETED_ACQUISITION_AND_BINDING_REVIEW__NOT_PRODUCTION_AUTHORIZED",
+  "providers": [
+    {"provider":"GUM_v1.0","role":"global spatial/process-class base for alluvial, colluvial, glacial, aeolian and pyroclastic branches","authorization_ceiling":"spatial association only until temporal attributes are independently verified"},
+    {"provider":"OCTOPUS_v2.3","role":"targeted dated Quaternary depositional-landform and event evidence","authorization_ceiling":"selective record acquisition; preserve native geometry and age uncertainty"},
+    {"provider":"C-PEAT_v2025","role":"targeted organic/peat formation and basal-age evidence","authorization_ceiling":"matched-core/site evidence; no global persistence inference"},
+    {"provider":"NCEI_Loess_and_Lake_archives","role":"targeted aeolian and lacustrine chronology evidence","authorization_ceiling":"study/core records; not a global footprint"},
+    {"provider":"DATED-1_or_regional_glacial_landform_authority","role":"ice/deglaciation context and regional glacial deposit completion","authorization_ceiling":"ice eligibility separate from deposit state"},
+    {"provider":"Smithsonian_GVP_plus_targeted_tephra_source","role":"single-cell pyroclastic event trace","authorization_ceiling":"event-specific only; source-unit footprint required"}
+  ],
+  "unresolved_after_minimum": ["COASTAL_MARINE","EVAPORITIC","global_persistence","global_removal_reworking","complete_200ka_to_0ka_survival_state"],
+  "ideal_higher_fidelity_architecture": ["GUM_or_equivalent_global_surficial_spatial_base","regional dated Quaternary deposit maps for each occupied branch","dated glacial/glaciofluvial landform mosaics","global/regional loess and dune chronologies","basin-specific lacustrine and evaporite records","peat core chronology mosaics","cell-specific tephra/eruption provenance"],
+  "provider_count_minimum": 6,
+  "forward_evolution_authorized": false,
+  "production_authorized": false,
+  "unknown_preserved": true
+}

@@ -1,0 +1,14 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-AA-AWARE-MINIMUM-PROVIDER-ARCHITECTURE",
+  "gum_base": {"required": true, "role": "EXISTING_BOUND_BASE_AUTHORITY"},
+  "minimum_external_families": {
+    "DATED_FORMATION_EVENT_EVIDENCE": {"providers": ["OCTOPUS", "DATED_1_REGIONAL_GLACIAL", "SMITHSONIAN_GVP"], "roles": ["AGE_COMPLETION", "EVENT_REFINEMENT", "FORMATION_REFINEMENT", "EVENT_SPECIFIC_COMPLETION"]},
+    "DOMAIN_TARGETED_CHRONOLOGY": {"providers": ["NCEI_LOESS_PALEOSOL", "NCEI_LAKE", "C_PEAT"], "roles": ["AGE_COMPLETION", "AGE_REFINEMENT", "FORMATION_REFINEMENT"]},
+    "SHORELINE_EXPOSURE_AND_MARINE": {"providers": ["SHORELINE_AND_MARINE_AUTHORITIES"], "roles": ["SPATIAL_COMPLETION", "EVENT_REFINEMENT"]},
+    "PERSISTENCE_AND_REMOVAL": {"providers": ["event-specific authorities selected by domain and site"], "roles": ["PERSISTENCE_COMPLETION", "REMOVAL_REWORKING_COMPLETION"]}
+  },
+  "not_required_for_first_order_age": ["OCTOPUS", "NCEI_LOESS_PALEOSOL", "NCEI_LAKE", "C_PEAT", "DATED_1_REGIONAL_GLACIAL", "SMITHSONIAN_GVP"],
+  "qualification": "GUM AA reduces first-order age gaps but does not eliminate targeted completion/refinement or persistence/removal requirements.",
+  "full_forward_evolution_authorized": false,
+  "provider_acquisition_executed": false
+}

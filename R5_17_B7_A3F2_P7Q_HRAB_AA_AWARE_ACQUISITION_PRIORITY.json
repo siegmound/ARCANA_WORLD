@@ -1,0 +1,10 @@
+{
+  "stage": "R5.17-B7-A3F2-P7Q-HRAB-AA-AWARE-ACQUISITION-PRIORITY",
+  "priority_basis": "unresolved scientific need, not branch membership alone",
+  "priority_1": {"cells": 900, "condition": "GUM_AA == nn", "need": ["AGE_COMPLETION", "EVENT_REFINEMENT"], "provider_focus": ["OCTOPUS", "NCEI_LOESS_PALEOSOL", "NCEI_LAKE", "C_PEAT", "DATED_1_REGIONAL_GLACIAL"]},
+  "priority_2": {"cells": 1722, "condition": "GUM_AA_TOO_BROAD_OR_NOT_LOCALIZABLE", "need": ["AGE_COMPLETION", "AGE_REFINEMENT", "EVENT_REFINEMENT"], "provider_focus": ["OCTOPUS", "NCEI_LOESS_PALEOSOL", "NCEI_LAKE", "C_PEAT", "DATED_1_REGIONAL_GLACIAL", "SMITHSONIAN_GVP"]},
+  "priority_3": {"cells": 1980, "condition": "GUM_AA_HRAB_RELEVANT", "need": ["optional AGE_REFINEMENT", "EVENT_REFINEMENT", "FORMATION_REFINEMENT", "PERSISTENCE_COMPLETION", "REMOVAL_REWORKING_COMPLETION"], "default": "do_not_replace_valid_GUM_AA_automatically"},
+  "cross_domain": {"all_cells": 4602, "need": ["PERSISTENCE_COMPLETION", "REMOVAL_REWORKING_COMPLETION"], "qualification": "must be source- and event-specific; no global persistence inferred"},
+  "provider_acquisition_authorized": false,
+  "forward_evolution_authorized": false
+}
