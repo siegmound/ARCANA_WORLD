@@ -1,0 +1,153 @@
+{
+  "stage": "R5.17-B7-A3F2-P7S-HISTORICAL-CLIMATE-PROVIDER-ADJUDICATION",
+  "scope": "ADJUDICATE_TARGETED_HISTORICAL_TEMPERATURE_AND_PRECIPITATION_AUTHORITY",
+  "repository_baseline": {
+    "branch": "main",
+    "head": "af99ffa2585f3e67a032ed92cee7821ab17ec7b1",
+    "origin_main": "af99ffa2585f3e67a032ed92cee7821ab17ec7b1"
+  },
+  "governed_anchors_ka": [200, 125, 120, 20, 15, 14, 13, 12, 11, 10, 5, 0],
+  "endpoint_diagnostic_context": {
+    "complete_profiles": 65,
+    "calibration_validation_split": [33, 32],
+    "whc_environment_conditioned_improvement_layers": 0,
+    "log_ksat_environment_conditioned_improvement_layers": 4,
+    "minimum_predictor_set": "UNRESOLVED",
+    "historical_replay_authorized": false,
+    "BIOME4_sensitivity": "CONDITIONAL_ENDPOINT_DIAGNOSTIC__SYNTHETIC_SUNSHINE_60_PERCENT__NOT_AUTHORITATIVE_NPP"
+  },
+  "candidates": {
+    "KRAPP_2021_800KA": {
+      "stable_source": "https://doi.org/10.1038/s41597-021-01009-3",
+      "data_source": "https://osf.io/8n43x/",
+      "coverage_ka": [800, 0],
+      "temporal_grain_years": 1000,
+      "spatial_grain_degrees": 0.5,
+      "variables": {
+        "monthly_mean_temperature": {"available": true, "published_unit": "K", "endpoint_candidate_derivation": "arithmetic mean of 12 monthly means, then subtract 273.15 for Celsius"},
+        "monthly_precipitation": {"available": true, "published_unit": "mm year-1", "annual_total_conversion": "MUST_BE_RESOLVED_FROM_SOURCE_FILE_METADATA/SEMANTICS_BEFORE_COMPARISON"},
+        "precipitation_seasonality": {"derivable": true, "formula": "population_std(monthly_precipitation[12], ddof=0) / arithmetic_mean(monthly_precipitation[12])", "scale_invariant": true}
+      },
+      "authority_class": "STATISTICAL_RECONSTRUCTION__LINEAR_EMULATOR_OF_HADCM3_SNAPSHOTS__FORCED_BY_CO2_ORBIT_AND_SURFACE_TYPE__BIAS_CORRECTED_TO_PRESENT_CLIMATE",
+      "anchor_mapping": [
+        {"ka": 200, "status": "EXACT_NATIVE_TIME"}, {"ka": 125, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 120, "status": "EXACT_NATIVE_TIME"}, {"ka": 20, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 15, "status": "EXACT_NATIVE_TIME"}, {"ka": 14, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 13, "status": "EXACT_NATIVE_TIME"}, {"ka": 12, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 11, "status": "EXACT_NATIVE_TIME"}, {"ka": 10, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 5, "status": "EXACT_NATIVE_TIME"}, {"ka": 0, "status": "EXACT_NATIVE_TIME__PRESENT_CLIMATE_REFERENCE_NOT_ARCANA_ENDPOINT_IDENTITY"}
+      ],
+      "limitations": [
+        "Statistically reconstructed, not direct transient GCM output.",
+        "Preferred by the authors for periods beyond 120 ka; paper says direct GCM-derived 120 ka product is preferred for the last glacial cycle.",
+        "Published monthly precipitation unit is mm/year, unlike the P7S endpoint monthly mm convention; resolve before annual-precipitation comparison.",
+        "Land/ice masks and 0.5-degree support must be checked at selected cells; do not remap by interpolation."
+      ],
+      "full_monthly_file_sizes": {"status": "REFERENCE_VERSION_ONLY", "temperature_and_precipitation_combined_approx_gb": 3.6, "basis": "published pastclim Krapp monthly NetCDF files approx 1.7 GB temperature + 1.9 GB precipitation; exact original OSF file sizes not established"},
+      "remote_cell_subset": "NOT_VERIFIED"
+    },
+    "BEYER_KRAPP_MANICA_2020_120KA": {
+      "stable_source": "https://doi.org/10.1038/s41597-020-0552-1",
+      "data_source": "https://doi.org/10.6084/m9.figshare.12293345",
+      "coverage_ka": [120, 0],
+      "native_temporal_schedule": "2 kyr from 120 to 22 ka, then 1 kyr from 22 ka to pre-industrial modern era",
+      "spatial_grain_degrees": 0.5,
+      "variables": {
+        "monthly_mean_temperature": {"available": true, "unit": "degree_Celsius"},
+        "monthly_precipitation": {"available": true, "unit": "mm month-1"},
+        "cloud_humidity_wind_bioclimatics": "available but outside this minimum proof"
+      },
+      "authority_class": "DIRECT_GCM_DERIVED__HADCM3_120KA_SNAPSHOTS_PLUS_HADAM3H_DYNAMIC_CORRECTION_FOR_LAST_21KA__DELTA_BIAS_CORRECTED_TO_OBSERVATIONS",
+      "anchor_mapping": [
+        {"ka": 200, "status": "ABSENT"}, {"ka": 125, "status": "NEARBY_ONLY", "nearest_native_ka": 120},
+        {"ka": 120, "status": "EXACT_NATIVE_TIME"}, {"ka": 20, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 15, "status": "EXACT_NATIVE_TIME"}, {"ka": 14, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 13, "status": "EXACT_NATIVE_TIME"}, {"ka": 12, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 11, "status": "EXACT_NATIVE_TIME"}, {"ka": 10, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 5, "status": "EXACT_NATIVE_TIME"}, {"ka": 0, "status": "EXACT_NATIVE_TIME__PREINDUSTRIAL_MODERN_REFERENCE_NOT_ARCANA_ENDPOINT_IDENTITY"}
+      ],
+      "limitations": [
+        "Native time samples are GCM climatology snapshots, not a continuous annual transient simulation.",
+        "0 BP field is by construction tied to observational-era climate (1901-1930 for temperature/precipitation/cloud), not identical to ARCANA 0-ka reconstructed endpoint.",
+        "Grid latitude coverage is 59.75 S to 89.75 N; selected-cell support and masks require validation.",
+        "Single global NetCDF is documented; exact file size and remote subsetting behavior were not verified."
+      ],
+      "single_file_size": "NOT_VERIFIED",
+      "remote_cell_subset": "NOT_VERIFIED"
+    },
+    "CHELSA_TRACE21K": {
+      "stable_source": "https://doi.org/10.5194/cp-19-439-2023",
+      "data_source": "https://doi.org/10.16904/envidat.211",
+      "coverage_ka": [21, 0],
+      "temporal_grain_years": 100,
+      "spatial_grain": "30 arcsec (~1 km)",
+      "variables": {
+        "monthly_mean_near_surface_temperature_tas": {"available": true, "unit": "K", "endpoint_candidate_derivation": "monthly tas, arithmetic annual mean, convert K to Celsius; do not substitute tasmin/tasmax"},
+        "monthly_precipitation_pr": {"available": true, "unit": "kg m-2 month-1", "includes_liquid_and_solid_phases": true},
+        "precipitation_seasonality": {"derivable": true, "formula": "population_std(monthly_pr[12], ddof=0) / arithmetic_mean(monthly_pr[12])"}
+      },
+      "authority_class": "DOWNSCALED_TRANSIENT_MODEL__CCSM3_TRACE21K__CHELSA_V1_2_TERRAIN_AND_DYNAMIC_PALEOOROGRAPHY",
+      "anchor_mapping": [
+        {"ka": 200, "status": "ABSENT"}, {"ka": 125, "status": "ABSENT"},
+        {"ka": 120, "status": "ABSENT"}, {"ka": 20, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 15, "status": "EXACT_NATIVE_TIME"}, {"ka": 14, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 13, "status": "EXACT_NATIVE_TIME"}, {"ka": 12, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 11, "status": "EXACT_NATIVE_TIME"}, {"ka": 10, "status": "EXACT_NATIVE_TIME"},
+        {"ka": 5, "status": "EXACT_NATIVE_TIME"}, {"ka": 0, "status": "EXACT_NATIVE_TIME__BP_REFERENCE_1950_DISTINCT_FROM_1990_LAST_EXTRA_STEP_AND_ARCANA_ENDPOINT"}
+      ],
+      "limitations": [
+        "Independent model chain and much finer nominal grid do not constitute independent observations or permission to upscale ARCANA support.",
+        "Precipitation includes both liquid and solid phases.",
+        "Temperature has model mean tas plus tasmin/tasmax; only tas is semantically eligible for P7S mean-temperature predictor.",
+        "Output is COG according to CHELSA catalogue; selective range/window access and actual bytes per selected tile remain unverified.",
+        "Do not resample the 30-arcsec product onto finer ARCANA support; retain native provider support/provenance."
+      ],
+      "license": "CHELSA catalogue reports CC0 for the dataset; EnviDat record/paper reports differing CC BY terms; confirm governing data-package license before use",
+      "remote_cell_subset": "COG_FORMAT_MAKES_WINDOW_ACCESS_PLAUSIBLE_BUT_NOT_VERIFIED_FOR_BOUND_URLS",
+      "full_download_size": "NOT_VERIFIED__LARGE_GLOBAL_SERIES"
+    }
+  },
+  "p7s_predictor_binding": {
+    "temperature": "Use monthly mean air temperature; compute arithmetic mean of the 12 monthly climatology values, then K-to-C conversion where required. P7S endpoint local payload comparison confirmed monthly mean temperature reproduces annual_temperature_c to float32 tolerance. Do not use tasmin/tasmax in place of tas.",
+    "precipitation": "P7S endpoint annual_precipitation_mm_yr equals sum of its 12 monthly_precipitation_mm values to float32 tolerance. Provider monthly unit/aggregation semantics must be reconciled before cross-product annual totals are compared.",
+    "seasonality": "Exact bound endpoint formula verified from the local D2D payload: population standard deviation of 12 monthly precipitation values (ddof=0) divided by their arithmetic mean; dimensionless, no x100. This ratio is invariant under a uniform positive unit conversion. Compute from monthly provider values, not BIO15 unless its scale/formula is independently matched.",
+    "temperature_predictor_candidate": "annual mean of monthly mean climatology, not tasmin/tasmax"
+  },
+  "comparisons": {
+    "krapp_vs_beyer": {"shared_native_governed_anchors_ka": [120, 20, 15, 14, 13, 12, 11, 10, 5, 0], "metrics": "NOT_COMPUTED__NO_PROVIDER_PAYLOAD_ACQUIRED", "required_metrics": ["mean_bias", "median_absolute_difference", "rmse", "spatial_correlation", "regional_bias_signatures", "precipitation_relative_difference"]},
+    "beyer_vs_chelsa": {"shared_native_governed_anchors_ka": [20, 15, 14, 13, 12, 11, 10, 5, 0], "metrics": "NOT_COMPUTED__NO_PROVIDER_PAYLOAD_ACQUIRED", "required_metrics": ["mean_bias", "median_absolute_difference", "rmse", "spatial_correlation", "regional_bias_signatures", "precipitation_relative_difference"]},
+    "endpoint_0ka_vs_arcana": {"metrics": "NOT_COMPUTED__NO_PROVIDER_PAYLOAD_ACQUIRED", "compare_against": "same 65 P7S proof cells and current bound ARCANA 0-ka monthly temperature/precipitation", "absolute_vs_anomaly": "UNRESOLVED__TEST_BOTH_WITHOUT_REPLACING_ARCANA_ENDPOINT"},
+    "spatial_alignment": "No interpolation/resampling is authorized. Compare only when deterministic proof-cell-to-native-provider support mapping is explicitly valid; otherwise exclude and report unsupported cells."
+  },
+  "preferred_representation": "UNRESOLVED__ABSOLUTE_PROVIDER_FIELDS_VERSUS_ARCANA_0KA_ANOMALIES_REQUIRE_BOUNDED_ENDPOINT_TEST",
+  "preferred_architecture": "UNRESOLVED__HIERARCHICAL_CANDIDATE_NOT_APPROVED_PENDING_OVERLAP_AND_ENDPOINT_METRICS",
+  "bounded_acquisition_estimate": {
+    "proof_geography": "existing 65 P7S endpoint proof cells",
+    "required_variables": ["monthly mean temperature tas/equivalent", "monthly precipitation"],
+    "required_provider_time_slices": {"Krapp": 12, "Beyer": 10, "CHELSA": 9},
+    "raw_float32_lower_bound_bytes": 193440,
+    "raw_float32_lower_bound_note": "65 cells x 12 months x 2 variables x 4 bytes x 31 provider-time combinations; excludes coordinates, masks, metadata, compression and storage chunk amplification",
+    "transfer_cap_bytes": 52428800,
+    "estimated_transfer": "RAW_VALUES_ABOUT_0.19_MB; ACTUAL_REMOTE_CHUNK_TRANSFER_UNKNOWN; hard-stop at 50 MiB",
+    "subset_remote": {"Krapp": "unverified", "Beyer": "unverified", "CHELSA": "plausible from COG format, unverified on exact endpoint"},
+    "whole_dataset_fallback": "NOT_AUTHORIZED; if subset extraction is unavailable or exceeds cap, stop before transfer",
+    "required_files": "Krapp monthly temperature+precipitation records for requested slices; Beyer global NetCDF with monthly tas/pr; CHELSA COG monthly tas/pr files for nine anchors; exact filenames/object sizes/HTTP range support must be read from metadata before any request",
+    "license_and_stable_ids": {"Krapp": "CC BY 4.0 paper/data context; DOI 10.1038/s41597-021-01009-3; OSF project 8n43x", "Beyer": "Figshare DOI 10.6084/m9.figshare.12293345; confirm data-package license", "CHELSA": "EnviDat DOI 10.16904/envidat.211; catalogue says CC0 while paper/EnviDat records CC BY terms—resolve before acquisition"}
+  },
+  "excluded_drivers": {"historical_runoff_required": false, "historical_topography_required": false, "cloud_humidity_wind_acquisition": false},
+  "governance": {
+    "bounded_proof_cell_acquisition_authorized": true,
+    "global_climate_materialization_authorized": false,
+    "historical_p7s_replay_executed": false,
+    "historical_p7s_replay_authorized": false,
+    "biome4_production_executed": false,
+    "physical_soil_materialized": false,
+    "p7q_reopened": false,
+    "scientific_authority_register_mutated": false,
+    "canonical_mutation": false,
+    "execution_indexes_mutated": false
+  },
+  "decision": "AUTHORIZE_BOUNDED_HIERARCHICAL_CLIMATE_BINDING_PROOF",
+  "verdict": "PASS_PRIMARY_SOURCE_TEMPORAL_AND_VARIABLE_ADJUDICATION__OVERLAP_AND_ENDPOINT_METRICS_PENDING",
+  "next_action": "RUN_BOUNDED_65_CELL_CLIMATE_OVERLAP_AND_0KA_ENDPOINT_COMPARISON_WITH_50MIB_TRANSFER_CAP"
+}
