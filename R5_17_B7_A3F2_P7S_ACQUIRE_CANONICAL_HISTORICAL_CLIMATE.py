@@ -37,6 +37,7 @@ MAX_RETRY_AFTER_SECONDS = 300
 USER_AGENT = "ARCANA-P7S-canonical-cache/1.0 (Python urllib; verified TLS)"
 EXPECTED_TOTAL_FILES = 14
 EXPECTED_TOTAL_BYTES = 3_600_803_435
+MAX_OSF_LISTING_PAGES = 500
 EXPECTED_FILES = {
     "temp_800ka_ann.nc": ("KRAPP_2021_800KA", 146088257, "https://osf.io/download/7m94u/"),
     "prec_800ka_jan.nc": ("KRAPP_2021_800KA", 170729674, "https://osf.io/download/6khc8/"),
@@ -222,24 +223,89 @@ def find_license(node: Any, path: str = "") -> tuple[str | None, str | None, str
     return None, None, None
 
 
-def iter_osf_file_records(url: str) -> list[dict[str, Any]]:
+def canonical_osf_api_url(url: Any) -> str:
+    if not isinstance(url, str):
+        raise AcquisitionError("OSF API relationship has no URL")
+    parsed = urllib.parse.urlparse(url)
+    if (parsed.scheme != "https" or parsed.hostname != "api.osf.io" or parsed.username or parsed.password
+            or parsed.port not in (None, 443)):
+        raise AcquisitionError(f"OSF URL is outside the canonical HTTPS API: {url!r}")
+    return urllib.parse.urlunparse(parsed._replace(fragment=""))
+
+
+def related_files_url(record: dict[str, Any]) -> str:
+    relationships = record.get("relationships")
+    files_rel = relationships.get("files") if isinstance(relationships, dict) else None
+    links = files_rel.get("links") if isinstance(files_rel, dict) else None
+    related = links.get("related") if isinstance(links, dict) else None
+    href = related.get("href") if isinstance(related, dict) else related
+    return canonical_osf_api_url(href)
+
+
+def iter_osf_file_records(url: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Walk OSF listings deterministically and return normalized file records only."""
+    pending = [canonical_osf_api_url(url)]
+    visited_listing_urls: set[str] = set()
+    visited_folder_ids: set[str] = set()
     records: list[dict[str, Any]] = []
-    next_url: str | None = url
-    pages = 0
-    while next_url:
-        pages += 1
-        if pages > 100:
-            raise AcquisitionError("OSF file metadata pagination exceeded 100 pages")
-        page = read_json(next_url, "OSF_FILE_METADATA")
+    data_directory_discovered = False
+
+    while pending:
+        listing_url = pending.pop(0)
+        if listing_url in visited_listing_urls:
+            continue
+        if len(visited_listing_urls) >= MAX_OSF_LISTING_PAGES:
+            raise AcquisitionError(f"OSF recursive traversal exceeded {MAX_OSF_LISTING_PAGES} listing pages")
+        visited_listing_urls.add(listing_url)
+        page = read_json(listing_url, "OSF_FILE_METADATA")
         data = page.get("data")
         if not isinstance(data, list):
             raise AcquisitionError("OSF file metadata has no data list")
-        records.extend(item for item in data if isinstance(item, dict))
-        links = page.get("links", {})
+
+        child_urls: list[str] = []
+        for item in data:
+            if not isinstance(item, dict) or not isinstance(item.get("attributes"), dict):
+                raise AcquisitionError("OSF listing contains a malformed record")
+            attrs = item["attributes"]
+            kind = attrs.get("kind")
+            name = attrs.get("name")
+            if kind not in ("file", "folder"):
+                raise AcquisitionError(f"OSF record has unsupported or missing attributes.kind: {kind!r}")
+            path = attrs.get("materialized_path")
+            if path is None:
+                path = attrs.get("path")
+            if kind == "folder":
+                if name == "data" or (isinstance(path, str) and path.strip("/") == "data"):
+                    data_directory_discovered = True
+                folder_id = item.get("id")
+                if not isinstance(folder_id, str) or not folder_id:
+                    raise AcquisitionError("OSF folder record has no stable id")
+                if folder_id not in visited_folder_ids:
+                    visited_folder_ids.add(folder_id)
+                    child_urls.append(related_files_url(item))
+                continue
+
+            links = item.get("links")
+            download = links.get("download") if isinstance(links, dict) else None
+            records.append({
+                "id": item.get("id"), "name": name, "size": attrs.get("size"), "kind": kind,
+                "materialized_path": attrs.get("materialized_path"), "path": attrs.get("path"),
+                "download_url": download,
+            })
+
+        links = page.get("links")
         next_url = links.get("next") if isinstance(links, dict) else None
-        if next_url and not str(next_url).startswith("https://api.osf.io/"):
-            raise AcquisitionError("OSF pagination returned a non-canonical API URL")
-    return records
+        if next_url:
+            pending.append(canonical_osf_api_url(next_url))
+        pending.extend(child_urls)
+
+    diagnostics = {
+        "listing_pages_visited": len(visited_listing_urls),
+        "folders_visited": len(visited_folder_ids),
+        "files_discovered": len(records),
+        "data_directory_discovered": data_directory_discovered,
+    }
+    return records, diagnostics
 
 
 def url_identity(url: str) -> tuple[str, str]:
@@ -247,36 +313,72 @@ def url_identity(url: str) -> tuple[str, str]:
     return (parsed.netloc.lower(), parsed.path.rstrip("/").lower())
 
 
-def verify_osf(metadata: dict[str, Any], files: list[dict[str, Any]]) -> dict[str, Any]:
+def verify_osf(metadata: dict[str, Any], files: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, Any]]:
     source = metadata["providers"]["KRAPP_2021_800KA"]
     node = read_json(source["canonical_metadata_source"], "OSF_PROJECT_METADATA")
     if not isinstance(node.get("data"), dict):
         raise AcquisitionError("OSF project metadata lacks data object")
     license_name, license_uri, license_path = find_license(node["data"], "data")
-    osf_files = iter_osf_file_records(source["files_metadata_source"])
+    license_identifier = None
+    license_source = source["canonical_metadata_source"]
+    relationships = node["data"].get("relationships")
+    license_rel = relationships.get("license") if isinstance(relationships, dict) else None
+    license_data = license_rel.get("data") if isinstance(license_rel, dict) else None
+    license_links = license_rel.get("links") if isinstance(license_rel, dict) else None
+    related = license_links.get("related") if isinstance(license_links, dict) else None
+    related_href = related.get("href") if isinstance(related, dict) else related
+    if isinstance(license_data, dict) and isinstance(license_data.get("id"), str) and related_href:
+        license_identifier = license_data["id"]
+        license_source = canonical_osf_api_url(related_href)
+        license_record = read_json(license_source, "OSF_PROJECT_LICENSE")
+        license_record_data = license_record.get("data")
+        license_attributes = license_record_data.get("attributes") if isinstance(license_record_data, dict) else None
+        if (not isinstance(license_record_data, dict) or license_record_data.get("id") != license_identifier
+                or license_record_data.get("type") != "licenses" or not isinstance(license_attributes, dict)):
+            raise AcquisitionError("OSF project license relationship did not resolve to the same canonical license record")
+        resolved_name = license_attributes.get("name")
+        resolved_uri = license_attributes.get("url")
+        if isinstance(resolved_name, str) and resolved_name.strip():
+            license_name = resolved_name.strip()
+            license_uri = resolved_uri if isinstance(resolved_uri, str) else None
+            license_path = ("data.relationships.license.data.id -> "
+                            "data.attributes.name (canonical related license resource)")
+    osf_files, traversal = iter_osf_file_records(source["files_metadata_source"])
     by_name: dict[str, list[dict[str, Any]]] = {}
     for item in osf_files:
-        attrs = item.get("attributes", {})
-        if isinstance(attrs, dict) and isinstance(attrs.get("name"), str):
-            by_name.setdefault(attrs["name"], []).append(item)
+        if isinstance(item.get("name"), str):
+            by_name.setdefault(item["name"], []).append(item)
+    target_diagnostics = []
     for item in files:
         if item["provider"] != "KRAPP_2021_800KA":
             continue
         matches = by_name.get(item["filename"], [])
         if len(matches) != 1:
-            raise AcquisitionError(f"OSF metadata must identify exactly one {item['filename']}; got {len(matches)}")
+            reason = "STOP_DUPLICATE_OSF_TARGET" if len(matches) > 1 else "OSF target missing"
+            locations = [rec.get("materialized_path") or rec.get("path") for rec in matches]
+            raise AcquisitionError(f"{reason}: {item['filename']}; count={len(matches)}; paths={locations!r}")
         rec = matches[0]
-        attrs = rec.get("attributes", {})
-        size = attrs.get("size") if isinstance(attrs, dict) else None
+        size = rec.get("size")
         if size != item["expected_bytes"]:
             raise AcquisitionError(f"OSF size discrepancy for {item['filename']}: metadata={size}, expected={item['expected_bytes']}")
-        links = rec.get("links", {})
-        download = links.get("download") if isinstance(links, dict) else None
+        download = rec.get("download_url")
         if not isinstance(download, str) or url_identity(download) != url_identity(item["canonical_download_url"]):
             raise AcquisitionError(f"OSF canonical download identity changed/unverifiable for {item['filename']}")
+        target_diagnostics.append({
+            "filename": item["filename"], "id": rec.get("id"),
+            "materialized_path": rec.get("materialized_path"), "path": rec.get("path"),
+            "size": size, "download_url_identity": url_identity(download),
+        })
+    traversal["targets"] = target_diagnostics
     if not license_name:
-        return {"name": None, "uri": None, "status": "LICENSE_METADATA_UNRESOLVED", "metadata_source": source["canonical_metadata_source"], "field_path": None, "retrieved_utc": utc_now()}
-    return {"name": license_name, "uri": license_uri, "status": "CAPTURED", "metadata_source": source["canonical_metadata_source"], "field_path": license_path, "retrieved_utc": utc_now()}
+        result = {"name": None, "uri": None, "identifier": license_identifier,
+                  "status": "LICENSE_METADATA_UNRESOLVED", "metadata_source": license_source,
+                  "field_path": None, "retrieved_utc": utc_now()}
+    else:
+        result = {"name": license_name, "uri": license_uri, "identifier": license_identifier,
+                  "status": "CAPTURED", "metadata_source": license_source,
+                  "field_path": license_path, "retrieved_utc": utc_now()}
+    return result, traversal
 
 
 def verify_figshare(metadata: dict[str, Any], files: list[dict[str, Any]]) -> dict[str, Any]:
@@ -524,21 +626,69 @@ def main() -> int:
     global RUN_LEDGER
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--validate-only", action="store_true", help="offline manifest/count check; performs no network or filesystem mutation")
+    parser.add_argument("--preflight-only", action="store_true", help="validate provider metadata and licenses without downloading payloads")
     args = parser.parse_args()
     try:
         manifest = load_manifest()
         files = validate_manifest(manifest)
+        if args.validate_only and args.preflight_only:
+            raise AcquisitionError("Choose only one of --validate-only or --preflight-only")
         if args.validate_only:
             print(f"MANIFEST_VALID files={len(files)} expected_bytes={EXPECTED_TOTAL_BYTES}; network=0; writes=0")
             return 0
         if REPO in EXTERNAL_ROOT.resolve().parents or EXTERNAL_ROOT.resolve() == REPO:
             raise AcquisitionError("External cache root resolves inside the Git repository")
         CACHE_ROOT.mkdir(parents=True, exist_ok=True)
-        RUN_LEDGER = {"stage": STAGE, "started_utc": utc_now(), "status": "PREFLIGHT", "events": [], "files": {}}
+        RUN_LEDGER = {"stage": STAGE, "started_utc": utc_now(),
+                      "status": "METADATA_PREFLIGHT_ONLY" if args.preflight_only else "PREFLIGHT",
+                      "events": [], "files": {}, "payload_downloaded_bytes": 0}
         atomic_json(LEDGER_PATH, RUN_LEDGER)
 
-        krapp_license = verify_osf(manifest, files)
+        krapp_license, osf_diagnostics = verify_osf(manifest, files)
         beyer_license = verify_figshare(manifest, files)
+        RUN_LEDGER["osf_traversal"] = osf_diagnostics
+        RUN_LEDGER["provider_metadata"] = {
+            "KRAPP_2021_800KA": krapp_license,
+            "BEYER_KRAPP_MANICA_120KA": beyer_license,
+            "captured_utc": utc_now(),
+        }
+        atomic_json(LEDGER_PATH, RUN_LEDGER)
+
+        krapp_targets = [item for item in files if item["provider"] == "KRAPP_2021_800KA"]
+        beyer_targets = [item for item in files if item["provider"] == "BEYER_KRAPP_MANICA_120KA"]
+        unresolved = [name for name, info in (("Krapp", krapp_license), ("Beyer", beyer_license))
+                      if info.get("status") != "CAPTURED"]
+        if args.preflight_only:
+            RUN_LEDGER["completed_utc"] = utc_now()
+            RUN_LEDGER["summary"] = {
+                "krapp_files_validated": len(osf_diagnostics["targets"]),
+                "krapp_expected_bytes": sum(item["expected_bytes"] for item in krapp_targets),
+                "beyer_files_validated": 1 if len(beyer_targets) == 1 else 0,
+                "beyer_expected_bytes": sum(item["expected_bytes"] for item in beyer_targets),
+                "expected_total_bytes": EXPECTED_TOTAL_BYTES,
+                "payload_downloaded_bytes": 0,
+                "license_unresolved_providers": unresolved,
+            }
+            if unresolved:
+                RUN_LEDGER["status"] = "PREFLIGHT_BLOCKED_LICENSE_METADATA_UNRESOLVED"
+                atomic_json(LEDGER_PATH, RUN_LEDGER)
+                print("PREFLIGHT_BLOCKED_LICENSE_METADATA_UNRESOLVED")
+                print(f"Unresolved: {', '.join(unresolved)}; payload downloaded: 0")
+                return 0
+            RUN_LEDGER["status"] = "PREFLIGHT_READY"
+            atomic_json(LEDGER_PATH, RUN_LEDGER)
+            print("PREFLIGHT_READY")
+            print(f"Krapp files: {len(osf_diagnostics['targets'])}/13")
+            print(f"Krapp bytes: {sum(item['expected_bytes'] for item in krapp_targets)}")
+            print(f"Beyer files: {1 if len(beyer_targets) == 1 else 0}/1")
+            print(f"Beyer bytes: {sum(item['expected_bytes'] for item in beyer_targets)}")
+            print(f"Total bytes: {EXPECTED_TOTAL_BYTES}")
+            print(f"Krapp license: {krapp_license['name']}")
+            print(f"Beyer license: {beyer_license['name']}")
+            print(f"OSF listing pages: {osf_diagnostics['listing_pages_visited']}; folders: {osf_diagnostics['folders_visited']}; files: {osf_diagnostics['files_discovered']}; data directory: {osf_diagnostics['data_directory_discovered']}")
+            print("Payload downloaded: 0")
+            return 0
+
         update_license(manifest, "KRAPP_2021_800KA", krapp_license)
         update_license(manifest, "BEYER_KRAPP_MANICA_120KA", beyer_license)
         for provider in ("KRAPP_2021_800KA", "BEYER_KRAPP_MANICA_120KA"):
@@ -548,11 +698,6 @@ def main() -> int:
                 raise AcquisitionError(f"{provider}: LICENSE_METADATA_UNRESOLVED; stopped before payload download")
         atomic_json(MANIFEST_PATH, manifest)
         RUN_LEDGER["status"] = "ACQUIRING_SEQUENTIAL"
-        RUN_LEDGER["provider_metadata"] = {
-            "KRAPP_2021_800KA": krapp_license,
-            "BEYER_KRAPP_MANICA_120KA": beyer_license,
-            "captured_utc": utc_now(),
-        }
         atomic_json(LEDGER_PATH, RUN_LEDGER)
         (CACHE_ROOT / "KRAPP_800K" / "raw").mkdir(parents=True, exist_ok=True)
         (CACHE_ROOT / "KRAPP_800K" / "manifest").mkdir(parents=True, exist_ok=True)
@@ -589,7 +734,7 @@ def main() -> int:
         return 0 if ready else 2
     except AcquisitionError as exc:
         try:
-            if "manifest" in locals() and isinstance(manifest, dict):
+            if not args.preflight_only and "manifest" in locals() and isinstance(manifest, dict):
                 if manifest.get("acquisition_status") != "BLOCKED_LICENSE_METADATA_UNRESOLVED":
                     manifest["acquisition_status"] = "ACQUISITION_INCOMPLETE"
                 manifest["total_actual_bytes"] = sum(item.get("actual_bytes") or 0 for item in manifest.get("files", []))
@@ -599,11 +744,11 @@ def main() -> int:
         except Exception:
             pass
         if RUN_LEDGER is not None:
-            RUN_LEDGER["status"] = "ACQUISITION_INCOMPLETE"
+            RUN_LEDGER["status"] = "PREFLIGHT_FAILED" if args.preflight_only else "ACQUISITION_INCOMPLETE"
             RUN_LEDGER["last_error"] = str(exc)
             RUN_LEDGER["updated_utc"] = utc_now()
             atomic_json(LEDGER_PATH, RUN_LEDGER)
-        print(f"ACQUISITION_INCOMPLETE: {exc}", file=sys.stderr)
+        print(f"{'PREFLIGHT_FAILED' if args.preflight_only else 'ACQUISITION_INCOMPLETE'}: {exc}", file=sys.stderr)
         return 2
     except Exception as exc:
         if RUN_LEDGER is not None:
