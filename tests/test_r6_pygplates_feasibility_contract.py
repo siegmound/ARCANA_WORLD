@@ -54,3 +54,25 @@ def test_network_sections_name_topological_geometry_type_explicitly():
         and len(call.args) == 1
         for call in calls
     )
+
+
+def test_rotation_sequence_uses_gpml_time_samples_and_irregular_sampling():
+    tree = ast.parse(SCRIPT.read_text(encoding="utf-8"))
+    calls = [
+        node for node in ast.walk(tree)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "create_total_reconstruction_sequence"
+    ]
+    assert len(calls) == 1
+    call = calls[0]
+    assert len(call.args) == 3
+    assert isinstance(call.args[0], ast.Constant) and call.args[0].value == 0
+    assert isinstance(call.args[1], ast.Name) and call.args[1].id == "plate_id"
+    assert isinstance(call.args[2], ast.Name) and call.args[2].id == "sampling"
+
+    source = SCRIPT.read_text(encoding="utf-8")
+    assert "pygplates.GpmlTimeSample(" in source
+    assert "pygplates.GpmlFiniteRotation(" in source
+    assert "pygplates.GpmlIrregularSampling(samples)" in source
+    assert "[(0.0, pygplates.FiniteRotation" not in source

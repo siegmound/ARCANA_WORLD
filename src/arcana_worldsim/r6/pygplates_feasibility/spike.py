@@ -52,12 +52,17 @@ def _strain(strain: Any) -> dict[str, Any] | None:
 
 def _rotation_feature(pygplates: Any, plate_id: int, angle_degrees: float) -> Any:
     pole = pygplates.PointOnSphere(0.0, 90.0)
-    finite_rotation = pygplates.FiniteRotation(pole, math.radians(angle_degrees))
+    identity_rotation = pygplates.FiniteRotation.create_identity_rotation()
+    configured_rotation = pygplates.FiniteRotation(pole, math.radians(angle_degrees))
+    samples = [
+        pygplates.GpmlTimeSample(pygplates.GpmlFiniteRotation(identity_rotation), 0.0),
+        pygplates.GpmlTimeSample(pygplates.GpmlFiniteRotation(configured_rotation), 10.0),
+    ]
+    sampling = pygplates.GpmlIrregularSampling(samples)
     feature = pygplates.Feature.create_total_reconstruction_sequence(
-        plate_id,
         0,
-        [(0.0, pygplates.FiniteRotation.create_identity_rotation()),
-         (10.0, finite_rotation)],
+        plate_id,
+        sampling,
     )
     feature.set_name(f"{FIXTURE_ID}_ROTATION_PLATE_{plate_id}")
     return feature
