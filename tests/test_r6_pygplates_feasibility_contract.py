@@ -1,4 +1,5 @@
 import importlib.util
+import ast
 from pathlib import Path
 
 
@@ -35,3 +36,21 @@ def test_missing_runtime_fails_explicitly(monkeypatch):
         assert str(exc) == "PYGPLATES_RUNTIME_UNAVAILABLE"
     else:
         raise AssertionError("missing pyGPlates runtime did not fail explicitly")
+
+
+def test_network_sections_name_topological_geometry_type_explicitly():
+    tree = ast.parse(SCRIPT.read_text(encoding="utf-8"))
+    calls = [
+        node for node in ast.walk(tree)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "create"
+        and isinstance(node.func.value, ast.Attribute)
+        and node.func.value.attr == "GpmlTopologicalSection"
+    ]
+    assert calls
+    assert all(
+        any(keyword.arg == "topological_geometry_type" for keyword in call.keywords)
+        and len(call.args) == 1
+        for call in calls
+    )

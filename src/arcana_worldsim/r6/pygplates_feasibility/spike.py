@@ -86,7 +86,10 @@ def _build_fixture(pygplates: Any) -> tuple[Any, list[Any]]:
     # The point is an interior constraint for the deforming network.
     interior = _regular_feature(pygplates, pygplates.PointOnSphere(0.0, 0.0), 101)
     sections = [
-        pygplates.GpmlTopologicalSection.create(feature, pygplates.GpmlTopologicalNetwork)
+        pygplates.GpmlTopologicalSection.create(
+            feature,
+            topological_geometry_type=pygplates.GpmlTopologicalNetwork,
+        )
         for feature in boundaries
     ]
     network_geometry = pygplates.GpmlTopologicalNetwork(
