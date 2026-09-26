@@ -76,3 +76,42 @@ def test_rotation_sequence_uses_gpml_time_samples_and_irregular_sampling():
     assert "pygplates.GpmlFiniteRotation(" in source
     assert "pygplates.GpmlIrregularSampling(samples)" in source
     assert "[(0.0, pygplates.FiniteRotation" not in source
+
+
+def test_resolved_boundary_is_used_as_polygon_and_location_classes_are_reported():
+    tree = ast.parse(SCRIPT.read_text(encoding="utf-8"))
+    calls = [
+        node for node in ast.walk(tree)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "get_resolved_boundary"
+    ]
+    assert len(calls) == 1
+    assert not any(
+        isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "get_resolved_geometry"
+        for node in ast.walk(tree)
+    )
+
+    source = SCRIPT.read_text(encoding="utf-8")
+    assert "resolved_boundary.get_points()" in source
+    assert "resolved_boundary.is_point_in_polygon(point)" in source
+    assert "network.get_point_location(point)" in source
+    assert "location.located_in_resolved_network() is not None" in source
+    assert "location.located_in_resolved_network_deforming_region() is not None" in source
+    assert "location.located_in_resolved_network_rigid_block() is not None" in source
+
+
+def test_canonical_state_and_forward_evolution_guards_remain_false():
+    tree = ast.parse(SCRIPT.read_text(encoding="utf-8"))
+    guarded_values = {
+        node.keys[index].value: node.values[index]
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Dict)
+        for index, key in enumerate(node.keys)
+        if isinstance(key, ast.Constant)
+        and key.value in {"canonical_state_changed", "forward_evolution_executed"}
+    }
+    assert set(guarded_values) == {"canonical_state_changed", "forward_evolution_executed"}
+    assert all(isinstance(value, ast.Constant) and value.value is False for value in guarded_values.values())

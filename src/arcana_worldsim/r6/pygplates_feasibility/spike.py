@@ -133,8 +133,7 @@ def _one_run(pygplates: Any) -> dict[str, Any]:
     ]
     network = networks[0] if networks else None
     resolved_boundary = network.get_resolved_boundary() if network else None
-    boundary_geometry = resolved_boundary.get_resolved_geometry() if resolved_boundary else None
-    boundary_count = len(boundary_geometry.get_points()) if boundary_geometry is not None else 0
+    boundary_count = len(resolved_boundary.get_points()) if resolved_boundary is not None else 0
 
     triangulation = network.get_network_triangulation() if network else None
     triangles = list(triangulation.get_triangles()) if triangulation is not None else []
@@ -144,7 +143,12 @@ def _one_run(pygplates: Any) -> dict[str, Any]:
     for sample in samples:
         lat, lon = sample["lat_lon"]
         point = pygplates.PointOnSphere(lat, lon)
-        classified = bool(resolved_boundary and resolved_boundary.get_resolved_geometry().is_point_in_polygon(point))
+        location = network.get_point_location(point) if network is not None else None
+        classified = (
+            resolved_boundary.is_point_in_polygon(point)
+            if resolved_boundary is not None
+            else False
+        )
         velocity = network.get_point_velocity(
             point,
             velocity_delta_time=VELOCITY_DELTA_TIME_MA,
@@ -157,6 +161,18 @@ def _one_run(pygplates: Any) -> dict[str, Any]:
         queried.append({
             **sample,
             "inside_resolved_boundary": classified,
+            "located_in_network": (
+                location is not None
+                and location.located_in_resolved_network() is not None
+            ),
+            "located_in_deforming_region": (
+                location is not None
+                and location.located_in_resolved_network_deforming_region() is not None
+            ),
+            "located_in_rigid_block": (
+                location is not None
+                and location.located_in_resolved_network_rigid_block() is not None
+            ),
             "velocity": _vector(velocity),
             "strain_rate_diagnostic": _strain(strain),
             "reconstructed_position_lat_lon": _point(reconstructed) if reconstructed is not None else None,
