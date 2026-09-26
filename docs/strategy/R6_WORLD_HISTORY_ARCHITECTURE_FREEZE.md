@@ -4,6 +4,7 @@
 **Repository:** siegmound/ARCANA_WORLD  
 **Objective charter:** [`R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md`](R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md)
 **Architecture decisions:** conceptual responsibilities and contracts frozen; implementation choices explicitly deferred
+**Machine-readable architecture contract:** [`R6_WORLD_HISTORY_ARCHITECTURE_CONTRACT.json`](R6_WORLD_HISTORY_ARCHITECTURE_CONTRACT.json)
 
 ## 1. Purpose and source boundary
 
@@ -55,12 +56,24 @@ These are responsibilities, not a requirement for one executable, service, packa
 | N. Technology / infrastructure engine | Track technology and infrastructure state and their effects on transformation, mobility, extraction, storage, and effective access/capacity. |
 | O. Polity / conflict / civilization engine | Represent governed institutions, polities, conflict, and macrohistorical transitions, with their causal interactions and uncertainty; this charter does not define narrative content or detailed laws. |
 | P. Historical state store | Persist queryable domain snapshots/views, support/uncertainty labels, versions, and provenance references needed for history queries and downstream consumers. |
-| Q. Event store | Persist immutable event records and state-transition links, including CHA events and modelled events, with timing, footprint, status, and provenance. |
+| Q. Event store | Persist immutable event records and state-transition links, including CHA events and modelled events, with temporal/spatial support, affected domains, governed trigger/cause, before/after references, provenance, uncertainty, and causal dependencies. |
 | R. Provenance / authority store | Preserve value-independent authority class, source/runtime identity, transformations, configuration, dependencies, seeds/ensemble lineage, validation, and conflicts. |
 | S. Checkpoint / restart system | Persist restart-complete simulation checkpoints and their exact dependencies, seed state, forcing cursor, and schema/runtime compatibility; verify restart equivalence. |
 | T. Query engine | Answer state, history, search, event-difference, lineage, and “why” queries over persisted history and indexes without requiring a world rerun. |
 | U. Selective refinement / high-resolution replay engine | Plan and execute a bounded derived branch from a valid refinement anchor, boundary conditions, higher-resolution evidence where available, and a planned causal cone. |
 | V. Validation / invariant engine | Apply input, authority, physical, temporal, domain, cross-domain, endpoint, ensemble, restart, and provenance checks; return PASS/PASS_WITH_UNKNOWN/PARTIAL/BLOCKED/FAIL. |
+
+### Shared historical-state envelope
+
+Every persisted domain-state record uses a common semantic envelope, while its
+payload remains domain-specific. The envelope carries: domain and variable
+identity; spatial and temporal support; value or explicit state; authority
+class; source and transformation provenance; uncertainty; model-derived flag;
+applicability/support status; conflict flags where relevant; event/source
+lineage; and refinement/parent-history lineage where applicable. A domain may
+add fields or use a nonnumeric payload; identical payload schemas are not
+required. `UNKNOWN`, `NOT_APPLICABLE`, `OUTSIDE_SCOPE`, known, derived, and
+sparse-support states remain distinct and are not inferred from null/zero alone.
 
 ### Global system architecture
 
@@ -121,6 +134,14 @@ Feedback timing has three distinct meanings:
 
 No edge authorizes a coupling by itself: the applicable canonical law, input authority, and domain contract must permit it. If an upstream input is UNKNOWN, downstream outputs depending on it are marked UNKNOWN/partial or computed only through an explicitly bounded alternative path; no silent numeric default, zero, or authority upgrade is allowed.
 
+The machine-readable dependency registry is in
+`R6_WORLD_HISTORY_ARCHITECTURE_CONTRACT.json`. Its edges are architecture-level
+potential dependencies, not scientific law or unconditional execution order.
+Each feedback edge is marked conditional on an authorized domain law. The
+coordination model freezes the distinctions among same-step coupled solving,
+delayed next-step feedback, and carried slow state; it does not select a
+numerical iteration, operator split, convergence tolerance, or solver.
+
 ## 5. Temporal object model
 
 | Object | Purpose / authority | Persisted or runtime-only | Restartable / queryable | Model-derived; coincidence and consumer rules |
@@ -133,6 +154,18 @@ No edge authorizes a coupling by itself: the applicable canonical law, input aut
 | `CONSUMER_CHECKPOINT` | Requested evaluation time/support for a downstream consumer such as ecology. | Persist request and realized output if executed. | Not inherently restartable; queryable when its output is materialized. | Request is not evidence and may be model-derived in its scheduling rationale. May coincide with provider time, authority anchor, snapshot, or simulation checkpoint without conflating them. Consumer planner creates it only for actual demand. |
 
 Thus `provider timestamp != authority anchor != simulation checkpoint != historical snapshot != consumer checkpoint`. A provider timestamp is metadata about source sampling until a governed contract assigns stronger semantics.
+
+Lifecycle and authority flow are distinct for each type: authority anchors
+enter as bounded evidence/constraints and remain immutable source records;
+simulation checkpoints are emitted only from a validated execution boundary
+and may be resumed only when compatibility and restart-completeness checks
+pass; historical snapshots are materialized query records and may remain
+partial; event records are appended with causal links to affected before/after
+states; refinement anchors are selected from validated states plus boundary
+context and do not gain hard-anchor authority by selection; consumer
+checkpoints originate in an explicit consumer request and are evaluated only
+after dependency/authority preflight. Coincident timestamps do not merge these
+lifecycles or upgrade authority.
 
 ## 6. Temporal resolution modes
 
@@ -264,6 +297,11 @@ Substitution requires an adapter conforming to the same ARCANA contract and an a
 
 The query engine supports conceptual operations:
 
+- **`STATE_AT(region, time, domains)`:** retrieve state with declared support, authority, and uncertainty;
+- **`HISTORY(region, interval, domains)`:** return state/event history and explicit gaps;
+- **`SEARCH(interval, spatial_scope, predicates)`:** find matching space-time supports across compatible domain histories;
+- **`AVAILABLE_RESOLUTION(region, time, domain)`:** report available support/resolution and gaps;
+- **`REFINEMENT_CANDIDATES(query)`:** enumerate validated candidate anchors and boundary-context readiness;
 - **STATE:** retrieve state for a region/time and return value plus semantic type, support, uncertainty, authority, version, and provenance;
 - **HISTORY:** retrieve a variable/species/resource history over a region and interval, including gaps and state transitions;
 - **SEARCH:** locate space-time regions satisfying cross-domain conditions over compatible supports/grids without rerunning the world;
@@ -347,6 +385,61 @@ An interval or domain can return `PASS`, `PASS_WITH_UNKNOWN`, `PARTIAL`, `BLOCKE
 
 The high-level orchestrator resolves dependencies and authority prerequisites; plans global intervals and event-adaptive work; requests consumer checkpoints; assigns run/ensemble lineage; invokes adapters; manages checkpoints and resume; coordinates coupled-domain steps; materializes history/events/provenance; validates; isolates failures; and reports partial/unknown support. It does not reinterpret scientific authority, silently fill missing values, or choose an engine outside an authorized adapter.
 
+### Minimum bootstrap before a first physical interval
+
+The architectural bootstrap is deliberately narrower than a complete-world
+run:
+
+```text
+canonical initial state + applicable laws/events + run identity
+  -> authority/input preflight and immutable input manifest
+  -> initialize physical simulation state and compatible restart metadata
+  -> execute one separately authorized physical interval
+  -> validate domain output, support, uncertainty, and provenance
+  -> persist physical history/events and a restart-complete checkpoint if available
+  -> expose supported outputs to downstream consumers through typed requests
+```
+
+Before that interval, components A, B, F (when events apply), R, S, and V must
+exist at the contract/interface level. The historical store (P) and event store
+(Q) must be available to retain the result; their required schemas remain
+unfrozen. A supported subset can be materialized as partial history.
+Unavailable downstream ecology/human providers are not prerequisites unless
+the authorized physical contract declares a dependency on them. This describes
+readiness structure only: this freeze does not create `t1`, choose `dt` or
+`W_model`, authorize an interval, or claim inputs are currently sufficient.
+
+## 14.1 External-engine adjudication and pyGPlates boundary
+
+ARCANA owns science, semantics, laws, authority, canonicalization, provenance,
+and uncertainty. An external engine may compute only the subproblem bound by an
+authorized ARCANA adapter and contract. Its output is model-derived until
+validated and separately adjudicated; engine success does not promote it to
+canonical authority.
+
+The Fair pyGPlates 1.0.0 findings supplied with the objective reconciliation
+are recorded as follows: P1 synthetic deforming-network capability PASS; P2
+canonical geometry materialization PASS; P2.2 topology assembly demonstrated
+with resolution deferred; P2.3 static topological polygon resolution PASS for
+12 plates, 1,983 shared boundary identities, 20 degree-3 junction identities,
+zero incidence mismatches, and 64,800 cell centres covered exactly once, with
+12 resolved topological boundaries. No rotations, forward evolution, or
+canonical mutation were involved. The local reports in this checkout mark
+pyGPlates unavailable, so this freeze records the user-supplied Fair result and
+does not claim a local runtime reproduction.
+
+```text
+PYGPLATES_STATIC_GEOMETRY_TOPOLOGY = SUFFICIENT
+PYGPLATES_SYNTHETIC_DEFORMING_NETWORK = SUFFICIENT
+PYGPLATES_CANONICAL_DYNAMIC_DEFORMATION = NOT_YET_VALIDATED
+```
+
+pyGPlates is therefore an eligible bounded geometry/topology/deformation
+backend only when a later domain contract explicitly selects and validates
+that adapter. No further feasibility stage is part of this freeze. The same
+ARCANA-owned contract boundary applies to BIOME4, RangeShiftR, NEMO, SLiM,
+CDMetaPOP, and future engines.
+
 ## 15. Adjudicated design questions
 
 1. **Minimum persisted state for arbitrary-time queries:** every claimed query time must have either a persisted supported snapshot/constraint or a documented, versioned, reproducible reconstruction path whose source states bracket/support the query under an authorized temporal rule. Retain state values or references, validity/support masks, semantic units, authority class, uncertainty, time/space support, event links, version, and provenance. Arbitrary time does not mean every time is numerically known; otherwise return UNKNOWN/unsupported.
@@ -396,6 +489,10 @@ R6 starts from canonical initial conditions, laws, and event contracts. R5-deriv
 - state/history/search/event/lineage/provenance query responsibilities;
 - causal-cone planning and derived refinement branches;
 - validation layers, status semantics, orchestrator responsibilities;
+- shared historical-state envelope and minimum bootstrap prerequisites;
+- machine-readable conceptual dependency, temporal-object, resolution,
+  retention, engine-role, and governance registries;
+- requirement-to-architecture traceability recorded below;
 - R5 has no upstream runtime dependency and R5 matching is not a canonicality gate.
 
 ### Explicitly not frozen
@@ -404,6 +501,7 @@ R6 starts from canonical initial conditions, laws, and event contracts. R5-deriv
 - file formats, serialization, compression, schemas, and exact data model;
 - SQL/API/query language or index technology;
 - exact global grid, spatial resolution, timestep sizes, or interval ages;
+- `t1`, `dt`, or `W_model`;
 - exact checkpoint frequencies and exact BIOME4 consumer run ages;
 - numerical coupling, feedback iteration, solver, and convergence algorithms;
 - number of ensemble members or ensemble execution framework;
@@ -412,6 +510,49 @@ R6 starts from canonical initial conditions, laws, and event contracts. R5-deriv
 - detailed laws for societies/civilizations or domain-specific implementation plans.
 
 These choices require later design and, where they affect science or authority, separate governed contracts. Existing BIOME4 runtime/input contracts remain authoritative at their present scope; this architecture neither expands nor relaxes them.
+
+## 17.1 Objective-to-architecture traceability
+
+| Objective / freeze requirement | Architectural owner and location |
+|---|---|
+| Clean causal replay from canonical initial state | A, B, F, V; §§2–4, 7, 14 |
+| First-class event records with affected domains, support, cause, lineage, uncertainty | F, Q, R; §§3, 7, 14 |
+| Persistent global physical/climate/hydrology/soil history | B–G, P, S; §§3, 6–9 |
+| First-class Deep history | D; §§3, 9–10 |
+| First-class flora and fauna histories | H–I; §§3, 9–10 |
+| Freshwater and marine ecology | E, J; §§3, 9–10 |
+| Terrestrial, freshwater, marine, geological and Deep resources | K; §§3, 9–10 |
+| Human, settlement, technology, trade, polity, conflict, civilization | L–O; §§3, 9–10 |
+| `State(x,y,t)` and arbitrary supported-time access | P, T; §§8–9, 11 |
+| Historical search/filtering without world rerun | T; §§9, 11 |
+| RAW-FIRST states/events and derived views | P–R; §§8–9 |
+| Authority anchors, simulation checkpoints, snapshots, events, refinement anchors, consumer checkpoints | Temporal-object registry; §5 |
+| Event-adaptive resolution | U, orchestrator; §§6, 14 |
+| Query-driven causal-cone refinement | U; §12 |
+| Partial state, UNKNOWN, NOT_APPLICABLE, OUTSIDE_SCOPE | V, all domain owners; §§3–4, 9, 13–14 |
+| Provenance for each state and derived view | P, Q, R; §§3, 8–9, 12 |
+| Uncertainty, ensembles and lineage | A, P, R, V; §§3, 7, 13–14 |
+| R5 comparison is optional and non-authoritative | R5 invariant; §16 |
+| External engines remain bounded | ARCANA adapter boundary; §§10, 14.1 |
+| Runtime/history separation and retention | P, S; §§3, 7–9 |
+| Causal cycles have declared timing classes | Coupled-domain coordinator; §4 |
+| Refinement cannot overwrite base history implicitly | U, V; §12 |
+| No t1/dt/W_model or execution authorization | Freeze boundary and non-authorization; §§17–18 |
+| No maximal resolution or provider-gap closure by default | Resolution/consumer planners; §§6–7, 17–18 |
+| No R6 product limited to Year 0 or humans | Full domain registry; §§1, 3, 9, 11 |
+
+## 17.2 Explicit architectural non-goals
+
+- maximal spatial or temporal resolution everywhere;
+- a one-year global timestep or any other universal cadence;
+- fake high-resolution categorical or spatial upsampling;
+- reproducing R5 outcomes as an acceptance criterion;
+- closing provider gaps that no active consumer requires;
+- granting scientific authority to pyGPlates or any external engine;
+- persisting every ephemeral solver variable;
+- producing only a Year-0 endpoint or only human history;
+- indefinitely extending tectonic solver feasibility work before useful,
+  governed history can begin.
 
 ## 18. Explicit non-authorization
 

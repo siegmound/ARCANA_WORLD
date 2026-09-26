@@ -314,6 +314,6 @@ retroactively change R5 authorities.
 ---
 
 **Charter status:** Consolidated objective charter; reconciled on 2026-09-23 and updated with engine-capability scope on 2026-09-26.
-**Implementation architecture:** Not frozen.
+**Implementation architecture:** High-level architecture frozen separately in `R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md`; implementation choices remain deferred.
 **R5_R6_RECONCILIATION_REQUIRED:** false.
-**Architecture status:** This reconciliation neither requests nor authorizes architecture-freeze work; consult the separate architecture record.
+**Architecture status:** This objective reconciliation did not itself freeze architecture; the current freeze decision and boundary are recorded separately in `R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md`.

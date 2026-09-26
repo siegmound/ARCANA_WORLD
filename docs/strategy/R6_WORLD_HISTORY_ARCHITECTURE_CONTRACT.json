@@ -1,0 +1,134 @@
+{
+  "contract_id": "R6_WORLD_HISTORY_ARCHITECTURE_CONTRACT",
+  "architecture_version": 1,
+  "status": "FROZEN_HIGH_LEVEL__IMPLEMENTATION_AND_SCIENTIFIC_EXECUTION_NOT_AUTHORIZED",
+  "objective_charter": "R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md",
+  "architecture_document": "R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md",
+  "scope": {
+    "product": "WORLD_HISTORY(x,y,t)",
+    "architecture_level_only": true,
+    "implementation_selected": false,
+    "forward_evolution_authorized": false,
+    "canonical_science_mutated": false
+  },
+  "state_envelope": {
+    "required_fields": [
+      "domain",
+      "variable",
+      "spatial_support",
+      "temporal_support",
+      "value_or_explicit_state",
+      "authority_class",
+      "provenance",
+      "uncertainty",
+      "model_derived",
+      "applicability_and_support_status",
+      "source_and_event_lineage"
+    ],
+    "conditional_fields": ["conflict_flags", "refinement_lineage", "parent_history_version"],
+    "domain_payload_schema_shared": false,
+    "support_states": ["KNOWN", "DERIVED_SUPPORTED", "SPARSE_AUTHORITY", "UNKNOWN", "NOT_APPLICABLE", "OUTSIDE_SCOPE"]
+  },
+  "domain_registry": [
+    {"id":"physical_world","history":"PHYSICAL_HISTORY","owner":"B","includes":["plate_geometry","tectonics","geology","topography","shoreline"]},
+    {"id":"climate","history":"CLIMATE_HISTORY","owner":"C"},
+    {"id":"hydrology_freshwater","history":"HYDROLOGY_HISTORY","owner":"E"},
+    {"id":"parent_material_soil","history":"PARENT_MATERIAL_HISTORY+SOIL_HISTORY","owner":"G"},
+    {"id":"deep","history":"DEEP_HISTORY","owner":"D"},
+    {"id":"flora","history":"FLORA_HISTORY","owner":"H","includes":["vegetation","PFT","NPP","plant_distribution"]},
+    {"id":"fauna","history":"FAUNA_HISTORY","owner":"I","includes":["species","ranges","populations","trophic_roles","dispersal","lineage_where_supported"]},
+    {"id":"aquatic_ecology","history":"FRESHWATER_ECOLOGY_HISTORY+MARINE_ECOLOGY_HISTORY","owner":"J"},
+    {"id":"resources","history":"RESOURCE_HISTORY","owner":"K","includes":["terrestrial_biological","freshwater","marine","timber","biomass","stone","clay","salt","ores_metals","geological_materials","deep_resources"]},
+    {"id":"human_demography","history":"HUMAN_HISTORY","owner":"L"},
+    {"id":"settlement_trade","history":"SETTLEMENT_HISTORY+TRADE_HISTORY","owner":"M"},
+    {"id":"technology_infrastructure","history":"TECHNOLOGY_HISTORY+INFRASTRUCTURE_HISTORY","owner":"N"},
+    {"id":"polity_conflict_civilization","history":"POLITY_HISTORY+CONFLICT_HISTORY+CIVILIZATION_HISTORY","owner":"O"}
+  ],
+  "dependency_graph": {
+    "semantics": "Potential architecture dependencies only; not unconditional execution order or scientific laws.",
+    "edges": [
+      {"from":"physical_world","to":"climate","class":"causal_input"},
+      {"from":"physical_world","to":"hydrology_freshwater","class":"causal_input"},
+      {"from":"physical_world","to":"resources","class":"causal_input"},
+      {"from":"climate","to":"hydrology_freshwater","class":"causal_input"},
+      {"from":"hydrology_freshwater","to":"climate","class":"conditional_feedback","timing":"law_declared_same_step_or_delayed"},
+      {"from":"climate","to":"parent_material_soil","class":"causal_input"},
+      {"from":"hydrology_freshwater","to":"parent_material_soil","class":"causal_input"},
+      {"from":"parent_material_soil","to":"flora","class":"causal_input"},
+      {"from":"climate","to":"flora","class":"causal_input"},
+      {"from":"hydrology_freshwater","to":"flora","class":"causal_input"},
+      {"from":"flora","to":"fauna","class":"conditional_feedback","timing":"law_declared_same_step_or_delayed"},
+      {"from":"fauna","to":"flora","class":"conditional_feedback","timing":"law_declared_same_step_or_delayed"},
+      {"from":"deep","to":"flora","class":"conditional_coupling","timing":"law_declared"},
+      {"from":"deep","to":"fauna","class":"conditional_coupling","timing":"law_declared"},
+      {"from":"flora","to":"resources","class":"causal_input"},
+      {"from":"fauna","to":"resources","class":"causal_input"},
+      {"from":"hydrology_freshwater","to":"aquatic_ecology","class":"causal_input"},
+      {"from":"physical_world","to":"aquatic_ecology","class":"causal_input"},
+      {"from":"climate","to":"aquatic_ecology","class":"causal_input"},
+      {"from":"resources","to":"human_demography","class":"conditional_coupling","timing":"law_declared_same_step_or_delayed"},
+      {"from":"deep","to":"human_demography","class":"conditional_coupling","timing":"law_declared_same_step_or_delayed"},
+      {"from":"human_demography","to":"resources","class":"conditional_feedback","timing":"law_declared_delayed_or_slow_state"},
+      {"from":"technology_infrastructure","to":"resources","class":"conditional_accessibility_effect","timing":"law_declared"},
+      {"from":"resources","to":"settlement_trade","class":"causal_input"},
+      {"from":"human_demography","to":"settlement_trade","class":"causal_input"},
+      {"from":"settlement_trade","to":"human_demography","class":"conditional_feedback","timing":"law_declared_same_step_or_delayed"},
+      {"from":"technology_infrastructure","to":"settlement_trade","class":"conditional_accessibility_effect","timing":"law_declared"},
+      {"from":"settlement_trade","to":"technology_infrastructure","class":"conditional_feedback","timing":"law_declared_delayed_or_slow_state"},
+      {"from":"human_demography","to":"polity_conflict_civilization","class":"causal_input"},
+      {"from":"settlement_trade","to":"polity_conflict_civilization","class":"causal_input"},
+      {"from":"polity_conflict_civilization","to":"human_demography","class":"conditional_feedback","timing":"law_declared_same_step_or_delayed"},
+      {"from":"polity_conflict_civilization","to":"resources","class":"conditional_feedback","timing":"law_declared_delayed_or_slow_state"}
+    ],
+    "timing_classes": ["within_step_coupled_policy_later_declared", "inter_step_delayed", "slow_state_carried_forward"],
+    "unknown_dependency_policy": "Dependent outputs remain UNKNOWN or PARTIAL unless an authorized independent path is declared."
+  },
+  "temporal_object_registry": [
+    {"type":"AUTHORITY_ANCHOR","lifecycle":"immutable governed evidence/constraint record","authority":"source authority retained; does not itself authorize interpolation or execution"},
+    {"type":"SIMULATION_CHECKPOINT","lifecycle":"emitted at validated execution boundary; resumable only after compatibility and completeness checks","authority":"runtime restart state, not automatically queryable history"},
+    {"type":"HISTORICAL_SNAPSHOT","lifecycle":"materialized query-state record; may be partial","authority":"state support, authority, uncertainty and provenance explicit"},
+    {"type":"EVENT_RECORD","lifecycle":"append transition/forcing/event with before-after lineage","authority":"governed source or model-derived according to event contract"},
+    {"type":"REFINEMENT_ANCHOR","lifecycle":"selected from validated state plus causal/boundary context","authority":"selection does not upgrade state to hard-anchor authority"},
+    {"type":"CONSUMER_CHECKPOINT","lifecycle":"created from actual typed consumer request after preflight","authority":"request is not evidence and provider time alone does not trigger it"}
+  ],
+  "resolution_modes": [
+    {"id":"GLOBAL_BASE_HISTORY","scope":"whole world searchable causal backbone","resolution":"scientifically defensible baseline; exact grid and cadence deferred"},
+    {"id":"EVENT_ADAPTIVE_RESOLUTION","scope":"bounded changes around process/event demand","resolution":"increased only with governed process rationale and recorded support"},
+    {"id":"QUERY_DRIVEN_REFINEMENT","scope":"local or regional derived branch","resolution":"use valid refinement anchor, causal cone, boundary context, and finer evidence where available"}
+  ],
+  "refinement_policy": {
+    "planner":"CAUSAL_CONE_PLANNER",
+    "inputs":["region","time_interval","requested_domains","requested_resolution"],
+    "branch_type":"DERIVED_REFINEMENT_BRANCH",
+    "base_history_overwrite_implicit":false,
+    "promotion_requires_separate_adjudication":true
+  },
+  "retention_classes": ["RETAIN_ALWAYS","RETAIN_EVENT","RETAIN_CHECKPOINT","RETAIN_QUERY_VIEW","RECOMPUTABLE","EPHEMERAL"],
+  "engine_role_registry": [
+    {"engine":"pyGPlates","role":"bounded geometry/topology/deformation backend behind ARCANA adapter","static_geometry_topology":"SUFFICIENT","synthetic_deforming_network":"SUFFICIENT","canonical_dynamic_deformation":"NOT_YET_VALIDATED","evidence_basis":"Fair result relayed by user; not reproduced in this Windows checkout","scientific_authority":"ARCANA"},
+    {"engine":"BIOME4","role":"bounded vegetation/productivity solver behind consumer-driven adapter","execution_authorized":false,"scientific_authority":"ARCANA"},
+    {"engine":"other_external_engines","role":"bounded subproblem solvers only under separately authorized adapters","scientific_authority":"ARCANA"}
+  ],
+  "bootstrap": {
+    "conceptual_sequence":["canonical_initial_state_and_laws_events","input_authority_preflight_and_run_identity","initialize_physical_runtime_state","authorized_physical_interval","validate_output_support_uncertainty_provenance","persist_physical_history_events_and_checkpoint_if_restart_complete","expose_supported_outputs_to_typed_downstream_consumers"],
+    "required_contract_owners_before_first_physical_interval":["A","B","F_when_applicable","P","Q","R","S","V"],
+    "downstream_provider_completeness_required":false,
+    "execution_authorized_by_architecture":false
+  },
+  "query_contract": ["STATE_AT(region,time,domains)","HISTORY(region,interval,domains)","SEARCH(interval,spatial_scope,predicates)","LINEAGE(state_or_event)","AVAILABLE_RESOLUTION(region,time,domain)","REFINEMENT_CANDIDATES(query)"],
+  "governance_invariants": {
+    "R5_R6_RECONCILIATION_REQUIRED":false,
+    "R5_UPSTREAM_RUNTIME_DEPENDENCY":false,
+    "external_engines_are_scientific_authority":false,
+    "unknown_is_zero":false,
+    "provider_timestamp_is_consumer_checkpoint":false,
+    "categorical_or_unsupported_spatial_upsampling":false,
+    "global_maximum_resolution_required":false,
+    "one_year_global_timestep_required":false,
+    "t1_created":false,
+    "dt_selected":false,
+    "W_model_selected":false,
+    "forward_evolution_authorized":false,
+    "canonical_state_changed":false
+  }
+}
