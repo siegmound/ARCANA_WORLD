@@ -1,0 +1,33 @@
+{
+  "artifact": "R6_GEODYNAMIC_LAW_AUTHORITY_MATRIX",
+  "schema_version": 1,
+  "scope": "POST_210MA_SYNTHETIC_ARCANA_PHYSICAL_WORLD_EVOLUTION",
+  "baseline_head": "592b1651b405363373590092e133bd25569d99a5",
+  "rows": [
+    {"domain":"plate/province identity and geometry","current_authority":"R6 synthetic t0 plate/province fields; latent geometric support","status":"PARTIAL","reuse":"R6 t0 + latent geometry; adapter required","blocker":"no time-evolving plate partition or motion"},
+    {"domain":"spherical plate motion","current_authority":"none bound for R6","status":"INSUFFICIENT_AUTHORITY","candidate_representation":"Euler-pole/rigid transforms or governed velocity field; choose only after focused research","blocker":"no kinematic law, parameters, or deterministic integrator contract"},
+    {"domain":"rift/breakup","current_authority":"initial supercontinent morphology envelope only","status":"INSUFFICIENT_AUTHORITY","blocker":"no seeded initiation/propagation law, stress/forcing semantics, or event authority"},
+    {"domain":"collision/orogeny","current_authority":"synthetic t0 designed province/elevation only","status":"INSUFFICIENT_AUTHORITY","blocker":"no convergence/collision/boundary transition or uplift law"},
+    {"domain":"coastline and land/sea transition","current_authority":"t0 land mask/elevation and authorial datum; A1/R3 reference support","status":"PARTIAL","blocker":"no R6 tectonic vertical motion or governed time-varying sea-level forcing; numeric bathymetry unknown"},
+    {"domain":"macro-topography","current_authority":"static synthetic t0 relief","status":"INSUFFICIENT_AUTHORITY","blocker":"no uplift/subsidence/volcanism and coupling law"},
+    {"domain":"erosion/sedimentation/landscape","current_authority":"terrain is drainage-ready support, not a drainage/erosion result","status":"INSUFFICIENT_AUTHORITY","blocker":"no R6 process law, boundary conditions, or engine suitability decision"},
+    {"domain":"Deep to geodynamics","current_authority":"existing Deep contracts support biological/energy semantics, not mantle forcing","status":"UNKNOWN","blocker":"no canonical Deep→tectonic coupling contract or physical initializer"},
+    {"domain":"dated physical forcing/events","current_authority":"A1/R3 temporal material is reference/consumer support only","status":"INSUFFICIENT_AUTHORITY","blocker":"no R6 forcing chronology, sea-level history, or physical event schedule"},
+    {"domain":"physical checkpoint/restart","current_authority":"generic ARCANA orchestration and historical checkpoint practices","status":"PARTIAL","blocker":"solver-specific restart-complete physical state cannot be frozen before solver/laws"},
+    {"domain":"bathymetry","current_authority":"ocean numeric depth explicitly UNKNOWN at t0","status":"NOT_REQUIRED_FOR_INITIAL_CONTINENTAL_EVOLUTION","blocker":"must be separately authorized before bathymetry-dependent ocean/basin/climate processes"}
+  ],
+  "deep_relationships": {
+    "canonical_coupling": "UNKNOWN",
+    "optional_model_coupling": "possible only under a separately governed contract",
+    "no_coupling": "not established as a canonical rule",
+    "r6_deep_initializer_required_now": false,
+    "r6_deep_initializer_required_if_selected": true
+  },
+  "overall": {
+    "decision": "EXTERNAL_SCIENTIFIC_RESEARCH_REQUIRED",
+    "first_replay_authorized": false,
+    "first_interval_contract_created": false,
+    "external_provider_selected": false,
+    "numeric_bathymetry_materialized": false
+  }
+}

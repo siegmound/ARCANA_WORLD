@@ -1,0 +1,63 @@
+{
+  "artifact": "R6_SHARED_BOUNDARY_MOTION_AND_TOPOLOGY_CONTACT_RULE",
+  "boundary_motion_rule": "UNBOUND_FOR_POSITIVE_DT; symmetric half-stage is not adopted as a universal rule; one-sided attachment is not adopted without boundary-type authority; topology resolution alone does not define causal physical response",
+  "decision": "SHARED_BOUNDARY_NETWORK_BOUND_AS_MASTER_INTERFACE; TRANSITION_LAW_BLOCKED",
+  "gplates_research_conclusion": "GPlates resolves shared topological sections and topological networks; deforming networks use a triangulated deforming region and rigid blocks. These are geometry/deformation reconstruction mechanisms, not ARCANA causal laws.",
+  "half_stage_rotation": "documented in GPlates for tectonic sections such as spreading ridges; not generalized to stable, convergent, transform, or pre-rift boundaries",
+  "junctions": {
+    "identity": "canonical shared grid vertex; poles collapsed to one spherical point each",
+    "positive_time_velocity_rule": "UNBOUND; pairwise means are not assumed compatible",
+    "t0_incidence_materialized": true
+  },
+  "master_state_adjudication": {
+    "backend_independent": true,
+    "boundary_network_role": "one canonical shared geometric interface; polygons are derived from the network",
+    "finite_width_deforming_zone": "NOT_BOUND; no width/support/state available",
+    "independent_closed_polygon_rotation": "NOT_A_VALID_TRANSITION_RULE_WHEN_ADJACENT_PLATES_HAVE_DIFFERENT_ROTATIONS",
+    "rigid_interiors_retained": true,
+    "selected": "SHARED_BOUNDARY_NETWORK"
+  },
+  "no_forward_evolution": true,
+  "orientation": {
+    "identity": "payload- and grid-keyed deterministic BOUNDARY_ID; no duplicate A/B copies",
+    "normal": "unit tangent-plane normal from A toward B; positive (vB-vA) dot nAB means opening",
+    "pair_order": "plate_a < plate_b, IDs from parent edge record",
+    "tangent": "increasing grid-coordinate direction along edge; signed shear diagnostic changes sign if tangent orientation reverses"
+  },
+  "parent_authorities": {
+    "canonical_kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "canonical_t0_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "rift_rule": "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING.json",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+  },
+  "process_semantics": {
+    "convergent_pre_event": "no shortening/contact accommodation law; no overlap or silent crust removal permitted",
+    "divergent_pre_rift": "existing cumulative opening is the sole progress quantity; its geometric accommodation zone/width is undefined, so no physical partition-preserving transition is authorized",
+    "rift_split_spreading_subduction_collision_orogeny": "handoff to separately authorized event/process laws; no automatic continuation",
+    "transform": "signed shear diagnostic only; no slip accumulator or fault mechanics authorized"
+  },
+  "pygplates_required": false,
+  "pygplates_used": false,
+  "relative_motion": {
+    "delta_v": "vB-vA",
+    "meaning": "diagnostic/process input only; not event typing or accommodation",
+    "normal_component": "dot(delta_v,nAB)",
+    "tangential_component": "dot(delta_v,t_boundary)"
+  },
+  "repair_prohibitions": [
+    "nearest snapping",
+    "nearest-plate gap filling",
+    "arbitrary overlap clipping",
+    "rasterize/vectorize repair"
+  ],
+  "schema": "R6_SHARED_BOUNDARY_MOTION_AND_TOPOLOGY_CONTACT_RULE_V1",
+  "scope": "R6 synthetic t0 representation and positive-duration boundary semantics; no forward evolution",
+  "topology_validation": [
+    "closed loops",
+    "complete spherical coverage within explicit area tolerance",
+    "zero unintended overlap",
+    "zero unintended gap",
+    "valid junction incidence",
+    "stable IDs and parent lineage"
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "P7Q_reopened": false,
+  "artifact": "R6_FIRST_PHYSICAL_INTERVAL_READINESS_V15",
+  "blocked_junctions": [
+    {
+      "junction_id": "R6JNT-T0-025646696d52eeec",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-2c16e521a6419fa3",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-372e4615c4d95679",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-3b2ab2c416ea6774",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-43a103aaa9716c60",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-4a67fe6607845a68",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-651508dfd3ba5c87",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-66cf52c990399228",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-925256003ecf3f7d",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-97f54005032950c6",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-cbc56f946f677500",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    },
+    {
+      "junction_id": "R6JNT-T0-fa2d01546d4ec418",
+      "reason": "canonical branch rays do not define a nondegenerate convex three-side P1 patch"
+    }
+  ],
+  "canonical_boundary_segments": 1983,
+  "canonical_corridor_components": 30,
+  "canonical_global_arrangement_converged": false,
+  "canonical_junctions": 20,
+  "canonical_junctions_blocked": 12,
+  "canonical_junctions_resolved": 8,
+  "canonical_parent_faces": 64800,
+  "canonical_parent_integrated": true,
+  "canonical_parent_plates": 12,
+  "canonical_reference_map_materialized": false,
+  "canonical_t0_changed": false,
+  "canonical_width_selected": false,
+  "decision": "CANONICAL_JUNCTION_P1_TRACE_AND_PATCH_BINDING_BLOCKED",
+  "execution_index_staged_blobs": {
+    "ARCANA_EXECUTION_REFERENCE_INDEX.json": "551727fd6ea73dd39a4194bf3aa34dc2a2707836",
+    "ARCANA_EXECUTION_REFERENCE_INDEX.md": "8a8052c5c2ec73f26c598df5aeb3ab50105da085"
+  },
+  "execution_indexes_mutated": false,
+  "first_dt_years": null,
+  "fixture_gate_complete": false,
+  "fixture_test_output": "............................................................             [100%]\n60 passed in 8.70s",
+  "fixture_test_seconds": 10.18627040006686,
+  "fixture_tests": "PASS",
+  "forward_evolution": false,
+  "global_reference_geometry_ready": false,
+  "junction_trace_max_error": 0.4986115270408138,
+  "junction_trace_sample_count": 768,
+  "junction_trace_tolerance": 0.0001,
+  "junction_trace_violation_count": 256,
+  "junction_trace_worst_sample": {
+    "basis_weights": {
+      "0": 0.0,
+      "3": 0.9992752075195312,
+      "8": 0.00072479248046875
+    },
+    "boundary_id": "R6BND-T0-6fc54dd6a3bdd96306e6",
+    "canonical_corridor_weights": {
+      "3": 0.5006636804787175,
+      "8": 0.4993363195212825
+    },
+    "edge": 0,
+    "error": 0.4986115270408138,
+    "junction_id": "R6JNT-T0-52ad489ad0830b38",
+    "local_edge_fraction": 0.984375,
+    "local_xy_m": [
+      -0.0008849121963996895,
+      0.9999995827973814
+    ],
+    "sample_lat_deg": -2.999991006787693,
+    "sample_lon_deg": 154.9999999920309,
+    "signed_corridor_distance_m": -0.0008849075359355754
+  },
+  "next_action": "R6_CANONICAL_JUNCTION_P1_GEOMETRY_AND_CORRIDOR_TRACE_COMPATIBILITY_REPAIR",
+  "p1_geometry_probe_semantics": "UNIT_SCALE_GEOMETRY_DIAGNOSTIC_ONLY_NOT_A_MODEL_WIDTH_CASE",
+  "p1_geometry_probe_width_m": 2.0,
+  "parent_payload_bytes": 5681184,
+  "parent_payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+  "parent_sphere_area_relative_error": 1.2253352946929809e-16,
+  "physical_soil_created": false,
+  "remaining_blocker": "CANONICAL_JUNCTION_P1_FAN_GEOMETRY_BLOCKED_FOR_12_OF_20_AND_REAL_CORRIDOR_TRACE_EXCEEDS_1E-4",
+  "remaining_blockers": [
+    "CANONICAL_JUNCTION_P1_FAN_GEOMETRY_BLOCKED_FOR_12_OF_20_AND_REAL_CORRIDOR_TRACE_EXCEEDS_1E-4"
+  ],
+  "repository": {
+    "branch": "main",
+    "head": "592b1651b405363373590092e133bd25569d99a5",
+    "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+  },
+  "schema": "R6_FIRST_PHYSICAL_INTERVAL_READINESS_V15",
+  "scientific_authority_register_mutated": false,
+  "spatial_index_all_source_segments_found": true,
+  "spatial_index_midpoint_misses": 0,
+  "static_t0_velocity_field": "NOT_RUN",
+  "t0_ma": 210.0,
+  "verdict": "PASS_CANONICAL_PARENT_AND_BOUNDARY_INDEX__BLOCKED_REAL_JUNCTION_GLOBAL_HANDOFF",
+  "width_cases_m": [
+    100000,
+    250000,
+    500000,
+    1000000
+  ],
+  "width_cases_status": "NOT_RUN_GLOBAL_INTEGRATION_GATE_FAILED",
+  "width_selected": false
+}

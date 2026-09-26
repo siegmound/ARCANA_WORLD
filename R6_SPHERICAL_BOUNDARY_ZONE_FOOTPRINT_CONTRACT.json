@@ -1,0 +1,34 @@
+{
+  "artifact": "R6_SPHERICAL_BOUNDARY_ZONE_FOOTPRINT_CONTRACT",
+  "schema": "R6_SPHERICAL_BOUNDARY_ZONE_FOOTPRINT_CONTRACT_V1",
+  "decision": "REFERENCE_MAP_MATERIALIZATION_BLOCKED",
+  "verdict": "PASS_PARENT_BINDING__SPHERICAL_FOOTPRINT_OPERATOR_NOT_IMPLEMENTED_OR_VALIDATED",
+  "baseline": {"branch": "main", "head": "592b1651b405363373590092e133bd25569d99a5", "origin_main": "592b1651b405363373590092e133bd25569d99a5"},
+  "parents": {
+    "vector_partition": {"path": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json", "sha256": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233", "payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab", "boundary_segments": 1983, "plate_count": 12, "support": "COARSE_SUPPORT_ON_FINE_GRID"},
+    "shared_boundary_state": {"path": "R6_T0_SHARED_BOUNDARY_STATE_MANIFEST.json", "sha256": "d1a1a21e7ad7242bd37cc6a7c57a1e28d5fc4fcaf9e6128e5e0fdd8a32817471", "junction_count_degree3": 20},
+    "kinematics": {"path": "R6_T0_CANONICAL_PLATE_KINEMATICS.json", "sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2", "identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4"},
+    "width_prior": {"path": "R6_BOUNDARY_ZONE_FOOTPRINT_AND_WIDTH_PRIOR_CONTRACT.json", "sha256": "1f453e81a115081f9fb93d21b0a46c39aeb98173e1ef3ba0c7f287edf39103d5", "range_m": [100000.0, 1000000.0], "authority": "AUTHORIAL_REDUCED_MODEL_SPATIAL_PRIOR_CONSTRAINED_BY_LITERATURE_SCALE_CONTEXT", "distribution": "NONE_ASSIGNED"}
+  },
+  "width_semantics": {"W_model": "full cross-zone width of a reduced distributed-deformation domain", "units": "m", "symmetric_half_width_m": "W_model/2 is a proposed geometric convention only; not canonicalized", "numerical_mesh_spacing_separate": true},
+  "predeclared_geometry_cases_m": [100000, 250000, 500000, 1000000],
+  "construction_adjudication": {
+    "selected_canonical_algorithm": null,
+    "candidate_preferred_for_next_implementation": "GLOBAL_SPHERICAL_NETWORK_DISTANCE_PARTITION_WITH_CONSTRAINED_LOCAL_MESH_OR_ARRANGEMENT",
+    "status": "CANDIDATE_ONLY_NOT_VALIDATED",
+    "reasons": ["A per-boundary distance corridor alone does not resolve overlaps, rigid-core ownership, or plate-core collapse.", "A global network distance construction can expose branch/junction support, but needs deterministic continuous-surface ownership and a validated spherical arrangement.", "A constrained spherical mesh can provide reference coordinates and a C0 partition-of-unity basis, but mesh constraints, junction patches, and full sphere coverage are not implemented or tested."],
+    "symmetric_footprint": {"status": "NOT_AUTHORIZED_AS_PHYSICAL_ASYMMETRY_IS_UNTYPED", "possible_role": "AUTHORIAL_REDUCED_MODEL_GEOMETRIC_CONVENTION_ONLY_AFTER_EXPLICIT_BINDING"},
+    "local_width_capping": false,
+    "raster_as_master": false
+  },
+  "alternative_families": [
+    {"family": "GEODESIC_DISTANCE_FIELD_CORRIDOR", "merit": "clear width and distance semantics", "limitation": "does not by itself resolve global overlap/ownership/junction topology"},
+    {"family": "SPHERICAL_OFFSET_CURVES_OR_BUFFER", "merit": "direct explicit geometric footprint", "limitation": "requires robust spherical union, self-intersection and short-feature handling"},
+    {"family": "GLOBAL_NETWORK_DISTANCE_PARTITION", "merit": "junction/network-aware support", "limitation": "requires exact side labels, tie policy and continuous ownership arrangement"},
+    {"family": "CONSTRAINED_SPHERICAL_TRIANGULATION", "merit": "reference coordinates and future piecewise finite-element velocity basis", "limitation": "mesh generation alone does not supply physical zones or validate 3-plate junction patches"}
+  ],
+  "canonicalization": {"width": null, "rigid_cores": false, "boundary_zones": false, "junction_patches": false, "material_coordinates": false, "partition_of_unity": false, "payload": null},
+  "blocker": "NO_IMPLEMENTED_AND_VALIDATED_CONTINUOUS_SPHERICAL_ARRANGEMENT_THAT_COMBINES_MIXED_MERIDIAN_SMALL_CIRCLE_EDGES_WITH_GLOBAL_ZONE_UNION_CORE_OWNERSHIP_AND_20_DEGREE3_PATCHES",
+  "next_action": "IMPLEMENT_AND_FIXTURE_VALIDATE_THE_SPHERICAL_NETWORK_ARRANGEMENT_AND_JUNCTION_PATCH_OPERATOR",
+  "governance": {"canonical_t0_changed": false, "vector_partition_changed": false, "kinematics_changed": false, "forward_evolution": false, "canonical_width_selected": false, "scientific_authority_register_mutated": false, "execution_indexes_mutated": false}
+}

@@ -1,0 +1,88 @@
+{
+  "artifact": "R6_WAVE1_AUTHORITY_DEPENDENCY_PREFLIGHT",
+  "schema_version": 1,
+  "repository": "siegmound/ARCANA_WORLD",
+  "branch": "main",
+  "repository_head": "592b1651b405363373590092e133bd25569d99a5",
+  "authority_register": {
+    "path": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json",
+    "basis_head": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+    "current_for_wave1": false,
+    "determination": "AUTHORITY_REGISTER_RECONCILIATION_REQUIRED",
+    "scope_note": "The register basis predates HEAD. Exact source hashes and recorded domain entries were checked only for the climate/hydrology references below; no global rebuild or domain-wide readjudication was performed."
+  },
+  "decision": "PARTIAL_SCOPED_REFERENCE_ONLY_WAVE1_FIXTURES_ALLOWED",
+  "wave1_may_continue": true,
+  "execution_scope": {
+    "scientific_simulation": false,
+    "provider_acquisition": false,
+    "climate_scientific_values_consumed": false,
+    "hydrology_scientific_values_consumed": false,
+    "fixture_or_reference_only": true,
+    "scientific_authority_promoted": false
+  },
+  "dependencies": [
+    {
+      "source_artifact": "local_bindings/v0_6D1_R3_14/v0_6_1_SEALED_MINIMAL/outputs/hybrid1/paleoclimate_v0_6_1/recent_paleoclimate_history.npz",
+      "authority_register_entry": "CLIMATE / PALEOCLIMATE",
+      "register_recorded_authority": "DIRECT_AUTHORITY / REUSE_CANONICAL_ARCANA",
+      "register_basis_head": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+      "repository_head": "592b1651b405363373590092e133bd25569d99a5",
+      "actual_sha256": "be385c4e41345c9964ac49c695084cf2b37366058b1bc3d9fa22ff39195bb3c1",
+      "register_sha256_matches": true,
+      "semantic_role": "R3.14 recent paleoclimate reference payload; not loaded by Wave-1 adapter",
+      "authority_still_valid": "HASH_AND_REGISTER_ENTRY_MATCH_AS_RECORDED; CURRENT-HEAD REGISTER RECONCILIATION REMAINS REQUIRED",
+      "newer_artifact_supersedes": "No superseder is recorded in the register entry; this task does not adjudicate broader provider hierarchy.",
+      "wave1_may_consume": "Reference-only; synthetic fixture values exercise the adapter.",
+      "fixture_reference_only": true
+    },
+    {
+      "source_artifact": "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json",
+      "authority_register_entry": "HYDROLOGY / PALEOHYDROLOGY",
+      "register_recorded_authority": "DIRECT_AUTHORITY / REUSE_CANONICAL_ARCANA",
+      "register_basis_head": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+      "repository_head": "592b1651b405363373590092e133bd25569d99a5",
+      "actual_sha256": "9592be5e4e6e37f21020c9fbebe8a406a3cb4b717e812f5f2413977b60676167",
+      "register_sha256_matches": true,
+      "semantic_role": "B6 replay authority/result descriptor; metadata reference only, no payload replay/read by Wave 1",
+      "authority_still_valid": "HASH_AND_REGISTER_ENTRY_MATCH_AS_RECORDED; CURRENT-HEAD REGISTER RECONCILIATION REMAINS REQUIRED",
+      "newer_artifact_supersedes": "No superseder is recorded in the register entry.",
+      "wave1_may_consume": "Reference-only for the hydrology boundary identity; fixture output is normalized without executing B6.",
+      "fixture_reference_only": true
+    },
+    {
+      "source_artifact": "R5_17_B6_H3_NATIVE_HYDROLOGY_GENERATOR_SEMANTICS.json",
+      "authority_register_entry": "HYDROLOGY",
+      "register_recorded_authority": "DIRECT_AUTHORITY / REUSE_CANONICAL_ARCANA",
+      "register_basis_head": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+      "repository_head": "592b1651b405363373590092e133bd25569d99a5",
+      "actual_sha256": "e28404672f8f6aae54af7544341eb163e5e2266ddff896b115acf36702b4d23a",
+      "register_sha256_matches": true,
+      "semantic_role": "Native generator semantic audit; implementation reference only, not executed by Wave 1",
+      "authority_still_valid": "HASH_AND_REGISTER_ENTRY_MATCH_AS_RECORDED; CURRENT-HEAD REGISTER RECONCILIATION REMAINS REQUIRED",
+      "newer_artifact_supersedes": "No superseder is recorded in the register entry.",
+      "wave1_may_consume": "Reference-only; no generator call or scientific output consumption.",
+      "fixture_reference_only": true
+    },
+    {
+      "source_artifact": "R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json",
+      "authority_register_entry": "FRESHWATER",
+      "register_recorded_authority": "DIRECT_AUTHORITY / REUSE_CANONICAL_ARCANA (derived authority class)",
+      "register_basis_head": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+      "repository_head": "592b1651b405363373590092e133bd25569d99a5",
+      "actual_sha256": "de6c065ad31b9e0b9405395d62c61f8bbf2ae8e22c39c5e80bbfe7b846940be2",
+      "register_sha256_matches": true,
+      "semantic_role": "Bounded B6 derived-support adjudication descriptor; not consumed as Wave-1 values",
+      "authority_still_valid": "HASH_AND_REGISTER_ENTRY_MATCH_AS_RECORDED; CURRENT-HEAD REGISTER RECONCILIATION REMAINS REQUIRED",
+      "newer_artifact_supersedes": "No superseder is recorded in the register entry.",
+      "wave1_may_consume": "Reference-only; freshwater support derivation is outside this fixture adapter proof.",
+      "fixture_reference_only": true
+    }
+  ],
+  "preflight_constraints": [
+    "Do not regenerate or globally promote the stale authority register in Wave 1.",
+    "Keep climate and hydrology scientific values out of the fixture proof.",
+    "Do not require any R5 world-state path at R6 runtime.",
+    "A future scientific adapter run requires a current, scoped authority decision and exact input binding."
+  ]
+}

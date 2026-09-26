@@ -1,0 +1,98 @@
+{
+  "artifact": "R6_BOUNDARY_ZONE_WIDTH_EVIDENCE_MATRIX",
+  "canonical_width_realization": "NOT_MATERIALIZED_PENDING_GEOMETRIC_ACCEPTANCE_RULE",
+  "decision": "BOUNDARY_FOOTPRINT_CONSTRUCTION_BLOCKED",
+  "envelope_status": "DESIGN_HYPOTHESIS_ONLY; literature context does not empirically bound these endpoints",
+  "fault_damage_widths_excluded": true,
+  "literature_evidence": [
+    {
+      "definition_and_limit": "seismic/deformation-zone extent, not a universal mechanical corridor width; not transferable as a measured ARCANA parameter",
+      "doi": "10.1016/0040-1951(89)90209-6",
+      "reported_scale": "up to several hundred kilometres wide",
+      "setting": "Several modern oceanic diffuse-deformation examples",
+      "source": "Chen & Grimison (1989), Earthquakes associated with diffuse zones of deformation in the oceanic lithosphere: some examples",
+      "url": "https://doi.org/10.1016/0040-1951(89)90209-6"
+    },
+    {
+      "definition_and_limit": "reported dimensions are not necessarily cross-boundary width; supports context dependence, not a numeric width bound",
+      "doi": "10.1146/annurev.earth.26.1.615",
+      "reported_scale": "some zones exceed 1000 km on a side",
+      "setting": "Global review, continental and oceanic diffuse boundaries",
+      "source": "Gordon (1998), The plate tectonic approximation: Plate nonrigidity, diffuse plate boundaries, and global plate reconstructions",
+      "url": "https://doi.org/10.1146/annurev.earth.26.1.615"
+    },
+    {
+      "definition_and_limit": "supports finite-domain/strain representation; does not prescribe universal width, partition, or ARCANA constitutive law",
+      "doi": "10.1016/j.cageo.2018.04.007",
+      "reported_scale": "finite deforming network domains tessellated by triangular mesh",
+      "setting": "Global reconstruction method",
+      "source": "Gurnis et al. (2018), Global tectonic reconstructions with continuously deforming and evolving rigid plates",
+      "url": "https://doi.org/10.1016/j.cageo.2018.04.007"
+    },
+    {
+      "definition_and_limit": "technical capabilities only; no ARCANA physical or width authority",
+      "reported_scale": "network polygon, rigid blocks, deforming points, triangulation and strain",
+      "setting": "Software representation",
+      "source": "Official pyGPlates Primer: Deformation and topological networks",
+      "url": "https://www.gplates.org/docs/pygplates/pygplates_primer"
+    },
+    {
+      "definition_and_limit": "supports partition-of-unity as a numerical basis concept only; does not provide ARCANA zone geometry or tectonic law",
+      "doi": "10.1002/(SICI)1097-0207(19970228)40:4<727::AID-NME86>3.0.CO;2-N",
+      "reported_scale": "basis/regularity method, not a geological width",
+      "setting": "Numerical finite-element approximation",
+      "source": "Babuška & Melenk (1997), The partition of unity method",
+      "url": "https://doi.org/10.1002/%28SICI%291097-0207%2819970228%2940%3A4%3C727%3A%3AAID-NME86%3E3.0.CO%3B2-N"
+    },
+    {
+      "definition_and_limit": "junction stability depends on boundary configuration/motion, not incidence alone",
+      "doi": "10.1038/224125a0",
+      "reported_scale": "not a width study",
+      "setting": "Plate triple-junction kinematics",
+      "source": "McKenzie & Morgan (1969), Evolution of triple junctions",
+      "url": "https://doi.org/10.1038/224125a0"
+    },
+    {
+      "definition_and_limit": "requires boundary classes and evolving kinematic constraints",
+      "doi": "10.1016/0040-1951(92)90391-I",
+      "reported_scale": "not a width study",
+      "setting": "Plate triple-junction kinematics",
+      "source": "Cronin (1992), Types and kinematic stability of triple junctions",
+      "url": "https://doi.org/10.1016/0040-1951(92)90391-I"
+    }
+  ],
+  "model_comparison": [
+    {
+      "model": "A_SINGLE_GLOBAL_BOUNDED_MODEL_SCALE",
+      "reason": "Avoids unsupported type-specific distinctions; a bounded authorial envelope is explicit, but not yet a physical canonical field.",
+      "status": "PREFERRED_MINIMUM_PRIOR_CANDIDATE"
+    },
+    {
+      "model": "B_CRUST_PAIR_CONDITIONED",
+      "reason": "The current boundary records do not govern a crust-pair classification for each segment.",
+      "status": "NOT_AVAILABLE"
+    },
+    {
+      "model": "C_KINEMATIC_MODE_CONDITIONED",
+      "reason": "Opening/closing/shear are diagnostics, not geological boundary-type evidence; no source validates mapping mode to width.",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "model": "D_SEEDED_SPATIALLY_CORRELATED_FIELD",
+      "reason": "No support exists for correlation length or covariance; adding them would invent parameters.",
+      "status": "UNNECESSARY_COMPLEXITY_AT_THIS_STAGE"
+    },
+    {
+      "model": "E_ADAPTIVE_NUMERICAL_WIDTH",
+      "reason": "Cannot stand in for W_model or produce physical strain authority.",
+      "status": "NUMERICAL_ONLY_NOT_PHYSICAL"
+    }
+  ],
+  "no_distribution_assigned": true,
+  "proposed_authorial_envelope_m": [
+    100000.0,
+    1000000.0
+  ],
+  "schema": "R6_BOUNDARY_ZONE_WIDTH_EVIDENCE_MATRIX_V1",
+  "verdict": "PASS_WIDTH_SCALE_PRIOR_ADJUDICATION__REFERENCE_MAP_NOT_CANONICALIZED"
+}

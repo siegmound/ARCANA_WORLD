@@ -1,0 +1,132 @@
+{
+  "artifact": "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING",
+  "schema": "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING_V1",
+  "status": "PRECOMMITTED_BEFORE_T0_CENSUS_V3",
+  "repository_baseline": {
+    "branch": "main",
+    "head": "592b1651b405363373590092e133bd25569d99a5",
+    "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+  },
+  "scope": "MINIMAL_KINEMATIC_RIFT_PROGRESS_AND_EVENT_GUARD_ONLY; NO_TIME_EVOLUTION",
+  "parents": {
+    "motion_prior_contract": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT.json",
+    "canonical_kinematics": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+    "vector_partition_manifest": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+    "canonical_t0_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "kinematics_payload_identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4"
+  },
+  "candidate_state_variables": {
+    "A_CUMULATIVE_NORMAL_EXTENSION": {
+      "disposition": "SELECTED",
+      "meaning": "Time integral of non-negative relative boundary-normal opening displacement.",
+      "units": "metres",
+      "advantages": ["directly driven by already-authorized relative plate kinematics", "has a natural zero initial condition", "event threshold is directly localizable"],
+      "limits": "Not crustal strain, beta, damage, fault slip, or a full lithospheric deformation solution; no effective zone width is inferred."
+    },
+    "B_EXTENSIONAL_STRAIN": {
+      "disposition": "NOT_SELECTED",
+      "reason": "Requires a governed effective deforming width; no such R6 width is materialized."
+    },
+    "C_STRETCHING_FACTOR_BETA": {
+      "disposition": "NOT_SELECTED",
+      "reason": "Requires initial/final crustal or lithospheric thickness and a spatially coherent stretching model, which are not available for this t0 event envelope."
+    },
+    "D_DAMAGE_OR_RIFT_MATURITY": {
+      "disposition": "NOT_SELECTED",
+      "reason": "Requires rheology, weakening/damage laws, and calibrated state parameters absent from R6."
+    }
+  },
+  "initial_state": {
+    "state": "RIFT_QUIESCENT_AT_EXACT_T0",
+    "progress_m": 0.0,
+    "authority_class": "AUTHORIAL_MODEL_INITIAL_CONDITION",
+    "scope": "synthetic ARCANA t0 only; not an observation about Earth at 210 Ma"
+  },
+  "driver_and_transition_law": {
+    "boundary_normal_opening_velocity": "max(0, (vB - vA) dot nAB)",
+    "positive_sign": "opening/divergence",
+    "input_units": "m/year",
+    "progress_rate": "max(0, signed local boundary-normal relative velocity)",
+    "progress_update_when_executed": "E(t+dt) = E(t) + u_open * dt",
+    "progress_units": "metres of relative boundary-normal separation",
+    "spatial_scope": "boundary-edge segment; census aggregates diagnostics by adjacent plate pair, and the event guard uses the fastest supported positive edge driver",
+    "if_opening_velocity_le_zero": "progress stalls; no healing, relaxation, or reset is authorized",
+    "event_condition": "RIFT_INITIATION becomes possible when E >= theta under positive opening; this operational model event marks activation of the rift-process state, not plate splitting or mature breakup",
+    "event_localization": "For a constant first motion segment, analytically solve dt_event = (theta - E) / u_open; a proposed step may not cross the event boundary. A production integrator must stop/localize at that boundary under a solver-specific tolerance before event application.",
+    "no_random_hazard": true
+  },
+  "weakness_semantics": {
+    "support": "UNKNOWN",
+    "required_by_minimal_event_guard": false,
+    "modifier": "not numerically applied; no weakness value or province/suture-to-weakness inference",
+    "conservative_treatment": "The guard uses the most event-permissive lower threshold in the explicitly authorial threshold envelope. This is a model envelope, not a physical strength estimate.",
+    "future_richer_model": "A separately authorized weakness/rheology modifier may refine the threshold/process law; it cannot retroactively alter this t0 realization."
+  },
+  "threshold_authority": {
+    "class": "BOUNDED_AUTHORIAL_MODEL_ASSUMPTION_CONSTRAINED_BY_LITERATURE_CONTEXT",
+    "operational_threshold_range_m": [5000.0, 30000.0],
+    "lower_guard_bound_m": 5000.0,
+    "upper_bound_m": 30000.0,
+    "probability_distribution": null,
+    "canonical_threshold_sampled": false,
+    "interpretation": "ARCANA defines its coarse global-base rift-process activation event after 5-30 km of accumulated opening. The interval is an explicit model uncertainty envelope, not a universal natural rift-initiation threshold; regional observations/models provide only contextual extension scales and do not calibrate this threshold.",
+    "event_semantics_limit": "Sub-threshold extension is represented only as a latent progress state. No fault, damage, topography, crustal thinning, or rift geometry is asserted before or at the activation event."
+  },
+  "first_segment_policy": {
+    "motion": "Hold the canonical t0 Euler state constant only through the first segment and stop at the earliest event/law boundary; no long-term persistence is implied.",
+    "motion_renewal": "NOT_EXERCISED_WITHIN_FIRST_SEGMENT; P03 remains unbound beyond the first segment.",
+    "first_segment_end_upper_bound": "earliest conservative t0 event-time bound, subject to the unresolved numerical horizon",
+    "event_progress_initialization": "zero at exact t0 for every supported candidate boundary edge",
+    "no_time_evolution_in_this_task": true
+  },
+  "numerical_policy": {
+    "scientific_event_guard": "computed from lower threshold and maximum local positive t0 opening rate",
+    "numerical_accuracy_limit": "UNBOUND",
+    "required_before_dt": ["solver/runtime identity", "maximum vertex displacement or equivalent verified geometry error limit", "maximum angular rotation limit", "topology validity/rejection policy", "event localization tolerance", "restart/replay equivalence"],
+    "first_dt": null,
+    "first_interval_contract_authorized": false
+  },
+  "p09_semantics": "DEFERRED_UNTIL_RIFT_INITIATION; no plate split or lineage change is defined by this guard-only law.",
+  "prohibitions": {
+    "time_evolution_executed": false,
+    "event_created": false,
+    "plate_split": false,
+    "topology_changed": false,
+    "t0_kinematics_changed": false,
+    "t0_vector_partition_changed": false,
+    "canonical_t0_payload_changed": false,
+    "bathymetry_created": false,
+    "climate_run": false,
+    "deep_coupling_added": false,
+    "scientific_authority_register_mutated": false,
+    "protected_execution_indexes_mutated": false
+  },
+  "research_references": [
+    {
+      "doi": "10.1016/j.epsl.2015.02.037",
+      "url": "https://doi.org/10.1016/j.epsl.2015.02.037",
+      "use": "Earth reconstruction speed context only; not an R6 rift law."
+    },
+    {
+      "doi": "10.1029/91JB01485",
+      "url": "https://doi.org/10.1029/91JB01485",
+      "use": "Shows extension modes depend on crustal thickness, heat flow, strain rate and rheology; supports rejecting beta/strain as a minimal state when those fields are absent."
+    },
+    {
+      "doi": "10.1038/s43017-023-00391-3",
+      "url": "https://doi.org/10.1038/s43017-023-00391-3",
+      "use": "Rift initiation/evolution is transient and depends on driving, resistance, weakening and inheritance; no universal transferable onset threshold."
+    },
+    {
+      "doi": "10.1002/2017TC004575",
+      "url": "https://doi.org/10.1002/2017TC004575",
+      "use": "Regional East African Rift example with >10 km extension in the Lokichar Basin; contextual scale only, not an onset threshold or global transfer authority."
+    },
+    {
+      "doi": "10.1016/j.marpetgeo.2020.104715",
+      "url": "https://doi.org/10.1016/j.marpetgeo.2020.104715",
+      "use": "Numerical study demonstrates extension rate and rheological interaction influence rift evolution and delay localization; setting-specific, not a universal delay."
+    }
+  ]
+}

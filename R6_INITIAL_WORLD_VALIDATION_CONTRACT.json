@@ -1,0 +1,122 @@
+{
+  "artifact": "R6_INITIAL_WORLD_VALIDATION_CONTRACT",
+  "schema_version": 1,
+  "status": "DESIGN_ONLY_NOT_EXECUTED",
+  "specification_ref": "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION.json",
+  "generator_contract_ref": "R6_INITIAL_SUPERCONTINENT_GENERATOR_CONTRACT.json",
+  "validation_policy": "FAIL_CLOSED_ON_CONTRACT_VIOLATION; preserve valid UNKNOWN and report PASS_WITH_UNKNOWN rather than imputing",
+  "required_source_checks": {
+    "baseline_head_expected": "592b1651b405363373590092e133bd25569d99a5",
+    "branch_expected": "main",
+    "origin_main_match_required": true,
+    "authority_json_parse": true,
+    "protected_index_blobs": {
+      "ARCANA_EXECUTION_REFERENCE_INDEX.json": "551727fd6ea73dd39a4194bf3aa34dc2a2707836",
+      "ARCANA_EXECUTION_REFERENCE_INDEX.md": "8a8052c5c2ec73f26c598df5aeb3ab50105da085"
+    },
+    "a1_source": {
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "required_interpretation": "REFERENCE_ONLY_NO_NUMERIC_INITIALIZER_OR_ENDPOINT_TARGET"
+    },
+    "preimport_adjudication": {
+      "r6_global_t0_ma": 210,
+      "historical_simulation1_t0_proven": false,
+      "a1_numeric_initial_state_authority": false,
+      "old_trajectory_reused": false
+    }
+  },
+  "grid_invariants": {
+    "grid_id": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+    "shape_lat_lon": [180, 360],
+    "cell_count": 64800,
+    "coordinate_centers_exact": true,
+    "longitude_periodic_seam_consistent": true,
+    "pole_adjacency_consistent": true,
+    "cell_area_formula": "R^2 * delta_lon_rad * (sin(north_lat_rad) - sin(south_lat_rad))",
+    "sum_cell_area_relative_tolerance": 1e-10,
+    "forbidden_spatial_resampling": true
+  },
+  "morphology_invariants": {
+    "area_weighted_land_fraction": [0.25, 0.35],
+    "area_weighted_ocean_fraction": [0.65, 0.75],
+    "land_ocean_complement_exact": true,
+    "dominant_supercontinent_share_of_land": [0.80, 0.95],
+    "dominant_component_crosses_equator": true,
+    "dominant_component_centroid_latitude_deg": [-15, 15],
+    "dominant_component_longitudinal_span_min_deg": 120,
+    "dominant_component_latitudinal_span_min_deg": 60,
+    "detached_major_component_count_max": 5,
+    "connectivity": "Spherical eight-neighbour with periodic longitude and declared polar topology",
+    "all thresholds_are_authorial_design_acceptance_not_paleogeographic_fit": true
+  },
+  "field_invariants": {
+    "land_surface_elevation": {
+      "finite_where_support_claimed": true,
+      "minimum_m": 0,
+      "maximum_m": 8000,
+      "values_on_ocean_forbidden": true,
+      "supported_land_terrain_complete_for_later_drainage_analysis": true,
+      "required_classification": "AUTHORIAL_SYNTHETIC_INITIALIZATION"
+    },
+    "drainage_readiness": {
+      "terrain_topology_and_elevation_support_complete": true,
+      "drainage_network_or_flow_materialized": false,
+      "blanket_depression_filling": false,
+      "closed_basin_semantics_preserved": true
+    },
+    "ocean_bathymetry": {
+      "all_cells_unknown_in_v1": true,
+      "invented_numeric_depths_forbidden": true
+    },
+    "plate_motion": {
+      "status_unknown_until_law_bound": true,
+      "zero_velocity_default_forbidden": true
+    },
+    "deep": {"status_unknown_at_t0": true, "zero_fill_forbidden": true},
+    "climate_hydrology_biology_soil_resources": {
+      "not_materialized_by_initial_generator": true,
+      "unknown_or_outside_scope_explicit": true
+    },
+    "every_field_has_support_authority_uncertainty_provenance": true
+  },
+  "temporal_and_causal_invariants": {
+    "initial_state_count": 1,
+    "time_ma_exact": 210,
+    "forward_older_to_younger_policy": true,
+    "backcast": false,
+    "interpolation": false,
+    "endpoint_fitting": false,
+    "a1_or_r1_r3_numeric_endpoint_constraints_used": false,
+    "physical_evolution_executed": false
+  },
+  "reproducibility_and_package": {
+    "named_independent_rng_streams": true,
+    "runtime_identity_pinned_in_manifest": true,
+    "same_inputs_runtime_seed_byte_deterministic": true,
+    "canonical_payload_hashes_required": true,
+    "payload_outside_ordinary_git": true,
+    "immutable_atomic_promotion_after_validation": true,
+    "target_hardware_benchmark_required": true
+  },
+  "cross_domain_and_governance_invariants": {
+    "deep_initializer_bound": false,
+    "climate_run": false,
+    "hydrology_run": false,
+    "biology_run": false,
+    "physical_soil_created": false,
+    "p7q_reopened": false,
+    "scientific_authority_register_mutated": false,
+    "execution_indexes_mutated": false,
+    "r5_r6_reconciliation": false,
+    "canonical_mutation_by_this_specification": false,
+    "current_state_updated_by_this_specification": false
+  },
+  "result_classes": ["PASS", "PASS_WITH_UNKNOWN", "PARTIAL", "BLOCKED", "FAIL"],
+  "acceptance": {
+    "design_contracts_consistent": true,
+    "world_state_materialized": false,
+    "scientific_execution_authorized": false,
+    "next_action": "R6_INITIAL_WORLD_GENERATOR_IMPLEMENTATION_AND_210MA_MATERIALIZATION"
+  }
+}

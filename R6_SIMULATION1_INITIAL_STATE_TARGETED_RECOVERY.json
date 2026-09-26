@@ -1,0 +1,40 @@
+{
+  "artifact": "R6_SIMULATION1_INITIAL_STATE_TARGETED_RECOVERY",
+  "schema_version": 1,
+  "repository": "siegmound/ARCANA_WORLD",
+  "branch": "main",
+  "audit_head": "592b1651b405363373590092e133bd25569d99a5",
+  "status": "BLOCKED_TARGETED_RECOVERY_REQUIRED",
+  "authorial_initial_world_requirement": "SIMULATION1_PANGAEA_EARTH_LIKE",
+  "candidate_t0_ma": 210.0,
+  "candidate_t0_status": "STRONGLY_SUPPORTED_BY_A1_AND_R1_R3_CONFIG_LINEAGE_BUT_NOT_BOUND_TO_ORIGINAL_SIMULATION1_BOOTSTRAP_CONTRACT",
+  "gaps": [
+    {"id":"SIM1_BOOTSTRAP_IDENTITY","class":"AUTHORITY_RECOVERY","required":"Original Simulation-1 contract/config or immutable run manifest identifying exact t0, initial-world source IDs and their semantics.","why_required":"A1 and R1-R3 converge on 210 Ma but later rebaseline/replay artifacts do not by themselves prove the original Simulation-1 bootstrap identity.","acceptance":"Exact source path/hash, original run/config lineage and explicit age/frame binding; reconcile any difference from 210 Ma."},
+    {"id":"INITIAL_PHYSICAL_GEOGRAPHY","class":"DATA_RECOVERY","required":"Authoritative t0 elevation/topography, shoreline/sea datum, and land/ocean geometry semantics; original ARCANA term for the supercontinent configuration.","why_required":"A1 has a land mask and plate codes but no elevation or shoreline geometry; no authority proves its frame is the canonical initial world or permits calling it historical Earth Pangaea.","acceptance":"Hash-bound t0 data or a validated deterministic generation law with all inputs, native resolution, provenance and uncertainty; preserve UNKNOWN where absent."},
+    {"id":"PLANETARY_ASSUMPTIONS","class":"SEMANTIC_RECOVERY","required":"Explicit Simulation-1 planetary parameter inventory covering radius, gravity, rotation/day, axial/orbital conditions, atmosphere, ocean/sea-level assumptions and unspecified fields.","why_required":"R1's 6371.0088 km parameter is labelled compatibility radius, not physical planet radius; repository evidence does not establish the remaining values.","acceptance":"Source-backed classification as Earth analogue fixed/approximate, ARCANA-specific, derived or unspecified; no generic Earth values substituted."},
+    {"id":"PHYSICAL_CLIMATE_HYDROLOGY_BOOTSTRAP","class":"MODEL_RECOVERY","required":"Original climate/hydrology initializers or a scientifically authorized generation chain from recovered t0 geography and forcing.","why_required":"A1 climate variables are mixed reference fields; P7S is scoped/incomplete, while B6 D3 has no successful materialized snapshots.","acceptance":"Versioned laws, inputs, units, support, runtime, temporal semantics and validation; no R5 runtime dependency or unvalidated interpolation."},
+    {"id":"DEEP_AND_CANONICAL_LAWS","class":"AUTHORITY_RECOVERY","required":"Bind the fundamental Deep t0 basis, canonical physical/Deep laws, parameter versions, event contracts and their R6 adapters.","why_required":"210 Ma Deep reference/calibration and later implementations exist, but a complete original Simulation-1 to R6 law/provenance closure is absent; CHA contracts are scoped and not a general runtime.","acceptance":"Explicit state schema and lineage, validated-law disposition, event applicability/effects/uncertainty and scheduler contract; separate fundamental Deep physics from derived resource/accessibility views."},
+    {"id":"SEED_RUNTIME_AND_DOMAIN_ACTIVATION","class":"PROVENANCE_RECOVERY","required":"Original RNG/seed and runtime lineage or a separately governed R6 ensemble policy; domain-specific biological/flora/fauna/human activation boundaries.","why_required":"Seed 917231 appears in later R1-R3 configs, not verified as the original Simulation-1 seed; later domains cannot be presumed active at global t0.","acceptance":"Reproducible lineage and explicit per-domain activation/UNKNOWN semantics, with no forced zero states."}
+  ],
+  "first_transition": {
+    "status": "NOT_BOUND_NO_EXECUTION",
+    "start_time": "UNBOUND; 210 Ma candidate only",
+    "end_time": "UNBOUND",
+    "domains": ["PHYSICAL_WORLD", "DEEP"],
+    "required_before_wave4": ["canonical_t0_binding", "physical_geography", "planetary_assumptions", "law/runtime/input closure", "seed/ensemble policy", "checkpoint and provenance contract"]
+  },
+  "negative_authorizations": {
+    "scientific_simulation_executed": false,
+    "provider_acquisition": false,
+    "biome4_or_hydrology_run": false,
+    "simulation1_trajectory_reused": false,
+    "r5_runtime_dependency": false,
+    "canonical_package_created": false,
+    "current_state_modified": false,
+    "scientific_authority_register_mutated": false,
+    "execution_indexes_mutated": false
+  },
+  "decision": "BLOCKED_SIMULATION1_INITIAL_STATE_AUTHORITY_AND_PHYSICAL_BOOTSTRAP_GAPS",
+  "verdict": "PASS_R6_WAVE3_TARGETED_RECOVERY_AUDIT__NO_CANONICAL_INITIAL_STATE_MATERIALIZED",
+  "next_action": "R6_SIMULATION1_INITIAL_STATE_TARGETED_RECOVERY_PHYSICAL_GEOGRAPHY_AND_ORIGINAL_BOOTSTRAP_AUTHORITY"
+}

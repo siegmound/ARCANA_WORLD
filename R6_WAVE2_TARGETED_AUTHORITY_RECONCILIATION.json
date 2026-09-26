@@ -1,0 +1,153 @@
+{
+  "artifact": "R6_WAVE2_TARGETED_AUTHORITY_RECONCILIATION",
+  "schema_version": 1,
+  "repository": "siegmound/ARCANA_WORLD",
+  "branch": "main",
+  "head": "592b1651b405363373590092e133bd25569d99a5",
+  "origin_main": "592b1651b405363373590092e133bd25569d99a5",
+  "scope": "TARGETED_R6_BOOTSTRAP_DEPENDENCIES_ONLY",
+  "global_authority_register_rebuilt": false,
+  "entries": [
+    {
+      "authority": "R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE",
+      "path": "docs/strategy/ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md",
+      "sha256": "3343c429279a3a8aa06b98a0925aab8f508ee9e566f9dcfff0b2c6129d1999dd",
+      "status": "CURRENT_VALID",
+      "permits": "Clean forward R6 replay from canonical initial conditions under laws and CHA-1/CHA-2 contracts; preserve UNKNOWN; no unsupported interpolation.",
+      "does_not_permit": "R5 endpoints as canonical initial conditions or scientific execution without bound inputs."
+    },
+    {
+      "authority": "R6_WORLD_HISTORY_ARCHITECTURE_FREEZE",
+      "path": "docs/strategy/R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md",
+      "sha256": "c5a699b5c044f34a026e19af4e717a58b70f8e717e22381078aed2cb6519e3c1",
+      "status": "CURRENT_VALID",
+      "permits": "R6 interfaces, immutable history/provenance roles, and independent authority/simulation/consumer temporal roles.",
+      "does_not_permit": "Run authorization, a numerical integration scheme, or global history completion."
+    },
+    {
+      "authority": "R6_EXISTING_CAPABILITY_RECONCILIATION",
+      "path": "docs/strategy/R6_EXISTING_CAPABILITY_RECONCILIATION_AND_CORE_INTERFACE_SPEC.md",
+      "sha256": "fcebecbe75765d1278a3a69b50272471c4343f73ed037d1f83433c71bc0f459c",
+      "status": "CURRENT_VALID_WITH_NEWER_IMPLEMENTATION",
+      "permits": "Reference-only and bounded adapter opportunities; preserves P7S and B6 ceilings.",
+      "does_not_permit": "Provider values or R5 runtimes as implicit R6 state."
+    },
+    {
+      "authority": "SCIENTIFIC_AUTHORITY_REGISTER",
+      "path": "ARCANA_WORLDSIM_SCIENTIFIC_AUTHORITY_REGISTER.json",
+      "basis_head": "9577f1331e2f9715eb897c8330aedca58ae24f3a",
+      "current_head": "592b1651b405363373590092e133bd25569d99a5",
+      "status": "STALE_INDEX_ONLY",
+      "resolution": "No global rebuild. Source artifacts below were re-read and hashed directly; register status is not promoted by this Wave."
+    },
+    {
+      "authority": "R3.28_HIGH_RESOLUTION_POPULATION_REPLAY_CLOCK",
+      "path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+      "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+      "age_ka_sha256_little_endian_c_order": "1f7e2762a16c47544f708a74d0354050076ff9f7c95b2d0ee7000fec9cbb7839",
+      "age_count": 280,
+      "domain_ka": [200.0, 0.0],
+      "strictly_descending": true,
+      "duplicate_count": 0,
+      "hard_anchor_count": 12,
+      "exact_hard_anchors_ka": [200, 125, 120, 20, 15, 14, 13, 12, 11, 10, 5, 0],
+      "status": "CURRENT_VALID_TIME_CLOCK_ONLY",
+      "permits": "Clock/time-coordinate use after exact source and shape validation.",
+      "does_not_permit": "Parent-material, climate, geography, or population authority transfer into R6."
+    },
+    {
+      "authority": "R3.28_CONTRACT_AND_REPLAY_AUTHORITY",
+      "paths": ["R3_28_HIGH_RESOLUTION_200KA_TO_0_CONTRACT.md", "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_REPLAY_AUTHORITY.json"],
+      "status": "REFERENCE_ONLY",
+      "finding": "The replay is a derived hominin-like population fork on a 90x180 grid; temporal clock is reusable as clock only."
+    },
+    {
+      "authority": "A1_210_TO_0_MA_REFERENCE",
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "size_bytes": 2928319,
+      "status": "REFERENCE_ONLY",
+      "finding": "Contains 11 90x180 land-mask/plate-code frames plus temperature, aridity, forage, population and carrying-capacity variables. It is an A1 historical endpoint/reference bundle, not a complete clean R6 initial world/law/event package."
+    },
+    {
+      "authority": "R3.8_150MA_CONTINUATION_CHECKPOINT",
+      "path": "local_runs/v0_6D1_R3_8/WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.npz",
+      "status": "REFERENCE_ONLY",
+      "finding": "A 150 Ma continuation checkpoint with biological population/trait state; wrong role and temporal domain for canonical R6 bootstrap."
+    },
+    {
+      "authority": "P7S_HISTORICAL_CLIMATE_BINDING_ADJUDICATION",
+      "path": "R5_17_B7_A3F2_P7S_HISTORICAL_CLIMATE_BINDING_ADJUDICATION.json",
+      "sha256": "92568f7e84f250573133ff6406c500800a708cb1ae497ddb35e3c0cb734ca376",
+      "status": "CURRENT_VALID_BOUNDED_PROOF__NOT_GLOBAL_BINDING",
+      "finding": "65-cell bounded climate binding/mask evidence exists; primary Krapp mask semantics and historical parent applicability remain unresolved; historical Ksat proof is not authorized."
+    },
+    {
+      "authority": "P7S_HISTORICAL_DRIVER_MATRIX",
+      "path": "R5_17_B7_A3F2_P7S_HISTORICAL_DRIVER_AUTHORITY_MATRIX.json",
+      "sha256": "4e9ea50c01d5e8154bd3eff966b0cf0e8ca5f93108ad9ba4c20f8be973e0bb2c",
+      "status": "CURRENT_VALID_SCOPED_NEGATIVE_AND_SPARSE_SUPPORT",
+      "finding": "Temperature/precipitation usable at the full HRAB anchor set=false; runoff snapshots recorded only at 0, 12 and 14 ka; shoreline/land mask partial at 120 and 0 ka; interpolation=false."
+    },
+    {
+      "authority": "P7S_HISTORICAL_DRIVER_RECOVERY_ADJUDICATION",
+      "path": "R5_17_B7_A3F2_P7S_HISTORICAL_DRIVER_RECOVERY_ADJUDICATION.json",
+      "sha256": "ddabcef670d81248556c0eceb2ccab4b532d428bcf9a4a58a278c44daf63b9cf",
+      "status": "CURRENT_VALID_BLOCKED",
+      "decision": "BLOCKED_HISTORICAL_DRIVER_AUTHORITY_INCOMPLETE",
+      "verdict": "PASS_INTERNAL_ARCANA_DRIVER_RECOVERY_AUDIT__NO_COMPLETE_HISTORICAL_P7S_FORCING_BOUND",
+      "next_action": "RECOVER_OR_BIND_HISTORICAL_CLIMATE_HYDROLOGY_AND_TOPOGRAPHY_AUTHORITIES_BEFORE_ANY_P7S_HISTORICAL_REPLAY"
+    },
+    {
+      "authority": "B6_D1_HYDROLOGY_REPLAY_CONTRACT",
+      "path": "R5_17_B6_D1_CANONICAL_HYDROLOGY_REPLAY_CONTRACT.json",
+      "sha256": "62f77fa8ca39079f2ceee0e5d35717f47d7fa4b6cfb87c713bdf90051c9b647c",
+      "status": "CURRENT_VALID_CONTRACT_ONLY",
+      "permits": "An exact legacy callable/input/output contract and hash-identified generators.",
+      "does_not_permit": "Runtime reuse without separately recovering the source and validating input authority."
+    },
+    {
+      "authority": "B6_D3_PALEOHYDROLOGY_REPLAY",
+      "path": "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json",
+      "sha256": "9592be5e4e6e37f21020c9fbebe8a406a3cb4b717e812f5f2413977b60676167",
+      "status": "BLOCKED",
+      "finding": "BLOCKED_R517_B6_D3_EXECUTION_ERROR; snapshot_results=[]; paleohydrology_materialized=false; freshwater_support_materialized=false. Reconstructed files in the worktree are not promoted as successful D3 outputs."
+    },
+    {
+      "authority": "B6_D4_FRESHWATER_ACCESS_RESULT",
+      "path": "R5_17_B6_D4_FRESHWATER_ACCESS_AND_RELIABILITY.json",
+      "sha256": "de6c065ad31b9e0b9405395d62c61f8bbf2ae8e22c39c5e80bbfe7b846940be2",
+      "status": "CURRENT_VALID_SCOPED_DERIVED_RESULT",
+      "finding": "D4 reports a bounded derived freshwater access/reliability result. It is not the missing D3 physical hydrology history and is not consumed as an R6 state in this Wave."
+    },
+    {
+      "authority": "B6_D2C1_SHORELINE_LAND_MASK_ADAPTER",
+      "path": "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json",
+      "sha256": "5e0aae416b1d6c8ce80900c5bb158a71e958c080df51c787f3d896c45be93aae",
+      "status": "CURRENT_VALID_SCOPED_ADAPTER",
+      "decision": "EXPOSE_EFFECTIVE_LAND_MASK_AS_COAST_STATE_LAND_MASK",
+      "limitation": "Does not constitute global dated shoreline history or resolve climate/hydrology temporal gaps."
+    },
+    {
+      "authority": "CHA1_EVENT_CONTRACT",
+      "path": "CANONICAL_CHA1_HIGH_RES_EVENT_BRIDGE_CONTRACT_v0_6D1_R3_10.md",
+      "sha256": "87a6c23e04eea5584ecdb2a21a73755ad21a45304d4562e06e37dc9dec3032ef",
+      "status": "CURRENT_VALID_SCOPED_EVENT_CONTRACT",
+      "temporal_domain": "66.0 Ma pre-impact to 65.5 Ma post-event bridge",
+      "limitation": "R3.10 is a rebased event implementation, not a general R6 event engine or bootstrap package."
+    },
+    {
+      "authority": "CHA2_EVENT_CONTRACT",
+      "path": "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md",
+      "sha256": "f2d7b4040871ea40ba2fc4cd9afa4cac9dd5e09246f862305ea76e887046d14b",
+      "status": "CURRENT_VALID_SCOPED_EVENT_CONTRACT",
+      "temporal_domain": "Younger-Dryas-class disruption; nested 15-11 ka hydrological hazard window",
+      "limitation": "R3.20 hazard diagnostics are not themselves a universal R6 event transition/runtime."
+    }
+  ],
+  "canonical_initial_state_determination": "NO_QUALIFYING_COMPLETE_CANONICAL_INITIAL_PACKAGE_IDENTIFIED_IN_SCOPED_AUDIT",
+  "historical_state_execution_authorized": false,
+  "provider_acquisition": false,
+  "r5_runtime_dependency": false,
+  "scientific_authority_register_mutated": false
+}

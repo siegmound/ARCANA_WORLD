@@ -1,0 +1,25 @@
+{
+  "artifact": "R6_FIRST_INTERVAL_DT_LIMIT_REGISTER",
+  "schema": "R6_FIRST_INTERVAL_DT_LIMIT_REGISTER_V1",
+  "t0_ma": 210.0,
+  "limits": [
+    {"id": "RIFT_EVENT_GUARD", "active": true, "value": 27123.405156307464, "units": "years", "status": "CONDITIONAL_UPPER_BOUND_NOT_LEGAL_DT", "authority": "AUTHORIAL_ARCANA_MODEL_THRESHOLD_ENVELOPE_PLUS_CANONICAL_T0_KINEMATICS", "rationale": "Earliest 5 km model activation at edge opening for pair 1:3, only with fixed t0 Euler rates"},
+    {"id": "MOTION_SEGMENT_VALIDITY", "active": true, "value": null, "units": "years", "status": "ONE_FIRST_SUBTHRESHOLD_STEP_ONLY_NO_NUMERIC_DURATION", "authority": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_AND_RIFT_GUARD_CONTRACTS", "rationale": "P03 renewal remains unbound; no indefinite extrapolation"},
+    {"id": "MAX_ANGULAR_ROTATION", "active": false, "value": null, "units": "radians", "status": "NO_ODE_STABILITY_LIMIT_FOR_EXACT_ROTATION; TOPOLOGY_POLICY_UNBOUND", "authority": "NUMERICAL_METHOD_CONTRACT", "rationale": "Analytic constant-Euler rotation is not an explicit ODE integrator; topology/event diagnostics may still require a bound"},
+    {"id": "MAX_LINEAR_DISPLACEMENT", "active": true, "value": null, "units": "metres", "status": "UNBOUND", "authority": "NONE_BOUND", "rationale": "No validated feature fraction or topology tolerance; do not infer from the 1-degree raster"},
+    {"id": "TOPOLOGY_CONTACT_GUARD", "active": true, "value": null, "units": "years", "status": "BLOCKED_NO_POSITIVE_PARTITION_VALIDITY_HORIZON", "authority": "R6_TOPOLOGY/CONTACT_TRANSITION_AUTHORITY_MISSING", "rationale": "Shared plate edges have convergent/divergent motion; no governed contact, closure, gap, overlap, or boundary reconstruction rule"},
+    {"id": "EVENT_LOCALIZATION", "active": true, "value": null, "units": "years", "status": "PRODUCTION_TOLERANCE_UNBOUND", "authority": "NUMERICAL_METHOD_CONTRACT_PENDING", "rationale": "Threshold time has closed-form evaluation for constant rate; acceptance tolerance/rejection policy is not bound"},
+    {"id": "OUTPUT_CHECKPOINT_LIMIT", "active": false, "value": null, "units": "years", "status": "NOT_AN_INTEGRATION_LIMIT", "authority": "R6_CHECKPOINT_AND_WORLD_HISTORY_ARCHITECTURE", "rationale": "Restart checkpoint and query snapshot cadence are separate from integration dt"}
+  ],
+  "derivation": {
+    "rule": "dt_first = min(all active, valid, finite, positive limits)",
+    "conditional_finite_limit_years": 27123.405156307464,
+    "blocking_limit": "TOPOLOGY_CONTACT_GUARD",
+    "dt_first_years": null,
+    "active_limiter": "TOPOLOGY_CONTACT_GUARD_UNBOUND",
+    "selected_operational_dt": false,
+    "steps_per_myr": null,
+    "constant_dt_210_myr_step_count": null
+  },
+  "never_cross_or_silently_repair_topology_event": true
+}

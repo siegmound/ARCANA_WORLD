@@ -1,0 +1,50 @@
+{
+  "artifact": "R6_SIMULATION1_BOOTSTRAP_AUTHORITY_RECOVERY",
+  "schema_version": 1,
+  "repository": "siegmound/ARCANA_WORLD",
+  "branch": "main",
+  "audit_head": "592b1651b405363373590092e133bd25569d99a5",
+  "git_history_search": {
+    "performed": true,
+    "refs_examined": ["main", "origin/main", "origin/r5-17-human-support-bridge", "origin/tmp-r517-b6", "origin/tmp-r517-b6-atomic", "origin/tmp-r517-b6-atomic2", "origin/tmp-r517-b6-final"],
+    "tag_count": 0,
+    "reachable_commit_count": 142,
+    "unreachable_objects_reported_by_git_fsck": 0,
+    "baseline_import_root": {"commit":"15ef285e554658125744056ec9266d9b0ed4c0ba","date":"2026-09-03T19:44:06+02:00","message":"ARCANA WorldSim baseline through R5"},
+    "finding": "The repository's reachable history begins with a root import that already includes both A1 NPZ artifacts and the R1/R3 code/configuration. No earlier generator/bootstrap contract can be recovered from the Git object history available to these refs."
+  },
+  "bootstrap_reconstruction_level": "STRONG_INFERRED_RECONSTRUCTION",
+  "canonical_bootstrap_authority_satisfied": false,
+  "original_simulation1_bootstrap_contract_found": false,
+  "original_simulation1_physical_start": {"candidate_ma":210.0,"status":"STRONGLY_INDICATED_NOT_PROVEN_AS_ORIGINAL_SIM1_T0"},
+  "evidence_graph": [
+    {"id":"A1_R3_PAYLOAD","type":"INPUT_ARTIFACT","path":"references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz","sha256":"9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f","bytes":2928319,"git_first_recorded_in":"15ef285e554658125744056ec9266d9b0ed4c0ba","producer":"UNKNOWN_NOT_PRESENT_IN_REACHABLE_GIT_HISTORY","authentication":"SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3.json and PACKAGE_MANIFEST_v0_6D1_R3.json record matching path/hash/bytes. The aggregate SIMULATION_RESULTS manifest does not list this A1 payload directly.","semantics":"11 reference frames at 210,180,150,140,130,120,90,66,60,30,0 Ma; 90x180 grid; mixed land/plate, climate, forage, population and carrying-capacity fields."},
+    {"id":"A1_R1_PHYSICAL_REFERENCE","type":"INPUT_ARTIFACT","path":"references/v0_6D1_R1/A1_WORLD1_210Ma_REFERENCE.npz","sha256":"9c0614f0f11e4d7b50ea53d3b03df6defbd73e40ab640fb7fdca7e86b6760ccc","bytes":243620,"git_first_recorded_in":"15ef285e554658125744056ec9266d9b0ed4c0ba","producer":"UNKNOWN_NOT_PRESENT_IN_REACHABLE_GIT_HISTORY","authentication":"REFERENCE_HASHES_v0_6D1_R1.json records matching identity."},
+    {"id":"R1_REBASELINE_GENERATOR","type":"GENERATOR","path":"scripts/materialize_rebaseline_210ma_v0_6D1_R1.py","sha256":"b2662c6d0ceebbeb946ebdfb3ab062038fe7a024cd67a591c6998c30d9414951","role":"R1 deterministic biological common-state materializer; loads R1 A1, Deep reference, D1 species metadata, coupling/calibration/config; does not generate A1 geography."},
+    {"id":"R1_REBASELINE_CONFIG","type":"CONFIG","path":"configs/world1_rebaseline_210ma_v0_6D1_R1.json","sha256":"dc96cb88aad59c21262bcc186f7ec5105dbe634d61bb17f68d90112de5b3a117","role":"R1 candidate initialization config at age_ma=210; compatibility_radius_km is a spatial compatibility parameter, not a physical planet-radius assertion; seed=917231 belongs to this later paired rebaseline."},
+    {"id":"R1_GENERATED_COMMON_STATE","type":"DERIVED_STATE","path":"outputs/v0_6D1_R1/WORLD1_210Ma_REBASELINE_COMMON_STATE_v0_6D1_R1.npz","sha256":"51115b9144e33603340680758aaca835211403f8875a09306468c50d96bdc116","role":"R1 candidate biological common state. Later H0/HX runtime input; not original Sim1 physical bootstrap.","manifest_records":"PACKAGE_MANIFEST_v0_6D1_R3.json and SIMULATION_RESULTS/MANIFEST.json/.csv record this exact hash/size; aggregate catalogue status is pending repository adjudication/content inspection."},
+    {"id":"R2_FIRST_SURVIVING_EVOLUTION_CONSUMER","type":"CONSUMER","path":"src/rebased_natural_control_runtime_v0_6D1_R2.py","sha256":"2a56552a0121c9a66d42357887bc8ecf18bf90f0063a7e9face002a21b205cb0","role":"Later H0 210->180 Ma biological pilot. Selects A1 210/180 land and plate frames with a topology switch and interpolates selected environmental arrays; not the original Simulation-1 physical-world consumer."},
+    {"id":"R3_ENDPOINT_EVENT_RECONSTRUCTION","type":"LATER_DERIVED_PROVIDER","path":"src/d3_paleogeographic_history_v0_6_3D3_2C.py","sha256":"5831f41ba9cd7bc05be0cd25f8cd84e895c6c9fa453bde7634d7b27c82394730","role":"Derives event timing for land transitions from A1 endpoint land/plate codes (scoped adjacent brackets); not independent tectonic observations or A1 producer."},
+    {"id":"R3_LATE_CENOZOIC_ADAPTER","type":"LATER_CONSUMER","path":"src/arcana_worldsim/late_cenozoic/paleogeography.py","role":"30->0 Ma endpoint-constrained terrestrial-support reconstruction; explicitly derived, not a 210 Ma generator or global plate-tectonic process."},
+    {"id":"EARLIER_SIM1_EXECUTION","type":"MISSING_PROVENANCE_EDGE","path":null,"role":"Original Simulation-1 bootstrap executable, its exact t0 consumer, input source and governing manifest were not present in reachable history; R0 records the original D1/D2 solver/package bytes as unrecovered."}
+  ],
+  "verified_relationships": [
+    "A1 R1 210 Ma arrays exactly equal the first age frame of A1 R3 for the 11 shared physical/environmental keys checked (age, coordinates, land_mask, plate_code, temperature, aridity and forage arrays). This proves frame equality, not provenance or original Sim1 authority.",
+    "R1 materializer consumes A1 R1 directly to build a later rebaseline; it does not prove that original Simulation 1 loaded A1 R3 or A1 R1 as its initialization.",
+    "R2/R3 later code evolves biological state against selected or endpoint-derived A1 support; no recovered code establishes a physical plate-motion solver."
+  ],
+  "pangaea_classification": "UNRESOLVED_ARCANA_A1_SUPERCONTINENT_LIKE_REFERENCE; no repository source found proving literal terrestrial Pangaea, Earth paleogeography transformed into ARCANA, or a specified synthetic-generation method.",
+  "physical_evolution_mode": {"original_simulation1":"UNKNOWN_ORIGINAL_SOLVER_NOT_RECOVERED","later_R2_R3":"PRECOMPUTED_ENDPOINT_BOUNDARY_TRAJECTORY_WITH_STEPWISE_OR_DERIVED_TRANSITION_RULES; not a tectonic process simulation"},
+  "a1_decision": {"initial_frame":"REFERENCE_ONLY","later_trajectory":"REFERENCE_ONLY_NOT_R6_HISTORY","selected_fields_authorized_for_R6":"none at this recovery stage; retain hashes/observed metadata as evidence only"},
+  "historical_removed_or_superseded_artifacts": {"search_performed":true,"matching_deleted_bootstrap_contracts_found_in_reachable_history":[],"historical_source_boundary":"Pre-import source history is absent from Git; Wave-3A did not restore any historical files."},
+  "manifest_findings": [
+    {"path":"references/v0_6D1_R3/SOURCE_AUTHORITY_MANIFEST_v0_6D1_R3.json","sha256":"2d6743714d742a611c60288db2d95d6e46ff43439febd72f016acc8bd8ec4840","finding":"records A1 R3 payload path/hash/bytes and D3.2C source; does not identify A1 producer or original Simulation-1 bootstrap."},
+    {"path":"PACKAGE_MANIFEST_v0_6D1_R3.json","sha256":"398bf88c963d131bda5df6b406865511553f3cf5321560a3e66e1f898a59096f","finding":"records A1 R3 and R1 common-state paths, bytes and SHA256; package membership authenticates identity, not original Sim1 generation or canonical physical semantics."},
+    {"path":"references/v0_6D1_R1/REFERENCE_HASHES_v0_6D1_R1.json","sha256":"25b238fbd779f4ff20bd2cbfb7ad741b164183f7348106af5fab82275c8d01f1","finding":"records A1 R1 and Deep R1 input hashes; does not identify their upstream generator."},
+    {"path":"SIMULATION_RESULTS/MANIFEST.json; SIMULATION_RESULTS/MANIFEST.csv","sha256":"MANIFEST.json 62beed857b446239b3af09b88a6cce4c0913869e8f978e52bb316ad357375d62; MANIFEST.csv 13df0ca962f70ab53526db58c77ba20c3a11d3e9bcbcb7230090c4fc9e4e99b9","finding":"record the R1 common-state output with matching size/hash and CopyVerified=true, while AuthorityStatus and SemanticStatus remain PENDING; do not list A1 R3 directly."},
+    {"path":"SIMULATION_RESULTS/SEMANTIC_CATALOG.md","sha256":"2dd1f29e4a65094a325693475ec241c357dbeb3ba561a1d94a20793b3e91366a","finding":"bounded to four other payloads and does not semantically adjudicate A1 or R1 common state."}
+  ],
+  "decision": "CANDIDATE_R6_GLOBAL_T0_210MA_AUTHORITY_INCOMPLETE",
+  "verdict": "PASS_R6_WAVE3A_GIT_AND_A1_PROVENANCE_RECOVERY__ORIGINAL_BOOTSTRAP_NOT_ESTABLISHED",
+  "next_action": "RECOVER_PRE_IMPORT_SIMULATION1_BOOTSTRAP_ARCHIVE_OR_SOURCE_MANIFEST_AND_ORIGINAL_PHYSICAL_GEOGRAPHY_GENERATOR"
+}

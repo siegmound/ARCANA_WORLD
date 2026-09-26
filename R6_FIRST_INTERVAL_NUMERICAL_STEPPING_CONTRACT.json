@@ -1,0 +1,143 @@
+{
+  "artifact": "R6_FIRST_INTERVAL_NUMERICAL_STEPPING_CONTRACT",
+  "schema": "R6_FIRST_INTERVAL_NUMERICAL_STEPPING_CONTRACT_V1",
+  "status": "BLOCKED_TOPOLOGY_CONTACT_AND_PARTITION_EVOLUTION_SEMANTICS",
+  "repository_baseline": {
+    "branch": "main",
+    "head": "592b1651b405363373590092e133bd25569d99a5",
+    "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+  },
+  "fixed_inputs": {
+    "t0_ma": 210.0,
+    "canonical_t0_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "kinematics_identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "rift_law": "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING.json",
+    "rift_guard_elapsed_years_with_fixed_t0_euler": 27123.405156307464,
+    "rift_guard_limiting_pair": "1:3"
+  },
+  "advancement_representation": {
+    "master_state": "SPHERICAL_VECTOR_TOPOLOGICAL_PARTITION",
+    "raster_motion": "FORBIDDEN",
+    "point_or_feature_motion": "CONSTANT_EULER_EXACT_FINITE_ROTATION",
+    "formula": "R(dt)=exp([Omega]x*dt); q=(cos(|Omega|dt/2), sin(|Omega|dt/2)*Omega/|Omega|)",
+    "ode_stability_limit": "NONE_FOR_CONSTANT_EULER_POINT_ROTATION; map is evaluated analytically",
+    "full_partition_transition": "UNRESOLVED; independent rigid rotations do not define shared-boundary/contact/gap/overlap treatment"
+  },
+  "solver_selection": {
+    "point_rotation_primitive": "ARCANA_INTERNAL_FINITE_ROTATION_KERNEL",
+    "production_geometry_topology_backend": "UNBOUND",
+    "pygplates_installed_in_inspected_runtime": false,
+    "pygplates_bound_or_validated_for_r6": false,
+    "kernel_is_sufficient_for_partition_transition": false
+  },
+  "t0_geometry_diagnostics": {
+    "face_count": 64800,
+    "boundary_segment_count": 1983,
+    "boundary_segment_length_m": {
+      "minimum": 28779.36473438953,
+      "p01": 28779.36473438953,
+      "p05": 43447.319170110444,
+      "p10": 52202.85598568349,
+      "p25": 78626.6866639082,
+      "median": 104489.05203672223,
+      "p75": 111194.92664455874,
+      "maximum": 111194.92664455874
+    },
+    "conditional_motion_at_rift_horizon_only": {
+      "maximum_plate_rotation_rad": 0.0006581240021018095,
+      "maximum_plate_rotation_deg": 0.037707727716692604,
+      "maximum_single_plate_surface_path_m": 4192.908017390628,
+      "maximum_relative_surface_path_m": 6032.0876845505745,
+      "authority": "DERIVED_T0_DIAGNOSTIC_ONLY; NO_ANGULAR_OR_LINEAR_STEP_CAP_AUTHORIZED"
+    },
+    "support_limit": "Grid-edge segment statistics describe the constructed 1-degree support, not subgrid geological boundary resolution"
+  },
+  "limits": {
+    "rift_event_horizon": {
+      "value_years": 27123.405156307464,
+      "status": "CONDITIONAL_UPPER_BOUND_WITH_FIXED_T0_EULER_ONLY",
+      "not_a_legal_dt_by_itself": true
+    },
+    "motion_segment_validity": {
+      "status": "ONE_FIRST_SUBTHRESHOLD_STEP_ONLY; NO_NUMERIC_DURATION",
+      "value_years": null
+    },
+    "maximum_angular_rotation": {
+      "status": "NO_ANALYTIC_STABILITY_LIMIT; TOPOLOGY_POLICY_STILL_REQUIRED",
+      "value_rad": null
+    },
+    "maximum_linear_displacement": {
+      "status": "UNBOUND; NO_AUTHORIZED_FEATURE-FRACTION_OR_TOPOLOGY_TOLERANCE",
+      "value_m": null
+    },
+    "topology_contact_guard": {
+      "status": "BLOCKED_NO_POSITIVE_INTERVAL_PROVEN",
+      "value_years": null,
+      "reason": "Existing shared interfaces have convergent and divergent relative motion, but no law/backend resolves how rigidly moved neighboring plate polygons retain a valid complete partition, detect contact/crossing, or represent opening without inventing oceanic domain. A smaller positive dt does not itself define this missing transition."
+    },
+    "event_localization": {
+      "status": "UNBOUND_PRODUCTION_TOLERANCE",
+      "value_years": null,
+      "fixture_kernel": "Exact constant-rate threshold time is algebraically localizable; production event acceptance tolerance is absent"
+    },
+    "output_checkpoint": {
+      "status": "NOT_A_PHYSICAL_DT_LIMIT; OUTPUT_POLICY_CAN_BE_BOUND_AT_ACCEPTED_CHECKPOINT",
+      "value_years": null
+    }
+  },
+  "dt_derivation": {
+    "required_rule": "minimum of active, valid, positive limits",
+    "active_finite_conditional_limit": "RIFT_EVENT_GUARD",
+    "blocking_non_numeric_limit": "TOPOLOGY_CONTACT_GUARD",
+    "dt_first_years": null,
+    "active_limiter": "TOPOLOGY_CONTACT_GUARD_UNBOUND",
+    "first_interval_maximum_horizon_years": null,
+    "steps_per_myr": null,
+    "constant_dt_210myr_step_count": null,
+    "explanation": "No positive dt can be certified until a shared-boundary/topology/contact transition rule and its acceptance checks exist. Do not substitute the conditional rift horizon for that rule."
+  },
+  "other_event_guards": {
+    "rift": "Conditional positive model horizon; no event executed",
+    "convergent_adjacent_pair_means": 16,
+    "collision_or_contact_transition": "UNRESOLVED; contact already exists at t0 and collision law/geometry semantics are not bound",
+    "plate_overlap_or_gap": "MUST_REJECT_OR_STOP; no repair/reconnection is authorized",
+    "orogeny": "NOT_EXECUTED; no applicable first-step law",
+    "topology_reconnection": "NOT_AUTHORIZED"
+  },
+  "future_scheduler_contract": {
+    "after_each_accepted_step": ["validate spherical geometry and complete partition", "recompute boundary geometry and relative drivers", "update only law-authorized rift progress", "recompute all event guards", "select the next dt from current active limits"],
+    "reject_step_on": ["nonfinite coordinates", "invalid spherical face", "unintended gap/overlap", "unresolved contact/crossing", "event threshold crossed without localized event", "restart mismatch"],
+    "no_silent_topology_repair": true
+  },
+  "state_and_output_semantics": {
+    "if_later_authorized_evolved_fields": ["vector plate geometry", "finite-rotation state", "derived boundary geometry", "derived 1-degree plate/land raster where land support permits", "cumulative rift-progress", "event diagnostics"],
+    "held_fixed_or_outside_scope": ["topographic uplift", "orogeny", "erosion", "bathymetry", "climate", "hydrology", "Deep", "biology", "new oceanic crust"],
+    "land_identity": "Preserve inherited land/crust identity; raster occupancy is derived only after valid topology is resolved",
+    "checkpoint_content_if_later_authorized": ["time and direction", "branch/history identity", "plate vector geometry/topology and lineage", "Euler rates and validity", "per-boundary-edge rift progress", "event census and remaining guards", "law and parameter identities", "solver/runtime and algorithm identity", "seed lineage", "validation results", "input/output payload hashes", "uncertainty/support/provenance"],
+    "historical_snapshot_content_if_later_authorized": ["queryable plate geometry/identity", "derived land/ocean occupancy where supported", "supported rift/process state", "major authorized events", "uncertainty/support/provenance"],
+    "checkpoint_vs_snapshot": "Distinct artifacts. Each accepted global-base physical checkpoint should emit a separately queryable snapshot; solver internals belong only in restart checkpoint, not history snapshot. Neither is created in this blocked task.",
+    "rasterization": "After each accepted physical checkpoint, deterministic derived 1-degree materialization; never drives master geometry or claims finer support"
+  },
+  "performance_estimate": {
+    "work_scale": "O(12 plate transforms + 64800 faces / about 324000 closed-ring coordinate records)",
+    "runtime_class": "CPU-light geometric transform expected; NOT benchmarked",
+    "working_memory_class": "single-digit to low tens of MiB for float64 point arrays; NOT benchmarked",
+    "input_vector_payload_bytes": 5681184,
+    "checkpoint_size": "same order as vector payload plus process and provenance state; NOT measured"
+  },
+  "authorization": {
+    "first_interval_executable": false,
+    "execution_contract_created": false,
+    "forward_evolution_executed": false,
+    "canonical_t0_changed": false,
+    "canonical_kinematics_changed": false,
+    "vector_partition_changed": false,
+    "rift_progress_advanced": false,
+    "event_created": false,
+    "plate_split": false
+  },
+  "decision": "TOPOLOGY_CONTACT_GUARD_UNBOUND",
+  "verdict": "PASS_EXACT_ROTATION_FIXTURE__BLOCKED_SHARED_BOUNDARY_TRANSITION",
+  "next_action": "R6_SHARED_BOUNDARY_MOTION_AND_TOPOLOGY_CONTACT_RULE_BINDING"
+}

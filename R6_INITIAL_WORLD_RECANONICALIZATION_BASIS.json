@@ -1,0 +1,108 @@
+{
+  "artifact": "R6_INITIAL_WORLD_RECANONICALIZATION_BASIS",
+  "schema_version": 1,
+  "repository": "siegmound/ARCANA_WORLD",
+  "branch": "main",
+  "audit_head": "592b1651b405363373590092e133bd25569d99a5",
+  "selected_route": "R6_RECANONICALIZATION_REQUIRED",
+  "simulation1_preimport_bootstrap_provenance": "IRRECOVERABLE_WITH_AVAILABLE_LOCAL_EVIDENCE",
+  "categories": {
+    "recovered_historical_facts": [
+      {
+        "fact": "An early ARCANA World Simulator v0.1 / World 1 / HYBRID-1 source package is preserved locally.",
+        "evidence": "ARCANA_WorldSim_v0_1_Tectonics/README.md and source/config/runner at filesystem-observed 2026-08-24; source hashes are recorded in R6_WAVE3B_PREIMPORT_RECOVERY_ADJUDICATION.json.",
+        "qualification": "Its identity as the formal Simulation1 bootstrap is not evidenced."
+      },
+      {
+        "fact": "That v0.1 source explicitly describes schematic Pangea at 210 Ma and configures snapshots beginning at 210 Ma.",
+        "evidence": "README.md, configs/hybrid1.yaml, src/arcana_worldsim/tectonics/scenario_hybrid1.py, and outputs/hybrid1/210Ma/plates.geojson.",
+        "qualification": "Recovered for the HYBRID-1 prototype; not an authenticated original Simulation1 t0 or literal Earth Pangaea reconstruction."
+      },
+      {
+        "fact": "The v0.1 runner creates a HYBRID-1 scenario from hard-coded plate geometry/poses and exports age snapshots; it does not read the A1 NPZ.",
+        "evidence": "scripts/run_hybrid1.py and scenario_hybrid1.py.",
+        "qualification": "The producer of FULL_A1_REFERENCE_210_0Ma.npz and the original Simulation1 consumer remain unknown."
+      },
+      {
+        "fact": "The v0.1 config records seed 917231; initial plate geometry is hard-coded and the seed's role in the formal Simulation1 is unproven.",
+        "evidence": "configs/hybrid1.yaml, runner, and scenario source.",
+        "qualification": "Do not copy this seed into R6 without a separate decision."
+      },
+      {
+        "fact": "In the HYBRID-1 prototype lineage, v0.1 records mountain building as events rather than elevation; v0.3 later adds geological/elevation fields for a 0 Ma geology state.",
+        "evidence": "v0.1 README; v0.3 README, geology model/config, and world_state.py.",
+        "qualification": "Does not establish the original Simulation1 topography requirement or exact t0 topography."
+      },
+      {
+        "fact": "No fundamental Deep initial state or law was recovered from the v0.1-v0.4 bootstrap sources. Later v0.5.5B/C Deep-related fields are resource/accessibility outputs.",
+        "evidence": "Scoped text/source search across v0.1-v0.5.5F; later code and changelog identify Deep georesource/accessibility fields.",
+        "qualification": "These downstream fields do not recover a Simulation1 Deep initializer."
+      },
+      {
+        "fact": "A1 starts at 210 Ma on an observed 90x180 / 2-degree grid, but its producer and original Simulation1 consumer remain missing.",
+        "evidence": "A1 inventory and R6_SIMULATION1_BOOTSTRAP_AUTHORITY_RECOVERY.json at the audit baseline.",
+        "qualification": "A1 remains reference/design evidence only; its later trajectory is not R6 history."
+      },
+      {
+        "fact": "The inspected old Git backup contains only two September 3, 2026 initial-import commits and no pre-import history.",
+        "evidence": "ARCANA_WORLD_OLD_GIT_HISTORY_BACKUP refs/log/count and read-only git log.",
+        "qualification": "The related v0.1 source exists outside that Git history, but no exact formal Simulation1 identity edge exists."
+      }
+    ],
+    "authorial_requirements": [
+      "R6 begins from an Earth-like early world with Pangaea/supercontinent-like initial geography.",
+      "R6 preserves the broad initial-world concept associated with Simulation1, without requiring a bitwise copy of its file or resulting trajectory.",
+      "R6 evolves forward causally under canonical ARCANA physics and Deep, with later CHA-1/CHA-2 events and emergent R6 history.",
+      "The old Simulation1 resulting trajectory is not the R6 target.",
+      "R5 is not an R6 runtime dependency."
+    ],
+    "new_r6_scientific_specification_required": [
+      {
+        "field": "exact_t0_authority",
+        "status": "ADJUDICATED_AS_NEW_R6_DESIGN_DECISION",
+        "value": "210 Ma",
+        "distinction": "Not recovered as the formal original Simulation1 canonical t0."
+      },
+      {"field": "initial_supercontinent_geometry_and_provenance", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "plate_semantics_and_spatial_support", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "topography_and_elevation_initialization", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "sea_level_and_datum", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "planetary_radius_gravity_rotation_day_tilt_orbit_atmosphere_ocean_fraction", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "initial_climate_method", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "initial_hydrology_method", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "fundamental_deep_initial_state_and_laws", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "forward_physical_evolution_method", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "seed_and_ensemble_policy", "status": "REQUIRED_UNSPECIFIED"},
+      {"field": "runtime_and_dependency_contract", "status": "REQUIRED_UNSPECIFIED"}
+    ]
+  },
+  "t0_adjudication": {
+    "r6_global_t0_ma": 210,
+    "status": "FROZEN_AS_NEW_R6_CANONICAL_DESIGN_DECISION",
+    "historical_simulation1_t0_proven": false,
+    "r6_physical_t0_specified": false,
+    "basis": [
+      "fixed authorial requirement for approximately the Simulation1 era",
+      "early direct HYBRID-1 source begins with schematic Pangea at 210 Ma",
+      "A1 first timestamp is 210 Ma",
+      "later R1-R3 starts converge on 210 Ma",
+      "existing R6 world-history architecture"
+    ]
+  },
+  "a1_policy": {
+    "role": "REFERENCE_AND_DESIGN_EVIDENCE_ONLY",
+    "numeric_initial_state_authority": false,
+    "later_trajectory_reuse": false,
+    "spatial_upsampling_authorized": false
+  },
+  "next_action": "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION_AND_SUPERCONTINENT_GENERATOR_CONTRACT",
+  "simulation_executed": false,
+  "provider_acquisition_executed": false,
+  "r5_runtime_dependency": false,
+  "scientific_authority_register_mutated": false,
+  "current_state_modified": false,
+  "execution_indexes_mutated": false,
+  "staging": false,
+  "commit": false,
+  "push": false
+}

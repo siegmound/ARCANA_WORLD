@@ -1,0 +1,127 @@
+{
+  "artifact": "R6_INITIAL_SUPERCONTINENT_GENERATOR_CONTRACT",
+  "schema_version": 1,
+  "status": "DESIGN_ONLY_NOT_EXECUTED",
+  "specification_ref": "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION.json",
+  "generator_id": "ARCANA_R6_SUPERCONTINENT_GENERATOR_V1",
+  "purpose": "Create one deterministic, uncertainty-bearing synthetic physical-geography state at R6 t0=210 Ma; no trajectory or later-domain state.",
+  "authority_inputs": {
+    "required": [
+      "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION.json",
+      "R6_INITIAL_WORLD_VALIDATION_CONTRACT.json",
+      "versioned generator configuration",
+      "versioned runtime identity",
+      "seed lineage manifest"
+    ],
+    "reference_only": [
+      "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "R6_WAVE3B_PREIMPORT_RECOVERY_ADJUDICATION.json",
+      "local HYBRID-1 v0.1 source and 210 Ma output"
+    ],
+    "forbidden_as_numeric_initializer": [
+      "A1 mixed 210 Ma frame",
+      "later R1-R3 endpoint/trajectory arrays",
+      "HYBRID-1 hard-coded polygon geometry or seed 917231",
+      "R5/R5.17 physical/soil/biological state"
+    ]
+  },
+  "provider_suitability": {
+    "decision_order": [
+      "REUSE_CANONICAL_ARCANA",
+      "REUSE_ALREADY_VALIDATED_SPECIALIST_PROVIDER",
+      "AUDIT_NEW_SPECIALIST_PROVIDER",
+      "MINIMUM_CUSTOM_ARCANA"
+    ],
+    "result": "MINIMUM_CUSTOM_ARCANA_FOR_SYNTHETIC_T0_GEOMETRY_ONLY",
+    "reason": "Repository archaeology found no canonical physical-world generator or validated specialist that supplies this exact authorial synthetic t0 state. A1 is reference data, not an engine or initializer; the v0.1 prototype is not a governed physical process model.",
+    "external_provider_selected": false,
+    "provider_acquisition_authorized": false
+  },
+  "generation_method": {
+    "class": "DETERMINISTIC_SPHERICAL_PLATE_MOSAIC_WITH_CLUSTERED_CONTINENTAL_BLOCKS_AND_MULTISCALE_RELIEF",
+    "algorithm_outline": [
+      "Construct spherical plate domains by assigning each unit-sphere cell center to the nearest deterministically seeded plate nucleus (maximum dot product/spherical Voronoi partition), with 12–18 plates and explicit longitude-wrap/pole-safe adjacency.",
+      "Place 4–8 continental cratonic blocks under a deterministic clustered-supercontinent constraint; sutured block boundaries and any designed internal orogenic provinces are explicit categorical features.",
+      "Construct coastlines from bounded multiscale spherical fields at native 1-degree generation support; use no raster upsampling and suppress unsupported cell-scale speckle.",
+      "Solve the sea-level threshold against the specified land-area envelope and connected-supercontinent constraints; record the resulting threshold and diagnostics as authorial parameters, not a physical ocean-volume solution.",
+      "Generate land elevation from a versioned bounded hypsometric field conditioned on categorical province/boundary classes; use independent named random streams and emit uncertainty/provenance per field.",
+      "Require complete supported land elevation/topology suitable for a later drainage analysis; preserve plausible closed basins and do not blanket-fill depressions or materialize a drainage network.",
+      "Emit UNKNOWN plate velocities, ocean bathymetry, Deep, climate, hydrology, lithology, regolith, soil and all non-geography domains unless a separate authority is bound."
+    ],
+    "numerical_claim": "A designed initial condition only; not a forward tectonic simulation, geological reconstruction, or empirical 210 Ma Earth map.",
+    "spatial_support": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+    "temporal_support": "One INITIAL_STATE at exactly 210 Ma; no other time samples.",
+    "interpolation": false,
+    "backcasting": false,
+    "endpoint_fitting": false,
+    "spatial_upsampling": false
+  },
+  "field_schema": {
+    "grid_coordinates": ["latitude_center_deg", "longitude_center_deg"],
+    "categorical": {
+      "land_ocean_mask": ["LAND", "OCEAN", "UNKNOWN"],
+      "crust_class": ["CONTINENTAL", "OCEANIC", "TRANSITIONAL", "UNKNOWN"],
+      "plate_id": "stable integer ID or UNKNOWN",
+      "boundary_class": ["CONVERGENT", "DIVERGENT", "TRANSFORM", "PASSIVE_MARGIN", "INTERIOR", "UNKNOWN"],
+      "province_class": ["CRATON", "SUTURE", "OROGENIC_DESIGN", "RIFT_DESIGN", "OTHER_DESIGN", "UNKNOWN"]
+    },
+    "continuous": {
+      "land_surface_elevation_m": "finite in [0,8000] where supported; null/UNKNOWN elsewhere",
+      "ocean_bathymetry_m": "UNKNOWN; no numeric values in v1"
+    },
+    "per_field_envelope": [
+      "support_class",
+      "authority_class",
+      "uncertainty_descriptor_or_mask",
+      "source_or_method_id",
+      "field_units",
+      "native_grid_id",
+      "time_support",
+      "content_sha256"
+    ],
+    "prohibited_field_inference": "A numeric value or categorical membership does not itself establish observational authority."
+  },
+  "seed_and_determinism": {
+    "root_material": "UTF8('ARCANA:R6:INITIAL_WORLD:v1')",
+    "child_derivation": "SHA256(root_digest || 0x00 || generator_version || 0x00 || domain_stream_name); first 128 digest bits unsigned big-endian",
+    "bit_generator": "NumPy PCG64",
+    "stream_names": ["plate_mosaic", "continental_blocks", "coastline", "land_relief"],
+    "requirements": [
+      "No hidden/global RNG",
+      "Stable canonical serialization of configuration and stream identifiers",
+      "Runtime/library/platform identities recorded",
+      "Repeat run with identical source/config/runtime/seed must yield byte-identical canonical payloads or a documented deterministic encoding proof"
+    ]
+  },
+  "output_package": {
+    "required_small_manifests": [
+      "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json",
+      "R6_INITIAL_WORLD_VALIDATION.json"
+    ],
+    "large_payload_policy": "Keep arrays outside ordinary Git under the established external simulation-results root; register relative path, byte size, SHA256, schema, grid, time, field semantics and authority in the manifest.",
+    "expected_payloads": [
+      "R6_INITIAL_PHYSICAL_GEOGRAPHY.npz or an equivalently typed chunked store",
+      "R6_INITIAL_FIELD_PROVENANCE.json"
+    ],
+    "atomicity": "Write to a unique temporary run directory; validate and hash completely before atomic promotion to immutable run identity. Never overwrite a prior materialization."
+  },
+  "execution_boundary": {
+    "authorized_by_this_contract": false,
+    "next_task_may_implement_and_materialize_t0": true,
+    "forward_physical_evolution_authorized": false,
+    "climate_or_hydrology_authorized": false,
+    "deep_authorized": false,
+    "P7Q_reopened": false,
+    "scientific_authority_register_mutated": false,
+    "canonical_mutation": false
+  },
+  "benchmark_requirements_before_freeze_of_generator_version": [
+    "grid topology, dateline seam and pole adjacency fixtures",
+    "land/ocean and supercontinent morphology metrics",
+    "area-weighted statistics and exact cell area",
+    "elevation bounds, finite support and spatial spectrum sanity checks",
+    "reproducibility under clean process restart",
+    "peak RAM and wall-clock on target hardware",
+    "sensitivity to seed/config without changing frozen specification envelopes"
+  ]
+}

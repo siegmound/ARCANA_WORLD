@@ -1,0 +1,7 @@
+# R6 first-interval solver and replay contract
+
+The selected low-level transform is `ARCANA_INTERNAL_FINITE_ROTATION_KERNEL`, algorithm `R6_FINITE_ROTATION_QUATERNION_V1`. It evaluates constant-Euler point rotations analytically, not by raster translation or ODE stepping. The kernel is fixture-tested, but it does not resolve a complete plate partition, shared-boundary motion, contact/collision, gaps, or overlaps. PyGPlates is absent from the inspected runtime and is not R6-bound/validated; the official project identifies it as reconstruction functionality, but that does not authorize ARCANA transition semantics ([GPlates repository](https://github.com/GPlates/GPlates)).
+
+Same-runtime fixture replay must be deterministic and byte-equal after normalized serialization. Cross-runtime behavior is specified as numerically equivalent, not bitwise identical. Unit-vector fixture tolerance is `3e-15` in Cartesian coordinates; this is strictly a test tolerance, not a production geometry tolerance. Same-runtime synthetic checkpoint reload and replay passed exact equality. One full versus two half rotations pass within that fixture tolerance; this is a convergence diagnostic, not a promise of byte identity.
+
+Production replay remains blocked on complete spherical topology validity, shared-boundary consistency, contact/crossing guards, event localization, and full-state restart equivalence. No canonical t0 transform or forward state was produced.

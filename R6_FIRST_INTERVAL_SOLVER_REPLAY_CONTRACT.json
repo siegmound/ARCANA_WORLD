@@ -1,0 +1,36 @@
+{
+  "artifact": "R6_FIRST_INTERVAL_SOLVER_REPLAY_CONTRACT",
+  "schema": "R6_FIRST_INTERVAL_SOLVER_REPLAY_CONTRACT_V1",
+  "status": "FIXTURE_KERNEL_BOUND__WORLD_TOPOLOGY_REPLAY_BLOCKED",
+  "selected_point_transform": "ARCANA_INTERNAL_FINITE_ROTATION_KERNEL",
+  "algorithm_id": "R6_FINITE_ROTATION_QUATERNION_V1",
+  "algorithm": "constant Euler vector (rad/year) times elapsed years -> quaternion finite rotation applied to spherical Cartesian coordinates",
+  "exact_for_constant_euler_point_rotation": true,
+  "solves_plate_topology_or_contact": false,
+  "pygplates": {"installed": false, "runtime_pinned": false, "validated_for_r6": false, "production_authorized": false},
+  "runtime_identity_fixture": {"python": "3.11.15", "implementation": "CPython", "numpy_required_by_kernel": false, "topology_backend": null, "operating_system": "Windows 10 build 26200; fixture host only"},
+  "replay_policy": {
+    "same_runtime_same_inputs": "DETERMINISTIC_FIXTURE_RESULT; byte-equal serialized output required for the fixture",
+    "cross_runtime": "NUMERICALLY_EQUIVALENT_REPLAY; not bitwise portable because math-library/compiler behavior is not bound",
+    "fixture_absolute_coordinate_tolerance": 3e-15,
+    "tolerance_scope": "unit tests only, Cartesian unit-vector coordinates; not a production geometry/topology tolerance",
+    "state_hashing": "hash canonical normalized input/output payloads and bind algorithm/runtime identity"
+  },
+  "restart_equivalence": {
+    "synthetic_t0_checkpoint_reload_then_same_step": "TESTED_PASS; exact equality on same runtime",
+    "canonical_t0_transition": "NOT_RUN",
+    "two_half_steps_vs_full_step": "TESTED_PASS_WITHIN_3E-15 fixture coordinate tolerance; convergence diagnostic, not required bitwise equality"
+  },
+  "tests": [
+    "quarter-turn analytic case",
+    "zero-rotation and zero-time identities",
+    "unit-sphere norm and inverse rotation",
+    "spherical triangle edge geometry and orientation preservation",
+    "full step versus two half steps",
+    "synthetic checkpoint serialize/reload/replay",
+    "invalid finite-vector/time inputs fail closed"
+  ],
+  "world_state_validation_required_before_production": ["spherical polygon validity", "complete coverage without illegal gaps/overlaps", "shared boundary consistency", "contact/crossing guard", "plate identity and lineage", "event localization", "restart equivalence of full normalized physical state"],
+  "decision": "SOLVER_REPLAY_CONTRACT_BOUND_FOR_FIXTURE_KERNEL_ONLY",
+  "production_world_replay": "BLOCKED_TOPOLOGY_CONTACT_GUARD_UNBOUND"
+}

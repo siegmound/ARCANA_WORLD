@@ -1,0 +1,78 @@
+{
+  "schema_version": "ARCANA_R6_BOOTSTRAP_MANIFEST_V0",
+  "dependency_checkout_sha256": {
+    "policy": "Text dependencies are compared as strict UTF-8 after CRLF and lone-CR are canonicalized to LF; historical raw digests remain inside the immutable bootstrap identity.",
+    "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json": {
+      "historical_raw_sha256": "5e0aae416b1d6c8ce80900c5bb158a71e958c080df51c787f3d896c45be93aae",
+      "canonical_lf_sha256": "0427842bb507ad645c38158ac790eb39d7070aaa7a0cf7d7d33537501609931d"
+    },
+    "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json": {
+      "historical_raw_sha256": "9592be5e4e6e37f21020c9fbebe8a406a3cb4b717e812f5f2413977b60676167",
+      "canonical_lf_sha256": "981ff7ec3f307409f074584a1f20387dc3bc0d69e58130f47e53ca95c6e8f3d2"
+    }
+  },
+  "bootstrap_identity_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+  "run_id": "r6run_27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+  "history_id": "r6hist_27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+  "branch_id": "r6branch_d3c7720939a4d111bb80f9afbeb23589d1e8cbcd36597515739076f751fa5423",
+  "identity": {
+    "schema": "ARCANA_R6_BOOTSTRAP_IDENTITY_V0",
+    "inputs": {
+      "canonical_initial_binding_ref": "R6_CANONICAL_INITIAL_STATE_BINDING.json",
+      "canonical_initial_binding_status": "BLOCKED_NO_QUALIFYING_CANONICAL_INITIAL_PACKAGE",
+      "canonical_law_refs": [],
+      "cha_contract_refs": ["CANONICAL_CHA1_HIGH_RES_EVENT_BRIDGE_CONTRACT_v0_6D1_R3_10.md", "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md"],
+      "provider_refs": ["R6_PROVIDER_REGISTRY.json"],
+      "dependency_sha256": {
+        "CANONICAL_CHA1_HIGH_RES_EVENT_BRIDGE_CONTRACT_v0_6D1_R3_10.md": "87a6c23e04eea5584ecdb2a21a73755ad21a45304d4562e06e37dc9dec3032ef",
+        "CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md": "f2d7b4040871ea40ba2fc4cd9afa4cac9dd5e09246f862305ea76e887046d14b",
+        "R3_28_HIGH_RESOLUTION_200KA_TO_0_CONTRACT.md": "625f95f7d0a4c284ff9582abcb6d6a42e4441604034fab08f25d2ed4cc010e50",
+        "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json": "5e0aae416b1d6c8ce80900c5bb158a71e958c080df51c787f3d896c45be93aae",
+        "R5_17_B6_D3_CANONICAL_PALEOHYDROLOGY_REPLAY.json": "9592be5e4e6e37f21020c9fbebe8a406a3cb4b717e812f5f2413977b60676167",
+        "R5_17_B7_A3F2_P7S_HISTORICAL_DRIVER_RECOVERY_ADJUDICATION.json": "ddabcef670d81248556c0eceb2ccab4b532d428bcf9a4a58a278c44daf63b9cf",
+        "R6_CANONICAL_INITIAL_STATE_BINDING.json": "c513b7e59fa3425e8e39100143346fa1e64cc216c5481fe5e60f1cccd872b76e",
+        "R6_CLIMATE_SUPPORT_MATRIX.json": "b0f0c5881192c615e38daf56c1fcf303afad21c113d310eecee647eb106ee5b7",
+        "R6_PROVIDER_REGISTRY.json": "b3b82a999f0440281dccc73250159dad1a62971dcddf19fcfe11bd91a06d36ae",
+        "R6_TEMPORAL_SUPPORT_REGISTRY.json": "2406e460c7e6a6128a49aa94050c5e7bf9bc56219e59d41e48b98cd67e1e66a7",
+        "R6_WAVE2_ADJUDICATION.json": "f5b121abc627b0aa596977bd5c7fb626ca1de6cff7d685a9fa48908cadb1a2cc",
+        "R6_WAVE2_TARGETED_AUTHORITY_RECONCILIATION.json": "db006420573577ca27619ebbefd1e71f1e7b61c3336040118844cf01193e6725",
+        "docs/strategy/ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md": "3343c429279a3a8aa06b98a0925aab8f508ee9e566f9dcfff0b2c6129d1999dd",
+        "docs/strategy/R6_EXISTING_CAPABILITY_RECONCILIATION_AND_CORE_INTERFACE_SPEC.md": "fcebecbe75765d1278a3a69b50272471c4343f73ed037d1f83433c71bc0f459c",
+        "docs/strategy/R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md": "c5a699b5c044f34a026e19af4e717a58b70f8e717e22381078aed2cb6519e3c1",
+        "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+        "src/arcana_worldsim/r6/adapters/climate.py": "535fa2e24a43054a0c6efc64f9f61211d469548b8e95f088b7609153939d160d",
+        "src/arcana_worldsim/r6/adapters/hydrology.py": "110eebd50504c5aa274dcfbf85ced8d7ec67d24f45ad75e556c0e8363c777b87",
+        "src/arcana_worldsim/r6/bootstrap.py": "9f2a47c4c95a0e93713470839afc7072fc2777623c6da72144d9cb336fcacfb8",
+        "src/arcana_worldsim/r6/consumer.py": "6c7204c78847925a63ae0b4e6c8b6eb9c7a7e3cfa64929079f9c58063d88ba0f",
+        "src/arcana_worldsim/r6/registry.py": "7c97d0158695e54682b80f1c0d0f8f005ed4edef205091a30d35fcffb0397852",
+        "src/arcana_worldsim/r6/temporal.py": "0d4e41e1d1cb642dbc728e725e961e7a4b3478538cb90a2f214b66da38a91511"
+      },
+      "engine_registry": {
+        "physical_world": "NOT_REGISTERED",
+        "climate": "R6_CLIMATE_PROVIDER_ADAPTER_V0",
+        "hydrology": "R6_HYDROLOGY_RESULT_IMPORT_ADAPTER_V0",
+        "flora": "NOT_REGISTERED",
+        "fauna": "NOT_REGISTERED"
+      },
+      "seed_ensemble_lineage": {"status": "UNBOUND_NO_SIMULATION_AUTHORIZED"},
+      "grid_ref": "UNKNOWN_NO_CANONICAL_INITIAL_GRID",
+      "time_ref": "R6_TEMPORAL_SUPPORT_REGISTRY.json",
+      "runtime_environment_identity": {
+        "python": "3.11.15",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "scientific_runtime": "NOT_PINNED"
+      },
+      "known_gaps": ["canonical_initial_world", "canonical_laws", "global_climate_applicability", "validated_dated_hydrology_replay", "global_shoreline_chronology", "seed_ensemble_lineage"],
+      "unknown_policy": "PRESERVE_UNKNOWN_NO_ZERO_NO_IMPUTATION",
+      "repository_identity": {
+        "repository": "siegmound/ARCANA_WORLD",
+        "branch": "main",
+        "head": "592b1651b405363373590092e133bd25569d99a5",
+        "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+      }
+    }
+  },
+  "canonical_initial_state_bound": false,
+  "scientific_execution_authorized": false
+}

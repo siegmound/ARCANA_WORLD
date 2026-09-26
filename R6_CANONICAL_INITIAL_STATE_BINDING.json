@@ -1,0 +1,51 @@
+{
+  "artifact": "R6_CANONICAL_INITIAL_STATE_BINDING",
+  "schema_version": 1,
+  "binding_status": "BLOCKED_NO_QUALIFYING_CANONICAL_INITIAL_PACKAGE",
+  "canonical_initial_world_identified": false,
+  "canonical_initial_world_bound": false,
+  "authority_scope": "TARGETED_REPOSITORY_AUDIT_AT_HEAD_592b1651b405363373590092e133bd25569d99a5",
+  "candidates_examined": [
+    {
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "size_bytes": 2928319,
+      "observed_schema": {
+        "age_ma": [11], "lat": [90], "lon": [180],
+        "plate_code": [11, 90, 180], "land_mask": [11, 90, 180],
+        "temperature_c": [11, 90, 180], "aridity_index": [11, 90, 180],
+        "forage_fields": [11, 90, 180],
+        "additional_population_and_carrying_capacity_arrays": true
+      },
+      "determination": "REFERENCE_ONLY_NOT_CANONICAL_R6_INITIAL_STATE",
+      "reason": "A1 geological/environmental/human-support reference bundle spanning 210-0 Ma; it mixes physical geography with derived forage/population/carrying-capacity outputs and is not the complete R6 canonical initial-state/law/event package."
+    },
+    {
+      "path": "local_runs/v0_6D1_R3_8/WORLD1_150Ma_CANONICAL_CONTINUATION_CHECKPOINT_v0_6D1_R3_8.npz",
+      "determination": "REFERENCE_ONLY_NOT_INITIAL_STATE",
+      "reason": "A 150 Ma continuation checkpoint with species population/traits and accessibility; not the required clean replay initial package."
+    },
+    {
+      "path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+      "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+      "determination": "TIME_CLOCK_ONLY_NOT_PHYSICAL_INITIAL_STATE",
+      "reason": "R3.28 is a derived hominin-like population fork; age_ka supplies a time coordinate and no R6 physical world initializer."
+    }
+  ],
+  "required_but_unbound": [
+    "canonical physical initial state with domain schemas and support masks",
+    "canonical laws and compatible versioned configuration",
+    "replayable CHA1 and CHA2 event package binding and event scheduling semantics",
+    "canonical spatial grid and native support identities for initialized domains",
+    "seed/ensemble lineage and exact runtime/environment identity",
+    "explicit UNKNOWN masks for unsupported initial domains"
+  ],
+  "prohibited_substitutions": [
+    "R5/R5.17 endpoint or checkpoint as R6 initial state",
+    "R3.28 human population fork as physical world state",
+    "A1 mixed output bundle as complete canonical initializer",
+    "invented values or blanket endpoint backcast"
+  ],
+  "r6_scientific_execution_authorized": false,
+  "next_requirement": "RECOVER_OR_GOVERN_A_COMPLETE_CANONICAL_INITIAL_STATE_PACKAGE_AND_BIND_ITS_LAWS_EVENTS_GRID_AND_LINEAGE"
+}

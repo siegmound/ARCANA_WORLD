@@ -1,0 +1,37 @@
+{
+  "advance_allowed_segments": 0,
+  "advance_allowed_with_accommodation_segments": 0,
+  "artifact": "R6_TOPOLOGY_CONTACT_GUARD",
+  "blocked_physical_response_unbound_segments": 1091,
+  "boundary_network_geometry": "A shared network avoids duplicate edge records at t0 but does not by itself absorb finite relative displacement.",
+  "canonical_kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+  "convergence_before_collision_or_subduction": "No shortening/contact accommodation or collision/subduction law; any positive step has undefined physical response and may produce overlap under rigid interiors.",
+  "convergent_length_m": 96897581.8523213,
+  "convergent_segments": 1091,
+  "decision": "NO_POSITIVE_PARTITION_PRESERVING_TRANSITION_BOUND",
+  "divergent_length_m": 85680898.31934299,
+  "divergent_segments": 892,
+  "event_guarded_segments": 892,
+  "event_vs_numerical_failure": {
+    "numerical_failure": "self-intersection, invalid orientation, unresolved gap/overlap, or inconsistent junction from a proposed step; reject, do not snap/clip/fill",
+    "physical_event": "must be emitted only by a separately authorized process law and hand off at its event boundary"
+  },
+  "first_positive_dt_authorized": false,
+  "global_topology_guard_horizon_years": null,
+  "junction_guard": {
+    "junction_count_degree_ge_3": 20,
+    "motion_rule": "UNBOUND",
+    "status": "BLOCKING"
+  },
+  "no_forward_evolution": true,
+  "no_geometry_mutation": true,
+  "opening_before_rift_activation": "Existing rift progress is kinematic opening history, but no spatial deformation-zone width/geometry is authorized; cannot claim gap-free finite-time accommodation.",
+  "parent_vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+  "schema": "R6_TOPOLOGY_CONTACT_GUARD_V1",
+  "segments_with_nonzero_relative_motion": 1983,
+  "status": "BLOCKED_PHYSICAL_BOUNDARY_ACCOMMODATION_AND_JUNCTION_RULES_UNBOUND",
+  "t0_predictive_geometry": "NOT_COMPUTED; no chosen shared-boundary motion or deformation-zone law exists",
+  "time_ma": 210.0,
+  "transform_motion": "No authorized finite-width shear interface/remeshing law; signed relative tangential motion is diagnostic only.",
+  "unknown_segments": 0
+}

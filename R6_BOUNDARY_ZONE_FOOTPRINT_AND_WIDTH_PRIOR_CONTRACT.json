@@ -1,0 +1,152 @@
+{
+  "artifact": "R6_BOUNDARY_ZONE_FOOTPRINT_AND_WIDTH_PRIOR_CONTRACT",
+  "candidate_prior": {
+    "authority": "AUTHORIAL_REDUCED_MODEL_SPATIAL_PRIOR_CONSTRAINED_BY_LITERATURE_SCALE_CONTEXT",
+    "canonical_realization": null,
+    "conditioning": "GLOBAL_SCALE_CANDIDATE_ONLY; no crust-pair or geological boundary-type conditioning because those types are not bound",
+    "distribution": "NONE_ASSIGNED; bounded interval only",
+    "full_width_range_m": [
+      100000.0,
+      1000000.0
+    ],
+    "outcome_blind": true,
+    "range_semantics": "ARCANA design envelope approximately 10^2–10^3 km for a deliberately diffuse global reduced-interface model; endpoints are authorial bounds, not empirical limits or a universal geological width",
+    "seed_stream": null,
+    "selection_rule": "Do not draw a width until the spherical footprint/overlap/narrow-feature acceptance algorithm and criteria are frozen. Then use a predeclared deterministic seed rule and exactly one candidate; no outcome inspection or resampling.",
+    "status": "PROPOSED_BOUNDED_SCALE_PRIOR_NOT_CANONICALIZED"
+  },
+  "decision": "BOUNDARY_FOOTPRINT_CONSTRUCTION_BLOCKED",
+  "footprint_architecture": {
+    "bilateral_policy": "UNBOUND; a 50/50 split is not presumed physical; may be an explicit numerical convention only after authorization",
+    "candidate": "Spherical geodesic offset corridor with shared junction patches and one global ownership/partition construction; must be computed from vector edges, never painted raster cells.",
+    "construction": "NOT_SELECTED",
+    "core_zone_partition": "UNBOUND",
+    "narrow_feature_policy": "BLOCK_OR_EXPLICIT_PATCH; no silent width shrink",
+    "overlap_resolution": "UNBOUND; no clipping or nearest-plate repair",
+    "status": "BLOCKED_NOT_MATERIALIZED"
+  },
+  "governance": {
+    "canonical_t0_changed": false,
+    "execution_indexes_mutated": false,
+    "forward_evolution": false,
+    "kinematics_changed": false,
+    "rift_progress_advanced": false,
+    "scientific_authority_register_mutated": false,
+    "vector_partition_changed": false,
+    "zone_payload_created": false
+  },
+  "interpolation_candidate": {
+    "candidate": "nonnegative local barycentric/finite-element basis on a single spherical simplicial complex; C0 velocity continuity is a candidate minimum, with partition of unity and tangent-vector interpolation as numerical conventions, not geology",
+    "reason": "No footprint, triangulation, boundary constraints, or junction patches exist to verify continuity/derivatives",
+    "status": "NOT_BOUND"
+  },
+  "next_action": "R6_SPHERICAL_BOUNDARY_ZONE_FOOTPRINT_AND_JUNCTION_PATCH_CONSTRUCTION",
+  "parents_sha256": {
+    "R6_FIRST_PHYSICAL_INTERVAL_READINESS_V7.json": "ed7e822b8fbfa5bf379281aae381aca1931cdcb5c1dc28d8f6af2c6402468212",
+    "R6_MINIMAL_CONTINUUM_BOUNDARY_DEFORMATION_CONTRACT.json": "3d9b009eabe070e331f23036a622727c8c6dd7f6f3d3571387f31c374dc2d030",
+    "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING.json": "ecf019ebcc4e6469fc97f1d2a58d6c3512c691b00847bc72db4891847de35b77",
+    "R6_SHARED_BOUNDARY_T0_KINEMATIC_CENSUS.json": "8c78e0116b8c55421e986b115a37a93ac80ba357c355f0ad1501efea3ef214ef",
+    "R6_T0_CANONICAL_PLATE_KINEMATICS.json": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2",
+    "R6_T0_CONTINUUM_DEFORMATION_GUARD.json": "ae32a9f274560c1844e19f3b37c3a878b5c482d76f8faea6846c12e2e5001b4f",
+    "R6_T0_SHARED_BOUNDARY_STATE_MANIFEST.json": "d1a1a21e7ad7242bd37cc6a7c57a1e28d5fc4fcaf9e6128e5e0fdd8a32817471",
+    "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233"
+  },
+  "reference_state_semantics": {
+    "accumulated_R6_post_t0_strain_at_initialization": 0.0,
+    "canonical_zone_state_materialized": false,
+    "interpretation": "The identity/zero are operator-relative initialization semantics only; they assert nothing about geological strain before 210 Ma. No state is instantiated without zone material coordinates.",
+    "model_relative_F_at_t0": "IDENTITY_BY_DEFINITION_IF_AND_WHEN_A_REFERENCE_MESH_IS_CREATED",
+    "pre_t0_total_geological_strain": "UNKNOWN"
+  },
+  "repository_baseline": {
+    "branch": "main",
+    "head": "592b1651b405363373590092e133bd25569d99a5",
+    "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+  },
+  "schema": "R6_BOUNDARY_ZONE_FOOTPRINT_AND_WIDTH_PRIOR_CONTRACT_V1",
+  "scientific_sources": [
+    {
+      "definition_and_limit": "seismic/deformation-zone extent, not a universal mechanical corridor width; not transferable as a measured ARCANA parameter",
+      "doi": "10.1016/0040-1951(89)90209-6",
+      "reported_scale": "up to several hundred kilometres wide",
+      "setting": "Several modern oceanic diffuse-deformation examples",
+      "source": "Chen & Grimison (1989), Earthquakes associated with diffuse zones of deformation in the oceanic lithosphere: some examples",
+      "url": "https://doi.org/10.1016/0040-1951(89)90209-6"
+    },
+    {
+      "definition_and_limit": "reported dimensions are not necessarily cross-boundary width; supports context dependence, not a numeric width bound",
+      "doi": "10.1146/annurev.earth.26.1.615",
+      "reported_scale": "some zones exceed 1000 km on a side",
+      "setting": "Global review, continental and oceanic diffuse boundaries",
+      "source": "Gordon (1998), The plate tectonic approximation: Plate nonrigidity, diffuse plate boundaries, and global plate reconstructions",
+      "url": "https://doi.org/10.1146/annurev.earth.26.1.615"
+    },
+    {
+      "definition_and_limit": "supports finite-domain/strain representation; does not prescribe universal width, partition, or ARCANA constitutive law",
+      "doi": "10.1016/j.cageo.2018.04.007",
+      "reported_scale": "finite deforming network domains tessellated by triangular mesh",
+      "setting": "Global reconstruction method",
+      "source": "Gurnis et al. (2018), Global tectonic reconstructions with continuously deforming and evolving rigid plates",
+      "url": "https://doi.org/10.1016/j.cageo.2018.04.007"
+    },
+    {
+      "definition_and_limit": "technical capabilities only; no ARCANA physical or width authority",
+      "reported_scale": "network polygon, rigid blocks, deforming points, triangulation and strain",
+      "setting": "Software representation",
+      "source": "Official pyGPlates Primer: Deformation and topological networks",
+      "url": "https://www.gplates.org/docs/pygplates/pygplates_primer"
+    },
+    {
+      "definition_and_limit": "supports partition-of-unity as a numerical basis concept only; does not provide ARCANA zone geometry or tectonic law",
+      "doi": "10.1002/(SICI)1097-0207(19970228)40:4<727::AID-NME86>3.0.CO;2-N",
+      "reported_scale": "basis/regularity method, not a geological width",
+      "setting": "Numerical finite-element approximation",
+      "source": "Babuška & Melenk (1997), The partition of unity method",
+      "url": "https://doi.org/10.1002/%28SICI%291097-0207%2819970228%2940%3A4%3C727%3A%3AAID-NME86%3E3.0.CO%3B2-N"
+    },
+    {
+      "definition_and_limit": "junction stability depends on boundary configuration/motion, not incidence alone",
+      "doi": "10.1038/224125a0",
+      "reported_scale": "not a width study",
+      "setting": "Plate triple-junction kinematics",
+      "source": "McKenzie & Morgan (1969), Evolution of triple junctions",
+      "url": "https://doi.org/10.1038/224125a0"
+    },
+    {
+      "definition_and_limit": "requires boundary classes and evolving kinematic constraints",
+      "doi": "10.1016/0040-1951(92)90391-I",
+      "reported_scale": "not a width study",
+      "setting": "Plate triple-junction kinematics",
+      "source": "Cronin (1992), Types and kinematic stability of triple junctions",
+      "url": "https://doi.org/10.1016/0040-1951(92)90391-I"
+    }
+  ],
+  "t0_identity": {
+    "age_ma": 210.0,
+    "boundary_segments": 1983,
+    "canonical_payload_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "degree3_junctions": 20,
+    "kinematics_identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "plate_count": 12,
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+  },
+  "verdict": "PASS_WIDTH_SCALE_PRIOR_ADJUDICATION__REFERENCE_MAP_NOT_CANONICALIZED",
+  "width_concepts": {
+    "W_model": {
+      "meaning": "full cross-zone width of the reduced model's distributed-deformation domain",
+      "separate_from_numerical": true,
+      "units": "m"
+    },
+    "W_numerical": {
+      "meaning": "mesh/node/discretization spacing",
+      "separate_from_physical": true,
+      "units": "m",
+      "value": null
+    },
+    "W_support": {
+      "meaning": "epistemic support inherited from synthetic 1-degree t0 geometry",
+      "upgraded_by_mesh": false,
+      "value": "COARSE_SUPPORT_ON_FINE_GRID"
+    }
+  }
+}

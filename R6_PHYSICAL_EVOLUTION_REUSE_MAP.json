@@ -1,0 +1,28 @@
+{
+  "artifact": "R6_PHYSICAL_EVOLUTION_REUSE_MAP",
+  "schema_version": 1,
+  "baseline_head": "592b1651b405363373590092e133bd25569d99a5",
+  "items": [
+    {"path":"src/arcana_worldsim/r6/initial_world/generator.py","capability":"synthetic t0 world and initial plate/province/relief patterns","classification":"REUSE_DIRECTLY","scope":"initial condition only; no temporal law"},
+    {"path":"src/arcana_worldsim/r6/initial_world/latent.py","capability":"deterministic procedural latent geometry","classification":"REUSE_WITH_ADAPTER","scope":"regional geometry rematerialization; not tectonic evidence or evolution"},
+    {"path":"src/arcana_worldsim/r6/initial_world/refinement.py","capability":"multiscale geometric refinement","classification":"REUSE_WITH_ADAPTER","scope":"preserve parent support/provenance; no fake spatial resolution"},
+    {"path":"src/arcana_worldsim/r6/initial_world/topography.py","capability":"bounded synthetic initial land relief","classification":"REUSE_DIRECTLY","scope":"t0 only; explicitly not erosion or temporal evolution"},
+    {"path":"references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz","capability":"precomputed land/plate reference trajectory","classification":"REFERENCE_ONLY","sha256":"9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f","scope":"diagnostic/broad constraints only after field-specific authorization; never R6 history"},
+    {"path":"src/arcana_worldsim/post_cha1/paleogeographic_history.py","capability":"A1 endpoint/event-driven land-support reconstruction","classification":"REFERENCE_ONLY","scope":"deterministic support reconstruction, not endogenous geodynamics"},
+    {"path":"src/arcana_worldsim/late_cenozoic/paleogeography.py","capability":"30→0 Ma endpoint-constrained land-support schedule","classification":"REFERENCE_ONLY","scope":"explicitly not independent geological observation; not applicable as 210 Ma law"},
+    {"path":"src/arcana_worldsim/scientific_engines/r310_cha1_highres_bridge.py","capability":"short CHA-1 bridge with tectonics frozen","classification":"REFERENCE_ONLY","scope":"event bridge, not physical tectonic evolution"},
+    {"path":"CANONICAL_LATE_CENOZOIC_PROVIDER_BINDING_ADAPTIVE_CLOCK_RESTART_CONTRACT_v0_6D1_R3_14.md","capability":"adaptive late-Cenozoic environmental clock","classification":"EXTRACT_GENERIC_PRIMITIVE","scope":"clock/scheduler pattern only; contract says scheduler is not physics"},
+    {"path":"CANONICAL_RECENT_H0_EXPOSURE_COMPLETION_TRANSPORT_PHASE_READINESS_CONTRACT_v0_6D1_R3_18.md","capability":"exposure and transport phase/readiness","classification":"VALIDATION_ONLY","scope":"downstream terrain/support boundary consumer"},
+    {"path":"CANONICAL_CHA2_YD_CLASS_HYDROLOGICAL_HAZARD_CONTRACT_v0_6D1_R3_20.md","capability":"recent hydrological-hazard fields","classification":"VALIDATION_ONLY","scope":"downstream event/hydrology, not geodynamics"},
+    {"path":"R3_27_HOMININ_MACRO_REPLAY_CONTRACT.md","capability":"human macro replay clock/grid","classification":"EXTRACT_GENERIC_PRIMITIVE","scope":"time/grid architecture only"},
+    {"path":"R3_28_HIGH_RESOLUTION_200KA_TO_0_CONTRACT.md","capability":"high-resolution human replay and adaptive integration","classification":"EXTRACT_GENERIC_PRIMITIVE","scope":"temporal/checkpoint patterns only; no plate or topographic law"},
+    {"path":"HISTORICAL_DEEP_COUPLING_BRIDGE_CONTRACT_v0_6D.md","capability":"Deep biological/energy sidecar bridge","classification":"REFERENCE_ONLY","scope":"does not define Deep→mantle coupling"},
+    {"path":"R4_0_MULTI_ENGINE_ORCHESTRATOR_CONTRACT.md","capability":"canonical ownership and bounded engine orchestration","classification":"REUSE_WITH_ADAPTER","scope":"future solver adapter/governance, not a solver"},
+    {"path":"R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION.json","capability":"R6 initial-state and unknown-domain contract","classification":"REUSE_DIRECTLY","scope":"source of t0 and non-inference constraints"}
+  ],
+  "tool_suitability": {
+    "fastscape": "NO_R6_SUITABILITY_ADJUDICATION_FOUND; do not select or run based on name/availability",
+    "other_geodynamic_or_landscape_engines": "NO_GOVERNED_R6_ENGINE_SELECTION_FOUND",
+    "next_step": "targeted research and then an ARCANA-owned law/solver suitability decision"
+  }
+}

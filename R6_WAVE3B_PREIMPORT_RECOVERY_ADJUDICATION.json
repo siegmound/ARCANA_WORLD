@@ -1,0 +1,144 @@
+{
+  "artifact": "R6_WAVE3B_PREIMPORT_RECOVERY_ADJUDICATION",
+  "schema_version": 1,
+  "repository": "siegmound/ARCANA_WORLD",
+  "branch": "main",
+  "audit_head": "592b1651b405363373590092e133bd25569d99a5",
+  "origin_main": "592b1651b405363373590092e133bd25569d99a5",
+  "scope": "bounded_read_only_preimport_bootstrap_recovery_and_t0_adjudication",
+  "search": {
+    "performed": true,
+    "search_roots": [
+      "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld",
+      "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/_ARCANA_EXTERNAL_SOURCES"
+    ],
+    "old_arcana_copies_examined": [
+      "ARCANA_WorldSim_v0_1_Tectonics",
+      "ARCANA_WorldSim_v0_2_Dynamic_Plate_Boundaries",
+      "ARCANA_WorldSim_v0_3_Geological_World_State",
+      "ARCANA_WorldSim_v0_4_Surface_Hydrology",
+      "ARCANA_WorldSim_v0_5_5B_Regional_Georesource_Substrate",
+      "ARCANA_WorldSim_v0_5_5C_Archipelago_Volcanic_Multiwindow",
+      "ARCANA_WorldSim_v0_5_5F_RECOVERED",
+      "ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK"
+    ],
+    "old_arcana_copy_count": 8,
+    "old_git_object_store_backups_examined": 1,
+    "old_git_backup_refs": ["main"],
+    "old_git_backup_commits": [
+      {
+        "commit": "57e1a5742034cfd4addeb1eaac239786ac33fcbf",
+        "date": "2026-09-03",
+        "subject": "Initial ARCANA WorldSim repository import"
+      },
+      {
+        "commit": "51fa84448326d6c72e36455eb8d5c1598d7bbac5",
+        "date": "2026-09-03",
+        "subject": "Initial ARCANA WorldSim repository import"
+      }
+    ],
+    "preimport_history_recovered": false,
+    "compressed_files_screened": 12,
+    "candidate_result_archives_inspected_by_directory_listing": 2,
+    "candidate_archive_results": [
+      {"path": "ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK/D3_3B2_LONG_HORIZON_LOCAL_RESULTS.zip", "entries": 40, "simulation1_bootstrap_name_matches": 0},
+      {"path": "ARCANA_WorldSim_v0_6_3D3_3B2_LONG_HORIZON_WINDOWS_RUNPACK/local_runs/d33b2_long_horizon.zip", "entries": 43, "simulation1_bootstrap_name_matches": 0}
+    ],
+    "archive_screening": "The two D3.3 late-horizon result archives were listed read-only without extraction; neither contains a filename matching Simulation1/bootstrap/initial-world/FULL_A1/210Ma/Pangaea/supercontinent. Other compressed files were screened by location/name and are provider/PRE5 payload archives, RNG-state fixtures, or tool dependencies, not plausible pre-import bootstrap sources.",
+    "candidate_simulation1_filename_or_text_matches": "No exact Simulation1/bootstrap/A1-writer source was found. The v0.1-v0.5.5F copies do contain early HYBRID-1 tectonic/geology code and outputs, adjudicated separately below.",
+    "old_repositories_modified": false,
+    "archives_modified_or_extracted": false
+  },
+  "evidence": {
+    "related_preimport_worldsim_prototype": {
+      "evidence_level_for_hybrid1_source": "A",
+      "identity_as_original_simulation1": "UNPROVEN",
+      "project": "ARCANA World Simulator v0.1 / World 1 / HYBRID-1",
+      "source_date_filesystem_observation": "2026-08-24",
+      "readme": {
+        "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WorldSim_v0_1_Tectonics/README.md",
+        "sha256": "8d39e4fcb7dab2385858c6f6ad7fa354a2001e35aba1d708f481a0ab692f2253"
+      },
+      "config": {
+        "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WorldSim_v0_1_Tectonics/configs/hybrid1.yaml",
+        "sha256": "53a74cf2436ea7717a227a93eb96a1b15815dd650913245d3c9b824c5589cdbf",
+        "declared_seed": 917231,
+        "snapshot_ages_ma": [210, 180, 150, 120, 90, 60, 30, 0]
+      },
+      "generator": {
+        "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WorldSim_v0_1_Tectonics/src/arcana_worldsim/tectonics/scenario_hybrid1.py",
+        "sha256": "4bf423a8b45242673e682b214aa1f0899b52f445001ba2371cf2a3b2cefc1608",
+        "finding": "build_hybrid1() hard-codes plate polygons and age-keyed poses; its docstring calls the 210 Ma geometry a schematic Pangea. This generates the HYBRID-1 scenario, not FULL_A1_REFERENCE_210_0Ma.npz. No external paleogeographic source or rotation-model binding is declared here."
+      },
+      "runner": {
+        "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WorldSim_v0_1_Tectonics/scripts/run_hybrid1.py",
+        "sha256": "e0a757cacdccf342038c7c6db6928e881993f3ed2f6229a2c2846200824b4eae",
+        "finding": "Invokes build_hybrid1(seed), then TectonicSimulator, and exports age-specific GeoJSON/figures, timeline, and audit. It consumes its in-code HYBRID-1 scenario; it does not read the A1 NPZ or an identified Simulation1 initial-state package."
+      },
+      "210ma_execution_output": {
+        "path": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WorldSim_v0_1_Tectonics/outputs/hybrid1/210Ma/plates.geojson",
+        "sha256": "210b5db6b008f1324c6e88dc820863cd185f4b296b0f574390e09353aa5453f1",
+        "bytes": 11172,
+        "finding": "HYBRID-1 GeoJSON snapshot at age_ma=210.0; direct prototype output, not identified as the original Simulation1 run artifact."
+      },
+      "topography_evidence": "v0.1 README says mountain building is represented only as events, not elevation; v0.3 docs/config add geological/elevation fields and explicitly scope the produced geology to 0 Ma. This establishes later introduction in this prototype lineage, not the original Simulation1 topography contract.",
+      "deep_evidence": "No fundamental Deep initial field/law is present in v0.1-v0.4 bootstrap sources found. v0.5.5B/C later expose Deep-related georesource/accessibility/stability/hazard fields; these do not recover a Simulation1 Deep initializer.",
+      "planet_and_seed_evidence": "v0.1 config/runner records seed 917231, but initial geometry is hard-coded and no RNG call constructs it; seed's historical Simulation1 role is unproven. A 6371 km default in v0.1 geometry is used for great-circle distance, not bound as the original Simulation1 planet-radius authority. Gravity, spin/day, tilt/orbit, atmosphere, sea-level datum, and ocean fraction are not recovered as Simulation1 settings."
+    },
+    "a1_reference": {
+      "path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "bytes": 2928319,
+      "observed_first_age_ma": 210.0,
+      "observed_grid": "90x180, 2-degree cell centers",
+      "observed_initial_fields": ["land_mask", "plate_code", "temperature_c", "aridity_index", "browse_forage", "low_forage", "wetland_forage", "total_edible_forage", "population", "carrying_capacity"],
+      "producer_recovered": false,
+      "original_simulation1_consumer_recovered": false,
+      "authority_role": "REFERENCE_ONLY__ORIGINAL_SIM1_ROLE_UNPROVEN",
+      "later_trajectory_reused": false
+    },
+    "r1_to_r3_convergence": "Later R1-R3 artifacts/configurations also use a 210 Ma start; they support the chosen design era but do not authenticate the missing original Simulation1 bootstrap."
+  },
+  "recovery": {
+    "original_simulation1_a1_producer_recovered": false,
+    "original_simulation1_initial_state_consumer_recovered": false,
+    "original_simulation1_bootstrap_contract_recovered": false,
+    "original_simulation1_pangaea_semantics_recovered": false,
+    "original_simulation1_topography_semantics_recovered": false,
+    "original_simulation1_deep_bootstrap_recovered": false,
+    "original_simulation1_seed_policy_recovered": false,
+    "related_hybrid1_prototype_bootstrap_source_recovered": true,
+    "best_evidence_level_for_hybrid1": "A",
+    "best_evidence_level_for_link_to_simulation1": "D",
+    "simulation1_preimport_bootstrap_provenance": "IRRECOVERABLE_WITH_AVAILABLE_LOCAL_EVIDENCE",
+    "qualification": "This status concerns the exact identity/provenance chain for Simulation1. A direct early HYBRID-1 source/config/runner/output survives, but no source authority links it to the Simulation1 identity or to the A1 NPZ producer/consumer."
+  },
+  "adjudication": {
+    "selected_route": "R6_RECANONICALIZATION_REQUIRED",
+    "decision": "AUTHORIAL_RECANONICALIZATION_FREEZE_R6_GLOBAL_T0_210MA",
+    "verdict": "PASS_R6_WAVE3B_BOUNDED_RECOVERY__SIM1_PROVENANCE_UNRECOVERED__R6_T0_RECANONICALIZED",
+    "r6_global_t0_ma": 210,
+    "r6_global_t0_status": "NEW_R6_CANONICAL_DESIGN_DECISION__NOT_RECOVERED_SIMULATION1_FACT",
+    "r6_physical_t0": "NOT_YET_SPECIFIED",
+    "reason": "The fixed authorial requirement calls for approximately the Simulation1 era; the early direct HYBRID-1 prototype explicitly begins with schematic Pangea at 210 Ma; A1's first coordinate is 210 Ma; and later R1-R3 starts converge on 210 Ma within the frozen world-history architecture. Together these justify deliberate R6 re-adoption of 210 Ma as design t0, without claiming it was the original Simulation1 canonical t0.",
+    "a1_role": "REFERENCE_AND_DESIGN_EVIDENCE_ONLY__NOT_NUMERIC_R6_INITIAL_STATE_AUTHORITY",
+    "original_simulation1_trajectory_reused": false,
+    "r5_runtime_dependency": false,
+    "remaining_unchecked_concrete_source": "none found in the bounded accessible Arcana project locations; no pre-import archive named or indexed as the missing Simulation1 source remains unchecked."
+  },
+  "governance": {
+    "scientific_simulation_executed": false,
+    "provider_acquisition_executed": false,
+    "climate_hydrology_biology_or_engine_executed": false,
+    "supercontinent_numerically_designed": false,
+    "old_repositories_modified": false,
+    "archives_modified": false,
+    "scientific_authority_register_mutated": false,
+    "execution_indexes_mutated": false,
+    "current_state_modified": false,
+    "staging": false,
+    "commit": false,
+    "push": false
+  },
+  "next_action": "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION_AND_SUPERCONTINENT_GENERATOR_CONTRACT"
+}

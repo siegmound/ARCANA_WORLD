@@ -1,0 +1,30 @@
+{
+  "artifact":"R6_SIMULATION1_INITIAL_COMPONENT_MATRIX_WAVE3A",
+  "schema_version":1,
+  "repository":"siegmound/ARCANA_WORLD",
+  "audit_head":"592b1651b405363373590092e133bd25569d99a5",
+  "supersedes":"R6_SIMULATION1_INITIAL_COMPONENT_MATRIX.json for Wave-3A status; prior artifact is preserved unchanged",
+  "evidence_authority":"R6_SIMULATION1_BOOTSTRAP_AUTHORITY_RECOVERY.json and R6_SIMULATION1_PHYSICAL_GEOGRAPHY_T0_BINDING.json",
+  "component_deltas":[
+    {"component":"GLOBAL_T0_AND_TIME_SYSTEM","previous_status":"PARTIAL","new_evidence":"Git/config/data archaeology: A1 begins 210 Ma; later R1-R3 configs and consumers use 210 Ma; no original Sim1 contract/consumer recovered.","new_status":"PARTIAL","reason":"Strongly inferred candidate only; original input-vs-reference distinction remains unresolved."},
+    {"component":"PLANETARY_PARAMETERS","previous_status":"PARTIAL","new_evidence":"R1 compatibility radius 6371.0088 km is used for biological spatial distance, not designated as planet radius; no rotation/gravity/orbit/atmosphere/sea datum authority recovered.","new_status":"PARTIALLY_CLOSED","reason":"Parameter role disambiguated; physical parameter set still unknown."},
+    {"component":"PANGAEA_LAND_GEOMETRY_AND_PLATE_STATE","previous_status":"PARTIAL","new_evidence":"A1 210 Ma frame inspected; A1 R1/R3 shared 210 frame arrays match; no codebook or source/generator/Sim1 bootstrap chain; only land mask and plate codes present.","new_status":"PARTIALLY_CLOSED","reason":"Payload structure and field limits now exact; authority and Pangaea identity remain unresolved."},
+    {"component":"GRID_AND_SPATIAL_SUPPORT","previous_status":"PARTIAL","new_evidence":"90x180, 2-degree centers on global lat/lon coordinate arrays directly inspected; no R6 spatial contract/CRS/support binding.","new_status":"PARTIALLY_CLOSED","reason":"Native array grid is exactly described but not R6-bound."},
+    {"component":"TOPOGRAPHY_ELEVATION_AND_SHORELINE","previous_status":"BLOCKED","new_evidence":"Topography absent in A1; shoreline can only be derived from the reference land mask; original first physical consumer absent so bootstrap necessity/generation timing cannot be determined.","new_status":"SUPERSEDED_BY_MORE_PRECISE_GAP","reason":"Replace assertion that topography is definitely required with unresolved requirement-vs-bootstrap-generation; physical geography remains blocked."},
+    {"component":"CLIMATE_INITIAL_BOUNDARY","previous_status":"BLOCKED","new_evidence":"A1 climate fields inventoried as mixed reference arrays; no evidence resolves original bootstrap forcing role; P7S scope unchanged.","new_status":"UNCHANGED","reason":"Climate/hydrology explicitly outside primary recovery target and authority remains incomplete."},
+    {"component":"HYDROLOGY_INITIAL_BOUNDARY","previous_status":"BLOCKED","new_evidence":"No new hydrology authority; B6 D3 remains failed/no snapshots.","new_status":"UNCHANGED","reason":"No execution or provider recovery was permitted."},
+    {"component":"DEEP_INITIAL_BASIS","previous_status":"PARTIAL","new_evidence":"Deep reference/calibration exists at 210 Ma but this task did not independently bind it to original Sim1 bootstrap.","new_status":"UNCHANGED","reason":"No new Deep authority was asserted."},
+    {"component":"EARLY_BIOLOGY","previous_status":"PARTIAL","new_evidence":"R1 outputs are derived rebaseline; R0 records original D1/D2 state/solver bytes unrecovered; A1 population/capacity are mixed references.","new_status":"PARTIALLY_CLOSED","reason":"Consumer role narrowed; original biology activation/seed still missing."},
+    {"component":"PHYSICAL_AND_DEEP_LAWS","previous_status":"BLOCKED","new_evidence":"R2/R3 paleogeographic code consumes precomputed A1 endpoints and derives transition schedules; no original Sim1 tectonic/physical generator recovered.","new_status":"PARTIALLY_CLOSED","reason":"Later replay architecture classified; original canonical law bundle remains absent."},
+    {"component":"CHA1_EVENT","previous_status":"PARTIAL","new_evidence":"Scoped R3.10 contract unchanged; not a t0 input or general R6 scheduler.","new_status":"UNCHANGED","reason":"No event authority recovery in this task."},
+    {"component":"CHA2_EVENT","previous_status":"PARTIAL","new_evidence":"Scoped R3.20 contract unchanged; later Younger-Dryas-class event only.","new_status":"UNCHANGED","reason":"No event authority recovery in this task."},
+    {"component":"SEED_AND_ENSEMBLE_LINEAGE","previous_status":"BLOCKED","new_evidence":"917231 confirmed only in later R1/R2/R3 configs; no original Simulation-1 seed lineage found.","new_status":"UNCHANGED","reason":"No original seed/runtime provenance recovered."},
+    {"component":"LATER_DOMAIN_ACTIVATION","previous_status":"PARTIAL","new_evidence":"No original Sim1 activation manifest found; R6 semantics remain domain-specific.","new_status":"UNCHANGED","reason":"No new activation authority recovered."}
+  ],
+  "simulation1_t0_decision":"CANDIDATE_R6_GLOBAL_T0_210MA_AUTHORITY_INCOMPLETE",
+  "a1_initial_frame":"REFERENCE_ONLY",
+  "a1_later_trajectory_reused":false,
+  "r6_physical_t0":"BLOCKED",
+  "r6_full_bootstrap":"BLOCKED",
+  "next_action":"RECOVER_PRE_IMPORT_SIMULATION1_BOOTSTRAP_ARCHIVE_OR_SOURCE_MANIFEST_AND_ORIGINAL_PHYSICAL_GEOGRAPHY_GENERATOR"
+}

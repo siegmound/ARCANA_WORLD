@@ -1,0 +1,223 @@
+{
+  "stage": "R6_BIOME4_PRODUCTION_INPUT_CONTRACT_FREEZE",
+  "contract_version": 1,
+  "decision": "BIOME4_CONTRACT_FROZEN__INPUT_PROVIDER_GAPS_REMAIN",
+  "verdict": "PASS_BIOME4_PRODUCTION_INTERFACE_FROZEN_WITH_EXPLICIT_INPUT_GAPS",
+  "next_action": "TARGETED_BIOME4_INPUT_GAP_CLOSURE",
+  "production_execution_authorized": false,
+  "strategic_context": {
+    "R5": "DEVELOPMENT_DISCOVERY_AND_LEGACY_REFERENCE",
+    "R6": "NEW_CLEAN_SIMULATION_FROM_INITIAL_CONDITIONS",
+    "reproduce_R5_final_world": false,
+    "P7S_reopened": false,
+    "P7S_climate_binding": "PROVEN_WITHIN_PRIOR_GOVERNED_65_CELL_COHORT_SCOPE",
+    "BIOME4_climate_binding": "PARTIAL"
+  },
+  "governed_anchors_ka": [200, 125, 120, 20, 15, 14, 13, 12, 11, 10, 5, 0],
+  "runtime": {
+    "source_repository": "https://github.com/jedokaplan/BIOME4.git",
+    "source_commit": "4ad9dff37eed339fce88c0fa5802757f86a3ef44",
+    "model_identity": "BIOME4 v4.2b2; equilibrium vegetation core; numerical-core baseline 3c03014223a2dff3deb264e908e3fe44a3232541",
+    "driver_path": ".arcana_engines/BIOME4/biome4driver.f90",
+    "driver_sha256": "962dc05e5621f3fe3b31bbf2fe4fb82686e81613a98c766f24fd2683e0b7dece",
+    "computational_core_path": ".arcana_engines/BIOME4/biome4.f",
+    "computational_core_sha256": "23b5194b7b2ca25439f9a97e4f55c147c78ee9198c5f953ca2fac8c4ce689968",
+    "source_tree_manifest_sha256": "40542d37f7120fdf6a688ac821dca77fd041a83a3f75e6fcab84c7468cfc1a19",
+    "executable_path": ".arcana_engines/BIOME4_runtime/biome4",
+    "executable_sha256": "2d55d3e381cb22ea0b6734cde88e1c97669ffcdc3c3eacb4332cd140dc53b9cd",
+    "executable_size_bytes": 132192,
+    "compiler": "gfortran 13.3.0",
+    "build_environment": "WSL2 Ubuntu 24.04.1 LTS x86_64",
+    "netcdf_c": "4.9.2",
+    "netcdf_fortran": "4.5.4",
+    "build_configuration": {
+      "configure": "autoreconf -if && ./configure",
+      "recorded_make_command": "make LDFLAGS= LIBS=\\\"$(nf-config --flibs)\\\"",
+      "CFLAGS": "-g -O2",
+      "FFLAGS": "-O2 -ftree-vectorize -march=native -fno-math-errno -fPIC -ffree-line-length-none -fopenmp -I/usr/include",
+      "link_policy": "build-only link-order/dependency placement override; scientific source unmodified",
+      "exact_linker_expansion_captured": false,
+      "runtime_identity_bound_by_executable_sha256": true
+    },
+    "runtime_selection_policy": "Keep this exact pinned runtime; do not upgrade implicitly.",
+    "identity_evidence": "R5_17_B7_A3F2_P7R_BIOME4_SOURCE_AND_RUNTIME_BINDING.json plus local executable/source SHA256 verification",
+    "runtime_executed_in_this_contract_task": false
+  },
+  "mandatory_climate_inputs": {
+    "temperature": {
+      "variable": "tmp",
+      "shape": [12],
+      "semantics": "monthly climatological mean",
+      "units": "degC",
+      "preflight": "all 12 finite and non-missing; no derivation from annual mean"
+    },
+    "precipitation": {
+      "variable": "pre",
+      "shape": [12],
+      "semantics": "monthly total",
+      "units": "mm/month",
+      "preflight": "all 12 finite, non-missing, and nonnegative; reject invalid values rather than relying on driver's negative-value clipping"
+    },
+    "sunshine": {
+      "variable": "sun",
+      "internal_semantic": "sunshine_percent_possible",
+      "shape": [12],
+      "units": "%",
+      "valid_range": [0, 100],
+      "preferred_input": "sun",
+      "cloud_adapter": {
+        "permitted_only_if_cloud_percent_semantics_are_governed": true,
+        "formula": "sunshine_percent_possible = 100 - cloud_percent",
+        "fraction_to_percent_conversion": "not authorized absent an explicit, unit-bound adapter",
+        "prohibited_sources": ["precipitation", "temperature"]
+      },
+      "driver_behavior": "When cld is supplied, driver converts cloud to 100-cloud before the core; when sun is supplied, it passes the sunshine percentage through. Internal R6 name must not be ambiguous cldp."
+    },
+    "temperature_provider_scope": {
+      "KRAPP_200_125": "Canonical cache has annual temp_800ka_ann.nc only; no governed monthly temperature series in the recorded 13-file provider inventory. Do not impose a modern seasonal cycle.",
+      "BEYER_120_TO_0": "Monthly temperature field recorded as shape time=72, month=12, latitude=300, longitude=720, units degrees Celsius, long_name monthly mean temperature; exact governed anchors in native temporal domain."
+    },
+    "precipitation_provider_semantics": {
+      "KRAPP_200_125": "Canonical source monthly fields are annualized rates in mm/year; P7S-adjudicated normalization divides by 12 to mm/month under the declared 360_day_equal_month candidate semantics. Preserve raw and normalized values; do not reopen that adjudication.",
+      "BEYER_120_TO_0": "Canonical monthly precipitation field is mm/month; exact governed time slices are used."
+    },
+    "cloud_source_inventory": {
+      "KRAPP_200_125": "ABSENT in the governed cached variable/file inventory.",
+      "BEYER_120_TO_0": "Provider root variable cloudiness is recorded, but its audited dimensions, temporal semantic details, and units are not bound; AVAILABLE_NOT_BOUND, not production input authority."
+    },
+    "historical_climate_scope_note": "Provider-level/source and prior 65-cell P7S cohort authority does not mean R6 full-grid input arrays have been materialized or validated."
+  },
+  "paleo_co2": {
+    "status": "BOUND_AT_ALL_12_GOVERNED_ANCHORS",
+    "authority_artifact": "R5_17_B7_A3F2_P7C_PALEO_CO2_AUTHORITY_BINDING.json",
+    "dataset": "NOAA Antarctic ice-core CO2 composite (noaa-icecore-17975)",
+    "doi": "10.25921/n8y4-bp27",
+    "source_sha256": "40c9c175ab754530be3ecc53d2ac833c1979804f8a1bcccae185af66679ac08f",
+    "unit": "ppm",
+    "temporal_support": "1901 monotonic records spanning 805668.87 to -51.03 external years BP; no missing values",
+    "mapping": "external_age_BP = (arcana_age_ka * 1000) + 200",
+    "interpolation": "linear interpolation within adjacent source-record brackets only; no extrapolation, fitting, smoothing, or spline; maximum recorded bracket width 2814 years",
+    "anchor_values_ppm": {
+      "200": 246.32231698649608,
+      "125": 276.5585317142977,
+      "120": 269.86360214649324,
+      "20": 190.69227788911158,
+      "15": 229.01030976965848,
+      "14": 238.57376393694733,
+      "13": 238.47960716747068,
+      "12": 250.3651839464883,
+      "11": 265.28817131203266,
+      "10": 263.55211069418385,
+      "5": 269.6308999848232,
+      "0": 277.2429893238434
+    },
+    "authority_role": "EXTERNAL_GLOBAL_ATMOSPHERIC_FORCING_ANALOG",
+    "p7c_refit_or_replacement_performed": false
+  },
+  "elevation": {
+    "driver_variable": "elv",
+    "units": "m",
+    "driver_sea_level_default": "FORBIDDEN_FOR_R6_PRODUCTION",
+    "status_by_anchor": "ELEVATION_UNKNOWN",
+    "evidence_note": "Legacy P7S endpoint evidence includes elevation/shoreline inputs for a 65-cell cohort, but no full R6 grid and all-anchor elevation binding was identified. It is not promoted to an R6-wide static field."
+  },
+  "tmin": {
+    "policy": "DIRECT_TMIN_IF_GOVERNED__OTHERWISE_BIOME4_NATIVE_DERIVED_TMIN",
+    "derived_label": "MODEL_DERIVED",
+    "native_formula": "tmin = 0.006*tcm^2 + 1.316*tcm - 21.9, where tcm is coldest monthly mean temperature",
+    "direct_provider_tmin": "Use only if independently semantically bound; mere variable-name presence is insufficient.",
+    "additional_provider": "not selected"
+  },
+  "soil_adapter": {
+    "authority": "Consume the P7S final contract exactly; do not reopen P7S.",
+    "dz_cm": [5, 10, 15, 30, 40, 100],
+    "layer_intervals_cm": ["0-5", "5-15", "15-30", "30-60", "60-100", "100-200"],
+    "whc_input": "whc_mm_per_cm[6]",
+    "ksat_input": "ksat_mm_per_hr[6]",
+    "WHC_0_30_mm": "sum(whc_mm_per_cm[i]*dz_cm[i]) for i=0..2",
+    "WHC_30_200_mm": "sum(whc_mm_per_cm[i]*dz_cm[i]) for i=3..5",
+    "Ksat_0_30_mm_per_hr": "sum(ksat_mm_per_hr[i]*dz_cm[i])/30 for i=0..2",
+    "Ksat_30_200_mm_per_hr": "sum(ksat_mm_per_hr[i]*dz_cm[i])/170 for i=3..5",
+    "status_by_anchor": "0 ka has 65 P7S endpoint cohort profiles only; nonzero-age soil remains UNKNOWN; no full R6 soil grid is bound.",
+    "old_equal_10cm_fixture_permitted": false
+  },
+  "grid_compatibility": {
+    "status": "CONTRACT_FROZEN__FULL_R6_GRID_COMPATIBILITY_NOT_YET_VERIFIED",
+    "mandatory_exact_checks": [
+      "grid dimensions",
+      "longitude coordinate values and ordering",
+      "latitude coordinate values and ordering",
+      "cell centers",
+      "dimension ordering after explicit schema normalization",
+      "land/missing-mask semantics and per-cell validity"
+    ],
+    "preflight_action": "Compare canonical coordinate arrays and masks exactly before any BIOME4 cell evaluation.",
+    "implicit_resampling": false,
+    "implicit_reordering_or_axis_reversal": false,
+    "driver_repair_of_grid_mismatch": false,
+    "source_caveat": "Beyer coordinate-unit attributes are swapped in the audited file; prior numeric-range adjudication resolved axis identity for its bounded cohort, but does not replace the exact full-grid check."
+  },
+  "unknown_preflight": {
+    "status": "FROZEN",
+    "eligible_label": "BIOME4_INPUT_ELIGIBLE",
+    "unknown_label": "BIOME4_INPUT_UNKNOWN",
+    "all_mandatory_values_must_be_finite_and_nonmissing": true,
+    "mandatory": ["tmp[12]", "pre[12]", "sunshine_percent_possible[12]", "co2_scalar", "elevation_policy_satisfied", "tmin_direct_or_model_derived", "whc_mm_per_cm[6]", "ksat_mm_per_hr[6]", "dz_cm[6]", "exact_grid_and_mask_compatibility"],
+    "policy": "If any mandatory authority/value/check is unknown, do not write a numeric default and do not call BIOME4 for that cell/checkpoint; preserve ecological result as UNKNOWN.",
+    "no_numeric_fallbacks": ["sea_level_elevation_zero", "annual_temperature_to_monthly_cycle", "synthetic_fixed_sunshine", "global_mean_fill", "unknown_soil_fill"]
+  },
+  "anchor_coverage_matrix": [
+    {"age_ka":200,"monthly_temperature":"UNKNOWN","monthly_precipitation":"BOUND_PROVIDER__KRAPP_NORMALIZED_MM_PER_MONTH","sunshine_or_cloud":"ABSENT_IN_GOVERNED_KRAPP_CACHE","co2":"BOUND__246.32231698649608_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["monthly temperature only annual in governed Krapp cache","sunshine/cloud absent","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":125,"monthly_temperature":"UNKNOWN","monthly_precipitation":"BOUND_PROVIDER__KRAPP_NORMALIZED_MM_PER_MONTH","sunshine_or_cloud":"ABSENT_IN_GOVERNED_KRAPP_CACHE","co2":"BOUND__276.5585317142977_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["monthly temperature only annual in governed Krapp cache","sunshine/cloud absent","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":120,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__269.86360214649324_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":20,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__190.69227788911158_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":15,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__229.01030976965848_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":14,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__238.57376393694733_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":13,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__238.47960716747068_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":12,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__250.3651839464883_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":11,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__265.28817131203266_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":10,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__263.55211069418385_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":5,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__269.6308999848232_ppm","elevation":"ELEVATION_UNKNOWN","soil":"UNKNOWN_HISTORICAL","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation unknown","soil unknown","full-grid compatibility unverified"]},
+    {"age_ka":0,"monthly_temperature":"BOUND_PROVIDER__BEYER_DEGC","monthly_precipitation":"BOUND_PROVIDER__BEYER_MM_PER_MONTH","sunshine_or_cloud":"AVAILABLE_NOT_BOUND__BEYER_CLOUDINESS_VARIABLE_METADATA_INCOMPLETE","co2":"BOUND__277.2429893238434_ppm","elevation":"ELEVATION_UNKNOWN","soil":"PARTIAL__65_P7S_ENDPOINT_PROFILES_ONLY","BIOME4_eligible":false,"blocking_reason":["cloudiness units/temporal semantics not bound","elevation not bound for full R6 grid","soil bound only for 65-cell legacy endpoint cohort","full-grid compatibility unverified"]}
+  ],
+  "production_outputs": {
+    "biome_code": {"variable":"biome","authority":"BIOME4_MODEL_OUTPUT"},
+    "dominant_woody_pft": {"variable":"wdom","authority":"BIOME4_MODEL_OUTPUT"},
+    "NPP_by_PFT": {"variable":"NPP","shape":[13],"semantics":"annual NPP by PFT; driver core slots output(301:313); units evidence g m-2"},
+    "LAI_by_PFT": {"variable":"LAI","shape":[13],"semantics":"maximum LAI by PFT; driver core slots output(314:326); output units must be checked from output metadata at implementation time"},
+    "retained_validation_diagnostics": ["runtime/input/output SHA256","coordinate and mask hashes","valid/missing counts","driver log and exit status","per-PFT output finite/missing checks"],
+    "runoff": "DIAGNOSTIC_ONLY_UNLESS_SEPARATELY_ADJUDICATED",
+    "soil_moisture": "DIAGNOSTIC_ONLY_UNLESS_SEPARATELY_ADJUDICATED",
+    "hydrology_domain_authority_promoted": false
+  },
+  "execution_policy": {
+    "diag_default": false,
+    "diagnostic_runs_are_production_authority": false,
+    "checkpoint_evaluation": "CONSUMER_DRIVEN_ONLY_AT_CHECKPOINTS_REQUESTED_BY_R6_ECOLOGICAL_PIPELINE",
+    "at_each_requested_checkpoint": "Run only when all mandatory input preflight checks pass; otherwise ecological state remains UNKNOWN.",
+    "all_12_anchor_runs_required": false
+  },
+  "determinism_and_replay": {
+    "replay_identity": ["same pinned executable SHA256","same canonical input-file SHA256 values","same namelist including scalar CO2","same coordinate bounds and grid/mask identity","same runtime/toolchain"],
+    "record_per_run": ["all input SHA256","runtime SHA256","namelist SHA256","output SHA256","driver exit status"],
+    "exact_byte_reproducibility": "Target under identical runtime; verify empirically when production execution is later authorized.",
+    "execution_performed": false
+  },
+  "exact_remaining_input_gaps": [
+    "No monthly temperature series in governed Krapp cache for 200/125 ka; annual temperature may not be expanded or assigned a modern seasonal cycle.",
+    "Beyer cloudiness variable is present in provider root inventory for 120-0 ka but monthly dimensions, temporal semantics, and units are not bound; do not convert to sunshine until percent cloud-cover semantics are explicit.",
+    "No full R6 elevation/topography authority is bound at the 12 checkpoints; sea-level default is prohibited.",
+    "Historical P7S soil is UNKNOWN; at 0 ka only 65 legacy cohort profiles exist, not a full R6 grid.",
+    "Full R6 climate/soil coordinate, ordering, cell-center, and mask compatibility has not been validated."
+  ],
+  "governance": {
+    "provider_acquisition_performed": false,
+    "BIOME4_production_run": false,
+    "diagnostic_execution_performed": false,
+    "P7S_modified_or_reopened": false,
+    "P7C_refit_or_replaced": false,
+    "current_state_modified": false,
+    "canonical_mutation": false,
+    "execution_indexes_modified": false
+  }
+}

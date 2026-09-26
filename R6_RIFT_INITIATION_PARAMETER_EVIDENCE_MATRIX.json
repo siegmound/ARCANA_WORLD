@@ -1,0 +1,91 @@
+{
+  "artifact": "R6_RIFT_INITIATION_PARAMETER_EVIDENCE_MATRIX",
+  "decision_basis": "Targeted primary/review literature supports dependence on rheology, strength, thermal state, rate and inheritance, but does not supply a universal transferable onset threshold. The operational envelope below is explicitly authorial ARCANA model authority, not an empirical threshold.",
+  "literature": [
+    {
+      "citation": "Buck (1991), Modes of continental lithospheric extension",
+      "doi": "10.1029/91JB01485",
+      "evidence": "extension style depends on crustal thickness, heat flow, strain rate and rheology; hence strain/beta cannot be parameterized here without missing fields",
+      "kind": "PRIMARY_MODEL",
+      "url": "https://doi.org/10.1029/91JB01485"
+    },
+    {
+      "citation": "Brune et al. (2023), Geodynamics of continental rift initiation and evolution",
+      "doi": "10.1038/s43017-023-00391-3",
+      "evidence": "review describes transient competing driving, resisting, weakening and inherited structural processes; not one universal onset threshold",
+      "kind": "MAJOR_REVIEW",
+      "url": "https://doi.org/10.1038/s43017-023-00391-3"
+    },
+    {
+      "citation": "Boone et al. (2018), East African Rift / Lokichar Basin extension study",
+      "doi": "10.1002/2017TC004575",
+      "evidence": "regional extension magnitude is context only, not a transferable onset threshold",
+      "kind": "PRIMARY_REGIONAL_STUDY",
+      "url": "https://doi.org/10.1002/2017TC004575"
+    },
+    {
+      "citation": "Korchinski et al. (2021), extension rate and lithospheric rheology in rift evolution",
+      "doi": "10.1016/j.marpetgeo.2020.104715",
+      "evidence": "setting-specific numerical study; rate/rheology affect rift behavior and localization, not a universal delay",
+      "kind": "PRIMARY_MODEL",
+      "url": "https://doi.org/10.1016/j.marpetgeo.2020.104715"
+    }
+  ],
+  "parameters": [
+    {
+      "authority": "ARCANA model definition",
+      "evidence": "direct integral of existing relative kinematics; avoids unbound deformation-zone width",
+      "id": "RIFT_PROGRESS",
+      "quantity": "cumulative local boundary-normal opening displacement E",
+      "status": "BOUND_FOR_EVENT_GUARD_ONLY",
+      "units": "m"
+    },
+    {
+      "authority": "AUTHORIAL_MODEL_INITIAL_CONDITION",
+      "id": "INITIAL_PROGRESS",
+      "not_earth_observation": true,
+      "quantity": "E at exact synthetic t0",
+      "status": "BOUND",
+      "units": "m",
+      "value": 0.0
+    },
+    {
+      "authority": "derived from bound Euler kinematics and vector boundary support",
+      "id": "OPENING_DRIVER",
+      "quantity": "max(0, (vB-vA) dot nAB)",
+      "status": "COMPUTED_AT_T0",
+      "units": "m/year"
+    },
+    {
+      "authority": "BOUNDED_AUTHORIAL_MODEL_ASSUMPTION_CONSTRAINED_BY_LITERATURE_CONTEXT",
+      "distribution": null,
+      "id": "ACTIVATION_THRESHOLD",
+      "lower_m": 5000.0,
+      "quantity": "operational RIFT_INITIATION threshold theta",
+      "status": "BOUND_AS_MODEL_ENVELOPE_NOT_NATURAL_CONSTANT",
+      "transfer_limit": "No claim that natural rifts require at least this extension; no observation uniquely calibrates ARCANA's synthetic state.",
+      "upper_m": 30000.0
+    },
+    {
+      "id": "WEAK_ZONE_SUSCEPTIBILITY",
+      "numeric_value_assigned": false,
+      "quantity": "mechanical weakness",
+      "required_by_minimal_guard": false,
+      "status": "UNKNOWN_PRESERVED",
+      "value": "UNKNOWN"
+    },
+    {
+      "id": "HEALING_OR_RESET",
+      "quantity": "progress relaxation under non-opening motion",
+      "status": "DEFERRED_NOT_INVENTED",
+      "value": "NONE_AUTHORIZED; progress stalls"
+    },
+    {
+      "id": "NUMERICAL_LOCALIZATION_TOLERANCE",
+      "quantity": "solver event localization tolerance",
+      "status": "UNBOUND",
+      "value": null
+    }
+  ],
+  "schema": "R6_RIFT_INITIATION_PARAMETER_EVIDENCE_MATRIX_V1"
+}

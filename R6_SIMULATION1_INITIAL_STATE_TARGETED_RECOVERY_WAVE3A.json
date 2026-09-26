@@ -1,0 +1,24 @@
+{
+  "artifact":"R6_SIMULATION1_INITIAL_STATE_TARGETED_RECOVERY_WAVE3A",
+  "schema_version":1,
+  "repository":"siegmound/ARCANA_WORLD",
+  "audit_head":"592b1651b405363373590092e133bd25569d99a5",
+  "previous_artifact":"R6_SIMULATION1_INITIAL_STATE_TARGETED_RECOVERY.json",
+  "gaps":[
+    {"id":"ORIGINAL_BOOTSTRAP_IDENTITY","previous_status":"OPEN","wave3a_status":"UNCHANGED","finding":"Reachable Git starts at root import and contains no earlier contract, A1 producer or original Sim1 consumer; no tags/unreachable objects surfaced.","remaining":"Obtain pre-import archive, source tree, build/run manifest or exact original Simulation-1 config+consumer+inputs."},
+    {"id":"PHYSICAL_GEOGRAPHY","previous_status":"OPEN","wave3a_status":"PARTIALLY_CLOSED","finding":"A1 fields individually inventoried: land and plate IDs only as reference carriers; no topography, explicit coastline, basin, lithology, plate codebook, rotation/topology law or t0 sea level. Requirement for topography at original bootstrap remains unknown.","remaining":"Recover original physical input/generator and consumer; establish required-vs-generated topography, land/ocean and plate semantics, provenance and native support."},
+    {"id":"PLANETARY_ASSUMPTIONS","previous_status":"OPEN","wave3a_status":"PARTIALLY_CLOSED","finding":"R1 compatibility radius is explicitly a later spatial-distance parameter, not proof of planetary radius; no original gravity/rotation/orbit/atmosphere/ocean/sea datum recovered.","remaining":"Recover the original parameter inventory and classify unspecified values without external replacement constants."},
+    {"id":"CLIMATE_HYDROLOGY_INITIALIZATION","previous_status":"OPEN","wave3a_status":"UNCHANGED","finding":"A1 climate arrays are reference fields; their original bootstrap role remains unproven. P7S/B6 authorities were not expanded or executed.","remaining":"After physical bootstrap authority, bind source-backed initial boundary or authorized generator; do not treat A1 presence as forcing authority."},
+    {"id":"DEEP_AND_CANONICAL_LAWS","previous_status":"OPEN","wave3a_status":"UNCHANGED","finding":"Deep 210 Ma reference/calibration and later laws exist, but no original Sim1-to-R6 closure was recovered.","remaining":"Recover original Deep basis and canonical laws; adjudicate mature replacements separately."},
+    {"id":"SEED_RUNTIME_DOMAIN_ACTIVATION","previous_status":"OPEN","wave3a_status":"UNCHANGED","finding":"917231 appears in later R1-R3 only; no original seed/runtime or per-domain activation manifest found.","remaining":"Recover original lineage/runtime or separately govern an R6 ensemble and domain-start schedule."}
+  ],
+  "topography_requirement":"UNRESOLVED_NOT_CLASSIFIED_AS_REQUIRED_MISSING_OR_BOOTSTRAP_GENERATED",
+  "t0_candidate_ma":210.0,
+  "t0_frozen":false,
+  "a1_initial_frame":"REFERENCE_ONLY",
+  "a1_later_trajectory_reused":false,
+  "decision":"BLOCKED_ORIGINAL_SIMULATION1_BOOTSTRAP_AND_PHYSICAL_GEOGRAPHY_AUTHORITY_NOT_RECOVERED",
+  "verdict":"PASS_R6_WAVE3A_TARGETED_GIT_AND_PHYSICAL_GEOGRAPHY_AUDIT__NO_STATE_PROMOTED",
+  "next_action":"RECOVER_PRE_IMPORT_SIMULATION1_BOOTSTRAP_ARCHIVE_OR_SOURCE_MANIFEST_AND_ORIGINAL_PHYSICAL_GEOGRAPHY_GENERATOR",
+  "negative_authorizations":{"scientific_simulation":false,"provider_acquisition":false,"climate_or_hydrology_execution":false,"R5_runtime_dependency":false,"current_state_modified":false,"scientific_authority_register_mutated":false,"execution_indexes_mutated":false,"staging":false,"commit":false,"push":false}
+}

@@ -1,0 +1,30 @@
+{
+  "artifact": "R6_CLIMATE_SUPPORT_MATRIX",
+  "schema_version": 1,
+  "scope": "PROVIDER_AND_AUTHORITY_SUPPORT_ONLY__NO_CLIMATE_VALUES_MATERIALIZED",
+  "hard_anchors_ka": [200, 125, 120, 20, 15, 14, 13, 12, 11, 10, 5, 0],
+  "grid_policy": "Preserve each provider's native grid/mask. No R6 spatial resampling or resolution promotion.",
+  "evidence_refs": [
+    "R5_17_B7_A3F2_P7S_HISTORICAL_CLIMATE_PROVIDER_ADJUDICATION.json",
+    "R5_17_B7_A3F2_P7S_HISTORICAL_CLIMATE_BINDING_ADJUDICATION.json",
+    "R5_17_B7_A3F2_P7S_HISTORICAL_DRIVER_AUTHORITY_MATRIX.json"
+  ],
+  "anchor_support": [
+    {"ka":200,"krapp":"annual-temperature candidate; provider-value cells not globally bound","beyer":"absent","precipitation":"published-unit/variable semantics unresolved for R6","monthly_temperature":"absent","cloud_sunshine":"absent","land_mask":"unknown at R6 support","r6_climate_state":"UNKNOWN"},
+    {"ka":125,"krapp":"annual-temperature candidate; provider-value cells not globally bound","beyer":"nearest native 120 ka only; not an exact 125 ka sample","precipitation":"not R6 bound","monthly_temperature":"absent from Krapp annual product","cloud_sunshine":"absent/unbound","land_mask":"unknown at R6 support","r6_climate_state":"UNKNOWN"},
+    {"ka":120,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; cell mask/full-grid authority not bound","precipitation":"provider-native semantics; no R6 state","monthly_temperature":"Beyer candidate only; no global R6 state","cloud_sunshine":"semantics/units unbound","land_mask":"partial source-specific constraint only","r6_climate_state":"UNKNOWN"},
+    {"ka":20,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"no full R6 binding","r6_climate_state":"UNKNOWN"},
+    {"ka":15,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"no full R6 binding","r6_climate_state":"UNKNOWN"},
+    {"ka":14,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"partial source-specific constraint only","r6_climate_state":"UNKNOWN"},
+    {"ka":13,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"no full R6 binding","r6_climate_state":"UNKNOWN"},
+    {"ka":12,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"partial source-specific constraint only","r6_climate_state":"UNKNOWN"},
+    {"ka":11,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"no full R6 binding","r6_climate_state":"UNKNOWN"},
+    {"ka":10,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"no full R6 binding","r6_climate_state":"UNKNOWN"},
+    {"ka":5,"krapp":"annual-temperature candidate; not global state","beyer":"exact native snapshot; scoped provider candidate","precipitation":"not R6 bound","monthly_temperature":"Beyer candidate only","cloud_sunshine":"semantics/units unbound","land_mask":"no full R6 binding","r6_climate_state":"UNKNOWN"},
+    {"ka":0,"krapp":"present-climate reference; not ARCANA endpoint identity","beyer":"preindustrial-modern reference; not ARCANA endpoint identity","precipitation":"endpoint comparability not direct","monthly_temperature":"not an R6 endpoint identity","cloud_sunshine":"semantics/units unbound","land_mask":"endpoint-specific only","r6_climate_state":"UNKNOWN"}
+  ],
+  "climate_payload_values_materialized": false,
+  "provider_values_acquired_in_wave2": false,
+  "interpolation_authorized": false,
+  "consumer_eligibility": "BLOCKED_UNTIL_INITIAL_STATE_AND_REQUIRED_VARIABLE/APPLICABILITY_BINDING"
+}

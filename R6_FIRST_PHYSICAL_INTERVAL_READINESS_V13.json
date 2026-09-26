@@ -1,0 +1,34 @@
+{
+  "adaptive_synthetic_ownership": {
+    "L0_unresolved_area_ratio": 0.9709972994934283,
+    "L1_unresolved_area_ratio": 0.6161602676392501,
+    "converged": false,
+    "reduced": true
+  },
+  "artifact": "R6_FIRST_PHYSICAL_INTERVAL_READINESS_V13",
+  "canonical_full_sphere_ownership": "NOT_VALIDATED",
+  "canonical_parent_mesh_integration": "NOT_IMPLEMENTED",
+  "canonical_reference_map_materialized": false,
+  "canonical_t0_changed": false,
+  "canonical_width_evaluation": "NOT_RUN_FIXTURE_GATE_BLOCKED",
+  "canonical_width_selected": false,
+  "decision": "REFERENCE_MESH_NUMERICAL_CONVERGENCE_NOT_ESTABLISHED",
+  "first_dt_years": null,
+  "forward_evolution": false,
+  "junction_basis": "LOCAL_TANGENT_TRIANGLE_FAN_P1",
+  "local_synthetic_velocity_trace": "PASS",
+  "maximum_analytical_trace_error": 4.541881753994392e-05,
+  "nested_spherical_mesh": "PASS_TOPOLOGY_AND_AREA_CLOSURE_FIXTURES",
+  "next_action": "ASSEMBLE_CANONICAL_PARENT_REGION_GEOMETRY_AND_MEASURE_CANONICAL_L0_L1_CONVERGENCE",
+  "reference_geometry_ready_for_strain_operator": false,
+  "remaining_blockers": [
+    "CANONICAL_PARENT_TO_REFERENCE_MESH_OWNERSHIP_INTEGRATION",
+    "ADAPTIVE_MIXED_AREA_WITHIN_PREDECLARED_ACCEPTANCE",
+    "L0_L1_CANONICAL_ARRANGEMENT_CONVERGENCE",
+    "CANONICAL_CORRIDOR_JUNCTION_BASIS_INTEGRATION"
+  ],
+  "schema": "R6_FIRST_PHYSICAL_INTERVAL_READINESS_V13",
+  "t0_ma": 210.0,
+  "trace_tolerance": 0.0001,
+  "verdict": "PASS_LOCAL_TRACE_AND_SPHERICAL_MESH_FIXTURES__CANONICAL_ARRANGEMENT_CONVERGENCE_PENDING"
+}

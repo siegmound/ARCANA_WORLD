@@ -1,0 +1,127 @@
+{
+  "artifact": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT",
+  "schema": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT_V1",
+  "status": "PRECOMMITTED_BEFORE_CANONICAL_DRAW",
+  "time_ma": 210.0,
+  "authority_class": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+  "scope": "T0 KINEMATIC INITIAL CONDITION ONLY; NO TIME EVOLUTION OR GEODYNAMIC FORCE CLAIM",
+  "parent": {
+    "vector_partition_manifest": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+    "vector_payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "canonical_t0_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "plate_count": 12,
+    "positive_length_adjacency_pairs": 30
+  },
+  "candidate_families": {
+    "A_GRAPH_CORRELATED_EULER_PRIOR": {
+      "disposition": "SELECTED_MINIMAL_TRANSPARENT_SYNTHETIC_PRIOR",
+      "method": "Use boundary-length-weighted plate adjacency; form symmetric normalized adjacency W=D^-1/2 A D^-1/2; graph Laplacian L=I-W; covariance C=(I+L)^-1; independently draw three standard-normal graph fields and transform by the deterministic lower Cholesky factor of C to obtain joint XYZ Euler-vector components.",
+      "conditioned_variables": ["plate adjacency", "positive-length shared-boundary length"],
+      "not_conditioned_on": ["synthetic province labels", "unvalidated weakness", "continental fraction as a speed predictor", "future outcomes"],
+      "interpretation": "Graph smoothness is an explicit model prior on neighboring plate angular-velocity components, not empirical covariance or force transmission."
+    },
+    "B_SMOOTH_TANGENTIAL_FIELD_RIGID_FIT": {
+      "disposition": "NOT_SELECTED",
+      "reason": "Requires an additional spatial correlation length/spectrum and a field-to-rigid-fit residual rule; no R6 authority binds either, and fitting a smooth field would add assumptions without improving the 12-plate t0 state contract."
+    },
+    "C_REDUCED_FORCE_TORQUE": {
+      "disposition": "NOT_SELECTED",
+      "reason": "Requires unbound slab/subduction, ridge, mantle-drag, resistance, rheology, and force-geometry states; it would imply physical causal authority that is not present."
+    }
+  },
+  "prior_parameters": {
+    "adjacency_weight": "sum of positive-length shared-boundary segment lengths for each plate pair",
+    "graph_covariance": "(I + L)^-1",
+    "graph_smoothing_coefficient": 1.0,
+    "raw_component_distribution": "multivariate normal with zero mean and graph covariance C, independently across XYZ components",
+    "global_surface_weighted_rms_speed_cm_per_year": {
+      "distribution": "Uniform(2.0, 10.0)",
+      "role": "explicit ARCANA synthetic model parameter; broad Earth-like plausibility envelope only",
+      "not_claimed_as": "empirical probability distribution, reconstruction, or measured 210 Ma global speed"
+    },
+    "scale_rule": "After NNR gauge removal, multiply all Euler vectors by one common positive scalar so the surface-area-weighted RMS speed equals the seeded draw; this fixes only the model family's speed scale and preserves its joint direction/correlation realization."
+  },
+  "seed_lineage": {
+    "strategy_id": "ARCANA_R6_INITIAL_WORLD_SEED_LINEAGE_V1",
+    "root_digest_sha256": "f53f8a45d0fa7aa43e0d021a5edce0f9f9ed0c56c123e8075e99c9eb96c934d0",
+    "generator_version": "ARCANA_R6_SUPERCONTINENT_GENERATOR_V1",
+    "semantic_stream_name": "tectonic_t0_motion_prior_v1",
+    "derivation": "SHA256(root_digest_bytes || 0x00 || generator_version_utf8 || 0x00 || semantic_stream_name_utf8); first 128 digest bits unsigned big-endian",
+    "bit_generator": "NumPy PCG64",
+    "candidate_sequence": "Exactly one deterministic draw; no candidate search, outcome inspection, resampling, or aesthetic selection.",
+    "acceptance_attempt_index": 1,
+    "maximum_attempts": 1,
+    "failure_semantics": "FAIL_CLOSED_WITHOUT_RESAMPLING_OR_OUTPUT_IF_ANY_PREDECLARED_VALIDITY_CHECK_FAILS"
+  },
+  "reference_frame": {
+    "name": "SYNTHETIC_AREA_WEIGHTED_LEAST_SQUARES_NO_NET_ROTATION_GAUGE",
+    "operation": "Fit one common rigid angular velocity minimizing area-weighted squared surface-velocity residual over all represented spherical faces, then subtract it from every plate Euler vector.",
+    "distinction": "Kinematic gauge only; not mantle-rest, hotspot, torque-balance, or mantle-coupling authority."
+  },
+  "hard_validity_constraints_predeclared": [
+    "exactly 12 unique plate IDs and 30 adjacency pairs bind the parent payload",
+    "all generated Euler components and derived speeds are finite",
+    "the graph covariance is symmetric positive definite and deterministic",
+    "the post-gauge common-spin least-squares residual is <= 1e-12 of pre-gauge norm (or absolute <= 1e-15 rad/year when pre-gauge norm is zero)",
+    "the final area-weighted RMS lies within [2,10] cm/year by construction",
+    "canonical vector partition and t0 payload hashes remain unchanged"
+  ],
+  "soft_diagnostics_nonbinding": ["per-plate surface RMS speeds", "Euler angular velocities", "30 boundary relative velocity decompositions", "opening/convergence/tangential distributions"],
+  "motion_process": {
+    "first_segment_semantics": "INITIAL_EULER_STATE_HELD_CONSTANT_ONLY_AS_A_CONDITIONAL_SEGMENT; not exercised because first interval remains event-guard blocked",
+    "P03_status": "NOT_EXERCISED_INSIDE_FIRST_SEGMENT; segment renewal/change law remains unbound",
+    "unconstrained_random_walk": false
+  },
+  "rift_initial_condition": {
+    "state": "RIFT_QUIESCENT_AT_EXACT_T0",
+    "meaning": "Synthetic model initial-condition assumption: no topology-changing rift is active at the instant t=210 Ma.",
+    "not_claimed_as": "statement about Earth at 210 Ma",
+    "inherited_weak_zone_state": "UNKNOWN",
+    "rift_susceptibility": "UNKNOWN; no design-only suture/province label is promoted to weakness"
+  },
+  "event_guard_policy": {
+    "eligibility": "Tri-state UNKNOWN remains UNKNOWN unless all governed eligibility inputs are supported.",
+    "positive_lead_time": "No transferable positive lower bound is established; exact-t0 quiescence alone does not bound the earliest post-t0 event.",
+    "first_interval": "BLOCKED while any relevant event eligibility/trigger/split law is unknown and no strictly positive event-time lower bound exists.",
+    "no_boundary_class_assignment_from_kinematics": true
+  },
+  "numerical_policy": {
+    "dt_rule": "dt=min(kinematic displacement limit, rotation limit, topology limit, event guard horizon, motion segment validity horizon)",
+    "first_dt": null,
+    "reason": "The displacement/error tolerance, rift event lead time, and motion validity horizon are not governed; no interval is executable."
+  },
+  "prohibitions": {
+    "earth_history_reconstruction": false,
+    "A1_trajectory_authority": false,
+    "force_balance_claim": false,
+    "future_outcome_selection": false,
+    "time_evolution": false,
+    "topology_change": false,
+    "event_creation": false,
+    "canonical_t0_payload_mutation": false,
+    "provider_acquisition": false,
+    "scientific_authority_register_mutation": false,
+    "protected_execution_index_mutation": false
+  },
+  "research_references": [
+    {
+      "doi": "10.1016/j.epsl.2015.02.037",
+      "url": "https://doi.org/10.1016/j.epsl.2015.02.037",
+      "use": "Earth plate reconstruction speed plausibility and dependence on plate/cratonic/subduction context; not an R6 joint prior."
+    },
+    {
+      "doi": "10.1038/s43017-023-00391-3",
+      "url": "https://doi.org/10.1038/s43017-023-00391-3",
+      "use": "Rifting is transient and reflects competition among driving, resisting, and weakening processes; no universal transferable initiation delay."
+    },
+    {
+      "doi": "10.1038/ncomms2051",
+      "url": "https://doi.org/10.1038/ncomms2051",
+      "use": "Earth finite-rotation temporal changes and covariance treatment as methodological reference only; not transferred as ARCANA temporal law."
+    },
+    {
+      "url": "https://www.usgs.gov/faqs/how-fast-do-tectonic-plates-move",
+      "use": "General Earth plate motion order-of-magnitude context; not a calibrated ARCANA distribution."
+    }
+  ]
+}

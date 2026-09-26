@@ -1,0 +1,958 @@
+{
+  "algorithm": "R6_SPHERICAL_TWO_OF_THREE_CORRIDOR_CONTOUR_PATCH_V2",
+  "artifact": "R6_FIRST_PHYSICAL_INTERVAL_READINESS_V16",
+  "canonical_boundary_segments": 1983,
+  "canonical_junctions": 20,
+  "canonical_map_materialized": false,
+  "canonical_parent_faces": 64800,
+  "canonical_t0_changed": false,
+  "canonical_width_selected": false,
+  "decision": "PER_WIDTH_JUNCTION_GATE_INCOMPLETE__NO_COMPLETION_CLAIM",
+  "elapsed_seconds": 248.40599210001528,
+  "evaluated_widths_m": [
+    100000
+  ],
+  "execution_indexes_mutated": false,
+  "first_dt_years": null,
+  "forward_evolution": false,
+  "geometry_semantics": "SPHERICAL_DISTANCE_MEMBERSHIP; tangent chart only numerical extraction",
+  "independent_junction_radius": false,
+  "next_action": "COMPLETE_REMAINING_PER_WIDTH_JUNCTION_PATCH_EVALUATIONS",
+  "not_evaluated_widths_m": [
+    250000,
+    500000,
+    1000000
+  ],
+  "p1_primitive_retained": true,
+  "parent_payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+  "protected_staged_blobs": {
+    "ARCANA_EXECUTION_REFERENCE_INDEX.json": "551727fd6ea73dd39a4194bf3aa34dc2a2707836",
+    "ARCANA_EXECUTION_REFERENCE_INDEX.md": "8a8052c5c2ec73f26c598df5aeb3ab50105da085"
+  },
+  "reference_geometry_ready_for_canonical_width_selection": false,
+  "remaining_blocker": "REMAINING_DIAGNOSTIC_WIDTH_CASES_NOT_EVALUATED",
+  "repository": {
+    "branch": "main",
+    "head": "592b1651b405363373590092e133bd25569d99a5",
+    "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+  },
+  "schema": "R6_FIRST_PHYSICAL_INTERVAL_READINESS_V16",
+  "t0_ma": 210.0,
+  "trace_tolerance": 0.0001,
+  "verdict": "JUNCTION_PATCH_IMPLEMENTATION_EVALUATED__NO_FORWARD_EVOLUTION_AUTHORIZED",
+  "width_cases": [
+    {
+      "W_model_m": 100000,
+      "global_L0_L1_executed": false,
+      "global_ownership": "NOT_RUN_JUNCTION_GATE_FAILED",
+      "junctions": [
+        {
+          "junction_id": "R6JNT-T0-025646696d52eeec",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=7819.26 m)",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=31722.5 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=15770.1 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=7819.26 m)",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-02a56f7aad16dbb8",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.0103423925 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.153349015 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0412908489 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.0103423925 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-2c16e521a6419fa3",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-2dd1d719ebf9c19d",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00283221033 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0428361182 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0111597058 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00283221033 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-372e4615c4d95679",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00286953088 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0429712845 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0112320547 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00286953088 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-3b2ab2c416ea6774",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00287575245 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0429937573 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0112440936 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00287575245 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-43a103aaa9716c60",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00286953056 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0429712839 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0112320542 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00286953056 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-4a67fe6607845a68",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.0111475688 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.155982079 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0428134175 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.0111475688 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-4faa523984d9236a",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.002755123 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0425546045 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0110094652 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.002755123 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-52ad489ad0830b38",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00285088257 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0429038381 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0111959352 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00285088257 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-64fd755f2fe99ea8",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00272769599 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.042453676 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0109557452 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00272769599 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-651508dfd3ba5c87",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "central overlap reaches local extraction boundary; expand chart/domain",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-66cf52c990399228",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00286952722 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0429712777 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0112320489 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00286952722 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-925256003ecf3f7d",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=7819.26 m)",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=31722.5 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=15770.1 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=7819.26 m)",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-97f54005032950c6",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=8798.84 m)",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=25961 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=12577.5 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=8798.84 m)",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-9b54c77940e1668d",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00279436658 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0426983107 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0110860857 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00279436658 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-c700367690b7363a",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.0104307575 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.153642748 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0414595938 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.0104307575 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-cbc56f946f677500",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.00295253858 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.0432694206 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0113921042 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.00295253858 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-f7f8b6413402335a",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "corner port trace disagreement 0.0108991014 exceeds tolerance",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "corner port trace disagreement 0.155179732 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "corner port trace disagreement 0.0423470983 exceeds tolerance",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "corner port trace disagreement 0.0108991014 exceeds tolerance",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        },
+        {
+          "junction_id": "R6JNT-T0-fa2d01546d4ec418",
+          "max_trace_error": null,
+          "metrics": {
+            "grid_nodes_per_axis": 65,
+            "grid_spacing_m": 3125.0
+          },
+          "node_count": 0,
+          "port_count": 0,
+          "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=7819.26 m)",
+          "refinement_attempts": [
+            {
+              "cells_per_width": 8,
+              "metrics": {
+                "grid_nodes_per_axis": 17,
+                "grid_spacing_m": 12500.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=31722.7 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 16,
+              "metrics": {
+                "grid_nodes_per_axis": 33,
+                "grid_spacing_m": 6250.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=15770.1 m)",
+              "status": "INVALID"
+            },
+            {
+              "cells_per_width": 32,
+              "metrics": {
+                "grid_nodes_per_axis": 65,
+                "grid_spacing_m": 3125.0
+              },
+              "reason": "PORT_EXTRACTION_IMPLEMENTATION_FAILURE: refined contour edge lacks adjacent singleton mesh interface (distance=7819.26 m)",
+              "status": "INVALID"
+            }
+          ],
+          "status": "INVALID",
+          "trace_pass": false,
+          "triangle_count": 0
+        }
+      ],
+      "max_trace_error": null,
+      "patches_constructed": 0,
+      "simple_connected": 0,
+      "status": "INVALID_AT_JUNCTION_GATE",
+      "three_port": 0,
+      "trace_pass": 0,
+      "triangulated": 0
+    },
+    {
+      "W_model_m": 250000,
+      "global_L0_L1_executed": false,
+      "global_ownership": "NOT_RUN_WIDTH_NOT_EVALUATED",
+      "junctions": [],
+      "max_trace_error": null,
+      "patches_constructed": null,
+      "simple_connected": null,
+      "status": "NOT_EVALUATED_EXECUTION_BUDGET",
+      "three_port": null,
+      "trace_pass": null,
+      "triangulated": null
+    },
+    {
+      "W_model_m": 500000,
+      "global_L0_L1_executed": false,
+      "global_ownership": "NOT_RUN_WIDTH_NOT_EVALUATED",
+      "junctions": [],
+      "max_trace_error": null,
+      "patches_constructed": null,
+      "simple_connected": null,
+      "status": "NOT_EVALUATED_EXECUTION_BUDGET",
+      "three_port": null,
+      "trace_pass": null,
+      "triangulated": null
+    },
+    {
+      "W_model_m": 1000000,
+      "global_L0_L1_executed": false,
+      "global_ownership": "NOT_RUN_WIDTH_NOT_EVALUATED",
+      "junctions": [],
+      "max_trace_error": null,
+      "patches_constructed": null,
+      "simple_connected": null,
+      "status": "NOT_EVALUATED_EXECUTION_BUDGET",
+      "three_port": null,
+      "trace_pass": null,
+      "triangulated": null
+    }
+  ]
+}

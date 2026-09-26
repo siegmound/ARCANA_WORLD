@@ -1,0 +1,57 @@
+{
+  "stage": "R5.17-B7-A3F2-P7S",
+  "substep": "HISTORICAL_DRIVER_AUTHORITY_RECOVERY",
+  "decision": "BLOCKED_HISTORICAL_DRIVER_AUTHORITY_INCOMPLETE",
+  "verdict": "PASS_INTERNAL_ARCANA_DRIVER_RECOVERY_AUDIT__NO_COMPLETE_HISTORICAL_P7S_FORCING_BOUND",
+  "matrix": "R5_17_B7_A3F2_P7S_HISTORICAL_DRIVER_AUTHORITY_MATRIX.json",
+  "endpoint_proof": {
+    "complete_profiles": 65,
+    "whc_environment_improvement_layers": 0,
+    "log_ksat_environment_improvement_layers": 4,
+    "material_only_minmax_status": "MATERIAL_ONLY_MINMAX_PRIOR_NOT_VALIDATED",
+    "held_out_split": "33_CALIBRATION__32_VALIDATION"
+  },
+  "historical_authority": {
+    "temperature": "PRESENT_ENDPOINT_ONLY",
+    "precipitation": "PRESENT_ENDPOINT_ONLY",
+    "seasonality": "PRESENT_ENDPOINT_ONLY",
+    "runoff": "SPARSE_HISTORICAL_DRIVER_AUTHORITY",
+    "surface_water_or_freshwater": "SPARSE_HISTORICAL_DRIVER_AUTHORITY__NOT_RUNOFF_SUBSTITUTE",
+    "elevation_topography": "PRESENT_ENDPOINT_ONLY",
+    "land_mask": "SPARSE_HISTORICAL_CONSTRAINT_AUTHORITY",
+    "shoreline": "ANCHOR_SPECIFIC_AUTHORITY__120KA_AND_0KA",
+    "ice_state": "UNKNOWN"
+  },
+  "whc": {
+    "historical_replay_supportable": false,
+    "useful_predictors": [],
+    "non_useful_or_not_demonstrated_predictors": ["temperature", "precipitation", "seasonality", "runoff", "elevation"],
+    "minimum_historical_driver_set": "NONE_DEMONSTRATED_BEYOND_MATERIAL_CONSTRAINT_AND_UNKNOWN_MASK",
+    "blocker": "TRANSFERABILITY_GAP"
+  },
+  "ksat": {
+    "historical_replay_supportable": false,
+    "useful_endpoint_predictors": ["environment_conditioned_subset__aggregate_model_improvement_in_4_of_6_layers"],
+    "historical_predictors_not_bound": ["temperature", "precipitation", "seasonality", "runoff", "elevation"],
+    "minimum_historical_driver_set": "UNRESOLVED_UNTIL_HISTORICAL_CLIMATE_HYDROLOGY_TOPOGRAPHY_BINDING",
+    "blocker": "DRIVER_GAP",
+    "secondary_blocker": "TRANSFERABILITY_GAP"
+  },
+  "external_acquisition": {
+    "new_provider_required_now": false,
+    "decision": "NO_NEW_EXTERNAL_PROVIDER_REQUIRED_BEFORE_INTERNAL_DRIVER_RECOVERY",
+    "possible_future_gap": "TARGETED_HISTORICAL_CLIMATE_HYDROLOGY_AND_OR_TOPOGRAPHY_PROVIDER_ONLY_AFTER_INTERNAL_RECOVERY"
+  },
+  "governance": {
+    "physical_soil_materialized": false,
+    "historical_replay_executed": false,
+    "biome4_executed": false,
+    "p7s_complete": false,
+    "p7q_reopened": false,
+    "b7_complete": false,
+    "scientific_authority_register_mutated": false,
+    "canonical_mutation": false
+  },
+  "next_action": "RECOVER_OR_BIND_HISTORICAL_CLIMATE_HYDROLOGY_AND_TOPOGRAPHY_AUTHORITIES_BEFORE_ANY_P7S_HISTORICAL_REPLAY",
+  "manual_execution_required": false
+}

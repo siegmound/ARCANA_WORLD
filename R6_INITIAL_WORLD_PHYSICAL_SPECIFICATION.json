@@ -1,0 +1,235 @@
+{
+  "artifact": "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION",
+  "schema_version": 1,
+  "status": "AUTHORIAL_DESIGN_SPECIFICATION__NOT_MATERIALIZED",
+  "repository": "siegmound/ARCANA_WORLD",
+  "design_baseline": {
+    "branch": "main",
+    "head": "592b1651b405363373590092e133bd25569d99a5",
+    "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+  },
+  "authority_chain": [
+    "R6_WAVE3B_PREIMPORT_RECOVERY_ADJUDICATION.json",
+    "R6_INITIAL_WORLD_RECANONICALIZATION_BASIS.json",
+    "R6_SIMULATION1_BOOTSTRAP_AUTHORITY_RECOVERY.json",
+    "R6_SIMULATION1_PHYSICAL_GEOGRAPHY_T0_BINDING.json",
+    "R6_SIMULATION1_INITIAL_COMPONENT_MATRIX_WAVE3A.json",
+    "docs/strategy/R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md",
+    "docs/strategy/R6_EXISTING_CAPABILITY_RECONCILIATION_AND_CORE_INTERFACE_SPEC.md",
+    "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+    "references/WORLD1_DEEP_FREE_ENERGY_CALIBRATION_v0_5.json",
+    "HISTORICAL_DEEP_COUPLING_BRIDGE_CONTRACT_v0_6D.md"
+  ],
+  "provenance_decisions": {
+    "r6_global_t0_ma": 210,
+    "t0_status": "NEW_R6_CANONICAL_DESIGN_DECISION__NOT_RECOVERED_SIMULATION1_FACT",
+    "original_simulation1_bootstrap": "IRRECOVERABLE_WITH_AVAILABLE_LOCAL_EVIDENCE",
+    "a1_role": "REFERENCE_AND_DESIGN_EVIDENCE_ONLY__NOT_NUMERIC_R6_INITIAL_STATE_AUTHORITY",
+    "a1_grid": "90x180__2_degree__reference_only",
+    "hybrid1_role": "EARLY_SCHEMATIC_PROTOTYPE__NOT_FORMAL_SIMULATION1_AUTHORITY",
+    "r5_runtime_dependency": false,
+    "r5_r6_reconciliation_required": false
+  },
+  "world_class": {
+    "classification": "EARTH_SCALE_ROCKY_OCEAN_BEARING_TERRESTRIAL_WORLD",
+    "geographic_design": "PANGAEA_INSPIRED_ARCANA_SUPERCONTINENT",
+    "literal_earth_reconstruction": false,
+    "claim_of_observed_210ma_earth_state": false,
+    "basis": "New authorial R6 design; broad structural plausibility only. No fossil/paleogeographic reconstruction claim is made."
+  },
+  "planetary_baseline": {
+    "geometry": "SPHERE",
+    "mean_radius_m": 6371000,
+    "surface_gravity_m_s2": 9.82,
+    "sidereal_rotation_period_s": 86164.1,
+    "axial_tilt_deg": 23.4,
+    "orbital_semimajor_axis_au": 1.0,
+    "orbital_eccentricity": 0.0,
+    "parameter_status": "FIXED_EARTH_ANALOGUE_DESIGN_BASELINE__NOT_HISTORICAL_EARTH_FORCING",
+    "source_context": [
+      {
+        "property_group": "mean_radius_rotation_gravity",
+        "source": "NASA/NSSDC Earth Fact Sheet",
+        "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+        "use": "Reference values for a deliberately Earth-scale analogue; values are rounded and are not asserted as R6 historical facts."
+      },
+      {
+        "property_group": "axial_tilt_context",
+        "source": "NASA Earth Facts and Milankovitch Cycles",
+        "urls": [
+          "https://science.nasa.gov/earth/facts/",
+          "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/"
+        ],
+        "use": "23.4 degrees is a fixed nominal design choice, not a reconstruction of 210 Ma obliquity."
+      }
+    ],
+    "unbound_variable_forcings": [
+      "age-dependent_solar_luminosity_and_spectrum",
+      "orbital_variation_through_time",
+      "atmospheric_composition_and_pressure",
+      "greenhouse_gas_history",
+      "global_ocean_volume_and_eustatic_sea_level"
+    ]
+  },
+  "spatial_contract": {
+    "grid_id": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+    "grid_type": "REGULAR_GEOGRAPHIC_LAT_LON_CELL_GRID",
+    "crs": "EPSG:4326 coordinate semantics; spherical metric calculations use the declared R6 radius",
+    "shape_lat_lon": [180, 360],
+    "cell_size_degrees": [1.0, 1.0],
+    "latitude_centers_deg": "-89.5 through +89.5 inclusive, ascending",
+    "longitude_centers_deg": "-179.5 through +179.5 inclusive, ascending, periodic seam",
+    "cell_area": "Exact spherical band-sector area using R6 radius; not constant across latitude",
+    "native_spatial_resolution": "1 degree nominal angular support; no claim of uniform linear resolution",
+    "grid_decision": "NEW_R6_CANONICAL_DESIGN_DECISION",
+    "rationale": "A1 and much R3 support are 2-degree reference/consumer grids. A 1-degree global base grid gives 64,800 cells and improves base spatial support while remaining suitable for the stated workstation class; this does not confer sub-grid realism or authorize upsampling of source evidence.",
+    "source_adapter_policy": "Preserve each provider's native grid, support, mask, and resolution. Any cross-grid operation requires a separately declared conservative/semantics-aware adapter and must retain coarse-parent-support labels.",
+    "prohibited": [
+      "Nearest-neighbor replication described as new evidence",
+      "Bilinear or cubic upsampling described as higher-resolution evidence",
+      "Promotion of A1 values to canonical R6 state"
+    ]
+  },
+  "initial_geography": {
+    "land_fraction_of_spherical_surface": {"minimum": 0.25, "maximum": 0.35, "classification": "AUTHORIAL_MORPHOLOGY_ENVELOPE"},
+    "ocean_fraction_of_surface": {"minimum": 0.65, "maximum": 0.75, "classification": "COMPLEMENT_OF_LAND_FRACTION"},
+    "dominant_supercontinent_land_fraction": {"minimum": 0.80, "maximum": 0.95, "classification": "AUTHORIAL_MORPHOLOGY_ENVELOPE"},
+    "equator_crossing_required": true,
+    "land_area_weighted_centroid_latitude_deg": {"minimum": -15, "maximum": 15},
+    "dominant_component_minimum_longitudinal_span_deg": 120,
+    "dominant_component_minimum_latitudinal_span_deg": 60,
+    "detached_major_continental_components_max": 5,
+    "connectivity": "Spherical 8-neighbour land connectivity with longitude wrap and explicit polar adjacency; implementation must define pole handling and use it consistently.",
+    "sea_level_datum": {"value_m": 0.0, "definition": "R6 authorial reference equipotential; elevations are relative to this datum.", "physical_ocean_volume_bound": false},
+    "coastline": "Irregular, multiscale, non-fractal-claim coastline with bays, peninsulas, shelves only where the generator has a supported representation; no cell-scale noise masquerading as geomorphology.",
+    "classification": "SYNTHETIC_AUTHORIAL_INITIAL_GEOGRAPHY__NOT_PALEOGEOGRAPHIC_OBSERVATION"
+  },
+  "terrain_and_crust": {
+    "required_t0_fields": [
+      "land_ocean_mask",
+      "continental_crust_class",
+      "plate_identity",
+      "boundary_class_where_resolvable",
+      "land_surface_elevation_or_explicit_unknown",
+      "drainage_ready_terrain_support_status",
+      "support_class",
+      "uncertainty_and_provenance"
+    ],
+    "plate_count_design_range": {"minimum": 12, "maximum": 18, "status": "AUTHORIAL_GENERATOR_PARAMETER_TO_BENCHMARK"},
+    "continental_cratonic_blocks_design_range": {"minimum": 4, "maximum": 8, "status": "AUTHORIAL_GENERATOR_PARAMETER_TO_BENCHMARK"},
+    "plate_motion_at_t0": "UNKNOWN_UNTIL_GOVERNED_KINEMATIC_OR_GEODYNAMIC_LAW_BOUND",
+    "land_elevation": {
+      "datum": "sea_level_datum",
+      "permitted_numeric_domain_m": [0, 8000],
+      "support": "Model-generated design state only; every value tagged AUTHORIAL_SYNTHETIC_INITIALIZATION and uncertainty-bearing.",
+      "hypsometry": "bounded, continuous, multiscale distribution; no empirical 210 Ma elevation claim",
+      "orogeny": "May be represented as a designed initial structural province, not as the result of a recovered tectonic history."
+    },
+    "drainage": {
+      "terrain_readiness_required": true,
+      "meaning": "Complete supported land elevation and land/ocean topology suitable as input to a later drainage analysis; not a drainage network, flow, discharge, lake, runoff, or hydrology result.",
+      "depression_policy": "Preserve plausible closed/endoreic basins; no blanket sink fill. A future drainage adapter must declare breach/conditioning rules and retain basin provenance.",
+      "drainage_graph_materialized_at_t0": false
+    },
+    "ocean_bathymetry": {
+      "status": "UNKNOWN_PENDING_AUTHORIZED_OCEAN_BASIN_OR_CRUSTAL_THICKNESS_MODEL",
+      "numeric_depths_materialized_by_initial_generator": false,
+      "ocean_mask_does_not_imply_bathymetric_depth": true
+    },
+    "lithology_regolith_soil": {
+      "status": "UNKNOWN_UNLESS_SEPARATELY_AUTHORIZED_SOURCE_OR_MODEL",
+      "materialized": false,
+      "p7q_reopened": false
+    }
+  },
+  "domain_bootstrap": {
+    "physical_geography": "INITIAL_GENERATOR_MAY_MATERIALIZE_ONLY_AFTER_IMPLEMENTATION_AND_VALIDATION; NOT_RUN_BY_THIS_SPECIFICATION",
+    "climate_role": "NOT_REQUIRED_TO_GENERATE_T0_GEOGRAPHY; required later only when a climate consumer/physical transition is authorized",
+    "hydrology_role": "NOT_RUN_AT_T0; later hydrology requires compatible drainage-ready terrain, climate/water inputs, datum/boundary authority, and the R6 hydrology adapter",
+    "climate": "UNKNOWN_AT_T0; climate model/provider and age-specific forcing must be bound before values are produced",
+    "hydrology": "UNKNOWN_AT_T0; derive only after compatible topography, climate, water boundary and R6 hydrology adapter are authorized",
+    "deep": {
+      "state": "UNKNOWN_AT_T0",
+      "laws": "UNBOUND_FOR_R6_INITIALIZATION",
+      "v0_5_calibration_role": "REFERENCE/CALIBRATION_CANDIDATE_ONLY; not a complete 210 Ma Deep initial state or fundamental law bundle",
+      "v0_6d_production_boundary": "D1/D2 runtime, D1 state/variance and D2.2 hook remain required for the historical Deep-coupled replay described by the bridge contract"
+    },
+    "biology": "OUTSIDE_INITIAL_PHYSICAL_WORLD_MATERIALIZATION; no flora/fauna populations or resources at t0",
+    "human_history": "OUTSIDE_INITIAL_PHYSICAL_WORLD_MATERIALIZATION; no human population or management state at t0"
+  },
+  "time_and_evolution": {
+    "direction": "FORWARD_OLDER_TO_YOUNGER_FROM_210_MA",
+    "initial_world_is_single_t0_state": true,
+    "no_temporal_interpolation_or_backcast": true,
+    "post_t0_strategy": "PROCESS_LED_FORWARD_EVOLUTION_WITH_ENDPOINTS_AS_VALIDATION_ONLY_WHERE_GOVERNED",
+    "endpoint_constraints": "A1 and later R1-R3 frames are reference evidence only unless a separate authority binds exact fields and scope; never force-fit or interpolate them.",
+    "first_causal_consumer": "R6_PHYSICAL_WORLD_EVOLUTION_ADAPTER (tectonic/geodynamic state plus terrain evolution); not yet registered, law-bound, benchmarked, or executable.",
+    "climate_and_hydrology_order": "Physical initial geometry precedes climate/hydrology evaluation; subsequent coupling order and timestep require a separately versioned causal solver contract.",
+    "full_temporal_world_history_materialized": false
+  },
+  "seed_lineage": {
+    "strategy_id": "ARCANA_R6_INITIAL_WORLD_SEED_LINEAGE_V1",
+    "seed_root_material": "UTF8('ARCANA:R6:INITIAL_WORLD:v1')",
+    "root_digest": "SHA256(seed_root_material)",
+    "child_stream": "SHA256(root_digest || 0x00 || generator_version || 0x00 || domain_stream_name); first 128 digest bits interpreted unsigned big-endian integer",
+    "bit_generator": "NumPy PCG64; exact NumPy version and platform recorded in materialization manifest",
+    "stream_policy": "Independent named streams per domain; no shared mutable global RNG; no inherited HYBRID-1 seed 917231",
+    "ensemble": "No ensemble member/run is materialized by this specification; future ensembles require explicit member identity and uncertainty design."
+  },
+  "runtime_and_resource_envelope": {
+    "target_hardware_class": "approximately 6 CPU cores / 12 threads, 32 GB RAM, consumer GPU optional",
+    "base_cell_count": 64800,
+    "architecture": "Chunked/field-wise generation and validation; global static 1-degree fields are acceptable; do not allocate a dense global all-domains-by-all-times tensor.",
+    "gpu": "not required for initial geometry; any future use requires reproducible CPU/GPU parity and runtime binding",
+    "runtime_identity": "must be pinned and recorded by the future materializer; not selected here"
+  },
+  "authority_status": {
+    "physical_specification_complete_as_design": true,
+    "initial_physical_state_materialized": false,
+    "scientific_simulation_executed": false,
+    "external_provider_acquired": false,
+    "deep_laws_bound": false,
+    "climate_materialized": false,
+    "hydrology_materialized": false,
+    "biology_materialized": false,
+    "scientific_authority_register_mutated": false,
+    "execution_indexes_mutated": false,
+    "canonical_mutation": false,
+    "r5_r6_reconciliation": false
+  },
+  "unresolved_classification": {
+    "NEEDS_EXTERNAL_SCIENTIFIC_BINDING": [
+      "210 Ma plate-motion/geodynamic law and any reference chronology",
+      "physical bathymetry/ocean-basin initialization if required by an ocean consumer",
+      "R6 Deep fundamental law and authorized initial state",
+      "age-specific solar/orbital/atmospheric forcing and climate authority",
+      "global ocean volume/eustatic sea level if physical coupling requires it",
+      "dated land/shoreline and event package applicability for post-t0 evolution"
+    ],
+    "NEEDS_IMPLEMENTATION_BENCHMARK": [
+      "spherical plate-mosaic and supercontinent geometry generator calibration",
+      "terrain hypsometry, relief spectra, and drainage-readiness tests",
+      "CPU runtime/memory and determinism on target hardware",
+      "1-degree spherical connectivity, area, coast, and seam/pole invariants"
+    ],
+    "NEEDS_PROVIDER": [
+      "No provider selected. A provider suitability review is required only when a consumer variable requires one and ARCANA canonical evidence is insufficient."
+    ]
+  },
+  "governance": {
+    "provider_selected": false,
+    "simulation_executed": false,
+    "climate_or_hydrology_executed": false,
+    "deep_executed": false,
+    "physical_soil_created": false,
+    "natural_vegetation_or_wild_fauna_executed": false,
+    "marine_ecology_executed": false,
+    "r5_17_c_material_resources_entered": false,
+    "deep_geography_or_strategic_connectivity_entered": false,
+    "k_x_t_materialized": false,
+    "staging": false,
+    "commit": false,
+    "push": false
+  },
+  "next_action": "R6_INITIAL_WORLD_GENERATOR_IMPLEMENTATION_AND_210MA_MATERIALIZATION"
+}

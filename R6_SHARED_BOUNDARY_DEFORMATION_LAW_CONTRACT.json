@@ -1,0 +1,124 @@
+{
+  "artifact": "R6_SHARED_BOUNDARY_DEFORMATION_LAW_CONTRACT",
+  "capacity_and_event_handoff": {
+    "convergent": "no transferable minimum shortening capacity/threshold for an untyped synthetic boundary; ZERO_CAPACITY_FAIL_CLOSED",
+    "divergent": "rift model event envelope remains conditional; no geometry response before initiation is bound",
+    "event_handoff": "stop at explicitly governed rift/contact/junction/topology event; no automatic continuation",
+    "shear": "no fault/interface capacity or displacement tolerance; ZERO_CAPACITY_FAIL_CLOSED"
+  },
+  "decision": "NO_PHYSICALLY_DEFENSIBLE_POSITIVE_ACCOMMODATION_FOUND",
+  "literature_and_technical_sources": [
+    {
+      "citation": "Bird (2003), An updated digital model of plate boundaries",
+      "doi": "10.1029/2001GC000252",
+      "relevance": "Boundary types use relative velocity together with geological evidence; several diffuse orogenic regions are expressly not expected to behave as rigid plates. Does not give a universal ARCANA shortening threshold.",
+      "type": "PRIMARY_BOUNDARY_MODEL",
+      "url": "https://doi.org/10.1029/2001GC000252"
+    },
+    {
+      "citation": "Gordon (1998), The plate tectonic approximation: Plate nonrigidity, diffuse plate boundaries, and global plate reconstructions",
+      "doi": "10.1146/annurev.earth.26.1.615",
+      "relevance": "Diffuse boundaries accommodate deformation across zones; their widths and rates vary, so no width or capacity transfers to untyped synthetic ARCANA boundaries.",
+      "type": "MAJOR_REVIEW",
+      "url": "https://doi.org/10.1146/annurev.earth.26.1.615"
+    },
+    {
+      "citation": "Gurnis et al. (2018), Global tectonic reconstructions with continuously deforming and evolving rigid plates",
+      "doi": "10.1016/j.cageo.2018.04.007",
+      "relevance": "Deforming regions are continuously evolving polygons tessellated by triangular meshes, tracking strain rate/cumulative strain; finite deformation zone geometry and modeling inputs are required.",
+      "type": "PRIMARY_METHOD_PAPER",
+      "url": "https://doi.org/10.1016/j.cageo.2018.04.007"
+    },
+    {
+      "citation": "McKenzie & Morgan (1969), Evolution of triple junctions",
+      "doi": "10.1038/224125a0",
+      "relevance": "Triple junctions can be stable or unstable depending on boundary configuration and plate motion; incidence alone does not define a common node velocity.",
+      "type": "PRIMARY_KINEMATIC_STUDY",
+      "url": "https://doi.org/10.1038/224125a0"
+    },
+    {
+      "citation": "Cronin (1992), Types and kinematic stability of triple junctions",
+      "doi": "10.1016/0040-1951(92)90391-I",
+      "relevance": "Stability depends on boundary types and evolving relative motions; instantaneous pairwise vectors alone do not establish stable junction evolution.",
+      "type": "PRIMARY_KINEMATIC_STUDY",
+      "url": "https://doi.org/10.1016/0040-1951(92)90391-I"
+    },
+    {
+      "citation": "pyGPlates Primer, Topological networks and deformation",
+      "relevance": "A network uses a boundary polygon, optional rigid blocks, deforming points and triangulation; it is a resolver/representation, not a physical law.",
+      "type": "OFFICIAL_TECHNICAL_DOCUMENTATION",
+      "url": "https://www.gplates.org/docs/pygplates/pygplates_primer"
+    }
+  ],
+  "model_families": [
+    {
+      "candidate": "choose v_boundary by weighted fit to vA/vB; store rA=vA-v_boundary and rB=vB-v_boundary",
+      "conservation_identity": "vB-vA = rB-rA; exact algebraically for any shared v_boundary",
+      "disposition": "ALGEBRAIC_DIAGNOSTIC_ONLY_NOT_SELECTED_AS_PHYSICAL_TRANSITION",
+      "family": "A_ZERO_WIDTH_SHARED_CENTERLINE_PLUS_RESIDUAL",
+      "why_insufficient": "A residual ledger alone has no finite spatial support, material mapping, or rule for how rigid-core geometry joins the shared interface. It can record unresolved displacement but cannot establish a physically valid partition transition or bounded capacity."
+    },
+    {
+      "disposition": "NOT_BOUND_PARAMETER_AND_PHYSICS_REQUIRED",
+      "family": "B_FINITE_WIDTH_DEFORMING_BOUNDARY_ZONE",
+      "why": "Requires interface width/footprint, support, mapping from plate-normal/shear displacement to strain/material motion, and constitutive or explicitly authorial capacity/threshold semantics. No such t0 zone exists; 1-degree cell width cannot stand in for a physical width."
+    },
+    {
+      "disposition": "GEOMETRY_BACKEND_CANDIDATE_NOT_BOUND_AS_ARCANA_LAW",
+      "family": "C_TRIANGULATED_DEFORMING_NETWORK",
+      "why": "GPlates-style networks represent finite regions with triangulation and track strain; they require network geometry and modeling choices. A mesh resolver does not supply ARCANA's causal rift/shortening/shear law or junction/event policy."
+    },
+    {
+      "disposition": "SELECTED_CURRENT_GOVERNED_POLICY",
+      "family": "D_ZERO_CAPACITY_FAIL_CLOSED",
+      "meaning": "Any supported nonzero relative boundary motion blocks positive physical evolution until an explicit boundary response/interface law and compatible junction policy are bound."
+    }
+  ],
+  "operator_split": {
+    "current_substate_authorized": false,
+    "historical_snapshot_policy": "CHECKPOINT_ONLY until process response has consumed all unresolved accommodation and externally valid partition checks pass",
+    "integrator_substate_possible_in_principle": true,
+    "reason": "Current state lacks a selected boundary velocity, finite deformation map, capacity/handoff, and junction residual allocation; merely storing relative displacement would be an unresolved bookkeeping record, not an evolved partition-valid state."
+  },
+  "parents": {
+    "canonical_t0_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "rift_law": "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING.json",
+    "shared_boundary_rule": "R6_SHARED_BOUNDARY_MOTION_AND_TOPOLOGY_CONTACT_RULE.json",
+    "t0_boundary_manifest": "R6_T0_SHARED_BOUNDARY_STATE_MANIFEST.json",
+    "t0_kinematic_census": "R6_SHARED_BOUNDARY_T0_KINEMATIC_CENSUS.json",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+  },
+  "prohibitions": {
+    "canonical_kinematics_changed": false,
+    "canonical_partition_changed": false,
+    "canonical_t0_changed": false,
+    "forward_evolution": false,
+    "future_geometry_created": false,
+    "oceanic_crust_created": false,
+    "opening_advanced": false,
+    "shortening_advanced": false,
+    "slip_advanced": false
+  },
+  "repository_baseline": {
+    "branch": "main",
+    "head": "592b1651b405363373590092e133bd25569d99a5",
+    "origin_main": "592b1651b405363373590092e133bd25569d99a5"
+  },
+  "schema": "R6_SHARED_BOUNDARY_DEFORMATION_LAW_CONTRACT_V1",
+  "scope": "R6 synthetic t0 boundary representation and proposed first substep only; no forward evolution",
+  "selected_semantics": {
+    "boundary_width": "UNKNOWN; no physical or numerical width assigned",
+    "centerline_velocity": "UNBOUND; no midpoint/half-stage, one-sided attachment, or least-squares motion selected",
+    "finite_width_required_for_family_B": true,
+    "minimum_missing_authority": "A physically governed mapping from relative plate displacement to shared-interface/material geometry and junction-compatible state; a finite-width zone is one candidate and would need its own width/support authority.",
+    "opening": "Existing cumulative local normal opening / rift progress is the sole progress source; no second opening accumulator. It is not a geometry accommodation law and is not advanced.",
+    "remeshing": "BLOCKED_NOT_REQUIRED_AT_T0; deterministic remesh policy must preserve identity/state and cannot create topology changes",
+    "rigid_plate_cores": "RETAINED_AS_T0_KINEMATIC_ABSTRACTION; no claim their entire future topological domains remain rigid",
+    "shared_boundary_network": "MASTER_TOPOLOGICAL_INTERFACE; polygons/domains are derived from a resolved network",
+    "shear": "NOT_MATERIALIZED; a future signed tangential displacement ledger would be kinematic only, not fault slip; no junction/remesh response exists.",
+    "shortening": "NOT_MATERIALIZED; a signed/positive convergence displacement could be an internal neutral ledger in a future authorized checkpoint, but it is not subduction, thickening, orogeny, or a positive-capacity law.",
+    "universal_finite_width_requirement_claimed": false
+  },
+  "verdict": "PASS_MODEL_FAMILY_ADJUDICATION__BLOCKED_FINITE_TIME_BOUNDARY_RESPONSE"
+}

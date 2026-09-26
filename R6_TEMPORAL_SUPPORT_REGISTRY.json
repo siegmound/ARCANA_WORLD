@@ -1,0 +1,41 @@
+{
+  "artifact": "R6_TEMPORAL_SUPPORT_REGISTRY_V0",
+  "schema_version": 1,
+  "source_clock": {
+    "path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+    "source_sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+    "coordinate": "age_ka",
+    "coordinate_sha256_little_endian_c_order": "1f7e2762a16c47544f708a74d0354050076ff9f7c95b2d0ee7000fec9cbb7839",
+    "count": 280,
+    "shape": [280],
+    "dtype": "float64",
+    "finite": true,
+    "ordering": "STRICTLY_DESCENDING_OLDER_TO_YOUNGER",
+    "duplicate_count": 0,
+    "minimum_ka": 0.0,
+    "maximum_ka": 200.0,
+    "clock_role": "HIGH_RESOLUTION_TIME_COORDINATE_ONLY",
+    "material_state_authority": false
+  },
+  "hard_authority_anchors_ka": [200, 125, 120, 20, 15, 14, 13, 12, 11, 10, 5, 0],
+  "hard_anchor_count": 12,
+  "exact_anchor_membership": true,
+  "interval_count": 11,
+  "temporal_record_roles": [
+    "PROVIDER_TIMESTAMP",
+    "AUTHORITY_ANCHOR",
+    "SIMULATION_CHECKPOINT",
+    "HISTORICAL_SNAPSHOT",
+    "EVENT_RECORD",
+    "REFINEMENT_ANCHOR",
+    "CONSUMER_CHECKPOINT"
+  ],
+  "semantic_separation": {
+    "provider_timestamp_equals_authority_anchor": false,
+    "provider_timestamp_equals_simulation_checkpoint": false,
+    "provider_timestamp_equals_consumer_checkpoint": false,
+    "r3_28_clock_is_material_state_authority": false
+  },
+  "interpolation_or_resampling_authorized": false,
+  "materialized_r6_scientific_snapshots": 0
+}

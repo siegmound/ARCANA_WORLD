@@ -1,0 +1,20 @@
+{
+  "artifact":"R6_FIRST_PHYSICAL_INTERVAL_READINESS_AFTER_PARAMETER_BINDING",
+  "schema_version":"1.0.0",
+  "binding_artifact":"R6_INITIAL_PLATE_KINEMATICS_AND_RIFT_PARAMETER_AUTHORITY_BINDING.json",
+  "t0_ma":210,
+  "evaluated_without_evolution":true,
+  "requirement_count":12,
+  "status_counts":{"BOUND":2,"BOUNDED_PRIOR":2,"FIRST_INTERVAL_NOT_REQUIRED":0,"DEFERRED_UNTIL_EVENT":0,"EXPLICIT_UNKNOWN_ALLOWED":3,"BLOCKED":5},
+  "checks":{"initial_plate_motions_fully_specified":false,"reference_frame_specified":true,"motion_segment_initializable":false,"adaptive_scheduler_can_determine_first_legal_dt":false,"t0_event_eligibility_census_executable":false,"rift_eligible_at_t0":"UNKNOWN_NOT_EVALUATED","if_no_rift_eligible_first_interval_can_run":false,"trigger_and_split_rules_bound_if_rift_eligible":false,"checkpoint_schema_can_be_created":true,"deterministic_replay_guaranteed":false},
+  "available":{"canonical_t0_payload_sha256":"a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c","t0_raster_state":"land/ocean, supported elevation, plate_id and crust_class; plate/province/boundary support remains coarse", "reference_frame":"Synthetic area-weighted no-net-rotation gauge semantics bound", "extensional_forcing_semantics":"Boundary-normal relative opening rate formula bound, value unavailable"},
+  "blockers":["P01: broad Earth aggregate RMS prior does not select per-plate vectors or a canonical motion realization", "P03: no causal rate-change rule or segment law", "P04: vector cell-union geometry is specified but not materialized/validated", "P05/P07: weakness unknown leaves event eligibility unknown", "P08/P09: initiation and split laws unbound; cannot prove they are safely deferrable", "P10: t0 event census lacks required state inputs", "P11: numerical step/error/event tolerances unbound", "P12: no supported joint prior/canonical parameter realization"],
+  "first_interval_executable":false,
+  "forward_physical_evolution_authorized":false,
+  "full_210ma_evolution_authorized":false,
+  "execution_contract_created":false,
+  "decision":"T0_VECTOR_PARTITION_AND_EVENT_ELIGIBILITY_BINDING_REQUIRED_BEFORE_REPLAY",
+  "verdict":"EARTH_PRIORS_BOUNDED__INITIAL_MOTION_AND_RIFT_CENSUS_REMAIN_UNBOUND",
+  "next_action":"R6_T0_VECTOR_PARTITION_AND_FIRST_INTERVAL_EVENT_ELIGIBILITY_BINDING",
+  "governance":{"scientific_trajectory_executed":false,"canonical_t0_modified":false,"a1_used_as_authority":false,"deep_required":false,"bathymetry_generated":false,"climate_required_for_initial_kinematics":false,"provider_acquired":false,"execution_indexes_mutated":false}
+}

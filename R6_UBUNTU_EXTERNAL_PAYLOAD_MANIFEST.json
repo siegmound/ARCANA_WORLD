@@ -1,0 +1,64 @@
+{
+  "schema": "R6_UBUNTU_EXTERNAL_PAYLOAD_MANIFEST_V1",
+  "canonical_payloads_unchanged": true,
+  "external_root_environment_variable": "ARCANA_EXTERNAL_ROOT",
+  "default_external_root": "sibling _ARCANA_EXTERNAL_SOURCES directory",
+  "payloads": [
+    {
+      "logical_name": "R6 canonical 210 Ma initial physical geography",
+      "relative_path": "r6/initial_world/r6run_85af40f36fcb86c23a3571744817780a28e22740f6eaa04ae432bfe7d21f7f65/R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+      "source_role": "canonical t0 physical payload; prerequisite for physical and junction diagnostics",
+      "required": true,
+      "bytes": 1169900,
+      "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+      "authority_status": "REGISTERED_HASH; REHASH UNAVAILABLE (filesystem access denied; permissions not changed)",
+      "ubuntu_location": "$ARCANA_EXTERNAL_ROOT/r6/initial_world/r6run_85af40f36fcb86c23a3571744817780a28e22740f6eaa04ae432bfe7d21f7f65/R6_INITIAL_PHYSICAL_GEOGRAPHY.npz"
+    },
+    {
+      "logical_name": "R6 t0 vector plate partition",
+      "relative_path": "r6/tectonic_t0/R6_T0_VECTOR_PLATE_PARTITION.npz",
+      "source_role": "canonical vector partition for t0 boundary and junction diagnostics",
+      "required": true,
+      "bytes": 5681184,
+      "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+      "authority_status": "ACQUIRED / VERIFIED LOCALLY",
+      "ubuntu_location": "$ARCANA_EXTERNAL_ROOT/r6/tectonic_t0/R6_T0_VECTOR_PLATE_PARTITION.npz"
+    },
+    {
+      "logical_name": "R6 initial-world HistoryStore",
+      "relative_path": "r6/initial_world/r6run_85af40f36fcb86c23a3571744817780a28e22740f6eaa04ae432bfe7d21f7f65/world_history",
+      "source_role": "nine-state external history-store materialization linked by the initial-world manifest",
+      "required": false,
+      "bytes": null,
+      "sha256": null,
+      "authority_status": "REGISTERED DIRECTORY; current filesystem access not established",
+      "ubuntu_location": "$ARCANA_EXTERNAL_ROOT/r6/initial_world/r6run_85af40f36fcb86c23a3571744817780a28e22740f6eaa04ae432bfe7d21f7f65/world_history"
+    },
+    {
+      "logical_name": "R3.28 high-resolution temporal clock source",
+      "relative_path": "outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz",
+      "source_role": "R6 bootstrap temporal support input; preserved source authority, not parent-material values",
+      "required": true,
+      "bytes": 975043,
+      "sha256": "16a48a3ec8736b4b6297186222d7274a5ce376085f27bfa9108d7ba5cd0ec99a",
+      "authority_status": "PRESENT / VERIFIED LOCALLY; Git-tracked repository input",
+      "ubuntu_location": "repository-relative outputs/v0_6D1_R3_28/R3_28_HIGH_RESOLUTION_POPULATION_REPLAY.npz"
+    },
+    {
+      "logical_name": "A1 210-0 Ma reference trajectory",
+      "relative_path": "references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz",
+      "source_role": "optional comparison/reference input for initial-world generation; not an R6 trajectory authority",
+      "required": false,
+      "bytes": 2928319,
+      "sha256": "9469118bff69cfc4a5bbfe398f382224f887d81a69581e3a654d08ea11fc604f",
+      "authority_status": "PRESENT / VERIFIED LOCALLY; Git-tracked, reference-only semantics",
+      "ubuntu_location": "repository-relative references/v0_6D1_R3/FULL_A1_REFERENCE_210_0Ma.npz"
+    }
+  ],
+  "migration_notes": [
+    "Copy non-Git files byte-for-byte and verify SHA256 before use.",
+    "Do not change permissions on the canonical t0 NPZ to make it rehashable.",
+    "A1 is reference-only and must not be copied as R6 history.",
+    "The R3.28 replay supplies a clock; it does not grant material-state authority."
+  ]
+}
