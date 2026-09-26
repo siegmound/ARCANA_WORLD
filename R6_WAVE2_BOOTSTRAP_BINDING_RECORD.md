@@ -42,4 +42,20 @@ Wave 1 regression plus Wave 2 interface tests pass. This establishes software re
 
 No first R6 scientific state was persisted: the canonical initial world, laws, and seed/ensemble lineage are unbound; the current scoped climate/hydrology evidence does not close those prerequisites. `R6_BOOTSTRAP_MANIFEST.json` therefore records a deterministic but explicitly unbound bootstrap identity and `scientific_execution_authorized=false`. No UNKNOWN value was changed to a number, and no current-state ledger or execution index was modified.
 
+## Historical manifest identity and dependency snapshot
+
+The manifest is an immutable Wave-2 bootstrap snapshot, not a live manifest
+whose hashes are expected to follow every later documentation edit. Its
+`identity.inputs.repository_identity` records the then-current `main` /
+`origin/main` baseline (`592b1651b405363373590092e133bd25569d99a5`). The
+dependency hashes bind to the Git tree captured in the portability-baseline
+commit `caf37cfc790f702c0cafc00c53e079236b7e294c`, which introduced the
+manifest. The distinction is explicit in the manifest's top-level
+`dependency_snapshot` metadata and does not change `bootstrap_identity_sha256`,
+run/history/branch IDs, or the historical runtime identity. Current edits to
+the two declared mutable strategy documents are validated against their
+historical Git blobs while all other dependencies must still match both the
+snapshot and current checkout. A later executable bootstrap must create a new
+governed identity; it must not rewrite this Wave-2 record.
+
 **Next action:** recover or govern a complete canonical initial-state package and bind its laws, event contracts, grid, runtime/configuration, and seed/ensemble lineage; refresh the targeted authority reconciliation against that package before authorizing any R6 science. Do not start a global climate/hydrology replay, BIOME4, soil, ecology, macrohistory, or provider acquisition from this checkpoint.

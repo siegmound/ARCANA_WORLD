@@ -1,5 +1,14 @@
 {
   "schema_version": "ARCANA_R6_BOOTSTRAP_MANIFEST_V0",
+  "manifest_semantics": "HISTORICAL_BOOTSTRAP_SNAPSHOT",
+  "dependency_snapshot": {
+    "commit": "caf37cfc790f702c0cafc00c53e079236b7e294c",
+    "meaning": "Git tree at the commit that introduced this manifest; dependency digests bind to this captured tree, not to mutable checkout files."
+  },
+  "mutable_checkout_dependencies": {
+    "docs/strategy/ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md": "Historical blob is verified at dependency_snapshot.commit; current objective charter may evolve without rewriting the Wave-2 identity.",
+    "docs/strategy/R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md": "Historical blob is verified at dependency_snapshot.commit; current architecture documentation may evolve without rewriting the Wave-2 identity."
+  },
   "dependency_checkout_sha256": {
     "policy": "Text dependencies are compared as strict UTF-8 after CRLF and lone-CR are canonicalized to LF; historical raw digests remain inside the immutable bootstrap identity.",
     "R5_17_B6_D2C1_SHORELINE_LAND_MASK_ADAPTER_ADJUDICATION.json": {

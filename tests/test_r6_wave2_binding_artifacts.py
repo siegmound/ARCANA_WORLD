@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 import numpy as np
@@ -15,6 +16,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def load(name: str):
     return json.loads((ROOT / name).read_text(encoding="utf-8"))
+
+
+def git_blob(commit: str, path: str) -> bytes:
+    return subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=ROOT)
 
 
 def test_wave2_authority_and_bootstrap_artifacts_are_consistent():
@@ -53,11 +58,27 @@ def test_wave2_authority_and_bootstrap_artifacts_are_consistent():
     for key in ("bootstrap_identity_sha256", "run_id", "history_id", "branch_id",
                 "canonical_initial_state_bound", "scientific_execution_authorized"):
         assert recomputed[key] == bootstrap[key]
+    assert bootstrap["manifest_semantics"] == "HISTORICAL_BOOTSTRAP_SNAPSHOT"
+    snapshot_commit = bootstrap["dependency_snapshot"]["commit"]
+    mutable_checkout_dependencies = set(bootstrap["mutable_checkout_dependencies"])
+    assert mutable_checkout_dependencies == {
+        "docs/strategy/ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md",
+        "docs/strategy/R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md",
+    }
     portable_text = bootstrap["dependency_checkout_sha256"]
     for relpath, digest in bootstrap["identity"]["inputs"]["dependency_sha256"].items():
+        snapshot_bytes = git_blob(snapshot_commit, relpath)
         if relpath in portable_text:
             checkout = portable_text[relpath]
             assert checkout["historical_raw_sha256"] == digest
+            assert hashlib.sha256(snapshot_bytes).hexdigest() == checkout["canonical_lf_sha256"]
             assert canonical_text_sha256(ROOT / relpath) == checkout["canonical_lf_sha256"]
+        else:
+            assert hashlib.sha256(snapshot_bytes).hexdigest() == digest
+
+        if relpath in mutable_checkout_dependencies:
+            continue
+        if relpath in portable_text:
+            assert canonical_text_sha256(ROOT / relpath) == portable_text[relpath]["canonical_lf_sha256"]
         else:
             assert hashlib.sha256((ROOT / relpath).read_bytes()).hexdigest() == digest
