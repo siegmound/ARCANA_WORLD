@@ -2,7 +2,7 @@
 
 **Status:** High-level architecture freeze; not an implementation or execution authorization  
 **Repository:** siegmound/ARCANA_WORLD  
-**Objective charter:** [`ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md`](ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md)  
+**Objective charter:** [`R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md`](R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md)
 **Architecture decisions:** conceptual responsibilities and contracts frozen; implementation choices explicitly deferred
 
 ## 1. Purpose and source boundary
@@ -13,7 +13,7 @@ This document freezes those architectural responsibilities and their interfaces.
 
 The architecture consumes:
 
-- the R6 World History Objective Charter, which fixes persistent queryable history, RAW-FIRST behavior, uncertainty, selective refinement, and `R5_R6_RECONCILIATION_REQUIRED = false`;
+- the R6 World History Objective Charter, which fixes persistent queryable history, RAW-FIRST behavior, uncertainty, selective refinement, bounded external-engine roles, and `R5_R6_RECONCILIATION_REQUIRED = false`; this 2026-09-26 objective reconciliation does not change the architectural decisions recorded here;
 - `ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md`, which makes human population emergent, treats resource access/technology/Deep as coupled determinants, and reserves macrohistorical mechanisms for separately authorized implementation;
 - `ARCANA_WORLD_CURRENT_STATE.md` as the R5/R5.17 status ledger, not as a blanket R6 input contract. Its internal R5/P7S entries describe distinct historical steps and are not promoted by this architecture;
 - the available HRAB architecture contract and adjudication, because the named `ARCANA_HIGH_RES_ANCHORBRIDGE_HANDOFF_2026-09-21.md` is not present in this checkout. HRAB permits a sparse temporal constraint/unknown-mask architecture, fixes older-to-younger causality, and does not claim full temporal parent-material state, general endpoint backcasting, categorical interpolation, or spatial resampling;

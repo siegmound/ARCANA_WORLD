@@ -1,18 +1,18 @@
-# ARCANA WorldSim — Original R6 Clean-Replay Objective Record
+# ARCANA WorldSim — R6 WORLD HISTORY OBJECTIVE CHARTER
 
-> **Provenance note (2026-09-26):** This document is retained as the original
-> objective record. The consolidated current objective is
-> [`R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md`](R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md),
-> which preserves this document's decisions and adds the bounded pyGPlates
-> capability record and reconciliation crosswalk. Read the consolidated
-> charter for current R6 objective interpretation.
-
-**Status:** Preserved predecessor objective text; consult the consolidated charter for current interpretation
-**Project:** ARCANA WorldSim  
+**Status:** Consolidated objective charter; not an implementation, architecture-freeze amendment, or execution authorization
+**Project:** ARCANA WorldSim
 **Repository:** siegmound/ARCANA_WORLD
 **Development/reference line:** R5
 **Target world-history line:** R6
 **Charter reconciliation date:** 2026-09-23
+
+This consolidated edition preserves and reconciles the objective recorded in
+[`ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md`](ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md).
+That earlier document is retained as provenance; this charter is the current
+objective-level reference. The architecture-freeze document remains a separate
+record of previously frozen high-level interfaces. This reconciliation makes
+no new architecture decision and does not itself freeze or unfreeze anything.
 
 ## 1. Objective
 
@@ -222,12 +222,24 @@ Every future implementation stage must identify its required authorities and pre
 This charter does not:
 
 - implement the R6 DAG or detailed model architecture;
+- authorize an architecture freeze or amend the separate existing architecture-freeze record;
 - select a database, storage format, query engine, or schema;
 - set timestep values, checkpoint schedules, or spatial resolutions;
+- create t1, choose dt, or select W_model;
 - close BIOME4 or other provider gaps;
 - authorize provider acquisition or scientific runs;
 - reopen P7S or HRAB;
+- reopen pyGPlates feasibility without a concrete downstream physical blocker;
 - authorize physical-soil completion, ecology, resource materialization, human simulation, or a downstream R5.17 stage.
+
+It also explicitly does not make the following project goals:
+
+- maximize detail everywhere;
+- impose a one-year global timestep;
+- manufacture high-resolution data through categorical or spatial upsampling;
+- require every provider gap to be closed before a consumer exists;
+- make pyGPlates or another external engine the scientific authority;
+- limit R6 to simulating humans or producing only a Year-0 state.
 
 R5 current-state and stage ledgers remain historical status authorities for R5. This charter does not rewrite or complete those stages.
 
@@ -237,9 +249,71 @@ R6 succeeds as a world-history system when its governed record can answer spatia
 
 The required result is not a single prescribed endpoint. It is a persistent, explainable, queryable, uncertainty-aware history whose natural, physical, resource, Deep, and human domains remain independently meaningful.
 
+## 15. Bounded external-engine role and pyGPlates evidence
+
+External engines may implement bounded calculations behind ARCANA-owned
+contracts. They do not define ARCANA scientific meaning, causal laws, event
+semantics, history/provenance rules, uncertainty, or canonicalization authority.
+An engine result is eligible only within its demonstrated capability and a
+separately governed adapter.
+
+The Fair result supplied with this reconciliation reports pyGPlates 1.0.0:
+
+- P1 synthetic deforming-network capability: PASS;
+- P2 canonical geometry materialization: PASS;
+- P2.2 topology section/network assembly: demonstrated, with resolution deferred;
+- P2.3 static canonical topological polygon resolution: PASS, with 12 plate
+  polygons, 1,983 shared boundary identities, 20 degree-3 junction identities,
+  zero junction-incidence mismatches, and all 64,800 canonical cell centres
+  covered exactly once by the expected plate; static resolution produced 12
+  topological boundaries without rotations, canonical mutation, or evolution.
+
+Record these results narrowly:
+
+```text
+PYGPLATES_STATIC_GEOMETRY_TOPOLOGY = SUFFICIENT
+PYGPLATES_SYNTHETIC_DEFORMING_NETWORK = SUFFICIENT
+PYGPLATES_CANONICAL_DYNAMIC_DEFORMATION = NOT_YET_VALIDATED
+```
+
+This is Fair evidence reported by the user, not a runtime rerun in this
+checkout. The checked-in diagnostic reports here identify the local pyGPlates
+runtime as unavailable; they do not independently reproduce the Fair result.
+The evidence supports a bounded geometry/topology/deformation-solver role only.
+It does not establish canonical dynamic deformation or authorize another
+feasibility stage absent a concrete downstream physical blocker.
+
+ARCANA retains authority over scientific/process interpretation, causal and
+event laws, Deep and historical-state semantics, uncertainty, provenance, and
+canonicalization. An external result remains model-derived evidence under
+those contracts.
+
+## 16. Reconciliation sources and provenance
+
+This objective is reconciled with:
+
+- `ARCANA_WORLD_POST_R5_16_MACROHISTORY_OBJECTIVE.md`, retained as the
+  human/civilization-focused post-R5.16 objective and Year-0 output slice, not
+  as a definition of the complete R6 product;
+- `ARCANA_WORLD_CURRENT_STATE.md`, retained as the R5/R5.17 status ledger, not
+  as an R6 simulation-state authority;
+- `R6_BIOME4_PRODUCTION_INPUT_CONTRACT.md` and `.json`, whose provider support
+  times and governed anchors do not automatically become consumer checkpoints;
+- the available P7Q/HRAB builder, adjudication, and architecture record. The
+  specifically named `ARCANA_HIGH_RES_ANCHORBRIDGE_HANDOFF_2026-09-21.md` is
+  absent from this checkout. The available equivalent preserves older-to-
+  younger causality, explicit UNKNOWN masks, native spatial support, and
+  endpoint-as-check-only semantics; it does not authorize backcasting,
+  categorical interpolation, or spatial upsampling.
+
+The macrohistory and R5 state documents remain intact as historical records.
+Where their narrower Year-0 or R5-stage scope differs from this charter, this
+charter governs the R6 product objective; it does not rewrite R5 status or
+retroactively change R5 authorities.
+
 ---
 
-**Historical charter status at 2026-09-23:** Reconciled as the R6 WORLD HISTORY objective; superseded as the current reference by `R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md` on 2026-09-26.
+**Charter status:** Consolidated objective charter; reconciled on 2026-09-23 and updated with engine-capability scope on 2026-09-26.
 **Implementation architecture:** Not frozen.
 **R5_R6_RECONCILIATION_REQUIRED:** false.
-**Recommended next action:** R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.
+**Architecture status:** This reconciliation neither requests nor authorizes architecture-freeze work; consult the separate architecture record.

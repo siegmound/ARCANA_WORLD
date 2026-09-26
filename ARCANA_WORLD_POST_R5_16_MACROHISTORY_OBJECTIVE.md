@@ -13,6 +13,14 @@ OBJECTIVE_STATUS: AUTHORIALLY_FIXED_FOR_POST_R5_16_PLANNING
 
 This document fixes the scientific destination for the post-R5.16 WorldSim program. It does not itself authorize or number the next implementation stage.
 
+> **R6 scope clarification (2026-09-26):** This macrohistory charter retains
+> its human/civilization emphasis and Year-0 reference as a downstream
+> objective slice. It does not define R6 as an endpoint-only product. The
+> governing R6 objective is the persistent, causal, cross-domain world history
+> in [`docs/strategy/R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md`](docs/strategy/R6_WORLD_HISTORY_OBJECTIVE_CHARTER.md).
+> Its Year-0 outputs remain useful derived queries over that history, not a
+> substitute for physical, Deep, ecological, resource, and human histories.
+
 ## Primary objective
 
 Build a simulation-derived macrohistorical reference from the SEALED WorldSim state to narrative Year 0 in which the large-scale human world emerges from the simulated planet rather than being prescribed in advance.
