@@ -10,7 +10,6 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import sys
-import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -78,10 +77,7 @@ def classify_finite_step(segment: dict) -> tuple[str, str]:
 
 
 def verify_inputs() -> tuple[dict, dict, dict, dict]:
-    require_repository_context(ROOT, required_ancestor=HEAD, expected_refs={"origin/main": HEAD})
-    for ref in ("origin/main",):
-        if subprocess.check_output(["git", "rev-parse", ref], cwd=ROOT, text=True).strip() != HEAD:
-            raise RuntimeError(f"unexpected {ref}")
+    require_repository_context(ROOT, required_ancestor=HEAD)
     verify_protected_staged_blobs(ROOT, INDEX_BLOBS)
     rule = read_json("R6_SHARED_BOUNDARY_MOTION_AND_TOPOLOGY_CONTACT_RULE.json")
     manifest = read_json("R6_T0_SHARED_BOUNDARY_STATE_MANIFEST.json")

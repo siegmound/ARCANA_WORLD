@@ -61,7 +61,7 @@ def git(*args: str) -> str:
 
 
 def verify_repo() -> None:
-    require_repository_context(ROOT, required_ancestor=HEAD, expected_refs={"origin/main": HEAD})
+    require_repository_context(ROOT, required_ancestor=HEAD)
     verify_protected_staged_blobs(ROOT, EXPECTED_INDEX)
     observed = {name: digest((ROOT / name).read_bytes()) if (ROOT / name).is_file() else None for name in PREIMAGE}
     if observed != PREIMAGE and observed != POSTIMAGE:

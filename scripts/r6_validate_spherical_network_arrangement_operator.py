@@ -55,10 +55,7 @@ def digest(path: Path) -> str:
 
 
 def check_authority() -> dict:
-    require_repository_context(ROOT, required_ancestor=HEAD, expected_refs={"origin/main": HEAD})
-    for ref in ("origin/main",):
-        if subprocess.check_output(["git", "rev-parse", ref], cwd=ROOT, text=True).strip() != HEAD:
-            raise RuntimeError(f"unexpected {ref}")
+    require_repository_context(ROOT, required_ancestor=HEAD)
     verify_protected_staged_blobs(ROOT, INDEX)
     parents = {
         "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233",

@@ -11,7 +11,6 @@ import json
 import math
 from pathlib import Path
 import sys
-import subprocess
 
 import numpy as np
 
@@ -82,11 +81,7 @@ def write_new_text(name: str, text: str) -> None:
 
 
 def verify_authorities() -> tuple[dict, dict, dict, dict]:
-    require_repository_context(ROOT, required_ancestor=HEAD, expected_refs={"origin/main": HEAD})
-    for ref in ("origin/main",):
-        actual = subprocess.check_output(["git", "rev-parse", ref], cwd=ROOT, text=True).strip()
-        if actual != HEAD:
-            raise RuntimeError(f"{ref} differs from governed baseline: {actual}")
+    require_repository_context(ROOT, required_ancestor=HEAD)
     verify_protected_staged_blobs(ROOT, INDEX_BLOBS)
     part = read_json("R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json")
     kin = read_json("R6_T0_CANONICAL_PLATE_KINEMATICS.json")

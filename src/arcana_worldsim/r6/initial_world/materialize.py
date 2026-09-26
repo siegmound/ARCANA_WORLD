@@ -148,7 +148,6 @@ def _git_value(repo: Path, *args: str) -> str:
 def _preflight(repo: Path) -> None:
     require_repository_context(
         repo, required_ancestor=EXPECTED_HEAD,
-        expected_refs={"origin/main": EXPECTED_HEAD},
     )
     verify_protected_staged_blobs(repo, PROTECTED_INDEX_BLOBS)
 

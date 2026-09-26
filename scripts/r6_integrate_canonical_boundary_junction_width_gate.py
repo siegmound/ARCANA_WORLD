@@ -34,8 +34,7 @@ def digest(path: Path) -> str:
 
 
 def check_repository() -> dict:
-    context = require_repository_context(ROOT, required_ancestor=HEAD,
-                                         expected_refs={"origin/main": HEAD})
+    context = require_repository_context(ROOT, required_ancestor=HEAD)
     verify_protected_staged_blobs(ROOT, INDEX_BLOBS)
     return {"branch": context.branch or f"DETACHED@{context.head[:12]}",
             "branch_name": context.branch, "detached": context.detached,

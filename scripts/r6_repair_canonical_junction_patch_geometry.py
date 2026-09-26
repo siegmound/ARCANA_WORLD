@@ -159,8 +159,7 @@ def main():
     args=parser.parse_args()
     branch=subprocess.check_output(["git","branch","--show-current"],cwd=ROOT,text=True).strip()
     head=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
-    origin=subprocess.check_output(["git","rev-parse","origin/main"],cwd=ROOT,text=True).strip()
-    context=require_repository_context(ROOT,required_ancestor=HEAD,expected_refs={"origin/main":HEAD})
+    context=require_repository_context(ROOT,required_ancestor=HEAD)
     branch=context.branch or f"DETACHED@{context.head[:12]}"
     head=context.head
     origin=context.refs.get("origin/main")

@@ -206,8 +206,7 @@ def _terrain_diagnostics(elevation: np.ndarray, land: np.ndarray,
 
 
 def main() -> int:
-    require_repository_context(ROOT, required_ancestor=EXPECTED_HEAD,
-                               expected_refs={"origin/main": EXPECTED_HEAD})
+    require_repository_context(ROOT, required_ancestor=EXPECTED_HEAD)
     verify_protected_staged_blobs(ROOT, EXPECTED_INDEX_BLOBS)
 
     package = json.loads((ROOT / "R6_CANONICAL_INITIAL_STATE_PACKAGE.json").read_text(encoding="utf-8"))

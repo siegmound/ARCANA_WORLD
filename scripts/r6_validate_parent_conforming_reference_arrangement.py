@@ -32,10 +32,7 @@ def digest(path: Path) -> str:
 
 
 def main() -> int:
-    require_repository_context(ROOT, required_ancestor=HEAD, expected_refs={"origin/main": HEAD})
-    for ref in ("origin/main",):
-        if subprocess.check_output(["git", "rev-parse", ref], cwd=ROOT, text=True).strip() != HEAD:
-            raise RuntimeError(f"unexpected {ref}")
+    require_repository_context(ROOT, required_ancestor=HEAD)
     staged = verify_protected_staged_blobs(ROOT, INDEX)
 
     manifest = json.loads((ROOT / "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json").read_text(encoding="utf-8"))

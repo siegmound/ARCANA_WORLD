@@ -42,12 +42,10 @@ def write_json(name: str, value: dict) -> None:
 def main() -> None:
     head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT,
                                    text=True).strip()
-    origin = subprocess.check_output(["git", "rev-parse", "origin/main"], cwd=ROOT,
-                                     text=True).strip()
     branch = subprocess.check_output(["git", "branch", "--show-current"], cwd=ROOT,
                                      text=True).strip()
-    context = require_repository_context(ROOT, required_ancestor=EXPECTED_HEAD,
-                                         expected_refs={"origin/main": EXPECTED_HEAD})
+    context = require_repository_context(ROOT, required_ancestor=EXPECTED_HEAD)
+    origin = context.refs.get("origin/main")
     verify_protected_staged_blobs(ROOT, INDEX)
     parent = read_json("R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json")
     parent_path = resolve_external_payload_path(ROOT, parent["payload"]["path"])

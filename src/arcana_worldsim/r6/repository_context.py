@@ -44,7 +44,11 @@ def repository_context(
     *,
     refs: tuple[str, ...] = ("origin/main",),
 ) -> RepositoryContext:
-    """Return repository identity; branch is provenance, never scientific authority."""
+    """Return repository identity; missing optional refs are recorded as ``None``.
+
+    Branch and remote-tracking refs are provenance only. Baseline authority is
+    established separately through commit ancestry in ``require_repository_context``.
+    """
     root = Path(repository_root).resolve()
     top = _git(root, "rev-parse", "--show-toplevel")
     if top is None or Path(top).resolve() != root:
@@ -67,23 +71,15 @@ def require_repository_context(
     repository_root: str | Path,
     *,
     expected_head: str | None = None,
-    expected_refs: dict[str, str] | None = None,
     required_ancestor: str | None = None,
     refs: tuple[str, ...] = ("origin/main",),
 ) -> RepositoryContext:
-    """Validate repository/root and optional commit ancestry, not branch names."""
-    names = tuple(dict.fromkeys((*refs, *(expected_refs or {}).keys())))
-    context = repository_context(repository_root, refs=names)
+    """Validate root and optional commit ancestry, never branch/ref naming."""
+    context = repository_context(repository_root, refs=refs)
     if expected_head is not None and context.head != expected_head:
         raise RuntimeError(
             f"unexpected HEAD: expected {expected_head}, found {context.head}"
         )
-    for ref, expected in (expected_refs or {}).items():
-        actual = context.refs.get(ref)
-        if actual != expected:
-            raise RuntimeError(
-                f"unexpected {ref}: expected {expected}, found {actual}"
-            )
     if required_ancestor is not None:
         root = Path(context.root)
         result = subprocess.run(

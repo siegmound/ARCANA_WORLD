@@ -69,8 +69,7 @@ def _run_git(*args: str) -> str:
 
 
 def _verify_repository() -> None:
-    require_repository_context(ROOT, required_ancestor=EXPECTED_HEAD,
-                               expected_refs={"origin/main": EXPECTED_HEAD})
+    require_repository_context(ROOT, required_ancestor=EXPECTED_HEAD)
     verify_protected_staged_blobs(ROOT, EXPECTED_INDEX_BLOBS)
 
 
