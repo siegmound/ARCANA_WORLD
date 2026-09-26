@@ -64,6 +64,7 @@ def test_wave2_authority_and_bootstrap_artifacts_are_consistent():
     assert mutable_checkout_dependencies == {
         "docs/strategy/ARCANA_R6_CANONICAL_CLEAN_REPLAY_OBJECTIVE.md",
         "docs/strategy/R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md",
+        "src/arcana_worldsim/r6/temporal.py",
     }
     portable_text = bootstrap["dependency_checkout_sha256"]
     for relpath, digest in bootstrap["identity"]["inputs"]["dependency_sha256"].items():

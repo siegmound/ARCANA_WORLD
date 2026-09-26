@@ -1,0 +1,47 @@
+{
+  "artifact": "R6_WORLD_HISTORY_CORE_CAPABILITY_RECONCILIATION",
+  "version": 1,
+  "branch_base": "cadbd7b5874d01770ceafc7571fc41e749ef58c2",
+  "frozen_architecture": "docs/strategy/R6_WORLD_HISTORY_ARCHITECTURE_FREEZE.md",
+  "historical_bootstrap_identity_mutated": false,
+  "scientific_execution_authorized": false,
+  "assessment_order": "CAPABILITY_RECONCILIATION_BEFORE_ADDITIONS",
+  "requirements": [
+    {"requirement":"canonical/scientific authority representation","existing":"state.AuthorityClass; provenance records; provider descriptors; authority anchors","status":"PARTIAL","gap":"No central current domain authority registry; historical bootstrap remains unbound."},
+    {"requirement":"state identity","existing":"DomainStateId content hash in state.py","status":"IMPLEMENTED","gap":null},
+    {"requirement":"historical-state envelope","existing":"DomainStateEnvelope with domain, time/space support, support/authority, value, uncertainty, provenance and parent IDs","status":"PARTIAL","gap":"No explicit model-derived flag, applicability metadata, conflict flags, event refs, or refinement lineage."},
+    {"requirement":"UNKNOWN / NOT_APPLICABLE / OUTSIDE_SCOPE","existing":"SupportClass; invalid values rejected; query status preserved","status":"IMPLEMENTED","gap":null},
+    {"requirement":"provenance","existing":"ProvenanceRecord and recursive HistoryStore.trace_provenance","status":"IMPLEMENTED","gap":null},
+    {"requirement":"uncertainty","existing":"JSON-frozen uncertainty mapping on state","status":"IMPLEMENTED","gap":"Uncertainty shape remains domain-defined, as intended."},
+    {"requirement":"six temporal object roles","existing":"Distinct record subclasses and TemporalAuthorityRegistry","status":"IMPLEMENTED","gap":"Event payload fields and refinement-branch metadata are not strongly surfaced."},
+    {"requirement":"HistoryStore","existing":"Append-only deterministic JSON file store for states, events, checkpoints, provenance, provider bindings and temporal records","status":"IMPLEMENTED","gap":"No typed iteration/query for event/checkpoint/refinement metadata."},
+    {"requirement":"query interface","existing":"HistoryQueryService.state_at; HistoryStore.find_states","status":"PARTIAL","gap":"HISTORY, SEARCH, LINEAGE, AVAILABLE_RESOLUTION, REFINEMENT_CANDIDATES operations absent."},
+    {"requirement":"event records","existing":"EventRecord inherits generic TemporalRecord with details mapping","status":"PARTIAL","gap":"No typed spatial support, trigger/cause, before/after, or causal dependency accessors."},
+    {"requirement":"checkpoint metadata","existing":"CheckpointEnvelope binds runtime, config digest, seeds, dependencies, restart/history states, validation and compatibility","status":"PARTIAL","gap":"No explicit parent checkpoint, authority inputs, provider manifests, engine versions, or output manifest fields."},
+    {"requirement":"refinement-anchor metadata","existing":"RefinementAnchor temporal role","status":"PARTIAL","gap":"No typed immutable refinement-branch record for base history, query scope, boundaries and output lineage."},
+    {"requirement":"domain registry","existing":"None in reusable R6 core; provider registry is not a domain registry","status":"MISSING","gap":"Architecture domain ownership, availability, binding, query and refinement metadata absent."},
+    {"requirement":"dependency graph","existing":"Conceptual graph in architecture JSON/document only","status":"MISSING","gap":"No executable graph or deterministic dependency closure."},
+    {"requirement":"causal-cone planning","existing":"Conceptual CAUSAL_CONE_PLANNER only","status":"MISSING","gap":"No deterministic region/time/domain refinement plan."},
+    {"requirement":"storage/retention class","existing":"None in reusable R6 core","status":"MISSING","gap":"Architecture retention classes not represented as typed metadata."},
+    {"requirement":"engine-role registry","existing":"ProviderRegistry; no solver role/authority registry","status":"MISSING","gap":"pyGPlates/BIOME4 bounded capabilities and current authorization status absent from executable metadata."},
+    {"requirement":"branch/refinement lineage","existing":"BranchId, state parent IDs, provenance lineage","status":"PARTIAL","gap":"No branch record tying parent history, anchor, region/time, requested domains/resolution, boundary conditions and provenance."}
+  ],
+  "reusable_implementation": [
+    "src/arcana_worldsim/r6/identity.py",
+    "src/arcana_worldsim/r6/state.py",
+    "src/arcana_worldsim/r6/temporal.py",
+    "src/arcana_worldsim/r6/provenance.py",
+    "src/arcana_worldsim/r6/store.py",
+    "src/arcana_worldsim/r6/query.py",
+    "src/arcana_worldsim/r6/checkpoint.py",
+    "src/arcana_worldsim/r6/registry.py"
+  ],
+  "deferred_scientific_implementation": [
+    "canonical initial-state binding",
+    "physical and domain laws",
+    "provider acquisition and scientific execution",
+    "dt, t1, W_model",
+    "forward evolution"
+  ],
+  "assessment": "CORE_GAPS_IDENTIFIED__IMPLEMENT_ONLY_REUSABLE_ARCHITECTURAL_FOUNDATIONS"
+}

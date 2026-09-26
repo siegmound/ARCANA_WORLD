@@ -57,6 +57,29 @@ class TemporalRecord:
                 "provenance_refs": list(self.provenance_refs),
                 "validation_status": self.validation_status, "details": thaw_json(self.details)}
 
+    @classmethod
+    def from_dict(cls, row: Mapping[str, Any]) -> "TemporalRecord":
+        if row.get("role") != cls.ROLE:
+            raise ValueError("temporal record role mismatch")
+        record = cls(str(row["record_id"]), str(row["history_id"]),
+            str(row["branch_id"]), str(row["time_key"]),
+            tuple(row.get("domain_ids", ())), tuple(row.get("state_ids", ())),
+            tuple(row.get("authority_refs", ())), tuple(row.get("provenance_refs", ())),
+            str(row.get("validation_status", "NOT_VALIDATED")), row.get("details", {}))
+        body = {"role": cls.ROLE, "history_id": record.history_id,
+            "branch_id": record.branch_id, "time_key": record.time_key,
+            "domain_ids": list(record.domain_ids), "state_ids": list(record.state_ids),
+            "authority_refs": list(record.authority_refs),
+            "provenance_refs": list(record.provenance_refs),
+            "validation_status": record.validation_status,
+            "details": thaw_json(record.details)}
+        digest = sha256(json.dumps(body, sort_keys=True, separators=(",", ":"),
+            ensure_ascii=False, allow_nan=False).encode()).hexdigest()
+        expected = str(EventId.from_payload(body)) if cls.ROLE == "EVENT_RECORD" else f"{cls.ROLE.lower()}_{digest}"
+        if expected != record.record_id:
+            raise ValueError("temporal record identity does not match content")
+        return record
+
 
 @dataclass(frozen=True, slots=True)
 class AuthorityAnchor(TemporalRecord):
@@ -81,6 +104,63 @@ class HistoricalSnapshot(TemporalRecord):
 @dataclass(frozen=True, slots=True)
 class EventRecord(TemporalRecord):
     ROLE: ClassVar[str] = "EVENT_RECORD"
+
+    @classmethod
+    def create(cls, *, history_id: str, branch_id: str, time_key: str,
+               domain_ids: tuple[str, ...] = (), state_ids: tuple[str, ...] = (),
+               authority_refs: tuple[str, ...] = (), provenance_refs: tuple[str, ...] = (),
+               validation_status: str = "NOT_VALIDATED",
+               details: Mapping[str, Any] | None = None,
+               temporal_support: Mapping[str, Any] | None = None,
+               spatial_support: Mapping[str, Any] | None = None,
+               trigger_ref: str | None = None, cause_ref: str | None = None,
+               before_state_ids: tuple[str, ...] = (), after_state_ids: tuple[str, ...] = (),
+               causal_dependency_ids: tuple[str, ...] = ()) -> "EventRecord":
+        contract = {"temporal_support": dict(temporal_support or {"time_key": time_key}),
+                    "spatial_support": dict(spatial_support or {}),
+                    "trigger_ref": trigger_ref, "cause_ref": cause_ref,
+                    "before_state_ids": list(before_state_ids),
+                    "after_state_ids": list(after_state_ids),
+                    "causal_dependency_ids": list(causal_dependency_ids)}
+        event_details = dict(details or {})
+        event_details["event_contract"] = contract
+        states = tuple(dict.fromkeys((*state_ids, *before_state_ids, *after_state_ids)))
+        return TemporalRecord.create.__func__(cls, history_id=history_id, branch_id=branch_id,
+            time_key=time_key, domain_ids=domain_ids, state_ids=states,
+            authority_refs=authority_refs, provenance_refs=provenance_refs,
+            validation_status=validation_status, details=event_details)
+
+    @property
+    def event_contract(self) -> Mapping[str, Any]:
+        return self.details.get("event_contract", {})
+
+    @property
+    def temporal_support(self) -> Mapping[str, Any]:
+        return self.event_contract.get("temporal_support", {})
+
+    @property
+    def spatial_support(self) -> Mapping[str, Any]:
+        return self.event_contract.get("spatial_support", {})
+
+    @property
+    def trigger_ref(self) -> str | None:
+        return self.event_contract.get("trigger_ref")
+
+    @property
+    def cause_ref(self) -> str | None:
+        return self.event_contract.get("cause_ref")
+
+    @property
+    def before_state_ids(self) -> tuple[str, ...]:
+        return tuple(self.event_contract.get("before_state_ids", ()))
+
+    @property
+    def after_state_ids(self) -> tuple[str, ...]:
+        return tuple(self.event_contract.get("after_state_ids", ()))
+
+    @property
+    def causal_dependency_ids(self) -> tuple[str, ...]:
+        return tuple(self.event_contract.get("causal_dependency_ids", ()))
 
 
 @dataclass(frozen=True, slots=True)

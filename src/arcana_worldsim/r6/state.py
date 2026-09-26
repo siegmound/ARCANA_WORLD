@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Mapping
 
 from .identity import BranchId, DomainStateId, HistoryId, freeze_json, thaw_json
 
-STATE_SCHEMA = "ARCANA_R6_DOMAIN_STATE_V0"
+STATE_SCHEMA = "ARCANA_R6_DOMAIN_STATE_V1"
+LEGACY_STATE_SCHEMA = "ARCANA_R6_DOMAIN_STATE_V0"
 
 
 class SupportClass(str, Enum):
@@ -82,9 +83,14 @@ class DomainStateEnvelope:
     parent_state_ids: tuple[str, ...] = ()
     payload_ref: str | None = None
     schema_version: str = STATE_SCHEMA
+    model_derived: bool = False
+    applicability: Mapping[str, Any] = field(default_factory=dict)
+    conflict_flags: tuple[str, ...] = ()
+    event_refs: tuple[str, ...] = ()
+    refinement_lineage: Mapping[str, Any] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
-        if self.schema_version != STATE_SCHEMA:
+        if self.schema_version not in {STATE_SCHEMA, LEGACY_STATE_SCHEMA}:
             raise ValueError(f"unsupported state schema: {self.schema_version}")
         if not self.history_id or not self.branch_id or not self.domain:
             raise ValueError("history, branch, and domain are required")
@@ -94,6 +100,10 @@ class DomainStateEnvelope:
         object.__setattr__(self, "uncertainty", freeze_json(self.uncertainty))
         object.__setattr__(self, "provenance_ids", tuple(self.provenance_ids))
         object.__setattr__(self, "parent_state_ids", tuple(self.parent_state_ids))
+        object.__setattr__(self, "applicability", freeze_json(self.applicability))
+        object.__setattr__(self, "conflict_flags", tuple(self.conflict_flags))
+        object.__setattr__(self, "event_refs", tuple(self.event_refs))
+        object.__setattr__(self, "refinement_lineage", freeze_json(self.refinement_lineage))
         if self.support_class in {SupportClass.UNKNOWN, SupportClass.NOT_APPLICABLE,
                                   SupportClass.OUTSIDE_SCOPE} and self.value is not None:
             raise ValueError(f"{self.support_class.value} must not carry a state value")
@@ -108,6 +118,12 @@ class DomainStateEnvelope:
             "provenance_ids": list(self.provenance_ids),
             "parent_state_ids": list(self.parent_state_ids), "payload_ref": self.payload_ref,
         }
+        if self.schema_version == STATE_SCHEMA:
+            identity_body.update({"model_derived": self.model_derived,
+                                  "applicability": thaw_json(self.applicability),
+                                  "conflict_flags": list(self.conflict_flags),
+                                  "event_refs": list(self.event_refs),
+                                  "refinement_lineage": thaw_json(self.refinement_lineage)})
         if DomainStateId.from_payload(identity_body) != self.state_id:
             raise ValueError("state identity does not match state content")
 
@@ -118,7 +134,10 @@ class DomainStateEnvelope:
                value: Any = None, uncertainty: Mapping[str, Any] | None = None,
                provenance_ids: tuple[str, ...] = (),
                parent_state_ids: tuple[str, ...] = (),
-               payload_ref: str | None = None) -> "DomainStateEnvelope":
+               payload_ref: str | None = None, model_derived: bool = False,
+               applicability: Mapping[str, Any] | None = None,
+               conflict_flags: tuple[str, ...] = (), event_refs: tuple[str, ...] = (),
+               refinement_lineage: Mapping[str, Any] | None = None) -> "DomainStateEnvelope":
         body = {
             "schema_version": STATE_SCHEMA, "history_id": history_id,
             "branch_id": branch_id, "domain": domain,
@@ -131,13 +150,22 @@ class DomainStateEnvelope:
             "parent_state_ids": list(parent_state_ids),
             "payload_ref": payload_ref,
         }
-        return cls(DomainStateId.from_payload(body), history_id, branch_id, domain,
-                   time_support, spatial_support, support_class, authority_class,
-                   value, uncertainty or {}, provenance_ids, parent_state_ids,
-                   payload_ref)
+        body.update({"model_derived": model_derived,
+                     "applicability": thaw_json(freeze_json(applicability or {})),
+                     "conflict_flags": list(conflict_flags), "event_refs": list(event_refs),
+                     "refinement_lineage": thaw_json(freeze_json(refinement_lineage or {}))})
+        return cls(state_id=DomainStateId.from_payload(body), history_id=history_id,
+                   branch_id=branch_id, domain=domain, time_support=time_support,
+                   spatial_support=spatial_support, support_class=support_class,
+                   authority_class=authority_class, value=value,
+                   uncertainty=uncertainty or {}, provenance_ids=provenance_ids,
+                   parent_state_ids=parent_state_ids, payload_ref=payload_ref,
+                   model_derived=model_derived, applicability=applicability or {},
+                   conflict_flags=conflict_flags, event_refs=event_refs,
+                   refinement_lineage=refinement_lineage or {})
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        result = {
             "schema_version": self.schema_version, "state_id": str(self.state_id),
             "history_id": self.history_id, "branch_id": self.branch_id,
             "domain": self.domain, "time_support": self.time_support.to_dict(),
@@ -149,10 +177,17 @@ class DomainStateEnvelope:
             "parent_state_ids": list(self.parent_state_ids),
             "payload_ref": self.payload_ref,
         }
+        if self.schema_version == STATE_SCHEMA:
+            result.update({"model_derived": self.model_derived,
+                           "applicability": thaw_json(self.applicability),
+                           "conflict_flags": list(self.conflict_flags),
+                           "event_refs": list(self.event_refs),
+                           "refinement_lineage": thaw_json(self.refinement_lineage)})
+        return result
 
     @classmethod
     def from_dict(cls, row: Mapping[str, Any]) -> "DomainStateEnvelope":
-        if row.get("schema_version") != STATE_SCHEMA:
+        if row.get("schema_version") not in {STATE_SCHEMA, LEGACY_STATE_SCHEMA}:
             raise ValueError("state schema version mismatch")
         spatial = row["spatial_support"]
         state = cls(
@@ -165,15 +200,34 @@ class DomainStateEnvelope:
             row.get("value"), row.get("uncertainty", {}),
             tuple(row.get("provenance_ids", ())), tuple(row.get("parent_state_ids", ())),
             row.get("payload_ref"), str(row["schema_version"]),
+            bool(row.get("model_derived", False)) if row["schema_version"] == STATE_SCHEMA else False,
+            row.get("applicability", {}) if row["schema_version"] == STATE_SCHEMA else {},
+            tuple(row.get("conflict_flags", ())) if row["schema_version"] == STATE_SCHEMA else (),
+            tuple(row.get("event_refs", ())) if row["schema_version"] == STATE_SCHEMA else (),
+            row.get("refinement_lineage", {}) if row["schema_version"] == STATE_SCHEMA else {},
         )
-        expected = cls.create(
+        if state.schema_version == LEGACY_STATE_SCHEMA:
+            expected_body = {"schema_version": state.schema_version,
+                "history_id": state.history_id, "branch_id": state.branch_id,
+                "domain": state.domain, "time_support": state.time_support.to_dict(),
+                "spatial_support": state.spatial_support.to_dict(),
+                "support_class": state.support_class.value,
+                "authority_class": state.authority_class.value,
+                "value": thaw_json(state.value), "uncertainty": thaw_json(state.uncertainty),
+                "provenance_ids": list(state.provenance_ids),
+                "parent_state_ids": list(state.parent_state_ids), "payload_ref": state.payload_ref}
+            expected = DomainStateId.from_payload(expected_body)
+        else:
+            expected = cls.create(
             history_id=state.history_id, branch_id=state.branch_id, domain=state.domain,
             time_support=state.time_support, spatial_support=state.spatial_support,
             support_class=state.support_class, authority_class=state.authority_class,
             value=state.value, uncertainty=state.uncertainty,
             provenance_ids=state.provenance_ids, parent_state_ids=state.parent_state_ids,
             payload_ref=state.payload_ref,
-        ).state_id
+            model_derived=state.model_derived, applicability=state.applicability,
+            conflict_flags=state.conflict_flags, event_refs=state.event_refs,
+            refinement_lineage=state.refinement_lineage).state_id
         if str(expected) != str(state.state_id):
             raise ValueError("state identity does not match serialized content")
         return state

@@ -53,7 +53,7 @@ commit `caf37cfc790f702c0cafc00c53e079236b7e294c`, which introduced the
 manifest. The distinction is explicit in the manifest's top-level
 `dependency_snapshot` metadata and does not change `bootstrap_identity_sha256`,
 run/history/branch IDs, or the historical runtime identity. Current edits to
-the two declared mutable strategy documents are validated against their
+the two declared mutable strategy documents and the temporal software module are validated against their
 historical Git blobs while all other dependencies must still match both the
 snapshot and current checkout. A later executable bootstrap must create a new
 governed identity; it must not rewrite this Wave-2 record.

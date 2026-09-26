@@ -8,7 +8,7 @@ import json
 import os
 import tempfile
 
-from .checkpoint import CheckpointEnvelope
+from .checkpoint import CheckpointEnvelope, RefinementBranchEnvelope
 from .identity import canonical_bytes
 from .provenance import ProvenanceIntegrityError, ProvenanceRecord
 from .state import DomainStateEnvelope
@@ -110,6 +110,30 @@ class HistoryStore:
 
     def read_temporal(self, record_id: str) -> dict[str, Any]:
         return self._read("temporal", record_id)
+
+    def events(self) -> tuple[EventRecord, ...]:
+        return tuple(EventRecord.from_dict(row) for row in self._all("events"))
+
+    def temporal_records(self, *, role: str | None = None) -> tuple[dict[str, Any], ...]:
+        rows = self._all("temporal")
+        if role is not None:
+            rows = [row for row in rows if row.get("role") == role]
+        return tuple(rows)
+
+    def checkpoints(self) -> tuple[CheckpointEnvelope, ...]:
+        return tuple(CheckpointEnvelope.from_dict(row) for row in self._all("checkpoints"))
+
+    def append_refinement_branch(self, branch: RefinementBranchEnvelope) -> str:
+        key = str(branch.branch_id)
+        self._write("refinement_branches", key, branch.to_dict())
+        return key
+
+    def read_refinement_branch(self, branch_id: str) -> RefinementBranchEnvelope:
+        return RefinementBranchEnvelope.from_dict(self._read("refinement_branches", branch_id))
+
+    def refinement_branches(self) -> tuple[RefinementBranchEnvelope, ...]:
+        return tuple(RefinementBranchEnvelope.from_dict(row)
+                     for row in self._all("refinement_branches"))
 
     def find_states(self, *, history_id: str, branch_id: str | None = None,
                     domain: str | None = None, time_key: str | None = None,
