@@ -130,6 +130,151 @@ def _plate_boundary_rings(data: MappingInput) -> dict[int, list[list[tuple[float
     return rings_by_plate
 
 
+def ordered_boundary_sections(data: MappingInput) -> dict[int, list[dict[str, Any]]]:
+    """Order shared boundary IDs into one oriented ring for each plate.
+
+    ``reverse_order`` is relative to the canonical PolylineOnSphere direction
+    emitted by ``_boundary_endpoints``. Each source edge must occur in exactly
+    two plate rings with opposite orientations.
+    """
+    import numpy as np
+
+    a = data.arrays
+    plate_grid = np.full((180, 360), -1, dtype=np.int16)
+    for row, col, plate_id in zip(a["face_row"], a["face_col"], a["face_plate_id"]):
+        plate_grid[int(row), int(col)] = int(plate_id)
+    if (plate_grid < 0).any():
+        raise ValueError("canonical face rows/columns do not cover the 180x360 grid")
+
+    def node(y: int, x: int) -> tuple[int, int]:
+        return (y, 0) if y in (0, 180) else (y, x % 360)
+
+    edges_by_plate: dict[int, list[tuple[tuple[int, int], tuple[int, int], int, bool]]] = defaultdict(list)
+    edge_keys: set[tuple[int, int, int]] = set()
+    records = zip(
+        a["boundary_edge_row"], a["boundary_edge_col"], a["boundary_edge_axis"],
+        a["boundary_plate_a"], a["boundary_plate_b"],
+    )
+    for index, (row, col, axis, plate_a, plate_b) in enumerate(records):
+        row_i, col_i, axis_i = int(row), int(col), int(axis)
+        key = (row_i, col_i, axis_i)
+        if key in edge_keys:
+            raise ValueError(f"duplicate canonical boundary identity: {key}")
+        edge_keys.add(key)
+        if axis_i == 0:
+            west_id = int(plate_grid[row_i, col_i])
+            east_id = int(plate_grid[row_i, (col_i + 1) % 360])
+            start, end = node(row_i, col_i + 1), node(row_i + 1, col_i + 1)
+            sides = {west_id, east_id}
+            edges_by_plate[west_id].append((start, end, index, False))
+            edges_by_plate[east_id].append((end, start, index, True))
+        elif axis_i == 1:
+            south_id = int(plate_grid[row_i, col_i])
+            north_id = int(plate_grid[row_i + 1, col_i])
+            start, end = node(row_i + 1, col_i), node(row_i + 1, col_i + 1)
+            sides = {south_id, north_id}
+            edges_by_plate[north_id].append((start, end, index, False))
+            edges_by_plate[south_id].append((end, start, index, True))
+        else:
+            raise ValueError(f"unsupported canonical boundary axis: {axis_i}")
+        if len(sides) != 2 or sides != {int(plate_a), int(plate_b)}:
+            raise ValueError(f"boundary identity {key} disagrees with adjacent canonical faces")
+    if len(edge_keys) != len(a["boundary_edge_row"]):
+        raise ValueError("canonical boundary identities are not unique")
+
+    sections_by_plate: dict[int, list[dict[str, Any]]] = {}
+    for plate_id in sorted({int(value) for value in a["face_plate_id"]}):
+        edges = edges_by_plate[plate_id]
+        outgoing: dict[tuple[int, int], tuple[tuple[int, int], int, bool]] = {}
+        incoming = Counter(end for _, end, _, _ in edges)
+        for start, end, index, reverse_order in edges:
+            if start in outgoing:
+                raise ValueError(f"plate {plate_id} boundary branches at {start}")
+            outgoing[start] = (end, index, reverse_order)
+        if set(outgoing) != set(incoming) or any(count != 1 for count in incoming.values()):
+            raise ValueError(f"plate {plate_id} boundary is open or branched")
+
+        current = min(outgoing)
+        start = current
+        section_refs = []
+        visited_edges: set[int] = set()
+        while True:
+            if current not in outgoing:
+                raise ValueError(f"plate {plate_id} boundary leaves its graph at {current}")
+            end, index, reverse_order = outgoing[current]
+            if index in visited_edges:
+                raise ValueError(f"plate {plate_id} boundary reuses edge index {index}")
+            visited_edges.add(index)
+            section_refs.append({"boundary_index": index, "reverse_order": reverse_order})
+            current = end
+            if current == start:
+                break
+        if len(visited_edges) != len(edges):
+            raise ValueError(f"plate {plate_id} boundary does not form exactly one closed ring")
+        sections_by_plate[plate_id] = section_refs
+
+    references: dict[int, list[bool]] = defaultdict(list)
+    for section_refs in sections_by_plate.values():
+        for ref in section_refs:
+            references[ref["boundary_index"]].append(ref["reverse_order"])
+    if len(references) != len(edge_keys) or any(sorted(flags) != [False, True] for flags in references.values()):
+        raise ValueError("shared boundary edges are not referenced twice with opposite orientations")
+    return sections_by_plate
+
+
+def construct_static_topological_polygons(data: MappingInput, pygplates: Any) -> dict[str, Any]:
+    """Create 12 static topological polygons over the shared canonical edges."""
+    a = data.arrays
+    sections_by_plate = ordered_boundary_sections(data)
+    boundary_features = []
+    boundary_identities = []
+    for row, col, axis in zip(
+        a["boundary_edge_row"], a["boundary_edge_col"], a["boundary_edge_axis"]
+    ):
+        row_i, col_i, axis_i = int(row), int(col), int(axis)
+        geometry = pygplates.PolylineOnSphere(_boundary_endpoints(row_i, col_i, axis_i))
+        boundary_features.append(_feature(
+            pygplates, geometry,
+            f"R6_T0_EDGE_R{row_i:03d}_C{col_i:03d}_A{axis_i}",
+        ))
+        boundary_identities.append((row_i, col_i, axis_i))
+
+    topological_features_by_plate: dict[int, Any] = {}
+    for plate_id, refs in sections_by_plate.items():
+        sections = []
+        for ref in refs:
+            section = pygplates.GpmlTopologicalSection.create(
+                boundary_features[ref["boundary_index"]],
+                reverse_order=ref["reverse_order"],
+                topological_geometry_type=pygplates.GpmlTopologicalPolygon,
+            )
+            if section is None:
+                raise ValueError(
+                    f"pyGPlates rejected boundary section {ref['boundary_index']} for plate {plate_id}"
+                )
+            sections.append(section)
+        topological_polygon = pygplates.GpmlTopologicalPolygon(sections)
+        feature = pygplates.Feature.create_topological_feature(
+            pygplates.FeatureType.gpml_topological_closed_plate_boundary,
+            topological_polygon,
+        )
+        feature.set_reconstruction_plate_id(plate_id)
+        feature.set_name(f"R6_T0_TOPOLOGICAL_PLATE_{plate_id}")
+        topological_features_by_plate[plate_id] = feature
+
+    junction_points = {
+        record["junction_id"]: pygplates.PointOnSphere(*_junction_lat_lon(record["vertex_id"]))
+        for record in data.junction_census["junctions"]
+    }
+    return {
+        "boundary_support_features": boundary_features,
+        "boundary_identities": boundary_identities,
+        "topological_features_by_plate": topological_features_by_plate,
+        "sections_by_plate": sections_by_plate,
+        "junction_points": junction_points,
+    }
+
+
 def construct_geometry_candidates(data: MappingInput, pygplates: Any) -> dict[str, Any]:
     """Construct face polygons, support lines and named junction points.
 

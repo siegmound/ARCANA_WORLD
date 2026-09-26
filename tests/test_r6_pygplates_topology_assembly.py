@@ -30,7 +30,7 @@ def _data():
         inventory={"plate_count": 12, "face_count": 64800,
                    "boundary_segment_count": 1983, "junction_count": 20},
         junction_census=census,
-        manifest={"payload": {"sha256": "a" * 64}},
+        manifest={"time_ma": 210.0, "payload": {"sha256": "a" * 64}},
         arrays={
             "face_row": [0] * 64800,
             "face_col": list(range(64800)),
@@ -70,17 +70,18 @@ def test_governance_guards_forbid_physical_or_canonical_changes():
     assert all(value is False for value in governance_flags().values())
 
 
-def test_network_section_uses_explicit_network_type_and_no_motion_assignment():
+def test_topology_sections_use_explicit_type_without_boundary_side_assignment():
     tree = ast.parse(ADAPTER.read_text(encoding="utf-8"))
     creates = [node for node in ast.walk(tree) if isinstance(node, ast.Call)
                and isinstance(node.func, ast.Attribute)
                and node.func.attr == "create"
                and isinstance(node.func.value, ast.Attribute)
                and node.func.value.attr == "GpmlTopologicalSection"]
-    assert len(creates) == 1
-    assert any(keyword.arg == "topological_geometry_type" for keyword in creates[0].keywords)
+    assert len(creates) == 2
+    assert all(any(keyword.arg == "topological_geometry_type" for keyword in call.keywords)
+               for call in creates)
     adapter_source = ADAPTER.read_text(encoding="utf-8")
-    assert "set_reconstruction_plate_id" not in adapter_source
+    assert adapter_source.count("set_reconstruction_plate_id") == 1
     assert "create_total_reconstruction_sequence" not in adapter_source
 
 

@@ -26,6 +26,8 @@ def validate_topology_input(data: Any) -> dict[str, int]:
     if any(len(record.get("incident_plate_ids", ())) != 3
            for record in data.junction_census["junctions"]):
         raise ValueError("canonical junction record does not identify three incident plates")
+    if float(data.manifest.get("time_ma")) != 210.0:
+        raise ValueError("static topology probe requires canonical ARCANA t0 at 210 Ma")
     return {
         "plate_count": EXPECTED_PLATES,
         "face_count": EXPECTED_FACES,
@@ -43,6 +45,7 @@ def governance_flags() -> dict[str, bool]:
         "strain_created": False,
         "w_model_selected": False,
         "dt_authorized": False,
+        "rift_advanced": False,
         "forward_evolution": False,
         "pygplates_scientific_authority": False,
     }

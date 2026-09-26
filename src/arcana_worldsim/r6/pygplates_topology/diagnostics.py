@@ -56,3 +56,30 @@ def render_markdown(report: dict[str, Any]) -> str:
         "This is a noncanonical compatibility diagnostic. It assigns no rotations, velocity, strain, W_model, dt, or forward evolution.",
         "",
     ])
+
+
+def render_static_topology_markdown(report: dict[str, Any]) -> str:
+    coverage = report["coverage"]
+    lines = [
+        "# R6 pyGPlates static canonical topology resolution",
+        "",
+        f"- Status: **{report['status']}**",
+        f"- Decision: `{report['decision']}`",
+        f"- pyGPlates: `{report.get('pygplates_version') or 'unavailable'}`",
+        f"- ARCANA t0: {report['arcana_time_ma']} Ma; diagnostic epoch: {report['pygplates_diagnostic_epoch']}",
+        f"- Topological polygons: {report['topological_polygon_features_created']} / {report['topological_polygon_features_expected']}",
+        f"- Shared boundaries: {report['boundary_support_features']}; unique identities: {report['unique_boundary_identities']}",
+        f"- Resolved boundaries: {report['resolved_topological_boundaries']}; networks: {report['resolved_topological_networks']}",
+        f"- Empty rotation model: `{report['empty_rotation_model_used']}`; rotations assigned: `{report['rotations_assigned']}`",
+        f"- Resolution attempted/succeeded: `{report['resolution_attempted']}` / `{report['resolution_succeeded']}`",
+        f"- Resolution error: `{report['resolution_error'] or 'none'}`",
+        f"- Identity preserved (plate/boundary/junction): `{report['plate_identity_preserved']}` / `{report['boundary_identity_preserved']}` / `{report['junction_identity_preserved']}`",
+        f"- Junction incidence validation: `{report['junction_incidence_validation']}`; mismatches: `{report['junction_incidence_mismatches']}`",
+        f"- Cell centres tested: {coverage['cell_centres_tested']}; uncovered: {coverage['uncovered_cell_centres']}; multiple: {coverage['multiply_covered_cell_centres']}; wrong plate: {coverage['wrong_plate_cell_centres']}",
+        f"- Repeatability: `{report['repeatability']}`; SHA-256 `{report['repeatability_sha256']}`",
+        f"- Exact curve semantics: `{report['exact_curve_semantics']}`",
+        "",
+        "This report is a noncanonical diagnostic. It does not assign motion or alter R6 scientific state.",
+        "",
+    ]
+    return "\n".join(lines)
