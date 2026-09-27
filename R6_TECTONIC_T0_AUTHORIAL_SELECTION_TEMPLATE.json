@@ -1,0 +1,59 @@
+{
+  "artifact": "R6_TECTONIC_T0_AUTHORIAL_SELECTION_TEMPLATE",
+  "schema_version": "1.0.0",
+  "status": "TEMPLATE_ONLY_NO_WORLD_SELECTION_MADE",
+  "t0_ma": 210,
+  "defaults_policy": "NONE; null means AUTHORIAL_SELECTION_REQUIRED and blocks materialization of dependent fields.",
+  "choices": [
+    {
+      "choice_id": "OCEAN_SURFACE_RESIDUAL",
+      "primitive_id": "OCEAN_SURFACE_SUPPORT",
+      "physical_meaning": "Long-wavelength residual ocean-floor elevation after any explicitly selected age-derived thermal/isostatic component; separate authority tags for model component, authored residual and unknown fine relief.",
+      "allowed_support": "Ocean domain only; support derived from authorized physical ocean/crust-domain geometry, never assigned from plate identity alone.",
+      "allowed_constraint_or_range": "Range/domain constrained relative to the canonical R6 sea-level datum; coherent basin/domain field or feature template; sparse relief only when physically authored and sourced.",
+      "default": null,
+      "required_before_materialization": true,
+      "downstream_effects": ["complete ocean elevation", "water-loaded/isostatic calculations", "OrbData/SHELLS nodal surface support"],
+      "uncertainty_class": "AUTHORIAL_ALTERNATIVE_AND_SCIENTIFIC_UNCERTAINTY_SEPARATE"
+    },
+    {
+      "choice_id": "PHYSICAL_CRUST_DOMAIN_TEMPLATE",
+      "primitive_id": "CRUST_DOMAIN_THICKNESS_TEMPLATE",
+      "physical_meaning": "Physical structural domain geometry and parameterized crust-thickness distributions for oceanic, continental and explicitly supported transitional structure.",
+      "allowed_support": "Canonical spherical surface partition/support; domain IDs distinct from plate IDs; no land/ocean equivalence assumed.",
+      "allowed_constraint_or_range": "Positive thickness, ordered layers, model/material constrained distributions, domain-coherent transitions; no numeric ARCANA values selected.",
+      "default": null,
+      "required_before_materialization": true,
+      "downstream_effects": ["crust thickness field", "isostatic/thermal structure", "FEG element material groups if later authorized"],
+      "uncertainty_class": "AUTHORIAL_ALTERNATIVE_AND_SCIENTIFIC_UNCERTAINTY_SEPARATE"
+    },
+    {
+      "choice_id": "OCEANIC_AGE_STATE",
+      "primitive_id": "OCEANIC_LITHOSPHERE_AGE",
+      "physical_meaning": "Age at T0 of the explicitly declared oceanic lithosphere support.",
+      "allowed_support": "Oceanic lithosphere domains; explicit UNKNOWN mask where age is undefined or not authored.",
+      "allowed_constraint_or_range": "Nonnegative age measured before T0=210 Ma; age surfaces must be coherent with declared source chronology or selected low-dimensional field model.",
+      "default": null,
+      "required_before_materialization": true,
+      "downstream_effects": ["ocean thermal profile", "heat flow", "thermal mantle-lithosphere thickness", "thermal/isostatic bathymetry component"],
+      "uncertainty_class": "AUTHORIAL_ALTERNATIVE_AND_SCIENTIFIC_UNCERTAINTY_SEPARATE"
+    },
+    {
+      "choice_id": "CONTINENTAL_THERMAL_STRUCTURAL_DOMAINS",
+      "primitive_id": "CONTINENTAL_THERMAL_STRUCTURAL_STATE",
+      "physical_meaning": "Continental structural-domain support and compact domain-wise thermal/geotherm family, with heat-production family only where the chosen model requires it.",
+      "allowed_support": "Explicit physical continental domains independent of land mask, plate ID or design province tags.",
+      "allowed_constraint_or_range": "Domain-class constrained profiles/distributions; explicit surface and basal conditions; thermal flux and conductivity consistency.",
+      "default": null,
+      "required_before_materialization": true,
+      "downstream_effects": ["continental temperature", "heat flow", "thermal lithosphere thickness", "OrbData/SHELLS input state"],
+      "uncertainty_class": "AUTHORIAL_ALTERNATIVE_AND_SCIENTIFIC_UNCERTAINTY_SEPARATE"
+    }
+  ],
+  "non_primitive_design_selections": [
+    {"choice_id":"SHELLSET_REFERENCE_MATERIAL_FAMILY", "default":null, "required_before_runtime_qualification":true, "note":"Select source-bound parameter distributions and cross-parameter constraints; do not copy iEarth example values."},
+    {"choice_id":"SHELLSET_RHEOLOGY_ENSEMBLE", "default":null, "required_before_runtime_qualification":true, "note":"Select physically admissible model configurations; no Earth OrbScore optimum may stand in for ARCANA authority."},
+    {"choice_id":"SHELLSET_REFERENCE_FRAME_AND_VELOCITY_CONSTRAINT_POLICY", "default":null, "required_before_runtime_qualification":true, "note":"Must be reconciled to exact pinned Shells `.bcs` semantics and a declared ARCANA kinematic frame; must not prescribe every node's solution velocity."},
+    {"choice_id":"FEG_PROVIDER_AND_QUALIFICATION_RESOLUTION_POLICY", "default":null, "required_before_runtime_qualification":true, "note":"Choose and validate a spherical FEG producer, with branch/junction preservation and a refinement-convergence plan."}
+  ]
+}

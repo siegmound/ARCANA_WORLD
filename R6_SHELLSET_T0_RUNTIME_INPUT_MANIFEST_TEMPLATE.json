@@ -1,0 +1,75 @@
+{
+  "artifact": "R6_SHELLSET_T0_RUNTIME_INPUT_MANIFEST",
+  "schema_version": "1.0.0",
+  "status": "TEMPLATE_ONLY_NOT_A_RUNTIME_INPUT_MANIFEST",
+  "runtime_authorized": false,
+  "forward_evolution_authorized": false,
+  "t0": {"time_value":210,"time_unit":"Ma","snapshot_only":true},
+  "canonical_parent_identities": {
+    "physical_geography_sha256":"a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition_sha256":"a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "kinematics_sha256":"50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "historical_bootstrap_identity_sha256":"27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf"
+  },
+  "authorial_realization": {
+    "realization_id":null,
+    "selection_manifest_path":null,
+    "selection_manifest_sha256":null,
+    "ensemble_member_id":null,
+    "choice_class":"AUTHORIAL_ALTERNATIVE",
+    "unknown_support_policy":"EXPLICIT_MASK_NO_IMPUTATION"
+  },
+  "derived_fields": {
+    "ocean_surface": {"artifact_path":null,"sha256":null,"authority_components":["MODEL_DERIVED_THERMAL_DEPTH","AUTHORIAL_LOW_FREQUENCY_RESIDUAL","UNKNOWN_FINE_SCALE_RELIEF"]},
+    "crust_domains_and_thickness": {"artifact_path":null,"sha256":null},
+    "oceanic_age": {"artifact_path":null,"sha256":null},
+    "ocean_thermal_profile": {"artifact_path":null,"sha256":null},
+    "continental_thermal_profile": {"artifact_path":null,"sha256":null},
+    "heat_flow": {"artifact_path":null,"sha256":null},
+    "mantle_lithosphere_thickness": {"artifact_path":null,"sha256":null},
+    "chemical_density_anomaly": {"artifact_path":null,"sha256":null,"producer":"OrbData5 if that route is selected; otherwise source must be explicitly supplied"},
+    "cooling_curvature": {"artifact_path":null,"sha256":null,"producer":"OrbData5 if that route is selected; otherwise source must be explicitly supplied"}
+  },
+  "mesh": {
+    "provider_id":null,"provider_version":null,"adapter_version":null,
+    "coordinate_reference":"SPHERE; longitude/latitude degrees on canonical R6 spherical geometry",
+    "radius_m":6371000.0,"feg_path":null,"feg_sha256":null,
+    "node_identity_scheme":null,"element_identity_scheme":null,"mesh_resolution_policy_id":null
+  },
+  "boundary_conditions": {
+    "format":"Shells .bcs or source-confirmed equivalent",
+    "artifact_path":null,"sha256":null,"adapter_version":null,
+    "reference_frame_id":null,"frame_transform_id":null,"velocity_units":"m s-1",
+    "azimuth_convention":"must match pinned Shells source; parent evidence describes clockwise from geographic north",
+    "constrained_node_ids_hash":null,"plate_assignment_hash":null,
+    "fault_duplicate_node_policy":null,"junction_node_policy":null
+  },
+  "physical_parameter_configuration": {
+    "parameter_file_path":null,"sha256":null,"source_version":null,
+    "reference_material_family_id":null,"rheology_configuration_id":null,
+    "ensemble_policy_id":null,"earth_observation_score_used_for_selection":false
+  },
+  "specialists": {
+    "shellset_version":null,"orbdata_version":null,"shells_version":null,
+    "orbwin_or_mesh_provider_version":null,"pygplates_version":null,
+    "materializer_ids_and_versions":[]
+  },
+  "reproducibility": {
+    "random_seed":null,"seed_required":false,"deterministic_replay_required":true,
+    "software_lockfile_sha256":null,"environment_id":null,"source_revision":null
+  },
+  "provenance": {
+    "authority_classes":["AUTHORIAL_T0_PRIMITIVE","SPECIALIST_DERIVED_T0","NUMERICAL_DERIVED_SUPPORT","MODEL_CONFIGURATION","ENSEMBLE_MEMBER","UNKNOWN"],
+    "input_hashes":{},"output_hashes":{},"activity_graph_path":null,
+    "uncertainty_model_id":null,"uncertainty_realization_id":null,
+    "canonical_payload_mutated":false,"t1_or_forward_state_created":false
+  },
+  "validation": {
+    "canonical_identity_match":false,"topology_preservation_pass":false,
+    "field_support_coverage_pass":false,"units_and_frames_pass":false,
+    "deterministic_replay_pass":false,"mesh_refinement_gate_pass":false,
+    "bcs_semantics_gate_pass":false,"official_example_gate_pass":false,
+    "arcana_input_smoke_gate_pass":false,"bounded_t0_gate_pass":false,
+    "runtime_qualification_authorized":false
+  }
+}
