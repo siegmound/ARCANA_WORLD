@@ -1,0 +1,280 @@
+{
+  "artifact": "R6_SHELLSET_PRERUNTIME_INPUT_CLOSURE",
+  "schema_version": "1.0.0",
+  "branch": "r6/shellset-preruntime-input-closure",
+  "head_at_authoring": "1d35adb55c8eb83f36ba2fc299d8d6bd10f43886",
+  "parent_branch": "r6/shellset-minimum-state-contract",
+  "parent_shellset_decision": "R6_SHELLSET_MINIMUM_STATE_CONTRACT_PARTIAL__REFERENCE_MATERIAL_PARAMETERS_REMAIN",
+  "decision": "R6_SHELLSET_PRERUNTIME_INPUTS_PARTIAL__AUTHORIAL_PRIMITIVES_REMAIN",
+  "scope": "INTEGRATED_PRE_RUNTIME_INPUT_AUTHORITY_RECONCILIATION_ONLY",
+  "runtime_qualification_authorized": false,
+  "scientific_engine_executed": false,
+  "first_interval_authorized": false,
+  "forward_evolution": false,
+  "dt_selected": false,
+  "t1_selected": false,
+  "canonical_payload_mutated": false,
+  "numeric_new_physical_values_selected": false,
+  "parent_state": {
+    "minimum_shellset_decision": "R6_SHELLSET_MINIMUM_STATE_CONTRACT_PARTIAL__REFERENCE_MATERIAL_PARAMETERS_REMAIN",
+    "superseded_pressure_blocker": "EXTERNAL_ABSOLUTE_PRESSURE__EXTERNAL_EOS_DENSITY__EXTERNAL_P_RHO_G_COUPLING_NOT_REQUIRED_FOR_MINIMUM_PATH",
+    "pressure_result": "OrbData/SHELLS builds the reference pressure and vertical stress internally using its reduced reference-density, thermal-correction and chemical-anomaly formulation.",
+    "required_r6_parent_reports_read": [
+      "R6_TECTONIC_SPECIALIST_TOOLCHAIN_RECONCILIATION.json",
+      "R6_TECTONIC_MECHANICAL_INPUT_BINDING_RECONCILIATION.json",
+      "R6_TECTONIC_AUTHORIAL_INITIAL_STATE_ADJUDICATION.json",
+      "R6_TECTONIC_UPSTREAM_CLASSIFICATION_BINDING.json",
+      "R6_TECTONIC_THERMODYNAMIC_BINDING.json",
+      "R6_SHELLSET_MINIMUM_THERMOMECHANICAL_STATE_CONTRACT.json"
+    ],
+    "r6_authority_state": "R6 INITIAL WORLD specification is an authorial design, not observed Earth at 210 Ma. It explicitly leaves plate motion, ocean bathymetry and Deep unknown in the geography package; the separate R6 T0 tectonic partition/kinematics is canonical but does not carry thermomechanical fields.",
+    "t0_ma": 210,
+    "plate_count": 12,
+    "parent_face_count": 64800,
+    "shared_boundary_segment_count": 1983,
+    "adjacent_plate_pair_count": 30,
+    "degree3_junction_count": 20,
+    "canonical_branch_count": 30,
+    "canonical_section_count": 30,
+    "convergent_kinematic_demand_edges": 1091,
+    "divergent_kinematic_demand_edges": 892,
+    "physical_geography_payload_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "canonical_kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "historical_bootstrap_identity_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "authorial_initial_state_parent_counts": {
+      "independent_primitive_families_pre_reduction": 3,
+      "separate_rheology_model_parameter_families": 1,
+      "ensemble_recommended_primitives": 3
+    }
+  },
+  "superseded_blockers": [
+    {"id": "EXTERNAL_ABSOLUTE_PRESSURE_FIELD", "status": "SUPERSEDED", "evidence": "Minimum ShellSet contract; internal reference-pressure/stress column."},
+    {"id": "EXTERNAL_EOS_DENSITY", "status": "SUPERSEDED", "evidence": "Minimum ShellSet density uses reference densities, thermal correction and effective chemical density anomaly."},
+    {"id": "EXTERNAL_P_RHO_G_COUPLING", "status": "SUPERSEDED", "evidence": "Not a ShellSet minimum input; no BurnMan/Perple_X global closure required."},
+    {"id": "MANDATORY_BURNMAN_OR_PERPLE_X", "status": "SUPERSEDED", "evidence": "Optional targeted reference/validation roles only."},
+    {"id": "MANDATORY_GLOBAL_PROCESS_CLASSIFICATION", "status": "SUPERSEDED", "evidence": "No need to classify every boundary as ridge/subduction/transform for the minimum ShellSet state path."},
+    {"id": "ARBITRARY_PURE_PLATE_ANCHOR_DISTANCE", "status": "SUPERSEDED", "evidence": "No arbitrary plate-interior anchor rule is authorized; .bcs node policy remains a bounded adapter question."},
+    {"id": "MANDATORY_CUSTOM_ARCANA_MECHANICAL_PATCH_OPERATOR", "status": "SUPERSEDED", "evidence": "No custom mechanics is justified by the current input contract."}
+  ],
+  "canonical_input_inventory": {
+    "grid": {"id": "R6_GLOBAL_GEOGRAPHY_1DEG_V1", "shape": [180, 360], "resolution": "1 degree nominal; scientific source support remains its recorded support, not automatically high resolution"},
+    "canonical_fields": [
+      {"field": "land_ocean_mask", "status": "CANONICAL_T0_AVAILABLE", "semantics": "land/ocean identity only; does not encode depth"},
+      {"field": "land_surface_elevation_m", "status": "PARTIAL_CANONICAL_SUPPORT", "support": "land only", "units": "m relative to R6 authorial zero datum", "provenance": "authorial synthetic initial geography"},
+      {"field": "bathymetry_unknown_mask", "status": "CANONICAL_T0_AVAILABLE_AS_UNKNOWN_MASK", "support": "ocean", "numeric_depths": false},
+      {"field": "crust_class", "status": "CANONICAL_T0_AVAILABLE_AS_DESIGN_CATEGORY", "values": "oceanic/continental/transitional labels; not physical thickness, composition, density or material law"},
+      {"field": "province_class", "status": "CANONICAL_T0_AVAILABLE_AS_DESIGN_CATEGORY", "values": "other/craton/suture/orogenic design; not thermal age or material class authority"},
+      {"field": "plate_id_and_polygon_partition", "status": "CANONICAL_T0_AVAILABLE", "semantics": "identity/topology; plate identity is not lithosphere age"},
+      {"field": "plate rotations/kinematic state", "status": "CANONICAL_T0_AVAILABLE_IN_SEPARATE_TECTONIC_STATE", "semantics": "can evaluate kinematic velocity under its declared frame; does not decide ShellSet BC nodes or imply ridge/subduction class"}
+    ],
+    "searched_absent_families": [
+      "physical crust thickness",
+      "mantle-lithosphere thickness",
+      "lithosphere or seafloor age",
+      "surface heat flow",
+      "temperature/geotherm field",
+      "material-property mapping",
+      "rheology parameters",
+      "ShellSet FEG mesh and .bcs"
+    ],
+    "absence_basis": "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST payload inventory and explicit unknown masks; R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION; authorial initial-state and ShellSet input ledgers. No filename-only availability inference.",
+    "not_promoted": ["A1 2-degree reference data", "Earth heat-flow/bathymetry/seafloor-age/seismic grids", "Earth5-049 model values", "Earth example rheology/defaults", "numerical interpolation presented as higher-resolution evidence"]
+  },
+  "elevation_bathymetry": {
+    "shellset_requirement": "nodal surface elevation/topographic height in the FEG structure; complete modeled surface support is required for a global mesh unless a narrower proof domain is explicitly defined",
+    "land": {"status": "PARTIAL_CANONICAL_SUPPORT", "resolution": "native R6 1-degree cell grid; source is synthetic support at that grid, not per-mesh-node scientific evidence", "adapter": "mesh-aware interpolation with support labels and projection/interpolation error"},
+    "ocean": {"status": "NOT_AVAILABLE", "mask_is_bathymetry": false, "existing_specialist_producer": "none established from current ARCANA state", "candidate_minimum_primitive": "authorial T0 ocean elevation/bathymetry represented by a low-dimensional basin/domain or continuous field with support, datum, uncertainty and provenance; no per-cell authoring requirement", "constraint": "must be compatible with declared sea-level datum and structural model; no numerical depth selected", "blocking": true},
+    "generative_reduction": "Ocean age may inform a chosen thermal-subsidence model, but GWB temperature/topography feature plugins require configured feature/profile/topography inputs and do not infer ARCANA ocean basin geometry from plate IDs. No approved bathymetry generator is currently bound.",
+    "earth_data_used": false,
+    "classification": "REDUCED_TO_AUTHORIAL_PRIMITIVE"
+  },
+  "crustal_thickness": {
+    "shellset_requirement": "nodal crustal thickness field/grid for the selected OrbData5/SHELLS structure",
+    "arcana_status": "NOT_AVAILABLE; current canonical crust_class and province_class are design categories only",
+    "source_path": "Current OrbData5 Assign reads crust thickness from an upstream grid; it does not generate crustal thickness from isostasy in that path.",
+    "candidate_provider": "No existing ARCANA or selected external specialist derives it from current canonical data without additional material/structural assumptions. GWB can materialize configured feature geometry/fields, but it does not authorize the feature thickness values.",
+    "minimum_authorial_representation": "physical crustal-domain/structure template with a small set of thickness parameters or constrained ranges per explicitly defined physical domain; adapt that template to an upstream thickness grid. Do not author 64,800 independent cell values.",
+    "constraint_and_uncertainty": "Use literature/plausibility constraints only after physical domain semantics are defined. Preserve ranges/ensemble and domain boundaries; no Earth values copied and no numeric thickness chosen.",
+    "adapter": "domain-to-grid rasterization on the FEG support with native domain geometry, provenance, conservation/coverage checks and resolution metadata",
+    "blocking": true,
+    "classification": "REDUCED_TO_AUTHORIAL_PRIMITIVE"
+  },
+  "mantle_lithosphere_structure": {
+    "shellset_requirement": "mantle-lithosphere thickness/layer geometry at FEG nodes or a selected OrbData path producing it",
+    "earth_workflow_paths": ["seafloor-age-based oceanic path", "vertical S-wave travel-time anomaly continental path"],
+    "earth_observations_transferred": false,
+    "current_canonical_age_field": "NOT_AVAILABLE; plate ID and instantaneous Euler kinematics do not determine age",
+    "shared_primitive_candidate": "T0 oceanic lithosphere-age state or authorially specified ridge geometry plus spreading history/velocity. GWB's oceanic half-space cooling model can calculate temperature from ridge coordinates and spreading velocity; OrbData's age workflow can consume age support. Ridge/process labels cannot be inferred solely from divergent kinematic edges.",
+    "continental_path": "Requires an independently authored thermal/structural province state or prescribed thickness equivalent; current OrbData's Earth seismic anomaly input is not an ARCANA source.",
+    "recommended_minimum": "one governed oceanic age/thermal-feature primitive shared by temperature, heat flow and OrbData lithosphere-thickness generation where supported, plus a low-dimensional continental thermal/structural initialization; uncertainty as scenarios/ranges, not false cell-level detail",
+    "candidate_specialists": [
+      {"name": "GWB", "role": "configured feature geometry and thermal/composition field materialization; needs explicit age or ridge geometry/spreading input; does not infer authority"},
+      {"name": "OrbData5", "role": "selected age/seismic data path to node thickness/structure; requires supported age or input grids and configuration"}
+    ],
+    "blocking": true,
+    "classification": "REDUCED_TO_AUTHORIAL_PRIMITIVE_AND_SPECIALIST_GENERATION"
+  },
+  "age_state": {
+    "canonical_support": "NOT_AVAILABLE",
+    "plate_id_is_age": false,
+    "instantaneous_kinematics_determine_age": false,
+    "minimum_if_oceanic_cooling_path_selected": "T0 oceanic lithosphere-age field or feature-level ridge geometry plus plate spreading/age history sufficient for the chosen GWB/OrbData path",
+    "ridge_inference": "not permitted from plate velocity divergence alone; ridge geometry/type needs explicit authority",
+    "continental_age": "not inferred from craton/suture/orogenic design labels; a continental thermal/structural class or direct profile primitive is needed for the selected model",
+    "ensemble": "RECOMMENDED for competing age patterns/model families until an authorial synthetic-world history is selected",
+    "blocking": true
+  },
+  "thermal_state": {
+    "shellset_roles": {
+      "surface_heat_flow": "nodal field consumed/preserved by OrbData or populated from selected inputs",
+      "temperature": "internal or specialist-generated depth profile controlled by elevation/depth, heat flow, layer heat production and geotherm/cooling configuration",
+      "cooling_curvature": "OrbData node field/degree of freedom; not an independent ARCANA cooling solver",
+      "density": "ShellSet reduced reference density plus thermal correction and chemical_delta_rho; external EOS not required"
+    },
+    "existing_specialist_reduction": "GWB supports configured oceanic plate temperature models including half-space cooling/plate options; its half-space model can infer age from explicit ridge coordinates and spreading velocity. GWB materializes temperature/composition values, not the authority for those inputs. OrbData can populate heat-flow/lithosphere structure through selected data paths. No engine was run.",
+    "minimum_independent_inputs": ["oceanic age or explicit ridge/spreading history if using oceanic cooling", "continental thermal initialization/profile or authorized source", "thermal material/model configuration"],
+    "thermal_conductivity_and_heat_production": "specialist model parameters; do not create an ARCANA heat-conduction solver",
+    "current_r6_status": "No heat-flow or temperature/geotherm payload; no synthetic age or thermal initialization authority",
+    "blocking": true
+  },
+  "heat_flow": {
+    "required_support": "FEG node field or configured OrbData path",
+    "available_path": "OrbData preserves non-zero nodal heat flow; otherwise it can read/derive via configured datasets, with oceanic heat flow potentially age-based. A generated temperature profile plus conductivity can also provide a conductive flux through the established relation q=-k grad(T), subject to full profile/support/units and adapter validation.",
+    "reduction": "Use the same authorized thermal-age/profile model as temperature where the chosen specialist provides a compatible field; do not independently author heat flow if it is a deterministic output of that path.",
+    "current_arcana": "NOT_AVAILABLE",
+    "earth_grids_transferred": false,
+    "adapter": "sample/project heat flux to FEG nodes while preserving source resolution/support and flux sign/normal convention; record error",
+    "blocking": true
+  },
+  "reference_material_parameters": {
+    "classification": "SPECIALIST_PHYSICAL_MODEL_CONFIGURATION",
+    "parameter_families": [
+      {"name": "gMean", "class": "PLANETARY_CONSTANT", "arcana_status": "canonical authorial Earth-scale design baseline includes surface gravity; map only after confirming exact ShellSet meaning/convention", "uncertainty": "fixed design value already governed in R6 initial-world manifest; do not replace with ShellSet Earth default"},
+      {"name": "rhoBar crust and mantle", "class": "CRUST_REFERENCE_PARAMETER / MANTLE_REFERENCE_PARAMETER", "arcana_status": "NOT_AVAILABLE", "constraint": "preserve source-required ordering: mean mantle density greater than mean crust density; constrain ranges by chosen material model, not Earth example defaults"},
+      {"name": "rhoAst", "class": "MANTLE_REFERENCE_PARAMETER", "arcana_status": "NOT_AVAILABLE", "constraint": "reference asthenosphere density consistent with selected reference column and model; require specialist/source-bound admissibility"},
+      {"name": "rhoH2O", "class": "MODEL_CONFIGURATION", "arcana_status": "NOT_AVAILABLE_AS_SHELLSET_PARAMETER", "constraint": "needed only in applicable ocean/water column terms; tie to declared aqueous material assumption, no value chosen"},
+      {"name": "alphaT, conductivity, heat production, temperatures/geotherm coefficients", "class": "THERMAL_PARAMETER", "arcana_status": "NOT_AVAILABLE", "constraint": "units and mutual consistency with selected thermal model; no values chosen"}
+    ],
+    "uncertainty_policy": "RANGE_CONSTRAINED_AUTHORIAL or ENSEMBLE_RECOMMENDED where no unique canonical basis exists; ShellSet grid search/model-list can explore model configurations, but Earth OrbScore observations cannot select ARCANA values.",
+    "blocking": true
+  },
+  "rheology_configuration": {
+    "classification": "SPECIALIST_PHYSICAL_MODEL_CONFIGURATION_NOT_WORLD_HISTORY",
+    "built_in_law_families": ["low-temperature frictional/plastic rheology", "crust and mantle-lithosphere dislocation-creep flow laws"],
+    "published_parameter_inventory": "ShellSet paper describes four low-temperature frictional inputs (with optional lower effective fault friction) and nine creep-flow inputs, with element-group-specific alternatives available through FEG material-group IDs.",
+    "current_arcana": "No rheology laws or parameter values bound.",
+    "constraints": ["fault friction must be lower than continuum friction where the configuration uses that rule", "mean mantle reference density greater than mean crust reference density"],
+    "parameter_names_units_defaults": "must be pinned against exact SHELLS release/parameter file before runtime; do not infer names or use Earth example values",
+    "ensemble": "RECOMMENDED for physical rheology uncertainty; use ShellSet model-list or grid-search capabilities as parameter exploration, not Earth observational calibration",
+    "blocking": true
+  },
+  "velocity_bc_interface": {
+    "shellset_contract_evidence": "Published .bcs/source archive describes fixed-node prescribed speeds in m/s and azimuth clockwise from geographic north; Earth examples constrain slab nodes and use temporary fictitious plate-interior anchors during iterations, released for final conditions.",
+    "pygplates_values": "Canonical ARCANA rotations can support evaluated velocities only under an explicit reference frame and canonical time; no direct ShellSet import exists.",
+    "node_selection": "not resolved. Do not prescribe the full velocity solution. A globally force-balanced Shells solve must retain unknown velocities as solver outputs; boundary constraints only at nodes required by a separately selected formulation.",
+    "unknown_contract_items": ["absolute vs relative reference frame", "time/unit conversion and azimuth sign", "fixed-node selection", "component constraints", "plate-interior anchor policy", "fault duplicated-node behavior", "junction-node handling", "constraint precedence"],
+    "current_boundary_semantics": "ARCANA kinematic demand does not classify ridge/subduction/transform or define ShellSet fault constraints.",
+    "classification": "ADAPTER_ONLY_PLUS_MODEL_AUTHORITY_GAP",
+    "blocking": true
+  },
+  "mesh_contract": {
+    "scientific_authority": "canonical ARCANA spherical geometry/topology, plate/boundary/branch/junction identities",
+    "numerical_mesh_owner": "OrbWin or a validated/versioned spherical finite-element mesher; FEG mesh remains NUMERICAL_DERIVED_SUPPORT",
+    "contract": ["spherical geometry and declared radius/datum", "element/node connectivity", "canonical geometry to mesh-node/element correspondence", "plate/boundary/branch/junction identity transfer", "interpolation support/provenance/error", "explicit fault-node duplication and junction policy if used"],
+    "resolution_policy": "mesh refinement cannot create new physical support; retain source native resolutions and measure projection/interpolation errors",
+    "later_tests": ["topology/identity preservation", "spherical metric and area checks", "mesh-refinement convergence/independence for numerical outputs", "boundary and junction mapping repeatability"],
+    "arcana_state": "no ShellSet FEG mesh currently; adapter/mesh export unvalidated",
+    "blocking": true
+  },
+  "optional_high_fidelity_tools": [
+    {"tool": "GWB", "role": "configured feature-based temperature/composition materializer; optional field generator, not world-authority source"},
+    {"tool": "ASPECT", "role": "optional full geodynamic evolution/initialization comparator; requires extensive laws/state and is not the minimum provider"},
+    {"tool": "BurnMan", "role": "optional reference structure/property validator or targeted refinement"},
+    {"tool": "Perple_X", "role": "optional petrological refinement/validator"},
+    {"tool": "Underworld3/LaMEM", "role": "optional regional or global geodynamic comparator if separately justified"},
+    {"tool": "OrbData5/SHELLS", "role": "selected minimum structural preprocessing and thin-shell mechanics specialists; not optional in a ShellSet qualification path"}
+  ],
+  "minimum_toolchain": {
+    "candidate": [
+      "ARCANA canonical T0 geometry/topology/kinematics",
+      "support-aware structural/thermal primitive adapters and numerical FEG mesher",
+      "pyGPlates only for selected, explicitly authorized kinematic BC values",
+      "OrbData5 when required fields need its configured interpolation/derivation; it may be skipped when a complete FEG already contains the required state",
+      "SHELLS thin-shell mechanics",
+      "ARCANA output normalization, provenance and validation"
+    ],
+    "gwb": "optional configured upstream temperature/composition-field materializer; it does not author feature semantics",
+    "mandatory_eos_tool": false,
+    "mandatory_geodynamic_3d_solver": false,
+    "custom_arcana_scientific_physics": false,
+    "qualification": "Candidate architecture only. Exact mesh, input parser, .bcs and runtime behavior remain unqualified."
+  },
+  "authority_graph": [
+    {"input": "canonical geometry, plate IDs, topology, kinematics", "authority": "ARCANA canonical R6 payloads", "transform": "pyGPlates evaluation/FEG mesher adapters", "consumer": "FEG and explicitly authorized .bcs nodes"},
+    {"input": "land elevation", "authority": "R6_INITIAL_PHYSICAL_GEOGRAPHY payload", "transform": "support-aware interpolation to FEG", "consumer": "OrbData5/SHELLS"},
+    {"input": "ocean elevation/bathymetry", "authority": "authorial T0 structural/geography primitive (not selected)", "transform": "basin/domain field adapter", "consumer": "OrbData5/SHELLS"},
+    {"input": "crustal thickness", "authority": "authorial physical crustal-domain template/ranges (not selected)", "transform": "grid materialization/projection adapter", "consumer": "OrbData5/SHELLS"},
+    {"input": "oceanic age and continental thermal initialization", "authority": "authorial feature/age/profile primitives (not selected)", "transform": "GWB and/or OrbData5 configured specialist path plus validated field adapter", "consumer": "OrbData5/SHELLS"},
+    {"input": "heat flow, mantle-lithosphere thickness, chemical_delta_rho, cooling_curvature", "authority": "selected OrbData/GWB-compatible thermal path", "transform": "OrbData5 node-state preprocessing and FEG writing", "consumer": "SHELLS"},
+    {"input": "rhoBar, rhoAst, thermal coefficients, water density, rheology", "authority": "versioned specialist-model configuration constrained by cited physical model/authorial ranges", "transform": "parameter-file adapter with provenance", "consumer": "SHELLS/OrbData5"},
+    {"input": "Shells normalized mechanical outputs", "authority": "SHELLS run outputs", "transform": "validated unit/frame/support/provenance adapter", "consumer": "ARCANA derived state; runtime not authorized"}
+  ],
+  "required_runtime_input_ledger": [
+    {"input_id": "feg_mesh", "shellset_name": "spherical FEG nodes/connectivity", "meaning": "numerical domain support", "units": "format-specific coordinates/radius", "support": "nodes/elements", "consumer": "SHELLS/OrbData5", "source_authority": "canonical geometry plus numerical mesh producer", "arcana_availability": "canonical polygons available; FEG absent", "specialist_producer": "OrbWin/validated mesher", "authorial_primitive": null, "constraint_source": "pinned FEG manual/source", "ensemble_status": "not applicable", "adapter": "mesh, identity, and projection mapping", "status": "ADAPTER_ONLY"},
+    {"input_id": "elevation", "shellset_name": "FEG nodal elevation", "meaning": "surface datum/depth/topographic structure", "units": "m", "support": "every modeled node", "consumer": "OrbData5/SHELLS", "source_authority": "R6 land field; future authorial ocean field", "arcana_availability": "land partial, ocean missing", "specialist_producer": "none authorized for synthetic bathymetry", "authorial_primitive": "ocean basin/domain elevation support", "constraint_source": "R6 sea-level datum and authored basin model; literature for any chosen thermal subsidence model", "ensemble_status": "range/ensemble recommended for ocean basin forms", "adapter": "support-aware FEG projection", "status": "TRUE_BLOCKER"},
+    {"input_id": "crust_thickness", "shellset_name": "FEG crust thickness", "meaning": "crust layer geometry", "units": "m", "support": "every node/layer", "consumer": "OrbData5/SHELLS", "source_authority": "none currently", "arcana_availability": "crust classes only; thickness absent", "specialist_producer": "OrbData reads supplied grid; no derivation from present R6 state", "authorial_primitive": "physical crustal domain template and thickness parameter/range", "constraint_source": "pinned specialist input contract plus selected material/domain literature", "ensemble_status": "recommended", "adapter": "domain template to node grid", "status": "TRUE_BLOCKER"},
+    {"input_id": "mantle_lithosphere_thickness", "shellset_name": "FEG mantle-lithosphere thickness", "meaning": "mantle lithosphere layer geometry", "units": "m", "support": "every node/layer", "consumer": "OrbData5/SHELLS", "source_authority": "none currently", "arcana_availability": "no thickness/age field", "specialist_producer": "OrbData age path or configured thermal specialist; continental seismic input is unavailable", "authorial_primitive": "ocean age/thermal features and continental thermal/structural state", "constraint_source": "chosen cooling/thermal model, not Earth grids", "ensemble_status": "recommended", "adapter": "specialist node field to FEG", "status": "REDUCED_TO_AUTHORIAL_PRIMITIVE_AND_SPECIALIST_GENERATION"},
+    {"input_id": "heat_flow_and_thermal_state", "shellset_name": "FEG heat flow plus internal geotherm state", "meaning": "temperature-dependent strength and density profile", "units": "W m^-2, K/temperature profile", "support": "nodes and depth/layers", "consumer": "OrbData5/SHELLS", "source_authority": "none currently", "arcana_availability": "absent", "specialist_producer": "GWB configured oceanic/continental profile; OrbData5 age/input processing", "authorial_primitive": "ocean age/ridge-history input and continental thermal initialization", "constraint_source": "selected model and physical-property literature", "ensemble_status": "recommended", "adapter": "profile/flux projection and units", "status": "REDUCED_TO_AUTHORIAL_PRIMITIVE_AND_SPECIALIST_GENERATION"},
+    {"input_id": "density_and_reference_material", "shellset_name": "rhoBar crust/mantle, rhoAst, rhoH2O, alphaT and related structure parameters", "meaning": "reference density, thermal density correction and fluid-column terms", "units": "source parameter units", "support": "global/layer plus nodal anomaly", "consumer": "OrbData5/SHELLS", "source_authority": "gMean partly canonical design; other parameters unbound", "arcana_availability": "no material values; gMean maps from existing Earth-scale authorial baseline subject to convention check", "specialist_producer": "none supplies authority; ShellSet consumes configuration", "authorial_primitive": "not world-history raster; constrain model configuration", "constraint_source": "ShellSet checks mean mantle density greater than crust; material and thermal ranges from selected literature/models", "ensemble_status": "ensemble recommended", "adapter": "versioned parameter-file mapping", "status": "REDUCED_TO_SPECIALIST_CONFIGURATION"},
+    {"input_id": "rheology", "shellset_name": "low-temperature frictional and crust/mantle dislocation-creep laws", "meaning": "thin-shell constitutive response", "units": "law-specific", "support": "global defaults; optional FEG material groups", "consumer": "SHELLS", "source_authority": "none currently", "arcana_availability": "no laws/values", "specialist_producer": "SHELLS implements laws but cannot choose model values", "authorial_primitive": "select law family/ranges in specialist configuration", "constraint_source": "pinned SHELLS parameter definitions and physical literature", "ensemble_status": "ensemble recommended", "adapter": "versioned config plus optional element-group IDs", "status": "REDUCED_TO_SPECIALIST_CONFIGURATION"},
+    {"input_id": "velocity_and_fault_bc", "shellset_name": ".bcs fixed-node speed/azimuth and optional fault elements", "meaning": "kinematic constraints and fault network, if selected formulation uses them", "units": "m/s, azimuth clockwise from geographic north; fault-specific", "support": "selected mesh nodes/elements", "consumer": "SHELLS", "source_authority": "canonical kinematics do not define mechanical constraints or fault classes", "arcana_availability": "rotations available; node/frame policy and fault semantics absent", "specialist_producer": "pyGPlates evaluates velocities; adapter chooses no semantics", "authorial_primitive": "reference-frame and constrained-node/physical fault policy where required", "constraint_source": "pinned Shells .bcs source/manual and selected global/continuum formulation", "ensemble_status": "scenario only if multiple frames/models are authorized", "adapter": "node correspondence, frame/unit/azimuth conversion and constraint precedence", "status": "ADAPTER_ONLY_PLUS_AUTHORITY_BLOCKER"},
+    {"input_id": "planetary_and_numerical_controls", "shellset_name": "gMean, surface radius and solver controls", "meaning": "planet reference and numerical solve", "units": "m/s^2, m, format-specific controls", "support": "global", "consumer": "OrbData5/SHELLS", "source_authority": "R6 design baseline for radius/gravity; pinned solver version for numerical controls", "arcana_availability": "radius and gravity present in canonical authorial design", "specialist_producer": "none", "authorial_primitive": "none for fixed baseline; no physical defaults for unbound properties", "constraint_source": "R6 physical specification and pinned manual", "ensemble_status": "not applicable for already governed design; numerical sensitivity later", "adapter": "map/check conventions; preserve numerical config provenance", "status": "CLOSED_BY_CANONICAL_STATE_AND_VERSIONED_CONFIG"}
+  ],
+  "parameter_ensemble_policy": {
+    "shellset_capability": "ShellSet supports model lists and grid-search parameter exploration; grid search can refine parameter regions using selected scores.",
+    "arcana_use": "A governed later ensemble can sample constrained physical/rheology parameter sets and retain every model/output; Earth-specific OrbScore datasets must not rank ARCANA candidates.",
+    "requirement": "record ensemble ID, ranges/priors, correlations, seed/member lineage, config hashes and full outputs; do not select a best value without an authorized ARCANA score/decision criterion",
+    "status": "SENSITIVITY_CAPABILITY_AVAILABLE_NOT_AUTHORIZED_OR_MATERIALIZED"
+  },
+  "parameter_constraint_rules": {
+    "crustal_thickness": "positive layer thickness, bounded by the explicitly selected physical structure and domain model; no transferable numeric interval is selected before domain/material authority",
+    "mantle_lithosphere_thickness": "non-negative layer geometry consistent with the selected crust/lithosphere profile and its thermal model; age-derived bounds follow the pinned specialist method",
+    "oceanic_age": "non-negative and tied to its declared T0 time/history and ridge/age-field support; never infer from plate identity",
+    "bathymetry": "ocean values obey the declared R6 sea-level datum and basin geometry; uncertainty ranges/ensemble until an authorial basin model is set",
+    "reference_density": "maintain source-consistency constraint mean mantle density > mean crust density; constrain parameter distributions only after material/domain assumptions are selected",
+    "thermal_properties": "conductivity and other dimensional coefficients must have physical units/signs and be consistent with selected profile model; exact admissible intervals are material- and law-specific",
+    "rheology": "use pinned law-specific dimensional domains and constraints; fault friction below continuum friction where applicable; no Earth defaults as ARCANA selections",
+    "uncertainty": "Use RANGE_CONSTRAINED_AUTHORIAL or ENSEMBLE_RECOMMENDED when canonical evidence does not determine a point. Reported literature values serve as physical plausibility context, not automatic ARCANA values."
+  },
+  "runtime_readiness": {
+    "ready_for_runtime_qualification": false,
+    "why": ["ocean elevation/bathymetry absent", "crustal thickness absent", "mantle-lithosphere/thermal inputs not bound", "material/rheology config not constrained", "mesh and BC/reference-frame adapters unqualified"],
+    "shellset_scientific_path_suitable": "candidate suitable for bounded mechanics proof after inputs and interfaces close; not yet runtime-qualified",
+    "first_interval_authorized": false,
+    "bounded_static_t0_smoke_authorized": false,
+    "next_stage": "After authorial primitive schemas/ranges and adapter contracts are reviewed, a separate authorization may install/build/pin the specialist and run a minimal instantaneous T0 smoke. This report does not authorize that execution."
+  },
+  "counts": {
+    "required_scientific_input_families": 8,
+    "already_canonical_complete_families": 1,
+    "already_canonical_partial_families": 1,
+    "specialist_generated_field_families_candidate": 4,
+    "reduced_to_independent_authorial_primitive_families": 4,
+    "specialist_model_configuration_families": 3,
+    "adapter_only_gaps": 2,
+    "optional_high_fidelity_items": 5,
+    "true_remaining_blockers": 6,
+    "independent_authorial_degrees_of_freedom_families_after_reduction": 4,
+    "counting_note": "Eight required scientific input families are surface elevation, crust thickness, mantle-lithosphere thickness, thermal/heat-flow structure, density/reference materials, rheology, FE mesh support and BC/fault interface. One family is fully available as a governed R6 planetary baseline (radius/gravity, with gMean convention check); one family is partially available (land elevation only). Canonical partition/kinematics is upstream geometry and does not count as a ShellSet physical field. Four independent world-defining primitive families: ocean bathymetry/elevation support; crustal physical-domain/thickness template; ocean lithosphere age/ridge-history primitive; continental thermal/structural initialization. Specialist configuration families are reference material/density, thermal coefficients and rheology. Adapter-only gaps are mesh projection/identity and pyGPlates-to-.bcs conversion; they remain blocked by open node/frame semantics. Six true blocker groups are listed in remaining_blockers. Counts are families, not scalar parameters or per-cell arrays."
+  },
+  "remaining_blockers": [
+    {"priority": 1, "id": "OCEAN_ELEVATION_BATHYMETRY", "class": "TRUE_BLOCKER", "reason": "R6 has only a land elevation field and explicitly unknown numeric bathymetry; ShellSet needs an elevation value at its modeled nodes."},
+    {"priority": 2, "id": "CRUSTAL_DOMAIN_AND_THICKNESS", "class": "TRUE_BLOCKER", "reason": "No physical thickness field; current OrbData Assign reads a grid. Need compact authorial domain/template and constrained ranges."},
+    {"priority": 3, "id": "OCEANIC_AGE_AND_CONTINENTAL_THERMAL_STATE", "class": "TRUE_BLOCKER", "reason": "No age, ridge history, heat-flow or geotherm state. Age is not inferable from plate ID; GWB needs configured inputs."},
+    {"priority": 4, "id": "REFERENCE_MATERIAL_AND_THERMAL_CONFIGURATION", "class": "TRUE_BLOCKER", "reason": "rhoBar/rhoAst, density-water terms, alphaT, conductivity, heat production and geotherm constraints are unbound; only gMean/radius are present in the R6 design baseline."},
+    {"priority": 5, "id": "RHEOLOGY_CONFIGURATION", "class": "TRUE_BLOCKER", "reason": "SHELLS law family is known but no physical parameter ranges/ensemble/config selected; exact pinned release parameter inventory must be captured."},
+    {"priority": 6, "id": "MESH_BC_AND_FAULT_INTERFACE", "class": "TRUE_BLOCKER", "reason": "No FEG mesh, node correspondence, authorized .bcs frame/node policy, fault element policy or junction transfer contract."}
+  ],
+  "next_stage": "Constrain the four independent world-defining primitive schemas and three specialist configuration families as governed ranges/ensembles, while specifying mesh/.bcs interface invariants. The minimum field-production routes are known (OrbData5 plus a configured GWB/thermal path); no new scientific specialist or custom ARCANA physics is needed. Runtime qualification remains a later separately authorized stage."
+}
