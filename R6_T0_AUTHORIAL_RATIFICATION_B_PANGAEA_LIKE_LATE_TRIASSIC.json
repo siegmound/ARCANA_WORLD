@@ -1,0 +1,92 @@
+{
+  "artifact": "R6_T0_AUTHORIAL_RATIFICATION_B_PANGAEA_LIKE_LATE_TRIASSIC",
+  "schema_version": "1.0.0",
+  "authorial_candidate_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+  "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+  "supersedes": "R6_T0_AUTHORIAL_RATIFICATION_ACCEPTED__GEOGRAPHY_REVISION_REQUIRED",
+  "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+  "t0_ma": 210,
+  "geography_role": "EARTH_LATE_TRIASSIC_IS_REFERENCE_ARCHETYPE_ONLY; NO_EARTH_GEOMETRY_IMPORTED",
+  "macrostate": {
+    "dominant_supercontinent": true,
+    "largest_component_fraction_of_continental_area": [0.85, 0.95],
+    "equator_crossing": true,
+    "broad_paleolatitude_span": true,
+    "one_dominant_circumglobal_oceanic_system": true,
+    "major_low_latitude_marine_embayment": "OPTIONAL_SECONDARY_MORPHOLOGY",
+    "multiple_physical_crust_domains": true,
+    "inherited_sutures": true,
+    "localized_incipient_extension": true,
+    "future_breakup_or_continent_targets": false
+  },
+  "primitive_selections": {
+    "OCEAN_SURFACE_SUPPORT": {
+      "residual_rms_m": 500,
+      "residual_hard_cap_m": [-1200, 1200],
+      "characteristic_wavelength_km": [1200, 2500],
+      "global_mean_residual_m": 0,
+      "fine_scale_relief": "UNKNOWN_DEFERRED",
+      "thermal_isostatic_component": "COMBINE_ONLY_WHERE_AUTHORIZED_MODEL_SUPPORTS_IT"
+    },
+    "PHYSICAL_CRUST_DOMAIN_TEMPLATE": {
+      "reference_thickness_km": {
+        "NORMAL_OCEANIC": 6.5,
+        "TRANSITIONAL_MARGIN": 25,
+        "EXTENDED_CONTINENTAL": 28,
+        "NORMAL_CONTINENTAL": 35,
+        "STABLE_CONTINENTAL": 40,
+        "OROGENIC_THICKENED": 50
+      },
+      "assignment_policy": "DOMAIN_IDENTITY_SEPARATE_FROM_PLATE_ID_AND_NOT_INFERRED_FROM_LAND_OCEAN_ALONE",
+      "generation_inputs": ["canonical_geography", "canonical_plate_topology", "canonical_boundary_kinematic_demand"],
+      "generation_order": ["orogenic_convergent_support", "extended_extensional_support", "quiet_stable_interiors", "normal_continental_remainder", "coastal_transition_support", "oceanic_support"],
+      "legacy_suture_and_province_design_tags_used_as_physical_authority": false,
+      "heterogeneous_continental_domains_required": true
+    },
+    "OCEANIC_AGE_STATE": {
+      "age_min_ma": 0,
+      "age_max_ma": 160,
+      "target_global_median_ma": 70,
+      "spatial_policy": "COHERENT_AND_SOURCE_LINKED; NO_INDEPENDENT_PER_CELL_RANDOM_AGES",
+      "divergent_boundary_policy": "ONLY_KINEMATICALLY_COMPATIBLE_OCEANIC_SOURCE_CANDIDATES; OTHER_DIVERGENCE_MAY_REMAIN_RIFT_OR_UNKNOWN"
+    },
+    "CONTINENTAL_THERMAL_STRUCTURAL_DOMAINS": {
+      "classes": {
+        "COLD_STABLE": {"reference_surface_heat_flow_mW_m2": 45, "reference_lithosphere_thickness_km": 200, "area_target_fraction": [0.50, 0.60]},
+        "NORMAL": {"reference_surface_heat_flow_mW_m2": 60, "reference_lithosphere_thickness_km": 135, "area_target_fraction": [0.30, 0.40]},
+        "HOT_EXTENDED": {"reference_surface_heat_flow_mW_m2": 85, "reference_lithosphere_thickness_km": 80, "area_target_fraction": [0.08, 0.15]}
+      },
+      "area_targets_are_soft": true,
+      "spatial_selection": "DETERMINISTIC_RANKING_OF_EXTENSION_SUPPORT_AND_QUIET_INTERIOR_SUPPORT; NO_WHITE_NOISE",
+      "hot_extended_geometry": "FEW_COHERENT_CORRIDORS_ASSOCIATED_WITH_SUPPORTED_SUTURE_OR_EXTENSION_EVIDENCE; NO_FUTURE_RIFT_SUCCESS_ENCODING",
+      "stable_geometry": "COHERENT_INTERIORS_AWAY_FROM_STRONGEST_INITIALIZED_EXTENSION"
+    }
+  },
+  "scientific_uncertainty_axes": {
+    "inherited_from_parent": [
+      "ocean basin residual/bathymetry family",
+      "physical crust-domain thickness family",
+      "ocean age field/formation model",
+      "continental thermal/domain family",
+      "correlated material-reference configuration"
+    ],
+    "authorial_choices_are_not_ensemble_axes": true,
+    "sampling_required_for_ratification": false
+  },
+  "future_state_constraints": {
+    "continent_count": null,
+    "ocean_count": null,
+    "successful_or_failed_rift": null,
+    "future_plate_trajectory": null,
+    "future_geography": "SIMULATION_DECIDES"
+  },
+  "authorization_boundary": {
+    "canonical_promotion": false,
+    "canonical_geography_compatible": true,
+    "geography_revision_authorized": false,
+    "previous_geography_revision_blocker_superseded": true,
+    "shellset_mechanics": false,
+    "forward_evolution": false,
+    "dt_or_t1": false
+  }
+}

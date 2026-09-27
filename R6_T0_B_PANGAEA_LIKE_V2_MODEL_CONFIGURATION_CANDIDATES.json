@@ -1,0 +1,207 @@
+{
+  "reference_physical_parameters": {
+    "canonical_values": {
+      "gravity_gMean": 9.82,
+      "radius": 6371000
+    },
+    "earth_example_defaults_used": false,
+    "families": [
+      {
+        "class": "AUTHORIAL_REFERENCE_PARAMETER",
+        "constraint": "material-family distribution; positive and less than mantle mean density per ShellSet check",
+        "ensemble_axis": true,
+        "id": "rhoBar_crust",
+        "selected": false,
+        "units": "kg m-3"
+      },
+      {
+        "class": "AUTHORIAL_REFERENCE_PARAMETER",
+        "constraint": "material-family distribution and greater than mean crust density",
+        "ensemble_axis": true,
+        "id": "rhoBar_mantle",
+        "selected": false,
+        "units": "kg m-3"
+      },
+      {
+        "class": "SHELLSET_MODEL_PARAMETER",
+        "constraint": "consistent with selected reference column and mantle material model",
+        "ensemble_axis": true,
+        "id": "rhoAst",
+        "selected": false,
+        "units": "kg m-3"
+      },
+      {
+        "class": "AUTHORIAL_REFERENCE_PARAMETER_IF_WATER_COLUMN_USED",
+        "constraint": "requires explicit aqueous material/column decision; otherwise not active",
+        "ensemble_axis": false,
+        "id": "rhoH2O",
+        "selected": false,
+        "units": "kg m-3"
+      },
+      {
+        "class": "PHYSICAL_PARAMETER",
+        "constraint": "material and temperature-regime specific; positive/zero behavior must match pinned implementation",
+        "ensemble_axis": true,
+        "id": "alphaT_crust_mantle",
+        "selected": false,
+        "units": "K-1"
+      },
+      {
+        "class": "PHYSICAL_PARAMETER",
+        "constraint": "positive and consistent with selected geotherm/flux model",
+        "ensemble_axis": true,
+        "id": "conductivity_crust_mantle",
+        "selected": false,
+        "units": "W m-1 K-1"
+      },
+      {
+        "class": "AUTHORIAL_REFERENCE_PARAMETER",
+        "constraint": "material/domain conditioned; zero only if explicitly chosen and source-supported",
+        "ensemble_axis": true,
+        "id": "radiogenic_heat_production_crust_mantle",
+        "selected": false,
+        "units": "W m-3"
+      },
+      {
+        "class": "SHELLSET_MODEL_PARAMETER",
+        "constraint": "surface reference and allowed profile interval consistent with model and primitive profiles",
+        "ensemble_axis": true,
+        "id": "surface_temperature_and_temperature_limits",
+        "selected": false,
+        "units": "K or source-file convention"
+      },
+      {
+        "class": "SHELLSET_MODEL_PARAMETER",
+        "constraint": "upper mantle adiabat and asthenosphere depth controls; versioned source semantics required",
+        "ensemble_axis": true,
+        "id": "TADIAB_GRADIE_ZBASTH",
+        "selected": false,
+        "units": "K, K m-1, m (confirm pinned source)"
+      },
+      {
+        "class": "ALREADY_CANONICAL",
+        "constraint": "bind to R6 9.82 m s-2 after verifying Shells convention; do not substitute Earth example default",
+        "ensemble_axis": false,
+        "id": "gravity_gMean",
+        "selected": true,
+        "units": "m s-2"
+      },
+      {
+        "class": "ALREADY_CANONICAL",
+        "constraint": "use R6 6,371,000 m in spherical FEG construction after format confirmation",
+        "ensemble_axis": false,
+        "id": "radius",
+        "selected": true,
+        "units": "m"
+      }
+    ],
+    "family_count": 11,
+    "numeric_candidate_configurations": [],
+    "unselected_due_to_missing_pinned_family_values": 9
+  },
+  "rheology": {
+    "contract": {
+      "configuration_families": [
+        {
+          "class": "PHYSICAL_MODEL_CHOICE",
+          "meaning": "continuum low-temperature effective friction",
+          "parameter": "CFRIC",
+          "relationship": "fault friction below continuum friction where fault elements used",
+          "selected": false,
+          "units": "dimensionless"
+        },
+        {
+          "class": "FAULT_ONLY_PARAMETER",
+          "meaning": "effective friction on fault elements",
+          "parameter": "FFRIC",
+          "relationship": "below CFRIC under source condition; omit/inactive if no fault elements",
+          "selected": false,
+          "units": "dimensionless"
+        },
+        {
+          "class": "PHYSICAL_PARAMETER",
+          "meaning": "effective-stress sensitivity to pore pressure",
+          "parameter": "BIOT",
+          "relationship": "requires pore-pressure/effective-stress convention; not a custom pressure coupling",
+          "selected": false,
+          "units": "dimensionless"
+        },
+        {
+          "class": "FAULT_ONLY_PARAMETER",
+          "meaning": "fractional strength reduction of master fault",
+          "parameter": "BYERLY",
+          "relationship": "active only when source fault/master-fault semantics apply",
+          "selected": false,
+          "units": "dimensionless"
+        },
+        {
+          "class": "PHYSICAL_PARAMETER",
+          "meaning": "crust/mantle dislocation creep prefactor/strength constants",
+          "parameter": "ACREEP(1), ACREEP(2)",
+          "relationship": "material-family coupled",
+          "selected": false,
+          "units": "source convention Pa s^(-1/n), verify exact parser"
+        },
+        {
+          "class": "PHYSICAL_PARAMETER",
+          "meaning": "crust/mantle activation energy divided by nR",
+          "parameter": "BCREEP(1), BCREEP(2)",
+          "relationship": "temperature-dependent creep law; paired to matching material",
+          "selected": false,
+          "units": "K"
+        },
+        {
+          "class": "PHYSICAL_PARAMETER",
+          "meaning": "depth derivative of BCREEP / pressure activation proxy",
+          "parameter": "CCREEP(1), CCREEP(2)",
+          "relationship": "gravity/material and flow law dependent",
+          "selected": false,
+          "units": "K m-1"
+        },
+        {
+          "class": "PHYSICAL_PARAMETER",
+          "meaning": "crust/mantle maximum shear strength in creep law",
+          "parameter": "DCREEP(1), DCREEP(2)",
+          "relationship": "law-specific cap",
+          "selected": false,
+          "units": "Pa"
+        },
+        {
+          "class": "PHYSICAL_MODEL_CHOICE",
+          "meaning": "inverse stress exponent 1/n shared by creep law",
+          "parameter": "ECREEP",
+          "relationship": "must match selected crust/mantle flow-law family",
+          "selected": false,
+          "units": "dimensionless"
+        },
+        {
+          "class": "OPTIONAL_MODEL_PARAMETER",
+          "meaning": "basal traction cap and downdip integrated subduction shear traction cap",
+          "parameter": "TRHMAX, TAUMAX",
+          "relationship": "only where selected source formulation activates them; values/config not bound",
+          "selected": false,
+          "units": "Pa and N m-1 respectively"
+        }
+      ],
+      "default_policy": "No unclassified defaults. Source defaults are recorded for reproduction only and do not become selected ARCANA values.",
+      "ensemble_policy": "Versioned, physically constrained model configurations with full member retention. Model-list/grid-search can run sensitivity only; no Earth OrbScore optimum is ARCANA authority.",
+      "other_non_rheology_model_controls": [
+        "PLTREF reference plate",
+        "ICONVE lower mantle flow-pattern code",
+        "TADIAB/GRADIE adiabat controls",
+        "ZBASTH asthenosphere base depth"
+      ],
+      "parameters_families_count": 13,
+      "source_basis": "ShellSet v1.1.0 paper documents four low-temperature friction parameters and nine crust/mantle dislocation-creep parameters in element groups; exact code-native symbols below cross-checked against Shells parameter literature, and must be validated against the pinned release before exporter implementation.",
+      "viscosity_limits": "No independent generic viscosity-limit field established by the reviewed minimum ShellSet contract; do not add one absent pinned source requirement."
+    },
+    "earth_orbscore_ranking_used": false,
+    "numeric_candidate_configurations": [],
+    "parameter_family_count": 13,
+    "status": "SPECIALIST_MODEL_CONFIGURATION_UNSELECTED"
+  },
+  "runtime_execution_authorized": false,
+  "schema": "R6_T0_B_PANGAEA_V2_MODEL_CONFIGURATION_CANDIDATES_V1",
+  "world_state_and_model_configuration_separate": true,
+  "world_state_candidate_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2"
+}

@@ -1,0 +1,599 @@
+{
+  "FEG_status": {
+    "FEG_sha256": null,
+    "contract_required_nodal_fields": [
+      "elevation",
+      "heat_flow",
+      "crustal_thickness",
+      "mantle_lithosphere_thickness",
+      "chemical_delta_rho",
+      "cooling_curvature"
+    ],
+    "expected_fault_elements": 0,
+    "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "nodes": 64442,
+    "pre_orbdata_fegs": 0,
+    "projection_policy_status": "NOT_CLOSED_OR_NOT_REPORTED",
+    "round_trip": "NOT_RUN_NO_SCIENTIFIC_FEG",
+    "shells_ready_fegs": 0,
+    "status": "BLOCKED_REQUIRED_GOVERNED_FIELDS_AND_NODE_PROJECTIONS_MISSING",
+    "topology_contract": "PRESERVED_FROM_VALIDATED_PARENT",
+    "triangles": 128880
+  },
+  "chemical_density_anomaly": {
+    "field": "chemical_delta_rho",
+    "reason": "The contract defines a node-wise isostatic/lithosphere correction; no source-valid zero assumption or numeric bound is selected.",
+    "status": "PENDING_SPECIALIST_OR_VALID_EQUIVALENT",
+    "zero_assumption_selected": false
+  },
+  "complete_elevation": {
+    "complete_global_surface": false,
+    "earth_terrain_used": false,
+    "land_elevation_sha256": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+    "ocean_residual_sha256": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+    "residual_regenerated": false,
+    "status": "INCOMPLETE_LAND_SUPPORT_PLUS_OCEAN_RESIDUAL_COMPONENT",
+    "thermal_isostatic_component": "MISSING"
+  },
+  "cooling_curvature": {
+    "arbitrary_zero_used": false,
+    "reason": "The parent defines this as a derived/adjusted thermal field; no governed source is available.",
+    "status": "PENDING_ORBDATA_OR_VALID_EQUIVALENT"
+  },
+  "crustal_state": {
+    "authorial_field_overwritten": false,
+    "crustal_thickness_sha256": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+    "domain_counts_cells": {
+      "EXTENDED_CONTINENTAL": 1266,
+      "NORMAL_CONTINENTAL": 4723,
+      "NORMAL_OCEANIC": 50542,
+      "OROGENIC_THICKENED": 401,
+      "STABLE_CONTINENTAL": 7834,
+      "TRANSITIONAL_MARGIN": 34
+    },
+    "status": "UPSTREAM_GRID_MATERIALIZED__FEG_NODE_PROJECTION_PENDING"
+  },
+  "global_heat_flow": {
+    "continental_domain_references_w_m2": {
+      "COLD_STABLE": 0.045,
+      "HOT_EXTENDED": 0.085,
+      "NORMAL": 0.06
+    },
+    "earth_heat_flow_grid_used": false,
+    "global_field": "MISSING",
+    "oceanic_field": "MISSING",
+    "per_node_lineage": "NOT_YET_ASSEMBLED",
+    "positive_complete_node_support": false,
+    "status": "INCOMPLETE_CONTINENTAL_SUPPORT_ONLY",
+    "zero_sentinel_used": false
+  },
+  "governance": {
+    "canonical_candidate_promoted": false,
+    "canonical_payload_mutated": false,
+    "dt_created": false,
+    "earth_observational_data_used": false,
+    "forward_evolution": false,
+    "runtime_qualification_authorized": false,
+    "shellset_mechanics_executed": false,
+    "t1_created": false
+  },
+  "literature_basis": [
+    {
+      "citation": "Stein and Stein (1992), Nature 359, 123-129",
+      "doi": "10.1038/359123a0",
+      "use": "Supports using a plate-cooling formulation fitted jointly to age-depth and heat-flow behavior for mature oceanic lithosphere; it supplies no ARCANA observations or field values."
+    },
+    {
+      "citation": "Holdt et al. (2025), Revised Oceanic Plate Cooling Models, JGR Solid Earth",
+      "doi": "10.1029/2024JB029890",
+      "use": "Documents the old-age limitation of half-space cooling and plate-model alternatives; method rationale only, not an Earth observational input to ARCANA."
+    },
+    {
+      "citation": "May, Bird, and Carafa (2024), ShellSet v1.1.0, Geoscientific Model Development 17, 6153-6171",
+      "doi": "10.5194/gmd-17-6153-2024",
+      "use": "Confirms the ShellSet parameter-family and model roles; does not validate a local build or select ARCANA parameter values."
+    }
+  ],
+  "lithosphere_thickness": {
+    "continental": "UPSTREAM_THERMAL_DOMAIN_REFERENCES_MATERIALIZED__NODE_PROJECTION_PENDING",
+    "global_node_field": "MISSING",
+    "oceanic": "PENDING_APPROVED_AGE_TO_THERMAL_SPECIALIST"
+  },
+  "materializer_versions": [
+    {
+      "candidate": "pinned published plate-cooling and water-loaded isostatic model",
+      "field": "ocean thermal and thermal-isostatic depth",
+      "parent_status": "not selected/version-pinned",
+      "runtime_qualification": "NOT_RUN"
+    },
+    {
+      "candidate": "thermal specialist output; validated flux adapter if necessary",
+      "field": "ocean and continental heat flow",
+      "parent_status": "derived; no separate authoring",
+      "runtime_qualification": "NOT_RUN"
+    },
+    {
+      "candidate": "domain template materializer; OrbData local-isostasy option only if its exact inputs/semantics selected",
+      "field": "crustal thickness",
+      "parent_status": "path must be fixed before implementation",
+      "runtime_qualification": "NOT_RUN"
+    },
+    {
+      "candidate": "documented continental geotherm model",
+      "field": "continental profiles",
+      "parent_status": "exact model/provider/version unresolved",
+      "runtime_qualification": "NOT_RUN"
+    },
+    {
+      "candidate": "OrbData5 where selected route requires them; otherwise explicit already-complete FEG state must demonstrate those fields are unnecessary",
+      "field": "chemical density anomaly and cooling curvature",
+      "parent_status": "source mode/version unresolved",
+      "runtime_qualification": "NOT_RUN"
+    },
+    {
+      "candidate": "OrbWin official FEG creator or separately validated spherical mesher",
+      "field": "FEG generation",
+      "parent_status": "provider not selected; no ARCANA adapter exists",
+      "runtime_qualification": "NOT_RUN"
+    },
+    {
+      "candidate": "existing R6 state/provenance infrastructure",
+      "field": "surface output normalization",
+      "parent_status": "reuse HistoryStore, DomainStateEnvelope, ProvenanceRecord, stable identity and authority class patterns",
+      "runtime_qualification": "NOT_RUN"
+    }
+  ],
+  "next_stage": "QUALIFY_APPROVED_SPECIALIST_RUNTIMES_ON_FAIR_THEN_RESUME_B_V2_T0_MATERIALIZATION",
+  "oceanic_thermal_state": {
+    "age_field_regenerated": false,
+    "age_input_authoritative": true,
+    "age_input_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+    "approved_plate_model": "NOT_SELECTED_OR_VERSION_PINNED",
+    "bathymetric_component_m": "PENDING_SPECIALIST_RUNTIME",
+    "half_space_extended_to_160_ma": false,
+    "heat_flow_w_m2": "PENDING_SPECIALIST_RUNTIME",
+    "mantle_lithosphere_thickness_m": "PENDING_SPECIALIST_RUNTIME",
+    "thermal_state": "PENDING_SPECIALIST_RUNTIME"
+  },
+  "parent_state": {
+    "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+    "boundary_segments": 1983,
+    "branches": 30,
+    "canonical_geography_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "canonical_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "canonical_state_changed": false,
+    "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+    "historical_bootstrap_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "junctions": 20,
+    "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "parent_decision": "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZED__SPECIALIST_RUNTIME_REMAINS",
+    "plates": 12,
+    "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+    "t0_ma": 210,
+    "upstream_field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e"
+  },
+  "pending_field_ledger": {
+    "ALREADY_MATERIALIZED": [
+      {
+        "field": "physical_crust_domain_id",
+        "normalized_sha256": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+        "status": "MATERIALIZED_UPSTREAM"
+      },
+      {
+        "field": "crustal_thickness_m",
+        "normalized_sha256": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+        "status": "MATERIALIZED_UPSTREAM"
+      },
+      {
+        "field": "continental_thermal_domain_id",
+        "normalized_sha256": "8dd631433acfe68ebb3312a20c904b313883596e8da63da10bbb50d854040d75",
+        "status": "MATERIALIZED_UPSTREAM"
+      },
+      {
+        "field": "continental_reference_surface_heat_flow_w_m2",
+        "normalized_sha256": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+        "status": "MATERIALIZED_UPSTREAM"
+      },
+      {
+        "field": "continental_reference_lithosphere_thickness_m",
+        "normalized_sha256": "1e7db18c673c43c3048a863442e8182b9007d4cc292f60309583ce7b67d3e430",
+        "status": "MATERIALIZED_UPSTREAM"
+      },
+      {
+        "field": "oceanic_lithosphere_age_ma",
+        "normalized_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+        "status": "MATERIALIZED_UPSTREAM"
+      },
+      {
+        "field": "ocean_surface_authorial_residual_m",
+        "normalized_sha256": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+        "status": "MATERIALIZED_UPSTREAM"
+      },
+      {
+        "field": "canonical_land_surface_elevation_m",
+        "normalized_sha256": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+        "status": "CANONICAL_LAND_SUPPORT_ONLY"
+      },
+      {
+        "field": "unknown_total_ocean_elevation_mask",
+        "normalized_sha256": "3c52af8ec1c5eb09557f5fda9a6c1153a1cc8bde1e94dff50026710456a21df7",
+        "status": "UNKNOWN_MASK_NOT_NUMERIC_ELEVATION"
+      }
+    ],
+    "NOT_REQUIRED": [
+      "External absolute lithostatic pressure, EOS density, mineral phase fractions, and a 3-D gravity field; the parent minimum-state contract says SHELLS/OrbData derives or does not consume them.",
+      "OrbData5 only if direct ARCANA/specialist producers supply every required physical field with equivalent governed provenance; that condition is not met in this report.",
+      "Fault elements and fault-only mechanical values in Level 1 (nFl=0).",
+      "Earth observational geography/grids and Earth OrbScore calibration.",
+      "SHELLS mechanical solve, finite-time evolution, dt, and t1 at this stage."
+    ],
+    "PENDING_MODEL_CONFIGURATION": {
+      "reference_parameter_families": [
+        "rhoBar_crust",
+        "rhoBar_mantle",
+        "rhoAst",
+        "rhoH2O",
+        "alphaT_crust_mantle",
+        "conductivity_crust_mantle",
+        "radiogenic_heat_production_crust_mantle",
+        "surface_temperature_and_temperature_limits",
+        "TADIAB_GRADIE_ZBASTH"
+      ],
+      "rheology_families": [
+        "CFRIC",
+        "FFRIC",
+        "BIOT",
+        "BYERLY",
+        "ACREEP(1)",
+        "ACREEP(2)",
+        "BCREEP(1)",
+        "BCREEP(2)",
+        "CCREEP(1)",
+        "CCREEP(2)",
+        "DCREEP(1)",
+        "DCREEP(2)",
+        "ECREEP"
+      ]
+    },
+    "PENDING_NUMERICAL_PROJECTION": [
+      "Project governed cell-domain crust/thermal fields to the 64,442-node FEG support with a validated interpolation/error policy.",
+      "Project specialist-complete global elevation and heat-flow fields to FEG nodes with lineage per node."
+    ],
+    "PENDING_SPECIALIST_RUNTIME": [
+      "ocean thermal profile and age-derived heat flow",
+      "ocean thermal lithosphere thickness",
+      "thermal/isostatic ocean bathymetry component and complete ocean surface",
+      "continental geotherm profiles and model-derived heat flow beyond ratified references",
+      "chemical density anomaly",
+      "cooling curvature"
+    ],
+    "UNKNOWN": [
+      "Exact selected/version-pinned plate-cooling/isostatic engine and its local availability.",
+      "Exact pinned ShellSet/SHELLS and OrbData source builds and parser conventions.",
+      "Computational reference-frame behavior and global gauge; explicitly deferred to runtime qualification.",
+      "Whether a validated OrbData-free producer can supply chemical_delta_rho and cooling_curvature without changing their contract semantics."
+    ]
+  },
+  "principal_decision": "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_PARTIAL__MATERIALIZER_RUNTIME_BLOCKED",
+  "reference_physical_configuration": {
+    "configuration_id": null,
+    "earth_example_defaults_used": false,
+    "families": [
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "rhoBar_crust",
+        "rationale": "material-family distribution; positive and less than mantle mean density per ShellSet check",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "kg m-3",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "rhoBar_mantle",
+        "rationale": "material-family distribution and greater than mean crust density",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "kg m-3",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "rhoAst",
+        "rationale": "consistent with selected reference column and mantle material model",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "kg m-3",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "rhoH2O",
+        "rationale": "requires explicit aqueous material/column decision; otherwise not active",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "kg m-3",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "alphaT_crust_mantle",
+        "rationale": "material and temperature-regime specific; positive/zero behavior must match pinned implementation",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "K-1",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "conductivity_crust_mantle",
+        "rationale": "positive and consistent with selected geotherm/flux model",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "W m-1 K-1",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "radiogenic_heat_production_crust_mantle",
+        "rationale": "material/domain conditioned; zero only if explicitly chosen and source-supported",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "W m-3",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "surface_temperature_and_temperature_limits",
+        "rationale": "surface reference and allowed profile interval consistent with model and primitive profiles",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "K or source-file convention",
+        "value": null
+      },
+      {
+        "authority": "EARTH_LIKE_MODEL_CONFIGURATION_NOT_YET_GOVERNED",
+        "parameter": "TADIAB_GRADIE_ZBASTH",
+        "rationale": "upper mantle adiabat and asthenosphere depth controls; versioned source semantics required",
+        "status": "PENDING_VERSION_PINNED_PHYSICAL_CONFIGURATION",
+        "units": "K, K m-1, m (confirm pinned source)",
+        "value": null
+      },
+      {
+        "authority": "CANONICAL_PLANETARY_CONSTANT",
+        "parameter": "gravity_gMean",
+        "rationale": "bind to R6 9.82 m s-2 after verifying Shells convention; do not substitute Earth example default",
+        "status": "CANONICAL_VALUE_BOUND__RUNTIME_CONVENTION_UNVERIFIED",
+        "units": "m s-2",
+        "value": 9.82
+      },
+      {
+        "authority": "CANONICAL_PLANETARY_CONSTANT",
+        "parameter": "radius",
+        "rationale": "use R6 6,371,000 m in spherical FEG construction after format confirmation",
+        "status": "CANONICAL_VALUE_BOUND__RUNTIME_CONVENTION_UNVERIFIED",
+        "units": "m",
+        "value": 6371000
+      }
+    ],
+    "status": "INCOMPLETE__9_OF_11_FAMILIES_UNSELECTED"
+  },
+  "remaining_blockers": [
+    "No GWB, OrbData5, SHELLS, or ShellSet executable is available on PATH; specialist version/build smoke and T0 transformation cannot run here.",
+    "The design does not select and version-pin the approved ocean plate-cooling/isostatic materializer.",
+    "Ocean thermal state, ocean heat flow, ocean mantle-lithosphere thickness, and the thermal/isostatic elevation component remain unmaterialized.",
+    "The current age field is an authoritative T0 input; its plate-cooling consequences require the approved specialist runtime and must not be regenerated.",
+    "Global elevation, global heat flow, continental geotherm support, chemical_delta_rho, and cooling_curvature do not yet have complete governed FEG-node fields.",
+    "Nine noncanonical reference-parameter families and the numerical ShellSet rheology baseline/sensitivity members remain unselected; ShellSet source/version semantics are not pinned locally.",
+    "The runtime manifest remains incomplete and runtime_authorized=false; no scientific SHELLS_READY FEG can be written."
+  ],
+  "replay_validation": {
+    "integrated_materialization_replay": "NOT_RUN_NO_SPECIALIST_RUNTIME",
+    "integrated_report_input_sha256": {
+      "R6_SHELLSET_FEG_BC_CONTRACT.json": "1cd7639590af77c31beb03b4d9e2982aab30796e92e84fdb751243606db703f9",
+      "R6_SHELLSET_MESH_PROVIDER_ADAPTER_CLOSURE.json": "cfa1b1a66413c80c57969f189925bc775872e803b5ce0ed2053ccbbabc62dbf8",
+      "R6_SHELLSET_MINIMUM_THERMOMECHANICAL_STATE_CONTRACT.json": "2aa5e8aac823a11f80c21b8ea8c5a6fd6f9918ca10b4a474731abb7a223a7655",
+      "R6_SHELLSET_PRERUNTIME_INPUT_CLOSURE.json": "d81c87e6b9ebf04ecc6a3e0b0c2f2040d0ca667bfbe57c40d9ec2e48a72db378",
+      "R6_SHELLSET_T0_RUNTIME_INPUT_MANIFEST_CANDIDATE_B_V2.json": "3a61a14eb042deeb66f3c5f2d08ab31535708b5dd7ea71ea5f7b1a578777ff04",
+      "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+      "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZATION_REPORT.json": "37088d5a599d8f15a8f658735a0d819fbc55a1fd661ab0495e144349d620b236",
+      "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZATION_REPORT.md": "3138e99f2aa4f5dbfa9e542a0d3a173ae905368d3853f0c2a6cbc80ee9289ff7",
+      "R6_T0_B_PANGAEA_LIKE_V2_MODEL_CONFIGURATION_CANDIDATES.json": "243c1ee1cc6b794f040294e340d0fefa4b42af4dd0545298a8ed62735a39d53f",
+      "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json": "1703cb3ecc484b4957a55397e0548c8ea3665fa990449dc0539472728f6e0680",
+      "R6_T0_CANONICAL_BOUNDARY_BRANCH_REGISTRY.json": "ae571e1d25fa9be2eff62662794a973c2e8dcce94fd40af16c37173ea1104619",
+      "R6_TECTONIC_AUTHORIAL_PRIMITIVE_CONSTRAINTS.json": "c6734ef6f25dd02ab7a74dee4c6f853fe8261611054b644ebc8866061ad88eba",
+      "R6_TECTONIC_T0_MATERIALIZATION_DESIGN.json": "cb978d9b650c0de215804ff964cdfa4993ff59b996025a7606e9c971ba35087c",
+      "R6_TECTONIC_T0_MATERIALIZATION_IMPLEMENTATION.json": "37088d5a599d8f15a8f658735a0d819fbc55a1fd661ab0495e144349d620b236"
+    },
+    "upstream_field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "upstream_replay_validation": {
+      "deterministic_field_hashes": {
+        "canonical_land_surface_elevation_m": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+        "continental_reference_lithosphere_thickness_m": "1e7db18c673c43c3048a863442e8182b9007d4cc292f60309583ce7b67d3e430",
+        "continental_reference_surface_heat_flow_w_m2": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+        "continental_thermal_domain_id": "8dd631433acfe68ebb3312a20c904b313883596e8da63da10bbb50d854040d75",
+        "crustal_thickness_m": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+        "ocean_surface_authorial_residual_m": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+        "oceanic_lithosphere_age_ma": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+        "physical_crust_domain_id": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+        "unknown_total_ocean_elevation_mask": "3c52af8ec1c5eb09557f5fda9a6c1153a1cc8bde1e94dff50026710456a21df7"
+      },
+      "field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+      "realization_manifest_sha256": "611a53eb0bbee106ed554513441d1761322632e10cf7510e73996785caf76ba2"
+    }
+  },
+  "rheology_configuration": {
+    "baseline_id": null,
+    "baseline_status": "NOT_SELECTED_OR_SOURCE_PINNED",
+    "earth_orbscore_ranking_used": false,
+    "families": [
+      {
+        "baseline_value": null,
+        "meaning": "continuum low-temperature effective friction",
+        "parameter_family": "CFRIC",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "fault-only friction; inactive for Level 1 nFl=0",
+        "parameter_family": "FFRIC",
+        "status": "INACTIVE_LEVEL1_NO_FAULT_ELEMENTS"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "pore-pressure/effective-stress coefficient; source convention unpinned",
+        "parameter_family": "BIOT",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "master-fault strength reduction; inactive for Level 1 nFl=0",
+        "parameter_family": "BYERLY",
+        "status": "INACTIVE_LEVEL1_NO_FAULT_ELEMENTS"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "crust creep prefactor",
+        "parameter_family": "ACREEP(1)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "mantle creep prefactor",
+        "parameter_family": "ACREEP(2)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "crust creep activation parameter",
+        "parameter_family": "BCREEP(1)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "mantle creep activation parameter",
+        "parameter_family": "BCREEP(2)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "crust pressure/depth activation parameter",
+        "parameter_family": "CCREEP(1)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "mantle pressure/depth activation parameter",
+        "parameter_family": "CCREEP(2)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "crust creep strength cap",
+        "parameter_family": "DCREEP(1)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "mantle creep strength cap",
+        "parameter_family": "DCREEP(2)",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      },
+      {
+        "baseline_value": null,
+        "meaning": "inverse stress exponent shared by the selected creep laws",
+        "parameter_family": "ECREEP",
+        "status": "PENDING_PINNED_SHELLS_SOURCE_AND_GOVERNED_BASELINE"
+      }
+    ],
+    "level1_fault_policy": {
+      "BYERLY_active": false,
+      "FFRIC_active": false,
+      "nFl": 0
+    },
+    "optional_TRHMAX_TAUMAX": "NOT_SELECTED; source activation is unverified",
+    "sensitivity_members": [],
+    "sensitivity_status": "NOT_DEFINED"
+  },
+  "runtime_manifest": {
+    "path": "R6_SHELLSET_T0_RUNTIME_INPUT_MANIFEST_CANDIDATE_B_V2.json",
+    "runtime_authorized": false,
+    "sha256": "3a61a14eb042deeb66f3c5f2d08ab31535708b5dd7ea71ea5f7b1a578777ff04",
+    "status": "TEMPLATE_ONLY_NOT_A_RUNTIME_INPUT_MANIFEST"
+  },
+  "schema": "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION_V1",
+  "shellset_runtime_readiness": "NOT_READY__SPECIALIST_FIELDS_CONFIGURATIONS_NODE_PROJECTION_AND_MANIFEST_INCOMPLETE",
+  "specialist_runtime_qualification": {
+    "authorized_t0_transformations": "BLOCKED_NOT_RUN",
+    "host_os": "Windows-10-10.0.26200-SP0",
+    "minimal_smoke": "BLOCKED_NOT_RUN",
+    "official_build_qualification": "BLOCKED_NOT_RUN",
+    "orbdata_necessity": {
+      "current_assessment": "CANNOT_SKIP_FOR_CURRENT_PARENT_STATE: chemical_delta_rho and cooling_curvature plus several global fields are not supplied by current ARCANA materializers; OrbData is also not installed/qualified.",
+      "decision": "NOT_REQUIRED_IF_ALL_GOVERNED_FIELDS_ARE_PRECOMPUTED",
+      "earth_fallback_prohibited": true
+    },
+    "python": "3.11.15",
+    "runtimes": {
+      "GWB": {
+        "available_on_path": false,
+        "commands_checked": [
+          "worldbuilder",
+          "gwb",
+          "WorldBuilder"
+        ],
+        "qualification": "BLOCKED_RUNTIME_NOT_FOUND",
+        "resolved_command": null,
+        "resolved_path": null,
+        "version": null
+      },
+      "OrbData5": {
+        "available_on_path": false,
+        "commands_checked": [
+          "OrbData5",
+          "orbdata5",
+          "orbdata"
+        ],
+        "qualification": "BLOCKED_RUNTIME_NOT_FOUND",
+        "resolved_command": null,
+        "resolved_path": null,
+        "version": null
+      },
+      "SHELLS": {
+        "available_on_path": false,
+        "commands_checked": [
+          "Shells",
+          "shells"
+        ],
+        "qualification": "BLOCKED_RUNTIME_NOT_FOUND",
+        "resolved_command": null,
+        "resolved_path": null,
+        "version": null
+      },
+      "ShellSet": {
+        "available_on_path": false,
+        "commands_checked": [
+          "ShellSet",
+          "shellset"
+        ],
+        "qualification": "BLOCKED_RUNTIME_NOT_FOUND",
+        "resolved_command": null,
+        "resolved_path": null,
+        "version": null
+      }
+    },
+    "wsl": {
+      "available": true,
+      "qualification": "PRESENT_BUT_DISTRIBUTION_QUERY_DENIED"
+    }
+  },
+  "thermal_state": {
+    "continental_domains": {
+      "COLD_STABLE": 0.5500702980512214,
+      "HOT_EXTENDED": 0.10002050378164219,
+      "NORMAL": 0.3499091981671366
+    },
+    "continental_profile": "PENDING_GOVERNED_GEOTHERM_CONFIGURATION_AND_MATERIALIZER",
+    "temperature_nodes_authored": false
+  },
+  "upstream_contract_decisions": {
+    "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+    "feg_bc_contract": "R6_SHELLSET_FEG_BC_CONTRACT_PARTIAL__MESH_TRIANGULATION_PROVIDER_REMAINS",
+    "mesh_adapter": "R6_SHELLSET_MESH_ADAPTER_IMPLEMENTED__READY_FOR_AUTHORIAL_SELECTION_AND_MATERIALIZATION",
+    "minimum_thermomechanical_state": "R6_SHELLSET_MINIMUM_STATE_CONTRACT_PARTIAL__REFERENCE_MATERIAL_PARAMETERS_REMAIN",
+    "physical_authority": "R6_TECTONIC_T0_MATERIALIZATION_DESIGN_PARTIAL__FEG_BC_CONTRACT_REMAINS",
+    "pre_runtime_input_closure": "R6_SHELLSET_PRERUNTIME_INPUTS_PARTIAL__AUTHORIAL_PRIMITIVES_REMAIN"
+  }
+}

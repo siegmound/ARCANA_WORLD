@@ -1,0 +1,342 @@
+{
+  "FEG_parser_status": "PASS_ARCANA_SUPPORTED_SUBSET; accepts whitespace/comma separators, D exponents, optional LR identifiers, continuum and fault records",
+  "FEG_round_trip": {
+    "fixture_authority": "TEST_FIXTURE_ONLY; NOT_CANONICAL; NOT_WORLD_HISTORY; NOT_PRODUCTION_INPUT",
+    "full_mesh_semantic_hash_scope": "all 64,442 nodes and 128,880 triangles with explicit TEST_FIXTURE_ONLY physical fields; the full-grid writer/parser equality is tested",
+    "normalized_serialization_stable": true,
+    "normalized_sha256": "b1d0472603fb6aed2f7df26dfd7eac40ea3d4df909f7cdf8f46f3ce4fa84f96e",
+    "semantic_equality": true,
+    "semantic_normalization": "title excluded; topology, coordinates, LR IDs, bound fields, mode and fixture flags included",
+    "small_serialization_fixture_normalized_sha256": "88cf0ba8f22643eec3c5fdabc131afa15b89a4c78a0510f1145d902e8d1926d1",
+    "status": "PASS"
+  },
+  "FEG_writer_status": "PASS_ARCANA_SUPPORTED_SUBSET; PRE_ORBDATA and explicit-binding SHELLS_READY modes; no physical values synthesized",
+  "adapter_implementation": {
+    "modules": [
+      "src/arcana_worldsim/r6/shellset_mesh/adapter.py",
+      "src/arcana_worldsim/r6/shellset_mesh/geometry.py",
+      "src/arcana_worldsim/r6/shellset_mesh/branches.py",
+      "src/arcana_worldsim/r6/shellset_mesh/model.py",
+      "src/arcana_worldsim/r6/shellset_mesh/feg.py"
+    ],
+    "status": "STATIC_MESH_BRANCH_GEOMETRY_AND_FEG_READ_WRITE_IMPLEMENTED"
+  },
+  "boundary_segment_accounting": {
+    "canonical_boundary_identity_preserved": true,
+    "direct_feg_edge": 1983,
+    "error": 0,
+    "not_required_level1": 0,
+    "subdivided_into_edge_chain": 0
+  },
+  "branch_registry": {
+    "boundary_segments_assigned": 1983,
+    "branch_count": 30,
+    "duplicated_ownership": [],
+    "id_authority": "DERIVED_CANONICAL_TOPOLOGY_REGISTRY_ID; not historical IDs",
+    "path": "R6_T0_CANONICAL_BOUNDARY_BRANCH_REGISTRY.json",
+    "status": "PASS",
+    "unassigned": []
+  },
+  "canonical_face_audit": {
+    "coordinate_representation": "five-point closed latitude/longitude degree rings; each exactly equals its declared one-degree cell bounds",
+    "count_360x180_support": "CONFIRMED",
+    "duplicates_zero_area_self_intersections": "no duplicate vertices within any non-polar parent ring; no zero-area output triangles; parent rectangles are exact non-overlapping grid cells by indexed partition proof; general spherical polygon self-intersection predicates were not needed for these exact rectangles",
+    "edge_geometry": {
+      "latitude_edges": "SMALL_CIRCLE_ARCS",
+      "meridians": "GREAT_CIRCLE_ARCS"
+    },
+    "face_arity_distribution": {
+      "3": 720,
+      "4": 64080
+    },
+    "face_count": 64800,
+    "grid_shape": [
+      180,
+      360
+    ],
+    "longitude_wrap_faces": 0,
+    "manifoldness": "PASS for generated triangle topology; every edge incidence is 2, Euler characteristic 2, one component",
+    "orientation": "all generated triangles have positive outward spherical determinant; zero corrections",
+    "pole_faces": 720,
+    "pole_representation": "360 terminal faces per pole contain duplicate consecutive spherical vertices; mesh adapter collapses each row to one shared pole node",
+    "shared_edge_exactness": "exact in canonical grid-vertex connectivity and segment identity; small-circle latitude paths are approximated by great-circle mesh edges",
+    "source": "manifested R6_T0_VECTOR_PLATE_PARTITION.npz; bytes and SHA-256 checked before loading"
+  },
+  "canonical_identity": {
+    "bootstrap_identity_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "canonical_parent_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "canonical_state_changed": false,
+    "parent_face_count": 64800,
+    "payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "plate_count": 12,
+    "t0_ma": 210
+  },
+  "canonical_to_FEG_mapping": {
+    "branches": "derived registry R6_T0_CANONICAL_BOUNDARY_BRANCH_REGISTRY.json; 30 junction-to-junction chains, every segment assigned exactly once",
+    "faces": "canonical face index to one or two ordered FEG triangle IDs; 64,800 rows",
+    "junctions": "each canonical junction ID maps to one node ID; 20 rows",
+    "nodes": "stable grid row/column IDs; 64,442 total including one shared node per pole",
+    "plates": "canonical plate ID to its ordered triangle support; 12 rows"
+  },
+  "cgal_assessment": {
+    "decision": "REJECTED_FROM_MINIMUM_PATH__NO_DEMONSTRATED_GAP",
+    "reason": "no demonstrated capability gap after local cell triangulation; dependency not introduced"
+  },
+  "dateline_strategy": "periodic collinearity in vertex IDs; serialize longitudes in [-180,180), with the pole longitude fixed to 0 degrees",
+  "determinism_configuration": {
+    "diagonal": "SW_NE",
+    "face_order": "canonical NPZ order",
+    "floating_serialization": "normalized hash uses little-endian float64 rounded to 12 decimal places",
+    "node_order": "south pole, north pole, then grid row south-to-north and periodic column 0..359",
+    "random_seed": "not applicable",
+    "threads": "not applicable",
+    "triangle_order": "parent face order; local triangles in ring order"
+  },
+  "determinism_validation": {
+    "identical": true,
+    "normalized_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "raw_provider_ids": "not applicable; ARCANA assigns IDs",
+    "runs": 3
+  },
+  "direct_reuse_feasibility": {
+    "decision": "REJECTED_ALL_FACES_ARE_NOT_TRIANGLES",
+    "reason": "64,080 quadrilaterals and 720 polar rings that reduce to three unique spherical vertices"
+  },
+  "face_arity_distribution": {
+    "3": 720,
+    "4": 64080
+  },
+  "frame_contract": {
+    "arcana_frame": "R6 synthetic area-weighted least-squares no-net-rotation gauge; not a mantle/fixed-plate frame",
+    "runtime_invariance_test": "deferred to authorized runtime qualification",
+    "shellset_frame": "computational pltRef/iPVRef for relative velocity data; no plate selected here",
+    "transform_contract": "invertible rigid angular-velocity reference subtraction/addition; apply only to velocity representation, never canonical coordinates"
+  },
+  "geometry_approximation_contract": {
+    "affected_edge_count": 1276,
+    "classification": "NUMERICAL_GEODESIC_APPROXIMATION_WITHIN_CANONICAL_SUPPORT",
+    "cross_check_expected_scale_deg": 0.00109,
+    "deviation_relative_to_local_cell_scale": {
+      "maximum": 0.002107340206842544,
+      "mean": 0.0008134792265314225,
+      "minimum": 0.0,
+      "p95": 0.0020082505867895623,
+      "p99": 0.00210734020684248
+    },
+    "edge_count": 1983,
+    "endpoint_error_m": {
+      "maximum": 0.0,
+      "mean": 0.0,
+      "minimum": 0.0,
+      "p95": 0.0,
+      "p99": 0.0
+    },
+    "great_circle_canonical_edges": 702,
+    "inside_incident_canonical_face_support": true,
+    "maximum_cross_track_hausdorff_deviation_m": {
+      "maximum": 121.29638836521406,
+      "mean": 57.167128417023484,
+      "minimum": 0.0,
+      "p95": 120.63167398905361,
+      "p99": 121.22257842848127
+    },
+    "maximum_cross_track_hausdorff_deviation_rad": {
+      "maximum": 1.9038830382234195e-05,
+      "mean": 8.973022824834954e-06,
+      "minimum": 0.0,
+      "p95": 1.8934495995770462e-05,
+      "p99": 1.9027245083735878e-05
+    },
+    "nearest_nonincident_boundary_clearance_lower_bound_m": {
+      "maximum": 111194.92664455874,
+      "mean": 85285.69637226517,
+      "minimum": 28778.342307146086,
+      "p95": 110924.06139189006,
+      "p99": 111177.98982916119
+    },
+    "no_nonincident_boundary_crossings": true,
+    "plate_membership_preserved": true,
+    "small_circle_edges": 1281,
+    "subdivision_policy": "none; the analytically bounded sagitta is less than half the one-degree cell height and remains within an incident face; no acceptance tolerance was invented",
+    "subdivision_required": false,
+    "topology_preserved": true
+  },
+  "global_gauge_runtime_assertion": "RUNTIME_QUALIFICATION_ASSERTION; not a mesh-provider blocker",
+  "gmsh_assessment": {
+    "decision": "REJECTED_FROM_MINIMUM_PATH__NO_DEMONSTRATED_GAP",
+    "reason": "local face triangulation meets deterministic topology and feature-accounting requirements; curved-edge deviation is quantified and remains inside incident support"
+  },
+  "governance": {
+    "authorial_selection_or_materialization_authorized": false,
+    "earth_geometry_imported": false,
+    "first_interval_or_dt_authorized": false,
+    "physical_fields_created": false,
+    "runtime_qualification_authorized": false,
+    "shellset_or_orbdata_executed": false
+  },
+  "iPVRef_runtime_assertion": "RUNTIME_QUALIFICATION_ASSERTION; deterministic invertible frame-transform contract still required before solve qualification",
+  "level1_boundary_conditions": {
+    "fault_count": 0,
+    "ordinary_external_perimeter": false,
+    "pb2002_types_3_4": false,
+    "topology_derived_interior_velocity_bcs": 0,
+    "type_5": false
+  },
+  "local_triangulation_feasibility": {
+    "acceptance": "NUMERICAL_GEODESIC_APPROXIMATION_WITHIN_CANONICAL_SUPPORT",
+    "decision": "SUFFICIENT_FOR_DETERMINISTIC_TOPOLOGY_ADAPTER",
+    "introduced_geometry": "no new vertices and no movement of canonical grid vertices; latitude small-circle edges become great-circle chords in FEG element topology",
+    "max_geometric_deviation_deg": 0.0010908446277674633,
+    "max_geometric_deviation_m": 121.29638836521406,
+    "policy": "fixed southwest-to-northeast diagonal for each non-polar quadrilateral; one triangle for each pole-collapsed cell"
+  },
+  "mesh_topology_audit": {
+    "adjacency_support_components": {
+      "0:10": 1,
+      "0:11": 1,
+      "0:3": 1,
+      "0:6": 1,
+      "0:7": 1,
+      "0:8": 1,
+      "10:11": 1,
+      "1:3": 1,
+      "1:7": 1,
+      "1:8": 1,
+      "1:9": 1,
+      "2:4": 1,
+      "2:5": 1,
+      "2:6": 1,
+      "2:7": 1,
+      "2:9": 1,
+      "3:7": 1,
+      "3:8": 1,
+      "4:10": 1,
+      "4:11": 1,
+      "4:5": 1,
+      "4:6": 1,
+      "5:11": 1,
+      "5:8": 1,
+      "5:9": 1,
+      "6:10": 1,
+      "6:7": 1,
+      "7:9": 1,
+      "8:11": 1,
+      "8:9": 1
+    },
+    "adjacency_support_count": 30,
+    "boundary_direct_feg_edges": 1983,
+    "boundary_edge_count": 1983,
+    "connected_components": 1,
+    "edge_count": 193320,
+    "edge_incidence_distribution": {
+      "2": 193320
+    },
+    "euler_characteristic": 2,
+    "face_arity_distribution": {
+      "3": 720,
+      "4": 64080
+    },
+    "face_count": 64800,
+    "junction_count": 20,
+    "minimum_spherical_triangle_area_sr": 2.65808606385491e-06,
+    "node_count": 64442,
+    "orientation_corrections": 0,
+    "plate_count": 12,
+    "spherical_area_sum_sr": 12.566370614359172,
+    "triangle_count": 128880,
+    "zero_area_triangles": 0
+  },
+  "next_stage": "R6_T0_AUTHORIAL_SELECTION_AND_MATERIALIZATION_IMPLEMENTATION",
+  "orbwin_disposition": {
+    "basis": "parent ShellSet documentation describes OrbWin/OrbWeave as historical native FEG producers; availability and automation are not needed or reassessed in this adapter task",
+    "decision": "REFERENCE_IMPLEMENTATION_ONLY"
+  },
+  "parent_decision": "R6_SHELLSET_FEG_BC_CONTRACT_PARTIAL__MESH_TRIANGULATION_PROVIDER_REMAINS",
+  "pole_strategy": "single shared node per pole; omit zero-length collapsed ring edge and emit one positive-area triangle per terminal parent cell",
+  "principal_decision": "R6_SHELLSET_MESH_ADAPTER_IMPLEMENTED__READY_FOR_AUTHORIAL_SELECTION_AND_MATERIALIZATION",
+  "provider_version": "ARCANA_CANONICAL_GRID_FACE_TRIANGULATION_V1",
+  "remaining_blockers": [],
+  "runtime_qualification_assertions": [
+    "ShellSet accepts global Level-1 FEG and assembles the system",
+    "solver has no unresolved nullspace",
+    "computational-to-ARCANA frame transform behaves as declared",
+    "alternative computational frame preserves relative mechanics after transform-back"
+  ],
+  "schema": "R6_SHELLSET_MESH_PROVIDER_ADAPTER_CLOSURE_V1",
+  "selected_mesh_provider": "ARCANA_CANONICAL_GRID_FACE_TRIANGULATION",
+  "sphere_topology_audit": {
+    "adjacency_support_components": {
+      "0:10": 1,
+      "0:11": 1,
+      "0:3": 1,
+      "0:6": 1,
+      "0:7": 1,
+      "0:8": 1,
+      "10:11": 1,
+      "1:3": 1,
+      "1:7": 1,
+      "1:8": 1,
+      "1:9": 1,
+      "2:4": 1,
+      "2:5": 1,
+      "2:6": 1,
+      "2:7": 1,
+      "2:9": 1,
+      "3:7": 1,
+      "3:8": 1,
+      "4:10": 1,
+      "4:11": 1,
+      "4:5": 1,
+      "4:6": 1,
+      "5:11": 1,
+      "5:8": 1,
+      "5:9": 1,
+      "6:10": 1,
+      "6:7": 1,
+      "7:9": 1,
+      "8:11": 1,
+      "8:9": 1
+    },
+    "adjacency_support_count": 30,
+    "boundary_direct_feg_edges": 1983,
+    "boundary_edge_count": 1983,
+    "connected_components": 1,
+    "edge_count": 193320,
+    "edge_incidence_distribution": {
+      "2": 193320
+    },
+    "euler_characteristic": 2,
+    "face_arity_distribution": {
+      "3": 720,
+      "4": 64080
+    },
+    "face_count": 64800,
+    "junction_count": 20,
+    "minimum_spherical_triangle_area_sr": 2.65808606385491e-06,
+    "node_count": 64442,
+    "orientation_corrections": 0,
+    "plate_count": 12,
+    "spherical_area_sum_sr": 12.566370614359172,
+    "triangle_count": 128880,
+    "zero_area_triangles": 0
+  },
+  "topology_validation": {
+    "adjacency_relations": 30,
+    "boundaries": 1983,
+    "branch_supports": 30,
+    "canonical_payload_mutated": false,
+    "junctions": 20,
+    "plates": 12,
+    "provenance_reconstruction": "PASS"
+  },
+  "validation": {
+    "authored_whitespace_scan": "PASS",
+    "canonical_payload_sha256_unchanged": "PASS",
+    "compileall": "PASS",
+    "full_r6_regression": "PASS: 165 passed",
+    "git_diff_check": "PASS",
+    "json_parse_and_counts": "PASS",
+    "py_compile": "PASS",
+    "targeted_mesh_feg_tests": "PASS: 8 passed"
+  }
+}

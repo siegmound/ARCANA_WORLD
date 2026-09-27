@@ -1,0 +1,156 @@
+{
+  "artifact": "R6_SHELLSET_T0_RUNTIME_INPUT_MANIFEST",
+  "authorial_realization": {
+    "choice_class": "AUTHORIAL_ALTERNATIVE",
+    "ensemble_member_id": null,
+    "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+    "selection_manifest_path": "R6_T0_AUTHORIAL_RATIFICATION_B_PANGAEA_LIKE_LATE_TRIASSIC.json",
+    "selection_manifest_sha256": "818d97b1b6fed2dbe741cc6d6afc58cb32e4e660e5d675d969cfa7ea730c8694",
+    "unknown_support_policy": "EXPLICIT_MASK_NO_IMPUTATION"
+  },
+  "boundary_conditions": {
+    "adapter_version": null,
+    "artifact_path": null,
+    "azimuth_convention": "must match pinned Shells source; parent evidence describes clockwise from geographic north",
+    "constrained_node_ids_hash": null,
+    "fault_duplicate_node_policy": null,
+    "format": "Shells .bcs or source-confirmed equivalent",
+    "frame_transform_id": null,
+    "junction_node_policy": null,
+    "plate_assignment_hash": null,
+    "reference_frame_id": null,
+    "sha256": null,
+    "velocity_units": "m s-1"
+  },
+  "canonical_parent_identities": {
+    "historical_bootstrap_identity_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "physical_geography_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+  },
+  "derived_fields": {
+    "chemical_density_anomaly": {
+      "artifact_path": null,
+      "producer": "OrbData5 if that route is selected; otherwise source must be explicitly supplied",
+      "sha256": null
+    },
+    "continental_thermal_profile": {
+      "artifact_path": null,
+      "sha256": null
+    },
+    "cooling_curvature": {
+      "artifact_path": null,
+      "producer": "OrbData5 if that route is selected; otherwise source must be explicitly supplied",
+      "sha256": null
+    },
+    "crust_domains_and_thickness": {
+      "artifact_path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+      "sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+      "status": "MATERIALIZED"
+    },
+    "heat_flow": {
+      "artifact_path": null,
+      "sha256": null
+    },
+    "mantle_lithosphere_thickness": {
+      "artifact_path": null,
+      "sha256": null
+    },
+    "ocean_surface": {
+      "artifact_path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+      "authority_components": [
+        "MODEL_DERIVED_THERMAL_DEPTH",
+        "AUTHORIAL_LOW_FREQUENCY_RESIDUAL",
+        "UNKNOWN_FINE_SCALE_RELIEF"
+      ],
+      "component_status": "RESIDUAL_PRESENT; THERMAL_ISOSTATIC_COMPONENT_PENDING",
+      "sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e"
+    },
+    "ocean_thermal_profile": {
+      "artifact_path": null,
+      "sha256": null
+    },
+    "oceanic_age": {
+      "artifact_path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+      "sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+      "status": "MATERIALIZED"
+    }
+  },
+  "forward_evolution_authorized": false,
+  "materialization_candidate_status": "INCOMPLETE_PENDING_SPECIALIST_FIELDS_AND_GOVERNED_MODEL_CONFIGURATION",
+  "mesh": {
+    "adapter_version": "R6_SHELLSET_MESH_ADAPTER_V1",
+    "coordinate_reference": "SPHERE; longitude/latitude degrees on canonical R6 spherical geometry",
+    "element_identity_scheme": null,
+    "feg_path": null,
+    "feg_sha256": null,
+    "mesh_resolution_policy_id": "CANONICAL_GRID_FACE_TRIANGULATION_V1",
+    "node_identity_scheme": null,
+    "provider_id": "ARCANA_CANONICAL_GRID_FACE_TRIANGULATION",
+    "provider_version": "ARCANA_CANONICAL_GRID_FACE_TRIANGULATION_V1",
+    "radius_m": 6371000.0
+  },
+  "physical_parameter_configuration": {
+    "earth_observation_score_used_for_selection": false,
+    "ensemble_policy_id": null,
+    "parameter_file_path": null,
+    "reference_material_family_id": null,
+    "rheology_configuration_id": null,
+    "sha256": null,
+    "source_version": null
+  },
+  "provenance": {
+    "activity_graph_path": null,
+    "authority_classes": [
+      "AUTHORIAL_T0_PRIMITIVE",
+      "SPECIALIST_DERIVED_T0",
+      "NUMERICAL_DERIVED_SUPPORT",
+      "MODEL_CONFIGURATION",
+      "ENSEMBLE_MEMBER",
+      "UNKNOWN"
+    ],
+    "canonical_payload_mutated": false,
+    "input_hashes": {},
+    "output_hashes": {},
+    "t1_or_forward_state_created": false,
+    "uncertainty_model_id": null,
+    "uncertainty_realization_id": null
+  },
+  "reproducibility": {
+    "deterministic_replay_required": true,
+    "environment_id": null,
+    "random_seed": null,
+    "seed_required": false,
+    "software_lockfile_sha256": null,
+    "source_revision": null
+  },
+  "runtime_authorized": false,
+  "schema_version": "1.0.0",
+  "specialists": {
+    "materializer_ids_and_versions": [],
+    "orbdata_version": null,
+    "orbwin_or_mesh_provider_version": null,
+    "pygplates_version": null,
+    "shells_version": null,
+    "shellset_version": null
+  },
+  "status": "TEMPLATE_ONLY_NOT_A_RUNTIME_INPUT_MANIFEST",
+  "t0": {
+    "snapshot_only": true,
+    "time_unit": "Ma",
+    "time_value": 210
+  },
+  "validation": {
+    "arcana_input_smoke_gate_pass": false,
+    "bcs_semantics_gate_pass": false,
+    "bounded_t0_gate_pass": false,
+    "canonical_identity_match": false,
+    "deterministic_replay_pass": false,
+    "field_support_coverage_pass": false,
+    "mesh_refinement_gate_pass": false,
+    "official_example_gate_pass": false,
+    "runtime_qualification_authorized": false,
+    "topology_preservation_pass": false,
+    "units_and_frames_pass": false
+  }
+}

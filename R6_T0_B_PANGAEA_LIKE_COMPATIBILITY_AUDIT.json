@@ -1,0 +1,92 @@
+{
+  "artifact": "R6_T0_B_PANGAEA_LIKE_COMPATIBILITY_AUDIT",
+  "schema_version": "1.0.0",
+  "principal_decision": "CANONICAL_T0_GEOGRAPHY_COMPATIBLE",
+  "superseded_decision": "R6_T0_AUTHORIAL_RATIFICATION_ACCEPTED__GEOGRAPHY_REVISION_REQUIRED",
+  "superseded_reason": "V2 explicitly reclassifies a Tethys-like embayment as optional secondary morphology.",
+  "authorial_candidate_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+  "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+  "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+  "source": {
+    "manifest": "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json",
+    "payload_sha256_expected": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "payload_sha256_observed": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "bootstrap_identity_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "canonical_payload_modified": false
+  },
+  "method": {
+    "grid": "R6_GLOBAL_GEOGRAPHY_1DEG_V1, 180x360",
+    "connectivity": "8-neighbour with periodic longitude and mutually adjacent terminal polar rows, matching the governing spherical-grid contract",
+    "area": "Exact spherical band-sector area using R=6,371,000 m",
+    "visual_inference_used": false
+  },
+  "macro_geography": {
+    "land_area_fraction": 0.3000567958606197,
+    "land_component_count": 5,
+    "largest_component_fraction_of_total_land": 0.8998762490518988,
+    "largest_component_area_m2": 137724540137624.28,
+    "largest_component_cell_count": 12008,
+    "largest_component_latitude_center_range_deg": [
+      -47.5,
+      50.5
+    ],
+    "largest_component_latitudinal_span_deg_center_to_center": 98.0,
+    "largest_component_equator_crossing": true,
+    "land_component_area_fraction_of_global_surface_descending": [
+      0.27001398396159393,
+      0.0075008805630106205,
+      0.007506357140650215,
+      0.007515979082001507,
+      0.007519595113371562
+    ],
+    "85_to_95_percent_dominant_land_gate": "PASS",
+    "broad_equator_crossing_gate": "PASS"
+  },
+  "ocean_architecture": {
+    "ocean_component_count": 1,
+    "ocean_component_latitude_center_range_deg": [
+      -89.5,
+      89.5
+    ],
+    "ocean_area_fraction": 0.6999432041393803,
+    "connected_circumglobal_ocean_gate": "PASS",
+    "major_low_latitude_inward_embayment": "OPTIONAL_SECONDARY_MORPHOLOGY_NOT_REQUIRED",
+    "embayment_evidence": "The canonical payload supplies a binary land/ocean mask and no embayment identity or governed geometric threshold. Connectivity alone identifies one global ocean component but cannot distinguish an inward Tethys-role embayment from ordinary open-ocean adjacency without inventing a criterion.",
+    "inward_embayment_gate": "NOT_REQUIRED_BY_V2"
+  },
+  "physical_structure_support": {
+    "land_crust_design_categories": {
+      "CONTINENTAL": 13209,
+      "TRANSITIONAL": 1049
+    },
+    "land_province_design_categories": {
+      "OTHER_DESIGN": 11582,
+      "CRATON": 1660,
+      "SUTURE": 559,
+      "OROGENIC_DESIGN": 457
+    },
+    "existing_land_elevation_supported_cells": 14258,
+    "physical_domain_authority": "NOT_ESTABLISHED_BY_EXISTING_DESIGN_TAGS",
+    "inherited_suture_authority": "NOT_ESTABLISHED_BY_EXISTING_DESIGN_TAGS",
+    "note": "Parent contracts explicitly state these labels do not yet establish physical crust, thickness, material, or thermal-domain identity."
+  },
+  "decision_basis": [
+    "The largest land component meets the ratified 0.85-0.95 area-share range and crosses the equator over a broad latitude span.",
+    "The ocean mask is a single connected component spanning the full latitude grid.",
+    "V2 makes a Tethys-like embayment optional secondary morphology, so its unverified identity does not fail the macrostate gate.",
+    "Existing suture/orogenic and crust categories remain design tags and are not used as physical domain assignments by the v2 materializer."
+  ],
+  "required_next_stage": {
+    "classification": "CANONICAL_T0_GEOGRAPHY_COMPATIBLE",
+    "materialization_stopped": false,
+    "minimum_change_scope": [],
+    "canonical_geography_revision_performed": false,
+    "physical_fields_materialized": false,
+    "pre_orbdata_fegs_generated": 0,
+    "shells_ready_fegs_generated": 0,
+    "shellset_mechanics_run": false,
+    "forward_evolution_run": false,
+    "dt_or_t1_created": false
+  }
+}

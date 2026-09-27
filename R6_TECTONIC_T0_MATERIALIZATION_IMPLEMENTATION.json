@@ -1,0 +1,371 @@
+{
+  "FEG_projection": {
+    "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "node_count": 64442,
+    "pre_orbdata_generated": false,
+    "status": "PENDING_COMPLETE_OCEAN_ELEVATION_AND_GLOBAL_HEAT_FLOW",
+    "triangle_count": 128880
+  },
+  "authorial_candidate_set": {
+    "candidate_count": 1,
+    "canonical": false,
+    "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2"
+  },
+  "authorial_realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+  "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+  "canonical_parent_hashes": {
+    "kinematics": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "physical_geography": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+  },
+  "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+  "derived_fields": {
+    "continental_thermal_reference_state": {
+      "area_fraction": {
+        "COLD_STABLE": 0.5500702980512214,
+        "HOT_EXTENDED": 0.10002050378164219,
+        "NORMAL": 0.3499091981671366
+      },
+      "domain_ids": {
+        "COLD_STABLE": 1,
+        "HOT_EXTENDED": 3,
+        "NORMAL": 2
+      },
+      "heat_flow_w_m2": {
+        "1": 0.045,
+        "2": 0.06,
+        "3": 0.085
+      },
+      "lithosphere_thickness_m": {
+        "1": 200000.0,
+        "2": 135000.0,
+        "3": 80000.0
+      },
+      "status": "MATERIALIZED"
+    },
+    "crust_domains_and_thickness": {
+      "domain_ids": {
+        "EXTENDED_CONTINENTAL": 3,
+        "NORMAL_CONTINENTAL": 4,
+        "NORMAL_OCEANIC": 1,
+        "OROGENIC_THICKENED": 6,
+        "STABLE_CONTINENTAL": 5,
+        "TRANSITIONAL_MARGIN": 2
+      },
+      "status": "MATERIALIZED",
+      "thickness_m": {
+        "1": 6.5,
+        "2": 25.0,
+        "3": 28.0,
+        "4": 35.0,
+        "5": 40.0,
+        "6": 50.0
+      }
+    },
+    "ocean_authorial_residual_bathymetry": {
+      "field_sha256": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+      "generator": "SUM_OF_32_SEEDED_GEODESIC_RADIAL_MODES",
+      "mode_count": 32,
+      "mode_wavelength_max_km": 2479.8046362881405,
+      "mode_wavelength_min_km": 1249.7708149929022,
+      "observed_area_weighted_ocean_mean_m": -1.4105804031139776e-11,
+      "observed_area_weighted_ocean_rms_m": 500.0000000000001,
+      "observed_hard_cap_abs_m": 1200.0,
+      "seed_derivation": "first 128 SHA256 bits of UTF-8 authorial_realization_id, unsigned big-endian",
+      "seed_uint128_hex": "0xe646a9c6cefac2424e6d6a71fd5e13e5",
+      "status": "MATERIALIZED_COMPONENT_ONLY",
+      "target_rms_m": 500.0
+    },
+    "oceanic_age": {
+      "age_generation": "monotone_power_transform_of_shortest_spherical_grid_distance; no constant spreading-rate claim",
+      "age_max_ma": 160.0,
+      "age_min_ma": 0.0,
+      "age_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+      "area_weighted_ocean_median_ma": 70.0,
+      "candidate_oceanic_divergent_boundary_segments": 713,
+      "power_exponent": 0.9036439221531237,
+      "selected_source_boundary_ids": [
+        "R6BND-T0-036d214f151a0eb7e48f",
+        "R6BND-T0-05296d7a35a89b4068a6",
+        "R6BND-T0-054711d317a30eff662e",
+        "R6BND-T0-0997c05cf7d7ac0a3941",
+        "R6BND-T0-0fc25912adb708f41536",
+        "R6BND-T0-1057cd2d564c6804cb72",
+        "R6BND-T0-18c7cbf6b8d304377098",
+        "R6BND-T0-19c4ba5ad123b6354c0c",
+        "R6BND-T0-1a8d2bcad08babf72f4f",
+        "R6BND-T0-1d91212614d8d97c685f",
+        "R6BND-T0-262bd9ff9b4e723dec0e",
+        "R6BND-T0-27ad699369bb174703ff",
+        "R6BND-T0-2acefaca4a44d641269b",
+        "R6BND-T0-30412bbc854b9703d7f6",
+        "R6BND-T0-3137e545999e50cddefd",
+        "R6BND-T0-384fdd0d460aa5e53d34",
+        "R6BND-T0-3a26704f586c01349556",
+        "R6BND-T0-3ba2952ddf08b65382b4",
+        "R6BND-T0-403726fd402e1c76fec6",
+        "R6BND-T0-4569323644b34dcce9d6",
+        "R6BND-T0-4a77c3fb25f97dbfe77c",
+        "R6BND-T0-4ab3b3b5be2ddae736d0",
+        "R6BND-T0-4c809e7e1ed300fde30b",
+        "R6BND-T0-56c65981a7141069fbf8",
+        "R6BND-T0-583576894579567051f9",
+        "R6BND-T0-5855d5a3584f585d9db5",
+        "R6BND-T0-58b1ee20d37261fde1eb",
+        "R6BND-T0-593f486c446493fa838b",
+        "R6BND-T0-5a1fdf20de9bc94376bb",
+        "R6BND-T0-5db99c8c462bfd75be16",
+        "R6BND-T0-63e8a442117c4ffa4611",
+        "R6BND-T0-64809edac6f423ae4041",
+        "R6BND-T0-65b14f3765e2f97ac0a9",
+        "R6BND-T0-667e1f00d40e4938e5a8",
+        "R6BND-T0-692d40bec0512ec66dcf",
+        "R6BND-T0-6c63bc70e4a56e45c7b8",
+        "R6BND-T0-6db775b2e7e1d7f3890d",
+        "R6BND-T0-6fee0feef52186c19fcb",
+        "R6BND-T0-75013946b73804673a36",
+        "R6BND-T0-75dc99de5aee126cb076",
+        "R6BND-T0-7dc6609807593b61ac58",
+        "R6BND-T0-7dc6c6070253a5431ea6",
+        "R6BND-T0-7f64e751d45302f7c3c5",
+        "R6BND-T0-873ba14aa92dac5110a6",
+        "R6BND-T0-94cb188d790d64f88876",
+        "R6BND-T0-957e9cde19c402e36ae6",
+        "R6BND-T0-9840292e25a842b2cb03",
+        "R6BND-T0-ae28f8e81b5ba8eb7294",
+        "R6BND-T0-af2f24f0c8904e24e976",
+        "R6BND-T0-b489fbbd84bf30c5eaa0",
+        "R6BND-T0-b62f84467dcc1be6bb96",
+        "R6BND-T0-bb7a4ce2dcdbe3f00b7f",
+        "R6BND-T0-be7c3693b2c2cec9047c",
+        "R6BND-T0-c086acf3cf52703311b2",
+        "R6BND-T0-c1755d311003cfeb6e3e",
+        "R6BND-T0-c2c1e5420d0db092de1b",
+        "R6BND-T0-c2d9cdea48a0b9d302a7",
+        "R6BND-T0-cb1e0ac19bf8b8742957",
+        "R6BND-T0-cb857915de88d5438e8f",
+        "R6BND-T0-ccc48f5622320c58ea38",
+        "R6BND-T0-cf1b802efddad5c340b3",
+        "R6BND-T0-d1b4273b978e6ec32b3e",
+        "R6BND-T0-d1e984b923022ad7af2e",
+        "R6BND-T0-d37cf9aa207c4a11b233",
+        "R6BND-T0-d690a456dff3a4cf5237",
+        "R6BND-T0-d6db7b745461c8e1d14d",
+        "R6BND-T0-d7785b82be4930f751c2",
+        "R6BND-T0-dc4d3a6ddc561facae03",
+        "R6BND-T0-dcef0324d3b6324015f3",
+        "R6BND-T0-de145fa75d85e8ed5da8",
+        "R6BND-T0-dfbe53c925d60df95c2a",
+        "R6BND-T0-e5b49fb8c32db5ee3a5b",
+        "R6BND-T0-e870cc95ce93f1c41524",
+        "R6BND-T0-e8c49f75389d22e1b5f1",
+        "R6BND-T0-e937f59bea20cc9674e3",
+        "R6BND-T0-ee6fafe39db19af513eb",
+        "R6BND-T0-f36274400a08cafafabc",
+        "R6BND-T0-fa4236dab9c498485c5a",
+        "R6BND-T0-fd95ce25e5c2881b6ef1"
+      ],
+      "selected_source_branch_id": "R6BR-DERIVED-50911691f2df2e592ca4",
+      "selected_source_support_cells": 108,
+      "source_selection": "longest canonical branch among ocean/ocean edges with positive normal kinematic demand; stable ID tie-break",
+      "status": "MATERIALIZED"
+    },
+    "total_surface_elevation": {
+      "land_support_retained": true,
+      "ocean_thermal_isostatic_component_missing": true,
+      "status": "PENDING_SPECIALIST_RUNTIME"
+    }
+  },
+  "feg": {
+    "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "node_count": 64442,
+    "pre_orbdata_generated": false,
+    "status": "PENDING_COMPLETE_OCEAN_ELEVATION_AND_GLOBAL_HEAT_FLOW",
+    "triangle_count": 128880
+  },
+  "field_package_path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+  "field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+  "governance": {
+    "canonical_payload_mutated": false,
+    "canonical_t0_promoted": false,
+    "dt_or_t1_created": false,
+    "earth_geometry_imported": false,
+    "forward_evolution_executed": false,
+    "orbdata_executed": false,
+    "shellset_mechanics_executed": false
+  },
+  "human_choices_remaining": [],
+  "kinematic_support": {
+    "boundary_process_classes_assigned": false,
+    "convergent_boundary_demand_segments": 1091,
+    "divergent_boundary_demand_segments": 892,
+    "selected_spreading_source_branch": "R6BR-DERIVED-50911691f2df2e592ca4",
+    "selected_spreading_source_segments": 79
+  },
+  "materialized_fields": {
+    "field_package_path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+    "field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "normalized_hashes": {
+      "canonical_land_surface_elevation_m": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+      "continental_reference_lithosphere_thickness_m": "1e7db18c673c43c3048a863442e8182b9007d4cc292f60309583ce7b67d3e430",
+      "continental_reference_surface_heat_flow_w_m2": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+      "continental_thermal_domain_id": "8dd631433acfe68ebb3312a20c904b313883596e8da63da10bbb50d854040d75",
+      "crustal_thickness_m": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+      "ocean_surface_authorial_residual_m": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+      "oceanic_lithosphere_age_ma": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+      "physical_crust_domain_id": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+      "unknown_total_ocean_elevation_mask": "3c52af8ec1c5eb09557f5fda9a6c1153a1cc8bde1e94dff50026710456a21df7"
+    },
+    "physical_field_family_count": 7
+  },
+  "materialized_physical_field_families": 7,
+  "materializer_execution": {
+    "field_generators_executed": [
+      "canonical-boundary-ranked crust/thermal domain assignment",
+      "oceanic age distance field",
+      "seeded low-frequency ocean residual"
+    ],
+    "forward_evolution": false,
+    "orbdata_executed": false,
+    "shellset_executed": false,
+    "specialist_materializers_executed": []
+  },
+  "mesh_hash": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+  "next_stage": "QUALIFY_OR_SELECT_REQUIRED_SPECIALIST_MATERIALIZERS_AND_MODEL_CONFIGURATIONS",
+  "normalized_field_hashes": {
+    "canonical_land_surface_elevation_m": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+    "continental_reference_lithosphere_thickness_m": "1e7db18c673c43c3048a863442e8182b9007d4cc292f60309583ce7b67d3e430",
+    "continental_reference_surface_heat_flow_w_m2": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+    "continental_thermal_domain_id": "8dd631433acfe68ebb3312a20c904b313883596e8da63da10bbb50d854040d75",
+    "crustal_thickness_m": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+    "ocean_surface_authorial_residual_m": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+    "oceanic_lithosphere_age_ma": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+    "physical_crust_domain_id": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+    "unknown_total_ocean_elevation_mask": "3c52af8ec1c5eb09557f5fda9a6c1153a1cc8bde1e94dff50026710456a21df7"
+  },
+  "parent_state": {
+    "bootstrap_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "canonical_state_mutated": false,
+    "geography_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "topology": {
+      "boundary_segments": 1983,
+      "branches": 30,
+      "faces": 64800,
+      "junctions": 20,
+      "plates": 12
+    }
+  },
+  "pending_specialist_fields": [
+    "ocean thermal profile and age-derived heat flow",
+    "ocean thermal lithosphere thickness",
+    "thermal/isostatic ocean bathymetry component and complete ocean surface",
+    "continental geotherm profiles and model-derived heat flow beyond ratified references",
+    "chemical density anomaly",
+    "cooling curvature"
+  ],
+  "physical_crust_domain_counts_cells": {
+    "EXTENDED_CONTINENTAL": 1266,
+    "NORMAL_CONTINENTAL": 4723,
+    "NORMAL_OCEANIC": 50542,
+    "OROGENIC_THICKENED": 401,
+    "STABLE_CONTINENTAL": 7834,
+    "TRANSITIONAL_MARGIN": 34
+  },
+  "pre_orbdata_outputs": {
+    "fegs_generated": 0,
+    "status": "PENDING_COMPLETE_OCEAN_ELEVATION_AND_GLOBAL_HEAT_FLOW"
+  },
+  "principal_decision": "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZED__SPECIALIST_RUNTIME_REMAINS",
+  "realization_manifest_sha256": "611a53eb0bbee106ed554513441d1761322632e10cf7510e73996785caf76ba2",
+  "reference_parameter_candidates": {
+    "candidate_configurations": 0,
+    "canonical_values": {
+      "gravity_m_s2": 9.82,
+      "radius_m": 6371000
+    },
+    "families": 11,
+    "resolved": 2,
+    "unselected": 9
+  },
+  "reference_physical_parameters": {
+    "candidate_configurations": 0,
+    "canonical_values": {
+      "gravity_m_s2": 9.82,
+      "radius_m": 6371000
+    },
+    "families": 11,
+    "resolved": 2,
+    "unselected": 9
+  },
+  "remaining_blockers": [
+    "ocean thermal profile and age-derived heat flow",
+    "ocean thermal lithosphere thickness",
+    "thermal/isostatic ocean bathymetry component and complete ocean surface",
+    "continental geotherm profiles and model-derived heat flow beyond ratified references",
+    "chemical density anomaly",
+    "cooling curvature",
+    "Nine noncanonical reference physical parameters lack selected, source-pinned values.",
+    "No numeric rheology configuration is selected.",
+    "No complete global elevation and heat-flow fields exist for PRE_ORBDATA FEG."
+  ],
+  "replay_validation": {
+    "deterministic_field_hashes": {
+      "canonical_land_surface_elevation_m": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+      "continental_reference_lithosphere_thickness_m": "1e7db18c673c43c3048a863442e8182b9007d4cc292f60309583ce7b67d3e430",
+      "continental_reference_surface_heat_flow_w_m2": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+      "continental_thermal_domain_id": "8dd631433acfe68ebb3312a20c904b313883596e8da63da10bbb50d854040d75",
+      "crustal_thickness_m": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+      "ocean_surface_authorial_residual_m": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+      "oceanic_lithosphere_age_ma": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+      "physical_crust_domain_id": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+      "unknown_total_ocean_elevation_mask": "3c52af8ec1c5eb09557f5fda9a6c1153a1cc8bde1e94dff50026710456a21df7"
+    },
+    "field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "realization_manifest_sha256": "611a53eb0bbee106ed554513441d1761322632e10cf7510e73996785caf76ba2"
+  },
+  "rheology": {
+    "candidate_configurations": 0,
+    "parameter_families": 13,
+    "status": "UNSELECTED_MODEL_CONFIGURATION; NUMERIC_PARENT_RANGES_NOT_AVAILABLE"
+  },
+  "rheology_configuration_set": {
+    "candidate_configurations": 0,
+    "parameter_families": 13,
+    "status": "UNSELECTED_MODEL_CONFIGURATION; NUMERIC_PARENT_RANGES_NOT_AVAILABLE"
+  },
+  "runtime_manifest": {
+    "candidate_status": "INCOMPLETE_TEMPLATE; runtime_authorized=false",
+    "template": "R6_SHELLSET_T0_RUNTIME_INPUT_MANIFEST_TEMPLATE.json"
+  },
+  "runtime_manifest_candidates": {
+    "complete": false,
+    "count": 1,
+    "path": "R6_SHELLSET_T0_RUNTIME_INPUT_MANIFEST_CANDIDATE_B_V2.json",
+    "runtime_authorized": false
+  },
+  "runtime_qualification_readiness": "NOT_READY__SPECIALIST_FIELDS_AND_MODEL_CONFIGURATION_REMAIN",
+  "schema": "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST_V1",
+  "scientific_uncertainty_axes": {
+    "axes": [
+      "ocean basin residual/bathymetry family",
+      "physical crust-domain thickness family",
+      "ocean age field/formation model",
+      "continental thermal/domain family",
+      "correlated material-reference configuration"
+    ],
+    "count": 5,
+    "sampling_run": false
+  },
+  "shells_ready_outputs": {
+    "fegs_generated": 0,
+    "status": "REQUIRES_ALL_GOVERNED_NODAL_FIELDS"
+  },
+  "thermal_domain_area_fractions": {
+    "COLD_STABLE": 0.5500702980512214,
+    "HOT_EXTENDED": 0.10002050378164219,
+    "NORMAL": 0.3499091981671366
+  }
+}

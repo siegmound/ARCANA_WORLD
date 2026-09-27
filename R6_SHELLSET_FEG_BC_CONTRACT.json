@@ -1,0 +1,138 @@
+{
+  "decision": "R6_SHELLSET_FEG_BC_CONTRACT_PARTIAL__MESH_TRIANGULATION_PROVIDER_REMAINS",
+  "branch": "r6/shellset-feg-bc-contract",
+  "parent_head": "86294956ce60d2f6fe963e273e4216c286bdf158",
+  "source_basis": {
+    "repository": "https://github.com/JonBMay/ShellSet",
+    "observed_main_head": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
+    "source_commit": "8ab721312977cec1091d17c0e7854b2ee9adc554",
+    "inspected": [
+      "MOD_Data.f90: GetNet, PutNet, Next, Square",
+      "MOD_Shells.f90: ReadBC, VBCs, EdgeVs, Euler",
+      "SHELLS_v5.0.f90: global sphere caller",
+      "README: type4A and type4AplusA example labels"
+    ],
+    "limitation": "Source semantics were read from the public repository; no immutable local archive/checksums were captured. No ShellSet/OrbData runtime was run."
+  },
+  "canonical_invariants": {
+    "t0_ma": 210,
+    "plates": 12,
+    "parent_faces": 64800,
+    "shared_boundary_segments": 1983,
+    "adjacencies": 30,
+    "branches": 30,
+    "degree_three_junctions": 20,
+    "historical_bootstrap": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "canonical_payload_mutated": false
+  },
+  "feg_format_contract": {
+    "status": "SOURCE_DEFINED",
+    "record_order": [
+      "title A80",
+      "numNod nRealN nFakeN n1000 brief",
+      "numNod node records",
+      "numEl",
+      "numEl triangular continuum records",
+      "nFl",
+      "nFl four-node fault records"
+    ],
+    "node_record": [
+      "node ID",
+      "east longitude (degrees)",
+      "north latitude (degrees)",
+      "elevation (m)",
+      "heat flow (W m^-2)",
+      "crustal thickness zMoho (m)",
+      "mantle-lithosphere thickness tLNode (m)",
+      "chemical density anomaly (kg m^-3)",
+      "cooling curvature (K m^-2 in the quadratic geotherm)"
+    ],
+    "pre_orbdata_getnet": "Reads only node ID, longitude, latitude, elevation and heat flow; converts degrees to radians internally. It deliberately skips the final four nodal quantities.",
+    "putnet": "Writes the expanded nine-value node record, coordinates in degrees, triangular elements, and optional fault elements; LR integer tags are optional.",
+    "continuum_element": "element ID, three node IDs counterclockwise, optional LR integer tag",
+    "fault_element": "fault ID, n1 n2 n3 n4, dip1 dip2 in degrees from horizontal, nonnegative past offset, optional LR integer tag",
+    "numbering": "Fake-node numbering is explicitly outdated/unsupported. GetNet maps external IDs above nRealN through n1000 to internal contiguous IDs; PutNet reverses it. ARCANA duplication uses ordinary valid numerical nodes.",
+    "units_basis": "Field units follow source SI variable names, constants and calculations, including oneKm and density_anomaly_kgpm3. The writer has no complete adjacent units legend; future writer must make units explicit."
+  },
+  "fault_and_junction_contract": {
+    "fault_order": "n1,n2 left-to-right on near side; n3 opposite n2; n4 opposite n1. Physical endpoint A is n1<->n4; B is n2<->n3. Payload also stores two dips, past offset, optional LR.",
+    "physical_point_is_one_feg_node": false,
+    "identity": "One canonical physical point may map to multiple coincident ordinary FEG node IDs with canonical point ID, side/domain, incident branches, fault IDs and continuum domains retained.",
+    "square": "Pairs opposite-side fault endpoint nodes, gathers connected nearby corner nodes at the intersection and averages positions if needed. ARCANA must emit exactly coincident coordinates; averaging is tolerance handling, not geometry repair.",
+    "next": "Matches continuum sides to four-node fault ordering, crosses faults to locate adjacent triangles, returning kFault and kEle; test side adjacency and no accidental exterior edge.",
+    "orbdata5_maxAtP": 10,
+    "maxAtP_scope": "OrbData5-specific overlap-node capacity; check each compiled component's actual bound.",
+    "junction_expansion_rule": "For the selected fault set, remove discontinuity edges from local continuum connectivity, find mechanically independent incident continuum sectors, and allocate one coincident FEG node per sector/side incidence with provenance. Do not hard-code copies to degree three or invent junction mechanics.",
+    "exact_arcana_multiplicity": "Unbound because no canonical boundary is selected as a mechanical fault. At nFl=0 Level 1, one continuum node identity per canonical physical junction suffices; fault expansion is deferred.",
+    "status": "FAULT_NODE_SEMANTICS_RESOLVED; FAULT_SUBSET_AND_EXPANSION_NOT_IMPLEMENTED"
+  },
+  "global_and_qualification": {
+    "global_sphere": "After Square, SHELLS sets sphere=.TRUE. when nCond==0; Square returns without perimeter tracing. SHELLS calls Downer, which can add constraints for specific truncated thrust/slab-footwall geometry.",
+    "external_perimeter": "No ordinary exterior perimeter for a closed global sphere; do not emit ordinary perimeter .bcs entries. With nFl=0 no fault footwalls exist.",
+    "level1": "A bounded global continuum integration qualification fixture is feasible in principle with closed sphere, nFl=0 and no topology-derived interior VBCs, if it retains fields required by that limited objective. This is not a production/fault mechanics qualification and no runtime was run here.",
+    "level2": "Later use synthetic fixture faults or a governed mechanical subset; never map all 1,983 kinematic boundary segments to fault elements by default.",
+    "interior_vbc": "README labels Earth5R-type4A as no plate-interior VBCs. plusA adds type-5 internal constraints; Tract describes prior torque runs commonly using trHMax=0 and extra VBCs on slabless plates to infer basal tractions. This Earth torque/basal-traction iteration is not an ARCANA minimum.",
+    "minimum_constrained_dofs": "ReadBC's >=3 guard applies only NOT sphere and trHMax<=0; the global sphere bypasses it. This guard sets no positive global minimum, but does not prove global solver uniqueness/nullspace removal."
+  },
+  "readbc": {
+    "codes": {
+      "-1": "no velocity constraint; ridge-adjacent label",
+      "0": "no velocity constraint; weak/free-margin label",
+      "1": "one directional component constrained; perpendicular free",
+      "2": "direction specified and perpendicular component zero (2 DOFs)",
+      "3": "one PB2002 EdgeVs component (1 DOF)",
+      "4": "two PB2002 EdgeVs components (2 DOFs)",
+      "5": "two components from named-plate Euler velocity relative to iPVRef (2 DOFs)"
+    },
+    "type_1_2": {
+      "magnitude": "m/s",
+      "azimuth": "degrees clockwise from geographic North",
+      "argument": "vBCArg=(180°-vAz)π/180, counterclockwise from +South; inverse vAz=180°-vBCArg·180/π modulo 360",
+      "arcana": "Generic sparse explicit types eligible only after authorization; no full-field velocity BCs."
+    },
+    "types_3_4": "PROHIBITED_FOR_CANONICAL_ARCANA_INPUT: EdgeVs uses PB2002 boundary digitization, names, Euler table, symbols and polarity.",
+    "type_5": "Euler math accepts names/omega/iPVRef, but current application binding is fixed 52-plate Earth/PB2002 state, not ARCANA authority. ARCANA use needs registry/omega injection or source generalization and requalification; unnecessary for Level 1."
+  },
+  "frame_and_gauge": {
+    "arcana_frame": "synthetic area-weighted least-squares NNR gauge; kinematic representation, not mantle frame or physically fixed plate",
+    "shellset": "pltRef resolves to iPVRef; Euler subtracts reference omega for type-5 relative velocity. Inspected code does not show iPVRef alone removing the global mechanical nullspace without BCs.",
+    "future_transform": "If used, subtract/add a rigid numerical reference rotation invertibly and test relative plate velocities, boundary-relative motion and strain invariance. Reference is NUMERICAL_GAUGE_REFERENCE, never PHYSICALLY_FIXED_CANONICAL_PLATE.",
+    "reference_selection": "None selected; any later neutral deterministic ID must first be representable in the registry.",
+    "global_uniqueness": "OPEN pending solve/nullspace qualification."
+  },
+  "provider_and_adapter": {
+    "decision": "No mature deterministic spherical/constrained triangulation provider or mesh-resolution policy selected. The 64,800 canonical faces have not been shown to be valid CCW ShellSet spherical triangles; no reuse assumed.",
+    "feg_authority": "NUMERICAL_DERIVED_SUPPORT; ARCANA geometry/topology authoritative",
+    "adapter_implemented": false,
+    "code_files_modified": [],
+    "reports_revised_in_place": [
+      "R6_SHELLSET_FEG_BC_CONTRACT.json",
+      "R6_SHELLSET_FEG_BC_CONTRACT.md"
+    ]
+  },
+  "remaining_blockers": [
+    "Select and validate a mature deterministic spherical triangulation provider and qualification/production resolutions with canonical lineage.",
+    "Statically validate selected closed mesh through Square/Next and recover all 12 plates, 30 adjacencies, 30 branches and 20 junction IDs.",
+    "Resolve global uniqueness/nullspace and reference-frame behavior; do not infer from the regional ReadBC guard.",
+    "If Level 2 faults are selected, compute exact local sector multiplicities and check all runtime overlap limits, including OrbData5 maxAtP=10.",
+    "Authorial T0 physical primitives, reference materials and rheology remain separate governed blockers; none selected/materialized."
+  ],
+  "governance": {
+    "authorial_selection_or_materialization_authorized": false,
+    "shellset_runtime_qualification_authorized": false,
+    "first_interval_or_dt_authorized": false,
+    "canonical_state_changed": false,
+    "engine_executed": false,
+    "forward_evolution": false
+  },
+  "validation_boundary": {
+    "report_json_parse": "PASS",
+    "git_diff_check": "PASS; both untracked authored reports scanned for trailing whitespace",
+    "bootstrap_unchanged": "PASS; only the two report files are untracked and no canonical files are modified",
+    "r6_test_suite": "PASS: 157 passed in 58.75s (PYTHONPATH=src; pytest cache disabled)",
+    "git_add": "Previously attempted once and failed creating linked-worktree index.lock with Permission denied; no retry per instruction.",
+    "commit": "NOT_CREATED; preserve report changes and do not retry staging after recorded lock failure.",
+    "push": "NOT_ATTEMPTED",
+    "all_tests_attempt": "Collection failed for 12 non-R6 test modules due unrelated import/path errors; the R6 suite independently passed."
+  }
+}
