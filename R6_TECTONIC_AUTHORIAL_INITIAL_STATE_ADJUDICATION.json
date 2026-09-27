@@ -1,0 +1,250 @@
+{
+  "artifact": "R6_TECTONIC_AUTHORIAL_INITIAL_STATE_ADJUDICATION",
+  "schema_version": "1.0.0",
+  "branch": "r6/tectonic-authorial-initial-state",
+  "parent_commit": "10a1c5bbff4c13e99d2387d6f633e87c0337e5bf",
+  "parent_decision": "R6_TECTONIC_MECHANICAL_INPUT_BINDING_PARTIAL__AUTHORIAL_INITIALIZATION_REQUIRED",
+  "parent_ledger_audit": {
+    "six_physical_families_basis":"The parent count and decision narrative identify six mandatory physical-state families: the six IDs reproduced below. Velocity boundary conditions and model/numerical controls are separate interface/configuration families.",
+    "metadata_discrepancy":"The parent JSON also sets authorial_required=true on velocity_boundary_conditions and model_and_numerical_controls despite its separate count of six authorial physical-state families. This adjudication preserves the exact six physical families and treats those two booleans as an unresolved parent-ledger classification inconsistency; it does not promote numerical controls or the .bcs interface to WORLD_HISTORY physical state."
+  },
+  "decision": "R6_TECTONIC_AUTHORIAL_STATE_PARTIAL__UPSTREAM_CLASSIFICATION_GAPS_REMAIN",
+  "runtime_qualification_authorized": false,
+  "forward_simulation_authorized": false,
+  "numeric_physical_values_selected": false,
+  "canonical_state_modified": false,
+  "historical_bootstrap_modified": false,
+  "parent_input_families": [
+    {
+      "input_id": "elevation",
+      "shellset_name": "FEG nodal elevation",
+      "physical_meaning": "Surface elevation/topographic geometry of lithosphere.",
+      "units": "m in FEG examples",
+      "support": "per mesh node, T0 model structure",
+      "consumer": "OrbData5/SHELLS",
+      "authority_status": "Land field is authorial synthetic; no complete surface field.",
+      "blocking_status": true,
+      "evidence": ["R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json", "shells_source_archive", "shellset_paper"],
+      "candidate_producer": "Existing land topography payload; ocean values need governed source/initialization.",
+      "adapter_requirements": true
+    },
+    {
+      "input_id": "surface_heat_flow",
+      "shellset_name": "FEG nodal heat flow",
+      "physical_meaning": "Surface heat-flow field supporting the selected thermal/lithospheric structure.",
+      "units": "W m^-2",
+      "support": "per mesh node, T0",
+      "consumer": "OrbData5/SHELLS",
+      "authority_status": "No synthetic heat-flow field or method bound; Earth observations are not transferable by default.",
+      "blocking_status": true,
+      "evidence": ["shellset_paper", "shells_source_archive"],
+      "candidate_producer": "OrbData5 may interpolate/derive from chosen datasets and assumptions.",
+      "adapter_requirements": true
+    },
+    {
+      "input_id": "crust_thickness",
+      "shellset_name": "FEG nodal crust thickness",
+      "physical_meaning": "Thickness of crustal layer in the two-layer lithosphere model.",
+      "units": "m in FEG examples; source datasets can use other units",
+      "support": "per mesh node/layer, T0",
+      "consumer": "OrbData5/SHELLS",
+      "authority_status": "No physical thickness values; province/crust classes do not imply thickness or rock composition.",
+      "blocking_status": true,
+      "evidence": ["shellset_paper", "shells_source_archive", "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json"],
+      "candidate_producer": "OrbData5 from selected input datasets/assumptions or authorial field",
+      "adapter_requirements": true
+    },
+    {
+      "input_id": "mantle_lithosphere_thickness",
+      "shellset_name": "FEG nodal mantle-lithosphere thickness",
+      "physical_meaning": "Thickness of mantle lithosphere beneath crust.",
+      "units": "m in FEG examples",
+      "support": "per mesh node/layer, T0",
+      "consumer": "OrbData5/SHELLS",
+      "authority_status": "No governed physical thickness/thermal structure.",
+      "blocking_status": true,
+      "evidence": ["shellset_paper", "shells_source_archive"],
+      "candidate_producer": "OrbData5 from chosen local-isostasy/geotherm or seismic source, or authorial field",
+      "adapter_requirements": true
+    },
+    {
+      "input_id": "thermal_density_structure",
+      "shellset_name": "OrbData/SHELLS thermal and density/compositional lithosphere structure",
+      "physical_meaning": "Two-layer thin-shell thermal/compositional/density structure that influences strength and force balance; literature does not establish a required standalone density raster in every FEG.",
+      "units": "Temperature K/°C; density kg m^-3; parameter-specific otherwise",
+      "support": "mesh node and layer plus global material parameters; T0",
+      "consumer": "OrbData5/SHELLS",
+      "authority_status": "No implicit solver default or Earth structure may be promoted to ARCANA state.",
+      "blocking_status": true,
+      "evidence": ["shellset_paper", "gwb_manual"],
+      "candidate_producer": "OrbData5 or GWB after input/source and feature choices; neither supplies missing authority",
+      "adapter_requirements": true
+    },
+    {
+      "input_id": "continuum_rheology",
+      "shellset_name": "SHELLS frictional-plastic and dislocation-creep law parameters",
+      "physical_meaning": "Built-in low-temperature frictional rheology and thermally activated dislocation-creep laws for crust and mantle lithosphere.",
+      "units": "Parameter-specific; friction coefficient dimensionless; creep law depends on law form",
+      "support": "Global and grouped continuum elements; long-term quasi-static constitutive model",
+      "consumer": "SHELLS",
+      "authority_status": "No material family/parameter authority. Exact version-specific names/ranges/defaults UNKNOWN.",
+      "blocking_status": true,
+      "evidence": ["shellset_paper"],
+      "candidate_producer": "SHELLS implements laws; ARCANA binds only approved specialist parameters",
+      "adapter_requirements": true
+    }
+  ],
+  "dependency_graph": [
+    {"source":"elevation","target":"crust_thickness","relationship":"JOINTLY_GENERATED_BY_SPECIALIST","condition":"OrbData local-isostasy mode may calculate thickness from elevation with heat-flow/geotherm, density/material assumptions; not a universal identity."},
+    {"source":"elevation","target":"mantle_lithosphere_thickness","relationship":"JOINTLY_GENERATED_BY_SPECIALIST","condition":"Same conditional OrbData local-isostasy/geotherm calculation; actual independent seismic layer data is another input path."},
+    {"source":"surface_heat_flow","target":"thermal_density_structure.temperature","relationship":"CONSTRAINED_BY","condition":"Heat flow is a thermal boundary constraint in selected OrbData workflows; does not uniquely determine a 3-D geotherm without conductivity, boundary conditions and model assumptions."},
+    {"source":"thermal_density_structure.temperature","target":"surface_heat_flow","relationship":"DERIVED_FROM","condition":"Fourier conduction q=-k∇T permits heat-flow derivation given temperature gradient and conductivity; ARCANA lacks both complete field and material conductivity authority. Adapter required."},
+    {"source":"thermal_density_structure.composition","target":"thermal_density_structure.density","relationship":"DEPENDENCY_UNKNOWN","condition":"Composition may constrain density through a chosen equation of state/material table; no ARCANA material law or density mapping is authorized."},
+    {"source":"thermal_density_structure","target":"crust_thickness,mantle_lithosphere_thickness","relationship":"JOINTLY_GENERATED_BY_SPECIALIST","condition":"OrbData derives structure only under selected local-isostasy/geotherm assumptions or receives seismic thickness data; source/parameters are not bound."},
+    {"source":"continuum_rheology","target":"thermal_density_structure","relationship":"INDEPENDENT","condition":"Constitutive law parameters affect mechanical response; they do not generate initial thermal/compositional fields."},
+    {"source":"canonical plate rotations","target":"GWB oceanic thermal feature","relationship":"DEPENDENCY_UNKNOWN","condition":"GWB half-space cooling needs ridge coordinates and spreading velocity; rotations could contribute velocity after ridge/process semantics are authorized, but do not identify ridges, age or crustal type."},
+    {"source":"canonical land_ocean_mask","target":"physical crust type","relationship":"DEPENDENCY_UNKNOWN","condition":"R6 crust_class is assigned from land/ocean/coast categories and is not sufficient authority for physical lithology/material properties."}
+  ],
+  "independent_authorial_primitives": [
+    {
+      "identifier":"SURFACE_ELEVATION_SUPPORT",
+      "physical_meaning":"Complete T0 surface elevation field, with existing canonical land elevation retained and ocean surface support explicitly initialized or generated from an authorized parameterization.",
+      "units":"m relative to R6 datum",
+      "spatial_parameterization":"AUTHORIAL_FIELD with a generative low-dimensional design; existing land field is canonical, unresolved ocean portion must not be painted cell by cell absent need.",
+      "dependencies":"Not derivable from current plate IDs/rotations. Isostatic compatibility may constrain it jointly with thickness and density, but does not uniquely determine it.",
+      "constraints":"Finite supported field, consistent datum and chosen physical structure; no numerical range added here.",
+      "valid_domain":"Complete modeled surface with explicit supported/unknown status; units and datum must be consistent.",
+      "conservation_relationship":"No standalone conservation law uniquely fixes topography; selected isostatic mode must reconcile topography with layer mass/density without silently changing canonical land elevations.",
+      "neighboring_field_relationship":"Must be jointly compatible with crust/lithosphere thickness, material density and thermal structure if local isostasy is used.",
+      "spatial_smoothness_or_discontinuity":"No global smoothness assumption authorized; coast and tectonic relief may have physically justified transitions, requiring a documented representation.",
+      "plate_ocean_dependency":"Must cover ocean and land; no uniform-by-plate rule established.",
+      "spatial_heterogeneity_required":"Yes, existing land field is heterogeneous; ocean support still unknown.",
+      "consumer":"OrbData5/SHELLS; GWB can assign configured feature topography but does not infer realistic ocean bathymetry.",
+      "uncertainty":"Synthetic land portion already carries authorial uncertainty; ocean support remains UNKNOWN.",
+      "ensemble_recommended":false,
+      "status":"INDEPENDENT_PRIMITIVE__PARTIALLY_CANONICAL"
+    },
+    {
+      "identifier":"CRUSTAL_MATERIAL_CLASS_AND_PROPERTIES",
+      "physical_meaning":"Physical crust/lithosphere class semantics and material property mapping (composition/density/thermal properties) needed to distinguish material behavior.",
+      "units":"Categorical class plus material-property-specific units",
+      "spatial_parameterization":"PER_CRUSTAL_OR_MATERIAL_CLASS, then SPECIALIST_GENERATED_FIELD; feature-level exceptions only when authorized.",
+      "dependencies":"Independent of elevation and temperature; may constrain density, heat transport and rheology through a chosen material model.",
+      "constraints":"Classes must represent physical materials, not simply land/ocean/province labels; properties must be mutually consistent and source-version compatible.",
+      "valid_domain":"Explicit finite material class registry and properties with dimensions/units required by selected specialist.",
+      "conservation_relationship":"Material mixture/density mapping must obey the selected mass/composition formulation; no mixing law selected here.",
+      "neighboring_field_relationship":"Property contrasts must be compatible with thermal conductivity, density, thickness and rheology mappings.",
+      "spatial_smoothness_or_discontinuity":"Class boundaries may be discontinuous at authorized geological features; no smoothing or interpolation policy selected.",
+      "plate_ocean_dependency":"May vary by oceanic/continental crust and plate/feature only where physically authorized; current land/ocean-derived class is insufficient.",
+      "spatial_heterogeneity_required":"At least class-aware heterogeneity if distinct physical lithologies are selected; exact heterogeneity unresolved.",
+      "consumer":"GWB composition assignment, OrbData5/SHELLS structure and rheology grouping via adapters.",
+      "uncertainty":"Poorly constrained in a synthetic world.",
+      "ensemble_recommended":true,
+      "status":"UPSTREAM_CLASSIFICATION_GAP__CRUSTAL_TYPE_AUTHORITY_GAP"
+    },
+    {
+      "identifier":"THERMAL_INITIALIZATION_MODEL_AND_FEATURE_INPUTS",
+      "physical_meaning":"Authorized T0 thermal model family and its driving feature parameters (for example thermal boundary conditions, material thermal properties, and—if an oceanic half-space cooling model is chosen—ridge geometry, spreading velocity and plate-age/history information).",
+      "units":"Model-specific; temperature K, depth m, heat flux W m^-2, conductivity W m^-1 K^-1, velocity m yr^-1 where relevant",
+      "spatial_parameterization":"PER_MATERIAL_CLASS or PER_TECTONIC_FEATURE, with SPECIALIST_GENERATED_FIELD; no full-grid authorship as default.",
+      "dependencies":"Requires material properties and any tectonic feature semantics used by the selected model. GWB cannot infer ridge/subduction features or authorize their meanings.",
+      "constraints":"Thermal profile and derived heat flux must be mutually consistent with conductivity, layer geometry and model boundary conditions; no values or feature classes chosen.",
+      "valid_domain":"Model-supported temperature/depth domain and physically admissible boundary conditions; exact ranges depend on pinned model and are deferred.",
+      "conservation_relationship":"Thermal energy/heat flux relationships must follow the selected thermal model; no energy source/sink budget is specified in this stage.",
+      "neighboring_field_relationship":"Coupled to material conductivity, density, layer thickness and surface topography/heat-flow conditions.",
+      "spatial_smoothness_or_discontinuity":"Use model-generated profiles and feature transitions; discontinuities only at authorized material/process boundaries.",
+      "plate_ocean_dependency":"Oceanic cooling models may require ridge position, spreading/plate velocity and age; continental thermal models require their own authored constraints.",
+      "spatial_heterogeneity_required":"Specialist-generated by class/feature; not assumed uniform across all 12 plates.",
+      "consumer":"GWB and/or OrbData5, then ShellSet FEG adapter.",
+      "uncertainty":"High; thermal-model and feature alternatives are plausible.",
+      "ensemble_recommended":true,
+      "status":"INDEPENDENT_PRIMITIVE__TECTONIC_FEATURE_CLASSIFICATION_UNRESOLVED"
+    }
+  ],
+  "rheology_parameter_classification": {
+    "counts_as_initial_world_state":false,
+    "separate_authorial_model_parameter_family":true,
+    "specialist_law":"SHELLS built-in low-temperature frictional-plastic law and crust/mantle dislocation-creep flow laws.",
+    "parameterization":"Begin with globally configured specialist parameters; optional FEG element-group variation only if authorized material classes justify it. Per-plate values are not justified by current state.",
+    "classification":"PHYSICAL_MODEL_PARAMETER, not world-history initial-state field; numerical solver tolerances remain ENGINE_CONFIGURATION_ONLY.",
+    "defaults":"Do not accept Earth-calibrated/example defaults. Exact parameter defaults/ranges need pinned SHELLS source audit; no values selected.",
+    "ensemble_recommended":true,
+    "evidence":"ShellSet paper §§2.2, 3.1 identifies four frictional inputs, optional lower fault friction, nine crust/mantle creep parameters, and only general parameter consistency checks."
+  },
+  "derived_fields": [
+    {"field":"surface_heat_flow","from":"temperature profile and conductivity","method":"Fourier conductive relation q=-k∇T","mode":"ESTABLISHED_RELATION_AVAILABLE__ADAPTER_ONLY","limitations":"Requires complete temperature gradient, conductivity/material authority, surface normal and unit/frame mapping. Current R6 T0 cannot supply it.","uncertainty_propagation":"Propagate temperature-gradient and conductivity uncertainty through the derived flux; adapter records method and source hashes.","resolution_relationship":"Derive on the thermal/material support, then project conservatively or with measured interpolation error to the FEG nodes."},
+    {"field":"crust_thickness","from":"elevation, thermal/heat-flow model, density/material assumptions or chosen seismic-thickness provider","method":"OrbData local-isostasy and steady-state-geotherm workflow; alternate seismic layer-thickness input route","mode":"SPECIALIST_GENERATED","limitations":"Not a universal field identity; requires selecting source/mode/assumptions and documenting uncertainty.","uncertainty_propagation":"Carry input elevation, thermal, density and model-choice uncertainty through OrbData outputs.","resolution_relationship":"Generate on FEG nodes from the chosen inputs; input data projection and node mapping must be recorded."},
+    {"field":"mantle_lithosphere_thickness","from":"elevation, thermal/heat-flow model, density/material assumptions or chosen seismic-thickness provider","method":"OrbData local-isostasy/geotherm or seismic-thickness workflow","mode":"SPECIALIST_GENERATED","limitations":"Same joint dependency; exact fields and parser contract must be pinned before execution.","uncertainty_propagation":"Carry input elevation, thermal, density and model-choice uncertainty through OrbData outputs.","resolution_relationship":"Generate on FEG nodes from the chosen inputs; input data projection and node mapping must be recorded."},
+    {"field":"temperature and composition","from":"authorized physical class/features and GWB configuration","method":"GWB temperature/composition models","mode":"SPECIALIST_GENERATED","limitations":"GWB requires feature type/geometry, depth support, model parameters, composition labels and thermal parameters. It does not authorize subduction/ridge or material classes; requires grid/field adapter for ShellSet.","uncertainty_propagation":"Record primitive, model/version and parameter-set provenance; carry scenario/input uncertainty through generated fields.","resolution_relationship":"GWB output grid resolution follows supplied domain/grid; re-sampling to FEG needs documented method/error."},
+    {"field":"density structure","from":"material composition/class plus selected material/thermal relationship","method":"OrbData/SHELLS model parameterization or separately authorized material model","mode":"DEPENDENCY_UNKNOWN","limitations":"GWB composition output is not itself density; no equation-of-state/material table is bound.","uncertainty_propagation":"Unknown until a property law/table is authorized.","resolution_relationship":"Must use the same material classes and support as temperature/thickness fields; mapping not yet defined."}
+  ],
+  "specialist_materializers": [
+    {"tool":"OrbData5","can_generate":["crust thickness","mantle-lithosphere thickness","nodal structure fields from selected sources/assumptions"],"requires":["input FEG mesh","elevation and/or source data","heat-flow/geotherm or seismic thickness route","local-isostasy/density and thermal parameters"],"does_not_generate":["ARCANA authority","mesh topology/fault network","tectonic class labels"],"output_authority":"SPECIALIST_DERIVED_INPUT only; provenance must carry source fields, assumptions and transform.","uncertainty_propagation":"Carry upstream measurement/initialization uncertainty and selected-method uncertainty; output lineage must record input hashes and settings.","resolution_relationship":"Writes to the FEG nodal support; any source-grid interpolation to nodes must be recorded.","reproducibility":"Pin OrbData version, input data hashes and configuration; repeatability not verified in this stage."},
+    {"tool":"Geodynamic World Builder","can_generate":["temperature","composition assignment","configured feature topography"],"requires":["structured world file","physical feature type/geometry","depth support","model names and model parameters","material/composition identifiers"],"determinism":"Expected repeatable for pinned tool/version and identical complete inputs; not runtime-verified here.","model_derived":true,"shellset_direct_consumption":false,"adapter":"Convert output grid/fields to the ShellSet FEG mesh while recording interpolation and field provenance.","uncertainty_propagation":"Propagate input feature/parameter ensembles as corresponding generated-field ensembles; model uncertainty needs separate treatment.","resolution_relationship":"Output follows specified GWB domain and grid; ShellSet FEG resampling is an explicit adapter step.","reproducibility":"Pin GWB version, world description, source hashes and parameters; deterministic behavior not runtime-verified here.","cannot_authorize":"Feature types, composition labels, spreading/ridge history, subduction/slab or boundary processes."},
+    {"tool":"pyGPlates/GPlates","can_generate":["plate-side kinematic velocities from authorized rotations/topology"],"cannot_generate":["elevation, temperature, heat-flow, thickness, composition, density or rheology"],"status":"No reduction of the six physical input families; values may later inform an authorized thermal/ridge model or BC adapter."}
+  ],
+  "spatial_parameterization": {
+    "elevation":"Existing authorial land field plus explicit supported/unknown ocean domain; a class/feature-based generative representation is preferable to 64,800 cell-by-cell values.",
+    "thermal_state_and_heat_flow":"SPECIALIST_GENERATED_FIELD, ideally per authorized material/tectonic feature; if oceanic half-space cooling is selected, GWB needs ridge coordinates, spreading velocity and depth support; plate age/history authority absent.",
+    "crust_and_mantle_thickness":"SPECIALIST_GENERATED_FIELD from OrbData selected model or provider fields; not automatically uniform per plate.",
+    "material_class_and_properties":"PER_MATERIAL_CLASS minimum candidate; per-plate variation only if plate material semantics are physically authored.",
+    "rheology":"Global or per justified material/element group; no per-cell parameter field requirement established."
+  },
+  "boundary_process_dependencies": {
+    "ridge_or_spreading":"Required by GWB half-space cooling option; ARCANA has kinematic demand but no boundary-process classes or ridge geometry authority.",
+    "subduction":"Required only for a GWB subducting-plate/slab feature; requires trench coordinates, dip-side/dip point, slab segment geometry, thickness/angle and selected thermal/composition models. ARCANA has no such authority.",
+    "collision_rift_transform_distributed_deformation":"Not proven mandatory for all six fields; required if chosen feature/material model encodes them. Do not infer from convergence/divergence/shear.",
+    "decision":"UPSTREAM_CLASSIFICATION_GAP; no process classes assigned."
+  },
+  "crustal_type_dependencies": {
+    "canonical_field":"crust_class codes OCEANIC/CONTINENTAL/TRANSITIONAL exist in the materialization manifest.",
+    "observed_semantics":"Repository validation binds non-coastal land to CONTINENTAL, ocean to OCEANIC, coast to TRANSITIONAL.",
+    "sufficiency":"Insufficient as physical crust/material authority because it is derived from land/ocean support and does not encode lithology, thickness, age or mechanical material properties.",
+    "status":"CRUSTAL_TYPE_AUTHORITY_GAP",
+    "no_inference":"Do not use land/ocean alone as the physical material classification."
+  },
+  "ensemble_candidates": [
+    {"primitive":"CRUSTAL_MATERIAL_CLASS_AND_PROPERTIES","recommendation":"ENSEMBLE_RECOMMENDED","reason":"Synthetic physical composition/density/material mapping is unobserved and may support multiple plausible designs."},
+    {"primitive":"THERMAL_INITIALIZATION_MODEL_AND_FEATURE_INPUTS","recommendation":"ENSEMBLE_RECOMMENDED","reason":"Multiple thermal model families and feature histories can yield distinct T0 fields; downstream sensitivity should preserve that uncertainty."},
+    {"primitive":"SHELLS rheology parameter family","recommendation":"ENSEMBLE_RECOMMENDED for later sensitivity, not now","reason":"No canonical constraints select the physical material law parameters; parameter sensitivity is an appropriate later experiment after ranges are scientifically constrained."}
+  ],
+  "irreducible_gaps": [
+    {"gap":"CRUSTAL_TYPE_AUTHORITY_GAP","blocks":"Physical material classes and any class-conditioned thermal/density/rheology initialization.","resolution":"Targeted authorial classification contract; the existing class field is land/ocean-derived and insufficient."},
+    {"gap":"TECTONIC_PROCESS_CLASSIFICATION_GAP","blocks":"GWB ridge/half-space and subduction/slab feature initialization if those models are selected; also fault/slab mechanics labels.","resolution":"Only authorize classes actually needed by the selected initializer; do not classify from kinematics alone."},
+    {"gap":"THERMAL_DENSITY_MAPPING_GAP","blocks":"Composition-to-density/equation-of-state mapping and heat-flow conversion beyond Fourier formula; no material table or complete temperature input.","resolution":"Choose an established model/provider and bind its required physical parameters and provenance."}
+  ],
+  "shellset_interface_dependencies": {
+    "status":"SUPPORTED_ONLY_WITH_MODEL_ASSUMPTIONS (parent classification preserved)",
+    "separate_from":"MECHANICAL_STATE_AUTHORITY",
+    "authorial_state_interactions":["Mesh/material classes require node/element mapping", "Thermal/material fields must be projected to FEG nodes/layers", "Fault/slab process semantics would determine which node velocities are prescribed"],
+    "not_solved":"No `.bcs` frame, node-selection, velocity constraint, or FE mesh adapter decision is made in this stage."
+  },
+  "junction_status":{"status":"UNKNOWN","note":"No junction law or mechanics added; whether generated state and connected FEG are sufficient remains a runtime/source-qualification question."},
+  "patch_operator_disposition":{"status":"ARCANA_CUSTOM_PATCH_OPERATOR_NOT_REQUIRED_FOR_PRODUCTION_CONDITIONALLY","diagnostic":"OLD_PATCH_OPERATOR_FAILURE_RETAINED_AS_DIAGNOSTIC_EVIDENCE","condition":"Conditional on later specialist connected-domain proof; no custom ARCANA scientific physics is required by this adjudication."},
+  "counts": {
+    "parent_mandatory_physical_families": 6,
+    "independent_authorial_physical_primitive_families_identified": 3,
+    "separate_authorial_physical_model_parameter_families": 1,
+    "fields_reducible_through_existing_arcana_state": 1,
+    "fields_derivable_through_established_relationships": 1,
+    "fields_materializable_by_specialist_tools": 3,
+    "fields_requiring_direct_authorial_field_initialization": 1,
+    "irreducible_upstream_classification_or_material_mapping_gaps": 3,
+    "ensemble_recommended_primitives": 3,
+    "counting_note":"Counts are parent-family counts, not scalar parameter counts. Elevation is only partially canonical. Crust and mantle thicknesses are jointly derivable by OrbData only under a selected documented method and inputs. Heat flow can follow Fourier conduction from an authorized thermal field and conductivity. GWB materializes configured fields, not their authority. Rheology is an authorial constitutive-model parameter family, excluded from WORLD_HISTORY state. Classification/material-map gaps mean this is a reduced candidate vector, not ready for parameter constraint adjudication."
+  },
+  "next_stage":{"stage":"targeted upstream crustal/material and tectonic-feature classification contract","reason":"The six families reduce to three independent physical primitive families plus a separate rheology parameter family, but physical crust/material and any GWB ridge/slab features remain unclassified. Resolve only these semantic authorities; do not select parameter values or run engines."},
+  "canonical_invariants":{"time_ma":210,"state_id":"r6state_1d36fb90cd23443407ce6c63611a65b74c5a9157bd89b1c6cec449d9b927f2d9","physical_payload_sha256":"a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c","vector_partition_sha256":"a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab","kinematics_sha256":"50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4","plates":12,"faces":64800,"boundaries":1983,"junctions":20,"historical_bootstrap":"27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf"},
+  "sources": {
+    "parent_report":{"url":"R6_TECTONIC_MECHANICAL_INPUT_BINDING_RECONCILIATION.json","decision":"R6_TECTONIC_MECHANICAL_INPUT_BINDING_PARTIAL__AUTHORIAL_INITIALIZATION_REQUIRED"},
+    "shellset_paper":{"title":"ShellSet v1.1.0, GMD 2024","url":"https://gmd.copernicus.org/articles/17/6153/2024/gmd-17-6153-2024.html"},
+    "shells_archive":{"title":"SHELLS tools/results archive index","url":"https://datadryad.org/dataset/doi:10.5061/dryad.cnp5hqcjb"},
+    "gwb_oceanic_temperature":{"title":"GWB oceanic plate temperature tutorial","url":"https://gwb.readthedocs.io/en/latest/user_manual/basic_starter_tutorial/06_oceanic_plate_temperature.html"},
+    "gwb_subducting_plate":{"title":"GWB basic subducting plate tutorial","url":"https://gwb.readthedocs.io/en/v1.0.0/user_manual/basic_starter_tutorial/10_adding_basic_subducting_plate.html"},
+    "gwb_material_and_temperature":{"title":"GWB subducting plate temperature models","url":"https://gwb.readthedocs.io/en/v1.0.0/user_manual/basic_starter_tutorial/12_subducting_plate_temperatures.html"},
+    "gwb_topography":{"title":"GWB feature topography model parameter listing","url":"https://gwb.readthedocs.io/en/latest/GWB_parameter_listings/world_builder_file/index.html"},
+    "gplately_velocity":{"title":"GPlately PlateReconstruction API","url":"https://gplates.github.io/gplately/latest/sphinx/html/generated/gplately.PlateReconstruction.html"},
+    "isostasy_and_thermal_structure":{"title":"SHELLS lithosphere thermal structure and local isostasy relationships (literature overview)","url":"https://doi.org/10.1016/S0040-1951(06)00353-2"}
+  },
+  "validation":{"branch":"r6/tectonic-authorial-initial-state","head":"10a1c5bbff4c13e99d2387d6f633e87c0337e5bf","parent_identity_verified":true,"exact_six_parent_families_extracted":true,"parent_authorial_flag_discrepancy_recorded":true,"dependency_graph_consistent":true,"all_derived_fields_have_method_and_source":true,"independent_primitives_have_independence_basis":true,"numeric_physical_values_selected":false,"earth_fields_imported":false,"engine_executed":false,"future_state_created":false,"canonical_hashes_unchanged":true,"bootstrap_unchanged":true,"json_parse":"PASS","schema_and_provenance_contracts":"PASS","authored_file_whitespace":"PASS","git_diff_check":"PASS (untracked artifact contents checked separately; no tracked modifications)","staging":"BLOCKED: git add denied permission creating linked-worktree index.lock; no retry per brief","commit":"NOT CREATED"}
+}
