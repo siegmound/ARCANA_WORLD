@@ -1,0 +1,217 @@
+{
+  "artifact": "R6_TECTONIC_AUTHORIAL_PRIMITIVE_CONSTRAINTS",
+  "schema_version": "1.0.0",
+  "branch": "r6/tectonic-authorial-primitive-constraints",
+  "head_at_authoring": "4c74fea2c63b521f9bdecf7e9bd29bc0f7fd2d28",
+  "parent_artifact": "R6_SHELLSET_PRERUNTIME_INPUT_CLOSURE",
+  "parent_decision_required": "R6_SHELLSET_PRERUNTIME_INPUTS_PARTIAL__AUTHORIAL_PRIMITIVES_REMAIN",
+  "decision": "R6_TECTONIC_AUTHORIAL_PRIMITIVES_CONSTRAINED__READY_FOR_T0_MATERIALIZATION_DESIGN",
+  "scope": "AUTHORIAL_T0_PHYSICAL_PRIMITIVE_CONSTRAINTS_AND_DEPENDENCY_REDUCTION_ONLY",
+  "scientific_engine_executed": false,
+  "final_t0_fields_materialized": false,
+  "canonical_payload_mutated": false,
+  "forward_evolution": false,
+  "dt_selected": false,
+  "t1_selected": false,
+  "shellset_runtime_qualification_authorized": false,
+  "first_interval_authorized": false,
+  "parent_authorial_primitives": [
+    {"id":"OCEAN_ELEVATION_BATHYMETRY_SUPPORT","physical_meaning":"Ocean-floor surface-elevation support on ocean cells, relative to the R6 datum; the parent land elevation remains its own supported canonical field.","parent_status":"INDEPENDENT_CANDIDATE"},
+    {"id":"CRUSTAL_DOMAIN_AND_THICKNESS_TEMPLATE","physical_meaning":"Physical crustal structural domains and their thickness structure; design labels in the current payload do not provide these properties.","parent_status":"INDEPENDENT_CANDIDATE"},
+    {"id":"OCEANIC_LITHOSPHERE_AGE_OR_RIDGE_HISTORY","physical_meaning":"T0 age of oceanic lithosphere, or an authorized formation/ridge history from which age can be derived.","parent_status":"INDEPENDENT_CANDIDATE"},
+    {"id":"CONTINENTAL_THERMAL_STRUCTURAL_INITIALIZATION","physical_meaning":"Continental lithosphere thermal/structural state needed to generate model-ready profiles and layer geometry.","parent_status":"INDEPENDENT_CANDIDATE"}
+  ],
+  "parent_input_groups": [
+    "surface elevation", "crust thickness", "mantle-lithosphere structure", "heat-flow and thermal state",
+    "reference density/material structure", "rheology", "FEG numerical mesh support", "BC/fault interface"
+  ],
+  "parent_blocker_groups": [
+    "ocean elevation/bathymetry", "physical crust domains and thickness", "oceanic age and continental thermal state",
+    "reference material and thermal configuration", "rheology configuration", "mesh/BC/fault interface"
+  ],
+  "canonical_t0": {
+    "time_ma": 210,
+    "plate_count": 12,
+    "parent_face_count": 64800,
+    "shared_boundary_segment_count": 1983,
+    "adjacent_plate_pair_count": 30,
+    "degree3_junction_count": 20,
+    "canonical_branch_count": 30,
+    "canonical_section_count": 30,
+    "convergent_kinematic_demand_edges": 1091,
+    "divergent_kinematic_demand_edges": 892,
+    "physical_geography_payload_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "canonical_kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "historical_bootstrap_identity_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf",
+    "availability": {
+      "land_elevation": "supported canonical synthetic field; do not rewrite",
+      "ocean_bathymetry": "unknown mask only; numeric values absent",
+      "crust_class": "oceanic/continental/transitional design categories only",
+      "province_class": "other/craton/suture/orogenic design labels only",
+      "age_temperature_heatflow_thickness": "absent",
+      "material_rheology_feg_bcs": "not bound"
+    },
+    "world_authority": "Synthetic Earth-scale Pangaea-inspired ARCANA design, not observed Earth at 210 Ma; Earth literature constrains physics, not ARCANA observations."
+  },
+  "superseded_blockers": [
+    "external absolute pressure", "external EOS density", "external P-rho-g coupling", "mandatory BurnMan", "mandatory Perple_X",
+    "global tectonic-process classification", "arbitrary pure plate anchor distance", "mandatory custom ARCANA mechanical patch operator"
+  ],
+  "dependency_graph": [
+    {"from":"oceanic lithosphere age field", "to":"oceanic thermal profile", "relation":"SPECIALIST_DERIVED_FROM", "conditions":"A selected and parameterized cooling model, material properties, surface/basal conditions and valid age support are required."},
+    {"from":"oceanic lithosphere age field", "to":"oceanic heat flow", "relation":"SPECIALIST_DERIVED_FROM", "conditions":"Cooling model output or compatible temperature-gradient/conductivity calculation; do not author both independently without an explicit model reason."},
+    {"from":"oceanic lithosphere age field", "to":"oceanic mantle-lithosphere thickness", "relation":"SPECIALIST_DERIVED_FROM", "conditions":"Only under a declared thermal definition and selected specialist route; not from plate ID or instantaneous rotation."},
+    {"from":"oceanic lithosphere age field", "to":"thermal/isostatic component of ocean-floor depth", "relation":"SPECIALIST_DERIVED_FROM", "conditions":"Established age-depth/plate-cooling models provide a first-order relation. It does not generate total ARCANA bathymetry or nonthermal relief."},
+    {"from":"crustal thickness and domain structure", "to":"ocean-floor elevation", "relation":"CONSTRAINED_BY", "conditions":"Density, compensation, water loading, age and thermal structure enter an isostatic calculation; no one-to-one derivation from present labels."},
+    {"from":"crustal thickness and domain structure", "to":"continental thermal profile", "relation":"CONSTRAINED_BY", "conditions":"Layer interfaces and heat production constrain profiles, but composition and thermal boundary conditions remain required."},
+    {"from":"ridge/formation chronology", "to":"oceanic lithosphere age", "relation":"SPECIALIST_DERIVED_FROM", "conditions":"Requires explicit formation source geometry, creation times and spreading/kinematic chronology."},
+    {"from":"canonical plate identity and instantaneous kinematics", "to":"ridge history or lithosphere age", "relation":"UNKNOWN", "conditions":"Neither encodes seafloor creation age; divergent kinematic demand does not authorize ridge semantics."},
+    {"from":"continental thermal primitive", "to":"continental temperature, heat flow and thermal thickness", "relation":"SPECIALIST_DERIVED_FROM", "conditions":"Domain-wise geotherm/thermal model plus heat production, conductivity, boundary conditions and material configuration."},
+    {"from":"land elevation", "to":"ocean bathymetry", "relation":"INDEPENDENT", "conditions":"Land support and the ocean unknown mask contain no ocean depth."},
+    {"from":"rheology/reference materials/FEG/BC policy", "to":"world-defining T0 primitives", "relation":"OPTIONAL_DEPENDENCY", "conditions":"They configure or discretize downstream mechanics; keep them outside WORLD_HISTORY primitive vector except material-family links recorded below."}
+  ],
+  "independence_reassessment": {
+    "parent_family_count": 4,
+    "families_eliminated_by_scientific_derivation": 0,
+    "final_independent_authorial_family_count": 4,
+    "finding": "Specialists derive several required fields from age or thermal-state primitives, but none removes a complete parent family with the currently bound ARCANA authority and provider chain. Ocean age can predict only the thermal/isostatic bathymetry component; current structural templates do not determine thickness; continental state remains a separate domain family.",
+    "reduced_or_replaced_representation": "Use an oceanic AGE_FIELD instead of carrying both age and ridge chronology. Ridge/formation chronology is an optional causal authoring route, not an additional primitive."
+  },
+  "bathymetry_reduction": {
+    "disposition": "REMAINS_AUTHORIAL_AS_LONG_WAVELENGTH_OCEAN_SURFACE_SUPPORT; AGE_DERIVES_ONLY_THERMAL_ISOSTATIC_COMPONENT",
+    "components": {
+      "thermal_isostatic_depth": "Can be generated conditionally from age and a published/validated cooling plus isostatic model; age alone is insufficient because model and material parameters matter.",
+      "ridge_relief": "May be represented by a selected thermal model near an explicit ridge source; no ridge source is authorized by current kinematics.",
+      "tectonic_dynamic_relief": "Not derived by plate-cooling age model; unresolved and not needed as invented detail for the bounded static input contract.",
+      "trench_relief": "Requires explicit trench/subduction geometry and a chosen structural model; not inferred from convergent-demand edges.",
+      "intraplate_volcanic_relief": "Independent local feature support if later required; no current provider/authority.",
+      "sediment_load": "Optional structural modifier only when sediment state is authored and model requires it.",
+      "other_local_relief": "Deferred; no high-frequency detail fabricated."
+    },
+    "minimum_representation": "A datum-aware, uncertainty-bearing, long-wavelength ocean-floor support over the modeled ocean domain, coherent with the surface/water support. Prefer a small set of basin/domain controls or a low-resolution correlated field; keep local features as explicit sparse features only if later authorized.",
+    "constraints": ["datum and sign convention explicit", "complete modeled-node support", "coherent across each basin/domain", "preserve authored support and resolution", "no unconstrained cellwise noise", "separate marine-floor support from land mask semantics"],
+    "provider_gap": "No current R6-bound tool consumes the authorized age state and returns a validated total ARCANA ocean-elevation field with nonthermal relief policy. A cooling model is a component materializer only."
+  },
+  "crustal_structure_reduction": {
+    "disposition": "CRUST_THICKNESS_REMAINS_INDEPENDENTLY_AUTHORED_AS_DOMAIN_TEMPLATE_AND_RANGES; SPECIALIST_RASTERIZES_OR_CONSUMES_IT",
+    "minimum_ontology": [
+      {"id":"oceanic_crust_domain", "meaning":"Crust formed as oceanic crust; physical family, not surface-ocean mask."},
+      {"id":"continental_crust_domain", "meaning":"Continental crustal structure; physical family, not land mask."},
+      {"id":"transitional_or_mixed_domain", "meaning":"Only where an explicit structural transition is authorized; it may be represented by bounded mixtures/templates without adding named lithologies."}
+    ],
+    "excluded_semantics": "Current crust_class/province_class design labels do not supply physical thickness, mineralogy, density or rheology. Do not infer land == continental or ocean == oceanic.",
+    "generation": "Author a small domain/template parameter set with ranges and provenance; a support-aware mapper materializes the field for OrbData/SHELLS. OrbData Assign consumes upstream crust thickness and does not derive it from current R6 topology/isostasy. GWB configured feature geometry does not create ARCANA authority for thickness.",
+    "constraints": ["positive layer thickness", "interfaces ordered and geometrically consistent", "domain boundary continuity or explicitly supported discontinuity", "domain-coherent spatial correlation", "material/thickness family jointly constrained", "preserve source resolution and uncertainty"],
+    "range_type": "RANGE_CONSTRAINED plus ENSEMBLE_REQUIRED until ARCANA domain families and parameter provenance are selected"
+  },
+  "oceanic_age_reduction": {
+    "disposition": "AGE_FIELD_IS_THE_MINIMUM_DIRECT_PRIMITIVE; RIDGE_HISTORY_OPTIONAL",
+    "reason": "A T0 age field directly conditions established oceanic cooling models. Requiring full plate history only to derive age adds tectonic chronology/kinematics that ARCANA has not authorized. Plate ID and current kinematics do not encode age.",
+    "minimum_semantics": ["age support restricted to physically declared oceanic lithosphere", "nonnegative age with time reference at T0=210 Ma", "explicit unknown/missing support policy", "no age implied by plate or province label", "if a ridge source is selected, age boundary/source semantics must be explicit"],
+    "ridge_history_status": "OPTIONAL; not inferred from divergence and not required if a direct age field is authored",
+    "spatial_authoring": "Feature/domain-wise age surfaces or low-resolution correlated age fields; can be generated from explicit ridge-source chronology using established plate reconstruction/geospatial tools if such chronology is separately authorized. Do not implement custom ARCANA age propagation in this stage.",
+    "constraints": ["nonnegative", "temporal reference consistent with T0", "spatially continuous within a coherent oceanic domain except at supported formation/boundary features", "age gradient/history must be compatible with selected source chronology", "thermal model valid for chosen age regime"],
+    "range_type": "DISTRIBUTION_CONSTRAINED; ENSEMBLE_RECOMMENDED"
+  },
+  "continental_thermal_reduction": {
+    "disposition": "DOMAIN_WISE_1D_OR_FEATURE_PROFILE_PRIMITIVE; SPECIALIST_GENERATES_3D_OR_NODE_FIELDS",
+    "minimum_authorial_inputs": ["explicit continental structural-domain support", "thermal-state family or surface heat-flow/geotherm boundary family", "domain-level radiogenic heat-production/material family where selected model requires it", "reference/basal thermal condition supplied as versioned specialist configuration"],
+    "not_required": ["full 3-D cellwise authored temperature field", "continental thermal age inferred from craton/suture/orogenic design labels", "automatic import of modern Earth seismic or heat-flow observations"],
+    "materialization": "A documented steady-state or transient conductive geotherm specialist can produce profile/heat-flow/lithosphere-thickness fields from a declared domain template and model parameters. ShellSet/OrbData may consume these after pinned-version contract confirmation; a candidate model name alone does not qualify an adapter.",
+    "constraints": ["surface and basal boundary conditions explicit", "temperature profile continuous within a domain unless a physical boundary justifies a jump", "heat flow and temperature gradient consistent with chosen conductivity and source terms", "positive thermal lithosphere geometry under declared definition", "domain-coherent uncertainty"],
+    "range_type": "DOMAIN_CLASS_CONSTRAINED plus ENSEMBLE_RECOMMENDED"
+  },
+  "specialist_materializers": [
+    {"field":"oceanic thermal profile", "specialist":"GWB feature-based oceanic plate cooling or another pinned published plate/half-space cooling implementation", "inputs":["age or explicit ridge/source chronology", "thermal/material parameters", "boundary conditions"], "status":"CANDIDATE_ONLY; not executed or selected"},
+    {"field":"oceanic heat flow", "specialist":"same selected cooling model; alternatively validated conductive flux from its temperature profile", "inputs":["temperature profile", "conductivity", "support/sign convention"], "status":"DERIVED; do not author redundantly"},
+    {"field":"oceanic mantle-lithosphere thickness", "specialist":"pinned OrbData age workflow or compatible thermal-lithosphere definition", "inputs":["age", "selected thickness criterion/configuration"], "status":"CANDIDATE_ONLY; contract/version must be pinned"},
+    {"field":"thermal/isostatic bathymetry component", "specialist":"published oceanic plate-cooling plus isostatic subsidence model", "inputs":["age", "crust structure", "material/thermal parameters", "water loading and datum"], "status":"PHYSICALLY_ESTABLISHED COMPONENT; total ARCANA bathymetry provider gap remains"},
+    {"field":"continental temperature/heat-flow/thickness", "specialist":"documented continental geotherm/thermal model selected at materialization design", "inputs":["continental domains", "boundary conditions", "heat production and thermal properties"], "status":"GENERATION CLASS ESTABLISHED; exact model/provider/adapter remains to pin"},
+    {"field":"crust thickness mesh/grid", "specialist":"ARCANA support-aware domain-template materializer/adapter", "inputs":["authored physical domains and thickness ranges"], "status":"ADAPTER MATERIALIZATION; not a scientific inference from current canonical labels"}
+  ],
+  "scientific_constraint_sources": [
+    {"id":"OCEAN_PLATE_COOLING_2025", "type":"peer-reviewed primary research", "title":"Revised Oceanic Plate Cooling Models", "url":"https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024JB029890", "use":"Shows joint constraints from oceanic age-depth and heat-flow observations and that plate-model family/parameters affect inference. Earth data are physical constraint evidence only, not ARCANA authority."},
+    {"id":"PARSONS_SCLATER_1977", "type":"peer-reviewed primary research", "title":"An analysis of the variation of ocean floor bathymetry and heat flow with age", "url":"https://www.nature.com/articles/359123a0", "use":"Established coupled age, ocean depth and heat-flow model family; does not make all bathymetric relief a function of age."},
+    {"id":"SCLATER_2006", "type":"peer-reviewed primary research", "title":"The relationship between depth, age and gravity in the oceans", "url":"https://academic.oup.com/gji/article/166/2/553/562527", "use":"Explains cooling/thermal contraction and age-depth relation while documenting limits of simple half-space models for old seafloor."},
+    {"id":"CONTINENTAL_GEOTHERM_HEAT_PRODUCTION", "type":"peer-reviewed review/model", "title":"Heat production and geotherms for the continental lithosphere", "url":"https://www.sciencedirect.com/science/article/pii/S0012821X11002500", "use":"Supports domain/material-conditioned geotherm and heat-production families; its Earth calibration is not an ARCANA value selection."},
+    {"id":"GWB_OCEANIC_PLATE_DOCS", "type":"official specialist documentation", "title":"GWB Oceanic Plate Feature", "url":"https://gwb.readthedocs.io/en/latest/user_manual/parameter_documentation/features/oceanic_plate.html", "use":"Configured feature API includes oceanic cooling/temperature models and age or ridge/spreading inputs; it requires authored/configured inputs and is not an authority generator."},
+    {"id":"GWB_METHODS_2019", "type":"peer-reviewed methods paper", "title":"The Geodynamic World Builder: a tool for the automatic generation of numerical models", "url":"https://se.copernicus.org/articles/10/1785/2019/", "use":"Feature-based initial-condition materialization with explicitly supplied geometry/properties; supports using a specialist as materializer rather than primitive authority."},
+    {"id":"SHELLSET_2024", "type":"peer-reviewed software paper", "title":"ShellSet v1.1.0: a set of scripts to create global thin-shell models of planetary lithospheres", "url":"https://gmd.copernicus.org/articles/17/6153/2024/gmd-17-6153-2024.html", "use":"Parent evidence for ShellSet field requirements, OrbData input routes, rheology and model configuration; not evidence that absent ARCANA fields can be inferred."},
+    {"id":"PARENT_SOURCE_RECONCILIATION", "type":"repository primary-source audit", "title":"R6_SHELLSET_PRERUNTIME_INPUT_CLOSURE", "url":"R6_SHELLSET_PRERUNTIME_INPUT_CLOSURE.json", "use":"Directly inspected parent contracts, canonical inventory, OrbData Assign thickness consumption, and present provider/interface gaps."}
+  ],
+  "minimum_authorial_vector": [
+    {"id":"OCEAN_SURFACE_SUPPORT", "physical_meaning":"Long-wavelength ocean-floor elevation/bathymetry not already generated from the selected thermal/isostatic age model; includes basin-scale residual and only explicitly authorized sparse nonthermal features.", "why_independent":"Age/cooling constrains a thermal component but cannot determine total dynamic/tectonic, trench, volcanic, sedimentary or basin-specific relief; no current provider supplies the total field.", "units":"m relative to explicit R6 datum", "spatial_representation":"PER_OCEANIC_DOMAIN or LOW_RESOLUTION_FIELD; no cellwise independent authoring", "dependencies":["age-derived thermal/isostatic component may be subtracted/combined only under an explicitly selected model", "water/surface support and datum"], "constraints":["datum/sign and ocean support explicit", "domain-coherent smooth long wavelengths", "sparse supported discontinuities/features only", "no unsupported fine detail"], "allowed_range_type":"RANGE_CONSTRAINED; ensemble recommended; no numeric ARCANA range selected", "specialist_materializer":"cooling/isostatic model for thermal component; total residual field remains authorial pending provider and model choice", "generated_fields":["complete ocean elevation support after combination"], "uncertainty_policy":"correlated basin/domain scenarios with provenance; retain model and age covariance", "world_history_role":"T0 physical surface state"},
+    {"id":"PHYSICAL_CRUST_DOMAIN_THICKNESS_TEMPLATE", "physical_meaning":"Physical oceanic, continental and where supported transitional crust domains with compact domain thickness parameters/distributions.", "why_independent":"No canonical physical thickness exists and OrbData consumes an input grid; current labels do not determine layer thickness or composition.", "units":"m thickness; categorical domain identity", "spatial_representation":"PER_CRUSTAL_DOMAIN plus domain-coherent template; explicit transition features if authorized", "dependencies":["material family and thermal structure constrain plausible template", "surface masks are not domain authority"], "constraints":["positive thickness", "ordered interfaces", "domain correlation/continuity", "no named lithology without authority"], "allowed_range_type":"RANGE_CONSTRAINED and ENSEMBLE_REQUIRED", "specialist_materializer":"support-aware template-to-grid/FEG adapter; no automatic scientific thickness derivation currently bound", "generated_fields":["crust-thickness field/grid"], "uncertainty_policy":"domain-family ensemble with correlated within-domain variability only if supported", "world_history_role":"T0 physical structural state"},
+    {"id":"OCEANIC_LITHOSPHERE_AGE_FIELD", "physical_meaning":"T0 age of oceanic lithosphere on explicitly declared oceanic-lithosphere support.", "why_independent":"No age field or authorized formation history exists; age is a fundamental input to multiple mature cooling models and is not recoverable from plate identity/instantaneous motion.", "units":"Ma before T0, with T0/time convention explicit", "spatial_representation":"PER_OCEANIC_DOMAIN, SPARSE_FEATURE chronology, or LOW_RESOLUTION_FIELD", "dependencies":["optional ridge/source geometry and spreading chronology if age is derived instead", "thermal/material configuration for all derived fields"], "constraints":["nonnegative", "continuous and spatially correlated within coherent domains", "explicit source/unknown support", "history-compatible gradients where chronology is present"], "allowed_range_type":"DISTRIBUTION_CONSTRAINED; ENSEMBLE_RECOMMENDED", "specialist_materializer":"pinned cooling model and compatible OrbData age path", "generated_fields":["oceanic thermal profile", "heat flow", "thermal lithosphere thickness", "thermal/isostatic bathymetry component"], "uncertainty_policy":"retain age-model family and spatial covariance as ensemble axes", "world_history_role":"T0 physical/formation state"},
+    {"id":"CONTINENTAL_THERMAL_STRUCTURAL_DOMAINS", "physical_meaning":"Continental lithosphere domain support and compact thermal-state/geotherm family, with required structural boundary and heat-production class where model needs it.", "why_independent":"No continental thermal/structural data exists; current province design tags are not thermal-age, seismic-anomaly or material authority.", "units":"domain identity; temperature profile in K; model inputs in source-defined units", "spatial_representation":"PER_CONTINENTAL_DOMAIN and domain-wise 1D/profile parameters", "dependencies":["crust structural template", "thermal/reference material configuration", "surface/basal conditions"], "constraints":["boundary conditions explicit", "profile/flux/conductivity consistency", "spatially coherent domains", "no direct full 3-D authoring when 1-D profiles suffice"], "allowed_range_type":"DOMAIN_CLASS_CONSTRAINED; ENSEMBLE_RECOMMENDED", "specialist_materializer":"pinned continental geotherm/thermal model; exact provider+adapter is a materialization-design choice", "generated_fields":["continental temperature/geotherm", "heat flow", "thermal lithosphere thickness"], "uncertainty_policy":"ensemble over supported thermal/domain families and correlated parameters", "world_history_role":"T0 physical/thermal state"}
+  ],
+  "spatial_parameterization": {
+    "ocean_surface_support":"PER_OCEANIC_DOMAIN or LOW_RESOLUTION_FIELD; later sparse features only with explicit authority",
+    "crust_domain_thickness":"PER_CRUSTAL_DOMAIN templates; field is derived by support-aware projection",
+    "oceanic_age":"PER_OCEANIC_DOMAIN, SPARSE_FEATURE chronology or LOW_RESOLUTION_FIELD; coherent surfaces, not cell-independent values",
+    "continental_thermal_state":"PER_CONTINENTAL_DOMAIN profiles; specialist expands profiles onto mesh support",
+    "prohibited_for_this_stage":"64,800 independent physical samples or interpolated resolution represented as new evidence"
+  },
+  "ensemble_policy": {
+    "recommended_axes":["ocean basin residual/bathymetry family", "physical crust-domain thickness family", "ocean age field/formation model", "continental thermal/domain family", "correlated material-reference configuration"],
+    "range_constrained_primitives":4,
+    "ensemble_recommended_primitives":4,
+    "rule":"At materialization/runtime qualification retain member IDs, distributions/ranges, correlations, model versions, seeds, provenance and every output. No best member without an authorized ARCANA decision score. Earth OrbScore is not an ARCANA ranking authority.",
+    "generated_now":false
+  },
+  "derived_field_graph": [
+    {"primitive":"oceanic age field", "specialist":"selected published cooling model", "derived":"ocean temperature/geotherm, heat flow, mantle-lithosphere thickness; thermal-isostatic depth component", "qualification":"model/material/boundary conditions and output conventions must be pinned"},
+    {"primitive":"ocean residual surface support + age-derived thermal/isostatic component", "specialist":"explicit combination/materialization adapter", "derived":"complete ocean elevation field", "qualification":"component separation and total-field provider remain a design gap"},
+    {"primitive":"physical crust-domain thickness template", "specialist":"support-aware ARCANA domain-to-grid/FEG adapter", "derived":"crust thickness field", "qualification":"adapter is a projection, not inferred physical authority"},
+    {"primitive":"continental domain thermal profiles", "specialist":"selected documented continental geotherm model", "derived":"temperature profile, heat flow, thermal thickness", "qualification":"select and pin specialist/provider in next design stage"},
+    {"primitive":"generated temperature profile + conductivity", "specialist":"validated specialist or constitutive field adapter", "derived":"conductive heat-flow field", "qualification":"sign, normal, units and support validated"},
+    {"primitive":"all primitive fields + numerical mesh policy", "specialist":"OrbData5/SHELLS adapters", "derived":"FEG-ready nodal state and solver configuration", "qualification":"configuration and mesh/BC interface blockers remain; engine not run"}
+  ],
+  "model_configuration_dependencies": {
+    "separate_from_world_history":true,
+    "families":["reference crust/mantle/asthenosphere/water density parameters", "thermal conductivity, expansivity, heat capacity, heat production and boundary/profile parameters", "rheology law and parameters", "solver/material group configuration", "mesh and BC numerical controls"],
+    "links_to_primitives":["material reference family constrains crust-domain density/thickness and thermal expansion", "thermal coefficients/heat production condition age/geotherm materialization", "gMean maps only after exact ShellSet convention check and uses canonical R6 baseline", "mean mantle density > mean crust density and applicable fault-friction ordering retained from pinned ShellSet source"],
+    "values_selected":false
+  },
+  "remaining_authorial_choices":[
+    "ocean basin/domain support and the portion represented as thermal/isostatic versus residual relief",
+    "whether optional ridge chronology is used to generate the oceanic age field",
+    "physical crustal domain boundaries and template family; labels must have physical meaning",
+    "ocean-age ensemble family and support resolution",
+    "continental structural-domain support and thermal-state family",
+    "per-primitive provenance, uncertainty, correlation scale and ensemble lineage"
+  ],
+  "remaining_scientific_gaps":[
+    "no validated project-bound generator currently materializes complete ARCANA ocean bathymetry including nonthermal relief",
+    "no ARCANA-authorized physical crust thickness family or numerical range is selected",
+    "exact cooling/geotherm model, version, parameter values and adapter contracts remain unpinned",
+    "GWB/OrbData5/ShellSet exact version input/output compatibility remains unqualified",
+    "mesh, reference frame, .bcs node/fault/junction policy remains outside this primitive stage"
+  ],
+  "counts": {
+    "parent_primitive_families":4,
+    "primitive_families_eliminated_by_scientific_derivation":0,
+    "final_independent_authorial_primitive_families":4,
+    "specialist_generated_downstream_field_families":5,
+    "range_constrained_primitives":4,
+    "ensemble_recommended_primitives":4,
+    "direct_full_field_authorial_primitives":0,
+    "remaining_provider_gaps":2,
+    "remaining_scientific_transformation_gaps":2,
+    "counting_note":"Families are counted, not scalar parameters or output rasters. Provider gaps are total ocean surface assembly and pinned continental model/provider adapter. Transformation gaps are complete nonthermal ocean relief treatment and the exact selected physical structure/geotherm transformations. Age removes ridge chronology as a redundant required primitive, not one of the four parent families."
+  },
+  "next_stage": {
+    "name":"INTEGRATED_T0_MATERIALIZATION_SHELLSET_CONFIGURATION_AND_ADAPTER_DESIGN",
+    "authorized_by_this_report":"design only; no numerical T0 field selection/materialization and no engine qualification",
+    "required_work":["select primitive schemas/domains and range/ensemble definitions", "select/pin specialist model and versions for cooling, geotherms and field projection", "define total ocean-surface support composition and provenance", "define crust template materialization", "bind model configuration ranges and mesh/BC adapter invariants", "prepare runtime manifest"],
+    "shellset_runtime_qualification_authorized":false,
+    "first_interval_authorized":false
+  },
+  "validation_boundary": {
+    "parent_decision_verified":"R6_SHELLSET_PRERUNTIME_INPUTS_PARTIAL__AUTHORIAL_PRIMITIVES_REMAIN",
+    "source_scope":"source/document review only; no ShellSet, OrbData, SHELLS, GWB, ASPECT, BurnMan, Perple_X or heavy model executed",
+    "canonical_mutation":false,
+    "bootstrap_identity_expected":"27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf"
+  }
+}
