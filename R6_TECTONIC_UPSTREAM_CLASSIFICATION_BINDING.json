@@ -1,0 +1,251 @@
+{
+  "artifact": "R6_TECTONIC_UPSTREAM_CLASSIFICATION_BINDING",
+  "schema_version": "1.0.0",
+  "branch": "r6/tectonic-upstream-classification-binding",
+  "parent_artifact": "R6_TECTONIC_AUTHORIAL_INITIAL_STATE_ADJUDICATION.json",
+  "parent_commit": "10a1c5bbff4c13e99d2387d6f633e87c0337e5bf",
+  "decision": "R6_TECTONIC_UPSTREAM_CLASSIFICATION_PARTIAL__THERMODYNAMIC_BINDING_REMAINS",
+  "authority_scope": "CAPABILITY_AND_AUTHORITY_RECONCILIATION_ONLY",
+  "runtime_qualification_authorized": false,
+  "first_interval_authorized": false,
+  "forward_simulation_authorized": false,
+  "canonical_state_modified": false,
+  "historical_bootstrap_modified": false,
+  "numeric_physical_values_selected": false,
+  "scientific_engines_executed": false,
+  "preserved_canonical_invariants": {
+    "time_ma": 210,
+    "state_id": "r6state_1d36fb90cd23443407ce6c63611a65b74c5a9157bd89b1c6cec449d9b927f2d9",
+    "physical_payload_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "plates": 12,
+    "faces": 64800,
+    "boundaries": 1983,
+    "junctions": 20,
+    "historical_bootstrap": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf"
+  },
+  "parent_gaps": [
+    {
+      "gap_id": "CRUSTAL_TYPE_AUTHORITY_GAP",
+      "parent_description": "No physical authority for crust/material classes; land/ocean-derived crust_class is insufficient to specify lithology or properties.",
+      "coverage": {
+        "actually_required": true,
+        "required_by": ["Material-aware thermal/property generation", "Any selected class-conditioned ShellSet parameter grouping"],
+        "can_be_removed": false,
+        "canonical_ARCANA_source": "R6 crust_class and land/ocean mask are only geographic proxies; neither establishes physical composition.",
+        "specialist_candidate": ["Perple_X", "BurnMan"],
+        "specialist_inputs": ["Authoritatively defined bulk composition or mineral assemblage", "Model/database selection", "Pressure and temperature if properties are evaluated at P/T"],
+        "authorial_semantics_needed": ["A physical crustal material/composition family and the scope over which it applies; no family registry or values selected here."],
+        "derived_output": ["Phase/mineral state, density and other material properties conditional on the selected specialist and inputs"],
+        "authority_class": "AUTHORIAL_MATERIAL_SEMANTICS_PLUS_SPECIALIST_DERIVED_PROPERTIES",
+        "remaining_blocker": "ARCANA material semantics, composition representation, specialist role and their provenance are not bound.",
+        "evidence": ["Parent adjudication independent_authorial_primitives.CRUSTAL_MATERIAL_CLASS_AND_PROPERTIES", "Perple_X and BurnMan official documentation cited in sources"]
+      }
+    },
+    {
+      "gap_id": "TECTONIC_PROCESS_CLASSIFICATION_GAP",
+      "parent_description": "Ridge/subduction and related feature labels may be required for optional GWB thermal feature generation or explicit fault/slab mechanics, but need is workflow-dependent.",
+      "coverage": {
+        "actually_required": false,
+        "required_by": ["Optional GWB half-space cooling or subducting-plate features", "An explicitly selected fault/slab refinement that consumes those labels"],
+        "can_be_removed": true,
+        "canonical_ARCANA_source": "Canonical boundary segments, plate adjacency, kinematic-demand edges and junction identities exist; these do not encode process classifications.",
+        "specialist_candidate": "None required by the minimum connected continuum ShellSet path; GPlates/pyGPlates stores supplied feature classes but does not infer them.",
+        "specialist_inputs": ["If optional workflow selected: authoritatively supplied feature geometry, type, polarity/parameters required by that workflow"],
+        "authorial_semantics_needed": ["None globally for the minimum continuum path; only the narrowly scoped feature semantics demanded by a later chosen GWB/fault/slab workflow."],
+        "derived_output": ["ShellSet-predicted velocity, strain and mechanical response; feature-specific thermal fields only if an optional feature model is chosen"],
+        "authority_class": "NOT_A_MINIMUM_UPSTREAM_CLASSIFICATION__DEFERRED_HIGH_FIDELITY_SEMANTIC",
+        "remaining_blocker": "No blocker for the minimum path. Optional GWB/fault/slab workflows remain unbound and must not be inferred from convergence/divergence alone.",
+        "evidence": ["ShellSet paper and source archive: connected continuum mechanics; fault elements/refinements are optional", "GPlates feature creation documentation states feature type/geometry are selected by the user"]
+      }
+    },
+    {
+      "gap_id": "THERMAL_DENSITY_MAPPING_GAP",
+      "parent_description": "No bound material equation-of-state/property mapping from composition to density; thermal inputs and pressure route are also incomplete.",
+      "coverage": {
+        "actually_required": true,
+        "required_by": ["Material density/thermoelastic properties when the selected ShellSet/OrbData materialization requires them", "Material-aware thermal/thickness derivation"],
+        "can_be_removed": false,
+        "canonical_ARCANA_source": "No complete authoritatively bound T0 composition, mineral assemblage, P/T field or density mapping is present in the parent.",
+        "specialist_candidate": ["BurnMan for properties of specified mineral assemblages at P/T", "Perple_X for equilibrium phase assemblage/properties from bulk composition under a selected thermodynamic database and P/T"],
+        "specialist_inputs": ["Composition/assemblage", "P/T or pressure path", "EOS/database and solution model", "Versioned data and model provenance"],
+        "authorial_semantics_needed": ["Material/composition semantics and a thermal initialization primitive/model; values and model choices remain unset."],
+        "derived_output": ["Model-derived density and potentially thermoelastic/thermal properties; density need not be an independent authored raster after binding."],
+        "authority_class": "SPECIALIST_CAPABILITY_ESTABLISHED__ARCANA_BINDING_AND_PRESSURE_PATH_UNRESOLVED",
+        "remaining_blocker": "No selected specialist path or established pressure input/closure is bound to ARCANA. Density-pressure feedback must be resolved by a documented specialist workflow, not custom ARCANA physics.",
+        "evidence": ["Official BurnMan documentation and repository", "Official Perple_X documentation and thermodynamic data documentation"]
+      }
+    }
+  ],
+  "coverage_counts": {
+    "parent_upstream_gaps": 3,
+    "gaps_eliminated_as_unnecessary": 1,
+    "gaps_closed_by_existing_specialist_capability": 0,
+    "gaps_reduced_to_smaller_authorial_primitives": 1,
+    "irreducible_authorial_semantics": 1,
+    "remaining_provider_tool_gaps": 1,
+    "remaining_classification_gaps": 1
+  },
+  "minimum_required_semantics": {
+    "crustal_material": "An explicit physical bulk composition/material family (and scope) is a legitimate minimal authorial primitive; land/ocean labels are not enough. Do not author density or phase-state independently when derived by the selected material specialist.",
+    "tectonic_process": "No global ridge/subduction/collision/transform classification is required for the minimum connected-continuum ShellSet mechanics path based on reviewed evidence.",
+    "thermal_initialization": "An explicitly selected thermal model family and its driving boundary/material inputs are required; no model, parameter, or value is selected in this report.",
+    "elevation": "Complete modeled surface elevation support remains a legitimate independent world-geometry primitive; canonical land elevation is retained, ocean support remains unresolved.",
+    "rheology": "Specialist model configuration, separate from WORLD_HISTORY state; no parameters selected. Material classes may later inform grouping but do not determine rheology automatically."
+  },
+  "crustal_material_requirements": {
+    "minimum_authorial_input": "Physical bulk composition/material family semantics, with explicit spatial scope and provenance.",
+    "not_sufficient": ["land/ocean category", "province label without physical composition", "plate identity", "boundary convergence/divergence"],
+    "not_independently_authored_when_derivable": ["density", "phase proportions", "thermoelastic properties"],
+    "no_classes_or_values_selected": true
+  },
+  "material_class_vs_property_analysis": {
+    "material_class": "Authorial semantic describing composition/assemblage family and where it applies.",
+    "material_properties": "Specialist-derived outputs conditional on material class, P/T, EOS/database and solution models.",
+    "density_authority_flow": ["AUTHORIAL_OR_CANONICAL_COMPOSITION", "CANONICAL_OR_SPECIALIST_BOUND_P_T", "THERMODYNAMIC_SPECIALIST", "MODEL_DERIVED_DENSITY", "ShellSet_OR_OrbData_adapter"],
+    "density_independent_authorial_field": false,
+    "binding_complete": false
+  },
+  "composition_density_specialists": {
+    "Perple_X": {
+      "role": "Phase-equilibrium petrology from bulk composition and selected thermodynamic database/solution models; can provide equilibrium phase assemblages and aggregate properties including volume/density under P-T conditions.",
+      "inputs": ["Bulk composition expressible in database components", "Thermodynamic data and solution models", "Pressure and temperature conditions/path"],
+      "outputs": ["Stable phase assemblage/fractions and aggregate thermodynamic properties, subject to chosen models"],
+      "integration": "Fortran program suite, principally configured/file-driven workflows; no official Python API identified in audited documentation. Batch orchestration would require controlled input/output adapters.",
+      "license_runtime": "Current license/integration terms require verification against the selected release. Official site documents platform executables and source/build workflow; source availability alone is not a license determination.",
+      "execution_status": "NOT_EXECUTED"
+    },
+    "BurnMan": {
+      "role": "Thermoelastic/mineral-physics property evaluation for specified mineral/endmember/solution assemblages; phase-equilibrium tools exist when the phase/reaction system is configured.",
+      "inputs": ["Mineral/endmember and solution/composite definitions", "Composition/assemblage", "EOS parameters and datasets", "Pressure in Pa and temperature in K"],
+      "outputs": ["Density/volume and thermoelastic properties conditional on the selected EOS and material model"],
+      "integration": "Python library; repeatable point/profile evaluation can be orchestrated in Python, subject to pinned versions/data and reproducibility controls.",
+      "license_runtime": "Official repository/docs identify GPL-2.0-or-later. Runtime/data dependencies and compatible license review remain necessary before integration.",
+      "execution_status": "NOT_EXECUTED"
+    },
+    "role_decision": "Do not select one winner yet. If equilibrium phase petrology from bulk composition is required, Perple_X is the more direct capability class. If an authoritatively specified assemblage is sufficient and only its P/T-dependent physical properties are needed, BurnMan may provide the simpler Python integration. ARCANA's need for phase-equilibrium petrology has not been established."
+  },
+  "pressure_dependency": {
+    "required": true,
+    "status": "UNBOUND",
+    "potential_sources": ["An established lithostatic/hydrostatic initialization workflow using depth, gravity and material density", "A specialist structure model that provides pressure consistently with its layer assumptions"],
+    "circularity": "If density depends on pressure while pressure is computed from overlying density, density→pressure→density coupling exists. No iteration scheme or solver is authorized here.",
+    "decision": "Do not implement a custom ARCANA pressure solver. Bind a documented specialist workflow and state its assumptions before material-property execution.",
+    "shellset_orbdata_closure_verified": false
+  },
+  "tectonic_process_requirements": {
+    "minimum_shellset_path_requires_global_process_labels": false,
+    "boundary_geometry": "The connected continuum domain/mesh is a mechanics representation; reviewed ShellSet evidence does not require every boundary be pre-labeled ridge, subduction, collision or transform.",
+    "fault_information": {
+      "fault_location": "Optional refinement if explicit fault elements are selected; not established as globally mandatory for continuum mechanics.",
+      "fault_dip": "Conditional on selected fault element representation.",
+      "fault_class": "Not a generic mandatory continuum input; feature-specific class only for selected workflows.",
+      "slip_sense": "Not required as authored global process label; solver outputs slip/velocity where modeled.",
+      "subduction_polarity": "Optional GWB slab/subduction or explicit subduction/fault refinement; DEFERRED_HIGH_FIDELITY_SEMANTIC.",
+      "friction": "Specialist fault/rheology parameter if a fault workflow is selected; not selected here."
+    },
+    "classification_specialist": "No mature general classifier is bound or required for the minimum path. Do not derive process labels from canonical kinematic convergence/divergence alone.",
+    "status": "PROCESS_GAP_REMOVED_FROM_MINIMUM_PATH__OPTIONAL_FEATURE_SEMANTICS_DEFERRED"
+  },
+  "gplates_representation_capabilities": {
+    "can_represent": ["MidOceanRidge", "SubductionZone", "fault-related features", "topological plate boundaries and other typed features supported by the GPlates feature model"],
+    "classification_or_inference": false,
+    "authority_rule": "Feature type and geometry are supplied/selected by an author or upstream authority; representability does not establish that ARCANA boundaries have that meaning.",
+    "pygplates_role": "Geometric/topological representation and reconstruction tooling; no tectonic process inference asserted."
+  },
+  "shellset_preclassification_requirements": {
+    "continuous_domain": "Connected continuum mesh and its mechanical/material inputs are the minimum mechanics representation in the audited workflow.",
+    "global_boundary_taxonomy": "Not required by reviewed minimum continuum path.",
+    "fault_elements": "Optional refinement; selected geometry and conditional attributes are needed only if included.",
+    "outputs_not_inputs": ["velocity", "strain", "fault slip predictions"],
+    "qualification": "This capability audit does not establish runtime compatibility or that the unresolved .bcs interface/junction behavior is satisfied."
+  },
+  "gwb_semantic_requirements": {
+    "required_for_minimum_shellset": false,
+    "role": "Optional feature-driven temperature/composition/topography materialization.",
+    "examples_requiring_authorized_features": ["Oceanic half-space cooling requires ridge geometry and spreading information", "Subducting-plate feature requires its geometry, dip/polarity and model parameters"],
+    "authority_rule": "GWB consumes supplied feature semantics; it does not authorize or infer them.",
+    "decision": "GWB is not necessary for the minimum ShellSet path on current evidence."
+  },
+  "orbdata_derivations": {
+    "can_reduce": ["crust thickness", "mantle-lithosphere thickness", "FEG nodal physical structure"],
+    "conditional_inputs": ["FEG mesh", "elevation and/or selected source data", "heat-flow/geotherm or seismic thickness path", "density/material and local-isostasy assumptions"],
+    "transformation": "Selected OrbData5 local-isostasy/steady-state-geotherm workflow or seismic layer-thickness input → nodal crust and mantle-lithosphere thickness; no universal derivation identity.",
+    "authority": "Specialist-derived only after source/mode, assumptions, input provenance, projection and uncertainty are bound.",
+    "earth_data_required": "Not necessarily: an algorithmic path may use synthetic authorized inputs, but ARCANA has not bound those inputs or the OrbData adapter contract.",
+    "execution_status": "NOT_EXECUTED"
+  },
+  "thermal_reduction": {
+    "surface_heat_flow": "Can be derived from a temperature gradient and conductivity through Fourier conduction, or supplied as a model boundary/input in selected workflows. Neither a complete T0 temperature field nor conductivity authority/path is currently bound.",
+    "temperature": "May be generated by OrbData/GWB or another selected thermal specialist from a small parameter/feature set; this report does not select a model or values.",
+    "pressure_and_density": "Thermal/mineral properties may require P/T and material models; pressure route remains unbound.",
+    "custom_arcana_thermal_physics": false
+  },
+  "elevation_status": {
+    "independent_primitive": true,
+    "canonical_authority": "Existing canonical land elevation is retained.",
+    "unresolved": "Ocean elevation/bathymetry support is incomplete/unknown.",
+    "derivation": "Reviewed candidate pipeline does not establish a unique deeper-structure-to-topography derivation. GWB may assign configured feature topography but does not infer it from ARCANA state.",
+    "status": "IRREDUCIBLE_WORLD_GEOMETRY_PRIMITIVE__PARTIALLY_CANONICAL"
+  },
+  "rheology_dependency": {
+    "world_history_state": false,
+    "separate_specialist_model_configuration": true,
+    "values_selected": false,
+    "material_class_effect": "Authorized material classes may later justify element-group mapping; classes do not uniquely determine rheology and no per-plate grouping is implied.",
+    "solver_defaults": "Do not promote examples/Earth defaults; pinned SHELLS source and parameter contract must be audited before binding."
+  },
+  "minimum_upstream_state": [
+    {"primitive": "SURFACE_ELEVATION_SUPPORT", "status": "PARTIALLY_CANONICAL", "missing_support": "Ocean surface support."},
+    {"primitive": "CRUSTAL_MATERIAL_COMPOSITION_FAMILY", "status": "AUTHORIAL_SEMANTICS_REQUIRED", "missing_support": "Physical composition/material family and spatial scope."},
+    {"primitive": "THERMAL_INITIALIZATION_MODEL_AND_BOUNDARY_INPUTS", "status": "AUTHORIAL_MODEL_CONSTRAINTS_REQUIRED", "missing_support": "Selected model family and its minimal boundary/material parameterization."},
+    {"primitive": "RHEOLOGY_MODEL_CONFIGURATION", "status": "SEPARATE_SPECIALIST_CONFIGURATION", "missing_support": "Later pinned ShellSet law parameter contract; not WORLD_HISTORY state."}
+  ],
+  "authority_graph": [
+    {"from": "Canonical land elevation + authorial ocean surface support", "to": "Complete elevation field", "model": "No unique derivation bound; preserve canonical land and explicitly initialize remaining support", "assumptions": "Datum/support and projection must be declared", "provenance_uncertainty": "Canonical hashes plus authorial source and uncertainty record", "support_transformation": "Map to selected FEG mesh nodes"},
+    {"from": "Authorial material/composition family + P/T + versioned thermo database/EOS", "to": "Density and material properties", "model": "BurnMan for specified assemblage properties or Perple_X for phase equilibrium, conditional on actual requirement", "assumptions": "Phase/solution model, EOS, database, P/T and pressure closure", "provenance_uncertainty": "Pin specialist/data versions and propagate input/model uncertainty", "support_transformation": "Material support to FEG nodes/layers with documented projection"},
+    {"from": "Elevation + authorized heat-flow/geotherm/material or seismic inputs", "to": "Crust and mantle-lithosphere thickness", "model": "OrbData5 selected local-isostasy/geotherm or seismic-data path", "assumptions": "Mode, density/material assumptions and source quality", "provenance_uncertainty": "Record source hashes, mode and propagated uncertainty", "support_transformation": "Specialist output mapped to FEG nodes"},
+    {"from": "Thermal model primitives and any explicitly authorized feature semantics", "to": "Temperature/composition/heat-flow fields", "model": "Selected OrbData/GWB/thermal specialist; Fourier relation only where required and fully parameterized", "assumptions": "Boundary conditions, conductivity and feature semantics as applicable", "provenance_uncertainty": "Model/version and parameter provenance; uncertainty propagation", "support_transformation": "Specialist grid/profile to FEG node/layer adapter"},
+    {"from": "Connected continuum mechanics mesh + authorized fields + separate rheology configuration", "to": "Velocity, strain and mechanical response", "model": "SHELLS/ShellSet specialist solver", "assumptions": "Later interface, boundary conditions and numerical qualification", "provenance_uncertainty": "Engine/version, inputs and solver diagnostics", "support_transformation": "FEG mesh contract; runtime qualification not authorized here"}
+  ],
+  "remaining_gaps": [
+    "Thermodynamic specialist binding, including composition/assemblage choice and pressure pathway.",
+    "Authorial physical crust/material composition semantics and spatial scope.",
+    "Thermal model family and minimal boundary/material parameterization.",
+    "Ocean elevation support.",
+    "OrbData/ShellSet adapter, .bcs contract, and connected-domain/junction qualification.",
+    "Exact ShellSet rheology parameter contract and later specialist configuration."
+  ],
+  "next_stage": "Bind the composition/material semantics to a justified Perple_X or BurnMan role and an established pressure/P-T workflow. Keep process labels deferred unless a specifically selected optional GWB/fault/slab path requires them; do not proceed to engine runtime qualification or first interval.",
+  "source_references": [
+    {"topic": "ShellSet/SHELLS roles and mechanics", "url": "https://gmd.copernicus.org/articles/17/6153/2024/gmd-17-6153-2024.html"},
+    {"topic": "ShellSet source archive", "url": "https://datadryad.org/dataset/doi:10.5061/dryad.cnp5hqcjb"},
+    {"topic": "Perple_X official site", "url": "https://perplex.ethz.ch/"},
+    {"topic": "Perple_X documentation", "url": "https://perplex.ethz.ch/perplex_documentation.html"},
+    {"topic": "Perple_X thermodynamic data requirements", "url": "https://www.perplex.ethz.ch/perplex_thermodynamic_data_file_body.html"},
+    {"topic": "Perple_X thermodynamic data file contents", "url": "https://www.perplex.ethz.ch/perplex_thermodynamic_data_file_contents.html"},
+    {"topic": "Perple_X installation/release workflow", "url": "https://www.perplex.ethz.ch/perple_x_installation/perple_x_installation.html"},
+    {"topic": "BurnMan repository/license", "url": "https://github.com/geodynamics/burnman"},
+    {"topic": "BurnMan thermodynamic background", "url": "https://burnman.readthedocs.io/en/stable/background.html"},
+    {"topic": "BurnMan Composition API", "url": "https://burnman.readthedocs.io/en/latest/api_compositions.html"},
+    {"topic": "BurnMan equation-of-state API", "url": "https://burnman.readthedocs.io/en/latest/autogenerated/api_eos.html"},
+    {"topic": "GPlates feature model", "url": "https://www.gplates.org/docs/gpgim/"},
+    {"topic": "GPlates feature authoring responsibility", "url": "https://www-old.gplates.org/user-manual/Creating_Features.html"},
+    {"topic": "pyGPlates common feature query example", "url": "https://www.gplates.org/docs/pygplates/sample-code/pygplates_query_common_feature_types"}
+  ],
+  "validation": {
+    "parent_decision_checked": true,
+    "exact_parent_gap_list_checked": true,
+    "no_t0_mutation": true,
+    "no_new_future_state": true,
+    "no_engine_execution": true,
+    "no_numeric_physical_values_selected": true,
+    "historical_bootstrap_unchanged": true,
+    "json_parse": "PASS",
+    "git_diff_check": "PASS_FOR_AUTHORED_CONTENT__WHITESPACE_CHECKED_DIRECTLY_BECAUSE_FILES_ARE_UNTRACKED",
+    "staging": "BLOCKED__GIT_INDEX_LOCK_PERMISSION_DENIED__NOT_RETRIED",
+    "commit_created": false,
+    "push_performed": false
+  }
+}
