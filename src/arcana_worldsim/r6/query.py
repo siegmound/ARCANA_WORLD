@@ -21,7 +21,7 @@ class HistoryQueryService:
         self._store = store
 
     def state_at(self, *, history_id: str, branch_id: str, domain: str,
-                 time_key: str, cell_id: str) -> QueryResult:
+                 time_key: str, cell_id: str | None = None) -> QueryResult:
         all_domain = self._store.find_states(history_id=history_id, branch_id=branch_id,
                                              domain=domain)
         if not all_domain:

@@ -11,6 +11,7 @@ class Availability(str, Enum):
     SOFTWARE_INTERFACE_ONLY = "SOFTWARE_INTERFACE_ONLY"
     NOT_MATERIALIZED = "NOT_MATERIALIZED"
     UNKNOWN = "UNKNOWN"
+    CANONICAL_T0_BOUND = "CANONICAL_T0_BOUND"
 
 
 class BindingStatus(str, Enum):
@@ -19,6 +20,7 @@ class BindingStatus(str, Enum):
     IMPORT_BOUNDARY_ONLY = "IMPORT_BOUNDARY_ONLY"
     INTERFACE_FROZEN_INPUT_GAPS = "INTERFACE_FROZEN_INPUT_GAPS"
     CANDIDATE_NOT_AUTHORIZED = "CANDIDATE_NOT_AUTHORIZED"
+    T0_BOUND_FORWARD_BLOCKED = "T0_BOUND_FORWARD_BLOCKED"
 
 
 class RetentionClass(str, Enum):
@@ -53,6 +55,10 @@ class DomainDescriptor:
     authority_status: str
     query_available: bool
     refinement_eligible: bool
+    authority_refs: tuple[str, ...] = ()
+    satisfied_dependencies: tuple[str, ...] = ()
+    unknown_dependencies: tuple[str, ...] = ()
+    forward_execution_authorized: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -103,7 +109,21 @@ def _domain(domain_id: str, *, dependencies: tuple[str, ...] = (),
 
 
 DOMAIN_REGISTRY: tuple[DomainDescriptor, ...] = (
-    _domain("physical_world", binding=BindingStatus.CANDIDATE_NOT_AUTHORIZED),
+    DomainDescriptor(
+        "physical_world", "PHYSICAL_HISTORY", (), Availability.CANONICAL_T0_BOUND,
+        BindingStatus.T0_BOUND_FORWARD_BLOCKED,
+        "CANONICAL_SYNTHETIC_T0_BOUND__FORWARD_EXECUTION_BLOCKED", True, True,
+        authority_refs=("R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json",
+                        "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+                        "R6_T0_INITIAL_KINEMATICS_MANIFEST.json"),
+        satisfied_dependencies=("canonical_initial_physical_geography",
+                                "canonical_vector_plate_partition",
+                                "canonical_initial_kinematics"),
+        unknown_dependencies=("positive_partition_preserving_contact_transition",
+                              "junction_compatible_boundary_accommodation",
+                              "production_numerical_acceptance_tolerances"),
+        forward_execution_authorized=False,
+    ),
     _domain("climate", dependencies=("physical_world",),
             binding=BindingStatus.ADAPTER_PRESENT_UNBOUND),
     _domain("hydrology_freshwater", dependencies=("physical_world", "climate"),
