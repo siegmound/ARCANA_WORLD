@@ -1,0 +1,265 @@
+{
+  "artifact": "R6_SHELLSET_MINIMUM_THERMOMECHANICAL_STATE_CONTRACT",
+  "schema_version": "1.1.0",
+  "branch": "r6/shellset-minimum-state-contract",
+  "head_at_authoring": "a4021ef39e3fd109d85b1fa979f6a05755ae006d",
+  "parent_artifact": "R6_TECTONIC_THERMODYNAMIC_BINDING.json",
+  "parent_decision": "R6_TECTONIC_THERMODYNAMIC_BINDING_PARTIAL__PRESSURE_COUPLING_REMAINS",
+  "decision": "R6_SHELLSET_MINIMUM_STATE_CONTRACT_PARTIAL__REFERENCE_MATERIAL_PARAMETERS_REMAIN",
+  "scope": "SOURCE_GROUNDED_MINIMUM_INPUT_CONTRACT_AND_AUTHORITY_RECONCILIATION",
+  "evidence_basis": {
+    "official_repository": "https://github.com/JonBMay/ShellSet",
+    "official_source_files": [
+      "https://github.com/JonBMay/ShellSet/blob/main/src/MOD_Data.f90",
+      "https://github.com/JonBMay/ShellSet/blob/main/src/OrbData5.f90",
+      "https://github.com/JonBMay/ShellSet/blob/main/src/SHELLS_v5.0.f90",
+      "https://github.com/JonBMay/ShellSet/blob/main/src/MOD_ShellSet.f90",
+      "https://github.com/JonBMay/ShellSet/blob/main/INPUT/iEarth5-049.in"
+    ],
+    "source_trace": "Source findings supplied in the user's source-level reconciliation and attributed to the named official files; the prior session's direct fetch limitation is not treated as a scientific blocker. The published paper independently corroborates component roles and OrbData thickness/anomaly behavior.",
+    "cross_check_sources": [
+      "https://gmd.copernicus.org/articles/17/6153/2024/gmd-17-6153-2024.html",
+      "https://egusphere.copernicus.org/preprints/2023/egusphere-2023-1164/",
+      "https://datadryad.org/dataset/doi:10.5061/dryad.cnp5hqcjb"
+    ],
+    "source_body_locally_vendored": false
+  },
+  "runtime_qualification_authorized": false,
+  "first_interval_authorized": false,
+  "forward_evolution": false,
+  "scientific_engines_executed": false,
+  "canonical_t0_mutated": false,
+  "historical_bootstrap_modified": false,
+  "numeric_physical_values_selected": false,
+  "canonical_invariants": {
+    "t0_ma": 210,
+    "plates": 12,
+    "parent_faces": 64800,
+    "shared_boundary_segments": 1983,
+    "adjacent_plate_pairs": 30,
+    "degree3_junctions": 20,
+    "canonical_branches": 30,
+    "canonical_sections": 30,
+    "convergent_kinematic_demand_edges": 1091,
+    "divergent_kinematic_demand_edges": 892,
+    "historical_bootstrap_sha256": "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf"
+  },
+  "parent_pressure_gap": {
+    "parent_decision": "R6_TECTONIC_THERMODYNAMIC_BINDING_PARTIAL__PRESSURE_COUPLING_REMAINS",
+    "prior_blockers": [
+      "density/anomaly crosswalk",
+      "thermal/geotherm input binding",
+      "lateral pressure-consistent material density"
+    ],
+    "pressure_coupling_classification": "NOT_REQUIRED_FOR_MINIMUM_PATH",
+    "external_absolute_pressure_field_required": false,
+    "external_eos_density_required": false,
+    "status": "SUPERSEDED_BRANCH_SPECIFIC_BLOCKER",
+    "provenance": "The parent explored BurnMan/Perple_X P-rho-g closure because external EOS-derived density was considered. The inspected OrbData/SHELLS path instead uses reference material parameters, temperature-dependent correction, chemical anomaly and an internally built reference-pressure/stress column. Preserve parent history; remove external P-rho-g from the active minimum blocker chain."
+  },
+  "orbdata_owned_quantities": {
+    "derived_or_assigned_node_state": [
+      {"quantity": "surface_elevation", "path": "OrbData can fill/assign from selected input data; source-specific inputs required", "category": "ORBDATA_DERIVED_FIELD"},
+      {"quantity": "surface_heat_flow", "path": "preserve nonzero nodal input; otherwise obtain from configured input data; oceanic path may use seafloor age", "category": "ORBDATA_DERIVED_FIELD_OR_PRESERVED_INPUT"},
+      {"quantity": "crustal_thickness", "path": "read from an upstream grid in current Assign path; not solved from isostasy by current OrbData5", "category": "UPSTREAM_REQUIRED_FIELD"},
+      {"quantity": "mantle_lithosphere_thickness", "path": "derived from seafloor age for ocean path or vertical S-wave travel-time anomaly under continents, subject to selected source path", "category": "ORBDATA_DERIVED_FIELD_CONDITIONAL_ON_UPSTREAM_DATA"},
+      {"quantity": "chemical_delta_rho", "path": "node-wise effective chemical density adjustment used as a degree of freedom in constructing an isostatically consistent structure; bounded by source-configured limit", "category": "ORBDATA_ASSIGNED_OR_ADJUSTED_FIELD"},
+      {"quantity": "cooling_curvature", "path": "node-wise non-steady geotherm curvature used as an additional structure degree of freedom", "category": "ORBDATA_ASSIGNED_OR_ADJUSTED_FIELD"}
+    ],
+    "does_not_do_in_current_assign_path": [
+      "does not solve crustal thickness from isostasy",
+      "does not derive a synthetic ARCANA age or seismic anomaly primitive"
+    ],
+    "distinction": "These nodal quantities are separated from OrbData's upstream grids/inputs and from global Shells model parameters. Exact input datasets and selected method remain workflow-dependent."
+  },
+  "shells_consumed_nodal_state": {
+    "minimum_node_fields": [
+      {"name": "elevation", "source": "input or OrbData fill", "classification": "WORLD_HISTORY_PHYSICAL_STATE / ORBDATA_DERIVED_FIELD", "role": "surface datum, depth and lithosphere structure"},
+      {"name": "heat_flow", "source": "preserved nodal field or configured OrbData data path", "classification": "WORLD_HISTORY_PHYSICAL_STATE / ORBDATA_DERIVED_FIELD", "role": "thermal structure"},
+      {"name": "crustal_thickness", "source": "upstream grid read by current OrbData5 Assign", "classification": "WORLD_HISTORY_PHYSICAL_STATE", "role": "layer geometry and density/stress column"},
+      {"name": "mantle_lithosphere_thickness", "source": "OrbData age or seismic-anomaly path, or prescribed equivalent input", "classification": "WORLD_HISTORY_PHYSICAL_STATE / ORBDATA_DERIVED_FIELD", "role": "layer geometry and density/stress column"},
+      {"name": "chemical_delta_rho", "source": "OrbData assigned/adjusted field", "classification": "ORBDATA_DERIVED_FIELD", "role": "effective chemical-density correction for structural/isostatic consistency"},
+      {"name": "cooling_curvature", "source": "OrbData assigned/adjusted field", "classification": "ORBDATA_DERIVED_FIELD", "role": "local non-steady thermal/geotherm correction"}
+    ],
+    "no_external_nodal_fields_required": ["absolute lithostatic pressure", "3-D gravity", "EOS absolute density", "mineral phase fractions"],
+    "direct_consumption_note": "The modified FEG contains the nodal state produced/preserved by OrbData; Shells also consumes global material and rheology parameters. This report distinguishes that nodal state from model configuration."
+  },
+  "density_implementation": {
+    "classification": "SHELLSET_REDUCED_REFERENCE_MATERIAL_THERMAL_AND_CHEMICAL_ANOMALY_MODEL",
+    "conceptual_form": "rho_local = rho_reference * thermal_correction(local_temperature, alphaT, geotherm/depth) + chemical_delta_rho",
+    "source_inputs_to_squeez": [
+      "alphaT",
+      "density anomaly",
+      "elevation",
+      "geotherm coefficients",
+      "gMean",
+      "rhoAst",
+      "rhoBar",
+      "rhoH2O",
+      "crust and mantle layer depths"
+    ],
+    "layer_reference_densities": "rhoBar is separate crustal/mantle reference or mean density under the model's reference thermodynamic conditions; rhoAst is the asthenosphere reference density. They are global specialist physical-model parameters, not lateral WORLD_HISTORY density rasters.",
+    "chemical_delta_rho": "An effective, node-wise lithospheric density correction of chemical origin, adjusted/used by OrbData in the isostatic structural construction and constrained by a configured bound. It is not absolute density(P,T,composition), a mineral assemblage, or a bulk composition.",
+    "external_eos_density_requirement": "EXTERNAL_EOS_NOT_REQUIRED",
+    "composition_requirement": "No bulk composition, mineral assemblage or phase fractions are required by the minimum reduced density semantics described in the source evidence.",
+    "qualification": "Conceptual formula records source-defined term roles; it does not reproduce every code coefficient or interpolation detail. No numeric coefficients or defaults are promoted into ARCANA."
+  },
+  "pressure_requirement": {
+    "external_absolute_pressure_field_required": false,
+    "external_eos_pressure_state_required": false,
+    "external_absolute_density_pressure_coupling_required": false,
+    "internal_reference_pressure": "Squeez constructs a vertical reference-pressure column internally from reference density, surface gravity and depth increments.",
+    "internal_stress_anomaly": "Squeez integrates vertical standardized stress anomaly through the plate and returns tauZZ and sigZZB; Assign checks basal anomaly against its isostatic consistency condition.",
+    "effective_fault_pressure": "Treat friction/fault pressure terms separately from absolute thermodynamic pressure; a fault pressure variable does not imply an external EOS field. Exact coefficients remain specialist configuration.",
+    "result": "NOT_REQUIRED_FOR_MINIMUM_PATH"
+  },
+  "gravity_requirement": {
+    "classification": "GLOBAL_SCALAR_PLANETARY_PARAMETER",
+    "parameter": "gMean",
+    "meaning": "Mean/surface gravitational acceleration used to build the internal reference column in the inspected path.",
+    "laterally_variable_gravity_field_required": false,
+    "external_gravity_solver_required": false,
+    "value_selected": false
+  },
+  "reference_density_semantics": {
+    "rhoBar_crust": "Crust reference/mean material density at the model's reference thermodynamic conditions; specialist physical-model parameter, not a nodal history field.",
+    "rhoBar_mantle": "Mantle-lithosphere reference/mean material density at the model's reference thermodynamic conditions; specialist physical-model parameter, not a nodal history field.",
+    "rhoAst": "Asthenosphere reference density used for the reference/structural column; specialist physical-model parameter.",
+    "lateral_variation": "The reference values are model parameters; lateral local density variation arises through thermal and chemical anomaly terms in the reduced formulation.",
+    "authorial_constraint_remains": true,
+    "values_selected": false,
+    "earth_reference_values_adopted": false
+  },
+  "chemical_density_anomaly_semantics": {
+    "field": "chemical_delta_rho",
+    "support": "node-wise",
+    "role": "effective lithosphere-property correction of chemical origin used in the internal structure/isostasy formulation",
+    "isostatic_consistency": "OrbData uses/adjusts it along with cooling curvature as degrees of freedom when constructing the structure; Assign checks basal stress anomaly consistency.",
+    "bounded": "yes, by a configured source limit; numeric bound is not copied into ARCANA",
+    "mineralogical_composition_required": false,
+    "absolute_eos_density": false
+  },
+  "composition_requirement": {
+    "bulk_chemical_composition_mandatory": false,
+    "mineral_assemblage_mandatory": false,
+    "phase_fractions_mandatory": false,
+    "minimum_material_semantics": ["crust reference properties", "mantle-lithosphere reference properties", "asthenosphere reference density", "thermal properties", "effective node-wise chemical density anomaly"],
+    "categorical_rock_or_crustal_material_ontology": "not required by this minimum ShellSet formulation; do not add unless ARCANA separately chooses it for another specialist"
+  },
+  "thermal_state_contract": {
+    "surface_heat_flow": "nodal value preserved when nonzero, else sourced through configured input data; ocean workflow may use age. Synthetic equivalent upstream primitive/source is not yet bound.",
+    "temperature": "constructed internally from geotherm parameters and depth relative to elevation; not a mandatory authorial temperature raster in the described path.",
+    "surface_temperature": "specialist/model configuration or geotherm reference condition; exact authority/default to bind later",
+    "thermal_conductivity": "specialist thermal/material parameter; value unselected",
+    "alphaT": "global/specialist thermal-expansion parameter used by the density correction; value unselected",
+    "radiogenic_heat_production": "layer-scoped thermal model parameter/input; value unselected",
+    "temperature_limits": "model configuration; exact parameters/defaults require pinned configuration audit",
+    "geotherm_coefficients": "global/model configuration and thermal initialization inputs",
+    "cooling_curvature": "OrbData-derived/adjusted node field, not an independently selected ARCANA cooling law",
+    "classification": "thermal primitives plus specialist configuration; no numerical values are authorized"
+  },
+  "thickness_derivation": {
+    "crustal_thickness": {
+      "current_assign_behavior": "read from upstream grid; current OrbData5 Assign does not solve it from isostasy",
+      "arcana_t0_status": "No valid physical crustal-thickness field is present in the reviewed R6 T0 authority record; T0 currently carries categorical crust/province design only.",
+      "classification": "TRUE_UPSTREAM_AUTHORITY_GAP"
+    },
+    "mantle_lithosphere_thickness": {
+      "ocean_path": "may derive from seafloor age under the selected Earth-oriented path",
+      "continental_path": "may derive from vertical S-wave travel-time anomaly",
+      "synthetic_requirement": "An authorized synthetic lithosphere-age/thermal-state primitive for the oceanic path, or an authorized prescribed thickness/equivalent physical field for the relevant regions; Earth age and seismic grids cannot be copied into ARCANA.",
+      "arcana_t0_status": "No bound physical thickness/age/anomaly field is recorded in the parent initialization audit.",
+      "classification": "TRUE_UPSTREAM_AUTHORITY_GAP"
+    },
+    "isostasy": "Used internally to assess/construct structure with density anomaly and cooling curvature; not a route for generating crustal thickness in current Assign behavior."
+  },
+  "isostasy_ownership": {
+    "classification": "ORBDATA_OWNS_ISOSTATIC_STRUCTURE_ADJUSTMENT_NOT_CRUSTAL_THICKNESS_AUTHORITY",
+    "mechanism": "OrbData uses chemical density anomaly and cooling curvature as degrees of freedom; Squeez builds reference pressure/stress internally; Assign checks basal anomaly consistency.",
+    "arcana_duplicate_isostasy_solver": false
+  },
+  "burnman_disposition": {
+    "minimum_path": "NOT_REQUIRED_FOR_MINIMUM_SHELLSET_PATH",
+    "optional_roles": ["OPTIONAL_REFERENCE_STRUCTURE_TOOL", "OPTIONAL_HIGH_FIDELITY_VALIDATOR", "OPTIONAL_TARGETED_REFINEMENT"],
+    "mandatory_global_specialist": false,
+    "executed": false
+  },
+  "perplex_disposition": {
+    "minimum_path": "NOT_REQUIRED_FOR_MINIMUM_SHELLSET_PATH",
+    "optional_roles": ["OPTIONAL_PETROLOGICAL_REFINEMENT", "OPTIONAL_HIGH_FIDELITY_VALIDATOR", "OPTIONAL_TARGETED_REFINEMENT"],
+    "mandatory_global_specialist": false,
+    "executed": false
+  },
+  "minimum_authorial_state": {
+    "world_history_physical_state": [
+      "T0 elevation/bathymetry with complete nodal support",
+      "crustal-thickness field on the ShellSet mesh",
+      "an authorized mantle-lithosphere thickness source or source primitive: synthetic lithosphere age/thermal state, prescribed thickness, or another authorized equivalent",
+      "surface heat-flow field or synthetic upstream primitives and provenance for the chosen OrbData source path"
+    ],
+    "not_world_history_fields": ["rhoBar crust", "rhoBar mantle", "rhoAst", "gMean", "alphaT", "conductivity", "radiogenic heat production", "rheology law parameters"],
+    "values_selected": false
+  },
+  "model_configuration_parameters": {
+    "planetary_constants": ["gMean"],
+    "reference_material_properties": ["rhoBar crust", "rhoBar mantle", "rhoAst"],
+    "thermal_properties_and_initialization": ["alphaT", "thermal conductivity", "radiogenic heat production", "surface/reference temperature", "temperature limits", "geotherm coefficients"],
+    "isostasy_configuration": ["chemical_delta_rho bound and applicable controls", "cooling-curvature controls"],
+    "rheology_configuration": ["continuum flow-law family and parameters", "fault/friction parameters"],
+    "authority_status": "These are specialist physical-model parameters/configuration requiring later scientific constraints; none are selected or copied from Earth examples."
+  },
+  "world_history_state_parameters": {
+    "fields": ["T0 elevation/bathymetry", "crustal thickness", "mantle-lithosphere thickness or its authorized source primitive", "heat flow or its authorized synthetic source state"],
+    "rule": "Store spatial physical state and its provenance in WORLD_HISTORY; keep solver constants, material reference means, thermal coefficients and rheology in versioned specialist configuration unless a deliberate history-state choice is separately authorized.",
+    "future_state_created": false
+  },
+  "minimum_toolchain": {
+    "production_candidate": ["ARCANA T0", "pyGPlates geometry/topology/plate-side kinematics", "ARCANA-to-OrbData adapter", "OrbData5", "SHELLS", "SHELLS-output normalization/provenance adapter to ARCANA"],
+    "mandatory_eos_specialist": false,
+    "optional_high_fidelity_branch": ["targeted Perple_X/BurnMan or other specialist material/property validation, only if separately justified and authorized"],
+    "custom_arcana_scientific_physics_required": false,
+    "arcana_glue": ["mesh and boundary-condition mapping", "physical input mapping and unit/support validation", "output and provenance normalization", "authority and validation records"]
+  },
+  "counts": {
+    "parent_thermodynamic_blockers": 3,
+    "blockers_eliminated_as_unnecessary": 1,
+    "orbdata_node_field_families_filled_or_derived": 5,
+    "orbdata_node_field_families_preserved_or_read_from_upstream": 2,
+    "direct_shells_nodal_state_families": 6,
+    "remaining_independent_authorial_physical_state_families": 4,
+    "specialist_configuration_families": 6,
+    "optional_high_fidelity_specialist_roles": 6,
+    "true_remaining_blockers": 6
+  },
+  "remaining_blockers": [
+    {"priority": 1, "id": "CRUSTAL_THICKNESS_AUTHORITY", "reason": "R6 T0 has categorical crust/province design, not a physical crust-thickness field; current OrbData5 reads thickness from a grid."},
+    {"priority": 2, "id": "MANTLE_LITHOSPHERE_THICKNESS_AUTHORITY", "reason": "No synthetic age/thermal-state or prescribed equivalent is bound; Earth seafloor-age and continental seismic anomaly datasets are not transferable by default."},
+    {"priority": 3, "id": "COMPLETE_ELEVATION_BATHYMETRY_SUPPORT", "reason": "Canonical land elevation exists but ocean elevation/bathymetry support is incomplete or unknown."},
+    {"priority": 4, "id": "HEAT_FLOW_AND_THERMAL_SOURCE_AUTHORITY", "reason": "No synthetic T0 heat-flow field or authorized upstream source primitives/provider are bound."},
+    {"priority": 5, "id": "REFERENCE_MATERIAL_PARAMETER_CONSTRAINTS", "reason": "rhoBar crust/mantle, rhoAst and thermal material parameters require authorial/scientific constraint; no values selected."},
+    {"priority": 6, "id": "RHEOLOGY_AND_BOUNDARY_ADAPTER_QUALIFICATION", "reason": "Rheology parameters, fault/process semantics, BC/reference frame, mesh mapping and runtime qualification remain open (configuration/interface work, not EOS coupling)."}
+  ],
+  "superseded_blockers": [
+    {
+      "id": "LATERAL_EXTERNAL_P_RHO_G_EOS_COUPLING",
+      "classification": "SUPERSEDED_BRANCH_SPECIFIC_BLOCKER",
+      "prior_decision": "R6_TECTONIC_THERMODYNAMIC_BINDING_PARTIAL__PRESSURE_COUPLING_REMAINS",
+      "reason": "Minimum OrbData5/SHELLS path uses reference densities, thermal correction and chemical_delta_rho; it builds reference pressure and vertical stress internally. No external absolute-pressure, 3-D gravity or EOS-density field is required by this path."
+    },
+    {
+      "id": "MANDATORY_BULK_COMPOSITION_OR_MINERAL_PHASE_ONTOLOGY",
+      "classification": "NOT_REQUIRED_FOR_MINIMUM_PATH",
+      "reason": "Source-defined reduced reference-property plus effective anomaly formulation does not consume bulk composition, mineral assemblage or phase fractions."
+    }
+  ],
+  "preserved_separate_gaps": [
+    "OCEAN_ELEVATION_SUPPORT_UNRESOLVED",
+    "CRUSTAL_THICKNESS_AUTHORITY_GAP",
+    "MANTLE_LITHOSPHERE_THICKNESS_AUTHORITY_GAP",
+    "SYNTHETIC_HEAT_FLOW_THERMAL_AUTHORITY_GAP",
+    "RHEOLOGY_CONFIGURATION_REMAINS",
+    "BOUNDARY_CONDITION_REFERENCE_FRAME_AND_MESH_ADAPTER_REMAINS",
+    "SHELLSET_RUNTIME_QUALIFICATION_UNAUTHORIZED"
+  ],
+  "next_stage": "Resolve upstream-authority priority 1: source or author a physical crust-thickness field/provider contract without implementing physics in this stage. In parallel define authorized synthetic mantle-lithosphere thickness and heat-flow source primitives. Then constrain ShellSet reference material and thermal configuration. Do not return to external P-rho-g solver search."
+}
