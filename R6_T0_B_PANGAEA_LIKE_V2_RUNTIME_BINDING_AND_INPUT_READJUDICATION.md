@@ -30,9 +30,14 @@ OrbData ignores input FEG crustal thickness, mantle-lithosphere thickness, chemi
 
 Elevation, heat flow, crustal thickness, mantle-lithosphere thickness, chemical_delta_rho, and cooling_curvature must all be present in the final FEG.
 
+### Current T0 ocean surface closure
+
+GDH1 thermal/isostatic elevation and the composed surface are materialized on governed cell support. Package: `R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE_SURFACE_CLOSED.npz` SHA256 `31cf4fb77e6fc12df1716805eeb4b46059ca35bbcd7b3bc305efa2e8afef3534`; thermal SHA256 `90ebdb63a981fde968a696a6844a51fb47be6a87e756f0651b947be10901d887`; total surface SHA256 `b5cbbac4136b46f6352d2738552013995477b956ab31af9435b10b3d2ad4be70`.
+Ocean elevation range: -6819.276 to -1400.000 m; coverage 1.000000000. PRE_ORBDATA remains blocked until nodal fields and other inputs close.
+
 | Field | Source behavior | Sentinel / route | ARCANA disposition |
 |---|---|---|---|
-| `elevation` | FEG nodal input. Any exact 0.0 sets needE and requests an elevation grid; stock copies Earth INPUT/ETOPO20.grd. | 0.0 IS SOURCE-DEFINED NEED_E GRID SENTINEL; genuine zero is ambiguous; Node value is used; zero invokes the auxiliary elevation-grid path. No bathymetry from age; complete elevation remains independent ARCANA physical state. | Complete governed ocean elevation and an ARCANA grid/adapter or qualified interface change are still required. |
+| `elevation` | FEG nodal input. Any exact 0.0 sets needE and requests an elevation grid; stock copies Earth INPUT/ETOPO20.grd. | 0.0 IS SOURCE-DEFINED NEED_E GRID SENTINEL; genuine zero is ambiguous; Node value is used; zero invokes the auxiliary elevation-grid path. No; OrbData does not generate bathymetry from age. The upstream ARCANA surface is materialized separately with GDH1 plus the authorial residual. | GDH1 thermal component plus unchanged authorial residual are materialized on governed ocean cells; global total surface preserves canonical land. Nodal FEG representation and zero-elevation interface qualification remain open. |
 | `heat_flow` | FEG nodal input. Any exact 0.0 sets needQ. Only zero-valued nodes enter qArray then conditional age-law fill; nonzero values skip that branch. | 0.0 IS SOURCE-DEFINED NEED_Q GRID SENTINEL; For heatFl==0: interpolate qArray; age<200 overrides with pinned ocean law; age<=0 uses qLim1; then apply heat-flow limits. Nonzero heat flow does not get age-overridden. Conditional zero-node fill only; age is not a global override. | A governed global heat-flow policy must ensure intended zero routing and provide ARCANA qArray whenever any node is zero. |
 | `crustal_thickness` | Not a required PRE_ORBDATA nodal input; Assign always reads cArray and ignores the input FEG value. | Not applicable to FEG input; cArray is mandatory; Recomputed/interpolated from cArray each run. Output from governed ARCANA cArray input. | Governed crustal_thickness_m exists on cell support and can be exported deterministically without cell-to-FEG projection. |
 | `mantle_lithosphere_thickness` | Not a required PRE_ORBDATA nodal input; Assign ignores input FEG value. Interpolated age selects the method. | Not applicable to FEG input; auxiliary age and continental path inputs govern; Age<200 Ma uses pinned ocean model; age>=200 Ma uses stock continental/unknown S-wave anomaly sArray path. Ocean thickness from age; continental stock path requires sArray, not prescribed ARCANA thickness. | Governed continental_reference_lithosphere_thickness_m is not consumed by stock OrbData. Require a qualified source generalization, governed equivalent producer, or retain blocker; no synthetic delta_ts inversion. |
@@ -49,7 +54,6 @@ Elevation, heat flow, crustal thickness, mantle-lithosphere thickness, chemical_
 
 ## Scientific blockers
 
-- Author complete T0 ocean elevation/bathymetry with datum, support and uncertainty; OrbData age does not establish bathymetry generation.
 - Resolve aArray coastal category-leakage qualification and governed ocean heat-flow/thickness parameters; age >=200 may only encode interface classification, not physical continental age.
 - Constrain all nine reference material/thermal configuration families and numeric continuum rheology; no Earth defaults/OrbScore optimum.
 - Resolve stock continental sArray incompatibility: governed ARCANA continental_reference_lithosphere_thickness_m is not consumed; choose qualified source generalization/equivalent producer or retain blocker.
@@ -64,15 +68,16 @@ Elevation, heat flow, crustal thickness, mantle-lithosphere thickness, chemical_
 
 ## Implementation blockers
 
+- Canonical partition NPZ is absent; cell-to-FEG-node projection of the composed elevation surface is unavailable in this checkout.
 - Implement and qualify deterministic OrbData-compatible aArray/cArray exporters with source support and lineage; no resolution increase.
 - Qualify age-grid coast classification strategy because bilinear aArray interpolation precedes the 200 Ma branch.
-- Select ARCANA eArray/qArray adapter path if any FEG node uses exact-zero elevation/heat flow.
+- Project/materialize the composed surface to FEG nodes and select ARCANA eArray/qArray paths if any node uses exact-zero elevation/heat flow.
 - After required scientific fields close, materialize PRE_ORBDATA and execute the prepared FAIR OrbData validation; do not run ShellSet mechanics here.
 - Global sphere uniqueness/reference-frame and rigid-rotation nullspace qualification remains open.
 
 **FAIR validation command after input gates close:** `bash scripts/r6_t0_fair_validate_orbdata_result.sh`.
 Required result manifest: `R6_T0_ORBDATA_FAIR_RESULT_MANIFEST.json (not yet present; PRE_ORBDATA is not ready)`.
 
-**Next action:** Resolve the authorial T0 ocean elevation/bathymetry and thermal-model configuration first. When a complete governed PRE_ORBDATA manifest exists, run the prepared FAIR identity/input validation script; mechanics remain separately unauthorized.
+**Next action:** Materialize the composed cell surface on FEG nodes, close heat-flow routing plus aArray/cArray exporters and age-coast classification, and resolve sArray/material-thermal configuration. Then prepare the authorized PRE_ORBDATA manifest and run the prepared FAIR OrbData input/output identity validation; mechanics remain separately unauthorized.
 
 No OrbData or mechanics execution, forward evolution, `dt`, or `t1` was performed or created.

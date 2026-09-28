@@ -171,6 +171,8 @@ def build_readjudication(root: str | Path) -> dict[str, Any]:
     source_closure = _read_json(root, PARENT_FILES[6])
     configuration = _read_json(root, PARENT_FILES[11])
     historical = _read_json(root, REPORT_JSON)
+    surface_closure_path = root / "R6_T0_B_PANGAEA_LIKE_V2_OCEAN_SURFACE_CLOSURE.json"
+    surface_closure = _read_json(root, surface_closure_path.name) if surface_closure_path.is_file() else None
 
     evidence_auth = evidence["authorization_boundary"]
     q = evidence["qualification"]
@@ -187,10 +189,10 @@ def build_readjudication(root: str | Path) -> dict[str, Any]:
         {"field": "elevation", "pre_orbdata_semantics": "FEG nodal input. Any exact 0.0 sets needE and requests an elevation grid; stock copies Earth INPUT/ETOPO20.grd.",
          "zero_or_sentinel": "0.0 IS SOURCE-DEFINED NEED_E GRID SENTINEL; genuine zero is ambiguous",
          "preserved_or_modified": "Node value is used; zero invokes the auxiliary elevation-grid path.",
-         "orbdata_derives": "No bathymetry from age; complete elevation remains independent ARCANA physical state.",
+         "orbdata_derives": "No; OrbData does not generate bathymetry from age. The upstream ARCANA surface is materialized separately with GDH1 plus the authorial residual." if surface_closure else "No bathymetry from age; complete elevation remains independent ARCANA physical state.",
          "stock_earth_dependency": "Stock Earth ETOPO20 fallback is prohibited as ARCANA authority.",
-         "arcana_equivalent": "Complete governed ocean elevation and an ARCANA grid/adapter or qualified interface change are still required.",
-         "readiness": ["STILL_MISSING_AUTHORIAL_PHYSICAL_STATE", "ADAPTER_INTERFACE_DECISION_REQUIRED"]},
+         "arcana_equivalent": ("GDH1 thermal component plus unchanged authorial residual are materialized on governed ocean cells; global total surface preserves canonical land. Nodal FEG representation and zero-elevation interface qualification remain open." if surface_closure else "Complete governed ocean elevation and an ARCANA grid/adapter or qualified interface change are still required."),
+         "readiness": (["SPECIALIST_DERIVED_T0_SURFACE_MATERIALIZED", "FEG_NODE_MATERIALIZATION_REQUIRED", "ADAPTER_INTERFACE_DECISION_REQUIRED"] if surface_closure else ["STILL_MISSING_AUTHORIAL_PHYSICAL_STATE", "ADAPTER_INTERFACE_DECISION_REQUIRED"])},
         {"field": "heat_flow", "pre_orbdata_semantics": "FEG nodal input. Any exact 0.0 sets needQ. Only zero-valued nodes enter qArray then conditional age-law fill; nonzero values skip that branch.",
          "zero_or_sentinel": "0.0 IS SOURCE-DEFINED NEED_Q GRID SENTINEL",
          "preserved_or_modified": "For heatFl==0: interpolate qArray; age<200 overrides with pinned ocean law; age<=0 uses qLim1; then apply heat-flow limits. Nonzero heat flow does not get age-overridden.",
@@ -286,12 +288,22 @@ def build_readjudication(root: str | Path) -> dict[str, Any]:
         "orbdata_capability_matrix": fields,
         "arcana_state": {"mesh_nodes": 64_442, "mesh_triangles": 128_880,
                          "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
-                         "field_package_sha256": parent["field_package_sha256"],
+                         "field_package_sha256": surface_closure["materialized"]["field_package_sha256"] if surface_closure else parent["field_package_sha256"],
+                         "parent_field_package_sha256": parent["field_package_sha256"],
+                         "surface_closure_manifest": "R6_T0_B_PANGAEA_LIKE_V2_OCEAN_SURFACE_CLOSURE.json" if surface_closure else None,
+                         "total_surface_sha256": surface_closure["component_lineage"]["total_surface"]["sha256"] if surface_closure else None,
                          "ocean_age_sha256": parent_hashes["oceanic_lithosphere_age_ma"],
                          "ocean_age_regenerated": False,
                          "historical_bootstrap_sha256": bootstrap_sha,
                          "existing_materialized_fields": [{"field": row["field"], "sha256": row["normalized_sha256"]}
                                                             for row in historical["pending_field_ledger"]["ALREADY_MATERIALIZED"]]},
+        "ocean_surface_closure": ({"status": surface_closure["decision"],
+                                    "field_package_path": surface_closure["materialized"]["field_package_path"],
+                                    "field_package_sha256": surface_closure["materialized"]["field_package_sha256"],
+                                    "thermal_component_sha256": surface_closure["component_lineage"]["thermal_component"]["sha256"],
+                                    "total_surface_sha256": surface_closure["component_lineage"]["total_surface"]["sha256"],
+                                    "statistics": surface_closure["statistics"],
+                                    "PRE_ORBDATA_ready": False} if surface_closure else {"status": "NOT_MATERIALIZED"}),
         "physical_configuration": {"canonical": {"gMean_m_s2": 9.82, "radius_m": 6_371_000},
                                    "unresolved_reference_families": unresolved_reference,
                                    "rheology_families": list(RHEOLOGY_FAMILIES),
@@ -308,7 +320,9 @@ def build_readjudication(root: str | Path) -> dict[str, Any]:
                        "production_projection_replay": "NOT_RUN; partition payload absence does not block aArray/cArray grid export"},
         "pre_orbdata_contract": {"feg_node_inputs": pre_feg_inputs,
                                   "readiness": "BLOCKED", "materialized": False,
-                                  "blockers": ["complete governed T0 ocean elevation/bathymetry", "resolve zero-elevation sentinel and ARCANA eArray/interface path", "close global heat-flow policy and conditional qArray path"]},
+                                  "cell_surface_materialized": bool(surface_closure),
+                                  "surface_closure_manifest": "R6_T0_B_PANGAEA_LIKE_V2_OCEAN_SURFACE_CLOSURE.json" if surface_closure else None,
+                                  "blockers": (["project/materialize complete total surface to required FEG node support", "resolve exact-zero elevation sentinel and ARCANA eArray/interface path", "close global heat-flow policy and conditional qArray path"] if surface_closure else ["complete governed T0 ocean elevation/bathymetry", "resolve zero-elevation sentinel and ARCANA eArray/interface path", "close global heat-flow policy and conditional qArray path"])},
         "auxiliary_input_readiness": {"ready": False,
                                       "inputs": {"aArray": "ARCANA ocean age authority exists; exporter and coast classification qualification required; >=200 marker only from governed land/ocean identity", "cArray": "governed crust thickness exists; OrbData-compatible deterministic grid exporter required", "sArray": "stock continental/unknown path incompatible with prescribed ARCANA continental thickness", "eArray": "conditional on any zero elevation; governed ARCANA source/path unresolved", "qArray": "conditional on any zero heat flow; governed ARCANA source/path unresolved"},
                                       "age_coastal_classification": "ADAPTER_QUALIFICATION_REQUIRED_POTENTIAL_CATEGORY_LEAKAGE"},
@@ -316,17 +330,18 @@ def build_readjudication(root: str | Path) -> dict[str, Any]:
         "feg_readiness": {"required_final_fields": [row["field"] for row in fields],
                            "PRE_ORBDATA_ready": False, "PRE_ORBDATA_materialized": False,
                            "SHELLS_READY_ready": False, "mechanics_authorized": False,
-                           "reason": "PRE_ORBDATA requires longitude/latitude/elevation/heat-flow nodal inputs; elevation and heat-flow exact-zero sentinels invoke conditional grids. Complete ocean elevation, heat-flow policy, and interface paths remain unresolved. The other four physical fields are OrbData outputs, not PRE inputs."},
+                           "reason": ("The complete total surface is materialized on governed cells but not yet on PRE_ORBDATA FEG nodes. Global heat-flow policy and exact-zero conditional-grid interfaces remain unresolved. The other four physical fields are OrbData outputs, not PRE inputs." if surface_closure else "PRE_ORBDATA requires longitude/latitude/elevation/heat-flow nodal inputs; elevation and heat-flow exact-zero sentinels invoke conditional grids. Complete ocean elevation, heat-flow policy, and interface paths remain unresolved. The other four physical fields are OrbData outputs, not PRE inputs.")},
         "scientific_blockers": [
-            "Author complete T0 ocean elevation/bathymetry with datum, support and uncertainty; OrbData age does not establish bathymetry generation.",
+            *([] if surface_closure else ["Author complete T0 ocean elevation/bathymetry with datum, support and uncertainty; OrbData age does not establish bathymetry generation."]),
             "Resolve aArray coastal category-leakage qualification and governed ocean heat-flow/thickness parameters; age >=200 may only encode interface classification, not physical continental age.",
             "Constrain all nine reference material/thermal configuration families and numeric continuum rheology; no Earth defaults/OrbScore optimum.",
             "Resolve stock continental sArray incompatibility: governed ARCANA continental_reference_lithosphere_thickness_m is not consumed; choose qualified source generalization/equivalent producer or retain blocker.",
             "Close delta_rho_limit, material parameters, and thermal/geotherm controls for derived chemical_delta_rho and cooling_curvature outputs."],
         "implementation_blockers": [
+            *(["Canonical partition NPZ is absent; cell-to-FEG-node projection of the composed elevation surface is unavailable in this checkout."] if surface_closure and not projection_available else []),
             "Implement and qualify deterministic OrbData-compatible aArray/cArray exporters with source support and lineage; no resolution increase.",
             "Qualify age-grid coast classification strategy because bilinear aArray interpolation precedes the 200 Ma branch.",
-            "Select ARCANA eArray/qArray adapter path if any FEG node uses exact-zero elevation/heat flow.",
+            "Project/materialize the composed surface to FEG nodes and select ARCANA eArray/qArray paths if any node uses exact-zero elevation/heat flow.",
             "After required scientific fields close, materialize PRE_ORBDATA and execute the prepared FAIR OrbData validation; do not run ShellSet mechanics here.",
             "Global sphere uniqueness/reference-frame and rigid-rotation nullspace qualification remains open."],
         "fair_validation": {"script": "scripts/r6_t0_fair_validate_orbdata_result.sh",
@@ -337,7 +352,7 @@ def build_readjudication(root: str | Path) -> dict[str, Any]:
                        "canonical_promoted": False, "t1_created": False, "dt_selected": False,
                        "forward_evolution": False, "orbdata_executed": False,
                        "shellset_mechanics_executed": False},
-        "exact_next_action": "Resolve the authorial T0 ocean elevation/bathymetry and thermal-model configuration first. When a complete governed PRE_ORBDATA manifest exists, run the prepared FAIR identity/input validation script; mechanics remain separately unauthorized."
+        "exact_next_action": ("Materialize the composed cell surface on FEG nodes, close heat-flow routing plus aArray/cArray exporters and age-coast classification, and resolve sArray/material-thermal configuration. Then prepare the authorized PRE_ORBDATA manifest and run the prepared FAIR OrbData input/output identity validation; mechanics remain separately unauthorized." if surface_closure else "Resolve the authorial T0 ocean elevation/bathymetry and thermal-model configuration first. When a complete governed PRE_ORBDATA manifest exists, run the prepared FAIR identity/input validation script; mechanics remain separately unauthorized.")
     }
 
 
@@ -360,7 +375,13 @@ def render_readjudication_markdown(report: dict[str, Any]) -> str:
              "### OrbData-derived output fields", "",
              "OrbData ignores input FEG crustal thickness, mantle-lithosphere thickness, chemical_delta_rho, and cooling_curvature, then recomputes all four. Crust thickness comes from cArray; ocean mantle thickness uses the age model; continental/unknown mantle thickness uses stock sArray. Chemical density anomaly and cooling curvature are derived under model/material/thermal configuration, including delta_rho_limit.", "",
              "### SHELLS_READY final FEG fields", "",
-             "Elevation, heat flow, crustal thickness, mantle-lithosphere thickness, chemical_delta_rho, and cooling_curvature must all be present in the final FEG.", "",
+              "Elevation, heat flow, crustal thickness, mantle-lithosphere thickness, chemical_delta_rho, and cooling_curvature must all be present in the final FEG.", ""]
+    if report.get("ocean_surface_closure", {}).get("status") != "NOT_MATERIALIZED":
+        surface = report["ocean_surface_closure"]
+        lines += ["### Current T0 ocean surface closure", "",
+                  f"GDH1 thermal/isostatic elevation and the composed surface are materialized on governed cell support. Package: `{surface['field_package_path']}` SHA256 `{surface['field_package_sha256']}`; thermal SHA256 `{surface['thermal_component_sha256']}`; total surface SHA256 `{surface['total_surface_sha256']}`.",
+                  f"Ocean elevation range: {surface['statistics']['total_ocean_elevation_min_m']:.3f} to {surface['statistics']['total_ocean_elevation_max_m']:.3f} m; coverage {surface['statistics']['ocean_coverage_fraction']:.9f}. PRE_ORBDATA remains blocked until nodal fields and other inputs close.", ""]
+    lines += [
              "| Field | Source behavior | Sentinel / route | ARCANA disposition |", "|---|---|---|---|"]
     for row in report["orbdata_capability_matrix"]:
         lines.append("| `{field}` | {pre_orbdata_semantics} | {zero_or_sentinel}; {preserved_or_modified} {orbdata_derives} | {arcana_equivalent} |".format(**row))

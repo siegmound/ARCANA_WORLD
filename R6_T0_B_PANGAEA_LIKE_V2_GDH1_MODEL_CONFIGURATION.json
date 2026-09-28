@@ -1,0 +1,33 @@
+{
+  "age_units": "Ma",
+  "branch_at_20_ma": {
+    "discontinuity_old_minus_young_m": 0.4086455845090313,
+    "old_branch_depth_m": 4232.738269159356,
+    "young_limit_depth_m": 4232.329623574847
+  },
+  "citation": "Stein, C.A. & Stein, S. (1992), Nature 359, 123-128, doi:10.1038/359123a0",
+  "coefficients": {
+    "old_branch": {
+      "age_gte_ma": 20,
+      "amplitude_m": 2473,
+      "asymptotic_depth_m": 5651,
+      "decay_per_ma": 0.0278
+    },
+    "young_branch": {
+      "age_lt_ma": 20,
+      "base_depth_m": 2600,
+      "sqrt_age_coefficient_m_per_sqrt_ma": 365
+    }
+  },
+  "depth_units": "m positive downward",
+  "elevation_units": "m positive upward relative to the existing R6 zero datum",
+  "model_id": "GDH1_STEIN_STEIN_1992_WATER_LOADED_AGE_DEPTH_V1",
+  "selection_rationale": [
+    "Published age-depth relation with water-loaded basement depth.",
+    "GDH1-family choice is coherent with the pinned OrbData5 oceanic 95 km plate-thickness reference; OrbData itself does not generate this elevation.",
+    "Only the published law is applied to ARCANA's governed synthetic age field; no Earth bathymetry or observations are imported."
+  ],
+  "source_url": "https://doi.org/10.1038/359123a0",
+  "version": "1.0.0",
+  "water_loading": "The published GDH1 water-loaded basement-depth relation is applied directly; no additional correction."
+}

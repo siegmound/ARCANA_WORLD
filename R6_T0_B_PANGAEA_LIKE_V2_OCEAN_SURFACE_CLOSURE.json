@@ -1,0 +1,178 @@
+{
+  "authority": {
+    "authorial_residual": "AUTHORIAL_T0_PRIMITIVE",
+    "canonical_geography_mutated": false,
+    "earth_observation_imported": false,
+    "model_coefficients": "SPECIALIST_MODEL_CONFIGURATION/PUBLISHED_EARTH_ANALOGUE_PHYSICAL_MODEL",
+    "orbdata_generated_bathymetry": false,
+    "thermal_component": "SPECIALIST_DERIVED_T0",
+    "total_surface": "SPECIALIST_DERIVED_T0"
+  },
+  "closure_manifest_sha256": "1a7d14c260de5f9f2bb6953dfcbb01f150558b9299a7618de3d3abd59c058da4",
+  "component_lineage": {
+    "age_field": {
+      "name": "oceanic_lithosphere_age_ma",
+      "sha256_before_after": [
+        "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+        "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2"
+      ]
+    },
+    "authorial_residual": {
+      "name": "ocean_surface_authorial_residual_m",
+      "sha256_before_after": [
+        "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+        "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc"
+      ]
+    },
+    "land_component": {
+      "name": "canonical_land_surface_elevation_m",
+      "sha256_before_after": [
+        "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+        "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45"
+      ]
+    },
+    "thermal_component": {
+      "formula": "-GDH1_water_loaded_depth(age_ma)",
+      "name": "ocean_thermal_isostatic_elevation_m",
+      "sha256": "90ebdb63a981fde968a696a6844a51fb47be6a87e756f0651b947be10901d887"
+    },
+    "total_surface": {
+      "land_formula": "exactly canonical_land_surface_elevation_m",
+      "name": "total_surface_elevation_m",
+      "ocean_formula": "thermal_component + authorial_residual",
+      "sha256": "b5cbbac4136b46f6352d2738552013995477b956ab31af9435b10b3d2ad4be70"
+    },
+    "unchanged_parent_field_hashes": {
+      "canonical_land_surface_elevation_m": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+      "continental_reference_lithosphere_thickness_m": "1e7db18c673c43c3048a863442e8182b9007d4cc292f60309583ce7b67d3e430",
+      "continental_reference_surface_heat_flow_w_m2": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+      "continental_thermal_domain_id": "8dd631433acfe68ebb3312a20c904b313883596e8da63da10bbb50d854040d75",
+      "crustal_thickness_m": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+      "ocean_surface_authorial_residual_m": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+      "oceanic_lithosphere_age_ma": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+      "physical_crust_domain_id": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1"
+    },
+    "unknown_mask": {
+      "meaning": "ocean cells whose composed total elevation remains UNKNOWN",
+      "name": "unknown_total_ocean_elevation_mask",
+      "new_sha256": "a7539976959dc808baac487cec6c09ce29fec51b0eef81db2d9d81a0a1f1fd86",
+      "parent_sha256": "3c52af8ec1c5eb09557f5fda9a6c1153a1cc8bde1e94dff50026710456a21df7"
+    }
+  },
+  "decision": "R6_T0_OCEAN_THERMAL_ISOSTATIC_SURFACE_MATERIALIZED__ORBDATA_INPUT_GAPS_REMAIN",
+  "governance": {
+    "age_regenerated": false,
+    "authorial_residual_regenerated": false,
+    "canonical_geography_changed": false,
+    "canonical_land_elevation_changed": false,
+    "canonical_promoted": false,
+    "dt_selected": false,
+    "forward_evolution": false,
+    "orbdata_executed": false,
+    "shellset_mechanics_executed": false,
+    "t1_created": false
+  },
+  "materialized": {
+    "field_package_path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE_SURFACE_CLOSED.npz",
+    "field_package_sha256": "31cf4fb77e6fc12df1716805eeb4b46059ca35bbcd7b3bc305efa2e8afef3534",
+    "normalized_field_hashes": {
+      "canonical_land_surface_elevation_m": "79b8a50159c5f74b94a0e0f4d856336a829c9e1d1cf9ee145ba0daac97f96c45",
+      "continental_reference_lithosphere_thickness_m": "1e7db18c673c43c3048a863442e8182b9007d4cc292f60309583ce7b67d3e430",
+      "continental_reference_surface_heat_flow_w_m2": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+      "continental_thermal_domain_id": "8dd631433acfe68ebb3312a20c904b313883596e8da63da10bbb50d854040d75",
+      "crustal_thickness_m": "d416e12cdc7ddc2e47dbfb5f67defe2651190ee3b30b04bdba083a00dda7bb3c",
+      "ocean_surface_authorial_residual_m": "315078fc021637823399a8a96272dcfc69d7746a3098064042119d7453755cfc",
+      "ocean_thermal_isostatic_elevation_m": "90ebdb63a981fde968a696a6844a51fb47be6a87e756f0651b947be10901d887",
+      "oceanic_lithosphere_age_ma": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+      "physical_crust_domain_id": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+      "total_surface_elevation_m": "b5cbbac4136b46f6352d2738552013995477b956ab31af9435b10b3d2ad4be70",
+      "unknown_total_ocean_elevation_mask": "a7539976959dc808baac487cec6c09ce29fec51b0eef81db2d9d81a0a1f1fd86"
+    }
+  },
+  "model_configuration": {
+    "age_units": "Ma",
+    "branch_at_20_ma": {
+      "discontinuity_old_minus_young_m": 0.4086455845090313,
+      "old_branch_depth_m": 4232.738269159356,
+      "young_limit_depth_m": 4232.329623574847
+    },
+    "citation": "Stein, C.A. & Stein, S. (1992), Nature 359, 123-128, doi:10.1038/359123a0",
+    "coefficients": {
+      "old_branch": {
+        "age_gte_ma": 20,
+        "amplitude_m": 2473,
+        "asymptotic_depth_m": 5651,
+        "decay_per_ma": 0.0278
+      },
+      "young_branch": {
+        "age_lt_ma": 20,
+        "base_depth_m": 2600,
+        "sqrt_age_coefficient_m_per_sqrt_ma": 365
+      }
+    },
+    "depth_units": "m positive downward",
+    "elevation_units": "m positive upward relative to the existing R6 zero datum",
+    "model_id": "GDH1_STEIN_STEIN_1992_WATER_LOADED_AGE_DEPTH_V1",
+    "selection_rationale": [
+      "Published age-depth relation with water-loaded basement depth.",
+      "GDH1-family choice is coherent with the pinned OrbData5 oceanic 95 km plate-thickness reference; OrbData itself does not generate this elevation.",
+      "Only the published law is applied to ARCANA's governed synthetic age field; no Earth bathymetry or observations are imported."
+    ],
+    "source_url": "https://doi.org/10.1038/359123a0",
+    "version": "1.0.0",
+    "water_loading": "The published GDH1 water-loaded basement-depth relation is applied directly; no additional correction."
+  },
+  "model_form_uncertainty": {
+    "axis": "OCEAN_PLATE_COOLING_MODEL_FORM",
+    "candidate_ensemble_generated": false,
+    "comparator": "REVISED_PLATE_MODEL_FAMILY",
+    "disposition": "Retain GDH1 as the selected T0 reference; record comparator for a later sensitivity study, do not substitute its Earth best fit or average models into ARCANA.",
+    "primary": "GDH1_COMPATIBLE_REFERENCE",
+    "reference_literature": {
+      "doi": "10.1029/2024JB029890",
+      "published": 2025,
+      "reported_mantle_temperature_c": "approximately 1326 +/- 50, as cited in the governed task input",
+      "reported_plate_thickness_km": "approximately 105 +/- 10 (analytical) and 96 +/- 10 (detailed), as cited in the governed task input",
+      "ridge_depth_km": "2.5 +/- 0.3; general published reference, not imported as ARCANA observation"
+    }
+  },
+  "parent": {
+    "field_package_path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+    "field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "manifest_path": "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json",
+    "realization_manifest_sha256": "611a53eb0bbee106ed554513441d1761322632e10cf7510e73996785caf76ba2"
+  },
+  "pre_orbdata_impact": {
+    "PRE_ORBDATA_ready": false,
+    "complete_ocean_elevation_component_materialized": true,
+    "remaining_gates": [
+      "global heat-flow routing and qArray policy",
+      "aArray export and coast-classification qualification",
+      "cArray export",
+      "continental mantle thickness sArray interoperability",
+      "OrbData material/thermal configuration",
+      "FEG nodal materialization and zero-elevation interface qualification"
+    ]
+  },
+  "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+  "schema": "R6_T0_B_PANGAEA_LIKE_V2_OCEAN_SURFACE_CLOSURE_V1",
+  "statistics": {
+    "age_depth_monotone_0_160_ma": true,
+    "known_ocean_elevation_cells": 50542,
+    "ocean_cells": 50542,
+    "ocean_cells_at_or_above_zero_datum": 0,
+    "ocean_coverage_fraction": 1.0,
+    "residual_area_weighted_mean_m": -1.4105804031139776e-11,
+    "residual_area_weighted_rms_m": 500.0000000000001,
+    "residual_hard_cap_abs_m": 1200.0,
+    "thermal_elevation_max_m": -2600.0,
+    "thermal_elevation_min_m": -5622.061083889257,
+    "total_ocean_area_weighted_mean_m": -5110.418440483974,
+    "total_ocean_area_weighted_median_m": -5165.141438743614,
+    "total_ocean_depth_max_m": 6819.275552157349,
+    "total_ocean_depth_min_m": 1400.0,
+    "total_ocean_elevation_max_m": -1400.0,
+    "total_ocean_elevation_min_m": -6819.275552157349,
+    "unknown_ocean_elevation_cells": 0
+  }
+}

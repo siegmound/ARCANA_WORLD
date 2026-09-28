@@ -41,7 +41,8 @@ def test_orbdata_field_gate_does_not_infer_bathymetry_or_zero_sentinels():
     report = build_readjudication(ROOT)
     fields = {row["field"]: row for row in report["orbdata_capability_matrix"]}
     assert len(fields) == 6
-    assert "No bathymetry from age" in fields["elevation"]["orbdata_derives"]
+    assert ("No bathymetry from age" in fields["elevation"]["orbdata_derives"]
+            or "does not generate bathymetry from age" in fields["elevation"]["orbdata_derives"])
     assert "NEED_E" in fields["elevation"]["zero_or_sentinel"]
     assert "needQ" in fields["heat_flow"]["pre_orbdata_semantics"]
     assert "Nonzero" in fields["heat_flow"]["preserved_or_modified"]
