@@ -1,0 +1,77 @@
+{
+  "schema": "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION_V1",
+  "decision": "R6_T0_ORBDATA_ARCANA_ADAPTER_IMPLEMENTED__SHELLSET_SOURCE_GENERALIZATION_AWAITS_PATCH_AND_FAIR_QUALIFICATION",
+  "source_identities": {
+    "arcana_starting_head": "15dfca97b24c387af5b46c32f2b7db58154c2268",
+    "scientific_shellset_upstream": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
+    "qualified_shellset_parent": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
+    "qualified_executable_sha256_historical_only": "03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349",
+    "surface_closed_field_package_sha256": "31cf4fb77e6fc12df1716805eeb4b46059ca35bbcd7b3bc305efa2e8afef3534",
+    "historical_parent_field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "total_surface_elevation_sha256": "b5cbbac4136b46f6352d2738552013995477b956ab31af9435b10b3d2ad4be70",
+    "ocean_thermal_component_sha256": "90ebdb63a981fde968a696a6844a51fb47be6a87e756f0651b947be10901d887"
+  },
+  "adapter_contract": {
+    "status": "IMPLEMENTED_DETERMINISTIC_EXPORTER",
+    "source_support": "180x360 cell-centered global grid; values are not promoted to higher resolution",
+    "aArray": {
+      "source": "oceanic_lithosphere_age_ma",
+      "units": "Ma",
+      "physical_authority": "governed oceanic support only",
+      "halo": "nearest source ocean cell by spherical cell-center distance with stable tie order; explicitly numerical interpolation support"
+    },
+    "cArray": {
+      "source": "crustal_thickness_m",
+      "export_units": "km",
+      "conversion": "m / 1000 because OrbData multiplies cArray by 1000"
+    },
+    "explicit_domain": {
+      "source": "physical_crust_domain_id",
+      "ocean_code": 1,
+      "continental_codes": "governed values >=2",
+      "classification": "never derived from interpolated age or plate identity"
+    },
+    "continental_mantle_thickness": {
+      "source": "continental_reference_lithosphere_thickness_m",
+      "units": "m",
+      "mechanism": "explicit grid; never synthetic sArray/delta_ts"
+    },
+    "serialization": {
+      "header": "x1 dx x2 then y1 dy y2; counts derived by OrbData",
+      "bounds": {"x1": -180.5, "dx": 1, "x2": 180.5, "y1": -90.5, "dy": 1, "y2": 90.5},
+      "array_rows": "NumPy south-to-north source reversed to OrbData north-to-south row order",
+      "longitude": "periodic one-cell halos",
+      "latitude": "edge-row one-cell halos"
+    }
+  },
+  "projection": {
+    "status": "DETERMINISTIC_PATH_IMPLEMENTED_PENDING_FAIR_PAYLOAD",
+    "classification": "NUMERICAL_DERIVED_SUPPORT",
+    "method": "existing R6 canonical cell-to-FEG mesh/provider projection",
+    "lineage": "incident source-cell lineage retained per node",
+    "unknown": "preserved; mixed categorical boundary support remains unknown",
+    "mesh": {"nodes": 64442, "triangles": 128880, "sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad"},
+    "limitations": ["no resolution increase", "no smoothing", "no mesh framework added"]
+  },
+  "shellset_source_generalization": {
+    "status": "NOT_YET_PATCHED",
+    "required_parent_commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
+    "scientific_upstream_commit": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
+    "source_files_audited": ["src/OrbData5.f90", "src/MOD_Data.f90", "src/MOD_ShellSet.f90"],
+    "patch_path": null,
+    "patch_sha256": null,
+    "semantic_classification": ["INTEROPERABILITY_GENERALIZATION", "NO_NEW_PHYSICAL_LAW", "NO_RHEOLOGY_CHANGE", "NO_MECHANICS_EQUATION_CHANGE"],
+    "expected_stock_behavior": "unchanged when complete explicit ARCANA input pair is absent",
+    "expected_arcana_behavior": "domain grid controls ocean/continental branch; direct prescribed continental mantle thickness; complete FEG elevation accepted at exact zero; no ETOPO fallback",
+    "qualification": "NOT_QUALIFIED; old runtime identity applies only to unmodified source"
+  },
+  "heat_flow": {
+    "status": "UNRESOLVED_CONFIGURATION",
+    "blockers": ["qArray policy for zero heat-flow FEG values", "governed qLim0/dQL_dE/qLim1 configuration", "age-zero GDH1 heat-flow limit behavior"],
+    "invented_values": false
+  },
+  "pre_orbdata_ready": false,
+  "remaining_scientific_blockers": ["governed heat-flow routing and qLim configuration", "material/thermal OrbData configuration adjudication"],
+  "remaining_implementation_blockers": ["generate exact-context ShellSet patch", "add/run FAIR synthetic OrbData fixture and stock ListEx1 regression", "materialize 64,442-node projection after canonical partition payload is available"],
+  "governance": {"orbdata_executed": false, "shellset_mechanics_authorized": false, "dt_selected": false, "t1_created": false, "forward_evolution": false, "push": false}
+}
