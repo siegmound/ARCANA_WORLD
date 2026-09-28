@@ -40,7 +40,14 @@
     },
     "serialization": {
       "header": "x1 dx x2 then y1 dy y2; counts derived by OrbData",
-      "bounds": {"x1": -180.5, "dx": 1, "x2": 180.5, "y1": -90.5, "dy": 1, "y2": 90.5},
+      "bounds": {
+        "x1": -180.5,
+        "dx": 1,
+        "x2": 180.5,
+        "y1": -90.5,
+        "dy": 1,
+        "y2": 90.5
+      },
       "array_rows": "NumPy south-to-north source reversed to OrbData north-to-south row order",
       "longitude": "periodic one-cell halos",
       "latitude": "edge-row one-cell halos"
@@ -52,20 +59,41 @@
     "method": "existing R6 canonical cell-to-FEG mesh/provider projection",
     "lineage": "incident source-cell lineage retained per node",
     "unknown": "preserved; mixed categorical boundary support remains unknown",
-    "mesh": {"nodes": 64442, "triangles": 128880, "sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad"},
-    "limitations": ["no resolution increase", "no smoothing", "no mesh framework added"]
+    "mesh": {
+      "nodes": 64442,
+      "triangles": 128880,
+      "sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad"
+    },
+    "limitations": [
+      "no resolution increase",
+      "no smoothing",
+      "no mesh framework added"
+    ]
   },
   "shellset_source_generalization": {
     "status": "GENERATED_NOT_YET_FAIR_QUALIFIED",
     "required_parent_commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
     "scientific_upstream_commit": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
-    "source_files_audited": ["src/OrbData5.f90", "src/MOD_Data.f90", "src/MOD_ShellSet.f90"],
+    "source_files_audited": [
+      "src/OrbData5.f90",
+      "src/MOD_Data.f90",
+      "src/MOD_ShellSet.f90"
+    ],
     "patch_path": "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch",
     "patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
     "superseded_patch_sha256": "74fa912d913a82314453ab00addc3e6bcfe1ede87f51866035412e4393f9ad94",
     "historical_superseded_patch_sha256": "4d4e5cfa07e8af0c52bc2fbcf2c77a080c2b68921174ad2e4cde078c5425843c",
-    "modified_shellset_files": ["src/MOD_ShellSet.f90", "src/OrbData5.f90", "src/MOD_Data.f90", "src/ShellSetMain.f90"],
-    "shellset_main_change_classification": ["FAIL_CLOSED_INPUT_GOVERNANCE_ONLY", "NO_PHYSICS_CHANGE", "NO_MECHANICS_EQUATION_CHANGE"],
+    "modified_shellset_files": [
+      "src/MOD_ShellSet.f90",
+      "src/OrbData5.f90",
+      "src/MOD_Data.f90",
+      "src/ShellSetMain.f90"
+    ],
+    "shellset_main_change_classification": [
+      "FAIL_CLOSED_INPUT_GOVERNANCE_ONLY",
+      "NO_PHYSICS_CHANGE",
+      "NO_MECHANICS_EQUATION_CHANGE"
+    ],
     "mode_activation": "all-or-nothing presence of per-model fort_<model>.15 and fort_<model>.16; neither means stock, both means ARCANA, one means fatal failure",
     "unit_15": "explicit physical_crust_domain_id categorical grid; ID 1 selects ocean, IDs 2..6 select continental structure",
     "unit_16": "continental_reference_lithosphere_thickness_m as requested TOTAL lithosphere structure; requested thickM starts as interpolated total minus thickC",
@@ -102,19 +130,78 @@
     "shellset_main_partial_pair_gate": "immediately after InputSetup(ThID,ModNum,OD,DirName) and before OpenInput/OpenOutput/OrbData5; existing AEF/non-AEF FatalError check calls MPI_Abort",
     "qualified_build_command": "make -B ShellSet",
     "stock_regression": "mpiexec -n 10 --map-by ppr:3:numa:PE=5 --bind-to core --report-bindings ./ShellSet.exe -Iter 4 -InOpt List -Dir RUN_DIR -GM 5,SSR,GV,SD,SA,FSR; exact Models.txt equality at reported precision",
-    "semantic_classification": ["INTEROPERABILITY_GENERALIZATION", "NO_NEW_PHYSICAL_LAW", "NO_RHEOLOGY_CHANGE", "NO_MECHANICS_EQUATION_CHANGE"],
+    "semantic_classification": [
+      "INTEROPERABILITY_GENERALIZATION",
+      "NO_NEW_PHYSICAL_LAW",
+      "NO_RHEOLOGY_CHANGE",
+      "NO_MECHANICS_EQUATION_CHANGE"
+    ],
     "expected_stock_behavior": "unchanged when complete explicit ARCANA input pair is absent",
     "expected_arcana_behavior": "domain grid controls ocean/continental branch independently of interpolated age; requested total lithosphere is converted to mantle component by subtracting crust; complete FEG elevation accepted at exact zero; no ETOPO fallback",
     "stock_mode_expected_unchanged": true,
-    "qualification": "NOT_QUALIFIED; historical runtime identity applies only to unmodified source"
+    "qualification": "NOT_QUALIFIED; historical runtime identity applies only to unmodified source",
+    "binary_reproducibility_readjudication": {
+      "historical_qualified_executable_sha256": "03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349",
+      "rebuild_a_executable_sha256": "0d48576ec1b3d8ff38c9b92d1d794d23235ceeaaebc1d6c051ae980b8cc78272",
+      "rebuild_b_current_parent_executable_sha256": "4603c7d2854c2999c1e8e4607b7bbe470e43f300bf2e8ed1650528e49ceb56e9",
+      "rebuild_a_and_b_byte_identical": false,
+      "models_comparison": {
+        "method": "exact fields from column 3 onward keyed by column 1 global model ID; column 2 ThID excluded; row ordering ignored; duplicate IDs rejected; exact set of 9 IDs required; no tolerance",
+        "reference_vs_a": {
+          "models": 9,
+          "max_abs": 0,
+          "max_rel": 0
+        },
+        "reference_vs_b": {
+          "models": 9,
+          "max_abs": 0,
+          "max_rel": 0
+        },
+        "a_vs_b": {
+          "models": 9,
+          "max_abs": 0,
+          "max_rel": 0
+        }
+      },
+      "classification": [
+        "PARENT_BINARY_NOT_BYTE_REPRODUCIBLE",
+        "PARENT_NUMERICALLY_REPRODUCIBLE_AT_REPORTED_PRECISION",
+        "CURRENT_PARENT_ARTIFACT_READJUDICATED_FOR_PATCH_QUALIFICATION"
+      ],
+      "qualification_harness_expected_pre_patch_executable_sha256": "4603c7d2854c2999c1e8e4607b7bbe470e43f300bf2e8ed1650528e49ceb56e9",
+      "qualification_state": "PENDING_FAIR_RERUN; patched ShellSet runtime remains unqualified",
+      "pre_orbdata": false,
+      "orbdata_executed": false,
+      "shellset_mechanics_authorized": false,
+      "dt_selected": false,
+      "t1_created": false,
+      "forward_evolution": false
+    }
   },
   "heat_flow": {
     "status": "UNRESOLVED_CONFIGURATION",
-    "blockers": ["qArray policy for zero heat-flow FEG values", "governed qLim0/dQL_dE/qLim1 configuration", "age-zero GDH1 heat-flow limit behavior"],
+    "blockers": [
+      "qArray policy for zero heat-flow FEG values",
+      "governed qLim0/dQL_dE/qLim1 configuration",
+      "age-zero GDH1 heat-flow limit behavior"
+    ],
     "invented_values": false
   },
   "pre_orbdata_ready": false,
-  "remaining_scientific_blockers": ["governed heat-flow routing and qLim configuration", "material/thermal OrbData configuration adjudication"],
-    "remaining_implementation_blockers": ["rerun FAIR qualification with ShellSetMain MPI fatal gate, corrected partial-pair fixture, and exact stock ListEx1 regression; capture new runtime evidence after pass", "materialize 64,442-node projection after canonical partition payload is available"],
-  "governance": {"orbdata_executed": false, "shellset_mechanics_authorized": false, "dt_selected": false, "t1_created": false, "forward_evolution": false, "push": false}
+  "remaining_scientific_blockers": [
+    "governed heat-flow routing and qLim configuration",
+    "material/thermal OrbData configuration adjudication"
+  ],
+  "remaining_implementation_blockers": [
+    "rerun FAIR qualification with ShellSetMain MPI fatal gate, corrected partial-pair fixture, and exact stock ListEx1 regression; capture new runtime evidence after pass",
+    "materialize 64,442-node projection after canonical partition payload is available"
+  ],
+  "governance": {
+    "orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution": false,
+    "push": false
+  }
 }

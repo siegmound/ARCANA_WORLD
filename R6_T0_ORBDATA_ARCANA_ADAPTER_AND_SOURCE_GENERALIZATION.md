@@ -31,3 +31,17 @@ The historic runtime at `09a06ecd061f00b80a52af86e31d609ff5545a8b` with executab
 `PRE_ORBDATA_ready` remains false. The heat-flow route for zero-valued FEG inputs and governed `qLim0`, `dQL_dE`, and `qLim1` configuration remain unresolved; age-zero GDH1 handling also depends on these limits. No values were invented. OrbData and ShellSet mechanics were not run; no `dt`, T1, or forward evolution was authorized.
 
 The FAIR validator now requires the surface-closed package SHA and the surface-closure commit as its ancestor gate. The historical parent package hash is retained in this report. The integrated machine-readable record is `R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.json`.
+
+## FAIR executable reproducibility readjudication
+
+The historical qualified executable remains SHA-256 `03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349`; it applies only to the historically qualified unmodified source. Rebuild A is `0d48576ec1b3d8ff38c9b92d1d794d23235ceeaaebc1d6c051ae980b8cc78272`. Rebuild B, the currently readjudicated FAIR parent executable, is `4603c7d2854c2999c1e8e4607b7bbe470e43f300bf2e8ed1650528e49ceb56e9`. A and B are not byte-identical. The next qualification run requires B as its exact pre-patch executable and preserves it transactionally before applying the source patch.
+
+`Models.txt` was compared by global model ID (column 1), ignoring row order, the invocation line, and ThID (column 2), with exact equality for every field from column 3 onward and no tolerance. Duplicate IDs are rejected and exactly the same set of nine model IDs is required:
+
+- Reference vs A: 9 models, MAX_ABS=0, MAX_REL=0.
+- Reference vs B: 9 models, MAX_ABS=0, MAX_REL=0.
+- A vs B: 9 models, MAX_ABS=0, MAX_REL=0.
+
+Classification: `PARENT_BINARY_NOT_BYTE_REPRODUCIBLE`; `PARENT_NUMERICALLY_REPRODUCIBLE_AT_REPORTED_PRECISION`; `CURRENT_PARENT_ARTIFACT_READJUDICATED_FOR_PATCH_QUALIFICATION`. This does not assert that historical executable `03e1…` equals current parent `4603…`.
+
+The updated FAIR harness now requires pre-patch executable SHA-256 `4603…` and performs the stock ListEx1 comparison by model ID. This is evidence correction only: `PRE_ORBDATA=false`; patched ShellSet runtime remains unqualified; no T0 OrbData, mechanics, dt, T1, or forward evolution was performed. No ShellSet run is claimed by this Windows checkout.

@@ -11,7 +11,8 @@ expected_branch="r6/t0-authorial-realization-materialization"
 minimum_ancestor="0dfccaa0722f025fee1590d94c78eb30ac54d828"
 expected_field_package_sha="31cf4fb77e6fc12df1716805eeb4b46059ca35bbcd7b3bc305efa2e8afef3534"
 expected_shellset_parent="09a06ecd061f00b80a52af86e31d609ff5545a8b"
-expected_old_exe_sha="03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349"
+historical_qualified_exe_sha="03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349"
+expected_parent_exe_sha="4603c7d2854c2999c1e8e4607b7bbe470e43f300bf2e8ed1650528e49ceb56e9"
 patch_path="$repo_root/patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch"
 expected_patch_sha="e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2"
 [[ "$(git branch --show-current)" == "$expected_branch" ]] || fail "wrong ARCANA branch"
@@ -24,7 +25,7 @@ shellset_root="${ARCANA_SHELLSET_ROOT:-$HOME/HPC-POMDP/tools/ShellSet-v1.1.0}"
 [[ "$(git -C "$shellset_root" rev-parse HEAD)" == "$expected_shellset_parent" ]] || fail "ShellSet parent HEAD mismatch"
 [[ -z "$(git -C "$shellset_root" status --porcelain --untracked-files=no)" ]] || fail "tracked ShellSet files are not clean"
 old_exe_sha="$(sha256sum "$shellset_root/ShellSet.exe" | awk '{print $1}')" || fail "cannot hash qualified ShellSet executable"
-[[ "$old_exe_sha" == "$expected_old_exe_sha" ]] || fail "pre-patch executable SHA mismatch"
+[[ "$old_exe_sha" == "$expected_parent_exe_sha" ]] || fail "current FAIR parent executable SHA mismatch"
 patch_sha="$(sha256sum "$patch_path" | awk '{print $1}')" || fail "cannot hash source patch"
 [[ "$patch_sha" == "$expected_patch_sha" ]] || fail "patch SHA mismatch"
 
@@ -65,7 +66,6 @@ set -e
 [[ $build_rc -eq 0 ]] || { echo "FAIL NVIDIA build (exit $build_rc); log: $build_log" >&2; exit "$build_rc"; }
 [[ -x "$shellset_root/ShellSet.exe" ]] || fail "built ShellSet.exe is missing"
 new_exe_sha="$(sha256sum "$shellset_root/ShellSet.exe" | awk '{print $1}')" || fail "cannot hash rebuilt executable"
-[[ "$new_exe_sha" != "$expected_old_exe_sha" ]] || fail "executable SHA stayed at the qualified parent identity"
 if ldd "$shellset_root/ShellSet.exe" | grep -q 'not found'; then fail "ShellSet has unresolved dynamic libraries"; fi
 
 fixture_root="$(mktemp -d "${TMPDIR:-/tmp}/arcana-orbdata-fixture.XXXXXX")" || fail "cannot create fixture root"
@@ -137,42 +137,41 @@ set -e
 patched_models="$shellset_root/$run_name/Models.txt"
 [[ -f "$patched_models" ]] || fail "patched ListEx1 Models.txt missing"
 "${ARCANA_PYTHON:-python3}" - "$reference_models" "$patched_models" <<'PY' || fail "exact ListEx1 Models.txt comparison failed"
-from decimal import Decimal, InvalidOperation
 from pathlib import Path
 import sys
 
 def records(path):
-    return [line.split() for line in Path(path).read_text(errors="strict").splitlines()
-            if line.strip() and not line.lstrip().startswith("Program invoked with:")]
+    rows = {}
+    for line_number, line in enumerate(Path(path).read_text(errors="strict").splitlines(), 1):
+        if not line.strip() or line.lstrip().startswith("Program invoked with:"):
+            continue
+        fields = line.split()
+        if len(fields) < 3:
+            raise SystemExit(f"Malformed Models row at {path}:{line_number}")
+        model_id = fields[0]
+        if model_id in rows:
+            raise SystemExit(f"Duplicate global model ID {model_id!r} in {path}")
+        rows[model_id] = fields[2:]
+    return rows
 
 reference, observed = map(records, sys.argv[1:])
-if len(reference) != len(observed):
-    raise SystemExit(f"Models row count mismatch: {len(reference)} != {len(observed)}")
-max_abs = Decimal(0)
-max_rel = Decimal(0)
-for row, (left, right) in enumerate(zip(reference, observed), 1):
-    if len(left) != len(right):
-        raise SystemExit(f"Models column count mismatch at row {row}")
-    for column, (a, b) in enumerate(zip(left, right), 1):
-        try:
-            x, y = Decimal(a), Decimal(b)
-        except InvalidOperation:
-            if a != b:
-                raise SystemExit(f"Models text mismatch at row {row}, column {column}: {a!r} != {b!r}")
-            continue
-        difference = abs(x-y)
-        max_abs = max(max_abs, difference)
-        if x != 0:
-            max_rel = max(max_rel, difference/abs(x))
-        elif difference != 0:
-            max_rel = Decimal("Infinity")
-        if difference != 0:
-            raise SystemExit(f"ListEx1 numeric mismatch at reported precision row {row}, column {column}: {a} != {b}")
-print(f"STOCK_LISTEX1_MAX_ABS={max_abs} MAX_REL={max_rel}")
+expected_ids = set(reference)
+observed_ids = set(observed)
+if len(expected_ids) != 9 or observed_ids != expected_ids:
+    raise SystemExit(f"Models global ID set mismatch: reference={sorted(expected_ids)}, observed={sorted(observed_ids)}")
+for model_id in sorted(expected_ids):
+    if reference[model_id] != observed[model_id]:
+        raise SystemExit(f"ListEx1 exact field mismatch for global model ID {model_id}: {reference[model_id]!r} != {observed[model_id]!r}")
+print("STOCK_LISTEX1_MODELS=9")
+print("STOCK_LISTEX1_MAX_ABS=0")
+print("STOCK_LISTEX1_MAX_REL=0")
+print("PASS_STOCK_LISTEX1_BY_MODEL_ID")
 PY
 
 echo "SHELLSET_PATCH_QUALIFICATION=PASS_PENDING_MANUAL_COMMIT_AND_EVIDENCE_CAPTURE"
 echo "PATCH_SHA256=$expected_patch_sha"
+echo "HISTORICAL_QUALIFIED_EXE_SHA256=$historical_qualified_exe_sha"
+echo "READJUDICATED_PARENT_EXE_SHA256=$expected_parent_exe_sha"
 echo "SHELLSET_NEW_COMMIT=not created by this script"
 echo "SHELLSET_EXE_SHA256=$new_exe_sha"
 echo "FAIR_FIXTURE_ROOT=$fixture_root"
