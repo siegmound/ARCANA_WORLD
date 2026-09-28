@@ -90,7 +90,7 @@ def make_orbdata_grids(fields: dict[str, np.ndarray]) -> tuple[dict[str, np.ndar
         raise ValueError("physical_crust_domain_id must identify ocean=1 and land classes >=2")
     age_physical = ocean
     age_extended = _nearest_extension(age, ocean)
-    mantle_extended = _nearest_extension(mantle_m, land)
+    total_lithosphere_extended = _nearest_extension(mantle_m, land)
     # Wrap longitude and duplicate polar edge rows; these cells are numerical halos.
     def halo(a: np.ndarray) -> np.ndarray:
         p = np.pad(a, ((1, 1), (0, 0)), mode="edge")
@@ -99,7 +99,7 @@ def make_orbdata_grids(fields: dict[str, np.ndarray]) -> tuple[dict[str, np.ndar
         "aArray": halo(age_extended),
         "cArray": halo(crust_m / 1000.0),
         "arcana_domain": halo(domain),
-        "arcana_cont_mantle_thickness_m": halo(mantle_extended),
+        "arcana_total_lithosphere_m": halo(total_lithosphere_extended),
     }
     halo_mask = halo(~ocean)
     mantle_halo_mask = halo(ocean)
@@ -115,9 +115,10 @@ def make_orbdata_grids(fields: dict[str, np.ndarray]) -> tuple[dict[str, np.ndar
                    "conversion": "metres / 1000; OrbData multiplies cArray by 1000"},
         "domain": {"source": "physical_crust_domain_id", "ocean_class": 1,
                    "continental_classes": "2..6 per governed package; never inferred from age or plate id"},
-        "continental_mantle_thickness": {"source": "continental_reference_lithosphere_thickness_m",
+        "continental_total_lithosphere": {"source": "continental_reference_lithosphere_thickness_m",
                    "units": "m", "halo_mask_sha256": _sha(mantle_halo_mask),
-                   "transfer": "direct explicit input; no sArray or delta_ts encoding"},
+                   "semantic_role": "GOVERNED_REQUESTED_TOTAL_LITHOSPHERE_STRUCTURE",
+                   "transfer": "direct explicit input; Assign subtracts thickC to initialize thickM; no sArray or delta_ts encoding"},
         "grid": {"source_shape": list(GRID_SHAPE), "output_shape": [182, 362],
                  "physical_cell_centers": "lon=-179.5..179.5, lat=-89.5..89.5",
                  "header": {"nX": 362, "nY": 182, "x1": -180.5, "dx": 1, "x2": 180.5,
@@ -136,7 +137,7 @@ def write_orbdata_grids(fields: dict[str, np.ndarray], output_dir: str | Path) -
     root.mkdir(parents=True, exist_ok=True)
     names = {"aArray": "age.grd", "cArray": "crust_thickness.grd",
              "arcana_domain": "ARCANA_DOMAIN.grd",
-             "arcana_cont_mantle_thickness_m": "ARCANA_CONT_MANTLE_THICKNESS_M.grd"}
+             "arcana_total_lithosphere_m": "ARCANA_TOTAL_LITHOSPHERE_M.grd"}
     for key, grid in grids.items():
         with (root / names[key]).open("w", encoding="ascii", newline="\n") as stream:
             # OrbData5 reads coordinate bounds only; dimensions are derived from them.

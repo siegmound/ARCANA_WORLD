@@ -1,6 +1,6 @@
 {
   "schema": "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION_V1",
-  "decision": "R6_T0_ORBDATA_ARCANA_ADAPTER_IMPLEMENTED__SHELLSET_SOURCE_GENERALIZATION_AWAITS_PATCH_AND_FAIR_QUALIFICATION",
+  "decision": "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION_PREPARED__FAIR_QUALIFICATION_REQUIRED",
   "source_identities": {
     "arcana_starting_head": "15dfca97b24c387af5b46c32f2b7db58154c2268",
     "scientific_shellset_upstream": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
@@ -18,7 +18,7 @@
       "source": "oceanic_lithosphere_age_ma",
       "units": "Ma",
       "physical_authority": "governed oceanic support only",
-      "halo": "nearest source ocean cell by spherical cell-center distance with stable tie order; explicitly numerical interpolation support"
+      "halo": "nearest source ocean cell by deterministic periodic 8-neighbor geodesic extension with stable source-cell tie order; explicitly numerical interpolation support"
     },
     "cArray": {
       "source": "crustal_thickness_m",
@@ -31,10 +31,12 @@
       "continental_codes": "governed values >=2",
       "classification": "never derived from interpolated age or plate identity"
     },
-    "continental_mantle_thickness": {
+    "continental_total_lithosphere": {
       "source": "continental_reference_lithosphere_thickness_m",
       "units": "m",
-      "mechanism": "explicit grid; never synthetic sArray/delta_ts"
+      "semantic_role": "GOVERNED_REQUESTED_TOTAL_LITHOSPHERE_STRUCTURE",
+      "mechanism": "explicit total-thickness grid; Assign initializes thickM as total lithosphere minus thickC, then applies source bounds and downstream consistency correction",
+      "synthetic_sArray_or_delta_ts": false
     },
     "serialization": {
       "header": "x1 dx x2 then y1 dy y2; counts derived by OrbData",
@@ -54,16 +56,33 @@
     "limitations": ["no resolution increase", "no smoothing", "no mesh framework added"]
   },
   "shellset_source_generalization": {
-    "status": "NOT_YET_PATCHED",
+    "status": "GENERATED_NOT_YET_FAIR_QUALIFIED",
     "required_parent_commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
     "scientific_upstream_commit": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
     "source_files_audited": ["src/OrbData5.f90", "src/MOD_Data.f90", "src/MOD_ShellSet.f90"],
-    "patch_path": null,
-    "patch_sha256": null,
+    "patch_path": "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch",
+    "patch_sha256": "4d4e5cfa07e8af0c52bc2fbcf2c77a080c2b68921174ad2e4cde078c5425843c",
+    "modified_shellset_files": ["src/MOD_ShellSet.f90", "src/OrbData5.f90", "src/MOD_Data.f90"],
+    "mode_activation": "all-or-nothing presence of per-model fort_<model>.15 and fort_<model>.16; neither means stock, both means ARCANA, one means fatal failure",
+    "unit_15": "explicit physical_crust_domain_id categorical grid; ID 1 selects ocean, IDs 2..6 select continental structure",
+    "unit_16": "continental_reference_lithosphere_thickness_m as requested TOTAL lithosphere structure; requested thickM starts as interpolated total minus thickC",
+    "categorical_lookup": "nearest grid cell, deterministic half-cell tie behavior; domain values never bilinearly interpolated",
+    "stock_sArray": "unchanged stock read and delta_ts inversion when ARCANA pair absent; not read in ARCANA mode",
+    "arcana_sArray_or_delta_ts_synthesis": false,
+    "zero_elevation": "exact zero bypasses ETOPO fallback in global OrbData5 needE scan and local Assign needE only when explicit pair is open",
+    "downstream_consistency": "existing geotherm, cooling_curvature, chemical_delta_rho and correction logic continues after requested total-to-mantle conversion",
+    "fair_qualification_script": "scripts/r6_t0_fair_apply_qualify_shellset_arcana_patch.sh",
+    "synthetic_fixture": {
+      "status": "PREPARED_NOT_RUN_ON_WINDOWS",
+      "assign_driver": "tests/fixtures/r6_t0_orbdata_arcana/assign_source_generalization.f90",
+      "input_pair_driver": "tests/fixtures/r6_t0_orbdata_arcana/open_pair_driver.f90",
+      "fixture_values_are_t0_configuration": false
+    },
     "semantic_classification": ["INTEROPERABILITY_GENERALIZATION", "NO_NEW_PHYSICAL_LAW", "NO_RHEOLOGY_CHANGE", "NO_MECHANICS_EQUATION_CHANGE"],
     "expected_stock_behavior": "unchanged when complete explicit ARCANA input pair is absent",
-    "expected_arcana_behavior": "domain grid controls ocean/continental branch; direct prescribed continental mantle thickness; complete FEG elevation accepted at exact zero; no ETOPO fallback",
-    "qualification": "NOT_QUALIFIED; old runtime identity applies only to unmodified source"
+    "expected_arcana_behavior": "domain grid controls ocean/continental branch independently of interpolated age; requested total lithosphere is converted to mantle component by subtracting crust; complete FEG elevation accepted at exact zero; no ETOPO fallback",
+    "stock_mode_expected_unchanged": true,
+    "qualification": "NOT_QUALIFIED; historical runtime identity applies only to unmodified source"
   },
   "heat_flow": {
     "status": "UNRESOLVED_CONFIGURATION",
@@ -72,6 +91,6 @@
   },
   "pre_orbdata_ready": false,
   "remaining_scientific_blockers": ["governed heat-flow routing and qLim configuration", "material/thermal OrbData configuration adjudication"],
-  "remaining_implementation_blockers": ["generate exact-context ShellSet patch", "add/run FAIR synthetic OrbData fixture and stock ListEx1 regression", "materialize 64,442-node projection after canonical partition payload is available"],
+  "remaining_implementation_blockers": ["run FAIR patch applicability/build, synthetic source fixtures, and exact stock ListEx1 regression; capture new runtime evidence after pass", "materialize 64,442-node projection after canonical partition payload is available"],
   "governance": {"orbdata_executed": false, "shellset_mechanics_authorized": false, "dt_selected": false, "t1_created": false, "forward_evolution": false, "push": false}
 }

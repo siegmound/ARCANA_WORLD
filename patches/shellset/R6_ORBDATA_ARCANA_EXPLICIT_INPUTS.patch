@@ -1,0 +1,287 @@
+--- a/src/MOD_ShellSet.f90
++++ b/src/MOD_ShellSet.f90
+@@ -1234,6 +1234,7 @@
+ subroutine CloseInput(prog) ! Close OrbData, Shells, OrbScore input files
+ 
+ character(len=2),intent(in) :: prog ! SH=Shells, OD=Data, OS=Score
++logical :: isOpen
+ 
+ 
+ select case(prog)
+@@ -1245,7 +1246,12 @@
+     close(3)
+     close(7)
+     close(11)
+-    close(12)
++    inquire(unit=12,opened=isOpen)
++    if(isOpen) close(12)
++    inquire(unit=15,opened=isOpen)
++    if(isOpen) close(15)
++    inquire(unit=16,opened=isOpen)
++    if(isOpen) close(16)
+ 
+ 
+   case("SH")
+@@ -1494,7 +1500,7 @@
+ character(len=200) :: filename
+ character(len=100) :: dir
+ integer,intent(in),optional :: rpeat
+-logical :: exists
++logical :: exists,arcDomainExists,arcLithosphereExists
+ logical,save :: callSF=.False.
+ 
+ 
+@@ -1508,7 +1514,17 @@
+     open(unit=3,file=trim(dir)//trim(filename)//'3')
+     open(unit=7,file=trim(dir)//trim(filename)//'7')
+     open(unit=11,file=trim(dir)//trim(filename)//'11')
+-    open(unit=12,file=trim(dir)//trim(filename)//'12')
++    arcDomainExists=FileExist(trim(dir)//trim(filename)//'15')
++    arcLithosphereExists=FileExist(trim(dir)//trim(filename)//'16')
++    if(arcDomainExists .neqv. arcLithosphereExists) then
++      call FatalError("Incomplete ARCANA OrbData pair (.15/.16)",ModNum)
++      call abort(11)
++    elseif(arcDomainExists) then
++      open(unit=15,file=trim(dir)//trim(filename)//'15')
++      open(unit=16,file=trim(dir)//trim(filename)//'16')
++    else
++      open(unit=12,file=trim(dir)//trim(filename)//'12')
++    end if
+ 
+ 
+   case("SH")
+--- a/src/OrbData5.f90
++++ b/src/OrbData5.f90
+@@ -40,11 +40,16 @@
+ integer :: numNod,n1000,nCond,nodCon,list
+ integer :: iRow,jCol,nQX,nQY,nAX,nAY
+ integer :: nCX,nCY,nSX,nSY,iNode
++integer :: nDomainX,nDomainY,nLithoX,nLithoY,domainClass,domainRow,domainCol
++integer :: lithoRow,lithoRow2,lithoCol,lithoCol2
+ real*8 :: TAsthK,dQdTdA,elev,fDip
+ real*8 :: offset,xNode,yNode,area,detJ,dXs,dYs,dXSP,dYSP,fLen,fpflt,fpsfer,fArg,sita
+ real*8 :: eX1,eX2,eDX,eY1,eY2,eDY
+ real*8 :: qX1,qX2,qDX,qY1,qY2,qDY,qLimit,aX1,aX2,aDX,aY1,aY2,aDY
+ real*8 :: cX1,cX2,cDX,cY1,cY2,cDY,sX1,sX2,sDX,sY1,sY2,sDY,pLon,pLat,elevat,heatFl
++real*8 :: domainX1,domainX2,domainDX,domainY1,domainY2,domainDY
++real*8 :: lithoX1,lithoX2,lithoDX,lithoY1,lithoY2,lithoDY
++real*8 :: requestedTotalLithosphere,arcLon,arcFr,arcFc,arcTop,arcBot,domainValue
+ real*8 :: thickC,thickM,chemical_delta_rho,chemical_delta_rho_list
+ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
+ 
+@@ -78,6 +83,7 @@
+        INTEGER :: continuum_LRi, fault_LRi ! both DIMENSIONed below ...
+ 
+        LOGICAL :: brief, log_strike_adjustments, needE, needQ, skipBC
++       LOGICAL :: arcanaMode,arcana15Open,arcana16Open,arcanaOcean
+        LOGICAL :: checkE, checkF, checkN, edgeTS, edgeFS
+ 
+ !   The following to agree with BLOCK  DATA  BD1:
+@@ -90,7 +96,8 @@
+ 
+ !  DIMENSIONs using dynamic memory allocation:
+        REAL*8, DIMENSION(:, :), ALLOCATABLE :: eArray, qArray, aArray, &
+-     &                                         cArray, sArray
++     &                                         cArray, sArray, arcanaDomainArray, &
++     &                                         arcanaLithosphereArray
+ 
+ !  DIMENSIONS using PARAMETER maxNod:
+        DIMENSION checkN(maxNod), chemical_delta_rho_list(maxNod), &
+@@ -323,10 +330,19 @@
+ 
+ !   Read in elevation array on unit 3, if needed
+ 
++       INQUIRE(UNIT=15,OPENED=arcana15Open)
++       INQUIRE(UNIT=16,OPENED=arcana16Open)
++       IF (arcana15Open .NEQV. arcana16Open) THEN
++            CALL FatalError("Incomplete ARCANA OrbData input pair",ModNum)
++            CALL abort(11)
++       END IF
++       arcanaMode=arcana15Open .AND. arcana16Open
+        needE = .FALSE.
+-       DO 60 i = 1, numNod
+-            IF (elev(i) == 0.0D0) needE = .TRUE.
+-   60  CONTINUE
++       IF (.NOT. arcanaMode) THEN
++            DO 60 i = 1, numNod
++                 IF (elev(i) == 0.0D0) needE = .TRUE.
++   60       CONTINUE
++       END IF
+        IF (needE) THEN
+ 	     write(dir,"(A,'/ThID_',I0,'_Data_input')") trim(ListDIR),ThID
+ 		 write(filename,"('fort_',I0,'.3')") ModNum
+@@ -410,15 +426,47 @@
+ !     (from the Moho to 400 km depth),
+ !      such as delta_ts.grd, on unit 12:
+ 
+-       IF(Verbose) WRITE(iUnitVerb, 82)
+-   82  FORMAT(/ /' Attempting to read gridded S-wave travel-time' &
+-     &          /'    anomalies (in the upper mantle):'/)
+-       READ (12, * ) sX1, sDX, sX2
+-       READ (12, * ) sY1, sDY, sY2
+-       nSX = (sX2 - sX1) / sDX + 1.5D0 ! truncating to INTEGER
+-       nSY = (sY2 - sY1) / sDY + 1.5D0
+-       ALLOCATE ( sArray(nSY, nSX) )
+-       READ (12, * ) ((sArray(iRow, jCol), jCol = 1, nSX), iRow = 1, nSY)
++       IF (arcanaMode) THEN
++            READ (15,*) domainX1,domainDX,domainX2
++            READ (15,*) domainY1,domainDY,domainY2
++            nDomainX=(domainX2-domainX1)/domainDX+1.5D0
++            nDomainY=(domainY2-domainY1)/domainDY+1.5D0
++            ALLOCATE(arcanaDomainArray(nDomainY,nDomainX))
++            READ (15,*) ((arcanaDomainArray(iRow,jCol),jCol=1,nDomainX),iRow=1,nDomainY)
++            READ (16,*) lithoX1,lithoDX,lithoX2
++            READ (16,*) lithoY1,lithoDY,lithoY2
++            nLithoX=(lithoX2-lithoX1)/lithoDX+1.5D0
++            nLithoY=(lithoY2-lithoY1)/lithoDY+1.5D0
++            IF (nLithoX/=nDomainX .OR. nLithoY/=nDomainY .OR. &
++     &          ABS(lithoX1-domainX1)>1.0D-10 .OR. ABS(lithoX2-domainX2)>1.0D-10 .OR. &
++     &          ABS(lithoY1-domainY1)>1.0D-10 .OR. ABS(lithoY2-domainY2)>1.0D-10 .OR. &
++     &          ABS(lithoDX-domainDX)>1.0D-10 .OR. ABS(lithoDY-domainDY)>1.0D-10) THEN
++                 CALL FatalError("ARCANA domain/thickness grid geometry mismatch",ModNum)
++                 CALL abort(11)
++            END IF
++            ALLOCATE(arcanaLithosphereArray(nLithoY,nLithoX))
++            READ (16,*) ((arcanaLithosphereArray(iRow,jCol),jCol=1,nLithoX),iRow=1,nLithoY)
++            ALLOCATE(sArray(1,1))
++            sArray=0.0D0
++            nSX=1
++            nSY=1
++            sX1=0.0D0
++            sDX=1.0D0
++            sX2=0.0D0
++            sY1=0.0D0
++            sDY=1.0D0
++            sY2=0.0D0
++       ELSE
++            IF(Verbose) WRITE(iUnitVerb, 82)
++   82       FORMAT(/ /' Attempting to read gridded S-wave travel-time' &
++     &               /'    anomalies (in the upper mantle):'/)
++            READ (12, * ) sX1, sDX, sX2
++            READ (12, * ) sY1, sDY, sY2
++            nSX = (sX2 - sX1) / sDX + 1.5D0 ! truncating to INTEGER
++            nSY = (sY2 - sY1) / sDY + 1.5D0
++            ALLOCATE ( sArray(nSY, nSX) )
++            READ (12, * ) ((sArray(iRow, jCol), jCol = 1, nSX), iRow = 1, nSY)
++       END IF
+ 
+ !   PROCESS ALL NODES EQUALLY:
+ 
+@@ -435,6 +483,46 @@
+             elevat = elev(iNode)
+             heatFl = dQdTdA(iNode)
+ 
++            arcanaOcean=.FALSE.
++            requestedTotalLithosphere=0.0D0
++            IF (arcanaMode) THEN
++                 domainRow=INT((domainY2-pLat)/domainDY+1.50000001D0)
++                 domainRow=MAX(1,MIN(nDomainY,domainRow))
++                 arcLon=pLon
++                 IF (arcLon<domainX1) arcLon=arcLon+360.0D0
++                 IF (arcLon>domainX2) arcLon=arcLon-360.0D0
++                 domainCol=INT((arcLon-domainX1)/domainDX+1.50000001D0)
++                 domainCol=MAX(1,MIN(nDomainX,domainCol))
++                 domainValue=arcanaDomainArray(domainRow,domainCol)
++                 IF (domainValue/=domainValue .OR. domainValue<1.0D0 .OR. &
++     &               domainValue>6.0D0) THEN
++                      CALL FatalError("Invalid ARCANA physical domain class",ModNum)
++                      CALL abort(11)
++                 END IF
++                 domainClass=NINT(domainValue)
++                 IF (ABS(domainValue-domainClass)>1.0D-8) THEN
++                      CALL FatalError("Non-categorical ARCANA physical domain",ModNum)
++                      CALL abort(11)
++                 END IF
++                 arcanaOcean=(domainClass==1)
++                 lithoRow=INT((lithoY2-pLat)/lithoDY+1.00001D0)
++                 lithoRow=MAX(1,MIN(nLithoY-1,lithoRow))
++                 lithoRow2=lithoRow+1
++                 arcFr=(lithoY2-lithoDY*(lithoRow-1)-pLat)/lithoDY
++                 arcFr=MAX(0.0D0,MIN(1.0D0,arcFr))
++                 lithoCol=INT((arcLon-lithoX1)/lithoDX+1.00001D0)
++                 lithoCol=MAX(1,MIN(nLithoX-1,lithoCol))
++                 lithoCol2=lithoCol+1
++                 arcFc=(arcLon-(lithoX1+lithoDX*(lithoCol-1)))/lithoDX
++                 arcFc=MAX(0.0D0,MIN(1.0D0,arcFc))
++                 arcTop=arcanaLithosphereArray(lithoRow,lithoCol)+ &
++     &                arcFc*(arcanaLithosphereArray(lithoRow,lithoCol2)- &
++     &                      arcanaLithosphereArray(lithoRow,lithoCol))
++                 arcBot=arcanaLithosphereArray(lithoRow2,lithoCol)+ &
++     &                arcFc*(arcanaLithosphereArray(lithoRow2,lithoCol2)- &
++     &                      arcanaLithosphereArray(lithoRow2,lithoCol))
++                 requestedTotalLithosphere=arcTop+arcFr*(arcBot-arcTop)
++            END IF
+             CALL Assign (aArray,    aX1,    aDX,    aX2,    nAX,    aDY,    aY2,    nAY, & ! INTENT(IN)
+      &                   alphaT, cLimit, conduc, &                                         ! INTENT(IN)
+      &                   cArray,    cX1,    cDX,    cX2,    nCX,    cDY,    cY2,    nCY, & ! INTENT(IN)
+@@ -451,7 +539,8 @@
+      &                   TAsthK, temLim,  TSurf, &                                         ! INTENT(IN)
+      &                   elevat, heatFl, &                                                 ! INTENT(INOUT)
+      &                   thickC, thickM, chemical_delta_rho, cooling_curvature, &          ! INTENT(OUT)
+-	 &         ModNum)
++     &                   arcanaMode,arcanaOcean,requestedTotalLithosphere, &
++     &                   ModNum)
+ 
+             elev(iNode) = elevat
+             dQdTdA(iNode) = heatFl
+--- a/src/MOD_Data.f90
++++ b/src/MOD_Data.f90
+@@ -222,6 +222,7 @@
+      &                    TAsthK, temLim,  TSurf, &                                         ! INTENT(IN)
+      &                    elevat, heatFl, &                                                 ! INTENT(INOUT)
+      &                    thickC, thickM, chemical_delta_rho, cooling_curvature, &          ! INTENT(OUT)
++     &                    arcanaMode,arcanaOcean,requestedTotalLithosphere, &
+      &                    ModNum)
+ 
+ !   Determines elevation (if 0.0), heat-flow (if 0.0), and
+@@ -270,6 +271,8 @@
+                             &    nQX,    nQY,    nSX,    nSY
+         REAL*8, INTENT(INOUT) :: elevat, heatFl
+         REAL*8, INTENT(OUT) :: thickC, thickM, chemical_delta_rho, cooling_curvature
++        LOGICAL, INTENT(IN) :: arcanaMode,arcanaOcean
++        REAL*8, INTENT(IN) :: requestedTotalLithosphere
+         !Argument arrays ALLOCATED and dimensioned in calling program:
+         DIMENSION aArray(:, :), cArray(:, :), eArray(:, :), qArray(:, :), sArray(:, :)
+         !Argument arrays with (crust:mantle) values:
+@@ -298,7 +301,7 @@
+        warnM1 = .FALSE.
+        warnL2 = .FALSE.
+ !   Determine the elevation, if needed:
+-       needE = (elevat == 0.0D0)
++       needE = (elevat == 0.0D0) .AND. (.NOT. arcanaMode)
+        IF (needE) THEN
+             ir1 = ((eY2 - pLat) / eDY) + 1.00001D0 ! truncated to INTEGER
+             ir1 = MAX(ir1, 1)
+@@ -414,7 +417,8 @@
+ 
+ !           Check for seafloor-age overriding heat-flow grid value:
+ 
+-            IF (ageMa < 200.0D0) THEN
++            IF ((arcanaMode .AND. arcanaOcean) .OR. &
++     &          ((.NOT. arcanaMode) .AND. ageMa < 200.0D0)) THEN
+ !              Seafloor age is valid (not "unknown" or "continental")
+                  IF (ageMa <= 0.0D0) THEN
+                       heatFl = qLim1
+@@ -490,7 +494,8 @@
+ !  Method of determining lithosphere thickness depends on whether
+ !     node has known (and valid) sea-floor age:
+ 
+-       IF (ageMa < 200.0D0) THEN
++       IF ((arcanaMode .AND. arcanaOcean) .OR. &
++     &     ((.NOT. arcanaMode) .AND. ageMa < 200.0D0)) THEN
+ 
+ !           This node is in oceanic lithosphere.
+ 
+@@ -532,6 +537,12 @@
+ 
+             thickM = MAX(thickM, 0.0D0)
+             thickM = MIN(thickM, (hLMax - thickC))
++
++       ELSE IF (arcanaMode) THEN
++!           Convert governed requested TOTAL lithosphere to mantle lithosphere.
++            thickM=requestedTotalLithosphere-thickC
++            thickM=MAX(thickM,0.0D0)
++            thickM=MIN(thickM,(hLMax-thickC))
+ 
+        ELSE
+ 

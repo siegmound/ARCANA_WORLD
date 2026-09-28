@@ -39,8 +39,10 @@ class OrbDataAdapterTests(unittest.TestCase):
     self.assertTrue(lineage["aArray"]["halo_mask_sha256"])
     self.assertNotIn("sArray", grids)
     self.assertNotIn("delta_ts", grids)
-    self.assertEqual(lineage["continental_mantle_thickness"]["units"], "m")
-    self.assertTrue(lineage["continental_mantle_thickness"]["transfer"].startswith("direct"))
+    self.assertEqual(lineage["continental_total_lithosphere"]["units"], "m")
+    self.assertEqual(lineage["continental_total_lithosphere"]["semantic_role"],
+                     "GOVERNED_REQUESTED_TOTAL_LITHOSPHERE_STRUCTURE")
+    self.assertTrue(lineage["continental_total_lithosphere"]["transfer"].startswith("direct"))
     # Every input age on land is a numerical fill, never physical authority.
     self.assertEqual(grids["aArray"][90, 20], 20.0)
     self.assertEqual(lineage["domain"]["source"], "physical_crust_domain_id")
@@ -66,6 +68,24 @@ class OrbDataAdapterTests(unittest.TestCase):
     self.assertIn("15dfca97b24c387af5b46c32f2b7db58154c2268", validator)
     self.assertIn("39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e", validator)
     self.assertIn("INTEROPERABILITY_GENERALIZATION", json.dumps(report))
+
+ def test_source_patch_has_explicit_fail_closed_domain_and_total_thickness_contracts(self):
+    root = Path(__file__).resolve().parents[1]
+    patch = (root / "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch").read_text()
+    self.assertIn("trim(filename)//'15'", patch)
+    self.assertIn("trim(filename)//'16'", patch)
+    self.assertIn(".neqv. arcLithosphereExists", patch)
+    self.assertIn("arcanaOcean=(domainClass==1)", patch)
+    self.assertIn("domainRow=INT((domainY2-pLat)/domainDY+1.50000001D0)", patch)
+    self.assertIn("requestedTotalLithosphere-thickC", patch)
+    # The hunk retains the stock unit-12 read; its unchanged inversion remains
+    # in source context outside the patch additions.
+    self.assertIn("READ (12, * )", patch)
+    self.assertIn("IF (.NOT. arcanaMode) THEN", patch)
+    self.assertIn("needE = (elevat == 0.0D0) .AND. (.NOT. arcanaMode)", patch)
+    self.assertIn("MOD_ShellSet.f90", patch)
+    self.assertIn("OrbData5.f90", patch)
+    self.assertIn("MOD_Data.f90", patch)
 
 
 if __name__ == "__main__":
