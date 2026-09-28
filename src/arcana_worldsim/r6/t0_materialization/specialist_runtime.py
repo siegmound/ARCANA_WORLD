@@ -9,12 +9,18 @@ import hashlib
 import json
 import platform
 import shutil
+import os
+import subprocess
 from pathlib import Path
 from typing import Any
 
 
 REPORT_JSON = "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.json"
 REPORT_MD = "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.md"
+READJUDICATION_JSON = "R6_T0_B_PANGAEA_LIKE_V2_RUNTIME_BINDING_AND_INPUT_READJUDICATION.json"
+READJUDICATION_MD = "R6_T0_B_PANGAEA_LIKE_V2_RUNTIME_BINDING_AND_INPUT_READJUDICATION.md"
+FAIR_EVIDENCE = "R6_SHELLSET_FAIR_RUNTIME_QUALIFICATION.json"
+FAIR_EVIDENCE_SHA256 = "ab29de4577c4c4b007d41a7ac5567d7b287c7fed5dee3107aeb69dc35df1a350"
 
 PARENT_FILES = (
     "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZATION_REPORT.json",
@@ -70,7 +76,11 @@ def _read_json(root: Path, name: str) -> dict[str, Any]:
 
 
 def runtime_inventory() -> dict[str, dict[str, Any]]:
-    """Report PATH-visible runtimes only; never launch or install them."""
+    """Inventory explicitly configured or PATH-visible tools without launching them.
+
+    ShellSet may be bound through ARCANA_SHELLSET_EXE or ARCANA_SHELLSET_ROOT.
+    A configured binary is AVAILABLE, but never QUALIFIED merely by existing.
+    """
     candidates = {
         "GWB": ("worldbuilder", "gwb", "WorldBuilder"),
         "OrbData5": ("OrbData5", "orbdata5", "orbdata"),
@@ -88,8 +98,270 @@ def runtime_inventory() -> dict[str, dict[str, Any]]:
             "resolved_path": found[1] if found else None,
             "version": None,
             "qualification": "NOT_RUN" if found else "BLOCKED_RUNTIME_NOT_FOUND",
+            "availability": "AVAILABLE" if found else "UNAVAILABLE",
+        }
+    explicit_exe = os.environ.get("ARCANA_SHELLSET_EXE")
+    explicit_root = os.environ.get("ARCANA_SHELLSET_ROOT")
+    configured = Path(explicit_exe).expanduser() if explicit_exe else (
+        Path(explicit_root).expanduser() / "ShellSet.exe" if explicit_root else None
+    )
+    if configured is not None:
+        configured = configured.resolve()
+        exists = configured.is_file()
+        digest = None
+        if exists:
+            hasher = hashlib.sha256()
+            with configured.open("rb") as executable_file:
+                for block in iter(lambda: executable_file.read(1024 * 1024), b""):
+                    hasher.update(block)
+            digest = hasher.hexdigest()
+        result["ShellSet"] = {
+            "commands_checked": [], "available_on_path": False,
+            "resolved_command": str(configured) if exists else None,
+            "resolved_path": str(configured) if exists else None,
+            "version": None,
+            "availability": "AVAILABLE" if exists else "UNAVAILABLE",
+            "qualification": "NOT_RUN" if exists else "BLOCKED_CONFIGURED_RUNTIME_NOT_FOUND",
+            "binding_source": "ARCANA_SHELLSET_EXE" if explicit_exe else "ARCANA_SHELLSET_ROOT",
+            "executable_sha256": digest,
         }
     return result
+
+
+def load_fair_runtime_evidence(root: str | Path) -> tuple[dict[str, Any], str]:
+    """Read immutable qualification evidence and verify its committed bytes.
+
+    Git's committed blob is hashed so Windows ``core.autocrlf`` cannot turn a
+    valid LF evidence artifact into a false digest mismatch.
+    """
+    root = Path(root).resolve()
+    path = root / FAIR_EVIDENCE
+    if not path.is_file():
+        raise FileNotFoundError(f"governed FAIR qualification evidence missing: {path}")
+    result = subprocess.run(
+        ["git", "show", f"HEAD:{FAIR_EVIDENCE}"], cwd=root,
+        capture_output=True, check=False,
+    )
+    if result.returncode:
+        raise ValueError("FAIR qualification evidence must be committed before it is consumed")
+    blob_sha256 = hashlib.sha256(result.stdout).hexdigest()
+    if blob_sha256 != FAIR_EVIDENCE_SHA256:
+        raise ValueError(
+            f"FAIR evidence committed SHA256 mismatch: expected {FAIR_EVIDENCE_SHA256}, found {blob_sha256}"
+        )
+    evidence = _read_json(root, FAIR_EVIDENCE)
+    runtime = evidence.get("qualified_runtime", {})
+    source = evidence.get("scientific_source", {})
+    if (evidence.get("schema") != "ARCANA_SHELLSET_FAIR_RUNTIME_QUALIFICATION_V1"
+            or evidence.get("evidence_identity_sha256") != "8265b998a8ddb8e3fdfd7371c9bfe076e6697fbbd7fcb922d77a37317ef59afe"
+            or runtime.get("commit") != "09a06ecd061f00b80a52af86e31d609ff5545a8b"
+            or runtime.get("executable_sha256") != "03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349"
+            or source.get("upstream_commit") != "e4a6fbd5997b6c4978924649dff1abab0c96ca57"):
+        raise ValueError("FAIR evidence content differs from governed runtime identities")
+    return evidence, blob_sha256
+
+
+def build_readjudication(root: str | Path) -> dict[str, Any]:
+    """Build the current R6 runtime/input gate without rewriting history."""
+    root = Path(root).resolve()
+    evidence, evidence_sha = load_fair_runtime_evidence(root)
+    parent = _read_json(root, PARENT_FILES[0])
+    implementation = _read_json(root, PARENT_FILES[2])
+    source_contract = _read_json(root, PARENT_FILES[5])
+    source_closure = _read_json(root, PARENT_FILES[6])
+    configuration = _read_json(root, PARENT_FILES[11])
+    historical = _read_json(root, REPORT_JSON)
+
+    evidence_auth = evidence["authorization_boundary"]
+    q = evidence["qualification"]
+    rt = evidence["qualified_runtime"]
+    fields = [
+        {
+            "field": "elevation", "pre_orbdata_semantics": "Numeric elevation is part of the existing PRE_ORBDATA FEG record. OrbData can assign/fill elevation only from selected configured input data; no exact zero-to-fill sentinel is established in the checked ARCANA source record.",
+            "zero_or_sentinel": "NOT_ESTABLISHED_FOR_THIS_FIELD", "preserved_or_modified": "May be assigned/modified by configured OrbData source path.",
+            "orbdata_derives": "It can assign from selected data; no source-grounded ocean-age-to-bathymetry derivation is recorded.",
+            "stock_earth_dependency": "Earth elevation grids such as ETOPO20 occur in stock examples; qualification fixture only.",
+            "arcana_equivalent": "ARCANA can emit the required grid/FEG format once complete governed land+ocean elevation is available; ocean total elevation remains unknown.",
+            "readiness": ["ARCANA_EXISTING_AUTHORITY", "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"]
+        },
+        {
+            "field": "heat_flow", "pre_orbdata_semantics": "Numeric nodal heat flow is present in PRE_ORBDATA. Source review states nonzero input is preserved; otherwise configured inputs supply it, and the ocean workflow may use seafloor age.",
+            "zero_or_sentinel": "ZERO_OR_ABSENT_VALUE_ROUTES_TO_CONFIGURED_SOURCE_PER_SOURCE_REVIEW; exact parser branch should be checked against pinned source before relying on zero as a production sentinel.", "preserved_or_modified": "Nonzero input preserved; configured source path can populate/derive missing values.",
+            "orbdata_derives": "Ocean age-to-heat-flow route exists conditionally on configured ocean data path; it is not an ARCANA age-authority generator.",
+            "stock_earth_dependency": "Stock Earth workflow includes heat-flow/elevation grids and Earth seafloor-age grid age_1p5; never promote those values.",
+            "arcana_equivalent": "Existing ARCANA ocean-age field may feed an equivalent parser-format grid after exact source-path/config/unit semantics are bound. Continental references are only partial.",
+            "readiness": ["ARCANA_EXISTING_AUTHORITY", "ORBDATA_DERIVED_FROM_GOVERNED_INPUT", "MODEL_CONFIGURATION_REQUIRED", "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"]
+        },
+        {
+            "field": "crustal_thickness", "pre_orbdata_semantics": "OrbData5 current Assign path reads thickness from an upstream grid; it is not an isostasy-generated field. PRE_ORBDATA FEG itself carries elevation and heat flow only in ARCANA's FEG adapter.",
+            "zero_or_sentinel": "No zero-as-generation rule established; a physical upstream thickness grid is required.", "preserved_or_modified": "Read/assigned from configured grid; not generated by the current Assign route.",
+            "orbdata_derives": "No, not in current Assign path.",
+            "stock_earth_dependency": "CRUST2 appears in stock Earth examples; qualification/reference only.",
+            "arcana_equivalent": "Yes: governed ARCANA cell thickness exists; projection is implemented in the existing mesh adapter as NUMERICAL_DERIVED_SUPPORT, but full production replay is blocked because the manifested partition NPZ is absent from this checkout.",
+            "readiness": ["ARCANA_EXISTING_AUTHORITY", "ARCANA_DERIVABLE_FROM_EXISTING_GOVERNED_PRIMITIVE"]
+        },
+        {
+            "field": "mantle_lithosphere_thickness", "pre_orbdata_semantics": "Not carried by ARCANA PRE_ORBDATA FEG. OrbData has conditional age-based ocean and vertical S-wave anomaly continental source paths, or a prescribed equivalent input.",
+            "zero_or_sentinel": "No zero-as-generation sentinel established; selected source path and valid age/anomaly input required.", "preserved_or_modified": "Derived/assigned from configured ocean-age or continental seismic-anomaly path; exact path matters.",
+            "orbdata_derives": "Conditionally from ocean age; continental stock path uses delta_ts-like seismic anomaly input.",
+            "stock_earth_dependency": "age_1p5 ocean grid and delta_ts continental grid in stock Earth path; fixtures only.",
+            "arcana_equivalent": "Ocean age field exists and is authoritative; exact compatible synthetic grid mapping/configuration remains unbound. Continental thermal/structural primitive remains missing.",
+            "readiness": ["ARCANA_EXISTING_AUTHORITY", "ORBDATA_DERIVED_FROM_GOVERNED_INPUT", "MODEL_CONFIGURATION_REQUIRED", "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"]
+        },
+        {
+            "field": "chemical_delta_rho", "pre_orbdata_semantics": "Node-wise effective chemical-origin lithosphere correction adjusted/used as a degree of freedom during isostatic structural construction; configured bound applies; it is not absolute EOS density.",
+            "zero_or_sentinel": "No zero-as-generation rule established in the checked source record.", "preserved_or_modified": "Assigned/adjusted by OrbData with cooling-curvature degrees of freedom and basal stress consistency check.",
+            "orbdata_derives": "Adjusted/solved conditionally, under source-configured bounds and thermal/reference configuration.",
+            "stock_earth_dependency": "No observational Earth grid is an ARCANA authority; Earth OrbScore optimum is prohibited.",
+            "arcana_equivalent": "Not yet: governed numeric bounds/configuration and resulting field semantics remain unselected.",
+            "readiness": ["MODEL_CONFIGURATION_REQUIRED", "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"]
+        },
+        {
+            "field": "cooling_curvature", "pre_orbdata_semantics": "Node-wise non-steady geotherm curvature, an OrbData-assigned/adjusted structural degree of freedom.",
+            "zero_or_sentinel": "No zero-as-generation rule established in the checked source record.", "preserved_or_modified": "Adjusted/used jointly with chemical density anomaly during structure construction.",
+            "orbdata_derives": "Conditionally as part of configured non-steady geotherm/isostatic structure; exact controls must be pinned.",
+            "stock_earth_dependency": "No Earth OrbScore optimum or stock Earth output may be transferred as ARCANA authority.",
+            "arcana_equivalent": "Not yet: thermal model/configuration and field values are unresolved.",
+            "readiness": ["MODEL_CONFIGURATION_REQUIRED", "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"]
+        },
+    ]
+    # T0 state in this branch now contains a physical crust-thickness grid and age.
+    parent_hashes = parent["normalized_field_hashes"]
+    if parent_hashes["oceanic_lithosphere_age_ma"] != "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2":
+        raise ValueError("authoritative ocean age identity changed")
+    historical_runtime = historical["specialist_runtime_qualification"]
+    bootstrap_sha = implementation["parent_state"]["bootstrap_sha256"]
+    if bootstrap_sha != "27bdaa065146981d425088db06c7f989c1099e64e4b30d920b04c979d01331bf":
+        raise ValueError("historical bootstrap identity changed")
+    reference_rows = configuration["reference_physical_parameters"]["families"]
+    unresolved_reference = [row["id"] for row in reference_rows if not row["selected"]]
+    mesh_payload = root / "_ARCANA_EXTERNAL_SOURCES/r6/tectonic_t0/R6_T0_VECTOR_PLATE_PARTITION.npz"
+    projection_available = mesh_payload.is_file()
+    arcana_capacity = evidence["capacity_delta"]["OrbData5"]["maxNod"] >= 64_442 and evidence["capacity_delta"]["OrbData5"]["maxEl"] >= 128_880
+    return {
+        "schema": "R6_T0_B_PANGAEA_LIKE_V2_RUNTIME_BINDING_AND_INPUT_READJUDICATION_V2",
+        "decision": "R6_T0_SPECIALIST_RUNTIME_QUALIFIED_FOR_EXAMPLES_AND_ARCANA_CAPACITY__INPUTS_REMAIN_OPEN",
+        "t0_ma": 210,
+        "fair_evidence": {"path": FAIR_EVIDENCE, "committed_blob_sha256": evidence_sha,
+                          "evidence_identity_sha256": evidence["evidence_identity_sha256"],
+                          "recorded_at_utc": evidence["recorded_at_utc"], "host": evidence["host"]},
+        "historical_windows_observation": {"host_os": historical_runtime["host_os"],
+                                           "runtimes": historical_runtime["runtimes"],
+                                           "official_build_qualification": historical_runtime["official_build_qualification"],
+                                           "status": "PRESERVED_HISTORICAL_OBSERVATION; not current FAIR qualification"},
+        "runtime": {"scientific_source_repository": evidence["scientific_source"]["repository"],
+                    "scientific_source_commit": evidence["scientific_source"]["upstream_commit"],
+                    "qualified_runtime_commit": rt["commit"], "runtime_branch": rt["branch"],
+                    "executable_sha256": rt["executable_sha256"], "host": evidence["host"],
+                    "compiler_backend": rt["backend"], "compiler": rt["compiler"],
+                    "blas_lapack": rt["blas_lapack"], "mpi": rt["mpi"],
+                    "runtime_root": rt["root"], "runtime_executable": rt["executable"],
+                    "portability_delta": evidence["portability_delta"],
+                    "capacity_delta": evidence["capacity_delta"],
+                    "numerical_change_classification": evidence["capacity_delta"]["classification"],
+                    "availability": "AVAILABLE_ON_FAIR_PER_GOVERNED_EVIDENCE; local executable not required",
+                    "qualified_for_official_upstream_examples": evidence_auth["qualified_for_upstream_scientific_example"],
+                    "qualified_for_arcana_mesh_capacity": arcana_capacity and evidence_auth["qualified_capacity_patch"],
+                    "arcana_mesh_capacity_check": {"nodes": 64_442, "triangles": 128_880,
+                                                   "OrbData5_maxNod": evidence["capacity_delta"]["OrbData5"]["maxNod"],
+                                                   "OrbData5_maxEl": evidence["capacity_delta"]["OrbData5"]["maxEl"],
+                                                   "OrbScore2_maxNod": evidence["capacity_delta"]["OrbScore2"]["maxNod"],
+                                                   "OrbScore2_maxEl": evidence["capacity_delta"]["OrbScore2"]["maxEl"]},
+                    "t0_input_transformations_authorized": False,
+                    "t0_mechanics_authorized": evidence_auth["arcana_t0_mechanics_authorized"],
+                    "qualification_results": q,
+                    "cross_backend_acceptance": evidence["qualification"]["official_stored_vs_nvidia"]["cross_backend_acceptance_tolerance"]},
+        "source_audit_basis": {"upstream_commit_pinned": evidence["scientific_source"]["upstream_commit"],
+                               "official_source_urls": [
+                                   "https://github.com/JonBMay/ShellSet/blob/e4a6fbd5997b6c4978924649dff1abab0c96ca57/src/MOD_Data.f90",
+                                   "https://github.com/JonBMay/ShellSet/blob/e4a6fbd5997b6c4978924649dff1abab0c96ca57/src/OrbData5.f90",
+                                   "https://github.com/JonBMay/ShellSet/blob/e4a6fbd5997b6c4978924649dff1abab0c96ca57/INPUT/iEarth5-049.in"],
+                               "contracts": ["R6_SHELLSET_MINIMUM_THERMOMECHANICAL_STATE_CONTRACT.json", "R6_SHELLSET_PRERUNTIME_INPUT_CLOSURE.json"],
+                               "line_level_upstream_source_present_locally": False,
+                               "scope_note": "The checked-in ARCANA source review cites official MOD_Data.f90 and OrbData5.f90 and preserves behavioral findings; source body is not vendored. Exact parser branches/sentinels not stated by the checked-in review remain unverified and are not used as generation sentinels."},
+        "orbdata_capability_matrix": fields,
+        "arcana_state": {"mesh_nodes": 64_442, "mesh_triangles": 128_880,
+                         "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+                         "field_package_sha256": parent["field_package_sha256"],
+                         "ocean_age_sha256": parent_hashes["oceanic_lithosphere_age_ma"],
+                         "ocean_age_regenerated": False,
+                         "historical_bootstrap_sha256": bootstrap_sha,
+                         "existing_materialized_fields": [{"field": row["field"], "sha256": row["normalized_sha256"]}
+                                                            for row in historical["pending_field_ledger"]["ALREADY_MATERIALIZED"]]},
+        "physical_configuration": {"canonical": {"gMean_m_s2": 9.82, "radius_m": 6_371_000},
+                                   "unresolved_reference_families": unresolved_reference,
+                                   "rheology_families": list(RHEOLOGY_FAMILIES),
+                                   "nFl": 0, "FFRIC": "INACTIVE", "BYERLY": "INACTIVE",
+                                   "numeric_rheology_selected": False,
+                                   "earth_defaults_or_orbscore_optimum_used": False},
+        "projection": {"implementation": "existing shellset_mesh adapter project_cell_field_to_nodes",
+                       "status": "IMPLEMENTED; full production projection not run" if not projection_available else "READY_FOR_DETERMINISTIC_PROJECTION",
+                       "classification": "NUMERICAL_DERIVED_SUPPORT",
+                       "rule": "lexicographic first incident cell for continuous values; categorical value only when all incident cells agree; any UNKNOWN incident source keeps output UNKNOWN",
+                       "lineage": "per-node incident source cells, selected cell/weight, categorical support, uncertainty, unknown count and coverage",
+                       "error": "no interpolation error asserted; source-cell support retained",
+                       "production_mesh_source_payload_available": projection_available,
+                       "production_projection_replay": "NOT_RUN"},
+        "feg_readiness": {"required_final_fields": [row["field"] for row in fields],
+                           "PRE_ORBDATA_ready": False, "PRE_ORBDATA_materialized": False,
+                           "SHELLS_READY_ready": False, "mechanics_authorized": False,
+                           "reason": "complete ocean elevation and global heat-flow input semantics are not closed; PRE_ORBDATA requires numeric elevation/heat-flow nodes, and no unverified zero sentinel is emitted"},
+        "scientific_blockers": [
+            "Author complete T0 ocean elevation/bathymetry with datum, support and uncertainty; OrbData age does not establish bathymetry generation.",
+            "Select governed ocean age-to-heat-flow/thickness configurations and compatible data mapping; preserve existing age field.",
+            "Constrain all nine reference material/thermal configuration families and numeric continuum rheology; no Earth defaults/OrbScore optimum.",
+            "Provide a governed continental thermal/structural initialization and complete global heat-flow/thickness state.",
+            "Close chemical_delta_rho bounds/configuration and cooling_curvature controls as model configuration, with no arbitrary zeros."],
+        "implementation_blockers": (["Canonical partition NPZ expected by existing mesh adapter is absent from this checkout; production projection/replay cannot currently be executed."] if not projection_available else []) + [
+            "Audit exact pinned OrbData5 parser branches against upstream commit to resolve any unspecified sentinels/source modes before using them.",
+            "After required scientific fields close, materialize PRE_ORBDATA and execute the prepared FAIR OrbData validation; do not run ShellSet mechanics here.",
+            "Global sphere uniqueness/reference-frame and rigid-rotation nullspace qualification remains open."],
+        "fair_validation": {"script": "scripts/r6_t0_fair_validate_orbdata_result.sh",
+                            "command_after_input_gates_close": "bash scripts/r6_t0_fair_validate_orbdata_result.sh",
+                            "behavior": "fail-fast identity/input/output hash and status validation; does not start mechanics or evolution",
+                            "input_result_manifest": "R6_T0_ORBDATA_FAIR_RESULT_MANIFEST.json (not yet present; PRE_ORBDATA is not ready)"},
+        "governance": {"historical_evidence_rewritten": False, "canonical_payload_mutated": False,
+                       "canonical_promoted": False, "t1_created": False, "dt_selected": False,
+                       "forward_evolution": False, "orbdata_executed": False,
+                       "shellset_mechanics_executed": False},
+        "exact_next_action": "Resolve the authorial T0 ocean elevation/bathymetry and thermal-model configuration first. When a complete governed PRE_ORBDATA manifest exists, run the prepared FAIR identity/input validation script; mechanics remain separately unauthorized."
+    }
+
+
+def render_readjudication_markdown(report: dict[str, Any]) -> str:
+    lines = ["# R6 T0 FAIR ShellSet runtime binding and input readjudication", "",
+             f"**Decision:** `{report['decision']}`", "",
+             f"- FAIR evidence: `{report['fair_evidence']['path']}`; committed SHA256 `{report['fair_evidence']['committed_blob_sha256']}`.",
+             f"- Evidence identity: `{report['fair_evidence']['evidence_identity_sha256']}`.",
+             f"- Runtime: upstream `{report['runtime']['scientific_source_commit']}`, qualified `{report['runtime']['qualified_runtime_commit']}`, executable SHA256 `{report['runtime']['executable_sha256']}`.",
+             f"- Historical Windows observation: `{report['historical_windows_observation']['status']}`; preserved unchanged.",
+             f"- Upstream examples qualified: **{str(report['runtime']['qualified_for_official_upstream_examples']).lower()}**; ARCANA mesh capacity qualified: **{str(report['runtime']['qualified_for_arcana_mesh_capacity']).lower()}**.",
+             f"- T0 input transformation authorization: **{str(report['runtime']['t0_input_transformations_authorized']).lower()}**; T0 mechanics authorization: **{str(report['runtime']['t0_mechanics_authorized']).lower()}**.",
+             f"- Cross-backend Intel/NVIDIA tolerance: `{report['runtime']['cross_backend_acceptance']}`.", "",
+             "## OrbData5 field behavior and ARCANA readiness", "",
+             "The checked-in ARCANA source audit cites the official OrbData source files and records behavioral findings. Its source body is not vendored; unresolved parser sentinels are kept unverified and are not used as fill values.", "",
+             "| Required field | PRE_ORBDATA/source behavior | Sentinel | OrbData action | Earth example dependency | ARCANA readiness |", "|---|---|---|---|---|---|"]
+    for row in report["orbdata_capability_matrix"]:
+        lines.append("| `{field}` | {pre_orbdata_semantics} | {zero_or_sentinel} | {preserved_or_modified} {orbdata_derives} | {stock_earth_dependency} | {arcana_equivalent} |".format(**row))
+    lines += ["", "## Projection and FEG gates", "",
+              f"- Projection: `{report['projection']['status']}` using {report['projection']['implementation']}; class `{report['projection']['classification']}`.",
+              f"- PRE_ORBDATA ready/materialized: **{str(report['feg_readiness']['PRE_ORBDATA_ready']).lower()} / {str(report['feg_readiness']['PRE_ORBDATA_materialized']).lower()}**.",
+              f"- SHELLS_READY ready: **{str(report['feg_readiness']['SHELLS_READY_ready']).lower()}**; mechanics authorized: **{str(report['feg_readiness']['mechanics_authorized']).lower()}**.", "",
+              "## Scientific blockers", ""]
+    lines.extend(f"- {item}" for item in report["scientific_blockers"])
+    config = report["physical_configuration"]
+    lines += ["", "## Physical configuration", "",
+              f"- Canonical values: `gMean={config['canonical']['gMean_m_s2']} m/s²`, `radius={config['canonical']['radius_m']} m`.",
+              f"- Unresolved reference families: {', '.join(config['unresolved_reference_families'])}.",
+              f"- Rheology: {', '.join(config['rheology_families'])}; `nFl=0`, FFRIC and BYERLY inactive; no numeric baseline selected.",
+              "- No Earth defaults or Earth OrbScore optimum were used."]
+    lines += ["", "## Implementation blockers", ""]
+    lines.extend(f"- {item}" for item in report["implementation_blockers"])
+    lines += ["", f"**FAIR validation command after input gates close:** `{report['fair_validation']['command_after_input_gates_close']}`.",
+              f"Required result manifest: `{report['fair_validation']['input_result_manifest']}`.", "",
+              f"**Next action:** {report['exact_next_action']}", "",
+              "No OrbData or mechanics execution, forward evolution, `dt`, or `t1` was performed or created.", ""]
+    return "\n".join(lines)
 
 
 def build_report(root: str | Path,

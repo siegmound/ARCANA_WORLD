@@ -326,3 +326,137 @@ def load_canonical_mesh(repository_root: str | Path) -> CanonicalMesh:
         arrays = {name: archive[name].copy() for name in archive.files}
     return build_canonical_mesh(arrays, census, boundary_state,
                                 manifest.get("adjacency_groups"))
+
+
+def project_cell_field_to_nodes(
+    mesh: CanonicalMesh,
+    face_row: np.ndarray,
+    face_col: np.ndarray,
+    cell_values: np.ndarray,
+    *,
+    unknown_mask: np.ndarray | None = None,
+    categorical: bool = False,
+    cell_uncertainty: np.ndarray | None = None,
+) -> dict[str, Any]:
+    """Attach canonical cell support to existing FEG vertices deterministically.
+
+    Continuous values use one source cell per node: the lexicographically first
+    incident canonical (row, column) cell. This is a numerical support mapping,
+    not interpolation or an increase in scientific resolution. Categorical
+    values are emitted only where every incident source cell is known and all
+    categories agree; mixed boundary support remains an explicit ``None``.
+    """
+    rows = np.asarray(face_row, dtype=np.int64)
+    cols = np.asarray(face_col, dtype=np.int64)
+    values = np.asarray(cell_values)
+    if rows.ndim != 1 or cols.shape != rows.shape:
+        raise ValueError("face row/column inventories must be equal-length vectors")
+    if values.ndim != 2:
+        raise ValueError("cell field must be a two-dimensional row/column array")
+    if not categorical and not np.issubdtype(values.dtype, np.number):
+        raise ValueError("continuous cell fields must be numeric")
+    if len(set(zip(rows.tolist(), cols.tolist()))) != len(rows):
+        raise ValueError("canonical face row/column support contains duplicates")
+    if np.any(rows < 0) or np.any(cols < 0) or np.any(rows >= values.shape[0]) or np.any(cols >= values.shape[1]):
+        raise ValueError("face inventory indexes outside the supplied cell field")
+    if len(rows) != len(mesh.triangle_parent_face) or np.any(mesh.triangle_parent_face < 0) or np.any(mesh.triangle_parent_face >= len(rows)):
+        raise ValueError("mesh triangle-to-parent-face lineage is incomplete")
+    if unknown_mask is not None:
+        unknown = np.asarray(unknown_mask, dtype=bool)
+        if unknown.shape != values.shape:
+            raise ValueError("unknown mask shape differs from cell field")
+    else:
+        unknown = np.zeros(values.shape, dtype=bool)
+    if np.issubdtype(values.dtype, np.floating):
+        unknown = unknown | ~np.isfinite(values)
+    if cell_uncertainty is not None:
+        uncertainties = np.asarray(cell_uncertainty, dtype=np.float64)
+        if uncertainties.shape != values.shape:
+            raise ValueError("uncertainty shape differs from cell field")
+        if np.any(np.isfinite(uncertainties) & (uncertainties < 0)):
+            raise ValueError("cell uncertainty must be nonnegative")
+        if np.any(np.isfinite(uncertainties) & ~unknown & (uncertainties < 0)):
+            raise ValueError("known cell values require a valid nonnegative uncertainty")
+        if np.any(~unknown & ~np.isfinite(uncertainties)):
+            raise ValueError("known cell values cannot have unknown uncertainty")
+    else:
+        uncertainties = None
+
+    canonical_source = {
+        "shape": list(values.shape), "dtype": str(values.dtype),
+        "values": [[None if unknown[r, c] else
+                    (values[r, c].item() if hasattr(values[r, c], "item") else values[r, c])
+                    for c in range(values.shape[1])] for r in range(values.shape[0])],
+        "unknown_mask": unknown.tolist(),
+        "uncertainty": None if uncertainties is None else [
+            [None if unknown[r, c] or not np.isfinite(uncertainties[r, c]) else float(uncertainties[r, c])
+             for c in range(values.shape[1])] for r in range(values.shape[0])],
+    }
+    source_sha256 = hashlib.sha256(json.dumps(
+        canonical_source, sort_keys=True, separators=(",", ":"), allow_nan=False, default=str
+    ).encode("utf-8")).hexdigest()
+
+    incident: list[set[int]] = [set() for _ in range(len(mesh.vertices_lat_lon))]
+    for triangle, parent_face in zip(mesh.triangles, mesh.triangle_parent_face):
+        for node_id in triangle:
+            incident[int(node_id) - 1].add(int(parent_face))
+    if any(not support for support in incident):
+        raise ValueError("a mesh vertex has no canonical-cell source support")
+
+    projected: list[int | float | None] = []
+    lineage: list[dict[str, Any]] = []
+    for node_id, support in enumerate(incident, 1):
+        ordered = sorted(support, key=lambda face: (int(rows[face]), int(cols[face])))
+        cells = [(int(rows[face]), int(cols[face])) for face in ordered]
+        known_categories = sorted({str(values[r, c].item() if hasattr(values[r, c], "item") else values[r, c])
+                                   for r, c in cells if not unknown[r, c]})
+        has_unknown = any(unknown[r, c] for r, c in cells)
+        if categorical:
+            distinct = {values[r, c].item() if hasattr(values[r, c], "item") else values[r, c]
+                        for r, c in cells if not unknown[r, c]}
+            output = next(iter(distinct)) if not has_unknown and len(distinct) == 1 else None
+            selected = None
+            uncertainty = None
+        else:
+            selected = cells[0]
+            output = None if has_unknown else (
+                values[selected].item() if hasattr(values[selected], "item") else values[selected]
+            )
+            uncertainty = (None if uncertainties is None or has_unknown
+                           else float(uncertainties[selected]))
+        projected.append(output)
+        lineage.append({
+            "node_id": node_id,
+            "incident_source_cells_row_col": [list(cell) for cell in cells],
+            "selected_source_cell_row_col": list(selected) if selected is not None else None,
+            "rule": "CATEGORICAL_UNANIMOUS_INCIDENT_CELLS" if categorical else "LEXICOGRAPHIC_FIRST_INCIDENT_CELL",
+            "weight": 1.0 if selected is not None else None,
+            "category_support": known_categories if categorical else None,
+            "unknown_incident_source_count": sum(unknown[r, c] for r, c in cells),
+            "source_uncertainty": uncertainty,
+            "extrapolation_state": "NONE; source support is incident canonical cell set",
+            "error_estimate": "NOT_ESTIMATED; retains source-cell support, no resolution claim",
+            "status": "UNKNOWN_OR_MIXED_SUPPORT" if output is None else "NUMERICAL_DERIVED_SUPPORT",
+        })
+    body = {
+        "schema": "ARCANA_CELL_TO_FEG_NODE_SUPPORT_PROJECTION_V1",
+        "classification": "NUMERICAL_DERIVED_SUPPORT",
+        "categorical": categorical,
+        "source_grid_shape": list(values.shape),
+        "source_array_sha256": source_sha256,
+        "source_known_cell_count": int(np.count_nonzero(~unknown)),
+        "source_unknown_cell_count": int(np.count_nonzero(unknown)),
+        "node_count": len(projected),
+        "known_node_count": sum(value is not None for value in projected),
+        "unknown_node_count": sum(value is None for value in projected),
+        "coverage": {"known_feg_nodes": sum(value is not None for value in projected),
+                     "unknown_feg_nodes": sum(value is None for value in projected),
+                     "total_feg_nodes": len(projected)},
+        "projected_values": projected,
+        "lineage": lineage,
+    }
+    body["projection_sha256"] = hashlib.sha256(json.dumps(
+        body, sort_keys=True, separators=(",", ":"), allow_nan=False, default=str
+    ).encode("utf-8")).hexdigest()
+    body["values_by_node_id"] = {str(i): value for i, value in enumerate(projected, 1)}
+    return body

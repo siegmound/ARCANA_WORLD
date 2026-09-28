@@ -10,6 +10,7 @@ import numpy as np
 from arcana_worldsim.r6.shellset_mesh import (
     ElementRecord, FEGModel, FaultRecord, NodeRecord, PhysicalFieldBinding,
     fixture_roundtrip_evidence, load_canonical_mesh, model_from_mesh,
+    project_cell_field_to_nodes,
     normalized_feg_sha256, parse_feg, write_feg,
 )
 from arcana_worldsim.r6.shellset_mesh.branches import build_branch_registry
@@ -203,3 +204,31 @@ def test_full_topology_feg_round_trip_uses_explicit_test_only_field_binding():
     assert normalized_feg_sha256(decoded) == normalized_feg_sha256(model)
     assert write_feg(decoded) == encoded
     assert "NOT_PRODUCTION_INPUT" in decoded.fixture_status
+
+
+def test_cell_support_projection_replays_and_preserves_unknown_and_category_boundaries():
+    class Mesh:
+        vertices_lat_lon = np.asarray(((0.0, 0.0), (0.0, 1.0),
+                                       (1.0, 0.0), (1.0, 1.0)))
+        triangles = np.asarray(((1, 2, 3), (2, 4, 3)))
+        triangle_parent_face = np.asarray((0, 1))
+
+    rows = np.asarray((0, 0))
+    cols = np.asarray((0, 1))
+    domains = np.asarray(((4, 7),))
+    categorical = project_cell_field_to_nodes(
+        Mesh(), rows, cols, domains, categorical=True)
+    replay = project_cell_field_to_nodes(
+        Mesh(), rows, cols, domains, categorical=True)
+    assert categorical["projection_sha256"] == replay["projection_sha256"]
+    assert categorical["values_by_node_id"] == {"1": 4, "2": None, "3": None, "4": 7}
+    assert categorical["lineage"][1]["category_support"] == ["4", "7"]
+    assert categorical["classification"] == "NUMERICAL_DERIVED_SUPPORT"
+
+    continuous = np.asarray(((10.0, 20.0),))
+    unknown = np.asarray(((False, True),))
+    projected = project_cell_field_to_nodes(
+        Mesh(), rows, cols, continuous, unknown_mask=unknown)
+    assert projected["values_by_node_id"]["4"] is None
+    assert projected["lineage"][3]["unknown_incident_source_count"] == 1
+    assert projected["unknown_node_count"] == 3
