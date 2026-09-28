@@ -41,12 +41,29 @@ def test_orbdata_field_gate_does_not_infer_bathymetry_or_zero_sentinels():
     report = build_readjudication(ROOT)
     fields = {row["field"]: row for row in report["orbdata_capability_matrix"]}
     assert len(fields) == 6
-    assert "no source-grounded ocean-age-to-bathymetry" in fields["elevation"]["orbdata_derives"]
-    assert fields["elevation"]["zero_or_sentinel"] == "NOT_ESTABLISHED_FOR_THIS_FIELD"
-    assert fields["crustal_thickness"]["orbdata_derives"].startswith("No")
+    assert "No bathymetry from age" in fields["elevation"]["orbdata_derives"]
+    assert "NEED_E" in fields["elevation"]["zero_or_sentinel"]
+    assert "needQ" in fields["heat_flow"]["pre_orbdata_semantics"]
+    assert "Nonzero" in fields["heat_flow"]["preserved_or_modified"]
+    assert "always reads cArray" in fields["crustal_thickness"]["pre_orbdata_semantics"]
+    assert "sArray" in fields["mantle_lithosphere_thickness"]["preserved_or_modified"]
+    assert "Not a PRE_ORBDATA sentinel/input" in fields["chemical_delta_rho"]["pre_orbdata_semantics"]
+    assert report["pre_orbdata_contract"]["feg_node_inputs"] == ["longitude", "latitude", "elevation", "heat_flow"]
+    assert report["auxiliary_input_readiness"]["ready"] is False
+    assert "POTENTIAL_CATEGORY_LEAKAGE" in report["auxiliary_input_readiness"]["age_coastal_classification"]
+    assert report["orbdata_transformation_readiness"]["ready"] is False
+    assert report["projection"]["status"].startswith("OPTIONAL_FOR_ORBDATA_GRIDS")
     assert report["feg_readiness"]["PRE_ORBDATA_ready"] is False
     assert report["feg_readiness"]["SHELLS_READY_ready"] is False
     assert report["feg_readiness"]["mechanics_authorized"] is False
+
+
+def test_readjudication_markdown_separates_four_orbdata_contract_stages():
+    text = specialist_runtime.render_readjudication_markdown(build_readjudication(ROOT))
+    for section in ("PRE_ORBDATA FEG node inputs", "OrbData auxiliary grid inputs",
+                    "OrbData-derived output fields", "SHELLS_READY final FEG fields",
+                    "coastal category leakage", "missing partition NPZ no longer blocks"):
+        assert section.lower() in text.lower()
 
 
 def test_explicit_shellset_executable_is_available_but_not_assumed_qualified(tmp_path, monkeypatch):

@@ -46,6 +46,17 @@
     "ocean_age_regenerated": false,
     "ocean_age_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2"
   },
+  "auxiliary_input_readiness": {
+    "age_coastal_classification": "ADAPTER_QUALIFICATION_REQUIRED_POTENTIAL_CATEGORY_LEAKAGE",
+    "inputs": {
+      "aArray": "ARCANA ocean age authority exists; exporter and coast classification qualification required; >=200 marker only from governed land/ocean identity",
+      "cArray": "governed crust thickness exists; OrbData-compatible deterministic grid exporter required",
+      "eArray": "conditional on any zero elevation; governed ARCANA source/path unresolved",
+      "qArray": "conditional on any zero heat flow; governed ARCANA source/path unresolved",
+      "sArray": "stock continental/unknown path incompatible with prescribed ARCANA continental thickness"
+    },
+    "ready": false
+  },
   "decision": "R6_T0_SPECIALIST_RUNTIME_QUALIFIED_FOR_EXAMPLES_AND_ARCANA_CAPACITY__INPUTS_REMAIN_OPEN",
   "exact_next_action": "Resolve the authorial T0 ocean elevation/bathymetry and thermal-model configuration first. When a complete governed PRE_ORBDATA manifest exists, run the prepared FAIR identity/input validation script; mechanics remain separately unauthorized.",
   "fair_evidence": {
@@ -66,7 +77,7 @@
     "PRE_ORBDATA_ready": false,
     "SHELLS_READY_ready": false,
     "mechanics_authorized": false,
-    "reason": "complete ocean elevation and global heat-flow input semantics are not closed; PRE_ORBDATA requires numeric elevation/heat-flow nodes, and no unverified zero sentinel is emitted",
+    "reason": "PRE_ORBDATA requires longitude/latitude/elevation/heat-flow nodal inputs; elevation and heat-flow exact-zero sentinels invoke conditional grids. Complete ocean elevation, heat-flow policy, and interface paths remain unresolved. The other four physical fields are OrbData outputs, not PRE inputs.",
     "required_final_fields": [
       "elevation",
       "heat_flow",
@@ -140,95 +151,100 @@
     "status": "PRESERVED_HISTORICAL_OBSERVATION; not current FAIR qualification"
   },
   "implementation_blockers": [
-    "Canonical partition NPZ expected by existing mesh adapter is absent from this checkout; production projection/replay cannot currently be executed.",
-    "Audit exact pinned OrbData5 parser branches against upstream commit to resolve any unspecified sentinels/source modes before using them.",
+    "Implement and qualify deterministic OrbData-compatible aArray/cArray exporters with source support and lineage; no resolution increase.",
+    "Qualify age-grid coast classification strategy because bilinear aArray interpolation precedes the 200 Ma branch.",
+    "Select ARCANA eArray/qArray adapter path if any FEG node uses exact-zero elevation/heat flow.",
     "After required scientific fields close, materialize PRE_ORBDATA and execute the prepared FAIR OrbData validation; do not run ShellSet mechanics here.",
     "Global sphere uniqueness/reference-frame and rigid-rotation nullspace qualification remains open."
   ],
   "orbdata_capability_matrix": [
     {
-      "arcana_equivalent": "ARCANA can emit the required grid/FEG format once complete governed land+ocean elevation is available; ocean total elevation remains unknown.",
+      "arcana_equivalent": "Complete governed ocean elevation and an ARCANA grid/adapter or qualified interface change are still required.",
       "field": "elevation",
-      "orbdata_derives": "It can assign from selected data; no source-grounded ocean-age-to-bathymetry derivation is recorded.",
-      "pre_orbdata_semantics": "Numeric elevation is part of the existing PRE_ORBDATA FEG record. OrbData can assign/fill elevation only from selected configured input data; no exact zero-to-fill sentinel is established in the checked ARCANA source record.",
-      "preserved_or_modified": "May be assigned/modified by configured OrbData source path.",
+      "orbdata_derives": "No bathymetry from age; complete elevation remains independent ARCANA physical state.",
+      "pre_orbdata_semantics": "FEG nodal input. Any exact 0.0 sets needE and requests an elevation grid; stock copies Earth INPUT/ETOPO20.grd.",
+      "preserved_or_modified": "Node value is used; zero invokes the auxiliary elevation-grid path.",
       "readiness": [
-        "ARCANA_EXISTING_AUTHORITY",
-        "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"
+        "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE",
+        "ADAPTER_INTERFACE_DECISION_REQUIRED"
       ],
-      "stock_earth_dependency": "Earth elevation grids such as ETOPO20 occur in stock examples; qualification fixture only.",
-      "zero_or_sentinel": "NOT_ESTABLISHED_FOR_THIS_FIELD"
+      "stock_earth_dependency": "Stock Earth ETOPO20 fallback is prohibited as ARCANA authority.",
+      "zero_or_sentinel": "0.0 IS SOURCE-DEFINED NEED_E GRID SENTINEL; genuine zero is ambiguous"
     },
     {
-      "arcana_equivalent": "Existing ARCANA ocean-age field may feed an equivalent parser-format grid after exact source-path/config/unit semantics are bound. Continental references are only partial.",
+      "arcana_equivalent": "A governed global heat-flow policy must ensure intended zero routing and provide ARCANA qArray whenever any node is zero.",
       "field": "heat_flow",
-      "orbdata_derives": "Ocean age-to-heat-flow route exists conditionally on configured ocean data path; it is not an ARCANA age-authority generator.",
-      "pre_orbdata_semantics": "Numeric nodal heat flow is present in PRE_ORBDATA. Source review states nonzero input is preserved; otherwise configured inputs supply it, and the ocean workflow may use seafloor age.",
-      "preserved_or_modified": "Nonzero input preserved; configured source path can populate/derive missing values.",
+      "orbdata_derives": "Conditional zero-node fill only; age is not a global override.",
+      "pre_orbdata_semantics": "FEG nodal input. Any exact 0.0 sets needQ. Only zero-valued nodes enter qArray then conditional age-law fill; nonzero values skip that branch.",
+      "preserved_or_modified": "For heatFl==0: interpolate qArray; age<200 overrides with pinned ocean law; age<=0 uses qLim1; then apply heat-flow limits. Nonzero heat flow does not get age-overridden.",
       "readiness": [
-        "ARCANA_EXISTING_AUTHORITY",
-        "ORBDATA_DERIVED_FROM_GOVERNED_INPUT",
         "MODEL_CONFIGURATION_REQUIRED",
-        "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"
+        "AUXILIARY_GRID_EXPORT_REQUIRED"
       ],
-      "stock_earth_dependency": "Stock Earth workflow includes heat-flow/elevation grids and Earth seafloor-age grid age_1p5; never promote those values.",
-      "zero_or_sentinel": "ZERO_OR_ABSENT_VALUE_ROUTES_TO_CONFIGURED_SOURCE_PER_SOURCE_REVIEW; exact parser branch should be checked against pinned source before relying on zero as a production sentinel."
+      "stock_earth_dependency": "Earth qArray/eArray sources cannot be promoted as ARCANA authority.",
+      "zero_or_sentinel": "0.0 IS SOURCE-DEFINED NEED_Q GRID SENTINEL"
     },
     {
-      "arcana_equivalent": "Yes: governed ARCANA cell thickness exists; projection is implemented in the existing mesh adapter as NUMERICAL_DERIVED_SUPPORT, but full production replay is blocked because the manifested partition NPZ is absent from this checkout.",
+      "arcana_equivalent": "Governed crustal_thickness_m exists on cell support and can be exported deterministically without cell-to-FEG projection.",
       "field": "crustal_thickness",
-      "orbdata_derives": "No, not in current Assign path.",
-      "pre_orbdata_semantics": "OrbData5 current Assign path reads thickness from an upstream grid; it is not an isostasy-generated field. PRE_ORBDATA FEG itself carries elevation and heat flow only in ARCANA's FEG adapter.",
-      "preserved_or_modified": "Read/assigned from configured grid; not generated by the current Assign route.",
+      "orbdata_derives": "Output from governed ARCANA cArray input.",
+      "pre_orbdata_semantics": "Not a required PRE_ORBDATA nodal input; Assign always reads cArray and ignores the input FEG value.",
+      "preserved_or_modified": "Recomputed/interpolated from cArray each run.",
       "readiness": [
         "ARCANA_EXISTING_AUTHORITY",
-        "ARCANA_DERIVABLE_FROM_EXISTING_GOVERNED_PRIMITIVE"
+        "ORBDATA_GRID_EXPORTER_REQUIRED"
       ],
-      "stock_earth_dependency": "CRUST2 appears in stock Earth examples; qualification/reference only.",
-      "zero_or_sentinel": "No zero-as-generation rule established; a physical upstream thickness grid is required."
+      "stock_earth_dependency": "Stock Earth crust grid is not authority.",
+      "zero_or_sentinel": "Not applicable to FEG input; cArray is mandatory"
     },
     {
-      "arcana_equivalent": "Ocean age field exists and is authoritative; exact compatible synthetic grid mapping/configuration remains unbound. Continental thermal/structural primitive remains missing.",
+      "arcana_equivalent": "Governed continental_reference_lithosphere_thickness_m is not consumed by stock OrbData. Require a qualified source generalization, governed equivalent producer, or retain blocker; no synthetic delta_ts inversion.",
       "field": "mantle_lithosphere_thickness",
-      "orbdata_derives": "Conditionally from ocean age; continental stock path uses delta_ts-like seismic anomaly input.",
-      "pre_orbdata_semantics": "Not carried by ARCANA PRE_ORBDATA FEG. OrbData has conditional age-based ocean and vertical S-wave anomaly continental source paths, or a prescribed equivalent input.",
-      "preserved_or_modified": "Derived/assigned from configured ocean-age or continental seismic-anomaly path; exact path matters.",
+      "orbdata_derives": "Ocean thickness from age; continental stock path requires sArray, not prescribed ARCANA thickness.",
+      "pre_orbdata_semantics": "Not a required PRE_ORBDATA nodal input; Assign ignores input FEG value. Interpolated age selects the method.",
+      "preserved_or_modified": "Age<200 Ma uses pinned ocean model; age>=200 Ma uses stock continental/unknown S-wave anomaly sArray path.",
       "readiness": [
-        "ARCANA_EXISTING_AUTHORITY",
-        "ORBDATA_DERIVED_FROM_GOVERNED_INPUT",
-        "MODEL_CONFIGURATION_REQUIRED",
-        "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"
+        "CONTINENTAL_SARRAY_INTEROPERABILITY_BLOCKER",
+        "MODEL_CONFIGURATION_REQUIRED"
       ],
-      "stock_earth_dependency": "age_1p5 ocean grid and delta_ts continental grid in stock Earth path; fixtures only.",
-      "zero_or_sentinel": "No zero-as-generation sentinel established; selected source path and valid age/anomaly input required."
+      "stock_earth_dependency": "Earth delta_ts/sArray values are prohibited as ARCANA authority.",
+      "zero_or_sentinel": "Not applicable to FEG input; auxiliary age and continental path inputs govern"
     },
     {
-      "arcana_equivalent": "Not yet: governed numeric bounds/configuration and resulting field semantics remain unselected.",
+      "arcana_equivalent": "No independent raster required absent another governed contract; configure delta_rho_limit and material parameters.",
       "field": "chemical_delta_rho",
-      "orbdata_derives": "Adjusted/solved conditionally, under source-configured bounds and thermal/reference configuration.",
-      "pre_orbdata_semantics": "Node-wise effective chemical-origin lithosphere correction adjusted/used as a degree of freedom during isostatic structural construction; configured bound applies; it is not absolute EOS density.",
-      "preserved_or_modified": "Assigned/adjusted by OrbData with cooling-curvature degrees of freedom and basal stress consistency check.",
+      "orbdata_derives": "Yes; ORBDATA_DERIVED_FROM_GOVERNED_INPUT + MODEL_CONFIGURATION_REQUIRED.",
+      "pre_orbdata_semantics": "Not a PRE_ORBDATA sentinel/input. Assign initializes then derives/limits final value internally.",
+      "preserved_or_modified": "Derived/limited from structural/isostatic calculation and delta_rho_limit.",
       "readiness": [
-        "MODEL_CONFIGURATION_REQUIRED",
-        "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"
+        "ORBDATA_DERIVED_FROM_GOVERNED_INPUT",
+        "MODEL_CONFIGURATION_REQUIRED"
       ],
-      "stock_earth_dependency": "No observational Earth grid is an ARCANA authority; Earth OrbScore optimum is prohibited.",
-      "zero_or_sentinel": "No zero-as-generation rule established in the checked source record."
+      "stock_earth_dependency": "No Earth output transfer.",
+      "zero_or_sentinel": "Not a PRE_ORBDATA sentinel"
     },
     {
-      "arcana_equivalent": "Not yet: thermal model/configuration and field values are unresolved.",
+      "arcana_equivalent": "No independent raster required absent another governed contract; thermal model and limits remain unselected.",
       "field": "cooling_curvature",
-      "orbdata_derives": "Conditionally as part of configured non-steady geotherm/isostatic structure; exact controls must be pinned.",
-      "pre_orbdata_semantics": "Node-wise non-steady geotherm curvature, an OrbData-assigned/adjusted structural degree of freedom.",
-      "preserved_or_modified": "Adjusted/used jointly with chemical density anomaly during structure construction.",
+      "orbdata_derives": "Yes; ORBDATA_DERIVED_FROM_GOVERNED_INPUT + MODEL_CONFIGURATION_REQUIRED.",
+      "pre_orbdata_semantics": "Not a PRE_ORBDATA sentinel/input. Assign computes curvature from thermal/geotherm state.",
+      "preserved_or_modified": "Derived thermally and may modify mantle thickness while enforcing profile conditions.",
       "readiness": [
-        "MODEL_CONFIGURATION_REQUIRED",
-        "STILL_MISSING_AUTHORIAL_PHYSICAL_STATE"
+        "ORBDATA_DERIVED_FROM_GOVERNED_INPUT",
+        "MODEL_CONFIGURATION_REQUIRED"
       ],
-      "stock_earth_dependency": "No Earth OrbScore optimum or stock Earth output may be transferred as ARCANA authority.",
-      "zero_or_sentinel": "No zero-as-generation rule established in the checked source record."
+      "stock_earth_dependency": "No Earth output transfer.",
+      "zero_or_sentinel": "Not a PRE_ORBDATA sentinel"
     }
   ],
+  "orbdata_transformation_readiness": {
+    "blockers": [
+      "required auxiliary grid inputs are not exported/qualified",
+      "continental sArray path incompatible with governed ARCANA thickness",
+      "material, thermal and numerical model configuration unresolved"
+    ],
+    "ready": false
+  },
   "physical_configuration": {
     "BYERLY": "INACTIVE",
     "FFRIC": "INACTIVE",
@@ -266,15 +282,30 @@
       "TADIAB_GRADIE_ZBASTH"
     ]
   },
+  "pre_orbdata_contract": {
+    "blockers": [
+      "complete governed T0 ocean elevation/bathymetry",
+      "resolve zero-elevation sentinel and ARCANA eArray/interface path",
+      "close global heat-flow policy and conditional qArray path"
+    ],
+    "feg_node_inputs": [
+      "longitude",
+      "latitude",
+      "elevation",
+      "heat_flow"
+    ],
+    "materialized": false,
+    "readiness": "BLOCKED"
+  },
   "projection": {
     "classification": "NUMERICAL_DERIVED_SUPPORT",
     "error": "no interpolation error asserted; source-cell support retained",
     "implementation": "existing shellset_mesh adapter project_cell_field_to_nodes",
     "lineage": "per-node incident source cells, selected cell/weight, categorical support, uncertainty, unknown count and coverage",
     "production_mesh_source_payload_available": false,
-    "production_projection_replay": "NOT_RUN",
+    "production_projection_replay": "NOT_RUN; partition payload absence does not block aArray/cArray grid export",
     "rule": "lexicographic first incident cell for continuous values; categorical value only when all incident cells agree; any UNKNOWN incident source keeps output UNKNOWN",
-    "status": "IMPLEMENTED; full production projection not run"
+    "status": "OPTIONAL_FOR_ORBDATA_GRIDS; not a PRE_ORBDATA dependency"
   },
   "runtime": {
     "arcana_mesh_capacity_check": {
@@ -387,10 +418,10 @@
   "schema": "R6_T0_B_PANGAEA_LIKE_V2_RUNTIME_BINDING_AND_INPUT_READJUDICATION_V2",
   "scientific_blockers": [
     "Author complete T0 ocean elevation/bathymetry with datum, support and uncertainty; OrbData age does not establish bathymetry generation.",
-    "Select governed ocean age-to-heat-flow/thickness configurations and compatible data mapping; preserve existing age field.",
+    "Resolve aArray coastal category-leakage qualification and governed ocean heat-flow/thickness parameters; age >=200 may only encode interface classification, not physical continental age.",
     "Constrain all nine reference material/thermal configuration families and numeric continuum rheology; no Earth defaults/OrbScore optimum.",
-    "Provide a governed continental thermal/structural initialization and complete global heat-flow/thickness state.",
-    "Close chemical_delta_rho bounds/configuration and cooling_curvature controls as model configuration, with no arbitrary zeros."
+    "Resolve stock continental sArray incompatibility: governed ARCANA continental_reference_lithosphere_thickness_m is not consumed; choose qualified source generalization/equivalent producer or retain blocker.",
+    "Close delta_rho_limit, material parameters, and thermal/geotherm controls for derived chemical_delta_rho and cooling_curvature outputs."
   ],
   "source_audit_basis": {
     "contracts": [
@@ -403,8 +434,33 @@
       "https://github.com/JonBMay/ShellSet/blob/e4a6fbd5997b6c4978924649dff1abab0c96ca57/src/OrbData5.f90",
       "https://github.com/JonBMay/ShellSet/blob/e4a6fbd5997b6c4978924649dff1abab0c96ca57/INPUT/iEarth5-049.in"
     ],
-    "scope_note": "The checked-in ARCANA source review cites official MOD_Data.f90 and OrbData5.f90 and preserves behavioral findings; source body is not vendored. Exact parser branches/sentinels not stated by the checked-in review remain unverified and are not used as generation sentinels.",
-    "upstream_commit_pinned": "e4a6fbd5997b6c4978924649dff1abab0c96ca57"
+    "scope_note": "Source-grounding correction records verified behavior for pinned OrbData5.f90 and MOD_Data.f90 at the stated commit: elevation/heat-flow exact-zero sentinels; conditional heat fill order; always-read age and cArray; age-selected ocean versus continental sArray mantle path; and four FEG fields ignored and recomputed. Source body is not vendored.",
+    "upstream_commit_pinned": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
+    "verified_semantics": {
+      "age_classification": "aArray is always read; bilinear interpolation occurs before age<200 classification. >=200 is continental/unknown interface marker only, never physical continental age.",
+      "auxiliary_grid_inputs": [
+        "aArray",
+        "cArray",
+        "sArray (age >= 200 Ma)",
+        "eArray (only if needE)",
+        "qArray (only if needQ)"
+      ],
+      "bathymetry": "Not derived from age.",
+      "coastal_interpolation": "Potential category leakage is unqualified on ARCANA FEG; adapter/interface blocker until protected classification is validated.",
+      "crustal_thickness": "Always from cArray; input FEG thickness ignored.",
+      "feg_node_inputs": [
+        "longitude",
+        "latitude",
+        "elevation",
+        "heat_flow"
+      ],
+      "orbdata_derived_outputs": [
+        "crustal_thickness",
+        "mantle_lithosphere_thickness",
+        "chemical_delta_rho",
+        "cooling_curvature"
+      ]
+    }
   },
   "t0_ma": 210
 }
