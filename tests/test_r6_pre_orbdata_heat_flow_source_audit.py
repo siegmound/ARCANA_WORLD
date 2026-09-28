@@ -12,24 +12,63 @@ audit = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(audit)
 
 
-def test_extract_contexts_reads_source_and_parameter_fixtures(tmp_path: Path) -> None:
-    source = tmp_path / "src" / "OrbData.f90"
+def git(root: Path, *args: str) -> str:
+    result = subprocess.run(["git", "-C", str(root), *args], check=True, capture_output=True, text=True)
+    return result.stdout.strip()
+
+
+def init_fixture_repo(root: Path, branch: str) -> None:
+    root.mkdir(parents=True, exist_ok=True)
+    subprocess.run(["git", "init", "-b", branch, str(root)], check=True, capture_output=True, text=True)
+    git(root, "config", "user.name", "Audit fixture")
+    git(root, "config", "user.email", "audit-fixture@example.invalid")
+
+
+def commit_fixture_files(root: Path) -> None:
+    git(root, "add", "src/OrbData.f90", "INPUT/model.in", "tracked.bin")
+    git(root, "commit", "-m", "fixture source evidence")
+
+
+def test_source_scan_uses_tracked_text_files_only(tmp_path: Path) -> None:
+    root = tmp_path / "ShellSet-fixture"
+    init_fixture_repo(root, "fixture-qualified-name")
+    source = root / "src" / "OrbData.f90"
     source.parent.mkdir()
-    source.write_text("before\nneedQ = (heatFl == 0.0D0)\nREAD(unit,*) qLim0\nCALL Assign(heatFl)\nqArray(i,j) = qLim1\nafter\n")
-    (tmp_path / "INPUT").mkdir()
-    (tmp_path / "INPUT" / "model.in").write_text("qLim0 = 1.0\ndQL_dE = 2.0\n")
-    (tmp_path / "ignored.bin").write_bytes(b"qArray\x00")
+    source.write_text("needQ = (heatFl == 0.0D0)\nREAD(unit,*) qLim0\nCALL Assign(heatFl)\n")
+    parameters = root / "INPUT" / "model.in"
+    parameters.parent.mkdir()
+    parameters.write_text("alphaT = configured_by_fixture\n")
+    (root / "tracked.bin").write_bytes(b"binary fixture")
+    commit_fixture_files(root)
+    source.write_text("qLim1 = dirty_worktree_content\n")
 
-    excerpts = audit.extract_contexts(tmp_path)
+    runtime = root / "NVHPC_ARCANA_PATCH_ListEx1_n10_t5_fixture"
+    runtime.mkdir()
+    (runtime / "untracked.f90").write_text("qArray = qLim1\ndelta_rho_limit = 8\n")
+    (runtime / "untracked.txt").write_text("ZBASTH TADIAB GRADIE")
 
-    assert excerpts["needQ"][0]["path"] == "src/OrbData.f90"
-    assert excerpts["heatFl"][0]["line"] == 2
-    assert excerpts["qArray"][0]["line"] == 5
-    assert excerpts["qLim0"][0]["path"] == "INPUT/model.in"
-    assert excerpts["dQL_dE"][0]["path"] == "INPUT/model.in"
-    bindings = audit.extract_binding_and_callsite_contexts(tmp_path)
-    assert any(hit["line"] == 3 and "qLim0" in hit["matched_symbols_in_neighborhood"] for hit in bindings)
-    assert any(hit["line"] == 4 and "heatFl" in hit["matched_symbols_in_neighborhood"] for hit in bindings)
+    tracked = audit.iter_text_files(root)
+    excerpts = audit.extract_contexts(root, tracked)
+    bindings = audit.extract_binding_and_callsite_contexts(root, tracked)
+
+    assert [path.relative_to(root).as_posix() for path in tracked] == ["INPUT/model.in", "src/OrbData.f90"]
+    assert len(tracked) == 2
+    assert excerpts["heatFl"][0]["path"] == "src/OrbData.f90"
+    assert excerpts["alphaT"][0]["path"] == "INPUT/model.in"
+    assert excerpts["qArray"] == []
+    assert excerpts["qLim1"] == []
+    assert excerpts["delta_rho_limit"] == []
+    assert excerpts["ZBASTH"] == []
+    assert any(hit["line"] == 2 and "qLim0" in hit["matched_symbols_in_neighborhood"] for hit in bindings)
+    assert any(hit["line"] == 3 and "heatFl" in hit["matched_symbols_in_neighborhood"] for hit in bindings)
+    provenance = audit.source_file_authority_record(len(tracked))
+    assert provenance == {
+        "method": "GIT_TRACKED_FILES_ONLY",
+        "command": "git ls-files -z",
+        "untracked_files_scanned": False,
+        "tracked_text_files_scanned": 2,
+        "content_source": "verified HEAD blobs via git show HEAD:<tracked-path>",
+    }
 
 
 def test_category_contract_keeps_source_semantics_unassigned() -> None:
@@ -45,17 +84,32 @@ def test_category_contract_keeps_source_semantics_unassigned() -> None:
     assert set(audit.EVIDENCE_CATEGORY_SCHEMA["UNRESOLVED_PENDING_SOURCE_ADJUDICATION"]["symbols"]) == set(audit.TERMS)
 
 
-def test_qualified_checkout_guard_rejects_fixture_repository(tmp_path: Path) -> None:
-    subprocess.run(["git", "init", str(tmp_path)], check=True, capture_output=True)
-    subprocess.run(["git", "-C", str(tmp_path), "switch", "-c", audit.EXPECTED_BRANCH], check=True, capture_output=True)
-    subprocess.run(["git", "-C", str(tmp_path), "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "--allow-empty", "-m", "fixture identity"], check=True, capture_output=True)
-
+def test_branch_and_commit_identity_mismatches_fail_closed(tmp_path: Path) -> None:
+    wrong_branch = tmp_path / "wrong-branch"
+    init_fixture_repo(wrong_branch, "not-the-qualified-branch")
+    with_branch = wrong_branch / "tracked.txt"
+    with_branch.write_text("fixture only")
+    git(wrong_branch, "add", "tracked.txt")
+    git(wrong_branch, "commit", "-m", "wrong branch")
     try:
-        audit.verify_checkout(tmp_path)
+        audit.verify_checkout(wrong_branch)
+    except ValueError as exc:
+        assert "unqualified ShellSet branch" in str(exc)
+    else:
+        raise AssertionError("wrong branch must fail the qualified-source identity gate")
+
+    wrong_commit = tmp_path / "wrong-commit"
+    init_fixture_repo(wrong_commit, audit.EXPECTED_BRANCH)
+    with_commit = wrong_commit / "tracked.txt"
+    with_commit.write_text("fixture only")
+    git(wrong_commit, "add", "tracked.txt")
+    git(wrong_commit, "commit", "-m", "wrong commit")
+    try:
+        audit.verify_checkout(wrong_commit)
     except ValueError as exc:
         assert "unqualified ShellSet commit" in str(exc)
     else:
-        raise AssertionError("fixture git checkout must never pass the qualified-source identity gate")
+        raise AssertionError("wrong commit must fail the qualified-source identity gate")
 
 
 def test_audit_outputs_cannot_modify_shellset_checkout(tmp_path: Path) -> None:

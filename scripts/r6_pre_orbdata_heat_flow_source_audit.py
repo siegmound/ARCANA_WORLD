@@ -10,7 +10,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -57,7 +59,6 @@ TEXT_SUFFIXES = {
     ".f", ".for", ".f90", ".f95", ".f03", ".f08", ".inc", ".h",
     ".txt", ".in", ".dat", ".par", ".cfg", ".nml", ".nam",
 }
-SKIP_DIRS = {".git", "build", "obj", "lib", "bin", "output", "outputs"}
 CONTEXT_LINES = 3
 MAX_EXCERPTS_PER_TERM = 80
 READER_OR_CALL_RE = re.compile(
@@ -77,15 +78,15 @@ def verify_checkout(root: Path) -> dict[str, str]:
             raise ValueError(f"git {' '.join(args)} failed: {result.stderr.strip()}")
         return result.stdout.strip()
 
-    commit = git_value("rev-parse", "HEAD")
     branch = git_value("branch", "--show-current")
+    commit = git_value("rev-parse", "HEAD")
     git_root = Path(git_value("rev-parse", "--show-toplevel")).resolve()
     if git_root != root.resolve():
         raise ValueError(f"--shellset-root must be the checkout root {git_root}, got {root.resolve()}")
-    if commit != EXPECTED_COMMIT:
-        raise ValueError(f"unqualified ShellSet commit {commit}; expected {EXPECTED_COMMIT}")
     if branch != EXPECTED_BRANCH:
         raise ValueError(f"unqualified ShellSet branch {branch!r}; expected {EXPECTED_BRANCH!r}")
+    if commit != EXPECTED_COMMIT:
+        raise ValueError(f"unqualified ShellSet commit {commit}; expected {EXPECTED_COMMIT}")
     return {"branch": branch, "commit": commit}
 
 
@@ -97,24 +98,77 @@ def ensure_output_outside_source(source_root: Path, output_paths: Iterable[Path]
             raise ValueError(f"refusing to write audit output inside ShellSet checkout: {resolved}")
 
 
-def iter_text_files(root: Path) -> Iterable[Path]:
-    for path in sorted(root.rglob("*")):
-        if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
-            continue
-        if any(part.lower() in SKIP_DIRS for part in path.relative_to(root).parts):
-            continue
-        yield path
+def iter_text_files(root: Path) -> list[Path]:
+    """Return only existing regular tracked text files from the checkout index."""
+    root = root.resolve()
+    result = subprocess.run(
+        ["git", "-C", str(root), "ls-files", "-z"],
+        check=False,
+        capture_output=True,
+    )
+    if result.returncode:
+        message = os.fsdecode(result.stderr).strip()
+        raise ValueError(f"git ls-files -z failed: {message}")
+
+    tracked_paths = [os.fsdecode(item) for item in result.stdout.split(b"\0") if item]
+    selected: list[tuple[str, Path]] = []
+    for relative_name in tracked_paths:
+        candidate = root / Path(relative_name)
+        resolved = candidate.resolve()
+        try:
+            resolved.relative_to(root)
+        except ValueError as exc:
+            raise ValueError(f"tracked path resolves outside ShellSet checkout: {relative_name}") from exc
+        try:
+            mode = candidate.lstat().st_mode
+        except OSError as exc:
+            raise ValueError(f"tracked path is missing: {relative_name}") from exc
+        if not stat.S_ISREG(mode) or not resolved.is_file():
+            raise ValueError(f"tracked path is missing or not a regular file: {relative_name}")
+        if Path(relative_name).suffix.lower() in TEXT_SUFFIXES:
+            selected.append((relative_name, candidate))
+    return [path for _, path in sorted(selected, key=lambda entry: entry[0])]
 
 
-def extract_contexts(root: Path) -> dict[str, list[dict[str, object]]]:
+def read_tracked_text_files(root: Path, tracked_text_files: Iterable[Path]) -> dict[Path, str]:
+    """Read committed HEAD blobs, never untracked or dirty worktree contents."""
+    root = root.resolve()
+    contents: dict[Path, str] = {}
+    for path in tracked_text_files:
+        relative_name = path.relative_to(root).as_posix()
+        result = subprocess.run(
+            ["git", "-C", str(root), "show", f"HEAD:{relative_name}"],
+            check=False,
+            capture_output=True,
+        )
+        if result.returncode:
+            message = os.fsdecode(result.stderr).strip()
+            raise ValueError(f"cannot read tracked HEAD blob {relative_name}: {message}")
+        contents[path] = result.stdout.decode("utf-8", errors="replace")
+    return contents
+
+
+def source_file_authority_record(tracked_text_files_scanned: int) -> dict[str, object]:
+    return {
+        "method": "GIT_TRACKED_FILES_ONLY",
+        "command": "git ls-files -z",
+        "untracked_files_scanned": False,
+        "tracked_text_files_scanned": tracked_text_files_scanned,
+        "content_source": "verified HEAD blobs via git show HEAD:<tracked-path>",
+    }
+
+
+def extract_contexts(root: Path, tracked_text_files: Iterable[Path] | None = None, source_texts: dict[Path, str] | None = None) -> dict[str, list[dict[str, object]]]:
     """Return bounded, line-numbered contexts from source/parameter text only."""
     excerpts: dict[str, list[dict[str, object]]] = {term: [] for term in TERMS}
     terms_folded = {term: term.casefold() for term in TERMS}
-    for path in iter_text_files(root):
-        try:
-            lines = path.read_text(encoding="utf-8", errors="strict").splitlines()
-        except (UnicodeError, OSError):
-            continue
+    paths = iter_text_files(root) if tracked_text_files is None else tracked_text_files
+    for path in paths:
+        if source_texts is None:
+            source_text = read_tracked_text_files(root, [path])[path]
+        else:
+            source_text = source_texts[path]
+        lines = source_text.splitlines()
         for index, line in enumerate(lines):
             folded = line.casefold()
             for term, needle in terms_folded.items():
@@ -131,15 +185,17 @@ def extract_contexts(root: Path) -> dict[str, list[dict[str, object]]]:
     return excerpts
 
 
-def extract_binding_and_callsite_contexts(root: Path) -> list[dict[str, object]]:
+def extract_binding_and_callsite_contexts(root: Path, tracked_text_files: Iterable[Path] | None = None, source_texts: dict[Path, str] | None = None) -> list[dict[str, object]]:
     """Capture parameter-reader/binding and call lines near audited symbols."""
     excerpts: list[dict[str, object]] = []
     needles = tuple(term.casefold() for term in TERMS)
-    for path in iter_text_files(root):
-        try:
-            lines = path.read_text(encoding="utf-8", errors="strict").splitlines()
-        except (UnicodeError, OSError):
-            continue
+    paths = iter_text_files(root) if tracked_text_files is None else tracked_text_files
+    for path in paths:
+        if source_texts is None:
+            source_text = read_tracked_text_files(root, [path])[path]
+        else:
+            source_text = source_texts[path]
+        lines = source_text.splitlines()
         for index, line in enumerate(lines):
             if not READER_OR_CALL_RE.search(line):
                 continue
@@ -175,6 +231,8 @@ def build_markdown(payload: dict[str, object]) -> str:
         f"- Commit: `{payload['source_identity']['commit']}`",
         f"- Expected executable SHA-256 (identity reference; executable not read): `{payload['qualified_executable_sha256']}`",
         f"- Governed patch SHA-256: `{payload['governed_patch_sha256']}`",
+        f"- Source-file authority: `{payload['source_file_authority']['method']}` via `{payload['source_file_authority']['command']}`; tracked text files scanned: {payload['source_file_authority']['tracked_text_files_scanned']}; untracked files scanned: false",
+        f"- Content source: `{payload['source_file_authority']['content_source']}`",
         "",
         "## Evidence category scaffold",
         "",
@@ -234,6 +292,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         identity = verify_checkout(root)
         ensure_output_outside_source(root, (args.json_out, args.markdown_out))
+        tracked_text_files = iter_text_files(root)
+        source_texts = read_tracked_text_files(root, tracked_text_files)
     except (OSError, ValueError) as exc:
         print(f"FAIL_CLOSED: {exc}", file=sys.stderr)
         return 2
@@ -246,8 +306,9 @@ def main(argv: list[str] | None = None) -> int:
         "qualified_executable_sha256": EXPECTED_EXECUTABLE_SHA256,
         "governed_patch_sha256": EXPECTED_PATCH_SHA256,
         "source_root": str(root),
-        "source_excerpts": extract_contexts(root),
-        "parameter_binding_and_callsite_excerpts": extract_binding_and_callsite_contexts(root),
+        "source_file_authority": source_file_authority_record(len(source_texts)),
+        "source_excerpts": extract_contexts(root, tracked_text_files, source_texts),
+        "parameter_binding_and_callsite_excerpts": extract_binding_and_callsite_contexts(root, tracked_text_files, source_texts),
         "interpretation": "Automated contextual matches only; manual source/control-flow and parameter-binding reconciliation remains required.",
         "gates": {
             "pre_orbdata_ready": False,
