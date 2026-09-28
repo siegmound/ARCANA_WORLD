@@ -1,6 +1,6 @@
 # R6 T0 OrbData ARCANA adapter and source generalization
 
-**Decision:** `R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION_PREPARED__FAIR_QUALIFICATION_REQUIRED`
+**Decision:** `R6_T0_ORBDATA_ARCANA_SOURCE_GENERALIZATION_FAIR_QUALIFIED__PRE_ORBDATA_SCIENTIFIC_BLOCKERS_REMAIN`
 
 The deterministic ARCANA-side grid exporter is implemented in `src/arcana_worldsim/r6/shellset_mesh/orbdata.py`. It reads governed 180×360 fields and writes OrbData grid text plus replay and support lineage. The full field package remains surface-closed at SHA-256 `31cf4fb77e6fc12df1716805eeb4b46059ca35bbcd7b3bc305efa2e8afef3534`; its historical parent hash remains recorded separately as `39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e`.
 
@@ -46,8 +46,18 @@ Classification: `PARENT_BINARY_NOT_BYTE_REPRODUCIBLE`; `PARENT_NUMERICALLY_REPRO
 
 The updated FAIR harness now requires pre-patch executable SHA-256 `4603…` and performs the stock ListEx1 comparison by model ID. This is evidence correction only: `PRE_ORBDATA=false`; patched ShellSet runtime remains unqualified; no T0 OrbData, mechanics, dt, T1, or forward evolution was performed. No ShellSet run is claimed by this Windows checkout.
 
-## Latest FAIR qualification attempt: parser-only failure
+## Previous FAIR qualification attempt: parser-only failure
 
 The latest FAIR attempt passed ARCANA identity, NVIDIA toolchain, patch application, NVIDIA build, Assign fixture, the stock/full/partial-pair InputSetup fixture, MPI smoke, and the complete 9/9 ListEx1 execution. Qualification stopped only in the final `Models.txt` parser: it treated the non-numeric header row (`global model, ThID, ...`) as data and attempted to use `global` as a model ID. This is a harness parsing failure, not a ShellSet runtime or scientific failure.
 
-The parser correction now skips non-numeric/header rows, requires integer global model IDs exactly `1..9`, rejects duplicates, ignores column 2 `ThID`, compares columns 3 onward by global ID independent of row order, and uses exact Decimal comparisons with computed `MAX_ABS` and `MAX_REL` and no tolerance. The patched runtime remains formally unqualified until the corrected FAIR harness reaches final PASS. `PRE_ORBDATA=false`; no ShellSet execution was run on this Windows checkout, and no T0 OrbData, mechanics, `dt`, T1, or forward evolution is authorized or claimed.
+The parser correction now skips non-numeric/header rows, requires integer global model IDs exactly `1..9`, rejects duplicates, ignores column 2 `ThID`, compares columns 3 onward by global ID independent of row order, and uses exact Decimal comparisons with computed `MAX_ABS` and `MAX_REL` and no tolerance. At that point the patched runtime remained formally unqualified pending the corrected FAIR rerun. `PRE_ORBDATA=false`; no ShellSet execution was run on this Windows checkout, and no T0 OrbData, mechanics, `dt`, T1, or forward evolution is authorized or claimed.
+
+## FAIR source-generalization qualification closure
+
+The corrected FAIR qualification completed with `RC=0`. NVIDIA build, Assign structural fixture, stock/full/partial-pair InputSetup qualification, MPI smoke, and the exact n10_t5 ListEx1 regression all passed. ListEx1 completed 9/9 models. `Models.txt` comparison was keyed by global model ID, ignored asynchronous row order and `ThID`, and compared every field from column 3 onward exactly: `MAX_ABS=0`, `MAX_REL=0`, `PASS_STOCK_LISTEX1_BY_MODEL_ID`.
+
+The governed ShellSet source realization is commit `62fd474f229b2676fd9d39c5def45137d22d2481` on local FAIR branch `arcana-r6-runtime-capacity`, with parent `09a06ecd061f00b80a52af86e31d609ff5545a8b`. The qualified patched executable SHA-256 is `4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918`. Because the ShellSet `origin` points to the upstream `JonBMay/ShellSet` repository, this local commit was not pushed upstream. The source realization remains reconstructable from qualified parent `09a06ecd061f00b80a52af86e31d609ff5545a8b` plus governed ARCANA patch SHA-256 `e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2`.
+
+This closes the **OrbData source-generalization runtime qualification blocker**. It does **not** authorize T0 OrbData execution or mechanics. `PRE_ORBDATA_ready=false` remains governed by unresolved heat-flow routing / `qArray` and `qLim0`/`dQL_dE`/`qLim1` configuration, OrbData material/thermal configuration, and the remaining FEG materialization work where applicable. No `dt`, T1, or forward evolution is authorized.
+
+Machine-readable closure evidence is recorded in `R6_T0_ORBDATA_ARCANA_FAIR_RUNTIME_QUALIFICATION.json`. Raw FAIR qualification evidence is retained under `SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R6_T0_ORBDATA_ARCANA_QUALIFICATION`.

@@ -1,6 +1,6 @@
 {
   "schema": "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION_V1",
-  "decision": "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION_PREPARED__FAIR_QUALIFICATION_REQUIRED",
+  "decision": "R6_T0_ORBDATA_ARCANA_SOURCE_GENERALIZATION_FAIR_QUALIFIED__PRE_ORBDATA_SCIENTIFIC_BLOCKERS_REMAIN",
   "source_identities": {
     "arcana_starting_head": "15dfca97b24c387af5b46c32f2b7db58154c2268",
     "scientific_shellset_upstream": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
@@ -71,7 +71,7 @@
     ]
   },
   "shellset_source_generalization": {
-    "status": "GENERATED_NOT_YET_FAIR_QUALIFIED",
+    "status": "FAIR_QUALIFIED",
     "required_parent_commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
     "scientific_upstream_commit": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
     "source_files_audited": [
@@ -118,6 +118,7 @@
       "classification": "IMPLEMENTATION_QUALIFICATION_INFRASTRUCTURE_FAILURE_NOT_SCIENTIFIC_FAILURE"
     },
     "latest_fair_attempt": {
+      "status": "PASS",
       "arcana_identity": "PASS",
       "nvidia_toolchain": "PASS",
       "patch_application": "PASS",
@@ -125,9 +126,15 @@
       "assign_fixture": "PASS",
       "inputsetup_stock_full_partial_pair_fixture": "PASS",
       "mpi_smoke": "PASS",
-      "listex1_execution": "PASS; complete 9/9 models",
-      "models_parser": "FAIL; treated the non-numeric header row (global model, ThID, ...) as a model row and inserted global as a model ID",
-      "qualification": "NOT_QUALIFIED; corrected parser must reach final PASS",
+      "listex1_execution": "PASS; 9/9 models",
+      "models_comparison": {
+        "method": "keyed by global model ID; row order ignored; ThID excluded as MPI scheduling metadata; columns 3+ compared exactly with Decimal; no tolerance",
+        "models": 9,
+        "max_abs": 0,
+        "max_rel": 0,
+        "result": "PASS_STOCK_LISTEX1_BY_MODEL_ID"
+      },
+      "qualification_rc": 0,
       "scientific_failure": false
     },
     "shellset_main_partial_pair_gate": "immediately after InputSetup(ThID,ModNum,OD,DirName) and before OpenInput/OpenOutput/OrbData5; existing AEF/non-AEF FatalError check calls MPI_Abort",
@@ -142,7 +149,7 @@
     "expected_stock_behavior": "unchanged when complete explicit ARCANA input pair is absent",
     "expected_arcana_behavior": "domain grid controls ocean/continental branch independently of interpolated age; requested total lithosphere is converted to mantle component by subtracting crust; complete FEG elevation accepted at exact zero; no ETOPO fallback",
     "stock_mode_expected_unchanged": true,
-    "qualification": "NOT_QUALIFIED; historical runtime identity applies only to unmodified source",
+    "qualification": "FAIR_QUALIFIED",
     "binary_reproducibility_readjudication": {
       "historical_qualified_executable_sha256": "03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349",
       "rebuild_a_executable_sha256": "0d48576ec1b3d8ff38c9b92d1d794d23235ceeaaebc1d6c051ae980b8cc78272",
@@ -172,13 +179,15 @@
         "CURRENT_PARENT_ARTIFACT_READJUDICATED_FOR_PATCH_QUALIFICATION"
       ],
       "qualification_harness_expected_pre_patch_executable_sha256": "4603c7d2854c2999c1e8e4607b7bbe470e43f300bf2e8ed1650528e49ceb56e9",
-      "qualification_state": "PENDING_FAIR_RERUN; patched ShellSet runtime remains unqualified",
+      "qualification_state": "FAIR_QUALIFIED",
       "pre_orbdata": false,
       "orbdata_executed": false,
       "shellset_mechanics_authorized": false,
       "dt_selected": false,
       "t1_created": false,
-      "forward_evolution": false
+      "forward_evolution": false,
+      "qualified_patched_executable_sha256": "4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918",
+      "qualified_shellset_commit": "62fd474f229b2676fd9d39c5def45137d22d2481"
     },
     "models_parser_correction_pending_fair_rerun": {
       "header_row_ignored": true,
@@ -186,6 +195,41 @@
       "thid": "column 2 ignored as MPI scheduling metadata",
       "comparison": "exact Decimal equality for numeric fields and exact string equality for nonnumeric fields in columns 3 onward, keyed by model ID; row order ignored; no tolerance",
       "max_abs_max_rel": "computed from Decimal comparisons"
+    },
+    "qualified_runtime": {
+      "host": "fair",
+      "branch": "arcana-r6-runtime-capacity",
+      "parent_commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
+      "commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+      "commit_remote_persisted": false,
+      "source_reconstruction": {
+        "method": "qualified parent commit plus governed ARCANA patch",
+        "parent_commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
+        "patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2"
+      },
+      "executable_sha256": "4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918",
+      "backend": "NVIDIA HPC SDK 25.11",
+      "mpi": "NVIDIA HPC-X / OpenMPI",
+      "classification": [
+        "FAIR_QUALIFIED_ARCANA_ORBDATA_SOURCE_GENERALIZATION",
+        "NO_NEW_PHYSICAL_LAW",
+        "NO_RHEOLOGY_CHANGE",
+        "NO_MECHANICS_EQUATION_CHANGE"
+      ]
+    },
+    "qualification_evidence": {
+      "directory": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R6_T0_ORBDATA_ARCANA_QUALIFICATION",
+      "files": {
+        "assign_fixture.log": "d63ed0a393c1ae1d061927c265b7776818188f944c989ec1d181e534e2b1323b",
+        "build.log": "107fbb41932997b5b2fa650e81bca9c72f3ae87fb43f0dabd15d2216159aae5c",
+        "list_ex1.log": "9e9891d3c2afc43b6d878c3a07f67b8a26cbcd26beb24e59237ecf23ed05e27c",
+        "mpi_smoke.log": "e7ca8416888b30e58948d4d8f5628ecee1b2f99926a72e71936a3c7542d7e236",
+        "partial_domain_only.log": "3c2c4f46e74dbf8059032c3d0fe9dad195a8e8e34cbdd08ed6f955158aed9e68",
+        "partial_lithosphere_only.log": "3c2c4f46e74dbf8059032c3d0fe9dad195a8e8e34cbdd08ed6f955158aed9e68",
+        "patched_models.txt": "3b00cec582761f411d8f3f2564761d3b58828ba3fffbb3e85c6d25bfff41c8ee",
+        "qualification.log": "101c0068a9792e1950a0f5a345c345ff6a1669e36403d689b860cded4625c4fd",
+        "reference_models.txt": "fc5a86d4aa448ff9c33493ab210b665f88bbe40e0bf31e6fc36943bc6910b4c5"
+      }
     }
   },
   "heat_flow": {

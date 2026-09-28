@@ -1,0 +1,68 @@
+{
+  "schema": "R6_T0_ORBDATA_ARCANA_FAIR_RUNTIME_QUALIFICATION_V1",
+  "recorded_at_utc": "2026-09-28T19:10:50.068143+00:00",
+  "decision": "R6_T0_ORBDATA_ARCANA_SOURCE_GENERALIZATION_FAIR_QUALIFIED__PRE_ORBDATA_SCIENTIFIC_BLOCKERS_REMAIN",
+  "arcana_head_before_closure": "c7c328a919e57f7439c9433498c440833a0b72f5",
+  "shellset": {
+    "scientific_parent_commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
+    "qualified_arcana_commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+    "branch": "arcana-r6-runtime-capacity",
+    "remote": "https://github.com/JonBMay/ShellSet.git",
+    "qualified_commit_pushed_upstream": false,
+    "governed_patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
+    "historical_qualified_executable_sha256": "03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349",
+    "readjudicated_parent_executable_sha256": "4603c7d2854c2999c1e8e4607b7bbe470e43f300bf2e8ed1650528e49ceb56e9",
+    "qualified_patched_executable_sha256": "4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918",
+    "reconstructable_from_parent_and_patch": true
+  },
+  "qualification": {
+    "nvidia_build": "PASS",
+    "assign_fixture": "PASS",
+    "inputsetup_stock": "PASS",
+    "inputsetup_full_arcana": "PASS",
+    "inputsetup_partial_pair_fail_closed": "PASS",
+    "mpi_smoke": "PASS",
+    "listex1_models_completed": 9,
+    "listex1_models_total": 9,
+    "models_comparison": {
+      "key": "global model ID",
+      "thid": "excluded as MPI scheduling metadata",
+      "row_order": "ignored",
+      "max_abs": 0,
+      "max_rel": 0,
+      "tolerance": 0,
+      "result": "PASS_STOCK_LISTEX1_BY_MODEL_ID"
+    },
+    "qualification_rc": 0
+  },
+  "evidence": {
+    "directory": "SIMULATION_RESULTS/04_VALIDATION_AUXILIARY/outputs/v0_6D1_R6_T0_ORBDATA_ARCANA_QUALIFICATION",
+    "files": {
+      "assign_fixture.log": "d63ed0a393c1ae1d061927c265b7776818188f944c989ec1d181e534e2b1323b",
+      "build.log": "107fbb41932997b5b2fa650e81bca9c72f3ae87fb43f0dabd15d2216159aae5c",
+      "list_ex1.log": "9e9891d3c2afc43b6d878c3a07f67b8a26cbcd26beb24e59237ecf23ed05e27c",
+      "mpi_smoke.log": "e7ca8416888b30e58948d4d8f5628ecee1b2f99926a72e71936a3c7542d7e236",
+      "partial_domain_only.log": "3c2c4f46e74dbf8059032c3d0fe9dad195a8e8e34cbdd08ed6f955158aed9e68",
+      "partial_lithosphere_only.log": "3c2c4f46e74dbf8059032c3d0fe9dad195a8e8e34cbdd08ed6f955158aed9e68",
+      "patched_models.txt": "3b00cec582761f411d8f3f2564761d3b58828ba3fffbb3e85c6d25bfff41c8ee",
+      "qualification.log": "101c0068a9792e1950a0f5a345c345ff6a1669e36403d689b860cded4625c4fd",
+      "reference_models.txt": "fc5a86d4aa448ff9c33493ab210b665f88bbe40e0bf31e6fc36943bc6910b4c5"
+    }
+  },
+  "authorization_boundary": {
+    "pre_orbdata_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false
+  },
+  "remaining_scientific_blockers": [
+    "governed heat-flow routing and qLim configuration",
+    "material/thermal OrbData configuration adjudication"
+  ],
+  "remaining_implementation_blockers": [
+    "rerun FAIR qualification with ShellSetMain MPI fatal gate, corrected partial-pair fixture, and exact stock ListEx1 regression; capture new runtime evidence after pass",
+    "materialize 64,442-node projection after canonical partition payload is available"
+  ]
+}

@@ -1,0 +1,119 @@
+START ARCANA_IDENTITY
+START NVIDIA_TOOLCHAIN
+START PATCH_APPLICATION
+START NVIDIA_BUILD
+compiling src/MOD_SharedVars.f90
+compiling src/MOD_ShellSet.f90
+src/MOD_ShellSet.f90:
+compiling src/DMods.f90
+src/DMods.f90:
+compiling src/MOD_Shells.f90
+src/MOD_Shells.f90:
+NVFORTRAN-W-0093-Type conversion of expression performed (src/MOD_Shells.f90: 5945)
+  0 inform,   1 warnings,   0 severes, 0 fatal for mohr
+compiling src/SHELLS_v5.0.f90
+src/SHELLS_v5.0.f90:
+compiling src/MOD_Score.f90
+src/MOD_Score.f90:
+NVFORTRAN-W-0093-Type conversion of expression performed (src/MOD_Score.f90: 2295)
+  0 inform,   1 warnings,   0 severes, 0 fatal for oldmohr
+NVFORTRAN-W-0093-Type conversion of expression performed (src/MOD_Score.f90: 2862)
+  0 inform,   1 warnings,   0 severes, 0 fatal for mohr
+compiling src/OrbScore2.f90
+src/OrbScore2.f90:
+compiling src/MOD_Data.f90
+src/MOD_Data.f90:
+compiling src/OrbData5.f90
+src/OrbData5.f90:
+compiling src/MOD_VarCheck.f90
+src/MOD_VarCheck.f90:
+compiling src/ShellSetMain.f90
+src/ShellSetMain.f90:
+NVFORTRAN-W-0093-Type conversion of expression performed (src/ShellSetMain.f90: 411)
+NVFORTRAN-W-0093-Type conversion of expression performed (src/ShellSetMain.f90: 411)
+NVFORTRAN-W-0093-Type conversion of expression performed (src/ShellSetMain.f90: 411)
+NVFORTRAN-W-0093-Type conversion of expression performed (src/ShellSetMain.f90: 863)
+NVFORTRAN-W-0093-Type conversion of expression performed (src/ShellSetMain.f90: 863)
+NVFORTRAN-W-0093-Type conversion of expression performed (src/ShellSetMain.f90: 863)
+  0 inform,   6 warnings,   0 severes, 0 fatal for shellset
+creating ShellSet.exe
+START ASSIGN_FIXTURE
+/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD/tests/fixtures/r6_t0_orbdata_arcana/assign_source_generalization.f90:
+
+           ERROR: (  -0.500E,  -0.500N) ABS(sigZZB):   118800816.512 IS NOT ISOSTATIC WITH RISE:
+REQUESTED_TOTAL_LITHOSPHERE_M=  1.35000000E+05
+EXPECTED_INITIAL_MANTLE_COMPONENT_M=  1.00000000E+05
+FINAL_CONTINENTAL_MANTLE_COMPONENT_M=  1.00000000E+05
+FINAL_OCEANIC_MANTLE_COMPONENT_M=  6.09354459E+04
+STOCK_SARRAY_DELTA_M= -9.30789826E+04
+ARCANA_SYNTHETIC_ASSIGN_FIXTURE=PASS
+START INPUTSETUP_PAIR_FIXTURE
+/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD/tests/fixtures/r6_t0_orbdata_arcana/open_pair_driver.f90:
+INPUTSETUP_OPEN_CLOSE_FIXTURE=PASS mode=stock
+INPUTSETUP_OPEN_CLOSE_FIXTURE=PASS mode=full
+PASS INPUTSETUP_PAIR_FIXTURE stock/full/partial-pair cases
+START MPI_SMOKE
+START LISTEX1_STOCK_REGRESSION
+[fair:2669904] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]]: [BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 1 bound to socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]]: [../../../../../BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 2 bound to socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]]: [../../../../../../../../../../BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 3 bound to socket 0[core 16[hwt 0-1]], socket 0[core 17[hwt 0-1]], socket 0[core 18[hwt 0-1]], socket 0[core 19[hwt 0-1]], socket 0[core 20[hwt 0-1]]: [../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 4 bound to socket 0[core 21[hwt 0-1]], socket 0[core 22[hwt 0-1]], socket 0[core 23[hwt 0-1]], socket 0[core 24[hwt 0-1]], socket 0[core 25[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 5 bound to socket 0[core 26[hwt 0-1]], socket 0[core 27[hwt 0-1]], socket 0[core 28[hwt 0-1]], socket 0[core 29[hwt 0-1]], socket 0[core 30[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 6 bound to socket 1[core 32[hwt 0-1]], socket 1[core 33[hwt 0-1]], socket 1[core 34[hwt 0-1]], socket 1[core 35[hwt 0-1]], socket 1[core 36[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 7 bound to socket 1[core 37[hwt 0-1]], socket 1[core 38[hwt 0-1]], socket 1[core 39[hwt 0-1]], socket 1[core 40[hwt 0-1]], socket 1[core 41[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 8 bound to socket 1[core 42[hwt 0-1]], socket 1[core 43[hwt 0-1]], socket 1[core 44[hwt 0-1]], socket 1[core 45[hwt 0-1]], socket 1[core 46[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../..]
+[fair:2669904] MCW rank 9 bound to socket 1[core 48[hwt 0-1]], socket 1[core 49[hwt 0-1]], socket 1[core 50[hwt 0-1]], socket 1[core 51[hwt 0-1]], socket 1[core 52[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/../../../../../../../../../../..]
+Starting model: 1 of 9
+Starting model: 2 of 9
+Starting model: 3 of 9
+Starting model: 4 of 9
+Starting model: 5 of 9
+Starting model: 6 of 9
+Starting model: 7 of 9
+Starting model: 8 of 9
+Starting model: 9 of 9
+ 
+Finished model: 7
+ 
+ 
+ 
+Finished model: 1
+ 
+ 
+ 
+Finished model: 4
+ 
+Finished model: 6
+Finished model: 2
+Finished model: 3
+Finished model: 8
+Finished model: 5
+ 
+Finished model: 9
+ShellSet List test finished in (mm:ss): 11:470.80802
+
+****************************************************************************
+ShellSet Copyright (C) 2023 Jon May, Peter Bird, Michele Carafa
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, you are welcome to redistribute it under conditions
+set out in GNU General Public License version 3, or any later version.
+See the included license file, or https://www.gnu.org/licenses/, for details
+****************************************************************************
+
+STOCK_LISTEX1_MODELS=9
+STOCK_LISTEX1_MAX_ABS=0
+STOCK_LISTEX1_MAX_REL=0
+PASS_STOCK_LISTEX1_BY_MODEL_ID
+SHELLSET_PATCH_QUALIFICATION=PASS_PENDING_MANUAL_COMMIT_AND_EVIDENCE_CAPTURE
+PATCH_SHA256=e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2
+HISTORICAL_QUALIFIED_EXE_SHA256=03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349
+READJUDICATED_PARENT_EXE_SHA256=4603c7d2854c2999c1e8e4607b7bbe470e43f300bf2e8ed1650528e49ceb56e9
+SHELLSET_NEW_COMMIT=not created by this script
+SHELLSET_EXE_SHA256=4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918
+FAIR_FIXTURE_ROOT=/tmp/arcana-orbdata-fixture.wPBM0Z
+BUILD_LOG=/tmp/arcana-shellset-build.WjSO2E.log
+Manual next commands after review:
+  git -C '/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0' add src/MOD_ShellSet.f90 src/OrbData5.f90 src/MOD_Data.f90 src/ShellSetMain.f90
+  git -C '/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0' commit -m 'arcana: add governed OrbData explicit inputs'
+No push, ARCANA T0 OrbData, or SHELLS T0 mechanics was performed by this script.
