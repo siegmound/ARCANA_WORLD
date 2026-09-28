@@ -13,7 +13,7 @@ expected_field_package_sha="31cf4fb77e6fc12df1716805eeb4b46059ca35bbcd7b3bc305ef
 expected_shellset_parent="09a06ecd061f00b80a52af86e31d609ff5545a8b"
 expected_old_exe_sha="03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349"
 patch_path="$repo_root/patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch"
-expected_patch_sha="74fa912d913a82314453ab00addc3e6bcfe1ede87f51866035412e4393f9ad94"
+expected_patch_sha="e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2"
 [[ "$(git branch --show-current)" == "$expected_branch" ]] || fail "wrong ARCANA branch"
 git merge-base --is-ancestor "$minimum_ancestor" HEAD || fail "ARCANA HEAD is not descended from the adapter commit"
 field_sha="$(sha256sum R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE_SURFACE_CLOSED.npz | awk '{print $1}')" || fail "cannot hash surface-closed field package"
@@ -36,6 +36,23 @@ mpifort --showme:command 2>&1 | grep -q 'nvfortran' || fail "mpifort is not usin
 
 stage PATCH_APPLICATION
 git -C "$shellset_root" apply --check "$patch_path" || fail "git apply --check rejected the source patch"
+recovery_root="$(mktemp -d "${TMPDIR:-/tmp}/arcana-shellset-recovery.XXXXXX")" || fail "cannot create recovery directory"
+parent_exe_backup="$recovery_root/ShellSet.exe.qualified-parent"
+cp "$shellset_root/ShellSet.exe" "$parent_exe_backup" || fail "cannot preserve qualified parent executable"
+patched_sources=(src/MOD_ShellSet.f90 src/OrbData5.f90 src/MOD_Data.f90 src/ShellSetMain.f90)
+patch_started=true
+qualification_pass=false
+restore_on_failure() {
+  local rc=$?
+  if [[ "$qualification_pass" != true && "$patch_started" == true ]]; then
+    echo "FAIL qualification; restoring patched tracked sources and qualified parent executable" >&2
+    git -C "$shellset_root" checkout -- "${patched_sources[@]}" || echo "RECOVERY WARNING: source restore failed" >&2
+    cp "$parent_exe_backup" "$shellset_root/ShellSet.exe" || echo "RECOVERY WARNING: executable backup remains at $parent_exe_backup" >&2
+    echo "RECOVERY_BACKUP=$recovery_root"
+  fi
+  return "$rc"
+}
+trap restore_on_failure EXIT
 git -C "$shellset_root" apply "$patch_path" || fail "failed to apply the source patch"
 git -C "$shellset_root" diff --check || fail "patched ShellSet diff check failed"
 
@@ -68,7 +85,7 @@ mpifort -Mbackslash -I"$shellset_root/lib" -o "$fixture_root/inputsetup_pair_dri
   "${objects[@]/#/$shellset_root/}" -llapack -lblas || fail "cannot build InputSetup/OpenInput fixture"
 make_input_case() {
   local root="$1" mode="$2"
-  mkdir -p "$root/INPUT"
+mkdir -p "$root/INPUT" "$root/Error"
   cat > "$root/INPUT/InputFiles.in" <<'EOF'
 fixture test inputs
 parameters.in
@@ -90,10 +107,8 @@ for mode in stock full only-domain only-lithosphere; do make_input_case "$fixtur
 (cd "$fixture_root/input-stock" && ../inputsetup_pair_driver.exe . stock) || fail "stock InputSetup/OpenInput fixture failed"
 (cd "$fixture_root/input-full" && ../inputsetup_pair_driver.exe . full) || fail "full-pair InputSetup/OpenInput fixture failed"
 for partial in only-domain only-lithosphere; do
-  if (cd "$fixture_root/input-$partial" && ../inputsetup_pair_driver.exe . partial) >"$fixture_root/$partial.log" 2>&1; then
-    fail "partial INPUT pair unexpectedly succeeded: $partial"
-  fi
-  grep -q 'Incomplete ARCANA OrbData source pair' "$fixture_root/$partial.log" || fail "partial-pair failure lacked diagnostic: $partial"
+  (cd "$fixture_root/input-$partial" && ../inputsetup_pair_driver.exe . partial) >"$fixture_root/$partial.log" 2>&1 || fail "partial-pair recording fixture failed: $partial"
+  grep -q 'INPUTSETUP_PARTIAL_PAIR_FATAL_RECORDED=PASS' "$fixture_root/$partial.log" || fail "partial-pair fatal marker missing: $partial"
 done
 echo "PASS INPUTSETUP_PAIR_FIXTURE stock/full/partial-pair cases"
 
@@ -163,6 +178,7 @@ echo "SHELLSET_EXE_SHA256=$new_exe_sha"
 echo "FAIR_FIXTURE_ROOT=$fixture_root"
 echo "BUILD_LOG=$build_log"
 echo "Manual next commands after review:"
-echo "  git -C '$shellset_root' add src/MOD_ShellSet.f90 src/OrbData5.f90 src/MOD_Data.f90"
+echo "  git -C '$shellset_root' add src/MOD_ShellSet.f90 src/OrbData5.f90 src/MOD_Data.f90 src/ShellSetMain.f90"
 echo "  git -C '$shellset_root' commit -m 'arcana: add governed OrbData explicit inputs'"
 echo "No push, ARCANA T0 OrbData, or SHELLS T0 mechanics was performed by this script."
+qualification_pass=true

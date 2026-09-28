@@ -61,9 +61,11 @@
     "scientific_upstream_commit": "e4a6fbd5997b6c4978924649dff1abab0c96ca57",
     "source_files_audited": ["src/OrbData5.f90", "src/MOD_Data.f90", "src/MOD_ShellSet.f90"],
     "patch_path": "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch",
-    "patch_sha256": "74fa912d913a82314453ab00addc3e6bcfe1ede87f51866035412e4393f9ad94",
-    "superseded_patch_sha256": "4d4e5cfa07e8af0c52bc2fbcf2c77a080c2b68921174ad2e4cde078c5425843c",
-    "modified_shellset_files": ["src/MOD_ShellSet.f90", "src/OrbData5.f90", "src/MOD_Data.f90"],
+    "patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
+    "superseded_patch_sha256": "74fa912d913a82314453ab00addc3e6bcfe1ede87f51866035412e4393f9ad94",
+    "historical_superseded_patch_sha256": "4d4e5cfa07e8af0c52bc2fbcf2c77a080c2b68921174ad2e4cde078c5425843c",
+    "modified_shellset_files": ["src/MOD_ShellSet.f90", "src/OrbData5.f90", "src/MOD_Data.f90", "src/ShellSetMain.f90"],
+    "shellset_main_change_classification": ["FAIL_CLOSED_INPUT_GOVERNANCE_ONLY", "NO_PHYSICS_CHANGE", "NO_MECHANICS_EQUATION_CHANGE"],
     "mode_activation": "all-or-nothing presence of per-model fort_<model>.15 and fort_<model>.16; neither means stock, both means ARCANA, one means fatal failure",
     "unit_15": "explicit physical_crust_domain_id categorical grid; ID 1 selects ocean, IDs 2..6 select continental structure",
     "unit_16": "continental_reference_lithosphere_thickness_m as requested TOTAL lithosphere structure; requested thickM starts as interpolated total minus thickC",
@@ -75,16 +77,29 @@
     "fair_qualification_script": "scripts/r6_t0_fair_apply_qualify_shellset_arcana_patch.sh",
     "inputsetup_staging": "INPUT/ARCANA_DOMAIN.grd and INPUT/ARCANA_TOTAL_LITHOSPHERE_M.grd are an all-or-none source pair; InputSetup copies them to .15/.16 and omits .12 in ARCANA mode; absent pair stages stock DataFiles(6) as .12",
     "synthetic_fixture": {
-      "status": "PRODUCTION_INPUTSETUP_PATH_PREPARED_NOT_FAIR_RUN",
+      "status": "PRODUCTION_INPUTSETUP_FIXTURE_UPDATED_AFTER_PARTIAL_PAIR_RECHECK",
       "assign_driver": "tests/fixtures/r6_t0_orbdata_arcana/assign_source_generalization.f90",
       "input_pair_driver": "tests/fixtures/r6_t0_orbdata_arcana/open_pair_driver.f90",
-      "fixture_values_are_t0_configuration": false
+      "fixture_values_are_t0_configuration": false,
+      "assign_result": "requested total 135 km minus 35 km crust initializes 100 km mantle; ARCANA continental output invariant to synthetic sArray while stock output changes",
+      "diagnostic": "non-isostasy warning is test-fixture-parameter behavior, not T0 physical evidence"
     },
     "first_fair_attempt": {
       "status": "FAILED_BEFORE_LINK",
       "failure": "qualification script overrode FC=nvfortran, bypassing mpifort and leaving ShellSetMain without mpif.h include configuration",
       "classification": "IMPLEMENTATION_QUALIFICATION_INFRASTRUCTURE_FAILURE_NOT_SCIENTIFIC_FAILURE"
     },
+    "latest_fair_attempt": {
+      "build": "PASS",
+      "assign_structural_fixture": "PASS",
+      "inputsetup_stock": "PASS",
+      "inputsetup_full_arcana": "PASS",
+      "partial_pair_detection": "CONFIRMED",
+      "partial_pair_end_to_end": "PARTIAL_PAIR_END_TO_END_FAIL_CLOSED_NOT_YET_QUALIFIED",
+      "reason": "ShellSetSubs abort(11) is informational and does not terminate; the previous fixture then reached its unsupported partial mode and failed. MPI smoke and ListEx1 were not reached.",
+      "scientific_failure": false
+    },
+    "shellset_main_partial_pair_gate": "immediately after InputSetup(ThID,ModNum,OD,DirName) and before OpenInput/OpenOutput/OrbData5; existing AEF/non-AEF FatalError check calls MPI_Abort",
     "qualified_build_command": "make -B ShellSet",
     "stock_regression": "mpiexec -n 10 --map-by ppr:3:numa:PE=5 --bind-to core --report-bindings ./ShellSet.exe -Iter 4 -InOpt List -Dir RUN_DIR -GM 5,SSR,GV,SD,SA,FSR; exact Models.txt equality at reported precision",
     "semantic_classification": ["INTEROPERABILITY_GENERALIZATION", "NO_NEW_PHYSICAL_LAW", "NO_RHEOLOGY_CHANGE", "NO_MECHANICS_EQUATION_CHANGE"],
@@ -100,6 +115,6 @@
   },
   "pre_orbdata_ready": false,
   "remaining_scientific_blockers": ["governed heat-flow routing and qLim configuration", "material/thermal OrbData configuration adjudication"],
-    "remaining_implementation_blockers": ["rerun FAIR patch applicability/build using the corrected MPI wrapper path, production InputSetup fixtures, and exact stock ListEx1 regression; capture new runtime evidence after pass", "materialize 64,442-node projection after canonical partition payload is available"],
+    "remaining_implementation_blockers": ["rerun FAIR qualification with ShellSetMain MPI fatal gate, corrected partial-pair fixture, and exact stock ListEx1 regression; capture new runtime evidence after pass", "materialize 64,442-node projection after canonical partition payload is available"],
   "governance": {"orbdata_executed": false, "shellset_mechanics_authorized": false, "dt_selected": false, "t1_created": false, "forward_evolution": false, "push": false}
 }

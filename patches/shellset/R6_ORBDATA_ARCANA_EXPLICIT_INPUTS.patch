@@ -31,7 +31,7 @@
  character(len=100) :: ShellsFiles(9),ShellsFilesFinal(9),ScoreFiles(10),DataFiles(6)
  logical :: ShellsFilesL(4),ShellsFilesFinalL(4),ScoreFilesL(8)
  logical,save :: callOD=.False.,callSH=.False.,callOS=.False.,callSF=.False.
-@@ -1379,6 +1385,13 @@
+@@ -1379,6 +1385,14 @@
    case("OD")
  
      call readDATA(DataFiles) ! (/Grid,Para,ETOPO,Age,CrustThick,DeltaTS/)
@@ -40,12 +40,13 @@
 +    if(arcDomainExists .neqv. arcLithosphereExists) then
 +      call FatalError("Incomplete ARCANA OrbData source pair in INPUT/",ModNum)
 +      call abort(11)
++      return
 +    end if
 +    arcanaInputMode=arcDomainExists .and. arcLithosphereExists
  
      write(dir,"(A,'/','ThID_',I0,'_Data_input')") trim(ListDIR),ThID
      if(.not. callOD) then
-@@ -1391,7 +1404,12 @@
+@@ -1391,7 +1405,12 @@
      call execute_command_line('cp INPUT/'//trim(DataFiles(1)) //' '//trim(dir)//'/'//trim(filename)//'2')
      call execute_command_line('cp INPUT/'//trim(DataFiles(4)) //' '//trim(dir)//'/'//trim(filename)//'7')
      call execute_command_line('cp INPUT/'//trim(DataFiles(5)) //' '//trim(dir)//'/'//trim(filename)//'11')
@@ -59,7 +60,7 @@
  
  
    case("SH")
-@@ -1494,7 +1512,7 @@
+@@ -1494,7 +1513,7 @@
  character(len=200) :: filename
  character(len=100) :: dir
  integer,intent(in),optional :: rpeat
@@ -68,7 +69,7 @@
  logical,save :: callSF=.False.
  
  
-@@ -1508,7 +1526,17 @@
+@@ -1508,7 +1527,17 @@
      open(unit=3,file=trim(dir)//trim(filename)//'3')
      open(unit=7,file=trim(dir)//trim(filename)//'7')
      open(unit=11,file=trim(dir)//trim(filename)//'11')
@@ -322,3 +323,28 @@
  
         ELSE
  
+--- a/src/ShellSetMain.f90
++++ b/src/ShellSetMain.f90
+@@ -651,6 +651,22 @@
+ 	  call OrbDataCheck(ListVarNames,OData)
+       if(OData) then
+         call InputSetup(ThID,ModNum,"OD",DirName)
++        if(AEF) then
++          FErrChk = (FileExist('FatalError.txt') .or. FileExist('ModelError.txt'))
++          if(FErrChk) then
++            call abort(4)
++            if (FileExist('ModelError.txt')) call execute_command_line('rm ModelError.txt')
++            if (FileExist('FatalError.txt')) call execute_command_line('rm FatalError.txt')
++            call MPI_Abort(MPI_COMM_WORLD,4)
++          end if
++        else
++          FErrChk = FileExist('FatalError.txt')
++          if(FErrChk) then
++            call abort(3)
++            if (FileExist('FatalError.txt')) call execute_command_line('rm FatalError.txt')
++            call MPI_Abort(MPI_COMM_WORLD,3)
++          end if
++        end if
+         call OpenInput(ThID,ModNum,"OD",DirName)
+         call OpenOutput(ThID,ModNum,"OD",DirName)
+         call OrbData5(ModNum,ListVarNames,ListVarValues(1,:),DirName)

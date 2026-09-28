@@ -92,6 +92,32 @@ class OrbDataAdapterTests(unittest.TestCase):
     self.assertIn("OrbData5.f90", patch)
     self.assertIn("MOD_Data.f90", patch)
 
+ def test_shellset_main_aborts_partial_input_before_open_or_orbdata(self):
+    root = Path(__file__).resolve().parents[1]
+    patch = (root / "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch").read_text()
+    self.assertIn("--- a/src/ShellSetMain.f90", patch)
+    main_patch = patch.split("--- a/src/ShellSetMain.f90", 1)[1]
+    setup = main_patch.index('call InputSetup(ThID,ModNum,"OD",DirName)')
+    fatal_gate = main_patch.index("FErrChk = FileExist('FatalError.txt')")
+    mpi_abort = main_patch.index("call MPI_Abort(MPI_COMM_WORLD,3)")
+    open_input = main_patch.index('call OpenInput(ThID,ModNum,"OD",DirName)')
+    self.assertLess(setup, fatal_gate)
+    self.assertLess(fatal_gate, mpi_abort)
+    self.assertLess(mpi_abort, open_input)
+    orbdata = main_patch.index("call OrbData5(")
+    self.assertLess(open_input, orbdata)
+    self.assertIn("call abort(11)\n+      return", patch)
+
+ def test_partial_pair_fixture_checks_recorded_fatal_and_does_not_open(self):
+    root = Path(__file__).resolve().parents[1]
+    fixture = (root / "tests/fixtures/r6_t0_orbdata_arcana/open_pair_driver.f90").read_text()
+    partial = fixture.split('if (trim(mode)=="partial") then', 1)[1].split("end if", 1)[0]
+    self.assertIn('inquire(file="FatalError.txt",exist=fatal_exists)', partial)
+    self.assertIn('inquire(file="Error/FatalError_1.txt",exist=detail_exists)', partial)
+    self.assertIn("Incomplete ARCANA OrbData source pair", partial)
+    self.assertIn("INPUTSETUP_PARTIAL_PAIR_FATAL_RECORDED=PASS", partial)
+    self.assertNotIn("call OpenInput", partial)
+
 
 if __name__ == "__main__":
     unittest.main()
