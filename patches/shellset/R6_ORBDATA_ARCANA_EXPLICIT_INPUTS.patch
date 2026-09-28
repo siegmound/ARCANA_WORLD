@@ -22,7 +22,44 @@
  
  
    case("SH")
-@@ -1494,7 +1500,7 @@
+@@ -1368,7 +1374,7 @@
+ 
+ integer,parameter :: iUnitVerb = 6 ! Unit number for optional verbose.txt file
+ character(len=100):: dir,filename
+-logical :: exists
++logical :: exists,arcDomainExists,arcLithosphereExists,arcanaInputMode
+ character(len=100) :: ShellsFiles(9),ShellsFilesFinal(9),ScoreFiles(10),DataFiles(6)
+ logical :: ShellsFilesL(4),ShellsFilesFinalL(4),ScoreFilesL(8)
+ logical,save :: callOD=.False.,callSH=.False.,callOS=.False.,callSF=.False.
+@@ -1379,6 +1385,13 @@
+   case("OD")
+ 
+     call readDATA(DataFiles) ! (/Grid,Para,ETOPO,Age,CrustThick,DeltaTS/)
++    arcDomainExists=FileExist('INPUT/ARCANA_DOMAIN.grd')
++    arcLithosphereExists=FileExist('INPUT/ARCANA_TOTAL_LITHOSPHERE_M.grd')
++    if(arcDomainExists .neqv. arcLithosphereExists) then
++      call FatalError("Incomplete ARCANA OrbData source pair in INPUT/",ModNum)
++      call abort(11)
++    end if
++    arcanaInputMode=arcDomainExists .and. arcLithosphereExists
+ 
+     write(dir,"(A,'/','ThID_',I0,'_Data_input')") trim(ListDIR),ThID
+     if(.not. callOD) then
+@@ -1391,7 +1404,12 @@
+     call execute_command_line('cp INPUT/'//trim(DataFiles(1)) //' '//trim(dir)//'/'//trim(filename)//'2')
+     call execute_command_line('cp INPUT/'//trim(DataFiles(4)) //' '//trim(dir)//'/'//trim(filename)//'7')
+     call execute_command_line('cp INPUT/'//trim(DataFiles(5)) //' '//trim(dir)//'/'//trim(filename)//'11')
+-    call execute_command_line('cp INPUT/'//trim(DataFiles(6)) //' '//trim(dir)//'/'//trim(filename)//'12')
++    if(arcanaInputMode) then
++      call execute_command_line('cp INPUT/ARCANA_DOMAIN.grd '//trim(dir)//'/'//trim(filename)//'15')
++      call execute_command_line('cp INPUT/ARCANA_TOTAL_LITHOSPHERE_M.grd '//trim(dir)//'/'//trim(filename)//'16')
++    else
++      call execute_command_line('cp INPUT/'//trim(DataFiles(6)) //' '//trim(dir)//'/'//trim(filename)//'12')
++    end if
+ 
+ 
+   case("SH")
+@@ -1494,7 +1512,7 @@
  character(len=200) :: filename
  character(len=100) :: dir
  integer,intent(in),optional :: rpeat
@@ -31,7 +68,7 @@
  logical,save :: callSF=.False.
  
  
-@@ -1508,7 +1514,17 @@
+@@ -1508,7 +1526,17 @@
      open(unit=3,file=trim(dir)//trim(filename)//'3')
      open(unit=7,file=trim(dir)//trim(filename)//'7')
      open(unit=11,file=trim(dir)//trim(filename)//'11')
