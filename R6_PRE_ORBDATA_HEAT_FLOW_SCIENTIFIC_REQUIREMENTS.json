@@ -1,0 +1,177 @@
+{
+  "schema": "arcana_worldsim.r6.pre_orbdata_heat_flow_scientific_requirements.v1",
+  "decision": "R6_PRE_ORBDATA_HEAT_FLOW_REQUIREMENTS_DECOMPOSED__ARCHITECTURE_UNSELECTED",
+  "scope": "A0.3 decomposition only; no values selected, no runtime execution, no readiness promotion",
+  "authority": {
+    "semantic_adjudication": "R6_PRE_ORBDATA_HEAT_FLOW_SEMANTICS_PARTIALLY_ADJUDICATED__SOURCE_AMBIGUITY_REMAINS",
+    "realization": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+    "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+    "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+    "reconciliation": "Later v2 artifacts supersede the older claim that no heat-flow-related field exists: continental_reference_surface_heat_flow_w_m2 is materialized on cell support as a partial continental reference. It is not a complete global ocean-plus-continent FEG heat-flow field and does not close routing or qArray policy.",
+    "evidence": ["R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json", "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.json", "R6_T0_B_PANGAEA_LIKE_V2_RUNTIME_BINDING_AND_INPUT_READJUDICATION.json", "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.json"]
+  },
+  "existing_t0_field_constraints": {
+    "physical_crust_domain_id": {
+      "state": "Materialized on cell support; canonical candidate awaits materialization validation.",
+      "can_constrain": ["ocean/continent membership", "branch support masks"],
+      "cannot_constrain_alone": ["flux magnitude", "age-to-flux law", "continental geotherm"],
+      "note": "A domain-conditioned flux law is a separate physical model choice."
+    },
+    "oceanic_lithosphere_age_ma": {
+      "state": "Materialized as authoritative ocean age primitive; FEG adapter export/coastline classification still require qualification.",
+      "can_constrain": ["input to a selected ocean age-dependent thermal model", "age support and lineage"],
+      "cannot_constrain_alone": ["flux law/coefficient", "zero-age meaning", "continental flux"],
+      "note": "Its generator explicitly makes no constant spreading-rate claim; age-to-flux requires a selected law and parameters."
+    },
+    "crustal_thickness_m": {
+      "state": "Materialized on cells; mesh export/projection is separate.",
+      "can_constrain": ["crust/mantle layer geometry in a selected geotherm model"],
+      "cannot_constrain_alone": ["surface flux magnitude"],
+      "note": "Thermal use requires model and material-property justification."
+    },
+    "continental_reference_lithosphere_thickness_m": {
+      "state": "Materialized reference structure on cells; stock continental sArray does not consume it.",
+      "can_constrain": ["continental thermal-profile geometry if a model explicitly uses it"],
+      "cannot_constrain_alone": ["surface flux"],
+      "note": "Thickness is not a flux proxy; an equivalent qualified model route remains open."
+    },
+    "continental_reference_surface_heat_flow_w_m2": {
+      "state": "Materialized continental domain references on cells; no complete ocean/global FEG field, per-node lineage, or FEG projection.",
+      "can_constrain": ["continental reference targets for A", "calibration/consistency checks for B if governed"],
+      "cannot_constrain_alone": ["ocean flux", "complete nodal field", "within-domain variation/uncertainty"],
+      "decision_needed": "Govern whether it is direct input, model target, or validation-only.",
+      "evidence": ["R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json:derived_fields.continental_thermal_reference_state", "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.json:global_heat_flow", "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.md:19,63"]
+    },
+    "elevation_bathymetry": {
+      "state": "Land elevation and v2 ocean surface are closed on cell support; complete PRE_ORBDATA nodal surface interface remains open.",
+      "can_constrain": ["thermal surface boundary geometry", "ShellSet elevation-dependent q limit", "depth only if an explicit model uses it"],
+      "cannot_constrain_alone": ["flux magnitude/law"],
+      "note": "Do not use bathymetry as a flux proxy absent a justified relationship."
+    },
+    "plate_topology_kinematics": {
+      "state": "Canonical partition/topology and kinematic support exist; v2 age uses selected divergent boundaries and monotone distance transform, not constant spreading rate.",
+      "can_constrain": ["age provenance/source support", "history only through an authorized temporal model"],
+      "cannot_constrain_alone": ["flux magnitude", "ridge status from plate identity/instantaneous rotation", "spreading history"],
+      "note": "Requires an explicit thermal/history model before inferring flux."
+    },
+    "continental_thermal_domain_id": {
+      "state": "Materialized categorical domains associated with the continental reference configuration.",
+      "can_constrain": ["domain lookup for the continental reference heat-flow field"],
+      "cannot_constrain_alone": ["heat-flow law or within-domain variability"],
+      "evidence": ["R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json:derived_fields.continental_thermal_reference_state"]
+    }
+  },
+  "requirements": [
+    {
+      "id": "T0_HEAT_FLOW_REPRESENTATION",
+      "question": "Is authoritative T0 flux a complete explicit field, partial domain references, or specialist-derived state? What are its support, masks, units, lineage and authority?",
+      "classifications": ["NEW_ARCANA_PHYSICAL_MODEL_REQUIRED", "ARCANA_EXISTING_FIELD_CAN_CONSTRAIN", "UNRESOLVED"],
+      "existing_constraints": ["continental_reference_surface_heat_flow_w_m2 (partial)", "physical_crust_domain_id (routing masks)", "oceanic_lithosphere_age_ma (candidate model input)"],
+      "insufficient_alone": ["crustal_thickness_m", "continental_reference_lithosphere_thickness_m", "elevation/bathymetry", "plate topology/kinematics"],
+      "decisions": ["Distinguish WORLD_HISTORY primitive, specialist-derived output, and reference/validation roles.", "Define full support and unknown policy.", "Define lineage and uncertainty."]
+    },
+    {
+      "id": "OCEANIC_DERIVATION",
+      "question": "Should ocean flux be explicit or derived from age with a selected cooling model, and how do model form, material parameters and heat production determine surface flux?",
+      "classifications": ["LITERATURE_CONSTRAINT_REQUIRED", "ARCANA_EXISTING_FIELD_CAN_CONSTRAIN", "NEW_ARCANA_PHYSICAL_MODEL_REQUIRED", "DEFER_TO_MATERIAL_THERMAL_STAGE", "UNRESOLVED"],
+      "existing_constraints": ["oceanic_lithosphere_age_ma", "physical_crust_domain_id", "elevation/bathymetry only under an explicitly coupled model", "topology/kinematics as age provenance only"],
+      "insufficient_alone": ["age does not define law/coefficient", "instantaneous kinematics is not spreading history", "crust thickness is not an ocean flux law"],
+      "decisions": ["Select and version a model and age applicability.", "Specify if flux is output or independent constraint.", "Record equations, inputs, parameter provenance and uncertainty.", "Do not assume selected GDH1 bathymetry automatically authorizes GDH1 heat flow."]
+    },
+    {
+      "id": "CONTINENTAL_DERIVATION",
+      "question": "Are the authored continental domain flux references direct T0 values, geotherm-model targets, or validation constraints? What variation and transition rules apply?",
+      "classifications": ["ARCANA_EXISTING_FIELD_CAN_CONSTRAIN", "NEW_ARCANA_PHYSICAL_MODEL_REQUIRED", "LITERATURE_CONSTRAINT_REQUIRED", "DEFER_TO_MATERIAL_THERMAL_STAGE", "UNRESOLVED"],
+      "existing_constraints": ["continental_reference_surface_heat_flow_w_m2", "continental_thermal_domain_id", "physical_crust_domain_id", "crustal_thickness_m", "continental_reference_lithosphere_thickness_m", "elevation"],
+      "insufficient_alone": ["reference flux does not define complete geotherm or within-domain variation", "thickness/elevation do not uniquely determine flux", "kinematics does not define continental flux"],
+      "decisions": ["Govern field role.", "Select a geotherm/flux model if references are not final state.", "Define mixed-domain transitions and projection.", "Resolve material properties in thermal stage."]
+    },
+    {
+      "id": "AGE_ZERO",
+      "question": "Does 0 Ma mean valid newly formed oceanic lithosphere, ridge boundary, unresolved support, or interface sentinel, and what flux limit applies?",
+      "classifications": ["NEW_ARCANA_PHYSICAL_MODEL_REQUIRED", "LITERATURE_CONSTRAINT_REQUIRED", "ARCANA_EXISTING_FIELD_CAN_CONSTRAIN", "UNRESOLVED"],
+      "existing_constraints": ["oceanic_lithosphere_age_ma (zero lower endpoint)", "physical_crust_domain_id (ocean mask)", "selected boundary lineage (provenance only)"],
+      "decisions": ["Define zero-age meaning/validity.", "Select limiting model behavior.", "Prevent category leakage in interpolation.", "Reconcile with ShellSet age<=0 -> qLim1 behavior."]
+    },
+    {
+      "id": "MATERIAL_THERMAL_PROPERTIES",
+      "question": "Which material-family thermal properties and correlations apply, and what evidence supports them?",
+      "classifications": ["LITERATURE_CONSTRAINT_REQUIRED", "DEFER_TO_MATERIAL_THERMAL_STAGE", "UNRESOLVED"],
+      "existing_constraints": ["physical_crust_domain_id and continental_thermal_domain_id (masks)", "crust/lithosphere thickness (geometry)", "ocean age", "elevation/bathymetry", "continental reference flux (possible constraint)"],
+      "insufficient_alone": ["none supplies alphaT, conductivity, radiogenic heat production, TSurf, temLim, TAdiab, gradie or ZBASTH"],
+      "decisions": ["Select materials/evidence hierarchy.", "Constrain thermal properties/profile parameters.", "Preserve covariance and temperature/depth dependence.", "Do not treat ShellSet Earth examples as ARCANA values."]
+    },
+    {
+      "id": "QLIM_GOVERNANCE",
+      "question": "Retain, bound or replace qLim0/dQL_dE/qLim1? What is qLim1's intended role as both upper cap and age<=0 output?",
+      "classifications": ["SHELLSET_MODEL_CONFIGURATION_ONLY", "NUMERICAL_SENSITIVITY_REQUIRED", "UNRESOLVED"],
+      "existing_constraints": ["elevation is the lower-bound rule's elevation input", "domain/age masks select routing branches", "continental reference may be checked against limits if its role is governed"],
+      "insufficient_alone": ["no T0 field determines q-limit authority/values"],
+      "decisions": ["Govern each control and its physical effect.", "Check zero/small/large elevation and age<=0 branch.", "Measure effects under approved sensitivity ranges."]
+    },
+    {
+      "id": "GEOTHERMAL_CORRECTIONS",
+      "question": "Are later ShellSet flux/geotherm corrections part of T0, and how do TAsthK, conductivity, heat production, thickness and flux interact?",
+      "classifications": ["DEFER_TO_MATERIAL_THERMAL_STAGE", "SHELLSET_MODEL_CONFIGURATION_ONLY", "NUMERICAL_SENSITIVITY_REQUIRED", "UNRESOLVED"],
+      "existing_constraints": ["crust/lithosphere thickness", "elevation/bathymetry", "continental reference flux (comparison only if governed)", "ocean age if ocean profile selected"],
+      "insufficient_alone": ["fields do not set thermal properties or acceptable correction magnitude"],
+      "decisions": ["Close model and parameters first.", "Govern corrected output versus explicit input precedence.", "Test correction size/stability; correction is not validation."]
+    },
+    {
+      "id": "UNCERTAINTY_SENSITIVITY",
+      "question": "How do uncertainty in reference fields, age, model form, material parameters and q limits propagate to flux and downstream state?",
+      "classifications": ["NUMERICAL_SENSITIVITY_REQUIRED", "LITERATURE_CONSTRAINT_REQUIRED", "ARCANA_EXISTING_FIELD_CAN_CONSTRAIN", "UNRESOLVED"],
+      "existing_constraints": ["continental reference flux", "ocean age/lineage", "domain masks", "thicknesses", "elevation/bathymetry", "topology/kinematics as provenance"],
+      "insufficient_alone": ["a single realization/hash does not quantify uncertainty or covariance"],
+      "decisions": ["Separate input, parameter and model-form uncertainty.", "Represent supported covariance.", "Design deterministic sensitivity/ensemble checks.", "Define diagnostics, acceptance and replay/refinement behavior."]
+    }
+  ],
+  "architecture_candidates": {
+    "A_EXPLICIT_GOVERNED_T0_HEAT_FLOW_FIELD": {
+      "required_data": ["complete global field or validated FEG projection", "ocean/continent masks", "units/sign/provenance/lineage/uncertainty", "zero-sentinel-safe interface policy"],
+      "assumptions": ["flux is authoritative T0 state or upstream product of a named model", "explicit precedence if flux is also derived for validation"],
+      "provenance": "Lineage per region/node to authorial source, reference, model or projection; distinguish authored and derived roles.",
+      "uncertainty": "Spatial field uncertainty/covariance plus model uncertainty.",
+      "selective_replay": "Can update regions selectively if tiled identities and lineage are preserved; opaque raster impedes invalidation.",
+      "future_T0_T1": "Supplies initial state but no temporal evolution law.",
+      "duplication_risk": "High if stored authoritative flux is independently recomputed from age/geotherm. Define one role per stored field.",
+      "reuse_existing": "Continental reference flux can constrain/seed only continental coverage if promoted by governance; ocean flux remains absent."
+    },
+    "B_DERIVE_FROM_GOVERNED_PRIMITIVES": {
+      "required_data": ["domain masks", "ocean age/history", "continental structural/thermal primitives and references", "material properties/heat production/boundaries", "versioned model and projection contract"],
+      "assumptions": ["selected laws map primitives to flux", "ocean/continental branches may differ", "kinematics implies age/history only through an authorized temporal model"],
+      "provenance": "Store model/config version and input identities; flux is reproducible derived state.",
+      "uncertainty": "Propagate primitive, parameter and model-form uncertainty/correlation.",
+      "selective_replay": "Deterministic dependency-aware recomputation can update affected tiles/nodes and descendants.",
+      "future_T0_T1": "Supports updates if temporal laws and forcing/history are defined; T0 snapshot alone does not evolve.",
+      "duplication_risk": "Lower if flux is only a derived cache; keep continental reference flux distinct as constraint/reference.",
+      "reuse_existing": "Can consume domain, age, crust thickness, continental domain/reference flux, lithosphere thickness and elevation in justified roles; none alone yields complete flux."
+    }
+  },
+  "architecture_comparison": {
+    "selected": "NONE",
+    "shared_requirements": ["complete support/units", "category-safe routing", "lineage", "uncertainty", "zero-sentinel-safe interface", "deterministic projection", "T0-to-T1 temporal semantics"],
+    "decision_criteria": ["physical authority", "fit to continental references", "ocean model/age-zero evidence", "material parameter support", "uncertainty propagation", "selective replay", "state versus derived distinction", "future evolution compatibility"]
+  },
+  "research_questions_for_literature_phase": [
+    {"id":"RQ1","question":"Which published ocean plate-cooling formulations defensibly derive surface heat flow over ARCANA's governed age range; what assumptions, equations, units, limits and uncertainty apply?"},
+    {"id":"RQ2","question":"Does selected GDH1 water-loaded age-depth configuration imply/share a heat-flow law, or are the models independent? Compare primary equations and conventions."},
+    {"id":"RQ3","question":"What physical meaning and limiting behavior are supported at ocean age 0 Ma, and how distinguish valid new lithosphere from ridge/interface sentinels?"},
+    {"id":"RQ4","question":"Which continental geotherm/heat-flow models suit the authored thermal domains, and what inputs turn reference flux into spatial fields?"},
+    {"id":"RQ5","question":"What material-specific sources constrain conductivity, volumetric expansion, radiogenic production and thermal-profile parameters, including temperature/depth dependence and covariance?"},
+    {"id":"RQ6","question":"What source rationale supports qLim0/dQL_dE/qLim1 as safeguards versus consequential model bounds, especially qLim1 as age<=0 output?"},
+    {"id":"RQ7","question":"How sensitive are flux/geotherm outputs to model form, age uncertainty, material properties, q limits and consistency corrections?"},
+    {"id":"RQ8","question":"What methods map cell heat-flow fields to a 64,442-node sphere without false resolution, category smearing or lineage loss?"},
+    {"id":"RQ9","question":"What evidence distinguishes continental reference flux as direct T0 state, calibration target or validation-only constraint?"},
+    {"id":"RQ10","question":"Which thermal variables must update from T0 to T1 for either architecture under selective replay, and what temporal laws, forcing and invalidation rules are required?"}
+  ],
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false
+  },
+  "actions_not_performed": ["no values selected", "no architecture selected", "no OrbData/SHELLS", "no ShellSet modification", "no commit", "no push"]
+}
