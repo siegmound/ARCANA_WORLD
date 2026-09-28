@@ -1,0 +1,149 @@
+{
+  "schema": "R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_AUDIT_V1",
+  "decision": "R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_AUDIT_PENDING_FAIR_SOURCE_EXTRACTION",
+  "authority_reconciliation": {
+    "current_decision": "R6_T0_ORBDATA_ARCANA_SOURCE_GENERALIZATION_FAIR_QUALIFIED__PRE_ORBDATA_SCIENTIFIC_BLOCKERS_REMAIN",
+    "qualification_stage": "CLOSED; no OrbData source-generalization FAIR rerun is pending",
+    "authority_sources": [
+      "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.json",
+      "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.md",
+      "R6_T0_ORBDATA_ARCANA_FAIR_RUNTIME_QUALIFICATION.json"
+    ],
+    "pre_orbdata_ready": false
+  },
+  "pre_orbdata_ready": false,
+  "required_fair_source_identity": {
+    "branch": "arcana-r6-runtime-capacity",
+    "commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+    "executable_sha256_reference_only_not_read_by_audit": "4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918",
+    "governed_patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
+    "upstream_substitution_permitted": false
+  },
+  "arcana_evidence_findings": {
+    "world_history_physical_state_input": {
+      "surface_heat_flow": "Required nodal physical state or an authorized synthetic producer/input with provenance. The candidate B v2 runtime manifest has null path/hash; the current adapter does not export a heat-flow grid. No values/source are authorized here.",
+      "age_ma": "Adapter reads oceanic_lithosphere_age_ma on 180x360 support; age has physical authority only on cells where physical_crust_domain_id == 1. Nearest-ocean extension elsewhere is explicitly numerical halo support, not new age authority.",
+      "authority_status": "No ARCANA heat-flow source or thermal primitive is bound in the inspected manifest/artifacts."
+    },
+    "specialist_physical_model_configuration": {
+      "parameters": [
+        "alphaT",
+        "conduc",
+        "TSurf",
+        "temLim",
+        "TAsthK",
+        "TADIAB",
+        "GRADIE",
+        "ZBASTH"
+      ],
+      "finding": "The thermomechanical contract classifies these as thermal-model configuration and says values remain unset. Exact qualified-source binding/defaults and parameter precedence still require extraction."
+    },
+    "numerical_guard_or_limit": {
+      "source_visible_use": "The governed patch context proves qLim1 is assigned to heatFl when ageMa <= 0 inside the oceanic heat-flow override branch.",
+      "category_owner": "UNRESOLVED_PENDING_QUALIFIED_SOURCE_AND_PARAMETER_BINDING",
+      "finding": "The assignment is visible, but ARCANA evidence does not establish whether qLim1 is a physical-model parameter, numerical guard, or configured data value. qLim0 and dQL_dE are not semantically established by current ARCANA source evidence. No values are chosen."
+    },
+    "derived_orbdata_state": {
+      "heat_flow_state": "The governed patch initializes local heatFl from dQdTdA(iNode), passes it to Assign as INOUT, and writes the returned value back to dQdTdA(iNode).",
+      "qArray": "Patch declares/allocates qArray and the source contract describes configured data/grid paths, but the patch alone does not establish exact needQ selection, interpolation, or precedence.",
+      "ocean_continental_routing": "Governed patch uses explicit ARCANA domain class to set arcanaOcean; in ARCANA mode the age-based heat-flow/thickness branch is selected by arcanaOcean even outside stock ageMa<200 routing. Continental ARCANA nodes use the separate explicit total-lithosphere path.",
+      "age_zero": "For the selected oceanic branch, ageMa <= 0 sets heatFl=qLim1. This is source behavior, not authorization for an age field/value or qLim1 value.",
+      "nonzero_nodal_heat_flow": "The contract states nonzero FEG nodal heat flow is preserved; local patch passes the value through Assign and writes it back. Exact qualified source must still establish whether any earlier needQ/grid setup or later override changes that value."
+    },
+    "unresolved_until_exact_qualified_shellset_source_inspection": [
+      "Exact declaration, initialization, configuration read, and binding sites for every requested symbol.",
+      "needQ condition, qArray read/interpolation and zero/nonzero sentinel semantics.",
+      "Full source order of initial dQdTdA, qArray, ageMa/GDH1, qLim0/dQL_dE/qLim1 and any overrides.",
+      "Category and governance owner for qLim0, dQL_dE, qLim1, and delta_rho_limit; ARCANA evidence is insufficient to classify those exact source symbols.",
+      "Whether ageMa==0 is reachable/valid in the qualified input path and the complete behavior around it.",
+      "Ocean versus continental behavior for all heat-flow paths under explicit ARCANA domain mode.",
+      "Whether and under what conditions nonzero FEG nodal heat flow is preserved exactly.",
+      "Parameter-file values/defaults and precedence for alphaT, conduc, TSurf, temLim, TAsthK, TADIAB, GRADIE, ZBASTH, qLim0, dQL_dE, qLim1, and delta_rho_limit."
+    ]
+  },
+  "audit_utility": {
+    "path": "scripts/r6_pre_orbdata_heat_flow_source_audit.py",
+    "behavior": "Read-only source/parameter text scan after exact branch+commit verification; does not read executable, modify ShellSet, or run OrbData/SHELLS.",
+    "expected_outputs": [
+      "R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_EXTRACTION_FAIR.json",
+      "R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_EXTRACTION_FAIR.md"
+    ]
+  },
+  "gates": {
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false
+  },
+  "qualified_source_identity": {
+    "branch": "arcana-r6-runtime-capacity",
+    "commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+    "executable_sha256": "4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918",
+    "governed_patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
+    "upstream_substitution_permitted": false
+  },
+  "remaining_scientific_blockers": [
+    "governed heat-flow routing and qLim configuration",
+    "material/thermal OrbData configuration adjudication"
+  ],
+  "remaining_implementation_blockers": [
+    "materialize 64,442-node projection after canonical partition payload is available"
+  ],
+  "obsolete_fair_qualification_rerun_blocker_present": false,
+  "evidence_categories": {
+    "WORLD_HISTORY_PHYSICAL_INPUT": {
+      "supported_findings": [
+        "Surface heat flow requires an authorized nodal field/source with provenance; candidate manifest has no bound heat-flow artifact.",
+        "Oceanic age is physical ARCANA input only on governed ocean support; the adapter halo does not create age authority."
+      ],
+      "symbol_assignments": []
+    },
+    "SPECIALIST_MODEL_CONFIGURATION": {
+      "supported_findings": [
+        "The shellset thermomechanical contract identifies alphaT, conductivity, surface/reference temperatures, temperature limits and geotherm controls as specialist configuration; values remain unset."
+      ],
+      "symbol_assignments": []
+    },
+    "NUMERICAL_GUARD_OR_LIMIT": {
+      "supported_findings": [],
+      "symbol_assignments": []
+    },
+    "DERIVED_ORBDATA_STATE": {
+      "supported_findings": [
+        "The governed patch passes nodal heat-flow through Assign as INOUT and writes the result back; exact source precedence remains to be extracted."
+      ],
+      "symbol_assignments": []
+    },
+    "UNRESOLVED_PENDING_SOURCE_ADJUDICATION": {
+      "symbols": [
+        "heatFl",
+        "dQdTdA",
+        "needQ",
+        "qArray",
+        "qLim0",
+        "dQL_dE",
+        "qLim1",
+        "ageMa",
+        "alphaT",
+        "conduc",
+        "TSurf",
+        "temLim",
+        "TAsthK",
+        "TADIAB",
+        "GRADIE",
+        "ZBASTH",
+        "delta_rho_limit"
+      ],
+      "note": "No source symbol is automatically classified. Category assignment awaits inspection and adjudication of the exact qualified checkout."
+    }
+  },
+  "governance": {
+    "pre_orbdata_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false
+  }
+}
