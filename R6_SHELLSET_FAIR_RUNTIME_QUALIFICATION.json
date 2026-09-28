@@ -1,0 +1,127 @@
+{
+  "authorization_boundary": {
+    "arcana_t0_mechanics_authorized": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "qualified_capacity_patch": true,
+    "qualified_for_upstream_scientific_example": true,
+    "t1_created": false
+  },
+  "capacity_delta": {
+    "OrbData5": {
+      "maxAtP": 10,
+      "maxBN": 6000,
+      "maxEl": 140000,
+      "maxFEl": 6000,
+      "maxNod": 70000
+    },
+    "OrbScore2": {
+      "maxAtP": 20,
+      "maxBN": 2000,
+      "maxEl": 140000,
+      "maxFEl": 3000,
+      "maxNod": 70000
+    },
+    "classification": "NUMERICAL_CAPACITY_ONLY",
+    "equation_change": false,
+    "parameter_calibration_change": false,
+    "physics_change": false
+  },
+  "evidence_files": {
+    "capacity_log": {
+      "path": "/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0/shellset_capacity_n10_t5.nohup.log",
+      "sha256": "41190c53e7361f31792f7491b743128e62a1688bc823ab07d9161ef69c053d58"
+    },
+    "capacity_models": {
+      "path": "/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0/NVHPC_CAPACITY_ListEx1_n10_t5/Models.txt",
+      "sha256": "fc5a86d4aa448ff9c33493ab210b665f88bbe40e0bf31e6fc36943bc6910b4c5"
+    },
+    "stock_log": {
+      "path": "/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0-upstream-smoke/shellset_n10_t5.nohup.log",
+      "sha256": "9ae268885bb4f281185ce2bf9ac98ee70a30b4476fff907db9db04280d64e5cf"
+    },
+    "stock_models": {
+      "path": "/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0-upstream-smoke/NVHPC_ListEx1_n10_t5/Models.txt",
+      "sha256": "9877e6fa2fec1abe2efe20a15800d7dd723de85ba1afdd36c34b0e83805db03b"
+    }
+  },
+  "evidence_identity_sha256": "8265b998a8ddb8e3fdfd7371c9bfe076e6697fbbd7fcb922d77a37317ef59afe",
+  "host": "fair",
+  "portability_delta": {
+    "compiler_driver": "mpifort/nvfortran",
+    "fail_fast_build": true,
+    "intel_mkl95_modules_removed": true,
+    "link_libraries": [
+      "lapack",
+      "blas"
+    ],
+    "mkl_service_calls_removed": true,
+    "nvidia_compatibility_flag": "-Mbackslash",
+    "standard_lapack_calls": [
+      "dgbsv",
+      "dgesv",
+      "dsysv"
+    ]
+  },
+  "qualification": {
+    "capacity_list_ex1_n10_t5": {
+      "exit_status": 0,
+      "models_completed": 9,
+      "models_total": 9,
+      "wall_time_seconds": 661.07
+    },
+    "lapack_smokes": {
+      "DGBSV": "PASS",
+      "DGESV": "PASS",
+      "DSYSV": "PASS"
+    },
+    "mpi_two_rank_startup": "PASS",
+    "nvidia_n4_vs_n10_t5": {
+      "max_abs_at_reported_precision": 0.0,
+      "max_rel_at_reported_precision": 0.0
+    },
+    "nvidia_stock_vs_capacity": {
+      "decision": "PASS_CAPACITY_PATCH_NUMERICALLY_IDENTICAL_AT_REPORTED_PRECISION",
+      "max_abs_at_reported_precision": 0.0,
+      "max_rel_at_reported_precision": 0.0
+    },
+    "official_stored_vs_nvidia": {
+      "cross_backend_acceptance_tolerance": "NOT_ADJUDICATED",
+      "largest_field": "SSR",
+      "largest_model": 9,
+      "max_abs": 0.01972,
+      "max_rel": 0.000653790876435
+    },
+    "upstream_list_ex1_n10_t5": {
+      "average_cpu_percent": 2712,
+      "exit_status": 0,
+      "models_completed": 9,
+      "models_total": 9,
+      "wall_time_seconds": 711.95
+    },
+    "upstream_list_ex1_n4": {
+      "exit_status": 0,
+      "models_completed": 9,
+      "models_total": 9,
+      "wall_time": "1:16:22"
+    }
+  },
+  "qualified_runtime": {
+    "backend": "NVIDIA HPC SDK 25.11",
+    "blas_lapack": "NVIDIA HPC SDK LP64 OpenBLAS-backed BLAS/LAPACK",
+    "branch": "arcana-r6-runtime-capacity",
+    "commit": "09a06ecd061f00b80a52af86e31d609ff5545a8b",
+    "compiler": "nvfortran 25.11-0 64-bit target on x86-64 Linux -tp sapphirerapids \nNVIDIA Compilers and Tools\nCopyright (c) 2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.",
+    "executable": "/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0/ShellSet.exe",
+    "executable_sha256": "03e1a3f7ac0c4593a4a6eb641bb6d8acd0b752da5c5fd7b1ee74788fb705e349",
+    "mpi": "NVIDIA HPC-X / OpenMPI",
+    "root": "/home/jlpfritas/HPC-POMDP/tools/ShellSet-v1.1.0"
+  },
+  "recorded_at_utc": "2026-09-28T08:42:27.513865+00:00",
+  "schema": "ARCANA_SHELLSET_FAIR_RUNTIME_QUALIFICATION_V1",
+  "scientific_source": {
+    "repository": "JonBMay/ShellSet",
+    "semantic_identity": "v1.1.0 + GMD publication/build update",
+    "upstream_commit": "e4a6fbd5997b6c4978924649dff1abab0c96ca57"
+  }
+}
