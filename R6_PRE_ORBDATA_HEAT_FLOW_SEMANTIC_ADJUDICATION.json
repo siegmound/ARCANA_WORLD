@@ -1,0 +1,251 @@
+{
+  "schema": "arcana_worldsim.r6.pre_orbdata_heat_flow_semantic_adjudication.v1",
+  "decision": "R6_PRE_ORBDATA_HEAT_FLOW_SEMANTICS_PARTIALLY_ADJUDICATED__SOURCE_AMBIGUITY_REMAINS",
+  "authority": {
+    "current_arcana_status": "R6_T0_ORBDATA_ARCANA_SOURCE_GENERALIZATION_FAIR_QUALIFIED__PRE_ORBDATA_SCIENTIFIC_BLOCKERS_REMAIN",
+    "source_generalization_fair_qualification": "CLOSED",
+    "remaining_scientific_blockers": [
+      "governed heat-flow routing and qLim configuration",
+      "material/thermal OrbData configuration adjudication"
+    ],
+    "implementation_blocker": "materialize 64,442-node projection after canonical partition payload is available",
+    "evidence": [
+      "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.json",
+      "R6_T0_ORBDATA_ARCANA_FAIR_RUNTIME_QUALIFICATION.json"
+    ]
+  },
+  "qualified_source_identity": {
+    "source_extraction": "R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_EXTRACTION_FAIR.json",
+    "branch": "arcana-r6-runtime-capacity",
+    "commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+    "qualified_executable_sha256": "4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918",
+    "governed_patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
+    "source_authority": "Git-tracked source at the verified qualified commit; extraction excludes untracked runtime evidence"
+  },
+  "evidence_convention": "Every source citation points into the FAIR extraction's contextual excerpts. Line numbers are source-file lines from that extraction, not generated-report lines.",
+  "symbol_semantics": {
+    "heatFl": {
+      "classification": "MIXED_OR_CONTEXT_DEPENDENT",
+      "role": "Per-node working heat-flow value: initialized from the FEG field, conditionally derived/replaced, clamped, potentially corrected by thermal consistency, then written back.",
+      "declaration_and_binding": "REAL*8 INTENT(INOUT) argument of Assign; OrbData copies dQdTdA(iNode) into it before the call and copies it back after.",
+      "units": "Heat flow; source documents q limits in W/m^2 and the legacy parameter input documents heat-flow fields. See MOD_Data.f90:223,272; OrbData5.f90:484-486,545-546; OrbData5.f90:153-168.",
+      "ARCANA_coverage": "No canonical ARCANA nodal heat-flow input is currently bound; existing contracts identify this family as absent.",
+      "evidence": ["src/MOD_Data.f90:223,272,381-445,625-638", "src/OrbData5.f90:484-486,545-546", "R6_SHELLSET_MINIMUM_THERMOMECHANICAL_STATE_CONTRACT.md:28,38-41"]
+    },
+    "dQdTdA": {
+      "classification": "MIXED_OR_CONTEXT_DEPENDENT",
+      "role": "Per-node FEG heat-flow field on input and OrbData-produced/modified field on output.",
+      "declaration_and_binding": "REAL*8 array populated by GetNet; read as the initial heatFl; written back after Assign and serialized by PutNet.",
+      "units": "Heat-flow field; the source's compiled q-limit units are W/m^2, while this extraction does not state a separate declaration-site unit for dQdTdA.",
+      "ARCANA_coverage": "No field currently bound by canonical R6 inputs.",
+      "evidence": ["src/MOD_Data.f90:1885,1901,2000,2208-2224", "src/OrbData5.f90:302,484,545-568", "R6_SHELLSET_MINIMUM_THERMOMECHANICAL_STATE_CONTRACT.md:28,41"]
+    },
+    "needQ": {
+      "classification": "DERIVED_ORBDATA_STATE",
+      "role": "Control flag set if any input node has exactly zero dQdTdA; in Assign it is the exact-zero test on heatFl.",
+      "declaration_and_binding": "Local LOGICAL; derived from nodal input, not a physical parameter.",
+      "evidence": ["src/OrbData5.f90:367-372", "src/MOD_Data.f90:283,381-382"]
+    },
+    "qArray": {
+      "classification": "MIXED_OR_CONTEXT_DEPENDENT",
+      "role": "Grid-backed heat-flow source loaded if at least one node is zero; interpolation is performed only inside that node's needQ branch.",
+      "declaration_and_binding": "Allocatable REAL*8 grid read from unit 4 when global needQ is true; passed into Assign.",
+      "ARCANA_coverage": "ARCANA explicit pair does not provide qArray; whether this legacy grid is selected for any ARCANA run is unresolved.",
+      "evidence": ["src/OrbData5.f90:367-383", "src/MOD_Data.f90:219,277,381-416", "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch: OrbData5.f90 ARCANA input branch"]
+    },
+    "qLim0": {
+      "classification": "MIXED_OR_CONTEXT_DEPENDENT",
+      "role": "Compiled zero-elevation lower heat-flow limit; contributes to a lower-bound rule, with model-level effects despite its limit/control implementation.",
+      "binding_and_units": "REAL*8 PARAMETER in OrbData5; source documents W/m^2. The current qualified source default is recorded as evidence, not endorsed as an ARCANA choice.",
+      "evidence": ["src/OrbData5.f90:153-168,273-279", "src/MOD_Data.f90:443-445,630-632"]
+    },
+    "dQL_dE": {
+      "classification": "MIXED_OR_CONTEXT_DEPENDENT",
+      "role": "Compiled slope of the lower heat-flow limit versus elevation; numerical rule with direct physical-field consequences.",
+      "binding_and_units": "REAL*8 PARAMETER; source documents (W/m^2)/m. Current source default is not selected for ARCANA.",
+      "evidence": ["src/OrbData5.f90:160-168,273-279", "src/MOD_Data.f90:443-445,630-632"]
+    },
+    "qLim1": {
+      "classification": "MIXED_OR_CONTEXT_DEPENDENT",
+      "role": "Compiled upper heat-flow limit, and also the assigned heat-flow result for ageMa <= 0 in the ocean-age branch.",
+      "binding_and_units": "REAL*8 PARAMETER; source documents W/m^2. Its use as both cap and branch value means it is not merely a passive validation guard.",
+      "evidence": ["src/OrbData5.f90:167-168,273-279", "src/MOD_Data.f90:423-445,630-632"]
+    },
+    "ageMa": {
+      "classification": "MIXED_OR_CONTEXT_DEPENDENT",
+      "role": "Interpolated age-grid state used in legacy ocean/continental classification and the seafloor-age heat-flow law; ARCANA mode instead gates this route with explicit arcanaOcean.",
+      "declaration_and_binding": "REAL*8 local in Assign; interpolated from aArray. Extraction does not show an ARCANA age field in the governed explicit-input pair.",
+      "units": "Ma is explicit in variable name/source comments but no separate declaration-site units statement was extracted.",
+      "age_zero_semantics": "Code maps all ageMa <= 0 values to qLim1. Code does not establish whether age zero denotes valid newly formed oceanic lithosphere or a sentinel/input convention.",
+      "evidence": ["src/MOD_Data.f90:285,374-377,418-437,497-512", "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch: explicit domain/lithosphere pair and arcanaOcean routing"]
+    },
+    "alphaT": {
+      "classification": "SPECIALIST_MODEL_CONFIGURATION",
+      "role": "Crust/mantle volumetric thermal expansion coefficients; consumed by the density/geotherm consistency calculation, not heat-flow routing itself.",
+      "units": "Parameter-file documentation states 1/C or 1/K.",
+      "ARCANA_coverage": "No R6-authorized material-specific values are bound; requires material/thermal configuration adjudication.",
+      "evidence": ["INPUT/iEarth5-049.in:23-24", "src/MOD_Data.f90:279,96-120", "src/ShellSetMain.f90:607-612"]
+    },
+    "conduc": {
+      "classification": "SPECIALIST_MODEL_CONFIGURATION",
+      "role": "Crust/mantle thermal conductivity; converts heat flow and layer radiogenic production into geotherm gradients and enters the thermal consistency adjustment.",
+      "units": "Parameter-file documentation states W/m/C for SI units.",
+      "ARCANA_coverage": "No R6-authorized material-specific values are bound; values depend on chosen material/profile.",
+      "evidence": ["INPUT/iEarth5-049.in:24-27", "src/MOD_Data.f90:279,608-629", "src/ShellSetMain.f90:607-612"]
+    },
+    "TSurf": {
+      "classification": "SPECIALIST_MODEL_CONFIGURATION",
+      "role": "Surface-temperature boundary/reference used to initialize the geotherm.",
+      "units": "Parameter-file documentation states K.",
+      "ARCANA_coverage": "Not bound as an R6 physical field/configuration choice in current contracts.",
+      "evidence": ["INPUT/iEarth5-049.in:26-27", "src/MOD_Data.f90:608-612,691-695", "src/ShellSetMain.f90:611-612"]
+    },
+    "temLim": {
+      "classification": "SPECIALIST_MODEL_CONFIGURATION",
+      "role": "Per-layer melting-related temperature ceilings used when evaluating the crust/mantle temperature profiles.",
+      "units": "Parameter-file documentation states Kelvin.",
+      "ARCANA_coverage": "No R6-authorized values selected.",
+      "evidence": ["INPUT/iEarth5-049.in:27", "src/MOD_Data.f90:77-90,279", "src/ShellSetMain.f90:611-612"]
+    },
+    "TAsthK": {
+      "classification": "DERIVED_ORBDATA_STATE",
+      "role": "Lithosphere/asthenosphere temperature computed from TAdiab + gradie * 100 km; used as target in geotherm checks/corrections.",
+      "units": "Kelvin, explicitly stated by source comment; 100 km converted to meters.",
+      "evidence": ["src/OrbData5.f90:290-294", "src/MOD_Data.f90:522,625-638"]
+    },
+    "TADIAB": {
+      "classification": "SPECIALIST_MODEL_CONFIGURATION",
+      "role": "Adiabat intercept parameter contributing to derived TAsthK.",
+      "units": "Kelvin; INPUT parameter description pairs it with gradie as intercept and slope, respectively.",
+      "ARCANA_coverage": "No ARCANA-authorized thermal profile/configuration is bound.",
+      "evidence": ["INPUT/iEarth5-049.in:11", "src/OrbData5.f90:290-294", "src/ShellSetMain.f90:587-612"]
+    },
+    "GRADIE": {
+      "classification": "SPECIALIST_MODEL_CONFIGURATION",
+      "role": "Adiabat slope parameter contributing to derived TAsthK.",
+      "units": "K/m, explicitly stated in INPUT parameter description.",
+      "ARCANA_coverage": "No ARCANA-authorized thermal profile/configuration is bound.",
+      "evidence": ["INPUT/iEarth5-049.in:11", "src/OrbData5.f90:290-294", "src/ShellSetMain.f90:584-611"]
+    },
+    "ZBASTH": {
+      "classification": "SPECIALIST_MODEL_CONFIGURATION",
+      "role": "Depth of the base of the upper mantle/olivine-rich layer in the parameter file; not part of heat-flow routing in Assign.",
+      "units": "meters, explicitly stated in parameter-file description.",
+      "ARCANA_coverage": "No ARCANA-authorized value selected; broader material/thermal adjudication remains open.",
+      "evidence": ["INPUT/iEarth5-049.in:12", "src/ShellSetMain.f90:588-611"]
+    },
+    "delta_rho_limit": {
+      "classification": "NUMERICAL_GUARD_OR_LIMIT",
+      "role": "Symmetric cap on chemical density anomaly; it is passed into Assign but does not participate in heat-flow source selection or q limits.",
+      "units": "kg/m^3 explicitly stated.",
+      "evidence": ["src/OrbData5.f90:184-189,273-276", "src/MOD_Data.f90:212,259,719-720"]
+    }
+  },
+  "heat_flow_control_flow": [
+    {
+      "step": 1,
+      "description": "GetNet reads qi into dQdTdA; OrbData copies the node's current value into heatFl before Assign.",
+      "evidence": ["src/MOD_Data.f90:1997-2003", "src/OrbData5.f90:481-486"]
+    },
+    {
+      "step": 2,
+      "description": "OrbData scans the entire dQdTdA array. If any node is exactly zero, it loads qArray globally. If every node is nonzero, it skips the grid read.",
+      "evidence": ["src/OrbData5.f90:367-383"]
+    },
+    {
+      "step": 3,
+      "description": "Before the per-node Assign loop, nonzero dQdTdA values are raised to qLim0 + dQL_dE*elev if below that lower bound, then capped at qLim1. Zero nodes skip the lower-bound operation and remain zero at this stage.",
+      "evidence": ["src/OrbData5.f90:390-394"]
+    },
+    {
+      "step": 4,
+      "description": "Inside Assign, needQ is heatFl == 0. Only that branch interpolates qArray and assigns its result to heatFl.",
+      "evidence": ["src/MOD_Data.f90:381-416"]
+    },
+    {
+      "step": 5,
+      "description": "Still within the needQ branch, the age-law branch applies for ARCANA explicit ocean nodes (arcanaMode AND arcanaOcean) or, outside ARCANA mode, ageMa < 200. It replaces the qArray value. For ageMa <= 0 it assigns qLim1; otherwise it uses the cited GDH1 piecewise age law.",
+      "evidence": ["src/MOD_Data.f90:418-437"]
+    },
+    {
+      "step": 6,
+      "description": "After the missing-value branch closes, Assign applies qLim0 + dQL_dE*elevat as a floor and qLim1 as a cap to heatFl, regardless of whether it began as zero or nonzero.",
+      "evidence": ["src/MOD_Data.f90:437-445"]
+    },
+    {
+      "step": 7,
+      "description": "Later, if the computed Moho temperature exceeds TAsthK, Assign changes heatFl by deltaQ and reapplies both q limits. Thus initially nonzero heat flow is not guaranteed to be preserved exactly.",
+      "evidence": ["src/MOD_Data.f90:625-638"]
+    },
+    {
+      "step": 8,
+      "description": "OrbData copies the final heatFl back into dQdTdA and writes that value to output.",
+      "evidence": ["src/OrbData5.f90:545-568"]
+    }
+  ],
+  "precedence_rules": {
+    "zero_sentinel": "YES. Equality with exactly 0.0D0 is the per-node needs-derivation sentinel in Assign; global qArray loading is triggered if any input node is exactly zero.",
+    "qarray_scope": "Global load conditional, per-node use conditional. qArray is loaded for the run when any node needs heat flow, but interpolation executes only for a node whose heatFl is zero.",
+    "ocean_age_over_qarray": "YES, for a zero/sentinel node that meets the ocean route predicate: age law overwrites the interpolated qArray result.",
+    "ocean_age_over_nonzero_explicit_heatflow": "NO in Assign: the entire qArray and age-overwrite block is nested under needQ. A nonzero nodal value bypasses both. However, pre-Assign lower/upper clamps and the later conditional geotherm correction still can change it.",
+    "age_zero": "Code behavior is unambiguous (ageMa <= 0 assigns qLim1 when the ocean-age branch is entered); authorial/physical interpretation of zero-age input is unresolved by source.",
+    "arcana_ocean_vs_continent": "In ARCANA mode, ocean heat-flow age routing uses arcanaOcean; the legacy ageMa < 200 classification is disabled by the predicate. Continental ARCANA nodes therefore receive no age-law override in this branch and, if heatFl is zero, use qArray plus limits. Explicit-domain assignment and the lithosphere path are in the governed patch; no new heat-flow physical law is created by the domain label.",
+    "nonzero_preservation": "Not exact. Nonzero bypasses qArray/age assignment but is clamped before Assign, clamped after the needQ block, and can be adjusted when test > TAsthK.",
+    "limits": "Lower bound is qLim0 + dQL_dE*elev; upper bound is qLim1. The same pair is reapplied after heat-flow correction. qLim1 is additionally used as the age<=0 output.",
+    "density_limit": "delta_rho_limit caps chemical_delta_rho only; no evidence connects it to heat-flow routing."
+  },
+  "arcana_input_coverage": {
+    "explicit_pair": "The governed patch supplies ARCANA domain and total lithosphere grids and uses domain classification for arcanaOcean. It does not bind ARCANA nodal heat flow, seafloor age, or qArray values.",
+    "available_heat_flow_input": "The OrbData interface can consume dQdTdA from the FEG; current ARCANA authority/contracts say no canonical nodal heat-flow payload is bound.",
+    "continental_nodes": "If ARCANA mode classifies a node as continental and it has zero heatFl, the ocean age route is false; the remaining missing-value path is grid interpolation and limits. Whether that selected fallback is authorized for ARCANA remains open.",
+    "evidence": ["patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch: ARCANA pair, domain lookup, arcanaOcean assignment and Assign call", "src/OrbData5.f90:484-546", "R6_SHELLSET_MINIMUM_THERMOMECHANICAL_STATE_CONTRACT.md:28,38-41,62-68", "R6_SHELLSET_PRERUNTIME_INPUT_CLOSURE.md:65-77"]
+  },
+  "specialist_configuration_requirements": {
+    "parameters": ["alphaT", "conduc", "TSurf", "temLim", "TAdiab", "gradie", "zBAsth", "radio"],
+    "binding_path": "Parameter file is read by ReadPm; ShellSetMain passes configuration through Variable_Update (including optional variable updates); OrbData derives TAsthK from TAdiab and gradie and passes thermal values into Assign.",
+    "classification_note": "These are specialist physical-model configuration, not WORLD_HISTORY fields. Their actual ARCANA values/material associations remain unadjudicated. Units listed per symbol are source/parameter-file documentation only.",
+    "evidence": ["INPUT/iEarth5-049.in:11-12,23-27", "src/ShellSetMain.f90:577-612", "src/OrbData5.f90:290-294,526-540"]
+  },
+  "numerical_guards": [
+    {"name": "heat-flow lower/upper limits", "symbols": ["qLim0", "dQL_dE", "qLim1"], "interpretation": "Compiled model limits that constrain generated and input heat flow; qLim1 also serves as the age<=0 branch value. Retention or replacement requires explicit ARCANA governance, not a literature search by default.", "evidence": ["src/OrbData5.f90:153-168,273-279", "src/MOD_Data.f90:443-445,630-632"]},
+    {"name": "chemical density anomaly bound", "symbols": ["delta_rho_limit"], "interpretation": "Separate symmetric numerical bound on chemical density anomaly, not heat-flow routing.", "evidence": ["src/OrbData5.f90:184-189", "src/MOD_Data.f90:719-720"]}
+  ],
+  "source_supported_ambiguities": [
+    "The code assigns qLim1 for ageMa <= 0 but does not state whether zero is a valid newly formed oceanic age or an input sentinel; source alone cannot adjudicate physical meaning.",
+    "Current R6 explicit inputs do not supply nodal heat flow or a governed seafloor-age primitive. For zero heat flow, the source contains both qArray and ocean age-law routes, but ARCANA has not selected/authorized which input source is appropriate.",
+    "The qualified source documents existing q-limit constants and their operations, but R6 governance has not decided whether to retain those defaults, bound them, or replace them for ARCANA.",
+    "The extraction establishes parameter binding sites and legacy input documentation, not an ARCANA material-family assignment or an authoritative thermal parameter set."
+  ],
+  "unresolved_questions": [
+    "What authorial WORLD_HISTORY primitive or authorized producer supplies T0 nodal heat flow, or the age/feature input from which a specialist may derive it?",
+    "For ARCANA ocean nodes, is an age-based GDH1 route intended, and what is the provenance/meaning of ageMa=0?",
+    "For ARCANA continental nodes with missing heat flow, is the legacy qArray fallback governed and what source grid is authoritative?",
+    "Should the qualified ShellSet qLim0/dQL_dE/qLim1 controls be inherited as model defaults, explicitly bounded, or replaced under ARCANA governance?",
+    "Which ARCANA material families and thermal profiles determine alphaT, conduc, radio, TSurf, temLim, TAdiab, gradie, and zBAsth?",
+    "Which scientific source establishes input values and uncertainty for heat flow, lithospheric age/cooling where applicable, and material-dependent thermal parameters?"
+  ],
+  "scientific_choices_required": [
+    "A governed T0 heat-flow source or physical primitive and its provenance; if age-derived, an authorial ocean-age/thermal-history primitive and a decision on age-zero semantics.",
+    "Material-family-specific thermal configuration (at minimum expansion coefficient and conductivity, plus the selected profile's heat production, surface/reference temperature, temperature ceiling and adiabat controls). Literature/source research is needed for these physical material/profile values and uncertainty; ShellSet example defaults are not ARCANA authority.",
+    "Whether ARCANA uses the GDH1 age law and the source/domain scope of that law.",
+    "Explicit governance disposition for qLim0, dQL_dE and qLim1 (retain as inherited ShellSet controls, bound, or replace); values are not chosen here."
+  ],
+  "scientific_choices_not_required": [
+    "No additional physical law is needed to describe the qualified code's exact-zero sentinel, global qArray loading condition, per-node interpolation, clamp order, and write-back; these are implementation facts.",
+    "No heat-flow literature decision is needed for delta_rho_limit's code path: it limits chemical density anomaly and is separate from heat-flow routing. Its own governance belongs to material/density adjudication.",
+    "The mechanics of retaining or bounding q-limit controls can be adjudicated as model-control governance after physical input sources are chosen; literature is not automatically required to retain a qualified implementation control, though physical justification is required for changing its meaning/range."
+  ],
+  "research_vs_control_disposition": {
+    "requires_physical_literature_or_authorial_source_research": ["T0 heat-flow field/source", "oceanic age/cooling law if selected", "material-family alphaT and conductivity", "heat production and thermal profile parameters (TSurf, temLim, TAdiab, gradie, and related configuration)"],
+    "primarily_shellset_control_governance": ["qLim0", "dQL_dE", "qLim1", "delta_rho_limit"],
+    "caveat": "This distinction identifies the kind of adjudication required; it does not approve inherited defaults or assign any new parameter values."
+  },
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false
+  }
+}
