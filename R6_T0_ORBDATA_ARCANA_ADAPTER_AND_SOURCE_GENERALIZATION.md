@@ -45,3 +45,9 @@ The historical qualified executable remains SHA-256 `03e1a3f7ac0c4593a4a6eb641bb
 Classification: `PARENT_BINARY_NOT_BYTE_REPRODUCIBLE`; `PARENT_NUMERICALLY_REPRODUCIBLE_AT_REPORTED_PRECISION`; `CURRENT_PARENT_ARTIFACT_READJUDICATED_FOR_PATCH_QUALIFICATION`. This does not assert that historical executable `03e1…` equals current parent `4603…`.
 
 The updated FAIR harness now requires pre-patch executable SHA-256 `4603…` and performs the stock ListEx1 comparison by model ID. This is evidence correction only: `PRE_ORBDATA=false`; patched ShellSet runtime remains unqualified; no T0 OrbData, mechanics, dt, T1, or forward evolution was performed. No ShellSet run is claimed by this Windows checkout.
+
+## Latest FAIR qualification attempt: parser-only failure
+
+The latest FAIR attempt passed ARCANA identity, NVIDIA toolchain, patch application, NVIDIA build, Assign fixture, the stock/full/partial-pair InputSetup fixture, MPI smoke, and the complete 9/9 ListEx1 execution. Qualification stopped only in the final `Models.txt` parser: it treated the non-numeric header row (`global model, ThID, ...`) as data and attempted to use `global` as a model ID. This is a harness parsing failure, not a ShellSet runtime or scientific failure.
+
+The parser correction now skips non-numeric/header rows, requires integer global model IDs exactly `1..9`, rejects duplicates, ignores column 2 `ThID`, compares columns 3 onward by global ID independent of row order, and uses exact Decimal comparisons with computed `MAX_ABS` and `MAX_REL` and no tolerance. The patched runtime remains formally unqualified until the corrected FAIR harness reaches final PASS. `PRE_ORBDATA=false`; no ShellSet execution was run on this Windows checkout, and no T0 OrbData, mechanics, `dt`, T1, or forward evolution is authorized or claimed.

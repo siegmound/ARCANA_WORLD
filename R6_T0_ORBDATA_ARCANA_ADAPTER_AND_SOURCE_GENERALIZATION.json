@@ -118,13 +118,16 @@
       "classification": "IMPLEMENTATION_QUALIFICATION_INFRASTRUCTURE_FAILURE_NOT_SCIENTIFIC_FAILURE"
     },
     "latest_fair_attempt": {
-      "build": "PASS",
-      "assign_structural_fixture": "PASS",
-      "inputsetup_stock": "PASS",
-      "inputsetup_full_arcana": "PASS",
-      "partial_pair_detection": "CONFIRMED",
-      "partial_pair_end_to_end": "PARTIAL_PAIR_END_TO_END_FAIL_CLOSED_NOT_YET_QUALIFIED",
-      "reason": "ShellSetSubs abort(11) is informational and does not terminate; the previous fixture then reached its unsupported partial mode and failed. MPI smoke and ListEx1 were not reached.",
+      "arcana_identity": "PASS",
+      "nvidia_toolchain": "PASS",
+      "patch_application": "PASS",
+      "nvidia_build": "PASS",
+      "assign_fixture": "PASS",
+      "inputsetup_stock_full_partial_pair_fixture": "PASS",
+      "mpi_smoke": "PASS",
+      "listex1_execution": "PASS; complete 9/9 models",
+      "models_parser": "FAIL; treated the non-numeric header row (global model, ThID, ...) as a model row and inserted global as a model ID",
+      "qualification": "NOT_QUALIFIED; corrected parser must reach final PASS",
       "scientific_failure": false
     },
     "shellset_main_partial_pair_gate": "immediately after InputSetup(ThID,ModNum,OD,DirName) and before OpenInput/OpenOutput/OrbData5; existing AEF/non-AEF FatalError check calls MPI_Abort",
@@ -176,6 +179,13 @@
       "dt_selected": false,
       "t1_created": false,
       "forward_evolution": false
+    },
+    "models_parser_correction_pending_fair_rerun": {
+      "header_row_ignored": true,
+      "global_model_id": "integer column 1; exact required set 1..9; duplicates rejected",
+      "thid": "column 2 ignored as MPI scheduling metadata",
+      "comparison": "exact Decimal equality for numeric fields and exact string equality for nonnumeric fields in columns 3 onward, keyed by model ID; row order ignored; no tolerance",
+      "max_abs_max_rel": "computed from Decimal comparisons"
     }
   },
   "heat_flow": {

@@ -138,6 +138,7 @@ patched_models="$shellset_root/$run_name/Models.txt"
 [[ -f "$patched_models" ]] || fail "patched ListEx1 Models.txt missing"
 "${ARCANA_PYTHON:-python3}" - "$reference_models" "$patched_models" <<'PY' || fail "exact ListEx1 Models.txt comparison failed"
 from pathlib import Path
+from decimal import Decimal, InvalidOperation
 import sys
 
 def records(path):
@@ -146,25 +147,45 @@ def records(path):
         if not line.strip() or line.lstrip().startswith("Program invoked with:"):
             continue
         fields = line.split()
+        try:
+            model_id = int(fields[0])
+        except (ValueError, IndexError):
+            continue  # Models.txt includes a non-numeric column header.
         if len(fields) < 3:
             raise SystemExit(f"Malformed Models row at {path}:{line_number}")
-        model_id = fields[0]
         if model_id in rows:
-            raise SystemExit(f"Duplicate global model ID {model_id!r} in {path}")
+            raise SystemExit(f"Duplicate global model ID {model_id} in {path}")
         rows[model_id] = fields[2:]
     return rows
 
 reference, observed = map(records, sys.argv[1:])
-expected_ids = set(reference)
-observed_ids = set(observed)
-if len(expected_ids) != 9 or observed_ids != expected_ids:
-    raise SystemExit(f"Models global ID set mismatch: reference={sorted(expected_ids)}, observed={sorted(observed_ids)}")
+expected_ids = set(range(1, 10))
+if set(reference) != expected_ids or set(observed) != expected_ids:
+    raise SystemExit(f"Models global ID set mismatch: reference={sorted(reference)}, observed={sorted(observed)}; expected=1..9")
+max_abs = Decimal(0)
+max_rel = Decimal(0)
 for model_id in sorted(expected_ids):
-    if reference[model_id] != observed[model_id]:
-        raise SystemExit(f"ListEx1 exact field mismatch for global model ID {model_id}: {reference[model_id]!r} != {observed[model_id]!r}")
+    left_fields, right_fields = reference[model_id], observed[model_id]
+    if len(left_fields) != len(right_fields):
+        raise SystemExit(f"Models column count mismatch for global model ID {model_id}")
+    for column, (left, right) in enumerate(zip(left_fields, right_fields), 3):
+        try:
+            x, y = Decimal(left), Decimal(right)
+        except InvalidOperation:
+            if left != right:
+                raise SystemExit(f"Models text mismatch for global model ID {model_id}, column {column}: {left!r} != {right!r}")
+            continue
+        difference = abs(x - y)
+        max_abs = max(max_abs, difference)
+        if x != 0:
+            max_rel = max(max_rel, difference / abs(x))
+        elif difference != 0:
+            max_rel = Decimal("Infinity")
+        if difference != 0:
+            raise SystemExit(f"ListEx1 exact numeric mismatch for global model ID {model_id}, column {column}: {left} != {right}")
 print("STOCK_LISTEX1_MODELS=9")
-print("STOCK_LISTEX1_MAX_ABS=0")
-print("STOCK_LISTEX1_MAX_REL=0")
+print(f"STOCK_LISTEX1_MAX_ABS={max_abs}")
+print(f"STOCK_LISTEX1_MAX_REL={max_rel}")
 print("PASS_STOCK_LISTEX1_BY_MODEL_ID")
 PY
 
