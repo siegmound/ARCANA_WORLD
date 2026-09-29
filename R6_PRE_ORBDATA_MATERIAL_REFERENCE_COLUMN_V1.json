@@ -1,0 +1,426 @@
+{
+  "authority_classification": "AUTHORIAL_SPECIALIST_REFERENCE_WITH_GOVERNED_SENSITIVITY; NOT_EARTH_CELLWISE_OBSERVATIONS",
+  "authority_sources": {
+    "R6_PRE_ORBDATA_HEAT_FLOW_MISSING_AUTHORITY_CLOSURE.json": {
+      "decision": "R6_PRE_ORBDATA_HEAT_FLOW_MISSING_AUTHORITIES_CLOSED__CONFIG_V1_READY",
+      "sha256": "ee8d4f2cba01803ff011f36a18e5c48fdd53a93506a100380266db50b751b90e"
+    },
+    "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json": {
+      "decision": "R6_PRE_ORBDATA_MATERIAL_AUTHORITY_VALUES_SELECTED__THERMAL_COLUMN_COMPATIBILITY_BLOCKED",
+      "sha256": "1cc6ad7492a0f70f2cec8bb4f46b6b61f7b1ba2c4118f4446197a918b1f3be8e"
+    },
+    "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING.json": {
+      "decision": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_CLOSED__CONFIG_V1_AND_IMPLEMENTATION_READY",
+      "sha256": "9b35d54d0fb40ad19217edb5d58a1187b956e98319d73ff680ed78f32212d60b"
+    }
+  },
+  "continental_geometry": {
+    "HWR_applied": false,
+    "authority": "authored continental_reference_lithosphere_thickness_m by T0 thermal domain",
+    "failure": "nonpositive mantle residual is invalid; never clamp",
+    "mantle_thickness": "h_total - cellwise authored continental crust thickness",
+    "values_m": {
+      "COLD_STABLE": 200000,
+      "HOT_EXTENDED": 80000,
+      "NORMAL": 135000
+    }
+  },
+  "decision": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_CLOSED__CONFIG_V1_AND_IMPLEMENTATION_READY",
+  "density": {
+    "asthenosphere": {
+      "authority_class": "ARCANA_AUTHORED_SPECIALIST_BINDING",
+      "consumers": [
+        "OrbData rhoAst",
+        "reference pressure column"
+      ],
+      "nominal": 3300,
+      "range": [
+        3200,
+        3400
+      ],
+      "reason": "avoid a fabricated compositional density jump; density is evaluated at same reference T and composition",
+      "sensitivity_required": true,
+      "source": "reuse shared mantle reference at potential temperature; thermal expansion supplies temperature contrast",
+      "units": "kg m-3 at Tref=Tp"
+    },
+    "continental_crust": {
+      "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+      "consumers": [
+        "OrbData rhoBar_C continental"
+      ],
+      "literature_range": [
+        2700,
+        2900
+      ],
+      "nominal": 2800,
+      "reason": "mid-range bulk crust proxy; does not assert cellwise composition",
+      "sensitivity_range": [
+        2700,
+        2900
+      ],
+      "sensitivity_required": true,
+      "source": "Christensen & Mooney (1995), seismic structure/density of continental crust; standard reference range",
+      "units": "kg m-3"
+    },
+    "lithospheric_mantle": {
+      "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+      "consumers": [
+        "HWR-2",
+        "OrbData rhoBar_M",
+        "density model"
+      ],
+      "nominal": 3300,
+      "range": [
+        3200,
+        3400
+      ],
+      "reason": "reuse the existing mantle authority",
+      "sensitivity_required": true,
+      "source": "A0.6D HWR-2 shared value/range",
+      "units": "kg m-3"
+    },
+    "oceanic_crust": {
+      "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+      "consumers": [
+        "OrbData rhoBar_C ocean"
+      ],
+      "literature_range": [
+        2850,
+        2930
+      ],
+      "nominal": 2890,
+      "reason": "central value of published ocean-crust estimate",
+      "sensitivity_range": [
+        2850,
+        2930
+      ],
+      "sensitivity_required": true,
+      "source": "Christensen & Mooney (1995), preferred mean 2.89 +/- 0.04 Mg m-3",
+      "units": "kg m-3"
+    },
+    "seawater": {
+      "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+      "consumers": [
+        "OrbData rhoH2O"
+      ],
+      "nominal": 1000,
+      "range": [
+        990,
+        1030
+      ],
+      "reason": "reuse existing authority",
+      "sensitivity_required": true,
+      "source": "A0.6D aqueous reference",
+      "units": "kg m-3"
+    }
+  },
+  "gravity": {
+    "authority": "canonical R6",
+    "provenance": "existing canonical parameter",
+    "quantity": "gravity",
+    "scope": "global planet",
+    "treatment": "retain",
+    "units": "m s-2",
+    "value": 9.82
+  },
+  "identity": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1",
+  "material_classes": [
+    {
+      "class": "CONTINENTAL_CRUST_REFERENCE",
+      "geometry_source": "authored cellwise continental crust thickness",
+      "properties_ref": "continental entries below",
+      "scope": "one homogeneous bulk reference only; no thermal-class-dependent composition"
+    },
+    {
+      "class": "OCEANIC_CRUST_REFERENCE",
+      "geometry_source": "authored ocean crust thickness",
+      "properties_ref": "ocean entries below",
+      "scope": "one homogeneous bulk reference; explicit crust above HWR effective plate"
+    },
+    {
+      "class": "LITHOSPHERIC_MANTLE_REFERENCE",
+      "geometry_source": "continental T0 total thickness less crust; ocean HWR total thermal plate less crust under stated mapping",
+      "properties_ref": "shared mantle entries below",
+      "scope": "shared effective silicate mantle material"
+    },
+    {
+      "class": "ASTHENOSPHERE_REFERENCE",
+      "geometry_source": "below LAB",
+      "properties_ref": "shared mantle density/alpha and adiabat",
+      "scope": "one reference state; same mantle composition and thermal expansion for minimum package"
+    },
+    {
+      "class": "SEAWATER_REFERENCE",
+      "geometry_source": "ocean elevation/water loading",
+      "properties_ref": "A0.6D rhoH2O",
+      "scope": "uniform reference water column"
+    }
+  ],
+  "ocean_geometry": {
+    "authority": "single HWR zp authority",
+    "crust_source": "authored oceanic crust thickness field",
+    "failure": "nonpositive residual rejects column",
+    "mantle_residual": "zp - h_ocean_crust",
+    "ridge": "z=0 age uses finite q_ridge=0.3; zp nominal supplies only an explicitly authorial reference geometry until a ridge initial thermal profile is specified",
+    "total_thermal_thickness_m": {
+      "nominal": 100000,
+      "range": [
+        80000,
+        140000
+      ]
+    }
+  },
+  "radiogenic_heat": {
+    "continental_crust": {
+      "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+      "consumers": [
+        "OrbData radio_C continental",
+        "analytical column energy balance"
+      ],
+      "literature_range": [
+        6e-07,
+        1e-06
+      ],
+      "nominal": 8e-07,
+      "reason": "round, low bulk value compatible with authored 45-85 mW m-2 while retaining uncertainty; not a regional or historical Earth estimate",
+      "sensitivity_range": [
+        4e-07,
+        1.2e-06
+      ],
+      "sensitivity_required": true,
+      "source": "Sammon et al. (2022) reports crustal-average radiogenic surface contribution ~26.7-39.6 mW m-2 across Earth compositional models and discusses upper-crust 0.8-1.75 uW m-3; Jaupart & Mareschal (2015) review bulk crust estimates",
+      "units": "W m-3"
+    },
+    "mantle_lithosphere": {
+      "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+      "consumers": [
+        "OrbData radio_M",
+        "energy balance"
+      ],
+      "literature_range": [
+        0,
+        4e-08
+      ],
+      "nominal": 2e-08,
+      "reason": "small nonzero reference keeps zero an explicit sensitivity endpoint rather than hidden default",
+      "sensitivity_range": [
+        0,
+        4e-08
+      ],
+      "sensitivity_required": true,
+      "source": "Hasterok & Webb (2017) continental lithosphere thermal models discuss mantle heat production <=0.04 uW m-3; use low reference prior",
+      "units": "W m-3"
+    },
+    "model": "Single uniform bulk production per crust material; no depth layers or thermal-class composition classes.",
+    "oceanic_crust": {
+      "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+      "consumers": [
+        "OrbData radio_C ocean"
+      ],
+      "literature_range": [
+        1e-07,
+        5e-07
+      ],
+      "nominal": 3e-07,
+      "reason": "minimal bulk mafic-crust proxy; no claim of Arcana geochemistry",
+      "sensitivity_range": [
+        0,
+        5e-07
+      ],
+      "sensitivity_required": true,
+      "source": "Kumar et al. (2020) LitMod2D table uses oceanic crust 0.30 uW m-3",
+      "units": "W m-3"
+    },
+    "uncertainty_policy": "These are authorial specialist reference values with stated literature-based sensitivity, not cellwise fields or reconstructed Earth."
+  },
+  "reference_temperatures": {
+    "TADIAB_binding": "Set TADIAB=Tp at the reference surface-pressure datum z=0; GRADIE=local derivative at Tp for compatibility only; TAsthK at 100 km is derived from integrated adiabat and must be evaluated through explicit code binding. The source's linear formula differs from exact integration by <0.1 K over 100 km at nominal values.",
+    "adiabatic_relation": "dT/dz=alpha*g*T/Cp; use exponential integration T(z)=Tp*exp(alpha*g*z/Cp) for constant properties; linear GRADIE is local derivative only.",
+    "alpha": "same selected mantle alpha authority used for lithosphere and adiabat; do not create duplicate value.",
+    "nominal_local_gradient_K_per_km": 0.412,
+    "potential_temperature_K": {
+      "derivation": "nominal HWR Tb - gamma*100 km; gamma=alpha*g*T/Cp, evaluated locally at Tb; range is conservative combination of HWR Tb, alpha, Cp extrema",
+      "nominal": 1638.8,
+      "range": [
+        1493,
+        1707
+      ]
+    },
+    "rhoAst": {
+      "binding": "same mantle density authority evaluated at potential-temperature reference",
+      "nominal": 3300,
+      "range": [
+        3200,
+        3400
+      ],
+      "units": "kg m-3 at Tp"
+    },
+    "solidus_limits": "No universal solidus is assigned: temLim in this source is a numerical density-integration cap and literature solidus varies with composition, pressure and volatiles. This is outside the minimal conductive reference-state authority; any required runtime cap must be separately governed before OrbData config."
+  },
+  "schema": "arcana_worldsim.r6.pre_orbdata.material_reference_column_v1",
+  "temLim_K": {
+    "authority_source": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING.json",
+    "physical_solidus": false,
+    "role": "NONBINDING_NUMERICAL_DENSITY_INTEGRATION_CEILING",
+    "value": 1900
+  },
+  "thermal_properties": {
+    "continental_crust": {
+      "Cp": {
+        "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+        "literature_range": [
+          800,
+          1200
+        ],
+        "nominal": 1000,
+        "sensitivity_range": [
+          800,
+          1200
+        ],
+        "source": "Glazner et al. (2021) representative rock value 1000",
+        "units": "J kg-1 K-1"
+      },
+      "alpha": {
+        "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+        "literature_range": [
+          2e-05,
+          4e-05
+        ],
+        "nominal": 3e-05,
+        "sensitivity_range": [
+          2e-05,
+          4e-05
+        ],
+        "source": "silicate-rock thermophysical range; HWR mantle alpha used only as order-of-magnitude prior",
+        "units": "K-1"
+      },
+      "k": {
+        "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+        "literature_range": [
+          2.0,
+          3.0
+        ],
+        "nominal": 2.5,
+        "sensitivity_range": [
+          2.0,
+          3.0
+        ],
+        "source": "Jaupart & Mareschal (2011) crustal heat transfer; representative conductivity ~2.1; Glazner et al. (2021) uses 2.5",
+        "units": "W m-1 K-1"
+      }
+    },
+    "heat_capacity_consumer": "Crust Cp recorded for reusable completeness; OrbData Assign does not consume Cp. Only mantle Cp feeds HWR diffusivity.",
+    "mantle": {
+      "Cp": {
+        "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+        "nominal": 1200,
+        "range": [
+          1100,
+          1250
+        ],
+        "source": "A0.6D",
+        "units": "J kg-1 K-1"
+      },
+      "alpha": {
+        "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+        "nominal": 3e-05,
+        "range": [
+          2.5e-05,
+          3.5e-05
+        ],
+        "source": "A0.6D",
+        "units": "K-1"
+      },
+      "k": {
+        "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+        "nominal": 3.3,
+        "range": [
+          3.0,
+          4.1
+        ],
+        "source": "A0.6D",
+        "units": "W m-1 K-1"
+      },
+      "kappa_derived": {
+        "formula": "k/(rho Cp)",
+        "nominal": 8.333333333333333e-07,
+        "range": [
+          7.0588e-07,
+          1.1648e-06
+        ],
+        "source": "A0.6D; not independent input",
+        "units": "m2 s-1"
+      },
+      "rho": {
+        "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+        "nominal": 3300,
+        "range": [
+          3200,
+          3400
+        ],
+        "source": "A0.6D",
+        "units": "kg m-3"
+      }
+    },
+    "oceanic_crust": {
+      "Cp": {
+        "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+        "literature_range": [
+          800,
+          1200
+        ],
+        "nominal": 1000,
+        "sensitivity_range": [
+          800,
+          1200
+        ],
+        "source": "representative silicate-rock specific heat",
+        "units": "J kg-1 K-1"
+      },
+      "alpha": {
+        "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+        "literature_range": [
+          2e-05,
+          4e-05
+        ],
+        "nominal": 3e-05,
+        "sensitivity_range": [
+          2e-05,
+          4e-05
+        ],
+        "source": "silicate-rock thermophysical range; specialist proxy, not composition inference",
+        "units": "K-1"
+      },
+      "k": {
+        "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+        "literature_range": [
+          1.8,
+          2.8
+        ],
+        "nominal": 2.2,
+        "sensitivity_range": [
+          1.8,
+          2.8
+        ],
+        "source": "Kumar et al. (2020) LitMod2D representative oceanic crust k=2.2; range allows bulk lithologic variability",
+        "units": "W m-1 K-1"
+      }
+    },
+    "surface_temperature": {
+      "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+      "nominal": 280,
+      "range": [
+        250,
+        300
+      ],
+      "source": "A0.6D",
+      "units": "K"
+    }
+  },
+  "uncertainty_status": {
+    "material_values": "AUTHORIAL_REFERENCE_SET_PROPOSED_WITH_LITERATURE_RANGES",
+    "reason": "A0.6G requested reusable V1 only if column values can be validated; static checks fail for the prescribed hybrid steady/transient pairing.",
+    "reusable_material_v1_created": false
+  },
+  "version": "1.0.0"
+}

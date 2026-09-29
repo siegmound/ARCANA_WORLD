@@ -1,0 +1,37 @@
+{
+  "schema": "arcana_worldsim.r6.pre_orbdata.shellset_successor_patch_provenance.v1",
+  "decision": "SUCCESSOR_PATCH_NOT_MATERIALIZED__PINNED_SOURCE_UNAVAILABLE",
+  "qualified_parent_shellset_commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+  "parent_commit_available_in_current_git_object_database": false,
+  "source_tree_available_in_current_workspace": false,
+  "historical_patch": {
+    "path": "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch",
+    "sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
+    "role": "HISTORICAL_BASELINE_AND_ORACLE_ONLY",
+    "successor_fair_qualification": false
+  },
+  "successor_patch_identity": null,
+  "successor_patch_path": null,
+  "source_absence_diagnostic": "The specified qualified commit is not present in the local Git object database, and the pinned ShellSet source tree (including OrbData5.f90, MOD_Data.f90, MOD_ShellSet.f90, and ShellSetMain.f90) is not present in the workspace. The retained historical patch and FAIR excerpts do not provide a complete exact source tree from which an applicable successor diff can be safely generated or checked.",
+  "required_successor_changes": [
+    {"file": "src/OrbData5.f90", "routines": ["Assign", "OrbData5"], "semantic_change": "Complete explicit ARCANA mode preserves governed heatFl; GDH1 replacement and qLim1 clipping are stock-only; conservative transient profile and Moho state consumed; invalid profile returns diagnostics without q/geometry mutation."},
+    {"file": "src/MOD_Data.f90", "routines": ["Assign"], "semantic_change": "Add complete ARCANA-only transient profile/material inputs and bypass legacy correction mutations only for ARCANA; preserve stock statements and behavior."},
+    {"file": "src/MOD_ShellSet.f90", "routines": ["InputSetup", "OpenInput", "CloseInput"], "semantic_change": "Carry complete governed ARCANA inputs and validity separately; incomplete pair fails closed."},
+    {"file": "src/ShellSetMain.f90", "routines": ["OrbData call setup"], "semantic_change": "Retain fail-closed error propagation for complete ARCANA runtime inputs."}
+  ],
+  "semantic_before_after": {
+    "before": "Historical candidate patch admits ARCANA ocean nodes to the age branch, overwrites heatFl using GDH1/qLim1, uses an independent GDH1/95-km geometry path, and clamps thickness; it does not implement the final transient thermal coupling.",
+    "required_after": "ARCANA explicit input branches preserve q and authored geometry, use the transient column/profile state, enforce Moho T/flux continuity and bounded LAB conditions, and fail closed on violations. Legacy/non-ARCANA behavior remains unchanged.",
+    "reason": "Implement the closed A0.6 transient thermal contract and avoid silent mutation of governed parent state."
+  },
+  "qualification_statement": "The previous FAIR qualification is baseline only and does not qualify a successor patch.",
+  "ubuntu_fair_qualification_required": true,
+  "preserved_gates": {
+    "ShellSet_modified": false,
+    "runtime_qualification": false,
+    "PRE_ORBDATA_ready": false,
+    "OrbData_authorized": false,
+    "OrbData_executed": false,
+    "SHELLS_executed": false
+  }
+}

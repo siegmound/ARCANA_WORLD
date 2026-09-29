@@ -1,0 +1,451 @@
+{
+  "algorithm_identity": "ARCANA_R6_PRE_ORBDATA_TRANSIENT_HEAT_FLOW_V1",
+  "architecture_identity": "HYBRID_DOMAIN_AWARE_HEAT_FLOW",
+  "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+  "continental_heat_flow_parent": {
+    "class_values_w_m2": {
+      "COLD_STABLE": 0.045,
+      "HOT_EXTENDED": 0.085,
+      "NORMAL": 0.06
+    },
+    "field": "continental_reference_surface_heat_flow_w_m2",
+    "normalized_sha256": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f"
+  },
+  "decision": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_CLOSED__CONFIG_V1_AND_IMPLEMENTATION_READY",
+  "gdh1_policy": "BYPASS_FOR_EXPLICIT_GOVERNED_ARCANA_HEAT_FLOW; retain stock path",
+  "global_field_authority": "DERIVED_REPLAYABLE_T0_STATE",
+  "global_heat_flow_envelope_w_m2": {
+    "authority": "R6_PRE_ORBDATA_HEAT_FLOW_MISSING_AUTHORITY_CLOSURE.json",
+    "nominal": [
+      0.045,
+      0.47415
+    ],
+    "sensitivity": [
+      0.03222,
+      0.58154
+    ]
+  },
+  "hwr2": {
+    "age_conversion_seconds_per_ma": 31557600000000.0,
+    "equation": "Holdt et al. (2025), Eq. 4: H(t)=k*(T-T0)/zp*[1+2*sum(i=1..N, exp(-kappa*i^2*pi^2*t/zp^2))], kappa=k/(rho_m*Cp); valid here only for t>0. N is a convergence control.",
+    "model_identity": "HWR2_FINITE_PLATE_CONSTANT_PROPERTY_SURFACE_FLUX",
+    "nominal_flux_w_m2": {
+      "age_at_max_ma": 1.1491667412337465,
+      "age_at_min_ma": 160.0,
+      "max": 0.47414825277772876,
+      "min": 0.04765254495419164
+    },
+    "parameters": [
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 ocean effective conductivity",
+          "OrbData oceanic mantle conduc(2), explicit binding; crust conduc(1) remains a distinct crust material"
+        ],
+        "name": "k",
+        "range_kind": "LITERATURE_PRIOR_FOR_CONSTANT_EFFECTIVE_SILICATE_MANTLE_CONDUCTIVITY",
+        "reason": "Select a common silicate-mantle effective value inside published model/material ranges, distinct from Holdt's Earth-fit optimum 3.8; retain broad interval because constant k collapses T/P dependence.",
+        "sensitivity_range": [
+          3.0,
+          4.1
+        ],
+        "source": "Schuberth et al. (2009) mantle-convection benchmark uses 3.0 W m-1 K-1; Holdt et al. (2025) explores 3.2-4.1 W m-1 K-1 for HWR-2 calibration. https://doi.org/10.1029/2008GC002235 ; https://doi.org/10.1029/2024JB029890",
+        "uncertainty": "Sensitivity interval retained; composition and T/P variability not resolved.",
+        "units": "W m-1 K-1",
+        "value": 3.3
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 diffusivity and thermal subsidence",
+          "OrbData mantle rhoBar(2) as the single shared reference density"
+        ],
+        "name": "rho_m",
+        "range_kind": "LITERATURE_PRIOR_FOR_SILICATE_UPPER_MANTLE_REFERENCE_DENSITY",
+        "reason": "Select the standard silicate reference density for an Earth-radius/Earth-gravity ARCANA candidate; sensitivity range covers common mantle-model values.",
+        "sensitivity_range": [
+          3200,
+          3400
+        ],
+        "source": "Schuberth et al. (2009) and solid-Earth material-model tables use upper-mantle reference values near 3300-3370 kg m-3. https://doi.org/10.1029/2008GC002235 ; https://se.copernicus.org/articles/14/1155/2023/",
+        "uncertainty": "Reference density only; pressure/temperature dependence is outside constant-property HWR-2.",
+        "units": "kg m-3",
+        "value": 3300
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 derived diffusivity; no independent OrbData Cp input is created"
+        ],
+        "name": "Cp",
+        "range_kind": "LITERATURE_PRIOR_FOR_SILICATE_MANTLE_ISOBARIC_HEAT_CAPACITY",
+        "reason": "Select a round reference value within independent mantle-material model values; it is not an Earth heat-flow fit coefficient.",
+        "sensitivity_range": [
+          1100,
+          1250
+        ],
+        "source": "Schuberth et al. (2009) uses 1134 J kg-1 K-1; Solid Earth 14 (2023) material table uses sub-lithospheric mantle 1250 J kg-1 K-1. https://doi.org/10.1029/2008GC002235 ; https://se.copernicus.org/articles/14/1155/2023/",
+        "uncertainty": "Sensitivity range retained; Cp(T,X) variation is collapsed in this model.",
+        "units": "J kg-1 K-1",
+        "value": 1200
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_LITERATURE_PRIOR",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 basal boundary",
+          "Shared OrbData mantle-reference consistency constraint at plate base; not numerically identical to an arbitrary adiabat control"
+        ],
+        "name": "Tb",
+        "range_kind": "INDEPENDENT_PETROLOGIC_MANTLE_TEMPERATURE_PRIOR_CONVERTED_TO_K",
+        "reason": "Choose 1680 K (1407 C) as an explicit ARCANA reference inside the independent petrologic prior and away from the HWR-2 optimum 1326 C. Sensitivity covers the reported independent range.",
+        "sensitivity_range": [
+          1523,
+          1737
+        ],
+        "source": "Holdt et al. (2025) summarizes independent mantle-temperature estimates of 1250-1464 C separately from the HWR-2 optimized fit. https://doi.org/10.1029/2024JB029890",
+        "uncertainty": "Broad literature-prior interval; no ARCANA composition/petrology observation exists.",
+        "units": "K",
+        "value": 1680
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 surface boundary",
+          "OrbData TSurf where this same reference surface quantity is consumed"
+        ],
+        "name": "T0",
+        "range_kind": "ARCANA_REFERENCE_SURFACE_BOUNDARY_AND_SENSITIVITY_INTERVAL",
+        "reason": "Select 280 K as the model's fixed ocean-surface thermal reference; carry 250-300 K sensitivity because climate/atmosphere coupling is outside HWR-2.",
+        "sensitivity_range": [
+          250,
+          300
+        ],
+        "source": "Explicit ARCANA selection in this closure; no prior T0 climate boundary was canonical. Holdt's 0 C surface boundary is not transferred.",
+        "uncertainty": "Authorial interval, not a climate prediction.",
+        "units": "K",
+        "value": 280
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_LITERATURE_PRIOR",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 plate thickness; producer thermal-isostatic subsidence; OrbData explicit ocean thermal-thickness binding"
+        ],
+        "name": "zp",
+        "range_kind": "LITERATURE_PRIOR_MODEL_SPREAD_RETAINED_AS_SENSITIVITY_ONLY",
+        "reason": "Select a round 100 km ARCANA thermal-plate reference, distinct from the HWR-2 optimum 105 km. Widen sensitivity interval to 80-140 km; do not read this as a measured ARCANA thickness.",
+        "sensitivity_range": [
+          80000,
+          140000
+        ],
+        "source": "Holdt et al. (2025) tabulates historical plate-model thickness estimates spanning roughly 90-136 km; this is model literature spread, including Earth calibration, not an adopted Earth fit. https://doi.org/10.1029/2024JB029890",
+        "uncertainty": "Large structural/model uncertainty retained.",
+        "units": "m",
+        "value": 100000
+      },
+      {
+        "authority_type": "DERIVED_QUANTITY",
+        "classification": "DERIVED_QUANTITY",
+        "consumers": [
+          "HWR-2 only"
+        ],
+        "name": "kappa",
+        "range_kind": "DERIVED_QUANTITY_FROM_PARENT_INTERVAL_CORNERS",
+        "reason": "Derived from the three selected shared material values; one quantity, no duplicate constant.",
+        "sensitivity_range": [
+          7.058823529411765e-07,
+          1.1647727272727272e-06
+        ],
+        "source": "k/(rho_m*Cp)",
+        "uncertainty": "Correlated endpoint propagation required; do not vary independently.",
+        "units": "m2 s-1",
+        "value": 8.333333333333333e-07
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 subsidence/elevation closure",
+          "OrbData mantle alphaT(2)"
+        ],
+        "name": "alpha",
+        "range_kind": "LITERATURE_PRIOR_FOR_SILICATE_THERMAL_EXPANSIVITY",
+        "reason": "Select one mantle expansivity reference for HWR-2 thermal subsidence and bind the same authority to OrbData alphaT(2). It does not enter Eq. 4 surface heat flow.",
+        "sensitivity_range": [
+          2.5e-05,
+          3.5e-05
+        ],
+        "source": "Solid Earth 14 (2023) material models use approximately 2.7-3.0e-5 K-1. https://se.copernicus.org/articles/14/1155/2023/",
+        "uncertainty": "Sensitivity range retained; no second OrbData alpha value.",
+        "units": "K-1",
+        "value": 3e-05
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 subsidence only"
+        ],
+        "name": "rho_w",
+        "range_kind": "AUTHORIAL_REFERENCE_FOR_LIQUID_WATER_COLUMN",
+        "reason": "Bind the model's declared water-column density rather than leaving the subsidence denominator implicit.",
+        "sensitivity_range": [
+          990,
+          1030
+        ],
+        "source": "Liquid-water reference; selected explicitly for the HWR thermal-subsidence relation, not part of the heat-flow Eq. 4.",
+        "uncertainty": "Water composition/salinity not otherwise modeled.",
+        "units": "kg m-3",
+        "value": 1000
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_MODEL_CONFIGURATION",
+        "classification": "DERIVED_QUANTITY",
+        "consumers": [
+          "HWR-2 producer"
+        ],
+        "name": "N",
+        "range_kind": "NUMERICAL_CONVERGENCE_CONTROL",
+        "reason": "Fix deterministic truncation and tolerance for replay; N is not a physical material parameter.",
+        "sensitivity_range": "N=128/256 endpoint comparison; target relative flux tolerance 1e-12",
+        "source": "Explicit deterministic numerical selection; for the youngest positive age and slowest diffusivity/widest plate in the sensitivity domain, omitted tail at N=256 is below double-precision relevance.",
+        "uncertainty": "Convergence must be recorded in producer replay metadata.",
+        "units": "Fourier terms",
+        "value": 256
+      }
+    ],
+    "relative_tolerance": 1e-12,
+    "sensitivity_envelope_w_m2": {
+      "at_age_ma": 160.0,
+      "at_age_ma_max": 1.1491667412337465,
+      "max": 0.5815390971398668,
+      "method": "All endpoint combinations at both age endpoints evaluated; H(t) decreases monotonically with age for fixed positive parameter values. Reported interval bounds are sensitivity bounds, not extra point values.",
+      "min": 0.03221905979948161,
+      "parameter_ranges": {
+        "Cp_j_kg_k": [
+          1100,
+          1250
+        ],
+        "T0_K": [
+          250,
+          300
+        ],
+        "Tb_K": [
+          1523,
+          1737
+        ],
+        "k_w_m_k": [
+          3.0,
+          4.1
+        ],
+        "rho_m_kg_m3": [
+          3200,
+          3400
+        ],
+        "zp_m": [
+          80000,
+          140000
+        ]
+      }
+    },
+    "series_N": 256
+  },
+  "identity": "R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1",
+  "lab_policy": {
+    "adiabat": "T_ad(z)=Tp*exp(alpha_M*g*z/Cp_M). Derive Tp from the already governed HWR basal temperature/depth pair: Tp=Tb*exp(-alpha_M*g*zp/Cp_M). For continental H=authored total lithosphere thickness, target T_LAB=T_ad(H).",
+    "continuity": "LAB temperature equals adiabat by criterion; base flux may pass into convecting asthenosphere and need not equal the small adiabatic conductive flux.",
+    "positive_age_ocean": "Define LAB as the shallowest z in (h_C,zp] where T_HWR(z,t)>=T_ad(z); if none occurs before zp, use the HWR basal boundary zp, where temperatures are constructed to meet. Reject if h_LAB<=h_C.",
+    "ridge": "Do not evaluate t=0. Invert monotone HWR-2 flux relation for a derived positive effective age t_eff satisfying H(t_eff)=q_ridge. This index is DERIVED thermal state, never a change to authored age=0. Apply same first-crossing LAB criterion."
+  },
+  "material_reference_column_identity": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1",
+  "moho_conservation_policy": {
+    "continent": "Use the same qMoho=q_s+(rho_C Cp_C*Tdot-A_C)*h_C to initialize the mantle solution; same Moho T value initializes mantle.",
+    "ocean_projection": "Both Hermite segments share T_H(h_C) and q_H(h_C), so T and flux match exactly while gradients differ as q/k_C versus q/k_M.",
+    "requirements": [
+      "T_C(h_C)=T_M(0)",
+      "q_C(h_C)=q_M(0)"
+    ],
+    "smallest_source_change": "In curvature convention, compute mantle qRed from the crust-side interface flux: replace c*h_C*k_M by c*h_C*k_C (with source sign consistently checked). More generally pass shared Moho T and q, not duplicated expressions."
+  },
+  "ocean_age_parent": {
+    "age_interval_ma": [
+      1.1491667412337465,
+      160.0
+    ],
+    "field": "oceanic_lithosphere_age_ma",
+    "normalized_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+    "previously_disputed_cells": {
+      "branch": "AUTHORIZED_POSITIVE_AGE_OCEAN",
+      "count": 1072,
+      "policy": "use governed finite positive age; do not infer from boundary adjacency"
+    },
+    "support_cells": 50434
+  },
+  "orbdata_nodal_serialization_authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+  "parent_source_identities_and_hashes": {
+    "continental_reference_heat_flow_normalized_sha256": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+    "feg_mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "material_reference_column_config_sha256": "31a4c2fca0a5405911c8ac3fa77415cf33f6c2f5657780608c04e4cdaf64577c",
+    "oceanic_lithosphere_age_normalized_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+    "physical_crust_domain_normalized_sha256": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+    "physical_geography_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+    "ridge_source_authority_sha256": "11d5b01207d51cd0014227c24bdb99f08b2fbe9f77536f61e36142d8e227b177",
+    "ridge_support_mask_sha256": "83f97e5cd8f69c5e0f0e316661c5aeeb907beed60fd473e53ca3058b1aab0c76",
+    "t0_field_package_file_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+  },
+  "physical_crust_domain_id": {
+    "authority": "categorical branch selector; never interpolate",
+    "continental_ids": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "field": "physical_crust_domain_id",
+    "normalized_sha256": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+    "ocean_id": 1
+  },
+  "preserved_gates": {
+    "OrbData_authorized": false,
+    "OrbData_executed": false,
+    "PRE_ORBDATA_ready": false,
+    "SHELLS_executed": false,
+    "ShellSet_modified": false,
+    "T1_created": false,
+    "canonical_T0_promoted": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "runtime_qualification": false
+  },
+  "projection_policy": {
+    "classification": "NUMERICAL_DERIVED_SUPPORT",
+    "domain_rule": "homogeneous incident categorical support only",
+    "mixed_support": "UNKNOWN_FAIL_CLOSED",
+    "node_count": 64442,
+    "resolution_promotion": false,
+    "smoothing": "NONE"
+  },
+  "qLim0_dQL_dE_policy": {
+    "classification": "NON_BINDING_RUNTIME_GUARD_FOR_POSITIVE_GOVERNED_Q",
+    "dQL_dE_w_m3": 0.0,
+    "mutation_policy": "if downstream correction changes governed q, fail closed",
+    "qLim0_w_m2": 0.0
+  },
+  "qLim1_policy": "BYPASS_FOR_EXPLICIT_GOVERNED_ARCANA_HEAT_FLOW; assert against configured envelope; never clip",
+  "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+  "replay_identity_inputs": [
+    "all parent hashes above",
+    "material config sha256",
+    "HWR2 model identity and complete parameters",
+    "series_N and tolerance",
+    "algorithm version",
+    "categorical node support policy",
+    "heat_flow_config_identity (external hash recorded by implementation report; excludes self-reference)",
+    "producer/solver/projection source file hashes",
+    "parent_source_identities_and_hashes.ridge_support_mask_sha256",
+    "parent_source_identities_and_hashes.feg_mesh_sha256",
+    "thermal_numerical_controls",
+    "all solver validation tolerances and iteration counts"
+  ],
+  "ridge_policy": {
+    "hwr_age_zero_evaluated": false,
+    "q_w_m2": 0.3,
+    "support": "governed selected ridge mask AND authored age == 0",
+    "support_cells": 108
+  },
+  "schema": "arcana_worldsim.r6.pre_orbdata.heat_flow_config_v1",
+  "sensitivity_axes": {
+    "Cp": [
+      1100,
+      1250
+    ],
+    "N": "N=128/256 endpoint comparison; target relative flux tolerance 1e-12",
+    "T0": [
+      250,
+      300
+    ],
+    "Tb": [
+      1523,
+      1737
+    ],
+    "alpha": [
+      2.5e-05,
+      3.5e-05
+    ],
+    "k": [
+      3.0,
+      4.1
+    ],
+    "kappa": [
+      7.058823529411765e-07,
+      1.1647727272727272e-06
+    ],
+    "rho_m": [
+      3200,
+      3400
+    ],
+    "rho_w": [
+      990,
+      1030
+    ],
+    "zp": [
+      80000,
+      140000
+    ]
+  },
+  "source_authorities": {
+    "R6_PRE_ORBDATA_CONTINENTAL_HEAT_FLOW_AUTHORIAL_RATIFICATION.json": {
+      "decision": "R6_PRE_ORBDATA_CONTINENTAL_HEAT_FLOW_REFERENCE_BOUNDARY_AUTHORITY_RATIFIED__GLOBAL_HEAT_FLOW_ARCHITECTURE_OPEN",
+      "sha256": "9b4cfbb478e2f268eee99766d62909d1ff02ddc48fe245bba409bee15724820f"
+    },
+    "R6_PRE_ORBDATA_HEAT_FLOW_ARCHITECTURE_CLOSURE.json": {
+      "decision": "R6_PRE_ORBDATA_HEAT_FLOW_ARCHITECTURE_CLOSED__HYBRID_DOMAIN_AWARE__PARAMETERIZATION_PENDING",
+      "sha256": "74c52d3a1a44eab6b9d0dab6eaf5cb82418ff3cdc9ad9375b211cb19d21f0e41"
+    },
+    "R6_PRE_ORBDATA_HEAT_FLOW_MISSING_AUTHORITY_CLOSURE.json": {
+      "decision": "R6_PRE_ORBDATA_HEAT_FLOW_MISSING_AUTHORITIES_CLOSED__CONFIG_V1_READY",
+      "sha256": "ee8d4f2cba01803ff011f36a18e5c48fdd53a93506a100380266db50b751b90e"
+    },
+    "R6_PRE_ORBDATA_HEAT_FLOW_NUMERICAL_BINDING.json": {
+      "decision": {
+        "pre_orbdata_can_proceed": false,
+        "reason": "A complete nonzero heat-flow field cannot be authorized while required ocean support remains unknown, and the HWR-2 ocean values cannot be numerically derived from selected material and thermal parameters.",
+        "smallest_exact_blocker": "No governed ARCANA HWR-2 material/thermal parameter tuple or finite authorized intervals exist for k, rho_m, Cp, Tb, T0 and zp, so no finite positive-age ocean flux envelope or justified nonbinding qLim1 can be computed. In addition, 1,072 positive-age ocean cells remain unsupported for the HWR domain because their relationship to 634 unclassified divergent candidates has no governed boundary-process classification.",
+        "status": "BLOCKED"
+      },
+      "sha256": "7a7e6c0bdfb89d15ca4968cec3013f3b66f7963ee3106200bbd0c3908c9cbad1"
+    },
+    "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_AND_RUNTIME_CLOSURE.json": {
+      "decision": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_POLICY_ADJUDICATED__NUMERICAL_BINDING_READY",
+      "sha256": "11d5b01207d51cd0014227c24bdb99f08b2fbe9f77536f61e36142d8e227b177"
+    },
+    "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json": {
+      "decision": "R6_PRE_ORBDATA_MATERIAL_AUTHORITY_VALUES_SELECTED__THERMAL_COLUMN_COMPATIBILITY_BLOCKED",
+      "sha256": "1cc6ad7492a0f70f2cec8bb4f46b6b61f7b1ba2c4118f4446197a918b1f3be8e"
+    },
+    "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING.json": {
+      "decision": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_CLOSED__CONFIG_V1_AND_IMPLEMENTATION_READY",
+      "sha256": "9b35d54d0fb40ad19217edb5d58a1187b956e98319d73ff680ed78f32212d60b"
+    }
+  },
+  "thermal_numerical_controls": {
+    "algorithm_version": "ARCANA_R6_PRE_ORBDATA_TRANSIENT_HEAT_FLOW_V1",
+    "crossing_search": "fixed 256 equal depth intervals followed by 64 bisection iterations",
+    "fourier_modes": 256,
+    "fourier_relative_tolerance": 1e-12,
+    "hermite_extremum_validation": "analytic derivative roots in [0,1]",
+    "hermite_gradient_tolerance_k_per_m": 1e-12,
+    "hermite_temperature_tolerance_k": 1e-07
+  },
+  "transient_thermal_coupling_identity": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_CLOSED__CONFIG_V1_AND_IMPLEMENTATION_READY",
+  "unknown_policy": "FAIL_CLOSED; preserve UNKNOWN separately; never encode unknown physical support as zero",
+  "version": "1.0.0"
+}

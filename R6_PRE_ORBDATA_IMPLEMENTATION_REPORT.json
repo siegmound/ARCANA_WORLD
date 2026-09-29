@@ -1,0 +1,111 @@
+{
+  "config_v1_identity": {
+    "heat_flow": {
+      "path": "R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+      "sha256": "5bf6de1d540837a8050f50d337dc4d955c970377e07eaca2e3b4cf28c7b77b16"
+    },
+    "material_reference_column": {
+      "path": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1.json",
+      "sha256": "31a4c2fca0a5405911c8ac3fa77415cf33f6c2f5657780608c04e4cdaf64577c"
+    }
+  },
+  "decision": "R6_PRE_ORBDATA_IMPLEMENTATION_PARTIAL__UBUNTU_FAIR_QUALIFICATION_AND_PINNED_ARTIFACTS_REQUIRED",
+  "preserved_gates": {
+    "OrbData_authorized": false,
+    "OrbData_executed": false,
+    "PRE_ORBDATA_ready": false,
+    "SHELLS_executed": false,
+    "ShellSet_modified": false,
+    "T1_created": false,
+    "canonical_T0_promoted": false,
+    "commit": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "push": false,
+    "runtime_qualification": false,
+    "staging_area_altered": false
+  },
+  "producer_implementation": {
+    "branches": [
+      "CONTINENTAL_AUTHORED_REFERENCE",
+      "GOVERNED_RIDGE_BOUNDARY",
+      "AUTHORIZED_POSITIVE_AGE_OCEAN"
+    ],
+    "cell_counts": {
+      "continental": 14258,
+      "positive_age_ocean": 50434,
+      "ridge": 108
+    },
+    "derived_field_authority": "DERIVED_REPLAYABLE_T0_STATE",
+    "path": "src/arcana_worldsim/r6/pre_orbdata_heat_flow.py",
+    "status": "IMPLEMENTED_STATIC_NUMERICAL_CHECKS_PASS"
+  },
+  "projection_implementation": {
+    "artifact_sha256": "1bec2c5f50de0ac04b0cb4b627c673769a5915c19cdd52ced2184826ba3c6831",
+    "authority": "NUMERICAL_DERIVED_SUPPORT",
+    "cell_state_path": "R6_PRE_ORBDATA_HEAT_FLOW_FEG_PROJECTION_V1.json",
+    "cell_state_sha256": "322145ac47ace79f2efe3b4c49b4fb869d74ab9d4dd06d2ac2805f6c7d3b1240",
+    "diagnostic": "The canonical vector partition payload R6_T0_VECTOR_PLATE_PARTITION.npz is absent at the configured external-source path D:/corsi/Arcana/_ARCANA_EXTERNAL_SOURCES/r6/tectonic_t0/; no substitute mesh was promoted.",
+    "path": "src/arcana_worldsim/r6/pre_orbdata_projection.py",
+    "serialized_authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+    "status": "CELL_STATE_MATERIALIZED__AUTHORITATIVE_FEG_PROJECTION_BLOCKED",
+    "target_nodes": 64442
+  },
+  "remaining_implementation_blockers": [
+    "Make the canonical 64,442-node FEG parent partition payload available and materialize/verify the complete categorical projection.",
+    "Make the exact qualified ShellSet source commit 62fd474f229b2676fd9d39c5def45137d22d2481 and source tree available; create/apply/check the successor patch without changing legacy semantics.",
+    "Run the added targeted pytest and broader regressions in an environment with pytest.",
+    "Complete Ubuntu FAIR qualification and stock regression for the successor patch."
+  ],
+  "remaining_scientific_blockers": [],
+  "replay_identity": {
+    "derived_cell_state_sha256": "322145ac47ace79f2efe3b4c49b4fb869d74ab9d4dd06d2ac2805f6c7d3b1240",
+    "heat_flow_config_sha256": "5bf6de1d540837a8050f50d337dc4d955c970377e07eaca2e3b4cf28c7b77b16",
+    "inputs": [
+      "governed parent field identities/hashes",
+      "material and heat-flow config hashes",
+      "HWR2 model identity/parameters/N/tolerance",
+      "producer/solver/projection algorithm identity",
+      "ridge mask and canonical mesh identities",
+      "categorical support rule"
+    ]
+  },
+  "schema": "arcana_worldsim.r6.pre_orbdata.implementation_report.v1",
+  "successor_shellset_patch": {
+    "historical_patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
+    "historical_patch_unchanged": true,
+    "parent_commit_in_local_git_object_database": false,
+    "provenance_contract": "R6_PRE_ORBDATA_SHELLSET_SUCCESSOR_PATCH_PROVENANCE.json",
+    "required_parent_commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+    "status": "NOT_MATERIALIZED__QUALIFIED_SOURCE_UNAVAILABLE"
+  },
+  "tests": {
+    "added": "tests/test_r6_pre_orbdata_implementation.py",
+    "broader_regression": "NOT_RUN: pytest unavailable.",
+    "deterministic_replay": "PASS for synthetic projection fixture and materialized cell-state artifact; authoritative node replay awaits the missing pinned FEG partition payload.",
+    "git_diff_check": "PASS for tracked diff; separate whitespace scan PASS for all new untracked files.",
+    "py_compile": "PASS for new producer, solver, projection, materializer, and test modules.",
+    "pytest": "NOT_RUN: pytest is not installed in the available Python runtime (No module named pytest).",
+    "static_numerical_checks": "PASS: governed HWR q at youngest/70/oldest ages; full 64-endpoint HWR parameter sensitivity sweep at both age extrema reproduces 0.0322190598\u20130.5815390971 W m-2; ridge inverse/profile; three nominal ocean and three nominal continental columns; Moho interface coefficient checks; full 64,800-cell branch counts and bounds; governed invalid material corner rejection; mixed-domain UNKNOWN and deterministic 64,442-node synthetic numerical projection fixture. Synthetic fixture is not the unavailable canonical mesh."
+  },
+  "transient_solver_implementation": {
+    "behaviors": [
+      "HWR-2 positive-age Fourier profile",
+      "derived positive ridge thermal index without changing authored age",
+      "conservative crust/mantle Hermite endpoints",
+      "Moho T/flux continuity",
+      "LAB adiabat intersection",
+      "analytic continental effective transient rate",
+      "fail-closed invalid geometry/profile"
+    ],
+    "path": "src/arcana_worldsim/r6/pre_orbdata_thermal_column.py",
+    "status": "IMPLEMENTED_NOMINAL_REFERENCE_CASES_PASS_STATIC_CHECKS"
+  },
+  "ubuntu_fair_actions_required": [
+    "obtain pinned source and parent FEG payload",
+    "generate and apply the successor patch against the exact qualified source",
+    "run full pytest/static/config/replay and sensitivity validation",
+    "run Ubuntu FAIR qualification and stock-path regression",
+    "review and authorize runtime readiness separately"
+  ]
+}
