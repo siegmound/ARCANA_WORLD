@@ -2,14 +2,14 @@
   "config_v1_identity": {
     "heat_flow": {
       "path": "R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
-      "sha256": "5bf6de1d540837a8050f50d337dc4d955c970377e07eaca2e3b4cf28c7b77b16"
+      "sha256": "deace3e8221050baf2d07f82bc50976861d4beaf9a4e23229dc883d0d1810203"
     },
     "material_reference_column": {
       "path": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1.json",
-      "sha256": "31a4c2fca0a5405911c8ac3fa77415cf33f6c2f5657780608c04e4cdaf64577c"
+      "sha256": "5bca81121e296c38e1f7dab9957df7107bac8a91456c53bcc6a99409cb302aa3"
     }
   },
-  "decision": "R6_PRE_ORBDATA_IMPLEMENTATION_PARTIAL__UBUNTU_FAIR_QUALIFICATION_AND_PINNED_ARTIFACTS_REQUIRED",
+  "decision": "R6_PRE_ORBDATA_IMPLEMENTATION_PARTIAL__SHELLSET_SUCCESSOR_PATCH_AND_FAIR_QUALIFICATION_REQUIRED",
   "preserved_gates": {
     "OrbData_authorized": false,
     "OrbData_executed": false,
@@ -41,26 +41,41 @@
     "status": "IMPLEMENTED_STATIC_NUMERICAL_CHECKS_PASS"
   },
   "projection_implementation": {
-    "artifact_sha256": "1bec2c5f50de0ac04b0cb4b627c673769a5915c19cdd52ced2184826ba3c6831",
+    "artifact_sha256": "3658611891618eab5aea6b2f892adfeb8e04fa144f164348faf4b2c2ad4bcdad",
     "authority": "NUMERICAL_DERIVED_SUPPORT",
     "cell_state_path": "R6_PRE_ORBDATA_HEAT_FLOW_FEG_PROJECTION_V1.json",
-    "cell_state_sha256": "322145ac47ace79f2efe3b4c49b4fb869d74ab9d4dd06d2ac2805f6c7d3b1240",
-    "diagnostic": "The canonical vector partition payload R6_T0_VECTOR_PLATE_PARTITION.npz is absent at the configured external-source path D:/corsi/Arcana/_ARCANA_EXTERNAL_SOURCES/r6/tectonic_t0/; no substitute mesh was promoted.",
+    "cell_state_sha256": "1dd241e7f5242473e608aa3e1283e9eec885cd4c9e7bb6960961daa303ac7fd8",
+    "diagnostic": {
+      "averaging": "NONE",
+      "deterministic_numerical_owner_count": 64442,
+      "interpolation": "NONE",
+      "lineage_count": 64442,
+      "lineage_type": "PER_NODE_LIST",
+      "mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+      "mixed_physical_support_node_count": 2697,
+      "node_count": 64442,
+      "node_known_count": 64442,
+      "node_unknown_count": 0,
+      "physical_resolution_promotion": false,
+      "projection_rule": "LEXICOGRAPHIC_FIRST_INCIDENT_CELL",
+      "smoothing": "NONE",
+      "source_lineage_count": 13,
+      "source_lineage_type": "GLOBAL_PROVENANCE_DICTIONARY"
+    },
     "path": "src/arcana_worldsim/r6/pre_orbdata_projection.py",
+    "runtime_owner_contract_ready": true,
     "serialized_authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
-    "status": "CELL_STATE_MATERIALIZED__AUTHORITATIVE_FEG_PROJECTION_BLOCKED",
+    "status": "R6_PRE_ORBDATA_FEG_NUMERICAL_SUPPORT_COMPLETE",
     "target_nodes": 64442
   },
   "remaining_implementation_blockers": [
-    "Make the canonical 64,442-node FEG parent partition payload available and materialize/verify the complete categorical projection.",
-    "Make the exact qualified ShellSet source commit 62fd474f229b2676fd9d39c5def45137d22d2481 and source tree available; create/apply/check the successor patch without changing legacy semantics.",
-    "Run the added targeted pytest and broader regressions in an environment with pytest.",
-    "Complete Ubuntu FAIR qualification and stock regression for the successor patch."
+    "The pinned qualified ShellSet source tree is absent; the successor contract is ready but source patch construction/review still requires that exact tree.",
+    "Run Ubuntu FAIR qualification and stock regression for the successor patch before any runtime readiness decision."
   ],
   "remaining_scientific_blockers": [],
   "replay_identity": {
-    "derived_cell_state_sha256": "322145ac47ace79f2efe3b4c49b4fb869d74ab9d4dd06d2ac2805f6c7d3b1240",
-    "heat_flow_config_sha256": "5bf6de1d540837a8050f50d337dc4d955c970377e07eaca2e3b4cf28c7b77b16",
+    "derived_cell_state_sha256": "1dd241e7f5242473e608aa3e1283e9eec885cd4c9e7bb6960961daa303ac7fd8",
+    "heat_flow_config_sha256": "deace3e8221050baf2d07f82bc50976861d4beaf9a4e23229dc883d0d1810203",
     "inputs": [
       "governed parent field identities/hashes",
       "material and heat-flow config hashes",
@@ -68,7 +83,8 @@
       "producer/solver/projection algorithm identity",
       "ridge mask and canonical mesh identities",
       "categorical support rule"
-    ]
+    ],
+    "projection_artifact_sha256": "3658611891618eab5aea6b2f892adfeb8e04fa144f164348faf4b2c2ad4bcdad"
   },
   "schema": "arcana_worldsim.r6.pre_orbdata.implementation_report.v1",
   "successor_shellset_patch": {
@@ -77,16 +93,21 @@
     "parent_commit_in_local_git_object_database": false,
     "provenance_contract": "R6_PRE_ORBDATA_SHELLSET_SUCCESSOR_PATCH_PROVENANCE.json",
     "required_parent_commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
-    "status": "NOT_MATERIALIZED__QUALIFIED_SOURCE_UNAVAILABLE"
+    "runtime_node_ownership_contract_ready": true,
+    "status": "CONTRACT_READY__SOURCE_PATCH_PENDING_PINNED_TREE_AND_FAIR_QUALIFICATION"
   },
   "tests": {
     "added": "tests/test_r6_pre_orbdata_implementation.py",
-    "broader_regression": "NOT_RUN: pytest unavailable.",
-    "deterministic_replay": "PASS for synthetic projection fixture and materialized cell-state artifact; authoritative node replay awaits the missing pinned FEG partition payload.",
-    "git_diff_check": "PASS for tracked diff; separate whitespace scan PASS for all new untracked files.",
-    "py_compile": "PASS for new producer, solver, projection, materializer, and test modules.",
+    "authoritative_feg_projection": "PASS: 64,442 known; 0 unknown; 2,697 mixed-support nodes; 64,442 deterministic owners.",
+    "broader_regression": "NOT_RUN; the explicitly requested focused suite is the release gate for this repair.",
+    "deterministic_artifact_bytes": "PASS: two consecutive canonical materializations produced byte-for-byte identical artifacts; SHA256 3658611891618eab5aea6b2f892adfeb8e04fa144f164348faf4b2c2ad4bcdad",
+    "deterministic_replay": "PASS on authoritative FEG mesh and pinned partition payload; replay SHA 1dd241e7f5242473e608aa3e1283e9eec885cd4c9e7bb6960961daa303ac7fd8",
+    "git_diff_check": "PASS: git diff --check; canonical source-hash and node/lineage consistency checks PASS.",
+    "lineage_regression": "PASS: lineage is a 64,442-entry per-node list; source_lineage remains a separate global dictionary.",
+    "py_compile": "PASS for projection module, materializer script, and focused tests.",
     "pytest": "NOT_RUN: pytest is not installed in the available Python runtime (No module named pytest).",
-    "static_numerical_checks": "PASS: governed HWR q at youngest/70/oldest ages; full 64-endpoint HWR parameter sensitivity sweep at both age extrema reproduces 0.0322190598\u20130.5815390971 W m-2; ridge inverse/profile; three nominal ocean and three nominal continental columns; Moho interface coefficient checks; full 64,800-cell branch counts and bounds; governed invalid material corner rejection; mixed-domain UNKNOWN and deterministic 64,442-node synthetic numerical projection fixture. Synthetic fixture is not the unavailable canonical mesh."
+    "static_numerical_checks": "PASS for previous HWR/thermal-column static checks; canonical FEG owner replay is separately verified above.",
+    "targeted_pytest": "PASS: python -m pytest -q tests/test_r6_pre_orbdata_implementation.py; 18 passed."
   },
   "transient_solver_implementation": {
     "behaviors": [

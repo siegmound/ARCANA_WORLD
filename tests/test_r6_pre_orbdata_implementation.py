@@ -15,6 +15,8 @@ from arcana_worldsim.r6.pre_orbdata_thermal_column import (
     LayerMaterial, continental_column, ocean_column,
 )
 from arcana_worldsim.r6.pre_orbdata_projection import project_heat_flow_to_feg
+from arcana_worldsim.r6.pre_orbdata_projection import merge_projection_with_cell_state
+from arcana_worldsim.r6.repository_context import canonical_text_sha256
 
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE=ROOT/'R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz'
@@ -40,8 +42,9 @@ def test_config_values_are_hash_bound_and_gates_stay_closed():
     material=json.loads((ROOT/'R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1.json').read_text())
     config=json.loads((ROOT/'R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json').read_text())
     assert material['identity']=='R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1'
+    assert config['source_authority_hash_policy']=='CANONICAL_UTF8_TEXT_LF_SHA256'
     for name,identity in config['source_authorities'].items():
-        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==identity['sha256']
+        assert canonical_text_sha256(ROOT/name)==identity['sha256']
     assert config['architecture_identity']=='HYBRID_DOMAIN_AWARE_HEAT_FLOW'
     assert config['global_heat_flow_envelope_w_m2']=={'nominal':[.045,.47415],'sensitivity':[.03222,.58154],'authority':'R6_PRE_ORBDATA_HEAT_FLOW_MISSING_AUTHORITY_CLOSURE.json'}
     assert config['hwr2']['series_N']==256 and config['hwr2']['relative_tolerance']==1e-12
@@ -54,7 +57,7 @@ def test_hwr2_reference_points_and_invalid_age():
     assert h.flux(1.1491667412337465)==pytest.approx(.4741482528,abs=1e-9)
     assert h.flux(70)==pytest.approx(.0612828,abs=1e-7)
     assert h.flux(160)==pytest.approx(.047652545,abs=1e-9)
-    with pytest.raises(ValueError,match='STRICTLY_POSITIVE'):
+    with pytest.raises(ValueError,match='HWR2_AGE_OUTSIDE_GOVERNED_DOMAIN'):
         h.flux(0)
 
 
@@ -167,7 +170,7 @@ def test_continental_sensitivity_case_with_nonpositive_moho_flux_fails_closed():
                           crust=crust,mantle=mantle)
 
 
-def test_projection_preserves_unknown_mixed_support_and_parent_lineage():
+def test_projection_uses_lexicographic_numerical_owner_for_mixed_support():
     mesh=SimpleNamespace(vertices_lat_lon=np.zeros((4,2)),
         triangles=np.asarray(((1,2,3),(2,3,4))),
         triangle_parent_face=np.asarray((0,1)))
@@ -175,10 +178,14 @@ def test_projection_preserves_unknown_mixed_support_and_parent_lineage():
         np.asarray(((.06,.3),)),np.asarray(((4,1),)),
         source_lineage={'age':'age-sha','domain':'domain-sha'},expected_nodes=4)
     assert p.node_heat_flow_w_m2[0]==.06
-    assert p.node_heat_flow_w_m2[1] is None and p.node_heat_flow_w_m2[2] is None
-    assert p.node_domain_id[1] is None
-    assert p.lineage[1]['incident_domain_ids']==[1,4]
-    assert p.lineage[0]['parent_lineage']=={'age':'age-sha','domain':'domain-sha'}
+    assert p.node_heat_flow_w_m2[1]==.06 and p.node_heat_flow_w_m2[2]==.06
+    assert p.numerical_owner_domain_id[1]==4
+    assert p.lineage[1]['incident_physical_domain_ids']==[1,4]
+    assert p.lineage[1]['mixed_physical_support'] is True
+    assert p.lineage[1]['numerical_owner_cell_row_col']==[0,0]
+    assert p.lineage[1]['numerical_owner_domain_id']==4
+    assert p.lineage[1]['rule']=='LEXICOGRAPHIC_FIRST_INCIDENT_CELL'
+    assert p.source_lineage=={'age':'age-sha','domain':'domain-sha'}
     assert p.source_classification=='NUMERICAL_DERIVED_SUPPORT'
     assert p.serialized_authority=='NUMERICAL_RUNTIME_INPUT_ONLY'
 
@@ -200,6 +207,13 @@ def test_numerical_fixture_projection_accepts_64442_nodes_and_replays_determinis
     assert first.replay_sha256==second.replay_sha256
     assert first.serialized_payload()['physical_resolution_promotion'] is False
     assert all(v==.06 for v in first.node_heat_flow_w_m2)
+    payload=merge_projection_with_cell_state(first,{
+        'cell_heat_flow_sha256':'cell-sha','decision':'FIXTURE'})
+    assert isinstance(payload['lineage'],list) and len(payload['lineage'])==64442
+    assert payload['lineage'][0]['node_id']==1
+    assert payload['source_lineage']=={'parent':'sha'}
+    with pytest.raises(ValueError,match='FEG_PROJECTION_METADATA_COLLISION'):
+        merge_projection_with_cell_state(first,{'lineage':{'overwritten':True}})
 
 
 def test_shellset_successor_contract_does_not_claim_historical_fair_for_successor():
@@ -208,8 +222,64 @@ def test_shellset_successor_contract_does_not_claim_historical_fair_for_successo
     assert contract['successor_patch_identity'] is None
     assert contract['historical_patch']['role']=='HISTORICAL_BASELINE_AND_ORACLE_ONLY'
     assert contract['historical_patch']['successor_fair_qualification'] is False
-    semantics=' '.join(x['semantic_change'] for x in contract['required_successor_changes']).lower()
-    assert 'preserves governed heatfl' in semantics and 'gdh1 replacement' in semantics
-    assert 'qlim1 clipping are stock-only' in semantics
-    assert 'legacy' in semantics and 'fail closed' in semantics
+    sem=contract['semantic_before_after']
+    required={x['file']:x for x in contract['required_successor_changes']}
+    assert {'src/OrbData5.f90','src/MOD_Data.f90','src/MOD_ShellSet.f90','src/ShellSetMain.f90'} <= set(required)
+    assert sem['before'] and sem['required_after']
+    assert sem['required_after_contract']['explicit_arcana_heat_flow_preserved'] is True
+    assert sem['required_after_contract']['single_numerical_owner_for_all_runtime_quantities'] is True
+    assert sem['required_after_contract']['shellset_lat_lon_reclassification'] is False
+    assert required['src/OrbData5.f90']['required_behavior'] == [
+        'preserve explicit ARCANA heat flow','consume the shared numerical-owner runtime branch',
+        'do not perform independent latitude/longitude domain classification']
+    assert required['src/MOD_Data.f90']['required_behavior'] == [
+        'use owner-bound thermal profile, geometry, and material configuration together',
+        'keep legacy correction behavior stock-only']
+    assert contract['runtime_node_ownership']['same_numerical_owner_required_for']==[
+        'heat_flow','runtime_domain_and_branch','thermal_profile_state',
+        'lithosphere_geometry','material_configuration_binding']
+    assert contract['runtime_node_ownership']['latitude_longitude_reclassification_in_shellset'] is False
+    assert contract['runtime_node_ownership']['successor_must_consume_owner_or_prove_identical'] is True
+    assert {'numerical_owner_cell_row_col','numerical_owner_runtime_branch',
+        'numerical_owner_material_configuration_binding','runtime_owner_contract',
+        'cell_owner_source_fields'} <= set(contract['runtime_node_ownership']['required_owner_sidecar_fields'])
     assert contract['ubuntu_fair_qualification_required'] is True
+
+
+def test_authoritative_feg_projection_has_complete_deterministic_numerical_ownership():
+    artifact=json.loads((ROOT/'R6_PRE_ORBDATA_HEAT_FLOW_FEG_PROJECTION_V1.json').read_text())
+    lineage=artifact['lineage']
+    assert artifact['decision']=='R6_PRE_ORBDATA_FEG_NUMERICAL_SUPPORT_COMPLETE__SHELLSET_SUCCESSOR_PATCH_READY'
+    assert artifact['node_count']==64442
+    assert artifact['node_known_count']==64442 and artifact['node_unknown_count']==0
+    assert artifact['mixed_physical_support_node_count']==2697
+    assert artifact['deterministic_numerical_owner_count']==64442
+    assert len(lineage)==64442
+    assert isinstance(lineage,list)
+    assert isinstance(artifact['source_lineage'],dict)
+    mixed=[row for row in lineage if row['mixed_physical_support']]
+    assert len(mixed)==2697
+    for row in lineage:
+        assert row['numerical_owner_cell_row_col']==list(sorted(
+            map(tuple,row['incident_parent_cells_row_col']))[0])
+        assert row['rule']=='LEXICOGRAPHIC_FIRST_INCIDENT_CELL'
+        assert row['physical_resolution_promotion'] is False
+        assert row['smoothing']=='NONE' and row['averaging']=='NONE' and row['interpolation']=='NONE'
+        r,c=row['numerical_owner_cell_row_col']
+        assert artifact['heat_flow_w_m2'][row['node_id']-1]==artifact['cell_heat_flow_w_m2'][r][c]
+    assert all(row['numerical_owner_domain_id'] in row['incident_physical_domain_ids'] for row in mixed)
+    assert artifact['runtime_owner_contract']['shellset_must_consume_owner_or_prove_identical_ownership'] is True
+    for row in mixed:
+        owner=row['numerical_owner_cell_row_col']
+        assert row['numerical_owner_runtime_branch'] is not None
+        assert row['numerical_owner_material_configuration_binding'] is not None
+        r,c=owner
+        assert row['numerical_owner_domain_id']==artifact['cell_owner_source_fields']['physical_crust_domain_id'][r][c]
+        assert row['numerical_owner_thermal_class_id']==artifact['cell_owner_source_fields']['continental_thermal_domain_id'][r][c]
+        assert artifact['heat_flow_w_m2'][row['node_id']-1]==artifact['cell_heat_flow_w_m2'][r][c]
+        assert row['numerical_owner_runtime_branch']==artifact['cell_branch_metadata'][str(artifact['cell_source_branch_code'][r][c])]['branch']
+    assert artifact['runtime_owner_contract']['same_owner_required_for']==[
+        'heat_flow','runtime_domain_and_branch','thermal_profile_state',
+        'lithosphere_geometry','material_configuration_binding']
+    assert artifact['runtime_owner_contract']['owner_key']=='lineage[].numerical_owner_cell_row_col'
+    assert artifact['runtime_owner_contract']['thermal_profile_state_binding'].startswith('derive from owner cell')

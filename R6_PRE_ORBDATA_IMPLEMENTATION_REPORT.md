@@ -1,13 +1,15 @@
 # R6 PRE_ORBDATA A0.7 implementation report
 
-**Decision:** `R6_PRE_ORBDATA_IMPLEMENTATION_PARTIAL__UBUNTU_FAIR_QUALIFICATION_AND_PINNED_ARTIFACTS_REQUIRED`
+**FEG numerical-support decision:** `R6_PRE_ORBDATA_FEG_NUMERICAL_SUPPORT_COMPLETE__SHELLSET_SUCCESSOR_PATCH_READY`
 
-The two machine-readable V1 configurations bind to the adjudicated A0.6 authority reports and the T0 field package. The deterministic producer now yields 14,258 continental references, 108 governed ridge values, and 50,434 positive-age HWR-2 values. Static checks reproduce the published nominal HWR fluxes, ridge effective thermal index, ocean columns, and continental columns. The 1,072 previously disputed cells use the authorized positive-age HWR-2 branch.
+The canonical mesh materialization now covers all **64,442** nodes. All **64,442** have valid nonzero heat-flow support; **0** are UNKNOWN. Exactly **2,697** nodes have mixed incident physical-domain support. Each uses the lexicographically first incident canonical cell, sorted by `(row, column)`, as a `NUMERICAL_DERIVED_SUPPORT` owner. Its heat-flow value is copied exactly. No averaging, interpolation, or smoothing occurs, and the selected owner is not a canonical physical node domain.
 
-The transient solver and categorical projection logic are implemented. The full 64,800-cell derived heat-flow product was materialized with separate branch and applicability arrays. The required 64,442-node projection could not be materialized because the canonical parent partition NPZ is absent from the configured external-source path. The implementation did not invent a replacement mesh.
+Each mixed-node lineage record preserves all incident physical domain IDs, its mixed-support flag, owner cell/domain, and owner-bound runtime fields. The same owner cell is explicitly bound for heat flow, runtime branch/domain, derived thermal profile, lithosphere geometry, and material configuration. `lineage` is the per-node list; `source_lineage` is the separate global provenance dictionary. ShellSet must consume that owner sidecar or prove identical ownership and must not reclassify nodes from latitude/longitude.
 
-The successor ShellSet patch was not fabricated. The required parent commit `62fd474f229b2676fd9d39c5def45137d22d2481` is absent from the local Git object database, and the pinned Fortran source tree is not in this workspace. The historical patch remains unchanged and is baseline evidence only.
+The materializer and replay identity use `CANONICAL_UTF8_TEXT_LF_SHA256` for text inputs. Config V1 records this hash policy and contains canonical hashes for its textual source authorities. The downstream replay and implementation report identities have been regenerated. Two consecutive canonical materializations produced identical artifact bytes.
 
-New focused tests were added, but pytest could not run because pytest is not installed in the available Windows Python. `py_compile` and direct numerical checks passed. OrbData/SHELLS were not run. No scientific blockers remain; implementation blockers and Ubuntu FAIR actions are listed in the machine-readable report.
+The focused regression suite passed: **18 passed** with `python -m pytest -q tests/test_r6_pre_orbdata_implementation.py`. It covers the governed HWR error code, source-authority canonical hashes, mixed-node owner selection, lineage separation, owner-consistent runtime bindings, and authoritative projection counts.
 
-The gates remain closed: `PRE_ORBDATA_ready=false`, `OrbData_authorized=false`, no runtime execution or qualification, and no canonical T0 promotion. No commit, push, or staging change was made.
+The owner-aware ShellSet successor **contract** is ready. The exact qualified ShellSet source tree is absent from this checkout, so no source patch was constructed. Ubuntu FAIR qualification and stock regression remain mandatory. This does not set `PRE_ORBDATA_ready`, authorize OrbData/SHELLS, or promote canonical T0.
+
+No OrbData/SHELLS was run, no scientific architecture or values were changed, and no commit, push, or staging operation was performed.

@@ -1,37 +1,133 @@
 {
-  "schema": "arcana_worldsim.r6.pre_orbdata.shellset_successor_patch_provenance.v1",
-  "decision": "SUCCESSOR_PATCH_NOT_MATERIALIZED__PINNED_SOURCE_UNAVAILABLE",
-  "qualified_parent_shellset_commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
-  "parent_commit_available_in_current_git_object_database": false,
-  "source_tree_available_in_current_workspace": false,
+  "decision": "R6_PRE_ORBDATA_SHELLSET_SUCCESSOR_CONTRACT_READY__SOURCE_PATCH_PENDING_PINNED_TREE_AND_FAIR_QUALIFICATION",
   "historical_patch": {
     "path": "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch",
-    "sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
     "role": "HISTORICAL_BASELINE_AND_ORACLE_ONLY",
+    "sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2",
     "successor_fair_qualification": false
   },
-  "successor_patch_identity": null,
-  "successor_patch_path": null,
-  "source_absence_diagnostic": "The specified qualified commit is not present in the local Git object database, and the pinned ShellSet source tree (including OrbData5.f90, MOD_Data.f90, MOD_ShellSet.f90, and ShellSetMain.f90) is not present in the workspace. The retained historical patch and FAIR excerpts do not provide a complete exact source tree from which an applicable successor diff can be safely generated or checked.",
-  "required_successor_changes": [
-    {"file": "src/OrbData5.f90", "routines": ["Assign", "OrbData5"], "semantic_change": "Complete explicit ARCANA mode preserves governed heatFl; GDH1 replacement and qLim1 clipping are stock-only; conservative transient profile and Moho state consumed; invalid profile returns diagnostics without q/geometry mutation."},
-    {"file": "src/MOD_Data.f90", "routines": ["Assign"], "semantic_change": "Add complete ARCANA-only transient profile/material inputs and bypass legacy correction mutations only for ARCANA; preserve stock statements and behavior."},
-    {"file": "src/MOD_ShellSet.f90", "routines": ["InputSetup", "OpenInput", "CloseInput"], "semantic_change": "Carry complete governed ARCANA inputs and validity separately; incomplete pair fails closed."},
-    {"file": "src/ShellSetMain.f90", "routines": ["OrbData call setup"], "semantic_change": "Retain fail-closed error propagation for complete ARCANA runtime inputs."}
-  ],
-  "semantic_before_after": {
-    "before": "Historical candidate patch admits ARCANA ocean nodes to the age branch, overwrites heatFl using GDH1/qLim1, uses an independent GDH1/95-km geometry path, and clamps thickness; it does not implement the final transient thermal coupling.",
-    "required_after": "ARCANA explicit input branches preserve q and authored geometry, use the transient column/profile state, enforce Moho T/flux continuity and bounded LAB conditions, and fail closed on violations. Legacy/non-ARCANA behavior remains unchanged.",
-    "reason": "Implement the closed A0.6 transient thermal contract and avoid silent mutation of governed parent state."
-  },
-  "qualification_statement": "The previous FAIR qualification is baseline only and does not qualify a successor patch.",
-  "ubuntu_fair_qualification_required": true,
+  "parent_commit_available_in_current_git_object_database": false,
   "preserved_gates": {
-    "ShellSet_modified": false,
-    "runtime_qualification": false,
-    "PRE_ORBDATA_ready": false,
     "OrbData_authorized": false,
     "OrbData_executed": false,
-    "SHELLS_executed": false
-  }
+    "PRE_ORBDATA_ready": false,
+    "SHELLS_executed": false,
+    "ShellSet_modified": false,
+    "runtime_qualification": false
+  },
+  "qualification_statement": "The previous FAIR qualification is baseline only and does not qualify a successor patch.",
+  "qualified_parent_shellset_commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+  "required_successor_changes": [
+    {
+      "file": "src/OrbData5.f90",
+      "required_behavior": [
+        "preserve explicit ARCANA heat flow",
+        "consume the shared numerical-owner runtime branch",
+        "do not perform independent latitude/longitude domain classification"
+      ],
+      "routines": [
+        "Assign",
+        "OrbData5"
+      ],
+      "semantic_change": "Complete explicit ARCANA mode preserves governed heatFl; GDH1 replacement and qLim1 clipping are stock-only; conservative transient profile and Moho state consumed; invalid profile returns diagnostics without q/geometry mutation."
+    },
+    {
+      "file": "src/MOD_Data.f90",
+      "required_behavior": [
+        "use owner-bound thermal profile, geometry, and material configuration together",
+        "keep legacy correction behavior stock-only"
+      ],
+      "routines": [
+        "Assign"
+      ],
+      "semantic_change": "Add complete ARCANA-only transient profile/material inputs and bypass legacy correction mutations only for ARCANA; preserve stock statements and behavior."
+    },
+    {
+      "file": "src/MOD_ShellSet.f90",
+      "required_behavior": [
+        "carry per-node numerical-owner sidecar and runtime branch",
+        "reject missing or conflicting owner bindings"
+      ],
+      "routines": [
+        "InputSetup",
+        "OpenInput",
+        "CloseInput"
+      ],
+      "semantic_change": "Carry complete governed ARCANA inputs and validity separately; incomplete pair fails closed."
+    },
+    {
+      "file": "src/ShellSetMain.f90",
+      "required_behavior": [
+        "pass the same owner identity to every PRE_ORBDATA input consumer",
+        "fail closed if ownership is absent or differs"
+      ],
+      "routines": [
+        "OrbData call setup"
+      ],
+      "semantic_change": "Retain fail-closed error propagation for complete ARCANA runtime inputs."
+    },
+    {
+      "file": "PRE_ORBDATA FEG owner sidecar interface",
+      "required_behavior": [
+        "same owner for heat flow, runtime branch, thermal profile, lithosphere geometry, and material binding",
+        "preserve every incident physical domain ID",
+        "no independent ShellSet coordinate reclassification"
+      ],
+      "routines": [
+        "FEG node input binding",
+        "OrbData call setup"
+      ],
+      "semantic_change": "All mixed-support runtime values use the lexicographic numerical-owner source cell; owner domain is numerical support metadata and is not canonical node-domain state."
+    }
+  ],
+  "runtime_node_ownership": {
+    "authority": "NUMERICAL_DERIVED_SUPPORT; NOT_CANONICAL_PHYSICAL_NODE_DOMAIN",
+    "independent_field_projection_owners_allowed": false,
+    "latitude_longitude_reclassification_in_shellset": false,
+    "mixed_support_semantics": "Preserve all incident physical domains; the selected numerical owner supplies runtime binding only and does not create canonical node-domain authority.",
+    "owner_field": "numerical_owner_cell_row_col from the per-node lineage sidecar",
+    "required_owner_sidecar_fields": [
+      "numerical_owner_cell_row_col",
+      "numerical_owner_domain_id",
+      "incident_physical_domain_ids",
+      "mixed_physical_support",
+      "numerical_owner_runtime_branch",
+      "numerical_owner_thermal_class_id",
+      "numerical_owner_material_configuration_binding",
+      "runtime_owner_contract",
+      "cell_owner_source_fields"
+    ],
+    "same_numerical_owner_required_for": [
+      "heat_flow",
+      "runtime_domain_and_branch",
+      "thermal_profile_state",
+      "lithosphere_geometry",
+      "material_configuration_binding"
+    ],
+    "same_owner_evidence": "Every quantity is sourced by indexing the cell owner source fields at the one per-node numerical_owner_cell_row_col; thermal profiles derive from that owner with the versioned material configuration.",
+    "successor_must_consume_owner_or_prove_identical": true
+  },
+  "schema": "arcana_worldsim.r6.pre_orbdata.shellset_successor_patch_provenance.v1",
+  "semantic_before_after": {
+    "before": "Historical candidate patch admits ARCANA ocean nodes to the age branch, overwrites heatFl using GDH1/qLim1, uses an independent GDH1/95-km geometry path, and clamps thickness; it does not implement the final transient thermal coupling.",
+    "reason": "Implement the closed A0.6 transient thermal contract and avoid silent mutation of governed parent state.",
+    "required_after": "ARCANA explicit input branches preserve q and authored geometry, use the transient column/profile state, enforce Moho T/flux continuity and bounded LAB conditions, and fail closed on violations. Legacy/non-ARCANA behavior remains unchanged.",
+    "required_after_contract": {
+      "explicit_arcana_heat_flow_preserved": true,
+      "gdh1_replacement_arcana_only": true,
+      "invalid_or_missing_runtime_support_fails_closed": true,
+      "legacy_non_arcana_behavior_unchanged": true,
+      "owner_is_not_canonical_node_domain": true,
+      "qlim1_clipping_stock_only": true,
+      "shellset_lat_lon_reclassification": false,
+      "single_numerical_owner_for_all_runtime_quantities": true,
+      "transient_profile_and_moho_state_consumed": true
+    }
+  },
+  "source_absence_diagnostic": "The specified qualified commit is not present in the local Git object database, and the pinned ShellSet source tree (including OrbData5.f90, MOD_Data.f90, MOD_ShellSet.f90, and ShellSetMain.f90) is not present in the workspace. The retained historical patch and FAIR excerpts do not provide a complete exact source tree from which an applicable successor diff can be safely generated or checked.",
+  "source_tree_available_in_current_workspace": false,
+  "successor_patch_identity": null,
+  "successor_patch_path": null,
+  "successor_patch_status": "NOT_MATERIALIZED; the owner-aware successor contract is ready, but the pinned ShellSet source tree is unavailable for patch construction and review.",
+  "ubuntu_fair_qualification_required": true
 }
