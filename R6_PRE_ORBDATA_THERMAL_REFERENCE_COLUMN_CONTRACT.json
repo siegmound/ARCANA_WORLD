@@ -1,0 +1,125 @@
+{
+  "schema": "R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_CONTRACT_V1",
+  "decision": "R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_BLOCKED__ARCANA_MATERIAL_REFERENCE_COLUMN_AUTHORITY",
+  "scope": {"static_analytical_only": true, "OrbData_or_SHELLS_executed": false, "ShellSet_modified": false, "staging_altered": false, "commit_or_push": false, "previous_decisions_reopened": false},
+  "physical_column_model": {
+    "coordinate": "z positive downward from local surface; q positive as downward temperature gradient/upward conductive surface flux in OrbData convention.",
+    "layers": ["SURFACE", "CRUST", "MOHO", "MANTLE_LITHOSPHERE", "LAB", "ASTHENOSPHERIC_REFERENCE"],
+    "steady_layer_equation": "d/dz(k dT/dz)+A=0; for constant k,A: T(z)=T_top+q_top*z/k-A*z^2/(2k), and q(z)=k*dT/dz=q_top-A*z.",
+    "density_equation": "rho(T)=rho_ref*(1-alpha*(T-T_ref))+delta_rho_chemical; keep thermal and chemical terms separate.",
+    "geometry_policy": "Crust thickness comes from authored physical crust field/domain. Continental total lithosphere reference thickness is authored by thermal domain. Ocean HWR equilibrium plate thickness is not automatically ShellSet mechanical lithosphere thickness. Ridge uses a separate finite boundary rule.",
+    "authority_classes": {"GLOBAL_PLANET_PARAMETER": ["g=9.82 m s-2"], "MATERIAL_OR_DOMAIN_PARAMETER": ["crust k,rho,alpha,heat production,solidus; mantle production/solidus; asthenosphere reference density/profile"], "AUTHORED_T0_FIELD": ["continental q and reference thickness; physical crust thickness/domain; ocean age; selected ridge support"], "DERIVED_STATE": ["positive-age HWR flux; kappa=k/(rho Cp); TADIAB/TAsthK after adiabat rule; joined heat-flow field"], "SPECIALIST_MODEL_CONFIGURATION": ["HWR solver controls; solidus/temLim; ocean thickness mapping; curvature and fail-closed policies"]}
+  },
+  "surface_boundary": {
+    "TSurf": {"value_K": 280, "sensitivity_K": [250,300], "authority": "A0.6D HWR-2; bind OrbData tSurf only for same reference surface"},
+    "governed_heat_flux": {"continent_W_m2": {"COLD_STABLE":0.045,"NORMAL":0.060,"HOT_EXTENDED":0.085}, "positive_age_ocean": "HWR-2 for t>0", "ridge_W_m2": 0.3, "rule": "Prescribed producer flux remains the surface boundary; solve inward and fail closed if infeasible; never invert profile to replace flux."},
+    "surface_energy_condition": "q_s=-k grad(T) dot n_out; positive q_s produces increasing T with depth."
+  },
+  "crust_contract": {
+    "geometry": "Authored cellwise physical crust thickness; normal ocean 6.5 km and continental domain 25-50 km. Do not infer composition from thermal class.",
+    "temperature_and_flux": "T_C(z)=TSurf+q_s*z/k_C-A_C*z^2/(2*k_C), q_C(z)=q_s-A_C*z, 0<=z<=h_C.",
+    "material": "k_C, rhoBar_C, alpha_C, A_C and crust reference temperature/solidus are unselected ARCANA material/domain parameters.",
+    "radiogenic_model": "Minimum PRE_ORBDATA structure is one uniform bulk-crust A_C per authorized crust material/domain (option A); no upper/lower layers or regional geochemistry are supported by current T0.",
+    "status": "INCOMPLETE_PENDING_MATERIAL_AUTHORITY"
+  },
+  "moho_contract": {
+    "temperature": "T_C(h_C)=T_M(0) exactly.",
+    "conductive_flux": "q_M(0)=q_C(h_C)=q_s-A_C*h_C absent explicit interface source/sink; none is authorized.",
+    "conductivity_transition": "k_C and k_M may differ; gradient changes as q/k, but flux remains continuous.",
+    "source_requirement": "Use one Moho temperature to seed both layers. In the audited curvature convention the crust-side correction uses k_C; legacy multiplication by k_M creates a flux jump when k differs."
+  },
+  "mantle_lithosphere_contract": {
+    "geometry": "Ocean HWR zp=100 km (80-140) is total thermal plate depth only under its HWR meaning; mantle thickness is zp-h_C only if its basal boundary is explicitly adopted as OrbData LAB. Continental total thickness is authored 200/135/80 km; mantle residual is total minus actual cell crust thickness and must be positive.",
+    "shared_material_values": {"k_M_W_mK":{"value":3.3,"sensitivity":[3.0,4.1]},"rho_M_kg_m3":{"value":3300,"sensitivity":[3200,3400]},"alpha_M_K-1":{"value":3.0e-5,"sensitivity":[2.5e-5,3.5e-5]},"source":"A0.6D; bind same effective mantle authority to HWR and OrbData mantle consumer."},
+    "heat_production": "A_M is unselected; zero is not an implicit default. T_M(x)=T_Moho+q_Moho*x/k_M-A_M*x^2/(2*k_M), absent separately authorized curvature.",
+    "basal_reference": "HWR Tb=1680 K (1523-1737) and zp do not alone define OrbData potential-temperature intercept or mechanical mantle thickness.",
+    "status": "MATERIAL_AND_THICKNESS_SEMANTICS_NOT_CLOSED"
+  },
+  "lab_asthenosphere_contract": {
+    "definition": "LAB is mantle-lithosphere base where geotherm joins governed asthenosphere adiabat; it is not ZBASTH or HWR zp by implication.",
+    "criterion": "No ARCANA solidus, rheological, or supplied LAB-temperature criterion selected.",
+    "adiabat": "dT_ad/dz=alpha*g*T/Cp; at A0.6D point values and g=9.82, local slope is about 0.412 K/km. This derived slope is not an authorized TADIAB intercept or constant-gradient convention.",
+    "TAsthK": "Audited source sets TAsthK=TADIAB+GRADIE*100000 m. Bind only after TADIAB, reference depth and GRADIE convention are co-governed and match modeled LAB temperature.",
+    "temLim": "Squeez density-integration cap, not a selected material solidus; it does not directly cap emitted profile.",
+    "ZBASTH": "Separate mantle structure/mechanical depth; source Earth example is not ARCANA authority.",
+    "status": "INCOMPLETE_PENDING_MATERIAL_AND_INTERFACE_AUTHORITY"
+  },
+  "ocean_column_contract": {
+    "positive_age_flux": "For t>0: H(t)=k(Tb-T0)/zp*[1+2 sum exp(-kappa*i^2*pi^2*t/zp^2)], kappa=k/(rho_M*Cp). Use A0.6D parameters and authorized age support.",
+    "HWR_plate_meaning": "Depth of HWR finite-plate basal isothermal boundary from its surface; thermal model thickness, not intrinsically mechanical or mantle-only thickness.",
+    "mapping": "Conditional only: if basal boundary is authorized as OrbData LAB, h_total=zp and h_M=zp-h_C. Not currently ratified.",
+    "nonphysical_result": "If zp<=h_C or h_M<=0, reject column; never clamp or silently change q/zp.",
+    "ridge": "Use q=0.3 W m-2 and authored zero-age state; never evaluate HWR at t=0. Ridge thickness/basal mapping unresolved.",
+    "flux_envelopes_W_m2": {"nominal":[0.0476525,0.4741483],"parameter_sensitivity":[0.0322191,0.5815391],"age_Ma":[1.1491667,160.0]}
+  },
+  "continental_column_contract": {
+    "surface_authority": "Retain authored T0 q; do not derive replacement flux.",
+    "classes": [{"class":"COLD_STABLE","q_W_m2":0.045,"total_thickness_m":200000},{"class":"NORMAL","q_W_m2":0.060,"total_thickness_m":135000},{"class":"HOT_EXTENDED","q_W_m2":0.085,"total_thickness_m":80000}],
+    "crust": "Use actual authored cellwise physical thickness; candidate mantle residual=H_total-h_C and must be positive.",
+    "existence": "A finite piecewise solution exists algebraically for finite q,A and positive k; physical admissibility and LAB matching cannot be determined without material and basal authority.",
+    "replacement_flux": false
+  },
+  "ridge_column_contract": {"support":"Selected 108 age-zero cells only; other divergent candidates remain non-ridge/unknown.","boundary_q_W_m2":0.3,"age_zero_policy":"Never evaluate HWR at t=0.","column":"Use authored crust; require positive mantle residual and LAB match. No ridge-specific basal/thickness rule is selected.","status":"FLUX_CLOSED_THERMAL_COLUMN_OPEN"},
+  "radiogenic_heat_contract": {
+    "choice":"One uniform bulk-crust production value per authorized material/domain is the minimum model structure. No regional geochemical resolution exists; A_C remains unselected.",
+    "mantle":"A_M independently governed; zero must be explicit, not default.",
+    "literature":"Sammon et al. 2022 (10.1029/2022JB024041) infer deep continental composition/production from Earth geochemical/geophysical inputs and calculate Moho flux by subtracting integrated production from surface flux. Supports balance equation, not transfer of Earth's crust inventory to ARCANA.",
+    "uncertainty":"No ARCANA numeric interval authored. Do not fabricate one; sensitivity must sweep future authorized bounds.",
+    "balance":"q_Moho=q_s-A_C*h_C; q_LAB=q_Moho-A_M*h_M absent transients."
+  },
+  "curvature_correction_contract": {
+    "decision":"B_REFORMULATE_FOR_MOHO_FLUX_CONTINUITY",
+    "rule":"No Moho source/sink is authorized; require temperature and conductive flux continuity.",
+    "source_behavior":"For audited cooling_curvature=c, corrected q_Moho=q_s-A_C*h_C-c*h_C*k_C; legacy expression uses k_M and is inconsistent for k_C!=k_M. Seed mantle from exact crust Moho temperature.",
+    "transient":"Solve curvature jointly with basal/LAB and both layer balances. If unavailable, set curvature zero for reference solution and fail closed if adiabat join fails.",
+    "implementation_performed":false
+  },
+  "isostatic_density_contract": {
+    "rhoBar_C":"Unselected; same authority as crust material.","rhoBar_M_kg_m3":{"value":3300,"sensitivity":[3200,3400]},"rhoAst":"Unselected independent reference-column density/profile; do not copy rhoBar_M by default.","rhoH2O_kg_m3":{"value":1000,"sensitivity":[990,1030]},
+    "thermal_effect":"rho_thermal=rho_ref*[1-alpha*(T-T_ref)] after rho, alpha and T_ref are authorized.",
+    "chemical_anomaly":"Keep delta_rho separate; do not infer chemistry from isostatic stress to hide thermal mismatch.",
+    "delta_rho_limit":"Source +/-100 kg m-3 is unqualified numerical guard, not ARCANA authority. No silent clipping; require authored chemical bounds and fail closed."
+  },
+  "parameter_authority_table": [
+    {"parameter":"rhoBar_C","value_or_range":"UNSELECTED","units":"kg m-3","meaning":"reference crust density","source":"No ARCANA material selection","authority_class":"MATERIAL_OR_DOMAIN_PARAMETER","uncertainty":"unspecified","sensitivity":"required","binding":"OrbData rhoBar_C"},
+    {"parameter":"rhoBar_M","value_or_range":"3300; 3200-3400","units":"kg m-3","meaning":"effective mantle reference density","source":"A0.6D","authority_class":"SHARED_MATERIAL_REFERENCE","uncertainty":"selected interval","sensitivity":"include","binding":"HWR rho_m and OrbData rhoBar_M"},
+    {"parameter":"rhoAst","value_or_range":"UNSELECTED","units":"kg m-3 or profile","meaning":"asthenosphere reference density","source":"No ARCANA authority","authority_class":"MATERIAL_OR_DOMAIN_PARAMETER","uncertainty":"unspecified","sensitivity":"required","binding":"OrbData rhoAst"},
+    {"parameter":"rhoH2O","value_or_range":"1000; 990-1030","units":"kg m-3","meaning":"water reference density","source":"A0.6D","authority_class":"SHARED_REFERENCE","uncertainty":"selected interval","sensitivity":"include for ocean","binding":"OrbData rhoH2O"},
+    {"parameter":"alphaT_C","value_or_range":"UNSELECTED","units":"K-1","meaning":"crust expansivity","source":"No crust material","authority_class":"MATERIAL_OR_DOMAIN_PARAMETER","uncertainty":"unspecified","sensitivity":"required","binding":"OrbData alphaT_C"},
+    {"parameter":"alphaT_M","value_or_range":"3.0e-5; 2.5e-5-3.5e-5","units":"K-1","meaning":"mantle expansivity","source":"A0.6D","authority_class":"SHARED_MATERIAL_REFERENCE","uncertainty":"selected interval","sensitivity":"include","binding":"HWR alpha and OrbData alphaT_M"},
+    {"parameter":"conduc_C","value_or_range":"UNSELECTED","units":"W m-1 K-1","meaning":"crust conductivity","source":"No ARCANA crust authority","authority_class":"MATERIAL_OR_DOMAIN_PARAMETER","uncertainty":"unspecified","sensitivity":"required","binding":"OrbData conduc_C"},
+    {"parameter":"conduc_M","value_or_range":"3.3; 3.0-4.1","units":"W m-1 K-1","meaning":"effective mantle conductivity","source":"A0.6D","authority_class":"SHARED_MATERIAL_REFERENCE","uncertainty":"selected interval","sensitivity":"include","binding":"HWR k and OrbData conduc_M"},
+    {"parameter":"radio_C/A_C","value_or_range":"UNSELECTED","units":"W m-3","meaning":"bulk crust heat production","source":"No ARCANA geochemical authority; Sammon informs form only","authority_class":"MATERIAL_OR_DOMAIN_PARAMETER","uncertainty":"no ARCANA bounds","sensitivity":"required","binding":"OrbData radio_C"},
+    {"parameter":"radio_M/A_M","value_or_range":"UNSELECTED (zero not implied)","units":"W m-3","meaning":"mantle heat production","source":"No ARCANA authority","authority_class":"MATERIAL_OR_DOMAIN_PARAMETER","uncertainty":"no bounds","sensitivity":"required","binding":"OrbData radio_M"},
+    {"parameter":"TSurf/tSurf","value_or_range":"280; 250-300","units":"K","meaning":"surface reference temperature","source":"A0.6D","authority_class":"GLOBAL_PLANET_PARAMETER or climate state","uncertainty":"selected interval","sensitivity":"include","binding":"HWR T0 and OrbData tSurf where same surface"},
+    {"parameter":"Tb / mantle reference","value_or_range":"1680; 1523-1737 at HWR basal boundary; TADIAB unselected","units":"K","meaning":"basal finite-plate temperature vs potential intercept","source":"A0.6D; adiabat mapping absent","authority_class":"SPECIALIST_MODEL_CONFIGURATION","uncertainty":"HWR interval only","sensitivity":"joint mapping with zp","binding":"HWR Tb; OrbData TADIAB unbound"},
+    {"parameter":"TAsthK","value_or_range":"TADIAB+GRADIE*100 km; unresolved","units":"K","meaning":"100-km adiabat reference","source":"Audited source equation","authority_class":"DERIVED_STATE","uncertainty":"unresolved","sensitivity":"required","binding":"OrbData derived target"},
+    {"parameter":"GRADIE","value_or_range":"local derived approx 0.412 K/km; source convention unbound","units":"K m-1","meaning":"adiabatic slope","source":"alpha*g*T/Cp relation; Phipps Morgan 2001","authority_class":"DERIVED_STATE / SPECIALIST binding","uncertainty":"varies with parameters/convention","sensitivity":"joint sweep","binding":"OrbData gradie"},
+    {"parameter":"zp","value_or_range":"100000; 80000-140000","units":"m","meaning":"HWR basal boundary depth","source":"A0.6D","authority_class":"SPECIALIST_MODEL_CONFIGURATION","uncertainty":"selected interval","sensitivity":"include","binding":"HWR; OrbData mapping unresolved"},
+    {"parameter":"continental total lithosphere","value_or_range":"200000/135000/80000 by class","units":"m","meaning":"authored total reference thickness","source":"B-v2 T0 ratification","authority_class":"AUTHORED_T0_FIELD","uncertainty":"no numeric distribution authored","sensitivity":"preserve categorical identity","binding":"continental thickness field"},
+    {"parameter":"crust thickness","value_or_range":"cellwise; continental 25-50 km, normal ocean 6.5 km","units":"m","meaning":"surface-to-Moho depth","source":"B-v2 physical crust field","authority_class":"AUTHORED_T0_FIELD","uncertainty":"as authored","sensitivity":"extract cellwise extrema","binding":"Moho geometry"},
+    {"parameter":"temLim_C/M","value_or_range":"UNSELECTED","units":"K","meaning":"solidus/integration cap","source":"No ARCANA composition/volatile state; Till et al. 2010 shows water/composition dependence","authority_class":"MATERIAL_OR_DOMAIN_PARAMETER / SPECIALIST","uncertainty":"unspecified","sensitivity":"required","binding":"OrbData temLim"},
+    {"parameter":"ZBASTH","value_or_range":"UNSELECTED","units":"m","meaning":"separate upper mantle/olivine-rich layer base","source":"No ARCANA authority; Earth example excluded","authority_class":"SPECIALIST_MODEL_CONFIGURATION","uncertainty":"unspecified","sensitivity":"required if consumed","binding":"ShellSet zBAsth; not implied by LAB/zp"},
+    {"parameter":"gMean","value_or_range":"9.82","units":"m s-2","meaning":"planetary gravity","source":"canonical R6","authority_class":"GLOBAL_PLANET_PARAMETER","uncertainty":"point authority","sensitivity":"future range only if authored","binding":"OrbData and adiabat"},
+    {"parameter":"delta_rho_limit","value_or_range":"UNSELECTED; source +/-100 is not authority","units":"kg m-3","meaning":"chemical anomaly limit","source":"source audit only","authority_class":"SPECIALIST guard","uncertainty":"unresolved","sensitivity":"after chemical model","binding":"fail closed, no silent clip"}
+  ],
+  "profile_consistency_checks": {
+    "method":"Static equations and existing bounds only; unselected properties are never imputed.",
+    "surface_boundary":{"result":"PASS_BY_CONTRACT","check":"Prescribed q retained."},
+    "finite_temperature":{"result":"NOT_EVALUABLE","reason":"A_C,k_C,A_M and basal/adiabat mapping unselected."},
+    "monotonicity":{"result":"CONDITIONAL_ONLY","check":"Requires q_s-A_C*h_C>=0 in crust and q_Moho-A_M*h_M>=0 in mantle, with curvature jointly solved; missing bounds prevent proof."},
+    "moho_temperature":{"result":"REQUIRED_ANALYTICALLY","check":"Seed mantle from exact T_C(h_C)."},
+    "moho_flux":{"result":"REQUIRED_ANALYTICALLY","check":"q_Moho=q_s-A_C*h_C; curvature uses k_C on crust side."},
+    "lab_temperature":{"result":"NOT_EVALUABLE","reason":"No LAB mapping or adiabat intercept."},
+    "thickness":{"result":"PARTIAL","check":"Continental total classes 80-200 km exceed broad crust domain 25-50 km; possible residual range 30-175 km if extrema co-occur. Conditional ocean zp-h_C=73.5-133.5 km for 80-140 km zp and 6.5 km normal crust only if zp is LAB depth. Ridge unresolved."},
+    "temperature_limits":{"result":"NOT_EVALUABLE","reason":"temLim/solidus unselected; Earth example excluded."},
+    "domain_extrema":{"result":"PARTIAL","check":"Continental q 0.045-0.085; ridge 0.3; ocean nominal 0.0476525-0.4741483 and sensitivity 0.0322191-0.5815391 W m-2. Temperature extrema unavailable without full material vector."},
+    "decision":"Cannot pass nominal and sensitivity profile checks without unsupported material values."
+  },
+  "config_v1_readiness": {"ready":false,"candidate_created":false,"target_decision_if_ready":"R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_CLOSED__CONFIG_V1_READY","closed":["surface q authorities","A0.6D HWR-2 tuple/ranges","shared mantle rho/k/alpha and TSurf","continental authored q/thickness","conservative Moho requirements"],"not_closed":["crust material vector and production/solidus","mantle production/solidus","rhoAst","HWR-to-LAB/OrbData thickness mapping and ridge basal condition","TADIAB/GRADIE consistent with HWR boundary over sensitivity","ZBASTH if consumed"],"policy":"No partial heat-flow Config V1; it would imply unqualified geotherm/isostatic state."},
+  "required_source_changes": ["Preserve explicit ARCANA heatFl through age and guards; GDH1/qLim1 overwrite legacy-only.","Remove independent GDH1/95-km ARCANA thickness path; consume one governed mapping.","Use shared Moho temperature and conservative flux; curvature factor k_C or equivalent.","Fail closed on profile/adiabat/solidus failure; no silent heat-flow/thickness mutation.","Keep UNKNOWN distinct from numeric zero and preserve provenance."],
+  "remaining_scientific_blockers": [{"id":"ARCANA_MATERIAL_REFERENCE_COLUMN_AUTHORITY","statement":"No single governed ARCANA reference-column material package binds bulk crust material/geochemistry and radiogenic production, mantle production/solidus, asthenosphere reference, and meaning of HWR finite-plate boundary relative to OrbData LAB/adiabat. Numeric profile and isostatic checks would require inventing physical values.","why_smallest":"These coupled quantities jointly define the same column energy balance, layer geometry and density reference; treat as one missing authority rather than separate blockers."}],
+  "remaining_implementation_blockers": ["Correct source heat-flow overwrite/guard behavior and remove stock GDH1 thickness path for ARCANA.","Implement conservative Moho curvature after authority approval.","Qualify source-generalization patch and adapter through fair qualification/regression path.","Provide canonical FEG support with explicit UNKNOWN mask and complete nonzero coverage."],
+  "preserved_gates": {"PRE_ORBDATA_ready":false,"t0_orbdata_executed":false,"OrbData_executed":false,"SHELLS_executed":false,"shellset_mechanics_authorized":false,"ShellSet_modified":false,"runtime_qualification":false,"dt_selected":false,"t1_created":false,"forward_evolution_authorized":false,"canonical_T0_promoted":false,"staging_area_altered":false,"commit":false,"push":false},
+  "references": [{"citation":"Holdt, White & Richards (2025), Revised Oceanic Plate Cooling Models","doi":"10.1029/2024JB029890","use":"HWR-2 finite-plate equation and plate thickness meaning."},{"citation":"Sammon et al. (2022), Compositional Attributes of the Deep Continental Crust Inferred From Geochemical and Geophysical Data","doi":"10.1029/2022JB024041","use":"Earth crust energy-balance evidence; values not transferred."},{"citation":"Phipps Morgan (2001), Thermodynamics of pressure release melting of a veined plum pudding mantle","doi":"10.1029/2000GC000049","use":"Adiabat relation; no TADIAB selected."},{"citation":"Till et al. (2010), The effect of water on the mantle solidus","doi":"10.1029/2010GC003234","use":"Solidus composition/water dependence; no universal temLim."},{"artifact":"R6_PRE_ORBDATA_ORBDATA_THERMAL_BINDING_CLOSURE.json","use":"A0.6E bindings and source behavior."},{"artifact":"R6_PRE_ORBDATA_HEAT_FLOW_NUMERICAL_BINDING.json","use":"A0.6D HWR values/ranges/envelopes."},{"artifact":"R6_PRE_ORBDATA_CONTINENTAL_HEAT_FLOW_AUTHORIAL_RATIFICATION.json","use":"Continental flux authority."},{"artifact":"R6_T0_AUTHORIAL_RATIFICATION_B_PANGAEA_LIKE_LATE_TRIASSIC.json","use":"Thermal classes and total thickness."}]
+}

@@ -1,0 +1,1026 @@
+{
+  "schema": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_AND_RUNTIME_CLOSURE_V1",
+  "decision": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_POLICY_ADJUDICATED__NUMERICAL_BINDING_READY",
+  "decision_scope": "Research/domain contract is ready for authorial numerical binding; this does not mean values have been numerically selected, runtime is qualified, or PRE_ORBDATA is ready.",
+  "t0_ocean_age_support_audit": {
+    "payload": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz::oceanic_lithosphere_age_ma",
+    "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+    "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+    "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+    "canonical_promotion": "NOT_PROMOTED; audit is for the ratified-for-materialization B-v2 candidate payload",
+    "field_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+    "parent_identity_sha256": {
+      "kinematics": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+      "physical_geography": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+      "vector_partition": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+    },
+    "native_grid": {
+      "shape_rows_columns": [
+        180,
+        360
+      ],
+      "cell_size_deg": 1,
+      "cell_centers": "latitude=89.5-row; longitude=-179.5+column; row order south to north; longitude periodic"
+    },
+    "physical_ocean_domain_id": 1,
+    "total_ocean_cells": 50542,
+    "exact_zero_count": 108,
+    "strictly_positive_count": 50434,
+    "unknown_nonfinite_or_negative_age_on_ocean_count": 0,
+    "minimum_strictly_positive_age_ma": 1.1491667412337465,
+    "minimum_positive_cells": [
+      {
+        "row": 143,
+        "column": 216,
+        "latitude_center_deg": -53.5,
+        "longitude_center_deg": 36.5
+      },
+      {
+        "row": 143,
+        "column": 219,
+        "latitude_center_deg": -53.5,
+        "longitude_center_deg": 39.5
+      }
+    ],
+    "low_age_quantiles_ma": {
+      "p01_unweighted_cell": 4.947570945154229,
+      "p05_unweighted_cell": 18.297153252101715,
+      "p10_unweighted_cell": 28.35451422917613,
+      "p25_unweighted_cell": 46.90130978884697,
+      "p50_unweighted_cell": 70.66650380069828,
+      "p75_unweighted_cell": 95.24665280847118,
+      "p90_unweighted_cell": 116.82391865180224,
+      "p95_unweighted_cell": 128.29231328483954,
+      "p99_unweighted_cell": 143.81417084639443
+    },
+    "age_bins_cell_counts": {
+      "exact_zero": 108,
+      "0_to_lt_1_ma": 0,
+      "1_to_lt_2_ma": 113,
+      "2_to_lt_5_ma": 291,
+      "5_to_lt_10_ma": 598,
+      "10_to_lt_20_ma": 1783,
+      "20_to_lt_50_ma": 11980,
+      "50_to_lt_100_ma": 25030,
+      "100_to_160_ma_inclusive": 10639
+    },
+    "maximum_age_ma": 160.0,
+    "maximum_age_cell_count": 1,
+    "maximum_age_location_sample": [
+      {
+        "row": 68,
+        "column": 47,
+        "latitude_center_deg": 21.5,
+        "longitude_center_deg": -132.5
+      }
+    ],
+    "non_ocean_age_representation": "NaN outside domain_id=1; ocean cells contain finite, nonnegative ages.",
+    "age_zero_cell_locations": [
+      {
+        "row_south_to_north_zero_based": 72,
+        "column_west_to_east_zero_based": 248,
+        "latitude_center_deg": 17.5,
+        "longitude_center_deg": 68.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 72,
+        "column_west_to_east_zero_based": 249,
+        "latitude_center_deg": 17.5,
+        "longitude_center_deg": 69.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 73,
+        "column_west_to_east_zero_based": 247,
+        "latitude_center_deg": 16.5,
+        "longitude_center_deg": 67.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 73,
+        "column_west_to_east_zero_based": 248,
+        "latitude_center_deg": 16.5,
+        "longitude_center_deg": 68.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 74,
+        "column_west_to_east_zero_based": 247,
+        "latitude_center_deg": 15.5,
+        "longitude_center_deg": 67.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 74,
+        "column_west_to_east_zero_based": 248,
+        "latitude_center_deg": 15.5,
+        "longitude_center_deg": 68.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 75,
+        "column_west_to_east_zero_based": 247,
+        "latitude_center_deg": 14.5,
+        "longitude_center_deg": 67.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 75,
+        "column_west_to_east_zero_based": 248,
+        "latitude_center_deg": 14.5,
+        "longitude_center_deg": 68.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 76,
+        "column_west_to_east_zero_based": 246,
+        "latitude_center_deg": 13.5,
+        "longitude_center_deg": 66.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 76,
+        "column_west_to_east_zero_based": 247,
+        "latitude_center_deg": 13.5,
+        "longitude_center_deg": 67.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 77,
+        "column_west_to_east_zero_based": 246,
+        "latitude_center_deg": 12.5,
+        "longitude_center_deg": 66.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 77,
+        "column_west_to_east_zero_based": 247,
+        "latitude_center_deg": 12.5,
+        "longitude_center_deg": 67.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 78,
+        "column_west_to_east_zero_based": 246,
+        "latitude_center_deg": 11.5,
+        "longitude_center_deg": 66.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 78,
+        "column_west_to_east_zero_based": 247,
+        "latitude_center_deg": 11.5,
+        "longitude_center_deg": 67.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 79,
+        "column_west_to_east_zero_based": 245,
+        "latitude_center_deg": 10.5,
+        "longitude_center_deg": 65.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 79,
+        "column_west_to_east_zero_based": 246,
+        "latitude_center_deg": 10.5,
+        "longitude_center_deg": 66.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 80,
+        "column_west_to_east_zero_based": 245,
+        "latitude_center_deg": 9.5,
+        "longitude_center_deg": 65.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 80,
+        "column_west_to_east_zero_based": 246,
+        "latitude_center_deg": 9.5,
+        "longitude_center_deg": 66.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 81,
+        "column_west_to_east_zero_based": 245,
+        "latitude_center_deg": 8.5,
+        "longitude_center_deg": 65.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 81,
+        "column_west_to_east_zero_based": 246,
+        "latitude_center_deg": 8.5,
+        "longitude_center_deg": 66.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 82,
+        "column_west_to_east_zero_based": 244,
+        "latitude_center_deg": 7.5,
+        "longitude_center_deg": 64.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 82,
+        "column_west_to_east_zero_based": 245,
+        "latitude_center_deg": 7.5,
+        "longitude_center_deg": 65.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 83,
+        "column_west_to_east_zero_based": 244,
+        "latitude_center_deg": 6.5,
+        "longitude_center_deg": 64.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 83,
+        "column_west_to_east_zero_based": 245,
+        "latitude_center_deg": 6.5,
+        "longitude_center_deg": 65.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 84,
+        "column_west_to_east_zero_based": 244,
+        "latitude_center_deg": 5.5,
+        "longitude_center_deg": 64.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 84,
+        "column_west_to_east_zero_based": 245,
+        "latitude_center_deg": 5.5,
+        "longitude_center_deg": 65.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 85,
+        "column_west_to_east_zero_based": 244,
+        "latitude_center_deg": 4.5,
+        "longitude_center_deg": 64.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 85,
+        "column_west_to_east_zero_based": 245,
+        "latitude_center_deg": 4.5,
+        "longitude_center_deg": 65.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 86,
+        "column_west_to_east_zero_based": 243,
+        "latitude_center_deg": 3.5,
+        "longitude_center_deg": 63.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 86,
+        "column_west_to_east_zero_based": 244,
+        "latitude_center_deg": 3.5,
+        "longitude_center_deg": 64.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 87,
+        "column_west_to_east_zero_based": 243,
+        "latitude_center_deg": 2.5,
+        "longitude_center_deg": 63.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 87,
+        "column_west_to_east_zero_based": 244,
+        "latitude_center_deg": 2.5,
+        "longitude_center_deg": 64.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 106,
+        "column_west_to_east_zero_based": 237,
+        "latitude_center_deg": -16.5,
+        "longitude_center_deg": 57.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 106,
+        "column_west_to_east_zero_based": 238,
+        "latitude_center_deg": -16.5,
+        "longitude_center_deg": 58.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 107,
+        "column_west_to_east_zero_based": 236,
+        "latitude_center_deg": -17.5,
+        "longitude_center_deg": 56.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 107,
+        "column_west_to_east_zero_based": 237,
+        "latitude_center_deg": -17.5,
+        "longitude_center_deg": 57.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 108,
+        "column_west_to_east_zero_based": 236,
+        "latitude_center_deg": -18.5,
+        "longitude_center_deg": 56.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 108,
+        "column_west_to_east_zero_based": 237,
+        "latitude_center_deg": -18.5,
+        "longitude_center_deg": 57.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 109,
+        "column_west_to_east_zero_based": 236,
+        "latitude_center_deg": -19.5,
+        "longitude_center_deg": 56.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 109,
+        "column_west_to_east_zero_based": 237,
+        "latitude_center_deg": -19.5,
+        "longitude_center_deg": 57.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 110,
+        "column_west_to_east_zero_based": 235,
+        "latitude_center_deg": -20.5,
+        "longitude_center_deg": 55.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 110,
+        "column_west_to_east_zero_based": 236,
+        "latitude_center_deg": -20.5,
+        "longitude_center_deg": 56.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 111,
+        "column_west_to_east_zero_based": 235,
+        "latitude_center_deg": -21.5,
+        "longitude_center_deg": 55.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 111,
+        "column_west_to_east_zero_based": 236,
+        "latitude_center_deg": -21.5,
+        "longitude_center_deg": 56.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 112,
+        "column_west_to_east_zero_based": 235,
+        "latitude_center_deg": -22.5,
+        "longitude_center_deg": 55.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 112,
+        "column_west_to_east_zero_based": 236,
+        "latitude_center_deg": -22.5,
+        "longitude_center_deg": 56.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 113,
+        "column_west_to_east_zero_based": 234,
+        "latitude_center_deg": -23.5,
+        "longitude_center_deg": 54.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 113,
+        "column_west_to_east_zero_based": 235,
+        "latitude_center_deg": -23.5,
+        "longitude_center_deg": 55.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 114,
+        "column_west_to_east_zero_based": 234,
+        "latitude_center_deg": -24.5,
+        "longitude_center_deg": 54.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 114,
+        "column_west_to_east_zero_based": 235,
+        "latitude_center_deg": -24.5,
+        "longitude_center_deg": 55.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 115,
+        "column_west_to_east_zero_based": 233,
+        "latitude_center_deg": -25.5,
+        "longitude_center_deg": 53.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 115,
+        "column_west_to_east_zero_based": 234,
+        "latitude_center_deg": -25.5,
+        "longitude_center_deg": 54.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 116,
+        "column_west_to_east_zero_based": 233,
+        "latitude_center_deg": -26.5,
+        "longitude_center_deg": 53.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 116,
+        "column_west_to_east_zero_based": 234,
+        "latitude_center_deg": -26.5,
+        "longitude_center_deg": 54.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 117,
+        "column_west_to_east_zero_based": 233,
+        "latitude_center_deg": -27.5,
+        "longitude_center_deg": 53.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 117,
+        "column_west_to_east_zero_based": 234,
+        "latitude_center_deg": -27.5,
+        "longitude_center_deg": 54.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 118,
+        "column_west_to_east_zero_based": 232,
+        "latitude_center_deg": -28.5,
+        "longitude_center_deg": 52.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 118,
+        "column_west_to_east_zero_based": 233,
+        "latitude_center_deg": -28.5,
+        "longitude_center_deg": 53.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 119,
+        "column_west_to_east_zero_based": 232,
+        "latitude_center_deg": -29.5,
+        "longitude_center_deg": 52.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 119,
+        "column_west_to_east_zero_based": 233,
+        "latitude_center_deg": -29.5,
+        "longitude_center_deg": 53.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 120,
+        "column_west_to_east_zero_based": 231,
+        "latitude_center_deg": -30.5,
+        "longitude_center_deg": 51.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 120,
+        "column_west_to_east_zero_based": 232,
+        "latitude_center_deg": -30.5,
+        "longitude_center_deg": 52.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 121,
+        "column_west_to_east_zero_based": 231,
+        "latitude_center_deg": -31.5,
+        "longitude_center_deg": 51.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 121,
+        "column_west_to_east_zero_based": 232,
+        "latitude_center_deg": -31.5,
+        "longitude_center_deg": 52.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 122,
+        "column_west_to_east_zero_based": 231,
+        "latitude_center_deg": -32.5,
+        "longitude_center_deg": 51.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 122,
+        "column_west_to_east_zero_based": 232,
+        "latitude_center_deg": -32.5,
+        "longitude_center_deg": 52.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 123,
+        "column_west_to_east_zero_based": 230,
+        "latitude_center_deg": -33.5,
+        "longitude_center_deg": 50.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 123,
+        "column_west_to_east_zero_based": 231,
+        "latitude_center_deg": -33.5,
+        "longitude_center_deg": 51.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 124,
+        "column_west_to_east_zero_based": 230,
+        "latitude_center_deg": -34.5,
+        "longitude_center_deg": 50.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 124,
+        "column_west_to_east_zero_based": 231,
+        "latitude_center_deg": -34.5,
+        "longitude_center_deg": 51.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 125,
+        "column_west_to_east_zero_based": 229,
+        "latitude_center_deg": -35.5,
+        "longitude_center_deg": 49.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 125,
+        "column_west_to_east_zero_based": 230,
+        "latitude_center_deg": -35.5,
+        "longitude_center_deg": 50.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 126,
+        "column_west_to_east_zero_based": 229,
+        "latitude_center_deg": -36.5,
+        "longitude_center_deg": 49.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 126,
+        "column_west_to_east_zero_based": 230,
+        "latitude_center_deg": -36.5,
+        "longitude_center_deg": 50.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 127,
+        "column_west_to_east_zero_based": 228,
+        "latitude_center_deg": -37.5,
+        "longitude_center_deg": 48.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 127,
+        "column_west_to_east_zero_based": 229,
+        "latitude_center_deg": -37.5,
+        "longitude_center_deg": 49.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 128,
+        "column_west_to_east_zero_based": 228,
+        "latitude_center_deg": -38.5,
+        "longitude_center_deg": 48.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 128,
+        "column_west_to_east_zero_based": 229,
+        "latitude_center_deg": -38.5,
+        "longitude_center_deg": 49.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 129,
+        "column_west_to_east_zero_based": 227,
+        "latitude_center_deg": -39.5,
+        "longitude_center_deg": 47.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 129,
+        "column_west_to_east_zero_based": 228,
+        "latitude_center_deg": -39.5,
+        "longitude_center_deg": 48.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 130,
+        "column_west_to_east_zero_based": 227,
+        "latitude_center_deg": -40.5,
+        "longitude_center_deg": 47.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 130,
+        "column_west_to_east_zero_based": 228,
+        "latitude_center_deg": -40.5,
+        "longitude_center_deg": 48.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 131,
+        "column_west_to_east_zero_based": 226,
+        "latitude_center_deg": -41.5,
+        "longitude_center_deg": 46.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 131,
+        "column_west_to_east_zero_based": 227,
+        "latitude_center_deg": -41.5,
+        "longitude_center_deg": 47.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 132,
+        "column_west_to_east_zero_based": 225,
+        "latitude_center_deg": -42.5,
+        "longitude_center_deg": 45.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 132,
+        "column_west_to_east_zero_based": 226,
+        "latitude_center_deg": -42.5,
+        "longitude_center_deg": 46.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 133,
+        "column_west_to_east_zero_based": 225,
+        "latitude_center_deg": -43.5,
+        "longitude_center_deg": 45.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 133,
+        "column_west_to_east_zero_based": 226,
+        "latitude_center_deg": -43.5,
+        "longitude_center_deg": 46.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 134,
+        "column_west_to_east_zero_based": 224,
+        "latitude_center_deg": -44.5,
+        "longitude_center_deg": 44.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 134,
+        "column_west_to_east_zero_based": 225,
+        "latitude_center_deg": -44.5,
+        "longitude_center_deg": 45.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 135,
+        "column_west_to_east_zero_based": 223,
+        "latitude_center_deg": -45.5,
+        "longitude_center_deg": 43.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 135,
+        "column_west_to_east_zero_based": 224,
+        "latitude_center_deg": -45.5,
+        "longitude_center_deg": 44.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 136,
+        "column_west_to_east_zero_based": 223,
+        "latitude_center_deg": -46.5,
+        "longitude_center_deg": 43.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 136,
+        "column_west_to_east_zero_based": 224,
+        "latitude_center_deg": -46.5,
+        "longitude_center_deg": 44.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 137,
+        "column_west_to_east_zero_based": 222,
+        "latitude_center_deg": -47.5,
+        "longitude_center_deg": 42.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 137,
+        "column_west_to_east_zero_based": 223,
+        "latitude_center_deg": -47.5,
+        "longitude_center_deg": 43.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 138,
+        "column_west_to_east_zero_based": 221,
+        "latitude_center_deg": -48.5,
+        "longitude_center_deg": 41.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 138,
+        "column_west_to_east_zero_based": 222,
+        "latitude_center_deg": -48.5,
+        "longitude_center_deg": 42.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 139,
+        "column_west_to_east_zero_based": 220,
+        "latitude_center_deg": -49.5,
+        "longitude_center_deg": 40.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 139,
+        "column_west_to_east_zero_based": 221,
+        "latitude_center_deg": -49.5,
+        "longitude_center_deg": 41.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 140,
+        "column_west_to_east_zero_based": 220,
+        "latitude_center_deg": -50.5,
+        "longitude_center_deg": 40.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 140,
+        "column_west_to_east_zero_based": 221,
+        "latitude_center_deg": -50.5,
+        "longitude_center_deg": 41.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 141,
+        "column_west_to_east_zero_based": 219,
+        "latitude_center_deg": -51.5,
+        "longitude_center_deg": 39.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 141,
+        "column_west_to_east_zero_based": 220,
+        "latitude_center_deg": -51.5,
+        "longitude_center_deg": 40.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 142,
+        "column_west_to_east_zero_based": 218,
+        "latitude_center_deg": -52.5,
+        "longitude_center_deg": 38.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 142,
+        "column_west_to_east_zero_based": 219,
+        "latitude_center_deg": -52.5,
+        "longitude_center_deg": 39.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 143,
+        "column_west_to_east_zero_based": 217,
+        "latitude_center_deg": -53.5,
+        "longitude_center_deg": 37.5,
+        "physical_crust_domain_id": 1
+      },
+      {
+        "row_south_to_north_zero_based": 143,
+        "column_west_to_east_zero_based": 218,
+        "latitude_center_deg": -53.5,
+        "longitude_center_deg": 38.5,
+        "physical_crust_domain_id": 1
+      }
+    ],
+    "age_weighted_median_ma_from_manifest": 70.0
+  },
+  "ridge_axis_identification": {
+    "selected_age_source_branch_id": "R6BR-DERIVED-50911691f2df2e592ca4",
+    "selected_source_boundary_segment_count": 79,
+    "selected_ocean_ocean_positive_normal_segments_crosschecked": 79,
+    "selected_branch_source_support_cells": 108,
+    "age_zero_cells_match_selected_source_support_exactly": true,
+    "zero_cells_away_from_selected_age_source_support": 0,
+    "selected_source_support_with_nonzero_or_unknown_age": 0,
+    "kinematic_check": "Each selected segment has positive relative normal velocity and both adjacent cells are domain_id=1 ocean; the selected support reconstructs exactly the 108 zero-age cells.",
+    "qualification": "The materializer names this the selected spreading source branch; however the canonical boundary census assigns UNKNOWN_NOT_AUTHORIZED_BY_KINEMATICS_ALONE to all boundary_process_class entries and the realization manifest says boundary_process_classes_assigned=false. Treat the selected 79-segment branch as the ratified age-source/ridge-boundary candidate, not as an inference from age alone. Other divergent candidate boundaries remain unclassified.",
+    "unselected_positive_normal_ocean_ocean_candidates": {
+      "segment_count": 634,
+      "unique_adjacent_ocean_cells": 1075,
+      "adjacent_zero_cells_overlapping_selected_ridge_support": 3,
+      "adjacent_positive_age_cells_unclassified_for_boundary_process": 1072,
+      "treatment": "Their boundary process remains UNKNOWN (may be rift, spreading source, or another divergent state); do not apply ridge flux or HWR across this support until classified."
+    }
+  },
+  "ridge_boundary_policy": {
+    "recommendation": "RATIFY_Q_RIDGE_0_3_W_M2_FOR_SELECTED_AGE_SOURCE_SUPPORT",
+    "value_w_m2": 0.3,
+    "authority_class": "ARCANA_AUTHORED_SPECIALIST_BOUNDARY_PARAMETER_WITH_LITERATURE_PRIOR",
+    "not_classified_as": [
+      "WORLD_HISTORY_PHYSICAL_FIELD",
+      "EARTH_GROUND_TRUTH"
+    ],
+    "application_support": "Only the 108 cells adjacent to the explicitly selected age-source branch, pending canonical validation of this candidate materialization.",
+    "rationale": "A finite specialist boundary value supplies the missing t=0 conductive boundary and avoids evaluating the singular plate-cooling law at exact zero. Bird (2008) explicitly assigned 0.3 W m-2 as a uniform conductive heat-flow boundary at Ocean Spreading Ridge (OSR) boundaries, calling it the highest conductive heat flow typically observed. This is a model boundary-condition precedent, not an ARCANA observation. Bird used Earth data and Earth conductivity for its gradient interpretation; neither is transferred.",
+    "qualification": "This is a defensible authorial convention informed by an Earth literature prior, not a unique value forced by the cooling equation. Apply only to the selected, independently kinematically cross-checked source support."
+  },
+  "positive_age_model_domain": {
+    "selected_law": "HWR-2 finite plate, evaluated only for t>0",
+    "ocean_cells_with_age_gt_zero_in_payload": 50434,
+    "valid_hwr2_positive_age_cells_after_fail_closed_boundary_ambiguity_mask": 49362,
+    "positive_age_interval_ma_in_payload": [
+      1.1491667412337465,
+      160.0
+    ],
+    "maximum_age_finite": true,
+    "minimum_positive_age_strictly_gt_zero": true,
+    "exact_zero_policy": "RIDGE_AXIS specialist boundary; never evaluate the HWR-2 age equation at t=0.",
+    "unclassified_boundary_adjacent_positive_cells": "1,072 cells are adjacent to non-selected positive-normal ocean/ocean candidate segments; boundary_process_class is not authorized. Preserve as INVALID_OR_UNKNOWN until process class is assigned.",
+    "youngest_positive_cell_locations": [
+      {
+        "latitude_center_deg": -53.5,
+        "longitude_center_deg": 36.5
+      },
+      {
+        "latitude_center_deg": -53.5,
+        "longitude_center_deg": 39.5
+      }
+    ],
+    "age_unknown_policy": "Any UNKNOWN or invalid support remains fail-closed and receives no q; it is not encoded as numerical zero."
+  },
+  "hwr2_finite_envelope": {
+    "formula": "For t>0: H(t;theta)=k*(Tb-T0)/zp * [1+2*sum(i=1..infinity, exp(-kappa*i^2*pi^2*t/zp^2))], kappa=k/(rho_m*Cp). Convert age Ma to seconds before evaluation.",
+    "monotonicity": "For k>0, Tb>T0, zp>0 and kappa>0, every exponential mode decreases with t, so H decreases monotonically over positive age.",
+    "maximum_location": "At the minimum valid strictly positive age t=1.1491667412337465 Ma; two grid cells centered at (-53.5, 36.5) and (-53.5, 39.5) degrees latitude/longitude.",
+    "minimum_location": "At the maximum valid ocean age t=160 Ma; one cell is at (21.5, -132.5) degrees latitude/longitude.",
+    "symbolic_bounds": "H_min(theta)=H(160 Ma;theta); H_max(theta)=H(1.1491667412337465 Ma;theta). Both are finite for any finite physical theta with positive k,rho,Cp,zp and positive temperature contrast.",
+    "numerical_q_min_w_m2": null,
+    "numerical_q_max_w_m2": null,
+    "why_not_numeric": "No ARCANA HWR-2 values or finite parameter intervals for k, rho_m, Cp, Tb-T0, or zp are selected. The age domain is finite; a numerical heat-flow envelope needs the authorial material/thermal parameter configuration (or bounded ensemble) and its numerical tolerance.",
+    "t0_evaluation_performed": false
+  },
+  "qlim1_governance": {
+    "authorized_heat_flow_sources": {
+      "continental_authored_range_w_m2": [
+        0.045,
+        0.085
+      ],
+      "ridge_axis_specialist_value_w_m2": 0.3,
+      "positive_ocean_hwr2": "[H(160 Ma;theta), H(1.1491667412337465 Ma;theta)] over the selected finite HWR-2 parameter set"
+    },
+    "required_nonbinding_limit": "qLim1 >= max(0.3, 0.085, sup_theta H(1.1491667412337465 Ma;theta)) + delta_guard, where delta_guard is a declared finite positive allowance for output rounding/projection error. Compute after theta/bounds and projection error are governed.",
+    "current_source_qLim1_w_m2": 0.3,
+    "current_source_behavior": "Sequential MIN clips every input above qLim1. The ridge value equals the current cap (passes numerically with zero headroom); continental reference values are below it; positive-age HWR-2 envelope is not yet numerically bounded against it.",
+    "proof_status": "A finite nonbinding qLim1 exists once the authorized HWR-2 parameter set is bounded and projection error is finite, because the positive-age interval is compact and bounded away from zero. Current 0.3 cannot be proven nonbinding and has no margin over the ridge value.",
+    "classification": "SOURCE_CHANGE_REQUIRED",
+    "guard_contract": "Treat qLim1 as a finite configured guard above the derived full input envelope; out-of-envelope values must fail closed rather than be silently changed by MIN."
+  },
+  "qlim0_dQL_dE_governance": {
+    "current_source_qLim0_w_m2": 0.0,
+    "current_source_dQL_dE_w_m3": 0.0,
+    "current_lower_bound": "qLimit(E)=0 for every elevation E.",
+    "input_stage_result": "NON_BINDING_RUNTIME_GUARD for positive authorized heat-flow branches: continental q is 0.045-0.085, ridge q is 0.3, and HWR-2 q is strictly positive for positive t and positive temperature contrast.",
+    "full_Assign_path": "UNRESOLVED for pass-through because an independent Moho>TAsthK consistency correction can first reduce heatFl, after which the lower and upper limits are applied again. That is distinct from the initial elevation floor.",
+    "classification": "UNRESOLVED",
+    "recommendation": "Keep the zero lower line and zero elevation slope only as nonbinding runtime guards after ARCANA adoption; do not use a positive Earth-calibrated elevation slope. Validate and fail closed if the runtime correction path would alter a governed flux."
+  },
+  "internal_age_law_compatibility": {
+    "status": "INCOMPATIBLE_WITH_ARCANA_AUTHORITY",
+    "source_path": "In patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch, Assign includes ARCANA ocean nodes in the age branch; age<=0 assigns qLim1 and positive ocean age assigns GDH1 (0.510/sqrt(ageMa) through 55 Ma, then 0.048+0.096*exp(-0.0278*ageMa). It then clamps the result.",
+    "consequence": "An ARCANA nonzero producer heatFl is replaced before the layered geotherm consumes it. At age zero, the authored specialist ridge flux is replaced by qLim1.",
+    "classification": "IMPLEMENTATION_BLOCKER"
+  },
+  "required_shellset_change": {
+    "smallest_heat_flow_change": "In Assign, make the GDH1 heatFl assignment stock-mode-only. For complete ARCANA mode, preserve explicit nonzero FEG heatFl through age handling and into the conductive geotherm. Keep legacy behavior unchanged when the ARCANA pair is absent.",
+    "smallest_guard_change": "Replace silent qLim clipping of governed ARCANA values with a configured finite guard derived from the authorized envelope and a fail-closed range check. qLim1 currently is a compiled 0.3 W m-2 constant.",
+    "zero_sentinel_contract": "Before OrbData entry, require finite, governed nonzero heat flow on every serialized physical support node; carry UNKNOWN/missing in a separate mask and reject incomplete FEG support instead of invoking qArray fallback.",
+    "separate_shared_thickness_issue": "The existing ARCANA ocean branch also retains its independent GDH1/95-km mantle-thickness calculation. If the producer is to own ocean thickness, the ARCANA branch must consume that producer field or explicitly bind one shared plate-thickness authority.",
+    "implementation_performed": false
+  },
+  "producer_domain_contract": {
+    "CONTINENT": "Use ratified authored continental reference heat flow 0.045/0.060/0.085 W m-2 according to existing thermal domain IDs and only on governed land support.",
+    "RIDGE_AXIS": "Use q_ridge=0.3 W m-2 on the 108 selected age-source support cells; specialist boundary condition, not a history observation.",
+    "POSITIVE_AGE_OCEAN": "Use HWR-2 conductive flux on 49362 ocean cells with finite positive age and no adjacent unclassified positive-normal ocean/ocean candidate boundary.",
+    "INVALID_OR_UNKNOWN": "Fail closed on 1072 positive-age cells adjacent to unclassified divergent candidates, all UNKNOWN support, mixed/unsupported boundaries, and non-ocean NaN age support.",
+    "JOINED_GLOBAL_FIELD": "DERIVED_REPLAYABLE_T0_STATE",
+    "FEG_SERIALIZATION": "NUMERICAL_RUNTIME_INPUT_ONLY",
+    "zero_sentinel_allowed_for_governed_physical_node": false,
+    "canonical_state_mutation": false
+  },
+  "remaining_numeric_choices": [
+    "Select ARCANA HWR-2 k, rho_m, Cp and alpha (or a finite bounded material ensemble) with consistent units and material authority.",
+    "Select ARCANA surface and basal/potential temperatures and equilibrium plate thickness zp; no Earth best-fit values are inherited.",
+    "Select finite Fourier truncation/convergence tolerance and finite flux projection/error allowance delta_guard.",
+    "After those selections, bind qLim1 strictly above max(q_ridge, continental q maximum, HWR-2 q maximum) plus declared numerical margin. qLim0=0 and dQL_dE=0 remain nonbinding for positive q.",
+    "Ratify whether unselected kinematic ocean/ocean divergence remains UNKNOWN/rift or receives additional RIDGE_AXIS support; current fail-closed contract leaves it UNKNOWN."
+  ],
+  "remaining_scientific_blockers": [
+    "No further broad literature research is required for the q_ridge boundary convention: 0.3 W m-2 is supportable as an ARCANA-authored specialist boundary parameter with a Bird (2008) literature prior.",
+    "Numerical HWR-2 heat-flow bounds await explicit ARCANA parameter tuple or bounded model ensemble; only the finite symbolic envelope is closed here.",
+    "All nonselected divergent boundary candidates retain UNKNOWN process classification; no ridge status is inferred from age alone."
+  ],
+  "remaining_implementation_blockers": [
+    "The ARCANA ocean Assign branch still replaces explicit heatFl with internal GDH1/qLim1. Source guard must be narrowed to legacy stock mode.",
+    "Current qLim1 is a compiled 0.3 W m-2 cap and cannot be proven nonbinding; configure derived finite bound and fail closed on violations.",
+    "Oceanic mantle-thickness path still calculates independent GDH1/95-km value; share selected producer thickness if this output is part of runtime contract.",
+    "Existing ShellSet source-generalization patch remains NOT_QUALIFIED pending documented fair qualification and stock regression.",
+    "A canonical/global heat-flow FEG payload does not exist; UNKNOWN masks and nonzero physical-node coverage must be resolved before serialization."
+  ],
+  "preserved_gates": {
+    "architecture": "HYBRID_DOMAIN_AWARE_HEAT_FLOW; not reopened",
+    "PRE_ORBDATA_ready": false,
+    "OrbData_executed": false,
+    "ShellSet_mechanics_authorized": false,
+    "ShellSet_modified": false,
+    "runtime_qualification": false,
+    "dt_selected": false,
+    "T1_created": false,
+    "forward_evolution": false,
+    "canonical_T0_promoted": false,
+    "commit": false,
+    "push": false,
+    "existing_staging_area_altered": false
+  },
+  "source_evidence": [
+    {
+      "artifact": "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json",
+      "age_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+      "selected_source_branch_id": "R6BR-DERIVED-50911691f2df2e592ca4",
+      "selected_source_boundary_ids": 79,
+      "selected_source_support_cells": 108,
+      "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION"
+    },
+    {
+      "artifact": "src/arcana_worldsim/r6/t0_materialization/b_pangaea_v2.py",
+      "relevant_lines": "111-114, 451-497",
+      "meaning": "positive-normal ocean/ocean source candidate selection; selected branch; both adjacent cells seeded; age=160*(distance/max_distance)^exponent; exact seed cells alone have age zero."
+    },
+    {
+      "artifact": "R6_SHARED_BOUNDARY_T0_KINEMATIC_CENSUS.json",
+      "boundary_process_class": "UNKNOWN_NOT_AUTHORIZED_BY_KINEMATICS_ALONE for every edge"
+    },
+    {
+      "artifact": "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch",
+      "relevant_hunks": "Assign ocean age heat-flow overwrite and GDH1 thickness branch"
+    },
+    {
+      "artifact": "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.json",
+      "source_patch_qualification": "NOT_QUALIFIED"
+    }
+  ],
+  "references": [
+    {
+      "citation": "Bird (2008), Stresses that drive the plates from below: Definitions, computational path, model optimization, and error analysis",
+      "doi": "10.1029/2007JB005460",
+      "url": "https://doi.org/10.1029/2007JB005460",
+      "use": "Bird manually set conductive heat flow to 0.3 W m-2 at Ocean Spreading Ridge boundaries as a model boundary convention; here retained as a literature prior, not Earth field authority."
+    },
+    {
+      "citation": "Holdt, White & Richards (2025), Revised Oceanic Plate Cooling Models",
+      "doi": "10.1029/2024JB029890",
+      "url": "https://doi.org/10.1029/2024JB029890",
+      "use": "HWR-2 finite-plate analytical heat-flow equation and young-age singular limit."
+    }
+  ]
+}

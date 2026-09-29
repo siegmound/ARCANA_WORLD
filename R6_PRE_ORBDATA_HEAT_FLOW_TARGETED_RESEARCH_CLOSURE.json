@@ -1,0 +1,114 @@
+{
+  "schema": "R6_PRE_ORBDATA_HEAT_FLOW_TARGETED_RESEARCH_CLOSURE_V1",
+  "decision": "R6_PRE_ORBDATA_HEAT_FLOW_PARAMETERIZATION_PARTIAL__TARGETED_RESEARCH_REMAINS",
+  "scope": {
+    "architecture": "HYBRID_DOMAIN_AWARE_HEAT_FLOW",
+    "architecture_reopened": false,
+    "research_only": true,
+    "producer_implemented": false,
+    "orbdata_or_shells_run": false,
+    "shellset_modified": false,
+    "pre_orbdata_ready": false,
+    "commit_or_push": false
+  },
+  "ocean_model_structure": {
+    "recommendation": "HWR2_FINITE_PLATE_STRUCTURE_WITH_ARCANA_RE_GOVERNED_PARAMETERS",
+    "confidence": "STRUCTURE_RECOMMENDATION_ONLY__NOT_NUMERICAL_BINDING_READY",
+    "reason": "The HWR-2 constant-property finite plate has an explicit analytical surface-flux law, a small deterministic state/parameter set, and is a defensible transferable model structure. Its Earth inverse-fit values are not ARCANA values. HWR-3 is available when ARCANA adopts the composition and temperature/pressure dependent material package, but it adds material, crust-layer, spatial discretization and numerical replay obligations without a demonstrated material advantage for current T0 fields.",
+    "hwr2": {
+      "governing_formulation": "One-dimensional transient conductive heat equation in a finite plate of thickness z_p, fixed surface temperature T_0, fixed basal temperature T_b, and constant k, alpha, rho_m and C_p. kappa=k/(rho_m*C_p). For age t>0, H(t)=k*(T_b-T_0)/z_p * [1+2*sum(i=1..infinity, exp(-kappa*i^2*pi^2*t/z_p^2))]. Finite truncation N is a numerical convergence control. Thermal subsidence depends on alpha, temperature contrast, densities, z_p and the odd-mode Fourier series.",
+      "state_variables": ["oceanic lithosphere age t on explicitly governed ocean support", "depth coordinate z for profile reconstruction", "temperature T(z,t) if a profile rather than only H(t) is required"],
+      "parameters": ["k", "alpha", "rho_m", "C_p", "T_b", "T_0", "equilibrium plate thickness z_p", "water/reference densities if subsidence is included"],
+      "transferability": "The finite-plate boundary-value structure is transferable as a model choice. Effective constant k/alpha/C_p and Earth-fitted T_b/z_p/ridge-depth must be separately authorized for ARCANA; no HWR-2 best-fit numbers are inherited.",
+      "dependencies": "Properties are constant within the analytical model; pressure and temperature dependence is collapsed into effective averages. Heat-flow output is sensitive to near-surface conductivity, while subsidence integrates conductivity over plate thickness.",
+      "complexity": "Low; deterministic Fourier evaluation and optional finite-depth profile reconstruction. Fix series truncation/tolerance and unit conversion in a later numerical contract.",
+      "compatibility_with_current_t0": "Ocean age is a required governed primitive but the current R6 T0 record does not contain a selected age realization. T0 also lacks selected k, alpha, C_p, basal/surface thermal boundaries and equilibrium plate thickness. Compatible as a future specialist; not executable from current selected state.",
+      "additional_authority": ["ARCANA ocean age field and explicit unknown mask", "ARCANA mantle material/effective k, density and heat capacity", "ARCANA expansivity if thermal subsidence is used", "ARCANA surface and basal/potential temperature convention", "ARCANA equilibrium plate-thickness convention", "ocean crust/insulation decision", "young/ridge-axis boundary policy"],
+      "output_sensitivity": "H scales linearly with k and temperature contrast outside kappa's effect; its age dependence and z_p sensitivity enter through exp(-kappa*i^2*pi^2*t/z_p^2) and the 1/z_p factor. k also changes kappa, and density/C_p change kappa. Thus no single empirical q multiplier can substitute for the governed parameter set. No ARCANA numerical sensitivity sweep was performed."
+    },
+    "hwr3": {
+      "governing_formulation": "Numerical one-dimensional transient conduction in the moving-plate frame: rho(T,P,X)*C_p(T,X)*dT/dt = d/dz[k(T,P,X)*dT/dz], with temperature/pressure/composition-dependent material properties, ridge initial thermal state including decompression/melting, surface heat flow from the first subsurface finite-difference node, thermal-density integration for subsidence, and an optional insulating oceanic crust layer.",
+      "state_variables": ["age/time", "depth grid and temperature field", "pressure", "density", "composition X", "crust/mantle layer identity", "material-property fields", "initial ridge thermal profile"],
+      "parameters": ["k(P,T,X) law", "alpha(P,T,X) law", "C_p(T,X) law", "density/thermodynamic relation", "composition", "surface and basal conditions", "plate thickness", "crust thickness and crust property laws", "numerical grid/time-step and convergence controls"],
+      "earth_calibrated_or_assumed_parts": ["Earth joint-fit potential temperature, plate thickness and ridge depth", "Earth oceanic crust mean thickness and insulating-layer composition/mixture", "olivine composition 89% Fo/11% Fa used for the cited heat-capacity parameterization", "selected laboratory parameterizations are mineral-specific and require an ARCANA material-composition decision"],
+      "dependencies": "Explicit T and P dependence of conductivity, expansivity and heat capacity; heat capacity is composition dependent, density and conductivity also composition dependent. Crust conductivity is modeled separately when insulation is enabled.",
+      "complexity": "Higher; discretized transient solver, initial/boundary conditions, composition and crust layers, convergence and deterministic replay requirements.",
+      "compatibility_with_current_t0": "Current selected T0 fields do not provide the detailed composition, pressure-dependent material law, ridge initial profile, boundary conditions or selected discretization required to replay HWR-3.",
+      "output_sensitivity": "Published assessment reports important sensitivity to conductivity structure. Adding the insulating crust shifts the recovered temperature from 1174 C to 1326 C in their Earth joint inversion; this is model-fit sensitivity, not an ARCANA flux percentage. No ARCANA numerical sensitivity sweep was performed."
+    },
+    "option_assessment": {
+      "A_adopt_hwr2_structure_and_regovern_parameters": "SUPPORTED_AS_RECOMMENDATION; actual parameter authorization and T0 age selection remain open.",
+      "B_adopt_hwr3_structure": "PHYSICALLY PLAUSIBLE_BUT_NOT_CURRENTLY_SUPPORTED_BY_T0_INPUTS; requires material composition and numerical configuration authority.",
+      "C_another_finite_plate": "No reviewed evidence establishes a better fit-for-purpose structure for the present low-dimensional R6 inputs. Alternative finite-plate physics can be reconsidered if a governed mechanism requires it."
+    }
+  },
+  "earth_calibration_transfer_analysis": {
+    "rule": "No Earth best-fit or assumed numerical values are adopted as ARCANA values.",
+    "hwr2_earth_calibrated": ["effective constant k=3.8 W m-1 K-1 in the reported preferred fit", "T_b=1326 C", "z_p=105 km", "ridge depth z_r=2.5 km in the fixed-ridge fit; alternatives when ridge depth varies"],
+    "hwr3_earth_calibrated_or_assumed": ["T_p=1326 C, z_p=96 km, z_r=2.8 km in the reported joint fit", "mean oceanic crust thickness 6.4 km", "Earth-specific olivine composition and selected mineral-physics parameterizations"],
+    "material_physics_transfer": "The governing laws and laboratory-based functional forms may inform an ARCANA material model after composition and validity ranges are authorized; their Earth composition, aggregate assumptions and effective averages do not become planetary authorial parameters automatically.",
+    "sensitivity_evidence": "The paper reports that conductivity choice materially changes fitted basal temperature (HWR-1 to HWR-2) and that crustal insulation changes the HWR-3 fitted temperature. Surface observations constrain integrated averages and are less sensitive to detailed parameter variation than subsurface thermal structure. These findings establish sensitivity direction/importance, not ARCANA numerical bounds."
+  },
+  "orbdata_expected_heat_flow_quantity": {
+    "decision": "CONDUCTIVE_SURFACE_FLUX_CONSISTENT_WITH_SELECTED_THERMAL_GEOTHERM",
+    "not_expected": ["seafloor observation after unmodeled hydrothermal/advection effects", "total heat loss including advective transport"],
+    "physical_definition": "Positive upward surface conductive flux q_s = -k grad(T) dot n_out, represented in OrbData's positive heatFl convention in W m-2. It is the flux consistent with the geotherm and its declared conductivity/source terms.",
+    "runtime_evidence": "OrbData Assign uses heatFl/conduc(1) as the crustal geotherm gradient, subtracts layer radiogenic production to form reduced flux for the mantle geotherm, and constructs a piecewise steady conductive temperature profile. The runtime has no hydrothermal/advection term. Thus a measured young-ocean deficit caused by circulation is not a correction OrbData can interpret physically.",
+    "compatibility_caveat": "Passing a transient plate-model surface flux into OrbData does not pass the full plate-model T(z,t). OrbData reconstructs its own steady, layered geotherm and may alter heatFl, curvature or thickness for consistency. Producer and OrbData conductivity, heat production, surface/basal boundary definitions and selected thickness must be coherent or this becomes an unvalidated hybrid.",
+    "ocean_override_conflict": "The ARCANA ocean condition in patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch enters the ocean-age branch. That branch still replaces heatFl with qLim1 at age<=0 or GDH1 age-law heat flow for positive ages before clamping. The source path therefore does not consume an ARCANA ocean producer flux unchanged. The same ocean branch calculates lithosphere thickness using GDH1 and hardcoded h_plate=95000 m, rather than binding the HWR-derived plate thickness. This is a runtime-contract conflict requiring a source-level decision before implementation qualification."
+  },
+  "young_ocean_policy": {
+    "selected_model_behavior": "For HWR2, H(t) contains an infinite Fourier sum. As t approaches 0 from above, H(t) ~ k*(T_b-T_0)/sqrt(pi*kappa*t), so the conductive surface flux is unbounded for a positive temperature contrast. Exact t=0 is not a finite-flux member of this fixed-cold-surface finite-plate solution. The age-depth expression tends to the ridge boundary value.",
+    "empirical_young_data": "Holdt et al. omit observations younger than 5 Ma in one HWR-2 calibration to avoid ridge-axis hydrothermal influence, then report that including young subsidence observations barely changes the Earth fit. This is an observational fitting choice; it neither defines a mathematical minimum age nor authorizes an ARCANA hydrothermal correction.",
+    "minimum_meaningful_temporal_support": "No positive numerical minimum age is established by the evidence reviewed. Any finite t_min must be selected from ARCANA spatial/time resolution or an explicit ridge-axis boundary model and then used to derive a finite producer output envelope.",
+    "ridge_boundary": "A ridge-axis state at exactly zero age needs an explicit finite boundary-state formulation (e.g. governed ridge initial/axis state or finite cell-age averaging). It is not obtained by capping the singular limit with qLim1.",
+    "hydrothermal_effects": "Outside the selected 1-D conductive plate producer and outside OrbData's conductive geotherm. Model conductive lithospheric flux; do not fit or inject an observed advective deficit as an undocumented correction.",
+    "age_zero_policy": "MODEL_DOMAIN_UNKNOWN",
+    "age_zero_rationale": "The available governed T0 contract does not define a ridge-axis thermal boundary or finite-age averaging rule; HWR2's exact t=0 conductive flux is singular. qLim1 is a runtime numerical cap and cannot supply the missing physical boundary condition."
+  },
+  "qlim_compatibility": {
+    "source_operations_for_explicit_nonzero_q": ["qLimit(E)=qLim0+dQL_dE*E", "q1=MAX(q_input,qLimit(E))", "q2=MIN(q1,qLim1)"],
+    "admissible_pass_through_envelope": "qLim0+dQL_dE*E <= q_input <= qLim1, in W m-2 at elevation E in m.",
+    "outside_envelope": "Below lower line: raised to qLim0+dQL_dE*E. Above qLim1: reduced to qLim1. If the lower line exceeds qLim1, the sequential operations return qLim1, so no input value can be unchanged and the nominal envelope is empty.",
+    "configured_upstream_source_values": {"qLim0_W_m2": 0.0, "dQL_dE_W_m3": 0.0, "qLim1_W_m2": 0.3, "classification": "COMPILED_UPSTREAM_SOURCE_GUARDS_ONLY__NOT_ARCANA_AUTHORITY"},
+    "unchanged_conditions": "The initial nodal value must be nonzero and inside the envelope. In Assign, additional conditions apply: ARCANA ocean age law must not replace it, the Moho geotherm must not exceed TAsthK, and no later correction may alter heatFl. The reviewed patch currently fails the first condition for ARCANA ocean nodes.",
+    "zero_semantics": "FEG zero is also the qArray/missing-value sentinel (OrbData reads the heat-flow grid if any node has zero). The nodal pre-limit bypasses the lower clamp for zero but still applies MIN(0,qLim1); a later ocean age branch may replace it. Zero therefore cannot safely mean a governed explicit zero without a separate validity/missingness contract.",
+    "nonbinding_limits": "Possible only after the producer age domain and finite physical parameter intervals are selected. Derive q_min and q_max by bounding the model output over those authorized intervals and the governed age support; derive the elevation lower-line relation from a declared physical rule (or use zero slope only if the ARCANA contract explicitly says the guard is elevation independent). Set lower and upper guards to encompass that finite output envelope. Do not set arbitrary large constants.",
+    "unbounded_domain_result": "If ages arbitrarily close to zero remain in the domain, HWR2 has no finite q_max, so no finite nonbinding qLim1 exists. A t_min or finite ridge boundary state is a prerequisite.",
+    "source_change": "Required to preserve an ARCANA ocean heat-flow field and shared thickness authority: separate ARCANA explicit ocean fields from legacy GDH1 overwrite/thickness branches, or provide an explicitly qualified source path that consumes the selected producer outputs. No source change is made in this research pass."
+  },
+  "shared_physical_parameter_authorities": [
+    {"parameter": "thermal_conductivity k; OrbData conduc_C/conduc_M", "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY", "authority_rule": "One ARCANA material law per declared crust/mantle material; bind the same surface/appropriate conductivity law into producer and OrbData. If HWR2 uses one effective constant k, classify that effective value additionally as an EARTH_CALIBRATED_MODEL_PARAMETER only when it is Earth-fitted; ARCANA must re-govern it."},
+    {"parameter": "thermal diffusivity kappa and heat capacity C_p", "classification": "DERIVED_QUANTITY", "authority_rule": "kappa=k/(rho*C_p); C_p and density are material properties with one composition-aware authority. Do not independently author kappa inconsistent with k, rho and C_p."},
+    {"parameter": "thermal expansivity alpha; OrbData alphaT_C/alphaT_M", "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY", "authority_rule": "Bind same material-family values/functions into cooling/subsidence and OrbData. HWR2 effective alpha is separately re-governed; use only if thermal subsidence is produced."},
+    {"parameter": "equilibrium ocean plate thickness z_p", "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER", "authority_rule": "Select one definition and value/model distribution as ARCANA planetary structure, or derive it from the chosen model. Bind the same selected thickness to producer and OrbData ocean path; do not combine HWR thickness with OrbData's independent GDH1/95-km calculation."},
+    {"parameter": "mantle/basal or potential temperature", "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER", "authority_rule": "Choose potential-temperature versus basal-temperature convention explicitly and bind transformations consistently. HWR Earth fit values are EARTH_CALIBRATED_MODEL_PARAMETER examples only."},
+    {"parameter": "surface temperature T_0; OrbData TSurf", "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER", "authority_rule": "One governed surface boundary value shared by producer and OrbData, with units and Celsius/Kelvin conversion explicit. Earth 0 C is not silently inherited."},
+    {"parameter": "TAsthK", "classification": "DERIVED_QUANTITY", "authority_rule": "OrbData source computes TAdiab + gradie*100000 m. Derive from the governed adiabat controls; do not independently set TAsthK."},
+    {"parameter": "TADIAB and GRADIE", "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER", "authority_rule": "Jointly govern the mantle adiabat profile and temperature convention. Share the same basal/potential-temperature and gradient authority with the producer where its boundary uses that adiabat."},
+    {"parameter": "ZBASTH", "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER", "authority_rule": "Governed asthenosphere-base depth if physically part of selected planet structure; bind to the producer's basal boundary only if definitions coincide. It is not interchangeable with plate thickness without an explicit structural definition."},
+    {"parameter": "temLim_C/temLim_M", "classification": "NUMERICAL_RUNTIME_GUARD", "authority_rule": "Bounds enforced by ShellSet profile/property routines; choose finite values after the physical temperature envelope is selected. Must contain producer/OrbData temperatures and must not silently redefine the material boundary temperatures."},
+    {"parameter": "qLim0, dQL_dE, qLim1", "classification": "NUMERICAL_RUNTIME_GUARD", "authority_rule": "Finite numerical guards only, derived from the selected age domain, flux model, elevation support and physical parameter ensemble. Not physical heat-flow authority."}
+  ],
+  "remaining_numeric_choices": ["ARCANA ocean-age field and support, including a positive minimum-age or finite ridge-boundary convention", "material composition and k/alpha/rho/C_p values or functions, with uncertainty", "basal/potential temperature and surface temperature", "equilibrium plate thickness and whether it is fixed or model-derived", "ocean crust insulating-layer/material decision", "thermal heat-production values used by OrbData", "producer solver tolerance/truncation and any finite-difference grid if HWR3 is selected", "temLim_C/temLim_M physical envelope and finite guards", "qLim0/dQL_dE/qLim1 bounded by the resulting producer flux envelope and elevation support", "an ARCANA-specific OrbData branch that consumes the selected ocean flux and thickness without GDH1 replacement"],
+  "implementation_implications": ["Keep the architecture HYBRID_DOMAIN_AWARE_HEAT_FLOW.", "Implement HWR2 as the recommended candidate only after authorial numerical bindings and the age-zero policy are selected.", "Represent age, zero-age/unknown support and finite cell-age averaging explicitly; do not encode missingness with heatFl=0 alone.", "Use the producer's conductive surface flux as OrbData heatFl only through a source path that preserves the supplied value and uses consistent conductivity, heat production, boundary temperatures and thickness.", "Remove or explicitly route around legacy GDH1 age-based heatFl replacement and independently generated 95-km ocean thickness for ARCANA ocean nodes, with source qualification and stock-mode regression required later.", "Derive finite qLim guard bounds from the full authorized model ensemble and elevation domain; verify both grid-stage and Assign-stage correction conditions."],
+  "remaining_unknowns": ["No selected ARCANA thermal configuration or actual T0 ocean-age realization exists in the reviewed contracts.", "No source-supported ARCANA positive minimum age or finite ridge-axis conductive boundary is selected.", "The chosen producer flux is not demonstrated to yield a self-consistent OrbData steady layered geotherm under any selected ARCANA material values.", "The exact qualified patched-runtime integration status is not established by this report; the repository records qualification as NOT_QUALIFIED and the patch as pending fair qualification.", "No finite justified qLim envelope can be computed until age support and physical parameter bounds are governed."],
+  "smallest_unresolved_blocker": "Author one finite ARCANA ocean age-zero/ridge-axis boundary policy (or a minimum supported positive age derived from declared spatial/time resolution). Without this, the recommended HWR2 heat flux is unbounded as age approaches zero, no finite nonbinding qLim1 can be justified, and the existing ARCANA ocean OrbData route still overwrites producer heat flow with GDH1/qLim1 and derives its own 95-km reference thickness.",
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "architecture_A_B_C_reopened": false,
+    "producer_implementation": false,
+    "OrbData_or_SHELLS_run": false,
+    "ShellSet_modified": false,
+    "new_runtime_qualification": false,
+    "commit": false,
+    "push": false,
+    "existing_adapter_report_remains_authoritative_for_prior_gates": "R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.json"
+  },
+  "references": [
+    {"citation": "Holdt, White & Richards (2025), Revised Oceanic Plate Cooling Models, JGR Solid Earth 130, e2024JB029890", "doi": "10.1029/2024JB029890", "url": "https://doi.org/10.1029/2024JB029890"},
+    {"citation": "Grose & Afonso (2013), Comprehensive plate models for the thermal evolution of oceanic lithosphere", "url": "https://doi.org/10.1016/j.pepi.2012.12.001"},
+    {"citation": "Stein & Stein (1992), A model for the global variation in oceanic depth and heat flow with lithospheric age", "doi": "10.1038/359123a0", "url": "https://doi.org/10.1038/359123a0"},
+    {"citation": "Local source evidence: R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch and qualified-source extracts of OrbData5.f90/MOD_Data.f90; source patch hash recorded in R6_T0_ORBDATA_ARCANA_ADAPTER_AND_SOURCE_GENERALIZATION.json", "local_artifact": "patches/shellset/R6_ORBDATA_ARCANA_EXPLICIT_INPUTS.patch"}
+  ]
+}
