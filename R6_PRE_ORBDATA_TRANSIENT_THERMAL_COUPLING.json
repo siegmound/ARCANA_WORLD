@@ -1,0 +1,85 @@
+{
+  "schema":"R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_V1",
+  "decision":"R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_CLOSED__CONFIG_V1_AND_IMPLEMENTATION_READY",
+  "scope":{"static_analytical_only":true,"OrbData_or_SHELLS_executed":false,"ShellSet_modified":false,"staging_altered":false,"commit_or_push":false,"closed_authorities_reopened":false},
+  "legacy_orbdata_transient_semantics": {
+    "evidence":["R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_EXTRACTION_FAIR.md (qualified source excerpts)","Bird (2008), section 4.6"],
+    "steady_reference":"T_C=TSurf+(q_s/k_C)z-A_C*z^2/(2k_C); T_M=T_Moho+(q_Moho/k_M)x-A_M*x^2/(2k_M), x=z-h_C; q_Moho=q_s-A_C*h_C.",
+    "transient_term":"Bird describes a quadratic-in-depth perturbation to the steady profile, zero at top and bottom and maximal at mid-depth. Extracted Assign represents cooling_curvature c through delta_quadratic=-c/2 in each layer polynomial; in source use crust curvature and mantle curvature terms, with a reduced mantle starting flux. The heat-flow implementation uses qRed=q_s-A_C*h_C-c*h_C*k_M; this is the source of the k_C/k_M interface mismatch.",
+    "amplitude_and_boundary":"Transient amplitude is chosen to connect the mantle-base geotherm to TAsthK for fixed heat flow and thickness; curvature is zero when no correction is required. Bird describes the correction as transient cooling after rifting. Surface temperature and input heat flow define the top state; plate base is tied to asthenosphere temperature.",
+    "legacy_mutations":"If steady Moho test exceeds TAsthK, source reduces heatFl by -(TMoho-TAsthK)*k_C/h_C and reapplies q limits. If a transient internal maximum is hotter than asthenosphere, Bird's two-step legacy policy further reduces q until the maximum equals asthenosphere, then truncates lithosphere at that maximum. These operations mutate parent q/geometry and are forbidden in ARCANA mode.",
+    "thickness_sources":"Stock ocean thickness is GDH1-derived via a geometric-mean plate relation (including fixed 95 km plate scale); stock continents use S-wave travel-time thickness. The local ARCANA patch passes authored total continental thickness but still routes ocean through stock logic.",
+    "interpretation":"Use the piecewise heat equation/transient state concept; reject legacy state mutation as a fitting policy."
+  },
+  "steady_model_failure_interpretation": {
+    "finding":"The ~15030 K youngest-ocean steady result diagnoses use of a transient HWR surface flux inside an unrelated steady full-depth geotherm. It does not justify retuning the already governed material constants.",
+    "repair":"Use the transient HWR-2 profile as the ocean parent and project its boundary states into a conservative two-layer representation; use a derived transient heat-storage rate for fixed-geometry continents."
+  },
+  "arcana_transient_column_equations": {
+    "coordinate":"z positive downward; q=k*dT/dz is positive upward conductive flux for temperature increasing downward; h_C is crust depth, x=z-h_C in mantle.",
+    "heat_equation":"rho_i*Cp_i*dT_i/dt = d(q_i)/dz + A_i, q_i=k_i*dT_i/dz. Thus dq_i/dz=rho_i*Cp_i*Tdot_i-A_i.",
+    "general_layer_solution":"For constant effective Tdot_i over a layer: q_i(x)=q_i(0)+(rho_i*Cp_i*Tdot_i-A_i)*x; T_i(x)=T_i(0)+q_i(0)*x/k_i+(rho_i*Cp_i*Tdot_i-A_i)*x^2/(2*k_i).",
+    "continent_scalar_solve":"Use one deterministic column rate Tdot shared across crust and mantle for the minimum reference correction. Solve T_LAB=T_ad(H) analytically: Tdot=(T_ad(H)-T_base_steady)/B, where B=rho_C Cp_C[h_C^2/(2k_C)+h_C h_M/k_M]+rho_M Cp_M*h_M^2/(2k_M). This is a DERIVED effective transient rate, not a history primitive.",
+    "ocean_profile":"Do not force one constant Tdot onto HWR. Define the HWR-2 transient solution T_H(z,t)=T0+DeltaT*z/zp+(2*DeltaT/pi)*sum(n>=1)[sin(n*pi*z/zp)/n * exp(-kappa*n^2*pi^2*t/zp^2)]. q_H(z,t)=k_H*DeltaT/zp*[1+2*sum cos(n*pi*z/zp)*exp(...)]. Project by cubic Hermite segments in crust and mantle, matching T and conductive q/k_layer at each segment endpoint. The projection's local transient storage is derived from the heat-equation residual Tdot_i(z)=[d(k_i*T'_i)/dz+A_i]/(rho_i*Cp_i); no independent source term is added. Truncate series by the existing HWR deterministic convergence rule.",
+    "determinism":"Same authorities, series convergence tolerance, crossing search tolerance, and Hermite endpoint set yield replayable coefficients."
+  },
+  "surface_boundary_contract": {"temperature":"TSurf=T0=280 K nominal, existing 250-300 K sensitivity","heat_flow":"Preserve governed q_s exactly: continental authored classes; ocean HWR-2 q(t) for t>0; ridge 0.3 W m-2.","verification":"Projected top state is T(0)=TSurf and k_C*T'_C(0)=q_s. Never apply qLim1 clipping, GDH1 overwrite, or fit-induced flux reduction."},
+  "moho_conservation_contract": {
+    "requirements":["T_C(h_C)=T_M(0)","q_C(h_C)=q_M(0)"],
+    "continent":"Use the same qMoho=q_s+(rho_C Cp_C*Tdot-A_C)*h_C to initialize the mantle solution; same Moho T value initializes mantle.",
+    "ocean_projection":"Both Hermite segments share T_H(h_C) and q_H(h_C), so T and flux match exactly while gradients differ as q/k_C versus q/k_M.",
+    "smallest_source_change":"In curvature convention, compute mantle qRed from the crust-side interface flux: replace c*h_C*k_M by c*h_C*k_C (with source sign consistently checked). More generally pass shared Moho T and q, not duplicated expressions."
+  },
+  "lab_boundary_contract": {
+    "adiabat":"T_ad(z)=Tp*exp(alpha_M*g*z/Cp_M). Derive Tp from the already governed HWR basal temperature/depth pair: Tp=Tb*exp(-alpha_M*g*zp/Cp_M). For continental H=authored total lithosphere thickness, target T_LAB=T_ad(H).",
+    "positive_age_ocean":"Define LAB as the shallowest z in (h_C,zp] where T_HWR(z,t)>=T_ad(z); if none occurs before zp, use the HWR basal boundary zp, where temperatures are constructed to meet. Reject if h_LAB<=h_C.",
+    "ridge":"Do not evaluate t=0. Invert monotone HWR-2 flux relation for a derived positive effective age t_eff satisfying H(t_eff)=q_ridge. This index is DERIVED thermal state, never a change to authored age=0. Apply same first-crossing LAB criterion.",
+    "continuity":"LAB temperature equals adiabat by criterion; base flux may pass into convecting asthenosphere and need not equal the small adiabatic conductive flux."
+  },
+  "ocean_hwr2_projection": {
+    "meaning_zp":"HWR-2 zp is total finite thermal-plate depth to the lower isothermal boundary, not instantaneous mantle thickness.",
+    "lab_geometry":"h_LAB(t) derived from first HWR/adiabat crossing; mantle thickness=h_LAB-h_ocean_crust. Do not use zp directly except when crossing occurs at basal boundary.",
+    "projection_endpoints":"Crust Hermite: (0,TSurf,q_s/k_C) to (h_C,T_H(h_C),q_H(h_C)/k_C). Mantle Hermite: (h_C,T_H(h_C),q_H(h_C)/k_M) to (h_LAB,T_ad(h_LAB),q_H(h_LAB)/k_M). This exactly preserves q_s, Moho T/q and LAB T; gradients may jump at Moho according to material k.",
+    "positive_age_cases_nominal":[{"age_Ma":1.1491667,"q_W_m2":0.4741483,"h_LAB_m":17542,"h_mantle_m":11042},{"age_Ma":70,"q_W_m2":0.0612828,"h_LAB_m":100000,"h_mantle_m":93500},{"age_Ma":160,"q_W_m2":0.0476525,"h_LAB_m":100000,"h_mantle_m":93500}],
+    "fail_closed":"If no crossing before zp use zp only because HWR basal T/ad relation is coupled; if projected Hermite segment is nonmonotone, outside [TSurf,T_LAB], nonfinite, or h_LAB<=h_C, reject node without changing q or parent age."
+  },
+  "continental_transient_contract": {
+    "geometry":"Keep authored continental_reference_lithosphere_thickness_m exactly. h_M=H-h_C. No HWR thickness applied.",
+    "boundary":"Retain authored class q_s and TSurf; set LAB target to same mantle adiabat at fixed H.",
+    "derived_state":"Solve shared effective Tdot from the analytic formula above; calculate crust/Moho/mantle profile using layer properties, maintaining interface T/q.",
+    "nominal_examples":[{"class":"COLD_STABLE","q_W_m2":0.045,"hC_km":50,"H_km":200,"Tdot_K_s":3.6785e-14,"Tmoho_K":831.5,"qMoho_W_m2":0.01015,"qLAB_W_m2":0.02900,"TLAB_K":1721.3,"monotone":true},{"class":"NORMAL","q_W_m2":0.060,"hC_km":35,"H_km":135,"Tdot_K_s":-1.7541e-14,"Tmoho_K":912.0,"qMoho_W_m2":0.03028,"qLAB_W_m2":0.02133,"TLAB_K":1694.0,"monotone":true},{"class":"HOT_EXTENDED","q_W_m2":0.085,"hC_km":25,"H_km":80,"Tdot_K_s":-1.2992e-13,"Tmoho_K":984.5,"qMoho_W_m2":0.05591,"qLAB_W_m2":0.02651,"TLAB_K":1671.3,"monotone":true}],
+    "parent_mutation":false
+  },
+  "ridge_transient_contract": {
+    "authored_state":{"age_Ma":0,"q_W_m2":0.3,"support_cells":108},
+    "derived_mapping":{"effective_HWR_age_Ma":2.87057,"h_LAB_m":28378,"h_mantle_m":21878,"meaning":"Equivalent finite-age index obtained by inverting HWR-2 flux for the authored ridge q; not geological age."},
+    "result":"Finite heat boundary and adiabat crossing yield a thin nonadiabatic lithosphere. Bird's ~23 km result is comparison only; ARCANA derived mantle residual is ~21.9 km for current nominal crust parameterization.",
+    "fail_closed":"No positive HWR inverse or crossing outside (h_C,zp] means invalid ridge profile; do not evaluate exact age zero or invent thickness."
+  },
+  "failure_policy": {"rule":"FAIL_CLOSED_WITH_DIAGNOSTIC; never mutate governed q, age, crust thickness, or total geometry.","invalid_states":["nonfinite coefficient/profile","negative layer thickness","q or T discontinuity at Moho","LAB outside source geometry","nonmonotone/above-boundary internal maximum","profile outside material model domain","HWR inversion/crossing absent","sensitivity profile outside validity checks"],"diagnostic":"Record node/case, parent hashes, values, failed inequality and algorithm version; no silent clamp or density anomaly compensation."},
+  "derived_state_authority": {"q_surface":"GOVERNED_PARENT or existing DERIVED_REPLAYABLE_PHYSICAL_STATE by domain","crust_geometry":"AUTHORED_T0_FIELD","continental_total_lithosphere":"AUTHORED_T0_FIELD","ocean_hwr_age_flux":"DERIVED_REPLAYABLE_T0_STATE","ocean_LAB_and_ridge_effective_age":"DERIVED_REPLAYABLE_THERMAL_STATE","curvature_or_Hermite_coefficients/Tdot":"DERIVED_REPLAYABLE_THERMAL_STATE; never canonical primitive","serialized_OrbData_values":"NUMERICAL_RUNTIME_INPUT_ONLY"},
+  "static_profile_checks": {
+    "method":"Analytical heat-equation integration for continents and independent 256-mode HWR-2 Fourier profile plus cubic Hermite projection for ocean/ridge. No OrbData execution.",
+    "ocean_ridge_nominal":[{"case":"youngest positive ocean","hLAB_km":17.542,"hMantle_km":11.042,"qSurface":0.4741483,"qMoho":0.334290,"qLAB":0.037186,"TMoho_K":1115.64,"TLAB_K":1646.33,"min_cubic_gradient_K_per_m":0.01127,"finite":true,"monotone":true,"Moho_Tq_continuous":true,"result":"PASS"},{"case":"ocean 70 Ma","hLAB_km":100,"hMantle_km":93.5,"qSurface":0.0612828,"qMoho":0.060965,"qLAB":0.031246,"TMoho_K":400.50,"TLAB_K":1680.0,"min_cubic_gradient_K_per_m":0.00947,"finite":true,"monotone":true,"Moho_Tq_continuous":true,"result":"PASS"},{"case":"ocean 160 Ma","hLAB_km":100,"hMantle_km":93.5,"qSurface":0.0476525,"qMoho":0.047622,"qLAB":0.044747,"TMoho_K":373.84,"TLAB_K":1680.0,"min_cubic_gradient_K_per_m":0.01083,"finite":true,"monotone":true,"Moho_Tq_continuous":true,"result":"PASS"},{"case":"ridge effective state","effective_age_Ma":2.87057,"hLAB_km":28.378,"hMantle_km":21.878,"qSurface":0.3,"qMoho":0.260829,"qLAB":0.020840,"TMoho_K":844.47,"TLAB_K":1650.72,"min_cubic_gradient_K_per_m":0.00632,"finite":true,"monotone":true,"Moho_Tq_continuous":true,"result":"PASS"}],
+    "continent_nominal":"All 3 authored classes have positive q at surface, Moho and LAB; finite T; exact surface q; exact adiabat at fixed authored H; Moho T/q continuous. Effective Tdot and values listed in continental_transient_contract.",
+    "sensitivity":"HWR-2 is finite and bounded on governed age interval [1.1491667,160] Ma and compact positive parameter ranges; heat-flow envelope remains A0.6D's 0.0322191-0.5815391 W m-2. The maximum principle bounds HWR T between T0 and Tb. Every Hermite projection must also pass derivative/extremum checks over the selected sensitivity ensemble; invalid parameter combinations fail closed, never mutate parents. Continental closed-form denominator B is positive over all stated ranges, so Tdot is finite. For sampled 256 corners of A0.6G material bounds at representative crust thicknesses, monotone Moho/LAB flux conditions held at 153/256 COLD_STABLE, 227/256 NORMAL, and 239/256 HOT_EXTENDED corners; remaining corners are rejected by fail-closed feasibility checks. Ocean sensitivity crossings, thickness and Hermite derivatives are bounded and checked for each ensemble member.",
+    "temLim":"No solidus interpretation is assigned to source temLim. Set ARCANA temLim_C/M=1900 K only as a nonbinding numerical density-integration ceiling, not a physical solidus; it exceeds the conservative derived profile envelope (<1810 K from HWR Tb/zp/adiabat bounds and authored continental H). Reaching it is a fail-closed condition, never a temperature clip.",
+    "determinism":"Fourier series N=256/tolerance 1e-12 inherited from A0.6D; crossing search and cubic coefficients are deterministic; numerical tolerances must be recorded in replay metadata.",
+    "pathology":"No 15030-K steady reconstruction is used; all nominal projected profiles are monotone and bounded by their endpoints."
+  },
+  "shellset_patch_contract": {
+    "A_preserve_heatFl":"For complete ARCANA input, preserve nonzero FEG heatFl byte-for-byte through Assign; zero/missing uses separate validity mask and is rejected.",
+    "B_bypass_GDH1":"Guard age-law overwrite to stock-only mode.",
+    "C_bypass_qLim1":"ARCANA range-check against derived bounded producer envelope; never MIN-clip or lower-bound-mutate governed q.",
+    "D_transient":"ARCANA branch consumes age/domain, material tuple and derived transient-state coefficients; ocean/ridge uses HWR/Hermite projection, continent uses solved layer Tdot; compute conservative Moho T/q.",
+    "E_geometry":"Preserve authored crust and continental total thickness; consume derived ocean LAB mantle thickness; remove GDH1/95-km path and all silent truncation.",
+    "F_fail_closed":"Return diagnostic on nonfinite, nonmonotone, out-of-domain or boundary mismatch; no heat-flow reduction or thickness truncation.",
+    "legacy":"All behavior above is gated to complete explicit ARCANA mode; stock mode keeps legacy behavior unchanged.",
+    "implementation_performed":false
+  },
+  "config_v1_readiness":{"ready_to_construct":true,"decision":"R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_CLOSED__CONFIG_V1_AND_IMPLEMENTATION_READY","material_values":"Use A0.6G reference candidate selections and existing A0.6D/T0 authorities; no retuning.","required_bindings":["domain parent and support mask","explicit q_s and validity mask","crust geometry/material class","continental authored total thickness or ocean age/HWR tuple","adiabat relation and derived Tp","derived transient profile algorithm/version/tolerances","Moho conservative interface","fail-closed envelope"],"runtime_ready":false,"runtime_qualification":false},
+  "remaining_scientific_blockers":[],
+  "remaining_implementation_blockers":["Implement the ARCANA-only profile projection and transient-rate solve in source.","Implement explicit-heatflow, GDH1, qLim1 and geometry bypasses; retain legacy path otherwise.","Generate/serialize derived LAB geometry and profile coefficients with replay provenance.","Run fair qualification, stock regression and the prescribed full sensitivity ensemble before runtime qualification.","Complete FEG global coverage/UNKNOWN mask; preserve ZBASTH only in its separate downstream structural role, not as a thermal-column authority."],
+  "preserved_gates":{"PRE_ORBDATA_ready":false,"OrbData_executed":false,"SHELLS_executed":false,"ShellSet_modified":false,"runtime_qualification":false,"shellset_mechanics_authorized":false,"dt_selected":false,"T1_created":false,"forward_evolution_authorized":false,"canonical_T0_promoted":false,"staging_area_altered":false,"commit":false,"push":false},
+  "references":[{"citation":"Bird (2008), Stresses that drive the plates from below: Definitions, computational path, model optimization, and error analysis","doi":"10.1029/2007JB005460","use":"section 4.6 transient quadratic, q reduction and lithosphere truncation semantics; Earth values not transferred."},{"citation":"Holdt, White & Richards (2025), Revised Oceanic Plate Cooling Models","doi":"10.1029/2024JB029890","use":"HWR-2 transient thermal profile and heat flow equation."},{"artifact":"R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_EXTRACTION_FAIR.md","use":"qualified ShellSet source excerpt and exact Assign/Squeez call behavior."},{"artifact":"R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json","use":"material selections and provenance."},{"artifact":"R6_PRE_ORBDATA_HEAT_FLOW_NUMERICAL_BINDING.json","use":"HWR parameter values, age limits, Fourier controls and q envelope."}]
+}
