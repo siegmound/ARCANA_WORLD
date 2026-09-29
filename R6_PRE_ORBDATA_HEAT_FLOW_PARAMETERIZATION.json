@@ -1,0 +1,241 @@
+{
+  "schema": "arcana_worldsim.r6.pre_orbdata.heat_flow_parameterization.v1",
+  "decision": "R6_PRE_ORBDATA_HEAT_FLOW_PARAMETERIZATION_PARTIAL__TARGETED_RESEARCH_REMAINS",
+  "authority": {
+    "architecture": "HYBRID_DOMAIN_AWARE_HEAT_FLOW",
+    "architecture_status": "CLOSED; NOT REOPENED BY A0.6",
+    "continental_field": "GOVERNED_AUTHORED_CONTINENTAL_T0_REFERENCE_BOUNDARY_FIELD",
+    "ocean_parent": "oceanic_lithosphere_age_ma",
+    "ocean_parent_authority": "GOVERNED_T0_PHYSICAL_PARENT_FIELD",
+    "global_joined_field": "DERIVED_REPLAYABLE_T0_STATE",
+    "serialized_feg_field": "NUMERICAL_RUNTIME_INPUT_ONLY",
+    "qualified_shellset": {
+      "branch": "arcana-r6-runtime-capacity",
+      "commit": "62fd474f229b2676fd9d39c5def45137d22d2481",
+      "executable_sha256": "4c0044fe4332184d63408960a2237d4edb7da891b71f74b82bd1d5a83b27e918",
+      "governed_patch_sha256": "e844d78462442a7580469969da8641de9a0992c2a2ee7df0d2f36d6193d3eeb2"
+    },
+    "authority_sources": [
+      "R6_PRE_ORBDATA_HEAT_FLOW_ARCHITECTURE_CLOSURE.json",
+      "R6_PRE_ORBDATA_CONTINENTAL_HEAT_FLOW_AUTHORIAL_RATIFICATION.json",
+      "R6_PRE_ORBDATA_HEAT_FLOW_LITERATURE_RESEARCH.json",
+      "R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_EXTRACTION_FAIR.json"
+    ]
+  },
+  "architecture_reference": {
+    "selected_architecture": "HYBRID_DOMAIN_AWARE_HEAT_FLOW",
+    "continental_branch": "Use the ratified authored continental reference on exact native support.",
+    "oceanic_branch": "Derive a conductive oceanic surface heat-flow field from governed ocean age using a pinned finite-plate model, only on valid support.",
+    "join": "Use physical_crust_domain_id categorically; preserve UNKNOWN, lineage, and branch-specific uncertainty; never blend domain values.",
+    "runtime_authority": "A complete global field is replayable derived T0 state. FEG serialization is runtime support only.",
+    "no_architecture_reconsideration": true
+  },
+  "runtime_realization": {
+    "selected_production_location": "ARCANA_SIDE_PRODUCER",
+    "causal_chain": [
+      "oceanic_lithosphere_age_ma + physical_crust_domain_id",
+      "versioned ocean heat-flow model/configuration",
+      "ocean branch with applicability and uncertainty",
+      "categorical join with continental_reference_surface_heat_flow_w_m2",
+      "replayable global cell T0 heat-flow field",
+      "support-aware FEG mapping and NUMERICAL_RUNTIME_INPUT_ONLY serialization",
+      "explicit nonzero heatFl input to OrbData"
+    ],
+    "reason": "This is the already-closed hybrid architecture's producer and preserves model/input identity for deterministic replay. ShellSet internal qArray/age derivation cannot supply that ARCANA-owned joined replayable state.",
+    "replay_identity": [
+      "parent hashes for ocean age, physical domain, and continental heat-flow reference",
+      "model identity/version and configuration hash",
+      "young-ocean/applicability policy version",
+      "producer implementation/environment identity",
+      "projection algorithm/version/configuration, source-cell lineage and output hashes"
+    ],
+    "unknown_handling": "UNKNOWN remains nonnumeric and must fail closed before OrbData; do not encode UNKNOWN as exact zero. If any required FEG value remains UNKNOWN, the runtime field is incomplete.",
+    "internal_qarray_age_route": {
+      "active_condition": "needQ = (heatFl == 0); OrbData5 requests qArray when any nodal dQdTdA/heatFl is exactly zero.",
+      "selected_path": "INACTIVE only if every serialized node is an explicit valid nonzero value. A missing/unknown node must stop qualification rather than invoke fallback.",
+      "age_zero_assignment": "The qualified Assign age<=0 -> qLim1 assignment is inside needQ and therefore bypassed by explicit nonzero heatFl. This does not make qLim1 inactive as a general ceiling."
+    },
+    "explicit_nonzero_input_effects": {
+      "bypasses_qarray_and_age_law": true,
+      "bypasses_all_heat_flow_modification": false,
+      "pre_assign_limits": "OrbData5 applies qLimit=qLim0+dQL_dE*elevation to nonzero values and then caps all values at qLim1.",
+      "assign_limits": "Assign reapplies the floor and ceiling; conditional geotherm-consistency corrections can change heatFl and then reapply the limits.",
+      "qualified_runtime_effect_size": "UNKNOWN until a future separately authorized FAIR execution records before/after values."
+    }
+  },
+  "ocean_model": {
+    "production_model_selection": "UNRESOLVED; no exact ARCANA production model/version is defensible from current authority alone.",
+    "model_family": "FINITE_THICKNESS_PLATE_COOLING (already selected by the architecture closure)",
+    "leading_literature_candidate": {
+      "identity": "HWR-2 analytical finite-plate model",
+      "paper": "Holdt et al. (2025), Revised Oceanic Plate Cooling Models, JGR: Solid Earth, DOI 10.1029/2024JB029890",
+      "governing_equation": "H(t) = k (T - T0) / zp * [1 + 2 sum(i=1..N, exp(-kappa*i^2*pi^2*t/zp^2))], kappa=k/(rho_m*Cp).",
+      "units": "H in W m-2; k in W m-1 K-1; T,T0 in K or temperature difference K; zp in m; kappa in m2 s-1; t in seconds in the equation (ocean age input in Ma must be converted); rho_m in kg m-3; Cp in J kg-1 K-1.",
+      "published_reference_parameters_not_arcana_selections": {
+        "k": {"value": 3.800, "units": "W m-1 K-1", "role": "constant conductivity in HWR-2", "source_role": "published fitted model parameter", "domain": "Earth calibration model", "uncertainty": "model study reports a parameter fit; ARCANA transfer range not established", "selection_status": "CANDIDATE_ONLY"},
+        "alpha": {"value": 3.20e-5, "units": "K-1", "role": "thermal expansivity for the coupled plate model; not directly in the heat-flow equation above", "source_role": "published reference-model parameter", "domain": "Earth calibration model", "uncertainty": "ARCANA transfer range not established", "selection_status": "CANDIDATE_ONLY"},
+        "Cp": {"value": 1171.52, "units": "J kg-1 K-1", "role": "specific heat in diffusivity", "source_role": "published fitted/reference model parameter", "domain": "Earth calibration model", "uncertainty": "ARCANA transfer range not established", "selection_status": "CANDIDATE_ONLY"},
+        "T": {"value": 1326, "units": "degC", "role": "basal mantle temperature in the published reference model", "source_role": "published joint-fit parameter", "domain": "Earth calibration model", "uncertainty": "paper reports joint-fit/model uncertainty; ARCANA transfer range not established", "selection_status": "CANDIDATE_ONLY"},
+        "zp": {"value": 105, "units": "km", "role": "equilibrium plate thickness", "source_role": "published joint-fit parameter", "domain": "Earth calibration model", "uncertainty": "paper reports joint-fit/model uncertainty; ARCANA transfer range not established", "selection_status": "CANDIDATE_ONLY"},
+        "zr": {"value": 2.50, "units": "km", "role": "ridge depth for coupled subsidence fit; not an input to H(t) alone", "source_role": "published model setting", "domain": "Earth calibration model", "uncertainty": "ARCANA transfer range not established", "selection_status": "CANDIDATE_ONLY"}
+      },
+      "candidate_assumptions_and_limits": [
+        "1-D conduction in a horizontally translating plate with constant properties for the analytical HWR-2 form.",
+        "Conductive surface heat flow, not total conductive-plus-hydrothermal ocean heat loss.",
+        "Finite plate thickness/basal heat resupply gives mature/old-age flattening; unlike half-space cooling, it does not continue cooling indefinitely.",
+        "The model is calibrated against modern-Earth depth and heat-flow data; this is not ARCANA 210 Ma observational authority.",
+        "Holdt et al. describe HWR-2 and variable-property HWR-3 as similarly supported; HWR-3 may better represent thermal structure. This leaves structural-model choice open.",
+        "The analytical series is singular as t approaches zero; a finite truncation is numerical series convergence, not a physical ridge regularization."
+      ],
+      "source": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2024JB029890"
+    },
+    "comparison_candidates": [
+      {"identity": "HWR-3", "role": "published variable-property alternative; comparable fit, different material complexity", "status": "STRUCTURAL_ALTERNATIVE_NOT_SELECTED"},
+      {"identity": "GDH1 / Stein & Stein (1992)", "role": "historical empirical plate relation; ShellSet source lineage", "status": "NOT_SELECTED_BY_SHELLSET_DEFAULT; ARCANA_TRANSFER_NOT_ADJUDICATED", "source": "https://www.nature.com/articles/359123a0"},
+      {"identity": "half-space cooling", "role": "young-age conductive limiting/reference model; continued cooling at old age", "status": "NOT_SELECTED_FOR_FULL_AGE_DOMAIN"}
+    ],
+    "valid_age_domain": {
+      "mathematical": "HWR-2 equation is finite for positive age; the t=0 limit is singular. Its published fit/applicability is tied to the study's modern-Earth observations and model assumptions, not an established ARCANA domain.",
+      "arcana": "No ARCANA age validity interval is authorized yet. Do not extrapolate into unresolved young/rift support or claim Earth calibration validates the synthetic age-to-boundary-distance field."
+    },
+    "parameter_transfer_rationale": "TARGETED_RESEARCH_REQUIRED: establish whether the B-v2 Earth-like authored realization warrants transfer of an Earth-calibrated cooling law, which model form, and which parameter uncertainty/covariance. The GDH1 bathymetry model identity does not itself authorize a heat-flow law."
+  },
+  "young_ocean_policy": {
+    "age_zero": {"classification": "MODEL_DOMAIN_UNKNOWN", "policy": "Keep heat-flow output UNKNOWN at age==0 until a separately governed finite ridge/accretion model is selected. Never substitute qLim1 as physical output."},
+    "positive_very_young": {"classification": "MODEL_DOMAIN_UNKNOWN_PENDING_APPLICABILITY", "policy": "Fail closed where the selected model's young-age applicability has not been justified. No numerical cutoff is selected."},
+    "ridge_rift": {"classification": "MODEL_DOMAIN_UNKNOWN", "policy": "No separate branch selected; preserve UNKNOWN until finite-width/accretion and any advective/hydrothermal scope are governed."},
+    "hydrothermal": "No universal scalar correction is authorized. Any claim must distinguish measured conductive flux from total advective-plus-conductive loss and represent the heterogeneous young-crust process.",
+    "distinctions": {
+      "PHYSICAL_MODEL_OUTPUT": "Positive-age output of a selected, in-domain cooling law; none is yet authorized for ARCANA.",
+      "PHYSICAL_REGULARIZATION": "None selected; a series cutoff, clamp, or qLim cap is not a physical ridge solution.",
+      "MODEL_DOMAIN_UNKNOWN": "Selected fail-closed policy for unsupported age-zero, young, and ridge/rift values.",
+      "NUMERICAL_RUNTIME_GUARD": "ShellSet qLim values are runtime guards/configuration and must not be reinterpreted as physical model output."
+    }
+  },
+  "qlim_governance": {
+    "qualified_source_values": {"qLim0_W_m2": 0.0, "dQL_dE_W_m2_per_m": 0.0, "qLim1_W_m2": 0.3},
+    "source_status": "Compiled PARAMETER constants in the qualified OrbData5 source, not user parameter-file bindings.",
+    "qLim0": {"operation": "lower bound qLimit=qLim0+dQL_dE*elevation; heatFl=MAX(heatFl,qLimit)", "selected_path_status": "ACTIVE_GUARD", "can_modify_explicit_nonzero": true, "current_effect_for_positive_flux": "With qualified zero floor and zero slope, nonnegative positive producer values are not changed by this floor; negative values would be raised. This conditional statement does not qualify post-correction values or another source build.", "classification": "NUMERICAL_RUNTIME_GUARD_OR_LIMIT", "governance": "Must be explicitly accepted with diagnostics or proved nonbinding over the full valid input and correction range; otherwise separately reviewed source/configuration change and requalification."},
+    "dQL_dE": {"operation": "Sets elevation dependence of the lower bound qLimit=qLim0+dQL_dE*elevation.", "selected_path_status": "ACTIVE_AS_PART_OF_FLOOR", "can_modify_explicit_nonzero": true, "current_effect_for_positive_flux": "Current compiled slope is zero, so elevation does not change the floor. No ARCANA physical elevation law is implied.", "classification": "NUMERICAL_RUNTIME_GUARD_OR_LIMIT", "governance": "Same as qLim0; no ARCANA value/range selected."},
+    "qLim1": {"operation": "Upper bound heatFl=MIN(heatFl,qLim1), applied before Assign and again after conditional corrections; also used by internal age<=0 fill only in needQ branch.", "selected_path_status": "ACTIVE_AS_GLOBAL_CEILING; AGE_ZERO_FILL_BRANCH_INACTIVE_FOR_EXPLICIT_NONZERO_INPUT", "can_modify_explicit_nonzero": true, "classification": "NUMERICAL_RUNTIME_GUARD_OR_LIMIT", "governance": "Cannot be treated as inactive for the selected path. The 0.3 W m-2 cap may clip a governed model output; demonstrate non-binding for every valid T0 input and correction or require separately reviewed source/configuration change and requalification. Do not call it a physical upper bound."},
+    "decision": "NO qLim control is silently accepted as a harmless pass-through. Their qualification requires before/after field evidence and an explicit governance decision; qLim1 makes current non-mutating runtime unproven."
+  },
+  "producer_parameter_contract": {
+    "schema_version": "NOT_ISSUED; requires exact model, transfer rationale, and young applicability decision first.",
+    "contract_status": "INCOMPLETE; no machine-consumable producer configuration emitted.",
+    "required_fields": ["model identity/version", "equation and output meaning", "parameter values/ranges/units/roles/sources/uncertainty", "age-validity mask", "age-zero and young/rift policy", "model-form member identity", "parent hashes", "producer implementation/environment identity"],
+    "selected_values": [],
+    "candidate_values_are_not_selected": true,
+    "producer_and_orbdata_parameter_separation": "Ocean cooling k/Cp/temperature/thickness belong to the heat-flow producer only unless governance explicitly binds them to OrbData's material properties as the same physical quantities. No implicit copying/binding is authorized."
+  },
+  "orbdata_thermal_configuration": {
+    "status": "UNRESOLVED_SPECIALIST_CONFIGURATION; no ARCANA material parameters selected.",
+    "evidence_boundary": "The qualified extraction proves these are runtime inputs/call-site controls. Values in INPUT/iEarth5-049.in are Earth example defaults, not ARCANA authority or candidate selections.",
+    "parameters": {
+      "alphaT": {"active_in_assign": true, "units": "K-1 or degC-1", "scope": "crust/mantle arrays in source; ARCANA material/domain binding unresolved", "literature_sufficient": false, "sensitivity": "bounded material-property sensitivity after source/configuration selection"},
+      "conduc": {"active_in_assign": true, "units": "W m-1 K-1", "scope": "crust/mantle arrays; ocean producer conductivity remains separately governed unless explicitly bound", "literature_sufficient": false, "sensitivity": "bounded material-property and shared-quantity binding sensitivity"},
+      "TSurf": {"active_in_assign": true, "units": "K", "scope": "global parameter in current interface; ARCANA spatial uniformity unresolved", "literature_sufficient": false, "sensitivity": "bounded boundary-temperature sensitivity"},
+      "temLim": {"active_in_assign": true, "units": "K", "scope": "crust/mantle arrays; material/domain melting limits unresolved", "literature_sufficient": false, "sensitivity": "bounded threshold sensitivity and active-layer diagnostics"},
+      "TAsthK": {"active_in_assign": true, "units": "K", "scope": "upper-mantle reference supplied to Assign; domain variation unresolved", "literature_sufficient": false, "sensitivity": "bounded geotherm/reference-temperature sensitivity"},
+      "TADIAB": {"active_in_selected_orbdata_path": "YES, upstream input to TAsthK calculation", "units": "K", "scope": "global input in current implementation; ARCANA scope unresolved", "literature_sufficient": false, "sensitivity": "joint with GRADIE and TAsthK"},
+      "GRADIE": {"active_in_selected_orbdata_path": "YES, slope in TAsthK calculation", "units": "K m-1", "scope": "global input in current implementation; ARCANA scope unresolved", "literature_sufficient": false, "sensitivity": "joint with TADIAB and reference depth"},
+      "ZBASTH": {"active_in_orbdata_heatflow_path": false, "active_in_downstream_shellset_configuration": true, "units": "m", "scope": "mechanical upper-mantle layer boundary", "literature_sufficient": "not adjudicated for R6", "sensitivity": "defer until mechanics are authorized"},
+      "radio": {"active_in_assign": true, "units": "W m-3", "scope": "crust/mantle arrays; radiogenic source distribution unresolved", "literature_sufficient": false, "sensitivity": "bounded, correlated with conductivity and basal/geotherm terms"},
+      "rhoBar": {"active_in_assign": true, "units": "kg m-3", "scope": "crust/mantle arrays", "literature_sufficient": false, "sensitivity": "bounded and correlated with thermal expansion/composition"},
+      "rhoAst": {"active_in_assign": true, "units": "kg m-3", "scope": "asthenosphere reference density", "literature_sufficient": false, "sensitivity": "bounded density/geotherm sensitivity"},
+      "rhoH2O": {"active_in_assign": true, "units": "kg m-3", "scope": "water-column density; material/domain boundary treatment unresolved", "literature_sufficient": false, "sensitivity": "bounded where water loading enters the selected runtime equations"},
+      "delta_rho_limit": {"active_in_assign": true, "units": "kg m-3", "scope": "density-anomaly numerical/model limit", "literature_sufficient": false, "sensitivity": "bounded guard sensitivity; no value selected"}
+    },
+    "authority_decision": "Material-specific versus global values require ARCANA thermal/material governance. A parameter appearing in an Earth sample input is not a governed value. Share a value with the ocean producer only under an explicit single-authority binding contract."
+  },
+  "projection_contract": {
+    "target": "64,442 FEG nodes; support generation remains an implementation blocker until canonical partition/mesh payload is available.",
+    "existing_adapter": "project_cell_field_to_nodes records incident cells and deterministic selection; continuous fields use lexicographically first incident cell, categorical values require unanimous known incident agreement, and UNKNOWN incident support is preserved.",
+    "satisfies": ["deterministic numerical support", "source-cell lineage capture", "categorical unanimity when invoked categorically", "UNKNOWN preservation", "no smoothing", "no assertion of resolution increase"],
+    "gap": "The generic continuous projector alone does not couple heat-flow selection to unanimous physical_crust_domain_id and continental thermal-class support. It can select a first incident cell at mixed support. The current heat-flow field is not yet projected/bound through a field-aware policy.",
+    "required_change": "Add/use a heat-flow-specific gate: first require homogeneous, known physical-domain and (on continental branch) thermal-class support; only then project branch value and retain all incident source IDs plus selected value lineage. Mixed domain/class, any UNKNOWN input, and unsupported age applicability remain UNKNOWN. Never average or smooth across branch classes.",
+    "projection_authority": "NUMERICAL_DERIVED_SUPPORT_ONLY; no increase in physical resolution."
+  },
+  "uncertainty_contract": {
+    "continental_authored_field": "Preserve authored thermal-class provenance; no numerical uncertainty distribution exists, so do not invent one. Metadata plus separately governed sensitivity requirement.",
+    "ocean_structural_model": "Keep HWR-2/HWR-3/GDH1 or other alternatives as distinct model-form alternatives; ensemble if they change downstream decisions or outputs.",
+    "ocean_parameters": "Use literature-backed joint/correlated ranges only after transfer is justified; bounded sensitivity or targeted ensemble, not independent arbitrary sampling.",
+    "young_rift_applicability": "Separate applicability uncertainty; unsupported values remain UNKNOWN. Compare an explicit ridge/accretion branch only after it is defined.",
+    "projection_support": "Track categorical agreement, source-cell IDs, support coverage, UNKNOWN counts, and convergence/error evidence; numerical error bound currently absent.",
+    "orbdata_material_geotherm": "Keep material/geotherm parameter uncertainty separate from producer uncertainty; correlated bounded sensitivity by material family, with ensembles only for consequential combinations.",
+    "no_global_cartesian_ensemble": true
+  },
+  "sensitivity_contract": {
+    "required_before_runtime_qualification": [
+      "ocean model-form alternatives over valid positive-age support",
+      "correlated cooling-model parameters and old-age behavior",
+      "young/rift applicability boundary and any separate ridge branch",
+      "qLim before/after values and each conditional geotherm correction magnitude",
+      "domain/class boundary projection coverage and lineage",
+      "OrbData material/geotherm parameters by supported material domain",
+      "same physical quantity binding, especially conductivity, if shared"
+    ],
+    "method": "Stage parameter blocks and run bounded/local ensembles; add joint dimensions only where sensitivity interactions affect a stated acceptance decision. Do not perform a global Cartesian product by default.",
+    "runtime_execution": "Not authorized in A0.6."
+  },
+  "values_selected": [
+    {"quantity": "architecture", "value": "HYBRID_DOMAIN_AWARE_HEAT_FLOW", "authority": "A0.5C architecture closure"},
+    {"quantity": "ocean producer location", "value": "ARCANA_SIDE_PRODUCER", "authority": "closed architecture and deterministic replay contract"},
+    {"quantity": "global joined field authority", "value": "DERIVED_REPLAYABLE_T0_STATE", "authority": "closed architecture"},
+    {"quantity": "FEG serialized payload authority", "value": "NUMERICAL_RUNTIME_INPUT_ONLY", "authority": "closed architecture"},
+    {"quantity": "unsupported age-zero/young/rift output", "value": "MODEL_DOMAIN_UNKNOWN; fail closed", "authority": "no finite model/applicability authorized; avoids invented physical or numerical fill"}
+  ],
+  "values_still_unresolved": [
+    "exact ocean heat-flow model/version and Earth-to-ARCANA transfer rationale",
+    "ocean cooling-model numerical parameter set and covariance",
+    "positive-young validity boundary and finite ridge/accretion/hydrothermal treatment",
+    "qLim governance and whether qualified ShellSet can be shown non-mutating for every valid field",
+    "OrbData material/geotherm values and global versus material/domain bindings",
+    "projection implementation and actual 64,442-node support/lineage evidence",
+    "valid physical zero representation distinct from ShellSet's exact-zero missing sentinel"
+  ],
+  "targeted_research_required": [
+    "Assess whether the authored B-v2 Earth-like tectonic context permits transfer of HWR-2, HWR-3, GDH1, or another finite-plate law to its synthetic age field; compare model-form predictions using a declared age support.",
+    "Establish the model's valid positive-young range and what physical ridge/accretion or hydrothermal processes are omitted; do not infer a numeric cutoff from a numerical series truncation.",
+    "Obtain and govern parameter covariance/uncertainty for the selected cooling model and distinguish producer conductivity from OrbData conductivity.",
+    "Select literature/material-family constraints and correlations for OrbData conductivity, expansion, radiogenic production, density, surface temperature, adiabat and melting limits in the ARCANA model context.",
+    "Determine whether qualified ShellSet qLim floors/ceiling and conditional geotherm corrections can be retained without altering the governed field; otherwise propose separately reviewed source/configuration changes and FAIR requalification.",
+    "Validate mixed-domain and mixed-thermal-class FEG node support after canonical partition and mesh inputs are available."
+  ],
+  "implementation_changes_required": [
+    "Implement a deterministic ARCANA ocean heat-flow producer after model/configuration authority is closed, with explicit applicability/UNKNOWN and provenance.",
+    "Implement domain-aware branch join and heat-flow-specific FEG projection; existing generic adapter is not sufficient alone for mixed support.",
+    "Provide explicit nonzero values for every runtime node or fail before OrbData; never serialize UNKNOWN as zero.",
+    "Expose/record qLim and post-geotherm correction before/after diagnostics in an authorized FAIR runtime qualification; if they mutate governed inputs, source/configuration governance and requalification are required.",
+    "Canonical 64,442-node projection cannot be materialized until the required partition/mesh payload is available."
+  ],
+  "remaining_scientific_blockers": [
+    "Exact ocean model transfer and parameterization.",
+    "Young/rift/age-zero applicability and physical branch.",
+    "qLim and geotherm correction disposition.",
+    "OrbData material/geotherm parameter authority and uncertainty.",
+    "Projection boundary policy acceptance and physical support uncertainty."
+  ],
+  "remaining_implementation_blockers": [
+    "Ocean producer, categorical join, and replay identity implementation.",
+    "Field-aware 64,442-node projection and canonical partition/mesh input availability.",
+    "FAIR verification of explicit heat-flow pass-through versus clamps/corrections and exact-zero sentinel avoidance."
+  ],
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false,
+    "canonical_state_changed": false,
+    "shellset_modified": false,
+    "runtime_executed": false,
+    "config_candidate_created": false
+  },
+  "literature_references": [
+    {"citation": "Holdt et al. (2025), Revised Oceanic Plate Cooling Models", "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2024JB029890", "use": "HWR equations, published candidate parameters, calibration/model-form limitations"},
+    {"citation": "Stein & Stein (1992), A model for the global variation in oceanic depth and heat flow with lithospheric age", "url": "https://www.nature.com/articles/359123a0", "use": "GDH1 lineage and comparator, not automatic ARCANA model authority"},
+    {"citation": "Stein & Stein (1994), Constraints on hydrothermal heat flux through the oceanic crust", "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/93JB02222", "use": "Hydrothermal observational/model limitations"}
+  ]
+}
