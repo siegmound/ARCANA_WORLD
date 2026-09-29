@@ -1,0 +1,187 @@
+{
+  "schema": "arcana_worldsim.r6.pre_orbdata.heat_flow_architecture_closure.v1",
+  "decision": "R6_PRE_ORBDATA_HEAT_FLOW_ARCHITECTURE_CLOSED__HYBRID_DOMAIN_AWARE__PARAMETERIZATION_PENDING",
+  "selected_architecture": "HYBRID_DOMAIN_AWARE_HEAT_FLOW",
+  "authority_basis": {
+    "continental_ratification": "R6_PRE_ORBDATA_CONTINENTAL_HEAT_FLOW_REFERENCE_BOUNDARY_AUTHORITY_RATIFIED__GLOBAL_HEAT_FLOW_ARCHITECTURE_OPEN",
+    "continental_field": "continental_reference_surface_heat_flow_w_m2",
+    "continental_field_normalized_sha256": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+    "ocean_age_field": "oceanic_lithosphere_age_ma",
+    "ocean_age_field_normalized_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+    "physical_domain_field": "physical_crust_domain_id",
+    "physical_domain_field_normalized_sha256": "814acfdde0285bf6bd549ae8c06e853da5855acb9e78187359a5230fe47cdfd1",
+    "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+    "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION"
+  },
+  "architecture_contract": {
+    "continental": "Use the ratified authored continental T0 reference boundary field on its exact native support.",
+    "oceanic": "Derive age-dependent heat flow from governed ocean age using a versioned finite-plate-family cooling model, only where that model's applicability policy is valid.",
+    "young_rift_ocean": "Require an explicitly governed young/rift treatment; until selected, heat flow is UNKNOWN/unresolved and execution fails closed.",
+    "domain_authority": "physical_crust_domain_id is the categorical authority for continental/ocean branch selection; domain IDs are never interpolated numerically.",
+    "join": "Join the branch-specific fields under categorical support, source lineage, applicability, and uncertainty; never blend continental reference authority with ocean-model authority across a mixed boundary.",
+    "global_product": "A deterministically replayable global T0 derived field, not a new independent canonical authored heat-flow field.",
+    "runtime_product": "The serialized 64,442-node FEG heat-flow array is NUMERICAL_RUNTIME_INPUT_ONLY derived support for OrbData.",
+    "not_implied": ["no final cooling model/version selected", "no numerical parameters selected", "no ShellSet limit values selected", "no OrbData/SHELLS execution", "no PRE_ORBDATA authorization"]
+  },
+  "continental_branch": {
+    "parent_field": "continental_reference_surface_heat_flow_w_m2",
+    "authority_class": "GOVERNED_AUTHORED_T0_PARENT_FIELD; AUTHORIAL_T0_PRIMITIVE within the ratified B-v2 candidate lineage",
+    "semantic": "GOVERNED_AUTHORED_CONTINENTAL_T0_REFERENCE_BOUNDARY_FIELD",
+    "support": "Existing 180x360 cell-centered land/thermal-class support only; 14,258 cells populated; field hash 234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f.",
+    "earth_data_authority": false,
+    "derivation_warning": "Synthetic authored class values; not derived merely from crustal thickness, not an observed Earth heat-flow grid, and not a unique continental geotherm.",
+    "projection": "Deterministic support-aware projection may supply numerical support only; preserve class/source-cell lineage and do not claim increased physical resolution.",
+    "later_change": "Refinement/replacement requires an explicit higher-authority physical stage; no silent overwrite."
+  },
+  "oceanic_branch": {
+    "parent_field": "oceanic_lithosphere_age_ma",
+    "authority_class": "GOVERNED_T0_PHYSICAL_PARENT_FIELD within the ratified B-v2 candidate lineage",
+    "normalized_sha256": "aed3d311296947aad0f4cc041cfbb1b2784763704b23b1a3e746d2079a607dc2",
+    "model_family": "FINITE_THICKNESS_PLATE_COOLING",
+    "model_identity_version": "PENDING_A0_6_SELECTION",
+    "output_state_class": "DERIVED_REPLAYABLE_T0_STATE",
+    "flux_semantics": "The chosen model must declare whether output is conductive surface heat flux or total heat loss; no hydrothermal total-flux claim is implied by a conductive cooling law.",
+    "applicability": "Only valid age/domain support; emit UNKNOWN when inputs are missing or model validity fails.",
+    "earth_authority": "No present-day Earth heat-flow field becomes ARCANA state; any Earth-derived model requires an explicit transfer rationale and model provenance."
+  },
+  "young_ocean_branch": {
+    "status": "UNRESOLVED_POLICY_REQUIRED_BEFORE_FIELD_COMPLETION",
+    "age_zero": "Age zero remains a valid authored age state but the conductive age law alone does not supply finite physical heat flow there.",
+    "policy": "Select a governed ridge/accretion/young-ocean treatment with explicit validity limits, or preserve heat flow as UNKNOWN outside the chosen model's validity domain.",
+    "qLim1": "Do not substitute ShellSet qLim1 for ARCANA physical age-zero heat flow.",
+    "hydrothermal": "No universal scalar correction is authorized; distinguish conductive flux from total advective-plus-conductive heat loss."
+  },
+  "domain_join": {
+    "categorical_field": "physical_crust_domain_id",
+    "branch_mapping": {"1": "OCEANIC_MODEL", "2-6": "CONTINENTAL_REFERENCE"},
+    "feG_source_support_rule": "Project only when incident source-cell support resolves the branch and relevant source class. Preserve source cell IDs, class/domain IDs, selection method/weights and coverage.",
+    "mixed_physical_domain_support": "UNKNOWN unless a separately governed boundary rule resolves it; do not blend ocean and continental values.",
+    "mixed_continental_thermal_class_support": "UNKNOWN unless a deterministic categorical rule is explicitly governed; do not average different class references.",
+    "physical_crust_domain_ids_interpolated": false,
+    "fluxes_blended_across_domains": false,
+    "physical_resolution_increased": false
+  },
+  "unknown_policy": {
+    "rule": "Unknown, unsupported, or out-of-applicability values remain UNKNOWN and block OrbData input completion unless an explicitly authorized producer supplies a value.",
+    "unknown_to_zero": false,
+    "zero_sentinel": "Exact zero heat flow triggers ShellSet needQ/qArray behavior. Do not serialize UNKNOWN as zero or allow an accidental zero to invoke the legacy fallback.",
+    "valid_physical_zero": "Must be distinguished from missing by an authorized model/interface contract; otherwise fail closed."
+  },
+  "state_authority_contract": {
+    "continental_reference_surface_heat_flow_w_m2": {"class": "CANONICAL_GOVERNED_AUTHORED_T0_PARENT_FIELD", "scope": "Ratified B-v2 candidate lineage; continental thermal-class cell support only; canonical candidate is not globally promoted."},
+    "oceanic_lithosphere_age_ma": {"class": "GOVERNED_T0_PHYSICAL_PARENT_FIELD", "scope": "Ocean age support in ratified B-v2 candidate lineage."},
+    "ocean_ocean_model_heat_flow": {"class": "DERIVED_REPLAYABLE_T0_STATE", "independent_canonical_authority": false},
+    "global_joined_t0_heat_flow": {"class": "DERIVED_REPLAYABLE_T0_STATE", "independent_canonical_authority": false},
+    "uncertainty_support_and_lineage": {"class": "DERIVED_STATE_METADATA", "persist_with_field": true}
+  },
+  "runtime_payload_contract": {
+    "payload": "Serialized 64,442-node OrbData FEG heat-flow field",
+    "class": "NUMERICAL_RUNTIME_INPUT_ONLY",
+    "source": "Global joined replayable T0 field projected to the approved FEG support.",
+    "canonical_authority_created": false,
+    "lineage_required": ["node identity", "source parent cell IDs", "physical/domain and thermal class", "branch/model identity", "projection rule", "uncertainty/applicability", "unknown/coverage state"],
+    "readiness": "NOT_READY; field generation, FEG projection, zero-sentinel path and FAIR input qualification remain incomplete."
+  },
+  "replay_identity_contract": {
+    "identity_inputs": [
+      "continental parent-field hash",
+      "ocean age-field hash",
+      "physical domain-field hash",
+      "continental thermal-class field hash",
+      "ocean model identity and version",
+      "ocean model parameter configuration hash",
+      "young-ocean/age-zero policy identity and version",
+      "projection algorithm/version and configuration",
+      "uncertainty configuration/member identity",
+      "source field-package and canonical parent identities",
+      "derived producer implementation/version and environment identity"
+    ],
+    "invalidation_rule": "Changing any identity input creates a different derived-state replay identity and requires recomputation/revalidation of affected support.",
+    "outputs_to_hash": ["ocean heat-flow field", "joined cell field", "FEG nodal projection", "runtime serialization"]
+  },
+  "uncertainty_contract": {
+    "continental_authored_reference": "Separate class-conditioned uncertainty/provenance metadata; no numeric interval is invented. Current authorial value selection is deterministic and has no generated ensemble.",
+    "ocean_model_structural": "Separate model-family/structural alternatives; retain model identity and validity, do not collapse into parameter spread.",
+    "ocean_parameter": "Parameter covariance/ranges attached to the selected model; ensemble dimensions governed in A0.6.",
+    "young_ocean_applicability": "Separate validity/applicability uncertainty and ridge/hydrothermal structural alternatives; unsupported nodes remain UNKNOWN.",
+    "projection_support": "Separate categorical agreement, source-cell lineage, coverage and numerical projection error diagnostics.",
+    "combination_rule": "Preserve these as distinct dimensions; no single scalar uncertainty is authorized as a substitute."
+  },
+  "rejected_or_deferred_architectures": {
+    "A_EXPLICIT_GLOBAL_HEAT_FLOW_FIELD": {
+      "status": "DEFERRED_NOT_SELECTED_FOR_DUPLICATION_AND_REPLAY_GOVERNANCE",
+      "not_physically_impossible": true,
+      "rationale": [
+        "A separately authored global field would duplicate the already governed continental reference and independently derived ocean branch unless it replaced both with explicit higher-authority authorship.",
+        "It would require additional independent global materialization with no present ocean values or global support authority.",
+        "It weakens causal/replay provenance by obscuring the governed ocean age/model and continental parent-field dependencies.",
+        "No contract currently calls for an independently authored global flux field."
+      ],
+      "reconsideration": "Only if a later explicit authorial stage elects a complete global field as the primary physical parent and retires/roles the branch sources without duplication."
+    },
+    "B_FULLY_DERIVED_HEAT_FLOW": {
+      "status": "DEFERRED_NOT_SELECTED_GIVEN_RATIFIED_CONTINENTAL_PARENT",
+      "not_scientifically_invalid": true,
+      "rationale": [
+        "The current crustal and lithosphere thickness fields alone do not uniquely determine continental surface heat flow.",
+        "A derived continental model would require new governed assumptions about radiogenic heat production, vertical source distribution, material conductivity and basal thermal conditions.",
+        "ARCANA already has a ratified authored continental T0 reference field on its declared support; discarding it as the sole branch authority would require explicit higher-authority governance.",
+        "A derived continental geotherm/heat-flow refinement may still exist downstream as a separate, validated product; this architecture does not disallow it."
+      ]
+    }
+  },
+  "remaining_A0_6_choices": {
+    "heat_flow_producer_and_ocean_specialist": [
+      "Exact finite-plate-family cooling model identity/version and ARCANA transfer rationale.",
+      "Ocean model's thermal/basal/plate parameters and flux definition (conductive flux versus total heat loss).",
+      "Young/rift-ocean treatment, validity range, hydrothermal/accretion scope and age-zero finite representation.",
+      "Ocean-model parameter uncertainty/covariance and required model-form ensemble alternatives."
+    ],
+    "shellset_orbdata_heat_flow_routing_configuration": [
+      "qLim0 floor governance and value.",
+      "dQL_dE elevation-slope governance and value.",
+      "qLim1 ceiling governance/value or replacement semantics; decouple it from physical age-zero behavior.",
+      "Whether downstream geotherm consistency corrections are accepted and what sensitivity/diagnostics qualify them.",
+      "Exact-zero qArray sentinel avoidance or an explicitly authorized zero/missing representation and qualified interface path."
+    ],
+    "downstream_orbdata_material_geotherm_configuration": [
+      "Thermal conductivity by material/domain and its relationship to, but separate identity from, any ocean cooling-model conductivity.",
+      "alphaT by material/domain and active use in OrbData geotherm/density correction; do not assume it is interchangeable with a cooling-model expansivity parameter.",
+      "TSurf boundary/reference temperature.",
+      "TAsthK derivation/configuration and consistency with TADIAB/GRADIE where active.",
+      "temLim values and active layer semantics.",
+      "TADIAB, GRADIE and ZBASTH only where confirmed active by the pinned source/configuration.",
+      "Material-property and downstream configuration uncertainty ranges/correlations/ensemble axes."
+    ],
+    "interface_and_projection": [
+      "FEG categorical incident-support acceptance and boundary/thermal-class UNKNOWN resolution.",
+      "Projection method/version, lineage, coverage and numerical error acceptance evidence.",
+      "Complete global nodal field producer/package identity and deterministic replay qualification."
+    ]
+  },
+  "remaining_scientific_blockers": [
+    "Exact ocean plate model/version and physical parameters remain unselected.",
+    "Young/rift/age-zero ocean heat-flow treatment remains unresolved.",
+    "qLim0/dQL_dE/qLim1 roles and values, plus ShellSet correction disposition, remain unresolved.",
+    "Downstream OrbData material/geotherm configuration and uncertainty remain unresolved.",
+    "Mixed categorical boundary and valid-zero semantics require a governed rule."
+  ],
+  "remaining_implementation_blockers": [
+    "Generate the ocean heat-flow branch only after its specialist model and applicability configuration are selected and version-pinned.",
+    "Join branch fields at cell support while preserving UNKNOWN, branch lineage and uncertainty.",
+    "Project to all 64,442 FEG nodes only with qualified categorical support, source lineage and projection diagnostics; canonical partition/mesh payload prerequisites remain as documented by the T0 materialization ledger.",
+    "Serialize a complete supported field without accidental exact-zero qArray routing; qualify the explicit input path on FAIR.",
+    "Hash and replay-validate parent inputs, model/configuration, projection and derived outputs before OrbData authorization."
+  ],
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false,
+    "canonical_state_changed": false,
+    "shellset_modified": false,
+    "numerical_parameterization_finalized": false
+  }
+}

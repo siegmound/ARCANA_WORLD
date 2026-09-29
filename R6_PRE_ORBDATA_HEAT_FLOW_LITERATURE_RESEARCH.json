@@ -1,0 +1,145 @@
+{
+  "schema": "arcana_worldsim.r6.pre_orbdata_heat_flow_literature_research.v1",
+  "decision": "R6_PRE_ORBDATA_A0_4_LITERATURE_CONSTRAINTS_RESEARCH_COMPLETE__ARCANA_SELECTION_PENDING",
+  "scope": "Literature constraint synthesis; not parameter selection or execution authorization",
+  "source_priority": ["peer-reviewed original papers and reviews", "qualified ShellSet source for implementation semantics", "ARCANA v2 authority artifacts for current field status"],
+  "evidence_sources": [
+    {"id":"stein_stein_1992","citation":"Stein & Stein (1992), A model for the global variation in oceanic depth and heat flow with lithospheric age, Nature 359, DOI 10.1038/359123a0","url":"https://www.nature.com/articles/359123a0","kind":"original empirical/physical model"},
+    {"id":"stein_stein_1994","citation":"Stein & Stein (1994), Constraints on hydrothermal heat flux through the oceanic lithosphere from global heat flow, JGR 99(B2), DOI 10.1029/93JB02222","url":"https://agupubs.onlinelibrary.wiley.com/doi/10.1029/93JB02222","kind":"peer-reviewed observational synthesis/model inference"},
+    {"id":"grose_afonso_2013","citation":"Grose & Afonso (2013), Comprehensive plate models for the thermal evolution of oceanic lithosphere, G3, DOI 10.1002/ggge.20232","url":"https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/ggge.20232","kind":"peer-reviewed model comparison"},
+    {"id":"holdt_2025","citation":"Holdt et al. (2025), Revised Oceanic Plate Cooling Models, JGR Solid Earth, DOI 10.1029/2024JB029890","url":"https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2024JB029890","kind":"peer-reviewed model reassessment"},
+    {"id":"korenaga_2021","citation":"Korenaga & Korenaga (2021), A New Reference Model for the Evolution of Oceanic Lithosphere in a Cooling Earth, JGR Solid Earth, DOI 10.1029/2020JB021528","url":"https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020JB021528","kind":"peer-reviewed physical model"},
+    {"id":"hasterok_2007","citation":"Hasterok (2007), Continental thermal isostasy: 1. Methods and sensitivity, JGR Solid Earth, DOI 10.1029/2006JB004663","url":"https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2006JB004663","kind":"peer-reviewed geotherm/model parameter study"},
+    {"id":"mareschal_jaupart_2016","citation":"Mareschal & Jaupart (2016), Radiogenic heat production in the continental crust, Lithos 262, DOI 10.1016/j.lithos.2016.07.017","url":"https://doi.org/10.1016/j.lithos.2016.07.017","kind":"peer-reviewed review"},
+    {"id":"pollack_1993","citation":"Pollack et al. (1993), Heat flow from the Earth's interior: Analysis of the global data set, Reviews of Geophysics, DOI 10.1029/93RG01249","url":"https://agupubs.onlinelibrary.wiley.com/doi/10.1029/93RG01249","kind":"observational compilation"},
+    {"id":"qualified_shellset","citation":"Qualified source extraction, ShellSet branch arcana-r6-runtime-capacity at 62fd474f229b2676fd9d39c5def45137d22d2481","path":"R6_PRE_ORBDATA_HEAT_FLOW_SOURCE_EXTRACTION_FAIR.json","kind":"implementation evidence"}
+  ],
+  "epistemic_separation": {
+    "established_physical_theory": ["Fourier conduction", "1-D steady conservation links surface flux, basal flux and integrated volumetric heat production", "constant-property half-space surface conductive flux scales as age^-1/2", "finite-thickness plate/basal-resupply models can approach finite old-age behavior"],
+    "earth_observations": ["observed seafloor heat flow differs from conductive age-model predictions, especially at young ages", "continental heat flow and radiogenic production vary laterally and by crustal layer", "Earth global means and province observations are not ARCANA 210 Ma input"],
+    "implementation_choices": ["ShellSet exact-zero heat-flow sentinel and qArray routing", "qLim clamps and age<=0 -> qLim1 branch", "ShellSet later geotherm consistency correction"],
+    "arcana_inference": ["current continental reference flux may constrain the continental branch only after its role is governed", "existing ocean age is a model input, not an already specified flux law", "no architecture or value selected"]
+  },
+  "ocean_model_comparison": {
+    "half_space_cooling": {
+      "equation": "q(t)=k*(Ti-Ts)/sqrt(pi*kappa*t)",
+      "units": {"k":"W m-1 K-1","kappa":"m2 s-1","t":"s in dimensional equation","q":"W m-2"},
+      "behavior": "q proportional to t^-1/2; diverges as t approaches 0+ and continues declining without an old-age plateau.",
+      "strength": "simple conductive approximation for young oceanic lithosphere",
+      "limits": "poorly represents old-age depth/heat-flow flattening; idealized ridge boundary; observed young seafloor flux can be hydrothermally depressed.",
+      "parameter_examples_not_arcana_values": [{"parameter":"k","value":"3.3","units":"W m-1 K-1","status":"classical model assumption"},{"parameter":"Ti-Ts","value":"1300","units":"K","status":"classical model assumption"},{"parameter":"kappa","value":"1e-6","units":"m2 s-1","status":"classical model assumption"}],
+      "evidence":["holdt_2025","korenaga_2021"]
+    },
+    "plate_cooling": {
+      "equation_family": "Solve conductive cooling in a finite-thickness plate with fixed or parameterized basal thermal condition; model-specific.",
+      "behavior": "finite old-age asymptote under fixed basal-temperature plate formulation.",
+      "strength": "captures old-age flattening better than simple half-space in classical comparisons.",
+      "limits": "inferred thickness/basal temperature trade off with heat-flow/depth datasets and material-property assumptions; not a universal unique model.",
+      "evidence":["holdt_2025","grose_afonso_2013"]
+    },
+    "GDH1": {
+      "equations_published_units": {
+        "0<t<=55 Ma":"q=510/sqrt(t) mW m-2",
+        "t>55 Ma":"q=48+96*exp(-0.0278*t) mW m-2"
+      },
+      "equations_w_m2": {
+        "0<t<=55 Ma":"q=0.510/sqrt(t) W m-2",
+        "t>55 Ma":"q=0.048+0.096*exp(-0.0278*t) W m-2"
+      },
+      "shellset_match": "Qualified MOD_Data.f90 positive-age expression is algebraically identical after unit conversion; source comment attributes it to preferred GDH1 and cites Stein & Stein (1992).",
+      "at_55_ma": "branches join continuously at approximately 68.8 mW m-2",
+      "old_age_asymptote": "48 mW m-2",
+      "age_zero": "positive-age law is singular; qualified ShellSet separately assigns qLim1 when age<=0. That branch is implementation policy, not GDH1.",
+      "applicability": "Earth empirical age/depth and heat-flow fit, not a universal synthetic-planet law.",
+      "evidence":["stein_stein_1992","qualified_shellset"]
+    },
+    "young_ocean_hydrothermal": {
+      "finding": "Hydrothermal advection can depress measured conductive heat flow over young ridge flanks; ridge-axis/focused discharge may instead produce high local values. Age, permeability, crust, sediments, and fluid pathways control variation.",
+      "quantitative_evidence": "Stein & Stein (1994) estimated about 34% of their predicted global oceanic heat flux was hydrothermal and a sealing age 65±10 Ma; authors describe global hydrothermal estimate as an upper bound affected by measurement-site bias.",
+      "interpretation": "Global Earth inference with sampling uncertainty; not a local correction coefficient or ARCANA parameter.",
+      "evidence":["stein_stein_1994","grose_afonso_2013"]
+    },
+    "alternative_reference_models": [
+      {"name":"Grose/Afonso comprehensive plate models","description":"Include oceanic crust insulation, variable properties and hydrothermal circulation; young-age predictions differ substantially from GDH1.","evidence":["grose_afonso_2013"]},
+      {"name":"Korenaga & Korenaga 2021 reference model","description":"Variable-property conductive evolution with internal-heating and secular-cooling corrections; provides parameterized age-dependent reference results.","evidence":["korenaga_2021"]},
+      {"name":"Holdt et al. 2025 revised plates","description":"Reassesses analytical/numerical plate models against updated depth and temperature observations and discusses inversion tradeoffs.","evidence":["holdt_2025"]}
+    ]
+  },
+  "continental_relation": {
+    "equation": "q_surface = q_base + integral_0^H A(z) dz; for A(z)=A0 exp(-z/D), radiogenic contribution=A0*D*(1-exp(-H/D)).",
+    "assumptions": ["1-D vertical steady conduction/conservation", "specified source distribution, basal flux, geometry and boundary conditions"],
+    "interpretation": "Surface heat flow can be a valid prescribed Neumann boundary for a forward geotherm, but does not uniquely determine internal source layers or geotherm by itself.",
+    "findings": ["continental crustal production is stratified and laterally variable", "global analyses find no positive crust-thickness/surface-heat-flow correlation", "continental geotherms do not correlate simply with rock/thermotectonic age"],
+    "earth_observational_context": [{"value":"65","units":"mW m-2","meaning":"global mean continental heat flow in Pollack et al. 1993 compilation","status":"modern Earth observational compilation; not ARCANA target"},{"value":"18-48; most likely 21-34","units":"mW m-2","meaning":"estimated crustal radiogenic contribution to surface flux under stated crust/composition assumptions","status":"review/inference; not ARCANA distribution"}],
+    "evidence":["hasterok_2007","mareschal_jaupart_2016","pollack_1993"]
+  },
+  "parameter_evidence": [
+    {"parameter":"crustal thermal conductivity","examples":[{"range":"2.54-2.55","units":"W m-1 K-1","context":"average crust values in cited geotherm models"},{"values":"upper 3.0; lower 2.65","units":"W m-1 K-1","context":"Hasterok STP felsic/mafic crust model inputs"}],"status":"model/rock analogues; not universal range","dependencies":["lithology","temperature","pressure","fluids/porosity"]},
+    {"parameter":"mantle/lithosphere conductivity","examples":[{"value":"3.2","units":"W m-1 K-1","context":"upper mantle reference model"}],"status":"model-dependent; some geotherm formulations include temperature/pressure and radiative dependence"},
+    {"parameter":"volumetric thermal expansion","examples":[{"value":"3.0e-5","units":"K-1","context":"crust model value"},{"value":"3.2e-5","units":"K-1","context":"mantle model value"},{"range":"3.04e-5 to 3.47e-5","units":"K-1","context":"cited mantle predictions"}],"status":"material/P/T/model dependent; examples are not a confidence interval"},
+    {"parameter":"radiogenic heat production","examples":[{"range":"0.9-3.25","units":"microW m-3","context":"upper continental crust literature examples"},{"range":"0.12-0.5","units":"microW m-3","context":"lower continental crust literature examples"},{"range":"0.01-0.1","units":"microW m-3","context":"lithospheric mantle examples"}],"status":"geochemical/rock and thermal-model estimates; strong lateral/lithologic variation and time dependence"},
+    {"parameter":"density","examples":[{"value":"2830-2835","units":"kg m-3","context":"bulk continental crust estimates"},{"value":"2700 and 2940","units":"kg m-3","context":"example upper/lower crust reference layering"},{"range":"3200-3300","units":"kg m-3","context":"mantle reference model examples"}],"status":"seismic/compositional/model reference values; not ARCANA material assignments"},
+    {"parameter":"surface/reference temperature","examples":[{"value":"273","units":"K","context":"ocean model surface boundary example"},{"value":"293","units":"K","context":"continental calculation reference example"}],"status":"boundary-condition choices; no universal ARCANA 210 Ma value"},
+    {"parameter":"mantle/asthenosphere reference","examples":[{"value":"1300","units":"degrees C","context":"Hasterok potential-temperature example"},{"value":"0.3","units":"K km-1","context":"example adiabat slope"},{"value":"1623","units":"K","context":"Korenaga 2021 potential-temperature model input"}],"status":"model/reference settings constrained by inversion; not interchangeable with actual basal temperature"},
+    {"parameter":"geothermal gradient","examples":[],"status":"derived from q(z)/k(T,P) in a specified model, not a universal independent scalar; Hasterok's 40-100 mW m-2 is a geotherm-model sweep, not ARCANA recommendation"}
+  ],
+  "age_zero_and_q_limits": {
+    "age_zero_physics": ["half-space/GDH1 conductive q diverges as age approaches zero from above", "real ridge finite width, magmatic accretion, latent heat and 3-D fluid advection are omitted by the singular idealization", "finite numerical cap may regularize an interface but is not itself a measured universal ridge flux"],
+    "qualified_shellset": {
+      "qLim0": {"meaning":"zero-elevation lower heat-flow threshold","compiled_value":"0.000 W m-2","interpretation":"model-affecting floor; exact value not established as universal physical constraint"},
+      "dQL_dE": {"meaning":"slope of lower threshold versus elevation","compiled_value":"0.00e-6 (W m-2)/m","interpretation":"model control; physical meaning requires explicit justification"},
+      "qLim1": {"meaning":"upper limit and assigned value for age<=0 branch","compiled_value":"0.300 W m-2","interpretation":"cap affects outputs; age-zero use is implementation policy, not GDH1 law"},
+      "correction": "Later geotherm consistency logic may adjust heat flow and reapplies limits; qualified source behavior does not prove physical appropriateness."
+    },
+    "literature_conclusion": "No reviewed source establishes these exact q-limit controls as universal geophysical values."
+  },
+  "arcana_state_reconciliation": {
+    "realization": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+    "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+    "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+    "continental_reference_surface_heat_flow_w_m2": "Exists on cell support as continental domain reference; not complete global flux, not ocean flux, not 64,442-node FEG field; role as direct input versus target/reference must be governed.",
+    "oceanic_lithosphere_age_ma": "Existing governed ocean-age primitive can constrain selected model; does not determine heat-flow law.",
+    "other_fields": {
+      "physical_crust_domain_id":"routes support/domain but cannot set flux magnitude",
+      "crustal_thickness_m":"geometry for coupled geotherm; not direct flux predictor",
+      "continental_reference_lithosphere_thickness_m":"structural extent; not direct flux predictor",
+      "elevation_bathymetry":"boundary geometry and ShellSet elevation input; not flux proxy without model",
+      "plate_topology_kinematics":"age provenance/history input only through explicit authorized thermal model"
+    },
+    "evidence":["R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json","R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.json","R6_T0_B_PANGAEA_LIKE_V2_RUNTIME_BINDING_AND_INPUT_READJUDICATION.json"]
+  },
+  "architecture_options": {
+    "A_EXPLICIT_GLOBAL_T0_FIELD": {"required":"complete global support, masks, zero-safe adapter, per-field lineage and uncertainty","advantages":"clear authoritative input and selective regional replacement if tiled","risks":"ocean field missing; duplicate state if also derived; does not define T0-T1 evolution","orbdata":"nonzero inputs skip qArray/age branch but still face clamps/geotherm correction"},
+    "B_DERIVE_FROM_PRIMITIVES": {"required":"selected ocean and continental physical models, age/domain/structure, material parameters, source history, versioned projection","advantages":"causal provenance and dependency-aware replay","risks":"substantial law/material uncertainty; age/kinematics alone insufficient; must define temporal physics for T1","orbdata":"derived result can still be changed by q limits/corrections"},
+    "C_HYBRID": {"required":"governed continental reference field plus ocean age-derived branch and explicit uncertainty/interface","advantages":"aligns existing continental coverage and ocean age primitive","risks":"branch boundary/authority complexity; potential duplicate reference/output state; ocean model still unresolved","orbdata":"must prevent zero sentinel from unintentionally invoking qArray or age override and track corrections"}
+  },
+  "architecture_selection": "NONE",
+  "recommended_parameterization_options_not_selection": [
+    "Ocean candidate families: GDH1 reference; alternate plate model; variable-property half-space/plate; explicit hydrothermal/axial model.",
+    "Continental candidate roles: prescribed reference flux boundary; or layered thermal model calibrated/constrained by reference flux.",
+    "Material properties: evidence-based domain/material parameter distributions with covariance/P-T dependence where justified.",
+    "Age-zero candidate handling: explicitly governed numerical regularization or physically resolved finite ridge/advective treatment.",
+    "q limits: inherit as configured controls, govern bounded alternatives, or separately modify/qualify; no option selected."
+  ],
+  "next_arcana_decisions": [
+    "Govern whether continental_reference_surface_heat_flow_w_m2 is actual T0 flux, model target, or validation-only.",
+    "Choose explicit versus derived ocean flux and name/version any selected model.",
+    "Decide whether GDH1 bathymetry and heat-flow formulations are independent.",
+    "Define age-zero authorial semantics and heat-flow treatment.",
+    "Define ocean-continent transition/interpolation and qArray/zero-sentinel policy.",
+    "Select material families and source-pinned thermal-property configuration.",
+    "Disposition qLim0, dQL_dE, qLim1 and required sensitivity evidence.",
+    "Govern whether ShellSet geotherm corrections are accepted in T0 output.",
+    "Define uncertainty/covariance and acceptance/replay diagnostics.",
+    "Specify state-versus-derived thermal quantities and T0-T1 physics before evolution."
+  ],
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false
+  },
+  "actions_not_performed": ["no ARCANA value selection", "no architecture ranking/selection", "no OrbData/SHELLS run", "no ShellSet modification", "no commit", "no push"]
+}

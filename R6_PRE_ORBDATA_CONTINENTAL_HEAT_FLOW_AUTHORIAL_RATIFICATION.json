@@ -1,0 +1,194 @@
+{
+  "schema": "arcana_worldsim.r6.pre_orbdata.continental_heat_flow_authorial_ratification.v1",
+  "decision": "R6_PRE_ORBDATA_CONTINENTAL_HEAT_FLOW_REFERENCE_BOUNDARY_AUTHORITY_RATIFIED__GLOBAL_HEAT_FLOW_ARCHITECTURE_OPEN",
+  "scope": "A0.5R ratifies the semantic authority of the existing continental reference field only. It does not select final global heat-flow architecture C, ocean model parameters, ShellSet q-limits, or runtime values.",
+  "authority_context": {
+    "realization_id": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2",
+    "authorial_status": "RATIFIED_FOR_T0_MATERIALIZATION",
+    "canonical_status": "CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+    "authorial_ratification_source": "R6_T0_AUTHORIAL_RATIFICATION_B_PANGAEA_LIKE_LATE_TRIASSIC.json",
+    "field_producer": "src/arcana_worldsim/r6/t0_materialization/b_pangaea_v2.py",
+    "field_package": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+    "field_normalized_sha256": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+    "parent_identities": {
+      "physical_geography_sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+      "vector_partition_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+      "kinematics_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4"
+    }
+  },
+  "producer_lineage": {
+    "authorial_selection": "The B-v2 authorial ratification explicitly places per-class reference_surface_heat_flow_mW_m2 under CONTINENTAL_THERMAL_STRUCTURAL_DOMAINS, alongside reference lithosphere thickness and soft area target fractions. The realization is RATIFIED_FOR_T0_MATERIALIZATION.",
+    "class_assignment": {
+      "thermal_classes": {
+        "COLD_STABLE": {"thermal_id": 1, "authorial_heat_flow_unit": "mW m-2", "authorial_heat_flow": 45},
+        "NORMAL": {"thermal_id": 2, "authorial_heat_flow_unit": "mW m-2", "authorial_heat_flow": 60},
+        "HOT_EXTENDED": {"thermal_id": 3, "authorial_heat_flow_unit": "mW m-2", "authorial_heat_flow": 85}
+      },
+      "assignment_inputs": [
+        "canonical geography land_ocean_mask (coastline_mask is not used to assign thermal classes)",
+        "canonical boundary vector edge row/column/axis for adjacency lookup",
+        "canonical kinematic relative_normal_velocity_m_per_year and segment length_m",
+        "authorial soft area target fractions and deterministic stable cell-ID tie breaks"
+      ],
+      "method": "Positive signed boundary-normal kinematic demand accumulates extension support on adjacent land cells; negative signed demand accumulates convergence support. The producer uses hot_share=0.10 and cold_share=0.55 of continental area as soft targets. Deterministic shortest-path support ranks coherent hot/extended and quiet/stable land classes; the remaining land receives NORMAL. Thermal classes are not selected from Earth province tags, white noise, crust thickness, or coastline_mask. The coastline mask is used separately for physical crust transition classification, not this thermal class assignment.",
+      "thermal_domain_ids": {"COLD_STABLE": 1, "NORMAL": 2, "HOT_EXTENDED": 3},
+      "ocean_thermal_id": 0
+    },
+    "value_materialization": {
+      "producer_constant_name": "HEAT_FLOW_MW_M2",
+      "producer_values_keyed_by_thermal_id": {"1": 45.0, "2": 60.0, "3": 85.0},
+      "field_unit": "W m-2",
+      "conversion": "q_W_m2 = q_mW_m2 * 1e-3",
+      "support_expression": "land & (thermal_id == thermal); outside support initialized UNKNOWN (NaN)",
+      "source_location": "b_pangaea_v2.py:40, 518-546, 569-574, 582-598, 607-623"
+    },
+    "provenance_metadata": [
+      "authorial candidate ID and RATIFIED_FOR_T0_MATERIALIZATION status",
+      "canonical geography, partition and kinematics hashes",
+      "field package hash and normalized per-field hash",
+      "thermal IDs, area fractions, reference heat-flow and thickness values in realization manifest",
+      "specialist materialization ledger with upstream field hash and continental-only/incomplete-global status"
+    ],
+    "lineage_limit": "The value map is explicitly ratified. Its cellwise support is deterministically realized from the ratified class template and canonical geography/kinematics; the producer does not contain an observational dataset or thermal inversion for the values."
+  },
+  "value_provenance": {
+    "classification": "SYNTHETIC_AUTHORED_T0_REFERENCE_VALUES",
+    "basis": "Values are explicit authorial class parameters in the ratified B-v2 T0 realization and are deterministically materialized. They are not imported present-day Earth heat-flow observations and are not derived from crustal thickness.",
+    "physical_law_claim": "No claim that the constants are measurements, a universal continental law, or a unique geotherm solution.",
+    "uncertainty": "The authorial ratification says authorial choices are not ensemble axes and sampling is not required for ratification. No numerical uncertainty distribution is provided for this field. Preserve its thermal-class identity and provenance; do not invent uncertainty magnitudes. Model uncertainty for downstream geotherms remains separate."
+  },
+  "existing_semantic_authority": {
+    "explicit_authorial_evidence": [
+      "The ratified B-v2 artifact places reference_surface_heat_flow_mW_m2 directly in CONTINENTAL_THERMAL_STRUCTURAL_DOMAINS, with the classes and units represented explicitly.",
+      "The materializer's comments identify this as a ranked, spatially coherent T0 realization based on soft area envelopes.",
+      "The specialist report says 'continental domain references materialized' and separately says continental geotherm profiles and model-derived heat flow beyond ratified references remain pending.",
+      "The field is included in the upstream physical field package and its normalized hash is carried into materialization/runtime reports."
+    ],
+    "nonblocking_wording": "The noun 'reference' limits the claim: it denotes a prescribed T0 reference/boundary state, not a measured heat-flow map or a complete global flux solution. The term does not prohibit use as the continental prescribed physical reference boundary.",
+    "preexisting_downstream_text": [
+      "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.json: global_heat_flow marks continental references present, ocean/global field missing, complete node support false, and per-node lineage not assembled.",
+      "R6_T0_B_PANGAEA_LIKE_V2_SPECIALIST_MATERIALIZATION.json: continental geotherm profiles and model-derived heat flow beyond ratified references remain pending.",
+      "R6_T0_B_PANGAEA_LIKE_V2_RUNTIME_BINDING_AND_INPUT_READJUDICATION.json: lists the field among materialized ARCANA state but does not consume/project it into FEG heat_flow; heat-flow and qArray routing remain open.",
+      "R6_PRE_ORBDATA_HEAT_FLOW_SCIENTIFIC_REQUIREMENTS and A0.4/A0.5 reports correctly left its precise semantic role open before this ratification."
+    ],
+    "negative_authority": "No inspected authority says this field must be calibration-only, validation-only, Earth-derived, or forbidden as a prescribed continental T0 reference."
+  },
+  "semantic_options": {
+    "A_PRESCRIBED_T0_PHYSICAL_REFERENCE": {
+      "compatibility_with_producer": "COMPATIBLE. Authorial ratification supplies per-class reference surface heat-flow values as part of the T0 continental thermal structural domains.",
+      "compatibility_with_contracts": "COMPATIBLE. 'Reference' and 'beyond ratified references' preserve a baseline reference boundary while leaving richer geotherm/model outputs pending.",
+      "changes_existing_numerical_values": false,
+      "new_physical_assumptions": "No new numerical or constitutive assumption is introduced; the existing authorial reference values are semantically clarified as prescribed T0 continental boundary/reference state. This does not claim observational truth or unique subsurface thermal structure.",
+      "pre_orbdata_consequence": "Provides a governed continental branch input on its existing support. It does not complete ocean heat flow, FEG projection, qLim governance, or runtime routing."
+    },
+    "B_CALIBRATION_TARGET": {
+      "compatibility_with_producer": "Possible as a use of reference values, but not the best fit: the producer stores the values as a T0 field and the ratification lists them as selected class parameters; no calibrated model, objective function, observation target, or fitting procedure is specified.",
+      "compatibility_with_contracts": "Not required by current contracts; would reinterpret explicit T0 reference selections as targets for an unselected continental model.",
+      "changes_existing_numerical_values": false,
+      "new_physical_assumptions": "Would require choosing a calibration model, loss/weights and target meaning not present in authority.",
+      "pre_orbdata_consequence": "Would not supply continental q until calibration/model configuration exists; current blocker remains."
+    },
+    "C_VALIDATION_REFERENCE_ONLY": {
+      "compatibility_with_producer": "Possible but inconsistent with the ratification's placement of values as selected T0 thermal-domain parameters and the materializer's use to populate the T0 field.",
+      "compatibility_with_contracts": "No contract restricts the field to validation-only; it would demote already ratified T0 content without evidence.",
+      "changes_existing_numerical_values": false,
+      "new_physical_assumptions": "Requires an independent continental model as sole physical authority, not yet selected.",
+      "pre_orbdata_consequence": "Continental physical flux would remain missing pending that independent model."
+    },
+    "D_OTHER": {
+      "status": "NOT_REQUIRED_BY_EVIDENCE",
+      "rationale": "The source/ratification supports a synthetic authored T0 reference boundary field; no evidence requires diagnostic-only or proxy-only semantics."
+    }
+  },
+  "contradictions": {
+    "blocking_contradictions_found": false,
+    "noncontradictory_scope_limits": [
+      "The global heat-flow payload remains missing; a partial continental reference is not a global field.",
+      "FEG support/projection and per-node lineage are not materialized.",
+      "The 'derived_fields' manifest grouping describes materialization packaging and does not overrule the explicit authorial primitive selection that supplies the class reference values.",
+      "A later thermal specialist may produce geotherm profiles or additional/model-derived heat-flow fields beyond this reference; that is not a mandate to discard this reference boundary.",
+      "A0.5's prior unresolved conclusion is superseded for this field's continental semantic role only; global A/B/C architecture remains open."
+    ]
+  },
+  "proposed_ratification": {
+    "status": "RATIFIED_BY_EXPLICIT_A0_5R_USER_INSTRUCTION; NO_CONTRADICTING_AUTHORITY_FOUND",
+    "authority_class": "AUTHORIAL_T0_PRIMITIVE",
+    "field": "continental_reference_surface_heat_flow_w_m2",
+    "ratified_semantic": "GOVERNED_AUTHORED_CONTINENTAL_T0_REFERENCE_BOUNDARY_FIELD",
+    "intended_semantics": [
+      "authored synthetic T0 physical reference field",
+      "prescribed continental surface heat-flow boundary/reference state",
+      "authority limited to its producing continental thermal-class/cell support",
+      "no Earth observational authority implied",
+      "no higher spatial resolution than the producing cell/class support",
+      "thermal-class identity, input lineage, and uncertainty/provenance status preserved",
+      "FEG projection is NUMERICAL_DERIVED_SUPPORT only and creates no new physical resolution",
+      "not derived merely from crustal thickness",
+      "later refinement or replacement requires an explicit higher-authority physical stage; no silent overwrite"
+    ],
+    "authorization_basis": "The user explicitly instructed that, absent contradictory authority, this exact semantic ratification be prepared. Existing B-v2 authorial ratification explicitly selected the per-class reference surface heat-flow values."
+  },
+  "effect_on_existing_values": {
+    "field_values_changed": false,
+    "field_generator_changed": false,
+    "field_package_changed": false,
+    "existing_normalized_sha256": "234d2c34f4bc98f72cbaa0e1b322ba781bc95fab9e7b69795fb2b3e7a03b7e2f",
+    "operation": "Semantic authority clarification only; the three existing thermal-class references and all generated cells remain unchanged."
+  },
+  "spatial_authority": {
+    "native_support": "180x360 cell-centered support on land cells assigned a continental thermal class.",
+    "class_support": "COLD_STABLE, NORMAL, HOT_EXTENDED; each class assigned by deterministic T0 ranking using canonical geography and boundary kinematic support under ratified soft area targets.",
+    "outside_support": "UNKNOWN, including ocean cells; no global authority is asserted.",
+    "resolution": "Native field/class support only. No claim to subcell or FEG resolution."
+  },
+  "uncertainty_authority": {
+    "what_is_governed": "Deterministic class identity, authored reference values, generating policy and provenance.",
+    "what_is_not_governed": "No numeric uncertainty interval/covariance for these references and no thermal-model posterior.",
+    "policy": "Preserve provenance and class-conditioned uncertainty status. Do not fabricate intervals, Earth-derived uncertainty, or ensemble members. Downstream geotherm/model uncertainty remains separately governed."
+  },
+  "feg_projection_status": {
+    "status": "NOT_YET_PROJECTED; NUMERICAL_DERIVED_SUPPORT_ONLY_WHEN_IMPLEMENTED",
+    "required_policy": "Project only onto FEG nodes with homogeneous incident continental support; retain source-cell IDs and weights/method. Mixed ocean/continent or UNKNOWN incident support remains UNKNOWN unless a separately ratified interface policy resolves it.",
+    "resolution_claim": false,
+    "runtime_ready": false,
+    "exact_zero_warning": "ShellSet interprets exact zero heat flow as needQ sentinel; projection/adapter must not silently convert UNKNOWN or a legitimate zero to an ordinary input value."
+  },
+  "downstream_architecture_implications": {
+    "continental_side": "The continental reference branch is semantically authorized as authored T0 boundary/reference state on native support.",
+    "hybrid_C": "Now a viable candidate for later A0.5 global architecture adjudication, but not selected or finalized by A0.5R.",
+    "explicit_global_A": "Still incomplete because ocean heat flow, global support and FEG field/lineage are absent.",
+    "fully_derived_B": "Still possible as a different architecture, but would need to explicitly preserve the ratified reference's role (for example, constraint or independent reference) rather than silently replace it.",
+    "unresolved": [
+      "ocean plate-cooling model/version and parameters",
+      "young/age-zero ocean flux treatment",
+      "qLim0/dQL_dE/qLim1 configuration and ShellSet correction disposition",
+      "categorical domain-boundary projection and UNKNOWN policy implementation",
+      "global nodal heat-flow payload authority class and lineage",
+      "PRE_ORBDATA input completeness and runtime qualification"
+    ]
+  },
+  "global_nodal_payload_authority": {
+    "canonical_physical_state": "Not preferred: would duplicate the independently governed continental reference plus ocean primitive/model inputs, unless later ARCANA explicitly elects an immutable authored nodal flux field as a new canonical realization.",
+    "derived_replayable_t0_state": "Preferred for the complete cell/node global flux result if deterministically reproducible from the continental reference, ocean age/domain state, pinned specialist model/configuration and projection lineage. Preserve it in history as derived state with hashes, uncertainty and authority metadata, not as an independent canonical primitive.",
+    "numerical_runtime_input_only": "The serialized FEG nodal array/file is this class: an adapter/runtime representation of the derived replayable T0 field. It is not itself canonical physical state.",
+    "replay_contract": "Store/replay the model/configuration identity, all governed parent hashes, projection method/version, lineage and derived output hash; do not duplicate as new independent canon."
+  },
+  "authorial_decision_required": {
+    "continental_reference_semantic": false,
+    "reason": "This task explicitly authorized the specified ratification if no contradictory authority existed; the audit found none.",
+    "global_architecture_and_remaining_parameters": true,
+    "reason_remaining": "A0.5R does not authorize selection of architecture C, ocean physical model parameters, q-limits, or runtime execution."
+  },
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false,
+    "canonical_state_changed": false,
+    "shellset_modified": false,
+    "field_values_changed": false,
+    "architecture_C_finalized": false
+  }
+}
