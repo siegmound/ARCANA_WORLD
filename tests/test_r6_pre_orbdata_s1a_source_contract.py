@@ -183,4 +183,3 @@ def test_feg_handshake_and_nine_field_stock_writer_are_preserved():
     assert "MOD_ArcanaRuntime.o" in MAKEFILE
     assert "MOD_ArcanaRuntime.DB.o" in MAKEFILE
     assert "MOD_ArcanaRuntime.OPT.o" in MAKEFILE
-
