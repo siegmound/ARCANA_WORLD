@@ -5,6 +5,15 @@ MODULE ArcanaRuntime
 
   INTEGER, PARAMETER, PUBLIC :: ARCANA_NODE_COUNT = 64442
   INTEGER, PARAMETER, PUBLIC :: ARCANA_FIELD_COUNT = 51
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PROPERTY_COUNT = 7
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PHASE_CRUST = 1
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PHASE_MANTLE = 2
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PHASE_ASTHENOSPHERE = 3
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PROP_RHO = 1, ARCANA_PROP_K = 2
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PROP_ALPHA = 3, ARCANA_PROP_RADIO = 4
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PROP_CP = 5, ARCANA_PROP_RHO_ASTH = 6
+  INTEGER, PARAMETER, PUBLIC :: ARCANA_PROP_RHO_WATER = 7
+  REAL(KIND=8), PARAMETER, PUBLIC :: ARCANA_G_M_S2 = 9.82D0
   CHARACTER(LEN=*), PARAMETER, PUBLIC :: ARCANA_MODE = &
        'ARCANA_R6_PRE_ORBDATA_RUNTIME_V1'
   CHARACTER(LEN=*), PARAMETER, PUBLIC :: ARCANA_SCHEMA = &
@@ -47,6 +56,9 @@ MODULE ArcanaRuntime
   TYPE(ArcanaRuntimeNode), ALLOCATABLE, SAVE :: runtime_nodes(:)
 
   PUBLIC :: ArcanaRuntimeRead, ArcanaRuntimeGet, ArcanaRuntimeRelease
+  PUBLIC :: ArcanaRuntimeIsLoaded, ArcanaRuntimeEvaluateNode
+  PUBLIC :: ArcanaRuntimeEvaluateIP
+  PUBLIC :: ArcanaRuntimeSqueez
 
 CONTAINS
 
@@ -165,6 +177,236 @@ CONTAINS
   SUBROUTINE ArcanaRuntimeRelease()
     IF (ALLOCATED(runtime_nodes)) DEALLOCATE(runtime_nodes)
   END SUBROUTINE ArcanaRuntimeRelease
+
+  LOGICAL FUNCTION ArcanaRuntimeIsLoaded()
+    ArcanaRuntimeIsLoaded = ALLOCATED(runtime_nodes)
+  END FUNCTION ArcanaRuntimeIsLoaded
+
+  SUBROUTINE ArcanaRuntimeEvaluateNode(node_id, depth_m, temperature_k, &
+       properties, phase, ierr)
+    INTEGER, INTENT(IN) :: node_id
+    REAL(KIND=8), INTENT(IN) :: depth_m
+    REAL(KIND=8), INTENT(OUT) :: temperature_k
+    REAL(KIND=8), INTENT(OUT) :: properties(ARCANA_PROPERTY_COUNT)
+    INTEGER, INTENT(OUT) :: phase, ierr
+    REAL(KIND=8) :: v(ARCANA_FIELD_COUNT), x, exponent
+
+    ierr = 1
+    phase = 0
+    temperature_k = 0.0D0
+    properties = 0.0D0
+    IF (.NOT. ALLOCATED(runtime_nodes)) RETURN
+    IF (.NOT. IEEE_IS_FINITE(depth_m) .OR. depth_m < 0.0D0) RETURN
+    CALL ArcanaRuntimeGet(node_id, v, ierr)
+    IF (ierr /= 0) RETURN
+
+    IF (depth_m < v(I_CRUST)) THEN
+       phase = ARCANA_PHASE_CRUST
+       x = depth_m - v(I_L1_Z0)
+       temperature_k = Polynomial(v(I_L1_C3),v(I_L1_C2), &
+            v(I_L1_C1),v(I_L1_C0),x)
+       properties(ARCANA_PROP_RHO) = v(I_CRUST_RHO)
+       properties(ARCANA_PROP_K) = v(I_CRUST_K)
+       properties(ARCANA_PROP_ALPHA) = v(I_CRUST_ALPHA)
+       properties(ARCANA_PROP_RADIO) = v(I_CRUST_RADIO)
+       properties(ARCANA_PROP_CP) = v(I_CRUST_CP)
+    ELSE IF (depth_m <= v(I_LAB)) THEN
+       phase = ARCANA_PHASE_MANTLE
+       x = depth_m - v(I_L2_Z0)
+       temperature_k = Polynomial(v(I_L2_C3),v(I_L2_C2), &
+            v(I_L2_C1),v(I_L2_C0),x)
+       properties(ARCANA_PROP_RHO) = v(I_MANTLE_RHO)
+       properties(ARCANA_PROP_K) = v(I_MANTLE_K)
+       properties(ARCANA_PROP_ALPHA) = v(I_MANTLE_ALPHA)
+       properties(ARCANA_PROP_RADIO) = v(I_MANTLE_RADIO)
+       properties(ARCANA_PROP_CP) = v(I_MANTLE_CP)
+    ELSE
+       phase = ARCANA_PHASE_ASTHENOSPHERE
+       exponent = v(I_MANTLE_ALPHA) * ARCANA_G_M_S2 * &
+            (depth_m-v(I_LAB)) / v(I_MANTLE_CP)
+       IF (.NOT. IEEE_IS_FINITE(exponent) .OR. &
+           exponent > LOG(HUGE(1.0D0))) THEN
+          ierr = 1
+          RETURN
+       END IF
+       temperature_k = v(I_LAB_T) * EXP(exponent)
+       properties(ARCANA_PROP_RHO) = v(I_RHO_ASTH)
+       properties(ARCANA_PROP_K) = v(I_MANTLE_K)
+       properties(ARCANA_PROP_ALPHA) = v(I_MANTLE_ALPHA)
+       properties(ARCANA_PROP_RADIO) = v(I_MANTLE_RADIO)
+       properties(ARCANA_PROP_CP) = v(I_MANTLE_CP)
+    END IF
+    properties(ARCANA_PROP_RHO_ASTH) = v(I_RHO_ASTH)
+    properties(ARCANA_PROP_RHO_WATER) = v(I_RHO_WATER)
+    IF (.NOT. IEEE_IS_FINITE(temperature_k) .OR. &
+        .NOT. ALL(IEEE_IS_FINITE(properties))) THEN
+       ierr = 1
+       RETURN
+    END IF
+    IF (temperature_k <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_RHO) <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_K) <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_ALPHA) <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_CP) <= 0.0D0) THEN
+       ierr = 1
+       RETURN
+    END IF
+    ierr = 0
+  END SUBROUTINE ArcanaRuntimeEvaluateNode
+
+  SUBROUTINE ArcanaRuntimeEvaluateIP(node_ids, weights, depth_m, &
+       temperature_k, properties, node_phases, ierr)
+    INTEGER, INTENT(IN) :: node_ids(3)
+    REAL(KIND=8), INTENT(IN) :: weights(3), depth_m
+    REAL(KIND=8), INTENT(OUT) :: temperature_k
+    REAL(KIND=8), INTENT(OUT) :: properties(ARCANA_PROPERTY_COUNT)
+    INTEGER, INTENT(OUT) :: node_phases(3), ierr
+    INTEGER :: j, local_ierr
+    REAL(KIND=8) :: local_temperature, local_properties(ARCANA_PROPERTY_COUNT)
+    REAL(KIND=8) :: weight_sum
+
+    ierr = 1
+    temperature_k = 0.0D0
+    properties = 0.0D0
+    node_phases = 0
+    IF (.NOT. ALL(IEEE_IS_FINITE(weights))) RETURN
+    IF (ANY(weights < -1.0D-12) .OR. ANY(weights > 1.0D0+1.0D-12)) RETURN
+    weight_sum = SUM(weights)
+    IF (ABS(weight_sum-1.0D0) > 1.0D-10) RETURN
+    DO j = 1, 3
+       IF (weights(j) == 0.0D0) CYCLE
+       CALL ArcanaRuntimeEvaluateNode(node_ids(j),depth_m, &
+            local_temperature,local_properties,node_phases(j),local_ierr)
+       IF (local_ierr /= 0) RETURN
+       temperature_k = temperature_k + weights(j)*local_temperature
+       properties = properties + weights(j)*local_properties
+    END DO
+    IF (.NOT. IEEE_IS_FINITE(temperature_k) .OR. &
+        .NOT. ALL(IEEE_IS_FINITE(properties))) RETURN
+    IF (temperature_k <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_RHO) <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_K) <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_ALPHA) <= 0.0D0 .OR. &
+        properties(ARCANA_PROP_CP) <= 0.0D0) RETURN
+    ierr = 0
+  END SUBROUTINE ArcanaRuntimeEvaluateIP
+
+  SUBROUTINE ArcanaRuntimeSqueez(node_ids,weights,density_anomaly,elevat, &
+       g_mean,one_km,z_stop,tau_zz,sig_zzb,ierr)
+    INTEGER, INTENT(IN) :: node_ids(3)
+    REAL(KIND=8), INTENT(IN) :: weights(3),density_anomaly,elevat
+    REAL(KIND=8), INTENT(IN) :: g_mean,one_km,z_stop
+    REAL(KIND=8), INTENT(OUT) :: tau_zz,sig_zzb
+    INTEGER, INTENT(OUT) :: ierr
+    INTEGER, PARAMETER :: ND_REF = 300
+    INTEGER :: i,n_step,last_dr,n1,n2,phase(3),sample_ierr
+    REAL(KIND=8) :: d_ref(ND_REF),p_ref(0:ND_REF),rho0,rho_water,rho_asth
+    REAL(KIND=8) :: temp,props(ARCANA_PROPERTY_COUNT),rhotop
+    REAL(KIND=8) :: z_top,z_base,h,z,frac,pr,oldpr,oldszz,sigzz
+    REAL(KIND=8) :: dense1,dense2,dense,resid
+
+    ierr = 1
+    tau_zz = 0.0D0
+    sig_zzb = 0.0D0
+    IF (density_anomaly /= 0.0D0 .OR. one_km <= 0.0D0 .OR. &
+        g_mean <= 0.0D0 .OR. z_stop < 0.0D0) RETURN
+    CALL ArcanaRuntimeEvaluateIP(node_ids,weights,0.0D0,temp,props, &
+         phase,sample_ierr)
+    IF (sample_ierr /= 0) RETURN
+    rho_water = props(ARCANA_PROP_RHO_WATER)
+    rho_asth = props(ARCANA_PROP_RHO_ASTH)
+    rhotop = props(ARCANA_PROP_RHO) * &
+         (1.0D0-props(ARCANA_PROP_ALPHA)*temp)
+    d_ref = rho_asth
+    d_ref(1:2) = rho_water
+    d_ref(3) = 0.7D0*rho_water + 0.3D0*rhotop
+    d_ref(4:7) = rhotop
+    d_ref(8) = 0.7D0*rhotop + 0.3D0*rho_asth
+    p_ref(0) = 0.0D0
+    DO i = 1, ND_REF
+       p_ref(i) = p_ref(i-1) + d_ref(i)*g_mean*one_km
+    END DO
+
+    IF (elevat > 0.0D0) THEN
+       z_top = -elevat
+       z_base = z_stop-elevat
+       h = 0.0D0
+       CALL ArcanaRuntimeEvaluateIP(node_ids,weights,0.0D0,temp,props, &
+            phase,sample_ierr)
+       IF (sample_ierr /= 0) RETURN
+       dense1 = props(ARCANA_PROP_RHO) * &
+            (1.0D0-props(ARCANA_PROP_ALPHA)*temp)
+    ELSE
+       z_top = 0.0D0
+       z_base = z_stop-elevat
+       h = elevat
+       dense1 = rho_water
+    END IF
+    last_dr = INT(z_base/one_km)
+    IF (z_base > one_km*last_dr) last_dr = last_dr+1
+    IF (last_dr > ND_REF) RETURN
+    n_step = INT((z_base-z_top)/one_km)
+    oldpr = 0.0D0
+    oldszz = 0.0D0
+    sigzz = 0.0D0
+    tau_zz = 0.0D0
+    z = z_top
+    DO i = 1,n_step
+       z = z+one_km
+       h = h+one_km
+       IF (h > 0.0D0) THEN
+          CALL ArcanaRuntimeEvaluateIP(node_ids,weights,h,temp,props, &
+               phase,sample_ierr)
+          IF (sample_ierr /= 0) RETURN
+          dense2 = props(ARCANA_PROP_RHO) * &
+               (1.0D0-props(ARCANA_PROP_ALPHA)*temp)
+       ELSE
+          dense2 = rho_water
+       END IF
+       dense = 0.5D0*(dense1+dense2)
+       IF (z > 0.0D0) THEN
+          n1 = INT(z/one_km)
+          n2 = n1+1
+          IF (n2 > ND_REF) RETURN
+          frac = z/one_km-n1
+          pr = p_ref(n1)+frac*(p_ref(n2)-p_ref(n1))
+       ELSE
+          pr = 0.0D0
+       END IF
+       sigzz = sigzz-dense*g_mean*one_km+(pr-oldpr)
+       tau_zz = tau_zz+0.5D0*(sigzz+oldszz)*one_km
+       dense1 = dense2
+       oldszz = sigzz
+       oldpr = pr
+    END DO
+
+    resid = z_base-z
+    h = z_stop
+    IF (h > 0.0D0) THEN
+       CALL ArcanaRuntimeEvaluateIP(node_ids,weights,h,temp,props, &
+            phase,sample_ierr)
+       IF (sample_ierr /= 0) RETURN
+       dense2 = props(ARCANA_PROP_RHO) * &
+            (1.0D0-props(ARCANA_PROP_ALPHA)*temp)
+    ELSE
+       dense2 = rho_water
+    END IF
+    dense = 0.5D0*(dense1+dense2)
+    IF (z_base > 0.0D0) THEN
+       n1 = INT(z_base/one_km)
+       n2 = n1+1
+       IF (n2 > ND_REF) RETURN
+       frac = z_base/one_km-n1
+       pr = p_ref(n1)+frac*(p_ref(n2)-p_ref(n1))
+    ELSE
+       pr = 0.0D0
+    END IF
+    sig_zzb = sigzz-dense*g_mean*resid+(pr-oldpr)
+    tau_zz = tau_zz+0.5D0*(sig_zzb+oldszz)*resid
+    IF (.NOT. IEEE_IS_FINITE(tau_zz) .OR. &
+        .NOT. IEEE_IS_FINITE(sig_zzb)) RETURN
+    ierr = 0
+  END SUBROUTINE ArcanaRuntimeSqueez
 
   SUBROUTINE Tokenize(line, tokens, count, overflow)
     CHARACTER(LEN=*), INTENT(IN) :: line

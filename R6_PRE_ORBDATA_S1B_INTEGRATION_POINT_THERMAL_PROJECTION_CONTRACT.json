@@ -1,0 +1,69 @@
+{
+  "contract_id": "R6_PRE_ORBDATA_S1B_INTEGRATION_POINT_THERMAL_PROJECTION",
+  "decision": "EVALUATE_THEN_INTERPOLATE_FEM_THERMAL_FIELD",
+  "status": "R6_PRE_ORBDATA_S1B_SHELLS_CONSUMER_INCOMPLETE__LEGACY_THERMAL_FALLBACK_REMAINS",
+  "temperature_rule": {
+    "node_profile": [
+      "z < Moho: evaluate the governed layer-1 polynomial at that node's depth",
+      "Moho <= z <= LAB: evaluate the governed layer-2 polynomial at that node's depth",
+      "z > LAB: T_LAB * exp(alpha_mantle * 9.82 * (z-LAB) / Cp_mantle)"
+    ],
+    "integration_point": "sum(shape_weight[j] * node_temperature[j]) for j=1..3",
+    "material_properties": "select active phase independently at each node, then FEM-interpolate continuous scalar properties with the same weights",
+    "discrete_ids": "diagnostic nodal values only; never interpolate or synthesize an integration-point material ID",
+    "integration_point_property_authority": "NUMERICAL_RUNTIME_EFFECTIVE_PROPERTY"
+  },
+  "authority_boundary": {
+    "projection": "NUMERICAL_PROJECTION_CONTRACT",
+    "physical_or_canonical_geological_authority_created": false,
+    "new_canonical_integration_point_material_class_created": false
+  },
+  "prohibitions": [
+    "do not fit or compress ARCANA profiles into legacy geothC/geothM cubics",
+    "do not average, smooth, or select a single node",
+    "do not apply temLim clipping to ARCANA temperatures",
+    "chemical_delta_rho remains zero",
+    "do not alter stock thermal behavior"
+  ],
+  "required_gates": [
+    "T_IP at weights (1,0,0) equals node 1 temperature",
+    "temperature continuity at every nodal Moho",
+    "temperature continuity at every nodal LAB",
+    "LAB temperature equals adiabat anchor",
+    "homogeneous element reproduces homogeneous nodal profile",
+    "mixed element temperature and continuous properties finite and bounded by nodal values",
+    "discrete material IDs are not interpolated",
+    "chemical_delta_rho equals zero",
+    "no ARCANA temLim clipping",
+    "stock behavior unchanged",
+    "missing or malformed ARCANA package fails closed"
+  ],
+  "mesh_diagnostics": {
+    "mixed_crust_material_elements": 1816,
+    "mixed_ridge_ocean_elements": 325,
+    "classification": "NUMERICAL_RUNTIME_EFFECTIVE_PROPERTY"
+  },
+  "implementation_boundary": {
+    "shared_evaluator": "external/ShellSet-v1.1.0/src/MOD_ArcanaRuntime.f90",
+    "shells_consumer_wiring": "INCOMPLETE",
+    "marker_rejection": "ENABLED_IN_MOD_SHELLSET_REJECTARCANAFEGFORLEGACYShells",
+    "remaining_legacy_consumers": [
+      "FillIn geothC/geothM construction and Squeez call",
+      "OneBar legacy geothM evaluation",
+      "Viscos/Diamnd legacy profile and temLim paths",
+      "Fixed fault path through legacy Squeez",
+      "Pure/Mohr thermal reconstruction",
+      "iConve=5 legacy base-temperature predicate",
+      "Result legacy geothC temperature diagnostic"
+    ],
+    "legacy_consumer_paths_wired_to_shared_evaluator": false,
+    "activation_handshake": "NOT_IMPLEMENTED; ARCANA marker remains fail-closed",
+    "runtime_qualification": "NOT_CLAIMED",
+    "pre_orbdata_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false
+  }
+}
