@@ -27,6 +27,8 @@ subroutine OrbData5(ModNum,VarNames,VarValues,ListDIR)
 use ShellSetSubs
 use DATA_subs
 use SharedVars
+use ArcanaRuntime, only: ARCANA_NODE_COUNT, ARCANA_FIELD_COUNT, ARCANA_FEG_MARKER, &
+     ArcanaRuntimeRead, ArcanaRuntimeGet, ArcanaRuntimeRelease
 
 implicit none
 
@@ -40,16 +42,13 @@ integer :: nFakeN,nFl,nodeF,nodes,nRealN,numEl,nEX,nEY
 integer :: numNod,n1000,nCond,nodCon,list
 integer :: iRow,jCol,nQX,nQY,nAX,nAY
 integer :: nCX,nCY,nSX,nSY,iNode
-integer :: nDomainX,nDomainY,nLithoX,nLithoY,domainClass,domainRow,domainCol
-integer :: lithoRow,lithoRow2,lithoCol,lithoCol2
+integer :: runtimeStatus
 real*8 :: TAsthK,dQdTdA,elev,fDip
 real*8 :: offset,xNode,yNode,area,detJ,dXs,dYs,dXSP,dYSP,fLen,fpflt,fpsfer,fArg,sita
 real*8 :: eX1,eX2,eDX,eY1,eY2,eDY
 real*8 :: qX1,qX2,qDX,qY1,qY2,qDY,qLimit,aX1,aX2,aDX,aY1,aY2,aDY
 real*8 :: cX1,cX2,cDX,cY1,cY2,cDY,sX1,sX2,sDX,sY1,sY2,sDY,pLon,pLat,elevat,heatFl
-real*8 :: domainX1,domainX2,domainDX,domainY1,domainY2,domainDY
-real*8 :: lithoX1,lithoX2,lithoDX,lithoY1,lithoY2,lithoDY
-real*8 :: requestedTotalLithosphere,arcLon,arcFr,arcFc,arcTop,arcBot,domainValue
+real*8 :: runtimeValues(ARCANA_FIELD_COUNT)
 real*8 :: thickC,thickM,chemical_delta_rho,chemical_delta_rho_list
 real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
 
@@ -83,7 +82,7 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
        INTEGER :: continuum_LRi, fault_LRi ! both DIMENSIONed below ...
 
        LOGICAL :: brief, log_strike_adjustments, needE, needQ, skipBC
-       LOGICAL :: arcanaMode,arcana15Open,arcana16Open,arcanaOcean
+LOGICAL :: arcanaMode,arcana15Open,arcana16Open,arcanaPackageOpen
        LOGICAL :: checkE, checkF, checkN, edgeTS, edgeFS
 
 !   The following to agree with BLOCK  DATA  BD1:
@@ -96,8 +95,7 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
 
 !  DIMENSIONs using dynamic memory allocation:
        REAL*8, DIMENSION(:, :), ALLOCATABLE :: eArray, qArray, aArray, &
-     &                                         cArray, sArray, arcanaDomainArray, &
-     &                                         arcanaLithosphereArray
+     &                                         cArray, sArray
 
 !  DIMENSIONS using PARAMETER maxNod:
        DIMENSION checkN(maxNod), chemical_delta_rho_list(maxNod), &
@@ -332,11 +330,31 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
 
        INQUIRE(UNIT=15,OPENED=arcana15Open)
        INQUIRE(UNIT=16,OPENED=arcana16Open)
+       INQUIRE(UNIT=17,OPENED=arcanaPackageOpen)
        IF (arcana15Open .NEQV. arcana16Open) THEN
-            CALL FatalError("Incomplete ARCANA OrbData input pair",ModNum)
+            CALL FatalError("Incomplete predecessor ARCANA OrbData input pair",ModNum)
             CALL abort(11)
        END IF
-       arcanaMode=arcana15Open .AND. arcana16Open
+       IF (arcana15Open .OR. arcana16Open) THEN
+            CALL FatalError("Predecessor ARCANA pair is not valid S1 runtime authority",ModNum)
+            CALL abort(11)
+       END IF
+       arcanaMode=arcanaPackageOpen
+       IF (INDEX(ADJUSTL(title1),ARCANA_FEG_MARKER)==1 .AND. .NOT.arcanaMode) THEN
+            CALL FatalError("ARCANA-marked FEG requires its canonical runtime package",ModNum)
+            CALL abort(11)
+       END IF
+       IF (arcanaMode) THEN
+            IF (numNod/=ARCANA_NODE_COUNT .OR. nRealN/=numNod .OR. nFakeN/=0) THEN
+                 CALL FatalError("ARCANA package/FEG node identity coverage mismatch",ModNum)
+                 CALL abort(11)
+            END IF
+            CALL ArcanaRuntimeRead(17,numNod,runtimeStatus,filename)
+            IF (runtimeStatus/=0) THEN
+                 CALL FatalError(TRIM(filename),ModNum)
+                 CALL abort(11)
+            END IF
+       END IF
        needE = .FALSE.
        IF (.NOT. arcanaMode) THEN
             DO 60 i = 1, numNod
@@ -362,6 +380,7 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
      &              /' No elevation grid is needed.')
        END IF
 
+       IF (.NOT.arcanaMode) THEN
 !   Read in heat-flow array on unit 4, if needed:
 
        needQ = .FALSE.
@@ -422,41 +441,7 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
            END DO
        END DO
 
-!   Read in array of vertical S-wave travel-time anomalies
-!     (from the Moho to 400 km depth),
-!      such as delta_ts.grd, on unit 12:
-
-       IF (arcanaMode) THEN
-            READ (15,*) domainX1,domainDX,domainX2
-            READ (15,*) domainY1,domainDY,domainY2
-            nDomainX=(domainX2-domainX1)/domainDX+1.5D0
-            nDomainY=(domainY2-domainY1)/domainDY+1.5D0
-            ALLOCATE(arcanaDomainArray(nDomainY,nDomainX))
-            READ (15,*) ((arcanaDomainArray(iRow,jCol),jCol=1,nDomainX),iRow=1,nDomainY)
-            READ (16,*) lithoX1,lithoDX,lithoX2
-            READ (16,*) lithoY1,lithoDY,lithoY2
-            nLithoX=(lithoX2-lithoX1)/lithoDX+1.5D0
-            nLithoY=(lithoY2-lithoY1)/lithoDY+1.5D0
-            IF (nLithoX/=nDomainX .OR. nLithoY/=nDomainY .OR. &
-     &          ABS(lithoX1-domainX1)>1.0D-10 .OR. ABS(lithoX2-domainX2)>1.0D-10 .OR. &
-     &          ABS(lithoY1-domainY1)>1.0D-10 .OR. ABS(lithoY2-domainY2)>1.0D-10 .OR. &
-     &          ABS(lithoDX-domainDX)>1.0D-10 .OR. ABS(lithoDY-domainDY)>1.0D-10) THEN
-                 CALL FatalError("ARCANA domain/thickness grid geometry mismatch",ModNum)
-                 CALL abort(11)
-            END IF
-            ALLOCATE(arcanaLithosphereArray(nLithoY,nLithoX))
-            READ (16,*) ((arcanaLithosphereArray(iRow,jCol),jCol=1,nLithoX),iRow=1,nLithoY)
-            ALLOCATE(sArray(1,1))
-            sArray=0.0D0
-            nSX=1
-            nSY=1
-            sX1=0.0D0
-            sDX=1.0D0
-            sX2=0.0D0
-            sY1=0.0D0
-            sDY=1.0D0
-            sY2=0.0D0
-       ELSE
+!   Read stock vertical S-wave travel-time anomalies only in stock mode.
             IF(Verbose) WRITE(iUnitVerb, 82)
    82       FORMAT(/ /' Attempting to read gridded S-wave travel-time' &
      &               /'    anomalies (in the upper mantle):'/)
@@ -477,53 +462,31 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
   601  FORMAT ('  NODE LONGITUDE  LATITUDE      ELEV    dQdTdA', &
      &         '    zMNode    tLNode', &
      &         ' chemical_Delta_rho cooling_curvature')
+       IF (arcanaMode) title1=ARCANA_FEG_MARKER
        DO 680 iNode = 1, numNod
             pLon = yNode(iNode) * 57.2957795130823D0
             pLat = 90.0D0 - xNode(iNode) * 57.2957795130823D0
             elevat = elev(iNode)
             heatFl = dQdTdA(iNode)
-
-            arcanaOcean=.FALSE.
-            requestedTotalLithosphere=0.0D0
             IF (arcanaMode) THEN
-                 domainRow=INT((domainY2-pLat)/domainDY+1.50000001D0)
-                 domainRow=MAX(1,MIN(nDomainY,domainRow))
-                 arcLon=pLon
-                 IF (arcLon<domainX1) arcLon=arcLon+360.0D0
-                 IF (arcLon>domainX2) arcLon=arcLon-360.0D0
-                 domainCol=INT((arcLon-domainX1)/domainDX+1.50000001D0)
-                 domainCol=MAX(1,MIN(nDomainX,domainCol))
-                 domainValue=arcanaDomainArray(domainRow,domainCol)
-                 IF (domainValue/=domainValue .OR. domainValue<1.0D0 .OR. &
-     &               domainValue>6.0D0) THEN
-                      CALL FatalError("Invalid ARCANA physical domain class",ModNum)
+                 CALL ArcanaRuntimeGet(iNode,runtimeValues,runtimeStatus)
+                 IF (runtimeStatus/=0 .OR. NINT(runtimeValues(1))/=iNode) THEN
+                      CALL FatalError("ARCANA runtime node-ID binding failed",ModNum)
                       CALL abort(11)
                  END IF
-                 domainClass=NINT(domainValue)
-                 IF (ABS(domainValue-domainClass)>1.0D-8) THEN
-                      CALL FatalError("Non-categorical ARCANA physical domain",ModNum)
-                      CALL abort(11)
-                 END IF
-                 arcanaOcean=(domainClass==1)
-                 lithoRow=INT((lithoY2-pLat)/lithoDY+1.00001D0)
-                 lithoRow=MAX(1,MIN(nLithoY-1,lithoRow))
-                 lithoRow2=lithoRow+1
-                 arcFr=(lithoY2-lithoDY*(lithoRow-1)-pLat)/lithoDY
-                 arcFr=MAX(0.0D0,MIN(1.0D0,arcFr))
-                 lithoCol=INT((arcLon-lithoX1)/lithoDX+1.00001D0)
-                 lithoCol=MAX(1,MIN(nLithoX-1,lithoCol))
-                 lithoCol2=lithoCol+1
-                 arcFc=(arcLon-(lithoX1+lithoDX*(lithoCol-1)))/lithoDX
-                 arcFc=MAX(0.0D0,MIN(1.0D0,arcFc))
-                 arcTop=arcanaLithosphereArray(lithoRow,lithoCol)+ &
-     &                arcFc*(arcanaLithosphereArray(lithoRow,lithoCol2)- &
-     &                      arcanaLithosphereArray(lithoRow,lithoCol))
-                 arcBot=arcanaLithosphereArray(lithoRow2,lithoCol)+ &
-     &                arcFc*(arcanaLithosphereArray(lithoRow2,lithoCol2)- &
-     &                      arcanaLithosphereArray(lithoRow2,lithoCol))
-                 requestedTotalLithosphere=arcTop+arcFr*(arcBot-arcTop)
-            END IF
-            CALL Assign (aArray,    aX1,    aDX,    aX2,    nAX,    aDY,    aY2,    nAY, & ! INTENT(IN)
+                 heatFl=runtimeValues(15)
+                 thickC=runtimeValues(16)
+                 thickM=runtimeValues(17)
+                 chemical_delta_rho=0.0D0
+                 ! Compatibility only; S1B must read the canonical package profile.
+                 cooling_curvature=0.0D0
+                 dQdTdA(iNode)=heatFl
+                 zMNode(iNode)=thickC
+                 tLNode(iNode)=thickM
+                 chemical_delta_rho_list(iNode)=chemical_delta_rho
+                 cooling_curvature_list(iNode)=cooling_curvature
+             ELSE
+                 CALL Assign (aArray,    aX1,    aDX,    aX2,    nAX,    aDY,    aY2,    nAY, & ! INTENT(IN)
      &                   alphaT, cLimit, conduc, &                                         ! INTENT(IN)
      &                   cArray,    cX1,    cDX,    cX2,    nCX,    cDY,    cY2,    nCY, & ! INTENT(IN)
      &                   delta_rho_limit, &                                                ! INTENT(IN)
@@ -539,15 +502,17 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
      &                   TAsthK, temLim,  TSurf, &                                         ! INTENT(IN)
      &                   elevat, heatFl, &                                                 ! INTENT(INOUT)
      &                   thickC, thickM, chemical_delta_rho, cooling_curvature, &          ! INTENT(OUT)
-     &                   arcanaMode,arcanaOcean,requestedTotalLithosphere, &
-     &                   ModNum)
-
-            elev(iNode) = elevat
-            dQdTdA(iNode) = heatFl
-            zMNode(iNode) = MAX(thickC, cLimit)
-            tLNode(iNode) = MAX(thickM, 0.0D0)
-            chemical_delta_rho_list(iNode) = chemical_delta_rho
-            cooling_curvature_list(iNode) = cooling_curvature
+     &                   .FALSE.,.FALSE.,0.0D0,ModNum)
+                 elev(iNode)=elevat
+                 dQdTdA(iNode)=heatFl
+                 zMNode(iNode)=MAX(thickC,cLimit)
+                 tLNode(iNode)=MAX(thickM,0.0D0)
+                 chemical_delta_rho_list(iNode)=chemical_delta_rho
+                 cooling_curvature_list(iNode)=cooling_curvature
+            END IF
+             IF (.NOT.arcanaMode) THEN
+                  elev(iNode)=elevat
+             END IF
             WRITE (iUnitL, 678) iNode, pLon, pLat, &
      &                          elev(iNode), dQdTdA(iNode), zMNode(iNode), &
      &                          tLNode(iNode), &
@@ -573,6 +538,8 @@ real*8 :: cooling_curvature,cooling_curvature_list,zMNode,tLNode
      &              title1, tLNode,  xNode,  yNode,  zMNode, & ! INTENT(IN)
      &              chemical_delta_rho_list, &                 ! INTENT(IN)
      &              cooling_curvature_list)                    ! INTENT(IN)
+
+       IF (arcanaMode) CALL ArcanaRuntimeRelease()
 
        if(Verbose) write (iUnitVerb, *)
        if(Verbose) write (iUnitVerb, "(' Job completed.')")

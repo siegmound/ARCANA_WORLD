@@ -1252,6 +1252,8 @@ select case(prog)
     if(isOpen) close(15)
     inquire(unit=16,opened=isOpen)
     if(isOpen) close(16)
+    inquire(unit=17,opened=isOpen)
+    if(isOpen) close(17)
 
 
   case("SH")
@@ -1374,7 +1376,7 @@ integer,intent(in),optional :: iConve
 
 integer,parameter :: iUnitVerb = 6 ! Unit number for optional verbose.txt file
 character(len=100):: dir,filename
-logical :: exists,arcDomainExists,arcLithosphereExists,arcanaInputMode
+logical :: exists,arcDomainExists,arcLithosphereExists,arcanaInputMode,arcanaRuntimeExists
 character(len=100) :: ShellsFiles(9),ShellsFilesFinal(9),ScoreFiles(10),DataFiles(6)
 logical :: ShellsFilesL(4),ShellsFilesFinalL(4),ScoreFilesL(8)
 logical,save :: callOD=.False.,callSH=.False.,callOS=.False.,callSF=.False.
@@ -1387,12 +1389,23 @@ select case(prog)
     call readDATA(DataFiles) ! (/Grid,Para,ETOPO,Age,CrustThick,DeltaTS/)
     arcDomainExists=FileExist('INPUT/ARCANA_DOMAIN.grd')
     arcLithosphereExists=FileExist('INPUT/ARCANA_TOTAL_LITHOSPHERE_M.grd')
+    arcanaRuntimeExists=FileExist('INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat')
     if(arcDomainExists .neqv. arcLithosphereExists) then
-      call FatalError("Incomplete ARCANA OrbData source pair in INPUT/",ModNum)
+      call FatalError("Incomplete predecessor ARCANA OrbData pair in INPUT/",ModNum)
       call abort(11)
       return
     end if
-    arcanaInputMode=arcDomainExists .and. arcLithosphereExists
+    if(arcDomainExists .and. arcLithosphereExists .and. .not.arcanaRuntimeExists) then
+      call FatalError("Predecessor ARCANA pair requires the complete R6 runtime package",ModNum)
+      call abort(11)
+      return
+    end if
+    if(arcDomainExists .and. arcLithosphereExists .and. arcanaRuntimeExists) then
+      call FatalError("Conflicting predecessor ARCANA pair and R6 runtime package",ModNum)
+      call abort(11)
+      return
+    end if
+    arcanaInputMode=arcanaRuntimeExists
 
     write(dir,"(A,'/','ThID_',I0,'_Data_input')") trim(ListDIR),ThID
     if(.not. callOD) then
@@ -1401,13 +1414,23 @@ select case(prog)
     end if
     write(filename,"('fort_',I0,'.')") ModNum
 
+    if(.not.arcanaRuntimeExists .and. FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+      call FatalError("Stale staged ARCANA runtime package without canonical INPUT authority",ModNum)
+      call abort(11)
+      return
+    end if
+
     call execute_command_line('cp INPUT/'//trim(DataFiles(2)) //' '//trim(dir)//'/'//trim(filename)//'1')
     call execute_command_line('cp INPUT/'//trim(DataFiles(1)) //' '//trim(dir)//'/'//trim(filename)//'2')
     call execute_command_line('cp INPUT/'//trim(DataFiles(4)) //' '//trim(dir)//'/'//trim(filename)//'7')
     call execute_command_line('cp INPUT/'//trim(DataFiles(5)) //' '//trim(dir)//'/'//trim(filename)//'11')
     if(arcanaInputMode) then
-      call execute_command_line('cp INPUT/ARCANA_DOMAIN.grd '//trim(dir)//'/'//trim(filename)//'15')
-      call execute_command_line('cp INPUT/ARCANA_TOTAL_LITHOSPHERE_M.grd '//trim(dir)//'/'//trim(filename)//'16')
+      call execute_command_line('cp INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat '//trim(dir)//'/'//trim(filename)//'17')
+      if(.not.FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+        call FatalError("Canonical ARCANA runtime package was not staged for OrbData",ModNum)
+        call abort(11)
+        return
+      end if
     else
       call execute_command_line('cp INPUT/'//trim(DataFiles(6)) //' '//trim(dir)//'/'//trim(filename)//'12')
     end if
@@ -1513,7 +1536,8 @@ logical,intent(in),optional :: Final
 character(len=200) :: filename
 character(len=100) :: dir
 integer,intent(in),optional :: rpeat
-logical :: exists,arcDomainExists,arcLithosphereExists
+integer :: ios
+logical :: exists,arcDomainExists,arcLithosphereExists,arcanaRuntimeExists
 logical,save :: callSF=.False.
 
 
@@ -1529,12 +1553,19 @@ select case(prog)
     open(unit=11,file=trim(dir)//trim(filename)//'11')
     arcDomainExists=FileExist(trim(dir)//trim(filename)//'15')
     arcLithosphereExists=FileExist(trim(dir)//trim(filename)//'16')
+    arcanaRuntimeExists=FileExist(trim(dir)//trim(filename)//'17')
     if(arcDomainExists .neqv. arcLithosphereExists) then
-      call FatalError("Incomplete ARCANA OrbData pair (.15/.16)",ModNum)
+      call FatalError("Incomplete predecessor ARCANA OrbData pair (.15/.16)",ModNum)
       call abort(11)
     elseif(arcDomainExists) then
-      open(unit=15,file=trim(dir)//trim(filename)//'15')
-      open(unit=16,file=trim(dir)//trim(filename)//'16')
+      call FatalError("Predecessor ARCANA pair is not valid S1 runtime authority",ModNum)
+      call abort(11)
+    elseif(arcanaRuntimeExists) then
+      open(unit=17,file=trim(dir)//trim(filename)//'17',status='old',action='read',iostat=ios)
+      if(ios/=0) then
+        call FatalError("Unable to open staged ARCANA runtime package",ModNum)
+        call abort(11)
+      end if
     else
       open(unit=12,file=trim(dir)//trim(filename)//'12')
     end if
@@ -1544,6 +1575,7 @@ select case(prog)
     write(dir,"(A,'/','ThID_',I0,'_Shells_input/')") trim(ListDIR),ThID
     write(filename,"('fort_',I0,'.')") ModNum
     open(unit=1,file=trim(dir)//trim(filename)//'1')
+    call RejectArcanaFEGForLegacyShells(1,ModNum)
     open(unit=2,file=trim(dir)//trim(filename)//'2')
     open(unit=3,file=trim(dir)//trim(filename)//'3')
     open(unit=8,file=trim(dir)//trim(filename)//'8')
@@ -1594,6 +1626,7 @@ select case(prog)
     write(dir,"(A,'/','ThID_',I0,'_ShellsF_input/')") trim(ListDIR),ThID
     write(filename,"('fort_',I0,'.')") ModNum
     open(unit=1,file=trim(dir)//trim(filename)//'1')
+    call RejectArcanaFEGForLegacyShells(1,ModNum)
     open(unit=2,file=trim(dir)//trim(filename)//'2')
     open(unit=3,file=trim(dir)//trim(filename)//'3')
     open(unit=8,file=trim(dir)//trim(filename)//'8')
@@ -1616,6 +1649,26 @@ select case(prog)
 end select
 
 end subroutine
+
+
+subroutine RejectArcanaFEGForLegacyShells(unit_number,ModNum)
+
+integer,intent(in) :: unit_number,ModNum
+integer :: ios
+character(len=80) :: fegTitle
+
+read(unit_number,'(A80)',iostat=ios) fegTitle
+if(ios==0) rewind(unit_number,iostat=ios)
+if(ios/=0) then
+  call FatalError("Unable to inspect FEG title before Shells input",ModNum)
+  call abort(11)
+end if
+if(index(adjustl(fegTitle),'ARCANA_R6_PRE_ORBDATA_RUNTIME_V1')==1) then
+  call FatalError("ARCANA runtime FEG requires the S1B canonical Shells consumer; legacy thermal fallback refused",ModNum)
+  call abort(11)
+end if
+
+end subroutine RejectArcanaFEGForLegacyShells
 
 
 subroutine OpenOutput(ThID,ModNum,prog,ListDIR,plt,rpeat,MC) ! open OrbData, Shells, OrbScore output files
