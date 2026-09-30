@@ -1,0 +1,117 @@
+{
+  "schema": "R6_PRE_ORBDATA_CHEMICAL_DENSITY_MECHANICS_AUTHORITY_V1",
+  "decision": "R6_PRE_ORBDATA_CHEMICAL_DENSITY_MECHANICS_AUTHORITY_CLOSED__S1_CONSUMER_ARCHITECTURE_COMPLETE__S1A_IMPLEMENTATION_READY",
+  "scope": {
+    "repository_branch": "r6/t0-authorial-realization-materialization",
+    "starting_head": "c38de816f558da34f679dc8e949c71ec7977f3b4",
+    "authority_only": true,
+    "shellset_modified": false,
+    "orbdata_or_shells_executed": false,
+    "closed_scientific_authorities_reopened": false,
+    "runtime_package_modified": false,
+    "runtime_package_schema_modified": false,
+    "world_history_chemical_field_added": false
+  },
+  "source_audit_lineage": {
+    "prior_audit": "R6 PRE_ORBDATA S1-PRE END-TO-END SHELLSET CONSUMER CONTRACT AUDIT",
+    "legacy_source_paths": [
+      "external/ShellSet-v1.1.0/src/MOD_Data.f90::Assign",
+      "external/ShellSet-v1.1.0/src/MOD_Data.f90::Squeez",
+      "external/ShellSet-v1.1.0/src/MOD_Shells.f90::GetNet",
+      "external/ShellSet-v1.1.0/src/MOD_Shells.f90::FillIn"
+    ],
+    "legacy_finding": "OrbData derives a residual from sigZZB, clamps it using delta_rho_limit, serializes it as chemical_delta_rho, and Shells consumes it as a lithosphere-wide density anomaly. The residual arithmetic is deterministic; ARCANA had not authorized interpreting it as chemical/compositional geology.",
+    "runtime_package": {
+      "mode": "ARCANA_R6_PRE_ORBDATA_RUNTIME_V1",
+      "schema": "arcana_worldsim.r6.shellset_owner_bound_runtime.v1",
+      "node_count": 64442,
+      "record_field_count": 51,
+      "data_sha256": "2dc83a759d4cdd4851ad57a37fc725841da24f0f2ca4312391283348703d3584",
+      "manifest_sha256": "876a9365ae76ad7a6fa10470317d754e08b82b9fc69cac8d72203e06a8ee7ce0",
+      "authority": "NUMERICAL_RUNTIME_SUPPORT_ONLY"
+    },
+    "selected_consumer_architecture": "SHARED_CANONICAL_RUNTIME_PACKAGE_DUAL_CONSUMER"
+  },
+  "chemical_density_policy": {
+    "field": "chemical_delta_rho_kg_m3",
+    "runtime_value": 0.0,
+    "classification": "NUMERICAL_RUNTIME_REFERENCE_COMPONENT",
+    "physical_authority": "NOT_CANONICAL_CHEMICAL_GEOLOGY",
+    "meaning": "No independently governed chemical/compositional density anomaly is presently materialized for this runtime state.",
+    "scope_limitation": "This is the minimum ShellSet runtime representation only. It does not assert globally zero compositional density variation in ARCANA geology.",
+    "independent_composition_inference": false
+  },
+  "prohibited_interpretations": [
+    "Do not infer chemical composition from an isostatic residual.",
+    "Do not interpret runtime zero as globally zero compositional density variation.",
+    "Do not use delta_rho_limit to authorize a physical chemical-density value.",
+    "Do not cancel a nonzero pressure residual by fabricating chemical structure.",
+    "Do not reconstruct a future governed compositional-density field retrospectively from ShellSet residuals."
+  ],
+  "squeez_residual_classification": {
+    "sigZZB": "DERIVED_REPLAYABLE_MECHANICAL_STATE",
+    "tauZZ": "DERIVED_REPLAYABLE_MECHANICAL_STATE",
+    "policy": "Calculate and retain residual mechanical state from governed geometry, thermal profile, materials, rhoAst, rhoH2O, and chemical_delta_rho=0. Allow nonzero residuals to propagate as mechanical consequences.",
+    "convert_to_chemical_density": false
+  },
+  "delta_rho_limit_policy": {
+    "arcana_runtime_role": "NOT_PHYSICAL_AUTHORITY; NO_ARCANA_COMPENSATION",
+    "arcana_mode": "Do not derive chemical_delta_rho from sigZZB and do not clamp such a derived value. Preserve the governed zero compatibility component and report mechanical residuals without silently cancelling them.",
+    "stock_non_arcana_mode": "Legacy behavior remains outside this decision scope and must remain unchanged by an ARCANA-only implementation."
+  },
+  "thermal_clipping": {
+    "governed_temperature_ceiling_k": 1900.0,
+    "source_validation": "The closed ARCANA thermal-column implementation rejects profiles reaching the numerical ceiling. Continental profiles are checked at Moho/LAB and for the governed internal-temperature constraint; ocean/ridge endpoints are checked and the Hermite validator checks extrema against endpoint bounds.",
+    "arcana_evaluation": "Evaluate the governed polynomial directly; do not apply legacy MIN(temLim,T) clipping.",
+    "invalid_profile_policy": "FAIL_CLOSED if a governed ARCANA profile violates its authorized thermal validity envelope.",
+    "clip_to_validity": false,
+    "new_thermal_model": false
+  },
+  "future_refinement_rule": {
+    "replacement_requires": "A separately governed physical density/composition field with its own provenance and historical resolution.",
+    "possible_lineage": [
+      "crust or mantle composition",
+      "mineralogical state",
+      "phase assemblage",
+      "compositional density",
+      "other physically justified geological lineage"
+    ],
+    "retrospective_residual_reconstruction_permitted": false
+  },
+  "S1A_consequences": [
+    "Read and validate the complete ARCANA_R6_PRE_ORBDATA_RUNTIME_V1 package and bind records by node identity.",
+    "Preserve governed heat flow, geometry, owner-specific material state, and transient polynomial profiles.",
+    "Set the legacy chemical_delta_rho compatibility output to exactly 0.0 and label it NUMERICAL_RUNTIME_REFERENCE_COMPONENT, not canonical geology.",
+    "Retain Squeez sigZZB/tauZZ only as derived mechanical state; do not use them to generate or clamp chemical_delta_rho.",
+    "Bypass delta_rho_limit compensation, GDH1, qLim mutation, and legacy steady-geotherm/cooling-curvature fitting in explicit complete ARCANA mode.",
+    "Evaluate governed polynomial temperatures directly; fail closed on invalid profiles instead of applying temLim clipping."
+  ],
+  "S1B_consequences": [
+    "Independently read and validate the same immutable canonical runtime package, keyed by unchanged FEG node_id.",
+    "Keep chemical density contribution at 0.0 in explicit ARCANA mode.",
+    "Construct mechanics state from the governed thermal profile and owner-bound material state.",
+    "Allow derived stress/isostatic consequences to propagate without converting them to chemical composition.",
+    "Bypass legacy profile reconstruction in ARCANA mode and preserve the stock path outside explicit ARCANA mode."
+  ],
+  "preserved_readiness_gates": {
+    "PRE_ORBDATA_ready": false,
+    "OrbData_authorized": false,
+    "t0_orbdata_executed": false,
+    "SHELLS_ready": false,
+    "shellset_mechanics_authorized": false,
+    "mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_created": false,
+    "forward_evolution_authorized": false,
+    "canonical_state_changed": false,
+    "shellset_runtime_qualified": false
+  },
+  "remaining_blockers": {
+    "scientific_authority": [],
+    "implementation_and_runtime": [
+      "S1A consumer implementation and static validation remain to be performed.",
+      "S1B consumer implementation and static validation remain to be performed.",
+      "Qualified Ubuntu compilation/runtime and subsequent governed qualification remain outstanding; this decision provides no runtime claim."
+    ]
+  }
+}
