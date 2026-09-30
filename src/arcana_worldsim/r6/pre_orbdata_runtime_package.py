@@ -343,18 +343,18 @@ def materialize(root: Path) -> tuple[dict[str, Any], bytes]:
                        "physical_age_present", "effective_age_present", "transient_rate_present",
                        "material_configuration_code", "crust_material_code", "mantle_material_code"}: units[field] = "1"
         elif field.endswith("_age_ma"): units[field] = "Ma"
+        elif field.endswith("_c1_k_m"): units[field] = "K m-1"
+        elif field.endswith("_c2_k_m2"): units[field] = "K m-2"
+        elif field.endswith("_c3_k_m3"): units[field] = "K m-3"
         elif field.endswith("_m"): units[field] = "m"
         elif field.endswith("_temperature_k") or field.endswith("_c0_k"): units[field] = "K"
         elif field.endswith("_flux_w_m2") or field == "surface_heat_flow_w_m2": units[field] = "W m-2"
         elif field.endswith("_rate_k_s"): units[field] = "K s-1"
-        elif field.endswith("_density_kg_m3"): units[field] = "kg m-3"
+        elif field.endswith("_kg_m3"): units[field] = "kg m-3"
         elif field.endswith("_conductivity_w_m_k"): units[field] = "W m-1 K-1"
         elif field.endswith("_expansivity_k_1"): units[field] = "K-1"
         elif field.endswith("_heat_production_w_m3"): units[field] = "W m-3"
         elif field.endswith("_cp_j_kg_k"): units[field] = "J kg-1 K-1"
-        elif field.endswith("_c1_k_m"): units[field] = "K m-1"
-        elif field.endswith("_c2_k_m2"): units[field] = "K m-2"
-        elif field.endswith("_c3_k_m3"): units[field] = "K m-3"
         else: units[field] = "1"
     manifest = {
         "schema": SCHEMA,

@@ -73,6 +73,24 @@ def test_runtime_record_format_is_finite_and_fixed_width():
         RuntimeNode(tuple([1] + [float("nan")] * (len(FIELDS) - 1))).line()
 
 
+def test_manifest_units_are_specific_for_coefficients_density_and_geometry():
+    root = Path(__file__).resolve().parents[1]
+    units = json.loads((root / MANIFEST_NAME).read_text(encoding="utf-8"))["units"]
+    for field in ("layer1_c1_k_m", "layer2_c1_k_m"):
+        assert units[field] == "K m-1"
+    for field in ("layer1_c2_k_m2", "layer2_c2_k_m2"):
+        assert units[field] == "K m-2"
+    for field in ("layer1_c3_k_m3", "layer2_c3_k_m3"):
+        assert units[field] == "K m-3"
+    assert units["rho_asthenosphere_kg_m3"] == "kg m-3"
+    assert units["rho_water_kg_m3"] == "kg m-3"
+    for field in (
+        "crust_thickness_m", "mantle_lithosphere_thickness_m", "lab_depth_m",
+        "layer1_z0_m", "layer1_z1_m", "layer2_z0_m", "layer2_z1_m",
+    ):
+        assert units[field] == "m"
+
+
 def test_materialized_package_covers_all_nodes_with_owner_bound_state():
     # Inspect the actual deterministic package; no ShellSet process is invoked.
     root = Path(__file__).resolve().parents[1]
