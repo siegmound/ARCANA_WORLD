@@ -34,15 +34,17 @@ they do not define new physical materials.
 
 ## Implementation status
 
-The shared nodal and FEM evaluator has been authored in
-`external/ShellSet-v1.1.0/src/MOD_ArcanaRuntime.f90`. End-to-end Shells consumer
-wiring is **incomplete**. `MOD_ShellSet.f90` still explicitly rejects the ARCANA
-FEG marker, while FillIn, OneBar, Viscos/Diamnd, Fixed/Squeez, Pure/Mohr, the
-`iConve=5` temperature predicate, and Result retain legacy thermal consumers.
-The Shells-side marker+package activation handshake is not implemented. The
-marker rejection therefore remains enabled and no hybrid ARCANA mode is
-allowed. This is not an S1B implementation pass, and no FAIR runtime/build
-result is claimed. Windows static authoring has not run OrbData or SHELLS.
+The shared nodal and FEM evaluator is implemented in
+`external/ShellSet-v1.1.0/src/MOD_ArcanaRuntime.f90`. S1B-I provides the
+marker+package lifecycle. S1B-II wires FillIn, ARCANA Squeez, OneBar, and the
+`iConve=5` temperature predicate to that evaluator. The ARCANA path bypasses
+legacy geotherm reconstruction and temLim; the 200 K OneBar floor is a
+fail-closed bound check, never a temperature clamp. A temporary ARCANA barrier
+runs after FillIn and before Fixed/Pure, so remaining S1B-III consumers cannot
+execute in ARCANA mode. Stock paths remain in their legacy branches. Complete
+Shells mechanics remains **disabled** pending S1B-III. No FAIR runtime/build
+result is claimed; Windows validation is source-level only and has not run
+OrbData or SHELLS.
 
 The Python numerical reference tests exercise only the closed projection
 equations; they do not execute or qualify the Fortran evaluator.

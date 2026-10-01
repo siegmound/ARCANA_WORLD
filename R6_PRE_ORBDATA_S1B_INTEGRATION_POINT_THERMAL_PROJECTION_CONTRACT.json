@@ -45,19 +45,16 @@
   },
   "implementation_boundary": {
     "shared_evaluator": "external/ShellSet-v1.1.0/src/MOD_ArcanaRuntime.f90",
-    "shells_consumer_wiring": "INCOMPLETE",
-    "marker_rejection": "ENABLED_AFTER_RUNTIME_VALIDATION_BEFORE_FILLIN",
+    "shells_consumer_wiring": "S1B_II_MAIN_CONTINUUM_WIRED__S1B_III_REMAINS",
+    "marker_rejection": "ENABLED_AFTER_FILLIN_BEFORE_FIXED",
     "remaining_legacy_consumers": [
-      "FillIn geothC/geothM construction and Squeez call",
-      "OneBar legacy geothM evaluation",
       "Viscos/Diamnd legacy profile and temLim paths",
       "Fixed fault path through legacy Squeez",
       "Pure/Mohr thermal reconstruction",
-      "iConve=5 legacy base-temperature predicate",
       "Result legacy geothC temperature diagnostic"
     ],
     "legacy_consumer_paths_wired_to_shared_evaluator": false,
-    "activation_handshake": "S1B_I_RUNTIME_LIFECYCLE_IMPLEMENTED; valid candidate loads then aborts with ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED",
+    "activation_handshake": "S1B_I_RUNTIME_LIFECYCLE_IMPLEMENTED; valid candidate loads, S1B-II main continuum runs, then aborts with ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED before S1B-III consumers",
     "runtime_package_staging": "UNIT_17_FOR_SH_AND_SF_MODEL_INPUTS",
     "runtime_mode_query": "ArcanaShellsModeActive",
     "runtime_qualification": "NOT_CLAIMED",

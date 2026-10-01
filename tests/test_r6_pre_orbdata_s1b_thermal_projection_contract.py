@@ -22,7 +22,7 @@ def test_contract_selects_evaluate_then_interpolate_without_new_authority():
         CONTRACT["temperature_rule"]["integration_point_property_authority"]
         == "NUMERICAL_RUNTIME_EFFECTIVE_PROPERTY"
     )
-    assert CONTRACT["implementation_boundary"]["shells_consumer_wiring"] == "INCOMPLETE"
+    assert CONTRACT["implementation_boundary"]["shells_consumer_wiring"].startswith("S1B_II_MAIN_CONTINUUM_WIRED")
     assert CONTRACT["implementation_boundary"]["runtime_qualification"] == "NOT_CLAIMED"
 
 
@@ -53,10 +53,15 @@ def test_contract_records_required_diagnostics_and_all_gates_closed():
         assert gates[key] is False
 
 
-def test_arcana_feg_is_still_fail_closed_before_legacy_thermal_fallback():
+def test_arcana_feg_runs_core_fillin_then_fails_closed_before_s1b_iii():
     shells = (ROOT / "external/ShellSet-v1.1.0/src/SHELLS_v5.0.f90").read_text(encoding="utf-8")
-    assert "ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED" in shells
-    assert "IF (ArcanaShellsModeActive()) THEN" in shells
+    load_at = shells.index("CALL ArcanaShellsLoadRuntime(numNod,ThID)")
+    fill_at = shells.index("CALL FillIn (alphaT, basal, conduc")
+    fixed_at = shells.index("CALL Fixed (alphaT, area, conduc")
+    fail_at = shells.index("ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED")
+    assert "ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED" not in shells
+    assert load_at < fill_at < fail_at < fixed_at
+    assert "IF (ArcanaShellsModeActive()) THEN" in shells[fail_at-350:fail_at]
 
 
 @dataclass(frozen=True)
@@ -147,10 +152,10 @@ def test_activation_is_not_enabled_without_shells_package_handshake():
     assert "ArcanaShellsModeActive" in set_source
     assert "ArcanaShellsRelease" in set_source and "close(17)" in set_source
     load_at = shells_source.index("CALL ArcanaShellsLoadRuntime(numNod,ThID)")
-    fail_at = shells_source.index("ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED")
     fill_at = shells_source.index("CALL FillIn (alphaT, basal, conduc")
-    assert load_at < fail_at < fill_at
-    assert "IF (ArcanaShellsModeActive()) THEN" in shells_source[load_at:fill_at]
+    fail_at = shells_source.index("ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED")
+    fixed_at = shells_source.index("CALL Fixed (alphaT, area, conduc")
+    assert load_at < fill_at < fail_at < fixed_at
 
 
 def test_known_shells_thermal_gaps_are_explicitly_kept_blocked():
@@ -158,9 +163,31 @@ def test_known_shells_thermal_gaps_are_explicitly_kept_blocked():
         encoding="utf-8"
     )
     expected_gaps = CONTRACT["implementation_boundary"]["remaining_legacy_consumers"]
-    assert len(expected_gaps) == 7
+    assert len(expected_gaps) == 4
     assert CONTRACT["implementation_boundary"]["legacy_consumer_paths_wired_to_shared_evaluator"] is False
     assert "SUBROUTINE FillIn" in shells and "geothC(2, m, i) = q / conduc(1)" in shells
     assert "SUBROUTINE OneBar" in shells and "gt(1) = geothM(1, m, i)" in shells
     assert "SUBROUTINE Diamnd" in shells and "MIN(temLim, geoth1)" in shells
     assert "SUBROUTINE Result" in shells and "tMid = geothC(1, m, i)" in shells
+
+
+def test_s1b_ii_arcana_main_thermal_consumers_use_shared_evaluator_and_exact_weights():
+    shells = (ROOT / "external/ShellSet-v1.1.0/src/MOD_Shells.f90").read_text(encoding="utf-8")
+    fill = shells[shells.index("SUBROUTINE FillIn"):shells.index("END SUBROUTINE FillIn")]
+    arc = fill[fill.index("IF (ArcanaShellsModeActive()) THEN", fill.index("!   ARCANA uses")):fill.index("ELSE\n!   Geotherm:")]
+    onebar = shells[shells.index("SUBROUTINE OneBar"):shells.index("END SUBROUTINE OneBar")]
+    assert "COMMON / S1S2S3 / points" in fill and "arcana_weights = points(:,m)" in arc
+    assert "arcana_node_ids = nodes(:,i)" in arc
+    assert "CALL ArcanaRuntimeSqueez" in arc and "0.0D0, elev(i)" in arc
+    assert "arcana_elevation = elev(nodes(1,i))*points(1,m)" in arc
+    assert "delta_rho = 0.0D0" in fill and "temLim" not in arc
+    assert "geothC = 0.0D0" in arc and "geothM = 0.0D0" in arc
+    assert "ArcanaRuntimeEvaluateIP" in onebar and "geothM" not in onebar[onebar.index("IF (ArcanaShellsModeActive()) THEN"):onebar.index("ELSE", onebar.index("IF (ArcanaShellsModeActive()) THEN"))]
+    assert "MIN(tg, ta)" in onebar and "MAX(t, 200.0D0)" in onebar
+    assert "ARCANA_ONEBAR_GOVERNED_TEMPERATURE_BELOW_200K" in onebar
+    assert "ARCANA_ONEBAR_EVALUATOR_FAILED" in onebar
+    assert "arcana_weights = points(:,m)" in onebar
+    assert "zMoho(m,i)+tLInt(m,i)," in fill
+    assert "baseT < 1273.0D0" in fill
+    assert "ARCANA_ICONVE5_EVALUATOR_FAILED" in fill
+    assert "ARCANA_SQUEEZ_EVALUATOR_FAILED" in fill

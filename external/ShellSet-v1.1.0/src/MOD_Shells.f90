@@ -21,6 +21,8 @@ module ShellsSubs
 
 use ShellSetSubs
 use SharedVars
+use ArcanaRuntime, only: ArcanaRuntimeEvaluateIP, ArcanaRuntimeSqueez, &
+     ARCANA_PROPERTY_COUNT
 
 ! MKL version:
 ! Intel's Math Kernel Library (MKL), LAPACK portion; these MODULEs need INTERFACEs.
@@ -3775,7 +3777,9 @@ DOUBLE PRECISION points
 COMMON / S1S2S3 / points
 DIMENSION points(3, 7)
 !      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-INTEGER i, iconv2, m
+INTEGER i, iconv2, m, arcana_ierr, arcana_node_ids(3)
+REAL*8 arcana_weights(3), arcana_elevation
+INTEGER arcana_phases(3)
 REAL*8 baseT, delta_quadratic, difMag, dTdZC, dTdZM, &
 	& geoth1, geoth2, geoth3, geoth4, geoth5, geoth6, geoth7, geoth8, &
 	& huge, q, shrMag, tAsthK, test, terr0r, vtime2, z
@@ -3882,9 +3886,50 @@ DO 4 m = 1, 7
 
 !   Density anomaly of chemical origin (applies to whole lithosphere):
 
-CALL Interp (density_anomaly, mxEl, mxNode, nodes, numEl, & ! input
-&              delta_rho)                                     ! output
+IF (ArcanaShellsModeActive()) THEN
+     delta_rho = 0.0D0
+ELSE
+     CALL Interp (density_anomaly, mxEl, mxNode, nodes, numEl, & ! input
+&                   delta_rho)                                     ! output
+END IF
 
+!   ARCANA uses the shared nodal-column evaluator. geothC/geothM are zeroed
+!   solely to satisfy legacy array interfaces; they are not temperature state.
+IF (ArcanaShellsModeActive()) THEN
+     geothC = 0.0D0
+     geothM = 0.0D0
+     curviness = 0.0D0
+     DO i = 1, numNod
+          arcana_node_ids = (/ i, i, i /)
+          arcana_weights = (/ 1.0D0, 0.0D0, 0.0D0 /)
+          CALL ArcanaRuntimeSqueez(arcana_node_ids, arcana_weights, &
+               0.0D0, elev(i), gMean, oneKm, zMNode(i)+tLNode(i), &
+               tauZZN(i), atNode(i), arcana_ierr)
+          IF (arcana_ierr /= 0) THEN
+               CALL FatalError("ARCANA_SQUEEZ_EVALUATOR_FAILED",ThID)
+               CALL abort(11)
+               RETURN
+          END IF
+     END DO
+     DO m = 1, 7
+          DO i = 1, numEl
+               arcana_node_ids = nodes(:,i)
+               arcana_weights = points(:,m)
+               arcana_elevation = elev(nodes(1,i))*points(1,m) + &
+                    elev(nodes(2,i))*points(2,m) + &
+                    elev(nodes(3,i))*points(3,m)
+               CALL ArcanaRuntimeSqueez(arcana_node_ids, arcana_weights, &
+                    0.0D0, arcana_elevation, gMean, oneKm, &
+                    zMoho(m,i)+tLInt(m,i), tauZZI(m,i), sigZZI(m,i), &
+                    arcana_ierr)
+               IF (arcana_ierr /= 0) THEN
+                    CALL FatalError("ARCANA_SQUEEZ_EVALUATOR_FAILED",ThID)
+                    CALL abort(11)
+                    RETURN
+               END IF
+          END DO
+     END DO
+ELSE
 !   Geotherm:
 
 !      -------------- The following method is easy but WRONG!-----------
@@ -3990,12 +4035,14 @@ CALL Interp (atNode, mxEl, mxNode, nodes, numEl, & ! input
 CALL Interp (tauZZN, mxEl, mxNode, nodes, numEl, & ! input
 &              tauZZI)                               ! output
 
+END IF
+
 !  Compute strength of shearing layer in asthenosphere:
 
 CALL OneBar (continuum_LRi, &                                                   ! input
 &              geothC, geothM, gradie, &                                          ! input
 &              LRn, LR_set_aCreep, LR_set_bCreep, LR_set_cCreep, LR_set_eCreep, & ! input
-&              mxEl, numEl, oneKm, tAdiab, &                                      ! input
+&              mxEl, nodes, numEl, oneKm, tAdiab, &                                      ! input
 &              zBAsth, zMoho, &                                                   ! input
 &              glue)                                                              ! output
 
@@ -4024,11 +4071,26 @@ DO 200 m = 1, 7
 		 ELSE IF (iConve == 5) THEN
 !                     Forearc is defined where base of plate is at less
 !                     than 1000 C = 1273 K.
-			  baseT = geothM(1, m, i) + &
-&                        geothM(2, m, i) * tLInt(m, i) + &
-&                        geothM(3, m, i) * tLInt(m, i)**2 + &
-&                        geothM(4, m, i) * tLInt(m, i)**3
-			  pulled(m, i) = (baseT < 1273.0D0)
+                    IF (ArcanaShellsModeActive()) THEN
+                         arcana_node_ids = nodes(:,i)
+                         arcana_weights = points(:,m)
+                         CALL ArcanaRuntimeEvaluateIP(arcana_node_ids, &
+                              arcana_weights, zMoho(m,i)+tLInt(m,i), &
+                              baseT, arcana_properties, arcana_phases, &
+                              arcana_ierr)
+                         IF (arcana_ierr /= 0) THEN
+                              CALL FatalError("ARCANA_ICONVE5_EVALUATOR_FAILED",ThID)
+                              CALL abort(11)
+                              RETURN
+                         END IF
+                    ELSE
+                         baseT = geothM(1, m, i) + &
+     &                         geothM(2, m, i) * tLInt(m, i) + &
+     &                         geothM(3, m, i) * tLInt(m, i)**2 + &
+     &                         geothM(4, m, i) * tLInt(m, i)**3
+                    END IF
+                    ! Legacy forearc threshold remains baseT < 1273 K (1000 C).
+                    pulled(m, i) = (baseT < 1273.0D0)
 		 ELSE IF (iConve == 6) THEN
 			  pulled(m, i) = (trHMax > 0.0D0)
 !                    (However, even when "pulled" = T for all
@@ -6229,7 +6291,7 @@ END SUBROUTINE OldVel
 SUBROUTINE OneBar (continuum_LRi, &                                                   ! input
 &                    geothC, geothM, gradie, &                                          ! input
 &                    LRn, LR_set_aCreep, LR_set_bCreep, LR_set_cCreep, LR_set_eCreep, & ! input
-&                    mxEl, numEl, oneKm, tAdiab, &                                      ! input
+&                    mxEl, nodes, numEl, oneKm, tAdiab, &                                      ! input
 &                    zBAsth, zMoho, &                                                   ! input
 &                    glue)                                                              ! output
 
@@ -6243,6 +6305,7 @@ REAL*8, INTENT(IN) :: geothC, geothM, gradie                                    
 INTEGER, INTENT(IN) :: LRn                                                             ! input
 REAL*8, INTENT(IN) :: LR_set_aCreep, LR_set_bCreep, LR_set_cCreep, LR_set_eCreep       ! input
 INTEGER, INTENT(IN) :: mxEl, numEl                                                     ! input
+INTEGER, INTENT(IN) :: nodes                                                            ! input
 REAL*8, INTENT(IN) :: oneKm, tAdiab, zBAsth, zMoho                                     ! input
 REAL*8, INTENT(OUT) :: glue                                                            ! output
 !      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -6252,7 +6315,12 @@ REAL*8 ailog, arg, bi, dz, ecini, gt, t, ta, tg, v, z
 DIMENSION continuum_LRi(mxEl), geothC(4, 7, mxEl), geothM(4, 7, mxEl), &
 &           glue(7, mxEl), &
 &           LR_set_aCreep(1:2, 0:LRn), LR_set_bCreep(1:2, 0:LRn), LR_set_cCreep(1:2, 0:LRn), LR_set_eCreep(0:LRn), &
-&           zMoho(7, mxEl)
+&           zMoho(7, mxEl), nodes(3, mxEl)
+DOUBLE PRECISION points
+COMMON / S1S2S3 / points
+DIMENSION points(3, 7)
+INTEGER arcana_ierr, arcana_node_ids(3), arcana_phases(3)
+REAL*8 arcana_weights(3), arcana_properties(ARCANA_PROPERTY_COUNT)
 !      Internal variables:
 INTEGER LRi
 REAL*8 t_aCreep(2), t_bCreep(2), t_cCreep(2), t_eCreep
@@ -6277,30 +6345,51 @@ DO 100 i = 1, numEl
 		 v = 0.0D0
 		 DO 20 level = 1, limit
 			  z = (level - 0.5D0) * dz
-			  IF (z < zMoho(m, i)) THEN
-				   layer = 1
-				   gt(1) = geothC(1, m, i)
-				   gt(2) = geothC(2, m, i)
-				   gt(3) = geothC(3, m, i)
-				   gt(4) = geothC(4, m, i)
-			  ELSE
-				   layer = 2
-				   gt(1) = geothM(1, m, i)
-				   gt(2) = geothM(2, m, i)
-!                         Note: Quadratic and cubic terms could
-!                         cause lithospheric geotherm to have
-!                         multiple (nonphysical) intersections
-!                         with the adiabat!
-				   gt(3) = 0.0D0
-				   gt(4) = 0.0D0
-			  END IF
-			  tg = gt(1) &
+              IF (z < zMoho(m, i)) THEN
+                   layer = 1
+              ELSE
+                   layer = 2
+              END IF
+              IF (ArcanaShellsModeActive()) THEN
+                   arcana_node_ids = nodes(:,i)
+                   arcana_weights = points(:,m)
+                   CALL ArcanaRuntimeEvaluateIP(arcana_node_ids, &
+                        arcana_weights, z, t, arcana_properties, &
+                        arcana_phases, arcana_ierr)
+                   IF (arcana_ierr /= 0) THEN
+                        CALL FatalError("ARCANA_ONEBAR_EVALUATOR_FAILED",ThID)
+                        CALL abort(11)
+                        RETURN
+                   END IF
+                   IF (t < 200.0D0) THEN
+                        CALL FatalError("ARCANA_ONEBAR_GOVERNED_TEMPERATURE_BELOW_200K",ThID)
+                        CALL abort(11)
+                        RETURN
+                   END IF
+                   ! Evaluator already returns the governed below-LAB adiabat;
+                   ! a second legacy MIN(T,Tadiab) would change ARCANA state.
+              ELSE
+                   IF (z < zMoho(m, i)) THEN
+                        layer = 1
+                        gt(1) = geothC(1, m, i)
+                        gt(2) = geothC(2, m, i)
+                        gt(3) = geothC(3, m, i)
+                        gt(4) = geothC(4, m, i)
+                   ELSE
+                        layer = 2
+                        gt(1) = geothM(1, m, i)
+                        gt(2) = geothM(2, m, i)
+                        gt(3) = 0.0D0
+                        gt(4) = 0.0D0
+                   END IF
+                   tg = gt(1) &
 &                   + gt(2) * z &
 &                   + gt(3) * z * z &
 &                   + gt(4) * z * z * z
-			  ta = tAdiab + z * gradie
-			  t = MIN(tg, ta)
-			  t = MAX(t, 200.0D0)
+                   ta = tAdiab + z * gradie
+                   t = MIN(tg, ta)
+                   t = MAX(t, 200.0D0)
+              END IF
 			  bi = (t_bCreep(layer) + t_cCreep(layer) * z) * ecini
 			  arg = MAX(ailog(layer) + bi / t, -87.0D0)
 			  v = v + dz * EXP(arg)

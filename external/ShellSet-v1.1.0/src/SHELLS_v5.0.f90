@@ -342,13 +342,6 @@ REAL*8,DIMENSION(:),INTENT(INOUT) :: VarValues
             call FatalError(ErrorMsg,ThID)
        END IF
        CALL ArcanaShellsLoadRuntime(numNod,ThID)
-       IF (ArcanaShellsModeActive()) THEN
-            CALL ArcanaShellsRelease()
-            CLOSE(17)
-            CALL FatalError("ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED",ThID)
-            CALL abort(11)
-            RETURN
-       END IF
        mxEl = numEl
        !Initialize survey to find LRn = MAX(continuum_LRi(1:mxEl), fault_LRi(1:MXFel)
        LRn = 0 ! until incremented below...
@@ -700,6 +693,16 @@ REAL*8,DIMENSION(:),INTENT(INOUT) :: VarValues
      &              tauZZI, tauZZN, tLInt, vM, zMoho, &
      &              atNode)                                   ! work
        IF(Verbose) WRITE(iUnitVerb, "(' Constant arrays have been computed.')")
+
+       ! S1B-II covers FillIn, ARCANA Squeez, OneBar, and iConve=5 only.
+       ! Stop before Fixed/Pure and all remaining S1B-III consumers.
+       IF (ArcanaShellsModeActive()) THEN
+            CALL ArcanaShellsRelease()
+            CLOSE(17)
+            CALL FatalError("ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED",ThID)
+            CALL abort(11)
+            RETURN
+       END IF
 
 !   Compute tactical values of limits on viscosity, and weights for
 !   imposition of constraints in linear systems:
