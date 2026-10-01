@@ -52,13 +52,14 @@ class FEGModel:
     faults: tuple[FaultRecord, ...]
     n_fake_nodes: int = 0
     n1000: int = 0
-    brief: int = 0
+    brief: bool | int = 0
     fixture_status: tuple[str, ...] = ()
 
 
 def model_from_mesh(mesh, field_binding: PhysicalFieldBinding, *,
                     title: str, mode: str = "SHELLS_READY",
-                    fixture_status: tuple[str, ...] = ()) -> FEGModel:
+                    fixture_status: tuple[str, ...] = (),
+                    coordinates_lat_lon=None) -> FEGModel:
     """Bind numerical geometry to explicit caller-supplied nodal state."""
     if mode not in {"PRE_ORBDATA", "SHELLS_READY"}:
         raise ValueError(f"unsupported FEG mode {mode}")
@@ -69,8 +70,11 @@ def model_from_mesh(mesh, field_binding: PhysicalFieldBinding, *,
     field_count = 2 if mode == "PRE_ORBDATA" else 6
     if set(field_binding.values_by_node_id) != set(range(1, len(mesh.vertices_lat_lon) + 1)):
         raise ValueError("physical field binding must cover every mesh node exactly")
+    coordinates = mesh.vertices_lat_lon if coordinates_lat_lon is None else coordinates_lat_lon
+    if getattr(coordinates, "shape", None) != mesh.vertices_lat_lon.shape:
+        raise ValueError("FEG coordinate override must align exactly with canonical node IDs")
     nodes = []
-    for node_id, (lat, lon) in enumerate(mesh.vertices_lat_lon, 1):
+    for node_id, (lat, lon) in enumerate(coordinates, 1):
         values = tuple(float(v) for v in field_binding.values_by_node_id[node_id])
         if len(values) != field_count:
             raise ValueError(f"{mode} binding requires {field_count} explicit physical values per node")

@@ -1,0 +1,166 @@
+{
+  "canonical_mesh": {
+    "canonical_mesh_mutated": false,
+    "fault_count": 0,
+    "node_count": 64442,
+    "normalized_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "triangle_count": 128880
+  },
+  "finite_coverage": {
+    "chemical_density_zero": 64442,
+    "cooling_curvature_zero": 64442,
+    "crustal_thickness": 64442,
+    "elevation": 64442,
+    "heat_flow": 64442,
+    "mantle_lithosphere_thickness": 64442,
+    "nonfinite_values": 0
+  },
+  "nodal_fields": {
+    "chemical_density_anomaly_kg_m3": {
+      "authority": "NUMERICAL_RUNTIME_REFERENCE_COMPONENT",
+      "physical_authority": "NOT_CANONICAL_CHEMICAL_GEOLOGY",
+      "value": 0.0
+    },
+    "cooling_curvature_k_m2": {
+      "authority": "LEGACY_FEG_COMPATIBILITY_ONLY",
+      "reason": "Explicit ARCANA runtime bypasses legacy cooling-curvature reconstruction; profile is supplied by owner-bound runtime package.",
+      "value": 0.0
+    },
+    "crustal_thickness_m": {
+      "authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+      "owner_bound": true,
+      "source_field": "crust_thickness_m"
+    },
+    "elevation_m": {
+      "authority": "NUMERICAL_DERIVED_SUPPORT",
+      "owner_bound": true,
+      "source_field": "total_surface_elevation_m"
+    },
+    "heat_flow_w_m2": {
+      "authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+      "owner_bound": true,
+      "source_field": "surface_heat_flow_w_m2"
+    },
+    "mantle_lithosphere_thickness_m": {
+      "authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+      "owner_bound": true,
+      "source_field": "mantle_lithosphere_thickness_m"
+    }
+  },
+  "ownership": {
+    "owner_reselected": false,
+    "rule": "LEXICOGRAPHIC_FIRST_INCIDENT_CELL",
+    "source": "R6_PRE_ORBDATA_HEAT_FLOW_FEG_PROJECTION_V1.json"
+  },
+  "physical_field_equality": {
+    "crust_thickness_exact_to_runtime_package": true,
+    "heat_flow_exact_to_runtime_package": true,
+    "mantle_lithosphere_thickness_exact_to_runtime_package": true
+  },
+  "preserved_gates": {
+    "canonical_state_changed": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "runtime_authorized": false,
+    "t1_created": false
+  },
+  "production_feg": {
+    "header": {
+      "brief": true,
+      "n1000": 100000,
+      "nFakeN": 0,
+      "nRealN": 64442,
+      "numNod": 64442,
+      "serialized_brief_token": "T"
+    },
+    "max_absolute_runtime_latitude_deg": 89.50000000000013,
+    "mode": "SHELLS_READY",
+    "node_id_alignment_with_runtime_package": true,
+    "normalized_sha256": "403fae9cbac71d62863788dbd2d9376497550677d8ce1d20ab1aef613c59d16c",
+    "raw_sha256": "34b81c0df350d3b9a4c7df526c9171c89fe2d44d7e17b8662f5a92a9ee4c40b6",
+    "roundtrip_raw_bytes_identical": true,
+    "roundtrip_semantically_identical": true,
+    "title_marker": "ARCANA_R6_PRE_ORBDATA_RUNTIME_V1"
+  },
+  "runtime_coordinate_frame": {
+    "all_checks_pass": true,
+    "determinant": 1.0,
+    "forward_rotation_matrix": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.9999619230641713,
+        -0.008726535498373935
+      ],
+      [
+        0.0,
+        0.008726535498373935,
+        0.9999619230641713
+      ]
+    ],
+    "frame_id": "ARCANA_SHELLSET_RUNTIME_RX_PLUS_0P5_DEG_V1",
+    "inverse_rotation_matrix": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.9999619230641713,
+        0.008726535498373935
+      ],
+      [
+        0.0,
+        -0.008726535498373935,
+        0.9999619230641713
+      ]
+    ],
+    "max_edge_angular_difference_rad": 1.3322676295501878e-14,
+    "max_inverse_roundtrip_error": 1.1043249648068354e-14,
+    "max_orthonormal_error": 4.777107916652558e-19,
+    "max_spherical_triangle_area_difference_sr": 6.638027801042501e-17,
+    "max_transform_error": 1.1046719095020308e-14,
+    "max_unit_vector_error": 2.220446049250313e-16,
+    "maximum_absolute_runtime_latitude_deg": 89.50000000000013,
+    "minimum_runtime_spherical_triangle_area_sr": 2.658086063829549e-06,
+    "no_nan_inf": true,
+    "orthonormal": true,
+    "rationale": "Proper rigid rotation by half the native one-degree ARCANA grid spacing avoids ShellSet's exact-pole rejection; canonical coordinates and topology remain unchanged.",
+    "rotation_axis": "CARTESIAN_POSITIVE_X",
+    "rotation_degrees": 0.5,
+    "triangle_count": 128880,
+    "unique_mesh_edge_count": 193320,
+    "zero_area_triangles": 0
+  },
+  "schema": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1",
+  "source_authorities": {
+    "canonical_partition_payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "heat_flow_projection": {
+      "owner_rule": "LEXICOGRAPHIC_FIRST_INCIDENT_CELL",
+      "path": "R6_PRE_ORBDATA_HEAT_FLOW_FEG_PROJECTION_V1.json",
+      "replay_sha256": "3e9a9b86048f65d657e3afa2ccc5054d2bcd96ce5c8d5d7eba55a797e4025e8b",
+      "sha256": "d83827df340aa1ae66fd707207976989466b72a08876f858b01f5a7538a78fb2"
+    },
+    "runtime_package": {
+      "authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+      "manifest_path": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.json",
+      "manifest_sha256": "876a9365ae76ad7a6fa10470317d754e08b82b9fc69cac8d72203e06a8ee7ce0",
+      "path": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat",
+      "sha256": "2dc83a759d4cdd4851ad57a37fc725841da24f0f2ca4312391283348703d3584"
+    },
+    "surface_closed_package": {
+      "authority": "GOVERNED_T0_FIELD_NUMERICAL_DERIVED_SUPPORT",
+      "field": "total_surface_elevation_m",
+      "path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE_SURFACE_CLOSED.npz",
+      "sha256": "31cf4fb77e6fc12df1716805eeb4b46059ca35bbcd7b3bc305efa2e8afef3534"
+    }
+  },
+  "source_git_commit": "9fef54f6cd17e6e756db3ec28bfc43ee0230fc27",
+  "source_hashes_unchanged": true
+}

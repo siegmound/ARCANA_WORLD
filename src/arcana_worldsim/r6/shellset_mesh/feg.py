@@ -9,6 +9,7 @@ import re
 from .model import ElementRecord, FEGModel, FaultRecord, NodeRecord
 
 _FLOAT = re.compile(r"^[+-]?(?:(?:\d+(?:\.\d*)?)|(?:\.\d+))(?:[EeDd][+-]?\d+)?$")
+PRODUCTION_TITLE_MARKER = "ARCANA_R6_PRE_ORBDATA_RUNTIME_V1"
 
 
 def _f(value: float) -> str:
@@ -44,6 +45,11 @@ def _validate(model: FEGModel) -> None:
         raise ValueError("continuum triangle must reference three distinct node IDs")
     if model.n_fake_nodes != 0:
         raise ValueError("ARCANA subset rejects legacy fake-node numbering")
+    if model.n1000 < 0:
+        raise ValueError("FEG n1000 must be nonnegative")
+    if model.title.startswith(PRODUCTION_TITLE_MARKER) and len(ids) > model.n1000:
+        raise ValueError("production FEG requires n1000 >= nRealN")
+    _brief_token(model.brief)
     if model.faults and model.mode not in {"PRE_ORBDATA", "SHELLS_READY"}:
         raise ValueError("fault records require a supported FEG mode")
     if any(f.past_offset_m < 0 for f in model.faults):
@@ -64,7 +70,7 @@ def write_feg(model: FEGModel) -> str:
                 node.cooling_curvature_k_m2))
         node_fields.append(" ".join(values))
     lines = [model.title[:80],
-             f"{len(model.nodes)} {len(model.nodes)} {model.n_fake_nodes} {model.n1000} {model.brief}",
+             f"{len(model.nodes)} {len(model.nodes)} {model.n_fake_nodes} {model.n1000} {_brief_token(model.brief)}",
              *node_fields, str(len(model.elements))]
     for element in model.elements:
         row = f"{element.element_id} {' '.join(map(str, element.node_ids))}"
@@ -95,6 +101,26 @@ def _int(tokens: list[str], position: int) -> tuple[int, int]:
         raise ValueError(f"expected integer FEG token at offset {position}") from exc
 
 
+def _brief_value(value: bool | int | str) -> bool:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, int) and value in (0, 1):
+        return bool(value)
+    if isinstance(value, str):
+        token = value.strip().upper()
+        if token in {"T", ".TRUE."}:
+            return True
+        if token in {"F", ".FALSE."}:
+            return False
+        if token in {"0", "1"}:
+            return token == "1"
+    raise ValueError("FEG brief must be a Fortran logical or legacy 0/1")
+
+
+def _brief_token(value: bool | int | str) -> str:
+    return "T" if _brief_value(value) else "F"
+
+
 def _float(tokens: list[str], position: int) -> tuple[float, int]:
     try:
         token = tokens[position].replace("D", "E").replace("d", "e")
@@ -122,7 +148,11 @@ def parse_feg(text: str, *, mode: str,
     n_real, pos = _int(tokens, pos)
     n_fake, pos = _int(tokens, pos)
     n1000, pos = _int(tokens, pos)
-    brief, pos = _int(tokens, pos)
+    try:
+        brief = _brief_value(tokens[pos])
+        pos += 1
+    except (IndexError, ValueError) as exc:
+        raise ValueError(f"expected Fortran logical FEG brief token at offset {pos}") from exc
     if num_nodes < 0 or n_real != num_nodes or n_fake != 0:
         raise ValueError("unsupported ShellSet FEG node numbering header")
     node_width = 5 if mode == "PRE_ORBDATA" else 9 if mode == "SHELLS_READY" else 0
@@ -188,7 +218,8 @@ def normalized_feg_dict(model: FEGModel) -> dict:
         "schema": "ARCANA_FEG_SUBSET_V1", "mode": model.mode,
         "fixture_status": sorted(set(model.fixture_status)),
         "header": {"numNod": len(model.nodes), "nRealN": len(model.nodes),
-                   "nFakeN": model.n_fake_nodes, "n1000": model.n1000, "brief": model.brief},
+                   "nFakeN": model.n_fake_nodes, "n1000": model.n1000,
+                   "brief": int(_brief_value(model.brief))},
         "nodes": node_records,
         "elements": elements,
         "faults": faults,
