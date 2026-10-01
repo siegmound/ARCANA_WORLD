@@ -1,7 +1,7 @@
 {
   "contract_id": "R6_PRE_ORBDATA_S1B_INTEGRATION_POINT_THERMAL_PROJECTION",
   "decision": "EVALUATE_THEN_INTERPOLATE_FEM_THERMAL_FIELD",
-  "status": "R6_PRE_ORBDATA_S1B_SHELLS_CONSUMER_INCOMPLETE__LEGACY_THERMAL_FALLBACK_REMAINS",
+  "status": "R6_PRE_ORBDATA_S1B_SHELLS_CONSUMER_IMPLEMENTED__WINDOWS_SOURCE_VALIDATED__UBUNTU_NVHPC_BUILD_AND_RUNTIME_QUALIFICATION_REQUIRED",
   "temperature_rule": {
     "node_profile": [
       "z < Moho: evaluate the governed layer-1 polynomial at that node's depth",
@@ -45,19 +45,30 @@
   },
   "implementation_boundary": {
     "shared_evaluator": "external/ShellSet-v1.1.0/src/MOD_ArcanaRuntime.f90",
-    "shells_consumer_wiring": "S1B_II_MAIN_CONTINUUM_WIRED__S1B_III_REMAINS",
-    "marker_rejection": "ENABLED_AFTER_FILLIN_BEFORE_FIXED",
-    "remaining_legacy_consumers": [
-      "Viscos/Diamnd legacy profile and temLim paths",
-      "Fixed fault path through legacy Squeez",
-      "Pure/Mohr thermal reconstruction",
-      "Result legacy geothC temperature diagnostic"
+    "shells_consumer_wiring": "S1B_II_AND_S1B_III_THERMAL_CONSUMERS_WIRED_TO_SHARED_EVALUATOR",
+    "marker_rejection": "REMOVED_AFTER_SOURCE_REACHABILITY_AUDIT",
+    "remaining_legacy_consumers": [],
+    "legacy_consumer_paths_wired_to_shared_evaluator": true,
+    "activation_handshake": "S1B_I_RUNTIME_LIFECYCLE_IMPLEMENTED; valid marker and package activate ARCANA-aware FillIn, Fixed, Pure/Mohr, Viscos/Diamnd, OneBar, iConve=5, and Result paths; malformed or mismatched package remains fail closed",
+    "consumer_reachability": [
+      {"path": "FillIn / nodal Squeez", "arcana_route": "ArcanaRuntimeSqueez", "legacy_route": "STOCK_BRANCH_ONLY"},
+      {"path": "OneBar", "arcana_route": "ArcanaRuntimeEvaluateIP", "legacy_route": "STOCK_BRANCH_ONLY"},
+      {"path": "iConve=5", "arcana_route": "ArcanaRuntimeEvaluateIP", "legacy_route": "STOCK_BRANCH_ONLY"},
+      {"path": "Fixed fault integration", "arcana_route": "ArcanaRuntimeSqueez with Lookup element nodes and barycentric weights", "legacy_route": "Squeez in STOCK_BRANCH_ONLY"},
+      {"path": "Pure orchestration", "arcana_route": "calls ARCANA-aware Viscos and Mohr", "legacy_route": "none"},
+      {"path": "Viscos / Diamnd", "arcana_route": "shared weighted evaluator and analytical mean effective density", "legacy_route": "geothC/geothM and temLim inside stock branches"},
+      {"path": "Mohr", "arcana_route": "shared weighted evaluator; existing 2-node and 4-node support", "legacy_route": "geoth/q/radio reconstruction inside stock branches"},
+      {"path": "Result", "arcana_route": "ArcanaRuntimeEffectiveDensityWeighted", "legacy_route": "geothC diagnostic inside stock branch"}
     ],
-    "legacy_consumer_paths_wired_to_shared_evaluator": false,
-    "activation_handshake": "S1B_I_RUNTIME_LIFECYCLE_IMPLEMENTED; valid candidate loads, S1B-II main continuum runs, then aborts with ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED before S1B-III consumers",
+    "mechanical_vertical_reduction": {
+      "effective_density": "rho_IP*(1-alpha_IP*T_IP)",
+      "Diamnd": "EXACT_PIECEWISE_ANALYTICAL_MEAN_SPLIT_AT_EACH_NODAL_MOHO_AND_LAB; CUBIC_PRIMITIVES_AND_EXPONENTIAL_ADIABAT",
+      "Mohr": "STOCK_ENDPOINT_TRAPEZOID_USING_ARCANA_EFFECTIVE_DENSITIES_AND_EXISTING_SUPPORT",
+      "authority": "NUMERICAL_RUNTIME_EFFECTIVE_DENSITY; DERIVED_MECHANICAL_SUPPORT; NOT_CANONICAL_MATERIAL_STATE"
+    },
     "runtime_package_staging": "UNIT_17_FOR_SH_AND_SF_MODEL_INPUTS",
     "runtime_mode_query": "ArcanaShellsModeActive",
-    "runtime_qualification": "NOT_CLAIMED",
+    "runtime_qualification": "NOT_CLAIMED; UBUNTU_NVHPC_BUILD_AND_RUNTIME_QUALIFICATION_REQUIRED",
     "pre_orbdata_ready": false,
     "t0_orbdata_executed": false,
     "shellset_mechanics_authorized": false,

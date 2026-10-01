@@ -16,14 +16,14 @@ RUNTIME = (
 
 def test_contract_selects_evaluate_then_interpolate_without_new_authority():
     assert CONTRACT["decision"] == "EVALUATE_THEN_INTERPOLATE_FEM_THERMAL_FIELD"
-    assert CONTRACT["status"].startswith("R6_PRE_ORBDATA_S1B_SHELLS_CONSUMER_INCOMPLETE")
+    assert CONTRACT["status"].startswith("R6_PRE_ORBDATA_S1B_SHELLS_CONSUMER_IMPLEMENTED")
     assert CONTRACT["temperature_rule"]["integration_point"].startswith("sum(")
     assert (
         CONTRACT["temperature_rule"]["integration_point_property_authority"]
         == "NUMERICAL_RUNTIME_EFFECTIVE_PROPERTY"
     )
-    assert CONTRACT["implementation_boundary"]["shells_consumer_wiring"].startswith("S1B_II_MAIN_CONTINUUM_WIRED")
-    assert CONTRACT["implementation_boundary"]["runtime_qualification"] == "NOT_CLAIMED"
+    assert CONTRACT["implementation_boundary"]["shells_consumer_wiring"].startswith("S1B_II_AND_S1B_III")
+    assert CONTRACT["implementation_boundary"]["runtime_qualification"].startswith("NOT_CLAIMED")
 
 
 def test_shared_evaluator_uses_nodal_phase_then_fem_weighted_continuous_values():
@@ -53,15 +53,15 @@ def test_contract_records_required_diagnostics_and_all_gates_closed():
         assert gates[key] is False
 
 
-def test_arcana_feg_runs_core_fillin_then_fails_closed_before_s1b_iii():
+def test_arcana_feg_reaches_all_wired_thermal_consumers_without_barrier():
     shells = (ROOT / "external/ShellSet-v1.1.0/src/SHELLS_v5.0.f90").read_text(encoding="utf-8")
     load_at = shells.index("CALL ArcanaShellsLoadRuntime(numNod,ThID)")
     fill_at = shells.index("CALL FillIn (alphaT, basal, conduc")
     fixed_at = shells.index("CALL Fixed (alphaT, area, conduc")
-    fail_at = shells.index("ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED")
+    assert "ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED" not in shells
     assert "ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED" not in shells
-    assert load_at < fill_at < fail_at < fixed_at
-    assert "IF (ArcanaShellsModeActive()) THEN" in shells[fail_at-350:fail_at]
+    assert load_at < fill_at < fixed_at
+    assert "CALL Result (" in shells
 
 
 @dataclass(frozen=True)
@@ -132,7 +132,7 @@ def test_projection_reference_mixed_element_is_finite_bounded_and_ids_stay_discr
     assert min(alpha_values) <= alpha_ip <= max(alpha_values)
 
 
-def test_activation_is_not_enabled_without_shells_package_handshake():
+def test_activation_is_gated_by_shells_package_handshake():
     set_source = (
         ROOT / "external/ShellSet-v1.1.0/src/MOD_ShellSet.f90"
     ).read_text(encoding="utf-8")
@@ -153,22 +153,48 @@ def test_activation_is_not_enabled_without_shells_package_handshake():
     assert "ArcanaShellsRelease" in set_source and "close(17)" in set_source
     load_at = shells_source.index("CALL ArcanaShellsLoadRuntime(numNod,ThID)")
     fill_at = shells_source.index("CALL FillIn (alphaT, basal, conduc")
-    fail_at = shells_source.index("ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED")
     fixed_at = shells_source.index("CALL Fixed (alphaT, area, conduc")
-    assert load_at < fill_at < fail_at < fixed_at
+    assert "ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED" not in shells_source
+    assert load_at < fill_at < fixed_at
 
 
-def test_known_shells_thermal_gaps_are_explicitly_kept_blocked():
+def test_remaining_shells_thermal_consumers_use_shared_evaluator():
     shells = (ROOT / "external/ShellSet-v1.1.0/src/MOD_Shells.f90").read_text(
         encoding="utf-8"
     )
-    expected_gaps = CONTRACT["implementation_boundary"]["remaining_legacy_consumers"]
-    assert len(expected_gaps) == 4
-    assert CONTRACT["implementation_boundary"]["legacy_consumer_paths_wired_to_shared_evaluator"] is False
-    assert "SUBROUTINE FillIn" in shells and "geothC(2, m, i) = q / conduc(1)" in shells
-    assert "SUBROUTINE OneBar" in shells and "gt(1) = geothM(1, m, i)" in shells
-    assert "SUBROUTINE Diamnd" in shells and "MIN(temLim, geoth1)" in shells
-    assert "SUBROUTINE Result" in shells and "tMid = geothC(1, m, i)" in shells
+    assert CONTRACT["implementation_boundary"]["remaining_legacy_consumers"] == []
+    assert CONTRACT["implementation_boundary"]["legacy_consumer_paths_wired_to_shared_evaluator"] is True
+    reachability={item["path"]:item for item in CONTRACT["implementation_boundary"]["consumer_reachability"]}
+    assert set(reachability)=={
+        "FillIn / nodal Squeez", "OneBar", "iConve=5", "Fixed fault integration",
+        "Pure orchestration", "Viscos / Diamnd", "Mohr", "Result"
+    }
+    for routine in ("Fixed", "Mohr", "Viscos", "Result"):
+        start = shells.index(f"SUBROUTINE {routine} (")
+        end = shells.index(f"END SUBROUTINE {routine}", start)
+        body = shells[start:end]
+        assert "ArcanaShellsModeActive()" in body
+    diamnd = shells[shells.index("SUBROUTINE Diamnd "):shells.index("END SUBROUTINE Diamnd")]
+    assert "IF (arcana_active) THEN" in diamnd
+    assert "ArcanaRuntimeMeanEffectiveDensity" in diamnd
+    assert "ArcanaRuntimeEvaluateWeighted" in diamnd
+    assert "MIN(t, temLim)" in diamnd  # retained only in the stock branch
+    fixed = shells[shells.index("SUBROUTINE Fixed "):shells.index("END SUBROUTINE Fixed")]
+    assert "ArcanaRuntimeSqueez" in fixed
+    mohr = shells[shells.index("SUBROUTINE Mohr "):shells.index("END SUBROUTINE Mohr")]
+    assert "ArcanaRuntimeEffectiveDensityWeighted" in mohr
+    assert "ArcanaRuntimeEvaluateWeighted" in mohr
+    result = shells[shells.index("SUBROUTINE Result "):shells.index("END SUBROUTINE Result")]
+    assert "ArcanaRuntimeEffectiveDensityWeighted" in result
+    pure = shells[shells.index("SUBROUTINE Pure ("):shells.index("END SUBROUTINE Pure")]
+    assert "CALL Viscos" in pure and "CALL Mohr" in pure
+    viscos = shells[shells.index("SUBROUTINE Viscos "):shells.index("END SUBROUTINE Viscos")]
+    assert "arcana_node_ids = nodes(:, i)" in viscos
+    assert "arcana_weights = points(:, m)" in viscos
+    assert "arcana_node_ids, arcana_weights, arcana_active" in viscos
+    runtime_call=fixed.index("CALL ArcanaRuntimeSqueez")
+    stock_call=fixed.index("CALL Squeez",runtime_call)
+    assert fixed.rfind("ELSE",runtime_call,stock_call)>runtime_call
 
 
 def test_s1b_ii_arcana_main_thermal_consumers_use_shared_evaluator_and_exact_weights():
@@ -191,3 +217,149 @@ def test_s1b_ii_arcana_main_thermal_consumers_use_shared_evaluator_and_exact_wei
     assert "baseT < 1273.0D0" in fill
     assert "ARCANA_ICONVE5_EVALUATOR_FAILED" in fill
     assert "ARCANA_SQUEEZ_EVALUATOR_FAILED" in fill
+
+
+@dataclass(frozen=True)
+class PiecewiseColumn:
+    moho: float
+    lab: float
+    crust: tuple[float, float, float, float]
+    mantle: tuple[float, float, float, float]
+    t_lab: float
+    adiabat_rate: float
+    properties: dict
+
+    @staticmethod
+    def _poly(c, x):
+        c3, c2, c1, c0 = c
+        return ((c3*x+c2)*x+c1)*x+c0
+
+    @staticmethod
+    def _primitive(c, x):
+        c3, c2, c1, c0 = c
+        return c3*x**4/4+c2*x**3/3+c1*x**2/2+c0*x
+
+    def phase(self, z):
+        return "crust" if z < self.moho else "mantle" if z < self.lab else "asth"
+
+    def temperature(self, z):
+        if z < self.moho:
+            return self._poly(self.crust, z)
+        if z < self.lab:
+            return self._poly(self.mantle, z-self.moho)
+        return self.t_lab * math.exp(self.adiabat_rate*(z-self.lab))
+
+    def temperature_integral(self, a, b):
+        phase = self.phase((a+b)/2)
+        if phase == "crust":
+            return self._primitive(self.crust,b)-self._primitive(self.crust,a)
+        if phase == "mantle":
+            return self._primitive(self.mantle,b-self.moho)-self._primitive(self.mantle,a-self.moho)
+        if abs(self.adiabat_rate) < 1e-14:
+            return self.t_lab*(b-a)
+        return self.t_lab*(math.exp(self.adiabat_rate*(b-self.lab))-math.exp(self.adiabat_rate*(a-self.lab)))/self.adiabat_rate
+
+
+def exact_weighted_mean_density(columns, weights, a, b):
+    breaks = sorted({a,b,*[x for c in columns for x in (c.moho,c.lab) if a < x < b]})
+    total = 0.0
+    for lo, hi in zip(breaks, breaks[1:]):
+        mid = (lo+hi)/2
+        rho = sum(w*c.properties[c.phase(mid)][0] for w,c in zip(weights,columns))
+        alpha = sum(w*c.properties[c.phase(mid)][1] for w,c in zip(weights,columns))
+        t_integral = sum(w*c.temperature_integral(lo,hi) for w,c in zip(weights,columns))
+        total += rho*((hi-lo)-alpha*t_integral)
+    return total/(b-a)
+
+
+def test_diamnd_exact_mean_matches_homogeneous_cubic_stock_operator():
+    coeff = (2e-11,-3e-7,0.015,300.0)
+    props = {phase:(3300.0,3e-5) for phase in ("crust","mantle","asth")}
+    column = PiecewiseColumn(80_000,140_000,coeff,coeff,900.0,2e-8,props)
+    a,b = 10_000.0,70_000.0
+    exact = exact_weighted_mean_density((column,)*3,(0.2,0.3,0.5),a,b)
+    tmean = column.temperature_integral(a,b)/(b-a)
+    assert math.isclose(exact,3300.0*(1-3e-5*tmean),rel_tol=2e-15)
+
+
+def test_diamnd_piecewise_mean_crosses_heterogeneous_moho_and_lab_deterministically():
+    props1 = {"crust":(2850.,2.4e-5),"mantle":(3300.,3.0e-5),"asth":(3250.,3.2e-5)}
+    props2 = {"crust":(2950.,2.6e-5),"mantle":(3350.,3.1e-5),"asth":(3280.,3.3e-5)}
+    cols = (PiecewiseColumn(28_000,92_000,(0.,0.,0.02,300.),(0.,0.,0.012,860.),1450.,2.5e-8,props1),
+            PiecewiseColumn(42_000,115_000,(0.,0.,0.016,320.),(0.,0.,0.009,1000.),1650.,3.0e-8,props2),
+            PiecewiseColumn(35_000,105_000,(0.,0.,0.018,310.),(0.,0.,0.011,940.),1550.,2.8e-8,props1))
+    weights=(0.2,0.3,0.5)
+    a,b=0.,150_000.
+    exact=exact_weighted_mean_density(cols,weights,a,b)
+    assert math.isfinite(exact) and exact > 0
+    assert exact == exact_weighted_mean_density(cols,weights,a,b)
+    breaks=sorted({a,b,*[x for c in cols for x in (c.moho,c.lab) if a<x<b]})
+    numeric=0.0
+    for lo,hi in zip(breaks,breaks[1:]):
+        n=20_000
+        dz=(hi-lo)/n
+        def density(z):
+            rho=sum(w*c.properties[c.phase(z)][0] for w,c in zip(weights,cols))
+            alpha=sum(w*c.properties[c.phase(z)][1] for w,c in zip(weights,cols))
+            temp=sum(w*c.temperature(z) for w,c in zip(weights,cols))
+            return rho*(1-alpha*temp)
+        numeric += dz*(0.5*density(math.nextafter(lo,hi))+sum(density(lo+j*dz) for j in range(1,n))+0.5*density(math.nextafter(hi,lo)))
+    assert math.isclose(exact,numeric/(b-a),rel_tol=2e-8,abs_tol=2e-5)
+
+
+def test_below_lab_adiabat_integral_is_finite_continuous_and_analytic():
+    props={phase:(3300.,3e-5) for phase in ("crust","mantle","asth")}
+    col=PiecewiseColumn(40_000,100_000,(0.,0.,0.01,300.),(0.,0.,0.01,900.),1500.,3e-8,props)
+    a,b=100_000.,180_000.
+    analytic=col.temperature_integral(a,b)/(b-a)
+    expected=1500.*math.expm1(col.adiabat_rate*(b-a))/(col.adiabat_rate*(b-a))
+    assert math.isfinite(analytic) and math.isclose(analytic,expected,rel_tol=1e-12)
+    eps=1e-4
+    assert math.isclose(col.temperature(col.lab-eps),col.temperature(col.lab+eps),abs_tol=2e-5)
+
+
+def test_mohr_endpoint_trapezoid_and_source_paths_are_bound():
+    rho,alpha,t0,t1=3300.,3e-5,500.,1300.
+    expected=rho*(1-alpha*(t0+t1)/2)
+    assert math.isclose(0.5*(rho*(1-alpha*t0)+rho*(1-alpha*t1)),expected,rel_tol=2e-16)
+    source=(ROOT/"external/ShellSet-v1.1.0/src/MOD_Shells.f90").read_text(encoding="utf-8")
+    mohr=source[source.index("SUBROUTINE Mohr "):source.index("END SUBROUTINE Mohr")]
+    assert "arcana_fault_weights = 0.25D0" in mohr
+    assert "arcana_fault_weights,4" in mohr
+    assert "arcana_fault_weights,2" in mohr
+    assert "ArcanaRuntimeMeanEffectiveDensity" not in mohr
+    assert "ArcanaRuntimeEffectiveDensityWeighted" in mohr
+    assert "tMeanC = (tSurf + tTrans) / 2.0D0" in mohr  # stock branch only
+
+
+def test_mohr_mixed_support_uses_continuous_weighted_properties_and_keeps_ids_discrete():
+    columns = (
+        NodeColumn(30_000,100_000,800,1450,0.018,0.009,2.8e-5,1200,3),
+        NodeColumn(40_000,130_000,950,1700,0.021,0.008,3.1e-5,1300,8),
+    )
+    weights=(0.75,0.25)
+    ids=tuple(c.material_code for c in columns)
+    endpoints=[]
+    for z in (0.,35_000.):
+        temp=sum(w*c.temperature(z) for w,c in zip(weights,columns))
+        rho=sum(w*v for w,v in zip(weights,(2900.,3300.)))
+        alpha=sum(w*v for w,v in zip(weights,(2.8e-5,3.1e-5)))
+        endpoints.append(rho*(1-alpha*temp))
+    mean=0.5*(endpoints[0]+endpoints[1])
+    assert math.isfinite(mean) and min(endpoints)<=mean<=max(endpoints)
+    assert ids==(3,8)  # discrete IDs are preserved as nodal identities
+
+
+def test_diamnd_runtime_path_uses_analytic_reduction_not_midpoint_temperature():
+    source=(ROOT/"external/ShellSet-v1.1.0/src/MOD_Shells.f90").read_text(encoding="utf-8")
+    diamnd=source[source.index("SUBROUTINE Diamnd "):source.index("END SUBROUTINE Diamnd")]
+    runtime=RUNTIME[RUNTIME.index("SUBROUTINE ArcanaRuntimeMeanEffectiveDensity"):RUNTIME.index("SUBROUTINE ArcanaRuntimeSqueez")]
+    assert "ArcanaRuntimeMeanEffectiveDensity" in diamnd
+    assert "ArcanaRuntimeEvaluateWeighted" in diamnd
+    assert "PolynomialPrimitive" in runtime
+    assert "EXP(exponent_b)-EXP(exponent_a)" in runtime
+    assert "ArcanaRuntimeMeanEffectiveDensity(arcana_node_ids" in diamnd
+    assert "Arcana_Simpson" not in runtime
+    assert "weighted_temperature_integral" in runtime
+    assert "local_rho * &" in runtime
+    assert "tMean" not in runtime

@@ -694,15 +694,8 @@ REAL*8,DIMENSION(:),INTENT(INOUT) :: VarValues
      &              atNode)                                   ! work
        IF(Verbose) WRITE(iUnitVerb, "(' Constant arrays have been computed.')")
 
-       ! S1B-II covers FillIn, ARCANA Squeez, OneBar, and iConve=5 only.
-       ! Stop before Fixed/Pure and all remaining S1B-III consumers.
-       IF (ArcanaShellsModeActive()) THEN
-            CALL ArcanaShellsRelease()
-            CLOSE(17)
-            CALL FatalError("ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED",ThID)
-            CALL abort(11)
-            RETURN
-       END IF
+       ! ARCANA thermal consumers in Fixed, Pure/Mohr, Viscos/Diamnd, and
+       ! Result use the shared owner-bound runtime evaluator.
 
 !   Compute tactical values of limits on viscosity, and weights for
 !   imposition of constraints in linear systems:

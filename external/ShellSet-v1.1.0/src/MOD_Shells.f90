@@ -21,8 +21,9 @@ module ShellsSubs
 
 use ShellSetSubs
 use SharedVars
-use ArcanaRuntime, only: ArcanaRuntimeEvaluateIP, ArcanaRuntimeSqueez, &
-     ARCANA_PROPERTY_COUNT
+use ArcanaRuntime, only: ArcanaRuntimeEvaluateIP, ArcanaRuntimeEvaluateWeighted, &
+     ArcanaRuntimeEffectiveDensityWeighted, ArcanaRuntimeMeanEffectiveDensity, &
+     ArcanaRuntimeSqueez, ARCANA_PROPERTY_COUNT, ARCANA_PROP_RHO_WATER
 
 ! MKL version:
 ! Intel's Math Kernel Library (MKL), LAPACK portion; these MODULEs need INTERFACEs.
@@ -2261,6 +2262,7 @@ SUBROUTINE Diamnd (aCreep, alphaT, bCreep, & ! input
 &                    rhoBar, rhoH2O, sigHBi, &
 &                    thick, temLim, &
 &                    visMax, zOfTop, &
+&                    arcana_node_ids, arcana_weights, arcana_active, &
 &                    pT1dE1, pT1dE2, &         ! output
 &                    pT2dE1, pT2dE2, &
 &                    pT1, pT2, zTran)
@@ -2304,6 +2306,9 @@ REAL*8, INTENT(IN) :: aCreep, alphaT, bCreep, Biot, cCreep, dCreep, &           
 &      pl0, pw0, &                                                                        ! input
 &      rhoBar, rhoH2O, sigHBi, &                                                          ! input
 &      thick, temLim, visMax, zOfTop                                                      ! input
+INTEGER, INTENT(IN) :: arcana_node_ids(3)
+REAL*8, INTENT(IN) :: arcana_weights(3)
+LOGICAL, INTENT(IN) :: arcana_active
 REAL*8, INTENT(OUT) :: pT1, pT2, pT1dE1, pT1dE2, pT2dE1, pT2dE2, zTran                  ! output
 !      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 !      Internal variables:
@@ -2326,6 +2331,9 @@ REAL*8 angat2, angat3, angle, argume, &
 &        t, t0, th, t1, &
 &        vis, visDCr, visInf, visInt, visMin, visSHB, &
 &        z, z0, zh, z1
+REAL*8 arcana_temperature, arcana_properties(ARCANA_PROPERTY_COUNT)
+REAL*8 arcana_rho_effective
+INTEGER arcana_phases(3), arcana_ierr
 !     - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 !      CHARACTERIZE THE STRAIN-RATE TENSOR:
@@ -2492,7 +2500,14 @@ ELSE
 
 	z0 = 0.0D0
 	sf0 = dSFdEV * (pl0 - Biot * pw0)
-	t0 = MIN(temLim, geoth1)
+	IF (arcana_active) THEN
+		CALL ArcanaRuntimeEvaluateWeighted(arcana_node_ids,arcana_weights,3, &
+		     zOfTop,t0,arcana_properties,arcana_phases,arcana_ierr)
+		IF (arcana_ierr /= 0) CALL FatalError( &
+		     'ARCANA_DIAMND_SURFACE_TEMPERATURE_FAILED',ThID)
+	ELSE
+		t0 = MIN(temLim, geoth1)
+	END IF
 	argume = (bCreep + cCreep * zOfTop) / t0
 !           Avoid overflow in EXP() by limiting the argument:
 	argume = MAX(MIN(argume, 87.0D0), -87.0D0)
@@ -2500,13 +2515,27 @@ ELSE
 	sc0 = MIN(sc0, dCreep)
 
 	z1 = thick
-	tMean = geoth1 + &
+	IF (arcana_active) THEN
+		CALL ArcanaRuntimeMeanEffectiveDensity(arcana_node_ids, &
+		     arcana_weights,3,zOfTop,zOfTop+z1,rhoUse,arcana_ierr)
+		IF (arcana_ierr /= 0) CALL FatalError( &
+		     'ARCANA_DIAMND_LAYER_MEAN_DENSITY_FAILED',ThID)
+	ELSE
+		tMean = geoth1 + &
 &        0.50D0 * geoth2 * z1 + &
 &      0.3330D0 * geoth3 * z1**2 + &
 &       0.250D0 * geoth4 * z1**3
-	rhoUse = rhoBar * (1.0D0 - alphaT * tMean)
+		rhoUse = rhoBar * (1.0D0 - alphaT * tMean)
+	END IF
 	sf1 = sf0 + dSFdEV * (rhoUse - Biot * rhoH2O) * g * thick
-	t1 = MIN(temLim, geoth1 + geoth2 * z1 + geoth3 * z1**2 + geoth4 * z1**3)
+	IF (arcana_active) THEN
+		CALL ArcanaRuntimeEvaluateWeighted(arcana_node_ids,arcana_weights,3, &
+		     zOfTop+z1,t1,arcana_properties,arcana_phases,arcana_ierr)
+		IF (arcana_ierr /= 0) CALL FatalError( &
+		     'ARCANA_DIAMND_BOTTOM_TEMPERATURE_FAILED',ThID)
+	ELSE
+		t1 = MIN(temLim, geoth1 + geoth2 * z1 + geoth3 * z1**2 + geoth4 * z1**3)
+	END IF
 	argume = (bCreep + cCreep * (zOfTop + z1)) / t1
 	argume = MAX(MIN(argume, 87.0D0), -87.0D0)
 	sc1 = 2.0D0 * (visInf * eSCrit) * EXP(argume)
@@ -2532,11 +2561,26 @@ ELSE
 !                remaining interval; however, the error will be small.
 		 DO 100 n = 1, 7
 			  zh = 0.50D0 * (z0 + z1)
-			  tMean = 0.50D0 * (t0 + t1)
-			  rhoUse = rhoBar * (1.0D0 - alphaT * tMean)
+			  IF (arcana_active) THEN
+				CALL ArcanaRuntimeMeanEffectiveDensity(arcana_node_ids, &
+				     arcana_weights,3,zOfTop+z0,zOfTop+zh,rhoUse,arcana_ierr)
+				IF (arcana_ierr /= 0) CALL FatalError( &
+				     'ARCANA_DIAMND_SEARCH_MEAN_DENSITY_FAILED',ThID)
+			  ELSE
+				tMean = 0.50D0 * (t0 + t1)
+				rhoUse = rhoBar * (1.0D0 - alphaT * tMean)
+			  END IF
 			  sfh = sf0 + dSFdEV * (rhoUse - Biot * rhoH2O) * g * (zh - z0)
-			  th = MIN(temLim, geoth1 + geoth2 * zh + geoth3 * zh**2 + &
+			  IF (arcana_active) THEN
+				CALL ArcanaRuntimeEvaluateWeighted(arcana_node_ids, &
+				     arcana_weights,3,zOfTop+zh,th,arcana_properties, &
+				     arcana_phases,arcana_ierr)
+				IF (arcana_ierr /= 0) CALL FatalError( &
+				     'ARCANA_DIAMND_SEARCH_TEMPERATURE_FAILED',ThID)
+			  ELSE
+				th = MIN(temLim, geoth1 + geoth2 * zh + geoth3 * zh**2 + &
 &                              geoth4 * zh**3)
+			  END IF
 			  argume = (bCreep + cCreep * (zOfTop + zh)) / th
 			  argume = MAX(MIN(argume, 87.0D0), -87.0D0)
 			  sch = 2.0D0 * (visInf * eSCrit) * EXP(argume)
@@ -2585,11 +2629,19 @@ pT2dE2 = 0.0D0
 IF (zTran > 0.0D0) THEN
 !          Compute the effective vertical stress at the midpoint
 !          of the frictional layer:
-	tMean = geoth1 + &
+	IF (arcana_active) THEN
+		CALL ArcanaRuntimeMeanEffectiveDensity(arcana_node_ids, &
+		     arcana_weights,3,zOfTop,zOfTop+zTran/2.0D0, &
+		     rhoUse,arcana_ierr)
+		IF (arcana_ierr /= 0) CALL FatalError( &
+		     'ARCANA_DIAMND_FRICTION_MEAN_DENSITY_FAILED',ThID)
+	ELSE
+		tMean = geoth1 + &
 &        0.5D0 * geoth2 * (zTran / 2.0D0) + &
 &      0.333D0 * geoth3 * (zTran / 2.0D0)**2 + &
 &       0.25D0 * geoth4 * (zTran / 2.0D0)**3
-	rhoUse = rhoBar * (1.0D0 - alphaT * tMean)
+		rhoUse = rhoBar * (1.0D0 - alphaT * tMean)
+	END IF
 	sz = -pl0 - rhoUse * g * zTran / 2.0D0
 	pH2O = pw0 + rhoH2O * g * zTran / 2.0D0
 	szEff = sz + Biot * pH2O
@@ -2839,8 +2891,16 @@ IF (zTran < thick) THEN
 !                Note that z is measured from top of layer
 !               (upper surface of hard crust, or Moho) and
 !                may not be absolute depth.
-		 t = geoth1 + geoth2 * z + geoth3 * z**2 + geoth4 * z**3
-		 t = MIN(t, temLim)
+		 IF (arcana_active) THEN
+			CALL ArcanaRuntimeEvaluateWeighted(arcana_node_ids, &
+			     arcana_weights,3,zOfTop+z,t,arcana_properties, &
+			     arcana_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_DIAMND_CREEP_TEMPERATURE_FAILED',ThID)
+		 ELSE
+			t = geoth1 + geoth2 * z + geoth3 * z**2 + geoth4 * z**3
+			t = MIN(t, temLim)
+		 END IF
 		 argume = (bCreep + cCreep * (zOfTop + z)) / t
 !                Prevent over/underflow in EXP() by limiting the argument:
 		 argume = MAX(MIN(argume, 87.0D0), -87.0D0)
@@ -4286,6 +4346,8 @@ REAL*8 PhiVal, s1, s2, s3, f1, f2, f3 ! statement function and its arguments
 !      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 INTEGER, PARAMETER :: nStep = 100 ! Number of steps to use in vertical integrations:
 INTEGER i, j, k, kEle, kEle12, kEle34, krowx, krowy, m, n, n1, n2, n3, n4, nd, node
+INTEGER arcana_node_ids(3), arcana_ierr
+REAL*8 arcana_weights(3)
 LOGICAL atSea, ridge
 REAL*8 angle, coss, dArea, delta_rho, dip, ds, dx, dy, dz, &
 	& elevat, eLong, fAngle, fpp, ft1, ft2, &
@@ -4543,11 +4605,11 @@ IF (doFB4) THEN
 &                                                    elev(nodes(1, kEle)), &
 &                                                    elev(nodes(2, kEle)), &
 &                                                    elev(nodes(3, kEle)))
-								  delta_rho = PhiVal(s1, s2, s3, &
+								IF (.NOT.ArcanaShellsModeActive()) delta_rho = PhiVal(s1, s2, s3, &
 &                                                       density_anomaly(nodes(1, kEle)), &
 &                                                       density_anomaly(nodes(2, kEle)), &
 &                                                       density_anomaly(nodes(3, kEle)))
-								  q = PhiVal(s1, s2, s3, &
+								IF (.NOT.ArcanaShellsModeActive()) q = PhiVal(s1, s2, s3, &
 &                                               dQdTdA(nodes(1, kEle)), &
 &                                               dQdTdA(nodes(2, kEle)), &
 &                                               dQdTdA(nodes(3, kEle)))
@@ -4563,7 +4625,16 @@ IF (doFB4) THEN
 !                                             emerges into asthenosphere
 !                                             anywhere along slant path:
 								  IF (z > (zM + tL)) GO TO 251
-								  geoth1 = tSurf
+							  IF (ArcanaShellsModeActive()) THEN
+								arcana_node_ids = nodes(:,kEle)
+								arcana_weights = (/s1,s2,s3/)
+								CALL ArcanaRuntimeSqueez(arcana_node_ids, &
+								     arcana_weights,0.0D0,elevat,gMean, &
+								     oneKm,z,tauzz,sigzzb,arcana_ierr)
+								IF (arcana_ierr /= 0) CALL FatalError( &
+								     'ARCANA_FIXED_RUNTIME_SQUEEZ_FAILED',ThID)
+							  ELSE
+							  geoth1 = tSurf
 								  geoth2 = q / conduc(1)
 								  geoth3 = -0.5D0 * radio(1) / conduc(1)
 								  geoth4 = 0.0D0
@@ -4584,6 +4655,7 @@ IF (doFB4) THEN
 &                                                 rhoBar, rhoH2O, &
 &                                                 temLim, zm, z, &
 &                                                 tauzz, sigzzb) ! output
+							  END IF
 								  tzz = tzz + sigzzb * dz
 							 END IF ! atSea, or NOT
 250                           CONTINUE ! k = 1:nStep
@@ -5690,6 +5762,11 @@ INTEGER, PARAMETER :: nStep = 30
 !   of the whole global velocity field.
 
 INTEGER i, j, kIter, layer, limit, m, n1, n2, n3, n4
+INTEGER arcana_fault_nodes(4), arcana_fault_phases(4), arcana_ierr
+REAL*8 arcana_fault_weights(4), arcana_fault_rho_top, arcana_fault_rho_bottom
+REAL*8 arcana_fault_temp, arcana_fault_props(ARCANA_PROPERTY_COUNT)
+REAL*8 arcana_rho_surface, arcana_rho_moho, arcana_rho_lab
+REAL*8 arcana_rho_water
 REAL*8 angle, azfull, azhalf, baseZ, cGamma, close, cosr, crust, &
 	& dDPNdZ, delVx, delVy, delTau, dEPdST, dip, dippy, dLEPdC, dLEPdZ, dPMax, dSFdZ, dz, &
 	& efull, ehalf, elevat, ePMoho,  fric, huge, mantle, &
@@ -5797,13 +5874,36 @@ DO 100 i = 1, nFl
 !                dDPNdZ is the gradient of excess normal pressure (in
 !                excess of vertical pressure) with depth on this fault;
 !                check that it lies within frictional limits of blocks:
-		 q = 0.250D0 * (dQdTdA(n1) + dQdTdA(n2) + &
+		 IF (ArcanaShellsModeActive()) THEN
+			arcana_fault_nodes = (/n1,n2,n3,n4/)
+			arcana_fault_weights = 0.25D0
+			CALL ArcanaRuntimeEffectiveDensityWeighted( &
+			     arcana_fault_nodes,arcana_fault_weights,4,0.0D0, &
+			     arcana_fault_rho_top,arcana_fault_props,arcana_fault_temp, &
+			     arcana_fault_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_MOHR_SURFACE_DENSITY_FAILED',ThID)
+			CALL ArcanaRuntimeEffectiveDensityWeighted( &
+			     arcana_fault_nodes,arcana_fault_weights,4,zTranF(1,i), &
+			     arcana_fault_rho_bottom,arcana_fault_props,arcana_fault_temp, &
+			     arcana_fault_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_MOHR_MOHO_DENSITY_FAILED',ThID)
+			arcana_rho_water = arcana_fault_props(ARCANA_PROP_RHO_WATER)
+			rhoC = 0.5D0*(arcana_fault_rho_top+arcana_fault_rho_bottom)
+		 ELSE
+			q = 0.250D0 * (dQdTdA(n1) + dQdTdA(n2) + &
 &                          dQdTdA(n3) + dQdTdA(n4))
-		 tTrans = tSurf + zTranF(1, i) * q / conduc(1) - &
+			tTrans = tSurf + zTranF(1, i) * q / conduc(1) - &
 &                    zTranF(1, i)**2 * radio(1) / (2.0D0 * conduc(1))
-		 tMeanC = (tSurf + tTrans) / 2.0D0
-		 rhoC = rhoBar(1) * (1.0D0 - alphaT(1) * tMeanC)
-		 dLEPdC = gMean * (rhoC - rhoH2O * t_Biot)
+			tMeanC = (tSurf + tTrans) / 2.0D0
+			rhoC = rhoBar(1) * (1.0D0 - alphaT(1) * tMeanC)
+		 END IF
+		 IF (ArcanaShellsModeActive()) THEN
+			dLEPdC = gMean * (rhoC-arcana_rho_water*t_Biot)
+		 ELSE
+			dLEPdC = gMean * (rhoC - rhoH2O * t_Biot)
+		 END IF
 		 thrust = dLEPdC * cGamma
 		 normal = dLEPdC / cGamma
 		 dDPNdZ = MAX(dDPNdZ, normal - dLEPdC)
@@ -5821,7 +5921,13 @@ DO 100 i = 1, nFl
 		 elevat = elev(n1) * fPhi(1, m) + elev(n2) * fPhi(2, m)
 
 !                heat flow:
-		 q = dQdTdA(n1) * fPhi(1, m) + dQdTdA(n2) * fPhi(2, m)
+		 arcana_fault_nodes = (/n1,n2,n1,n2/)
+		 arcana_fault_weights = (/fPhi(1,m),fPhi(2,m),0.0D0,0.0D0/)
+		 IF (ArcanaShellsModeActive()) THEN
+			q = 0.0D0
+		 ELSE
+		      q = dQdTdA(n1) * fPhi(1, m) + dQdTdA(n2) * fPhi(2, m)
+		 END IF
 
 !                crustal thickness:
 		 crust = zMNode(n1) * fPhi(1, m) + zMNode(n2) * fPhi(2, m)
@@ -5831,25 +5937,60 @@ DO 100 i = 1, nFl
 		 mantle = MAX(mantle, 0.0D0)
 
 !                Moho temperature:
-		 tMoho = tSurf + crust * q / conduc(1) - &
+		 IF (ArcanaShellsModeActive()) THEN
+			arcana_fault_nodes = (/n1,n2,n1,n2/)
+			arcana_fault_weights = (/fPhi(1,m),fPhi(2,m),0.0D0,0.0D0/)
+			CALL ArcanaRuntimeEffectiveDensityWeighted(arcana_fault_nodes, &
+			     arcana_fault_weights,2,0.0D0,arcana_rho_surface, &
+			     arcana_fault_props,arcana_fault_temp,arcana_fault_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_MOHR_SURFACE_STATE_FAILED',ThID)
+			CALL ArcanaRuntimeEvaluateWeighted(arcana_fault_nodes, &
+			     arcana_fault_weights,2,crust,tMoho,arcana_fault_props, &
+			     arcana_fault_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_MOHR_MOHO_TEMPERATURE_FAILED',ThID)
+			CALL ArcanaRuntimeEvaluateWeighted(arcana_fault_nodes, &
+			     arcana_fault_weights,2,crust+mantle,tAsth,arcana_fault_props, &
+			     arcana_fault_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_MOHR_LAB_TEMPERATURE_FAILED',ThID)
+			CALL ArcanaRuntimeEffectiveDensityWeighted(arcana_fault_nodes, &
+			     arcana_fault_weights,2,crust,arcana_rho_moho, &
+			     arcana_fault_props,arcana_fault_temp,arcana_fault_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_MOHR_MOHO_DENSITY_FAILED',ThID)
+			CALL ArcanaRuntimeEffectiveDensityWeighted(arcana_fault_nodes, &
+			     arcana_fault_weights,2,crust+mantle,arcana_rho_lab, &
+			     arcana_fault_props,arcana_fault_temp,arcana_fault_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_MOHR_LAB_DENSITY_FAILED',ThID)
+			arcana_rho_water = arcana_fault_props(ARCANA_PROP_RHO_WATER)
+			rho(1)=0.5D0*(arcana_rho_surface+arcana_rho_moho)
+			rho(2)=0.5D0*(arcana_rho_moho+arcana_rho_lab)
+		 ELSE
+			tMoho = tSurf + crust * q / conduc(1) - &
 &                       crust**2 * radio(1) / (2.0D0 * conduc(1))
-
-!                Temperature at base of plate:
-		 tAsth = tMoho + mantle * (q - crust * radio(1)) / conduc(2) - &
+			tAsth = tMoho + mantle * (q - crust * radio(1)) / conduc(2) - &
 &                       mantle**2 * radio(2) / (2.0D0 * conduc(2))
-
-!                mean temperatures:
-		 tMean(1) = (tSurf + tMoho) / 2.0D0
-		 tMean(2) = (tMoho + tAsth) / 2.0D0
-
-!                mean densities:
-		 rho(1) = rhoBar(1) * (1.0D0 - alphaT(1) * tMean(1))
-		 rho(2) = rhoBar(2) * (1.0D0 - alphaT(2) * tMean(2))
+			tMean(1) = (tSurf + tMoho) / 2.0D0
+			tMean(2) = (tMoho + tAsth) / 2.0D0
+			rho(1) = rhoBar(1) * (1.0D0 - alphaT(1) * tMean(1))
+			rho(2) = rhoBar(2) * (1.0D0 - alphaT(2) * tMean(2))
+		 END IF
 
 !                derivitives of lithostatic effective pressure wrt depth
-		 dLEPdZ(1) = gMean * (rho(1) - rhoH2O * t_Biot)
+		 IF (ArcanaShellsModeActive()) THEN
+			dLEPdZ(1) = gMean * (rho(1) - arcana_rho_water*t_Biot)
+		 ELSE
+			dLEPdZ(1) = gMean * (rho(1) - rhoH2O * t_Biot)
+		 END IF
 		 ePMoho = dLEPdZ(1) * crust
-		 dLEPdZ(2) = gMean * (rho(2) - rhoH2O * t_Biot)
+		 IF (ArcanaShellsModeActive()) THEN
+			dLEPdZ(2) = gMean * (rho(2) - arcana_rho_water*t_Biot)
+		 ELSE
+			dLEPdZ(2) = gMean * (rho(2) - rhoH2O * t_Biot)
+		 END IF
 
 !               "angle" is the fault strike, in radians cclkws from +X.
 
@@ -5948,7 +6089,15 @@ DO 100 i = 1, nFl
 			  IF (layer == 1) THEN
 				   baseZ = crust
 				   sf0 = 0.0D0
-				   t0 = tSurf
+				   IF (ArcanaShellsModeActive()) THEN
+					CALL ArcanaRuntimeEvaluateWeighted(arcana_fault_nodes, &
+					     arcana_fault_weights,2,0.0D0,t0,arcana_fault_props, &
+					     arcana_fault_phases,arcana_ierr)
+					IF (arcana_ierr /= 0) CALL FatalError( &
+					     'ARCANA_MOHR_CRUST_TOP_TEMPERATURE_FAILED',ThID)
+				   ELSE
+					t0 = tSurf
+				   END IF
 				   q0 = q
 				   z0 = 0.0D0
 			  ELSE
@@ -5963,8 +6112,16 @@ DO 100 i = 1, nFl
 				   zAbs = z + z0
 				   shearf = z * dSFdZ(layer) + sf0
 				   shearp = MIN(shearf, t_dCreep(layer))
-				   t = t0 + q0 * z / conduc(layer) - (radio(layer) / &
+				   IF (ArcanaShellsModeActive()) THEN
+					CALL ArcanaRuntimeEvaluateWeighted(arcana_fault_nodes, &
+					     arcana_fault_weights,2,zAbs,t,arcana_fault_props, &
+					     arcana_fault_phases,arcana_ierr)
+					IF (arcana_ierr /= 0) CALL FatalError( &
+					     'ARCANA_MOHR_SEARCH_TEMPERATURE_FAILED',ThID)
+				   ELSE
+					t = t0 + q0 * z / conduc(layer) - (radio(layer) / &
 &                                          (2.0D0 * conduc(layer))) * z**2
+				   END IF
 				   IF (zAbs <= (15.0D0 * oneKm)) THEN
 						t90pc = 0.50D0 * zAbs
 				   ELSE IF (zAbs < (45.0D0 * oneKm)) THEN
@@ -6016,7 +6173,15 @@ DO 100 i = 1, nFl
 		 DO 80 layer = 1, limit
 			  IF (layer == 1) THEN
 				   thick = crust
-				   t0 = tSurf
+				   IF (ArcanaShellsModeActive()) THEN
+					CALL ArcanaRuntimeEvaluateWeighted(arcana_fault_nodes, &
+					     arcana_fault_weights,2,0.0D0,t0,arcana_fault_props, &
+					     arcana_fault_phases,arcana_ierr)
+					IF (arcana_ierr /= 0) CALL FatalError( &
+					     'ARCANA_MOHR_CREEP_TOP_TEMPERATURE_FAILED',ThID)
+				   ELSE
+					t0 = tSurf
+				   END IF
 				   q0 = q
 				   zAbs = 0.0D0
 			  ELSE
@@ -6034,12 +6199,23 @@ DO 100 i = 1, nFl
 				   zfull = z0 + dz
 				   azhalf = zhalf + zAbs
 				   azfull = zfull + zAbs
-				   thalf = t0 + q0 * zhalf / conduc(layer) - &
-&                          (radio(layer) / &
-&                          (2.0D0 * conduc(layer))) * zhalf**2
-				   tfull = t0 + q0 * zfull / conduc(layer) - &
-&                          (radio(layer) / &
-&                          (2.0D0 * conduc(layer))) * zfull**2
+				   IF (ArcanaShellsModeActive()) THEN
+					CALL ArcanaRuntimeEvaluateWeighted(arcana_fault_nodes, &
+					     arcana_fault_weights,2,azhalf,thalf,arcana_fault_props, &
+					     arcana_fault_phases,arcana_ierr)
+					IF (arcana_ierr /= 0) CALL FatalError( &
+					     'ARCANA_MOHR_CREEP_MID_TEMPERATURE_FAILED',ThID)
+					CALL ArcanaRuntimeEvaluateWeighted(arcana_fault_nodes, &
+					     arcana_fault_weights,2,azfull,tfull,arcana_fault_props, &
+					     arcana_fault_phases,arcana_ierr)
+					IF (arcana_ierr /= 0) CALL FatalError( &
+					     'ARCANA_MOHR_CREEP_END_TEMPERATURE_FAILED',ThID)
+				   ELSE
+					thalf = t0 + q0 * zhalf / conduc(layer) - &
+&                          (radio(layer) / (2.0D0 * conduc(layer))) * zhalf**2
+					tfull = t0 + q0 * zfull / conduc(layer) - &
+&                          (radio(layer) / (2.0D0 * conduc(layer))) * zfull**2
+				   END IF
 				   IF (azhalf <= (15.0D0 * oneKm)) THEN
 						whalf = 0.50D0 * azhalf
 				   ELSE IF (azhalf < (45.0D0 * oneKm)) THEN
@@ -6698,7 +6874,7 @@ CALL Viscos (alphaT, &                              ! input
 &              eRate, gMean, geothC, geothM, &
 &              LRn, LR_set_cFric, LR_set_Biot, &
 &              LR_set_aCreep, LR_set_bCreep, LR_set_cCreep, LR_set_dCreep, LR_set_eCreep, &
-&              mxEl, numEl, rhoBar, rhoH2O, &
+&              mxEl, nodes, numEl, rhoBar, rhoH2O, &
 &              sigHB, tauMat, temLim, tLInt, &
 &              visMax, zMoho, &
 &              alpha, scoreC, scoreD, tOfset, zTranC) ! output
@@ -6775,7 +6951,7 @@ DO 1000 iter = 1, maxItr
 &                   eRate, gMean, geothC, geothM, &
 &                   LRn, LR_set_cFric, LR_set_Biot, &
 &                   LR_set_aCreep, LR_set_bCreep, LR_set_cCreep, LR_set_dCreep, LR_set_eCreep, &
-&                   mxEl, numEl, rhoBar, rhoH2O, &
+&                   mxEl, nodes, numEl, rhoBar, rhoH2O, &
 &                   sigHB, tauMat, temLim, tLInt, &
 &                   visMax, zMoho, &
 &                   alpha, scoreC, scoreD, tOfset, zTranC) ! output
@@ -7219,6 +7395,9 @@ COMMON / WgtVec / weight
 DIMENSION points(3, 7), weight(7)
 !      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 INTEGER i, ip, iPlate, ix, iy, j, j1, j2, j3, j4, jb, jm, k, l, m, n, nInSum
+INTEGER arcana_diag_ierr, arcana_diag_nodes(3), arcana_diag_phases(3)
+REAL*8 arcana_diag_weights(3), arcana_diag_temp
+REAL*8 arcana_diag_props(ARCANA_PROPERTY_COUNT)
 REAL*8 angle, azim, azimHS, azimut, &
 	& close, crossx, crossy, dip, dot_E, dot_N, dot_S, du, dv, &
 	& e1, e2, equat, equat2, exx, exy, eyy, ezz, &
@@ -7338,9 +7517,20 @@ DO 200 i = 1, numEl
 	azim = 180.0D0 - ATan2F(u1y, u1x) * 57.2957795130823D0
 	IF (azim < 0.0D0) azim = azim + 360.0D0
 	ezz = -(exx + eyy)
-	tMid = geothC(1, m, i) + geothC(2, m, i) * zMoho(m, i) / 2.0D0 + &
+	IF (ArcanaShellsModeActive()) THEN
+		arcana_diag_nodes = nodes(:,i)
+		arcana_diag_weights = points(:,m)
+		CALL ArcanaRuntimeEffectiveDensityWeighted(arcana_diag_nodes, &
+		     arcana_diag_weights,3,zMoho(m,i)/2.0D0,rhoC, &
+		     arcana_diag_props,arcana_diag_temp,arcana_diag_phases, &
+		     arcana_diag_ierr)
+		IF (arcana_diag_ierr /= 0) CALL FatalError( &
+		     'ARCANA_RESULT_DIAGNOSTIC_DENSITY_FAILED',ThID)
+	ELSE
+		tMid = geothC(1, m, i) + geothC(2, m, i) * zMoho(m, i) / 2.0D0 + &
 &             geothC(3, m, i) * (zMoho(m, i) / 2.)**2
-	rhoC = rhoBar(1) * (1.0D0 - alphaT(1) * tMid)
+		rhoC = rhoBar(1) * (1.0D0 - alphaT(1) * tMid)
+	END IF
 
 !         Interpolate height, position to element center:
 	height = 0.0D0
@@ -9929,7 +10119,7 @@ SUBROUTINE Viscos (alphaT, &                              ! input
 &                    g, geothC, geothM, &
 &                    LRn, LR_set_cFric, LR_set_Biot, &
 &                    LR_set_aCreep, LR_set_bCreep, LR_set_cCreep, LR_set_dCreep, LR_set_eCreep, &
-&                    mxEl, numEl, rhoBar, rhoH2O, &
+&                    mxEl, nodes, numEl, rhoBar, rhoH2O, &
 &                    sigHB, tauMat, temLim, tLInt, &
 &                    visMax, zMoho, &
 &                    alpha, scoreC, scoreD, tOfset, zTranC) ! output
@@ -9968,10 +10158,18 @@ INTEGER, INTENT(IN) :: LRn                                                      
 REAL*8, INTENT(IN) :: LR_set_cFric, LR_set_Biot, &                                        ! input
 				   & LR_set_aCreep, LR_set_bCreep, LR_set_cCreep, LR_set_dCreep, LR_set_eCreep ! input
 INTEGER, INTENT(IN) :: mxEl, numEl                                                        ! input
+INTEGER, INTENT(IN) :: nodes(3, mxEl)
 REAL*8, INTENT(IN) :: rhoBar, rhoH2O, sigHB, tauMat, temLim, tLInt, visMax, zMoho         ! input
 REAL*8, INTENT(OUT) :: alpha, scoreC, scoreD, tOfset, zTranC                              ! output
 !      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 INTEGER i, m
+INTEGER arcana_node_ids(3), arcana_phases(3), arcana_ierr
+REAL*8 arcana_weights(3), arcana_properties(ARCANA_PROPERTY_COUNT)
+REAL*8 arcana_temperature, arcana_rho_effective
+REAL*8 arcana_rho_h2o
+LOGICAL arcana_active
+REAL*8 points(3,7)
+COMMON / S1S2S3 / points
 REAL*8 center, delp2, denom, denom0, denom1, diver, &
 &        dandex, dandey, dandes, &
 &        de1dex, de1dey, de1des, &
@@ -10026,6 +10224,18 @@ DO 1000 i = 1, numEl
 	t_eCreep      = LR_set_eCreep(LRi)
 	!Process all 7 integration points:
 	DO 900 m = 1, 7
+		 arcana_active = ArcanaShellsModeActive()
+		 arcana_node_ids = nodes(:, i)
+		 arcana_weights = points(:, m)
+		 arcana_rho_h2o = rhoH2O
+		 IF (arcana_active) THEN
+			CALL ArcanaRuntimeEvaluateWeighted(arcana_node_ids, &
+			     arcana_weights,3,0.0D0,arcana_temperature, &
+			     arcana_properties,arcana_phases,arcana_ierr)
+			IF (arcana_ierr /= 0) CALL FatalError( &
+			     'ARCANA_VISCOS_SURFACE_PROPERTY_FAILED',ThID)
+			arcana_rho_h2o = arcana_properties(ARCANA_PROP_RHO_WATER)
+		 END IF
 
 !              ----------- rheology (& zTranC) section ------------
 
@@ -10101,9 +10311,10 @@ DO 1000 i = 1, numEl
 &                                  geothC(3, m, i), &
 &                                  geothC(4, m, i), &
 &                                  pl0, pw0, &
-&                                  rho_use, rhoH2O, sigHBi, &
+&                                  rho_use, arcana_rho_h2o, sigHBi, &
 &                                  thickC, temLim(1), &
 &                                  visMax, zOfTop, &
+&                                  arcana_node_ids, arcana_weights, arcana_active, &
 &                                  pT1dE1, pT1dE2, &      ! output
 &                                  pT2dE1, pT2dE2, &
 &                                  pt1, pt2, zTran(1))
@@ -10127,12 +10338,19 @@ DO 1000 i = 1, numEl
 
 			  IF (thickM > 0) THEN
 				   zOfTop = thickC
-				   pw0 = rhoH2O * g * thickC
-				   tMean = geothC(1, m, i) + &
+				   pw0 = arcana_rho_h2o * g * thickC
+			   IF (arcana_active) THEN
+				CALL ArcanaRuntimeMeanEffectiveDensity(arcana_node_ids, &
+				     arcana_weights,3,0.0D0,thickC,rhoUse,arcana_ierr)
+				IF (arcana_ierr /= 0) CALL FatalError( &
+				     'ARCANA_DIAMND_CRUST_MEAN_DENSITY_FAILED',ThID)
+			   ELSE
+				tMean = geothC(1, m, i) + &
 &                       0.5D0 * geothC(2, m, i) * thickC + &
 &                     0.333D0 * geothC(3, m, i) * thickC**2 + &
 &                      0.25D0 * geothC(4, m, i) * thickC**3
-				   rhoUse = rhoBar(1) * (1.0D0 - alphaT(1) * tMean)
+				rhoUse = rhoBar(1) * (1.0D0 - alphaT(1) * tMean)
+			   END IF
 				   pl0 = rhoUse * g * thickC
 				   rho_use = rhoBar(2) + delta_rho(m, i)
 				   CALL Diamnd (t_aCreep(2), alphaT(2), & ! input
@@ -10145,9 +10363,10 @@ DO 1000 i = 1, numEl
 &                                  geothM(3, m, i), &
 &                                  geothM(4, m, i), &
 &                                  pl0, pw0, &
-&                                  rho_use, rhoH2O, sigHBi, &
+&                                  rho_use, arcana_rho_h2o, sigHBi, &
 &                                  thickM, temLim(2), &
 &                                  visMax, zOfTop, &
+&                                  arcana_node_ids, arcana_weights, arcana_active, &
 &                                  pT1dE1, pT1dE2, &       ! output
 &                                  pT2dE1, pT2dE2, &
 &                                  pt1, pt2, zTran(2))

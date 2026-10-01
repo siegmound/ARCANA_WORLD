@@ -179,7 +179,10 @@ def test_feg_handshake_and_nine_field_stock_writer_are_preserved():
     assert MOD_SHELLSET.count("ArcanaShellsInspectFEG(1,") == 2
     assert "ARCANA FEG marker is present but Shells runtime package is missing" in MOD_SHELLSET
     assert "Shells runtime package is present for a non-ARCANA FEG" in MOD_SHELLSET
-    assert "ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED" in (SRC / "SHELLS_v5.0.f90").read_text(encoding="utf-8")
+    shells = (SRC / "SHELLS_v5.0.f90").read_text(encoding="utf-8")
+    assert "ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED" not in shells
+    assert "CALL Fixed (alphaT, area, conduc" in shells
+    assert "CALL Result (alphaT, area, comp" in shells
     assert "ArcanaRuntimeRead(17,expected_nodes,ierr,message)" in MOD_SHELLSET
     assert re.search(r"WRITE\s*\(iUnitO,\s*91\).*?cooling_curvature_list\(i\)", MOD_DATA, re.S)
     assert re.search(r"FORMAT\s*\(I8,\s*2F11\.5,\s*6ES10\.2\)", MOD_DATA)

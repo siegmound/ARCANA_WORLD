@@ -37,17 +37,31 @@ they do not define new physical materials.
 The shared nodal and FEM evaluator is implemented in
 `external/ShellSet-v1.1.0/src/MOD_ArcanaRuntime.f90`. S1B-I provides the
 marker+package lifecycle. S1B-II wires FillIn, ARCANA Squeez, OneBar, and the
-`iConve=5` temperature predicate to that evaluator. The ARCANA path bypasses
-legacy geotherm reconstruction and temLim; the 200 K OneBar floor is a
-fail-closed bound check, never a temperature clamp. A temporary ARCANA barrier
-runs after FillIn and before Fixed/Pure, so remaining S1B-III consumers cannot
-execute in ARCANA mode. Stock paths remain in their legacy branches. Complete
-Shells mechanics remains **disabled** pending S1B-III. No FAIR runtime/build
-result is claimed; Windows validation is source-level only and has not run
-OrbData or SHELLS.
+`iConve=5` temperature predicate. S1B-III wires Fixed, Pure/Mohr,
+Viscos/Diamnd, and Result to the same evaluator. In ARCANA mode, thermal
+consumer paths bypass legacy `geothC/geothM` reconstruction and `temLim`
+clipping; stock calculations remain in their legacy branches. The main-loop
+barrier has been removed after a source-level call-site audit.
 
-The Python numerical reference tests exercise only the closed projection
-equations; they do not execute or qualify the Fortran evaluator.
+For mechanical density support, ARCANA uses
+`rho_eff_IP = rho_IP * (1 - alpha_IP * T_IP)`, classified as
+`NUMERICAL_RUNTIME_EFFECTIVE_DENSITY` and `DERIVED_MECHANICAL_SUPPORT`, not
+canonical material state. Diamnd computes its exact vertical mean by splitting
+at every supported nodal Moho and LAB, integrating the cubic profiles with
+polynomial primitives and the below-LAB adiabat analytically. It does not use
+quadrature or midpoint temperature. Mohr retains its stock endpoint-trapezoid
+operator with the existing two-node fault support; its pure strike-slip path
+uses the existing four-node quarter weights. No discrete ID is interpolated.
+
+The temporary ARCANA consumer barrier is removed. Source inspection and
+focused tests cover the reachable consumer paths, but do not compile or execute
+the Fortran. No FAIR runtime/build result is claimed; Windows validation is
+source-level only and has not run OrbData or SHELLS. Ubuntu NVHPC build and
+runtime qualification remain required.
+
+The Python numerical reference tests exercise the projection and analytical
+vertical-reduction equations; they do not execute or qualify the Fortran
+evaluator.
 
 All authorization gates remain false: `PRE_ORBDATA_ready`,
 `t0_orbdata_executed`, `shellset_mechanics_authorized`, `dt_selected`,
