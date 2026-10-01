@@ -1,0 +1,909 @@
+{
+  "arcana_marker_enabled": false,
+  "decision": "LEGACY_COMPATIBILITY_PATH_HAS_MATERIAL_DISCREPANCY__FULL_S1B_OR_ALTERNATIVE_SOLVER_REQUIRED",
+  "decision_sensitive_totals": {
+    "iConve5_classification_flipped_integration_points": 0,
+    "onebar_adiabat_intersection_branch_flipped_depth_samples": 754534
+  },
+  "diagnostic_only": true,
+  "global_shellset_parameter_values": {
+    "aCreep": [
+      2300000000.0,
+      95000.0
+    ],
+    "alphaT": [
+      2.4e-05,
+      3.94e-05
+    ],
+    "bCreep": [
+      4000.0,
+      18314.0
+    ],
+    "cCreep": [
+      0.0,
+      0.0171
+    ],
+    "conduc": [
+      2.7,
+      3.2
+    ],
+    "eCreep": [
+      0.333333
+    ],
+    "gMean": [
+      9.8
+    ],
+    "gradie": [
+      0.00061
+    ],
+    "oneKm": [
+      1000.0
+    ],
+    "radio": [
+      3.5e-07,
+      3.2e-08
+    ],
+    "rhoAst": [
+      3125.0
+    ],
+    "rhoBar": [
+      2889.0,
+      3332.0
+    ],
+    "rhoBar_C_grid_num_models": 2,
+    "rhoBar_C_grid_range": [
+      2500.0,
+      3100.0
+    ],
+    "rhoH2O": [
+      1032.0
+    ],
+    "tAdiab": [
+      1412.0
+    ],
+    "tSurf": [
+      273.0
+    ],
+    "temLim": [
+      1223.0,
+      1673.0
+    ],
+    "zBAsth": [
+      400000.0
+    ]
+  },
+  "input_identity": {
+    "mesh_node_count": 64442,
+    "mesh_normalized_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "mesh_triangle_count": 128880,
+    "physical_field_keys": [
+      "canonical_land_surface_elevation_m",
+      "continental_reference_lithosphere_thickness_m",
+      "continental_reference_surface_heat_flow_w_m2",
+      "continental_thermal_domain_id",
+      "crustal_thickness_m",
+      "ocean_surface_authorial_residual_m",
+      "oceanic_lithosphere_age_ma",
+      "physical_crust_domain_id",
+      "unknown_total_ocean_elevation_mask"
+    ],
+    "physical_field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "projection_replay_sha256": "3e9a9b86048f65d657e3afa2ccc5054d2bcd96ce5c8d5d7eba55a797e4025e8b",
+    "runtime_manifest_sha256": "876a9365ae76ad7a6fa10470317d754e08b82b9fc69cac8d72203e06a8ee7ce0",
+    "runtime_package_sha256": "2dc83a759d4cdd4851ad57a37fc725841da24f0f2ca4312391283348703d3584",
+    "shellset_source_sha256": {
+      "external\\ShellSet-v1.1.0\\INPUT\\GridInput.in": "0086b7566dbf2978ec3c406b808f28ad4230f20edc0875bac695bd1ff66d6101",
+      "external\\ShellSet-v1.1.0\\INPUT\\iEarth5-049.in": "c07834e17d9c6e21bad0d7cd81af20e8a670e0ae9ed481f999c881129ee4a89e",
+      "external\\ShellSet-v1.1.0\\src\\MOD_Data.f90": "b8f2a2355dc53f99d198fc64c05f350452a528434a5078eebaa4cf71a0f82527",
+      "external\\ShellSet-v1.1.0\\src\\MOD_Shells.f90": "abe984dad6d0b72d0f075e30ff02e0a6cd3ee6ba9714190766dece322ca79001"
+    }
+  },
+  "limits": [
+    "This compares the stock legacy reconstruction against the governed package as numerical fields; it is not ShellSet execution or scientific qualification.",
+    "Homogeneous groups are deterministic samples; all classified mixed elements are evaluated.",
+    "A missing selected FAIR model binding prevents a compatibility PASS; no arbitrary closeness tolerance is imposed."
+  ],
+  "material_difference_vs_global_shellset_parameters": {
+    "continental_crust": {
+      "arcana_values": {
+        "conductivity_w_m_k": [
+          2.5
+        ],
+        "density_kg_m3": [
+          2800.0
+        ],
+        "expansivity_k_1": [
+          3e-05
+        ],
+        "heat_capacity_j_kg_k": [
+          1000.0
+        ],
+        "radiogenic_heat_w_m3": [
+          8e-07
+        ]
+      },
+      "legacy_alpha_k_1": 2.4e-05,
+      "legacy_conductivity_w_m_k": 2.7,
+      "legacy_density_difference_range_kg_m3": [
+        -300.0,
+        300.0
+      ],
+      "legacy_global_density_range_kg_m3": [
+        2500.0,
+        3100.0
+      ],
+      "legacy_heat_capacity": "not represented in ShellSet parameter vector",
+      "legacy_radiogenic_heat_w_m3": 3.5e-07,
+      "node_count": 14258
+    },
+    "mantle_all_nodes": {
+      "arcana_values": {
+        "conductivity_w_m_k": [
+          3.3
+        ],
+        "density_kg_m3": [
+          3300.0
+        ],
+        "expansivity_k_1": [
+          3e-05
+        ],
+        "heat_capacity_j_kg_k": [
+          1200.0
+        ],
+        "radiogenic_heat_w_m3": [
+          2e-08
+        ]
+      },
+      "legacy_alpha_k_1": 3.94e-05,
+      "legacy_conductivity_w_m_k": 3.2,
+      "legacy_density_difference_range_kg_m3": [
+        32.0,
+        32.0
+      ],
+      "legacy_density_kg_m3": 3332.0,
+      "legacy_heat_capacity": "not represented in ShellSet parameter vector",
+      "legacy_radiogenic_heat_w_m3": 3.2e-08,
+      "node_count": 64442
+    },
+    "oceanic_crust": {
+      "arcana_values": {
+        "conductivity_w_m_k": [
+          2.2
+        ],
+        "density_kg_m3": [
+          2890.0
+        ],
+        "expansivity_k_1": [
+          3e-05
+        ],
+        "heat_capacity_j_kg_k": [
+          1000.0
+        ],
+        "radiogenic_heat_w_m3": [
+          3e-07
+        ]
+      },
+      "legacy_alpha_k_1": 2.4e-05,
+      "legacy_conductivity_w_m_k": 2.7,
+      "legacy_density_difference_range_kg_m3": [
+        -390.0,
+        210.0
+      ],
+      "legacy_global_density_range_kg_m3": [
+        2500.0,
+        3100.0
+      ],
+      "legacy_heat_capacity": "not represented in ShellSet parameter vector",
+      "legacy_radiogenic_heat_w_m3": 3.5e-07,
+      "node_count": 50184
+    }
+  },
+  "mechanical_sensitivity": {
+    "diamnd_viscos_stress": "REQUIRES_UBUNTU_RUNTIME_AB_TEST: strain-rate, stress, active rheology and brittle transition are runtime state",
+    "iConve5": "source threshold classification directly compared at sampled IPs",
+    "onebar_glue": "diagnostic source-default reference calculated; exact model-specific continuum rheology assignment requires FAIR input/model binding",
+    "squeez_full_sigZZB_tauZZ": "REQUIRES_UBUNTU_RUNTIME_AB_TEST: exact nodal FEG elevation/loading and runtime execution are not bound in this checkout",
+    "squeez_temperature_profile": "SOURCE_FORMULA_PORTED; S1A OrbData writes cooling_curvature=0 and chemical_delta_rho=0",
+    "squeez_thermal_density_column_integral": "CALCULATED: governed solid-column 1-km trapezoidal density integral difference; excludes water/topographic pressure-reference terms and is not full Squeez stress"
+  },
+  "population_counts": {
+    "continent_ocean_mixed": 1816,
+    "continental_homogeneous": 27613,
+    "positive_age_ocean_homogeneous": 99076,
+    "ridge_homogeneous": 54,
+    "ridge_positive_ocean_mixed": 325
+  },
+  "populations": {
+    "continent_ocean_mixed": {
+      "diagnostics": {
+        "iConve5_threshold": {
+          "arcana_base_temperature_k": {
+            "max_k": 1683.4001905157108,
+            "median_k": 1627.7883215092988,
+            "min_k": 1467.3406112847267
+          },
+          "arcana_pulled_true_count": 0,
+          "classification_flip_integration_points": 0,
+          "evaluated_integration_points": 12712,
+          "legacy_base_temperature_k": {
+            "max_k": 1473.0,
+            "median_k": 1473.0,
+            "min_k": 1473.0
+          },
+          "legacy_pulled_true_count": 0,
+          "threshold_k": 1273.0
+        },
+        "legacy_fillin_raw_profile_above_temLim_grid_samples": {
+          "layer1": 166,
+          "layer2": 9845,
+          "samples": 1690842
+        },
+        "onebar": {
+          "adiabat_intersection_source_branch_flip_depth_samples": 645899,
+          "arcana_200k_floor_samples": 0,
+          "effective_temperature_difference_legacy_minus_arcana_k": {
+            "count": 5084800,
+            "max_abs_k": 590.9181327426147,
+            "median_abs_k": 0.0,
+            "p90_abs_k": 236.43634888722627,
+            "p95_abs_k": 323.3214510442671,
+            "p99_abs_k": 434.49403623840556,
+            "rms_k": 119.31892707331187
+          },
+          "glue_difference_legacy_minus_arcana_source_default": {
+            "count": 12712,
+            "max_abs": 1365207079.6801393,
+            "median_abs": 364640492.99652386,
+            "p90_abs": 1112354797.507177,
+            "p95_abs": 1136811752.3754153,
+            "p99_abs": 1193590628.2090352,
+            "rms": 626073449.1620725
+          },
+          "integration_points_evaluated": 12712,
+          "integration_points_with_any_intersection_branch_flip": 12712,
+          "legacy_200k_floor_samples": 0,
+          "sampling_spacing_m": 1000.0,
+          "zBAsth_m": 400000.0
+        },
+        "profile_samples": 1690842,
+        "squeez_nodal_legacy_temLim_clipping": {
+          "clipped_samples": 68862,
+          "sample_count": 240924
+        },
+        "squeez_nodal_thermal_profile_error_over_1km_grid": {
+          "count": 242740,
+          "max_abs_k": 420.66117432965757,
+          "median_abs_k": 89.52760503714558,
+          "p90_abs_k": 338.1512351035253,
+          "p95_abs_k": 381.4063737247552,
+          "p99_abs_k": 413.9367113006135,
+          "rms_k": 183.4335366722857
+        },
+        "squeez_thermal_density_column_integral_difference_legacy_minus_arcana_kg_m2": {
+          "count": 1816,
+          "max_abs": 2610109.2967927745,
+          "median_abs": 1245676.2818373297,
+          "p90_abs": 2138103.5832283236,
+          "p95_abs": 2138103.5832283236,
+          "p99_abs": 2565486.081739365,
+          "rms": 1515632.5964796206
+        },
+        "thermal_error_at_representative_depths": {
+          "lab": {
+            "count": 12712,
+            "max_abs_k": 251.28581164939396,
+            "median_abs_k": 124.63612918860088,
+            "p90_abs_k": 168.11846799988405,
+            "p95_abs_k": 174.40019940570963,
+            "p99_abs_k": 184.83960131437627,
+            "rms_k": 119.04616107611731
+          },
+          "mid_crust": {
+            "count": 12712,
+            "max_abs_k": 147.9259542721261,
+            "median_abs_k": 6.708706179084174,
+            "p90_abs_k": 18.923887002592245,
+            "p95_abs_k": 27.54106976324034,
+            "p99_abs_k": 50.76744361725339,
+            "rms_k": 13.732805569090408
+          },
+          "mid_mantle": {
+            "count": 12712,
+            "max_abs_k": 926.2015508613845,
+            "median_abs_k": 53.09951026043109,
+            "p90_abs_k": 118.03402541937423,
+            "p95_abs_k": 148.71803177836637,
+            "p99_abs_k": 336.48310802021996,
+            "rms_k": 94.15679364561343
+          },
+          "moho": {
+            "count": 12712,
+            "max_abs_k": 481.8910956977602,
+            "median_abs_k": 15.092964148127521,
+            "p90_abs_k": 38.507845434687404,
+            "p95_abs_k": 50.34935331703837,
+            "p99_abs_k": 113.98614001560586,
+            "rms_k": 32.96117186018892
+          }
+        },
+        "thermal_error_over_1km_lithosphere_grid": {
+          "count": 1690842,
+          "max_abs_k": 930.2156415326547,
+          "median_abs_k": 35.658324423641716,
+          "p90_abs_k": 124.82724933894175,
+          "p95_abs_k": 151.84431592653365,
+          "p99_abs_k": 223.8393054127039,
+          "rms_k": 78.39426545038648
+        }
+      },
+      "element_population_count": 1816,
+      "sample_rule": "ALL_MIXED",
+      "sampled_element_count": 1816
+    },
+    "continental_homogeneous": {
+      "diagnostics": {
+        "iConve5_threshold": {
+          "arcana_base_temperature_k": {
+            "max_k": 1721.7544386298684,
+            "median_k": 1721.754438629868,
+            "min_k": 1504.1973143959922
+          },
+          "arcana_pulled_true_count": 0,
+          "classification_flip_integration_points": 0,
+          "evaluated_integration_points": 896,
+          "legacy_base_temperature_k": {
+            "max_k": 1473.0,
+            "median_k": 1473.0,
+            "min_k": 1473.0
+          },
+          "legacy_pulled_true_count": 0,
+          "threshold_k": 1273.0
+        },
+        "legacy_fillin_raw_profile_above_temLim_grid_samples": {
+          "layer1": 0,
+          "layer2": 0,
+          "samples": 151556
+        },
+        "onebar": {
+          "adiabat_intersection_source_branch_flip_depth_samples": 68363,
+          "arcana_200k_floor_samples": 0,
+          "effective_temperature_difference_legacy_minus_arcana_k": {
+            "count": 358400,
+            "max_abs_k": 508.10994848727535,
+            "median_abs_k": 0.0,
+            "p90_abs_k": 386.8600627886999,
+            "p95_abs_k": 440.6159622660873,
+            "p99_abs_k": 494.0312793106789,
+            "rms_k": 167.5543743117268
+          },
+          "glue_difference_legacy_minus_arcana_source_default": {
+            "count": 896,
+            "max_abs": 1206258896.0834885,
+            "median_abs": 1157994387.4201756,
+            "p90_abs": 1157994387.4201763,
+            "p95_abs": 1157994387.4201763,
+            "p99_abs": 1157994387.4201763,
+            "rms": 935828839.3897433
+          },
+          "integration_points_evaluated": 896,
+          "integration_points_with_any_intersection_branch_flip": 896,
+          "legacy_200k_floor_samples": 0,
+          "sampling_spacing_m": 1000.0,
+          "zBAsth_m": 400000.0
+        },
+        "profile_samples": 151556,
+        "squeez_nodal_legacy_temLim_clipping": {
+          "clipped_samples": 23048,
+          "sample_count": 64044
+        },
+        "squeez_nodal_thermal_profile_error_over_1km_grid": {
+          "count": 64423,
+          "max_abs_k": 420.66117432965757,
+          "median_abs_k": 163.1179710751037,
+          "p90_abs_k": 363.692389226479,
+          "p95_abs_k": 395.2260258621525,
+          "p99_abs_k": 418.03573729483014,
+          "rms_k": 217.86650691509215
+        },
+        "squeez_thermal_density_column_integral_difference_legacy_minus_arcana_kg_m2": {
+          "count": 379,
+          "max_abs": 2138103.5832283236,
+          "median_abs": 2138103.5832283236,
+          "p90_abs": 2138103.5832283236,
+          "p95_abs": 2138103.5832283236,
+          "p99_abs": 2138103.5832283236,
+          "rms": 1660829.79280574
+        },
+        "thermal_error_at_representative_depths": {
+          "lab": {
+            "count": 896,
+            "max_abs_k": 209.50629048172027,
+            "median_abs_k": 209.50629048171982,
+            "p90_abs_k": 209.50629048172027,
+            "p95_abs_k": 209.50629048172027,
+            "p99_abs_k": 209.50629048172027,
+            "rms_k": 187.45753633154428
+          },
+          "mid_crust": {
+            "count": 896,
+            "max_abs_k": 35.55137883740781,
+            "median_abs_k": 7.832370465984582,
+            "p90_abs_k": 21.930026443114798,
+            "p95_abs_k": 35.55137883740781,
+            "p99_abs_k": 35.55137883740781,
+            "rms_k": 17.182128993446344
+          },
+          "mid_mantle": {
+            "count": 896,
+            "max_abs_k": 157.0198170434512,
+            "median_abs_k": 130.20859935275394,
+            "p90_abs_k": 130.20859935275416,
+            "p95_abs_k": 130.20859935275416,
+            "p99_abs_k": 130.20859935275416,
+            "rms_k": 100.61238880930928
+          },
+          "moho": {
+            "count": 896,
+            "max_abs_k": 50.686996831112765,
+            "median_abs_k": 43.00385146939527,
+            "p90_abs_k": 43.003851469395386,
+            "p95_abs_k": 50.68699683111265,
+            "p99_abs_k": 50.686996831112765,
+            "rms_k": 35.12936632299543
+          }
+        },
+        "thermal_error_over_1km_lithosphere_grid": {
+          "count": 151556,
+          "max_abs_k": 209.50629048172027,
+          "median_abs_k": 56.391181802184974,
+          "p90_abs_k": 145.96729382745934,
+          "p95_abs_k": 148.78584506982702,
+          "p99_abs_k": 189.06241677598882,
+          "rms_k": 88.60919796676777
+        }
+      },
+      "element_population_count": 27613,
+      "sample_rule": "DETERMINISTIC_EVEN_INDEX_128",
+      "sampled_element_count": 128
+    },
+    "positive_age_ocean_homogeneous": {
+      "diagnostics": {
+        "iConve5_threshold": {
+          "arcana_base_temperature_k": {
+            "max_k": 1680.0000000000007,
+            "median_k": 1679.9999999999995,
+            "min_k": 1643.2541717953823
+          },
+          "arcana_pulled_true_count": 0,
+          "classification_flip_integration_points": 0,
+          "evaluated_integration_points": 896,
+          "legacy_base_temperature_k": {
+            "max_k": 1473.0,
+            "median_k": 1473.0,
+            "min_k": 1473.0
+          },
+          "legacy_pulled_true_count": 0,
+          "threshold_k": 1273.0
+        },
+        "legacy_fillin_raw_profile_above_temLim_grid_samples": {
+          "layer1": 0,
+          "layer2": 0,
+          "samples": 87872
+        },
+        "onebar": {
+          "adiabat_intersection_source_branch_flip_depth_samples": 17248,
+          "arcana_200k_floor_samples": 0,
+          "effective_temperature_difference_legacy_minus_arcana_k": {
+            "count": 358400,
+            "max_abs_k": 467.8809500318272,
+            "median_abs_k": 0.0,
+            "p90_abs_k": 125.94387992940804,
+            "p95_abs_k": 171.3199752921265,
+            "p99_abs_k": 254.92934978916287,
+            "rms_k": 65.40051376040482
+          },
+          "glue_difference_legacy_minus_arcana_source_default": {
+            "count": 896,
+            "max_abs": 210097975.615381,
+            "median_abs": 176302244.7980516,
+            "p90_abs": 208900857.16291833,
+            "p95_abs": 209495995.9636234,
+            "p99_abs": 209842718.50914288,
+            "rms": 171139282.99135217
+          },
+          "integration_points_evaluated": 896,
+          "integration_points_with_any_intersection_branch_flip": 896,
+          "legacy_200k_floor_samples": 0,
+          "sampling_spacing_m": 1000.0,
+          "zBAsth_m": 400000.0
+        },
+        "profile_samples": 87872,
+        "squeez_nodal_legacy_temLim_clipping": {
+          "clipped_samples": 9909,
+          "sample_count": 37658
+        },
+        "squeez_nodal_thermal_profile_error_over_1km_grid": {
+          "count": 38042,
+          "max_abs_k": 375.8547463897212,
+          "median_abs_k": 57.50381918090267,
+          "p90_abs_k": 220.95588856222645,
+          "p95_abs_k": 266.7549980468219,
+          "p99_abs_k": 327.17967081758945,
+          "rms_k": 121.6290549466919
+        },
+        "squeez_thermal_density_column_integral_difference_legacy_minus_arcana_kg_m2": {
+          "count": 384,
+          "max_abs": 2608828.8728588517,
+          "median_abs": 1618166.3141036062,
+          "p90_abs": 2412702.8110606503,
+          "p95_abs": 2484794.279685548,
+          "p99_abs": 2598824.5185183887,
+          "rms": 1681235.9056747097
+        },
+        "thermal_error_at_representative_depths": {
+          "lab": {
+            "count": 896,
+            "max_abs_k": 203.14931124584746,
+            "median_abs_k": 194.19024247343293,
+            "p90_abs_k": 201.55077583969194,
+            "p95_abs_k": 202.27912209277758,
+            "p99_abs_k": 203.06469580555665,
+            "rms_k": 190.26905501113578
+          },
+          "mid_crust": {
+            "count": 896,
+            "max_abs_k": 32.52556221077111,
+            "median_abs_k": 5.3416523459500524,
+            "p90_abs_k": 10.683849379245316,
+            "p95_abs_k": 15.860893662483804,
+            "p99_abs_k": 25.847589301197395,
+            "rms_k": 8.050357792868235
+          },
+          "mid_mantle": {
+            "count": 896,
+            "max_abs_k": 62.07683873005453,
+            "median_abs_k": 47.27096498729554,
+            "p90_abs_k": 52.287410245849856,
+            "p95_abs_k": 52.738900893400796,
+            "p99_abs_k": 53.21324176697701,
+            "rms_k": 44.072186547569
+          },
+          "moho": {
+            "count": 896,
+            "max_abs_k": 60.21709560139152,
+            "median_abs_k": 15.148955936550834,
+            "p90_abs_k": 24.520273120255922,
+            "p95_abs_k": 33.75835892022968,
+            "p99_abs_k": 49.52535363258668,
+            "rms_k": 19.070690412887814
+          }
+        },
+        "thermal_error_over_1km_lithosphere_grid": {
+          "count": 87872,
+          "max_abs_k": 199.00934087568248,
+          "median_abs_k": 33.81060605160667,
+          "p90_abs_k": 147.4371280689878,
+          "p95_abs_k": 168.96185050719424,
+          "p99_abs_k": 189.18958547319622,
+          "rms_k": 78.56294961163954
+        }
+      },
+      "element_population_count": 99076,
+      "sample_rule": "DETERMINISTIC_EVEN_INDEX_128",
+      "sampled_element_count": 128
+    },
+    "ridge_homogeneous": {
+      "diagnostics": {
+        "iConve5_threshold": {
+          "arcana_base_temperature_k": {
+            "max_k": 1650.718364110678,
+            "median_k": 1650.7183641106772,
+            "min_k": 1650.7183641106772
+          },
+          "arcana_pulled_true_count": 0,
+          "classification_flip_integration_points": 0,
+          "evaluated_integration_points": 378,
+          "legacy_base_temperature_k": {
+            "max_k": 1473.0,
+            "median_k": 1473.0,
+            "min_k": 1473.0
+          },
+          "legacy_pulled_true_count": 0,
+          "threshold_k": 1273.0
+        },
+        "legacy_fillin_raw_profile_above_temLim_grid_samples": {
+          "layer1": 0,
+          "layer2": 0,
+          "samples": 10962
+        },
+        "onebar": {
+          "adiabat_intersection_source_branch_flip_depth_samples": 3780,
+          "arcana_200k_floor_samples": 0,
+          "effective_temperature_difference_legacy_minus_arcana_k": {
+            "count": 151200,
+            "max_abs_k": 533.8560337811707,
+            "median_abs_k": 0.0,
+            "p90_abs_k": 0.0,
+            "p95_abs_k": 0.0,
+            "p99_abs_k": 295.59483031998,
+            "rms_k": 48.4476621408043
+          },
+          "glue_difference_legacy_minus_arcana_source_default": {
+            "count": 378,
+            "max_abs": 65880330.43290877,
+            "median_abs": 65880330.43290877,
+            "p90_abs": 65880330.43290877,
+            "p95_abs": 65880330.43290877,
+            "p99_abs": 65880330.43290877,
+            "rms": 64873818.14648279
+          },
+          "integration_points_evaluated": 378,
+          "integration_points_with_any_intersection_branch_flip": 378,
+          "legacy_200k_floor_samples": 0,
+          "sampling_spacing_m": 1000.0,
+          "zBAsth_m": 400000.0
+        },
+        "profile_samples": 10962,
+        "squeez_nodal_legacy_temLim_clipping": {
+          "clipped_samples": 1350,
+          "sample_count": 2610
+        },
+        "squeez_nodal_thermal_profile_error_over_1km_grid": {
+          "count": 2700,
+          "max_abs_k": 363.8888542449977,
+          "median_abs_k": 137.86658276390835,
+          "p90_abs_k": 297.68193244394405,
+          "p95_abs_k": 336.08749228237275,
+          "p99_abs_k": 363.8888542449977,
+          "rms_k": 180.19432785851487
+        },
+        "squeez_thermal_density_column_integral_difference_legacy_minus_arcana_kg_m2": {
+          "count": 90,
+          "max_abs": 759121.6489177127,
+          "median_abs": 759121.6489177127,
+          "p90_abs": 759121.6489177127,
+          "p95_abs": 759121.6489177127,
+          "p99_abs": 759121.6489177127,
+          "rms": 759121.6489177126
+        },
+        "thermal_error_at_representative_depths": {
+          "lab": {
+            "count": 378,
+            "max_abs_k": 92.0411963876013,
+            "median_abs_k": 92.04119638759994,
+            "p90_abs_k": 92.0411963876013,
+            "p95_abs_k": 92.0411963876013,
+            "p99_abs_k": 92.0411963876013,
+            "rms_k": 92.04119638760027
+          },
+          "mid_crust": {
+            "count": 378,
+            "max_abs_k": 36.361491625793406,
+            "median_abs_k": 36.36149162579329,
+            "p90_abs_k": 36.361491625793406,
+            "p95_abs_k": 36.361491625793406,
+            "p99_abs_k": 36.361491625793406,
+            "rms_k": 36.36149162579331
+          },
+          "mid_mantle": {
+            "count": 378,
+            "max_abs_k": 19.676402977775524,
+            "median_abs_k": 19.676402977775297,
+            "p90_abs_k": 19.676402977775524,
+            "p95_abs_k": 19.676402977775524,
+            "p99_abs_k": 19.676402977775524,
+            "rms_k": 19.676402977775396
+          },
+          "moho": {
+            "count": 378,
+            "max_abs_k": 66.55910435282567,
+            "median_abs_k": 66.55910435282544,
+            "p90_abs_k": 66.55910435282567,
+            "p95_abs_k": 66.55910435282567,
+            "p99_abs_k": 66.55910435282567,
+            "rms_k": 66.55910435282547
+          }
+        },
+        "thermal_error_over_1km_lithosphere_grid": {
+          "count": 10962,
+          "max_abs_k": 85.01229493822598,
+          "median_abs_k": 32.376860010179826,
+          "p90_abs_k": 78.6334666884186,
+          "p95_abs_k": 79.4946062442325,
+          "p99_abs_k": 85.01229493822575,
+          "rms_k": 43.366061976308046
+        }
+      },
+      "element_population_count": 54,
+      "sample_rule": "DETERMINISTIC_EVEN_INDEX_128",
+      "sampled_element_count": 54
+    },
+    "ridge_positive_ocean_mixed": {
+      "diagnostics": {
+        "iConve5_threshold": {
+          "arcana_base_temperature_k": {
+            "max_k": 1648.4892174206168,
+            "median_k": 1638.5437377958517,
+            "min_k": 1478.6914447286913
+          },
+          "arcana_pulled_true_count": 0,
+          "classification_flip_integration_points": 0,
+          "evaluated_integration_points": 2275,
+          "legacy_base_temperature_k": {
+            "max_k": 1473.0,
+            "median_k": 1473.0,
+            "min_k": 1473.0
+          },
+          "legacy_pulled_true_count": 0,
+          "threshold_k": 1273.0
+        },
+        "legacy_fillin_raw_profile_above_temLim_grid_samples": {
+          "layer1": 25,
+          "layer2": 762,
+          "samples": 58984
+        },
+        "onebar": {
+          "adiabat_intersection_source_branch_flip_depth_samples": 19244,
+          "arcana_200k_floor_samples": 0,
+          "effective_temperature_difference_legacy_minus_arcana_k": {
+            "count": 910000,
+            "max_abs_k": 548.4710034428408,
+            "median_abs_k": 0.0,
+            "p90_abs_k": 0.0,
+            "p95_abs_k": 0.0,
+            "p99_abs_k": 219.0670458531756,
+            "rms_k": 39.77382294039473
+          },
+          "glue_difference_legacy_minus_arcana_source_default": {
+            "count": 2275,
+            "max_abs": 594096099.6080217,
+            "median_abs": 56429476.249163866,
+            "p90_abs": 62509482.78025651,
+            "p95_abs": 64902559.42005382,
+            "p99_abs": 66107206.215182304,
+            "rms": 61668064.347723424
+          },
+          "integration_points_evaluated": 2275,
+          "integration_points_with_any_intersection_branch_flip": 2275,
+          "legacy_200k_floor_samples": 0,
+          "sampling_spacing_m": 1000.0,
+          "zBAsth_m": 400000.0
+        },
+        "profile_samples": 58984,
+        "squeez_nodal_legacy_temLim_clipping": {
+          "clipped_samples": 3712,
+          "sample_count": 7271
+        },
+        "squeez_nodal_thermal_profile_error_over_1km_grid": {
+          "count": 7548,
+          "max_abs_k": 390.68625818100645,
+          "median_abs_k": 132.9069683696921,
+          "p90_abs_k": 312.4246415837983,
+          "p95_abs_k": 340.0572497822369,
+          "p99_abs_k": 366.8467674752849,
+          "rms_k": 182.64311417867927
+        },
+        "squeez_thermal_density_column_integral_difference_legacy_minus_arcana_kg_m2": {
+          "count": 277,
+          "max_abs": 939050.0777264513,
+          "median_abs": 667284.2424553671,
+          "p90_abs": 759121.6489177127,
+          "p95_abs": 759121.6489177127,
+          "p99_abs": 759121.6489177127,
+          "rms": 657360.1862194065
+        },
+        "thermal_error_at_representative_depths": {
+          "lab": {
+            "count": 2275,
+            "max_abs_k": 245.98850189770792,
+            "median_abs_k": 69.07046592398683,
+            "p90_abs_k": 85.74235270649842,
+            "p95_abs_k": 86.86679358392371,
+            "p99_abs_k": 88.57233660482034,
+            "rms_k": 71.11311979957809
+          },
+          "mid_crust": {
+            "count": 2275,
+            "max_abs_k": 131.22930161249963,
+            "median_abs_k": 38.80413398486803,
+            "p90_abs_k": 40.45322405456875,
+            "p95_abs_k": 40.71785783122664,
+            "p99_abs_k": 54.940891270347755,
+            "rms_k": 39.30719172482859
+          },
+          "mid_mantle": {
+            "count": 2275,
+            "max_abs_k": 868.9098365427615,
+            "median_abs_k": 34.97509837450457,
+            "p90_abs_k": 53.96162953114163,
+            "p95_abs_k": 60.754703374580814,
+            "p99_abs_k": 122.67520964246518,
+            "rms_k": 64.88238630447445
+          },
+          "moho": {
+            "count": 2275,
+            "max_abs_k": 423.57351793794055,
+            "median_abs_k": 73.18751318607235,
+            "p90_abs_k": 80.28348978940028,
+            "p95_abs_k": 82.45506766919134,
+            "p99_abs_k": 91.85740025568758,
+            "rms_k": 76.24569165718411
+          }
+        },
+        "thermal_error_over_1km_lithosphere_grid": {
+          "count": 58984,
+          "max_abs_k": 870.3981798849225,
+          "median_abs_k": 40.67544045181637,
+          "p90_abs_k": 79.70216785734033,
+          "p95_abs_k": 88.15148802846704,
+          "p99_abs_k": 362.8239821930594,
+          "rms_k": 77.65265768783624
+        }
+      },
+      "element_population_count": 325,
+      "sample_rule": "ALL_MIXED",
+      "sampled_element_count": 325
+    }
+  },
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "shellset_mechanics_authorized": false,
+    "t0_orbdata_executed": false,
+    "t1_created": false
+  },
+  "ridge_related_any_element_count": 382,
+  "runtime_only_unresolved_tests": [
+    "SQUEEZ_SIGZZB_TAUZZ_AB_COMPARISON_WITH_EXACT_FAIR_FEG_ELEVATION",
+    "ONEBAR_MODEL_BOUND_GLUE_AND_INTERSECTION_RUNTIME_AB_COMPARISON",
+    "DIAMND_VISCOS_STRESS_AND_ZTRANC_RUNTIME_AB_COMPARISON",
+    "FAIR_NVHPC_BUILD_AND_SHELLS_EXECUTION"
+  ],
+  "source_formulas": [
+    {
+      "lines": "3897-3961",
+      "meaning": "IP q/geometry interpolation and quadratic adjustment to tAdiab+gradie*100km",
+      "path": "external\\ShellSet-v1.1.0\\src\\MOD_Shells.f90",
+      "routine": "FillIn"
+    },
+    {
+      "lines": "9053-9230",
+      "meaning": "1-km trapezoidal stress integration, layerwise temperature and MIN(temLim,T)",
+      "path": "external\\ShellSet-v1.1.0\\src\\MOD_Shells.f90",
+      "routine": "Squeez"
+    },
+    {
+      "lines": "6229-6312",
+      "meaning": "1-km midpoint integral; legacy global-depth geothM selection, min with linear adiabat, 200K floor",
+      "path": "external\\ShellSet-v1.1.0\\src\\MOD_Shells.f90",
+      "routine": "OneBar"
+    },
+    {
+      "lines": "2250-2885",
+      "meaning": "temperature at layer quadrature points, temLim clipping; stress integral requires runtime state",
+      "path": "external\\ShellSet-v1.1.0\\src\\MOD_Shells.f90",
+      "routine": "Diamnd"
+    },
+    {
+      "lines": "579-735",
+      "meaning": "S1A writes governed q/geometry, cooling_curvature=0 and chemical_delta_rho=0",
+      "path": "external\\ShellSet-v1.1.0\\src\\MOD_Data.f90",
+      "routine": "Assign"
+    },
+    {
+      "lines": "4024-4032",
+      "meaning": "pulled = (FillIn baseT < 1273 K)",
+      "path": "external\\ShellSet-v1.1.0\\src\\MOD_Shells.f90",
+      "routine": "iConve=5"
+    },
+    {
+      "lines": "1424-1440",
+      "meaning": "seven exact Gaussian integration points",
+      "path": "external/ShellSet-v1.1.0/src/MOD_Data.f90",
+      "routine": "integration_point_shape_functions"
+    }
+  ],
+  "stock_shellset_execution_modified": false,
+  "unclassified_element_count": 0
+}
