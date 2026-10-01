@@ -137,6 +137,7 @@ def test_activation_is_gated_by_shells_package_handshake():
         ROOT / "external/ShellSet-v1.1.0/src/MOD_ShellSet.f90"
     ).read_text(encoding="utf-8")
     shells_source = (ROOT / "external/ShellSet-v1.1.0/src/SHELLS_v5.0.f90").read_text(encoding="utf-8")
+    main_source = (ROOT / "external/ShellSet-v1.1.0/src/ShellSetMain.f90").read_text(encoding="utf-8")
     setup = set_source[set_source.index("subroutine InputSetup"):set_source.index("end subroutine", set_source.index("subroutine InputSetup"))]
     inspect = set_source[set_source.index("subroutine ArcanaShellsInspectFEG"):set_source.index("end subroutine ArcanaShellsInspectFEG")]
     loader = set_source[set_source.index("subroutine ArcanaShellsLoadRuntime"):set_source.index("end subroutine ArcanaShellsLoadRuntime")]
@@ -149,13 +150,35 @@ def test_activation_is_gated_by_shells_package_handshake():
     assert "open(unit=17,file=trim(package_path)" in inspect
     assert "ArcanaRuntimeRead(17,expected_nodes,ierr,message)" in loader
     assert "ArcanaRuntimeIsLoaded()" in loader
+    assert "logical, save :: arcana_shells_failed = .FALSE." in set_source
+    assert "logical function ArcanaShellsFailed()" in set_source
+    assert "ArcanaShellsFailed=arcana_shells_failed" in set_source
+    assert "arcana_shells_failed=.FALSE." in inspect
+    assert "arcana_shells_failed=.TRUE." in inspect
+    assert "arcana_shells_failed=.TRUE." in loader
     assert "ArcanaShellsModeActive" in set_source
     assert "ArcanaShellsRelease" in set_source and "close(17)" in set_source
+    assert "arcana_shells_failed=.FALSE." not in set_source[set_source.index("subroutine ArcanaShellsRelease"):set_source.index("end subroutine ArcanaShellsRelease")]
+    for tag in ("SH", "SF"):
+        open_call = f'call OpenInput(ThID,ModNum,"{tag}",DirName,rpeat=rpeat)'
+        position = main_source.index(open_call)
+        main_path = main_source[position:position + 350]
+        check = main_path.index("ArcanaShellsFailed()")
+        local_abort = main_path.index("call abort(11)")
+        abort = main_path.index("call MPI_Abort(MPI_COMM_WORLD,11)")
+        output = main_path.index("call OpenOutput")
+        shells = main_path.index("call Shells_v5p0")
+        assert check < local_abort < abort < output < shells
+        assert "if(ArcanaShellsFailed()) then" in main_path[:output]
     load_at = shells_source.index("CALL ArcanaShellsLoadRuntime(numNod,ThID)")
+    failed_at = shells_source.index("IF (ArcanaShellsFailed()) RETURN", load_at)
+    shell_lines = shells_source.splitlines()
+    load_line = next(i for i, line in enumerate(shell_lines) if "CALL ArcanaShellsLoadRuntime(numNod,ThID)" in line)
+    assert shell_lines[load_line + 1].strip() == "IF (ArcanaShellsFailed()) RETURN"
     fill_at = shells_source.index("CALL FillIn (alphaT, basal, conduc")
     fixed_at = shells_source.index("CALL Fixed (alphaT, area, conduc")
     assert "ARCANA_S1B_REMAINING_CONSUMERS_NOT_YET_ENABLED" not in shells_source
-    assert load_at < fill_at < fixed_at
+    assert load_at < failed_at < fill_at < fixed_at
 
 
 def test_remaining_shells_thermal_consumers_use_shared_evaluator():

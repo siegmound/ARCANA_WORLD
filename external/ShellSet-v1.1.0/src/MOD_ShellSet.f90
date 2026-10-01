@@ -27,6 +27,7 @@ implicit none
 
 logical, save :: arcana_shells_candidate = .FALSE.
 logical, save :: arcana_shells_mode = .FALSE.
+logical, save :: arcana_shells_failed = .FALSE.
 
 contains
 
@@ -1420,16 +1421,19 @@ select case(prog)
     arcLithosphereExists=FileExist('INPUT/ARCANA_TOTAL_LITHOSPHERE_M.grd')
     arcanaRuntimeExists=FileExist('INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat')
     if(arcDomainExists .neqv. arcLithosphereExists) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Incomplete predecessor ARCANA OrbData pair in INPUT/",ModNum)
       call abort(11)
       return
     end if
     if(arcDomainExists .and. arcLithosphereExists .and. .not.arcanaRuntimeExists) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Predecessor ARCANA pair requires the complete R6 runtime package",ModNum)
       call abort(11)
       return
     end if
     if(arcDomainExists .and. arcLithosphereExists .and. arcanaRuntimeExists) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Conflicting predecessor ARCANA pair and R6 runtime package",ModNum)
       call abort(11)
       return
@@ -1444,6 +1448,7 @@ select case(prog)
     write(filename,"('fort_',I0,'.')") ModNum
 
     if(.not.arcanaRuntimeExists .and. FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Stale staged ARCANA runtime package without canonical INPUT authority",ModNum)
       call abort(11)
       return
@@ -1456,6 +1461,7 @@ select case(prog)
     if(arcanaInputMode) then
       call execute_command_line('cp INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat '//trim(dir)//'/'//trim(filename)//'17')
       if(.not.FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+        arcana_shells_failed=.TRUE.
         call FatalError("Canonical ARCANA runtime package was not staged for OrbData",ModNum)
         call abort(11)
         return
@@ -1499,11 +1505,13 @@ select case(prog)
       runtimeStageCommand='cp INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat '//trim(dir)//'/'//trim(filename)//'17'
       call execute_command_line(trim(runtimeStageCommand),exitstat=copy_status)
       if(copy_status/=0 .or. .not.FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+        arcana_shells_failed=.TRUE.
         call FatalError("Canonical ARCANA runtime package was not staged for Shells",ModNum)
         call abort(11)
         return
       end if
     elseif(FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Stale staged ARCANA runtime package without canonical INPUT authority",ModNum)
       call abort(11)
       return
@@ -1570,11 +1578,13 @@ select case(prog)
       runtimeStageCommand='cp INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat '//trim(dir)//'/'//trim(filename)//'17'
       call execute_command_line(trim(runtimeStageCommand),exitstat=copy_status)
       if(copy_status/=0 .or. .not.FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+        arcana_shells_failed=.TRUE.
         call FatalError("Canonical ARCANA runtime package was not staged for ShellsFinal",ModNum)
         call abort(11)
         return
       end if
     elseif(FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Stale staged ARCANA runtime package without canonical INPUT authority",ModNum)
       call abort(11)
       return
@@ -1614,14 +1624,17 @@ select case(prog)
     arcLithosphereExists=FileExist(trim(dir)//trim(filename)//'16')
     arcanaRuntimeExists=FileExist(trim(dir)//trim(filename)//'17')
     if(arcDomainExists .neqv. arcLithosphereExists) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Incomplete predecessor ARCANA OrbData pair (.15/.16)",ModNum)
       call abort(11)
     elseif(arcDomainExists) then
+      arcana_shells_failed=.TRUE.
       call FatalError("Predecessor ARCANA pair is not valid S1 runtime authority",ModNum)
       call abort(11)
     elseif(arcanaRuntimeExists) then
       open(unit=17,file=trim(dir)//trim(filename)//'17',status='old',action='read',iostat=ios)
       if(ios/=0) then
+        arcana_shells_failed=.TRUE.
         call FatalError("Unable to open staged ARCANA runtime package",ModNum)
         call abort(11)
       end if
@@ -1717,12 +1730,14 @@ integer :: ios
 character(len=80) :: fegTitle
 logical :: marker_present,package_present,isOpen
 
+arcana_shells_failed=.FALSE.
 call ArcanaShellsRelease()
 inquire(unit=17,opened=isOpen)
 if(isOpen) close(17)
 read(unit_number,'(A80)',iostat=ios) fegTitle
 if(ios==0) rewind(unit_number,iostat=ios)
 if(ios/=0) then
+  arcana_shells_failed=.TRUE.
   call FatalError("Unable to inspect FEG title before Shells input",ModNum)
   call abort(11)
   return
@@ -1730,6 +1745,7 @@ end if
 marker_present=index(adjustl(fegTitle),ARCANA_FEG_MARKER)==1
 inquire(file=trim(package_path),exist=package_present)
 if(marker_present .neqv. package_present) then
+  arcana_shells_failed=.TRUE.
   if(marker_present) then
     call FatalError("ARCANA FEG marker is present but Shells runtime package is missing",ModNum)
   else
@@ -1741,6 +1757,7 @@ end if
 if(.not.marker_present) return
 open(unit=17,file=trim(package_path),status='old',action='read',iostat=ios)
 if(ios/=0) then
+  arcana_shells_failed=.TRUE.
   call FatalError("Unable to open staged ARCANA runtime package for Shells",ModNum)
   call abort(11)
   return
@@ -1758,6 +1775,7 @@ character(len=256) :: message
 if(.not.arcana_shells_candidate) return
 call ArcanaRuntimeRead(17,expected_nodes,ierr,message)
 if(ierr/=0 .or. .not.ArcanaRuntimeIsLoaded()) then
+  arcana_shells_failed=.TRUE.
   call ArcanaRuntimeRelease()
   inquire(unit=17,opened=isOpen)
   if(isOpen) close(17)
@@ -1769,11 +1787,17 @@ if(ierr/=0 .or. .not.ArcanaRuntimeIsLoaded()) then
 end if
 arcana_shells_mode=ArcanaRuntimeIsLoaded()
 if(.not.arcana_shells_mode) then
+  arcana_shells_failed=.TRUE.
   call ArcanaShellsRelease()
   call FatalError("ARCANA Shells runtime package did not enter loaded state",ModNum)
   call abort(11)
 end if
 end subroutine ArcanaShellsLoadRuntime
+
+
+logical function ArcanaShellsFailed()
+ArcanaShellsFailed=arcana_shells_failed
+end function ArcanaShellsFailed
 
 
 logical function ArcanaShellsModeActive()

@@ -692,6 +692,10 @@ if(ThID/=0)then
         rpeat = rpeat+1
 ! Shells
         call OpenInput(ThID,ModNum,"SH",DirName,rpeat=rpeat)
+        if(ArcanaShellsFailed()) then
+          call abort(11)
+          call MPI_Abort(MPI_COMM_WORLD,11)
+        end if
         call OpenOutput(ThID,ModNum,"SH",DirName,rpeat=rpeat)
         call Shells_v5p0(ListVarNames,ListVarValues(1,:),rpeat,SHELLSconv)
         if(AEF) then
@@ -782,6 +786,10 @@ if(ThID/=0)then
       if(SHELLSconv) then ! Final call with (optional) different files
         if(MaxIter /= 0) rpeat = rpeat+1 ! necessary since rpeat updated at beginning of main loop
         call OpenInput(ThID,ModNum,"SF",DirName,rpeat=rpeat)
+        if(ArcanaShellsFailed()) then
+          call abort(11)
+          call MPI_Abort(MPI_COMM_WORLD,11)
+        end if
         call OpenOutput(ThID,ModNum,"SF",DirName,rpeat=rpeat)
         call Shells_v5p0(ListVarNames,ListVarValues(1,:),rpeat,SHELLSconv)
         if(AEF) then

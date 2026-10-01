@@ -342,6 +342,7 @@ REAL*8,DIMENSION(:),INTENT(INOUT) :: VarValues
             call FatalError(ErrorMsg,ThID)
        END IF
        CALL ArcanaShellsLoadRuntime(numNod,ThID)
+       IF (ArcanaShellsFailed()) RETURN
        mxEl = numEl
        !Initialize survey to find LRn = MAX(continuum_LRi(1:mxEl), fault_LRi(1:MXFel)
        LRn = 0 ! until incremented below...
