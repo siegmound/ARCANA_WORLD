@@ -341,6 +341,14 @@ REAL*8,DIMENSION(:),INTENT(INOUT) :: VarValues
             ErrorMsg = "Shells ERROR: FEG File not found, or file is empty or file is too short"
             call FatalError(ErrorMsg,ThID)
        END IF
+       CALL ArcanaShellsLoadRuntime(numNod,ThID)
+       IF (ArcanaShellsModeActive()) THEN
+            CALL ArcanaShellsRelease()
+            CLOSE(17)
+            CALL FatalError("ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED",ThID)
+            CALL abort(11)
+            RETURN
+       END IF
        mxEl = numEl
        !Initialize survey to find LRn = MAX(continuum_LRi(1:mxEl), fault_LRi(1:MXFel)
        LRn = 0 ! until incremented below...

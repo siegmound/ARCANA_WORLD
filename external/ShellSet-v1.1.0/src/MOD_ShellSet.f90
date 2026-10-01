@@ -20,8 +20,13 @@
 module ShellSetSubs
 
 use SharedVars
+use ArcanaRuntime, only: ARCANA_FEG_MARKER, ArcanaRuntimeRead, &
+     ArcanaRuntimeRelease, ArcanaRuntimeIsLoaded
 
 implicit none
+
+logical, save :: arcana_shells_candidate = .FALSE.
+logical, save :: arcana_shells_mode = .FALSE.
 
 contains
 
@@ -1267,6 +1272,28 @@ select case(prog)
     close(12)
     close(13)
     close(14)
+    inquire(unit=17,opened=isOpen)
+    if(isOpen) close(17)
+    call ArcanaShellsRelease()
+
+  case("SF")
+
+    close(1)
+    close(2)
+    close(3)
+    close(8)
+    close(9)
+    inquire(unit=11,opened=isOpen)
+    if(isOpen) close(11)
+    inquire(unit=12,opened=isOpen)
+    if(isOpen) close(12)
+    inquire(unit=13,opened=isOpen)
+    if(isOpen) close(13)
+    inquire(unit=14,opened=isOpen)
+    if(isOpen) close(14)
+    inquire(unit=17,opened=isOpen)
+    if(isOpen) close(17)
+    call ArcanaShellsRelease()
 
 
   case("OS")
@@ -1376,6 +1403,8 @@ integer,intent(in),optional :: iConve
 
 integer,parameter :: iUnitVerb = 6 ! Unit number for optional verbose.txt file
 character(len=100):: dir,filename
+character(len=512) :: runtimeStageCommand
+integer :: copy_status
 logical :: exists,arcDomainExists,arcLithosphereExists,arcanaInputMode,arcanaRuntimeExists
 character(len=100) :: ShellsFiles(9),ShellsFilesFinal(9),ScoreFiles(10),DataFiles(6)
 logical :: ShellsFilesL(4),ShellsFilesFinalL(4),ScoreFilesL(8)
@@ -1465,6 +1494,21 @@ select case(prog)
     if(ShellsFilesL(3)) call execute_command_line('cp INPUT/'//trim(ShellsFiles(8)) //' '//trim(dir)//'/'//trim(filename)//'13')
     if(ShellsFilesL(4)) call execute_command_line('cp INPUT/'//trim(ShellsFiles(9)) //' '//trim(dir)//'/'//trim(filename)//'14')
 
+    arcanaRuntimeExists=FileExist('INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat')
+    if(arcanaRuntimeExists) then
+      runtimeStageCommand='cp INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat '//trim(dir)//'/'//trim(filename)//'17'
+      call execute_command_line(trim(runtimeStageCommand),exitstat=copy_status)
+      if(copy_status/=0 .or. .not.FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+        call FatalError("Canonical ARCANA runtime package was not staged for Shells",ModNum)
+        call abort(11)
+        return
+      end if
+    elseif(FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+      call FatalError("Stale staged ARCANA runtime package without canonical INPUT authority",ModNum)
+      call abort(11)
+      return
+    end if
+
 
   case("OS")
 
@@ -1521,6 +1565,21 @@ select case(prog)
     if(ShellsFilesFinalL(3)) call execute_command_line('cp INPUT/'//trim(ShellsFilesFinal(8)) //' '//trim(dir)//'/'//trim(filename)//'13')
     if(ShellsFilesFinalL(4)) call execute_command_line('cp INPUT/'//trim(ShellsFilesFinal(9)) //' '//trim(dir)//'/'//trim(filename)//'14')
 
+    arcanaRuntimeExists=FileExist('INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat')
+    if(arcanaRuntimeExists) then
+      runtimeStageCommand='cp INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat '//trim(dir)//'/'//trim(filename)//'17'
+      call execute_command_line(trim(runtimeStageCommand),exitstat=copy_status)
+      if(copy_status/=0 .or. .not.FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+        call FatalError("Canonical ARCANA runtime package was not staged for ShellsFinal",ModNum)
+        call abort(11)
+        return
+      end if
+    elseif(FileExist(trim(dir)//'/'//trim(filename)//'17')) then
+      call FatalError("Stale staged ARCANA runtime package without canonical INPUT authority",ModNum)
+      call abort(11)
+      return
+    end if
+
 end select
 
 end subroutine
@@ -1575,7 +1634,7 @@ select case(prog)
     write(dir,"(A,'/','ThID_',I0,'_Shells_input/')") trim(ListDIR),ThID
     write(filename,"('fort_',I0,'.')") ModNum
     open(unit=1,file=trim(dir)//trim(filename)//'1')
-    call RejectArcanaFEGForLegacyShells(1,ModNum)
+    call ArcanaShellsInspectFEG(1,trim(dir)//trim(filename)//'17',ModNum)
     open(unit=2,file=trim(dir)//trim(filename)//'2')
     open(unit=3,file=trim(dir)//trim(filename)//'3')
     open(unit=8,file=trim(dir)//trim(filename)//'8')
@@ -1626,7 +1685,7 @@ select case(prog)
     write(dir,"(A,'/','ThID_',I0,'_ShellsF_input/')") trim(ListDIR),ThID
     write(filename,"('fort_',I0,'.')") ModNum
     open(unit=1,file=trim(dir)//trim(filename)//'1')
-    call RejectArcanaFEGForLegacyShells(1,ModNum)
+    call ArcanaShellsInspectFEG(1,trim(dir)//trim(filename)//'17',ModNum)
     open(unit=2,file=trim(dir)//trim(filename)//'2')
     open(unit=3,file=trim(dir)//trim(filename)//'3')
     open(unit=8,file=trim(dir)//trim(filename)//'8')
@@ -1651,24 +1710,82 @@ end select
 end subroutine
 
 
-subroutine RejectArcanaFEGForLegacyShells(unit_number,ModNum)
-
+subroutine ArcanaShellsInspectFEG(unit_number,package_path,ModNum)
 integer,intent(in) :: unit_number,ModNum
+character(len=*),intent(in) :: package_path
 integer :: ios
 character(len=80) :: fegTitle
+logical :: marker_present,package_present,isOpen
 
+call ArcanaShellsRelease()
+inquire(unit=17,opened=isOpen)
+if(isOpen) close(17)
 read(unit_number,'(A80)',iostat=ios) fegTitle
 if(ios==0) rewind(unit_number,iostat=ios)
 if(ios/=0) then
   call FatalError("Unable to inspect FEG title before Shells input",ModNum)
   call abort(11)
+  return
 end if
-if(index(adjustl(fegTitle),'ARCANA_R6_PRE_ORBDATA_RUNTIME_V1')==1) then
-  call FatalError("ARCANA runtime FEG requires the S1B canonical Shells consumer; legacy thermal fallback refused",ModNum)
+marker_present=index(adjustl(fegTitle),ARCANA_FEG_MARKER)==1
+inquire(file=trim(package_path),exist=package_present)
+if(marker_present .neqv. package_present) then
+  if(marker_present) then
+    call FatalError("ARCANA FEG marker is present but Shells runtime package is missing",ModNum)
+  else
+    call FatalError("Shells runtime package is present for a non-ARCANA FEG",ModNum)
+  end if
+  call abort(11)
+  return
+end if
+if(.not.marker_present) return
+open(unit=17,file=trim(package_path),status='old',action='read',iostat=ios)
+if(ios/=0) then
+  call FatalError("Unable to open staged ARCANA runtime package for Shells",ModNum)
+  call abort(11)
+  return
+end if
+arcana_shells_candidate=.TRUE.
+end subroutine ArcanaShellsInspectFEG
+
+
+subroutine ArcanaShellsLoadRuntime(expected_nodes,ModNum)
+integer,intent(in) :: expected_nodes,ModNum
+integer :: ierr
+logical :: isOpen
+character(len=256) :: message
+
+if(.not.arcana_shells_candidate) return
+call ArcanaRuntimeRead(17,expected_nodes,ierr,message)
+if(ierr/=0 .or. .not.ArcanaRuntimeIsLoaded()) then
+  call ArcanaRuntimeRelease()
+  inquire(unit=17,opened=isOpen)
+  if(isOpen) close(17)
+  arcana_shells_candidate=.FALSE.
+  arcana_shells_mode=.FALSE.
+  call FatalError("ARCANA Shells runtime package validation failed: "//trim(message),ModNum)
+  call abort(11)
+  return
+end if
+arcana_shells_mode=ArcanaRuntimeIsLoaded()
+if(.not.arcana_shells_mode) then
+  call ArcanaShellsRelease()
+  call FatalError("ARCANA Shells runtime package did not enter loaded state",ModNum)
   call abort(11)
 end if
+end subroutine ArcanaShellsLoadRuntime
 
-end subroutine RejectArcanaFEGForLegacyShells
+
+logical function ArcanaShellsModeActive()
+ArcanaShellsModeActive=arcana_shells_mode .and. ArcanaRuntimeIsLoaded()
+end function ArcanaShellsModeActive
+
+
+subroutine ArcanaShellsRelease()
+call ArcanaRuntimeRelease()
+arcana_shells_candidate=.FALSE.
+arcana_shells_mode=.FALSE.
+end subroutine ArcanaShellsRelease
 
 
 subroutine OpenOutput(ThID,ModNum,prog,ListDIR,plt,rpeat,MC) ! open OrbData, Shells, OrbScore output files

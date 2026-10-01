@@ -104,13 +104,13 @@ ShellSetMain.o   : ShellSetMain.f90 MOD_SharedVars.o MOD_ShellSet.o SHELLS_v5.0.
 OrbScore2.o      : OrbScore2.f90    MOD_SharedVars.o MOD_ShellSet.o DMods.o MOD_Score.o
 MOD_Shells.o     : MOD_Shells.f90   MOD_SharedVars.o MOD_ShellSet.o DMods.o
 MOD_Score.o      : MOD_Score.f90    MOD_SharedVars.o MOD_ShellSet.o DMods.o
-SHELLS_v5.0.o    : SHELLS_v5.0.f90  MOD_SharedVars.o MOD_ShellSet.o MOD_Shells.o
+SHELLS_v5.0.o    : SHELLS_v5.0.f90  MOD_SharedVars.o MOD_ShellSet.o MOD_Shells.o MOD_ArcanaRuntime.o
 OrbData5.o       : OrbData5.f90     MOD_SharedVars.o MOD_ShellSet.o MOD_Data.o MOD_ArcanaRuntime.o
 MOD_ArcanaRuntime.o : MOD_ArcanaRuntime.f90
 MOD_Data.o       : MOD_Data.f90     MOD_SharedVars.o MOD_ShellSet.o
 MOD_VarCheck.o   : MOD_VarCheck.f90 MOD_SharedVars.o MOD_ShellSet.o
 DMods.o          : DMods.f90        MOD_SharedVars.o MOD_ShellSet.o
-MOD_ShellSet.o   : MOD_ShellSet.f90 MOD_SharedVars.o
+MOD_ShellSet.o   : MOD_ShellSet.f90 MOD_SharedVars.o MOD_ArcanaRuntime.o
 MOD_SharedVars.o : MOD_SharedVars.f90
 
 
@@ -118,13 +118,13 @@ ShellSetMain.DB.o   : ShellSetMain.f90 MOD_SharedVars.DB.o MOD_ShellSet.DB.o SHE
 OrbScore2.DB.o      : OrbScore2.f90    MOD_SharedVars.DB.o MOD_ShellSet.DB.o DMods.DB.o MOD_Score.DB.o
 MOD_Shells.DB.o     : MOD_Shells.f90   MOD_SharedVars.DB.o MOD_ShellSet.DB.o DMods.DB.o
 MOD_Score.DB.o      : MOD_Score.f90    MOD_SharedVars.DB.o MOD_ShellSet.DB.o DMods.DB.o
-SHELLS_v5.0.DB.o    : SHELLS_v5.0.f90  MOD_SharedVars.DB.o MOD_ShellSet.DB.o MOD_Shells.DB.o
+SHELLS_v5.0.DB.o    : SHELLS_v5.0.f90  MOD_SharedVars.DB.o MOD_ShellSet.DB.o MOD_Shells.DB.o MOD_ArcanaRuntime.DB.o
 OrbData5.DB.o       : OrbData5.f90     MOD_SharedVars.DB.o MOD_ShellSet.DB.o MOD_Data.DB.o MOD_ArcanaRuntime.DB.o
 MOD_ArcanaRuntime.DB.o : MOD_ArcanaRuntime.f90
 MOD_Data.DB.o       : MOD_Data.f90     MOD_SharedVars.DB.o MOD_ShellSet.DB.o
 MOD_VarCheck.DB.o   : MOD_VarCheck.f90 MOD_SharedVars.DB.o MOD_ShellSet.DB.o
 DMods.DB.o          : DMods.f90        MOD_SharedVars.DB.o MOD_ShellSet.DB.o
-MOD_ShellSet.DB.o   : MOD_ShellSet.f90 MOD_SharedVars.DB.o
+MOD_ShellSet.DB.o   : MOD_ShellSet.f90 MOD_SharedVars.DB.o MOD_ArcanaRuntime.DB.o
 MOD_SharedVars.DB.o : MOD_SharedVars.f90
 
 
@@ -132,11 +132,11 @@ ShellSetMain.OPT.o   : ShellSetMain.f90 MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o 
 OrbScore2.OPT.o      : OrbScore2.f90    MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o DMods.OPT.o MOD_Score.OPT.o
 MOD_Shells.OPT.o     : MOD_Shells.f90   MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o DMods.OPT.o
 MOD_Score.OPT.o      : MOD_Score.f90    MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o DMods.OPT.o
-SHELLS_v5.0.OPT.o    : SHELLS_v5.0.f90  MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o MOD_Shells.OPT.o
+SHELLS_v5.0.OPT.o    : SHELLS_v5.0.f90  MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o MOD_Shells.OPT.o MOD_ArcanaRuntime.OPT.o
 OrbData5.OPT.o       : OrbData5.f90     MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o MOD_Data.OPT.o MOD_ArcanaRuntime.OPT.o
 MOD_ArcanaRuntime.OPT.o : MOD_ArcanaRuntime.f90
 MOD_Data.OPT.o       : MOD_Data.f90     MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o
 MOD_VarCheck.OPT.o   : MOD_VarCheck.f90 MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o
 DMods.OPT.o          : DMods.f90        MOD_SharedVars.OPT.o MOD_ShellSet.OPT.o
-MOD_ShellSet.OPT.o   : MOD_ShellSet.f90 MOD_SharedVars.OPT.o
+MOD_ShellSet.OPT.o   : MOD_ShellSet.f90 MOD_SharedVars.OPT.o MOD_ArcanaRuntime.OPT.o
 MOD_SharedVars.OPT.o : MOD_SharedVars.f90

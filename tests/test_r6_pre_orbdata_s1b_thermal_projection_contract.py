@@ -54,10 +54,9 @@ def test_contract_records_required_diagnostics_and_all_gates_closed():
 
 
 def test_arcana_feg_is_still_fail_closed_before_legacy_thermal_fallback():
-    guard = (
-        ROOT / "external/ShellSet-v1.1.0/src/MOD_ShellSet.f90"
-    ).read_text(encoding="utf-8")
-    assert "requires the S1B canonical Shells consumer; legacy thermal fallback refused" in guard
+    shells = (ROOT / "external/ShellSet-v1.1.0/src/SHELLS_v5.0.f90").read_text(encoding="utf-8")
+    assert "ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED" in shells
+    assert "IF (ArcanaShellsModeActive()) THEN" in shells
 
 
 @dataclass(frozen=True)
@@ -132,9 +131,26 @@ def test_activation_is_not_enabled_without_shells_package_handshake():
     set_source = (
         ROOT / "external/ShellSet-v1.1.0/src/MOD_ShellSet.f90"
     ).read_text(encoding="utf-8")
-    assert CONTRACT["implementation_boundary"]["activation_handshake"].startswith("NOT_IMPLEMENTED")
-    assert "ArcanaRuntimeRead" not in set_source
-    assert "case(\"SH\")" in set_source
+    shells_source = (ROOT / "external/ShellSet-v1.1.0/src/SHELLS_v5.0.f90").read_text(encoding="utf-8")
+    setup = set_source[set_source.index("subroutine InputSetup"):set_source.index("end subroutine", set_source.index("subroutine InputSetup"))]
+    inspect = set_source[set_source.index("subroutine ArcanaShellsInspectFEG"):set_source.index("end subroutine ArcanaShellsInspectFEG")]
+    loader = set_source[set_source.index("subroutine ArcanaShellsLoadRuntime"):set_source.index("end subroutine ArcanaShellsLoadRuntime")]
+    assert CONTRACT["implementation_boundary"]["activation_handshake"].startswith("S1B_I_RUNTIME_LIFECYCLE_IMPLEMENTED")
+    assert setup.count("R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat") >= 4
+    assert setup.count("trim(filename)//'17'") >= 4
+    assert "case(\"SH\")" in setup and "case(\"SF\")" in setup
+    assert "if(.not.marker_present) return" in inspect  # stock marker + absent package
+    assert "marker_present .neqv. package_present" in inspect
+    assert "open(unit=17,file=trim(package_path)" in inspect
+    assert "ArcanaRuntimeRead(17,expected_nodes,ierr,message)" in loader
+    assert "ArcanaRuntimeIsLoaded()" in loader
+    assert "ArcanaShellsModeActive" in set_source
+    assert "ArcanaShellsRelease" in set_source and "close(17)" in set_source
+    load_at = shells_source.index("CALL ArcanaShellsLoadRuntime(numNod,ThID)")
+    fail_at = shells_source.index("ARCANA_S1B_CONSUMERS_NOT_YET_ENABLED")
+    fill_at = shells_source.index("CALL FillIn (alphaT, basal, conduc")
+    assert load_at < fail_at < fill_at
+    assert "IF (ArcanaShellsModeActive()) THEN" in shells_source[load_at:fill_at]
 
 
 def test_known_shells_thermal_gaps_are_explicitly_kept_blocked():
