@@ -3839,6 +3839,7 @@ DIMENSION points(3, 7)
 !      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 INTEGER i, iconv2, m, arcana_ierr, arcana_node_ids(3)
 REAL*8 arcana_weights(3), arcana_elevation
+REAL*8 arcana_properties(ARCANA_PROPERTY_COUNT)
 INTEGER arcana_phases(3)
 REAL*8 baseT, delta_quadratic, difMag, dTdZC, dTdZM, &
 	& geoth1, geoth2, geoth3, geoth4, geoth5, geoth6, geoth7, geoth8, &

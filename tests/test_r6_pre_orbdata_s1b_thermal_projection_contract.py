@@ -203,6 +203,7 @@ def test_s1b_ii_arcana_main_thermal_consumers_use_shared_evaluator_and_exact_wei
     arc = fill[fill.index("IF (ArcanaShellsModeActive()) THEN", fill.index("!   ARCANA uses")):fill.index("ELSE\n!   Geotherm:")]
     onebar = shells[shells.index("SUBROUTINE OneBar"):shells.index("END SUBROUTINE OneBar")]
     assert "COMMON / S1S2S3 / points" in fill and "arcana_weights = points(:,m)" in arc
+    assert "REAL*8 arcana_properties(ARCANA_PROPERTY_COUNT)" in fill
     assert "arcana_node_ids = nodes(:,i)" in arc
     assert "CALL ArcanaRuntimeSqueez" in arc and "0.0D0, elev(i)" in arc
     assert "arcana_elevation = elev(nodes(1,i))*points(1,m)" in arc
