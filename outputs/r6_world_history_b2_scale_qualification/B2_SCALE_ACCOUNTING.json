@@ -1,0 +1,99 @@
+{
+  "file_count": {
+    "node_cardinality_drives_json_count": false,
+    "payload_files": 1,
+    "qualification_artifacts": 6,
+    "semantic_record_count": 18,
+    "store_metadata_and_transaction_file_count": 19,
+    "total_fixture_files": 20,
+    "typed_json_file_count": 18
+  },
+  "lifecycle": {
+    "record_metadata_bytes": 26734,
+    "reopen_seconds": 0.0019103999948129058,
+    "store_initialization_seconds": 0.14044039999862434,
+    "total_store_file_count": 19,
+    "transaction_metadata_file_count": 0,
+    "transaction_publication_seconds": 1.4768844000063837,
+    "typed_record_count": 18,
+    "typed_record_counts": {
+      "checkpoints": 1,
+      "events": 1,
+      "forcings": 1,
+      "provenance": 1,
+      "refinement_branches": 1,
+      "refinement_recipes": 1,
+      "replay_recipes": 1,
+      "states": 11
+    }
+  },
+  "retention": {
+    "diagnostics_and_scratch_retained": false,
+    "forcing_record_referenced": "r6forcing_63480a9ff9ad97e981c9a3235ce35985ee530df84eada757fa64426329ddfd10",
+    "omitted_fields": [
+      "synthetic_x",
+      "synthetic_y",
+      "node_id",
+      "synthetic_triangles",
+      "derived_view",
+      "diagnostic_trace",
+      "temporary_intermediate"
+    ],
+    "omitted_reconstructable_bytes": 2835400,
+    "raw_fixture_bytes": 5026428,
+    "retained_fields": [
+      "ordinary_field",
+      "future_memory",
+      "known_zero",
+      "known_boolean",
+      "forcing_input",
+      "unknown_support"
+    ],
+    "retained_minimal_state_bytes": 2191028
+  },
+  "storage": {
+    "canonical_persistent_bytes": 5055556,
+    "categories": {
+      "CANONICAL_METADATA": {
+        "file_count": 19,
+        "logical_bytes": 26734
+      },
+      "CANONICAL_PAYLOAD": {
+        "file_count": 1,
+        "logical_bytes": 5028822
+      },
+      "INDEX": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "OPERATIONAL_METADATA": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "PROVIDER_CACHE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "QUALIFICATION_EVIDENCE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "REFINEMENT_CACHE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "SCRATCH": {
+        "file_count": 0,
+        "logical_bytes": 0
+      }
+    },
+    "duplicate_external_payload_reference_counted_once": true,
+    "hard_cap_bytes": 500000000000,
+    "identity_effect": "NONE_OPERATIONAL_MEASUREMENT_ONLY",
+    "missing_optional_roots": [
+      "store temporal"
+    ],
+    "symlink_exclusions_count": 0,
+    "within_hard_cap": true
+  }
+}

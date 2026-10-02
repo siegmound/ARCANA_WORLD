@@ -1,0 +1,37 @@
+{
+  "arrays": {
+    "forcing_input": "float64 deterministic fixture forcing",
+    "future_memory": "float64 constant fixture field",
+    "known_boolean": "bool deterministic alternating values",
+    "known_zero": "float64 all-zero known field",
+    "node_id": "uint32, generated arange",
+    "ordinary_field": "float64 deterministic bounded sequence",
+    "synthetic_triangles": {
+      "construction": "deterministic modular index sequence",
+      "dtype": "uint32",
+      "shape": [
+        128880,
+        3
+      ]
+    },
+    "synthetic_x": "float64, synthetic coordinate surrogate",
+    "synthetic_y": "float64, synthetic coordinate surrogate",
+    "unknown_support": "bool deterministic support mask"
+  },
+  "fixture_semantics": "FIXTURE_ONLY",
+  "nodes": 64442,
+  "payload_count": 1,
+  "payload_format": "deterministic NPZ / NPY members",
+  "payload_logical_bytes": 5028822,
+  "payload_sha256": "a4924e54aab9d9ae7e1fd395ff812279da39b6f65358b0d08cf937711c0b4ad7",
+  "source_commit": "700bb2228555f3d5ea9a2b79414b8cacbbb8473b",
+  "support_representation": {
+    "duplication_across_states": 0,
+    "grid_identity": "b2-synthetic-grid-64442",
+    "limitation": "state_at(cell_id=...) cannot resolve GRID membership; query API returns SUPPORT_MISMATCH",
+    "representation": "SpatialSupport selector_kind=GRID; empty cell_ids",
+    "serialized_state_envelope_bytes": 4942,
+    "support_metadata_bytes": 118
+  },
+  "triangles": 128880
+}

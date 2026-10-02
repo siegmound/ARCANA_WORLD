@@ -1,0 +1,41 @@
+{
+  "b3_readiness": "READY_WITH_MEASURED_LIMITATIONS",
+  "decision": "NO_SCALE_BLOCKER_OBSERVED",
+  "limitations": [
+    "Synthetic fixture only; timings are machine-specific.",
+    "No scientific or mechanics execution.",
+    "No process RSS measurement.",
+    "GRID selector membership cannot be resolved by current per-cell query API; B3 must retain/declare authoritative support semantics."
+  ],
+  "next_stage_authorized": "AUTHORIZE_B3_GOVERNED_T0_READ_ONLY_INGEST",
+  "qualification_id": "R6_WORLD_HISTORY_B2_SYNTHETIC_SCALE_V1",
+  "scale_classification": "NO_SCALE_BLOCKER_OBSERVED",
+  "scientific_side_effects": {
+    "canonical_state_changed": false,
+    "canonical_t0_modified": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "orbdata_mechanics_executed": false,
+    "production_feg_read": false,
+    "provider_authority_promoted": false,
+    "real_t0_read": false,
+    "runtime_authorized": "LOAD_AND_CONSUME_GOVERNED_ARCANA_T0_RUNTIME_PACKAGE",
+    "runtime_package_read": false,
+    "shellset_executed": false,
+    "t1_created": false
+  },
+  "scope": "SYNTHETIC_FIXTURE_ONLY_NO_REAL_T0_NO_SHELLSET_NO_ORBDATA_MECHANICS",
+  "source_commit": "700bb2228555f3d5ea9a2b79414b8cacbbb8473b",
+  "target": {
+    "nodes": 64442,
+    "triangles": 128880
+  },
+  "test_summary": {
+    "command": "python -m pytest -q --basetemp=<isolated B2 temp>/full_r6 -p no:cacheprovider",
+    "duration_seconds": 121.41,
+    "errors": 0,
+    "failed": 0,
+    "passed": 323
+  }
+}
