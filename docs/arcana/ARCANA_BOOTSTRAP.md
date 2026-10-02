@@ -10,7 +10,11 @@ specific authority or replay dependency requires one.
 
 - R6 source: `src/arcana_worldsim/r6/`
 - Builders/diagnostics: `scripts/r6_*.py`
-- Focused regression: `tests/test_r6_*.py`
+- Default pytest surface: current `tests/test_r6_*.py` regression modules.
+  R1–R5 stage suites remain available for explicit stage-specific runs; source
+  snapshots under `outputs/`, `repairs/` and run-evidence trees are evidence,
+  not default test roots. See `pytest.ini`.
+- R6 focused regression: `tests/test_r6_*.py`
 - Current authority, contracts and manifests: root `R6_*` files
 - ShellSet integration: `external/ShellSet-v1.1.0/` and
   `src/arcana_worldsim/r6/shellset_mesh/`
@@ -44,3 +48,10 @@ by this current operating boundary.
 For repository cleanup decisions, read
 [C0-E ledger](C0_E_CLEANUP_LEDGER.md) and
 [legacy archive map](LEGACY_ARCHIVE_MAP.md).
+
+PRE-B0 C0 cleanup has completed through F4 health closure. C0-F2 removed only
+verified high-confidence data copies and pytest scratch; C0-F3 retained the
+remaining payload surface conservatively. The execution reference index is a
+generated navigation aid, not scientific authority. Duplicated historical
+payloads remain intentionally retained until a governed provenance/content
+identity layer can preserve distinct records while sharing payload bytes.

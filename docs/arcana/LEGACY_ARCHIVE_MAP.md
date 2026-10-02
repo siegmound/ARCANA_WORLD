@@ -15,3 +15,13 @@ current path. Archive decisions do not demote referenced scientific authority.
 The C0-E ledger lists exact removed counts and retained exceptions for this
 cleanup. The Git commit history is the recovery path for removed historical
 documentation and one-shot scripts.
+
+## PRE-B0 consolidation status
+
+C0 root cleanup and C0-F2 high-confidence data cleanup are complete. C0-F3
+and F4 retained remaining historical payloads conservatively because semantic
+record identity and full reproducibility are not established for every copy.
+The default pytest configuration selects active `test_r6_*.py` modules;
+historical R1–R5 stage tests remain available for explicit invocation, while
+run/evidence snapshots are not default test roots. The execution reference
+index is regenerated navigation metadata, not authority.

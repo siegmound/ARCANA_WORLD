@@ -15,6 +15,12 @@ windows later.
 - High-resolution refinement is selective and branches from explicit anchors.
 - ARCANA owns canonical state, scientific semantics and canonicalization.
 - Providers are replaceable/bounded and do not acquire authority from output.
+- Payload identity is not semantic record identity. Multiple records may
+  reference one content-addressed payload while retaining distinct record IDs,
+  branch/run IDs, authority, provenance, temporal support and causal links.
+  C0-F3/F4 found that byte-level duplicates cannot safely be collapsed before
+  this metadata model exists. This is a B0 design requirement only; no
+  content-addressed storage is implemented by the cleanup.
 - The hard canonical storage ceiling is **500 GB**. No final field count,
   checkpoint density or compression design is fixed here.
 

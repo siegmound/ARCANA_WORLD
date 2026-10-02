@@ -3,7 +3,7 @@
 ## Repository and lineage
 
 - Repository: `siegmound/ARCANA_WORLD`
-- Working line: `r6/pre-b0-repository-consolidation`
+- Working line: `r6/pre-b0-data-consolidation`
 - Parent scientific HEAD: `2aa6a8e4d8edbd7796c5c2dea4c8d0d90f042264`
 - Current objective: PRE-B0 safe repository consolidation; B0 is the next
   implementation milestone after cleanup review.
@@ -34,6 +34,14 @@
 ## PRE-B0 consolidation
 
 C0-A inventory and C0-B authority/dependency adjudication are recorded in
-`C0_B_AUTHORITY_DEPENDENCY_AUDIT.md`. C0-E cleanup is being performed on the
-consolidation branch; no cleanup step changes scientific authority. The
-milestone after cleanup is **B0 — Minimal WORLD_HISTORY Core**.
+`C0_B_AUTHORITY_DEPENDENCY_AUDIT.md`. C0 root cleanup and C0-F2 high-confidence
+data cleanup are complete. C0-F3 found no safe additional payload deletion;
+remaining duplicates and REVIEW_UNKNOWN groups are conservatively retained.
+C0-F4 establishes the default pytest discovery boundary and refreshes the
+execution navigation index. No cleanup step changes scientific authority.
+The next implementation milestone is **B0 — Minimal WORLD_HISTORY Core**.
+
+The execution reference index is generated navigation metadata only. It does
+not assign authority. Historical duplicate payloads remain until a governed
+provenance layer can keep distinct semantic records while sharing payload
+identity.
