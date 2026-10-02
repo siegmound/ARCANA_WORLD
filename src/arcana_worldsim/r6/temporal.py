@@ -171,3 +171,20 @@ class RefinementAnchor(TemporalRecord):
 @dataclass(frozen=True, slots=True)
 class ConsumerCheckpoint(TemporalRecord):
     ROLE: ClassVar[str] = "CONSUMER_CHECKPOINT"
+
+
+_TEMPORAL_RECORD_TYPES = {
+    record_type.ROLE: record_type
+    for record_type in (AuthorityAnchor, ProviderTimestamp, SimulationCheckpoint,
+                        HistoricalSnapshot, EventRecord, RefinementAnchor,
+                        ConsumerCheckpoint)
+}
+
+
+def temporal_record_from_dict(row: Mapping[str, Any]) -> TemporalRecord:
+    """Reconstruct and identity-check a serialized record using its declared role."""
+    role = row.get("role")
+    record_type = _TEMPORAL_RECORD_TYPES.get(str(role))
+    if record_type is None:
+        raise ValueError(f"unsupported temporal record role: {role!r}")
+    return record_type.from_dict(row)

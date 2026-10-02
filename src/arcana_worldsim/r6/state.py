@@ -6,7 +6,8 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Mapping
 
-from .identity import BranchId, DomainStateId, HistoryId, freeze_json, thaw_json
+from .identity import (BranchId, DomainStateId, HistoryId, PayloadReference,
+                       freeze_json, thaw_json)
 
 STATE_SCHEMA = "ARCANA_R6_DOMAIN_STATE_V1"
 LEGACY_STATE_SCHEMA = "ARCANA_R6_DOMAIN_STATE_V0"
@@ -81,7 +82,7 @@ class DomainStateEnvelope:
     uncertainty: Mapping[str, Any]
     provenance_ids: tuple[str, ...] = ()
     parent_state_ids: tuple[str, ...] = ()
-    payload_ref: str | None = None
+    payload_ref: str | PayloadReference | None = None
     schema_version: str = STATE_SCHEMA
     model_derived: bool = False
     applicability: Mapping[str, Any] = field(default_factory=dict)
@@ -90,6 +91,8 @@ class DomainStateEnvelope:
     refinement_lineage: Mapping[str, Any] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
+        if self.payload_ref is not None:
+            object.__setattr__(self, "payload_ref", PayloadReference.parse(self.payload_ref).to_legacy_string())
         if self.schema_version not in {STATE_SCHEMA, LEGACY_STATE_SCHEMA}:
             raise ValueError(f"unsupported state schema: {self.schema_version}")
         if not self.history_id or not self.branch_id or not self.domain:
@@ -127,6 +130,13 @@ class DomainStateEnvelope:
         if DomainStateId.from_payload(identity_body) != self.state_id:
             raise ValueError("state identity does not match state content")
 
+    @property
+    def payload_reference(self) -> PayloadReference | None:
+        """Typed view over the backward-compatible serialized payload_ref."""
+        if self.payload_ref is None:
+            return None
+        return PayloadReference.parse(self.payload_ref)
+
     @classmethod
     def create(cls, *, history_id: str, branch_id: str, domain: str,
                time_support: TimeSupport, spatial_support: SpatialSupport,
@@ -134,7 +144,7 @@ class DomainStateEnvelope:
                value: Any = None, uncertainty: Mapping[str, Any] | None = None,
                provenance_ids: tuple[str, ...] = (),
                parent_state_ids: tuple[str, ...] = (),
-               payload_ref: str | None = None, model_derived: bool = False,
+               payload_ref: str | PayloadReference | None = None, model_derived: bool = False,
                applicability: Mapping[str, Any] | None = None,
                conflict_flags: tuple[str, ...] = (), event_refs: tuple[str, ...] = (),
                refinement_lineage: Mapping[str, Any] | None = None) -> "DomainStateEnvelope":
@@ -148,7 +158,8 @@ class DomainStateEnvelope:
             "uncertainty": thaw_json(freeze_json(uncertainty or {})),
             "provenance_ids": list(provenance_ids),
             "parent_state_ids": list(parent_state_ids),
-            "payload_ref": payload_ref,
+            "payload_ref": (None if payload_ref is None else
+                            PayloadReference.parse(payload_ref).to_legacy_string()),
         }
         body.update({"model_derived": model_derived,
                      "applicability": thaw_json(freeze_json(applicability or {})),

@@ -33,6 +33,19 @@ class HistoryQueryService:
         candidates = self._store.find_states(history_id=history_id, branch_id=branch_id,
                                              domain=domain, time_key=time_key, cell_id=cell_id)
         if not candidates:
+            if cell_id is not None:
+                if all(state.spatial_support.selector_kind == "CELL_SET" for state in at_time):
+                    return QueryResult("OUTSIDE_SUPPORT", None, {
+                        "requested_cell_id": cell_id,
+                        "declared_cell_ids": sorted({cell for state in at_time
+                                                     for cell in state.spatial_support.cell_ids}),
+                    })
+                return QueryResult("SUPPORT_MISMATCH", None, {
+                    "requested_cell_id": cell_id,
+                    "selector_kinds": sorted({state.spatial_support.selector_kind
+                                               for state in at_time}),
+                    "reason": "CELL_MEMBERSHIP_CANNOT_BE_RESOLVED_FOR_DECLARED_SELECTOR",
+                })
             return QueryResult("NOT_FOUND", None, None)
         if len(candidates) > 1:
             return QueryResult("CONFLICT", None, {

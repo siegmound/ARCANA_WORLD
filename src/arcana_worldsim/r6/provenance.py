@@ -50,3 +50,22 @@ class ProvenanceRecord:
                 "parent_provenance_ids": list(self.parent_provenance_ids),
                 "output_state_ids": list(self.output_state_ids),
                 "attributes": thaw_json(self.attributes)}
+
+    @classmethod
+    def from_dict(cls, row: Mapping[str, Any]) -> "ProvenanceRecord":
+        record = cls(
+            ProvenanceRecordId(str(row["record_id"])), str(row["activity"]),
+            tuple(row.get("input_refs", ())), tuple(row.get("source_refs", ())),
+            tuple(row.get("parent_provenance_ids", ())),
+            tuple(row.get("output_state_ids", ())), row.get("attributes", {}),
+        )
+        expected = cls.create(
+            activity=record.activity, input_refs=record.input_refs,
+            source_refs=record.source_refs,
+            parent_provenance_ids=record.parent_provenance_ids,
+            output_state_ids=record.output_state_ids,
+            attributes=thaw_json(record.attributes),
+        )
+        if expected.record_id != record.record_id:
+            raise ProvenanceIntegrityError("provenance identity does not match serialized content")
+        return record

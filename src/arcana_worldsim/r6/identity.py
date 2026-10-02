@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from hashlib import sha256
+from pathlib import Path, PurePosixPath
 from types import MappingProxyType
-from typing import Any, ClassVar, Mapping
+from typing import Any, BinaryIO, ClassVar, Mapping
 import json
 import math
 import re
-from pathlib import PurePosixPath
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -108,3 +108,83 @@ class ProviderBindingId(DeterministicId):
 
 class ProvenanceRecordId(DeterministicId):
     PREFIX = "r6prov"
+
+
+@dataclass(frozen=True, slots=True)
+class PayloadIdentity:
+    """Content identity for payload bytes, separate from semantic record IDs."""
+
+    algorithm: str
+    digest: str
+
+    def __post_init__(self) -> None:
+        if self.algorithm != "sha256" or not re.fullmatch(r"[0-9a-f]{64}", self.digest):
+            raise ValueError("payload identity requires a lowercase SHA-256 digest")
+
+    @classmethod
+    def from_bytes(cls, data: bytes) -> "PayloadIdentity":
+        return cls("sha256", sha256(data).hexdigest())
+
+    def to_dict(self) -> dict[str, str]:
+        return {"algorithm": self.algorithm, "digest": self.digest}
+
+
+@dataclass(frozen=True, slots=True)
+class PayloadReference:
+    """Backend-neutral reference; legacy opaque references remain representable."""
+
+    reference: str
+    identity: PayloadIdentity | None = None
+    locator: str | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.reference, str) or not self.reference:
+            raise ValueError("payload reference must be a non-empty string")
+
+    @classmethod
+    def parse(cls, reference: str | "PayloadReference") -> "PayloadReference":
+        if isinstance(reference, cls):
+            return reference
+        if not isinstance(reference, str) or not reference:
+            raise ValueError("payload reference must be a non-empty string")
+        match = re.fullmatch(r"sha256:([0-9a-f]{64})", reference)
+        if match:
+            return cls(reference, PayloadIdentity("sha256", match.group(1)))
+        match = re.fullmatch(r"payload:sha256:([0-9a-f]{64})", reference)
+        if match:
+            return cls(reference, PayloadIdentity("sha256", match.group(1)), "payload:")
+        match = re.fullmatch(r"payload://sha256/([0-9a-f]{64})(#[^\s]+)?", reference)
+        if match:
+            return cls(reference, PayloadIdentity("sha256", match.group(1)),
+                       f"payload://sha256/{match.group(1)}{match.group(2) or ''}")
+        return cls(reference, None, reference)
+
+    def to_legacy_string(self) -> str:
+        return self.reference
+
+
+class PayloadIntegrityError(ValueError):
+    """Raised when payload bytes do not match their declared content identity."""
+
+
+def verify_payload(reference: str | PayloadReference,
+                   source: bytes | bytearray | memoryview | Path | str | BinaryIO) -> PayloadIdentity:
+    """Explicitly verify available bytes against a SHA-256 payload reference."""
+    payload_ref = PayloadReference.parse(reference)
+    if payload_ref.identity is None:
+        raise PayloadIntegrityError("payload reference has no verifiable content identity")
+    try:
+        if isinstance(source, (bytes, bytearray, memoryview)):
+            data = bytes(source)
+        elif isinstance(source, (Path, str)):
+            data = Path(source).read_bytes()
+        else:
+            data = source.read()
+            if not isinstance(data, bytes):
+                raise TypeError("payload stream must return bytes")
+    except (OSError, TypeError) as exc:
+        raise PayloadIntegrityError("payload source could not be read") from exc
+    actual = PayloadIdentity.from_bytes(data)
+    if actual != payload_ref.identity:
+        raise PayloadIntegrityError("payload content digest does not match reference")
+    return actual
