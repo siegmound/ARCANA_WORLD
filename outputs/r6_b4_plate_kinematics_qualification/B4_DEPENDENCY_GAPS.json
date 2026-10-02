@@ -1,0 +1,26 @@
+{
+  "available_now": [
+    "T0 plate IDs",
+    "per-plate T0 Euler angular-rate vectors in rad/year",
+    "synthetic no-net-rotation gauge identity",
+    "coarse face plate IDs and topology identity"
+  ],
+  "candidate_only": [
+    "pyGPlates processing; not production-authorized or validated for R6"
+  ],
+  "derivable_governed": [],
+  "missing": [
+    "positive-duration motion validity/change law",
+    "governed plate-to-grid-node mapping",
+    "boundary type/accommodation and contact laws",
+    "topology transition/event schedule",
+    "authorized physical interval and dt constraints"
+  ],
+  "not_required_for_B4": [
+    "geometry movement",
+    "mechanics",
+    "T1"
+  ],
+  "recommended_next_domain": "SPATIAL_PLATE_SUPPORT_AND_BOUNDARY_TOPOLOGY_TRANSITION_CONTRACT",
+  "shellset_input_readiness": "BLOCKED; no node support mapping or governed interval law"
+}

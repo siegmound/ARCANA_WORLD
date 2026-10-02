@@ -1,0 +1,15 @@
+{
+  "schema": "ARCANA_R6_B4_TEST_RESULTS_V1",
+  "focused_command": "python -m pytest -q tests/test_r6_plate_kinematics_adapter_b4.py -p no:cacheprovider",
+  "focused_result": "PASS",
+  "focused_passed": 5,
+  "focused_failed": 0,
+  "active_r6_command": "PowerShell: $r6Tests = Get-ChildItem tests -Filter 'test_r6_*.py' | ForEach-Object { $_.FullName }; python -m pytest -q @r6Tests -p no:cacheprovider",
+  "active_r6_result": "PASS",
+  "active_r6_passed": 329,
+  "active_r6_failed": 0,
+  "baseline_before_b4": 324,
+  "b4_tests_added": 5,
+  "active_r6_duration_seconds": 131.87,
+  "py_compile_result": "PASS"
+}

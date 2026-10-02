@@ -1,0 +1,181 @@
+{
+  "adapter": {
+    "boundary_count": 1983,
+    "face_count": 64800,
+    "output_quantity": "PER_PLATE_EULER_ANGULAR_VELOCITY_VECTOR",
+    "plate_count": 12,
+    "plate_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "plate_to_grid_node_mapping": "UNAVAILABLE",
+    "type": "READ_ONLY_T0_INSTANT_PLATE_EULER_RATE_BINDING",
+    "units": "rad/year"
+  },
+  "b5_readiness": "READY_FOR_B5_WITH_KINEMATIC_GAPS",
+  "branch": "r6/b4-plate-kinematics-temporal-adapter",
+  "completed_utc": "2026-10-02T22:51:09.528856+00:00",
+  "decision": "PASS_B4_PLATE_KINEMATICS_TEMPORAL_ADAPTER_QUALIFICATION",
+  "dependency_gaps": {
+    "available_now": [
+      "T0 plate IDs",
+      "per-plate T0 Euler angular-rate vectors in rad/year",
+      "synthetic no-net-rotation gauge identity",
+      "coarse face plate IDs and topology identity"
+    ],
+    "candidate_only": [
+      "pyGPlates processing; not production-authorized or validated for R6"
+    ],
+    "derivable_governed": [],
+    "missing": [
+      "positive-duration motion validity/change law",
+      "governed plate-to-grid-node mapping",
+      "boundary type/accommodation and contact laws",
+      "topology transition/event schedule",
+      "authorized physical interval and dt constraints"
+    ],
+    "not_required_for_B4": [
+      "geometry movement",
+      "mechanics",
+      "T1"
+    ],
+    "recommended_next_domain": "SPATIAL_PLATE_SUPPORT_AND_BOUNDARY_TOPOLOGY_TRANSITION_CONTRACT",
+    "shellset_input_readiness": "BLOCKED; no node support mapping or governed interval law"
+  },
+  "determinism": {
+    "adapter_provenance_id_equal": true,
+    "driver_payload_identity_equal": true,
+    "forcing_id_equal": true,
+    "index_state_id_equal": true,
+    "source_provenance_id_equal": true,
+    "status": "PASS"
+  },
+  "next_stage_authorization": "AUTHORIZE_B5_MULTI_DOMAIN_TEMPORAL_INTEGRATION_DESIGN_AND_QUALIFICATION",
+  "persistence": {
+    "append_transaction_seconds": 0.05028400000446709,
+    "forcing_id": "r6forcing_7b2b2755aa902e901e76c3660e612bfe41ba6cc799223b3d9daaec993ae98940",
+    "record_count": 4,
+    "reopen_seconds": 0.001277800001844298,
+    "status": "PASS_CLOSE_REOPEN_TYPED_READ_AND_WHY",
+    "why_forcing_resolved": true,
+    "why_unresolved_references": []
+  },
+  "qualification_implementation": {
+    "repository_commit": "45f863b0e9a4773f6ecc5052d877c56b5e002eb4",
+    "source_hashes": [
+      {
+        "relative_path": "src/arcana_worldsim/r6/plate_kinematics_adapter.py",
+        "sha256": "53c8731766fe4273dc08f8e6f1af89fb41b348c924ead1593690833aaff9a1b7"
+      },
+      {
+        "relative_path": "scripts/r6_plate_kinematics_b4_qualification.py",
+        "sha256": "cbb7f3b526f3fce294b8f2d4364f023d75fcdb93f25b06e658d5feb20d9ee57c"
+      },
+      {
+        "relative_path": "tests/test_r6_plate_kinematics_adapter_b4.py",
+        "sha256": "6bab530afefa76d091d8444ea4dd482f40459f32a952807dcc95da4e9b9e537b"
+      }
+    ],
+    "worktree_changes_present": true
+  },
+  "qualification_scope": "READ_ONLY_T0_INSTANT_ADAPTER_BINDING_AND_SYNTHETIC_INTERVAL_FIXTURES; NO_EVOLUTION",
+  "qualified_source_commit": "45f863b0e9a4773f6ecc5052d877c56b5e002eb4",
+  "schema": "ARCANA_R6_B4_PLATE_KINEMATICS_QUALIFICATION_V1",
+  "scientific_side_effects": {
+    "canonical_state_changed": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "orbdata_mechanics_executed": false,
+    "provider_authority_promoted": false,
+    "shellset_executed": false,
+    "t0_payload_modified": false,
+    "t1_created": false
+  },
+  "source_artifact_sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2",
+  "source_authority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+  "source_immutability": "PASS",
+  "source_semantic_identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+  "storage_accounting": {
+    "canonical_persistent_bytes": 6865855,
+    "categories": {
+      "CANONICAL_METADATA": {
+        "file_count": 5,
+        "logical_bytes": 14771
+      },
+      "CANONICAL_PAYLOAD": {
+        "file_count": 2,
+        "logical_bytes": 6851084
+      },
+      "INDEX": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "OPERATIONAL_METADATA": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "PROVIDER_CACHE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "QUALIFICATION_EVIDENCE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "REFINEMENT_CACHE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "SCRATCH": {
+        "file_count": 0,
+        "logical_bytes": 0
+      }
+    },
+    "hard_cap_bytes": 500000000000,
+    "identity_effect": "NONE_OPERATIONAL_MEASUREMENT_ONLY",
+    "missing_optional_roots": [
+      "store checkpoints",
+      "store events",
+      "store refinement_branches",
+      "store refinement_recipes",
+      "store replay_recipes",
+      "store temporal"
+    ],
+    "symlinks_excluded": [],
+    "within_hard_cap": true
+  },
+  "synthetic_edge_cases": {
+    "fixture_only": true,
+    "qualification": "exercised by focused tests; no synthetic values treated as authority"
+  },
+  "temporal_support": {
+    "anchor_support": "INSTANT_ONLY",
+    "candidate_event_pairs_unknown": 30,
+    "discontinuities_supported": [],
+    "event_lead_time_lower_bound_ma": null,
+    "global_dt_selected": false,
+    "hard_anchors_ma": [
+      210.0
+    ],
+    "interval_validity": "UNKNOWN",
+    "positive_duration_intervals": [],
+    "positive_duration_request_rejected": true,
+    "reason": "motion segment validity is UNBOUND and renewal/change law is BLOCKED"
+  },
+  "tool_status": {
+    "production_authorized": false,
+    "pygplates": "CANDIDATE_PROCESSOR_NOT_SCIENTIFIC_AUTHORITY",
+    "runtime_invoked": false
+  }
+}
