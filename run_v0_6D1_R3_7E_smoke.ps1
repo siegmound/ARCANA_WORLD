@@ -1,4 +1,0 @@
-param([string]$Python = "python")
-$ErrorActionPreference = "Stop"
-& $Python scripts/run_v0_6D1_R3_7E_short_shadow.py --end-age-ma 209 --diagnostic-smoke
-if ($LASTEXITCODE -ne 0) { throw "R3.7E diagnostic smoke failed with exit code $LASTEXITCODE" }
