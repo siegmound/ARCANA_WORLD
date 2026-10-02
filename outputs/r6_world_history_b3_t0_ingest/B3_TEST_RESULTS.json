@@ -1,0 +1,37 @@
+{
+  "active_r6_suite": {
+    "baseline_before_b3": 323,
+    "command": "$env:PYTHONPATH='src'; $r6Tests = Get-ChildItem tests/test_r6_*.py | ForEach-Object { $_.FullName }; python -m pytest -q $r6Tests",
+    "duration_seconds": 132.93,
+    "failed": 0,
+    "new_test_count": 1,
+    "passed": 324,
+    "result": "PASS"
+  },
+  "focused_adapter": {
+    "command": "python -m pytest -q tests/test_r6_world_history_b3_t0_ingest.py",
+    "duration_seconds": 0.33,
+    "failed": 0,
+    "passed": 1,
+    "result": "PASS"
+  },
+  "git_diff_check": {
+    "result": "PASS",
+    "scope": "git diff --check and authored/retained text whitespace scan"
+  },
+  "py_compile": {
+    "files": [
+      "src/arcana_worldsim/r6/t0_world_history_adapter.py",
+      "scripts/r6_world_history_b3_t0_read_only_ingest.py",
+      "tests/test_r6_world_history_b3_t0_ingest.py"
+    ],
+    "result": "PASS"
+  },
+  "real_artifact_integration": {
+    "command": "$env:PYTHONPATH='src'; python scripts/r6_world_history_b3_t0_read_only_ingest.py --repository-root . --output-dir outputs/r6_world_history_b3_t0_ingest --work-root outputs/r6_world_history_b3_t0_ingest/.work",
+    "result": "PASS",
+    "semantic_identity_repeatability": "PASS",
+    "semantic_states": 14,
+    "source_immutability": "PASS"
+  }
+}

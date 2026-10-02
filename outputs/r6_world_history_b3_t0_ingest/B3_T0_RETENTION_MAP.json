@@ -1,0 +1,48 @@
+{
+  "adapter_boundary": "REFERENCE_ONLY; no governed field arrays copied",
+  "items": [
+    {
+      "action": "MATERIALIZE",
+      "item": "initial-world supported fields",
+      "reason": "current governed T0 support; semantic envelopes retain references only",
+      "reference": "payload://sha256/a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+      "role": "SYSTEM_MEMORY"
+    },
+    {
+      "action": "STATIC",
+      "item": "vector partition",
+      "reason": "governed topology dependency for future domain adapters",
+      "reference": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+      "role": "SYSTEM_MEMORY"
+    },
+    {
+      "action": "STATIC",
+      "item": "plate kinematics",
+      "reason": "current canonical synthetic T0 model realization; no interval law selected",
+      "reference": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+      "role": "SYSTEM_MEMORY"
+    },
+    {
+      "action": "DISCARD",
+      "item": "FEG and ShellSet runtime package",
+      "reason": "excluded from WORLD_HISTORY physical-state ingest; source artifacts remain untouched",
+      "reference": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.json; R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.json",
+      "role": "DERIVED_QUERY_OR_RUNTIME_PRODUCT"
+    },
+    {
+      "action": "REVIEW_REQUIRED",
+      "item": "B-PANGAEA V2 field package",
+      "reason": "manifest remains CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+      "role": "CANDIDATE_T0"
+    },
+    {
+      "action": "STATIC",
+      "item": "unknown-domain masks",
+      "reason": "referenced by UNKNOWN state metadata; not numeric state",
+      "reference": "field refs in R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json",
+      "role": "SUPPORT_EVIDENCE"
+    }
+  ],
+  "status": "REVIEW_REQUIRED_FOR_SCIENTIFIC_MINIMALITY",
+  "system_memory_vs_derived_products": "T0 geography/topology/plate kinematics are represented as current inputs; FEG/runtime products remain derived support."
+}
