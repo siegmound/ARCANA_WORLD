@@ -7,9 +7,10 @@ from enum import Enum
 import re
 from typing import Any, Mapping
 
-from .checkpoint import CheckpointEnvelope
+from .checkpoint import CheckpointEnvelope, RefinementBranchEnvelope
 from .forcing import ForcingRecord
 from .provenance import ProvenanceRecord
+from .refinement import RefinementReconstructionRecipe
 from .replay import ReplayRecipe
 from .state import DomainStateEnvelope, SupportClass
 from .store import HistoryStore
@@ -62,6 +63,8 @@ class WhyResult:
     forcings: tuple[ForcingRecord, ...]
     checkpoints: tuple[CheckpointEnvelope, ...]
     replay_recipes: tuple[ReplayRecipe, ...]
+    refinement_branches: tuple[RefinementBranchEnvelope, ...]
+    refinement_recipes: tuple[RefinementReconstructionRecipe, ...]
     external_references: tuple[str, ...]
     unresolved_references: tuple[str, ...]
 
@@ -179,9 +182,15 @@ class HistoryQueryService:
         forcings: dict[str, ForcingRecord] = {}
         checkpoints: dict[str, CheckpointEnvelope] = {}
         recipes: dict[str, ReplayRecipe] = {}
+        refinement_branches: dict[str, RefinementBranchEnvelope] = {}
+        refinement_recipes: dict[str, RefinementReconstructionRecipe] = {}
         recipes_by_output: dict[str, list[ReplayRecipe]] = {}
         for recipe in self._store.replay_recipes():
             recipes_by_output.setdefault(recipe.expected_output_state_id, []).append(recipe)
+        refinement_by_output: dict[str, list[RefinementReconstructionRecipe]] = {}
+        for recipe in self._store.refinement_recipes():
+            for entry in recipe.output_manifest:
+                refinement_by_output.setdefault(entry.state_id, []).append(recipe)
         external: set[str] = set()
         unresolved: set[str] = set()
         pending_states = [str(target.state_id)]
@@ -233,6 +242,9 @@ class HistoryQueryService:
                 elif prefix == "r6recipe":
                     if ref not in recipes:
                         recipes[ref] = self._store.read_replay_recipe(ref)
+                elif prefix == "r6refrecipe":
+                    if ref not in refinement_recipes:
+                        refinement_recipes[ref] = self._store.read_refinement_recipe(ref)
                 else:
                     return False
             except FileNotFoundError:
@@ -257,6 +269,10 @@ class HistoryQueryService:
                     recipe_ref = str(recipe.recipe_id)
                     if recipe_ref not in queued_recipe_ids:
                         queued_recipe_ids.add(recipe_ref)
+                        pending_refs.append(recipe_ref)
+                for recipe in refinement_by_output.get(ref, ()):
+                    recipe_ref = str(recipe.recipe_id)
+                    if recipe_ref not in refinement_recipes:
                         pending_refs.append(recipe_ref)
             while pending_provenance:
                 ref = pending_provenance.pop(0)
@@ -311,6 +327,27 @@ class HistoryQueryService:
                         external.add(f"configuration_sha256:{recipe.configuration_sha256}")
                         external.add(f"seed_lineage:{recipe.seed_lineage!r}")
                         external.add(f"model_adapter_id:{recipe.model_adapter_id}")
+                    refinement_recipe = refinement_recipes.get(ref)
+                    if refinement_recipe is not None:
+                        branch_id = refinement_recipe.branch_id
+                        if branch_id not in refinement_branches:
+                            try:
+                                refinement_branches[branch_id] = self._store.read_refinement_branch(branch_id)
+                            except FileNotFoundError:
+                                unresolved.add(branch_id)
+                        branch = refinement_branches.get(branch_id)
+                        if branch is not None:
+                            pending_refs.extend(branch.provenance_refs)
+                            pending_states.extend(branch.output_state_ids)
+                            external.add(f"parent_branch_id:{branch.parent_branch_id}")
+                        pending_refs.append(refinement_recipe.base_checkpoint_id)
+                        pending_states.extend(refinement_recipe.parent_state_ids)
+                        pending_refs.extend(refinement_recipe.parent_state_ids)
+                        pending_refs.extend((
+                            f"runtime_identity:{refinement_recipe.runtime_identity!r}",
+                            f"configuration_sha256:{refinement_recipe.configuration_sha256}",
+                            f"seed_lineage:{refinement_recipe.seed_lineage!r}",
+                            f"model_adapter_id:{refinement_recipe.model_adapter_id}"))
                 else:
                     external.add(ref)
 
@@ -321,6 +358,8 @@ class HistoryQueryService:
                          tuple(forcings[key] for key in sorted(forcings)),
                          tuple(checkpoints[key] for key in sorted(checkpoints)),
                          tuple(recipes[key] for key in sorted(recipes)),
+                         tuple(refinement_branches[key] for key in sorted(refinement_branches)),
+                         tuple(refinement_recipes[key] for key in sorted(refinement_recipes)),
                          tuple(sorted(external)), tuple(sorted(unresolved)))
 
     def search(self, *, history_id: str, branch_id: str | None = None,

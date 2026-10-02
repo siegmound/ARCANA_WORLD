@@ -118,6 +118,10 @@ class ReplayRecipeId(DeterministicId):
     PREFIX = "r6recipe"
 
 
+class RefinementRecipeId(DeterministicId):
+    PREFIX = "r6refrecipe"
+
+
 @dataclass(frozen=True, slots=True)
 class PayloadIdentity:
     """Content identity for payload bytes, separate from semantic record IDs."""

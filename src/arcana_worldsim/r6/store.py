@@ -12,8 +12,9 @@ import tempfile
 
 from .checkpoint import CheckpointEnvelope, RefinementBranchEnvelope
 from .forcing import ForcingRecord
-from .identity import ProviderBindingId, canonical_bytes
+from .identity import ProviderBindingId, canonical_bytes, content_hash, thaw_json
 from .provenance import ProvenanceIntegrityError, ProvenanceRecord
+from .refinement import RefinementReconstructionRecipe
 from .replay import ReplayRecipe
 from .state import DomainStateEnvelope
 from .temporal import EventRecord, TemporalRecord, temporal_record_from_dict
@@ -51,7 +52,7 @@ class HistoryStore:
 
     _TRANSACTION_BUCKETS = frozenset({
         "states", "provenance", "events", "checkpoints", "temporal",
-        "refinement_branches", "forcings", "replay_recipes",
+        "refinement_branches", "refinement_recipes", "forcings", "replay_recipes",
     })
 
     def __init__(self, root: str | Path, *,
@@ -183,6 +184,10 @@ class HistoryStore:
             bucket, body, key = "replay_recipes", record.to_dict(), str(record.recipe_id)
             parser = ReplayRecipe.from_dict
             identity = lambda value: str(value.recipe_id)
+        elif isinstance(record, RefinementReconstructionRecipe):
+            bucket, body, key = "refinement_recipes", record.to_dict(), str(record.recipe_id)
+            parser = RefinementReconstructionRecipe.from_dict
+            identity = lambda value: str(value.recipe_id)
         elif isinstance(record, TemporalRecord):
             bucket, body, key = "temporal", record.to_dict(), record.record_id
             parser = temporal_record_from_dict
@@ -213,13 +218,30 @@ class HistoryStore:
             raise TransactionRecoveryError("transaction target escapes store root")
         return target
 
-    def append_transaction(self, records: Iterable[Any]) -> tuple[str, ...]:
+    def append_transaction(self, records: Iterable[Any], *,
+                           _refinement_branch_id: str | None = None) -> tuple[str, ...]:
         """Atomically publish a small bundle of already-formed immutable records.
 
         Guarantees recoverable all-or-none state for one writer after return or
         the next store reopen. Concurrent visibility during publication and
         full power-loss durability are outside this API's contract.
         """
+        records = tuple(records)
+        declared_refinement_ids = {str(record.branch_id) for record in records
+                                   if isinstance(record, RefinementBranchEnvelope)}
+        for record in records:
+            if not isinstance(record, DomainStateEnvelope):
+                continue
+            candidate_branch_id = record.branch_id
+            is_refinement_branch = candidate_branch_id in declared_refinement_ids
+            if not is_refinement_branch:
+                try:
+                    self.read_refinement_branch(candidate_branch_id)
+                    is_refinement_branch = True
+                except FileNotFoundError:
+                    pass
+            if is_refinement_branch and _refinement_branch_id != candidate_branch_id:
+                raise ValueError("refinement child states require branch-bound transaction API")
         prepared = []
         seen: set[tuple[str, str]] = set()
         for record in records:
@@ -490,6 +512,12 @@ class HistoryStore:
         return tuple(result)
 
     def append_state(self, state: DomainStateEnvelope) -> str:
+        try:
+            self.read_refinement_branch(state.branch_id)
+        except FileNotFoundError:
+            pass
+        else:
+            raise ValueError("refinement child states must use append_refinement_transaction")
         self._write("states", str(state.state_id), state.to_dict())
         return str(state.state_id)
 
@@ -578,6 +606,82 @@ class HistoryStore:
         return self._typed_all("refinement_branches", "refinement branch",
                                RefinementBranchEnvelope.from_dict,
                                lambda row: str(row.branch_id))
+
+    def read_refinement_recipe(self, recipe_id: str) -> RefinementReconstructionRecipe:
+        return self._typed("refinement_recipes", recipe_id, "refinement recipe",
+                           RefinementReconstructionRecipe.from_dict,
+                           lambda row: str(row.recipe_id))
+
+    def refinement_recipes(self) -> tuple[RefinementReconstructionRecipe, ...]:
+        return self._typed_all("refinement_recipes", "refinement recipe",
+                               RefinementReconstructionRecipe.from_dict,
+                               lambda row: str(row.recipe_id))
+
+    def append_refinement_recipe(self, recipe: RefinementReconstructionRecipe) -> str:
+        key = str(recipe.recipe_id)
+        self._write("refinement_recipes", key, recipe.to_dict())
+        return key
+
+    def append_refinement_transaction(self, branch: RefinementBranchEnvelope,
+                                      recipe: RefinementReconstructionRecipe,
+                                      child_records: Iterable[Any]) -> tuple[str, ...]:
+        """Atomically declare a child branch, its recipe, and branch-local outputs."""
+        records = tuple(child_records)
+        if str(branch.branch_id) == branch.parent_branch_id:
+            raise ValueError("refinement child branch cannot reuse its parent branch ID")
+        if branch.base_history_id != branch.history_id:
+            raise ValueError("refinement child and base history IDs must match")
+        if (recipe.branch_id != str(branch.branch_id) or recipe.history_id != branch.history_id
+                or recipe.parent_branch_id != branch.parent_branch_id):
+            raise ValueError("refinement recipe scope differs from branch envelope")
+        if recipe.boundary_conditions_sha256 != content_hash(thaw_json(branch.parent_boundary_conditions)):
+            raise ValueError("refinement recipe boundary identity differs from branch")
+        output_ids = tuple(item.state_id for item in recipe.output_manifest)
+        if branch.output_state_ids and tuple(branch.output_state_ids) != output_ids:
+            raise ValueError("branch output list differs from refinement recipe manifest")
+        if recipe.materialization_status != "MATERIALIZED":
+            raise ValueError("only verified MATERIALIZED refinement outputs may be published")
+        checkpoint = CheckpointEnvelope.from_dict(self.read_checkpoint(recipe.base_checkpoint_id))
+        if (checkpoint.history_id, checkpoint.branch_id) != (branch.history_id, branch.parent_branch_id):
+            raise ValueError("base checkpoint does not match parent branch/history")
+        if checkpoint.validation_status != "VALIDATED":
+            raise ValueError("base checkpoint must be validated")
+        checkpoint_states = set(checkpoint.restart_state_ids) | set(checkpoint.retained_history_state_ids)
+        if not set(recipe.parent_state_ids).issubset(checkpoint_states):
+            raise ValueError("parent states must be declared by the base checkpoint")
+        parent_records = tuple(self.read_state(state_id) for state_id in recipe.parent_state_ids)
+        if any((state.history_id, state.branch_id) !=
+               (branch.history_id, branch.parent_branch_id) for state in parent_records):
+            raise ValueError("parent state scope differs from refinement branch")
+        parent_cells = {cell for state in parent_records for cell in state.spatial_support.cell_ids}
+        if not set(recipe.parent_region_cell_ids).issubset(parent_cells):
+            raise ValueError("refinement region is outside parent state support")
+        child_states = tuple(record for record in records if isinstance(record, DomainStateEnvelope))
+        if {str(state.state_id) for state in child_states} != set(output_ids):
+            raise ValueError("transaction child states do not equal declared output manifest")
+        for state in child_states:
+            if (state.history_id, state.branch_id) != (branch.history_id, str(branch.branch_id)):
+                raise ValueError("child state is not scoped to the declared refinement branch")
+            if state.domain not in branch.requested_domains:
+                raise ValueError("child state domain is outside declared refinement domains")
+            if state.time_support.time_key not in branch.time_interval:
+                raise ValueError("child state time is outside declared refinement interval")
+        by_id = {str(state.state_id): state for state in child_states}
+        for entry in recipe.output_manifest:
+            state = by_id[entry.state_id]
+            if tuple(state.spatial_support.cell_ids) != entry.child_cell_ids:
+                raise ValueError("child state support differs from output manifest")
+            if not set(entry.parent_cell_ids).issubset(recipe.parent_region_cell_ids):
+                raise ValueError("child output maps outside declared parent region")
+            payload_identity = None if state.payload_reference is None else state.payload_reference.identity
+            if payload_identity != entry.payload_identity:
+                raise ValueError("child state payload identity differs from output manifest")
+        if any(not isinstance(record, (DomainStateEnvelope, ProvenanceRecord, EventRecord))
+               for record in records):
+            raise TypeError("refinement bundle accepts child states, provenance, and events only")
+        # All new child states in this atomic bundle must pass the branch-bound API.
+        return self.append_transaction((branch, recipe, *records),
+                                       _refinement_branch_id=str(branch.branch_id))
 
     def append_forcing(self, forcing: ForcingRecord) -> str:
         key = str(forcing.forcing_id)
