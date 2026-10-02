@@ -1,0 +1,85 @@
+{
+  "baseline_expected": 323,
+  "clean_worktree_before_runs": true,
+  "commands": {
+    "focused": "python -m pytest -q <one listed focused file> --basetemp <fresh-isolated-temp-root>/<suite> -p no:cacheprovider",
+    "full": "python -m pytest -q <all tests/test_r6_*.py files> --basetemp <fresh-isolated-temp-root>/full_r6 -p no:cacheprovider"
+  },
+  "focused_runs": [
+    {
+      "duration_seconds": 4.12,
+      "failed": 0,
+      "passed": 7,
+      "path": "tests/test_r6_world_history_b0_b.py",
+      "stage": "B0-B"
+    },
+    {
+      "duration_seconds": 3.97,
+      "failed": 0,
+      "passed": 11,
+      "path": "tests/test_r6_world_history_b0_c.py",
+      "stage": "B0-C"
+    },
+    {
+      "duration_seconds": 5.47,
+      "failed": 0,
+      "passed": 13,
+      "path": "tests/test_r6_world_history_b0_d.py",
+      "stage": "B0-D"
+    },
+    {
+      "duration_seconds": 4.53,
+      "failed": 0,
+      "passed": 17,
+      "path": "tests/test_r6_world_history_b0_e.py",
+      "stage": "B0-E"
+    },
+    {
+      "duration_seconds": 4.06,
+      "failed": 0,
+      "passed": 8,
+      "path": "tests/test_r6_world_history_b0_f.py",
+      "stage": "B0-F"
+    },
+    {
+      "duration_seconds": 4.79,
+      "failed": 0,
+      "passed": 12,
+      "path": "tests/test_r6_world_history_b0_g.py",
+      "stage": "B0-G"
+    },
+    {
+      "duration_seconds": 6.76,
+      "failed": 0,
+      "passed": 3,
+      "path": "tests/test_r6_world_history_b0_h.py",
+      "stage": "B0-H"
+    }
+  ],
+  "focused_total_passed": 71,
+  "full_run": {
+    "duration_seconds": 339.87,
+    "errors": 0,
+    "failed": 0,
+    "passed": 323,
+    "pytest_reported_duration_seconds": 337.46,
+    "selection": "all tests/test_r6_*.py files",
+    "stage": "R6_FULL"
+  },
+  "isolated_temp_root_used": true,
+  "source_commit": "76458611d1a6608a6dac63036d0a698801043f62",
+  "supplemental_qualification_checks": {
+    "checks": [
+      "two fresh roots with reversed insertion",
+      "history ordering",
+      "WHY ordering",
+      "replay/refinement/retention/storage semantic equality",
+      "all explicit storage categories separated",
+      "strict hard-cap equality rejection"
+    ],
+    "result": "PASS",
+    "script": "outputs/r6_world_history_b1_qualification/B1_SEMANTIC_REPRODUCIBILITY_CHECK.py"
+  },
+  "temporary_runtime_data_retained_in_repository": false,
+  "test_count_change_from_expected_baseline": 0
+}

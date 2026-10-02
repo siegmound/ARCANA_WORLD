@@ -1,0 +1,71 @@
+{
+  "H1_H18_summary": {
+    "FAIL": 0,
+    "NOT_TESTED": 0,
+    "PASS_INTEGRATED": 16,
+    "PASS_SCOPED": 2
+  },
+  "branch": "r6/b1-world-history-bootstrap-qualification",
+  "limitations": [
+    "H9 is scoped to the tested local immutable/idempotent write behavior; concurrent writer behavior is not qualified.",
+    "H14 is scoped to exact declared support semantics; general GIS containment is outside B0/B1 scope.",
+    "Only local file-backed storage and synthetic deterministic adapters were exercised.",
+    "No scientific production or engine replay was qualified."
+  ],
+  "next_stage_authorized": "AUTHORIZE_B2_SYNTHETIC_SCALE_QUALIFICATION",
+  "path_portability": {
+    "absolute_windows_paths": 0,
+    "checked_paths": [
+      "docs/arcana/B1_WORLD_HISTORY_BOOTSTRAP_QUALIFICATION.md",
+      "outputs/r6_world_history_b1_qualification/B1_ENVIRONMENT.json",
+      "outputs/r6_world_history_b1_qualification/B1_H1_H18_MATRIX.json",
+      "outputs/r6_world_history_b1_qualification/B1_QUALIFICATION_RESULT.json",
+      "outputs/r6_world_history_b1_qualification/B1_SEMANTIC_REPRODUCIBILITY_CHECK.py",
+      "outputs/r6_world_history_b1_qualification/B1_TEST_RESULTS.json",
+      "outputs/r6_world_history_b1_qualification/README.md"
+    ],
+    "environment_metadata_separate": true,
+    "machine_paths_in_semantic_identities": false,
+    "status": "PASS",
+    "temporary_root_leaks": 0,
+    "username_leaks": 0
+  },
+  "prohibited_authorizations": [
+    "T0_EVOLUTION",
+    "DT_SELECTION",
+    "T1_CREATION",
+    "SHELLSET_MECHANICS",
+    "ORBDATA_MECHANICS",
+    "SCIENTIFIC_PRODUCTION"
+  ],
+  "qualification_id": "R6_WORLD_HISTORY_B1_76458611d1a6608a",
+  "scientific_side_effects": {
+    "canonical_state_changed": false,
+    "canonical_t1_created": false,
+    "dt_selected": false,
+    "governed_t0_payload_modified": false,
+    "orbdata_mechanics_executed": false,
+    "provider_authority_promoted": false,
+    "real_refinement_executed": false,
+    "scientific_authority_changed": false,
+    "shellset_executed": false
+  },
+  "scope": "SYNTHETIC_B0_WORLD_HISTORY_CORE_H1_H18_ONLY",
+  "source_commit": "76458611d1a6608a6dac63036d0a698801043f62",
+  "status": "PASS_B1_WORLD_HISTORY_BOOTSTRAP_QUALIFICATION",
+  "storage_accounting": {
+    "all_explicit_categories_tested": true,
+    "canonical_hard_cap_bytes": 500000000000,
+    "comparison": "canonical_persistent_bytes < hard_cap_bytes",
+    "hard_cap_convention": "decimal GB",
+    "shared_payload_counted_once": true
+  },
+  "test_summary": {
+    "baseline_expected": 323,
+    "errors": 0,
+    "failed": 0,
+    "focused_test_count": 71,
+    "full_active_r6_test_count": 323,
+    "test_count_changed_from_baseline": false
+  }
+}

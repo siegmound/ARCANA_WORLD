@@ -1,0 +1,349 @@
+{
+  "matrix": [
+    {
+      "demonstrated_after_filesystem_reopen": false,
+      "gate": "H1",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/store.py"
+      ],
+      "limitation": null,
+      "name": "write integrity",
+      "negative_fail_closed_evidence": [
+        "injected interruption; no partial bundle after recovery"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_h.py::test_initial_atomic_recovery_preserves_preexisting_records_and_is_idempotent",
+        "tests/test_r6_world_history_b0_c.py::test_successful_transaction_is_visible_after_new_store_reopen"
+      ],
+      "scope": "Initial typed transaction bundles and recovery, fixture-only.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H2",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/store.py",
+        "src/arcana_worldsim/r6/identity.py"
+      ],
+      "limitation": null,
+      "name": "close/reopen identity",
+      "negative_fail_closed_evidence": [
+        "typed read integrity"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build"
+      ],
+      "scope": "Filesystem close/reopen twice; typed reads preserve IDs.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H3",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/query.py",
+        "src/arcana_worldsim/r6/state.py"
+      ],
+      "limitation": null,
+      "name": "state query",
+      "negative_fail_closed_evidence": [
+        "missing domain/time; unsupported selector"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_e.py::test_existing_state_query_support_statuses_remain_distinct"
+      ],
+      "scope": "Exact fixture state/support queries.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H4",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/query.py"
+      ],
+      "limitation": null,
+      "name": "history query",
+      "negative_fail_closed_evidence": [
+        "deterministic ordering"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_e.py::test_history_result_filters_exact_metadata_and_orders_semantically_after_reopen"
+      ],
+      "scope": "Chronological synthetic history and exact filters.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H5",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/query.py"
+      ],
+      "limitation": null,
+      "name": "difference query",
+      "negative_fail_closed_evidence": [
+        "unknown and incompatible support fail closed"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_e.py::test_numeric_difference_including_known_zero",
+        "tests/test_r6_world_history_b0_e.py::test_boolean_difference_reports_change_without_subtraction"
+      ],
+      "scope": "Known numeric change, zero equality, categorical change, UNKNOWN input.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H6",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/query.py",
+        "src/arcana_worldsim/r6/provenance.py"
+      ],
+      "limitation": null,
+      "name": "WHY/provenance",
+      "negative_fail_closed_evidence": [
+        "dangling references exposed by B0-E tests"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_e.py::test_why_joins_reopened_replay_provenance_event_forcing_checkpoint_and_recipe"
+      ],
+      "scope": "Declared state/recipe/checkpoint/forcing/event/provenance chain and source refs.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H7",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/state.py",
+        "src/arcana_worldsim/r6/query.py"
+      ],
+      "limitation": null,
+      "name": "UNKNOWN preservation",
+      "negative_fail_closed_evidence": [
+        "UNKNOWN_INPUT difference"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_e.py::test_difference_preserves_both_authorities_uncertainties_and_supports"
+      ],
+      "scope": "UNKNOWN and OUTSIDE_SCOPE remain distinct from known values.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H8",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/replay.py",
+        "src/arcana_worldsim/r6/store.py"
+      ],
+      "limitation": null,
+      "name": "replay integrity",
+      "negative_fail_closed_evidence": [
+        "corrupt forcing and replay closure fail closed"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_d.py::test_synthetic_recipe_transaction_reopens_and_replays_repeatably"
+      ],
+      "scope": "Resolves recipe closure and verifies state/payload identity using injected deterministic runner.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H9",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/store.py"
+      ],
+      "limitation": null,
+      "name": "append-only immutability",
+      "negative_fail_closed_evidence": [
+        "preexisting records preserved"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_c.py::test_single_record_append_remains_idempotent",
+        "tests/test_r6_world_history_b0_c.py::test_rollback_preserves_preexisting_identical_and_unrelated_records",
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build"
+      ],
+      "scope": "Immutable/idempotent local record writes and no automatic replay persistence; no concurrent-writer qualification.",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H10",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/checkpoint.py",
+        "src/arcana_worldsim/r6/refinement.py",
+        "src/arcana_worldsim/r6/store.py"
+      ],
+      "limitation": null,
+      "name": "refinement branch isolation",
+      "negative_fail_closed_evidence": [
+        "wrong branch/history writes fail closed"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_f.py::test_synthetic_branch_reconstructs_after_reopen_without_parent_mutation"
+      ],
+      "scope": "Parent/child history separation and branch-bound child transaction.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H11",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/refinement.py",
+        "src/arcana_worldsim/r6/retention.py"
+      ],
+      "limitation": null,
+      "name": "refinement reconstructability",
+      "negative_fail_closed_evidence": [
+        "missing parent/recipe and mismatched output tests"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_g.py::test_reconstructable_actions_require_explicit_anchors"
+      ],
+      "scope": "Recipe, retained parent, boundary and expected child outputs.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H12",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/storage.py"
+      ],
+      "limitation": null,
+      "name": "storage accounting",
+      "negative_fail_closed_evidence": [
+        "missing roots, overlapping roots, cap exceed"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_g.py::test_storage_categories_dedup_optional_required_and_cap",
+        "tests/test_r6_world_history_b0_g.py::test_history_store_accounting_and_shared_payload_count_once"
+      ],
+      "scope": "Explicit local scopes; logical bytes, categories, dedupe and cap.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H13",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/identity.py",
+        "src/arcana_worldsim/r6/store.py"
+      ],
+      "limitation": null,
+      "name": "payload integrity",
+      "negative_fail_closed_evidence": [
+        "tampered payload rejected"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_h.py::test_integrated_corruption_and_ambiguous_journal_fail_closed"
+      ],
+      "scope": "Payload identity distinct from StateId; changed bytes rejected.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H14",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/state.py",
+        "src/arcana_worldsim/r6/query.py"
+      ],
+      "limitation": "General GIS containment/reprojection is intentionally unqualified.",
+      "name": "support boundaries",
+      "negative_fail_closed_evidence": [
+        "outside cell and unsupported selector reported distinctly"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_e.py::test_existing_state_query_support_statuses_remain_distinct"
+      ],
+      "scope": "Exact CELL_SET, UNKNOWN, OUTSIDE_SCOPE, REGION selector semantics only.",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H15",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/state.py",
+        "src/arcana_worldsim/r6/checkpoint.py"
+      ],
+      "limitation": null,
+      "name": "authority preservation",
+      "negative_fail_closed_evidence": [
+        "unsupported authority/status semantics retained"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build"
+      ],
+      "scope": "Fixture authority remains FIXTURE_ONLY through replay/refinement; no scientific promotion.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H16",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/retention.py"
+      ],
+      "limitation": null,
+      "name": "minimal-state extraction",
+      "negative_fail_closed_evidence": [
+        "missing required memory/forcing/reconstruction dependency rejected"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "tests/test_r6_world_history_b0_g.py::test_required_future_memory_cannot_be_dropped_or_reclassified_discard"
+      ],
+      "scope": "Core/memory materialized; derived value reconstructable; diagnostics discarded.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H17",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/query.py"
+      ],
+      "limitation": null,
+      "name": "deterministic ordering",
+      "negative_fail_closed_evidence": [
+        "fresh-root reversed insertion"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_full_synthetic_world_history_lifecycle_and_deterministic_second_build",
+        "outputs/r6_world_history_b1_qualification/B1_SEMANTIC_REPRODUCIBILITY_CHECK.py"
+      ],
+      "scope": "Two roots, reverse insertion, equal semantic IDs, history ordering and replay/refinement/retention/storage outputs. WHY ordering is separately rechecked by reproducibility script.",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "demonstrated_after_filesystem_reopen": true,
+      "gate": "H18",
+      "implementation_modules": [
+        "src/arcana_worldsim/r6/store.py"
+      ],
+      "limitation": null,
+      "name": "failure atomicity",
+      "negative_fail_closed_evidence": [
+        "preexisting state retained; recovery idempotent"
+      ],
+      "proving_tests": [
+        "tests/test_r6_world_history_b0_h.py::test_initial_atomic_recovery_preserves_preexisting_records_and_is_idempotent",
+        "tests/test_r6_world_history_b0_h.py::test_integrated_corruption_and_ambiguous_journal_fail_closed",
+        "tests/test_r6_world_history_b0_c.py::test_reopen_recovers_interrupted_publication_idempotently"
+      ],
+      "scope": "Interrupted transaction rollback/retry and ambiguous journal rejection.",
+      "status": "PASS_INTEGRATED"
+    }
+  ],
+  "source_commit": "76458611d1a6608a6dac63036d0a698801043f62",
+  "summary": {
+    "FAIL": 0,
+    "NOT_TESTED": 0,
+    "PASS_INTEGRATED": 16,
+    "PASS_SCOPED": 2
+  }
+}
