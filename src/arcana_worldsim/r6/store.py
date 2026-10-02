@@ -64,6 +64,11 @@ class HistoryStore:
         self._initialize_or_validate_manifest()
         self._recover_transactions()
 
+    @property
+    def root(self) -> Path:
+        """Filesystem location for explicit operational accounting only."""
+        return self.__root
+
     def _initialize_or_validate_manifest(self) -> None:
         try:
             self._write("metadata", "store_manifest", self.MANIFEST)
