@@ -173,6 +173,16 @@ def account_storage(scope: AccountingScope, *, hard_cap_bytes: int = CANONICAL_H
             previous = accepted.get(key)
             if previous:
                 if previous[0] != category.value:
+                    pair = {previous[0], category.value}
+                    if pair == {StorageCategory.CANONICAL_METADATA.value,
+                                StorageCategory.OPERATIONAL_METADATA.value}:
+                        # Transaction journals hard-link staged records to
+                        # their publication target. Count that inode once as
+                        # canonical metadata; journal manifests/markers remain
+                        # operational metadata.
+                        if category is StorageCategory.CANONICAL_METADATA:
+                            accepted[key] = entry
+                        continue
                     raise StorageAccountingError("same physical file assigned to multiple categories")
                 continue
             accepted[key] = entry
