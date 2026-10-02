@@ -110,6 +110,14 @@ class ProvenanceRecordId(DeterministicId):
     PREFIX = "r6prov"
 
 
+class ForcingId(DeterministicId):
+    PREFIX = "r6forcing"
+
+
+class ReplayRecipeId(DeterministicId):
+    PREFIX = "r6recipe"
+
+
 @dataclass(frozen=True, slots=True)
 class PayloadIdentity:
     """Content identity for payload bytes, separate from semantic record IDs."""

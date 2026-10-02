@@ -11,8 +11,10 @@ import shutil
 import tempfile
 
 from .checkpoint import CheckpointEnvelope, RefinementBranchEnvelope
+from .forcing import ForcingRecord
 from .identity import ProviderBindingId, canonical_bytes
 from .provenance import ProvenanceIntegrityError, ProvenanceRecord
+from .replay import ReplayRecipe
 from .state import DomainStateEnvelope
 from .temporal import EventRecord, TemporalRecord, temporal_record_from_dict
 
@@ -49,7 +51,7 @@ class HistoryStore:
 
     _TRANSACTION_BUCKETS = frozenset({
         "states", "provenance", "events", "checkpoints", "temporal",
-        "refinement_branches",
+        "refinement_branches", "forcings", "replay_recipes",
     })
 
     def __init__(self, root: str | Path, *,
@@ -173,6 +175,14 @@ class HistoryStore:
             bucket, body, key = "refinement_branches", record.to_dict(), str(record.branch_id)
             parser = RefinementBranchEnvelope.from_dict
             identity = lambda value: str(value.branch_id)
+        elif isinstance(record, ForcingRecord):
+            bucket, body, key = "forcings", record.to_dict(), str(record.forcing_id)
+            parser = ForcingRecord.from_dict
+            identity = lambda value: str(value.forcing_id)
+        elif isinstance(record, ReplayRecipe):
+            bucket, body, key = "replay_recipes", record.to_dict(), str(record.recipe_id)
+            parser = ReplayRecipe.from_dict
+            identity = lambda value: str(value.recipe_id)
         elif isinstance(record, TemporalRecord):
             bucket, body, key = "temporal", record.to_dict(), record.record_id
             parser = temporal_record_from_dict
@@ -470,7 +480,8 @@ class HistoryStore:
         for row in self._all(bucket):
             try:
                 record = parser(row)
-                key = row.get("record_id") or row.get("state_id") or row.get("checkpoint_id") or row.get("branch_id")
+                key = (row.get("record_id") or row.get("state_id") or row.get("checkpoint_id")
+                       or row.get("forcing_id") or row.get("recipe_id") or row.get("branch_id"))
                 if key is None or identity(record) != str(key):
                     raise ValueError("record key does not match its identity")
                 result.append(record)
@@ -567,6 +578,32 @@ class HistoryStore:
         return self._typed_all("refinement_branches", "refinement branch",
                                RefinementBranchEnvelope.from_dict,
                                lambda row: str(row.branch_id))
+
+    def append_forcing(self, forcing: ForcingRecord) -> str:
+        key = str(forcing.forcing_id)
+        self._write("forcings", key, forcing.to_dict())
+        return key
+
+    def read_forcing(self, forcing_id: str) -> dict[str, Any]:
+        return self._typed("forcings", forcing_id, "forcing", ForcingRecord.from_dict,
+                           lambda row: str(row.forcing_id)).to_dict()
+
+    def forcings(self) -> tuple[ForcingRecord, ...]:
+        return self._typed_all("forcings", "forcing", ForcingRecord.from_dict,
+                               lambda row: str(row.forcing_id))
+
+    def append_replay_recipe(self, recipe: ReplayRecipe) -> str:
+        key = str(recipe.recipe_id)
+        self._write("replay_recipes", key, recipe.to_dict())
+        return key
+
+    def read_replay_recipe(self, recipe_id: str) -> ReplayRecipe:
+        return self._typed("replay_recipes", recipe_id, "replay recipe",
+                           ReplayRecipe.from_dict, lambda row: str(row.recipe_id))
+
+    def replay_recipes(self) -> tuple[ReplayRecipe, ...]:
+        return self._typed_all("replay_recipes", "replay recipe", ReplayRecipe.from_dict,
+                               lambda row: str(row.recipe_id))
 
     def find_states(self, *, history_id: str, branch_id: str | None = None,
                     domain: str | None = None, time_key: str | None = None,
