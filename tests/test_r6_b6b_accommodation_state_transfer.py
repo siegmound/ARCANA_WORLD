@@ -34,12 +34,14 @@ def test_shared_boundary_does_not_choose_or_average_incompatible_positions() -> 
 
 
 def test_current_governed_authority_keeps_global_first_state_blocked() -> None:
-    data = adjudicate(ROOT)
+    data = adjudicate(ROOT, mode="regression")
     assert data["result"]["decision"] == "PASS_B6B_FIRST_STEP_ACCOMMODATION_STATE_TRANSFER"
     assert data["result"]["first_dt_status_after_B6B"] == "NOT_READY_FOR_FIRST_DT"
     assert data["result"]["boundary_accommodation_status"].startswith("BLOCKING")
     assert data["result"]["junction_accommodation_status"].startswith("BLOCKING")
     assert data["result"]["maximum_next_authorization"] == "AUTHORIZE_TARGETED_MODEL_DECISION"
+    assert data["result"]["qualified_source_commit"] == "66ff83a8cf8b86b483c60a75b12d1da9594d1740"
+    assert data["result"]["current_regression_checkout"]["branch"] == "r6/b6c-targeted-first-step-model-decision"
     interior = next(item for item in data["transformations"]["transformations"]
                     if item["item"] == "strictly interior node coordinates")
     assert "CARTESIAN_ACTION_CONVENTION_MUST_BE_EXPLICIT" in interior["status"]
@@ -61,7 +63,7 @@ def test_source_identity_mismatch_fails_closed(tmp_path: Path) -> None:
 
 
 def test_result_validator_rejects_open_scientific_gate() -> None:
-    data = adjudicate(ROOT)
+    data = adjudicate(ROOT, mode="regression")
     data["result"]["scientific_side_effect_check"]["dt_selected"] = True
     with pytest.raises(B6BError, match="safety gate opened"):
         validate_result(data)

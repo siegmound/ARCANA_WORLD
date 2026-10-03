@@ -101,10 +101,12 @@ def validate_result(data: dict[str, Any]) -> bool:
     return True
 
 
-def adjudicate(root: Path = ROOT) -> dict[str, Any]:
+def adjudicate(root: Path = ROOT, *, mode: str = "qualification") -> dict[str, Any]:
     root = root.resolve()
     branch, head = _git(root, "branch", "--show-current"), _git(root, "rev-parse", "HEAD")
-    if branch != BRANCH or head != HEAD:
+    if mode not in {"qualification", "regression"}:
+        raise B6BError(f"unsupported B6B audit mode: {mode}")
+    if mode == "qualification" and (branch != BRANCH or head != HEAD):
         raise B6BError(f"expected {BRANCH}@{HEAD}, found {branch}@{head}")
     evidence: dict[str, Any] = {}
     source: dict[str, Any] = {}
@@ -344,8 +346,9 @@ def adjudicate(root: Path = ROOT) -> dict[str, Any]:
         "heavy_execution_during_B6B": False,
     }
     result = {
-        "schema": "R6_B6B_RESULT_V1", "decision": DECISION, "branch": branch,
-        "qualified_source_commit": head,
+        "schema": "R6_B6B_RESULT_V1", "decision": DECISION, "branch": BRANCH,
+        "qualified_source_commit": HEAD,
+        "current_regression_checkout": {"branch": branch, "head": head} if mode == "regression" else None,
         "first_step_transformation_inventory": transformations["transformations"],
         "interior_rigid_transfer_status": "CONDITIONAL_RIGID_TRANSFER_NO_MECHANICS_FOR_SINGLE_PLATE_INTERIORS; COORDINATE_ACTION_CONVENTION_MUST_BE_EXPLICIT",
         "boundary_accommodation_status": boundary["decision"],
