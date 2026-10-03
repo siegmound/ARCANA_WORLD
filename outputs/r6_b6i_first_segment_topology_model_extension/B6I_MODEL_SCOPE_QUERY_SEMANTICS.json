@@ -1,0 +1,31 @@
+{
+  "rules": [
+    {
+      "case": "enabled or derived event evaluated and absent within qualified scope",
+      "claim_scope": "only the evaluated model interval",
+      "status": "EVENT_DID_NOT_OCCUR"
+    },
+    {
+      "case": "known event class outside first-segment model scope",
+      "claim_scope": "does not assert physical impossibility or historical absence",
+      "status": "MODEL_SCOPE_LIMITATION"
+    },
+    {
+      "case": "enabled event class has not been evaluated or observation is unavailable",
+      "claim_scope": "no occurrence/absence claim",
+      "status": "UNKNOWN"
+    },
+    {
+      "case": "unregistered/new event class",
+      "claim_scope": "explicit model registration and qualification required",
+      "status": "FAIL_CLOSED_ERROR"
+    }
+  ],
+  "schema": "R6_MODEL_SCOPE_QUERY_SEMANTICS_V1",
+  "statuses": [
+    "EVENT_OCCURRED",
+    "EVENT_DID_NOT_OCCUR",
+    "MODEL_SCOPE_LIMITATION",
+    "UNKNOWN"
+  ]
+}

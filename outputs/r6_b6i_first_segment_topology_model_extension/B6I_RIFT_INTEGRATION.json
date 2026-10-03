@@ -1,0 +1,18 @@
+{
+  "applicability": "conditional on holding the canonical t0 Euler rates fixed; only applies within a first numerical step whose duration is separately bounded",
+  "authority": "B6A Census V3 guard / B6D D1",
+  "event_class": "RIFT_PROCESS_ACTIVATION",
+  "first_segment_status": "ENABLED",
+  "horizon_integrated_once": true,
+  "integration_count": 1,
+  "limiting_pair_id": "1:3",
+  "maximum_local_opening_velocity_m_per_year": 0.1843426358595416,
+  "not_a_dt": true,
+  "predicate": "RIFT_INITIATION becomes possible when E >= theta under positive opening; this operational model event marks activation of the rift-process state, not plate splitting or mature breakup",
+  "scope": "eligible rift activation only; not boundary birth, plate split, or global topology bound",
+  "strictness": "stop before/capture the event; no accepted interval crosses it",
+  "threshold_lower_bound_m": 5000.0,
+  "topology_window_closed": false,
+  "transition_executed": false,
+  "value_years": 27123.405156307464
+}
