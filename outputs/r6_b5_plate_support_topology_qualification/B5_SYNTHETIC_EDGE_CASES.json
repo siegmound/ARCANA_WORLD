@@ -1,0 +1,61 @@
+{
+  "actual_t0_mutated": false,
+  "cases": [
+    {
+      "case": "boundary_shared_node",
+      "meaning": "both incident plate IDs retained; no owner",
+      "status": "PASS"
+    },
+    {
+      "case": "junction_node",
+      "meaning": "all incident plate IDs retained as set",
+      "status": "PASS"
+    },
+    {
+      "actual_arcana_event": false,
+      "case": "plate_split",
+      "event_id": "r6event_512fe9d217a47e74ea2b22d0b529155f43724b59c84164346bef0010fbf275c6",
+      "status": "PASS_FIXTURE_ONLY"
+    },
+    {
+      "actual_arcana_event": false,
+      "case": "plate_merge",
+      "event_id": "r6event_5f585de50369f9e76d3d821d5fb39372ff1cf7de9427447f0323e5d1008e0b5a",
+      "status": "PASS_FIXTURE_ONLY"
+    },
+    {
+      "actual_arcana_event": false,
+      "case": "boundary_birth",
+      "event_id": "r6event_eb5cbdb99cb42fa81cbfca420bc6eda10871f0138ea61cd95e3b76426c9f8684",
+      "status": "PASS_FIXTURE_ONLY"
+    },
+    {
+      "actual_arcana_event": false,
+      "case": "boundary_death",
+      "event_id": "r6event_3e7eb95eda648f1714e84a75d6f32186bb250e732b911ccf3d630fccc56b6cb5",
+      "status": "PASS_FIXTURE_ONLY"
+    },
+    {
+      "actual_arcana_event": false,
+      "case": "junction_reassignment",
+      "event_id": "r6event_3fd8b2d822e99f00cd2271c3c4302c70962fb2ceb8b1b76976d8ef623796ef95",
+      "status": "PASS_FIXTURE_ONLY"
+    },
+    {
+      "case": "missing_mapping",
+      "status": "PASS_FAIL_CLOSED",
+      "test": "require_plate_grid_mapping(None)"
+    },
+    {
+      "case": "frame_mismatch",
+      "status": "PASS_FAIL_CLOSED",
+      "test": "validate_fixture_interval rejects incompatible frame"
+    },
+    {
+      "case": "unsupported_positive_interval",
+      "status": "PASS_FAIL_CLOSED",
+      "test": "validate_fixture_interval requires explicit fixture coverage"
+    }
+  ],
+  "schema": "R6_B5_SYNTHETIC_EDGE_CASE_RESULT_V1"
+}

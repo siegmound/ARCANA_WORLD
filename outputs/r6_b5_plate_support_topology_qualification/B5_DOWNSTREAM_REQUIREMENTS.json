@@ -1,0 +1,49 @@
+{
+  "requirements": [
+    {
+      "capability": "plate rigid motion at 210 Ma",
+      "reason": "B4 instantaneous vectors",
+      "status": "AVAILABLE_GOVERNED"
+    },
+    {
+      "capability": "node/face plate membership",
+      "reason": "exact face partition and mesh incidence",
+      "status": "DERIVABLE_GOVERNED"
+    },
+    {
+      "capability": "boundary relative motion at 210 Ma",
+      "reason": "B4 vector pair and governed boundary geometry",
+      "status": "DERIVABLE_GOVERNED"
+    },
+    {
+      "capability": "topology change events",
+      "reason": "EventRecord fixtures only; no ARCANA event calendar",
+      "status": "SCHEMA_READY_BUT_DATA_MISSING"
+    },
+    {
+      "capability": "boundary mechanical accommodation",
+      "reason": "no governed type, polarity, slip, or constitutive law",
+      "status": "MISSING"
+    },
+    {
+      "capability": "crust/lithosphere response",
+      "reason": "no authorized temporal mechanical response model",
+      "status": "MISSING"
+    },
+    {
+      "capability": "elevation/topography response",
+      "reason": "no governed deformation-to-topography coupling",
+      "status": "MISSING"
+    },
+    {
+      "capability": "thermal state",
+      "reason": "T0 thermal state exists; no authorized temporal coupling",
+      "status": "SCHEMA_READY_BUT_DATA_MISSING"
+    },
+    {
+      "capability": "surface consequences",
+      "reason": "not needed to represent the first tectonic state transition; later causal coupling remains required",
+      "status": "NOT_REQUIRED_FOR_FIRST_STEP"
+    }
+  ]
+}

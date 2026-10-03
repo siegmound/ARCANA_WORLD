@@ -207,12 +207,13 @@ def _verify_b3_evidence(root: Path) -> tuple[dict[str, Any], dict[str, Any]]:
                     "source_commit": result.get("qualified_source_commit")}
 
 
-def load_governed_source(repository_root: str | Path) -> tuple[GovernedPlateKinematics, dict[str, Any]]:
+def load_governed_source(repository_root: str | Path, *,
+                         expected_branch: str = B4_BRANCH) -> tuple[GovernedPlateKinematics, dict[str, Any]]:
     """Read and verify only the current governed T0 kinematics/topology source set."""
     root = Path(repository_root).resolve()
     branch = _git(root, "branch", "--show-current")
-    if branch != B4_BRANCH:
-        raise KinematicsAuthorityError(f"unexpected B4 branch: {branch}")
+    if branch != expected_branch:
+        raise KinematicsAuthorityError(f"unexpected kinematics qualification branch: {branch}")
     head = _git(root, "rev-parse", "HEAD")
     docs = [_tracked_identity(root, name) for name in TRACKED_AUTHORITIES]
     initial = _read_json(root / INITIAL_MANIFEST)

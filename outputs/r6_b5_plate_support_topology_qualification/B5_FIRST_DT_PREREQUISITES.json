@@ -1,0 +1,80 @@
+{
+  "requirements": [
+    {
+      "authority_source": "vector partition + canonical mesh",
+      "can_be_derived": true,
+      "can_remain_unknown": false,
+      "must_resolve_before_dt": true,
+      "must_resolve_before_mechanics": true,
+      "requirement": "T0 plate/face/node support map",
+      "status": "CLOSED_B5_DERIVABLE_GOVERNED",
+      "why_needed": "spatially bind plate forcing"
+    },
+    {
+      "authority_source": "none",
+      "can_be_derived": false,
+      "can_remain_unknown": false,
+      "missing_provider_model": true,
+      "must_resolve_before_dt": true,
+      "must_resolve_before_mechanics": true,
+      "requirement": "positive-duration kinematic validity/model",
+      "status": "MISSING",
+      "why_needed": "define motion through nonzero interval"
+    },
+    {
+      "authority_source": "none",
+      "can_be_derived": false,
+      "can_remain_unknown": true,
+      "missing_provider_model": true,
+      "must_resolve_before_dt": false,
+      "must_resolve_before_mechanics": true,
+      "requirement": "boundary process/accommodation law",
+      "status": "MISSING",
+      "why_needed": "convert relative motion into mechanical response"
+    },
+    {
+      "authority_source": "none",
+      "can_be_derived": false,
+      "can_remain_unknown": false,
+      "missing_provider_model": true,
+      "must_resolve_before_dt": true,
+      "must_resolve_before_mechanics": true,
+      "requirement": "topology event calendar and plate lineage",
+      "status": "MISSING",
+      "why_needed": "bound intervals and identity continuity"
+    },
+    {
+      "authority_source": "B4 kinematics + T0 grid",
+      "can_be_derived": true,
+      "can_remain_unknown": false,
+      "missing_provider_model": false,
+      "must_resolve_before_dt": true,
+      "must_resolve_before_mechanics": true,
+      "requirement": "reference-frame transform/gauge adjudication",
+      "status": "PARTIALLY_BOUND_T0_ONLY",
+      "why_needed": "ensure motion and geometry share declared frame"
+    },
+    {
+      "authority_source": "none beyond derived source binding",
+      "can_be_derived": false,
+      "can_remain_unknown": false,
+      "missing_provider_model": true,
+      "must_resolve_before_dt": true,
+      "must_resolve_before_mechanics": true,
+      "requirement": "Cartesian axis/handedness convention for any downstream vector transform",
+      "status": "NOT_SEPARATELY_DECLARED",
+      "why_needed": "prevent an ungoverned coordinate transform"
+    },
+    {
+      "authority_source": "current R6 material/thermal adjudication",
+      "can_be_derived": false,
+      "can_remain_unknown": true,
+      "missing_provider_model": true,
+      "must_resolve_before_dt": false,
+      "must_resolve_before_mechanics": true,
+      "requirement": "material and thermal response configuration",
+      "status": "PRE_ORBDATA_BLOCKERS_REMAIN",
+      "why_needed": "mechanical runtime response"
+    }
+  ]
+}

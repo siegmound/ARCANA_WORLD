@@ -1,0 +1,99 @@
+{
+  "accounting": {
+    "canonical_persistent_bytes": 7220669,
+    "categories": {
+      "CANONICAL_METADATA": {
+        "file_count": 14,
+        "logical_bytes": 27296
+      },
+      "CANONICAL_PAYLOAD": {
+        "file_count": 3,
+        "logical_bytes": 7193373
+      },
+      "INDEX": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "OPERATIONAL_METADATA": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "PROVIDER_CACHE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "QUALIFICATION_EVIDENCE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "REFINEMENT_CACHE": {
+        "file_count": 0,
+        "logical_bytes": 0
+      },
+      "SCRATCH": {
+        "file_count": 0,
+        "logical_bytes": 0
+      }
+    },
+    "hard_cap_bytes": 500000000000,
+    "payload_alias_counted_once": true,
+    "within_hard_cap": true
+  },
+  "fixture_events": [
+    {
+      "actual_arcana_event": false,
+      "event_type": "PLATE_SPLIT",
+      "fixture_only": true,
+      "parent_history_mutated": false,
+      "record_id": "r6event_512fe9d217a47e74ea2b22d0b529155f43724b59c84164346bef0010fbf275c6"
+    },
+    {
+      "actual_arcana_event": false,
+      "event_type": "PLATE_MERGE",
+      "fixture_only": true,
+      "parent_history_mutated": false,
+      "record_id": "r6event_5f585de50369f9e76d3d821d5fb39372ff1cf7de9427447f0323e5d1008e0b5a"
+    },
+    {
+      "actual_arcana_event": false,
+      "event_type": "BOUNDARY_BIRTH",
+      "fixture_only": true,
+      "parent_history_mutated": false,
+      "record_id": "r6event_eb5cbdb99cb42fa81cbfca420bc6eda10871f0138ea61cd95e3b76426c9f8684"
+    },
+    {
+      "actual_arcana_event": false,
+      "event_type": "BOUNDARY_DEATH",
+      "fixture_only": true,
+      "parent_history_mutated": false,
+      "record_id": "r6event_3e7eb95eda648f1714e84a75d6f32186bb250e732b911ccf3d630fccc56b6cb5"
+    },
+    {
+      "actual_arcana_event": false,
+      "event_type": "JUNCTION_REASSIGNMENT",
+      "fixture_only": true,
+      "parent_history_mutated": false,
+      "record_id": "r6event_3fd8b2d822e99f00cd2271c3c4302c70962fb2ceb8b1b76976d8ef623796ef95"
+    }
+  ],
+  "result": {
+    "fixture_why": {
+      "event_count": 5,
+      "unresolved_reference_count": 0
+    },
+    "plate_why": {
+      "forcing_count": 1,
+      "provenance_count": 3,
+      "state_lineage_count": 1,
+      "unresolved_reference_count": 0
+    },
+    "semantic_identity_stable_after_reopen": true,
+    "status": "PASS_PERSIST_REOPEN_QUERY_WHY",
+    "support_payload_reopened_and_hash_verified": true,
+    "transaction_record_counts": {
+      "events": 5,
+      "forcings": 1,
+      "states": 3
+    }
+  }
+}

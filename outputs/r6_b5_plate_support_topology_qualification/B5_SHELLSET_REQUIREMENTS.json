@@ -1,0 +1,34 @@
+{
+  "requirements": [
+    {
+      "reason": "B3/S1B runtime package qualification",
+      "requirement": "validated ARCANA T0 runtime FEG/package",
+      "status": "AVAILABLE_GOVERNED"
+    },
+    {
+      "reason": "B5 exact incidence qualification",
+      "requirement": "T0 plate support on mesh",
+      "status": "DERIVABLE_GOVERNED"
+    },
+    {
+      "reason": "legacy Earth5R BCS is not ARCANA authority",
+      "requirement": "ARCANA boundary conditions replacing Earth5R BCS",
+      "status": "MISSING"
+    },
+    {
+      "reason": "B4/B5 only establish an instantaneous anchor",
+      "requirement": "positive-duration driver and topology schedule",
+      "status": "MISSING"
+    },
+    {
+      "reason": "no governed fault/ridge/transform mechanics authority",
+      "requirement": "boundary mechanical accommodation laws",
+      "status": "MISSING"
+    },
+    {
+      "reason": "do not infer ARCANA need from legacy runtime assumptions",
+      "requirement": "ShellSet fault elements",
+      "status": "LEGACY_EARTH5R_SPECIFIC_UNPROVEN_FOR_ARCANA"
+    }
+  ]
+}

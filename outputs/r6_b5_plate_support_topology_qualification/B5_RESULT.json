@@ -1,0 +1,130 @@
+{
+  "adjacent_plate_pair_count": 30,
+  "b6_readiness": "READY_FOR_B6_WITH_UNRESOLVED_TEMPORAL_AUTHORITY",
+  "boundary_contract_result": "GEOMETRIC_AND_T0_INSTANTANEOUS_KINEMATIC_ONLY; MECHANICS_UNKNOWN",
+  "boundary_count": 1983,
+  "boundary_descriptor_identity_sha256": "4be9ef466984b1ecfff895fa603b77a292ea023ef733a58e3accb50c8b7ea23c",
+  "boundary_node_semantics": "BOUNDARY_SHARED_AND_JUNCTION_SHARED; NO_SINGLE_PLATE_OWNER",
+  "branch": "r6/b5-kinematic-support-topology-integration",
+  "decision": "PASS_B5_PLATE_SUPPORT_TOPOLOGY_TEMPORAL_INTEGRATION",
+  "gates": {
+    "canonical_state_changed": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "orbdata_mechanics_executed": false,
+    "runtime_authorized": true,
+    "runtime_authorized_scope": "LOAD_AND_CONSUME_GOVERNED_ARCANA_T0_RUNTIME_PACKAGE",
+    "shellset_executed": false,
+    "t1_created": false
+  },
+  "instantaneous_relative_motion_result": "PASS_DERIVED_GOVERNED_INSTANT_DIAGNOSTIC_AT_210_MA_ONLY",
+  "junction_count": 20,
+  "next_stage_authorization": "AUTHORIZE_B6_DEPENDENCY_AND_TEMPORAL_GAP_ADJUDICATION_ONLY",
+  "node_support_counts": {
+    "BOUNDARY_SHARED": 1953,
+    "INTERIOR_PLATE": 62469,
+    "JUNCTION_SHARED": 20,
+    "UNKNOWN": 0
+  },
+  "node_support_identity_sha256": "f2e7ce5c91682ca16f868993d909a27fd74d8ee814a4521bff02cfc3f7af0cf1",
+  "node_support_payload_sha256": "752eb9f4107dbdd638e48540a7b4258cad94bac1d007b654bfc68d8284687bda",
+  "plate_face_mapping_status": "DIRECT_GOVERNED_MODEL_DERIVED_PARTITION",
+  "plate_lineage_status": "ANCHOR_IDENTITIES_ONLY; CONTINUATION_SPLIT_MERGE_TERMINATION_UNBOUND",
+  "plate_node_mapping_status": "DERIVABLE_GOVERNED_EXACT_FACE_INCIDENCE_SET_VALUED",
+  "positive_duration_authority": "ABSENT; no governed validity interval, temporal interpolation, or topology calendar",
+  "positive_duration_motion_status": "ANCHOR_ONLY_NO_POSITIVE_INTERVAL",
+  "production_changes": {
+    "generic_world_history_core_changed": false,
+    "implementation_files": [
+      "src/arcana_worldsim/r6/plate_kinematics_adapter.py",
+      "src/arcana_worldsim/r6/plate_support_adapter.py",
+      "scripts/r6_plate_support_topology_b5_qualification.py"
+    ],
+    "scientific_payload_changed": false
+  },
+  "qualification_implementation": [
+    {
+      "logical_path": "src/arcana_worldsim/r6/plate_kinematics_adapter.py",
+      "sha256": "5fbe9a57b1c0a7d1b08ef9fa2046014fc8ef22d244ca8533e3c815ec44cdfc06",
+      "working_tree_status": "UNCOMMITTED_SOURCE"
+    },
+    {
+      "logical_path": "src/arcana_worldsim/r6/plate_support_adapter.py",
+      "sha256": "d4cfe24e7d5b582530bc3df58cd3ccdd4405cdfc56516c29a3a449b2f79eb916",
+      "working_tree_status": "UNCOMMITTED_SOURCE"
+    },
+    {
+      "logical_path": "scripts/r6_plate_support_topology_b5_qualification.py",
+      "sha256": "4a59b6a5043a5925f60896373ea03f157767464da9caa5cecbbba2a311a11aa2",
+      "working_tree_status": "UNCOMMITTED_SOURCE"
+    }
+  ],
+  "qualification_wall_seconds_environment_evidence": 6.783984,
+  "qualified_source_commit": "95d4bbe8d61e8796299e496822a95f7b8dac67cc",
+  "real_qualification": "PASS_READ_ONLY_GOVERNED_T0_SOURCES_VERIFIED",
+  "reference_frame_result": {
+    "angular_units": "rad/year",
+    "cartesian_axis_handedness": "NOT_SEPARATELY_DECLARED_IN_GOVERNED_AUTHORITY; no additional transform inferred",
+    "gauge_interpretation": "synthetic kinematic gauge only; not mantle-rest, hotspot, torque-balance, or mantle-coupling authority",
+    "grid_frame": "R6_GLOBAL_GEOGRAPHY_1DEG_V1 latitude/longitude degrees; south-to-north rows; periodic longitude; shared polar point",
+    "kinematics_frame": "SYNTHETIC_AREA_WEIGHTED_LEAST_SQUARES_NO_NET_ROTATION_GAUGE",
+    "linear_velocity_units": "m/year",
+    "sphere_radius_m": 6371000.0,
+    "status": "DECLARED_GAUGE_AND_GRID_BOUND; CARTESIAN_AXIS_HANDEDNESS_NOT_SEPARATELY_GOVERNED",
+    "t0_ma": 210.0
+  },
+  "schema": "R6_B5_PLATE_SUPPORT_TOPOLOGY_QUALIFICATION_RESULT_V1",
+  "scope": "READ_ONLY_T0_SPATIAL_SUPPORT_AND_TOPOLOGY_CONTRACT_QUALIFICATION",
+  "source_identity_sha256": "dc2c00e1c6779b6e5703107f0f44b79385f3fa985519e9e3e3aec9e98ba47b35",
+  "spatial_authority_result": "PASS_EXACT_DERIVATION_FROM_GOVERNED_FACE_PARTITION_AND_CANONICAL_MESH",
+  "synthetic_edge_case_result": {
+    "actual_arcana_events_claimed": false,
+    "case_count": 10,
+    "cases": [
+      "boundary_shared_node",
+      "junction_node",
+      "plate_split",
+      "plate_merge",
+      "boundary_birth",
+      "boundary_death",
+      "junction_reassignment",
+      "missing_mapping",
+      "frame_mismatch",
+      "unsupported_positive_interval"
+    ],
+    "status": "PASS_FIXTURES_AND_FAIL_CLOSED_CASES"
+  },
+  "topology_event_contract": {
+    "actual_arcana_events_claimed": false,
+    "event_types": [
+      "PLATE_SPLIT",
+      "PLATE_MERGE",
+      "BOUNDARY_BIRTH",
+      "BOUNDARY_DEATH",
+      "JUNCTION_REASSIGNMENT"
+    ],
+    "parent_history_mutated": false,
+    "status": "SCHEMA_QUALIFIED_SYNTHETIC_FIXTURES_ONLY"
+  },
+  "world_history_support_integration": {
+    "fixture_why": {
+      "event_count": 5,
+      "unresolved_reference_count": 0
+    },
+    "plate_why": {
+      "forcing_count": 1,
+      "provenance_count": 3,
+      "state_lineage_count": 1,
+      "unresolved_reference_count": 0
+    },
+    "semantic_identity_stable_after_reopen": true,
+    "status": "PASS_PERSIST_REOPEN_QUERY_WHY",
+    "support_payload_reopened_and_hash_verified": true,
+    "transaction_record_counts": {
+      "events": 5,
+      "forcings": 1,
+      "states": 3
+    }
+  }
+}
