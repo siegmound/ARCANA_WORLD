@@ -1,0 +1,24 @@
+{
+  "schema": "R6_B6A_TEST_RESULTS_V1",
+  "qualified_source_commit": "8f53f1586413b1e2e3b6738185727e5b6314c30c",
+  "focused_b6a": {
+    "command": "python -m pytest -q tests/test_r6_b6a_positive_duration_authority.py -p no:cacheprovider",
+    "tests_passed": 4,
+    "tests_failed": 0,
+    "duration_seconds": 0.44,
+    "result": "PASS"
+  },
+  "active_r6": {
+    "command": "$r6Tests = @(Get-ChildItem -LiteralPath tests -Filter 'test_r6_*.py' -File | ForEach-Object { $_.FullName }); python -m pytest -q $r6Tests -p no:cacheprovider",
+    "tests_passed": 344,
+    "tests_failed": 0,
+    "duration_seconds": 126.46,
+    "result": "PASS",
+    "count_note": "Four B6A focused tests added to the 340-test entering baseline."
+  },
+  "py_compile": "PASS",
+  "adjudication_runner": "PASS_B6A_POSITIVE_DURATION_AUTHORITY_ADJUDICATION",
+  "json_manifest_path_validation": "PASS",
+  "diff_check": "PASS",
+  "scientific_runtimes_executed": false
+}

@@ -1,0 +1,12 @@
+{
+  "earth_fixed_or_mantle_fixed": false,
+  "evidence": [
+    "T0 motion-prior contract common gauge",
+    "producer uses xyz from lat/lon and v=omega cross r on the declared synthetic sphere"
+  ],
+  "external_frame_transform": "FRAME_TRANSFORM_REQUIRED_IF_AN_EXTERNAL_EARTH/MANTLE-FRAME_PROVIDER_IS_LATER_SELECTED",
+  "internal_frame": "SYNTHETIC_AREA_WEIGHTED_LEAST_SQUARES_NO_NET_ROTATION_GAUGE",
+  "requirement": "SUFFICIENT_FOR_INTERNAL_RELATIVE_MOTION",
+  "schema": "R6_B6A_REFERENCE_FRAME_RESULT_V1",
+  "temporal_semantics": "first-segment constant T0 Euler state is interpreted within the same synthetic internal gauge; no external frame trajectory is implied"
+}

@@ -1,0 +1,21 @@
+{
+  "T0_instantaneous_relative_motion": {
+    "reason": "governed T0 Euler vectors, plate support and deterministic spherical cross-product rule",
+    "status": "DERIVABLE_GOVERNED"
+  },
+  "first_segment_motion": {
+    "reason": "the conditional constant-rate first-segment policy is an explicit R6 model rule",
+    "status": "GOVERNED_AUTHORED_MODEL_NOT_DERIVED_FROM_RATE_ALONE"
+  },
+  "overall_joint_interval": "NOT_DERIVABLE_FROM_CURRENT_GOVERNED_INPUTS",
+  "rift_activation_model_bound": {
+    "reason": "precommitted lower threshold divided by maximum supported positive opening rate under the constant first segment",
+    "status": "DERIVABLE_GOVERNED_WITHIN_MODEL",
+    "value_years": 27123.405156307464
+  },
+  "schema": "R6_B6A_DERIVABILITY_V1",
+  "topology_transition_or_invariance_bound": {
+    "reason": "no governing split/merge/adjacency/junction event-time law or interval-invariance rule",
+    "status": "NOT_DERIVABLE"
+  }
+}

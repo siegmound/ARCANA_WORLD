@@ -1,0 +1,49 @@
+{
+  "conditional_first_segment": {
+    "execution_authorized": false,
+    "law": "hold canonical T0 Euler state constant only through first segment; stop at earliest event/law boundary",
+    "renewal": "UNBOUND_BEYOND_FIRST_SEGMENT",
+    "status": "GOVERNED_CURRENT_CONDITIONAL_MODEL"
+  },
+  "external_rotation_series": {
+    "legacy_search_scope": "followed only current R6 provenance pointers; no unreferenced historical output scan",
+    "status": "ABSENT_FROM_CURRENT_R6_PROVENANCE"
+  },
+  "instantaneous_anchor": {
+    "plate_count": 12,
+    "rate_units": "rad/year",
+    "source": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+    "status": "GOVERNED_CURRENT",
+    "time_ma": 210.0
+  },
+  "processor": {
+    "software_does_not_supply_temporal_authority": true,
+    "status": "REFERENCE_ONLY_CANDIDATE"
+  },
+  "rift_activation_bound": {
+    "elapsed_years": 27123.405156307464,
+    "scope": "conditional rift-process activation only",
+    "status": "DERIVABLE_GOVERNED_WITHIN_AUTHORED_MODEL"
+  },
+  "schema": "R6_B6A_AUTHORITY_INVENTORY_V1",
+  "search_inventory": {
+    "Euler_vectors_at_multiple_times": "ABSENT; one governed T0 realization at 210 Ma",
+    "R6_rift_activation_horizon": "CONDITIONAL_MODEL_BOUND_ONLY; not a topology event time",
+    "angular_velocity_history": "ABSENT; only a conditional fixed-T0 first segment is bound",
+    "declared_numeric_kinematic_validity_interval": "ABSENT",
+    "finite_or_stage_rotation_sequence": "ABSENT; finite-rotation papers are cited as methodology only",
+    "long_term_segment_renewal_or_interpolation": "ABSENT",
+    "topology_event_ages_or_invariance_intervals": "ABSENT"
+  },
+  "topology_transition_ages_or_invariance": {
+    "event_types": [
+      "plate split",
+      "plate merge",
+      "plate creation/termination",
+      "boundary birth/death",
+      "adjacency change",
+      "junction reassignment"
+    ],
+    "status": "ABSENT"
+  }
+}

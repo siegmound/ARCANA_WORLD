@@ -1,0 +1,70 @@
+{
+  "schema": "R6_B6A_TEMPORAL_SOURCE_AUDIT_V1",
+  "sources": [
+    {
+      "classification": "GOVERNED_CURRENT",
+      "finding": "12 synthetic Euler-rate vectors at the single T0 anchor; no temporal sequence.",
+      "path": "R6_T0_CANONICAL_PLATE_KINEMATICS.json"
+    },
+    {
+      "classification": "GOVERNED_CURRENT",
+      "finding": "one canonical realization at 210 Ma; first-segment renewal remains unbound.",
+      "path": "R6_T0_INITIAL_KINEMATICS_MANIFEST.json"
+    },
+    {
+      "classification": "GOVERNED_CURRENT",
+      "finding": "T0 initial condition only; its held-constant segment is explicitly conditional and not exercised by that contract.",
+      "path": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT.json"
+    },
+    {
+      "classification": "GOVERNED_CURRENT",
+      "finding": "explicit authorial constant-T0 first-segment policy and rift-initiation guard; no time evolution or plate split.",
+      "path": "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING.json"
+    },
+    {
+      "classification": "GOVERNED_CURRENT",
+      "finding": "deterministic conditional rift-activation bound; not a natural minimum or topology-change time.",
+      "path": "R6_T0_EVENT_ELIGIBILITY_CENSUS_V3.json"
+    },
+    {
+      "classification": "SUPERSEDED_FOR_RIFT_ELIGIBILITY",
+      "finding": "references the older V1 census with 30 UNKNOWN pairs; V3 binds current T0 kinematics and has 26 eligible, 4 ineligible, 0 unknown. It does not supersede the absent topology-transition bound or numerical authorization gaps.",
+      "path": "R6_T0_FIRST_INTERVAL_EVENT_GUARD.json"
+    },
+    {
+      "classification": "GOVERNED_CURRENT_QUALIFICATION_EVIDENCE",
+      "finding": "adapter itself provides only an instant anchor; does not negate the later conditional R6 first-segment model.",
+      "path": "outputs/r6_b4_plate_kinematics_qualification/B4_TEMPORAL_SUPPORT.json"
+    },
+    {
+      "classification": "GOVERNED_CURRENT_QUALIFICATION_EVIDENCE",
+      "finding": "B5 spatial support has one anchor and no topology dates; synthetic event schema is not an actual event calendar.",
+      "path": "outputs/r6_b5_plate_support_topology_qualification/B5_TEMPORAL_VALIDITY.json"
+    },
+    {
+      "classification": "CANDIDATE_SCHEMA_ONLY",
+      "finding": "event examples are marked actual_arcana_event=false and provide no ages.",
+      "path": "outputs/r6_b5_plate_support_topology_qualification/B5_TOPOLOGY_EVENT_CONTRACT.json"
+    },
+    {
+      "classification": "SUPERSEDED_FOR_T0_VECTOR_MATERIALIZATION; CURRENT_FOR_OPEN_MODEL_GAPS",
+      "finding": "its earlier vector-unbound statement is superseded by the canonical T0 realization; its unresolved motion renewal/numerical validity gaps remain.",
+      "path": "R6_INITIAL_PLATE_KINEMATICS_AND_RIFT_PARAMETER_AUTHORITY_BINDING.json"
+    },
+    {
+      "classification": "REFERENCE_ONLY",
+      "finding": "finite-rotation literature is methodological context expressly not transferred as ARCANA temporal law.",
+      "path": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT.json#research_references"
+    },
+    {
+      "classification": "REFERENCE_ONLY_CANDIDATE",
+      "finding": "processor capability cannot create missing trajectory or topology authority.",
+      "path": "R6_PYGPLATES_*"
+    },
+    {
+      "classification": "ABSENT",
+      "finding": "the audited current R6/B4/B5 inputs expose only 210 Ma.",
+      "path": "additional governed temporal anchors"
+    }
+  ]
+}
