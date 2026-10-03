@@ -1,0 +1,204 @@
+{
+  "edge_orientation": "from consumer/output to its prerequisite for REQUIRES and DERIVES_FROM",
+  "edges": [
+    {
+      "from": "SUPPORT0",
+      "kind": "DERIVES_FROM",
+      "status": "QUALIFIED",
+      "to": "T0"
+    },
+    {
+      "from": "SUPPORT0",
+      "kind": "DERIVES_FROM",
+      "status": "QUALIFIED",
+      "to": "BOUNDARY0"
+    },
+    {
+      "from": "KIN_LAW",
+      "kind": "REQUIRES",
+      "status": "REQUIRED_NOT_SATISFIED",
+      "to": "KIN0"
+    },
+    {
+      "from": "KIN_LAW",
+      "kind": "REQUIRES",
+      "status": "SATISFIED_B5",
+      "to": "SUPPORT0"
+    },
+    {
+      "from": "EVENT_BOUND",
+      "kind": "REQUIRES",
+      "status": "REQUIRED_NOT_SATISFIED",
+      "to": "BOUNDARY0"
+    },
+    {
+      "from": "BOUNDARY_RESPONSE",
+      "kind": "REQUIRES",
+      "status": "REQUIRED_NOT_SATISFIED",
+      "to": "BOUNDARY0"
+    },
+    {
+      "from": "BOUNDARY_RESPONSE",
+      "kind": "REQUIRES",
+      "status": "INSTANTANEOUS_INPUT_AVAILABLE",
+      "to": "KIN0"
+    },
+    {
+      "from": "JUNCTION_RESPONSE",
+      "kind": "REQUIRES",
+      "status": "REQUIRED_NOT_SATISFIED",
+      "to": "BOUNDARY0"
+    },
+    {
+      "from": "MESH_TRANSFER",
+      "kind": "REQUIRES",
+      "status": "CURRENT_SUPPORT_AVAILABLE",
+      "to": "SUPPORT0"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "REQUIRED",
+      "to": "T0"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "BLOCKED",
+      "to": "KIN_LAW"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "BLOCKED",
+      "to": "EVENT_BOUND"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "BLOCKED_BY_ZERO_CAPACITY_POLICY",
+      "to": "BOUNDARY_RESPONSE"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "BLOCKED",
+      "to": "JUNCTION_RESPONSE"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "BLOCKED",
+      "to": "MESH_TRANSFER"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "BLOCKED_IF_SURFACE_FIELDS_ADVANCE",
+      "to": "DOMAIN_TRANSFER"
+    },
+    {
+      "from": "CHECKPOINT",
+      "kind": "REQUIRES",
+      "status": "ONLY_AFTER_VALID_STATE_EXISTS",
+      "to": "CANDIDATE_STATE"
+    },
+    {
+      "from": "REL_MOTION0",
+      "kind": "DERIVES_FROM",
+      "status": "GOVERNED_T0_DERIVATION",
+      "to": "KIN0"
+    },
+    {
+      "from": "REL_MOTION0",
+      "kind": "DERIVES_FROM",
+      "status": "GOVERNED_T0_DERIVATION",
+      "to": "BOUNDARY0"
+    },
+    {
+      "from": "CANDIDATE_STATE",
+      "kind": "REQUIRES",
+      "status": "UNIQUELY_DERIVABLE_INTERNAL_T0",
+      "to": "FRAME0"
+    },
+    {
+      "from": "BOUNDARY_RESPONSE",
+      "kind": "REQUIRES",
+      "status": "INPUT_AVAILABLE_AT_ANCHOR",
+      "to": "REL_MOTION0"
+    }
+  ],
+  "nodes": [
+    {
+      "kind": "GOVERNED_STATE",
+      "node_id": "T0",
+      "status": "AVAILABLE_ANCHOR_ONLY"
+    },
+    {
+      "kind": "FORCING",
+      "node_id": "KIN0",
+      "status": "AVAILABLE_INSTANT_ONLY"
+    },
+    {
+      "kind": "SPATIAL_SUPPORT",
+      "node_id": "SUPPORT0",
+      "status": "B5_DERIVED_GOVERNED"
+    },
+    {
+      "kind": "TOPOLOGY",
+      "node_id": "BOUNDARY0",
+      "status": "AVAILABLE_T0_GRAPH_ONLY"
+    },
+    {
+      "kind": "TEMPORAL_MODEL",
+      "node_id": "KIN_LAW",
+      "status": "MISSING_VALIDITY_AND_CHANGE_LAW"
+    },
+    {
+      "kind": "TEMPORAL_CONSTRAINT",
+      "node_id": "EVENT_BOUND",
+      "status": "MISSING_POSITIVE_LEAD_TIME"
+    },
+    {
+      "kind": "PHYSICAL_MODEL",
+      "node_id": "BOUNDARY_RESPONSE",
+      "status": "ZERO_CAPACITY_FAIL_CLOSED"
+    },
+    {
+      "kind": "PHYSICAL_MODEL",
+      "node_id": "JUNCTION_RESPONSE",
+      "status": "MISSING_COMPATIBILITY_RULE"
+    },
+    {
+      "kind": "STATE_UPDATE_RULE",
+      "node_id": "MESH_TRANSFER",
+      "status": "MISSING_VALIDITY_AND_TRANSFER_CRITERIA"
+    },
+    {
+      "kind": "STATE_UPDATE_RULE",
+      "node_id": "DOMAIN_TRANSFER",
+      "status": "UNKNOWN_DEPENDENCY_POLICY"
+    },
+    {
+      "kind": "WORLD_HISTORY_STATE",
+      "node_id": "CANDIDATE_STATE",
+      "status": "NOT_CREATED"
+    },
+    {
+      "kind": "WORLD_HISTORY_CHECKPOINT",
+      "node_id": "CHECKPOINT",
+      "status": "SCHEMA_AVAILABLE_NOT_PUBLISHED"
+    },
+    {
+      "kind": "REFERENCE_FRAME",
+      "node_id": "FRAME0",
+      "status": "UNIQUELY_DERIVABLE_INTERNAL_T0_COMPUTATIONAL_FRAME"
+    },
+    {
+      "kind": "DERIVED_INSTANT_DIAGNOSTIC",
+      "node_id": "REL_MOTION0",
+      "status": "AVAILABLE_AT_210_MA_ONLY"
+    }
+  ],
+  "schema": "R6_B6_FIRST_STEP_CAUSAL_GRAPH_V1"
+}

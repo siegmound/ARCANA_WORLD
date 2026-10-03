@@ -1,0 +1,83 @@
+{
+  "anchor": {
+    "authority": "GOVERNED_T0_INSTANT_ANCHOR",
+    "time_ma": 210.0
+  },
+  "dt_selected": false,
+  "future_required_constraints": [
+    "B6_TEMPORAL_KINEMATIC_LAW",
+    "B6_TOPOLOGY_EVENT_BOUND",
+    "B6_BOUNDARY_JUNCTION_ACCOMMODATION",
+    "B6_MESH_STATE_TRANSFER",
+    "B6_NUMERICAL_VALIDITY_LIMITS"
+  ],
+  "known_forcing_intervals": [],
+  "model_validity_bounds": [],
+  "numerical_constraints": [
+    {
+      "name": "precommitted_dt_rule",
+      "status": "MODEL_REQUIREMENT_INPUTS_MISSING",
+      "value": null
+    },
+    {
+      "is_legal_dt": false,
+      "name": "existing_rift_guard_years",
+      "positive_horizon_bound": false,
+      "status": "DIAGNOSTIC_ONLY_NOT_A_DT",
+      "value": 27123.405156307464
+    }
+  ],
+  "positive_duration_authority": "ABSENT",
+  "reference_frame": {
+    "derivation": {
+      "basis": "+X at lon=0 equator; +Y at lon=+90 degrees; +Z north; right-handed XYZ by the stated cross-product convention",
+      "latitude_bounds_deg": [
+        -90,
+        90
+      ],
+      "latlon_to_xyz": "x=cos(lat)cos(lon), y=cos(lat)sin(lon), z=sin(lat)",
+      "longitude_bounds_deg": [
+        -180,
+        180
+      ],
+      "radius_m": 6371000.0,
+      "velocity": "v=omega cross r"
+    },
+    "evidence": [
+      {
+        "lines": [
+          24,
+          109,
+          110,
+          214
+        ],
+        "logical_path": "scripts/r6_bind_t0_motion_prior_and_event_guard.py",
+        "sha256": "cedd4fa48359ddc8cbe319a83806b7f5977f02f8e50f5d0ee3706752dcb33f4e"
+      },
+      {
+        "lines": [
+          33,
+          119,
+          189,
+          190
+        ],
+        "logical_path": "scripts/r6_bind_shared_boundary_topology_contact.py",
+        "sha256": "a055c2a3b78df5bbea2772072101da03831a32e49985223117672b6578951387"
+      },
+      {
+        "fact": "XYZ Euler components and synthetic gauge",
+        "logical_path": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT.json"
+      }
+    ],
+    "external_frame_transform": "NOT_REQUIRED_FOR_CURRENT_INTERNAL_T0_DIAGNOSTIC; any external motion source must bind an explicit transform",
+    "physical_frame_authority": "SYNTHETIC_NO_NET_ROTATION_GAUGE_ONLY; NOT_EARTH_FIXED/MANTLE/HOTSPOT",
+    "status": "UNIQUELY_DERIVABLE_INTERNAL_T0_COMPUTATIONAL_FRAME"
+  },
+  "schema": "R6_TEMPORAL_CONSTRAINT_REGISTRY_V2",
+  "topology_event_bounds": {
+    "candidate_pair_count_unknown": 30,
+    "earliest_relevant_event_lower_bound_ma": null,
+    "known": []
+  },
+  "unknown_intervals": "ALL_POSITIVE_DURATION_AFTER_210_MA"
+}

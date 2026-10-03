@@ -1,0 +1,24 @@
+{
+  "schema": "R6_B6_TEST_RESULTS_V1",
+  "active_r6": {
+    "command": "$r6Tests = @(Get-ChildItem -LiteralPath tests -Filter 'test_r6_*.py' -File | ForEach-Object { $_.FullName }); python -m pytest -q $r6Tests -p no:cacheprovider",
+    "tests_passed": 340,
+    "tests_failed": 0,
+    "duration_seconds": 135.54,
+    "result": "PASS"
+  },
+  "focused_b6": {
+    "command": "python -m pytest -q tests/test_r6_b6_dependency_temporal_gap_adjudication.py -p no:cacheprovider",
+    "tests_passed": 4,
+    "tests_failed": 0,
+    "duration_seconds": 0.26,
+    "result": "PASS"
+  },
+  "py_compile": "PASS",
+  "adjudication_runner": "PASS_B6_DEPENDENCY_TEMPORAL_GAP_ADJUDICATION",
+  "B6_qualified_source_commit": "b0891494f58272aac5fb60811e77982e00fab80b",
+  "B5_qualified_source_commit": "95d4bbe8d61e8796299e496822a95f7b8dac67cc",
+  "json_manifest_path_validation": "PASS",
+  "diff_check": "PASS",
+  "scientific_runtimes_executed": false
+}

@@ -1,0 +1,30 @@
+{
+  "boundary_response_needed_before_any_physical_step": true,
+  "decision": "B7_DECISION_BLOCKED_BY_MISSING_TEMPORAL_AUTHORITY",
+  "future_narrow_contract_if_authorized": {
+    "inputs": [
+      "governed interval driver",
+      "event horizon",
+      "T0 mesh/partition/support identities",
+      "boundary adjacency/relative motion",
+      "selected accommodation and junction law",
+      "material configuration if required"
+    ],
+    "no_outputs_assumed": [
+      "stress",
+      "strain",
+      "fault slip",
+      "traction",
+      "full velocity field unless selected model requires them"
+    ],
+    "outputs": [
+      "only selected boundary/junction response fields",
+      "partition/mesh validity diagnostics",
+      "deterministic support/state transfer evidence"
+    ]
+  },
+  "reason": "A solver qualification cannot be scoped until positive-time motion/event bounds and a physical boundary/junction response law define required input/output semantics.",
+  "schema": "R6_B6_B7_DECISION_V1",
+  "shellset": "SHELLSET_REQUIREMENT_UNRESOLVED",
+  "whether_numerical_mechanics_solver_is_required": "UNRESOLVED; no selected physical accommodation model"
+}

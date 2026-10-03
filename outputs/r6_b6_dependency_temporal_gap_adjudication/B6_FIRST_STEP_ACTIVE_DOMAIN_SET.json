@@ -1,0 +1,19 @@
+{
+  "candidate_domains": [
+    "tectonic_plate_partition",
+    "plate_kinematics",
+    "tectonic_kinematics_grid"
+  ],
+  "conditional_physical_response": [
+    "boundary/junction accommodation",
+    "mesh/state transfer"
+  ],
+  "other_domains": "may retain independent T0 or UNKNOWN clocks only if not consumed; no dynamic hold is authorized",
+  "reason": "these are the smallest causal tectonic components, but current temporal and physical response blockers prevent a first transition",
+  "required_supports": [
+    "plate faces/nodes",
+    "shared boundary topology",
+    "junction identities"
+  ],
+  "status": "CANDIDATE_SET_NOT_AUTHORIZED_WHILE_BLOCKED"
+}

@@ -1,0 +1,26 @@
+{
+  "heavy_execution_required_during_B6": false,
+  "schema": "R6_B6_EXECUTION_TARGETS_V1",
+  "tasks": [
+    {
+      "reason": "design/audit and small tests; no heavy runtime",
+      "target": "WINDOWS",
+      "task": "authorial scope and temporal/boundary model adjudication"
+    },
+    {
+      "reason": "portable Python evidence only",
+      "target": "WINDOWS",
+      "task": "B6 static qualification and regression"
+    },
+    {
+      "reason": "native scientific build/runtime needed",
+      "target": "UBUNTU_WORKSTATION",
+      "task": "future solver/NVHPC/native ShellSet qualification, if selected"
+    },
+    {
+      "reason": "long-running CPU/RAM-intensive execution",
+      "target": "UBUNTU_WORKSTATION",
+      "task": "large reconstruction, sweep or solver run, if authorized later"
+    }
+  ]
+}

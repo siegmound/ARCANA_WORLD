@@ -1,0 +1,162 @@
+{
+  "domains": [
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "DERIVED_AUTHORITY",
+      "current_support_class": "DERIVED_SUPPORTED",
+      "domain": "physical_geography",
+      "first_step_requirement": "Retain immutable T0 reference at 210 Ma; do not treat it as a held or evolved future surface.",
+      "first_step_role": "ANCHOR_ONLY",
+      "update_classification": "STATIC_AUTHORITY"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "DERIVED_AUTHORITY",
+      "current_support_class": "DERIVED_SUPPORTED",
+      "domain": "land_ocean",
+      "first_step_requirement": "Retain the T0 map as an immutable anchor; any later moving-support transfer needs a separate rule.",
+      "first_step_role": "ANCHOR_ONLY",
+      "update_classification": "STATIC_AUTHORITY"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "DERIVED_AUTHORITY",
+      "current_support_class": "DERIVED_SUPPORTED",
+      "domain": "province_state",
+      "first_step_requirement": "Retain T0 labels as anchor evidence; do not infer plate attachment or future movement.",
+      "first_step_role": "ANCHOR_ONLY",
+      "update_classification": "STATIC_AUTHORITY"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "DERIVED_AUTHORITY",
+      "current_support_class": "DERIVED_SUPPORTED",
+      "domain": "topography",
+      "first_step_requirement": "Retain T0 topography only at its anchor; no vertical response or constancy law is inferred.",
+      "first_step_role": "ANCHOR_ONLY",
+      "update_classification": "STATIC_AUTHORITY"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": true,
+      "current_authority_class": "DERIVED_AUTHORITY",
+      "current_support_class": "DERIVED_SUPPORTED",
+      "domain": "tectonic_plate_partition",
+      "first_step_requirement": "A physical plate-geometry transition changes support/topology; current boundary law blocks publishing it.",
+      "first_step_role": "BLOCKED_STATE_DEPENDENCY",
+      "update_classification": "MUST_UPDATE_FIRST_STEP"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "DERIVED_AUTHORITY",
+      "current_support_class": "DERIVED_SUPPORTED",
+      "domain": "plate_kinematics",
+      "first_step_requirement": "The 210 Ma Euler vector is an instantaneous driver; it needs a separately governed positive-time segment.",
+      "first_step_role": "DRIVER",
+      "update_classification": "DRIVER_ONLY"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": true,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "bathymetry",
+      "first_step_requirement": "B3 support is UNKNOWN; it may remain unknown only while no seafloor/surface-response process consumes it.",
+      "first_step_role": "CONDITIONAL_DOMAIN_CLOCK",
+      "update_classification": "CAN_DEFER"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "tectonic_kinematics_grid",
+      "first_step_requirement": "B3 state remains UNKNOWN; B5 supplies a separate exact derived node-support map, not a temporal velocity field.",
+      "first_step_role": "DRIVER",
+      "update_classification": "DRIVER_ONLY"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "boundary_classification",
+      "first_step_requirement": "Geological/process type is UNKNOWN; the missing accommodation model must either consume types or justify a type-agnostic law.",
+      "first_step_role": "BLOCKED_STATE_DEPENDENCY",
+      "update_classification": "UNKNOWN_REQUIREMENT"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": true,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "deep",
+      "first_step_requirement": "B3 support is UNKNOWN and no mantle-force coupling is authorized; a prescribed temporal model would need to state this scope explicitly.",
+      "first_step_role": "CONDITIONAL_DOMAIN_CLOCK",
+      "update_classification": "CAN_DEFER"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": true,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "climate",
+      "first_step_requirement": "B3 support is UNKNOWN; retain its own clock and do not consume it in the first tectonic transition.",
+      "first_step_role": "CONDITIONAL_DOMAIN_CLOCK",
+      "update_classification": "CAN_DEFER"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": true,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "hydrology",
+      "first_step_requirement": "B3 support is UNKNOWN; retain its own clock and do not consume it in the first tectonic transition.",
+      "first_step_role": "CONDITIONAL_DOMAIN_CLOCK",
+      "update_classification": "CAN_DEFER"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "weak_zone_state",
+      "first_step_requirement": "Event guard lists weak-zone/eligibility inputs as blocking; T0 rift quiescence does not bound a later event.",
+      "first_step_role": "BLOCKED_STATE_DEPENDENCY",
+      "update_classification": "UNKNOWN_REQUIREMENT"
+    },
+    {
+      "authorized_hold_constant": false,
+      "can_remain_unknown": false,
+      "change_required_to_become_a_temporal_state": false,
+      "current_authority_class": "NONE",
+      "current_support_class": "UNKNOWN",
+      "domain": "junction_physical_semantics",
+      "first_step_requirement": "Twenty junction identities are known, but compatible positive-time junction response is unbound.",
+      "first_step_role": "BLOCKED_STATE_DEPENDENCY",
+      "update_classification": "UNKNOWN_REQUIREMENT"
+    }
+  ],
+  "hold_policy": "NO_DYNAMIC_DOMAIN_IS_DECLARED_CONSTANT; STATIC_AUTHORITY MEANS RETAIN T0 ANCHOR ONLY",
+  "inventory_state_count": 14,
+  "schema": "R6_B6_T0_DOMAIN_UPDATE_MATRIX_V1",
+  "surface_fields_share_parent_payload": true
+}

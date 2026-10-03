@@ -1,0 +1,59 @@
+{
+  "decisions": [
+    {
+      "engine_qualification": "after model authority exists",
+      "external_research": "only targeted if the chosen model claims an empirical/geological basis",
+      "gap": "positive-duration kinematics",
+      "next": [
+        "AUTHORIAL_DECISION",
+        "NEW_MODEL_DESIGN"
+      ],
+      "repository_audit": "already establishes no positive interval"
+    },
+    {
+      "engine_qualification": "not yet",
+      "external_research": "not needed to establish current absence; targeted input research only if adopting an external event provider",
+      "gap": "event/topology horizon",
+      "next": [
+        "TARGETED_REPOSITORY_AUDIT",
+        "NEW_MODEL_DESIGN",
+        "AUTHORIAL_DECISION"
+      ]
+    },
+    {
+      "engine_qualification": "required after physical law and outputs are fixed; engine not selected",
+      "external_research": "targeted comparison only after choosing candidate physical family; existing B5/B6 authority already rejects universal transfer",
+      "gap": "boundary and junction accommodation",
+      "next": [
+        "AUTHORIAL_DECISION",
+        "NEW_MODEL_DESIGN"
+      ]
+    },
+    {
+      "engine_qualification": "qualify deterministic geometry/state invariants after model selection",
+      "external_research": "not initially",
+      "gap": "mesh/state transfer",
+      "next": [
+        "TARGETED_REPOSITORY_AUDIT",
+        "NEW_MODEL_DESIGN"
+      ]
+    },
+    {
+      "engine_qualification": "no separate frame qualification for internal T0 diagnostic",
+      "external_research": "none",
+      "gap": "internal T0 frame",
+      "next": [
+        "NO_RESEARCH_EXISTING_CODE_SUFFICIENT"
+      ]
+    },
+    {
+      "engine_qualification": "not first tectonic step",
+      "external_research": "later only when those domains enter a causal transition",
+      "gap": "climate/hydrology/surface coupling",
+      "next": [
+        "CAN_DEFER_TO_SEPARATE_DOMAIN_CLOCKS"
+      ]
+    }
+  ],
+  "schema": "R6_B6_PROVIDER_RESEARCH_DECISIONS_V1"
+}

@@ -1,0 +1,35 @@
+{
+  "declared_angular_velocity_validity_intervals": [],
+  "interpolation_rule": null,
+  "multiple_hard_kinematic_anchors": [
+    210.0
+  ],
+  "sources": [
+    {
+      "class": "GOVERNED_AUTHORITY",
+      "does_not_support": "a positive interval",
+      "source": "R6_T0_INITIAL_KINEMATICS_MANIFEST",
+      "supports": "single 210 Ma model-realization anchor"
+    },
+    {
+      "class": "CANDIDATE_CONDITIONAL_MODEL",
+      "does_not_support": "segment validity; explicitly not exercised",
+      "source": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT.motion_process",
+      "supports": "constant initial Euler state only as a conditional segment"
+    },
+    {
+      "class": "GOVERNED_QUALIFICATION_EVIDENCE",
+      "does_not_support": "any temporal interval",
+      "source": "B4_TEMPORAL_SUPPORT",
+      "supports": "instant-only; positive request rejected"
+    },
+    {
+      "class": "CANDIDATE_OR_REFERENCE_ONLY",
+      "does_not_support": "promotion to ARCANA input",
+      "source": "pyGPlates/PB2002/Earth5R",
+      "supports": "no ARCANA temporal authority"
+    }
+  ],
+  "stage_or_finite_rotations": "ABSENT_FROM_CURRENT_GOVERNED_R6_SOURCE_SET",
+  "status": "ABSENT_NO_POSITIVE_DURATION_AUTHORITY"
+}

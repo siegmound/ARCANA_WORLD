@@ -1,0 +1,155 @@
+{
+  "first_dt_selection_inputs": [
+    {
+      "blocking": true,
+      "input": "kinematic segment validity horizon",
+      "source": "none",
+      "status": "MISSING",
+      "uncertainty": "UNBOUND",
+      "units": "years or Ma interval",
+      "value": null
+    },
+    {
+      "blocking": true,
+      "input": "earliest event/topology lead-time bound",
+      "source": "event guard",
+      "status": "MISSING",
+      "uncertainty": "30 pair candidates UNKNOWN",
+      "units": "years or Ma interval",
+      "value": null
+    },
+    {
+      "blocking": true,
+      "input": "boundary/junction accommodation validity and displacement limit",
+      "source": "none",
+      "status": "MISSING",
+      "uncertainty": "UNBOUND",
+      "units": "model-specific",
+      "value": null
+    },
+    {
+      "blocking": true,
+      "input": "mesh/partition validity criterion",
+      "source": "none",
+      "status": "MISSING",
+      "uncertainty": "UNBOUND",
+      "units": "dimensionless Jacobian/geometry tolerance if selected",
+      "value": null
+    },
+    {
+      "blocking": false,
+      "input": "kinematic reference frame",
+      "source": "current producer code + manifests",
+      "status": "UNIQUELY_DERIVABLE_INTERNAL_T0_FRAME",
+      "uncertainty": "not Earth-fixed",
+      "units": "rad/year and m/year",
+      "value": "synthetic NNR gauge; XYZ convention by producer equations"
+    },
+    {
+      "blocking": false,
+      "input": "solver stability/CFL bound",
+      "source": "none",
+      "status": "NOT_APPLICABLE_UNTIL_SOLVER_SELECTED",
+      "uncertainty": "N/A",
+      "units": null,
+      "value": null
+    },
+    {
+      "blocking": false,
+      "input": "climate/hydrology coupling limit",
+      "source": "WORLD_HISTORY separate-clock capability",
+      "status": "ASYNCHRONOUS_NOT_IN_FIRST_TECTONIC_CLOCK",
+      "uncertainty": "unknown domains remain unknown",
+      "units": null,
+      "value": null
+    }
+  ],
+  "requirements": [
+    {
+      "authority": "HARD_AUTHORITY_REQUIRED",
+      "blocks_first_dt": true,
+      "blocks_first_step": true,
+      "current_status": "ABSENT",
+      "derivable": false,
+      "execution_target": "WINDOWS",
+      "next_action": "AUTHORIAL_DECISION_AND_TEMPORAL_MODEL_DESIGN",
+      "quantity": "positive-duration motion segment validity/change law for 12 plate Euler rates",
+      "requirement_id": "B6_TEMPORAL_KINEMATIC_LAW",
+      "requires_mechanics": false,
+      "source": "B4 temporal support; motion-prior contract",
+      "spatial_support": "12 plates + B5 face/node support",
+      "temporal_support": "positive interval",
+      "tool_provider": "TEMPORAL_KINEMATIC_MODEL",
+      "why_needed": "anchor-only vectors do not define motion on Δt>0"
+    },
+    {
+      "authority": "HARD_AUTHORITY_REQUIRED",
+      "blocks_first_dt": true,
+      "blocks_first_step": true,
+      "current_status": "NO_BOUND",
+      "derivable": false,
+      "execution_target": "WINDOWS",
+      "next_action": "TARGETED_EVENT_ELIGIBILITY_AND_LEAD_TIME_MODEL_ADJUDICATION",
+      "quantity": "positive lower bound on next relevant rift/topology event or interval-specific no-event authority",
+      "requirement_id": "B6_TOPOLOGY_EVENT_BOUND",
+      "requires_mechanics": false,
+      "source": "R6_T0_FIRST_INTERVAL_EVENT_GUARD; topology contact guard",
+      "spatial_support": "30 adjacent plate-pair candidates; 20 junctions",
+      "temporal_support": "candidate interval/event horizon",
+      "tool_provider": "TOPOLOGY_TRANSITION_MODEL",
+      "why_needed": "the 30 candidate pairs remain UNKNOWN and T0 quiescence is not a future delay bound"
+    },
+    {
+      "authority": "HARD_AUTHORITY_REQUIRED",
+      "blocks_first_dt": true,
+      "blocks_first_step": true,
+      "current_status": "NO_PHYSICALLY_DEFENSIBLE_POSITIVE_ACCOMMODATION",
+      "derivable": false,
+      "execution_target": "WINDOWS_THEN_EITHER_ENGINE_QUALIFICATION",
+      "next_action": "AUTHORIAL_MODEL_FAMILY_SELECTION_AND_TARGETED_MODEL_DESIGN",
+      "quantity": "shared boundary and junction physical response to nonzero relative motion",
+      "requirement_id": "B6_BOUNDARY_JUNCTION_ACCOMMODATION",
+      "requires_mechanics": true,
+      "source": "R6_SHARED_BOUNDARY_DEFORMATION_LAW_CONTRACT; R6_TOPOLOGY_CONTACT_GUARD",
+      "spatial_support": "1,983 boundaries and 20 junctions",
+      "temporal_support": "first interval and event handoffs",
+      "tool_provider": "BOUNDARY_ACCOMMODATION_MODEL",
+      "why_needed": "current governed zero-capacity rule blocks all 1,983 nonzero boundaries; junction velocities unbound"
+    },
+    {
+      "authority": "MODEL_OUTPUT_ACCEPTABLE_IF_QUALIFIED",
+      "blocks_first_dt": true,
+      "blocks_first_step": true,
+      "current_status": "ABSENT",
+      "derivable": false,
+      "execution_target": "WINDOWS_FOR_CONTRACT; UBUNTU_ONLY_IF_HEAVY_SOLVER",
+      "next_action": "DEFINE_TRANSFER_INVARIANTS_AFTER_BOUNDARY_MODEL_SELECTION",
+      "quantity": "partition-preserving geometry update/remap criterion and support/material transfer for a candidate state",
+      "requirement_id": "B6_MESH_STATE_TRANSFER",
+      "requires_mechanics": "DEPENDS_ON_SELECTED_ACCOMMODATION_MODEL",
+      "source": "R6_T0_CONTINUUM_DEFORMATION_GUARD; shared-boundary contact rule",
+      "spatial_support": "64,442 nodes; 128,880 triangles; 64,800 faces",
+      "temporal_support": "candidate interval and event stop",
+      "tool_provider": "MESH_UPDATE_RULE",
+      "why_needed": "rigid plate motion alone yields undefined shared nodes/gaps/overlap; current Jacobian/mesh guard is absent"
+    },
+    {
+      "authority": "NUMERICAL_REQUIREMENT_AFTER_MODEL_SELECTION",
+      "blocks_first_dt": true,
+      "blocks_first_step": true,
+      "current_status": "NO_GOVERNED_VALUES",
+      "derivable": false,
+      "execution_target": "WINDOWS_FOR_ADJUDICATION",
+      "next_action": "PRECOMMIT_LIMITS_AND_QUALIFY_GUARD_AFTER_PHYSICAL_MODEL_IS_FIXED",
+      "quantity": "precommitted displacement/rotation/topology/Jacobian limits and any selected solver stability bound",
+      "requirement_id": "B6_NUMERICAL_VALIDITY_LIMITS",
+      "requires_mechanics": "ONLY_IF_SOLVER_SELECTED",
+      "source": "motion-prior numerical policy; continuum deformation guard",
+      "spatial_support": "mesh and boundary supports",
+      "temporal_support": "first interval",
+      "tool_provider": "OTHER_NUMERICAL_POLICY",
+      "why_needed": "B4 dt formula has null input horizons; current deformation guard explicitly has no positive bound"
+    }
+  ],
+  "schema": "R6_B6_FIRST_DT_PREREQUISITES_V1"
+}
