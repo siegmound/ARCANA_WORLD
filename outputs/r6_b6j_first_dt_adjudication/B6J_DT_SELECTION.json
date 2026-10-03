@@ -1,0 +1,31 @@
+{
+  "authority": [
+    "B6A_TOPOLOGY_TEMPORAL_BOUND.json",
+    "B6D_TOPOLOGY_EVENT_POLICY.json",
+    "B6G_QUALIFIED_BOUND_SET.json",
+    "B6I_TOPOLOGY_VALIDITY_BOUND.json"
+  ],
+  "endpoint_semantics": "pre-transition event-boundary capture; no topology mutation in the kinematic step",
+  "limiting_constraint": "B6I_RIFT_PROCESS_ACTIVATION_HORIZON",
+  "limiting_entity": "plate pair 1:3",
+  "limiting_event": "RIFT_PROCESS_ACTIVATION",
+  "numeric_representation": {
+    "format": "IEEE-754 binary64",
+    "hex": "0x1.a7cd9ee14b895p+14",
+    "shortest_round_trip": "27123.405156307464"
+  },
+  "numeric_tolerance": "NONE_ADDED_TO_ANALYTIC_BOUND_SELECTION; no rounding, epsilon, or safety factor applied",
+  "replay_recipe_inputs": [
+    "governed T0 age",
+    "frozen MVP model identity",
+    "ordered active constraint records",
+    "B6I event registry/bound",
+    "endpoint policy",
+    "source artifact hashes"
+  ],
+  "selection_rule": "minimum active qualified positive temporal bound; the sole bound ends the first segment exactly at the enabled event boundary",
+  "status": "FIRST_DT_SELECTED",
+  "strictness": "validity interval is open at the event horizon; stop before or capture event; no accepted segment crosses it",
+  "unit": "year",
+  "value": 27123.405156307464
+}

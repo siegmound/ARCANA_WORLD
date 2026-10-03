@@ -1,0 +1,21 @@
+{
+  "algorithm": "validate evidence identities; normalize all active qualified bounds to years; stable-sort by (value_years, bound_id); select first; preserve binary64 value and hex representation; derive target age from fixed source age",
+  "excluded_inputs": [
+    "wall clock",
+    "filesystem mtime",
+    "unordered directory iteration",
+    "unstored tolerance",
+    "randomness"
+  ],
+  "inputs": [
+    "governed T0 age",
+    "frozen MVP model identity",
+    "ordered active constraint records",
+    "B6I event registry/bound",
+    "endpoint policy",
+    "source artifact hashes"
+  ],
+  "repeatability": "Two independently reconstructed selections from the same verified evidence yield byte-identical canonical JSON for dt, event boundary, and target age.",
+  "scope_limit": "This proves selection/provenance determinism only; no state integration or replayed physical result is executed.",
+  "status": "PASS_DETERMINISTIC_SELECTION_REPLAY"
+}

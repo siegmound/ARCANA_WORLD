@@ -1,0 +1,69 @@
+{
+  "active_constraint_count": 2,
+  "active_constraints": [
+    {
+      "basis": "B6A/B6B governed conditional constant-T0 Euler first segment; no separate numeric duration bound.",
+      "constraint_id": "POSITIVE_DURATION_KINEMATIC_VALIDITY",
+      "status": "ACTIVE_NONNUMERIC_CONDITION"
+    },
+    {
+      "bound_id": "B6I_RIFT_PROCESS_ACTIVATION_HORIZON",
+      "constraint_id": "FIRST_SEGMENT_TOPOLOGY_VALIDITY",
+      "status": "ACTIVE_QUALIFIED_BOUND"
+    }
+  ],
+  "candidate_constraint_count": 10,
+  "constraints": [
+    {
+      "basis": "B6A/B6B governed conditional constant-T0 Euler first segment; no separate numeric duration bound.",
+      "constraint_id": "POSITIVE_DURATION_KINEMATIC_VALIDITY",
+      "status": "ACTIVE_NONNUMERIC_CONDITION"
+    },
+    {
+      "bound_id": "B6I_RIFT_PROCESS_ACTIVATION_HORIZON",
+      "constraint_id": "FIRST_SEGMENT_TOPOLOGY_VALIDITY",
+      "status": "ACTIVE_QUALIFIED_BOUND"
+    },
+    {
+      "basis": "B6C/B6D action convention and B6G exact rigid transform closure.",
+      "constraint_id": "ROTATION_IMPLEMENTATION_VALIDITY",
+      "status": "CLOSED_NO_NUMERIC_BOUND_REQUIRED"
+    },
+    {
+      "basis": "B6G exact rigid plate-local geometry; no generic angle/displacement threshold.",
+      "constraint_id": "RIGID_INTERIOR_MESH_VALIDITY",
+      "status": "CLOSED_NO_NUMERIC_BOUND_REQUIRED"
+    },
+    {
+      "basis": "B6D/B6G interface sides are relational, not required to be co-located.",
+      "constraint_id": "INTERFACE_RELATIONAL_VALIDITY",
+      "status": "CLOSED_NO_NUMERIC_BOUND_REQUIRED"
+    },
+    {
+      "basis": "B6D/B6G set-valued multi-interface junction relation.",
+      "constraint_id": "JUNCTION_RELATIONAL_VALIDITY",
+      "status": "CLOSED_NO_NUMERIC_BOUND_REQUIRED"
+    },
+    {
+      "basis": "B6I async domain validity; no required synchronous transfer family blocks this step.",
+      "constraint_id": "STATE_TRANSFER_APPLICABILITY",
+      "status": "CLOSED_NO_NUMERIC_BOUND_REQUIRED"
+    },
+    {
+      "basis": "B6G/B6I closure when retained and temporally scoped.",
+      "constraint_id": "SYSTEM_MEMORY_APPLICABILITY",
+      "status": "CLOSED_NO_NUMERIC_BOUND_REQUIRED"
+    },
+    {
+      "basis": "B6D MVP permits a kinematic first segment without mechanics; no mechanics solver is selected or run.",
+      "constraint_id": "MECHANICS_SOLVER_STABILITY",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "basis": "B6I frozen first-segment process registry.",
+      "constraint_id": "INDEPENDENT_NON_RIFT_TOPOLOGY_MUTATIONS",
+      "status": "OUT_OF_SCOPE"
+    }
+  ],
+  "schema": "R6_B6J_ACTIVE_CONSTRAINT_SET_V1"
+}
