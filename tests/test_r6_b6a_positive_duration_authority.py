@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
+import json
 from pathlib import Path
 
 import pytest
@@ -18,7 +20,9 @@ SPEC.loader.exec_module(B6A)
 
 @pytest.fixture(scope="module")
 def audit() -> dict:
-    return B6A.adjudicate(ROOT)
+    # Regression mode re-runs the scientific/source assertions on this
+    # descendant checkout while retaining B6A's historical qualified source.
+    return B6A.adjudicate(ROOT, mode="regression")
 
 
 def test_current_authority_has_one_t0_anchor_and_conditional_first_segment(audit: dict) -> None:
@@ -47,7 +51,20 @@ def test_joint_temporal_support_remains_blocked_without_topology_bound(audit: di
 
 
 def test_b6a_decision_keeps_scientific_safety_gates_closed(audit: dict) -> None:
-    assert B6A.validate_decision(audit)
+    assert B6A.validate_regression_decision(audit)
+    # Provenance remains the immutable historical qualification identity;
+    # current checkout identity is recorded separately for regression.
+    assert audit["result"]["branch"] == "r6/b6a-positive-duration-kinematic-authority"
+    assert audit["result"]["qualified_source_commit"] == "8f53f1586413b1e2e3b6738185727e5b6314c30c"
+    assert audit["result"]["current_regression_checkout"]["branch"] == B6A._git(ROOT, "branch", "--show-current")
+    assert audit["result"]["current_regression_checkout"]["head"] == B6A._git(ROOT, "rev-parse", "HEAD")
+    retained_path = ROOT / "outputs/r6_b6a_positive_duration_authority/B6A_RESULT.json"
+    retained = json.loads(retained_path.read_text(encoding="utf-8"))
+    assert retained["qualified_source_commit"] == "8f53f1586413b1e2e3b6738185727e5b6314c30c"
+    manifest = json.loads((retained_path.parent / "B6A_ARTIFACT_MANIFEST.json").read_text(encoding="utf-8"))
+    retained_entry = next(x for x in manifest["artifacts"] if x["relative_path"] == "B6A_RESULT.json")
+    assert retained_entry["byte_size"] == retained_path.stat().st_size
+    assert retained_entry["sha256"] == hashlib.sha256(retained_path.read_bytes()).hexdigest()
     gates = audit["result"]["scientific_side_effect_check"]
     assert gates["runtime_authorized"] is True
     assert gates["runtime_authorized_scope"] == "LOAD_AND_CONSUME_GOVERNED_ARCANA_T0_RUNTIME_PACKAGE"

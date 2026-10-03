@@ -84,11 +84,22 @@ def _read(root: Path, logical: str, sources: dict[str, Any]) -> Any:
     return value
 
 
-def adjudicate(root: Path = ROOT) -> dict[str, Any]:
+def adjudicate(root: Path = ROOT, *, mode: str = "qualification") -> dict[str, Any]:
     root = root.resolve()
     branch, head = _git(root, "branch", "--show-current"), _git(root, "rev-parse", "HEAD")
-    if branch != BRANCH or head != HEAD:
+    if mode not in {"qualification", "regression"}:
+        raise B6AError(f"unsupported B6A audit mode: {mode}")
+    if mode == "qualification" and (branch != BRANCH or head != HEAD):
         raise B6AError(f"expected {BRANCH}@{HEAD}, found {branch}@{head}")
+    historical_result_path = root / "outputs/r6_b6a_positive_duration_authority/B6A_RESULT.json"
+    try:
+        historical_result = json.loads(historical_result_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise B6AError("retained B6A historical result is missing or invalid") from exc
+    if (historical_result.get("decision") != DECISION
+            or historical_result.get("branch") != BRANCH
+            or historical_result.get("qualified_source_commit") != HEAD):
+        raise B6AError("retained B6A historical source provenance was changed")
     evidence: dict[str, Any] = {}
     docs = {name: _read(root, name, evidence) for name in SOURCES}
     for logical in CODE_SOURCES:
@@ -294,8 +305,9 @@ def adjudicate(root: Path = ROOT) -> dict[str, Any]:
         "mechanics_or_execution_authorized": False,
     }
     result = {
-        "schema": "R6_B6A_RESULT_V1", "decision": DECISION, "branch": branch,
-        "qualified_source_commit": head,
+        "schema": "R6_B6A_RESULT_V1", "decision": DECISION, "branch": BRANCH,
+        "qualified_source_commit": HEAD,
+        "current_regression_checkout": {"branch": branch, "head": head} if mode == "regression" else None,
         "instantaneous_rate_status": motion_adjudication["instantaneous_rate_status"],
         "multiple_temporal_anchor_status": motion_adjudication["multiple_temporal_anchor_status"]["status"],
         "positive_duration_motion_law_status": motion_adjudication["positive_duration_motion_law_status"],
@@ -334,6 +346,19 @@ def validate_decision(data: dict[str, Any]) -> bool:
         raise B6AError("B6A must not select dt")
     if result["scientific_side_effect_check"] != GATES:
         raise B6AError("scientific safety gates changed")
+    return True
+
+
+def validate_regression_decision(data: dict[str, Any]) -> bool:
+    """Validate current-source regression semantics without relabeling provenance."""
+    validate_decision(data)
+    checkout = data["result"].get("current_regression_checkout")
+    if not isinstance(checkout, dict) or not checkout.get("branch") or not checkout.get("head"):
+        raise B6AError("regression audit must identify its current checkout separately")
+    if checkout["head"] == HEAD and checkout["branch"] == BRANCH:
+        return True
+    # Historical source identity remains pinned above; descendant identity is
+    # deliberately evidence about the regression run, not a new qualification.
     return True
 
 
