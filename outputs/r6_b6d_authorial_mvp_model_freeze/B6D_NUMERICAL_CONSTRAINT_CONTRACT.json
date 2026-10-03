@@ -1,0 +1,129 @@
+{
+  "candidate_rule": "minimum positive bound among applicable qualified constraints only",
+  "constraints": [
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "B6A conditional first-segment law; no renewal law",
+      "constraint_id": "positive_duration_kinematics",
+      "evaluation_method": "validate conditional constant-T0 Euler segment and its usable positive interval",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "positive-duration first-segment validity",
+      "solver_dependency": false,
+      "support": "governed Euler forcing support",
+      "threshold_status": "MODEL_QUALIFICATION_REQUIRED",
+      "units": "year"
+    },
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "first-segment Euler authority + selected accuracy model",
+      "constraint_id": "rotation_angle",
+      "evaluation_method": "max_plate_norm_omega_times_dt",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "maximum angular displacement",
+      "solver_dependency": false,
+      "support": "plate support",
+      "threshold_status": "THRESHOLD_MISSING",
+      "units": "rad"
+    },
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "mesh/geometric accuracy model",
+      "constraint_id": "node_displacement",
+      "evaluation_method": "max spherical arc displacement",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "maximum supported node displacement",
+      "solver_dependency": false,
+      "support": "node/plate-local geometry",
+      "threshold_status": "THRESHOLD_MISSING",
+      "units": "m"
+    },
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "spatial accuracy contract",
+      "constraint_id": "local_edge_fraction",
+      "evaluation_method": "per-node displacement divided by governed edge length",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "displacement/local-edge-length ratio",
+      "solver_dependency": false,
+      "support": "supported nodes and incident edges",
+      "threshold_status": "THRESHOLD_MISSING",
+      "units": "1"
+    },
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "D2/D4 interface model",
+      "constraint_id": "interface_guard",
+      "evaluation_method": "selected interface geometry guard",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "boundary gap/crossing/overlap residual",
+      "solver_dependency": false,
+      "support": "each interface side pair",
+      "threshold_status": "MODEL_QUALIFICATION_REQUIRED",
+      "units": "m or normalized residual"
+    },
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "mesh validity and lineage contract",
+      "constraint_id": "mesh_quality",
+      "evaluation_method": "oriented area/Jacobian quality after candidate transfer",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "minimum element quality/inversion",
+      "solver_dependency": false,
+      "support": "plate-local elements",
+      "threshold_status": "MODEL_QUALIFICATION_REQUIRED",
+      "units": "dimensionless"
+    },
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "D1 event policy",
+      "constraint_id": "topology_event_bound",
+      "evaluation_method": "qualified detector or interval validity proof",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "event time or positive validity duration",
+      "solver_dependency": false,
+      "support": "all applicable topology/event classes",
+      "threshold_status": "MODEL_QUALIFICATION_REQUIRED",
+      "units": "year"
+    },
+    {
+      "applicability": "MVP_NOT_APPLICABLE",
+      "authority_source": "D4 mesh policy",
+      "constraint_id": "remesh_trigger",
+      "evaluation_method": "deterministic trigger plus parent-child mapping",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "predeclared mesh validity trigger",
+      "solver_dependency": false,
+      "support": "only if remesh is later selected",
+      "threshold_status": "NOT_APPLICABLE_TO_MVP",
+      "units": "model-specific"
+    },
+    {
+      "applicability": "MVP_NOT_APPLICABLE",
+      "authority_source": "D7; no mechanics required by default",
+      "constraint_id": "solver_stability",
+      "evaluation_method": "qualified solver estimator",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "solver stability/convergence bound",
+      "solver_dependency": true,
+      "support": "mechanics solver",
+      "threshold_status": "NOT_APPLICABLE_TO_MVP",
+      "units": "solver-specific"
+    },
+    {
+      "applicability": "MVP_ACTIVE_CANDIDATE",
+      "authority_source": "existing rift authority",
+      "constraint_id": "rift_activation_horizon",
+      "evaluation_method": "Census V3 governed event guard",
+      "failure_semantics": "fail closed; no positive dt if an applicable bound is absent/unqualified",
+      "quantity": "conditional rift activation event horizon",
+      "solver_dependency": false,
+      "support": "eligible rift support only",
+      "threshold_status": "BOUND_AVAILABLE",
+      "units": "year"
+    }
+  ],
+  "dt_policy": "ADAPTIVE_CONSTRAINT_DRIVEN_TIMESTEP",
+  "dt_selected": false,
+  "rift_horizon_warning": "not dt; not generic topology validity; not necessarily minimum active constraint",
+  "schema": "R6_B6D_NUMERICAL_CONSTRAINT_CONTRACT_V1"
+}

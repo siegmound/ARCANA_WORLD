@@ -1,0 +1,124 @@
+{
+  "decisions": [
+    {
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D1",
+      "policy": "EVENT_DRIVEN_TOPOLOGY_HOLD",
+      "qualification_needed": "positive event detection or interval-specific validity evidence; unknown event classes fail closed",
+      "semantics": [
+        "topology unchanged between explicitly detected topology events",
+        "no accepted interval crosses a known or detected unresolved topology event",
+        "not an assertion of indefinite invariance",
+        "topology changes only through governed event/transition",
+        "27,123.405156307464 years is conditional rift activation horizon only; not generic topology window or dt"
+      ]
+    },
+    {
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D2",
+      "policy": "KINEMATIC_DISCONTINUOUS_INTERFACE",
+      "semantics": [
+        "rigid plate interiors under governed first-segment Euler rule",
+        "adjacent plate velocities may differ at interface",
+        "relative motion represented as kinematic discontinuity",
+        "no fabricated shared-node velocity or averaging"
+      ],
+      "unknowns_preserved": [
+        "fault type",
+        "polarity",
+        "stress",
+        "rheology",
+        "slip law",
+        "subduction",
+        "uplift",
+        "distributed deformation"
+      ]
+    },
+    {
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D3",
+      "policy": "MULTI_INTERFACE_SET_VALUED_JUNCTION",
+      "semantics": [
+        "retain incident plate/interface relations at all 20 junctions",
+        "no unique plate owner or residual allocation",
+        "explicit compatibility relation required",
+        "physical accommodation remains UNKNOWN",
+        "plate-local representatives may be linked by junction relation"
+      ]
+    },
+    {
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D4",
+      "policy": "PLATE_LOCAL_LAGRANGIAN_WITH_EXPLICIT_INTERFACE_REPRESENTATION",
+      "semantics": [
+        "plate-interior geometry follows rigid plate motion",
+        "retain plate-local connectivity where valid",
+        "do not force one shared boundary/junction node through incompatible transforms",
+        "represent sides/duplicates only as runtime/candidate geometry with explicit topology links",
+        "no global remesh; local remesh only after later validity trigger contract"
+      ]
+    },
+    {
+      "allowed_classes": [
+        "IDENTITY_REFERENCE",
+        "RIGID_ADVECT",
+        "REINDEX_ONLY",
+        "RECOMPUTE",
+        "REPLAY",
+        "CONSERVATIVE_REMAP_REQUIRED",
+        "MODEL_REQUIRED",
+        "UNKNOWN"
+      ],
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D5",
+      "policy": "EXPLICIT_FIELD_SPECIFIC_TRANSFER_ONLY",
+      "rules": [
+        "no implicit interpolation, averaging, nearest-neighbour or fabricated values",
+        "preserve semantic identity when payload identity changes",
+        "satisfy B0-G system memory",
+        "unclosed transfer is MODEL_REQUIRED or UNKNOWN"
+      ]
+    },
+    {
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D6",
+      "policy": "ASYNCHRONOUS_DOMAIN_VALIDITY",
+      "semantics": [
+        "tectonic advancement does not advance climate, hydrology, ecology, Deep or other domains",
+        "each domain retains its latest valid state until its own provider/model updates it",
+        "queries expose per-domain temporal validity; no fabricated synchronization"
+      ]
+    },
+    {
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D7",
+      "policy": "MECHANICS_NOT_REQUIRED_BY_DEFAULT_FOR_FIRST_KINEMATIC_STEP",
+      "semantics": [
+        "MVP first transition may be kinematic",
+        "ShellSet is deferred until mechanical response is causally, state-continuation or query required",
+        "this does not assert mechanics is never required"
+      ]
+    },
+    {
+      "authority": "AUTHORIAL_FREEZE",
+      "id": "D8",
+      "policy": "ADAPTIVE_CONSTRAINT_DRIVEN_TIMESTEP",
+      "semantics": [
+        "candidate interval is minimum applicable qualified positive bound",
+        "only active qualified constraints participate",
+        "rift horizon is only its event/model bound and is not automatically dt",
+        "no dt selected in B6D"
+      ]
+    }
+  ],
+  "rotation_contract": {
+    "action": "ACTIVE_ROTATION_OF_COLUMN_POSITION_VECTOR",
+    "angular_rate_units": "rad/year",
+    "authority": "B6C_DERIVED_CONVENTION",
+    "coordinates": "XYZ",
+    "frame": "internal synthetic gauge; not Earth-fixed or mantle-fixed",
+    "handedness": "RIGHT_HANDED",
+    "positive_z_test": "+Z maps +X toward +Y"
+  },
+  "schema": "R6_B6D_AUTHORIAL_DECISIONS_V1"
+}

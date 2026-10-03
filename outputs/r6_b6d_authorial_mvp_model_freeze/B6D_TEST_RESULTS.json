@@ -1,0 +1,29 @@
+{
+  "active_r6": {
+    "command": "python -m pytest -q -p no:cacheprovider",
+    "duration_seconds": 130.33,
+    "status": "PASS",
+    "tests_failed": 0,
+    "tests_passed": 362
+  },
+  "diff_check": "PASS",
+  "focused_b6d": {
+    "command": "python -m pytest -q -p no:cacheprovider tests/test_r6_b6d_authorial_mvp_model_freeze.py",
+    "status": "PASS",
+    "tests_failed": 0,
+    "tests_passed": 6
+  },
+  "focused_historical_regression_repairs": {
+    "command": "python -m pytest -q -p no:cacheprovider tests/test_r6_b6d_authorial_mvp_model_freeze.py tests/test_r6_b6c_targeted_model_decision.py tests/test_r6_b6b_accommodation_state_transfer.py",
+    "status": "PASS",
+    "tests_failed": 0,
+    "tests_passed": 18
+  },
+  "json_manifest_validation": "PASS",
+  "portable_path_validation": "PASS",
+  "py_compile": "PASS",
+  "qualified_source_commit": "5f924e25300ea4e26281b4419620f9ed5ee9c500",
+  "schema": "R6_B6D_TEST_RESULTS_V1",
+  "scientific_execution": "NOT_RUN",
+  "worktree_test_harness_changes": []
+}

@@ -1,0 +1,75 @@
+{
+  "records": [
+    {
+      "invariant": "single plate support per interior element; rigid transform only under qualified interval",
+      "minimum_refs": [
+        "source_state_id",
+        "plate_id",
+        "support_id",
+        "connectivity_identity",
+        "coordinate_payload_ref",
+        "lineage_ref"
+      ],
+      "record": "PlateLocalInterior"
+    },
+    {
+      "invariant": "two sides remain distinct when kinematic actions differ; unknown boundary type/polarity preserved",
+      "minimum_refs": [
+        "boundary_identity",
+        "incident_plate_id",
+        "side_identity",
+        "plate_local_geometry_ref",
+        "source_boundary_ref"
+      ],
+      "record": "BoundarySide"
+    },
+    {
+      "invariant": "kinematic discontinuity; no averaging; physical stress/slip/accommodation unknown",
+      "minimum_refs": [
+        "boundary_identity",
+        "side_refs",
+        "plate_support_refs",
+        "relative_motion_ref",
+        "model_policy_id"
+      ],
+      "record": "InterfaceRelation"
+    },
+    {
+      "invariant": "set-valued incident support; no unique owner",
+      "minimum_refs": [
+        "junction_identity",
+        "incident_interface_ref",
+        "incident_plate_id",
+        "side_identity",
+        "plate_local_geometry_ref"
+      ],
+      "record": "JunctionSide"
+    },
+    {
+      "invariant": "explicit multi-interface compatibility; fail closed when absent/unsatisfied; physical accommodation may remain UNKNOWN",
+      "minimum_refs": [
+        "junction_identity",
+        "incident_side_refs",
+        "compatibility_rule_id",
+        "residual_status",
+        "lineage_ref"
+      ],
+      "record": "JunctionRelation"
+    },
+    {
+      "invariant": "append-only identity and explicit parent/event relation; no topology mutation in B6D",
+      "minimum_refs": [
+        "topology_state_id",
+        "parent_topology_id",
+        "plate_identity_set",
+        "boundary_identity_set",
+        "junction_identity_set",
+        "event_ref_or_hold_ref"
+      ],
+      "record": "TopologyIdentity"
+    }
+  ],
+  "schema": "R6_B6D_BOUNDARY_INTERFACE_CONTRACT_V1",
+  "shared_payload_policy": "records reference existing identities/payloads; duplicate physical payload only when distinct side coordinates are later actually materialized and justified",
+  "status": "CONTRACT_ONLY_NO_GEOMETRY_MATERIALIZED"
+}

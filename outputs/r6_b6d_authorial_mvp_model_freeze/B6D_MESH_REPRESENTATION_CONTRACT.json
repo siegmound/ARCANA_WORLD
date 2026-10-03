@@ -1,0 +1,13 @@
+{
+  "canonical_nodes_moved": false,
+  "policy": "PLATE_LOCAL_LAGRANGIAN_WITH_EXPLICIT_INTERFACE_REPRESENTATION",
+  "remeshing_authorized": false,
+  "schema": "R6_B6D_MESH_REPRESENTATION_V1",
+  "semantics": [
+    "plate-interior geometry follows rigid plate motion",
+    "retain plate-local connectivity where valid",
+    "do not force one shared boundary/junction node through incompatible transforms",
+    "represent sides/duplicates only as runtime/candidate geometry with explicit topology links",
+    "no global remesh; local remesh only after later validity trigger contract"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "fixture_scope": "future synthetic tests may qualify contract; no T1 query is run in B6D",
+  "queries": [
+    {
+      "acceptance": "return state for requested age/location/support with source identity, authority and per-domain temporal validity; unsupported values remain UNKNOWN",
+      "query": "STATE"
+    },
+    {
+      "acceptance": "return ordered causal records between states, including forcing, events, models and provenance",
+      "query": "HISTORY"
+    },
+    {
+      "acceptance": "report actual changed fields/support and distinguish unchanged, absent and UNKNOWN",
+      "query": "DIFFERENCE"
+    },
+    {
+      "acceptance": "trace changed state to forcing/model/event/authority and replay recipe",
+      "query": "WHY"
+    },
+    {
+      "acceptance": "return set-valued plate/interface/junction support without implicit owner",
+      "query": "SUPPORT"
+    },
+    {
+      "acceptance": "reconstruct candidate deterministically from retained state, forcing, model and recipe identities",
+      "query": "REPLAY"
+    },
+    {
+      "acceptance": "recompute a bounded region/interval in an isolated branch while preserving parent identity and lineage",
+      "query": "REFINEMENT"
+    },
+    {
+      "acceptance": "preserve unknown/missing support without default zero, interpolation or inference",
+      "query": "UNKNOWN"
+    },
+    {
+      "acceptance": "report each domain's latest valid time; tectonics at t1 does not imply climate/hydrology/ecology/Deep at t1",
+      "query": "TEMPORAL_VALIDITY"
+    }
+  ],
+  "schema": "R6_B6D_MVP_QUERY_ACCEPTANCE_V1",
+  "status": "CONTRACT_MATERIALIZED_NOT_EXECUTED_OVER_T1"
+}

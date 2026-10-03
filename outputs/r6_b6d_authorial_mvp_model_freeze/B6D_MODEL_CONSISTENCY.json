@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "finding": "A hold between governed events is coherent only with positive event/validity evidence; detector completeness is not assumed.",
+      "pair": "D1 topology hold / event detector",
+      "status": "IMPLEMENTATION_REQUIRED"
+    },
+    {
+      "finding": "Plate-local sides avoid fabricating a shared coordinate for incompatible rigid transforms.",
+      "pair": "D2 discontinuous interfaces / D4 plate-local geometry",
+      "status": "MODEL_CONTRACT_CONSISTENT"
+    },
+    {
+      "finding": "Junction keeps all incident relations; explicit compatibility remains required and physical accommodation stays UNKNOWN.",
+      "pair": "D3 set-valued junction / D2 interface",
+      "status": "MODEL_CONTRACT_CONSISTENT"
+    },
+    {
+      "finding": "Representation can be specified without moving canonical nodes; every field needs an explicit transfer class and lineage.",
+      "pair": "D4 mesh / D5 field transfer",
+      "status": "IMPLEMENTATION_REQUIRED"
+    },
+    {
+      "finding": "No discard is allowed; field-specific rules and replay/reconstruction must close for retained memory.",
+      "pair": "D5 transfer / B0-G system memory",
+      "status": "QUALIFICATION_REQUIRED"
+    },
+    {
+      "finding": "Per-domain latest-valid state is compatible with temporal query and provenance; no cross-domain state is fabricated.",
+      "pair": "D6 asynchronous clocks / WORLD_HISTORY",
+      "status": "MODEL_CONTRACT_CONSISTENT"
+    },
+    {
+      "finding": "Kinematics does not assert stress, strain or mechanical accommodation; mechanics remains conditional on later requirements.",
+      "pair": "D7 no default mechanics / D2 kinematic discontinuity",
+      "status": "MODEL_CONTRACT_CONSISTENT"
+    },
+    {
+      "finding": "No first interval is admissible until active bounds and positive topology validity are qualified.",
+      "pair": "D8 adaptive dt / D1 event-driven hold",
+      "status": "IMPLEMENTATION_REQUIRED"
+    },
+    {
+      "finding": "T0 remains source state; unknown boundary/junction/geology and unbound fields remain explicit UNKNOWN/MODEL_REQUIRED.",
+      "pair": "D1-D8 / governed T0 and UNKNOWN",
+      "status": "MODEL_CONTRACT_CONSISTENT"
+    }
+  ],
+  "interpretation": "No internal scientific contradiction found. Implementation and qualification gaps remain intentionally open.",
+  "schema": "R6_B6D_MODEL_CONSISTENCY_V1",
+  "scientific_contradictions": [],
+  "status": "MODEL_CONTRACT_CONSISTENT"
+}

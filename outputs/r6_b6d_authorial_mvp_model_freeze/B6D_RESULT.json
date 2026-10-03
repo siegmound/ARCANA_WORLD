@@ -1,0 +1,77 @@
+{
+  "asynchronous_clock_status": "FROZEN_ASYNCHRONOUS_DOMAIN_VALIDITY",
+  "authorial_decisions_frozen": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8"
+  ],
+  "boundary_model_status": "FROZEN_KINEMATIC_DISCONTINUOUS_INTERFACE",
+  "branch": "r6/b6d-authorial-mvp-first-step-model-freeze",
+  "decision": "PASS_B6D_AUTHORIAL_MVP_FIRST_STEP_MODEL_FREEZE",
+  "first_dt_readiness": "NOT_READY_FOR_FIRST_DT",
+  "junction_model_status": "FROZEN_MULTI_INTERFACE_SET_VALUED__COMPATIBILITY_IMPLEMENTATION_REQUIRED",
+  "maximum_next_authorization": "AUTHORIZE_MINIMAL_MVP_MODEL_IMPLEMENTATION",
+  "mesh_representation_status": "FROZEN_PLATE_LOCAL_LAGRANGIAN_WITH_EXPLICIT_INTERFACE_REPRESENTATION",
+  "model_consistency_status": "MODEL_CONTRACT_CONSISTENT",
+  "mvp_mechanics_decision": "MVP_FIRST_STEP_KINEMATIC_NO_MECHANICS_REQUIRED",
+  "mvp_query_acceptance_status": "CONTRACT_MATERIALIZED_NOT_EXECUTED_OVER_T1",
+  "next_stage_recommendation": "AUTHORIZE_MINIMAL_MVP_MODEL_IMPLEMENTATION",
+  "numerical_constraint_gaps": "active numerical thresholds/estimators",
+  "production_source_changes": false,
+  "qualification_validation": {
+    "active_r6": {
+      "command": "python -m pytest -q -p no:cacheprovider",
+      "duration_seconds": 130.33,
+      "status": "PASS",
+      "tests_failed": 0,
+      "tests_passed": 362
+    },
+    "diff_check": "PASS",
+    "focused_b6d": {
+      "command": "python -m pytest -q -p no:cacheprovider tests/test_r6_b6d_authorial_mvp_model_freeze.py",
+      "status": "PASS",
+      "tests_failed": 0,
+      "tests_passed": 6
+    },
+    "focused_historical_regression_repairs": {
+      "command": "python -m pytest -q -p no:cacheprovider tests/test_r6_b6d_authorial_mvp_model_freeze.py tests/test_r6_b6c_targeted_model_decision.py tests/test_r6_b6b_accommodation_state_transfer.py",
+      "status": "PASS",
+      "tests_failed": 0,
+      "tests_passed": 18
+    },
+    "json_manifest_validation": "PASS",
+    "portable_path_validation": "PASS",
+    "py_compile": "PASS",
+    "qualified_source_commit": "5f924e25300ea4e26281b4419620f9ed5ee9c500",
+    "schema": "R6_B6D_TEST_RESULTS_V1",
+    "scientific_execution": "NOT_RUN",
+    "worktree_test_harness_changes": []
+  },
+  "qualified_source_commit": "5f924e25300ea4e26281b4419620f9ed5ee9c500",
+  "rotation_contract_status": "DERIVED_CONTRACT_CLOSED",
+  "schema": "R6_B6D_RESULT_V1",
+  "scientific_side_effect_check": {
+    "canonical_node_motion_executed": false,
+    "canonical_state_changed": false,
+    "canonical_topology_mutated": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "orbdata_mechanics_executed": false,
+    "runtime_authorized": true,
+    "runtime_authorized_scope": "LOAD_AND_CONSUME_GOVERNED_ARCANA_T0_RUNTIME_PACKAGE",
+    "shellset_executed": false,
+    "t1_created": false
+  },
+  "shellset_status": "SHELLSET_DEFERRED_UNTIL_MECHANICAL_RESPONSE_REQUIRED",
+  "state_transfer_gaps": "field-specific state and SYSTEM_MEMORY transfer",
+  "state_transfer_policy_status": "FROZEN_EXPLICIT_FIELD_SPECIFIC_TRANSFER_ONLY__MATRIX_OPEN",
+  "timestep_policy_status": "FROZEN_ADAPTIVE_CONSTRAINT_DRIVEN__NO_DT_SELECTED",
+  "topology_event_gaps": "positive topology validity/event coverage",
+  "topology_policy_status": "FROZEN_EVENT_DRIVEN_TOPOLOGY_HOLD__VALIDITY_QUALIFICATION_REQUIRED"
+}

@@ -1,0 +1,30 @@
+{
+  "absence_of_detector_means_absence": false,
+  "event_fields": {
+    "event_time": "must be bounded/detected before accepted interval; currently not available for general topology",
+    "post_event_model": "explicitly selected successor model and validity qualification",
+    "precondition": "governed event eligibility and support predicates",
+    "transition": "explicit event-specific topology and identity/lineage map"
+  },
+  "first_dt_gap": "demonstrate complete applicable event detection OR a positive interval-specific topology validity basis that conservatively fails closed for unsupported event classes",
+  "known_detectable_events": [
+    {
+      "event": "conditional rift activation",
+      "evidence": "Census V3 / governed rift guard",
+      "generic_topology_bound": false,
+      "horizon_years": 27123.405156307464,
+      "scope": "that conditional rift model only"
+    }
+  ],
+  "policy": "EVENT_DRIVEN_TOPOLOGY_HOLD",
+  "schema": "R6_B6D_TOPOLOGY_EVENT_POLICY_V1",
+  "status": "BLOCKS_FIRST_DT_ADJUDICATION",
+  "unsupported_or_unqualified_event_classes": [
+    "plate split",
+    "plate merge",
+    "boundary birth",
+    "boundary death",
+    "junction reassignment",
+    "other unenumerated topology events"
+  ]
+}

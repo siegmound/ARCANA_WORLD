@@ -1,0 +1,158 @@
+{
+  "families": [
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "physical_geography",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "field-specific physical attachment and conservation are not established",
+      "support": "spatial grid/cell support",
+      "temporal_validity": "tectonic-only clock remains t0 unless a field model advances it",
+      "transfer_class": "MODEL_REQUIRED",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "land_ocean",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "requires governed surface/water update rule",
+      "support": "surface-cell support",
+      "temporal_validity": "independent domain clock",
+      "transfer_class": "MODEL_REQUIRED",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "province_state",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "province attachment and boundary semantics unbound",
+      "support": "province identity/support",
+      "temporal_validity": "independent domain clock",
+      "transfer_class": "MODEL_REQUIRED",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "topography",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "no uplift/subsidence/erosion or hold law selected",
+      "support": "surface support",
+      "temporal_validity": "independent domain clock",
+      "transfer_class": "MODEL_REQUIRED",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "tectonic_plate_partition",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "preserve parent identity and event lineage",
+      "support": "plate/cell support at T0",
+      "temporal_validity": "tectonic topology identity changes only on governed event",
+      "transfer_class": "IDENTITY_REFERENCE under topology hold; REINDEX_ONLY on explicit event; else MODEL_REQUIRED",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "plate_kinematics",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "forcing and recipe must be retained/replayable",
+      "support": "plate identity; Euler forcing support",
+      "temporal_validity": "conditional first-segment validity only",
+      "transfer_class": "REPLAY / IDENTITY_REFERENCE within selected segment; UNKNOWN beyond",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "tectonic_kinematics_grid",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "do not spatialize plate rates without rule",
+      "support": "spatial support absent",
+      "temporal_validity": "not established",
+      "transfer_class": "UNKNOWN",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "boundary_classification",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "no type/polarity inference",
+      "support": "boundary identity",
+      "temporal_validity": "not established",
+      "transfer_class": "UNKNOWN",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "bathymetry",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "no implicit interpolation",
+      "support": "surface/water support",
+      "temporal_validity": "independent domain clock",
+      "transfer_class": "UNKNOWN; RECOMPUTE only after governed surface model",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "deep",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "coupling model required",
+      "support": "deep-domain support absent",
+      "temporal_validity": "independent domain clock",
+      "transfer_class": "UNKNOWN / passive",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "climate",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "no climate(t1)=climate(t0) fabrication",
+      "support": "climate-domain support",
+      "temporal_validity": "clock remains at latest valid time",
+      "transfer_class": "UNKNOWN / passive",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "hydrology",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "no hydrology(t1)=hydrology(t0) fabrication",
+      "support": "hydrology-domain support",
+      "temporal_validity": "clock remains at latest valid time",
+      "transfer_class": "UNKNOWN / passive",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "weak_zone_state",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "must not initialize to zero; model required if consumed",
+      "support": "weak-zone support absent",
+      "temporal_validity": "not established",
+      "transfer_class": "UNKNOWN",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "junction_physical_semantics",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "requires explicit multi-interface physical closure if used",
+      "support": "20 junction identities and incident relations",
+      "temporal_validity": "topology event validity",
+      "transfer_class": "UNKNOWN",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "family": "FEG/ShellSet runtime fields",
+      "recompute_or_replay": "use governed recipe/provider only; otherwise do not fabricate",
+      "required_model": "no authority promotion from runtime artifacts",
+      "support": "numerical runtime support",
+      "temporal_validity": "derived per candidate runtime",
+      "transfer_class": "RECOMPUTE from governed inputs; not canonical state",
+      "unknown_behavior": "retain UNKNOWN or MODEL_REQUIRED; never substitute a value"
+    }
+  ],
+  "global_rule": "B0-G SYSTEM_MEMORY remains retained/reconstructable; no family is silently discarded or interpolated.",
+  "schema": "R6_B6D_STATE_TRANSFER_MATRIX_V1",
+  "source_inventory": "B6C T0 family inventory (15 families)",
+  "status": "EXPLICIT_FIELD_SPECIFIC_TRANSFER_ONLY"
+}
