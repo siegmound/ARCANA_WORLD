@@ -1,0 +1,26 @@
+{
+  "artifact_manifest_hash_validation": "PASS",
+  "compileall_src_scripts": "PASS",
+  "focused_b6h": {
+    "command": "python -m pytest -q -p no:cacheprovider tests/test_r6_b6h_topology_event_coverage_closure.py",
+    "failed": 0,
+    "passed": 7
+  },
+  "full_active_r6": {
+    "command": "python -m pytest -q -p no:cacheprovider <all tests/test_r6_*.py>",
+    "duration_seconds": 190.22,
+    "failed": 0,
+    "passed": 392
+  },
+  "git_diff_check": "PASS",
+  "json_validation": "PASS",
+  "portable_path_validation": "PASS",
+  "py_compile": "PASS",
+  "related_regression": {
+    "failed": 0,
+    "passed": 52,
+    "scope": "B5 and B6A-B6G targeted modules"
+  },
+  "schema": "R6_B6H_TEST_RESULTS_V1",
+  "status": "PASS"
+}

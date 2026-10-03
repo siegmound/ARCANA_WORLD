@@ -1,0 +1,69 @@
+{
+  "absence_of_detector_means_absence": false,
+  "coverage": [
+    {
+      "coverage_scope": "eligible rift-process activation only",
+      "detector_status": "QUALIFIED_EXISTING_DETECTOR",
+      "event_class": "RIFT_PROCESS_ACTIVATION",
+      "positive_bound_status": "QUALIFIED_EVENT_SPECIFIC_BOUND",
+      "positive_horizon_years": 27123.405156307464,
+      "relevance": "RELEVANT_TO_CURRENT_T0",
+      "remaining_unknown": null
+    },
+    {
+      "coverage_scope": "no predictive detector or interval proof",
+      "detector_status": "CANNOT_BE_DEFINED_FROM_CURRENT_AUTHORITY",
+      "event_class": "BOUNDARY_IDENTITY_SET_CHANGE",
+      "positive_bound_status": "UNKNOWN",
+      "positive_horizon_years": null,
+      "relevance": "RELEVANT_TO_CURRENT_T0",
+      "remaining_unknown": "event eligibility/transition rule and first-event horizon are not governed"
+    },
+    {
+      "coverage_scope": "no predictive detector or interval proof",
+      "detector_status": "REQUIRES_EXTERNAL_MODEL",
+      "event_class": "INTERFACE_DECOMPOSITION_CHANGE",
+      "positive_bound_status": "UNKNOWN",
+      "positive_horizon_years": null,
+      "relevance": "RELEVANT_TO_CURRENT_T0",
+      "remaining_unknown": "event eligibility/transition rule and first-event horizon are not governed"
+    },
+    {
+      "coverage_scope": "no predictive detector or interval proof",
+      "detector_status": "REQUIRES_EXTERNAL_MODEL",
+      "event_class": "JUNCTION_RELATION_CHANGE",
+      "positive_bound_status": "UNKNOWN",
+      "positive_horizon_years": null,
+      "relevance": "RELEVANT_TO_CURRENT_T0",
+      "remaining_unknown": "event eligibility/transition rule and first-event horizon are not governed"
+    },
+    {
+      "coverage_scope": "no predictive detector or interval proof",
+      "detector_status": "REQUIRES_EXTERNAL_MODEL",
+      "event_class": "PLATE_SUPPORT_COMPONENT_CHANGE",
+      "positive_bound_status": "UNKNOWN",
+      "positive_horizon_years": null,
+      "relevance": "RELEVANT_TO_CURRENT_T0",
+      "remaining_unknown": "event eligibility/transition rule and first-event horizon are not governed"
+    },
+    {
+      "coverage_scope": "excluded by frozen MVP semantics",
+      "detector_status": "QUALIFIED_BY_FROZEN_MVP_SEMANTICS",
+      "event_class": "RELATION_DEGENERACY_REQUIRING_TOPOLOGY_CHANGE",
+      "positive_bound_status": "NOT_APPLICABLE",
+      "positive_horizon_years": null,
+      "relevance": "NOT_RELEVANT_WITHIN_FROZEN_FIRST_SEGMENT_MODEL",
+      "remaining_unknown": null
+    },
+    {
+      "coverage_scope": "no predictive detector or interval proof",
+      "detector_status": "CANNOT_BE_DEFINED_FROM_CURRENT_AUTHORITY",
+      "event_class": "OTHER_UNENUMERATED_TOPOLOGY_TRANSITION",
+      "positive_bound_status": "UNKNOWN",
+      "positive_horizon_years": null,
+      "relevance": "INSUFFICIENT_AUTHORITY_TO_CLASSIFY",
+      "remaining_unknown": "event eligibility/transition rule and first-event horizon are not governed"
+    }
+  ],
+  "status": "PARTIAL_EVENT_COVERAGE_ONLY"
+}

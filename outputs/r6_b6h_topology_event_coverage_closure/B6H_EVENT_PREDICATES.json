@@ -1,0 +1,96 @@
+{
+  "event_delta_contract": "retrospective identity/incidence differences only; no future geometry or predictive horizon",
+  "predicates": [
+    {
+      "authority": "Census V3 rift guard / B6A bound",
+      "continuous_in_time": true,
+      "event_class": "RIFT_PROCESS_ACTIVATION",
+      "event_semantics": "Rift-process activation is retained as its own event; it does not assert boundary birth.",
+      "first_event_horizon_computable": true,
+      "governed_entities": "eligible rift support and governed extension E(t)",
+      "input_geometry": "governed T0 topology identities/relations; no candidate future geometry materialized",
+      "input_kinematics": "B6B conditional fixed-T0 Euler rates only where a qualified guard consumes them",
+      "predicate": "RIFT_INITIATION when E(t) >= theta under positive opening",
+      "qualification_note": "For unsupported transitions this is only a semantic post-state delta predicate, not a pre-event detector or horizon.",
+      "units": "m"
+    },
+    {
+      "authority": "not governed",
+      "continuous_in_time": false,
+      "event_class": "BOUNDARY_IDENTITY_SET_CHANGE",
+      "event_semantics": "Birth and death are the two directions of boundary identity-set change; rift activation is not equated with birth.",
+      "first_event_horizon_computable": false,
+      "governed_entities": "boundary identity set before/after",
+      "input_geometry": "governed T0 topology identities/relations; no candidate future geometry materialized",
+      "input_kinematics": "B6B conditional fixed-T0 Euler rates only where a qualified guard consumes them",
+      "predicate": "a boundary identity is added or removed",
+      "qualification_note": "For unsupported transitions this is only a semantic post-state delta predicate, not a pre-event detector or horizon.",
+      "units": "identity/count"
+    },
+    {
+      "authority": "not governed",
+      "continuous_in_time": false,
+      "event_class": "INTERFACE_DECOMPOSITION_CHANGE",
+      "event_semantics": "Split and merge are inverse changes to the interface relation decomposition.",
+      "first_event_horizon_computable": false,
+      "governed_entities": "interface IDs and their side/incidence relations",
+      "input_geometry": "governed T0 topology identities/relations; no candidate future geometry materialized",
+      "input_kinematics": "B6B conditional fixed-T0 Euler rates only where a qualified guard consumes them",
+      "predicate": "an interface relation is replaced by a split or merged relation set",
+      "qualification_note": "For unsupported transitions this is only a semantic post-state delta predicate, not a pre-event detector or horizon.",
+      "units": "identity/incidence"
+    },
+    {
+      "authority": "not governed",
+      "continuous_in_time": false,
+      "event_class": "JUNCTION_RELATION_CHANGE",
+      "event_semantics": "Identity birth/death and incidence reassignment all alter the set-valued junction relation.",
+      "first_event_horizon_computable": false,
+      "governed_entities": "junction IDs and incident plate/interface sets",
+      "input_geometry": "governed T0 topology identities/relations; no candidate future geometry materialized",
+      "input_kinematics": "B6B conditional fixed-T0 Euler rates only where a qualified guard consumes them",
+      "predicate": "junction identity set or any governed incidence set changes",
+      "qualification_note": "For unsupported transitions this is only a semantic post-state delta predicate, not a pre-event detector or horizon.",
+      "units": "identity/incidence"
+    },
+    {
+      "authority": "not governed",
+      "continuous_in_time": false,
+      "event_class": "PLATE_SUPPORT_COMPONENT_CHANGE",
+      "event_semantics": "Split/merge are support-component changes; plate creation/termination is a related identity-set change covered by the same missing transition authority.",
+      "first_event_horizon_computable": false,
+      "governed_entities": "plate identity and connected support components",
+      "input_geometry": "governed T0 topology identities/relations; no candidate future geometry materialized",
+      "input_kinematics": "B6B conditional fixed-T0 Euler rates only where a qualified guard consumes them",
+      "predicate": "plate support component partition or plate identity set changes",
+      "qualification_note": "For unsupported transitions this is only a semantic post-state delta predicate, not a pre-event detector or horizon.",
+      "units": "component/identity"
+    },
+    {
+      "authority": "B6B-D3 frozen MVP",
+      "continuous_in_time": true,
+      "event_class": "RELATION_DEGENERACY_REQUIRING_TOPOLOGY_CHANGE",
+      "event_semantics": "Exact plate-local rigid maps preserve internal geometry; D2/D3 relations do not require cross-side co-location. Identity/incidence changes are covered by the event classes above.",
+      "first_event_horizon_computable": false,
+      "governed_entities": "plate-local rigid geometry and D2/D3 relations",
+      "input_geometry": "governed T0 topology identities/relations; no candidate future geometry materialized",
+      "input_kinematics": "B6B conditional fixed-T0 Euler rates only where a qualified guard consumes them",
+      "predicate": "no invalidating predicate under frozen MVP; exact rigid map preserves local geometry and cross-side coincidence is not required",
+      "qualification_note": "For unsupported transitions this is only a semantic post-state delta predicate, not a pre-event detector or horizon.",
+      "units": "not applicable"
+    },
+    {
+      "authority": "D1 fail-closed policy",
+      "continuous_in_time": false,
+      "event_class": "OTHER_UNENUMERATED_TOPOLOGY_TRANSITION",
+      "event_semantics": "D1 explicitly fails closed for unknown event classes; no completeness proof exists.",
+      "first_event_horizon_computable": false,
+      "governed_entities": "not enumerable from current authority",
+      "input_geometry": "governed T0 topology identities/relations; no candidate future geometry materialized",
+      "input_kinematics": "B6B conditional fixed-T0 Euler rates only where a qualified guard consumes them",
+      "predicate": "unknown D1 topology-changing transition occurs",
+      "qualification_note": "For unsupported transitions this is only a semantic post-state delta predicate, not a pre-event detector or horizon.",
+      "units": "unknown"
+    }
+  ]
+}

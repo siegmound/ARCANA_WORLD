@@ -1,0 +1,88 @@
+{
+  "classes": [
+    {
+      "classification": "RELEVANT_TO_CURRENT_T0",
+      "detector_status": "QUALIFIED_EXISTING_DETECTOR",
+      "event_class": "RIFT_PROCESS_ACTIVATION",
+      "positive_horizon_status": "QUALIFIED_EVENT_SPECIFIC_BOUND",
+      "reduction": "Rift-process activation is retained as its own event; it does not assert boundary birth.",
+      "source_candidates": [
+        "RIFT_ACTIVATION_BOUNDARY_BIRTH"
+      ]
+    },
+    {
+      "classification": "RELEVANT_TO_CURRENT_T0",
+      "detector_status": "CANNOT_BE_DEFINED_FROM_CURRENT_AUTHORITY",
+      "event_class": "BOUNDARY_IDENTITY_SET_CHANGE",
+      "positive_horizon_status": "UNKNOWN",
+      "reduction": "Birth and death are the two directions of boundary identity-set change; rift activation is not equated with birth.",
+      "source_candidates": [
+        "BOUNDARY_DEATH",
+        "RIFT_ACTIVATION_BOUNDARY_BIRTH"
+      ]
+    },
+    {
+      "classification": "RELEVANT_TO_CURRENT_T0",
+      "detector_status": "REQUIRES_EXTERNAL_MODEL",
+      "event_class": "INTERFACE_DECOMPOSITION_CHANGE",
+      "positive_horizon_status": "UNKNOWN",
+      "reduction": "Split and merge are inverse changes to the interface relation decomposition.",
+      "source_candidates": [
+        "INTERFACE_SPLIT",
+        "INTERFACE_MERGE"
+      ]
+    },
+    {
+      "classification": "RELEVANT_TO_CURRENT_T0",
+      "detector_status": "REQUIRES_EXTERNAL_MODEL",
+      "event_class": "JUNCTION_RELATION_CHANGE",
+      "positive_horizon_status": "UNKNOWN",
+      "reduction": "Identity birth/death and incidence reassignment all alter the set-valued junction relation.",
+      "source_candidates": [
+        "JUNCTION_BIRTH",
+        "JUNCTION_DEATH",
+        "JUNCTION_CONNECTIVITY_CHANGE"
+      ]
+    },
+    {
+      "classification": "RELEVANT_TO_CURRENT_T0",
+      "detector_status": "REQUIRES_EXTERNAL_MODEL",
+      "event_class": "PLATE_SUPPORT_COMPONENT_CHANGE",
+      "positive_horizon_status": "UNKNOWN",
+      "reduction": "Split/merge are support-component changes; plate creation/termination is a related identity-set change covered by the same missing transition authority.",
+      "source_candidates": [
+        "PLATE_SUPPORT_SPLIT",
+        "PLATE_SUPPORT_MERGE"
+      ]
+    },
+    {
+      "classification": "NOT_RELEVANT_WITHIN_FROZEN_FIRST_SEGMENT_MODEL",
+      "detector_status": "QUALIFIED_BY_FROZEN_MVP_SEMANTICS",
+      "event_class": "RELATION_DEGENERACY_REQUIRING_TOPOLOGY_CHANGE",
+      "positive_horizon_status": "NOT_APPLICABLE",
+      "reduction": "Exact plate-local rigid maps preserve internal geometry; D2/D3 relations do not require cross-side co-location. Identity/incidence changes are covered by the event classes above.",
+      "source_candidates": [
+        "RELATION_DEGENERACY_REQUIRING_TOPOLOGY_CHANGE"
+      ]
+    },
+    {
+      "classification": "INSUFFICIENT_AUTHORITY_TO_CLASSIFY",
+      "detector_status": "CANNOT_BE_DEFINED_FROM_CURRENT_AUTHORITY",
+      "event_class": "OTHER_UNENUMERATED_TOPOLOGY_TRANSITION",
+      "positive_horizon_status": "UNKNOWN",
+      "reduction": "D1 explicitly fails closed for unknown event classes; no completeness proof exists.",
+      "source_candidates": [
+        "OTHER_GOVERNED_EVENT"
+      ]
+    }
+  ],
+  "count": 7,
+  "relevant_classes": [
+    "RIFT_PROCESS_ACTIVATION",
+    "BOUNDARY_IDENTITY_SET_CHANGE",
+    "INTERFACE_DECOMPOSITION_CHANGE",
+    "JUNCTION_RELATION_CHANGE",
+    "PLATE_SUPPORT_COMPONENT_CHANGE",
+    "OTHER_UNENUMERATED_TOPOLOGY_TRANSITION"
+  ]
+}
