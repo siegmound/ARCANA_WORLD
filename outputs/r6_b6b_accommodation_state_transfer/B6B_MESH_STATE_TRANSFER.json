@@ -1,0 +1,86 @@
+{
+  "b5_plate_faces": 64800,
+  "candidate_mesh_created": false,
+  "field_inventory": {
+    "chemical_density_anomaly_kg_m3": {
+      "authority": "NUMERICAL_RUNTIME_REFERENCE_COMPONENT",
+      "physical_authority": "NOT_CANONICAL_CHEMICAL_GEOLOGY",
+      "value": 0.0
+    },
+    "cooling_curvature_k_m2": {
+      "authority": "LEGACY_FEG_COMPATIBILITY_ONLY",
+      "reason": "Explicit ARCANA runtime bypasses legacy cooling-curvature reconstruction; profile is supplied by owner-bound runtime package.",
+      "value": 0.0
+    },
+    "crustal_thickness_m": {
+      "authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+      "owner_bound": true,
+      "source_field": "crust_thickness_m"
+    },
+    "elevation_m": {
+      "authority": "NUMERICAL_DERIVED_SUPPORT",
+      "owner_bound": true,
+      "source_field": "total_surface_elevation_m"
+    },
+    "heat_flow_w_m2": {
+      "authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+      "owner_bound": true,
+      "source_field": "surface_heat_flow_w_m2"
+    },
+    "mantle_lithosphere_thickness_m": {
+      "authority": "NUMERICAL_RUNTIME_INPUT_ONLY",
+      "owner_bound": true,
+      "source_field": "mantle_lithosphere_thickness_m"
+    }
+  },
+  "interpolation": "NOT_AUTHORIZED; no nearest-neighbor, barycentric, conservative remap, snapping, or grid interpolation rule found",
+  "items": [
+    {
+      "item": "coordinates",
+      "scope": "single-plate interiors only, conditional on first-segment model; shared boundary/junction coordinates BLOCKED",
+      "status": "RIGIDLY_TRANSFORMED"
+    },
+    {
+      "item": "connectivity",
+      "scope": "T0 mesh identity only; cannot assert next-state connectivity without topology-hold authority",
+      "status": "UNCHANGED_REFERENCE"
+    },
+    {
+      "item": "plate membership",
+      "scope": "T0 support map only; candidate next membership needs topology hold or event remap",
+      "status": "UNCHANGED_REFERENCE"
+    },
+    {
+      "item": "boundary/junction membership",
+      "scope": "IDs/incidence valid at T0; no future update/lineage rule",
+      "status": "UNKNOWN"
+    },
+    {
+      "item": "field values",
+      "scope": "no governed transport/advection/interpolation for B3 states or FEG nodal runtime fields",
+      "status": "UNKNOWN"
+    },
+    {
+      "item": "system memory",
+      "scope": "B0-G SYSTEM_MEMORY may not be discarded; B3 producer adapter is reference-only",
+      "status": "TRANSFER_REQUIRED_POLICY_UNKNOWN"
+    }
+  ],
+  "node_support": {
+    "BOUNDARY_SHARED": 1953,
+    "INTERIOR_PLATE": 62469,
+    "JUNCTION_SHARED": 20,
+    "UNKNOWN": 0
+  },
+  "remeshing": "BLOCKED; no deterministic remesh plus ID lineage/state transfer contract",
+  "schema": "R6_B6B_MESH_STATE_TRANSFER_V1",
+  "t0_mesh": {
+    "canonical_normalized_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "fault_count": 0,
+    "node_count": 64442,
+    "production_runtime_normalized_sha256": "403fae9cbac71d62863788dbd2d9376497550677d8ce1d20ab1aef613c59d16c",
+    "runtime_hash_is_distinct_by_governed_frame_transform": true,
+    "triangle_count": 128880
+  },
+  "world_history_boundary": "FEG/runtime package is derived runtime support and is discarded from B3 canonical minimal-state ingest; no dynamic FEG remap is authorized."
+}

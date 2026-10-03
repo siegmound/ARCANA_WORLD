@@ -1,0 +1,30 @@
+{
+  "blockers": [
+    {
+      "blocker": "positive-duration kinematics",
+      "reason": "conditional constant-T0 first segment exists; not executable and has no renewal law/numerical validity",
+      "status": "PARTIALLY_CLOSED"
+    },
+    {
+      "blocker": "topology/event bound",
+      "reason": "rift horizon is not topology bound; no invariance interval or topology-event calendar",
+      "status": "BLOCKING"
+    },
+    {
+      "blocker": "boundary/junction accommodation",
+      "reason": "all 1,983 segments and 20 junctions fail closed under unbound physical response",
+      "status": "BLOCKING"
+    },
+    {
+      "blocker": "mesh/state transfer",
+      "reason": "only single-plate interior rigid transform is specified; shared support and fields lack transfer rules",
+      "status": "BLOCKING"
+    },
+    {
+      "blocker": "numerical/model validity",
+      "reason": "no displacement, rotation, mesh-validity or solver-specific thresholds",
+      "status": "BLOCKING"
+    }
+  ],
+  "schema": "R6_B6B_BLOCKER_STATUS_V1"
+}

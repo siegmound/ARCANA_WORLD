@@ -1,0 +1,87 @@
+{
+  "field_dispositions": [
+    {
+      "advect_or_copy_rule": "NOT_BOUND",
+      "candidate_next_state": "REFERENCE_IMMUTABLE_T0_ONLY_UNLESS_A_RESPONSE_MODEL_REQUIRES_NEW_VALUES",
+      "current_action": "MATERIALIZE",
+      "field": "T0 physical_geography/land_ocean/province_state/topography payload"
+    },
+    {
+      "candidate_next_state": "NEW_PARTITION_REQUIRED_FOR_TOPOLOGY_CHANGE; otherwise T0 reference only",
+      "current_action": "DERIVED_SUPPORTED_SYSTEM_MEMORY",
+      "field": "T0 tectonic_plate_partition payload",
+      "transfer_rule": "BLOCKED_BY_TOPOLOGY_HOLD_OR_EVENT_CONTRACT"
+    },
+    {
+      "candidate_next_state": "reference as driver through conditional first segment",
+      "current_action": "STATIC SYSTEM_MEMORY",
+      "field": "T0 plate kinematics",
+      "transfer_rule": "no renewal beyond first segment"
+    },
+    {
+      "candidate_next_state": "retain parent support identity; recompute only under authorized mesh/topology adapter",
+      "current_action": "DERIVED_T0_SUPPORT",
+      "field": "B5 node-to-plate support",
+      "transfer_rule": "no next-state remap exists"
+    },
+    {
+      "candidate_next_state": "update would be memory and must persist; no substate or advance is authorized",
+      "current_action": "zero T0 initial progress under authorial rift law; source of truth only",
+      "field": "rift cumulative opening progress",
+      "transfer_rule": "law exists but geometry accommodation and execution remain blocked"
+    },
+    {
+      "candidate_next_state": "UNKNOWN; cannot initialize as zero or discard if later law depends on it",
+      "current_action": "NOT_MATERIALIZED or UNKNOWN",
+      "field": "shortening/slip/damage/weakness/junction response",
+      "transfer_rule": "requires model-specific authority"
+    }
+  ],
+  "generic_rule": "B0-G: SYSTEM_MEMORY cannot be DISCARD; future-dependent values survive even if not directly queried.",
+  "no_memory_discarded": true,
+  "producer_policy_status": "REVIEW_REQUIRED_FOR_SCIENTIFIC_MINIMALITY; adapter boundary reference-only, no governed field arrays copied",
+  "retention_map": [
+    {
+      "action": "MATERIALIZE",
+      "item": "initial-world supported fields",
+      "reason": "current governed T0 support; semantic envelopes retain references only",
+      "reference": "payload://sha256/a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+      "role": "SYSTEM_MEMORY"
+    },
+    {
+      "action": "STATIC",
+      "item": "vector partition",
+      "reason": "governed topology dependency for future domain adapters",
+      "reference": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+      "role": "SYSTEM_MEMORY"
+    },
+    {
+      "action": "STATIC",
+      "item": "plate kinematics",
+      "reason": "current canonical synthetic T0 model realization; no interval law selected",
+      "reference": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+      "role": "SYSTEM_MEMORY"
+    },
+    {
+      "action": "DISCARD",
+      "item": "FEG and ShellSet runtime package",
+      "reason": "excluded from WORLD_HISTORY physical-state ingest; source artifacts remain untouched",
+      "reference": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.json; R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.json",
+      "role": "DERIVED_QUERY_OR_RUNTIME_PRODUCT"
+    },
+    {
+      "action": "REVIEW_REQUIRED",
+      "item": "B-PANGAEA V2 field package",
+      "reason": "manifest remains CANDIDATE_UNTIL_MATERIALIZATION_VALIDATION",
+      "role": "CANDIDATE_T0"
+    },
+    {
+      "action": "STATIC",
+      "item": "unknown-domain masks",
+      "reason": "referenced by UNKNOWN state metadata; not numeric state",
+      "reference": "field refs in R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json",
+      "role": "SUPPORT_EVIDENCE"
+    }
+  ],
+  "schema": "R6_B6B_SYSTEM_MEMORY_TRANSFER_V1"
+}

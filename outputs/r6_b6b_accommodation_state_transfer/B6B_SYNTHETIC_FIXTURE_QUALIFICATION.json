@@ -1,0 +1,80 @@
+{
+  "authority": "FIXTURE_ONLY; no ARCANA coordinates, rates, duration, or topology used",
+  "candidate_remesh": {
+    "fixture_only": true,
+    "remesh_executed": false,
+    "result": "BLOCKED_WITHOUT_TOPOLOGY_EVENT_AND_PARENT_LINEAGE_CONTRACT"
+  },
+  "missing_accommodation": {
+    "fallback": "NONE",
+    "fixture_only": true,
+    "result": "FAIL_CLOSED_NO_CANDIDATE_STATE"
+  },
+  "rigid_interior": {
+    "candidate_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "mechanics_used": false,
+    "result": "DETERMINISTIC_RIGID_COORDINATE_TRANSFER",
+    "source_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "supplied_transform": "quarter_turn_z"
+  },
+  "schema": "R6_B6B_SYNTHETIC_FIXTURE_QUALIFICATION_V1",
+  "triple_junction": {
+    "candidate_positions_by_incident_plate": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "least_squares_or_average_used": false,
+    "owner_assigned": false,
+    "result": "UNRESOLVED_REQUIRES_JUNCTION_MODEL",
+    "single_shared_coordinate_compatible": false,
+    "source_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ]
+  },
+  "two_plate_boundary": {
+    "average_snap_or_slip_invented": false,
+    "candidate_positions_by_plate": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "owner_assigned": false,
+    "result": "UNRESOLVED_REQUIRES_PHYSICAL_MODEL",
+    "single_shared_coordinate_compatible": false,
+    "source_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ]
+  }
+}

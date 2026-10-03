@@ -1,0 +1,60 @@
+{
+  "dt_selected": false,
+  "inputs": [
+    {
+      "name": "T0 angular rates",
+      "role": "driver",
+      "status": "GOVERNED_AT_210_MA",
+      "value": "12 Euler vectors"
+    },
+    {
+      "name": "first-segment motion law",
+      "role": "kinematic validity",
+      "status": "CONDITIONAL_GOVERNED_MODEL",
+      "value": "constant T0 Euler state through first segment only"
+    },
+    {
+      "name": "segment renewal horizon",
+      "role": "blocking",
+      "status": "UNKNOWN_AFTER_FIRST_SEGMENT",
+      "value": null
+    },
+    {
+      "name": "rift activation bound",
+      "role": "event stop only; not dt or topology bound",
+      "status": "CONDITIONAL_GOVERNED_MODEL_BOUND",
+      "value_years": 27123.405156307464
+    },
+    {
+      "name": "topology invariance/event bound",
+      "role": "blocking",
+      "status": "UNKNOWN",
+      "value": null
+    },
+    {
+      "name": "boundary/junction accommodation validity",
+      "role": "blocking",
+      "status": "UNKNOWN",
+      "value": null
+    },
+    {
+      "name": "mesh/state transfer validity",
+      "role": "blocking",
+      "status": "UNKNOWN",
+      "value": null
+    },
+    {
+      "name": "displacement/rotation/Jacobian thresholds",
+      "role": "blocking",
+      "status": "UNKNOWN",
+      "value": null
+    },
+    {
+      "name": "solver stability",
+      "role": "not applicable until solver choice",
+      "status": "SOLVER_DEPENDENT",
+      "value": null
+    }
+  ],
+  "schema": "R6_B6B_FIRST_DT_INPUTS_V1"
+}

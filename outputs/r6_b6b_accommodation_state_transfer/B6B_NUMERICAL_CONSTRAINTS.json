@@ -1,0 +1,59 @@
+{
+  "constraints": [
+    {
+      "classification": "MODEL_VALUE_REQUIRED",
+      "constraint": "maximum angular displacement / rotation",
+      "current_value": null,
+      "reason": "no precommitted limit in current T0/B6A law"
+    },
+    {
+      "classification": "MODEL_VALUE_REQUIRED",
+      "constraint": "maximum node displacement or fraction of local edge length",
+      "current_value": null,
+      "reason": "no geometry accuracy/deformation bound"
+    },
+    {
+      "classification": "MODEL_VALUE_REQUIRED",
+      "constraint": "boundary crossing/gap/overlap rejection",
+      "current_value": null,
+      "reason": "current topology guard has no positive horizon; shared interfaces have no accommodation law"
+    },
+    {
+      "classification": "MODEL_VALUE_REQUIRED",
+      "constraint": "mesh orientation/inversion/Jacobian criterion",
+      "current_value": null,
+      "reason": "continuum guard reports minimum_jacobian=null and no precommitted criterion"
+    },
+    {
+      "classification": "MODEL_VALUE_REQUIRED",
+      "constraint": "remesh threshold and lineage policy",
+      "current_value": null,
+      "reason": "no deterministic remeshing/state transfer contract"
+    },
+    {
+      "classification": "MODEL_VALUE_REQUIRED",
+      "constraint": "topology/event stop bound",
+      "current_value": null,
+      "reason": "no topology invariant interval/event-time authority"
+    },
+    {
+      "classification": "GOVERNED_VALUE_AVAILABLE",
+      "constraint": "rift activation horizon",
+      "current_value_years": 27123.405156307464,
+      "role": "conditional rift-process event boundary only; not dt, topology bound, or solver stability bound"
+    },
+    {
+      "classification": "SOLVER_DEPENDENT",
+      "constraint": "solver stability bound",
+      "current_value": null,
+      "reason": "no solver selected; may be not required if a later non-solver law is authorized"
+    },
+    {
+      "classification": "SOLVER_DEPENDENT",
+      "constraint": "event localization/restart tolerance",
+      "current_value": null,
+      "reason": "rift law requires stop/localize but explicitly leaves solver-specific tolerance unbound"
+    }
+  ],
+  "schema": "R6_B6B_NUMERICAL_CONSTRAINTS_V1"
+}

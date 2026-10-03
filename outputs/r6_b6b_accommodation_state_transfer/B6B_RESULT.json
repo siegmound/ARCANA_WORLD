@@ -1,0 +1,121 @@
+{
+  "b7_execution_target": "UBUNTU_WORKSTATION",
+  "b7_status": "NOT_READY_TO_QUALIFY_A_MECHANICS_SOLVER",
+  "blocker_status_after_B6B": [
+    {
+      "blocker": "positive-duration kinematics",
+      "reason": "conditional constant-T0 first segment exists; not executable and has no renewal law/numerical validity",
+      "status": "PARTIALLY_CLOSED"
+    },
+    {
+      "blocker": "topology/event bound",
+      "reason": "rift horizon is not topology bound; no invariance interval or topology-event calendar",
+      "status": "BLOCKING"
+    },
+    {
+      "blocker": "boundary/junction accommodation",
+      "reason": "all 1,983 segments and 20 junctions fail closed under unbound physical response",
+      "status": "BLOCKING"
+    },
+    {
+      "blocker": "mesh/state transfer",
+      "reason": "only single-plate interior rigid transform is specified; shared support and fields lack transfer rules",
+      "status": "BLOCKING"
+    },
+    {
+      "blocker": "numerical/model validity",
+      "reason": "no displacement, rotation, mesh-validity or solver-specific thresholds",
+      "status": "BLOCKING"
+    }
+  ],
+  "boundary_accommodation_status": "BLOCKING_NO_BOUND_PHYSICAL_OR_GEOMETRIC_ACCOMMODATION",
+  "boundary_geological_type_requirement": "UNKNOWN_CAN_REMAIN_ONLY_IF_LATER_SELECTED_LAW_PROVES_TYPE_AGNOSTIC; CURRENTLY_BLOCKS_MODEL_SELECTION_FOR_TYPE_DEPENDENT_RESPONSE",
+  "branch": "r6/b6b-first-step-accommodation-state-transfer",
+  "census_v3_horizon_role": "CONDITIONAL_RIFT_ACTIVATION_EVENT_BOUND_ONLY_NOT_DT_OR_TOPOLOGY_BOUND",
+  "decision": "PASS_B6B_FIRST_STEP_ACCOMMODATION_STATE_TRANSFER",
+  "first_dt_status_after_B6B": "NOT_READY_FOR_FIRST_DT",
+  "first_step_transformation_inventory": [
+    {
+      "classification": "RIGID_KINEMATIC_TRANSFER",
+      "frame_orientation_evidence": "B5 reference-frame evidence says Cartesian axis handedness is not separately declared; no sign/axis transform is inferred here",
+      "item": "strictly interior node coordinates",
+      "no_interpolation": true,
+      "rule": "x_candidate = R(omega_plate, elapsed_time) x_T0 in the declared internal gauge; requires governed plate ID, T0 coordinate, an interval inside the conditional first segment, and an explicit/verified mapping from governed Euler-vector axes to coordinate rotation action",
+      "status": "CONDITIONAL_RULE; CARTESIAN_ACTION_CONVENTION_MUST_BE_EXPLICIT"
+    },
+    {
+      "classification": "DETERMINISTIC_GEOMETRIC_TRANSFER",
+      "item": "face geometry whose nodes all have the same single-plate support",
+      "no_remesh": true,
+      "rule": "apply the same plate rigid transform to each face vertex; preserve face connectivity/identity",
+      "status": "CONDITIONAL_ON_TOPOLOGY_AND_SEGMENT_GUARDS"
+    },
+    {
+      "classification": "REQUIRES_PHYSICAL_MODEL",
+      "item": "two-plate boundary-shared node",
+      "reason": "set-valued support has no single transformed coordinate when incident plate transforms differ; B5 assigns no owner and all 1,983 boundary segments are blocked",
+      "status": "BLOCKED"
+    },
+    {
+      "classification": "REQUIRES_PHYSICAL_MODEL",
+      "item": "junction-shared node",
+      "reason": "degree-three incidence has no governed common coordinate, residual allocation, or compatible junction law; all 20 junctions blocked",
+      "status": "BLOCKED"
+    },
+    {
+      "classification": "UNKNOWN",
+      "item": "connectivity/topology identity",
+      "reason": "no positive topology bound or invariance interval",
+      "status": "NO_TOPOLOGY_HOLD_AUTHORITY"
+    },
+    {
+      "classification": "CAN_DEFER",
+      "item": "plate and boundary support membership",
+      "reason": "can remain a T0 reference; using it as next-state membership requires an explicit topology-hold contract",
+      "status": "REFERENCE_ONLY_AT_T0"
+    },
+    {
+      "classification": "UNKNOWN",
+      "item": "physical field transport/remapping",
+      "reason": "no governed advection, material attachment, remap, or interpolation rule for the full B3 field inventory",
+      "status": "MODEL_REQUIRED"
+    },
+    {
+      "classification": "UNKNOWN",
+      "item": "system-memory transfer",
+      "reason": "B0-G forbids discarding required SYSTEM_MEMORY; domain adapter has not supplied field-by-field reconstruction/update rules",
+      "status": "REQUIRED_BY_B0_G_BUT_FIELD_POLICY_INCOMPLETE"
+    },
+    {
+      "classification": "DETERMINISTIC_GEOMETRIC_TRANSFER",
+      "item": "provenance, event, replay and checkpoint records",
+      "reason": "record source state, forcing/law IDs, uncertainty, support/topology identities, replay recipe and checkpoint lineage; none created in B6B",
+      "status": "REQUIRED_IF_A_CANDIDATE_STATE_IS_AUTHORIZED"
+    }
+  ],
+  "interior_rigid_transfer_status": "CONDITIONAL_RIGID_TRANSFER_NO_MECHANICS_FOR_SINGLE_PLATE_INTERIORS; COORDINATE_ACTION_CONVENTION_MUST_BE_EXPLICIT",
+  "junction_accommodation_status": "BLOCKING_NO_GOVERNED_JUNCTION_RESPONSE",
+  "maximum_next_authorization": "AUTHORIZE_TARGETED_MODEL_DECISION",
+  "mesh_state_transfer_status": "PARTIAL_INTERIOR_ONLY; GLOBAL_CANDIDATE_TRANSFER_BLOCKED",
+  "production_source_changes": false,
+  "qualification_validation_status": "PASS",
+  "qualification_verdict": "PASS_B6B_FIRST_STEP_ACCOMMODATION_STATE_TRANSFER",
+  "qualified_source_commit": "66ff83a8cf8b86b483c60a75b12d1da9594d1740",
+  "schema": "R6_B6B_RESULT_V1",
+  "scientific_side_effect_check": {
+    "canonical_state_changed": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "node_motion_executed": false,
+    "orbdata_mechanics_executed": false,
+    "runtime_authorized": true,
+    "runtime_authorized_scope": "LOAD_AND_CONSUME_GOVERNED_ARCANA_T0_RUNTIME_PACKAGE",
+    "shellset_executed": false,
+    "t1_created": false,
+    "topology_mutation_executed": false
+  },
+  "shellset_decision": "SHELLSET_REQUIREMENT_STILL_UNRESOLVED",
+  "system_memory_transfer_status": "REQUIRED_BY_B0_G_BUT_FIELD_POLICY_INCOMPLETE",
+  "topology_hold_contract": "EXPLICIT_TOPOLOGY_INVARIANCE_MODEL_REQUIRED"
+}

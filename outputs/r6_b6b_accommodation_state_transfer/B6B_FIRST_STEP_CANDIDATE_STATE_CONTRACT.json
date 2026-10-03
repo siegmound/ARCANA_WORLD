@@ -1,0 +1,38 @@
+{
+  "cannot_claim": [
+    "unchanged future fields without a hold law",
+    "same connectivity without topology validity",
+    "single owner at shared nodes",
+    "interpolated material IDs",
+    "unrecorded state-memory loss"
+  ],
+  "new_values_required_if_transition_executes": [
+    "plate interior coordinates",
+    "boundary/junction coordinates or explicit accommodation state",
+    "topology/support only if event changes it",
+    "any dependent physical fields selected by the response model",
+    "cumulative opening memory if advanced"
+  ],
+  "not_created": true,
+  "references_unchanged_t0": [
+    "physical_geography",
+    "land_ocean",
+    "province_state",
+    "topography",
+    "T0 plate kinematics",
+    "parent mesh/support identities"
+  ],
+  "requires": [
+    "source T0 state IDs/hashes",
+    "conditional first-segment forcing ID and model identity",
+    "supported node/face/boundary/junction parent identities",
+    "topology hold or explicit topology event record",
+    "physical boundary/junction response and mesh/state-transfer rule",
+    "field-by-field SYSTEM_MEMORY retention/reconstruction",
+    "uncertainty and provider provenance",
+    "WorldHistory state/provenance/event/forcing records",
+    "checkpoint plus replay recipe"
+  ],
+  "schema": "R6_B6B_FIRST_STEP_CANDIDATE_STATE_CONTRACT_V1",
+  "status": "CONTRACT_ONLY_NO_CANDIDATE_STATE_CREATED"
+}
