@@ -1,0 +1,46 @@
+{
+  "frozen_invariants": [
+    "boundary/side IDs preserved",
+    "two distinct plate-local sides",
+    "adjacent plate pairing preserved",
+    "endpoint identity/order preserved",
+    "geometric co-location not required by D2"
+  ],
+  "kinematic_components": {
+    "decomposed_count": 1983,
+    "interface_count": 1983,
+    "interpretation": "KINEMATIC_DISCONTINUITY_ONLY__NO_SHARED_VELOCITY_OR_PHYSICAL_ACCOMMODATION",
+    "maximum_absolute_normal_velocity_m_per_year": 0.18434263585954164,
+    "maximum_absolute_tangential_velocity_m_per_year": 0.18433740622978986,
+    "missing_component_count": 0,
+    "normal_component_counts": {
+      "closing_negative": 1091,
+      "exactly_zero": 0,
+      "opening_positive": 892
+    },
+    "normal_separation_semantics": "Separation does not erase relational interface identity under D2; physical gap response or a topology transition requires separate governed event/model authority.",
+    "normal_sign_convention": [
+      "n_AB points from plate_a to plate_b; positive signed normal relative velocity is opening"
+    ],
+    "normal_velocity_units": "m/year",
+    "tangential_nonzero_count": 1983,
+    "tangential_velocity_units": "m/year"
+  },
+  "physical_accommodation": "UNKNOWN",
+  "status": "INTERFACE_VALIDITY_IS_RELATIONAL_AND_POSITIVE",
+  "structural_audit": {
+    "candidate_geometry_or_canonical_state_written": false,
+    "geometric_co_location_required": false,
+    "interface_count": 1983,
+    "interface_identity_pairing_failures": [],
+    "interface_structural_identity_pass": true,
+    "junction_incidence_failures": [],
+    "junction_relation_count": 20,
+    "junction_structural_incidence_pass": true,
+    "physical_accommodation": "UNKNOWN_PRESERVED",
+    "position_residual_or_velocity_allocation": "NOT_DEFINED_OR_REQUIRED_BY_FROZEN_RELATIONAL_SEMANTICS",
+    "unique_interface_id_count": 1983,
+    "unique_junction_identity_count": 20,
+    "unique_plate_local_side_id_count": 3966
+  }
+}

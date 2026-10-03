@@ -1,0 +1,165 @@
+{
+  "blocking_families": [],
+  "families": [
+    {
+      "declared_transfer_class": "MODEL_REQUIRED",
+      "existing_temporal_behavior": "derived per candidate runtime",
+      "first_step_classification": "DERIVED_RECOMPUTABLE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": false,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "No mechanics/runtime consumer is required by D7; recompute only if later selected.",
+      "state_family": "FEG/ShellSet runtime fields"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "independent domain clock",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "D6 independent domain clock; preserve its last valid T0 value.",
+      "state_family": "bathymetry"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "not established",
+      "first_step_classification": "QUERY_LIMITATION_ONLY",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": false,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "UNKNOWN remains UNKNOWN; no boundary type is needed for kinematic relation identity.",
+      "state_family": "boundary_classification"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "clock remains at latest valid time",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "D6 retains latest valid climate state; tectonic step does not advance climate.",
+      "state_family": "climate"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "independent domain clock",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "D6 independent domain clock; no deep-domain execution in MVP.",
+      "state_family": "deep"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "clock remains at latest valid time",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "D6 retains latest valid hydrology state.",
+      "state_family": "hydrology"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "topology event validity",
+      "first_step_classification": "QUERY_LIMITATION_ONLY",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": false,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "Physical accommodation remains UNKNOWN; structural junction incidence is retained.",
+      "state_family": "junction_physical_semantics"
+    },
+    {
+      "declared_transfer_class": "MODEL_REQUIRED",
+      "existing_temporal_behavior": "independent domain clock",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "D6 independent domain clock; no land/ocean transition is authorized.",
+      "state_family": "land_ocean"
+    },
+    {
+      "declared_transfer_class": "MODEL_REQUIRED",
+      "existing_temporal_behavior": "tectonic-only clock remains t0 unless a field model advances it",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "B6E explicitly keeps tectonic-only clock at T0 absent a field model; D6 exposes age.",
+      "state_family": "physical_geography"
+    },
+    {
+      "declared_transfer_class": "MODEL_REQUIRED",
+      "existing_temporal_behavior": "conditional first-segment validity only",
+      "first_step_classification": "REFERENCE_ONLY",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": false,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "Retain governed Euler forcing identity; the vector itself is not a transferred state.",
+      "state_family": "plate_kinematics"
+    },
+    {
+      "declared_transfer_class": "MODEL_REQUIRED",
+      "existing_temporal_behavior": "independent domain clock",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "D6 independent domain clock; preserve existing value and validity time.",
+      "state_family": "province_state"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "not established",
+      "first_step_classification": "QUERY_LIMITATION_ONLY",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": false,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "No grid field is materialized; velocities remain derivable on supported plate-local geometry.",
+      "state_family": "tectonic_kinematics_grid"
+    },
+    {
+      "declared_transfer_class": "MODEL_REQUIRED",
+      "existing_temporal_behavior": "tectonic topology identity changes only on governed event",
+      "first_step_classification": "REFERENCE_ONLY",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": false,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "D1 holds topology between events; retain identity/incidence with no reindex absent event.",
+      "state_family": "tectonic_plate_partition"
+    },
+    {
+      "declared_transfer_class": "MODEL_REQUIRED",
+      "existing_temporal_behavior": "independent domain clock",
+      "first_step_classification": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": true,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "B6E declares independent domain clock; do not fabricate an updated field.",
+      "state_family": "topography"
+    },
+    {
+      "declared_transfer_class": "UNKNOWN",
+      "existing_temporal_behavior": "not established",
+      "first_step_classification": "QUERY_LIMITATION_ONLY",
+      "first_step_update_required": false,
+      "latest_valid_state_retained": false,
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "reason": "Support is absent and no mechanics consumes it in the frozen MVP.",
+      "state_family": "weak_zone_state"
+    }
+  ],
+  "required_transfer_operations": [
+    {
+      "authorized_operation": "B6B conditional exact rigid transform x(t)=R(omega,t)x(T0), with B6C active RH XYZ column-vector action",
+      "classification": "REQUIRED_SYNCHRONOUS_FIRST_STEP",
+      "execution_performed": false,
+      "family": "plate-local geometry coordinates",
+      "scope": "single-plate interiors / distinct plate-local side representatives only; only within an accepted event-free segment"
+    }
+  ],
+  "state_family_count": 15
+}

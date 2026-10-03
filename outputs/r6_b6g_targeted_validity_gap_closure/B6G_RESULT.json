@@ -1,0 +1,113 @@
+{
+  "blocking_memory_classes": [],
+  "blocking_state_families": [],
+  "branch": "r6/b6g-targeted-validity-gap-closure",
+  "current_smallest_qualified_bound_not_a_dt": {
+    "not_a_dt": true,
+    "not_a_global_topology_bound": true,
+    "scope": "conditional rift activation only",
+    "unit": "year",
+    "value": 27123.405156307464
+  },
+  "execution_target": "WINDOWS",
+  "false_numerical_blockers_removed": [
+    "generic maximum rotation angle",
+    "absolute node displacement cap",
+    "displacement/interior-edge ratio threshold",
+    "interior triangle-quality/remesh threshold",
+    "interface co-location/gap threshold",
+    "junction single-coordinate/spread threshold",
+    "mechanics solver stability limit"
+  ],
+  "first_dt_readiness": "NOT_READY_FOR_FIRST_DT_ADJUDICATION",
+  "implementation_changes": [
+    "B6G read-only relational/topology evidence runner",
+    "B6G tests and retained evidence"
+  ],
+  "input_provenance": {
+    "B6E_historical_source_commit": "08664f0338e594dec41840a3a46ff0aa862e47fd",
+    "B6F_historical_source_commit": "83061d1a3ecba3455be7bada00a13c8c8a7d16e2",
+    "verified_input_artifact_count": 77
+  },
+  "interface_blocker": "None for D2 side identity, adjacency and support pairing within an unchanged topology segment; physical gap semantics remain UNKNOWN and do not impose co-location.",
+  "interface_kinematic_summary": {
+    "decomposed_count": 1983,
+    "interface_count": 1983,
+    "interpretation": "KINEMATIC_DISCONTINUITY_ONLY__NO_SHARED_VELOCITY_OR_PHYSICAL_ACCOMMODATION",
+    "maximum_absolute_normal_velocity_m_per_year": 0.18434263585954164,
+    "maximum_absolute_tangential_velocity_m_per_year": 0.18433740622978986,
+    "missing_component_count": 0,
+    "normal_component_counts": {
+      "closing_negative": 1091,
+      "exactly_zero": 0,
+      "opening_positive": 892
+    },
+    "normal_separation_semantics": "Separation does not erase relational interface identity under D2; physical gap response or a topology transition requires separate governed event/model authority.",
+    "normal_sign_convention": [
+      "n_AB points from plate_a to plate_b; positive signed normal relative velocity is opening"
+    ],
+    "normal_velocity_units": "m/year",
+    "tangential_nonzero_count": 1983,
+    "tangential_velocity_units": "m/year"
+  },
+  "interface_validity_status": "INTERFACE_VALIDITY_IS_RELATIONAL_AND_POSITIVE",
+  "junction_blocker": "None for D3 identity/incidence preservation; one shared Euclidean point, residual velocity allocation and physical accommodation are not required. Physical accommodation remains UNKNOWN.",
+  "junction_validity_status": "JUNCTION_VALIDITY_IS_RELATIONAL_AND_POSITIVE",
+  "minimal_remaining_blocking_set": [
+    {
+      "blocker_id": "D1_UNCOVERED_TOPOLOGY_TRANSITIONS",
+      "exact_gap": "No qualified detector or positive interval proof covers plate split/merge/create/terminate, boundary birth/death, interface split/merge, junction birth/death/connectivity reassignment, or unenumerated topology events.",
+      "minimum_closure": "Govern either a complete conservative first-segment event vocabulary plus deterministic detector/stop rules, or an authoritative positive interval proof that excludes these transitions.",
+      "status": "REQUIRED_AND_BLOCKING",
+      "why_rift_bound_is_insufficient": "The 27,123.405-year guard detects rift-process activation only; B6A explicitly says it is not a topology transition or generic invariance bound."
+    }
+  ],
+  "production_source_changes": false,
+  "qualification_verdict": "PASS_B6G_TARGETED_VALIDITY_GAP_CLOSURE",
+  "qualified_bound_count": 1,
+  "qualified_bounds": [
+    {
+      "applicability": "conditional constant-T0 Euler segment",
+      "authority": "B6A Census V3 guard / B6D D1 event policy",
+      "bound_id": "B6G_CONDITIONAL_RIFT_ACTIVATION_HORIZON",
+      "coverage": "does not bound plate split/merge, boundary birth/death, interface transition or junction transition",
+      "derivation": "governed activation threshold and maximum positive opening rate with fixed T0 Euler forcing",
+      "limiting_condition": "rift process activation at eligible support; limiting pair 1:3",
+      "not_a_dt": true,
+      "scope": "eligible rift-process activation only",
+      "strictness": "stop before/capture the event; no accepted interval crosses the unresolved event",
+      "unit": "year",
+      "value": 27123.405156307464
+    }
+  ],
+  "qualified_source_commit": "67d1bf249ce5a099ab8fa68a25bb85ac56f9528a",
+  "schema": "R6_B6G_RESULT_V1",
+  "scientific_side_effect_check": {
+    "canonical_node_motion_executed": false,
+    "canonical_state_changed": false,
+    "canonical_topology_mutated": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "orbdata_mechanics_executed": false,
+    "runtime_authorized": true,
+    "runtime_authorized_scope": "LOAD_AND_CONSUME_GOVERNED_ARCANA_T0_RUNTIME_PACKAGE",
+    "shellset_executed": false,
+    "t1_created": false
+  },
+  "state_transfer_blocking_status": "NO_REQUIRED_SYNCHRONOUS_STATE_FAMILY_LACKS_AN_AUTHORIZED_OPERATION; D6_ASYNC_DOMAINS_RETAIN_LATEST_VALID_T0",
+  "system_memory_blocking_status": "NO_SYSTEM_MEMORY_CLASS_BLOCKS_FIRST_DT_ADJUDICATION_WHEN_RETAINED_AND_TEMPORALLY_SCOPED",
+  "t0_counts": {
+    "canonical_mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "interface_sides": 3966,
+    "interfaces": 1983,
+    "junction_relations": 20,
+    "junction_sides": 60,
+    "nodes": 64442,
+    "triangles": 128880
+  },
+  "topology_event_coverage_status": "PARTIAL_EVENT_COVERAGE_ONLY",
+  "topology_positive_bound": null,
+  "topology_positive_window_status": "PARTIAL_EVENT_COVERAGE_ONLY",
+  "ubuntu_work_required": false
+}

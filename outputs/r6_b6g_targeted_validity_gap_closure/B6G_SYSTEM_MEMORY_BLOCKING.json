@@ -1,0 +1,37 @@
+{
+  "blocking_classes": [],
+  "classes": [
+    {
+      "basis": "D7 defers mechanics; B6E forbids treating runtime products as canonical memory.",
+      "blocking_first_step": false,
+      "classification": "DERIVED_RECOMPUTABLE",
+      "memory_class": "FEG/ShellSet runtime products"
+    },
+    {
+      "basis": "retain required SYSTEM_MEMORY at T0 and expose per-domain temporal validity under D6; no value discarded or promoted to T1.",
+      "blocking_first_step": false,
+      "classification": "NONBLOCKING_ASYNC",
+      "memory_class": "initial-world supported fields"
+    },
+    {
+      "basis": "retain forcing/replay identity; no change to the forcing record.",
+      "blocking_first_step": false,
+      "classification": "REFERENCE_ONLY",
+      "memory_class": "plate kinematics"
+    },
+    {
+      "basis": "preserve UNKNOWN support evidence unchanged.",
+      "blocking_first_step": false,
+      "classification": "REFERENCE_ONLY",
+      "memory_class": "unknown-domain masks"
+    },
+    {
+      "basis": "retain T0 identity; D1 prohibits reindex absent a governed event.",
+      "blocking_first_step": false,
+      "classification": "REFERENCE_ONLY",
+      "memory_class": "vector partition"
+    }
+  ],
+  "memory_class_count": 5,
+  "system_memory_discarded": false
+}

@@ -1,0 +1,86 @@
+{
+  "absence_of_detector_means_absence": false,
+  "events": [
+    {
+      "can_be_excluded_until_horizon": true,
+      "can_be_relevant": true,
+      "event_class": "conditional rift-process activation",
+      "positive_horizon_years": 27123.405156307464,
+      "scope": "eligible rift support under fixed T0 Euler rates; activation is not boundary birth or plate split",
+      "status": "QUALIFIED_DETECTOR"
+    },
+    {
+      "can_be_excluded_until_horizon": false,
+      "can_be_relevant": true,
+      "event_class": "plate split / merge / creation / termination",
+      "positive_horizon_years": null,
+      "scope": "no governed event law, transition map, or detector",
+      "status": "CANNOT_EXCLUDE"
+    },
+    {
+      "can_be_excluded_until_horizon": false,
+      "can_be_relevant": true,
+      "event_class": "boundary birth / death",
+      "positive_horizon_years": null,
+      "scope": "rift guard only detects process activation; no boundary transition semantics",
+      "status": "MODEL_REQUIRED"
+    },
+    {
+      "can_be_excluded_until_horizon": false,
+      "can_be_relevant": true,
+      "event_class": "interface split / merge",
+      "positive_horizon_years": null,
+      "scope": "no relation-graph transition detector or transition authority",
+      "status": "IMPLEMENTATION_REQUIRED"
+    },
+    {
+      "can_be_excluded_until_horizon": false,
+      "can_be_relevant": true,
+      "event_class": "junction birth / death",
+      "positive_horizon_years": null,
+      "scope": "no event law or junction identity transition detector",
+      "status": "CANNOT_EXCLUDE"
+    },
+    {
+      "can_be_excluded_until_horizon": false,
+      "can_be_relevant": true,
+      "event_class": "junction connectivity change / reassignment",
+      "positive_horizon_years": null,
+      "scope": "current incidence is known; no future transition semantics or detector",
+      "status": "CANNOT_EXCLUDE"
+    },
+    {
+      "can_be_excluded_until_horizon": false,
+      "can_be_relevant": true,
+      "event_class": "plate support split / merge",
+      "positive_horizon_years": null,
+      "scope": "rigid transform itself is bijective, but physical/topology transition law is absent",
+      "status": "CANNOT_EXCLUDE"
+    },
+    {
+      "can_be_excluded_until_horizon": true,
+      "can_be_relevant": false,
+      "event_class": "plate-local side geometric degeneration",
+      "positive_horizon_years": null,
+      "scope": "exact rigid rotation preserves each nonzero side length, endpoint distinction and orientation",
+      "status": "DERIVABLE_DETECTOR"
+    },
+    {
+      "can_be_excluded_until_horizon": true,
+      "can_be_relevant": false,
+      "event_class": "cross-side gap / overlap / projected crossing",
+      "positive_horizon_years": null,
+      "scope": "not an invalidation of D2/D3 identity relations; physical interpretation remains outside MVP",
+      "status": "NOT_RELEVANT_TO_CURRENT_T0"
+    },
+    {
+      "can_be_excluded_until_horizon": false,
+      "can_be_relevant": true,
+      "event_class": "other unenumerated topology transition",
+      "positive_horizon_years": null,
+      "scope": "D1 explicitly fails closed for unknown event classes",
+      "status": "CANNOT_EXCLUDE"
+    }
+  ],
+  "status": "PARTIAL_EVENT_COVERAGE_ONLY"
+}
