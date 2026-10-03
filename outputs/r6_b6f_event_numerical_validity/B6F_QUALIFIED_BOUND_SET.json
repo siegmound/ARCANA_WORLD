@@ -1,0 +1,21 @@
+{
+  "bounds": [
+    {
+      "applicability_conditions": [
+        "constant T0 Euler rates",
+        "eligible rift model support",
+        "within separately valid first segment"
+      ],
+      "authority": "B6A governed rift guard / B6D topology event policy",
+      "bound_id": "B6F_CONDITIONAL_RIFT_ACTIVATION_HORIZON",
+      "category": "MODEL_EVENT_HORIZON",
+      "coverage": "conditional rift-process activation only; does not cover topology changes",
+      "derivation": "precommitted 5000 m activation lower threshold divided by maximum supported positive opening rate under fixed T0 Euler rates",
+      "semantics": "strict event horizon only within stated model; NOT_A_DT",
+      "support": "eligible quiescent rift support; limiting pair 1:3",
+      "unit": "year",
+      "value": 27123.405156307464
+    }
+  ],
+  "current_smallest_qualified_bound_not_a_dt": null
+}

@@ -1,0 +1,46 @@
+{
+  "events": [
+    {
+      "event_class": "rift activation",
+      "scope": "conditional rift-process activation only; not plate split",
+      "status": "DETECTOR_AVAILABLE"
+    },
+    {
+      "event_class": "plate split / merge / creation / termination",
+      "scope": "no governed event law or detector",
+      "status": "MODEL_REQUIRED"
+    },
+    {
+      "event_class": "boundary birth / death / interface split / merge",
+      "scope": "no complete detector or acceptance semantics",
+      "status": "DETECTOR_IMPLEMENTATION_REQUIRED"
+    },
+    {
+      "event_class": "plate adjacency change",
+      "scope": "current geometric support is static; transition predicate absent",
+      "status": "DETECTOR_IMPLEMENTATION_REQUIRED"
+    },
+    {
+      "event_class": "junction birth / death / connectivity reassignment",
+      "scope": "no governed junction transition law",
+      "status": "MODEL_REQUIRED"
+    },
+    {
+      "event_class": "plate-support split / merge",
+      "scope": "support transition detector and lineage semantics absent",
+      "status": "DETECTOR_IMPLEMENTATION_REQUIRED"
+    },
+    {
+      "event_class": "interface crossing / gap / overlap",
+      "scope": "diagnostic residuals measurable; tolerated/invalid boundary semantics unqualified",
+      "status": "MODEL_REQUIRED"
+    },
+    {
+      "event_class": "other unenumerated topology transition",
+      "scope": "no completeness proof for the event vocabulary",
+      "status": "UNKNOWN"
+    }
+  ],
+  "positive_bound": null,
+  "status": "NO_POSITIVE_TOPOLOGY_BOUND"
+}

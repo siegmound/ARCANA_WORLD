@@ -1,0 +1,112 @@
+{
+  "b6g_readiness": "NOT_READY_FOR_FIRST_DT_ADJUDICATION",
+  "boundary_evidence": {
+    "geological_boundary_type": "UNKNOWN",
+    "interface_count": 1983,
+    "junction_relation_count": 20,
+    "max_relative_boundary_speed_m_per_year": 0.22239656243119185,
+    "physical_response": "UNKNOWN"
+  },
+  "branch": "r6/b6f-event-numerical-validity-qualification",
+  "constraint_inventory_status": "PASS_COMPLETE_MINIMUM_INVENTORY_WITH_EXPLICIT_GAPS",
+  "current_smallest_qualified_bound_not_a_dt": null,
+  "execution_target": "WINDOWS",
+  "first_dt_prerequisite_status": "BLOCKED_BY_TOPOLOGY_INTERFACE_JUNCTION_TRANSFER_AND_NUMERICAL_THRESHOLDS",
+  "governed_representation_counts": {
+    "boundary_side_entities": 3966,
+    "boundary_vertex_representatives": 7932,
+    "interfaces": 1983,
+    "interior_entities": 62469,
+    "junction_relations": 20,
+    "junction_side_entities": 60,
+    "representative_count": 70461
+  },
+  "interface_bound": null,
+  "interface_validity_status": "GAP_MODEL_AND_ACCEPTANCE_THRESHOLD_UNQUALIFIED",
+  "junction_bound": null,
+  "junction_validity_status": "GAP_COMPATIBILITY_RULE_UNQUALIFIED",
+  "kinematic_positive_bound": null,
+  "kinematic_validity_status": "CONDITIONAL_CONSTANT_T0_EULER_RULE_NO_GOVERNED_NUMERIC_DURATION",
+  "local_scale_bound": null,
+  "local_scale_validity_status": "DIAGNOSTIC_DERIVABLE_THRESHOLD_UNQUALIFIED",
+  "mesh_bound": null,
+  "mesh_evidence": {
+    "edge_count": 193320,
+    "edge_length_m": {
+      "maximum": 157249.38127194572,
+      "median": 111194.9266445588,
+      "minimum": 1940.5944300618373,
+      "p01": 5819.419154609065,
+      "p05": 26900.16598664428,
+      "p95": 155094.95322428292
+    },
+    "max_local_displacement_rate_per_year": 3.0435648917595296e-05,
+    "max_surface_speed_m_per_year": 0.1545862633352297,
+    "mixed_plate_support_node_count": 1973,
+    "node_count": 64442,
+    "normalized_mesh_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "triangle_count": 128880
+  },
+  "mesh_validity_status": "PLATE_INTERIOR_RIGID_INVARIANCE_QUALIFIED_INTERFACE_RELATIONS_OPEN",
+  "next_stage_recommendation": "AUTHORIZE_TARGETED_VALIDITY_GAP_CLOSURE",
+  "qualification_verdict": "PASS_B6F_EVENT_NUMERICAL_VALIDITY_QUALIFICATION",
+  "qualified_bound_count": 1,
+  "qualified_bounds": [
+    {
+      "applicability_conditions": [
+        "constant T0 Euler rates",
+        "eligible rift model support",
+        "within separately valid first segment"
+      ],
+      "authority": "B6A governed rift guard / B6D topology event policy",
+      "bound_id": "B6F_CONDITIONAL_RIFT_ACTIVATION_HORIZON",
+      "category": "MODEL_EVENT_HORIZON",
+      "coverage": "conditional rift-process activation only; does not cover topology changes",
+      "derivation": "precommitted 5000 m activation lower threshold divided by maximum supported positive opening rate under fixed T0 Euler rates",
+      "semantics": "strict event horizon only within stated model; NOT_A_DT",
+      "support": "eligible quiescent rift support; limiting pair 1:3",
+      "unit": "year",
+      "value": 27123.405156307464
+    }
+  ],
+  "qualified_source_commit": "83061d1a3ecba3455be7bada00a13c8c8a7d16e2",
+  "rotation_bound": null,
+  "rotation_validity_status": "EXACT_FINITE_ROTATION_NO_INTRINSIC_ODE_STABILITY_LIMIT",
+  "schema": "R6_B6F_RESULT_V1",
+  "scientific_side_effect_check": {
+    "canonical_node_motion_executed": false,
+    "canonical_state_changed": false,
+    "canonical_topology_mutated": false,
+    "dt_selected": false,
+    "forward_evolution_authorized": false,
+    "mechanics_authorized": false,
+    "orbdata_mechanics_executed": false,
+    "runtime_authorized": true,
+    "runtime_authorized_scope": "LOAD_AND_CONSUME_GOVERNED_ARCANA_T0_RUNTIME_PACKAGE",
+    "shellset_executed": false,
+    "t1_created": false
+  },
+  "source_evidence": {
+    "B5_result": "PASS_B5_PLATE_SUPPORT_TOPOLOGY_TEMPORAL_INTEGRATION",
+    "B6A_rift_horizon_years": 27123.405156307464,
+    "B6A_topology_status": "NO_POSITIVE_BOUND",
+    "B6E_result": "PASS_B6E_MINIMAL_MVP_FIRST_STEP_MODEL_IMPLEMENTATION",
+    "kinematics_payload_identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4"
+  },
+  "state_transfer_applicability_status": "BLOCKED_BY_MODEL_REQUIRED_FAMILIES",
+  "system_memory_validity_status": "RETAINED_BUT_FUTURE_TRANSFER_RULES_UNRESOLVED",
+  "topology_event_coverage_status": "INCOMPLETE",
+  "topology_positive_bound": null,
+  "topology_validity_status": "NO_POSITIVE_TOPOLOGY_BOUND",
+  "ubuntu_work_required": false,
+  "unresolved_constraints": [
+    "kinematic_law",
+    "topology_event",
+    "node_displacement",
+    "local_mesh_scale",
+    "interface_representation",
+    "junction_compatibility",
+    "state_transfer",
+    "system_memory"
+  ]
+}
