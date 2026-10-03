@@ -81,10 +81,12 @@ def _sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
-def adjudicate(root: Path = ROOT) -> dict[str, Any]:
+def adjudicate(root: Path = ROOT, *, mode: str = "qualification") -> dict[str, Any]:
     root = root.resolve()
     branch, head = _git(root, "branch", "--show-current"), _git(root, "rev-parse", "HEAD")
-    if (branch, head) != (BRANCH, HEAD):
+    if mode not in {"qualification", "regression"}:
+        raise B6CError(f"unsupported B6C audit mode: {mode}")
+    if mode == "qualification" and (branch, head) != (BRANCH, HEAD):
         raise B6CError(f"expected {BRANCH}@{HEAD}, found {branch}@{head}")
     src: dict[str, Any] = {}
     evidence = []
@@ -293,7 +295,8 @@ def adjudicate(root: Path = ROOT) -> dict[str, Any]:
         "heavy_execution_during_b6c": False,
     }
     result = {
-        "schema": "R6_B6C_RESULT_V1", "decision": DECISION, "branch": branch, "qualified_source_commit": head,
+        "schema": "R6_B6C_RESULT_V1", "decision": DECISION, "branch": BRANCH, "qualified_source_commit": HEAD,
+        "current_regression_checkout": {"branch": branch, "head": head} if mode == "regression" else None,
         "rotation_action_convention_status": rotation["status"],
         "topology_model_decision": topo_options["decision"], "topology_model_status": "AUTHORIAL_DECISION_REQUIRED",
         "boundary_model_decision": boundary_options["decision"], "boundary_model_status": "AUTHORIAL_DECISION_REQUIRED",

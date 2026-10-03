@@ -12,7 +12,7 @@ from arcana_worldsim.r6.finite_rotation import rotate_vector_constant_euler
 
 @pytest.fixture(scope="module")
 def decision() -> dict:
-    return adjudicate(ROOT)
+    return adjudicate(ROOT, mode="regression")
 
 
 def test_rotation_action_is_uniquely_derived_and_internal_only(decision: dict) -> None:

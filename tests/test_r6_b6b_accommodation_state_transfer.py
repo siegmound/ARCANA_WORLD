@@ -41,7 +41,10 @@ def test_current_governed_authority_keeps_global_first_state_blocked() -> None:
     assert data["result"]["junction_accommodation_status"].startswith("BLOCKING")
     assert data["result"]["maximum_next_authorization"] == "AUTHORIZE_TARGETED_MODEL_DECISION"
     assert data["result"]["qualified_source_commit"] == "66ff83a8cf8b86b483c60a75b12d1da9594d1740"
-    assert data["result"]["current_regression_checkout"]["branch"] == "r6/b6c-targeted-first-step-model-decision"
+    assert data["result"]["current_regression_checkout"]["branch"] == subprocess.run(
+        ["git", "-C", str(ROOT), "branch", "--show-current"], check=True,
+        capture_output=True, text=True,
+    ).stdout.strip()
     interior = next(item for item in data["transformations"]["transformations"]
                     if item["item"] == "strictly interior node coordinates")
     assert "CARTESIAN_ACTION_CONVENTION_MUST_BE_EXPLICIT" in interior["status"]
