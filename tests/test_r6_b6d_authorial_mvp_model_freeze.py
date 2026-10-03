@@ -3,18 +3,42 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import hashlib
+import json
 import pytest
 
-from scripts.r6_b6d_authorial_mvp_model_freeze import B6DError, HEAD, ROOT, adjudicate, validate
+from scripts.r6_b6d_authorial_mvp_model_freeze import B6DError, HEAD, ROOT, validate
 
 
 @pytest.fixture(scope="module")
 def freeze() -> dict:
-    return adjudicate(ROOT)
+    out = ROOT / "outputs/r6_b6d_authorial_mvp_model_freeze"
+    manifest = json.loads((out / "B6D_ARTIFACT_MANIFEST.json").read_text(encoding="utf-8"))
+    for row in manifest["artifacts"]:
+        path = (out / row["relative_path"]).resolve()
+        raw = path.read_bytes()
+        assert len(raw) == row["byte_size"]
+        assert hashlib.sha256(raw).hexdigest() == row["sha256"]
+    names = {
+        "result": "B6D_RESULT.json",
+        "decisions": "B6D_AUTHORIAL_DECISIONS.json",
+        "consistency": "B6D_MODEL_CONSISTENCY.json",
+        "transfer": "B6D_STATE_TRANSFER_MATRIX.json",
+        "event": "B6D_TOPOLOGY_EVENT_POLICY.json",
+        "numeric": "B6D_NUMERICAL_CONSTRAINT_CONTRACT.json",
+        "query": "B6D_MVP_QUERY_ACCEPTANCE_CONTRACT.json",
+        "gaps": "B6D_REMAINING_GAPS.json",
+        "mechanics": "B6D_MECHANICS_DECISION.json",
+    }
+    evidence = {key: json.loads((out / name).read_text(encoding="utf-8"))
+                for key, name in names.items()}
+    assert validate(evidence)
+    return evidence
 
 
 def test_current_source_and_all_eight_authorial_decisions_are_pinned(freeze: dict) -> None:
     assert freeze["result"]["qualified_source_commit"] == HEAD
+    assert freeze["result"]["branch"] == "r6/b6d-authorial-mvp-first-step-model-freeze"
     assert [x["id"] for x in freeze["decisions"]["decisions"]] == [f"D{i}" for i in range(1, 9)]
     assert freeze["decisions"]["decisions"][0]["policy"] == "EVENT_DRIVEN_TOPOLOGY_HOLD"
     assert freeze["decisions"]["decisions"][7]["policy"] == "ADAPTIVE_CONSTRAINT_DRIVEN_TIMESTEP"
