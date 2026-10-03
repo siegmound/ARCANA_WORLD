@@ -1,0 +1,100 @@
+{
+  "decisions": [
+    {
+      "affects_canon": true,
+      "decision_id": "B6C-AD-01",
+      "downstream_consequence": "dt bounds, remesh/lineage, replay and state transfer",
+      "evidence_needed": [
+        "causal event definitions and/or interval-specific support",
+        "positive event/validity bounds",
+        "transition geometry and lineage rules"
+      ],
+      "options": [
+        "topology fixed until complete event detector",
+        "explicit invariance window",
+        "event-driven topology law",
+        "external topology provider",
+        "authorial segment model"
+      ],
+      "question": "Which positive-duration topology policy governs the first interval?",
+      "reversible": "model-dependent; executed canonical transitions become history and cannot be erased",
+      "scientific_consequence": "controls whether plate/edge/junction identities persist or change"
+    },
+    {
+      "affects_canon": true,
+      "decision_id": "B6C-AD-02",
+      "downstream_consequence": "solver need, fault/zone parameters, mesh representation and field transfer",
+      "evidence_needed": [
+        "authorial physical rationale or targeted evidence for selected family",
+        "boundary support/polarity semantics if required",
+        "units, validity domain, uncertainty and fail conditions"
+      ],
+      "options": [
+        "prescribed discontinuous interface",
+        "finite-width deformation zone",
+        "constraint-solved interface",
+        "other justified type-agnostic law"
+      ],
+      "question": "How is relative normal/tangential motion physically accommodated at UNKNOWN boundaries?",
+      "reversible": "law selection reversible before execution; realized states remain append-only history",
+      "scientific_consequence": "sets physical continuity/discontinuity and how plate-relative demand changes geometry"
+    },
+    {
+      "affects_canon": true,
+      "decision_id": "B6C-AD-03",
+      "downstream_consequence": "boundary solver, residual checks, mesh and topology events",
+      "evidence_needed": [
+        "multiway compatibility equations",
+        "residual definitions and limits",
+        "stop/event/identity transfer rule"
+      ],
+      "options": [
+        "junction conditions embedded in one unified boundary law",
+        "separate junction constitutive/kinematic law",
+        "explicit event handoff with stop before incompatibility"
+      ],
+      "question": "What compatibility law closes multi-boundary motion at 20 shared junctions?",
+      "reversible": "reversible before execution; realized lineage is historical",
+      "scientific_consequence": "determines whether incident boundary motions admit one junction geometry/lineage"
+    },
+    {
+      "affects_canon": true,
+      "decision_id": "B6C-AD-04",
+      "downstream_consequence": "remapping, WORLD_HISTORY payloads, provenance and query semantics",
+      "evidence_needed": [
+        "per-field physical attachment and update laws",
+        "conservation/consistency invariants",
+        "UNKNOWN/support/memory rules"
+      ],
+      "options": [
+        "field-specific rigid/material advection",
+        "governed identity hold",
+        "recompute/replay",
+        "UNKNOWN until a domain model exists"
+      ],
+      "question": "Which T0 fields are material-attached, held, recomputed, or replayed through the chosen geometry change?",
+      "reversible": "policy reversible before execution; committed state history is append-only",
+      "scientific_consequence": "determines conservation and persistence of physical state/system memory"
+    },
+    {
+      "affects_canon": false,
+      "decision_id": "B6C-AD-05",
+      "downstream_consequence": "first-dt adjudication and possibly native solver qualification",
+      "evidence_needed": [
+        "selected physical/topology/mesh models",
+        "units and measurable estimators",
+        "verification tests and uncertainty/sensitivity rationale"
+      ],
+      "options": [
+        "authorial/model-specific thresholds plus estimator",
+        "solver-specific stability/error controller",
+        "event-limited interval with explicit geometric limits"
+      ],
+      "question": "Which geometric accuracy, topology and (if selected) solver limits bound the first dt?",
+      "reversible": "thresholds can be revised before execution; executed trajectory is retained",
+      "scientific_consequence": "defines admissible numerical resolution and stop behavior"
+    }
+  ],
+  "rotation_convention_escalation": "NONE; uniquely derivable from source and already represented in the internal computational gauge",
+  "schema": "R6_B6C_AUTHORIAL_DECISION_REGISTER_V1"
+}

@@ -1,0 +1,77 @@
+{
+  "decision": "AUTHORIAL_MODEL_CHOICE_REQUIRED; no candidate is selected by current authority",
+  "interaction_with_rift_horizon": "The 27,123.405156307464-year bound may terminate a step using the conditional rift model; it supplies no topology invariance or general event bound.",
+  "known": {
+    "positive_topology_bound": null,
+    "rift_activation_horizon_years": 27123.405156307464,
+    "rift_bound_semantics": "conditional rift-process activation only, not plate split/merge or topology-invariance",
+    "topology_events": [
+      "plate split",
+      "plate merge",
+      "creation/termination",
+      "boundary birth/death",
+      "adjacency change",
+      "junction reassignment"
+    ]
+  },
+  "options": [
+    {
+      "authority_needed": [
+        "event catalog",
+        "detection criteria",
+        "positive lead/stopping rule for every transition class",
+        "no-unhandled-event guarantee"
+      ],
+      "can_support_first_dt": "only after detector coverage and bounds are qualified",
+      "meaning": "hold current incidence until a detector triggers a governed event",
+      "model": "TOPOLOGY_FIXED_UNTIL_EVENT_DETECTOR",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "authority_needed": [
+        "positive window",
+        "scope over plate IDs/faces/edges/junctions",
+        "evidence/assumptions establishing invariance"
+      ],
+      "can_support_first_dt": "if the interval is authorized and independently qualified",
+      "meaning": "author an interval-specific invariance assertion",
+      "model": "EXPLICIT_TOPOLOGY_INVARIANCE_WINDOW",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "authority_needed": [
+        "transition laws",
+        "event time/guard",
+        "parent-child identity and support remapping"
+      ],
+      "can_support_first_dt": "after event localization and transfer validity are established",
+      "meaning": "explicit causal transition laws update topology and lineage",
+      "model": "EVENT_DRIVEN_TOPOLOGY_MODEL",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "authority_needed": [
+        "provider authority",
+        "frame/time conversion",
+        "identity mapping",
+        "uncertainty and provenance"
+      ],
+      "can_support_first_dt": "only for provider-supported interval and successful adapter qualification",
+      "meaning": "import a time-resolved topology authority",
+      "model": "EXTERNAL_TOPOLOGY_PROVIDER",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "authority_needed": [
+        "explicit interval scope",
+        "event exclusions/guards",
+        "stop semantics and lineage"
+      ],
+      "can_support_first_dt": "not until authorial premise and independent guard validity are accepted",
+      "meaning": "author a limited first-segment fixed-topology model",
+      "model": "AUTHORIAL_SEGMENT_MODEL",
+      "status": "NOT_SELECTED"
+    }
+  ],
+  "schema": "R6_B6C_TOPOLOGY_MODEL_OPTIONS_V1"
+}

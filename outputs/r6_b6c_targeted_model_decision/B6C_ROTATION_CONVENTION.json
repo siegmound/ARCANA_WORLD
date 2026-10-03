@@ -1,0 +1,33 @@
+{
+  "action": "ACTIVE_ROTATION_OF_COLUMN_POSITION_VECTOR",
+  "angular_velocity_sign": "positive omega follows the right-hand active rotation convention; verified by the infinitesimal derivative of finite_rotation.py and the T0 producer's numpy.cross(omega, r)",
+  "axis_orientation": {
+    "handedness": "right-handed, fixed by the explicit cross-product implementation omega cross r",
+    "positive_x": "lon=0 degrees, equator",
+    "positive_y": "lon=+90 degrees, equator",
+    "positive_z": "north pole"
+  },
+  "coordinates": {
+    "internal_frame": "SYNTHETIC_AREA_WEIGHTED_LEAST_SQUARES_NO_NET_ROTATION_GAUGE; not Earth/mantle fixed",
+    "omega": "rad/year",
+    "position": "unit-sphere Cartesian XYZ for rotation; multiply by R=6,371,000 m for linear distance",
+    "source_grid": "R6_GLOBAL_GEOGRAPHY_1DEG_V1 latitude/longitude degrees",
+    "time": "years older-to-younger elapsed time"
+  },
+  "differential_definition": "d(x)/dt = omega cross x; finite action is x(t)=exp([omega]_x t)x(0) for a constant omega within the authorized conditional first segment",
+  "evidence": [
+    "src/arcana_worldsim/r6/finite_rotation.py::_cross and rotate_vector_constant_euler quaternion action",
+    "scripts/r6_bind_t0_motion_prior_and_event_guard.py uses numpy.cross(omega, r)*RADIUS_M",
+    "outputs/r6_b6a_positive_duration_authority/B6A_REFERENCE_FRAME_RESULT.json",
+    "scripts/r6_b6_dependency_temporal_gap_adjudication.py records +X/+Y/+Z and right-handed cross-product semantics"
+  ],
+  "limits": [
+    "does not authorize a time interval, node motion, or T1",
+    "does not provide an external Earth/mantle frame transform",
+    "no time-varying rotation composition is governed"
+  ],
+  "reconciles_b6b": "The earlier B6B caution relied on B5's limited field statement that handedness was not separately declared; the existing producer and finite-rotation code uniquely determine the internal active action. No new convention is invented.",
+  "schema": "R6_B6C_ROTATION_ACTION_CONVENTION_V1",
+  "status": "UNIQUELY_DERIVABLE",
+  "vector_and_multiplication_convention": "XYZ column vectors; quaternion code applies q*x*q_conjugate (equivalently active Rodrigues rotation); constant single-axis-vector action has no multi-step composition order ambiguity"
+}

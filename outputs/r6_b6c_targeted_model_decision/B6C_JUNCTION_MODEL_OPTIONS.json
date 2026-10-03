@@ -1,0 +1,25 @@
+{
+  "count": 20,
+  "current": {
+    "relative_constraints": "UNBOUND",
+    "residual_allocation": "NOT_AUTHORIZED",
+    "support": "set-valued degree-three-or-higher incidence",
+    "velocity": "UNBOUND"
+  },
+  "decision": "A boundary model plus set-valued support is sufficient only if it explicitly includes a multi-interface compatibility closure. A distinct closure rule is required; it may be a component of one unified boundary model, but cannot be implicit.",
+  "forbidden": [
+    "unique plate owner",
+    "unjustified least-squares velocity",
+    "averaged incident velocities",
+    "silent node split or topology mutation"
+  ],
+  "required_constraints": [
+    "all incident interface laws evaluated at shared junction identity",
+    "one compatible coordinate or explicit multi-branch junction geometry",
+    "conservation/compatibility residual definitions",
+    "finite bounds and stop-on-violation",
+    "identity/lineage across any representation change"
+  ],
+  "schema": "R6_B6C_JUNCTION_MODEL_OPTIONS_V1",
+  "status": "AUTHORIAL_DECISION_REQUIRED; FAIL_CLOSED_UNTIL_CLOSED"
+}

@@ -1,0 +1,45 @@
+{
+  "decision": "NO_GLOBAL_NEXT_STATE_MESH_REPRESENTATION_SELECTED; compatible choice depends on interface and topology model",
+  "no_mesh_created": true,
+  "options": [
+    {
+      "fit": "single-plate interiors only",
+      "global_fit": false,
+      "missing": "cannot assign one coordinate to differently moving shared support; topology validity also absent",
+      "model": "SAME_CONNECTIVITY_RIGID_COORDINATE_UPDATE"
+    },
+    {
+      "fit": "only with selected two-sided interface semantics and explicit lineage",
+      "model": "BOUNDARY_NODE_DUPLICATION",
+      "physical_law_by_itself": false
+    },
+    {
+      "fit": "may support finite-width/localized accommodation",
+      "model": "LOCAL_REMESH",
+      "requires": "selected physical zone, trigger, deterministic remesh and parent-child state mapping"
+    },
+    {
+      "fit": "no present authority or need demonstrated",
+      "model": "GLOBAL_REMESH",
+      "status": "NOT_JUSTIFIED"
+    },
+    {
+      "fit": "representation family; does not close boundaries/junctions itself",
+      "model": "LAGRANGIAN_MESH",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "fit": "could combine rigid interiors with explicit interface/junction representation",
+      "model": "MIXED_REPRESENTATION",
+      "requires": "authorial physical model plus identity/lineage contract"
+    }
+  ],
+  "schema": "R6_B6C_MESH_REPRESENTATION_V1",
+  "source": {
+    "boundary_shared_nodes": 1953,
+    "fault_count": 0,
+    "junction_shared_nodes": 20,
+    "nodes": 64442,
+    "triangles": 128880
+  }
+}

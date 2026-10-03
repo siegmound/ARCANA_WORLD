@@ -1,0 +1,103 @@
+{
+  "authority_rule": "B0-G SYSTEM_MEMORY cannot be discarded; B3 T0 is reference-only/minimal ingest and the field adapter has no arrays/transfer law. Do not infer material attachment or silently hold physical fields.",
+  "decision": "BLOCKED_PENDING_FIELD_SPECIFIC_PHYSICAL_TRANSFER_AUTHORITY",
+  "families": [
+    {
+      "candidates": [
+        "RIGID_ADVECT if material-attached is authorized",
+        "IDENTITY_REFERENCE only under a field-specific hold law",
+        "RECOMPUTE/REPLAY if derived by a governed recipe"
+      ],
+      "current": "DERIVED_SUPPORTED T0 payload",
+      "family": "physical_geography",
+      "required_rule": "MODEL_REQUIRED"
+    },
+    {
+      "candidates": [
+        "advect/recompute/replay according to the selected physical surface model; no current rule"
+      ],
+      "current": "DERIVED_SUPPORTED T0 payload",
+      "family": "land_ocean",
+      "required_rule": "MODEL_REQUIRED"
+    },
+    {
+      "current": "DERIVED_SUPPORTED T0 payload",
+      "family": "province_state",
+      "reason": "province identity/attachment and boundary transition semantics not bound",
+      "required_rule": "MODEL_REQUIRED"
+    },
+    {
+      "current": "DERIVED_SUPPORTED T0 payload",
+      "family": "topography",
+      "reason": "no uplift/subsidence/erosion or material-following update rule",
+      "required_rule": "MODEL_REQUIRED"
+    },
+    {
+      "current": "DERIVED_SUPPORTED T0 support",
+      "family": "tectonic_plate_partition",
+      "required_rule": "IDENTITY_REFERENCE only if topology hold is selected; otherwise REINDEX_ONLY/event rebuild under explicit lineage; currently MODEL_REQUIRED"
+    },
+    {
+      "current": "STATIC SYSTEM_MEMORY and conditional first-segment forcing",
+      "family": "plate_kinematics",
+      "required_rule": "REPLAY/IDENTITY_REFERENCE for the authorized segment only; renewal beyond it UNKNOWN"
+    },
+    {
+      "current": "UNKNOWN/no payload",
+      "family": "tectonic_kinematics_grid",
+      "required_rule": "UNKNOWN; do not materialize from plate-level values without a governed spatial rule"
+    },
+    {
+      "current": "UNKNOWN/no payload",
+      "family": "boundary_classification",
+      "required_rule": "UNKNOWN; no type inference from relative motion"
+    },
+    {
+      "current": "UNKNOWN/no payload",
+      "family": "bathymetry",
+      "required_rule": "UNKNOWN or RECOMPUTE only after governed physical surface/water model"
+    },
+    {
+      "current": "UNKNOWN/no payload",
+      "family": "deep",
+      "required_rule": "UNKNOWN/passive unless a coupled model is selected"
+    },
+    {
+      "current": "UNKNOWN/no payload; separate clock",
+      "family": "climate",
+      "required_rule": "UNKNOWN/passive for tectonic step unless a temporal coupling contract is selected"
+    },
+    {
+      "current": "UNKNOWN/no payload; separate clock",
+      "family": "hydrology",
+      "required_rule": "UNKNOWN/passive for tectonic step unless a temporal coupling contract is selected"
+    },
+    {
+      "current": "UNKNOWN/no payload",
+      "family": "weak_zone_state",
+      "required_rule": "UNKNOWN; cannot initialize to zero; required if selected boundary law depends on it"
+    },
+    {
+      "current": "UNKNOWN/no payload",
+      "family": "junction_physical_semantics",
+      "required_rule": "UNKNOWN; needs junction model if used"
+    },
+    {
+      "current": "derived numerical runtime support, not canonical B3 physical state",
+      "family": "FEG/ShellSet runtime fields",
+      "required_rule": "RECOMPUTE from governed parent/model inputs after a future candidate is authorized; never promote runtime artifact to canonical state"
+    }
+  ],
+  "remap_if_required": {
+    "properties_to_define": [
+      "conserved quantities for each field",
+      "support/mask and UNKNOWN behavior",
+      "mass/area/volume or integral consistency where physically applicable",
+      "boundedness/positivity where the field semantics require it",
+      "deterministic parent-child provenance and replay",
+      "error estimator/tolerance and mesh validity"
+    ],
+    "status": "MODEL_REQUIRED_NOT_IMPLEMENTED"
+  },
+  "schema": "R6_B6C_STATE_TRANSFER_MODEL_V1"
+}

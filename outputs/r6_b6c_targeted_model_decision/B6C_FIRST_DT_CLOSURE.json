@@ -1,0 +1,56 @@
+{
+  "first_dt_readiness": "NOT_READY_FOR_FIRST_DT",
+  "items": [
+    {
+      "item": "rotation convention",
+      "reason": "uniquely derived active action from producer and finite-rotation implementation",
+      "status": "CLOSED"
+    },
+    {
+      "item": "positive-duration kinematics",
+      "reason": "conditional first-segment model exists; its finite interval remains separately bounded/not executable",
+      "status": "MODEL_SELECTED_NOT_QUALIFIED"
+    },
+    {
+      "item": "topology model",
+      "status": "AUTHORIAL_DECISION_REQUIRED"
+    },
+    {
+      "item": "boundary model",
+      "status": "AUTHORIAL_DECISION_REQUIRED"
+    },
+    {
+      "item": "junction model",
+      "status": "AUTHORIAL_DECISION_REQUIRED"
+    },
+    {
+      "item": "mesh transfer",
+      "reason": "depends on topology/interface representation and lineage",
+      "status": "STILL_MISSING"
+    },
+    {
+      "item": "state transfer",
+      "reason": "field-specific material attachment, memory and remap rules absent",
+      "status": "STILL_MISSING"
+    },
+    {
+      "item": "numerical validity",
+      "reason": "thresholds/estimators remain unbound",
+      "status": "STILL_MISSING"
+    },
+    {
+      "item": "mechanics requirement",
+      "reason": "follows from selected physical model; no solver requirement established",
+      "status": "AUTHORIAL_DECISION_REQUIRED"
+    }
+  ],
+  "minimal_remaining_blocking_set": [
+    "author topology/event policy and positive validity basis",
+    "author boundary accommodation model",
+    "multiway junction compatibility closure",
+    "field/system-memory transfer rules",
+    "mesh representation/lineage compatible with those models",
+    "numerical validity bounds and conditional kinematic segment qualification"
+  ],
+  "schema": "R6_B6C_FIRST_DT_CLOSURE_V1"
+}

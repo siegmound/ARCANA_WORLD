@@ -1,0 +1,79 @@
+{
+  "constraints": [
+    {
+      "authority": "first-segment Euler law plus model-selected accuracy/guard threshold",
+      "evaluation": "max_plate |omega| * candidate elapsed years",
+      "quantity": "maximum angular displacement",
+      "solver_dependent": false,
+      "units": "rad (or declared deg)",
+      "value_exists": false
+    },
+    {
+      "authority": "mesh/geometric accuracy model",
+      "evaluation": "max over supported nodes of spherical arc/chord displacement under the selected transfer model",
+      "quantity": "maximum node displacement",
+      "solver_dependent": false,
+      "units": "m",
+      "value_exists": false
+    },
+    {
+      "authority": "spatial accuracy/model contract",
+      "evaluation": "per-node displacement divided by governed local edge length; use predeclared max threshold",
+      "quantity": "displacement/local-edge-length ratio",
+      "solver_dependent": false,
+      "units": "dimensionless",
+      "value_exists": false
+    },
+    {
+      "authority": "boundary model",
+      "evaluation": "selected interface geometry/contact guard",
+      "quantity": "boundary crossing/gap/overlap",
+      "solver_dependent": "depends on selected model",
+      "units": "m or dimensionless normalized residual",
+      "value_exists": false
+    },
+    {
+      "authority": "mesh validity/remesh contract",
+      "evaluation": "minimum element quality after candidate geometry transfer",
+      "quantity": "mesh quality/inversion",
+      "solver_dependent": false,
+      "units": "dimensionless Jacobian/area/orientation metrics",
+      "value_exists": false
+    },
+    {
+      "authority": "topology model",
+      "evaluation": "event detector or interval-specific invariance proof over all transition types",
+      "quantity": "topology event/lead bound",
+      "solver_dependent": "depends on detector",
+      "units": "years or Ma",
+      "value_exists": false
+    },
+    {
+      "authority": "mesh representation model",
+      "evaluation": "precommitted mesh trigger and deterministic parent-child mapping",
+      "quantity": "remesh trigger and lineage validity",
+      "solver_dependent": "mesh algorithm dependent",
+      "units": "model-specific quality metric",
+      "value_exists": false
+    },
+    {
+      "authority": "only if selected solver",
+      "evaluation": "solver stability/accuracy estimator",
+      "quantity": "solver stability/convergence",
+      "solver_dependent": true,
+      "units": "solver-specific",
+      "value_exists": false
+    },
+    {
+      "authority": "Census V3 under fixed-T0 first segment",
+      "evaluation": "existing conditional threshold/opening-rate calculation",
+      "quantity": "rift activation event horizon",
+      "role": "event stop for that rift model only; not topology bound or dt",
+      "units": "years",
+      "value": 27123.405156307464,
+      "value_exists": true
+    }
+  ],
+  "decision": "REQUIRED_LIMITS_UNBOUND; NO_NUMERICAL_VALUE_SELECTED",
+  "schema": "R6_B6C_NUMERICAL_VALIDITY_MODEL_V1"
+}

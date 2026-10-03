@@ -1,0 +1,15 @@
+{
+  "execution_authorized": false,
+  "execution_target": "UBUNTU_WORKSTATION if a native or compute-intensive solver is selected; otherwise WINDOWS for contract/small fixtures",
+  "inputs": [
+    "governed T0 plate rates/support and internal rotation convention",
+    "selected topology and boundary/junction model",
+    "T0 geometry/state identities",
+    "field transfer contract",
+    "numerical thresholds and uncertainty"
+  ],
+  "outputs": "Only the exact boundary/junction or mesh response required by the selected model; not generic mechanics.",
+  "schema": "R6_B6C_B7_CONTRACT_V1",
+  "status": "NOT_READY; no solver/model selected",
+  "units_support_runtime_authority_acceptance_failure": "MUST_BE_DEFINED_AFTER_MODEL_SELECTION; include units, support/UNKNOWN, runtime/package identity, authority level, tolerance/fail-closed criteria and scale."
+}

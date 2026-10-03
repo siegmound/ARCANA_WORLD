@@ -1,0 +1,79 @@
+{
+  "current_support": {
+    "all_finite_steps_blocked": true,
+    "geological_type": "UNKNOWN",
+    "nonzero_relative_motion": true,
+    "polarity": "UNKNOWN",
+    "segments": 1983
+  },
+  "decision": "AUTHORIAL_DECISION_REQUIRED",
+  "minimum_defensible_requirement": "A governed operator must map each set-valued boundary support and its adjacent plate motions to a physically interpretable finite shared-interface or explicitly two-sided state, with a fail-closed validity condition. Current authority does not select its law or show solver necessity.",
+  "options": [
+    {
+      "geometry_only": false,
+      "kinematics_only": "possible only if explicitly prescribed as type-agnostic; that would be a new physical assumption",
+      "mechanics_solver": "not inherently; depends on whether slip is prescribed or solved",
+      "model": "DISCONTINUOUS_SLIP_INTERFACE",
+      "requires": [
+        "which relative components are accommodated",
+        "side/identity semantics",
+        "finite displacement rule",
+        "junction compatibility"
+      ],
+      "rheology_fault_parameters_remesh": "not inherently, but may be required by selected law/mesh validity",
+      "role": "physical interface law plus two-sided geometry",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "geometry_only": false,
+      "mechanics_solver": "likely if response is solved rather than prescribed",
+      "model": "FINITE_WIDTH_DEFORMATION_ZONE",
+      "remeshing": "conditional on width representation and quality guard",
+      "requires": [
+        "width",
+        "strain/deformation law",
+        "field and material response",
+        "mesh support"
+      ],
+      "rheology": "required if constitutive response is asserted",
+      "role": "distributed boundary deformation",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "geometry_only": true,
+      "model": "DUPLICATED_BOUNDARY_GEOMETRY",
+      "physical_closure_by_itself": false,
+      "requires": [
+        "parent-node/face lineage",
+        "two-sided support",
+        "an accompanying interface law"
+      ],
+      "role": "representation choice only",
+      "status": "NOT_A_STANDALONE_PHYSICAL_MODEL"
+    },
+    {
+      "mechanics_solver": "yes",
+      "model": "CONSTRAINT_SOLVED_INTERFACE",
+      "requires": [
+        "constraint equations",
+        "closure/objective or constitutive law",
+        "junction constraints",
+        "tolerance/solver contract"
+      ],
+      "rheology": "depends on closure; cannot be inferred",
+      "role": "solve compatible shared/interface motion",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "model": "OTHER_TYPE_AGNOSTIC_INTERFACE_LAW",
+      "requires": [
+        "authorial physical justification",
+        "boundary and junction compatibility",
+        "validity domain"
+      ],
+      "role": "possible only if explicitly shown to conserve/close all demanded motion without using unknown type/polarity",
+      "status": "AUTHORIAL_PROPOSAL_REQUIRED"
+    }
+  ],
+  "schema": "R6_B6C_BOUNDARY_MODEL_OPTIONS_V1"
+}
