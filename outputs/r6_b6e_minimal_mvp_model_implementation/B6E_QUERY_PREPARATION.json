@@ -1,0 +1,48 @@
+{
+  "limitations": {
+    "DIFFERENCE": "real first-step difference blocked by no T1",
+    "HISTORY": "only fixture records persisted; no real transition exists",
+    "REFINEMENT": "representation lineage exposed; no T1 interval to refine",
+    "REPLAY": "no authorized transition recipe/state exists"
+  },
+  "queries": [
+    {
+      "query": "STATE",
+      "status": "IMPLEMENTATION_READY"
+    },
+    {
+      "query": "HISTORY",
+      "status": "PARTIAL"
+    },
+    {
+      "query": "DIFFERENCE",
+      "status": "BLOCKED_BY_NO_T1"
+    },
+    {
+      "query": "WHY",
+      "status": "IMPLEMENTATION_READY"
+    },
+    {
+      "query": "SUPPORT",
+      "status": "IMPLEMENTATION_READY"
+    },
+    {
+      "query": "REPLAY",
+      "status": "PARTIAL"
+    },
+    {
+      "query": "REFINEMENT",
+      "status": "PARTIAL"
+    },
+    {
+      "query": "UNKNOWN",
+      "status": "IMPLEMENTATION_READY"
+    },
+    {
+      "query": "TEMPORAL_VALIDITY",
+      "status": "IMPLEMENTATION_READY"
+    }
+  ],
+  "schema": "R6_B6E_QUERY_PREPARATION_V1",
+  "t1_queries_executed": false
+}

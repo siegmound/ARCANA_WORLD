@@ -1,0 +1,156 @@
+{
+  "declarations": [
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "numerical runtime support",
+      "state_family": "FEG/ShellSet runtime fields",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "derived per candidate runtime",
+      "transfer_class": "MODEL_REQUIRED"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "surface/water support",
+      "state_family": "bathymetry",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "independent domain clock",
+      "transfer_class": "UNKNOWN"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "boundary identity",
+      "state_family": "boundary_classification",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "not established",
+      "transfer_class": "UNKNOWN"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "climate-domain support",
+      "state_family": "climate",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "clock remains at latest valid time",
+      "transfer_class": "UNKNOWN"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "deep-domain support absent",
+      "state_family": "deep",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "independent domain clock",
+      "transfer_class": "UNKNOWN"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "hydrology-domain support",
+      "state_family": "hydrology",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "clock remains at latest valid time",
+      "transfer_class": "UNKNOWN"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "20 junction identities and incident relations",
+      "state_family": "junction_physical_semantics",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "topology event validity",
+      "transfer_class": "UNKNOWN"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "surface-cell support",
+      "state_family": "land_ocean",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "independent domain clock",
+      "transfer_class": "MODEL_REQUIRED"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "spatial grid/cell support",
+      "state_family": "physical_geography",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "tectonic-only clock remains t0 unless a field model advances it",
+      "transfer_class": "MODEL_REQUIRED"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "plate identity; Euler forcing support",
+      "state_family": "plate_kinematics",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "conditional first-segment validity only",
+      "transfer_class": "MODEL_REQUIRED"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "province identity/support",
+      "state_family": "province_state",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "independent domain clock",
+      "transfer_class": "MODEL_REQUIRED"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "spatial support absent",
+      "state_family": "tectonic_kinematics_grid",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "not established",
+      "transfer_class": "UNKNOWN"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "plate/cell support at T0",
+      "state_family": "tectonic_plate_partition",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "tectonic topology identity changes only on governed event",
+      "transfer_class": "MODEL_REQUIRED"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "surface support",
+      "state_family": "topography",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "independent domain clock",
+      "transfer_class": "MODEL_REQUIRED"
+    },
+    {
+      "conservation_requirement": "NOT_INFERRED; define field-specific invariant if physically applicable",
+      "missing_authority_behavior": "PRESERVE_UNKNOWN_OR_MODEL_REQUIRED__NO_IMPUTATION",
+      "recompute_or_replay_requirement": "use governed recipe/provider only; otherwise do not fabricate",
+      "source_support": "weak-zone support absent",
+      "state_family": "weak_zone_state",
+      "target_support_class": "PLATE_LOCAL_OR_DOMAIN_SUPPORT_NOT_MATERIALIZED_AS_T1",
+      "temporal_validity_behavior": "not established",
+      "transfer_class": "UNKNOWN"
+    }
+  ],
+  "execution_authorized": false,
+  "schema": "R6_B6E_STATE_TRANSFER_DECLARATIONS_V1"
+}
