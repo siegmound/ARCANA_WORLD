@@ -11,7 +11,7 @@ import time
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_BRANCH = "r6/b6m-r1a-atomic-reader-visibility"
-EXPECTED_HEAD = "3ea7b7ab521d334126d84082ddae0977dbe99737"
+EXPECTED_HEAD = "d45b1585c71b74dfd71e64bd73e934a9ebf95342"
 EXPECTED_STORE_ID = (
     "r6canonical_18bab1f51f02b62f6b78e893b24c9fd81f8d48b8ed30d513c6d19141ebf3e4a0")
 EXPECTED_PAYLOAD_SHA256 = (
@@ -54,6 +54,8 @@ def _source_gate() -> dict:
         "src/arcana_worldsim/r6/replay.py",
         "src/arcana_worldsim/r6/store.py",
         "tests/test_r6_world_history_b0_b.py",
+        "scripts/r6_b6m_r1a_atomic_reader_visibility.py",
+        "outputs/r6_b6m_r1a_atomic_reader_visibility/B6MR1A_TEST_RESULTS.json",
     }
     allowed_untracked = {
         "B6J_CODEX_LUNA_RESULT.txt", "B6M_CODEX_LUNA_RESULT.txt",
@@ -73,13 +75,18 @@ def _source_gate() -> dict:
         if code == "??":
             if path not in allowed_untracked and not path.startswith(OUTPUT_REL.as_posix() + "/"):
                 unrelated.append(path)
-        elif path not in allowed_modified:
+        elif (path not in allowed_modified and
+              not path.startswith(OUTPUT_REL.as_posix() + "/")):
             unrelated.append(path)
     if unrelated:
         raise RuntimeError("B6M-R1A source gate found unrelated worktree changes: " +
                            ", ".join(sorted(unrelated)))
     return {"branch": branch, "head": head, "object_type": object_type,
             "git_object_visibility": "PASS", "environment": EXPECTED_ENV,
+            "qualification_code_sha256": {
+                "runner": _sha(REPO_ROOT / "scripts/r6_b6m_r1a_atomic_reader_visibility.py"),
+                "focused_test": _sha(REPO_ROOT /
+                    "tests/test_r6_world_history_b6m_r1a_atomic_reader_visibility.py")},
             "staged_paths": [], "unrelated_worktree_changes": [],
             "known_local_logs_tolerated": True}
 
@@ -361,11 +368,14 @@ def run(validation_path: Path) -> dict:
     artifact_rows = []
     for path in sorted([item for item in out.iterdir() if item.is_file() and
                         item.name != "B6MR1A_ARTIFACT_MANIFEST.json"] +
-                       [REPO_ROOT / "docs/arcana/B6MR1A_ATOMIC_READER_VISIBILITY.md"]):
+                       [REPO_ROOT / "docs/arcana/B6MR1A_ATOMIC_READER_VISIBILITY.md",
+                        REPO_ROOT / "scripts/r6_b6m_r1a_atomic_reader_visibility.py",
+                        REPO_ROOT / "tests/test_r6_world_history_b6m_r1a_atomic_reader_visibility.py"]):
         relative = path.relative_to(REPO_ROOT).as_posix()
         artifact_rows.append({"relative_path": relative, "byte_size": path.stat().st_size,
                               "sha256": _sha(path), "role":
                               "B6MR1A human closure report" if relative.startswith("docs/")
+                              else "B6MR1A qualification code" if relative.startswith(("scripts/", "tests/"))
                               else "B6MR1A qualification evidence"})
     _write_json(out / "B6MR1A_ARTIFACT_MANIFEST.json", {
         "schema": "ARCANA_R6_B6MR1A_ARTIFACT_MANIFEST_V1",
