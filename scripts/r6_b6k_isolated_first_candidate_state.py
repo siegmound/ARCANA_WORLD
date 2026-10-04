@@ -264,7 +264,7 @@ def construct(root: Path, output: Path) -> dict:
             "event_boundary": "PRE_TRANSITION_EVENT_BOUNDARY_CANDIDATE",
             "rift_transition_executed": False, "canonical_t1": False})
     store_path = output / "isolated_world_history"
-    store = HistoryStore(store_path)
+    store = HistoryStore(store_path, _migrate_legacy_visibility=True)
     store.append_transaction((provenance, source_state, candidate_state, unknown_state, candidate_snapshot))
     del store
     store = HistoryStore(store_path)

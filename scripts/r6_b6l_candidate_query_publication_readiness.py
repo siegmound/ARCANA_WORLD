@@ -246,7 +246,8 @@ def qualify(root: Path = ROOT, output: Path = OUT) -> dict:
     _write(output / "B6L_SUPPORT_ACCEPTANCE.json", support_query)
 
     # Build a distinct isolated B6L store that contains the B6K candidate closure plus a typed recipe.
-    src_store = HistoryStore(B6K / "isolated_world_history")
+    src_store = HistoryStore(B6K / "isolated_world_history",
+                             _migrate_legacy_visibility=True)
     b6k_int = _read(B6K / "B6K_WORLD_HISTORY_INTEGRATION.json")
     source_state = src_store.read_state(b6k_int["source_state_id"])
     candidate_state = src_store.read_state(b6k_int["candidate_state_id"])
@@ -334,7 +335,7 @@ def qualify(root: Path = ROOT, output: Path = OUT) -> dict:
         expected_output_state_id=str(candidate_state.state_id), model_adapter_id=runtime["adapter"],
         expected_payload_identity=PayloadIdentity("sha256", EXPECTED_PAYLOAD))
     store_root = output / "isolated_world_history"
-    store = HistoryStore(store_root)
+    store = HistoryStore(store_root, _migrate_legacy_visibility=True)
     store.append_transaction((provenance, source_state, candidate_state, unknown_state,
         forcing, checkpoint, boundary_event, candidate_temporal, async_temporal, recipe))
     reopened = HistoryStore(store_root)

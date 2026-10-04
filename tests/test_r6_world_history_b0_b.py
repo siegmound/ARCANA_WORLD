@@ -18,7 +18,8 @@ from arcana_worldsim.r6.query import HistoryQueryService
 from arcana_worldsim.r6.state import (
     AuthorityClass, DomainStateEnvelope, SpatialSupport, SupportClass, TimeSupport,
 )
-from arcana_worldsim.r6.store import HistoryStore, RecordIntegrityError, StoreSchemaError
+from arcana_worldsim.r6.store import (HistoryStore, ReadViewMigrationRequired,
+    RecordIntegrityError, StoreSchemaError)
 from arcana_worldsim.r6.temporal import EventRecord, HistoricalSnapshot, RefinementAnchor
 
 
@@ -54,13 +55,14 @@ def make_checkpoint():
 def test_store_manifest_created_reopened_and_incompatible_schema_rejected(tmp_path):
     root = tmp_path / "store"
     state = make_state()
-    # A pre-manifest store containing an existing record is upgraded by adding
-    # metadata only; the record body and semantic identity remain untouched.
+    # Legacy raw records fail closed until the explicit validating migration is requested.
     legacy_states = root / "states"
     legacy_states.mkdir(parents=True)
     legacy_record = legacy_states / f"{state.state_id}.json"
     legacy_record.write_bytes(canonical_bytes(state.to_dict()) + b"\n")
-    original = HistoryStore(root)
+    with pytest.raises(ReadViewMigrationRequired):
+        HistoryStore(root)
+    original = HistoryStore(root, _migrate_legacy_visibility=True)
     assert original.read_state(str(state.state_id)) == state
     assert json.loads(legacy_record.read_text())["state_id"] == str(state.state_id)
     original.append_state(state)

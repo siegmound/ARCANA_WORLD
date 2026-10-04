@@ -211,7 +211,7 @@ def _validate_store(root: Path, expected: dict[str, Any],
         raise CanonicalBootstrapError("canonical HistoryStore manifest is missing or unreadable") from exc
     if found_manifest != HistoryStore.MANIFEST:
         raise CanonicalBootstrapError("canonical HistoryStore schema manifest mismatch")
-    store = HistoryStore(root)
+    store = HistoryStore(root, _migrate_legacy_visibility=True)
     stored_manifest = store._read("metadata", "store_manifest")
     if stored_manifest != HistoryStore.MANIFEST:
         raise CanonicalBootstrapError("canonical HistoryStore schema manifest mismatch")
@@ -261,17 +261,30 @@ def _validate_store(root: Path, expected: dict[str, Any],
         f"temporal/{descriptor['genesis_anchor_id']}.json",
     }
     actual_files: set[str] = set()
+    visibility_files: set[str] = set()
     allowed_dirs = {"metadata", "states", "provenance", "temporal",
-                    ".history_transactions", ".history_transactions/.retired"}
+                    ".history_transactions", ".history_transactions/.retired",
+                    ".history_visibility", ".history_visibility/views"}
     for path in root.rglob("*"):
         relative = path.relative_to(root).as_posix()
         if path.is_symlink():
             raise CanonicalBootstrapError("canonical store contains a symbolic link")
         if path.is_file():
-            actual_files.add(relative)
+            if relative.startswith(".history_visibility/"):
+                visibility_files.add(relative)
+            else:
+                actual_files.add(relative)
         elif relative not in allowed_dirs:
             raise CanonicalBootstrapError("canonical store contains an unexpected directory")
-    if actual_files != expected_files:
+    if (actual_files != expected_files or
+            ".history_visibility/CURRENT.json" not in visibility_files or
+            ".history_visibility/WRITER.lock" not in visibility_files or
+            not any(item.startswith(".history_visibility/views/view_") and item.endswith(".json")
+                    for item in visibility_files) or
+            any(item not in {".history_visibility/CURRENT.json",
+                             ".history_visibility/WRITER.lock"} and
+                not (item.startswith(".history_visibility/views/view_") and item.endswith(".json"))
+                for item in visibility_files)):
         raise CanonicalBootstrapError("canonical store file set differs from declared genesis contents")
     active_transactions = root / ".history_transactions"
     pending = []

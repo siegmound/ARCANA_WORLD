@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import wraps
 from enum import Enum
 import re
 from typing import Any, Mapping
@@ -78,6 +79,14 @@ class HistoryQueryService:
     def __init__(self, store: HistoryStore):
         self._store = store
 
+    def _pinned_read(method):
+        @wraps(method)
+        def wrapped(self, *args, **kwargs):
+            with self._store.read_view():
+                return method(self, *args, **kwargs)
+        return wrapped
+
+    @_pinned_read
     def state_at(self, *, history_id: str, branch_id: str, domain: str,
                  time_key: str, cell_id: str | None = None) -> QueryResult:
         all_domain = self._store.find_states(history_id=history_id, branch_id=branch_id,
@@ -121,12 +130,14 @@ class HistoryQueryService:
             status = "FOUND"
         return QueryResult(status, state, self._store.trace_provenance(state))
 
+    @_pinned_read
     def history(self, *, history_id: str, branch_id: str | None = None,
                 domain: str | None = None) -> tuple[DomainStateEnvelope, ...]:
         """Backward-compatible history listing with semantic deterministic ordering."""
         return self.history_result(history_id=history_id, branch_id=branch_id,
                                    domain=domain).states
 
+    @_pinned_read
     def history_result(self, *, history_id: str, branch_id: str | None = None,
                        domain: str | None = None, time_key: str | None = None,
                        cell_id: str | None = None, selector_kind: str | None = None) -> HistoryResult:
@@ -138,6 +149,7 @@ class HistoryQueryService:
                            if state.spatial_support.selector_kind == selector_kind)
         return HistoryResult(tuple(sorted(states, key=_history_order)))
 
+    @_pinned_read
     def difference(self, state_a_id: str, state_b_id: str) -> DifferenceResult:
         """Compare exact retained states. No interpolation or support conversion occurs."""
         try:
@@ -169,6 +181,7 @@ class HistoryQueryService:
         return DifferenceResult(DifferenceStatus.COMPARABLE, state_a, state_b,
                                 value=value, operation=operation, equal=equal)
 
+    @_pinned_read
     def why(self, state_id: str) -> WhyResult:
         """Join only explicitly recorded state/provenance/event/replay relationships."""
         try:
@@ -362,6 +375,7 @@ class HistoryQueryService:
                          tuple(refinement_recipes[key] for key in sorted(refinement_recipes)),
                          tuple(sorted(external)), tuple(sorted(unresolved)))
 
+    @_pinned_read
     def search(self, *, history_id: str, branch_id: str | None = None,
                domain: str | None = None, time_key: str | None = None,
                cell_id: str | None = None,
@@ -374,6 +388,7 @@ class HistoryQueryService:
             if all(_value_at(state.value, key) == expected
                    for key, expected in predicates.items()))
 
+    @_pinned_read
     def lineage(self, state_id: str) -> dict[str, Any]:
         states: list[DomainStateEnvelope] = []
         missing: list[str] = []
@@ -403,6 +418,7 @@ class HistoryQueryService:
                     "provenance": self._store.trace_provenance(state)} for state in states],
                 "missing_parent_state_ids": sorted(missing)}
 
+    @_pinned_read
     def available_resolution(self, *, history_id: str, branch_id: str | None = None,
                              domain: str | None = None, time_key: str | None = None,
                              region_cell_ids: tuple[str, ...] = ()) -> dict[str, Any]:
@@ -418,6 +434,7 @@ class HistoryQueryService:
                 "cell_count": len({cell for state in rows for cell in state.spatial_support.cell_ids}),
                 "interpolation_performed": False}
 
+    @_pinned_read
     def refinement_candidates(self, *, history_id: str, branch_id: str,
                               domain: str | None = None,
                               region_id: str | None = None) -> tuple[dict[str, Any], ...]:

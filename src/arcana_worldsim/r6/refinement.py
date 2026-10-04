@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import wraps
 from pathlib import Path
 from typing import Any, Callable, Mapping, TYPE_CHECKING
 
@@ -15,6 +16,14 @@ if TYPE_CHECKING:
     from .store import HistoryStore
 
 REFINEMENT_RECIPE_SCHEMA = "ARCANA_R6_REFINEMENT_RECONSTRUCTION_V0"
+
+
+def _pinned_store_read(method):
+    @wraps(method)
+    def wrapped(store, *args, **kwargs):
+        with store.read_view():
+            return method(store, *args, **kwargs)
+    return wrapped
 
 
 class RefinementInputError(ValueError):
@@ -178,6 +187,7 @@ class RefinementVerificationResult:
     mismatches: tuple[str, ...]
 
 
+@_pinned_store_read
 def validate_refinement_inputs(store: "HistoryStore",
                                branch_arg: str | RefinementBranchEnvelope,
                                recipe_arg: str | RefinementReconstructionRecipe
@@ -246,6 +256,7 @@ def validate_refinement_inputs(store: "HistoryStore",
         raise RefinementInputError(f"refinement input closure failed: {exc}") from exc
 
 
+@_pinned_store_read
 def execute_refinement(store: "HistoryStore",
                        branch: str | RefinementBranchEnvelope,
                        recipe: str | RefinementReconstructionRecipe,

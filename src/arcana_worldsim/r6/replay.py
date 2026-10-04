@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import wraps
 from pathlib import Path
 from typing import Any, Callable, Mapping, TYPE_CHECKING
 
@@ -20,6 +21,14 @@ if TYPE_CHECKING:
 REPLAY_RECIPE_SCHEMA = "ARCANA_R6_REPLAY_RECIPE_V0"
 _UNSUPPORTED = {SupportClass.UNKNOWN, SupportClass.NOT_APPLICABLE,
                 SupportClass.OUTSIDE_SCOPE}
+
+
+def _pinned_store_read(method):
+    @wraps(method)
+    def wrapped(store, *args, **kwargs):
+        with store.read_view():
+            return method(store, *args, **kwargs)
+    return wrapped
 
 
 class ReplayInputError(ValueError):
@@ -149,6 +158,7 @@ class ReplayVerificationResult:
     mismatches: tuple[str, ...]
 
 
+@_pinned_store_read
 def validate_replay_inputs(store: "HistoryStore", recipe: ReplayRecipe, *,
                            payload_resolver: Callable[[str], bytes | bytearray | memoryview | Path | str] | None = None
                            ) -> ResolvedReplayInputs:
@@ -246,6 +256,7 @@ def validate_replay_inputs(store: "HistoryStore", recipe: ReplayRecipe, *,
         raise ReplayInputError(f"replay input closure failed: {exc}") from exc
 
 
+@_pinned_store_read
 def execute_replay(store: "HistoryStore", recipe: ReplayRecipe,
                    deterministic_runner: Callable[[ReplayRecipe, ResolvedReplayInputs], ReplayExecutionOutput],
                    *, payload_resolver: Callable[[str], bytes | bytearray | memoryview | Path | str] | None = None
