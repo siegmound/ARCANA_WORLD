@@ -30,7 +30,7 @@ class HistoryResult:
     """Complete immutable state records in a deterministic exact-filter result."""
 
     states: tuple[DomainStateEnvelope, ...]
-    ordering: str = "TIME_KEY_DOMAIN_SELECTOR_GRID_CELLS_STATE_ID"
+    ordering: str = "TIME_KEY_CAUSAL_SEQUENCE_CAUSAL_PHASE_DOMAIN_SELECTOR_GRID_CELLS_STATE_ID"
 
 
 class DifferenceStatus(str, Enum):
@@ -88,7 +88,9 @@ class HistoryQueryService:
 
     @_pinned_read
     def state_at(self, *, history_id: str, branch_id: str, domain: str,
-                 time_key: str, cell_id: str | None = None) -> QueryResult:
+                 time_key: str, cell_id: str | None = None,
+                 causal_phase: str | None = None,
+                 causal_event_id: str | None = None) -> QueryResult:
         all_domain = self._store.find_states(history_id=history_id, branch_id=branch_id,
                                              domain=domain)
         if not all_domain:
@@ -99,6 +101,12 @@ class HistoryQueryService:
             return QueryResult("MISSING_TIMESTAMP", None, None)
         candidates = self._store.find_states(history_id=history_id, branch_id=branch_id,
                                              domain=domain, time_key=time_key, cell_id=cell_id)
+        if causal_phase is not None or causal_event_id is not None:
+            candidates = tuple(state for state in candidates
+                if (causal_phase is None or
+                    _causal_binding(self._store, state)["causal_phase"] == causal_phase)
+                and (causal_event_id is None or
+                     _causal_binding(self._store, state)["causal_event_id"] == causal_event_id))
         if not candidates:
             if cell_id is not None:
                 if all(state.spatial_support.selector_kind == "CELL_SET" for state in at_time):
@@ -117,7 +125,8 @@ class HistoryQueryService:
         if len(candidates) > 1:
             return QueryResult("CONFLICT", None, {
                 "candidate_state_ids": sorted(str(item.state_id) for item in candidates),
-                "reason": "MULTIPLE_STATES_MATCH_QUERY; ADJUDICATION_REQUIRED",
+                "reason": ("AMBIGUOUS_CAUSAL_STATE" if causal_phase is None and causal_event_id is None
+                           else "MULTIPLE_STATES_MATCH_QUERY; ADJUDICATION_REQUIRED"),
             })
         state = candidates[0]
         if state.support_class == SupportClass.UNKNOWN:
@@ -148,6 +157,35 @@ class HistoryQueryService:
             states = tuple(state for state in states
                            if state.spatial_support.selector_kind == selector_kind)
         return HistoryResult(tuple(sorted(states, key=_history_order)))
+
+    @_pinned_read
+    def event_at(self, *, history_id: str, branch_id: str, time_key: str,
+                 causal_event_id: str | None = None) -> tuple[EventRecord, ...]:
+        """Return event-phase records at an exact time in stable causal order."""
+        rows = tuple(event for event in self._store.events()
+            if event.history_id == history_id and event.branch_id == branch_id
+            and event.time_key == time_key
+            and event.temporal_support.get("causal_order_key", {}).get("causal_phase") == "EVENT"
+            and (causal_event_id is None or event.temporal_support.get(
+                "causal_order_key", {}).get("causal_event_id") == causal_event_id))
+        return tuple(sorted(rows, key=lambda event: str(event.record_id)))
+
+    @_pinned_read
+    def support_at(self, *, history_id: str, branch_id: str, domain: str,
+                   time_key: str, causal_phase: str | None = None,
+                   causal_event_id: str | None = None) -> dict[str, Any]:
+        """Resolve exact support from the selected causal state, without conversion."""
+        result = self.state_at(history_id=history_id, branch_id=branch_id, domain=domain,
+            time_key=time_key, causal_phase=causal_phase, causal_event_id=causal_event_id)
+        if result.status != "FOUND" or result.state is None:
+            return {"status": result.status, "provenance": result.provenance}
+        state = result.state
+        return {"status": "PRESERVED_MEMBERSHIP_WITH_NEW_CAUSAL_VERSION"
+                    if state.applicability.get("causal_order_key", {}).get("causal_phase") == "POST_EVENT"
+                    else "RESOLVED",
+                "state_id": str(state.state_id),
+                "support": state.spatial_support.to_dict(),
+                "support_class": state.support_class.value}
 
     @_pinned_read
     def difference(self, state_a_id: str, state_b_id: str) -> DifferenceResult:
@@ -210,6 +248,9 @@ class HistoryQueryService:
         pending_provenance: list[str] = []
         pending_refs: list[str] = []
         queued_recipe_ids: set[str] = set()
+        pending_refs.extend(str(event.record_id) for event in self._store.events()
+            if str(target.state_id) in event.after_state_ids
+            and event.details.get("application_status") == "EXECUTED")
 
         def add_state(ref: str) -> None:
             if ref in states:
@@ -306,6 +347,9 @@ class HistoryQueryService:
                                           if sid not in states and sid not in unresolved)
                     pending_provenance.extend(pid for pid in event.provenance_refs
                                               if pid not in provenances and pid not in unresolved)
+                    pending_refs.extend(value for value in
+                        (event.trigger_ref, event.cause_ref, *event.causal_dependency_ids)
+                        if value)
                     continue
                 if resolve_typed_ref(ref):
                     event = events.get(ref)
@@ -314,6 +358,9 @@ class HistoryQueryService:
                                               if sid not in states and sid not in unresolved)
                         pending_provenance.extend(pid for pid in event.provenance_refs
                                                   if pid not in provenances and pid not in unresolved)
+                        pending_refs.extend(value for value in
+                            (event.trigger_ref, event.cause_ref, *event.causal_dependency_ids)
+                            if value)
                     forcing = forcings.get(ref)
                     if forcing is not None:
                         pending_provenance.extend(pid for pid in forcing.provenance_ids
@@ -468,9 +515,30 @@ class HistoryQueryService:
 
 def _history_order(state: DomainStateEnvelope) -> tuple[Any, ...]:
     spatial = state.spatial_support
+    causal = state.applicability.get("causal_order_key", {})
+    phase_order = {"PRE_EVENT": 0, "BASE": 0, "EVENT": 1, "POST_EVENT": 2}
     return (state.time_support.coordinate_system, state.time_support.support_kind,
-            state.time_support.time_key, state.domain, spatial.selector_kind,
-            spatial.grid_id or "", tuple(spatial.cell_ids), str(state.state_id))
+            state.time_support.time_key, phase_order.get(causal.get("causal_phase", "BASE"), 0),
+            causal.get("causal_sequence", 0), causal.get("causal_phase", "BASE"),
+            state.domain, spatial.selector_kind, spatial.grid_id or "",
+            tuple(spatial.cell_ids), str(state.state_id))
+
+
+def _causal_binding(store: HistoryStore, state: DomainStateEnvelope) -> dict[str, Any]:
+    explicit = state.applicability.get("causal_order_key")
+    if isinstance(explicit, Mapping):
+        return dict(explicit)
+    for event in store.events():
+        if (event.details.get("application_status") == "EXECUTED"
+                and str(state.state_id) in event.before_state_ids):
+            return {"physical_time_key": state.time_support.time_key,
+                    "causal_event_id": event.cause_ref,
+                    "causal_sequence": 0, "causal_phase": "PRE_EVENT"}
+        if (event.details.get("application_status") == "EXECUTED"
+                and str(state.state_id) in event.after_state_ids):
+            return event.temporal_support.get("causal_order_key", {})
+    return {"physical_time_key": state.time_support.time_key,
+            "causal_event_id": None, "causal_sequence": 0, "causal_phase": "BASE"}
 
 
 def _support_mismatch(state_a: DomainStateEnvelope, state_b: DomainStateEnvelope) -> str | None:
