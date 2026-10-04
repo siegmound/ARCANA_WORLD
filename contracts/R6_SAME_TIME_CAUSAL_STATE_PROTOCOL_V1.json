@@ -1,0 +1,50 @@
+{
+  "schema": "R6_SAME_TIME_CAUSAL_STATE_PROTOCOL_V1",
+  "contract_id": "SAME_TIME_CAUSAL_STATE_PROTOCOL_V1",
+  "decision_class": "AUTHORIAL_MODEL_DECISION",
+  "decision_status": "FROZEN_PROTOCOL_REQUIREMENT_QUERY_IMPLEMENTATION_DEFERRED",
+  "physical_time": {
+    "representation": "EXISTING_EXACT_TIME_KEY",
+    "rift_event_time_key": "209.97287659484368Ma",
+    "causal_order_must_not_modify_age": true,
+    "positive_dt_must_not_be_fabricated": true
+  },
+  "causal_order_key": {
+    "fields": ["physical_time_key", "causal_event_id", "causal_sequence", "causal_phase"],
+    "phases": [
+      {"phase": "PRE_EVENT", "sequence": 0},
+      {"phase": "EVENT", "sequence": 1},
+      {"phase": "POST_EVENT", "sequence": 2}
+    ],
+    "physical_history_direction": "OLDER_TO_YOUNGER; decreasing geological age",
+    "ordering": "physical history direction first; within identical physical time order by causal_sequence, then causal_phase, then stable record ID",
+    "stable_identity_rule": "The key is explicit, serialized, replay-stable, and derived from the existing activation event identity and frozen model; it is never inferred from insertion, filename, hash, or mtime order."
+  },
+  "legacy_compatibility": {
+    "records_without_causal_binding": "Implicit BASE phase only when no event relation binds the record to a causal phase.",
+    "pre_event_binding": "The immutable transition event before_state_ids relation binds the existing T1 state as PRE_EVENT; historical T1 bytes and identity are not rewritten.",
+    "single_state_query_without_selector": "Preserve current behavior.",
+    "multiple_causal_states_without_selector": "Return CONFLICT with reason AMBIGUOUS_CAUSAL_STATE; never choose latest insertion."
+  },
+  "query_contract": {
+    "selector": "Optional causal_phase and causal_event_id independent of exact physical time.",
+    "accepted_phases_for_rift_time": ["PRE_EVENT", "POST_EVENT"],
+    "event_phase_is_record_only": true,
+    "state_at": "Filter by physical time and optional causal selector; ambiguity remains fail-closed.",
+    "history": "Order states by physical history direction, then causal sequence within one exact time, then deterministic stable ID.",
+    "difference": "Compare explicit selected state IDs; PRE_EVENT to POST_EVENT is a valid same-time difference.",
+    "why": "Expose activation predicate -> frozen model -> process-state successor, using explicit event and before/after references.",
+    "support": "Resolve membership by selected causal state; identical membership reports PRESERVED_MEMBERSHIP_WITH_NEW_CAUSAL_VERSION.",
+    "replay": "Accept explicit event/model/version references; no ordering from write sequence.",
+    "unknown": "Preserve UNKNOWN and its support class independently at each causal phase.",
+    "temporal_validity": "Represent zero-duration causal successor without extending the prior Euler validity interval."
+  },
+  "minimum_implementation_targets": [
+    "causal binding schema or event-derived causal binding adapter for state records",
+    "query selector and fail-closed ambiguity reason",
+    "history ordering by exact physical time plus causal sequence",
+    "support and WHY phase/event filtering",
+    "tests for legacy single-state queries, same-time PRE/POST selection, omitted-selector conflict, deterministic ordering, and reopen/replay stability"
+  ],
+  "canonical_state_mutation_authorized": false
+}

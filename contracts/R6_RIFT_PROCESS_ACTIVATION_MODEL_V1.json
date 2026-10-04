@@ -1,0 +1,136 @@
+{
+  "schema": "R6_RIFT_PROCESS_ACTIVATION_MODEL_V1",
+  "contract_id": "MINIMAL_RIFT_PROCESS_ACTIVATION_V1",
+  "decision_class": "AUTHORIAL_MODEL_DECISION",
+  "decision_status": "FROZEN_FOR_RIFT_PROCESS_ACTIVATION_ONLY",
+  "scope": {
+    "event_class": "RIFT_PROCESS_ACTIVATION",
+    "plate_pair": [1, 3],
+    "event_time_key": "209.97287659484368Ma",
+    "pre_event_interface_segment_count": 71,
+    "pre_event_connected_components": 1,
+    "pre_event_graph_vertices": 72,
+    "pre_event_junction_endpoint_count": 2,
+    "canonical_t1_topology": "PRE_TRANSITION"
+  },
+  "activation_semantics": {
+    "predecessor_process_state": "PRE_ACTIVATION",
+    "successor_process_state": "RIFT_PROCESS_ACTIVE",
+    "meaning": "The governed rift-initiation predicate has activated a rift process for plate pair 1:3.",
+    "not_equivalent_to": [
+      "RIFT_OPENING_COMPLETED",
+      "NEW_OCEANIC_CRUST_CREATED",
+      "PLATE_SEPARATION_COMPLETED",
+      "NEW_PLATE_CREATED",
+      "TOPOLOGY_SPLIT_COMPLETED",
+      "MECHANICAL_FAILURE"
+    ],
+    "process_support": "The existing pair-level interface support is referenced as context; no individual segment is reclassified as a divergent boundary."
+  },
+  "instantaneous_transition": {
+    "physical_duration": 0,
+    "geometry_transfer": "PRESERVE_EXACT",
+    "geometric_displacement": "ZERO",
+    "canonical_node_identity": "PRESERVE_EXACT",
+    "plate_local_representation_identity": "PRESERVE_EXACT_WHERE_SUPPORT_UNCHANGED",
+    "plate_identity": "PRESERVE_EXISTING_PLATE_IDENTITIES",
+    "plate_ids": {"1": 1, "3": 3},
+    "new_plate_created": false,
+    "existing_plate_split": false,
+    "interface_geometry_and_connectivity": "PRESERVE_EXACT_ONE_OPEN_CHAIN_71_SEGMENTS_72_VERTICES",
+    "junction_identity_and_incidence": "PRESERVE_EXACT_TWO_DEGREE_3_ENDPOINTS",
+    "support_membership": "PRESERVE_EXACT_SET_VALUED_MEMBERSHIP",
+    "support_version": "NO_NEW_MEMBERSHIP_RECORD_REQUIRED; queries may expose the same membership in the POST_EVENT causal phase",
+    "oceanic_crust_created": false,
+    "opening_distance": 0,
+    "mechanics_executed": false
+  },
+  "semantic_versioning": {
+    "topology_identity": "UNCHANGED",
+    "interface_geometric_identity": "PRESERVED",
+    "process_state_identity": "NEW_IMMUTABLE_SUCCESSOR_VERSION",
+    "process_state_identity_basis": [
+      "activation_event_id",
+      "transition_model_id",
+      "plate_pair",
+      "PRE_ACTIVATION_OR_RIFT_PROCESS_ACTIVE_PHASE",
+      "predecessor_process_version_id"
+    ],
+    "identity_algorithm": "Canonical serialization of the listed fields followed by the repository deterministic identity hash; never insertion-order-derived.",
+    "predecessor_remains_queryable": true,
+    "post_state": "A new tectonic_geometry DomainStateEnvelope records the same payload_ref and topology_identity as T1 plus RIFT_PROCESS_ACTIVE, process_state_version_id, and causal binding; it references the activation event and this model ID.",
+    "system_memory_record": "An immutable system_memory DomainStateEnvelope records the minimum activation memory fields below.",
+    "event_application_record": "Append an EventRecord for the application, linked by cause_ref to the existing predicate event; do not rewrite the existing pending/predicate evidence. Its deterministic application identity makes retries exactly-once."
+  },
+  "state_transfer": [
+    {"field": "geometry", "rule": "PRESERVE_EXACT"},
+    {"field": "canonical_node_identity", "rule": "PRESERVE_EXACT"},
+    {"field": "plate_local_coordinates", "rule": "PRESERVE_EXACT"},
+    {"field": "plate_ids", "rule": "PRESERVE_EXACT"},
+    {"field": "plate_support_membership", "rule": "PRESERVE_EXACT"},
+    {"field": "interface_geometric_identity_and_connectivity", "rule": "PRESERVE_EXACT_WITH_EVENT_LINEAGE"},
+    {"field": "interface_process_state", "rule": "CREATE_RIFT_PROCESS_ACTIVE_SUCCESSOR_VERSION"},
+    {"field": "junction_identity_and_incidence", "rule": "PRESERVE_EXACT"},
+    {"field": "event_system_memory", "rule": "APPEND_IMMUTABLE_ACTIVATION_MEMORY"},
+    {"field": "physical_time", "rule": "PRESERVE_EXACT"},
+    {"field": "causal_phase", "rule": "PRE_EVENT_TO_POST_EVENT_AT_IDENTICAL_TIME"},
+    {"field": "Euler_authority", "rule": "DO_NOT_ASSUME_VALID_AFTER_EVENT_BOUNDARY"},
+    {"field": "asynchronous_domain_values", "rule": "PRESERVE_EXISTING_VALID_STATE_AND_UNKNOWN"},
+    {"field": "refinement_checkpoint", "rule": "REUSE_ONLY_WITH_EXPLICIT_CAUSAL_TOPOLOGY_VERSION_BINDING"},
+    {"field": "unknown_values", "rule": "PRESERVE_EXPLICITLY"}
+  ],
+  "refinement_checkpoint_policy": {
+    "classification": "GEOMETRY_REUSABLE_WITH_EXPLICIT_CAUSAL_TOPOLOGY_VERSION",
+    "existing_checkpoint_mutation": "FORBIDDEN; it remains pinned to its original PRE_EVENT topology/support identity",
+    "post_event_reuse": "Permitted only through a new immutable binding to the POST_EVENT causal version that proves identical geometry and support membership; do not relabel or rewrite the old checkpoint."
+  },
+  "asynchronous_domain_validity": [
+    {"domain": "bathymetry", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE"},
+    {"domain": "boundary_classification", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE_CLASS_AND_UNKNOWN; DO_NOT_INFER_DIVERGENT_CLASS"},
+    {"domain": "climate", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE; NO_SYNCHRONOUS_RECOMPUTE"},
+    {"domain": "deep", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE; NO_SYNCHRONOUS_RECOMPUTE"},
+    {"domain": "hydrology", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE; NO_SYNCHRONOUS_RECOMPUTE"},
+    {"domain": "junction_physical_semantics", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE_CLASS_AND_UNKNOWN; NO_REWIRING"},
+    {"domain": "land_ocean", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE"},
+    {"domain": "physical_geography", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE"},
+    {"domain": "plate_kinematics", "activation_effect": "VALIDITY_PRESERVED_AS_HISTORICAL_PRE_EVENT_STATE", "value_action": "PRESERVE; SUCCESSOR_AUTHORITY_REQUIRES_REEVALUATION_BEFORE_DT2"},
+    {"domain": "province_state", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE; NO_SYNCHRONOUS_RECOMPUTE"},
+    {"domain": "tectonic_kinematics_grid", "activation_effect": "VALIDITY_PRESERVED_AS_HISTORICAL_PRE_EVENT_STATE", "value_action": "PRESERVE; SUCCESSOR_AUTHORITY_REQUIRES_REEVALUATION_BEFORE_DT2"},
+    {"domain": "tectonic_plate_partition", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE_EXACT"},
+    {"domain": "topography", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE"},
+    {"domain": "weak_zone_state", "activation_effect": "VALIDITY_PRESERVED_AT_EXISTING_VALID_TIME", "value_action": "PRESERVE_UNKNOWN"}
+  ],
+  "asynchronous_validity_scope": "Preserved validity is the source state's existing valid time and support; it does not claim synchronous recomputation or validity for later post-event evolution. A future domain contract that explicitly consumes rift-process state must require reevaluation before consuming the successor.",
+  "event_memory_minimum": [
+    "activation_event_id",
+    "event_class",
+    "plate_pair",
+    "physical_time_key",
+    "predecessor_topology_identity",
+    "successor_topology_identity",
+    "predecessor_process_version_id",
+    "successor_process_version_id",
+    "transition_model_id",
+    "geometry_displacement_zero",
+    "plate_identity_change_none",
+    "support_graph_mutation_none",
+    "mechanics_executed_false",
+    "before_state_ids",
+    "after_state_ids"
+  ],
+  "future_events_not_created_or_authorized": [
+    "RIFT_OPENING_THRESHOLD_REACHED",
+    "NEW_DIVERGENT_BOUNDARY_GEOMETRY_REQUIRED",
+    "PLATE_SPLIT_REQUIRED",
+    "OCEANIC_CRUST_INITIALIZATION",
+    "JUNCTION_REWIRE_REQUIRED"
+  ],
+  "authority_boundary": {
+    "this_contract_is": "AUTHORIAL_MODEL_DECISION_FOR_ZERO_DURATION_PROCESS_ACTIVATION",
+    "this_contract_is_not": "A_MECHANICAL_LAW_OR_AUTHORITY_FOR_LATER_RIFT_EVOLUTION_OR_TOPOLOGY_SPLIT",
+    "future_rift_evolution": "REQUIRES_EVENT_SPECIFIC_GOVERNED_PHYSICAL_MODEL; mechanics requirement remains event-specific"
+  },
+  "canonical_execution_authorized": false,
+  "dt2_authorized": false,
+  "t2_authorized": false
+}

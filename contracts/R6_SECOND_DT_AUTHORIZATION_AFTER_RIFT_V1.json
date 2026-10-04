@@ -1,0 +1,24 @@
+{
+  "schema": "R6_SECOND_DT_AUTHORIZATION_AFTER_RIFT_V1",
+  "contract_id": "SECOND_DT_AUTHORIZATION_CONTRACT_V1",
+  "decision_class": "AUTHORIAL_MODEL_DECISION",
+  "decision_status": "FROZEN_GATE_NOT_AUTHORIZATION",
+  "second_dt_authorized_by_this_contract": false,
+  "all_required_before_dt2": [
+    "POST_EVENT causal successor is atomically and durably canonical",
+    "RIFT_PROCESS_ACTIVE successor process state validates against MINIMAL_RIFT_PROCESS_ACTIVATION_V1",
+    "the activation application has one deterministic exactly-once receipt; retries resolve to the identical publication",
+    "pre-event T1 remains immutable and queryable at the same physical time",
+    "post-event topology, support, interface, and junction references resolve and preserve the frozen identities/membership",
+    "same-time causal queries, history ordering, difference, WHY, support, and replay resolve without ambiguity when selected",
+    "unknown values and asynchronous domain states remain explicit and are not synthesized",
+    "the continuation guard for this pending activation is cleared only after successful durable publication",
+    "post-event Euler/kinematic authority is explicitly established for the successor state; pre-event constant-T0 rates are not implicitly extended",
+    "all enabled event horizons and numerical validity constraints are recomputed on the post-event state",
+    "the next limiting constraint and its authority are adjudicated separately"
+  ],
+  "failure_behavior": "Any unmet, unknown, or ambiguous prerequisite keeps continuation blocked and dt2 unselected.",
+  "dt2_value": null,
+  "t2_creation_authorized": false,
+  "mechanics_authorized": false
+}
