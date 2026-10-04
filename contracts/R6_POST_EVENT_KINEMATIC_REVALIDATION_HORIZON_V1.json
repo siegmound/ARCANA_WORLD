@@ -1,0 +1,100 @@
+{
+  "schema": "R6_POST_EVENT_KINEMATIC_REVALIDATION_HORIZON_V1",
+  "version": 1,
+  "contract_id": "FINITE_POST_EVENT_KINEMATIC_REVALIDATION_HORIZON_V1",
+  "status": "FROZEN_FOR_MODEL_SCOPE_REVALIDATION_ONLY",
+  "horizon_class": "MODEL_SCOPE_REVALIDATION",
+  "authority_classification": "AUTHORIAL_MODEL_DECISION",
+  "scientific_meaning": "Maximum authorized duration before mandatory model revalidation; not a predicted time to a geological event and not proof of an event-free interval.",
+  "scope": {
+    "causal_origin_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "causal_origin_phase": "POST_EVENT",
+    "physical_age_ma": 209.97287659484368,
+    "process_state": "RIFT_PROCESS_ACTIVE",
+    "geometry_and_support_action": "REFERENCE_EXACT_POST_EVENT_CANONICAL_GEOMETRY_AND_SET_VALUED_SUPPORT; DO_NOT_MUTATE",
+    "plate_local_motion_scope": "ALL_GOVERNED_B6E_PLATE_LOCAL_REPRESENTATIONS"
+  },
+  "spatial_scale_authority": {
+    "authority": "B5_CANONICAL_TECTONIC_TRIANGULATION_AND_B6E_PLATE_LOCAL_SUPPORT",
+    "mesh_identity_sha256": "6f7804ca22130a183c0abf317dce300bcdcf3328cfe6469ba0540386f98cd5ad",
+    "plate_local_representation_identity_sha256": "db31d519fe766248ba207dcc7048c9ee0f70a8d1748babce9d2c05f3e1865eed",
+    "radius_m": 6371000,
+    "radius_authority": "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json#/planetary_constants/mean_radius_m",
+    "characteristic_scale_rule": "MINIMUM_GREAT_CIRCLE_LENGTH_OF_GOVERNED_MESH_EDGES_INCIDENT_TO_THE_SOURCE_NODE_WITHIN_THE_SAME_TRIANGLE_PLATE_SUPPORT",
+    "source_support": "B6E INTERIOR, INDIVIDUAL BOUNDARY-SIDE, AND INDIVIDUAL JUNCTION-SIDE REPRESENTATIONS; preserve distinct representation identities and plate sides.",
+    "global_scale_fallback_used": false
+  },
+  "displacement_budget": {
+    "parameter": "MAX_REVALIDATION_DISPLACEMENT_FRACTION",
+    "value": 0.25,
+    "authority_classification": "AUTHORIAL_MODEL_DECISION",
+    "interpretation": "Before further continuation, each governed plate-local representation must be revalidated no later than when its exact spherical displacement reaches 25 percent of its incident local characteristic mesh-edge length.",
+    "not_a_numerical_stability_proof": true,
+    "existing_rule_audit": "B6D local_edge_fraction has THRESHOLD_MISSING; B6F has no qualified displacement-ratio threshold. No stricter frozen fraction was found."
+  },
+  "motion_authority": {
+    "successor_authority_contract": "contracts/R6_POST_EVENT_KINEMATIC_AUTHORITY_V1.json",
+    "successor_authority_status": "POST_EVENT_KINEMATIC_AUTHORITY_CONTINUES_WITH_RESTRICTED_SCOPE",
+    "predecessor_kinematics_artifact": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+    "predecessor_kinematics_semantic_identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "vector_policy": "REFERENCE_EXISTING_VECTOR_ARTIFACT_UNCHANGED",
+    "rotation_action": "EXACT_ACTIVE_RIGHT_HANDED_XYZ_COLUMN_VECTOR_CONSTANT_EULER_ROTATION",
+    "displacement_metric": "EXACT_GREAT_CIRCLE_ARC_DISTANCE_FROM_POST_EVENT_ORIGIN_UNDER_FINITE_RIGID_ROTATION",
+    "linear_velocity_approximation_used": false
+  },
+  "derivation": {
+    "representation_count": 70461,
+    "evaluation_rule": "For each representation, preserve its own source node and plate identity; compute the minimum incident same-plate mesh-edge length; compute the exact finite-rotation displacement from its POST_EVENT position; solve the earliest positive time at which displacement equals the authored fraction times local scale; take the minimum over all finite local times.",
+    "limiting_representation_id": "r6rep_8a5a2406ef1aab4db9b4a1d1564c3030f00218a92d8fcfb43695b61ec71aec78",
+    "limiting_source_entity_id": "T0_NODE:64287",
+    "limiting_plate_id": 9,
+    "limiting_local_scale_m": 1940.5944300618712,
+    "limiting_displacement_budget_m": 485.1486075154678,
+    "limiting_surface_speed_m_per_year": 0.059063250764804086,
+    "horizon_delta_years": 8214.051909111062,
+    "horizon_absolute_age_ma": 209.96466254293458,
+    "local_horizon_classifications": {
+      "FINITE_LOCAL_HORIZON": 70461,
+      "NON_LIMITING_STATIC": 0,
+      "NON_LIMITING_BOUNDED_ORBIT": 0,
+      "UNKNOWN": 0
+    },
+    "deterministic_replay_required": true
+  },
+  "source_provenance_boundary": {
+    "source_anchor_age_ma": 210.0,
+    "source_temporal_support": "INSTANT_ONLY",
+    "SOURCE_INTERVAL_BEYOND_210_MA_ANCHOR": "UNKNOWN",
+    "source_provenance_extended": false,
+    "new_interval_authority": "AUTHORIAL_SUCCESSOR_MODEL_PLUS_MODEL_SCOPE_REVALIDATION_POLICY",
+    "does_not_claim_earth_observational_validity": true
+  },
+  "termination_semantics": {
+    "required_action_at_or_before_horizon": "STOP_CONTINUATION_AND_REVALIDATE_SUCCESSOR_MODEL_AND_ALL_APPLICABLE_AUTHORITIES",
+    "physical_event_predicted": false,
+    "unknown_physical_event_horizons_resolved": false,
+    "unknown_physical_event_horizons_remain_fail_closed": true,
+    "crossing_horizon_authorized": false
+  },
+  "b6n4_eligibility": {
+    "limiting_eligible_for_dt_adjudication": true,
+    "eligibility_meaning": "A finite model-scope upper-bound candidate for B6N4 to adjudicate against the preserved physical/event UNKNOWN candidates; this contract does not select a timestep or prove those UNKNOWN candidates cannot occur earlier.",
+    "second_dt_selection": "NOT_PERFORMED_BY_THIS_CONTRACT",
+    "T2_creation": "NOT_PERFORMED_BY_THIS_CONTRACT"
+  },
+  "revalidation_requirement": {
+    "before_any_continuation_beyond_horizon": true,
+    "required_checks": [
+      "renew or replace restricted successor model authority",
+      "recompute every enabled physical, event, source, topology, and numerical horizon",
+      "preserve or explicitly resolve physical junction and interface unknowns according to requested outputs",
+      "require a new explicit model decision for any extension"
+    ],
+    "automatic_renewal": false
+  },
+  "provenance": {
+    "post_event_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "b6n3a_source_commit": "beb1b663695ee0382b2a7262396ecde72d7dfa61",
+    "b6n3_horizon_set_structural_sha256": "4c9e11e0aeb5c9e9d9b617f58594c462990d86c1852f60327e50ca4b27b508e3"
+  }
+}
