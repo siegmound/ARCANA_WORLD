@@ -1,0 +1,62 @@
+{
+  "atomic_bundle_records": [
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "canonical_first_state_semantic_record"
+    },
+    {
+      "action": "PROMOTE_CANDIDATE_PAYLOAD_REFERENCE",
+      "record": "candidate_payload"
+    },
+    {
+      "action": "REFERENCE_EXISTING_PAYLOAD",
+      "record": "source_T0_payloads"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "dt_and_kinematic_provenance"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "ReplayRecipe"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "event_boundary_and_topology_hold"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "candidate lineage and support relation"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "async temporal validity and transfer declarations"
+    },
+    {
+      "action": "REFERENCE_EXISTING_PAYLOAD",
+      "record": "existing required system memory"
+    },
+    {
+      "action": "NO_ACTION_REQUIRED",
+      "record": "candidate state duplicate"
+    }
+  ],
+  "candidate_id": "c173852a93c702abfa8b61701c7fe4c001b71d86adf0b4fe893769105e380a58",
+  "candidate_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+  "candidate_state_id": "r6state_bc20028741c3da477e4e05a67b6423414e49238d7598ac6ac3793ed3636dca03",
+  "canonical_state_class": "CANONICAL_FIRST_STATE_AT_RIFT_ACTIVATION_BOUNDARY_PRETRANSITION",
+  "dt_hex": "0x1.a7cd9ee14b895p+14",
+  "payload_policy": "REFERENCE_OR_PROMOTE_EXISTING_CONTENT_ID; NO_COPY",
+  "publication_executed": false,
+  "replay_recipe_id": "r6recipe_aa83b840a71e4dd12865528b098d5734348a30573895ef5c161e74f88a530c4f",
+  "schema": "R6_B6L_CANONICAL_PUBLICATION_PLAN_V1",
+  "semantic_constraints": {
+    "asynchronous_domains": "RETAIN_PREVIOUS_LATEST_VALID_TIME",
+    "continuation_prerequisite": "RIFT_TRANSITION_MUST_BE_AUTHORIZED_AND_EXECUTED",
+    "model_scope_limitations": "PRESERVED",
+    "rift_transition": "NOT_EXECUTED",
+    "topology": "PRE_TRANSITION_IDENTITY_HELD"
+  },
+  "target_age_ma": 209.97287659484368,
+  "topology_identity": "fbfc1563047d084fd3da49d084b97cccd9bb78f75c26e508c8e128c885574b8b"
+}

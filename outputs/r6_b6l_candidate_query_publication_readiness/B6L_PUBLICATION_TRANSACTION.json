@@ -1,0 +1,49 @@
+{
+  "atomic_bundle": [
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "canonical_first_state_semantic_record"
+    },
+    {
+      "action": "PROMOTE_CANDIDATE_PAYLOAD_REFERENCE",
+      "record": "candidate_payload"
+    },
+    {
+      "action": "REFERENCE_EXISTING_PAYLOAD",
+      "record": "source_T0_payloads"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "dt_and_kinematic_provenance"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "ReplayRecipe"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "event_boundary_and_topology_hold"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "candidate lineage and support relation"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "async temporal validity and transfer declarations"
+    },
+    {
+      "action": "REFERENCE_EXISTING_PAYLOAD",
+      "record": "existing required system memory"
+    },
+    {
+      "action": "NO_ACTION_REQUIRED",
+      "record": "candidate state duplicate"
+    }
+  ],
+  "canonical_write_executed": false,
+  "concurrent_visibility_and_full_power_loss_durability": "OUTSIDE_B0C_CONTRACT",
+  "duplicate_payload_copy": false,
+  "mechanism": "HistoryStore.append_transaction (B0-C)",
+  "status": "PASS_PLAN_ONLY"
+}

@@ -1,0 +1,19 @@
+{
+  "canonical_target_used": false,
+  "cases": {
+    "after_journal_creation": true,
+    "after_journal_creation_retry_identical": true,
+    "after_partial_record_writes": true,
+    "after_partial_record_writes_retry_identical": true,
+    "before_commit_marker": true,
+    "before_commit_marker_retry_identical": true,
+    "before_transaction_begin": true,
+    "during_reopen_recovery": true,
+    "during_reopen_recovery_retry_identical": true
+  },
+  "mechanism": "B0-C HistoryStore.append_transaction failure injection and reopen recovery",
+  "orphan_owned_payload": false,
+  "retry_duplicate_semantic_state": false,
+  "source_history_unchanged": true,
+  "status": "PASS"
+}

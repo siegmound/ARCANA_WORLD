@@ -1,0 +1,51 @@
+{
+  "authorization": "NOT_GRANTED_BY_B6L",
+  "event_transition": "MUST_REMAIN_NOT_EXECUTED",
+  "ordinary_continuation_guard": "CONTINUATION_BLOCKED_PENDING_RIFT_TRANSITION",
+  "publish_exactly_one_state": true,
+  "recommendation": "AUTHORIZE_ATOMIC_FIRST_T1_PUBLICATION_AND_FINAL_QUERY_ACCEPTANCE",
+  "required_records": [
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "canonical_first_state_semantic_record"
+    },
+    {
+      "action": "PROMOTE_CANDIDATE_PAYLOAD_REFERENCE",
+      "record": "candidate_payload"
+    },
+    {
+      "action": "REFERENCE_EXISTING_PAYLOAD",
+      "record": "source_T0_payloads"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "dt_and_kinematic_provenance"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "ReplayRecipe"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "event_boundary_and_topology_hold"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "candidate lineage and support relation"
+    },
+    {
+      "action": "NEW_CANONICAL_RECORD",
+      "record": "async temporal validity and transfer declarations"
+    },
+    {
+      "action": "REFERENCE_EXISTING_PAYLOAD",
+      "record": "existing required system memory"
+    },
+    {
+      "action": "NO_ACTION_REQUIRED",
+      "record": "candidate state duplicate"
+    }
+  ],
+  "second_dt": "FORBIDDEN",
+  "state_class": "CANONICAL_FIRST_STATE_AT_RIFT_ACTIVATION_BOUNDARY_PRETRANSITION"
+}

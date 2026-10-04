@@ -1,0 +1,30 @@
+{
+  "b6l_focused": {
+    "duration_seconds": 0.73,
+    "failed": 0,
+    "passed": 15,
+    "result": "PASS"
+  },
+  "b5_b6k_related_regression": {
+    "duration_seconds": 45.25,
+    "failed": 0,
+    "passed": 120,
+    "result": "PASS"
+  },
+  "full_active_r6": {
+    "duration_seconds": 157.35,
+    "failed": 0,
+    "passed": 440,
+    "result": "PASS"
+  },
+  "pytest_options": ["-p", "no:cacheprovider"],
+  "static_checks": {
+    "compileall": "PASS",
+    "py_compile": "PASS",
+    "json_schema_validation": "PASS_JSON_PARSE_AND_REQUIRED_STRUCTURE",
+    "binary_hash_validation": "PASS_REPLAY_SHA256_MATCH",
+    "manifest_validation": "PASS",
+    "portable_paths": "PASS",
+    "git_diff_check": "PASS"
+  }
+}
