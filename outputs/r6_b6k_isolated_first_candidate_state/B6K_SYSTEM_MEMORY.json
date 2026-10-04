@@ -1,0 +1,75 @@
+{
+  "b6g_classes": [
+    {
+      "basis": "D7 defers mechanics; B6E forbids treating runtime products as canonical memory.",
+      "blocking_first_step": false,
+      "classification": "DERIVED_RECOMPUTABLE",
+      "memory_class": "FEG/ShellSet runtime products"
+    },
+    {
+      "basis": "retain required SYSTEM_MEMORY at T0 and expose per-domain temporal validity under D6; no value discarded or promoted to T1.",
+      "blocking_first_step": false,
+      "classification": "NONBLOCKING_ASYNC",
+      "memory_class": "initial-world supported fields"
+    },
+    {
+      "basis": "retain forcing/replay identity; no change to the forcing record.",
+      "blocking_first_step": false,
+      "classification": "REFERENCE_ONLY",
+      "memory_class": "plate kinematics"
+    },
+    {
+      "basis": "preserve UNKNOWN support evidence unchanged.",
+      "blocking_first_step": false,
+      "classification": "REFERENCE_ONLY",
+      "memory_class": "unknown-domain masks"
+    },
+    {
+      "basis": "retain T0 identity; D1 prohibits reindex absent a governed event.",
+      "blocking_first_step": false,
+      "classification": "REFERENCE_ONLY",
+      "memory_class": "vector partition"
+    }
+  ],
+  "declarations": [
+    {
+      "disposition": "RECOMPUTE_REQUIRED",
+      "memory_family": "FEG/ShellSet runtime products",
+      "missing_authority_behavior": "UNKNOWN_OR_MODEL_REQUIRED__NO_FABRICATED_VALUE",
+      "retained_reference": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.json",
+      "update_rule": "derived numerical support only; never canonical WORLD_HISTORY memory"
+    },
+    {
+      "disposition": "MODEL_REQUIRED",
+      "memory_family": "initial-world supported fields",
+      "missing_authority_behavior": "UNKNOWN_OR_MODEL_REQUIRED__NO_FABRICATED_VALUE",
+      "retained_reference": "payload://sha256/a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+      "update_rule": "B0-G SYSTEM_MEMORY retained; field-specific future transfer is unbound"
+    },
+    {
+      "disposition": "HISTORICAL_REFERENCE",
+      "memory_family": "plate kinematics",
+      "missing_authority_behavior": "UNKNOWN_OR_MODEL_REQUIRED__NO_FABRICATED_VALUE",
+      "retained_reference": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+      "update_rule": "retain forcing and replay identity; no motion executed"
+    },
+    {
+      "disposition": "HISTORICAL_REFERENCE",
+      "memory_family": "unknown-domain masks",
+      "missing_authority_behavior": "UNKNOWN_OR_MODEL_REQUIRED__NO_FABRICATED_VALUE",
+      "retained_reference": "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json",
+      "update_rule": "retain support evidence; UNKNOWN is not converted to numeric state"
+    },
+    {
+      "disposition": "HISTORICAL_REFERENCE",
+      "memory_family": "vector partition",
+      "missing_authority_behavior": "UNKNOWN_OR_MODEL_REQUIRED__NO_FABRICATED_VALUE",
+      "retained_reference": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+      "update_rule": "retain historical parent identity; event-driven reindex/lineage not executed"
+    }
+  ],
+  "future_values_created": false,
+  "status": "PASS_REFERENCE_AND_UNKNOWN_PRESERVATION",
+  "system_memory_discarded": false,
+  "unresolved_values_imputed": false
+}

@@ -1,0 +1,157 @@
+{
+  "executed_transfer": "B6B_EXACT_RIGID_PLATE_LOCAL_GEOMETRY",
+  "no_imputation": true,
+  "no_interpolation": true,
+  "state_families": [
+    {
+      "authority": "No mechanics/runtime consumer is required by D7; recompute only if later selected.",
+      "candidate_behavior": "DERIVED_RECOMPUTABLE",
+      "candidate_valid_time": null,
+      "result_status": "NOT_UPDATED_UNKNOWN_OR_MODEL_REQUIRED",
+      "source_valid_time": "210Ma",
+      "state_family": "FEG/ShellSet runtime fields",
+      "transfer_operation": "NOT_EXECUTED"
+    },
+    {
+      "authority": "D6 independent domain clock; preserve its last valid T0 value.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "bathymetry",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "UNKNOWN remains UNKNOWN; no boundary type is needed for kinematic relation identity.",
+      "candidate_behavior": "QUERY_LIMITATION_ONLY",
+      "candidate_valid_time": null,
+      "result_status": "NOT_UPDATED_UNKNOWN_OR_MODEL_REQUIRED",
+      "source_valid_time": "210Ma",
+      "state_family": "boundary_classification",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "D6 retains latest valid climate state; tectonic step does not advance climate.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "climate",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "D6 independent domain clock; no deep-domain execution in MVP.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "deep",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "D6 retains latest valid hydrology state.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "hydrology",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "Physical accommodation remains UNKNOWN; structural junction incidence is retained.",
+      "candidate_behavior": "QUERY_LIMITATION_ONLY",
+      "candidate_valid_time": null,
+      "result_status": "NOT_UPDATED_UNKNOWN_OR_MODEL_REQUIRED",
+      "source_valid_time": "210Ma",
+      "state_family": "junction_physical_semantics",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "D6 independent domain clock; no land/ocean transition is authorized.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "land_ocean",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "B6E explicitly keeps tectonic-only clock at T0 absent a field model; D6 exposes age.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "physical_geography",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "Retain governed Euler forcing identity; the vector itself is not a transferred state.",
+      "candidate_behavior": "REFERENCE_ONLY",
+      "candidate_valid_time": null,
+      "result_status": "REFERENCE_ONLY",
+      "source_valid_time": "210Ma",
+      "state_family": "plate_kinematics",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "D6 independent domain clock; preserve existing value and validity time.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "province_state",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "No grid field is materialized; velocities remain derivable on supported plate-local geometry.",
+      "candidate_behavior": "QUERY_LIMITATION_ONLY",
+      "candidate_valid_time": null,
+      "result_status": "NOT_UPDATED_UNKNOWN_OR_MODEL_REQUIRED",
+      "source_valid_time": "210Ma",
+      "state_family": "tectonic_kinematics_grid",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "D1 holds topology between events; retain identity/incidence with no reindex absent event.",
+      "candidate_behavior": "REFERENCE_ONLY",
+      "candidate_valid_time": null,
+      "result_status": "REFERENCE_ONLY",
+      "source_valid_time": "210Ma",
+      "state_family": "tectonic_plate_partition",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "B6E declares independent domain clock; do not fabricate an updated field.",
+      "candidate_behavior": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "candidate_valid_time": null,
+      "result_status": "ASYNC_RETAINS_LATEST_VALID_STATE",
+      "source_valid_time": "210Ma",
+      "state_family": "topography",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "Support is absent and no mechanics consumes it in the frozen MVP.",
+      "candidate_behavior": "QUERY_LIMITATION_ONLY",
+      "candidate_valid_time": null,
+      "result_status": "NOT_UPDATED_UNKNOWN_OR_MODEL_REQUIRED",
+      "source_valid_time": "210Ma",
+      "state_family": "weak_zone_state",
+      "transfer_operation": "REFERENCE_OR_ASYNC_RETAINED"
+    },
+    {
+      "authority": "B6B/B6C/B6G/B6J",
+      "candidate_behavior": "RIGID_ADVECT",
+      "candidate_valid_time": "209.97287659484368Ma",
+      "result_status": "UPDATED_CANDIDATE_ONLY",
+      "source_valid_time": "210Ma",
+      "state_family": "plate-local geometry coordinates",
+      "transfer_operation": "EXACT_CONSTANT_EULER_ROTATION"
+    }
+  ],
+  "status": "PASS_EXPLICIT_FIELD_SPECIFIC_ONLY",
+  "unresolved_transfer_classes_preserved": [
+    "MODEL_REQUIRED",
+    "UNKNOWN",
+    "CONSERVATIVE_REMAP_REQUIRED"
+  ]
+}

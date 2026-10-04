@@ -287,13 +287,19 @@ def _build_boundary_descriptors(census: Mapping[str, Any], state: Mapping[str, A
     return tuple(result)
 
 
-def load_b5_sources(repository_root: str | Path) -> tuple[B5Sources, dict[str, Any]]:
+def load_b5_sources(repository_root: str | Path, *,
+                    expected_branch: str = B5_BRANCH) -> tuple[B5Sources, dict[str, Any]]:
+    """Load and verify the B5 source set on its owner or an explicit descendant.
+
+    The default remains the original B5 branch. Later qualification stages may
+    opt into their own branch while retaining every artifact/hash check below.
+    """
     root = Path(repository_root).resolve()
     branch = _git(root, "branch", "--show-current")
-    if branch != B5_BRANCH:
-        raise PlateSupportError(f"unexpected B5 branch: {branch}")
+    if branch != expected_branch:
+        raise PlateSupportError(f"unexpected source branch: {branch}")
     head = _git(root, "rev-parse", "HEAD")
-    kinematics, b4_inventory = load_governed_source(root, expected_branch=B5_BRANCH)
+    kinematics, b4_inventory = load_governed_source(root, expected_branch=expected_branch)
     tracked = tuple(_tracked_identity(root, path) for path in B5_TRACKED)
     vector = _read_json(root / VECTOR_MANIFEST)
     census = _read_json(root / KINEMATIC_CENSUS)
