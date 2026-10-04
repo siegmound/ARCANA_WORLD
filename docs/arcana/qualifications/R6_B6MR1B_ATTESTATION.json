@@ -1,0 +1,36 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6MR1B_ATOMIC_FIRST_T1_PUBLICATION",
+  "verdict": "BLOCKED_B6MR1B_REFINEMENT_EXECUTION_SUPPORT",
+  "qualified_source_commit": "069eee7e29339c89af99ad88f9447f71cbad4a28",
+  "evidence_store_key": "B6MR1B/069eee7e29339c89af99ad88f9447f71cbad4a28",
+  "evidence_manifest_sha256": "40494174d9aab42c41415715611f45ec7f2773967525700cb3564998cb2a9423",
+  "canonical_publication": {
+    "status": "PASS",
+    "epoch_count_before": 1,
+    "epoch_count_after": 2,
+    "t1_created": true,
+    "t1_state_id": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "target_age_ma": 209.97287659484368,
+    "payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "replay_deterministic": true,
+    "durable_reopen": true
+  },
+  "refinement": {
+    "status": "BLOCKED",
+    "blocker": "MISSING_GOVERNED_PARENT_REGION_CELL_IDS",
+    "current_support": "GLOBAL",
+    "required_support": "parent_region_cell_ids"
+  },
+  "scientific_state": {
+    "topology_transition_executed": false,
+    "second_dt_selected": false,
+    "t2_created": false,
+    "mechanics_executed": false
+  },
+  "tests": {
+    "full_r6_passed": 459,
+    "full_r6_failed": 0
+  },
+  "next_stage": "B6MR1C_REFINEMENT_SUPPORT_BINDING_CLOSURE"
+}
