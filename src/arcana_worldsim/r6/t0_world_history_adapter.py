@@ -120,11 +120,13 @@ def _tracked_payload(root: Path, relative: str, expected_sha: str, role: str) ->
                   "read_only_verified": True}
 
 
-def authority_inventory(root: str | Path) -> dict[str, Any]:
+def authority_inventory(root: str | Path, *,
+                       expected_branch: str = "r6/b3-governed-t0-read-only-ingest"
+                       ) -> dict[str, Any]:
     """Resolve and verify current T0 sources without opening a write-capable store."""
     root = Path(root).resolve()
     branch = _git(root, "branch", "--show-current")
-    if branch != "r6/b3-governed-t0-read-only-ingest":
+    if branch != expected_branch:
         raise T0AuthorityError(f"unexpected branch for B3 qualification: {branch}")
     documents = [_tracked_identity(root, name) for name in AUTHORITY_DOCUMENTS]
     initial = _json(root / INITIAL_MANIFEST)
