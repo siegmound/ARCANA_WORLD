@@ -1,0 +1,29 @@
+{
+  "schema": "R6_B6MR1_PRECOMMIT_BLOCKER_V1",
+  "status": "BLOCKED_PRECOMMIT",
+  "requirement": "NO_CANONICAL_READER_MAY_OBSERVE_PARTIAL_T1_PUBLICATION",
+  "evidence": [
+    {
+      "path": "src/arcana_worldsim/r6/store.py",
+      "line": 231,
+      "finding": "append_transaction guarantees recoverable all-or-none state after return or next reopen; concurrent visibility and full power-loss durability are explicitly outside its contract."
+    },
+    {
+      "path": "src/arcana_worldsim/r6/store.py",
+      "line": 295,
+      "finding": "Transaction publishes target record files sequentially before writing the COMMITTED marker."
+    },
+    {
+      "path": "src/arcana_worldsim/r6/store.py",
+      "line": 488,
+      "finding": "Typed reads directly load record files and do not consult or coordinate with transaction publication state."
+    },
+    {
+      "path": "outputs/r6_b6l_candidate_query_publication_readiness/B6L_PUBLICATION_TRANSACTION.json",
+      "line": 45,
+      "finding": "Prior B6L evidence explicitly scopes concurrent visibility outside the qualified B0-C transaction contract."
+    }
+  ],
+  "canonical_publication_started": false,
+  "required_resolution": "A narrowly scoped, tested reader-visibility guarantee compatible with B0-C publication must be authorized and qualified before retrying the canonical transaction."
+}
