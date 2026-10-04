@@ -1,0 +1,28 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N3_POST_EVENT_HORIZON_RECOMPUTATION",
+  "verdict": "BLOCKED_B6N3_NO_FINITE_POST_EVENT_PROPAGATION_HORIZON",
+  "qualified_source_commit": "e90b7d72e6a3c863350b5461bdb14b48683cd43d",
+  "evidence_store_key": "B6N3/e90b7d72e6a3c863350b5461bdb14b48683cd43d",
+  "evidence_manifest_sha256": "edff598e042f2ad93a6186faa36687ea15e2278c5f1fe9c559809d19d9f38a23",
+  "horizon_set_structural_hash": "4c9e11e0aeb5c9e9d9b617f58594c462990d86c1852f60327e50ca4b27b508e3",
+  "horizon_counts": {
+    "total": 14,
+    "finite_authorized": 0,
+    "finite_non_limiting": 0,
+    "unknown": 7,
+    "non_finite_authority_limits": 1,
+    "consumed": 1,
+    "inapplicable": 5
+  },
+  "nearest_authorized_horizon": "NOT_AVAILABLE",
+  "dt2_gate": {
+    "post_event_kinematic_authority": "SATISFIED",
+    "horizon_recomputation": "SATISFIED",
+    "nearest_limiting_constraint": "UNSATISFIED",
+    "second_dt_selected": false,
+    "t2_created": false
+  },
+  "canonical_state_changed": false,
+  "next_stage": "AUTHORIZE_B6N3A_FINITE_POST_EVENT_MODEL_SCOPE_HORIZON_DECISION"
+}
