@@ -1,0 +1,43 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6MR1D_FINAL_VERTICAL_SLICE_CLOSURE",
+  "verdict": "PASS_B6MR1D_FINAL_COMMITTED_BASELINE_REQUALIFICATION",
+  "functional_verdict": "PASS_B6MR1D_T1_REFINEMENT_CHECKPOINT_CHILD_AUTHORITY_AND_VERTICAL_SLICE_CLOSURE",
+  "qualified_source_commit": "23d5679013b5210338ffe18baa886a6af1ad31c4",
+  "qualification_input_contract": {
+    "repository_path": "contracts/R6_HIERARCHICAL_PARENT_CELL_SUBDIVISION_V1.json",
+    "sha256": "a41af772d46362dabd0aba4d0041c760d0e33e14c8a228f384ac9fcb48850fcd",
+    "status": "QUALIFIED_INPUT_NOW_TRACKED_BYTE_IDENTICAL",
+    "freeze_commit": "1eadebc557be88a6acad67c98f16cf5318c27651"
+  },
+  "evidence_store_key": "B6MR1D/23d5679013b5210338ffe18baa886a6af1ad31c4",
+  "evidence_manifest_sha256": "b867b4162e545cda0628a11fd511904c5e8c52e7f1a2423909f4cca5b7d39d1b",
+  "b0f_refinement_acceptance": "PASS_B0F_CANONICAL_T1_REFINEMENT_ACCEPTANCE",
+  "vertical_slice_acceptance": "FIRST_WORLD_HISTORY_VERTICAL_SLICE_ACCEPTED",
+  "canonical_t1": {
+    "state_id": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "age_ma": 209.97287659484368,
+    "payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "epoch_count": 2,
+    "identity_preserved": true
+  },
+  "refinement": {
+    "subdivision_factor_tested": 2,
+    "parent_cells_tested": 2,
+    "derived_child_cells": 8,
+    "scientific_child_values_created": false,
+    "replay_deterministic": true
+  },
+  "safety": {
+    "topology_transition_executed": false,
+    "second_dt_selected": false,
+    "t2_created": false
+  },
+  "tests": {
+    "focused_b6mr1d": 13,
+    "related_regressions": 175,
+    "full_r6": 472,
+    "failed": 0
+  },
+  "next_stage": "AUTHORIZE_FIRST_RIFT_TRANSITION_MODEL_AND_APPLICATION_DESIGN"
+}
