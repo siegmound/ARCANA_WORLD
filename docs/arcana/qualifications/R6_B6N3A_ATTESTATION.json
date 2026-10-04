@@ -1,0 +1,28 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N3A_FINITE_POST_EVENT_MODEL_SCOPE_HORIZON_DECISION",
+  "verdict": "PASS_B6N3A_FINITE_POST_EVENT_MODEL_SCOPE_HORIZON_DECISION",
+  "qualified_source_commit": "beb1b663695ee0382b2a7262396ecde72d7dfa61",
+  "contract_freeze_commit": "b409ca101614395082111e201365139349769a2d",
+  "evidence_store_key": "B6N3A/beb1b663695ee0382b2a7262396ecde72d7dfa61",
+  "evidence_manifest_sha256": "a1350ea879b68c1bac180bfe0fb1a4db65327d5f89ac85eb81ea36a4cc1eecd6",
+  "horizon": {
+    "class": "MODEL_SCOPE_REVALIDATION",
+    "contract": "contracts/R6_POST_EVENT_KINEMATIC_REVALIDATION_HORIZON_V1.json",
+    "contract_sha256": "ec2afff78a203dc37e0898352aac38b00cd18bea298eaa39f2f2321eae35a5e3",
+    "delta_years": 8214.051909,
+    "meaning": "MAXIMUM_AUTHORIZED_DURATION_BEFORE_MANDATORY_MODEL_REVALIDATION",
+    "predicted_geological_event": false
+  },
+  "physical_event_horizons": {
+    "unresolved_unknown_count": 7,
+    "resolved_by_this_decision": false
+  },
+  "dt2_gate": {
+    "finite_model_scope_horizon": "SATISFIED",
+    "second_dt_selected": false,
+    "t2_created": false
+  },
+  "canonical_state_changed": false,
+  "next_stage": "AUTHORIZE_B6N4_SECOND_TIMESTEP_ADJUDICATION"
+}
