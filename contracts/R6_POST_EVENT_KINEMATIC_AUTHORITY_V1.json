@@ -1,0 +1,108 @@
+{
+  "schema": "R6_POST_EVENT_KINEMATIC_AUTHORITY_V1",
+  "authority_id": "R6_POST_EVENT_PLATE_RIGID_EULER_CONTINUATION_AFTER_RIFT_ACTIVATION_V1",
+  "stage": "B6N2_POST_EVENT_KINEMATIC_AUTHORITY_QUALIFICATION",
+  "qualified_source_commit": "585cf49715542a107ecbe1c89eb5c9f3fcae62f6",
+  "status": "POST_EVENT_KINEMATIC_AUTHORITY_CONTINUES_WITH_RESTRICTED_SCOPE",
+  "decision_class": "AUTHORIAL_MODEL_DECISION",
+  "decision_basis": "B6N2 explicitly renews the unchanged governed T0 Euler vector field as the conditional successor model at the already-applied semantic-only activation boundary. This is a new bounded model authority; it is not inferred as an interval from the T0 source or silently carried over from the first segment.",
+  "predecessor_authority": {
+    "artifact": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+    "authority_class": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+    "semantic_identity_sha256": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+    "source_file_sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2",
+    "reference_frame": "SYNTHETIC_AREA_WEIGHTED_LEAST_SQUARES_NO_NET_ROTATION_GAUGE",
+    "angular_rate_units": "rad/year",
+    "plate_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    "vectors_action": "ACTIVE_ROTATION_OF_COLUMN_POSITION_VECTOR; RIGHT_HANDED XYZ"
+  },
+  "temporal_scope": {
+    "source_anchor_age_ma": 210.0,
+    "source_temporal_support": "INSTANT_ONLY",
+    "source_interval_beyond_anchor": "UNKNOWN; this contract does not extend source provenance or claim an Earth-observational trajectory",
+    "predecessor_model_interval": "B6A conditional constant-T0 Euler first segment; explicitly ends at the rift activation boundary and does not imply long-term persistence",
+    "validity_start": {
+      "physical_age_ma": 209.97287659484368,
+      "causal_phase": "POST_EVENT",
+      "event_class": "RIFT_PROCESS_ACTIVATION",
+      "application_event_id": "r6event_edef5f399e3d2e6220a08371762f151218248f1afc053f1fe5ce0a44ce3e6864"
+    },
+    "validity_end": "The earliest B6N3-adjudicated source/model-validity boundary or enabled process/topology event. No end time or dt is selected in B6N2.",
+    "interval_rule": "Conditional successor-model validity from the exact POST_EVENT causal version; B6N3 must recompute horizons before any positive-duration propagation can be authorized."
+  },
+  "applicable_scope": {
+    "kinematics": "PLATE_LOCAL_RIGID_KINEMATICS",
+    "vector_policy": "REFERENCE_EXISTING_VECTOR_ARTIFACT_UNCHANGED; all 12 plate vectors retain exact identity and values",
+    "geometry_and_topology": "Use the canonical POST_EVENT geometry, plate identities, support, interface identities and junction incidence unchanged; no rewiring or boundary reclassification.",
+    "plate_pair_1_3": "The existing relative Euler action remains the kinematic driver associated with the activated pair-level rift process. This does not classify individual boundary segments as divergent or assert completed rifting, extension, crust creation, splitting or breakup.",
+    "neighbors": {
+      "governed_junctions": [
+        {"junction_id": "R6JNT-T0-f7f8b6413402335a", "incident_plate_ids": [1, 3, 8]},
+        {"junction_id": "R6JNT-T0-4a67fe6607845a68", "incident_plate_ids": [1, 3, 7]},
+        {"junction_id": "R6JNT-T0-97f54005032950c6", "incident_plate_ids": [1, 8, 9]},
+        {"junction_id": "R6JNT-T0-c700367690b7363a", "incident_plate_ids": [1, 7, 9]},
+        {"junction_id": "R6JNT-T0-2dd1d719ebf9c19d", "incident_plate_ids": [0, 3, 7]},
+        {"junction_id": "R6JNT-T0-52ad489ad0830b38", "incident_plate_ids": [0, 3, 8]}
+      ],
+      "adjacent_plate_pairs": ["0:3", "0:7", "0:8", "1:3", "1:7", "1:8", "1:9", "3:7", "3:8", "7:9", "8:9"],
+      "junction_semantics": "SET_VALUED_INCIDENT_PLATE_AND_INTERFACE_SIDES; no unique owner, no rewiring, physical accommodation remains UNKNOWN"
+    }
+  },
+  "activation_impact": {
+    "changed": ["rift process semantic state", "SYSTEM_MEMORY", "causal phase"],
+    "preserved": ["plate identities", "geometry payload", "spatial support membership", "interface connectivity", "junction incidence", "asynchronous domain validity"],
+    "kinematic_model_inputs_invalidated": false,
+    "interpretation": "The event is explicitly process activation, not plate split, completed separation, new crust, mechanical failure, or topology transition. No governed event field changes the Euler vector artifact."
+  },
+  "model_limitations": {
+    "uncertainty": "One authored seeded synthetic realization of an explicit prior; graph correlation and scale distribution are model assumptions; no sensitivity ensemble has been run.",
+    "not_authorized": ["Earth-fixed or mantle-fixed interpretation", "rate changes", "rate extrapolation beyond B6N3's next qualified horizon", "fault or boundary-type inference", "junction velocity or accommodation law", "mechanics", "topology transition", "node movement publication", "dt selection", "T2", "forward evolution"],
+    "unknowns_preserved": ["source validity beyond the 210 Ma instant anchor", "unregistered event absence", "physical junction accommodation", "boundary geological type and polarity"]
+  },
+  "termination_predicates_for_B6N3": [
+    "earliest enabled event/process threshold in the post-event state",
+    "source-provider temporal-validity boundary if one is governed",
+    "explicit Euler/model renewal or validity boundary",
+    "plate identity, support, interface, or topology event that violates the frozen rigid scope",
+    "junction incidence/relation becomes unresolved or incompatible under the selected representation",
+    "any required output crosses the MVP kinematic-only mechanics boundary",
+    "any unknown or ambiguous applicable bound, which must fail closed"
+  ],
+  "mechanics_boundary": {
+    "classification": "POST_EVENT_KINEMATICS_NO_MECHANICS_REQUIRED",
+    "scope": "Only a future rigid kinematic candidate under a separately adjudicated B6N3 horizon and dt gate.",
+    "reopen_mechanics_if": ["stress", "strain", "finite-width deformation", "fault slip/accommodation", "uplift", "rheology", "or other mechanical response is required"]
+  },
+  "asynchronous_domains": {
+    "status": "PRESERVED_NO_RECOMPUTE",
+    "validity_rows": 14,
+    "unknown_values": "PRESERVE_EXPLICITLY"
+  },
+  "refinement": {
+    "automatic_post_event_checkpoint": false,
+    "later_binding": "A deterministic geometry-preserving POST_EVENT refinement binding may be made only by an explicit causal support binding; no binding is created here."
+  },
+  "second_dt_gate": {
+    "post_event_kinematic_authority_prerequisite": "SATISFIED_BY_THIS_EXPLICIT_SUCCESSOR_CONTRACT",
+    "event_horizon_recomputation": "REQUIRED_NOT_PERFORMED",
+    "nearest_limiting_constraint_selection": "REQUIRED_NOT_PERFORMED",
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false
+  },
+  "provenance": {
+    "event_contract": {"path": "contracts/R6_RIFT_PROCESS_ACTIVATION_MODEL_V1.json", "sha256": "9f9ec2f84755ee015ff89d678198563dc1a407d4d4e8304d5cce1212612cd379"},
+    "second_dt_gate": {"path": "contracts/R6_SECOND_DT_AUTHORIZATION_AFTER_RIFT_V1.json", "sha256": "c1d6a836396b80f4c80f0272fcc840df02bbaee1d5158fcf42d034aaeafce1bc"},
+    "prior_first_segment_motion_law": {"path": "outputs/r6_b6a_positive_duration_authority/B6A_MOTION_LAW_ADJUDICATION.json", "sha256": "f22ad3e9f4eb7feb1826d8881b53d00d697a6a13c97ccb7a41a104449a0e467f"},
+    "topology_event_policy": {"path": "outputs/r6_b6d_authorial_mvp_model_freeze/B6D_TOPOLOGY_EVENT_POLICY.json", "sha256": "5890389d34d94a59bb757915ea97ff4aeac41ffc6b003a888675ef5b861f68f7"},
+    "post_event_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "post_event_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a"
+  },
+  "authorization_gates": {
+    "canonical_state_changed": false,
+    "mechanics_authorized": false,
+    "forward_evolution_authorized": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false
+  },
+  "next_stage": "AUTHORIZE_B6N3_POST_EVENT_HORIZON_RECOMPUTATION"
+}
