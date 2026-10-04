@@ -1,0 +1,40 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6NA_TARGETED_RIFT_PROCESS_ACTIVATION_MODEL_DECISION",
+  "verdict": "PASS_B6NA_TARGETED_RIFT_PROCESS_ACTIVATION_MODEL_DECISION",
+  "qualified_source_commit": "0d777aeb53e1635cb822d9d399c360d06a99bfc1",
+  "contract_freeze_commit": "b9707340318f053a5fb4c2016b4a41ad5e11b5e1",
+  "evidence_store_key": "B6NA/0d777aeb53e1635cb822d9d399c360d06a99bfc1",
+  "evidence_manifest_sha256": "ec56b96a47c1be272097bb363bdaa306a087dccda5bdcae95816741d1f473962",
+  "activation_model": {
+    "id": "MINIMAL_RIFT_PROCESS_ACTIVATION_V1",
+    "path": "contracts/R6_RIFT_PROCESS_ACTIVATION_MODEL_V1.json",
+    "sha256": "9f9ec2f84755ee015ff89d678198563dc1a407d4d4e8304d5cce1212612cd379"
+  },
+  "same_time_protocol": {
+    "id": "SAME_TIME_CAUSAL_STATE_PROTOCOL_V1",
+    "path": "contracts/R6_SAME_TIME_CAUSAL_STATE_PROTOCOL_V1.json",
+    "sha256": "01fceaf146e1b7bfd619466c7ca7168064506bdbf3a1c85a02e160ffd040db25"
+  },
+  "second_dt_gate": {
+    "path": "contracts/R6_SECOND_DT_AUTHORIZATION_AFTER_RIFT_V1.json",
+    "sha256": "c1d6a836396b80f4c80f0272fcc840df02bbaee1d5158fcf42d034aaeafce1bc",
+    "authorizes_dt2": false
+  },
+  "activation_semantics": {
+    "plate_identity_change": false,
+    "geometry_change": false,
+    "support_graph_change": false,
+    "junction_rewire": false,
+    "crust_creation": false,
+    "plate_split": false,
+    "mechanics_execution": false
+  },
+  "canonical_state": {
+    "epoch_count": 2,
+    "rift_transition_executed": false,
+    "second_dt_selected": false,
+    "t2_created": false
+  },
+  "next_stage": "AUTHORIZE_B6N1_RIFT_ACTIVATION_APPLICATION_IMPLEMENTATION"
+}
