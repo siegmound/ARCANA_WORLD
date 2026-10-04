@@ -3,6 +3,7 @@ from __future__ import annotations
 import subprocess
 
 import pytest
+from _git_test_env import isolated_git_environment
 
 from arcana_worldsim.r6.repository_context import (
     require_repository_context, resolve_external_payload_path,
@@ -10,10 +11,13 @@ from arcana_worldsim.r6.repository_context import (
 
 
 def _git(root, *args):
-    return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, text=True)
+    return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True,
+                          text=True, env=isolated_git_environment())
 
 
-def test_repository_context_accepts_feature_branch_and_detached_head(tmp_path):
+def test_repository_context_accepts_feature_branch_and_detached_head(tmp_path, monkeypatch):
+    monkeypatch.delenv("GIT_OBJECT_DIRECTORY", raising=False)
+    monkeypatch.delenv("GIT_ALTERNATE_OBJECT_DIRECTORIES", raising=False)
     repo = tmp_path / "repo"
     repo.mkdir()
     _git(repo, "init", "-b", "r6/ubuntu-workstation")
@@ -28,7 +32,7 @@ def test_repository_context_accepts_feature_branch_and_detached_head(tmp_path):
     )
     missing_remote = subprocess.run(
         ["git", "show-ref", "--verify", "--quiet", "refs/remotes/origin/main"],
-        cwd=repo, check=False,
+        cwd=repo, check=False, env=isolated_git_environment(),
     )
     assert missing_remote.returncode != 0
     assert feature.branch == "r6/ubuntu-workstation"
@@ -45,7 +49,9 @@ def test_repository_context_accepts_feature_branch_and_detached_head(tmp_path):
     assert detached.refs["origin/main"] is None
 
 
-def test_repository_context_rejects_head_not_descending_from_baseline(tmp_path):
+def test_repository_context_rejects_head_not_descending_from_baseline(tmp_path, monkeypatch):
+    monkeypatch.delenv("GIT_OBJECT_DIRECTORY", raising=False)
+    monkeypatch.delenv("GIT_ALTERNATE_OBJECT_DIRECTORIES", raising=False)
     repo = tmp_path / "repo"
     repo.mkdir()
     _git(repo, "init", "-b", "r6/ubuntu-workstation")

@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import subprocess
 from pathlib import Path
+from _git_test_env import isolated_git_environment
 
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "r6_pre_orbdata_heat_flow_source_audit.py"
@@ -13,13 +14,16 @@ SPEC.loader.exec_module(audit)
 
 
 def git(root: Path, *args: str) -> str:
-    result = subprocess.run(["git", "-C", str(root), *args], check=True, capture_output=True, text=True)
+    result = subprocess.run(["git", "-C", str(root), *args], check=True,
+                            capture_output=True, text=True,
+                            env=isolated_git_environment())
     return result.stdout.strip()
 
 
 def init_fixture_repo(root: Path, branch: str) -> None:
     root.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["git", "init", "-b", branch, str(root)], check=True, capture_output=True, text=True)
+    subprocess.run(["git", "init", "-b", branch, str(root)], check=True,
+                   capture_output=True, text=True, env=isolated_git_environment())
     git(root, "config", "user.name", "Audit fixture")
     git(root, "config", "user.email", "audit-fixture@example.invalid")
 
@@ -29,7 +33,9 @@ def commit_fixture_files(root: Path) -> None:
     git(root, "commit", "-m", "fixture source evidence")
 
 
-def test_source_scan_uses_tracked_text_files_only(tmp_path: Path) -> None:
+def test_source_scan_uses_tracked_text_files_only(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.delenv("GIT_OBJECT_DIRECTORY", raising=False)
+    monkeypatch.delenv("GIT_ALTERNATE_OBJECT_DIRECTORIES", raising=False)
     root = tmp_path / "ShellSet-fixture"
     init_fixture_repo(root, "fixture-qualified-name")
     source = root / "src" / "OrbData.f90"

@@ -5,6 +5,7 @@ import subprocess
 from pathlib import Path
 
 import pytest
+from _git_test_env import isolated_git_environment
 
 from scripts.r6_b6c_targeted_model_decision import B6CError, ROOT, adjudicate, validate
 from arcana_worldsim.r6.finite_rotation import rotate_vector_constant_euler
@@ -62,9 +63,10 @@ def test_transfer_numerics_and_first_dt_remain_blocked(decision: dict) -> None:
 
 def test_wrong_checkout_identity_fails_closed(tmp_path: Path) -> None:
     subprocess.run(["git", "init", "-b", "wrong-branch", str(tmp_path)], check=True,
-                   capture_output=True, text=True)
+                   capture_output=True, text=True, env=isolated_git_environment())
     subprocess.run(["git", "-C", str(tmp_path), "-c", "user.name=B6C test",
                     "-c", "user.email=b6c@example.invalid", "commit", "--allow-empty",
-                    "-m", "fixture"], check=True, capture_output=True, text=True)
+                    "-m", "fixture"], check=True, capture_output=True, text=True,
+                   env=isolated_git_environment())
     with pytest.raises(B6CError, match="expected .* found"):
         adjudicate(tmp_path)

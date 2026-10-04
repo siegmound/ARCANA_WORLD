@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import subprocess
 from pathlib import Path
+from _git_test_env import isolated_git_environment
 
 import pytest
 
@@ -121,17 +122,22 @@ def test_transaction_reopen_and_why_reaches_forcing(tmp_path):
     assert not why.unresolved_references
 
 
-def test_source_binding_tracks_git_blob_and_rejects_worktree_edit(tmp_path):
-    subprocess.run(["git", "init", str(tmp_path)], check=True, capture_output=True)
+def test_source_binding_tracks_git_blob_and_rejects_worktree_edit(tmp_path, monkeypatch):
+    monkeypatch.delenv("GIT_OBJECT_DIRECTORY", raising=False)
+    monkeypatch.delenv("GIT_ALTERNATE_OBJECT_DIRECTORIES", raising=False)
+    isolated_env = isolated_git_environment()
+    subprocess.run(["git", "init", str(tmp_path)], check=True, capture_output=True,
+                   env=isolated_env)
     subprocess.run(["git", "-C", str(tmp_path), "-c", "user.name=Fixture",
                     "-c", "user.email=fixture@example.invalid", "config", "core.autocrlf", "false"],
-                   check=True, capture_output=True)
+                   check=True, capture_output=True, env=isolated_env)
     source = tmp_path / "authority.json"
     source.write_text('{"authority":"fixture"}\n', encoding="utf-8")
-    subprocess.run(["git", "-C", str(tmp_path), "add", "authority.json"], check=True)
+    subprocess.run(["git", "-C", str(tmp_path), "add", "authority.json"], check=True,
+                   env=isolated_env)
     subprocess.run(["git", "-C", str(tmp_path), "-c", "user.name=Fixture",
                     "-c", "user.email=fixture@example.invalid", "commit", "-m", "fixture"],
-                   check=True, capture_output=True)
+                   check=True, capture_output=True, env=isolated_env)
     row = _tracked_identity(tmp_path, "authority.json")
     assert row["role"] == "TRACKED_AUTHORITY_OR_EVIDENCE"
     source.write_text('{"authority":"changed"}\n', encoding="utf-8")

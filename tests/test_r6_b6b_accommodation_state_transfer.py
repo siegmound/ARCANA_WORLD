@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 import subprocess
+from _git_test_env import isolated_git_environment
 
 from scripts.r6_b6b_accommodation_state_transfer import (
     B6BError,
@@ -57,10 +58,11 @@ def test_current_governed_authority_keeps_global_first_state_blocked() -> None:
 
 def test_source_identity_mismatch_fails_closed(tmp_path: Path) -> None:
     subprocess.run(["git", "init", "-b", "wrong-branch", str(tmp_path)], check=True,
-                   capture_output=True, text=True)
+                   capture_output=True, text=True, env=isolated_git_environment())
     subprocess.run(["git", "-C", str(tmp_path), "-c", "user.name=B6B test",
                     "-c", "user.email=b6b@example.invalid", "commit", "--allow-empty",
-                    "-m", "fixture"], check=True, capture_output=True, text=True)
+                    "-m", "fixture"], check=True, capture_output=True, text=True,
+                   env=isolated_git_environment())
     with pytest.raises(B6BError, match="expected .* found"):
         adjudicate(tmp_path)
 
