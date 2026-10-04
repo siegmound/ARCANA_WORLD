@@ -1,0 +1,38 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6MR1C_REFINEMENT_SUPPORT_BINDING",
+  "verdict": "BLOCKED_B6MR1C_T1_CHECKPOINT_AND_CHILD_REFINEMENT_AUTHORITY_REQUIRED",
+  "qualified_source_commit": "8e6a09eb39956d316091a3d8ff8c1fa4fe908876",
+  "evidence_store_key": "B6MR1C/8e6a09eb39956d316091a3d8ff8c1fa4fe908876",
+  "evidence_manifest_sha256": "e16046bbffc46ac99530cef25c9520afa29535b66c23a9c6b9bd7a0b9270a3b6",
+  "canonical_t1": {
+    "state_id": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "age_ma": 209.97287659484368,
+    "payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "epoch_count": 2
+  },
+  "parent_support": {
+    "authority": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+    "representation_count": 66435,
+    "single_cell_mapping_count": 1028,
+    "multi_cell_mapping_count": 65407,
+    "unknown_mapping_count": 0,
+    "unmapped_mapping_count": 0,
+    "ambiguous_mapping_count": 0,
+    "covered_parent_cell_count": 64800,
+    "mapping_sha256": "63a111d9be7485bc97bd3cc51c54ced72fcdc19619c476399fb7bf2b9b8c7c5e",
+    "status": "DERIVABLE_AND_VERIFIED"
+  },
+  "refinement": {
+    "checkpoint_status": "T1_REFINEMENT_CHECKPOINT_REQUIRED",
+    "child_cell_authority_status": "CHILD_REFINEMENT_AUTHORITY_REQUIRED",
+    "b0f_execution_status": "BLOCKED"
+  },
+  "scientific_state": {
+    "t1_created": true,
+    "topology_transition_executed": false,
+    "second_dt_selected": false,
+    "t2_created": false
+  },
+  "next_stage": "B6MR1D_T1_REFINEMENT_CHECKPOINT_AND_CHILD_CELL_AUTHORITY"
+}
