@@ -1,0 +1,38 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6MR1A_FINAL_REQUALIFICATION",
+  "verdict": "PASS_B6MR1A_FINAL_REQUALIFICATION",
+  "qualified_source_commit": "45af39333bcf78cfe90e0a57b7f951c47531ff72",
+  "evidence_store_key": "B6MR1A/45af39333bcf78cfe90e0a57b7f951c47531ff72",
+  "evidence_manifest_sha256": "821fc3f884581885bdbe571b36a47ba071a24522404dfc841df3af096cd0b7f7",
+  "visibility_model": "IMMUTABLE_COMMITTED_VIEW_MEMBERSHIP",
+  "read_view_model": "ONE_PINNED_COMMITTED_VIEW_PER_LOGICAL_QUERY",
+  "linearization_point": "SAME_DIRECTORY_OS_REPLACE_CURRENT_JSON",
+  "concurrency_scope": "WORLD_HISTORY_API_LOCAL_NTFS",
+  "canonical_state": {
+    "epoch_count": 1,
+    "latest_age_ma": 210.0,
+    "t1_created": false,
+    "canonical_state_changed": false,
+    "topology_transition_executed": false
+  },
+  "tests": {
+    "b6mr1a_focused": 11,
+    "b0b_b0c": 18,
+    "b0e_query": 17,
+    "b6l": 15,
+    "b6m0": 8,
+    "b5_b6k": 92,
+    "integrated_targeted": 101,
+    "full_r6": 459,
+    "full_r6_failed": 0
+  },
+  "historical_manifest_status": "EXPECTED_DESCENDANT_HARNESS_DIVERGENCE",
+  "historical_manifest_scope": [
+    "B6K_RUNNER_ENTRY",
+    "B6L_RUNNER_ENTRY"
+  ],
+  "b6m0_manifest_status": "ALL_CHECKED_ENTRIES_MATCH",
+  "scientific_side_effects": "NONE",
+  "b6mr1_resume_readiness": "READY_TO_RESUME_B6MR1_ATOMIC_T1_PUBLICATION"
+}

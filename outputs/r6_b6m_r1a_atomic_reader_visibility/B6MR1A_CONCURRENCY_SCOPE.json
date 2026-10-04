@@ -1,7 +1,7 @@
 {
   "filesystem_assumption": "fixed local NTFS on Windows",
   "independent_process_reader": "PASS",
-  "independent_process_writer": "serialized_by_lock; stale-parent API available",
+  "independent_process_writer": "PASS_SERIALIZED_BY_BYTE_RANGE_LOCK",
   "multi_thread_same_process": "PASS",
   "same_thread": "PASS"
 }
