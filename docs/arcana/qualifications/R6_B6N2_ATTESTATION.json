@@ -1,0 +1,31 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N2_POST_EVENT_KINEMATIC_AUTHORITY_QUALIFICATION",
+  "verdict": "PASS_B6N2_POST_EVENT_KINEMATIC_AUTHORITY_QUALIFICATION",
+  "qualified_source_commit": "585cf49715542a107ecbe1c89eb5c9f3fcae62f6",
+  "contract_freeze_commit": "450329e9b29e940de9de93af0073306df2454ec6",
+  "evidence_store_key": "B6N2/585cf49715542a107ecbe1c89eb5c9f3fcae62f6",
+  "evidence_manifest_sha256": "385d85df479a730ea27d4e7a6e9b405af3a1b8faf6c065cf3d74ce958a7aaff4",
+  "authority": {
+    "classification": "POST_EVENT_KINEMATIC_AUTHORITY_CONTINUES_WITH_RESTRICTED_SCOPE",
+    "contract": "contracts/R6_POST_EVENT_KINEMATIC_AUTHORITY_V1.json",
+    "contract_sha256": "966c63a8fa8347525568cb89bb280905d37a1aa3711856a13f31a39377a600c3",
+    "validity_start_age_ma": 209.97287659484368,
+    "validity_start_phase": "POST_EVENT",
+    "source_temporal_provenance_extended": false
+  },
+  "mechanics": "POST_EVENT_KINEMATICS_NO_MECHANICS_REQUIRED",
+  "canonical_state": {
+    "physical_epoch_count": 2,
+    "canonical_state_changed": false,
+    "second_dt_selected": false,
+    "t2_created": false
+  },
+  "dt2_gate": {
+    "post_event_kinematic_authority_satisfied": true,
+    "horizon_recomputation_required": true,
+    "nearest_constraint_selection_required": true,
+    "dt2_authorized": false
+  },
+  "next_stage": "AUTHORIZE_B6N3_POST_EVENT_HORIZON_RECOMPUTATION"
+}
