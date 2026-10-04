@@ -1,0 +1,28 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N1_SAME_TIME_RIFT_ACTIVATION_APPLICATION",
+  "verdict": "PASS_B6N1_FINAL_COMMITTED_BASELINE_REQUALIFICATION",
+  "qualified_source_commit": "184923200d8c114d878a8aaf5aacba096a2e2ad8",
+  "evidence_store_key": "B6N1/184923200d8c114d878a8aaf5aacba096a2e2ad8",
+  "evidence_manifest_sha256": "<SHA256_RESTITUITO_DA_CODEX>",
+  "event": {
+    "class": "RIFT_PROCESS_ACTIVATION",
+    "plate_pair": "1:3",
+    "physical_age_ma": 209.97287659484368,
+    "executed": true
+  },
+  "causal_states": {
+    "pre_event": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "post_event": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "count_at_event_time": 2
+  },
+  "physical_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+  "world_history": {
+    "physical_epoch_count": 2,
+    "topology_transition_executed": false,
+    "second_dt_selected": false,
+    "t2_created": false
+  },
+  "continuation": "CONTINUATION_BLOCKED_PENDING_POST_EVENT_KINEMATIC_AUTHORITY",
+  "next_stage": "AUTHORIZE_B6N2_POST_EVENT_KINEMATIC_AUTHORITY_QUALIFICATION"
+}
