@@ -1,0 +1,32 @@
+{
+  "schema": "ARCANA_R6_HIERARCHICAL_PARENT_CELL_SUBDIVISION_AUTHORITY_V1",
+  "model": "R6_HIERARCHICAL_PARENT_CELL_SUBDIVISION_V1",
+  "authority_class": "DERIVED_REFINEMENT_GRID_SUPPORT_ONLY",
+  "parent_grid_authority": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+  "scope": "EXPLICIT_REQUEST_PARENT_CELL_SET_ONLY",
+  "subdivision_factor": {
+    "required_per_request": true,
+    "minimum_integer": 2,
+    "global_default": null
+  },
+  "geometry": {
+    "rule": "UNIFORM_N_BY_N_SUBDIVISION_OF_CANONICAL_PARENT_BOUNDS",
+    "coordinate_units": "degrees",
+    "row_order": "SOUTH_TO_NORTH",
+    "column_order": "WEST_TO_EAST_WITH_CANONICAL_LONGITUDE_WRAP",
+    "bounds_source": "GlobalGrid1Degree.lat_bounds_deg/lon_bounds_deg",
+    "latitude_limits": "INHERIT_PARENT_GRID",
+    "antimeridian": "INHERIT_PARENT_GRID_ENDPOINT_CONVENTION"
+  },
+  "identity": {
+    "request_fields": ["parent_cell_ids", "subdivision_factor", "request_scope"],
+    "child_fields": ["parent_cell_id", "subdivision_factor", "child_row", "child_column", "request_id"],
+    "ordering": "PARENT_ROW_COLUMN_THEN_CHILD_ROW_THEN_CHILD_COLUMN"
+  },
+  "authority_limit": {
+    "defines": ["spatial_partition", "child_identity", "child_bounds", "parent_child_lineage"],
+    "defines_scientific_field_values": false,
+    "global_child_grid_materialized": false,
+    "physical_resolution_promotion": false
+  }
+}
