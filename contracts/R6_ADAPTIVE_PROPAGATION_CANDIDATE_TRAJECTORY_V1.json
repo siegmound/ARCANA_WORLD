@@ -1,0 +1,159 @@
+{
+  "schema": "R6_ADAPTIVE_PROPAGATION_CANDIDATE_TRAJECTORY_V1",
+  "contract_id": "R6_ADAPTIVE_PROPAGATION_CANDIDATE_TRAJECTORY_V1",
+  "version": 1,
+  "decision_class": "AUTHORIAL_ARCHITECTURE_CONTRACT",
+  "status": "ARCHITECTURE_ONLY_NOT_EXECUTION_AUTHORITY",
+  "principle": "Numerical integration time is distinct from persistent WORLD_HISTORY time. Candidate integration is temporary and cannot mutate canonical history.",
+  "scope": {
+    "reuses": [
+      "contracts/R6_EVENT_IMPACT_AND_STATE_SIGNIFICANCE_POLICY_V1.json",
+      "contracts/R6_POST_EVENT_KINEMATIC_AUTHORITY_V1.json",
+      "contracts/R6_POST_EVENT_KINEMATIC_REVALIDATION_HORIZON_V1.json",
+      "contracts/R6_SECOND_DT_AUTHORIZATION_AFTER_RIFT_V1.json",
+      "src/arcana_worldsim/r6/checkpoint.py",
+      "src/arcana_worldsim/r6/replay.py",
+      "src/arcana_worldsim/r6/refinement.py",
+      "src/arcana_worldsim/r6/store.py"
+    ],
+    "does_not_authorize": [
+      "current rift propagation",
+      "second timestep selection",
+      "T2 creation",
+      "B6O",
+      "mechanics",
+      "topology or support mutation",
+      "canonical WORLD_HISTORY publication",
+      "scientific production execution"
+    ],
+    "existing_decisions_remain_immutable": [
+      "docs/arcana/qualifications/R6_B6N5_ATTESTATION.json"
+    ]
+  },
+  "temporal_concepts": {
+    "INTERNAL_DT": {
+      "meaning": "Temporary numerical integration increment selected by an authorized model/controller.",
+      "may_adapt": true,
+      "persistent_record_interval": false
+    },
+    "CANDIDATE_SIMULATION_WINDOW": {
+      "meaning": "Temporary interval explored from an identified canonical checkpoint.",
+      "canonical_authorization_by_itself": false
+    },
+    "REFINEMENT_WINDOW": {
+      "meaning": "Bounded temporal and optionally spatial sub-scope replayed at increased resolution to reduce refinable uncertainty.",
+      "canonical_authorization_by_itself": false
+    },
+    "PERSISTENT_STATE_INTERVAL": {
+      "meaning": "Spacing between extracted canonical states/checkpoints after trajectory adjudication.",
+      "selected_before_propagation": false,
+      "emerges_after_extraction": true
+    },
+    "invariant": "INTERNAL_DT != PERSISTENT_STATE_INTERVAL"
+  },
+  "candidate_trajectory": {
+    "samples": "S0..Sn are temporary candidate samples, not DomainState records and not canonical states by virtue of being computed.",
+    "discard_permitted_after": [
+      "event and uncertainty extraction",
+      "state-significance adjudication",
+      "replay/provenance closure"
+    ],
+    "minimum_replay_metadata": [
+      "base checkpoint identity",
+      "runtime/model/adapter identity and version hashes",
+      "configuration digest",
+      "governing source/provider/authority references and scope",
+      "initial-condition and upstream-dependency identities",
+      "ordered forcing and event predicate identities",
+      "seed lineage when stochastic",
+      "numerical method/configuration and accepted/rejected step decisions",
+      "temporal and spatial resolution identities",
+      "refinement decisions and parent/child scope bindings",
+      "dependency graph and isolation evidence",
+      "uncertainty/support masks",
+      "expected extracted state and payload identities"
+    ],
+    "storage_rule": "Do not retain every sample if deterministic replay with closed, verifiable inputs reproduces the declared outputs; retain samples when required to establish governed tolerances or replay closure."
+  },
+  "uncertainty_taxonomy": {
+    "TEMPORAL_RESOLUTION_UNKNOWN": {"permitted_actions": ["REFINE_TIME", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE"]},
+    "SPATIAL_RESOLUTION_UNKNOWN": {"permitted_actions": ["REFINE_SPACE", "ISOLATE_SCOPE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE"]},
+    "NUMERICAL_ERROR_UNKNOWN": {"permitted_actions": ["REFINE_TIME", "REFINE_SPACE", "REFINE_TIME_AND_SPACE", "RUN_ENSEMBLE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE"]},
+    "EVENT_LOCALIZATION_UNKNOWN": {"permitted_actions": ["REFINE_TIME", "REFINE_SPACE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE"]},
+    "STATE_SIGNIFICANCE_UNKNOWN": {"permitted_actions": ["REFINE_TIME", "REFINE_SPACE", "REFINE_TIME_AND_SPACE", "RUN_ENSEMBLE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE"]},
+    "MODEL_CAPABILITY_UNKNOWN": {"permitted_actions": ["ISOLATE_SCOPE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE", "REQUEST_NEW_MODEL_OR_AUTHORITY"]},
+    "MODEL_AUTHORITY_UNKNOWN": {"permitted_actions": ["ISOLATE_SCOPE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE", "REQUEST_NEW_MODEL_OR_AUTHORITY"]},
+    "SOURCE_AUTHORITY_UNKNOWN": {"permitted_actions": ["ISOLATE_SCOPE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE", "REQUEST_NEW_MODEL_OR_AUTHORITY"]},
+    "DEPENDENCY_ISOLATION_UNKNOWN": {"permitted_actions": ["ISOLATE_SCOPE", "PRESERVE_UNKNOWN", "STOP_AFFECTED_SCOPE"]}
+  },
+  "authority_and_refinement_rule": {
+    "refinement_can_reduce": ["numerical uncertainty", "discretization uncertainty", "event localization uncertainty", "state-significance ambiguity", "coarse spatial ambiguity"],
+    "refinement_cannot_resolve": ["missing physical model", "missing required state variables", "missing source/model authority", "unsupported transition physics"],
+    "irreducible_unknown_action": "Preserve UNKNOWN and stop or isolate only the affected authorized scope; request a new model/authority decision where needed.",
+    "no_infinite_refinement_for_authority_unknown": true,
+    "unknown_is_not_false": true
+  },
+  "runtime_assessment_actions": [
+    "CONTINUE", "INCREASE_DT", "DECREASE_DT", "REFINE_LOCAL_TEMPORAL_WINDOW",
+    "REFINE_LOCAL_SPATIAL_SCOPE", "BRACKET_EVENT", "CREATE_EVENT_CANDIDATE",
+    "CREATE_STATE_CANDIDATE", "ISOLATE_AFFECTED_SCOPE", "AUTHORITY_GAP",
+    "MODEL_GAP", "STOP_GLOBAL_PROPAGATION"
+  ],
+  "adaptive_controller": {
+    "may_consider": [
+      "governed numerical integration error",
+      "governed state-variable change rates",
+      "distance to event predicates",
+      "distance to governed state-significance thresholds",
+      "uncertainty growth",
+      "domain stability constraints",
+      "applicable model/authority validity bounds"
+    ],
+    "growth_rule": "Increase INTERNAL_DT only when stability, error, event, significance, uncertainty, dependency and authority checks support it.",
+    "shrink_rule": "Decrease INTERNAL_DT or request local refinement when governed criteria require it.",
+    "upper_bound_rule": "INTERNAL_DT must never exceed the tightest applicable authorized model/authority bound. A revalidation horizon is not reinterpreted as an event-free interval.",
+    "unbound_threshold_behavior": "Do not invent a physical constant or threshold; preserve UNKNOWN and block/isolate the affected scope."
+  },
+  "event_detection": {
+    "predicate_classes": ["threshold crossing", "predicate state change", "topology change", "support change", "interface-regime change", "domain discontinuity", "uncertainty threshold crossing", "state-significance threshold crossing"],
+    "workflow": ["detect a candidate crossing over [tA,tB]", "retain the bracket and predicate evidence", "request temporal/spatial refinement where refinable", "adjudicate event timing/impact with governed uncertainty", "emit event candidate or preserve UNKNOWN"],
+    "exact_event_time": "Never fabricate a point time; record a bracket/time interval plus confidence/uncertainty and provenance unless governing evidence supports greater precision.",
+    "event_without_state": "Permitted. Event occurrence and event-impact significance remain distinct; EVENT_ONLY may persist in the event ledger without state/checkpoint creation."
+  },
+  "local_refinement": {
+    "required_bindings": ["affected scope", "buffer/dependency scope", "required spatial resolution", "required domains", "parent checkpoint", "forcing interval", "replay recipe", "provenance and uncertainty"],
+    "isolation_rule": "Use an explicit refinement child branch and proven dependency closure. Local refinement does not recompute or mutate the global parent.",
+    "global_effect_rule": "Publish an effect beyond the child scope only after causal propagation across dependency boundaries is governed and demonstrated.",
+    "existing_mechanism": "B0-F RefinementBranchEnvelope, RefinementReconstructionRecipe and append_refinement_transaction"
+  },
+  "canonicalization": {
+    "order": ["temporary candidate", "qualification/refinement", "event and uncertainty adjudication", "significant-state extraction", "replay/provenance closure", "atomic canonical transaction"],
+    "failure_behavior": "A failed candidate, unresolved required authority, failed extraction, or incomplete replay closure publishes nothing; canonical WORLD_HISTORY remains unchanged.",
+    "transaction_mechanism": "Existing B0-C HistoryStore.append_transaction or branch-scoped append_refinement_transaction; no mutation API is introduced.",
+    "read_view_requirement": "Readers observe either the prior committed view or the complete accepted publication, never a partial bundle."
+  },
+  "current_rift_architecture_check": {
+    "if_future_model_supplies": ["evolvable state variables", "governed dynamic transition predicates", "applicable source/model authority", "required state-transfer and topology contracts"],
+    "architecture_can": ["integrate temporary candidates", "monitor predicates", "adapt INTERNAL_DT", "bracket and locally refine a transition", "extract PRE/POST significant states", "persist events and sparse states without advance knowledge of exact event time"],
+    "current_b6n5_status": "MODEL_AUTHORITY_GAP_NOT_SOLVED_BY_ADAPTIVE_RESOLUTION",
+    "preserve_b6n5": {
+      "next_structural_transition_predicate": "UNKNOWN_NOT_GOVERNED",
+      "common_causal_authority_proven": false,
+      "finite_pre_transition_interval": "NOT_ESTABLISHED",
+      "mechanics_necessity": "NOT_PROVEN",
+      "provider_selected_or_qualified": false,
+      "consumed_pre_activation_horizon_years": 27123.405156307464,
+      "model_scope_revalidation_horizon_years": 8214.051909111062,
+      "revalidation_horizon_is_event_bound": false
+    }
+  },
+  "authorization_gates": {
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "canonical_world_history_modified": false
+  }
+}

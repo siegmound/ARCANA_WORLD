@@ -1,0 +1,92 @@
+{
+  "schema": "R6_SIGNIFICANT_STATE_EXTRACTION_RECONSTRUCTION_V1",
+  "contract_id": "R6_SIGNIFICANT_STATE_EXTRACTION_RECONSTRUCTION_V1",
+  "version": 1,
+  "decision_class": "AUTHORIAL_ARCHITECTURE_CONTRACT",
+  "status": "ARCHITECTURE_ONLY_NOT_EXECUTION_AUTHORITY",
+  "principle": "WORLD_HISTORY is a sparse causal representation derived only after a candidate trajectory is sufficiently resolved and adjudicated.",
+  "reuses": {
+    "event_significance_policy": "contracts/R6_EVENT_IMPACT_AND_STATE_SIGNIFICANCE_POLICY_V1.json",
+    "event_record": "src/arcana_worldsim/r6/temporal.py::EventRecord",
+    "minimal_state_contract": "src/arcana_worldsim/r6/retention.py::MinimalStateContract",
+    "extraction_validation": "src/arcana_worldsim/r6/retention.py::validate_extraction",
+    "replay_recipe": "src/arcana_worldsim/r6/replay.py::ReplayRecipe",
+    "checkpoint": "src/arcana_worldsim/r6/checkpoint.py::CheckpointEnvelope",
+    "refinement": "src/arcana_worldsim/r6/refinement.py"
+  },
+  "extraction_order": [
+    "resolve required temporal/spatial refinements or preserve irreducible UNKNOWN",
+    "adjudicate event occurrence, authority, impact and dependency scope",
+    "evaluate state significance against explicit represented resolution and domain contracts",
+    "select mandatory causal/event/uncertainty boundaries",
+    "retain only required persistent states/checkpoints and replay closure",
+    "validate reconstruction for each required domain and interval",
+    "atomically publish the complete record bundle"
+  ],
+  "significance": {
+    "policy_ref": "R6_EVENT_IMPACT_AND_STATE_SIGNIFICANCE_POLICY_V1",
+    "candidate_dimensions": [
+      "topology", "support membership", "interface regime", "geometry reconstruction error",
+      "climate regime", "hydrology", "Deep", "natural resources", "flora/fauna/ecological regime",
+      "lineage impact", "cross-domain causal effect", "irreversibility", "uncertainty boundary",
+      "persistent downstream effect"
+    ],
+    "threshold_rule": "Each required domain supplies or references its own governed resolution and significance/reconstruction tolerances. This architecture introduces no numeric threshold.",
+    "event_state_distinction": "An event may be retained without a persistent state; an event with a governed state-significant impact requires corresponding causal state boundary records."
+  },
+  "mandatory_boundaries": [
+    "governed event boundaries",
+    "PRE_EVENT and POST_EVENT states when causal event semantics require them",
+    "uncertainty boundaries required to prevent UNKNOWN from being compressed into a known value",
+    "causal branch points",
+    "model/authority validity transitions",
+    "checkpoints required to satisfy governed reconstruction error"
+  ],
+  "compression": {
+    "rule": "Intermediate numerical samples are omitted unless required by a declared retention action, event/causal boundary, uncertainty boundary, reconstruction tolerance, or replay closure.",
+    "permitted_existing_actions": ["MATERIALIZE", "DERIVE", "REFINE", "STATIC", "FORCING", "DISCARD"],
+    "future_memory": "Required SYSTEM_MEMORY cannot be discarded.",
+    "derive_or_refine": "Requires explicit replay/refinement reconstruction references; no unanchored compression.",
+    "minimum_representation": "Choose the minimum persistent causal set demonstrated to reconstruct required domain outputs within referenced tolerances. If no such demonstration exists, preserve required samples or fail closed; do not infer a tolerance."
+  },
+  "reconstruction_contract": {
+    "domains": ["geometry", "kinematics", "climate", "hydrology", "Deep", "resources", "ecology", "lineages"],
+    "required_per_interval": ["domain and support identity", "start/end state or checkpoint identities", "replay recipe or reconstruction recipe", "model/runtime/configuration identity", "forcing and event closure", "uncertainty mask", "applicable tolerance authority", "measured/verified reconstruction result"],
+    "tolerances": "UNBOUND_UNTIL_DOMAIN_AUTHORITY_SUPPLIES_REFERENCE; no values are selected in B6N6.",
+    "future_objective_scope": "Supports queryable/replayable history from about 210 Ma to 0 ka across physical, ecological, lineage and later human-history domains, with targeted regional/period refinement. This is an architectural objective, not current domain authority."
+  },
+  "event_ledger": {
+    "uses_existing_event_record": true,
+    "preserve_as_applicable": ["event identity", "time key or bounded time interval", "affected location/scope", "type/predicate", "confidence", "impact envelope", "affected domains", "uncertainty", "provenance", "state-significance assessment", "authority/model identity"],
+    "no_state_rule": "NO NEW STATE never deletes or suppresses a qualifying event record.",
+    "interval_precision": "Store the narrowest evidence-supported bracket/interval and uncertainty; do not turn a bracket into an exact timestamp without authority."
+  },
+  "replay_closure": {
+    "reuse_existing_recipe_fields": [
+      "base checkpoint", "runtime identity", "configuration digest", "seed lineage",
+      "ordered forcing IDs", "event IDs", "upstream dependencies", "provenance IDs",
+      "model/adapter identity", "expected output state and payload identities"
+    ],
+    "also_bind_when_applicable": [
+      "model and version hashes", "source/provider and authority contracts", "initial conditions",
+      "numerical method and accepted/rejected steps", "event predicates", "domain resolution",
+      "refinement decisions", "dependency graph/isolation proof", "uncertainty/support masks"
+    ],
+    "sample_storage": "Dense candidate samples need not be persisted if the closed recipe deterministically reproduces the extracted outputs; required samples remain retained when replay alone cannot verify a governed tolerance or uncertainty boundary."
+  },
+  "canonical_publication": {
+    "required_preconditions": ["trajectory qualification complete", "event/significance adjudication complete", "required replay/refinement closure validates", "all mandatory boundaries included", "all output identities and payload digests verify", "parent read view remains current"],
+    "publication": "Publish events, states, checkpoints, provenance, forcing references and replay recipes as one existing append_transaction bundle; use append_refinement_transaction for child refinement outputs.",
+    "failure": "No partial visibility and no canonical mutation on failure; retry may publish only identical immutable records.",
+    "local_scope": "A refinement result remains on its child branch until a separately governed causal merge/promotion exists."
+  },
+  "authorization_gates": {
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "canonical_world_history_modified": false
+  }
+}
