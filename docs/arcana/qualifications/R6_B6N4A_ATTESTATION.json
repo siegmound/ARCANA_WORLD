@@ -1,0 +1,107 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N4A_EVENT_IMPACT_AND_STATE_SIGNIFICANCE_POLICY",
+  "purpose": "EVENT IMPACT AND STATE SIGNIFICANCE POLICY",
+  "verdict": "PASS_B6N4A_EVENT_IMPACT_AND_STATE_SIGNIFICANCE_POLICY",
+  "qualified_source_commit": "5430d09dfd6f3cc5f1ad5d6db36b8fece6b30ab3",
+  "evidence_store_key": "B6N4A/5430d09dfd6f3cc5f1ad5d6db36b8fece6b30ab3",
+  "evidence_manifest_sha256": "f4368256653979f77adaedae99829fb53bdb5c354d35ae4385855708579f9e47",
+  "policy_semantics": {
+    "event_is_state": false,
+    "unknown_event_occurrence_automatically_blocks_globally": false,
+    "state_significance_is_resolution_relative": true,
+    "event_occurrence_uncertainty_distinct_from_impact_bound_uncertainty": true,
+    "source_model_authority_limits_distinct_from_physical_event_uncertainty": true,
+    "authority_bypass_by_subresolution_impact_classification": false,
+    "unaffected_scope_continuation_requires_governed_dependency_isolation": true,
+    "canonical_world_history_preserves_explicit_unknown": true,
+    "existing_world_history_structures_sufficient": true,
+    "parallel_state_framework_introduced": false
+  },
+  "seven_horizon_results": [
+    {
+      "subject": "GENERIC_TOPOLOGY_EVENT_COVERAGE",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "event_occurrence": "UNKNOWN"
+    },
+    {
+      "subject": "JUNCTION_CONSISTENCY",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "event_occurrence": null,
+      "occurrence_interpretation": "NOT_AN_EVENT_OCCURRENCE"
+    },
+    {
+      "subject": "MECHANICS_REQUIREMENT",
+      "significance_class": "NOT_APPLICABLE",
+      "scope": "CURRENT_RESTRICTED_GEOMETRIC_KINEMATIC_REQUESTED_OUTPUTS"
+    },
+    {
+      "subject": "NEXT_RIFT_PROCESS_EVOLUTION",
+      "significance_class": "AUTHORITY_BLOCKED",
+      "event_occurrence": "UNKNOWN"
+    },
+    {
+      "subject": "PLATE_INTERFACE_EVENT_PREDICATES",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "event_occurrence": "UNKNOWN"
+    },
+    {
+      "subject": "SOURCE_TEMPORAL_VALIDITY",
+      "significance_class": "AUTHORITY_BLOCKED",
+      "source_validity": "UNKNOWN",
+      "model_authority_extends_source_provenance": false,
+      "relevant_model_authorities": ["B6N2", "B6N3-A"]
+    },
+    {
+      "subject": "SUPPORT_MEMBERSHIP_VALIDITY",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "occurrence_interpretation": "NOT_AN_EVENT_OCCURRENCE"
+    }
+  ],
+  "replay_qualification": {
+    "case_count": 7,
+    "repeatable": true,
+    "semantic_results_match_development_prequalification": true,
+    "full_assessment_input_digest_comparison": "NOT_COMPARABLE",
+    "limitation": "The development bundle did not retain all complete assessment inputs; final clean-source qualification recomputed all seven cases and matched semantic results."
+  },
+  "validation": {
+    "focused_tests": "11 passed",
+    "full_r6_suite": "485 passed",
+    "json_structural_schema_consistency": "PASS",
+    "runtime_enum_consistency": "PASS",
+    "py_compile": "PASS",
+    "compileall": "PASS",
+    "git_diff_check_at_qualification": "PASS",
+    "canonical_invariance": "PASS"
+  },
+  "canonical_state": {
+    "physical_epoch_count_before": 2,
+    "physical_epoch_count_after": 2,
+    "canonical_state_changed": false,
+    "view_id": "view_e1eb239931826b01c1cb55b97bf9a9ee4fcf867c11ab15e624679d2b8f421044",
+    "view_sha256_before": "876df0322c08526f4bfe1291fdea09d78fdfbcfa3318d6c6cd7a654d0f43d80a",
+    "view_sha256_after": "876df0322c08526f4bfe1291fdea09d78fdfbcfa3318d6c6cd7a654d0f43d80a",
+    "pre_event_state_id": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "post_event_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "physical_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "payload_pre_and_post_same": true
+  },
+  "non_actions": {
+    "second_dt_selected": false,
+    "target_age_ma": null,
+    "t2_created": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "b6n4_r1_started": false
+  },
+  "authorization": {
+    "authorizes_dt2": false,
+    "authorizes_t2": false,
+    "authorizes_propagation": false,
+    "authorizes_mechanics": false,
+    "authorizes_topology_transition": false,
+    "next_stage": "STOP; B6N4-R1 not started; separate authorization required"
+  }
+}
