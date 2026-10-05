@@ -1,0 +1,88 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N6_ADAPTIVE_PROPAGATION_STATE_EXTRACTION_ARCHITECTURE",
+  "purpose": "QUALIFY ADAPTIVE PROPAGATION, REFINEMENT AND SIGNIFICANT-STATE EXTRACTION ARCHITECTURE",
+  "verdict": "PASS_B6N6_ADAPTIVE_PROPAGATION_STATE_EXTRACTION_ARCHITECTURE",
+  "qualified_source_commit": "6c15895800988833c716fbc4b2e9103d5d535433",
+  "evidence_store_key": "B6N6/6c15895800988833c716fbc4b2e9103d5d535433",
+  "evidence_manifest_sha256": "60dee3d5e374b5b730bec99cd090d05e8b1de86c9240cc7a695635d110cb0c17",
+  "evidence_content_sha256": "2f88c7a610d54a31ab715ab5462e2cb37abc83e824a592e219e9a5d135487bad",
+  "source_gate": {
+    "branch": "r6/b6n6-adaptive-propagation-state-extraction",
+    "observed_head": "6c15895800988833c716fbc4b2e9103d5d535433",
+    "development_baseline_commit": "41a19399ea9f4d0a3b06d9cc47fc43a636b3a15d",
+    "development_baseline_is_ancestor": true,
+    "worktree_clean_before_qualification": true,
+    "worktree_clean_after_qualification": true,
+    "tracked_normative_source": [
+      "contracts/R6_ADAPTIVE_PROPAGATION_CANDIDATE_TRAJECTORY_V1.json",
+      "contracts/R6_SIGNIFICANT_STATE_EXTRACTION_RECONSTRUCTION_V1.json",
+      "docs/arcana/B6N6_ADAPTIVE_PROPAGATION_STATE_EXTRACTION_ARCHITECTURE.md",
+      "tests/test_r6_b6n6_adaptive_propagation_state_extraction.py"
+    ],
+    "generated_qualification_evidence_tracked": false,
+    "attestation_commit_does_not_replace_qualified_source_commit": true
+  },
+  "architectural_conclusions": {
+    "temporal_concepts": [
+      "INTERNAL_DT",
+      "CANDIDATE_SIMULATION_WINDOW",
+      "REFINEMENT_WINDOW",
+      "PERSISTENT_STATE_INTERVAL"
+    ],
+    "INTERNAL_DT_distinct_from_PERSISTENT_STATE_INTERVAL": true,
+    "candidate_trajectory_samples_temporary_and_noncanonical": true,
+    "persistent_state_extraction_after_trajectory_resolution_and_significance_adjudication": true,
+    "adaptive_dt_growth_respects_model_and_authority_bounds": true,
+    "refinable_numerical_resolution_unknowns_request_refinement": true,
+    "model_source_authority_gaps_solved_by_higher_resolution": false,
+    "higher_resolution_creates_scientific_authority": false,
+    "dynamic_event_discovery_and_interval_localization_supported": true,
+    "fabricated_exact_event_time": false,
+    "event_may_be_retained_without_persistent_state": true,
+    "mandatory_causal_pre_post_boundaries_preserved": true,
+    "local_refinement_isolated_from_unrelated_global_state": true,
+    "parent_canonical_checkpoint_mutated_by_refinement": false,
+    "trajectory_compression_requires_governed_reconstruction_and_replay": true,
+    "canonical_publication_transactional_after_adjudication_extraction_and_replay_closure": true,
+    "failure_before_canonicalization_leaves_world_history_unchanged": true
+  },
+  "b6n5_preservation": {
+    "verdict": "BLOCKED_B6N5_INSUFFICIENT_STRUCTURAL_TRANSITION_AUTHORITY",
+    "process_state": "RIFT_PROCESS_ACTIVE",
+    "next_structural_transition_predicate": "UNKNOWN_NOT_GOVERNED",
+    "missing_rift_evolution_model_created_by_b6n6": false,
+    "future_model_may_use_evolvable_state_variables_and_governed_dynamic_transition_predicates": true,
+    "exact_transition_time_required_in_advance_by_b6n6": false
+  },
+  "qualification_validation": {
+    "b6n6_focused_tests": "17 passed",
+    "b6n4a_b6n4r1_b6n5_b6n6_targeted_regression": "52 passed",
+    "full_r6_suite": "526 passed across 63 modules",
+    "json_validation": "PASS",
+    "py_compile": "PASS",
+    "compileall": "PASS",
+    "git_diff_check": "PASS",
+    "evidence_manifest_entries": "PASS",
+    "evidence_content_digest": "PASS",
+    "development_evidence_preserved_unchanged": true
+  },
+  "canonical_state": {
+    "physical_epoch_count": 2,
+    "pre_event_state_id": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "post_event_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "physical_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "canonical_tree_sha256_before_and_after": "82e6ba7e384cf75f4e1627f68ac13762a936cc4266a90718bd40cc696768385f",
+    "T2_present": false,
+    "canonical_state_changed": false
+  },
+  "decision_state": {
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false
+  },
+  "next_stage_authorized": false
+}
