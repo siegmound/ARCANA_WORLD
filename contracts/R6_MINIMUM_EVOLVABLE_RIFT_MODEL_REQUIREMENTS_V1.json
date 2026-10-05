@@ -1,0 +1,298 @@
+{
+  "schema": "R6_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS_V1",
+  "contract_id": "R6_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS_V1",
+  "version": 1,
+  "stage": "B6N7_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS",
+  "status": "REQUIREMENTS_DEFINED_MODEL_NOT_SELECTED_OR_QUALIFIED",
+  "decision_class": "SCIENTIFIC_MODEL_INTERFACE_REQUIREMENTS",
+  "qualified_context": {
+    "current_process_state": "RIFT_PROCESS_ACTIVE",
+    "current_age_ma": 209.97287659484368,
+    "plate_pair": [1, 3],
+    "interface_segments_at_activation": 71,
+    "activation_geometry_topology_support": "PRESERVED_EXACT",
+    "activation_opening_distance": 0,
+    "activation_new_crust": false,
+    "activation_plate_split": false,
+    "activation_mechanics": false,
+    "b6n2_successor_authority": "RESTRICTED_CONDITIONAL_PLATE_LOCAL_RIGID_KINEMATICS; does not classify individual interface segments, define extension/accommodation, or authorize topology change",
+    "b6n5_next_structural_transition_predicate": "UNKNOWN_NOT_GOVERNED",
+    "b6n6_adaptive_architecture": "contracts/R6_ADAPTIVE_PROPAGATION_CANDIDATE_TRAJECTORY_V1.json"
+  },
+  "scope": {
+    "purpose": "Specify the minimum future model interface needed for an adaptive engine to evolve a rift-process candidate and assess structural/interface/support transition predicates at runtime.",
+    "does_not_authorize": ["provider selection", "numerical calibration", "current rift propagation", "dt2 selection", "T2 creation", "B6O", "mechanics", "topology/support mutation", "canonical publication"],
+    "preserves": ["docs/arcana/qualifications/R6_B6N5_ATTESTATION.json", "docs/arcana/qualifications/R6_B6N6_ATTESTATION.json"],
+    "no_exact_future_transition_time_required": true,
+    "no_equation_coefficient_or_threshold_selected": true
+  },
+  "minimum_interface": {
+    "model_identity": ["model ID and version/hash", "applicable authority contract IDs and scope", "domain and temporal validity", "spatial support and resolution", "known limitations and unsupported outputs"],
+      "initialization_inputs": ["POST_EVENT process-state identity", "plate-pair/interface identity", "initial model-defined process-state vector", "initial uncertainty/support masks", "approved forcing references", "parent checkpoint", "active local spatial scope and proven dependency/buffer scope"],
+    "evolved_state_requirement": {
+      "required": true,
+      "abstract_state": "MODEL_DEFINED_RIFT_PROCESS_STATE_VECTOR",
+      "meaning": "Smallest sufficient set of model state variables needed by the selected evolution law and its governed transition predicates. B6N7 does not assume a scalar extension, opening distance, width, or crustal-thinning variable is sufficient.",
+      "units_domain_and_support": "Each component must declare physical meaning, units, valid range/domain, support identity, initialization, evolution law, authority, and uncertainty; unknown fields remain UNKNOWN.",
+      "state_vs_diagnostic": "Evolved internal state is distinct from kinematic diagnostics, forcing, parameters, predicates, and persistent WORLD_HISTORY state."
+    },
+    "forcing_inputs": [
+      {"name": "B6N2_pair_plate_rigid_kinematics", "role": "CONDITIONAL_GOVERNED_KINEMATIC_FORCING", "conditionally_governed": true, "usable_for_current_forward_propagation": false, "current_blocker": "No selected positive-duration interval; B6N5/B6N4-R1 event, topology, interface and support prerequisites remain unresolved.", "derivable_from_existing_authority": "Relative rigid motion diagnostics only, within explicit successor-model scope and validity; not physical extension, opening, boundary type, or accommodation.", "revalidation_required": true},
+      {"name": "POST_EVENT_interface_geometry_and_identity", "role": "INITIAL_CONDITION_AND_SUPPORT_REFERENCE", "available": true, "rule": "Preserve the exact 71-segment pair interface and junction/support identities until a separately governed transition application."},
+      {"name": "additional_thermal_lithospheric_mantle_load_weakness_or_external_forcing", "role": "CONDITIONAL_MODEL_INPUT", "available": false, "rule": "Require only if the selected scientific law depends on it; then specify source authority, scope, resolution, uncertainty, and replay identity. None is presumed by B6N7."}
+    ],
+    "evolution_law": {
+      "required": true,
+      "minimum_class": "GOVERNED_PROCESS_EVOLUTION_LAW; exact class remains model-selection dependent",
+      "candidate_classes": ["DETERMINISTIC_KINEMATIC", "PARAMETERIZED_EMPIRICAL", "REDUCED_ORDER_PHYSICAL", "MECHANICAL", "STOCHASTIC_ENSEMBLE", "UNKNOWN"],
+      "rule": "Every evolved state component and interface response output must bind to an explicit law, inputs, authority and valid scope. Do not invent an equation, coefficient, threshold, or constitutive closure."
+    },
+    "interface_response_requirement": {
+      "required_for_closing_interface_blocker": true,
+      "observable": "A support-resolved, model-authorized response/regime assessment mapped to the existing interface identity and any required junction/buffer scope.",
+      "resolution_rule": "Model must state whether its response is pair-level, segment-level, or another explicit support; no uniform segment reclassification is inferred.",
+      "unknown_rule": "Missing segment semantics or response remains UNKNOWN; rigid relative motion does not supply it."
+    },
+    "predicate_outputs": {
+      "required": true,
+      "minimum_families": ["NEXT_PROCESS_MODEL_VALIDITY_OR_REGIME_BOUNDARY", "INTERFACE_RESPONSE_REGIME_BOUNDARY", "TOPOLOGY_REEVALUATION_BOUNDARY", "SUPPORT_MEMBERSHIP_VALIDITY_BOUNDARY"],
+      "per_predicate_fields": ["stable predicate ID/version", "governing authority", "input state/forcing identities", "scope/support", "status TRUE/FALSE/UNKNOWN", "signed margin or equivalent when physically defined", "uncertainty", "validity", "bracketability/detector coverage", "required adaptive action", "event vs state significance relation", "transition application authority reference or NONE"],
+      "semantics": "PREDICATE != EVENT != TRANSITION APPLICATION. A predicate can require a stop, event candidate, refinement, or a new authority stage; it never invents a topology/state outcome."
+    },
+    "adaptive_indicators": ["local integration/error estimate", "evolved-state rate or equivalent change indicator", "predicate margin/proximity and change rate where defined", "uncertainty growth", "domain stability indicators", "model/authority validity bound", "event detection coverage and bracket width"],
+    "uncertainty_outputs": ["parameter", "forcing", "model form", "transition criterion/threshold", "spatial localization", "event-time interval", "numerical integration", "dependency/isolation"],
+    "uncertainty_rule": "Keep dimensions and support explicit; represent as ranges/distributions/covariance or UNKNOWN only where justified. Do not collapse to one unsupported confidence scalar."
+  },
+  "candidate_quantity_adjudication": [
+    {
+      "concept": "relative_plate_displacement_or_velocity",
+      "role": "DERIVED_KINEMATIC_DIAGNOSTIC_OR_CONDITIONAL_FORCING",
+      "minimum_required": "Only if the selected law consumes it; not a universal rift state.",
+      "assessment": {
+        "why_needed": "Supply a motion diagnostic/forcing to a model that explicitly uses relative plate motion.",
+        "current_blockers": ["NEXT_RIFT_PROCESS_EVOLUTION", "PLATE_INTERFACE_EVENT_PREDICATES"],
+        "quantity_kind": "DERIVED_DIAGNOSTIC_OR_FORCING",
+        "authority": "EXISTING_ARCANA_MODEL_AUTHORITY plus DETERMINISTIC_DERIVATION within B6N2 scope",
+        "derivable_from_existing_plate_kinematics": "YES_FOR_RESTRICTED_RIGID_MOTION_ONLY",
+        "mechanics_required": "NO_FOR_THE_DIAGNOSTIC; response law remains separate",
+        "external_scientific_calibration_required": "NO_FOR_KINEMATIC_DIAGNOSTIC; YES only if interpreted as physical extension/response",
+        "scope": "Pair 1:3 and only its authorized plate-local representations/valid interval",
+        "uncertainty": ["kinematic-authority validity", "coordinate/frame and geometry uncertainty", "numerical integration error if integrated"],
+        "runtime_consumers": ["approved forcing input", "state-rate/error indicators", "predicate input only where explicitly authorized"]
+      },
+      "cannot_establish": ["extension polarity", "rift opening", "segment regime", "accommodation", "topology transition"]
+    },
+    {
+      "concept": "relative_extension_or_extension_rate",
+      "role": "DERIVED_ONLY_AFTER_GOVERNED_INTERFACE_FRAME_AND_SIGN_SEMANTICS",
+      "minimum_required": "Not adopted as universal state; may be a diagnostic/input only after orientation, side, sign, support, and physical meaning are governed.",
+      "current_status": "UNKNOWN_NOT_GOVERNED",
+      "assessment": {
+        "why_needed": "Could quantify normal separation/loading if the selected process law defines interface orientation and extension semantics.",
+        "current_blockers": ["NEXT_RIFT_PROCESS_EVOLUTION", "PLATE_INTERFACE_EVENT_PREDICATES"],
+        "quantity_kind": "DERIVED_DIAGNOSTIC_OR_MODEL_INPUT; not automatically evolved state",
+        "authority": "AUTHORIAL_MODEL_DECISION plus scientific law authority if given physical response meaning",
+        "derivable_from_existing_plate_kinematics": "ONLY_AFTER_GOVERNED_INTERFACE_FRAME_SIGN_AND_SUPPORT; otherwise NO",
+        "mechanics_required": "NOT_INHERENT_TO_THE_DIAGNOSTIC; UNKNOWN_FOR_PHYSICAL_RESPONSE_CLOSURE",
+        "external_scientific_calibration_required": "REQUIRED_IF_USED_AS_PHYSICAL_RIFT_RESPONSE_OR_THRESHOLD_INPUT",
+        "scope": "Declared interface segments or model-defined aggregate with explicit mapping; no assumed uniformity",
+        "uncertainty": ["interface orientation", "sign/polarity", "support mapping", "model form", "numerical error"],
+        "runtime_consumers": ["interface/process predicates", "adaptive event proximity only after the quantity is authorized"]
+      }
+    },
+    {
+      "concept": "accumulated_extension_or_opening_displacement",
+      "role": "CANDIDATE_EVOLVED_STATE",
+      "minimum_required": "Only if a selected law demonstrates sufficiency for its process/interface predicates; cannot be inferred from pair motion alone.",
+      "current_status": "NOT_SELECTED",
+      "assessment": {
+        "why_needed": "A candidate progress memory for an extension-dependent process threshold; its necessity and sufficiency are unproven.",
+        "current_blockers": ["NEXT_RIFT_PROCESS_EVOLUTION", "PLATE_INTERFACE_EVENT_PREDICATES", "GENERIC_TOPOLOGY_EVENT_COVERAGE"],
+        "quantity_kind": "CANDIDATE_EVOLVED_STATE",
+        "authority": "AUTHORIAL_MODEL_DECISION and EXTERNAL_SCIENTIFIC_MODEL_OR_LITERATURE_CALIBRATION if physically interpreted",
+        "derivable_from_existing_plate_kinematics": "NO_AS_PHYSICAL_OPENING; accumulated rigid relative motion alone is only a diagnostic",
+        "mechanics_required": "UNKNOWN; a justified reduced-order law might not require full mechanics",
+        "external_scientific_calibration_required": "REQUIRED_BEFORE_PHYSICAL_THRESHOLD_OR_OPENING_CLAIM",
+        "scope": "Active rift interface and declared dependency/buffer scope",
+        "uncertainty": ["initial value", "forcing", "law/model form", "threshold", "spatial localization", "event interval"],
+        "runtime_consumers": ["process/interface predicates", "event bracketing", "state significance if persistent effects are governed"]
+      }
+    },
+    {
+      "concept": "rift_width_or_active_deformation_width",
+      "role": "PARAMETER_OR_EVOLVED_SPATIAL_STATE",
+      "minimum_required": "Not required unless the selected law needs spatial localization/averaging; requires explicit spatial meaning, support and authority.",
+      "current_status": "NOT_SELECTED",
+      "assessment": {
+        "why_needed": "Could define where an extended deformation law applies, but no width is currently governed.",
+        "current_blockers": ["PLATE_INTERFACE_EVENT_PREDICATES", "SUPPORT_MEMBERSHIP_VALIDITY"],
+        "quantity_kind": "MODEL_PARAMETER_OR_SPATIAL_STATE",
+        "authority": "AUTHORIAL_MODEL_DECISION; EXTERNAL_SCIENTIFIC_MODEL_OR_LITERATURE_CALIBRATION if physical width is claimed",
+        "derivable_from_existing_plate_kinematics": "NO",
+        "mechanics_required": "NO_BY_DEFINITION; selected width law may require physical model authority",
+        "external_scientific_calibration_required": "REQUIRED_IF_A_PHYSICAL_WIDTH_VALUE_OR_EVOLUTION_IS_USED",
+        "scope": "Local rift region plus proven buffer/dependency scope",
+        "uncertainty": ["parameter/model form", "spatial localization", "support boundary"],
+        "runtime_consumers": ["spatial support of response", "local refinement and support-validity predicate"]
+      }
+    },
+    {
+      "concept": "crustal_thickness_or_thinning_state",
+      "role": "PHYSICAL_EVOLVED_STATE",
+      "minimum_required": "Not required merely to detect a structural-event candidate; required if crustal thinning/creation is claimed or requested.",
+      "authority_if_used": "EXTERNAL_SCIENTIFIC_MODEL_OR_LITERATURE_CALIBRATION plus explicit ARCANA model decision",
+      "assessment": {
+        "why_needed": "Represents crustal evolution only if that physical output is within the selected model scope.",
+        "current_blockers": ["NEXT_RIFT_PROCESS_EVOLUTION", "GENERIC_TOPOLOGY_EVENT_COVERAGE"],
+        "quantity_kind": "PHYSICAL_EVOLVED_STATE",
+        "authority": "EXTERNAL_SCIENTIFIC_MODEL_OR_LITERATURE_CALIBRATION plus AUTHORIAL_MODEL_DECISION",
+        "derivable_from_existing_plate_kinematics": "NO",
+        "mechanics_required": "MODEL_DEPENDENT; NOT_PROVEN_REQUIRED",
+        "external_scientific_calibration_required": "YES_FOR_PHYSICAL_THINNING_OR_CRUST_CREATION_CLAIMS",
+        "scope": "Only requested rift/crust domain and its declared dependencies",
+        "uncertainty": ["initial thickness", "forcing", "parameter", "model form", "spatial support", "event timing"],
+        "runtime_consumers": ["crustal/process predicates", "post-transition state extraction", "downstream geography/thermal coupling when authorized"]
+      }
+    },
+    {
+      "concept": "stretching_factor_or_extension_ratio",
+      "role": "DERIVED_OR_PARAMETERIZED_PHYSICAL_QUANTITY",
+      "minimum_required": "Not universal; requires a defined reference geometry/thickness and governed relation to model state.",
+      "current_status": "NOT_SELECTED",
+      "assessment": {
+        "why_needed": "May summarize finite extension in a selected crustal/lithospheric model but is not required for abstract process-predicate evaluation.",
+        "current_blockers": ["NEXT_RIFT_PROCESS_EVOLUTION", "GENERIC_TOPOLOGY_EVENT_COVERAGE"],
+        "quantity_kind": "DERIVED_QUANTITY_OR_PARAMETERIZED_STATE",
+        "authority": "AUTHORIAL_MODEL_DECISION plus EXTERNAL_SCIENTIFIC_MODEL_OR_LITERATURE_CALIBRATION",
+        "derivable_from_existing_plate_kinematics": "NO_AS_A_PHYSICAL_STRETCHING_RATIO",
+        "mechanics_required": "UNKNOWN_AND_MODEL_DEPENDENT",
+        "external_scientific_calibration_required": "YES_IF_USED_AS_PHYSICAL_EXTENSION_MEASURE",
+        "scope": "Declared rift/crust support",
+        "uncertainty": ["reference state", "geometry", "model form", "parameter", "threshold"],
+        "runtime_consumers": ["model-defined process predicates", "state-significance tests only if authorized"]
+      }
+    },
+    {
+      "concept": "interface_regime_or_segment_activity",
+      "role": "DISCRETE_MODEL_STATE_OR_PREDICATE_INPUT",
+      "minimum_required": "A support-resolved response/regime assessment is required to close PLATE_INTERFACE_EVENT_PREDICATES; no discrete class is selected here.",
+      "current_status": "UNKNOWN",
+      "assessment": {
+        "why_needed": "Determine whether the model's interface response remains within its law or requires event/refinement/authority transition.",
+        "current_blockers": ["PLATE_INTERFACE_EVENT_PREDICATES", "GENERIC_TOPOLOGY_EVENT_COVERAGE", "SUPPORT_MEMBERSHIP_VALIDITY"],
+        "quantity_kind": "DISCRETE_MODEL_STATE_OR_PREDICATE",
+        "authority": "AUTHORIAL_MODEL_DECISION plus external physical model authority where regime is physical",
+        "derivable_from_existing_plate_kinematics": "NO; kinematics alone does not classify type, polarity, or response",
+        "mechanics_required": "NOT_PROVEN; response may be reduced-order only if scientifically justified",
+        "external_scientific_calibration_required": "REQUIRED_IF_TYPE_OR_PHYSICAL_REGIME_DEPENDENT",
+        "scope": "Explicitly declared segment/group identities and adjacent junction/buffer support",
+        "uncertainty": ["classification", "model form", "spatial localization", "predicate threshold", "dependency closure"],
+        "runtime_consumers": ["interface predicate", "topology reevaluation", "support validity", "local refinement"]
+      }
+    },
+    {
+      "concept": "connectivity_or_topology_eligibility",
+      "role": "DERIVED_TRANSITION_PREDICATE_NOT_AUTOMATIC_TOPOLOGY",
+      "minimum_required": "Topology invalidation/reevaluation predicate coverage and candidate transition scope are required; application needs separate transition authority.",
+      "current_status": "UNKNOWN_NOT_GOVERNED",
+      "assessment": {
+        "why_needed": "Detect when current graph/topology invariants cease to be valid for the candidate process trajectory.",
+        "current_blockers": ["GENERIC_TOPOLOGY_EVENT_COVERAGE", "SUPPORT_MEMBERSHIP_VALIDITY"],
+        "quantity_kind": "DERIVED_PREDICATE_FROM_GOVERNED_RULES_AND_MODEL_OUTPUTS",
+        "authority": "AUTHORIAL_TOPOLOGY_EVENT_COVERAGE_AND_TRANSITION_MODEL; physical trigger authority remains separate",
+        "derivable_from_existing_plate_kinematics": "NO_AS_A_GOVERNED_TOPOLOGY_EVENT_COVERAGE_CLAIM",
+        "mechanics_required": "NOT_INHERENT; physical event trigger remains model-dependent",
+        "external_scientific_calibration_required": "ONLY_IF_PHYSICAL_THRESHOLD_OR_MECHANISM_IS_USED",
+        "scope": "Affected graph closure; expand when dependencies cannot be isolated",
+        "uncertainty": ["detector coverage", "event localization", "model authority", "dependency closure"],
+        "runtime_consumers": ["stop-before-invalid-use guard", "event candidate", "local/topological refinement", "separate transition stage"]
+      }
+    },
+    {
+      "concept": "support_membership_eligibility",
+      "role": "DERIVED_VALIDITY_PREDICATE",
+      "minimum_required": "Report whether declared support identities remain valid and which scopes require reevaluation; never silently remap membership.",
+      "current_status": "UNKNOWN_NOT_GOVERNED",
+      "assessment": {
+        "why_needed": "Prevent candidate outputs from consuming stale or ambiguous spatial membership after an interface/topology event.",
+        "current_blockers": ["SUPPORT_MEMBERSHIP_VALIDITY", "GENERIC_TOPOLOGY_EVENT_COVERAGE"],
+        "quantity_kind": "DERIVED_VALIDITY_PREDICATE",
+        "authority": "ARCANA_SUPPORT_IDENTITY_RULE plus explicit successor remapping authority if membership changes",
+        "derivable_from_existing_plate_kinematics": "NO; motion does not define membership validity",
+        "mechanics_required": "NO_FOR_IDENTITY_VALIDITY; transition physics remains separate",
+        "external_scientific_calibration_required": "NO_FOR_IDENTITY_CHECK; YES only for any physical rule that triggers reassignment",
+        "scope": "Affected node/cell/interface/junction supports and dependent records",
+        "uncertainty": ["topology event coverage", "spatial localization", "membership rule", "dependency closure"],
+        "runtime_consumers": ["support predicate", "consumer stop/continue gate", "support remapping stage if separately authorized"]
+      }
+    }
+  ],
+  "b6n4r1_blocker_matrix": [
+    {"blocker": "GENERIC_TOPOLOGY_EVENT_COVERAGE", "runtime_observables": ["governed topology/connectivity identities", "covered transition classes and detector coverage", "predicate status/margin/uncertainty"], "minimum_transition_classes_to_adjudicate": ["plate split/merge/creation/termination", "boundary birth/death", "adjacency change", "junction reassignment/rewiring", "support membership invalidation"], "closing_predicate_requirement": "A model-scoped, conservative topology-reevaluation/invalidation predicate set covering the applicable event classes; exact transition outcome remains separately governed.", "minimum_state_or_input": ["model-defined process state as relevant", "current topology/interface identity reference"], "other_blockers_shared": ["SUPPORT_MEMBERSHIP_VALIDITY"], "dependency": "Topology transition coverage directly informs support-validity checks; a common authority is not presumed."},
+    {"blocker": "NEXT_RIFT_PROCESS_EVOLUTION", "runtime_observables": ["evolvable process-state vector", "evolution-law outputs/error/rates", "model validity and uncertainty"], "closing_predicate_requirement": "Governed next-process/regime validity predicate evaluated from evolved state; no exact future time is required if detector can bracket the crossing.", "minimum_state_or_input": ["model-defined rift process state", "approved forcing references"], "other_blockers_shared": ["PLATE_INTERFACE_EVENT_PREDICATES"], "dependency": "Process evolution is direct; implications for interfaces/topology are derived only through explicit predicates."},
+    {"blocker": "PLATE_INTERFACE_EVENT_PREDICATES", "runtime_observables": ["support-resolved interface response/regime state", "pair motion only where law consumes it", "predicate margin/uncertainty and detector coverage"], "closing_predicate_requirement": "Per declared interface support, report regime/response validity and transitions; no boundary type or polarity is inferred from rigid kinematics.", "minimum_state_or_input": ["model-defined process state", "interface identity and explicitly declared model response support"], "other_blockers_shared": ["NEXT_RIFT_PROCESS_EVOLUTION", "GENERIC_TOPOLOGY_EVENT_COVERAGE"], "dependency": "Interface transitions can trigger topology reevaluation, but are not themselves topology application."},
+    {"blocker": "SUPPORT_MEMBERSHIP_VALIDITY", "runtime_observables": ["support identity/version", "membership-validity predicate", "affected entities and dependency/buffer scope"], "closing_predicate_requirement": "Conservatively indicate when support is valid, invalid, or UNKNOWN and identify the exact scope requiring an explicit remap/transition authority.", "minimum_state_or_input": ["current set-valued support identities", "topology/interface predicate coverage"], "other_blockers_shared": ["GENERIC_TOPOLOGY_EVENT_COVERAGE"], "dependency": "Derived from topology/interface evidence and explicit support rules; no automatic membership reassignment."}
+  ],
+  "runtime_predicate_contract": [
+    {"family": "NEXT_PROCESS_MODEL_VALIDITY_OR_REGIME_BOUNDARY", "required_inputs": ["evolved process-state vector", "law validity", "forcing", "uncertainty"], "scope": "active rift process and declared dependencies", "crossing": "Exact future crossing time is not a required model input. Bracketable only if predicate continuity/detector conditions are governed; otherwise report UNKNOWN and stop affected scope.", "on_approach_or_crossing": ["reduce INTERNAL_DT", "bracket/refine if numerical/event uncertainty is refinable", "emit event candidate when evidence supports crossing", "stop/isolate and request successor model authority at validity boundary"], "automatic_transition_application": false, "persistent_pre_post": "Only when an authorized state transition is applied and state significance requires it; predicate crossing alone does not create new topology."},
+    {"family": "INTERFACE_RESPONSE_REGIME_BOUNDARY", "required_inputs": ["interface identity/support", "model response state", "pair kinematics only if authorized input", "uncertainty"], "scope": "declared affected segments/junctions plus dependency buffer", "crossing": "Record evidence-supported bracket if detector is governed.", "on_approach_or_crossing": ["reduce INTERNAL_DT", "locally refine the declared scope", "emit event candidate or preserve UNKNOWN", "require a separate response/transition application decision"], "automatic_transition_application": false, "persistent_pre_post": "Required only for adjudicated state-significant transition/application, not a diagnostic predicate alone."},
+    {"family": "TOPOLOGY_REEVALUATION_BOUNDARY", "required_inputs": ["topology identity/invariants", "covered event predicates", "current model state", "detector coverage"], "scope": "minimum affected topology closure; expand if dependencies are not isolated", "crossing": "May be bracketed as a candidate invalidation; resulting graph is not implied.", "on_approach_or_crossing": ["stop affected scope before using invalid topology", "record candidate/UNKNOWN", "invoke separately authorized topology transition model/application"], "automatic_transition_application": false, "persistent_pre_post": "No topology successor unless separate transition authority constructs and validates it."},
+    {"family": "SUPPORT_MEMBERSHIP_VALIDITY_BOUNDARY", "required_inputs": ["support identity/version", "topology/interface coverage", "membership rules", "uncertainty/dependency closure"], "scope": "affected supports and dependent records", "crossing": "Report VALID/INVALID/UNKNOWN bracket where support rule permits.", "on_approach_or_crossing": ["stop affected scope if validity is not established", "preserve UNKNOWN", "require explicit support remap authority before changing membership"], "automatic_transition_application": false, "persistent_pre_post": "Only when a governed membership transition is applied and significant; no inferred reassignment."}
+  ],
+  "coupling_scope": [
+    {"domain": "tectonic_geometry_and_topology", "classification": "REQUIRED_FOR_RIFT_EVOLUTION", "basis": "Identity/invariant and transition eligibility monitoring; actual topology application remains separate."},
+    {"domain": "topography_geography", "classification": "REQUIRED_ONLY_AFTER_STRUCTURAL_TRANSITION", "basis": "Reevaluate if an authorized transition changes surface geometry or requested geographic fields; no uplift/subsidence law is selected."},
+    {"domain": "volcanism", "classification": "OPTIONAL_REFINEMENT", "basis": "Not needed for minimum process predicates unless a selected model explicitly includes magmatic outputs."},
+    {"domain": "hydrology", "classification": "DOWNSTREAM_ONLY", "basis": "Recompute only when governed geography/topography forcing changes and hydrologic outputs are requested."},
+    {"domain": "climate", "classification": "DOWNSTREAM_ONLY", "basis": "No synchronous climate coupling is needed to define the minimum rift structural-event interface absent an explicitly selected feedback model."},
+    {"domain": "Deep", "classification": "UNKNOWN", "basis": "Could become a forcing/coupled state for a selected physical law; B6N7 does not presume mantle or deep-process input."},
+    {"domain": "resources", "classification": "DOWNSTREAM_ONLY", "basis": "Requires a governed change in relevant geology/geography and a requested resource output."},
+    {"domain": "ecology", "classification": "DOWNSTREAM_ONLY", "basis": "Responds through later governed environmental changes; no ecological law is required to evaluate tectonic predicates."}
+  ],
+  "authority_requirements": [
+    {"requirement": "B6N2 relative rigid-motion forcing within its authorized scope", "authority_class": "EXISTING_ARCANA_MODEL_AUTHORITY", "limit": "Does not infer extension, boundary type, accommodation, or topology events."},
+    {"requirement": "Relative rigid displacement/velocity diagnostic", "authority_class": "DETERMINISTIC_DERIVATION", "limit": "Only from authorized Euler motion, geometry, sign/frame convention and valid time; no physical interpretation beyond kinematics."},
+    {"requirement": "Process state meaning, segment response semantics, predicate scope, topology/support application boundary", "authority_class": "AUTHORIAL_MODEL_DECISION", "limit": "Must be explicit before a model can claim those outputs."},
+    {"requirement": "Physical evolution law, thresholds, parameter ranges, type-dependent response, crustal/magmatic predictions", "authority_class": "EXTERNAL_SCIENTIFIC_MODEL_OR_LITERATURE_CALIBRATION", "limit": "Targeted research required before selection/calibration; B6N7 selects no values or provider."},
+    {"requirement": "Additional measured thermal, mechanical, geological, or mantle forcing if required by selected law", "authority_class": "EXTERNAL_DATA_PROVIDER", "limit": "Conditional; no provider is selected."},
+    {"requirement": "Stress, strain, force balance, fracture/localization, rheology or mechanical accommodation if required by selected law", "authority_class": "MECHANICAL_MODEL_AUTHORITY", "limit": "Requirement remains event/model-specific; current evidence does not prove full mechanics is necessary."},
+    {"requirement": "Exact physical state vector, law class, and whether response can be type-agnostic", "authority_class": "UNKNOWN_PENDING_TARGETED_MODEL_RESEARCH_AND_AUTHORIAL_DECISION", "limit": "Must not be filled by numerical refinement."}
+  ],
+  "model_tiers": [
+    {"tier": "TIER_0_EXISTING_RIGID_KINEMATICS", "capability": "Restricted relative rigid-motion diagnostics for plate pair 1:3.", "insufficiency": "No post-activation process evolution law, segment response semantics, topology event coverage, or support-validity predicate.", "status": "INSUFFICIENT"},
+    {"tier": "TIER_1_PURE_KINEMATIC_EXTENSION", "capability": "Could integrate a governed extension/displacement diagnostic if interface frame, sign, support and meaning are explicitly supplied.", "insufficiency": "Kinematic displacement alone does not govern rift process state, interface accommodation/regime, event criteria, or topology/support validity; adding those rules turns this into a process model.", "status": "NOT_SUFFICIENT_ALONE"},
+    {"tier": "TIER_2_REDUCED_ORDER_RIFT_PROCESS_MODEL", "capability": "Model-defined minimal evolving process state, authorized evolution/response law, support-resolved interface outputs and conservative runtime predicates for process/interface/topology/support reassessment.", "mechanics_required": "NOT_PROVEN; a non-mechanical reduced-order law may qualify only if its scientific basis, scope, uncertainty and transition coverage are justified.", "status": "LOWEST_REQUIREMENTS_TIER_TO_INVESTIGATE; NOT_SELECTED_OR_SCIENTIFICALLY_QUALIFIED"},
+    {"tier": "TIER_3_PARAMETERIZED_CRUSTAL_LITHOSPHERIC_EXTENSION", "capability": "Adds thickness/thinning, stretching, width or crustal state predictions and corresponding physical couplings.", "required_when": "Only when those physical state outputs or their consequences are in the requested authority scope.", "status": "NOT_REQUIRED_FOR_MINIMUM_PREDICATE_INTERFACE; RESEARCH_DEPENDENT"},
+    {"tier": "TIER_4_FULL_MECHANICAL_GEODYNAMIC_MODEL", "capability": "Can resolve stress/strain/force balance and mechanical failure/accommodation when those are required outputs.", "status": "NOT_PROVEN_NECESSARY; NOT_SELECTED"}
+  ],
+  "lowest_sufficient_tier_decision": {
+    "requirements_level": "TIER_2_REDUCED_ORDER_RIFT_PROCESS_MODEL",
+    "decision_meaning": "Lowest model class to investigate for the four dynamic blocker families; not a selected, validated, calibrated, or authorized model.",
+    "why_tier_1_does_not_close": "Relative motion/extension diagnostics do not supply process evolution, segment response regime, conservative transition detector coverage, or support validity semantics.",
+    "mechanics": "NOT_PROVEN_REQUIRED",
+    "external_research": "REQUIRED_BEFORE_SCIENTIFIC_MODEL_SELECTION to establish physically meaningful state variables/laws/predicates, their domain, uncertainty and whether reduced-order/type-agnostic response is defensible.",
+    "provider_selected": false,
+    "numerical_calibration_performed": false
+  },
+  "b6n6_model_interface": {
+    "conceptual_operations_not_implemented": [
+      "initialize_rift_state(checkpoint, process_identity, support, authority, initial_conditions) -> state, uncertainty, replay_identity",
+      "advance_rift_state(state, INTERNAL_DT, approved_forcings, parameters) -> candidate_state, diagnostics, uncertainty",
+      "evaluate_transition_predicates(candidate_state, support, dependencies) -> per_predicate status/margin/scope/bracketability/action",
+      "estimate_error_and_stability(previous_state, candidate_state, INTERNAL_DT) -> governed indicators",
+      "report_model_authority_bounds(state, forcings) -> exact scope/validity/stop conditions",
+      "report_uncertainty(state, forcing, model_form, predicates, localization) -> dimensioned uncertainty"
+    ],
+    "contract_rule": "Interface operations are requirements only; no solver or executable API is added in B6N7."
+  },
+  "replay_minimum": ["model/version identity/hash", "authority/source/provider refs and scopes", "initial process state and support identity", "parameter values and authority", "ordered forcing references", "predicate definitions and versions", "numerical method/configuration and accepted/rejected steps", "uncertainty configuration", "seed lineage if stochastic", "local spatial scope and dependency/buffer proof", "refinement decisions", "expected state/event/payload identities"],
+  "authorization_gates": {
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "canonical_world_history_modified": false
+  }
+}

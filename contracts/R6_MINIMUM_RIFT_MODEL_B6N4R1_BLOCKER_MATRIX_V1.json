@@ -1,0 +1,47 @@
+{
+  "schema": "R6_MINIMUM_RIFT_MODEL_B6N4R1_BLOCKER_MATRIX_V1",
+  "contract_id": "R6_MINIMUM_RIFT_MODEL_B6N4R1_BLOCKER_MATRIX_V1",
+  "version": 1,
+  "status": "REQUIREMENTS_TRACEABILITY_MATRIX_NOT_BLOCKER_CLOSURE",
+  "source_contract": "contracts/R6_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS_V1.json",
+  "source_authority": "docs/arcana/qualifications/R6_B6N5_ATTESTATION.json",
+  "rows": [
+    {
+      "b6n4r1_blocker": "GENERIC_TOPOLOGY_EVENT_COVERAGE",
+      "required_observables": ["topology/connectivity identity and invariant set", "covered transition class registry", "detector coverage", "model-state/predicate uncertainty"],
+      "predicate_family": "TOPOLOGY_REEVALUATION_BOUNDARY",
+      "direct_or_derived": "Direct predicate output; inputs include model state and topology identities.",
+      "runtime_action": ["bracket/refine if detector uncertainty is numerical", "stop affected scope before invalid topology use", "request separately governed transition application"],
+      "could_share_state": "A process-state vector may inform the predicate; it does not itself define topology application.",
+      "authority_note": "Requires topology event coverage and transition mapping authority; does not assume the same authority closes other blockers."
+    },
+    {
+      "b6n4r1_blocker": "NEXT_RIFT_PROCESS_EVOLUTION",
+      "required_observables": ["model-defined evolved process state", "law outputs/rates/error", "model validity and uncertainty"],
+      "predicate_family": "NEXT_PROCESS_MODEL_VALIDITY_OR_REGIME_BOUNDARY",
+      "direct_or_derived": "Directly evaluated from evolved process state, law and approved forcing.",
+      "runtime_action": ["adapt INTERNAL_DT", "bracket/refine supported crossing", "stop or request successor model at validity boundary"],
+      "could_share_state": "The process state may also feed interface/topology predicates; shared input does not prove a common authority.",
+      "authority_note": "Requires explicit process evolution law and validity scope."
+    },
+    {
+      "b6n4r1_blocker": "PLATE_INTERFACE_EVENT_PREDICATES",
+      "required_observables": ["interface support identity", "support-resolved model response/regime output", "predicate coverage/margin and uncertainty"],
+      "predicate_family": "INTERFACE_RESPONSE_REGIME_BOUNDARY",
+      "direct_or_derived": "Requires model output mapped to declared interface support; rigid kinematics alone is insufficient.",
+      "runtime_action": ["refine local temporal/spatial scope", "record bracketed event candidate or preserve UNKNOWN", "require separate response application authority"],
+      "could_share_state": "May consume process state and approved kinematics; still requires its own response and event semantics.",
+      "authority_note": "No segment boundary type, polarity, or uniform response is inferred."
+    },
+    {
+      "b6n4r1_blocker": "SUPPORT_MEMBERSHIP_VALIDITY",
+      "required_observables": ["support identity/version", "valid/invalid/UNKNOWN membership predicate", "affected entities and dependency/buffer closure"],
+      "predicate_family": "SUPPORT_MEMBERSHIP_VALIDITY_BOUNDARY",
+      "direct_or_derived": "Derived from topology/interface predicates under explicit membership rules; membership changes are not automatic.",
+      "runtime_action": ["stop affected consumers when validity is unknown/false", "preserve UNKNOWN", "require explicit remapping/transition authority"],
+      "could_share_state": "May reuse topology/interface evidence, but support semantics and remapping authority remain distinct.",
+      "authority_note": "Topology-event coverage informs support validity; one shared causal authority is not presumed."
+    }
+  ],
+  "nonclosure_rule": "This matrix defines model-interface evidence required to make blockers dynamically assessable. It does not claim the blockers are closed, independent, or covered by one authority; a common authority is not presumed. It does not select a model/provider or authorize a timestep."
+}
