@@ -1,0 +1,89 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N5_POST_RIFT_STRUCTURAL_TRANSITION_AUTHORITY",
+  "purpose": "QUALIFY POST-RIFT STRUCTURAL TRANSITION AUTHORITY; PRESERVE BLOCKED SCIENTIFIC CONCLUSION",
+  "verdict": "BLOCKED_B6N5_INSUFFICIENT_STRUCTURAL_TRANSITION_AUTHORITY",
+  "qualified_source_commit": "ef82944d910865beeea3c06afad43812e6bc0097",
+  "evidence_store_key": "B6N5/ef82944d910865beeea3c06afad43812e6bc0097",
+  "evidence_manifest_sha256": "604f12131c3c5436ad24d2f8e30512b9aa24dbb016f4713a88c8ac70f72ed2b6",
+  "source_gate": {
+    "branch": "r6/b6n5-post-rift-structural-transition-authority",
+    "observed_head": "ef82944d910865beeea3c06afad43812e6bc0097",
+    "development_baseline_commit": "e1b17725559f4d6305592c73ab784768be569dbb",
+    "development_baseline_is_ancestor": true,
+    "worktree_clean_before_qualification": true,
+    "worktree_clean_after_qualification": true,
+    "tracked_normative_source": [
+      "docs/arcana/B6N5_POST_RIFT_STRUCTURAL_TRANSITION_AUTHORITY.md",
+      "tests/test_r6_b6n5_structural_transition_authority.py"
+    ],
+    "generated_qualification_evidence_tracked": false
+  },
+  "current_structural_state": {
+    "physical_epoch_count": 2,
+    "physical_age_ma": 209.97287659484368,
+    "pre_event_state_id": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "post_event_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "process_state": "RIFT_PROCESS_ACTIVE",
+    "activation_meaning": "Semantic process state established by instantaneous activation; activation preserved topology, interface connectivity, junction incidence, support membership, and geometry.",
+    "post_event_kinematic_scope": "B6N2 restricted conditional plate-local rigid kinematics only; no later rift-process evolution or structural-transition law is defined."
+  },
+  "structural_transition_authority": {
+    "next_structural_transition_predicate": "UNKNOWN_NOT_GOVERNED",
+    "finite_post_rift_pre_transition_validity_interval": "NOT_ESTABLISHED",
+    "four_b6n4r1_dependencies": [
+      "GENERIC_TOPOLOGY_EVENT_COVERAGE",
+      "NEXT_RIFT_PROCESS_EVOLUTION",
+      "PLATE_INTERFACE_EVENT_PREDICATES",
+      "SUPPORT_MEMBERSHIP_VALIDITY"
+    ],
+    "blocker_relationship": "Evidenced dependencies exist, but current authority establishes neither that the four dependencies are fully independent nor that one common structural-transition authority closes all four.",
+    "common_causal_authority_proven": false
+  },
+  "temporal_bounds": {
+    "consumed_pre_activation_horizon_years": 27123.405156307464,
+    "pre_activation_horizon_current_post_rift_bound": false,
+    "model_scope_revalidation_horizon_years": 8214.051909111062,
+    "model_scope_revalidation_horizon_class": "MODEL_SCOPE_REVALIDATION",
+    "model_scope_horizon_is_structural_transition_horizon": false,
+    "model_scope_horizon_is_no_event_guarantee": false,
+    "model_scope_horizon_is_dt2": false,
+    "model_scope_horizon_is_topology_interface_or_support_validity_interval": false
+  },
+  "mechanics_and_external_authority": {
+    "mechanics_necessity": "NOT_PROVEN",
+    "mechanics_executed": false,
+    "external_structural_transition_provider_or_model_selected": false,
+    "external_research_performed": false,
+    "external_provider_integrated": false,
+    "external_provider_qualified": false
+  },
+  "qualification_validation": {
+    "focused_b6n5_b6n4a_b6n4r1_tests": "35 passed",
+    "full_r6_suite": "509 passed",
+    "py_compile": "PASS",
+    "compileall": "PASS",
+    "json_validation": "PASS",
+    "frozen_contract_validation": "PASS",
+    "git_diff_check": "PASS",
+    "canonical_invariance": "PASS; read-only before/after snapshots identical"
+  },
+  "canonical_state": {
+    "physical_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "canonical_tree_sha256_before_and_after": "82e6ba7e384cf75f4e1627f68ac13762a936cc4266a90718bd40cc696768385f",
+    "t2_present": false,
+    "canonical_state_changed": false
+  },
+  "decision_state": {
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "target_age_ma": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false
+  },
+  "next_development_direction": "Reconsider propagation architecture so simulation-time integration, adaptive refinement, event discovery, and persistent WORLD_HISTORY state extraction are separated. This attestation does not implement or authorize that work.",
+  "next_stage_authorized": false
+}
