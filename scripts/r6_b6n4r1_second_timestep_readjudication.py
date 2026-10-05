@@ -12,13 +12,13 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 from typing import Any
 
 
 EXPECTED_BRANCH = "r6/b6n4r1-second-timestep-readjudication"
-EXPECTED_HEAD = "d3128fca0f6bd812298544768dbac0ef74dcca75"
 EXPECTED_B6N4A_SOURCE = "5430d09dfd6f3cc5f1ad5d6db36b8fece6b30ab3"
 EXPECTED_B6N4A_MANIFEST_SHA256 = "f4368256653979f77adaedae99829fb53bdb5c354d35ae4385855708579f9e47"
 EXPECTED_PRE_STATE = "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c"
@@ -39,6 +39,40 @@ def _git(repo: Path, *args: str) -> str:
         ["git", "-C", str(repo), *args], check=True, capture_output=True,
         text=True, encoding="utf-8",
     ).stdout.strip()
+
+
+def verify_source_gate(repo: Path, qualified_source_commit: str) -> dict[str, Any]:
+    """Require an explicit qualified commit, matching HEAD, branch, and clean tree."""
+    if re.fullmatch(r"[0-9a-f]{40}", qualified_source_commit) is None:
+        raise ValueError("--qualified-source-commit must be a full lowercase 40-character commit SHA")
+    branch = _git(repo, "branch", "--show-current")
+    actual_head = _git(repo, "rev-parse", "HEAD")
+    if branch != EXPECTED_BRANCH:
+        raise ValueError(f"source branch mismatch: expected={EXPECTED_BRANCH}; observed={branch}")
+    if actual_head != qualified_source_commit:
+        raise ValueError(
+            f"source commit mismatch: supplied={qualified_source_commit}; observed HEAD={actual_head}"
+        )
+    status = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
+    if status:
+        raise ValueError(f"qualification worktree is not clean: {status}")
+    return {
+        "branch": branch,
+        "qualified_source_commit": qualified_source_commit,
+        "observed_head": actual_head,
+        "worktree_clean": True,
+    }
+
+
+def require_external_output(output: Path, repo: Path, canonical_root: Path) -> None:
+    """Prevent qualification output from dirtying source or canonical state."""
+    resolved_output = output.resolve()
+    for label, root in (("repository", repo), ("canonical WORLD_HISTORY", canonical_root)):
+        try:
+            resolved_output.relative_to(root.resolve())
+        except ValueError:
+            continue
+        raise ValueError(f"qualification output must be outside {label}: {resolved_output}")
 
 
 def _verify_manifest(bundle: Path) -> None:
@@ -185,11 +219,12 @@ def inspect_canonical_read_only(root: Path) -> dict[str, Any]:
     }
 
 
-def build_decision(repo: Path, evidence_root: Path, canonical_root: Path) -> dict[str, Any]:
-    branch = _git(repo, "branch", "--show-current")
-    head = _git(repo, "rev-parse", "HEAD")
-    if branch != EXPECTED_BRANCH or head != EXPECTED_HEAD:
-        raise ValueError(f"source gate mismatch: branch={branch}; HEAD={head}")
+def build_decision(
+    repo: Path, evidence_root: Path, canonical_root: Path,
+    qualified_source_commit: str,
+) -> dict[str, Any]:
+    source_gate = verify_source_gate(repo, qualified_source_commit)
+    branch = source_gate["branch"]
     contracts = {
         "activation": _load_json(repo / "contracts/R6_RIFT_PROCESS_ACTIVATION_MODEL_V1.json"),
         "successor": _load_json(repo / "contracts/R6_POST_EVENT_KINEMATIC_AUTHORITY_V1.json"),
@@ -361,7 +396,9 @@ def build_decision(repo: Path, evidence_root: Path, canonical_root: Path) -> dic
         "schema": "ARCANA_R6_B6N4R1_SECOND_DT_READJUDICATION_V1",
         "stage": "B6N4-R1_SECOND_TIMESTEP_READJUDICATION",
         "baseline_branch": branch,
-        "qualified_source_commit": head,
+        "qualified_source_commit": source_gate["qualified_source_commit"],
+        "observed_head": source_gate["observed_head"],
+        "source_gate": source_gate,
         "requested_output_family": "RESTRICTED_POST_EVENT_PLATE_LOCAL_RIGID_GEOMETRY_AND_KINEMATICS",
         "authority_inputs": {
             "B6N2_successor_model": "contracts/R6_POST_EVENT_KINEMATIC_AUTHORITY_V1.json",
@@ -406,6 +443,8 @@ def build_decision(repo: Path, evidence_root: Path, canonical_root: Path) -> dic
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--qualified-source-commit", required=True,
+                        help="full commit SHA that this clean qualification run is evaluating")
     parser.add_argument("--evidence-root", type=Path, required=True)
     parser.add_argument("--canonical-root", type=Path,
                         default=Path(os.environ["ARCANA_WORLD_HISTORY_ROOT"])
@@ -415,7 +454,13 @@ def main(argv: list[str] | None = None) -> int:
     if args.canonical_root is None:
         parser.error("--canonical-root or ARCANA_WORLD_HISTORY_ROOT is required")
     try:
-        result = build_decision(args.repo_root.resolve(), args.evidence_root.resolve(), args.canonical_root.resolve())
+        repo_root = args.repo_root.resolve()
+        canonical_root = args.canonical_root.resolve()
+        require_external_output(args.output, repo_root, canonical_root)
+        result = build_decision(
+            repo_root, args.evidence_root.resolve(), canonical_root,
+            args.qualified_source_commit,
+        )
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     except (OSError, ValueError, KeyError, TypeError, subprocess.CalledProcessError) as exc:

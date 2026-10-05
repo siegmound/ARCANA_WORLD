@@ -10,13 +10,33 @@ unbounded topology/interface/support and rift-process dependencies. The bound
 is not an event-free claim and is not the actual nearest limiter. No scoped
 continuation is authorized because dependency isolation is not proven.
 
-This readjudication uses source baseline `d3128fca0f6bd812298544768dbac0ef74dcca75`
-and final B6N4-A policy evidence from source `5430d09dfd6f3cc5f1ad5d6db36b8fece6b30ab3`.
-The deterministic runner emits the machine-readable closure to a caller-selected
-output path. The retained qualification copy is in external evidence bundle
+The earlier development readjudication used source baseline
+`d3128fca0f6bd812298544768dbac0ef74dcca75`. That SHA is historical
+development provenance, not a pin in the normative runner. Final source
+qualification must explicitly pass its clean committed source SHA with
+`--qualified-source-commit`; the runner independently checks it against
+`git rev-parse HEAD`, checks the expected branch, and rejects a dirty tracked
+or untracked worktree. The supplied SHA and observed HEAD are both recorded in
+the result. Output must be outside both the repository and canonical
+WORLD_HISTORY. Final B6N4-A policy evidence is pinned to source
+`5430d09dfd6f3cc5f1ad5d6db36b8fece6b30ab3`.
+
+Example final-qualification invocation (replace `<Q>` and the external
+evidence directory explicitly):
+
+```text
+python scripts/r6_b6n4r1_second_timestep_readjudication.py \
+  --qualified-source-commit <Q> \
+  --evidence-root <B6N4R1 evidence root> \
+  --canonical-root <canonical WORLD_HISTORY root> \
+  --output <external evidence directory>/B6N4R1_READJUDICATION.json
+```
+
+The retained development qualification copy is in external evidence bundle
 `B6N4R1/d3128fca0f6bd812298544768dbac0ef74dcca75`; its
 `EVIDENCE_CONTENT_SHA256.txt` SHA256 is
 `5e74841664afac30eb0402b84503ad2225917e39ece1a5576ca7ce5d1abe4d86`.
+It must not be overwritten or represented as final-source qualification.
 
 ## Dependency closure
 
