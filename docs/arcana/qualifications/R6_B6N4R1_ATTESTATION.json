@@ -1,0 +1,137 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N4R1_SECOND_TIMESTEP_READJUDICATION",
+  "purpose": "SECOND TIMESTEP READJUDICATION UNDER EVENT-IMPACT / STATE-SIGNIFICANCE POLICY",
+  "verdict": "BLOCKED_B6N4R1_RELEVANT_AUTHORITY_UNRESOLVED",
+  "qualified_source_commit": "241aee492efce10916a0c77ec2bddbccf3e65678",
+  "evidence_store_key": "B6N4R1/241aee492efce10916a0c77ec2bddbccf3e65678",
+  "evidence_manifest_sha256": "533e32523509eb1cab4d6ab0827056bfa54c08256e87cc372098292ceeec4d06",
+  "source_gate": {
+    "branch": "r6/b6n4r1-second-timestep-readjudication",
+    "qualified_source_commit_supplied": "241aee492efce10916a0c77ec2bddbccf3e65678",
+    "observed_head": "241aee492efce10916a0c77ec2bddbccf3e65678",
+    "worktree_clean": true,
+    "output_outside_repository_and_canonical_world_history": true
+  },
+  "requested_output_family": "RESTRICTED_POST_EVENT_PLATE_LOCAL_RIGID_GEOMETRY_AND_KINEMATICS",
+  "positive_propagation_interval": "NOT_ESTABLISHED",
+  "four_relevant_blockers": [
+    {
+      "dependency": "GENERIC_TOPOLOGY_EVENT_COVERAGE",
+      "classification": "INSUFFICIENT_IMPACT_BOUND",
+      "reason": "Topology-changing impact remains unbounded and dependency isolation is not proven."
+    },
+    {
+      "dependency": "NEXT_RIFT_PROCESS_EVOLUTION",
+      "classification": "AUTHORITY_BLOCKED",
+      "reason": "No governed subsequent rift-process predicate, threshold, transition law, or temporal bound exists."
+    },
+    {
+      "dependency": "PLATE_INTERFACE_EVENT_PREDICATES",
+      "classification": "INSUFFICIENT_IMPACT_BOUND",
+      "reason": "No governed post-event interface detector, positive interval, or sufficient impact bound exists."
+    },
+    {
+      "dependency": "SUPPORT_MEMBERSHIP_VALIDITY",
+      "classification": "INSUFFICIENT_IMPACT_BOUND",
+      "reason": "Support validity remains coupled to unresolved topology transitions without sufficient temporal/impact bound or isolation proof."
+    }
+  ],
+  "seven_horizon_results": [
+    {
+      "subject": "GENERIC_TOPOLOGY_EVENT_COVERAGE",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "event_occurrence": "UNKNOWN",
+      "blocks_requested_output": true
+    },
+    {
+      "subject": "JUNCTION_CONSISTENCY",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "compatibility": "UNKNOWN",
+      "blocks_requested_output": false,
+      "interpretation": "No positional accommodation or compatibility is asserted."
+    },
+    {
+      "subject": "MECHANICS_REQUIREMENT",
+      "significance_class": "NOT_APPLICABLE",
+      "blocks_requested_output": false,
+      "scope": "CURRENT_RESTRICTED_GEOMETRIC_KINEMATIC_OUTPUTS"
+    },
+    {
+      "subject": "NEXT_RIFT_PROCESS_EVOLUTION",
+      "significance_class": "AUTHORITY_BLOCKED",
+      "event_occurrence": "UNKNOWN",
+      "blocks_requested_output": true
+    },
+    {
+      "subject": "PLATE_INTERFACE_EVENT_PREDICATES",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "event_occurrence": "UNKNOWN",
+      "blocks_requested_output": true
+    },
+    {
+      "subject": "SOURCE_TEMPORAL_VALIDITY",
+      "significance_class": "AUTHORITY_BLOCKED",
+      "source_validity_beyond_governed_instant": "UNKNOWN",
+      "source_provenance_extended": false,
+      "successor_model_authority_is_distinct": true,
+      "blocks_successor_model_output_independently": false
+    },
+    {
+      "subject": "SUPPORT_MEMBERSHIP_VALIDITY",
+      "significance_class": "INSUFFICIENT_IMPACT_BOUND",
+      "blocks_requested_output": true
+    }
+  ],
+  "model_scope_horizon": {
+    "contract": "FINITE_POST_EVENT_KINEMATIC_REVALIDATION_HORIZON_V1",
+    "classification": "MODEL_SCOPE_REVALIDATION",
+    "maximum_years": 8214.051909111062,
+    "actual_nearest_physical_or_event_limiter": null,
+    "event_free_interval": false,
+    "authorizes_dt2": false,
+    "extends_source_provenance": false
+  },
+  "decision_state": {
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "target_age_ma": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "canonical_physical_epoch_count": 2,
+    "canonical_state_changed": false
+  },
+  "qualification_validation": {
+    "focused_tests": "17 passed",
+    "B6N4A_B6N4R1_targeted_tests": "28 passed",
+    "previous_R6_targeted_regression": "83 passed",
+    "full_active_R6_suite": "502 passed",
+    "deterministic_runner_replay": "PASS; two invocations produced identical JSON",
+    "source_gate": "PASS",
+    "clean_worktree_gate": "PASS",
+    "output_location_gate": "PASS",
+    "py_compile": "PASS",
+    "compileall": "PASS",
+    "json_validation": "PASS",
+    "frozen_contract_byte_identity": "PASS",
+    "B6N4A_attestation_and_evidence_integrity": "PASS",
+    "git_diff_check": "PASS",
+    "canonical_read_only_invariance": "PASS"
+  },
+  "canonical_state": {
+    "physical_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "t2_present": false,
+    "canonical_tree_sha256_before_and_after": "82e6ba7e384cf75f4e1627f68ac13762a936cc4266a90718bd40cc696768385f"
+  },
+  "authorization": {
+    "authorizes_dt2": false,
+    "authorizes_t2": false,
+    "authorizes_propagation": false,
+    "authorizes_mechanics": false,
+    "authorizes_topology_transition": false,
+    "next_stage": "Separate investigation of post-event structural-transition authority; not authorized by this attestation."
+  }
+}
