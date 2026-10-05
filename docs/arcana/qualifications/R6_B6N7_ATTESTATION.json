@@ -1,0 +1,152 @@
+{
+  "schema": "ARCANA_R6_EXTERNAL_QUALIFICATION_ATTESTATION_V1",
+  "stage": "B6N7_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS",
+  "purpose": "QUALIFY MINIMUM EVOLVABLE RIFT MODEL REQUIREMENTS; PRESERVE MODEL-SELECTION AND PROPAGATION BOUNDARIES",
+  "verdict": "PASS_B6N7_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS_DEFINED",
+  "qualified_source_commit": "cb1546f3c7aeb9703c4317aecadc21cf38d6cb2f",
+  "evidence_store_key": "B6N7/cb1546f3c7aeb9703c4317aecadc21cf38d6cb2f",
+  "evidence_manifest_sha256": "edc0eb34a67b39cb995ca54f02ce487c76df64ceeecf836d5c8dd4c08ba1bb1d",
+  "evidence_content_sha256": "5ba904b11b2bbc44fa90b8c61b25012dd20401e96251beb1ac0e72e5efed2cc6",
+  "source_gate": {
+    "branch": "r6/b6n7-minimum-evolvable-rift-model-requirements",
+    "observed_head": "cb1546f3c7aeb9703c4317aecadc21cf38d6cb2f",
+    "b6n6_attested_baseline_commit": "522c09008ed1f84b0ead60d5507afed364c6ee64",
+    "baseline_is_ancestor": true,
+    "head_object_type": "commit",
+    "worktree_clean_before_qualification": true,
+    "worktree_clean_before_attestation_creation": true,
+    "attestation_is_the_only_worktree_addition": true,
+    "tracked_normative_source": [
+      "contracts/R6_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS_V1.json",
+      "contracts/R6_MINIMUM_RIFT_MODEL_B6N4R1_BLOCKER_MATRIX_V1.json",
+      "docs/arcana/B6N7_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS.md",
+      "tests/test_r6_b6n7_minimum_evolvable_rift_model_requirements.py"
+    ],
+    "source_delta_exact": true,
+    "generated_qualification_evidence_tracked": false,
+    "attestation_commit_does_not_replace_qualified_source_commit": true
+  },
+  "minimum_model_requirements": {
+    "governed_evolvable_process_state_vector_required": true,
+    "per_state_component_requirements": [
+      "semantics",
+      "units",
+      "support_and_scope",
+      "initialization_rule",
+      "evolution_law_and_authority",
+      "uncertainty"
+    ],
+    "distinct_model_output_classes": [
+      "EVOLVABLE_PROCESS_STATE",
+      "FORCINGS",
+      "MODEL_PARAMETERS",
+      "DERIVED_DIAGNOSTICS",
+      "INTERFACE_RESPONSES",
+      "TRANSITION_PREDICATES",
+      "UNCERTAINTY",
+      "AUTHORITY_BOUNDS"
+    ],
+    "diagnostic_may_be_silently_promoted_to_physical_state": false,
+    "exact_future_transition_time_required": false
+  },
+  "b6n2_kinematic_limit": {
+    "conditional_kinematic_diagnostics_or_forcing_permitted": true,
+    "governs_physical_rift_extension": false,
+    "governs_polarity_or_segment_regime": false,
+    "governs_accommodation_or_structural_outcome": false,
+    "governs_topology_transition": false,
+    "authorized_positive_propagation_interval_exists": false
+  },
+  "b6n4r1_blocker_mapping": {
+    "blockers": [
+      "GENERIC_TOPOLOGY_EVENT_COVERAGE",
+      "NEXT_RIFT_PROCESS_EVOLUTION",
+      "PLATE_INTERFACE_EVENT_PREDICATES",
+      "SUPPORT_MEMBERSHIP_VALIDITY"
+    ],
+    "all_mapped_to_runtime_observables_model_responses_predicates_and_authority_requirements": true,
+    "shared_inputs_prove_one_common_authority": false,
+    "blockers_closed_by_b6n7": false
+  },
+  "predicate_semantics": {
+    "predicate_equals_event": false,
+    "predicate_equals_transition_application": false,
+    "crossing_may_request": [
+      "event bracketing",
+      "temporal refinement",
+      "spatial refinement",
+      "scope stop",
+      "model or authority escalation",
+      "transition candidacy"
+    ],
+    "crossing_automatically_mutates_topology_plate_support_regime_or_structure": false
+  },
+  "model_tier_conclusion": {
+    "tier_0_existing_rigid_kinematics": "INSUFFICIENT",
+    "tier_1_pure_kinematic_extension": "INSUFFICIENT_ALONE",
+    "tier_2_reduced_order_rift_process_evolution": "MINIMUM_TIER_TO_INVESTIGATE; REQUIREMENTS CLASSIFICATION ONLY",
+    "tier_3_crustal_or_lithospheric_representation": "REQUIRED_ONLY_IF_CORRESPONDING_PHYSICAL_OUTPUTS_ARE_NEEDED",
+    "tier_4_mechanical_or_geodynamic_model": "NOT_PROVEN_NECESSARY",
+    "tier_2_selected_or_qualified_physics": false,
+    "mechanics_necessity": "NOT_PROVEN"
+  },
+  "scientific_research": {
+    "targeted_research_required_before_model_selection": true,
+    "external_model_or_provider_selected": false,
+    "calibrated": false,
+    "integrated": false,
+    "qualified": false
+  },
+  "scope_and_coupling": {
+    "initial_local_scope_permitted": "plate pair 1:3; governed interface/endpoints and dependency/buffer scope, subject to proven isolation",
+    "topography_geography": "REEVALUATE_AFTER_AUTHORIZED_STRUCTURAL_TRANSITION_WHEN_REQUIRED",
+    "hydrology_climate_resources_ecology": "DOWNSTREAM_FOR_THIS_STAGE",
+    "Deep": "UNKNOWN"
+  },
+  "b6n6_compatibility": {
+    "required_capabilities": [
+      "process-state initialization",
+      "advance using INTERNAL_DT",
+      "runtime transition-predicate evaluation",
+      "adaptive-dt and error indicators",
+      "uncertainty reporting",
+      "authority and model-bound reporting",
+      "refinement or stop requests"
+    ],
+    "solver_implemented_by_b6n7": false
+  },
+  "qualification_validation": {
+    "b6n7_focused_tests": "19 passed",
+    "b6n5_b6n6_b6n7_targeted_regression": "43 passed",
+    "full_r6_suite": "545 passed across 64 modules",
+    "json_validation": "PASS",
+    "py_compile": "PASS",
+    "compileall": "PASS",
+    "git_diff_check": "PASS",
+    "canonical_read_only_invariance": "PASS; before/after snapshots identical",
+    "canonical_snapshot_file_count": 46,
+    "canonical_snapshot_logical_bytes": 1275143,
+    "canonical_snapshot_sha256": "4f610ee259cf4ed3744f9b128eea4fc0322462be8970204504dd0cebdb73a621",
+    "canonical_snapshot_hash_method": "SHA256 of compact UTF-8 JSON for sorted relative paths, byte sizes, and per-file SHA256 values"
+  },
+  "canonical_state": {
+    "physical_epoch_count_from_b6n6_attestation": 2,
+    "pre_event_state_id": "r6state_3e484d59d985ba93ec8c58d5a9a82ca4369f7aaa2d6725339479e68a7559810c",
+    "post_event_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "physical_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "T2_present_from_b6n6_attestation": false,
+    "canonical_world_history_changed": false
+  },
+  "decision_state": {
+    "model_selected": false,
+    "physical_rift_model_qualified": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false
+  },
+  "next_stage_recommendation": "AUTHORIZE_TARGETED_SCIENTIFIC_MODEL_RESEARCH_AND_SELECTION",
+  "next_stage_authorized": false
+}
