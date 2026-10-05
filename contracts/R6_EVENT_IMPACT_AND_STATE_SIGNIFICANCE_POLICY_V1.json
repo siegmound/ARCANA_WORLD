@@ -1,0 +1,123 @@
+{
+  "schema": "ARCANA_R6_EVENT_IMPACT_AND_STATE_SIGNIFICANCE_POLICY_V1",
+  "policy_id": "R6_EVENT_IMPACT_AND_STATE_SIGNIFICANCE_POLICY_V1",
+  "version": 1,
+  "status": "FROZEN_GENERAL_ADJUDICATION_POLICY",
+  "decision_class": "AUTHORIAL_ARCHITECTURE_POLICY",
+  "principle": "EVENT_IS_NOT_STATE; state significance is relative to an identified represented resolution and requested domains.",
+  "scope": {
+    "applies_to": ["event impact adjudication", "event horizon interpretation", "WORLD_HISTORY state-boundary decisions"],
+    "does_not_authorize": ["time integration", "dt selection", "state publication", "mechanics", "event occurrence inference", "forward evolution"],
+    "historical_contracts": "B6N4-A is additive. It does not rewrite or supersede frozen B6N4 V1 or earlier authority. Any changed timestep permission requires an explicit successor contract and separate readjudication."
+  },
+  "authority_classes": [
+    "SOURCE_AUTHORITY_LIMIT",
+    "MODEL_AUTHORITY_LIMIT",
+    "PHYSICAL_EVENT_UNCERTAINTY",
+    "SUPPORT_TOPOLOGY_UNCERTAINTY",
+    "NUMERICAL_RESOLUTION_LIMIT",
+    "MECHANICS_SCOPE_LIMIT"
+  ],
+  "authority_rule": {
+    "statuses": ["AUTHORIZED", "NOT_AUTHORIZED", "UNKNOWN"],
+    "required_for_use": "AUTHORIZED plus an explicit authority reference covering the requested model, domains, interval and resolution.",
+    "precedence": "Authority is adjudicated before impact significance. A subresolution impact classification cannot bypass missing or unknown source/model authority.",
+    "source_validity": "An UNKNOWN source interval remains UNKNOWN. An independently governed successor model may authorize its own restricted use without extending source provenance; only that successor's exact scope and endpoint may be used.",
+    "unknown_not_false": true
+  },
+  "resolution_context_required": [
+    "resolution_context_id",
+    "spatial_resolution_or_support_identity",
+    "temporal_resolution_or_support_identity",
+    "represented_domains",
+    "requested_outputs",
+    "authority_scope"
+  ],
+  "significance_dimensions": [
+    "spatial_footprint",
+    "temporal_persistence",
+    "reversibility",
+    "resolution_relative_magnitude",
+    "cross_domain_coupling",
+    "topology_impact",
+    "support_membership_impact",
+    "causal_downstream_relevance"
+  ],
+  "dimension_relation_values": [
+    "BELOW_REPRESENTED_RESOLUTION",
+    "STATE_SIGNIFICANT_AT_REPRESENTED_RESOLUTION",
+    "UNKNOWN",
+    "NOT_APPLICABLE"
+  ],
+  "dimension_rule": "Every dimension has a cited evidence basis. Relations are evaluated against the declared resolution context using governed evidence. No single scalar threshold, ungoverned magnitude cutoff, event frequency, or physical law may be invented. NOT_APPLICABLE requires an explicit reason.",
+  "event_occurrence_values": ["OCCURRED", "UNKNOWN"],
+  "non_event_horizon_rule": "Authority, mechanics-scope, and support-validity records that are not event occurrences carry event_occurrence=null and are adjudicated in their own authority/scope fields, not coerced into UNKNOWN physical occurrence. If a subject scope is not required by the requested output, all dimensions and impact bound may be NOT_APPLICABLE.",
+  "forbidden_occurrence_inference": ["UNKNOWN_TO_FALSE", "UNKNOWN_TO_NO_EVENT", "UNKNOWN_TO_INFINITE_HORIZON", "UNKNOWN_TO_NON_LIMITING"],
+  "impact_bound_statuses": ["BOUNDED", "UNKNOWN", "UNBOUNDED", "NOT_APPLICABLE"],
+  "dependency_isolation": {
+    "statuses": ["CLOSED", "ISOLATION_PROVEN", "NOT_PROVEN"],
+    "rule": "Local or regional impact does not imply isolated causal effects. Unaffected scopes may be considered only when the support/dependency graph proves isolation for the requested outputs. If dependency extent is not proven, fail closed at GLOBAL scope for the affected model/domain family.",
+    "does_not_imply": "No unrelated physical domain is thereby authorized to advance; each still needs its own authority and state-transfer contract."
+  },
+  "significance_classes": {
+    "EVENT_ONLY": "Occurrence is established; the bounded impact is below every applicable represented-state dimension. Record the event; do not create a state or checkpoint solely for it.",
+    "LOCAL_CHECKPOINT_REQUIRED": "Known, bounded local impact is state-significant at the declared resolution; require an isolated local checkpoint/refinement boundary.",
+    "REGIONAL_STATE_REQUIRED": "Known, bounded domain/regional/topology impact changes represented state; require a regional/domain causal state boundary.",
+    "SYSTEMIC_STATE_REQUIRED": "Known, bounded systemic/global impact changes represented state; require a systemic causal state boundary.",
+    "SUBRESOLUTION_UNKNOWN": "Occurrence/timing remains UNKNOWN while every applicable maximum-impact dimension is bounded below the declared resolution and dependency closure is proven. Preserve the UNKNOWN assessment; this does not mean the event was absent.",
+    "LOCAL_REFINEMENT_UNKNOWN": "Occurrence is UNKNOWN and possible impact is state-significant at local scope; preserve UNKNOWN and block that local scope pending refinement/authority.",
+    "REGIONAL_STATE_SIGNIFICANT_UNKNOWN": "Occurrence is UNKNOWN and possible impact is significant at domain/regional/topology scope; preserve UNKNOWN and block that scope.",
+    "SYSTEMIC_STATE_SIGNIFICANT_UNKNOWN": "Occurrence is UNKNOWN and possible impact is significant systemically; preserve UNKNOWN and block systemic continuation.",
+    "INSUFFICIENT_IMPACT_BOUND": "The plausible impact or dependency extent cannot be bounded against the declared resolution. Preserve UNKNOWN and fail closed for the impact/dependency scope.",
+    "AUTHORITY_BLOCKED": "Source/model authority is absent, unknown, or outside scope. Impact magnitude cannot waive the authority limit.",
+    "NOT_APPLICABLE": "The assessed subject is not an event and the requested output does not require that subject scope; no event occurrence or impact conclusion is inferred."
+  },
+  "adjudication_order": [
+    "validate exact resolution, requested-output, authority and dependency context",
+    "enforce source/model authority independently of impact",
+    "preserve event occurrence status without inferring absence",
+    "require a bound and relation for every applicable significance dimension",
+    "require proven dependency closure/isolation before scoped continuation",
+    "classify event-only, subresolution-unknown, local, regional or systemic significance",
+    "record resolution-relative decision and required state/checkpoint action"
+  ],
+  "state_boundary_actions": {
+    "EVENT_ONLY": "EVENT_LEDGER_ONLY_NO_STATE_OR_CHECKPOINT",
+    "SUBRESOLUTION_UNKNOWN": "PRESERVE_UNKNOWN_ADJUDICATION; NO_STATE_OR_CHECKPOINT_AT_THIS_RESOLUTION",
+    "LOCAL_CHECKPOINT_REQUIRED": "LOCAL_CHECKPOINT_OR_REFINEMENT_BRANCH",
+    "REGIONAL_STATE_REQUIRED": "REGIONAL_OR_DOMAIN_CAUSAL_STATE_BOUNDARY",
+    "SYSTEMIC_STATE_REQUIRED": "SYSTEMIC_CAUSAL_STATE_BOUNDARY",
+    "unknown_significant_or_unbounded": "BLOCK_AFFECTED_SCOPE; do not synthesize a state transition"
+  },
+  "canonical_semantics": {
+    "canonical_does_not_mean_certain": true,
+    "meaning": "Canonical WORLD_HISTORY is the governed best reconstruction at its declared scope and resolution, with provenance and explicit uncertainty.",
+    "unknown_state_representation": "Use the existing DomainStateEnvelope SupportClass.UNKNOWN with value null and explicit uncertainty/provenance. Query returns UNKNOWN; no imputation is permitted.",
+    "existing_schema_change_required": false
+  },
+  "ledger_and_state_graph": {
+    "event_and_state_are_distinct_records": true,
+    "existing_buckets_sufficient": true,
+    "event_record_rule": "An event ledger record represents an established event or an explicitly typed adjudication/uncertainty record; it must not imply that an UNKNOWN physical event occurred.",
+    "checkpoint_rule": "A checkpoint is restart/reconstruction support, not automatically a new global physical state.",
+    "refinement_rule": "Significance is reevaluated at the child resolution. A coarse SUBRESOLUTION_UNKNOWN may become significant after refinement.",
+    "payload_rule": "Reuse content-addressed payloads where valid. Semantic state identity remains distinct from payload identity."
+  },
+  "current_policy_qualification": {
+    "input_case": "Seven UNKNOWN horizon rows from B6N3A augmented horizon set.",
+    "assessment_rule": "Adjudicate each authority/event/support/mechanics case separately; preserve source statuses and classify impact only as far as available evidence permits.",
+    "unknowns_may_be_relabelled_absent": false,
+    "dt2_selected_by_this_policy": false,
+    "T2_created_by_this_policy": false,
+    "historical_B6N4_V1_authorization_changed": false
+  },
+  "preserved_gates": {
+    "SECOND_DT_SELECTED": false,
+    "target_age_ma": null,
+    "T2_CREATED": false,
+    "mechanics_executed": false,
+    "forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "canonical_physical_epoch_count_changed": false
+  }
+}
