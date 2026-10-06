@@ -1,0 +1,113 @@
+{
+  "schema": "ARCANA_R6_STAGE_ATTESTATION_V1",
+  "stage": "B6N8-D",
+  "qualified_source_commit": "88298ef948b6dc17a14961f6a43154cca4915d05",
+  "attestation_parent_commit": "6538951e441899013d616fec48a4f143afb0c6bf",
+  "verdict": "PASS_B6N8D_BUCK_MODEL_RECOVERED_PREHISTORY_AND_FORCING_AUTHORITY_REQUIRED",
+  "implementability": "NOT_IMPLEMENTABLE_FROM_CURRENT_ARCANA_AUTHORITY",
+  "primary_source": "Buck 1991 — Modes of Continental Lithospheric Extension",
+  "primary_source_doi": "10.1029/91JB01485",
+  "primary_source_pdf_sha256": "0f545e0c045db989bd81ae62461cebfd5e52d72eeb6ed1d9b8c326374e8d5d26",
+  "mechanics_classification": "TIER_2_PLUS_LIMITED_MECHANICAL_STATE",
+  "evidence_manifest_sha256": "88fd72170447f3f713063507c628250fdef2d9ce8644b92284aa1e2aec0bfa2d",
+  "evidence_content_sha256": "b1de440b3ff5da4fbdaeb0f18865930858a471fe99e308474c5d33cb9a1c1cdc",
+  "scientific_findings": {
+    "equation_recovery": "Materially required equations recovered from primary page images; no unresolved primary-equation OCR blocker remains.",
+    "recovered_model_components": [
+      "thermal evolution",
+      "brittle/ductile lithospheric strength",
+      "lower-crustal flow",
+      "crustal and thermal buoyancy",
+      "finite required-force change",
+      "widening/localization regime inference"
+    ],
+    "buck_status": "Prototype research direction; not a qualified ARCANA production model.",
+    "model_scope": {
+      "full_model": "FULL_NUMERICAL_MODEL",
+      "appendix": "APPENDIX_ANALYTICAL_APPROXIMATION",
+      "goetze_relations_substitute_for_full_model": false
+    },
+    "source_inconsistencies": [
+      {
+        "id": "SOURCE_INTERNAL_SIGN_INCONSISTENCY",
+        "topic": "dFys sign convention",
+        "normalized_convention": "ARCANA_ADAPTATION; not Buck literal definition"
+      },
+      {
+        "id": "SOURCE_INTERNAL_DENSITY_CONTRAST_INCONSISTENCY",
+        "topic": "Delta-rho-star definition/order",
+        "treatment": "Table 1 and Eq. 6 forms both preserved; no silent normalization treated as primary-source fact."
+      }
+    ],
+    "minimum_causal_state": [
+      "section geometry and material interfaces",
+      "thermal state/profile",
+      "crust/lithosphere thickness state",
+      "material and rheology bindings",
+      "physical extension forcing in Buck section frame",
+      "lower-crust flow closure where required",
+      "derived force/regime diagnostics",
+      "uncertainty and validity metadata"
+    ],
+    "derived_force_quantities_automatically_primitive_WORLD_HISTORY_state": false,
+    "remaining_authority_gaps": [
+      "PRE-T1 THERMAL / STRUCTURAL HISTORY AUTHORITY",
+      "MATERIAL / RHEOLOGY / THERMAL PARAMETER BINDING AUTHORITY",
+      "B6N2 TO BUCK PHYSICAL FORCING / SECTION SUPPORT MAPPING"
+    ],
+    "prehistory_principle": "MODEL_REQUIRES_INITIAL_VALUE != ARCANA_HAS_AUTHORITY_TO_CREATE_VALUE_AT_T1",
+    "T1_age_ma": 209.97287659484368,
+    "silent_backcasting_authorized": false,
+    "B6N2_rigid_relative_motion_equals_Buck_physical_extension_forcing": false,
+    "one_Buck_cross_section_equals_one_ARCANA_interface_segment": false,
+    "future_mapping_must_govern": [
+      "spatial section selection",
+      "frame",
+      "polarity",
+      "relative velocity",
+      "Xe",
+      "XL/support",
+      "strain rate",
+      "finite interval",
+      "aggregation",
+      "endpoint/junction behaviour"
+    ],
+    "next_authority_closures": [
+      {
+        "stage": "B6N8-E",
+        "scope": "INITIALIZATION / PREHISTORY AUTHORITY"
+      },
+      {
+        "stage": "B6N8-F",
+        "scope": "B6N2 TO BUCK PHYSICAL FORCING / SECTION SUPPORT MAPPING"
+      }
+    ],
+    "B6N8E_and_B6N8F_are_independent": true,
+    "neither_alone_authorizes_prototype": true,
+    "material_rheology_thermal_binding_remains_separate": true
+  },
+  "WORLD_HISTORY_read_only": {
+    "status": "PASS",
+    "files": 46,
+    "bytes": 1275143,
+    "per_path_content_identity_unchanged": true,
+    "incomparable_historical_serialization_digest_claimed_reproduced": false
+  },
+  "non_actions": {
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "physical_parameters_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false
+  },
+  "evidence_root": "ARCANA_WORLD_QUALIFICATION_EVIDENCE/B6N8D/88298ef948b6dc17a14961f6a43154cca4915d05",
+  "qualification_test_scope": "Research/source audit only; no executable model or dedicated B6N8-D test suite."
+}
