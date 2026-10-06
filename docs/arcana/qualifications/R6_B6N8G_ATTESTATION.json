@@ -1,0 +1,133 @@
+{
+  "Ux_and_strain_rate": {
+    "Buck_Ux": "REQUIRES_SECTION_ADAPTATION",
+    "Buck_Ux_materialized": false,
+    "Buck_strain_rate_materialized": false,
+    "equation": "epsilon_dot = U_x / X_e",
+    "formula_ready": true,
+    "inputs_ready": false,
+    "local_B6N2_kinematics": "DETERMINISTICALLY_DERIVABLE"
+  },
+  "Xe": {
+    "Buck_40_km_minimum_adopted": false,
+    "circularity_guard": "INITIAL_Xe != POST_EVOLUTION_RIFT_WIDTH unless a future governed iterative scheme explicitly authorizes it",
+    "lithosphere_thickness_relation_selected": false,
+    "selected": false
+  },
+  "attestation_parent_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "b6n8e_and_f_merged": false,
+  "b6n8e_attestation": "1e4f4fee1ce95fabc32c9eb62b783314660afa78",
+  "b6n8e_qualified_source": "f9904136e90b4463ab31013373d77810639748f3",
+  "b6n8f_attestation": "3ac12adfac15fb004b0d6f276a8c3d41fd528bfb",
+  "b6n8f_qualified_source": "59cefe861c47d6915e00af0e9df17aacbbcf9e5b",
+  "baseline": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "causal_target": {
+    "PRE_EVENT_equals_POST_EVENT": false,
+    "causal_selector": "POST_EVENT",
+    "physical_age_ma": 209.97287659484368,
+    "post_event_kinematics_used_to_synthesize_pre_event_physical_state": false,
+    "same_physical_age_does_not_collapse_causal_state": true
+  },
+  "evidence_content_sha256": "eb4035bff1f5b0b0aaac235de4b3c4d480d746f8c0e8a9dcba0c36411f1e25e6",
+  "evidence_manifest_sha256": "0ec6510fa96fc23c755ed7ef6411d67154bc54bcd639b5838b5f260c61148c10",
+  "evidence_store_key": "B6N8G/8b263cc4d59a0bf3d01dc65dcedfe928b79e7130",
+  "future_lineage_policy": "Future integrated normative contracts cite B6N8-E and B6N8-F immutable attestations and qualified sources by SHA; no sibling Git merge required.",
+  "integration_result": {
+    "Buck_input_inventory_entries": 20,
+    "E_F_SEMANTIC_INTEGRATION": "DEFINED",
+    "FIRST_BUCK_PROCESS_EVALUATION_READY": false,
+    "INPUT_VALUES_CURRENTLY_AVAILABLE": false,
+    "crosswalk_entries": 24,
+    "readiness_gates": {
+      "G1": "PASS_INTERFACE_CAN_BE_DEFINED",
+      "G10": "NOT_READY",
+      "G2": "BLOCKED",
+      "G3": "BLOCKED",
+      "G4": "BLOCKED",
+      "G5": "BLOCKED",
+      "G6": "BLOCKED",
+      "G7": "BLOCKED",
+      "G8": "BLOCKED_INPUTS_NOT_READY",
+      "G9": "BLOCKED"
+    }
+  },
+  "next_work": {
+    "dependencies": [
+      "Ux depends on section construction and polarity",
+      "epsilon_dot depends on Ux and Xe",
+      "finite accumulated strain depends on epsilon_dot and independent physical temporal authority"
+    ],
+    "parallelizable": [
+      "PHYSICAL_STATE_AUTHORITY",
+      "MATERIAL_RHEOLOGY_THERMAL_BINDING",
+      "SECTION_Ux_Xe_XL_AUTHORITY",
+      "FINITE_TEMPORAL_FORCING_AUTHORITY"
+    ]
+  },
+  "non_actions": {
+    "B6N8E_merged": false,
+    "B6N8F_merged": false,
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_input_adapter_implemented": false,
+    "Buck_section_materialized": false,
+    "Buck_strain_rate_materialized": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_forward_propagation_executed": false,
+    "dt2_years": null,
+    "finite_Buck_forcing_executed": false,
+    "mechanics_executed": false,
+    "new_physical_parameter_selected": false,
+    "physical_rift_model_qualified": false,
+    "physical_rift_model_selected": false,
+    "prototype_implemented": false,
+    "support_remapping_executed": false,
+    "topology_transition_executed": false
+  },
+  "qualified_source_commit": "8b263cc4d59a0bf3d01dc65dcedfe928b79e7130",
+  "residual_authority_set": [
+    "T0/T1 thermal-structural state authority",
+    "T0-to-T1 physical evolution authority",
+    "material/thermal/rheological binding",
+    "section-center authority",
+    "section-orientation authority",
+    "section-endpoint/support authority",
+    "junction eligibility",
+    "signed section-based Buck Ux adaptation",
+    "Xe authority",
+    "XL authority",
+    "epsilon_dot inputs",
+    "positive finite physical forcing interval"
+  ],
+  "schema": "ARCANA_R6_STAGE_ATTESTATION_V1",
+  "sibling_independence": {
+    "E_descends_from_baseline": true,
+    "E_is_ancestor_of_F": false,
+    "F_descends_from_baseline": true,
+    "F_is_ancestor_of_E": false,
+    "consumed_by_immutable_SHA": true
+  },
+  "source_branch": "r6/b6n8g-buck-authority-integration-audit",
+  "stage": "B6N8-G",
+  "temporal_result": {
+    "T2_age": false,
+    "classification": "MODEL_SCOPE_REVALIDATION_HORIZON",
+    "dt2": false,
+    "event_free_horizon": false,
+    "physical_forcing_duration": false,
+    "positive_physical_forcing_interval_exists": false,
+    "years": 8214.051909111062
+  },
+  "verdict": "PASS_B6N8G_INTEGRATION_INTERFACE_DEFINED_T1_STATE_XE_AND_BINDING_AUTHORITY_REMAIN",
+  "world_history": {
+    "WORLD_HISTORY_changed": false,
+    "bytes": 1275143,
+    "comparison": "matches the previous qualified B6N8-F same-method inventory",
+    "files": 46,
+    "inventory_sha256": "4d1fb1f0ee1bef38263f1fdf86bb496d28e8b0d51ca67a0fbebdd8843838439c"
+  }
+}
