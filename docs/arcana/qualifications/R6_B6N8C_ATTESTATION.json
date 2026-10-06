@@ -1,0 +1,154 @@
+{
+  "schema": "ARCANA_R6_B6N8C_ATTESTATION_V1",
+  "stage": "B6N8-C",
+  "purpose": "FINAL_QUALIFICATION_ATTESTATION",
+  "qualified_source_commit": "051edeb73f8a586e57fd51b58596a8f4f721f85a",
+  "verdict": "PASS_B6N8C_REDUCED_RIFT_PROTOTYPE_COMPARISON_DESIGN",
+  "readiness": "READY_FOR_B6N8D_EQUATION_LEVEL_AUDIT",
+  "evidence_store_key": "B6N8C/051edeb73f8a586e57fd51b58596a8f4f721f85a",
+  "evidence_integrity": {
+    "manifest_sha256": "31cc398f2b7c76f9fa5d57e63133013768a1cd99623a8b6eab790731d2982d40",
+    "content_file_sha256": "2b7ae8c6e34eb0c5513d90aab04b5ebbdf7255cff432b4e31e4cdd74dbfc6763",
+    "manifest_artifacts_verified": 18,
+    "qualification_checks_passed": 18,
+    "qualification_checks_failed": 0
+  },
+  "source_gate": {
+    "branch": "r6/b6n8c-reduced-rift-prototype-comparison-design",
+    "head": "051edeb73f8a586e57fd51b58596a8f4f721f85a",
+    "head_type": "commit",
+    "parent": "0f2d29e2c74d86bb0aba593c5ae8f183a8525519",
+    "B6N8B_attestation_commit": "5caeffd9ff76f73b8c409bd6eeba7c1680d1aefa",
+    "B6N8B_attestation_is_ancestor": true,
+    "worktree_clean_before_attestation": true
+  },
+  "correction_delta": {
+    "files": [
+      "docs/arcana/research/B6N8C_PROTOTYPE_COMPARISON_DESIGN.json",
+      "docs/arcana/research/B6N8C_REDUCED_RIFT_PROTOTYPE_COMPARISON_DESIGN.md"
+    ],
+    "no_B6N8D_implementation_files_introduced": true,
+    "previous_blocked_source": "0f2d29e2c74d86bb0aba593c5ae8f183a8525519",
+    "previous_blocked_evidence_verdict_preserved": "BLOCKED_B6N8C_DESIGN_REQUIREMENTS_INCOMPLETE",
+    "previous_blocked_evidence_unchanged": true
+  },
+  "qualified_findings": {
+    "prototype_direction": "PROTOTYPE_TRACK_A",
+    "Track_A": "Buck-style reduced force, thermal and process-state evolution; preferred prototype research direction only",
+    "Track_A_production_model_selected": false,
+    "Track_A_model_qualified": false,
+    "Track_B": "INSUFFICIENTLY_DEFINED",
+    "Track_B_reason": "No defensible reduced forward fault-network law is established without additional stress, mechanical or otherwise justified process authority; prescribed future fault history is not an emergent process model.",
+    "mechanics_classification": "TIER2_PLUS_LIMITED_PHYSICAL_STATE_REQUIRED",
+    "prototype_claim_boundary": [
+      "process-state evolution",
+      "process/interface diagnostics",
+      "regime reevaluation predicates",
+      "conservative topology-reevaluation requests",
+      "conservative support-reevaluation requests"
+    ],
+    "topology_or_support_mutation_authorized": false,
+    "plate_split_or_new_plate_authorized": false,
+    "new_boundary_or_junction_rewiring_authorized": false,
+    "support_reassignment_authorized": false,
+    "new_crust_creation_authorized": false
+  },
+  "prehistory_principle": {
+    "activation_age_ma": 209.97287659484368,
+    "model_requires_initial_value_is_distinct_from_authority_to_create_value_at_T1": true,
+    "temporal_origin_classes": [
+      "STATIC_PLANETARY_PARAMETER",
+      "PREEXISTING_EVOLVED_STATE",
+      "ACTIVATION_INITIALIZED_STATE",
+      "POST_ACTIVATION_DERIVED_STATE",
+      "UNKNOWN"
+    ],
+    "candidate_prehistory_sensitive_state": [
+      "thermal structure",
+      "crustal thickness",
+      "lithospheric thickness",
+      "strength/rheological state",
+      "density/material structure",
+      "inherited weakness",
+      "lower-crustal state"
+    ],
+    "physical_values_assigned": false,
+    "earth_or_published_reference_values_imported": false,
+    "silent_backcasting_prohibited": true,
+    "required_temporal_origin_unknown_until_adjudicated": true
+  },
+  "B6N2_forcing_boundary": {
+    "rigid_relative_plate_motion_equals_physical_extension_rate": false,
+    "geometric_mismatch_equals_physical_opening_or_strain_accommodation": false,
+    "model_specific_physical_forcing_mapping_required": true,
+    "mapping_dimensions": [
+      "local interface/model frame",
+      "normal/tangential decomposition",
+      "sign/polarity",
+      "spatial support and coverage",
+      "aggregation",
+      "physical interpretation"
+    ]
+  },
+  "next_stage": {
+    "authorization": "PROCEED_TO_B6N8D_EQUATION_LEVEL_AUDIT",
+    "stage": "B6N8-D — BUCK EQUATION-LEVEL RECOVERY AND MINIMAL-STATE REDUCTION AUDIT",
+    "scope": [
+      "published Buck equations",
+      "complete causal dependency graph",
+      "evolved state variables and algebraic variables",
+      "parameters and forcing",
+      "initial and boundary conditions",
+      "thermal dependencies",
+      "strength and force/buoyancy dependencies",
+      "lower-crust flow dependencies where applicable",
+      "widening/localization mode criterion and provenance",
+      "minimum causally faithful state",
+      "unsafe-to-remove dependencies and candidate reductions",
+      "initialization authority and prehistory requirements",
+      "uncertainty sources and validity domain",
+      "B6N2-to-model forcing requirements"
+    ],
+    "prototype_implementation_authorized": false,
+    "physical_model_selection_authorized": false,
+    "physical_coefficient_selection_authorized": false,
+    "canonical_propagation_authorized": false,
+    "dt2_authorized": false,
+    "T2_authorized": false,
+    "B6O_authorized": false,
+    "mechanics_execution_authorized": false,
+    "topology_mutation_authorized": false,
+    "support_remapping_authorized": false
+  },
+  "validation": {
+    "JSON_Markdown_consistency": "PASS",
+    "UTF8": "PASS",
+    "whitespace": "PASS",
+    "local_links": "PASS",
+    "git_diff_check": "PASS",
+    "worktree_before_attestation": "CLEAN",
+    "WORLD_HISTORY_invariance": "PASS",
+    "canonical_file_count": 46,
+    "canonical_logical_bytes": 1275143
+  },
+  "canonical_state": {
+    "WORLD_HISTORY_changed": false,
+    "canonical_write_operations": 0,
+    "snapshot_manifest_sha256": "760e056fc47c7a44431c38f9f3e66735ee4528adec25cdf8f0a210fb6a0086ee"
+  },
+  "decision_state": {
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "physical_parameters_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false
+  }
+}
