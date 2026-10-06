@@ -1,0 +1,123 @@
+{
+  "schema": "ARCANA_R6_B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX_V1",
+  "stage": "B6N8-L",
+  "baseline_commit": "c18fedb3f3396ea9ac04bc925e6391bad23767d1",
+  "governing_b6n8k_source": "de9e1f5e7aeed9de426d0e570c1d19fb4af3b739",
+  "decision": "REDUCED_MODEL_ROLE_MAPPING_DEFINED_WITH_EXPLICIT_SUPPORT_LIMITS",
+  "authority_rule": "Mappings assign specialist reference roles for this reduced model only; they do not establish cellwise natural composition or Earth observational authority.",
+  "spatial_inventory": {
+    "grid": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2 native 180x360 cell support",
+    "native_cell_count": 64800,
+    "continental_thermal_support_cells": 14258,
+    "ocean_cells_total": 50542,
+    "ocean_positive_age_hwr_eligible_cells": 49362,
+    "ocean_positive_age_excluded_or_unresolved_cells": 1072,
+    "age_zero_selected_ridge_cells": 108,
+    "buck_target_support": "UNKNOWN_NOT_SELECTED; B6N8-F section/support authority remains separate",
+    "projection": "No resampling, interpolation, or spatial-resolution promotion is authorized by this mapping."
+  },
+  "domain_id_semantics": {
+    "physical_crust_domain_id": {
+      "field": "physical_crust_domain_id",
+      "categorical": true,
+      "ocean_id": 1,
+      "continental_ids": [2, 3, 4, 5, 6],
+      "interpolation": "PROHIBITED",
+      "role_mapping_class": "REDUCED_MODEL_ADAPTATION"
+    },
+    "continental_thermal_domain_id": {
+      "field": "continental_thermal_domain_id",
+      "classes": {"1": "COLD_STABLE", "2": "NORMAL", "3": "HOT_EXTENDED"},
+      "authorized_use": ["continental authored surface heat-flow value", "authored total lithosphere thickness"],
+      "composition_inference": false
+    }
+  },
+  "support_rows": [
+    {
+      "support": "native cells physical_crust_domain_id=2..6 with valid B-v2 continental thermal-class fields",
+      "cell_count": 14258,
+      "material_role": "CONTINENTAL_CRUST_REFERENCE over authored crust thickness; LITHOSPHERIC_MANTLE_REFERENCE below crust to authored total model thickness",
+      "vertical_geometry": "crustal_thickness_m; total reference thickness by thermal class (200000/135000/80000 m); positive mantle residual required",
+      "surface_boundary": "exact authored q by thermal class: 0.045/0.060/0.085 W m-2; TSurf reference 280 K, sensitivity 250..300 K",
+      "mapping": "REDUCED_MODEL_ADAPTATION",
+      "temporal_scope": "T0 input; conditional frozen-configuration scenarios over T0-T1, not a physical history",
+      "uncertainty": "continental q numeric uncertainty UNKNOWN; TSurf range is parameter sensitivity, not probability",
+      "eligibility": "CONDITIONALLY_ELIGIBLE; exact native support only, valid geometry and source fields required"
+    },
+    {
+      "support": "native cells physical_crust_domain_id=1, positive age, valid HWR applicability and complete boundary/process support",
+      "cell_count": 49362,
+      "material_role": "OCEANIC_CRUST_REFERENCE over authored ocean crust thickness; LITHOSPHERIC_MANTLE_REFERENCE under the selected HWR column mapping",
+      "vertical_geometry": "authored ocean crust thickness and HWR-derived effective profile/LAB under B6N8-J; reject nonpositive mantle residual",
+      "surface_boundary": "HWR-2 q(t) only for t>0 and only under explicit age/support adapter; finite-plate model configuration, not observed Earth field",
+      "mapping": "REDUCED_MODEL_ADAPTATION",
+      "temporal_scope": "conditional deterministic material-column age adapter; not Eulerian geology history or spreading law",
+      "uncertainty": "material/model/parameter/support dimensions remain distinct",
+      "eligibility": "CONDITIONALLY_ELIGIBLE; outside minimum continental Buck target unless selected later"
+    },
+    {
+      "support": "108 selected ridge cells with authored ocean age exactly zero",
+      "cell_count": 108,
+      "material_role": "OCEANIC_CRUST_REFERENCE plus conditional mantle reference",
+      "surface_boundary": "authored q=0.3 W m-2; HWR is not evaluated at geological age zero; initializer uses derived effective age about 2.87057 Ma only as a profile index",
+      "mapping": "EXACT_EXISTING_MAPPING for T0 authored q and separate initializer rule; temporal adapter UNKNOWN",
+      "temporal_scope": "no T0-T1 ridge production/replacement history",
+      "uncertainty": "ridge/accretion applicability and evolution UNKNOWN",
+      "eligibility": "OUT_OF_SCOPE for T0-T1 provider envelope until an explicit ridge temporal rule is authorized"
+    },
+    {
+      "support": "1072 positive-age ocean cells excluded by HWR support audit",
+      "cell_count": 1072,
+      "material_role": "UNKNOWN_SUPPORT_MAPPING / UNKNOWN_APPLICABILITY",
+      "surface_boundary": "not assigned by adjacency inference; HWR fail closed",
+      "mapping": "UNKNOWN",
+      "temporal_scope": "unknown",
+      "uncertainty": "unclassified divergent-boundary adjacency and ridge-support overlap; preserve UNKNOWN",
+      "eligibility": "OUT_OF_SCOPE pending source/boundary adjudication"
+    },
+    {
+      "support": "physical_crust_domain_id=2 transitional-margin cells",
+      "cell_count": 34,
+      "material_role": "CONTINENTAL_CRUST_REFERENCE only as reduced categorical branch role; not a compositional claim",
+      "surface_boundary": "continental thermal class only where that source class is present and valid",
+      "mapping": "REDUCED_MODEL_ADAPTATION",
+      "temporal_scope": "conditional frozen model-support scenario; physical land/ocean transition history UNKNOWN",
+      "uncertainty": "physical identity/migration unbound",
+      "eligibility": "CONDITIONALLY_ELIGIBLE only while all required categorical support and class joins are valid"
+    }
+  ],
+  "property_applicability": [
+    {"property": "k", "units": "W m-1 K-1", "reference_exists": true, "reference": {"continental_crust": 2.5, "oceanic_crust": 2.2, "mantle": 3.3}, "sensitivity": "Use only the already-governed per-role source intervals; do not cross-join independent extrema as a probability distribution.", "support_binding": "CONDITIONAL_ROLE_JOIN", "temporal_role": "STATIC_MODEL_CONFIGURATION_SCENARIO_ONLY", "provider_ready": false},
+    {"property": "rho", "units": "kg m-3", "reference_exists": true, "reference": {"continental_crust": 2800, "oceanic_crust": 2890, "mantle": 3300}, "support_binding": "CONDITIONAL_ROLE_JOIN", "temporal_role": "STATIC_MODEL_CONFIGURATION_SCENARIO_ONLY", "provider_ready": false},
+    {"property": "Cp", "units": "J kg-1 K-1", "reference_exists": true, "reference": {"continental_crust": 1000, "oceanic_crust": 1000, "mantle": 1200}, "support_binding": "CONDITIONAL_ROLE_JOIN", "temporal_role": "STATIC_MODEL_CONFIGURATION_SCENARIO_ONLY", "provider_ready": false},
+    {"property": "kappa", "units": "m2 s-1", "reference_exists": true, "relation": "k/(rho*Cp) from the same coherent material tuple", "support_binding": "DERIVED_ONLY_WHEN_TUPLE_BOUND", "temporal_role": "DERIVED_CONFIGURATION", "independent_tuning": false, "provider_ready": false},
+    {"property": "A_C", "units": "W m-3", "reference_exists": true, "reference": {"continental_crust": 8e-7, "oceanic_crust": 3e-7}, "sensitivity": "existing material-reference ranges, including explicit zero endpoint where specified", "semantic_status": "STATIC_MODEL_SOURCE_CONFIGURATION_SCENARIO; physical temporal history UNKNOWN", "support_binding": "CONDITIONAL_ROLE_JOIN", "zero_default": false, "provider_ready": false},
+    {"property": "A_M", "units": "W m-3", "reference_exists": true, "reference": {"lithospheric_mantle": 2e-8}, "sensitivity": "existing 0..4e-8 W m-3 range; zero is an explicit sensitivity endpoint, never an implicit default", "semantic_status": "STATIC_MODEL_SOURCE_CONFIGURATION_SCENARIO; physical temporal history UNKNOWN", "support_binding": "CONDITIONAL_ROLE_JOIN", "provider_ready": false}
+  ],
+  "source_term_semantics": {
+    "RADIOGENIC_HEAT": "A_C/A_M are model source-term configuration by assigned reference material role; no cellwise geochemical field or temporal history is established.",
+    "SURFACE_HEAT_FLOW": "boundary flux with branch-specific authority; not interchangeable with volumetric production",
+    "GEOTHERM": "derived temperature profile; neither q nor A alone defines it",
+    "physical_constancy_claim": false
+  },
+  "buck_interface": {
+    "thermal_output_support": "native cell/profile IDs plus source-cell lineage, categorical physical and thermal domain IDs, vertical datum/interface geometry, and material-role IDs",
+    "profile": "T(z) on declared native vertical support with units, scenario/config/recipe identity, uncertainty, validity and provenance",
+    "section_authority": "not provided; B6N8-F owns section, center/orientation, aggregation and mapping",
+    "field_to_section_extraction": "REQUIRES_SECTION_AUTHORITY and, if not exact support, a separately governed spatial aggregation/interpolation rule"
+  },
+  "unknown_policy": "Fail closed. No unknown support, age, material role, or history is converted to zero, a default class, or a constant physical history.",
+  "non_actions": {
+    "new_physical_parameter_selected": false,
+    "new_boundary_value_selected": false,
+    "new_acceptance_tolerance_selected": false,
+    "T0_or_T1_state_generated": false,
+    "provider_implemented": false,
+    "WORLD_HISTORY_accessed": false,
+    "WORLD_HISTORY_changed": false,
+    "Buck_section_materialized": false,
+    "Buck_mechanics_executed": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false
+  }
+}

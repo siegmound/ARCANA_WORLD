@@ -1,0 +1,147 @@
+{
+  "schema": "ARCANA_R6_PRE_T1_THERMAL_BOUNDARY_AND_SUPPORT_ADAPTER_V0",
+  "stage": "B6N8-L",
+  "status": "CONDITIONAL_REDUCED_MODEL_ADAPTER_DEFINED_PHYSICAL_HISTORY_REMAINS_UNKNOWN",
+  "baseline_commit": "c18fedb3f3396ea9ac04bc925e6391bad23767d1",
+  "authority": {
+    "B6N8K_source": "de9e1f5e7aeed9de426d0e570c1d19fb4af3b739",
+    "B6N8K_attestation": "docs/arcana/qualifications/R6_B6N8K_ATTESTATION.json",
+    "B6N8J_initializer": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+    "B6N8J_initializer_status": "selected reduced-model reference initializer for T0 profile construction only; no profile generated",
+    "B6N8K_configuration_rule": "FROZEN_T0_CONFIGURATION_FOR_REDUCED_THERMAL_EVOLUTION is a MODEL_CONFIGURATION_APPROXIMATION; physical invariance is not asserted"
+  },
+  "time_domain": {
+    "start_age_Ma": 210.0,
+    "end_age_Ma": 209.97287659484368,
+    "elapsed_years": 27123.40515632,
+    "causal_order": ["T0", "PRE_EVENT_REDUCED_THERMAL_EVOLUTION", "T1_PRE_EVENT", "B6N1_ACTIVATION", "T1_POST_EVENT", "B6N2_POST_EVENT_KINEMATICS"],
+    "B6N2_forcing_during_T0_T1": false,
+    "Buck_Ux_or_post_event_extension_during_T0_T1": false,
+    "age_direction": "Ma decreases forward in time"
+  },
+  "support_contract": {
+    "native_grid": "B_PANGAEA_LIKE_LATE_TRIASSIC_v2 cell-centered 180x360; 64800 cells",
+    "minimum_model_support": "explicitly eligible native continental thermal columns for a future continental Buck initialization; no Buck-target cells/section are selected by this artifact",
+    "continental": {"count": 14258, "eligibility": "conditional on valid physical_crust_domain_id 2..6, thermal class, crust geometry, positive mantle residual, and role join"},
+    "positive_age_ocean_optional": {"count": 49362, "eligibility": "conditional on positive finite age, HWR validity, and stable model material/support identity"},
+    "ocean_excluded": {"positive_age_unresolved_count": 1072, "ridge_age_zero_count": 108, "rule": "exclude from this T0-T1 provider envelope until their distinct temporal/support rules are closed"},
+    "identity_approximation": "MODEL_SUPPORT_IDENTITY_FIXED may be used only for admitted reduced-model columns; it is not proof of physical support invariance. Unsupported class, domain, or identity change invalidates the scenario.",
+    "spatial_projection": "none; no resampling or resolution promotion"
+  },
+  "scenario_set": {
+    "construction": "Deterministic endpoint/reference scenarios from already-existing authority ranges. Axes are separately named and replayable; no probability distributions, correlations, or newly invented joint combinations.",
+    "surface_temperature": [
+      {"id": "TSURF_LOW", "value_K": 250, "authority": "existing B6N8-I specialist sensitivity bound", "temporal_semantics": "constant model boundary over T0-T1 only"},
+      {"id": "TSURF_REFERENCE", "value_K": 280, "authority": "existing B6N8-I specialist reference", "temporal_semantics": "constant model boundary over T0-T1 only"},
+      {"id": "TSURF_HIGH", "value_K": 300, "authority": "existing B6N8-I specialist sensitivity bound", "temporal_semantics": "constant model boundary over T0-T1 only"}
+    ],
+    "continental_surface_flux": {
+      "values_W_m2": {"COLD_STABLE": 0.045, "NORMAL": 0.06, "HOT_EXTENDED": 0.085},
+      "authority": "ratified authored continental T0 boundary field on exact native thermal-class support",
+      "temporal_semantics": "conditional held model-boundary scenario; physical q history unknown",
+      "uncertainty": "no numeric q uncertainty interval authorized"
+    },
+    "lower_boundary_parameters": {
+      "continental": "derive T_ad(H) with the already-authorized adiabat and the same coherent mantle alpha/Cp/g/Tp tuple; H is authored model-base thickness, not physical LAB",
+      "oceanic": "use coupled HWR-2 Tb/zp terminal model boundary only on admitted positive-age support; do not reinterpret zp as universal LAB",
+      "parameter_endpoints": "use only existing B6N8-I reference/range endpoints as separately identified one-factor sensitivity cases; no invented cross-correlation or probabilities"
+    },
+    "radiogenic_source": {
+      "A_C_W_m3": {"continental_reference": 8e-7, "oceanic_reference": 3e-7, "existing_sensitivity_only": true},
+      "A_M_W_m3": {"mantle_reference": 2e-8, "existing_sensitivity_range_W_m3": [0, 4e-8], "zero_is_implicit_default": false},
+      "temporal_semantics": "STATIC_MODEL_SOURCE_CONFIGURATION_SCENARIO over the interval; not a claim that physical production/history is constant",
+      "support_semantics": "assigned role-scoped homogeneous bulk model columns only; no cellwise geochemical source field"
+    },
+    "ridge": {"status": "EXCLUDED_FROM_TEMPORAL_ENVELOPE", "reason": "age-zero HWR is invalid; the existing effective-age inversion is a T0 profile index, not a temporal age/advection law"}
+  },
+  "adapters": [
+    {
+      "id": "CONTINENTAL_HELD_MODEL_BOUNDARY_V0",
+      "type": "CONSTANT_REDUCED_MODEL_SCENARIO",
+      "inputs": ["native cell ID", "continental thermal class", "authored q_s", "TSurf scenario", "authored crust and total model thickness", "role-bound material tuple", "A_C/A_M scenario"],
+      "outputs": ["T0 initializer boundary values", "held T0-T1 model surface boundary", "held role-scoped source configuration", "scenario provenance"],
+      "units": {"temperature": "K", "heat_flux": "W m-2", "source": "W m-3", "length": "m"},
+      "support": "exact eligible native continental cells only",
+      "uncertainty": "source/range/model-form/support dimensions remain separate",
+      "validity": "reduced conduction scenario only; no physical surface or radiogenic temporal history inferred",
+      "replay": "deterministic from parent hashes, role join, scenario IDs, and versioned initializer"
+    },
+    {
+      "id": "POSITIVE_AGE_OCEAN_MATERIAL_COLUMN_AGE_V0",
+      "type": "DETERMINISTIC_REDUCED_MODEL_ADAPTER",
+      "inputs": ["positive T0 ocean age", "native cell/material identity", "T0<T<=T1 model time coordinate", "version-pinned HWR-2 config", "role-bound properties"],
+      "rule": "age_model(t) = age_T0 + (T0_age_Ma - t_age_Ma), for t in [T1,T0]; equivalently add elapsed years converted to Ma. This is a frozen material-column model coordinate, not a spreading-rate or Eulerian cell-history claim.",
+      "outputs": ["positive HWR model age", "HWR q(t)/profile inputs on admitted support"],
+      "units": {"age": "Ma", "elapsed": "year", "heat_flux": "W m-2"},
+      "support": "49362 currently admitted positive-age ocean cells only, subject to per-cell validation",
+      "uncertainty": "HWR structural/parameter/support uncertainty kept distinct",
+      "validity": "t>0 and frozen model support/material identity; fail closed if a validity or support condition fails",
+      "replay": "deterministic from T0 age parent hash, HWR identity/config, time, and support IDs"
+    }
+  ],
+  "hwr_semantic_crosswalk": [
+    {"field": "t / oceanic_lithosphere_age_ma", "source_meaning": "positive age in the finite-plate cooling model; geological age parent is an authored T0 physical field", "source_support": "native positive-age ocean support; exact zero is excluded from HWR", "source_temporal_role": "HWR model age at evaluation", "target_role": "positive-age material-column model coordinate, advanced deterministically by elapsed interval under frozen model-support identity", "mapping": "DETERMINISTIC_REDUCED_MODEL_ADAPTATION", "lossiness": "does not describe Eulerian age-field evolution, spreading rate, ridge production or physical support history", "status": "CONDITIONAL_POSITIVE_AGE_ONLY"},
+    {"field": "k", "source_meaning": "effective constant mantle thermal conductivity in HWR-2", "source_support": "role-scoped specialist mantle tuple", "source_temporal_role": "model/material configuration", "target_role": "mantle conductivity for the reduced thermal column where role-bound", "mapping": "REDUCED_MODEL_ADAPTATION", "lossiness": "constant effective value omits T/P dependence; preserve existing sensitivity interval", "status": "CONDITIONAL_ROLE_SUPPORT_JOIN"},
+    {"field": "rho_m", "source_meaning": "HWR reference mantle density", "source_support": "role-scoped specialist mantle tuple", "source_temporal_role": "model/material configuration", "target_role": "density coefficient within HWR and any coherent reduced tuple", "mapping": "REDUCED_MODEL_ADAPTATION", "lossiness": "reference density does not supply full rho(z,T) or crust density structure", "status": "CONDITIONAL_ROLE_SUPPORT_JOIN"},
+    {"field": "Cp", "source_meaning": "HWR mantle isobaric heat capacity", "source_support": "role-scoped specialist mantle tuple", "source_temporal_role": "model/material configuration", "target_role": "HWR diffusivity/energy coefficient", "mapping": "REDUCED_MODEL_ADAPTATION", "lossiness": "constant reference; derive kappa with same k and rho; do not independently tune", "status": "CONDITIONAL_ROLE_SUPPORT_JOIN"},
+    {"field": "kappa", "source_meaning": "HWR thermal diffusivity k/(rho_m*Cp)", "source_support": "same coherent mantle tuple", "source_temporal_role": "derived model configuration", "target_role": "diffusion coefficient", "mapping": "DETERMINISTIC", "lossiness": "uncertainty depends on input tuple/covariance, which is not fully specified", "status": "DERIVED_WHEN_TUPLE_BOUND"},
+    {"field": "Tb", "source_meaning": "HWR finite-plate basal/reference temperature parameter", "source_support": "paired HWR model configuration", "source_temporal_role": "model boundary parameter, not physical time history", "target_role": "paired base/adiabatic reference for eligible ocean initializer columns", "mapping": "REDUCED_MODEL_ADAPTATION", "lossiness": "not a globally observed mantle temperature or universal LAB temperature", "status": "CONDITIONAL_PAIRED_CONFIGURATION"},
+    {"field": "zp", "source_meaning": "HWR finite thermal-plate depth to coupled basal isothermal boundary", "source_support": "paired HWR column configuration", "source_temporal_role": "model geometry/configuration parameter", "target_role": "HWR profile terminal/base location; LAB derived by profile/adiabat crossing", "mapping": "REDUCED_MODEL_ADAPTATION", "lossiness": "must not be relabelled physical LAB or applied as universal lithosphere thickness", "status": "CONDITIONAL_PAIRED_CONFIGURATION"},
+    {"field": "H(t) / q_HWR", "source_meaning": "finite-plate model surface conductive heat flux under the selected HWR equation", "source_support": "valid positive-age ocean cells only", "source_temporal_role": "age-dependent model output", "target_role": "ocean surface flux input to initializer/profile projection", "mapping": "DETERMINISTIC_AFTER_AGE_ADAPTER", "lossiness": "not an authorized total hydrothermal heat-loss correction and not a global physical heat-flow history", "status": "CONDITIONAL_POSITIVE_AGE_ONLY"},
+    {"field": "alpha", "source_meaning": "mantle thermal expansion coefficient used by the adiabat", "source_support": "shared coherent mantle reference tuple", "source_temporal_role": "model configuration", "target_role": "adiabat/lower-boundary relation", "mapping": "REDUCED_MODEL_ADAPTATION", "lossiness": "constant coefficient approximation; no independent temporal law", "status": "CONDITIONAL_ROLE_SUPPORT_JOIN"}
+  ],
+  "unknowns_and_fail_closed": [
+    "Physical TSurf history is UNKNOWN; a held value is MODEL_BOUNDARY_CONSTANT, not PHYSICAL_SURFACE_TEMPERATURE_CONSTANT.",
+    "Physical A_C/A_M history is UNKNOWN; held values are source-configuration scenarios only.",
+    "Continental authored q is a T0 boundary parent, not a time function.",
+    "1072 ocean cells remain UNKNOWN/unsupported; no adjacency-based reassignment.",
+    "108 ridge cells retain age zero and authored ridge flux; no HWR evaluation at zero and no ridge temporal continuation is authorized.",
+    "No unknown is mapped to zero, no-change, non-limiting, or a default Earth value."
+  ],
+  "readiness": {
+    "L_BOUNDARY_AND_SUPPORT_SCENARIOS_DEFINED": "CONDITIONALLY_YES_FOR_EXPLICITLY_ELIGIBLE_SUPPORT",
+    "PRE_T1_THERMAL_PROVIDER_INPUT_SCHEMA_COMPLETE": "YES_FOR_DECLARED_REQUIRED_CATEGORIES_WITHIN_SCOPED_ENVELOPE",
+    "PRE_T1_THERMAL_PROVIDER_INPUT_VALUES_AVAILABLE": "NO_REQUIRED_T0_INITIAL_CONDITION_PENDING_MATERIALIZATION_AND_VALIDATION",
+    "PRE_T1_THERMAL_PROVIDER_INPUTS_COMPLETE": "NO_REQUIRED_T0_INITIAL_CONDITION_NOT_AVAILABLE",
+    "T0_TO_T1_TEMPORAL_INPUTS_COMPLETE": "NO_REQUIRED_T0_INITIAL_CONDITION_NOT_AVAILABLE; the boundary/support scenario envelope remains conditionally defined",
+    "PRE_T1_THERMAL_PROVIDER_EXECUTABLE": false,
+    "T0_THERMAL_STATE_READY_FOR_MATERIALIZATION": "CONDITIONALLY_AFTER_ROLE_SUPPORT_JOIN_AND_INITIALIZER_PROVIDER_VALIDATION",
+    "T1_PRE_EVENT_STATE_READY_FOR_MATERIALIZATION": false,
+    "CONDUCTION_ONLY_SUFFICIENCY": "UNRESOLVED_NOT_PROVEN",
+    "BUCK_TARGET_INPUT_READY": false,
+    "reason": "No Buck section/support is selected; B6N8-F mapping remains required, and no production provider/profile has been implemented."
+  },
+  "prohibited_inferences": [
+    "B6N2 post-event kinematics are not T0-T1 forcing.",
+    "A frozen reduced-model boundary/configuration does not prove physical constancy.",
+    "The HWR effective ridge age is not geological age.",
+    "HWR zp is not physical LAB or a universal lower boundary.",
+    "Thermal native support is not Buck section authority.",
+    "A sensitivity range does not authorize missing temporal history or establish a probability distribution."
+  ],
+  "non_actions": {
+    "new_physical_parameter_selected": false,
+    "new_boundary_value_selected": false,
+    "new_acceptance_tolerance_selected": false,
+    "new_thermal_equation_selected": false,
+    "T0_physical_state_generated": false,
+    "T1_physical_state_generated": false,
+    "production_provider_implemented": false,
+    "production_thermal_evolution_executed": false,
+    "conduction_only_declared_sufficient": false,
+    "physical_LAB_selected": false,
+    "Buck_mechanics_executed": false,
+    "Buck_section_materialized": false,
+    "Buck_Ux_materialized": false,
+    "Buck_Xe_selected": false,
+    "Buck_XL_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "finite_Buck_forcing_executed": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "canonical_forward_propagation_executed": false,
+    "WORLD_HISTORY_accessed": false,
+    "WORLD_HISTORY_changed": false
+  }
+}
