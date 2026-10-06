@@ -86,6 +86,72 @@
     ],
     "no_numeric_values_selected": true
   },
+  "pre_activation_history_requirement": {
+    "activation_age_ma": 209.97287659484368,
+    "initial_value_required_by_model_is_distinct_from_authority_to_create_value_at_T1": true,
+    "temporal_origin_categories": [
+      "STATIC_PLANETARY_PARAMETER",
+      "PREEXISTING_EVOLVED_STATE",
+      "ACTIVATION_INITIALIZED_STATE",
+      "POST_ACTIVATION_DERIVED_STATE",
+      "UNKNOWN"
+    ],
+    "candidate_prehistory_sensitive_quantities_if_required_by_selected_equations": [
+      "thermal structure",
+      "crustal thickness",
+      "lithospheric thickness",
+      "strength state / rheological structure",
+      "density/material structure",
+      "inherited weaknesses",
+      "lower-crustal state"
+    ],
+    "values_assigned": false,
+    "present_earth_or_published_reference_values_imported": false,
+    "B6N8D_must_assess_if_required_state_can_be_initialized_only_at_activation": true,
+    "if_state_should_have_evolved_before_T1_classify_as": [
+      "already represented by existing ARCANA state",
+      "derivable from existing history",
+      "reconstructible under qualified authority",
+      "requires a new upstream historical state/domain"
+    ],
+    "silent_backcast_permitted": false,
+    "authorial_constant_substitutes_for_historical_evolution_without_separate_authorization": false,
+    "unadjudicated_temporal_origin": "UNKNOWN"
+  },
+  "next_scientific_stage": {
+    "stage": "B6N8-D — BUCK EQUATION-LEVEL RECOVERY AND MINIMAL-STATE REDUCTION AUDIT",
+    "authorization": "PROCEED_TO_B6N8D_EQUATION_LEVEL_AUDIT",
+    "scope": [
+      "published governing equations",
+      "complete causal dependency graph",
+      "evolved state variables",
+      "algebraic variables",
+      "parameters",
+      "forcing",
+      "boundary and initial conditions",
+      "thermal dependencies",
+      "strength and force dependencies",
+      "lower-crustal flow dependencies where applicable",
+      "widening/localization criterion and provenance",
+      "minimum causally faithful state",
+      "unsafe-to-remove dependencies",
+      "candidate reductions and reduction safety",
+      "initialization and prehistory requirements",
+      "uncertainty sources",
+      "validity limits",
+      "B6N2-to-model forcing requirements"
+    ],
+    "prototype_implementation_authorized": false,
+    "physical_model_selection_authorized": false,
+    "numerical_coefficient_selection_authorized": false,
+    "T2_authorized": false,
+    "dt2_authorized": false,
+    "B6O_authorized": false,
+    "canonical_propagation_authorized": false,
+    "mechanics_execution_authorized": false,
+    "topology_mutation_authorized": false,
+    "support_remapping_authorized": false
+  },
   "common_interface": {
     "initialize_process_state":"bind model/version, authority, POST_EVENT checkpoint, support, initialized state, parameters, uncertainty and replay identity; fail closed on missing required input",
     "consume_B6N2_kinematic_forcing":"accept only governed vectors and separately authorized experiment interval; map frame/support explicitly; never relabel geometric mismatch as opening",
@@ -142,12 +208,16 @@
   "authorization_gates": {
     "physical_rift_model_selected":false,
     "physical_rift_model_qualified":false,
+    "prototype_implemented":false,
+    "physical_parameters_selected":false,
     "SECOND_DT_SELECTED":false,
+    "dt2_years":null,
     "T2_CREATED":false,
     "B6O_authorized":false,
     "mechanics_executed":false,
     "canonical_forward_propagation_executed":false,
     "topology_transition_executed":false,
+    "support_remapping_executed":false,
     "WORLD_HISTORY_changed":false
   },
   "sources": [
