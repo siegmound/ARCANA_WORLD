@@ -1,0 +1,180 @@
+{
+  "L1_L14": [
+    {
+      "basis": "Native B-v2 support counts and class/domain semantics enumerated; no claim of global provider coverage.",
+      "gate": "L1_THERMAL_SUPPORT_DOMAIN_DEFINED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "Categorical crust-domain-to-reference-role and vertical layer-role rules defined; not a natural composition map and per-column joins still require validation.",
+      "gate": "L2_SUPPORT_MATERIAL_MAPPING",
+      "status": "PASS_SCOPED_REDUCED_MODEL_ADAPTATION"
+    },
+    {
+      "basis": "Role-scoped k/rho/Cp/A references exist; applicability is conditional on exact support-role join and provider validation. kappa derives from one coherent tuple.",
+      "gate": "L3_PROPERTY_APPLICABILITY_BOUND",
+      "status": "CONDITIONAL"
+    },
+    {
+      "basis": "A_C/A_M may be explicit static model source configuration scenarios under frozen T0 configuration; physical source history/constancy remains UNKNOWN.",
+      "gate": "L4_RADIOGENIC_SOURCE_TEMPORAL_ROLE",
+      "status": "CONDITIONAL_SCENARIO"
+    },
+    {
+      "basis": "TSurf range and continental q values support finite held model-boundary scenarios only; physical histories remain UNKNOWN.",
+      "gate": "L5_SURFACE_BOUNDARY_TEMPORAL_AUTHORITY",
+      "status": "PASS_SCOPED_MODEL_SCENARIOS"
+    },
+    {
+      "basis": "Initializer-compatible model base/paired HWR basal configuration can be scenario input; no physical LAB/base history asserted.",
+      "gate": "L6_LOWER_BOUNDARY_TEMPORAL_AUTHORITY",
+      "status": "PASS_SCOPED_MODEL_SCENARIOS"
+    },
+    {
+      "basis": "Versioned HWR-2 can consume a deterministic positive-age material-column time coordinate on admitted support; ridge remains excluded.",
+      "gate": "L7_HWR_TEMPORAL_ADAPTER",
+      "status": "PASS_SCOPED_POSITIVE_AGE_ONLY"
+    },
+    {
+      "basis": "49362 positive-age cells conditionally admitted; 1072 unresolved cells and 108 age-zero ridge cells excluded from T0-T1 provider envelope.",
+      "gate": "L8_OCEANIC_SUPPORT_ELIGIBILITY",
+      "status": "PARTIAL_FAIL_CLOSED"
+    },
+    {
+      "basis": "Frozen model support identity is an explicit approximation for eligible columns only; physical invariance remains unproven.",
+      "gate": "L9_SUPPORT_TEMPORAL_IDENTITY",
+      "status": "PASS_SCOPED_MODEL_APPROXIMATION"
+    },
+    {
+      "basis": "Finite deterministic existing-reference/end-point scenario axes defined without invented bounds or probabilities.",
+      "gate": "L10_BOUNDARY_SCENARIO_ENVELOPE",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "Contract is complete for admitted scenario support; unknown support/history and physical-history claims remain explicitly excluded.",
+      "gate": "L11_TEMPORAL_ADAPTER_CONTRACT_COMPLETE",
+      "status": "CONDITIONAL"
+    },
+    {
+      "basis": "Native profile, geometry, material, uncertainty and lineage fields are specified; section extraction remains under B6N8-F.",
+      "gate": "L12_BUCK_THERMAL_OUTPUT_INTERFACE",
+      "status": "PASS_INTERFACE_ONLY"
+    },
+    {
+      "basis": "All required input categories are declared for the scoped envelope, but the required T0 profile/initial-condition value is not materialized or provider-validated; provider execution is not ready.",
+      "gate": "L13_PROVIDER_INPUTS_COMPLETE",
+      "status": "INPUT_SCHEMA_COMPLETE_VALUES_UNAVAILABLE"
+    },
+    {
+      "basis": "The finite scenario envelope defines the scope of the next adjudication, but any computation consuming T0-to-T1 evolution must wait for the required T0 profile/initializer output and validation; sufficiency remains undecided.",
+      "gate": "L14_READY_FOR_CONDUCTION_SUFFICIENCY_ADJUDICATION",
+      "status": "CONDITIONAL_T0_INITIAL_CONDITION_PENDING"
+    }
+  ],
+  "L_qualified_source_commit": "c0584aff534e328b4c0f682c26e2690e45efe202",
+  "L_verdict_preserved": "PASS_B6N8L_BOUNDARY_SCENARIOS_AUTHORIZED_SUPPORT_APPLICABILITY_REMAINS",
+  "M1_M14": [
+    {
+      "basis": "Four meanings defined; no sufficiency result claimed.",
+      "gate": "M1_SUFFICIENCY_SEMANTICS_DEFINED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "Observable classes recovered; target depths and section remain unselected.",
+      "gate": "M2_DOWNSTREAM_OBSERVABLES_IDENTIFIED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "No thermal tolerance; define authorially after target selection.",
+      "gate": "M3_ACCEPTANCE_CRITERION_AUTHORITY",
+      "status": "BLOCKED_UNRESOLVED"
+    },
+    {
+      "basis": "Same operator and initial profile required; scenario contrast only.",
+      "gate": "M4_PROFILE_INDEPENDENT_BOUNDARY_SENSITIVITY",
+      "status": "PASS_CONDITIONAL"
+    },
+    {
+      "basis": "Same operator and initial profile required; model source contrast only.",
+      "gate": "M5_PROFILE_INDEPENDENT_SOURCE_SENSITIVITY",
+      "status": "PASS_CONDITIONAL"
+    },
+    {
+      "basis": "Absolute and differential dependencies separated.",
+      "gate": "M6_INITIAL_PROFILE_DEPENDENCE_CLASSIFIED",
+      "status": "PASS"
+    },
+    {
+      "basis": "Pre-event process/geometry bounds absent; no velocity-zero assumption.",
+      "gate": "M7_OMITTED_PROCESS_IDENTIFIABILITY",
+      "status": "BLOCKED_AUTHORITY"
+    },
+    {
+      "basis": "Admitted joined support only; global support not qualified.",
+      "gate": "M8_SUPPORT_RESTRICTED_IDENTIFIABILITY",
+      "status": "PASS_SCOPED_WITH_BLOCKERS"
+    },
+    {
+      "basis": "B6N8-F mapping remains open.",
+      "gate": "M9_BUCK_TARGET_DEPENDENCE",
+      "status": "BLOCKED_TARGET_UNSELECTED"
+    },
+    {
+      "basis": "Four result classes kept distinct.",
+      "gate": "M10_ABSOLUTE_VS_DIFFERENTIAL_DECISIONS",
+      "status": "PASS"
+    },
+    {
+      "basis": "Required for absolute state/final accuracy, not same-operator sensitivity.",
+      "gate": "M11_T0_PROFILE_NECESSITY",
+      "status": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION"
+    },
+    {
+      "basis": "Implementation/validation only after exact support join.",
+      "gate": "M12_INITIALIZER_IMPLEMENTATION_TRIGGER",
+      "status": "CONDITIONALLY_AUTHORIZED_AFTER_SUPPORT_BINDING"
+    },
+    {
+      "basis": "Minimum provider output specified.",
+      "gate": "M13_MINIMUM_T0_OUTPUT_CONTRACT",
+      "status": "PASS_REQUIREMENTS_DEFINED"
+    },
+    {
+      "basis": "No runtime execution authorization.",
+      "gate": "M14_READY_FOR_NEXT_EXECUTION_STAGE",
+      "status": "CONDITIONAL_T0_INITIALIZER_PROVIDER_IMPLEMENTATION_AFTER_SUPPORT_BINDING"
+    }
+  ],
+  "WORLD_HISTORY_accessed": false,
+  "WORLD_HISTORY_changed": false,
+  "decision": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION",
+  "governing_L_attestation_commit": "725974b2c5b2635f94b61de7342132e54fdb7f92",
+  "readiness": {
+    "T0_TO_T1_evolution_authorized": false,
+    "T0_materialization_authorized": false,
+    "absolute_T1_state": "REQUIRES_T0_PROFILE",
+    "boundary_scenario_sensitivity": "CONDITIONALLY_IDENTIFIABLE_WITHOUT_T0_FOR_SAME_OPERATOR",
+    "final_conduction_sufficiency": "NOT_DECIDABLE_YET",
+    "initializer_implementation": "CONDITIONALLY_AUTHORIZED_AFTER_SUPPORT_BINDING",
+    "input_values": "T0_PROFILE_UNAVAILABLE",
+    "provider": "NOT_IMPLEMENTED",
+    "provider_executable": false,
+    "schema_contract": "COMPLETE_FOR_SCOPED_ENVELOPE"
+  },
+  "schema": "ARCANA_R6_B6N8M_B6N8L_READINESS_OVERLAY_V1",
+  "source_baseline": "725974b2c5b2635f94b61de7342132e54fdb7f92",
+  "stage": "B6N8-M",
+  "support_counts": {
+    "age_zero_ridge_excluded": 108,
+    "continental_thermal_cells": 14258,
+    "ocean_cells_total": 50542,
+    "positive_age_ocean_conditionally_eligible": 49362,
+    "positive_age_ocean_unresolved": 1072
+  },
+  "temporal_frame": {
+    "B6N2_forcing_during_T0_T1": false,
+    "T0_Ma": 210.0,
+    "T1_PRE_EVENT_Ma": 209.97287659484368,
+    "elapsed_years": 27123.40515632
+  }
+}

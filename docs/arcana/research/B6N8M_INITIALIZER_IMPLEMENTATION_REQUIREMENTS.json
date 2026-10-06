@@ -1,0 +1,134 @@
+{
+  "WORLD_HISTORY_accessed": false,
+  "WORLD_HISTORY_changed": false,
+  "implementation_trigger": "CONDITIONALLY_AUTHORIZED_AFTER_SUPPORT_BINDING",
+  "initializer_family": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+  "material_roles_and_properties": [
+    {
+      "property": "k",
+      "provider_ready": false,
+      "reference": {
+        "continental_crust": 2.5,
+        "mantle": 3.3,
+        "oceanic_crust": 2.2
+      },
+      "reference_exists": true,
+      "sensitivity": "Use only the already-governed per-role source intervals; do not cross-join independent extrema as a probability distribution.",
+      "support_binding": "CONDITIONAL_ROLE_JOIN",
+      "temporal_role": "STATIC_MODEL_CONFIGURATION_SCENARIO_ONLY",
+      "units": "W m-1 K-1"
+    },
+    {
+      "property": "rho",
+      "provider_ready": false,
+      "reference": {
+        "continental_crust": 2800,
+        "mantle": 3300,
+        "oceanic_crust": 2890
+      },
+      "reference_exists": true,
+      "support_binding": "CONDITIONAL_ROLE_JOIN",
+      "temporal_role": "STATIC_MODEL_CONFIGURATION_SCENARIO_ONLY",
+      "units": "kg m-3"
+    },
+    {
+      "property": "Cp",
+      "provider_ready": false,
+      "reference": {
+        "continental_crust": 1000,
+        "mantle": 1200,
+        "oceanic_crust": 1000
+      },
+      "reference_exists": true,
+      "support_binding": "CONDITIONAL_ROLE_JOIN",
+      "temporal_role": "STATIC_MODEL_CONFIGURATION_SCENARIO_ONLY",
+      "units": "J kg-1 K-1"
+    },
+    {
+      "independent_tuning": false,
+      "property": "kappa",
+      "provider_ready": false,
+      "reference_exists": true,
+      "relation": "k/(rho*Cp) from the same coherent material tuple",
+      "support_binding": "DERIVED_ONLY_WHEN_TUPLE_BOUND",
+      "temporal_role": "DERIVED_CONFIGURATION",
+      "units": "m2 s-1"
+    },
+    {
+      "property": "A_C",
+      "provider_ready": false,
+      "reference": {
+        "continental_crust": 8e-07,
+        "oceanic_crust": 3e-07
+      },
+      "reference_exists": true,
+      "semantic_status": "STATIC_MODEL_SOURCE_CONFIGURATION_SCENARIO; physical temporal history UNKNOWN",
+      "sensitivity": "existing material-reference ranges, including explicit zero endpoint where specified",
+      "support_binding": "CONDITIONAL_ROLE_JOIN",
+      "units": "W m-3",
+      "zero_default": false
+    },
+    {
+      "property": "A_M",
+      "provider_ready": false,
+      "reference": {
+        "lithospheric_mantle": 2e-08
+      },
+      "reference_exists": true,
+      "semantic_status": "STATIC_MODEL_SOURCE_CONFIGURATION_SCENARIO; physical temporal history UNKNOWN",
+      "sensitivity": "existing 0..4e-8 W m-3 range; zero is an explicit sensitivity endpoint, never an implicit default",
+      "support_binding": "CONDITIONAL_ROLE_JOIN",
+      "units": "W m-3"
+    }
+  ],
+  "minimum_output": {
+    "geometry_identity": "T0 geometry/configuration hash and reduced-model freeze label",
+    "initializer_provenance": "recipe/version, input authority identities, source accounting, scenario/config identity and deterministic replay identity",
+    "material_layer_identity": "discrete layer/material role identity; never interpolate IDs",
+    "property_tuple_references": "coherent k,rho,Cp references; kappa replay-derived as k/(rho Cp)",
+    "support_id": "exact native support/column ID",
+    "temperature": "T(z,T0) in K at T0=210 Ma",
+    "uncertainty": "source/range, role applicability, model form, support and validity kept distinct; no invented probabilities",
+    "validity": "T0 selector, admitted support, explicit UNKNOWN/exclusion mask and validity domain",
+    "vertical_coordinate": "ordered native vertical datum and layer/interface coordinates"
+  },
+  "must_not": [
+    "T1 profile or any time step",
+    "Buck section/force/kinematics fields",
+    "new physical values or tolerance",
+    "global support claim",
+    "steady state unless separately authorized",
+    "canonical publication without separate authority"
+  ],
+  "readiness": {
+    "T0_profile_generated": false,
+    "implementation_conditionally_authorized_after_join": true,
+    "initializer_family_selected": true,
+    "initializer_interface_bound": true,
+    "provider_execution_authorized": false,
+    "provider_implemented": false,
+    "support_material_join_complete": false
+  },
+  "schema": "ARCANA_R6_B6N8M_INITIALIZER_IMPLEMENTATION_REQUIREMENTS_V1",
+  "scope": "Provider implementation/validation only on explicitly joined admitted support; not T0 materialization or T0-to-T1 evolution.",
+  "source_baseline": "725974b2c5b2635f94b61de7342132e54fdb7f92",
+  "stage": "B6N8-M",
+  "support_dependency": {
+    "Buck_support": "not selected by B6N8-L",
+    "age_zero_ridge_excluded": 108,
+    "positive_age_ocean_eligible": 49362,
+    "unresolved_positive_age_ocean_excluded": 1072
+  },
+  "validation_targets": [
+    "support/material-role join with fail-closed behavior",
+    "contract/time binding exactly T0",
+    "initializer equations and source accounting consistent; no steady-state substitution",
+    "surface/base/layer interface compatibility under already selected initializer contract",
+    "finite/plausibility checks only within initializer authority",
+    "deterministic replay and payload identity",
+    "parameter/source sensitivity with UNKNOWN preserved",
+    "no support expansion or missing-to-zero mapping",
+    "uncertainty and provenance propagation",
+    "no T1/evolution, no WORLD_HISTORY publication"
+  ]
+}

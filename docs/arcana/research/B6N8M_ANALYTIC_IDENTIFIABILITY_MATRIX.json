@@ -1,0 +1,615 @@
+{
+  "WORLD_HISTORY_accessed": false,
+  "WORLD_HISTORY_changed": false,
+  "acceptance_criterion": {
+    "Buck_force_sign_is_temperature_error_tolerance": false,
+    "existing_thermal_tolerance": "UNRESOLVED",
+    "later_margin_derived_rule_possible_only_after": [
+      "section/support",
+      "uncertainty",
+      "numerical error",
+      "thermal-to-force sensitivity"
+    ],
+    "status": "AUTHORIAL_MODEL_TOLERANCE_REQUIRED_AFTER_TARGET_DEFINITION"
+  },
+  "analytic_questions": [
+    {
+      "blocker": "T0 profile materialization/validation",
+      "can_bound_now": false,
+      "id": "absolute_T1_state",
+      "requires_Buck_section": "NO_FOR_PROFILE; YES_FOR_FORCE_USE",
+      "requires_T0_profile": "YES",
+      "result": "unknown because heat-equation initial-condition term remains unbounded",
+      "target": "T(z,T1), gradients and interfaces",
+      "question": "Is the absolute T1 temperature profile, including gradients and interfaces, identifiable without a materialized T0 profile?",
+      "requires_new_external_authority": false,
+      "evidence": [
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Absolute state and omitted processes",
+          "basis": "The absolute solution contains the propagated initial-profile term; the profile value is unavailable."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8D_BUCK_EQUATION_REGISTRY.json",
+          "locator": "B91-EQ1",
+          "basis": "The recovered temperature equation depends on initial T(z), diffusivity, velocity, source, and boundary conditions."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8L_THERMAL_PROVIDER_INPUT_CONTRACT.json",
+          "locator": "T0_thermal_initial_condition",
+          "basis": "The scoped provider contract requires support-aware T(z,T0); its values are unavailable. This is an existing ARCANA initialization prerequisite, not by itself a need for new external authority."
+        }
+      ]
+    },
+    {
+      "blocker": "operator/target/support pairing and physical-history interpretation remain limited",
+      "can_bound_now": true,
+      "id": "boundary_scenario_delta",
+      "requires_Buck_section": "NO_FOR_COLUMN_RESPONSE",
+      "requires_T0_profile": "NO_IF_SAME_INITIAL_STATE_AND_IDENTICAL_OPERATOR",
+      "result": "difference equation has zero initial data; initial term cancels conditionally",
+      "target": "scenario-to-scenario temperature response",
+      "question": "Can boundary-scenario temperature differences be identified without the exact T0 profile when initial data and the linear operator are identical?",
+      "requires_new_external_authority": false,
+      "evidence": [
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Profile-independent results",
+          "basis": "Subtracting solutions with equal initial data and identical operator, material, geometry/support, and source cancels the common initial-condition term."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8L_BOUNDARY_TEMPORAL_ADAPTER.json",
+          "locator": "qualified boundary scenario contract",
+          "basis": "The comparison is restricted to the already-qualified model-boundary scenario envelope; it does not claim physical boundary histories."
+        }
+      ]
+    },
+    {
+      "blocker": "support-role join/source temporal history; no numerical value bound evaluated",
+      "can_bound_now": true,
+      "id": "source_scenario_delta",
+      "requires_Buck_section": "NO_FOR_COLUMN_DELTA",
+      "requires_T0_profile": "NO_IF_SAME_OPERATOR_AND_INITIAL_STATE",
+      "result": "maximum principle gives norm(deltaT) <= dt sup|deltaA/(rho Cp)| for compatible fixed difference boundaries",
+      "target": "delta T induced by delta A_C/A_M",
+      "question": "Can source-only temperature differences be bounded without the exact T0 profile under identical coefficients, initial data, and compatible fixed difference boundaries?",
+      "requires_new_external_authority": false,
+      "evidence": [
+        {
+          "type": "analytic_derivation",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Profile-independent results",
+          "basis": "The report states the source-only difference equation and maximum-principle bound under bounded delta_A, identical coefficients and initial data, and compatible fixed difference boundaries."
+        }
+      ]
+    },
+    {
+      "blocker": "actual profile and role binding",
+      "can_bound_now": false,
+      "id": "property_corner_delta",
+      "requires_Buck_section": "CONDITIONAL",
+      "requires_T0_profile": "YES_IN_GENERAL",
+      "result": "operator difference acts on unknown initial gradients; cancellation is not profile independent",
+      "target": "difference when k/rho/Cp changes",
+      "question": "Can the thermal response to changed k, rho, or Cp be determined without the T0 profile and exact material-role binding?",
+      "requires_new_external_authority": false,
+      "evidence": [
+        {
+          "type": "analytic_derivation",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Profile-independent results",
+          "basis": "The report states that when coefficients differ, operator-difference terms act on unknown T0 gradients, so cancellation is not profile-independent."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_INITIALIZER_IMPLEMENTATION_REQUIREMENTS.json",
+          "locator": "material_roles_and_properties",
+          "basis": "Coherent property tuples and support/material-role joins are existing ARCANA binding prerequisites; no new external authority is asserted for this analytic row."
+        }
+      ]
+    },
+    {
+      "blocker": "geometry/interface migration authority",
+      "can_bound_now": false,
+      "id": "geometry_migration",
+      "requires_Buck_section": "NO_FOR_GEOMETRY; YES_FOR_FORCE_MAPPING",
+      "requires_T0_profile": "PROFILE_ALONE_INSUFFICIENT",
+      "result": "REQUIRES_GEOMETRY_EVOLUTION_MODEL; frozen configuration is not zero physical error",
+      "target": "operator/support effect from moving interfaces",
+      "question": "Can the thermal-operator and support effects of physical geometry or interface migration be bounded without a governed geometry-evolution model?",
+      "requires_new_external_authority": false,
+      "evidence": [
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Absolute state and omitted processes",
+          "basis": "Physical structural geometry T0-to-T1 remains EVOLUTION_UNKNOWN; frozen T0 geometry is only a reduced-model configuration."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json",
+          "locator": "geometry/support evolution scope",
+          "basis": "The current reduced contract does not establish physical geometry invariance. Closure requires an ARCANA geometry-evolution model/authority; the current evidence does not specifically require a new external provider."
+        }
+      ]
+    },
+    {
+      "blocker": "pre-event velocity/process bounds",
+      "can_bound_now": false,
+      "id": "omitted_advection_and_flow",
+      "requires_Buck_section": "CONDITIONAL",
+      "requires_T0_profile": "PROFILE_ALONE_INSUFFICIENT",
+      "result": "REQUIRES_NEW_PROCESS_AUTHORITY; no authorized U means Pe not evaluable, not U=0",
+      "target": "pre-event thermal transport/process contribution",
+      "question": "Can omitted pre-event advection and lower-crustal flow contributions be bounded from current ARCANA authority without a pre-event process model or driver?",
+      "requires_new_external_authority": true,
+      "evidence": [
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Absolute state and omitted processes; M7_OMITTED_PROCESS_IDENTIFIABILITY",
+          "basis": "Pre-event velocity, vertical transport, and lower-crustal-flow bounds are absent; no authorized U means Pe is not evaluable, not zero. A new physical-process authority/constraint is needed to bound these omitted contributions."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8D_BUCK_DEPENDENCY_GRAPH.json",
+          "locator": "B91-EQ1 and lower-crust flow dependencies",
+          "basis": "The recovered model explicitly depends on velocity and lower-crustal flow-related terms; this external-authority flag applies only to resolving the currently unbounded physical process contribution, not to all model dependencies."
+        }
+      ]
+    },
+    {
+      "blocker": "exact per-column joins; excluded classes",
+      "can_bound_now": true,
+      "id": "admitted_support",
+      "requires_Buck_section": "YES_FOR_BUCK_RELEVANCE",
+      "requires_T0_profile": "YES_FOR_ABSOLUTE; NO_FOR_SAME_OPERATOR_DELTA",
+      "result": "restricted analytical sensitivity possible; not global",
+      "target": "column responses on exact joined eligible cells",
+      "question": "On which exact joined admitted columns can the conditional analytical sensitivity results be used, while retaining unresolved and age-zero exclusions?",
+      "requires_new_external_authority": false,
+      "evidence": [
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX.json",
+          "locator": "admitted support and exclusion counts",
+          "basis": "Existing support authority defines 14,258 continental cells, 49,362 conditionally eligible positive-age ocean cells, 1,072 unresolved positive-age ocean cells, and 108 age-zero ridge exclusions; exact per-column joins remain required."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Support and next provider trigger",
+          "basis": "Sensitivity is restricted to joined eligible columns and does not assert global coverage."
+        }
+      ]
+    },
+    {
+      "blocker": "B6N8-F plus authorial tolerance",
+      "can_bound_now": false,
+      "id": "Buck_tolerance",
+      "requires_Buck_section": "YES",
+      "requires_T0_profile": "YES_FOR_ABSOLUTE_MARGIN",
+      "result": "target and acceptance rule not selected",
+      "target": "thermal-induced force/decision error",
+      "question": "Can thermal error be judged against a Buck-relevant acceptance tolerance before the Buck section/support, target observables, and authorial tolerance are selected?",
+      "requires_new_external_authority": false,
+      "evidence": [
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Sufficiency meanings and observables; M3 and M9",
+          "basis": "Target depths, section, norm/weighting, and thermal tolerance are unselected; the report requires an authorial acceptance rule after target definition."
+        },
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8D_BUCK_MINIMUM_STATE_AUDIT.json",
+          "locator": "minimum state / force-relevance dependencies",
+          "basis": "Buck-relevant evaluation depends on section and physical support mapping; those are B6N8-F/authorial prerequisites, not evidence of a new external authority requirement for the tolerance itself."
+        }
+      ]
+    },
+    {
+      "blocker": "T0 profile, target, threshold, support/property joins and process authority",
+      "can_bound_now": false,
+      "id": "worst_case_envelope",
+      "requires_Buck_section": "YES",
+      "requires_T0_profile": "YES_FOR_ABSOLUTE_AND_PROPERTY_VARYING_ENVELOPE",
+      "result": "INCONCLUSIVE",
+      "target": "robust sufficient/insufficient decision",
+      "question": "Can a robust conduction-sufficiency or insufficiency conclusion be made over the intended support without a bounded T0 profile, selected Buck target/tolerance, completed joins, and bounds on omitted processes?",
+      "requires_new_external_authority": true,
+      "evidence": [
+        {
+          "type": "qualified_artifact",
+          "artifact": "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+          "locator": "Decision; M7_OMITTED_PROCESS_IDENTIFIABILITY",
+          "basis": "The report explicitly leaves robust sufficiency/insufficiency inconclusive because profile, target/tolerance, joins, and omitted-process bounds are unresolved."
+        }
+      ]
+    }
+  ],
+  "authorities": {
+    "D_Buck_equations": [
+      {
+        "dependencies": [
+          "initial T(z)",
+          "thermal diffusivity κ",
+          "vertical velocity v(z,t)",
+          "volumetric heating divided by ρCp, H",
+          "surface and lithosphere-base temperature conditions"
+        ],
+        "id": "B91-EQ1",
+        "output": "temperature T(z,t) at center of the extension zone"
+      },
+      {
+        "dependencies": [
+          "EQ2",
+          "EQ3",
+          "T(z)",
+          "crust/mantle material boundary h",
+          "lithosphere depth Z_L"
+        ],
+        "id": "B91-ENV",
+        "output": "integrated lithospheric yield strength"
+      },
+      {
+        "dependencies": [
+          "EQ3 rheology A,n,E",
+          "T_M",
+          "thermal gradient at Moho",
+          "representative deviatoric stress"
+        ],
+        "id": "B91-EQ10",
+        "output": "effective lower-crust viscosity/scale or diffusivity inputs used by Eq. 8"
+      },
+      {
+        "dependencies": [
+          "g",
+          "density anomaly δρ(z)",
+          "vertical geometry z",
+          "horizontal support/reference length L"
+        ],
+        "id": "B91-EQ11",
+        "output": "buoyancy force from isostatically compensated density anomaly"
+      },
+      {
+        "dependencies": [
+          "initial/final strength",
+          "initial/final thermal buoyancy",
+          "initial/final crustal buoyancy"
+        ],
+        "id": "B91-DF",
+        "output": "signed change in local force required for continued extension"
+      },
+      {
+        "dependencies": [
+          "α",
+          "ρ_m",
+          "g",
+          "T_M−T_s",
+          "Z_m",
+          "ε"
+        ],
+        "id": "B91-A3-A4",
+        "output": "thermal buoyancy-force change estimate"
+      }
+    ],
+    "K_attestation_commit": "c18fedb3f3396ea9ac04bc925e6391bad23767d1",
+    "K_equation": "rho*Cp*dT/dt = div(k grad T) + A",
+    "K_qualified_source": "de9e1f5e7aeed9de426d0e570c1d19fb4af3b739",
+    "L_attestation_commit": "725974b2c5b2635f94b61de7342132e54fdb7f92",
+    "L_attestation_source": "c0584aff534e328b4c0f682c26e2690e45efe202",
+    "L_verdict": "PASS_B6N8L_BOUNDARY_SCENARIOS_AUTHORIZED_SUPPORT_APPLICABILITY_REMAINS"
+  },
+  "boundary_identifiability": {
+    "caveat": "Existing diagnostic uses idealized homogeneous half-space and 30 K endpoint departure from reference; it is not temporal-history authority or an absolute state bound. Different operators/support lose cancellation.",
+    "derivation": "For two solutions with equal unknown initial data and identical linear operator/coefficient/support/geometry/source, theta=T_A-T_B has theta(T0)=0; the common initial-data term cancels, leaving boundary-difference forcing.",
+    "existing_K_step_diagnostic": {
+      "fraction_and_max_abs_deltaT_K_by_depth_below_surface": [
+        {
+          "deltaT_abs_max_K": 30.0,
+          "depth_km": 0,
+          "fraction_range": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "deltaT_abs_max_K": 15.4993507,
+          "depth_km": 1,
+          "fraction_range": [
+            0.287914023,
+            0.516645023
+          ]
+        },
+        {
+          "deltaT_abs_max_K": 5.83840598,
+          "depth_km": 2,
+          "fraction_range": [
+            0.033551781,
+            0.194613533
+          ]
+        },
+        {
+          "deltaT_abs_max_K": 0.0355297862,
+          "depth_km": 5,
+          "fraction_range": [
+            1.0751342e-07,
+            0.00118432621
+          ]
+        },
+        {
+          "deltaT_abs_max_K": 2.6574277e-09,
+          "depth_km": 10,
+          "fraction_range": [
+            2.22965535e-26,
+            8.85809232e-11
+          ]
+        },
+        {
+          "deltaT_abs_max_K": 5.39467603e-37,
+          "depth_km": 20,
+          "fraction_range": [
+            3.01608165e-100,
+            1.79822534e-38
+          ]
+        }
+      ],
+      "limits": "Uses existing TSurf 250-300 K span as a conservative 30 K departure from 280 K for one instantaneous step, not as an authorized temporal variation bound. Values are analytic diagnostics.",
+      "method": "Diagnostic half-space solution: deltaT(z,t)/deltaT_surface = erfc(z/(2*sqrt(kappa*t))). No ARCANA trajectory or probability distribution is implied.",
+      "surface_deltaT_bound_K": 30
+    },
+    "status": "BOUNDARY_SENSITIVITY_IDENTIFIABLE_WITHOUT_T0_PROFILE_CONDITIONALLY"
+  },
+  "decision": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION",
+  "downstream_observables": {
+    "Buck_equation_dependencies": [
+      {
+        "dependencies": [
+          "initial T(z)",
+          "thermal diffusivity κ",
+          "vertical velocity v(z,t)",
+          "volumetric heating divided by ρCp, H",
+          "surface and lithosphere-base temperature conditions"
+        ],
+        "id": "B91-EQ1",
+        "output": "temperature T(z,t) at center of the extension zone"
+      },
+      {
+        "dependencies": [
+          "EQ2",
+          "EQ3",
+          "T(z)",
+          "crust/mantle material boundary h",
+          "lithosphere depth Z_L"
+        ],
+        "id": "B91-ENV",
+        "output": "integrated lithospheric yield strength"
+      },
+      {
+        "dependencies": [
+          "EQ3 rheology A,n,E",
+          "T_M",
+          "thermal gradient at Moho",
+          "representative deviatoric stress"
+        ],
+        "id": "B91-EQ10",
+        "output": "effective lower-crust viscosity/scale or diffusivity inputs used by Eq. 8"
+      },
+      {
+        "dependencies": [
+          "g",
+          "density anomaly δρ(z)",
+          "vertical geometry z",
+          "horizontal support/reference length L"
+        ],
+        "id": "B91-EQ11",
+        "output": "buoyancy force from isostatically compensated density anomaly"
+      },
+      {
+        "dependencies": [
+          "initial/final strength",
+          "initial/final thermal buoyancy",
+          "initial/final crustal buoyancy"
+        ],
+        "id": "B91-DF",
+        "output": "signed change in local force required for continued extension"
+      },
+      {
+        "dependencies": [
+          "α",
+          "ρ_m",
+          "g",
+          "T_M−T_s",
+          "Z_m",
+          "ε"
+        ],
+        "id": "B91-A3-A4",
+        "output": "thermal buoyancy-force change estimate"
+      }
+    ],
+    "L_authorized_observables": [
+      "temperature difference at explicitly authorized target depths",
+      "profile difference norm over common native vertical support",
+      "thermal contribution to the Buck force calculation on a later B6N8-F-selected section"
+    ],
+    "unselected": [
+      "target depths",
+      "Buck section/support",
+      "support aggregation",
+      "profile norm/weighting",
+      "acceptance tolerance"
+    ]
+  },
+  "geometry": {
+    "frozen_T0_geometry": "reduced-model configuration approximation only",
+    "physical_STRUCTURAL_GEOMETRY_T0_TO_T1": "EVOLUTION_UNKNOWN",
+    "status": "REQUIRES_GEOMETRY_EVOLUTION_MODEL for physical error bound"
+  },
+  "governing_L_attestation_commit": "725974b2c5b2635f94b61de7342132e54fdb7f92",
+  "initial_condition_memory": {
+    "diffusion_diagnostic": {
+      "crust_2sqrt_m": [
+        1330.8,
+        2180.7
+      ],
+      "crust_sqrt_m": [
+        665.4,
+        1090.4
+      ],
+      "interpretation": "Boundary perturbations are predominantly near-boundary effects on this timescale in a homogeneous constant-diffusivity half-space. This does not establish boundary constancy or negligible effects at an unselected Buck target.",
+      "length_definition": "sqrt(kappa*t); 2*sqrt(kappa*t) reports the error-function scale",
+      "mantle_2sqrt_m": [
+        1554.6,
+        1997.0
+      ],
+      "mantle_sqrt_m": [
+        777.3,
+        998.5
+      ]
+    },
+    "diffusivity_ranges_m2_s": {
+      "authority_limit": "Existing specialist reference corners only; target material applicability is conditional. kappa is derived coherently as k/(rho*Cp).",
+      "crust": [
+        5.172413793103448e-07,
+        1.388888888888889e-06
+      ],
+      "mantle": [
+        7.058823529411765e-07,
+        1.1647727272727272e-06
+      ]
+    },
+    "interpretation": "Diffusion scale is not proof of full-profile retention or erasure. Broad/low-wavenumber modes can retain memory; exact memory depends on profile spectrum, geometry, boundaries and interfaces."
+  },
+  "initializer_necessity": "REQUIRED_ONLY_FOR_ABSOLUTE_STATE_NOT_FOR_SENSITIVITY",
+  "non_actions": {
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_mechanics_executed": false,
+    "Buck_section_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "T0_physical_state_generated": false,
+    "T0_profile_generated": false,
+    "T1_physical_state_generated": false,
+    "T2_CREATED": false,
+    "conduction_only_declared_insufficient": false,
+    "conduction_only_declared_sufficient": false,
+    "dt2_years": null,
+    "initializer_provider_implemented": false,
+    "new_acceptance_threshold_selected": false,
+    "new_boundary_value_selected": false,
+    "new_physical_parameter_selected": false,
+    "production_thermal_evolution_executed": false,
+    "production_thermal_provider_implemented": false
+  },
+  "omitted_processes": [
+    {
+      "basis": "B6N8-J selected transient thermal initializer family and existing specialist relation",
+      "classification": "CANDIDATE_REQUIRED_REDUCED_TERM",
+      "process": "Fourier conduction with coherent k,rho,Cp"
+    },
+    {
+      "basis": "Present in initializer equation; A_C/A_M and target applicability are unselected; zero is not implicit",
+      "classification": "REQUIRED_IF_INCLUDED_BY_SELECTED_COLUMN_MODEL; temporal/material binding unresolved",
+      "process": "Radiogenic source A"
+    },
+    {
+      "basis": "No T0-T1 histories. Diffusion diagnostic alone cannot establish target robustness",
+      "classification": "SENSITIVITY_REQUIRED_AND_TEMPORAL_AUTHORITY_MISSING",
+      "process": "Surface and basal boundary variation"
+    },
+    {
+      "basis": "No world-time age/support adapter",
+      "classification": "UNKNOWN_AUTHORITY",
+      "process": "Ocean age/support migration and ridge/new-crust change"
+    },
+    {
+      "basis": "STRUCTURAL_GEOMETRY_T0_TO_T1 remains EVOLUTION_UNKNOWN",
+      "classification": "UNKNOWN_AUTHORITY",
+      "process": "Geometry/interface migration and background tectonic evolution"
+    },
+    {
+      "basis": "No pre-event velocity/thermal coupling bound; B6N2 is post-event only",
+      "classification": "UNKNOWN_AUTHORITY",
+      "process": "Vertical or mantle thermal advection"
+    },
+    {
+      "basis": "No pre-event driver or closure bound; not inferred from later rifting",
+      "classification": "UNKNOWN_AUTHORITY",
+      "process": "Lower-crustal flow"
+    },
+    {
+      "basis": "Activation is at T1 endpoint",
+      "classification": "NOT_APPLICABLE_WITHIN_OPEN_T0_T1_INTERVAL",
+      "process": "B6N1 activation and B6N2 post-event kinematics"
+    }
+  ],
+  "peclet": {
+    "B6N2_post_event_velocity_imported": false,
+    "formula": "Pe=U L/kappa",
+    "missing_U_means_zero": false,
+    "status": "NOT_PHYSICALLY_EVALUABLE_NO_AUTHORIZED_PRE_EVENT_U_OR_TARGET_L"
+  },
+  "profile_dependence": {
+    "Buck_force_relevance": "REQUIRES_T0_PROFILE_AND_BUCK_SECTION",
+    "absolute_T1_profile": "REQUIRES_ACTUAL_T0_PROFILE",
+    "changed_property_operator_sensitivity": "REQUIRES_ACTUAL_T0_PROFILE_IN_GENERAL",
+    "physical_geometry_effect": "REQUIRES_GEOMETRY_EVOLUTION_MODEL",
+    "same_operator_boundary_sensitivity": "BOUNDED_WITHOUT_EXACT_T0_PROFILE",
+    "same_operator_source_sensitivity": "BOUNDED_WITHOUT_EXACT_T0_PROFILE"
+  },
+  "schema": "ARCANA_R6_B6N8M_ANALYTIC_IDENTIFIABILITY_MATRIX_V1",
+  "scope": "analytical prerequisite and identifiability audit; no T0 profile or evolution executed",
+  "source_baseline": "725974b2c5b2635f94b61de7342132e54fdb7f92",
+  "source_identifiability": {
+    "bound": "||theta(t)||_infinity <= (t-t0) sup|delta_A/(rho Cp)| under bounded source differences and a common uniformly parabolic operator; no numeric result inferred.",
+    "equation": "rho Cp d(theta)/dt = div(k grad(theta)) + delta_A; theta(T0)=0 for source-only contrast with same coefficients and homogeneous difference boundaries.",
+    "physical_history": "A_C/A_M are model source configuration scenarios, not actual temporal history or constancy.",
+    "status": "SOURCE_SCENARIO_DIFFERENCE_PROFILE_INDEPENDENT_CONDITIONALLY"
+  },
+  "stage": "B6N8-M",
+  "sufficiency_definition": {
+    "DOWNSTREAM_BUCK_RELEVANCE_SUFFICIENCY": "Thermal error does not compromise Buck force/rheology/buoyancy evaluation on the selected section/support.",
+    "MODEL_FORM_SUFFICIENCY": "Conduction adequately represents relevant processes on the declared support/time, with omitted processes excluded or bounded.",
+    "SUPPORT_COVERAGE_SUFFICIENCY": "All intended supports have valid joined inputs or explicit UNKNOWN/exclusion.",
+    "THERMAL_STATE_ACCURACY_SUFFICIENCY": "T1 profile and agreed derived observables meet an authorized error rule."
+  },
+  "support": {
+    "admitted_scope": "14,258 continental thermal cells and 49,362 conditionally eligible positive-age ocean cells, after exact support/material-role joins; these joins are not asserted complete.",
+    "age_zero_ridge": "108 cells remain exact age zero and outside current temporal-provider path.",
+    "counts": {
+      "age_zero_ridge_excluded": 108,
+      "continental_thermal_cells": 14258,
+      "ocean_cells_total": 50542,
+      "positive_age_ocean_conditionally_eligible": 49362,
+      "positive_age_ocean_unresolved": 1072
+    },
+    "future_Buck_support": "UNKNOWN_NOT_SELECTED_BY_B6N8-L",
+    "unresolved_ocean": "1,072 UNKNOWN/unresolved cells remain outside current temporal-provider path."
+  },
+  "temporal_frame": {
+    "B6N2_forcing_during_T0_T1": false,
+    "T0_Ma": 210.0,
+    "T1_PRE_EVENT_Ma": 209.97287659484368,
+    "causal_order": [
+      "T0",
+      "pre-event thermal evolution",
+      "T1_PRE_EVENT",
+      "B6N1 activation",
+      "T1_POST_EVENT",
+      "B6N2 post-event kinematics"
+    ],
+    "elapsed_seconds": 855949570561.0841,
+    "elapsed_years": 27123.40515632
+  },
+  "worst_case": {
+    "reason": "No bounded T0 profile class, Buck target, acceptance tolerance, complete support/material joins, or bounds for omitted physical processes.",
+    "result": "INCONCLUSIVE"
+  }
+}
