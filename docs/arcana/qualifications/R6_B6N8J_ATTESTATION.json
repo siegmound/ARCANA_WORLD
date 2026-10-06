@@ -1,0 +1,314 @@
+{
+  "schema": "ARCANA_R6_B6N8J_ATTESTATION_V1",
+  "stage": "B6N8-J",
+  "qualification_scope": "Final clean-source qualification and attestation of committed B6N8-J research/model-authority artifacts only; no runtime/provider/physical-state execution.",
+  "qualified_source_commit": "4f5f305a04717ffddced32b1c9a1b8fc2dd975e6",
+  "b6n8i_attestation_parent": "5196b89d8f24cce528a84a9cf6f01c93457a8a24",
+  "verdict": "PASS_B6N8J_MODEL_FAMILY_SELECTED_T0_INITIALIZER_CONDITIONALLY_READY_T0_TO_T1_EVOLUTION_AUTHORITY_REMAINS",
+  "evidence": {
+    "root_relative_to_qualification_evidence": "B6N8J/4f5f305a04717ffddced32b1c9a1b8fc2dd975e6",
+    "artifact_manifest_path": "EVIDENCE_ARTIFACT_MANIFEST.json",
+    "artifact_manifest_entries": 3,
+    "artifact_manifest_sha256": "ff77fa5ad3060dd1f301f1f41c90a68b114610d0e18af13dc3b28626e228afe4",
+    "aggregate_content_sha256": "8e7783bc51022f50bc1e3a64f501a67b9804c4a7a3aba1208130e1236ba44712",
+    "seal_algorithm": "All regular files recursively except EVIDENCE_CONTENT_SHA256.txt, including EVIDENCE_ARTIFACT_MANIFEST.json; POSIX relative paths sorted by casefold while preserving original spelling; each entry is UTF-8 relative path + NUL + raw bytes, with no inter-entry/trailing separator.",
+    "manifest_artifacts_verified": true,
+    "aggregate_seal_independently_recomputed": true
+  },
+  "source_gate": {
+    "branch": "r6/b6n8j-t0-initializer-reduced-evolution-adjudication",
+    "head_type": "commit",
+    "direct_parent": "5196b89d8f24cce528a84a9cf6f01c93457a8a24",
+    "worktree_clean_at_qualification": true,
+    "exact_source_delta": [
+      "docs/arcana/research/B6N8J_T0_INITIALIZER_REDUCED_EVOLUTION_ADJUDICATION.md",
+      "docs/arcana/research/B6N8J_INITIALIZER_CANDIDATE_MATRIX.json",
+      "docs/arcana/research/B6N8J_LAB_BASAL_BOUNDARY_DECISION.json",
+      "docs/arcana/research/B6N8J_REDUCED_THERMAL_MODEL_CONTRACT.json",
+      "docs/arcana/research/B6N8J_THERMAL_DEPENDENCY_DAG.json",
+      "docs/arcana/research/B6N8J_B6N8I_READINESS_OVERLAY.json"
+    ],
+    "executable_code_changed": false,
+    "canonical_mutation": false
+  },
+  "B6N8I_authority": {
+    "attestation_present_unchanged_at_direct_parent": true,
+    "qualified_source_commit": "71a7d9dd38706dcf96e4c6df60f913e15f9dd672",
+    "verdict": "PASS_B6N8I_BINDING_CONTRACT_DEFINED_THERMAL_COLUMN_COMPATIBILITY_AND_LAB_AUTHORITY_REMAIN",
+    "steady_column_compatible_authorized_T0_initializer_available": false,
+    "material_applicability_bound": false,
+    "full_Buck_rheology_required_for_conduction_only": false,
+    "I12": "NOT_READY_COLUMN_COMPATIBILITY_AND_LAB_ROUTE_REMAIN"
+  },
+  "temporal_causal_result": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "T0_TO_T1_YEARS": 27123.40515632,
+    "causal_order": [
+      "T0",
+      "PRE_EVENT_T0_TO_T1_EVOLUTION",
+      "T1_PRE_EVENT",
+      "B6N1_RIFT_PROCESS_ACTIVATION",
+      "T1_POST_EVENT",
+      "B6N2_POST_EVENT_KINEMATICS"
+    ],
+    "RIFT_ACTIVATION_WITHIN_OPEN_INTERVAL_T0_T1": false,
+    "RIFT_ACTIVATION_AT_T1_ENDPOINT": true,
+    "POST_EVENT_KINEMATICS_APPLICABLE_DURING_T0_T1": false,
+    "B6N1_event_age_ma": 209.97287659484368,
+    "B6N1_causal_states_at_event_time": 2,
+    "B6N2_validity_start_age_ma": 209.97287659484368,
+    "B6N2_validity_start_phase": "POST_EVENT"
+  },
+  "B6N2_boundary": {
+    "provides_T0_to_T1_forcing": false,
+    "B6N2_Ux_during_T0_to_T1": false,
+    "post_event_extension_forcing_during_T0_to_T1": false,
+    "post_event_vertical_advection_during_T0_to_T1": false,
+    "Buck_forcing_during_T0_to_T1": false
+  },
+  "structural_evolution": {
+    "STRUCTURAL_GEOMETRY_T0_TO_T1": "EVOLUTION_UNKNOWN",
+    "NO_AUTHORIZED_EVOLUTION_PROCESS_implies_AUTHORIZED_GEOMETRY_INVARIANCE": false,
+    "future_frozen_configuration_classification": "MODEL_CONFIGURATION_APPROXIMATION"
+  },
+  "thermal_event_semantics": {
+    "B6N1_activation_authorizes_instantaneous_thermal_discontinuity": false,
+    "T1_PRE_EVENT_and_T1_POST_EVENT_causally_distinct": true,
+    "temperature_reset_authorized": false,
+    "heat_pulse_authorized": false,
+    "automatic_geotherm_discontinuity_authorized": false,
+    "T1_PRE_EVENT_payload_reuse_for_POST_EVENT": "CONDITIONAL_ON_ABSENCE_OF_SEPARATELY_AUTHORIZED_INSTANTANEOUS_THERMAL_PHYSICS",
+    "physical_state_generated": false
+  },
+  "initializer": {
+    "selected_family": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+    "qualified_source_identifier": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING_V1",
+    "authority_class": "EXISTING_ARCANA_SPECIALIST_MODEL_CONFIGURATION",
+    "scope": "SELECTED_AS_REDUCED_MODEL_REFERENCE_INITIALIZER_FOR_T0_PROFILE_CONSTRUCTION_ONLY",
+    "canonical_physical_truth": false,
+    "T0_state_exists": false,
+    "provider_exists": false,
+    "production_initialization_authorized": false,
+    "steady_column_candidate": {
+      "id": "PRESCRIBED_ANALYTIC_OR_STEADY_COLUMN",
+      "status": "REJECTED",
+      "reason": "Analytic solvability is not state authority; the audited steady candidate fails transient HWR/geometry/basal compatibility."
+    },
+    "readiness_distinctions": {
+      "INITIALIZER_FAMILY_SELECTED": true,
+      "INITIALIZER_INPUTS_BOUND": false,
+      "INITIAL_PROFILE_CONSTRUCTIBLE": "CONDITIONAL_AFTER_REQUIRED_BINDINGS_AND_PROVIDER_VALIDATION",
+      "T0_PHYSICAL_STATE_CONSTRUCTIBLE": "CONDITIONALLY_YES_AFTER_EXPLICIT_ROLE_SUPPORT_BINDING_AND_PROVIDER_VALIDATION",
+      "PROVIDER_IMPLEMENTED": false,
+      "CANONICAL_STATE_PUBLISHED": false
+    },
+    "remaining_initializer_conditions": [
+      "explicit native support/material-role binding",
+      "provider validation",
+      "geometry/support applicability",
+      "required boundary inputs"
+    ]
+  },
+  "domain_base_and_LAB": {
+    "selected_lower_boundary": {
+      "meaning": "REDUCED_MODEL_THERMAL_BASE_WITH_ADIABATIC_MATCH",
+      "continental": "Use authored total thickness H as this model's thermal-base location and impose T(H)=T_ad(H); do not relabel H as mechanical LAB, Buck Xe/XL, or a universal physical LAB.",
+      "positive_age_ocean": "Use the shallowest HWR-2 profile/adiabat crossing; use the HWR finite-plate endpoint only under the source's coupled Tb/zp rule.",
+      "ridge": "Preserve age zero and use the source-defined effective-age inversion/crossing; fail closed on invalid support or crossing.",
+      "physical_equivalence": "None asserted to mechanical, rheological, seismic or compositional LAB."
+    },
+    "semantics": {
+      "THERMAL_LAB": "Thermal profile criterion used by the selected reduced column.",
+      "MECHANICAL_LAB": "Strength/weakening base; not selected or implied.",
+      "RHEOLOGICAL_LAB": "Constitutive threshold; requires rheology and is not selected.",
+      "SEISMIC_LAB": "Seismic transition; no ARCANA field or equivalence selected.",
+      "COMPOSITIONAL_LAB": "Material interface; not inferred from current domain fields.",
+      "MODEL_DOMAIN_BASE": "Computational truncation with declared location and boundary condition, not inherently a physical interface."
+    },
+    "physical_LAB_selected": false,
+    "LAB_field_materialized": false,
+    "iterative_LAB_solver_introduced": false,
+    "dependency_DAG_acyclic": true
+  },
+  "thermal_material_authority": {
+    "applicability": [
+      {
+        "quantity": "k, rho, Cp",
+        "classification": "APPLICABLE_AS_REDUCED_MODEL_REFERENCE",
+        "scope": "Exact reference-layer tuples only; explicit native-support/model-role join still required."
+      },
+      {
+        "quantity": "alpha, gravity",
+        "classification": "APPLICABLE_AS_REDUCED_MODEL_REFERENCE",
+        "scope": "Existing adiabat relation; no broader material/domain extrapolation."
+      },
+      {
+        "quantity": "radiogenic A",
+        "classification": "APPLICABLE_AS_REDUCED_MODEL_REFERENCE",
+        "scope": "Existing class-level model source term; not a geochemical field and not inferred from surface q."
+      },
+      {
+        "quantity": "TSurf, HWR Tb/zp, domain q",
+        "classification": "APPLICABLE_AS_REDUCED_MODEL_REFERENCE",
+        "scope": "Only the support/model scope defined by existing contracts; not globally promoted physical fields."
+      },
+      {
+        "quantity": "material/composition identity",
+        "classification": "REQUIRES_EXPLICIT_MODEL_ROLE_BINDING",
+        "scope": "Do not infer composition from physical crust-domain ID or thermal class."
+      }
+    ],
+    "property_model": {
+      "initializer_form": "constant per existing bulk reference layer, reduced model only",
+      "diffusivity": "kappa = k/(rho*Cp), derived from one coherent tuple, not independently tuned",
+      "uncertainty": "Preserve source intervals, support, model form and validity separately; no probability distribution invented.",
+      "Buck_target_support_fully_bound": false
+    },
+    "diffusivity_relation": "kappa = k / (rho * Cp)",
+    "independent_kappa_tuning": false,
+    "new_numeric_physical_values_selected": false,
+    "boundary_histories": {
+      "T0_surface": "Existing specialist TSurf=280 K nominal with 250-300 K range and the exact governed domain q rule, initializer only; not a global 210 Ma climate field.",
+      "T0_basal": "Model-specific adiabat/finite-plate thermal boundary; no universal Neumann flux, mantle temperature or physical LAB mapping selected.",
+      "surface_history_T0_T1": "UNKNOWN; no constant-world-boundary assumption.",
+      "basal_history_T0_T1": "UNKNOWN; no evolution boundary history selected.",
+      "continental_q_history_T0_T1": "UNKNOWN; authored T0 q is not itself a time function.",
+      "ocean_HWR_history": "HWR is age-dependent in its model coordinate; mapping world elapsed time, support motion and ridge/new-crust behavior over this interval is unbound."
+    },
+    "radiogenic_heat_role": "Existing class-level specialist model source term in the initializer; not inferred from surface heat flow; temporal source history remains unbound.",
+    "J10_conduction_only_sufficiency": "UNRESOLVED_FOR_PRE_EVENT_T0_TO_T1; post-activation B6N1/B6N2 extension is excluded, but boundary histories, pre-T1 geometry/support evolution, material applicability and omitted-process sufficiency remain open",
+    "diffusion_timescale_diagnostic_only": {
+      "seconds": 855949570561.0841,
+      "length_convention": "sqrt(kappa*t); 2*sqrt(kappa*t) is also reported as an error-function e-fold scale.",
+      "crust_kappa_from_existing_reference_corners_m2_s": [
+        5.172413793103448e-07,
+        1.388888888888889e-06
+      ],
+      "crust_sqrt_kappa_t_m": [
+        665.4,
+        1090.4
+      ],
+      "crust_2sqrt_kappa_t_m": [
+        1330.8,
+        2180.7
+      ],
+      "mantle_kappa_existing_range_m2_s": [
+        7.058823529411765e-07,
+        1.1647727272727272e-06
+      ],
+      "mantle_sqrt_kappa_t_m": [
+        777.3,
+        998.5
+      ],
+      "mantle_2sqrt_kappa_t_m": [
+        1554.6,
+        1997.0
+      ],
+      "limits": "Diagnostic only using specialist ranges whose target-material applicability remains conditional. Does not establish a steady initial profile, invariant geometry/boundaries, or negligibility of advection/other processes."
+    }
+  },
+  "T0_T1_readiness": {
+    "T0_initializer_component": "T0_INITIALIZER_COMPONENT_ONLY; FULL_T0_TO_T1_PROVIDER_NOT_READY",
+    "T0_to_T1_evolution": "NO_GOVERNED_PRE_EVENT_BOUNDARY_HISTORIES_REDUCED_EVOLUTION_LAW_OR_CONFIGURATION_EVOLUTION_TREATMENT",
+    "T1_thermal_state": "NO; no executable pre-event T0-to-T1 evolution produces the T1 PRE_EVENT thermal state; POST_EVENT thermal reuse is only conditionally eligible absent a separately authorized instantaneous transition",
+    "FIRST_BUCK_PROCESS_EVALUATION_READY": false,
+    "T0_physical_state_generated": false,
+    "T1_physical_state_generated": false
+  },
+  "J1_J14": {
+    "J1_MATERIAL_APPLICABILITY_BOUND": "PARTIAL_REDUCED_REFERENCE_TUPLES_EXIST; EXPLICIT_NATIVE_SUPPORT_ROLE_JOIN_REQUIRED",
+    "J2_INITIALIZER_FAMILY_SELECTED": "EXISTING_ARCANA_TRANSIENT_COUPLING_SELECTED_FOR_REDUCED_T0_PROFILE_ONLY",
+    "J3_INITIAL_PROFILE_AUTHORITY": "CONDITIONALLY_AUTHORIZED_REPLAYABLE_REDUCED_T0_PROFILE_RECIPE; NO_PROFILE_GENERATED",
+    "J4_SURFACE_BOUNDARY_SELECTED": "EXISTING_T0_REDUCED_MODEL_TSURF_AND_DOMAIN_Q_RULE_ONLY; NO_WORLD_CLIMATE_OR_TEMPORAL_HISTORY",
+    "J5_BASAL_BOUNDARY_SELECTED": "MODEL_SPECIFIC_THERMAL_ADIABAT_MATCH/FINITE_PLATE_RULE_ONLY",
+    "J6_LAB_OR_DOMAIN_BASE_SEMANTICS_RESOLVED": "MODEL_SPECIFIC_THERMAL_BASE_DEFINED; NO_UNIVERSAL_PHYSICAL_LAB_EQUIVALENCE",
+    "J7_NON_CIRCULAR_DEPENDENCY_GRAPH": "PASS_INITIALIZER_DAG_ACYCLIC",
+    "J8_THERMAL_PROPERTY_MODEL_SELECTED": "CONSTANT_PER_REFERENCE_LAYER_FOR_THIS_REDUCED_INITIALIZER_ONLY",
+    "J9_RADIOGENIC_SOURCE_TERM_DECIDED": "EXISTING_A_TERM_INCLUDED_IN_INITIALIZER_RECIPE; TEMPORAL_EVOLUTION_ROLE_OPEN",
+    "J10_CONDUCTION_ONLY_SUFFICIENCY": "UNRESOLVED_FOR_PRE_EVENT_T0_TO_T1; post-activation B6N1/B6N2 extension is excluded, but boundary histories, pre-T1 geometry/support evolution, material applicability and omitted-process sufficiency remain open",
+    "J11_T0_STATE_CONSTRUCTIBILITY": "CONDITIONALLY_YES_AFTER_EXPLICIT_ROLE_SUPPORT_BINDING_AND_PROVIDER_VALIDATION",
+    "J12_T0_TO_T1_EVOLUTION_EXECUTABILITY": "NO_GOVERNED_PRE_EVENT_BOUNDARY_HISTORIES_REDUCED_EVOLUTION_LAW_OR_CONFIGURATION_EVOLUTION_TREATMENT",
+    "J13_T1_THERMAL_STATE_CONSTRUCTIBILITY": "NO; no executable pre-event T0-to-T1 evolution produces the T1 PRE_EVENT thermal state; POST_EVENT thermal reuse is only conditionally eligible absent a separately authorized instantaneous transition",
+    "J14_READY_FOR_THERMAL_PROVIDER_IMPLEMENTATION": "T0_INITIALIZER_COMPONENT_ONLY; FULL_T0_TO_T1_PROVIDER_NOT_READY"
+  },
+  "pre_T0": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "elapsed_years": 27123.40515632,
+    "pre_T0_explicit_integration": "Not needed to evaluate the selected formula if its T0 inputs are authorized; this does not prove prior physical history unnecessary.",
+    "PRE_T0_HISTORY_REQUIRED": "NOT_DEMONSTRATED",
+    "PRE_T0_HISTORY_PROVEN_UNNECESSARY": false,
+    "governed_causal_order": [
+      "T0",
+      "PRE_EVENT_T0_TO_T1_EVOLUTION",
+      "T1_PRE_EVENT",
+      "B6N1_RIFT_PROCESS_ACTIVATION",
+      "T1_POST_EVENT"
+    ],
+    "RIFT_ACTIVATION_WITHIN_OPEN_INTERVAL_T0_T1": false,
+    "RIFT_ACTIVATION_AT_T1_ENDPOINT": true,
+    "POST_EVENT_KINEMATICS_APPLICABLE_DURING_T0_T1": false,
+    "structural_geometry_T0_to_T1": "EVOLUTION_UNKNOWN",
+    "post_event_thermal_transition": "No instantaneous thermal discontinuity is authorized by B6N1 activation alone; T1 PRE_EVENT thermal payload may be reused for T1 POST_EVENT only if no separately authorized instantaneous thermal transition exists.",
+    "T1_PRE_EVENT_or_POST_EVENT_state_generated": false
+  },
+  "finite_residual_set": [
+    "Bind native physical domains/support to reduced reference material roles without asserting composition.",
+    "Confirm whether the continental Tdot snapshot closure applies to the intended T0 profile; it is not an integration law.",
+    "Define governed pre-event surface/basal/q and ocean-age/support histories over T0-to-T1.",
+    "Determine pre-T1 geometry/support/configuration evolution treatment; preserve STRUCTURAL_GEOMETRY_T0_TO_T1=EVOLUTION_UNKNOWN.",
+    "Determine whether conduction-only pre-event evolution is sufficient or whether independently authorized physical coupling/processes are required.",
+    "Bind uncertainty/validity and map the thermal result to B6N8-F target section support."
+  ],
+  "next_stage_boundary": "B6N8-J closes initializer model-family selection only. The next closure targets residual pre-T1 evolution authority; this attestation does not start that stage.",
+  "WORLD_HISTORY": {
+    "accessed_during_B6N8J_qualification": false,
+    "changed": false,
+    "inventory_comparison_claimed": false
+  },
+  "non_actions": {
+    "T0_canonical_state_published": false,
+    "T1_canonical_state_published": false,
+    "T0_physical_state_generated": false,
+    "T1_physical_state_generated": false,
+    "lithospheric_state_provider_implemented": false,
+    "production_thermal_evolution_executed": false,
+    "physical_LAB_selected": false,
+    "LAB_field_materialized": false,
+    "Buck_mechanics_executed": false,
+    "full_Buck_rheology_bound": false,
+    "Buck_section_materialized": false,
+    "Buck_Ux_materialized": false,
+    "Buck_Xe_selected": false,
+    "Buck_XL_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "finite_Buck_forcing_executed": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "canonical_forward_propagation_executed": false,
+    "WORLD_HISTORY_changed": false
+  },
+  "validation": {
+    "source_gate": "PASS",
+    "B6N8I_parent_authority": "PASS",
+    "exact_six_file_delta": "PASS",
+    "temporal_causal_ordering": "PASS",
+    "B6N1_activation_at_T1": "PASS",
+    "B6N2_exclusion_from_T0_T1": "PASS",
+    "no_instantaneous_thermal_jump": "PASS",
+    "structural_EVOLUTION_UNKNOWN": "PASS",
+    "initializer_and_steady_column": "PASS",
+    "conditional_T0_readiness": "PASS",
+    "LAB_domain_base_and_DAG": "PASS",
+    "material_applicability_and_diffusivity": "PASS",
+    "boundary_histories_and_HWR": "PASS",
+    "J1_J14_and_finite_residuals": "PASS",
+    "pre_T0": "PASS",
+    "WORLD_HISTORY_non_access": "PASS",
+    "manifest_and_aggregate_evidence_hashes": "PASS",
+    "JSON": "PASS",
+    "git_diff_check": "PASS"
+  }
+}
