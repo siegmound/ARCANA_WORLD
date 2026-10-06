@@ -1,0 +1,185 @@
+{
+  "schema": "ARCANA_R6_B6N8H_ATTESTATION_V1",
+  "stage": "B6N8-H",
+  "qualified_source_commit": "93b65e3fc4dc2462f4aace7d5627faa92192a73e",
+  "b6n8g_attestation_parent": "4731a376ce4ee87353747d7c4282bd9779125009",
+  "verdict": "PASS_B6N8H_MINIMUM_PHYSICAL_STATE_CONTRACT_DEFINED_BINDINGS_AND_T0_TO_T1_EVOLUTION_REMAIN",
+  "qualification_scope": "clean-source qualification of four committed requirements/research artifacts; no runtime or state generation",
+  "evidence": {
+    "root_relative_to_qualification_evidence": "B6N8H/93b65e3fc4dc2462f4aace7d5627faa92192a73e",
+    "manifest_sha256": "cc1ba07b2d9b9b71ba7fb3022149dc17c7876621d3151d431d226c812615e836",
+    "seal_file_sha256": "634773e680e26cd1a89fcaf56739415ce57cad9242132e3249adf7d017a1facd",
+    "content_sha256": "4e5ea806e9ae7991e6528727f8c604b1d6677a32e5c80531fc7dbb0aae3e8a1b",
+    "manifest_listed_artifacts_verified": true,
+    "aggregate_seal_members": 10,
+    "aggregate_seal_membership": "All regular files recursively except EVIDENCE_CONTENT_SHA256.txt, including EVIDENCE_ARTIFACT_MANIFEST.json.",
+    "aggregate_seal_canonicalization": "Ascending casefold(relative_path); POSIX separators; original relative-path spelling; UTF-8 path + NUL + raw file bytes; no inter-entry or trailing NUL."
+  },
+  "source_gate": {
+    "branch": "r6/b6n8h-lithospheric-thermal-structural-authority",
+    "head_type": "commit",
+    "direct_parent": "4731a376ce4ee87353747d7c4282bd9779125009",
+    "worktree_clean_at_qualification": true,
+    "exact_source_delta": [
+      "docs/arcana/research/B6N8H_B6N8G_INPUT_STATUS_OVERLAY.json",
+      "docs/arcana/research/B6N8H_LITHOSPHERIC_THERMAL_STRUCTURAL_AUTHORITY.md",
+      "docs/arcana/research/B6N8H_PHYSICAL_STATE_PROVIDER_REQUIREMENTS.json",
+      "docs/arcana/research/B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json"
+    ],
+    "qualified_source_artifact_baseline": "4731a376ce4ee87353747d7c4282bd9779125009"
+  },
+  "temporal": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "T0_TO_T1_YEARS": 27123.40515632,
+    "target_causal_selector": "POST_EVENT",
+    "same_age_causal_states_remain_distinct": true,
+    "age_alone_sufficient": false
+  },
+  "pre_T0": {
+    "PRE_T0_HISTORY_REQUIRED": "NOT_DEMONSTRATED",
+    "PRE_T0_HISTORY_PROVEN_UNNECESSARY": false
+  },
+  "minimum_physical_state": {
+    "contract_defined": true,
+    "scope": "Requirements/authority definition only; no provider implemented.",
+    "required_components": [
+      "crust/Moho geometry",
+      "lithosphere-base/LAB geometry and thickness",
+      "thermal state/geotherm or governed equivalent",
+      "material-layer references",
+      "thermal boundary conditions",
+      "support",
+      "validity",
+      "uncertainty",
+      "provenance",
+      "replay/derivation semantics"
+    ],
+    "interpolation_resampling_or_resolution_promotion_authorized": false
+  },
+  "thermal_material_evolution": {
+    "AUTHORIZED_T0_THERMAL_PROFILE_AVAILABLE": false,
+    "AUTHORIZED_T0_THERMAL_INITIALIZER_AVAILABLE": false,
+    "SURFACE_HEAT_FLOW_IS_COMPLETE_GEOTHERM": false,
+    "BUCK_STEADY_STATE_GEOTHERM_IS_ARCANA_AUTHORITY": false,
+    "THERMAL_MATERIAL_LAB_BINDINGS": "INCOMPLETE",
+    "new_numerical_binding_selected": false,
+    "T0_TO_T1_THERMAL_STRUCTURAL_EVOLUTION_AUTHORITY": "NO_GOVERNED_REDUCED_EVOLUTION_AVAILABLE",
+    "elapsed_interval_is_authorized_constant_state": false,
+    "elapsed_interval_proves_state_change": false,
+    "structural_geometry_T0_to_T1": "EVOLUTION_UNKNOWN",
+    "absence_of_authorized_process_implies_authorized_invariance": false
+  },
+  "T1_readiness": {
+    "T1_POST_EVENT_PHYSICAL_STATE_CONSTRUCTIBLE": false,
+    "Buck_T1_state_generated": false,
+    "FIRST_BUCK_PROCESS_EVALUATION_READY": false,
+    "POST_EVENT_selector_alone_implies_physical_discontinuity": false,
+    "physical_discontinuity_generated": false
+  },
+  "B6N8G_input_overlay": {
+    "entry_count": 20,
+    "statuses_preserved_without_reinterpretation": true,
+    "status_by_input": {
+      "causal_state_selector": "REQUIRES_INTEGRATION_BINDING",
+      "physical_age_and_validity": "READY_FROM_EXISTING_AUTHORITY",
+      "T1_crust_and_Moho_geometry": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "T1_lithosphere_geometry_and_thickness": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "T1_thermal_profile_and_boundary_history": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "material_identity_and_applicability": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "density_and_thermal_configuration": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "brittle_ductile_and_lower_crust_rheology": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "lower_crust_flow_closure": "UNKNOWN_CONDITIONAL_SCOPE",
+      "plate_pair_and_side_IDs": "READY_FROM_EXISTING_AUTHORITY",
+      "section_center_orientation_identity": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "section_endpoints_and_support": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "B6N2_authority_and_instant_velocities": "READY_BY_DETERMINISTIC_DERIVATION",
+      "normal_tangent_components_and_polarity": "REQUIRES_INTEGRATION_BINDING",
+      "Buck_Ux": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "Xe": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "XL": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "epsilon_dot": "UNKNOWN_INPUTS_NOT_READY",
+      "finite_interval_and_forcing_history": "REQUIRES_TEMPORAL_FORCING_AUTHORITY",
+      "validity_support_mask_and_uncertainty": "REMAINS_BLOCKED_AFTER_B6N8H"
+    }
+  },
+  "H1_H10": {
+    "H10_PHYSICAL_STATE_READY_FOR_BUCK_ADAPTER": "NOT_READY",
+    "H1_T0_GEOMETRY_AUTHORITY": "PARTIAL_AUTHORED_CANDIDATE",
+    "H2_T0_THERMAL_STATE_AUTHORITY": "BLOCKED",
+    "H3_THERMAL_PROPERTY_BINDINGS": "PARTIAL_INCOMPLETE",
+    "H4_T0_TO_T1_EVOLUTION_AUTHORITY": "BLOCKED",
+    "H5_T1_GEOMETRY_AVAILABLE": "BLOCKED",
+    "H6_T1_THERMAL_STATE_AVAILABLE": "BLOCKED",
+    "H7_T1_POST_EVENT_CAUSAL_BINDING": "PARTIAL_SELECTOR_KNOWN_STATE_ABSENT",
+    "H8_UNCERTAINTY_VALIDITY_COMPLETE": "BLOCKED",
+    "H9_PROVIDER_CONTRACT_COMPLETE": "PASS_REQUIREMENTS_ONLY"
+  },
+  "residual_blockers": [
+    "T0 thermal profile or authorized T0 initializer missing",
+    "thermal/material/boundary/LAB bindings incomplete",
+    "no governed T0-to-T1 thermal-structural evolution law"
+  ],
+  "Buck_scope_boundaries": {
+    "LITHOSPHERE_THICKNESS_IS_Buck_Xe": false,
+    "Buck_Xe_selected": false,
+    "full_geodynamic_model_required_by_qualification": false,
+    "B6N8F_forcing_mapping_closed": false
+  },
+  "WORLD_HISTORY": {
+    "accessed_during_B6N8H_qualification": false,
+    "changed": false,
+    "before_after_inventory_or_hash_claimed": false
+  },
+  "qualification_validation": {
+    "20_input_overlay": "PASS",
+    "B6N8G_baseline": "PASS",
+    "H1_H10": "PASS_EXPLICIT",
+    "JSON": "PASS",
+    "LAB_authority": "PASS_NO_IMPLICIT_LAB_RELATION",
+    "POST_EVENT_semantics": "PASS",
+    "T0_T1_evolution": "PASS_NO_QUALIFIED_LAW",
+    "T0_thermal_profile_authority": "PASS_NO_AUTHORIZED_PROFILE_OR_INITIALIZER",
+    "UTF8_LF": "PASS",
+    "WORLD_HISTORY": "UNCHANGED_NO_READ_OR_WRITE_PERFORMED",
+    "clean_worktree": "PASS",
+    "cross_artifact_consistency": "PASS",
+    "exact_ages": "PASS",
+    "geotherm_initialization": "PASS_CANDIDATES_EVALUATED_NO_SELECTION",
+    "git_diff_check": "PASS",
+    "local_links": "PASS",
+    "minimum_state_contract": "PASS",
+    "portable_paths": "PASS",
+    "provider_contract": "PASS_REQUIREMENTS_ONLY_NOT_IMPLEMENTED",
+    "runtime_tests": "NOT_RUN_DOCUMENTATION_AND_JSON_ONLY",
+    "source_gate": "PASS",
+    "structural_evolution": "PASS_EVOLUTION_UNKNOWN",
+    "thermal_material_bindings": "PASS_EXACT_RESIDUALS_RECORDED",
+    "thermal_timescale": "PASS_DIAGNOSTIC_ONLY",
+    "whitespace": "PASS"
+  },
+  "non_actions": {
+    "B6O_authorized": false,
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_section_materialized": false,
+    "Buck_strain_rate_materialized": false,
+    "FIRST_BUCK_PROCESS_EVALUATION_READY": false,
+    "SECOND_DT_SELECTED": false,
+    "T0_physical_state_generated": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_forward_propagation_executed": false,
+    "dt2_years": null,
+    "finite_Buck_forcing_executed": false,
+    "lithospheric_state_provider_implemented": false,
+    "material_rheology_closure_completed": false,
+    "mechanics_executed": false,
+    "new_physical_parameter_selected": false,
+    "prototype_implemented": false,
+    "support_remapping_executed": false,
+    "topology_transition_executed": false
+  }
+}
