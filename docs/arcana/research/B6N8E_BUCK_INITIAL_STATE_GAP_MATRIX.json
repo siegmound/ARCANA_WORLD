@@ -60,7 +60,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "If accepted as physical geometry, its time-indexed value is historical state; the current authored candidate is not yet canonical."
+      "persistence_class_rationale": "If accepted as physical geometry, its time-indexed value is historical state; the current authored candidate is not yet canonical.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "Required geometry is established at T0, governed evolution must determine any interval change, and the resulting geometry is needed for the Buck initial section at T1."
     },
     {
       "quantity": "lithospheric_thickness_and_base",
@@ -84,7 +90,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "The candidate thickness and the physical base/interface are not yet semantically bound as one persistent or replayable quantity."
+      "persistence_class_rationale": "The candidate thickness and the physical base/interface are not yet semantically bound as one persistent or replayable quantity.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The finite lithosphere boundary is needed at both endpoints; its interval change requires the reduced physical model already identified as missing."
     },
     {
       "quantity": "full_temperature_profile_T_of_z",
@@ -108,7 +120,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "No qualified deterministic profile recipe is established, so replayability versus persistence remains unknown."
+      "persistence_class_rationale": "No qualified deterministic profile recipe is established, so replayability versus persistence remains unknown.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "A T0 profile or authorized initializer is required, the thermal profile is the subject of interval evolution, and the Buck initial geotherm must exist at T1."
     },
     {
       "quantity": "surface_temperature",
@@ -132,7 +150,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "Existing references do not establish whether this is evolving physical state or a model boundary configuration on the required support."
+      "persistence_class_rationale": "Existing references do not establish whether this is evolving physical state or a model boundary configuration on the required support.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The upper thermal boundary must be bound for the T0 thermal state, participates as a boundary condition in interval thermal evolution, and must be available at T1; this does not assert that its value changes."
     },
     {
       "quantity": "surface_heat_flux",
@@ -156,7 +180,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "The continental reference field is a time-indexed physical boundary on limited support, but the combined ocean/continental Buck-required quantity has incomplete support and its global state-versus-configuration treatment is not fully governed."
+      "persistence_class_rationale": "The continental reference field is a time-indexed physical boundary on limited support, but the combined ocean/continental Buck-required quantity has incomplete support and its global state-versus-configuration treatment is not fully governed.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The governed surface boundary is required at both endpoints and participates in the thermal interval model; domain coverage and any temporal change remain unresolved."
     },
     {
       "quantity": "radiogenic_heat_production",
@@ -180,7 +210,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "Production/decay law and material binding configure the thermal model; no ARCANA numeric choice is made here."
+      "persistence_class_rationale": "Production/decay law and material binding configure the thermal model; no ARCANA numeric choice is made here.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The internal heat-source configuration is needed to initialize and evaluate the thermal interval model and its T1 state; no decay law or changing value is assumed."
     },
     {
       "quantity": "thermal_conductivity",
@@ -204,7 +240,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "Conductivity is a material/constitutive binding, not an evolving state field under current authority."
+      "persistence_class_rationale": "Conductivity is a material/constitutive binding, not an evolving state field under current authority.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "Conductivity configuration supports the T0 thermal state and the interval conduction calculation and must remain bound for T1; its constancy is not inferred."
     },
     {
       "quantity": "thermal_diffusivity",
@@ -228,7 +270,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "Derived from configured conductivity, density and heat capacity when those are bound; it is not independently selected here."
+      "persistence_class_rationale": "Derived from configured conductivity, density and heat capacity when those are bound; it is not independently selected here.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The configured/derived timescale property is needed by the authorized initialization and to evaluate finite-interval thermal evolution, then for the T1 model state."
     },
     {
       "quantity": "Moho_temperature",
@@ -252,7 +300,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "No qualified profile/geometry derivation recipe is established; intended replayability is not yet authorized."
+      "persistence_class_rationale": "No qualified profile/geometry derivation recipe is established; intended replayability is not yet authorized.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The interface temperature belongs to the initial profile, participates in interval thermal evolution, and is required by the T1 profile; no numeric continuity value is created here."
     },
     {
       "quantity": "lithosphere_base_temperature_and_depth",
@@ -276,7 +330,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "The compound quantity mixes an interface geometry with a thermal value whose persistence/replay authority is not yet bound."
+      "persistence_class_rationale": "The compound quantity mixes an interface geometry with a thermal value whose persistence/replay authority is not yet bound.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The lower interface geometry/temperature must be defined at T0, its interval response requires the missing reduced model, and the corresponding boundary is needed at T1."
     },
     {
       "quantity": "mantle_heat_flux",
@@ -300,7 +360,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "No qualified deterministic profile/boundary derivation recipe is established, so its persistence treatment remains unknown."
+      "persistence_class_rationale": "No qualified deterministic profile/boundary derivation recipe is established, so its persistence treatment remains unknown.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The basal thermal boundary is needed to define and evolve the profile across the interval and to initialize the T1 state; its law remains unbound."
     },
     {
       "quantity": "density_structure",
@@ -324,7 +390,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "The required composition/thermal/material derivation is incomplete; persistent versus replayable status is not established."
+      "persistence_class_rationale": "The required composition/thermal/material derivation is incomplete; persistent versus replayable status is not established.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "Density structure is an initial physical/material state, responds through the required thermal/structural interval model, and contributes to the T1 force state."
     },
     {
       "quantity": "thermal_expansion",
@@ -348,7 +420,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "A constitutive coefficient/material binding, not an evolving state variable under current authority."
+      "persistence_class_rationale": "A constitutive coefficient/material binding, not an evolving state variable under current authority.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The expansion law/configuration is needed to bind initial density/thermal response and to evaluate temperature-dependent density effects over the interval; no coefficient or change is selected."
     },
     {
       "quantity": "gravity",
@@ -372,7 +450,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "The available fixed analogue value is model configuration; no evolving gravity field is established."
+      "persistence_class_rationale": "The available fixed analogue value is model configuration; no evolving gravity field is established.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The existing analogue gravity configuration is needed for the initial model and participates in interval body-force/adiabatic evaluation and T1 initialization; this does not assert time variation."
     },
     {
       "quantity": "brittle_strength_law",
@@ -396,7 +480,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "A constitutive law and coefficients configure the model; values and validity remain unbound."
+      "persistence_class_rationale": "A constitutive law and coefficients configure the model; values and validity remain unbound.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The strength law/configuration is required to evaluate the initial and interval mechanical response and must be bound for the active Buck model at T1."
     },
     {
       "quantity": "crustal_rheology",
@@ -420,7 +510,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "A constitutive law/material binding configures the model; values and validity remain unbound."
+      "persistence_class_rationale": "A constitutive law/material binding configures the model; values and validity remain unbound.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The crustal constitutive binding is required for initial model evaluation and the interval strength response, and must be available at T1; coefficients remain unbound."
     },
     {
       "quantity": "mantle_rheology",
@@ -444,7 +540,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "A constitutive law/material binding configures the model; values and validity remain unbound."
+      "persistence_class_rationale": "A constitutive law/material binding configures the model; values and validity remain unbound.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "The mantle constitutive binding is required for initial model evaluation and the interval strength response, and must be available at T1; coefficients remain unbound."
     },
     {
       "quantity": "lower_crust_flow_state",
@@ -468,7 +570,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "Its state-versus-closure role and persistence depend on a not-yet-selected model scope and support."
+      "persistence_class_rationale": "Its state-versus-closure role and persistence depend on a not-yet-selected model scope and support.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "These roles reflect the row's current declared T0/T1 requirement and its interval-closure role, conditional on the existing unresolved decision to include lower-crust flow; they do not authorize a layer split."
     },
     {
       "quantity": "inherited_weakness",
@@ -492,7 +600,11 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "It is not required by the current minimal-model audit and no supported weakness state is governed."
+      "persistence_class_rationale": "It is not required by the current minimal-model audit and no supported weakness state is governed.",
+      "temporal_role": [
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "Only a conditional temporal role if a later authorized Buck scope elects this optional localization seed; required_at_t0 and required_at_t1 remain false and the present minimum model does not require it."
     },
     {
       "quantity": "material_compositional_identity",
@@ -516,7 +628,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "If composition varies historically, its identity is causal physical state; current ARCANA-to-material binding remains partial."
+      "persistence_class_rationale": "If composition varies historically, its identity is causal physical state; current ARCANA-to-material binding remains partial.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "Material identity must be available at T0 and T1 and participates in mapping state to material-dependent thermal/rheological response during the interval; this does not claim composition changes."
     },
     {
       "quantity": "uncertainty_and_validity_metadata",
@@ -540,7 +658,13 @@
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
       "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
-      "persistence_class_rationale": "The required metadata categories are identified, but which uncertainty evolves or is replayed has not been governed."
+      "persistence_class_rationale": "The required metadata categories are identified, but which uncertainty evolves or is replayed has not been governed.",
+      "temporal_role": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION"
+      ],
+      "temporal_role_rationale": "Validity and uncertainty qualify the T0 state, the finite-interval model/result, and the T1 activation state; no uncertainty distribution is invented."
     }
   ],
   "system_finding": {
