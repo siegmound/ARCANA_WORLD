@@ -1,0 +1,404 @@
+{
+  "Buck_boundary": {
+    "Buck_mechanics_executed": false,
+    "Buck_section_selected": false,
+    "THERMAL_OUTPUT_SUPPORT_is_BUCK_SECTION_AUTHORITY": false,
+    "Ux_materialized": false,
+    "XL_selected": false,
+    "Xe_selected": false,
+    "section_mapping_authority": "B6N8-F and later integration",
+    "strain_rate_materialized": false
+  },
+  "HWR_domain_base": {
+    "MODEL_DOMAIN_BASE_is_PHYSICAL_LAB": false,
+    "crosswalk": [
+      {
+        "field": "t / oceanic_lithosphere_age_ma",
+        "lossiness": "does not describe Eulerian age-field evolution, spreading rate, ridge production or physical support history",
+        "mapping": "DETERMINISTIC_REDUCED_MODEL_ADAPTATION",
+        "source_meaning": "positive age in the finite-plate cooling model; geological age parent is an authored T0 physical field",
+        "source_support": "native positive-age ocean support; exact zero is excluded from HWR",
+        "source_temporal_role": "HWR model age at evaluation",
+        "status": "CONDITIONAL_POSITIVE_AGE_ONLY",
+        "target_role": "positive-age material-column model coordinate, advanced deterministically by elapsed interval under frozen model-support identity"
+      },
+      {
+        "field": "k",
+        "lossiness": "constant effective value omits T/P dependence; preserve existing sensitivity interval",
+        "mapping": "REDUCED_MODEL_ADAPTATION",
+        "source_meaning": "effective constant mantle thermal conductivity in HWR-2",
+        "source_support": "role-scoped specialist mantle tuple",
+        "source_temporal_role": "model/material configuration",
+        "status": "CONDITIONAL_ROLE_SUPPORT_JOIN",
+        "target_role": "mantle conductivity for the reduced thermal column where role-bound"
+      },
+      {
+        "field": "rho_m",
+        "lossiness": "reference density does not supply full rho(z,T) or crust density structure",
+        "mapping": "REDUCED_MODEL_ADAPTATION",
+        "source_meaning": "HWR reference mantle density",
+        "source_support": "role-scoped specialist mantle tuple",
+        "source_temporal_role": "model/material configuration",
+        "status": "CONDITIONAL_ROLE_SUPPORT_JOIN",
+        "target_role": "density coefficient within HWR and any coherent reduced tuple"
+      },
+      {
+        "field": "Cp",
+        "lossiness": "constant reference; derive kappa with same k and rho; do not independently tune",
+        "mapping": "REDUCED_MODEL_ADAPTATION",
+        "source_meaning": "HWR mantle isobaric heat capacity",
+        "source_support": "role-scoped specialist mantle tuple",
+        "source_temporal_role": "model/material configuration",
+        "status": "CONDITIONAL_ROLE_SUPPORT_JOIN",
+        "target_role": "HWR diffusivity/energy coefficient"
+      },
+      {
+        "field": "kappa",
+        "lossiness": "uncertainty depends on input tuple/covariance, which is not fully specified",
+        "mapping": "DETERMINISTIC",
+        "source_meaning": "HWR thermal diffusivity k/(rho_m*Cp)",
+        "source_support": "same coherent mantle tuple",
+        "source_temporal_role": "derived model configuration",
+        "status": "DERIVED_WHEN_TUPLE_BOUND",
+        "target_role": "diffusion coefficient"
+      },
+      {
+        "field": "Tb",
+        "lossiness": "not a globally observed mantle temperature or universal LAB temperature",
+        "mapping": "REDUCED_MODEL_ADAPTATION",
+        "source_meaning": "HWR finite-plate basal/reference temperature parameter",
+        "source_support": "paired HWR model configuration",
+        "source_temporal_role": "model boundary parameter, not physical time history",
+        "status": "CONDITIONAL_PAIRED_CONFIGURATION",
+        "target_role": "paired base/adiabatic reference for eligible ocean initializer columns"
+      },
+      {
+        "field": "zp",
+        "lossiness": "must not be relabelled physical LAB or applied as universal lithosphere thickness",
+        "mapping": "REDUCED_MODEL_ADAPTATION",
+        "source_meaning": "HWR finite thermal-plate depth to coupled basal isothermal boundary",
+        "source_support": "paired HWR column configuration",
+        "source_temporal_role": "model geometry/configuration parameter",
+        "status": "CONDITIONAL_PAIRED_CONFIGURATION",
+        "target_role": "HWR profile terminal/base location; LAB derived by profile/adiabat crossing"
+      },
+      {
+        "field": "H(t) / q_HWR",
+        "lossiness": "not an authorized total hydrothermal heat-loss correction and not a global physical heat-flow history",
+        "mapping": "DETERMINISTIC_AFTER_AGE_ADAPTER",
+        "source_meaning": "finite-plate model surface conductive heat flux under the selected HWR equation",
+        "source_support": "valid positive-age ocean cells only",
+        "source_temporal_role": "age-dependent model output",
+        "status": "CONDITIONAL_POSITIVE_AGE_ONLY",
+        "target_role": "ocean surface flux input to initializer/profile projection"
+      },
+      {
+        "field": "alpha",
+        "lossiness": "constant coefficient approximation; no independent temporal law",
+        "mapping": "REDUCED_MODEL_ADAPTATION",
+        "source_meaning": "mantle thermal expansion coefficient used by the adiabat",
+        "source_support": "shared coherent mantle reference tuple",
+        "source_temporal_role": "model configuration",
+        "status": "CONDITIONAL_ROLE_SUPPORT_JOIN",
+        "target_role": "adiabat/lower-boundary relation"
+      }
+    ]
+  },
+  "L1_L14": [
+    {
+      "basis": "Native B-v2 support counts and class/domain semantics enumerated; no claim of global provider coverage.",
+      "gate": "L1_THERMAL_SUPPORT_DOMAIN_DEFINED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "Categorical crust-domain-to-reference-role and vertical layer-role rules defined; not a natural composition map and per-column joins still require validation.",
+      "gate": "L2_SUPPORT_MATERIAL_MAPPING",
+      "status": "PASS_SCOPED_REDUCED_MODEL_ADAPTATION"
+    },
+    {
+      "basis": "Role-scoped k/rho/Cp/A references exist; applicability is conditional on exact support-role join and provider validation. kappa derives from one coherent tuple.",
+      "gate": "L3_PROPERTY_APPLICABILITY_BOUND",
+      "status": "CONDITIONAL"
+    },
+    {
+      "basis": "A_C/A_M may be explicit static model source configuration scenarios under frozen T0 configuration; physical source history/constancy remains UNKNOWN.",
+      "gate": "L4_RADIOGENIC_SOURCE_TEMPORAL_ROLE",
+      "status": "CONDITIONAL_SCENARIO"
+    },
+    {
+      "basis": "TSurf range and continental q values support finite held model-boundary scenarios only; physical histories remain UNKNOWN.",
+      "gate": "L5_SURFACE_BOUNDARY_TEMPORAL_AUTHORITY",
+      "status": "PASS_SCOPED_MODEL_SCENARIOS"
+    },
+    {
+      "basis": "Initializer-compatible model base/paired HWR basal configuration can be scenario input; no physical LAB/base history asserted.",
+      "gate": "L6_LOWER_BOUNDARY_TEMPORAL_AUTHORITY",
+      "status": "PASS_SCOPED_MODEL_SCENARIOS"
+    },
+    {
+      "basis": "Versioned HWR-2 can consume a deterministic positive-age material-column time coordinate on admitted support; ridge remains excluded.",
+      "gate": "L7_HWR_TEMPORAL_ADAPTER",
+      "status": "PASS_SCOPED_POSITIVE_AGE_ONLY"
+    },
+    {
+      "basis": "49362 positive-age cells conditionally admitted; 1072 unresolved cells and 108 age-zero ridge cells excluded from T0-T1 provider envelope.",
+      "gate": "L8_OCEANIC_SUPPORT_ELIGIBILITY",
+      "status": "PARTIAL_FAIL_CLOSED"
+    },
+    {
+      "basis": "Frozen model support identity is an explicit approximation for eligible columns only; physical invariance remains unproven.",
+      "gate": "L9_SUPPORT_TEMPORAL_IDENTITY",
+      "status": "PASS_SCOPED_MODEL_APPROXIMATION"
+    },
+    {
+      "basis": "Finite deterministic existing-reference/end-point scenario axes defined without invented bounds or probabilities.",
+      "gate": "L10_BOUNDARY_SCENARIO_ENVELOPE",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "Contract is complete for admitted scenario support; unknown support/history and physical-history claims remain explicitly excluded.",
+      "gate": "L11_TEMPORAL_ADAPTER_CONTRACT_COMPLETE",
+      "status": "CONDITIONAL"
+    },
+    {
+      "basis": "Native profile, geometry, material, uncertainty and lineage fields are specified; section extraction remains under B6N8-F.",
+      "gate": "L12_BUCK_THERMAL_OUTPUT_INTERFACE",
+      "status": "PASS_INTERFACE_ONLY"
+    },
+    {
+      "basis": "All required input categories are declared for the scoped envelope, but the required T0 profile/initial-condition value is not materialized or provider-validated; provider execution is not ready.",
+      "gate": "L13_PROVIDER_INPUTS_COMPLETE",
+      "status": "INPUT_SCHEMA_COMPLETE_VALUES_UNAVAILABLE"
+    },
+    {
+      "basis": "The finite scenario envelope defines the scope of the next adjudication, but any computation consuming T0-to-T1 evolution must wait for the required T0 profile/initializer output and validation; sufficiency remains undecided.",
+      "gate": "L14_READY_FOR_CONDUCTION_SUFFICIENCY_ADJUDICATION",
+      "status": "CONDITIONAL_T0_INITIAL_CONDITION_PENDING"
+    }
+  ],
+  "R1_root_cause_closure": {
+    "closed": true,
+    "required_input": {
+      "availability": "NOT_AVAILABLE; no T0 profile has been generated",
+      "failure_semantics": "If the required T0 profile/initializer output is unavailable, invalid, temporally misbound, or lacks an exact eligible support join, do not execute T0-to-T1 evolution; preserve UNKNOWN and fail closed. T1 PRE_EVENT, T1 POST_EVENT, or post-B6N1 state cannot substitute as the initial condition; no temporal backcasting.",
+      "initializer_family_selected": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+      "initializer_interface_bound": true,
+      "initializer_provider_implemented": false,
+      "input_identity": "R6_T0_THERMAL_PROFILE_INITIAL_CONDITION_V1",
+      "meaning": "Support-indexed T(z,T0) profile consumed as the initial condition for reduced thermal evolution from T0 to T1 PRE_EVENT. The profile may be generated by the selected initializer before evolution; this contract does not claim it already exists.",
+      "name": "T0_thermal_initial_condition",
+      "profile_materialized": false,
+      "provenance": [
+        "parent field/configuration hashes",
+        "support IDs and source-cell lineage",
+        "initializer recipe/version",
+        "material-role and geometry identity",
+        "boundary/source scenario IDs",
+        "uncertainty",
+        "validity and UNKNOWN/exclusion diagnostics"
+      ],
+      "readiness_semantics": "INPUT_SCHEMA_COMPLETE does not imply INPUT_VALUES_AVAILABLE or PROVIDER_EXECUTABLE.",
+      "representation": "Replayable profile payload T(z,T0) plus derivation/initializer identity and validity metadata, on explicitly admitted native support.",
+      "required": true,
+      "source_authority": [
+        "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING.json",
+        "docs/arcana/research/B6N8J_INITIALIZER_CANDIDATE_MATRIX.json",
+        "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json"
+      ],
+      "status": "REQUIRED_PENDING_MATERIALIZATION_AND_INITIALIZER_PROVIDER_VALIDATION",
+      "support": "Same exact native support IDs, per-column material-role join, geometry and validity restrictions as the provider request; never globalized. Preserve 1072 unresolved positive-age ocean cells and 108 age-zero ridge cells outside the admitted temporal-provider path.",
+      "temporal_role": "INITIAL_CONDITION_AT_T0_FOR_T0_TO_T1_PRE_EVENT_EVOLUTION",
+      "time": {
+        "age_Ma": 210.0,
+        "causal_selector": "T0",
+        "valid_destination": "T1_PRE_EVENT"
+      }
+    },
+    "required_input_declared_does_not_imply_value_available": true
+  },
+  "T0_readiness": {
+    "T0_physical_state": "NOT_GENERATED",
+    "T0_profile": "NOT_MATERIALIZED",
+    "conditional_on": [
+      "support/material-role applicability",
+      "initializer-provider implementation/materialization",
+      "provider validation",
+      "qualified input validity"
+    ]
+  },
+  "T0_to_T1_readiness": {
+    "T0_to_T1_execution_ready": false,
+    "boundary_scenario_envelope_defined": true,
+    "production_evolution_authorized": false,
+    "required_evolution_input_values_complete": false
+  },
+  "WORLD_HISTORY": {
+    "accessed_during_B6N8L_qualification": false,
+    "changed": false,
+    "inventory_comparison_claimed": false
+  },
+  "boundary_scenarios": {
+    "AUTHORIZED_MODEL_SCENARIO_is_RECONSTRUCTED_PHYSICAL_HISTORY": false,
+    "constant_scenario_proves_physical_constancy": false,
+    "global_provider_coverage_established": false,
+    "status": "FINITE_REDUCED_MODEL_BOUNDARY_SCENARIO_ENVELOPE_AUTHORIZED_FOR_ELIGIBLE_SUPPORT",
+    "support_material_applicability_complete": false
+  },
+  "conduction_sufficiency": {
+    "conduction_only_declared_sufficient": false,
+    "sufficiency_or_insufficiency_established": false
+  },
+  "evidence": {
+    "aggregate_evidence_content_sha256": "72baee53ad63d94f415d65a289dca34fcbe70ccf010c2bd280c6bc0456baee78",
+    "aggregate_sealed_regular_files_including_manifest": 4,
+    "artifact_manifest_sha256": "ff9f8d9ddeef13636c00615d87549874409991014ecd5380e2cef24f6e8a0e55",
+    "failed_bundle_seal_file_sha256_read_only_check": "ec768241460933a7a6f316c09f9721c1dc3536a6037016c0693aa0cfdd5a9513",
+    "manifest_artifacts_verified": 3,
+    "root_relative_to_qualification_evidence": "B6N8L/c0584aff534e328b4c0f682c26e2690e45efe202"
+  },
+  "finite_residual_set": {
+    "1072_unresolved_positive_age_ocean_cells": "GLOBAL_COVERAGE_BLOCKER",
+    "108_age_zero_ridge_cells": "TEMPORAL_SUPPORT_BLOCKER",
+    "Buck_support_section_mapping": "B6N8-F; Buck initialization blocker",
+    "T0_initial_profile_materialization_and_initializer_provider_validation": "PROVIDER_EXECUTION_BLOCKER",
+    "conduction_only_sufficiency": "NOT_ADJUDICATED; scope for later sufficiency decision",
+    "sensitivity_acceptance_criterion": "UNRESOLVED",
+    "support_material_applicability": "SCOPED_AND_GLOBAL_APPLICABILITY_BLOCKER"
+  },
+  "frozen_configuration": {
+    "FROZEN_MODEL_CONFIGURATION_is_PHYSICAL_GEOMETRY_PROVEN_CONSTANT": false,
+    "STRUCTURAL_GEOMETRY_T0_TO_T1": "EVOLUTION_UNKNOWN",
+    "T0_geometry_usable_as_reduced_model_frozen_configuration": true
+  },
+  "governing_B6N8K": {
+    "attestation_path": "docs/arcana/qualifications/R6_B6N8K_ATTESTATION.json",
+    "qualified_source_commit": "de9e1f5e7aeed9de426d0e570c1d19fb4af3b739",
+    "verdict": "PASS_B6N8K_REDUCED_EVOLUTION_CONDITIONALLY_AUTHORIZED_BOUNDARY_HISTORY_BINDING_REMAINS"
+  },
+  "governing_parent": "c18fedb3f3396ea9ac04bc925e6391bad23767d1",
+  "historical_provenance": {
+    "remediation": "R1 explicitly added the required support-aware T0 thermal initial-condition input; prior failed qualification remains immutable provenance and its bundle was not modified.",
+    "superseded_failed_source_commit": "82be69bc2298ac87d24322f484ee7be430af9704",
+    "superseded_failed_verdict": "BLOCKED_B6N8L_PROVIDER_INPUT_CONTRACT_OMITS_REQUIRED_T0_INITIALIZER_INPUT"
+  },
+  "next_stage_authority": {
+    "B6N8L_authorizes_computational_conduction_sufficiency_requiring_T0_profile": false,
+    "decision_made_here": false,
+    "next_stage_must_decide_analytical_contract_only_vs_T0_profile_prerequisite": true
+  },
+  "non_actions": {
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_mechanics_executed": false,
+    "Buck_section_materialized": false,
+    "Buck_strain_rate_materialized": false,
+    "SECOND_DT_SELECTED": false,
+    "T0_physical_state_generated": false,
+    "T0_profile_generated": false,
+    "T1_POST_EVENT_physical_state_generated": false,
+    "T1_PRE_EVENT_physical_state_generated": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_changed": false,
+    "conduction_only_declared_sufficient": false,
+    "dt2_years": null,
+    "initializer_provider_implemented": false,
+    "new_acceptance_tolerance_selected": false,
+    "new_boundary_value_selected": false,
+    "new_initializer_selected": false,
+    "new_physical_parameter_selected": false,
+    "new_thermal_equation_selected": false,
+    "physical_LAB_selected": false,
+    "production_provider_implemented": false,
+    "production_thermal_evolution_executed": false
+  },
+  "qualification_scope": "Final clean-source qualification of the committed R1 documentation/JSON contract; scoped boundary-scenario authorization only.",
+  "qualification_validation": {
+    "B6N8K_attestation": "PASS",
+    "JSON_and_cross_artifact_consistency": "PASS",
+    "L1_L14": "PASS_SCOPED_AND_CONSISTENT",
+    "R1_input_contract": "PASS",
+    "UTF8_LF_local_links_portability": "PASS",
+    "direct_parent": "PASS",
+    "exact_five_file_delta": "PASS",
+    "git_diff_check": "PASS",
+    "manifest_and_aggregate_seal": "PASS",
+    "runtime_executed": false,
+    "runtime_tests": "NOT_REQUIRED_DOCUMENTATION_JSON_ONLY",
+    "source_gate": "PASS",
+    "worktree_clean_before_attestation": "PASS"
+  },
+  "qualified_source_commit": "c0584aff534e328b4c0f682c26e2690e45efe202",
+  "readiness": {
+    "INITIALIZER_FAMILY_SELECTED": true,
+    "INITIALIZER_INTERFACE_BOUND": true,
+    "INITIALIZER_PROVIDER_IMPLEMENTED": false,
+    "PRE_T1_THERMAL_PROVIDER_EXECUTABLE": false,
+    "PRE_T1_THERMAL_PROVIDER_INPUT_SCHEMA_COMPLETE": true,
+    "PRE_T1_THERMAL_PROVIDER_INPUT_VALUES_AVAILABLE": false,
+    "T0_PHYSICAL_STATE_GENERATED": false,
+    "T0_PROFILE_MATERIALIZED": false,
+    "T0_TO_T1_TEMPORAL_INPUTS_COMPLETE": false,
+    "conduction_only_declared_sufficient": false
+  },
+  "remediation_revision": "R1",
+  "schema": "ARCANA_R6_STAGE_ATTESTATION_V1",
+  "source_delta": {
+    "canonical_state_mutated": false,
+    "executable_code_changed": false,
+    "paths": [
+      "docs/arcana/research/B6N8L_B6N8K_READINESS_OVERLAY.json",
+      "docs/arcana/research/B6N8L_BOUNDARY_HISTORY_SUPPORT_APPLICABILITY_AUDIT.md",
+      "docs/arcana/research/B6N8L_BOUNDARY_TEMPORAL_ADAPTER.json",
+      "docs/arcana/research/B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX.json",
+      "docs/arcana/research/B6N8L_THERMAL_PROVIDER_INPUT_CONTRACT.json"
+    ]
+  },
+  "source_terms": {
+    "A_C_A_M_semantics": {
+      "A_C_W_m3": {
+        "continental_reference": 8e-07,
+        "existing_sensitivity_only": true,
+        "oceanic_reference": 3e-07
+      },
+      "A_M_W_m3": {
+        "existing_sensitivity_range_W_m3": [
+          0,
+          4e-08
+        ],
+        "mantle_reference": 2e-08,
+        "zero_is_implicit_default": false
+      },
+      "support_semantics": "assigned role-scoped homogeneous bulk model columns only; no cellwise geochemical source field",
+      "temporal_semantics": "STATIC_MODEL_SOURCE_CONFIGURATION_SCENARIO over the interval; not a claim that physical production/history is constant"
+    },
+    "constant_model_source_term_proves_physical_history_constant": false
+  },
+  "stage": "B6N8-L",
+  "support_exclusions": {
+    "age_zero_ridge_cells": {
+      "count": 108,
+      "status": "EXCLUDED_FROM_CURRENT_TEMPORAL_PROVIDER_PATH; authored age zero preserved"
+    },
+    "unresolved_positive_age_ocean_cells": {
+      "count": 1072,
+      "status": "UNKNOWN_UNRESOLVED_OUTSIDE_CURRENTLY_ADMITTED_TEMPORAL_PROVIDER_PATH"
+    }
+  },
+  "temporal_semantics": {
+    "B6N2_provides_T0_to_T1_forcing": false,
+    "T0_Ma": 210.0,
+    "T0_TO_T1_years": 27123.40515632,
+    "T1_PRE_EVENT_Ma": 209.97287659484368,
+    "backcasting_authorized": false,
+    "causal_order": [
+      "T0",
+      "pre-event reduced thermal evolution",
+      "T1_PRE_EVENT",
+      "B6N1 activation",
+      "T1_POST_EVENT",
+      "B6N2 post-event kinematics"
+    ]
+  },
+  "verdict": "PASS_B6N8L_BOUNDARY_SCENARIOS_AUTHORIZED_SUPPORT_APPLICABILITY_REMAINS"
+}
