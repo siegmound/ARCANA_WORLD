@@ -1,0 +1,115 @@
+{
+  "schema": "R6_B6N8A_MULTIRESOLUTION_DIAGNOSTIC_SHADOW_PROPAGATION_V1",
+  "contract_id": "R6_B6N8A_MULTIRESOLUTION_DIAGNOSTIC_SHADOW_PROPAGATION_V1",
+  "version": 1,
+  "stage": "B6N8A_MULTIRESOLUTION_DIAGNOSTIC_SHADOW_PROPAGATION",
+  "status": "DIAGNOSTIC_EXPERIMENT_CONTRACT_NO_PHYSICAL_HISTORY_AUTHORITY",
+  "source_branch": "r6/b6n8a-multiresolution-diagnostic-shadow-propagation",
+  "source_baseline_commit": "54ea550ecc623760ee5115a9033b38cb963a4584",
+  "semantic_labels": [
+    "DIAGNOSTIC_SHADOW_TRAJECTORY",
+    "NONCANONICAL",
+    "CONDITIONAL",
+    "NOT_PHYSICAL_HISTORY_AUTHORITY",
+    "WORLD_HISTORY_PUBLICATION_PROHIBITED"
+  ],
+  "authority_inputs": {
+    "post_event_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "post_event_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "b6n2_contract": "contracts/R6_POST_EVENT_KINEMATIC_AUTHORITY_V1.json",
+    "b6n3a_contract": "contracts/R6_POST_EVENT_KINEMATIC_REVALIDATION_HORIZON_V1.json",
+    "b6n3a_model_scope_revalidation_horizon_years": 8214.051909111062,
+    "horizon_semantics": "MAXIMUM_MODEL_SCOPE_REVALIDATION_BOUND; NOT A PHYSICAL EVENT-FREE HORIZON",
+    "positive_physical_propagation_interval": "NOT_ESTABLISHED",
+    "fixed_regime_assumption": "CONDITIONAL_DIAGNOSTIC_ONLY; DOES NOT ESTABLISH PHYSICAL VALIDITY"
+  },
+  "input_artifacts": {
+    "post_event_plate_local_coordinates": "outputs/r6_b6k_isolated_first_candidate_state/B6K_CANDIDATE_PLATE_LOCAL_COORDINATES.bin",
+    "plate_rotation_vectors": "outputs/r6_b6k_isolated_first_candidate_state/B6K_PLATE_ROTATIONS.json",
+    "interface_side_support": "outputs/r6_b6k_isolated_first_candidate_state/B6K_BOUNDARY_CANDIDATE.json",
+    "input_binding": "outputs/r6_b6k_isolated_first_candidate_state/B6K_REPLAY.json"
+  },
+  "scope": {
+    "plate_pair": [1, 3],
+    "pair_interface_segment_count": 71,
+    "unique_interface_node_count": 72,
+    "geometry": "EXACT_POST_EVENT_PLATE_LOCAL_COORDINATE_REPRESENTATIONS",
+    "topology": "READ_ONLY_IDENTITY; NO REWIRING OR CLASSIFICATION",
+    "held_regime": "RIGID_PLATE_KINEMATICS_ONLY_AS_CONDITIONAL_SHADOW",
+    "allowed_quantities": [
+      "plate-local coordinate trajectory",
+      "rigid point displacement from POST_EVENT origin",
+      "relative plate-side geometric mismatch at shared interface identities",
+      "numerical integration and reconstruction discrepancy"
+    ],
+    "forbidden_physical_interpretations": [
+      "physical rift extension or opening",
+      "rift width",
+      "crustal thinning or stretching",
+      "new crust",
+      "plate split",
+      "boundary regime or polarity transition",
+      "junction accommodation",
+      "topology transition",
+      "support reassignment",
+      "mechanical deformation"
+    ]
+  },
+  "numerical_experiment": {
+    "duration_rule": "ONE_QUARTER_OF_B6N3A_MODEL_SCOPE_REVALIDATION_BOUND",
+    "duration_fraction": 0.25,
+    "duration_is_physical_validity_claim": false,
+    "resolution_step_counts": [4, 8, 16, 32],
+    "resolution_ratio": 2,
+    "integrator": "CLASSICAL_FIXED_STEP_RUNGE_KUTTA_4",
+    "integrated_equation": "dX/dt = omega cross X for the governed active right-handed XYZ constant-Euler rotation",
+    "exact_reference": "EXISTING_R6_FINITE_ROTATION_PRIMITIVE",
+    "sample_times": "0, 1/4, 1/2, 3/4, 1 times the diagnostic window",
+    "common_forcing_and_initial_state": true,
+    "each_resolution_restarts_from_same_POST_EVENT_state": true,
+    "internal_dt_is_dt2": false,
+    "persistent_state_interval_created": false,
+    "authority_horizon_crossing_allowed": false,
+    "physical_or_event_horizon_thresholds_added": false
+  },
+  "adaptive_and_refinement_analysis": {
+    "production_thresholds_selected": false,
+    "compare_truncation_and_cross_resolution_discrepancy": true,
+    "temporal_refinement_interval_rule": "Select the quarter-window with maximum coarse-vs-finest geometric discrepancy; deterministic earliest-index tie break; refine that temporary interval only.",
+    "refinement_creates_event": false,
+    "refinement_closes_model_or_authority_gap": false
+  },
+  "compression_analysis": {
+    "replay_from_sparse_POST_EVENT_checkpoint_and_governed_rotation_inputs": true,
+    "report_reconstruction_error_by_sample_time": true,
+    "tolerance_authority": "ABSENT",
+    "acceptable_compression_claim_permitted": false,
+    "significant_state_publication": "PROHIBITED"
+  },
+  "required_observable_classes": [
+    "EVOLVED_STATE",
+    "DERIVED_DIAGNOSTIC",
+    "INVARIANT",
+    "UNAVAILABLE",
+    "UNKNOWN"
+  ],
+  "required_gaps": [
+    "evolvable rift process state and evolution law",
+    "physical interface response and regime predicates",
+    "physical event and topology transition coverage",
+    "support-membership validity and remapping authority",
+    "physical uncertainty bounds and acceptance thresholds"
+  ],
+  "publication_and_authorization_gates": {
+    "WORLD_HISTORY_publication_prohibited": true,
+    "canonical_state_mutation_prohibited": true,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "physical_rift_model_selected": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false
+  }
+}
