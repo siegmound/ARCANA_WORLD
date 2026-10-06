@@ -1,0 +1,46 @@
+{
+  "schema": "ARCANA_R6_B6N8B_REQUIREMENTS_COVERAGE_V1",
+  "stage": "B6N8B_TARGETED_SCIENTIFIC_RESEARCH",
+  "qualified_source_commit": "e2d9d3e4ffc70bb665d1b150e1a2e34fae6fbc42",
+  "source_requirements": "contracts/R6_MINIMUM_EVOLVABLE_RIFT_MODEL_REQUIREMENTS_V1.json",
+  "source_blockers": "contracts/R6_MINIMUM_RIFT_MODEL_B6N4R1_BLOCKER_MATRIX_V1.json",
+  "coverage_semantics": "RESEARCH_SCREENING_NOT_QUALIFICATION; PARTIAL means family capability conditional on its actual equations and extra authority; UNKNOWN remains unknown.",
+  "families": ["TIER1_RIGID_OR_KINEMATIC_EXTENSION", "MCKENZIE_UNIFORM_STRETCHING_AND_BASIN_THERMAL_RESPONSE", "FINITE_RATE_OR_DEPTH_DEPENDENT_THERMO_KINEMATIC_STRETCHING", "BUCK_REDUCED_THIN_SHEET_FORCE_THERMAL_MODE_MODEL", "FAULT_NETWORK_GROWTH_AND_INTERACTION", "THERMOMECHANICAL_CONTINUUM_RIFT_EVOLUTION", "KINEMATIC_FAULT_RECONSTRUCTION_RIFTER_LIKE"],
+  "b6n7_requirements": [
+    {"id":"evolvable_process_state", "tier1":"NOT_MET_PHYSICAL_STATE", "mckenzie":"PARTIAL_POST_STRETCH_THERMAL_STATE", "finite_rate":"PARTIAL_CONDITIONED_STATE", "buck":"PROMISING_MODEL_DEFINED_STATE", "fault_network":"CONDITIONAL_ON_GROWTH_LAW", "continuum":"MET_WITHIN_SOLVED_MODEL", "rifter":"GEOMETRY_ONLY"},
+    {"id":"state_component_semantics_units", "tier1":"GEOMETRIC_ONLY", "mckenzie":"MODEL_SPECIFIED_THERMAL/BASIN_QUANTITIES", "finite_rate":"MODEL_SPECIFIED_FIELDS", "buck":"MODEL_SPECIFIED_PHYSICAL_STATE; MUST_REDERIVE", "fault_network":"MODEL_SPECIFIC", "continuum":"FIELD_SEMANTICS_MODEL_SPECIFIC", "rifter":"GEOMETRIC_CROSS_SECTION"},
+    {"id":"synthetic_initialization", "tier1":"POSSIBLE_IF_AUTHORED", "mckenzie":"THERMAL/LITHOLOGY_INIT_REQUIRED", "finite_rate":"THERMAL/MATERIAL/GEOMETRY_INIT_REQUIRED", "buck":"SPECIALIST_THERMAL/STRENGTH/GEOMETRY_INIT_REQUIRED", "fault_network":"WEAKNESS/FAULT/DRIVING_STATE_REQUIRED", "continuum":"FULL_FIELD_INIT_REQUIRED", "rifter":"GEOMETRY_AND_FAULT_HISTORY_REQUIRED"},
+    {"id":"evolution_law", "tier1":"KINEMATIC_ONLY", "mckenzie":"POST_EVENT_THERMAL_LAW_ONLY", "finite_rate":"THERMAL/THINNING_CONDITIONAL_LAW", "buck":"REDUCED_FORCE/THERMAL_LAW", "fault_network":"CONDITIONAL_GROWTH/INTERACTION_LAW", "continuum":"COUPLED_CONSTITUTIVE_LAWS", "rifter":"KINEMATIC_MAPPING"},
+    {"id":"forcing_inputs", "tier1":"B6N2_MOTION_PARTIAL", "mckenzie":"BETA_OR_EXTENSION_INPUT", "finite_rate":"EXTENSION_HISTORY_INPUT", "buck":"EXTENSION_RATE_PLUS_SPECIALIST_STATE", "fault_network":"BOUNDARY_FORCING_OR_SLIP_INPUT", "continuum":"BOUNDARY_CONDITIONS_PLUS_INITIAL_FIELDS", "rifter":"FAULT_DISPLACEMENT_HISTORY_INPUT"},
+    {"id":"interface_responses", "tier1":"NOT_MET", "mckenzie":"NOT_MET", "finite_rate":"FIELD_RESPONSE_NEEDS_MAPPING", "buck":"REGIONAL_MODE_ONLY", "fault_network":"POTENTIAL_IF_SUPPORT_MAPPED", "continuum":"FIELD_RESPONSE_NEEDS_MAPPING", "rifter":"PRESCRIBED_STRUCTURE"},
+    {"id":"runtime_transition_predicates", "tier1":"NOT_MET", "mckenzie":"NOT_MET_FOR_RIFT_TRANSITIONS", "finite_rate":"MODEL_SPECIFIC_UNPROVEN", "buck":"PROCESS_MODE_RULE_PRESENT; NOT_GENERIC", "fault_network":"MODEL_SPECIFIC", "continuum":"MODEL_SPECIFIC_NECKING/FAILURE", "rifter":"NOT_MET"},
+    {"id":"uncertainty_and_bounds", "tier1":"NUMERICAL/INPUT_ONLY", "mckenzie":"PARAMETER/OBSERVATION_DEPENDENT", "finite_rate":"PARAMETER/MODEL_FORM", "buck":"PARAMETER/MODEL_FORM/CRITERION_REQUIRED", "fault_network":"NUCLEATION/WEAKNESS/MODEL_FORM", "continuum":"ENSEMBLE_POSSIBLE_HIGH_COST", "rifter":"SCENARIO_INPUT"},
+    {"id":"replay", "tier1":"DETERMINISTIC_IF_FORCING_FIXED", "mckenzie":"DETERMINISTIC_IF_INPUTS_FIXED", "finite_rate":"DETERMINISTIC_IF_INPUTS_FIXED", "buck":"DETERMINISTIC_IF_NUMERICS_AND_INPUTS_FIXED", "fault_network":"SEED_OR_DETERMINISTIC_TIE_RULE_REQUIRED", "continuum":"SOLVER/PLATFORM_REPLAY_POLICY_REQUIRED", "rifter":"DETERMINISTIC_SCENARIO_REPLAY"},
+    {"id":"B6N6_variable_INTERNAL_DT_and_event_bracketing", "tier1":"KINEMATIC_DT_ONLY", "mckenzie":"POST_RIFT_THERMAL_DT_POSSIBLE; NO_RIFT_EVENT", "finite_rate":"POSSIBLE_IF_STABILITY/ERROR_GOVERNED", "buck":"POSSIBLE_BUT_NOT_DEMONSTRATED; PREDICATE_CONTINUITY_REQUIRED", "fault_network":"POSSIBLE_IF_LAW_AND_EVENTS_GOVERNED", "continuum":"POSSIBLE_BUT_COST/STABILITY_CONSTRAINED", "rifter":"STEPWISE_INPUT_SCENARIO_NOT_EVENT_PREDICTION"},
+    {"id":"synthetic_world_without_Earth_event_calendar", "tier1":"FORCING_SCENARIO_ONLY", "mckenzie":"POSSIBLE_RESPONSE_BUT_BETA_AUTHORED", "finite_rate":"POSSIBLE_IF_FORCING_AUTHORED", "buck":"POSSIBLE_IN_PRINCIPLE; TRANSFERABILITY_UNPROVEN", "fault_network":"POSSIBLE_IF_INITIAL_WEAKNESS_AUTHORED", "continuum":"POSSIBLE_BUT_CONSTITUTIVE_AUTHORITY_NEEDED", "rifter":"NO_UNLESS_HISTORY_AUTHORED"},
+    {"id":"model_authority_scope_and_validity", "tier1":"KINEMATIC_SCOPE_ONLY", "mckenzie":"FORMULATION_SCOPE_RESTRICTED", "finite_rate":"FORMULATION_SCOPE_RESTRICTED", "buck":"MODEL_SCOPE_AND_PARAMETER_DOMAIN_REQUIRED", "fault_network":"MODEL_AND_SUPPORT_SCOPE_REQUIRED", "continuum":"MODEL/DOMAIN/RESOLUTION_REQUIRED", "rifter":"INPUT_SCENARIO_SCOPE"}
+  ],
+  "b6n4r1_blockers": [
+    {"id":"NEXT_RIFT_PROCESS_EVOLUTION", "tier1":"NOT_ADDRESSED", "mckenzie":"NOT_ADDRESSED_AS_RIFT_INITIATION", "finite_rate":"PARTIAL_CONDITIONED_EVOLUTION", "buck":"PARTIALLY_DIRECTLY_ADDRESSED", "fault_network":"POTENTIALLY_DIRECT", "continuum":"DIRECT_WITHIN_MODEL", "rifter":"NOT_ADDRESSED"},
+    {"id":"PLATE_INTERFACE_EVENT_PREDICATES", "tier1":"NOT_ADDRESSED", "mckenzie":"NOT_ADDRESSED", "finite_rate":"PARTIAL_FIELD_NEEDS_SEGMENT_MAPPING", "buck":"PARTIAL_MODE_ONLY_NO_SEGMENT_RESPONSE", "fault_network":"POTENTIAL_WITH_EXPLICIT_ID_MAPPING", "continuum":"PARTIAL_FIELD_NEEDS_SUPPORT_ADAPTER", "rifter":"INPUT_DEPENDENT_NOT_PREDICTIVE"},
+    {"id":"GENERIC_TOPOLOGY_EVENT_COVERAGE", "tier1":"NOT_ADDRESSED", "mckenzie":"NOT_ADDRESSED", "finite_rate":"NOT_ADDRESSED", "buck":"REEVALUATION_TRIGGER_AT_MOST", "fault_network":"MAY_IDENTIFY_LOCAL_FAULT_EVENTS; GENERIC_GRAPH_COVERAGE_NOT_ESTABLISHED", "continuum":"MODEL_EVENT_DIAGNOSTICS_ONLY; ARCANA_TOPOLOGY_SEPARATE", "rifter":"NOT_ADDRESSED"},
+    {"id":"SUPPORT_MEMBERSHIP_VALIDITY", "tier1":"NOT_ADDRESSED", "mckenzie":"NOT_ADDRESSED", "finite_rate":"NOT_ADDRESSED", "buck":"NOT_ADDRESSED", "fault_network":"REMAP_RULE_REQUIRED", "continuum":"MODEL_DOMAIN_NOT_ARCANA_MEMBERSHIP", "rifter":"NOT_ADDRESSED"}
+  ],
+  "overall": {
+    "lowest_requirement_tier_to_investigate": "TIER_2_REDUCED_ORDER_PHYSICAL_PROCESS_MODEL",
+    "off_the_shelf_tier2_closes_all_requirements": false,
+    "tier2_plus_additional_interface_topology_support_authority_indicated": true,
+    "tier3_required": "ONLY_IF_SELECTED_OUTPUTS_REQUIRE_CRUSTAL/LITHOSPHERIC/THERMAL_STATE; NOT_ESTABLISHED_AS_UNIVERSAL_MINIMUM",
+    "tier4_required": "NOT_PROVEN; ESCALATE_IF_PREDICATES_REQUIRE_STRESS/STRAIN/FRACTURE/MECHANICAL_ACCOMMODATION",
+    "recommended_next_action": "AUTHORIZE_TARGETED_PROTOTYPE_COMPARISON_DESIGN; no solver implementation or model selection",
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "WORLD_HISTORY_changed": false
+  }
+}
