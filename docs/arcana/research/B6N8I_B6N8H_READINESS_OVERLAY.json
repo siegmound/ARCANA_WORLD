@@ -1,0 +1,137 @@
+{
+  "schema": "ARCANA_R6_B6N8I_B6N8H_READINESS_OVERLAY_V1",
+  "stage": "B6N8-I",
+  "baseline_commit": "614cfb414155e5fbd6664e92d1b890430593cbf4",
+  "H_attestation_verdict": "PASS_B6N8H_MINIMUM_PHYSICAL_STATE_CONTRACT_DEFINED_BINDINGS_AND_T0_TO_T1_EVOLUTION_REMAIN",
+  "decision": "B6N8I_REDUCES_BINDING_GAP_BUT_DOES_NOT_CONSTRUCT_T0_OR_T1_STATE",
+  "H1_H10": {
+    "H1_T0_GEOMETRY_AUTHORITY": {
+      "H_baseline": "PARTIAL_AUTHORED_CANDIDATE",
+      "effect": "UNCHANGED; global physical base semantics not closed"
+    },
+    "H2_T0_THERMAL_STATE_AUTHORITY": {
+      "H_baseline": "BLOCKED",
+      "effect": "BLOCKED; no profile or initializer selected"
+    },
+    "H3_THERMAL_PROPERTY_BINDINGS": {
+      "H_baseline": "PARTIAL_INCOMPLETE",
+      "effect": "Reference tuple inventoried; profile compatibility and model applicability remain"
+    },
+    "H4_T0_TO_T1_EVOLUTION_AUTHORITY": {
+      "H_baseline": "BLOCKED",
+      "effect": "UNCHANGED; no governed interval law"
+    },
+    "H5_T1_GEOMETRY_AVAILABLE": {
+      "H_baseline": "BLOCKED",
+      "effect": "UNCHANGED; T1 geometry not derived"
+    },
+    "H6_T1_THERMAL_STATE_AVAILABLE": {
+      "H_baseline": "BLOCKED",
+      "effect": "UNCHANGED; no initial profile/evolution"
+    },
+    "H7_T1_POST_EVENT_CAUSAL_BINDING": {
+      "H_baseline": "PARTIAL_SELECTOR_KNOWN_STATE_ABSENT",
+      "effect": "Selector does not create physical state"
+    },
+    "H8_UNCERTAINTY_VALIDITY_COMPLETE": {
+      "H_baseline": "BLOCKED",
+      "effect": "Partial property ranges exist; coupled model/support/time uncertainty incomplete"
+    },
+    "H9_PROVIDER_CONTRACT_COMPLETE": {
+      "H_baseline": "PASS_REQUIREMENTS_ONLY",
+      "effect": "Unchanged; provider not implemented"
+    },
+    "H10_PHYSICAL_STATE_READY_FOR_BUCK_ADAPTER": {
+      "H_baseline": "NOT_READY",
+      "effect": "Unchanged"
+    }
+  },
+  "G_20_inputs": {
+    "count": 20,
+    "reassessed": {
+      "T1_lithosphere_geometry_and_thickness": "Partial reference authority; global LAB and T1 evolution unresolved",
+      "T1_thermal_profile_and_boundary_history": "Specialist references exist; T0 profile and temporal boundary history unresolved",
+      "material_identity_and_applicability": "Role references defined; composition/constitutive mapping not inferred",
+      "density_and_thermal_configuration": "Reference values exist; lateral density/pressure closure and full compatibility unresolved",
+      "brittle_ductile_and_lower_crust_rheology": "Not bound; deferred unless selected LAB/evolution/Buck scope requires"
+    },
+    "all_other_G_statuses_preserved": true,
+    "B6N8I_does_not_close": [
+      "T0 profile/initializer",
+      "T0-to-T1 evolution",
+      "B6N8-F section/forcing",
+      "Buck model/readiness"
+    ],
+    "B6N8H_baseline_status_by_input": {
+      "causal_state_selector": "REQUIRES_INTEGRATION_BINDING",
+      "physical_age_and_validity": "READY_FROM_EXISTING_AUTHORITY",
+      "T1_crust_and_Moho_geometry": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "T1_lithosphere_geometry_and_thickness": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "T1_thermal_profile_and_boundary_history": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "material_identity_and_applicability": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "density_and_thermal_configuration": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "brittle_ductile_and_lower_crust_rheology": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "lower_crust_flow_closure": "UNKNOWN_CONDITIONAL_SCOPE",
+      "plate_pair_and_side_IDs": "READY_FROM_EXISTING_AUTHORITY",
+      "section_center_orientation_identity": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "section_endpoints_and_support": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "B6N2_authority_and_instant_velocities": "READY_BY_DETERMINISTIC_DERIVATION",
+      "normal_tangent_components_and_polarity": "REQUIRES_INTEGRATION_BINDING",
+      "Buck_Ux": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "Xe": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "XL": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "epsilon_dot": "UNKNOWN_INPUTS_NOT_READY",
+      "finite_interval_and_forcing_history": "REQUIRES_TEMPORAL_FORCING_AUTHORITY",
+      "validity_support_mask_and_uncertainty": "REMAINS_BLOCKED_AFTER_B6N8H"
+    }
+  },
+  "I1_I12": {
+    "I1_MATERIAL_TAXONOMY_BOUND": "ROLE_TAXONOMY_DEFINED_COMPOSITION_BINDING_OPEN",
+    "I2_THERMAL_CONDUCTIVITY_AUTHORITY": "EXISTING_SPECIALIST_REFERENCE_VALUES_IDENTIFIED",
+    "I3_DENSITY_AUTHORITY": "ROLE_SCOPED_VALUES_IDENTIFIED_FULL_DENSITY_STATE_OPEN",
+    "I4_SPECIFIC_HEAT_AUTHORITY": "EXISTING_SPECIALIST_REFERENCE_VALUES_IDENTIFIED",
+    "I5_THERMAL_DIFFUSIVITY_AUTHORITY": "DETERMINISTICALLY_DERIVABLE_FROM_COHERENT_K_RHO_CP",
+    "I6_RADIOGENIC_HEAT_AUTHORITY": "AUTHORIAL_SPECIALIST_REFERENCES_IDENTIFIED_NOT_CANONICAL_FIELD",
+    "I7_SURFACE_THERMAL_BOUNDARY_AUTHORITY": "PARTIAL_NO_COMPLETE_TEMPORAL_HISTORY",
+    "I8_BASAL_THERMAL_BOUNDARY_AUTHORITY": "PARTIAL_HWR_BINDING_GLOBAL_LAB_COMPATIBILITY_OPEN",
+    "I9_LAB_SEMANTICS_AUTHORITY": "UNRESOLVED_NO_EQUIVALENCE_SELECTED",
+    "I10_MINIMUM_RHEOLOGY_DEPENDENCIES": "CONDUCTION_ONLY_DOES_NOT_REQUIRE_FULL_BUCK_RHEOLOGY; RHEOLOGICAL_LAB_OR_FLOW_DOES",
+    "I11_BINDING_CONTRACT_COMPLETE": "PASS_REQUIREMENTS_AND_AUTHORITY_INVENTORY_DEFINED",
+    "I12_READY_FOR_T0_THERMAL_INITIALIZER_SELECTION": "NOT_READY_COLUMN_COMPATIBILITY_AND_LAB_ROUTE_REMAIN"
+  },
+  "exact_remaining_before_B6N8J": [
+    "Select a thermal initialization model compatible with authored continental q, ocean HWR transient model and support/age-zero rules; existing steady piecewise candidate failed compatibility checks.",
+    "Choose non-circular thermal lower boundary/LAB meaning and bind datum, support, validity and uncertainty; do not conflate LAB meanings or HWR zp/ZBASTH.",
+    "Decide whether conduction-only T0-to-T1 evolution suffices; any advection/flow/rheological coupling requires its own law/driver.",
+    "Bind applicability of the existing specialist material tuple to the selected model and preserve range/covariance limits; select no replacement values here.",
+    "Provide initial T(z) and surface/basal histories required by the selected model."
+  ],
+  "non_actions": {
+    "T0_physical_state_generated": false,
+    "Buck_T1_state_generated": false,
+    "thermal_initializer_selected": false,
+    "T0_to_T1_evolution_model_selected": false,
+    "lithospheric_state_provider_implemented": false,
+    "material_state_materialized": false,
+    "LAB_field_materialized": false,
+    "full_Buck_rheology_bound": false,
+    "Buck_section_materialized": false,
+    "Buck_Ux_materialized": false,
+    "Buck_Xe_selected": false,
+    "Buck_XL_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "finite_Buck_forcing_executed": false,
+    "prototype_implemented": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "WORLD_HISTORY_changed": false
+  },
+  "WORLD_HISTORY": {
+    "read_only": true,
+    "accessed": false,
+    "changed": false
+  }
+}

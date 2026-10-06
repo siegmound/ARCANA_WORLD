@@ -1,0 +1,127 @@
+{
+  "schema": "ARCANA_R6_B6N8I_LAB_SEMANTIC_DECISION_MATRIX_V1",
+  "stage": "B6N8-I",
+  "baseline_commit": "614cfb414155e5fbd6664e92d1b890430593cbf4",
+  "decision": "LAB_AUTHORITY_REMAINS_UNRESOLVED_NO_SEMANTIC_EQUIVALENCE_SELECTED",
+  "semantics": {
+    "THERMAL_LAB": "Thermal profile lower boundary/interface defined by an explicit thermal criterion or model boundary.",
+    "MECHANICAL_LAB": "Mechanical weakening/base relevant to strength; not automatically a thermal isotherm.",
+    "RHEOLOGICAL_LAB": "Depth where a specified rheological criterion is met.",
+    "SEISMIC_LAB": "Seismic velocity/attenuation transition; no such field is bound.",
+    "COMPOSITIONAL_LAB": "Compositional interface; no current ARCANA field establishes it.",
+    "MODEL_DOMAIN_BASE": "Numerical truncation/boundary, not necessarily a physical interface."
+  },
+  "consumer_roles": {
+    "B6N8H_provider": "Needs explicit base geometry/thickness and declared meaning/support/validity.",
+    "thermal_initialization": "Needs lower thermal condition/profile support; independent geometric boundary may be an input after explicit binding.",
+    "Buck_thickness": "Needs section-specific geometry under selected model; HWR depth or ZBASTH is not equivalent by name.",
+    "thermal_evolution": "Needs boundary history and model domain; physical LAB motion remains a model decision.",
+    "rheology": "Requires constitutive law only if chosen criterion or process depends on it."
+  },
+  "non_equivalences": [
+    "HWR zp is finite-plate thermal-model depth; a specialist mapping uses it as total ocean thermal lithosphere thickness, not universal/mechanical LAB.",
+    "ShellSet ZBASTH is separate upper-mantle/mechanical control.",
+    "Lithosphere thickness is not Buck Xe or XL.",
+    "Moho geometry does not bind material properties."
+  ],
+  "candidates": [
+    {
+      "id": "A_PRESCRIBED_GEOMETRIC_BASE",
+      "status": "POSSIBLE_NOT_SELECTED",
+      "inputs": [
+        "base-depth field",
+        "datum",
+        "native support",
+        "interface identity",
+        "uncertainty",
+        "validity"
+      ],
+      "circularity": "Low if independently authored.",
+      "compatibility": "Continental reference thickness exists; ocean HWR thickness is model-conditional; no coherent global physical LAB field.",
+      "temporal": "Needs T0-T1 evolution or authorized validity; no constancy inferred.",
+      "authority": "Authorial/model binding and column compatibility."
+    },
+    {
+      "id": "B_THERMAL_ISOTHERM",
+      "status": "NOT_SELECTED",
+      "inputs": [
+        "authorized T(z)",
+        "isotherm criterion",
+        "material/pressure/volatile validity"
+      ],
+      "circularity": "Circular if criterion sets the same profile's basal boundary; diagnose only from an independently bounded solve.",
+      "compatibility": "No complete T(z) or ARCANA criterion.",
+      "authority": "Authorial criterion plus targeted validity research."
+    },
+    {
+      "id": "C_RHEOLOGICAL_THRESHOLD",
+      "status": "DEFERRED_CONDITIONAL",
+      "inputs": [
+        "T",
+        "composition",
+        "pressure/stress/rate",
+        "creep/friction laws",
+        "criterion"
+      ],
+      "circularity": "Coupled; may require solver.",
+      "compatibility": "No ARCANA rheology selected.",
+      "authority": "Material/rheology decision; only if selected scope requires."
+    },
+    {
+      "id": "D_COMBINED_THERMO_MECHANICAL",
+      "status": "NOT_DEFINED",
+      "inputs": [
+        "thermal state",
+        "constitutive laws",
+        "mechanical criterion",
+        "validity"
+      ],
+      "circularity": "Coupled, cannot be sequentially assigned without a governed method.",
+      "compatibility": "No criterion authority.",
+      "authority": "Authorial model form and validation."
+    },
+    {
+      "id": "E_EXTERNAL_GEOMETRY_PROVIDER",
+      "status": "NOT_AVAILABLE",
+      "inputs": [
+        "provider identity/version",
+        "geometry/datum",
+        "coverage",
+        "uncertainty",
+        "transfer rationale"
+      ],
+      "circularity": "Low if independent.",
+      "compatibility": "No provider selected or implemented.",
+      "authority": "Provider selection and qualification."
+    },
+    {
+      "id": "F_AUTHORED_SYNTHETIC_PRIMITIVE",
+      "status": "FUTURE_PATH_NOT_SELECTED",
+      "inputs": [
+        "worldbuilding rationale",
+        "support",
+        "units/datum",
+        "uncertainty",
+        "validity"
+      ],
+      "circularity": "Low if independent of derived T/rheology.",
+      "compatibility": "In principle consistent with synthetic T0 methodology; no LAB field/value ratified.",
+      "authority": "Explicit authorial decision."
+    },
+    {
+      "id": "G_UNKNOWN",
+      "status": "CURRENT_EVIDENCE",
+      "inputs": [],
+      "circularity": "N/A",
+      "compatibility": "Integrated global LAB semantics and valid support unresolved.",
+      "temporal": "EVOLUTION_UNKNOWN."
+    }
+  ],
+  "circularity_controls": [
+    "Do not use T(z) to define a basal boundary that was itself used to construct the same T(z), absent a larger-domain solve.",
+    "Do not use viscosity to define LAB and then prescribe that LAB to determine the same rheological structure without a governed coupled solver."
+  ],
+  "iterative_solver_implemented": false,
+  "LAB_semantics_selected": false,
+  "LAB_field_materialized": false
+}

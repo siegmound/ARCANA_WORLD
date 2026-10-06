@@ -1,0 +1,906 @@
+{
+  "schema": "ARCANA_R6_B6N8I_BINDING_MATRIX_V1",
+  "stage": "B6N8-I",
+  "baseline_commit": "614cfb414155e5fbd6664e92d1b890430593cbf4",
+  "decision": "PASS_B6N8I_BINDING_CONTRACT_DEFINED_THERMAL_COLUMN_COMPATIBILITY_AND_LAB_AUTHORITY_REMAIN",
+  "scope": "Authority inventory and minimum binding contract only; no values selected by B6N8-I and no state generated.",
+  "authority_classes": [
+    "EXISTING_ARCANA_AUTHORITY",
+    "DETERMINISTIC_DERIVATION",
+    "LITERATURE_CONSTRAINED_RANGE",
+    "MODEL_FAMILY_DEFAULT",
+    "AUTHORIAL_SYNTHETIC_BINDING",
+    "EXTERNAL_PROVIDER_REQUIRED",
+    "UNKNOWN"
+  ],
+  "existing_authority": [
+    {
+      "id": "gravity",
+      "value": 9.82,
+      "units": "m s-2",
+      "authority": "EXISTING_ARCANA_AUTHORITY",
+      "support": "global Earth-scale-analogue model constant; not a geological observation"
+    },
+    {
+      "id": "continental_reference_heat_flow",
+      "values_W_m2": {
+        "COLD_STABLE": 0.045,
+        "NORMAL": 0.06,
+        "HOT_EXTENDED": 0.085
+      },
+      "authority": "EXISTING_ARCANA_AUTHORITY",
+      "support": "authored native 180x360 continental thermal-class cells only; outside support UNKNOWN",
+      "role": "prescribed authored reference boundary; not radiogenic production and not T(z)",
+      "uncertainty": "no numeric uncertainty distribution"
+    },
+    {
+      "id": "continental_reference_lithosphere_thickness",
+      "values_m": {
+        "COLD_STABLE": 200000,
+        "NORMAL": 135000,
+        "HOT_EXTENDED": 80000
+      },
+      "authority": "EXISTING_ARCANA_AUTHORITY",
+      "support": "authored thermal classes; not automatically mechanical LAB, Buck Xe or XL"
+    },
+    {
+      "id": "physical_crust_geometry",
+      "fields": [
+        "crustal_thickness_m",
+        "physical_crust_domain_id"
+      ],
+      "authority": "EXISTING_ARCANA_AUTHORITY",
+      "support": "B-v2 authored cell support; geometry/domain only, not composition"
+    },
+    {
+      "id": "oceanic_age",
+      "field": "oceanic_lithosphere_age_ma",
+      "authority": "EXISTING_ARCANA_AUTHORITY",
+      "support": "ocean age field; alone does not govern young/ridge heat-flow applicability"
+    },
+    {
+      "id": "A0.6D_shared_specialist_reference",
+      "values": {
+        "mantle_k_W_mK": {
+          "nominal": 3.3,
+          "range": [
+            3.0,
+            4.1
+          ]
+        },
+        "mantle_rho_kg_m3": {
+          "nominal": 3300,
+          "range": [
+            3200,
+            3400
+          ]
+        },
+        "mantle_Cp_J_kgK": {
+          "nominal": 1200,
+          "range": [
+            1100,
+            1250
+          ]
+        },
+        "mantle_alpha_K-1": {
+          "nominal": 3e-05,
+          "range": [
+            2.5e-05,
+            3.5e-05
+          ]
+        },
+        "TSurf_K": {
+          "nominal": 280,
+          "range": [
+            250,
+            300
+          ]
+        },
+        "HWR_Tb_K": {
+          "nominal": 1680,
+          "range": [
+            1523,
+            1737
+          ]
+        },
+        "HWR_zp_m": {
+          "nominal": 100000,
+          "range": [
+            80000,
+            140000
+          ]
+        },
+        "rhoH2O_kg_m3": {
+          "nominal": 1000,
+          "range": [
+            990,
+            1030
+          ]
+        }
+      },
+      "authority": "EXISTING_ARCANA_AUTHORITY",
+      "scope": "versioned specialist/HWR configuration references, not canonical spatial state; HWR basal parameters do not alone define a global geotherm or mechanical LAB"
+    }
+  ],
+  "material_taxonomy": {
+    "status": "REFERENCE_ROLE_TAXONOMY_EXISTS; composition identity and per-cell material mapping are not inferred from domain/thermal classes",
+    "minimum_roles": [
+      "CONTINENTAL_CRUST_REFERENCE",
+      "OCEANIC_CRUST_REFERENCE",
+      "LITHOSPHERIC_MANTLE_REFERENCE"
+    ],
+    "conditional_roles": [
+      "ASTHENOSPHERE_REFERENCE",
+      "SEAWATER_REFERENCE",
+      "LOWER_CRUST_FLOW_MATERIAL_IF_SELECTED_MODEL_REQUIRES_IT"
+    ],
+    "mappings": {
+      "physical_crust_domain_to_crust_geometry": "EXACT_MATCH_FOR_GEOMETRY_ONLY",
+      "thermal_class_to_material_identity": "INCOMPATIBLE_AS_COMPOSITION_INFERENCE",
+      "thermal_class_to_authored_flux_and_reference_thickness": "DETERMINISTIC_GROUPING_WITHIN_AUTHORED_SUPPORT",
+      "reference_role_to_Buck_constitutive_material": "AUTHORIAL_BINDING_REQUIRED"
+    },
+    "upper_lower_crust_split": "Unsupported by present ARCANA T0 material fields; do not introduce unless a selected model requires it."
+  },
+  "bindings": [
+    {
+      "quantity": "crustal_material_identity",
+      "meaning": "Discrete role-specific crust reference identity; categorical IDs only.",
+      "units": "categorical",
+      "authority_class": "AUTHORIAL_SYNTHETIC_BINDING",
+      "support": "per crust domain/material class; explicit native-support join required",
+      "temporal_role": "MATERIAL_CONFIGURATION",
+      "current_authority": "A0.6G defines continental crust, oceanic crust and shared mantle reference roles, not canonical composition identities.",
+      "status": "SEMANTICS_DEFINED; BUCK MATERIAL ID BINDING OPEN",
+      "derivation": "Do not infer composition from physical_crust_domain_id, province, age or thermal class.",
+      "uncertainty": [
+        "AUTHORIAL",
+        "MATERIAL_CLASS",
+        "SPATIAL_SUPPORT"
+      ],
+      "persistence": "MATERIAL_CONFIGURATION; causal material identity only if explicitly time-varying",
+      "required": true,
+      "source_authority": "docs/arcana/research/B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json; R6_TECTONIC_THERMODYNAMIC_BINDING.json",
+      "current_readiness": "SEMANTICS_DEFINED; BUCK MATERIAL ID BINDING OPEN",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "docs/arcana/research/B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json; R6_TECTONIC_THERMODYNAMIC_BINDING.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "thermal_conductivity_k",
+      "meaning": "Conductive constitutive property.",
+      "units": "W m-1 K-1",
+      "authority_class": "EXISTING_ARCANA_AUTHORITY",
+      "support": "per reference material class",
+      "temporal_role": "MATERIAL_CONFIGURATION",
+      "current_values": {
+        "continental_crust": {
+          "nominal": 2.5,
+          "range": [
+            2,
+            3
+          ]
+        },
+        "oceanic_crust": {
+          "nominal": 2.2,
+          "range": [
+            1.8,
+            2.8
+          ]
+        },
+        "mantle_lithosphere": {
+          "nominal": 3.3,
+          "range": [
+            3,
+            4.1
+          ]
+        }
+      },
+      "status": "SPECIALIST REFERENCE VALUES ALREADY SELECTED; not canonical and not newly selected here",
+      "form": "Existing candidate uses constants per bulk class; T/P-dependent law not qualified and needs explicit model-form binding.",
+      "uncertainty": [
+        "LITERATURE_CONSTRAINED_RANGE",
+        "MATERIAL_CLASS",
+        "MODEL_FORM"
+      ],
+      "persistence": "MATERIAL_CONFIGURATION",
+      "required": true,
+      "blocker": "The candidate steady column failed compatibility checks; applying these values does not establish a valid T0 profile.",
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "SPECIALIST REFERENCE VALUES ALREADY SELECTED; not canonical and not newly selected here",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "density_rho",
+      "meaning": "Reference density by distinct thermal/material/buoyancy role.",
+      "units": "kg m-3",
+      "authority_class": "EXISTING_ARCANA_AUTHORITY",
+      "support": "per material/layer; asthenosphere reference separately scoped",
+      "temporal_role": "MATERIAL_CONFIGURATION; rho(T) derived from state",
+      "current_values": {
+        "continental_crust": {
+          "nominal": 2800,
+          "range": [
+            2700,
+            2900
+          ]
+        },
+        "oceanic_crust": {
+          "nominal": 2890,
+          "range": [
+            2850,
+            2930
+          ]
+        },
+        "mantle_lithosphere": {
+          "nominal": 3300,
+          "range": [
+            3200,
+            3400
+          ]
+        },
+        "asthenosphere_reference": {
+          "nominal": 3300,
+          "range": [
+            3200,
+            3400
+          ],
+          "reference": "Tp"
+        },
+        "seawater_conditional": {
+          "nominal": 1000,
+          "range": [
+            990,
+            1030
+          ]
+        }
+      },
+      "status": "Reference values identified; no lateral pressure-density-gravity closure or complete rho(z).",
+      "separation": "Reference density, thermal correction, chemical anomaly and Buck reduced contrast are distinct.",
+      "uncertainty": [
+        "LITERATURE_CONSTRAINED_RANGE",
+        "MATERIAL_CLASS",
+        "MODEL_FORM"
+      ],
+      "persistence": "MATERIAL_CONFIGURATION; rho(T,z) replayable only under pinned law",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json; R6_TECTONIC_THERMODYNAMIC_BINDING.json",
+      "current_readiness": "Reference values identified; no lateral pressure-density-gravity closure or complete rho(z).",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json; R6_TECTONIC_THERMODYNAMIC_BINDING.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "specific_heat_Cp",
+      "meaning": "Energy conversion and thermal evolution property.",
+      "units": "J kg-1 K-1",
+      "authority_class": "EXISTING_ARCANA_AUTHORITY",
+      "support": "per reference material",
+      "temporal_role": "MATERIAL_CONFIGURATION",
+      "current_values": {
+        "continental_crust": {
+          "nominal": 1000,
+          "range": [
+            800,
+            1200
+          ]
+        },
+        "oceanic_crust": {
+          "nominal": 1000,
+          "range": [
+            800,
+            1200
+          ]
+        },
+        "mantle_lithosphere": {
+          "nominal": 1200,
+          "range": [
+            1100,
+            1250
+          ]
+        }
+      },
+      "status": "Reference values identified; mantle Cp directly enters HWR diffusivity; crust Cp is recorded for completeness/other energy formulations.",
+      "uncertainty": [
+        "LITERATURE_CONSTRAINED_RANGE",
+        "MATERIAL_CLASS"
+      ],
+      "persistence": "MATERIAL_CONFIGURATION",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "Reference values identified; mantle Cp directly enters HWR diffusivity; crust Cp is recorded for completeness/other energy formulations.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "thermal_diffusivity_kappa",
+      "meaning": "Derived coefficient in conductive evolution.",
+      "units": "m2 s-1",
+      "authority_class": "DETERMINISTIC_DERIVATION",
+      "support": "same coherent material tuple",
+      "temporal_role": "DERIVED_FROM_CONFIGURATION",
+      "relation": {
+        "equation": "kappa=k/(rho*Cp)",
+        "dimensional_check": "(W m-1 K-1)/(kg m-3 * J kg-1 K-1)=m2 s-1",
+        "independent_parameter": false
+      },
+      "current_authority": {
+        "mantle_nominal": 8.333333333333333e-07,
+        "mantle_range": [
+          7.0588e-07,
+          1.1648e-06
+        ]
+      },
+      "status": "Derivable only where one authorized coherent tuple applies; do not independently bind kappa.",
+      "uncertainty": "Propagate tuple range/covariance; full covariance is not established.",
+      "persistence": "REPLAYABLE_DERIVED_STATE or configuration cache",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "Derivable only where one authorized coherent tuple applies; do not independently bind kappa.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "radiogenic_heat_production_A",
+      "meaning": "Volumetric internal source, distinct from surface heat flux and geotherm.",
+      "units": "W m-3",
+      "authority_class": "EXISTING_ARCANA_AUTHORITY",
+      "support": "uniform bulk material references; no vertical/geochemical field",
+      "temporal_role": "MATERIAL_CONFIGURATION unless future evolving source is governed",
+      "current_values": {
+        "continental_crust": {
+          "nominal": 8e-07,
+          "sensitivity": [
+            4e-07,
+            1.2e-06
+          ]
+        },
+        "oceanic_crust": {
+          "nominal": 3e-07,
+          "sensitivity": [
+            0,
+            5e-07
+          ]
+        },
+        "mantle_lithosphere": {
+          "nominal": 2e-08,
+          "sensitivity": [
+            0,
+            4e-08
+          ]
+        }
+      },
+      "status": "Authorial specialist reference values already exist; not canonical field, not q inversion, not ARCANA geochemical history.",
+      "uncertainty": [
+        "AUTHORIAL",
+        "LITERATURE_CONSTRAINED_RANGE",
+        "MODEL_FORM"
+      ],
+      "persistence": "MATERIAL_CONFIGURATION",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "Authorial specialist reference values already exist; not canonical field, not q inversion, not ARCANA geochemical history.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "surface_temperature_boundary",
+      "meaning": "Reference/surface boundary temperature; climate history is distinct.",
+      "units": "K",
+      "authority_class": "EXISTING_ARCANA_AUTHORITY",
+      "support": "global/reference only where datum and physical boundary match",
+      "temporal_role": "MODEL_CONFIGURATION or climate-coupled state if separately authorized",
+      "current_values": {
+        "nominal": 280,
+        "range": [
+          250,
+          300
+        ]
+      },
+      "status": "Specialist reference selected; no climate-coupled T0-T1 history thereby established.",
+      "uncertainty": [
+        "PARAMETER",
+        "TEMPORAL_VALIDITY",
+        "MODEL_FORM"
+      ],
+      "persistence": "MODEL_CONFIGURATION unless later climate makes it causal state",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json; A0.6D source authority referenced therein",
+      "current_readiness": "Specialist reference selected; no climate-coupled T0-T1 history thereby established.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json; A0.6D source authority referenced therein",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "surface_heat_flux_boundary",
+      "meaning": "Continental authored reference q or age-dependent ocean model output; not production and not T(z).",
+      "units": "W m-2",
+      "authority_class": "MIXED_EXISTING_ARCANA_AUTHORITY_AND_DERIVED_STATE",
+      "support": "continental class cells; valid positive-age HWR ocean; separate ridge/young-age policy",
+      "temporal_role": "authored T0 parent plus derived ocean branch",
+      "status": "Partial; no globally complete supported boundary/history. Continental q is prescribed on its authorized support.",
+      "uncertainty": "Continental numeric uncertainty UNKNOWN; ocean parameter/model/applicability uncertainty; support separately tracked.",
+      "persistence": "Continental authored T0 parent; joined field replayable; nodal runtime serialization NUMERICAL_RUNTIME_INPUT_ONLY",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_HEAT_FLOW_ARCHITECTURE_CLOSURE.json; R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+      "current_readiness": "Partial; no globally complete supported boundary/history. Continental q is prescribed on its authorized support.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_HEAT_FLOW_ARCHITECTURE_CLOSURE.json; R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "basal_thermal_boundary",
+      "meaning": "Lower thermal condition and its relation to thermal/geometric LAB.",
+      "units": "K, W m-2, m as applicable",
+      "authority_class": "PARTIAL_EXISTING_SPECIALIST_AUTHORITY",
+      "support": "HWR finite plate and candidate reference columns; class dependent",
+      "temporal_role": "MODEL_CONFIGURATION and boundary history",
+      "current_values": {
+        "HWR_Tb_K": {
+          "nominal": 1680,
+          "range": [
+            1523,
+            1737
+          ]
+        },
+        "HWR_zp_m": {
+          "nominal": 100000,
+          "range": [
+            80000,
+            140000
+          ]
+        },
+        "candidate_Tp_K_nominal": 1638.8
+      },
+      "status": "A0.6G maps ocean zp to total thermal lithosphere thickness and derives an anchor condition; not a valid globally compatible LAB/profile across support. Existing steady column fails compatibility.",
+      "uncertainty": [
+        "PARAMETER",
+        "MODEL_FORM",
+        "SPATIAL_SUPPORT",
+        "TEMPORAL_VALIDITY"
+      ],
+      "persistence": "configuration/boundary history; derived anchor replayable",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json; R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_CONTRACT.json",
+      "current_readiness": "A0.6G maps ocean zp to total thermal lithosphere thickness and derives an anchor condition; not a valid globally compatible LAB/profile across support. Existing steady column fails compatibility.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json; R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_CONTRACT.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "thermal_LAB_semantics",
+      "meaning": "Thermal lower interface or boundary criterion.",
+      "units": "m and/or K",
+      "authority_class": "UNKNOWN",
+      "support": "per column/domain",
+      "temporal_role": "MODEL_CONFIGURATION; derived interface if criterion based",
+      "status": "Unresolved: no single global cross-domain thermal LAB criterion; HWR zp is not universal LAB identity.",
+      "circularity": "Isotherm criterion is circular if it defines the boundary used to construct that same T(z).",
+      "required": true,
+      "source_authority": "B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json; R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "Unresolved: no single global cross-domain thermal LAB criterion; HWR zp is not universal LAB identity.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json; R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "uncertainty": "Not quantified beyond the cited source/range; preserve UNKNOWN rather than inventing a distribution.",
+      "persistence": "MODEL_CONFIGURATION unless the row explicitly distinguishes state or replayable derived state.",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "mechanical_or_rheological_LAB",
+      "meaning": "Strength/viscosity transition if selected Buck scope needs it.",
+      "units": "m or criterion-dependent",
+      "authority_class": "UNKNOWN",
+      "support": "per material/section",
+      "temporal_role": "MODEL_CONFIGURATION or derived",
+      "status": "No ARCANA law/criterion selected; not needed for conduction alone.",
+      "uncertainty": [
+        "MODEL_FORM",
+        "PARAMETER",
+        "TEMPORAL_VALIDITY"
+      ],
+      "persistence": "configuration/diagnostic",
+      "required": false,
+      "source_authority": "B6N8D_BUCK_EQUATION_REGISTRY.json; R6_TECTONIC_AUTHORIAL_INITIAL_STATE_ADJUDICATION.json",
+      "current_readiness": "No ARCANA law/criterion selected; not needed for conduction alone.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "B6N8D_BUCK_EQUATION_REGISTRY.json; R6_TECTONIC_AUTHORIAL_INITIAL_STATE_ADJUDICATION.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "thermal_expansion_alpha",
+      "meaning": "Temperature-density/adiabat coupling coefficient.",
+      "units": "K-1",
+      "authority_class": "EXISTING_ARCANA_AUTHORITY",
+      "support": "per crust/mantle class; asthenosphere reuse requires scoped binding",
+      "temporal_role": "MATERIAL_CONFIGURATION",
+      "current_values": {
+        "continental_crust": {
+          "nominal": 3e-05,
+          "range": [
+            2e-05,
+            4e-05
+          ]
+        },
+        "oceanic_crust": {
+          "nominal": 3e-05,
+          "range": [
+            2e-05,
+            4e-05
+          ]
+        },
+        "mantle_lithosphere": {
+          "nominal": 3e-05,
+          "range": [
+            2.5e-05,
+            3.5e-05
+          ]
+        }
+      },
+      "status": "Specialist references exist; exact law, validity and Buck-term applicability remain scoped.",
+      "uncertainty": [
+        "MATERIAL_CLASS",
+        "PARAMETER",
+        "MODEL_FORM"
+      ],
+      "required": "for density/adiabat coupling, not bare conduction",
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "Specialist references exist; exact law, validity and Buck-term applicability remain scoped.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "persistence": "MODEL_CONFIGURATION unless the row explicitly distinguishes state or replayable derived state.",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "gravity_g",
+      "meaning": "Fixed R6 global model gravity.",
+      "units": "m s-2",
+      "authority_class": "EXISTING_ARCANA_AUTHORITY",
+      "support": "global",
+      "temporal_role": "STATIC_PLANETARY_CONFIGURATION",
+      "current_value": 9.82,
+      "status": "Bound global model constant",
+      "persistence": "MODEL_CONFIGURATION",
+      "source_authority": "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION.json; R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+      "current_readiness": "Bound global model constant",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_INITIAL_WORLD_PHYSICAL_SPECIFICATION.json; R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+      "uncertainty": "Not quantified beyond the cited source/range; preserve UNKNOWN rather than inventing a distribution.",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "density_contrast_buoyancy",
+      "meaning": "Buck reduced contrast and integrated buoyancy from materials, T and geometry.",
+      "units": "equation-dependent",
+      "authority_class": "DETERMINISTIC_DERIVATION_AFTER_MODEL_BINDING",
+      "support": "Buck section",
+      "temporal_role": "DERIVED_FROM_STATE",
+      "status": "Not currently derivable as ARCANA result; do not duplicate as independent density input",
+      "uncertainty": "Propagated input/model/support uncertainty",
+      "persistence": "DIAGNOSTIC_ONLY unless separately governed",
+      "source_authority": "B6N8D_BUCK_EQUATION_REGISTRY.json",
+      "current_readiness": "Not currently derivable as ARCANA result; do not duplicate as independent density input",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "B6N8D_BUCK_EQUATION_REGISTRY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "rheology_laws_coefficients",
+      "meaning": "Brittle, crust/mantle creep and optional lower-crust flow closures.",
+      "units": "law-dependent",
+      "authority_class": "UNKNOWN_MODEL_CONFIGURATION_UNSELECTED",
+      "support": "Buck section/material",
+      "temporal_role": "MODEL_CONFIGURATION",
+      "status": "Buck forms recovered, no ARCANA values selected; unnecessary for conduction-only thermal solution unless rheological LAB or flow/advection is chosen.",
+      "persistence": "MODEL_CONFIGURATION",
+      "source_authority": "B6N8D_BUCK_EQUATION_REGISTRY.json; R6_TECTONIC_AUTHORIAL_INITIAL_STATE_ADJUDICATION.json",
+      "current_readiness": "Buck forms recovered, no ARCANA values selected; unnecessary for conduction-only thermal solution unless rheological LAB or flow/advection is chosen.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "B6N8D_BUCK_EQUATION_REGISTRY.json; R6_TECTONIC_AUTHORIAL_INITIAL_STATE_ADJUDICATION.json",
+      "uncertainty": "Not quantified beyond the cited source/range; preserve UNKNOWN rather than inventing a distribution.",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "vertical_layer_boundaries",
+      "meaning": "Surface, crust/Moho, lithosphere base and model-domain base are distinct interfaces.",
+      "units": "m with explicit positive-down datum",
+      "authority_class": "MIXED_EXISTING_ARCANA_GEOMETRY_AND_UNKNOWN_LAB",
+      "support": "native T0 cell geometry, then explicit later section mapping",
+      "temporal_role": "T0_STATE_DEPENDENT for evolving physical interfaces; MODEL_CONFIGURATION for numerical domain boundary",
+      "current_authority": "Crust thickness/Moho geometry and continental reference thickness exist; ocean thermal plate mapping is conditional. No globally bound material interfaces or physical LAB.",
+      "status": "Moho geometry available; material join partial; LAB/domain base unresolved.",
+      "uncertainty": [
+        "SOURCE",
+        "SPATIAL_SUPPORT",
+        "MODEL_FORM",
+        "TEMPORAL_VALIDITY"
+      ],
+      "persistence": "Persist causal geometry if time-varying; model truncation remains configuration.",
+      "required": true,
+      "source_authority": "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZATION_REPORT.json; B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+      "current_readiness": "Moho geometry available; material join partial; LAB/domain base unresolved.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZATION_REPORT.json; B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "mantle_reference_temperature_Tp",
+      "meaning": "Temperature anchor for mantle/asthenosphere reference and any associated density/adiabat relation.",
+      "units": "K",
+      "authority_class": "PARTIAL_EXISTING_SPECIALIST_AUTHORITY",
+      "support": "HWR reference/selected model column only",
+      "temporal_role": "MODEL_CONFIGURATION or REPLAYABLE_DERIVED_STATE",
+      "current_authority": "Material-column authority derives nominal Tp about 1638.8 K from HWR Tb and an integrated adiabat at nominal inputs; it is not a global T0 field or a selected T0 geotherm.",
+      "status": "Model-specific candidate; validity and basal/LAB match are not closed across all support.",
+      "uncertainty": [
+        "PARAMETER",
+        "MODEL_FORM",
+        "SPATIAL_SUPPORT"
+      ],
+      "persistence": "Configuration plus replayable derivation; do not store as independent world state unless evolving physical T is retained.",
+      "required": true,
+      "source_authority": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "Model-specific candidate; validity and basal/LAB match are not closed across all support.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "solidus_and_temLim",
+      "meaning": "Physical solidus versus specialist numerical/integration temperature guard must be separately typed.",
+      "units": "K",
+      "authority_class": "UNKNOWN",
+      "support": "material/layer and P-T validity if physical solidus; solver scope if temLim guard",
+      "temporal_role": "MATERIAL_CONFIGURATION or NUMERICAL_MODEL_CONFIGURATION",
+      "current_authority": "No ARCANA composition/volatile state supplies a solidus. Existing contracts warn ShellSet temLim can also act as a density/integration guard and is not automatically a physical solidus.",
+      "status": "No solidus or temLim value chosen; do not treat a numerical cap as a physical state criterion.",
+      "uncertainty": [
+        "MATERIAL_CLASS",
+        "MODEL_FORM",
+        "PARAMETER"
+      ],
+      "persistence": "MODEL_CONFIGURATION",
+      "required": "only if chosen initializer/rheology/LAB criterion consumes it",
+      "source_authority": "R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_CONTRACT.json; R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "current_readiness": "No solidus or temLim value chosen; do not treat a numerical cap as a physical state criterion.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_CONTRACT.json; R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "thermal_LAB_criterion_temperature",
+      "meaning": "Isotherm threshold if thermal-LAB option is selected.",
+      "units": "K",
+      "authority_class": "UNKNOWN",
+      "support": "per material/domain and pressure/volatile regime",
+      "temporal_role": "MODEL_CONFIGURATION; LAB depth derived from T(z)",
+      "current_authority": "No ARCANA isotherm/solidus criterion is selected; HWR Tb is a basal model parameter and cannot be reused as a LAB isotherm by implication.",
+      "status": "UNKNOWN and not required if independently prescribed geometry is selected.",
+      "uncertainty": [
+        "MODEL_FORM",
+        "PARAMETER",
+        "MATERIAL_CLASS",
+        "TEMPORAL_VALIDITY"
+      ],
+      "persistence": "MODEL_CONFIGURATION; derived depth replayable under pinned profile/criterion",
+      "required": false,
+      "source_authority": "B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+      "current_readiness": "UNKNOWN and not required if independently prescribed geometry is selected.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "reference_viscosity_and_rheological_threshold",
+      "meaning": "Reference/threshold viscosity if rheological LAB is selected.",
+      "units": "Pa s; threshold must state ratio or criterion",
+      "authority_class": "UNKNOWN",
+      "support": "per material/layer and model stress/strain regime",
+      "temporal_role": "MODEL_CONFIGURATION or derived from evolving T/state",
+      "current_authority": "No ARCANA viscosity criterion or reference viscosity selected; not required for conduction-only T(z).",
+      "status": "Conditional unknown; do not import ShellSet or Earth defaults.",
+      "uncertainty": [
+        "MODEL_FORM",
+        "PARAMETER",
+        "MATERIAL_CLASS",
+        "TEMPORAL_VALIDITY"
+      ],
+      "persistence": "MODEL_CONFIGURATION",
+      "required": false,
+      "source_authority": "B6N8D_BUCK_EQUATION_REGISTRY.json",
+      "current_readiness": "Conditional unknown; do not import ShellSet or Earth defaults.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "B6N8D_BUCK_EQUATION_REGISTRY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    },
+    {
+      "quantity": "activation_energy_and_creep_law",
+      "meaning": "Constitutive activation energy and creep-law identity if rheological LAB, ductile strength or lower-crust flow is selected.",
+      "units": "J mol-1 or source-law convention; bind n and prefactor consistently",
+      "authority_class": "UNKNOWN",
+      "support": "role-specific crust/mantle material and pressure-temperature regime",
+      "temporal_role": "MODEL_CONFIGURATION",
+      "current_authority": "Buck forms are recovered but ARCANA law family, coefficients and applicability are not selected.",
+      "status": "Not needed by conduction-only initialization; required only by selected rheology-dependent process.",
+      "uncertainty": [
+        "MODEL_FORM",
+        "PARAMETER",
+        "MATERIAL_CLASS"
+      ],
+      "persistence": "MODEL_CONFIGURATION",
+      "required": false,
+      "source_authority": "B6N8D_BUCK_EQUATION_REGISTRY.json",
+      "current_readiness": "Not needed by conduction-only initialization; required only by selected rheology-dependent process.",
+      "validity": "Confined to the cited authority's stated model, support, range and temporal scope; no extrapolation or cross-domain equivalence is authorized. Unspecified applicability remains UNKNOWN.",
+      "blocking_source": "B6N8D_BUCK_EQUATION_REGISTRY.json",
+      "derivation_relation": "No deterministic derivation is authorized for this quantity beyond any explicit relation recorded in property_relations."
+    }
+  ],
+  "property_relations": [
+    {
+      "id": "KAPPA",
+      "equation": "kappa=k/(rho*Cp)",
+      "inputs": [
+        "k",
+        "rho",
+        "Cp"
+      ],
+      "output": "kappa",
+      "independent_parameter": false,
+      "uncertainty": "propagate input ranges/covariance"
+    },
+    {
+      "id": "THERMAL_DENSITY",
+      "equation": "rho(T)=rho_ref*exp(-alpha*(T-T_ref))",
+      "inputs": [
+        "rho_ref",
+        "alpha",
+        "T",
+        "T_ref"
+      ],
+      "output": "rho(T)",
+      "status": "conditional on selected relation and validity"
+    },
+    {
+      "id": "MOHO_FLUX",
+      "equation": "q_Moho=q_surface-A_crust*h_crust absent interface source/sink",
+      "inputs": [
+        "q_surface",
+        "A_crust",
+        "h_crust"
+      ],
+      "output": "q_Moho",
+      "status": "analytical balance, not complete geotherm"
+    },
+    {
+      "id": "ADIABAT",
+      "equation": "dTad/dz=alpha*g*T/Cp; constant tuple gives T=T_ref*exp(alpha*g*delta_z/Cp)",
+      "inputs": [
+        "alpha",
+        "g",
+        "Cp",
+        "anchor T",
+        "depth"
+      ],
+      "status": "model-specific reference relation, not T0 initializer"
+    }
+  ],
+  "model_form_and_research": {
+    "conductivity_form": "Existing candidate uses constant per bulk class. T/P dependent conductivity is not qualified; constant form requires scoped model-form decision and validity/sensitivity evidence.",
+    "minimum_transient_requirements": [
+      "initial T(z)",
+      "coherent k/rho/Cp or derived kappa",
+      "volumetric production",
+      "support",
+      "surface and basal boundary histories",
+      "validity and uncertainty"
+    ],
+    "targeted_external_research_required": [
+      "Check applicability and T/depth validity of the existing property ranges for selected synthetic bulk classes; do not infer ARCANA composition from Earth-rock ranges.",
+      "If a thermal isotherm/solidus defines LAB, qualify composition-, pressure- and volatile-dependent criterion and its validity.",
+      "If variable-property or vertical production structure is selected, qualify only the minimum law/data for that chosen model."
+    ],
+    "not_required_now": [
+      "broad geodynamics survey",
+      "full Buck creep-law selection absent rheological-LAB/flow scope",
+      "copying present-day Earth heat flow"
+    ]
+  },
+  "uncertainty_policy": {
+    "dimensions": [
+      "SOURCE",
+      "MATERIAL_CLASS",
+      "SPATIAL_SUPPORT",
+      "MODEL_FORM",
+      "PARAMETER",
+      "TEMPORAL_VALIDITY",
+      "AUTHORIAL"
+    ],
+    "probability_distributions_invented": false,
+    "rule": "Preserve source/ranges, support coverage, validity and model-form alternatives independently; a range is not a probability distribution."
+  },
+  "persistence_policy": {
+    "CANONICAL_PERSISTENT_STATE": "causal evolving geometry/composition and T(z) if not exactly replayable from retained parents",
+    "MODEL_CONFIGURATION": "equations, boundaries, material laws, parameter sets, LAB criterion, solver configuration",
+    "MATERIAL_CONFIGURATION": "role-scoped material IDs and property references",
+    "REPLAYABLE_DERIVED_STATE": "kappa, thermal density, interface temperatures/profile only with pinned complete parents/recipe/validity",
+    "MODEL_INTERNAL_TEMPORARY_STATE": "solver iterates/substeps are not WORLD_HISTORY epochs by default",
+    "DIAGNOSTIC_ONLY": "Buck force/buoyancy and sensitivity products unless separately governed",
+    "UNKNOWN": "replayability until exact initializer/evolution recipe and validity are fixed"
+  },
+  "exact_contract": "LITHOSPHERIC_THERMAL_MATERIAL_BINDINGS_V0",
+  "new_numeric_values_selected": false,
+  "thermal_initializer_selected": false,
+  "T0_or_T1_state_constructed": false,
+  "provider_implemented": false,
+  "source_artifacts": [
+    "docs/arcana/qualifications/R6_B6N8H_ATTESTATION.json",
+    "docs/arcana/research/B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+    "docs/arcana/research/B6N8H_PHYSICAL_STATE_PROVIDER_REQUIREMENTS.json",
+    "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json",
+    "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1.json",
+    "R6_PRE_ORBDATA_THERMAL_REFERENCE_COLUMN_CONTRACT.json",
+    "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING.json",
+    "R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+    "R6_TECTONIC_THERMODYNAMIC_BINDING.json",
+    "R6_T0_B_PANGAEA_LIKE_V2_MATERIALIZATION_REPORT.json",
+    "docs/arcana/research/B6N8D_BUCK_EQUATION_REGISTRY.json"
+  ],
+  "temporal_scope": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "elapsed_years": 27123.40515632,
+    "T1_selector": "POST_EVENT",
+    "age_alone_sufficient": false,
+    "same_age_PRE_EVENT_and_POST_EVENT_records_remain_distinct": true,
+    "T0_initial_authority_separate_from_T0_to_T1_evolution": true,
+    "no_evolution_or_constancy_inferred": true
+  },
+  "minimum_model_inputs": {
+    "T0_thermal_initializer": {
+      "required": [
+        "authorized T(z) state OR a fully governed deterministic initializer",
+        "native support and depth datum",
+        "validity, uncertainty and provenance",
+        "material/layer identity if the chosen representation uses it"
+      ],
+      "if_initializer_recipe_is_derived": [
+        "geometry and layer interfaces",
+        "coherent material properties required by that recipe",
+        "surface and basal boundary conditions required by that recipe",
+        "internal source if included by that recipe",
+        "pinned recipe/version and admissibility checks"
+      ],
+      "authority_status": "Neither an authorized T0 profile nor initializer is available. Surface flux and reference parameters alone are insufficient."
+    },
+    "T0_to_T1_evolution": {
+      "required": [
+        "authorized T0 state",
+        "coherent kappa derived from tuple or authorized equivalent",
+        "heat source",
+        "surface/basal boundary histories",
+        "native support",
+        "pinned deterministic model and validity/uncertainty"
+      ],
+      "conditional": [
+        "advection/flow/rheology only if selected physics requires them; bind their laws and forcing"
+      ],
+      "authority_status": "No governed reduced evolution law or boundary histories are currently selected.",
+      "duration_years": 27123.40515632,
+      "short_duration_constancy_assumption_authorized": false
+    },
+    "external_thermodynamic_provider": {
+      "status": "NOT_SELECTED_OR_REQUIRED_FOR_CONDUCTION_ONLY_REFERENCE_MODEL",
+      "condition": "If a future model requires P-T phase equilibrium or pressure-dependent EOS density, select and qualify a provider/database (the repository audits Perple_X and BurnMan capabilities); neither provider nor dataset is ARCANA authority by itself."
+    }
+  },
+  "pre_T0_conclusion": {
+    "PRE_T0_HISTORY_REQUIRED": "NOT_DEMONSTRATED",
+    "PRE_T0_HISTORY_PROVEN_UNNECESSARY": false,
+    "interpretation": "B6N8-I does not establish whether any selected initializer would need prior history."
+  }
+}
