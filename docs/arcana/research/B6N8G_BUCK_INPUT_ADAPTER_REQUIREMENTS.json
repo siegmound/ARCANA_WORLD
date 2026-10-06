@@ -1,0 +1,203 @@
+{
+  "authorities": {
+    "B6N8D_baseline": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+    "B6N8E_attestation": "1e4f4fee1ce95fabc32c9eb62b783314660afa78",
+    "B6N8E_source": "f9904136e90b4463ab31013373d77810639748f3",
+    "B6N8F_attestation": "3ac12adfac15fb004b0d6f276a8c3d41fd528bfb",
+    "B6N8F_source": "59cefe861c47d6915e00af0e9df17aacbbcf9e5b"
+  },
+  "candidate": "ARCANA_BUCK_INPUT_ADAPTER_V0",
+  "candidate_fields": [
+    "causal_state_selector",
+    "physical_age",
+    "plate_pair",
+    "section_id",
+    "section_center",
+    "section_orientation",
+    "side_A_plate",
+    "side_B_plate",
+    "section_endpoint_A",
+    "section_endpoint_B",
+    "T1_thermal_profile_reference",
+    "T1_crust_Moho_geometry_reference",
+    "T1_lithosphere_geometry_reference",
+    "material_rheology_configuration_reference",
+    "kinematic_authority_reference",
+    "velocity_A",
+    "velocity_B",
+    "relative_velocity",
+    "normal_component",
+    "tangential_component",
+    "Ux_candidate",
+    "Ux_authority_status",
+    "Xe_value_or_status",
+    "XL_value_or_status",
+    "epsilon_dot_or_status",
+    "finite_forcing_status",
+    "validity",
+    "uncertainty_components",
+    "provenance"
+  ],
+  "classification": "CONCEPTUAL_NOT_IMPLEMENTED_NOT_PRODUCTION_SCHEMA",
+  "complete_input_vector": [
+    {
+      "input": "causal_state_selector",
+      "requirement": "select exact POST_EVENT causal record; age alone is insufficient",
+      "status": "REQUIRES_INTEGRATION_BINDING"
+    },
+    {
+      "input": "physical_age_and_validity",
+      "requirement": "T1 age known; forward validity end not established",
+      "status": "READY_FROM_EXISTING_AUTHORITY"
+    },
+    {
+      "input": "T1_crust_and_Moho_geometry",
+      "requirement": "datum, native support, uncertainty",
+      "status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE"
+    },
+    {
+      "input": "T1_lithosphere_geometry_and_thickness",
+      "requirement": "physical geometry is not Xe",
+      "status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE"
+    },
+    {
+      "input": "T1_thermal_profile_and_boundary_history",
+      "requirement": "scalar heat flux is not T(z)",
+      "status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE"
+    },
+    {
+      "input": "material_identity_and_applicability",
+      "requirement": "two-sided material support join",
+      "status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE"
+    },
+    {
+      "input": "density_and_thermal_configuration",
+      "requirement": "density, expansion, heat, conductivity, boundary laws",
+      "status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING"
+    },
+    {
+      "input": "brittle_ductile_and_lower_crust_rheology",
+      "requirement": "laws, coefficients, applicability",
+      "status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING"
+    },
+    {
+      "input": "lower_crust_flow_closure",
+      "requirement": "required only if selected Buck scope requires it",
+      "status": "UNKNOWN"
+    },
+    {
+      "input": "plate_pair_and_side_IDs",
+      "requirement": "candidate pair [1,3]; material join unresolved",
+      "status": "READY_FROM_EXISTING_AUTHORITY"
+    },
+    {
+      "input": "section_center_orientation_identity",
+      "requirement": "none selected",
+      "status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE"
+    },
+    {
+      "input": "section_endpoints_and_support",
+      "requirement": "opposite-side coverage and junction rule",
+      "status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE"
+    },
+    {
+      "input": "B6N2_authority_and_instant_velocities",
+      "requirement": "within restricted temporal validity",
+      "status": "READY_BY_DETERMINISTIC_DERIVATION"
+    },
+    {
+      "input": "normal_tangent_components_and_polarity",
+      "requirement": "retain both; explicitly orient Buck x",
+      "status": "REQUIRES_INTEGRATION_BINDING"
+    },
+    {
+      "input": "Buck_Ux",
+      "requirement": "signed two-sided section difference",
+      "status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE"
+    },
+    {
+      "input": "Xe",
+      "requirement": "initial extension-zone width; no value",
+      "status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING"
+    },
+    {
+      "input": "XL",
+      "requirement": "physical uniform lithosphere versus model domain semantics",
+      "status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING"
+    },
+    {
+      "input": "epsilon_dot",
+      "requirement": "formula ready; Ux and Xe not jointly governed",
+      "status": "UNKNOWN"
+    },
+    {
+      "input": "finite_interval_and_forcing_history",
+      "requirement": "positive interval and evolution law absent",
+      "status": "UNKNOWN"
+    },
+    {
+      "input": "validity_support_mask_and_uncertainty",
+      "requirement": "fail-closed full coverage",
+      "status": "REQUIRES_INTEGRATION_BINDING"
+    }
+  ],
+  "fail_closed": [
+    "ambiguous causal selector",
+    "expired B6N2 validity",
+    "unknown required support",
+    "junction eligibility unresolved",
+    "side/polarity unbound",
+    "missing T(z) or material/rheology",
+    "unapproved interpolation",
+    "Xe/XL unbound",
+    "no positive physical interval",
+    "revalidation boundary reached"
+  ],
+  "non_actions": {
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_input_adapter_implemented": false,
+    "Buck_section_materialized": false,
+    "Buck_strain_rate_materialized": false,
+    "WORLD_HISTORY_changed": false,
+    "finite_Buck_forcing_executed": false
+  },
+  "operations": [
+    {
+      "class": "UNRESOLVED",
+      "operation": "resolve authority IDs and causal selector"
+    },
+    {
+      "class": "DETERMINISTIC_DERIVATION",
+      "operation": "evaluate rigid velocity"
+    },
+    {
+      "class": "ARCANA_MODEL_ADAPTATION",
+      "operation": "choose section center, orientation and endpoints"
+    },
+    {
+      "class": "GEOMETRIC_PROJECTION",
+      "operation": "project onto bound section frame"
+    },
+    {
+      "class": "GOVERNED_INTERPOLATION",
+      "operation": "transfer profile/material fields between supports"
+    },
+    {
+      "class": "AUTHORIAL_BINDING",
+      "operation": "bind physical/material/rheology parameters including Xe/XL"
+    },
+    {
+      "class": "DETERMINISTIC_DERIVATION",
+      "operation": "compute signed Ux after support and polarity binding"
+    },
+    {
+      "class": "UNRESOLVED",
+      "operation": "integrate finite forcing history"
+    }
+  ],
+  "schema": "R6_B6N8G_BUCK_INPUT_ADAPTER_REQUIREMENTS_V1",
+  "stage": "B6N8-G"
+}

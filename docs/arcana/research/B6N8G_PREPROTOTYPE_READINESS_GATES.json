@@ -1,0 +1,154 @@
+{
+  "baseline_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "first_buck_process_evaluation": "NO",
+  "gates": [
+    {
+      "blockers": [
+        "explicit causal, support and configuration binding"
+      ],
+      "id": "G1",
+      "name": "E_F_SEMANTIC_COMPATIBILITY",
+      "status": "PASS_INTERFACE_CAN_BE_DEFINED"
+    },
+    {
+      "blockers": [
+        "B6N8-E gate NO_CURRENTLY_DEFENSIBLE_INITIALIZATION",
+        "T0 state/evolution/T1 profile incomplete"
+      ],
+      "id": "G2",
+      "name": "T1_PHYSICAL_STATE_AVAILABLE",
+      "status": "BLOCKED"
+    },
+    {
+      "blockers": [
+        "center/orientation/endpoints and junction eligibility unselected"
+      ],
+      "id": "G3",
+      "name": "SECTION_SUPPORT_DEFINED",
+      "status": "BLOCKED"
+    },
+    {
+      "blockers": [
+        "points, side order, projection and positive polarity unbound"
+      ],
+      "id": "G4",
+      "name": "UX_ADAPTER_AUTHORIZED",
+      "status": "BLOCKED"
+    },
+    {
+      "blockers": [
+        "candidate relationships unresolved; no numeric authority"
+      ],
+      "id": "G5",
+      "name": "XE_AUTHORIZED",
+      "status": "BLOCKED"
+    },
+    {
+      "blockers": [
+        "physical support versus model domain/boundary role unresolved"
+      ],
+      "id": "G6",
+      "name": "XL_AUTHORIZED",
+      "status": "BLOCKED"
+    },
+    {
+      "blockers": [
+        "material and constitutive applicability/configuration incomplete"
+      ],
+      "id": "G7",
+      "name": "MATERIAL_RHEOLOGY_BOUND",
+      "status": "BLOCKED"
+    },
+    {
+      "blockers": [
+        "G4 and G5; formula alone is insufficient"
+      ],
+      "id": "G8",
+      "name": "EPSILON_DOT_DERIVABLE",
+      "status": "BLOCKED_INPUTS_NOT_READY"
+    },
+    {
+      "blockers": [
+        "positive physical interval absent; 8214 years is revalidation horizon only"
+      ],
+      "id": "G9",
+      "name": "FINITE_FORCING_INTERVAL_AUTHORIZED",
+      "status": "BLOCKED"
+    },
+    {
+      "blockers": [
+        "mandatory inputs G2-G9 incomplete"
+      ],
+      "id": "G10",
+      "name": "COMPLETE_BUCK_INPUT_READY",
+      "status": "NOT_READY"
+    }
+  ],
+  "lineage_recommendation": {
+    "E_attestation": "1e4f4fee1ce95fabc32c9eb62b783314660afa78",
+    "E_source": "f9904136e90b4463ab31013373d77810639748f3",
+    "F_attestation": "3ac12adfac15fb004b0d6f276a8c3d41fd528bfb",
+    "F_source": "59cefe861c47d6915e00af0e9df17aacbbcf9e5b",
+    "merge_E_F": false,
+    "reason": "preserve independent qualification scopes and bind their outputs explicitly",
+    "recommendation": "synthesized normative integration contract cites both attestations and qualified source SHAs immutably"
+  },
+  "next_work": {
+    "avoid_serializing_independent_closures": true,
+    "dependencies": [
+      "endpoints may depend on Xe",
+      "Ux depends on section, side order and polarity",
+      "strain rate depends on Ux and Xe",
+      "finite accumulation depends on positive physical interval"
+    ],
+    "parallelizable": [
+      "T0/T1 physical state and material/rheology bindings",
+      "conceptual section-support alternatives and eligibility policy"
+    ]
+  },
+  "non_actions": {
+    "B6N8E_merged": false,
+    "B6N8F_merged": false,
+    "B6O_authorized": false,
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_input_adapter_implemented": false,
+    "Buck_section_materialized": false,
+    "Buck_strain_rate_materialized": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_forward_propagation_executed": false,
+    "dt2_years": null,
+    "finite_Buck_forcing_executed": false,
+    "mechanics_executed": false,
+    "new_physical_parameter_selected": false,
+    "physical_rift_model_qualified": false,
+    "physical_rift_model_selected": false,
+    "prototype_implemented": false,
+    "support_remapping_executed": false,
+    "topology_transition_executed": false
+  },
+  "residual_closures": [
+    {
+      "closure": "T0/T1 thermal-structural state and finite interval evolution",
+      "type": "MISSING_STATE_AUTHORITY"
+    },
+    {
+      "closure": "material/thermal/density/rheology laws and Xe/XL",
+      "type": "MISSING_MODEL_BINDING"
+    },
+    {
+      "closure": "center/orientation/endpoints, side map, signed Ux, junction policy",
+      "type": "MISSING_SECTION_ADAPTATION"
+    },
+    {
+      "closure": "positive interval, forcing evolution, successor validity/revalidation",
+      "type": "MISSING_TEMPORAL_FORCING_AUTHORITY"
+    }
+  ],
+  "schema": "R6_B6N8G_PREPROTOTYPE_READINESS_GATES_V1",
+  "stage": "B6N8-G"
+}

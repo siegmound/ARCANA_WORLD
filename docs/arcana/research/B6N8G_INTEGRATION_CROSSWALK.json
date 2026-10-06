@@ -1,0 +1,690 @@
+{
+  "Ux_adapter": {
+    "absolute_value_allowed": false,
+    "candidate": "Ux=(vB(rB)-vA(rA)) dot ex",
+    "point/axis/side selection": "ARCANA_MODEL_ADAPTATION",
+    "polarity": "UNBOUND",
+    "status": "NOT_AUTHORIZED_FOR_MATERIALIZATION",
+    "velocity_evaluation": "DETERMINISTIC_KINEMATIC_DERIVATION"
+  },
+  "XL": {
+    "meaning": "physical uniform-lithosphere support plus model lateral/boundary extent; roles must be separated",
+    "status": "UNKNOWN_NOT_SELECTED"
+  },
+  "Xe_circularity": {
+    "rule": "INITIAL_Xe != POST_EVOLUTION_RIFT_WIDTH absent separately governed iterative scheme",
+    "status": "PROHIBITED"
+  },
+  "Xe_decision_matrix": [
+    {
+      "candidate": "A Xe equals local T1 lithosphere thickness",
+      "needs": "explicit ARCANA decision equating distinct supports and validation",
+      "status": "NOT_AUTHORIZED"
+    },
+    {
+      "candidate": "B Xe is governed function of T1 thickness",
+      "needs": "authored function, applicability, calibration/provenance, uncertainty",
+      "status": "NOT_AUTHORIZED"
+    },
+    {
+      "candidate": "C independent rift-zone parameter constrained by thickness",
+      "needs": "parameter authority and constraint rule",
+      "status": "NOT_AUTHORIZED"
+    },
+    {
+      "candidate": "D Xe evolves as process state",
+      "needs": "process evolution law and initial-vs-later width distinction",
+      "status": "NOT_AUTHORIZED"
+    },
+    {
+      "candidate": "E externally/authorially selected initial Xe",
+      "needs": "provenance, support, units, validity, uncertainty",
+      "status": "POSSIBLE_ROUTE_NOT_SELECTED"
+    },
+    {
+      "candidate": "F unknown / insufficient authority",
+      "needs": "remains until a justified route is authorized",
+      "status": "CURRENT_STATUS"
+    }
+  ],
+  "authorial_decisions_required": [
+    "whether a Buck-compatible steady T0 geotherm is authorized",
+    "mapping ARCANA domain/material classes to constitutive materials",
+    "thermal, density, brittle/ductile and lower-crust model configuration plus uncertainty",
+    "which state quantities evolve between T0 and T1 and under which law",
+    "whether lower-crust flow or inherited weakness belongs in the selected minimal model",
+    "one justified Xe relationship and XL physical/model-domain meaning",
+    "section support, center, endpoint, orientation, polarity and junction policy",
+    "positive finite forcing interval and successor validity rule"
+  ],
+  "authority_provenance": {
+    "E": {
+      "Buck_T1_state_generated": false,
+      "MATERIAL_RHEOLOGY_THERMAL_BINDING": "INCOMPLETE",
+      "PRE_T0_HISTORY_PROVEN_UNNECESSARY": false,
+      "PRE_T0_HISTORY_REQUIRED": "NOT_DEMONSTRATED",
+      "T0_INITIAL_STATE_AUTHORITY": "INCOMPLETE",
+      "T0_TO_T1_EVOLUTION_AUTHORITY": "INCOMPLETE",
+      "attestation": "1e4f4fee1ce95fabc32c9eb62b783314660afa78",
+      "attestation_file_sha256": "53892daec4ea1a992b9ccc553391d523aa24f770bc924371212d5bbbbc1da193",
+      "initialization_gate": "NO_CURRENTLY_DEFENSIBLE_INITIALIZATION",
+      "qualified_artifact_sha256": {
+        "docs/arcana/research/B6N8E_BUCK_INITIAL_STATE_GAP_MATRIX.json": "b24d7c493561ba8960ba553d5ff59f3f4ec61b4ea3ffe132faf61512a2de8f4d",
+        "docs/arcana/research/B6N8E_INITIALIZATION_PREHISTORY_AUTHORITY.md": "122e9f097e5da86175ea2980103742e2e33595517c5a3978aa8b041249b3db30",
+        "docs/arcana/research/B6N8E_T0_T1_EVOLUTION_REQUIREMENTS.json": "773c01cc0048476ea410128c62584ab710dbb05c369fe164a5ad8181d34257a7",
+        "docs/arcana/research/B6N8E_UPSTREAM_PHYSICAL_STATE_REQUIREMENTS.json": "21c5076e7c2fd822997321c3dc0537a34cc4e50d509465fdb3c5fa1582a2e529"
+      },
+      "source": "f9904136e90b4463ab31013373d77810639748f3",
+      "verdict": "PASS_B6N8E_INITIALIZATION_PREHISTORY_AUTHORITY_AUDIT"
+    },
+    "E_F_merged": false,
+    "E_ancestor_of_F": false,
+    "F": {
+      "attestation": "3ac12adfac15fb004b0d6f276a8c3d41fd528bfb",
+      "attestation_file_sha256": "d66bf1cec2e054a8a6f37983c79767ea7275bf92f2a90488f609f32c60680026",
+      "gates": {
+        "A_local_relative_velocity_driver": "YES_BY_DETERMINISTIC_KINEMATIC_DERIVATION",
+        "B_buck_Ux": "REQUIRES_SECTION_ADAPTATION",
+        "C_epsilon_dot": "NOT_CURRENTLY_DERIVABLE",
+        "D_finite_buck_forcing": "NOT_CURRENTLY_EXECUTABLE"
+      },
+      "qualified_artifact_sha256": {
+        "docs/arcana/research/B6N8F_B6N2_TO_BUCK_FORCING_MAPPING.md": "b4d1da0057b0c9569b6115d7c9b1ed617573d952f13f33664581d70ba3cfe1fd",
+        "docs/arcana/research/B6N8F_FORCING_INTERFACE_REQUIREMENTS.json": "1a7aa146d58ed3e2b2508fbc836ce125c8b2cc7915ba8d13c4bd6d6b64c40ad5",
+        "docs/arcana/research/B6N8F_KINEMATIC_TO_PHYSICAL_MAPPING_MATRIX.json": "d112bccec9ef6132122048c768e2657a7d459e976a4acb6fe3ef7d8997e5cfba",
+        "docs/arcana/research/B6N8F_SECTION_SUPPORT_ELIGIBILITY.json": "ddd3507fa7e193fce71165ff36c0d9fce0948cdf2c718eeb3e24092fb8a3288e"
+      },
+      "source": "59cefe861c47d6915e00af0e9df17aacbbcf9e5b",
+      "verdict": "PASS_B6N8F_LOCAL_KINEMATIC_DRIVER_DERIVABLE_BUCK_UX_REQUIRES_SECTION_ADAPTATION_XE_AND_INITIALIZATION_AUTHORITY"
+    },
+    "F_ancestor_of_E": false,
+    "common_baseline": "771b8d3ea9706eb0d45903e72354b304e6979e69"
+  },
+  "baseline_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "common_b6n8d_model_authority": {
+    "baseline_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+    "equation_recovery_reopened": false,
+    "equation_registry_path": "docs/arcana/research/B6N8D_BUCK_EQUATION_REGISTRY.json",
+    "equation_registry_sha256": "bccd9405eb3afbbd3fb1c97410bb2f6eb9bcfd6748d60a9e417a333359f52543",
+    "full_numerical_model_distinguished_from_appendix_approximation": true,
+    "scope": [
+      "thermal evolution",
+      "brittle/ductile strength",
+      "lower-crust flow",
+      "crustal and thermal buoyancy",
+      "finite force changes",
+      "widening/localization regime diagnostic"
+    ]
+  },
+  "eligibility": {
+    "otherwise": "INELIGIBLE",
+    "requires": [
+      "T1 state on exact POST_EVENT selector",
+      "valid thermal/structural/material coverage across section",
+      "unambiguous plate-side mapping",
+      "valid B6N2 authority",
+      "governed center/orientation/endpoints/sign",
+      "junction policy",
+      "Xe and XL authority",
+      "authorized interpolation",
+      "complete uncertainty/provenance",
+      "positive finite interval"
+    ],
+    "status": "CONCEPTUAL_ONLY_NOT_IMPLEMENTED"
+  },
+  "endpoint_rule": {
+    "candidates": [
+      "plus/minus Xe/2",
+      "physical far field",
+      "plate-interior points",
+      "adaptive points"
+    ],
+    "depends_on_Xe": true,
+    "status": "UNKNOWN_NOT_SELECTED"
+  },
+  "finite_forcing": {
+    "8214_years_is_forcing_duration": false,
+    "INTERNAL_DT_is_persistent_epoch": false,
+    "requires": [
+      "POST_EVENT causal start",
+      "time-valid driver",
+      "positive physical interval",
+      "integration/revalidation policy",
+      "internal dt policy",
+      "finite strain accumulation law"
+    ],
+    "status": "NOT_AUTHORIZED"
+  },
+  "junction": {
+    "accommodation": "UNKNOWN",
+    "buffer_distance": null,
+    "pair_1_3_endpoint_junctions": 2,
+    "status": "INELIGIBLE_PENDING_JUNCTION_AUTHORITY"
+  },
+  "material_rheology": {
+    "components": [
+      "material identity",
+      "density/thermal properties",
+      "brittle law",
+      "crustal rheology",
+      "mantle rheology",
+      "lower-crust closure"
+    ],
+    "entry_point": "before Buck force calculation via separate versioned configuration",
+    "status": "INCOMPLETE"
+  },
+  "minimum_upstream_domain_from_E": {
+    "T0_initial_state_and_T0_T1_evolution_are_distinct": true,
+    "canonical_domain_created": false,
+    "configuration_fields": [
+      "thermal boundaries and production",
+      "conductivity/diffusivity",
+      "density/expansion/gravity",
+      "brittle and ductile laws"
+    ],
+    "name": "LITHOSPHERIC_THERMAL_STRUCTURAL_STATE",
+    "state_fields": [
+      "crust/Moho geometry",
+      "lithosphere base/thickness",
+      "thermal profile",
+      "material identity",
+      "lower-crust flow only if selected model needs it",
+      "validity and uncertainty"
+    ],
+    "status": "CONCEPTUAL_REQUIREMENT_ONLY_NOT_IMPLEMENTED"
+  },
+  "obliquity": {
+    "2D_use": "requires applicability decision",
+    "tangential_motion": "preserve as mismatch/validity metadata",
+    "threshold": null
+  },
+  "overall_result": "INTERFACE_CAN_BE_DEFINED_INPUTS_NOT_CURRENTLY_AVAILABLE",
+  "persistence": {
+    "Ux": "REPLAYABLE_DERIVED_STATE",
+    "XL": "MODEL_CONFIGURATION with support provenance",
+    "Xe": "UNKNOWN until model binding; configuration or evolving state",
+    "diagnostics": "DIAGNOSTIC_ONLY",
+    "epsilon_dot": "REPLAYABLE_DERIVED_STATE",
+    "forcing_history": "CANONICAL_PERSISTENT_STATE if causally realized and history-affecting",
+    "physical_evolving_state": "CANONICAL_PERSISTENT_STATE; replayable only under complete deterministic authority",
+    "section_definition": "versioned model configuration plus replayable selection recipe; instance policy unresolved"
+  },
+  "plate_side_mapping": {
+    "material_state_join": "NOT_ESTABLISHED",
+    "plate_pair": [
+      1,
+      3
+    ],
+    "status": "PARTIAL"
+  },
+  "quantities": [
+    {
+      "B6N8E_role_status": "T0 candidate; T0-T1 model required",
+      "B6N8F_role_status": "F consumes; supplies none",
+      "authority_class": "partial authored authority",
+      "blocking_reason": "T1 geometry not materialized",
+      "buck_role": "layer geometry",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind datum, causal state and support",
+      "persistence_class": "CANONICAL_PERSISTENT_STATE",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "T1 crust geometry",
+      "spatial_support": "cell geometry; section map absent",
+      "temporal_role": "T0 to POST_EVENT T1",
+      "uncertainty": "support and evolution",
+      "units": "m"
+    },
+    {
+      "B6N8E_role_status": "thickness-derived only if datum/contract supports it",
+      "B6N8F_role_status": "F consumes structural input",
+      "authority_class": "authorial/derived",
+      "blocking_reason": "no qualified T1 source/support",
+      "buck_role": "layer interface",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "governed depth transform then support mapping",
+      "persistence_class": "UNKNOWN",
+      "semantic_compatibility": "COMPATIBLE_AFTER_DETERMINISTIC_TRANSFORM",
+      "semantic_name": "T1 Moho geometry",
+      "spatial_support": "native cells then cross-section",
+      "temporal_role": "T1 POST_EVENT",
+      "uncertainty": "datum and mapping",
+      "units": "m"
+    },
+    {
+      "B6N8E_role_status": "meaning/temporal binding incomplete",
+      "B6N8F_role_status": "F needs lithosphere state for Xe integration",
+      "authority_class": "authorial state",
+      "blocking_reason": "not interchangeable with ShellSet depths or Xe",
+      "buck_role": "lower boundary",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind physical LAB/base and map support",
+      "persistence_class": "UNKNOWN",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "T1 lithosphere base",
+      "spatial_support": "lateral physical support",
+      "temporal_role": "T1 POST_EVENT",
+      "uncertainty": "base definition/evolution",
+      "units": "m"
+    },
+    {
+      "B6N8E_role_status": "candidate T0 field; evolution model required",
+      "B6N8F_role_status": "F says Xe unselected; thickness may constrain",
+      "authority_class": "physical state + model binding",
+      "blocking_reason": "thickness does not equal Xe automatically",
+      "buck_role": "finite lithosphere geometry",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind thickness independently from extension-zone width",
+      "persistence_class": "CANONICAL_PERSISTENT_STATE",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "T1 lithosphere thickness",
+      "spatial_support": "cell/profile and section",
+      "temporal_role": "T1 initialization",
+      "uncertainty": "evolution and support",
+      "units": "m"
+    },
+    {
+      "B6N8E_role_status": "no qualified numeric profile",
+      "B6N8F_role_status": "F requires initialization-side state",
+      "authority_class": "thermal model authority",
+      "blocking_reason": "heat flux alone is not T(z)",
+      "buck_role": "Buck geotherm",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "governed profile derivation and authorized support transfer",
+      "persistence_class": "UNKNOWN",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "T1 thermal profile T(z)",
+      "spatial_support": "column/profile across section",
+      "temporal_role": "T0 init, evolve to T1",
+      "uncertainty": "thermal/evolution uncertainty",
+      "units": "K over depth m"
+    },
+    {
+      "B6N8E_role_status": "incomplete heat flow, production, conductivity, diffusivity",
+      "B6N8F_role_status": "F does not bind them",
+      "authority_class": "authorial/material binding",
+      "blocking_reason": "no complete model/config binding",
+      "buck_role": "thermal model inputs",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind constitutive law and uncertainty",
+      "persistence_class": "MODEL_CONFIGURATION",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "thermal boundary/production/properties",
+      "spatial_support": "material and boundary support",
+      "temporal_role": "T0 config plus T0-T1",
+      "uncertainty": "each coefficient separately",
+      "units": "W/m2, W/m3, W/m/K, m2/s"
+    },
+    {
+      "B6N8E_role_status": "partial classes; not full composition mapping",
+      "B6N8F_role_status": "pair plate side known but material join absent",
+      "authority_class": "world/material authority",
+      "blocking_reason": "no complete join",
+      "buck_role": "material interfaces",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bridge plate-side to physical material support",
+      "persistence_class": "CANONICAL_PERSISTENT_STATE",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "material identity",
+      "spatial_support": "side-specific native support",
+      "temporal_role": "T1 POST_EVENT",
+      "uncertainty": "classification/applicability",
+      "units": "categorical"
+    },
+    {
+      "B6N8E_role_status": "candidate numeric fields; not fully configured",
+      "B6N8F_role_status": "F supplies no physical coefficients",
+      "authority_class": "material binding",
+      "blocking_reason": "numeric applicability incomplete",
+      "buck_role": "buoyancy/density force",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind law and values to same support",
+      "persistence_class": "MODEL_CONFIGURATION",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "density and thermal expansion",
+      "spatial_support": "material layers/profile",
+      "temporal_role": "T1 plus constitutive config",
+      "uncertainty": "material and thermal uncertainty",
+      "units": "kg/m3, K-1"
+    },
+    {
+      "B6N8E_role_status": "semantic only or unbound laws",
+      "B6N8F_role_status": "F supplies no mechanics",
+      "authority_class": "authorial/model binding",
+      "blocking_reason": "independent of kinematic driver",
+      "buck_role": "strength/flow closure",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind laws, coefficients and applicability",
+      "persistence_class": "MODEL_CONFIGURATION",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "brittle/ductile/lower-crust rheology",
+      "spatial_support": "vertical layer and lateral section",
+      "temporal_role": "T1 model configuration",
+      "uncertainty": "rheology and law uncertainty",
+      "units": "law-specific"
+    },
+    {
+      "B6N8E_role_status": "not chosen",
+      "B6N8F_role_status": "F section mapping requires a center",
+      "authority_class": "ARCANA model adaptation",
+      "blocking_reason": "node/midpoint/window/adaptive alternatives remain",
+      "buck_role": "section origin",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "select by explicit process support rule",
+      "persistence_class": "MODEL_CONFIGURATION",
+      "semantic_compatibility": "UNKNOWN",
+      "semantic_name": "section center",
+      "spatial_support": "interface or local-window support",
+      "temporal_role": "POST_EVENT",
+      "uncertainty": "curvature/representativeness",
+      "units": "coordinate"
+    },
+    {
+      "B6N8E_role_status": "physical axes/support need mapping",
+      "B6N8F_role_status": "F local frame exists; Buck x polarity unbound",
+      "authority_class": "ARCANA model adaptation",
+      "blocking_reason": "interface normal != velocity direction",
+      "buck_role": "cross-rift x",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind x and extension-positive sign; not velocity-aligned",
+      "persistence_class": "MODEL_CONFIGURATION",
+      "semantic_compatibility": "COMPATIBLE_AFTER_EXPLICIT_ARCANA_ADAPTATION",
+      "semantic_name": "section orientation",
+      "spatial_support": "interface-local frame",
+      "temporal_role": "POST_EVENT",
+      "uncertainty": "frame/sign",
+      "units": "unit vector"
+    },
+    {
+      "B6N8E_role_status": "material join incomplete",
+      "B6N8F_role_status": "pair 1:3 identities retained",
+      "authority_class": "identity plus adaptation",
+      "blocking_reason": "physical material join unresolved",
+      "buck_role": "A/B side assignment",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "map plate IDs to physical state coverage",
+      "persistence_class": "REPLAYABLE_DERIVED_STATE",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "plate-side identities",
+      "spatial_support": "plate-local sides",
+      "temporal_role": "POST_EVENT",
+      "uncertainty": "junction/material support",
+      "units": "IDs"
+    },
+    {
+      "B6N8E_role_status": "not E state",
+      "B6N8F_role_status": "restricted B6N2 deterministic driver",
+      "authority_class": "deterministic kinematics",
+      "blocking_reason": "not finite-section Ux",
+      "buck_role": "instant relative motion",
+      "current_readiness": "READY_BY_DETERMINISTIC_DERIVATION",
+      "integration_transformation": "evaluate v and subtract in common frame",
+      "persistence_class": "REPLAYABLE_DERIVED_STATE",
+      "semantic_compatibility": "COMPATIBLE_AFTER_DETERMINISTIC_TRANSFORM",
+      "semantic_name": "relative velocity",
+      "spatial_support": "common point or endpoints",
+      "temporal_role": "POST_EVENT instant",
+      "uncertainty": "Euler/vector uncertainty",
+      "units": "m/s"
+    },
+    {
+      "B6N8E_role_status": "not E state",
+      "B6N8F_role_status": "governed local signed component",
+      "authority_class": "geometric projection",
+      "blocking_reason": "not strain, fault slip or Ux",
+      "buck_role": "kinematic opening",
+      "current_readiness": "READY_BY_DETERMINISTIC_DERIVATION",
+      "integration_transformation": "delta-v dot n_AB",
+      "persistence_class": "REPLAYABLE_DERIVED_STATE",
+      "semantic_compatibility": "COMPATIBLE_AFTER_DETERMINISTIC_TRANSFORM",
+      "semantic_name": "normal component",
+      "spatial_support": "interface normal",
+      "temporal_role": "POST_EVENT instant",
+      "uncertainty": "frame/polarity uncertainty",
+      "units": "m/s"
+    },
+    {
+      "B6N8E_role_status": "not E state",
+      "B6N8F_role_status": "governed distinct component",
+      "authority_class": "geometric projection",
+      "blocking_reason": "no threshold or silent discard",
+      "buck_role": "obliquity diagnostic",
+      "current_readiness": "READY_BY_DETERMINISTIC_DERIVATION",
+      "integration_transformation": "delta-v dot tangent; retain",
+      "persistence_class": "REPLAYABLE_DERIVED_STATE",
+      "semantic_compatibility": "COMPATIBLE_AFTER_DETERMINISTIC_TRANSFORM",
+      "semantic_name": "tangential component",
+      "spatial_support": "edge tangent",
+      "temporal_role": "POST_EVENT instant",
+      "uncertainty": "frame uncertainty",
+      "units": "m/s"
+    },
+    {
+      "B6N8E_role_status": "E fields lack selected section coverage",
+      "B6N8F_role_status": "F requires opposite-side support",
+      "authority_class": "ARCANA adaptation",
+      "blocking_reason": "no endpoint rule; junction endpoints",
+      "buck_role": "finite-section points",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "choose after section and Xe semantics governed",
+      "persistence_class": "MODEL_CONFIGURATION",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "section endpoints/support",
+      "spatial_support": "two-side cross-section",
+      "temporal_role": "POST_EVENT",
+      "uncertainty": "endpoint/junction/support",
+      "units": "coordinates and IDs"
+    },
+    {
+      "B6N8E_role_status": "E initialization only",
+      "B6N8F_role_status": "F gate B needs section adaptation",
+      "authority_class": "model adaptation over deterministic velocities",
+      "blocking_reason": "normal velocity is not Buck Ux",
+      "buck_role": "finite pure-shear velocity difference",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "candidate (vB(rB)-vA(rA)) dot ex after binding",
+      "persistence_class": "REPLAYABLE_DERIVED_STATE",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "Buck Ux",
+      "spatial_support": "opposite-side supports",
+      "temporal_role": "POST_EVENT instantaneous within authority",
+      "uncertainty": "projection, sign, support",
+      "units": "m/s"
+    },
+    {
+      "B6N8E_role_status": "thickness may constrain but no binding",
+      "B6N8F_role_status": "F unselected",
+      "authority_class": "authorial binding/model adaptation",
+      "blocking_reason": "options A-E unresolved; F current status insufficient",
+      "buck_role": "initial extension-zone width",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "choose and justify a distinct relationship",
+      "persistence_class": "UNKNOWN",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "Xe",
+      "spatial_support": "finite zone",
+      "temporal_role": "initial POST_EVENT config",
+      "uncertainty": "relation/support",
+      "units": "m"
+    },
+    {
+      "B6N8E_role_status": "uniform lithosphere support candidate",
+      "B6N8F_role_status": "F unselected",
+      "authority_class": "authorial binding",
+      "blocking_reason": "no generic width",
+      "buck_role": "lateral physical/model width",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "bind physical support vs model boundary role",
+      "persistence_class": "UNKNOWN",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "XL",
+      "spatial_support": "section/domain boundaries",
+      "temporal_role": "initial POST_EVENT config",
+      "uncertainty": "domain representativeness",
+      "units": "m"
+    },
+    {
+      "B6N8E_role_status": "no forcing input",
+      "B6N8F_role_status": "formula known; inputs not available",
+      "authority_class": "deterministic formula once inputs bind",
+      "blocking_reason": "no calculation authorized",
+      "buck_role": "pure-shear strain rate",
+      "current_readiness": "FORMULA_READY_INPUTS_NOT_READY",
+      "integration_transformation": "Ux/Xe with common units/support/sign",
+      "persistence_class": "REPLAYABLE_DERIVED_STATE",
+      "semantic_compatibility": "COMPATIBLE_AFTER_DETERMINISTIC_TRANSFORM",
+      "semantic_name": "epsilon_dot",
+      "spatial_support": "Buck support/Xe",
+      "temporal_role": "POST_EVENT instant or series",
+      "uncertainty": "inherits separate Ux/Xe uncertainty",
+      "units": "1/s"
+    },
+    {
+      "B6N8E_role_status": "no T0-T1 driver",
+      "B6N8F_role_status": "no positive physical interval",
+      "authority_class": "new temporal authority",
+      "blocking_reason": "8214 years is revalidation horizon only",
+      "buck_role": "time-varying forcing/finite strain",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "integrate over independently authorized interval only",
+      "persistence_class": "CANONICAL_PERSISTENT_STATE",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "finite forcing interval/history",
+      "spatial_support": "section through time",
+      "temporal_role": "POST_EVENT causal sequence",
+      "uncertainty": "temporal validity/revalidation",
+      "units": "time; strain dimensionless"
+    },
+    {
+      "B6N8E_role_status": "quantity-wise validity required",
+      "B6N8F_role_status": "kinematic and section eligibility required",
+      "authority_class": "integration binding",
+      "blocking_reason": "no joined coverage exists",
+      "buck_role": "fail-closed admissibility",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "intersect governed masks; do not fill unknown",
+      "persistence_class": "UNKNOWN",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "validity/support mask",
+      "spatial_support": "cell/profile/side/section",
+      "temporal_role": "T0/T1 and POST_EVENT",
+      "uncertainty": "unknown coverage",
+      "units": "mask/status"
+    },
+    {
+      "B6N8E_role_status": "no E section",
+      "B6N8F_role_status": "F requires explicit section unit",
+      "authority_class": "ARCANA adaptation",
+      "blocking_reason": "no chosen center/endpoints",
+      "buck_role": "model support identity",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "version selection rule and source geometry",
+      "persistence_class": "MODEL_CONFIGURATION",
+      "semantic_compatibility": "UNKNOWN",
+      "semantic_name": "section identity/recipe",
+      "spatial_support": "selected section support",
+      "temporal_role": "POST_EVENT",
+      "uncertainty": "selection uncertainty",
+      "units": "ID/recipe"
+    },
+    {
+      "B6N8E_role_status": "requires separate finite evolution",
+      "B6N8F_role_status": "F requires T1 state",
+      "authority_class": "new physical model authority",
+      "blocking_reason": "short interval does not imply constancy",
+      "buck_role": "initial Buck state preparation",
+      "current_readiness": "NOT_READY",
+      "integration_transformation": "evolve under per-quantity law, then bind causal POST_EVENT selector",
+      "persistence_class": "UNKNOWN",
+      "semantic_compatibility": "PARTIALLY_COMPATIBLE",
+      "semantic_name": "T0-to-T1 state transfer",
+      "spatial_support": "native-to-section support",
+      "temporal_role": "210 to 209.97287659484368 Ma",
+      "uncertainty": "evolution uncertainty",
+      "units": "quantity-specific"
+    }
+  ],
+  "schema": "R6_B6N8G_INTEGRATION_CROSSWALK_V1",
+  "section_center": {
+    "candidates": [
+      "interface node",
+      "segment midpoint",
+      "local window",
+      "adaptive process location"
+    ],
+    "status": "UNKNOWN_NOT_SELECTED"
+  },
+  "section_orientation": {
+    "INTERFACE_NORMAL_equals_relative_velocity_direction": false,
+    "interface_normal_is_geometric_reference_only": true,
+    "status": "REQUIRES_EXPLICIT_ARCANA_ADAPTATION",
+    "x_axis_and_extension_polarity": "UNBOUND"
+  },
+  "semantic_conflicts": "none demonstrated; joins require explicit adaptation",
+  "spatial_support": {
+    "E": "native cell/profile; not section-line support",
+    "F": "pair/interface relational support; no selected Buck section",
+    "current": "UNKNOWN_NOT_READY",
+    "required": [
+      "geometric projection",
+      "governed interpolation if point lies between source supports",
+      "model adaptation for center/orientation/endpoints"
+    ],
+    "silent_resampling": false
+  },
+  "spatial_support_classification": {
+    "DETERMINISTIC_GEOMETRIC_PROJECTION": "coordinate/frame mapping only; does not transfer field values",
+    "EXACT_SUPPORT_MATCH": "only identical registered support",
+    "GOVERNED_INTERPOLATION_REQUIRED": "sampling between native supports requires explicit interpolation authority",
+    "MODEL_ADAPTATION_REQUIRED": "section center/orientation/endpoints/finite-zone selection",
+    "UNAUTHORIZED_RESAMPLING": "silent interpolation, extrapolation or support expansion forbidden",
+    "current_status": "UNKNOWN_NOT_READY"
+  },
+  "stage": "B6N8-G",
+  "strain_rate": {
+    "equation": "epsilon_dot=Ux/Xe",
+    "formula_status": "RECOVERED",
+    "readiness": "FORMULA_READY_INPUTS_NOT_READY",
+    "units": "s-1 for m/s divided by m"
+  },
+  "successor_validity": {
+    "indefinite_extrapolation": false,
+    "outside_validity": "UNKNOWN_BEYOND_BOUND",
+    "policy": "STOP_AND_REVALIDATE"
+  },
+  "temporal_compatibility": {
+    "chain": [
+      "T0 initial state at 210.0 Ma",
+      "authorized T0-to-T1 evolution",
+      "POST_EVENT causal selector at T1",
+      "restricted B6N2 kinematics"
+    ],
+    "positive_physical_interval": "NOT_ESTABLISHED",
+    "post_event_kinematics_used_to_create_pre_event_state": false,
+    "revalidation_class": "MODEL_SCOPE_REVALIDATION_ONLY",
+    "revalidation_years": 8214.051909111062,
+    "same_age_does_not_collapse_causal_order": true,
+    "status": "COMPATIBLE_AFTER_CAUSAL_SELECTOR_BINDING",
+    "target": "POST_EVENT causal state at 209.97287659484368 Ma"
+  },
+  "uncertainty": {
+    "combine_to_scalar": false,
+    "forcing": [
+      "Euler/vector",
+      "frame",
+      "orientation",
+      "projection",
+      "sign",
+      "Xe/XL",
+      "time validity",
+      "junction",
+      "obliquity"
+    ],
+    "initialization": [
+      "thermal",
+      "structural",
+      "material",
+      "rheology",
+      "T0-T1 evolution"
+    ]
+  }
+}
