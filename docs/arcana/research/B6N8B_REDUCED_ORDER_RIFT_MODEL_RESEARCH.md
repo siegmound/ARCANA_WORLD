@@ -382,12 +382,26 @@ ARCANA is an assessment/inference and is labeled as such.
    *JGR: Solid Earth*, [doi:10.1029/2017JB014155](https://doi.org/10.1029/2017JB014155).
    Connects necking to amplification of perturbations relative to bulk
    extension and compares analytical versus thermo-mechanical descriptions.
-7. **PRIMARY —** White, N. (2002), “A two-dimensional inverse model for
-   extensional sedimentary basins. 1. Theory,” *JGR: Solid Earth*,
-   [doi:10.1029/2001JB000173](https://doi.org/10.1029/2001JB000173). Useful
-   explicit limitation: instantaneous stretching limits dynamic syn-rift
-   evolution; β profiles and response are inferred/model inputs.
-8. **PRIMARY / SOFTWARE MODEL DESCRIPTION —** Toth, J. et al. (1996),
+7. **PRIMARY —** White, N. & Bellingham, P. (2002), “A two-dimensional
+   inverse model for extensional sedimentary basins. 1. Theory,” *JGR: Solid
+   Earth* 107(B10), 2259,
+   [doi:10.1029/2001JB000173](https://doi.org/10.1029/2001JB000173). The
+   inverse method allows strain rate to vary through space and time without
+   requiring the number, duration or intensity of rifting episodes to be
+   specified a priori. The paper discusses limits of commonly used
+   instantaneous-stretching formulations for representing syn-rift temporal
+   evolution; this does not mean White & Bellingham's inverse method assumes
+   instantaneous stretching. For ARCANA, its relevance is the distinction
+   between an inferred/prescribed strain-rate history and forward process
+   dynamics that generate rift evolution.
+8. **PRIMARY —** Jarvis, G. T. & McKenzie, D. P. (1980), “Sedimentary basin
+   formation with finite extension rates,” *Earth and Planetary Science
+   Letters* 48, 42–52,
+   [doi:10.1016/0012-821X(80)90168-5](https://doi.org/10.1016/0012-821X(80)90168-5).
+   Its time-dependent analysis compares finite-rate extension with the simpler
+   instantaneous-stretching model and states constraints on that
+   approximation.
+9. **PRIMARY / SOFTWARE MODEL DESCRIPTION —** Toth, J. et al. (1996),
    Ford et al. (1999), Jácome et al. (2003), as identified in the RIFTER model
    description; kinematic forward structural reconstruction with fault
    geometry/displacement histories supplied as functions of time. The
@@ -395,22 +409,22 @@ ARCANA is an assessment/inference and is labeled as such.
    [RIFTER description](https://egusphere.copernicus.org/preprints/2023/egusphere-2023-2171/).
    Used only for the input-history distinction; the preprint is not treated as
    peer-reviewed authority.
-9. **PRIMARY / SOFTWARE MODEL STUDY —** Wolf et al. (2022), “Evolution of
+10. **PRIMARY / SOFTWARE MODEL STUDY —** Wolf et al. (2022), “Evolution of
    Rift Architecture and Fault Linkage During Continental Rifting,” *JGR: Solid
    Earth*, [doi:10.1029/2022JB024687](https://doi.org/10.1029/2022JB024687).
    3-D thermo-mechanical/surface-process model; fault propagation, overlap,
    linkage and architecture depend on crustal strength, inherited structure
    and surface-process assumptions.
-10. **REVIEW —** “Geodynamics of continental rift initiation and evolution,”
+11. **REVIEW —** “Geodynamics of continental rift initiation and evolution,”
     *Nature Reviews Earth & Environment* 4 (2023), 235–253,
     [doi:10.1038/s43017-023-00391-3](https://doi.org/10.1038/s43017-023-00391-3).
     Synthesizes transient evolution, weakening, inherited structures,
     localization, migration and unresolved rift success/failure mechanisms.
-11. **SOFTWARE DOCUMENTATION —** ASPECT project,
+12. **SOFTWARE DOCUMENTATION —** ASPECT project,
     [official site](https://aspect.geodynamics.org/): computational geodynamics
     finite-element framework; site states GNU GPL v2 or later. Used only as a
     Tier-4 software/dependency example, not as a selected rift model.
-12. **SOFTWARE DOCUMENTATION —** Underworld2 documentation,
+13. **SOFTWARE DOCUMENTATION —** Underworld2 documentation,
     [official guide](https://underworld2.readthedocs.io/): particle-in-cell
     finite-element Stokes-flow geodynamics; model physics are user constructed.
     License/version must be checked for any concrete reuse; none is proposed.
