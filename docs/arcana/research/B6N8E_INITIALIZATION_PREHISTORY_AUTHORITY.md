@@ -13,7 +13,7 @@ Initialization-specific implementability: **NO_CURRENTLY_DEFENSIBLE_INITIALIZATI
 - B6N8-D qualified research source: 88298ef948b6dc17a14961f6a43154cca4915d05
 - T0 = 210.0 Ma; T1 = 209.97287659484368 Ma. Elapsed = 0.02712340515632 Ma = 27,123.40515632 years.
 
-The proposed split is supported: missing T1 state does not imply a multi-million-year reconstruction before T0. Current authority neither proves pre-T0 history is required nor authorizes a T0 equilibrium geotherm. An authorized T0 initialization could avoid explicit pre-210 Ma simulation; material/boundary assumptions, validity and uncertainty must first be bound.
+The proposed split is supported: missing T1 state does not imply a multi-million-year reconstruction before T0. PRE_T0_HISTORY_REQUIRED = NOT_DEMONSTRATED: current authority neither proves pre-T0 history is required nor proves it unnecessary, and it does not authorize a T0 equilibrium geotherm. An authorized T0 initialization could avoid explicit pre-210 Ma simulation; material/boundary assumptions, validity and uncertainty must first be bound.
 
 ## T0 authority
 
@@ -55,3 +55,19 @@ Authorial decisions: permit/reject steady T0 initialization; map ARCANA domains 
 ## Gates
 
 WORLD_HISTORY remained read-only. No parameter/profile/prototype/mechanics was executed and B6N8-F remains open. Preserved gates: PRE_ORBDATA_ready=false; t0_orbdata_executed=false; shellset_mechanics_authorized=false; dt_selected=false; no T1 thermal profile was created by this stage; forward_evolution_authorized=false; physical_rift_model_selected=false; physical_rift_model_qualified=false; prototype_implemented=false; new_physical_parameter_selected=false; SECOND_DT_SELECTED=false; dt2_years=null; T2_CREATED=false; B6O_authorized=false; mechanics_executed=false; canonical_forward_propagation_executed=false; topology_transition_executed=false; support_remapping_executed=false; WORLD_HISTORY_changed=false; B6N8-F remains open.
+
+## Temporal roles and T1 generation boundary
+
+The four roles are distinct: **T0_INITIAL_STATE** is the authorized state at 210.0 Ma; **T0_TO_T1_EVOLUTION** is the separately authorized finite evolution over 27,123.40515632 years; **T1_ACTIVATION_INITIALIZATION** is the state required when Buck activates at 209.97287659484368 Ma and must follow authorized T0 state, authorized interval evolution, and any separately authorized activation-specific transformation; **POST_T1_DERIVATION** contains quantities created only after evolution begins from the authorized T1 state (for example updated force components, finite force change, regime diagnostics, and a reevaluation predicate).
+
+**ACTIVATION_INITIAL_STATE != POST_ACTIVATION_DERIVED_STATE.** **MODEL_CAN_DERIVE_QUANTITY_AFTER_T1 != AUTHORITY_TO_CREATE_QUANTITY_AT_T1.** Post-T1 derivation cannot manufacture a missing T1 initial condition.
+
+## Explicit persistence and candidate-domain contract
+
+Each of the 21 gap-matrix quantities now has exactly one closed-vocabulary persistence_class and a separate rationale. This lifecycle classification is orthogonal to whether the quantity currently has authority; it does not promote candidate fields or clear blockers. The matrix is authoritative for per-quantity classes.
+
+The structured LITHOSPHERIC_THERMAL_STRUCTURAL_STATE remains a **REQUIREMENT / CONCEPTUAL CONTRACT CANDIDATE** only. Its machine-readable sections separate evolving state variables from static model configuration, T0 initialization authority, T0-to-T1 evolution authority, spatial support, uncertainty, persistence policy, temporal roles, current authority status, and unresolved requirements. It is not implemented, canonical, or a qualified physical model. B6N8-F remains independent: this stage selects no Buck section location/orientation, Xe, XL, B6N2 aggregation, or junction treatment.
+
+## T1 physical-state non-action
+
+Buck_T1_state_generated=false. This stage did not generate a Buck-compatible T1 physical state (Buck_T1_state_generated=false), synthesize a geotherm (geotherm_synthesized=false), propagate crust/lithosphere state from T0 (crust_lithosphere_state_propagated_from_T0=false), instantiate material/rheological coefficients (material_rheological_coefficients_instantiated=false), or create activation-time physical state (activation_time_physical_state_created=false). All scientific blockers and authorization gates remain unchanged.

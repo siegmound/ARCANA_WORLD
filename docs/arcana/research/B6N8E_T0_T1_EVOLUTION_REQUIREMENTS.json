@@ -81,5 +81,59 @@
     ],
     "canonical_persistence": "Retain significant causal endpoints and driver/recipe; no internal-step records required by this audit.",
     "implementation_performed": false
+  },
+  "temporal_roles": {
+    "T0_INITIAL_STATE": {
+      "age_ma": 210.0,
+      "meaning": "Authorized physical/model initial state at simulation start."
+    },
+    "T0_TO_T1_EVOLUTION": {
+      "from_age_ma": 210.0,
+      "to_age_ma": 209.97287659484368,
+      "elapsed_years": 27123.40515632,
+      "meaning": "Finite evolution authority is separate from the T0 initialization authority."
+    },
+    "T1_ACTIVATION_INITIALIZATION": {
+      "age_ma": 209.97287659484368,
+      "meaning": "State at activation must follow authorized T0 state, authorized finite evolution, and any separately authorized activation-specific transformation."
+    },
+    "POST_T1_DERIVATION": {
+      "meaning": "Derived quantities arise only after evolution begins from authorized T1 state; examples may include updated force components, finite force change, regime diagnostics, and reevaluation predicate.",
+      "cannot_create_missing_T1_initial_condition": true
+    },
+    "semantic_invariants": [
+      "ACTIVATION_INITIAL_STATE != POST_ACTIVATION_DERIVED_STATE",
+      "MODEL_CAN_DERIVE_QUANTITY_AFTER_T1 != AUTHORITY_TO_CREATE_QUANTITY_AT_T1"
+    ]
+  },
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_thermal_profile_created_by_this_stage": false,
+    "Buck_T1_state_generated": false,
+    "forward_evolution_authorized": false,
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "new_physical_parameter_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false,
+    "B6N8F_closed": false
+  },
+  "t1_generation_gate": {
+    "Buck_T1_state_generated": false,
+    "geotherm_synthesized": false,
+    "crust_lithosphere_state_propagated_from_T0": false,
+    "material_rheological_coefficients_instantiated": false,
+    "activation_time_physical_state_created": false
   }
 }

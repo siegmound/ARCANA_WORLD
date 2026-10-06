@@ -52,14 +52,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "CANONICAL_PERSISTENT_STATE if accepted as physical geometry",
+      "persistence_class": "CANONICAL_PERSISTENT_STATE",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Validate T0 geometry; bind section support later. Moho only follows authorized thickness support.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "If accepted as physical geometry, its time-indexed value is historical state; the current authored candidate is not yet canonical."
     },
     {
       "quantity": "lithospheric_thickness_and_base",
@@ -75,14 +76,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "Canonical geometry if ratified; derived interface replayable",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Bind base meaning and physical evolution; do not equate HWR zp, LAB, ZBASTH and mechanical thickness.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "The candidate thickness and the physical base/interface are not yet semantically bound as one persistent or replayable quantity."
     },
     {
       "quantity": "full_temperature_profile_T_of_z",
@@ -98,14 +100,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Authorize authored or derived T0 profile and validate; scalar flux is not T(z).",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "No qualified deterministic profile recipe is established, so replayability versus persistence remains unknown."
     },
     {
       "quantity": "surface_temperature",
@@ -121,14 +124,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Confirm T0 boundary scope; do not promote model reference to climate state.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "Existing references do not establish whether this is evolving physical state or a model boundary configuration on the required support."
     },
     {
       "quantity": "surface_heat_flux",
@@ -144,14 +148,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "NEEDS_PROVIDER",
       "next_action": "Close domain support/model; q is not a geotherm.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "The continental reference field is a time-indexed physical boundary on limited support, but the combined ocean/continental Buck-required quantity has incomplete support and its global state-versus-configuration treatment is not fully governed."
     },
     {
       "quantity": "radiogenic_heat_production",
@@ -167,14 +172,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Bind production/decay semantics or justify omission; zero is not default.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "Production/decay law and material binding configure the thermal model; no ARCANA numeric choice is made here."
     },
     {
       "quantity": "thermal_conductivity",
@@ -190,14 +196,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Bind class, law and validity.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "Conductivity is a material/constitutive binding, not an evolving state field under current authority."
     },
     {
       "quantity": "thermal_diffusivity",
@@ -213,14 +220,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Derive after binding; retain symbolic timescale now.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "Derived from configured conductivity, density and heat capacity when those are bound; it is not independently selected here."
     },
     {
       "quantity": "Moho_temperature",
@@ -236,14 +244,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Close/validate column initializer; continuity equation is not a known value.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "No qualified profile/geometry derivation recipe is established; intended replayability is not yet authorized."
     },
     {
       "quantity": "lithosphere_base_temperature_and_depth",
@@ -259,14 +268,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Ratify base definition; do not equate HWR zp/LAB/ZBASTH.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "The compound quantity mixes an interface geometry with a thermal value whose persistence/replay authority is not yet bound."
     },
     {
       "quantity": "mantle_heat_flux",
@@ -282,14 +292,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Bind basal relation; HWR Tb is not automatically Buck T1 boundary.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "No qualified deterministic profile/boundary derivation recipe is established, so its persistence treatment remains unknown."
     },
     {
       "quantity": "density_structure",
@@ -305,14 +316,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Bind density laws; scalar reference density is not structure.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "The required composition/thermal/material derivation is incomplete; persistent versus replayable status is not established."
     },
     {
       "quantity": "thermal_expansion",
@@ -328,14 +340,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Bind alpha law and validity.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "A constitutive coefficient/material binding, not an evolving state variable under current authority."
     },
     {
       "quantity": "gravity",
@@ -351,14 +364,15 @@
       "pre_t0_history_requirement": "NO_PRE_T0_HISTORY_REQUIRED",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Bind depth/frame convention within analogue scope.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "The available fixed analogue value is model configuration; no evolving gravity field is established."
     },
     {
       "quantity": "brittle_strength_law",
@@ -374,14 +388,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Bind ARCANA law; Buck experiment values are not ARCANA authority.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "A constitutive law and coefficients configure the model; values and validity remain unbound."
     },
     {
       "quantity": "crustal_rheology",
@@ -397,14 +412,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Bind applicability without silent Earth calibration.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "A constitutive law/material binding configures the model; values and validity remain unbound."
     },
     {
       "quantity": "mantle_rheology",
@@ -420,14 +436,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "MODEL_CONFIGURATION",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Bind law and validity.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "A constitutive law/material binding configures the model; values and validity remain unbound."
     },
     {
       "quantity": "lower_crust_flow_state",
@@ -443,14 +460,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "REPLAYABLE_DERIVED_STATE if deterministic; otherwise persist causal state",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Decide inclusion; do not invent a layer split.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "Its state-versus-closure role and persistence depend on a not-yet-selected model scope and support."
     },
     {
       "quantity": "inherited_weakness",
@@ -466,14 +484,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "Persistent only if future model requires it",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "UNKNOWN",
       "next_action": "Do not add absent model need; UNKNOWN is not zero.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "It is not required by the current minimal-model audit and no supported weakness state is governed."
     },
     {
       "quantity": "material_compositional_identity",
@@ -489,14 +508,15 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "Canonical if composition evolves; otherwise replayable binding",
+      "persistence_class": "CANONICAL_PERSISTENT_STATE",
       "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE",
       "next_action": "Ratify minimal registry; province/thickness/thermal class do not imply composition.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "If composition varies historically, its identity is causal physical state; current ARCANA-to-material binding remains partial."
     },
     {
       "quantity": "uncertainty_and_validity_metadata",
@@ -512,21 +532,64 @@
       "pre_t0_history_requirement": "UNKNOWN",
       "material_binding_status": "Not fully bound",
       "uncertainty_status": "Incomplete or support-limited",
-      "persistence_class": "Canonical metadata plus replayed derived uncertainty",
+      "persistence_class": "UNKNOWN",
       "blocking_status": "READY_AFTER_AUTHORITY_BINDING",
       "next_action": "Bind provenance, uncertainty and acceptance; do not invent distributions.",
       "temporal_validity": "T0 snapshot authority only; no T0-to-T1 validity unless a governed evolution law is identified.",
       "canonical_status": "No complete canonical physical binding verified; source-specific candidate status is stated in current_source.",
       "numeric_binding_status": "Partial or candidate only; see t0_status and next_action.",
       "model_specificity": "Buck role is model-specific; source may be another ARCANA domain or specialist configuration.",
-      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit."
+      "interpolation_resampling_authority": "No new spatial interpolation or resolution promotion is authorized by this audit.",
+      "persistence_class_rationale": "The required metadata categories are identified, but which uncertainty evolves or is replayed has not been governed."
     }
   ],
   "system_finding": {
-    "pre_t0_history_required_by_current_authority": false,
     "pre_t0_history_requirement_status": "Not established; T0 initialization might suffice if explicitly authorized.",
     "t0_to_t1_evolution_is_automatically_negligible": false,
     "initialization_specific_implementability": "NO_CURRENTLY_DEFENSIBLE_INITIALIZATION",
-    "b6n8f_forcing_mapping_included": false
+    "b6n8f_forcing_mapping_included": false,
+    "pre_t0_history_requirement": "NOT_DEMONSTRATED"
+  },
+  "persistence_classification_vocabulary": [
+    "CANONICAL_PERSISTENT_STATE",
+    "REPLAYABLE_DERIVED_STATE",
+    "MODEL_CONFIGURATION",
+    "MODEL_INTERNAL_TEMPORARY_STATE",
+    "DIAGNOSTIC_ONLY",
+    "UNKNOWN",
+    "NOT_APPLICABLE"
+  ],
+  "temporal_roles": {
+    "T0_INITIAL_STATE": "Physical/model state authorized at the canonical 210.0 Ma start.",
+    "T0_TO_T1_EVOLUTION": "Separately authorized finite evolution from 210.0 Ma to 209.97287659484368 Ma (27,123.40515632 years).",
+    "T1_ACTIVATION_INITIALIZATION": "Physical/model state that must exist when Buck becomes active at T1; it must be justified by authorized T0 state plus authorized T0-to-T1 evolution plus any separately authorized activation-specific transformation.",
+    "POST_T1_DERIVATION": "Quantities created only after evolving from the authorized T1 state, such as updated force components, finite force change, regime diagnostics or a reevaluation predicate; this cannot supply a missing T1 initial condition.",
+    "semantic_invariants": [
+      "ACTIVATION_INITIAL_STATE != POST_ACTIVATION_DERIVED_STATE",
+      "MODEL_CAN_DERIVE_QUANTITY_AFTER_T1 != AUTHORITY_TO_CREATE_QUANTITY_AT_T1"
+    ]
+  },
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_thermal_profile_created_by_this_stage": false,
+    "Buck_T1_state_generated": false,
+    "forward_evolution_authorized": false,
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "new_physical_parameter_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false,
+    "B6N8F_closed": false
   }
 }

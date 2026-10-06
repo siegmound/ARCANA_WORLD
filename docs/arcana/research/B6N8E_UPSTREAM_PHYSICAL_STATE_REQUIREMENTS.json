@@ -92,6 +92,7 @@
     "shellset_mechanics_authorized": false,
     "dt_selected": false,
     "t1_thermal_profile_created_by_this_stage": false,
+    "Buck_T1_state_generated": false,
     "forward_evolution_authorized": false,
     "physical_rift_model_selected": false,
     "physical_rift_model_qualified": false,
@@ -107,5 +108,139 @@
     "support_remapping_executed": false,
     "WORLD_HISTORY_changed": false,
     "B6N8F_closed": false
+  },
+  "candidate_domain_contract": {
+    "name": "LITHOSPHERIC_THERMAL_STRUCTURAL_STATE",
+    "status": "REQUIREMENT_CONCEPTUAL_CONTRACT_CANDIDATE",
+    "implemented": false,
+    "canonical_domain": false,
+    "qualified_physical_model": false,
+    "state_variables": [
+      {
+        "quantity": "crust thickness / Moho geometry",
+        "authority_status": "PARTIAL_AUTHORED_CANDIDATE_NOT_CANONICALLY_BOUND",
+        "persistence_class": "CANONICAL_PERSISTENT_STATE"
+      },
+      {
+        "quantity": "lithosphere-base geometry",
+        "authority_status": "SEMANTIC_AND_TEMPORAL_BINDING_INCOMPLETE",
+        "persistence_class": "UNKNOWN"
+      },
+      {
+        "quantity": "thermal profile T(z) or equivalent governed thermal state",
+        "authority_status": "NO_QUALIFIED_CANONICAL_PROFILE",
+        "persistence_class": "UNKNOWN"
+      },
+      {
+        "quantity": "material/compositional identity where historically varying",
+        "authority_status": "PARTIAL_CLASSIFICATION_NO_COMPLETE_MATERIAL_BINDING",
+        "persistence_class": "CANONICAL_PERSISTENT_STATE"
+      },
+      {
+        "quantity": "lower-crust flow state if selected model requires it",
+        "authority_status": "MODEL_SCOPE_AND_SUPPORT_UNRESOLVED",
+        "persistence_class": "UNKNOWN"
+      }
+    ],
+    "model_static_configuration": [
+      {
+        "item": "thermal constitutive law and boundary/heat-production configuration",
+        "authority_status": "INCOMPLETE"
+      },
+      {
+        "item": "conductivity, heat capacity, diffusivity and density/material mappings",
+        "authority_status": "INCOMPLETE"
+      },
+      {
+        "item": "thermal-expansion and gravity configuration",
+        "authority_status": "INCOMPLETE_OR_MODEL_SPECIFIC"
+      },
+      {
+        "item": "brittle-strength law",
+        "authority_status": "UNBOUND"
+      },
+      {
+        "item": "crustal and mantle ductile rheology",
+        "authority_status": "UNBOUND"
+      }
+    ],
+    "initialization_authority": {
+      "required_at_t0": "Authorize complete initial structural/thermal state, support, material identity, configuration binding, validity, provenance and uncertainty at 210.0 Ma.",
+      "candidate_authority_routes": [
+        "existing canonical state if semantically sufficient",
+        "authorized deterministic derivation",
+        "authorial synthetic primitive",
+        "material-class binding",
+        "external/provider authority"
+      ],
+      "current_status": "INCOMPLETE",
+      "generated_by_this_stage": false
+    },
+    "evolution_authority": {
+      "interval_from_ma": 210.0,
+      "interval_to_ma": 209.97287659484368,
+      "elapsed_years": 27123.40515632,
+      "required": "A separately authorized physical law and validity/uncertainty for each state quantity that may change over the finite interval.",
+      "short_interval_does_not_imply_negligible_change": true,
+      "implementation_or_execution": false
+    },
+    "spatial_support": {
+      "requirements": "Each governed field must declare its native support, units, resolution and mapping/derivation authority.",
+      "B6N8F_independent": true,
+      "unselected_here": [
+        "Buck cross-section location",
+        "section orientation",
+        "Xe",
+        "XL",
+        "B6N2 aggregation",
+        "junction handling"
+      ]
+    },
+    "uncertainty": [
+      "initial-state uncertainty",
+      "thermal-model uncertainty",
+      "material-binding uncertainty",
+      "rheology uncertainty",
+      "spatial-support uncertainty",
+      "T0-to-T1 evolution uncertainty"
+    ],
+    "probability_distributions_invented": false,
+    "persistence_policy": {
+      "per_quantity_classification_source": "B6N8E_BUCK_INITIAL_STATE_GAP_MATRIX.json rows[].persistence_class",
+      "principle": "Persist historical causal state; replay deterministic derived state; keep laws and coefficients as configuration; do not classify unresolved state as cheaper to store.",
+      "internal_step_checkpoints_required": false,
+      "classification_is_authority": false
+    },
+    "temporal_validity_and_role": {
+      "roles": [
+        "T0_INITIAL_STATE",
+        "T0_TO_T1_EVOLUTION",
+        "T1_ACTIVATION_INITIALIZATION",
+        "POST_T1_DERIVATION"
+      ],
+      "activation_initial_state_is_post_activation_derived_state": false,
+      "post_t1_derivation_can_authorize_missing_t1_initial_state": false,
+      "pre_t0_history_required": "NOT_DEMONSTRATED"
+    },
+    "current_authority_status": {
+      "initialization": "T0_INITIAL_STATE_AUTHORITY_INCOMPLETE",
+      "t0_to_t1_evolution": "T0_TO_T1_EVOLUTION_AUTHORITY_INCOMPLETE",
+      "material_rheology_thermal_binding": "MATERIAL_RHEOLOGY_THERMAL_BINDING_INCOMPLETE",
+      "pre_t0_history": "NOT_DEMONSTRATED",
+      "overall": "NO_CURRENTLY_DEFENSIBLE_INITIALIZATION"
+    },
+    "unresolved_requirements": [
+      "Complete governed T0 structural/thermal initialization authority",
+      "Material, thermal and rheological configuration binding with provenance, validity and uncertainty",
+      "Authorized finite T0-to-T1 evolution law and endpoint semantics",
+      "Determine whether any required state depends on pre-T0 path; neither necessity nor no-need is currently proven"
+    ],
+    "t1_generation_gate": {
+      "Buck_T1_state_generated": false,
+      "geotherm_synthesized": false,
+      "crust_lithosphere_state_propagated_from_T0": false,
+      "material_rheological_coefficients_instantiated": false,
+      "activation_time_physical_state_created": false
+    }
   }
 }
