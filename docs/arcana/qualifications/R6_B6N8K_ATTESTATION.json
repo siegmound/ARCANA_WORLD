@@ -1,0 +1,175 @@
+{
+  "schema": "ARCANA_R6_B6N8K_ATTESTATION_V1",
+  "stage": "B6N8-K",
+  "qualified_source_commit": "de9e1f5e7aeed9de426d0e570c1d19fb4af3b739",
+  "b6n8j_attestation_parent": "f0ae6bca2ad443f66a38752452dc359ab00f983f",
+  "verdict": "PASS_B6N8K_REDUCED_EVOLUTION_CONDITIONALLY_AUTHORIZED_BOUNDARY_HISTORY_BINDING_REMAINS",
+  "qualification_scope": "Attestation of the clean-source B6N8-K model-authority closure; no provider execution or physical-state generation.",
+  "evidence": {
+    "root_relative_to_qualification_evidence": "B6N8K/de9e1f5e7aeed9de426d0e570c1d19fb4af3b739",
+    "artifact_manifest_sha256": "7ebf65fb6f4614d91af565034b40daa90597451e85f6c47309980c010b130bf0",
+    "aggregate_evidence_content_sha256": "9ac1b25f4d0dd31315fdcc6ad774424638a1d6729f9e2974b26e9a0b409d334e",
+    "content_seal_file_sha256": "ef45bbdf9918bd7e84f78eef7bfe7b467df6092b5bc9412ccc5b52d746824363",
+    "manifest_entries_verified": 5,
+    "aggregate_regular_files_in_seal": 6,
+    "aggregate_seal_independently_recomputed": true,
+    "seal_algorithm": "All regular files recursively except EVIDENCE_CONTENT_SHA256.txt, including EVIDENCE_ARTIFACT_MANIFEST.json; POSIX relative paths sorted by casefold while preserving original spelling; each entry is UTF-8 relative path + NUL + raw bytes, with no inter-entry/trailing separator."
+  },
+  "source_gate": {
+    "branch": "r6/b6n8k-pre-t1-thermal-evolution-authority",
+    "head_type": "commit",
+    "direct_parent": "f0ae6bca2ad443f66a38752452dc359ab00f983f",
+    "worktree_clean_at_qualification": true,
+    "exact_source_delta": [
+      "docs/arcana/research/B6N8K_PRE_T1_THERMAL_EVOLUTION_AUTHORITY.md",
+      "docs/arcana/research/B6N8K_BOUNDARY_HISTORY_AND_SUPPORT_MATRIX.json",
+      "docs/arcana/research/B6N8K_CONDUCTION_SUFFICIENCY_AUDIT.json",
+      "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json",
+      "docs/arcana/research/B6N8K_B6N8J_READINESS_OVERLAY.json"
+    ],
+    "executable_code_changed": false,
+    "canonical_mutation": false
+  },
+  "B6N8J_authority": {
+    "qualified_source_commit": "4f5f305a04717ffddced32b1c9a1b8fc2dd975e6",
+    "attestation_parent": "5196b89d8f24cce528a84a9cf6f01c93457a8a24",
+    "verdict_preserved": "PASS_B6N8J_MODEL_FAMILY_SELECTED_T0_INITIALIZER_CONDITIONALLY_READY_T0_TO_T1_EVOLUTION_AUTHORITY_REMAINS",
+    "initializer_family": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+    "initializer_family_reopened": false,
+    "T0_profile_generated": false
+  },
+  "temporal_causal_result": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "T0_TO_T1_YEARS": 27123.40515632,
+    "causal_order": ["T0", "PRE_EVENT_REDUCED_THERMAL_EVOLUTION", "T1_PRE_EVENT", "B6N1_ACTIVATION", "T1_POST_EVENT", "B6N2_POST_EVENT_KINEMATICS"],
+    "rift_activation_within_open_interval_T0_T1": false,
+    "B6N2_provides_T0_to_T1_forcing": false,
+    "Buck_Ux_used_pre_event": false,
+    "post_event_extension_or_vertical_advection_used_pre_event": false
+  },
+  "reduced_model_authority": {
+    "decision": "CONDITIONALLY_AUTHORIZED_AS_MODEL_CONFIGURATION_APPROXIMATION",
+    "MODEL_AUTHORITY_CONDITIONALLY_DEFINED": true,
+    "PROVIDER_EXECUTION_AUTHORIZED": false,
+    "governing_equation_candidate": "rho*Cp*dT/dt = div(k grad T) + A",
+    "conduction_only_status": "UNRESOLVED_NOT_PROVEN_SUFFICIENT_OR_INSUFFICIENT",
+    "provider_ready": "NO"
+  },
+  "configuration_and_geometry": {
+    "reference_geometry": "T0 authored geometry",
+    "frozen_configuration": "FROZEN_T0_CONFIGURATION_FOR_REDUCED_THERMAL_EVOLUTION; MODEL_CONFIGURATION_APPROXIMATION",
+    "PHYSICAL_GEOMETRY_PROVEN_CONSTANT": false,
+    "STRUCTURAL_GEOMETRY_T0_TO_T1": "EVOLUTION_UNKNOWN",
+    "FROZEN_MODEL_CONFIGURATION_IS_PHYSICAL_GEOMETRY_INVARIANCE": false,
+    "T1_geometry_backcast_into_T0": false
+  },
+  "initializer_and_boundaries": {
+    "T0_initializer_interface": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING; conditional profile input T(z,T0), not an existing physical state",
+    "production_T0_profile_exists": false,
+    "remaining_initializer_conditions": ["native support/material-role association", "initializer-provider validation and profile construction", "geometry/support applicability", "boundary compatibility"],
+    "surface_boundary": "Held values may be evaluated only as explicit REDUCED_MODEL_BOUNDARY_SCENARIOS; no physical surface-history constancy is asserted.",
+    "lower_boundary": "Held initializer-compatible model-domain base may be a reduced-model scenario; MODEL_DOMAIN_BASE is not PHYSICAL_LAB and no physical lower-boundary history is asserted.",
+    "constant_model_boundary_scenario_proves_physical_history_constant": false,
+    "A_C_temporal_role": "UNRESOLVED_TEMPORAL_ROLE; reference source-term value/applicability does not establish a time history; zero is not implicit.",
+    "A_M_temporal_role": "UNRESOLVED_TEMPORAL_ROLE; reference source-term value/applicability does not establish a time history; zero is not implicit.",
+    "HWR_role": "Initializer/model-coordinate configuration and age-dependent positive-age flux rule; not a T0-to-T1 boundary trajectory or world flux history.",
+    "HWR_temporal_adapter": "REQUIRES_MODEL_ADAPTATION for ocean age/support evolution; preserve separate age-zero ridge rule.",
+    "support_oceanic_result": "Native-cell material/support identity, surface-boundary class, geometry and provider coverage must remain eligible. Unknown or ungoverned support/class change fails closed; Buck support remains separate.",
+    "material_applicability": "REFERENCE_VALUE_EXISTS != APPLICABILITY_BOUND; explicit native-support to reduced material-role association and provider validation remain required.",
+    "new_numerical_values_selected": false
+  },
+  "conduction_and_sensitivity": {
+    "K9_CONDUCTION_ONLY_SUFFICIENCY": "UNRESOLVED; neither PROVEN_SUFFICIENT nor PROVEN_INSUFFICIENT",
+    "omitted_processes": [
+      {"process": "pre-event advection / mantle thermal advection", "status": "UNKNOWN_AUTHORITY"},
+      {"process": "geometry or material-interface migration", "status": "UNKNOWN_AUTHORITY; STRUCTURAL_GEOMETRY_T0_TO_T1 remains EVOLUTION_UNKNOWN"},
+      {"process": "lower-crustal flow", "status": "UNKNOWN_AUTHORITY"},
+      {"process": "radiogenic heating", "status": "source term present in initializer form; A_C/A_M temporal/material applicability unresolved"},
+      {"process": "B6N1/B6N2 post-event rift processes", "status": "NOT_APPLICABLE within open T0-to-T1 interval"}
+    ],
+    "diffusivity_ranges_m2_s": {"crust": [5.172413793103448e-7, 1.388888888888889e-6], "mantle": [7.058823529411765e-7, 1.1647727272727272e-6]},
+    "sqrt_kappa_t_characteristic_lengths_km": {"crust": [0.6654, 1.0904], "mantle": [0.7773, 0.9985]},
+    "diffusion_length_diagnostic": true,
+    "diffusion_length_is_sharp_physical_penetration_depth": false,
+    "diffusion_length_proves_steady_state": false,
+    "surface_step": {"amplitude_K": 30, "classification": "ILLUSTRATIVE_SENSITIVITY_SCENARIO_NOT_ARCANA_RECONSTRUCTED_SURFACE_HISTORY", "response_K_max": {"at_2_km": 5.83840598, "at_5_km": 0.0355297862}, "assumptions": "Single instantaneous step at a homogeneous constant-diffusivity half-space boundary over the full T0-to-T1 duration, using existing specialist crust diffusivity corners; diagnostic only."},
+    "sensitivity_acceptance_criterion": "UNRESOLVED; small diagnostic response alone is not an acceptance criterion.",
+    "authority_uncertainty_distinction": ["AUTHORIZED_PARAMETER_UNCERTAINTY", "MISSING_TEMPORAL_AUTHORITY", "UNKNOWN_MODEL_FORM", "UNKNOWN_SUPPORT"],
+    "sensitivity_authorizes_missing_temporal_authority": false
+  },
+  "K1_K14": {
+    "K1_T0_INPUT_INTERFACE_COMPLETE": "PARTIAL_CONDITIONAL: interface specified; no profile/provider or complete role/support join",
+    "K2_FROZEN_CONFIGURATION_ADMISSIBILITY": "PASS_AS_MODEL_CONFIGURATION_APPROXIMATION_ONLY",
+    "K3_CONFIGURATION_GEOMETRY_SELECTED": "T0_AUTHORED_GEOMETRY_FOR_REDUCED_CONFIGURATION; physical evolution remains UNKNOWN",
+    "K4_SURFACE_BOUNDARY_HISTORY_AUTHORITY": "CONDITIONAL_MODEL_HOLD_SCENARIOS; no physical trajectory",
+    "K5_LOWER_BOUNDARY_HISTORY_AUTHORITY": "CONDITIONAL_INITIALIZER_COMPATIBLE_HOLD_SCENARIOS; not physical LAB history",
+    "K6_HWR_TEMPORAL_ADAPTER": "REQUIRES_MODEL_ADAPTATION for ocean age/support; continental q is a T0 boundary, not trajectory",
+    "K7_SUPPORT_HISTORY_ELIGIBILITY": "CONDITIONAL; native cell identity/class must remain eligible; unsupported transitions fail closed",
+    "K8_MATERIAL_APPLICABILITY_BOUND": "NOT_CLOSED; explicit native-support/material-role binding and source applicability required",
+    "K9_CONDUCTION_ONLY_SUFFICIENCY": "UNRESOLVED; not proven sufficient or insufficient",
+    "K10_GEOMETRY_UNKNOWN_HANDLING": "CLOSED_FOR_REDUCED_MODEL by explicit T0-geometry approximation; EVOLUTION_UNKNOWN preserved",
+    "K11_T1_PRE_EVENT_OUTPUT_CONTRACT": "DEFINED_CONDITIONALLY; no state generated",
+    "K12_BUCK_THERMAL_SUPPORT_INTERFACE": "NATIVE_COLUMN_INTERFACE_DEFINED; B6N8-F mapping remains unresolved",
+    "K13_REDUCED_EVOLUTION_CONTRACT_COMPLETE": "CONDITIONAL_CONTRACT_DEFINED; input/source/sufficiency gates remain",
+    "K14_READY_FOR_PRE_T1_THERMAL_PROVIDER_IMPLEMENTATION": "NO"
+  },
+  "finite_remaining_blockers": [
+    "Bind T0 native support to material roles without inferring composition.",
+    "Validate the T0 initializer/provider and construct the T0 profile with compatible geometry and boundaries.",
+    "Bind A_C/A_M source applicability and temporal role; zero is not a default.",
+    "Adjudicate conduction-only sufficiency and omitted pre-event processes at the intended target support/depth.",
+    "Bind ocean age/support evolution or explicitly exclude unsupported ocean cells; preserve the separate age-zero ridge rule.",
+    "Set an explicit boundary-sensitivity acceptance criterion tied to the downstream thermal/Buck target.",
+    "Qualify numerical integration accuracy and replay without selecting dt2 here.",
+    "Resolve thermal-to-Buck section/support mapping through the separate B6N8-F authority."
+  ],
+  "readiness": {
+    "PRE_T1_THERMAL_EVOLUTION_PROVIDER_READY": "NO",
+    "T0_THERMAL_STATE_READY_FOR_MATERIALIZATION": "CONDITIONALLY_AFTER_ROLE_SUPPORT_BINDING_AND_INITIALIZER_PROVIDER_VALIDATION",
+    "T1_PRE_EVENT_THERMAL_STATE_READY_FOR_MATERIALIZATION": false,
+    "T1_PRE_EVENT_physical_state_generated": false,
+    "T1_POST_EVENT_THERMAL_PAYLOAD_ELIGIBLE": "Conditional SAME_THERMAL_PAYLOAD_DIFFERENT_CAUSAL_STATE only absent separately authorized instantaneous thermal physics.",
+    "Buck_section_or_forcing_ready": false
+  },
+  "pre_T0": {
+    "PRE_T0_HISTORY_REQUIRED": "NOT_DEMONSTRATED",
+    "EXPLICIT_PRE_T0_SIMULATION_NOT_REQUIRED_BY_SELECTED_REDUCED_MODEL": true,
+    "PHYSICAL_PRE_T0_HISTORY_PROVEN_UNNECESSARY": false
+  },
+  "WORLD_HISTORY": {"accessed_during_B6N8K_qualification": false, "changed": false, "inventory_comparison_claimed": false},
+  "non_actions": {
+    "T0_canonical_state_published": false,
+    "T1_PRE_EVENT_canonical_state_published": false,
+    "T1_POST_EVENT_canonical_state_published": false,
+    "T0_physical_state_generated": false,
+    "T1_physical_state_generated": false,
+    "production_provider_implemented": false,
+    "production_thermal_evolution_executed": false,
+    "physical_LAB_selected": false,
+    "LAB_field_materialized": false,
+    "Buck_mechanics_executed": false,
+    "Buck_section_materialized": false,
+    "Buck_Ux_materialized": false,
+    "Buck_Xe_selected": false,
+    "Buck_XL_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "finite_Buck_forcing_executed": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "canonical_forward_propagation_executed": false,
+    "WORLD_HISTORY_changed": false
+  },
+  "validation": {
+    "attestation_json": "PASS",
+    "qualified_source_sha": "PASS",
+    "B6N8J_parent": "PASS",
+    "exact_five_file_source_delta": "PASS",
+    "qualification_verdict": "PASS",
+    "evidence_manifest_and_aggregate_seal": "PASS_INDEPENDENTLY_RECOMPUTED",
+    "temporal_causal_configuration_boundary_material_support_conduction_readiness_K1_K14": "PASS",
+    "WORLD_HISTORY_non_access": "PASS",
+    "git_diff_check": "PASS_COMMITTED_SOURCE_DIFF_AND_DIRECT_UNTRACKED_WHITESPACE_SCAN"
+  }
+}
