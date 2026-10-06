@@ -1,0 +1,24 @@
+{
+  "schema": "ARCANA_R6_B6N8K_CONDUCTION_SUFFICIENCY_AUDIT_V1",
+  "source_baseline": "f0ae6bca2ad443f66a38752452dc359ab00f983f",
+  "equation_candidate": "rho*Cp*dT/dt = div(k grad T) + A",
+  "equation_status": "CONDITIONAL_REDUCED_MODEL_CANDIDATE; not a complete executable physical model until role, support, temporal inputs and sufficiency are bound",
+  "interval": {"years": 27123.40515632, "seconds": 855949570561.0841},
+  "diffusivity_ranges_m2_s": {"crust": [5.172413793103448e-7, 1.388888888888889e-6], "mantle": [7.058823529411765e-7, 1.1647727272727272e-6], "authority_limit": "Existing specialist reference corners only; target material applicability is conditional. kappa is derived coherently as k/(rho*Cp)."},
+  "diffusion_diagnostic": {"length_definition": "sqrt(kappa*t); 2*sqrt(kappa*t) reports the error-function scale", "crust_sqrt_m": [665.4, 1090.4], "crust_2sqrt_m": [1330.8, 2180.7], "mantle_sqrt_m": [777.3, 998.5], "mantle_2sqrt_m": [1554.6, 1997.0], "interpretation": "Boundary perturbations are predominantly near-boundary effects on this timescale in a homogeneous constant-diffusivity half-space. This does not establish boundary constancy or negligible effects at an unselected Buck target."},
+  "step_boundary_sensitivity": {"method": "Diagnostic half-space solution: deltaT(z,t)/deltaT_surface = erfc(z/(2*sqrt(kappa*t))). No ARCANA trajectory or probability distribution is implied.", "surface_deltaT_bound_K": 30, "fraction_and_max_abs_deltaT_K_by_depth_below_surface": [{"depth_km": 0, "fraction_range": [1.0, 1.0], "deltaT_abs_max_K": 30.0}, {"depth_km": 1, "fraction_range": [0.287914023, 0.516645023], "deltaT_abs_max_K": 15.4993507}, {"depth_km": 2, "fraction_range": [0.033551781, 0.194613533], "deltaT_abs_max_K": 5.83840598}, {"depth_km": 5, "fraction_range": [1.0751342e-7, 0.00118432621], "deltaT_abs_max_K": 0.0355297862}, {"depth_km": 10, "fraction_range": [2.22965535e-26, 8.85809232e-11], "deltaT_abs_max_K": 2.6574277e-9}, {"depth_km": 20, "fraction_range": [3.01608165e-100, 1.79822534e-38], "deltaT_abs_max_K": 5.39467603e-37}], "limits": "Uses existing TSurf 250-300 K span as a conservative 30 K departure from 280 K for one instantaneous step, not as an authorized temporal variation bound. Values are analytic diagnostics."},
+  "process_adjudication": [
+    {"process": "Fourier conduction with coherent k,rho,Cp", "classification": "CANDIDATE_REQUIRED_REDUCED_TERM", "basis": "B6N8-J selected transient thermal initializer family and existing specialist relation"},
+    {"process": "Radiogenic source A", "classification": "REQUIRED_IF_INCLUDED_BY_SELECTED_COLUMN_MODEL; temporal/material binding unresolved", "basis": "Present in initializer equation; A_C/A_M and target applicability are unselected; zero is not implicit"},
+    {"process": "Surface and basal boundary variation", "classification": "SENSITIVITY_REQUIRED_AND_TEMPORAL_AUTHORITY_MISSING", "basis": "No T0-T1 histories. Diffusion diagnostic alone cannot establish target robustness"},
+    {"process": "Ocean age/support migration and ridge/new-crust change", "classification": "UNKNOWN_AUTHORITY", "basis": "No world-time age/support adapter"},
+    {"process": "Geometry/interface migration and background tectonic evolution", "classification": "UNKNOWN_AUTHORITY", "basis": "STRUCTURAL_GEOMETRY_T0_TO_T1 remains EVOLUTION_UNKNOWN"},
+    {"process": "Vertical or mantle thermal advection", "classification": "UNKNOWN_AUTHORITY", "basis": "No pre-event velocity/thermal coupling bound; B6N2 is post-event only"},
+    {"process": "Lower-crustal flow", "classification": "UNKNOWN_AUTHORITY", "basis": "No pre-event driver or closure bound; not inferred from later rifting"},
+    {"process": "B6N1 activation and B6N2 post-event kinematics", "classification": "NOT_APPLICABLE_WITHIN_OPEN_T0_T1_INTERVAL", "basis": "Activation is at T1 endpoint"}
+  ],
+  "sufficiency_result": "UNRESOLVED_NOT_PROVEN_SUFFICIENT_OR_INSUFFICIENT",
+  "sensitivity_verdict": "Cannot establish that all admissible cases preserve Buck thermal readiness: target depth/support is unbound, material-role applicability and source terms are incomplete, boundary histories are absent, and no robustness tolerance is governed.",
+  "no_authority_laundering": true,
+  "WORLD_HISTORY_accessed": false
+}
