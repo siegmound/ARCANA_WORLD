@@ -1,0 +1,174 @@
+{
+  "schema": "R6_B6N8E_ATTESTATION_V1",
+  "stage": "B6N8-E",
+  "qualified_source_commit": "f9904136e90b4463ab31013373d77810639748f3",
+  "qualified_source_parent": "ba6544e4a4772203120f7ee72266a96427da9fd1",
+  "attestation_commit": null,
+  "attestation_commit_note": "The eventual attestation commit is distinct from qualified_source_commit.",
+  "b6n8d_attestation_ancestor": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "verdict": "PASS_B6N8E_INITIALIZATION_PREHISTORY_AUTHORITY_AUDIT",
+  "initialization_gate": "NO_CURRENTLY_DEFENSIBLE_INITIALIZATION",
+  "qualification_evidence": {
+    "relative_bundle": "B6N8E/f9904136e90b4463ab31013373d77810639748f3",
+    "manifest_sha256": "c37b6ac3a9204a0c5209ec0bdf72ef501d3146c539c5b1c8af1d9fd7ba15d023",
+    "evidence_content_sha256": "c0083f4f3afe510911d126c7fcd74301b6c3c2aede6fc3fc8dc88f107a26c981",
+    "manifest_artifact_count": 8,
+    "all_manifest_artifacts_verified": true
+  },
+  "blocked_qualification_history": [
+    {
+      "source_commit": "4f98b9aff8b8a274beb7d6896644b6bc6bf4feab",
+      "verdict": "BLOCKED_B6N8E_QUALIFICATION_ARTIFACT_COVERAGE_INCOMPLETE",
+      "manifest_sha256": "2bba3d4dd320b0f72bf8e15f96f9c58c3e1317db54b199bf9f5e8fdd5b1b032e",
+      "evidence_content_sha256": "e857acaaabfddb7a98d37c16f1650d9f170e2ac6cc543cf949fbe8cea1150e06"
+    },
+    {
+      "source_commit": "ba6544e4a4772203120f7ee72266a96427da9fd1",
+      "verdict": "BLOCKED_B6N8E_QUALIFICATION_MATRIX_TEMPORAL_ROLE_MISSING",
+      "manifest_sha256": "72d884caba4c132532b67cb9a3fb65d2cbba92a4b0907493dbd447c307578600",
+      "evidence_content_sha256": "a635d92820827b99a8c49e20a7da0c533d5a8a5119fb8ecf29d3ac1eba5e9368"
+    }
+  ],
+  "temporal_frame": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "T0_TO_T1_DURATION_YEARS": 27123.40515632,
+    "roles": [
+      "T0_INITIAL_STATE",
+      "T0_TO_T1_EVOLUTION",
+      "T1_ACTIVATION_INITIALIZATION",
+      "POST_T1_DERIVATION"
+    ],
+    "ACTIVATION_INITIAL_STATE_is_POST_ACTIVATION_DERIVED_STATE": false,
+    "POST_T1_DERIVABLE_is_AUTHORITY_TO_CREATE_AT_T1": false
+  },
+  "gap_matrix": {
+    "rows": 21,
+    "persistence_classified_rows": 21,
+    "temporal_role_classified_rows": 21,
+    "temporal_role_counts": {
+      "T0_INITIAL_STATE": 20,
+      "T0_TO_T1_EVOLUTION": 20,
+      "T1_ACTIVATION_INITIALIZATION": 21,
+      "POST_T1_DERIVATION": 0
+    },
+    "multi_role_rows": 20,
+    "POST_T1_zero_count_scope": "Intentional: matrix contains initialization requirements, not post-activation force/regime outputs.",
+    "inherited_weakness": {
+      "required_for_minimum_model": false,
+      "temporal_role_is_conditional": true
+    }
+  },
+  "scientific_findings": {
+    "PRE_T0_HISTORY_REQUIRED": "NOT_DEMONSTRATED",
+    "PRE_T0_HISTORY_PROVEN_UNNECESSARY": false,
+    "T0_INITIAL_STATE_AUTHORITY_INCOMPLETE": true,
+    "T0_TO_T1_EVOLUTION_AUTHORITY_INCOMPLETE": true,
+    "MATERIAL_RHEOLOGY_THERMAL_BINDING_INCOMPLETE": true,
+    "NO_CURRENTLY_DEFENSIBLE_INITIALIZATION": true,
+    "T0_INITIAL_STATE_REQUIRED": true,
+    "T0_INITIAL_STATE_CURRENTLY_AUTHORIZED": false,
+    "SHORT_T0_TO_T1_INTERVAL_IS_AUTHORIZED_NEGLIGIBLE_EVOLUTION": false,
+    "invariance_approximation_requires_timescale_parameter_authority_validity_uncertainty_and_model_authority": true
+  },
+  "thermal_authority": {
+    "HEAT_FLOW_SCALAR_IS_COMPLETE_GEOTHERM": false,
+    "Buck_steady_state_geotherm_authority": "MODEL_AUTHORITY",
+    "ARCANA_WORLD_HISTORY_authority_automatically_implied": false,
+    "fields": [
+      "surface temperature",
+      "surface heat flow",
+      "radiogenic heat production",
+      "thermal conductivity",
+      "thermal diffusivity",
+      "Moho temperature",
+      "lithosphere-base temperature",
+      "mantle/base heat flux",
+      "full T(z)"
+    ],
+    "geotherm_generated": false
+  },
+  "structural_authority": {
+    "existing_T0_crustal_information_automatically_authorizes_complete_Buck_section": false,
+    "complete_Moho_profile_authorized": false,
+    "lithosphere_base_profile_authorized": false,
+    "material_layering_authorized": false,
+    "T1_evolved_structural_state_generated": false,
+    "unauthorized_interpolation_resampling_authorized": false
+  },
+  "material_rheology_thermal_binding": {
+    "material_identity_separate_from_property_law_coefficient_world_binding": true,
+    "Buck_Table_2_Table_3_values_are_source_model_experiment_values": true,
+    "new_physical_parameter_selected": false
+  },
+  "upstream_domain": {
+    "name": "LITHOSPHERIC_THERMAL_STRUCTURAL_STATE",
+    "status": "REQUIREMENT_CONCEPTUAL_CONTRACT_CANDIDATE",
+    "implemented": false,
+    "canonical": false,
+    "physically_qualified": false,
+    "sections": [
+      "STATE VARIABLES",
+      "MODEL / STATIC CONFIGURATION",
+      "INITIALIZATION AUTHORITY",
+      "EVOLUTION AUTHORITY",
+      "SPATIAL SUPPORT",
+      "UNCERTAINTY",
+      "PERSISTENCE POLICY",
+      "TEMPORAL VALIDITY / ROLE",
+      "CURRENT AUTHORITY STATUS",
+      "UNRESOLVED REQUIREMENTS"
+    ]
+  },
+  "b6n8f": {
+    "status": "INDEPENDENT_AND_UNRESOLVED",
+    "defines_or_authorizes": [
+      "Ux",
+      "Xe",
+      "XL",
+      "physical strain rate",
+      "Buck-section orientation",
+      "B6N2 local-frame transformation",
+      "section aggregation",
+      "endpoint/junction handling"
+    ],
+    "authorized": false
+  },
+  "next_initialization_closure": [
+    "T0 LITHOSPHERIC THERMAL-STRUCTURAL INITIAL-STATE AUTHORITY",
+    "T0_TO_T1 REDUCED THERMAL/STRUCTURAL EVOLUTION AUTHORITY",
+    "MATERIAL / RHEOLOGY / THERMAL BINDING AUTHORITY"
+  ],
+  "world_history": {
+    "status": "PASS_READ_ONLY",
+    "files": 46,
+    "bytes": 1275143,
+    "per_path_before_after_identity": "unchanged",
+    "signature_sha256": "82e6ba7e384cf75f4e1627f68ac13762a936cc4266a90718bd40cc696768385f"
+  },
+  "non_actions": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_thermal_profile_created_by_this_stage": false,
+    "Buck_T1_state_generated": false,
+    "forward_evolution_authorized": false,
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "new_physical_parameter_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false,
+    "B6N8F_closed": false,
+    "T0_physical_state_generated": false,
+    "T0_to_T1_physical_evolution_executed": false
+  }
+}
