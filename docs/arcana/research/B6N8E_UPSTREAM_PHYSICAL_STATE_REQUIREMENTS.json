@@ -1,0 +1,111 @@
+{
+  "branch": "r6/b6n8e-initialization-prehistory-authority",
+  "audited_source_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "b6n8d_qualified_source_commit": "88298ef948b6dc17a14961f6a43154cca4915d05",
+  "b6n8d_attestation_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "t0_age_ma": 210.0,
+  "t1_age_ma": 209.97287659484368,
+  "elapsed_ma": 0.02712340515632,
+  "elapsed_years": 27123.40515632,
+  "scope": "Initialization/prehistory authority only; B6N8-F forcing mapping excluded",
+  "schema": "R6_B6N8E_UPSTREAM_PHYSICAL_STATE_REQUIREMENTS_V1",
+  "decision": "MINIMUM_LITHOSPHERIC_THERMAL_STRUCTURAL_INITIAL_STATE_AUTHORITY_REQUIRED__PRE_T0_HISTORY_NOT_PROVEN",
+  "existing_authority": {
+    "world_history": "T0 records cover geography, land/ocean, province, topography, partition/kinematics and tectonic geometry; no complete canonical thermal profile/material/rheology state found; UNKNOWN domains preserved.",
+    "world_history_inventory": {
+      "files": 46,
+      "bytes": 1275143,
+      "signature_sha256": "5a84ed6928f252d163c18864e62f9458b6873f98f5e628a074ba7a4701846d1c"
+    },
+    "authored_candidate_fields": [
+      "physical_crust_domain_id",
+      "crustal_thickness_m",
+      "continental_reference_lithosphere_thickness_m",
+      "continental_reference_surface_heat_flow_w_m2 on ratified support",
+      "oceanic_lithosphere_age_ma",
+      "land elevation; ocean bathymetry partly UNKNOWN"
+    ],
+    "candidate_status": "B_PANGAEA_LIKE_V2 fields remain candidate pending materialization validation.",
+    "missing_complete_fields": [
+      "T(z)",
+      "Moho/LAB profiles",
+      "density(z)",
+      "composition-to-rheology binding",
+      "lower-crust flow state"
+    ]
+  },
+  "candidate_specialist_authority": {
+    "material_reference": "A0.6D/G candidates exist; values selected but thermal-column compatibility blocked. Not canonical spatial state.",
+    "transient_coupling": "Recipe/configuration does not equal qualified profile or interval evolution.",
+    "gravity": "g=9.82 fixed Earth-scale analogue configuration, not paleogeographic observation."
+  },
+  "minimum_scope": {
+    "name": "LITHOSPHERIC_THERMAL_STRUCTURAL_STATE",
+    "form": "T0 contract and deterministic derivation recipe; not duplicate per-node primitive by default.",
+    "must_bind": [
+      "support/layer interfaces",
+      "material identity separate from rheology",
+      "authored versus derived T(z)",
+      "boundaries/heat production",
+      "density/expansion/rheology laws",
+      "uncertainty/validity/provenance"
+    ],
+    "not_required_by_default": [
+      "multi-million-year pre-T0 simulation",
+      "per-internal-step records",
+      "global mechanical Earth model",
+      "weakness absent model need",
+      "copying Buck/Earth values"
+    ],
+    "pre_t0_condition": "Only needed if initialization depends on prior path not representable by authorized T0 state; current evidence proves neither necessity nor backcasting authority."
+  },
+  "authorial_decisions": [
+    {
+      "decision": "Permit Buck-compatible steady T0 geotherm?",
+      "basis": "Buck assumption is not ARCANA T0 authority."
+    },
+    {
+      "decision": "Map ARCANA classes to crust/mantle/asthenosphere materials?",
+      "basis": "Domain classes do not imply mineralogy/rheology."
+    },
+    {
+      "decision": "Bind thermal/rheology laws and uncertainty?",
+      "basis": "Reference candidates do not bind all laws to Buck support."
+    },
+    {
+      "decision": "Which quantities evolve T0-to-T1 under what law?",
+      "basis": "Elapsed time does not prove constancy."
+    },
+    {
+      "decision": "Include lower-crust flow/weakness in MVP?",
+      "basis": "Requires model scope and authority."
+    }
+  ],
+  "stage_boundary": {
+    "B6N8E": "T0 state and thermal/material/rheology authority",
+    "B6N8F": "B6N2-to-Buck physical section/forcing mapping",
+    "independent": true
+  },
+  "preserved_gates": {
+    "PRE_ORBDATA_ready": false,
+    "t0_orbdata_executed": false,
+    "shellset_mechanics_authorized": false,
+    "dt_selected": false,
+    "t1_thermal_profile_created_by_this_stage": false,
+    "forward_evolution_authorized": false,
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "new_physical_parameter_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false,
+    "B6N8F_closed": false
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "branch": "r6/b6n8e-initialization-prehistory-authority",
+  "audited_source_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "b6n8d_qualified_source_commit": "88298ef948b6dc17a14961f6a43154cca4915d05",
+  "b6n8d_attestation_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "t0_age_ma": 210.0,
+  "t1_age_ma": 209.97287659484368,
+  "elapsed_ma": 0.02712340515632,
+  "elapsed_years": 27123.40515632,
+  "scope": "Initialization/prehistory authority only; B6N8-F forcing mapping excluded",
+  "schema": "R6_B6N8E_T0_T1_EVOLUTION_REQUIREMENTS_V1",
+  "decision": "T0_INITIAL_AUTHORITY_AND_FINITE_T0_TO_T1_EVOLUTION_MUST_BE_SEPARATELY_CLOSED",
+  "interval": {
+    "older_endpoint_ma": 210.0,
+    "younger_endpoint_ma": 209.97287659484368,
+    "elapsed_ma": 0.02712340515632,
+    "elapsed_years": 27123.40515632,
+    "duration_is_not_a_constancy_authority": true
+  },
+  "findings": {
+    "pre_210_ma": "Not established as required. Authorized T0 state may avoid explicit pre-T0 simulation if initialization/material/boundary/validity/uncertainty are accepted.",
+    "buck_steady_state": "Model assumption only; it does not establish ARCANA T0 authority.",
+    "existing_transient_coupling": "Candidate analytical recipe/config exists; false PRE_ORBDATA/runtime gates and outstanding implementation/coverage/qualification mean no qualified T0 profile or T0-to-T1 transition.",
+    "interval_evolution": "No qualified thermal/structural driver found. Plate kinematics does not evolve T, thickness, density, composition or rheology.",
+    "dt2_T2": "Not selected or created."
+  },
+  "quantity_classes": [
+    {
+      "quantity": "T(z), flux, Moho/LAB",
+      "status": "EVOLUTION_REQUIRES_NEW_REDUCED_MODEL",
+      "basis": "Needs energy law, materials, boundaries, support and validity; Ldiff~sqrt(kappa*Delta_t), no constancy proof."
+    },
+    {
+      "quantity": "crust/lithosphere thickness/interfaces",
+      "status": "EVOLUTION_REQUIRES_NEW_REDUCED_MODEL",
+      "basis": "Needs physical accommodation law; plate kinematics is not thickness evolution."
+    },
+    {
+      "quantity": "density and buoyancy",
+      "status": "EVOLUTION_REQUIRES_NEW_REDUCED_MODEL",
+      "basis": "Depends on T, composition, material and structure."
+    },
+    {
+      "quantity": "composition/radiogenic inventory",
+      "status": "EVOLUTION_UNKNOWN",
+      "basis": "No compositional/decay law bound on required support."
+    },
+    {
+      "quantity": "constitutive coefficients",
+      "status": "EVOLUTION_UNKNOWN",
+      "basis": "No temperature/pressure/composition dependence and validity binding."
+    },
+    {
+      "quantity": "gravity",
+      "status": "EVOLUTION_DETERMINISTIC_FROM_EXISTING_STATE",
+      "basis": "Fixed analogue model value exists; depth/frame still bind."
+    },
+    {
+      "quantity": "weakness",
+      "status": "EVOLUTION_UNKNOWN",
+      "basis": "Unknown support; not a minimum-state requirement."
+    }
+  ],
+  "timescale_assessment": {
+    "thermal": "Ldiff approximately sqrt(kappa*Delta_t); compare after diffusivity/geometry binding.",
+    "structural": "Requires authorized strain/velocity law and section frame.",
+    "numeric_estimate_performed": false
+  },
+  "transition_recipe": {
+    "inputs": [
+      "accepted T0 geometry/material map",
+      "accepted T0 profile or initialization recipe",
+      "thermal/rheology config with validity and uncertainty",
+      "finite-interval forcing/response; B6N8-F separate",
+      "endpoint/event ordering"
+    ],
+    "outputs": [
+      "T1 profile/interfaces",
+      "T1 geometry/material if changed",
+      "provenance/uncertainty/validity"
+    ],
+    "canonical_persistence": "Retain significant causal endpoints and driver/recipe; no internal-step records required by this audit.",
+    "implementation_performed": false
+  }
+}
