@@ -1,0 +1,185 @@
+{
+  "XL": {
+    "future_authority_required": "explicit section/domain semantics and physical/support authority",
+    "published_buck_value_promoted": false,
+    "selected": false
+  },
+  "Xe": {
+    "B6N8E_imported": false,
+    "authority_required": [
+      "initialization/physical-state integration",
+      "or separate explicit model binding"
+    ],
+    "buck_40_km_minimum_promoted": false,
+    "buck_experimental_lithosphere_relation_promoted": false,
+    "selected": false
+  },
+  "attestation_parent_commit": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "b6n2_authority": {
+    "classification": "POST_EVENT_KINEMATIC_AUTHORITY_CONTINUES_WITH_RESTRICTED_SCOPE",
+    "junction_physical_accommodation": "UNKNOWN",
+    "mechanics": "POST_EVENT_KINEMATICS_NO_MECHANICS_REQUIRED",
+    "original_euler_vector_source": "SYNTHETIC_INSTANT_ONLY_210_MA_ANCHOR",
+    "source_temporal_provenance_extended": false,
+    "successor_model_use": "EXPLICIT_RESTRICTED_SUCCESSOR_MODEL_AUTHORITY"
+  },
+  "b6n8d_attestation_parent": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "b6n8e_is_ancestor": false,
+  "b6n8e_sibling_attestation": "1e4f4fee1ce95fabc32c9eb62b783314660afa78",
+  "buck_ux": {
+    "candidate_mapping": "plate kinematics → velocities on opposite sides of candidate section → relative section velocity → cross-section projection → candidate Buck U_x",
+    "interface_local_normal_velocity_is_buck_Ux": false,
+    "materialized": false,
+    "production_mapping": false,
+    "required_semantics": [
+      "finite section construction",
+      "opposite-side support",
+      "section-frame projection",
+      "plate-side membership",
+      "extension-zone support",
+      "X_e"
+    ],
+    "section_endpoints_selected": false,
+    "status": "REQUIRES_SECTION_ADAPTATION"
+  },
+  "evidence_content_sha256": "fb11ca6f9f0d9e323d348e44bc7e14081e94955082029fdaaf9289cf0555c571",
+  "evidence_manifest_sha256": "38736d05803f28d3c1293148f07f62aa160cd6d240c0c8b10520d279a649f488",
+  "evidence_store_key": "B6N8F/59cefe861c47d6915e00af0e9df17aacbbcf9e5b",
+  "finite_forcing": {
+    "INTERNAL_DT_equals_PERSISTENT_WORLD_HISTORY_TIMESTEP": false,
+    "T2_created": false,
+    "buck_experiment_duration_adopted": false,
+    "dt2_selected": false,
+    "epsilon_0_25_adopted": false,
+    "executed": false,
+    "physical_propagation_horizon_selected": false
+  },
+  "implementability_gates": {
+    "A_local_relative_velocity_driver": "YES_BY_DETERMINISTIC_KINEMATIC_DERIVATION",
+    "B_buck_Ux": "REQUIRES_SECTION_ADAPTATION",
+    "C_epsilon_dot": "NOT_CURRENTLY_DERIVABLE",
+    "D_finite_buck_forcing": "NOT_CURRENTLY_EXECUTABLE"
+  },
+  "initialization_integration": {
+    "B6N8E_is_sibling": true,
+    "B6N8E_state_imported_or_merged": false,
+    "required_inputs": [
+      "T1 lithosphere thickness/geometry",
+      "T1 Moho/structural geometry where needed",
+      "material/applicability support",
+      "validity/support mask",
+      "initial-state uncertainty"
+    ]
+  },
+  "kinematics": {
+    "classification": "DETERMINISTIC_KINEMATIC_DERIVATION",
+    "frame": "GOVERNED_RIGHT_HANDED_XYZ_COLUMN_VECTOR",
+    "gauge": "SYNTHETIC_AREA_WEIGHTED_LEAST_SQUARES_NO_NET_ROTATION_GAUGE",
+    "pair_1_3_relative_velocity": "v_rel(r) = R ((omega_3 - omega_1) × r)",
+    "physical_rift_mechanics": false,
+    "radius_m": 6371000,
+    "surface_velocity": "v_i(r) = R (omega_i × r)"
+  },
+  "local_frame": {
+    "non_equivalences": [
+      "KINEMATIC_OPENING != PHYSICAL_RIFT_STRAIN",
+      "KINEMATIC_OPENING != FAULT_SLIP",
+      "KINEMATIC_OPENING != BUCK_UX"
+    ],
+    "normal_relative_velocity": "GOVERNED_SIGNED_COMPONENT",
+    "positive_normal": "KINEMATIC_OPENING_ONLY",
+    "tangential_motion_discarded": false,
+    "tangential_relative_velocity": "GOVERNED_DISTINCT_COMPONENT"
+  },
+  "non_actions": {
+    "B6O_authorized": false,
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_forward_propagation_executed": false,
+    "dt2_years": null,
+    "finite_Buck_forcing_executed": false,
+    "mechanics_executed": false,
+    "new_physical_parameter_selected": false,
+    "physical_rift_model_qualified": false,
+    "physical_rift_model_selected": false,
+    "prototype_implemented": false,
+    "support_remapping_executed": false,
+    "topology_transition_executed": false
+  },
+  "obliquity": {
+    "arbitrary_threshold_selected": false,
+    "interface_normal_equals_relative_velocity_direction": false,
+    "tangential_motion_silently_discarded": false
+  },
+  "qualification": {
+    "checks": {
+      "compileall": "PASS",
+      "cross_artifact_consistency": "PASS",
+      "git_diff_check": "PASS",
+      "git_show_check": "PASS",
+      "json": "PASS",
+      "local_links": "PASS",
+      "portable_paths": "PASS",
+      "utf8_lf": "PASS"
+    },
+    "full_active_r6_suite": "557 passed",
+    "test_duration_seconds": 315.25
+  },
+  "qualified_source_commit": "59cefe861c47d6915e00af0e9df17aacbbcf9e5b",
+  "schema": "ARCANA_R6_STAGE_ATTESTATION_V1",
+  "section_adaptation": {
+    "candidate_support_models": [
+      "PER_INTERFACE_NODE_CROSS_SECTION",
+      "PER_SEGMENT_CROSS_SECTION",
+      "LOCAL_WINDOW_CROSS_SECTION",
+      "ADAPTIVE_SELECTED_CROSS_SECTIONS",
+      "PER_INTERFACE_AGGREGATE"
+    ],
+    "materialized": false,
+    "status": "ARCANA_ADAPTATION_REQUIRED"
+  },
+  "source_branch": "r6/b6n8f-b6n2-to-buck-forcing-mapping",
+  "stage": "B6N8-F",
+  "strain_rate": {
+    "buck_relation": "epsilon_dot = U_x / X_e",
+    "currently_derivable_for_physical_buck_forcing": false,
+    "materialized": false
+  },
+  "support": {
+    "71_segments_equal_71_buck_sections": false,
+    "both_chain_endpoints_degree_three_junctions": true,
+    "junction_physical_accommodation": "UNKNOWN",
+    "pair_1_3_single_physical_extension_classification": "NOT_ESTABLISHED",
+    "plate_pair": [
+      1,
+      3
+    ],
+    "segments": 71,
+    "shared_nodes": 72,
+    "topology_determines_physical_junction_behavior": false
+  },
+  "temporal_authority": {
+    "T2_age": false,
+    "b6n3a_years": 8214.051909111062,
+    "classification": "MODEL_SCOPE_REVALIDATION_HORIZON",
+    "dt2": false,
+    "event_free_horizon": false,
+    "physical_forcing_interval": false,
+    "positive_physical_buck_forcing_interval_authorized": false
+  },
+  "verdict": "PASS_B6N8F_LOCAL_KINEMATIC_DRIVER_DERIVABLE_BUCK_UX_REQUIRES_SECTION_ADAPTATION_XE_AND_INITIALIZATION_AUTHORITY",
+  "world_history": {
+    "bytes": 1275143,
+    "changed": false,
+    "files": 46,
+    "inventory_sha256": "4d1fb1f0ee1bef38263f1fdf86bb496d28e8b0d51ca67a0fbebdd8843838439c",
+    "read_only": "PASS",
+    "same_inventory_method_before_after": true
+  }
+}
