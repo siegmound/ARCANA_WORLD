@@ -1,0 +1,1109 @@
+{
+  "schema": "ARCANA_R6_B6N8D_BUCK_EQUATION_REGISTRY_V1",
+  "stage": "B6N8D_BUCK_EQUATION_LEVEL_RECOVERY",
+  "source_baseline": "6538951e441899013d616fec48a4f143afb0c6bf",
+  "status": "PRIMARY_EQUATION_TRANSCRIPTION_RECOVERED_ARCANA_AUTHORITY_GAPS_REMAIN",
+  "primary_source": {
+    "citation": "Buck, W. R. (1991), Modes of continental lithospheric extension, Journal of Geophysical Research, 96(B12), 20161-20178, doi:10.1029/91JB01485.",
+    "doi": "https://doi.org/10.1029/91JB01485",
+    "accessible_author_text": "https://www.researchgate.net/publication/241588292_Modes_of_Continental_Lithospheric_Extension",
+    "source_policy": "Buck 1991 is the primary equation authority. The supplied clear PDF page images (SHA256 0f545e0c045db989bd81ae62461cebfd5e52d72eeb6ed1d9b8c326374e8d5d26) were visually inspected for the page/equation references recorded in the registry; image inspection, not OCR, controls mathematical transcription. Literal source inconsistencies are retained and labeled. No later model replaces Buck and no ARCANA parameters are selected."
+  },
+  "equation_inventory": [
+    {
+      "id": "B91-EQ1",
+      "page": "20163",
+      "form": "∂T/∂t = κ ∂²T/∂z² − v ∂T/∂z + H",
+      "kind": "PDE",
+      "output": "temperature T(z,t) at center of the extension zone",
+      "dependencies": [
+        "initial T(z)",
+        "thermal diffusivity κ",
+        "vertical velocity v(z,t)",
+        "volumetric heating divided by ρCp, H",
+        "surface and lithosphere-base temperature conditions"
+      ],
+      "units": "K s^-1 on both sides; κ m² s^-1; v m s^-1; H K s^-1",
+      "support": "one-dimensional vertical column at rift center; nonextending region temperature is held unchanged",
+      "time": "evolved during prescribed extension",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (1), p. 20163. The printed source symbol is H; the adjacent text defines it as crustal radiogenic heat production divided by density and specific heat (K s^-1), while Table 2 reports the underlying volumetric heat production (W m^-3). Lateral conduction is omitted.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ2",
+      "page": "20164",
+      "form": "σ_b = g B z",
+      "kind": "algebraic constitutive relation",
+      "output": "brittle extensional yield stress",
+      "dependencies": [
+        "depth z",
+        "brittle-failure gradient g B"
+      ],
+      "units": "Pa; g B Pa m^-1; z m",
+      "support": "vertical crust/mantle lithosphere profile",
+      "time": "evaluated at current geometry",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (2), p. 20164. B is Buck’s extensional brittle-failure constant (kg m^-3); gB is the stress gradient. Effective pore-pressure assumptions are incorporated in gB.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ3",
+      "page": "20164",
+      "form": "σ_d = (ε̇/A)^(1/n) exp(E/(n R T))",
+      "kind": "algebraic constitutive relation",
+      "output": "ductile flow stress at imposed strain rate",
+      "dependencies": [
+        "strain rate ε̇",
+        "stress σ_d",
+        "A,n,E,R,T"
+      ],
+      "units": "ε̇ s^-1; σ Pa; A Pa^-n s^-1; E J mol^-1; R J mol^-1 K^-1; T K",
+      "support": "each vertical material layer; crust and mantle use separately assigned rheology",
+      "time": "evaluated as T, strain rate and geometry change",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (3), p. 20164. T is absolute temperature. Inverted form is algebraically equivalent, not the literal displayed form.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-ENV",
+      "page": "20165; 20174 Appendix A",
+      "form": "σ_y(z)=min(σ_b(z),σ_d(z)); F_ys=∫_0^{Z_L} σ_y(z) dz",
+      "kind": "derived algebraic profile plus depth integral",
+      "output": "integrated lithospheric yield strength",
+      "dependencies": [
+        "EQ2",
+        "EQ3",
+        "T(z)",
+        "crust/mantle material boundary h",
+        "lithosphere depth Z_L"
+      ],
+      "units": "σ Pa; F_ys N m^-1",
+      "support": "vertical column at the extension-zone center; total force per unit horizontal length",
+      "time": "computed before/after finite extension",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "The paper explicitly defines yield as the lesser brittle or ductile stress and integrated strength as its depth integral. Appendix A gives special analytic envelope formulae, not the general numerical calculation."
+    },
+    {
+      "id": "B91-EQ4",
+      "page": "20166",
+      "form": "η(y) = η_0 exp(y/y_0)",
+      "kind": "algebraic material profile",
+      "output": "vertical lower-crust viscosity profile",
+      "dependencies": [
+        "distance y above Moho",
+        "Moho effective viscosity η_0",
+        "e-folding length y_0"
+      ],
+      "units": "η Pa s; y,y_0 m",
+      "support": "vertical lower-crust half-space",
+      "time": "effective closure parameterized for a calculation",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (4), p. 20166. The exponent is positive y/y_0.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ5",
+      "page": "20166",
+      "form": "u_f(y) = −(∂P/∂x)(y_0 y/η_0) exp(−y/y_0)",
+      "kind": "analytical flow solution",
+      "output": "lower-crust horizontal velocity profile",
+      "dependencies": [
+        "EQ4 viscosity profile",
+        "horizontal pressure gradient ∂P/∂x",
+        "boundary conditions at Moho and upper half-space"
+      ],
+      "units": "u_f m s^-1",
+      "support": "vertical lower-crust profile at horizontal x",
+      "time": "diagnostic/closure used in thickness evolution",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (5), p. 20166. The negative sign and both y factors are visible; u_f(0)=u_f(∞)=0.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ6",
+      "page": "20166",
+      "form": "∂P/∂x = (g Δρ*) ∂h/∂x;  Δρ* = ρ_c(ρ_m−ρ_c)/ρ_m",
+      "kind": "algebraic pressure-gradient closure",
+      "output": "horizontal pressure gradient driving lower-crust flow",
+      "dependencies": [
+        "g",
+        "crust/mantle densities",
+        "crustal-thickness gradient ∂h/∂x"
+      ],
+      "units": "Pa m^-1; Δρ* kg m^-3",
+      "support": "lateral model cross-section",
+      "time": "updated with h(x,t)",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (6), p. 20166: Δρ*=ρ_c(ρ_m−ρ_c)/ρ_m. Table 1, p. 20164, prints the reversed order; this source-internal definition inconsistency is recorded and not silently reconciled.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ7",
+      "page": "20166",
+      "form": "∂h/∂t = κ_f ∂²h/∂x² − u ∂h/∂x − h ∂u/∂x",
+      "kind": "PDE",
+      "output": "crustal thickness h(x,t)",
+      "dependencies": [
+        "EQ6 pressure gradient",
+        "lower-crust flow closure and κ_f",
+        "prescribed horizontal velocity u(x,t)"
+      ],
+      "units": "m s^-1",
+      "support": "symmetric lateral interval x∈[0,X_L/2] representing half of a 2-D section",
+      "time": "evolved during imposed finite strain",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (7), p. 20166. Buck states the last two terms describe advection and thinning by prescribed velocity; Eq. (7) is strictly valid for Newtonian viscosity.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ8",
+      "page": "20166",
+      "form": "κ_f = g Δρ* y_0³/η_0",
+      "kind": "derived effective diffusivity",
+      "output": "effective lower-crust flow diffusivity",
+      "dependencies": [
+        "g",
+        "Δρ*",
+        "y_0",
+        "η_0"
+      ],
+      "units": "m² s^-1",
+      "support": "spatially uniform closure parameter over x, varying with time in Buck's model",
+      "time": "paper states κ_f varies in time but not space",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (8), p. 20166; κ_f varies in time but not space in this model.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ9",
+      "page": "20166",
+      "form": "η_0 = C exp(E/(R T_M))",
+      "kind": "effective-viscosity conversion",
+      "output": "Newtonian-equivalent viscosity parameters for the non-Newtonian crust flow closure",
+      "dependencies": [
+        "EQ3 rheology A,n,E",
+        "representative stress/strain-rate",
+        "T_M and dT/dz"
+      ],
+      "units": "η_0 Pa s; y_0 m; κ_f m² s^-1",
+      "support": "base of crust and flow profile",
+      "time": "closure evaluated from the thermal/rheologic state",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (9), p. 20166. The adjacent text defines C = A⁻¹(2 y_0 ∂P/∂x)^(1−n); the stress 2 y_0 ∂P/∂x is the average deviatoric stress at the crust base, with 1 MPa minimum in model calculations.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ10",
+      "page": "20167",
+      "form": "y_0 = R T_M²/[E (∂T/∂z)]",
+      "kind": "effective-viscosity/flow parameter relation",
+      "output": "effective lower-crust viscosity/scale or diffusivity inputs used by Eq. 8",
+      "dependencies": [
+        "EQ3 rheology A,n,E",
+        "T_M",
+        "thermal gradient at Moho",
+        "representative deviatoric stress"
+      ],
+      "units": "closure-dependent; η_0 Pa s, y_0 m, κ_f m² s^-1",
+      "support": "lower crust at extension support",
+      "time": "derived from current thermal/rheologic state",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (10), p. 20167. The adjacent text states that ∂T/∂z is the thermal gradient at the Moho; the formula itself has no printed M subscript on that derivative.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-KINEMATIC-SETTING",
+      "page": "20164 Figure 2 and Table 1",
+      "form": "ε̇=U_x/X_e; velocity varies linearly across the prescribed pure-shear extension zone",
+      "kind": "kinematic forcing definition (not a numbered equation in this registry)",
+      "output": "finite extension forcing and local thinning",
+      "dependencies": [
+        "U_x",
+        "X_e",
+        "time interval or finite strain",
+        "initial h(x)"
+      ],
+      "units": "U_x m s^-1; X_e m; ε̇ s^-1; strain dimensionless",
+      "support": "central zone |x|≤X_e/2; symmetric section",
+      "time": "prescribed experiment",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Table 1 and Figure 2 define ε̇=U_x/X_e and linear velocity change over X_e. B is the separate brittle-failure constant in Table 1/Eq. 2. Extension is imposed, not predicted from plate motion."
+    },
+    {
+      "id": "B91-EQ11",
+      "page": "20167",
+      "form": "F_b = g ∫₀^{Z_L} δρ(z) z dz",
+      "kind": "algebraic force diagnostic",
+      "output": "buoyancy force from isostatically compensated density anomaly",
+      "dependencies": [
+        "g",
+        "density anomaly δρ(z)",
+        "vertical geometry z",
+        "horizontal support/reference length L"
+      ],
+      "units": "N m^-1 for force per section length under Buck's normalization",
+      "support": "thin-sheet, laterally long-wavelength anomalies relative to vertical extent",
+      "time": "initial/final difference evaluated",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (11), p. 20167. No additional horizontal length factor L appears. It is the vertical moment of isostatically compensated density anomaly per section length.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-EQ12",
+      "page": "20167",
+      "form": "F_cb ≈ g Δρ* h δh",
+      "kind": "small-perturbation algebraic approximation",
+      "output": "crustal-thickness buoyancy force",
+      "dependencies": [
+        "g",
+        "Δρ*",
+        "reference crust thickness h",
+        "thickness difference δh between x=0 and x=X_L/2"
+      ],
+      "units": "N m^-1",
+      "support": "small crustal-thickness perturbations",
+      "time": "force component at an evaluated state",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified directly from Eq. (12), p. 20167, for small crustal-thickness perturbations; δh is the center-to-edge thickness contrast.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-DF",
+      "page": "20165; 20168-20169",
+      "form": "ARCANA_ADAPTATION: ΔF_i = F_i(final)−F_i(initial); ΔF_total = ΔF_ys + ΔF_tb + ΔF_cb",
+      "kind": "finite-difference diagnostic",
+      "output": "signed change in local force required for continued extension",
+      "dependencies": [
+        "initial/final strength",
+        "initial/final thermal buoyancy",
+        "initial/final crustal buoyancy"
+      ],
+      "units": "N m^-1",
+      "support": "local extension-zone column plus crust-thickness contrast to outer model edge",
+      "time": "after a prescribed finite extension amount",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "SOURCE_INTERNAL_SIGN_INCONSISTENCY: p. 20165 prose prints dF_ys=F_ys(initial)−F_ys(final), while Fig. 4 p. 20165 says positive dF_ys means strengthening, and A2/A8 pp. 20174–20175 make rapid-extension weakening negative. The internally consistent normalized convention is final−initial for each component (ARCANA_ADAPTATION), preserving the literal prose conflict. Under Appendix extension convention dF_cb>0, dF_tb<0 in the rapid thermal-buoyancy expression, and total force change is their signed sum with dF_ys. Buck p. 20168 states positive total dF means force required for continued local extension increases; Buck assumes widening. Negative dF favors localized extension. Diagnostic only; not an ARCANA topology transition."
+    },
+    {
+      "id": "B91-A1-A2",
+      "page": "20174 Appendix A",
+      "form": "A1: F_ys = (gB/2)[Z_c² + max(Z_m²−h²,0)]; A2: dF_ys = −[1−exp(−2ε)](gB/2)[Z_c²+Z_m²−h²]",
+      "kind": "APPROXIMATION_ONLY",
+      "output": "analytic strength-change estimate",
+      "dependencies": [
+        "g B",
+        "Z_c",
+        "Z_m",
+        "h",
+        "finite strain ε"
+      ],
+      "units": "N m^-1",
+      "support": "vertical brittle-envelope approximation",
+      "time": "instantaneous/high-rate limit",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified from A1–A2, p. 20174. In A1, if Z_m<h, the term (Z_m²−h²) is set to zero. A2 is a rapid-extension approximation with negligible thermal diffusion.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-A3-A4",
+      "page": "20174 Appendix A",
+      "form": "A3: δρ = 2α ρ_m(T_m−T_s)(1−z/(2Z_m)); A4: dF_tb = −[1−exp(−2ε)] gα ρ_m(T_m−T_s)Z_m²/6",
+      "kind": "APPROXIMATION_ONLY",
+      "output": "thermal buoyancy-force change estimate",
+      "dependencies": [
+        "α",
+        "ρ_m",
+        "g",
+        "T_M−T_s",
+        "Z_m",
+        "ε"
+      ],
+      "units": "N m^-1",
+      "support": "Appendix assumed thermal profile and brittle-mantle thickness",
+      "time": "rapid-extension limiting case",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified from A3–A4, p. 20174. A3 is the linear thermal-density profile; A4 is the rapid-extension thermal buoyancy change.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-A5-A7",
+      "page": "20174 A5; 20175 A6–A7",
+      "form": "A5: h(x,t)=h_0−(δh/2){erf[(X_e+2x)/(4√(κ_f δt))]+erf[(X_e−2x)/(4√(κ_f δt))]}; A6: dF_cb=[1−exp(−ε)](gΔρ*h²)F(κ_f,ε̇); A7: F(κ_f,ε̇)=erf[X_e/(4√(κ_f ε/ε̇))]−(1/2)erf[(X_e+X_L)/(4√(κ_f ε/ε̇))]−(1/2)erf[(X_e−X_L)/(4√(κ_f ε/ε̇))]",
+      "kind": "ANALYTICAL_INTERPRETATION_APPROXIMATION_ONLY",
+      "output": "crustal thickness contrast / buoyancy factor",
+      "dependencies": [
+        "initial step thinning δh=[1−e^(−ε)]h",
+        "X_e",
+        "κ_f",
+        "elapsed time",
+        "X_L"
+      ],
+      "units": "h m; arguments dimensionless combinations",
+      "support": "infinite-width approximation; appendix permits flow to infinity unlike finite numerical no-flow boundaries",
+      "time": "post-thinning redistribution",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified from A5, p. 20174, and A6–A7, p. 20175. A5 permits flow to ±∞, unlike the finite no-flow numerical boundaries. Appendix formal validity requires the initial thickness change δh to be of order y_0 or less.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-A8-A10",
+      "page": "20175 Appendix A",
+      "form": "A8: G_z=dF_cb/(−dF_ys); A9: G_z=[Δρ*h²/{B(Z_c²+Z_m²−h²)}]F(κ_f,ε̇); A10: F=1 if √(κ_f ε/ε̇)≪X_e, and F=X_e/[2√(κ_f ε/ε̇)] if √(κ_f ε/ε̇)≫X_e",
+      "kind": "APPROXIMATION_ONLY_REGIME_CRITERION",
+      "output": "analytic regime indicator",
+      "dependencies": [
+        "ΔF_cb",
+        "ΔF_ys",
+        "κ_f",
+        "strain rate and geometry"
+      ],
+      "units": "dimensionless",
+      "support": "limiting assumptions above",
+      "time": "approximate transition analysis",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified from A8–A10, p. 20175. This is the Appendix analytical approximation only: neglect thermal-buoyancy force change, rapid extension for A8, small-strain limit for A9, and asymptotic length-scale limits for A10. Never substitute G_z for the full numerical model.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    },
+    {
+      "id": "B91-A11-A12",
+      "page": "20175 A11; 20176 A12",
+      "form": "A11: T_c = E/{nR ln[g B h(A/ε̇)^(1/n)]}; A12: κ_f=(gΔρ*/C)[hRT_M²/{E(T_M−T_s)}]³ exp[−E/(RT_M)]",
+      "kind": "APPROXIMATION_ONLY_PARAMETERIZATION",
+      "output": "transition-depth/flow-diffusivity estimate",
+      "dependencies": [
+        "A,n,E,R,g B,h,T_s,T_M,κ_f"
+      ],
+      "units": "K and m² s^-1",
+      "support": "linear geotherm / specified rheology approximation",
+      "time": "diagnostic",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "notes": "Page-image verified from A11, p. 20175, and A12, p. 20176. A11 solves the brittle/ductile transition under the stated approximation; A12 assumes a linear geotherm. Both remain Appendix approximations, not substitutes for the full numerical solution.",
+      "transcription_status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGE"
+    }
+  ],
+  "symbol_registry": [
+    {
+      "symbol": "A,n,E",
+      "name": "power-law pre-exponential, exponent, activation energy",
+      "units": "Pa^-n s^-1; dimensionless; J mol^-1",
+      "class": "MATERIAL_PARAMETER",
+      "equations": [
+        "EQ3",
+        "EQ9",
+        "A11"
+      ],
+      "variable": "material family"
+    },
+    {
+      "symbol": "B",
+      "name": "extensional brittle-failure constant; brittle stress gradient is gB",
+      "units": "kg m^-3; gB has units Pa m^-1",
+      "class": "MODEL_PARAMETER",
+      "support": "lithosphere column",
+      "equations": [
+        "EQ2",
+        "A1-A2",
+        "A11"
+      ],
+      "variable": "material/configuration"
+    },
+    {
+      "symbol": "C",
+      "name": "pre-exponential coefficient in Newtonian effective-viscosity relation",
+      "units": "closure-dependent; effective viscosity units Pa s",
+      "class": "DERIVED_CLOSURE_PARAMETER",
+      "equations": [
+        "EQ9-EQ10"
+      ],
+      "variable": "rheology and representative stress dependent",
+      "ambiguity": "Resolved: C=A^-1(2 y_0 ∂P/∂x)^(1−n), with the representative average deviatoric stress at the crust base and a 1 MPa minimum in Buck model calculations."
+    },
+    {
+      "symbol": "F_cb",
+      "name": "crustal-thickness buoyancy force",
+      "units": "N m^-1",
+      "class": "DERIVED_DIAGNOSTIC",
+      "equations": [
+        "EQ11",
+        "EQ12",
+        "A5-A7"
+      ],
+      "variable": "state"
+    },
+    {
+      "symbol": "F_tb",
+      "name": "thermal buoyancy force",
+      "units": "N m^-1",
+      "class": "DERIVED_DIAGNOSTIC",
+      "equations": [
+        "EQ11",
+        "A3-A4"
+      ],
+      "variable": "state"
+    },
+    {
+      "symbol": "F_ys",
+      "name": "integrated lithospheric yield strength",
+      "units": "N m^-1",
+      "class": "DERIVED_DIAGNOSTIC",
+      "equations": [
+        "ENV",
+        "DF",
+        "A1-A2"
+      ],
+      "variable": "state"
+    },
+    {
+      "symbol": "G_z",
+      "name": "Goetze number",
+      "units": "dimensionless",
+      "class": "APPROXIMATION_ONLY_REGIME_CRITERION",
+      "equations": [
+        "A8-A10"
+      ],
+      "variable": "state and assumptions"
+    },
+    {
+      "symbol": "H",
+      "name": "crustal radiogenic heat production; Eq. 1 source term is divided by density and specific heat",
+      "units": "K s^-1 in Eq. 1 after division by ρCp; W m^-3 as tabulated volumetric source in Table 2",
+      "class": "MODEL_PARAMETER",
+      "equations": [
+        "EQ1"
+      ],
+      "variable": "uniform crust source in standard cases",
+      "ambiguity": "Buck reuses H for the converted heat-equation term and the tabulated volumetric source; preserve the contextual distinction."
+    },
+    {
+      "symbol": "P,∂P/∂x",
+      "name": "pressure and horizontal pressure gradient",
+      "units": "Pa; Pa m^-1",
+      "class": "DERIVED_ALGEBRAIC_STATE",
+      "equations": [
+        "EQ5-EQ7"
+      ],
+      "variable": "x and state dependent"
+    },
+    {
+      "symbol": "Q_s",
+      "name": "surface heat flow",
+      "units": "mW m^-2",
+      "class": "INITIAL_CONDITION_DIAGNOSTIC",
+      "equations": [
+        "EQ1"
+      ],
+      "variable": "case parameter"
+    },
+    {
+      "symbol": "R",
+      "name": "universal gas constant",
+      "units": "J mol^-1 K^-1",
+      "class": "MODEL_PARAMETER",
+      "equations": [
+        "EQ3",
+        "A11"
+      ],
+      "variable": "constant"
+    },
+    {
+      "symbol": "T",
+      "name": "temperature",
+      "units": "K in constitutive equations; paper reports °C profiles",
+      "class": "EVOLVED_STATE",
+      "equations": [
+        "EQ1",
+        "EQ3",
+        "EQ9"
+      ],
+      "variable": "space,time"
+    },
+    {
+      "symbol": "T_M",
+      "name": "temperature at Moho",
+      "units": "K/°C reference must be explicit",
+      "class": "INITIAL_CONDITION_OR_DERIVED_DIAGNOSTIC",
+      "equations": [
+        "EQ1",
+        "EQ3",
+        "EQ9",
+        "A12"
+      ],
+      "variable": "case/state"
+    },
+    {
+      "symbol": "T_M*",
+      "name": "minimum Moho temperature for significant lower-crust flow",
+      "units": "K or °C (paper plotting convention)",
+      "class": "DERIVED_REGIME_DIAGNOSTIC",
+      "equations": [
+        "EQ7-EQ10"
+      ],
+      "variable": "depends on h, flow length, X_e and rheology"
+    },
+    {
+      "symbol": "T_c,T_m",
+      "name": "crustal and mantle brittle-ductile transition temperatures",
+      "units": "K/°C",
+      "class": "DERIVED_DIAGNOSTIC",
+      "equations": [
+        "ENV",
+        "A11"
+      ],
+      "variable": "material/rheology-dependent"
+    },
+    {
+      "symbol": "T_s",
+      "name": "surface temperature",
+      "units": "K/°C",
+      "class": "BOUNDARY_CONDITION",
+      "equations": [
+        "EQ1",
+        "A3-A4",
+        "A11-A12"
+      ],
+      "variable": "configured"
+    },
+    {
+      "symbol": "U_x",
+      "name": "velocity difference across extension zone",
+      "units": "m s^-1",
+      "class": "FORCING",
+      "equations": [
+        "KINEMATIC-SETTING"
+      ],
+      "variable": "prescribed"
+    },
+    {
+      "symbol": "X_L",
+      "name": "width of initially uniform lithosphere",
+      "units": "m",
+      "class": "MODEL_GEOMETRY",
+      "equations": [
+        "EQ7",
+        "KINEMATIC-SETTING",
+        "A5-A10"
+      ],
+      "variable": "constant per experiment"
+    },
+    {
+      "symbol": "X_e",
+      "name": "width of pure-shear extension zone",
+      "units": "m",
+      "class": "MODEL_GEOMETRY_AND_FORCING_SUPPORT",
+      "equations": [
+        "EQ7",
+        "KINEMATIC-SETTING",
+        "A5-A10"
+      ],
+      "variable": "constant per experiment"
+    },
+    {
+      "symbol": "Z_L",
+      "name": "lithosphere base depth",
+      "units": "m",
+      "class": "MODEL_GEOMETRY",
+      "equations": [
+        "EQ1",
+        "ENV"
+      ],
+      "variable": "fixed model definition unless otherwise extended"
+    },
+    {
+      "symbol": "Z_c,Z_m",
+      "name": "crust/mantle brittle-ductile transition depths",
+      "units": "m",
+      "class": "DERIVED_DIAGNOSTIC",
+      "equations": [
+        "A1-A2",
+        "A11"
+      ],
+      "variable": "thermal/material state"
+    },
+    {
+      "symbol": "g",
+      "name": "gravity acceleration",
+      "units": "m s^-2",
+      "class": "MODEL_PARAMETER",
+      "equations": [
+        "EQ2",
+        "EQ6",
+        "EQ8",
+        "EQ11-A4"
+      ],
+      "variable": "constant in Buck setup"
+    },
+    {
+      "symbol": "h",
+      "name": "crustal thickness",
+      "units": "m (paper km)",
+      "class": "EVOLVED_STATE",
+      "equations": [
+        "EQ6",
+        "EQ7",
+        "EQ12",
+        "A1-A12"
+      ],
+      "variable": "x,t"
+    },
+    {
+      "symbol": "k",
+      "name": "thermal conductivity",
+      "units": "W m^-1 K^-1",
+      "class": "MATERIAL_PARAMETER",
+      "equations": [
+        "EQ1"
+      ],
+      "variable": "configured",
+      "ambiguity": "Distinct from thermal diffusivity κ; Table 2 lists k, while the heat equation uses diffusivity."
+    },
+    {
+      "symbol": "t",
+      "name": "elapsed model time",
+      "units": "s",
+      "class": "NUMERICAL_QUANTITY",
+      "equations": [
+        "EQ1",
+        "EQ7"
+      ],
+      "variable": "time"
+    },
+    {
+      "symbol": "u_f(y),u(x),q_f",
+      "name": "lower-crust horizontal velocity, prescribed section velocity and integrated flow",
+      "units": "m s^-1; m s^-1; m² s^-1",
+      "class": "DERIVED_STATE_OR_FORCING",
+      "equations": [
+        "EQ5-EQ7",
+        "KINEMATIC-SETTING"
+      ],
+      "variable": "vertical/horizontal support and time"
+    },
+    {
+      "symbol": "v",
+      "name": "vertical velocity from extension/thinning",
+      "units": "m s^-1",
+      "class": "FORCING_OR_DERIVED_KINEMATIC_STATE",
+      "equations": [
+        "EQ1"
+      ],
+      "variable": "space,time"
+    },
+    {
+      "symbol": "x",
+      "name": "horizontal distance from rift center",
+      "units": "m (paper often km)",
+      "class": "SPATIAL_COORDINATE",
+      "support": "symmetric lateral section",
+      "equations": [
+        "EQ6",
+        "EQ7",
+        "EQ10"
+      ],
+      "variable": "space"
+    },
+    {
+      "symbol": "y",
+      "name": "distance above Moho",
+      "units": "m",
+      "class": "SPATIAL_COORDINATE",
+      "support": "lower-crust half-space",
+      "equations": [
+        "EQ4",
+        "EQ5"
+      ],
+      "variable": "space"
+    },
+    {
+      "symbol": "y_0",
+      "name": "viscosity e-folding length scale",
+      "units": "m",
+      "class": "DERIVED_CLOSURE_PARAMETER",
+      "equations": [
+        "EQ4-EQ5",
+        "EQ9-EQ10"
+      ],
+      "variable": "thermal/rheologic state"
+    },
+    {
+      "symbol": "z",
+      "name": "vertical depth coordinate, positive downward from the surface",
+      "units": "m (paper often km)",
+      "class": "SPATIAL_COORDINATE",
+      "support": "lithosphere column",
+      "equations": [
+        "EQ1",
+        "EQ2",
+        "ENV",
+        "EQ11"
+      ],
+      "variable": "space",
+      "ambiguity": "Resolved for the inspected Appendix A figure/equations; y is a separate coordinate positive upward above the Moho."
+    },
+    {
+      "symbol": "ΔF",
+      "name": "finite change in total extension force",
+      "units": "N m^-1",
+      "class": "REGIME_CRITERION_INPUT",
+      "equations": [
+        "DF",
+        "A8-A10"
+      ],
+      "variable": "before/after"
+    },
+    {
+      "symbol": "Δρ*",
+      "name": "reduced crust-mantle density contrast",
+      "units": "kg m^-3",
+      "class": "DERIVED_MATERIAL_PARAMETER",
+      "equations": [
+        "EQ6",
+        "EQ8",
+        "EQ12"
+      ],
+      "variable": "configured densities",
+      "ambiguity": "Eq. (6), p. 20166, defines ρ_c(ρ_m−ρ_c)/ρ_m; Table 1, p. 20164, prints the reversed difference. Recorded as a source-internal definition inconsistency; equation convention is not silently changed."
+    },
+    {
+      "symbol": "α",
+      "name": "volumetric thermal expansion coefficient",
+      "units": "K^-1",
+      "class": "MATERIAL_PARAMETER",
+      "equations": [
+        "A3-A4",
+        "EQ11"
+      ],
+      "variable": "material/layer"
+    },
+    {
+      "symbol": "δh,δρ",
+      "name": "crustal thickness/density perturbations",
+      "units": "m; kg m^-3",
+      "class": "ALGEBRAIC_STATE",
+      "equations": [
+        "EQ11-EQ12",
+        "A5-A7"
+      ],
+      "variable": "x,z,time"
+    },
+    {
+      "symbol": "ε",
+      "name": "finite extensional strain",
+      "units": "1",
+      "class": "FORCING",
+      "equations": [
+        "A1-A10"
+      ],
+      "variable": "prescribed increment"
+    },
+    {
+      "symbol": "ε̇",
+      "name": "pure-shear strain rate U_x/X_e",
+      "units": "s^-1",
+      "class": "FORCING",
+      "equations": [
+        "EQ3",
+        "KINEMATIC-SETTING",
+        "A6-A11"
+      ],
+      "variable": "prescribed"
+    },
+    {
+      "symbol": "η(y)",
+      "name": "vertical lower-crust viscosity profile",
+      "units": "Pa s",
+      "class": "ALGEBRAIC_MATERIAL_STATE",
+      "equations": [
+        "EQ4-EQ5"
+      ],
+      "variable": "vertical distance above Moho"
+    },
+    {
+      "symbol": "η_0",
+      "name": "effective lower-crust viscosity at Moho",
+      "units": "Pa s",
+      "class": "MATERIAL_PARAMETER_OR_DERIVED_CLOSURE",
+      "equations": [
+        "EQ4-EQ5",
+        "EQ9-EQ10"
+      ],
+      "variable": "thermal/rheologic state"
+    },
+    {
+      "symbol": "κ",
+      "name": "thermal diffusivity",
+      "units": "m² s^-1",
+      "class": "MATERIAL_PARAMETER",
+      "equations": [
+        "EQ1"
+      ],
+      "variable": "configured"
+    },
+    {
+      "symbol": "κ_f",
+      "name": "effective crustal flow diffusivity",
+      "units": "m² s^-1",
+      "class": "DERIVED_CLOSURE_PARAMETER",
+      "equations": [
+        "EQ7-EQ10",
+        "A5-A12"
+      ],
+      "variable": "time, not space in Buck closure"
+    },
+    {
+      "symbol": "ρ_c,ρ_m",
+      "name": "crust and mantle densities",
+      "units": "kg m^-3",
+      "class": "MATERIAL_PARAMETER",
+      "equations": [
+        "EQ6",
+        "EQ11",
+        "EQ12"
+      ],
+      "variable": "layer/material"
+    },
+    {
+      "symbol": "σ_b",
+      "name": "brittle yield stress",
+      "units": "Pa",
+      "class": "ALGEBRAIC_STATE",
+      "equations": [
+        "EQ2",
+        "ENV"
+      ],
+      "variable": "depth"
+    },
+    {
+      "symbol": "σ_d",
+      "name": "ductile flow stress",
+      "units": "Pa",
+      "class": "ALGEBRAIC_STATE",
+      "equations": [
+        "EQ3",
+        "ENV"
+      ],
+      "variable": "depth,temperature,strain rate"
+    },
+    {
+      "symbol": "σ_y",
+      "name": "yield envelope",
+      "units": "Pa",
+      "class": "ALGEBRAIC_STATE",
+      "equations": [
+        "ENV"
+      ],
+      "variable": "depth,state"
+    }
+  ],
+  "unresolved_primary_glyphs": [],
+  "no_values_selected": true,
+  "no_model_implemented": true,
+  "primary_page_image_verification": {
+    "source_file": "1991BuckMOLE.pdf",
+    "source_sha256": "0f545e0c045db989bd81ae62461cebfd5e52d72eeb6ed1d9b8c326374e8d5d26",
+    "authority": "PDF page images visually inspected; OCR used only as a locator, never as math authority.",
+    "verified_equations": [
+      "Eq. 1 (p. 20163)",
+      "Eq. 2 (p. 20164)",
+      "Eq. 3 (p. 20164)",
+      "Eq. 4–9 (p. 20166)",
+      "Eq. 10–12 (pp. 20167)",
+      "A1–A5 (p. 20174)",
+      "A6–A11 (p. 20175)",
+      "A12 (p. 20176)"
+    ],
+    "additional_sign_evidence": [
+      "p. 20163 Eq. 1; p. 20164 Eq. 2–3; p. 20165 Table 3/Fig. 4 and prose defining dF_ys",
+      "p. 20167 Eq. 11–12 and text identifying thermal buoyancy",
+      "p. 20168 Fig. 8 and positive-total-force discussion",
+      "pp. 20174–20175 A2/A4/A8"
+    ]
+  },
+  "force_sign_audit": {
+    "status": "SOURCE_INTERNAL_SIGN_INCONSISTENCY",
+    "literal_source_statements": [
+      {
+        "reference": "p. 20165 prose",
+        "statement": "dF_ys = F_ys(initial) − F_ys(final)"
+      },
+      {
+        "reference": "Fig. 4 caption, p. 20165",
+        "statement": "positive dF_ys means the lithosphere gets stronger on extension"
+      },
+      {
+        "reference": "A2, p. 20174",
+        "statement": "rapid-extension dF_ys = −[1−exp(−2ε)] times the initial positive strength expression; weakening is negative"
+      },
+      {
+        "reference": "A8 and text, p. 20175",
+        "statement": "G_z = dF_cb/(−dF_ys); rapid-extension dF_ys is negative"
+      }
+    ],
+    "internally_consistent_convention": "ARCANA_ADAPTATION: interpret signed component changes as final minus initial, so strength weakening is negative; retain the conflicting p. 20165 prose literally as source inconsistency.",
+    "extension_signs": {
+      "dF_cb": "positive for extension in A6 and source prose",
+      "dF_tb": "negative for rapid-extension thermal buoyancy in A4",
+      "total_force_change": "signed sum dF_ys + dF_tb + dF_cb"
+    },
+    "interpretation": {
+      "positive_total": "required force for continued local extension increases; Buck assumes widening",
+      "negative_total": "localization is favored; narrow-rift or core-complex mode depends on lower-crust flow"
+    },
+    "scope": "Buck model diagnostic only; not an ARCANA topology transition.",
+    "additional_source_inconsistency": {
+      "status": "SOURCE_INTERNAL_DENSITY_CONTRAST_INCONSISTENCY",
+      "literal_source_statements": [
+        {
+          "reference": "Table 1 p. 20164",
+          "statement": "Δρ*=ρ_c(ρ_c−ρ_m)/ρ_m"
+        },
+        {
+          "reference": "Eq. 6 p. 20166",
+          "statement": "Δρ*=ρ_c(ρ_m−ρ_c)/ρ_m"
+        }
+      ],
+      "treatment": "Preserve both forms. Eq. 6 p. 20166 is the positive reduced contrast used by Eq. 8, A6/A9 and the positive-for-extension text; Table 1 is retained as printed. Do not silently rewrite Table 1."
+    }
+  },
+  "equations_recovered_scope_limit": "The requested equation glyphs are recovered. This does not supply ARCANA pre-T1 state, material/rheology authority, or B6N2-to-Buck section forcing.",
+  "source_internal_inconsistencies": [
+    {
+      "id": "SOURCE_INTERNAL_SIGN_INCONSISTENCY",
+      "references": [
+        "p. 20165 prose",
+        "Fig. 4 p. 20165",
+        "A2 p. 20174",
+        "A8 p. 20175"
+      ],
+      "description": "The prose defines dF_ys as initial minus final, opposite the figure and Appendix weakening sign."
+    },
+    {
+      "id": "SOURCE_INTERNAL_DENSITY_CONTRAST_INCONSISTENCY",
+      "references": [
+        "Table 1 p. 20164",
+        "Eq. 6 p. 20166"
+      ],
+      "description": "Table 1 prints Δρ*=ρ_c(ρ_c−ρ_m)/ρ_m, while Eq. 6 defines Δρ*=ρ_c(ρ_m−ρ_c)/ρ_m. A6/A9 positive-extension interpretation is consistent with the Eq. 6 sign; retain the Table 1 literal conflict."
+    }
+  ],
+  "dimensional_checks": [
+    {
+      "equations": [
+        "EQ3"
+      ],
+      "result": "PASS",
+      "check": "(ε̇/A)^(1/n) is Pa and E/(nRT) is dimensionless."
+    },
+    {
+      "equations": [
+        "EQ4"
+      ],
+      "result": "PASS",
+      "check": "y/y_0 is dimensionless; η has Pa s."
+    },
+    {
+      "equations": [
+        "EQ5"
+      ],
+      "result": "PASS",
+      "check": "(∂P/∂x)(y_0 y/η_0) has m s^-1."
+    },
+    {
+      "equations": [
+        "EQ6"
+      ],
+      "result": "PASS",
+      "check": "gΔρ*∂h/∂x has Pa m^-1."
+    },
+    {
+      "equations": [
+        "EQ7"
+      ],
+      "result": "PASS",
+      "check": "Each term has m s^-1."
+    },
+    {
+      "equations": [
+        "EQ8"
+      ],
+      "result": "PASS",
+      "check": "gΔρ*y_0^3/η_0 has m² s^-1."
+    },
+    {
+      "equations": [
+        "EQ9"
+      ],
+      "result": "PASS",
+      "check": "Exponential argument E/(RT_M) is dimensionless; η_0 and C have Pa s."
+    },
+    {
+      "equations": [
+        "EQ10"
+      ],
+      "result": "PASS",
+      "check": "R T_M²/[E(∂T/∂z)_M] has length units."
+    },
+    {
+      "equations": [
+        "EQ11",
+        "EQ12"
+      ],
+      "result": "PASS",
+      "check": "Both expressions have force-per-section-length units N m^-1; Eq. 11 needs no extra horizontal L."
+    },
+    {
+      "equations": [
+        "A1",
+        "A2"
+      ],
+      "result": "PASS",
+      "check": "gB times a squared length has N m^-1; ε is dimensionless."
+    },
+    {
+      "equations": [
+        "A3",
+        "A4"
+      ],
+      "result": "PASS",
+      "check": "A3 is kg m^-3; A4 has N m^-1."
+    },
+    {
+      "equations": [
+        "A5",
+        "A7",
+        "A10"
+      ],
+      "result": "PASS",
+      "check": "Error-function arguments and exponential/asymptotic conditions are dimensionless; A5 has length units."
+    },
+    {
+      "equations": [
+        "A6",
+        "A8",
+        "A9"
+      ],
+      "result": "PASS",
+      "check": "A6 has N m^-1; A8/A9 are dimensionless under Buck’s B and Δρ* definitions."
+    },
+    {
+      "equations": [
+        "A11"
+      ],
+      "result": "PASS",
+      "check": "The logarithm argument gBh(A/ε̇)^(1/n) is dimensionless; result has temperature units."
+    },
+    {
+      "equations": [
+        "A12"
+      ],
+      "result": "PASS",
+      "check": "Right-hand side has m² s^-1."
+    }
+  ],
+  "decision": "PASS_B6N8D_BUCK_MODEL_RECOVERED_PREHISTORY_AND_FORCING_AUTHORITY_REQUIRED",
+  "model_scope_separation": {
+    "full_model": "FULL_NUMERICAL_MODEL",
+    "appendix": "APPENDIX_ANALYTICAL_APPROXIMATION",
+    "relationship": "Appendix A8–A12 are limited analytical approximations and do not substitute for the full numerical model."
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "schema": "ARCANA_R6_B6N8D_BUCK_DEPENDENCY_GRAPH_V1",
+  "source_baseline": "6538951e441899013d616fec48a4f143afb0c6bf",
+  "graph_scope": "causal dependency reconstruction; no execution ordering implied where equations are coupled",
+  "nodes": [
+    {
+      "id": "geometry",
+      "meaning": "symmetric 2-D lithosphere section, X_L, X_e, h(x), Z_L, Moho and material layering",
+      "units": "m",
+      "temporal_role": "initial/model geometry and evolving h",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY for idealization; ARCANA_ADAPTATION for any mapping",
+      "requiredness": "required",
+      "uncertainty": "spatial mapping and initial geometry unresolved"
+    },
+    {
+      "id": "thermal_initial",
+      "meaning": "initial geotherm T(z), surface/base temperatures and initial heat-flow representation",
+      "units": "K; W m^-2",
+      "temporal_role": "initial condition / boundary conditions",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY defines requirement; ARCANA_ADAPTATION must authorize initialization",
+      "requiredness": "required",
+      "uncertainty": "initial-state uncertainty and prehistory"
+    },
+    {
+      "id": "thermal_parameters",
+      "meaning": "κ, heat production per volumetric source and ρCp conversion, thermal boundaries",
+      "units": "m² s^-1; W m^-3; J kg^-1 K^-1",
+      "temporal_role": "static model/material parameters",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY identifies terms; values are not adopted",
+      "requiredness": "required",
+      "uncertainty": "parameter and material uncertainty"
+    },
+    {
+      "id": "forcing",
+      "meaning": "prescribed velocity difference U_x, width X_e, finite strain/time, pure-shear velocity field",
+      "units": "m s^-1; m; 1; s",
+      "temporal_role": "external forcing",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY for experimental input form; B6N2 only candidate upstream kinematics",
+      "requiredness": "required",
+      "uncertainty": "B6N2-to-section mapping/sign/support is not governed"
+    },
+    {
+      "id": "strain_rate_vertical_velocity",
+      "meaning": "ε̇=U_x/X_e and vertical advection velocity v induced by imposed deformation",
+      "units": "s^-1; m s^-1",
+      "temporal_role": "forcing-derived kinematics",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required",
+      "uncertainty": "mapping and numerical field unresolved"
+    },
+    {
+      "id": "thermal_evolution",
+      "meaning": "one-dimensional vertical advection-diffusion-radiogenic heating at extension-zone center; no lateral conduction",
+      "units": "T:K",
+      "temporal_role": "evolved state",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required",
+      "uncertainty": "numerical discretization and omitted lateral effects"
+    },
+    {
+      "id": "material_rheology",
+      "meaning": "crust/mantle density and constitutive family A,n,E; brittle gradient g B; temperature/rate-dependent law",
+      "units": "law-specific SI",
+      "temporal_role": "static configuration plus derived state response",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY identifies families; ARCANA_ADAPTATION/AUTHORIAL_DECISION needed for material binding",
+      "requiredness": "required",
+      "uncertainty": "rheology and effective-pressure uncertainty"
+    },
+    {
+      "id": "yield_envelope",
+      "meaning": "pointwise minimum of brittle and ductile stress profiles; depth-integrated F_ys",
+      "units": "Pa; N m^-1",
+      "temporal_role": "algebraic state/diagnostic",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required",
+      "uncertainty": "constitutive and integration uncertainty"
+    },
+    {
+      "id": "crustal_thickness_evolution",
+      "meaning": "h(x,t) under pure-shear thinning, advection and lower-crust flow diffusion",
+      "units": "m",
+      "temporal_role": "evolved spatial state",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required for full criterion",
+      "uncertainty": "flow closure and spatial discretization"
+    },
+    {
+      "id": "lower_crust_flow",
+      "meaning": "pressure-gradient-driven flow with vertically varying effective viscosity and κ_f closure",
+      "units": "u m s^-1; κ_f m² s^-1",
+      "temporal_role": "derived/evolved process state",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required for core-complex classification; affects crustal buoyancy more broadly",
+      "uncertainty": "Newtonian closure applied to non-Newtonian rheology; incomplete thermal coupling"
+    },
+    {
+      "id": "crust_buoyancy",
+      "meaning": "isostatically compensated crust density/thickness anomaly and lateral thickness contrast",
+      "units": "N m^-1",
+      "temporal_role": "derived diagnostic",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required",
+      "uncertainty": "density and local-isostasy assumptions"
+    },
+    {
+      "id": "thermal_buoyancy",
+      "meaning": "thermal density anomaly integrated as buoyancy force",
+      "units": "N m^-1",
+      "temporal_role": "derived diagnostic",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required in full model",
+      "uncertainty": "thermal/density structure and expansion"
+    },
+    {
+      "id": "force_change",
+      "meaning": "finite change in net force needed to continue extension from component changes",
+      "units": "N m^-1",
+      "temporal_role": "derived before/after diagnostic",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required",
+      "uncertainty": "coupled numerical/model-form and sign convention"
+    },
+    {
+      "id": "regime_indication",
+      "meaning": "positive ΔF indicates widening tendency; negative indicates localization; flow plus temperature distinguishes core-complex vs narrow behavior",
+      "units": "sign / categorical mode",
+      "temporal_role": "diagnostic/predicate",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY under its model assumptions",
+      "requiredness": "required",
+      "uncertainty": "near-zero crossing, classification discontinuity and scope"
+    },
+    {
+      "id": "arcana_topology",
+      "meaning": "ARCANA event/interface/topology application",
+      "units": "graph identities",
+      "temporal_role": "separate authority",
+      "authority": "ARCANA_ADAPTATION and AUTHORIAL_DECISION",
+      "requiredness": "not produced by Buck criterion",
+      "uncertainty": "not determined here"
+    }
+  ],
+  "edges": [
+    {
+      "from": "geometry",
+      "to": "forcing",
+      "relation": "defines extension-zone support and width",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "forcing",
+      "to": "strain_rate_vertical_velocity",
+      "relation": "derive prescribed pure-shear rate and vertical kinematics",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "strain_rate_vertical_velocity",
+      "to": "thermal_evolution",
+      "relation": "vertical advection term",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "thermal_initial",
+      "to": "thermal_evolution",
+      "relation": "initial/boundary values",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "thermal_parameters",
+      "to": "thermal_evolution",
+      "relation": "diffusion and source terms",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "thermal_evolution",
+      "to": "material_rheology",
+      "relation": "T and rate control ductile stress and effective flow properties",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "material_rheology",
+      "to": "yield_envelope",
+      "relation": "constitutive stresses plus brittle cap",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "geometry",
+      "to": "yield_envelope",
+      "relation": "layer boundaries/depth support for stress integral",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "forcing",
+      "to": "crustal_thickness_evolution",
+      "relation": "prescribed thinning/advection",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "geometry",
+      "to": "crustal_thickness_evolution",
+      "relation": "initial thickness profile and lateral boundaries",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "material_rheology",
+      "to": "lower_crust_flow",
+      "relation": "effective η profile/diffusivity derived from crust rheology and thermal state",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "thermal_evolution",
+      "to": "lower_crust_flow",
+      "relation": "temperature and gradient control effective viscosity",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "crustal_thickness_evolution",
+      "to": "lower_crust_flow",
+      "relation": "thickness gradient creates pressure gradient and flow",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "lower_crust_flow",
+      "to": "crustal_thickness_evolution",
+      "relation": "redistributes h and modifies thickness anomaly",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required for full/core-complex claim"
+    },
+    {
+      "from": "crustal_thickness_evolution",
+      "to": "crust_buoyancy",
+      "relation": "thickness contrast and density difference",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "thermal_evolution",
+      "to": "thermal_buoyancy",
+      "relation": "temperature-dependent density anomaly",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "material_rheology",
+      "to": "crust_buoyancy",
+      "relation": "density contrast and gravity configuration",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "yield_envelope",
+      "to": "force_change",
+      "relation": "initial/final integrated-strength change",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "crust_buoyancy",
+      "to": "force_change",
+      "relation": "initial/final crustal buoyancy change",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "thermal_buoyancy",
+      "to": "force_change",
+      "relation": "initial/final thermal buoyancy change",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "force_change",
+      "to": "regime_indication",
+      "relation": "sign-based widening/localization assumption",
+      "authority": "BUCK_1991_PRIMARY_AUTHORITY",
+      "requiredness": "required"
+    },
+    {
+      "from": "regime_indication",
+      "to": "arcana_topology",
+      "relation": "may only request reevaluation; cannot determine/apply graph change",
+      "authority": "ARCANA_ADAPTATION",
+      "requiredness": "prohibited as direct mutation"
+    }
+  ],
+  "coupling_note": "The graph is a dependency graph, not a one-way solver schedule: thermal evolution, rheology, thickness and lower-crust flow are coupled through state-dependent closures. Buck explicitly notes incomplete thermal-flow coupling as a limitation.",
+  "unresolved_mapping_edges": [
+    "B6N2 plate-local angular velocity to signed local extension U_x/ε̇",
+    "ARCANA interface support to Buck finite-width cross-section X_e/X_L",
+    "activation-time initial profiles to physically evolved prehistory"
+  ],
+  "no_physical_model_selected": true,
+  "no_propagation_executed": true,
+  "source_equation_recovery": {
+    "status": "VERIFIED_FROM_PRIMARY_PAGE_IMAGES",
+    "source_sha256": "0f545e0c045db989bd81ae62461cebfd5e52d72eeb6ed1d9b8c326374e8d5d26",
+    "full_numerical_model_equations": [
+      "EQ1",
+      "EQ2",
+      "EQ3",
+      "EQ4",
+      "EQ5",
+      "EQ6",
+      "EQ7",
+      "EQ8",
+      "EQ9",
+      "EQ10",
+      "EQ11",
+      "EQ12",
+      "DF"
+    ],
+    "appendix_analytical_approximation_equations": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "A7",
+      "A8",
+      "A9",
+      "A10",
+      "A11",
+      "A12"
+    ],
+    "appendix_is_not_substitute_for_full_numerical_model": true,
+    "force_sign_status": "SOURCE_INTERNAL_SIGN_INCONSISTENCY; ARCANA_ADAPTATION explicitly documented in equation registry",
+    "primary_image_verified_equations": [
+      "EQ1",
+      "EQ2",
+      "EQ3",
+      "EQ4",
+      "EQ5",
+      "EQ6",
+      "EQ7",
+      "EQ8",
+      "EQ9",
+      "EQ10",
+      "EQ11",
+      "EQ12",
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "A7",
+      "A8",
+      "A9",
+      "A10",
+      "A11",
+      "A12"
+    ],
+    "density_contrast_source_inconsistency": "Table 1 p. 20164 reverses the Δρ* order printed in Eq. 6 p. 20166; preserve both."
+  },
+  "decision": "PASS_B6N8D_BUCK_MODEL_RECOVERED_PREHISTORY_AND_FORCING_AUTHORITY_REQUIRED",
+  "model_scope_separation": {
+    "full_model": "FULL_NUMERICAL_MODEL",
+    "appendix": "APPENDIX_ANALYTICAL_APPROXIMATION",
+    "relationship": "Appendix A8–A12 are limited analytical approximations and do not substitute for the full numerical model."
+  }
+}

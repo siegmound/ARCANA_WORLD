@@ -1,0 +1,639 @@
+{
+  "schema": "ARCANA_R6_B6N8D_BUCK_MINIMUM_STATE_AUDIT_V1",
+  "stage": "B6N8D_BUCK_EQUATION_LEVEL_RECOVERY_AND_MINIMAL_STATE_AUDIT",
+  "source_baseline": "6538951e441899013d616fec48a4f143afb0c6bf",
+  "decision": "PASS_B6N8D_BUCK_MODEL_RECOVERED_PREHISTORY_AND_FORCING_AUTHORITY_REQUIRED",
+  "classification_basis": "B6N8C Track A is a design recommendation only. This audit recovers a force/thermal/rheology-dependent model with evolved physical state and does not authorize implementation or parameter selection.",
+  "blocking_reason": "Primary equation forms requested for B6N8-D were visually recovered from the supplied PDF page images. Implementability remains blocked by independent ARCANA authority gaps: pre-T1 thermal and crust/lithosphere structural state; material/rheological/thermal binding; and B6N2-to-Buck section/physical-extension mapping.",
+  "full_published_model_state_and_dependencies": [
+    "symmetric two-dimensional lateral/vertical section; initially uniform lithosphere width X_L; central pure-shear extension-zone width X_e; crust/Moho/mantle/base geometry",
+    "initial vertical temperature profile plus surface and fixed basal thermal conditions; thermal diffusivity; radiogenic heat source; vertical velocity during extension",
+    "spatial crust thickness h(x,t), its initial profile and lateral boundary conditions; prescribed extension velocity/strain and finite increment",
+    "crust and mantle density/material identities; gravity; thermal expansion; heat capacity/source conversion",
+    "brittle failure gradient/effective-pressure assumption; crust and mantle power-law A,n,E; strain-rate input; temperature field; yield envelope and its depth integration",
+    "lower-crust vertical viscosity profile, Moho effective viscosity, e-folding length, thickness-gradient pressure forcing, effective diffusivity and h redistribution",
+    "initial/final crustal buoyancy and thermal buoyancy plus initial/final integrated yield strength; consistent force sign convention and finite-force-change diagnostic",
+    "numerical column/cross-section discretization, thermal and thickness boundary conditions, stability/error assessment, and validity/model-form limitations"
+  ],
+  "minimum_causally_required_state_candidate": [
+    {
+      "component": "model_section_geometry",
+      "contents": [
+        "lateral support and scale X_L",
+        "extension-zone support/width X_e",
+        "Moho/crust/lithosphere interfaces",
+        "initial h(x) and vertical layer geometry"
+      ],
+      "why": "Defines gradients, thinning region, boundary contrast and force integration.",
+      "temporal_origin": "INITIAL_CONDITION plus model geometry",
+      "arcana_status": "NEEDS_AUTHORIAL_MODEL_DECISION_AND_SUPPORT_MAPPING"
+    },
+    {
+      "component": "thermal_state",
+      "contents": [
+        "T(z) initially on at least the extension column and lateral thermal scope needed by the model",
+        "thermal boundary conditions",
+        "evolved T(z,t) under Eq. 1"
+      ],
+      "why": "Controls ductile stress, effective flow and thermal buoyancy.",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE likely for physical T1; exact authorial alternative not approved",
+      "arcana_status": "NEEDS_PREHISTORY"
+    },
+    {
+      "component": "thickness_state",
+      "contents": [
+        "crustal thickness profile h(x)",
+        "lithosphere thickness/base profile",
+        "material interfaces",
+        "evolved h(x,t)"
+      ],
+      "why": "Controls brittle geometry, crust buoyancy, pressure gradients and strength integral.",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE for a world already at T1",
+      "arcana_status": "PARTLY_REPRESENTED_AT_T0; T1/interface support binding and prehistory are missing"
+    },
+    {
+      "component": "material_and_constitutive_configuration",
+      "contents": [
+        "discrete crust/mantle material families",
+        "density and thermal property mapping",
+        "brittle law/effective pressure",
+        "power-law rheology and lower-crust closure"
+      ],
+      "why": "Determines yield envelope, flow response and buoyancy.",
+      "temporal_origin": "STATIC_PLANETARY_PARAMETER plus spatial material state",
+      "arcana_status": "NEEDS_AUTHORITY_BINDING; do not treat Buck example table as chosen ARCANA values"
+    },
+    {
+      "component": "forcing_history_and_increment",
+      "contents": [
+        "model-frame extension velocity/strain-rate history",
+        "deformation zone geometry",
+        "finite extension strain or time increment",
+        "vertical advective velocity"
+      ],
+      "why": "Input to thermal and thickness equations and finite force comparison.",
+      "temporal_origin": "POST_ACTIVATION_FORCING; depends on authorized B6N2 mapping",
+      "arcana_status": "NEEDS_FORCING_MAPPING; B6N2 Euler vectors are not physical extension by themselves"
+    },
+    {
+      "component": "derived_force_diagnostics",
+      "contents": [
+        "F_ys, F_tb, F_cb at comparison states",
+        "signed ΔF with uncertainty and validity"
+      ],
+      "why": "Criterion quantity; derived and replayable, not independent canonical primitive by default.",
+      "temporal_origin": "POST_ACTIVATION_DERIVED_STATE",
+      "arcana_status": "DERIVABLE only after state, laws, forcing, and numerical method are authorized"
+    },
+    {
+      "component": "flow_closure_state",
+      "contents": [
+        "effective lower-crust viscosity/flow closure and h redistribution, or qualified spatial flow solution"
+      ],
+      "why": "Needed to represent Buck's lower-crust flow effect and core-complex distinction.",
+      "temporal_origin": "POST_ACTIVATION_DERIVED_STATE given initialized material/thermal state",
+      "arcana_status": "NEEDS_AUTHORITY_BINDING; omission is unsafe for full mode claim"
+    }
+  ],
+  "possibly_reducible_dependencies": [
+    {
+      "dependency": "full vertical temperature vector to compact profile coefficients",
+      "preserved_mechanism": "ductile stress envelope and thermal buoyancy",
+      "proof_needed": "validated approximation against full Eq. 1 over governed state/forcing domain, including sign of ΔF and uncertainty",
+      "restriction": "No coefficient basis selected; insufficient as source for prehistory."
+    },
+    {
+      "dependency": "distributed crustal flow PDE to Buck effective κ_f closure",
+      "preserved_mechanism": "pressure-gradient-driven lower-crust redistribution",
+      "proof_needed": "verify Newtonian-equivalent parameters for actual non-Newtonian rheology, finite X_L boundary behavior and core-complex/wide criteria",
+      "restriction": "Buck itself labels Eq. 7 derivation strictly Newtonian; cannot claim broader validity."
+    },
+    {
+      "dependency": "persisted force components",
+      "preserved_mechanism": "none lost if deterministically replayed from state and pinned law",
+      "proof_needed": "replay identity and numerical reproducibility",
+      "restriction": "Store as diagnostics/provenance if useful, not duplicated independent physical state."
+    },
+    {
+      "dependency": "2-D section to local 1-D/aggregate proxy",
+      "preserved_mechanism": "only if geometry, lateral thickness contrast, flow support and boundary effects are retained",
+      "proof_needed": "cross-section comparison and declared aggregation/validity envelope",
+      "restriction": "No basis for treating every one of 71 segments as an independent Buck experiment."
+    }
+  ],
+  "unsafe_to_remove_dependencies": [
+    {
+      "dependency": "initial/evolved thermal structure",
+      "reason": "changes ductile yield, transient weakening and thermal buoyancy"
+    },
+    {
+      "dependency": "crust/lithosphere thickness geometry and lateral contrast",
+      "reason": "controls strength integral, buoyancy, pressure-gradient flow, and imposed thinning"
+    },
+    {
+      "dependency": "crust/mantle rheology and brittle failure law",
+      "reason": "governs strength, brittle-ductile depths and lower-crust flow"
+    },
+    {
+      "dependency": "finite extension forcing amount/rate and width",
+      "reason": "defines before/after state and rate-dependent constitutive response"
+    },
+    {
+      "dependency": "both crustal and thermal buoyancy in full calculation",
+      "reason": "their contributions compete and can reverse total-force sign"
+    },
+    {
+      "dependency": "lower-crustal flow when claiming core-complex or full Buck three-mode classification",
+      "reason": "is the causal mechanism that spreads lower-crust thinning and reduces crustal thickness contrast"
+    },
+    {
+      "dependency": "uncertainty/validity of coupled reductions",
+      "reason": "a ΔF sign near zero cannot be promoted to robust regime evidence without numerical/model-form uncertainty"
+    }
+  ],
+  "prehistory_audit": [
+    {
+      "quantity": "temperature/geotherm and layer thermal structure",
+      "buck_requires": "initial profile and surface/base conditions; evolves under Eq. 1",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE or UNKNOWN",
+      "model_requires_initial_value": true,
+      "arcana_has_authority_to_create_at_T1": false,
+      "current_status": "surface heat-flow/reference fields at T0 do not uniquely specify profile at T1; prior history or explicit initialization authority needed"
+    },
+    {
+      "quantity": "crustal thickness and lateral structure",
+      "buck_requires": "initial h(x), gradients and evolution",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+      "model_requires_initial_value": true,
+      "arcana_has_authority_to_create_at_T1": false,
+      "current_status": "T0 thickness authority exists on source support, but no post-event cross-section profile/history binding is established here"
+    },
+    {
+      "quantity": "lithosphere thickness/base and layer interfaces",
+      "buck_requires": "initial depth support for thermal and strength integrals",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE or specialist-derived from initialized T/material inputs",
+      "model_requires_initial_value": true,
+      "arcana_has_authority_to_create_at_T1": false,
+      "current_status": "T0 specialist fields are conditional/provider outputs; correct T1 support and history not established"
+    },
+    {
+      "quantity": "material composition/density and heat-production distribution",
+      "buck_requires": "crust/mantle properties and radiogenic source",
+      "temporal_origin": "STATIC_PLANETARY_PARAMETER plus spatial material state",
+      "model_requires_initial_value": true,
+      "arcana_has_authority_to_create_at_T1": false,
+      "current_status": "material/thermal authority and class mapping unresolved; Buck's tabulated Earth materials are not ARCANA values"
+    },
+    {
+      "quantity": "rheology and brittle parameters",
+      "buck_requires": "A,n,E, g B and effective flow law",
+      "temporal_origin": "STATIC_PLANETARY_PARAMETER",
+      "model_requires_initial_value": true,
+      "arcana_has_authority_to_create_at_T1": false,
+      "current_status": "separate physical-model configuration; no values/laws selected for this stage"
+    },
+    {
+      "quantity": "inherited weakness/initial extension localization",
+      "buck_requires": "initial strain is concentrated in a narrow presumed weak region",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE or AUTHORIAL_INITIALIZATION",
+      "model_requires_initial_value": true,
+      "arcana_has_authority_to_create_at_T1": false,
+      "current_status": "not supplied by pair activation or boundary IDs; requires explicit structural authority if the model depends on it"
+    },
+    {
+      "quantity": "lower-crust stress/flow state",
+      "buck_requires": "effective rheology/pressure gradient and initialization for flow calculation",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE or derived after initialized state",
+      "model_requires_initial_value": true,
+      "arcana_has_authority_to_create_at_T1": false,
+      "current_status": "no current state producer or initialization authorization demonstrated"
+    }
+  ],
+  "arcana_availability_gap_matrix": [
+    {
+      "quantity": "POST_EVENT process pair, interface IDs, junction identities and geometry",
+      "buck_role": "candidate spatial binding only",
+      "required_at": "initialization",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+      "availability": "AVAILABLE_IN_CANONICAL_HISTORY",
+      "authority_source": "canonical B6N1 process state and governed interface support",
+      "uncertainty": "identity available; Buck section support not mapped",
+      "prehistory_needed": false,
+      "upstream_candidate": "B6N8-F mapping",
+      "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE_DECISION"
+    },
+    {
+      "quantity": "B6N2 plate-local Euler vectors and validity",
+      "buck_role": "possible kinematic driver input, not extension itself",
+      "required_at": "forcing interval",
+      "temporal_origin": "POST_ACTIVATION_DERIVED_STATE",
+      "availability": "AVAILABLE_IN_CANONICAL_HISTORY_CONDITIONALLY",
+      "authority_source": "B6N2 attestation/contracts",
+      "uncertainty": "validity/horizon separately gated; no vector-to-strain mapping",
+      "prehistory_needed": false,
+      "upstream_candidate": "B6N8-F",
+      "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE_DECISION"
+    },
+    {
+      "quantity": "T0 crustal thickness and physical domain fields",
+      "buck_role": "partial geometric constraint",
+      "required_at": "initialization",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+      "availability": "AVAILABLE_IN_CANONICAL_HISTORY_AT_T0_SUPPORT",
+      "authority_source": "governed R6 T0 materialization and authority artifacts",
+      "uncertainty": "support transfer to T1/local section absent",
+      "prehistory_needed": true,
+      "upstream_candidate": "geology/material domain",
+      "blocking_status": "NEEDS_PREHISTORY"
+    },
+    {
+      "quantity": "continental reference surface heat flow",
+      "buck_role": "possible thermal constraint, not full T(z)",
+      "required_at": "initialization",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE/reference boundary field",
+      "availability": "AVAILABLE_AT_T0_CONTINENTAL_SUPPORT",
+      "authority_source": "T0 authorial thermal reference",
+      "uncertainty": "does not determine a unique geotherm or transient at T1",
+      "prehistory_needed": true,
+      "upstream_candidate": "thermal domain",
+      "blocking_status": "NEEDS_PREHISTORY"
+    },
+    {
+      "quantity": "complete T(z) and thermal boundaries at T1",
+      "buck_role": "Eq.1 initial state",
+      "required_at": "T1",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+      "availability": "ABSENT_FROM_BOUND_RIFT_INITIALIZATION",
+      "authority_source": "none currently bound for pair support",
+      "uncertainty": "profile/model-form uncertainty absent",
+      "prehistory_needed": true,
+      "upstream_candidate": "thermal/material domain",
+      "blocking_status": "NEEDS_PREHISTORY"
+    },
+    {
+      "quantity": "complete h(x), lithosphere thickness and section dimensions",
+      "buck_role": "initial geometry, flow and buoyancy",
+      "required_at": "T1",
+      "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+      "availability": "PARTIALLY_CONSTRAINED_AT_T0; NOT_BOUND_AS_T1_SECTION",
+      "authority_source": "T0 fields and topology identities only",
+      "uncertainty": "cross-section width, layers and mapping unresolved",
+      "prehistory_needed": true,
+      "upstream_candidate": "geology/tectonic-structure domain",
+      "blocking_status": "NEEDS_PREHISTORY"
+    },
+    {
+      "quantity": "crust/mantle material families and density/thermal parameters",
+      "buck_role": "constitutive and buoyancy input",
+      "required_at": "initialization",
+      "temporal_origin": "STATIC_PLANETARY_PARAMETER plus spatial material field",
+      "availability": "REPRESENTED_SEMANTICALLY_BUT_NOT_NUMERICALLY_OR_MAPPED",
+      "authority_source": "T0 material authority gaps; no Buck values adopted",
+      "uncertainty": "parameter alternatives/ranges ungoverned",
+      "prehistory_needed": false,
+      "upstream_candidate": "material domain and specialist configuration",
+      "blocking_status": "NEEDS_AUTHORITY_BINDING"
+    },
+    {
+      "quantity": "rheology A,n,E, brittle law/effective pressure",
+      "buck_role": "yield envelope and flow closure",
+      "required_at": "initialization",
+      "temporal_origin": "STATIC_PLANETARY_PARAMETER",
+      "availability": "ABSENT_AS_SELECTED_RIFT_MODEL_CONFIGURATION",
+      "authority_source": "none for Buck-style track",
+      "uncertainty": "no model or calibrated ranges selected",
+      "prehistory_needed": false,
+      "upstream_candidate": "physical model configuration",
+      "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE_DECISION"
+    },
+    {
+      "quantity": "radiogenic heat production profile and thermal properties",
+      "buck_role": "Eq.1 and temperature evolution",
+      "required_at": "initialization",
+      "temporal_origin": "STATIC_PLANETARY_PARAMETER and material distribution",
+      "availability": "NOT_FULLY_BOUND_FOR_RIFT_SUPPORT",
+      "authority_source": "T0 thermal configuration does not establish Buck model input mapping",
+      "uncertainty": "property/source distributions absent",
+      "prehistory_needed": false,
+      "upstream_candidate": "thermal/material domain",
+      "blocking_status": "NEEDS_AUTHORITY_BINDING"
+    },
+    {
+      "quantity": "local cross-section forcing U_x, ε̇, X_e and duration",
+      "buck_role": "imposed extension experiment",
+      "required_at": "each interval",
+      "temporal_origin": "POST_ACTIVATION_FORCING",
+      "availability": "B6N2 motion only conditionally; physical quantities absent",
+      "authority_source": "B6N2 kinematic authority, not a physical rifting law",
+      "uncertainty": "frame, polarity, support, aggregation, endpoints/junctions",
+      "prehistory_needed": false,
+      "upstream_candidate": "B6N8-F",
+      "blocking_status": "NEEDS_AUTHORIAL_PRIMITIVE_DECISION"
+    },
+    {
+      "quantity": "force components and signed ΔF",
+      "buck_role": "derived criterion",
+      "required_at": "after candidate increment",
+      "temporal_origin": "POST_ACTIVATION_DERIVED_STATE",
+      "availability": "DETERMINISTICALLY_DERIVABLE only after all upstream closure",
+      "authority_source": "Buck equations plus future governed inputs",
+      "uncertainty": "numerical/model form propagated",
+      "prehistory_needed": false,
+      "upstream_candidate": "prototype after upstream gates",
+      "blocking_status": "DERIVABLE"
+    },
+    {
+      "quantity": "fault damage/slip/tip state",
+      "buck_role": "not a Buck-required variable",
+      "required_at": "not required for Buck strip criterion",
+      "temporal_origin": "UNKNOWN",
+      "availability": "UNKNOWN for other models",
+      "authority_source": "none in Buck 1991",
+      "uncertainty": "not assessed as Buck state",
+      "prehistory_needed": false,
+      "upstream_candidate": "separate law only if expanded claim",
+      "blocking_status": "NOT_REQUIRED_FOR_MINIMAL_MODEL"
+    }
+  ],
+  "b6n2_forcing_requirements": {
+    "buck_input": "prescribed local horizontal velocity difference U_x across a finite-width pure-shear zone, giving ε̇=U_x/X_e, plus a finite strain/time increment; Buck does not consume spherical Euler vectors directly",
+    "current_b6n2_status": "plate-local angular velocity authority and relative-motion diagnostics only; not physical extension/stress/accommodation",
+    "required_mapping": [
+      "choose a model/interface local frame",
+      "define normal and tangential axes",
+      "authorize sign and polarity",
+      "derive relative local surface velocity from spherical rotations with an explicit time window",
+      "decide which signed component represents extension vs convergence",
+      "map the segment/interface support to a finite-width section and X_e/X_L",
+      "define cross-section selection and aggregation/resampling",
+      "calculate strain rate and finite strain only over an authorized interval",
+      "define endpoint and junction validity/coverage and stop behavior"
+    ],
+    "status": "B6N8-F_REQUIRED; no final mapping selected"
+  },
+  "interface_support": {
+    "buck_support": "one symmetric 2-D cross-section through an initially laterally uniform lithosphere with a central finite-width extension zone; not a 71-segment network model",
+    "adaptation_candidates": [
+      "PER_CROSS_SECTION",
+      "LOCAL_WINDOW",
+      "PER_INTERFACE_AGGREGATE"
+    ],
+    "not_supported_without_new_mapping": "PER_SEGMENT as a one-to-one Buck instance",
+    "needed": [
+      "which cross-sections sample each interface",
+      "spatial support and buffer",
+      "how one or many section diagnostics aggregate to interface scope",
+      "junction overlap and endpoint handling",
+      "coverage/uncertainty semantics"
+    ]
+  },
+  "uncertainty_categories": {
+    "initial_state": {
+      "buck_representation": "cases vary h, T_M/heat flow and initial conditions",
+      "arcana_governance": "prehistory/state uncertainty and spatial correlation required"
+    },
+    "parameter": {
+      "buck_representation": "sensitivity cases for selected constants",
+      "arcana_governance": "no probability distributions selected; governed alternatives/ranges required"
+    },
+    "rheology": {
+      "buck_representation": "different crustal laws; fixed mantle law in many cases",
+      "arcana_governance": "law family, material assignment and uncertain values unresolved"
+    },
+    "forcing": {
+      "buck_representation": "prescribed U_x, X_e, strain rate and finite strain",
+      "arcana_governance": "B6N2 frame/time/support mapping and uncertainty absent"
+    },
+    "model_form": {
+      "buck_representation": "acknowledged incomplete thermal-flow coupling, 1-D thermal center, thin-sheet force",
+      "arcana_governance": "must remain explicit limitation/uncertainty"
+    },
+    "numerical": {
+      "buck_representation": "finite-difference grids and reported resolution check for thermal solve",
+      "arcana_governance": "independent convergence/stability/error bounds required"
+    },
+    "criterion": {
+      "buck_representation": "sign of finite ΔF; appendix G_z approximates limited case",
+      "arcana_governance": "near-zero ambiguity and robust sign/coverage needed"
+    },
+    "spatial_mapping": {
+      "buck_representation": "idealized 2-D section",
+      "arcana_governance": "interface-to-section resolution/aggregation uncertainty is new and unresolved"
+    }
+  },
+  "validity_domain": [
+    {
+      "assumption": "2-D symmetric section, lateral uniformity outside central rift",
+      "consequence": "MODEL_AUTHORITY_BOUND; ARCANA mapping also needs stop/coverage guard"
+    },
+    {
+      "assumption": "thin-sheet integrated yield/buoyancy force",
+      "consequence": "MODEL_AUTHORITY_BOUND; documented limitation if local 3-D/junction effects claimed"
+    },
+    {
+      "assumption": "pure shear imposed across X_e",
+      "consequence": "MODEL_AUTHORITY_BOUND; B6N2 mapping cannot be silently interpreted as pure shear"
+    },
+    {
+      "assumption": "thermal solve is 1-D at rift center; lateral conduction neglected",
+      "consequence": "ADAPTIVE_STOP_CONDITION or DOCUMENTED_LIMITATION at slow/narrow scope where neglected term matters"
+    },
+    {
+      "assumption": "lower-crust flow closure derives from Newtonian viscosity but approximates non-Newtonian flow",
+      "consequence": "MODEL_AUTHORITY_BOUND; model-form uncertainty and validation required"
+    },
+    {
+      "assumption": "no fully self-consistent coupling between flow and temperature",
+      "consequence": "DOCUMENTED_LIMITATION; coupling scope must be fixed before a faithful claim"
+    },
+    {
+      "assumption": "small/finite extension increments and weak regional assumption",
+      "consequence": "ADAPTIVE_STOP_CONDITION at validity limit; exact limits not generally stated"
+    },
+    {
+      "assumption": "very high temperatures may melt/convect, neither treated",
+      "consequence": "ADAPTIVE_STOP_CONDITION if model reaches such states; threshold authority absent here"
+    },
+    {
+      "assumption": "Buck case-specific rheologies, X_e/X_L and rates are experiments, not universal bounds",
+      "consequence": "DOCUMENTED_LIMITATION; do not copy as ARCANA parameter values"
+    },
+    {
+      "assumption": "extension model is continental; not a generalized oceanic spreading or subduction law",
+      "consequence": "MODEL_AUTHORITY_BOUND"
+    }
+  ],
+  "mechanics_classification": {
+    "b6n8c_label_reassessed": "TIER2_PLUS_LIMITED_PHYSICAL_STATE_REQUIRED",
+    "evidence_based_refinement": "TIER_2_PLUS_LIMITED_MECHANICAL_STATE (reduced thin-sheet force balance and constitutive strength, not full regional continuum mechanics)",
+    "reason": "It requires yielding, power-law ductile stress, integrated lithospheric resistance, buoyancy forces and pressure-driven crustal flow. Calling it mechanics-free or a pure Tier-2 phenomenological state model would be inaccurate. Buck does not require a full finite-element/Stokes solve.",
+    "full_mechanics_necessity_proven": false
+  },
+  "arcana_buck_minimum_prototype_state_v0_candidate": {
+    "status": "CANDIDATE_ONLY_NOT_SCHEMA_NOT_SELECTED",
+    "components": [
+      {
+        "name": "section_geometry_and_material_interfaces",
+        "units": "m and discrete IDs",
+        "support": "declared section plus buffer",
+        "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+        "initialization": "authorized mapping from geological/layer state",
+        "evolution_law": "Buck geometry and h evolution, subject to later selection",
+        "uncertainty": "support/resolution mapping",
+        "buck_dependencies": [
+          "EQ6-EQ12"
+        ],
+        "arcana_status": "partial T0 constraints, no T1 section"
+      },
+      {
+        "name": "temperature_profile",
+        "units": "K",
+        "support": "vertical grid at section and required lateral thermal columns",
+        "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+        "initialization": "requires historical reconstruction or separately authorized T1 initialization",
+        "evolution_law": "Eq.1 if later selected",
+        "uncertainty": "profile/material/numerical/model form",
+        "buck_dependencies": [
+          "EQ1",
+          "EQ3",
+          "EQ9",
+          "EQ10",
+          "EQ11"
+        ],
+        "arcana_status": "not currently governed for pair support"
+      },
+      {
+        "name": "crust_and_lithosphere_thickness_profiles",
+        "units": "m",
+        "support": "x-section",
+        "temporal_origin": "PREEXISTING_EVOLVED_STATE",
+        "initialization": "bind T1 profiles; cannot backcast silently",
+        "evolution_law": "pure shear plus Eq.7 if selected",
+        "uncertainty": "initial profile and mapping",
+        "buck_dependencies": [
+          "EQ2",
+          "EQ6-EQ12"
+        ],
+        "arcana_status": "T0 partial; T1 profile/history absent"
+      },
+      {
+        "name": "discrete_material_and_constitutive_binding",
+        "units": "categorical IDs and law-specific SI",
+        "support": "layer-by-section",
+        "temporal_origin": "STATIC_PLANETARY_PARAMETER plus spatial material state",
+        "initialization": "explicit authority, provenance and validity",
+        "evolution_law": "Buck laws only after authorial/literature adjudication",
+        "uncertainty": "parameter/rheology alternatives",
+        "buck_dependencies": [
+          "EQ2-EQ10"
+        ],
+        "arcana_status": "unbound"
+      },
+      {
+        "name": "forcing_interval_and_local_section_mapping",
+        "units": "m/s, s^-1, strain 1, m",
+        "support": "cross-section/window",
+        "temporal_origin": "POST_ACTIVATION_FORCING",
+        "initialization": "B6N2-to-Buck mapping and interval authority required",
+        "evolution_law": "prescribed extension only",
+        "uncertainty": "frame/sign/coverage/aggregation",
+        "buck_dependencies": [
+          "KINEMATIC-SETTING",
+          "EQ1",
+          "EQ3",
+          "EQ7"
+        ],
+        "arcana_status": "unresolved"
+      },
+      {
+        "name": "lower_crust_flow_closure_state",
+        "units": "Pa s, m, m²/s or explicit velocity profile",
+        "support": "section and lower crust",
+        "temporal_origin": "PREEXISTING_EVOLVED_STATE then derived",
+        "initialization": "material/thermal state and stress convention required",
+        "evolution_law": "EQ4-EQ10 closure only within validity",
+        "uncertainty": "non-Newtonian closure and coupling",
+        "buck_dependencies": [
+          "EQ4-EQ10"
+        ],
+        "arcana_status": "unresolved"
+      },
+      {
+        "name": "force_and_regime_diagnostics",
+        "units": "N/m and signed dimensionless/boolean margin",
+        "support": "model section, with declared aggregate scope",
+        "temporal_origin": "POST_ACTIVATION_DERIVED_STATE",
+        "initialization": "derived from initial state and candidate interval",
+        "evolution_law": "finite before/after comparison",
+        "uncertainty": "propagate all uncertainties; preserve UNKNOWN near unresolved sign",
+        "buck_dependencies": [
+          "ENV",
+          "EQ11-EQ12",
+          "DF",
+          "A8-A10"
+        ],
+        "arcana_status": "future derivation only; cannot mutate topology"
+      }
+    ]
+  },
+  "implementability_gate": "NOT_IMPLEMENTABLE_FROM_CURRENT_ARCANA_AUTHORITY",
+  "next_stage_recommendation": [
+    "B6N8-D equation-recovery blocker is closed; keep the source-internal dF_ys sign inconsistency and explicit ARCANA_ADAPTATION visible in any later model specification.",
+    "B6N8-E: resolve pre-T1 thermal and crust/lithosphere structural history or a separately governed initialization authority; bind material, rheological and thermal inputs with provenance and uncertainty. No values are selected here.",
+    "B6N8-F: decide and qualify the B6N2-to-Buck section/physical-extension mapping, including frame, sign, width, support, duration, aggregation and endpoint/junction handling.",
+    "Do not implement a physical prototype or propagate until those independent authority paths are closed; equations recovered here do not authorize parameters, mechanics, dt, T2 or topology transition."
+  ],
+  "preserved_gates": {
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "physical_parameters_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false
+  },
+  "world_history_before": {
+    "file_count": 46,
+    "logical_bytes": 1275143,
+    "relative_manifest_sha256": "7beea3258010ecb412dbf0d6ae69fe5c5f9f250245b6e7231851bb68a83a45c2"
+  },
+  "world_history_after_expected": {
+    "file_count": 46,
+    "logical_bytes": 1275143,
+    "relative_manifest_sha256": null,
+    "verification": "Read-only inventory after this authoring pass matched the previously recorded count and logical bytes. This pass wrote no files under WORLD_HISTORY; the earlier manifest serialization could not be independently reproduced, so no fresh digest-equivalence claim is made."
+  },
+  "equation_recovery": {
+    "status": "CLOSED_PRIMARY_EQUATION_TRANSCRIPTION",
+    "source_file": "1991BuckMOLE.pdf",
+    "source_sha256": "0f545e0c045db989bd81ae62461cebfd5e52d72eeb6ed1d9b8c326374e8d5d26",
+    "visual_page_references": [
+      "20163 Eq. 1",
+      "20164 Eq. 3",
+      "20166 Eq. 4–9",
+      "20167 Eq. 10–12",
+      "20174 A1–A5",
+      "20175 A6–A11",
+      "20176 A12"
+    ],
+    "source_internal_sign_inconsistency": "Recorded; normalized sign reading labeled ARCANA_ADAPTATION; literal source prose preserved in registry.",
+    "unresolved_requested_equations": []
+  },
+  "independent_implementation_blockers": [
+    "pre-T1 thermal history and complete thermal profile/boundaries on Buck section support",
+    "pre-T1 crust/lithosphere structural state and lateral section geometry",
+    "material/rheological/thermal authority binding and uncertainty",
+    "B6N2 kinematics to Buck local-section physical extension, width, sign, support and duration mapping"
+  ],
+  "model_scope_separation": {
+    "full_model": "FULL_NUMERICAL_MODEL",
+    "appendix": "APPENDIX_ANALYTICAL_APPROXIMATION",
+    "relationship": "Appendix A8–A12 are limited analytical approximations and do not substitute for the full numerical model."
+  }
+}
