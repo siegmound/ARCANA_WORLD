@@ -1,0 +1,178 @@
+{
+  "B6N8E_qualified_source": "f9904136e90b4463ab31013373d77810639748f3",
+  "B6N8F_qualified_source": "59cefe861c47d6915e00af0e9df17aacbbcf9e5b",
+  "B6N8G_artifact_modified": false,
+  "B6N8G_qualified_source": "8b263cc4d59a0bf3d01dc65dcedfe928b79e7130",
+  "G_non_actions_preserved": {
+    "B6N8E_merged": false,
+    "B6N8F_merged": false,
+    "B6O_authorized": false,
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_input_adapter_implemented": false,
+    "Buck_section_materialized": false,
+    "Buck_strain_rate_materialized": false,
+    "SECOND_DT_SELECTED": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_forward_propagation_executed": false,
+    "dt2_years": null,
+    "finite_Buck_forcing_executed": false,
+    "mechanics_executed": false,
+    "new_physical_parameter_selected": false,
+    "physical_rift_model_qualified": false,
+    "physical_rift_model_selected": false,
+    "prototype_implemented": false,
+    "support_remapping_executed": false,
+    "topology_transition_executed": false
+  },
+  "entries": [
+    {
+      "B6N8G_requirement": "select exact POST_EVENT causal record; age alone is insufficient",
+      "B6N8G_status": "REQUIRES_INTEGRATION_BINDING",
+      "B6N8H_finding": "Exact POST_EVENT selector required; age alone insufficient.",
+      "B6N8H_status": "REQUIRES_INTEGRATION_BINDING",
+      "input": "causal_state_selector"
+    },
+    {
+      "B6N8G_requirement": "T1 age known; forward validity end not established",
+      "B6N8G_status": "READY_FROM_EXISTING_AUTHORITY",
+      "B6N8H_finding": "T1 age known; forward validity horizon remains separate.",
+      "B6N8H_status": "READY_FROM_EXISTING_AUTHORITY",
+      "input": "physical_age_and_validity"
+    },
+    {
+      "B6N8G_requirement": "datum, native support, uncertainty",
+      "B6N8G_status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE",
+      "B6N8H_finding": "T0 geometry remains authored candidate; datum/support and interval evolution not bound.",
+      "B6N8H_status": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "input": "T1_crust_and_Moho_geometry"
+    },
+    {
+      "B6N8G_requirement": "physical geometry is not Xe",
+      "B6N8G_status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE",
+      "B6N8H_finding": "Physical base meaning and T0-to-T1 structural rule absent.",
+      "B6N8H_status": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "input": "T1_lithosphere_geometry_and_thickness"
+    },
+    {
+      "B6N8G_requirement": "scalar heat flux is not T(z)",
+      "B6N8G_status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE",
+      "B6N8H_finding": "No T0 T(z), complete properties/boundaries or transient law.",
+      "B6N8H_status": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "input": "T1_thermal_profile_and_boundary_history"
+    },
+    {
+      "B6N8G_requirement": "two-sided material support join",
+      "B6N8G_status": "REQUIRES_B6N8E_AUTHORITY_CLOSURE",
+      "B6N8H_finding": "Categorical classes exist; composition-to-law mapping absent.",
+      "B6N8H_status": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "input": "material_identity_and_applicability"
+    },
+    {
+      "B6N8G_requirement": "density, expansion, heat, conductivity, boundary laws",
+      "B6N8G_status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "B6N8H_finding": "Existing specialist refs are partial; complete layer tuple and density law absent.",
+      "B6N8H_status": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "input": "density_and_thermal_configuration"
+    },
+    {
+      "B6N8G_requirement": "laws, coefficients, applicability",
+      "B6N8G_status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "B6N8H_finding": "Buck model forms do not select ARCANA laws or coefficients.",
+      "B6N8H_status": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "input": "brittle_ductile_and_lower_crust_rheology"
+    },
+    {
+      "B6N8G_requirement": "required only if selected Buck scope requires it",
+      "B6N8G_status": "UNKNOWN",
+      "B6N8H_finding": "Needed only if eventual Buck scope includes this closure.",
+      "B6N8H_status": "UNKNOWN_CONDITIONAL_SCOPE",
+      "input": "lower_crust_flow_closure"
+    },
+    {
+      "B6N8G_requirement": "candidate pair [1,3]; material join unresolved",
+      "B6N8G_status": "READY_FROM_EXISTING_AUTHORITY",
+      "B6N8H_finding": "G candidate plate IDs retained; material join still separate.",
+      "B6N8H_status": "READY_FROM_EXISTING_AUTHORITY",
+      "input": "plate_pair_and_side_IDs"
+    },
+    {
+      "B6N8G_requirement": "none selected",
+      "B6N8G_status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "B6N8H_finding": "Outside H; no section selected.",
+      "B6N8H_status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "input": "section_center_orientation_identity"
+    },
+    {
+      "B6N8G_requirement": "opposite-side coverage and junction rule",
+      "B6N8G_status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "B6N8H_finding": "Outside H; no support remapping.",
+      "B6N8H_status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "input": "section_endpoints_and_support"
+    },
+    {
+      "B6N8G_requirement": "within restricted temporal validity",
+      "B6N8G_status": "READY_BY_DETERMINISTIC_DERIVATION",
+      "B6N8H_finding": "Retain G's qualified restricted kinematic availability.",
+      "B6N8H_status": "READY_BY_DETERMINISTIC_DERIVATION",
+      "input": "B6N2_authority_and_instant_velocities"
+    },
+    {
+      "B6N8G_requirement": "retain both; explicitly orient Buck x",
+      "B6N8G_status": "REQUIRES_INTEGRATION_BINDING",
+      "B6N8H_finding": "Outside H; no polarity selected.",
+      "B6N8H_status": "REQUIRES_INTEGRATION_BINDING",
+      "input": "normal_tangent_components_and_polarity"
+    },
+    {
+      "B6N8G_requirement": "signed two-sided section difference",
+      "B6N8G_status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "B6N8H_finding": "No forcing materialized.",
+      "B6N8H_status": "REQUIRES_B6N8F_ADAPTATION_CLOSURE",
+      "input": "Buck_Ux"
+    },
+    {
+      "B6N8G_requirement": "initial extension-zone width; no value",
+      "B6N8G_status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "B6N8H_finding": "Thickness is not Xe.",
+      "B6N8H_status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "input": "Xe"
+    },
+    {
+      "B6N8G_requirement": "physical uniform lithosphere versus model domain semantics",
+      "B6N8G_status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "B6N8H_finding": "Physical support and model domain remain distinct.",
+      "B6N8H_status": "REQUIRES_AUTHORIAL_PARAMETER_BINDING",
+      "input": "XL"
+    },
+    {
+      "B6N8G_requirement": "formula ready; Ux and Xe not jointly governed",
+      "B6N8G_status": "UNKNOWN",
+      "B6N8H_finding": "Formula alone does not close Ux/Xe.",
+      "B6N8H_status": "UNKNOWN_INPUTS_NOT_READY",
+      "input": "epsilon_dot"
+    },
+    {
+      "B6N8G_requirement": "positive interval and evolution law absent",
+      "B6N8G_status": "UNKNOWN",
+      "B6N8H_finding": "No physical forcing interval; 8214-year horizon is revalidation only.",
+      "B6N8H_status": "REQUIRES_TEMPORAL_FORCING_AUTHORITY",
+      "input": "finite_interval_and_forcing_history"
+    },
+    {
+      "B6N8G_requirement": "fail-closed full coverage",
+      "B6N8G_status": "REQUIRES_INTEGRATION_BINDING",
+      "B6N8H_finding": "Requirements defined, but T1 support/validity/uncertainty unavailable.",
+      "B6N8H_status": "REMAINS_BLOCKED_AFTER_B6N8H",
+      "input": "validity_support_mask_and_uncertainty"
+    }
+  ],
+  "input_count": 20,
+  "overall": "Physical-state requirements defined; T0/T1 values and evolution remain blocked.",
+  "qualified_source_commit": "4731a376ce4ee87353747d7c4282bd9779125009",
+  "schema": "ARCANA_R6_B6N8H_B6N8G_INPUT_STATUS_OVERLAY_V1",
+  "stage": "B6N8-H"
+}

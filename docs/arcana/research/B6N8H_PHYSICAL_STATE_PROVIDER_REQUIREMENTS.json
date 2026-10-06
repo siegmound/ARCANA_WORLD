@@ -1,0 +1,144 @@
+{
+  "fail_closed": [
+    "ambiguous causal selector",
+    "unknown required support",
+    "missing datum/interface meaning",
+    "no authorized initializer",
+    "incomplete material tuple",
+    "missing boundary/evolution history",
+    "unsupported resampling",
+    "incomplete validity/uncertainty",
+    "non-deterministic replay"
+  ],
+  "forbidden_inference": [
+    "T(z) from q alone",
+    "composition from domain/province/thermal class",
+    "LAB from HWR zp or ZBASTH without binding",
+    "Xe from lithosphere thickness",
+    "constancy from short duration",
+    "physical jump from POST_EVENT alone",
+    "pre-T0 history required or unnecessary"
+  ],
+  "non_actions": {
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_section_materialized": false,
+    "T0_physical_state_generated": false,
+    "WORLD_HISTORY_changed": false,
+    "finite_Buck_forcing_executed": false,
+    "lithospheric_state_provider_implemented": false,
+    "provider_implemented": false
+  },
+  "outputs": [
+    {
+      "kind": "time",
+      "name": "physical_age_ma",
+      "required": true,
+      "units": "Ma"
+    },
+    {
+      "kind": "causal identity",
+      "name": "causal_selector",
+      "required": true,
+      "rule": "T1 requires exact POST_EVENT."
+    },
+    {
+      "kind": "grid/cell or explicit bounded support, mask, resolution",
+      "name": "native_support",
+      "required": true,
+      "rule": "Preserve unknowns; no implicit resampling."
+    },
+    {
+      "kind": "physical geometry",
+      "name": "crust_thickness_m_and_moho",
+      "required": true,
+      "rule": "Explicit vertical datum and interface meaning."
+    },
+    {
+      "kind": "physical geometry",
+      "name": "lithosphere_base_and_thickness_m",
+      "required": true,
+      "rule": "Explicit LAB criterion; not Xe or XL."
+    },
+    {
+      "kind": "T(z) or proven reconstructable representation",
+      "name": "thermal_state",
+      "required": true,
+      "rule": "Representation remains undecided; must preserve Buck-relevant state.",
+      "units": "K over depth m"
+    },
+    {
+      "kind": "discrete IDs plus provenance",
+      "name": "material_layer_references",
+      "required": true,
+      "rule": "No interpolation of IDs; mapping to constitutive laws is versioned configuration."
+    },
+    {
+      "kind": "time-valid thermal drivers/configuration",
+      "name": "boundary_history",
+      "required": true,
+      "rule": "Surface/basal histories; no implicit constant boundary."
+    },
+    {
+      "kind": "quantity-specific admissibility metadata",
+      "name": "uncertainty_validity",
+      "required": true,
+      "rule": "Separate initialization, geometry, properties, boundary, evolution, support and model-form uncertainty."
+    },
+    {
+      "kind": "authority lineage",
+      "name": "provenance",
+      "required": true
+    },
+    {
+      "kind": "pinned deterministic derivation identity",
+      "name": "replay_recipe",
+      "required": "if derived/replayable"
+    }
+  ],
+  "persistence": {
+    "configuration": "separate versioned configuration",
+    "derived profile": "replayable only with complete pinned parents/config/code/validity; else persist required state",
+    "diagnostics": "diagnostic only",
+    "internal steps": "not automatically epochs",
+    "physical T0 primitives": "canonical persistent if selected as causal state"
+  },
+  "provider_candidate": "LITHOSPHERIC_THERMAL_STRUCTURAL_STATE_PROVIDER_V0",
+  "qualified_source_commit": "4731a376ce4ee87353747d7c4282bd9779125009",
+  "queries": [
+    {
+      "age_Ma": 210.0,
+      "role": "T0_INITIAL_STATE",
+      "selector": "exact T0 causal identity"
+    },
+    {
+      "age_Ma": 209.97287659484368,
+      "role": "T1_ACTIVATION_INITIALIZATION",
+      "selector": "POST_EVENT"
+    }
+  ],
+  "schema": "ARCANA_R6_B6N8H_PHYSICAL_STATE_PROVIDER_REQUIREMENTS_V1",
+  "stage": "B6N8-H",
+  "state_configuration": {
+    "configuration": [
+      "thermal/material laws and coefficients",
+      "heat production",
+      "LAB criterion",
+      "rheology",
+      "numerical scheme"
+    ],
+    "derived": [
+      "density(z), interface temperatures, flux and T1 profile under pinned model"
+    ],
+    "rule": "Do not serialize model configuration as history state.",
+    "state": [
+      "time-indexed geometry",
+      "authorized physical T(z)",
+      "causal composition if treated as world state",
+      "state-affecting boundary history"
+    ]
+  },
+  "status": "CONCEPTUAL_REQUIREMENTS_ONLY_NOT_IMPLEMENTED"
+}
