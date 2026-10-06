@@ -1,0 +1,64 @@
+{
+  "schema": "ARCANA_R6_B6N8F_SECTION_SUPPORT_ELIGIBILITY_V1",
+  "stage": "B6N8-F_B6N2_TO_BUCK_PHYSICAL_FORCING_AND_SECTION_SUPPORT_MAPPING_AUDIT",
+  "source_baseline": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "decision": "BUCK_SECTION_SUPPORT_REQUIRES_EXPLICIT_ADAPTATION_AND_AUTHORITY_BINDING",
+  "canonical_pair_scope": {
+    "plate_pair": [1, 3],
+    "relational_candidate_segments": 71,
+    "relational_candidate_shared_nodes": 72,
+    "chain_endpoint_nodes": [34858, 41750],
+    "chain_endpoints_are_junctions": true,
+    "incident_junction_ids": ["R6JNT-T0-4a67fe6607845a68", "R6JNT-T0-f7f8b6413402335a"],
+    "side_membership": "two plate-local representations per segment; plate IDs 1 and 3 explicitly retained",
+    "physical_boundary_type": "UNKNOWN_NOT_AUTHORIZED_BY_KINEMATICS_ALONE",
+    "junction_accommodation": "UNKNOWN"
+  },
+  "mapping_unit_assessment": [
+    {"candidate":"PER_INTERFACE_NODE_CROSS_SECTION","scientific_meaning":"one section per sampled boundary node","assessment":"REJECT_AS_DEFAULT_MAPPING_UNIT","reason":"creates highly overlapping sections and no governed station spacing, endpoint treatment, or section-selection rule"},
+    {"candidate":"PER_SEGMENT_CROSS_SECTION","scientific_meaning":"one section per each of 71 structural edges","assessment":"NOT_AUTHORIZED","reason":"71 identities are not 71 independent physical rifts or Buck experiments; adjacent sections overlap and have no independent forcing/history authority"},
+    {"candidate":"LOCAL_WINDOW_CROSS_SECTION","scientific_meaning":"section derived from a finite neighborhood of segments","assessment":"POSSIBLE_ARCANA_ADAPTATION","reason":"requires governed window extent, curvature/orientation uncertainty, support aggregation and endpoint rules; no window or threshold selected"},
+    {"candidate":"PER_INTERFACE_AGGREGATE","scientific_meaning":"one aggregate driver for the whole 1:3 interface","assessment":"NOT_SUPPORTED_BY_CURRENT_HETEROGENEITY","reason":"the existing instant diagnostic has mixed opening-shear and closing-shear segments; no weighting, admissibility or aggregation rule exists"},
+    {"candidate":"ADAPTIVE_SELECTED_CROSS_SECTIONS","scientific_meaning":"small set of nonredundant sections on eligible interior support","assessment":"PREFERRED_DESIGN_CANDIDATE_PENDING_MODEL_DECISION","reason":"can preserve sparse WORLD_HISTORY and avoid equating segments with experiments, but selection, coverage, resolution and aggregation rules are not yet governed"}
+  ],
+  "orientation_and_sampling": {
+    "source_tangent": "Use exact canonical edge orientation: increasing latitude on EAST edges; increasing longitude on NORTH edges.",
+    "source_cross_interface_normal": "n_AB points from ordered plate_a to plate_b; positive signed normal relative velocity is opening.",
+    "local_diagnostic_frame": "The existing edge convention supports signed normal/tangential kinematic decomposition without smoothing.",
+    "Buck_section_x_axis": "NOT_YET_GOVERNED; must be related to the chosen cross-rift normal, side order and a common vector-transport/projection frame for endpoints.",
+    "interface_normal_equals_relative_velocity_direction": false,
+    "smoothing": "NONE_AUTHORIZED; any centered/windowed/spline fit requires an explicit adaptation and uncertainty policy.",
+    "spatial_resampling": "No interpolation, nearest-segment selection, averaging, or endpoint sampling has been authorized. Exact geometric evaluation at an explicitly supported point is distinct from a section model.",
+    "curvature_rule": "No numeric curvature tolerance, smoothing window, or support-length threshold is selected.",
+    "uncertainty": ["GEOMETRY_UNCERTAINTY", "FRAME_ORIENTATION_UNCERTAINTY", "POLARITY_UNCERTAINTY", "PROJECTION_UNCERTAINTY", "SECTION_SELECTION_UNCERTAINTY", "OBLIQUITY_MODEL_MISMATCH_UNCERTAINTY"]
+  },
+  "eligibility": [
+    {"support_category":"ordinary interior interface location","local_kinematic_driver":"ELIGIBLE_WITH_UNCERTAINTY","Buck_section":"REQUIRES_ADDITIONAL_AUTHORITY","reason":"plate sides and edge-oriented diagnostic frame are available; this does not govern finite section support, X_e or accommodation"},
+    {"support_category":"high-curvature location","local_kinematic_driver":"ELIGIBLE_WITH_UNCERTAINTY_PER_SOURCE_EDGE_ONLY","Buck_section":"REQUIRES_ADDITIONAL_AUTHORITY","reason":"edge-local component can be computed, but no curvature criterion or multi-edge frame aggregation is governed"},
+    {"support_category":"interface endpoint","local_kinematic_driver":"ELIGIBLE_ONLY_ON_AN_INDIVIDUAL_GOVERNED_EDGE","Buck_section":"UNKNOWN","reason":"one-sided tangent/window behavior is not governed; on the actual 1:3 chain both endpoints coincide with degree-3 junctions"},
+    {"support_category":"simple junction","local_kinematic_driver":"UNKNOWN_AT_SHARED_VERTEX","Buck_section":"UNSUPPORTED_JUNCTION","reason":"no unique branch tangent follows from a junction vertex; no simple degree-two junction is reported on the active chain"},
+    {"support_category":"multi-branch junction","local_kinematic_driver":"UNKNOWN_FOR_SINGLE_UNIQUE_FRAME","Buck_section":"UNSUPPORTED_JUNCTION","reason":"junction support is set-valued across incident plates/branches and physical accommodation is UNKNOWN; do not average branches"},
+    {"support_category":"ambiguous side membership","local_kinematic_driver":"UNKNOWN_POLARITY","Buck_section":"EXCLUDED_UNTIL_SIDE_AUTHORITY","reason":"without explicit per-side plate identity, ordered pair cannot be attached to the sampled point; current pair candidate has explicit 1/3 side rows"},
+    {"support_category":"near-zero normal motion","local_kinematic_driver":"SIGNED_COMPONENT_DERIVABLE_BUT_CLASS_UNKNOWN","Buck_section":"UNKNOWN","reason":"no physical near-zero threshold or uncertainty rule; existing T0 1e-9 m/year diagnostic tolerance is not a physical threshold"},
+    {"support_category":"convergent kinematics","local_kinematic_driver":"KINEMATIC_CONVERGENCE_CANDIDATE_ONLY","Buck_section":"EXCLUDED_FROM_BUCK_EXTENSION_MAPPING","reason":"Buck extension equations do not authorize interpreting convergence as negative extension mechanics"},
+    {"support_category":"strongly oblique kinematics","local_kinematic_driver":"NORMAL_AND_TANGENTIAL_COMPONENTS_RETAINED","Buck_section":"UNKNOWN_OR_REQUIRES_MODEL_DECISION","reason":"no governed obliquity ratio/threshold or rule for tangential component exists"},
+    {"support_category":"unsupported geometry","local_kinematic_driver":"UNKNOWN","Buck_section":"EXCLUDED_UNTIL_GEOMETRY_AUTHORITY","reason":"no interpolation or reconstruction may fill gaps in section geometry"}
+  ],
+  "endpoint_and_junction_policy_candidate": {
+    "endpoint_policy": "UNKNOWN_OR_EXCLUDE_ONLY_AFTER_GOVERNED_SUPPORT_RULE; no arbitrary buffer distance",
+    "junction_policy": "UNSUPPORTED_JUNCTION for a single Buck section unless explicit multi-branch compatibility/selection authority exists",
+    "branch_aggregation": "PROHIBITED_WITHOUT_AUTHORITY",
+    "junction_velocity_or_accommodation": "NOT_AUTHORIZED"
+  },
+  "required_before_section_construction": [
+    "initialization-authority geometry and material/support inputs from a later integration, without importing B6N8-E sibling authority into this branch",
+    "ARCANA decision binding section unit, center/station, side assignment, x-axis and endpoint placement",
+    "X_e source and support relation",
+    "X_L lateral physical/numerical domain interpretation and boundary conditions",
+    "curvature, support coverage, endpoint and junction eligibility rules",
+    "projection/frame transport for velocities evaluated at distinct points",
+    "uncertainty representation and validity interval",
+    "a positive physical forcing interval before finite strain can be accumulated"
+  ],
+  "non_actions": {"Buck_sections_materialized":false,"Buck_Ux_materialized":false,"Buck_Xe_selected":false,"Buck_XL_selected":false,"spatial_resampling_executed":false,"support_remapping_executed":false,"topology_transition_executed":false,"WORLD_HISTORY_changed":false}
+}

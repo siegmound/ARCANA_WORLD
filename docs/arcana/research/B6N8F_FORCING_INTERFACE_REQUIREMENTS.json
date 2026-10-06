@@ -1,0 +1,70 @@
+{
+  "schema": "ARCANA_R6_B6N8F_FORCING_INTERFACE_REQUIREMENTS_V1",
+  "stage": "B6N8-F_B6N2_TO_BUCK_PHYSICAL_FORCING_AND_SECTION_SUPPORT_MAPPING_AUDIT",
+  "source_baseline": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "status": "DESIGN_CONTRACT_CANDIDATE_NOT_IMPLEMENTED",
+  "purpose": "Define the minimum typed inputs and authority checks a later integrated prototype would need; this artifact is not a production data set or executable contract.",
+  "candidate_record_fields": [
+    {"field":"section_id","type":"stable semantic identifier","authority":"derived only after governed deterministic section selection","status":"NOT_MATERIALIZED"},
+    {"field":"source_interface_support","type":"boundary IDs, source edge IDs, endpoint identities and support resolution","authority":"exact canonical geometry/support references; no inferred subcell geometry","status":"REQUIRES_SECTION_BINDING"},
+    {"field":"plate_pair","type":"ordered pair of plate IDs","authority":"B6N2 pair-level process scope; for current process [1,3]","status":"AVAILABLE_AS_SCOPE_NOT_FAULT_CLASS"},
+    {"field":"section_center","type":"position on supported interface","authority":"deterministic geometric selection recipe required","status":"REQUIRES_ARCANA_ADAPTATION"},
+    {"field":"section_orientation","type":"radial/up, local interface tangent, cross-interface normal and Buck x-axis","authority":"edge frame can be derived under existing tangent and n_AB conventions; section axis and endpoint frame transport require a binding","status":"PARTIALLY_AVAILABLE"},
+    {"field":"side_A_side_B","type":"plate-side identity and signed side order","authority":"explicit per-side plate identities; A/B mapping must be frozen for section","status":"AVAILABLE_FOR_1_3_CANDIDATE_REQUIRES_BINDING"},
+    {"field":"kinematic_authority_ref","type":"contract ID, Euler source semantic hash and POST_EVENT state ID","authority":"R6_POST_EVENT_KINEMATIC_AUTHORITY_V1 and exact canonical causal state","status":"AVAILABLE"},
+    {"field":"endpoint_positions_and_plate_ids","type":"two spatial endpoints and plate identity on each","authority":"requires a governed finite section and X_e or other section extent","status":"NOT_AVAILABLE"},
+    {"field":"endpoint_surface_velocity_vectors","type":"two global Cartesian vectors","authority":"deterministic rigid-sphere derivation at each endpoint after endpoint positions/sides are bound","status":"DERIVABLE_AFTER_ENDPOINT_BINDING"},
+    {"field":"relative_velocity_at_interface","type":"global Cartesian vector at one common interface point","authority":"R*[(omega_B-omega_A) cross r] under B6N2 and planetary radius","status":"DETERMINISTICALLY_DERIVABLE_DIAGNOSTIC"},
+    {"field":"normal_component","type":"signed scalar","authority":"delta_v dot n_AB; positive is kinematic opening in existing diagnostic convention","status":"DETERMINISTICALLY_DERIVABLE_PER_SUPPORTED_EDGE"},
+    {"field":"tangential_component","type":"signed scalar","authority":"delta_v dot t_edge; retain as a separate component","status":"DETERMINISTICALLY_DERIVABLE_PER_SUPPORTED_EDGE"},
+    {"field":"kinematic_classification","type":"closed vocabulary or UNKNOWN","authority":"sign/components only; no geological type or physical-response interpretation","status":"DIAGNOSTIC_ONLY_REQUIRES_CLASSIFICATION_ADAPTER"},
+    {"field":"U_x","type":"signed finite-zone horizontal velocity difference","authority":"Buck's finite pure-shear-zone meaning; must be bound by a section adapter, not copied from interface v_normal","status":"REQUIRES_ARCANA_ADAPTATION"},
+    {"field":"X_e","type":"positive physical/model width in metres","authority":"explicit ARCANA authorial/model binding, possibly informed by later initialization state","status":"UNBOUND"},
+    {"field":"X_L","type":"lateral initially uniform lithosphere/model domain width in metres","authority":"physical support/homogeneity plus numerical boundary-domain definition","status":"UNBOUND"},
+    {"field":"epsilon_dot","type":"signed strain rate in s^-1","authority":"derive U_x/X_e only after both are governed","status":"NOT_DERIVABLE_YET"},
+    {"field":"finite_forcing_interval","type":"positive physical duration and causal start/end","authority":"positive physical horizon and timestep/interval authorization; revalidation bound alone is insufficient","status":"NOT_AUTHORIZED"},
+    {"field":"temporal_validity","type":"source anchor, successor-model validity, event/model boundaries and interval","authority":"B6N2 successor scope plus independently adjudicated horizon","status":"PARTIAL_NO_POSITIVE_PHYSICAL_INTERVAL"},
+    {"field":"uncertainty","type":"named uncertainty components; no invented distributions","authority":"source realization, geometry, frame, projection, section, X_e/X_L, model mismatch, time and junction/endpoints","status":"REQUIRED_NOT_QUANTIFIED"},
+    {"field":"junction_endpoint_status","type":"supported/unknown/excluded with reason","authority":"B6N2 preserves set-valued junction incidence and UNKNOWN accommodation","status":"REQUIRED_FAIL_CLOSED"},
+    {"field":"provenance","type":"artifact references, hashes, derivation recipe and numerical precision","authority":"all parent authority IDs and deterministic recipe identity","status":"REQUIRED"}
+  ],
+  "candidate_equations": {
+    "same_point_surface_velocity": "v_i(r)=R*(omega_i cross r)",
+    "same_point_relative_velocity": "delta_v_B_minus_A(r)=R*((omega_B-omega_A) cross r)",
+    "local_components": "v_n=delta_v dot n_AB; v_t=delta_v dot t_edge",
+    "candidate_finite_zone_velocity_difference": "U_x_candidate=(v_B(x_B)-v_A(x_A)) dot e_x after the endpoint positions, side identities, endpoint-to-common-frame projection and sign rule are explicitly bound",
+    "strain_rate": "epsilon_dot=U_x/X_e, only after both terms are governed",
+    "finite_strain": "integral of epsilon_dot(t) over an independently authorized physical interval; no interval or value selected here"
+  },
+  "candidate_sign_contract": {
+    "kinematic_normal": "n_AB points plate_a to plate_b; positive delta_v dot n_AB means relative opening under the existing R6 diagnostic convention",
+    "ordered_pair_current": [1, 3],
+    "Buck_x_polarity": "UNBOUND; must explicitly align side A/B, x-axis and extension-positive direction",
+    "absolute_value_forbidden": true,
+    "kinematic_polarity_is_geological_polarity": false,
+    "overriding_subducting_identity": "UNKNOWN_NOT_PRESENT_IN_AUTHORITY"
+  },
+  "temporal_separation": {
+    "source_provenance": "instant-only vector source at 210.0 Ma; not extended",
+    "successor_model": "explicit restricted B6N2 authority begins at POST_EVENT age 209.97287659484368 Ma",
+    "B6N3A_horizon": {"years":8214.051909111062,"class":"MODEL_SCOPE_REVALIDATION","physical_event_predicted":false,"forcing_accumulation_interval":false},
+    "B6N8A_window": "diagnostic shadow experiment only; not a physical forcing duration",
+    "positive_physical_interval": "NOT_ESTABLISHED by B6N4-R1; no finite Buck strain can be accumulated"
+  },
+  "integration_inputs_from_initialization_authority": [
+    "T1 lithosphere base/thickness and crust/Moho geometry on explicit section support",
+    "material identity and applicability domain on section and lateral support",
+    "T1 validity and unknown-support mask",
+    "uncertainty/provenance for those physical fields",
+    "candidate input evidence relevant to X_e or X_L, without assuming either width equals a thickness or plate dimension"
+  ],
+  "fail_closed_conditions": [
+    "unknown/mismatched POST_EVENT state, payload, plate pair or vector authority",
+    "missing plate-side membership, section center, endpoint coordinates or section-axis polarity",
+    "junction/endpoint support without an explicit admissibility rule",
+    "unbound X_e, X_L or endpoint/frame-transport semantics",
+    "unresolved unknown physical/event horizon or absent positive physical interval",
+    "attempt to infer geological type, fault identity, accommodation, strain, or topology change from rigid motion alone"
+  ],
+  "non_actions": {"production_records_created":false,"Buck_Ux_materialized":false,"Buck_Xe_selected":false,"Buck_XL_selected":false,"strain_rate_materialized":false,"finite_forcing_executed":false,"WORLD_HISTORY_published":false}
+}

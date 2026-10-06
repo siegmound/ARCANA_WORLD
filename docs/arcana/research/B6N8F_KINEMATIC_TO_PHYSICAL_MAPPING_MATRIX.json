@@ -1,0 +1,141 @@
+{
+  "schema": "ARCANA_R6_B6N8F_KINEMATIC_TO_PHYSICAL_MAPPING_MATRIX_V1",
+  "stage": "B6N8-F_B6N2_TO_BUCK_PHYSICAL_FORCING_AND_SECTION_SUPPORT_MAPPING_AUDIT",
+  "source_baseline": "771b8d3ea9706eb0d45903e72354b304e6979e69",
+  "decision": "PASS_B6N8F_LOCAL_KINEMATIC_DRIVER_DERIVABLE_BUCK_UX_REQUIRES_SECTION_ADAPTATION_XE_AND_INITIALIZATION_AUTHORITY",
+  "authority_inputs": [
+    {"path": "contracts/R6_POST_EVENT_KINEMATIC_AUTHORITY_V1.json", "sha256": "966c63a8fa8347525568cb89bb280905d37a1aa3711856a13f31a39377a600c3", "role": "B6N2 explicit POST_EVENT successor-model authority"},
+    {"path": "contracts/R6_POST_EVENT_KINEMATIC_REVALIDATION_HORIZON_V1.json", "sha256": "ec2afff78a203dc37e0898352aac38b00cd18bea298eaa39f2f2321eae35a5e3", "role": "model-scope revalidation only; not an event-free physical interval"},
+    {"path": "R6_T0_CANONICAL_PLATE_KINEMATICS.json", "sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2", "role": "source Euler vector realization; instantaneous 210 Ma source"},
+    {"path": "R6_T0_INITIAL_MOTION_GENERATIVE_PRIOR_CONTRACT.json", "sha256": "6fc9ad5265035c49db07ca1ae72c47e2019e4b04f0e2d4cd21dd747c1d164fcb", "role": "vector prior and reference-gauge semantics"},
+    {"path": "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json", "sha256": "6aaf918775514eb86362133526a08af295f5df7caf74773da9262076288e830f", "role": "spherical geometry and mean-radius authority"},
+    {"path": "R6_SHARED_BOUNDARY_T0_KINEMATIC_CENSUS.json", "sha256": "8c78e0116b8c55421e986b115a37a93ac80ba357c355f0ad1501efea3ef214ef", "role": "structural boundary identities and diagnostic local-frame convention"},
+    {"path": "R6_SHARED_BOUNDARY_FINITE_STEP_CENSUS.json", "sha256": "2764baa4327b56bd3ea3d3c41bc8243b2bdc0f4242fcd1e14f71907e25186d05", "role": "boundary/junction finite-step status; no accommodation materialized"},
+    {"path": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json", "sha256": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233", "role": "canonical plate-pair support and coarse cell-edge geometry"},
+    {"path": "docs/arcana/research/B6N8D_BUCK_EQUATION_REGISTRY.json", "sha256": "bccd9405eb3afbbd3fb1c97410bb2f6eb9bcfd6748d60a9e417a333359f52543", "role": "recovered Buck variable and equation semantics"},
+    {"path": "docs/arcana/research/B6N8D_BUCK_MINIMUM_STATE_AUDIT.json", "sha256": "975f4bd154679b3ed0532f19426a80ef1d8891280294cb01f9bdd3d0f3844e0c", "role": "Buck minimum state and B6N2-to-section gap"},
+    {"path": "outputs/r6_b6k_isolated_first_candidate_state/B6K_BOUNDARY_CANDIDATE.json", "sha256": "24632e99d30cd07f0fc43060c6f612f73865553808e8e12246639988c2f6da80", "role": "derived candidate representation of pair-side boundary support, not physical boundary authority"},
+    {"path": "outputs/r6_b6k_isolated_first_candidate_state/B6K_JUNCTION_CANDIDATE.json", "sha256": "bbed735ca07237b0822cd9955e345c396a7bd74a4ae72a6601b70c9d1ef0fde2", "role": "derived candidate junction support; set-valued, no unique owner"}
+  ],
+  "post_event_source_temporal_boundary": {
+    "source_artifact_age_ma": 210.0,
+    "source_temporal_support": "INSTANT_ONLY",
+    "source_validity_beyond_anchor": "UNKNOWN",
+    "successor_model_authority": "EXPLICIT_B6N2_RENEWAL_OF_UNCHANGED_VECTOR_ARTIFACT_FROM_EXACT_POST_EVENT_CAUSAL_STATE",
+    "successor_validity_start_age_ma": 209.97287659484368,
+    "successor_validity_end": "earliest enabled physical/event/source/model boundary; no end time or dt selected",
+    "source_provenance_extended": false,
+    "physical_positive_propagation_interval": "NOT_ESTABLISHED",
+    "model_scope_revalidation_horizon_years": 8214.051909111062,
+    "model_scope_horizon_is_physical_event_free_interval": false
+  },
+  "b6n2_kinematic_representation": {
+    "vectors": "one Cartesian XYZ angular-velocity vector per each of 12 plate IDs",
+    "vector_units": "rad/year",
+    "action": "ACTIVE_ROTATION_OF_COLUMN_POSITION_VECTOR; RIGHT_HANDED XYZ",
+    "reference_gauge": "SYNTHETIC_AREA_WEIGHTED_LEAST_SQUARES_NO_NET_ROTATION_GAUGE",
+    "gauge_interpretation": "kinematic gauge only; not mantle-fixed, Earth-fixed, or torque balance",
+    "absolute_or_relative": "per-plate vectors in the shared synthetic gauge; no single fixed/reference plate is specified",
+    "pair_scope": [1, 3],
+    "pair_order": "canonical ordered plate pair [1,3]; not a geological polarity or fault-type label",
+    "successor_geometry": "exact POST_EVENT geometry, plate IDs, support, interface IDs and junction incidence preserved",
+    "post_event_state_id": "r6state_86b55139388fd6d01cb0ff640f9580e1e1331f2469fb5c4f296c6cf2578fc630",
+    "post_event_payload_sha256": "9527429db651bac60606b257dcff7abfff601fc66df053ce278822a3a8a8a46a",
+    "uncertainty": "ONE_AUTHORED_SEEDED_SYNTHETIC_PRIOR_REALIZATION; graph-correlation and scale-distribution assumptions; no sensitivity ensemble",
+    "precision": "stored binary64 vector components; deterministic derivation subject to represented floating-point arithmetic"
+  },
+  "geometry_and_support_evidence": {
+    "canonical_post_event_state": {
+      "domain": "tectonic_geometry",
+      "time_key": "209.97287659484368Ma",
+      "spatial_support": "GLOBAL on R6_GLOBAL_GEOGRAPHY_1DEG_V1; 1 degree canonical mesh",
+      "value_process_state": "RIFT_PROCESS_ACTIVE",
+      "topology_identity": "fbfc1563047d084fd3da49d084b97cccd9bb78f75c26e508c8e128c885574b8b",
+      "payload": "same physical payload as PRE_EVENT; no geometry mutation at activation"
+    },
+    "plate_pair_interface": {
+      "pair": [1, 3],
+      "boundary_support": "COARSE_SUPPORT_ON_FINE_GRID",
+      "source_geometry": "canonical parent-cell face edges; no smoothing or subcell inference",
+      "derived_B6K_relational_candidate_segment_count": 71,
+      "derived_B6K_relational_candidate_shared_node_count": 72,
+      "derived_B6K_side_representations_per_segment": 2,
+      "candidate_chain_end_nodes": [34858, 41750],
+      "incident_degree3_junctions": ["R6JNT-T0-4a67fe6607845a68", "R6JNT-T0-f7f8b6413402335a"],
+      "pair_segment_boundary_type": "UNKNOWN_NOT_AUTHORIZED_BY_KINEMATICS_ALONE",
+      "pair_physical_accommodation": "UNKNOWN_UNCHANGED",
+      "scope_note": "B6K rows are deterministic relational/candidate geometry tied to the canonical POST_EVENT payload, not independently published canonical physical state."
+    },
+    "global_boundary_census": {"segments": 1983, "junctions": 20, "role": "T0 structural/kinematic diagnostics; no geological type or accommodation law"},
+    "existing_1_3_diagnostic_classes": {
+      "source_time": "210.0Ma T0 diagnostic only; not post-event accumulated forcing",
+      "segment_count": 71,
+      "MIXED_OPENING_SHEAR": 52,
+      "MIXED_CLOSING_SHEAR": 19,
+      "interpretation": "heterogeneous signed local kinematic diagnostics; not a uniform pair-wide extension classification"
+    },
+    "local_orientation": {
+      "tangent": "canonical parent-grid edge direction: increasing latitude for EAST edge; increasing longitude for NORTH edge",
+      "normal": "n_AB points from plate_a to plate_b",
+      "sign": "positive signed normal relative velocity is opening, under the diagnostic convention",
+      "authority_scope": "deterministic kinematic coordinate convention only; does not establish overriding/subducting side, geological polarity, or physical accommodation"
+    }
+  },
+  "buck_equation_semantics": {
+    "U_x": {"meaning": "horizontal velocity difference across the finite pure-shear extension zone", "units": "m/s in the recovered paper registry", "class": "FORCING"},
+    "X_e": {"meaning": "width of pure-shear extension zone", "units": "m", "class": "MODEL_GEOMETRY_AND_FORCING_SUPPORT"},
+    "epsilon_dot": {"relation": "U_x / X_e", "units": "s^-1", "derivable_only_if": "both U_x and X_e have governed values and common temporal/support semantics"},
+    "X_L": {"meaning": "width of initially uniform lithosphere in Buck's experiment", "units": "m", "class": "MODEL_GEOMETRY; also defines the lateral section/boundary support of that setup"},
+    "finite_forcing": "finite strain or finite duration is part of the model input; epsilon=0.25 is a Buck experiment setting and is not ARCANA-authorized",
+    "Buck_experiment_choices_not_portable": ["X_e tied to initial lithosphere thickness in Buck's experiment", "40 km lower bound for X_e", "finite strain epsilon=0.25"],
+    "applicability": "extension model; convergent kinematics are not a Buck extension forcing and no reverse-sign Buck interpretation is authorized"
+  },
+  "mapping_chain": [
+    {"id":"B6N2_EULER_AUTHORITY","input":"unchanged per-plate omega vectors and exact POST_EVENT causal binding","output":"authorized angular velocity by plate","mathematics":"identity/reference, no rate modification","authority_class":"AUTHORIZED_DIRECT","support":"all 12 plate-local representations; pair-level activated process 1:3","units":"rad/year","sign":"active right-handed XYZ column-vector action","uncertainty":"one seeded synthetic realization; no ensemble","validity":"from exact POST_EVENT state; until earliest governed boundary; dt not selected","blocking_reason":null},
+    {"id":"SURFACE_VELOCITY","input":"omega_i, unit radial position r, governed mean radius R","output":"v_i(r)","mathematics":"v_i(r)=R*(omega_i cross r), with r unit length in the common Cartesian frame","authority_class":"AUTHORIZED_DETERMINISTIC_DERIVATION","support":"a point on the exact spherical POST_EVENT support carrying plate i","units":"m/year","sign":"global Cartesian XYZ; active rotation convention","uncertainty":"Euler realization plus geometry; no extra distribution","validity":"instantaneous algebraic velocity under B6N2 successor authority; no propagation implied","blocking_reason":null},
+    {"id":"RELATIVE_SURFACE_VELOCITY","input":"v_1(r), v_3(r) at the same interface location","output":"delta_v_1_to_3(r)","mathematics":"v_3(r)-v_1(r)=R*((omega_3-omega_1) cross r)","authority_class":"AUTHORIZED_DETERMINISTIC_DERIVATION","support":"same geometric point with explicit plate-side identities 1 and 3","units":"m/year","sign":"ordered plate pair 1->3; global Cartesian","uncertainty":"inherited Euler and interface geometry uncertainty","validity":"instantaneous only; does not assert physical accommodation","blocking_reason":null},
+    {"id":"LOCAL_INTERFACE_FRAME","input":"canonical segment edge orientation, its spherical position and ordered plate sides","output":"radial/up r, edge tangent t, pair normal n_13","mathematics":"use governed EAST/NORTH tangent convention and n_AB from plate_a to plate_b; no smoothing","authority_class":"AUTHORIZED_DETERMINISTIC_DERIVATION","support":"ordinary oriented parent-grid edge with unambiguous plate sides","units":"unit vectors","sign":"n_13 from plate 1 to 3; positive normal component means kinematic opening per existing diagnostic convention","uncertainty":"geometry and frame-orientation uncertainty; orientation is discrete-edge convention, not physical polarity","validity":"exact support only; junctions/chain endpoints have no unique branch frame","blocking_reason":null},
+    {"id":"NORMAL_TANGENTIAL_COMPONENTS","input":"delta_v, n_13, t","output":"v_normal, v_tangential","mathematics":"v_normal=delta_v dot n_13; v_tangential=delta_v dot t","authority_class":"AUTHORIZED_DETERMINISTIC_DERIVATION","support":"one governed segment/sample position","units":"m/year","sign":"signed; positive normal is opening; tangent sign follows edge convention","uncertainty":"projection/frame inherited; no thresholds or averaging","validity":"kinematic diagnostic; tangential component retained","blocking_reason":null},
+    {"id":"KINEMATIC_CLASSIFICATION","input":"signed normal/tangential components and any explicitly governed diagnostic tolerance","output":"kinematic-only class or UNKNOWN","mathematics":"sign decomposition; never infer geology, strain, faulting, or response","authority_class":"REQUIRES_ARCANA_ADAPTATION","support":"segment-local; pair cannot be assigned one class when its segment diagnostics differ","units":"component units m/year","sign":"signed; no absolute-value polarity erasure","uncertainty":"near-zero/frame sensitivity; no probability distribution","validity":"existing T0 census classifications are instant diagnostics only","blocking_reason":"No physical response law or extension applicability threshold is selected; the existing 1e-9 m/year tolerance is diagnostic, not a physical threshold."},
+    {"id":"BUCK_SECTION_UX_CANDIDATE","input":"section center, endpoints on opposite sides, endpoint plate identities, endpoint velocities, common section x-axis/frame transport","output":"candidate U_x","mathematics":"candidate scalar difference of endpoint velocities projected onto a governed section x-axis; exact expression and transport must be fixed by an adapter","authority_class":"REQUIRES_ARCANA_ADAPTATION","support":"finite section crossing a contiguous supported interface segment/window, away from unresolved junction and endpoint behavior","units":"m/s for Buck equations; convert m/year only with explicit year-second convention","sign":"extension-positive only after side order and section x-axis/polarity are frozen","uncertainty":"section selection, endpoint support, projection and model mismatch","validity":"requires valid B6N2 scope and separate finite physical interval for accumulation","blocking_reason":"Interface-local normal relative velocity is not proven equivalent to velocity difference across Buck's finite pure-shear zone."},
+    {"id":"X_E_BINDING","input":"initialization geometry/material state plus chosen section support","output":"X_e","mathematics":"none yet; a physical/model binding rule must specify the pure-shear-zone width","authority_class":"REQUIRES_B6N8E_INTEGRATION","support":"selected Buck section","units":"m","sign":"positive width; no value selected","uncertainty":"X_E_UNCERTAINTY","validity":"same initialization/configuration and model scope as U_x","blocking_reason":"No ARCANA-authorized extension-zone width or derivation; Buck's thickness tie and 40 km floor are experiment choices."},
+    {"id":"EPSILON_DOT","input":"governed U_x and X_e","output":"epsilon_dot","mathematics":"epsilon_dot=U_x/X_e","authority_class":"NOT_REQUIRED_UNTIL_INPUTS_GOVERNED","support":"Buck section support and validity interval","units":"s^-1","sign":"inherited signed U_x convention","uncertainty":"joint U_x/X_e and covariance policy required; no distribution assumed","validity":"only while both inputs and temporal authority remain valid","blocking_reason":"U_x candidate and X_e are not both governed."},
+    {"id":"FINITE_FORCING_HISTORY","input":"epsilon_dot(t) or U_x(t), X_e(t), and authorized finite interval","output":"finite strain/forcing history","mathematics":"time integration of governed epsilon_dot(t); no interval/value selected","authority_class":"UNKNOWN","support":"selected section(s), with explicit junction/end treatment","units":"dimensionless strain and time","sign":"signed extension/convergence history; Buck extension applicability excludes unapproved convergence reinterpretation","uncertainty":"temporal validity, model scope, section and forcing uncertainties","validity":"requires a positive physical interval, not merely a revalidation horizon","blocking_reason":"B6N4-R1 reports positive propagation interval NOT_ESTABLISHED; B6N3-A is MODEL_SCOPE_REVALIDATION only; B6N8-A window is diagnostic only."}
+  ],
+  "semantic_non_equivalences": ["RIGID_RELATIVE_PLATE_MOTION != PHYSICAL_RIFT_EXTENSION", "RIGID_RELATIVE_PLATE_MOTION != OPENING_RATE", "GEOMETRIC_SEPARATION != STRAIN_ACCOMMODATION", "NORMAL_RELATIVE_VELOCITY != AUTOMATICALLY_BUCK_UX", "SEGMENT_IDENTITY != FAULT_IDENTITY", "BUCK_REGIME_DIAGNOSTIC != TOPOLOGY_TRANSITION"],
+  "uncertainty_classes": ["EULER_VECTOR_UNCERTAINTY", "GEOMETRY_UNCERTAINTY", "FRAME_ORIENTATION_UNCERTAINTY", "POLARITY_UNCERTAINTY", "PROJECTION_UNCERTAINTY", "SECTION_SELECTION_UNCERTAINTY", "X_E_UNCERTAINTY", "X_L_UNCERTAINTY", "OBLIQUITY_MODEL_MISMATCH_UNCERTAINTY", "TEMPORAL_VALIDITY_UNCERTAINTY", "JUNCTION_ENDPOINT_UNCERTAINTY"],
+  "integration_boundary": {
+    "B6N8E_sibling_attestation": "1e4f4fee1ce95fabc32c9eb62b783314660afa78",
+    "imported_as_current_branch_authority": false,
+    "future_inputs_required": ["governed T1 lithosphere thickness/base and Moho/crust geometry on explicit support", "material/domain identity and applicability support", "T1 validity/support mask", "uncertainty and temporal provenance", "any authorized physical quantity proposed as a source for X_e or X_L"],
+    "additional_decision_even_after_inputs": "explicit ARCANA mapping from initialization geometry/support to Buck X_e, X_L, section extent and model validity"
+  },
+  "implementability_gates": {
+    "A_local_relative_velocity_driver": "YES_BY_DETERMINISTIC_KINEMATIC_DERIVATION",
+    "B_driver_to_buck_Ux": "REQUIRES_ARCANA_SECTION_ADAPTATION_AND_X_E_BINDING",
+    "C_epsilon_dot": "NO; both U_x and X_e lack governed values",
+    "D_finite_buck_forcing_executable": false
+  },
+  "decision_basis": ["B6N2 fixes a post-event successor-model scope but preserves the source vector realization and exact topology/support.", "The spherical radius, active vector action, edge tangent convention and plate_a-to-plate_b positive-opening convention permit deterministic local kinematic components.", "Buck U_x is defined over a finite pure-shear zone; ARCANA has no authorized X_e, selected section support, endpoint/frame-transport rule, or positive physical forcing interval.", "No B6N8-E sibling artifact was used as authority; its input interface is listed only for later integration."],
+  "preserved_gates": {
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "Buck_T1_state_generated": false,
+    "Buck_Ux_materialized": false,
+    "Buck_Xe_selected": false,
+    "Buck_XL_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "finite_Buck_forcing_executed": false,
+    "new_physical_parameter_selected": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "support_remapping_executed": false,
+    "WORLD_HISTORY_changed": false
+  }
+}
