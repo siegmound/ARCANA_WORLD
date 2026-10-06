@@ -1,0 +1,160 @@
+{
+  "schema": "ARCANA_R6_B6N8C_REDUCED_RIFT_PROTOTYPE_COMPARISON_DESIGN_V1",
+  "stage": "B6N8C_REDUCED_RIFT_PROTOTYPE_COMPARISON_DESIGN",
+  "design_source_commit": "b7d4c50b9f10021757ba45f984107c3e9447f03f",
+  "observed_branch": "r6/b6n8b-targeted-rift-model-research",
+  "status": "DESIGN_ONLY_NO_MODEL_SELECTED_OR_IMPLEMENTED",
+  "recommendation": "PROTOTYPE_TRACK_A",
+  "track_b_status": "INSUFFICIENTLY_DEFINED",
+  "escalation_assessment": "TIER2_PLUS_LIMITED_PHYSICAL_STATE_REQUIRED",
+  "purpose": "Compare whether the Buck-style reduced force/thermal/mode family can add source-traceable process information beyond B6N2 while returning conservative reevaluation requests only; Track B proceeds only if a defensible reduced law is identified.",
+  "research_authority": {
+    "b6n8b_remains_research_only": true,
+    "physical_model_selected": false,
+    "physical_model_qualified": false
+  },
+  "claim_boundary": {
+    "allowed_outputs": ["rift process state evolution", "interface response diagnostics", "regime/model reevaluation predicates", "conservative topology reevaluation request", "conservative support reevaluation request"],
+    "prohibited_claims_or_actions": ["plate split", "new plate creation", "new boundary creation", "junction rewiring", "support reassignment", "new crust production", "final breakup geometry"],
+    "predicate_event_application_are_distinct": true
+  },
+  "track_a_buck_dependencies": {
+    "full_dependency_set": [
+      "lateral model width, lithosphere/crust thickness profiles, initial extension-zone width and initial narrow weakness assumption",
+      "initial temperature profile, surface/basal thermal conditions, conductivity/diffusivity, vertical advection, heat production and thermal expansion",
+      "brittle yield law/effective pressure and crust/mantle temperature- and strain-rate-dependent ductile flow laws/composition",
+      "depth-integrated lithospheric strength, thermal buoyancy, crustal buoyancy, density contrast and gravity",
+      "lower-crust viscosity/flow closure, Moho pressure gradient from crust-thickness gradients, effective flow diffusivity or spatial flow solution, evolving thickness field",
+      "imposed extension velocity or strain-rate history, spatial deformation zone, finite strain/time increment and initial geometry",
+      "thermal/thickness discretization, boundary conditions, force integration and numerical error/stability behavior"
+    ],
+    "minimum_causally_required_set": [
+      "temperature-depth state sufficient for ductile strength and thermal buoyancy",
+      "crust/lithosphere thickness spatial state sufficient for thinning, buoyancy and Moho pressure gradients",
+      "applied extension state/rate and spatial zone geometry",
+      "constitutive parameters sufficient for brittle/ductile strength and lower-crust flow",
+      "derived integrated force components and combined signed force-change diagnostic"
+    ],
+    "must_initialize_before_run": ["model-domain geometry and initial thickness fields", "initial thermal profile and thermal/material configuration", "constitutive law identity and material distribution", "gravity/density/thermal-expansion configuration", "authorized forcing-to-model mapping", "flow closure for any claimed core-complex/wide-rift distinction"],
+    "possibly_reducible": [
+      "temperature profile to a reduced basis only after force-sign/mode preservation is demonstrated",
+      "lower-crust flow PDE to the published effective-diffusivity closure only within its justified domain",
+      "integrated force components may remain derived diagnostics rather than independent persisted state",
+      "limited cross-section scope only with declared boundary/buffer validity",
+      "discrete material family IDs with property bundles, never interpolated IDs"
+    ],
+    "unsafe_to_remove_for_full_buck_mode_claim": ["thermal state/evolution", "thickness geometry", "constitutive strength dependence", "extension amount/rate", "density/buoyancy terms", "lower-crust flow when claiming core-complex mode"],
+    "criterion": "Buck computes net force change after finite extension; increasing required local extension force is assumed to widen the deformation zone, while decreasing force favors localization. This requests model/regime reevaluation only; it does not determine ARCANA topology.",
+    "known_model_limitation": "Buck reports incomplete coupling between lower-crust flow and thermal calculation.",
+    "mechanical_content": "REDUCED_FORCE_BALANCE_AND_RHEOLOGY; not mechanics-free, but a full finite-element/Stokes solution is not proven necessary for reevaluation-only scope."
+  },
+  "track_b_fault_segment_process": {
+    "status": "INSUFFICIENTLY_DEFINED",
+    "evidence_screen": "Forward fault-network models located use stress/local heterogeneity, discrete-element or thermo-mechanical mechanics; slip-to-length models consume slip and do not predict its activation from B6N2 alone.",
+    "no_arbitrary_activation": true,
+    "required_unresolved_driving_state": ["stress/traction or validated reduced equivalent", "fault strength/fracture/damage state", "initial nucleation/weakness rule", "segment interaction transfer", "junction compatibility and localization criterion"],
+    "question_requirements": {
+      "activation": "source-supported nucleation/instability or explicitly authorized initial fault state",
+      "deactivation": "law for exhaustion, stress redistribution, healing, switching or abandonment",
+      "interaction": "stress/traction transfer or a validated interaction closure",
+      "linkage_candidacy": "fault-tip geometry plus interaction/fracture criterion; graph proximity alone is insufficient",
+      "localization": "evolving spatial activity/deformation and a model criterion",
+      "regime_reevaluation": "model-defined state, predicate margin/status, uncertainty and detector coverage"
+    },
+    "allowed_current_outputs": ["UNKNOWN", "INSUFFICIENTLY_DEFINED"],
+    "forbidden_shortcuts": ["activation by segment ID", "activation from B6N8-A geometric mismatch", "arbitrary thresholds", "prescribed future fault geometry/slip/event calendar presented as prediction"]
+  },
+  "input_classification": [
+    {"input":"POST_EVENT process identity, pair 1:3, geometry, 71 segment IDs, 72 unique nodes and junction incidence","classification":"EXISTING_CANONICAL_STATE","support_units":"existing IDs/geometry support","status":"read-only input identities; do not infer boundary or fault type"},
+    {"input":"B6N2 Euler vectors and model validity","classification":"EXISTING_CANONICAL_STATE","support_units":"rad/year, plate-local","status":"conditional forcing authority; positive-duration interval still requires its own gate"},
+    {"input":"relative plate motion derived from Euler vectors and initial geometry","classification":"DETERMINISTIC_DERIVATION","support_units":"geometry and velocity diagnostics","status":"not physical extension, stress, opening or accommodation"},
+    {"input":"unoriented segment local tangent/normal and vector projections","classification":"DETERMINISTIC_DERIVATION","support_units":"segment support; speed m/year only within valid temporal scope","status":"signed physical normal/polarity requires explicit convention; no rift interpretation"},
+    {"input":"governed crustal thickness and continental reference heat-flow/lithosphere fields","classification":"EXISTING_CANONICAL_STATE","support_units":"current T0 cell/class support","status":"bind only with explicit support mapping; surface heat flow is not a full geotherm"},
+    {"input":"full initial temperature profile/basal thermal state at pair support","classification":"UNKNOWN_NOT_CURRENTLY_GOVERNED","support_units":"K over declared vertical and lateral support","status":"cannot be assumed from surface heat flow"},
+    {"input":"material/layer composition, spatial weakness and complete thickness profiles","classification":"UNKNOWN_NOT_CURRENTLY_GOVERNED_OR_PARTIALLY_CONSTRAINED_BY_T0","support_units":"m and discrete support IDs","status":"needs field-by-field authority and support binding"},
+    {"input":"thermal, density, rheological, frictional, fracture and heat-production constants","classification":"LITERATURE_CALIBRATED_PARAMETER_OR_AUTHORIAL_SYNTHETIC_PRIMITIVE_DEPENDING_ON_QUANTITY","support_units":"law-specific SI units","status":"no numeric value or Earth default selected; uncertainty required"},
+    {"input":"fault activity, damage, slip, tip state and segment regime","classification":"MODEL_INTERNAL_STATE_OR_UNKNOWN_NOT_CURRENTLY_GOVERNED","support_units":"per model segment only after law defined","status":"never infer from current boundary identities"},
+    {"input":"Buck strength/buoyancy/flow components and signed net force change","classification":"DETERMINISTIC_DERIVATION","support_units":"force per unit length; flow diffusivity where used","status":"derived only from complete model state/law, propagate uncertainty"},
+    {"input":"topology or support outcome","classification":"UNKNOWN_NOT_CURRENTLY_GOVERNED","support_units":"graph/support IDs","status":"reevaluation request only; application remains separate"}
+  ],
+  "authorial_synthetic_primitive_requirements": {
+    "candidate_primitives_not_selected": [
+      {"quantity":"initial temperature profile or layer-wise thermal state","why_needed":"controls viscosity/yield and thermal buoyancy in Track A","units":"K","support":"vertical profile on declared rift cross-section and lateral buffer","authority_source":"synthetic-world initial-state/material-thermal authority","downstream_domain_candidate":"thermal/material domain may produce it; ownership unresolved","uncertainty":"profile range/distribution or UNKNOWN with spatial correlation/provenance"},
+      {"quantity":"layer composition and material family field","why_needed":"selects density, heat, and constitutive property bundles","units":"discrete material identity; associated properties in SI","support":"lithosphere layers and declared lateral domain","authority_source":"synthetic-world geology/material authoring authority","downstream_domain_candidate":"geology/material domain","uncertainty":"discrete alternatives/probabilities only if governed; IDs are not interpolated"},
+      {"quantity":"initial weakness/heterogeneity field (only if selected law requires it)","why_needed":"supports localization/nucleation; cannot be invented solely to force a transition","units":"law-specific dimensionless or strength units","support":"explicit spatial field and resolution","authority_source":"authorial initial structural-state authority","downstream_domain_candidate":"geology/tectonic-structure generator","uncertainty":"spatially correlated field ensemble or UNKNOWN"},
+      {"quantity":"far-field traction or independent extension forcing (only if selected model requires it beyond B6N2)","why_needed":"drives stress/force model","units":"Pa or N/m, or velocity m/year according to the law","support":"boundary conditions of model domain","authority_source":"authorial synthetic forcing authority with causal producer","downstream_domain_candidate":"tectonic driving domain, not assumed available","uncertainty":"time-correlated forcing range/ensemble or UNKNOWN"}
+    ],
+    "no_numeric_values_selected": true
+  },
+  "common_interface": {
+    "initialize_process_state":"bind model/version, authority, POST_EVENT checkpoint, support, initialized state, parameters, uncertainty and replay identity; fail closed on missing required input",
+    "consume_B6N2_kinematic_forcing":"accept only governed vectors and separately authorized experiment interval; map frame/support explicitly; never relabel geometric mismatch as opening",
+    "advance_process_state_INTERNAL_DT":"temporary isolated candidate advancement with state/rates/error/stability; INTERNAL_DT is not dt2 or persistent interval",
+    "report_process_observables":"typed value/units/kind/authority/support/time validity/input identity",
+    "evaluate_regime_predicates":"TRUE/FALSE/UNKNOWN, signed margin where defined, uncertainty, validity, coverage and bracketability",
+    "evaluate_interface_reevaluation_predicates":"exact covered and uncovered segment IDs or declared aggregate support; junction response not inferred",
+    "evaluate_topology_reevaluation_predicates":"REEVALUATE/NO_REQUEST/UNKNOWN request only; no graph output or application",
+    "evaluate_support_reevaluation_predicates":"VALID/INVALID/UNKNOWN and affected support/dependency buffer; no reassignment",
+    "report_uncertainty":"separate parameter, forcing, model-form, spatial, criterion, event-time, numerical and dependency dimensions",
+    "report_authority_bounds":"exact model/source/temporal/spatial validity, unsupported outputs and stop conditions",
+    "report_adaptive_dt_indicators":"integration error/stability, state rate, predicate proximity/rate, uncertainty, validity and bracket width"
+  },
+  "common_synthetic_test_case": {
+    "checkpoint":"existing governed POST_EVENT plate-pair 1:3 state; read-only",
+    "segments":71,
+    "unique_nodes":72,
+    "junctions":"use exact governed incident junction identities from B6N2 scope; no remapping",
+    "same_initial_state_and_forcing_across_tracks":true,
+    "b6n8a_mismatch_role":"DERIVED_GEOMETRIC_DIAGNOSTIC_ONLY_NOT_PHYSICAL_OPENING",
+    "b6n8a_2053_year_window_reuse":false,
+    "experiment_window":"must be separately defined for a future isolated noncanonical experiment; current design does not authorize positive-duration geological-time advancement",
+    "track_b_without_source_law":"record INSUFFICIENTLY_DEFINED/UNKNOWN; do not execute arbitrary activation",
+    "canonical_world_history_write":false
+  },
+  "comparison_metrics": [
+    "evolved-state components, units and increment of process information beyond B6N2",
+    "predicate source, status/margin, uncertainty, validity, coverage, detector and event bracket behavior",
+    "covered/uncovered interface IDs, junction support and all four independent B6N4-R1 blocker rows",
+    "required input/parameter list with authority, units, support and uncertainty; report missing items rather than an arbitrary scalar burden score",
+    "uncertainty dimensions propagated versus UNKNOWN",
+    "local spatial scope and dependency/buffer evidence",
+    "variable INTERNAL_DT, numerical stability/error estimator, event bracketing and refinement support: demonstrated or untested",
+    "deterministic replay identity or stochastic seed/tie-break policy",
+    "wall time, memory and solve counts on same environment/configuration; no arbitrary cutoff",
+    "model-form complexity, mechanical equations/fields, software/version/license and synthetic-world transfer limits"
+  ],
+  "prototype_go_no_go": [
+    "source-supported evolving state not reducible to B6N2 diagnostics",
+    "at least one scientifically traceable dynamic regime/validity predicate",
+    "each required input bound, explicitly proposed as synthetic primitive, or blocking execution; no ungoverned defaults",
+    "explicit covered/uncovered interface and junction mapping",
+    "topology/support outputs remain requests and fail conservatively when coverage is unknown",
+    "variable-step, event detector, uncertainty and replay testable without WORLD_HISTORY publication",
+    "mechanics dependency and computational scope explicit"
+  ],
+  "recommendation_basis": {
+    "track_a": "Buck 1991 supplies a signed state-dependent force-change mode criterion but needs explicit thermal/thickness/strength/flow state and contains reduced force-balance mechanics.",
+    "track_b": "Sources located require stress/fracture/discrete-element mechanics or supplied slip; no defensible reduced law for activation of the existing 71 ARCANA segments was identified.",
+    "selected_track": "PROTOTYPE_TRACK_A",
+    "selection_is_model_selection": false,
+    "other_authority_still_required": ["author synthetic initial-state and parameter authority", "support mapping", "predicate coverage", "separate topology/support transition application"]
+  },
+  "authorization_gates": {
+    "physical_rift_model_selected":false,
+    "physical_rift_model_qualified":false,
+    "SECOND_DT_SELECTED":false,
+    "T2_CREATED":false,
+    "B6O_authorized":false,
+    "mechanics_executed":false,
+    "canonical_forward_propagation_executed":false,
+    "topology_transition_executed":false,
+    "WORLD_HISTORY_changed":false
+  },
+  "sources": [
+    {"type":"PRIMARY","citation":"Buck 1991, Modes of continental lithospheric extension, JGR 96(B12), 20161-20178","doi":"10.1029/91JB01485","url":"https://doi.org/10.1029/91JB01485"},
+    {"type":"PRIMARY","citation":"Finch & Gawthorpe 2017, Growth and Interaction of Normal Faults and Fault Network Evolution in Rifts: Insights from Three Dimensional Discrete Element Modelling","doi":"10.1144/SP439.23","url":"https://doi.org/10.1144/SP439.23"},
+    {"type":"PRIMARY","citation":"Cowie & Scholz 1992, Growth of faults by accumulation of seismic slip, JGR 97(B7), 11085-11095","doi":"10.1029/92JB00586","url":"https://doi.org/10.1029/92JB00586"},
+    {"type":"PRIMARY","citation":"Wolf et al. 2022, Evolution of Rift Architecture and Fault Linkage During Continental Rifting, JGR Solid Earth","doi":"10.1029/2022JB024687","url":"https://doi.org/10.1029/2022JB024687"},
+    {"type":"PRIMARY","citation":"Pan et al. 2022, Evolution of normal fault displacement and length as continental lithosphere stretches, Basin Research","doi":"10.1111/bre.12613","url":"https://doi.org/10.1111/bre.12613"}
+  ]
+}
