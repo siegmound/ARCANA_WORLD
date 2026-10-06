@@ -1,0 +1,98 @@
+{
+  "schema": "ARCANA_R6_B6N8B_ATTESTATION_V1",
+  "stage": "B6N8-B",
+  "purpose": "FINAL_QUALIFICATION_ATTESTATION",
+  "qualified_source_commit": "b74025889cfac636bc3d7f777dd5fe6bdcc7111f",
+  "verdict": "PASS_B6N8B_TIER2_MODEL_FAMILIES_IDENTIFIED",
+  "readiness": "READY_FOR_TARGETED_PROTOTYPE_COMPARISON",
+  "evidence_store_key": "B6N8B/b74025889cfac636bc3d7f777dd5fe6bdcc7111f",
+  "evidence_integrity": {
+    "manifest_sha256": "3922752844a3dba53e168dc9cfbc3b4f292692e8059f188dfcda0d77965b8b15",
+    "content_sha256": "ce520dc3bb0fd29b68a26e568d8490af8e8de61f63b7d4d4ba6ae7ba464bad9c",
+    "seal_file_sha256": "db6215d7387b63ff4ce46b019aef752930e6e8c4a2aebbacf11284f65b88ff7d",
+    "manifest_artifacts_verified": 11,
+    "static_checks_passed": 41,
+    "static_checks_failed": 0,
+    "doi_syntax_url_checks_passed": 10
+  },
+  "source_gate": {
+    "branch": "r6/b6n8b-targeted-rift-model-research",
+    "head": "b74025889cfac636bc3d7f777dd5fe6bdcc7111f",
+    "head_type": "commit",
+    "parent": "b7d4c50b9f10021757ba45f984107c3e9447f03f",
+    "B6N8A_attestation_commit": "e2d9d3e4ffc70bb665d1b150e1a2e34fae6fbc42",
+    "B6N8A_attestation_is_ancestor": true,
+    "worktree_clean_before_attestation": true
+  },
+  "provenance_correction": {
+    "prior_source": "b7d4c50b9f10021757ba45f984107c3e9447f03f",
+    "prior_verdict": "BLOCKED_B6N8B_PROVENANCE_CLAIM_MISMATCH",
+    "prior_bundle_preserved": true,
+    "prior_bundle_content_sha256": "936fceac86aea6675ad707628752261387e03eab99602813856ddac04796e51c",
+    "McKenzie_1978": "rapid/uniform stretching followed by thermal response",
+    "White_Bellingham_2002": "space/time varying inverse strain-rate reconstruction; not itself instantaneous stretching",
+    "Jarvis_McKenzie_1980": "finite extension rate and comparison against instantaneous formulation"
+  },
+  "qualified_findings": {
+    "tier2_families_merit_targeted_comparison": true,
+    "B6N2_rigid_kinematics_supplies_rift_process_evolution": false,
+    "prescribed_or_inferred_history_solves_next_process_evolution": false,
+    "McKenzie_family_sufficient_as_standalone_forward_rift_process": false,
+    "Buck_strongest_identified_candidate_family": "REDUCED_FORCE_THERMAL_STATE_DEPENDENT_MODE_EVOLUTION",
+    "Buck_selected": false,
+    "Buck_calibrated": false,
+    "Buck_implemented": false,
+    "Buck_validated": false,
+    "Buck_qualified": false,
+    "Track_B": "CONDITIONAL_INSUFFICIENTLY_DEFINED_FOR_IMMEDIATE_IMPLEMENTATION",
+    "full_mechanics_proven_necessary": false,
+    "full_mechanics_proven_irrelevant": false
+  },
+  "coverage": {
+    "B6N7_dimensions_reviewed": 12,
+    "B6N4R1_blocker_families": [
+      "GENERIC_TOPOLOGY_EVENT_COVERAGE",
+      "NEXT_RIFT_PROCESS_EVOLUTION",
+      "PLATE_INTERFACE_EVENT_PREDICATES",
+      "SUPPORT_MEMBERSHIP_VALIDITY"
+    ],
+    "blockers_remain_independent": true,
+    "common_authority_inferred_from_shared_inputs": false
+  },
+  "prototype_boundary": {
+    "only_supported_next_stage_authorization": "TARGETED_PROTOTYPE_COMPARISON_DESIGN",
+    "production_model_selection_authorized": false,
+    "physical_propagation_authorized": false,
+    "topology_mutation_authorized": false,
+    "support_remapping_authorized": false,
+    "plate_split_authorized": false,
+    "new_boundary_creation_authorized": false
+  },
+  "validation": {
+    "JSON": "PASS",
+    "UTF8": "PASS",
+    "local_links": "PASS",
+    "whitespace": "PASS",
+    "git_diff_check": "PASS",
+    "WORLD_HISTORY_invariance": "PASS",
+    "canonical_file_count": 46,
+    "canonical_logical_bytes": 1275143
+  },
+  "canonical_state": {
+    "WORLD_HISTORY_changed": false
+  },
+  "decision_state": {
+    "physical_rift_model_selected": false,
+    "physical_rift_model_qualified": false,
+    "prototype_implemented": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "B6O_authorized": false,
+    "mechanics_executed": false,
+    "canonical_forward_propagation_executed": false,
+    "topology_transition_executed": false,
+    "WORLD_HISTORY_changed": false
+  },
+  "next_stage_authorized": "TARGETED_PROTOTYPE_COMPARISON_DESIGN"
+}
