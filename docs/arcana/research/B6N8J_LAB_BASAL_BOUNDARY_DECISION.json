@@ -1,0 +1,48 @@
+{
+  "schema": "ARCANA_R6_B6N8J_LAB_BASAL_BOUNDARY_DECISION_V1",
+  "stage": "B6N8-J",
+  "decision": "MODEL_SPECIFIC_THERMAL_BASE_RULE_SELECTED; NO_UNIVERSAL_PHYSICAL_LAB_SELECTED",
+  "semantics": {
+    "THERMAL_LAB": "Thermal profile criterion used by the selected reduced column.",
+    "MECHANICAL_LAB": "Strength/weakening base; not selected or implied.",
+    "RHEOLOGICAL_LAB": "Constitutive threshold; requires rheology and is not selected.",
+    "SEISMIC_LAB": "Seismic transition; no ARCANA field or equivalence selected.",
+    "COMPOSITIONAL_LAB": "Material interface; not inferred from current domain fields.",
+    "MODEL_DOMAIN_BASE": "Computational truncation with declared location and boundary condition, not inherently a physical interface."
+  },
+  "selected_initializer_base": {
+    "meaning": "REDUCED_MODEL_THERMAL_BASE_WITH_ADIABATIC_MATCH",
+    "continental": "Use authored total thickness H as this model's thermal-base location and impose T(H)=T_ad(H); do not relabel H as mechanical LAB, Buck Xe/XL, or a universal physical LAB.",
+    "positive_age_ocean": "Use the shallowest HWR-2 profile/adiabat crossing; use the HWR finite-plate endpoint only under the source's coupled Tb/zp rule.",
+    "ridge": "Preserve age zero and use the source-defined effective-age inversion/crossing; fail closed on invalid support or crossing.",
+    "physical_equivalence": "None asserted to mechanical, rheological, seismic or compositional LAB."
+  },
+  "candidate_routes": [
+    {"id": "prescribed_physical_thermal_LAB_field", "status": "NOT_SELECTED", "reason": "No global field authority."},
+    {"id": "thermal_isotherm", "status": "NOT_SELECTED", "reason": "No criterion required by this recipe; no ARCANA isotherm/solidus authority."},
+    {"id": "rheological_LAB", "status": "NOT_REQUIRED_FOR_THERMAL_INITIALIZER", "reason": "Would require unbound rheology and coupled criterion."},
+    {"id": "independent_model_domain_base", "status": "NUMERICAL_SUPPORT_REQUIRED; NOT_A_PHYSICAL_LAB", "reason": "Finite solver support is necessary, but the selected reference recipe retains its own thermal/adiabatic base rule."},
+    {"id": "external_or_authorial_LAB_geometry", "status": "NOT_SELECTED", "reason": "Not needed for this model-specific thermal boundary; later Buck mechanics may need separate geometry authority."}
+  ],
+  "boundaries": {
+    "T0_surface": "Existing specialist TSurf=280 K nominal with 250-300 K range and the exact governed domain q rule, initializer only; not a global 210 Ma climate field.",
+    "T0_basal": "Model-specific adiabat/finite-plate thermal boundary; no universal Neumann flux, mantle temperature or physical LAB mapping selected.",
+    "surface_history_T0_T1": "UNKNOWN; no constant-world-boundary assumption.",
+    "basal_history_T0_T1": "UNKNOWN; no evolution boundary history selected.",
+    "continental_q_history_T0_T1": "UNKNOWN; authored T0 q is not itself a time function.",
+    "ocean_HWR_history": "HWR is age-dependent in its model coordinate; mapping world elapsed time, support motion and ridge/new-crust behavior over this interval is unbound."
+  },
+  "circularity": {
+    "initializer_graph_acyclic": true,
+    "controls": [
+      "Continental H is an authored input; the profile is solved to match its adiabat target, not used to infer H.",
+      "Ocean HWR profile is constructed from age and properties before its crossing is evaluated.",
+      "No viscosity-derived LAB and no iterative solver.",
+      "Do not feed an inferred LAB back into its own profile or rheology without separately governed coupled physics."
+    ]
+  },
+  "LAB_semantics_selected": false,
+  "LAB_field_materialized": false,
+  "iterative_solver_implemented": false,
+  "physical_LAB_equivalence_selected": false
+}

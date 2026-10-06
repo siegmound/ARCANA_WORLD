@@ -1,0 +1,234 @@
+{
+  "schema": "ARCANA_R6_B6N8J_THERMAL_DEPENDENCY_DAG_V1",
+  "nodes": [
+    {
+      "id": "NATIVE_T0_FIELDS",
+      "kind": "governed_input",
+      "outputs": [
+        "q/age/domain masks/crust geometry/continental H"
+      ]
+    },
+    {
+      "id": "MATERIAL_REFERENCE_CONFIG",
+      "kind": "existing_specialist_model_config",
+      "outputs": [
+        "k/rho/Cp/alpha/A/TSurf/HWR Tb/zp"
+      ]
+    },
+    {
+      "id": "EXPLICIT_ROLE_JOIN",
+      "kind": "binding_required",
+      "depends_on": [
+        "NATIVE_T0_FIELDS",
+        "MATERIAL_REFERENCE_CONFIG"
+      ],
+      "outputs": [
+        "per-column reference role mapping"
+      ],
+      "status": "must not infer composition"
+    },
+    {
+      "id": "HWR_ADIABAT_CONFIG",
+      "kind": "deterministic_derived_config",
+      "depends_on": [
+        "MATERIAL_REFERENCE_CONFIG"
+      ],
+      "outputs": [
+        "T_ad(z), derived Tp"
+      ]
+    },
+    {
+      "id": "INITIALIZER_GEOMETRY",
+      "kind": "existing_geometry",
+      "depends_on": [
+        "NATIVE_T0_FIELDS"
+      ],
+      "outputs": [
+        "surface/Moho/model-base support"
+      ]
+    },
+    {
+      "id": "T0_PROFILE",
+      "kind": "conditionally_replayable_derived_state",
+      "depends_on": [
+        "EXPLICIT_ROLE_JOIN",
+        "HWR_ADIABAT_CONFIG",
+        "INITIALIZER_GEOMETRY",
+        "NATIVE_T0_FIELDS"
+      ],
+      "outputs": [
+        "T(z,T0), interface diagnostics"
+      ],
+      "status": "not materialized"
+    },
+    {
+      "id": "PRE_T1_BOUNDARY_HISTORIES",
+      "kind": "unresolved_forcing",
+      "depends_on": [
+        "NATIVE_T0_FIELDS"
+      ],
+      "outputs": [
+        "pre-event surface/basal/q/ocean-age/support histories"
+      ]
+    },
+    {
+      "id": "PRE_T1_CONFIGURATION_EVOLUTION",
+      "kind": "unknown_physical_evolution",
+      "depends_on": [
+        "INITIALIZER_GEOMETRY",
+        "NATIVE_T0_FIELDS"
+      ],
+      "outputs": [
+        "geometry/support/material-boundary evolution"
+      ],
+      "status": "STRUCTURAL_GEOMETRY_T0_TO_T1=EVOLUTION_UNKNOWN; frozen geometry, if later used, is MODEL_CONFIGURATION_APPROXIMATION"
+    },
+    {
+      "id": "PRE_T1_REDUCED_EVOLUTION",
+      "kind": "unselected_model_authority",
+      "depends_on": [
+        "T0_PROFILE",
+        "PRE_T1_BOUNDARY_HISTORIES",
+        "PRE_T1_CONFIGURATION_EVOLUTION"
+      ],
+      "outputs": [
+        "T1 PRE_EVENT thermal profile"
+      ],
+      "status": "not executable; conduction sufficiency and integration/validity remain unresolved; no B6N2 post-event forcing"
+    },
+    {
+      "id": "T1_PRE_EVENT_PROFILE",
+      "kind": "not_ready_derived_state",
+      "depends_on": [
+        "PRE_T1_REDUCED_EVOLUTION"
+      ],
+      "outputs": [
+        "T1 PRE_EVENT thermal payload"
+      ],
+      "status": "not generated"
+    },
+    {
+      "id": "B6N1_ACTIVATION",
+      "kind": "governed_causal_event",
+      "depends_on": [
+        "T1_PRE_EVENT_PROFILE"
+      ],
+      "outputs": [
+        "causal transition at T1"
+      ],
+      "status": "activation at T1 endpoint; event does not itself authorize thermal discontinuity"
+    },
+    {
+      "id": "T1_POST_EVENT_THERMAL_ELIGIBILITY",
+      "kind": "conditional_state_binding",
+      "depends_on": [
+        "T1_PRE_EVENT_PROFILE",
+        "B6N1_ACTIVATION"
+      ],
+      "outputs": [
+        "eligible T1 POST_EVENT thermal payload"
+      ],
+      "status": "reuse T1 PRE_EVENT payload only if no separately authorized instantaneous thermal transition exists; no state generated"
+    },
+    {
+      "id": "B6N2_POST_EVENT_KINEMATICS",
+      "kind": "governed_post_event_authority",
+      "depends_on": [
+        "B6N1_ACTIVATION"
+      ],
+      "outputs": [
+        "post-event rigid kinematics"
+      ],
+      "status": "valid only at/after T1; no dependency into open T0-to-T1 evolution"
+    }
+  ],
+  "edges": [
+    [
+      "NATIVE_T0_FIELDS",
+      "EXPLICIT_ROLE_JOIN"
+    ],
+    [
+      "MATERIAL_REFERENCE_CONFIG",
+      "EXPLICIT_ROLE_JOIN"
+    ],
+    [
+      "MATERIAL_REFERENCE_CONFIG",
+      "HWR_ADIABAT_CONFIG"
+    ],
+    [
+      "NATIVE_T0_FIELDS",
+      "INITIALIZER_GEOMETRY"
+    ],
+    [
+      "EXPLICIT_ROLE_JOIN",
+      "T0_PROFILE"
+    ],
+    [
+      "HWR_ADIABAT_CONFIG",
+      "T0_PROFILE"
+    ],
+    [
+      "INITIALIZER_GEOMETRY",
+      "T0_PROFILE"
+    ],
+    [
+      "NATIVE_T0_FIELDS",
+      "T0_PROFILE"
+    ],
+    [
+      "NATIVE_T0_FIELDS",
+      "PRE_T1_BOUNDARY_HISTORIES"
+    ],
+    [
+      "NATIVE_T0_FIELDS",
+      "PRE_T1_CONFIGURATION_EVOLUTION"
+    ],
+    [
+      "INITIALIZER_GEOMETRY",
+      "PRE_T1_CONFIGURATION_EVOLUTION"
+    ],
+    [
+      "T0_PROFILE",
+      "PRE_T1_REDUCED_EVOLUTION"
+    ],
+    [
+      "PRE_T1_BOUNDARY_HISTORIES",
+      "PRE_T1_REDUCED_EVOLUTION"
+    ],
+    [
+      "PRE_T1_CONFIGURATION_EVOLUTION",
+      "PRE_T1_REDUCED_EVOLUTION"
+    ],
+    [
+      "PRE_T1_REDUCED_EVOLUTION",
+      "T1_PRE_EVENT_PROFILE"
+    ],
+    [
+      "T1_PRE_EVENT_PROFILE",
+      "B6N1_ACTIVATION"
+    ],
+    [
+      "T1_PRE_EVENT_PROFILE",
+      "T1_POST_EVENT_THERMAL_ELIGIBILITY"
+    ],
+    [
+      "B6N1_ACTIVATION",
+      "T1_POST_EVENT_THERMAL_ELIGIBILITY"
+    ],
+    [
+      "B6N1_ACTIVATION",
+      "B6N2_POST_EVENT_KINEMATICS"
+    ]
+  ],
+  "temporal_causal_semantics": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "elapsed_years": 27123.40515632,
+    "RIFT_ACTIVATION_WITHIN_OPEN_INTERVAL_T0_T1": false,
+    "RIFT_ACTIVATION_AT_T1_ENDPOINT": true,
+    "POST_EVENT_KINEMATICS_APPLICABLE_DURING_T0_T1": false,
+    "STRUCTURAL_GEOMETRY_T0_TO_T1": "EVOLUTION_UNKNOWN",
+    "instantaneous_thermal_jump_authorized_by_activation": false
+  },
+  "cycle_check": "PASS_DAG_ACYCLIC; pre-event evolution terminates at T1 PRE_EVENT, B6N1 activation is at the endpoint, and B6N2 has no dependency into the open interval; no derived LAB/profile feeds its own inputs."
+}

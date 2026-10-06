@@ -1,0 +1,181 @@
+{
+  "schema": "ARCANA_R6_REDUCED_LITHOSPHERIC_THERMAL_INITIALIZATION_AND_EVOLUTION_V0",
+  "stage": "B6N8-J",
+  "status": "T0_REFERENCE_INITIALIZER_SELECTED_FOR_IMPLEMENTATION_AFTER_BINDING; T0_TO_T1_EVOLUTION_NOT_AUTHORIZED",
+  "scope": "Noncanonical, replayable reduced reference column on explicit native T0 support. Static adjudication only; no state or production evolution created.",
+  "time": {
+    "T0_Ma": 210.0,
+    "T1_Ma": 209.97287659484368,
+    "elapsed_years": 27123.40515632,
+    "target_selector": "POST_EVENT",
+    "governed_causal_order": [
+      "T0",
+      "PRE_EVENT_T0_TO_T1_EVOLUTION",
+      "T1_PRE_EVENT",
+      "B6N1_RIFT_PROCESS_ACTIVATION",
+      "T1_POST_EVENT"
+    ],
+    "RIFT_ACTIVATION_WITHIN_OPEN_INTERVAL_T0_T1": false,
+    "RIFT_ACTIVATION_AT_T1_ENDPOINT": true,
+    "POST_EVENT_KINEMATICS_APPLICABLE_DURING_T0_T1": false,
+    "B6N2_post_event_kinematics_during_T0_T1": "NOT_APPLICABLE; do not use as physical forcing for the open pre-event interval",
+    "same_age_causal_states": "T1 PRE_EVENT and T1 POST_EVENT have the same physical age and distinct causal semantics."
+  },
+  "state_and_configuration": {
+    "thermal_state": "T(z) over identified native column support; derived/replayable, not a current canonical payload.",
+    "configuration": [
+      "existing reduced transient coupling algorithm/version",
+      "constant per reference layer k/rho/Cp/alpha/A",
+      "adiabat relation",
+      "boundary rules",
+      "deterministic tolerances"
+    ],
+    "geometry": [
+      "authored crust thickness/Moho and datum",
+      "authored continental H or ocean HWR finite-plate support",
+      "explicit valid/UNKNOWN mask"
+    ],
+    "material_identity": "Model reference roles only; explicit native-support role join required; no composition inference."
+  },
+  "spatial_scope": {
+    "selected_scope": "ONE_REDUCED_COLUMN_PER_SUPPORTED_NATIVE_T0_SOURCE_CELL",
+    "coverage": "Only cells with governed q/age/domain/geometry support and a valid explicit material-role join; preserve UNKNOWN and fail closed outside support.",
+    "resolution": "Native source-cell resolution only; no interpolation, global extrapolation, or resolution promotion.",
+    "Buck_section_mapping": "Deferred to B6N8-F; a per-cell column is not itself a Buck section or section-support authority."
+  },
+  "initializer": {
+    "family": "EXISTING_ARCANA_HYBRID_TRANSIENT_COLUMN_REFERENCE_MODEL",
+    "continental": "Existing analytical fixed-geometry transient-rate profile with T(H)=T_ad(H), authored q/TSurf, reference layers and source term; effective Tdot is a snapshot closure, not a time-history primitive.",
+    "ocean_ridge": "Existing HWR-2 profile, deterministic series and Hermite projection; source-defined age-zero ridge inversion.",
+    "selected_scope": "T0 reduced reference-profile construction only, conditional on support/material-role binding and provider validation.",
+    "pre_T0": "The formula can be evaluated without stepping a numerical model before T0 once inputs are authorized. PRE_T0_HISTORY_REQUIRED remains NOT_DEMONSTRATED; history is not proven unnecessary."
+  },
+  "boundaries": {
+    "T0_surface": "Existing TSurf reference and governed domain q rule; no climate interpretation.",
+    "T0_base": "Model-specific thermal/adiabatic matching and finite-plate rule in B6N8J_LAB_BASAL_BOUNDARY_DECISION.json.",
+    "histories_T0_T1": "Not bound; no constant-world-boundary assumption.",
+    "event_transition": "B6N1 activation is a causal event at the T1 endpoint; it does not authorize an instantaneous thermal discontinuity. T1 PRE_EVENT thermal state is eligible to serve as the T1 POST_EVENT thermal payload only if no separately authorized instantaneous thermal transition exists. This is a requirement, not a generated state."
+  },
+  "candidate_evolution": {
+    "status": "NOT_AUTHORIZED_OR_EXECUTABLE",
+    "equation_candidate": "rho*Cp*dT/dt = div(k grad T) + A",
+    "equation_status": "Candidate form only; not selected as a complete T0-to-T1 physical model.",
+    "missing": [
+      "governed pre-event surface/basal/q and ocean-age/support histories over T0-to-T1",
+      "pre-T1 geometry/support/configuration evolution treatment; STRUCTURAL_GEOMETRY_T0_TO_T1 remains EVOLUTION_UNKNOWN",
+      "conduction-only sufficiency and target applicability of the Tdot snapshot closure",
+      "selected complete evolution law, time integration, uncertainty and validity contract",
+      "mapping of the thermal result to B6N8-F target section support"
+    ],
+    "frozen_configuration": "If later authorized, FROZEN_CONFIGURATION_FOR_THERMAL_PROTOTYPE is MODEL_CONFIGURATION_APPROXIMATION; STRUCTURAL_GEOMETRY_T0_TO_T1 remains EVOLUTION_UNKNOWN and is not physical proof of constant geometry.",
+    "STRUCTURAL_GEOMETRY_T0_TO_T1": "EVOLUTION_UNKNOWN"
+  },
+  "omitted_processes": [
+    {
+      "process": "post-activation extension-related vertical motion from B6N1/B6N2 kinematics",
+      "status": "NOT_APPLICABLE_DURING_OPEN_T0_TO_T1; activation is at the T1 endpoint"
+    },
+    {
+      "process": "other/background advection or vertical motion independent of post-event kinematics",
+      "status": "UNKNOWN; no source-backed bound established"
+    },
+    {
+      "process": "material-boundary or geometry motion",
+      "status": "EVOLUTION_UNKNOWN; no invariance inferred"
+    },
+    {
+      "process": "lower-crust flow",
+      "status": "not required by the T0 conductive initializer; physical absence not established"
+    },
+    {
+      "process": "mantle upwelling",
+      "status": "UNKNOWN; no independent pre-T1 authority or bound identified; not sourced from B6N2 post-event kinematics"
+    },
+    {
+      "process": "post-activation mechanical-work heating",
+      "status": "NOT_APPLICABLE_DURING_OPEN_T0_TO_T1; activation is at the T1 endpoint"
+    },
+    {
+      "process": "other pre-event thermal/mechanical work",
+      "status": "UNKNOWN; not part of initializer and not bounded"
+    },
+    {
+      "process": "radiogenic heating",
+      "status": "existing source term included in initializer; temporal source history not separately bound"
+    }
+  ],
+  "timescale_diagnostic_only": {
+    "seconds": 855949570561.0841,
+    "length_convention": "sqrt(kappa*t); 2*sqrt(kappa*t) is also reported as an error-function e-fold scale.",
+    "crust_kappa_from_existing_reference_corners_m2_s": [
+      5.172413793103448e-07,
+      1.388888888888889e-06
+    ],
+    "crust_sqrt_kappa_t_m": [
+      665.4,
+      1090.4
+    ],
+    "crust_2sqrt_kappa_t_m": [
+      1330.8,
+      2180.7
+    ],
+    "mantle_kappa_existing_range_m2_s": [
+      7.058823529411765e-07,
+      1.1647727272727272e-06
+    ],
+    "mantle_sqrt_kappa_t_m": [
+      777.3,
+      998.5
+    ],
+    "mantle_2sqrt_kappa_t_m": [
+      1554.6,
+      1997.0
+    ],
+    "limits": "Diagnostic only using specialist ranges whose target-material applicability remains conditional. Does not establish a steady initial profile, invariant geometry/boundaries, or negligibility of advection/other processes."
+  },
+  "readiness": {
+    "T0_THERMAL_STATE_CONSTRUCTIBLE": "CONDITIONALLY_YES_AFTER_EXPLICIT_ROLE_SUPPORT_BINDING_AND_PROVIDER_VALIDATION",
+    "T0_TO_T1_THERMAL_EVOLUTION_EXECUTABLE": "NO",
+    "T1_POST_EVENT_THERMAL_STATE_CONSTRUCTIBLE": false,
+    "FIRST_BUCK_PROCESS_EVALUATION_READY": false,
+    "T1_POST_EVENT_thermal_state_constructible": false
+  },
+  "uncertainty": {
+    "preserve_separately": [
+      "source/range",
+      "material-role applicability",
+      "support coverage",
+      "model form",
+      "geometry",
+      "boundary history",
+      "thermal-base semantics",
+      "structural EVOLUTION_UNKNOWN"
+    ],
+    "probability_distributions_invented": false
+  },
+  "persistence": {
+    "derived_profile": "DERIVED_REPLAYABLE_T0_STATE only with pinned parents, recipe/version, support, validity and configuration hashes; canonical publication requires separate authorization.",
+    "material_properties": "MODEL_CONFIGURATION",
+    "boundary_histories": "GOVERNED_FORCING_OR_MODEL_CONFIGURATION",
+    "solver_iterates": "temporary, not WORLD_HISTORY epochs by default"
+  },
+  "diagnostics_required_before_T0_materialization": [
+    "finite and bounded profile",
+    "exact surface rule",
+    "Moho temperature/flux continuity",
+    "model-base match",
+    "support and UNKNOWN closure",
+    "source-range sensitivity/fail-closed checks",
+    "replay identity"
+  ],
+  "non_goals": [
+    "Buck mechanics/rheology",
+    "Xe/XL/Ux/strain rate",
+    "mechanical LAB",
+    "T0/T1 canonical publication",
+    "T0-to-T1 integration",
+    "T2/dt2",
+    "topology or support mutation"
+  ],
+  "post_event_thermal_semantics": "POST_EVENT causal semantics do not imply an instantaneous thermal jump. No temperature reset, heat pulse, geotherm change, or material-property jump is authorized by B6N1 activation alone. T1 PRE_EVENT profile may be reused as T1 POST_EVENT thermal payload only if no separate instantaneous thermal transition is authorized; no state is generated here."
+}
