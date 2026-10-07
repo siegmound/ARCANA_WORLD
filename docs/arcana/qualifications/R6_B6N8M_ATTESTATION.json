@@ -1,0 +1,286 @@
+{
+  "schema": "ARCANA_R6_B6N8M_FINAL_ATTESTATION_V1",
+  "stage": "B6N8-M",
+  "qualified_source_commit": "92cf7605f5ec47d0646fe3b4ab1cf4d9ac18e65d",
+  "governing_parent": "725974b2c5b2635f94b61de7342132e54fdb7f92",
+  "qualification_status": "PASS",
+  "scientific_decision": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION",
+  "remediation": {
+    "revision": "R1",
+    "superseded_failed_source": "9932dd451f9dc0e4601244f4d43833f11dfe2ec6",
+    "superseded_failed_verdict": "BLOCKED_B6N8M_ANALYTIC_MATRIX_SCHEMA_INCOMPLETE",
+    "changed_relative_to_failed_source": [
+      "docs/arcana/research/B6N8M_ANALYTIC_IDENTIFIABILITY_MATRIX.json"
+    ],
+    "matrix_fields_added": [
+      "question",
+      "evidence",
+      "requires_new_external_authority"
+    ],
+    "historical_failed_qualification_bundle": "IMMUTABLE_PRESERVED"
+  },
+  "qualification_evidence": {
+    "relative_root": "ARCANA_WORLD_QUALIFICATION_EVIDENCE/B6N8M/92cf7605f5ec47d0646fe3b4ab1cf4d9ac18e65d",
+    "artifact_manifest_entries": 18,
+    "artifact_manifest_sha256": "f0c1e732ba7cfb9f7b8e8815c24a7dcdf9fd4eb6ca44975bbca4686466693097",
+    "aggregate_evidence_content_sha256": "00a489efd7dc0c19e89cf1d17735194d902c54e83570ddc8c35c3026467e51f0",
+    "qualification_checks": 49,
+    "all_manifest_entries_verified": true
+  },
+  "source_delta_parent_to_source": {
+    "paths": [
+      "docs/arcana/research/B6N8M_ANALYTIC_IDENTIFIABILITY_MATRIX.json",
+      "docs/arcana/research/B6N8M_B6N8L_READINESS_OVERLAY.json",
+      "docs/arcana/research/B6N8M_CONDUCTION_SUFFICIENCY_IDENTIFIABILITY_AUDIT.md",
+      "docs/arcana/research/B6N8M_INITIALIZER_IMPLEMENTATION_REQUIREMENTS.json",
+      "docs/arcana/research/B6N8M_T0_PROFILE_NECESSITY_DECISION.json"
+    ],
+    "executable_code_changed": false,
+    "canonical_mutation": false
+  },
+  "analytic_matrix": {
+    "row_count": 9,
+    "question_fields_present": "9/9",
+    "evidence_fields_present": "9/9",
+    "requires_new_external_authority_fields_present": "9/9",
+    "preexisting_scientific_row_values_changed": false,
+    "requires_new_external_authority_true_rows": [
+      "omitted_advection_and_flow",
+      "worst_case_envelope"
+    ],
+    "requires_new_external_authority_false_rows": [
+      "Buck_tolerance",
+      "absolute_T1_state",
+      "admitted_support",
+      "boundary_scenario_delta",
+      "geometry_migration",
+      "property_corner_delta",
+      "source_scenario_delta"
+    ],
+    "false_means_fully_resolved": false
+  },
+  "scientific_interpretation": {
+    "absolute_T1_state": "T0_PROFILE_REQUIRED",
+    "boundary_scenario_differentials": "PARTIALLY_PROFILE_INDEPENDENT_UNDER_COMMON_INITIAL_STATE_AND_COMMON_LINEAR_OPERATOR",
+    "source_term_differentials": "PARTIALLY_PROFILE_INDEPENDENT_UNDER_COMMON_INITIAL_STATE_AND_COMMON_LINEAR_OPERATOR",
+    "differential_initial_state_cancellation_is_absolute_initial_state_independence": false,
+    "final_Buck_relevant_sufficiency": "NOT_YET_DECIDABLE",
+    "conduction_only_declared_sufficient": false,
+    "conduction_only_declared_insufficient": false,
+    "final_conduction_sufficiency": "INCONCLUSIVE",
+    "acceptance_threshold": "UNRESOLVED",
+    "Buck_section_selected": false,
+    "B6N8F_section_support_authority": "UNRESOLVED"
+  },
+  "T0_T1": {
+    "T0_Ma": 210.0,
+    "T1_PRE_EVENT_Ma": 209.97287659484368,
+    "elapsed_years": 27123.40515632,
+    "B6N2_forcing_during_interval": false,
+    "T0_PROFILE_MATERIALIZED": false,
+    "T0_PHYSICAL_STATE_GENERATED": false,
+    "T1_PHYSICAL_STATE_GENERATED": false
+  },
+  "diagnostics": {
+    "sqrt_kappa_t": {
+      "crust_km": [
+        0.6654,
+        1.0904
+      ],
+      "mantle_km": [
+        0.7773,
+        0.9985
+      ],
+      "diagnostic_only": true
+    },
+    "illustrative_30K_halfspace_response": {
+      "at_2km_K": 5.83840598,
+      "at_5km_K": 0.0355297862,
+      "diagnostic_only": true,
+      "physical_history_or_steady_state_or_geometry_invariance_or_Buck_acceptance": false
+    }
+  },
+  "support_and_initializer": {
+    "support_material_layer_property_tuple_binding": "INCOMPLETE_IMMEDIATE_PREREQUISITE",
+    "initializer_implementation": "CONDITIONALLY_AUTHORIZED_AFTER_SUPPORT_BINDING",
+    "initializer_implementation_unconditionally_authorized": false,
+    "initializer_execution_authorized": false,
+    "minimum_future_output": {
+      "geometry_identity": "T0 geometry/configuration hash and reduced-model freeze label",
+      "initializer_provenance": "recipe/version, input authority identities, source accounting, scenario/config identity and deterministic replay identity",
+      "material_layer_identity": "discrete layer/material role identity; never interpolate IDs",
+      "property_tuple_references": "coherent k,rho,Cp references; kappa replay-derived as k/(rho Cp)",
+      "support_id": "exact native support/column ID",
+      "temperature": "T(z,T0) in K at T0=210 Ma",
+      "uncertainty": "source/range, role applicability, model form, support and validity kept distinct; no invented probabilities",
+      "validity": "T0 selector, admitted support, explicit UNKNOWN/exclusion mask and validity domain",
+      "vertical_coordinate": "ordered native vertical datum and layer/interface coordinates"
+    },
+    "future_validation_requirements": [
+      "support/material-role join with fail-closed behavior",
+      "contract/time binding exactly T0",
+      "initializer equations and source accounting consistent; no steady-state substitution",
+      "surface/base/layer interface compatibility under already selected initializer contract",
+      "finite/plausibility checks only within initializer authority",
+      "deterministic replay and payload identity",
+      "parameter/source sensitivity with UNKNOWN preserved",
+      "no support expansion or missing-to-zero mapping",
+      "uncertainty and provenance propagation",
+      "no T1/evolution, no WORLD_HISTORY publication"
+    ],
+    "excluded_support": {
+      "unresolved_positive_age_ocean_cells": 1072,
+      "zero_age_ridge_cells": 108,
+      "generalize_M_findings_to_excluded_support": false,
+      "resolve_excluded_support_before_restricted_admitted_path": false
+    }
+  },
+  "geometry_and_processes": {
+    "STRUCTURAL_GEOMETRY_T0_TO_T1": "EVOLUTION_UNKNOWN",
+    "frozen_T0_geometry": "MODEL_CONFIGURATION_APPROXIMATION",
+    "omitted_pre_event_advection_flow": "ADDITIONAL_PROCESS_AUTHORITY_REQUIRED",
+    "worst_case_envelope": "INCOMPLETE_ADDITIONAL_AUTHORITY_REQUIRED",
+    "missing_velocity_means_zero": false,
+    "Buck_section_Ux_Xe_XL_strain_rate_selected_or_materialized": false
+  },
+  "M1_M14": [
+    {
+      "basis": "Four meanings defined; no sufficiency result claimed.",
+      "gate": "M1_SUFFICIENCY_SEMANTICS_DEFINED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "Observable classes recovered; target depths and section remain unselected.",
+      "gate": "M2_DOWNSTREAM_OBSERVABLES_IDENTIFIED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "basis": "No thermal tolerance; define authorially after target selection.",
+      "gate": "M3_ACCEPTANCE_CRITERION_AUTHORITY",
+      "status": "BLOCKED_UNRESOLVED"
+    },
+    {
+      "basis": "Same operator and initial profile required; scenario contrast only.",
+      "gate": "M4_PROFILE_INDEPENDENT_BOUNDARY_SENSITIVITY",
+      "status": "PASS_CONDITIONAL"
+    },
+    {
+      "basis": "Same operator and initial profile required; model source contrast only.",
+      "gate": "M5_PROFILE_INDEPENDENT_SOURCE_SENSITIVITY",
+      "status": "PASS_CONDITIONAL"
+    },
+    {
+      "basis": "Absolute and differential dependencies separated.",
+      "gate": "M6_INITIAL_PROFILE_DEPENDENCE_CLASSIFIED",
+      "status": "PASS"
+    },
+    {
+      "basis": "Pre-event process/geometry bounds absent; no velocity-zero assumption.",
+      "gate": "M7_OMITTED_PROCESS_IDENTIFIABILITY",
+      "status": "BLOCKED_AUTHORITY"
+    },
+    {
+      "basis": "Admitted joined support only; global support not qualified.",
+      "gate": "M8_SUPPORT_RESTRICTED_IDENTIFIABILITY",
+      "status": "PASS_SCOPED_WITH_BLOCKERS"
+    },
+    {
+      "basis": "B6N8-F mapping remains open.",
+      "gate": "M9_BUCK_TARGET_DEPENDENCE",
+      "status": "BLOCKED_TARGET_UNSELECTED"
+    },
+    {
+      "basis": "Four result classes kept distinct.",
+      "gate": "M10_ABSOLUTE_VS_DIFFERENTIAL_DECISIONS",
+      "status": "PASS"
+    },
+    {
+      "basis": "Required for absolute state/final accuracy, not same-operator sensitivity.",
+      "gate": "M11_T0_PROFILE_NECESSITY",
+      "status": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION"
+    },
+    {
+      "basis": "Implementation/validation only after exact support join.",
+      "gate": "M12_INITIALIZER_IMPLEMENTATION_TRIGGER",
+      "status": "CONDITIONALLY_AUTHORIZED_AFTER_SUPPORT_BINDING"
+    },
+    {
+      "basis": "Minimum provider output specified.",
+      "gate": "M13_MINIMUM_T0_OUTPUT_CONTRACT",
+      "status": "PASS_REQUIREMENTS_DEFINED"
+    },
+    {
+      "basis": "No runtime execution authorization.",
+      "gate": "M14_READY_FOR_NEXT_EXECUTION_STAGE",
+      "status": "CONDITIONAL_T0_INITIALIZER_PROVIDER_IMPLEMENTATION_AFTER_SUPPORT_BINDING"
+    }
+  ],
+  "next_stage_boundary": {
+    "immediate_closure": "EXACT_SUPPORT_MATERIAL_LAYER_PROPERTY_TUPLE_BINDING_ON_ADMITTED_SUPPORT",
+    "initializer_execution_before_closure_authorized": false,
+    "finite_residual_set": [
+      {
+        "item": "exact per-column support/material/layer/property-tuple binding on admitted support",
+        "scope": "immediate prerequisite before initializer implementation"
+      },
+      {
+        "item": "initializer implementation and validation",
+        "scope": "after exact binding; not authorized for execution/materialization here"
+      },
+      {
+        "item": "T0 profile materialization",
+        "scope": "absolute T1 and final sufficiency decision require it"
+      },
+      {
+        "item": "bounds/authority for omitted pre-event processes",
+        "scope": "needed for model-form/worst-case sufficiency"
+      },
+      {
+        "item": "Buck target support/section",
+        "scope": "B6N8-F downstream mapping remains unresolved"
+      },
+      {
+        "item": "Buck-relevant acceptance threshold",
+        "scope": "authorial/target-dependent; unset"
+      },
+      {
+        "item": "final conduction-sufficiency adjudication",
+        "scope": "inconclusive pending above prerequisites"
+      },
+      {
+        "item": "1072 unresolved oceanic and 108 zero-age ridge cells",
+        "scope": "broader/global coverage only unless later authority establishes restricted-target relevance"
+      }
+    ]
+  },
+  "WORLD_HISTORY": {
+    "accessed_during_B6N8M_qualification": false,
+    "changed": false,
+    "inventory_comparison_claimed": false
+  },
+  "non_actions": {
+    "scientific_decision_changed": false,
+    "T0_profile_generated": false,
+    "T0_physical_state_generated": false,
+    "T1_physical_state_generated": false,
+    "initializer_provider_implemented": false,
+    "production_thermal_provider_implemented": false,
+    "production_thermal_evolution_executed": false,
+    "conduction_only_declared_sufficient": false,
+    "conduction_only_declared_insufficient": false,
+    "new_acceptance_threshold_selected": false,
+    "new_physical_parameter_selected": false,
+    "new_boundary_value_selected": false,
+    "Buck_section_selected": false,
+    "Buck_Ux_materialized": false,
+    "Buck_Xe_selected": false,
+    "Buck_XL_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "Buck_mechanics_executed": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_changed": false,
+    "B6N8N_started": false
+  }
+}
