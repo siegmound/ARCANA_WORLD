@@ -1,0 +1,69 @@
+{
+  "decision": "BLOCKED_B6N8P_EXECUTION_CONFIGURATION_INCOMPLETE",
+  "executable_scenario_count": null,
+  "executable_scenario_count_status": "UNKNOWN",
+  "executable_scenario_roster_bound": false,
+  "execution_adapter_required": true,
+  "expected_candidate_cardinality": "63620 \u00d7 N",
+  "gates": [
+    {
+      "gate": "P1_B6N8O_AUTHORITY_VERIFIED",
+      "status": "PASS"
+    },
+    {
+      "gate": "P2_REAL_EXECUTION_PATH_CLASSIFIED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "gate": "P3_EXECUTION_ADAPTER_NECESSITY_DECIDED",
+      "status": "PASS_ADAPTER_REQUIRED"
+    },
+    {
+      "gate": "P4_EXACT_INPUT_SNAPSHOT_BOUND",
+      "status": "PASS"
+    },
+    {
+      "gate": "P5_EXECUTION_CONFIGURATION_BOUND",
+      "status": "BLOCKED_T0_SCENARIO_ROSTER_NOT_BOUND"
+    },
+    {
+      "gate": "P6_SCENARIO_MULTIPLICITY_RESOLVED",
+      "status": "BLOCKED_EXECUTABLE_ROSTER_AND_N_UNBOUND"
+    },
+    {
+      "gate": "P7_CANDIDATE_OUTPUT_CONTRACT_COMPLETE",
+      "status": "PASS_CONTRACT_ONLY"
+    },
+    {
+      "gate": "P8_CANDIDATE_STORAGE_AND_IDENTITY_DEFINED",
+      "status": "PASS_OPERATIONAL_ROOT_BOUND_AT_RUN"
+    },
+    {
+      "gate": "P9_FAILURE_AND_PARTIAL_RUN_SEMANTICS_DEFINED",
+      "status": "PASS"
+    },
+    {
+      "gate": "P10_PRE_RUN_GATES_COMPLETE",
+      "status": "BLOCKED_ADAPTER_AND_ROSTER"
+    },
+    {
+      "gate": "P11_POST_RUN_VALIDATION_COMPLETE",
+      "status": "PASS_CONTRACT_ONLY_NOT_EXECUTED"
+    },
+    {
+      "gate": "P12_CANONICAL_PUBLICATION_FIREWALL_DEFINED",
+      "status": "PASS"
+    },
+    {
+      "gate": "P13_WORLD_HISTORY_ISOLATION_CONFIRMED",
+      "status": "PASS_NO_ACCESS"
+    },
+    {
+      "gate": "P14_REAL_EXECUTION_READINESS_DECIDED",
+      "status": "BLOCKED_REAL_T0_EXECUTION_NOT_READY"
+    }
+  ],
+  "real_T0_execution_ready": false,
+  "scenario_multiplicity": "AUTHORIZED_SCENARIO_ENSEMBLE",
+  "schema": "ARCANA_R6_B6N8P_GATE_MATRIX_V1"
+}

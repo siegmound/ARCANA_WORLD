@@ -1,0 +1,497 @@
+{
+  "P1_P14": [
+    [
+      "P1_B6N8O_AUTHORITY_VERIFIED",
+      "PASS"
+    ],
+    [
+      "P2_REAL_EXECUTION_PATH_CLASSIFIED",
+      "PASS_SCOPED"
+    ],
+    [
+      "P3_EXECUTION_ADAPTER_NECESSITY_DECIDED",
+      "PASS_ADAPTER_REQUIRED"
+    ],
+    [
+      "P4_EXACT_INPUT_SNAPSHOT_BOUND",
+      "PASS"
+    ],
+    [
+      "P5_EXECUTION_CONFIGURATION_BOUND",
+      "BLOCKED_T0_SCENARIO_ROSTER_NOT_BOUND"
+    ],
+    [
+      "P6_SCENARIO_MULTIPLICITY_RESOLVED",
+      "BLOCKED_EXECUTABLE_ROSTER_AND_N_UNBOUND"
+    ],
+    [
+      "P7_CANDIDATE_OUTPUT_CONTRACT_COMPLETE",
+      "PASS_CONTRACT_ONLY"
+    ],
+    [
+      "P8_CANDIDATE_STORAGE_AND_IDENTITY_DEFINED",
+      "PASS_OPERATIONAL_ROOT_BOUND_AT_RUN"
+    ],
+    [
+      "P9_FAILURE_AND_PARTIAL_RUN_SEMANTICS_DEFINED",
+      "PASS"
+    ],
+    [
+      "P10_PRE_RUN_GATES_COMPLETE",
+      "BLOCKED_ADAPTER_AND_ROSTER"
+    ],
+    [
+      "P11_POST_RUN_VALIDATION_COMPLETE",
+      "PASS_CONTRACT_ONLY_NOT_EXECUTED"
+    ],
+    [
+      "P12_CANONICAL_PUBLICATION_FIREWALL_DEFINED",
+      "PASS"
+    ],
+    [
+      "P13_WORLD_HISTORY_ISOLATION_CONFIRMED",
+      "PASS_NO_ACCESS"
+    ],
+    [
+      "P14_REAL_EXECUTION_READINESS_DECIDED",
+      "BLOCKED_REAL_T0_EXECUTION_NOT_READY"
+    ]
+  ],
+  "authority": {
+    "B6N8N": {
+      "attestation_sha256": "e9ce2a8ab8346b26594edf81ffadeab0307e4e955bccac7b99b6e331b5452dc6",
+      "source_commit": "9d94170ae4a35267cbccd087e112841b4215d07e",
+      "verdict": "PASS_B6N8N_ADMITTED_SUPPORT_BINDINGS_CLOSED_READY_FOR_T0_INITIALIZER_IMPLEMENTATION"
+    },
+    "B6N8O": {
+      "attestation_sha256": "e3be3c02ff4a4b1f14e2953063cafd3aec8a19f0332df2a205fea30e1c07d981",
+      "qualification_status": "PASS",
+      "qualification_verdict": "PASS_B6N8O_T0_INITIALIZER_IMPLEMENTATION_QUALIFIED_PRODUCTION_EXECUTION_NOT_AUTHORIZED",
+      "source_commit": "73d98ee14f933622f0d3f18f66985b06f364abcd",
+      "source_implementation_verdict": "PASS_B6N8O_T0_INITIALIZER_PROVIDER_IMPLEMENTED_VALIDATED_READY_FOR_IMPLEMENTATION_QUALIFICATION"
+    }
+  },
+  "baseline_commit": "1dfaba5f7413f7623319ade6ed5539efb9bc46d3",
+  "boundaries": {
+    "Buck": "B6N8-F remains separate; no section/Ux/Xe/XL/strain/mechanics",
+    "conduction": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION"
+  },
+  "candidate": {
+    "content": "complete qualified analytic piecewise column, interfaces/base semantics, temperatures/fluxes, discrete roles and tuple/source refs, configuration, lineage, uncertainty, provenance and validation state",
+    "generation_is_publication": false,
+    "key": [
+      "support_id",
+      "scenario_id",
+      "configuration_identity_sha256"
+    ],
+    "production_grid": "NONE",
+    "record_schema": "ARCANA_R6_T0_THERMAL_INITIALIZER_CANDIDATE_V1",
+    "semantics": [
+      "CANDIDATE",
+      "UNPUBLISHED",
+      "NON_CANONICAL",
+      "VALIDATION_PENDING"
+    ]
+  },
+  "candidate_output_contract_identity_sha256": "3530e0242eceb776b84ae3b5dfa45d445ad4a5a6561347b0d21c097731930713",
+  "cardinality": {
+    "current_N": null,
+    "ensemble": "63620*N",
+    "single_config": 63620
+  },
+  "configuration": {
+    "age_ma": 210.0,
+    "continental": "authored q by existing thermal class; CONTINENTAL_AUTHORED_Q_AND_T0_REFERENCE_V1",
+    "family": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+    "geometry": "exact native support; MODEL_DOMAIN_BASE distinct from physical LAB",
+    "oceanic": "HWR-2 positive-age; HWR2_POSITIVE_AGE_BOUNDARY_V1",
+    "properties": "existing coherent role tuples; kappa=k/(rho*Cp); overrides require explicit scenario/config identity",
+    "representation": "analytic piecewise; no production vertical grid",
+    "uncertainty": "preserve separate authority dimensions; no inferred probabilities"
+  },
+  "decision": "BLOCKED_B6N8P_EXECUTION_CONFIGURATION_INCOMPLETE",
+  "exclusions": {
+    "fallback_or_remapping": false,
+    "generated": false,
+    "unresolved_positive_age_ocean": 1072,
+    "zero_age_ridge": 108
+  },
+  "executable_scenario_count": null,
+  "executable_scenario_roster_bound": false,
+  "execution": {
+    "chunking_semantic": false,
+    "order": "stable support-ID order and explicit scenario order",
+    "streaming": "bounded deterministic batches/streaming"
+  },
+  "execution_adapter_required": true,
+  "execution_path": {
+    "adapter_required": "YES_REQUIRED",
+    "adapter_scope": [
+      "verify contract and authority hashes",
+      "bind exact native columns and scenarios",
+      "invoke qualified kernels without duplicating equations or bypassing guard",
+      "stream candidate records",
+      "manifest/hash and validate outputs",
+      "no canonical publication"
+    ],
+    "classification": "A_CORE_KERNEL_REUSABLE_BUT_GOVERNED_PRODUCTION_ADAPTER_MISSING",
+    "guard": "explicit noncanonical fixture marker, NON_CANONICAL_ fixture name and TEST_ support ID required",
+    "metadata_preflight": "validates exact support/configuration metadata; no profile evaluation",
+    "numeric_entrypoint": "evaluate_synthetic_fixture only"
+  },
+  "expected_candidate_cardinality": "63620 \u00d7 N",
+  "failure": {
+    "abort_on": [
+      "identity/binding mismatch",
+      "unexpected or excluded support",
+      "missing tuple",
+      "invalid geometry",
+      "nonfinite result",
+      "numerical exception",
+      "provenance/hash mismatch",
+      "write failure/interruption"
+    ],
+    "partial": "INVALID_INCOMPLETE_CANDIDATE_SET; never complete/promotable",
+    "resume": "same immutable run identity only; verify each record before reuse; no cross-run mixing"
+  },
+  "firewall": {
+    "HistoryStore": false,
+    "WORLD_HISTORY_mutation": false,
+    "canonical_checkpoint": false,
+    "history_visibility_update": false,
+    "promotion_separate_stage": true,
+    "run_success_is_acceptance": false
+  },
+  "immutable_input_snapshot": {
+    "B6N8N_index_authorities": [
+      {
+        "canonical_text_sha256": "deace3e8221050baf2d07f82bc50976861d4beaf9a4e23229dc883d0d1810203",
+        "file_sha256": "deace3e8221050baf2d07f82bc50976861d4beaf9a4e23229dc883d0d1810203",
+        "path": "R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+        "role": "existing heat-flow/HWR configuration"
+      },
+      {
+        "canonical_text_sha256": "729d4dc0a8ee8bc5a673ffb7825392edb631749758479ce8f2cc75dc35cec5a1",
+        "file_sha256": "729d4dc0a8ee8bc5a673ffb7825392edb631749758479ce8f2cc75dc35cec5a1",
+        "path": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_AND_RUNTIME_CLOSURE.json",
+        "role": "ridge identity and positive-age eligibility"
+      },
+      {
+        "canonical_text_sha256": "5bca81121e296c38e1f7dab9957df7107bac8a91456c53bcc6a99409cb302aa3",
+        "file_sha256": "5bca81121e296c38e1f7dab9957df7107bac8a91456c53bcc6a99409cb302aa3",
+        "path": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1.json",
+        "role": "existing specialist material reference configuration"
+      },
+      {
+        "canonical_text_sha256": "39fe2436e71f30fcfb610ee22083cf14ad06ddf2a216ce17c4750909b9617469",
+        "file_sha256": "1703cb3ecc484b4957a55397e0548c8ea3665fa990449dc0539472728f6e0680",
+        "path": "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json",
+        "role": "B-v2 field lineage/selected age-source IDs"
+      },
+      {
+        "canonical_text_sha256": "d1a1a21e7ad7242bd37cc6a7c57a1e28d5fc4fcaf9e6128e5e0fdd8a32817471",
+        "file_sha256": "d1a1a21e7ad7242bd37cc6a7c57a1e28d5fc4fcaf9e6128e5e0fdd8a32817471",
+        "path": "R6_T0_SHARED_BOUNDARY_STATE_MANIFEST.json",
+        "role": "canonical edge adjacency and kinematics"
+      },
+      {
+        "canonical_text_sha256": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233",
+        "file_sha256": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233",
+        "path": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+        "role": "native grid identity"
+      },
+      {
+        "canonical_text_sha256": "aa7a93d9a9ae5486ccacf93e2b3aa7764a5078ca70180c7411b29896dcd4be58",
+        "file_sha256": "aa7a93d9a9ae5486ccacf93e2b3aa7764a5078ca70180c7411b29896dcd4be58",
+        "path": "docs/arcana/qualifications/R6_B6N8M_ATTESTATION.json",
+        "role": "B6N8-M attestation"
+      },
+      {
+        "canonical_text_sha256": "5d6023ec0c522d17d305b3e7fd057fbbbf10eda485df2a14199fc497ec592525",
+        "file_sha256": "5d6023ec0c522d17d305b3e7fd057fbbbf10eda485df2a14199fc497ec592525",
+        "path": "docs/arcana/research/B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+        "role": "B6N8-H upstream physical input meanings"
+      },
+      {
+        "canonical_text_sha256": "26062e4524793bd0e0fb6f4574d80e7041303280852f3ce6001099d641475b5f",
+        "file_sha256": "26062e4524793bd0e0fb6f4574d80e7041303280852f3ce6001099d641475b5f",
+        "path": "docs/arcana/research/B6N8I_BINDING_MATRIX.json",
+        "role": "B6N8-I role/property authority"
+      },
+      {
+        "canonical_text_sha256": "071a779515d613aab8abdb66b75d457dae8649056a684cb229c47e6aacb1c7f7",
+        "file_sha256": "071a779515d613aab8abdb66b75d457dae8649056a684cb229c47e6aacb1c7f7",
+        "path": "docs/arcana/research/B6N8J_INITIALIZER_CANDIDATE_MATRIX.json",
+        "role": "B6N8-J selected initializer roles and equations"
+      },
+      {
+        "canonical_text_sha256": "6a806c6583287bb8a3375a9fe0c8906ca47b8b56936cf98daff8ee66ae227f91",
+        "file_sha256": "6a806c6583287bb8a3375a9fe0c8906ca47b8b56936cf98daff8ee66ae227f91",
+        "path": "docs/arcana/research/B6N8J_LAB_BASAL_BOUNDARY_DECISION.json",
+        "role": "B6N8-J base/LAB semantic distinction"
+      },
+      {
+        "canonical_text_sha256": "5f34b71069b6d81db998182debde6e20f8432aad969d15f09aa1b4d7defc4734",
+        "file_sha256": "5f34b71069b6d81db998182debde6e20f8432aad969d15f09aa1b4d7defc4734",
+        "path": "docs/arcana/research/B6N8J_REDUCED_THERMAL_MODEL_CONTRACT.json",
+        "role": "B6N8-J initializer/geometry contract"
+      },
+      {
+        "canonical_text_sha256": "54b2d17c60f0c5edb19a3c76df50244208304432729a842ce1f37c565ba0928c",
+        "file_sha256": "54b2d17c60f0c5edb19a3c76df50244208304432729a842ce1f37c565ba0928c",
+        "path": "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json",
+        "role": "B6N8-K no T0-T1 evolution authorization"
+      },
+      {
+        "canonical_text_sha256": "8332707b8e4966af7ab4f46f03be54a6ef55fbc08fe792373b7e3622da5650e4",
+        "file_sha256": "8332707b8e4966af7ab4f46f03be54a6ef55fbc08fe792373b7e3622da5650e4",
+        "path": "docs/arcana/research/B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX.json",
+        "role": "B6N8-L support/material role mapping"
+      },
+      {
+        "canonical_text_sha256": "09b6a4da4870da217dc973165cc2a9470361f11c903b91183cf86bd11b385e3a",
+        "file_sha256": "09b6a4da4870da217dc973165cc2a9470361f11c903b91183cf86bd11b385e3a",
+        "path": "docs/arcana/research/B6N8L_THERMAL_PROVIDER_INPUT_CONTRACT.json",
+        "role": "B6N8-L provider input semantics"
+      },
+      {
+        "canonical_text_sha256": "c4a28ba4e383ba5b7ab812b8c37d593807d9851c4f38b66b462783d0a5f1f5ea",
+        "file_sha256": "c4a28ba4e383ba5b7ab812b8c37d593807d9851c4f38b66b462783d0a5f1f5ea",
+        "path": "docs/arcana/research/B6N8M_INITIALIZER_IMPLEMENTATION_REQUIREMENTS.json",
+        "role": "B6N8-M minimum initializer contract"
+      }
+    ],
+    "identities": [
+      {
+        "path": "docs/arcana/qualifications/R6_B6N8O_ATTESTATION.json",
+        "role": "B6N8-O implementation attestation",
+        "sha256": "e3be3c02ff4a4b1f14e2953063cafd3aec8a19f0332df2a205fea30e1c07d981"
+      },
+      {
+        "path": "src/arcana_worldsim/r6/pre_orbdata_t0_initializer.py",
+        "role": "qualified provider implementation",
+        "sha256": "59803f6799ffdb3153b6866a540d3988c54fa4e356862e086b70dd19dc8b6e33"
+      },
+      {
+        "path": "src/arcana_worldsim/r6/pre_orbdata_thermal_column.py",
+        "role": "qualified thermal kernels",
+        "sha256": "78d32cf1a6884b875581685a482f5fc0730fb47f8c4612f1b2908e96ee6d6ad0"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_ADMITTED_SUPPORT_BINDING_INDEX.json",
+        "role": "admitted support index",
+        "sha256": "aaa571eb64b854656e70fdbb559377a76eb44afdb723080eb5471fd4b1663e00"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_PROPERTY_TUPLE_BINDING_REGISTRY.json",
+        "role": "property tuple registry",
+        "sha256": "d8494442ef9e19c108ab17a53bcbee6db65842bf1e166a3ce8565127d3a9d312"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_BINDING_EXCEPTION_LEDGER.json",
+        "role": "exception ledger",
+        "sha256": "0bf261796a1b4abaad77dba4ee602b05e45c3aac6aa7e4a4ebb32d39add36075"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_INITIALIZER_COLUMN_CONTRACT.json",
+        "role": "column contract",
+        "sha256": "8102f3ce57092f9d312d08a8ed3952884d98710b43786a3ccc93b8491b287630"
+      },
+      {
+        "path": "docs/arcana/research/B6N8L_BOUNDARY_TEMPORAL_ADAPTER.json",
+        "role": "B6N8-L boundary and scenario authority",
+        "sha256": "64167ddec7fcdec0700ddbb8b1622a51cca9cf8ff6550bd7a35e112039bba7a0"
+      },
+      {
+        "path": "docs/arcana/research/B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX.json",
+        "role": "support/material mapping",
+        "sha256": "8332707b8e4966af7ab4f46f03be54a6ef55fbc08fe792373b7e3622da5650e4"
+      },
+      {
+        "path": "docs/arcana/research/B6N8L_THERMAL_PROVIDER_INPUT_CONTRACT.json",
+        "role": "provider input contract",
+        "sha256": "09b6a4da4870da217dc973165cc2a9470361f11c903b91183cf86bd11b385e3a"
+      },
+      {
+        "path": "docs/arcana/research/B6N8J_REDUCED_THERMAL_MODEL_CONTRACT.json",
+        "role": "B6N8-J initializer model contract",
+        "sha256": "5f34b71069b6d81db998182debde6e20f8432aad969d15f09aa1b4d7defc4734"
+      },
+      {
+        "path": "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json",
+        "role": "T0-T1 authority boundary",
+        "sha256": "54b2d17c60f0c5edb19a3c76df50244208304432729a842ce1f37c565ba0928c"
+      },
+      {
+        "path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+        "role": "field package",
+        "sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e"
+      }
+    ],
+    "provider_commit": "73d98ee14f933622f0d3f18f66985b06f364abcd",
+    "source_commit": "1dfaba5f7413f7623319ade6ed5539efb9bc46d3"
+  },
+  "manifest": {
+    "fields": [
+      "run_id",
+      "execution_source_commit",
+      "P_contract_identity",
+      "initializer_family",
+      "T0_age",
+      "scenario_roster_hash",
+      "support/exclusion counts",
+      "input hashes",
+      "expected/actual cardinality",
+      "candidate paths/hashes",
+      "validation/completion status",
+      "WORLD_HISTORY_publication_status",
+      "operational timestamp"
+    ],
+    "publication": "NOT_PUBLISHED",
+    "schema": "ARCANA_R6_T0_INITIALIZER_CANDIDATE_RUN_MANIFEST_V1"
+  },
+  "non_actions": {
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_mechanics_executed": false,
+    "Buck_section_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "SECOND_DT_SELECTED": false,
+    "T0_candidate_state_created": false,
+    "T0_canonical_state_created": false,
+    "T0_physical_state_generated": false,
+    "T0_profile_generated": false,
+    "T1_physical_state_generated": false,
+    "T1_profile_generated": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_accessed": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_checkpoint_created": false,
+    "canonical_forward_propagation_executed": false,
+    "conduction_only_declared_insufficient": false,
+    "conduction_only_declared_sufficient": false,
+    "dt2_years": null,
+    "new_boundary_value_selected": false,
+    "new_initializer_selected": false,
+    "new_material_property_selected": false,
+    "new_physical_parameter_selected": false,
+    "new_production_grid_selected": false,
+    "production_thermal_evolution_executed": false,
+    "provider_code_modified": false,
+    "provider_science_changed": false,
+    "real_initializer_execution": false,
+    "real_temperature_profile_evaluated": false
+  },
+  "post_run_numerical": [
+    "governed boundary/interface and kernel invariants",
+    "positive valid geometry",
+    "finite outputs",
+    "deterministic replay subset",
+    "no Buck tolerance or conduction conclusion"
+  ],
+  "post_run_structural": [
+    "exact 63620*N and unique keys",
+    "exact support closure each scenario",
+    "no excluded/fallback records",
+    "hash/provenance/config match",
+    "all fields/references valid and finite",
+    "manifest complete and reproducible"
+  ],
+  "pre_run": [
+    "verify O attestation/provider and all snapshot hashes",
+    "verify exact admitted/excluded memberships",
+    "freeze scenario roster",
+    "bind candidate root empty or compatible",
+    "qualify adapter",
+    "make WORLD_HISTORY/canonical writer unavailable"
+  ],
+  "purpose": "Execution authorization/run-contract audit only; no execution.",
+  "readiness": {
+    "executable_scenario_count": null,
+    "executable_scenario_count_status": "UNKNOWN",
+    "executable_scenario_roster_bound": false,
+    "execution_adapter_required": true,
+    "expected_candidate_cardinality": "63620 \u00d7 N",
+    "next": "implement and separately qualify minimal fail-closed native-support candidate adapter; freeze scenario roster; then authorize a distinct execution stage",
+    "readiness_status": "NOT_READY",
+    "ready_after_P": false,
+    "real_T0_execution_ready": false,
+    "reason": "The only numerical API is synthetic-fixture-gated and no production candidate writer/manifest/post-run validator exists. In addition, the finite B6N8-L scenario envelope has not been enumerated into an execution-ready T0 roster."
+  },
+  "real_T0_execution_ready": false,
+  "replay": {
+    "cross_platform_bitwise_claim": false,
+    "deterministic_subset_rerun": true,
+    "full_rerun_if_semantic_identity_disputed": true,
+    "hash_pinned_inputs_and_config": true
+  },
+  "run_contract_identity_sha256": "d2e13a8ab13483f24a8086239cb2b9ee73bba8f8ac4861dbe2bb5c40f35f007a",
+  "run_identity": {
+    "bind": [
+      "provider/P source",
+      "input hashes",
+      "support membership",
+      "initializer/recipe",
+      "scenario/config",
+      "T0",
+      "output contract"
+    ],
+    "exclude": [
+      "machine paths",
+      "timestamps",
+      "worker count",
+      "chunk size",
+      "scheduling"
+    ],
+    "kind": "CONTENT_DERIVED",
+    "pattern": "repository R6 content_hash/typed identity pattern"
+  },
+  "scenario_multiplicity": {
+    "N": null,
+    "basis": "B6N8-L authorizes separately named deterministic endpoint/reference scenarios and sensitivity axes, without probabilities, correlations, or newly invented joint combinations.",
+    "cardinality": "63620 x N after applicable authorized scenario roster is enumerated; do not assume N=1 or form a Cartesian product.",
+    "classification": "AUTHORIZED_SCENARIO_ENSEMBLE",
+    "executable_scenario_count": null,
+    "executable_scenario_count_status": "UNKNOWN",
+    "executable_scenario_roster_bound": false,
+    "expected_candidate_cardinality": "63620 \u00d7 N",
+    "run_block": "Preserve every applicable authorized scenario as a candidate. The exact T0 execution roster and its scenario/config identities are not enumerated; bind the roster before execution."
+  },
+  "schema": "ARCANA_R6_B6N8P_T0_RUN_CONTRACT_V1",
+  "stage": "B6N8-P",
+  "storage": {
+    "existing_real_candidate_convention": "NOT_FOUND",
+    "proposed": "External configurable ARCANA_R6_CANDIDATE_ROOT/B6N8P/T0/<content-derived-run-id>/ outside repository and WORLD_HISTORY; not created in P"
+  },
+  "target": {
+    "initializer_family": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+    "operation": "T0_INITIALIZER_ONLY",
+    "support": {
+      "admitted": 63620,
+      "continental": 14258,
+      "field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+      "grid_id": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+      "membership_sha256": {
+        "ADMITTED_INITIALIZER_SUPPORT": "f61f4a89bacdf458636720ed4df67bd97cc731159bb588f6836e065241e1e499",
+        "CONTINENTAL_COLD_STABLE": "358cdfd933586773b09e673b70b8cd5d9bbddc02458a241a82bf38fc003963ee",
+        "CONTINENTAL_HOT_EXTENDED": "05b9be68c30e8bf363c6f4fc259c45d4220246d8ee468062b4729711bef962e9",
+        "CONTINENTAL_NORMAL": "f40e807fb158ad980022f5a8f4723f3f2f991937e914129ee3ba4761e42d535b",
+        "OCEAN_POSITIVE_AGE_ADMITTED": "2ec950738256f7d2b24c8555b28678eb16e4c002ed82c7c9d9a5cff2890a3f29",
+        "UNRESOLVED_POSITIVE_AGE_OCEAN": "7cfc73998dee411824990da5d6346b2359d6216f41242d0de84fe4fc090d64d7",
+        "ZERO_AGE_RIDGE": "bf876950ae9aacf2f9d28dd79bd871ae2b65c4c2049331a5411e66198849f8d9"
+      },
+      "native": 64800,
+      "positive_age_oceanic": 49362,
+      "unresolved_ocean_excluded": 1072,
+      "zero_age_ridge_excluded": 108
+    },
+    "time_selector": "T0",
+    "world_age_ma": 210.0
+  },
+  "world_history": {
+    "accessed": false,
+    "changed": false,
+    "required": false
+  }
+}

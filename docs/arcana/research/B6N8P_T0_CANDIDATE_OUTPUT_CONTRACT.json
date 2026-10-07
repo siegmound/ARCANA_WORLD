@@ -1,0 +1,89 @@
+{
+  "candidate_state": [
+    "CANDIDATE",
+    "UNPUBLISHED",
+    "NON_CANONICAL",
+    "VALIDATION_PENDING"
+  ],
+  "canonical_acceptance_requires_separate_stage": true,
+  "exclusions": {
+    "must_not_be_generated_or_remapped": true,
+    "unresolved_positive_age_ocean": 1072,
+    "zero_age_ridge": 108
+  },
+  "executable_scenario_count": null,
+  "executable_scenario_count_status": "UNKNOWN",
+  "executable_scenario_roster_bound": false,
+  "execution_adapter_required": true,
+  "expected_candidate_cardinality": "63620 \u00d7 N",
+  "expected_count": "63620 \u00d7 N",
+  "key": [
+    "support_id",
+    "scenario_id",
+    "configuration_identity_sha256"
+  ],
+  "partial": "INVALID_INCOMPLETE_CANDIDATE_SET",
+  "real_T0_execution_ready": false,
+  "record_schema": "ARCANA_R6_T0_THERMAL_INITIALIZER_CANDIDATE_V1",
+  "required_fields": [
+    "support_id",
+    "time",
+    "initializer_family",
+    "scenario_id",
+    "geometry_reference",
+    "model_base_semantics",
+    "model_base_depth_m",
+    "crust_depth_m",
+    "thermal_lab_depth_m",
+    "thermal_lab_temperature_k",
+    "moho_temperature_k",
+    "surface_heat_flow_w_m2",
+    "vertical_coordinate",
+    "segments",
+    "material_roles",
+    "property_tuple_references",
+    "material_property_bindings",
+    "derived_kappa_m2_s",
+    "source_term_references",
+    "configuration_identities",
+    "support_lineage",
+    "uncertainty",
+    "provenance",
+    "validation_status",
+    "canonical_publication"
+  ],
+  "scenario_multiplicity": {
+    "classification": "AUTHORIZED_SCENARIO_ENSEMBLE",
+    "executable_scenario_count": null,
+    "executable_scenario_count_status": "UNKNOWN",
+    "executable_scenario_roster_bound": false,
+    "expected_candidate_cardinality": "63620 \u00d7 N",
+    "policy": "Retain every applicable separately authorized scenario; no convenience selection or unauthorized Cartesian product."
+  },
+  "scenario_multiplicity_classification": "AUTHORIZED_SCENARIO_ENSEMBLE",
+  "schema": "ARCANA_R6_B6N8P_T0_CANDIDATE_OUTPUT_CONTRACT_V1",
+  "status": "CONTRACT_ONLY_EXECUTION_BLOCKED",
+  "storage": {
+    "existing_real_candidate_convention": "NOT_FOUND",
+    "proposed": "External configurable ARCANA_R6_CANDIDATE_ROOT/B6N8P/T0/<content-derived-run-id>/ outside repository and WORLD_HISTORY; not created in P"
+  },
+  "support": {
+    "admitted": 63620,
+    "continental": 14258,
+    "field_package_sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e",
+    "grid_id": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+    "membership_sha256": {
+      "ADMITTED_INITIALIZER_SUPPORT": "f61f4a89bacdf458636720ed4df67bd97cc731159bb588f6836e065241e1e499",
+      "CONTINENTAL_COLD_STABLE": "358cdfd933586773b09e673b70b8cd5d9bbddc02458a241a82bf38fc003963ee",
+      "CONTINENTAL_HOT_EXTENDED": "05b9be68c30e8bf363c6f4fc259c45d4220246d8ee468062b4729711bef962e9",
+      "CONTINENTAL_NORMAL": "f40e807fb158ad980022f5a8f4723f3f2f991937e914129ee3ba4761e42d535b",
+      "OCEAN_POSITIVE_AGE_ADMITTED": "2ec950738256f7d2b24c8555b28678eb16e4c002ed82c7c9d9a5cff2890a3f29",
+      "UNRESOLVED_POSITIVE_AGE_OCEAN": "7cfc73998dee411824990da5d6346b2359d6216f41242d0de84fe4fc090d64d7",
+      "ZERO_AGE_RIDGE": "bf876950ae9aacf2f9d28dd79bd871ae2b65c4c2049331a5411e66198849f8d9"
+    },
+    "native": 64800,
+    "positive_age_oceanic": 49362,
+    "unresolved_ocean_excluded": 1072,
+    "zero_age_ridge_excluded": 108
+  }
+}
