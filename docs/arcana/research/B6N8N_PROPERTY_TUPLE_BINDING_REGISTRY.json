@@ -1,0 +1,627 @@
+{
+  "authorities": [
+    {
+      "canonical_text_sha256": "deace3e8221050baf2d07f82bc50976861d4beaf9a4e23229dc883d0d1810203",
+      "path": "R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+      "role": "existing heat-flow/HWR configuration"
+    },
+    {
+      "canonical_text_sha256": "729d4dc0a8ee8bc5a673ffb7825392edb631749758479ce8f2cc75dc35cec5a1",
+      "path": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_AND_RUNTIME_CLOSURE.json",
+      "role": "ridge identity and positive-age eligibility"
+    },
+    {
+      "canonical_text_sha256": "5bca81121e296c38e1f7dab9957df7107bac8a91456c53bcc6a99409cb302aa3",
+      "path": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1.json",
+      "role": "existing specialist material reference configuration"
+    },
+    {
+      "canonical_text_sha256": "39fe2436e71f30fcfb610ee22083cf14ad06ddf2a216ce17c4750909b9617469",
+      "path": "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json",
+      "role": "B-v2 field lineage/selected age-source IDs"
+    },
+    {
+      "canonical_text_sha256": "d1a1a21e7ad7242bd37cc6a7c57a1e28d5fc4fcaf9e6128e5e0fdd8a32817471",
+      "path": "R6_T0_SHARED_BOUNDARY_STATE_MANIFEST.json",
+      "role": "canonical edge adjacency and kinematics"
+    },
+    {
+      "canonical_text_sha256": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233",
+      "path": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+      "role": "native grid identity"
+    },
+    {
+      "canonical_text_sha256": "aa7a93d9a9ae5486ccacf93e2b3aa7764a5078ca70180c7411b29896dcd4be58",
+      "path": "docs/arcana/qualifications/R6_B6N8M_ATTESTATION.json",
+      "role": "B6N8-M attestation"
+    },
+    {
+      "canonical_text_sha256": "5d6023ec0c522d17d305b3e7fd057fbbbf10eda485df2a14199fc497ec592525",
+      "path": "docs/arcana/research/B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+      "role": "B6N8-H upstream physical input meanings"
+    },
+    {
+      "canonical_text_sha256": "26062e4524793bd0e0fb6f4574d80e7041303280852f3ce6001099d641475b5f",
+      "path": "docs/arcana/research/B6N8I_BINDING_MATRIX.json",
+      "role": "B6N8-I role/property authority"
+    },
+    {
+      "canonical_text_sha256": "071a779515d613aab8abdb66b75d457dae8649056a684cb229c47e6aacb1c7f7",
+      "path": "docs/arcana/research/B6N8J_INITIALIZER_CANDIDATE_MATRIX.json",
+      "role": "B6N8-J selected initializer roles and equations"
+    },
+    {
+      "canonical_text_sha256": "6a806c6583287bb8a3375a9fe0c8906ca47b8b56936cf98daff8ee66ae227f91",
+      "path": "docs/arcana/research/B6N8J_LAB_BASAL_BOUNDARY_DECISION.json",
+      "role": "B6N8-J base/LAB semantic distinction"
+    },
+    {
+      "canonical_text_sha256": "5f34b71069b6d81db998182debde6e20f8432aad969d15f09aa1b4d7defc4734",
+      "path": "docs/arcana/research/B6N8J_REDUCED_THERMAL_MODEL_CONTRACT.json",
+      "role": "B6N8-J initializer/geometry contract"
+    },
+    {
+      "canonical_text_sha256": "54b2d17c60f0c5edb19a3c76df50244208304432729a842ce1f37c565ba0928c",
+      "path": "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json",
+      "role": "B6N8-K no T0-T1 evolution authorization"
+    },
+    {
+      "canonical_text_sha256": "8332707b8e4966af7ab4f46f03be54a6ef55fbc08fe792373b7e3622da5650e4",
+      "path": "docs/arcana/research/B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX.json",
+      "role": "B6N8-L support/material role mapping"
+    },
+    {
+      "canonical_text_sha256": "09b6a4da4870da217dc973165cc2a9470361f11c903b91183cf86bd11b385e3a",
+      "path": "docs/arcana/research/B6N8L_THERMAL_PROVIDER_INPUT_CONTRACT.json",
+      "role": "B6N8-L provider input semantics"
+    },
+    {
+      "canonical_text_sha256": "c4a28ba4e383ba5b7ab812b8c37d593807d9851c4f38b66b462783d0a5f1f5ea",
+      "path": "docs/arcana/research/B6N8M_INITIALIZER_IMPLEMENTATION_REQUIREMENTS.json",
+      "role": "B6N8-M minimum initializer contract"
+    }
+  ],
+  "authority": "AUTHORIAL_SPECIALIST_REFERENCE_WITH_GOVERNED_SENSITIVITY; MODEL_CONFIGURATION_ONLY; NOT_CELLWISE_NATURAL_COMPOSITION",
+  "boundary_refs": {
+    "TSurf": "Existing material config thermal_properties.surface_temperature reference and sensitivity; no new value.",
+    "TSurf_existing_reference": {
+      "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+      "nominal": 280,
+      "range": [
+        250,
+        300
+      ],
+      "source": "A0.6D",
+      "units": "K"
+    },
+    "adiabat": "Existing integrated relation and derived Tp.",
+    "class_semantics": {
+      "1": "COLD_STABLE",
+      "2": "NORMAL",
+      "3": "HOT_EXTENDED"
+    },
+    "continental_base": "Authored total thickness; MODEL_DOMAIN_BASE, not physical LAB.",
+    "continental_q": "Existing authored q by thermal class; retain field values.",
+    "continental_q_existing_by_thermal_class": {
+      "authority": "existing ratified authored T0 reference field; copied by thermal class, not newly chosen",
+      "class_values_w_m2": {
+        "COLD_STABLE": 0.045,
+        "HOT_EXTENDED": 0.085,
+        "NORMAL": 0.06
+      },
+      "source_field": "continental_reference_surface_heat_flow_w_m2"
+    },
+    "continental_total_model_depth_by_class_m": {
+      "COLD_STABLE": 200000,
+      "HOT_EXTENDED": 80000,
+      "NORMAL": 135000
+    },
+    "gravity": "Existing canonical R6 9.82 m s-2.",
+    "ocean_HWR_existing_boundary_parameters": {
+      "Cp": {
+        "sensitivity_range": [
+          1100,
+          1250
+        ],
+        "units": "J kg-1 K-1",
+        "value": 1200
+      },
+      "N": {
+        "sensitivity_range": "N=128/256 endpoint comparison; target relative flux tolerance 1e-12",
+        "units": "Fourier terms",
+        "value": 256
+      },
+      "T0": {
+        "sensitivity_range": [
+          250,
+          300
+        ],
+        "units": "K",
+        "value": 280
+      },
+      "Tb": {
+        "sensitivity_range": [
+          1523,
+          1737
+        ],
+        "units": "K",
+        "value": 1680
+      },
+      "alpha": {
+        "sensitivity_range": [
+          2.5e-05,
+          3.5e-05
+        ],
+        "units": "K-1",
+        "value": 3e-05
+      },
+      "k": {
+        "sensitivity_range": [
+          3.0,
+          4.1
+        ],
+        "units": "W m-1 K-1",
+        "value": 3.3
+      },
+      "kappa": {
+        "sensitivity_range": [
+          7.058823529411765e-07,
+          1.1647727272727272e-06
+        ],
+        "units": "m2 s-1",
+        "value": 8.333333333333333e-07
+      },
+      "rho_m": {
+        "sensitivity_range": [
+          3200,
+          3400
+        ],
+        "units": "kg m-3",
+        "value": 3300
+      },
+      "rho_w": {
+        "sensitivity_range": [
+          990,
+          1030
+        ],
+        "units": "kg m-3",
+        "value": 1000
+      },
+      "zp": {
+        "sensitivity_range": [
+          80000,
+          140000
+        ],
+        "units": "m",
+        "value": 100000
+      }
+    },
+    "ocean_base": "Coupled HWR zp/Tb; MODEL_DOMAIN_BASE, not physical LAB.",
+    "oceanic_crust_thickness_m": {
+      "observed_unique_value_on_native_ocean_cells": 6500.0,
+      "source_field": "crustal_thickness_m",
+      "source_semantics": "existing B-v2 authored field; no new geometry value",
+      "units": "m"
+    }
+  },
+  "coherence": {
+    "cross_join_uncertainty_extrema": false,
+    "independent_kappa_tuning": false,
+    "k_rho_Cp_same_role": true,
+    "kappa": "k/(rho*Cp)",
+    "no_probability_distribution_invented": true,
+    "units_compatible": true
+  },
+  "decision": "EXISTING_ROLE_TUPLE_REFERENCES_BIND_ON_ADMITTED_SUPPORT__NO_NEW_VALUE_SELECTED",
+  "not_additional_material_layers": {
+    "asthenosphere": "thermal/basal reference only if required, not a discrete layer here",
+    "lower_crust_flow": "not used; physical absence not claimed",
+    "physical_LAB": "not a material role; not selected",
+    "seawater": "not used by selected conductive initializer",
+    "upper_lower_crust_split": "unsupported and not required"
+  },
+  "positive_age_hwr2": {
+    "age_conversion_seconds_per_ma": 31557600000000.0,
+    "model_identity": "HWR2_FINITE_PLATE_CONSTANT_PROPERTY_SURFACE_FLUX",
+    "parameters": [
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 ocean effective conductivity",
+          "OrbData oceanic mantle conduc(2), explicit binding; crust conduc(1) remains a distinct crust material"
+        ],
+        "name": "k",
+        "range_kind": "LITERATURE_PRIOR_FOR_CONSTANT_EFFECTIVE_SILICATE_MANTLE_CONDUCTIVITY",
+        "reason": "Select a common silicate-mantle effective value inside published model/material ranges, distinct from Holdt's Earth-fit optimum 3.8; retain broad interval because constant k collapses T/P dependence.",
+        "sensitivity_range": [
+          3.0,
+          4.1
+        ],
+        "source": "Schuberth et al. (2009) mantle-convection benchmark uses 3.0 W m-1 K-1; Holdt et al. (2025) explores 3.2-4.1 W m-1 K-1 for HWR-2 calibration. https://doi.org/10.1029/2008GC002235 ; https://doi.org/10.1029/2024JB029890",
+        "uncertainty": "Sensitivity interval retained; composition and T/P variability not resolved.",
+        "units": "W m-1 K-1",
+        "value": 3.3
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 diffusivity and thermal subsidence",
+          "OrbData mantle rhoBar(2) as the single shared reference density"
+        ],
+        "name": "rho_m",
+        "range_kind": "LITERATURE_PRIOR_FOR_SILICATE_UPPER_MANTLE_REFERENCE_DENSITY",
+        "reason": "Select the standard silicate reference density for an Earth-radius/Earth-gravity ARCANA candidate; sensitivity range covers common mantle-model values.",
+        "sensitivity_range": [
+          3200,
+          3400
+        ],
+        "source": "Schuberth et al. (2009) and solid-Earth material-model tables use upper-mantle reference values near 3300-3370 kg m-3. https://doi.org/10.1029/2008GC002235 ; https://se.copernicus.org/articles/14/1155/2023/",
+        "uncertainty": "Reference density only; pressure/temperature dependence is outside constant-property HWR-2.",
+        "units": "kg m-3",
+        "value": 3300
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 derived diffusivity; no independent OrbData Cp input is created"
+        ],
+        "name": "Cp",
+        "range_kind": "LITERATURE_PRIOR_FOR_SILICATE_MANTLE_ISOBARIC_HEAT_CAPACITY",
+        "reason": "Select a round reference value within independent mantle-material model values; it is not an Earth heat-flow fit coefficient.",
+        "sensitivity_range": [
+          1100,
+          1250
+        ],
+        "source": "Schuberth et al. (2009) uses 1134 J kg-1 K-1; Solid Earth 14 (2023) material table uses sub-lithospheric mantle 1250 J kg-1 K-1. https://doi.org/10.1029/2008GC002235 ; https://se.copernicus.org/articles/14/1155/2023/",
+        "uncertainty": "Sensitivity range retained; Cp(T,X) variation is collapsed in this model.",
+        "units": "J kg-1 K-1",
+        "value": 1200
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_LITERATURE_PRIOR",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 basal boundary",
+          "Shared OrbData mantle-reference consistency constraint at plate base; not numerically identical to an arbitrary adiabat control"
+        ],
+        "name": "Tb",
+        "range_kind": "INDEPENDENT_PETROLOGIC_MANTLE_TEMPERATURE_PRIOR_CONVERTED_TO_K",
+        "reason": "Choose 1680 K (1407 C) as an explicit ARCANA reference inside the independent petrologic prior and away from the HWR-2 optimum 1326 C. Sensitivity covers the reported independent range.",
+        "sensitivity_range": [
+          1523,
+          1737
+        ],
+        "source": "Holdt et al. (2025) summarizes independent mantle-temperature estimates of 1250-1464 C separately from the HWR-2 optimized fit. https://doi.org/10.1029/2024JB029890",
+        "uncertainty": "Broad literature-prior interval; no ARCANA composition/petrology observation exists.",
+        "units": "K",
+        "value": 1680
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 surface boundary",
+          "OrbData TSurf where this same reference surface quantity is consumed"
+        ],
+        "name": "T0",
+        "range_kind": "ARCANA_REFERENCE_SURFACE_BOUNDARY_AND_SENSITIVITY_INTERVAL",
+        "reason": "Select 280 K as the model's fixed ocean-surface thermal reference; carry 250-300 K sensitivity because climate/atmosphere coupling is outside HWR-2.",
+        "sensitivity_range": [
+          250,
+          300
+        ],
+        "source": "Explicit ARCANA selection in this closure; no prior T0 climate boundary was canonical. Holdt's 0 C surface boundary is not transferred.",
+        "uncertainty": "Authorial interval, not a climate prediction.",
+        "units": "K",
+        "value": 280
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_LITERATURE_PRIOR",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 plate thickness; producer thermal-isostatic subsidence; OrbData explicit ocean thermal-thickness binding"
+        ],
+        "name": "zp",
+        "range_kind": "LITERATURE_PRIOR_MODEL_SPREAD_RETAINED_AS_SENSITIVITY_ONLY",
+        "reason": "Select a round 100 km ARCANA thermal-plate reference, distinct from the HWR-2 optimum 105 km. Widen sensitivity interval to 80-140 km; do not read this as a measured ARCANA thickness.",
+        "sensitivity_range": [
+          80000,
+          140000
+        ],
+        "source": "Holdt et al. (2025) tabulates historical plate-model thickness estimates spanning roughly 90-136 km; this is model literature spread, including Earth calibration, not an adopted Earth fit. https://doi.org/10.1029/2024JB029890",
+        "uncertainty": "Large structural/model uncertainty retained.",
+        "units": "m",
+        "value": 100000
+      },
+      {
+        "authority_type": "DERIVED_QUANTITY",
+        "classification": "DERIVED_QUANTITY",
+        "consumers": [
+          "HWR-2 only"
+        ],
+        "name": "kappa",
+        "range_kind": "DERIVED_QUANTITY_FROM_PARENT_INTERVAL_CORNERS",
+        "reason": "Derived from the three selected shared material values; one quantity, no duplicate constant.",
+        "sensitivity_range": [
+          7.058823529411765e-07,
+          1.1647727272727272e-06
+        ],
+        "source": "k/(rho_m*Cp)",
+        "uncertainty": "Correlated endpoint propagation required; do not vary independently.",
+        "units": "m2 s-1",
+        "value": 8.333333333333333e-07
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER_WITH_MATERIAL_PRIOR",
+        "classification": "FUNDAMENTAL_OR_MATERIAL_PROPERTY",
+        "consumers": [
+          "HWR-2 subsidence/elevation closure",
+          "OrbData mantle alphaT(2)"
+        ],
+        "name": "alpha",
+        "range_kind": "LITERATURE_PRIOR_FOR_SILICATE_THERMAL_EXPANSIVITY",
+        "reason": "Select one mantle expansivity reference for HWR-2 thermal subsidence and bind the same authority to OrbData alphaT(2). It does not enter Eq. 4 surface heat flow.",
+        "sensitivity_range": [
+          2.5e-05,
+          3.5e-05
+        ],
+        "source": "Solid Earth 14 (2023) material models use approximately 2.7-3.0e-5 K-1. https://se.copernicus.org/articles/14/1155/2023/",
+        "uncertainty": "Sensitivity range retained; no second OrbData alpha value.",
+        "units": "K-1",
+        "value": 3e-05
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "classification": "ARCANA_AUTHORIAL_PLANET_PARAMETER",
+        "consumers": [
+          "HWR-2 subsidence only"
+        ],
+        "name": "rho_w",
+        "range_kind": "AUTHORIAL_REFERENCE_FOR_LIQUID_WATER_COLUMN",
+        "reason": "Bind the model's declared water-column density rather than leaving the subsidence denominator implicit.",
+        "sensitivity_range": [
+          990,
+          1030
+        ],
+        "source": "Liquid-water reference; selected explicitly for the HWR thermal-subsidence relation, not part of the heat-flow Eq. 4.",
+        "uncertainty": "Water composition/salinity not otherwise modeled.",
+        "units": "kg m-3",
+        "value": 1000
+      },
+      {
+        "authority_type": "ARCANA_AUTHORIAL_MODEL_CONFIGURATION",
+        "classification": "DERIVED_QUANTITY",
+        "consumers": [
+          "HWR-2 producer"
+        ],
+        "name": "N",
+        "range_kind": "NUMERICAL_CONVERGENCE_CONTROL",
+        "reason": "Fix deterministic truncation and tolerance for replay; N is not a physical material parameter.",
+        "sensitivity_range": "N=128/256 endpoint comparison; target relative flux tolerance 1e-12",
+        "source": "Explicit deterministic numerical selection; for the youngest positive age and slowest diffusivity/widest plate in the sensitivity domain, omitted tail at N=256 is below double-precision relevance.",
+        "uncertainty": "Convergence must be recorded in producer replay metadata.",
+        "units": "Fourier terms",
+        "value": 256
+      }
+    ],
+    "relative_tolerance": 1e-12,
+    "scope": "Admitted positive-age ocean support only; reduced model configuration, not physical heat-flow history.",
+    "series_N": 256
+  },
+  "required_roles": [
+    "CONTINENTAL_CRUST_REFERENCE",
+    "OCEANIC_CRUST_REFERENCE",
+    "LITHOSPHERIC_MANTLE_REFERENCE"
+  ],
+  "roles": {
+    "CONTINENTAL_CRUST_REFERENCE": {
+      "kappa_class": "DETERMINISTIC_DERIVATION",
+      "kappa_nominal_m2_s": 8.928571428571428e-07,
+      "properties": {
+        "A_C": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            6e-07,
+            1e-06
+          ],
+          "nominal": 8e-07,
+          "sensitivity_range": [
+            4e-07,
+            1.2e-06
+          ],
+          "sensitivity_required": true,
+          "source": "Sammon et al. (2022) reports crustal-average radiogenic surface contribution ~26.7-39.6 mW m-2 across Earth compositional models and discusses upper-crust 0.8-1.75 uW m-3; Jaupart & Mareschal (2015) review bulk crust estimates",
+          "units": "W m-3"
+        },
+        "Cp": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            800,
+            1200
+          ],
+          "nominal": 1000,
+          "sensitivity_range": [
+            800,
+            1200
+          ],
+          "source": "Glazner et al. (2021) representative rock value 1000",
+          "units": "J kg-1 K-1"
+        },
+        "k": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            2.0,
+            3.0
+          ],
+          "nominal": 2.5,
+          "sensitivity_range": [
+            2.0,
+            3.0
+          ],
+          "source": "Jaupart & Mareschal (2011) crustal heat transfer; representative conductivity ~2.1; Glazner et al. (2021) uses 2.5",
+          "units": "W m-1 K-1"
+        },
+        "rho": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            2700,
+            2900
+          ],
+          "nominal": 2800,
+          "sensitivity_range": [
+            2700,
+            2900
+          ],
+          "sensitivity_required": true,
+          "source": "Christensen & Mooney (1995), seismic structure/density of continental crust; standard reference range",
+          "units": "kg m-3"
+        }
+      },
+      "source_term": "A_C only in undifferentiated crust.",
+      "support": "14,258 continental columns; reduced-model reference role, not composition identity."
+    },
+    "LITHOSPHERIC_MANTLE_REFERENCE": {
+      "alpha_required_because": "B6N8-J adiabat consumes mantle alpha, Cp, gravity and anchor/depth.",
+      "kappa_class": "DETERMINISTIC_DERIVATION",
+      "kappa_nominal_m2_s": 8.333333333333333e-07,
+      "properties": {
+        "A_M": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            0,
+            4e-08
+          ],
+          "nominal": 2e-08,
+          "sensitivity_range": [
+            0,
+            4e-08
+          ],
+          "sensitivity_required": true,
+          "source": "Hasterok & Webb (2017) continental lithosphere thermal models discuss mantle heat production <=0.04 uW m-3; use low reference prior",
+          "units": "W m-3"
+        },
+        "Cp": {
+          "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+          "nominal": 1200,
+          "range": [
+            1100,
+            1250
+          ],
+          "source": "A0.6D",
+          "units": "J kg-1 K-1"
+        },
+        "alpha": {
+          "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+          "nominal": 3e-05,
+          "range": [
+            2.5e-05,
+            3.5e-05
+          ],
+          "source": "A0.6D",
+          "units": "K-1"
+        },
+        "k": {
+          "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+          "nominal": 3.3,
+          "range": [
+            3.0,
+            4.1
+          ],
+          "source": "A0.6D",
+          "units": "W m-1 K-1"
+        },
+        "rho": {
+          "authority_class": "EXISTING_SHARED_SPECIALIST_AUTHORITY",
+          "nominal": 3300,
+          "range": [
+            3200,
+            3400
+          ],
+          "sensitivity_required": true,
+          "source": "A0.6D HWR-2 shared value/range",
+          "units": "kg m-3"
+        }
+      },
+      "source_term": "A_M only in mantle; model-scenario source, not proven constant physical history.",
+      "support": "Below crust to authored continental model base, or ocean HWR model interval."
+    },
+    "OCEANIC_CRUST_REFERENCE": {
+      "kappa_class": "DETERMINISTIC_DERIVATION",
+      "kappa_nominal_m2_s": 7.612456747404845e-07,
+      "properties": {
+        "A_C": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            1e-07,
+            5e-07
+          ],
+          "nominal": 3e-07,
+          "sensitivity_range": [
+            0,
+            5e-07
+          ],
+          "sensitivity_required": true,
+          "source": "Kumar et al. (2020) LitMod2D table uses oceanic crust 0.30 uW m-3",
+          "units": "W m-3"
+        },
+        "Cp": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            800,
+            1200
+          ],
+          "nominal": 1000,
+          "sensitivity_range": [
+            800,
+            1200
+          ],
+          "source": "representative silicate-rock specific heat",
+          "units": "J kg-1 K-1"
+        },
+        "k": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            1.8,
+            2.8
+          ],
+          "nominal": 2.2,
+          "sensitivity_range": [
+            1.8,
+            2.8
+          ],
+          "source": "Kumar et al. (2020) LitMod2D representative oceanic crust k=2.2; range allows bulk lithologic variability",
+          "units": "W m-1 K-1"
+        },
+        "rho": {
+          "authority_class": "ARCANA_AUTHORED_SPECIALIST_REFERENCE",
+          "literature_range": [
+            2850,
+            2930
+          ],
+          "nominal": 2890,
+          "sensitivity_range": [
+            2850,
+            2930
+          ],
+          "sensitivity_required": true,
+          "source": "Christensen & Mooney (1995), preferred mean 2.89 +/- 0.04 Mg m-3",
+          "units": "kg m-3"
+        }
+      },
+      "source_term": "A_C only in undifferentiated crust.",
+      "support": "49,362 admitted positive-age ocean columns only."
+    }
+  },
+  "schema": "ARCANA_R6_B6N8N_PROPERTY_TUPLE_BINDING_REGISTRY_V1",
+  "source_baseline_commit": "912c135b4ff54ee65e3098c6e7701f5f986b59d8",
+  "stage": "B6N8-N",
+  "temporal_semantics": {
+    "A_C_A_M": "MODEL_SCENARIO_SOURCE_TERM; physical history UNKNOWN.",
+    "T0_profile": "not generated.",
+    "T0_to_T1": "not bound/executed.",
+    "properties": "Static initializer model configuration; no physical constancy inferred."
+  }
+}

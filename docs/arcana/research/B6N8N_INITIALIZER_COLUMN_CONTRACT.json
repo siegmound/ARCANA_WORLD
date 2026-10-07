@@ -1,0 +1,68 @@
+{
+  "Buck_interface": {
+    "Buck_section_selected": false,
+    "lookup": "DIRECT_BY_SUPPORT_ID after B6N8-F selection; non-native aggregation needs separate authority",
+    "support_binding_available": true
+  },
+  "base_rule": "MODEL_DOMAIN_BASE != PHYSICAL_LAB",
+  "fields": {
+    "derived_kappa": "k/(rho*Cp), deterministic configuration derivation",
+    "geometry_reference": "source fields and existing configuration; not physical LAB",
+    "initializer_family": "EXISTING_ARCANA_HYBRID_TRANSIENT_COLUMN_REFERENCE_MODEL",
+    "interfaces": {
+      "continent": [
+        "surface z=0 model datum",
+        "Moho=authored crust thickness",
+        "model base=authored total thickness"
+      ],
+      "ocean": [
+        "surface z=0 model datum",
+        "Moho=authored crust thickness",
+        "HWR model base=zp; thermal LAB later derived"
+      ]
+    },
+    "material_role_sequence": {
+      "continent": [
+        "CONTINENTAL_CRUST_REFERENCE",
+        "LITHOSPHERIC_MANTLE_REFERENCE"
+      ],
+      "ocean": [
+        "OCEANIC_CRUST_REFERENCE",
+        "LITHOSPHERIC_MANTLE_REFERENCE"
+      ]
+    },
+    "property_tuple_refs": "B6N8N_PROPERTY_TUPLE_BINDING_REGISTRY.json",
+    "provenance": "T0 selector, support and authority hashes, config identity, exclusions and recipe version",
+    "source_terms": "A_C crust role, A_M mantle role; scenario only",
+    "support_class": "discrete class; no interpolation",
+    "support_id": "stable native ID",
+    "surface_boundary": "Existing continental q/TSurf or positive-age HWR boundary",
+    "temperature_profile": "NOT_CREATED_BY_N",
+    "uncertainty": "source/range, role applicability, model form, support, geometry and boundary dimensions separate"
+  },
+  "persistence": {
+    "bindings": "MODEL_CONFIGURATION / MATERIAL_CONFIGURATION",
+    "exceptions": "AUTHORITY_READINESS_DIAGNOSTIC",
+    "kappa": "REPLAYABLE_DERIVED_CONFIGURATION",
+    "profile": "DERIVED_REPLAYABLE_T0_STATE only after future authorized provider execution"
+  },
+  "readiness": {
+    "INITIALIZER_BINDINGS_COMPLETE_ON_ADMITTED_SUPPORT": true,
+    "INITIALIZER_INPUT_SCHEMA_COMPLETE": true,
+    "INITIALIZER_INPUT_VALUES_AVAILABLE": false,
+    "INITIALIZER_PROVIDER_EXECUTABLE": false,
+    "INITIALIZER_PROVIDER_IMPLEMENTABLE": true,
+    "T0_STATE_MATERIALIZABLE": false
+  },
+  "schema": "ARCANA_R6_B6N8N_INITIALIZER_COLUMN_CONTRACT_V1",
+  "source_baseline_commit": "912c135b4ff54ee65e3098c6e7701f5f986b59d8",
+  "stage": "B6N8-N",
+  "status": "SCOPED_COLUMN_CONTRACT_COMPLETE__NO_PROFILE_VALUES",
+  "support": {
+    "count": 63620,
+    "grid_id": "R6_GLOBAL_GEOGRAPHY_1DEG_V1",
+    "id_pattern": "R6G1D-R{row:03d}-C{column:03d}",
+    "index": "B6N8N_ADMITTED_SUPPORT_BINDING_INDEX.json"
+  },
+  "surface_elevation": "Not the vertical datum of this 1-D initializer; local z=0. Elevation/bathymetry correction is not in the selected contract."
+}

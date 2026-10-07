@@ -1,0 +1,42 @@
+{
+  "admitted_exception_count": 0,
+  "admitted_exceptions": [],
+  "cardinality": {
+    "admitted": 63620,
+    "duplicate_ids": 0,
+    "exactly_one": 63620,
+    "multiple_conflicting": 0,
+    "multiple_equivalent": 0,
+    "overlap": 0,
+    "unknown": 0,
+    "zero": 0
+  },
+  "decision": "ZERO_ADMITTED_BINDING_EXCEPTIONS__EXCLUSIONS_RETAINED_SEPARATELY",
+  "excluded_support": [
+    {
+      "class": "UNRESOLVED_POSITIVE_AGE_OCEANIC_SUPPORT",
+      "count": 1072,
+      "external_authority": "UNKNOWN pending boundary/process adjudication",
+      "failure": "Unknown boundary process/thermal applicability; no adjacency inference",
+      "id": "N_EXCEPTION_UNRESOLVED_OCEAN_1072",
+      "initializer_excludes": true,
+      "support_id_sha256": "7cfc73998dee411824990da5d6346b2359d6216f41242d0de84fe4fc090d64d7",
+      "upstream": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_AND_RUNTIME_CLOSURE.json; B6N8-L"
+    },
+    {
+      "class": "ZERO_AGE_RIDGE_SUPPORT",
+      "count": 108,
+      "external_authority": "New temporal/process authority only if later scope expansion is requested",
+      "failure": "No governed T0-T1 ridge temporal rule; HWR requires strictly positive age",
+      "id": "N_EXCEPTION_ZERO_AGE_RIDGE_108",
+      "initializer_excludes": true,
+      "support_id_sha256": "bf876950ae9aacf2f9d28dd79bd871ae2b65c4c2049331a5411e66198849f8d9",
+      "upstream": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_AND_RUNTIME_CLOSURE.json; B6N8-L"
+    }
+  ],
+  "fail_closed": "Never impute, prioritize conflicts, infer composition, reassign adjacency or convert UNKNOWN to zero.",
+  "other_out_of_scope": 0,
+  "schema": "ARCANA_R6_B6N8N_BINDING_EXCEPTION_LEDGER_V1",
+  "source_baseline_commit": "912c135b4ff54ee65e3098c6e7701f5f986b59d8",
+  "stage": "B6N8-N"
+}
