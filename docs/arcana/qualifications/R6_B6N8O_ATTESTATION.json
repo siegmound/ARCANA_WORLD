@@ -1,0 +1,278 @@
+{
+  "B6N8M_boundary": {
+    "conduction_only_declared_insufficient": false,
+    "conduction_only_declared_sufficient": false,
+    "decision": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION"
+  },
+  "Buck_boundary": {
+    "Buck_mechanics_executed": false,
+    "Buck_section_selected": false,
+    "Ux_materialized": false,
+    "XL_selected": false,
+    "Xe_selected": false,
+    "strain_rate_materialized": false
+  },
+  "O1_O14": [
+    {
+      "gate": "O1_GOVERNING_AUTHORITY_VERIFIED",
+      "status": "PASS"
+    },
+    {
+      "gate": "O2_IMPLEMENTATION_ARCHITECTURE_BOUND",
+      "status": "PASS"
+    },
+    {
+      "gate": "O3_INPUT_CONTRACT_IMPLEMENTED",
+      "status": "PASS"
+    },
+    {
+      "gate": "O4_NUMERICAL_KERNEL_IMPLEMENTED",
+      "status": "PASS_SYNTHETIC_FIXTURES_ONLY"
+    },
+    {
+      "gate": "O5_OUTPUT_CONTRACT_IMPLEMENTED",
+      "status": "PASS_SYNTHETIC_CANDIDATE_ONLY"
+    },
+    {
+      "gate": "O6_PROPERTY_AND_UNIT_VALIDATION",
+      "status": "PASS"
+    },
+    {
+      "gate": "O7_GEOMETRY_AND_INTERFACE_VALIDATION",
+      "status": "PASS"
+    },
+    {
+      "gate": "O8_SYNTHETIC_NUMERICAL_TESTS",
+      "status": "PASS_27_FOCUSED_TESTS"
+    },
+    {
+      "gate": "O9_DETERMINISTIC_REPLAY_VALIDATED",
+      "status": "PASS_IDENTICAL_SERIALIZED_BYTES_AND_SHA256"
+    },
+    {
+      "gate": "O10_FAILURE_AND_UNKNOWN_SEMANTICS",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "gate": "O11_ADMITTED_SUPPORT_PREFLIGHT",
+      "status": "PASS_METADATA_ONLY"
+    },
+    {
+      "gate": "O12_PRODUCTION_EXECUTION_GUARD",
+      "status": "PASS_SYNTHETIC_IDS_REQUIRED_NO_PRODUCTION_EVALUATOR_OR_CLI"
+    },
+    {
+      "gate": "O13_NO_CANONICAL_PUBLICATION_PATH",
+      "status": "PASS"
+    },
+    {
+      "gate": "O14_READY_FOR_PROVIDER_IMPLEMENTATION_QUALIFICATION",
+      "status": "PASS_IMPLEMENTATION_QUALIFICATION_ONLY_NOT_PRODUCTION_AUTHORIZATION"
+    }
+  ],
+  "determinism": {
+    "cross_platform_bit_for_bit_determinism_claimed": false,
+    "result": "PASS_IDENTICAL_SERIALIZED_BYTES_AND_SHA256",
+    "scope": "Synthetic fixtures as recorded by qualified implementation evidence."
+  },
+  "failure_and_unknown_semantics": {
+    "authority_unknown_becomes_numeric_default": false,
+    "excluded_support_remapped_to_admitted_configuration": false,
+    "invalid_unauthorized_missing_and_unknown_conditions": "FAIL_CLOSED",
+    "steady_state_initializer_silently_substituted": false
+  },
+  "governing_authority": {
+    "provider_implementation_only_authorized": true,
+    "qualified_source_commit": "9d94170ae4a35267cbccd087e112841b4215d07e",
+    "stage": "B6N8-N",
+    "support_partition": {
+      "admitted_and_uniquely_bound": 63620,
+      "ambiguous_admitted_support": 0,
+      "arithmetic": {
+        "admitted_plus_exclusions": 64800,
+        "continental_plus_admitted_ocean": 63620,
+        "partition_closed": true
+      },
+      "continental_admitted": 14258,
+      "membership_hashes": {
+        "CONTINENTAL_COLD_STABLE": "358cdfd933586773b09e673b70b8cd5d9bbddc02458a241a82bf38fc003963ee",
+        "CONTINENTAL_HOT_EXTENDED": "05b9be68c30e8bf363c6f4fc259c45d4220246d8ee468062b4729711bef962e9",
+        "CONTINENTAL_NORMAL": "f40e807fb158ad980022f5a8f4723f3f2f991937e914129ee3ba4761e42d535b",
+        "OCEAN_POSITIVE_AGE_ADMITTED": "2ec950738256f7d2b24c8555b28678eb16e4c002ed82c7c9d9a5cff2890a3f29",
+        "UNRESOLVED_POSITIVE_AGE_OCEAN": "7cfc73998dee411824990da5d6346b2359d6216f41242d0de84fe4fc090d64d7",
+        "ZERO_AGE_RIDGE": "bf876950ae9aacf2f9d28dd79bd871ae2b65c4c2049331a5411e66198849f8d9"
+      },
+      "overlap": 0,
+      "positive_age_oceanic_admitted": 49362,
+      "residual_unclassified_support": 0,
+      "total_native_support": 64800,
+      "unresolved_positive_age_oceanic_excluded": 1072,
+      "zero_age_ridge_excluded": 108
+    },
+    "verdict": "PASS_B6N8N_ADMITTED_SUPPORT_BINDINGS_CLOSED_READY_FOR_T0_INITIALIZER_IMPLEMENTATION"
+  },
+  "governing_parent": "ff132fc36078afe0e278191cacf0f4c6838cdcce",
+  "implementation": {
+    "T0_to_T1_evolution_side_effect": false,
+    "canonical_publication_side_effect": false,
+    "initializer_family": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+    "kernel_mapping": {
+      "continental": "qualified transient continental thermal kernel",
+      "oceanic": "HWR-2 ocean thermal kernel"
+    },
+    "new_initializer_selected": false,
+    "new_thermal_model_selected": false,
+    "provider_contract_validated": true,
+    "provider_implemented": true,
+    "provider_preflight_validated": true,
+    "provider_stages": [
+      "provider implementation",
+      "input validation",
+      "plan construction",
+      "numeric evaluation",
+      "output construction",
+      "provenance",
+      "publication"
+    ],
+    "provider_unit_validated": true,
+    "representation": {
+      "form": "QUALIFIED_ANALYTIC_PIECEWISE_FORMULATION",
+      "new_production_grid_selected": false,
+      "test_evaluation_depths_are_production_grid_authority": false
+    }
+  },
+  "metadata_preflight": {
+    "admitted_ambiguous": 0,
+    "admitted_bindings_validated": 63620,
+    "admitted_unresolved": 0,
+    "classification": "METADATA_PREFLIGHT_NOT_THERMAL_PROFILE_EVALUATION",
+    "continental": 14258,
+    "positive_age_oceanic": 49362,
+    "temperature_profile_evaluated": false,
+    "total_native_support": 64800,
+    "unresolved_positive_age_oceanic_excluded": 1072,
+    "zero_age_ridge_excluded": 108
+  },
+  "next_stage_boundary": {
+    "next_stage": "B6N8-P",
+    "permitted_scope": "Define an execution authorization/run contract only.",
+    "production_execution_authorized_by_this_attestation": false,
+    "required_contract_bindings": [
+      "exact execution target scope",
+      "exact input snapshot/authority identities",
+      "execution configuration/scenario",
+      "candidate-output identity",
+      "output location",
+      "provenance",
+      "validation gates",
+      "failure/abort semantics",
+      "exclusion behavior",
+      "publication status",
+      "post-run checks"
+    ],
+    "whether_real_initializer_run_is_authorized": "NOT_DECIDED_HERE"
+  },
+  "non_actions": {
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_mechanics_executed": false,
+    "Buck_section_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "SECOND_DT_SELECTED": false,
+    "T0_candidate_state_created": false,
+    "T0_canonical_state_created": false,
+    "T0_physical_state_generated": false,
+    "T0_profile_generated": false,
+    "T1_physical_state_generated": false,
+    "T1_profile_generated": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_accessed": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_checkpoint_created": false,
+    "canonical_forward_propagation_executed": false,
+    "conduction_only_declared_insufficient": false,
+    "conduction_only_declared_sufficient": false,
+    "dt2_years": null,
+    "new_boundary_value_selected": false,
+    "new_initializer_selected": false,
+    "new_material_property_selected": false,
+    "new_physical_parameter_selected": false,
+    "new_production_grid_selected": false,
+    "production_thermal_evolution_executed": false,
+    "real_initializer_execution": false
+  },
+  "production_execution_guard": {
+    "numeric_evaluation_requires_explicit_noncanonical_test_fixture_semantics": true,
+    "provider_production_execution_authorized": false,
+    "real_admitted_arcana_support_evaluable_through_authorized_path": false,
+    "synthetic_test_support_identity_required": true
+  },
+  "property_semantics": {
+    "A_C": "crustal model role",
+    "A_M": "mantle model role",
+    "MODEL_DOMAIN_BASE_IS_PHYSICAL_LAB": false,
+    "REFERENCE_MODEL_ROLE_IS_NATURAL_COMPOSITIONAL_IDENTITY": false,
+    "kappa": "DETERMINISTIC_DERIVATION k/(rho*Cp); no independent tuning"
+  },
+  "provider_readiness": {
+    "T0_physical_state_generated": false,
+    "T0_profile_generated": false,
+    "T0_state_published": false,
+    "provider_contract_validated": true,
+    "provider_implemented": true,
+    "provider_preflight_validated": true,
+    "provider_production_execution_authorized": false,
+    "provider_unit_validated": true
+  },
+  "qualification_evidence": {
+    "aggregate_evidence_content_sha256": "1537be139f1489e3e784a59e71a934f408bd72336bc628983409048ea9728084",
+    "aggregate_seal_verified": true,
+    "all_manifest_entries_verified": true,
+    "artifact_manifest_entries": 9,
+    "artifact_manifest_sha256": "d20c5767828946800171364d2c74bd277469d4b59930d0698a78d60f706d9cdc",
+    "relative_root": "ARCANA_WORLD_QUALIFICATION_EVIDENCE/B6N8O/73d98ee14f933622f0d3f18f66985b06f364abcd",
+    "seal_file_sha256": "81b75712c66d5e4a62038aeb23f8559244bc8db22bd05178973e43effb0e1abe"
+  },
+  "qualification_status": "PASS",
+  "qualification_verdict": "PASS_B6N8O_T0_INITIALIZER_IMPLEMENTATION_QUALIFIED_PRODUCTION_EXECUTION_NOT_AUTHORIZED",
+  "qualified_source_commit": "73d98ee14f933622f0d3f18f66985b06f364abcd",
+  "schema": "ARCANA_R6_B6N8O_FINAL_IMPLEMENTATION_ATTESTATION_V1",
+  "source_delta": {
+    "canonical_mutation": false,
+    "executable_code_changed": true,
+    "paths": [
+      "src/arcana_worldsim/r6/pre_orbdata_thermal_column.py",
+      "src/arcana_worldsim/r6/pre_orbdata_t0_initializer.py",
+      "tests/test_r6_pre_orbdata_t0_initializer.py",
+      "docs/arcana/research/B6N8O_T0_INITIALIZER_PROVIDER_IMPLEMENTATION_REPORT.md",
+      "docs/arcana/research/B6N8O_IMPLEMENTATION_READINESS.json"
+    ]
+  },
+  "source_implementation_verdict": "PASS_B6N8O_T0_INITIALIZER_PROVIDER_IMPLEMENTED_VALIDATED_READY_FOR_IMPLEMENTATION_QUALIFICATION",
+  "stage": "B6N8-O",
+  "validation": {
+    "focused_initializer_tests": "27 passed",
+    "full_active_r6_suite": {
+      "reason": "Could access WORLD_HISTORY; qualification required WORLD_HISTORY_accessed=false.",
+      "status": "NOT_RUN_BY_STAGE_SAFETY_CONSTRAINT"
+    },
+    "related_pre_orbdata_regression": "89 passed",
+    "static": {
+      "compileall": "PASS",
+      "git_diff_check": "PASS",
+      "json_validation": "PASS",
+      "local_references": "PASS",
+      "portable_paths": "PASS",
+      "py_compile": "PASS",
+      "utf8_lf": "PASS"
+    }
+  },
+  "world_history": {
+    "accessed_during_B6N8O_development": false,
+    "accessed_during_B6N8O_qualification": false,
+    "canonical_inventory_comparison_claimed": false,
+    "canonical_publication_path_exercised": false,
+    "changed": false
+  }
+}
