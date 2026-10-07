@@ -1,0 +1,278 @@
+{
+  "schema": "ARCANA_R6_B6N8N_FINAL_ATTESTATION_V1",
+  "stage": "B6N8-N",
+  "qualified_source_commit": "9d94170ae4a35267cbccd087e112841b4215d07e",
+  "governing_parent": "912c135b4ff54ee65e3098c6e7701f5f986b59d8",
+  "qualification_status": "PASS",
+  "verdict": "PASS_B6N8N_ADMITTED_SUPPORT_BINDINGS_CLOSED_READY_FOR_T0_INITIALIZER_IMPLEMENTATION",
+  "source_delta": {
+    "paths": [
+      "docs/arcana/research/B6N8N_EXACT_SUPPORT_MATERIAL_BINDING_AUDIT.md",
+      "docs/arcana/research/B6N8N_ADMITTED_SUPPORT_BINDING_INDEX.json",
+      "docs/arcana/research/B6N8N_PROPERTY_TUPLE_BINDING_REGISTRY.json",
+      "docs/arcana/research/B6N8N_BINDING_EXCEPTION_LEDGER.json",
+      "docs/arcana/research/B6N8N_INITIALIZER_COLUMN_CONTRACT.json",
+      "docs/arcana/research/B6N8N_B6N8M_READINESS_OVERLAY.json"
+    ],
+    "executable_code_changed": false,
+    "canonical_mutation": false
+  },
+  "qualification_evidence": {
+    "relative_root": "ARCANA_WORLD_QUALIFICATION_EVIDENCE/B6N8N/9d94170ae4a35267cbccd087e112841b4215d07e",
+    "artifact_manifest_entries": 21,
+    "artifact_manifest_sha256": "7d01a90b1b5f1f289f3a4a1a5b56ad2b86fb49e70915858e56ab673307fa5e3f",
+    "aggregate_evidence_content_sha256": "0c9fc26e5be2da6bf9ebba6066cbdd750fc018be253bd5495a86aa49a9a0d323",
+    "all_manifest_entries_verified": true,
+    "aggregate_seal_verified": true
+  },
+  "B6N8M_governing_authority": {
+    "attestation_baseline_commit": "912c135b4ff54ee65e3098c6e7701f5f986b59d8",
+    "qualified_source_commit": "92cf7605f5ec47d0646fe3b4ab1cf4d9ac18e65d",
+    "decision": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION",
+    "absolute_T1_state": "T0_PROFILE_REQUIRED",
+    "conduction_sufficiency": "UNRESOLVED",
+    "Buck_section_selected": false
+  },
+  "support_partition": {
+    "total_native_support": 64800,
+    "admitted_and_uniquely_bound": 63620,
+    "continental_admitted": 14258,
+    "positive_age_oceanic_admitted": 49362,
+    "unresolved_positive_age_oceanic_excluded": 1072,
+    "zero_age_ridge_excluded": 108,
+    "overlap": 0,
+    "residual_unclassified_support": 0,
+    "ambiguous_admitted_support": 0,
+    "arithmetic": {
+      "continental_plus_admitted_ocean": 63620,
+      "admitted_plus_exclusions": 64800,
+      "partition_closed": true
+    },
+    "membership_hashes": {
+      "CONTINENTAL_COLD_STABLE": "358cdfd933586773b09e673b70b8cd5d9bbddc02458a241a82bf38fc003963ee",
+      "CONTINENTAL_NORMAL": "f40e807fb158ad980022f5a8f4723f3f2f991937e914129ee3ba4761e42d535b",
+      "CONTINENTAL_HOT_EXTENDED": "05b9be68c30e8bf363c6f4fc259c45d4220246d8ee468062b4729711bef962e9",
+      "OCEAN_POSITIVE_AGE_ADMITTED": "2ec950738256f7d2b24c8555b28678eb16e4c002ed82c7c9d9a5cff2890a3f29",
+      "UNRESOLVED_POSITIVE_AGE_OCEAN": "7cfc73998dee411824990da5d6346b2359d6216f41242d0de84fe4fc090d64d7",
+      "ZERO_AGE_RIDGE": "bf876950ae9aacf2f9d28dd79bd871ae2b65c4c2049331a5411e66198849f8d9"
+    }
+  },
+  "boundary_reconstruction_diagnostic": {
+    "candidate_boundary_segments": 634,
+    "adjacent_oceanic_cells": 1075,
+    "overlap_selected_ridge_membership": 3,
+    "semantic_scope": "DIAGNOSTIC_RECONSTRUCTION_ONLY; excluded ridge remains excluded"
+  },
+  "admitted_support_binding": {
+    "ADMITTED_SUPPORT_BINDINGS_COMPLETE": true,
+    "GLOBAL_SUPPORT_BINDINGS_COMPLETE": false,
+    "admitted_binding_cardinality": {
+      "admitted": 63620,
+      "duplicate_ids": 0,
+      "exactly_one": 63620,
+      "multiple_conflicting": 0,
+      "multiple_equivalent": 0,
+      "overlap": 0,
+      "unknown": 0,
+      "zero": 0
+    },
+    "exactly_one_initializer_reference_configuration_per_admitted_column": true,
+    "support_binding_index": "docs/arcana/research/B6N8N_ADMITTED_SUPPORT_BINDING_INDEX.json"
+  },
+  "material_layer_semantics": {
+    "roles": [
+      "CONTINENTAL_CRUST_REFERENCE",
+      "LITHOSPHERIC_MANTLE_REFERENCE",
+      "OCEANIC_CRUST_REFERENCE"
+    ],
+    "meaning": "REDUCED_MODEL_REFERENCE_ROLES",
+    "REFERENCE_MODEL_ROLE_IS_NATURAL_COMPOSITIONAL_IDENTITY": false,
+    "new_geological_compositional_identity_inferred": false
+  },
+  "geometry": {
+    "required_reduced_model_geometry_bound_on_admitted_support": true,
+    "minimum_continental_residual_m": 52000,
+    "minimum_oceanic_residual_m": 93500,
+    "residual_semantics": "positive model-domain mantle interval after crust; not a physical LAB depth",
+    "MODEL_DOMAIN_BASE_IS_PHYSICAL_LAB": false,
+    "physical_LAB_selected": false
+  },
+  "property_tuples": {
+    "registry": "docs/arcana/research/B6N8N_PROPERTY_TUPLE_BINDING_REGISTRY.json",
+    "coherently_bound_properties": [
+      "k",
+      "rho",
+      "Cp"
+    ],
+    "new_material_property_selected": false,
+    "kappa": {
+      "formula": "k/(rho*Cp)",
+      "classification": "DETERMINISTIC_DERIVATION",
+      "independent_kappa_tuning": false,
+      "nominal_m2_s": {
+        "CONTINENTAL_CRUST_REFERENCE": 8.928571428571428e-07,
+        "LITHOSPHERIC_MANTLE_REFERENCE": 8.333333333333333e-07,
+        "OCEANIC_CRUST_REFERENCE": 7.612456747404845e-07
+      }
+    },
+    "source_terms": {
+      "A_C": "crustal roles only",
+      "A_M": "lithospheric mantle role only",
+      "semantics": "MODEL_SCENARIO_SOURCE_TERM",
+      "physical_history_proven_constant": false
+    }
+  },
+  "exception_scope": {
+    "ledger": "docs/arcana/research/B6N8N_BINDING_EXCEPTION_LEDGER.json",
+    "unresolved_positive_age_oceanic_cells": 1072,
+    "zero_age_ridge_cells": 108,
+    "additional_admitted_exceptions": 0,
+    "excluded_classes_silently_resolved": false
+  },
+  "initializer_column_contract": {
+    "path": "docs/arcana/research/B6N8N_INITIALIZER_COLUMN_CONTRACT.json",
+    "status": "SCOPED_COLUMN_CONTRACT_COMPLETE__NO_PROFILE_VALUES",
+    "fields": [
+      "derived_kappa",
+      "geometry_reference",
+      "initializer_family",
+      "interfaces",
+      "material_role_sequence",
+      "property_tuple_refs",
+      "provenance",
+      "source_terms",
+      "support_class",
+      "support_id",
+      "surface_boundary",
+      "temperature_profile",
+      "uncertainty"
+    ],
+    "initializer_family": "R6_PRE_ORBDATA_TRANSIENT_THERMAL_COUPLING",
+    "new_initializer_selected": false,
+    "T_z_T0_values_present": false
+  },
+  "N1_N14": [
+    {
+      "evidence": "Exact native ID rule, source lineage and membership hashes; 63,620 admitted.",
+      "gate": "N1_ADMITTED_SUPPORT_INVENTORY_EXACT",
+      "status": "PASS"
+    },
+    {
+      "evidence": "Three initializer roles; no unsupported subdivision/composition.",
+      "gate": "N2_MATERIAL_ROLE_TAXONOMY_COMPLETE",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "evidence": "Disjoint categorical selectors resolve roles.",
+      "gate": "N3_SUPPORT_TO_MATERIAL_MAPPING",
+      "status": "PASS_SCOPED_REDUCED_MODEL_ADAPTATION"
+    },
+    {
+      "evidence": "Positive geometry residual for all admitted columns.",
+      "gate": "N4_VERTICAL_GEOMETRY_BINDING",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "evidence": "Existing role reference tuples; mantle alpha required for adiabat.",
+      "gate": "N5_PROPERTY_TUPLE_BINDING",
+      "status": "PASS_SCOPED_EXISTING_CONFIG"
+    },
+    {
+      "evidence": "Coherent same-role derivation; no independent tuning.",
+      "gate": "N6_KAPPA_DERIVATION_COHERENCE",
+      "status": "PASS"
+    },
+    {
+      "evidence": "A_C crust, A_M mantle; history/constancy not inferred.",
+      "gate": "N7_RADIOGENIC_SOURCE_BINDING",
+      "status": "PASS_SCENARIO_ONLY"
+    },
+    {
+      "evidence": "Exactly one scoped profile per admitted ID.",
+      "gate": "N8_CARDINALITY_AND_AMBIGUITY_CLOSED",
+      "status": "PASS"
+    },
+    {
+      "evidence": "No admitted exceptions; exclusions separately identified.",
+      "gate": "N9_EXCEPTION_LEDGER_COMPLETE",
+      "status": "PASS"
+    },
+    {
+      "evidence": "1,072 unresolved and 108 ridge remain excluded.",
+      "gate": "N10_EXCLUDED_SUPPORT_PRESERVED",
+      "status": "PASS"
+    },
+    {
+      "evidence": "Minimum fields bound; no profile values.",
+      "gate": "N11_INITIALIZER_COLUMN_CONTRACT_COMPLETE",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "evidence": "Direct native support lookup; section remains B6N8-F.",
+      "gate": "N12_BUCK_EXTRACTION_INTERFACE_DEFINED",
+      "status": "PASS_INTERFACE_ONLY"
+    },
+    {
+      "evidence": "Bindings/config inputs complete; profile itself unavailable.",
+      "gate": "N13_INITIALIZER_IMPLEMENTATION_INPUTS_COMPLETE",
+      "status": "PASS_SCOPED_BINDING_INPUTS"
+    },
+    {
+      "evidence": "M conditional trigger met for implementation, not execution.",
+      "gate": "N14_READY_FOR_T0_INITIALIZER_PROVIDER_IMPLEMENTATION",
+      "status": "PASS_IMPLEMENTATION_ONLY"
+    }
+  ],
+  "implementation_vs_execution": {
+    "next_stage_authority": "AUTHORIZE_T0_INITIALIZER_PROVIDER_IMPLEMENTATION_ON_ADMITTED_SUPPORT",
+    "initializer_provider_implementable": true,
+    "initializer_provider_implemented": false,
+    "initializer_provider_executed": false,
+    "T0_profile_generated": false,
+    "T0_physical_state_generated": false,
+    "T0_physical_state_materializable": false,
+    "T0_to_T1_evolution_authorized": false,
+    "canonical_publication_authorized": false
+  },
+  "Buck_boundary": {
+    "SUPPORT_BINDING_AVAILABLE": true,
+    "Buck_section_selected": false,
+    "Ux_materialized": false,
+    "Xe_selected": false,
+    "XL_selected": false,
+    "strain_rate_materialized": false,
+    "Buck_mechanics_executed": false,
+    "next_spatial_authority": "B6N8-F"
+  },
+  "WORLD_HISTORY": {
+    "accessed_during_B6N8N_qualification": false,
+    "changed": false,
+    "canonical_state_published": false
+  },
+  "non_actions": {
+    "new_physical_parameter_selected": false,
+    "new_material_property_selected": false,
+    "new_initializer_selected": false,
+    "T0_profile_generated": false,
+    "T0_physical_state_generated": false,
+    "T1_physical_state_generated": false,
+    "initializer_provider_implemented": false,
+    "initializer_provider_executed": false,
+    "production_thermal_evolution_executed": false,
+    "conduction_only_declared_sufficient": false,
+    "conduction_only_declared_insufficient": false,
+    "new_acceptance_threshold_selected": false,
+    "physical_LAB_selected": false,
+    "Buck_section_selected": false,
+    "Buck_Ux_materialized": false,
+    "Buck_Xe_selected": false,
+    "Buck_XL_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "Buck_mechanics_executed": false,
+    "SECOND_DT_SELECTED": false,
+    "dt2_years": null,
+    "T2_CREATED": false,
+    "canonical_forward_propagation_executed": false,
+    "WORLD_HISTORY_changed": false
+  }
+}
