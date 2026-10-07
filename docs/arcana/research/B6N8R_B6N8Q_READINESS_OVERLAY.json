@@ -1,0 +1,42 @@
+{
+  "schema": "ARCANA_R6_B6N8R_B6N8Q_READINESS_OVERLAY_V1",
+  "baseline_commit": "84d5fa48e6c68a690c0cc70807341bb60f8669f8",
+  "B6N8Q": {
+    "attestation_commit": "84d5fa48e6c68a690c0cc70807341bb60f8669f8",
+    "qualified_source_commit": "7167f532b49a1430dbb99e8105365ff9dcfb67b0",
+    "verdict": "PASS_B6N8Q_REAL_SUPPORT_EXECUTION_ADAPTER_QUALIFIED_REAL_RUN_STILL_BLOCKED_BY_SCENARIO_ROSTER",
+    "execution_adapter_implemented": true,
+    "execution_adapter_qualified": true,
+    "real_support_metadata_path_validated": true,
+    "real_scenario_roster_bound": false,
+    "real_scenario_count_resolved": false,
+    "real_T0_execution_ready": false
+  },
+  "B6N8P": {
+    "historical_decision": "BLOCKED_B6N8P_EXECUTION_CONFIGURATION_INCOMPLETE",
+    "historical_decision_changed": false,
+    "adapter_infrastructure_blocker": "CLOSED_BY_QUALIFIED_B6N8Q",
+    "scenario_roster_blocker": "OPEN"
+  },
+  "support": {"native":64800,"metadata_admitted":63620,"continental":14258,"positive_age_oceanic":49362,"unresolved_ocean_excluded":1072,"zero_age_ridge_excluded":108,"admitted_unresolved":0,"admitted_ambiguous":0,"qualification_scope":"Q metadata-only preflight; no numerical feasibility or scenario membership map"},
+  "cardinality": {"P_symbolic":"63620 × N","global_per-member_support_applicability_verified":false,"N":null,"numeric_candidate_count":null,"membership_rule_if_support_specific":"sum explicit support_ids over distinct scenario/config entries","historical_P_contract_modified":false,"governed_P_remediation_required_if_not_full_support":true},
+  "R1_R14": [
+    {"gate":"R1_B6N8Q_AUTHORITY_VERIFIED","status":"PASS"},
+    {"gate":"R2_UPSTREAM_SCENARIO_AUTHORITY_CENSUS_COMPLETE","status":"PASS_SCOPED_J_TO_Q_AND_DIRECT_MODEL_INPUTS"},
+    {"gate":"R3_SCENARIO_DIMENSIONS_CLASSIFIED","status":"PASS_CONDITIONAL_DIMENSIONS_IDENTIFIED"},
+    {"gate":"R4_SUPPORT_APPLICABILITY_RESOLVED","status":"BLOCKED_OPTIONAL_OCEAN_AND_NO_SCENARIO_SUPPORT_MAP"},
+    {"gate":"R5_SCENARIO_COMPATIBILITY_MATRIX_COMPLETE","status":"PASS_UNKNOWN_RETAINED"},
+    {"gate":"R6_CARTESIAN_PRODUCT_AUTHORITY_ADJUDICATED","status":"PASS_AUTOMATIC_PRODUCT_NOT_AUTHORIZED"},
+    {"gate":"R7_EXECUTABLE_MEMBERSHIP_DECIDED","status":"BLOCKED_SUPPORT_SCOPE_AND_MEMBER_MAP"},
+    {"gate":"R8_EXACT_SCENARIO_IDENTITIES_DEFINED","status":"BLOCKED_NO_AUTHORIZED_ENTRIES_TO_HASH"},
+    {"gate":"R9_ROSTER_IDENTITY_DEFINED","status":"BLOCKED_MEMBERSHIP_UNRESOLVED"},
+    {"gate":"R10_EXACT_N_RESOLVED","status":"BLOCKED_N_UNKNOWN"},
+    {"gate":"R11_CANDIDATE_CARDINALITY_RESOLVED","status":"BLOCKED_SUPPORT_SPECIFIC_MEMBERSHIP_UNBOUND"},
+    {"gate":"R12_Q_ADAPTER_INTERFACE_COMPATIBILITY_VALIDATED","status":"PASS_INTERFACE_ONLY_NO_ROSTER_INSTANCE"},
+    {"gate":"R13_WORLD_HISTORY_ISOLATION_CONFIRMED","status":"PASS_NO_ACCESS"},
+    {"gate":"R14_REAL_RUN_READINESS_DECIDED","status":"PASS_NOT_READY_SUPPORT_APPLICABILITY_INCOMPLETE"}
+  ],
+  "readiness_after_R": {"status":"NO_SUPPORT_APPLICABILITY_INCOMPLETE","REAL_SCENARIO_ROSTER_BOUND":false,"REAL_SCENARIO_COUNT_RESOLVED":false,"N":null,"REAL_RUN_AUTHORIZED":false,"REAL_T0_EXECUTION_READY":false},
+  "world_history_accessed": false,
+  "world_history_changed": false
+}

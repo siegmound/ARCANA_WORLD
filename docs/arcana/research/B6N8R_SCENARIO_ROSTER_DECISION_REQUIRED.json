@@ -1,0 +1,25 @@
+{
+  "schema": "ARCANA_R6_B6N8R_SCENARIO_ROSTER_DECISION_REQUIRED_V1",
+  "baseline_commit": "84d5fa48e6c68a690c0cc70807341bb60f8669f8",
+  "verdict": "BLOCKED_B6N8R_SUPPORT_APPLICABILITY_INCOMPLETE",
+  "roster_closed": false,
+  "do_not_create_executable_roster": true,
+  "authorial_model_selection_required": true,
+  "external_authority_required": false,
+  "known_authorized_dimensions": ["TSurf 250/280/300 K held model-boundary one-factor cases","role-scoped k/rho/Cp/alpha sensitivity endpoints","role-scoped A_C/A_M endpoints","HWR-2 existing parameter endpoints for optional positive-age ocean","fixed continental q by exact thermal class","derived kappa and positive-age mapping"],
+  "retention_policy": "Retain every applicable separately authorized scenario; do not choose one for convenience and do not create unauthorized Cartesian combinations.",
+  "open_decisions": [
+    {"id":"SUPPORT_SCOPE","authority_class":"ARCANA_AUTHORIAL_MODEL_POLICY","decision":"Choose whether executable T0 support is the 14,258 continental minimum only or includes some/all of the 49,362 eligible positive-age ocean cells. L labels ocean optional. Keep 1,072 unresolved ocean and 108 age-zero ridge cells excluded."},
+    {"id":"SCENARIO_SUPPORT_MAP","authority_class":"ARCANA_AUTHORIAL_SCENARIO_CONFIGURATION","decision":"Bind exact support_ids for each retained member after role/class/boundary joins. TSurf applicability is conditional on matching datum/physical boundary; no per-entry map exists."},
+    {"id":"EXECUTABLE_MEMBER_SET","authority_class":"AUTHORIAL_MODEL_POLICY_WITHIN_B6N8L_AND_P","decision":"Bind exact semantic one-factor endpoint/reference members to retain. Do not interpret them as physical history or add joint combinations."},
+    {"id":"PROVIDER_CONFIGURATION_BINDING","authority_class":"QUALIFIED_INTERFACE_VALIDATION_AFTER_ROSTER_DEFINITION","decision":"Confirm each configuration identity resolves to the approved fixed/one-factor input tuple before any separately authorized real execution; no numerical execution in R."}
+  ],
+  "identity_format_only": {"scenario_id":"semantic axis/role/member label plus content digest, not positional numbering","configuration_identity_sha256":"canonical semantic configuration including initializer/version, T0, exact support IDs, source/boundary/material members and authority identities","roster_id":"canonical digest over sorted explicit members, exact support assignments, compatibility decisions and contract version","status":"NO IDs OR ROSTER INSTANCE CREATED"},
+  "N": null,
+  "expected_candidate_cardinality": null,
+  "P_contract_note": {"historical_symbolic_expression":"63620 × N","global_applicability_of_each_member":"NOT_VERIFIED","explicit_support_specific_rule":"count support_ids for each distinct scenario/config entry; if this differs from 63620 × N, govern a P contract correction before execution","P_artifacts_modified":false},
+  "next_action":"AUTHORIAL_SUPPORT_SCOPE_AND_SCENARIO_MEMBERSHIP_DECISION",
+  "readiness":"NO_SUPPORT_APPLICABILITY_INCOMPLETE",
+  "preserved_exclusions":{"unresolved_positive_age_ocean":1072,"zero_age_ridge":108},
+  "non_actions":{"provider_science_changed":false,"thermal_equation_changed":false,"execution_adapter_modified":false,"new_initializer_selected":false,"new_physical_parameter_selected":false,"new_material_property_selected":false,"new_production_grid_selected":false,"physical_boundary_history_asserted":false,"real_initializer_execution":false,"real_temperature_profile_evaluated":false,"real_candidate_written":false,"T0_profile_generated":false,"T0_candidate_state_created":false,"T0_physical_state_generated":false,"T0_canonical_state_created":false,"T1_profile_generated":false,"T1_physical_state_generated":false,"production_thermal_evolution_executed":false,"conduction_only_declared_sufficient":false,"conduction_only_declared_insufficient":false,"Buck_section_selected":false,"Buck_Ux_materialized":false,"Buck_Xe_selected":false,"Buck_XL_selected":false,"Buck_strain_rate_materialized":false,"Buck_mechanics_executed":false,"SECOND_DT_SELECTED":false,"dt2_years":null,"T2_CREATED":false,"canonical_checkpoint_created":false,"canonical_forward_propagation_executed":false,"WORLD_HISTORY_accessed":false,"WORLD_HISTORY_changed":false,"real_scenario_roster_bound":false,"real_scenario_count_resolved":false}
+}

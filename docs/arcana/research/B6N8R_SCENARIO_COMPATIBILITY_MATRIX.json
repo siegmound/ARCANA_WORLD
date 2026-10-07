@@ -1,0 +1,26 @@
+{
+  "schema": "ARCANA_R6_B6N8R_SCENARIO_COMPATIBILITY_MATRIX_V1",
+  "baseline_commit": "84d5fa48e6c68a690c0cc70807341bb60f8669f8",
+  "matrix_semantics": "Compatibility refers to model-sensitivity configurations. UNKNOWN remains UNKNOWN; it is never promoted to AUTHORIZED.",
+  "rules": [
+    {"pair":"One authorized endpoint/reference member with all other parameters at reference","status":"AUTHORIZED","basis":"B6N8-L defines separately identified one-factor sensitivity cases."},
+    {"pair":"TSURF_LOW / TSURF_REFERENCE / TSURF_HIGH within the TSurf axis","status":"AUTHORIZED_AS_SEPARATE_MEMBERS","basis":"Explicit B6N8-L axis; mutually exclusive values within one scenario."},
+    {"pair":"Multiple distinct values from one scalar axis in one member","status":"PROHIBITED","basis":"One semantic configuration binds one value per dimension."},
+    {"pair":"Continental q by exact thermal class and matching support","status":"AUTHORIZED","basis":"Authored field values by class, not a global scenario axis."},
+    {"pair":"HWR-2 configuration on admitted finite positive-age ocean support","status":"AUTHORIZED_CONDITIONAL","basis":"B6N8-L age/support adapter and HWR validity; ocean support remains optional."},
+    {"pair":"HWR-2 on 1,072 unresolved ocean cells or 108 age-zero ridge cells","status":"PROHIBITED","basis":"Explicit fail-closed exclusions; no fallback or age-zero HWR."},
+    {"pair":"Coherent k/rho/Cp tuple and derived kappa=k/(rho*Cp)","status":"AUTHORIZED_DERIVATION","basis":"B6N8-I/N tuple semantics; kappa is not an independent scenario axis."},
+    {"pair":"One-factor role endpoint on support with exact valid role join","status":"AUTHORIZED_CONDITIONAL","basis":"B6N8-L conditional role/support applicability; exact support IDs not bound."},
+    {"pair":"TSurf alternatives applied across continental and ocean support","status":"UNKNOWN","basis":"B6N8-I limits use to matching datum/physical surface boundary; no qualified scenario-to-support map; ocean is optional."},
+    {"pair":"Every scenario applies to all 63,620 metadata-admitted support cells","status":"UNKNOWN","basis":"P retains symbolic 63,620×N; L makes ocean optional; Q preflight is metadata-only."},
+    {"pair":"TSurf alternative jointly combined with A_C/A_M or material/HWR endpoint","status":"UNKNOWN","automatic_cartesian_product":"PROHIBITED","basis":"L disallows invented joint combinations/correlations; P disallows unauthorized Cartesian products. No specific joint member is named."},
+    {"pair":"Independent A_C alternatives for continental and ocean crust joined into one multi-role member","status":"UNKNOWN","automatic_cartesian_product":"PROHIBITED","basis":"Role identities exist; no joint configuration identity/correlation/support map is authorized."},
+    {"pair":"A_M endpoint combined with A_C or k/rho/Cp/alpha/Tb/zp/rho_w endpoint","status":"UNKNOWN","automatic_cartesian_product":"PROHIBITED","basis":"Only separate one-factor cases are authorized; cross-axis combinations are not."},
+    {"pair":"Fixed gravity, world T0 age, selected initializer and class-boundary inputs with an otherwise applicable one-factor member","status":"AUTHORIZED","basis":"Fixed parents are not additional scenario axes."},
+    {"pair":"Held TSurf or A_C/A_M scenario interpreted as physical history","status":"PROHIBITED","basis":"B6N8-L says model-boundary/source configuration only; physical history remains UNKNOWN."},
+    {"pair":"Buck section, Ux, Xe, XL, strain rate or mechanics in a T0 initializer roster","status":"NOT_APPLICABLE","basis":"B6N8-F is separate; Buck inputs/mechanics are not selected or executed."}
+  ],
+  "cartesian_product_decision": {"automatic_or_new_cartesian_product":"PROHIBITED","all_separately_authorized_applicable_one_factor_members":"RETAIN_REQUIRED_BY_P","all_combinations_of_axes":"NOT_AUTHORIZED","specific_joint_member_without_named_authority":"UNKNOWN"},
+  "remaining_gaps": ["exact scenario-to-support IDs", "continental-only versus optional ocean run scope", "TSurf boundary applicability by support", "whether each allowed endpoint/config is resolvable through eventual provider binding"],
+  "conclusion": "Compatibility policy is sufficient to reject implicit products, but not to enumerate an executable roster."
+}
