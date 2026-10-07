@@ -63,7 +63,8 @@ def _adiabat(model: HWR2, z_m: float, alpha=3.0e-5, gravity=G, cp=1200.0) -> flo
 def continental_column(*, q_surface: float, crust_m: float, total_lithosphere_m: float,
                        crust: LayerMaterial = LayerMaterial(2.5,2800,1000,8e-7),
                        mantle: LayerMaterial = LayerMaterial(3.3,3300,1200,2e-8),
-                       model: HWR2 = HWR2()) -> Column:
+                      model: HWR2 = HWR2(), mantle_alpha_k_1: float = 3.0e-5,
+                      gravity_m_s2: float = G) -> Column:
     model.validate()
     crust.validate(); mantle.validate()
     _within_material_bounds(crust,k=(2.0,3.0),rho=(2700,2900),cp=(800,1200),
@@ -75,7 +76,12 @@ def continental_column(*, q_surface: float, crust_m: float, total_lithosphere_m:
     if q_surface <= 0 or crust_m <= 0 or hm <= 0:
         raise ValueError("THERMAL_COLUMN_INVALID_LAYER_THICKNESS_OR_FLUX")
     h, m = crust_m, hm
-    target = _adiabat(model, total_lithosphere_m, cp=mantle.cp)
+    if not math.isfinite(mantle_alpha_k_1) or mantle_alpha_k_1 <= 0:
+        raise ValueError("THERMAL_COLUMN_ALPHA_INVALID")
+    if not math.isfinite(gravity_m_s2) or gravity_m_s2 <= 0:
+        raise ValueError("THERMAL_COLUMN_GRAVITY_INVALID")
+    target = _adiabat(model, total_lithosphere_m, alpha=mantle_alpha_k_1,
+                      gravity=gravity_m_s2, cp=mantle.cp)
     steady = (model.t0_k + q_surface*h/crust.k - crust.radiogenic_w_m3*h*h/(2*crust.k)
               + (q_surface-crust.radiogenic_w_m3*h)*m/mantle.k
               - mantle.radiogenic_w_m3*m*m/(2*mantle.k))
@@ -106,7 +112,9 @@ def continental_column(*, q_surface: float, crust_m: float, total_lithosphere_m:
 
 def ocean_column(*, age_ma: float, crust_m: float, q_surface: float | None = None,
                  model: HWR2 = HWR2(), ridge: bool = False,
-                 crust: LayerMaterial = LayerMaterial(2.2,2890,1000,3e-7)) -> Column:
+                 crust: LayerMaterial = LayerMaterial(2.2,2890,1000,3e-7),
+                 mantle_alpha_k_1: float = 3.0e-5,
+                 gravity_m_s2: float = G) -> Column:
     model.validate()
     crust.validate()
     _within_material_bounds(crust,k=(1.8,2.8),rho=(2850,2930),cp=(800,1200),
@@ -129,19 +137,29 @@ def ocean_column(*, age_ma: float, crust_m: float, q_surface: float | None = Non
         raise ValueError("OCEAN_CRUST_THICKNESS_INVALID")
     if crust_m >= model.zp_m:
         raise ValueError("OCEAN_CRUST_SUBTRACTED_PLATE_THICKNESS_NONPOSITIVE")
+    if not math.isfinite(mantle_alpha_k_1) or mantle_alpha_k_1 <= 0:
+        raise ValueError("THERMAL_COLUMN_ALPHA_INVALID")
+    if not math.isfinite(gravity_m_s2) or gravity_m_s2 <= 0:
+        raise ValueError("THERMAL_COLUMN_GRAVITY_INVALID")
     # Find the first HWR/adiabat intersection after Moho. Use fixed spatial
     # scan, then bisection; if absent, the governed coupled basal boundary is zp.
     previous_z = crust_m
-    previous_f = model.temperature(age_eval, previous_z)-_adiabat(model,previous_z)
+    previous_f = model.temperature(age_eval, previous_z)-_adiabat(
+        model, previous_z, alpha=mantle_alpha_k_1, gravity=gravity_m_s2,
+        cp=model.cp_j_kg_k)
     lab = None
     for i in range(1,257):
         z = crust_m+(model.zp_m-crust_m)*i/256
-        f = model.temperature(age_eval,z)-_adiabat(model,z)
+        f = model.temperature(age_eval,z)-_adiabat(
+            model, z, alpha=mantle_alpha_k_1, gravity=gravity_m_s2,
+            cp=model.cp_j_kg_k)
         if previous_f < 0 <= f:
             lo,hi=previous_z,z
             for _ in range(64):
                 mid=(lo+hi)/2
-                if model.temperature(age_eval,mid)-_adiabat(model,mid) >= 0: hi=mid
+                if model.temperature(age_eval,mid)-_adiabat(
+                        model, mid, alpha=mantle_alpha_k_1,
+                        gravity=gravity_m_s2, cp=model.cp_j_kg_k) >= 0: hi=mid
                 else: lo=mid
             lab=(lo+hi)/2
             break
@@ -152,7 +170,8 @@ def ocean_column(*, age_ma: float, crust_m: float, q_surface: float | None = Non
         raise ValueError("OCEAN_LAB_OUTSIDE_GOVERNED_GEOMETRY")
     tmoho=model.temperature(age_eval,crust_m)
     qmoho=model.depth_flux(age_eval,crust_m)
-    tlab=_adiabat(model,lab)
+    tlab=_adiabat(model,lab,alpha=mantle_alpha_k_1,
+                  gravity=gravity_m_s2,cp=model.cp_j_kg_k)
     qlab=model.depth_flux(age_eval,lab)
     _finite(tmoho,qmoho,tlab,qlab,q)
     if max(tmoho,tlab) >= 1900.0:
