@@ -1,0 +1,532 @@
+{
+  "B6N8O_authority": {
+    "PROVIDER_IMPLEMENTED": true,
+    "PROVIDER_PRODUCTION_EXECUTION_AUTHORIZED": false,
+    "PROVIDER_QUALIFIED": true,
+    "T0_PROFILE_GENERATED": false,
+    "T0_STATE_PUBLISHED": false,
+    "attestation_path": "docs/arcana/qualifications/R6_B6N8O_ATTESTATION.json",
+    "attestation_sha256": "e3be3c02ff4a4b1f14e2953063cafd3aec8a19f0332df2a205fea30e1c07d981",
+    "qualification_status": "PASS",
+    "qualification_verdict": "PASS_B6N8O_T0_INITIALIZER_IMPLEMENTATION_QUALIFIED_PRODUCTION_EXECUTION_NOT_AUTHORIZED",
+    "qualified_source_commit": "73d98ee14f933622f0d3f18f66985b06f364abcd"
+  },
+  "Buck_boundary": {
+    "Ux_materialized": false,
+    "XL_selected": false,
+    "Xe_selected": false,
+    "mechanics_executed": false,
+    "section_selected": false,
+    "strain_rate_materialized": false
+  },
+  "P1_P14": [
+    {
+      "gate": "P1_B6N8O_AUTHORITY_VERIFIED",
+      "status": "PASS"
+    },
+    {
+      "gate": "P2_REAL_EXECUTION_PATH_CLASSIFIED",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "gate": "P3_EXECUTION_ADAPTER_NECESSITY_DECIDED",
+      "status": "PASS_ADAPTER_REQUIRED"
+    },
+    {
+      "gate": "P4_EXACT_INPUT_SNAPSHOT_BOUND",
+      "status": "PASS"
+    },
+    {
+      "gate": "P5_EXECUTION_CONFIGURATION_BOUND",
+      "status": "BLOCKED_T0_SCENARIO_ROSTER_NOT_BOUND"
+    },
+    {
+      "gate": "P6_SCENARIO_MULTIPLICITY_RESOLVED",
+      "status": "BLOCKED_EXECUTABLE_ROSTER_AND_N_UNBOUND"
+    },
+    {
+      "gate": "P7_CANDIDATE_OUTPUT_CONTRACT_COMPLETE",
+      "status": "PASS_CONTRACT_ONLY"
+    },
+    {
+      "gate": "P8_CANDIDATE_STORAGE_AND_IDENTITY_DEFINED",
+      "status": "PASS_OPERATIONAL_ROOT_BOUND_AT_RUN"
+    },
+    {
+      "gate": "P9_FAILURE_AND_PARTIAL_RUN_SEMANTICS_DEFINED",
+      "status": "PASS"
+    },
+    {
+      "gate": "P10_PRE_RUN_GATES_COMPLETE",
+      "status": "BLOCKED_ADAPTER_AND_ROSTER"
+    },
+    {
+      "gate": "P11_POST_RUN_VALIDATION_COMPLETE",
+      "status": "PASS_CONTRACT_ONLY_NOT_EXECUTED"
+    },
+    {
+      "gate": "P12_CANONICAL_PUBLICATION_FIREWALL_DEFINED",
+      "status": "PASS"
+    },
+    {
+      "gate": "P13_WORLD_HISTORY_ISOLATION_CONFIRMED",
+      "status": "PASS_NO_ACCESS"
+    },
+    {
+      "gate": "P14_REAL_EXECUTION_READINESS_DECIDED",
+      "status": "BLOCKED_REAL_T0_EXECUTION_NOT_READY"
+    }
+  ],
+  "WORLD_HISTORY": {
+    "accessed_during_B6N8P": false,
+    "accessed_during_B6N8P_qualification": false,
+    "canonical_inventory_comparison_claimed": false,
+    "changed": false
+  },
+  "authority_snapshot": {
+    "B6N8N_index_authorities": [
+      {
+        "canonical_text_sha256": "deace3e8221050baf2d07f82bc50976861d4beaf9a4e23229dc883d0d1810203",
+        "file_sha256": "deace3e8221050baf2d07f82bc50976861d4beaf9a4e23229dc883d0d1810203",
+        "path": "R6_PRE_ORBDATA_HEAT_FLOW_CONFIG_V1.json",
+        "role": "existing heat-flow/HWR configuration"
+      },
+      {
+        "canonical_text_sha256": "729d4dc0a8ee8bc5a673ffb7825392edb631749758479ce8f2cc75dc35cec5a1",
+        "file_sha256": "729d4dc0a8ee8bc5a673ffb7825392edb631749758479ce8f2cc75dc35cec5a1",
+        "path": "R6_PRE_ORBDATA_HEAT_FLOW_RIDGE_AND_RUNTIME_CLOSURE.json",
+        "role": "ridge identity and positive-age eligibility"
+      },
+      {
+        "canonical_text_sha256": "5bca81121e296c38e1f7dab9957df7107bac8a91456c53bcc6a99409cb302aa3",
+        "file_sha256": "5bca81121e296c38e1f7dab9957df7107bac8a91456c53bcc6a99409cb302aa3",
+        "path": "R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_V1.json",
+        "role": "existing specialist material reference configuration"
+      },
+      {
+        "canonical_text_sha256": "39fe2436e71f30fcfb610ee22083cf14ad06ddf2a216ce17c4750909b9617469",
+        "file_sha256": "1703cb3ecc484b4957a55397e0548c8ea3665fa990449dc0539472728f6e0680",
+        "path": "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json",
+        "role": "B-v2 field lineage/selected age-source IDs"
+      },
+      {
+        "canonical_text_sha256": "d1a1a21e7ad7242bd37cc6a7c57a1e28d5fc4fcaf9e6128e5e0fdd8a32817471",
+        "file_sha256": "d1a1a21e7ad7242bd37cc6a7c57a1e28d5fc4fcaf9e6128e5e0fdd8a32817471",
+        "path": "R6_T0_SHARED_BOUNDARY_STATE_MANIFEST.json",
+        "role": "canonical edge adjacency and kinematics"
+      },
+      {
+        "canonical_text_sha256": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233",
+        "file_sha256": "5f70c7ce6ad28ffb1fba8b22dd6685bd9da8b1bd51363fdda3760864e1ee1233",
+        "path": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+        "role": "native grid identity"
+      },
+      {
+        "canonical_text_sha256": "aa7a93d9a9ae5486ccacf93e2b3aa7764a5078ca70180c7411b29896dcd4be58",
+        "file_sha256": "aa7a93d9a9ae5486ccacf93e2b3aa7764a5078ca70180c7411b29896dcd4be58",
+        "path": "docs/arcana/qualifications/R6_B6N8M_ATTESTATION.json",
+        "role": "B6N8-M attestation"
+      },
+      {
+        "canonical_text_sha256": "5d6023ec0c522d17d305b3e7fd057fbbbf10eda485df2a14199fc497ec592525",
+        "file_sha256": "5d6023ec0c522d17d305b3e7fd057fbbbf10eda485df2a14199fc497ec592525",
+        "path": "docs/arcana/research/B6N8H_T0_T1_PHYSICAL_STATE_MATRIX.json",
+        "role": "B6N8-H upstream physical input meanings"
+      },
+      {
+        "canonical_text_sha256": "26062e4524793bd0e0fb6f4574d80e7041303280852f3ce6001099d641475b5f",
+        "file_sha256": "26062e4524793bd0e0fb6f4574d80e7041303280852f3ce6001099d641475b5f",
+        "path": "docs/arcana/research/B6N8I_BINDING_MATRIX.json",
+        "role": "B6N8-I role/property authority"
+      },
+      {
+        "canonical_text_sha256": "071a779515d613aab8abdb66b75d457dae8649056a684cb229c47e6aacb1c7f7",
+        "file_sha256": "071a779515d613aab8abdb66b75d457dae8649056a684cb229c47e6aacb1c7f7",
+        "path": "docs/arcana/research/B6N8J_INITIALIZER_CANDIDATE_MATRIX.json",
+        "role": "B6N8-J selected initializer roles and equations"
+      },
+      {
+        "canonical_text_sha256": "6a806c6583287bb8a3375a9fe0c8906ca47b8b56936cf98daff8ee66ae227f91",
+        "file_sha256": "6a806c6583287bb8a3375a9fe0c8906ca47b8b56936cf98daff8ee66ae227f91",
+        "path": "docs/arcana/research/B6N8J_LAB_BASAL_BOUNDARY_DECISION.json",
+        "role": "B6N8-J base/LAB semantic distinction"
+      },
+      {
+        "canonical_text_sha256": "5f34b71069b6d81db998182debde6e20f8432aad969d15f09aa1b4d7defc4734",
+        "file_sha256": "5f34b71069b6d81db998182debde6e20f8432aad969d15f09aa1b4d7defc4734",
+        "path": "docs/arcana/research/B6N8J_REDUCED_THERMAL_MODEL_CONTRACT.json",
+        "role": "B6N8-J initializer/geometry contract"
+      },
+      {
+        "canonical_text_sha256": "54b2d17c60f0c5edb19a3c76df50244208304432729a842ce1f37c565ba0928c",
+        "file_sha256": "54b2d17c60f0c5edb19a3c76df50244208304432729a842ce1f37c565ba0928c",
+        "path": "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json",
+        "role": "B6N8-K no T0-T1 evolution authorization"
+      },
+      {
+        "canonical_text_sha256": "8332707b8e4966af7ab4f46f03be54a6ef55fbc08fe792373b7e3622da5650e4",
+        "file_sha256": "8332707b8e4966af7ab4f46f03be54a6ef55fbc08fe792373b7e3622da5650e4",
+        "path": "docs/arcana/research/B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX.json",
+        "role": "B6N8-L support/material role mapping"
+      },
+      {
+        "canonical_text_sha256": "09b6a4da4870da217dc973165cc2a9470361f11c903b91183cf86bd11b385e3a",
+        "file_sha256": "09b6a4da4870da217dc973165cc2a9470361f11c903b91183cf86bd11b385e3a",
+        "path": "docs/arcana/research/B6N8L_THERMAL_PROVIDER_INPUT_CONTRACT.json",
+        "role": "B6N8-L provider input semantics"
+      },
+      {
+        "canonical_text_sha256": "c4a28ba4e383ba5b7ab812b8c37d593807d9851c4f38b66b462783d0a5f1f5ea",
+        "file_sha256": "c4a28ba4e383ba5b7ab812b8c37d593807d9851c4f38b66b462783d0a5f1f5ea",
+        "path": "docs/arcana/research/B6N8M_INITIALIZER_IMPLEMENTATION_REQUIREMENTS.json",
+        "role": "B6N8-M minimum initializer contract"
+      }
+    ],
+    "immutable_input_identities": [
+      {
+        "path": "docs/arcana/qualifications/R6_B6N8O_ATTESTATION.json",
+        "role": "B6N8-O implementation attestation",
+        "sha256": "e3be3c02ff4a4b1f14e2953063cafd3aec8a19f0332df2a205fea30e1c07d981"
+      },
+      {
+        "path": "src/arcana_worldsim/r6/pre_orbdata_t0_initializer.py",
+        "role": "qualified provider implementation",
+        "sha256": "59803f6799ffdb3153b6866a540d3988c54fa4e356862e086b70dd19dc8b6e33"
+      },
+      {
+        "path": "src/arcana_worldsim/r6/pre_orbdata_thermal_column.py",
+        "role": "qualified thermal kernels",
+        "sha256": "78d32cf1a6884b875581685a482f5fc0730fb47f8c4612f1b2908e96ee6d6ad0"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_ADMITTED_SUPPORT_BINDING_INDEX.json",
+        "role": "admitted support index",
+        "sha256": "aaa571eb64b854656e70fdbb559377a76eb44afdb723080eb5471fd4b1663e00"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_PROPERTY_TUPLE_BINDING_REGISTRY.json",
+        "role": "property tuple registry",
+        "sha256": "d8494442ef9e19c108ab17a53bcbee6db65842bf1e166a3ce8565127d3a9d312"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_BINDING_EXCEPTION_LEDGER.json",
+        "role": "exception ledger",
+        "sha256": "0bf261796a1b4abaad77dba4ee602b05e45c3aac6aa7e4a4ebb32d39add36075"
+      },
+      {
+        "path": "docs/arcana/research/B6N8N_INITIALIZER_COLUMN_CONTRACT.json",
+        "role": "column contract",
+        "sha256": "8102f3ce57092f9d312d08a8ed3952884d98710b43786a3ccc93b8491b287630"
+      },
+      {
+        "path": "docs/arcana/research/B6N8L_BOUNDARY_TEMPORAL_ADAPTER.json",
+        "role": "B6N8-L boundary and scenario authority",
+        "sha256": "64167ddec7fcdec0700ddbb8b1622a51cca9cf8ff6550bd7a35e112039bba7a0"
+      },
+      {
+        "path": "docs/arcana/research/B6N8L_SUPPORT_MATERIAL_BINDING_MATRIX.json",
+        "role": "support/material mapping",
+        "sha256": "8332707b8e4966af7ab4f46f03be54a6ef55fbc08fe792373b7e3622da5650e4"
+      },
+      {
+        "path": "docs/arcana/research/B6N8L_THERMAL_PROVIDER_INPUT_CONTRACT.json",
+        "role": "provider input contract",
+        "sha256": "09b6a4da4870da217dc973165cc2a9470361f11c903b91183cf86bd11b385e3a"
+      },
+      {
+        "path": "docs/arcana/research/B6N8J_REDUCED_THERMAL_MODEL_CONTRACT.json",
+        "role": "B6N8-J initializer model contract",
+        "sha256": "5f34b71069b6d81db998182debde6e20f8432aad969d15f09aa1b4d7defc4734"
+      },
+      {
+        "path": "docs/arcana/research/B6N8K_REDUCED_EVOLUTION_CONTRACT.json",
+        "role": "T0-T1 authority boundary",
+        "sha256": "54b2d17c60f0c5edb19a3c76df50244208304432729a842ce1f37c565ba0928c"
+      },
+      {
+        "path": "R6_T0_B_PANGAEA_LIKE_V2_FIELD_PACKAGE.npz",
+        "role": "field package",
+        "sha256": "39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e"
+      }
+    ],
+    "provider_source_commit": "73d98ee14f933622f0d3f18f66985b06f364abcd",
+    "raw_file_sha256_vs_canonical_text_sha256": {
+      "canonical_text_sha256": "39fe2436e71f30fcfb610ee22083cf14ad06ddf2a216ce17c4750909b9617469",
+      "checkout_file_sha256": "1703cb3ecc484b4957a55397e0548c8ea3665fa990449dc0539472728f6e0680",
+      "example_path": "R6_T0_B_PANGAEA_LIKE_V2_REALIZATION_MANIFEST.json",
+      "preliminary_mismatch": "False positive from comparing CRLF checkout bytes with LF Git/canonical bytes; preserved and superseded in evidence.",
+      "qualification": "PASS",
+      "semantics": "file_sha256 hashes actual checkout bytes; canonical_text_sha256 hashes canonical UTF-8/LF text. They may differ when checkout line endings differ."
+    },
+    "source_commit": "f79ccef337a72152bdbf13369d01960f3df8cb2d"
+  },
+  "candidate": {
+    "analytic_piecewise_representation": true,
+    "exists": false,
+    "generation_is_canonical_publication": false,
+    "key": [
+      "support_id",
+      "scenario_id",
+      "configuration_identity_sha256"
+    ],
+    "new_production_grid_selected": false,
+    "no_T1_or_Buck_fields": true,
+    "output_contract_status": "CONTRACT_ONLY_EXECUTION_BLOCKED",
+    "required_fields": [
+      "support_id",
+      "time",
+      "initializer_family",
+      "scenario_id",
+      "geometry_reference",
+      "model_base_semantics",
+      "model_base_depth_m",
+      "crust_depth_m",
+      "thermal_lab_depth_m",
+      "thermal_lab_temperature_k",
+      "moho_temperature_k",
+      "surface_heat_flow_w_m2",
+      "vertical_coordinate",
+      "segments",
+      "material_roles",
+      "property_tuple_references",
+      "material_property_bindings",
+      "derived_kappa_m2_s",
+      "source_term_references",
+      "configuration_identities",
+      "support_lineage",
+      "uncertainty",
+      "provenance",
+      "validation_status",
+      "canonical_publication"
+    ],
+    "schema": "ARCANA_R6_T0_THERMAL_INITIALIZER_CANDIDATE_V1",
+    "status": [
+      "CANDIDATE",
+      "NON_CANONICAL",
+      "UNPUBLISHED",
+      "VALIDATION_PENDING"
+    ]
+  },
+  "conduction": {
+    "conduction_only_declared_insufficient": false,
+    "conduction_only_declared_sufficient": false,
+    "decision": "PARTIAL_IDENTIFIABILITY_PROFILE_REQUIRED_FOR_FINAL_DECISION"
+  },
+  "execution_adapter": {
+    "implemented": false,
+    "qualified": false,
+    "required": true,
+    "scope": "Orchestration only: authorization verification, real-support invocation, candidate persistence/manifesting, abort/resume, post-run validation, canonical-publication firewall. Must reuse the qualified provider and not duplicate thermal equations."
+  },
+  "execution_path": {
+    "REAL_SUPPORT_EXECUTION_ADAPTER_REQUIRED": true,
+    "qualified_numerical_path": "synthetic/noncanonical guarded; evaluate_synthetic_fixture only",
+    "real_ARCANA_support_numerically_evaluable_through_O": false,
+    "real_support_63620_column_preflight": "METADATA_ONLY"
+  },
+  "expected_candidate_cardinality": {
+    "N": null,
+    "admitted_support": 63620,
+    "expression": "63620 × N"
+  },
+  "failure_and_partial_run": {
+    "abort_on": [
+      "identity/binding mismatch",
+      "unexpected or excluded support",
+      "missing tuple",
+      "invalid geometry",
+      "nonfinite result",
+      "numerical exception",
+      "provenance/hash mismatch",
+      "write failure/interruption"
+    ],
+    "partial_output": "INVALID_INCOMPLETE_CANDIDATE_SET; never complete/promotable",
+    "partial_run_is_complete_candidate_set": false,
+    "resume": "same immutable run identity only; verify each record before reuse; no cross-run mixing"
+  },
+  "finite_immediate_blockers": [
+    "real-support execution adapter required but not implemented/qualified",
+    "exact executable scenario roster unbound; N unresolved"
+  ],
+  "governing_parent": "1dfaba5f7413f7623319ade6ed5539efb9bc46d3",
+  "next_stage": {
+    "scenario_roster_closure_separate": true,
+    "scenario_roster_selection_by_Q": false,
+    "scope": "REAL-SUPPORT EXECUTION ADAPTER IMPLEMENTATION AND NON-PRODUCTION VALIDATION",
+    "stage": "B6N8-Q"
+  },
+  "non_actions": {
+    "Buck_Ux_materialized": false,
+    "Buck_XL_selected": false,
+    "Buck_Xe_selected": false,
+    "Buck_mechanics_executed": false,
+    "Buck_section_selected": false,
+    "Buck_strain_rate_materialized": false,
+    "PRE_RUN_GATES_CURRENTLY_SATISFIED": false,
+    "SECOND_DT_SELECTED": false,
+    "T0_PROFILE_GENERATED": false,
+    "T0_STATE_PUBLISHED": false,
+    "T0_candidate_state_created": false,
+    "T0_canonical_state_created": false,
+    "T0_physical_state_generated": false,
+    "T0_profile_generated": false,
+    "T1_physical_state_generated": false,
+    "T1_profile_generated": false,
+    "T2_CREATED": false,
+    "WORLD_HISTORY_accessed": false,
+    "WORLD_HISTORY_accessed_during_B6N8P": false,
+    "WORLD_HISTORY_accessed_during_B6N8P_qualification": false,
+    "WORLD_HISTORY_changed": false,
+    "canonical_checkpoint_created": false,
+    "canonical_forward_propagation_executed": false,
+    "conduction_only_declared_insufficient": false,
+    "conduction_only_declared_sufficient": false,
+    "dt2_years": null,
+    "execution_adapter_implemented": false,
+    "execution_adapter_qualified": false,
+    "new_boundary_value_selected": false,
+    "new_initializer_selected": false,
+    "new_material_property_selected": false,
+    "new_physical_parameter_selected": false,
+    "new_production_grid_selected": false,
+    "production_thermal_evolution_executed": false,
+    "provider_code_modified": false,
+    "provider_production_execution_authorized": false,
+    "provider_qualified": true,
+    "provider_science_changed": false,
+    "real_T0_execution_ready": false,
+    "real_initializer_execution": false,
+    "real_temperature_profile_evaluated": false,
+    "scenario_count_resolved": false,
+    "scenario_roster_selected": false
+  },
+  "post_run_validation": {
+    "executed": false,
+    "numerical_contract_defined": [
+      "governed boundary/interface and kernel invariants",
+      "positive valid geometry",
+      "finite outputs",
+      "deterministic replay subset",
+      "no Buck tolerance or conduction conclusion"
+    ],
+    "real_output_validated": false,
+    "structural_contract_defined": [
+      "exact 63620*N and unique keys",
+      "exact support closure each scenario",
+      "no excluded/fallback records",
+      "hash/provenance/config match",
+      "all fields/references valid and finite",
+      "manifest complete and reproducible"
+    ]
+  },
+  "pre_run_gates": {
+    "contract_defined": true,
+    "currently_satisfied": false,
+    "other_source_authority_hash_checks": [
+      "verify O attestation/provider and all snapshot hashes",
+      "verify exact admitted/excluded memberships",
+      "freeze scenario roster",
+      "bind candidate root empty or compatible",
+      "qualify adapter",
+      "make WORLD_HISTORY/canonical writer unavailable"
+    ],
+    "required_adapter_implemented_and_qualified": true,
+    "scenario_roster_bound": true
+  },
+  "provider_identity": {
+    "src/arcana_worldsim/r6/pre_orbdata_t0_initializer.py": "59803f6799ffdb3153b6866a540d3988c54fa4e356862e086b70dd19dc8b6e33",
+    "src/arcana_worldsim/r6/pre_orbdata_thermal_column.py": "78d32cf1a6884b875581685a482f5fc0730fb47f8c4612f1b2908e96ee6d6ad0"
+  },
+  "publication_firewall": {
+    "HistoryStore": false,
+    "WORLD_HISTORY_mutation": false,
+    "canonical_checkpoint": false,
+    "history_visibility_update": false,
+    "promotion_separate_stage": true,
+    "run_success_is_acceptance": false
+  },
+  "qualification_checks": {
+    "failed": 0,
+    "passed": 30,
+    "total": 30
+  },
+  "qualification_evidence": {
+    "aggregate_evidence_content_sha256": "a7389ac0c9499b021d12619670ce1a4bb057051ff6734bd9873783aad282e345",
+    "aggregate_regular_file_count_including_manifest": 12,
+    "artifact_manifest_entries": 11,
+    "artifact_manifest_sha256": "d52748075b3417f3e326a1a03228b41b704e989e09a660bf487e04247057db8b",
+    "relative_root": "ARCANA_WORLD_QUALIFICATION_EVIDENCE/B6N8P/f79ccef337a72152bdbf13369d01960f3df8cb2d",
+    "seal_file_sha256": "55d93ef9051b82e2adb90ee069dbc194f70f516b1fc39e316429b6f9ec484ede"
+  },
+  "qualification_status": "PASS",
+  "qualification_verdict": "PASS_B6N8P_FINAL_CLEAN_SOURCE_QUALIFICATION",
+  "qualified_source_commit": "f79ccef337a72152bdbf13369d01960f3df8cb2d",
+  "scenario": {
+    "executable_roster_bound": false,
+    "multiplicity": "AUTHORIZED_SCENARIO_ENSEMBLE",
+    "scenario_count_N": null,
+    "scenario_count_status": "UNKNOWN",
+    "single_scenario_selected": false,
+    "unauthorized_cartesian_product_created": false
+  },
+  "schema": "ARCANA_R6_B6N8P_FINAL_ATTESTATION_V1",
+  "source_gate": {
+    "branch": "r6/b6n8p-t0-execution-run-contract",
+    "canonical_or_history_payload_modified": false,
+    "direct_parent": "1dfaba5f7413f7623319ade6ed5539efb9bc46d3",
+    "head_type": "commit",
+    "provider_modified": false,
+    "qualified_delta_paths": [
+      "docs/arcana/research/B6N8P_B6N8O_READINESS_OVERLAY.json",
+      "docs/arcana/research/B6N8P_PRE_POST_RUN_GATE_MATRIX.json",
+      "docs/arcana/research/B6N8P_T0_CANDIDATE_OUTPUT_CONTRACT.json",
+      "docs/arcana/research/B6N8P_T0_EXECUTION_AUTHORIZATION_AUDIT.md",
+      "docs/arcana/research/B6N8P_T0_RUN_CONTRACT.json"
+    ],
+    "source_code_changed": false,
+    "worktree_clean": true
+  },
+  "stage": "B6N8-P",
+  "stage_decision": "BLOCKED_B6N8P_EXECUTION_CONFIGURATION_INCOMPLETE",
+  "storage_and_identity": {
+    "candidate_output_contract_identity_sha256": "3530e0242eceb776b84ae3b5dfa45d445ad4a5a6561347b0d21c097731930713",
+    "candidate_storage": {
+      "existing_real_candidate_convention": "NOT_FOUND",
+      "proposed": "External configurable ARCANA_R6_CANDIDATE_ROOT/B6N8P/T0/<content-derived-run-id>/ outside repository and WORLD_HISTORY; not created in P"
+    },
+    "manifest_publication": "NOT_PUBLISHED",
+    "manifest_schema": "ARCANA_R6_T0_INITIALIZER_CANDIDATE_RUN_MANIFEST_V1",
+    "run_contract_identity_sha256": "d2e13a8ab13483f24a8086239cb2b9ee73bba8f8ac4861dbe2bb5c40f35f007a",
+    "run_identity": {
+      "bind": [
+        "provider/P source",
+        "input hashes",
+        "support membership",
+        "initializer/recipe",
+        "scenario/config",
+        "T0",
+        "output contract"
+      ],
+      "exclude": [
+        "machine paths",
+        "timestamps",
+        "worker count",
+        "chunk size",
+        "scheduling"
+      ],
+      "kind": "CONTENT_DERIVED",
+      "pattern": "repository R6 content_hash/typed identity pattern"
+    },
+    "separate_from_WORLD_HISTORY_and_canonical_checkpoint": true
+  },
+  "support_partition": {
+    "ADMITTED": 63620,
+    "CONTINENTAL_ADMITTED": 14258,
+    "POSITIVE_AGE_OCEANIC_ADMITTED": 49362,
+    "TOTAL_NATIVE_SUPPORT": 64800,
+    "UNRESOLVED_POSITIVE_AGE_OCEANIC_EXCLUDED": 1072,
+    "ZERO_AGE_RIDGE_EXCLUDED": 108,
+    "fallback": false,
+    "remapping": false
+  }
+}
