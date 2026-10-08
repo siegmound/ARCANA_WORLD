@@ -5,15 +5,45 @@ import argparse
 import csv
 from pathlib import Path
 
+HEATMAP_KINDS={"heatmap","heatmap_valid"}
+HISTOGRAM_KINDS={"matrix_log10_abs","diagonal_log10_abs","dominance_log10_ratio_quarter_decade","forcing_log10_abs"}
+KNOWN_KINDS=HEATMAP_KINDS|HISTOGRAM_KINDS
+
 
 def load_aggregates(path: Path):
     with Path(path).open(newline="", encoding="utf-8") as stream:
-        rows=list(csv.DictReader(stream))
-    if not rows or not {"kind","bin_x","bin_y","count"}.issubset(rows[0]):
+        reader=csv.DictReader(stream)
+        if reader.fieldnames != ["kind","bin_x","bin_y","count"]:
+            raise ValueError("aggregate CSV header must be exactly kind,bin_x,bin_y,count")
+        rows=list(reader)
+    if not rows:
         raise ValueError("aggregate CSV is empty or has an invalid schema")
-    known={"heatmap","heatmap_valid","matrix_log10_abs","diagonal_log10_abs","dominance_log10_ratio_quarter_decade","forcing_log10_abs"}
-    if any(row["kind"] not in known for row in rows): raise ValueError("unknown aggregate data kind")
+    for line_number,row in enumerate(rows,start=2):
+        if None in row or any(row.get(key) is None for key in ("kind","bin_x","bin_y","count")):
+            raise ValueError(f"aggregate CSV row {line_number} does not have exactly four fields")
+        if row["kind"] not in KNOWN_KINDS:
+            raise ValueError(f"aggregate CSV row {line_number} has an unknown kind")
+        try:
+            count=int(row["count"])
+        except (TypeError,ValueError) as exc:
+            raise ValueError(f"aggregate CSV row {line_number} has an invalid count") from exc
+        if count<0:
+            raise ValueError(f"aggregate CSV row {line_number} has a negative count")
+        try:
+            int(row["bin_x"])
+            if row["kind"] in HEATMAP_KINDS:
+                int(row["bin_y"])
+            elif row["bin_y"]!="":
+                raise ValueError("histogram bin_y must be empty")
+        except ValueError as exc:
+            raise ValueError(f"aggregate CSV row {line_number} has an invalid bin: {exc}") from exc
     return rows
+
+
+def histogram_series(rows,kind: str):
+    if kind not in HISTOGRAM_KINDS:
+        raise ValueError(f"not a histogram aggregate kind: {kind}")
+    return [(int(row["bin_x"]),int(row["count"])) for row in rows if row["kind"]==kind]
 
 
 def render(path: Path, output_dir: Path) -> list[Path]:
@@ -34,7 +64,7 @@ def render(path: Path, output_dir: Path) -> list[Path]:
             ("dominance_log10_ratio_quarter_decade","diagonal_dominance_distribution.png","ratio bin (quarter decade; 129 undefined, 130 +inf)","rows"),
             ("forcing_log10_abs","forcing_distribution.png","log10 |fi|","forcing components")]
     for kind,name,xlabel,ylabel in series:
-        data=[(int(r["bin_x"]),int(r["count"])) for r in rows if r["kind"]==kind]
+        data=histogram_series(rows,kind)
         fig,ax=plt.subplots(); ax.bar([x for x,_ in data],[y for _,y in data],width=.9)
         ax.set(xlabel=xlabel,ylabel=ylabel,title=kind.replace("_"," ")); p=output_dir/name; fig.savefig(p,dpi=160,bbox_inches="tight"); plt.close(fig); created.append(p)
     return created

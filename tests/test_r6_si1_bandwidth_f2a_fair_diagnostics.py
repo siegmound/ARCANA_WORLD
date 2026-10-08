@@ -33,6 +33,46 @@ def _expand_format(fmt: str) -> list[str]:
     return expanded
 
 
+def _declared_names(declaration_block: str) -> list[str]:
+    """Return entity names in the generated Fortran declaration block."""
+    names=[]
+    for statement in declaration_block.splitlines():
+        if "::" not in statement:
+            continue
+        entities=statement.split("::",1)[1]
+        # Split entity lists on commas outside array-shape parentheses.
+        parts=[]; start=0; depth=0
+        for index,char in enumerate(entities):
+            if char=="(": depth+=1
+            elif char==")": depth-=1
+            elif char=="," and depth==0:
+                parts.append(entities[start:index]); start=index+1
+        parts.append(entities[start:])
+        for entity in parts:
+            match=re.match(r"\s*([a-z][a-z0-9_]*)",entity,re.I)
+            assert match is not None, f"unrecognized Fortran entity: {entity!r}"
+            names.append(match.group(1).lower())
+    return names
+
+
+def _split_fortran_args(argument_text: str) -> list[str]:
+    args=[]; start=0; depth=0; in_string=False; index=0
+    while index<len(argument_text):
+        char=argument_text[index]
+        if char=="'":
+            if in_string and index+1<len(argument_text) and argument_text[index+1]=="'":
+                index+=1
+            else:
+                in_string=not in_string
+        elif not in_string and char=="(": depth+=1
+        elif not in_string and char==")": depth-=1
+        elif not in_string and depth==0 and char==",":
+            args.append(argument_text[start:index].strip()); start=index+1
+        index+=1
+    args.append(argument_text[start:].strip())
+    return args
+
+
 def _fixture():
     # kl=ku=1, LDAB=4, diagonal row=3; mathematical 3x3 symmetric matrix.
     a=[[4.,1.,0.],[1.,3.,1.],[0.,1.,2.]]
@@ -105,6 +145,70 @@ def test_fortran_formats_types_counts_and_generated_line_lengths():
     diagnostic_block=block[block.index("! SI1-BW1-F2A: read-only numerical characterization"):block.index("ERROR STOP 75")]
     assert all(len(line)<=132 for line in (declaration_block+diagnostic_block).splitlines())
     assert f2a.MARKER in block
+
+
+def test_fortran_csv_writes_preserve_four_column_contract_and_argument_formats():
+    source=(ROOT/"external"/"ShellSet-v1.1.0"/"src"/"MOD_Shells.f90").read_text(encoding="utf-8")
+    transformed,_=f2a.instrument_source_text(source)
+    fem=transformed[transformed.index("SUBROUTINE FEM"):transformed.index("END SUBROUTINE FEM")]
+    writes={
+        "heatmap":("(A,I0,A,I0,A,I0)",["A","I0","A","I0","A","I0"],"',',f2a_bj,',',f2a_heat("),
+        "heatmap_valid":("(A,I0,A,I0,A,I0)",["A","I0","A","I0","A","I0"],"',',f2a_bj,',',f2a_heat_valid("),
+        "matrix_log10_abs":("(A,I0,A,I0)",["A","I0","A","I0"],"',,',f2a_hist("),
+        "diagonal_log10_abs":("(A,I0,A,I0)",["A","I0","A","I0"],"',,',f2a_dhist("),
+        "forcing_log10_abs":("(A,I0,A,I0)",["A","I0","A","I0"],"',,',f2a_fhist("),
+        "dominance_log10_ratio_quarter_decade":("(A,I0,A,I0)",["A","I0","A","I0"],"',,',f2a_rhist("),
+    }
+    for kind,(fmt,descriptors,tail) in writes.items():
+        line=next(line for line in fem.splitlines() if f"'{kind},'" in line)
+        match=re.search(r"WRITE\(77,'([^']+)'\)\s*(.*)$",line,re.I)
+        assert match is not None and match.group(1)==fmt
+        assert _expand_format(fmt)==descriptors
+        assert len(_expand_format(fmt))==len(descriptors)
+        assert len(_split_fortran_args(match.group(2)))==len(descriptors)
+        assert tail in line
+        assert len(line)<=132
+
+
+def test_visualizer_validates_and_reads_all_six_four_column_aggregates(tmp_path):
+    content=("kind,bin_x,bin_y,count\n"
+             "heatmap,10,20,7\n"
+             "heatmap_valid,10,20,9\n"
+             "matrix_log10_abs,24,,1500\n"
+             "diagonal_log10_abs,-2,,8\n"
+             "forcing_log10_abs,18,,4\n"
+             "dominance_log10_ratio_quarter_decade,12,,33\n")
+    path=tmp_path/"aggregates.csv"; path.write_text(content,encoding="utf-8",newline="")
+    rows=visualizer.load_aggregates(path)
+    assert len(rows)==6
+    assert [(row["bin_x"],row["bin_y"],row["count"]) for row in rows[:2]]==[("10","20","7"),("10","20","9")]
+    assert all(rows[index]["bin_y"]=="" for index in range(2,6))
+    assert visualizer.histogram_series(rows,"matrix_log10_abs")==[(24,1500)]
+    assert visualizer.histogram_series(rows,"diagonal_log10_abs")==[(-2,8)]
+    assert visualizer.histogram_series(rows,"forcing_log10_abs")==[(18,4)]
+    assert visualizer.histogram_series(rows,"dominance_log10_ratio_quarter_decade")==[(12,33)]
+
+
+@pytest.mark.parametrize("row",["matrix_log10_abs,24,", "matrix_log10_abs,24,,not-a-count", "matrix_log10_abs,24,,-1"])
+def test_visualizer_rejects_missing_invalid_or_negative_count(tmp_path,row):
+    path=tmp_path/"bad.csv"; path.write_text("kind,bin_x,bin_y,count\n"+row+"\n",encoding="utf-8")
+    with pytest.raises(ValueError): visualizer.load_aggregates(path)
+
+
+def test_visualizer_rejects_noncanonical_csv_header(tmp_path):
+    path=tmp_path/"bad-header.csv"
+    path.write_text("kind,bin_x,count,bin_y\nheatmap,1,2,3\n",encoding="utf-8")
+    with pytest.raises(ValueError): visualizer.load_aggregates(path)
+
+
+def test_generated_fortran_declarations_have_no_duplicate_names_in_fem_scope():
+    source=(ROOT/"external"/"ShellSet-v1.1.0"/"src"/"MOD_Shells.f90").read_text(encoding="utf-8")
+    transformed,_=f2a.instrument_source_text(source)
+    fem=transformed[transformed.index("SUBROUTINE FEM"):transformed.index("END SUBROUTINE FEM")]
+    declarations=fem[fem.index("! F2A generated declarations begin."):fem.index("! F2A generated declarations end.")]
+    names=_declared_names(declarations)
+    duplicates=sorted({name for name in names if names.count(name)>1})
+    assert duplicates==[]
 
 
 def test_every_f2a_fortran_local_is_explicitly_declared():

@@ -395,12 +395,12 @@ IF (f2a_ios == 0) THEN
     END DO
   END DO
   DO f2a_bi=1,632
-    IF (f2a_hist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'matrix_log10_abs,',f2a_bi-324,',',f2a_hist(f2a_bi)
-    IF (f2a_dhist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'diagonal_log10_abs,',f2a_bi-324,',',f2a_dhist(f2a_bi)
-    IF (f2a_fhist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'forcing_log10_abs,',f2a_bi-324,',',f2a_fhist(f2a_bi)
+    IF (f2a_hist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'matrix_log10_abs,',f2a_bi-324,',,',f2a_hist(f2a_bi)
+    IF (f2a_dhist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'diagonal_log10_abs,',f2a_bi-324,',,',f2a_dhist(f2a_bi)
+    IF (f2a_fhist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'forcing_log10_abs,',f2a_bi-324,',,',f2a_fhist(f2a_bi)
   END DO
   DO f2a_bi=1,130
-    IF (f2a_rhist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'dominance_log10_ratio_quarter_decade,',f2a_bi,',',f2a_rhist(f2a_bi)
+    IF (f2a_rhist(f2a_bi)>0_8) WRITE(77,'(A,I0,A,I0)') 'dominance_log10_ratio_quarter_decade,',f2a_bi,',,',f2a_rhist(f2a_bi)
   END DO
   CLOSE(77)
   f2a_csv_ok=1
@@ -432,7 +432,6 @@ INTEGER(KIND=8) :: f2a_fill_nonzero,f2a_fill_nonfinite,f2a_pad_nonzero,f2a_pad_n
 INTEGER(KIND=8) :: f2a_sym_pairs,f2a_sym_div,f2a_sym_nonfinite
 INTEGER(KIND=8) :: f2a_dom_strict,f2a_dom_nonstrict,f2a_diag_pos,f2a_diag_neg,f2a_diag_zero
 INTEGER(KIND=8) :: f2a_force_zero,f2a_force_nonzero,f2a_force_nonfinite
-INTEGER(KIND=8) :: f2a_cum
 INTEGER(KIND=8) :: f2a_cum
 INTEGER(KIND=8) :: f2a_heat(256,256),f2a_hist(632),f2a_dhist(632),f2a_rhist(130),f2a_fhist(632)
 INTEGER(KIND=8) :: f2a_heat_valid(256,256)
