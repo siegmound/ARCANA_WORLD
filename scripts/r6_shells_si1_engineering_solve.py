@@ -588,7 +588,14 @@ def _write_failure(output_dir: Path, decision: str, message: str, baseline: dict
 
 def _seal_output_manifest(output_dir: Path) -> None:
     entries = []
-    for path in sorted(p for p in output_dir.rglob("*") if p.is_file() and p.name != "SI1_ARTIFACT_MANIFEST.json"):
+    for path in sorted(
+        (p for p in output_dir.rglob("*")
+         if p.is_file() and p.name != "SI1_ARTIFACT_MANIFEST.json"),
+        key=lambda p: (
+            p.relative_to(output_dir).as_posix().casefold(),
+            p.relative_to(output_dir).as_posix(),
+        ),
+    ):
         relative = path.relative_to(output_dir).as_posix()
         if relative == "SI1_RESULT.json":
             role = "RUN_DECISION_AND_METRICS"
