@@ -25,6 +25,17 @@ class RecoveryError(RuntimeError):
     pass
 
 
+def _safe_relative_parts(rel:Any,label:str)->tuple[str,...]:
+    if not isinstance(rel,str) or not rel:
+        raise RecoveryError(f"unsafe {label} path: expected a non-empty relative path")
+    posix=PurePosixPath(rel)
+    if (posix.is_absolute() or not posix.parts or
+            any(part in ("", ".", "..") for part in posix.parts) or
+            "\\" in rel or ":" in rel or posix.as_posix()!=rel):
+        raise RecoveryError(f"unsafe {label} path: {rel!r}")
+    return posix.parts
+
+
 def _sha(path:Path)->str:
     digest=hashlib.sha256()
     with path.open("rb") as stream:
@@ -43,10 +54,8 @@ def verify_source_manifest(root:Path)->dict[str,Any]:
     listed=set()
     for entry in entries:
         rel=entry.get("path")
-        if not isinstance(rel,str): raise RecoveryError("manifest artifact path is not text")
-        posix=PurePosixPath(rel)
-        if posix.is_absolute() or ".." in posix.parts or "\\" in rel: raise RecoveryError(f"unsafe manifest path: {rel!r}")
-        candidate=root.joinpath(*posix.parts)
+        parts=_safe_relative_parts(rel,"manifest artifact")
+        candidate=root.joinpath(*parts)
         resolved=candidate.resolve()
         if root not in resolved.parents or candidate.is_symlink() or not candidate.is_file(): raise RecoveryError(f"missing/unsafe manifest artifact: {rel}")
         if rel in listed: raise RecoveryError(f"duplicate manifest path: {rel}")
@@ -107,15 +116,42 @@ def _expected_aggregate_counts(diag:dict[str,Any])->dict[str,int]:
 def _verify_staged_files(root:Path,result:dict[str,Any])->dict[str,Any]:
     before=result.get("staged_input_hashes_before")
     if not isinstance(before,dict) or not before: raise RecoveryError("pre-run staged-input hashes are missing")
+    evidence_root=root.resolve()
+    staged_root=root/"run_f2a"
+    if staged_root.is_symlink() or not staged_root.is_dir():
+        raise RecoveryError("retained staged run_f2a directory missing/unsafe")
+    staged_root=staged_root.resolve()
+    if staged_root.parent!=evidence_root:
+        raise RecoveryError("retained staged run_f2a directory escapes original evidence")
+    def is_link_or_junction(path:Path)->bool:
+        junction_check=getattr(path,"is_junction",None)
+        return path.is_symlink() or (junction_check is not None and junction_check())
     checked=[]
     for rel,digest in before.items():
-        posix=PurePosixPath(rel)
-        if posix.is_absolute() or ".." in posix.parts or "\\" in rel: raise RecoveryError(f"unsafe staged-input path: {rel!r}")
-        path=root.joinpath(*posix.parts); resolved=path.resolve()
-        if root.resolve() not in resolved.parents or path.is_symlink() or not path.is_file(): raise RecoveryError(f"staged file unavailable: {rel}")
+        if not isinstance(rel,str) or not isinstance(digest,str) or not re.fullmatch(r"[0-9a-f]{64}",digest):
+            raise RecoveryError("staged-input path/hash entry is malformed")
+        parts=_safe_relative_parts(rel,"staged-input")
+        path=staged_root.joinpath(*parts)
+        # Reject links/reparse junctions at every component before opening the
+        # file. This also avoids relying on Windows realpath permissions for
+        # files while keeping the check lexically confined to run_f2a.
+        cursor=staged_root
+        for part in parts:
+            cursor=cursor/part
+            if is_link_or_junction(cursor): raise RecoveryError(f"symlink/junction in staged input path: {rel}")
+        try:
+            path.relative_to(staged_root)
+        except ValueError as exc:
+            raise RecoveryError(f"unsafe staged-input path: {rel!r}") from exc
+        if not path.is_file(): raise RecoveryError(f"staged file unavailable: {rel}")
         if _sha(path)!=digest: raise RecoveryError(f"staged input changed since pre-run hash: {rel}")
         checked.append(rel)
-    return {"verified_after_run_against_pre_run_hashes":len(checked),"paths":sorted(checked)}
+    return {"verified_after_run_against_pre_run_hashes":len(checked),
+            "all_recorded_inputs_preserved":True,"paths":sorted(checked),
+            "posthoc_unreconstructible_controls":[
+                "historical IEEE flag causal instruction/location",
+                "whether corrected instrumentation clears IEEE flags on a fresh Fair run",
+                "runtime conditions not captured in retained staged files, logs, or manifests"]}
 
 
 def _verify_lock_provenance(root:Path,result:dict[str,Any])->dict[str,Any]:

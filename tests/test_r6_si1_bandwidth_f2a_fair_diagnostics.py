@@ -1,4 +1,5 @@
 from __future__ import annotations
+import hashlib
 import importlib.util
 import json
 import math
@@ -326,7 +327,15 @@ BW1_F2A_STOP_BEFORE_SOLVER
     (root/"logs").mkdir(); (root/"run_f2a"/"INPUT").mkdir(parents=True)
     (root/"build_f2a"/"src").mkdir(parents=True)
     log_path=root/"logs"/"f2a_mpi_combined.log"; log_path.write_text(log,encoding="utf-8")
-    staged=root/"run_f2a"/"INPUT"/"sample.dat"; staged.write_bytes(b"staged synthetic input fixture\n")
+    staged_files={
+        "INPUT/ARCANA_PLATE_OUTLINES.dig":b"synthetic staged plate outlines\n",
+        "INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat":b"synthetic runtime package\n",
+        "INPUT/sample.dat":b"staged synthetic input fixture\n",
+    }
+    for rel,content in staged_files.items():
+        target=root/"run_f2a"/rel
+        target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_bytes(content)
     csv_path=root/"run_f2a"/"BW1_F2A_AGGREGATES.csv"
     histogram=lambda kind,x,count: f"{kind},{x},{count}\n" if legacy_histogram_rows else f"{kind},{x},,{count}\n"
     csv_path.write_text("kind,bin_x,bin_y,count\n"
@@ -351,7 +360,7 @@ BW1_F2A_STOP_BEFORE_SOLVER
         "f1_provenance":f1_prov,"f1_input_identity_comparison":{"equal":True},"input_validation":input_validation,
         "instrumented_build":{"source_hashes":lock["files"],"instrumentation":{"original_sha256":lock["files"]["src/MOD_Shells.f90"],"instrumented_sha256":recovery._sha(instrumented_path)}},
         "runtime":{"returncode":75,"log_sha256":recovery._sha(log_path)},
-        "staged_input_hashes_before":{"run_f2a/INPUT/sample.dat":recovery._sha(staged)}}
+        "staged_input_hashes_before":{rel:hashlib.sha256(content).hexdigest() for rel,content in staged_files.items()}}
     (root/"BW1_F2A_RESULT.json").write_text(json.dumps(result,sort_keys=True),encoding="utf-8")
     entries=[]
     for path in sorted(p for p in root.rglob("*") if p.is_file()):
@@ -373,6 +382,10 @@ def test_offline_recovery_is_separate_sealed_and_does_not_modify_source(tmp_path
     assert report["decision"]=="RECOVERY_EVIDENCE_RECONSTRUCTED_REQUIRES_REVIEW"
     assert report["source_f2a_decision_preserved"]=="BLOCKED_BW1_F2A_NUMERICAL_CHARACTERIZATION"
     assert report["aggregate_csv"]["counts_match"] is True
+    assert report["staged_input_preservation"]["verified_after_run_against_pre_run_hashes"]==3
+    assert report["staged_input_preservation"]["all_recorded_inputs_preserved"] is True
+    assert "INPUT/ARCANA_PLATE_OUTLINES.dig" in report["staged_input_preservation"]["paths"]
+    assert report["staged_input_preservation"]["posthoc_unreconstructible_controls"]
     assert report["aggregate_csv"]["legacy_three_column_histogram_rows"]==(4 if legacy_histogram_rows else 0)
     assert (output/"F2A_RECOVERY_ARTIFACT_MANIFEST.json").is_file()
     assert report["ieee_warning_audit"]["historical_flag_causality_recoverable"] is False
@@ -401,3 +414,51 @@ def test_offline_recovery_rejects_f1_input_identity_mismatch(tmp_path,monkeypatc
     monkeypatch.setattr(recovery.f2a,"validate_f1_evidence",lambda _root:f1prov)
     with pytest.raises(recovery.f2a.F2AError): recovery.recover(original,f1root,output)
     assert not output.exists()
+
+
+@pytest.mark.parametrize("unsafe",[
+    "../outside.dat", "INPUT/../../outside.dat", "/tmp/outside.dat",
+    "C:/outside.dat", "INPUT\\outside.dat", "",
+])
+def test_staged_input_verification_rejects_unsafe_paths(tmp_path,unsafe):
+    evidence=tmp_path/"evidence"
+    (evidence/"run_f2a"/"INPUT").mkdir(parents=True)
+    with pytest.raises(recovery.RecoveryError,match="unsafe staged-input path"):
+        recovery._verify_staged_files(evidence,{"staged_input_hashes_before":{unsafe:"a"*64}})
+
+
+def test_staged_input_verification_rejects_missing_and_hash_mismatch(tmp_path):
+    evidence=tmp_path/"evidence"
+    (evidence/"run_f2a"/"INPUT").mkdir(parents=True)
+    with pytest.raises(recovery.RecoveryError,match="staged file unavailable"):
+        recovery._verify_staged_files(evidence,{"staged_input_hashes_before":{"INPUT/missing.dat":"a"*64}})
+    target=evidence/"run_f2a"/"INPUT"/"changed.dat"
+    target.write_bytes(b"current bytes")
+    with pytest.raises(recovery.RecoveryError,match="changed since pre-run hash"):
+        recovery._verify_staged_files(evidence,{"staged_input_hashes_before":{"INPUT/changed.dat":"a"*64}})
+
+
+def test_staged_input_verification_rejects_symlink_escape(tmp_path):
+    evidence=tmp_path/"evidence"
+    staged=evidence/"run_f2a"/"INPUT"
+    staged.mkdir(parents=True)
+    outside=tmp_path/"outside.dat"
+    outside.write_bytes(b"outside")
+    link=staged/"escape.dat"
+    try:
+        link.symlink_to(outside)
+    except (OSError,NotImplementedError):
+        pytest.skip("symlink creation is unavailable in this Windows environment")
+    with pytest.raises(recovery.RecoveryError):
+        recovery._verify_staged_files(evidence,{"staged_input_hashes_before":{"INPUT/escape.dat":recovery._sha(outside)}})
+
+
+@pytest.mark.parametrize("unsafe",["C:/outside.dat","../outside.dat","/tmp/outside.dat","INPUT\\outside.dat"])
+def test_original_manifest_rejects_unsafe_relative_paths(tmp_path,unsafe):
+    evidence=tmp_path/"evidence"
+    evidence.mkdir()
+    manifest={"schema":"R6_SI1_BW1_F2A_ARTIFACT_MANIFEST_V1",
+              "artifacts":[{"path":unsafe,"bytes":0,"sha256":"a"*64}]}
+    (evidence/"BW1_F2A_ARTIFACT_MANIFEST.json").write_text(json.dumps(manifest),encoding="utf-8")
+    with pytest.raises(recovery.RecoveryError,match="unsafe manifest artifact path"):
+        recovery.verify_source_manifest(evidence)
