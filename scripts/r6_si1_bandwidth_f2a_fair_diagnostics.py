@@ -124,6 +124,19 @@ def compare_reassembly_to_f1(diagnostics:dict[str,Any], f1_metrics:dict[str,Any]
         "interpretation":"numeric comparison only; not a claim of bitwise reproducibility or solver conditioning"}
 
 
+def scaled_abs_difference(a: float, b: float) -> float:
+    """Overflow-safe reference for scale*|a/scale-b/scale|, saturated at HUGE."""
+    if not math.isfinite(a) or not math.isfinite(b):
+        raise F2AError("scaled absolute difference requires finite operands")
+    scale=max(abs(a),abs(b))
+    if scale==0.0: return 0.0
+    relative=abs(a/scale-b/scale)
+    largest=sys.float_info.max
+    if relative>1.0 and scale>largest/relative:
+        return largest
+    return scale*relative
+
+
 def analyze_band(k: list[list[float]], *, n_rank: int, kl: int, ldab: int,
                  diagonal_row: int, force: list[float]) -> dict[str, Any]:
     """Small-fixture reference for AB(diagonal_row+i-j,j)=A(i,j), 1-based."""
@@ -149,7 +162,7 @@ def analyze_band(k: list[list[float]], *, n_rank: int, kl: int, ldab: int,
         y=entries.get((j,i))
         if i<j and y is not None and math.isfinite(x) and math.isfinite(y):
             scale=max(abs(x),abs(y)); rel=abs(x/scale-y/scale) if scale else 0.0
-            delta=min(float.fromhex('0x1.fffffffffffffp+1023'),scale*rel)
+            delta=scaled_abs_difference(x,y)
             pairs.append((x,y)); max_abs=max(max_abs,delta); max_rel=max(max_rel,rel); divergent+=rel>1e-12
     valid=list(entries.values()); finite=[abs(x) for x in valid if math.isfinite(x)]; nonzero=[x for x in finite if x]
     def hist(values:list[float])->dict[str,int]:
@@ -281,8 +294,12 @@ DO f2a_j=1,nRank
                 END IF
                 f2a_sym_rel=MAX(f2a_sym_rel,f2a_rel)
                 IF (f2a_rel > 1.0D-12) f2a_sym_div=f2a_sym_div+1_8
-                IF (f2a_rel > 0.0D0 .AND. f2a_scale > HUGE(1.0D0)/f2a_rel) THEN
-                  f2a_sym_abs=HUGE(1.0D0)
+                IF (f2a_rel > 1.0D0) THEN
+                  IF (f2a_scale > HUGE(1.0D0)/f2a_rel) THEN
+                    f2a_sym_abs=HUGE(1.0D0)
+                  ELSE
+                    f2a_sym_abs=MAX(f2a_sym_abs,f2a_scale*f2a_rel)
+                  END IF
                 ELSE
                   f2a_sym_abs=MAX(f2a_sym_abs,f2a_scale*f2a_rel)
                 END IF
@@ -377,7 +394,7 @@ WRITE(*,'(A,3(A,I0),A,ES24.16E3)') 'BW1_F2A_FORCING ', &
   ' nonfinite=',f2a_force_nonfinite,' max_abs=',f2a_force_max
 WRITE(*,'(A,2(A,ES24.16E3),2(A,I0))') 'BW1_F2A_RANGE ', &
   'coefficient_log10_max_min=',f2a_range, &
-  'forcing_min_nonzero=',f2a_force_min,' forcing_p50_log10_bin=',f2a_p50, &
+  ' forcing_min_nonzero=',f2a_force_min,' forcing_p50_log10_bin=',f2a_p50, &
   ' forcing_p95_log10_bin=',f2a_p95
 WRITE(*,'(A,2(A,I0),2(A,ES24.16E3))') 'BW1_F2A_SYMMETRY_WORST ', &
   'i=',f2a_worst_i,' j=',f2a_worst_j,' aij=',f2a_worst_a,' aji=',f2a_worst_b
@@ -512,10 +529,48 @@ def _copy_locked(source_root: Path, build_root: Path) -> dict[str, Any]:
     return {"source_hashes":locked,"instrumentation":proof,"source_checkout_modified":False}
 
 
-def _parse_line(text: str, prefix: str) -> dict[str,str]:
+F2A_LOG_SCHEMAS: dict[str, dict[str, str]] = {
+    "BW1_F2A_STAGE ": {key: "int" for key in ("nRank", "nKRows", "kl", "ku", "iDiagonal")},
+    "BW1_F2A_MATRIX ": {key: "int" for key in ("valid", "zero", "nonzero", "nonfinite", "fill_nonzero", "fill_nonfinite", "pad_nonzero", "pad_nonfinite")},
+    "BW1_F2A_SCALE ": {"min_nonzero": "float", "max_abs": "float", **{key: "int" for key in ("diag_pos", "diag_neg", "diag_zero")}},
+    "BW1_F2A_SYMMETRY ": {"max_abs": "float", "max_relative": "float", **{key: "int" for key in ("compared_pairs", "divergent_pairs", "nonfinite_pairs")}},
+    "BW1_F2A_DOMINANCE ": {key: "int" for key in ("strict", "nonstrict")},
+    "BW1_F2A_FORCING ": {"zero": "int", "nonzero": "int", "nonfinite": "int", "max_abs": "float"},
+    "BW1_F2A_RANGE ": {"coefficient_log10_max_min": "float", "forcing_min_nonzero": "float", "forcing_p50_log10_bin": "int", "forcing_p95_log10_bin": "int"},
+    "BW1_F2A_SYMMETRY_WORST ": {"i": "int", "j": "int", "aij": "float", "aji": "float"},
+}
+
+
+def _parse_line(text: str, prefix: str) -> dict[str, str]:
+    """Parse one complete key/value diagnostic record; fail closed on gaps."""
     lines=[line for line in text.splitlines() if line.startswith(prefix)]
     if len(lines)!=1: raise F2AError(f"expected one {prefix} line, found {len(lines)}")
-    vals=dict(re.findall(r"([A-Za-z_][A-Za-z0-9_]*)=([^\s]+)",lines[0]))
+    schema=F2A_LOG_SCHEMAS.get(prefix)
+    if schema is None: raise F2AError(f"no diagnostic schema registered for {prefix}")
+    body=lines[0][len(prefix):]
+    matches=list(re.finditer(r"([A-Za-z_][A-Za-z0-9_]*)\s*=",body))
+    if not matches or body[:matches[0].start()].strip(): raise F2AError(f"malformed {prefix} record prefix")
+    vals: dict[str,str]={}
+    for index,match in enumerate(matches):
+        key=match.group(1)
+        if key in vals: raise F2AError(f"duplicate {prefix} field {key}")
+        if key not in schema: raise F2AError(f"unexpected {prefix} field {key}")
+        end=matches[index+1].start() if index+1<len(matches) else len(body)
+        value=body[match.end():end].strip()
+        if not value: raise F2AError(f"missing {prefix} value for {key}")
+        kind=schema[key]
+        if kind=="int":
+            if not re.fullmatch(r"[+-]?\d+",value): raise F2AError(f"malformed integer {prefix}{key}={value!r}")
+            if int(value)<0 and key not in {"forcing_p50_log10_bin", "forcing_p95_log10_bin"}:
+                raise F2AError(f"negative integer {prefix}{key}={value!r}")
+        else:
+            if not re.fullmatch(NUMBER,value,re.I): raise F2AError(f"malformed number {prefix}{key}={value!r}")
+            if not math.isfinite(float(value.replace("D","E").replace("d","e"))):
+                raise F2AError(f"nonfinite number {prefix}{key}={value!r}")
+            value=value.replace("D","E").replace("d","e")
+        vals[key]=value
+    missing=set(schema)-set(vals)
+    if missing: raise F2AError(f"missing {prefix} fields: {sorted(missing)}")
     return vals
 
 
@@ -538,10 +593,16 @@ def validate_fair_log(text: str, code: int) -> dict[str,Any]:
         raise F2AError("nonfinite values detected; characterization blocked pending adjudication")
     if int(matrix["fill_nonzero"]) or int(matrix["pad_nonzero"]):
         raise F2AError("nonzero values in reserved fill-in or invalid padding storage")
-    for group in (scale,symmetry,range_metrics,forcing,symmetry_worst):
-        for value in group.values():
-            if re.fullmatch(NUMBER,value,re.I) and not math.isfinite(float(value.replace("D","E").replace("d","e"))):
-                raise F2AError("nonfinite reported scalar statistic")
+    if int(dominance["strict"])+int(dominance["nonstrict"])!=EXPECTED["nRank"]:
+        raise F2AError("diagonal-dominance row counts do not equal nRank")
+    if int(scale["diag_pos"])+int(scale["diag_neg"])+int(scale["diag_zero"])!=EXPECTED["nRank"]:
+        raise F2AError("diagonal sign counts do not equal nRank")
+    if int(forcing["zero"])+int(forcing["nonzero"])+int(forcing["nonfinite"])!=EXPECTED["nRank"]:
+        raise F2AError("forcing category counts do not equal nRank")
+    if float(scale["min_nonzero"])<=0.0 or float(scale["max_abs"])<float(scale["min_nonzero"]):
+        raise F2AError("matrix magnitude extrema are inconsistent")
+    if float(forcing["max_abs"])<0.0 or float(symmetry["max_abs"])<0.0 or float(symmetry["max_relative"])<0.0:
+        raise F2AError("reported magnitude/symmetry statistic is negative")
     if not re.search(r"(?m)^BW1_F2A_AGGREGATES_WRITTEN=1$",text): raise F2AError("aggregate CSV was not written")
     return {"stage":stage,"matrix":matrix,"scale":scale,"symmetry":symmetry,"symmetry_worst_pair":symmetry_worst,
             "range":range_metrics,"dominance":dominance,"forcing":forcing,

@@ -1,5 +1,6 @@
 from __future__ import annotations
 import importlib.util
+import json
 import math
 from pathlib import Path
 import re
@@ -12,6 +13,7 @@ def _load(name,path):
     module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module); return module
 f2a=_load("si1_bw1_f2a",ROOT/"scripts"/"r6_si1_bandwidth_f2a_fair_diagnostics.py")
 visualizer=_load("si1_bw1_f2a_visualizer",ROOT/"scripts"/"r6_si1_bandwidth_f2a_visualize.py")
+recovery=_load("si1_bw1_f2a_recovery",ROOT/"scripts"/"r6_si1_bandwidth_f2a_recover_evidence.py")
 
 
 def _expand_format(fmt: str) -> list[str]:
@@ -145,6 +147,8 @@ def test_fortran_formats_types_counts_and_generated_line_lengths():
     diagnostic_block=block[block.index("! SI1-BW1-F2A: read-only numerical characterization"):block.index("ERROR STOP 75")]
     assert all(len(line)<=132 for line in (declaration_block+diagnostic_block).splitlines())
     assert f2a.MARKER in block
+    assert "' forcing_min_nonzero='" in block
+    assert "'forcing_min_nonzero='" not in block
 
 
 def test_fortran_csv_writes_preserve_four_column_contract_and_argument_formats():
@@ -242,19 +246,158 @@ def test_visualizer_requires_observed_aggregate_schema(tmp_path):
 
 def test_fair_log_parser_accepts_reordered_diagnostics_and_rejects_unexpected_storage():
     n=128884; kl=ku=727; valid=n*(kl+ku+1)-kl*(kl+1)//2-ku*(ku+1)//2
-    log="""ERROR STOP 75
+    log=f"""ERROR STOP 75
 BW1_F2A_STAGE nRank=128884 nKRows=2182 kl=727 ku=727 iDiagonal=1455
-BW1_F2A_MATRIX valid=PHYSICAL zero=ZEROS nonzero=1 nonfinite=0 fill_nonzero=0 fill_nonfinite=0 pad_nonzero=0 pad_nonfinite=0
-BW1_F2A_SCALE min_nonzero=1.0E+000 max_abs=2.0E+000 diag_pos=1 diag_neg=0 diag_zero=0
+BW1_F2A_MATRIX valid={valid} zero={valid-1} nonzero=1 nonfinite=0 fill_nonzero=0 fill_nonfinite=0 pad_nonzero=0 pad_nonfinite=0
+BW1_F2A_SCALE min_nonzero=1.0E+000 max_abs=2.0E+000 diag_pos=128884 diag_neg=0 diag_zero=0
 BW1_F2A_SYMMETRY max_abs=0.0E+000 max_relative=0.0E+000 compared_pairs=0 divergent_pairs=0 nonfinite_pairs=0
-BW1_F2A_DOMINANCE strict=1 nonstrict=0
-BW1_F2A_FORCING zero=0 nonzero=1 nonfinite=0 max_abs=1.0E+000
+BW1_F2A_DOMINANCE strict=128884 nonstrict=0
+BW1_F2A_FORCING zero=128883 nonzero=1 nonfinite=0 max_abs=1.0E+000
 BW1_F2A_RANGE coefficient_log10_max_min=0.3E+000 forcing_min_nonzero=1.0E+000 forcing_p50_log10_bin=0 forcing_p95_log10_bin=0
 BW1_F2A_SYMMETRY_WORST i=0 j=0 aij=0.0E+000 aji=0.0E+000
 BW1_F2A_AGGREGATES_WRITTEN=1
 BW1_F2A_RIGID_ROTATION_MODE_TEST_NOT_AUTHORIZED_BY_CURRENT_BASIS_MAPPING
 BW1_F2A_STOP_BEFORE_SOLVER
-""".replace("valid=PHYSICAL",f"valid={valid}").replace("zero=ZEROS",f"zero={valid-1}")
+"""
     assert f2a.validate_fair_log(log,75)["solver_entered"] is False
     bad=log.replace("fill_nonzero=0","fill_nonzero=1")
     with pytest.raises(f2a.F2AError): f2a.validate_fair_log(bad,75)
+
+
+def test_fair_parser_recovers_realistic_spaced_and_adjacent_numeric_fields():
+    scale=f2a._parse_line(
+        "BW1_F2A_SCALE min_nonzero= 1.234E-300 max_abs= 3.6508239112970148E+032 diag_pos=7 diag_neg=2 diag_zero=0\n",
+        "BW1_F2A_SCALE ",
+    )
+    assert float(scale["max_abs"])==3.6508239112970148e32
+    assert float(scale["min_nonzero"])==1.234e-300
+    adjacent=f2a._parse_line(
+        "BW1_F2A_RANGE coefficient_log10_max_min= 1.25E+001forcing_min_nonzero= 2.5D-004 forcing_p50_log10_bin=-323 forcing_p95_log10_bin=+2\n",
+        "BW1_F2A_RANGE ",
+    )
+    assert float(adjacent["coefficient_log10_max_min"])==12.5
+    assert float(adjacent["forcing_min_nonzero"])==2.5e-4
+    assert int(adjacent["forcing_p50_log10_bin"])==-323
+    assert int(adjacent["forcing_p95_log10_bin"])==2
+
+
+@pytest.mark.parametrize("line",[
+    "BW1_F2A_FORCING zero=1 nonzero=2 nonfinite=0\n",
+    "BW1_F2A_FORCING zero=1 nonzero=2 nonzero=2 nonfinite=0 max_abs=1.0E+000\n",
+    "BW1_F2A_FORCING zero=1 nonzero=2 nonfinite=0 max_abs=not-a-number\n",
+    "BW1_F2A_FORCING zero=1 nonzero=2 nonfinite=0 max_abs=NaN\n",
+    "BW1_F2A_FORCING zero=1 nonzero=2 nonfinite=0 max_abs=1.0E+9999\n",
+])
+def test_fair_parser_rejects_missing_duplicate_malformed_and_nonfinite_fields(line):
+    with pytest.raises(f2a.F2AError): f2a._parse_line(line,"BW1_F2A_FORCING ")
+
+
+def test_symmetry_abs_difference_avoids_overflow_and_preserves_finite_cases():
+    maximum=float.fromhex("0x1.fffffffffffffp+1023")
+    smallest=float.fromhex("0x0.0000000000001p-1022")
+    assert f2a.scaled_abs_difference(0.0,0.0)==0.0
+    assert f2a.scaled_abs_difference(1e-300,-1e-300)==2e-300
+    assert f2a.scaled_abs_difference(maximum,maximum)==0.0
+    assert f2a.scaled_abs_difference(maximum,-maximum)==maximum
+    assert f2a.scaled_abs_difference(maximum,smallest)==maximum
+    assert f2a.scaled_abs_difference(smallest,0.0)==smallest
+    with pytest.raises(f2a.F2AError): f2a.scaled_abs_difference(float("inf"),0.0)
+    source=(ROOT/"scripts"/"r6_si1_bandwidth_f2a_fair_diagnostics.py").read_text(encoding="utf-8")
+    assert "IF (f2a_rel > 0.0D0 .AND. f2a_scale > HUGE(1.0D0)/f2a_rel)" not in source
+    assert "IF (f2a_rel > 1.0D0) THEN\n                  IF (f2a_scale > HUGE(1.0D0)/f2a_rel) THEN" in source
+
+
+def _write_recovery_fixture(root:Path,*,legacy_histogram_rows:bool=False)->dict:
+    n=128884; kl=ku=727; valid=n*(kl+ku+1)-kl*(kl+1)//2-ku*(ku+1)//2
+    log=f"""ERROR STOP 75
+BW1_F2A_STAGE nRank=128884 nKRows=2182 kl=727 ku=727 iDiagonal=1455
+BW1_F2A_MATRIX valid={valid} zero={valid-1804327} nonzero=1804327 nonfinite=0 fill_nonzero=0 fill_nonfinite=0 pad_nonzero=0 pad_nonfinite=0
+BW1_F2A_SCALE min_nonzero= 1.0E-012 max_abs= 3.6508239112970148E+032 diag_pos=128884 diag_neg=0 diag_zero=0
+BW1_F2A_SYMMETRY max_abs=0.0E+000 max_relative=0.0E+000 compared_pairs=1 divergent_pairs=0 nonfinite_pairs=0
+BW1_F2A_DOMINANCE strict=128884 nonstrict=0
+BW1_F2A_FORCING zero=0 nonzero=128884 nonfinite=0 max_abs=1.3496974460580477E+018
+BW1_F2A_RANGE coefficient_log10_max_min= 1.0E+001forcing_min_nonzero= 1.0D-006 forcing_p50_log10_bin=-6 forcing_p95_log10_bin=-3
+BW1_F2A_SYMMETRY_WORST i=1 j=2 aij=0.0E+000 aji=0.0E+000
+BW1_F2A_AGGREGATES_WRITTEN=1
+BW1_F2A_RIGID_ROTATION_MODE_TEST_NOT_AUTHORIZED_BY_CURRENT_BASIS_MAPPING
+BW1_F2A_STOP_BEFORE_SOLVER
+"""
+    root.mkdir(parents=True)
+    (root/"logs").mkdir(); (root/"run_f2a"/"INPUT").mkdir(parents=True)
+    (root/"build_f2a"/"src").mkdir(parents=True)
+    log_path=root/"logs"/"f2a_mpi_combined.log"; log_path.write_text(log,encoding="utf-8")
+    staged=root/"run_f2a"/"INPUT"/"sample.dat"; staged.write_bytes(b"staged synthetic input fixture\n")
+    csv_path=root/"run_f2a"/"BW1_F2A_AGGREGATES.csv"
+    histogram=lambda kind,x,count: f"{kind},{x},{count}\n" if legacy_histogram_rows else f"{kind},{x},,{count}\n"
+    csv_path.write_text("kind,bin_x,bin_y,count\n"
+        f"heatmap,1,1,1804327\nheatmap_valid,1,1,{valid}\n"
+        +histogram("matrix_log10_abs",32,1804327)
+        +histogram("diagonal_log10_abs",32,128884)
+        +histogram("forcing_log10_abs",18,128884)
+        +histogram("dominance_log10_ratio_quarter_decade",70,128884),encoding="utf-8")
+    lock=json.loads(recovery.bw1.LOCK_PATH.read_text(encoding="utf-8"))
+    source=(ROOT/"external"/"ShellSet-v1.1.0"/"src"/"MOD_Shells.f90").read_text(encoding="utf-8")
+    instrumented,proof=f2a.instrument_source_text(source)
+    instrumented_path=root/"build_f2a"/"src"/"MOD_Shells.f90"
+    instrumented_path.write_text(instrumented,encoding="utf-8")
+    f1_prov={"source_commit":f2a.F1_COMMIT,"result_sha256":f2a.F1_RESULT_SHA256,
+             "manifest_sha256":f2a.F1_MANIFEST_SHA256,"artifact_count":1,
+             "decision":"PASS_BW1_FAIR_ASSEMBLY_ONLY",
+             "f1_reference_metrics":{"matrix":{"nonzero":1804327,"rows":2182,"cols":128884,"bytes":2249799104,"max_abs":3.650823911297015e32},
+                                     "forcing":{"nonzero":128884,"max_abs":1.3496974460580477e18}}}
+    input_validation={"source_inputs":{"fegr_sha256":"a"*64},"derived_inputs":{"runtime_sha256":"b"*64},"partition_payload_sha256":"c"*64}
+    result={"decision":"BLOCKED_BW1_F2A_NUMERICAL_CHARACTERIZATION","failure":"KeyError: 'max_abs'",
+        "repository":{"branch":f2a.EXPECTED_BRANCH,"head":"e1694e18ddf1843c6709dd7e78f5de7bd6a281b4"},
+        "f1_provenance":f1_prov,"f1_input_identity_comparison":{"equal":True},"input_validation":input_validation,
+        "instrumented_build":{"source_hashes":lock["files"],"instrumentation":{"original_sha256":lock["files"]["src/MOD_Shells.f90"],"instrumented_sha256":recovery._sha(instrumented_path)}},
+        "runtime":{"returncode":75,"log_sha256":recovery._sha(log_path)},
+        "staged_input_hashes_before":{"run_f2a/INPUT/sample.dat":recovery._sha(staged)}}
+    (root/"BW1_F2A_RESULT.json").write_text(json.dumps(result,sort_keys=True),encoding="utf-8")
+    entries=[]
+    for path in sorted(p for p in root.rglob("*") if p.is_file()):
+        entries.append({"path":path.relative_to(root).as_posix(),"bytes":path.stat().st_size,"sha256":recovery._sha(path)})
+    (root/"BW1_F2A_ARTIFACT_MANIFEST.json").write_text(json.dumps({"schema":"R6_SI1_BW1_F2A_ARTIFACT_MANIFEST_V1","artifacts":entries}),encoding="utf-8")
+    return f1_prov,input_validation
+
+
+@pytest.mark.parametrize("legacy_histogram_rows",[False,True])
+def test_offline_recovery_is_separate_sealed_and_does_not_modify_source(tmp_path,monkeypatch,legacy_histogram_rows):
+    original=tmp_path/"original"; f1root=tmp_path/"f1"; output=tmp_path/"recovery"
+    f1root.mkdir(); f1prov,input_validation=_write_recovery_fixture(original,legacy_histogram_rows=legacy_histogram_rows)
+    (f1root/"BW1_F1_RESULT.json").write_text(json.dumps({"input_validation":input_validation}),encoding="utf-8")
+    monkeypatch.setattr(recovery.f2a,"validate_f1_evidence",lambda _root:f1prov)
+    before={p.relative_to(original).as_posix():recovery._sha(p) for p in original.rglob("*") if p.is_file()}
+    report=recovery.recover(original,f1root,output)
+    after={p.relative_to(original).as_posix():recovery._sha(p) for p in original.rglob("*") if p.is_file()}
+    assert before==after
+    assert report["decision"]=="RECOVERY_EVIDENCE_RECONSTRUCTED_REQUIRES_REVIEW"
+    assert report["source_f2a_decision_preserved"]=="BLOCKED_BW1_F2A_NUMERICAL_CHARACTERIZATION"
+    assert report["aggregate_csv"]["counts_match"] is True
+    assert report["aggregate_csv"]["legacy_three_column_histogram_rows"]==(4 if legacy_histogram_rows else 0)
+    assert (output/"F2A_RECOVERY_ARTIFACT_MANIFEST.json").is_file()
+    assert report["ieee_warning_audit"]["historical_flag_causality_recoverable"] is False
+    manifest=json.loads((output/"F2A_RECOVERY_ARTIFACT_MANIFEST.json").read_text(encoding="utf-8"))
+    assert {entry["path"] for entry in manifest["artifacts"]}=={"F2A_RECOVERY_RESULT.json","F2A_RECOVERY_RESULT.md"}
+    for entry in manifest["artifacts"]:
+        artifact=output/entry["path"]
+        assert artifact.stat().st_size==entry["bytes"]
+        assert recovery._sha(artifact)==entry["sha256"]
+
+
+def test_offline_recovery_rejects_modified_original_manifest_artifact(tmp_path,monkeypatch):
+    original=tmp_path/"original"; f1root=tmp_path/"f1"; output=tmp_path/"recovery"
+    f1root.mkdir(); f1prov,_=_write_recovery_fixture(original)
+    monkeypatch.setattr(recovery.f2a,"validate_f1_evidence",lambda _root:f1prov)
+    (original/"logs"/"f2a_mpi_combined.log").write_text("modified\n",encoding="utf-8")
+    with pytest.raises(recovery.RecoveryError): recovery.recover(original,f1root,output)
+    assert not output.exists()
+
+
+def test_offline_recovery_rejects_f1_input_identity_mismatch(tmp_path,monkeypatch):
+    original=tmp_path/"original"; f1root=tmp_path/"f1"; output=tmp_path/"recovery"
+    f1root.mkdir(); f1prov,input_validation=_write_recovery_fixture(original)
+    input_validation["source_inputs"]["fegr_sha256"]="d"*64
+    (f1root/"BW1_F1_RESULT.json").write_text(json.dumps({"input_validation":input_validation}),encoding="utf-8")
+    monkeypatch.setattr(recovery.f2a,"validate_f1_evidence",lambda _root:f1prov)
+    with pytest.raises(recovery.f2a.F2AError): recovery.recover(original,f1root,output)
+    assert not output.exists()
