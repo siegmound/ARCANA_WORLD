@@ -67,6 +67,7 @@ EXPECTED_KSIZE = {
 MPI_RANKS = 2
 MEMORY_CAP_GIB_PER_PROCESS = 32
 TIMEOUT_SECONDS = 1_800
+PREFLIGHT_EXIT_CODE = 73
 PREFLIGHT_MARKER = "BW1_PREFLIGHT_STOP_BEFORE_STIFFNESS"
 def _shared_ksize_pattern() -> re.Pattern[str]:
     helper_path = ROOT / "scripts" / "r6_shells_si1_engineering_solve.py"
@@ -85,9 +86,11 @@ def _shared_ksize_pattern() -> re.Pattern[str]:
 
 K_SIZE_RE = _shared_ksize_pattern()
 ERROR_BEFORE_KSIZE_RE = re.compile(
-    r"(?im)(?:^|\b)(?:FATAL\s+ERROR|ERROR\s+STOP|MPI_ABORT|NVFORTRAN-S-|"
+    r"(?im)(?:^|\b)(?:FATAL\s+ERROR|MPI_ABORT|NVFORTRAN-S-|"
     r"FORTRAN\s+RUNTIME\s+ERROR|SEGMENTATION\s+FAULT|SIGSEGV)(?:\b|:)"
 )
+ERROR_STOP_LINE_RE = re.compile(r"(?im)^[ \t]*ERROR[ \t]+STOP\b.*$")
+EXPECTED_ERROR_STOP_RE = re.compile(rf"(?im)^[ \t]*ERROR[ \t]+STOP[ \t]+{PREFLIGHT_EXIT_CODE}[ \t]*$")
 SOLVE_OUTPUT_RE = re.compile(r"(?i)\b(?:CONVERGED\s*!{3,}|SHELLS\s+MECHANICAL\s+SOLVE)\b")
 
 
@@ -186,7 +189,7 @@ def instrument_source_text(text: str) -> tuple[str, dict[str, Any]]:
         "     &      INT(8.0D0 * DBLE(nKRows) * DBLE(nRank), KIND=8)\n"
         f"       WRITE(*,'(A)') '{PREFLIGHT_MARKER}'\n"
         "       FLUSH(6)\n"
-        "       ERROR STOP 73\n"
+        f"       ERROR STOP {PREFLIGHT_EXIT_CODE}\n"
     )
     instrumented = text[: line_end + 1] + block + text[line_end + 1 :]
     proof = inspect_instrumentation(instrumented)
@@ -199,7 +202,7 @@ def inspect_instrumentation(text: str) -> dict[str, Any]:
     """Prove one KSize call, then unconditional stop, then one stiffness allocation."""
     call, allocation = _instrumentation_anchor(text)
     marker_pos = text.find(PREFLIGHT_MARKER)
-    stop_matches = list(re.finditer(r"(?im)^\s*ERROR\s+STOP\s+73\s*$", text))
+    stop_matches = list(EXPECTED_ERROR_STOP_RE.finditer(text))
     flush_matches = list(re.finditer(r"(?im)^\s*FLUSH\s*\(\s*6\s*\)\s*$", text))
     if marker_pos < call.end() or marker_pos >= allocation.start():
         raise BW1PreflightError("preflight marker is not between KSize and stiffness allocation")
@@ -249,26 +252,48 @@ def parse_ksize_output(text: str) -> dict[str, int]:
     return parsed[0]
 
 
-def validate_preflight_log(text: str) -> dict[str, Any]:
+def validate_preflight_log(text: str, *, mpi_exit_code: int) -> dict[str, Any]:
     ksize = parse_ksize_output(text)
     marker_positions = [m.start() for m in re.finditer(re.escape(PREFLIGHT_MARKER), text)]
     if not marker_positions:
         raise BW1PreflightError("unconditional pre-allocation stop marker is missing")
-    first_ksize = K_SIZE_RE.search(text)
-    assert first_ksize is not None
-    before_ksize = text[: first_ksize.start()]
-    error = ERROR_BEFORE_KSIZE_RE.search(before_ksize)
+    ksize_matches = list(K_SIZE_RE.finditer(text))
+    stop_lines = list(ERROR_STOP_LINE_RE.finditer(text))
+    intentional_stops = [match for match in stop_lines if EXPECTED_ERROR_STOP_RE.fullmatch(match.group(0))]
+    unexpected_stops = [match.group(0) for match in stop_lines if not EXPECTED_ERROR_STOP_RE.fullmatch(match.group(0))]
+    if unexpected_stops:
+        raise BW1PreflightError(f"unexpected ERROR STOP line(s): {unexpected_stops}")
+    if not intentional_stops or len(intentional_stops) > MPI_RANKS:
+        raise BW1PreflightError(
+            f"expected 1..{MPI_RANKS} intentional ERROR STOP {PREFLIGHT_EXIT_CODE} lines, found {len(intentional_stops)}"
+        )
+    if len(marker_positions) > MPI_RANKS:
+        raise BW1PreflightError(f"stop marker count exceeds MPI rank count: {len(marker_positions)}")
+    if len(ksize_matches) > MPI_RANKS:
+        raise BW1PreflightError(f"KSize diagnostic count exceeds MPI rank count: {len(ksize_matches)}")
+    error = ERROR_BEFORE_KSIZE_RE.search(text)
     if error:
-        raise BW1PreflightError(f"runtime error occurred before KSize: {error.group(0)}")
+        raise BW1PreflightError(f"unexpected runtime/MPI error in preflight log: {error.group(0)}")
     if SOLVE_OUTPUT_RE.search(text):
         raise BW1PreflightError("solve/convergence output appeared in KSize-only run")
-    if min(marker_positions) < first_ksize.end():
+    if marker_positions[0] < ksize_matches[0].end():
         raise BW1PreflightError("stop marker appeared before the KSize diagnostic")
+    if mpi_exit_code != PREFLIGHT_EXIT_CODE:
+        raise BW1PreflightError(
+            f"MPI exit code must equal the intentional preflight stop code {PREFLIGHT_EXIT_CODE}, found {mpi_exit_code}"
+        )
+    ieee_warning_counts = {
+        warning: len(re.findall(re.escape(warning), text, flags=re.IGNORECASE))
+        for warning in ("ieee_underflow", "ieee_inexact")
+    }
     return {
         "ksize": ksize,
-        "ksize_diagnostic_count": len(list(K_SIZE_RE.finditer(text))),
+        "ksize_diagnostic_count": len(ksize_matches),
         "stop_marker_count": len(marker_positions),
-        "errors_before_ksize": False,
+        "intentional_error_stop_count": len(intentional_stops),
+        "mpi_exit_code": mpi_exit_code,
+        "ieee_warning_counts": ieee_warning_counts,
+        "unexpected_runtime_errors": False,
         "solve_output_detected": False,
         "stopped_before_stiffness_allocation": True,
     }
@@ -628,14 +653,24 @@ def run_preflight(shellset_root: Path, bw1_root: Path, partition_payload: Path, 
         log_path = output_dir / "logs" / "preflight_mpi.log"
         log_text = log_path.read_text(encoding="utf-8", errors="replace")
         guard = inspect_instrumentation((build_root / "src" / "SHELLS_v5.0.f90").read_text(encoding="utf-8"))
-        log_validation = validate_preflight_log(log_text)
         report["preflight"] = {
-            **log_validation,
             "mpi_exit_code": run.returncode,
-            "mpi_exit_code_nonzero_expected_or_acceptable": run.returncode != 0,
-            "static_stop_guard": guard,
             "diagnostic_log_sha256": si1.sha256(log_path),
             "build_log_sha256": si1.sha256(output_dir / "logs" / "build_preflight.log"),
+            "ieee_warning_observations": {
+                warning: len(re.findall(re.escape(warning), log_text, flags=re.IGNORECASE))
+                for warning in ("ieee_underflow", "ieee_inexact")
+            },
+            "diagnostic_log_preserved_verbatim": True,
+        }
+        log_validation = validate_preflight_log(log_text, mpi_exit_code=run.returncode)
+        report["preflight"] = {
+            **log_validation,
+            "static_stop_guard": guard,
+            "diagnostic_log_sha256": report["preflight"]["diagnostic_log_sha256"],
+            "build_log_sha256": report["preflight"]["build_log_sha256"],
+            "ieee_warning_observations": report["preflight"]["ieee_warning_observations"],
+            "diagnostic_log_preserved_verbatim": True,
         }
         after_feg_sha = si1.sha256(DEFAULT_FEG)
         after_runtime_sha = si1.sha256(DEFAULT_PACKAGE)

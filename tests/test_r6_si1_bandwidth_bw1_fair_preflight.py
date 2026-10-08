@@ -28,14 +28,27 @@ def _source() -> str:
 """
 
 
-def _log(*, marker: str = preflight.PREFLIGHT_MARKER, bytes_text: str = "2249799104") -> str:
-    return (
-        " SI1_KSIZE  nRank=128884  nKRows=2182  nCodiagonals=727  matrix_bytes= "
-        + bytes_text
-        + "\n"
-        + marker
-        + "\n"
-    )
+def _ksize_line(bytes_text: str = "2249799104") -> str:
+    return f" SI1_KSIZE  nRank=128884  nKRows=2182  nCodiagonals=727  matrix_bytes= {bytes_text}\n"
+
+
+def _log(
+    *,
+    marker: str | None = preflight.PREFLIGHT_MARKER,
+    bytes_text: str = "2249799104",
+    stop_lines: int = 1,
+    stop_code: int | str = 73,
+    ksize_count: int = 1,
+    prefix: str = "",
+    suffix: str = "",
+) -> str:
+    rows = [prefix]
+    rows.extend(f"ERROR STOP {stop_code}\n" for _ in range(stop_lines))
+    rows.extend(_ksize_line(bytes_text) for _ in range(ksize_count))
+    if marker is not None:
+        rows.append(marker + "\n")
+    rows.append(suffix)
+    return "".join(rows)
 
 
 def test_instrumentation_is_after_unique_ksize_and_before_stiffness_allocation() -> None:
@@ -72,19 +85,66 @@ def test_instrumentation_guard_rejects_missing_or_conditional_stop() -> None:
         preflight.inspect_instrumentation(conditional)
 
 
-def test_ksize_parser_accepts_fortran_exponent_and_rejects_bad_diagnostics() -> None:
-    text = _log(bytes_text="2.249799104D+09")
-    result = preflight.validate_preflight_log(text)
+def test_fair_combined_log_accepts_error_stop_before_stdout_diagnostics() -> None:
+    # Fair's MPI log combines streams: stderr ERROR STOP may appear before stdout
+    # KSize, while stdout retains KSize -> marker ordering.
+    fair_log = (
+        "Starting model: 1 of 1\n"
+        "Warning: ieee_underflow is signaling\n"
+        "Warning: ieee_inexact is signaling\n"
+        "ERROR STOP 73\n"
+        + _ksize_line()
+        + preflight.PREFLIGHT_MARKER
+        + "\nPrimary job terminated normally, but 1 process returned a non-zero exit code\n"
+        + "Process name: [[53922,1],1]\nExit code:    73\n"
+    )
+    result = preflight.validate_preflight_log(fair_log, mpi_exit_code=73)
     assert result["ksize"] == preflight.EXPECTED_KSIZE
-    for invalid in (
-        "nRank=128884 nKRows=2182 nCodiagonals=727 matrix_bytes=2249799104\n" + preflight.PREFLIGHT_MARKER,
-        _log().replace("nCodiagonals=727", "nCodiagonals=728"),
-        _log().replace(preflight.PREFLIGHT_MARKER, ""),
-        "ERROR STOP 1\n" + _log(),
-        _log() + "SHELLS MECHANICAL SOLVE\n",
-    ):
-        with pytest.raises(preflight.BW1PreflightError):
-            preflight.validate_preflight_log(invalid)
+    assert result["intentional_error_stop_count"] == 1
+    assert result["ieee_warning_counts"] == {"ieee_underflow": 1, "ieee_inexact": 1}
+
+
+def test_ksize_and_marker_may_precede_the_intentional_stop() -> None:
+    log_after = _ksize_line() + preflight.PREFLIGHT_MARKER + "\nERROR STOP 73\n"
+    result = preflight.validate_preflight_log(log_after, mpi_exit_code=73)
+    assert result["stopped_before_stiffness_allocation"] is True
+
+
+def test_ksize_parser_accepts_fortran_exponent() -> None:
+    result = preflight.validate_preflight_log(_log(bytes_text="2.249799104D+09"), mpi_exit_code=73)
+    assert result["ksize"] == preflight.EXPECTED_KSIZE
+
+
+@pytest.mark.parametrize(
+    ("text", "mpi_exit_code"),
+    [
+        (_log(stop_code=1), 73),
+        (_log(stop_code=1, prefix=_ksize_line() + preflight.PREFLIGHT_MARKER + "\n"), 73),
+        (_log(stop_lines=0), 73),
+        (_log().replace("ERROR STOP 73\n", "ERROR STOP 73 extra\n"), 73),
+        (_log(stop_lines=2, stop_code=73, suffix="ERROR STOP 1\n"), 73),
+        (_log(prefix="FATAL ERROR: fixture failure\n"), 73),
+        (_log(prefix="MPI_ABORT was called\n"), 73),
+        (_log(suffix="SIGSEGV\n"), 73),
+        (_log(suffix="Fortran runtime error: invalid operation\n"), 73),
+        (_log(suffix="NVFORTRAN-S-0038-Symbol error\n"), 73),
+        (_log().replace(_ksize_line(), ""), 73),
+        ("SI1_KSIZE nRank=128884 nKRows=2182\n" + preflight.PREFLIGHT_MARKER + "\nERROR STOP 73\n", 73),
+        (_log().replace("nCodiagonals=727", "nCodiagonals=728"), 73),
+        (_log(marker=None), 73),
+        (preflight.PREFLIGHT_MARKER + "\n" + _ksize_line() + "ERROR STOP 73\n", 73),
+        (_ksize_line("2249799104") + _ksize_line("2249799105") + preflight.PREFLIGHT_MARKER + "\nERROR STOP 73\n", 73),
+        (_log(stop_lines=3), 73),
+        (_log(ksize_count=3), 73),
+        (_log(marker=preflight.PREFLIGHT_MARKER + "\n" + preflight.PREFLIGHT_MARKER + "\n" + preflight.PREFLIGHT_MARKER), 73),
+        (_log(suffix="SHELLS MECHANICAL SOLVE\n"), 73),
+        (_log(), 0),
+        (_log(), 1),
+    ],
+)
+def test_invalid_preflight_logs_or_exit_codes_fail_closed(text: str, mpi_exit_code: int) -> None:
+    with pytest.raises(preflight.BW1PreflightError):
+        preflight.validate_preflight_log(text, mpi_exit_code=mpi_exit_code)
 
 
 def test_cli_has_no_solve_or_executable_override() -> None:
