@@ -1,0 +1,161 @@
+{
+  "bw1_requirements": [
+    "Apply one explicit old-node-id to new-node-id bijection to every triangle and any fault record.",
+    "Reorder every runtime-package node record by the same bijection and rewrite its embedded node ID; preserve all per-node values exactly.",
+    "Update FEG and runtime package hashes/manifests and prove round-trip identity after inverse permutation.",
+    "Audit every other node-indexed input, output, checkpoint, boundary-condition and diagnostic artifact consumed by ShellSet.",
+    "Run on Ubuntu Fair with the qualified NVIDIA HPC SDK/MPI build; BW0's matrix estimate is not a solve qualification."
+  ],
+  "counts": {
+    "connected_components": 1,
+    "duplicate_coordinate_count": 0,
+    "duplicate_triangle_count": 0,
+    "edge_incidence_histogram": {
+      "2": 193320
+    },
+    "edges_not_incident_to_exactly_two_triangles": 0,
+    "euler_characteristic_v_minus_e_plus_f": 2,
+    "nFl": 0,
+    "nonlargest_component_nodes": 0,
+    "numEl": 128880,
+    "numNod": 64442,
+    "unique_undirected_edges": 193320
+  },
+  "decision": "DIAGNOSTIC_ONLY_NO_CANONICAL_OR_RUNTIME_REORDERING",
+  "geometry": {
+    "coordinate_finite": true,
+    "dateline_crossing_edge_count_by_raw_longitude_jump_gt_180_deg": 595,
+    "edge_angular_distance_rad": {
+      "maximum": 0.024682056391767484,
+      "maximum_edge_node_ids": [
+        32385,
+        32746
+      ],
+      "maximum_km_spherical_chord_surface_arc": 157.24938127195065,
+      "median": 0.017453292519943295,
+      "minimum": 0.0003045980897887337,
+      "p95": 0.024343894714218026
+    },
+    "latitude_max_deg": 89.50000000000013,
+    "latitude_min_deg": -89.50000000000013,
+    "longitude_max_deg": 179.9974808022423,
+    "longitude_min_deg": -180.0,
+    "shellset_pole_threshold_abs_lat_gt_deg": 89.99,
+    "shellset_pole_threshold_node_count": 0,
+    "triangle_spherical_area_sr": {
+      "maximum": 0.00015231644258029692,
+      "minimum": 2.658086063829549e-06,
+      "nonfinite_count": 0,
+      "zero_or_nonpositive_count": 0
+    }
+  },
+  "maximum_original_connections": {
+    "connection_count": 1,
+    "connections": [
+      {
+        "angular_distance_rad": 0.017453292519938886,
+        "endpoint_coordinates_lon_lat_deg": [
+          [
+            -89.9999999999996,
+            89.50000000000013
+          ],
+          [
+            -154.23968671316499,
+            88.88980982895598
+          ]
+        ],
+        "endpoint_exceeds_shellset_pole_threshold": false,
+        "incidence": 2,
+        "incident_triangle_ids": [
+          128879,
+          128880
+        ],
+        "node_id_difference": 64440,
+        "node_ids": [
+          2,
+          64442
+        ]
+      }
+    ],
+    "maximum_node_id_difference": 64440,
+    "truncated_after": null
+  },
+  "preserved_gates": {
+    "canonical_reordering_authorized": false,
+    "canonical_state_changed": false,
+    "feg_modified": false,
+    "mechanics_executed": false,
+    "runtime_package_modified": false,
+    "solve_executed": false,
+    "world_history_changed": false
+  },
+  "runtime_package_alignment": {
+    "bw0_permutation_applied_to_feg": false,
+    "bw0_permutation_applied_to_runtime_package": false,
+    "feg_node_id_order_is_identity": true,
+    "feg_path": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.feg",
+    "future_bw1_requires_coherent_permutation_of_feg_and_runtime_records": true,
+    "runtime_field_count_authority": "external/ShellSet-v1.1.0/src/MOD_ArcanaRuntime.f90:ARCANA_FIELD_COUNT=51",
+    "runtime_package": {
+      "first_node_id": 1,
+      "header_package_id": "arcana_worldsim.r6.shellset_owner_bound_runtime.v1",
+      "header_schema": "ARCANA_R6_PRE_ORBDATA_RUNTIME_V1",
+      "last_node_id": 64442,
+      "record_count": 64442,
+      "sequential_node_identity": true,
+      "token_count_per_record_including_node_id": 51
+    },
+    "runtime_package_path": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat"
+  },
+  "schema": "R6_SI1_BW0_MESH_BANDWIDTH_DIAGNOSTIC_V1",
+  "shellset_ksize": {
+    "algorithm": "per node, min/max node id across each incident 3-node triangle; nLB=max(i-min), nUB=max(max-i); then nLB=2*nLB+1, nUB=2*nUB+1; nCodiagonals=max(nLB,nUB); nKRows=3*nCodiagonals+1",
+    "matrix_bytes_reduction_factor": 177.19706691109073,
+    "matrix_bytes_reduction_percent": 99.43565657297152,
+    "original": {
+      "lower_node_bandwidth": 64440,
+      "matrix_bytes": 398657802368,
+      "maximum_node_id_difference": 64440,
+      "nCodiagonals": 128881,
+      "nDOF": 128884,
+      "nKRows": 386644,
+      "nLB": 128881,
+      "nRank": 128884,
+      "nUB": 128881,
+      "upper_node_bandwidth": 64440
+    },
+    "permutation_sha256_little_endian_int64": "a2dd611054ba2ccbc58ef4b3a2d06f3f794e8e7e45d1efb1cb9786725e1f989f",
+    "rcm": {
+      "elapsed_seconds": 0.005024600017350167,
+      "lower_node_bandwidth": 363,
+      "matrix_bytes": 2249799104,
+      "maximum_node_id_difference": 363,
+      "nCodiagonals": 727,
+      "nDOF": 128884,
+      "nKRows": 2182,
+      "nLB": 727,
+      "nRank": 128884,
+      "nUB": 727,
+      "upper_node_bandwidth": 363
+    },
+    "rcm_mapping": "in-memory only; permutation maps reordered position -> original FEG node id",
+    "repeat_invocation_identical": true
+  },
+  "source": {
+    "feg_governed_raw_sha256": "34b81c0df350d3b9a4c7df526c9171c89fe2d44d7e17b8662f5a92a9ee4c40b6",
+    "feg_normalized_sha256": "403fae9cbac71d62863788dbd2d9376497550677d8ce1d20ab1aef613c59d16c",
+    "feg_path": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.feg",
+    "feg_raw_sha256": "34b81c0df350d3b9a4c7df526c9171c89fe2d44d7e17b8662f5a92a9ee4c40b6",
+    "manifest_path": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.json",
+    "manifest_source_commit": "9fef54f6cd17e6e756db3ec28bfc43ee0230fc27",
+    "mesh_mutated": false,
+    "numpy_version": "2.5.3",
+    "repository_branch": "r6/si1-bandwidth-bw0",
+    "repository_head": "477877c0a401bb87621c107e164b1bfee7a27ad2",
+    "runtime_package_governed_sha256": "2dc83a759d4cdd4851ad57a37fc725841da24f0f2ca4312391283348703d3584",
+    "runtime_package_path": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat",
+    "runtime_package_sha256": "2dc83a759d4cdd4851ad57a37fc725841da24f0f2ca4312391283348703d3584",
+    "scipy_version": "1.18.1",
+    "shellset_source": "external/ShellSet-v1.1.0/src/MOD_Shells.f90:KSize"
+  }
+}
