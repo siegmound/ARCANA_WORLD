@@ -200,18 +200,18 @@ DO f1_i = 1, nRank
     f1_force_nonfinite = f1_force_nonfinite + 1_8
   END IF
 END DO
-WRITE(*,'(A,I0,A,I0,A,I0,A,I0,A)') &
+WRITE(*,'(4(A,I0),2A)') &
   'BW1_F1_STAGE nRank=', nRank, ' nKRows=', nKRows, &
   ' nCodiagonals=', nCodiagonals, ' iDiagonal=', iDiagonal, &
   ' stiff_allocated=1 fem_entered=1 BuildF_done=1 BuildK_done=1', &
   ' AddFSt_done=1 VBCs_done=1'
-WRITE(*,'(A,I0,A,I0,A,I0,A,I0,A,I0,A,I0,A,I0,A,I0,A,I0,A,ES24.16E3)') &
+WRITE(*,'(9(A,I0),A,ES24.16E3)') &
   'BW1_F1_MATRIX rows=', nKRows, ' cols=', nRank, &
   ' bytes=', f1_matrix_bytes, ' finite=', f1_finite, &
   ' nonfinite=', f1_nonfinite, ' nonzero=', f1_nonzero, &
   ' diagonal_row=', iDiagonal, ' diag_zero=', f1_diag_zero, &
   ' diag_nonzero=', f1_diag_nonzero, ' max_abs=', f1_max_abs
-WRITE(*,'(A,I0,A,I0,A,I0,A,I0,A,ES24.16E3)') &
+WRITE(*,'(4(A,I0),A,ES24.16E3)') &
   'BW1_F1_FORCING count=', nRank, ' finite=', f1_force_finite, &
   ' nonfinite=', f1_force_nonfinite, ' nonzero=', f1_force_nonzero, &
   ' max_abs=', f1_force_max_abs

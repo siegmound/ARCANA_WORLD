@@ -83,6 +83,57 @@ def test_instrumentation_is_only_at_fem_vbcs_to_solver_boundary() -> None:
     assert f1.inspect_instrumentation(transformed)["normal_solver_reachable"] is False
 
 
+def test_fortran_diagnostic_formats_match_argument_counts_without_reversion() -> None:
+    transformed, _ = f1.instrument_source_text(_source())
+    expected = {
+        "BW1_F1_STAGE": ("(4(A,I0),2A)", ["A", "I0"] * 4 + ["A"] * 2),
+        "BW1_F1_MATRIX": ("(9(A,I0),A,ES24.16E3)", ["A", "I0"] * 9 + ["A", "ES24.16E3"]),
+        "BW1_F1_FORCING": ("(4(A,I0),A,ES24.16E3)", ["A", "I0"] * 4 + ["A", "ES24.16E3"]),
+    }
+    for label, (fmt, expanded) in expected.items():
+        label_position = transformed.index(label)
+        write_start = transformed.rfind("WRITE(*,", 0, label_position)
+        assert write_start >= 0
+        statement_end = transformed.find("\nWRITE(*,", write_start + 1)
+        if statement_end < 0:
+            statement_end = transformed.index(f"\nWRITE(*,'(A)') '{f1.MARKER}'", write_start + 1)
+        else:
+            statement_end += 1
+        write_statement = transformed[write_start:statement_end]
+        assert f"'{fmt}'" in write_statement
+        assert "&" in write_statement
+        assert len(expanded) == (10 if label.endswith("STAGE") else 20 if label.endswith("MATRIX") else 10)
+        assert expanded.count("A") == (6 if label.endswith("STAGE") else 10 if label.endswith("MATRIX") else 5)
+        assert expanded.count("I0") == (4 if label.endswith("STAGE") else 9 if label.endswith("MATRIX") else 4)
+        assert expanded.count("ES24.16E3") == (0 if label.endswith("STAGE") else 1)
+        # Every FORMAT descriptor is consumed once; no format reversion is possible.
+        assert all(value in {"A", "I0", "ES24.16E3"} for value in expanded)
+
+
+def test_generated_fortran_lines_fit_nvfortran_free_form_limit_and_keep_parser_keys() -> None:
+    transformed, _ = f1.instrument_source_text(_source())
+    generated = transformed[transformed.index("USE, INTRINSIC :: IEEE_ARITHMETIC"):]
+    generated = generated[:generated.index("CALL Solver")]
+    assert max(map(len, generated.splitlines())) <= 132
+    for key in (
+        "nRank=", "nKRows=", "nCodiagonals=", "iDiagonal=", "stiff_allocated=",
+        "fem_entered=", "BuildF_done=", "BuildK_done=", "AddFSt_done=", "VBCs_done=",
+        "rows=", "cols=", "bytes=", "finite=", "nonfinite=", "nonzero=",
+        "diagonal_row=", "diag_zero=", "diag_nonzero=", "max_abs=", "count=",
+    ):
+        assert key in generated
+    parsed = f1.validate_f1_log(_log(), mpi_exit_code=74)
+    assert parsed["system"]["matrix"]["diagonal_row"] == 1455
+    assert parsed["system"]["forcing"]["all_zero"] is True
+
+
+def test_error_stop_74_is_unconditional_after_flush_and_before_solver() -> None:
+    transformed, _ = f1.instrument_source_text(_source())
+    assert re.search(r"(?m)^ERROR STOP 74$", transformed)
+    assert not re.search(r"(?im)^\s*IF\b[^\n]*ERROR\s+STOP\s+74", transformed)
+    assert transformed.index("FLUSH(6)") < transformed.index("ERROR STOP 74") < transformed.index("CALL Solver")
+
+
 @pytest.mark.parametrize("source", [
     "SUBROUTINE FEM(f,k)\nEND SUBROUTINE FEM\n",
     _source().replace("CALL VBCs", "CALL VBCs", 1).replace("CALL Solver", "CALL Solver\nCALL VBCs", 1),
