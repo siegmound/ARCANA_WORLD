@@ -1,0 +1,121 @@
+{
+  "artifact_manifest_validation": {
+    "file_count": 5,
+    "manifest_sha256": "63099f944c5379172f74831e08991c3dbe3315967de9bffbb639258448749732",
+    "valid": true
+  },
+  "artifacts": {
+    "derived_feg": "derived/R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.feg",
+    "derived_runtime_package": "derived/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat",
+    "fair_staging_input_dir": "fair_staging/INPUT",
+    "manifest": "manifests/BW1_INPUT_MANIFEST.json",
+    "manifest_sha256": "63099f944c5379172f74831e08991c3dbe3315967de9bffbb639258448749732",
+    "permutation": "permutation/BW1_NODE_PERMUTATION_V1.json",
+    "sha256": {
+      "feg": "18d78ec0c3382e0408f11f7b9826f5f22db7e6d921884c3375600fb2d447ffd1",
+      "permutation": "a0895fd99d3a356de276bd700af1564d951fcb9e4533e103e061aed15a8441e7",
+      "runtime_package": "a68c073011b2cb7782b760d5ff43b010610eaaddec731d5b39172c6b08294a31",
+      "staged_feg": "18d78ec0c3382e0408f11f7b9826f5f22db7e6d921884c3375600fb2d447ffd1",
+      "staged_runtime_package": "a68c073011b2cb7782b760d5ff43b010610eaaddec731d5b39172c6b08294a31"
+    }
+  },
+  "classification": "NON_CANONICAL_ENGINEERING_REORDERED_INPUT",
+  "counts": {
+    "branch_code_counts": {
+      "1": 14258,
+      "2": 108,
+      "3": 50076
+    },
+    "fault_elements": 0,
+    "mixed_physical_support_count": 2697,
+    "nodes": 64442,
+    "runtime_fields_per_record_including_node_id": 51,
+    "triangles": 128880
+  },
+  "decision": "BLOCKED_BW1",
+  "decision_reason": "Isolated derived pair and Fair staging contract are complete, but no preflight-only Fair runner is provided to mechanically enforce immediate termination after KSize; do not launch ShellSet until that guard is independently implemented and verified.",
+  "fair_boundary": {
+    "allowed": [
+      "compile isolated preflight source",
+      "validate FEG/runtime staging compatibility",
+      "execute KSize only"
+    ],
+    "contract_only": true,
+    "forbidden": [
+      "stiffness allocation",
+      "ShellSet mechanics solve",
+      "OrbData mechanics",
+      "canonical input replacement"
+    ],
+    "launch_authorized": false,
+    "preflight_runner_provided": false
+  },
+  "ksize": {
+    "matrix_bytes_reduction_factor": 177.19706691109073,
+    "matrix_bytes_reduction_percent": 99.43565657297152,
+    "original": {
+      "lower_node_bandwidth": 64440,
+      "matrix_bytes": 398657802368,
+      "maximum_node_id_difference": 64440,
+      "nCodiagonals": 128881,
+      "nDOF": 128884,
+      "nKRows": 386644,
+      "nLB": 128881,
+      "nRank": 128884,
+      "nUB": 128881,
+      "upper_node_bandwidth": 64440
+    },
+    "reordered": {
+      "lower_node_bandwidth": 363,
+      "matrix_bytes": 2249799104,
+      "maximum_node_id_difference": 363,
+      "nCodiagonals": 727,
+      "nDOF": 128884,
+      "nKRows": 2182,
+      "nLB": 727,
+      "nRank": 128884,
+      "nUB": 727,
+      "upper_node_bandwidth": 363
+    }
+  },
+  "permutation": {
+    "inverse_exact": true,
+    "is_bijection": true,
+    "repeat_invocation_identical": true,
+    "serialization_sha256_little_endian_int64": "544dcadea16cd8097b6c9461b4a50fd16edc41a4aa2d13878268592dd1486475"
+  },
+  "preservation": {
+    "canonical_inputs_modified": false,
+    "feg_roundtrip_byte_identical": true,
+    "node_coordinates_and_other_feg_tokens_preserved": true,
+    "runtime_fields_2_through_51_preserved_as_exact_text": true,
+    "runtime_roundtrip_byte_identical": true,
+    "triangle_local_orientation_preserved": true,
+    "triangle_order_preserved": true,
+    "world_history_changed": false
+  },
+  "preserved_gates": {
+    "canonical_state_changed": false,
+    "mechanics_executed": false,
+    "solve_executed": false,
+    "t1_created": false,
+    "t2_created": false,
+    "world_history_changed": false
+  },
+  "schema": "R6_SI1_BW1_ISOLATED_REORDERED_INPUT_V1",
+  "source": {
+    "algorithm": "SciPy Reverse Cuthill-McKee",
+    "feg_manifest_path": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.json",
+    "input_hashes": {
+      "feg_manifest_sha256": "ca63d28314c6baa54820ce6b43adc28c351202d52246bda18f784b4b5141d67f",
+      "feg_sha256": "34b81c0df350d3b9a4c7df526c9171c89fe2d44d7e17b8662f5a92a9ee4c40b6",
+      "runtime_manifest_sha256": "876a9365ae76ad7a6fa10470317d754e08b82b9fc69cac8d72203e06a8ee7ce0",
+      "runtime_package_sha256": "2dc83a759d4cdd4851ad57a37fc725841da24f0f2ca4312391283348703d3584"
+    },
+    "mapping_orientation": "new_to_old maps each reordered 1-based position to original 1-based node ID; old_to_new is its inverse",
+    "repository_branch": "r6/si1-bandwidth-bw1",
+    "repository_head": "f838abaeb95d7cfc0f690bf6d120101744e9e00d",
+    "runtime_manifest_path": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.json",
+    "scipy_version": "1.18.1"
+  }
+}
