@@ -1,0 +1,118 @@
+{
+  "schema": "arcana_worldsim.r6.shells_si1_engineering_case.v1",
+  "case_id": "ARCANA_SHELLS_GLOBAL_CONTINUUM_ENGINEERING_V0",
+  "classification": "NON_CANONICAL_ENGINEERING_CANDIDATE",
+  "scope": "global closed-sphere continuum; one model; zero fault elements; no prescribed velocity boundary records",
+  "feg": {
+    "path": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.feg",
+    "sha256": "34b81c0df350d3b9a4c7df526c9171c89fe2d44d7e17b8662f5a92a9ee4c40b6",
+    "nodes": 64442,
+    "triangles": 128880,
+    "fault_elements": 0,
+    "marker": "ARCANA_R6_PRE_ORBDATA_RUNTIME_V1"
+  },
+  "runtime_package": {
+    "path": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat",
+    "manifest": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.json",
+    "sha256": "2dc83a759d4cdd4851ad57a37fc725841da24f0f2ca4312391283348703d3584",
+    "manifest_sha256": "876a9365ae76ad7a6fa10470317d754e08b82b9fc69cac8d72203e06a8ee7ce0",
+    "nodes": 64442,
+    "mixed_support_nodes": 2697
+  },
+  "partition": {
+    "manifest": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+    "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+    "expected_plate_count": 12,
+    "expected_boundary_edge_count": 1983,
+    "support_use": "runtime-only plate assignment outline generation; no boundary-type or motion semantics"
+  },
+  "parameter_reference": {
+    "path": "external/ShellSet-v1.1.0/INPUT/iEarth5-049.in",
+    "classification": "ENGINEERING_SOLVER_REFERENCE_NOT_ARCANA_GEOLOGY",
+    "purpose": "single-run solver smoke values only; no Earth geometry, boundary conditions, observations, or plate motions are staged"
+  },
+  "solver": {
+    "input_mode": "List",
+    "models": 1,
+    "iterations": 1,
+    "convection_code": 0,
+    "boundary_condition_records": 0,
+    "mpi_ranks": 2,
+    "fFric_parameter_override": 0.10,
+    "gauge_policy": "NO_GAUGE_IN_INITIAL_RUN; if source reports singularity, classify rigid-rotation nullspace and run only the separately identified minimal engineering gauge diagnostic",
+    "reproducibility_tolerance": {
+      "absolute": 1e-12,
+      "relative": 1e-10,
+      "classification": "engineering output comparison policy; not a scientific acceptance tolerance"
+    }
+  },
+  "parameter_binding_audit": {
+    "input_file": "external/ShellSet-v1.1.0/INPUT/iEarth5-049.in",
+    "input_sha256": "c07834e17d9c6e21bad0d7cd81af20e8a670e0ae9ed481f999c881129ee4a89e",
+    "classification": "ENGINEERING_SOLVER_REFERENCE_NOT_ARCANA_GEOLOGY",
+    "values_are_arcana_authority": false,
+    "list_input_override": {
+      "fFric": 0.1,
+      "classification": "ENGINEERING_SOLVER_REFERENCE_NOT_ARCANA_GEOLOGY",
+      "note": "The stock example has the same value; the explicit one-variable List run exercises the ShellSet input path."
+    },
+    "source_parameters": [
+      {"name":"fFric","role":"fault-friction coefficient; no fault elements in this case","binding":"ListInput override"},
+      {"name":"cFric","role":"continuum friction coefficient","binding":"engineering reference file"},
+      {"name":"Biot","role":"effective-normal-stress pore-pressure coefficient","binding":"engineering reference file"},
+      {"name":"Byerly","role":"master-fault friction reduction","binding":"engineering reference file; no fault elements"},
+      {"name":"aCreep","role":"crust/mantle creep-law stress coefficient","binding":"engineering reference file"},
+      {"name":"bCreep","role":"crust/mantle creep activation coefficient","binding":"engineering reference file"},
+      {"name":"cCreep","role":"depth derivative in creep-law exponential numerator","binding":"engineering reference file"},
+      {"name":"dCreep","role":"crust/mantle maximum creep stress","binding":"engineering reference file"},
+      {"name":"eCreep","role":"inverse creep stress exponent","binding":"engineering reference file"},
+      {"name":"tAdiab","role":"upper-mantle adiabat intercept","binding":"engineering reference file; runtime ARCANA temperature evaluator remains authoritative for ARCANA state"},
+      {"name":"gradie","role":"upper-mantle adiabat slope","binding":"engineering reference file; runtime ARCANA temperature evaluator remains authoritative for ARCANA state"},
+      {"name":"zBAsth","role":"upper-mantle layer base depth","binding":"engineering reference file"},
+      {"name":"pltRef","role":"reference plate for boundary-condition framing","binding":"engineering reference file; no plate is immobilized by SI1 boundary records"},
+      {"name":"iConve","role":"lower-mantle convection mode","binding":"engineering reference file; set to 0 for this run"},
+      {"name":"vTimes","role":"convection velocity scaling","binding":"engineering reference file; inactive with iConve=0"},
+      {"name":"trHMax","role":"upper bound on basal mantle traction","binding":"engineering reference file; zero in the selected no-convection case"},
+      {"name":"tauMax","role":"subduction megathrust traction limit","binding":"engineering reference file; no ARCANA fault elements"},
+      {"name":"rhoH2O","role":"water density used by ShellSet equations","binding":"engineering reference file"},
+      {"name":"rhoBar","role":"reference crust/mantle density","binding":"engineering reference file; ARCANA runtime density consumer remains separately source-bound"},
+      {"name":"rhoAst","role":"asthenosphere reference density","binding":"engineering reference file"},
+      {"name":"gMean","role":"surface gravity","binding":"engineering reference file"},
+      {"name":"oneKm","role":"unit conversion constant","binding":"engineering reference file"},
+      {"name":"radius","role":"planetary radius in solver geometry equations","binding":"engineering reference file"},
+      {"name":"alphaT","role":"crust/mantle thermal expansion reference coefficients","binding":"engineering reference file; ARCANA runtime effective properties are separately bound"},
+      {"name":"conduc","role":"crust/mantle conductivity reference coefficients","binding":"engineering reference file; ARCANA runtime effective properties are separately bound"},
+      {"name":"radio","role":"crust/mantle radiogenic heating reference coefficients","binding":"engineering reference file"},
+      {"name":"tSurf","role":"surface-temperature reference","binding":"engineering reference file; ARCANA runtime temperature is separately bound"},
+      {"name":"temLim","role":"legacy crust/mantle-lithosphere temperature limits","binding":"engineering reference file; ARCANA thermal evaluator must not clip to these values"},
+      {"name":"maxItr","role":"maximum nonlinear velocity iterations","binding":"engineering reference file"},
+      {"name":"okToQt","role":"fractional RMS-velocity iteration stopping criterion","binding":"engineering reference file"},
+      {"name":"refStre","role":"reference shear stress for rheology linearization","binding":"engineering reference file"},
+      {"name":"okDelV","role":"velocity error tolerance induced by viscosity limit","binding":"engineering reference file"},
+      {"name":"everyP","role":"per-iteration velocity output switch","binding":"engineering reference file"}
+    ],
+    "interpretation": "ShellSet's input schema requires a complete reference parameter record. These values permit an engineering solver attempt only; they do not establish an ARCANA material, thermal, rheological, or planetary authority."
+  },
+  "memory_preflight": {
+    "method": "ShellSet KSize call in an isolated diagnostic build; stop before stiffness allocation",
+    "matrix_storage_bytes_formula": "8 * nKRows * nRank",
+    "memory_cap_required_from_operator": true,
+    "runtime_limit_required_from_operator": true,
+    "limit_scope": "per-process virtual address-space and wall-clock timeout"
+  },
+  "forbidden_inputs": [
+    "Earth5R.feg",
+    "Earth5R-type4A.bcs",
+    "Earth5R-type4AplusA.bcs",
+    "PB2002_plates.dig",
+    "PB2002_boundaries.dig",
+    "Earth kinematic rotations"
+  ],
+  "preserved_authority_gates": {
+    "canonical_state_changed": false,
+    "WORLD_HISTORY_changed": false,
+    "T2_created": false,
+    "forward_evolution_authorized": false,
+    "canonical_mechanics_authorized": false
+  }
+}
