@@ -104,6 +104,8 @@ def test_generated_preflight_stops_after_ksize_and_before_matrix_allocation(tmp_
     assert text.index("SI1_KSIZE nRank=") < text.index("ALLOCATE ( stiff")
     assert text.index("CALL KSize") < text.index("SI1_KSIZE nRank=")
     assert "CALL FatalError('SI1_KSIZE_PREFLIGHT_STOP', ThID)" in text
+    assert "jCol1, jCol2) ! calculate\n" in text
+    assert "\n calculate\n" not in text
     assert max(map(len, text.splitlines())) <= 132
     assert "ALLOCATE ( stiff(nKRows, nRank) )" in source.read_text(encoding="utf-8")
 
@@ -170,3 +172,26 @@ def test_output_manifest_is_relative_and_excludes_itself(tmp_path: Path) -> None
     assert paths == ["logs/compile.log", "SI1_RESULT.json"]
     assert all(not Path(value).is_absolute() for value in paths)
     assert "SI1_ARTIFACT_MANIFEST.json" not in paths
+
+
+def test_mpi_invocations_do_not_use_intercepted_version_flag() -> None:
+    source = (
+        ROOT / "scripts/r6_shells_si1_engineering_solve.py"
+    ).read_text(encoding="utf-8")
+
+    assert source.count('"-Dir", "RUN_OUTPUT"]') == 2
+    assert '"-Dir", "RUN_OUTPUT", "-V"]' not in source
+
+
+def test_ksize_accepts_nvfortran_padded_real_field() -> None:
+    line = (
+        "SI1_KSIZE nRank=128884 nKRows=386644 "
+        "nCodiagonals=128881 "
+        "matrix_bytes=  3.9865780236800000E+11"
+    )
+    match = si1.K_SIZE_RE.search(line)
+    assert match is not None
+    assert tuple(int(match.group(i)) for i in (1, 2, 3)) == (
+        128884, 386644, 128881
+    )
+    assert float(match.group(4)) == 398657802368.0

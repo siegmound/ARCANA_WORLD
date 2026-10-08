@@ -41,7 +41,7 @@ SHELLSET_FAIR_QUALIFICATION_PATH = ROOT / "R6_SHELLSET_FAIR_RUNTIME_QUALIFICATIO
 ORBDATA_FAIR_QUALIFICATION_PATH = ROOT / "R6_T0_ORBDATA_ARCANA_FAIR_RUNTIME_QUALIFICATION.json"
 SHELLSET_SOURCE = ROOT / "external/ShellSet-v1.1.0"
 K_SIZE_RE = re.compile(
-    r"SI1_KSIZE\s+nRank=(\d+)\s+nKRows=(\d+)\s+nCodiagonals=(\d+)\s+matrix_bytes=([0-9.Ee+\-]+)"
+    r"SI1_KSIZE\s+nRank=(\d+)\s+nKRows=(\d+)\s+nCodiagonals=(\d+)\s+matrix_bytes=\s*([0-9.EeDd+\-]+)"
 )
 FLOAT_RE = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[EeDd][+-]?\d+)?$")
 
@@ -455,12 +455,17 @@ def _preflight_source(source: Path, destination: Path) -> None:
         "     &         'SI1_KSIZE nRank=', nRank, 'nKRows=', nKRows, &\n"
         "     &         'nCodiagonals=', nCodiagonals, 'matrix_bytes=', &\n"
         "     &         8.0D0 * DBLE(nKRows) * DBLE(nRank)\n"
+        "          WRITE(*,'(A)') 'SI1_KSIZE_PREFLIGHT_STOP'\n"
+        "          FLUSH(6)\n"
         "          CALL FatalError('SI1_KSIZE_PREFLIGHT_STOP', ThID)\n"
         "          RETURN\n"
         "       END IF\n"
     )
     match = matches[0]
-    text = text[:match.end()] + stop + text[match.end():]
+    line_end = text.find("\n", match.end())
+    if line_end < 0:
+        raise SI1Error("KSize call has no terminating newline")
+    text = text[:line_end + 1] + stop.lstrip("\n") + text[line_end + 1:]
     destination.write_text(text, encoding="utf-8", newline="\n")
 
 
@@ -739,7 +744,7 @@ def main(argv: list[str] | None = None) -> int:
         preflight_dir = out / "preflight_run"
         _copy_executable_and_inputs(preflight_build, preflight_dir, geometry_path, parameter_reference)
         env = _solver_env(); env["ARCANA_SI1_PREFLIGHT_ONLY"] = "1"
-        command = ["mpiexec", "-n", "2", "./ShellSet.exe", "-Iter", "1", "-InOpt", "List", "-Dir", "RUN_OUTPUT", "-V"]
+        command = ["mpiexec", "-n", "2", "./ShellSet.exe", "-Iter", "1", "-InOpt", "List", "-Dir", "RUN_OUTPUT"]
         try:
             preflight = run_checked(command, cwd=preflight_dir, timeout=args.runtime_limit_seconds,
                                     stdout_path=out / "logs/preflight_stdout.log", env=env,
@@ -781,7 +786,7 @@ def main(argv: list[str] | None = None) -> int:
 
         solve_dir = out / "solve_run_1"
         _copy_executable_and_inputs(solve_build, solve_dir, geometry_path, parameter_reference)
-        solve_command = ["mpiexec", "-n", "2", "./ShellSet.exe", "-Iter", "1", "-InOpt", "List", "-Dir", "RUN_OUTPUT", "-V"]
+        solve_command = ["mpiexec", "-n", "2", "./ShellSet.exe", "-Iter", "1", "-InOpt", "List", "-Dir", "RUN_OUTPUT"]
         try:
             solve = run_checked(solve_command, cwd=solve_dir, timeout=args.runtime_limit_seconds,
                                 stdout_path=out / "logs/solve_1_stdout.log", env=_solver_env(),
