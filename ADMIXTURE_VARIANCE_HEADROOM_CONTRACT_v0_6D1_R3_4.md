@@ -1,5 +1,5 @@
 # v0.6D1-R3.4 — Admixture-Variance Headroom & Species-Bound Gene Flow Contract
-
+#..
 ## Purpose
 R3.4 closes two long-horizon issues found after the R3.3 210→150 Ma replay:
 1. `q=V_A/scale^2` used the old D3.3A ceiling 0.05 as an active attractor in ~13% of reservoirs.
