@@ -1,0 +1,120 @@
+{
+  "schema": "R6_SI1_BW1_F2AV_DIAGNOSTIC_CONTRACT_V1",
+  "stage": "SI1-BW1-F2A-V",
+  "purpose": "ISOLATED_NONCANONICAL_ASSEMBLY_NUMERICAL_DIAGNOSTICS",
+  "base_source_commit": "dbd8ccf15b72e1819d0fba68eb8e3fc4526060c3",
+  "branch": "r6/si1-bandwidth-f2av",
+  "input_authorities": {
+    "shellset_source_lock": "configs/r6_shells_si1/shellset_source_lock.json",
+    "f1_evidence": "validated_by_F1_manifest_and_input_identity",
+    "f2a_recovery": {
+      "original_run_source_commit": "e1694e18ddf1843c6709dd7e78f5de7bd6a281b4",
+      "original_run_manifest_sha256": "605559ef61a652ae565d7240da33a089b5cda08cb1159052cb77fc2d58f4a1cd",
+      "recovery_artifact_manifest_sha256": "451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936",
+      "recovery_implementation_commit": "dbd8ccf15b72e1819d0fba68eb8e3fc4526060c3",
+      "validation": "verify_original_source_evidence_manifest_sha256_and_recovery_artifact_manifest_sha256_as_distinct_authorities"
+    },
+    "output_isolation": {
+      "evidence_root_environment_variable": "ARCANA_WORLD_QUALIFICATION_EVIDENCE_ROOT",
+      "default_evidence_root": "${HOME}/ARCANA_WORLD_QUALIFICATION_EVIDENCE",
+      "output_must_be_fresh_child_of_external_evidence_root": true,
+      "protected_roots": ["repository", "source_locked_shellset", "f1_evidence", "f2a_recovery_evidence", "ARCANA_WORLD_HISTORY_ROOT_when_configured"],
+      "overlap_or_symlinked_parent": "FAIL_CLOSED"
+    },
+    "source_checkout_cleanliness": {
+      "allow_only_untracked_partition_payload": true,
+      "required_path": "R6_T0_VECTOR_PLATE_PARTITION.npz",
+      "required_sha256_source": "current_governed_input_validation",
+      "all_other_untracked_or_tracked_changes": "FAIL_CLOSED",
+      "global_untracked_ignore": false
+    },
+    "canonical_feg_or_runtime_mutation": false
+  },
+  "execution_boundary": {
+    "mpi_ranks": 2,
+    "models": 1,
+    "per_process_rlimit_as_gib": 32,
+    "operator_asserted_aggregate_budget_gib": 80,
+    "aggregate_cgroup_enforcement_verified": false,
+    "runtime_limit_seconds": 1800,
+    "toolchain": "NVHPC 25.11",
+    "unconditional_stop_exit_code": 75,
+    "unique_marker": "BW1_F2AV_STOP_BEFORE_SOLVER",
+    "solver_allowed": false,
+    "factorization_allowed": false,
+    "matrix_or_forcing_mutation_allowed": false,
+    "canonical_publication_allowed": false
+  },
+  "numerical_rules": {
+    "lapack_band_mapping": "AB(iDiagonal+i-j,j)=A(i,j)",
+    "asymmetry_relative_threshold": 1e-12,
+    "f2a_reassembly_comparison": {
+      "relative_tolerance": 1e-12,
+      "absolute_tolerance": 0.0,
+      "finite_nonnegative_values_required": true,
+      "matrix_forcing_and_symmetry_maxima_checked": true,
+      "symmetry_counts_exact": true
+    },
+    "diagnostic_reconciliation": {
+      "row_nonfinite_coefficients_equals_column_nonfinite_coefficients": true,
+      "both_equal_f2a_matrix_nonfinite_count": true,
+      "f2av_asymmetric_pair_count_equals_f2a_divergent_pair_count": true,
+      "f2av_nonfinite_pair_count_equals_f2a_symmetry_nonfinite_pair_count": true,
+      "census_pairs_require_1_le_i_lt_j_le_nRank_and_j_minus_i_le_ku": true
+    },
+    "asymmetry_classification": {
+      "ZERO_NONZERO": "exactly one coefficient is zero",
+      "NONZERO_VALUE_MISMATCH": "both coefficients are nonzero and relative discrepancy exceeds threshold",
+      "physical_interpretation": "NONE"
+    },
+    "asymmetry_pair_capacity": 100000,
+    "capacity_overflow": "REPORT_INCOMPLETE_AND_FAIL_CLOSED",
+    "zero_coefficient_interpretation": "ASSEMBLED_ZERO_DOES_NOT_DISTINGUISH_STRUCTURAL_ZERO_FROM_PRE_ASSEMBLY_UNDERFLOW",
+    "absolute_difference": "SCALED_AND_SATURATING_WITH_EXPLICIT_FLAG",
+    "row_scaled_discrepancy": "ABS(Aij-Aji)/MAX(L1_ROW_I,L1_ROW_J), evaluated with scaled norms",
+    "dominance_definition": "ABS(Aii)/SUM(j!=i,ABS(Aij))",
+    "dominance_equality_relative_tolerance": 1e-12,
+    "dominance_quantiles": [0.05, 0.5, 0.95],
+    "dominance_quantile_basis": "EMPIRICAL_CDF_OF_REPORTED_LOG10_HISTOGRAM_BINS",
+    "dominance_interpretation": "NONDOMINANCE_DOES_NOT_PROVE_SINGULARITY",
+    "condition_number_claimed": false,
+    "matrix_scaling_applied": false
+  },
+  "mapping_policy": {
+    "dof_formula_from_shellset_source": "x=2*node-1; y=2*node",
+    "required_verified_artifact_links": [
+      "component_basis_source_sha256",
+      "node_permutation_sha256",
+      "coordinate_mapping_sha256"
+    ],
+    "fallback_status": "DOF_MAPPING_UNVERIFIED",
+    "hash_strings_alone_are_proof": false,
+    "fallback_output": "RAW_MATHEMATICAL_INDICES_ONLY",
+    "geographic_or_plate_association_inference_allowed": false
+  },
+  "ieee_monitoring": {
+    "flags": ["overflow", "underflow", "inexact"],
+    "phases": ["BUILD_F", "BUILD_K", "ADD_FST", "VBCS", "MATRIX_SYMMETRY", "ROW_COLUMN_STATISTICS", "OUTPUT_AGGREGATES"],
+    "preserve_inherited_sticky_flags": true,
+    "clear_between_phases": true,
+    "restore_inherited_union_observed_flags": true,
+    "rounding_mode_or_halting_mode_changes": false,
+    "sticky_flag_policy": "capture inherited flags; clear only monitored sticky flags between phases; restore inherited union observed before stop",
+    "nvhpc_compile_required_before_runtime": true,
+    "assembly_flag_query_interference_audit": "no IEEE sticky-flag queries found in source-locked consumer code; NVHPC compile/runtime behavior remains unverified until Fair qualification",
+    "phase_statuses": ["FLAG_NOT_OBSERVED", "FLAG_OBSERVED_IN_PHASE", "ATTRIBUTION_UNRESOLVED"],
+    "nonfinite_row_column_totals": "ACCUMULATED_NONFINITE_COEFFICIENT_COUNTS; row total equals column total equals F2A matrix nonfinite count and does not exceed valid coefficient count"
+  },
+  "diagnostic_artifacts": [
+    "BW1_F2AV_RESULT.json",
+    "BW1_F2AV_ASYMMETRY_CENSUS.csv",
+    "BW1_F2AV_ROW_COLUMN_EXTREMES.csv",
+    "BW1_F2AV_ARTIFACT_MANIFEST.json"
+  ],
+  "authorization_gates": {
+    "mechanics_authorized": false,
+    "forward_evolution_authorized": false,
+    "canonical_state_changed": false,
+    "production_qualification_granted": false
+  }
+}
