@@ -1,10 +1,6 @@
-# ARCANA WorldSim — Current State Pointer
+# ARCANA WorldSim — Current Development State Pointer
 
-The maintained R6 state ledger is
-[docs/arcana/ARCANA_CURRENT_STATE.md](docs/arcana/ARCANA_CURRENT_STATE.md).
-Use [the session bootstrap](docs/arcana/ARCANA_BOOTSTRAP.md) for repository
-entrypoints and authorization boundaries.
+**Active, maintained development ledger:** [PROJECT_LEDGER/STATUS.md](PROJECT_LEDGER/STATUS.md).
+**New session procedure:** [PROJECT_LEDGER/NEW_CHAT.md](PROJECT_LEDGER/NEW_CHAT.md).
 
-This root-level path remains as a compatibility pointer for historical R6
-contracts that name it. Its former R3/R5 continuation ledger is recoverable
-from Git history.
+The earlier [docs/arcana/ARCANA_CURRENT_STATE.md](docs/arcana/ARCANA_CURRENT_STATE.md) is a historical PRE-B0 snapshot, **not** a current progress report. Consult scientific contracts and original immutable evidence for authority; a ledger update never rewrites a run verdict.
