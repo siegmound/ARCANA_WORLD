@@ -1,4 +1,16 @@
-# NEXT: F2B-D2 — operator semantics and asymmetry reconciliation (design/audit only)
+# NEXT: F2B-D3 — resource and residual acceptance design (design only)
+
+**Completed gate:** F2B-D2 static operator classification audit, report docs/arcana/SI1_BW1_F2B_D2_OPERATOR_CLASSIFICATION_AUDIT.md. Result: OPERATOR_CLASS_UNVERIFIED; theoretical symmetry for SI1 is INDETERMINATE. BuildK exposes sufficient alpha reciprocity identities, but active pointwise alpha values are not retained, and the ten global asymmetries remain unexplained. Original F2A-V remains BLOCKED_F2AV_QUALIFICATION; DOF_MAPPING_UNVERIFIED remains for geographic/plate attribution. No Solver execution is authorized.
+
+## Next scope
+F2B-D3 should design resource and residual acceptance criteria only. It remains separate from any Solver authorization or execution. Do not symmetrize the matrix, infer nullspace from diagonal dominance, or treat D2 as assembly validation.
+
+## D2 restrictions retained
+- Static source/evidence audit only; no Fair, MPI, Solver, factorization, assembly, simulation, gauge change, or canonical/WORLD_HISTORY access or mutation.
+- No solver selection, solver authorization, geographic attribution of anomaly indices, conditioning/singularity claim, or scientific qualification.
+
+---
+# PRIOR HANDOFF: F2B-D2 — operator semantics and asymmetry reconciliation (design/audit only)
 
 **Completed gate:** F2B-D1B report docs/arcana/SI1_BW1_F2B_D1B_GEOGRAPHIC_BASIS_AUDIT.md, audited at checkout HEAD d539a9ffa281d3dac8489db4820715cb136e9ae6; report SHA256 baa9e450f866f29a42230ad01bd490de6ed6c96f02df3d901e6af77388a41546. The exact historical ShellSet source commit df670c8c4faaed641997f5c4bdb701e2ba0afc7d establishes slot 1 = +South/+theta and slot 2 = +East/+phi, with matching inspected assembly, forcing, boundary-condition and output paths. This does not adjudicate the ten asymmetry pairs or ARCANA frame authority. Preserve DOF_MAPPING_UNVERIFIED for anomaly-to-geography/plate/physical attribution and preserve BLOCKED_F2AV_QUALIFICATION.
 

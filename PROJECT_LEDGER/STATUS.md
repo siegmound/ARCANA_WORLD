@@ -77,3 +77,10 @@ L'esecuzione parallela ShellSet su upstream ListEx1 9/9 è già evidenziata: non
 - `DGBSV` generale a banda, matrix+RHS overwritten; `INFO=0` non verifica residuo. Zero BC velocity e zero fault; nullspace/gauge `UNKNOWN`; nessuna simmetrizzazione, nessuna stima condizionamento.
 - **Disponibile su GitHub:** `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` (design derivato, non gate solver).
 - **NEXT:** `F2B-D1` DOF/permutation provenance attestation design; F2B-E solve/fattorizzazione ancora `NOT_AUTHORIZED`. Nessun nuovo run Fair/MPI/Solver autorizzato.
+
+## F2B-D2 operator classification audit — 2026-10-10
+- Report: docs/arcana/SI1_BW1_F2B_D2_OPERATOR_CLASSIFICATION_AUDIT.md; static audit on historical ShellSet df670c8c4faaed641997f5c4bdb701e2ba0afc7d and existing F2A-V original/recovered evidence.
+- Decision: OPERATOR_CLASS_UNVERIFIED; theoretical SI1 symmetry INDETERMINATE. BuildK exposes sufficient alpha reciprocity conditions, but effective tangent values at integration points were not retained. The ten asymmetries remain unexplained; absolute, pair-relative, and row-scaled measures are distinguished.
+- BLOCKED_F2AV_QUALIFICATION remains unchanged. DOF_MAPPING_UNVERIFIED remains for geographic/plate attribution. Diagonal dominance is not used to infer nullspace or singularity.
+- No assembly, Solver, factorization, Fair/MPI, gauge, simulation, or canonical/WORLD_HISTORY change; F2B_SOLVER_EXECUTION_AUTHORIZED=false.
+- Next gate: F2B-D3 resource/residual acceptance design, without Solver execution.
