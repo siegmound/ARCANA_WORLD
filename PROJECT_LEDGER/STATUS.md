@@ -1,5 +1,11 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
 
+## F2B-D3D — acquisizione evidenze Fair preesistenti (2026-10-10)
+- Esito bloccato: `D3D_BLOCKED_EXISTING_EVIDENCE_UNAVAILABLE`; `REMOTE_EVIDENCE_ACCESS_UNAVAILABLE`. Report `docs/arcana/SI1_BW1_F2B_D3D_EXISTING_FAIR_EVIDENCE_ACQUISITION.md`; SHA256 aggiornato registrato in `EVIDENCE_INDEX.md`.
+- Nessun accesso Fair è stato effettuato e nessun artefatto Fair è stato acquisito. L'esistenza o assenza dei file remoti non è stata verificata; il blocco riguarda esclusivamente l'accesso in questo ambiente.
+- Prossimo task resta acquisire in sola lettura le evidenze Fair preesistenti da un operatore con accesso già autorizzato, usando i due locator in `NEXT_ACTION.md`. Non è un nuovo run HPC.
+- Preservati `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-D3C — Fair runtime/resource authority reconnaissance (2026-10-10)
 - Decisione `D3C_RECONNAISSANCE_COMPLETE__EXECUTION_AUTHORITY_GAPS_REMAIN`; report `docs/arcana/SI1_BW1_F2B_D3C_FAIR_RUNTIME_RESOURCE_RECONNAISSANCE.md`, SHA256 `76a5a65adbbc7d6a9b6a64b35497ee9cd3f4642f286d672579d2779f7f53d058`.
 - L'identità upstream storicamente qualificata non prova l'identità F2A-V. Il binario del run F2A-V non ha SHA256 verificato; ABI, linkage dinamico e toolchain effettiva non sono attestati. Nessun eseguibile candidato F2B è stato identificato.

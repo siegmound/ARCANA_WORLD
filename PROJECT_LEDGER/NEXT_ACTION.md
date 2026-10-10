@@ -1,4 +1,21 @@
-# NEXT: F2B-D3D — FAIR_EXISTING_EVIDENCE_ACQUISITION (proposta; read-only)
+# NEXT: F2B-D3D — FAIR_EXISTING_EVIDENCE_ACQUISITION (handoff operatore autorizzato; read-only)
+
+## Stato D3D
+`D3D_BLOCKED_EXISTING_EVIDENCE_UNAVAILABLE` / `REMOTE_EVIDENCE_ACCESS_UNAVAILABLE`. Nessun accesso Fair è stato fatto e nessun artefatto è stato acquisito; non è stata verificata l'esistenza dei file remoti. Il blocco è di accesso da questo ambiente, non prova di assenza delle evidenze.
+
+## Procedura per operatore con accesso Fair già autorizzato
+Non richiedere credenziali e non stabilire connessioni alternative. Se l'accesso già autorizzato non è disponibile, fermarsi senza eseguire comandi remoti. Leggere soltanto questi locator, separatamente e a profondità limitata:
+
+```text
+$HOME/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_F2AV_COMPILE_ONLY/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T125317Z
+$HOME/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_F2AV_RUN/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z
+```
+
+Per ciascun locator, inventariare solo file/metadati preesistenti (niente scansioni ricorsive estese). Cercare con priorità binario e identità build, log di compilazione/link, comando effettivo, toolchain/flags, nomi/hash delle librerie e accounting storico/job ID. Non eseguire il binario, `--version`, MPI, compile o job. Non assumere che compile-only e run usino lo stesso eseguibile.
+
+Per ogni file effettivamente letto/acquisito annotare host, path, identificatore del run, metodo e data di acquisizione, dimensione e SHA256 dei byte letti, eventuale digest storico indipendente e confronto. Un hash del file corrente prova solo i byte acquisiti ora, non il collegamento al processo storico senza evidenza contemporanea. Prima identificare scheduler/job ID dai record esistenti; poi consultare solo l'accounting di quel job. Non usare configurazione corrente come prova storica. Se un dato non è nei record, lasciarlo UNKNOWN; non dichiarare file remoto assente senza averne verificato il path.
+
+Conservare gli artefatti acquisiti in una directory locale nuova con manifest solo se vi sono file realmente acquisiti. Se non è disponibile una sessione già autorizzata, chiudere il tentativo con `REMOTE_EVIDENCE_ACCESS_UNAVAILABLE`; nessun run HPC sostitutivo.
 
 ## F2B-D3C completato — ricognizione locale delle evidenze runtime/risorse
 Decisione `D3C_RECONNAISSANCE_COMPLETE__EXECUTION_AUTHORITY_GAPS_REMAIN`; report `docs/arcana/SI1_BW1_F2B_D3C_FAIR_RUNTIME_RESOURCE_RECONNAISSANCE.md`, SHA256 `76a5a65adbbc7d6a9b6a64b35497ee9cd3f4642f286d672579d2779f7f53d058`.

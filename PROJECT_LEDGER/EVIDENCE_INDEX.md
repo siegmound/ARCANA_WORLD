@@ -106,3 +106,9 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 - Riconcilia tre identità senza trasferire qualifica: runtime upstream storico con binario/hash/toolchain registrati; F2A-V con run/source/log/input attestati nel recovery ma senza SHA dell'eseguibile, ABI/linkage/toolchain effettivi UNKNOWN; candidato F2B non identificato. Le formule D3A sono stime condizionali all'ABI.
 - Limiti Fair effettivamente imposti, RSS/PSS/cgroup e headroom non dimostrati; i valori del contratto sono dichiarati e aggregate enforcement è esplicitamente false. I due test symlink restano `NOT_TESTED_RUNTIME_WINDOWS`. Nessun accesso Fair o job in D3C.
 - Next proposto: `F2B-D3D — FAIR_EXISTING_EVIDENCE_ACQUISITION`, sola lettura di evidenze preesistenti. Non autorizza job, build, Solver o diagnostici numerici. Gate scientifici e divieti invariati.
+
+## F2B-D3D Fair existing evidence acquisition — blocked handoff (2026-10-10)
+- Report `docs/arcana/SI1_BW1_F2B_D3D_EXISTING_FAIR_EVIDENCE_ACQUISITION.md`; SHA256 `fb5194bc6ed5bfa4e5d08bec322afae25a09373a0981d24bb7df2fefdab26701`.
+- Decisione `D3D_BLOCKED_EXISTING_EVIDENCE_UNAVAILABLE`; stato `REMOTE_EVIDENCE_ACCESS_UNAVAILABLE`. Nessun accesso Fair e nessuna acquisizione di file. Non è stata verificata l'esistenza dei locator remoti; non inferire assenza dell'evidenza.
+- Nessun manifest di acquisizione creato. Prossimo passo invariato: operatore già autorizzato legge esclusivamente i due locator compile-only/run descritti in `NEXT_ACTION.md`; identità dei due eseguibili va verificata separatamente. No job/build/Solver.
+- Gate invariati: `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, Solver/mechanics/WORLD_HISTORY production non autorizzati.
