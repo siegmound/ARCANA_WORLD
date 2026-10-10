@@ -1,9 +1,14 @@
-# NEXT: F2B-D3 — resource and residual acceptance design (design only)
+# NEXT: F2B-D3A — preliminary resource and numerical attestation (non-executing)
 
-**Completed gate:** F2B-D2 static operator classification audit, report docs/arcana/SI1_BW1_F2B_D2_OPERATOR_CLASSIFICATION_AUDIT.md. Result: OPERATOR_CLASS_UNVERIFIED; theoretical symmetry for SI1 is INDETERMINATE. BuildK exposes sufficient alpha reciprocity identities, but active pointwise alpha values are not retained, and the ten global asymmetries remain unexplained. Original F2A-V remains BLOCKED_F2AV_QUALIFICATION; DOF_MAPPING_UNVERIFIED remains for geographic/plate attribution. No Solver execution is authorized.
+**Completed gate:** F2B-D3 design, `docs/arcana/SI1_BW1_F2B_D3_RESOURCE_RESIDUAL_PREFLIGHT_DESIGN.md`, status `D3_DESIGN_COMPLETE_PENDING_RESOURCE_AND_NUMERICAL_ATTESTATION`. Report SHA256: `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF`. The design is source-derived and does not claim new measurements. It estimates the general-band matrix as `8*nKRows*nRank = 2,249,799,104` bytes under the documented dimensions and ABI assumptions; total memory/RSS, Fair enforcement limits, linked runtime identity, and numerical thresholds remain unattested. `THRESHOLD_UNJUSTIFIED` remains open.
+
+Preserve `DOF_MAPPING_PARTIAL`; `DOF_COMPONENT_BASIS_SOURCE_VERIFIED__F2AV_GEOGRAPHIC_ATTRIBUTION_UNADJUDICATED`; `OPERATOR_CLASS_UNVERIFIED`; and original `BLOCKED_F2AV_QUALIFICATION`. `F2B_SOLVER_EXECUTION_AUTHORIZED=false`.
 
 ## Next scope
-F2B-D3 should design resource and residual acceptance criteria only. It remains separate from any Solver authorization or execution. Do not symmetrize the matrix, infer nullspace from diagonal dominance, or treat D2 as assembly validation.
+F2B-D3A is a new, preliminary, non-executing attestation gate. It may verify exact source/input identities, perform overflow-safe static arithmetic/ABI checks, inspect Fair resource-limit mechanisms without launching ShellSet, and validate preflight controls without assembly or Solver. It is not Solver authorization. Do not run Fair MPI/ShellSet, Solver, factorization, new assembly, mechanics, gauge, simulation, or canonical evolution. Do not select residual thresholds without authority; absent a justified numerical acceptance rule, retain `THRESHOLD_UNJUSTIFIED` and fail closed.
+
+## Prior D2 handoff (preserved)
+F2B-D2 static operator classification audit: `docs/arcana/SI1_BW1_F2B_D2_OPERATOR_CLASSIFICATION_AUDIT.md`. Result `OPERATOR_CLASS_UNVERIFIED`; theoretical SI1 symmetry is `INDETERMINATE`. Active pointwise alpha values are not retained and the ten global asymmetries remain unexplained. Geographic/plate attribution remains `DOF_MAPPING_UNVERIFIED`; original F2A-V remains `BLOCKED_F2AV_QUALIFICATION`. Do not symmetrize the matrix or infer nullspace from diagonal dominance.
 
 ## D2 restrictions retained
 - Static source/evidence audit only; no Fair, MPI, Solver, factorization, assembly, simulation, gauge change, or canonical/WORLD_HISTORY access or mutation.

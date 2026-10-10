@@ -9,6 +9,13 @@
 
 **Data ricognizione:** 2026-10-10. **Authority:** questa pagina è un indice operativo, non un seal scientifico. In caso di conflitto prevalgono result, manifest, source lock e contratti originali verificati.
 
+## Aggiornamento corrente — F2B-D3 (2026-10-10)
+- Report: `docs/arcana/SI1_BW1_F2B_D3_RESOURCE_RESIDUAL_PREFLIGHT_DESIGN.md`; SHA256 `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF`. Static design review against historical ShellSet source `df670c8c4faaed641997f5c4bdb701e2ba0afc7d` and the existing SI1/F2A-V evidence; no new measurements or execution were performed.
+- Esito: `D3_DESIGN_COMPLETE_PENDING_RESOURCE_AND_NUMERICAL_ATTESTATION`. Formula source-derived: `8*nKRows*nRank = 2,249,799,104` bytes for the band array at the recorded dimensions. Explicit-array subtotal is conditional on stated ABI assumptions; total RSS/job memory, Fair-enforced limits, and runtime/library overhead remain unknown. DGBSV overwrites band A and RHS, so exact A0/b0 identity must be preserved or reproducibly re-established before any residual validation.
+- Residual/backward-error definitions are proposed, not qualified acceptance criteria. `THRESHOLD_UNJUSTIFIED` remains. `INFO=0` is not a residual, conditioning, or scientific-validity result. No Solver execution or numerical result is authorized.
+- Preserved: `DOF_MAPPING_PARTIAL`; `DOF_COMPONENT_BASIS_SOURCE_VERIFIED__F2AV_GEOGRAPHIC_ATTRIBUTION_UNADJUDICATED`; `OPERATOR_CLASS_UNVERIFIED`; original `BLOCKED_F2AV_QUALIFICATION`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`.
+- Next proposed gate: F2B-D3A, preliminary non-executing resource/numerical attestation and control verification only. It does not authorize Fair MPI/ShellSet, Solver, factorization, assembly, mechanics, gauge, simulation, or canonical evolution.
+
 ## Aggiornamento corrente — F2B-D1B (2026-10-10)
 - Checkout: branch `r6/si1-bandwidth-f2av`, HEAD `d539a9ffa281d3dac8489db4820715cb136e9ae6`. Audit source read-only del commit ShellSet storico `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`; report `docs/arcana/SI1_BW1_F2B_D1B_GEOGRAPHIC_BASIS_AUDIT.md`, SHA256 `baa9e450f866f29a42230ad01bd490de6ed6c96f02df3d901e6af77388a41546`.
 - Esito limitato: component basis ShellSet dimostrata nel proprio frame sferico: slot 1 = +South/+theta (North = −slot 1); slot 2 = +East/+phi. Source ordering, angular-velocity projection, boundary transform e output concordano nelle routine citate.

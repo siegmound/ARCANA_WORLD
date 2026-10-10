@@ -1,5 +1,11 @@
 # Indice minimo delle evidenze (identità e scope)
 
+## F2B-D3 — resource and residual preflight design (2026-10-10)
+- Report: `docs/arcana/SI1_BW1_F2B_D3_RESOURCE_RESIDUAL_PREFLIGHT_DESIGN.md`; SHA256 `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF`.
+- Scope: design/source audit of historical ShellSet `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`, SI1 engineering dimensions, and existing F2A-V diagnostics. Decision `D3_DESIGN_COMPLETE_PENDING_RESOURCE_AND_NUMERICAL_ATTESTATION`; no new run, assembly, Solver, memory measurement, or Fair resource measurement was made.
+- Source-derived band allocation formula `8*nKRows*nRank` gives 2,249,799,104 bytes under the report's dimensions; broader process/job memory depends on ABI, LRn, runtime/library overhead and enforced system limits, not measured here. DGBSV overwrites AB and B; residual validation requires exact A0/b0 identity. No residual threshold is authorized (`THRESHOLD_UNJUSTIFIED`).
+- Next proposed gate F2B-D3A is preliminary and non-executing; it grants no Solver authority. Original `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `DOF_MAPPING_PARTIAL`, and geographic/anomaly `DOF_MAPPING_UNVERIFIED` boundaries remain unchanged. `F2B_SOLVER_EXECUTION_AUTHORIZED=false`.
+
 ## F2B-D1A LFS evidence publication — 2026-10-10
 - GitHub evidence branch `evidence/r6-bw1-f2av-20261010` commit `c6bc94c0cac134146722b0c751f55255c68f03dc`: `evidence/F2B_D1A_ATTESTATION_d539a9ff_20261010.tar.gz` Git LFS plus `.tar.gz.sha256`; archive SHA256 `b9fc3a7053e5c18a3d38e67ae367f418e5041f018d3ac9eafe82fa3dce1e9f9d` matches sidecar downloaded from GitHub and operator's archive digest.
 - Payload carries `D1A_RESULT.json`, `D1A_REPORT.md`, `RAW_DOF_NODE_COMPONENT_MAP.csv`, `F2AV_CENSUS_INDEX_MAP.csv`, `D1A_ARTIFACT_MANIFEST.json` (per source/test contract and Windows verified packaging). Internal manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`; result SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9`.
