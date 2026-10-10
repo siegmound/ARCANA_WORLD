@@ -1,5 +1,13 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
 
+## F2B-D3B-P0 — bounded offline validator consolidation (2026-10-10)
+- Esito della review indipendente: `D3B_P0_REVIEW_PASS_WITH_BOUNDED_SCOPE`; commit sorgente/consolidamento: questo checkpoint documentale, parent baseline `f571516ce09c726bffd262d172a922968bdab944`.
+- Validatori e test: `scripts/r6_si1_bandwidth_f2b_d3b_resource.py`, `scripts/r6_si1_bandwidth_f2b_d3b_numerical.py`, `tests/test_r6_si1_bandwidth_f2b_d3b_resource.py`, `tests/test_r6_si1_bandwidth_f2b_d3b_numerical.py`; SHA256 rispettivi `cae86cd5d16d3f4633d45a9ae4ffb6a9808838c41fd2c8ac6e3bf317f5c548ae`, `275714d7615cffa062c8ac1d4a992edd5a2070744653a6b4cf0cfec914e7b46e`, `7e2ddf108836229e79475ffe47b2f2cd19d256beaa8459bd51451b93b1c2fec1`, `5b00d4a6b4220b0675183e43a1f028572a437825bfc383ce55d3b9cd1a8ce8aa`.
+- D3B-P0: 24 test PASS, 2 SKIPPED, 0 FAIL. I quattro rilievi della prima review e il rilievo HIGH TOCTOU sono chiusi nel perimetro statico/sintetico. Il parser usa i byte dello snapshot autenticato; manifest e membri sono verificati, con identità Git storica separata e non autenticata dal validatore.
+- Limiti: i due test runtime symlink sono `NOT_TESTED_RUNTIME_WINDOWS` perché Windows ha negato la creazione; WSL non era accessibile. La protezione POSIX con dir-fd/O_NOFOLLOW non è stata eseguita. Su Windows non è attestata atomicità contro sostituzioni concorrenti. ABI NVHPC reale, memoria/RSS e limiti Fair restano non attestati; nessuna qualificazione dell'operatore SI1.
+- Preservati `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. Rapporti D3/D3A e SHA256 invariati.
+- Prossimo gate proposto: `F2B-D3C — FAIR_RUNTIME_AND_RESOURCE_AUTHORITY_RECONNAISSANCE`, read-only; nessun job o Solver.
+
 ## F2B-D1A — publication of derived evidence (2026-10-10)
 - Code branch `r6/si1-bandwidth-f2av`, attestor/tests + five ledger documents published at commit `d539a9ffa281d3dac8489db4820715cb136e9ae6`; code commit contains no output artifacts.
 - Evidence branch `evidence/r6-bw1-f2av-20261010` at commit `c6bc94c0cac134146722b0c751f55255c68f03dc` adds `evidence/F2B_D1A_ATTESTATION_d539a9ff_20261010.tar.gz` through Git LFS and the matching tracked `.sha256` sidecar. Archive digest `b9fc3a7053e5c18a3d38e67ae367f418e5041f018d3ac9eafe82fa3dce1e9f9d`, verified against remote sidecar and local operator log.

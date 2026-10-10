@@ -1,4 +1,17 @@
-# NEXT: F2B-D3B-P0 — bounded offline resource/numerical validators
+# NEXT: F2B-D3C — FAIR_RUNTIME_AND_RESOURCE_AUTHORITY_RECONNAISSANCE (proposta)
+
+## F2B-D3B-P0 completato — review circoscritta
+Decisione: `D3B_P0_REVIEW_PASS_WITH_BOUNDED_SCOPE`; source baseline parent `f571516ce09c726bffd262d172a922968bdab944`; implementazione dei quattro validator/test inclusa nel commit documentale corrente. SHA256: resource validator `cae86cd5d16d3f4633d45a9ae4ffb6a9808838c41fd2c8ac6e3bf317f5c548ae`; numerical validator `275714d7615cffa062c8ac1d4a992edd5a2070744653a6b4cf0cfec914e7b46e`; resource tests `7e2ddf108836229e79475ffe47b2f2cd19d256beaa8459bd51451b93b1c2fec1`; numerical tests `5b00d4a6b4220b0675183e43a1f028572a437825bfc383ce55d3b9cd1a8ce8aa`.
+
+Esito suite D3B-P0: 24 PASS, 2 SKIPPED, 0 FAIL. I rilievi della prima review e il TOCTOU HIGH sono chiusi nello scope offline. I due test symlink sono `NOT_TESTED_RUNTIME_WINDOWS` (creazione negata); WSL è risultato inaccessibile. La prova POSIX dir-fd/O_NOFOLLOW non è stata eseguita. Atomicità contro sostituzioni concorrenti Windows, ABI NVHPC, RSS/memoria ed enforcement Fair restano non attestati. Il validatore non autentica oggetti Git storici. Nessuna qualificazione del caso SI1 reale.
+
+**Proposta D3C, sola ricognizione read-only:** identità/hash dell'eseguibile e librerie collegate, ABI, richieste e enforcement scheduler, limiti memoria/tempo, evidenze RSS/PSS/cgroup. Se disponibile un ambiente POSIX appropriato, verificare separatamente i controlli runtime symlink. Non avviare job Fair, MPI, ShellSet o Solver.
+
+Preservare: `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+## Storico workpack D3B-P0
 
 **Completed D3A audit:** `docs/arcana/SI1_BW1_F2B_D3A_ATTESTABILITY_AUDIT.md`, SHA256 `CA2FF09491BBDCB995FC79FB9E4CF66B461C519A2FC67F652E09099C70884989`; result `D3A_AUDIT_COMPLETE__SOLVER_PREFLIGHT_NOT_ATTESTABLE_FROM_CURRENT_EVIDENCE`. D3 report SHA256 `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF` and its contents remain unchanged.
 
