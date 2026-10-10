@@ -1,6 +1,11 @@
 # Indice minimo delle evidenze (identità e scope)
 Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload sono nei manifest originali. Verificare disponibilità, hash e scope prima di dichiarare PASS.
 
+## F2B-D1 design (2026-10-10; non è un'attestazione)
+- `docs/arcana/SI1_BW1_F2B_D1_DOF_PROVENANCE_CONTRACT.md` — `DESIGN_COMPLETE_PENDING_ATTESTATION`. Registra path e SHA256 candidati per permutation, FEG/runtime riordinati, BW1 manifest/report/staging contract, manifest/result originali F2A-V e otto input staged. La revisione è design-only: verifica esaustiva dei contenuti resta D1A. Non trattare D1 come PASS di bijezione, trasformazioni FEG/runtime o base geografica.
+- `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` — design-only F2B; supporta la separazione D1/D2/D3 e non conferisce autorità di esecuzione.
+- Il locator dell'evidenza originale F2A-V e gli hash per-file sono nel contratto D1. Gli output recovery locali restano non tracciati e preservati, fuori da questa consolidazione documentale. Manifest recovery `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` distinto dal manifest originale F2A-V `e59a1a31a450c7028b7a405cd6641454d9d67e082c7b62bd2132a0e452852854`.
+
 | Evidenza | Identità / percorso | Conclusione consentita |
 |---|---|---|
 | ShellSet Fair upstream parallel capacity | `R6_SHELLSET_FAIR_RUNTIME_QUALIFICATION.json` | 9/9 modelli ListEx1 in parallelo, capacity patch, LAPACK smokes; NON ARCANA mechanics |

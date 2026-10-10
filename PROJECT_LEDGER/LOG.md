@@ -34,3 +34,5 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 
 Ogni nuova riga deve indicare un preciso *scope*; se un risultato rimane blocked, scrivere BLOCKED anche quando alcuni sub-check PASS.
+
+| 2026-10-10 | F2B-D1 DOF/permutation provenance design | branch r6/si1-bandwidth-f2av, pre-sync HEAD 6e6bd36f3db2e6e07f406d757721f7a4b552cf8b; safe fast-forward to 595ed74788c3fa06cb4371affef121aacefb6670; final D1 contract SHA256 7d8125bc40edaa0476a13e1dc03fc6c0a82c3fe48b23acdded0845ed18fe2ea0 (initial SHA before review: 319eb9de615537ddd6abed09180dd04a83b654c02cad875a66d3d433835c93e4) | DESIGN_COMPLETE_PENDING_ATTESTATION; reviewed against current F2B preflight design. No exhaustive validator/test/source execution; mapping remains DOF_MAPPING_UNVERIFIED, original F2A-V remains blocked. Eight recovery outputs preserved untracked. | F2B-D1A offline exhaustive DOF-map attestation; geographic basis audit remains distinct; no Solver/Fair/MPI/factorization |

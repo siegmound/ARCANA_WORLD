@@ -1,6 +1,12 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
 **Data ricognizione:** 2026-10-10. **Authority:** questa pagina è un indice operativo, non un seal scientifico. In caso di conflitto prevalgono result, manifest, source lock e contratti originali verificati.
 
+## Aggiornamento corrente — F2B-D1 (2026-10-10)
+- Repository branch `r6/si1-bandwidth-f2av`; sincronizzato in fast-forward a `595ed74788c3fa06cb4371affef121aacefb6670` dopo verifica di ascendenza e assenza di collisioni con i nove file non tracciati (documento D1 + otto recovery output). Dopo le correzioni di riferimenti e scope D1A, SHA256 finale D1 `7d8125bc40edaa0476a13e1dc03fc6c0a82c3fe48b23acdded0845ed18fe2ea0`; SHA iniziale prima della review `319eb9de615537ddd6abed09180dd04a83b654c02cad875a66d3d433835c93e4`.
+- `F2B-D1 = DESIGN_COMPLETE_PENDING_ATTESTATION`, registrato in `docs/arcana/SI1_BW1_F2B_D1_DOF_PROVENANCE_CONTRACT.md`. È un design documentale; non attesta l'esecuzione dei controlli di contenuto e non cambia `DOF_MAPPING_UNVERIFIED`.
+- `F2B-D1A` è la prossima azione: attestazione esaustiva offline della mappa nodo/permutazione/DOF, distinta dalla verifica della base geografica. Il design F2B di riferimento è `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md`.
+- Restano invariati il risultato storico `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `FORWARD_EVOLUTION_AUTHORIZED=false` e `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## Repositories / sincronizzazione
 - Repo: `siegmound/ARCANA_WORLD`; branch di codice `r6/si1-bandwidth-f2av`, baseline codice `61dad0fabaa4f2bb72c386d85a77564894a91ce2` (fix writer e recovery) e ultimo checkpoint documentale `6e6bd36f3db2e6e07f406d757721f7a4b552cf8b`; rilevare HEAD live tramite Git, non inferirlo da questa pagina. Il run F2A-V originale resta vincolato a `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`.
 - `WINDOWS_WORKTREE_ONLY`: le 4 modifiche writer/recovery/test **sono state committate e pubblicate** al commit `61dad0fabaa4f2bb72c386d85a77564894a91ce2`. Sul worktree Windows rimane non tracciato soltanto `outputs/r6_si1_bandwidth_f2av_offline_recovery/`, che è evidenza derivata, non codice. Backup del codice precedente confermato. Prima di qualsiasi sincronizzazione ricontrollare `git status` e l'eventuale collisione con file untracked.

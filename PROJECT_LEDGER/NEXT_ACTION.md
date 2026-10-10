@@ -1,4 +1,23 @@
-# NEXT: F2B-D1 — DOF/permutation provenance closure design (read-only)
+# NEXT: F2B-D1A — exhaustive offline DOF-map attestation (read-only)
+
+**Current gate:** F2B-D1 design is `DESIGN_COMPLETE_PENDING_ATTESTATION`; the plan is `docs/arcana/SI1_BW1_F2B_D1_DOF_PROVENANCE_CONTRACT.md`. This is not an attestation result. Keep `DOF_MAPPING_UNVERIFIED` and the historical `BLOCKED_F2AV_QUALIFICATION` decision unchanged.
+
+## D1A scope
+Perform separately authorized offline, read-only verification of the exact permutation JSON, original and reordered FEG, original and reordered runtime package, BW1 manifest/report, and original F2A-V staged-input manifest/files. Verify hashes against their respective authorities before parsing; prove both permutation inverse equations exhaustively; verify node records, triangle connectivity/order/orientation, coordinates, runtime rows/fields, and staged F2A-V linkage; only then produce a separately sealed raw-DOF-to-node/component companion mapping for the census. Fail closed on missing or mismatched evidence. Do not infer geographic axes, plate identities, or physical meaning from component slots.
+
+Keep the geographic local-basis question distinct: D1A may attest node/permutation and source component ordering, but must leave `component_geographic_basis_mapping=DOF_MAPPING_UNVERIFIED` unless independently proven from exact source and coordinate authority. No census geographic/plate attribution while that remains unresolved.
+
+## D1A restrictions and output
+- Offline and read-only; no Fair, MPI, Solver, factorization, gauge, assembly, simulation, or canonical/WORLD_HISTORY mutation.
+- Do not edit source-locked ShellSet, FEG, runtime, manifests, or historical evidence. Any attestation candidate is new output outside sealed evidence, with its own manifest and links to original source evidence.
+- Keep original F2A-V result blocked. A mapping pass is not solver authorization or scientific qualification.
+- If source or contents cannot be read/verified, report `BLOCKED_MISSING_SOURCE` (or precise repository equivalent), preserve UNKNOWN, and enumerate missing paths/checks.
+
+After D1A, update the ledger with its actual scope and outcome. D2 operator semantics and D3 resource/residual design remain separate; no Solver execution is authorized.
+
+---
+
+## Historical D1 design checkpoint (preserved)
 **Checkpoint:** ricognizione Codex F2-B del 2026-10-10, locale Windows `6e6bd36f3db2e6e07f406d757721f7a4b552cf8b`; branch GitHub successivo include aggiornamenti della bitacora. `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` ne formalizza risultati e vincoli. **Progettazione solamente; non eseguire F2-B.**
 
 ## Preparazione
