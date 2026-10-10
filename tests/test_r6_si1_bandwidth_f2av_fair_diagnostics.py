@@ -141,10 +141,35 @@ def test_fortran_generated_contract_marker_phases_format_and_line_limits():
     assert generated.count("'BW1_F2AV_IEEE_INHERITED overflow='")==1
     assert generated.count("'BW1_F2AV_IEEE_PHASE phase_id='")==1
     assert "f2av_asym_roundoff" not in generated and "roundoff_class=" not in generated
-    census_fmt="(I0,A,I0,4(A,ES24.16E3),A,I0,A,ES24.16E3,A,A)"
+    census_fmt="(I0,A,I0,3(A,ES24.16E3),A,I0,2(A,ES24.16E3),A,A)"
     descriptors=f2av.fortran_format_descriptors(census_fmt)
-    assert descriptors==["I0","A","I0","A","ES24.16E3","A","ES24.16E3","A","ES24.16E3","A","ES24.16E3","A","I0","A","ES24.16E3","A","A"]
+    assert descriptors==["I0","A","I0","A","ES24.16E3","A","ES24.16E3","A","ES24.16E3","A","I0","A","ES24.16E3","A","ES24.16E3","A","A"]
     assert generated.count("WRITE(78,'"+census_fmt+"')")==2
+    census_writes=[]
+    source_lines=generated.splitlines()
+    for line_index,line in enumerate(source_lines):
+        match=re.match(r"\s*WRITE\(78,'([^']+)'\)\s*&\s*$",line)
+        if not match: continue
+        args=[]; next_index=line_index+1
+        while next_index<len(source_lines):
+            argument_line=source_lines[next_index]
+            args.append(argument_line)
+            next_index+=1
+            if not argument_line.rstrip().endswith("&"): break
+        census_writes.append((match.group(1),"\n".join(args)))
+    assert len(census_writes)==2
+    expected_fields=["f2av_asym_i","f2av_asym_j","f2av_asym_a","f2av_asym_b",
+        "f2av_asym_abs","f2av_asym_sat","f2av_asym_rel","f2av_asym_row"]
+    for (fmt,args),label in zip(census_writes,("ZERO_NONZERO","NONZERO_VALUE_MISMATCH")):
+        assert fmt==census_fmt
+        semantic_order=re.findall(r"f2av_asym_(?:i|j|abs|sat|rel|row|a|b)\(",args)
+        semantic_order=[item[:-1] for item in semantic_order]
+        assert semantic_order==expected_fields
+        assert label in args
+    # The value sequence now follows the header: abs_delta, saturation flag,
+    # relative_delta, row_scaled_discrepancy, structure.
+    assert "f2av_asym_abs(f2av_q),',',f2av_asym_sat(f2av_q),','" in generated
+    assert "f2av_asym_sat(f2av_q),',', &\n        f2av_asym_rel(f2av_q)" in generated
     assert "f2av_asym_n<=f2av_capacity .AND. f2av_asym_nonfinite==0" in generated
 
 
@@ -267,6 +292,29 @@ def test_census_and_bounded_extreme_csv_validation(tmp_path):
     assert f2av.read_f2av_extremes(extremes,3)["counts_by_kind"]["ROW_MAX"]==1
     with pytest.raises(f2av.F2AVError,match="exceeds matrix rank"):
         f2av.read_f2av_extremes(extremes,2)
+
+
+def test_actual_writer_order_is_canonical_and_historical_rows_normalize_losslessly(tmp_path):
+    sys.path.insert(0,str(ROOT/"scripts"))
+    import r6_si1_bandwidth_f2av_recover_evidence as recovery
+    source=tmp_path/"historical.csv"
+    destination=tmp_path/"new"/"normalized.csv"
+    source.write_text("i,j,aij,aji,abs_delta,abs_delta_saturated,relative_delta,row_scaled_discrepancy,structure\n"
+        "1,2,2.0E+000,3.0E+000,1.0E+000,3.3333333333333331E-001,0,1.0E-001,NONZERO_VALUE_MISMATCH\n",
+        encoding="utf-8",newline="")
+    original=source.read_bytes()
+    metadata=recovery.normalize_historical_census(source,destination)
+    assert source.read_bytes()==original
+    assert metadata["rows"]==1
+    assert metadata["field_repair"]=="swap historical fields 6 and 7 only"
+    with destination.open(encoding="utf-8",newline="") as stream:
+        row=next(csv.DictReader(stream))
+    assert row["abs_delta"]=="1.0E+000"
+    assert row["abs_delta_saturated"]=="0"
+    assert row["relative_delta"]=="3.3333333333333331E-001"
+    assert row["row_scaled_discrepancy"]=="1.0E-001"
+    validated=f2av.read_f2av_census(destination,1,100,n_rank=3,ku=1)
+    assert validated["classification_counts"]=={"ZERO_NONZERO":0,"NONZERO_VALUE_MISMATCH":1}
 
 
 def test_manifest_rejects_member_hash_mismatch(tmp_path):

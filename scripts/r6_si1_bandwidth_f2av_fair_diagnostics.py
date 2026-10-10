@@ -531,15 +531,15 @@ IF (f2av_ios == 0) THEN
   WRITE(78,'(A)') 'i,j,aij,aji,abs_delta,abs_delta_saturated,relative_delta,row_scaled_discrepancy,structure'
   DO f2av_q=1,MIN(f2av_asym_n,f2av_capacity)
     IF ((f2av_asym_a(f2av_q) == 0.0D0) .NEQV. (f2av_asym_b(f2av_q) == 0.0D0)) THEN
-      WRITE(78,'(I0,A,I0,4(A,ES24.16E3),A,I0,A,ES24.16E3,A,A)') &
+      WRITE(78,'(I0,A,I0,3(A,ES24.16E3),A,I0,2(A,ES24.16E3),A,A)') &
         f2av_asym_i(f2av_q),',',f2av_asym_j(f2av_q),',',f2av_asym_a(f2av_q),',', &
-        f2av_asym_b(f2av_q),',',f2av_asym_abs(f2av_q),',',f2av_asym_rel(f2av_q),',', &
-        f2av_asym_sat(f2av_q),',',f2av_asym_row(f2av_q),',','ZERO_NONZERO'
+        f2av_asym_b(f2av_q),',',f2av_asym_abs(f2av_q),',',f2av_asym_sat(f2av_q),',', &
+        f2av_asym_rel(f2av_q),',',f2av_asym_row(f2av_q),',','ZERO_NONZERO'
     ELSE
-      WRITE(78,'(I0,A,I0,4(A,ES24.16E3),A,I0,A,ES24.16E3,A,A)') &
+      WRITE(78,'(I0,A,I0,3(A,ES24.16E3),A,I0,2(A,ES24.16E3),A,A)') &
         f2av_asym_i(f2av_q),',',f2av_asym_j(f2av_q),',',f2av_asym_a(f2av_q),',', &
-        f2av_asym_b(f2av_q),',',f2av_asym_abs(f2av_q),',',f2av_asym_rel(f2av_q),',', &
-        f2av_asym_sat(f2av_q),',',f2av_asym_row(f2av_q),',','NONZERO_VALUE_MISMATCH'
+        f2av_asym_b(f2av_q),',',f2av_asym_abs(f2av_q),',',f2av_asym_sat(f2av_q),',', &
+        f2av_asym_rel(f2av_q),',',f2av_asym_row(f2av_q),',','NONZERO_VALUE_MISMATCH'
     END IF
   END DO
   CLOSE(78)
