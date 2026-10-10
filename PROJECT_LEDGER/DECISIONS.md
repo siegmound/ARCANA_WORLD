@@ -11,3 +11,5 @@ Questo registro contiene **decisioni architetturali del progetto e governance op
 - **D-008:** Il ledger è l'unico punto operativo di continuità tra chat. Altri README/stati vecchi possono essere pointer/history e non sovrascrivere `STATUS.md`. In presenza di conflitto, prevalgono le fonti primarie e si richiede riconciliazione.
 - **D-009:** Cleanup solo con inventory/consumer/hash/license/authority/replay audit, regressioni e Git reversibility; `REVIEW_UNKNOWN` protetto.
 - **D-010:** La completezza degli obiettivi (risorse, Deep, flora, fauna, popoli) resta parte del piano; non ridurre ARCANA al solo motore tettonico.
+
+- **D-011 (2026-10-10):** L'adjudication offline F2A-V dà **GO solo a F2-B preflight DESIGN**, non a solver, factorization o qualificazione scientifica. La revisione consente la progettazione senza assegnare causa alle 10 asimmetrie né dichiarare simmetria, nullspace, condizionamento, IEEE causality o DOF mapping provati.

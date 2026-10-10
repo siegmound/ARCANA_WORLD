@@ -1,35 +1,34 @@
-# Stato operativo corrente — checkpoint di sviluppo
-**As of:** 2026-10-10; fonte attiva GitHub `siegmound/ARCANA_WORLD`.
-**Source working branch:** `r6/si1-bandwidth-f2av`, **HEAD:** `df670c8c4faaed641997f5c4bdb701e2ba0afc7d` (osservato quando il ledger è stato preparato). Altri commit successivi richiedono verifica, non sono automaticamente integrati qui.
-**Evidence branch:** `evidence/r6-bw1-f2av-20261010`, HEAD `72df050f1dc6616426fd25b33fd7de0cc15d83ac` (copia LFS non governante; F2A-V parent archive at `f318a217`).
+# ARCANA WorldSim R6 — Stato operativo corrente
+**Data ricognizione:** 2026-10-10. **Authority:** questa pagina è un indice operativo, non un seal scientifico. In caso di conflitto prevalgono result, manifest, source lock e contratti originali verificati.
 
-## Gate in primo piano: ShellSet BW1 F2A-V
-- Code fix strutturale Fortran: PASS commit `df670c8...`.
-- Fair NVFortran 25.11 compile-only: `COMPILE_ONLY_COMPLETE_RUNTIME_NOT_EXECUTED`, `ShellSet.exe` creato.
-- Fair Linux regressions: **138 passed**, test exit 0.
-- Fair assembly-only run: 2 rank MPI, 1 modello, ~282.09 s, **MPI returncode 75**, `BW1_F2AV_STOP_BEFORE_SOLVER` + `BW1_F2A_STOP_BEFORE_SOLVER`. No Solver/factorization.
-- Postprocessor: **`BLOCKED_F2AV_QUALIFICATION`**, failure `F2AVError: invalid saturation indicator`.
-- Root cause verificata nel CSV originale: writer dati nell'ordine `...,abs_delta,relative_delta,abs_delta_saturated,...` ma header/parser dichiarano `...,abs_delta,abs_delta_saturated,relative_delta,...`. **Non** assumere che sia l'unico errore.
-- Evidence Fair run dir: `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_F2AV_RUN/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z`.
-- Copia Windows estratta: `F:\corsiiiuu\Magistrale\Arcana\F2AV_RECOVERY_INPUT\df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z`.
-- Evidence archive SHA256: `0a67103b04959e4f4c0c211a29800f31262f4950ebe34bee60ffa14166041c64`.
-- Preservare originale BLOCKED. **Offline recovery parziale storica**: inizialmente `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE`, manifest derivato `e2c945442ab49397bc94164c41498b38fc3f091d65db60481c19ca8ec7612ec4`. Evidenza del run senza riferimento mantenuta separata.
-- **Recovery offline F2A-V completa eseguita localmente Windows il 2026-10-10** dopo recupero del sealed F2-A: runner exit `0`; decisione `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`, nuovo manifest SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`. Input F2-A inner manifest SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936` verificato su Windows, archive hash verificato dal `.sha256`. Nuovo risultato locale NON ancora committato/revisionato indipendentemente; numerical adjudication non compiuta.
+## Repositories / sincronizzazione
+- Repo: `siegmound/ARCANA_WORLD`; branch di codice `r6/si1-bandwidth-f2av`, HEAD remoto ancora `df670c8c4faaed641997f5c4bdb701e2ba0afc7d` alla ricognizione.
+- `WINDOWS_WORKTREE_ONLY`: 2 file tracciati modificati (writer F2A-V e test), 2 script/test recovery nuovi non tracciati; `outputs/r6_si1_bandwidth_f2av_offline_recovery/` non tracciati. Backup di codice Windows confermato. **Non eseguire merge/pull/reset su questo worktree dirty.**
+- `GITHUB_BRANCH_ONLY`: cartella `PROJECT_LEDGER/` e `AGENTS.md` sul branch `docs/r6-project-ledger-20261010` (PR draft #1), NON ancora integrati nel branch codice.
+- `EVIDENCE_LFS`: branch `evidence/r6-bw1-f2av-20261010` HEAD `72df050f1dc6616426fd25b33fd7de0cc15d83ac` contiene original F2A-V e companion F2-A sealed; intake su Windows verificato.
+- Fair: originali HPC immutabili, non serve pull del codice durante audit offline.
 
-## Altri stati importanti, non confondere con questo gate
-- Fair upstream ShellSet parallel solve eseguito con successo sull'esempio `ListEx1`: 9 modelli su 9, diversi setting NVIDIA, proof `R6_SHELLSET_FAIR_RUNTIME_QUALIFICATION.json`. **Non** qualifica automaticamente la matrice e la soluzione meccanica ARCANA SI1.
-- R6 B6: candidate kinematic e stato rift in workflow separato, ma `B6N5` impedisce ulteriore evoluzione postattivazione. B6N6 definisce separazione tra dt interno e stati persistenti. La documentazione storica PRE-B0 non rappresenta più lo stato attuale.
+## Gate scientifico attuale
+**Decisione della review offline Windows (resoconto Codex, 2026-10-10):** `GO_FOR_F2B_SOLVER_PREFLIGHT_DESIGN_ONLY` (etichetta operativa del ledger, NON un nuovo seal/contract di authorità). Sono ammessi lo studio del preflight e i test statici non-esecutivi; **Solver/F2-B execution non autorizzata**.
 
-## AUTORIZZAZIONI conservate
-`F2-B solver/factorization = NOT_AUTHORIZED`; `ARCANA SI1 mechanics = NOT_QUALIFIED`; `global forward evolution = NOT_AUTHORIZED`; `WORLD_HISTORY production = NOT_AUTHORIZED`; nessun nuovo run MPI F2A-V per semplice correzione CSV. Non confondere MPI exit 75 intenzionale con successo del parser.
+### Evidenze e risultati
+- Originale F2A-V Fair: `BLOCKED_F2AV_QUALIFICATION` su parser `invalid saturation indicator` dopo MPI stop deliberato 75 prima del Solver; l'originale NON viene riscritto.
+- Recovery completa Windows `outputs/r6_si1_bandwidth_f2av_offline_recovery/F2AV_WITH_F2A_REFERENCE_V1/`: `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`; result e 3 artefatti riconciliati nella review; manifest SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`. F2-A sealed manifest SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`.
+- Review: original F2A-V 79 membri manifest + manifest (80 file) intatti; CSV normalizzato solo swap colonne 6/7; cross-reference F2-A sealed passato. `139 passed, 2 skipped`, `py_compile`, JSON e `git diff --check` PASS; pytest primo lancio basetemp default fallito, rerun con --basetemp repository PASS. SciPy/BW0/BW1 non ancora interamente ricontrollati nel medesimo ambiente.
+- Matrice: n=128884; kl=ku=727; nKRows=2182; 186996964 valid, 1804327 nonzero, 185192637 zero, nonfinite 0. REAL*8 band array 2249799104 byte stimati, non RSS globale. 93434040 coppie upper confrontate, 10 anomalie (1 zero/nonzero e 9 nonzero mismatch) a threshold rel `1e-12`. Max coefficient abs `3.6508239112970148E+032`; min nonzero `1.4073748835532800E+014`, circa 18.41 decadi. Dominanza strict 0, near 0, nonstrict 128884.
+- Le 10 anomalie non hanno causa dimostrata; la simmetria teorica dell'operatore non è ancora provata. `DOF_MAPPING_UNVERIFIED`. Non esistono stime qualificate di condizionamento, spettro, singolarità o gauge. IEEE `underflow/inexact` inherited, cause ignote; nessun overflow/underflow per fase osservati nel report.
 
-**Gate di trasporto e recovery chiuso (2026-10-10):** sealed F2-A pubblicato via Git LFS `72df050f1dc6616426fd25b33fd7de0cc15d83ac`, scaricato ed estratto Windows con doppia verifica SHA256. Recovery completa eseguita nella directory `outputs/r6_si1_bandwidth_f2av_offline_recovery/F2AV_WITH_F2A_REFERENCE_V1/`. Nuova decisione accettata dal runner: `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`. Rimane da validare/revisionare il codice locale e le misure in adjudication; niente solver. SciPy assente nell'interprete Windows per la raccolta aggiuntiva BW0/BW1.
+### Rischi che rimangono aperti
+1. Correzione del writer F2A-V non ancora ricompilata/qualificata su Fair/NVHPC; il CSV recovery proviene dal writer precedente.
+2. Manca test positivo automatico E2E recovery con F2-A sealed (run reale controllato dalla review).
+3. IEEE intrinsics/sticky flag comportamento da qualificare dove richiesto prima di fare affidamento su nuova instrumentation NVHPC.
+4. Mappatura DOF raw -> permutation/node/component/geografia incompleta e classe dell'operatore/asimmetria/gauge non accertate.
+5. R6 B6N5 post-rift è un **blocco di autorità fisica separato**; ShellSet engineering case usa parametri di riferimento NON ARCANA science authority.
 
-**Unica prossima attività:** `NEXT_ACTION.md`. Gli altri track possono essere discussi, ma non promossi senza gate.
-
-## Sincronizzazione tra macchine (2026-10-10)
-- `WINDOWS_WORKTREE_ONLY`: writer F2A-V corretto, recovery, test e output parziale + completo **non committati**; backup del codice locale confermato.
-- `FAIR_WORKTREE_ONLY`: i bundle originali restano immutabili; push del companion F2-A completato senza pull del codice.
-- `GITHUB_BRANCH_ONLY`: `PROJECT_LEDGER/` nel branch docs; **non** ancora integrato nel branch di sviluppo e dunque non visibile automaticamente al checkout Windows/Fair.
-- `EVIDENCE_LFS`: F2A-V originale e companion sealed F2-A pubblicati su GitHub; F2-A scaricato e verificato su Windows.
-Non effettuare merge docs o checkout che possa sovrascrivere il diff locale Codex. Procedura dettagliata in `PROCEDURE.md`.
+## Autorizzazioni
+`F2B_PREFLIGHT_DESIGN_ALLOWED=true` (solo design; decisione operativa);
+`F2B_SOLVER_EXECUTION_AUTHORIZED=false`;
+`ARCANA_SI1_MECHANICS_QUALIFIED=false`;
+`FORWARD_EVOLUTION_AUTHORIZED=false`;
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+L'esecuzione parallela ShellSet su upstream ListEx1 9/9 è già evidenziata: non ripetere come nuovo gate. **Prossima attività:** `NEXT_ACTION.md`.
