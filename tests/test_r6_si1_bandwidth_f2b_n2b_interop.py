@@ -1,6 +1,7 @@
 """Bounded N2B binary-contract tests; compiler-backed cases need gfortran."""
 
 import hashlib
+import os
 from pathlib import Path
 import shutil
 import struct
@@ -23,7 +24,10 @@ ROOT = Path(__file__).resolve().parents[1]
 FORTRAN = ROOT / "tests/fixtures/r6_si1_bandwidth_f2b_n2b_interop.f90"
 HEADER = struct.Struct("<8sIIII32s")
 U64 = struct.Struct("<Q")
-GFORTRAN = shutil.which("gfortran")
+COMPILER_FLAGS = {
+    "gfortran": ("-std=f2008", "-O0", "-fno-fast-math", "-fcheck=all"),
+    "nvfortran": ("-O0", "-Kieee", "-Mnodaz", "-Mnoflushz", "-Mbounds"),
+}
 
 
 def _fixture():
@@ -74,13 +78,31 @@ def _oracle_value_bytes(matrix, rhs, kl, ku):
     return bytes(out)
 
 
+def _selected_compiler():
+    requested = os.environ.get("ARCANA_N2B_FC")
+    compiler = requested if requested is not None else "gfortran"
+    if compiler not in COMPILER_FLAGS:
+        pytest.fail(
+            f"unsupported ARCANA_N2B_FC={compiler!r}; choose 'gfortran' or 'nvfortran'",
+            pytrace=False,
+        )
+    executable = shutil.which(compiler)
+    if executable is None:
+        if requested is None:
+            pytest.skip(f"Fortran interoperability not run: default compiler {compiler!r} is unavailable")
+        pytest.fail(
+            f"requested ARCANA_N2B_FC compiler {compiler!r} is unavailable on PATH",
+            pytrace=False,
+        )
+    return compiler, executable, COMPILER_FLAGS[compiler]
+
+
 def _compile(tmp_path_factory):
-    if GFORTRAN is None:
-        pytest.skip("Fortran interoperability not run: no local gfortran compiler")
+    compiler, executable, flags = _selected_compiler()
     build = tmp_path_factory.mktemp("n2b-fortran-build")
     exe = build / "n2b_interop.exe"
     result = subprocess.run(
-        [GFORTRAN, "-std=f2008", "-O0", "-fno-fast-math", "-fcheck=all", str(FORTRAN), "-o", str(exe)],
+        [executable, *flags, str(FORTRAN), "-o", str(exe)],
         cwd=build,
         text=True,
         capture_output=True,
@@ -88,6 +110,77 @@ def _compile(tmp_path_factory):
     )
     assert result.returncode == 0, result.stdout + result.stderr
     return exe
+
+
+def test_compiler_selection_defaults_to_gfortran_with_gnu_flags(monkeypatch):
+    monkeypatch.delenv("ARCANA_N2B_FC", raising=False)
+    monkeypatch.setattr(shutil, "which", lambda name: "/tools/gfortran" if name == "gfortran" else None)
+    assert _selected_compiler() == ("gfortran", "/tools/gfortran", COMPILER_FLAGS["gfortran"])
+
+
+def test_explicit_nvfortran_selection_uses_only_nvhpc_flags(monkeypatch):
+    monkeypatch.setenv("ARCANA_N2B_FC", "nvfortran")
+    monkeypatch.setattr(shutil, "which", lambda name: "/opt/nvidia/nvfortran" if name == "nvfortran" else None)
+    compiler, executable, flags = _selected_compiler()
+    assert (compiler, executable) == ("nvfortran", "/opt/nvidia/nvfortran")
+    assert flags == ("-O0", "-Kieee", "-Mnodaz", "-Mnoflushz", "-Mbounds")
+    assert not any(flag.startswith("-std=") or flag.startswith("-f") for flag in flags)
+
+
+def test_default_compiler_missing_is_an_explicit_skip(monkeypatch):
+    monkeypatch.delenv("ARCANA_N2B_FC", raising=False)
+    monkeypatch.setattr(shutil, "which", lambda _name: None)
+    with pytest.raises(pytest.skip.Exception, match="default compiler 'gfortran' is unavailable"):
+        _selected_compiler()
+
+
+@pytest.mark.parametrize("compiler", ["gfortran", "nvfortran"])
+def test_explicit_missing_compiler_fails_diagnostically(monkeypatch, compiler):
+    monkeypatch.setenv("ARCANA_N2B_FC", compiler)
+    monkeypatch.setattr(shutil, "which", lambda _name: None)
+    with pytest.raises(pytest.fail.Exception, match=f"requested ARCANA_N2B_FC compiler '{compiler}' is unavailable"):
+        _selected_compiler()
+
+
+def test_unsupported_compiler_value_fails_closed(monkeypatch):
+    monkeypatch.setenv("ARCANA_N2B_FC", "ifort")
+    with pytest.raises(pytest.fail.Exception, match="unsupported ARCANA_N2B_FC"):
+        _selected_compiler()
+
+
+@pytest.mark.parametrize(
+    ("compiler", "expected_flags"),
+    [("gfortran", COMPILER_FLAGS["gfortran"]), ("nvfortran", COMPILER_FLAGS["nvfortran"])],
+)
+def test_compile_uses_selected_executable_and_flags(monkeypatch, compiler, expected_flags):
+    monkeypatch.setenv("ARCANA_N2B_FC", compiler)
+    executable = f"/toolchain/{compiler}"
+    monkeypatch.setattr(shutil, "which", lambda name: executable if name == compiler else None)
+    captured = {}
+
+    class Completed:
+        returncode = 0
+        stdout = ""
+        stderr = ""
+
+    def fake_run(command, **kwargs):
+        captured["command"] = command
+        captured["kwargs"] = kwargs
+        return Completed()
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+
+    class TempFactory:
+        def mktemp(self, _name):
+            return Path("mock-build")
+
+    result = _compile(TempFactory())
+    command = captured["command"]
+    assert command[0] == executable
+    assert tuple(command[1:1 + len(expected_flags)]) == expected_flags
+    assert command[1 + len(expected_flags)] == str(FORTRAN)
+    assert result == Path("mock-build/n2b_interop.exe")
+    assert captured["kwargs"]["cwd"] == Path("mock-build")
 
 
 def _run(exe, *args, must_fail=False):
