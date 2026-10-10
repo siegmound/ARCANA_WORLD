@@ -1,17 +1,22 @@
-# NEXT — F2B-D1B geographic component-basis provenance audit (read-only)
+# NEXT: F2B-D2 — operator semantics and asymmetry reconciliation (design/audit only)
 
-**Starting point:** D1A code commit `d539a9ffa281d3dac8489db4820715cb136e9ae6`; D1A evidence Git LFS commit `c6bc94c0cac134146722b0c751f55255c68f03dc`, archive SHA256 `b9fc3a7053e5c18a3d38e67ae367f418e5041f018d3ac9eafe82fa3dce1e9f9d`, manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`. Node/permutation/staged F2A-V mapping `DOF_MAPPING_PARTIAL`; geographic meaning/orientation of ShellSet's 1/2 slots `DOF_MAPPING_UNVERIFIED`. Original `BLOCKED_F2AV_QUALIFICATION`, `BLOCKED_BW1` remain unchanged. No Solver/HPC/forward authority.
+**Completed gate:** F2B-D1B report docs/arcana/SI1_BW1_F2B_D1B_GEOGRAPHIC_BASIS_AUDIT.md, audited at checkout HEAD d539a9ffa281d3dac8489db4820715cb136e9ae6; report SHA256 baa9e450f866f29a42230ad01bd490de6ed6c96f02df3d901e6af77388a41546. The exact historical ShellSet source commit df670c8c4faaed641997f5c4bdb701e2ba0afc7d establishes slot 1 = +South/+theta and slot 2 = +East/+phi, with matching inspected assembly, forcing, boundary-condition and output paths. This does not adjudicate the ten asymmetry pairs or ARCANA frame authority. Preserve DOF_MAPPING_UNVERIFIED for anomaly-to-geography/plate/physical attribution and preserve BLOCKED_F2AV_QUALIFICATION.
 
-## Scope and approach
-1. Read the **historical source at F2A-V execution commit** `df670c8c4faaed641997f5c4bdb701e2ba0afc7d` rather than assuming current code is identical. Check exact hashes using `configs/r6_shells_si1/shellset_source_lock.json`. Primary sources: `external/ShellSet-v1.1.0/src/MOD_Shells.f90`, `SHELLS_v5.0.f90`, relevant FEG parsers and ShellSet input documentation. The assembly `BuildK` (circa lines 1493–1512 at historical source) indexes component 1 with `2*node-1` and component 2 with `2*node`; this is NOT a proven geographic basis.
-2. Trace the **definition**, orientation and units of vector components from primary Fortran and input semantics: sphere longitude/latitude vs colatitude, local tangent planes, local/global axes, any rotations, sign conventions, branch/fault special cases, singularities near poles and longitude wrap, and whether a single basis is used consistently for assembly, forcing, boundary conditions and outputs. Record exact file:line references and transformations. Never presume slot1=East/slot2=North without evidence.
-3. Identify the actual FEG coordinate authority (degrees/radians, coordinate order, longitude normalization and planet radius), compare to D1A's attested node mapping and distinguish stored coordinates from basis transformation. Only if every mapping step is proven from immutable sources may propose a georeferencing contract; otherwise preserve `DOF_MAPPING_UNVERIFIED`.
-4. Keep 10 F2A-V asymmetric census pairs in numeric raw/slot scope. Do not attribute physical location/plate or causal asymmetry interpretation without separate approval and proof. DOF meaning and operator symmetry/conditioning are distinct questions (D1B vs D2).
-5. Deliver **read-only design/audit report** with provenance matrix `claim -> source/line -> coordinate frame -> transform -> verified/UNKNOWN -> missing proof`; suggest `docs/arcana/SI1_BW1_F2B_D1B_GEOGRAPHIC_BASIS_AUDIT.md` without creating canonical geographic outputs. If source proof remains incomplete return `D1B_BLOCKED_INSUFFICIENT_BASIS_PROVENANCE`; if convincing return `D1B_BASIS_CONTRACT_DESIGN_COMPLETE_PENDING_ATTESTATION`. These are operational labels only; no unexecuted checks marked PASS.
+## Next scope
+F2B-D2 should examine expected operator semantics, assembly/linearization, boundary treatment, and the ten asymmetry records without inferring cause from their indices. F2B-D3 resource/residual design remains a separate gate. This is a recommendation only; it authorizes no Fair/MPI/Solver/factorization/gauge/simulation.
 
-## Restrictions
-No Fair, MPI, Solver, factorization, new assembly, simulation, gauge, source-locked ShellSet edits, physical state evolution or canonical WORLD_HISTORY writes. D2 operator and D3 resources/residual remain separate. No commit/push or results mutation during first audit unless separately authorized.
+## D1B restrictions retained
+- Audit was static/read-only. No Fair, MPI, Solver, factorization, gauge, assembly, simulation, or canonical/WORLD_HISTORY mutation.
+- No plate/geographic attribution by index analogy and no solver authorization or scientific qualification.
 
 ---
-## Prior D1A evidence
-Local derived result `outputs/r6_si1_bandwidth_f2b_d1a_attestation/D1A_RESULT.json` (SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9`), internal manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`. Keep untracked source outputs untouched. Refer to `PROJECT_LEDGER/EVIDENCE_INDEX.md` and `docs/arcana/SI1_BW1_F2B_D1_DOF_PROVENANCE_CONTRACT.md` for artifact identities and limitations. F2A-V original historical decision remains blocked.
+
+## Historical D1A handoff and evidence publication (preserved)
+D1A produced DOF_MAPPING_PARTIAL at checkout HEAD f7b66b2276ef9c33af7012f453b0f01902575cd6. Result: outputs/r6_si1_bandwidth_f2b_d1a_attestation/D1A_RESULT.json; manifest SHA256 5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a, result SHA256 74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9. Final review added protected output-root checks and independent original FEG/runtime hash plus Git-blob validation; revised attestor reproduced the same result and manifest hashes. It attests node permutation, FEG/runtime reordering, staged F2A-V pair and raw DOF-to-node/component-slot mapping; it does not establish geographic basis semantics.
+
+D1A evidence Git LFS publication is recorded by commit c6bc94c0cac134146722b0c751f55255c68f03dc; archive SHA256 b9fc3a7053e5c18a3d38e67ae367f418e5041f018d3ac9eafe82fa3dce1e9f9d; manifest SHA256 5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a. The publication ledger update is preserved in remote commit bb529b32c4571241c90160423f277248bb9a35a7.
+
+Original F2A-V historical decision remains BLOCKED_F2AV_QUALIFICATION; F2B_SOLVER_EXECUTION_AUTHORIZED=false. D1A geographic component meaning had remained DOF_MAPPING_UNVERIFIED until the bounded D1B source audit above; geographical attribution of the ten anomalies remains unverified.
+
+## Historical design checkpoint
+F2B-D1 design defined offline, read-only verification of the raw matrix DOF -> reordered node/component -> original node chain. D1A attests that nodal/index portion; D1B separately resolves ShellSet source component semantics. F2B-D2 operator semantics and F2B-D3 resource/residual design remain distinct.

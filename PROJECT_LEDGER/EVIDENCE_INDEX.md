@@ -8,6 +8,11 @@
 
 Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload sono nei manifest originali. Verificare disponibilità, hash e scope prima di dichiarare PASS.
 
+## F2B-D1B — historical ShellSet geographic component-basis source audit (2026-10-10)
+- Report: `docs/arcana/SI1_BW1_F2B_D1B_GEOGRAPHIC_BASIS_AUDIT.md`; SHA256 `baa9e450f866f29a42230ad01bd490de6ed6c96f02df3d901e6af77388a41546`.
+- Audited exact historical F2A-V ShellSet source commit `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`; source-level finding: slot 1 = +South/+theta and slot 2 = +East/+phi. Static source audit only; no Solver/runtime qualification.
+- Scope boundary: ARCANA frame authority, universal seam behavior and mapping the 10 asymmetry pairs to geography/plates/causes remain unverified. Preserve `DOF_MAPPING_UNVERIFIED` for those claims and original `BLOCKED_F2AV_QUALIFICATION`.
+
 ## F2B-D1A — offline DOF provenance attestation (2026-10-10)
 - Output: `outputs/r6_si1_bandwidth_f2b_d1a_attestation/D1A_RESULT.json`, report, raw DOF/node/component map, F2A-V census index map e `D1A_ARTIFACT_MANIFEST.json`.
 - Manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`; result SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9`.

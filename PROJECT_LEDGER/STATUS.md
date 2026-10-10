@@ -9,6 +9,12 @@
 
 **Data ricognizione:** 2026-10-10. **Authority:** questa pagina è un indice operativo, non un seal scientifico. In caso di conflitto prevalgono result, manifest, source lock e contratti originali verificati.
 
+## Aggiornamento corrente — F2B-D1B (2026-10-10)
+- Checkout: branch `r6/si1-bandwidth-f2av`, HEAD `d539a9ffa281d3dac8489db4820715cb136e9ae6`. Audit source read-only del commit ShellSet storico `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`; report `docs/arcana/SI1_BW1_F2B_D1B_GEOGRAPHIC_BASIS_AUDIT.md`, SHA256 `baa9e450f866f29a42230ad01bd490de6ed6c96f02df3d901e6af77388a41546`.
+- Esito limitato: component basis ShellSet dimostrata nel proprio frame sferico: slot 1 = +South/+theta (North = −slot 1); slot 2 = +East/+phi. Source ordering, angular-velocity projection, boundary transform e output concordano nelle routine citate.
+- Non adjudicato: autorità del frame per ARCANA, policy globale completa al meridiano, geografia/placche/causa delle dieci asimmetrie. `DOF_MAPPING_UNVERIFIED` resta obbligatorio per anomaly-to-geography/plate attribution; F2A-V resta `BLOCKED_F2AV_QUALIFICATION`.
+- Nessun test scientifico/runtime eseguito; solo audit statico e `git diff --check`. Output D1A e F2A-V esistenti preservati. Prossimo gate proposto: F2B-D2 operator semantics; D3 risorse/residuo resta separato. Solver/Fair/MPI/fattorizzazione non autorizzati.
+
 ## Aggiornamento corrente — F2B-D1A (2026-10-10)
 - Checkout verificato: branch `r6/si1-bandwidth-f2av`, HEAD `f7b66b2276ef9c33af7012f453b0f01902575cd6`; gli otto output recovery preesistenti sono stati preservati.
 - Attestazione offline ripetibile: `outputs/r6_si1_bandwidth_f2b_d1a_attestation/`, decisione `DOF_MAPPING_PARTIAL`; manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`, result SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9`.
