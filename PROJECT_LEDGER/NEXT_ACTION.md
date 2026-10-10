@@ -1,17 +1,11 @@
-# Prossima attività — consolidare recovery Windows e progettare F2-B preflight
+# Prossima attività — integrare il ledger e progettare F2-B preflight
 **Input gate:** adjudication offline Windows 2026-10-10; outcome **GO alla progettazione F2-B, NO alla sua esecuzione**. Vedi `STATUS.md`, `EVIDENCE_INDEX.md`, `F2B_PREFLIGHT_DESIGN.md`.
 
-## Fase 1 — Consolidamento codice già revisionato (Windows)
-1. Verificare `git status --short`, branch `r6/si1-bandwidth-f2av`, HEAD `df670c8c4faaed641997f5c4bdb701e2ba0afc7d` e backup `F2AV_CODE_BACKUP_20261010`; non fare pull/merge/reset prima del commit.
-2. Fare stage **solo di quattro percorsi di codice/test**:
-   `scripts/r6_si1_bandwidth_f2av_fair_diagnostics.py`,
-   `tests/test_r6_si1_bandwidth_f2av_fair_diagnostics.py`,
-   `scripts/r6_si1_bandwidth_f2av_recover_evidence.py`,
-   `tests/test_r6_si1_bandwidth_f2av_recover_evidence.py`.
-   NON aggiungere `outputs/`, né evidenze originali/manifest sigillati.
-3. Verificare `git diff --cached` e `git diff --cached --check`, suite 139 PASS 2 SKIP nel medesimo scope, copertura E2E sealed mancante dichiarata, e SciPy/BW0/BW1 status. Se necessario aggiungere il test positivo E2E con fixture sintetica/appropriata, senza introdurre dipendenza HPC. Non fingere che sia già passato.
-4. Solo dopo revisione ed esplicita decisione dell'operatore, commit e push del codice nel branch R6. Se l'operatore non ha ancora dato via libera, fermarsi al report. Merge successivo della PR draft #1 ledger solo su worktree pulito/reviewato, preservando gli aggiornamenti.
-5. La recovery derivata completa resta locale fino a un proprio piano di evidence publication/seal. I digest nel ledger sono riferimenti, non equivalenti al bundle pubblicato.
+## Fase 1 — Consolidamento e sincronizzazione
+1. **DONE**: le 4 modifiche a diagnostica writer + recovery + test sono nel commit `61dad0fabaa4f2bb72c386d85a77564894a91ce2` sul branch `r6/si1-bandwidth-f2av`, senza includere `outputs/`.
+2. **NEXT**: con PR #1, integrare `PROJECT_LEDGER/` e `AGENTS.md` nel branch di codice dopo controllo che il diff è soltanto documentale (eccetto i 4 puntatori README/stato, anch'essi documentali) e che l'HEAD base è il commit pubblicato. In Windows fare solo fetch e fast-forward su un worktree senza modifiche tracciate; NON utilizzare reset/hard o fare merge manuali sovrascrivendo `outputs/`.
+3. **PENDING**: il recovery derivato completo resta nella directory untracked Windows. Pubblicarlo solo con un piano di evidence publication/seal separato; i digest in questo ledger NON equivalgono a un bundle originale sigillato.
+4. **OPEN TEST GAPS**: writer corretto non ancora ricompilato con Fair/NVHPC, nessun test positivo E2E automatico che integri F2-A sealed, BW0/BW1/SciPy ancora da verificare nell'ambiente adatto. Non retro-promuovere `BLOCKED_F2AV_QUALIFICATION` o la meccanica.
 
 ## Fase 2 — F2-B PREFLIGHT DESIGN (no build, no solve)
 **Obiettivo:** piano testabile per determinare la fattibilità numerica del caso ingegneristico ARCANA SI1, distinguendola dall'autorizzazione scientifica della meccanica.

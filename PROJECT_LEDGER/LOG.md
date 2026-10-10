@@ -22,6 +22,8 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 
 | 2026-10-10 | F2A-V numerical adjudication (Codex Windows read-only report) | complete recovery manifest `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`; source branch HEAD `df670c8c...` | GO only for F2-B preflight **design**. Matrice n128884, 10 asym anomalies, DOF mapping UNKNOWN, no nullspace/condition evidence. 139 PASS/2 SKIP; NVHPC corrected writer unqualified; code uncommitted | consolidate Windows code; F2-B design without Fair/MPI/Solver; preserve original BLOCKED |
 
+| 2026-10-10 | R6 code consolidation Windows -> GitHub | `r6/si1-bandwidth-f2av` commit `61dad0fabaa4f2bb72c386d85a77564894a91ce2` | PASS commit/push di 4 file writer F2A-V/recovery/tests, 395 insertions e 8 deletions; `outputs/r6_si1_bandwidth_f2av_offline_recovery/` ancora untracked | integrare PR #1 ledger; conservare output recovery locale, design F2-B solo |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 

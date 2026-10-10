@@ -37,3 +37,8 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 - IEEE inherited `underflow=true`, `inexact=true`, `overflow=false`; phase inexact in `BUILD_F`, `BUILD_K`, `MATRIX_SYMMETRY`, `ROW_COLUMN_STATISTICS`, `OUTPUT_AGGREGATES`; 0 observed new overflow/underflow per phase. Non dedurre causa.
 - Code/review tests `139 passed, 2 skipped`, py_compile/JSON/diff check PASS; default pytest temp directory failure workaround `--basetemp`. NVHPC corrected writer / automated sealed E2E fixture / SciPy BW0/BW1 tests outstanding.
 - Decisione **`GO_FOR_F2B_PREFLIGHT_DESIGN_ONLY` come classificazione operativa**; non è un seal scientifico e `BLOCKED_F2AV_QUALIFICATION` resta invariato. No Solver, factorization, mechanics.
+
+## R6 codice di recupero F2A-V pubblicato (2026-10-10)
+- Branch `r6/si1-bandwidth-f2av`, commit verificato `61dad0fabaa4f2bb72c386d85a77564894a91ce2`: 4 file writer/recovery/tests; no derived evidence output incluso.
+- Il recovery completo `F2AV_WITH_F2A_REFERENCE_V1/` resta untracked Windows, e il manifest `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` identifica solo l'output locale finché un evidence publication/seal dedicato non lo rende verificabile altrove.
+- Test `139 passed, 2 skipped` precedentemente riportati; questo commit non dimostra NVHPC compile del writer corretto, run end-to-end automatico con F2-A sealed o solve.
