@@ -26,6 +26,8 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 
 | 2026-10-10 | Integration of operational ledger into R6 branch | PR #1 merge `a388e567aa48c3376da7d4a72b0c2c3e8d64f533`; code parent `61dad0fabaa4f2bb72c386d85a77564894a91ce2` | PASS documentation-only PR integration; `PROJECT_LEDGER/` and `AGENTS.md` confirmed on code branch. No new scientific evidence | Windows fetch + safe FF, then F2-B preflight design; no Fair/MPI/Solver |
 
+| 2026-10-10 | F2AV complete derived recovery archive published | Evidence branch commit `2b03fa558b02cb865c4f234e45f0386fab678822`; tar SHA `bdde8d4320b1fa6de577988bf911817918e910373bdbff9922c9d9c98f646562`; recovery manifest SHA `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` | PASS Windows source integrity, GitHub LFS archive pointer + sha sidecar present; no new solve. Original BLOCKED preserved | F2B preflight DESIGN only |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 

@@ -1,21 +1,20 @@
-# Prossima attività — sincronizzazione Windows, poi F2-B preflight design
-**Input gate:** adjudication offline Windows 2026-10-10; outcome **GO alla progettazione F2-B, NO alla sua esecuzione**. Vedi `STATUS.md`, `EVIDENCE_INDEX.md`, `F2B_PREFLIGHT_DESIGN.md`.
+# Next action — F2-B PREFLIGHT DESIGN only
+2026-10-10: Code fix, project ledger and complete F2AV offline recovery are now published separately in GitHub. Evidence branch `evidence/r6-bw1-f2av-20261010` at `2b03fa558b02cb865c4f234e45f0386fab678822`.
 
-## Fase 1 — Consolidamento e sincronizzazione
-1. **DONE**: le 4 modifiche a diagnostica writer + recovery + test sono nel commit `61dad0fabaa4f2bb72c386d85a77564894a91ce2` sul branch `r6/si1-bandwidth-f2av`, senza includere `outputs/`.
-2. **DONE**: PR #1 merged nel branch di codice, merge SHA `a388e567aa48c3376da7d4a72b0c2c3e8d64f533`; `PROJECT_LEDGER/` e `AGENTS.md` verificati su GitHub. **NEXT WINDOWS**: verificare HEAD e `git status --short`, poi `git fetch` e `git merge --ff-only origin/r6/si1-bandwidth-f2av` se nessun file locale viene sovrascritto; mai usare `reset --hard` / force. La directory `outputs/r6_si1_bandwidth_f2av_offline_recovery/` rimane esclusa.
-3. **PENDING**: il recovery derivato completo resta nella directory untracked Windows. Pubblicarlo solo con un piano di evidence publication/seal separato; i digest in questo ledger NON equivalgono a un bundle originale sigillato.
-4. **OPEN TEST GAPS**: writer corretto non ancora ricompilato con Fair/NVHPC, nessun test positivo E2E automatico che integri F2-A sealed, BW0/BW1/SciPy ancora da verificare nell'ambiente adatto. Non retro-promuovere `BLOCKED_F2AV_QUALIFICATION` o la meccanica.
+## Start-up
+1. On Windows check current branch `r6/si1-bandwidth-f2av`, HEAD, and `git status --short`; fetch origin and fast-forward only if safe, never use reset/force. Keep untracked `outputs/r6_si1_bandwidth_f2av_offline_recovery/` untouched.
+2. Read `AGENTS.md`, `PROJECT_LEDGER/STATUS.md`, `PROJECT_LEDGER/F2B_PREFLIGHT_DESIGN.md`, `PROJECT_LEDGER/EVIDENCE_INDEX.md`, `docs/arcana/SI1_BW1_F2AV_DIAGNOSTIC.md`, source contracts, ShellSet Fortran solver/permutation path and `configs/r6_shells_si1/engineering_case.json`.
+3. Evidence: LFS archive `F2AV_OFFLINE_RECOVERY_F2AV_WITH_F2A_REFERENCE_V1.tar.gz`, SHA256 `bdde8d4320b1fa6de577988bf911817918e910373bdbff9922c9d9c98f646562`; internal manifest SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`. Original historical `BLOCKED_F2AV_QUALIFICATION` and derived recovery `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION` remain distinct.
 
-## Fase 2 — F2-B PREFLIGHT DESIGN (no build, no solve)
-**Obiettivo:** piano testabile per determinare la fattibilità numerica del caso ingegneristico ARCANA SI1, distinguendola dall'autorizzazione scientifica della meccanica.
+## Design-only technical workpack
+- Trace exact DOF mapping from band global index through permutation to node/component/basis; retain `DOF_MAPPING_UNVERIFIED` if not fully supported by actual artifacts.
+- Determine operator class and theoretical symmetry expectation from equations, boundary conditions and assembly source; explain whether the 10 asymmetric pairs require more diagnostics; never symmetrize without authority.
+- Specify how to investigate possible rigid/nullspace modes in this global closed-sphere case with 0 prescribed velocity BC, without assigning gauge automatically.
+- Calculate a realistic resource envelope for possible future solver: baseline 2,249,799,104 bytes for one band REAL*8 allocation, with factors, pivoting, copies, LAPACK workspaces, per-rank/aggregate memory and failure controls separated.
+- Design validation: matrix/forcing/input hash identities, normalized residual and backward error criteria, convergence and engineering-only interpretation. Numeric thresholds must be justified by source/contract rather than invented.
+- Define separate future NVHPC compile-only writer/IEEE probe; existing `139 passed, 2 skipped` do NOT resolve NVHPC, automatic positive E2E sealed test, or BW0/BW1/SciPy gaps.
+- Produce a design document `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` and candidate fail-closed contract with requirements / evidence / UNKNOWN / gates, **without** building or running a solver. Update PROJECT_LEDGER at a significant decision gate.
 
-1. Audit mirato Fortran `MOD_Shells`, operator assembly, calls a `Solver`, LAPACK band layout e permutation. Derivare formula del mapping completo raw DOF -> pre/post permutation -> nodi/componenti/support, facendo hash di dati e mapping effettivamente disponibili. Se impossibile mantenere `DOF_MAPPING_UNVERIFIED`.
-2. Stabilire se dall'equazione e dai vincoli specifici ci si aspetta A simmetrica/non simmetrica; come sono prodotti i dieci mismatch; distinguere errore di assembly, normale non-simmetria della formulazione e perdita di simmetria da trasformazioni/BC. Nessuna riparazione arbitraria `(A+A^T)/2`.
-3. Separare ipotesi nullspace/gauge da evidenze e progettare controlli bounded. Non aggiungere automaticamente vincoli che alterino la fisica. Documentare assenza di BC velocity e rischio dei modi rigidi solo come ipotesi da verificare.
-4. Dimensionare memoria reale del path di solve: band array 2,249,799,104 byte, copie/fill/factorization, workspace BLAS/LAPACK, per-process vs aggregate, expected process topology, wall-time e failure criteria. Non usare il solo array come stima RSS.
-5. Progettare il futuro step di compilazione NVHPC per writer + verifica dei flag IEEE e strict validation; non scambiarlo con una qualifica numerica.
-6. Definire il contratto di un **futuro** bounded solve engineering-only: input hashes, residual backward error e criterio normalizzato, check fisici limitati allo scope, failure/error escalation, output manifest, stop/cancel, prohibitions; numeri/threshold non inferiti. Specificare quali test devono precedere la sola autorizzazione di esecuzione.
-7. Restituire un deliverable progettuale `F2B_PREFLIGHT_DESIGN.md` con opzioni, rischi, nuove prove mirate strettamente necessarie e decisione `DESIGN_COMPLETE_PENDING_EXECUTION_AUTHORITY` o `DESIGN_BLOCKED_...` (etichette workflow suggerite, non seals).
-
-**Divieti:** nessun nuovo Fair, MPI, fattorizzazione, Solver, autogauge, risoluzione fisica, evoluzione, modifica source-locked ShellSet o stato canonico. No blanket benchmark upstream. Ogni nuovo gate deve aggiornare il ledger e linkare risultati/hash nuovi.
+## Decision boundary
+Current operational disposition `GO_FOR_F2B_SOLVER_PREFLIGHT_DESIGN_ONLY`. Appropriate outcome design complete awaiting execution authority or blocked pending source/provenance. No scientific physics qualification implied.
+Forbidden: new Fair/MPI runs, solve, factorization, gauge edit, source-locked ShellSet changes, forward evolution, canonical writes, re-running proven upstream ShellSet benchmarks.

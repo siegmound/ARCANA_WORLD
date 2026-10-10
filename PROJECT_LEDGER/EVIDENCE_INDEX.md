@@ -40,5 +40,11 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 
 ## R6 codice di recupero F2A-V pubblicato (2026-10-10)
 - Branch `r6/si1-bandwidth-f2av`, commit verificato `61dad0fabaa4f2bb72c386d85a77564894a91ce2`: 4 file writer/recovery/tests; no derived evidence output incluso.
-- Il recovery completo `F2AV_WITH_F2A_REFERENCE_V1/` resta untracked Windows, e il manifest `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` identifica solo l'output locale finché un evidence publication/seal dedicato non lo rende verificabile altrove.
+- Il recovery completo resta untracked Windows ma ora è pubblicato separatamente in Git LFS commit `2b03fa558b02cb865c4f234e45f0386fab678822` (manifest `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`). La pubblicazione non è un seal scientifico né aggiorna il verdict originale.
 - Test `139 passed, 2 skipped` precedentemente riportati; questo commit non dimostra NVHPC compile del writer corretto, run end-to-end automatico con F2-A sealed o solve.
+
+## F2A-V complete derived recovery transport — PASS (2026-10-10)
+- Evidence branch `evidence/r6-bw1-f2av-20261010` at commit `2b03fa558b02cb865c4f234e45f0386fab678822`; original Fair F2A-V and F2-A sealed remain in preceding evidence commits.
+- Git LFS pointer `evidence/F2AV_OFFLINE_RECOVERY_F2AV_WITH_F2A_REFERENCE_V1.tar.gz` and SHA sidecar published. Archive SHA256 `bdde8d4320b1fa6de577988bf911817918e910373bdbff9922c9d9c98f646562` confirmed from GitHub sidecar and Windows log. LFS binary not independently downloaded in this update.
+- Internal manifest of derived complete recovery SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` (3 artifact members + manifest verified locally). `PASS_F2AV_RECOVERY_SOURCE_INTEGRITY` and `PASS_F2AV_RECOVERY_EVIDENCE_PUSH` from Windows logs.
+- Recovered decision `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`; later numerical adjudication only authorizes F2B DESIGN. Original `BLOCKED_F2AV_QUALIFICATION` immutable.
