@@ -22,7 +22,7 @@
 ## AUTORIZZAZIONI conservate
 `F2-B solver/factorization = NOT_AUTHORIZED`; `ARCANA SI1 mechanics = NOT_QUALIFIED`; `global forward evolution = NOT_AUTHORIZED`; `WORLD_HISTORY production = NOT_AUTHORIZED`; nessun nuovo run MPI F2A-V per semplice correzione CSV. Non confondere MPI exit 75 intenzionale con successo del parser.
 
-**Prossimo blocco operativo:** trasferire da Fair tramite GitHub LFS il bundle immutabile F2-A recovery; verificare `F2A_RECOVERY_ARTIFACT_MANIFEST.json` SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`; ripetere il recovery offline in una **directory nuova** con `--f2a-recovery-root`. Modifiche codice Codex ancora locali e non committate. Suite BW0/BW1 aggiuntiva non raccolta per SciPy mancante nell'interprete Windows.
+**Nuovo gate di trasporto:** 2026-10-10, Fair ha committato e pubblicato via Git LFS il bundle sealed F2-A sul branch `evidence/r6-bw1-f2av-20261010` al commit `72df050f1dc6616426fd25b33fd7de0cc15d83ac`. Verificato head remoto; download su Windows, SHA256 archivio e manifest interno, e nuova recovery offline **non ancora eseguiti**. Verificare `F2A_RECOVERY_ARTIFACT_MANIFEST.json` SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`; ripetere il recovery offline in una **directory nuova** con `--f2a-recovery-root`. Modifiche codice Codex ancora locali e non committate. Suite BW0/BW1 aggiuntiva non raccolta per SciPy mancante nell'interprete Windows.
 
 **Unica prossima attività:** `NEXT_ACTION.md`. Gli altri track possono essere discussi, ma non promossi senza gate.
 
@@ -30,5 +30,5 @@
 - `WINDOWS_WORKTREE_ONLY`: nuovo writer F2A-V, offline recovery, test e output parziale **non committati**.
 - `FAIR_WORKTREE_ONLY`: bundle sealed F2-A da esportare come evidenza; nessun `git pull` di codice necessario per esportarlo.
 - `GITHUB_BRANCH_ONLY`: `PROJECT_LEDGER/` nel branch docs; **non** ancora integrato nel branch di sviluppo e dunque non visibile automaticamente al checkout Windows/Fair.
-- `EVIDENCE_LFS`: F2A-V originale già su GitHub, companion F2-A da aggiungere.
+- `EVIDENCE_LFS`: F2A-V originale e companion sealed F2-A pubblicati su GitHub; F2-A non ancora scaricato e verificato su Windows.
 Non effettuare merge docs o checkout che possa sovrascrivere il diff locale Codex. Procedura dettagliata in `PROCEDURE.md`.

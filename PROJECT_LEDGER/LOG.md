@@ -15,6 +15,8 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 
 | 2026-10-10 | Repo synchronization decision | GitHub `docs/r6-project-ledger-20261010` vs Windows dirty worktree vs Fair evidence | Tre flussi separati; nessun Fair code pull necessario; nessun merge docs su Windows noncommittato | Windows fetch read-only docs; Fair evidence-only push F2-A; Windows LFS evidence fetch e offline recovery |
 
+| 2026-10-10 | F2-A sealed companion evidence push | `evidence/r6-bw1-f2av-20261010` commit `72df050f1dc6616426fd25b33fd7de0cc15d83ac` | PASS transport upload Git LFS su Fair; manifest verificato nel preflight; nessun R6 code pull | Windows fetch/LFS archive + SHA, poi F2A-V recovery offline in nuova dir |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 
