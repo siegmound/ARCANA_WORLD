@@ -18,6 +18,8 @@
 I track non sono strettamente seriali. Qualificare ShellSet NON blocca ricerca provider o implementazione di adapter/event extraction. Un provider alternativo può essere valutato se ShellSet non è adatto. Non rifare prove parallele upstream già qualificate per il solo scopo di ripeterle.
 
 ## Milestones operativi prossimi
+**Evidence transport checkpoint 2026-10-10:** F2B-D1A `DOF_MAPPING_PARTIAL` code `d539a9ffa281d3dac8489db4820715cb136e9ae6` + derived LFS evidence `c6bc94c0cac134146722b0c751f55255c68f03dc`, original `BLOCKED_F2AV_QUALIFICATION` preserved; NEXT D1B source audit of geographic slot basis. D2/D3 distinct; no Solver/HPC authority.
+
 1. **DONE 2026-10-10:** F2-A sealed + F2A-V offline recovery, 139 PASS / 2 SKIP e adjudication offline; outcome GO **design** F2-B, NO solve. **DONE:** commit/push codice Windows `61dad0fa`; **DONE:** PR #1 ledger integrated and derived recovery published as Git LFS evidence `2b03fa558b02cb865c4f234e45f0386fab678822`; **NEXT** F2B preflight design only.
 2. **DONE, scope parziale:** F2B-D1A — attestazione esaustiva offline di mapping/permutazione, FEG, runtime e staging F2A-V; manifest `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`. **NEXT:** F2B-D1B — audit read-only della provenienza della base geografica componenti; mantenere UNKNOWN se non dimostrabile. Nessun Fair/MPI/Solver/fattorizzazione/gauge.
 3. Futura qualifica di un solve **solo dopo un nuovo gate di autorizzazione esplicita** con criteri di residuo/errore/risorse e validazione fisica ARCANA separata.

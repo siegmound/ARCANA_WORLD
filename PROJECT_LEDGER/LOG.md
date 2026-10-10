@@ -30,6 +30,8 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 
 | 2026-10-10 | F2B design reconnaissance read-only (Codex Windows) | Local HEAD `6e6bd36f...`, remote `bb3b6c78...`; source ShellSet, BW1 permutation, F2AV LFS recovered; derived `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` | `F2B_PREFLIGHT_DESIGN_RECON_COMPLETE__EXECUTION_NOT_AUTHORIZED` (workflow descriptor): DOF mapping candidate, general-band DGBSV in-place, 10 asyms unclassified, nullspace/gauge unproven; no tests/runs | NEXT F2B-D1 DOF provenance contract design, source+manifest attestation not yet executed; no Solver |
 
+| 2026-10-10 | F2B-D1A code and evidence transport closure | Code `d539a9ffa281d3dac8489db4820715cb136e9ae6`; evidence `c6bc94c0cac134146722b0c751f55255c68f03dc`; tar SHA256 `b9fc3a7053e5c18a3d38e67ae367f418e5041f018d3ac9eafe82fa3dce1e9f9d`; inner manifest `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a` | 7 code+ledger files published and derived D1A archive pushed LFS with matching SHA sidecar; 11 tests PASS per operator; `DOF_MAPPING_PARTIAL` only; no independent LFS download in this session | Next F2B-D1B basis source audit; no solve, gauge, Fair, MPI or canonical evolution |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 

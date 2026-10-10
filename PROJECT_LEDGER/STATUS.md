@@ -1,4 +1,12 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
+
+## F2B-D1A — publication of derived evidence (2026-10-10)
+- Code branch `r6/si1-bandwidth-f2av`, attestor/tests + five ledger documents published at commit `d539a9ffa281d3dac8489db4820715cb136e9ae6`; code commit contains no output artifacts.
+- Evidence branch `evidence/r6-bw1-f2av-20261010` at commit `c6bc94c0cac134146722b0c751f55255c68f03dc` adds `evidence/F2B_D1A_ATTESTATION_d539a9ff_20261010.tar.gz` through Git LFS and the matching tracked `.sha256` sidecar. Archive digest `b9fc3a7053e5c18a3d38e67ae367f418e5041f018d3ac9eafe82fa3dce1e9f9d`, verified against remote sidecar and local operator log.
+- Internal D1A manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`; D1A result SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9` (according to Windows independent verification and reproducibility report). This session verified the GitHub pointer/sidecar, not the downloaded LFS payload. Preserved `DOF_MAPPING_PARTIAL` and geographic basis `DOF_MAPPING_UNVERIFIED`; original F2AV remains `BLOCKED_F2AV_QUALIFICATION`.
+- Provenance nuance: recorded D1A execution checkout HEAD `f7b66b2276ef9c33af7012f453b0f01902575cd6` was before committing the attestor; revised attestor rerun on the same worktree reproduced exact output hashes, and code was subsequently committed at `d539a9ffa281d3dac8489db4820715cb136e9ae6`. Do not falsely label the result as executed from the committed `d539a9ffa281d3dac8489db4820715cb136e9ae6` checkout.
+- Current next scientific-engineering task is F2B-D1B static geographic basis provenance audit; F2B-D2/D3 distinct. `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; no canonical evolution.
+
 **Data ricognizione:** 2026-10-10. **Authority:** questa pagina è un indice operativo, non un seal scientifico. In caso di conflitto prevalgono result, manifest, source lock e contratti originali verificati.
 
 ## Aggiornamento corrente — F2B-D1A (2026-10-10)
