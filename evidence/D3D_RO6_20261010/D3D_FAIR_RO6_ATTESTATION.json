@@ -1,0 +1,96 @@
+{
+  "compile_files_verified": {
+    "build_f2av/ShellSet.exe": {
+      "bytes": 1273664,
+      "sha256": "4ef42e110b7386ceed3afae229c2ec08f5db6047f059d2abb95870f9746e91a4"
+    }
+  },
+  "compile_root": "/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_F2AV_COMPILE_ONLY/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T125317Z",
+  "decision": "D3D_FAIR_EVIDENCE_RECOVERED__RESOURCE_ATTESTATION_INCOMPLETE",
+  "expected_artifact_hashes": {
+    "compile_manifest": "eb1394b728b71ce48701ae317f1ffa9ef08f7c8491a0f442555fda53d506d574",
+    "compile_result": "6fd09e8e77438e3e4503b7945c564cd2b62de30803c77f11ac1695066505dcf9",
+    "run_manifest": "e59a1a31a450c7028b7a405cd6641454d9d67e082c7b62bd2132a0e452852854",
+    "run_result": "02d7d8bd55dbe620f25772212be3db3f3a0c34ccf7e7c61b01af7994b5205fed"
+  },
+  "full_manifest_membership_verified": false,
+  "historical_decision_preserved": "BLOCKED_F2AV_QUALIFICATION",
+  "historical_loaded_library_identity_attested": false,
+  "historical_peak_rss_pss_attested": false,
+  "historical_runtime": {
+    "command": [
+      "mpiexec",
+      "-n",
+      "2",
+      "./ShellSet.exe",
+      "-Iter",
+      "1",
+      "-InOpt",
+      "List",
+      "-Dir",
+      "RUN_OUTPUT"
+    ],
+    "elapsed_seconds": 282.0919778123498,
+    "log_sha256": "23d2f28e58325ea4c719ef816605d42ba7a4486d475e239ead3daa87e44294a7",
+    "returncode": 75
+  },
+  "historical_source_commit": "df670c8c4faaed641997f5c4bdb701e2ba0afc7d",
+  "historical_toolchain_records": [
+    {
+      "returncode": 0,
+      "tool": "nvfortran",
+      "version_excerpt": "nvfortran 25.11-0 64-bit target on x86-64 Linux -tp sapphirerapids \nNVIDIA Compilers and Tools\nCopyright (c) 2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved."
+    },
+    {
+      "returncode": 0,
+      "tool": "mpifort",
+      "version_excerpt": "nvfortran 25.11-0 64-bit target on x86-64 Linux -tp sapphirerapids \nNVIDIA Compilers and Tools\nCopyright (c) 2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved."
+    },
+    {
+      "returncode": 0,
+      "tool": "mpiexec",
+      "version_excerpt": "mpiexec (OpenRTE) 4.1.9a1\n\nReport bugs to http://www.open-mpi.org/community/help/"
+    },
+    {
+      "returncode": 0,
+      "tool": "make",
+      "version_excerpt": "GNU Make 4.3\nBuilt for x86_64-pc-linux-gnu\nCopyright (C) 1988-2020 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law."
+    }
+  ],
+  "resource_enforcement_attested": false,
+  "resource_envelope_declarations": {
+    "additional_complexity": "O(nRank) reductions plus O(anomaly_count) bounded export; existing band traversal reused",
+    "aggregate_cgroup_enforcement_verified": false,
+    "aggregate_operator_asserted_budget_gib": 80.0,
+    "estimated_additional_diagnostic_workspace_bytes": 13997472,
+    "models": 1,
+    "mpi_ranks": 2,
+    "nvidia_hpc_sdk": "25.11",
+    "per_process_rlimit_as_gib": 32.0,
+    "runtime_limit_seconds": 1800,
+    "workspace_estimate_assumptions": "REAL*8=8 bytes, default INTEGER=4 bytes; excludes compiler/runtime overhead"
+  },
+  "run_files_verified": {
+    "build_f2av/ShellSet.exe": {
+      "bytes": 1273648,
+      "sha256": "7e91391478fcee4b29de8831be871b04805db53ff582b5657e57a57b221bc0cf"
+    },
+    "logs/build_f2av.log": {
+      "bytes": 1564,
+      "sha256": "2b9dcdfd7345e1062140f472950ba2e273068c837a6e417e46c40597acc56226"
+    },
+    "logs/f2av_mpi_combined.log": {
+      "bytes": 4313,
+      "sha256": "23d2f28e58325ea4c719ef816605d42ba7a4486d475e239ead3daa87e44294a7"
+    },
+    "run_f2av/ShellSet.exe": {
+      "bytes": 1273648,
+      "sha256": "7e91391478fcee4b29de8831be871b04805db53ff582b5657e57a57b221bc0cf"
+    }
+  },
+  "run_root": "/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_F2AV_RUN/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z",
+  "schema": "ARCANA_D3D_FAIR_RO6_ATTESTATION_V1",
+  "scientific_qualification": false,
+  "scope": "selected historical artifact integrity",
+  "solver_execution_authorized": false
+}

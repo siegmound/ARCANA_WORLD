@@ -1,0 +1,41 @@
+{
+  "schema": "ARCANA_D3D_RO6_PUBLICATION_MANIFEST_V1",
+  "publication_branch": "evidence/r6-bw1-f2av-20261010",
+  "publication_parent_commit": "c6bc94c0cac134146722b0c751f55255c68f03dc",
+  "source_code_branch": "r6/si1-bandwidth-f2av",
+  "source_code_commit": "dece4ac8c2279b0c30643a5166b77f02f3dfadd2",
+  "historical_shellset_source_commit": "df670c8c4faaed641997f5c4bdb701e2ba0afc7d",
+  "source_attestation_relative_path": "outputs/r6_si1_bandwidth_f2b_d3d_ro6_fair_attestation/D3D_FAIR_RO6_ATTESTATION.json",
+  "provenance": {
+    "origin": "Fair RO1-RO6 evidence, as recorded by the transferred D3D_FAIR_RO6_ATTESTATION.json",
+    "acquisition": "Local publication copies the supplied attestation and sidecar byte-for-byte; this manifest does not independently inspect Fair or the historical raw artifacts",
+    "original_run_manifest_sha256": "e59a1a31a450c7028b7a405cd6641454d9d67e082c7b62bd2132a0e452852854",
+    "full_manifest_membership_verified": false
+  },
+  "decision": "D3D_FAIR_EVIDENCE_RECOVERED__RESOURCE_ATTESTATION_INCOMPLETE",
+  "historical_decision_preserved": "BLOCKED_F2AV_QUALIFICATION",
+  "authority_limits": {
+    "historical_execution_independently_proven": false,
+    "full_original_manifest_verified": false,
+    "historical_loaded_library_identity_attested": false,
+    "complete_abi_attested": false,
+    "resource_enforcement_attested": false,
+    "historical_peak_rss_pss_attested": false,
+    "scientific_qualification": false,
+    "solver_execution_authorized": false
+  },
+  "files": [
+    {
+      "path": "evidence/D3D_RO6_20261010/D3D_FAIR_RO6_ATTESTATION.json",
+      "bytes": 4133,
+      "sha256": "320344b6cfb74042e450bac4347f5a8b820e5702fa4b15c3bf4ff240ec764ec0",
+      "role": "Transferred RO6 attestation JSON"
+    },
+    {
+      "path": "evidence/D3D_RO6_20261010/D3D_FAIR_RO6_ATTESTATION.json.sha256",
+      "bytes": 96,
+      "sha256": "3d9bbbf7516424c6c6360ad89927c4f1d1cedfd7f40b8d032a0fff6134f951ba",
+      "role": "SHA256 sidecar for the attestation JSON"
+    }
+  ]
+}
