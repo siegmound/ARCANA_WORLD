@@ -16,6 +16,13 @@
 - Preserved: `DOF_MAPPING_PARTIAL`; `DOF_COMPONENT_BASIS_SOURCE_VERIFIED__F2AV_GEOGRAPHIC_ATTRIBUTION_UNADJUDICATED`; `OPERATOR_CLASS_UNVERIFIED`; original `BLOCKED_F2AV_QUALIFICATION`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`.
 - Next proposed gate: F2B-D3A, preliminary non-executing resource/numerical attestation and control verification only. It does not authorize Fair MPI/ShellSet, Solver, factorization, assembly, mechanics, gauge, simulation, or canonical evolution.
 
+## Aggiornamento corrente — F2B-D3A (2026-10-10)
+- Audit: `docs/arcana/SI1_BW1_F2B_D3A_ATTESTABILITY_AUDIT.md`; SHA256 `CA2FF09491BBDCB995FC79FB9E4CF66B461C519A2FC67F652E09099C70884989`. Decisione `D3A_AUDIT_COMPLETE__SOLVER_PREFLIGHT_NOT_ATTESTABLE_FROM_CURRENT_EVIDENCE`; audit offline e non esecutivo. Il report D3 originario, SHA256 `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF`, rimane invariato.
+- Erratum aritmetico: D3 riportava circa `4.82684 GiB` per la variante con A0/b0. D3A corregge il totale a `5,183,806,076 byte + 112 × (LRn+1)` (circa `4.82780 GiB` più il termine LR). La differenza è la contabilizzazione completa della copia RHS b0 (`1,031,072 byte`); nessuna copia è stata allocata né la strategia selezionata.
+- D3A ha verificato offline formule e array nominati sotto assunzioni ABI esplicite; il subtotal non è un limite superiore della memoria reale. RSS/PSS/cgroup, limiti Fair effettivi, temporanei e identità runtime/binari restano non attestati. Nessun test o comando Fair/MPI/Solver è stato eseguito in D3A.
+- Preservati `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+- Prossimo workpack proposto: F2B-D3B-P0, validatori Python offline e sintetici più procedura Fair read-only separata; nessuna autorizzazione Solver.
+
 ## Aggiornamento corrente — F2B-D1B (2026-10-10)
 - Checkout: branch `r6/si1-bandwidth-f2av`, HEAD `d539a9ffa281d3dac8489db4820715cb136e9ae6`. Audit source read-only del commit ShellSet storico `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`; report `docs/arcana/SI1_BW1_F2B_D1B_GEOGRAPHIC_BASIS_AUDIT.md`, SHA256 `baa9e450f866f29a42230ad01bd490de6ed6c96f02df3d901e6af77388a41546`.
 - Esito limitato: component basis ShellSet dimostrata nel proprio frame sferico: slot 1 = +South/+theta (North = −slot 1); slot 2 = +East/+phi. Source ordering, angular-velocity projection, boundary transform e output concordano nelle routine citate.

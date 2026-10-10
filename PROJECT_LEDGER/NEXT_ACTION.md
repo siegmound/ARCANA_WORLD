@@ -1,11 +1,36 @@
-# NEXT: F2B-D3A — preliminary resource and numerical attestation (non-executing)
+# NEXT: F2B-D3B-P0 — bounded offline resource/numerical validators
 
-**Completed gate:** F2B-D3 design, `docs/arcana/SI1_BW1_F2B_D3_RESOURCE_RESIDUAL_PREFLIGHT_DESIGN.md`, status `D3_DESIGN_COMPLETE_PENDING_RESOURCE_AND_NUMERICAL_ATTESTATION`. Report SHA256: `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF`. The design is source-derived and does not claim new measurements. It estimates the general-band matrix as `8*nKRows*nRank = 2,249,799,104` bytes under the documented dimensions and ABI assumptions; total memory/RSS, Fair enforcement limits, linked runtime identity, and numerical thresholds remain unattested. `THRESHOLD_UNJUSTIFIED` remains open.
+**Completed D3A audit:** `docs/arcana/SI1_BW1_F2B_D3A_ATTESTABILITY_AUDIT.md`, SHA256 `CA2FF09491BBDCB995FC79FB9E4CF66B461C519A2FC67F652E09099C70884989`; result `D3A_AUDIT_COMPLETE__SOLVER_PREFLIGHT_NOT_ATTESTABLE_FROM_CURRENT_EVIDENCE`. D3 report SHA256 `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF` and its contents remain unchanged.
+
+**D3 arithmetic erratum:** historical A0/b0-copy estimate was about `4.82684 GiB`; corrected total is `5,183,806,076 bytes + 112 × (LRn+1)` (about `4.82780 GiB` plus LR term). The omitted `1,031,072 bytes` are the complete copied RHS b0. This is an arithmetic correction only; no copies were allocated and no strategy was selected.
 
 Preserve `DOF_MAPPING_PARTIAL`; `DOF_COMPONENT_BASIS_SOURCE_VERIFIED__F2AV_GEOGRAPHIC_ATTRIBUTION_UNADJUDICATED`; `OPERATOR_CLASS_UNVERIFIED`; and original `BLOCKED_F2AV_QUALIFICATION`. `F2B_SOLVER_EXECUTION_AUTHORIZED=false`.
 
-## Next scope
-F2B-D3A is a new, preliminary, non-executing attestation gate. It may verify exact source/input identities, perform overflow-safe static arithmetic/ABI checks, inspect Fair resource-limit mechanisms without launching ShellSet, and validate preflight controls without assembly or Solver. It is not Solver authorization. Do not run Fair MPI/ShellSet, Solver, factorization, new assembly, mechanics, gauge, simulation, or canonical evolution. Do not select residual thresholds without authority; absent a justified numerical acceptance rule, retain `THRESHOLD_UNJUSTIFIED` and fail closed.
+## D3B-P0 workpack
+
+This is an offline Python validator task, not a qualification of the SI1 operator and not Solver authorization. Keep resource and numerical validators separate and use only small synthetic fixtures.
+
+### Resource validator
+- Inputs: SI1 dimensions from the engineering contract, explicit ABI widths, and an independently transcribed named-array inventory from D3A. Optional budget scenario is `NO_PRESERVATION`, `COPY_A0_B0`, or a separately specified replayable matvec representation.
+- Compute element counts/bytes with checked integer multiplication and addition. Reject negative/invalid dimensions, overflow, missing/unsupported ABI sizes, duplicate/missing inventory rows, formula mismatch, incomplete budgets, or any request to certify peak/total process memory while overhead is UNKNOWN.
+- Reconcile each array family independently against D3A; report matrix, fixed arrays, `112*(LRn+1)`, optional preservation increment, and excluded descriptors/compiler temporaries/stack/MPI/LAPACK/allocator/OS overhead separately. Never label a named-array subtotal as a peak or upper bound.
+- Positive tests: known SI1 arithmetic; small alternate dimensions; ABI-width cases supported by an explicit schema; the independent A0 and b0 copy deltas. Negative tests: overflow boundaries, absent/mismatched dimension, unsupported ABI, duplicate or missing allocation family, arithmetic disagreement, and an incomplete/UNKNOWN total-memory budget. Acceptance is deterministic arithmetic plus explicit scope/UNKNOWN fields; incomplete required inputs fail closed.
+
+### Numerical validator
+- Build tiny general-band matrices in test code and encode LAPACK DGBSV storage: `LDAB=2*KL+KU+1`, diagonal at one-based row `KL+KU+1`. Implement band matrix-vector multiplication and original-matrix norms without invoking DGBSV or any solver. Ignore reserved factorization-fill rows as original coefficients.
+- Keep immutable synthetic `A0,b0`; give a destructive mock disposable copies and verify the originals remain byte/value-identical. These fixtures validate arithmetic only and say nothing about SI1 symmetry/operator class.
+- Compute `r=b0-A0*x`, `||r||∞`, normwise backward error `||r||∞/(||A0||∞||x||∞+||b0||∞)`, and componentwise backward error `max_i |r_i|/(sum_j |a_ij||x_j|+|b_i|)`. Use robust scaled products/sums or a declared extended/compensated accumulation strategy; report subnormal/underflow behavior and reject silent overflow/underflow or nonfinite operands/results.
+- Positive tests: diagonal and off-diagonal bands with nonzero KL/KU, padded storage, exact solution and known nonzero residual; compare against an independent dense reference. Negative tests: shape/index errors; NaN and ±Inf in A0/b0/x; extreme large/small values; overflow/underflow; zero denominator with zero numerator; zero denominator with nonzero numerator. Define the latter as undefined/infinite and fail closed. Do not add an arbitrary pass/fail tolerance.
+- Acceptance is only algorithm correctness on synthetic cases, complete special-value classification, and A0/b0 preservation. No synthetic test may qualify or accept the SI1 solve.
+
+### Separate Fair read-only reconnaissance procedure
+- Without submitting jobs or launching processes, record executable path/size/SHA256 and existing build identity; compiler, MPI and linked LAPACK identity from available metadata/read-only inspection; scheduler memory/wall-time request; process limits; job/cgroup memory limits and enforcement; rank mapping; and existing per-PID RSS/PSS/cgroup peak evidence.
+- Distinguish operator-declared requests, scheduler configuration, enforced limits, and observed measurements. If a value or link identity requires job launch, mark `PENDING_HPC_MEASUREMENT`; do not infer it from upstream ShellSet benchmarks or F2A-V’s pre-Solver stop.
+
+### Prohibitions and gates
+- No Fair job, MPI, ShellSet, Solver, factorization, assembly, gauge, simulation, canonical change, or WORLD_HISTORY access.
+- Preserve `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, original `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+- D3B-P0 cannot establish numerical acceptance, resource sufficiency, or authority for execution. A later gate must separately close Fair resource enforcement, A0/b0 retention/reconstruction, numerical thresholds, operator/nullspace/gauge questions, and explicit execution authorization.
 
 ## Prior D2 handoff (preserved)
 F2B-D2 static operator classification audit: `docs/arcana/SI1_BW1_F2B_D2_OPERATOR_CLASSIFICATION_AUDIT.md`. Result `OPERATOR_CLASS_UNVERIFIED`; theoretical SI1 symmetry is `INDETERMINATE`. Active pointwise alpha values are not retained and the ten global asymmetries remain unexplained. Geographic/plate attribution remains `DOF_MAPPING_UNVERIFIED`; original F2A-V remains `BLOCKED_F2AV_QUALIFICATION`. Do not symmetrize the matrix or infer nullspace from diagonal dominance.

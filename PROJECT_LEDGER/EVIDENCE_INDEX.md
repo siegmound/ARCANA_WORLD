@@ -1,5 +1,11 @@
 # Indice minimo delle evidenze (identità e scope)
 
+## F2B-D3A resource/numerical attestability audit — 2026-10-10
+- Report: `docs/arcana/SI1_BW1_F2B_D3A_ATTESTABILITY_AUDIT.md`; SHA256 `CA2FF09491BBDCB995FC79FB9E4CF66B461C519A2FC67F652E09099C70884989`.
+- Decision: `D3A_AUDIT_COMPLETE__SOLVER_PREFLIGHT_NOT_ATTESTABLE_FROM_CURRENT_EVIDENCE`; offline source/evidence review only. The named-array arithmetic is conditional on ABI assumptions and explicitly excludes unknown compiler/runtime/OS overhead; no RSS/cgroup/Fair enforcement measurement or numerical solve evidence was produced.
+- D3 source report remains unchanged, SHA256 `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF`. D3A records the corrected A0/b0-copy estimate `5,183,806,076 bytes + 112 × (LRn+1)`; difference from D3's approximate `4.82684 GiB` is the copied RHS b0 accounting. No copy was allocated.
+- Original `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, and all execution prohibitions remain. Proposed D3B-P0 is offline validators only; no new execution/evidence artifact.
+
 ## F2B-D3 — resource and residual preflight design (2026-10-10)
 - Report: `docs/arcana/SI1_BW1_F2B_D3_RESOURCE_RESIDUAL_PREFLIGHT_DESIGN.md`; SHA256 `1666D30701D8365CAF7CB8C5C7192C46E04AB19D2C6E9179EE2917DCB056E3FF`.
 - Scope: design/source audit of historical ShellSet `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`, SI1 engineering dimensions, and existing F2A-V diagnostics. Decision `D3_DESIGN_COMPLETE_PENDING_RESOURCE_AND_NUMERICAL_ATTESTATION`; no new run, assembly, Solver, memory measurement, or Fair resource measurement was made.
