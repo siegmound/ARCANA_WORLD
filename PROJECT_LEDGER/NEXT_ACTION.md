@@ -1,11 +1,21 @@
-# NEXT: F2B-D3C — FAIR_RUNTIME_AND_RESOURCE_AUTHORITY_RECONNAISSANCE (proposta)
+# NEXT: F2B-D3D — FAIR_EXISTING_EVIDENCE_ACQUISITION (proposta; read-only)
+
+## F2B-D3C completato — ricognizione locale delle evidenze runtime/risorse
+Decisione `D3C_RECONNAISSANCE_COMPLETE__EXECUTION_AUTHORITY_GAPS_REMAIN`; report `docs/arcana/SI1_BW1_F2B_D3C_FAIR_RUNTIME_RESOURCE_RECONNAISSANCE.md`, SHA256 `76a5a65adbbc7d6a9b6a64b35497ee9cd3f4642f286d672579d2779f7f53d058`.
+
+Risultato: il runtime upstream qualificato non è il runtime F2A-V per identità dimostrata. L'eseguibile F2A-V non ha hash verificato; toolchain, ABI e linkage dinamico effettivi non sono attestati. Nessun eseguibile F2B è stato identificato. RSS/PSS/cgroup e limiti Fair effettivamente imposti restano sconosciuti; le formule D3A sono stime condizionali. I due test symlink sono ancora `NOT_TESTED_RUNTIME_WINDOWS`. D3C non ha acceduto a Fair né avviato job.
+
+### F2B-D3D — acquisizione di evidenze Fair preesistenti
+Proposta limitata a leggere e verificare artefatti già prodotti: identità/hash del binario F2A-V e build/link metadata, toolchain/librerie/ABI attestabili, scheduler/process/cgroup limit records, rank/PID e misure RSS/PSS già disponibili. Non avviare job o processi, non compilare, non eseguire MPI/ShellSet/Solver né diagnostici numerici. Se una prova non esiste negli artefatti preesistenti, registrarla come gap e richiedere un'autorizzazione separata per l'acquisizione necessaria. La verifica POSIX dei due casi symlink è requisito separato e non è prova Fair.
+
+Questo next gate non autorizza build, job, Solver, diagnostici numerici, mechanics o evoluzione canonica.
 
 ## F2B-D3B-P0 completato — review circoscritta
 Decisione: `D3B_P0_REVIEW_PASS_WITH_BOUNDED_SCOPE`; source baseline parent `f571516ce09c726bffd262d172a922968bdab944`; implementazione dei quattro validator/test inclusa nel commit documentale corrente. SHA256: resource validator `cae86cd5d16d3f4633d45a9ae4ffb6a9808838c41fd2c8ac6e3bf317f5c548ae`; numerical validator `275714d7615cffa062c8ac1d4a992edd5a2070744653a6b4cf0cfec914e7b46e`; resource tests `7e2ddf108836229e79475ffe47b2f2cd19d256beaa8459bd51451b93b1c2fec1`; numerical tests `5b00d4a6b4220b0675183e43a1f028572a437825bfc383ce55d3b9cd1a8ce8aa`.
 
 Esito suite D3B-P0: 24 PASS, 2 SKIPPED, 0 FAIL. I rilievi della prima review e il TOCTOU HIGH sono chiusi nello scope offline. I due test symlink sono `NOT_TESTED_RUNTIME_WINDOWS` (creazione negata); WSL è risultato inaccessibile. La prova POSIX dir-fd/O_NOFOLLOW non è stata eseguita. Atomicità contro sostituzioni concorrenti Windows, ABI NVHPC, RSS/memoria ed enforcement Fair restano non attestati. Il validatore non autentica oggetti Git storici. Nessuna qualificazione del caso SI1 reale.
 
-**Proposta D3C, sola ricognizione read-only:** identità/hash dell'eseguibile e librerie collegate, ABI, richieste e enforcement scheduler, limiti memoria/tempo, evidenze RSS/PSS/cgroup. Se disponibile un ambiente POSIX appropriato, verificare separatamente i controlli runtime symlink. Non avviare job Fair, MPI, ShellSet o Solver.
+**Proposta storica D3C (completata; esito sopra), ricognizione read-only:** identità/hash dell'eseguibile e librerie collegate, ABI, richieste e enforcement scheduler, limiti memoria/tempo, evidenze RSS/PSS/cgroup. Se disponibile un ambiente POSIX appropriato, verificare separatamente i controlli runtime symlink. Non avviare job Fair, MPI, ShellSet o Solver.
 
 Preservare: `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 

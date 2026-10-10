@@ -1,5 +1,12 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
 
+## F2B-D3C — Fair runtime/resource authority reconnaissance (2026-10-10)
+- Decisione `D3C_RECONNAISSANCE_COMPLETE__EXECUTION_AUTHORITY_GAPS_REMAIN`; report `docs/arcana/SI1_BW1_F2B_D3C_FAIR_RUNTIME_RESOURCE_RECONNAISSANCE.md`, SHA256 `76a5a65adbbc7d6a9b6a64b35497ee9cd3f4642f286d672579d2779f7f53d058`.
+- L'identità upstream storicamente qualificata non prova l'identità F2A-V. Il binario del run F2A-V non ha SHA256 verificato; ABI, linkage dinamico e toolchain effettiva non sono attestati. Nessun eseguibile candidato F2B è stato identificato.
+- RSS/PSS/cgroup, headroom Fair e limiti memoria/tempo effettivamente imposti non sono dimostrati. Le formule D3A restano stime condizionali alle ipotesi ABI e non rappresentano RSS o un limite superiore. Due test symlink restano `NOT_TESTED_RUNTIME_WINDOWS`.
+- D3C è stata ricognizione delle sole evidenze locali: nessun accesso Fair, job, MPI, ShellSet o Solver. Prossimo gate proposto `F2B-D3D — FAIR_EXISTING_EVIDENCE_ACQUISITION`, acquisizione read-only di evidenze preesistenti; non autorizza job, build o diagnostici.
+- Preservati `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-D3B-P0 — bounded offline validator consolidation (2026-10-10)
 - Esito della review indipendente: `D3B_P0_REVIEW_PASS_WITH_BOUNDED_SCOPE`; commit sorgente/consolidamento: questo checkpoint documentale, parent baseline `f571516ce09c726bffd262d172a922968bdab944`.
 - Validatori e test: `scripts/r6_si1_bandwidth_f2b_d3b_resource.py`, `scripts/r6_si1_bandwidth_f2b_d3b_numerical.py`, `tests/test_r6_si1_bandwidth_f2b_d3b_resource.py`, `tests/test_r6_si1_bandwidth_f2b_d3b_numerical.py`; SHA256 rispettivi `cae86cd5d16d3f4633d45a9ae4ffb6a9808838c41fd2c8ac6e3bf317f5c548ae`, `275714d7615cffa062c8ac1d4a992edd5a2070744653a6b4cf0cfec914e7b46e`, `7e2ddf108836229e79475ffe47b2f2cd19d256beaa8459bd51451b93b1c2fec1`, `5b00d4a6b4220b0675183e43a1f028572a437825bfc383ce55d3b9cd1a8ce8aa`.
