@@ -1,4 +1,16 @@
-# NEXT: F2B-D3D — FAIR_EXISTING_EVIDENCE_ACQUISITION (handoff operatore autorizzato; read-only)
+# NEXT: chiusure F2B separate — accounting, criteri numerici, autorizzazione operatore
+
+## Stato RO6
+Il JSON RO6 e sidecar hanno SHA256 locale concorde; report consolidato `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md` (SHA256 `1b9c46b43079fbc5002d3719bc935175cd6f1bea5489f6026abe7d870e1a4579`). Decisione `D3D_FAIR_EVIDENCE_RECOVERED__RESOURCE_ATTESTATION_INCOMPLETE`. Ciò avanza la provenance dei membri selezionati, non la qualifica scientifica. Il D3D bloccato resta valido per il precedente tentativo Windows.
+
+## Next workstreams — distinti e non esecutivi
+1. **Acquisizione accounting storico (opzionale, sola lettura):** consultare solo record preesistenti se un job ID o locator puntuale è disponibile. Il mancato ritrovamento nei percorsi RO5 non prova assenza globale. Nessun nuovo job o uso della configurazione corrente come proxy.
+2. **Residuo e criteri numerici F2B:** definire e giustificare il contratto di residuo/backward error e le eventuali soglie; `THRESHOLD_UNJUSTIFIED` resta. I test sintetici non qualificano SI1.
+3. **Qualifica operatore prima di Solver:** gate separato con autorizzazione esplicita, dopo revisione dei prerequisiti numerici e delle risorse. Solver non autorizzato.
+
+La pubblicazione distinta di JSON+sidecar+manifest nel solo evidence branch può essere proposta dopo review; non fare commit/push automatici né includere `outputs/` nel commit codice.
+
+### Handoff storico: operatore Fair autorizzato
 
 ## Stato D3D
 `D3D_BLOCKED_EXISTING_EVIDENCE_UNAVAILABLE` / `REMOTE_EVIDENCE_ACCESS_UNAVAILABLE`. Nessun accesso Fair è stato fatto e nessun artefatto è stato acquisito; non è stata verificata l'esistenza dei file remoti. Il blocco è di accesso da questo ambiente, non prova di assenza delle evidenze.

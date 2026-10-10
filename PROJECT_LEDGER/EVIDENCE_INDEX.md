@@ -1,5 +1,15 @@
 # Indice minimo delle evidenze (identità e scope)
 
+## F2B-D3D-RO6 Fair attestation trasferita — 2026-10-10
+- Report `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md`, SHA256 `1b9c46b43079fbc5002d3719bc935175cd6f1bea5489f6026abe7d870e1a4579`.
+- `outputs/r6_si1_bandwidth_f2b_d3d_ro6_fair_attestation/D3D_FAIR_RO6_ATTESTATION.json`: 4,133 byte, SHA256 `320344b6cfb74042e450bac4347f5a8b820e5702fa4b15c3bf4ff240ec764ec0`; sidecar `.json.sha256` concorde. JSON parse PASS; schema identifier `ARCANA_D3D_FAIR_RO6_ATTESTATION_V1`; nessuna definizione schema separata individuata.
+- Report di consolidamento `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md`. Trasferiti solo attestazione e sidecar: nessun binario, log, manifest storico, output RO2–RO5 o accounting Fair allegato. Il JSON dichiara `full_manifest_membership_verified=false`.
+- RO6 riferisce i due binary copies del run a SHA uguale (`7e913914…b221bc0cf`), distinto dal compile-only (`4ef42e11…74e6e91a4`); build/MPI log selezionati corrispondono ai digest dichiarati. I byte dei membri non sono stati autonomamente rehashati in questa review.
+- Stato `D3D_FAIR_EVIDENCE_RECOVERED__RESOURCE_ATTESTATION_INCOMPLETE`. Codice storico 75 e toolchain version excerpt registrati. ELF LP64 BLAS/LAPACK/MPI è affermazione dell'handoff ma il JSON non riporta i nomi/hash delle librerie. Librerie storicamente caricate, ABI completa, enforcement, limiti aggregati e RSS/PSS/cgroup restano non attestati.
+- Cinque membri selezionati sono riportati verificati contro il manifest originale (compile-only binary, due run binary copies, build log, MPI log); il manifest completo da 79 membri non è stato verificato (`full_manifest_membership_verified=false`). I membri raw e i record distinti RO2–RO5 non sono trasferiti nel worktree.
+- Risorse: 32 GiB per-process e 80 GiB aggregate sono dichiarazioni; enforcement cgroup false/non provato. RSS/PSS non acquisiti. RO5 non ha trovato accounting nei soli percorsi circoscritti, senza inferenza di assenza globale.
+- Il precedente D3D bloccato e il suo report restano immutati; questo RO6 non è verifica completa del manifest né qualifica scientifica. Proposta di pubblicazione immutabile su evidence branch separato solo dopo review; non includere `outputs/` nel commit codice. Gate invariati: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-D3A resource/numerical attestability audit — 2026-10-10
 - Report: `docs/arcana/SI1_BW1_F2B_D3A_ATTESTABILITY_AUDIT.md`; SHA256 `CA2FF09491BBDCB995FC79FB9E4CF66B461C519A2FC67F652E09099C70884989`.
 - Decision: `D3A_AUDIT_COMPLETE__SOLVER_PREFLIGHT_NOT_ATTESTABLE_FROM_CURRENT_EVIDENCE`; offline source/evidence review only. The named-array arithmetic is conditional on ABI assumptions and explicitly excludes unknown compiler/runtime/OS overhead; no RSS/cgroup/Fair enforcement measurement or numerical solve evidence was produced.

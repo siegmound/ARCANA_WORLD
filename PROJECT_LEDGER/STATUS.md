@@ -1,5 +1,14 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
 
+## F2B-D3D-RO6 — consolidamento evidenza Fair trasferita (2026-10-10)
+- Attestazione trasferita: `outputs/r6_si1_bandwidth_f2b_d3d_ro6_fair_attestation/D3D_FAIR_RO6_ATTESTATION.json`, 4.133 byte, SHA256 `320344b6cfb74042e450bac4347f5a8b820e5702fa4b15c3bf4ff240ec764ec0`; sidecar SHA verificato. JSON valido, schema identifier `ARCANA_D3D_FAIR_RO6_ATTESTATION_V1`; non è stata trovata una definizione schema separata nel repository.
+- Report consolidato `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md`, SHA256 `1b9c46b43079fbc5002d3719bc935175cd6f1bea5489f6026abe7d870e1a4579`. Distingue verifiche locali del JSON/sidecar dalle osservazioni Fair registrate nel JSON.
+- RO6 riferisce cinque membri selezionati (incluso il binary compile-only): i due binary copies del run coincidono tra loro e con i digest manifest registrati; compile-only è distinto; build/MPI logs selezionati corrispondono. Non è un controllo dei 79 membri del manifest run (`full_manifest_membership_verified=false`). I raw artifacts non accompagnano l'attestazione trasferita.
+- Il JSON registra NVFORTRAN 25.11-0, OpenRTE 4.1.9a1 e due rank. Identità delle librerie effettivamente caricate, ABI completa e linkage storico restano non attestati.
+- Codice storico 75, stop pre-Solver; decisione originale `BLOCKED_F2AV_QUALIFICATION` immutata. Limiti 32 GiB/processo e 80 GiB aggregati restano dichiarati, cgroup non verificato; nessun RSS/PSS. L'assenza di accounting nei percorsi RO5 circoscritti non prova assenza globale.
+- Esito `D3D_FAIR_EVIDENCE_RECOVERED__RESOURCE_ATTESTATION_INCOMPLETE`. Il precedente report D3D bloccato resta immutato come record del tentativo Windows. Nessun originale modificato; nessun Solver, MPI, build o job eseguito in questa consolidazione.
+- Nessun originale o output Fair è stato modificato; nessuna nuova esecuzione HPC. Pubblicazione immutabile JSON+sidecar+manifest di bundle sul branch evidence è proposta separata e non eseguita. Gate preservati: `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-D3D — acquisizione evidenze Fair preesistenti (2026-10-10)
 - Esito bloccato: `D3D_BLOCKED_EXISTING_EVIDENCE_UNAVAILABLE`; `REMOTE_EVIDENCE_ACCESS_UNAVAILABLE`. Report `docs/arcana/SI1_BW1_F2B_D3D_EXISTING_FAIR_EVIDENCE_ACQUISITION.md`; SHA256 aggiornato registrato in `EVIDENCE_INDEX.md`.
 - Nessun accesso Fair è stato effettuato e nessun artefatto Fair è stato acquisito. L'esistenza o assenza dei file remoti non è stata verificata; il blocco riguarda esclusivamente l'accesso in questo ambiente.
