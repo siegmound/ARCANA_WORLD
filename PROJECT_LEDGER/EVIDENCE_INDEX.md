@@ -1,5 +1,12 @@
 # Indice minimo delle evidenze (identità e scope)
 
+## Aggiornamento F2B-N2A-R1 (2026-10-11)
+- Report `docs/arcana/SI1_BW1_F2B_N2A_IMMUTABLE_SNAPSHOT_FEASIBILITY.md`, SHA256 `f9fb44697f2aea551f962ef35a2cbf0110abee8dee295a0575d6f9429d663520`; decisione `N2A_SPARSE_SNAPSHOT_SYNTHETIC_VERIFIED__SI1_INTEGRATION_NOT_QUALIFIED`.
+- Prototipo `scripts/r6_si1_bandwidth_f2b_n2a_snapshot.py`, SHA256 `90c6707f48dcb1bec35097b25b9e0f317463d4a08d28d54c4611e3cebf463156`; test `tests/test_r6_si1_bandwidth_f2b_n2a_snapshot.py`, SHA256 `faf456601864b38da0c55d3496c84f62a3e2d14d280004156f66eeb9db9b9389`. Suite con D3B numerica: 15 passed. Evidenza interamente sintetica; nessuna matrice SI1, assembly o runtime Fortran.
+- SHA snapshot esterno e identità dell'assembly sono distinti: il prototipo non attesta run/iterazione reale; digest interno non è autorità indipendente. Il punto sorgente candidato è dopo `VBCs` e prima di `Solver`/`DGBSV`.
+- Nessuna evidenza `outputs/` nuova. Integrità file/prototipo non promuove `BLOCKED_F2AV_QUALIFICATION` né autorizza Solver.
+
+
 ## F2B-N1 / N1-T1 — 2026-10-11
 - Report N1: `docs/arcana/SI1_BW1_F2B_N1_NUMERICAL_ACCEPTANCE_PRECONDITIONS.md`, SHA256 `88790af7a35f0cb58568d7d69afd27664b5a2b1fdeeff5a4ef807dfcca87f978`; un blank line finale ridondante è stato rimosso per superare `git diff --check`; il contenuto semantico non cambia. Definisce precondizioni e metriche, non attesta l'accettazione del solve SI1. `THRESHOLD_UNJUSTIFIED` resta.
 - Test aggiornato `tests/test_r6_si1_bandwidth_f2b_d3b_numerical.py`, SHA256 `95c6bfe54f70f37f685dc1add355f9bb8d83b47e25500fba35ccdfe2eabdac3e`; 9 passed, 0 failed, 0 skipped. T1 è `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS` solo per matrice sintetica KL=1/KU=2, snapshot A0/b0 separati, overwrite dei buffer operativi e confronto con oracolo denso indipendente. Il validator di produzione non è stato modificato.

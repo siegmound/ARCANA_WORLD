@@ -1,3 +1,12 @@
+## F2B-N2A-R1 — review tecnica dello snapshot sparso sintetico (2026-10-11)
+- Decisione: `N2A_SPARSE_SNAPSHOT_SYNTHETIC_VERIFIED__SI1_INTEGRATION_NOT_QUALIFIED`. Review limitata al prototipo Python e a fixture sintetiche; non è una cattura o qualificazione di A0/b0 SI1.
+- Confermati gli SHA256 del prototipo (`90c6707f48dcb1bec35097b25b9e0f317463d4a08d28d54c4611e3cebf463156`), test (`faf456601864b38da0c55d3496c84f62a3e2d14d280004156f66eeb9db9b9389`) e rapporto (`f9fb44697f2aea551f962ef35a2cbf0110abee8dee295a0575d6f9429d663520`). Suite snapshot + D3B numerica: 15 passed; py_compile, UTF-8/LF e diff-check PASS.
+- La codifica round-trip preserva coefficienti binari64, subnormali e -0.0; +0.0 è implicito. Validazione rifiuta indici non validi, duplicati, record non canonici, non-finiti, padding/fill non nullo, lunghezza errata e digest incoerenti. Il digest interno controlla coerenza ricostruita, non autentica da solo l'assembly originale; il digest esterno deve essere ancorato indipendentemente e la cattura deve essere provata al punto corretto.
+- Audit del sorgente storico: `FEM` esegue `BuildF`, `BuildK`, `AddFSt`, `VBCs`, poi `Solver`; `Solver` assegna solo parametri locali prima di `DGBSV`, che sovrascrive AB e RHS. Punto candidato: post-`VBCs`, pre-`Solver`/DGBSV, con identità per singola invocazione/iterazione. Nessuna modifica Fortran né esecuzione ShellSet/Solver.
+- Gap: formato e prototipo non includono identità di invocazione/iterazione autorevole, non hanno writer durevole/streaming né prova NVFORTRAN/Fortran, e non qualificano memoria, I/O o identità del sistema SI1. Un diverso ordine di matvec può cambiare arrotondamenti; nessuna soglia numerica è derivata.
+- Restano `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+- Prossimo lavoro proposto: F2B-N2B, specifica offline del contratto d'integrazione/cattura (identità invocazione e iterazione, completezza, hash indipendente, scrittura e fail-before-Solver) prima di qualsiasi modifica Fortran o prova su SI1.
+
 # ARCANA WorldSim R6 — Stato operativo corrente
 
 ## F2B-N1 / N1-T1 — precondizioni numeriche e isolamento sintetico (2026-10-11)

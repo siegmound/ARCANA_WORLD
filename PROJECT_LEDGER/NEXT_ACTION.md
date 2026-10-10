@@ -1,14 +1,12 @@
-# NEXT: F2B-N2 — strategia di preservazione del sistema lineare originale
+# NEXT: F2B-N2B — contratto d'integrazione della cattura A0/b0 (design offline)
 
-## Stato corrente N1 / T1 (2026-10-11)
-N1: `N1_NUMERICAL_PRECONDITIONS_DEFINED__ACCEPTANCE_NOT_YET_ATTESTED`; le metriche e i prerequisiti sono definiti, ma l'accettazione numerica SI1 non è attestata e `THRESHOLD_UNJUSTIFIED` resta. T1: `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS`, limitato a test sintetico; 9 passed, 0 failed, 0 skipped. Il test prova che snapshot indipendenti A0/b0 continuano a produrre metriche corrette dopo la sovrascrittura di buffer operativi separati. Non dimostra conservazione in ShellSet.
+## Stato corrente N1 / T1 / N2A (2026-10-11)
+N1 resta `N1_NUMERICAL_PRECONDITIONS_DEFINED__ACCEPTANCE_NOT_YET_ATTESTED`; T1 resta `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS` nel solo scope sintetico. N2A-R1: `N2A_SPARSE_SNAPSHOT_SYNTHETIC_VERIFIED__SI1_INTEGRATION_NOT_QUALIFIED`. Il prototipo preserva coefficienti e RHS sintetici nel formato dichiarato; non prova la cattura dell'assembly SI1, il writer Fortran durevole, l'identità dell'invocazione, le risorse Fair o l'accettazione numerica.
 
-## Incarico immediato proposto: F2B-N2 (design/review, non esecuzione)
-Confrontare strategie praticabili per preservare o ricostruire A0 e b0 prima della chiamata distruttiva DGBSV: copia, rigenerazione deterministica o rappresentazione immutabile sufficiente a matvec/norme. Per ciascuna specificare identità/provenienza, costi condizionali, possibili failure e prove richieste; non assumere memoria Fair disponibile e non selezionare un'opzione sulla base di RSS non attestata. Il risultato non autorizza Solver o fattorizzazione.
+## Incarico immediato proposto: F2B-N2B (design offline, non esecutivo)
+Definire il contratto minimo per una futura cattura dell'esatto sistema post-VBCs e pre-DGBSV: identità di run/build/input/DOF e singola invocazione/iterazione; enumerazione completa del band logico e RHS; trattamento padding/fill e signed zero; digest d'integrità indipendente; writer streaming con verifica completa e fallimento obbligatorio prima di `Solver`; prove sintetiche e compile-only necessarie. Confrontare il candidato sparse con il fallback full-band senza assumere memoria o I/O Fair. Non modificare ShellSet in questo gate.
 
-Leggere il report N1 e il contratto D3/D3A, mantenendo distinti integrità degli snapshot, identità dell'operatore, backward error e soglia di accettazione. Nessun Fair, MPI, ShellSet, Solver, fattorizzazione, assembly reale, gauge o evoluzione canonica in N2 senza autorizzazione separata.
-
-Preservare: `N1_NUMERICAL_PRECONDITIONS_DEFINED__ACCEPTANCE_NOT_YET_ATTESTED`; `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS` (scope sintetico); `THRESHOLD_UNJUSTIFIED`; `OPERATOR_CLASS_UNVERIFIED`; `BLOCKED_F2AV_QUALIFICATION`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+Questo design non autorizza l'implementazione Fortran, Fair, MPI, assembly SI1, Solver o fattorizzazione. Preservare `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false` e `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 
