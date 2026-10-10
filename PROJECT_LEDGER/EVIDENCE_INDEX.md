@@ -1,6 +1,14 @@
 # Indice minimo delle evidenze (identità e scope)
 Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload sono nei manifest originali. Verificare disponibilità, hash e scope prima di dichiarare PASS.
 
+## F2B-D1A — offline DOF provenance attestation (2026-10-10)
+- Output: `outputs/r6_si1_bandwidth_f2b_d1a_attestation/D1A_RESULT.json`, report, raw DOF/node/component map, F2A-V census index map e `D1A_ARTIFACT_MANIFEST.json`.
+- Manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`; result SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9`.
+- Decisione `DOF_MAPPING_PARTIAL`: bijezione/inversa 64.442 nodi; FEG 64.442 node rows, 128.880 triangoli, 386.640 riferimenti; runtime 64.442 record e 3.222.100 campi; staged FEG/runtime identici ai derivati BW1; raw DOF component-slot mapping verificato secondo sorgente storico.
+- Determinismo: una seconda esecuzione in root distinto ha prodotto gli stessi hash di result, report, mappe e stessi contenuti manifest. Originali F2A-V non modificati; nessuna esecuzione Fair/MPI/Solver/fattorizzazione.
+- Limite esplicito: `component_geographic_basis_mapping=DOF_MAPPING_UNVERIFIED`; attribuzione geografica/placche delle coppie census vietata. Originale F2AV resta `BLOCKED_F2AV_QUALIFICATION`.
+- Review finale: i payload FEG/runtime sono confrontati con gli SHA indipendenti riportati dal BW1 source report; i manifest locali corrispondono ai rispettivi blob Git HEAD. Il writer output rifiuta sovrapposizioni con BW1, recovery, ShellSet ed evidenza sorgente. Rerun con codice rivisto riproduce manifest/result SHA sopra; regressioni finali 11 passed.
+
 ## F2B-D1 design (2026-10-10; non è un'attestazione)
 - `docs/arcana/SI1_BW1_F2B_D1_DOF_PROVENANCE_CONTRACT.md` — `DESIGN_COMPLETE_PENDING_ATTESTATION`. Registra path e SHA256 candidati per permutation, FEG/runtime riordinati, BW1 manifest/report/staging contract, manifest/result originali F2A-V e otto input staged. La revisione è design-only: verifica esaustiva dei contenuti resta D1A. Non trattare D1 come PASS di bijezione, trasformazioni FEG/runtime o base geografica.
 - `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` — design-only F2B; supporta la separazione D1/D2/D3 e non conferisce autorità di esecuzione.

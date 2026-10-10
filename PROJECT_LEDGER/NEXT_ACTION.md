@@ -1,19 +1,17 @@
-# NEXT: F2B-D1A — exhaustive offline DOF-map attestation (read-only)
+# NEXT: F2B-D1B — geographic component-basis provenance audit (read-only)
 
-**Current gate:** F2B-D1 design is `DESIGN_COMPLETE_PENDING_ATTESTATION`; the plan is `docs/arcana/SI1_BW1_F2B_D1_DOF_PROVENANCE_CONTRACT.md`. This is not an attestation result. Keep `DOF_MAPPING_UNVERIFIED` and the historical `BLOCKED_F2AV_QUALIFICATION` decision unchanged.
+**Completed gate:** F2B-D1A produced `DOF_MAPPING_PARTIAL` at checkout HEAD `f7b66b2276ef9c33af7012f453b0f01902575cd6`. Result: `outputs/r6_si1_bandwidth_f2b_d1a_attestation/D1A_RESULT.json`; manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`, result SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9`. Final review added protected output-root checks and independent original FEG/runtime hash plus Git-blob validation; the revised attestor reproduced the same result and manifest hashes. Ten focused tests pass. It exhaustively attests node permutation, FEG/runtime reordering, staged F2A-V pair and raw DOF-to-node/component-slot mapping. It does NOT establish geographic basis semantics. Preserve `DOF_MAPPING_UNVERIFIED` for that relationship and preserve the historical `BLOCKED_F2AV_QUALIFICATION` result.
 
-## D1A scope
-Perform separately authorized offline, read-only verification of the exact permutation JSON, original and reordered FEG, original and reordered runtime package, BW1 manifest/report, and original F2A-V staged-input manifest/files. Verify hashes against their respective authorities before parsing; prove both permutation inverse equations exhaustively; verify node records, triangle connectivity/order/orientation, coordinates, runtime rows/fields, and staged F2A-V linkage; only then produce a separately sealed raw-DOF-to-node/component companion mapping for the census. Fail closed on missing or mismatched evidence. Do not infer geographic axes, plate identities, or physical meaning from component slots.
+## D1B objective
+Inspect the exact historical ShellSet source and governing coordinate/frame authority needed to determine whether component slots 1/2 have a proven geographic basis at each spherical node. Trace local-basis construction, coordinate conventions, orientation and source assignment. Use the D1A raw mapping only as index provenance; do not attribute census pairs to geography or plates unless the full relation is demonstrated.
 
-Keep the geographic local-basis question distinct: D1A may attest node/permutation and source component ordering, but must leave `component_geographic_basis_mapping=DOF_MAPPING_UNVERIFIED` unless independently proven from exact source and coordinate authority. No census geographic/plate attribution while that remains unresolved.
+If source and coordinate authority do not establish the basis, return `DOF_MAPPING_UNVERIFIED` and enumerate the missing authority. Do not modify sealed evidence, FEG/runtime, historical contracts, or canonical state.
 
-## D1A restrictions and output
-- Offline and read-only; no Fair, MPI, Solver, factorization, gauge, assembly, simulation, or canonical/WORLD_HISTORY mutation.
-- Do not edit source-locked ShellSet, FEG, runtime, manifests, or historical evidence. Any attestation candidate is new output outside sealed evidence, with its own manifest and links to original source evidence.
-- Keep original F2A-V result blocked. A mapping pass is not solver authorization or scientific qualification.
-- If source or contents cannot be read/verified, report `BLOCKED_MISSING_SOURCE` (or precise repository equivalent), preserve UNKNOWN, and enumerate missing paths/checks.
+## D1B restrictions
+- Read-only source/provenance audit. No Fair, MPI, Solver, factorization, gauge, assembly, simulation, or canonical/WORLD_HISTORY mutation.
+- No plate/geographic interpretation by index analogy and no solver authorization or scientific qualification.
 
-After D1A, update the ledger with its actual scope and outcome. D2 operator semantics and D3 resource/residual design remain separate; no Solver execution is authorized.
+F2B-D2 operator semantics and F2B-D3 resource/residual design remain separate gates. Solver execution remains unauthorized.
 
 ---
 

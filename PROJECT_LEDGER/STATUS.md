@@ -1,6 +1,14 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
 **Data ricognizione:** 2026-10-10. **Authority:** questa pagina è un indice operativo, non un seal scientifico. In caso di conflitto prevalgono result, manifest, source lock e contratti originali verificati.
 
+## Aggiornamento corrente — F2B-D1A (2026-10-10)
+- Checkout verificato: branch `r6/si1-bandwidth-f2av`, HEAD `f7b66b2276ef9c33af7012f453b0f01902575cd6`; gli otto output recovery preesistenti sono stati preservati.
+- Attestazione offline ripetibile: `outputs/r6_si1_bandwidth_f2b_d1a_attestation/`, decisione `DOF_MAPPING_PARTIAL`; manifest SHA256 `5002d7bdb1c24d7d3c945b4edc1970b45c86b6daffb55268b67201616ea6653a`, result SHA256 `74328b449f41fbf7b467582adb53715c518a09327807401a1dbb4a789aff07a9`.
+- PASS nello scope attestato: bijezione/inversa dei 64.442 nodi; 128.880 triangoli e 386.640 riferimenti; 64.442 record runtime / 3.222.100 campi; FEG/runtime staged byte-identici ai derivati BW1; 128.884 righe raw DOF mappate in due slot per nodo. La ripetizione in una directory distinta ha prodotto identità byte-for-byte uguali.
+- Limite: mapping geografico delle componenti resta `DOF_MAPPING_UNVERIFIED`; le 10 coppie census sono ricondotte agli indici matrice/raw DOF ma attribuzione geografica o a placche è `PROHIBITED`. Il risultato originale `BLOCKED_F2AV_QUALIFICATION` e tutti i divieti Solver/mechanics/evoluzione restano invariati.
+- Review finale D1A: output manifest/result SHA riprodotti esattamente dopo il rerun; attestatore ora ancora FEG/runtime agli SHA indipendenti del BW1 report e ai manifest identici ai blob Git HEAD, e limita output nuovi a `outputs/` fuori dagli alberi protetti. Regressioni: 11 passed; `py_compile`, JSON/manifest/membership, UTF-8/LF e `git diff --check` PASS.
+- Prossimo gate: F2B-D1B, audit separato della provenienza della base geografica dei componenti; nessuna autorizzazione Solver/Fair/MPI/fattorizzazione.
+
 ## Aggiornamento corrente — F2B-D1 (2026-10-10)
 - Repository branch `r6/si1-bandwidth-f2av`; sincronizzato in fast-forward a `595ed74788c3fa06cb4371affef121aacefb6670` dopo verifica di ascendenza e assenza di collisioni con i nove file non tracciati (documento D1 + otto recovery output). Dopo le correzioni di riferimenti e scope D1A, SHA256 finale D1 `7d8125bc40edaa0476a13e1dc03fc6c0a82c3fe48b23acdded0845ed18fe2ea0`; SHA iniziale prima della review `319eb9de615537ddd6abed09180dd04a83b654c02cad875a66d3d433835c93e4`.
 - `F2B-D1 = DESIGN_COMPLETE_PENDING_ATTESTATION`, registrato in `docs/arcana/SI1_BW1_F2B_D1_DOF_PROVENANCE_CONTRACT.md`. È un design documentale; non attesta l'esecuzione dei controlli di contenuto e non cambia `DOF_MAPPING_UNVERIFIED`.
