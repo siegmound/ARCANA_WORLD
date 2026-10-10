@@ -7,3 +7,5 @@ Prima di agire: stampa/verifica repo, branch, HEAD, dirty files; verifica che la
 ARCANA è orchestratore multiscientifico; finestre candidate, time step interno adattivo, stati significativi derivati da eventi e replay. Il vecchio R3/R4/R5 è legacy non-target. ShellSet upstream è già stato eseguito in parallelo; la F2A-V sul caso ARCANA è distinta.
 
 Segui esclusivamente `NEXT_ACTION.md` finché un risultato verificato non ne aggiorna il contenuto. Al termine di ogni gate significativo fai aggiornare `STATUS.md`, `LOG.md`, `NEXT_ACTION.md` e indici correlati nel repository con commit e push, **dopo** regressioni/approvazioni appropriate. Se mancano fonti o autorizzazioni, esplicita BLOCKED e non inventare progresso.
+
+Prima di suggerire qualsiasi comando Fair, leggi `PROJECT_LEDGER/PROCEDURE.md` e verifica il workflow Windows/Codex → GitHub → Fair/Conda → Windows/ledger, inclusi branch, commit ed ambiente effettivi. Non ricreare ambienti e non suggerire SFTP o copie manuali come procedura ordinaria per sorgenti/test.

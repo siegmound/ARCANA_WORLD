@@ -1,3 +1,8 @@
+## F2B-N2B — evidenza GNU/NVFORTRAN riferita dall'operatore (2026-10-11)
+- GNU fixture cross-language: commit testato `9ebc78bbccc6ae5cb64eac15b67fd88f4c9ea406`; Fair Conda `arcana-r6-linux`, Python 3.12.14, pytest 9.1.1, GNU Fortran 13.3.0; 21 passed, 0 failed, 0 skipped, exit 0. Log locator `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2B_GFORTRAN/N2B_GFORTRAN_TEST_20261010T233835Z.log`; SHA256 riportato dall'operatore `b7a953072d9b142a8836190454cccbebb5399f3fc8b71b50057c6998a94cf0ef`. Il file non è stato ricalcolato in Windows in questo consolidamento.
+- NVFORTRAN: solo `N2B_NVFORTRAN_FIXTURE_COMPILE_PASS`, NVFORTRAN 25.11-0, flag `-O0 -Kieee -Mnodaz -Mnoflushz -Mbounds`, exit 0. Eseguibile Fair riportato e SHA256 dichiarato `72aadbf9eb9c953816c8816bbe1050f1afdcc08302a3d1bb9313c3e022759719`; nessun test runtime Python↔NVFORTRAN attestato.
+- Entrambi i risultati sono limitati a fixture sintetiche e a quanto riferito dall'operatore; non qualificano SI1 e non modificano i gate. Nessun nuovo artefatto Fair è stato acquisito/rehashato da Windows.
+
 # Indice minimo delle evidenze (identità e scope)
 
 ## Aggiornamento F2B-N2A-R1 (2026-10-11)

@@ -1,12 +1,17 @@
-# NEXT: F2B-N2B — contratto d'integrazione della cattura A0/b0 (design offline)
+# NEXT: F2B-N2B-V — selezione esplicita del compilatore nel runner
 
-## Stato corrente N1 / T1 / N2A (2026-10-11)
-N1 resta `N1_NUMERICAL_PRECONDITIONS_DEFINED__ACCEPTANCE_NOT_YET_ATTESTED`; T1 resta `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS` nel solo scope sintetico. N2A-R1: `N2A_SPARSE_SNAPSHOT_SYNTHETIC_VERIFIED__SI1_INTEGRATION_NOT_QUALIFIED`. Il prototipo preserva coefficienti e RHS sintetici nel formato dichiarato; non prova la cattura dell'assembly SI1, il writer Fortran durevole, l'identità dell'invocazione, le risorse Fair o l'accettazione numerica.
+## Stato corrente
+N2A sparse snapshot: verificato su fixture sintetiche, SI1 non qualificato. N2B GNU ha superato la fixture sintetica cross-language secondo evidenza riferita dall'operatore Fair (commit testato `9ebc78bbccc6ae5cb64eac15b67fd88f4c9ea406`, 21 passed). NVFORTRAN 25.11-0 ha soltanto compilato la fixture; non è stato eseguito un test runtime Python↔NVFORTRAN. Il log GNU e il binario NVFORTRAN restano sul Fair: i loro digest qui sono quelli riferiti dall'operatore, non ricalcolati autonomamente su Windows.
 
-## Incarico immediato proposto: F2B-N2B (design offline, non esecutivo)
-Definire il contratto minimo per una futura cattura dell'esatto sistema post-VBCs e pre-DGBSV: identità di run/build/input/DOF e singola invocazione/iterazione; enumerazione completa del band logico e RHS; trattamento padding/fill e signed zero; digest d'integrità indipendente; writer streaming con verifica completa e fallimento obbligatorio prima di `Solver`; prove sintetiche e compile-only necessarie. Confrontare il candidato sparse con il fallback full-band senza assumere memoria o I/O Fair. Non modificare ShellSet in questo gate.
+## Incarico immediato proposto
+F2B-N2B-V: estendere il runner/test Windows già esistente per selezionare esplicitamente GNU Fortran oppure NVFORTRAN, applicando solo i flag pertinenti al compilatore scelto. Mantenere piccolo lo scope, senza nuovo framework o formato binario. Su Windows verificare orchestration/mocks e regressioni; review, staging esplicito, commit e fast-forward push GitHub secondo `PROCEDURE.md`. Solo dopo fetch del commit verificato su Fair, attivare l'ambiente Conda esistente `arcana-r6-linux` e chiedere/eseguire la verifica NVFORTRAN runtime consentita per la fixture; conservare evidenza esterna e riportare log/hash. Non confondere compile PASS con interoperabilità runtime PASS.
 
-Questo design non autorizza l'implementazione Fortran, Fair, MPI, assembly SI1, Solver o fattorizzazione. Preservare `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false` e `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+## Workflow obbligatorio
+Seguire `PROJECT_LEDGER/PROCEDURE.md` sezione G: Windows Codex → GitHub commit preciso → Fair worktree/Conda → evidenze esterne → Windows ledger/review. Verificare ambiente e dipendenze nella sessione Fair; non ricreare ambienti, installare pacchetti o usare SFTP/manual copy come trasporto ordinario di sorgenti/test.
+
+Nessun nuovo formato o framework. Nessun test su SI1 reale; nessun ShellSet SI1, MPI, Solver, fattorizzazione, assembly reale, gauge, evoluzione o pubblicazione canonica.
+
+Preservare `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 
