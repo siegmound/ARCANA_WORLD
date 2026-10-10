@@ -16,11 +16,17 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 
 **F2A-V recovery parziale (2026-10-10, report Codex locale non ancora committato/verificato indipendentemente):** Windows `outputs/r6_si1_bandwidth_f2av_offline_recovery/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z/F2AV_RECOVERY_RESULT.json`; derived-manifest SHA256 dichiarato `e2c945442ab49397bc94164c41498b38fc3f091d65db60481c19ca8ec7612ec4`; decisione `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE`. 79 file originali e 8 staged inputs riportati integri; CSV normalizzato e diagnostica intrabundle riconciliata. Nessuna promozione.
 
-**F2-A sealed reference manca nel worktree Windows:** percorso Fair `BW1_F2A_RECOVERY/dbd8ccf15b72e1819d0fba68eb8e3fc4526060c3-20261008T222906Z`, richiesti `F2A_RECOVERY_RESULT.json`, `F2A_RECOVERY_ARTIFACT_MANIFEST.json` e manifest SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`. Non dichiarare F2A-V recovered prima di comparazione incrociata effettiva.
+**F2-A sealed reference ora presente e verificato nel worktree Windows** (aggiornamento 2026-10-10): percorso Fair `BW1_F2A_RECOVERY/dbd8ccf15b72e1819d0fba68eb8e3fc4526060c3-20261008T222906Z`, richiesti `F2A_RECOVERY_RESULT.json`, `F2A_RECOVERY_ARTIFACT_MANIFEST.json` e manifest SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`. Non dichiarare F2A-V recovered prima di comparazione incrociata effettiva.
 
 **External evidence boundary:** Fair file paths and copied Windows paths are locators, **not** proof that current session has mounted/read those files. GitHub LFS pointer alone is not the binary; `git lfs pull`, archive SHA and inner manifest must be checked.
 
 ## Nuovo trasporto F2-A sealed (2026-10-10)
 - GitHub evidence branch `evidence/r6-bw1-f2av-20261010`, nuovo commit **`72df050f1dc6616426fd25b33fd7de0cc15d83ac`**, che aggiunge `evidence/F2A_RECOVERY_dbd8ccf15b72e1819d0fba68eb8e3fc4526060c3-20261008T222906Z.tar.gz` (Git LFS) e `.sha256`.
 - Fair SHA256 del **manifest interno** verificato prima del push secondo il log: `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`. Non inventare il SHA256 del tar: leggerlo dal file `.sha256` al download.
-- Windows archive download, SHA verification, unpack e nuovo F2A-V recovery **PENDING**. Pubblicazione bundle != recupero scientifico.
+- Windows archive download, SHA verification e unpack: **PASS** (report di esecuzione utente 2026-10-10). Result F2-A verificato presente. Nuova F2A-V recovery con `--f2a-recovery-root`: exit 0; decision `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`.
+
+## F2A-V complete offline recovery — 2026-10-10
+- Windows output (non committato): `outputs/r6_si1_bandwidth_f2av_offline_recovery/F2AV_WITH_F2A_REFERENCE_V1/F2AV_RECOVERY_RESULT.json`, companion CSV/report/manifest in quella directory.
+- Recovery evidence manifest SHA256 dichiarato da runner: **`3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`**. Verifica indipendente del contenuto e codice rimane fase successiva.
+- Decisione esatta: `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`, exit code `0`; cross-reference F2-A accettato dal runner.
+- Contrasto rigoroso: **originale** `BLOCKED_F2AV_QUALIFICATION`; **precedente recovery parziale** `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE`; **nuova recovery completa** senza ancora giudizio sulla matrice/solver. Non sostituire/seal originali.

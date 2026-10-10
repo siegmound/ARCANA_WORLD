@@ -1,7 +1,7 @@
 # Stato operativo corrente — checkpoint di sviluppo
 **As of:** 2026-10-10; fonte attiva GitHub `siegmound/ARCANA_WORLD`.
 **Source working branch:** `r6/si1-bandwidth-f2av`, **HEAD:** `df670c8c4faaed641997f5c4bdb701e2ba0afc7d` (osservato quando il ledger è stato preparato). Altri commit successivi richiedono verifica, non sono automaticamente integrati qui.
-**Evidence branch:** `evidence/r6-bw1-f2av-20261010`, commit `f318a217dfee2f99d51e834948bcf765d5d45c6b` (copia LFS non governante).
+**Evidence branch:** `evidence/r6-bw1-f2av-20261010`, HEAD `72df050f1dc6616426fd25b33fd7de0cc15d83ac` (copia LFS non governante; F2A-V parent archive at `f318a217`).
 
 ## Gate in primo piano: ShellSet BW1 F2A-V
 - Code fix strutturale Fortran: PASS commit `df670c8...`.
@@ -13,7 +13,8 @@
 - Evidence Fair run dir: `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_F2AV_RUN/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z`.
 - Copia Windows estratta: `F:\corsiiiuu\Magistrale\Arcana\F2AV_RECOVERY_INPUT\df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z`.
 - Evidence archive SHA256: `0a67103b04959e4f4c0c211a29800f31262f4950ebe34bee60ffa14166041c64`.
-- Preservare originale BLOCKED. **Offline recovery parziale eseguito su Windows, ma BLOCCATO per assenza del riferimento F2-A sealed**: report locale Codex del 2026-10-10 (non ancora committato/revisionato) indica 139 PASS, 2 SKIP, normalizzazione census e 79 file/8 input invariati; 10 divergenze (1 ZERO_NONZERO, 9 NONZERO_VALUE_MISMATCH), istogrammi, extrema e IEEE coerenti. Risultato storico originale sempre BLOCKED. Il runner richiede il bundle F2A_RECOVERY completo per riconciliare la riassemblatura. Numerical adjudication non compiuta.
+- Preservare originale BLOCKED. **Offline recovery parziale storica**: inizialmente `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE`, manifest derivato `e2c945442ab49397bc94164c41498b38fc3f091d65db60481c19ca8ec7612ec4`. Evidenza del run senza riferimento mantenuta separata.
+- **Recovery offline F2A-V completa eseguita localmente Windows il 2026-10-10** dopo recupero del sealed F2-A: runner exit `0`; decisione `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`, nuovo manifest SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`. Input F2-A inner manifest SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936` verificato su Windows, archive hash verificato dal `.sha256`. Nuovo risultato locale NON ancora committato/revisionato indipendentemente; numerical adjudication non compiuta.
 
 ## Altri stati importanti, non confondere con questo gate
 - Fair upstream ShellSet parallel solve eseguito con successo sull'esempio `ListEx1`: 9 modelli su 9, diversi setting NVIDIA, proof `R6_SHELLSET_FAIR_RUNTIME_QUALIFICATION.json`. **Non** qualifica automaticamente la matrice e la soluzione meccanica ARCANA SI1.
@@ -22,13 +23,13 @@
 ## AUTORIZZAZIONI conservate
 `F2-B solver/factorization = NOT_AUTHORIZED`; `ARCANA SI1 mechanics = NOT_QUALIFIED`; `global forward evolution = NOT_AUTHORIZED`; `WORLD_HISTORY production = NOT_AUTHORIZED`; nessun nuovo run MPI F2A-V per semplice correzione CSV. Non confondere MPI exit 75 intenzionale con successo del parser.
 
-**Nuovo gate di trasporto:** 2026-10-10, Fair ha committato e pubblicato via Git LFS il bundle sealed F2-A sul branch `evidence/r6-bw1-f2av-20261010` al commit `72df050f1dc6616426fd25b33fd7de0cc15d83ac`. Verificato head remoto; download su Windows, SHA256 archivio e manifest interno, e nuova recovery offline **non ancora eseguiti**. Verificare `F2A_RECOVERY_ARTIFACT_MANIFEST.json` SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`; ripetere il recovery offline in una **directory nuova** con `--f2a-recovery-root`. Modifiche codice Codex ancora locali e non committate. Suite BW0/BW1 aggiuntiva non raccolta per SciPy mancante nell'interprete Windows.
+**Gate di trasporto e recovery chiuso (2026-10-10):** sealed F2-A pubblicato via Git LFS `72df050f1dc6616426fd25b33fd7de0cc15d83ac`, scaricato ed estratto Windows con doppia verifica SHA256. Recovery completa eseguita nella directory `outputs/r6_si1_bandwidth_f2av_offline_recovery/F2AV_WITH_F2A_REFERENCE_V1/`. Nuova decisione accettata dal runner: `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`. Rimane da validare/revisionare il codice locale e le misure in adjudication; niente solver. SciPy assente nell'interprete Windows per la raccolta aggiuntiva BW0/BW1.
 
 **Unica prossima attività:** `NEXT_ACTION.md`. Gli altri track possono essere discussi, ma non promossi senza gate.
 
 ## Sincronizzazione tra macchine (2026-10-10)
-- `WINDOWS_WORKTREE_ONLY`: nuovo writer F2A-V, offline recovery, test e output parziale **non committati**.
-- `FAIR_WORKTREE_ONLY`: bundle sealed F2-A da esportare come evidenza; nessun `git pull` di codice necessario per esportarlo.
+- `WINDOWS_WORKTREE_ONLY`: writer F2A-V corretto, recovery, test e output parziale + completo **non committati**; backup del codice locale confermato.
+- `FAIR_WORKTREE_ONLY`: i bundle originali restano immutabili; push del companion F2-A completato senza pull del codice.
 - `GITHUB_BRANCH_ONLY`: `PROJECT_LEDGER/` nel branch docs; **non** ancora integrato nel branch di sviluppo e dunque non visibile automaticamente al checkout Windows/Fair.
-- `EVIDENCE_LFS`: F2A-V originale e companion sealed F2-A pubblicati su GitHub; F2-A non ancora scaricato e verificato su Windows.
+- `EVIDENCE_LFS`: F2A-V originale e companion sealed F2-A pubblicati su GitHub; F2-A scaricato e verificato su Windows.
 Non effettuare merge docs o checkout che possa sovrascrivere il diff locale Codex. Procedura dettagliata in `PROCEDURE.md`.

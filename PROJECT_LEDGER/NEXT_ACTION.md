@@ -1,22 +1,24 @@
-# Prossimo incarico — acquisire il companion F2-A sealed, poi chiudere F2A-V offline
-**Stato:** `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE` (resoconto Codex locale del 2026-10-10; non un seal/commit). Il bundle sealed F2-A è ora **pubblicato su GitHub LFS** ma non ancora verificato nel workspace Windows. Il nuovo writer e il runner recovery sono modifiche **non committate** nel worktree Windows.
+# Prossima azione — F2A-V NUMERICAL ADJUDICATION (offline, read-only)
+**Stato attuale (2026-10-10):** `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`. Questo è un PASS di **recovery tecnica**, non un PASS della matrice/solver. Il run originale resta `BLOCKED_F2AV_QUALIFICATION`. Le modifiche writer/recovery/test e l'output completo esistono **solo sul worktree Windows**; `r6/si1-bandwidth-f2av` remoto ancora a `df670c8...`.
 
-## Cosa abbiamo già
-- F2A-V originale conserva `BLOCKED_F2AV_QUALIFICATION`, MPI exit 75 e stop pre-Solver.
-- Il recovery parziale riporta: nRank 128884, valid 186996964, nonzero 1804327, nonfinite 0, symmetry pairs 93434040, 10 divergenze (1 `ZERO_NONZERO`, 9 `NONZERO_VALUE_MISMATCH`), histograms/extrema/IEEE reconciled.
-- Originale verificato prima/dopo: 79 file, 8 staged inputs, SHA invariati **come dichiarato nel report locale Codex**; la riconciliazione incrociata F2-A non è ancora possibile.
-- Test del worktree Windows: `139 passed, 2 skipped` (report). BW0/BW1 extra bloccati da SciPy mancante in quell'interprete; `py_compile`, JSON/manifest hash, diff check dichiarati PASS. Nessun Fair/MPI/Solver eseguito in recovery.
+## Input recovery completa
+- `outputs/r6_si1_bandwidth_f2av_offline_recovery/F2AV_WITH_F2A_REFERENCE_V1/F2AV_RECOVERY_RESULT.json`.
+- `F2AV_RECOVERY_ARTIFACT_MANIFEST.json`, SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`.
+- Sealed F2-A Windows: `F:\corsiiiuu\Magistrale\Arcana\F2A_RECOVERY_INPUT\dbd8ccf15b72e1819d0fba68eb8e3fc4526060c3-20261008T222906Z`. Manifest SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`.
+- Source F2A-V Windows: `F:\corsiiiuu\Magistrale\Arcana\F2AV_RECOVERY_INPUT\df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z`. Evidenza storica immutabile.
+- Originali e recovery precedente rimangono separati. Fair non deve essere coinvolto per questa analisi.
 
-## Prossima azione
-1. **DONE (2026-10-10):** Fair ha verificato i file e manifest sealed F2-A ed eseguito push LFS sul branch evidence, commit `72df050f1dc6616426fd25b33fd7de0cc15d83ac`. Non ripetere upload.
-2. **NEXT — Windows:** nel worktree `F2AV_EVIDENCE` eseguire `git fetch` del branch evidence con refspec esplicito, verificare HEAD atteso, `git switch --detach`, `git lfs pull`; verificare SHA256 archivio dal suo .sha256. Estrarre in directory esterna nuova e validare `F2A_RECOVERY_ARTIFACT_MANIFEST.json` con SHA256 `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936`, presenza `F2A_RECOVERY_RESULT.json`. Nessun merge del branch scientifico.
-3. Preservare la directory di recupero precedente, `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE`, e gli input originali immutati.
-4. In worktree di sviluppo che contiene il nuovo runner non committato, rieseguire **offline**:
-   `python scripts/r6_si1_bandwidth_f2av_recover_evidence.py --source-evidence-root "<F2A-V_SOURCE_BUNDLE>" --f2a-recovery-root "<F2A_RECOVERY_BUNDLE>" --output-dir "<NEW_EMPTY_OUTPUT_DIR>"`.
-5. Riesaminare risultato nuovo: fail-closed su qualunque inconsistenza; in caso di PASS solo `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`. Non riscrivere alcun verdict storico. Confrontare SCIENTIFIC metrics, verificare DOF mapping; documentare controprove.
-6. Prima di commit del codice: review del diff e test F0/F1/F2-A/F2A-V/recovery; eseguire BW0/BW1 con env SciPy valido (es. ambiente Linux esistente) senza nuovi run MPI. Commit+push solo dopo review; aggiornare ledger insieme al gate chiuso.
+## Step 1 — Audit della recovery e review codice
+1. In Windows, verificare branch, HEAD, `git status`, backup codice, e hash del nuovo manifest; controllare che result decision sia esattamente quella sopra, non soltanto exit=0.
+2. Review di `scripts/r6_si1_bandwidth_f2av_fair_diagnostics.py`, nuovo `scripts/r6_si1_bandwidth_f2av_recover_evidence.py` e due test. Verificare schema 9 colonne, swapped 6/7 storico, determinismo, validazione F2-A, protezione path/manifest, invariabilità hashes.
+3. Rieseguire regressioni pertinenti, py_compile, schema checks; fare raccolta BW0/BW1 nell'ambiente con SciPy quando disponibile. Produrre outcome `CODE_REVIEWED_PASS` o `BLOCKED`. Non aggiungere `outputs/` al commit codice.
+4. Solo dopo review, fare commit del codice e successiva integrazione ledger nel branch R6 in worktree pulito. Nessuna alterazione alle prove originali.
 
-**Proibito:** nuovi run Fair MPI/Solver/fattorizzazione, mutazioni di manifest source/legacy, gauge, world evolution/canonical promotion per risolvere un errore di postprocessing. Recovery output precedente resta evidenza derivata parziale, non seal.
+## Step 2 — Adjudication numerica separata, solo read-only
+5. Leggere integralmente il result e report F2A-V, census normalizzato delle 10 divergenze, summary F2-A e source/array layout. Riconciliare numeri e localizzare eventuali discrepanze di scala, simmetria, diagonale, norma/forzante, IEEE, bounded extrema, DOF. Nessun mapping geografico presunto.
+6. Valutare, con qualifiche esplicite, se la matrice ammetta ipotesi ragionevoli sul solver: simmetria, norme relative vs assolute, possibile malcondizionamento, singularità/modalità rigide non dimostrate, assenza di dominanza stretta NON prova di singularità, IEEE flags senza attribuzione causale.
+7. Confrontare policy del caso ingegneristico e fisica ARCANA T0. Separare `ENGINEERING_SOLVE_FEASIBILITY` da `SCIENTIFIC_MECHANICS_AUTHORITY`. Non stimare condition number/eigenvalues/gauge senza evidenza.
+8. Creare relazione di adjudication con riferimenti file+SHA e una **decisione fail-closed esplicita**: `F2B_PREFLIGHT_PROPOSAL_ALLOWED`, `NEEDS_TARGETED_DIAGNOSTICS`, oppure `BLOCKED_NUMERICAL_OR_MODEL_GAP`. I nomi qui sono proposte di workflow, non promozioni autoritative.
+9. Aggiornare `PROJECT_LEDGER/STATUS.md`, `LOG.md`, `EVIDENCE_INDEX.md`, `ROADMAP.md` e `NEXT_ACTION.md` nello stesso commit del gate documentato.
 
-## Sequenza macchina / branch — evitare pull non necessari
-**Fair evidence push già completato** (commit `72df050f1dc6616426fd25b33fd7de0cc15d83ac`); nessun altro comando Fair è necessario adesso. Su **Windows**, recuperare l'archivio con fetch/LFS pull del worktree evidence e rilanciare il recovery nel worktree che conserva il codice Codex non committato. Il branch `docs/r6-project-ledger-20261010` è ancora remoto: recuperarlo con `git fetch` **senza merge** finché le modifiche Windows non sono state salvaguardate, revisionate e committate.
+**Divieti:** Fair, MPI, Solver, fattorizzazione, auto-gauge, evoluzione fisica, canonical promotion, riscrittura dei risultati e dei manifest storici. Non confondere recovery completa con qualifica numerica o fisica.

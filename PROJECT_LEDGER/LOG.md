@@ -17,6 +17,9 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 
 | 2026-10-10 | F2-A sealed companion evidence push | `evidence/r6-bw1-f2av-20261010` commit `72df050f1dc6616426fd25b33fd7de0cc15d83ac` | PASS transport upload Git LFS su Fair; manifest verificato nel preflight; nessun R6 code pull | Windows fetch/LFS archive + SHA, poi F2A-V recovery offline in nuova dir |
 
+| 2026-10-10 | F2-A sealed Windows intake | GitHub evidence commit `72df050f1dc6616426fd25b33fd7de0cc15d83ac`; manifest inner SHA `451687659a6de511aa423cdac400685c718ff2dfb24f10d97b76fd24f61b6936` | PASS download Git LFS, archive hash, manifest hash, estrazione Windows | F2A-V recovery offline con reference |
+| 2026-10-10 | F2A-V recovered against F2-A sealed | Windows `outputs/r6_si1_bandwidth_f2av_offline_recovery/F2AV_WITH_F2A_REFERENCE_V1/`; manifest SHA `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` | `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`, runner exit 0. Codice ed evidenza derivata Windows-only, non review indipendente | code review, test SciPy dove necessario, commit codice, numerical adjudication; Solver non autorizzato |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 
