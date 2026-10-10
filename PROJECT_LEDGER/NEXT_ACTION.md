@@ -19,3 +19,6 @@
 6. Prima di commit del codice: review del diff e test F0/F1/F2-A/F2A-V/recovery; eseguire BW0/BW1 con env SciPy valido (es. ambiente Linux esistente) senza nuovi run MPI. Commit+push solo dopo review; aggiornare ledger insieme al gate chiuso.
 
 **Proibito:** nuovi run Fair MPI/Solver/fattorizzazione, mutazioni di manifest source/legacy, gauge, world evolution/canonical promotion per risolvere un errore di postprocessing. Recovery output precedente resta evidenza derivata parziale, non seal.
+
+## Sequenza macchina / branch — evitare pull non necessari
+L'unica operazione su **Fair** ora necessaria è push dell'archivio sealed F2-A dal worktree evidence; **non** aggiornare tramite pull il branch scientifico Fair. Su **Windows**, prima recuperare l'archivio con fetch/LFS pull del worktree evidence e rilanciare il recovery nel worktree che conserva il codice Codex non committato. Il branch `docs/r6-project-ledger-20261010` è ancora remoto: recuperarlo con `git fetch` **senza merge** finché le modifiche Windows non sono state salvaguardate, revisionate e committate.

@@ -13,6 +13,8 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 | 2026-10-10 | F2A-V offline recovery (report Codex locale, non committato) | Windows partial result, manifest SHA e2c945442ab49397bc94164c41498b38fc3f091d65db60481c19ca8ec7612ec4 | `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE`; CSV normalizzato, 10 pairs e hist/extrema/IEEE coerenti, 79 file+8 staged inputs come riportato; 139 PASS, 2 SKIP | trasportare F2A sealed reference da Fair, poi rerun offline in output nuovo |
 | 2026-10-10 | Project management | documentation branch `docs/r6-project-ledger-20261010` | Primo PROJECT_LEDGER creato; nessun risultato fisico promosso | prossima sessione legge ledger e source refs |
 
+| 2026-10-10 | Repo synchronization decision | GitHub `docs/r6-project-ledger-20261010` vs Windows dirty worktree vs Fair evidence | Tre flussi separati; nessun Fair code pull necessario; nessun merge docs su Windows noncommittato | Windows fetch read-only docs; Fair evidence-only push F2-A; Windows LFS evidence fetch e offline recovery |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 
