@@ -48,3 +48,9 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 - Git LFS pointer `evidence/F2AV_OFFLINE_RECOVERY_F2AV_WITH_F2A_REFERENCE_V1.tar.gz` and SHA sidecar published. Archive SHA256 `bdde8d4320b1fa6de577988bf911817918e910373bdbff9922c9d9c98f646562` confirmed from GitHub sidecar and Windows log. LFS binary not independently downloaded in this update.
 - Internal manifest of derived complete recovery SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` (3 artifact members + manifest verified locally). `PASS_F2AV_RECOVERY_SOURCE_INTEGRITY` and `PASS_F2AV_RECOVERY_EVIDENCE_PUSH` from Windows logs.
 - Recovered decision `F2AV_OFFLINE_RECOVERY_COMPLETE_REQUIRES_NUMERICAL_ADJUDICATION`; later numerical adjudication only authorizes F2B DESIGN. Original `BLOCKED_F2AV_QUALIFICATION` immutable.
+
+## F2B design reconnaissance (report Codex, 2026-10-10)
+- Fonte secondaria: report read-only eseguito dal checkout Windows `6e6bd36f3db2e6e07f406d757721f7a4b552cf8b`, riportato dall'operatore. Nessun run, test, commit o output di evidence prodotto in quel checkout. GitHub era già a `bb3b6c781e6d8dac20c446ab9b0e97fe634cb61d`; questa ricognizione è stata integrata solo a livello documentale.
+- DOF mapping candidato con permutation `new_to_old/old_to_new`; FEG/runtime staged individuati nel report. SHA **solo prefissi** `a0895fd9…`, `18d78ec0…`, `a68c0730…`; non sono verifiche complete, no seal DOF/geografia.
+- Confermati dal report `DGBSV` (source code verified), `nRank=128884`, banda `727`, `nKRows=2182`, un array REAL*8 `2249799104` byte. Residual/backward-error/INFO/gauge restano futuri gate. Non esiste una nuova matrice né un solutore qualificato.
+- Documento derivato `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md`, **design-only**. L'originale `BLOCKED_F2AV_QUALIFICATION` e la recovered evidence LFS `2b03fa558b02cb865c4f234e45f0386fab678822` rimangono distinti.

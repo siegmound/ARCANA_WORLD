@@ -28,6 +28,8 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 
 | 2026-10-10 | F2AV complete derived recovery archive published | Evidence branch commit `2b03fa558b02cb865c4f234e45f0386fab678822`; tar SHA `bdde8d4320b1fa6de577988bf911817918e910373bdbff9922c9d9c98f646562`; recovery manifest SHA `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f` | PASS Windows source integrity, GitHub LFS archive pointer + sha sidecar present; no new solve. Original BLOCKED preserved | F2B preflight DESIGN only |
 
+| 2026-10-10 | F2B design reconnaissance read-only (Codex Windows) | Local HEAD `6e6bd36f...`, remote `bb3b6c78...`; source ShellSet, BW1 permutation, F2AV LFS recovered; derived `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` | `F2B_PREFLIGHT_DESIGN_RECON_COMPLETE__EXECUTION_NOT_AUTHORIZED` (workflow descriptor): DOF mapping candidate, general-band DGBSV in-place, 10 asyms unclassified, nullspace/gauge unproven; no tests/runs | NEXT F2B-D1 DOF provenance contract design, source+manifest attestation not yet executed; no Solver |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 

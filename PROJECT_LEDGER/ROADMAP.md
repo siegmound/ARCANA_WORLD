@@ -19,7 +19,7 @@ I track non sono strettamente seriali. Qualificare ShellSet NON blocca ricerca p
 
 ## Milestones operativi prossimi
 1. **DONE 2026-10-10:** F2-A sealed + F2A-V offline recovery, 139 PASS / 2 SKIP e adjudication offline; outcome GO **design** F2-B, NO solve. **DONE:** commit/push codice Windows `61dad0fa`; **DONE:** PR #1 ledger integrated and derived recovery published as Git LFS evidence `2b03fa558b02cb865c4f234e45f0386fab678822`; **NEXT** F2B preflight design only.
-2. **NEXT:** progetto F2-B preflight: mapping DOF, classificazione matrice, possibili nullspace/gauge, risorse di solve, criteri residui, gate NVHPC writer/IEEE. Conservare UNKNOWN; nessun Fair run.
+2. **NEXT:** progetto F2-B preflight: mapping DOF, classificazione matrice, possibili nullspace/gauge, risorse di solve, criteri residui, gate NVHPC writer/IEEE. Conservare UNKNOWN; nessun Fair run. La ricognizione design-only è nel file `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md`.
 3. Futura qualifica di un solve **solo dopo un nuovo gate di autorizzazione esplicita** con criteri di residuo/errore/risorse e validazione fisica ARCANA separata.
 4. Definizione interfaccia e copertura dei gap del provider tettonico in ARCANA; parallelamente qualificare altri provider ambientali.
 5. Prima finestra candidata multistrumento noncanonizzata -> eventi/stati selezionati -> ricostruzione dimostrata -> eventuale pubblicazione canonica.

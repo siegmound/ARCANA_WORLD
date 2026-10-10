@@ -42,3 +42,10 @@ L'esecuzione parallela ShellSet su upstream ListEx1 9/9 è già evidenziata: non
 - Derived recovery manifest SHA256 `3d1f794f3d642450b59bd484f4802a2c2d93f08c872b80e991ebb20352dd637f`; 3 artifact members plus manifest, source integrity PASS in Windows procedure. Binary payload not independently downloaded in this session.
 - Transport `PASS_F2AV_RECOVERY_EVIDENCE_PUSH`; original Fair decision `BLOCKED_F2AV_QUALIFICATION` unchanged; no new solver authority.
 - NEXT: F2-B preflight **design only**, see `NEXT_ACTION.md`.
+
+## F2-B design reconnaissance received — 2026-10-10
+- Codex read-only reconnaissance eseguita sul **checkout Windows HEAD `6e6bd36f3db2e6e07f406d757721f7a4b552cf8b`** (il remoto era già `bb3b6c781e6d8dac20c446ab9b0e97fe634cb61d`). Stato locale report: nessuna modifica tracciata, 8 file untracked nelle recovery output; nessun test o run eseguito.
+- Fonte: report operatore/Codex, **non sealed artifact**. La ricognizione individua due componenti DOF per nodo, permutazioni candidate `new_to_old/old_to_new` e stage FEG/runtime, ma il collegamento end-to-end a raw F2A-V e base geografica resta `DOF_MAPPING_UNVERIFIED`.
+- `DGBSV` generale a banda, matrix+RHS overwritten; `INFO=0` non verifica residuo. Zero BC velocity e zero fault; nullspace/gauge `UNKNOWN`; nessuna simmetrizzazione, nessuna stima condizionamento.
+- **Disponibile su GitHub:** `docs/arcana/SI1_BW1_F2B_PREFLIGHT_DESIGN.md` (design derivato, non gate solver).
+- **NEXT:** `F2B-D1` DOF/permutation provenance attestation design; F2B-E solve/fattorizzazione ancora `NOT_AUTHORIZED`. Nessun nuovo run Fair/MPI/Solver autorizzato.
