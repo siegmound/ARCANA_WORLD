@@ -398,6 +398,7 @@ def _asymmetry_capture_fortran()->str:
       f2av_abs_delta=f2av_abs_scale*f2av_abs_rel; f2av_asym_sat(f2av_asym_n)=0
     END IF
     f2av_asym_abs(f2av_asym_n)=f2av_abs_delta
+  END IF
 END IF'''
 
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import math
+import re
 import sys
 from types import SimpleNamespace
 from pathlib import Path
@@ -20,6 +21,28 @@ def _band(matrix):
     return [[0.0,matrix[0][1],matrix[1][2]],
             [matrix[0][0],matrix[1][1],matrix[2][2]],
             [matrix[1][0],matrix[2][1],0.0]]
+
+
+def _fortran_block_depth(fragment,kind):
+    depth=0
+    if kind=="IF":
+        opener=re.compile(r"^\s*IF\b.*\bTHEN\s*$",re.I)
+        closer=re.compile(r"^\s*END\s*IF\b",re.I)
+        alternate=re.compile(r"^\s*ELSE\s*IF\b",re.I)
+    else:
+        opener=re.compile(r"^\s*DO\s+\w+\s*=",re.I)
+        closer=re.compile(r"^\s*END\s*DO\b",re.I)
+        alternate=None
+    for number,line in enumerate(fragment.splitlines(),1):
+        code=line.split("!",1)[0]
+        if alternate and alternate.match(code):
+            continue
+        if closer.match(code):
+            depth-=1
+            assert depth>=0, f"unmatched END {kind} at generated line {number}"
+        elif opener.match(code):
+            depth+=1
+    return depth
 
 
 def test_small_band_symmetric_and_actual_lapack_band_indexing():
@@ -123,6 +146,22 @@ def test_fortran_generated_contract_marker_phases_format_and_line_limits():
     assert descriptors==["I0","A","I0","A","ES24.16E3","A","ES24.16E3","A","ES24.16E3","A","ES24.16E3","A","I0","A","ES24.16E3","A","A"]
     assert generated.count("WRITE(78,'"+census_fmt+"')")==2
     assert "f2av_asym_n<=f2av_capacity .AND. f2av_asym_nonfinite==0" in generated
+
+
+def test_pair_fragment_and_generated_matrix_scan_have_balanced_control_blocks():
+    pair=f2av._f2av_pair_fortran()
+    assert _fortran_block_depth(pair,"IF")==0
+    source=(bw1.SHELLSET_ROOT/"src"/"MOD_Shells.f90").read_text(encoding="utf-8")
+    generated,_=f2av.instrument_source_text(source)
+    start=generated.index("DO f2a_j=1,nRank")
+    phase5_end=generated.index("CALL IEEE_GET_FLAG(IEEE_OVERFLOW,f2av_phase_flags(5,1))",start)
+    scan=generated[start:phase5_end]
+    assert _fortran_block_depth(scan,"IF")==0
+    assert _fortran_block_depth(scan,"DO")==0
+    assert len(re.findall(r"(?im)^\s*DO\s+\w+\s*=",scan))==2
+    assert len(re.findall(r"(?im)^\s*END\s*DO\b",scan))==2
+    dominance=generated.index("! F2A-V finalize dominance and row/column statistics.")
+    assert phase5_end<dominance
 
 
 def test_strict_f2av_log_parser_and_malformed_record_rejection():
