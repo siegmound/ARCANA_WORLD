@@ -10,6 +10,7 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 | 2026-10-10 | F2A-V Fortran fix | `df670c8c4faaed641997f5c4bdb701e2ba0afc7d` | NVFortran compile-only PASS; Fair regression 138 PASS | autorun singolo assembly only |
 | 2026-10-10 | F2A-V Fair runtime | `BW1_F2AV_RUN/df670c8c4faaed641997f5c4bdb701e2ba0afc7d-20261010T131529Z` | MPI 75 intentional after ~282 s; Solver non eseguito; parsing BLOCKED | root cause CSV header/data order |
 | 2026-10-10 | F2A-V evidence mobility | evidence commit `f318a217dfee2f99d51e834948bcf765d5d45c6b` | LFS archive 38MB e Windows SHA PASS | recovery offline, senza nuovo MPI |
+| 2026-10-10 | F2A-V offline recovery (report Codex locale, non committato) | Windows partial result, manifest SHA e2c945442ab49397bc94164c41498b38fc3f091d65db60481c19ca8ec7612ec4 | `BLOCKED_F2AV_RECOVERY_MISSING_F2A_REFERENCE`; CSV normalizzato, 10 pairs e hist/extrema/IEEE coerenti, 79 file+8 staged inputs come riportato; 139 PASS, 2 SKIP | trasportare F2A sealed reference da Fair, poi rerun offline in output nuovo |
 | 2026-10-10 | Project management | documentation branch `docs/r6-project-ledger-20261010` | Primo PROJECT_LEDGER creato; nessun risultato fisico promosso | prossima sessione legge ledger e source refs |
 
 ## Modello di append per step successivo
