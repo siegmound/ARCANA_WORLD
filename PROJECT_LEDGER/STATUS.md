@@ -4,7 +4,7 @@
 ## Repositories / sincronizzazione
 - Repo: `siegmound/ARCANA_WORLD`; branch di codice `r6/si1-bandwidth-f2av`, HEAD remoto `61dad0fabaa4f2bb72c386d85a77564894a91ce2` (commit del fix writer e della recovery, pubblicato su GitHub e verificato 2026-10-10). Il run F2A-V originale resta vincolato a `df670c8c4faaed641997f5c4bdb701e2ba0afc7d`.
 - `WINDOWS_WORKTREE_ONLY`: le 4 modifiche writer/recovery/test **sono state committate e pubblicate** al commit `61dad0fabaa4f2bb72c386d85a77564894a91ce2`. Sul worktree Windows rimane non tracciato soltanto `outputs/r6_si1_bandwidth_f2av_offline_recovery/`, che è evidenza derivata, non codice. Backup del codice precedente confermato. Prima di qualsiasi sincronizzazione ricontrollare `git status` e l'eventuale collisione con file untracked.
-- `GITHUB_BRANCH_ONLY` finché PR #1 non viene unita: cartella `PROJECT_LEDGER/` e `AGENTS.md` sul branch `docs/r6-project-ledger-20261010`. Dopo merge verificare sul branch di codice che la cartella sia realmente presente prima di dire `MERGED_DEV_BRANCH`.
+- `MERGED_DEV_BRANCH`: PR #1 della bitacora **merged il 2026-10-10**, commit merge `a388e567aa48c3376da7d4a72b0c2c3e8d64f533`; verificata presenza di `PROJECT_LEDGER/`, `AGENTS.md` e script di recovery nel branch scientifico. Il code fix originale rimane nel commit `61dad0fa`; i soli output recovery locali Windows non sono pubblicati in Git.
 - `EVIDENCE_LFS`: branch `evidence/r6-bw1-f2av-20261010` HEAD `72df050f1dc6616426fd25b33fd7de0cc15d83ac` contiene original F2A-V e companion F2-A sealed; intake su Windows verificato.
 - Fair: originali HPC immutabili, non serve pull del codice durante audit offline.
 
@@ -32,3 +32,6 @@
 `FORWARD_EVOLUTION_AUTHORIZED=false`;
 `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 L'esecuzione parallela ShellSet su upstream ListEx1 9/9 è già evidenziata: non ripetere come nuovo gate. **Prossima attività:** `NEXT_ACTION.md`.
+
+## Integrazione documentale — 2026-10-10
+`PROJECT_LEDGER/` è presente nel branch `r6/si1-bandwidth-f2av` dopo merge PR #1 (SHA `a388e567aa48c3376da7d4a72b0c2c3e8d64f533`). Lo stato di questo file è quello successivo al merge; nuove chat leggono `AGENTS.md` e `PROJECT_LEDGER/NEW_CHAT.md` senza recuperare una branch docs separata. Su Windows **non** è ancora confermato un fetch/fast-forward fino al commit merge; eseguire sincronizzazione non distruttiva dopo controllo `git status`. Nessun nuovo dato numerico pubblicato da questa integrazione.

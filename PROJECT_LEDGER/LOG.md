@@ -24,6 +24,8 @@ Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al 
 
 | 2026-10-10 | R6 code consolidation Windows -> GitHub | `r6/si1-bandwidth-f2av` commit `61dad0fabaa4f2bb72c386d85a77564894a91ce2` | PASS commit/push di 4 file writer F2A-V/recovery/tests, 395 insertions e 8 deletions; `outputs/r6_si1_bandwidth_f2av_offline_recovery/` ancora untracked | integrare PR #1 ledger; conservare output recovery locale, design F2-B solo |
 
+| 2026-10-10 | Integration of operational ledger into R6 branch | PR #1 merge `a388e567aa48c3376da7d4a72b0c2c3e8d64f533`; code parent `61dad0fabaa4f2bb72c386d85a77564894a91ce2` | PASS documentation-only PR integration; `PROJECT_LEDGER/` and `AGENTS.md` confirmed on code branch. No new scientific evidence | Windows fetch + safe FF, then F2-B preflight design; no Fair/MPI/Solver |
+
 ## Modello di append per step successivo
 `| YYYY-MM-DD | gate | branch + HEAD + run SHA/path | CODE/COMPILE/RUNTIME/SCIENTIFIC decision con blocchi | next gate |`
 

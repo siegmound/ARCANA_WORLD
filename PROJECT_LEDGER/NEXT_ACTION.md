@@ -1,9 +1,9 @@
-# Prossima attività — integrare il ledger e progettare F2-B preflight
+# Prossima attività — sincronizzazione Windows, poi F2-B preflight design
 **Input gate:** adjudication offline Windows 2026-10-10; outcome **GO alla progettazione F2-B, NO alla sua esecuzione**. Vedi `STATUS.md`, `EVIDENCE_INDEX.md`, `F2B_PREFLIGHT_DESIGN.md`.
 
 ## Fase 1 — Consolidamento e sincronizzazione
 1. **DONE**: le 4 modifiche a diagnostica writer + recovery + test sono nel commit `61dad0fabaa4f2bb72c386d85a77564894a91ce2` sul branch `r6/si1-bandwidth-f2av`, senza includere `outputs/`.
-2. **NEXT**: con PR #1, integrare `PROJECT_LEDGER/` e `AGENTS.md` nel branch di codice dopo controllo che il diff è soltanto documentale (eccetto i 4 puntatori README/stato, anch'essi documentali) e che l'HEAD base è il commit pubblicato. In Windows fare solo fetch e fast-forward su un worktree senza modifiche tracciate; NON utilizzare reset/hard o fare merge manuali sovrascrivendo `outputs/`.
+2. **DONE**: PR #1 merged nel branch di codice, merge SHA `a388e567aa48c3376da7d4a72b0c2c3e8d64f533`; `PROJECT_LEDGER/` e `AGENTS.md` verificati su GitHub. **NEXT WINDOWS**: verificare HEAD e `git status --short`, poi `git fetch` e `git merge --ff-only origin/r6/si1-bandwidth-f2av` se nessun file locale viene sovrascritto; mai usare `reset --hard` / force. La directory `outputs/r6_si1_bandwidth_f2av_offline_recovery/` rimane esclusa.
 3. **PENDING**: il recovery derivato completo resta nella directory untracked Windows. Pubblicarlo solo con un piano di evidence publication/seal separato; i digest in questo ledger NON equivalgono a un bundle originale sigillato.
 4. **OPEN TEST GAPS**: writer corretto non ancora ricompilato con Fair/NVHPC, nessun test positivo E2E automatico che integri F2-A sealed, BW0/BW1/SciPy ancora da verificare nell'ambiente adatto. Non retro-promuovere `BLOCKED_F2AV_QUALIFICATION` o la meccanica.
 
