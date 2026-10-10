@@ -4,12 +4,13 @@ ARCANA is building a causal, queryable `WORLD_HISTORY`: a compact record of
 world state, events, forcing, provenance and replay sufficient to answer
 historical queries and support selective high-resolution refinement.
 
-The active development line is R6. Start with
-[the session bootstrap](docs/arcana/ARCANA_BOOTSTRAP.md), then consult the
-[current state](docs/arcana/ARCANA_CURRENT_STATE.md),
+**Current development entrypoint:** [PROJECT_LEDGER/README.md](PROJECT_LEDGER/README.md).
+For every new conversation start from [PROJECT_LEDGER/NEW_CHAT.md](PROJECT_LEDGER/NEW_CHAT.md)
+and consult the ledger's STATUS, NEXT_ACTION, ROADMAP and PROCEDURE.
+Historical [session bootstrap](docs/arcana/ARCANA_BOOTSTRAP.md),
 [architecture](docs/arcana/WORLD_HISTORY_ARCHITECTURE.md),
-[data authority map](docs/arcana/DATA_AUTHORITY_MAP.md) and
-[provider registry](docs/arcana/PROVIDER_REGISTRY.md).
+[authority map](docs/arcana/DATA_AUTHORITY_MAP.md) and
+[provider registry](docs/arcana/PROVIDER_REGISTRY.md) remain supporting technical references, not current progress ledgers.
 
 ## Current boundary
 

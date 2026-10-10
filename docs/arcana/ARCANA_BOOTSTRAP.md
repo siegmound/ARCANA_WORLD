@@ -1,3 +1,5 @@
+> **SUPERSEDED FOR CURRENT DEVELOPMENT CONTINUATION (2026-10-10).** This document describes the historical PRE-B0 status, not the current R6 development stage. The single operational starting point is [PROJECT_LEDGER/README.md](../../PROJECT_LEDGER/README.md), then [STATUS.md](../../PROJECT_LEDGER/STATUS.md) and [NEXT_ACTION.md](../../PROJECT_LEDGER/NEXT_ACTION.md). Scientific contracts and historical evidence remain valid only within their original stated scope.
+
 # ARCANA WorldSim — Session Bootstrap
 
 Read this file, then [current state](ARCANA_CURRENT_STATE.md),
