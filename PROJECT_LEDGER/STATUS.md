@@ -1,5 +1,13 @@
 # ARCANA WorldSim R6 — Stato operativo corrente
 
+## F2B-N1 / N1-T1 — precondizioni numeriche e isolamento sintetico (2026-10-11)
+- N1 resta `N1_NUMERICAL_PRECONDITIONS_DEFINED__ACCEPTANCE_NOT_YET_ATTESTED`: il contratto di verifica A0/b0 e delle metriche è definito, ma non esiste una soglia numerica SI1 giustificata; `THRESHOLD_UNJUSTIFIED` permane.
+- Il test T1 in `tests/test_r6_si1_bandwidth_f2b_d3b_numerical.py` (SHA256 `95c6bfe54f70f37f685dc1add355f9bb8d83b47e25500fba35ccdfe2eabdac3e`) ha esito `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS`: 9 passed, 0 failed, 0 skipped. Con matrice sintetica non simmetrica KL=1/KU=2, snapshot A0/b0 distinti e buffer operativi sovrascritti, le metriche sugli snapshot concordano con un oracolo denso indipendente; i buffer mutati producono metriche differenti.
+- Il test dimostra soltanto il percorso sintetico. Non prova che ShellSet preservi A0/b0, non sceglie la strategia per il caso SI1 e non autentica la matrice storica o il runtime.
+- Report N1 `docs/arcana/SI1_BW1_F2B_N1_NUMERICAL_ACCEPTANCE_PRECONDITIONS.md`, SHA256 `88790af7a35f0cb58568d7d69afd27664b5a2b1fdeeff5a4ef807dfcca87f978`; rimosso un blank line finale ridondante per `git diff --check`, nessun cambiamento semantico.
+- Prossimo lavoro proposto: F2B-N2, scelta e qualificazione progettuale della strategia di preservazione del sistema lineare originale senza presumere memoria HPC disponibile. Nessun Solver autorizzato.
+- Gate invariati: `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-D3D-RO6 — consolidamento evidenza Fair trasferita (2026-10-10)
 - Attestazione trasferita: `outputs/r6_si1_bandwidth_f2b_d3d_ro6_fair_attestation/D3D_FAIR_RO6_ATTESTATION.json`, 4.133 byte, SHA256 `320344b6cfb74042e450bac4347f5a8b820e5702fa4b15c3bf4ff240ec764ec0`; sidecar SHA verificato. JSON valido, schema identifier `ARCANA_D3D_FAIR_RO6_ATTESTATION_V1`; non è stata trovata una definizione schema separata nel repository.
 - Report consolidato `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md`, SHA256 `1b9c46b43079fbc5002d3719bc935175cd6f1bea5489f6026abe7d870e1a4579`. Distingue verifiche locali del JSON/sidecar dalle osservazioni Fair registrate nel JSON.

@@ -1,5 +1,10 @@
 # Indice minimo delle evidenze (identità e scope)
 
+## F2B-N1 / N1-T1 — 2026-10-11
+- Report N1: `docs/arcana/SI1_BW1_F2B_N1_NUMERICAL_ACCEPTANCE_PRECONDITIONS.md`, SHA256 `88790af7a35f0cb58568d7d69afd27664b5a2b1fdeeff5a4ef807dfcca87f978`; un blank line finale ridondante è stato rimosso per superare `git diff --check`; il contenuto semantico non cambia. Definisce precondizioni e metriche, non attesta l'accettazione del solve SI1. `THRESHOLD_UNJUSTIFIED` resta.
+- Test aggiornato `tests/test_r6_si1_bandwidth_f2b_d3b_numerical.py`, SHA256 `95c6bfe54f70f37f685dc1add355f9bb8d83b47e25500fba35ccdfe2eabdac3e`; 9 passed, 0 failed, 0 skipped. T1 è `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS` solo per matrice sintetica KL=1/KU=2, snapshot A0/b0 separati, overwrite dei buffer operativi e confronto con oracolo denso indipendente. Il validator di produzione non è stato modificato.
+- Non è prova della preservazione A0/b0 in ShellSet, non determina la strategia SI1 e non qualifica operator, residuo accettabile, conditioning o fisica. Prossimo lavoro proposto F2B-N2: design della strategia di preservazione senza ipotesi di memoria HPC.
+
 ## F2B-D3D-RO6 Fair attestation trasferita — 2026-10-10
 - Report `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md`, SHA256 `1b9c46b43079fbc5002d3719bc935175cd6f1bea5489f6026abe7d870e1a4579`.
 - `outputs/r6_si1_bandwidth_f2b_d3d_ro6_fair_attestation/D3D_FAIR_RO6_ATTESTATION.json`: 4,133 byte, SHA256 `320344b6cfb74042e450bac4347f5a8b820e5702fa4b15c3bf4ff240ec764ec0`; sidecar `.json.sha256` concorde. JSON parse PASS; schema identifier `ARCANA_D3D_FAIR_RO6_ATTESTATION_V1`; nessuna definizione schema separata individuata.

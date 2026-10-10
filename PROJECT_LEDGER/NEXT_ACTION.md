@@ -1,4 +1,18 @@
-# NEXT: chiusure F2B separate — accounting, criteri numerici, autorizzazione operatore
+# NEXT: F2B-N2 — strategia di preservazione del sistema lineare originale
+
+## Stato corrente N1 / T1 (2026-10-11)
+N1: `N1_NUMERICAL_PRECONDITIONS_DEFINED__ACCEPTANCE_NOT_YET_ATTESTED`; le metriche e i prerequisiti sono definiti, ma l'accettazione numerica SI1 non è attestata e `THRESHOLD_UNJUSTIFIED` resta. T1: `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS`, limitato a test sintetico; 9 passed, 0 failed, 0 skipped. Il test prova che snapshot indipendenti A0/b0 continuano a produrre metriche corrette dopo la sovrascrittura di buffer operativi separati. Non dimostra conservazione in ShellSet.
+
+## Incarico immediato proposto: F2B-N2 (design/review, non esecuzione)
+Confrontare strategie praticabili per preservare o ricostruire A0 e b0 prima della chiamata distruttiva DGBSV: copia, rigenerazione deterministica o rappresentazione immutabile sufficiente a matvec/norme. Per ciascuna specificare identità/provenienza, costi condizionali, possibili failure e prove richieste; non assumere memoria Fair disponibile e non selezionare un'opzione sulla base di RSS non attestata. Il risultato non autorizza Solver o fattorizzazione.
+
+Leggere il report N1 e il contratto D3/D3A, mantenendo distinti integrità degli snapshot, identità dell'operatore, backward error e soglia di accettazione. Nessun Fair, MPI, ShellSet, Solver, fattorizzazione, assembly reale, gauge o evoluzione canonica in N2 senza autorizzazione separata.
+
+Preservare: `N1_NUMERICAL_PRECONDITIONS_DEFINED__ACCEPTANCE_NOT_YET_ATTESTED`; `N1_T1_SYNTHETIC_DESTRUCTIVE_BUFFER_ISOLATION_PASS` (scope sintetico); `THRESHOLD_UNJUSTIFIED`; `OPERATOR_CLASS_UNVERIFIED`; `BLOCKED_F2AV_QUALIFICATION`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+## Storico next action precedente
 
 ## Stato RO6
 Il JSON RO6 e sidecar hanno SHA256 locale concorde; report consolidato `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md` (SHA256 `1b9c46b43079fbc5002d3719bc935175cd6f1bea5489f6026abe7d870e1a4579`). Decisione `D3D_FAIR_EVIDENCE_RECOVERED__RESOURCE_ATTESTATION_INCOMPLETE`. Ciò avanza la provenance dei membri selezionati, non la qualifica scientifica. Il D3D bloccato resta valido per il precedente tentativo Windows.
