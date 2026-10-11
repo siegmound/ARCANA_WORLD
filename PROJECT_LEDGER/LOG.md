@@ -1,5 +1,11 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-11 — W3-A contrato provenance, recupero e riconciliazione GitHub
+- **Provenance dell'audit:** patch `0001-docs-r6-preserve-W3-A-identity-provenance-contract.patch` esportata da commit locale Windows `f6d0ff2f17547d530ae8a37145c94e788732ef2e` (parent `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`); soli sei file documentali. Contratto ricostruito byte-esatto dal patch SHA256 `6f94d4cbcda52eab351e1aa106bcd7d2c1c25f00b78834d2b2b7f3f8d41e2df9` e Git blob `c3fdf5dbc92454e406b7bde84765e0cab76d90de`. Conflitto con i tre commit documentali remoti W2/E1 risolto preservando integralmente il ledger remoto e aggiungendo W3-A come gate più recente.
+- **Esito:** `W3A_IDENTITY_CONTRACT_DEFINED__RUNTIME_BINDING_AND_MPI_WIDE_STOP_UNPROVEN`. Audit statico; nessun test, compilazione, esecuzione MPI/ShellSet/Solver o accesso Fair per W3-A; stop locale `ERROR STOP 86` non prova MPI-wide. `ModNum` deriva dal tag; `rpeat=0` è valido nel caso SF; FEM ordinal è per-`Pure`.
+- **Next:** W3-B owner-backed typed contract + fixtures sintetiche offline; W4 scala separato. Tutti i gate F2A-V/Solver/mechanics/WORLD_HISTORY restano bloccati.
+
+
 ## 2026-10-11 — W2-E1 Fair checksum e provenance locale
 - **Input immutabile:** candidate W2 generato/compilato sul checkout `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; evidenza `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`.
 - **Console operatore:** `CHECKSUM_EXIT=0` (`sha256sum -c --status`); 103 righe nel manifest e 103 file effettivi escluso il manifest stesso; SHA primari in `EVIDENCE_INDEX.md`. Audit read-only Python: `E1_SOURCE_AND_OBJECT_INTEGRITY_PASS`: source commit, compile exit, no-link/no-runtime riportati, manifest builder/candidate concordi, lock SHA e byte di lock verificati su Fair, 15 membri candidati conformi, 5 sorgenti mirati conformi, 14 full-build object names esatti e 2 bridge object names esatti.

@@ -1,4 +1,20 @@
-# NEXT: F2B-N2C-W3 — contratto di identità autorevole e provenance, solo offline
+# NEXT: F2B-N2C-W3-B — owner-backed invocation context, fixture offline
+
+## Autorità e checkpoint
+- W3-A `W3A_IDENTITY_CONTRACT_DEFINED__RUNTIME_BINDING_AND_MPI_WIDE_STOP_UNPROVEN`, documento `docs/arcana/SI1_BW1_F2B_N2C_W3A_IDENTITY_PROVENANCE_CONTRACT.md` SHA256 `6f94d4cbcda52eab351e1aa106bcd7d2c1c25f00b78834d2b2b7f3f8d41e2df9`. Audit statico sul sorgente `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`, salvato nel commit locale recovery `f6d0ff2f17547d530ae8a37145c94e788732ef2e` e reintegrato sul ramo documentale più recente. La preesistente W2/E1 (NVFORTRAN compile-only e hash/membership locali riferiti da Fair) è preservata senza promozione a runtime.
+- Input: source-lock `configs/r6_shells_si1/shellset_source_lock.json` SHA256 `8c3174c08cb021ae90257e04880f7e96b9ecd9d4d830034bfc0ea6462ef867f2`; contratti D1/D1A DOF e N2A/N2B/W1/W2, tutti nel rispettivo scope. W3-A non modifica il codice Fortran.
+- Stato `RUNTIME_BINDING_UNPROVEN` e `MPI_WIDE_STOP_UNPROVEN`; nessun capture runtime autorizzato.
+
+## Unico incarico immediato (W3-B, offline e incrementale)
+1. In Windows Codex, verificare branch/HEAD/worktree, leggere contratto W3-A e prove legacy per identificare gli **owner** di run/attempt, dispatch assignment e model digest, role/communicator/rank, fase SH/SF, call sequence gerarchica `Shells → Pure → iter → FEM`, input/stato/constraint effettivi, source/build e DOF. Dove mancano owner/evidenza, mantenere UNKNOWN; non generare autorità sintetica fuori fixture.
+2. Implementare o prototipare un **contratto minimo tipizzato** e un validator offline in namespace isolato, riusando formati e validator già presenti. Key unica per run+assignment+phase+call; distinguere tag MPI da model_id, includere rank 0 coordinatore e `rpeat=0` valido per SF/`MaxIter=0`; impedire collisioni di assignment/Pure/FEM.
+3. Fixture sintetiche positive e negative: incomplete authority, tag/worker mismatch, modello riutilizzato, input/stato/vincoli sostituiti, DOF/build divergenze, digest non indipendente, payload/sidecar manomesso, write/verify failure; asserire fail-closed e non-ingresso in un *mock Solver*. Un harness sintetico può validare il protocollo di arresto proposto ma **non prova** stop MPI-wide in ShellSet reale.
+4. Test, review Codex e source lock, staging esplicito e GitHub; ogni eventuale prova Fortran/Fair/MPI reale richiede separata autorizzazione e contratto. NON toccare `external/ShellSet-v1.1.0`, baseline F2A-V sealed, stati canonici o i 103 file E1. Distinguere W4 (scala `n=128884`, `LDAB=2182`, I/O/durabilità, budget reali).
+5. Bloccati `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; nessun Solver/DGBSV, linking eseguibile ShellSet, `mpiexec`, o capture SI1 in questo gate.
+
+---
+
+## Storico: incarico precedente W3-A (completato come contratto)
 
 ## Stato verificato e fonte
 - W2 source commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; E1 `N2C_W2_E1_FAIR_OPERATOR_REPORTED_INTEGRITY_PASS__RUNTIME_NOT_QUALIFIED`. Su Fair checksum manifest 103/103, `CHECKSUM_EXIT=0`, controllo Python `E1_SOURCE_AND_OBJECT_INTEGRITY_PASS`, 14 oggetti intero candidate call graph e 2 bridge objects, builder/manifest e source lock/15 membri conformi secondo transcript dell'operatore.
