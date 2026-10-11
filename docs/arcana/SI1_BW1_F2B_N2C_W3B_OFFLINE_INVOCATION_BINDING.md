@@ -9,7 +9,8 @@ Baseline: `db517147e4980bac5227ffd89d09710b3324746e`
 `W3B_SYNTHETIC_OWNER_BINDING_VALIDATOR_PASS__RUNTIME_AUTHORITY_UNKNOWN`
 
 The implementation validates typed, fixture-scoped provenance joins, unique
-FEM invocation keys, the source-valid phase-dependent `rpeat` cases, and a
+physical FEM invocation coordinates, immutable assignment bindings, the
+source-valid phase-dependent `rpeat` cases, and a
 synthetic capture-only stop using the existing N2A codec and N2C independent
 oracle. Its evidence resolver accepts only `SYNTHETIC_FIXTURE_ONLY` records.
 It has no production trust store and never returns production authority.
@@ -47,16 +48,34 @@ fixture owner labels are test data, not proof of real owner authority.
 - `rpeat=0` is accepted only for the fixture's source-valid SF call with
   `MaxIter=0`; SH rejects zero and SF with positive `MaxIter` requires a
   positive repeat.
-- The invocation ledger rejects duplicate invocation keys and duplicate
-  assignment sequence within the run/attempt. The local ModNum/MPI tag match
-  is checked but the tag is not treated as stable model identity.
+- The source call graph in `external/ShellSet-v1.1.0/src/MOD_Shells.f90`
+  shows `Pure` iterating `iter=1..maxItr` and calling FEM within that loop
+  (around lines 6940 and 6996). Accordingly, multiple distinct FEM calls may
+  belong to one master-issued assignment. The ledger now permits them while
+  freezing the assignment-sequence binding `(run_uuid, attempt_uuid,
+  sequence)` to the same assignment values and synthetic owner-evidence
+  identity. Reusing that sequence with another model or worker/owner binding
+  fails closed.
+- Physical invocation uniqueness is checked separately using run/attempt,
+  communicator epoch, process/rank, assignment sequence, phase, Shells/Pure
+  call sequence, repeat, Pure iteration, and FEM ordinal. Effective state,
+  A0/b0 system digest, payload and sidecar contents are excluded from this
+  coordinate key: changing them cannot disguise a repeated physical FEM
+  invocation. They remain independently validated as capture content.
+  `invocation_key` remains the full typed capture identity, not the ledger's
+  physical-coordinate uniqueness key. The local ModNum/MPI tag match is
+  checked but the tag is not treated as stable model identity.
 - Payload/sidecar verification uses the existing independent decoder/oracle;
   altered context/evidence, mismatched assignment, invalid DOF, corrupted or
   truncated payload, inconsistent/incomplete sidecar, writer exception, and
   verification errors fail closed.
-- The capture gate returns `CAPTURE_ONLY_STOP_REQUIRED` or `CAPTURE_FAILED`;
-  tests use a mock Solver entry counter and verify it remains zero. The gate
-  is synthetic control logic and does not invoke a solver callback.
+- The capture gate returns `CAPTURE_ONLY_STOP_REQUIRED` or `CAPTURE_FAILED`.
+  `require_capture_terminal` accepts only those typed, non-entered terminal
+  outcomes and rejects unknown dispositions or an outcome marked as having
+  entered Solver. A synthetic FEM-caller harness consumes that transition
+  before Solver dispatch and checks an entry counter remains zero on both
+  successful capture-only and failed capture paths. This is an offline
+  control-flow model, not ShellSet runtime or MPI-wide proof.
 - A deterministic coordinator models two synthetic workers. Any failed or
   non-stop worker outcome yields failure. This is not MPI execution or proof
   of an MPI-wide stop.
@@ -79,8 +98,8 @@ separate.
 
 ## Verification record
 
-Focused W3-B, N2A, N2C-W1 writer, and W2 overlay tests completed with
-34 passed, 1 skipped, and 0 failed. The skip is the existing Fortran writer
+Focused W3-B, N2A, N2C-W1 writer, and W2 overlay regressions after the B1
+reconciliation completed with 41 passed, 1 skipped, and 0 failed. The skip is the existing Fortran writer
 execution test because the default `gfortran` compiler is unavailable on
 Windows. `py_compile`, UTF-8/LF checks, and `git diff --check` are recorded in
 the accompanying ledger entry. These are Windows-local offline checks only. No Fair, MPI,

@@ -3,9 +3,9 @@
 ## W3-B completion (offline synthetic scope only)
 `W3B_SYNTHETIC_OWNER_BINDING_VALIDATOR_PASS__RUNTIME_AUTHORITY_UNKNOWN`. Report: `docs/arcana/SI1_BW1_F2B_N2C_W3B_OFFLINE_INVOCATION_BINDING.md`. The typed validator binds synthetic owner envelopes to run/attempt, process/role/rank, master assignment/model, SH/SF and Shells/Pure/iteration/FEM sequence, effective input/state/constraints, implementation/build, DOF order, and A0/b0 identity. It reuses N2A decoding plus N2C independent-oracle verification.
 
-Windows offline regressions: W3-B + N2A + N2C writer + W2 overlay = 34 passed, 1 skipped, 0 failed; the skip is the compiler-dependent Fortran writer execution (`gfortran` unavailable). `py_compile` and diff/encoding checks passed. No production identity, ShellSet runtime binding, snapshot publication, MPI-wide stop, SI1 capture, or Fair execution was established.
+Windows offline regressions after B1: W3-B + N2A + N2C writer + W2 overlay = 41 passed, 1 skipped, 0 failed; the skip is the compiler-dependent Fortran writer execution (`gfortran` unavailable). No production identity, ShellSet runtime binding, snapshot publication, MPI-wide stop, SI1 capture, or Fair execution was established.
 
-Current changes remain `WINDOWS_WORKTREE_ONLY`: GitHub DNS prevented verification of the remote branch, so no commit/push has occurred. First review and publish the explicit W3-B code/test/report/ledger set after a successful fetch and fast-forward check.
+The original W3-B implementation baseline is `2bb34525c4098eded5ee65eca02428c92d5c68b3`; B1 is recorded as a distinct semantic correction. The former `WINDOWS_WORKTREE_ONLY` statement referred to stale ledger state and must not be repeated for published W3-B.
 
 ## Next bounded task: W3-C design/implementation gate
 Before candidate integration, define and review a real authority provider for run/job, master-issued assignment and stable model, communicator/process role, effective inputs/state/constraints, candidate build/executable, DOF ordering, and independent A0/b0 oracle. Specify one job-scoped capture-mode decision and coordinated worker failure/stop; the W3-B synthetic coordinator is only a model. W3-C must remain offline/static until separately authorized. Do not alter W1/W2 or invoke ShellSet, MPI, Solver, Fair, or SI1. W4 scale/streaming/durability/resource work remains a separate gate.

@@ -172,6 +172,20 @@ class CaptureOutcome:
     error: str | None = None
 
 
+CAPTURE_TERMINAL_RETURN = "RETURN_BEFORE_SOLVER"
+
+
+def require_capture_terminal(outcome: CaptureOutcome) -> str:
+    """Accept only explicit terminal capture outcomes; unknown states fail closed."""
+    if not isinstance(outcome, CaptureOutcome):
+        raise ProvenanceError("typed capture outcome required")
+    if (not isinstance(outcome.status, str) or
+            outcome.status not in {CAPTURE_ONLY_STOP, CAPTURE_FAILED} or
+            outcome.solver_entered is not False):
+        raise ProvenanceError("capture-only outcome is not a verified pre-Solver terminal state")
+    return CAPTURE_TERMINAL_RETURN
+
+
 def _canonical(value: object) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
 
@@ -216,6 +230,48 @@ def invocation_key(context: InvocationContext) -> str:
     """Stable key over typed identity values; excludes evidence envelope bytes."""
     values = {name: asdict(getattr(context, name).value) for name in _OWNER_AND_SUBJECT}
     return hashlib.sha256(b"ARCANA-N2C-W3B-INVOCATION-V1\0" + _canonical(values)).hexdigest()
+
+
+def invocation_coordinate_key(context: InvocationContext) -> str:
+    """Physical call coordinates, deliberately excluding mutable capture contents."""
+    run = context.run.value
+    process = context.process.value
+    assignment = context.assignment.value
+    call = context.call.value
+    coordinates = {
+        "run_uuid": run.run_uuid,
+        "attempt_uuid": run.attempt_uuid,
+        "communicator_uuid": process.communicator_uuid,
+        "communicator_epoch": process.communicator_epoch,
+        "host_id": process.host_id,
+        "pid": process.pid,
+        "rank": process.rank,
+        "assignment_sequence": assignment.sequence,
+        "shells_phase": call.shells_phase,
+        "shells_call_sequence": call.shells_call_sequence,
+        "rpeat": call.rpeat,
+        "pure_call_sequence": call.pure_call_sequence,
+        "pure_iteration": call.pure_iteration,
+        "fem_ordinal": call.fem_ordinal,
+    }
+    return hashlib.sha256(b"ARCANA-N2C-W3B-FEM-COORDINATE-V1\0" + _canonical(coordinates)).hexdigest()
+
+
+def _assignment_binding_key(context: InvocationContext, resolver: EvidenceResolver) -> str:
+    """Immutable master assignment and owner evidence identity within one run attempt."""
+    binding = context.assignment
+    record = resolver.resolve(binding.evidence_id)
+    if record is None:  # validate_invocation normally catches this; keep the helper fail-closed.
+        raise ProvenanceError("assignment evidence is UNKNOWN")
+    return hashlib.sha256(b"ARCANA-N2C-W3B-ASSIGNMENT-BINDING-V1\0" + _canonical({
+        "assignment": asdict(binding.value),
+        "evidence_id": binding.evidence_id,
+        "owner": record.owner,
+        "subject": record.subject,
+        "scope": record.scope,
+        "value_sha256": record.value_sha256,
+        "evidence_sha256": record.evidence_sha256,
+    })).hexdigest()
 
 
 def _verify_evidence(context: InvocationContext, resolver: EvidenceResolver) -> None:
@@ -355,19 +411,23 @@ class InvocationLedger:
 
     def __init__(self) -> None:
         self._invocations: set[str] = set()
-        self._assignments: set[tuple[str, str, int]] = set()
+        self._assignments: dict[tuple[str, str, int], str] = {}
 
     def register(self, context: InvocationContext, resolver: EvidenceResolver) -> str:
         key = validate_invocation(context, resolver)
         run = context.run.value
         assignment = context.assignment.value
         assignment_key = (run.run_uuid, run.attempt_uuid, assignment.sequence)
-        if key in self._invocations:
-            raise ProvenanceError("duplicate FEM invocation key")
-        if assignment_key in self._assignments:
-            raise ProvenanceError("duplicate master assignment sequence")
-        self._invocations.add(key)
-        self._assignments.add(assignment_key)
+        assignment_binding = _assignment_binding_key(context, resolver)
+        prior_binding = self._assignments.get(assignment_key)
+        if prior_binding is not None and prior_binding != assignment_binding:
+            raise ProvenanceError("conflicting reuse of master assignment sequence binding")
+        coordinate = invocation_coordinate_key(context)
+        if coordinate in self._invocations:
+            raise ProvenanceError("duplicate FEM invocation coordinates")
+        # Mutate only after every identity and uniqueness check has passed.
+        self._invocations.add(coordinate)
+        self._assignments[assignment_key] = assignment_binding
         return key
 
 
@@ -422,13 +482,10 @@ def run_capture_only_gate(
     sidecar: SnapshotSidecar,
     oracle_ab: Sequence[Sequence[float]],
     oracle_b0: Sequence[float],
-    mock_solver_entry: Callable[[], None],
 ) -> CaptureOutcome:
     """Simulate a diagnostic gate: every capture outcome stops before Solver."""
     key: str | None = None
     try:
-        if not callable(mock_solver_entry):
-            raise ProvenanceError("mock Solver entry counter must be callable")
         key = ledger.register(context, resolver)
         payload = write_payload()
         if not isinstance(payload, bytes):
@@ -439,10 +496,14 @@ def run_capture_only_gate(
         )
         if verified.get("status") != "SYNTHETIC_SNAPSHOT_VERIFIED_AGAINST_INDEPENDENT_ORACLE":
             raise ProvenanceError("independent payload verifier did not accept fixture")
-        return CaptureOutcome(CAPTURE_ONLY_STOP, key, verified["payload_sha256"], UNKNOWN_AUTHORITY, False)
+        outcome = CaptureOutcome(CAPTURE_ONLY_STOP, key, verified["payload_sha256"], UNKNOWN_AUTHORITY, False)
+        require_capture_terminal(outcome)
+        return outcome
     except Exception as exc:
         # Capture failure is terminal by design. No path invokes the mock Solver.
-        return CaptureOutcome(CAPTURE_FAILED, key, None, UNKNOWN_AUTHORITY, False, str(exc))
+        outcome = CaptureOutcome(CAPTURE_FAILED, key, None, UNKNOWN_AUTHORITY, False, str(exc))
+        require_capture_terminal(outcome)
+        return outcome
 
 
 def coordinate_synthetic_workers(outcomes: Sequence[CaptureOutcome]) -> str:
@@ -461,6 +522,7 @@ __all__ = [
     "ProcessIdentity", "ProvenanceError", "RunIdentity", "SnapshotSidecar",
     "SystemIdentity", "Owned", "CAPTURE_FAILED", "CAPTURE_ONLY_STOP",
     "INVOCATION_VALID", "SYNTHETIC_SCOPE", "UNKNOWN_AUTHORITY",
-    "coordinate_synthetic_workers", "invocation_key", "run_capture_only_gate",
+    "CAPTURE_TERMINAL_RETURN", "coordinate_synthetic_workers", "invocation_coordinate_key", "invocation_key",
+    "require_capture_terminal", "run_capture_only_gate",
     "validate_invocation", "validate_process_role", "verify_sidecar",
 ]
