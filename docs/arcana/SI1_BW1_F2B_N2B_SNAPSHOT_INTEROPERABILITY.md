@@ -1,12 +1,23 @@
 # F2B-N2B — binary snapshot interoperability prototype
 
-## Result and boundary
+## Final result and authority boundary
 
-The N2B wire contract is an interoperability extension of the existing N2A `ARCNSNP1` bytes, with an independent fixture-level oracle and a small Fortran reader/writer. The local Windows environment has Python 3.12.10 but no `gfortran`, `ifx`, `ifort`, `flang`, or `nvfortran` executable on `PATH`. Therefore the Fortran source could not be compiled or run, both compiler-backed directions remain untested, and **no cross-language PASS is claimed**. Python-only contract and negative tests can still run.
+Decision: `N2B_SYNTHETIC_CROSS_LANGUAGE_INTEROP_PASS__SI1_CAPTURE_NOT_QUALIFIED`.
 
-Current result: `N2B_INTEROP_IMPLEMENTATION_PREPARED__CROSS_LANGUAGE_BLOCKED_COMPILER_UNAVAILABLE`. The required positive decision `N2B_SYNTHETIC_CROSS_LANGUAGE_INTEROP_PASS__SI1_CAPTURE_NOT_QUALIFIED` is not available until a compiler-backed run succeeds.
+Fair operator-reported runs now verify the synthetic Python↔Fortran fixture independently with GNU Fortran and NVFORTRAN. GNU Fortran 13.3.0 passed 21 tests (exit 0) on source commit `9ebc78bbccc6ae5cb64eac15b67fd88f4c9ea406`. NVFORTRAN 25.11-0 passed 29 tests (exit 0) on source commit `2d6021ff0036d350b12a583d9eff1d03e32a7239`, with `-O0 -Kieee -Mnodaz -Mnoflushz -Mbounds`. The reported test runs separately cover Python writer → Fortran reader, Fortran writer → Python reader, malformed-payload failures, bitwise values and independent synthetic numerical checks.
 
-No ShellSet, SI1 data, MPI, Solver, factorization, assembly, Fair, canonical state, or ledger was used or modified.
+The test logs and SHA256 values below are operator-reported from Fair. Codex Windows did not read or independently rehash those remote log files. The earlier Windows compiler-unavailable result remains a valid historical development-stage observation, not the current N2B cross-language status. The separate earlier NVFORTRAN compile-only result also remains historical and is superseded in scope by the later runtime fixture test; retain it as a distinct compile record, not as the source of the runtime decision.
+
+| Compiler evidence | Tested source commit | Environment and result | Fair log and reported SHA256 |
+|---|---|---|---|
+| GNU Fortran 13.3.0 | `9ebc78bbccc6ae5cb64eac15b67fd88f4c9ea406` | Conda `arcana-r6-linux`; Python 3.12.14; pytest 9.1.1; 21 passed, 0 failed, 0 skipped; exit 0 | `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2B_GFORTRAN/N2B_GFORTRAN_TEST_20261010T233835Z.log`; `b7a953072d9b142a8836190454cccbebb5399f3fc8b71b50057c6998a94cf0ef` |
+| NVFORTRAN 25.11-0 | `2d6021ff0036d350b12a583d9eff1d03e32a7239` | Conda `arcana-r6-linux`; flags `-O0 -Kieee -Mnodaz -Mnoflushz -Mbounds`; 29 passed, 0 failed, 0 skipped; exit 0 | `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2B_NVFORTRAN_RUNTIME/N2B_NVFORTRAN_TEST_20261010T235701Z.log`; `b219f790e1c45369a55c12cf60a635d71068a05bda774e5a1577116cb02c945b` |
+
+Both compiler results are bounded to synthetic interoperability fixtures. They do not establish capture of real ShellSet A0/b0, FEM invocation identity, durable integrity of a real SI1 snapshot, Fair memory/I/O sufficiency, solver qualification, or numerical/scientific acceptance. No further HPC test was performed during this consolidation.
+
+### Historical Windows development phase
+
+At the earlier Windows implementation stage, Python 3.12.10 was available but no supported Fortran compiler was on PATH. The compiler-backed tests were skipped, so that phase correctly reported `N2B_INTEROP_IMPLEMENTATION_PREPARED__CROSS_LANGUAGE_BLOCKED_COMPILER_UNAVAILABLE`; it did not claim cross-language PASS. Subsequent Fair GNU and NVFORTRAN results above resolve that bounded fixture-interoperability gap without changing the historical record.
 
 ## Wire format v1 (N2A-compatible)
 
@@ -46,9 +57,9 @@ The fixture is a 4×4 nonsymmetric general-band system with `kl=1`, `ku=2`. It i
 - `write`: construct the known fixture, count stored records, write the 56-byte header, canonical records and RHS as explicit stream bytes. B is passed in from the independent Python oracle.
 - `read`: validate header dimensions, expected record count and expected B, canonical record order, index/band membership, nonfinite values, truncation and trailing data; reconstruct values and export logical matrix/RHS bit patterns for exact Python comparison.
 
-The Python tests cover explicit wire fields, independent digest construction, Python reader failure on payload SHA mismatch, altered values, omitted records, duplicate coordinates and invalid indices; they contain compiler-backed tests for Python-writer → Fortran-reader, Fortran-writer → Python-reader, raw bitwise fixture comparison, and diagnostic comparison against a dense oracle. In this environment the combined N2B/N2A/D3B run produced 18 passed and 3 skipped; the three skipped cases are exactly the compiler-backed interoperability/Fortran negative tests, skipped because no supported compiler is installed or on `PATH`. The reader's Fortran source is a fixture, not production code. It uses a dense 4×4 array for clarity and is not a production-scale memory design.
+The Python tests cover explicit wire fields, independent digest construction, Python reader failure on payload SHA mismatch, altered values, omitted records, duplicate coordinates and invalid indices; compiler-backed cases exercise Python-writer → Fortran-reader, Fortran-writer → Python-reader, raw bitwise fixture comparison, malformed-payload handling, and diagnostic comparison against a dense oracle. The earlier Windows-only run produced 18 passed and 3 skipped because no compiler was installed or on PATH; this is retained as historical, and the subsequent Fair GNU/NVFORTRAN runs recorded above passed their respective suites. The reader's Fortran source is a fixture, not production code. It uses a dense 4×4 array for clarity and is not a production-scale memory design.
 
-When a supported compiler is available, required verification is to compile with conservative IEEE-preserving options, run both directions, compare every logical A0/b0 bit against the independent fixture, verify payload A and source-value B separately, then compare residual/backward-error calculations to the dense oracle. Floating-point matvec results need not be bitwise identical when accumulation order differs; the fixture compares declared metric results to the independent reference without imposing a general scientific acceptance tolerance. Signed-zero/subnormal behavior must be demonstrated for that exact compiler and flags.
+For a future compiler/toolchain combination, verification must compile with compiler-appropriate IEEE-preserving options, run both directions, compare every logical A0/b0 bit against the independent fixture, verify payload A and source-value B separately, then compare residual/backward-error calculations to the dense oracle. The GNU and NVFORTRAN runs above report those fixture checks for their respective versions and flags. Floating-point matvec results need not be bitwise identical when accumulation order differs; the fixture compares declared metric results to the independent reference without imposing a general scientific acceptance tolerance.
 
 ## Cost and future capture point
 
@@ -58,8 +69,8 @@ The source-derived candidate capture boundary remains after `VBCs` and before `S
 
 ## Remaining gates
 
-- Local Fortran compiler unavailable; cross-language execution is not tested.
-- Exact writer/reader bytes and IEEE signed-zero/subnormal handling are unverified on any compiler in this work.
+- No Fortran compiler is available in the Windows worktree; Fair GNU and NVFORTRAN cross-language fixture results are operator-reported, and the remote logs were not independently rehashed by Codex Windows.
+- Exact writer/reader bytes and IEEE signed-zero/subnormal handling are reported as tested for GNU Fortran 13.3 and NVFORTRAN 25.11 under the listed flags; this evidence does not generalize to other compiler versions or production ShellSet integration.
 - Fortran reader fixture uses dense storage and is not evidence of a memory-bounded production reader.
 - No SHA-256 implementation exists in this fixture; Fortran consumes the expected B value but does not independently recompute B or payload A. Production integrity must use an approved SHA implementation or an independently trusted host-side verifier, with exact byte coverage and fail-before-Solver gating.
 - C/D provenance sidecar contract is specified but not implemented or bound to a real invocation.
