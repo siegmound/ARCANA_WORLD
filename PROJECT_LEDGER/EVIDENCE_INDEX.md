@@ -1,3 +1,8 @@
+## 2026-10-12 — riallineamento INT-0; nessuna nuova evidenza
+
+- `R6_INT0_REPRIORITIZED__INTEGRATED_RUN_NOT_YET_EVIDENCED`: cambio della priorità operativa, non un nuovo run o una prova numerica/scientifica.
+- Per INT-0 consultare il codice T-F2B e i report B6K/B6N8-A/B6N8-Q nel rispettivo scope. I vecchi HEAD e NEXT nei record seguenti sono storici; conservare hash e verdetti immutati. La NEXT attiva è solo `NEXT_ACTION.md`.
+
 ## F2B-N2C-W3-C-C — review evidence (2026-10-11)
 - Report: `docs/arcana/SI1_BW1_F2B_N2C_W3C_ADVERSARIAL_PROTOCOL_REVIEW.md`; decision `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`.
 - Local verification only: W3-C focused suite 21 passed; W3-C + W3-B 43 passed. Two direct probes reproduced an accepted later Pure-call coordinate and Boolean worker rank; source inspection showed the Solver boundary is unconditional and does not read the latch. These are review probes, not production evidence.

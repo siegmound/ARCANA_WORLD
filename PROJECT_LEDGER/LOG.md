@@ -134,3 +134,9 @@ Ogni nuova riga deve indicare un preciso *scope*; se un risultato rimane blocked
 - Esito `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`. Riprodotto `pure_call_sequence=2` accettato con `DECISION_FROZEN`; `worker_rank=True` accettato come rank 1. Il Solver boundary fallisce sempre senza leggere `no_solver_ranks` o modellare l'arrivo FEM, rendendo vacuo il claim che quei test provino l'applicazione del latch alle vie target/non-target. Dettagli e correzioni minime nel report W3-C-C.
 - Test locali: W3-C 21 passed; W3-C + W3-B 43 passed. Nessun commit/push, nessuna esecuzione MPI/Fair/ShellSet/Solver/DGBSV e nessuna modifica a output preesistenti.
 - Next: W3-C-B-R1 correzione mirata di coordinate Pure, typing rank e confine FEM simulato; gate scientifici/esecutivi invariati.
+
+## 2026-10-12 — D-014: riallineamento della roadmap all'orchestratore R6
+- Fonte: decisione esplicita dell'utente, dopo riconciliazione read-only delle capacità R6; baseline remota GitHub `9e3f68839f7b4079d5e40701cfee4d0ecdf6ac9c`. Nessuna nuova esecuzione, test, prova fisica, qualificazione o evidenza di output.
+- Esito di **piano** `R6_INT0_REPRIORITIZED__INTEGRATED_RUN_NOT_YET_EVIDENCED`: NEXT generale `INT-0A` (runner multi-provider), `INT-0B` dopo gate di esecuzione, quindi misure retention INT-1 e replay INT-2. W3-C-B-R1/W4/B6N5 restano filoni separati e non annullati.
+- Rimossi dai documenti **operativi correnti** i puntamenti storici a W2/W3 come NEXT generale: `NEXT_ACTION.md` sostituito, `ROADMAP.md` riorganizzata, `NEW_CHAT.md` aggiornata, `STATUS.md` separa CURRENT da checkpoint passati. Tutti i verdetti scientifici, source lock, dati e rapporti originali preservati.
+- Tutti i gate Solver/mechanics/`WORLD_HISTORY` production restano invariati. Next `INT-0A`.

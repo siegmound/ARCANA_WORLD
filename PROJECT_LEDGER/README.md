@@ -1,15 +1,14 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
-**Unico punto di ingresso per la continuità di sviluppo.** Revisione iniziale 2026-10-10. Questo ledger documenta stato, decisioni operative, roadmap e lavoro da riprendere; **non** sostituisce contratti scientifici, manifest firmati, source lock o evidenze.
 
-## Ordine di lettura per ogni nuova chat / sessione Codex
-1. `PROJECT_LEDGER/STATUS.md` — dove siamo e cosa NON è autorizzato.
-2. `PROJECT_LEDGER/NEXT_ACTION.md` — l'unico incarico immediato.
-3. `PROJECT_LEDGER/ROADMAP.md` — dipendenze e gate, non una scadenza temporale imposta.
-4. `PROJECT_LEDGER/PROCEDURE.md` — protocollo per lavorare e aggiornare la bitacora.
-5. Solo se rilevante: `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `EVIDENCE_INDEX.md`, `DECISIONS.md`, `LEGACY_CLEANUP.md`, `LOG.md`.
+**Punto unico di continuità. Stato operativo aggiornato al 2026-10-12.** La priorità è INT-0: integrazione osservabile dei provider già presenti, prima finestra candidata non canonica dopo autorizzazione, poi retention e replay misurati sui risultati. Non è una nuova qualificazione scientifica.
 
-**Authority precedence:** fonti primarie (codice/contratti/manifests/evidenza immutabile) > stato verificato al commit indicato > decisioni progettuali in questo ledger > documentazione vecchia > memoria delle chat. Se i livelli divergono, NON decidere per analogia: registrarli come conflitto e bloccare la promozione pertinente.
+## Leggere in questo ordine
+1. `STATUS.md` — solo la sezione iniziale **CURRENT** contiene la priorità attuale; seguono checkpoint storici.
+2. `NEXT_ACTION.md` — **un solo incarico corrente**: INT-0A.
+3. `ROADMAP.md` — dipendenze e filoni paralleli.
+4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
+5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.
 
-**Bootstrap:** leggere `NEW_CHAT.md`. Verificare repository, branch, HEAD, worktree ed evidenza disponibile prima di eseguire qualunque comando. Non inferire stato da date, nomi di file o conteggi test. La prima simulazione R3/R4/R5 è legacy e non è un target per R6.
+**Precedenza:** fonti primarie e prove > commit/scope verificato > priorità di questo ledger > vecchie istruzioni operative > chat. Gli storici «NEXT W2/W3» nei report e vecchi HEAD non sono task attivi. Prima di agire verificare branch, HEAD, dirty/untracked ed evidenze. Non ripetere prove già qualificate nel loro scope.
 
-**Regola aggiornamenti:** ogni gate significativo deve aggiornare insieme `STATUS.md`, `NEXT_ACTION.md`, `LOG.md`, `EVIDENCE_INDEX.md` (se nuove evidenze) e `ROADMAP.md` (se cambia l'avanzamento). Commit e push come modifica coerente; `PROCEDURE.md` definisce il formato. Non trasformare automaticamente risultati passati in PASS canonici.
+**Distinguere:** software già testato ≠ integrazione ARCANA ≠ simulazione fisica globale ≠ promozione canonica. R3/R4/R5 sono legacy non-target. Ogni gate aggiorna `STATUS`, `NEXT_ACTION`, `LOG`, `EVIDENCE_INDEX` e `ROADMAP` quando serve, nello stesso commit. `DECISIONS` append-only; risultati `BLOCKED`, hash, source lock, output e report storici rimangono immutati.

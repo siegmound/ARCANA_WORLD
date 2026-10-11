@@ -1,3 +1,17 @@
+# CURRENT — ARCANA WorldSim R6, 2026-10-12
+
+**Priorità generale: `INT-0A` (runner multi-provider non canonico).** Decisione di piano `R6_INT0_REPRIORITIZED__INTEGRATED_RUN_NOT_YET_EVIDENCED`. Verificare e collegare su supporto/tempo comuni componenti già disponibili, predisporre un runner osservabile; `INT-0B` eseguirà una finestra numerica solo previa autorizzazione distinta. Poi `INT-1` misurerà strategie di retention e `INT-2` la qualità di query/replay/refinement. La review W3-C-C e la successiva correzione W3-C-B-R1 restano un **filone parallelo ShellSet SI1**, non il prerequisito universale di INT-0.
+
+**Base da riusare:** B0 HistoryStore/query/replay, B6K geometria candidata, B6N8-A diagnostica/vista temporale, PRE_ORBDATA/B6N8-O/Q, T-F2B cinematica e termica per coppia **5:11** con forcing ingegneristico congelato per 1.000 anni e replay/restart, upstream ShellSet/OrbData Fair solo nel proprio scope. Rift B6 **1:3** distinto da T-F2B; B6N5 non qualifica la continuazione fisica. B6N8-R roster reale termico ancora incompleto. pyGPlates mapping canonico non qualificato non blocca la prima integrazione con forcing Euler già presente. B6M-R1 documenta un precedente blocco T1, B6N8-A successivamente riporta due epoche geometriche visibili: verificare live view in sola lettura prima di qualsiasi nuova asserzione.
+
+**NESSUN nuovo run integrato o prova scientifica da questa decisione.** `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS` resta valido (Pure-first, latch Solver, typing rank). W4 codec/scala, reale owner/MPI-wide stop e `dt2` fisico restano aperti.
+
+**Gates invariati:** `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+# CHECKPOINT STORICI — i precedenti NEXT/HEAD/verdetti sono riferiti alle evidenze del loro tempo, non alla priorità corrente
+
 ## F2B-N2C-W3-C-C — review avversariale offline (2026-10-11)
 - Decisione: `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`. Report `docs/arcana/SI1_BW1_F2B_N2C_W3C_ADVERSARIAL_PROTOCOL_REVIEW.md`.
 - Due controesempi riprodotti: `pure_call_sequence=2` passa `validate_decision()` con `DECISION_FROZEN`; `solver_dispatch_boundary()` rifiuta incondizionatamente e non consulta il latch, perciò le prove sul callback non attestano un gate FEM integrato. Inoltre `worker_rank=True` viene accettato come rank 1.
