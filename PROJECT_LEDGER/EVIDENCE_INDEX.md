@@ -1,3 +1,8 @@
+## INT-0A — codice di orchestrazione multi-provider, run non eseguito (2026-10-12)
+- Decisione: `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`. Report `docs/arcana/INT0A_MULTI_PROVIDER_INTEGRATION.md`. `src/arcana_worldsim/r6/int0a_pipeline.py` lega l'audit T-F2B esistente a due profili T0 e al kernel ridotto esistente; test sintetici dimostrano data flow forcing/profilo → output. Il runner serializza record B0 typed ma non li registra in `HistoryStore`.
+- Verifica offline: suite mirata 20 PASS, 0 FAIL, 0 SKIP; non include l'audit reale dipendente da payload esterno. Nessuna esecuzione INT-0B, nessun nuovo output, nessun input esterno acquisito e nessuna modifica WORLD_HISTORY.
+- Gap: `R6_INITIAL_PHYSICAL_GEOGRAPHY.npz` richiesto dai provider non è presente nel checkout locale; T0 scenario/materiali e forcing congelato non costituiscono evoluzione geologica qualificata; eventi, validità temporale, fisica sezione/Xe e replay B0 chiuso restano UNKNOWN/non qualificati. INT-0B richiede autorizzazione distinta.
+
 ## 2026-10-12 — riallineamento INT-0; nessuna nuova evidenza
 
 - `R6_INT0_REPRIORITIZED__INTEGRATED_RUN_NOT_YET_EVIDENCED`: cambio della priorità operativa, non un nuovo run o una prova numerica/scientifica.

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict
 import hashlib
 import json
 import math
@@ -14,11 +13,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from arcana_worldsim.r6.functional_development import (  # noqa: E402
-    NodeMaterial, ReducedState, T0Profile, initial_reduced_state,
-    pure_shear_thermal_step, state_from_payload,
+    ReducedState, initial_reduced_state, pure_shear_thermal_step,
+    state_from_payload,
 )
-from arcana_worldsim.r6.functional_spatial_support import (  # noqa: E402
-    audit_pair_5_11,
+from arcana_worldsim.r6.int0a_pipeline import (  # noqa: E402
+    advance_pair, prepare_pair_5_11, trajectory_document,
 )
 
 SECONDS_PER_YEAR = 31_557_600.0
@@ -36,53 +35,6 @@ def _sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def _profile_from_mapping(side: dict) -> T0Profile:
-    raw = side["t0_profile"]
-    materials = tuple(NodeMaterial(**item) for item in raw["material_properties"])
-    temperatures = tuple(float(item) for item in raw["temperature_k"])
-    return T0Profile(
-        support_id=str(side["support_id"]), support_class=str(side["support_class"]),
-        scenario_id=str(raw["scenario_id"]), crust_m=float(raw["crust_m"]),
-        model_base_m=float(raw["model_base_m"]),
-        surface_temperature_k=float(raw["surface_temperature_k"]),
-        base_temperature_k=temperatures[-1],
-        surface_heat_flow_w_m2=float(raw["surface_heat_flow_w_m2"]),
-        z_m=tuple(float(item) for item in raw["z_m"]), temperature_k=temperatures,
-        materials=materials, material_roles=tuple(raw["material_roles"]),
-        provenance=dict(raw["support_lineage"]))
-
-
-def _center_xyz(row: int, column: int, radius_m: float) -> tuple[float, float, float]:
-    latitude = math.radians(-90.0 + row + 0.5)
-    longitude = math.radians(-180.0 + column + 0.5)
-    return (radius_m * math.cos(latitude) * math.cos(longitude),
-            radius_m * math.cos(latitude) * math.sin(longitude),
-            radius_m * math.sin(latitude))
-
-
-def _distance_m(first: tuple[float, float, float], second: tuple[float, float, float]) -> float:
-    dot = sum(a * b for a, b in zip(first, second))
-    norm_first = math.sqrt(sum(x * x for x in first))
-    norm_second = math.sqrt(sum(x * x for x in second))
-    cosine = max(-1.0, min(1.0, dot / (norm_first * norm_second)))
-    return norm_first * math.acos(cosine)
-
-
-def _advance_pair(profiles: list[T0Profile], width_m: float, ux_m_per_year: float,
-                  kinematic_fraction: float, duration_s: float) -> tuple[list[ReducedState], list[dict]]:
-    initial = [initial_reduced_state(profile, initial_width_m=width_m) for profile in profiles]
-    result, diagnostics = [], []
-    for state in initial:
-        evolved, diag = pure_shear_thermal_step(
-            state, duration_s=duration_s,
-            extension_velocity_m_s=ux_m_per_year / SECONDS_PER_YEAR,
-            maximum_kinematic_fraction_per_substep=kinematic_fraction,
-        )
-        result.append(evolved)
-        diagnostics.append(asdict(diag))
-    return result, diagnostics
-
-
 def _area_relative_errors(states: list[ReducedState], width_m: float) -> list[float]:
     return [abs((state.width_m * state.lithosphere_m)
                 - (width_m * state.initial_lithosphere_m))
@@ -92,7 +44,7 @@ def _area_relative_errors(states: list[ReducedState], width_m: float) -> list[fl
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=ROOT)
-    parser.add_argument("--expected-branch", default="r6/tectonics-drift-functional-mvp")
+    parser.add_argument("--expected-branch", default="r6/si1-bandwidth-f2av")
     parser.add_argument("--output-relative", type=Path, default=OUTPUT_RELATIVE)
     args = parser.parse_args()
     root = args.repository_root.resolve()
@@ -103,30 +55,30 @@ def main() -> int:
     if output_path.exists():
         parser.error(f"refusing to overwrite existing output: {args.output_relative.as_posix()}")
 
-    assessment = audit_pair_5_11(root, expected_branch=args.expected_branch)
-    selected = next(row for row in assessment["edge_matrix"]
-                    if row["boundary_id"] == assessment["selected_boundary_id"])
+    plan = prepare_pair_5_11(root, expected_branch=args.expected_branch)
+    assessment = plan.assessment
+    selected = plan.selected_section
     sides = selected["sides_plate_a_then_plate_b"]
-    profiles = [_profile_from_mapping(side) for side in sides]
+    profiles = list(plan.profiles)
     if len(profiles) != 2 or profiles[0].material_roles != profiles[1].material_roles:
         raise RuntimeError("TWO_SIDED_MATERIAL_ROLE_CONSISTENCY_FAILED")
     if not all(len(p.temperature_k) == len(p.z_m) == len(p.materials) for p in profiles):
         raise RuntimeError("T0_PROFILE_CARDINALITY_MISMATCH")
     edge = selected["parent_grid_edge"]
-    width = _distance_m(_center_xyz(sides[0]["row"], sides[0]["column"],
-                                   float(assessment["source_grid_radius_m"])),
-                        _center_xyz(sides[1]["row"], sides[1]["column"],
-                                   float(assessment["source_grid_radius_m"])))
+    width = plan.initial_width_m
     if not math.isfinite(width) or width <= 0:
         raise RuntimeError("ENGINEERING_XE_SUPPORT_DISTANCE_INVALID")
-    ux = float(selected["signed_Ux_m_per_year"])
+    ux = plan.signed_extension_m_per_year
     if ux <= 0:
         raise RuntimeError("SELECTED_SECTION_IS_NOT_EXTENSIONAL")
     duration_s = ENGINEERING_DURATION_YEARS * SECONDS_PER_YEAR
 
     resolution_results = []
     for fraction in RESOLUTION_FACTORS:
-        evolved, diagnostics = _advance_pair(profiles, width, ux, fraction, duration_s)
+        evolved, diagnostics = advance_pair(
+            plan, duration_s=duration_s,
+            maximum_kinematic_fraction_per_substep=fraction)
+        evolved, diagnostics = list(evolved), list(diagnostics)
         deltas = [max(abs(a - b) for a, b in zip(profile.temperature_k, state.temperature_k))
                   for profile, state in zip(profiles, evolved)]
         resolution_results.append({
@@ -145,8 +97,11 @@ def main() -> int:
 
     # The middle resolution is the explicit deterministic replay/restart case.
     middle_fraction = RESOLUTION_FACTORS[1]
-    direct, _ = _advance_pair(profiles, width, ux, middle_fraction, duration_s)
-    replay, _ = _advance_pair(profiles, width, ux, middle_fraction, duration_s)
+    direct, _ = advance_pair(plan, duration_s=duration_s,
+                             maximum_kinematic_fraction_per_substep=middle_fraction)
+    replay, _ = advance_pair(plan, duration_s=duration_s,
+                             maximum_kinematic_fraction_per_substep=middle_fraction)
+    direct, replay = list(direct), list(replay)
     direct_hashes = [_sha256_bytes(_canonical_bytes(state.payload())) for state in direct]
     replay_hashes = [_sha256_bytes(_canonical_bytes(state.payload())) for state in replay]
     half = duration_s / 2.0
@@ -276,6 +231,13 @@ def main() -> int:
                 for row in resolution_results],
             "comparison_is_numerical_refinement_only": True},
         "REPLAY_RESTART.json": run_result["replay_restart"],
+        "CANDIDATE_TRAJECTORY.json": trajectory_document(
+            plan, tuple(direct), duration_s=duration_s,
+            numerical_configuration={
+                "maximum_kinematic_fraction_per_substep": middle_fraction,
+                "kernel": "functional_development.pure_shear_thermal_step",
+                "duration_years": ENGINEERING_DURATION_YEARS,
+            }),
     }
     output_path.mkdir(parents=True)
     hashes = {}
@@ -284,7 +246,19 @@ def main() -> int:
         (output_path / name).write_bytes(data)
         hashes[name] = _sha256_bytes(data)
     run_result["artifact_sha256"] = hashes
-    (output_path / "RUN_RESULT.json").write_bytes(_canonical_bytes(run_result))
+    run_result_bytes = _canonical_bytes(run_result)
+    (output_path / "RUN_RESULT.json").write_bytes(run_result_bytes)
+    output_manifest = {
+        "schema": "ARCANA_R6_TF2B_INT0_OUTPUT_MANIFEST_V1",
+        "canonical_publication": False,
+        "provider_identities": dict(plan.provider_identities),
+        "configuration_sha256": plan.configuration_sha256,
+        "files": {name: {"bytes": len(_canonical_bytes(value)), "sha256": hashes[name]}
+                  for name, value in artifacts.items()},
+        "RUN_RESULT.json": {"bytes": len(run_result_bytes),
+                            "sha256": _sha256_bytes(run_result_bytes)},
+    }
+    (output_path / "CANDIDATE_MANIFEST.json").write_bytes(_canonical_bytes(output_manifest))
     print(json.dumps({"decision": run_result["decision"],
         "selected_boundary_id": selected["boundary_id"],
         "selected_support_ids": section["support_ids"], "signed_Ux_m_per_year": ux,

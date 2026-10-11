@@ -1,5 +1,11 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-12 — INT-0A integration code ready; no candidate run
+- Decisione: `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`. Nuovo orchestratore `src/arcana_worldsim/r6/int0a_pipeline.py`; il runner T-F2B consuma il binding API e registrerà `CANDIDATE_TRAJECTORY.json` nel manifest per un eventuale run. Aggiornato il branch predefinito atteso dal runner.
+- Data flow sintetico verificato: supporto/kinematics 5:11 + profili T0 → `pure_shear_thermal_step`; le variazioni di forcing e profilo cambiano l'output downstream. B0 state/checkpoint/forcing/replay records fanno round-trip; il replay resta descriptor-only e non viene registrato nel `HistoryStore` canonico.
+- Verifica: 20 test offline mirati PASS, inclusi supporto, kernel, restart e assenza di HistoryStore; nessun run o output INT-0B creato. Un tentativo provider-backed precedente non è completato perché l'input esterno necessario non è presente nel checkout.
+- Next: INT-0B, finestra engineering di 1.000 anni sulla coppia continentale 5:11, soltanto dopo autorizzazione distinta con input/hash, budget, ambiente, output root e stop definiti. Coppia B6 rift 1:3 esclusa. Gate F2A-V/Solver/mechanics/WORLD_HISTORY invariati.
+
 ## 2026-10-11 — W3-A contrato provenance, recupero e riconciliazione GitHub
 - **Provenance dell'audit:** patch `0001-docs-r6-preserve-W3-A-identity-provenance-contract.patch` esportata da commit locale Windows `f6d0ff2f17547d530ae8a37145c94e788732ef2e` (parent `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`); soli sei file documentali. Contratto ricostruito byte-esatto dal patch SHA256 `6f94d4cbcda52eab351e1aa106bcd7d2c1c25f00b78834d2b2b7f3f8d41e2df9` e Git blob `c3fdf5dbc92454e406b7bde84765e0cab76d90de`. Conflitto con i tre commit documentali remoti W2/E1 risolto preservando integralmente il ledger remoto e aggiungendo W3-A come gate più recente.
 - **Esito:** `W3A_IDENTITY_CONTRACT_DEFINED__RUNTIME_BINDING_AND_MPI_WIDE_STOP_UNPROVEN`. Audit statico; nessun test, compilazione, esecuzione MPI/ShellSet/Solver o accesso Fair per W3-A; stop locale `ERROR STOP 86` non prova MPI-wide. `ModNum` deriva dal tag; `rpeat=0` è valido nel caso SF; FEM ordinal è per-`Pure`.

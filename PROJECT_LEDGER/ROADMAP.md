@@ -4,8 +4,8 @@
 
 | Gate | Risultato atteso | Stato |
 |---|---|---|
-| **INT-0A (NEXT)** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | Audit, implementazione, test offline |
-| **INT-0B** | Esecuzione numerica non canonica, campioni, confronto, restart, manifest | Serve gate di autorizzazione specifica |
+| **INT-0A** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`; suite offline mirata 20 PASS |
+| **INT-0B (NEXT)** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Input esterno non disponibile nel checkout; autorizzazione distinta e preflight input/budget richiesti |
 | **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Dopo risultati INT-0B |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
