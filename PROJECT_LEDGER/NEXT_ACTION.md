@@ -1,14 +1,18 @@
-# NEXT: F2B-N2C — `N2C_POST_VBCS_SNAPSHOT_CAPTURE_IMPLEMENTATION`
+# NEXT: F2B-N2C-W2 — candidate post-VBCs capture integration design
 
-## Stato N2B
-Decisione `N2B_SYNTHETIC_CROSS_LANGUAGE_INTEROP_PASS__SI1_CAPTURE_NOT_QUALIFIED`: GNU Fortran 13.3 ha 21 test PASS sul commit `9ebc78bbccc6ae5cb64eac15b67fd88f4c9ea406`; NVFORTRAN 25.11 ha 29 test PASS sul commit `2d6021ff0036d350b12a583d9eff1d03e32a7239`. Entrambi gli esiti e gli SHA dei log Fair sono riferiti dall'operatore, non ricalcolati da Codex Windows. Riguardano esclusivamente fixture sintetiche. La precedente attestazione di compile-only NVFORTRAN resta separata.
+## Stato N2C-W1
+Decisione `N2C_W1_SYNTHETIC_FORTRAN_CAPTURE_CROSS_COMPILER_PASS__SI1_INTEGRATION_NOT_QUALIFIED`: 25 passed per GNU Fortran 13.3 e 25 passed per NVFORTRAN 25.11, entrambi sul commit `7a4119112a16e32c8cbdae5248ebd91f4020a458`, Fair Conda `arcana-r6-linux`, Python 3.12.14 / pytest 9.1.1. Esiti e SHA dei log sono riferiti dall'operatore; Codex Windows non ha letto i log remoti. I precedenti run falliti sul commit `57b2bd1f` restano storici e distinti; il cwd dell'harness è stato corretto nel commit testato.
 
-## Incarico immediato proposto
-Preparare la prima implementazione diagnostica per la cattura degli originali A0/b0 nel punto candidato ShellSet post-`VBCs`, pre-`Solver`. L'opzione deve essere disabilitata per default. Verificare offline su fixture sintetiche soltanto: non allocare né assemblare la matrice SI1 reale e non invocare `DGBSV`.
+## Incarico immediato proposto: F2B-N2C-W2
+Progettare un overlay candidato separato dal source lock storico per collegare il writer W1 al punto ShellSet post-`VBCs` e pre-`Solver`. Prima di implementare, chiudere/documentare questi requisiti:
 
-Il contratto deve richiedere un binding esplicito e verificabile alla specifica invocazione FEM e iterazione (run/build/input/DOF identity inclusi come previsto dal contratto N2B). La cattura deve fallire closed prima che il flusso possa raggiungere Solver se identificazione, completezza, snapshot, hash/integrità o scrittura/chiusura non risultano validi. Un hook presente o una fixture PASS non autorizza l'esecuzione ShellSet su Fair e non dimostra integrazione/runtime SI1.
+1. Propagazione verificabile dell'identità worker → ciclo FEM e binding autorevole di run, modello, rank, rpeat, iterazione, stato di ingresso, input e ordinamento DOF.
+2. Sidecar/metadati d'invocazione e validazione esterna del payload; il digest B ricevuto dal writer non è prova autonoma.
+3. Stop obbligatorio prima di Solver per `CAPTURE_ONLY` e per ogni fallimento, dimostrato nel flusso candidato.
+4. Separazione esplicita dal source lock storico tramite identità e build della variante candidata.
+5. Verifica dell'applicabilità al sistema SI1: i limiti dimensionali correnti sono quelli del codec/test sintetico e non budget RAM Fair; risorse e enforcement vanno attestati separatamente, senza cap arbitrari.
 
-Prima della patch seguire il workflow di `PROCEDURE.md`: development/review su Windows, commit/push del codice attraverso GitHub, Fair soltanto dopo autorizzazione e commit verificato. Per N2C non assumere alcuna autorizzazione HPC implicita.
+Per W2 mantenere review/sviluppo su Windows e workflow `PROCEDURE.md`. Nessun test Fair, build ShellSet, run SI1, MPI o Solver è autorizzato implicitamente dal PASS W1.
 
 Preservare `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 

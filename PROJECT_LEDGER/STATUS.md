@@ -1,10 +1,17 @@
+## F2B-N2C-W1 — qualifica sintetica cross-compiler (2026-10-11)
+- Decisione: `N2C_W1_SYNTHETIC_FORTRAN_CAPTURE_CROSS_COMPILER_PASS__SI1_INTEGRATION_NOT_QUALIFIED` per il writer standalone e le fixture sintetiche; GNU Fortran 13.3 e NVFORTRAN 25.11 hanno ciascuno 25 passed, 0 failed, 0 skipped sul commit testato `7a4119112a16e32c8cbdae5248ebd91f4020a458`.
+- Gli esiti Fair e gli SHA dei log sono riferiti dall'operatore, non letti o ricalcolati da Codex Windows. I due run precedenti sul commit `57b2bd1f` restano 24 passed / 1 failed ciascuno; il failure era il cwd inesistente dell'harness, corretto in `7a411911` e poi superato dai rerun distinti.
+- Questo PASS non attesta cattura post-VBCs reale, identity FEM/run/model/rank/input, autenticazione autonoma del digest nel writer, durabilità/atomicità, acquisibilità della matrice SI1, validità numerica/fisica o Solver.
+- Prossimo gate proposto: F2B-N2C-W2, overlay candidato separato dal source lock, dopo aver risolto le cinque precondizioni descritte in `NEXT_ACTION.md`.
+- Gate invariati: `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-N2B-V — interoperabilità sintetica GNU/NVFORTRAN consolidata (2026-10-11)
 - Decisione: `N2B_SYNTHETIC_CROSS_LANGUAGE_INTEROP_PASS__SI1_CAPTURE_NOT_QUALIFIED`. I due esiti Fair sono riferiti dall'operatore; Codex Windows non ha letto né ricalcolato gli SHA dei log remoti.
 - GNU Fortran 13.3.0: commit testato `9ebc78bbccc6ae5cb64eac15b67fd88f4c9ea406`; Conda `arcana-r6-linux`, Python 3.12.14, pytest 9.1.1; 21 passed, 0 failed, 0 skipped, exit 0. Log e SHA256 riportato `b7a953072d9b142a8836190454cccbebb5399f3fc8b71b50057c6998a94cf0ef` in `EVIDENCE_INDEX.md`.
 - NVFORTRAN 25.11-0: commit testato `2d6021ff0036d350b12a583d9eff1d03e32a7239`; flag `-O0 -Kieee -Mnodaz -Mnoflushz -Mbounds`; 29 passed, 0 failed, 0 skipped, exit 0. Log SHA256 riportato `b219f790e1c45369a55c12cf60a635d71068a05bda774e5a1577116cb02c945b`. La precedente attestazione NVFORTRAN di sola compilazione resta un record distinto e storico.
 - Scope: fixture sintetiche, entrambi i versi writer/reader, controlli negativi, integrità bitwise e metriche rispetto a oracle indipendente secondo i test eseguiti. Il precedente skip locale Windows resta una fase storica; non è lo stato corrente dell'interoperabilità fixture.
 - Non dimostrati: cattura A0/b0 del runtime ShellSet reale, identità di invocazione FEM/iterazione, snapshot SI1 durevole, budget memoria/I/O, qualificazione Solver o accettazione numerica/scientifica.
-- Prossima azione: F2B-N2C `N2C_POST_VBCS_SNAPSHOT_CAPTURE_IMPLEMENTATION`, prima implementazione diagnostica disabilitata per default, validabile offline e solo su fixture; nessuna matrice SI1 reale o DGBSV. Richiedere binding esplicito a invocazione FEM/iterazione e fail-closed prima del Solver su qualsiasi errore di identità/snapshot/integrità/scrittura. Il hook non autorizza esecuzione ShellSet su Fair.
+- Prossima azione storica, completata da W1: implementare la foundation sintetica N2C disabilitata per default. La next action corrente è F2B-N2C-W2, riportata nel blocco in cima e in `NEXT_ACTION.md`.
 - Gate invariati: `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ## F2B-N2B — stato preliminare prima del test runtime NVFORTRAN (storico; superato dal riepilogo N2B-V sopra)

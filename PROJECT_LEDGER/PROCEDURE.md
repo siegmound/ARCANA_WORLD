@@ -63,7 +63,7 @@ Il percorso predefinito per sviluppo e prove Linux è **Windows Codex → GitHub
 ### G5. Compilatori e flag
 - Evidenze riportate per Fair: GNU Fortran 13.3.0 (`/usr/bin/gfortran`) e NVFORTRAN 25.11-0. Rilevare versione e disponibilità nell'ambiente della prova; non trattare questi dati storici come verifica automatica della sessione corrente.
 - Usare flag specifici del compilatore. N2B GNU: `-std=f2008 -O0 -fno-fast-math -fcheck=all`. NVFORTRAN: `-O0 -Kieee -Mnodaz -Mnoflushz -Mbounds`. Non passare flag GNU a NVFORTRAN.
-- Risultati riportati: GNU N2B ha eseguito le fixture cross-language; NVFORTRAN ha soltanto compilato la fixture. La compilazione NVFORTRAN non è una prova di interoperabilità runtime, e una prova GNU non implica una prova NVFORTRAN.
+- Risultati sintetici Fair riportati dall’operatore: N2B ha fixture cross-language runtime con GNU Fortran e NVFORTRAN; N2C-W1 ha writer-fixture runtime con entrambe le toolchain (25 passed ciascuna sul commit `7a4119112a16e32c8cbdae5248ebd91f4020a458`). Gli SHA dei log N2C-W1 sono registrati nel ledger come riferiti dall’operatore, non ricalcolati su Windows. La precedente attestazione NVFORTRAN compile-only resta distinta e storica. Ogni risultato è specifico per toolchain e fixture: compile non equivale a runtime, GNU non implica NVFORTRAN, e nessuna prova sintetica qualifica ShellSet SI1 o autorizza Solver.
 
 ### G6. Evidenze Fair e ritorno a Windows
 - Conservare gli output secondo il contratto, normalmente fuori dal worktree in `$HOME/ARCANA_WORLD_QUALIFICATION_EVIDENCE`. Registrare commit testato, toolchain, comando, exit code, risultato, percorso e SHA256 dei byte acquisiti.

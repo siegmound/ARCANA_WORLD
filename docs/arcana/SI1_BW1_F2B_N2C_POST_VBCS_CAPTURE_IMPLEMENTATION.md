@@ -122,8 +122,8 @@ was made.
 
 ## W1 bounded standalone capture foundation
 
-**Current workpack result:**
-`N2C_W1_CAPTURE_FOUNDATION_IMPLEMENTED__FORTRAN_EXECUTION_PENDING`.
+**Current W1 result:**
+`N2C_W1_SYNTHETIC_FORTRAN_CAPTURE_CROSS_COMPILER_PASS__SI1_INTEGRATION_NOT_QUALIFIED`.
 
 The initial blocked N2C finding above is retained as the historical result
 for the proposed ShellSet capture. W1 addresses the concerns in a deliberately
@@ -163,18 +163,37 @@ capture.
   canonical A0/b0 identity from the independent oracle, and compares all
   coefficient/RHS bits. A digest supplied by the writer alone is not proof.
 
-### Validation performed
+### Earlier Windows validation and Fair correction history
 
-The Windows Python suite for the new W1 tests returned **4 passed, 1 skipped**.
-The skipped test is the compiler-backed Fortran execution because neither
-`gfortran` nor `nvfortran` is available in this environment; status:
-`COMPILE_NOT_TESTED_WINDOWS`. Static tests cover source line-length limits,
-the no-allocation/no-solver structure, default-off/capture-only/failure gate
-shape, Python oracle checking, and fixture cases including variable bands,
-incomplete shape, nonfinite input, context rejection, collision, and a missing
-parent directory representing an I/O failure. The latter compiled-path cases
-remain unexecuted until a supported compiler runs the fixture. No mock is
-reported as a Fortran execution pass.
+The initial Windows W1 tests returned 4 passed, 1 skipped, with
+`COMPILE_NOT_TESTED_WINDOWS`. The first Fair GNU/NVFORTRAN attempts on commit
+`57b2bd1fb47c9a9bc6bfa33f29d23af18870a190` each returned 24 passed, 1 failed:
+the Python harness selected the intentionally absent output parent as the
+subprocess working directory, so the driver never reached its I/O check. The
+test-only correction changed `cwd` to the existing executable directory in
+commit `7a4119112a16e32c8cbdae5248ebd91f4020a458`. Those failed records remain
+failed; the later runs below are distinct corrected reruns.
+
+### Corrected Fair cross-compiler runs
+
+Both corrected runs tested commit `7a4119112a16e32c8cbdae5248ebd91f4020a458`
+in Conda environment `arcana-r6-linux`, Python 3.12.14, pytest 9.1.1. The
+results and log SHA256 values below are **reported by the Fair operator**;
+Codex Windows did not read or recalculate the remote log bytes.
+
+- GNU Fortran 13.3.0: **25 passed, 0 failed, 0 skipped**, exit 0. Log:
+  `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W1/N2C_W1_gfortran_20261011T105150Z.log`;
+  reported SHA256 `a8bb7959edcf10c125597f0b00a5bbe912358201176de6ee84336fe5c4d5a892`.
+- NVFORTRAN 25.11-0: **25 passed, 0 failed, 0 skipped**, exit 0. Log:
+  `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W1/N2C_W1_nvfortran_20261011T105152Z.log`;
+  reported SHA256 `19edadd6dfdb1d1395894a5e05117782d348270237dec12c541009b36f347782`.
+
+The corrected tests exercise the synthetic variable-band writer, both
+statuses and failure paths, bitwise payload/oracle checks, and the missing-
+parent I/O test. This is cross-compiler evidence for the standalone fixture
+writer only. The previous Windows result remains a historical local test with
+the compiler execution skipped; the two earlier Fair failures are not
+rewritten.
 
 ### Authority and durability limits still open
 
@@ -189,10 +208,14 @@ the payload and oracle after the diagnostic process terminates. Partial files
 may remain with `.tmp` names and are non-authoritative. No SI1 capture, ShellSet
 integration, Fair execution, Solver entry, or canonical action occurred.
 
-The next technical phase remains N2C-W2: a separately reviewed development
-overlay that binds this writer to the post-VBCs/pre-Solver point, supplies
-authoritative invocation context, and gates every outcome before Solver.
-W1 completion does not authorize W2 execution on Fair or a real SI1 run.
+The next technical phase is F2B-N2C-W2: design/review a separate candidate
+overlay for the post-VBCs/pre-Solver point. Before implementation it must
+resolve worker-to-FEM identity propagation; authoritative run/model/rank/
+rpeat/iteration/input-state sources; external payload and sidecar validation;
+an unconditional pre-Solver stop; and applicability beyond W1's synthetic
+codec/test bounds without confusing those bounds with Fair RAM limits. The
+writer's context is still TEST_ONLY and not serialized or bound to ShellSet.
+W1 does not authorize W2 execution on Fair, a real SI1 capture, or Solver.
 
 ## Gates preserved after W1
 

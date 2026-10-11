@@ -1,5 +1,5 @@
 # Roadmap R6 — dipendenze e gates, non roadmap a timestep fissi
-**Aggiornata:** 2026-10-10. Stati: `EVIDENCED` = verifica nel proprio scope; `PARTIAL` = lavoro qualificato ma gap; `BLOCKED` = autorità o evidenza insufficiente; `PLANNED` = da realizzare. Evitare percentuali arbitrarie.
+**Aggiornata:** 2026-10-11. Stati: `EVIDENCED` = verifica nel proprio scope; `PARTIAL` = lavoro qualificato ma gap; `BLOCKED` = autorità o evidenza insufficiente; `PLANNED` = da realizzare. Evitare percentuali arbitrarie.
 
 | Track | Stato | Completato / riferimento | Gap e next gate |
 |---|---|---|---|
@@ -7,7 +7,7 @@
 | B. WORLD_HISTORY core | EVIDENCED nel scope | B0 HistoryStore/query/replay/refinement/retention; B6M0 T0 genesis a 210 Ma in store governato | closure replay per più domini e finestre reali |
 | C. Prima cinematica / rift B6 | PARTIAL/BLOCKED | B6K candidato isolato; B6N4-A significatività; B6N6 contratto temporale adattivo | B6N5 autorità evoluzione post-rift `UNKNOWN_NOT_GOVERNED`; non inventare dt2 |
 | D. ShellSet runtime upstream | EVIDENCED nel scope | Fair: esempi stock, 9/9 modelli, esecuzione parallela, LAPACK smoke; carico runtime ARCANA qualificato separatamente | Non equivale a ARCANA T0 full mechanics |
-| E. ShellSet ARCANA SI1/BW1 | PARTIAL/BLOCKED | BW0/F1; F2-A/F2A-V; D1A/D1B; D2; D3–D3D-RO6; N1/T1; N2A; N2B synthetic cross-language fixture PASS separately reported with GNU Fortran 13.3 and NVFORTRAN 25.11 | Synthetic interop does not qualify real SI1 capture, solver, numerical acceptance or Fair resources. Proposed next F2B-N2C: default-disabled post-VBCs/pre-Solver A0/b0 snapshot capture, offline fixtures only, explicit FEM-call/iteration binding and fail-closed gate. All scientific and Solver prohibitions remain. |
+| E. ShellSet ARCANA SI1/BW1 | PARTIAL/BLOCKED | BW0/F1; F2-A/F2A-V; D1A/D1B; D2; D3–D3D-RO6; N1/T1; N2A/N2B; N2C-W1 standalone capture fixture: GNU Fortran 13.3 and NVFORTRAN 25.11 each 25/25 PASS (Fair operator-reported) | W1 cross-compiler fixture PASS does not qualify real SI1 capture, invocation provenance, solver, numerical acceptance or Fair resources. Proposed next F2B-N2C-W2 candidate overlay design: authoritative context/sidecar, stop-before-Solver proof, and separate review of synthetic bounds versus Fair resources. All scientific and Solver prohibitions remain. |
 | F. Modelli ambientali e risorse | PARTIAL/BLOCKED | BIOME4 input contract frozen; HRAB/parent-material research legacy da rivalutare come riuso | provider temporalmente idonei, adapter geologia/clima/idrologia/soil |
 | G. Deep, ecosistemi e dinamiche biologiche | PLANNED per integrazione R6 | Canon/contratti Deep e backends legacy riutilizzabili con verifica | fisica/authority e interfacce causali, mai imporre risultati legacy |
 | H. Popoli, civiltà, distribuzione risorse | PLANNED per integrazione R6 | Esperienza R3–R5, non target | co-evoluzione governata con biosfera/ambiente/Deep |
