@@ -1,3 +1,24 @@
+# NEXT: F2B-N2C-W3 — contratto di identità autorevole e provenance, solo offline
+
+## Stato verificato e fonte
+- W2 source commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; E1 `N2C_W2_E1_FAIR_OPERATOR_REPORTED_INTEGRITY_PASS__RUNTIME_NOT_QUALIFIED`. Su Fair checksum manifest 103/103, `CHECKSUM_EXIT=0`, controllo Python `E1_SOURCE_AND_OBJECT_INTEGRITY_PASS`, 14 oggetti intero candidate call graph e 2 bridge objects, builder/manifest e source lock/15 membri conformi secondo transcript dell'operatore.
+- Il risultato è un **PASS locale Fair riferito dall'operatore**, non prova autonoma Windows; hash primari e locator in `EVIDENCE_INDEX.md`. Compilazione W2 con NVFORTRAN 25.11, senza linking, runtime MPI, ShellSet, Solver o DGBSV.
+- Non ripetere W2 per abitudine. Nessuna autorizzazione a run diagnostici o produzione deriva da questa chiusura.
+
+## Prossima attività: W3, prima design/review con Codex Windows
+1. Audit sorgenti/contratti del punto `ShellSetMain → Shells_v5p0 → Pure → FEM` e dei provider/authority già presenti: individuare gli **owner autentici** dei metadati di `run_id`, `model_id`, communicator rank (0 incluso), `rpeat`, iterazione e ordinale FEM, input/state/constraint digest, source/build identity e DOF-order. I cinque campi locali W2 non sono sufficienti. Non creare ID fittizi o source digest forniti dal solo writer.
+2. Definire contratto tipizzato per associazione univoca `FEM invocation → A0/b0`, sidecar, digest indipendente e validatore di provenienza; flag UNKNOWN e fail-closed obbligatori quando un'autorità manca. Dichiarare la semantica e l'ambito del rank MPI 0: nel W2 attuale `process_rank < 1` rifiuta erroneamente rank 0 se usato in `CAPTURE_ONLY`.
+3. Definire test sintetici di validazione positiva/negativa del contratto e dell'assenza di attraversamento del gate pre-Solver. Verificare incompleti, duplicati/collisioni, mismatch di snapshot/sidecar, interleaving rank/modello/iter/FEM, stato/source/build/DOF incompatibili e digest non autenticati. Nessuna esecuzione ShellSet/MPI/Solver; eventuali modifiche al codice solo dopo audit e scope approvato, via Codex Windows → commit/push → Fair.
+4. W4 separato per `n=128884`, `LDAB=2182`, `281224888` elementi, streaming/durabilità, file e quote scheduler. Nessun cap RAM universale 2 GB (`RESOURCE_2GB_SCOPE_UNRESOLVED`).
+
+## Invarianti
+- `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`
+- `RUNTIME_CAPTURE_AUTHORIZED=false` come vincolo operativo; nessuna pubblicazione canonica. Il nuovo W3 è progettazione offline, non autorizzazione ad assemblare/catturare SI1.
+
+---
+
+## Storico: piano W2-E1 read-only completato (2026-10-11)
+
 # NEXT: F2B-N2C-W2-E1 — riconciliazione read-only evidenze compile-only Fair
 
 ## Checkpoint e risultato

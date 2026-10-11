@@ -1,3 +1,16 @@
+## F2B-N2C-W2-E1 — verifica locale Fair di hash e membership (2026-10-11)
+- **Provenance:** `FAIR_EXTERNAL_EVIDENCE` sotto `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`, commit W2 `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`. Tutti i risultati e i digest qui sono **operator-reported** su Fair; non sono stati trasferiti/rehashati indipendentemente in Windows né estratti dalla chat come bytes.
+- **Checksum audit:** `sha256sum -c --status SHA256SUMS.txt` → `CHECKSUM_EXIT=0`; `MANIFEST_ENTRIES=103`; `ACTUAL_FILES=103` escluso `SHA256SUMS.txt`. La verifica mostra concordanza con il manifest presente sullo stesso host, non autenticazione esterna del manifest.
+- **Digest SHA256 riportati dall'operatore:**
+- `RESULT.txt`: `673b0b19fcb81495b95eb7a8a2570093d9cf5144ee581e9462d041d75b9ab8f7`
+- `SHA256SUMS.txt`: `9953c830fcf353bee97340596254f775af8e4882a42c57da7ef97ee74f2f1ee9`
+- `candidate/N2C_W2_CANDIDATE_OVERLAY.json`: `52c86d094122edd2db007a16f6e82efb12066e7cdabb3d52eaf7d447414fb318`
+- `bridge.log`: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` (log di compilazione vuoto, non indicatore di errore)
+- `full_compile.log`: `18c728e3448d137c01bc5b1c2ae4f4514da45a16012ffb8fe9faef4c78cff078`
+- **Script di audit read-only (console operatore):** `E1_SOURCE_AND_OBJECT_INTEGRITY_PASS`. Checks PASS per source commit, bridge/full compile exit 0, no linking/runtime **reported**, JSON builder == candidate manifest, SHA lock pinned `8c3174c08cb021ae90257e04880f7e96b9ecd9d4d830034bfc0ea6462ef867f2` e lock bytes on Fair, 15 membri source-locked, candidate hashes, writer/bridge/MOD_Shells/SHELLS_v5.0/ShellSetMain, 14 oggetti full exact membership, 2 oggetti bridge. Object files non sono stati collegati né eseguiti.
+- **Interpretazione:** `N2C_W2_E1_FAIR_OPERATOR_REPORTED_INTEGRITY_PASS__RUNTIME_NOT_QUALIFIED`; confermata coerenza locale delle evidenze riferite, non provenance indipendente del sorgente scientifico, linking, MPI runtime, ShellSet runtime, A0/b0, Solver o produzione WORLD_HISTORY.
+- **Next:** W3 design identity/provenance; preservare `RESOURCE_2GB_SCOPE_UNRESOLVED`, `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-N2C-W2 — NVFORTRAN compile-only on Fair (operator-reported; 2026-10-11)
 - **Provenance tag:** `FAIR_EXTERNAL_EVIDENCE`; checkout commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; reported run path `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`. Non verificati da questa chat né scaricati sul PC Windows: membri, SHA256, log e bytes non attestati indipendentemente.
 - **Toolchain confermata da output del terminale:** `mpifort` a `/opt/nvidia/hpc_sdk/Linux_x86_64/25.11/comm_libs/mpi/bin/mpifort`, `mpifort --showme:command` = `nvfortran`, compiler 25.11-0, `mpiexec --version` = OpenRTE 4.1.9a1; l'esistenza del wrapper non è prova di esecuzione MPI.

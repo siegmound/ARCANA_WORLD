@@ -1,5 +1,11 @@
 # Roadmap R6 — dipendenze e gates, non roadmap a timestep fissi
 
+## N2C-W2-E1 — verifica checksum, source e oggetti (2026-10-11)
+- **E1 EVIDENCED, operator-reported Fair:** `sha256sum -c` exit 0, 103 voci corrispondenti a 103 file; audit sorgenti/manifest e 14+2 oggetti concluso `E1_SOURCE_AND_OBJECT_INTEGRITY_PASS`. Fonte `FAIR_EXTERNAL_EVIDENCE` e SHA primari in `EVIDENCE_INDEX.md`. Nessun rehash indipendente dei file in Windows.
+- **W2 stato:** NVFORTRAN 25.11 compile-only, source identity `fcb94f5c...`; **nessun linker/runtime** e nessun sistema A0/b0 SI1 verificato. Il precedente record di compilazione è preservato.
+- **NEXT W3:** contratto di identità autorevole, invocation/sidecar/digest con test offline e fail-closed; rank 0 MPI legittimo. **W4 distinto:** scala codec, I/O/risorse. Ogni gate scientifico/Solver invariato.
+
+
 ## N2C-W2 — Fair NVFORTRAN compile-only operator-reported (2026-10-11)
 - **W2 COMPILE-ONLY reported PASS, NON runtime:** `mpifort` con backend `nvfortran 25.11-0`, OpenMPI 4.1.9a1, 14/14 oggetti; writer+bridge exit 0, full candidate exit 0. Commit codice `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; evidenze Fair fuori checkout in `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`; hash/log da riconciliare con E1.
 - **W2 E1 (NEXT):** raccolta mirata e verifica read-only di `RESULT.txt`, `SHA256SUMS.txt`, manifest e log preesistenti. Non ripetere la compilazione per produrre evidenza mancata.

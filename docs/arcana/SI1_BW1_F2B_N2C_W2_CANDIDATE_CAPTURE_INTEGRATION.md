@@ -1,5 +1,11 @@
 # F2B-N2C-W2 — candidate ShellSet capture integration
 
+## Evidenza W2-E1 — riconciliazione locale su Fair (2026-10-11, operator-reported)
+- Run locator immutato `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`. `CHECKSUM_EXIT=0`, `MANIFEST_ENTRIES=103`, `ACTUAL_FILES=103` (self-manifest escluso); audit Python ha riportato `E1_SOURCE_AND_OBJECT_INTEGRITY_PASS`.
+- Builder stdout JSON == candidate manifest; lock SHA `8c3174c08cb021ae90257e04880f7e96b9ecd9d4d830034bfc0ea6462ef867f2` verificato sul checkout e in candidate metadata, 15 source members e cinque file mirati con SHA conformi, 14 oggetti full + 2 bridge. SHA dei cinque artefatti in `EVIDENCE_INDEX.md`.
+- `N2C_W2_E1_FAIR_OPERATOR_REPORTED_INTEGRITY_PASS__RUNTIME_NOT_QUALIFIED`: prova di integrità locale degli output di **compile-only** riferita dall'operatore. Nessuna verifica indipendente dei file originali fuori Fair, nessun binary link, nessuna esecuzione MPI/ShellSet/Solver, né snapshot reale A0/b0. W3 è prossimo design/review offline; W4 scala rimane separato.
+
+
 ## Addendum Fair — NVFORTRAN compile-only (2026-10-11; operator-reported)
 - Marker `PASS_N2C_W2_NVFORTRAN_COMPILE_ONLY_CANDIDATE` sul sorgente `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; `BRIDGE_COMPILE_EXIT=0`, `FULL_COMPILE_EXIT=0`, 14/14 oggetti del call graph candidato compilati con wrapper `mpifort` (`nvfortran 25.11-0`, OpenMPI 4.1.9a1), flag `-O0 -Kieee -Mnodaz -Mnoflushz -Mbounds -Mbackslash`.
 - Artifacts (FAIR_EXTERNAL_EVIDENCE): `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`; i log e `SHA256SUMS.txt` restano esclusivamente su Fair, contenuti/hash NON ancora acquisiti/ricontrollati indipendentemente.

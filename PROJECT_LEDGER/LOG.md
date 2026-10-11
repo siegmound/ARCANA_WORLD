@@ -1,5 +1,12 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-11 — W2-E1 Fair checksum e provenance locale
+- **Input immutabile:** candidate W2 generato/compilato sul checkout `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; evidenza `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`.
+- **Console operatore:** `CHECKSUM_EXIT=0` (`sha256sum -c --status`); 103 righe nel manifest e 103 file effettivi escluso il manifest stesso; SHA primari in `EVIDENCE_INDEX.md`. Audit read-only Python: `E1_SOURCE_AND_OBJECT_INTEGRITY_PASS`: source commit, compile exit, no-link/no-runtime riportati, manifest builder/candidate concordi, lock SHA e byte di lock verificati su Fair, 15 membri candidati conformi, 5 sorgenti mirati conformi, 14 full-build object names esatti e 2 bridge object names esatti.
+- **Decisione limitata:** `N2C_W2_E1_FAIR_OPERATOR_REPORTED_INTEGRITY_PASS__RUNTIME_NOT_QUALIFIED`. L'operatore Fair ha verificato sul posto; non sono stati trasferiti file/manifest grezzi né effettuati hash indipendenti Windows. Nessun collegamento binario, MPI run, ShellSet runtime, factorization, Solver, SI1 A0/b0 o qualificazione scientifica.
+- **Next:** W3 offline authoritative invocation/provenance/sidecar, rank-zero semantica; W4 scale separato. Gate `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` invariati.
+
+
 ## 2026-10-11 — W2 Fair NVFORTRAN compile-only, operator-reported
 - **Codice testato:** `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` (`r6/si1-bandwidth-f2av`, checkout Fair detached); operazione: builder W2 in candidata isolata fuori checkout, compilazione `mpifort -c` con backend `nvfortran 25.11-0` e OpenMPI 4.1.9a1; prima mancante nel PATH, poi wrapper ripristinato nella sessione.
 - **Evidenza primaria riportata:** `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l` (`RESULT.txt`, `PREFLIGHT.txt`, `builder.log`, `bridge.log`, `full_compile.log`, `SHA256SUMS.txt`, manifest candidato). Console operatore: `BRIDGE_COMPILE_EXIT=0`, `FULL_COMPILE_EXIT=0`, `FULL_OBJECT_COUNT=14`, `EXPECTED_FULL_OBJECTS=14`; `LINK_PERFORMED=false`, `SHELLSET_MPI_SOLVER_RUNTIME_EXECUTED=false`; marker `PASS_N2C_W2_NVFORTRAN_COMPILE_ONLY_CANDIDATE`.
