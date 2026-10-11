@@ -1,16 +1,17 @@
-# NEXT: F2B-N2C-W3-B — owner-backed invocation context, fixture offline
+# NEXT: F2B-N2C-W3-C — real owner authority and coordinated-stop contract
 
-## Autorità e checkpoint
-- W3-A `W3A_IDENTITY_CONTRACT_DEFINED__RUNTIME_BINDING_AND_MPI_WIDE_STOP_UNPROVEN`, documento `docs/arcana/SI1_BW1_F2B_N2C_W3A_IDENTITY_PROVENANCE_CONTRACT.md` SHA256 `6f94d4cbcda52eab351e1aa106bcd7d2c1c25f00b78834d2b2b7f3f8d41e2df9`. Audit statico sul sorgente `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`, salvato nel commit locale recovery `f6d0ff2f17547d530ae8a37145c94e788732ef2e` e reintegrato sul ramo documentale più recente. La preesistente W2/E1 (NVFORTRAN compile-only e hash/membership locali riferiti da Fair) è preservata senza promozione a runtime.
-- Input: source-lock `configs/r6_shells_si1/shellset_source_lock.json` SHA256 `8c3174c08cb021ae90257e04880f7e96b9ecd9d4d830034bfc0ea6462ef867f2`; contratti D1/D1A DOF e N2A/N2B/W1/W2, tutti nel rispettivo scope. W3-A non modifica il codice Fortran.
-- Stato `RUNTIME_BINDING_UNPROVEN` e `MPI_WIDE_STOP_UNPROVEN`; nessun capture runtime autorizzato.
+## W3-B completion (offline synthetic scope only)
+`W3B_SYNTHETIC_OWNER_BINDING_VALIDATOR_PASS__RUNTIME_AUTHORITY_UNKNOWN`. Report: `docs/arcana/SI1_BW1_F2B_N2C_W3B_OFFLINE_INVOCATION_BINDING.md`. The typed validator binds synthetic owner envelopes to run/attempt, process/role/rank, master assignment/model, SH/SF and Shells/Pure/iteration/FEM sequence, effective input/state/constraints, implementation/build, DOF order, and A0/b0 identity. It reuses N2A decoding plus N2C independent-oracle verification.
 
-## Unico incarico immediato (W3-B, offline e incrementale)
-1. In Windows Codex, verificare branch/HEAD/worktree, leggere contratto W3-A e prove legacy per identificare gli **owner** di run/attempt, dispatch assignment e model digest, role/communicator/rank, fase SH/SF, call sequence gerarchica `Shells → Pure → iter → FEM`, input/stato/constraint effettivi, source/build e DOF. Dove mancano owner/evidenza, mantenere UNKNOWN; non generare autorità sintetica fuori fixture.
-2. Implementare o prototipare un **contratto minimo tipizzato** e un validator offline in namespace isolato, riusando formati e validator già presenti. Key unica per run+assignment+phase+call; distinguere tag MPI da model_id, includere rank 0 coordinatore e `rpeat=0` valido per SF/`MaxIter=0`; impedire collisioni di assignment/Pure/FEM.
-3. Fixture sintetiche positive e negative: incomplete authority, tag/worker mismatch, modello riutilizzato, input/stato/vincoli sostituiti, DOF/build divergenze, digest non indipendente, payload/sidecar manomesso, write/verify failure; asserire fail-closed e non-ingresso in un *mock Solver*. Un harness sintetico può validare il protocollo di arresto proposto ma **non prova** stop MPI-wide in ShellSet reale.
-4. Test, review Codex e source lock, staging esplicito e GitHub; ogni eventuale prova Fortran/Fair/MPI reale richiede separata autorizzazione e contratto. NON toccare `external/ShellSet-v1.1.0`, baseline F2A-V sealed, stati canonici o i 103 file E1. Distinguere W4 (scala `n=128884`, `LDAB=2182`, I/O/durabilità, budget reali).
-5. Bloccati `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; nessun Solver/DGBSV, linking eseguibile ShellSet, `mpiexec`, o capture SI1 in questo gate.
+Windows offline regressions: W3-B + N2A + N2C writer + W2 overlay = 34 passed, 1 skipped, 0 failed; the skip is the compiler-dependent Fortran writer execution (`gfortran` unavailable). `py_compile` and diff/encoding checks passed. No production identity, ShellSet runtime binding, snapshot publication, MPI-wide stop, SI1 capture, or Fair execution was established.
+
+Current changes remain `WINDOWS_WORKTREE_ONLY`: GitHub DNS prevented verification of the remote branch, so no commit/push has occurred. First review and publish the explicit W3-B code/test/report/ledger set after a successful fetch and fast-forward check.
+
+## Next bounded task: W3-C design/implementation gate
+Before candidate integration, define and review a real authority provider for run/job, master-issued assignment and stable model, communicator/process role, effective inputs/state/constraints, candidate build/executable, DOF ordering, and independent A0/b0 oracle. Specify one job-scoped capture-mode decision and coordinated worker failure/stop; the W3-B synthetic coordinator is only a model. W3-C must remain offline/static until separately authorized. Do not alter W1/W2 or invoke ShellSet, MPI, Solver, Fair, or SI1. W4 scale/streaming/durability/resource work remains a separate gate.
+
+## Preserved gates
+`BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

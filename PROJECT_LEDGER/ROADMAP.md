@@ -70,3 +70,9 @@ N2B GNU cross-language interop è riportato dall'operatore Fair come `N2B_SYNTHE
 
 ## Aggiornamento F2B-N2B-V (2026-10-11)
 GNU Fortran 13.3 ha superato 21 test fixture sul commit `9ebc78bbccc6ae5cb64eac15b67fd88f4c9ea406`; NVFORTRAN 25.11 ha superato 29 test fixture sul commit `2d6021ff0036d350b12a583d9eff1d03e32a7239`. Esiti/log SHA sono riferiti dall'operatore Fair, non ricalcolati in Windows. `N2B_SYNTHETIC_CROSS_LANGUAGE_INTEROP_PASS__SI1_CAPTURE_NOT_QUALIFIED`; nessuna promozione SI1. Next F2B-N2C è la cattura diagnostica sintetica, disabilitata per default e fail-closed post-VBCs/pre-Solver; non autorizza Fair o Solver.
+
+
+## F2B-N2C-W3-B — synthetic owner binding validator (2026-10-11)
+- `W3B_SYNTHETIC_OWNER_BINDING_VALIDATOR_PASS__RUNTIME_AUTHORITY_UNKNOWN`; typed fixture contexts, synthetic evidence joins, uniqueness/phase checks, N2A/N2C payload oracle integration, fail-before-mock-Solver and simulated worker coordination. 34 passed / 1 compiler skip across focused regressions.
+- No production owner authority, real callgraph binding, payload persistence, MPI-wide stop, SI1 codec scale, resource attestation or runtime was established. W4 remains separate.
+- **Next W3-C:** specify real owner-provider binding and coordinated job-wide capture/abort authority before any candidate runtime integration. Gates remain blocked and execution unauthorized.

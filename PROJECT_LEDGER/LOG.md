@@ -99,3 +99,11 @@ Ogni nuova riga deve indicare un preciso *scope*; se un risultato rimane blocked
 - Decisione `N2C_W2_CANDIDATE_OVERLAY_IMPLEMENTED__RUNTIME_CAPTURE_BLOCKED_BY_IDENTITY_AND_CODEC_BOUNDS`; W1 cross-compiler PASS resta sintetico e distinto. `RESOURCE_2GB_SCOPE_UNRESOLVED`: nessun cap RAM 2GB ratificato; W1 usa 2000000 elementi, non bytes/GB. Niente run ShellSet/MPI/Solver.
 - Il presente aggiornamento documentale è stato richiesto esplicitamente via GitHub; eccezione operativa al flusso ordinario Windows Codex -> GitHub, non precedente per future modifiche di codice. Prossimo gate candidato compile-only su Fair, con verifica del manifest e registrazione log/hash.
 
+
+
+## 2026-10-11 — F2B-N2C-W3-B synthetic owner-backed invocation validator
+- Baseline `db517147e4980bac5227ffd89d09710b3324746e`, branch `r6/si1-bandwidth-f2av`. Added isolated typed offline validator and tests; report `docs/arcana/SI1_BW1_F2B_N2C_W3B_OFFLINE_INVOCATION_BINDING.md`.
+- Test command: `python -m pytest -q -rs --basetemp .pytest-w3b-final tests/test_r6_si1_bandwidth_f2b_n2c_w3b_provenance.py tests/test_r6_si1_bandwidth_f2b_n2a_snapshot.py tests/test_r6_si1_bandwidth_f2b_n2c_capture_writer.py tests/test_r6_si1_bandwidth_f2b_n2c_w2_overlay.py`; result 34 passed, 1 skipped, 0 failed. The skipped test requires unavailable default `gfortran`; pytest's temporary tree was removed after completion. `py_compile` passed for new module/test; diff-check and UTF-8/LF checked.
+- Scope: fixture owner envelopes only; independent N2C payload/oracle verification; synthetic rank/call/uniqueness rules; mock Solver counter remained zero; synthetic worker coordinator stop modeled. No source-lock/upstream source change or runtime proof.
+- UNKNOWN remains for real owner authority, invocation binding, effective state, build/executable, DOF, A0/b0 capture, MPI-wide stop, codec SI1 scale and Fair resources.
+- Next: W3-C bounded design of real owner authority and coordinated stop, without runtime until a separate authorization. W4 remains separate. All F2AV/Solver/mechanics/WORLD_HISTORY gates remain blocked.

@@ -186,3 +186,9 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 - Due precedenti run sul commit `57b2bd1f` restano 24 passed / 1 failed ciascuno. Il difetto cwd dell'harness è stato corretto nel successivo commit `7a411911`; i rerun positivi sono identità distinte e non riscrivono i fallimenti. Codex Windows non ha acquisito o ricalcolato i log Fair.
 - Scope sintetico: writer ARCNSNP1, bande variabili, payload/oracle, failure paths e pre-Solver marker nella fixture. Non attesta integrazione ShellSet, binding invocation/FEM, identità runtime, hash autonomo, durabilità, SI1 matrix, risorse, accettazione numerica o autorità Solver. Nessun nuovo run HPC in questa consolidazione Windows.
 - Prossimo gate `F2B-N2C-W2`: candidato separato dal source lock, binding d'identità e sidecar, validazione esterna, stop pre-Solver e analisi dei limiti di scala senza confondere i limiti del codec/test con RAM Fair.
+
+
+## F2B-N2C-W3-B — offline synthetic only (2026-10-11)
+- Report: `docs/arcana/SI1_BW1_F2B_N2C_W3B_OFFLINE_INVOCATION_BINDING.md`. New code/test are Windows worktree-local unless later committed; no external evidence bundle was created.
+- Validator: `scripts/r6_si1_bandwidth_f2b_n2c_w3b_provenance.py`, SHA256 `5d82ce9d7a90077b86c53138fd1853dcf9ba41c959d69be29c26f6d1cc460f0d`; fixture tests: `tests/test_r6_si1_bandwidth_f2b_n2c_w3b_provenance.py`, SHA256 `7aaa495993c17e015ccc5089450cdd22a66f15d0a8e6185e831546549ebfe7d3`; report SHA256 `a00065a10889c4cfae29e1b583ae8c6bbfd9853787efb3646f71f789d797117c`. These identify local artifacts only; they are not evidence for runtime identities.
+- Offline suite (W3-B, N2A, N2C writer, W2 overlay): 34 passed, 1 skipped (compiler-dependent writer runtime; no default gfortran). Windows-local only; no Fair/MPI/ShellSet/Solver run. Synthetic fixture authority is not production owner authority.
