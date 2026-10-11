@@ -224,3 +224,9 @@ L'esecuzione parallela ShellSet su upstream ListEx1 9/9 è già evidenziata: non
 - BLOCKED_F2AV_QUALIFICATION remains unchanged. DOF_MAPPING_UNVERIFIED remains for geographic/plate attribution. Diagonal dominance is not used to infer nullspace or singularity.
 - No assembly, Solver, factorization, Fair/MPI, gauge, simulation, or canonical/WORLD_HISTORY change; F2B_SOLVER_EXECUTION_AUTHORIZED=false.
 - Next gate: F2B-D3 resource/residual acceptance design, without Solver execution.
+## F2B-N2C-W3-C-B — stato corrente (2026-10-11)
+- Decisione circoscritta: `W3C_B_SYNTHETIC_COORDINATOR_PROTOCOL_PASS__MPI_WIDE_STOP_AND_RUNTIME_AUTHORITY_UNPROVEN`.
+- Modello immutabile CAPTURE_ONLY e test sintetici implementati nei file W3C-B; suite focalizzata Windows: 21 passed, 0 failed, 0 skipped. Il risultato riguarda soltanto transizioni del modello Python.
+- Provenienza del modello: riusa `CallIdentity` W3-B e scope `SYNTHETIC_FIXTURE_ONLY`; nessuna authority owner-backed viene promossa. Source reachability del target first-FEM codificata come precondizione; guardia SF e semantica runtime restano da dimostrare.
+- Stato runtime/scientifico invariato: `BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+- MPI-wide agreement/stop, launcher behavior, real owner identities, SI1 capture e W4 scala/risorse non dimostrati. Prossimo gate limitato: review indipendente offline W3-C-C.

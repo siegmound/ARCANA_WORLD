@@ -297,3 +297,47 @@ Preserved without change: `BLOCKED_F2AV_QUALIFICATION`,
 `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`,
 `ARCANA_SI1_MECHANICS_QUALIFIED=false`,
 `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## W3-C-B implementation and synthetic test addendum (2026-10-11)
+
+The separate offline model in
+`scripts/r6_si1_bandwidth_f2b_n2c_w3c_protocol.py` implements a frozen,
+digest-bound `CAPTURE_ONLY` decision and immutable event-state transitions.
+It reuses W3-B `CallIdentity` and the fixture-only scope marker; it does not
+reuse W3-B synthetic evidence as production authority.
+
+The modeled sequence is: validate/freeze; collect rank 0's local ACK separately
+from received worker ACKs; establish all-rank digest agreement; close the ACK
+set; dispatch exactly the selected master assignment; record exactly one
+complete target capture; collect one no-Solver terminal from every rank;
+coordinate the terminal result; record modeled job exit; and only then accept
+independent external verification. Every frozen roster rank receives a
+monotonic no-Solver latch. The synthetic Solver callback sits at the modeled
+dispatch boundary and is not invoked while the latch is set.
+
+The call-path predicate distinguishes outer `MaxIter` from Pure's inner
+iteration count. SH is accepted only as first Shells call / `rpeat=1`, with
+positive outer `MaxIter`, first Pure iteration/FEM and no previous FEM/Solver.
+SF `rpeat=0` is accepted only for the first Shells call with outer
+`MaxIter=0`, positive Pure iteration capacity, and an explicitly confirmed
+synthetic SF reachability guard. The source-valid `rpeat=0` condition alone
+does not establish that guard. This constrains a capture-only target to the
+first reachable FEM; no earlier Solver invocation can be crossed.
+
+The deterministic unit model covers unanimous and missing/conflicting ACKs,
+digest and epoch/attempt mismatch, exact assignment dispatch, first-target and
+SH/SF semantics, worker/coordinator crash and timeout, terminal accounting,
+partial capture and failed post-exit verification, Solver-entry attempts on
+target and peer ranks, latch-clear attempts, and forged production scope. Test
+command `python -m pytest -q tests/test_r6_si1_bandwidth_f2b_n2c_w3c_protocol.py`
+reported **21 passed** on Windows. The initial test run exposed one incorrect
+test expectation for the state after dispatch; the assertion was corrected
+and the suite rerun successfully. No runtime, MPI, ShellSet, Fair, Solver,
+DGBSV, SI1 capture, or WORLD_HISTORY operation was performed.
+
+Decision for this bounded scope:
+`W3C_B_SYNTHETIC_COORDINATOR_PROTOCOL_PASS__MPI_WIDE_STOP_AND_RUNTIME_AUTHORITY_UNPROVEN`.
+This is a deterministic Python state-model result only. MPI agreement,
+coordinated abort/stop, launcher behavior, process exit, owner-backed
+production authority, actual A0/b0 capture and SI1 qualification remain
+unproven. W4 resource/streaming/codec qualification remains separate.

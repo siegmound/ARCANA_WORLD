@@ -1,4 +1,21 @@
-# NEXT: F2B-N2C-W3-C-B — offline capture-decision and coordinator protocol model
+# NEXT: F2B-N2C-W3-C-C — independent offline protocol review
+
+## Completed: W3-C-B synthetic coordinator protocol
+Decision: `W3C_B_SYNTHETIC_COORDINATOR_PROTOCOL_PASS__MPI_WIDE_STOP_AND_RUNTIME_AUTHORITY_UNPROVEN`. Implementation/test: `scripts/r6_si1_bandwidth_f2b_n2c_w3c_protocol.py` and `tests/test_r6_si1_bandwidth_f2b_n2c_w3c_protocol.py`; addendum in `docs/arcana/SI1_BW1_F2B_N2C_W3C_RUNTIME_AUTHORITY_AND_MPI_STOP_DESIGN.md`. The deterministic offline suite passed 16 tests on Windows. No new evidence bundle was created.
+
+The state model freezes one fixture-only decision, distinguishes rank 0's local acknowledgement from worker acknowledgements, requires the full fixed roster before assignment dispatch, allows exactly one selected assignment and first-reachable FEM capture, then requires terminal status for every rank, coordinated terminal, modeled job exit, and post-exit external verification. Every participating rank retains a no-Solver latch. The modeled Solver callback is checked at the dispatch boundary and remains uncalled.
+
+SH target semantics require first Shells call, `rpeat=1`, positive outer `MaxIter`, and first Pure iteration/FEM. SF `rpeat=0` is admitted only for a first Shells call with outer `MaxIter=0`, positive Pure iteration capacity, and an explicit synthetic final-SF reachability fact. That fact is not present as production authority. Crash/timeout are `UNKNOWN`; protocol conflicts and invalid events are `GLOBAL_FAILURE`.
+
+## Next bounded gate — W3-C-C
+Perform an independent offline review of the state model, invariants, and tests; check source-reachability assumptions against W3-C-A. This review must not implement an MPI protocol or modify W1/W2 runtime. Any later candidate integration, compilation, Fair access, MPI, or ShellSet execution requires a separate explicit authorization and owner-backed production authorities. Keep W4 codec/scale/resource qualification separate.
+
+## Preserved gates
+`BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+## Historical W3-C-B plan (completed)
 
 ## Completed W3-C-A static design
 Decision: `W3C_A_DESIGN_COMPLETE__RUNTIME_AUTHORITY_AND_MPI_STOP_UNPROVEN`. Report: `docs/arcana/SI1_BW1_F2B_N2C_W3C_RUNTIME_AUTHORITY_AND_MPI_STOP_DESIGN.md`. The report maps each W3-B field to the actual ShellSet producer/call boundary and states which external owner record is missing. No runtime behavior is promoted by this design.
