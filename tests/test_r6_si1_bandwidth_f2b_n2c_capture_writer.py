@@ -82,7 +82,7 @@ def _run(exe: Path, mode: str, ab, b0, kl: int, ku: int, target: Path, marker: P
     source_digest = digest or canonical_oracle_sha256(ab, b0, kl=kl, ku=ku)
     proc = subprocess.run(
         [str(exe), mode, str(n), str(kl), str(ku), str(target), source_digest, case, str(marker)],
-        cwd=target.parent,
+        cwd=exe.parent,
         text=True,
         capture_output=True,
         check=False,
