@@ -101,6 +101,12 @@ Ogni nuova riga deve indicare un preciso *scope*; se un risultato rimane blocked
 
 
 
+## 2026-10-11 — F2B-N2C-W3-C-A static authority and stop design
+- Added `docs/arcana/SI1_BW1_F2B_N2C_W3C_RUNTIME_AUTHORITY_AND_MPI_STOP_DESIGN.md`; decision `W3C_A_DESIGN_COMPLETE__RUNTIME_AUTHORITY_AND_MPI_STOP_UNPROVEN`. Static trace only; no compile, tests, Fair, MPI, ShellSet, Solver, DGBSV, capture, or canonical operation.
+- Mapped W3-B identity groups to ShellSetMain dispatch, Shells SH/SF, Pure/FEM, VBCs/Solver boundaries and named authority gaps. Existing R6 SI1 diagnostic contract is not a production run/assignment provider; W3-B owner records remain synthetic.
+- Recommendation: one immutable job decision ACKed by all ranks before dispatch; single first-reachable FEM target; job-wide no-Solver latch; dedicated per-rank terminal status/stop protocol. Worker/coordinator failure and MPI/launcher termination need exact-runtime qualification; W2 local `ERROR STOP 86` and synthetic W3-B tests do not prove MPI-wide stop.
+- Next proposed `F2B-N2C-W3-C-B`: offline protocol/state-machine model and adversarial tests only. Solver/scientific gates remain blocked; W4 separate.
+
 ## 2026-10-11 — F2B-N2C-W3-B synthetic owner-backed invocation validator
 - Baseline `db517147e4980bac5227ffd89d09710b3324746e`, branch `r6/si1-bandwidth-f2av`. Added isolated typed offline validator and tests; report `docs/arcana/SI1_BW1_F2B_N2C_W3B_OFFLINE_INVOCATION_BINDING.md`.
 - Test command: `python -m pytest -q -rs --basetemp .pytest-w3b-final tests/test_r6_si1_bandwidth_f2b_n2c_w3b_provenance.py tests/test_r6_si1_bandwidth_f2b_n2a_snapshot.py tests/test_r6_si1_bandwidth_f2b_n2c_capture_writer.py tests/test_r6_si1_bandwidth_f2b_n2c_w2_overlay.py`; result 34 passed, 1 skipped, 0 failed. The skipped test requires unavailable default `gfortran`; pytest's temporary tree was removed after completion. `py_compile` passed for new module/test; diff-check and UTF-8/LF checked.

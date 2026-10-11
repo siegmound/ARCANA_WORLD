@@ -1,4 +1,20 @@
-# NEXT: F2B-N2C-W3-C — real owner authority and coordinated-stop contract
+# NEXT: F2B-N2C-W3-C-B — offline capture-decision and coordinator protocol model
+
+## Completed W3-C-A static design
+Decision: `W3C_A_DESIGN_COMPLETE__RUNTIME_AUTHORITY_AND_MPI_STOP_UNPROVEN`. Report: `docs/arcana/SI1_BW1_F2B_N2C_W3C_RUNTIME_AUTHORITY_AND_MPI_STOP_DESIGN.md`. The report maps each W3-B field to the actual ShellSet producer/call boundary and states which external owner record is missing. No runtime behavior is promoted by this design.
+
+Source-established only: rank 0 coordinates; nonzero ranks receive work; worker `ModNum` comes from the MPI tag; Shells has SH/SF calls and `rpeat=0` is source-valid only for final SF when `MaxIter=0`; Pure owns `iter` and invokes FEM within that loop; FEM's post-VBCs/pre-Solver arrays are the candidate A0/b0. W2 local fields/counters do not establish owner authority, and its local `ERROR STOP 86` is not an MPI-wide stop proof.
+
+Remaining UNKNOWN: owner-backed run/attempt/job and communicator identity; stable model/assignment ledger; effective in-memory input/state and resolved constraints; candidate linked executable/process binding; runtime DOF ordering; independent A0/b0-to-invocation binding; all-rank terminal and failure evidence. Preserve D1A `DOF_MAPPING_PARTIAL`; geographic/physical anomaly attribution remains `DOF_MAPPING_UNVERIFIED`.
+
+## Next bounded scope — W3-C-B
+Implement only an offline typed model of one immutable job-scoped CAPTURE_ONLY decision, rank acknowledgements, assignment/target uniqueness and coordinator terminal protocol, reusing W3-B types/canonicalization where sound. Tests must include rank 0 coordinator, one worker, first-reachable FEM target, SH/SF including the valid SF `rpeat=0` case, inconsistent/missing/duplicate ACKs, worker/coordinator loss, timeout, unexpected or duplicate target, payload-verification failure, and a modeled Solver-entry counter that remains zero. No MPI or Solver calls. The model must never convert synthetic owner records to production authority.
+
+Critical design constraint: capture-only must latch `solver_permitted=false` for every participating rank and every FEM call. Since each normal FEM invocation would proceed to Solver and Pure may loop, the initial candidate can target only the first reachable FEM of one selected assignment; a later iteration cannot be reached under a no-Solver capture-only run without changing the path. Other workers must receive no scientific assignments. If source-derived first-call uniqueness is not provable, remain blocked before dispatch.
+
+Success protocol candidate: worker reports typed capture-terminal status to coordinator; coordinator accepts exactly one target capture and terminal ACK from every rank, then issues stop and records process exit evidence. Failures/timeouts must remain fail-closed and require an exact-runtime-tested MPI/launcher fail-stop policy. Do not use a collective inside asynchronous FEM call counts. `MPI_Abort`, `ERROR STOP`, exit codes and launcher cleanup are not verified by this static design.
+
+After W3-C-B review, a separate authorization is required before any production overlay, compile/run, Fair, MPI or ShellSet work. W4 streaming/scale/resource work remains separate.
 
 ## W3-B completion (offline synthetic scope only)
 `W3B_SYNTHETIC_OWNER_BINDING_VALIDATOR_PASS__RUNTIME_AUTHORITY_UNKNOWN`. Report: `docs/arcana/SI1_BW1_F2B_N2C_W3B_OFFLINE_INVOCATION_BINDING.md`. The typed validator binds synthetic owner envelopes to run/attempt, process/role/rank, master assignment/model, SH/SF and Shells/Pure/iteration/FEM sequence, effective input/state/constraints, implementation/build, DOF order, and A0/b0 identity. It reuses N2A decoding plus N2C independent-oracle verification.
@@ -7,7 +23,7 @@ Windows offline regressions after B1: W3-B + N2A + N2C writer + W2 overlay = 41 
 
 The original W3-B implementation baseline is `2bb34525c4098eded5ee65eca02428c92d5c68b3`; B1 is recorded as a distinct semantic correction. The former `WINDOWS_WORKTREE_ONLY` statement referred to stale ledger state and must not be repeated for published W3-B.
 
-## Next bounded task: W3-C design/implementation gate
+## Historical next bounded task: W3-C design/implementation gate
 Before candidate integration, define and review a real authority provider for run/job, master-issued assignment and stable model, communicator/process role, effective inputs/state/constraints, candidate build/executable, DOF ordering, and independent A0/b0 oracle. Specify one job-scoped capture-mode decision and coordinated worker failure/stop; the W3-B synthetic coordinator is only a model. W3-C must remain offline/static until separately authorized. Do not alter W1/W2 or invoke ShellSet, MPI, Solver, Fair, or SI1. W4 scale/streaming/durability/resource work remains a separate gate.
 
 ## Preserved gates
