@@ -1,4 +1,13 @@
 # Roadmap R6 — dipendenze e gates, non roadmap a timestep fissi
+
+## N2C-W2 checkpoint — 2026-10-11
+- **W1 EVIDENCED sintetico:** 25/25 GNU + 25/25 NVFORTRAN su fixture, commit `7a411911`; nessuna integrazione runtime ShellSet.
+- **W2 IMPLEMENTED / COMPILE PENDING:** overlay source-locked isolato, 15 membri + parametro verificati dal builder, gate dopo VBCs prima di Solver, Windows 13 PASS / 1 SKIP, commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` su GitHub e Fair detached HEAD. Fair preflight toolchain/CLI completato, ma compilazione candidata NON eseguita.
+- **Prossimo gate W2:** generazione di candidate copy nuova fuori checkout; manifest/SHA; compile-only bridge e call graph completo, con toolchain idonea e log esterni. Niente eseguibile ShellSet o MPI run; stop in assenza di autorità.
+- **W3 BLOCKED:** identità autorevole run/model/rank/input/state/build/DOF e sidecar, una FEM invocation specifica; nessun ID fittizio.
+- **W4 BLOCKED:** adeguamento codec/validator a `n=128884`, `LDAB=2182`, 281224888 elementi AB e I/O/verifica grandi file. `RESOURCE_2GB_SCOPE_UNRESOLVED`; niente tetto RAM arbitrario, W1 `MAX_STORAGE=2000000` indica elementi.
+- Invariati tutti i gate F2A-V, Solver, mechanics e WORLD_HISTORY.
+
 **Aggiornata:** 2026-10-11. Stati: `EVIDENCED` = verifica nel proprio scope; `PARTIAL` = lavoro qualificato ma gap; `BLOCKED` = autorità o evidenza insufficiente; `PLANNED` = da realizzare. Evitare percentuali arbitrarie.
 
 | Track | Stato | Completato / riferimento | Gap e next gate |

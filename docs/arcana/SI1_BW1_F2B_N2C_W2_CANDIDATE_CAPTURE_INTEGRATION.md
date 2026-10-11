@@ -1,5 +1,13 @@
 # F2B-N2C-W2 — candidate ShellSet capture integration
 
+## Checkpoint post-review e trasporto Fair (2026-10-11)
+- Review Windows: 13 passed, 1 skipped (compilatore Fortran assente), py_compile/UTF-8-LF/whitespace/diff-check PASS riportati dall'operatore; commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`, parent `8645a48f7ca716c2e3c4b3cee087e7e6f7333262`, membership quattro file W2.
+- GitHub HEAD e Fair detached HEAD `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` verificati. Fair `arcana-r6-linux`, Python 3.12.14, GNU Fortran 13.3.0, NVFORTRAN 25.11-0; builder CLI `--source-package` opzionale e `--output` obbligatorio. Nessun candidate builder eseguito, nessuna compilazione W2 o run ShellSet.
+- Builder: source-lock pinned SHA `8c3174c08cb021ae90257e04880f7e96b9ecd9d4d830034bfc0ea6462ef867f2`, 15 members e parametro verificati nel percorso di creazione candidata. Vendored commit lock = claim, non Git object attestato; correzione `Path.resolve(strict=True)` in controllo lessicale e symlink rejection non dimostra protezione TOCTOU generale.
+- Stato `N2C_W2_CANDIDATE_OVERLAY_IMPLEMENTED__RUNTIME_CAPTURE_BLOCKED_BY_IDENTITY_AND_CODEC_BOUNDS`. `CAPTURE_ONLY` con provenance sconosciuta fallisce closed prima di Solver; `DEFAULT_OFF` non autorizza run. Compilazione e runtime bridge/call graph pendenti.
+- W1 `n<=2048` / `MAX_STORAGE=2000000` elementi non sono un limite RAM 2 GB; `RESOURCE_2GB_SCOPE_UNRESOLVED`. SI1 `n=128884`, `KL=KU=727`, `LDAB=2182`, 281224888 elementi AB, 2249799104 bytes matrice. Nessuna quota memoria job Fair attestata.
+
+
 ## Result
 
 `N2C_W2_CANDIDATE_OVERLAY_IMPLEMENTED__RUNTIME_CAPTURE_BLOCKED_BY_IDENTITY_AND_CODEC_BOUNDS`

@@ -1,4 +1,28 @@
-# NEXT: F2B-N2C-W2 — candidate post-VBCs capture integration design
+# NEXT: F2B-N2C-W2 — compile-only del candidato su Fair
+
+## Checkpoint
+- Baseline di codice W2: commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` su branch `r6/si1-bandwidth-f2av`, verificato su GitHub e in checkout Fair detached dall'operatore.
+- Review Windows W2: 13 passed / 1 skipped (nessun compilatore Fortran); nessuna compilazione W2 ancora attestata. W1 GNU/NVFORTRAN 25/25 ciascuno è un risultato sintetico distinto.
+- Fair checkout `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_F2AV`, Conda `arcana-r6-linux`, Python 3.12.14, gfortran 13.3.0, nvfortran 25.11-0; builder CLI verificata. Non confondere checkout/preflight con compilazione.
+
+## Prossima operazione autorizzabile, strettamente compile-only
+1. Confermare autorizzazione per build diagnostica, SHA del checkout, worktree pulito, integrità del package e ambiente Fair. Non modificare source lock o checkout storici.
+2. Eseguire `python scripts/r6_si1_bandwidth_f2b_n2c_w2_overlay.py --output <directory_nuova_fuori_repo>` e conservare stdout, `N2C_W2_CANDIDATE_OVERLAY.json`, SHA e provenance in una directory nuova in `$HOME/ARCANA_WORLD_QUALIFICATION_EVIDENCE`. Il builder deve verificare lock SHA, tutti i 15 source members, parametro di riferimento e target patch.
+3. Ispezionare MPI wrapper, backend, librerie e flags prima di compilare: Makefile legacy usa `FC=mpifort`, `PORTFLAGS=-Mbackslash`, `MKLFLAGS=-llapack -lblas`; non presumere portabilità. Nella SOLA copia candidata compilare writer+bridge e **l'intero call graph modificato**, registrando separatamente prove bridge-only e candidate-full, log, exit e SHA. Non invocare eseguibili, `mpiexec`, ShellSet, MPI run, DGBSV o Solver; non `make clean` in sorgenti storici.
+4. In caso di failure, riportare log/manifest senza attribuire PASS. Correzioni via workflow Windows Codex -> commit/push -> checkout Fair verificato; non sovrascrivere evidenze. In caso di compile PASS, consolidare come `COMPILE_ONLY`, mai come SI1/runtime PASS.
+5. Dopo build: W3 identità autorevole `run/model/rank/rpeat/iter/FEM-call/input/state/source/build/DOF` e sidecar; W4 adattare i limiti sintetici codec/validator alla scala SI1 e verificare I/O/risorse. Entrambi richiedono review e gate distinti.
+
+## Decisione risorse
+Nessun cap generale di 2 GB dimostrato: `RESOURCE_2GB_SCOPE_UNRESOLVED` (oggetto, GB/GiB e motivo ignoti). W1 `n<=2048` e `MAX_STORAGE=2000000` sono **elementi**, non byte o memoria Fair. SI1 ha 281224888 elementi AB, 2249799104 byte per matrice. Non inventare limite RAM, né trattare RAM libera riferita come quota job verificata.
+
+## Stato e divieti
+`N2C_W2_CANDIDATE_OVERLAY_IMPLEMENTED__RUNTIME_CAPTURE_BLOCKED_BY_IDENTITY_AND_CODEC_BOUNDS`.
+`THRESHOLD_UNJUSTIFIED`; `OPERATOR_CLASS_UNVERIFIED`; `BLOCKED_F2AV_QUALIFICATION`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+## Storico: piano precedente di integrazione W2 (superato dal commit fcb94f5c)
+
 
 ## Stato N2C-W1
 Decisione `N2C_W1_SYNTHETIC_FORTRAN_CAPTURE_CROSS_COMPILER_PASS__SI1_INTEGRATION_NOT_QUALIFIED`: 25 passed per GNU Fortran 13.3 e 25 passed per NVFORTRAN 25.11, entrambi sul commit `7a4119112a16e32c8cbdae5248ebd91f4020a458`, Fair Conda `arcana-r6-linux`, Python 3.12.14 / pytest 9.1.1. Esiti e SHA dei log sono riferiti dall'operatore; Codex Windows non ha letto i log remoti. I precedenti run falliti sul commit `57b2bd1f` restano storici e distinti; il cwd dell'harness è stato corretto nel commit testato.
