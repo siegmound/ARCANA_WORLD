@@ -1,5 +1,12 @@
 # F2B-N2C-W2 — candidate ShellSet capture integration
 
+## Addendum Fair — NVFORTRAN compile-only (2026-10-11; operator-reported)
+- Marker `PASS_N2C_W2_NVFORTRAN_COMPILE_ONLY_CANDIDATE` sul sorgente `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; `BRIDGE_COMPILE_EXIT=0`, `FULL_COMPILE_EXIT=0`, 14/14 oggetti del call graph candidato compilati con wrapper `mpifort` (`nvfortran 25.11-0`, OpenMPI 4.1.9a1), flag `-O0 -Kieee -Mnodaz -Mnoflushz -Mbounds -Mbackslash`.
+- Artifacts (FAIR_EXTERNAL_EVIDENCE): `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`; i log e `SHA256SUMS.txt` restano esclusivamente su Fair, contenuti/hash NON ancora acquisiti/ricontrollati indipendentemente.
+- `LINK_PERFORMED=false`, `SHELLSET_MPI_SOLVER_RUNTIME_EXECUTED=false`; nessun snapshot A0/b0 e nessuna prova di linking, MPI abort, SI1 mechanics, Solver o WORLD_HISTORY. `CAPTURE_ONLY` rimane bloccato, la semantica rank MPI 0 vs `process_rank < 1` resta da correggere nel futuro contratto W3.
+- Decisione limitata a `N2C_W2_NVFORTRAN_COMPILE_ONLY_OPERATOR_REPORTED_PASS__RUNTIME_NOT_QUALIFIED`. Il precedente checkpoint pre-compilazione sotto è storico, NON lo stato più recente. Next E1: read-only attestation dei file Fair già prodotti; poi W3 identity e W4 codec/scala.
+
+
 ## Checkpoint post-review e trasporto Fair (2026-10-11)
 - Review Windows: 13 passed, 1 skipped (compilatore Fortran assente), py_compile/UTF-8-LF/whitespace/diff-check PASS riportati dall'operatore; commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`, parent `8645a48f7ca716c2e3c4b3cee087e7e6f7333262`, membership quattro file W2.
 - GitHub HEAD e Fair detached HEAD `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` verificati. Fair `arcana-r6-linux`, Python 3.12.14, GNU Fortran 13.3.0, NVFORTRAN 25.11-0; builder CLI `--source-package` opzionale e `--output` obbligatorio. Nessun candidate builder eseguito, nessuna compilazione W2 o run ShellSet.

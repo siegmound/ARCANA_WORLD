@@ -1,5 +1,11 @@
 # Roadmap R6 — dipendenze e gates, non roadmap a timestep fissi
 
+## N2C-W2 — Fair NVFORTRAN compile-only operator-reported (2026-10-11)
+- **W2 COMPILE-ONLY reported PASS, NON runtime:** `mpifort` con backend `nvfortran 25.11-0`, OpenMPI 4.1.9a1, 14/14 oggetti; writer+bridge exit 0, full candidate exit 0. Commit codice `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`; evidenze Fair fuori checkout in `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`; hash/log da riconciliare con E1.
+- **W2 E1 (NEXT):** raccolta mirata e verifica read-only di `RESULT.txt`, `SHA256SUMS.txt`, manifest e log preesistenti. Non ripetere la compilazione per produrre evidenza mancata.
+- **W3/W4:** restano separati e bloccati; nessuna autorità runtime/provenance/scala SI1 derivata dal compile PASS. `RESOURCE_2GB_SCOPE_UNRESOLVED`. Tutti i divieti Solver/mechanics/WORLD_HISTORY persistono.
+
+
 ## N2C-W2 checkpoint — 2026-10-11
 - **W1 EVIDENCED sintetico:** 25/25 GNU + 25/25 NVFORTRAN su fixture, commit `7a411911`; nessuna integrazione runtime ShellSet.
 - **W2 IMPLEMENTED / COMPILE PENDING:** overlay source-locked isolato, 15 membri + parametro verificati dal builder, gate dopo VBCs prima di Solver, Windows 13 PASS / 1 SKIP, commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` su GitHub e Fair detached HEAD. Fair preflight toolchain/CLI completato, ma compilazione candidata NON eseguita.

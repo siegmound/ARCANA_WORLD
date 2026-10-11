@@ -1,23 +1,16 @@
-# NEXT: F2B-N2C-W2 — compile-only del candidato su Fair
+# NEXT: F2B-N2C-W2-E1 — riconciliazione read-only evidenze compile-only Fair
 
-## Checkpoint
-- Baseline di codice W2: commit `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` su branch `r6/si1-bandwidth-f2av`, verificato su GitHub e in checkout Fair detached dall'operatore.
-- Review Windows W2: 13 passed / 1 skipped (nessun compilatore Fortran); nessuna compilazione W2 ancora attestata. W1 GNU/NVFORTRAN 25/25 ciascuno è un risultato sintetico distinto.
-- Fair checkout `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_F2AV`, Conda `arcana-r6-linux`, Python 3.12.14, gfortran 13.3.0, nvfortran 25.11-0; builder CLI verificata. Non confondere checkout/preflight con compilazione.
+## Checkpoint e risultato
+- 2026-10-11, Fair, checkout W2 `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e`: operatore riporta `N2C_W2_NVFORTRAN_COMPILE_ONLY_OPERATOR_REPORTED_PASS__RUNTIME_NOT_QUALIFIED` e marker `PASS_N2C_W2_NVFORTRAN_COMPILE_ONLY_CANDIDATE`.
+- `BRIDGE_COMPILE_EXIT=0`, `FULL_COMPILE_EXIT=0`, `FULL_OBJECT_COUNT=14`, `EXPECTED_FULL_OBJECTS=14`; `LINK_PERFORMED=false`; `SHELLSET_MPI_SOLVER_RUNTIME_EXECUTED=false`. Wrapper `mpifort` ripristinato nel PATH sessione, backend `nvfortran 25.11-0`, OpenMPI 4.1.9a1.
+- `FAIR_EXTERNAL_EVIDENCE`: `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l`. Log/manifest/SHA esistono secondo lo script e il transcript, ma **non** sono stati letti o rehashati fuori da Fair; compilazione qualificata solo come **operator-reported compile-only**. Il precedente W2 `COMPILE PENDING` resta storico, superato per il solo scope NVFORTRAN compile-only.
 
-## Prossima operazione autorizzabile, strettamente compile-only
-1. Confermare autorizzazione per build diagnostica, SHA del checkout, worktree pulito, integrità del package e ambiente Fair. Non modificare source lock o checkout storici.
-2. Eseguire `python scripts/r6_si1_bandwidth_f2b_n2c_w2_overlay.py --output <directory_nuova_fuori_repo>` e conservare stdout, `N2C_W2_CANDIDATE_OVERLAY.json`, SHA e provenance in una directory nuova in `$HOME/ARCANA_WORLD_QUALIFICATION_EVIDENCE`. Il builder deve verificare lock SHA, tutti i 15 source members, parametro di riferimento e target patch.
-3. Ispezionare MPI wrapper, backend, librerie e flags prima di compilare: Makefile legacy usa `FC=mpifort`, `PORTFLAGS=-Mbackslash`, `MKLFLAGS=-llapack -lblas`; non presumere portabilità. Nella SOLA copia candidata compilare writer+bridge e **l'intero call graph modificato**, registrando separatamente prove bridge-only e candidate-full, log, exit e SHA. Non invocare eseguibili, `mpiexec`, ShellSet, MPI run, DGBSV o Solver; non `make clean` in sorgenti storici.
-4. In caso di failure, riportare log/manifest senza attribuire PASS. Correzioni via workflow Windows Codex -> commit/push -> checkout Fair verificato; non sovrascrivere evidenze. In caso di compile PASS, consolidare come `COMPILE_ONLY`, mai come SI1/runtime PASS.
-5. Dopo build: W3 identità autorevole `run/model/rank/rpeat/iter/FEM-call/input/state/source/build/DOF` e sidecar; W4 adattare i limiti sintetici codec/validator alla scala SI1 e verificare I/O/risorse. Entrambi richiedono review e gate distinti.
-
-## Decisione risorse
-Nessun cap generale di 2 GB dimostrato: `RESOURCE_2GB_SCOPE_UNRESOLVED` (oggetto, GB/GiB e motivo ignoti). W1 `n<=2048` e `MAX_STORAGE=2000000` sono **elementi**, non byte o memoria Fair. SI1 ha 281224888 elementi AB, 2249799104 byte per matrice. Non inventare limite RAM, né trattare RAM libera riferita come quota job verificata.
-
-## Stato e divieti
-`N2C_W2_CANDIDATE_OVERLAY_IMPLEMENTED__RUNTIME_CAPTURE_BLOCKED_BY_IDENTITY_AND_CODEC_BOUNDS`.
-`THRESHOLD_UNJUSTIFIED`; `OPERATOR_CLASS_UNVERIFIED`; `BLOCKED_F2AV_QUALIFICATION`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+## Unico prossimo incarico (sola lettura, nessuna nuova compilazione)
+1. Sul path Fair già esistente, leggere `RESULT.txt`, `SHA256SUMS.txt`, `PREFLIGHT.txt`, `candidate/N2C_W2_CANDIDATE_OVERLAY.json`; riportare conteggi, SHA e membership dei file, e sezioni circoscritte di `builder.log`, `bridge.log`, `full_compile.log`. Non dare per acquisiti byte/hash dalla sola console precedente.
+2. Controllare senza modificare che gli SHA listati corrispondano agli artefatti esistenti, che manifest e sorgente blocchino alle identità note e che 14 oggetti siano presenti; preservare path e log originari. Se manca una prova, registrare UNKNOWN, non rigenerarla di nascosto.
+3. Consolidare il nuovo record documentale su Windows tramite procedura ledger; nessun commit di output voluminosi sul branch codice. Non usare `git add .` / `git add -A`; nessun nuovo job, `mpiexec`, linking, ShellSet run, MPI run, Solver/DGBSV o WORLD_HISTORY.
+4. **Dopo** l'adjudication evidenze, definire W3: binding autorevole run/model/rank/rpeat/iter/FEM-call/input/state/source/build/DOF, sidecar, SHA indipendente, semantica rank MPI 0. W4 distinto: codec e I/O a scala SI1, misure e budget veri. Modifiche codice solo via Codex Windows → GitHub → Fair.
+5. Rimangono `RESOURCE_2GB_SCOPE_UNRESOLVED`, `THRESHOLD_UNJUSTIFIED`, `OPERATOR_CLASS_UNVERIFIED`, `BLOCKED_F2AV_QUALIFICATION`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

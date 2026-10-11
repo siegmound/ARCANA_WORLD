@@ -1,4 +1,11 @@
 # Bitacora cronologica — append-only
+
+## 2026-10-11 — W2 Fair NVFORTRAN compile-only, operator-reported
+- **Codice testato:** `fcb94f5c3b821273bc82b4f11e6a444ffb28d16e` (`r6/si1-bandwidth-f2av`, checkout Fair detached); operazione: builder W2 in candidata isolata fuori checkout, compilazione `mpifort -c` con backend `nvfortran 25.11-0` e OpenMPI 4.1.9a1; prima mancante nel PATH, poi wrapper ripristinato nella sessione.
+- **Evidenza primaria riportata:** `/home/jlpfritas/ARCANA_WORLD_QUALIFICATION_EVIDENCE/BW1_N2C_W2_COMPILE_ONLY/W2_NV_20261011T132801Z_juuO3l` (`RESULT.txt`, `PREFLIGHT.txt`, `builder.log`, `bridge.log`, `full_compile.log`, `SHA256SUMS.txt`, manifest candidato). Console operatore: `BRIDGE_COMPILE_EXIT=0`, `FULL_COMPILE_EXIT=0`, `FULL_OBJECT_COUNT=14`, `EXPECTED_FULL_OBJECTS=14`; `LINK_PERFORMED=false`, `SHELLSET_MPI_SOLVER_RUNTIME_EXECUTED=false`; marker `PASS_N2C_W2_NVFORTRAN_COMPILE_ONLY_CANDIDATE`.
+- **Verdetto ristretto:** `N2C_W2_NVFORTRAN_COMPILE_ONLY_OPERATOR_REPORTED_PASS__RUNTIME_NOT_QUALIFIED`; nessun linking né esecuzione, cattura, solve o promozione scientifica. Hash/log non trasferiti e non verificati indipendentemente: E1 acquisizione read-only pendente.
+- **Next:** E1 riconciliazione evidenza Fair; poi W3 identità e W4 scala, gate autonomi. Nessuna modifica ai source lock; gate solver/mechanics/WORLD_HISTORY invariati.
+
 Non cancellare righe precedenti. Un evento tecnico `PASS` è sempre limitato al proprio scope; i veri seals vivono nei manifest di autorità.
 
 | Data (UTC se disponibile) | Workstream | Riferimento | Esito verificato | Impatto / next |
