@@ -1,3 +1,10 @@
+## F2B-N2C-W3-C-C — review avversariale offline (2026-10-11)
+- Decisione: `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`. Report `docs/arcana/SI1_BW1_F2B_N2C_W3C_ADVERSARIAL_PROTOCOL_REVIEW.md`.
+- Due controesempi riprodotti: `pure_call_sequence=2` passa `validate_decision()` con `DECISION_FROZEN`; `solver_dispatch_boundary()` rifiuta incondizionatamente e non consulta il latch, perciò le prove sul callback non attestano un gate FEM integrato. Inoltre `worker_rank=True` viene accettato come rank 1.
+- Test offline: W3-C 21 PASS; W3-C + W3-B 43 PASS. I test verdi non chiudono questi gap perché non includono le sequenze contraddittorie. Nessun runtime MPI/Fair/ShellSet/Solver.
+- Remoto non verificato: `git ls-remote` fallito per DNS GitHub; HEAD locale `68b423e96b95b2ccfbe769fcb6d635234616844e` è il perimetro della review.
+- Gate invariati: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## F2B-N2C-W3-C-A — runtime authority e stop coordinato, design statico (2026-10-11)
 - Decisione di design: `W3C_A_DESIGN_COMPLETE__RUNTIME_AUTHORITY_AND_MPI_STOP_UNPROVEN`. Rapporto: `docs/arcana/SI1_BW1_F2B_N2C_W3C_RUNTIME_AUTHORITY_AND_MPI_STOP_DESIGN.md`.
 - Il call graph storico mostra coordinator rank 0 e worker nonzero (`ShellSetMain.f90:88-98,553-575`), dispatch per tag/`ModNum` (`:244-260,427-433`), cicli SH/SF (`:690-700,783-794`), `Pure` → FEM (`MOD_Shells.f90:6940,6996-7010`) e `BuildF/BuildK/AddFSt/VBCs` → Solver (`:3707-3734`). Questi sono produttori di valori locali, non un'autorità completa di run/assignment/state.

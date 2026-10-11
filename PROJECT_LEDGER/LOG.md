@@ -127,3 +127,10 @@ Ogni nuova riga deve indicare un preciso *scope*; se un risultato rimane blocked
 - SH/SF predicates separate outer MaxIter from Pure iteration capacity. SF rpeat=0 is accepted only when outer MaxIter=0, target is first Shells/Pure/FEM, and the final-SF reachability condition is explicitly supplied by the fixture. This is not runtime reachability proof.
 - Decision `W3C_B_SYNTHETIC_COORDINATOR_PROTOCOL_PASS__MPI_WIDE_STOP_AND_RUNTIME_AUTHORITY_UNPROVEN`; no Fair/MPI/ShellSet/Solver/DGBSV/SI1 capture/WORLD_HISTORY execution or new external evidence. Network check `git ls-remote` failed because DNS could not resolve github.com; remote ancestry and fast-forward destination are unverified, so no commit/push is performed in this attempt.
 - Next bounded gate: independent offline W3-C-C review. Runtime authorities, MPI stop/launcher behavior and W4 resource/streaming remain unproven; all scientific/execution gates remain blocked.
+
+
+## 2026-10-11 — W3-C-C review avversariale offline
+- Checkout esaminato: branch `r6/si1-bandwidth-f2av`, HEAD `68b423e96b95b2ccfbe769fcb6d635234616844e`. Il remote HEAD non è stato verificato: `git ls-remote` non ha risolto `github.com`.
+- Esito `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`. Riprodotto `pure_call_sequence=2` accettato con `DECISION_FROZEN`; `worker_rank=True` accettato come rank 1. Il Solver boundary fallisce sempre senza leggere `no_solver_ranks` o modellare l'arrivo FEM, rendendo vacuo il claim che quei test provino l'applicazione del latch alle vie target/non-target. Dettagli e correzioni minime nel report W3-C-C.
+- Test locali: W3-C 21 passed; W3-C + W3-B 43 passed. Nessun commit/push, nessuna esecuzione MPI/Fair/ShellSet/Solver/DGBSV e nessuna modifica a output preesistenti.
+- Next: W3-C-B-R1 correzione mirata di coordinate Pure, typing rank e confine FEM simulato; gate scientifici/esecutivi invariati.

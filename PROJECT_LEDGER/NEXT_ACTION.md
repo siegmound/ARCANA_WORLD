@@ -1,4 +1,15 @@
-# NEXT: F2B-N2C-W3-C-C — independent offline protocol review
+# NEXT: F2B-N2C-W3-C-B-R1 — targeted protocol invariant correction
+
+## Latest review — W3-C-C
+Decision: `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`; report `docs/arcana/SI1_BW1_F2B_N2C_W3C_ADVERSARIAL_PROTOCOL_REVIEW.md`. The local checkout is `68b423e96b95b2ccfbe769fcb6d635234616844e`; latest remote HEAD could not be checked because GitHub DNS resolution failed.
+
+Counterexamples: a digest-recomputed decision with `target.pure_call_sequence=2` is accepted as `DECISION_FROZEN`; `worker_rank=True` is accepted as rank 1; the modeled Solver boundary always fails without reading the latch or representing FEM arrival. The callback tests therefore do not establish that target, peer, earlier-call, or failure routes are connected to a no-Solver gate.
+
+## Next bounded gate — W3-C-B-R1
+Correct and test the hierarchical Pure-call sequence and exact integer rank typing; add one modeled FEM-arrival boundary wired to target and non-target events, with fail-closed latch validation and callback-count assertions. Keep verification inputs explicitly synthetic. Re-run W3-C/W3-B and relevant N2 regressions. No MPI/Fair/ShellSet/Solver/DGBSV/SI1.
+
+This review produced documentation only, no new run evidence. W3-C-B's previous scoped synthetic outcome remains historical; the independent review does not qualify the model until R1 resolves the counterexamples.
+
 
 ## Completed: W3-C-B synthetic coordinator protocol
 Decision: `W3C_B_SYNTHETIC_COORDINATOR_PROTOCOL_PASS__MPI_WIDE_STOP_AND_RUNTIME_AUTHORITY_UNPROVEN`. Implementation/test: `scripts/r6_si1_bandwidth_f2b_n2c_w3c_protocol.py` and `tests/test_r6_si1_bandwidth_f2b_n2c_w3c_protocol.py`; addendum in `docs/arcana/SI1_BW1_F2B_N2C_W3C_RUNTIME_AUTHORITY_AND_MPI_STOP_DESIGN.md`. The deterministic offline suite passed 16 tests on Windows. No new evidence bundle was created.

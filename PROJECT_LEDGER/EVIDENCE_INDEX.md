@@ -1,3 +1,8 @@
+## F2B-N2C-W3-C-C — review evidence (2026-10-11)
+- Report: `docs/arcana/SI1_BW1_F2B_N2C_W3C_ADVERSARIAL_PROTOCOL_REVIEW.md`; decision `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`.
+- Local verification only: W3-C focused suite 21 passed; W3-C + W3-B 43 passed. Two direct probes reproduced an accepted later Pure-call coordinate and Boolean worker rank; source inspection showed the Solver boundary is unconditional and does not read the latch. These are review probes, not production evidence.
+- No new evidence bundle, no Fair/MPI/ShellSet/Solver execution. Remote HEAD was not verifiable because GitHub DNS failed. Existing untracked evidence/output directories were preserved.
+
 ## F2B-N2C-W3-C-A — static owner and coordinated-stop design (2026-10-11)
 - Report: `docs/arcana/SI1_BW1_F2B_N2C_W3C_RUNTIME_AUTHORITY_AND_MPI_STOP_DESIGN.md`; decision `W3C_A_DESIGN_COMPLETE__RUNTIME_AUTHORITY_AND_MPI_STOP_UNPROVEN`. Design-only; no new run artifacts or evidence manifest.
 - Source references: locked ShellSet `ShellSetMain.f90:88-98,244-260,427-433,553-575,690-700,783-794,853-860`; `SHELLS_v5.0.f90:735-759`; `MOD_Shells.f90:3707-3734,6940,6996-7010,8626-8673`; candidate W2 overlay/bridge. Report separates observed local values from owner authority.

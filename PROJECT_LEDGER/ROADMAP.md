@@ -1,3 +1,7 @@
+## F2B-N2C-W3-C-C — review avversariale (2026-10-11)
+- `W3C_C_REVIEW_REQUIRES_TARGETED_CORRECTIONS`. Il modello accetta `pure_call_sequence=2` pur asserendo first-Pure-call, accetta Boolean `worker_rank`, e il Solver boundary è un rifiuto costante non collegato a un evento FEM né alla latch. Riferimenti e riproduzioni: `docs/arcana/SI1_BW1_F2B_N2C_W3C_ADVERSARIAL_PROTOCOL_REVIEW.md`.
+- Next: W3-C-B-R1, correzione e regressioni offline circoscritte. W3-B/C restano sintetici; nessuna prova MPI-wide o runtime. Tutti i gate di esecuzione/scienza restano bloccati.
+
 # Roadmap R6 — dipendenze e gates, non roadmap a timestep fissi
 
 ## F2B-N2C-W3-A — contratto provenance (2026-10-11)
@@ -34,7 +38,7 @@
 | B. WORLD_HISTORY core | EVIDENCED nel scope | B0 HistoryStore/query/replay/refinement/retention; B6M0 T0 genesis a 210 Ma in store governato | closure replay per più domini e finestre reali |
 | C. Prima cinematica / rift B6 | PARTIAL/BLOCKED | B6K candidato isolato; B6N4-A significatività; B6N6 contratto temporale adattivo | B6N5 autorità evoluzione post-rift `UNKNOWN_NOT_GOVERNED`; non inventare dt2 |
 | D. ShellSet runtime upstream | EVIDENCED nel scope | Fair: esempi stock, 9/9 modelli, esecuzione parallela, LAPACK smoke; carico runtime ARCANA qualificato separatamente | Non equivale a ARCANA T0 full mechanics |
-| E. ShellSet ARCANA SI1/BW1 | PARTIAL/BLOCKED | BW0/F1; F2-A/F2A-V; D1A/D1B; D2; D3–RO6; N1/T1; N2A/N2B; W1 25/25 per toolchain; W2 NVFORTRAN compile-only; E1 103/103 Fair operator-reported; W3-A; W3-B/B1; W3-C-A; W3-C-B synthetic coordinator model (21 focused tests) | W3-C-C independent offline review next; owner/runtime authority, MPI-wide agreement/stop, identity A0/b0, runtime linking and operator class/thresholds remain unproven; W4 size/I/O separate. Nessuna autorità Solver/World History. |
+| E. ShellSet ARCANA SI1/BW1 | PARTIAL/BLOCKED | BW0/F1; F2-A/F2A-V; D1A/D1B; D2; D3–RO6; N1/T1; N2A/N2B; W1 25/25 per toolchain; W2 NVFORTRAN compile-only; E1 103/103 Fair operator-reported; W3-A; W3-B/B1; W3-C-A; W3-C-B synthetic coordinator model (21 focused tests); W3-C-C adversarial review found target-coordinate and Solver-boundary gaps | W3-C-B-R1 targeted offline correction next; owner/runtime authority, MPI-wide agreement/stop, identity A0/b0, runtime linking and operator class/thresholds remain unproven; W4 size/I/O separate. Nessuna autorità Solver/World History. |
 | F. Modelli ambientali e risorse | PARTIAL/BLOCKED | BIOME4 input contract frozen; HRAB/parent-material research legacy da rivalutare come riuso | provider temporalmente idonei, adapter geologia/clima/idrologia/soil |
 | G. Deep, ecosistemi e dinamiche biologiche | PLANNED per integrazione R6 | Canon/contratti Deep e backends legacy riutilizzabili con verifica | fisica/authority e interfacce causali, mai imporre risultati legacy |
 | H. Popoli, civiltà, distribuzione risorse | PLANNED per integrazione R6 | Esperienza R3–R5, non target | co-evoluzione governata con biosfera/ambiente/Deep |
