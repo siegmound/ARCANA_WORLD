@@ -17,13 +17,15 @@ from arcana_worldsim.r6.functional_development import (  # noqa: E402
     state_from_payload,
 )
 from arcana_worldsim.r6.int0a_pipeline import (  # noqa: E402
-    advance_pair, prepare_pair_5_11, trajectory_document,
+    advance_pair, capture_numerical_step_samples, prepare_pair_5_11,
+    trajectory_document, MAX_DIAGNOSTIC_SAMPLES_PER_SUPPORT,
 )
 
 SECONDS_PER_YEAR = 31_557_600.0
 ENGINEERING_DURATION_YEARS = 1_000.0
 RESOLUTION_FACTORS = (0.001, 0.0005, 0.00025)
 OUTPUT_RELATIVE = Path("outputs/r6_functional_development/TF2B_5_11_CONTINENTAL_ENGINEERING_V0")
+MAX_DIAGNOSTIC_PROFILE_NODES = 73
 
 
 def _canonical_bytes(value: object) -> bytes:
@@ -64,6 +66,8 @@ def main() -> int:
         raise RuntimeError("TWO_SIDED_MATERIAL_ROLE_CONSISTENCY_FAILED")
     if not all(len(p.temperature_k) == len(p.z_m) == len(p.materials) for p in profiles):
         raise RuntimeError("T0_PROFILE_CARDINALITY_MISMATCH")
+    if any(len(p.temperature_k) > MAX_DIAGNOSTIC_PROFILE_NODES for p in profiles):
+        raise RuntimeError("DIAGNOSTIC_PROFILE_NODE_LIMIT_EXCEEDED")
     edge = selected["parent_grid_edge"]
     width = plan.initial_width_m
     if not math.isfinite(width) or width <= 0:
@@ -74,10 +78,16 @@ def main() -> int:
     duration_s = ENGINEERING_DURATION_YEARS * SECONDS_PER_YEAR
 
     resolution_results = []
+    middle_fraction = RESOLUTION_FACTORS[1]
+    diagnostic_sample_records: dict[str, list[dict[str, object]]] | None = None
     for fraction in RESOLUTION_FACTORS:
-        evolved, diagnostics = advance_pair(
-            plan, duration_s=duration_s,
-            maximum_kinematic_fraction_per_substep=fraction)
+        if fraction == middle_fraction:
+            evolved, diagnostics, diagnostic_sample_records = capture_numerical_step_samples(
+                plan, duration_s=duration_s,
+                maximum_kinematic_fraction_per_substep=fraction)
+        else:
+            evolved, diagnostics = advance_pair(plan, duration_s=duration_s,
+                maximum_kinematic_fraction_per_substep=fraction)
         evolved, diagnostics = list(evolved), list(diagnostics)
         deltas = [max(abs(a - b) for a, b in zip(profile.temperature_k, state.temperature_k))
                   for profile, state in zip(profiles, evolved)]
@@ -94,9 +104,27 @@ def main() -> int:
         raise RuntimeError("ENGINEERING_TEMPERATURE_FIELD_NONFINITE")
     if any(row["max_area_relative_error"] > 1e-12 for row in resolution_results):
         raise RuntimeError("PURE_SHEAR_AREA_CONSERVATION_FAILED")
+    if diagnostic_sample_records is None:
+        raise RuntimeError("DIAGNOSTIC_SAMPLES_MISSING_FOR_REFERENCE_RESOLUTION")
+    for index, (support_id, final_state) in enumerate(zip(plan.support_ids,
+                                                           resolution_results[1]["final_states"])):
+        records = diagnostic_sample_records[support_id]
+        times = [float(row["time_s"]) for row in records]
+        if (not records or times[0] != 0.0
+                or any(earlier >= later for earlier, later in zip(times, times[1]))):
+            raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+        endpoint = records[-1]
+        endpoint_fields = ("time_s", "elapsed_years", "width_m", "crust_m",
+                           "lithosphere_m", "beta", "accumulated_strain",
+                           "material_coordinate", "temperature_k")
+        if any(endpoint[field] != final_state[field] for field in endpoint_fields):
+            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
+        expected_z = [value * float(final_state["lithosphere_m"])
+                      for value in final_state["material_coordinate"]]
+        if endpoint["z_m"] != expected_z:
+            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
 
     # The middle resolution is the explicit deterministic replay/restart case.
-    middle_fraction = RESOLUTION_FACTORS[1]
     direct, _ = advance_pair(plan, duration_s=duration_s,
                              maximum_kinematic_fraction_per_substep=middle_fraction)
     replay, _ = advance_pair(plan, duration_s=duration_s,
@@ -230,6 +258,25 @@ def main() -> int:
                      for state, fine in zip(row["final_states"], resolution_results[-1]["final_states"]))}
                 for row in resolution_results],
             "comparison_is_numerical_refinement_only": True},
+        "DIAGNOSTIC_NUMERICAL_SAMPLES.json": {
+            "schema": "ARCANA_R6_TF2B_NUMERICAL_STEP_SAMPLES_V1",
+            "scope": "NONCANONICAL_ENGINEERING_REFERENCE_TRAJECTORY",
+            "support_ids": list(plan.support_ids),
+            "sampling": "INITIAL_AND_EVERY_MIDDLE_RESOLUTION_NUMERICAL_SUBSTEP",
+            "resolution_fraction": middle_fraction,
+            "interpolation": "NONE",
+            "maximum_samples_per_support_including_initial": MAX_DIAGNOSTIC_SAMPLES_PER_SUPPORT,
+            "maximum_profile_nodes": MAX_DIAGNOSTIC_PROFILE_NODES,
+            "units": {"time_s": "s", "elapsed_years": "year", "width_m": "m",
+                "crust_m": "m", "lithosphere_m": "m", "beta": "1",
+                "accumulated_strain": "1", "material_coordinate": "1",
+                "z_m": "m", "temperature_k": "K"},
+            "all_numerical_substeps_captured": True,
+            "sample_count_by_support": {key: len(value)
+                for key, value in diagnostic_sample_records.items()},
+            "samples_by_support": diagnostic_sample_records,
+            "canonical_publication": False,
+        },
         "REPLAY_RESTART.json": run_result["replay_restart"],
         "CANDIDATE_TRAJECTORY.json": trajectory_document(
             plan, tuple(direct), duration_s=duration_s,

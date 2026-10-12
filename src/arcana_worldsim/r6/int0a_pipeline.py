@@ -12,7 +12,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from .functional_development import (
     NodeMaterial, ReducedState, T0Profile, T0_WORLD_AGE_MA, initial_reduced_state,
@@ -29,6 +29,7 @@ from .state import (AuthorityClass, DomainStateEnvelope, SpatialSupport,
 
 SCHEMA = "ARCANA_R6_INT0_NONCANONICAL_CANDIDATE_V1"
 SECONDS_PER_YEAR = 31_557_600.0
+MAX_DIAGNOSTIC_SAMPLES_PER_SUPPORT = 10_001
 _HEX = set("0123456789abcdef")
 
 
@@ -236,7 +237,9 @@ def prepare_pair_5_11(repository_root: str | Path, *, expected_branch: str) -> P
 
 
 def advance_pair(plan: PairIntegrationPlan, *, duration_s: float,
-                 maximum_kinematic_fraction_per_substep: float) -> tuple[tuple[ReducedState, ...], tuple[dict[str, Any], ...]]:
+                 maximum_kinematic_fraction_per_substep: float,
+                 state_observer: Callable[[str, ReducedState], None] | None = None
+                 ) -> tuple[tuple[ReducedState, ...], tuple[dict[str, Any], ...]]:
     """Pass audited profiles and Euler forcing into the existing thermal kernel."""
     if not math.isfinite(duration_s) or duration_s <= 0:
         raise IntegrationContractError("DURATION_MUST_BE_FINITE_AND_POSITIVE")
@@ -245,13 +248,53 @@ def advance_pair(plan: PairIntegrationPlan, *, duration_s: float,
     final: list[ReducedState] = []
     diagnostics: list[dict[str, Any]] = []
     velocity_m_s = plan.signed_extension_m_per_year / SECONDS_PER_YEAR
-    for state in initial:
+    for support_id, state in zip(plan.support_ids, initial):
+        observer = (None if state_observer is None else
+                    lambda current, selected_support=support_id:
+                    state_observer(selected_support, current))
         evolved, diag = pure_shear_thermal_step(
             state, duration_s=duration_s, extension_velocity_m_s=velocity_m_s,
-            maximum_kinematic_fraction_per_substep=maximum_kinematic_fraction_per_substep)
+            maximum_kinematic_fraction_per_substep=maximum_kinematic_fraction_per_substep,
+            state_observer=observer)
         final.append(evolved)
         diagnostics.append(asdict(diag))
     return tuple(final), tuple(diagnostics)
+
+
+def capture_numerical_step_samples(
+    plan: PairIntegrationPlan, *, duration_s: float,
+    maximum_kinematic_fraction_per_substep: float,
+    maximum_samples_per_support: int = MAX_DIAGNOSTIC_SAMPLES_PER_SUPPORT,
+) -> tuple[tuple[ReducedState, ...], tuple[dict[str, Any], ...],
+           dict[str, list[dict[str, Any]]]]:
+    """Capture the initial state and every numerical substep without interpolation."""
+    if (isinstance(maximum_samples_per_support, bool)
+            or not isinstance(maximum_samples_per_support, int)
+            or maximum_samples_per_support < 2):
+        raise IntegrationContractError("DIAGNOSTIC_SAMPLE_LIMIT_INVALID")
+    samples: dict[str, list[dict[str, Any]]] = {key: [] for key in plan.support_ids}
+
+    def observe(support_id: str, state: ReducedState) -> None:
+        records = samples[support_id]
+        if len(records) >= maximum_samples_per_support:
+            raise IntegrationContractError("DIAGNOSTIC_SAMPLE_LIMIT_EXCEEDED")
+        records.append({
+            "time_s": state.time_s,
+            "elapsed_years": state.time_s / SECONDS_PER_YEAR,
+            "width_m": state.width_m,
+            "crust_m": state.crust_m,
+            "lithosphere_m": state.lithosphere_m,
+            "beta": state.beta,
+            "accumulated_strain": state.accumulated_strain,
+            "material_coordinate": list(state.material_coordinate),
+            "z_m": [value * state.lithosphere_m for value in state.material_coordinate],
+            "temperature_k": list(state.temperature_k),
+        })
+
+    final, diagnostics = advance_pair(plan, duration_s=duration_s,
+        maximum_kinematic_fraction_per_substep=maximum_kinematic_fraction_per_substep,
+        state_observer=observe)
+    return final, diagnostics, samples
 
 
 def trajectory_document(plan: PairIntegrationPlan, states: tuple[ReducedState, ...], *,

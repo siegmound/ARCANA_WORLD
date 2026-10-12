@@ -19,6 +19,7 @@ from arcana_worldsim.r6.int0a_pipeline import (
     IntegrationContractError,
     advance_pair,
     build_fixture_pair_plan,
+    capture_numerical_step_samples,
     trajectory_document,
     write_candidate_bundle,
 )
@@ -107,6 +108,42 @@ def test_upstream_forcing_and_profile_changes_change_downstream_kernel_input_or_
     changed_states, _ = advance_pair(changed_profile, duration_s=31_557_600.0,
                                      maximum_kinematic_fraction_per_substep=0.01)
     assert changed_states[0].temperature_k != base_states[0].temperature_k
+
+
+def test_diagnostic_capture_records_initial_and_every_kernel_step_without_changing_endpoint():
+    plan = build_fixture_pair_plan(_assessment())
+    duration_s = 31_557_600.0
+    captured, diagnostics, samples = capture_numerical_step_samples(
+        plan, duration_s=duration_s,
+        maximum_kinematic_fraction_per_substep=0.01,
+    )
+    ordinary, ordinary_diagnostics = advance_pair(
+        plan, duration_s=duration_s,
+        maximum_kinematic_fraction_per_substep=0.01,
+    )
+
+    assert {key: len(value) for key, value in samples.items()} == {
+        support: row["substeps"] + 1
+        for support, row in zip(plan.support_ids, diagnostics)
+    }
+    assert [state.payload() for state in captured] == [state.payload() for state in ordinary]
+    assert diagnostics == ordinary_diagnostics
+    for support, final, rows in zip(plan.support_ids, captured, samples.values()):
+        assert rows[0]["time_s"] == 0.0
+        assert rows[-1]["time_s"] == final.time_s
+        assert rows[-1]["temperature_k"] == list(final.temperature_k)
+        assert rows[-1]["z_m"] == [x * final.lithosphere_m for x in final.material_coordinate]
+        assert all(a["time_s"] < b["time_s"] for a, b in zip(rows, rows[1:]))
+
+
+def test_diagnostic_sample_limit_fails_closed():
+    plan = build_fixture_pair_plan(_assessment())
+    with pytest.raises(IntegrationContractError, match="DIAGNOSTIC_SAMPLE_LIMIT_EXCEEDED"):
+        capture_numerical_step_samples(
+            plan, duration_s=10.0 * 31_557_600.0,
+            maximum_kinematic_fraction_per_substep=1e-6,
+            maximum_samples_per_support=2,
+        )
 
 
 def test_synthetic_checkpoint_restore_replays_remaining_kernel_interval():

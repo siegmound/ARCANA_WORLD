@@ -12,7 +12,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any, Callable, Mapping, Sequence
 
 import numpy as np
 
@@ -292,6 +292,7 @@ def pure_shear_thermal_step(
     duration_s: float,
     extension_velocity_m_s: float,
     maximum_kinematic_fraction_per_substep: float = 0.01,
+    state_observer: Callable[[ReducedState], None] | None = None,
 ) -> tuple[ReducedState, StepDiagnostics]:
     """Advance an engineering 1-D section using Lagrangian pure shear + heat.
 
@@ -314,6 +315,8 @@ def pure_shear_thermal_step(
         raise ValueError("REDUCED_STATE_CARDINALITY_MISMATCH")
     remaining = duration_s
     current = state
+    if state_observer is not None:
+        state_observer(current)
     substeps = 0
     min_limit = math.inf
     max_ratio = 0.0
@@ -363,6 +366,8 @@ def pure_shear_thermal_step(
             materials=current.materials, surface_temperature_k=current.surface_temperature_k,
             base_temperature_k=current.base_temperature_k,
         )
+        if state_observer is not None:
+            state_observer(current)
         remaining -= dt
         substeps += 1
         if substeps > 1_000_000:

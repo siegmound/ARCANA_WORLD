@@ -1,13 +1,29 @@
-# NEXT — R6-INT0B: esecuzione candidata non canonica T-F2B 5:11
+# NEXT — INT-0B noncanonical execution, pending explicit authorization
 
-**Una sola priorità corrente (2026-10-12).** INT-0A è chiuso nel perimetro codice/test offline con `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`. Il prossimo task è l'esecuzione numerica non canonica del runner multi-provider esistente, previa autorizzazione distinta. Non iniziare un altro workpack di design aperto. W3-C-B-R1 rimane nel filone parallelo ShellSet SI1.
+**Current result (2026-10-13):** `INT0B_PROVIDER_INPUTS_VERIFIED__EXECUTION_PENDING_AUTHORIZATION`. The provider-backed audit for pair 5:11 passed read-only on source HEAD `dde79ebe4d26ab7b21eff08245fc83330239c0bc`. Input inventory and hashes, sampling bounds, exact proposed command, unique output destination, and stop budget are in `docs/arcana/INT0B_PROVIDER_PREFLIGHT.md`.
 
-## Pacchetto delimitato
+## Authorized scope if and only if the user explicitly approves
 
-1. Input: branch `r6/si1-bandwidth-f2av` e commit verificato al momento dell'autorizzazione; runner `scripts/r6_functional_development_t_f2b.py`; pair 5:11; supporti esatti selezionati dall'audit lower-median; profili T0 ammessi; durata engineering 1.000 anni; forcing Euler congelato; fattori `0.001`, `0.0005`, `0.00025`. Passare `--expected-branch r6/si1-bandwidth-f2av` esplicitamente.
-2. Preflight: ripristinare l'input fisico-geografico esterno nella posizione governata e verificare manifest/hashes B4/B5/B6N8-N; registrare inventario, commit e versioni Python/NumPy. Se input o identità mancano, fermarsi senza sostituti.
-3. Destinazione: directory nuova e univoca sotto `outputs/r6_functional_development`, ad esempio `INT0B_TF2B_5_11_<run-id>`. Non riusare il percorso storico T-F2B né sovrascrivere output. Eventuali output parziali dopo errore restano non autorevoli.
-4. Prima del run, ottenere autorizzazione INT-0B separata che dichiari accesso agli input, budget CPU/tempo/RAM/output, ambiente, directory, comando e condizioni di arresto. Nessuna autorizzazione deriva da INT-0A.
-5. Eseguire soltanto il runner non canonico previsto dall'autorizzazione: nessun ShellSet, MPI, Solver, evoluzione post-rift o modifica `WORLD_HISTORY`. Verificare finitezza, invarianti governate, replay/restart e manifest; riportare costi e UNKNOWN senza promozione scientifica/canonica.
+- Existing T-F2B engineering runner `scripts/r6_functional_development_t_f2b.py`; ordered pair 5:11; T0=210 Ma; exact support cells `R6G1D-R091-C029` and `R6G1D-R091-C028`; admitted existing profiles; frozen instantaneous Euler forcing; 1,000 engineering years; resolution factors 0.001, 0.0005, 0.00025.
+- Local Windows CPU/Python only; one process, no MPI, Fair, ShellSet, Solver or factorization. Python 3.12.10 and NumPy 2.3.5 were available at preflight. The runner rechecks branch and provider identities at execution time.
+- Proposed unique output: `outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_01`; it was absent when checked. Never overwrite or clean an existing destination. Preserve any partial output as failed/non-authoritative.
+- Proposed stop budget: 15 minutes wall time; 2 GiB process working-set monitoring threshold; 512 MiB output directory cap. These are run-specific operator-monitored limits, not OS-enforced quotas or measured candidate resource use. The diagnostic samples are bounded to 10,001 records/support and 73 profile nodes; the schema-based sampled JSON size estimate is ≤350,000,000 bytes. If active monitoring cannot be provided, do not run.
+- Exact command sequence from repository root:
 
-Report INT-0A: `docs/arcana/INT0A_MULTI_PROVIDER_INTEGRATION.md`. I test provano solo l'integrazione su fixture sintetiche; il risultato provider-backed resta non evidenziato. Gate F2A-V, Solver, mechanics e WORLD_HISTORY invariati.
+```powershell
+$env:ARCANA_EXTERNAL_ROOT = 'F:\corsiiiuu\Magistrale\Arcana\ArcanaWorld\_ARCANA_EXTERNAL_SOURCES'
+$env:PYTHONPATH = 'C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src'
+python --version
+python -c "import numpy; print(numpy.__version__)"
+python scripts/r6_functional_development_t_f2b.py --repository-root . --expected-branch r6/si1-bandwidth-f2av --output-relative outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_01
+```
+
+Do not execute this command until explicit user authorization. Approval must be for this exact noncanonical engineering run and its input access, output path, process/time/memory/output limits, and stop behavior; it does not authorize any scientific or canonical promotion.
+
+## Stop conditions and validation
+
+Stop on branch/HEAD or input digest mismatch; missing/unexpected support or profile identity; nonfinite output; sample/node cap breach; invariant or replay/restart failure; wall time ≥15 minutes; monitored working set ≥2 GiB; output >512 MiB; or any canonical publication attempt. After explicit authorization and successful run, verify all manifest-listed files and hashes, finite values, numerical invariants, replay/restart, sample continuity/endpoints, and no canonical mutation. Report execution duration and observed resources without upgrading engineering-model behavior to scientific authority.
+
+## Gates and prohibitions
+
+Preserve `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. No run before authorization; no Fair, MPI, ShellSet, Solver, DGBSV, factorization, rift pair 1:3, canonical event/T1/T2, or WORLD_HISTORY access/write.
