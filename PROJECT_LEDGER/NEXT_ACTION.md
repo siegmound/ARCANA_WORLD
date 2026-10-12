@@ -1,29 +1,15 @@
-# NEXT — INT-0B noncanonical execution, pending explicit authorization
+# NEXT — INT-0B bounded failure correction
 
-**Current result (2026-10-13):** `INT0B_PROVIDER_INPUTS_VERIFIED__EXECUTION_PENDING_AUTHORIZATION`. The provider-backed audit for pair 5:11 passed read-only on source HEAD `dde79ebe4d26ab7b21eff08245fc83330239c0bc`. Input inventory and hashes, sampling bounds, exact proposed command, unique output destination, and stop budget are in `docs/arcana/INT0B_PROVIDER_PREFLIGHT.md`.
+**Current decision (2026-10-13):** `INT0B_FAILED_PRE_OUTPUT_VALIDATION`. The one authorized local attempt on `683230f5e66397478642c2b8a48550eb1d00cca7` exited 1 after 25.427 seconds at `scripts/r6_functional_development_t_f2b.py:114`: `zip(times, times[1])` uses a scalar float instead of the remaining sequence. No candidate artifacts or candidate manifest were written. Failure records are preserved under `outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_01/`; review `docs/arcana/INT0B_EXECUTION_REPORT.md`.
 
-## Authorized scope if and only if the user explicitly approves
+## One bounded next task
 
-- Existing T-F2B engineering runner `scripts/r6_functional_development_t_f2b.py`; ordered pair 5:11; T0=210 Ma; exact support cells `R6G1D-R091-C029` and `R6G1D-R091-C028`; admitted existing profiles; frozen instantaneous Euler forcing; 1,000 engineering years; resolution factors 0.001, 0.0005, 0.00025.
-- Local Windows CPU/Python only; one process, no MPI, Fair, ShellSet, Solver or factorization. Python 3.12.10 and NumPy 2.3.5 were available at preflight. The runner rechecks branch and provider identities at execution time.
-- Proposed unique output: `outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_01`; it was absent when checked. Never overwrite or clean an existing destination. Preserve any partial output as failed/non-authoritative.
-- Proposed stop budget: 15 minutes wall time; 2 GiB process working-set monitoring threshold; 512 MiB output directory cap. These are run-specific operator-monitored limits, not OS-enforced quotas or measured candidate resource use. The diagnostic samples are bounded to 10,001 records/support and 73 profile nodes; the schema-based sampled JSON size estimate is ≤350,000,000 bytes. If active monitoring cannot be provided, do not run.
-- Exact command sequence from repository root:
+Correct the sample ordering comparison to use the remaining sequence and add a focused regression for strictly increasing sampled times, including the scalar-slice regression. Run only the focused offline tests, `py_compile`, and `git diff --check`; do not launch the T-F2B trajectory as part of that correction.
 
-```powershell
-$env:ARCANA_EXTERNAL_ROOT = 'F:\corsiiiuu\Magistrale\Arcana\ArcanaWorld\_ARCANA_EXTERNAL_SOURCES'
-$env:PYTHONPATH = 'C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src'
-python --version
-python -c "import numpy; print(numpy.__version__)"
-python scripts/r6_functional_development_t_f2b.py --repository-root . --expected-branch r6/si1-bandwidth-f2av --output-relative outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_01
-```
+The previous conditional approval covered exactly one trajectory attempt and is consumed. A new explicit authorization is required before any subsequent engineering execution. Do not overwrite or reuse the failure-evidence directory. If a future run is authorized, it must use a fresh absent output destination and the same provider/source/resource preflight.
 
-Do not execute this command until explicit user authorization. Approval must be for this exact noncanonical engineering run and its input access, output path, process/time/memory/output limits, and stop behavior; it does not authorize any scientific or canonical promotion.
+## Preserved gates
 
-## Stop conditions and validation
+`BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
-Stop on branch/HEAD or input digest mismatch; missing/unexpected support or profile identity; nonfinite output; sample/node cap breach; invariant or replay/restart failure; wall time ≥15 minutes; monitored working set ≥2 GiB; output >512 MiB; or any canonical publication attempt. After explicit authorization and successful run, verify all manifest-listed files and hashes, finite values, numerical invariants, replay/restart, sample continuity/endpoints, and no canonical mutation. Report execution duration and observed resources without upgrading engineering-model behavior to scientific authority.
-
-## Gates and prohibitions
-
-Preserve `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. No run before authorization; no Fair, MPI, ShellSet, Solver, DGBSV, factorization, rift pair 1:3, canonical event/T1/T2, or WORLD_HISTORY access/write.
+No Fair, MPI, ShellSet, Solver, DGBSV, post-rift evolution, canonical publication, or WORLD_HISTORY access/write.

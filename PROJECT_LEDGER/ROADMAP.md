@@ -1,19 +1,20 @@
-# ARCANA R6 — Roadmap operativa corrente (2026-10-12)
+# ARCANA R6 — Roadmap operativa corrente (2026-10-13)
 
 **Obiettivo completo:** storia mondiale causale 210 Ma→0 ka, interrogabile e ricostruibile per geografia/tettonica, geologia, clima, idrologia, risorse, Deep, flora/fauna, popolazioni e società. **Priorità ora:** integrare motori esistenti su una finestra candidata, misurare i risultati e *poi* decidere la retention. Le dipendenze non sono una percentuale o una scadenza.
 
 | Gate | Risultato atteso | Stato |
 |---|---|---|
 | **INT-0A** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`; suite offline mirata 20 PASS |
-| **INT-0B (NEXT)** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Provider input verificati e diagnostico campioni bounded implementato; esecuzione non effettuata, autorizzazione esplicita e budget monitorato ancora richiesti |
-| **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Dopo risultati INT-0B |
+| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Unico tentativo autorizzato fallito prima degli artefatti per `TypeError` nel controllo dei campioni; report `docs/arcana/INT0B_EXECUTION_REPORT.md`; failure evidence preservata in `outputs/.../INT0B_TF2B_5_11_dde79ebe_20261013_01` |
+| **INT-0B-R1 (NEXT)** | Correzione mirata e regressione offline del controllo temporale; nessuna traiettoria | Necessario prima di chiedere una nuova autorizzazione di esecuzione |
+| **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Bloccato finché una traiettoria INT-0B completa non sia validata |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
 | **Produzione WORLD_HISTORY** | Stati/eventi causalmente verificati per tutti i domini fino a 0 ka | Non autorizzata |
 
 ## Inventario con scope (non trasformare PASS tecnici in qualifica scientifica)
 
-INT-0B provider input preflight ha individuato i payload governati nel root esterno ARCANA e passato l'audit read-only pair 5:11 sul checkout del 2026-10-13. Il runner registra ora initial + ogni substep per la risoluzione intermedia, entro 10,001 campioni/supporto e 73 nodi. L'esecuzione di 1,000 anni rimane in attesa di autorizzazione specifica; il report e `NEXT_ACTION.md` definiscono comando, directory nuova e limiti proposti.
+INT-0B provider input preflight è stato ripetuto e passato sul commit pubblicato il 2026-10-13; il singolo tentativo autorizzato ha poi fallito nella verifica dell'ordine temporale prima della scrittura degli artefatti. La correzione offline è il prossimo passo; il successivo run non è autorizzato automaticamente.
 
 - **B0/B6:** HistoryStore/query/replay esistono. B6K candidata geometrica 210→209.97287659484368 Ma e B6N8-A shadow multirisoluzione. Vecchio B6M-R1 bloccato e successivo live-view B6N8-A a due età sono checkpoint distinti; verificare il canonico attuale read-only.
 - **Termica/cinematica integrabile:** PRE_ORBDATA, B6N8-O/Q e codice T-F2B con supporto coppia **5:11**, forcing ingegneristico congelato, finestra 1.000 anni e replay/restart. B6N8-R roster real-support ancora incompleto; NON estendere T-F2B alla coppia rift **1:3** per analogia.
