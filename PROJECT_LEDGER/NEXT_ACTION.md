@@ -1,12 +1,16 @@
-# NEXT - INT-1 empirical state-retention and reconstruction analysis
+# NEXT — INT-1A baseline complete; general retention policy remains unresolved
 
-Current decision (2026-10-13): INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED. The authorized fourth R4 attempt completed and its output bundle was verified; see docs/arcana/INT0B_R4_EXECUTION_REPORT.md. Earlier _01-_03 failures remain immutable. No fifth INT-0B attempt is authorized or needed.
+Current decision (2026-10-13): `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`. The verified, noncanonical R4 trajectory was analyzed offline. Report: `docs/arcana/INT1A_RETENTION_EMPIRICAL_AUDIT.md`; reviewed metrics: `outputs/r6_functional_development/INT1_RETENTION_20261013/FINAL/INT1A_RETENTION_METRICS.json`.
 
 ## Current action
 
-Perform bounded, offline empirical retention/reconstruction analysis using the verified candidate trajectory at outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/. Recheck its manifest and hashes, then keep the source bundle read-only. Compare full-state retention, endpoints plus selected diagnostics, and deterministic reconstruction from checkpoints/forcing only where the existing contract supports it. Measure retained bytes, reconstructed-field differences, replay behavior, and information lost under each policy. Keep B0 replay DESCRIPTOR_ONLY_NOT_REGISTERED_IN_HISTORYSTORE; do not claim HistoryStore registration or canonical retention.
+INT-1A is complete for the existing R4 trajectory. No additional run is authorized by this work. Retain the empirical baseline as case-specific; do not promote its endpoint/fixed/adaptive comparisons into a general temporal, event, uncertainty or canonical retention policy. B0 replay remains `DESCRIPTOR_ONLY_NOT_REGISTERED_IN_HISTORYSTORE`.
 
-Write analysis outputs only under a new isolated outputs/r6_functional_development/INT1_RETENTION_20261013/ directory; do not overwrite INT-0B-R4 evidence. This is analysis of the existing noncanonical engineering trajectory, not a new evolution, scientific promotion, or canonical retention decision. No Fair, MPI, ShellSet, Solver, B6 post-rift evolution, or WORLD_HISTORY access/publication.
+Next evidence needed before a general retention policy can be adjudicated: a separately authorized trajectory with denser temporal observations and a meaningfully different forcing/material regime, plus an explicit executable checkpoint/HistoryStore contract. Until that evidence and authorization exist, leave online/event selection and general policy as `UNKNOWN`; do not start an evolution run from this ledger entry.
+
+The reviewed output is `outputs/r6_functional_development/INT1_RETENTION_20261013/FINAL/`. Provisional first-pass outputs created during this same audit are preserved at the parent directory and `_R1` sibling; only `FINAL/` passed the completed cross-artifact review.
+
+No Fair, MPI, ShellSet, Solver, B6 post-rift evolution, or WORLD_HISTORY access/publication was performed.
 
 Preserved gates: BLOCKED_F2AV_QUALIFICATION, OPERATOR_CLASS_UNVERIFIED, THRESHOLD_UNJUSTIFIED, RESOURCE_2GB_SCOPE_UNRESOLVED, F2B_SOLVER_EXECUTION_AUTHORIZED=false, ARCANA_SI1_MECHANICS_QUALIFIED=false, WORLD_HISTORY_PRODUCTION_AUTHORIZED=false.
 

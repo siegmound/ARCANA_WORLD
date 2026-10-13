@@ -1,6 +1,6 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-13)
 
-**Obiettivo completo:** storia mondiale causale 210 Ma→0 ka, interrogabile e ricostruibile per geografia/tettonica, geologia, clima, idrologia, risorse, Deep, flora/fauna, popolazioni e società. **Priorità ora:** integrare motori esistenti su una finestra candidata, misurare i risultati e *poi* decidere la retention. Le dipendenze non sono una percentuale o una scadenza.
+**Obiettivo completo:** storia mondiale causale 210 Ma→0 ka, interrogabile e ricostruibile per geografia/tettonica, geologia, clima, idrologia, risorse, Deep, flora/fauna, popolazioni e società. INT-0B produced a bounded candidate engineering trajectory; INT-1A measured what its four samples support. General retention policy still needs denser, distinct evidence and is not qualified. Le dipendenze non sono una percentuale o una scadenza.
 
 | Gate | Risultato atteso | Stato |
 |---|---|---|
@@ -9,14 +9,14 @@
 | **INT-0B-R2** | Isolamento ambiente corretto e tentativo finale bounded | Preflight provider PASS su `311550d`; esecuzione singola fallita su endpoint diagnostico dopo 22.190863 s (exit 1). La diagnosi R3 identifica mismatch di schema `elapsed_years` assente dal final payload, non prova una divergenza numerica; la regressione sintetica e la correzione supervisor passano. Nessun quarto run autorizzato. |
 | **INT-0B-R3** | Correzione endpoint e metadata supervisor offline | `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`; report del run fallito immutato e campioni non recuperati. |
 | **INT-0B-R4** | Validazione E2E sintetica, provider preflight e un tentativo engineering bounded | Offline suite 70 PASS; quarto run autorizzato su `91fc83d` completato e bundle verificato. Decisione noncanonical: `INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED`. |
-| **INT-1** | Empirical full/fixed/event/error/uncertainty retention, reconstruction, replay and byte measurements | Ready for bounded offline analysis of the verified noncanonical R4 trajectory; no canonical retention decision or scientific promotion. |
+| **INT-1A** | Empirical full/fixed/retrospective retention, reconstruction, replay and byte baseline on existing R4 trajectory | `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`; two interior times/support, one engineering regime; online/event/general policy UNKNOWN. |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
 | **Produzione WORLD_HISTORY** | Stati/eventi causalmente verificati per tutti i domini fino a 0 ka | Non autorizzata |
 
 ## Inventario con scope (non trasformare PASS tecnici in qualifica scientifica)
 
-INT-0B provider input audit era passato sul commit `311550d` con source identity HEAD-bound `a19070287adedb0bb009ce5c56380892ca173d4eee30b662c6c1a7d34406b34a`; tale audit non si trasferisce automaticamente a HEAD R4. R4 è solo offline/sintetico e non autorizza una quarta evoluzione. Un audit read-only dei provider sul commit finale di una futura esecuzione resta precondizione, insieme a una distinta approvazione. INT-1 resta bloccato.
+INT-0B R4 is a completed, bounded noncanonical pair-5:11 engineering run on source commit `91fc83d50ec15d8bb9b826926ac2f2dc859281e8`, with source-composite identity `b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca`; its result does not qualify physical mechanics or canonical history. INT-1A revalidated the R4 bundle and measured case-specific retention/reconstruction. General retention policy remains UNKNOWN; any new trajectory needs separate authorization and must not overwrite R4 evidence.
 
 - **B0/B6:** HistoryStore/query/replay esistono. B6K candidata geometrica 210→209.97287659484368 Ma e B6N8-A shadow multirisoluzione. Vecchio B6M-R1 bloccato e successivo live-view B6N8-A a due età sono checkpoint distinti; verificare il canonico attuale read-only.
 - **Termica/cinematica integrabile:** PRE_ORBDATA, B6N8-O/Q e codice T-F2B con supporto coppia **5:11**, forcing ingegneristico congelato, finestra 1.000 anni e replay/restart. B6N8-R roster real-support ancora incompleto; NON estendere T-F2B alla coppia rift **1:3** per analogia.
