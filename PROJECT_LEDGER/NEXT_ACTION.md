@@ -1,8 +1,17 @@
-# NEXT — locate governed INT-1D inputs before reconsidering execution
+# NEXT — final INT-1D preflight, then at most one authorized run
 
-Current checkpoint (2026-10-13): `INT1D_BLOCKED_PROVIDER_PREFLIGHT_EXTERNAL_INPUTS_UNAVAILABLE`. Report: `docs/arcana/INT1D_PROVIDER_PREFLIGHT_BLOCKED.md`, source commit `ffeb02e90abc4c3a542ac9a794c57ee8496b211b`. The requested boundary is `R6BND-T0-27e4d497530e681071fb`. Python 3.12.14 / NumPy 2.3.5 were available, but `ARCANA_EXTERNAL_ROOT` was unset; provider audit failed: `KinematicsAuthorityError: governed payload unavailable: CANONICAL_T0_PHYSICAL_PAYLOAD`. No evolution or output creation occurred.
+The prior provider-input blocker is historically valid for its 2026-10-13 environment, but the authorized external provider root is now available. The most recent INT-1D launch attempt (`_01`) failed before the numerical child started because path resolution depended on .NET current-directory state. See `docs/arcana/INT1D_SUPERVISOR_RECOVERY.md`; preserve the original blocker report and all `_01` files.
 
-Next action: locate the governed external payload on Windows using the project's approved locations, without broad filesystem scans or substituting fixtures. Configure `ARCANA_EXTERNAL_ROOT` only after verifying the intended payload identity. Then rerun the complete provider-backed audit against the final source commit, including payload hashes, both supports/profiles/material classes, Euler forcing, requested boundary eligibility and source-composite identity. Re-run the previously deselected provider-dependent tests where applicable. If these checks pass, re-check execution environment, sanitized child Git variables, exact INT-1C CLI, new absent candidate/supervisor destinations, output projection, and active process-tree supervision before deciding whether the existing conditional authorization can proceed. On any failure, stop before evolution.
+Immediate gate: publish the reviewed supervisor recovery using a verified normal fast-forward if reachable; on its final committed HEAD, run ProviderAudit in the sanitized child with exact selector `R6BND-T0-27e4d497530e681071fb` and rerun the provider-dependent tests. Recalculate the HEAD-bound source-composite identity and verify Python 3.12.10 / NumPy 2.3.5, complete governed payload hashes, exact pair/supports/material profiles/forcing, and sanitized Git object environment.
+
+Only if those checks and the `VerifyRun`/monitor/path gates pass, the existing conditional approval permits one run at the fresh destinations:
+
+- Candidate: `outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02`
+- Supervisor: `outputs/r6_functional_development/INT1D_SUPERVISION_20261014_02`
+
+Exact parameters remain pair 5:11, requested boundary above, T0=210 Ma, 1,000 engineering years, existing frozen Euler forcing/reduced kernel, resolution ladder 0.001/0.0005/0.00025/0.000125, diagnostic sampling at 0.000125, replay/checkpoint at 0.0005. Limits are 900 seconds, 2 GiB sampled process-tree working set, 512 MiB cumulative output; one attempt, no retry. Run the established foreground supervisor only. If any preflight fails, or the run fails, preserve evidence and stop. No parameter changes, alternate model, Fair/MPI/ShellSet/Solver or canonical operation.
+
+After successful output validation, perform the authorized offline comparison against immutable INT-0B R4 evidence and update the ledger with measurements. Until then no new INT-1D trajectory is evidenced. Preserve all scientific/Solver/canonical gates.
 
 No numerical evolution was run and the conditional authorization was not consumed by a run. Existing INT-0B R4 and earlier attempt evidence remain immutable. B0 `HistoryStore` executable replay remains separate and descriptor-only. Preserve all scientific/Solver/canonical gates.
 

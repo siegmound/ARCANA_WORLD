@@ -1,17 +1,56 @@
 param(
-  [Parameter(Mandatory=$true)][ValidateSet("SelfTest","ProviderAudit","Run")][string]$Mode,
+  [Parameter(Mandatory=$true)][ValidateSet("SelfTest","ProviderAudit","VerifyRun","Run")][string]$Mode,
   [string]$PythonPath = "C:\Users\jose_\AppData\Local\Programs\Python\Python312\python.exe",
   [string]$RepositoryRoot = ".",
   [string]$OutputRelative = "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04",
   [string]$EvidenceDirectory = "outputs/r6_functional_development/INT0B_R4_SUPERVISION_20261013_04",
-  [string]$ExpectedHead = ""
+  [string]$ExpectedHead = "",
+  [string]$BoundaryId = "",
+  [string]$AdditionalResolutionFactor = "",
+  [string]$DiagnosticResolutionFactor = ""
 )
 . "C:\Users\jose_\AppData\Local\ARCANA\r6-env.ps1"
 $ErrorActionPreference = "Stop"
 if ($PSVersionTable.PSVersion.Major -lt 7) { throw "POWERSHELL_7_REQUIRED_FOR_PROCESSSTARTINFO_ENVIRONMENT" }
-$RepositoryRoot = (Resolve-Path -LiteralPath $RepositoryRoot).Path
+$RepositoryRoot = [IO.Path]::GetFullPath((Resolve-Path -LiteralPath $RepositoryRoot).Path)
 Set-Location -LiteralPath $RepositoryRoot
 if (-not (Test-Path -LiteralPath (Join-Path $RepositoryRoot "AGENTS.md"))) { throw "REPOSITORY_ROOT_INVALID" }
+function Resolve-RepositoryPath([string]$Path) {
+  if ([string]::IsNullOrWhiteSpace($Path)) { throw "SUPERVISOR_PATH_REQUIRED" }
+  if ([IO.Path]::IsPathRooted($Path)) { return [IO.Path]::GetFullPath($Path) }
+  return [IO.Path]::GetFullPath((Join-Path $RepositoryRoot $Path))
+}
+function Resolve-RepositoryRelativePath([string]$Path) {
+  if ([string]::IsNullOrWhiteSpace($Path) -or [IO.Path]::IsPathRooted($Path)) { throw "SUPERVISOR_RELATIVE_PATH_REQUIRED" }
+  $resolved = Resolve-RepositoryPath $Path
+  $prefix = $RepositoryRoot.TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+  if (-not $resolved.StartsWith($prefix, [StringComparison]::OrdinalIgnoreCase)) { throw "SUPERVISOR_PATH_ESCAPES_REPOSITORY_ROOT" }
+  return $resolved
+}
+$OutputPath = Resolve-RepositoryRelativePath $OutputRelative
+if ([IO.Path]::IsPathRooted($EvidenceDirectory)) { $EvidencePath = [IO.Path]::GetFullPath($EvidenceDirectory) }
+else { $EvidencePath = Resolve-RepositoryRelativePath $EvidenceDirectory }
+function Get-RunPlan {
+  $hasBoundary = -not [string]::IsNullOrWhiteSpace($BoundaryId)
+  $hasAdditional = -not [string]::IsNullOrWhiteSpace($AdditionalResolutionFactor)
+  $hasDiagnostic = -not [string]::IsNullOrWhiteSpace($DiagnosticResolutionFactor)
+  if (($hasBoundary -or $hasAdditional -or $hasDiagnostic) -and -not ($hasBoundary -and $hasAdditional -and $hasDiagnostic)) {
+    throw "INT1D_OVERRIDES_MUST_BE_COMPLETE"
+  }
+  $scriptPath = Join-Path $RepositoryRoot "scripts/r6_functional_development_t_f2b.py"
+  $args = @($scriptPath,"--repository-root",$RepositoryRoot,"--expected-branch","r6/si1-bandwidth-f2av")
+  $label = "INT0B_R4_FOURTH_ATTEMPT_PENDING_AUTHORIZATION"
+  if ($hasBoundary) {
+    if ($BoundaryId -notmatch '^R6BND-T0-[0-9a-f]{20}$') { throw "INT1D_BOUNDARY_ID_INVALID" }
+    $additional = 0.0; $diagnostic = 0.0
+    if (-not [double]::TryParse($AdditionalResolutionFactor, [Globalization.NumberStyles]::Float, [Globalization.CultureInfo]::InvariantCulture, [ref]$additional) -or -not [double]::IsFinite($additional) -or $additional -le 0) { throw "INT1D_ADDITIONAL_RESOLUTION_INVALID" }
+    if (-not [double]::TryParse($DiagnosticResolutionFactor, [Globalization.NumberStyles]::Float, [Globalization.CultureInfo]::InvariantCulture, [ref]$diagnostic) -or -not [double]::IsFinite($diagnostic) -or $diagnostic -ne $additional) { throw "INT1D_DIAGNOSTIC_RESOLUTION_MUST_MATCH_ADDITIONAL" }
+    $args += @("--boundary-id",$BoundaryId,"--additional-resolution-factor",$AdditionalResolutionFactor,"--diagnostic-resolution-factor",$DiagnosticResolutionFactor)
+    $label = "INT1D_DISTINCT_BOUNDARY_NONCANONICAL_ATTEMPT"
+  }
+  $args += @("--output-relative",$OutputRelative.Replace('\','/'))
+  return [pscustomobject]@{ arguments = $args; label = $label; output_path = $OutputPath; evidence_path = $EvidencePath; working_directory = $RepositoryRoot }
+}
 Add-Type -TypeDefinition @"
 using System;
 using System.Collections.Generic;
@@ -81,7 +120,7 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
                           [switch]$TestOnlyRootDisappearsWhileAlive) {
   $psi = [Diagnostics.ProcessStartInfo]::new()
   $psi.FileName = [IO.Path]::GetFullPath($PythonPath)
-  $psi.WorkingDirectory = (Get-Location).Path
+  $psi.WorkingDirectory = $RepositoryRoot
   $psi.UseShellExecute = $false
   $psi.RedirectStandardOutput = $true
   $psi.RedirectStandardError = $true
@@ -93,10 +132,12 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
     }
   }
   # Final child-environment mutation: preserve runtime variables, remove only proven corruptors.
-  $stdoutPath = [IO.Path]::GetFullPath($TracePath + ".stdout.log")
-  $stderrPath = [IO.Path]::GetFullPath($TracePath + ".stderr.log")
-  $stdoutFile = [IO.File]::Create($stdoutPath)
-  $stderrFile = [IO.File]::Create($stderrPath)
+  $OutputPath = Resolve-RepositoryPath $OutputPath
+  $TracePath = Resolve-RepositoryPath $TracePath
+  $stdoutPath = $TracePath + ".stdout.log"
+  $stderrPath = $TracePath + ".stderr.log"
+  $stdoutFile = [IO.File]::Open($stdoutPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
+  $stderrFile = [IO.File]::Open($stderrPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
   $proc = [Diagnostics.Process]::new()
   $proc.StartInfo = $psi
   try {
@@ -115,7 +156,7 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
   $sampleCount = 0
   $lastItems = @()
   $stopReason = "NATURAL_EXIT"
-  $trace = [IO.StreamWriter]::new([IO.Path]::GetFullPath($TracePath), $false, [Text.UTF8Encoding]::new($false))
+  $trace = [IO.StreamWriter]::new([IO.File]::Open($TracePath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read), [Text.UTF8Encoding]::new($false))
   $trace.AutoFlush = $true
   try {
     while (-not $proc.HasExited) {
@@ -240,7 +281,7 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
 if ($Mode -eq "SelfTest") {
   if ($ExpectedHead -notmatch '^[0-9a-f]{40}$') { throw "SELFTEST_EXPECTED_HEAD_REQUIRED" }
   Set-ArcanaPythonRuntimeEnvironment
-  $self = Join-Path $EvidenceDirectory ("selftest-" + [Guid]::NewGuid().ToString("N"))
+  $self = Join-Path $EvidencePath ("selftest-" + [Guid]::NewGuid().ToString("N"))
   New-Item -ItemType Directory -Path $self -Force | Out-Null
   $probeOutput = Join-Path $self "git-probe-output"
   New-Item -ItemType Directory -Path $probeOutput | Out-Null
@@ -362,10 +403,11 @@ raise SystemExit(0 if ok else 42)
 }
 if ($Mode -eq "ProviderAudit") {
   if ($ExpectedHead -notmatch '^[0-9a-f]{40}$') { throw "PROVIDER_AUDIT_EXPECTED_HEAD_REQUIRED" }
+  if ([string]::IsNullOrWhiteSpace($BoundaryId)) { throw "PROVIDER_AUDIT_BOUNDARY_ID_REQUIRED" }
   Set-ArcanaPythonRuntimeEnvironment
-  if (Test-Path -LiteralPath $EvidenceDirectory) { throw "REFUSE_EXISTING_EVIDENCE_DIRECTORY:$EvidenceDirectory" }
-  New-Item -ItemType Directory -Path $EvidenceDirectory -ErrorAction Stop | Out-Null
-  $auditDir = Join-Path $EvidenceDirectory "provider-audit"
+  if (Test-Path -LiteralPath $EvidencePath) { throw "REFUSE_EXISTING_EVIDENCE_DIRECTORY:$EvidencePath" }
+  New-Item -ItemType Directory -Path $EvidencePath -ErrorAction Stop | Out-Null
+  $auditDir = Join-Path $EvidencePath "provider-audit"
   New-Item -ItemType Directory -Path $auditDir -ErrorAction Stop | Out-Null
   $auditScript = Join-Path $auditDir "audit_pair_5_11.py"
   $auditResult = Join-Path $auditDir "provider-audit-result.json"
@@ -373,7 +415,7 @@ if ($Mode -eq "ProviderAudit") {
 import json, os, pathlib, sys
 from arcana_worldsim.r6.functional_spatial_support import audit_pair_5_11
 from arcana_worldsim.r6.repository_context import resolve_external_payload_path
-root, expected_branch, expected_head, result_path = sys.argv[1:]
+root, expected_branch, expected_head, result_path, boundary_id = sys.argv[1:]
 root_path = pathlib.Path(root)
 initial = json.loads((root_path / "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json").read_text(encoding="utf-8"))
 physical = resolve_external_payload_path(root_path, initial["payload"]["relative_path"])
@@ -385,17 +427,17 @@ diagnostic = {"cwd": os.getcwd(), "repository_root": str(root_path),
               "git_alternate_object_directories_present": "GIT_ALTERNATE_OBJECT_DIRECTORIES" in os.environ}
 pathlib.Path(result_path + ".diagnostic.json").write_text(json.dumps(diagnostic, sort_keys=True, indent=2), encoding="utf-8")
 try:
-    result = audit_pair_5_11(root, expected_branch=expected_branch)
+    result = audit_pair_5_11(root, expected_branch=expected_branch, requested_boundary_id=boundary_id)
 except Exception as exc:
     diagnostic["audit_error"] = type(exc).__name__ + ": " + str(exc)
     pathlib.Path(result_path + ".diagnostic.json").write_text(json.dumps(diagnostic, sort_keys=True, indent=2), encoding="utf-8")
     raise
-if result.get("source_head") != expected_head:
+if result.get("source_head") != expected_head or result.get("requested_boundary_id") != boundary_id or result.get("selected_boundary_id") != boundary_id:
     raise SystemExit("PROVIDER_AUDIT_HEAD_MISMATCH")
 pathlib.Path(result_path).write_text(json.dumps(result, sort_keys=True, indent=2), encoding="utf-8")
 "@
   Set-Content -LiteralPath $auditScript -Value $auditCode -Encoding utf8
-  $args = @($auditScript, $RepositoryRoot, "r6/si1-bandwidth-f2av", $ExpectedHead, $auditResult)
+  $args = @($auditScript, $RepositoryRoot, "r6/si1-bandwidth-f2av", $ExpectedHead, $auditResult, $BoundaryId)
   $audit = Invoke-Monitored "provider_audit_sanitized_child_environment" $args $auditDir (Join-Path $auditDir "supervisor.ndjson") 180 2147483648 536870912 100
   $audit | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $auditDir "supervisor-summary.json") -Encoding utf8
   if ($audit.stop_reason -ne "NATURAL_EXIT" -or $audit.exit_code -ne 0 -or
@@ -403,18 +445,43 @@ pathlib.Path(result_path).write_text(json.dumps(result, sort_keys=True, indent=2
   Get-Content -LiteralPath $auditResult -Raw
   return
 }
+if ($Mode -eq "VerifyRun") {
+  Set-ArcanaPythonRuntimeEnvironment
+  $plan = Get-RunPlan
+  if (Test-Path -LiteralPath $plan.output_path) { throw "REFUSE_EXISTING_CANDIDATE_OUTPUT:$($plan.output_path)" }
+  if (Test-Path -LiteralPath $plan.evidence_path) { throw "REFUSE_EXISTING_EVIDENCE_DIRECTORY:$($plan.evidence_path)" }
+  $verification = [pscustomobject]@{
+    status = "RUN_COMMAND_VERIFIED_NO_NUMERICAL_CHILD_STARTED"
+    label = $plan.label
+    arguments = $plan.arguments
+    working_directory = $plan.working_directory
+    output_path = $plan.output_path
+    evidence_path = $plan.evidence_path
+    python_path = [IO.Path]::GetFullPath($PythonPath)
+    python_executable_exists = Test-Path -LiteralPath ([IO.Path]::GetFullPath($PythonPath)) -PathType Leaf
+    pythonpath = $env:PYTHONPATH
+    arcana_external_root = $env:ARCANA_EXTERNAL_ROOT
+    child_git_object_directory_removed = $true
+    child_git_alternate_object_directories_removed = $true
+    output_path_absent = -not (Test-Path -LiteralPath $plan.output_path)
+    evidence_path_absent = -not (Test-Path -LiteralPath $plan.evidence_path)
+    wall_seconds = 900
+    process_tree_working_set_limit_bytes = 2147483648
+    cumulative_output_limit_bytes = 536870912
+    poll_milliseconds = 100
+  }
+  $verification | ConvertTo-Json -Depth 6
+  return
+}
 if ($Mode -eq "Run") {
   Set-ArcanaPythonRuntimeEnvironment
-  $outputPath = Join-Path $RepositoryRoot $OutputRelative
-  if (Test-Path -LiteralPath $outputPath) { throw "REFUSE_EXISTING_CANDIDATE_OUTPUT:$outputPath" }
-  if (Test-Path -LiteralPath $EvidenceDirectory) { throw "REFUSE_EXISTING_EVIDENCE_DIRECTORY:$EvidenceDirectory" }
-  New-Item -ItemType Directory -Path $EvidenceDirectory -ErrorAction Stop | Out-Null
-  $repo = [IO.Path]::GetFullPath($RepositoryRoot)
-  $scriptPath = Join-Path $repo "scripts/r6_functional_development_t_f2b.py"
-  $args = @($scriptPath,"--repository-root",".","--expected-branch","r6/si1-bandwidth-f2av","--output-relative",$OutputRelative.Replace('\','/') )
-  $trace = Join-Path $EvidenceDirectory "run.ndjson"
-  $result = Invoke-Monitored "INT0B_R4_FOURTH_ATTEMPT_PENDING_AUTHORIZATION" $args $outputPath $trace 900 2147483648 536870912 100
-  $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $EvidenceDirectory "run-summary.json") -Encoding utf8
+  $plan = Get-RunPlan
+  if (Test-Path -LiteralPath $plan.output_path) { throw "REFUSE_EXISTING_CANDIDATE_OUTPUT:$($plan.output_path)" }
+  if (Test-Path -LiteralPath $plan.evidence_path) { throw "REFUSE_EXISTING_EVIDENCE_DIRECTORY:$($plan.evidence_path)" }
+  New-Item -ItemType Directory -Path $plan.evidence_path -ErrorAction Stop | Out-Null
+  $trace = Join-Path $plan.evidence_path "run.ndjson"
+  $result = Invoke-Monitored $plan.label $plan.arguments $plan.output_path $trace 900 2147483648 536870912 100
+  $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $plan.evidence_path "run-summary.json") -Encoding utf8
   $result | Format-List
   if ($result.stop_reason -ne "NATURAL_EXIT") { exit 124 }
   if ($result.exit_code -ne 0) { exit $result.exit_code }

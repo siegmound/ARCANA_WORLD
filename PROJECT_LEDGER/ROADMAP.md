@@ -1,6 +1,6 @@
-# ARCANA R6 — Roadmap operativa corrente (2026-10-13)
+# ARCANA R6 — Roadmap operativa corrente (2026-10-14)
 
-**Obiettivo completo:** storia mondiale causale 210 Ma→0 ka, interrogabile e ricostruibile per geografia/tettonica, geologia, clima, idrologia, risorse, Deep, flora/fauna, popolazioni e società. INT-0B produced a bounded candidate engineering trajectory; INT-1A measured what its four samples support. INT-1C code preparation for a distinct support/edge case is ready, but execution remains unauthorized and the complete current-commit provider audit is pending external inputs. General retention policy remains unqualified. Le dipendenze non sono una percentuale o una scadenza.
+**Obiettivo completo:** storia mondiale causale 210 Ma→0 ka, interrogabile e ricostruibile per geografia/tettonica, geologia, clima, idrologia, risorse, Deep, flora/fauna, popolazioni e società. INT-0B produced a bounded candidate engineering trajectory; INT-1A measured what its four samples support. INT-1D has a conditional one-run authorization; the first launcher attempt failed before process start. A supervisor path/argument recovery is under review, followed by final-source provider preflight. General retention policy remains unqualified. Le dipendenze non sono una percentuale o una scadenza.
 
 | Gate | Risultato atteso | Stato |
 |---|---|---|
@@ -12,6 +12,7 @@
 | **INT-1A** | Empirical full/fixed/retrospective retention, reconstruction, replay and byte baseline on existing R4 trajectory | `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`; two interior times/support, one engineering regime; online/event/general policy UNKNOWN. |
 | **INT-1B** | Define minimum added retention evidence and distinct admissible regime | Design preserved; exact edge and full local T0 profiles verified for preparation. |
 | **INT-1C** | Add explicit eligible-edge selection and finest-rung diagnostic sampling for a distinct pair-5:11 candidate | `INT1C_DISTINCT_REGIME_CODE_READY__EXECUTION_PENDING_AUTHORIZATION`; 85 offline tests passed, 2 provider-backed tests deselected; no evolution. Full provider preflight/source-composite remains pending external inputs. |
+| **INT-1D** | One bounded distinct-boundary trajectory, only after final source/provider/monitor gates | `_01` supervisor launch failed before Python start; immutable record retained. Path/CLI recovery tests pass; exact final-commit audit and fresh `_02` run remain pending. |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
 | **Produzione WORLD_HISTORY** | Stati/eventi causalmente verificati per tutti i domini fino a 0 ka | Non autorizzata |

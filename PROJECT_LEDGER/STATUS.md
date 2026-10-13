@@ -1,6 +1,13 @@
-# CURRENT — ARCANA WorldSim R6, 2026-10-13
+# CURRENT — ARCANA WorldSim R6, 2026-10-14
 
-Current priority: INT-1D conditional execution authorization remains unconsumed because its mandatory provider preflight is blocked. On source commit `ffeb02e90abc4c3a542ac9a794c57ee8496b211b`, `ARCANA_EXTERNAL_ROOT` was unset and the read-only audit failed with `KinematicsAuthorityError: governed payload unavailable: CANONICAL_T0_PHYSICAL_PAYLOAD`. No evolution or candidate output was created. Report: `docs/arcana/INT1D_PROVIDER_PREFLIGHT_BLOCKED.md`. Next: locate/restore governed inputs on Windows and rerun the complete source-bound audit before reconsidering execution.
+Current priority: recover the INT-1D supervisor launch defect, then repeat the authorized final provider preflight and—only if every gate passes—one bounded `_02` attempt. The prior `_01` launch stopped before Python started because relative trace paths resolved from .NET's different current directory. It created no candidate trajectory and consumed no numerical execution. The prior provider blocker is superseded by the now available external root, but its report remains an immutable record of the earlier attempt. Recovery report: `docs/arcana/INT1D_SUPERVISOR_RECOVERY.md`.
+
+## CURRENT CHECKPOINT — INT-1D supervisor recovery (2026-10-14)
+- Starting source: branch `r6/si1-bandwidth-f2av`, HEAD `54c0cce119da9e061545792840f9b7c430159c7c`; existing tracked state clean. Historical `_01` evidence is preserved: launch-failure JSON SHA256 `5bcbf21abdd0f09a362b784808dad2cc1b19add350168aad10a74ebe647b40a6`, copied launcher SHA256 `8541230c6b6e96fd6f3ffd9ba311bf6381b0592018c85871a54e5f4c176b67db`.
+- The `_01` attempt failed before process creation. PowerShell location was the checkout; .NET current directory was its parent. No Python child, candidate output, process metrics, or trajectory resulted. Existing R4 output was left untouched.
+- Supervisor correction and tests now anchor all run/evidence paths to the absolute repository root, set child working directory explicitly, add exact INT-1D CLI overrides and boundary-specific audit, retain R4 defaults, and provide `VerifyRun` that checks the child plan without launching the numerical runner or creating destinations.
+- Offline verification with the configured external root: supervisor/environment plus provider-dependent spatial-support suites **19 passed** on Python 3.12.10 / NumPy 2.3.5 / pytest 9.1.1. Test wrapper deliberately made PowerShell location differ from .NET current directory. This is implementation/test evidence only; the final commit-bound provider audit and `_02` execution gates remain pending.
+- Do not reuse `_01`. Proposed fresh paths are `_02` in the recovery report. No scientific run has yet occurred under this recovery. All scientific/Solver/canonical gates remain unchanged.
 
 ## CURRENT CHECKPOINT — INT-1D provider preflight blocked (2026-10-13)
 - Requested boundary `R6BND-T0-27e4d497530e681071fb`; branch/HEAD were `r6/si1-bandwidth-f2av` / `ffeb02e90abc4c3a542ac9a794c57ee8496b211b`.
