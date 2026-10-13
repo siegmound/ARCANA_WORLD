@@ -1,25 +1,25 @@
-# NEXT — final INT-1D preflight, then at most one authorized run
+# NEXT — INT-2 query, refinement and reconstruction on existing candidate evidence
 
-The prior provider-input blocker is historically valid for its 2026-10-13 environment, but the authorized external provider root is now available. The most recent INT-1D launch attempt (`_01`) failed before the numerical child started because path resolution depended on .NET current-directory state. See `docs/arcana/INT1D_SUPERVISOR_RECOVERY.md`; preserve the original blocker report and all `_01` files.
+INT-1D is complete within its authorized scope. The new pair-5:11 normal-continental trajectory and the preserved INT-0B-R4 hot-extended trajectory have both passed their applicable bundle/provenance checks; the INT-1A evaluator has measured actual-time full/fixed/retrospective retention for each. These are two case-specific engineering trajectories, not a general retention qualification.
 
-Immediate gate: publish the reviewed supervisor recovery using a verified normal fast-forward if reachable; on its final committed HEAD, run ProviderAudit in the sanitized child with exact selector `R6BND-T0-27e4d497530e681071fb` and rerun the provider-dependent tests. Recalculate the HEAD-bound source-composite identity and verify Python 3.12.10 / NumPy 2.3.5, complete governed payload hashes, exact pair/supports/material profiles/forcing, and sanitized Git object environment.
+## Current action
 
-Only if those checks and the `VerifyRun`/monitor/path gates pass, the existing conditional approval permits one run at the fresh destinations:
+Perform a bounded offline INT-2 evaluation using the existing R4 and INT-1D bundles: verify the candidate query/refinement/reconstruction path against their manifests and state/time supports, record which operations are already executable, and identify any missing binding needed for repeatable candidate retrieval. Reuse existing code and tests. Do not run another evolution, infer geological events, create canonical state, or treat retrospective selection as an online policy. Any additional numerical execution requires separate authorization. B0 `HistoryStore` executable registration/query/replay remains distinct and currently descriptor-only.
 
-- Candidate: `outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02`
-- Supervisor: `outputs/r6_functional_development/INT1D_SUPERVISION_20261014_02`
+## Inputs and constraints
 
-Exact parameters remain pair 5:11, requested boundary above, T0=210 Ma, 1,000 engineering years, existing frozen Euler forcing/reduced kernel, resolution ladder 0.001/0.0005/0.00025/0.000125, diagnostic sampling at 0.000125, replay/checkpoint at 0.0005. Limits are 900 seconds, 2 GiB sampled process-tree working set, 512 MiB cumulative output; one attempt, no retry. Run the established foreground supervisor only. If any preflight fails, or the run fails, preserve evidence and stop. No parameter changes, alternate model, Fair/MPI/ShellSet/Solver or canonical operation.
+- R4 bundle: `outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/`, manifest SHA256 `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`.
+- INT-1D bundle: `outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/`, manifest SHA256 `0cf3faedc6984bed7f479312a2038385ec03040c2fead5cee5b150def39bc571`.
+- Comparison report: `docs/arcana/INT1D_EXECUTION_REPORT.md`.
+- Preserve all previous failures and output directories. No Fair, MPI, ShellSet, Solver, DGBSV, post-rift evolution, or WORLD_HISTORY modification. Preserve `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
-After successful output validation, perform the authorized offline comparison against immutable INT-0B R4 evidence and update the ledger with measurements. Until then no new INT-1D trajectory is evidenced. Preserve all scientific/Solver/canonical gates.
-
-No numerical evolution was run and the conditional authorization was not consumed by a run. Existing INT-0B R4 and earlier attempt evidence remain immutable. B0 `HistoryStore` executable replay remains separate and descriptor-only. Preserve all scientific/Solver/canonical gates.
+---
 
 ## Archived proposal — INT-1B before INT-1C implementation
 
 Current decision (2026-10-13): `INT1B_NEXT_EVIDENCE_EXPERIMENT_DEFINED__EXECUTION_NOT_AUTHORIZED`. Report: `docs/arcana/INT1B_EVIDENCE_DENSITY_AND_DISTINCT_REGIME_DESIGN.md`. INT-1A remains the empirical baseline: `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`.
 
-## Current action
+## Historical action (archived)
 
 The minimum next evidence run is defined but not authorized. Do not execute provider-backed evolution until a separate authorization and preflight. Proposal: pair 5:11, audited boundary `R6BND-T0-27e4d497530e681071fb`, its two admitted normal continental supports, T0=210 Ma, 1,000 engineering years, existing frozen Euler/kernel and unchanged boundary conditions; preserve factors 0.001/0.0005/0.00025 and add 0.000125, capturing every substep only at the finest rung. A runner boundary selector must accept only one verified eligible ID and retain all current provider checks. Re-materialize/verify both complete profiles and material tuple, hashes, environment and output paths immediately before any future authorized run. No second case, alternate physics, parameter change, retry, or canonical write.
 
@@ -39,7 +39,7 @@ The remaining NEXT_ACTION content below is an archived snapshot from earlier gat
 
 **Current decision (2026-10-13):** INT0B_R1_SECOND_ATTEMPT_FAILED_PRE_OUTPUT_VALIDATION_GIT_OBJECT_ENV_REINSERTED. The single authorized second attempt on HEAD 4cc7a78d95ee7e529394173933817a7266db251d exited before candidate output creation because the supervisor child inherited Git object-store variables from r6-env.ps1. Full record: docs/arcana/INT0B_R1_SECOND_ATTEMPT_FAILURE.md.
 
-## Current action
+## Historical action (archived)
 
 Preserve the failure record and stop. Do not retry INT-0B under this authorization; no third execution is permitted here. INT-1 remains blocked because no validated trajectory exists. No further scientific execution is authorized by this checkpoint.
 

@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point, updated 2026-10-14. INT-0B-R4 produced and verified a noncanonical pair-5:11 engineering trajectory on commit 91fc83d. INT-1D has a conditional authorization for one distinct-boundary trajectory, but its `_01` supervisor launch failed before Python started; the recovery and final-source preflight are the current gates. Decision for R4 remains INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED. Earlier failed attempts remain immutable. No scientific qualification or canonical promotion.
+Single continuity point, updated 2026-10-14. INT-0B-R4 and the single authorized INT-1D distinct-boundary attempt produced verified noncanonical pair-5:11 engineering trajectories. INT-1D sampled two normal-continental supports at nine times each and was compared offline with the preserved R4 hot-extended case using the INT-1A evaluator. Both runs remain engineering evidence only; general retention, scientific mechanics and canonical promotion are not qualified. Earlier failed attempts remain immutable. Current next gate: bounded INT-2 query/refinement/reconstruction evaluation using the existing trajectories.
 
 ## Leggere in questo ordine
 1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
