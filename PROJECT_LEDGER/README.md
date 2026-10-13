@@ -1,10 +1,10 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** La correzione INT-0B-R2 ha isolato il processo Python dalle due variabili Git object reinserite dal bootstrap e ha ripetuto con successo il provider audit nel medesimo percorso di lancio. Non è stata eseguita una traiettoria: un terzo tentativo resta in attesa di una nuova autorizzazione esplicita; INT-1 resta bloccato.
+**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** Il terzo e ultimo tentativo INT-0B-R2 è fallito dopo il calcolo in memoria, durante la validazione endpoint dei campioni diagnostici (`DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH`). Non è stata scritta una traiettoria; il supervisore ha inoltre registrato una causa di stop incoerente con l'exit code naturale, da correggere offline. Nessun quarto run è autorizzato; INT-1 resta bloccato.
 
 ## Leggere in questo ordine
 1. `STATUS.md` — solo la sezione iniziale **CURRENT** contiene la priorità attuale; seguono checkpoint storici.
-2. NEXT_ACTION.md — un solo incarico corrente: attendere autorizzazione separata per un solo tentativo INT-0B-R2; nessun run o INT-1 prima di tale autorizzazione.
+2. NEXT_ACTION.md — un solo incarico corrente: diagnosi offline dell'endpoint mismatch e della race del supervisore; nessun altro run INT-0B o INT-1 senza nuova autorizzazione.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

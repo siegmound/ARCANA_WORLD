@@ -5,8 +5,8 @@
 | Gate | Risultato atteso | Stato |
 |---|---|---|
 | **INT-0A** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`; suite offline mirata 20 PASS |
-| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Due tentativi falliti prima di produrre traiettorie: _01 per TypeError storico; _02 per ambiente Git object contaminato. La correzione R2 e il provider audit sono passati offline su `d9d87fe`; `_03` resta proposto ma non eseguito e richiede nuova autorizzazione. INT-1 bloccato. |
-| **INT-0B-R2** | Correzione isolamento child env, provider audit nello stesso launch path, preparazione bounded di un terzo tentativo | `INT0B_R2_EXECUTION_ENV_CORRECTED__THIRD_ATTEMPT_PENDING_AUTHORIZATION`; suite offline 41 PASS e provider audit PASS. Nessuna traiettoria. Attendere autorizzazione separata per `_03`. |
+| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Tre tentativi: `_01` e `_02` falliti prima di creare traiettorie; terzo/finale `_03` ha eseguito i calcoli e fallito `DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH` prima di persistere/validare i campioni. Nessuna traiettoria utilizzabile; INT-1 bloccato. |
+| **INT-0B-R2** | Isolamento ambiente corretto e tentativo finale bounded | Preflight provider PASS su `311550d`; esecuzione singola fallita su endpoint diagnostico dopo 22.190863 s (exit 1). Il supervisore ha metadata `MONITOR_ROOT_IDENTITY_LOST` incoerente con l'exit naturale e label R1 stale. Report failure esistente; nessun quarto run autorizzato. Prossimo: diagnosi offline del validator e race del supervisor. |
 | **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Bloccato finché una traiettoria INT-0B completa non sia validata |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
@@ -14,7 +14,7 @@
 
 ## Inventario con scope (non trasformare PASS tecnici in qualifica scientifica)
 
-INT-0B provider input audit è stato ripetuto sul commit R2 `d9d87fe` attraverso lo stesso processo figlio sanitizzato usato dal supervisor: PASS con source identity HEAD-bound `7438690f5b7d59b1ab0177a0ac270deb188fcfc233308131da6d6515998461bd`. La directory `_03` resta assente; non esiste traiettoria per INT-1. Una nuova autorizzazione esplicita è necessaria prima del terzo tentativo.
+INT-0B provider input audit è stato ripetuto sul commit autorizzato `311550d` attraverso il processo figlio sanitizzato: PASS, source identity HEAD-bound `a19070287adedb0bb009ce5c56380892ca173d4eee30b662c6c1a7d34406b34a`. L'unico run R2 ha poi fallito la validazione endpoint; la destinazione numerica `_03` non è stata creata e non esiste una traiettoria con campioni persistiti per INT-1. Non è autorizzato un quarto tentativo; un eventuale run futuro richiede nuova autorizzazione esplicita dopo correzioni offline.
 
 - **B0/B6:** HistoryStore/query/replay esistono. B6K candidata geometrica 210→209.97287659484368 Ma e B6N8-A shadow multirisoluzione. Vecchio B6M-R1 bloccato e successivo live-view B6N8-A a due età sono checkpoint distinti; verificare il canonico attuale read-only.
 - **Termica/cinematica integrabile:** PRE_ORBDATA, B6N8-O/Q e codice T-F2B con supporto coppia **5:11**, forcing ingegneristico congelato, finestra 1.000 anni e replay/restart. B6N8-R roster real-support ancora incompleto; NON estendere T-F2B alla coppia rift **1:3** per analogia.

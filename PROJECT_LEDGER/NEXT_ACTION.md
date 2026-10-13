@@ -1,22 +1,12 @@
-# NEXT — await separate authorization for INT-0B-R2 attempt
+# NEXT — diagnose INT-0B-R2 endpoint failure offline
 
-**Current decision (2026-10-13):** `INT0B_R2_EXECUTION_ENV_CORRECTED__THIRD_ATTEMPT_PENDING_AUTHORIZATION`. The child-environment correction and provider audit passed on `d9d87fe8853b5c17f5bc8fd27d496aaf9aa45b57`; no numerical evolution was run. See [R2 environment-isolation report](../docs/arcana/INT0B_R2_EXECUTION_ENVIRONMENT_ISOLATION.md).
+**Current decision (2026-10-13):** `INT0B_R2_THIRD_ATTEMPT_FAILED_DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH`. The one authorized final attempt on HEAD `311550d4402f6c2fac422eac1c7f1eed46c58c64` ran the configured calculations, then failed endpoint validation for `R6G1D-R091-C029`, sample index 0. No trajectory directory or validated samples were persisted. See [failure report](../docs/arcana/INT0B_R2_THIRD_ATTEMPT_FAILURE.md).
 
-Wait for separate explicit authorization for exactly one local, noncanonical run. Until then, do not invoke the supervisor in `Run` mode and do not create the proposed candidate output. At the review time, `outputs/r6_functional_development/INT0B_TF2B_5_11_R2_20261013_03` was absent. `_01` and `_02` historical evidence are preserved.
+## Current action
 
-Before any later authorized attempt, recheck branch/HEAD, provider/input hashes, Python 3.12.10 and NumPy 2.3.5, sanitized-child Git provenance, supervisor limits and both output/evidence destinations. Keep the exact existing configuration: pair 5:11; T0 210 Ma; 1,000 engineering years; frozen Euler forcing; existing reduced thermal kernel; fractions 0.001, 0.0005, 0.00025. No equation, forcing, parameter or sample change.
+Perform a bounded offline diagnosis of `_validate_diagnostic_sample_sequence()` versus the middle-resolution `final_states` and sampled endpoint record. Reproduce the concrete endpoint comparison on a synthetic fixture and identify which field differs; do not infer it from the failed message. Review the supervisor's natural-exit race and stale attempt label, add a synthetic regression, and correct only metadata/monitor behavior if justified. Preserve all existing output directories and reports. Do not rerun INT-0B: the third/final execution allowance has been consumed. Any further numerical run needs a new explicit authorization after offline correction review.
 
-Proposed command from repository root:
-
-```powershell
-pwsh -NoProfile -File scripts/r6_int0b_supervisor.ps1 `
-  -Mode Run `
-  -RepositoryRoot . `
-  -OutputRelative outputs/r6_functional_development/INT0B_TF2B_5_11_R2_20261013_03 `
-  -EvidenceDirectory outputs/r6_functional_development/INT0B_R2_SUPERVISION_20261013_RUN
-```
-
-The supervisor retains 900 s, 2 GiB process-tree working set and 512 MiB cumulative-output sampled stop limits (not OS-enforced quotas), and no retry. INT-1 remains blocked until a complete trajectory is validated. Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+INT-1 remains blocked until a complete trajectory is produced and validated. Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 
