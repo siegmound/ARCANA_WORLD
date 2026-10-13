@@ -65,6 +65,14 @@ Final result: **70 passed, 0 failed, 0 skipped**. A preceding iteration found an
 
 ## Fourth-run preparation — not authorization
 
+### Final source-bound provider audit
+
+After the R4 commit was created, the existing read-only `audit_pair_5_11` provider audit was run directly against branch `r6/si1-bandwidth-f2av`, HEAD `50fbf6dfe1b8068a243ffa60df9ef22e1f5d6876`. It exited 0 with Python 3.12.10 and NumPy 2.3.5. The child process reported both `GIT_OBJECT_DIRECTORY` and `GIT_ALTERNATE_OBJECT_DIRECTORIES` absent, and `ARCANA_EXTERNAL_ROOT` resolved to the governed `_ARCANA_EXTERNAL_SOURCES` directory.
+
+The audit identified pair 5:11, selected boundary `R6BND-T0-3eb57747e6f0a3f3305f`, and admitted support IDs `R6G1D-R091-C029` / `R6G1D-R091-C028`, with 73 profile nodes per support. Provider identities matched the governed inputs: physical-geography payload `a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c`, vector partition `a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab`, field package `39934c2c0c36aa168d850b02d88ca8a853febdb99915af9b7bb18fed6539a52e`, admitted-support index `aaa571eb64b854656e70fdbb559377a76eb44afdb723080eb5471fd4b1663e00`, kinematics artifact `0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2` and semantic identity `50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4`, event census `e1f5d77443e7f0898b6100a84d36ce2961e94b580df139896e73804b85968f7e`, and exact mapping join `b8d57495bc6e196a0b9fe7afd466079bebd97d0f63baafe232f215e45897a09f`. The source-composite identity for this commit was `c20e45ec398e331ae423e63d9387a53d8659a47a5a2bd8efa3b9ea1d17b808d4`.
+
+This was a read-only provider-input audit, not a trajectory execution or authorization. Its JSON result was emitted to the local command output and was not persisted as a separate evidence artifact; the identity values above are recorded from that observed result, not from a newly sealed manifest. No canonical state changed. If a separate execution authorization is later issued, repeat the audit immediately before the run and recheck source, providers, environment and absent destinations.
+
 Proposed configuration remains the previously approved engineering scenario, but this report does not authorize its execution:
 
 | Setting | Prepared value |
@@ -80,7 +88,7 @@ Proposed configuration remains the previously approved engineering scenario, but
 | Supervisor evidence | `outputs/r6_functional_development/INT0B_R4_SUPERVISION_20261013_04` |
 | Monitored limits | 900 s elapsed, 2 GiB process-tree working set, 512 MiB candidate output plus captured stdout/stderr; one attempt, no retry |
 
-Both destination paths were checked absent during R4 preparation and were not created. The exact supervisor invocation to use only after a separate authorization and a fresh final-source/provider audit is:
+Both destination paths were checked absent during R4 preparation and were not created. The exact supervisor invocation to use only after a separate authorization and immediate revalidation of the final-source/provider audit is:
 
 ```powershell
 pwsh -NoLogo -NoProfile -File .\scripts\r6_int0b_supervisor.ps1 `
@@ -90,7 +98,7 @@ pwsh -NoLogo -NoProfile -File .\scripts\r6_int0b_supervisor.ps1 `
   -EvidenceDirectory 'outputs/r6_functional_development/INT0B_R4_SUPERVISION_20261013_04'
 ```
 
-The supervisor's `Run` mode passes the existing runner arguments only: repository root `.`, expected branch `r6/si1-bandwidth-f2av`, and the selected output-relative path. It applies the three monitored thresholds and removes only the two known-invalid Git object-directory variables from the child process. The pre-run gate must still verify exact branch/HEAD/parent, tracked cleanliness, source/provider hashes, Python/NumPy/environment identities, both absent destinations, and a read-only provider audit on the eventual execution commit. A new explicit authorization is required before this command can be run. The previous local provider audit is HEAD-bound to its own earlier commit and cannot be reused as final-source evidence.
+The supervisor's `Run` mode passes the existing runner arguments only: repository root `.`, expected branch `r6/si1-bandwidth-f2av`, and the selected output-relative path. It applies the three monitored thresholds and removes only the two known-invalid Git object-directory variables from the child process. Before any future run, verify exact branch/HEAD/parent, tracked cleanliness, source/provider hashes, Python/NumPy/environment identities and both absent destinations; repeat the provider audit on that exact commit immediately before execution. The audit on `50fbf6d` is not a trajectory result, and a new explicit authorization is required before this command can be run.
 
 ## Publication and unchanged gates
 

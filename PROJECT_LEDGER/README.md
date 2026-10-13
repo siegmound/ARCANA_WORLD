@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** INT-0B-R4 ha completato validazione offline end-to-end sintetica e regressioni supervisor, inclusa la conservazione/hash di stdout e stderr. Le tre precedenti esecuzioni restano fallimenti immutati; nessuna nuova evoluzione è stata eseguita. Una quarta esecuzione non è autorizzata e richiede una distinta approvazione. INT-1 resta bloccato senza una traiettoria completa validata.
+**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** INT-0B-R4 ha completato validazione offline end-to-end sintetica e regressioni supervisor, inclusa la conservazione/hash di stdout e stderr. Il provider audit read-only è passato sul commit R4 finale `50fbf6d`; le tre precedenti esecuzioni restano fallimenti immutati e nessuna nuova evoluzione è stata eseguita. Una quarta esecuzione non è autorizzata e richiede una distinta approvazione. INT-1 resta bloccato senza una traiettoria completa validata.
 
 ## Leggere in questo ordine
 1. `STATUS.md` — solo la sezione iniziale **CURRENT** contiene la priorità attuale; seguono checkpoint storici.
