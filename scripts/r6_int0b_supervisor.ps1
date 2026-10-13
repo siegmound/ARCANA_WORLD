@@ -62,6 +62,17 @@ function Get-OutputBytes([string]$Path) {
   }
   return $total
 }
+function Set-ArcanaPythonRuntimeEnvironment {
+  $checkoutParent = [IO.Directory]::GetParent($RepositoryRoot)
+  if ($null -eq $checkoutParent -or $null -eq $checkoutParent.Parent) { throw "ARCANA_WORLD_ROOT_UNRESOLVED" }
+  $arcanaWorldRoot = $checkoutParent.Parent.FullName
+  $externalRoot = Join-Path $arcanaWorldRoot "_ARCANA_EXTERNAL_SOURCES"
+  if (-not (Test-Path -LiteralPath $externalRoot -PathType Container)) {
+    throw "ARCANA_EXTERNAL_ROOT_UNAVAILABLE:$externalRoot"
+  }
+  $env:ARCANA_EXTERNAL_ROOT = (Resolve-Path -LiteralPath $externalRoot).Path
+  $env:PYTHONPATH = "C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src"
+}
 function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$OutputPath,
                           [string]$TracePath, [double]$WallSeconds, [int64]$WorkingSetLimit,
                           [int64]$OutputLimit, [int]$PollMilliseconds = 100,
@@ -175,8 +186,7 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
 }
 if ($Mode -eq "SelfTest") {
   if ($ExpectedHead -notmatch '^[0-9a-f]{40}$') { throw "SELFTEST_EXPECTED_HEAD_REQUIRED" }
-  $env:ARCANA_EXTERNAL_ROOT = "F:\corsiiiuu\Magistrale\Arcana\ArcanaWorld\_ARCANA_EXTERNAL_SOURCES"
-  $env:PYTHONPATH = "C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src"
+  Set-ArcanaPythonRuntimeEnvironment
   $self = Join-Path $EvidenceDirectory ("selftest-" + [Guid]::NewGuid().ToString("N"))
   New-Item -ItemType Directory -Path $self -Force | Out-Null
   $probeOutput = Join-Path $self "git-probe-output"
@@ -212,7 +222,9 @@ ok = (top.returncode == 0 and head.returncode == 0 and obj.returncode == 0 and s
       and data["git_head"] == expected_head and data["object_type"] == "commit"
       and data["pythonpath_preserved"] and data["external_root_preserved"] and data["path_preserved"]
       and "GIT_OBJECT_DIRECTORY" not in env and "GIT_ALTERNATE_OBJECT_DIRECTORIES" not in env
-      and numpy_version == "2.3.5" and data["python_version"] == "3.12.10")
+      and numpy_version == "2.3.5" and data["python_version"] == "3.12.10"
+      and pathlib.Path(os.environ["ARCANA_EXTERNAL_ROOT"]).is_dir()
+      and (pathlib.Path(os.environ["ARCANA_EXTERNAL_ROOT"]) / "r6/initial_world/r6run_85af40f36fcb86c23a3571744817780a28e22740f6eaa04ae432bfe7d21f7f65/R6_INITIAL_PHYSICAL_GEOGRAPHY.npz").is_file())
 raise SystemExit(0 if ok else 42)
 "@
   Set-Content -LiteralPath $probePath -Value $probeCode -Encoding utf8
@@ -273,8 +285,7 @@ raise SystemExit(0 if ok else 42)
 }
 if ($Mode -eq "ProviderAudit") {
   if ($ExpectedHead -notmatch '^[0-9a-f]{40}$') { throw "PROVIDER_AUDIT_EXPECTED_HEAD_REQUIRED" }
-  $env:ARCANA_EXTERNAL_ROOT = "F:\corsiiuu\Magistrale\Arcana\ArcanaWorld\_ARCANA_EXTERNAL_SOURCES"
-  $env:PYTHONPATH = "C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src"
+  Set-ArcanaPythonRuntimeEnvironment
   if (Test-Path -LiteralPath $EvidenceDirectory) { throw "REFUSE_EXISTING_EVIDENCE_DIRECTORY:$EvidenceDirectory" }
   New-Item -ItemType Directory -Path $EvidenceDirectory -ErrorAction Stop | Out-Null
   $auditDir = Join-Path $EvidenceDirectory "provider-audit"
@@ -282,10 +293,26 @@ if ($Mode -eq "ProviderAudit") {
   $auditScript = Join-Path $auditDir "audit_pair_5_11.py"
   $auditResult = Join-Path $auditDir "provider-audit-result.json"
   $auditCode = @"
-import json, pathlib, sys
+import json, os, pathlib, sys
 from arcana_worldsim.r6.functional_spatial_support import audit_pair_5_11
+from arcana_worldsim.r6.repository_context import resolve_external_payload_path
 root, expected_branch, expected_head, result_path = sys.argv[1:]
-result = audit_pair_5_11(root, expected_branch=expected_branch)
+root_path = pathlib.Path(root)
+initial = json.loads((root_path / "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json").read_text(encoding="utf-8"))
+physical = resolve_external_payload_path(root_path, initial["payload"]["relative_path"])
+diagnostic = {"cwd": os.getcwd(), "repository_root": str(root_path),
+              "arcana_external_root": os.environ.get("ARCANA_EXTERNAL_ROOT"),
+              "resolved_physical_payload": str(physical), "physical_payload_is_file": physical.is_file(),
+              "pythonpath": os.environ.get("PYTHONPATH"),
+              "git_object_directory_present": "GIT_OBJECT_DIRECTORY" in os.environ,
+              "git_alternate_object_directories_present": "GIT_ALTERNATE_OBJECT_DIRECTORIES" in os.environ}
+pathlib.Path(result_path + ".diagnostic.json").write_text(json.dumps(diagnostic, sort_keys=True, indent=2), encoding="utf-8")
+try:
+    result = audit_pair_5_11(root, expected_branch=expected_branch)
+except Exception as exc:
+    diagnostic["audit_error"] = type(exc).__name__ + ": " + str(exc)
+    pathlib.Path(result_path + ".diagnostic.json").write_text(json.dumps(diagnostic, sort_keys=True, indent=2), encoding="utf-8")
+    raise
 if result.get("source_head") != expected_head:
     raise SystemExit("PROVIDER_AUDIT_HEAD_MISMATCH")
 pathlib.Path(result_path).write_text(json.dumps(result, sort_keys=True, indent=2), encoding="utf-8")
@@ -300,8 +327,7 @@ pathlib.Path(result_path).write_text(json.dumps(result, sort_keys=True, indent=2
   return
 }
 if ($Mode -eq "Run") {
-  $env:ARCANA_EXTERNAL_ROOT = "F:\corsiiiuu\Magistrale\Arcana\ArcanaWorld\_ARCANA_EXTERNAL_SOURCES"
-  $env:PYTHONPATH = "C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src"
+  Set-ArcanaPythonRuntimeEnvironment
   $outputPath = Join-Path $RepositoryRoot $OutputRelative
   if (Test-Path -LiteralPath $outputPath) { throw "REFUSE_EXISTING_CANDIDATE_OUTPUT:$outputPath" }
   if (Test-Path -LiteralPath $EvidenceDirectory) { throw "REFUSE_EXISTING_EVIDENCE_DIRECTORY:$EvidenceDirectory" }

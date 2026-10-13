@@ -35,7 +35,7 @@ def test_real_supervisor_child_environment_and_limits(tmp_path: Path) -> None:
 
     result = subprocess.run(
         [pwsh, "-NoLogo", "-NoProfile", "-File", str(SUPERVISOR),
-         "-Mode", "SelfTest", "-PythonPath", sys.executable,
+         "-Mode", "SelfTest", "-PythonPath", str(Path(sys.base_prefix) / "python.exe"),
          "-RepositoryRoot", str(ROOT), "-EvidenceDirectory", str(tmp_path / "evidence"),
          "-ExpectedHead", head],
         cwd=ROOT, env=child_env, capture_output=True, text=True, timeout=120,
