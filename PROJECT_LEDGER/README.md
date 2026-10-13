@@ -1,10 +1,10 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** INT-0B-R4 ha completato validazione offline end-to-end sintetica e regressioni supervisor, inclusa la conservazione/hash di stdout e stderr. Il provider audit read-only è passato sul commit R4 finale `50fbf6d`; le tre precedenti esecuzioni restano fallimenti immutati e nessuna nuova evoluzione è stata eseguita. Una quarta esecuzione non è autorizzata e richiede una distinta approvazione. INT-1 resta bloccato senza una traiettoria completa validata.
+Single continuity point, updated 2026-10-13. INT-0B-R4 produced and verified a noncanonical pair-5:11 engineering trajectory on commit 91fc83d. Decision: INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED; the verified trajectory enables INT-1 empirical retention/reconstruction analysis. Three earlier failed attempts remain immutable. No scientific qualification or canonical promotion.
 
 ## Leggere in questo ordine
-1. `STATUS.md` — solo la sezione iniziale **CURRENT** contiene la priorità attuale; seguono checkpoint storici.
-2. NEXT_ACTION.md — un solo incarico corrente: conservare/pubblicare R4 offline e attendere eventuale autorizzazione distinta per un solo nuovo tentativo; nessun run INT-0B o INT-1 autorizzato da questo gate.
+1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
+2. NEXT_ACTION.md - the sole current task is INT-1, bounded offline empirical state-retention/reconstruction analysis on the verified R4 trajectory; no new INT-0B run.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

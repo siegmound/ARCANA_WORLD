@@ -5,11 +5,11 @@
 | Gate | Risultato atteso | Stato |
 |---|---|---|
 | **INT-0A** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`; suite offline mirata 20 PASS |
-| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Tre tentativi immutati falliti (`_01` TypeError preoutput, `_02` ambiente Git nel child, `_03` endpoint schema mismatch). R4 offline E2E PASS; quarta evoluzione `PENDING_SEPARATE_AUTHORIZATION`; nessuna traiettoria utilizzabile, INT-1 bloccato. |
+| **INT-0B** | Noncanonical T-F2B 5:11 engineering run, samples, comparison, restart, manifest | R4 completed on 91fc83d; bundle/samples/replay/restart verified. INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED. _01-_03 remain immutable failures. |
 | **INT-0B-R2** | Isolamento ambiente corretto e tentativo finale bounded | Preflight provider PASS su `311550d`; esecuzione singola fallita su endpoint diagnostico dopo 22.190863 s (exit 1). La diagnosi R3 identifica mismatch di schema `elapsed_years` assente dal final payload, non prova una divergenza numerica; la regressione sintetica e la correzione supervisor passano. Nessun quarto run autorizzato. |
 | **INT-0B-R3** | Correzione endpoint e metadata supervisor offline | `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`; report del run fallito immutato e campioni non recuperati. |
-| **INT-0B-R4** | Validazione E2E sintetica e preparazione bounded, senza evolution | `INT0B_R4_OFFLINE_E2E_VERIFIED__FOURTH_RUN_PENDING_AUTHORIZATION`; 70 test PASS, output writer/manifest e supervisor streams verificati su fixture. Provider audit read-only PASS sul commit finale `50fbf6d`; quarta esecuzione non autorizzata e richiede approvazione distinta più revalidazione immediata. |
-| **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Bloccato finché una traiettoria INT-0B completa non sia validata |
+| **INT-0B-R4** | Validazione E2E sintetica, provider preflight e un tentativo engineering bounded | Offline suite 70 PASS; quarto run autorizzato su `91fc83d` completato e bundle verificato. Decisione noncanonical: `INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED`. |
+| **INT-1** | Empirical full/fixed/event/error/uncertainty retention, reconstruction, replay and byte measurements | Ready for bounded offline analysis of the verified noncanonical R4 trajectory; no canonical retention decision or scientific promotion. |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
 | **Produzione WORLD_HISTORY** | Stati/eventi causalmente verificati per tutti i domini fino a 0 ka | Non autorizzata |

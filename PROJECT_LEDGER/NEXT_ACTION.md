@@ -1,14 +1,18 @@
-# NEXT — hold for separate INT-0B-R4 execution authorization
+# NEXT - INT-1 empirical state-retention and reconstruction analysis
 
-**Current decision (2026-10-13):** `INT0B_R4_OFFLINE_E2E_VERIFIED__FOURTH_RUN_PENDING_AUTHORIZATION`. R4 adds a synthetic end-to-end regression across sample capture, production endpoint validation, replay/restart, serialization and candidate output bundle readback/manifest, and a supervisor self-test that preserves stdout/stderr. No fourth evolution run occurred. See [R4 offline validation](../docs/arcana/INT0B_R4_OFFLINE_E2E_VALIDATION.md).
+Current decision (2026-10-13): INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED. The authorized fourth R4 attempt completed and its output bundle was verified; see docs/arcana/INT0B_R4_EXECUTION_REPORT.md. Earlier _01-_03 failures remain immutable. No fifth INT-0B attempt is authorized or needed.
 
 ## Current action
 
-Preserve the three failed-attempt records and all existing outputs. Do not run the prepared `_04` command under this offline gate. A fourth bounded attempt requires a separate explicit authorization. The read-only provider audit passed on final R4 commit `50fbf6d` (source-composite SHA256 `c20e45ec398e331ae423e63d9387a53d8659a47a5a2bd8efa3b9ea1d17b808d4`); if authorized later, repeat it immediately against the exact run commit and recheck provider hashes, tracked cleanliness, Python 3.12.10, NumPy 2.3.5, `_ARCANA_EXTERNAL_SOURCES`, and both absent `_04` destinations. Use the PowerShell supervisor with process-tree monitoring at 900 seconds, 2 GiB and 512 MiB (sampled operational stop limits, not OS quotas); retain stdout/stderr logs and do not retry. INT-1 remains blocked until a complete trajectory is produced and independently validated.
+Perform bounded, offline empirical retention/reconstruction analysis using the verified candidate trajectory at outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/. Recheck its manifest and hashes, then keep the source bundle read-only. Compare full-state retention, endpoints plus selected diagnostics, and deterministic reconstruction from checkpoints/forcing only where the existing contract supports it. Measure retained bytes, reconstructed-field differences, replay behavior, and information lost under each policy. Keep B0 replay DESCRIPTOR_ONLY_NOT_REGISTERED_IN_HISTORYSTORE; do not claim HistoryStore registration or canonical retention.
 
-Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+Write analysis outputs only under a new isolated outputs/r6_functional_development/INT1_RETENTION_20261013/ directory; do not overwrite INT-0B-R4 evidence. This is analysis of the existing noncanonical engineering trajectory, not a new evolution, scientific promotion, or canonical retention decision. No Fair, MPI, ShellSet, Solver, B6 post-rift evolution, or WORLD_HISTORY access/publication.
+
+Preserved gates: BLOCKED_F2AV_QUALIFICATION, OPERATOR_CLASS_UNVERIFIED, THRESHOLD_UNJUSTIFIED, RESOURCE_2GB_SCOPE_UNRESOLVED, F2B_SOLVER_EXECUTION_AUTHORIZED=false, ARCANA_SI1_MECHANICS_QUALIFIED=false, WORLD_HISTORY_PRODUCTION_AUTHORIZED=false.
 
 ---
+
+The remaining NEXT_ACTION content below is an archived snapshot from earlier gates. Its no-retry/INT-1-blocked statements describe those past checkpoints; the active action is the INT-1 analysis above.
 
 ## Historical checkpoint — INT-0B-R1 second attempt failed; no third execution was then authorized
 
