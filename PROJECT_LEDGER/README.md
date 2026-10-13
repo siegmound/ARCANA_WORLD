@@ -1,10 +1,10 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** Un tentativo INT-0B non canonico è fallito prima della scrittura degli artefatti per un difetto nel controllo della sequenza temporale dei campioni. Nessuna traiettoria è disponibile; l'unica autorizzazione di esecuzione è stata consumata. La prossima azione è la correzione mirata e la regressione offline, non una nuova simulazione.
+**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** Il singolo tentativo INT-0B è fallito prima della scrittura degli artefatti; failure report ed evidenza restano immutabili. INT-0B-R1 ha corretto il controllo dei campioni e superato le regressioni offline. Nessuna traiettoria è disponibile e la precedente autorizzazione è consumata: il prossimo passo è richiedere una nuova autorizzazione delimitata, non eseguire automaticamente un retry.
 
 ## Leggere in questo ordine
 1. `STATUS.md` — solo la sezione iniziale **CURRENT** contiene la priorità attuale; seguono checkpoint storici.
-2. `NEXT_ACTION.md` — **un solo incarico corrente**: correggere e testare offline il difetto INT-0B; un nuovo run richiede nuova autorizzazione.
+2. `NEXT_ACTION.md` — **un solo incarico corrente**: revisione/autorizzazione esplicita di un nuovo INT-0B-R1 con output fresco; nessuna esecuzione senza di essa.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

@@ -43,6 +43,53 @@ def _area_relative_errors(states: list[ReducedState], width_m: float) -> list[fl
             / (width_m * state.initial_lithosphere_m) for state in states]
 
 
+_DIAGNOSTIC_ENDPOINT_FIELDS = (
+    "time_s", "elapsed_years", "width_m", "crust_m", "lithosphere_m",
+    "beta", "accumulated_strain", "material_coordinate", "temperature_k",
+)
+
+
+def _validate_diagnostic_sample_sequence(
+    support_id: str, records: object, final_state: object, index: int,
+) -> None:
+    """Validate chronological diagnostics and exact final-state agreement."""
+    if not isinstance(records, list) or not records:
+        raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+    times: list[float] = []
+    for row in records:
+        if not isinstance(row, dict):
+            raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+        value = row.get("time_s")
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+        try:
+            value = float(value)
+        except (OverflowError, ValueError):
+            raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID") from None
+        if not math.isfinite(value):
+            raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+        times.append(value)
+    if times[0] != 0.0 or any(
+        earlier >= later for earlier, later in zip(times, times[1:])
+    ):
+        raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+    if not isinstance(final_state, dict):
+        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
+    endpoint = records[-1]
+    if any(field not in endpoint or field not in final_state
+           or endpoint[field] != final_state[field]
+           for field in _DIAGNOSTIC_ENDPOINT_FIELDS):
+        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
+    try:
+        expected_z = [value * float(final_state["lithosphere_m"])
+                      for value in final_state["material_coordinate"]]
+        actual_z = endpoint["z_m"]
+    except (KeyError, TypeError, ValueError, OverflowError):
+        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}") from None
+    if actual_z != expected_z:
+        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=ROOT)
@@ -109,20 +156,7 @@ def main() -> int:
     for index, (support_id, final_state) in enumerate(zip(plan.support_ids,
                                                            resolution_results[1]["final_states"])):
         records = diagnostic_sample_records[support_id]
-        times = [float(row["time_s"]) for row in records]
-        if (not records or times[0] != 0.0
-                or any(earlier >= later for earlier, later in zip(times, times[1]))):
-            raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
-        endpoint = records[-1]
-        endpoint_fields = ("time_s", "elapsed_years", "width_m", "crust_m",
-                           "lithosphere_m", "beta", "accumulated_strain",
-                           "material_coordinate", "temperature_k")
-        if any(endpoint[field] != final_state[field] for field in endpoint_fields):
-            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
-        expected_z = [value * float(final_state["lithosphere_m"])
-                      for value in final_state["material_coordinate"]]
-        if endpoint["z_m"] != expected_z:
-            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
+        _validate_diagnostic_sample_sequence(support_id, records, final_state, index)
 
     # The middle resolution is the explicit deterministic replay/restart case.
     direct, _ = advance_pair(plan, duration_s=duration_s,

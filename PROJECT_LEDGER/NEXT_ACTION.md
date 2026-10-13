@@ -1,14 +1,28 @@
-# NEXT — INT-0B bounded failure correction
+# NEXT — INT-0B-R1 new-run authorization pending
 
-**Current decision (2026-10-13):** `INT0B_FAILED_PRE_OUTPUT_VALIDATION`. The one authorized local attempt on `683230f5e66397478642c2b8a48550eb1d00cca7` exited 1 after 25.427 seconds at `scripts/r6_functional_development_t_f2b.py:114`: `zip(times, times[1])` uses a scalar float instead of the remaining sequence. No candidate artifacts or candidate manifest were written. Failure records are preserved under `outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_01/`; review `docs/arcana/INT0B_EXECUTION_REPORT.md`.
+**Current code decision (2026-10-13):** `INT0B_R1_RUNNER_VALIDATION_CORRECTED__REEXECUTION_PENDING_AUTHORIZATION`. The original attempt remains `INT0B_FAILED_PRE_OUTPUT_VALIDATION`; its report and evidence are immutable. The correction and regression are recorded in `docs/arcana/INT0B_R1_RUNNER_CORRECTION.md`.
 
 ## One bounded next task
 
-Correct the sample ordering comparison to use the remaining sequence and add a focused regression for strictly increasing sampled times, including the scalar-slice regression. Run only the focused offline tests, `py_compile`, and `git diff --check`; do not launch the T-F2B trajectory as part of that correction.
+Obtain a separate, explicit authorization for one new local noncanonical INT-0B attempt. The previous one-run authorization is consumed. Do not start the trajectory before that authorization.
 
-The previous conditional approval covered exactly one trajectory attempt and is consumed. A new explicit authorization is required before any subsequent engineering execution. Do not overwrite or reuse the failure-evidence directory. If a future run is authorized, it must use a fresh absent output destination and the same provider/source/resource preflight.
+Proposed new output path, checked absent on 2026-10-13:
 
-## Preserved gates
+`outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_02`
+
+Proposed command (only after authorization and fresh preflight):
+
+```powershell
+$env:ARCANA_EXTERNAL_ROOT = 'F:\corsiiiuu\Magistrale\Arcana\ArcanaWorld\_ARCANA_EXTERNAL_SOURCES'
+$env:PYTHONPATH = 'C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src'
+python scripts/r6_functional_development_t_f2b.py --repository-root . --expected-branch r6/si1-bandwidth-f2av --output-relative outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_02
+```
+
+Before any future run, verify final branch/HEAD and tracked tree; rerun the provider-backed audit on the final correction commit, record its HEAD-bound composite identity, confirm Python 3.12.10 / NumPy 2.3.5 and `ARCANA_EXTERNAL_ROOT`, recheck `_02` absence, and validate a foreground supervisor recording PID/image, process tree, elapsed time, working set, output size, exit and stop reason. Limits remain 900 seconds, 2 GiB working set and 512 MiB output, monitored thresholds rather than hard OS isolation. No automatic retry; preserve partial evidence under the fresh path.
+
+Scientific configuration remains unchanged from the approved proposal: T-F2B pair 5:11, T0 210 Ma, 1,000 engineering years, frozen Euler forcing, resolutions 0.001 / 0.0005 / 0.00025 and diagnostics at the middle resolution. No trajectory was run during R1. INT-1 remains blocked until a future separately authorized attempt completes and passes validation.
+
+## Preserved gates and prohibitions
 
 `BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 

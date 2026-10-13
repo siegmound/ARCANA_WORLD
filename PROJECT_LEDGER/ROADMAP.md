@@ -6,7 +6,7 @@
 |---|---|---|
 | **INT-0A** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`; suite offline mirata 20 PASS |
 | **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Unico tentativo autorizzato fallito prima degli artefatti per `TypeError` nel controllo dei campioni; report `docs/arcana/INT0B_EXECUTION_REPORT.md`; failure evidence preservata in `outputs/.../INT0B_TF2B_5_11_dde79ebe_20261013_01` |
-| **INT-0B-R1 (NEXT)** | Correzione mirata e regressione offline del controllo temporale; nessuna traiettoria | Necessario prima di chiedere una nuova autorizzazione di esecuzione |
+| **INT-0B-R1** | Correzione mirata e regressione offline del controllo temporale; nessuna traiettoria | `INT0B_R1_RUNNER_VALIDATION_CORRECTED__REEXECUTION_PENDING_AUTHORIZATION`; nuova esecuzione necessita autorizzazione separata |
 | **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Bloccato finché una traiettoria INT-0B completa non sia validata |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
@@ -14,7 +14,7 @@
 
 ## Inventario con scope (non trasformare PASS tecnici in qualifica scientifica)
 
-INT-0B provider input preflight è stato ripetuto e passato sul commit pubblicato il 2026-10-13; il singolo tentativo autorizzato ha poi fallito nella verifica dell'ordine temporale prima della scrittura degli artefatti. La correzione offline è il prossimo passo; il successivo run non è autorizzato automaticamente.
+INT-0B provider input preflight è stato ripetuto sul checkout `e95c7dbf` e passato; il singolo tentativo autorizzato resta fallito prima degli artefatti. INT-0B-R1 ha corretto offline il controllo campioni e passato le regressioni; il successivo run non è autorizzato automaticamente e richiede una nuova decisione esplicita.
 
 - **B0/B6:** HistoryStore/query/replay esistono. B6K candidata geometrica 210→209.97287659484368 Ma e B6N8-A shadow multirisoluzione. Vecchio B6M-R1 bloccato e successivo live-view B6N8-A a due età sono checkpoint distinti; verificare il canonico attuale read-only.
 - **Termica/cinematica integrabile:** PRE_ORBDATA, B6N8-O/Q e codice T-F2B con supporto coppia **5:11**, forcing ingegneristico congelato, finestra 1.000 anni e replay/restart. B6N8-R roster real-support ancora incompleto; NON estendere T-F2B alla coppia rift **1:3** per analogia.
