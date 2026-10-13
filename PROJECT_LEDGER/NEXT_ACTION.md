@@ -1,12 +1,12 @@
-# NEXT — diagnose INT-0B-R2 endpoint failure offline
+# NEXT — review and publish INT-0B-R3 offline correction
 
-**Current decision (2026-10-13):** `INT0B_R2_THIRD_ATTEMPT_FAILED_DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH`. The one authorized final attempt on HEAD `311550d4402f6c2fac422eac1c7f1eed46c58c64` ran the configured calculations, then failed endpoint validation for `R6G1D-R091-C029`, sample index 0. No trajectory directory or validated samples were persisted. See [failure report](../docs/arcana/INT0B_R2_THIRD_ATTEMPT_FAILURE.md).
+**Current decision (2026-10-13):** `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`. The old endpoint check's first mismatch was the absent `elapsed_years` key in `ReducedState.payload()`; diagnostic samples derive it from `time_s`. The correction and focused synthetic regressions pass. The original failure report and output evidence remain immutable. See [R3 forensic report](../docs/arcana/INT0B_R3_ENDPOINT_VALIDATION_FORENSIC.md).
 
 ## Current action
 
-Perform a bounded offline diagnosis of `_validate_diagnostic_sample_sequence()` versus the middle-resolution `final_states` and sampled endpoint record. Reproduce the concrete endpoint comparison on a synthetic fixture and identify which field differs; do not infer it from the failed message. Review the supervisor's natural-exit race and stale attempt label, add a synthetic regression, and correct only metadata/monitor behavior if justified. Preserve all existing output directories and reports. Do not rerun INT-0B: the third/final execution allowance has been consumed. Any further numerical run needs a new explicit authorization after offline correction review.
+Review exact changed-file membership, hashes, documentation and tests; commit locally and attempt normal fast-forward publication when connectivity permits. Preserve the failed `_01`, `_02`, `_03` attempt evidence and the prior report. Do not rerun INT-0B: the third/final execution allowance has been consumed. Any new numerical evolution requires separate explicit authorization after review of this correction. INT-1 remains blocked because no complete validated trajectory exists.
 
-INT-1 remains blocked until a complete trajectory is produced and validated. Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

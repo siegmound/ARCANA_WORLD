@@ -53,9 +53,18 @@ def test_real_supervisor_child_environment_and_limits(tmp_path: Path) -> None:
         "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES"
     }
     assert by_label["tree_wall_limit"]["stop_reason"] == "WALL_TIME_LIMIT"
+    assert by_label["tree_wall_limit"]["termination_classification"] == "RESOURCE_LIMIT_TERMINATED"
     assert by_label["working_set_limit"]["stop_reason"] == "PROCESS_TREE_WORKING_SET_LIMIT"
+    assert by_label["working_set_limit"]["termination_classification"] == "RESOURCE_LIMIT_TERMINATED"
     assert by_label["output_limit"]["stop_reason"] == "CUMULATIVE_OUTPUT_LIMIT"
+    assert by_label["output_limit"]["termination_classification"] == "RESOURCE_LIMIT_TERMINATED"
     assert by_label["exit_code_propagation"]["exit_code"] == 23
+    assert by_label["exit_code_propagation"]["termination_classification"] == "NATURAL_EXIT_NONZERO"
+    assert by_label["natural_exit_between_poll_and_snapshot"]["stop_reason"] == "NATURAL_EXIT"
+    assert by_label["natural_exit_between_poll_and_snapshot"]["exit_code"] == 31
+    assert by_label["natural_exit_between_poll_and_snapshot"]["termination_classification"] == "NATURAL_EXIT_NONZERO"
+    assert by_label["genuine_process_identity_loss"]["stop_reason"] == "MONITOR_ROOT_IDENTITY_LOST"
+    assert by_label["genuine_process_identity_loss"]["termination_classification"] == "PROCESS_IDENTITY_LOSS"
     identity = json.loads(report_path.parent.joinpath("git-provenance-result.json").read_text(encoding="utf-8-sig"))
     assert identity["pid"] == by_label["sanitized_child_git_provenance"]["root_pid"]
     assert identity["git_head"] == head

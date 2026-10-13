@@ -76,7 +76,9 @@ function Set-ArcanaPythonRuntimeEnvironment {
 function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$OutputPath,
                           [string]$TracePath, [double]$WallSeconds, [int64]$WorkingSetLimit,
                           [int64]$OutputLimit, [int]$PollMilliseconds = 100,
-                          [switch]$TestOnlyRetainGitObjectEnvironment) {
+                          [switch]$TestOnlyRetainGitObjectEnvironment,
+                          [switch]$TestOnlyRootDisappearsAfterNaturalExit,
+                          [switch]$TestOnlyRootDisappearsWhileAlive) {
   $psi = [Diagnostics.ProcessStartInfo]::new()
   $psi.FileName = [IO.Path]::GetFullPath($PythonPath)
   $psi.WorkingDirectory = (Get-Location).Path
@@ -104,7 +106,14 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
   try {
     while (-not $proc.HasExited) {
       $items = Get-TreeSnapshot $root
+      if ($TestOnlyRootDisappearsAfterNaturalExit) {
+        if (-not $proc.WaitForExit(5000)) { throw "SUPERVISOR_TEST_ROOT_EXIT_TIMEOUT" }
+        $items = @($items | Where-Object pid -ne $root)
+      }
+      if ($TestOnlyRootDisappearsWhileAlive) { $items = @($items | Where-Object pid -ne $root) }
       if (-not ($items | Where-Object pid -eq $root)) {
+        $proc.Refresh()
+        if ($proc.HasExited) { $stopReason = "NATURAL_EXIT"; break }
         $stopReason = "MONITOR_ROOT_IDENTITY_LOST"
         break
       }
@@ -163,6 +172,16 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
   }
   $proc.Refresh()
   $exit = if ($proc.HasExited) { $proc.ExitCode } else { $null }
+  $terminationClassification = switch ($stopReason) {
+    "NATURAL_EXIT" { if ($exit -eq 0) { "NATURAL_EXIT_SUCCESS" } else { "NATURAL_EXIT_NONZERO" } }
+    "WALL_TIME_LIMIT" { "RESOURCE_LIMIT_TERMINATED" }
+    "PROCESS_TREE_WORKING_SET_LIMIT" { "RESOURCE_LIMIT_TERMINATED" }
+    "CUMULATIVE_OUTPUT_LIMIT" { "RESOURCE_LIMIT_TERMINATED" }
+    "MONITOR_ROOT_IDENTITY_LOST" { "PROCESS_IDENTITY_LOSS" }
+    "MONITOR_ERROR" { "MONITOR_ERROR" }
+    "ORPHANED_DESCENDANT_AFTER_ROOT_EXIT" { "PROCESS_TREE_CLEANUP_AFTER_ROOT_EXIT" }
+    default { "UNKNOWN_TERMINATION" }
+  }
   $record = [pscustomobject]@{
     label = $Label
     executable = $psi.FileName
@@ -177,6 +196,7 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
     poll_milliseconds = $PollMilliseconds
     samples = $sampleCount
     stop_reason = $stopReason
+    termination_classification = $terminationClassification
     exit_code = $exit
     child_git_object_environment_removed = $removedGitVariables
     thresholds_are_sampled_not_os_enforced = $true
@@ -278,7 +298,15 @@ raise SystemExit(0 if ok else 42)
   if ($output.stop_reason -ne "CUMULATIVE_OUTPUT_LIMIT" -or $output.final_output_bytes -lt 32768) { throw "SUPERVISOR_OUTPUT_TEST_FAILED" }
   $exitCode = Invoke-Monitored "exit_code_propagation" @("-c","raise SystemExit(23)") (Join-Path $self "exit-output") (Join-Path $self "exit.ndjson") 60 2147483648 99999999 50
   if ($exitCode.stop_reason -ne "NATURAL_EXIT" -or $exitCode.exit_code -ne 23) { throw "SUPERVISOR_EXIT_PROPAGATION_TEST_FAILED" }
-  @($unsanitized,$sanitized,$tree,$memory,$output,$exitCode) | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $self "selftest-results.json") -Encoding utf8
+  $raceExit = Invoke-Monitored "natural_exit_between_poll_and_snapshot" @("-c","raise SystemExit(31)") (Join-Path $self "race-exit-output") (Join-Path $self "race-exit.ndjson") 60 2147483648 99999999 50 -TestOnlyRootDisappearsAfterNaturalExit
+  if ($raceExit.stop_reason -ne "NATURAL_EXIT" -or $raceExit.exit_code -ne 31 -or
+      $raceExit.termination_classification -ne "NATURAL_EXIT_NONZERO") { throw "SUPERVISOR_NATURAL_EXIT_RACE_CLASSIFICATION_FAILED" }
+  $identityLoss = Invoke-Monitored "genuine_process_identity_loss" @("-c","import time; time.sleep(60)") (Join-Path $self "identity-loss-output") (Join-Path $self "identity-loss.ndjson") 60 2147483648 99999999 50 -TestOnlyRootDisappearsWhileAlive
+  if ($identityLoss.stop_reason -ne "MONITOR_ROOT_IDENTITY_LOST" -or
+      $identityLoss.termination_classification -ne "PROCESS_IDENTITY_LOSS" -or $identityLoss.exit_code -eq 0) {
+    throw "SUPERVISOR_PROCESS_IDENTITY_LOSS_CLASSIFICATION_FAILED"
+  }
+  @($unsanitized,$sanitized,$tree,$memory,$output,$exitCode,$raceExit,$identityLoss) | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $self "selftest-results.json") -Encoding utf8
   $sanitizedReport | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $self "git-provenance-result.json") -Encoding utf8
   "SUPERVISOR_SELFTEST_PASS"
   return
@@ -336,7 +364,7 @@ if ($Mode -eq "Run") {
   $scriptPath = Join-Path $repo "scripts/r6_functional_development_t_f2b.py"
   $args = @($scriptPath,"--repository-root",".","--expected-branch","r6/si1-bandwidth-f2av","--output-relative",$OutputRelative.Replace('\','/') )
   $trace = Join-Path $EvidenceDirectory "run.ndjson"
-  $result = Invoke-Monitored "INT0B_R1_SINGLE_ATTEMPT" $args $outputPath $trace 900 2147483648 536870912 100
+  $result = Invoke-Monitored "INT0B_R2_THIRD_FINAL_ATTEMPT" $args $outputPath $trace 900 2147483648 536870912 100
   $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $EvidenceDirectory "run-summary.json") -Encoding utf8
   $result | Format-List
   if ($result.stop_reason -ne "NATURAL_EXIT") { exit 124 }

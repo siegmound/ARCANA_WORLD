@@ -43,10 +43,90 @@ def _area_relative_errors(states: list[ReducedState], width_m: float) -> list[fl
             / (width_m * state.initial_lithosphere_m) for state in states]
 
 
-_DIAGNOSTIC_ENDPOINT_FIELDS = (
-    "time_s", "elapsed_years", "width_m", "crust_m", "lithosphere_m",
-    "beta", "accumulated_strain", "material_coordinate", "temperature_k",
-)
+class DiagnosticSampleValidationError(RuntimeError):
+    """Endpoint validation failure with a serializable, noncanonical record."""
+
+    def __init__(self, support_id: str, index: int, field: str,
+                 expected: object, observed: object, phase: str = "ENDPOINT") -> None:
+        self.support_id = support_id
+        self.index = index
+        self.phase = phase
+        self.field = field
+        self.expected = expected
+        self.observed = observed
+        super().__init__(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
+
+    @staticmethod
+    def _summary(value: object) -> dict[str, object]:
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            number = float(value)
+            if math.isfinite(number):
+                return {"type": type(value).__name__, "value": value, "float_hex": number.hex()}
+            return {"type": type(value).__name__, "finite": False, "repr": repr(value)}
+        if isinstance(value, (list, tuple)):
+            preview = []
+            for item in value[:8]:
+                if isinstance(item, (int, float)) and not isinstance(item, bool):
+                    number = float(item)
+                    preview.append(item if math.isfinite(number) else {"finite": False, "repr": repr(item)})
+                elif isinstance(item, dict):
+                    preview.append({"type": "dict", "keys": sorted(str(key) for key in item)[:8]})
+                else:
+                    preview.append(item if item is None or isinstance(item, (str, bool)) else type(item).__name__)
+            return {"type": type(value).__name__, "length": len(value), "first_values": preview}
+        return {"type": type(value).__name__, "value": value}
+
+    def diagnostic_record(self, *, source_identity: object = None,
+                          configuration_identity: object = None,
+                          exit_code: int | None = None,
+                          stop_classification: str = "UNKNOWN") -> dict[str, object]:
+        """Return failure metadata; it is not a trajectory or canonical record."""
+        difference: dict[str, object] = {"status": "NOT_NUMERIC_SCALARS"}
+        if (isinstance(self.expected, (int, float)) and not isinstance(self.expected, bool)
+                and isinstance(self.observed, (int, float)) and not isinstance(self.observed, bool)):
+            expected = float(self.expected)
+            observed = float(self.observed)
+            if math.isfinite(expected) and math.isfinite(observed):
+                absolute = abs(expected - observed)
+                relative = absolute / abs(expected) if expected != 0.0 and math.isfinite(absolute) else None
+                difference = {
+                    "status": "FINITE",
+                    "absolute_difference": absolute if math.isfinite(absolute) else None,
+                    "relative_difference_to_expected": relative if relative is not None and math.isfinite(relative) else None,
+                }
+            else:
+                difference = {"status": "NONFINITE"}
+        elif isinstance(self.expected, (list, tuple)) and isinstance(self.observed, (list, tuple)):
+            mismatch = next((i for i, pair in enumerate(zip(self.expected, self.observed))
+                             if pair[0] != pair[1]), None)
+            difference = {"status": "ARRAY", "first_mismatching_index": mismatch,
+                          "expected_length": len(self.expected), "observed_length": len(self.observed)}
+        return {
+            "schema": "ARCANA_R6_INT0B_FAILURE_DIAGNOSTIC_V1",
+            "classification": "NONCANONICAL_FAILURE_DIAGNOSTIC_NOT_TRAJECTORY",
+            "support_id": self.support_id,
+            "validation_phase": self.phase,
+            "first_mismatching_field": self.field,
+            "support_index": self.index,
+            "expected": self._summary(self.expected),
+            "observed": self._summary(self.observed),
+            "difference": difference,
+            "source_identity": source_identity,
+            "configuration_identity": configuration_identity,
+            "exit_code": exit_code,
+            "stop_classification": stop_classification,
+        }
+
+
+def _sample_cardinality(record: dict[str, object], *, require_materials: bool = False) -> int | None:
+    names = ["material_coordinate", "z_m", "temperature_k"]
+    if require_materials or "materials" in record:
+        names.append("materials")
+    values = [record.get(name) for name in names]
+    if any(not isinstance(value, list) for value in values):
+        return None
+    lengths = [len(value) for value in values if isinstance(value, list)]
+    return lengths[0] if lengths and lengths[0] > 0 and len(set(lengths)) == 1 else None
 
 
 def _validate_diagnostic_sample_sequence(
@@ -56,9 +136,14 @@ def _validate_diagnostic_sample_sequence(
     if not isinstance(records, list) or not records:
         raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
     times: list[float] = []
-    for row in records:
+    for row_index, row in enumerate(records):
         if not isinstance(row, dict):
             raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+        expected_record_type = "ENDPOINT_STATE" if row_index == len(records) - 1 else "DIAGNOSTIC_SAMPLE"
+        if row.get("record_type") != expected_record_type:
+            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_RECORD_TYPE_INVALID:{support_id}:{index}")
+        if row.get("support_id") != support_id:
+            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_SUPPORT_ID_INVALID:{support_id}:{index}")
         value = row.get("time_s")
         if isinstance(value, bool) or not isinstance(value, (int, float)):
             raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
@@ -68,6 +153,22 @@ def _validate_diagnostic_sample_sequence(
             raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID") from None
         if not math.isfinite(value):
             raise RuntimeError("DIAGNOSTIC_SAMPLE_TIME_SEQUENCE_INVALID")
+        if _sample_cardinality(row) is None:
+            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ARRAY_CARDINALITY_INVALID:{support_id}:{index}")
+        expected_elapsed = value / SECONDS_PER_YEAR
+        if row.get("elapsed_years") != expected_elapsed:
+            raise DiagnosticSampleValidationError(
+                support_id, index, "elapsed_years", expected_elapsed, row.get("elapsed_years"),
+                phase="SAMPLE_DERIVATION")
+        try:
+            expected_z = [coordinate * float(row["lithosphere_m"])
+                          for coordinate in row["material_coordinate"]]
+        except (KeyError, TypeError, ValueError, OverflowError):
+            raise RuntimeError(f"DIAGNOSTIC_SAMPLE_DERIVED_FIELD_INVALID:{support_id}:{index}") from None
+        if row.get("z_m") != expected_z:
+            raise DiagnosticSampleValidationError(
+                support_id, index, "z_m", expected_z, row.get("z_m"),
+                phase="SAMPLE_DERIVATION")
         times.append(value)
     if times[0] != 0.0 or any(
         earlier >= later for earlier, later in zip(times, times[1:])
@@ -76,18 +177,34 @@ def _validate_diagnostic_sample_sequence(
     if not isinstance(final_state, dict):
         raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
     endpoint = records[-1]
-    if any(field not in endpoint or field not in final_state
-           or endpoint[field] != final_state[field]
-           for field in _DIAGNOSTIC_ENDPOINT_FIELDS):
-        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
-    try:
-        expected_z = [value * float(final_state["lithosphere_m"])
-                      for value in final_state["material_coordinate"]]
-        actual_z = endpoint["z_m"]
-    except (KeyError, TypeError, ValueError, OverflowError):
-        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}") from None
-    if actual_z != expected_z:
-        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH:{support_id}:{index}")
+    if endpoint.get("support_id") != support_id:
+        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_SUPPORT_ID_INVALID:{support_id}:{index}")
+    if endpoint.get("record_type") != "ENDPOINT_STATE":
+        raise RuntimeError(f"DIAGNOSTIC_SAMPLE_RECORD_TYPE_INVALID:{support_id}:{index}")
+    if (_sample_cardinality(endpoint, require_materials=True) is None
+            or _sample_cardinality(final_state, require_materials=True) is None
+            or _sample_cardinality(endpoint, require_materials=True)
+            != _sample_cardinality(final_state, require_materials=True)):
+        raise DiagnosticSampleValidationError(
+            support_id, index, "array_cardinality", _sample_cardinality(final_state),
+            _sample_cardinality(endpoint))
+    for field, expected in final_state.items():
+        if field not in endpoint or endpoint[field] != expected:
+            raise DiagnosticSampleValidationError(
+                support_id, index, field, expected, endpoint.get(field))
+    if "elapsed_years" not in endpoint:
+        raise DiagnosticSampleValidationError(
+            support_id, index, "elapsed_years",
+            float(final_state["time_s"]) / SECONDS_PER_YEAR, None)
+    expected_elapsed = float(final_state["time_s"]) / SECONDS_PER_YEAR
+    if endpoint["elapsed_years"] != expected_elapsed:
+        raise DiagnosticSampleValidationError(
+            support_id, index, "elapsed_years", expected_elapsed, endpoint["elapsed_years"])
+    expected_z = [value * float(final_state["lithosphere_m"])
+                  for value in final_state["material_coordinate"]]
+    if endpoint.get("z_m") != expected_z:
+        raise DiagnosticSampleValidationError(
+            support_id, index, "z_m", expected_z, endpoint.get("z_m"))
 
 
 def main() -> int:
@@ -153,8 +270,11 @@ def main() -> int:
         raise RuntimeError("PURE_SHEAR_AREA_CONSERVATION_FAILED")
     if diagnostic_sample_records is None:
         raise RuntimeError("DIAGNOSTIC_SAMPLES_MISSING_FOR_REFERENCE_RESOLUTION")
-    for index, (support_id, final_state) in enumerate(zip(plan.support_ids,
-                                                           resolution_results[1]["final_states"])):
+    final_states = resolution_results[1]["final_states"]
+    if (len(final_states) != len(plan.support_ids)
+            or set(diagnostic_sample_records) != set(plan.support_ids)):
+        raise RuntimeError("DIAGNOSTIC_SAMPLE_SUPPORT_CARDINALITY_INVALID")
+    for index, (support_id, final_state) in enumerate(zip(plan.support_ids, final_states)):
         records = diagnostic_sample_records[support_id]
         _validate_diagnostic_sample_sequence(support_id, records, final_state, index)
 
@@ -293,7 +413,7 @@ def main() -> int:
                 for row in resolution_results],
             "comparison_is_numerical_refinement_only": True},
         "DIAGNOSTIC_NUMERICAL_SAMPLES.json": {
-            "schema": "ARCANA_R6_TF2B_NUMERICAL_STEP_SAMPLES_V1",
+            "schema": "ARCANA_R6_TF2B_NUMERICAL_STEP_SAMPLES_V2",
             "scope": "NONCANONICAL_ENGINEERING_REFERENCE_TRAJECTORY",
             "support_ids": list(plan.support_ids),
             "sampling": "INITIAL_AND_EVERY_MIDDLE_RESOLUTION_NUMERICAL_SUBSTEP",

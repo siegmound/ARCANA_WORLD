@@ -278,9 +278,30 @@ def capture_numerical_step_samples(
         records = samples[support_id]
         if len(records) >= maximum_samples_per_support:
             raise IntegrationContractError("DIAGNOSTIC_SAMPLE_LIMIT_EXCEEDED")
-        records.append({
+        records.append(_diagnostic_sample_record(support_id, state))
+
+    final, diagnostics = advance_pair(plan, duration_s=duration_s,
+        maximum_kinematic_fraction_per_substep=maximum_kinematic_fraction_per_substep,
+        state_observer=observe)
+    if len(final) != len(plan.support_ids):
+        raise IntegrationContractError("DIAGNOSTIC_SAMPLE_FINAL_SUPPORT_CARDINALITY_INVALID")
+    for support_id, state in zip(plan.support_ids, final):
+        records = samples[support_id]
+        if not records or records[-1]["time_s"] != state.time_s:
+            raise IntegrationContractError("DIAGNOSTIC_SAMPLE_FINAL_ENDPOINT_MISSING")
+        records[-1] = _diagnostic_sample_record(support_id, state, complete_state=True)
+    return final, diagnostics, samples
+
+
+def _diagnostic_sample_record(support_id: str, state: ReducedState, *,
+                              complete_state: bool = False) -> dict[str, Any]:
+    """Return compact evolving fields, or the complete payload for the endpoint only."""
+    if complete_state:
+        record = state.payload()
+        record["record_type"] = "ENDPOINT_STATE"
+    else:
+        record = {
             "time_s": state.time_s,
-            "elapsed_years": state.time_s / SECONDS_PER_YEAR,
             "width_m": state.width_m,
             "crust_m": state.crust_m,
             "lithosphere_m": state.lithosphere_m,
@@ -289,12 +310,11 @@ def capture_numerical_step_samples(
             "material_coordinate": list(state.material_coordinate),
             "z_m": [value * state.lithosphere_m for value in state.material_coordinate],
             "temperature_k": list(state.temperature_k),
-        })
-
-    final, diagnostics = advance_pair(plan, duration_s=duration_s,
-        maximum_kinematic_fraction_per_substep=maximum_kinematic_fraction_per_substep,
-        state_observer=observe)
-    return final, diagnostics, samples
+            "record_type": "DIAGNOSTIC_SAMPLE",
+        }
+    record["support_id"] = support_id
+    record["elapsed_years"] = state.time_s / SECONDS_PER_YEAR
+    return record
 
 
 def trajectory_document(plan: PairIntegrationPlan, states: tuple[ReducedState, ...], *,
