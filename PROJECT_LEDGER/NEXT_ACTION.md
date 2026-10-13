@@ -1,16 +1,16 @@
-# NEXT — INT-1A baseline complete; general retention policy remains unresolved
+# NEXT — INT-1B experiment defined; execution not authorized
 
-Current decision (2026-10-13): `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`. The verified, noncanonical R4 trajectory was analyzed offline. Report: `docs/arcana/INT1A_RETENTION_EMPIRICAL_AUDIT.md`; reviewed metrics: `outputs/r6_functional_development/INT1_RETENTION_20261013/FINAL/INT1A_RETENTION_METRICS.json`.
+Current decision (2026-10-13): `INT1B_NEXT_EVIDENCE_EXPERIMENT_DEFINED__EXECUTION_NOT_AUTHORIZED`. Report: `docs/arcana/INT1B_EVIDENCE_DENSITY_AND_DISTINCT_REGIME_DESIGN.md`. INT-1A remains the empirical baseline: `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`.
 
 ## Current action
 
-INT-1A is complete for the existing R4 trajectory. No additional run is authorized by this work. Retain the empirical baseline as case-specific; do not promote its endpoint/fixed/adaptive comparisons into a general temporal, event, uncertainty or canonical retention policy. B0 replay remains `DESCRIPTOR_ONLY_NOT_REGISTERED_IN_HISTORYSTORE`.
+The minimum next evidence run is defined but not authorized. Do not execute provider-backed evolution until a separate authorization and preflight. Proposal: pair 5:11, audited boundary `R6BND-T0-27e4d497530e681071fb`, its two admitted normal continental supports, T0=210 Ma, 1,000 engineering years, existing frozen Euler/kernel and unchanged boundary conditions; preserve factors 0.001/0.0005/0.00025 and add 0.000125, capturing every substep only at the finest rung. A runner boundary selector must accept only one verified eligible ID and retain all current provider checks. Re-materialize/verify both complete profiles and material tuple, hashes, environment and output paths immediately before any future authorized run. No second case, alternate physics, parameter change, retry, or canonical write.
 
-Next evidence needed before a general retention policy can be adjudicated: a separately authorized trajectory with denser temporal observations and a meaningfully different forcing/material regime, plus an explicit executable checkpoint/HistoryStore contract. Until that evidence and authorization exist, leave online/event selection and general policy as `UNKNOWN`; do not start an evolution run from this ledger entry.
+The comparison target is R4's hot-extended boundary `R6BND-T0-3eb57747e6f0a3f3305f` at common factor 0.00025; code for the reduced kernel/step path is unchanged since the R4 commit. Edge-specific forcing and thermal/geometric class vary together, so this contrast cannot establish a physical cause. The 0.000125 substep count, actual sample density, run costs, and general online/event retention remain `UNKNOWN`. B0 replay remains `DESCRIPTOR_ONLY_NOT_REGISTERED_IN_HISTORYSTORE`; executable registration/query/replay binding remains a separate prerequisite for restart-cost claims.
 
 The reviewed output is `outputs/r6_functional_development/INT1_RETENTION_20261013/FINAL/`. Provisional first-pass outputs created during this same audit are preserved at the parent directory and `_R1` sibling; only `FINAL/` passed the completed cross-artifact review.
 
-No Fair, MPI, ShellSet, Solver, B6 post-rift evolution, or WORLD_HISTORY access/publication was performed.
+No provider-backed evolution, Fair, MPI, ShellSet, Solver, B6 post-rift evolution, or WORLD_HISTORY access/publication was performed in INT-1B.
 
 Preserved gates: BLOCKED_F2AV_QUALIFICATION, OPERATOR_CLASS_UNVERIFIED, THRESHOLD_UNJUSTIFIED, RESOURCE_2GB_SCOPE_UNRESOLVED, F2B_SOLVER_EXECUTION_AUTHORIZED=false, ARCANA_SI1_MECHANICS_QUALIFIED=false, WORLD_HISTORY_PRODUCTION_AUTHORIZED=false.
 

@@ -1,6 +1,6 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-13)
 
-**Obiettivo completo:** storia mondiale causale 210 Ma→0 ka, interrogabile e ricostruibile per geografia/tettonica, geologia, clima, idrologia, risorse, Deep, flora/fauna, popolazioni e società. INT-0B produced a bounded candidate engineering trajectory; INT-1A measured what its four samples support. General retention policy still needs denser, distinct evidence and is not qualified. Le dipendenze non sono una percentuale o una scadenza.
+**Obiettivo completo:** storia mondiale causale 210 Ma→0 ka, interrogabile e ricostruibile per geografia/tettonica, geologia, clima, idrologia, risorse, Deep, flora/fauna, popolazioni e società. INT-0B produced a bounded candidate engineering trajectory; INT-1A measured what its four samples support. INT-1B defined a denser, distinct-support evidence experiment, but it is not authorized. General retention policy remains unqualified. Le dipendenze non sono una percentuale o una scadenza.
 
 | Gate | Risultato atteso | Stato |
 |---|---|---|
@@ -10,6 +10,7 @@
 | **INT-0B-R3** | Correzione endpoint e metadata supervisor offline | `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`; report del run fallito immutato e campioni non recuperati. |
 | **INT-0B-R4** | Validazione E2E sintetica, provider preflight e un tentativo engineering bounded | Offline suite 70 PASS; quarto run autorizzato su `91fc83d` completato e bundle verificato. Decisione noncanonical: `INT0B_NONCANONICAL_INTEGRATED_RUN_EVIDENCED__SCIENTIFIC_PROMOTION_NOT_AUTHORIZED`. |
 | **INT-1A** | Empirical full/fixed/retrospective retention, reconstruction, replay and byte baseline on existing R4 trajectory | `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`; two interior times/support, one engineering regime; online/event/general policy UNKNOWN. |
+| **INT-1B** | Define minimum added retention evidence and distinct admissible regime | `INT1B_NEXT_EVIDENCE_EXPERIMENT_DEFINED__EXECUTION_NOT_AUTHORIZED`; candidate boundary R6BND-T0-27e4...; four-factor ladder proposal; profile re-materialization and separate execution authorization required. |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
 | **Produzione WORLD_HISTORY** | Stati/eventi causalmente verificati per tutti i domini fino a 0 ka | Non autorizzata |
@@ -33,4 +34,4 @@ INT-0B R4 is a completed, bounded noncanonical pair-5:11 engineering run on sour
 
 **Non usare le vecchie NEXT storiche.** `NEXT_ACTION.md` è l'unica NEXT attiva. Originali, hash, `BLOCKED` e log sono conservati in `STATUS.md`, `EVIDENCE_INDEX.md`, `LOG.md`, report e storia Git. Conservare separati CODE_READY, NONCANONICAL_RUN, SCIENTIFIC_VALIDATION e CANONICAL_AUTHORITY.
 
-**Gates invariati:** `BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+**Gates invariati:** `BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. INT-1B does not authorize any execution or change these gates.
