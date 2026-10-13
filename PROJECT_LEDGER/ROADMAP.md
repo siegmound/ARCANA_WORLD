@@ -5,8 +5,8 @@
 | Gate | Risultato atteso | Stato |
 |---|---|---|
 | **INT-0A** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`; suite offline mirata 20 PASS |
-| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Unico tentativo autorizzato fallito prima degli artefatti per `TypeError` nel controllo dei campioni; report `docs/arcana/INT0B_EXECUTION_REPORT.md`; failure evidence preservata in `outputs/.../INT0B_TF2B_5_11_dde79ebe_20261013_01` |
-| **INT-0B-R1** | Correzione mirata e regressione offline del controllo temporale; nessuna traiettoria | `INT0B_R1_RUNNER_VALIDATION_CORRECTED__REEXECUTION_PENDING_AUTHORIZATION`; nuova esecuzione necessita autorizzazione separata |
+| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Due tentativi distinti falliti prima di produrre traiettorie: _01 per TypeError storico; secondo tentativo su HEAD 4cc7a78 per Git object environment reinserted. Report docs/arcana/INT0B_R1_SECOND_ATTEMPT_FAILURE.md; _02 non creato. Nessun terzo run autorizzato. |
+| **INT-0B-R1** | Correzione runner e tentativo autorizzato singolo dopo regressioni | Correzione campioni validata offline; il secondo tentativo autorizzato è fallito prima dell'output per GIT_OBJECT_DIRECTORY/GIT_ALTERNATE_OBJECT_DIRECTORIES reinseriti dal bootstrap. Nessuna terza esecuzione; INT-1 resta bloccato. |
 | **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Bloccato finché una traiettoria INT-0B completa non sia validata |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
@@ -14,7 +14,7 @@
 
 ## Inventario con scope (non trasformare PASS tecnici in qualifica scientifica)
 
-INT-0B provider input preflight è stato ripetuto sul checkout `e95c7dbf` e passato; il singolo tentativo autorizzato resta fallito prima degli artefatti. INT-0B-R1 ha corretto offline il controllo campioni e passato le regressioni; il successivo run non è autorizzato automaticamente e richiede una nuova decisione esplicita.
+INT-0B provider input audit è stato ripetuto sul checkout finale 4cc7a78d e passato nella shell che aveva rimosso le variabili Git object. Il secondo tentativo autorizzato è fallito prima degli artefatti perché il supervisore ha ricaricato r6-env.ps1 senza ripulire quelle variabili nel processo figlio. Non esiste traiettoria per INT-1; questa autorizzazione non consente un terzo run.
 
 - **B0/B6:** HistoryStore/query/replay esistono. B6K candidata geometrica 210→209.97287659484368 Ma e B6N8-A shadow multirisoluzione. Vecchio B6M-R1 bloccato e successivo live-view B6N8-A a due età sono checkpoint distinti; verificare il canonico attuale read-only.
 - **Termica/cinematica integrabile:** PRE_ORBDATA, B6N8-O/Q e codice T-F2B con supporto coppia **5:11**, forcing ingegneristico congelato, finestra 1.000 anni e replay/restart. B6N8-R roster real-support ancora incompleto; NON estendere T-F2B alla coppia rift **1:3** per analogia.

@@ -1,10 +1,10 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** Il singolo tentativo INT-0B è fallito prima della scrittura degli artefatti; failure report ed evidenza restano immutabili. INT-0B-R1 ha corretto il controllo dei campioni e superato le regressioni offline. Nessuna traiettoria è disponibile e la precedente autorizzazione è consumata: il prossimo passo è richiedere una nuova autorizzazione delimitata, non eseguire automaticamente un retry.
+**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** Il secondo tentativo INT-0B-R1 è fallito prima dell'output perché il bootstrap PowerShell ha reinserito le variabili Git object nel processo Python. Nessuna traiettoria è stata prodotta; report e registri del supervisore sono preservati. Questa autorizzazione non consente un terzo run e INT-1 resta bloccato.
 
 ## Leggere in questo ordine
 1. `STATUS.md` — solo la sezione iniziale **CURRENT** contiene la priorità attuale; seguono checkpoint storici.
-2. `NEXT_ACTION.md` — **un solo incarico corrente**: revisione/autorizzazione esplicita di un nuovo INT-0B-R1 con output fresco; nessuna esecuzione senza di essa.
+2. NEXT_ACTION.md — un solo incarico corrente: conservare e revisionare il fallimento pre-output INT-0B-R1; nessun terzo run o INT-1 in questa fase.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

@@ -1,29 +1,25 @@
-# NEXT — INT-0B-R1 new-run authorization pending
+# NEXT — INT-0B-R1 second attempt failed; no third execution
 
-**Current code decision (2026-10-13):** `INT0B_R1_RUNNER_VALIDATION_CORRECTED__REEXECUTION_PENDING_AUTHORIZATION`. The original attempt remains `INT0B_FAILED_PRE_OUTPUT_VALIDATION`; its report and evidence are immutable. The correction and regression are recorded in `docs/arcana/INT0B_R1_RUNNER_CORRECTION.md`.
+**Current decision (2026-10-13):** INT0B_R1_SECOND_ATTEMPT_FAILED_PRE_OUTPUT_VALIDATION_GIT_OBJECT_ENV_REINSERTED. The single authorized second attempt on HEAD 4cc7a78d95ee7e529394173933817a7266db251d exited before candidate output creation because the supervisor child inherited Git object-store variables from r6-env.ps1. Full record: docs/arcana/INT0B_R1_SECOND_ATTEMPT_FAILURE.md.
 
-## One bounded next task
+## Current action
 
-Obtain a separate, explicit authorization for one new local noncanonical INT-0B attempt. The previous one-run authorization is consumed. Do not start the trajectory before that authorization.
+Preserve the failure record and stop. Do not retry INT-0B under this authorization; no third execution is permitted here. INT-1 remains blocked because no validated trajectory exists. No further scientific execution is authorized by this checkpoint.
 
-Proposed new output path, checked absent on 2026-10-13:
+The reproducible environment issue is that r6-env.ps1 sets GIT_OBJECT_DIRECTORY and GIT_ALTERNATE_OBJECT_DIRECTORIES. Any later, separately authorized operational task would need to clear both in the final process environment after loading that bootstrap and verify the repository Git query in the same child context before any run. This is a diagnosis, not authorization to execute again.
 
-`outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_02`
+## Attempt evidence
 
-Proposed command (only after authorization and fresh preflight):
+- HEAD: 4cc7a78d95ee7e529394173933817a7266db251d; parent e95c7dbf281ede5312512654262b9925fa87eb02.
+- Provider-backed audit passed directly on final HEAD with source identity SHA256 c30510e3b743954fd10385f02a6c282448843247db69e1da26de5ae22ac7a25d. The nested execution environment differed because it reloaded r6-env.ps1 without clearing the Git object variables.
+- Runner SHA256 2b5ab1af081fae9ad2a0681a4ba9b95dfca032839caba52cdc440525cf77fc1c; sample test SHA256 87b3f5dae80cd27d356e28b75c94bdc4d31e83f29691b18aa26b7d6b0ee0f843. Python 3.12.10, NumPy 2.3.5.
+- Candidate destination _02 remained absent; exit 1; 0.951220 s; 7 samples; peak sampled process-tree working set 48,848,896 bytes; output 0 bytes. These are monitored measurements, not OS-enforced quotas.
+- No numerical samples, final state, resolution comparison, replay/restart, output manifest, or INT-1 evidence exists. No evidence of WORLD_HISTORY access or mutation. Prior _01 remains untouched.
 
-```powershell
-$env:ARCANA_EXTERNAL_ROOT = 'F:\corsiiiuu\Magistrale\Arcana\ArcanaWorld\_ARCANA_EXTERNAL_SOURCES'
-$env:PYTHONPATH = 'C:\Users\jose_\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages;src'
-python scripts/r6_functional_development_t_f2b.py --repository-root . --expected-branch r6/si1-bandwidth-f2av --output-relative outputs/r6_functional_development/INT0B_TF2B_5_11_dde79ebe_20261013_02
-```
+## Publication
 
-Before any future run, verify final branch/HEAD and tracked tree; rerun the provider-backed audit on the final correction commit, record its HEAD-bound composite identity, confirm Python 3.12.10 / NumPy 2.3.5 and `ARCANA_EXTERNAL_ROOT`, recheck `_02` absence, and validate a foreground supervisor recording PID/image, process tree, elapsed time, working set, output size, exit and stop reason. Limits remain 900 seconds, 2 GiB working set and 512 MiB output, monitored thresholds rather than hard OS isolation. No automatic retry; preserve partial evidence under the fresh path.
+The failed-attempt and correction commits remain subject to normal fast-forward publication. Do not force-push or rewrite history. Any documentation consolidation must stage explicit report/ledger paths and exclude outputs.
 
-Scientific configuration remains unchanged from the approved proposal: T-F2B pair 5:11, T0 210 Ma, 1,000 engineering years, frozen Euler forcing, resolutions 0.001 / 0.0005 / 0.00025 and diagnostics at the middle resolution. No trajectory was run during R1. INT-1 remains blocked until a future separately authorized attempt completes and passes validation.
+## Preserved gates
 
-## Preserved gates and prohibitions
-
-`BLOCKED_F2AV_QUALIFICATION`; `OPERATOR_CLASS_UNVERIFIED`; `THRESHOLD_UNJUSTIFIED`; `RESOURCE_2GB_SCOPE_UNRESOLVED`; `F2B_SOLVER_EXECUTION_AUTHORIZED=false`; `ARCANA_SI1_MECHANICS_QUALIFIED=false`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
-
-No Fair, MPI, ShellSet, Solver, DGBSV, post-rift evolution, canonical publication, or WORLD_HISTORY access/write.
+BLOCKED_F2AV_QUALIFICATION; OPERATOR_CLASS_UNVERIFIED; THRESHOLD_UNJUSTIFIED; RESOURCE_2GB_SCOPE_UNRESOLVED; F2B_SOLVER_EXECUTION_AUTHORIZED=false; ARCANA_SI1_MECHANICS_QUALIFIED=false; WORLD_HISTORY_PRODUCTION_AUTHORIZED=false.

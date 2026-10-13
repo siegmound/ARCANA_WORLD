@@ -1,5 +1,12 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-13 — INT-0B-R1 second authorized attempt failed before output
+- Decisione: INT0B_R1_SECOND_ATTEMPT_FAILED_PRE_OUTPUT_VALIDATION_GIT_OBJECT_ENV_REINSERTED. Un solo run avviato sul branch r6/si1-bandwidth-f2av, HEAD 4cc7a78d95ee7e529394173933817a7266db251d, parent e95c7dbf281ede5312512654262b9925fa87eb02; nessun retry.
+- Preflight diretto: provider audit PASS sul commit finale, source identity c30510e3b743954fd10385f02a6c282448843247db69e1da26de5ae22ac7a25d; runner/test SHA in EVIDENCE_INDEX; Python 3.12.10/NumPy 2.3.5; destinazione _02 assente. Il processo supervisionato ha avuto exit 1 naturale dopo 0.951220 s; PID 31248 python.exe; picco working-set tree 48,848,896 byte; output 0.
+- Causa: supervisor ha risourced r6-env.ps1 senza unset successivo delle variabili GIT_OBJECT_DIRECTORY e GIT_ALTERNATE_OBJECT_DIRECTORIES. La query Git nel runner ha usato l'object store errato e fallito prima della creazione output. Il medesimo comando read-only fallisce con il bootstrap environment e riesce dopo unset. Il preflight padre aveva unset e perciò era passato.
+- Nessuna traiettoria, sample, output manifest, verifica numerica o materiale per INT-1; nessuna evidenza di WORLD_HISTORY accesso/modifica. _01 preservato. Report e dettagli supervisor: docs/arcana/INT0B_R1_SECOND_ATTEMPT_FAILURE.md e outputs/r6_functional_development/INT0B_R1_SUPERVISION_20261013/.
+- I gates scientifici/esecutivi rimangono invariati. La corrente autorizzazione non consente un terzo run; INT-1 bloccato in assenza di traiettoria.
+
 ## 2026-10-12 — INT-0A integration code ready; no candidate run
 - Decisione: `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`. Nuovo orchestratore `src/arcana_worldsim/r6/int0a_pipeline.py`; il runner T-F2B consuma il binding API e registrerà `CANDIDATE_TRAJECTORY.json` nel manifest per un eventuale run. Aggiornato il branch predefinito atteso dal runner.
 - Data flow sintetico verificato: supporto/kinematics 5:11 + profili T0 → `pure_shear_thermal_step`; le variazioni di forcing e profilo cambiano l'output downstream. B0 state/checkpoint/forcing/replay records fanno round-trip; il replay resta descriptor-only e non viene registrato nel `HistoryStore` canonico.
