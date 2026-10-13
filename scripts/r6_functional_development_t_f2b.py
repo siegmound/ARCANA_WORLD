@@ -37,6 +37,71 @@ def _sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _diagnostic_samples_document(plan: object,
+                                 samples: dict[str, list[dict[str, object]]],
+                                 middle_fraction: float) -> dict[str, object]:
+    return {
+        "schema": "ARCANA_R6_TF2B_NUMERICAL_STEP_SAMPLES_V2",
+        "scope": "NONCANONICAL_ENGINEERING_REFERENCE_TRAJECTORY",
+        "support_ids": list(plan.support_ids),
+        "sampling": "INITIAL_AND_EVERY_MIDDLE_RESOLUTION_NUMERICAL_SUBSTEP",
+        "resolution_fraction": middle_fraction,
+        "interpolation": "NONE",
+        "maximum_samples_per_support_including_initial": MAX_DIAGNOSTIC_SAMPLES_PER_SUPPORT,
+        "maximum_profile_nodes": MAX_DIAGNOSTIC_PROFILE_NODES,
+        "units": {"time_s": "s", "elapsed_years": "year", "width_m": "m",
+            "crust_m": "m", "lithosphere_m": "m", "beta": "1",
+            "accumulated_strain": "1", "material_coordinate": "1",
+            "z_m": "m", "temperature_k": "K"},
+        "all_numerical_substeps_captured": True,
+        "sample_count_by_support": {key: len(value) for key, value in samples.items()},
+        "samples_by_support": samples,
+        "canonical_publication": False,
+    }
+
+
+def _write_candidate_output_bundle(output_path: Path,
+                                   artifacts: dict[str, object],
+                                   run_result: dict[str, object],
+                                   plan: object) -> dict[str, object]:
+    """Write the runner bundle, verify each readback, and publish manifest last."""
+    if output_path.exists():
+        raise RuntimeError("CANDIDATE_OUTPUT_ALREADY_EXISTS")
+    output_path.mkdir(parents=True, exist_ok=False)
+    hashes: dict[str, str] = {}
+    artifact_sizes: dict[str, int] = {}
+    for name, value in artifacts.items():
+        data = _canonical_bytes(value)
+        path = output_path / name
+        if path.write_bytes(data) != len(data) or path.read_bytes() != data:
+            raise RuntimeError(f"CANDIDATE_ARTIFACT_READBACK_MISMATCH:{name}")
+        hashes[name] = _sha256_bytes(data)
+        artifact_sizes[name] = len(data)
+    run_result["artifact_sha256"] = hashes
+    run_result_bytes = _canonical_bytes(run_result)
+    run_result_path = output_path / "RUN_RESULT.json"
+    if (run_result_path.write_bytes(run_result_bytes) != len(run_result_bytes)
+            or run_result_path.read_bytes() != run_result_bytes):
+        raise RuntimeError("RUN_RESULT_READBACK_MISMATCH")
+    output_manifest = {
+        "schema": "ARCANA_R6_TF2B_INT0_OUTPUT_MANIFEST_V1",
+        "canonical_publication": False,
+        "provider_identities": dict(plan.provider_identities),
+        "configuration_sha256": plan.configuration_sha256,
+        "files": {name: {"bytes": artifact_sizes[name], "sha256": hashes[name]}
+                  for name in artifacts},
+        "RUN_RESULT.json": {"bytes": len(run_result_bytes),
+                            "sha256": _sha256_bytes(run_result_bytes)},
+    }
+    manifest_bytes = _canonical_bytes(output_manifest)
+    manifest_path = output_path / "CANDIDATE_MANIFEST.json"
+    if (manifest_path.write_bytes(manifest_bytes) != len(manifest_bytes)
+            or manifest_path.read_bytes() != manifest_bytes):
+        raise RuntimeError("CANDIDATE_MANIFEST_READBACK_MISMATCH")
+    return {"manifest": output_manifest, "manifest_sha256": _sha256_bytes(manifest_bytes),
+            "artifact_sha256": hashes, "run_result_sha256": _sha256_bytes(run_result_bytes)}
+
+
 def _area_relative_errors(states: list[ReducedState], width_m: float) -> list[float]:
     return [abs((state.width_m * state.lithosphere_m)
                 - (width_m * state.initial_lithosphere_m))
@@ -412,25 +477,8 @@ def main() -> int:
                      for state, fine in zip(row["final_states"], resolution_results[-1]["final_states"]))}
                 for row in resolution_results],
             "comparison_is_numerical_refinement_only": True},
-        "DIAGNOSTIC_NUMERICAL_SAMPLES.json": {
-            "schema": "ARCANA_R6_TF2B_NUMERICAL_STEP_SAMPLES_V2",
-            "scope": "NONCANONICAL_ENGINEERING_REFERENCE_TRAJECTORY",
-            "support_ids": list(plan.support_ids),
-            "sampling": "INITIAL_AND_EVERY_MIDDLE_RESOLUTION_NUMERICAL_SUBSTEP",
-            "resolution_fraction": middle_fraction,
-            "interpolation": "NONE",
-            "maximum_samples_per_support_including_initial": MAX_DIAGNOSTIC_SAMPLES_PER_SUPPORT,
-            "maximum_profile_nodes": MAX_DIAGNOSTIC_PROFILE_NODES,
-            "units": {"time_s": "s", "elapsed_years": "year", "width_m": "m",
-                "crust_m": "m", "lithosphere_m": "m", "beta": "1",
-                "accumulated_strain": "1", "material_coordinate": "1",
-                "z_m": "m", "temperature_k": "K"},
-            "all_numerical_substeps_captured": True,
-            "sample_count_by_support": {key: len(value)
-                for key, value in diagnostic_sample_records.items()},
-            "samples_by_support": diagnostic_sample_records,
-            "canonical_publication": False,
-        },
+        "DIAGNOSTIC_NUMERICAL_SAMPLES.json": _diagnostic_samples_document(
+            plan, diagnostic_sample_records, middle_fraction),
         "REPLAY_RESTART.json": run_result["replay_restart"],
         "CANDIDATE_TRAJECTORY.json": trajectory_document(
             plan, tuple(direct), duration_s=duration_s,
@@ -440,26 +488,7 @@ def main() -> int:
                 "duration_years": ENGINEERING_DURATION_YEARS,
             }),
     }
-    output_path.mkdir(parents=True)
-    hashes = {}
-    for name, value in artifacts.items():
-        data = _canonical_bytes(value)
-        (output_path / name).write_bytes(data)
-        hashes[name] = _sha256_bytes(data)
-    run_result["artifact_sha256"] = hashes
-    run_result_bytes = _canonical_bytes(run_result)
-    (output_path / "RUN_RESULT.json").write_bytes(run_result_bytes)
-    output_manifest = {
-        "schema": "ARCANA_R6_TF2B_INT0_OUTPUT_MANIFEST_V1",
-        "canonical_publication": False,
-        "provider_identities": dict(plan.provider_identities),
-        "configuration_sha256": plan.configuration_sha256,
-        "files": {name: {"bytes": len(_canonical_bytes(value)), "sha256": hashes[name]}
-                  for name, value in artifacts.items()},
-        "RUN_RESULT.json": {"bytes": len(run_result_bytes),
-                            "sha256": _sha256_bytes(run_result_bytes)},
-    }
-    (output_path / "CANDIDATE_MANIFEST.json").write_bytes(_canonical_bytes(output_manifest))
+    _write_candidate_output_bundle(output_path, artifacts, run_result, plan)
     print(json.dumps({"decision": run_result["decision"],
         "selected_boundary_id": selected["boundary_id"],
         "selected_support_ids": section["support_ids"], "signed_Ux_m_per_year": ux,

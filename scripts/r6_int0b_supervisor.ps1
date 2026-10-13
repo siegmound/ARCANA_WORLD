@@ -2,8 +2,8 @@ param(
   [Parameter(Mandatory=$true)][ValidateSet("SelfTest","ProviderAudit","Run")][string]$Mode,
   [string]$PythonPath = "C:\Users\jose_\AppData\Local\Programs\Python\Python312\python.exe",
   [string]$RepositoryRoot = ".",
-  [string]$OutputRelative = "outputs/r6_functional_development/INT0B_TF2B_5_11_R2_20261013_03",
-  [string]$EvidenceDirectory = "outputs/r6_functional_development/INT0B_R2_SUPERVISION_20261013",
+  [string]$OutputRelative = "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04",
+  [string]$EvidenceDirectory = "outputs/r6_functional_development/INT0B_R4_SUPERVISION_20261013_04",
   [string]$ExpectedHead = ""
 )
 . "C:\Users\jose_\AppData\Local\ARCANA\r6-env.ps1"
@@ -83,6 +83,8 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
   $psi.FileName = [IO.Path]::GetFullPath($PythonPath)
   $psi.WorkingDirectory = (Get-Location).Path
   $psi.UseShellExecute = $false
+  $psi.RedirectStandardOutput = $true
+  $psi.RedirectStandardError = $true
   foreach ($argument in $CommandArguments) { $psi.ArgumentList.Add([string]$argument) }
   $removedGitVariables = @()
   if (-not $TestOnlyRetainGitObjectEnvironment) {
@@ -91,9 +93,21 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
     }
   }
   # Final child-environment mutation: preserve runtime variables, remove only proven corruptors.
+  $stdoutPath = [IO.Path]::GetFullPath($TracePath + ".stdout.log")
+  $stderrPath = [IO.Path]::GetFullPath($TracePath + ".stderr.log")
+  $stdoutFile = [IO.File]::Create($stdoutPath)
+  $stderrFile = [IO.File]::Create($stderrPath)
   $proc = [Diagnostics.Process]::new()
   $proc.StartInfo = $psi
-  if (-not $proc.Start()) { throw "SUPERVISOR_PROCESS_START_FAILED" }
+  try {
+    if (-not $proc.Start()) { throw "SUPERVISOR_PROCESS_START_FAILED" }
+  } catch {
+    $stdoutFile.Dispose()
+    $stderrFile.Dispose()
+    throw
+  }
+  $stdoutCopy = $proc.StandardOutput.BaseStream.CopyToAsync($stdoutFile)
+  $stderrCopy = $proc.StandardError.BaseStream.CopyToAsync($stderrFile)
   $root = $proc.Id
   $clock = [Diagnostics.Stopwatch]::StartNew()
   $peakWs = [int64]0
@@ -120,6 +134,11 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
       $lastItems = $items
       $ws = Get-TreeWorkingSet $items
       $bytes = Get-OutputBytes $OutputPath
+      foreach ($logFile in @($stdoutFile, $stderrFile)) {
+        $logBytes = [int64]$logFile.Length
+        if ($logBytes -gt ([long]::MaxValue - $bytes)) { throw "MONITOR_OUTPUT_SUM_OVERFLOW" }
+        $bytes += $logBytes
+      }
       if ($ws -gt $peakWs) { $peakWs = $ws }
       if ($bytes -gt $peakOutput) { $peakOutput = $bytes }
       $sampleCount++
@@ -158,6 +177,11 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
         }
       }
     }
+    if (-not $stdoutCopy.Wait(5000) -or -not $stderrCopy.Wait(5000)) {
+      throw "SUPERVISOR_REDIRECTED_STREAM_DRAIN_TIMEOUT"
+    }
+    [void]$stdoutCopy.GetAwaiter().GetResult()
+    [void]$stderrCopy.GetAwaiter().GetResult()
   } catch {
     $stopReason = "MONITOR_ERROR"
     try { if (-not $proc.HasExited) { $proc.Kill($true) } } catch { }
@@ -165,10 +189,13 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
       try { $left = [Diagnostics.Process]::GetProcessById([int]$item.pid); if (-not $left.HasExited) { $left.Kill($true) } } catch { }
     }
     try { $proc.WaitForExit() } catch { }
+    try { [void]$stdoutCopy.Wait(5000); [void]$stderrCopy.Wait(5000) } catch { }
     throw
   } finally {
     $clock.Stop()
     $trace.Dispose()
+    $stdoutFile.Dispose()
+    $stderrFile.Dispose()
   }
   $proc.Refresh()
   $exit = if ($proc.HasExited) { $proc.ExitCode } else { $null }
@@ -192,7 +219,13 @@ function Invoke-Monitored([string]$Label, [string[]]$CommandArguments, [string]$
     elapsed_seconds = [Math]::Round($clock.Elapsed.TotalSeconds, 6)
     peak_sampled_process_tree_working_set_bytes = $peakWs
     peak_sampled_output_bytes = $peakOutput
-    final_output_bytes = Get-OutputBytes $OutputPath
+    final_output_bytes = (Get-OutputBytes $OutputPath) + [int64](Get-Item -LiteralPath $stdoutPath).Length + [int64](Get-Item -LiteralPath $stderrPath).Length
+    stdout_path = $stdoutPath
+    stdout_bytes = [int64](Get-Item -LiteralPath $stdoutPath).Length
+    stdout_sha256 = (Get-FileHash -LiteralPath $stdoutPath -Algorithm SHA256).Hash.ToLowerInvariant()
+    stderr_path = $stderrPath
+    stderr_bytes = [int64](Get-Item -LiteralPath $stderrPath).Length
+    stderr_sha256 = (Get-FileHash -LiteralPath $stderrPath -Algorithm SHA256).Hash.ToLowerInvariant()
     poll_milliseconds = $PollMilliseconds
     samples = $sampleCount
     stop_reason = $stopReason
@@ -296,8 +329,24 @@ raise SystemExit(0 if ok else 42)
   New-Item -ItemType Directory -Path $outTarget | Out-Null
   $output = Invoke-Monitored "output_limit" @("-c",$outCode,(Join-Path $outTarget "payload.bin")) $outTarget (Join-Path $self "output.ndjson") 60 2147483648 32768 50
   if ($output.stop_reason -ne "CUMULATIVE_OUTPUT_LIMIT" -or $output.final_output_bytes -lt 32768) { throw "SUPERVISOR_OUTPUT_TEST_FAILED" }
-  $exitCode = Invoke-Monitored "exit_code_propagation" @("-c","raise SystemExit(23)") (Join-Path $self "exit-output") (Join-Path $self "exit.ndjson") 60 2147483648 99999999 50
-  if ($exitCode.stop_reason -ne "NATURAL_EXIT" -or $exitCode.exit_code -ne 23) { throw "SUPERVISOR_EXIT_PROPAGATION_TEST_FAILED" }
+  $exitCode = Invoke-Monitored "exit_code_propagation" @("-c","import sys; print('nonzero-error', file=sys.stderr); raise SystemExit(23)") (Join-Path $self "exit-output") (Join-Path $self "exit.ndjson") 60 2147483648 99999999 50
+  if ($exitCode.stop_reason -ne "NATURAL_EXIT" -or $exitCode.exit_code -ne 23 -or
+      (Get-Content -LiteralPath $exitCode.stderr_path -Raw).Trim() -ne "nonzero-error") {
+    throw "SUPERVISOR_EXIT_PROPAGATION_FAILED"
+  }
+  $streamLimitCode = "import sys,time; sys.stdout.buffer.write(b'x'*65536); sys.stdout.flush(); time.sleep(60)"
+  $streamLimit = Invoke-Monitored "captured_stream_output_limit" @("-c",$streamLimitCode) (Join-Path $self "stream-limit-output") (Join-Path $self "stream-limit.ndjson") 60 2147483648 32768 50
+  if ($streamLimit.stop_reason -ne "CUMULATIVE_OUTPUT_LIMIT" -or
+      $streamLimit.final_output_bytes -lt 32768 -or $streamLimit.stdout_bytes -lt 32768) {
+    throw "SUPERVISOR_CAPTURED_STREAM_OUTPUT_LIMIT_FAILED"
+  }
+  $streamCode = "import sys; print('stdout-diagnostic'); print('stderr-diagnostic', file=sys.stderr)"
+  $streamCapture = Invoke-Monitored "diagnostic_stream_capture" @("-c",$streamCode) (Join-Path $self "stream-output") (Join-Path $self "streams.ndjson") 60 2147483648 99999999 50
+  if ($streamCapture.stop_reason -ne "NATURAL_EXIT" -or $streamCapture.exit_code -ne 0 -or
+      (Get-Content -LiteralPath $streamCapture.stdout_path -Raw).Trim() -ne "stdout-diagnostic" -or
+      (Get-Content -LiteralPath $streamCapture.stderr_path -Raw).Trim() -ne "stderr-diagnostic") {
+    throw "SUPERVISOR_DIAGNOSTIC_STREAM_CAPTURE_FAILED"
+  }
   $raceExit = Invoke-Monitored "natural_exit_between_poll_and_snapshot" @("-c","raise SystemExit(31)") (Join-Path $self "race-exit-output") (Join-Path $self "race-exit.ndjson") 60 2147483648 99999999 50 -TestOnlyRootDisappearsAfterNaturalExit
   if ($raceExit.stop_reason -ne "NATURAL_EXIT" -or $raceExit.exit_code -ne 31 -or
       $raceExit.termination_classification -ne "NATURAL_EXIT_NONZERO") { throw "SUPERVISOR_NATURAL_EXIT_RACE_CLASSIFICATION_FAILED" }
@@ -306,7 +355,7 @@ raise SystemExit(0 if ok else 42)
       $identityLoss.termination_classification -ne "PROCESS_IDENTITY_LOSS" -or $identityLoss.exit_code -eq 0) {
     throw "SUPERVISOR_PROCESS_IDENTITY_LOSS_CLASSIFICATION_FAILED"
   }
-  @($unsanitized,$sanitized,$tree,$memory,$output,$exitCode,$raceExit,$identityLoss) | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $self "selftest-results.json") -Encoding utf8
+  @($unsanitized,$sanitized,$tree,$memory,$output,$exitCode,$streamLimit,$streamCapture,$raceExit,$identityLoss) | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $self "selftest-results.json") -Encoding utf8
   $sanitizedReport | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $self "git-provenance-result.json") -Encoding utf8
   "SUPERVISOR_SELFTEST_PASS"
   return
@@ -364,7 +413,7 @@ if ($Mode -eq "Run") {
   $scriptPath = Join-Path $repo "scripts/r6_functional_development_t_f2b.py"
   $args = @($scriptPath,"--repository-root",".","--expected-branch","r6/si1-bandwidth-f2av","--output-relative",$OutputRelative.Replace('\','/') )
   $trace = Join-Path $EvidenceDirectory "run.ndjson"
-  $result = Invoke-Monitored "INT0B_R2_THIRD_FINAL_ATTEMPT" $args $outputPath $trace 900 2147483648 536870912 100
+  $result = Invoke-Monitored "INT0B_R4_FOURTH_ATTEMPT_PENDING_AUTHORIZATION" $args $outputPath $trace 900 2147483648 536870912 100
   $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $EvidenceDirectory "run-summary.json") -Encoding utf8
   $result | Format-List
   if ($result.stop_reason -ne "NATURAL_EXIT") { exit 124 }

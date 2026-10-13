@@ -23,6 +23,9 @@ def _clean_git_env() -> dict[str, str]:
 def test_real_supervisor_child_environment_and_limits(tmp_path: Path) -> None:
     pwsh = shutil.which("pwsh")
     assert pwsh is not None, "PowerShell 7 (pwsh) is required for the real supervisor launch-path test"
+    supervisor_source = SUPERVISOR.read_text(encoding="utf-8")
+    assert "INT0B_R1_SINGLE_ATTEMPT" not in supervisor_source
+    assert "INT0B_R4_FOURTH_ATTEMPT_PENDING_AUTHORIZATION" in supervisor_source
     assert not R2_OUTPUT.exists(), "offline smoke test must not create the numerical-run destination"
 
     head = subprocess.run(
@@ -60,6 +63,18 @@ def test_real_supervisor_child_environment_and_limits(tmp_path: Path) -> None:
     assert by_label["output_limit"]["termination_classification"] == "RESOURCE_LIMIT_TERMINATED"
     assert by_label["exit_code_propagation"]["exit_code"] == 23
     assert by_label["exit_code_propagation"]["termination_classification"] == "NATURAL_EXIT_NONZERO"
+    assert Path(by_label["exit_code_propagation"]["stderr_path"]).read_text(
+        encoding="utf-8").strip() == "nonzero-error"
+    stream_limit = by_label["captured_stream_output_limit"]
+    assert stream_limit["stop_reason"] == "CUMULATIVE_OUTPUT_LIMIT"
+    assert stream_limit["final_output_bytes"] >= 32768
+    assert stream_limit["stdout_bytes"] >= 32768
+    streams = by_label["diagnostic_stream_capture"]
+    assert streams["stop_reason"] == "NATURAL_EXIT" and streams["exit_code"] == 0
+    assert Path(streams["stdout_path"]).read_text(encoding="utf-8").strip() == "stdout-diagnostic"
+    assert Path(streams["stderr_path"]).read_text(encoding="utf-8").strip() == "stderr-diagnostic"
+    assert streams["stdout_bytes"] > 0 and streams["stderr_bytes"] > 0
+    assert len(streams["stdout_sha256"]) == len(streams["stderr_sha256"]) == 64
     assert by_label["natural_exit_between_poll_and_snapshot"]["stop_reason"] == "NATURAL_EXIT"
     assert by_label["natural_exit_between_poll_and_snapshot"]["exit_code"] == 31
     assert by_label["natural_exit_between_poll_and_snapshot"]["termination_classification"] == "NATURAL_EXIT_NONZERO"

@@ -65,6 +65,14 @@
 
 # Indice minimo delle evidenze (identità e scope)
 
+## INT-0B-R4 — synthetic E2E and supervisor diagnostics; no evolution (2026-10-13)
+- Report: `docs/arcana/INT0B_R4_OFFLINE_E2E_VALIDATION.md`; decision `INT0B_R4_OFFLINE_E2E_VERIFIED__FOURTH_RUN_PENDING_AUTHORIZATION`.
+- Scope: offline Windows tests only. A synthetic fixture traverses the production numerical observer, R3 sequence validator, sample document serializer, replay/restart, trajectory builder and runner output-bundle writer. Readback, manifest-last order, exact membership/length/SHA256 and overwrite refusal are tested. Supervisor tests verify PID tree and existing limit/exit-race behavior plus raw stdout/stderr logs, their SHA256 and output-limit accounting.
+- Final focused suite: 70 passed, 0 failed, 0 skipped; Python 3.12.10/NumPy 2.3.5. No provider-backed audit, numerical evolution, or new run artifact was created. Output and supervision destinations `_04` were checked absent and remain uncreated.
+- Sample-size calculation: 12 intermediate fields, 22 endpoint fields; 10,001 records/support × 2; type-aware numeric-entry total 4,521,036. Production-serializer stress projection approximately 179,442,031 bytes for the sample artifact; older more conservative planning estimate 333,657,599 bytes. Both are estimates, not observed output/RSS. The 512 MiB limit is an actively sampled stop threshold.
+- The bounded synthetic fixture's diagnostics JSON serialized to 5,474 bytes (two supports, two samples/support, three nodes/support); this is a fixture measurement only.
+- Not provider/runtime evidence and not a trajectory. Final-source provider audit and a separate execution authorization remain outstanding. Prior three failure reports/evidence remain unchanged. All scientific, solver, canonical and INT-1 gates remain blocked.
+
 ## INT-0B-R3 — endpoint schema e supervisor classification (2026-10-13)
 - Report: `docs/arcana/INT0B_R3_ENDPOINT_VALIDATION_FORENSIC.md`, SHA256 `50a1ee00fe9d10b2d12e6d5e9aa8f029c7cdbb0754f6dae867455d36d6e7d437`; decisione `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`. L'analisi del sorgente storico del run individua `elapsed_years` come primo campo assente nel payload finale, mentre l'observer lo derivava da `time_s`; nessun sample byte-level del tentativo precedente era stato persistito, quindi i suoi valori numerici effettivi restano non disponibili.
 - Modificati runner `scripts/r6_functional_development_t_f2b.py`, observer `src/arcana_worldsim/r6/int0a_pipeline.py`, test endpoint `tests/test_r6_functional_development_t_f2b_samples.py`, supervisor `scripts/r6_int0b_supervisor.ps1` e test supervisor `tests/test_r6_int0b_supervisor_environment.py`. L'endpoint ora confronta il payload completo e le trasformazioni derivate; l'osservazione ha support ID e schema V2. Il supervisor ricontrolla `HasExited`, distingue classificazioni di terminazione e non usa più la label R1.

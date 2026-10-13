@@ -5,9 +5,10 @@
 | Gate | Risultato atteso | Stato |
 |---|---|---|
 | **INT-0A** | Runner minimo che collega realmente 2+ componenti, con tempo/supporto/provenance coerenti | `INT0A_INTEGRATION_CODE_READY__NONCANONICAL_RUN_NOT_YET_EVIDENCED`; suite offline mirata 20 PASS |
-| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Tre tentativi: `_01` e `_02` falliti prima di creare traiettorie; terzo/finale `_03` ha eseguito i calcoli e fallito `DIAGNOSTIC_SAMPLE_ENDPOINT_MISMATCH` prima di persistere/validare i campioni. Nessuna traiettoria utilizzabile; INT-1 bloccato. |
+| **INT-0B** | Esecuzione numerica non canonica T-F2B 5:11, campioni, confronto, restart, manifest | Tre tentativi immutati falliti (`_01` TypeError preoutput, `_02` ambiente Git nel child, `_03` endpoint schema mismatch). R4 offline E2E PASS; quarta evoluzione `PENDING_SEPARATE_AUTHORIZATION`; nessuna traiettoria utilizzabile, INT-1 bloccato. |
 | **INT-0B-R2** | Isolamento ambiente corretto e tentativo finale bounded | Preflight provider PASS su `311550d`; esecuzione singola fallita su endpoint diagnostico dopo 22.190863 s (exit 1). La diagnosi R3 identifica mismatch di schema `elapsed_years` assente dal final payload, non prova una divergenza numerica; la regressione sintetica e la correzione supervisor passano. Nessun quarto run autorizzato. |
-| **INT-0B-R3** | Correzione endpoint e metadata supervisor offline | `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`; 61 test offline PASS. Il report del run fallito è immutato; non sono stati recuperati campioni numerici e non esiste una traiettoria valida per INT-1. |
+| **INT-0B-R3** | Correzione endpoint e metadata supervisor offline | `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`; report del run fallito immutato e campioni non recuperati. |
+| **INT-0B-R4** | Validazione E2E sintetica e preparazione bounded, senza evolution | `INT0B_R4_OFFLINE_E2E_VERIFIED__FOURTH_RUN_PENDING_AUTHORIZATION`; 70 test PASS, output writer/manifest e supervisor streams verificati su fixture. Quarta esecuzione non autorizzata; richiede audit provider sul commit esatto e approvazione distinta. |
 | **INT-1** | Full vs fixed vs event/error/uncertainty retention, metriche di errore/replay/byte misurate | Bloccato finché una traiettoria INT-0B completa non sia validata |
 | **INT-2** | Query/refinement/reconstruction di una traiettoria multi-provider | Dopo INT-1 |
 | **INT-3** | Provider aggiuntivi, estensione geografica e temporale | Solo con input/applicabilità/contratti adeguati |
@@ -15,7 +16,7 @@
 
 ## Inventario con scope (non trasformare PASS tecnici in qualifica scientifica)
 
-INT-0B provider input audit è stato ripetuto sul commit autorizzato `311550d` attraverso il processo figlio sanitizzato: PASS, source identity HEAD-bound `a19070287adedb0bb009ce5c56380892ca173d4eee30b662c6c1a7d34406b34a`. Il singolo run R2 ha fallito la validazione endpoint e non ha creato `_03`. R3 corregge offline il mismatch di schema e la classificazione supervisor; non recupera la traiettoria fallita e non autorizza una quarta esecuzione. INT-1 resta bloccato. Qualsiasi nuova evoluzione necessita nuova autorizzazione esplicita.
+INT-0B provider input audit era passato sul commit `311550d` con source identity HEAD-bound `a19070287adedb0bb009ce5c56380892ca173d4eee30b662c6c1a7d34406b34a`; tale audit non si trasferisce automaticamente a HEAD R4. R4 è solo offline/sintetico e non autorizza una quarta evoluzione. Un audit read-only dei provider sul commit finale di una futura esecuzione resta precondizione, insieme a una distinta approvazione. INT-1 resta bloccato.
 
 - **B0/B6:** HistoryStore/query/replay esistono. B6K candidata geometrica 210→209.97287659484368 Ma e B6N8-A shadow multirisoluzione. Vecchio B6M-R1 bloccato e successivo live-view B6N8-A a due età sono checkpoint distinti; verificare il canonico attuale read-only.
 - **Termica/cinematica integrabile:** PRE_ORBDATA, B6N8-O/Q e codice T-F2B con supporto coppia **5:11**, forcing ingegneristico congelato, finestra 1.000 anni e replay/restart. B6N8-R roster real-support ancora incompleto; NON estendere T-F2B alla coppia rift **1:3** per analogia.

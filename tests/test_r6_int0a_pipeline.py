@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 
 import pytest
 
-from arcana_worldsim.r6.functional_development import NodeMaterial, T0Profile
 from arcana_worldsim.r6.functional_development import (
-    initial_reduced_state, pure_shear_thermal_step, state_from_payload,
+    NodeMaterial, T0Profile, initial_reduced_state, pure_shear_thermal_step, state_from_payload,
 )
 from arcana_worldsim.r6.checkpoint import CheckpointEnvelope
 from arcana_worldsim.r6.forcing import ForcingRecord
@@ -17,6 +17,7 @@ from arcana_worldsim.r6.replay import ReplayRecipe
 from arcana_worldsim.r6.state import DomainStateEnvelope
 from arcana_worldsim.r6.int0a_pipeline import (
     IntegrationContractError,
+    SECONDS_PER_YEAR,
     advance_pair,
     build_fixture_pair_plan,
     capture_numerical_step_samples,
@@ -25,6 +26,13 @@ from arcana_worldsim.r6.int0a_pipeline import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+_RUNNER_SPEC = importlib.util.spec_from_file_location(
+    "r6_functional_development_t_f2b_e2e",
+    ROOT / "scripts/r6_functional_development_t_f2b.py",
+)
+assert _RUNNER_SPEC is not None and _RUNNER_SPEC.loader is not None
+_RUNNER = importlib.util.module_from_spec(_RUNNER_SPEC)
+_RUNNER_SPEC.loader.exec_module(_RUNNER)
 _HASHES = {"source_identity_sha256": "1" * 64,
            "kinematics_semantic_identity_sha256": "2" * 64,
            "kinematics_artifact_sha256": "3" * 64,
@@ -251,3 +259,110 @@ def test_candidate_bundle_is_deterministic_and_refuses_protected_or_existing_roo
     with pytest.raises(IntegrationContractError, match="ALREADY_EXISTS"):
         write_candidate_bundle(document, first, repository_root=ROOT,
                                protected_roots=(tmp_path / "world_history",))
+
+
+def test_synthetic_observer_validation_replay_and_candidate_manifest_end_to_end(tmp_path, monkeypatch):
+    plan = build_fixture_pair_plan(_assessment())
+    duration_s = 31_557_600.0
+    observed, diagnostics, samples = capture_numerical_step_samples(
+        plan, duration_s=duration_s,
+        maximum_kinematic_fraction_per_substep=0.01,
+    )
+    assert set(samples) == set(plan.support_ids)
+    for index, (support_id, final_state, rows, diagnostic) in enumerate(
+            zip(plan.support_ids, observed, samples.values(), diagnostics)):
+        assert len(rows) == diagnostic["substeps"] + 1
+        assert rows[-1]["record_type"] == "ENDPOINT_STATE"
+        assert rows[-1]["support_id"] == support_id
+        assert all(row["record_type"] == "DIAGNOSTIC_SAMPLE" for row in rows[:-1])
+        assert all("materials" not in row for row in rows[:-1])
+        assert "materials" in rows[-1]
+        assert [row["time_s"] for row in rows] == sorted(row["time_s"] for row in rows)
+        assert all(a["time_s"] < b["time_s"] for a, b in zip(rows, rows[1:]))
+        assert rows[-1]["elapsed_years"] == final_state.time_s / SECONDS_PER_YEAR
+        _RUNNER._validate_diagnostic_sample_sequence(
+            support_id, rows, final_state.payload(), index)
+
+    # The runner's strict serializer round-trips the complete sample schema.
+    sample_document = _RUNNER._diagnostic_samples_document(plan, samples, 0.01)
+    sample_bytes = _RUNNER._canonical_bytes(sample_document)
+    decoded_samples = json.loads(sample_bytes)
+    assert _RUNNER._canonical_bytes(decoded_samples) == sample_bytes
+    assert decoded_samples["support_ids"] == list(plan.support_ids)
+    assert decoded_samples["sample_count_by_support"] == {
+        support: len(rows) for support, rows in samples.items()}
+    assert all(decoded_samples["samples_by_support"][support][-1]["record_type"] == "ENDPOINT_STATE"
+               for support in plan.support_ids)
+
+    malformed = copy.deepcopy(samples[plan.support_ids[0]])
+    malformed[-1]["width_m"] += 1.0
+    with pytest.raises(_RUNNER.DiagnosticSampleValidationError):
+        _RUNNER._validate_diagnostic_sample_sequence(
+            plan.support_ids[0], malformed, observed[0].payload(), 0)
+
+    replay, _ = advance_pair(plan, duration_s=duration_s,
+                             maximum_kinematic_fraction_per_substep=0.01)
+    assert [state.payload() for state in replay] == [state.payload() for state in observed]
+    restart_a, restart_b = [], []
+    for profile in plan.profiles:
+        for destination_states in (restart_a, restart_b):
+            initial = initial_reduced_state(profile, initial_width_m=plan.initial_width_m)
+            first_half, _ = pure_shear_thermal_step(
+                initial, duration_s=duration_s / 2,
+                extension_velocity_m_s=plan.signed_extension_m_per_year / SECONDS_PER_YEAR,
+                maximum_kinematic_fraction_per_substep=0.01)
+            restored = state_from_payload(json.loads(_RUNNER._canonical_bytes(first_half.payload())))
+            second_half, _ = pure_shear_thermal_step(
+                restored, duration_s=duration_s / 2,
+                extension_velocity_m_s=plan.signed_extension_m_per_year / SECONDS_PER_YEAR,
+                maximum_kinematic_fraction_per_substep=0.01)
+            destination_states.append(second_half)
+    assert [state.payload() for state in restart_a] == [state.payload() for state in restart_b]
+    assert all(state.time_s == duration_s for state in restart_a)
+    document = trajectory_document(
+        plan, tuple(observed), duration_s=duration_s,
+        numerical_configuration={"fraction": 0.01, "fixture": "SYNTHETIC_FIXTURE_ONLY"})
+    assert document["spatial_support"]["support_ids"] == list(plan.support_ids)
+    assert document["canonical_publication"] is False
+
+    artifacts = {
+        "DIAGNOSTIC_NUMERICAL_SAMPLES.json": sample_document,
+        "CANDIDATE_TRAJECTORY.json": document,
+    }
+    run_result = {"decision": "SYNTHETIC_FIXTURE_ONLY", "canonical_publication": False,
+                  "selected_support_ids": list(plan.support_ids),
+                  "restart_state_payloads": [state.payload() for state in restart_a]}
+    destination = tmp_path / "integrated-candidate"
+    writes: list[str] = []
+    original_write_bytes = Path.write_bytes
+
+    def record_writes(path: Path, data: bytes) -> int:
+        result = original_write_bytes(path, data)
+        if path.parent == destination:
+            writes.append(path.name)
+        return result
+
+    monkeypatch.setattr(Path, "write_bytes", record_writes)
+    written = _RUNNER._write_candidate_output_bundle(
+        destination, artifacts, run_result, plan)
+    assert writes == ["DIAGNOSTIC_NUMERICAL_SAMPLES.json", "CANDIDATE_TRAJECTORY.json",
+                      "RUN_RESULT.json", "CANDIDATE_MANIFEST.json"]
+    manifest_path = destination / "CANDIDATE_MANIFEST.json"
+    manifest_bytes = manifest_path.read_bytes()
+    manifest = json.loads(manifest_bytes)
+    assert manifest["canonical_publication"] is False
+    assert set(manifest["files"]) == set(artifacts)
+    assert set(path.name for path in destination.iterdir()) == {
+        *artifacts, "RUN_RESULT.json", "CANDIDATE_MANIFEST.json"}
+    for name in (*artifacts, "RUN_RESULT.json"):
+        payload = (destination / name).read_bytes()
+        digest_entry = manifest["files"][name] if name in artifacts else manifest[name]
+        assert digest_entry == {"bytes": len(payload), "sha256": hashlib.sha256(payload).hexdigest()}
+    assert written["manifest_sha256"] == hashlib.sha256(manifest_bytes).hexdigest()
+    readback = json.loads((destination / "CANDIDATE_TRAJECTORY.json").read_bytes())
+    assert readback["spatial_support"]["support_ids"] == list(plan.support_ids)
+    assert {row["support_id"] for row in readback["fields"]} == set(plan.support_ids)
+    readback_samples = json.loads((destination / "DIAGNOSTIC_NUMERICAL_SAMPLES.json").read_bytes())
+    assert readback_samples["sample_count_by_support"] == sample_document["sample_count_by_support"]
+    with pytest.raises(RuntimeError, match="ALREADY_EXISTS"):
+        _RUNNER._write_candidate_output_bundle(destination, artifacts, run_result, plan)

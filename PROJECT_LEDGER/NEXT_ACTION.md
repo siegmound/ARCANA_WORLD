@@ -1,10 +1,10 @@
-# NEXT — review and publish INT-0B-R3 offline correction
+# NEXT — hold for separate INT-0B-R4 execution authorization
 
-**Current decision (2026-10-13):** `INT0B_R3_ENDPOINT_VALIDATION_CORRECTED__REEXECUTION_NOT_AUTHORIZED`. The old endpoint check's first mismatch was the absent `elapsed_years` key in `ReducedState.payload()`; diagnostic samples derive it from `time_s`. The correction and focused synthetic regressions pass. The original failure report and output evidence remain immutable. See [R3 forensic report](../docs/arcana/INT0B_R3_ENDPOINT_VALIDATION_FORENSIC.md).
+**Current decision (2026-10-13):** `INT0B_R4_OFFLINE_E2E_VERIFIED__FOURTH_RUN_PENDING_AUTHORIZATION`. R4 adds a synthetic end-to-end regression across sample capture, production endpoint validation, replay/restart, serialization and candidate output bundle readback/manifest, and a supervisor self-test that preserves stdout/stderr. No fourth evolution run occurred. See [R4 offline validation](../docs/arcana/INT0B_R4_OFFLINE_E2E_VALIDATION.md).
 
 ## Current action
 
-Review exact changed-file membership, hashes, documentation and tests; commit locally and attempt normal fast-forward publication when connectivity permits. Preserve the failed `_01`, `_02`, `_03` attempt evidence and the prior report. Do not rerun INT-0B: the third/final execution allowance has been consumed. Any new numerical evolution requires separate explicit authorization after review of this correction. INT-1 remains blocked because no complete validated trajectory exists.
+Preserve the three failed-attempt records and all existing outputs. Do not run the prepared `_04` command under this offline gate. A fourth bounded attempt requires a separate explicit authorization. If authorized later, first verify the final commit/parent, tracked cleanliness, Python 3.12.10 and NumPy 2.3.5, `_ARCANA_EXTERNAL_SOURCES`, both absent `_04` destinations, then run the read-only provider audit against that exact commit and verify all provider hashes. Use the PowerShell supervisor with process-tree monitoring at 900 seconds, 2 GiB and 512 MiB (sampled operational stop limits, not OS quotas); retain stdout/stderr logs and do not retry. INT-1 remains blocked until a complete trajectory is produced and independently validated.
 
 Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 

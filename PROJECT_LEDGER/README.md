@@ -1,10 +1,10 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** La correzione offline INT-0B-R3 identifica un mismatch di schema (`elapsed_years` derivato nei campioni ma assente dal payload finale), amplia la verifica sintetica endpoint e corregge la classificazione della race di exit nel supervisor. Il report del terzo tentativo resta immutato; nessuna traiettoria verificabile è stata scritta. La precedente autorizzazione è consumata: nessun quarto run è autorizzato e INT-1 resta bloccato.
+**Punto unico di continuità. Stato operativo aggiornato al 2026-10-13.** INT-0B-R4 ha completato validazione offline end-to-end sintetica e regressioni supervisor, inclusa la conservazione/hash di stdout e stderr. Le tre precedenti esecuzioni restano fallimenti immutati; nessuna nuova evoluzione è stata eseguita. Una quarta esecuzione non è autorizzata e richiede una distinta approvazione. INT-1 resta bloccato senza una traiettoria completa validata.
 
 ## Leggere in questo ordine
 1. `STATUS.md` — solo la sezione iniziale **CURRENT** contiene la priorità attuale; seguono checkpoint storici.
-2. NEXT_ACTION.md — un solo incarico corrente: review/consolidamento della correzione R3 e pubblicazione normale; nessun altro run INT-0B o INT-1 senza nuova autorizzazione.
+2. NEXT_ACTION.md — un solo incarico corrente: conservare/pubblicare R4 offline e attendere eventuale autorizzazione distinta per un solo nuovo tentativo; nessun run INT-0B o INT-1 autorizzato da questo gate.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.
