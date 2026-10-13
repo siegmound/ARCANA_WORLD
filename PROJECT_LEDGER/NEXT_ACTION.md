@@ -1,17 +1,18 @@
-# NEXT — INT-2 query, refinement and reconstruction on existing candidate evidence
+# NEXT — INT-2B minimal noncanonical B0 query adapter
 
-INT-1D is complete within its authorized scope. The new pair-5:11 normal-continental trajectory and the preserved INT-0B-R4 hot-extended trajectory have both passed their applicable bundle/provenance checks; the INT-1A evaluator has measured actual-time full/fixed/retrospective retention for each. These are two case-specific engineering trajectories, not a general retention qualification.
+INT-2A is complete within its offline scope. The report `docs/arcana/INT2A_OFFLINE_HISTORICAL_QUERY_RECONSTRUCTION.md` and result bundle `outputs/r6_functional_development/INT2A_HISTORICAL_QUERY_20261014_07/` record verified queries and reconstructions over the immutable R4 and INT-1D bundles. The read-only evaluator does not register candidate rows in `HistoryStore`.
 
 ## Current action
 
-Perform a bounded offline INT-2 evaluation using the existing R4 and INT-1D bundles: verify the candidate query/refinement/reconstruction path against their manifests and state/time supports, record which operations are already executable, and identify any missing binding needed for repeatable candidate retrieval. Reuse existing code and tests. Do not run another evolution, infer geological events, create canonical state, or treat retrospective selection as an online policy. Any additional numerical execution requires separate authorization. B0 `HistoryStore` executable registration/query/replay remains distinct and currently descriptor-only.
+Prepare a bounded INT-2B adapter/prototype that exposes manifest-verified engineering samples through existing B0 query types using only an isolated, noncanonical test store or a deliberately read-only adapter. Define exact `DomainStateEnvelope` support/time/provenance bindings, stable history/branch identities, and fail-closed behavior before implementation. Reuse `HistoryStore.find_states()`; do not duplicate it. Keep descriptor-only replay unregistered and non-executable until B0 replay inputs plus an authorized deterministic runner are actually bound. No `WORLD_HISTORY` write or canonical publication.
 
 ## Inputs and constraints
 
-- R4 bundle: `outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/`, manifest SHA256 `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`.
-- INT-1D bundle: `outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/`, manifest SHA256 `0cf3faedc6984bed7f479312a2038385ec03040c2fead5cee5b150def39bc571`.
-- Comparison report: `docs/arcana/INT1D_EXECUTION_REPORT.md`.
-- Preserve all previous failures and output directories. No Fair, MPI, ShellSet, Solver, DGBSV, post-rift evolution, or WORLD_HISTORY modification. Preserve `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+- R4 source bundle: `outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/`, manifest SHA256 `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`.
+- INT-1D source bundle: `outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/`, manifest SHA256 `0cf3faedc6984bed7f479312a2038385ec03040c2fead5cee5b150def39bc571`.
+- INT-2A report/result: `docs/arcana/INT2A_OFFLINE_HISTORICAL_QUERY_RECONSTRUCTION.md`; final result manifest SHA256 `b613c94c95c41df503abf0a83ed26f817e00ea6de52822b436152cdc1d84b33d`.
+- Windows B0 store tests could not complete because the managed environment denied `os.link`; test B0 writes only in an isolated writable store on a supported environment. Do not change B0 immutable-write semantics merely to bypass the platform limitation.
+- Preserve earlier failed attempts and all existing output directories. No provider evolution, Fair, MPI, ShellSet, Solver, DGBSV, post-rift evolution, or `WORLD_HISTORY` modification. Preserve `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 
