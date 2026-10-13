@@ -1,4 +1,12 @@
-# NEXT — INT-1B experiment defined; execution not authorized
+# NEXT — INT-1C code prepared; execution not authorized
+
+Current decision (2026-10-13): `INT1C_DISTINCT_REGIME_CODE_READY__EXECUTION_PENDING_AUTHORIZATION`. Report: `docs/arcana/INT1C_DISTINCT_REGIME_EXECUTION_PREPARATION.md`; source preparation began at HEAD `8585d4fdd29ba5f1019421bf8310ef06883fb78b`. The runner supports explicit boundary `R6BND-T0-27e4d497530e681071fb`, adds 0.000125, and samples only that explicitly requested rung; defaults remain the original lower-median selection and three-factor ladder.
+
+Do not execute evolution without a separate explicit authorization. Before a future run, publish/review the candidate source, restore the governed external root, rerun the complete provider-backed audit on the final commit, verify source-composite and all payload hashes, profiles and exact boundary, verify Python/NumPy and the established active supervisor, and reconfirm both absent destinations. Proposed candidate: `outputs/r6_functional_development/INT1C_TF2B_5_11_R094C025_C026_20261013_01`; proposed supervision evidence: `outputs/r6_functional_development/INT1C_SUPERVISION_20261013_01`. Preserve the exact 1,000-year pair-5:11 engineering configuration, frozen Euler forcing, existing kernel, factors 0.001/0.0005/0.00025/0.000125, and diagnostic sampling at 0.000125. No retry or alternate case. Limits remain monitored thresholds 900 s / 2 GiB process-tree working set / 512 MiB output, not hard OS quotas.
+
+The only current-HEAD evidence check completed without external providers was B6N8-N T0 profile re-materialization for both candidate supports; complete pair audit/source-composite identity remain pending. Do not treat this as preflight authorization. B0 `HistoryStore` executable replay remains separate and descriptor-only; it does not block preparation. Preserve all scientific/Solver/canonical gates.
+
+## Archived proposal — INT-1B before INT-1C implementation
 
 Current decision (2026-10-13): `INT1B_NEXT_EVIDENCE_EXPERIMENT_DEFINED__EXECUTION_NOT_AUTHORIZED`. Report: `docs/arcana/INT1B_EVIDENCE_DENSITY_AND_DISTINCT_REGIME_DESIGN.md`. INT-1A remains the empirical baseline: `INT1A_RETENTION_EMPIRICAL_BASELINE_EVIDENCED__GENERAL_POLICY_NOT_QUALIFIED`.
 

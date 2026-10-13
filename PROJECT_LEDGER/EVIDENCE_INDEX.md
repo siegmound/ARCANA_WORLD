@@ -76,6 +76,12 @@
 
 # Indice minimo delle evidenze (identità e scope)
 
+## INT-1C — distinct-regime candidate preparation (2026-10-13)
+- Report: `docs/arcana/INT1C_DISTINCT_REGIME_EXECUTION_PREPARATION.md`; decision `INT1C_DISTINCT_REGIME_CODE_READY__EXECUTION_PENDING_AUTHORIZATION`.
+- Preparation baseline HEAD `8585d4fdd29ba5f1019421bf8310ef06883fb78b`. Existing R4 manifest SHA256 `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`; edge-matrix SHA256 `d89bd4d9cca8928f8e6b913ad6bf1955c429ac2e2e1bb4dc6b6263f7165a59c7`. Candidate boundary `R6BND-T0-27e4d497530e681071fb`; supports `R6G1D-R094-C026` and `R6G1D-R094-C025`. Local T0 rematerialization: 73 nodes/support, 35 km crust, 135 km model base, q=0.06 W/m², identical admitted material tuple references; explicit thermal bound `952777777777.7762 s`.
+- Full provider audit and candidate-HEAD source-composite identity are pending because `ARCANA_EXTERNAL_ROOT` was unset. No evolution or new candidate output. Focused offline suite 87 passed; two provider-backed tests deselected. Proposed output and supervisor destinations were checked absent.
+- Runner preserves the old three-factor default; the explicit preparation adds 0.000125 and binds diagnostics to it while retaining 0.0005 as R4 reference/checkpoint/replay and 0.00025 for the common-rung edge comparison. Sample count and execution costs remain estimates.
+
 ## INT-0B-R4 — synthetic E2E and supervisor diagnostics; no evolution (2026-10-13)
 - Report: `docs/arcana/INT0B_R4_OFFLINE_E2E_VALIDATION.md`; decision `INT0B_R4_OFFLINE_E2E_VERIFIED__FOURTH_RUN_PENDING_AUTHORIZATION`.
 - Scope: offline Windows tests only. A synthetic fixture traverses the production numerical observer, R3 sequence validator, sample document serializer, replay/restart, trajectory builder and runner output-bundle writer. Readback, manifest-last order, exact membership/length/SHA256 and overwrite refusal are tested. Supervisor tests verify PID tree and existing limit/exit-race behavior plus raw stdout/stderr logs, their SHA256 and output-limit accounting.

@@ -193,8 +193,69 @@ def _continental_memberships(fields: Mapping[str, np.ndarray],
     return memberships
 
 
+def _select_pair_5_11_section(
+    edge_matrix: Sequence[Mapping[str, Any]], requested_boundary_id: str | None = None,
+) -> tuple[Mapping[str, Any], str, str]:
+    """Select a fully eligible pair section, preserving the historical default."""
+    if requested_boundary_id is not None and (
+            not isinstance(requested_boundary_id, str) or not requested_boundary_id.strip()):
+        raise SpatialSupportError("REQUESTED_BOUNDARY_ID_INVALID")
+    identifiers = [row.get("boundary_id") for row in edge_matrix]
+    if (any(not isinstance(value, str) or not value for value in identifiers)
+            or len(set(identifiers)) != len(identifiers)):
+        raise SpatialSupportError("PAIR_BOUNDARY_IDENTITY_NOT_UNIQUE")
+
+    def validate(row: Mapping[str, Any]) -> bool:
+        sides = row.get("sides_plate_a_then_plate_b", ())
+        delta = row.get("Euler_census_abs_difference_m_per_year")
+        velocity = row.get("signed_Ux_m_per_year")
+        return (
+            row.get("ordered_plate_pair") == [5, 11]
+            and row.get("PLATE_MAPPING") == "PASS_EXACT_PARTITION_JOIN"
+            and row.get("MATERIAL_ADMISSIBILITY") == "PASS_B6N8N_ADMITTED"
+            and row.get("THERMAL_AVAILABILITY") == "PASS_AUTHORED_T0_CONTINENTAL_PROFILE_INPUTS"
+            and row.get("SECTION_ELIGIBILITY") == "ELIGIBLE"
+            and row.get("SIGNED_EXTENSION") == "EXTENSION"
+            and row.get("junction_adjacent") is False
+            and isinstance(sides, (list, tuple)) and len(sides) == 2
+            and all(isinstance(side, Mapping) for side in sides)
+            and [side.get("plate_id") for side in sides] == [5, 11]
+            and len({side.get("support_id") for side in sides}) == 2
+            and all(side.get("admitted_continental_binding") is True
+                    and side.get("parent_crust_class") == 1
+                    and side.get("parent_crust_class_semantics") == "CONTINENTAL"
+                    and side.get("support_class") in CONTINENTAL_CLASS_BY_ID.values()
+                    for side in sides)
+            and isinstance(velocity, (int, float)) and not isinstance(velocity, bool)
+            and math.isfinite(float(velocity)) and float(velocity) > 0.0
+            and isinstance(delta, (int, float)) and not isinstance(delta, bool)
+            and math.isfinite(float(delta)) and float(delta) <= 1e-12
+        )
+
+    if requested_boundary_id is not None:
+        matches = [row for row in edge_matrix if row.get("boundary_id") == requested_boundary_id]
+        if len(matches) != 1:
+            raise SpatialSupportError("REQUESTED_BOUNDARY_ID_UNKNOWN_OR_AMBIGUOUS")
+        if not validate(matches[0]):
+            raise SpatialSupportError("REQUESTED_BOUNDARY_NOT_ELIGIBLE_PAIR_5_11_SECTION")
+        return (matches[0], "EXPLICIT_ELIGIBLE_BOUNDARY_ID",
+                "EXACT_BOUNDARY_ID_WITH_FULL_PAIR_5_11_ADMISSION_REVALIDATION")
+
+    eligible = [row for row in edge_matrix if validate(row)]
+    if not eligible:
+        raise SpatialSupportError("NO_NONJUNCTION_TWO_SIDED_ADMITTED_EXTENSION_EDGE")
+    eligible.sort(key=lambda item: (int(item["parent_grid_edge"]["row"]),
+                                   int(item["parent_grid_edge"]["column"]),
+                                   str(item["parent_grid_edge"]["axis"]),
+                                   item["boundary_id"]))
+    return (eligible[(len(eligible) - 1) // 2], "LOWER_MEDIAN_ELIGIBLE_BOUNDARY",
+            "FILTER_EXACT_TWO_SIDED_ADMITTED_CONTINENTAL_POSITIVE_EXTENSION_NONJUNCTION; "
+            "SORT(row,column,axis,boundary_id); SELECT_LOWER_MEDIAN; NEVER_MAXIMIZE_OPENING")
+
+
 def audit_pair_5_11(repository_root: str | Path, *,
-                    expected_branch: str) -> dict[str, Any]:
+                    expected_branch: str,
+                    requested_boundary_id: str | None = None) -> dict[str, Any]:
     """Verify payloads, exact cell/plate join, two-sided B6N8-N support and T0 kinematics."""
     root = Path(repository_root).resolve()
     source, inventory = load_b5_sources(root, expected_branch=expected_branch)
@@ -298,21 +359,26 @@ def audit_pair_5_11(repository_root: str | Path, *,
             "Euler_census_abs_difference_m_per_year": delta,
             "velocity_components": kinematics,
             "BLOCKER": blockers})
-    eligible = [row for row in matrix if row["SECTION_ELIGIBILITY"] == "ELIGIBLE"]
-    if not eligible:
-        raise SpatialSupportError("NO_NONJUNCTION_TWO_SIDED_ADMITTED_EXTENSION_EDGE")
-    eligible.sort(key=lambda item: (int(item["parent_grid_edge"]["row"]),
-                                   int(item["parent_grid_edge"]["column"]),
-                                   str(item["parent_grid_edge"]["axis"]), item["boundary_id"]))
-    selected = eligible[(len(eligible) - 1) // 2]
+    selected, selection_mode, selection_rule = _select_pair_5_11_section(
+        matrix, requested_boundary_id)
     selected_sides = selected["sides_plate_a_then_plate_b"]
     for side in selected_sides:
         row, column = int(side["row"]), int(side["column"])
         side["t0_profile"], side["initializer_inventory"] = None, None
         profile, profile_inventory = materialize_admitted_continental_t0(
             root, side["support_id"])
-        if profile.support_class != side["support_class"]:
-            raise SpatialSupportError("MATERIALIZED_PROFILE_CLASS_DIFFERS_FROM_EXACT_SUPPORT_BINDING")
+        if (profile.support_id != side["support_id"]
+                or profile.support_class != side["support_class"]
+                or profile.crust_m != side["crustal_thickness_m"]
+                or profile.model_base_m != side["reference_lithosphere_thickness_m"]
+                or profile.surface_heat_flow_w_m2 != side["surface_heat_flow_w_m2"]
+                or not (len(profile.z_m) == len(profile.temperature_k) == len(profile.materials)
+                        and len(profile.z_m) >= 3)
+                or not all(math.isfinite(float(value)) for value in (*profile.z_m, *profile.temperature_k))
+                or any(a >= b for a, b in zip(profile.z_m, profile.z_m[1:]))
+                or profile.z_m[0] != 0.0 or profile.z_m[-1] != profile.model_base_m
+                or len(profile.material_roles) != 2):
+            raise SpatialSupportError("MATERIALIZED_PROFILE_BINDING_OR_CARDINALITY_MISMATCH")
         side["t0_profile"] = {"z_m": list(profile.z_m), "temperature_k": list(profile.temperature_k),
             "scenario_id": profile.scenario_id,
             "material_roles": list(profile.material_roles), "material_properties": [vars(x) for x in profile.materials],
@@ -351,7 +417,9 @@ def audit_pair_5_11(repository_root: str | Path, *,
         "b6n8n_support_counts": {"admitted_total": preflight.admitted_count,
             "admitted_continental": preflight.continental_count,
             "continental_support_membership_counts": {key: len(value) for key, value in memberships.items()}},
-        "selection_rule": "FILTER_EXACT_TWO_SIDED_ADMITTED_CONTINENTAL_POSITIVE_EXTENSION_NONJUNCTION; SORT(row,column,axis,boundary_id); SELECT_LOWER_MEDIAN; NEVER_MAXIMIZE_OPENING",
+        "selection_mode": selection_mode,
+        "requested_boundary_id": requested_boundary_id,
+        "selection_rule": selection_rule,
         "selected_boundary_id": selected["boundary_id"], "selected_parent_grid_edge": selected["parent_grid_edge"],
         "selected_ordered_plate_pair": [5, 11], "edge_matrix": matrix,
         "all_15_edges_classified": len(matrix) == 15,

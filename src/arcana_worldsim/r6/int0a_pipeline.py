@@ -215,6 +215,8 @@ def _build_pair_plan(assessment: Mapping[str, Any], *, authority_scope: str) -> 
               "boundary_id": selected["boundary_id"], "width_m": width,
               "signed_extension_m_per_year": ux,
               "source_head": source_head, "source_branch": source_branch,
+              "selection_mode": assessment.get("selection_mode", "SYNTHETIC_FIXTURE_ONLY"),
+              "requested_boundary_id": assessment.get("requested_boundary_id"),
               "provider_identities": provider_ids,
               "authority_scope": authority_scope,
               "time_origin": "T0_WORLD_AGE_MA_FROM_ADMITTED_T0_INITIALIZER",
@@ -230,9 +232,11 @@ def build_fixture_pair_plan(assessment: Mapping[str, Any]) -> PairIntegrationPla
     return _build_pair_plan(assessment, authority_scope="SYNTHETIC_FIXTURE_ONLY")
 
 
-def prepare_pair_5_11(repository_root: str | Path, *, expected_branch: str) -> PairIntegrationPlan:
+def prepare_pair_5_11(repository_root: str | Path, *, expected_branch: str,
+                      boundary_id: str | None = None) -> PairIntegrationPlan:
     """Read and validate the existing provider chain; performs no evolution."""
-    assessment = audit_pair_5_11(repository_root, expected_branch=expected_branch)
+    assessment = audit_pair_5_11(repository_root, expected_branch=expected_branch,
+                                 requested_boundary_id=boundary_id)
     return _build_pair_plan(assessment, authority_scope="REPOSITORY_VERIFIED_PROVIDER_AUDIT")
 
 

@@ -12,11 +12,71 @@ from arcana_worldsim.r6.functional_development import (
     state_from_payload,
 )
 from arcana_worldsim.r6.functional_spatial_support import (
-    SpatialSupportError, audit_pair_5_11, classify_signed_extension,
+    SpatialSupportError, _select_pair_5_11_section, audit_pair_5_11, classify_signed_extension,
     exact_face_plate_lookup, incident_cells, signed_boundary_velocity,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _eligible_selection_row(boundary_id: str, row: int) -> dict:
+    return {"boundary_id": boundary_id, "ordered_plate_pair": [5, 11],
+        "PLATE_MAPPING": "PASS_EXACT_PARTITION_JOIN",
+        "MATERIAL_ADMISSIBILITY": "PASS_B6N8N_ADMITTED",
+        "THERMAL_AVAILABILITY": "PASS_AUTHORED_T0_CONTINENTAL_PROFILE_INPUTS",
+        "SECTION_ELIGIBILITY": "ELIGIBLE", "SIGNED_EXTENSION": "EXTENSION",
+        "junction_adjacent": False, "signed_Ux_m_per_year": 0.1,
+        "Euler_census_abs_difference_m_per_year": 0.0,
+        "parent_grid_edge": {"row": row, "column": 20, "axis": "EAST"},
+        "sides_plate_a_then_plate_b": [
+            {"plate_id": 5, "support_id": f"S{row}A", "admitted_continental_binding": True,
+             "parent_crust_class": 1, "parent_crust_class_semantics": "CONTINENTAL",
+             "support_class": "CONTINENTAL_NORMAL"},
+            {"plate_id": 11, "support_id": f"S{row}B", "admitted_continental_binding": True,
+             "parent_crust_class": 1, "parent_crust_class_semantics": "CONTINENTAL",
+             "support_class": "CONTINENTAL_NORMAL"}]}
+
+
+def test_boundary_selector_preserves_default_lower_median_and_accepts_explicit_id():
+    rows = [_eligible_selection_row("EDGE-C", 30), _eligible_selection_row("EDGE-A", 10),
+            _eligible_selection_row("EDGE-B", 20)]
+    selected, mode, _ = _select_pair_5_11_section(rows)
+    assert selected["boundary_id"] == "EDGE-B"
+    assert mode == "LOWER_MEDIAN_ELIGIBLE_BOUNDARY"
+    selected, mode, _ = _select_pair_5_11_section(rows, "EDGE-C")
+    assert selected["boundary_id"] == "EDGE-C"
+    assert mode == "EXPLICIT_ELIGIBLE_BOUNDARY_ID"
+
+
+@pytest.mark.parametrize("requested", ["UNKNOWN", "EXCLUDED"])
+def test_boundary_selector_fails_closed_for_unknown_or_ineligible_id(requested):
+    row = _eligible_selection_row("ELIGIBLE", 20)
+    if requested == "EXCLUDED":
+        row["SECTION_ELIGIBILITY"] = "EXCLUDED"
+    with pytest.raises(SpatialSupportError):
+        _select_pair_5_11_section([row], "MISSING" if requested == "UNKNOWN" else "ELIGIBLE")
+
+
+def test_boundary_selector_rejects_duplicate_ids_and_bad_velocity():
+    row = _eligible_selection_row("EDGE", 20)
+    with pytest.raises(SpatialSupportError, match="NOT_UNIQUE"):
+        _select_pair_5_11_section([row, dict(row)])
+    row["signed_Ux_m_per_year"] = float("nan")
+    with pytest.raises(SpatialSupportError):
+        _select_pair_5_11_section([row], "EDGE")
+
+
+@pytest.mark.parametrize("mutate", [
+    lambda row: row.update(ordered_plate_pair=[5, 12]),
+    lambda row: row["sides_plate_a_then_plate_b"][1].update(plate_id=12),
+    lambda row: row["sides_plate_a_then_plate_b"][0].update(admitted_continental_binding=False),
+    lambda row: row["sides_plate_a_then_plate_b"][1].update(support_id="S20A"),
+])
+def test_boundary_selector_rejects_support_or_pair_mismatch(mutate):
+    row = _eligible_selection_row("EDGE", 20)
+    mutate(row)
+    with pytest.raises(SpatialSupportError, match="NOT_ELIGIBLE"):
+        _select_pair_5_11_section([row], "EDGE")
 
 
 def test_cell_to_plate_join_is_complete_unique_and_insertion_order_independent():

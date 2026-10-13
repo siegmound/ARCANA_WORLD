@@ -37,15 +37,44 @@ def _sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _resolve_resolution_configuration(
+    additional_factor: float | None, diagnostic_factor: float | None,
+) -> tuple[tuple[float, ...], float]:
+    """Keep the reference ladder stable and bind sampling to a ladder member."""
+    factors = list(RESOLUTION_FACTORS)
+    if additional_factor is not None and diagnostic_factor is None:
+        raise ValueError("ADDITIONAL_RESOLUTION_REQUIRES_EXPLICIT_DIAGNOSTIC_FACTOR")
+    if additional_factor is not None:
+        if (not math.isfinite(additional_factor) or not 0.0 < additional_factor <= 0.05
+                or additional_factor in factors):
+            raise ValueError("ADDITIONAL_RESOLUTION_FACTOR_INVALID_OR_DUPLICATE")
+        factors.append(additional_factor)
+    selected_diagnostic = RESOLUTION_FACTORS[1] if diagnostic_factor is None else diagnostic_factor
+    if not math.isfinite(selected_diagnostic) or selected_diagnostic not in factors:
+        raise ValueError("DIAGNOSTIC_RESOLUTION_FACTOR_NOT_IN_LADDER")
+    if additional_factor is not None and selected_diagnostic != additional_factor:
+        raise ValueError("ADDITIONAL_RESOLUTION_MUST_BE_DIAGNOSTIC_FACTOR")
+    return tuple(factors), selected_diagnostic
+
+
 def _diagnostic_samples_document(plan: object,
                                  samples: dict[str, list[dict[str, object]]],
-                                 middle_fraction: float) -> dict[str, object]:
+                                 resolution_factor: float) -> dict[str, object]:
+    reference_fraction = RESOLUTION_FACTORS[1]
     return {
         "schema": "ARCANA_R6_TF2B_NUMERICAL_STEP_SAMPLES_V2",
-        "scope": "NONCANONICAL_ENGINEERING_REFERENCE_TRAJECTORY",
+        "scope": "NONCANONICAL_ENGINEERING_STEP_DIAGNOSTICS",
         "support_ids": list(plan.support_ids),
-        "sampling": "INITIAL_AND_EVERY_MIDDLE_RESOLUTION_NUMERICAL_SUBSTEP",
-        "resolution_fraction": middle_fraction,
+        "selected_boundary_id": plan.selected_section["boundary_id"],
+        "selection_mode": plan.assessment.get("selection_mode", "SYNTHETIC_FIXTURE_ONLY"),
+        "requested_boundary_id": plan.assessment.get("requested_boundary_id"),
+        "sampling": ("INITIAL_AND_EVERY_MIDDLE_RESOLUTION_NUMERICAL_SUBSTEP"
+                     if resolution_factor == reference_fraction else
+                     "INITIAL_AND_EVERY_CONFIGURED_RESOLUTION_NUMERICAL_SUBSTEP"),
+        "resolution_fraction": resolution_factor,
+        "resolution_role": ("ORIGINAL_REFERENCE_MIDDLE_FACTOR"
+                            if resolution_factor == reference_fraction else
+                            "EXPLICITLY_CONFIGURED_DIAGNOSTIC_FACTOR"),
         "interpolation": "NONE",
         "maximum_samples_per_support_including_initial": MAX_DIAGNOSTIC_SAMPLES_PER_SUPPORT,
         "maximum_profile_nodes": MAX_DIAGNOSTIC_PROFILE_NODES,
@@ -88,6 +117,12 @@ def _write_candidate_output_bundle(output_path: Path,
         "canonical_publication": False,
         "provider_identities": dict(plan.provider_identities),
         "configuration_sha256": plan.configuration_sha256,
+        "selection": {
+            "mode": plan.assessment.get("selection_mode", "SYNTHETIC_FIXTURE_ONLY"),
+            "requested_boundary_id": plan.assessment.get("requested_boundary_id"),
+            "selected_boundary_id": plan.selected_section["boundary_id"],
+        },
+        "numerical_configuration": run_result.get("numerical_configuration"),
         "files": {name: {"bytes": artifact_sizes[name], "sha256": hashes[name]}
                   for name in artifacts},
         "RUN_RESULT.json": {"bytes": len(run_result_bytes),
@@ -106,6 +141,43 @@ def _area_relative_errors(states: list[ReducedState], width_m: float) -> list[fl
     return [abs((state.width_m * state.lithosphere_m)
                 - (width_m * state.initial_lithosphere_m))
             / (width_m * state.initial_lithosphere_m) for state in states]
+
+
+def _run_resolution_sweep(
+    plan: object, profiles: list[object], *, duration_s: float, width_m: float,
+    resolution_factors: tuple[float, ...], diagnostic_factor: float,
+) -> tuple[list[dict[str, object]], dict[str, list[dict[str, object]]]]:
+    """Run the configured numerical ladder and capture only its selected rung."""
+    if (not resolution_factors or len(set(resolution_factors)) != len(resolution_factors)
+            or diagnostic_factor not in resolution_factors):
+        raise ValueError("RESOLUTION_SWEEP_CONFIGURATION_INVALID")
+    results: list[dict[str, object]] = []
+    samples: dict[str, list[dict[str, object]]] | None = None
+    for factor in resolution_factors:
+        if factor == diagnostic_factor:
+            evolved, diagnostics, samples = capture_numerical_step_samples(
+                plan, duration_s=duration_s,
+                maximum_kinematic_fraction_per_substep=factor)
+        else:
+            evolved, diagnostics = advance_pair(
+                plan, duration_s=duration_s,
+                maximum_kinematic_fraction_per_substep=factor)
+        evolved, diagnostics = list(evolved), list(diagnostics)
+        deltas = [max(abs(a - b) for a, b in zip(profile.temperature_k, state.temperature_k))
+                  for profile, state in zip(profiles, evolved)]
+        results.append({
+            "maximum_kinematic_fraction_per_substep": factor,
+            "side_diagnostics": diagnostics,
+            "final_states": [state.payload() for state in evolved],
+            "temperature_change_linf_k_by_side": deltas,
+            "max_temperature_change_linf_k": max(deltas),
+            "max_area_relative_error": max(_area_relative_errors(evolved, width_m)),
+            "all_temperatures_finite": all(
+                math.isfinite(x) for state in evolved for x in state.temperature_k),
+        })
+    if samples is None:
+        raise RuntimeError("DIAGNOSTIC_SAMPLES_MISSING_FOR_CONFIGURED_RESOLUTION")
+    return results, samples
 
 
 class DiagnosticSampleValidationError(RuntimeError):
@@ -277,7 +349,18 @@ def main() -> int:
     parser.add_argument("--repository-root", type=Path, default=ROOT)
     parser.add_argument("--expected-branch", default="r6/si1-bandwidth-f2av")
     parser.add_argument("--output-relative", type=Path, default=OUTPUT_RELATIVE)
+    parser.add_argument("--boundary-id")
+    parser.add_argument("--additional-resolution-factor", type=float)
+    parser.add_argument("--diagnostic-resolution-factor", type=float)
     args = parser.parse_args()
+    if ((args.additional_resolution_factor is not None
+         or args.diagnostic_resolution_factor is not None) and args.boundary_id is None):
+        parser.error("resolution overrides require an explicit --boundary-id")
+    try:
+        resolution_factors, diagnostic_factor = _resolve_resolution_configuration(
+            args.additional_resolution_factor, args.diagnostic_resolution_factor)
+    except ValueError as exc:
+        parser.error(str(exc))
     root = args.repository_root.resolve()
     output_path = (root / args.output_relative).resolve()
     allowed_root = (root / "outputs/r6_functional_development").resolve()
@@ -286,7 +369,8 @@ def main() -> int:
     if output_path.exists():
         parser.error(f"refusing to overwrite existing output: {args.output_relative.as_posix()}")
 
-    plan = prepare_pair_5_11(root, expected_branch=args.expected_branch)
+    plan = prepare_pair_5_11(root, expected_branch=args.expected_branch,
+                             boundary_id=args.boundary_id)
     assessment = plan.assessment
     selected = plan.selected_section
     sides = selected["sides_plate_a_then_plate_b"]
@@ -306,36 +390,21 @@ def main() -> int:
         raise RuntimeError("SELECTED_SECTION_IS_NOT_EXTENSIONAL")
     duration_s = ENGINEERING_DURATION_YEARS * SECONDS_PER_YEAR
 
-    resolution_results = []
-    middle_fraction = RESOLUTION_FACTORS[1]
-    diagnostic_sample_records: dict[str, list[dict[str, object]]] | None = None
-    for fraction in RESOLUTION_FACTORS:
-        if fraction == middle_fraction:
-            evolved, diagnostics, diagnostic_sample_records = capture_numerical_step_samples(
-                plan, duration_s=duration_s,
-                maximum_kinematic_fraction_per_substep=fraction)
-        else:
-            evolved, diagnostics = advance_pair(plan, duration_s=duration_s,
-                maximum_kinematic_fraction_per_substep=fraction)
-        evolved, diagnostics = list(evolved), list(diagnostics)
-        deltas = [max(abs(a - b) for a, b in zip(profile.temperature_k, state.temperature_k))
-                  for profile, state in zip(profiles, evolved)]
-        resolution_results.append({
-            "maximum_kinematic_fraction_per_substep": fraction,
-            "side_diagnostics": diagnostics,
-            "final_states": [state.payload() for state in evolved],
-            "temperature_change_linf_k_by_side": deltas,
-            "max_temperature_change_linf_k": max(deltas),
-            "max_area_relative_error": max(_area_relative_errors(evolved, width)),
-            "all_temperatures_finite": all(math.isfinite(x) for state in evolved for x in state.temperature_k),
-        })
+    resolution_results, diagnostic_sample_records = _run_resolution_sweep(
+        plan, profiles, duration_s=duration_s, width_m=width,
+        resolution_factors=resolution_factors, diagnostic_factor=diagnostic_factor)
     if not all(row["all_temperatures_finite"] for row in resolution_results):
         raise RuntimeError("ENGINEERING_TEMPERATURE_FIELD_NONFINITE")
     if any(row["max_area_relative_error"] > 1e-12 for row in resolution_results):
         raise RuntimeError("PURE_SHEAR_AREA_CONSERVATION_FAILED")
-    if diagnostic_sample_records is None:
-        raise RuntimeError("DIAGNOSTIC_SAMPLES_MISSING_FOR_REFERENCE_RESOLUTION")
-    final_states = resolution_results[1]["final_states"]
+    reference_fraction = RESOLUTION_FACTORS[1]
+    reference_result = next((row for row in resolution_results
+                             if row["maximum_kinematic_fraction_per_substep"] == reference_fraction), None)
+    diagnostic_result = next((row for row in resolution_results
+                              if row["maximum_kinematic_fraction_per_substep"] == diagnostic_factor), None)
+    if reference_result is None or diagnostic_result is None:
+        raise RuntimeError("REFERENCE_OR_DIAGNOSTIC_RESOLUTION_RESULT_MISSING")
+    final_states = diagnostic_result["final_states"]
     if (len(final_states) != len(plan.support_ids)
             or set(diagnostic_sample_records) != set(plan.support_ids)):
         raise RuntimeError("DIAGNOSTIC_SAMPLE_SUPPORT_CARDINALITY_INVALID")
@@ -345,9 +414,9 @@ def main() -> int:
 
     # The middle resolution is the explicit deterministic replay/restart case.
     direct, _ = advance_pair(plan, duration_s=duration_s,
-                             maximum_kinematic_fraction_per_substep=middle_fraction)
+                             maximum_kinematic_fraction_per_substep=reference_fraction)
     replay, _ = advance_pair(plan, duration_s=duration_s,
-                             maximum_kinematic_fraction_per_substep=middle_fraction)
+                             maximum_kinematic_fraction_per_substep=reference_fraction)
     direct, replay = list(direct), list(replay)
     direct_hashes = [_sha256_bytes(_canonical_bytes(state.payload())) for state in direct]
     replay_hashes = [_sha256_bytes(_canonical_bytes(state.payload())) for state in replay]
@@ -357,12 +426,12 @@ def main() -> int:
         state0 = initial_reduced_state(profile, initial_width_m=width)
         first_half, _ = pure_shear_thermal_step(
             state0, duration_s=half, extension_velocity_m_s=ux / SECONDS_PER_YEAR,
-            maximum_kinematic_fraction_per_substep=middle_fraction)
+            maximum_kinematic_fraction_per_substep=reference_fraction)
         checkpoint_payload = first_half.payload()
         reopened = state_from_payload(json.loads(_canonical_bytes(checkpoint_payload)))
         second_half, _ = pure_shear_thermal_step(
             reopened, duration_s=half, extension_velocity_m_s=ux / SECONDS_PER_YEAR,
-            maximum_kinematic_fraction_per_substep=middle_fraction)
+            maximum_kinematic_fraction_per_substep=reference_fraction)
         restarted.append(second_half)
     restart_hashes = [_sha256_bytes(_canonical_bytes(state.payload())) for state in restarted]
     restart_replay = []
@@ -370,11 +439,11 @@ def main() -> int:
         state0 = initial_reduced_state(profile, initial_width_m=width)
         first_half, _ = pure_shear_thermal_step(
             state0, duration_s=half, extension_velocity_m_s=ux / SECONDS_PER_YEAR,
-            maximum_kinematic_fraction_per_substep=middle_fraction)
+            maximum_kinematic_fraction_per_substep=reference_fraction)
         reopened = state_from_payload(json.loads(_canonical_bytes(first_half.payload())))
         second_half, _ = pure_shear_thermal_step(
             reopened, duration_s=half, extension_velocity_m_s=ux / SECONDS_PER_YEAR,
-            maximum_kinematic_fraction_per_substep=middle_fraction)
+            maximum_kinematic_fraction_per_substep=reference_fraction)
         restart_replay.append(second_half)
     restart_replay_hashes = [_sha256_bytes(_canonical_bytes(state.payload())) for state in restart_replay]
     restart_temperature_differences = [
@@ -387,6 +456,8 @@ def main() -> int:
     section = {
         "scope": "T0_CONTINENTAL_ENGINEERING_EXTENSION_EXPERIMENT",
         "boundary_id": selected["boundary_id"],
+        "selection_mode": assessment.get("selection_mode", "SYNTHETIC_FIXTURE_ONLY"),
+        "requested_boundary_id": assessment.get("requested_boundary_id"),
         "ordered_plate_pair": [5, 11],
         "side_order": "PLATE_A_THEN_PLATE_B",
         "support_ids": [side["support_id"] for side in sides],
@@ -416,6 +487,13 @@ def main() -> int:
             "event_census_uncertainty": assessment["pair_event_census"]["uncertainty"],
             "side_profile_support_lineage": [side["t0_profile"]["support_lineage"] for side in sides]},
         "duration_years": ENGINEERING_DURATION_YEARS,
+        "numerical_configuration": {
+            "resolution_factors": list(resolution_factors),
+            "reference_resolution_factor": reference_fraction,
+            "diagnostic_resolution_factor": diagnostic_factor,
+            "kernel": "functional_development.pure_shear_thermal_step",
+            "duration_years": ENGINEERING_DURATION_YEARS,
+        },
         "temperature_boundary_conditions": "EXISTING_TF1_COLUMN_CONTRACT_FIXED_SURFACE_AND_MODEL_BASE",
         "lateral_thermal_coupling": "NOT_MODELED_IN_REDUCED_1D_COLUMN_PAIR",
         "physical_temporal_validity": "NOT_ESTABLISHED",
@@ -442,7 +520,12 @@ def main() -> int:
         "Xe_engineering_reference_m": width,
         "duration_years": ENGINEERING_DURATION_YEARS,
         "resolution_control": "MAXIMUM_KINEMATIC_FRACTION_PER_SUBSTEP",
-        "resolution_factors": list(RESOLUTION_FACTORS),
+        "resolution_factors": list(resolution_factors),
+        "reference_resolution_factor": reference_fraction,
+        "diagnostic_resolution_factor": diagnostic_factor,
+        "selection_mode": assessment.get("selection_mode", "SYNTHETIC_FIXTURE_ONLY"),
+        "requested_boundary_id": assessment.get("requested_boundary_id"),
+        "numerical_configuration": section["numerical_configuration"],
         "resolution_results": [{k: v for k, v in row.items() if k != "final_states"}
                                for row in resolution_results],
         "replay_restart": {"direct_state_sha256": direct_hashes,
@@ -467,7 +550,8 @@ def main() -> int:
         "CANDIDATE_CHECKPOINT.json": {"schema": "ARCANA_R6_TF2B_ENGINEERING_CHECKPOINT_V1",
             "scope": section["scope"], "initial_states": [
                 initial_reduced_state(profile, initial_width_m=width).payload() for profile in profiles],
-            "candidate_states": resolution_results[1]["final_states"],
+            "candidate_states": reference_result["final_states"],
+            "candidate_resolution_factor": reference_fraction,
             "elapsed_years": ENGINEERING_DURATION_YEARS, "canonical_publication": False},
         "THERMAL_CONVERGENCE.json": {"resolution_results": resolution_results,
             "comparison_to_finest": [
@@ -478,12 +562,13 @@ def main() -> int:
                 for row in resolution_results],
             "comparison_is_numerical_refinement_only": True},
         "DIAGNOSTIC_NUMERICAL_SAMPLES.json": _diagnostic_samples_document(
-            plan, diagnostic_sample_records, middle_fraction),
+            plan, diagnostic_sample_records, diagnostic_factor),
         "REPLAY_RESTART.json": run_result["replay_restart"],
         "CANDIDATE_TRAJECTORY.json": trajectory_document(
             plan, tuple(direct), duration_s=duration_s,
             numerical_configuration={
-                "maximum_kinematic_fraction_per_substep": middle_fraction,
+                "maximum_kinematic_fraction_per_substep": reference_fraction,
+                "resolution_role": "ORIGINAL_REFERENCE_MIDDLE_FACTOR",
                 "kernel": "functional_development.pure_shear_thermal_step",
                 "duration_years": ENGINEERING_DURATION_YEARS,
             }),

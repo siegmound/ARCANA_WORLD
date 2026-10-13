@@ -1,5 +1,13 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-13
 
+Current priority: INT-1C distinct-regime code preparation is complete, but execution is not authorized. Decision: `INT1C_DISTINCT_REGIME_CODE_READY__EXECUTION_PENDING_AUTHORIZATION`. Report: `docs/arcana/INT1C_DISTINCT_REGIME_EXECUTION_PREPARATION.md`. The exact candidate boundary and both qualified T0 support profiles were checked using preserved R4 evidence and local binding materialization; complete current-HEAD provider audit remains pending because `ARCANA_EXTERNAL_ROOT` is unavailable. No evolution was run.
+
+## CURRENT CHECKPOINT — INT-1C code-ready distinct-regime preparation (2026-10-13)
+- Added an exact boundary selector while preserving the prior lower-median default, and runner options for appending factor 0.000125 and explicitly sampling that rung. Checkpoint/trajectory/replay reference remains the original 0.0005 rung; 0.00025 remains in the ladder for same-resolution comparison with R4.
+- Existing R4 edge matrix SHA256 `d89bd4d9cca8928f8e6b913ad6bf1955c429ac2e2e1bb4dc6b6263f7165a59c7` records `R6BND-T0-27e4d497530e681071fb`, pair 5:11, supports `R6G1D-R094-C026` / `R6G1D-R094-C025`, admitted extension, no junction, Ux `0.10694074272424924 m/year`. Both profiles were re-materialized locally: 73 nodes each, 35/135 km crust/base, q=0.06 W/m² and matching B6N8-N material tuples. This is not a fresh full provider audit: external root is unset, so candidate HEAD provider/source-composite identity is UNKNOWN pending immediate preflight.
+- Read-only initial estimates: width `110852.14113381179 m`; 0.000125 initial kinematic step `4088978905.43 s`; explicit thermal bound `952777777777.78 s`; about 8 substeps and 9 samples/support projected, not observed. Candidate and supervisor destinations are absent. R4 measurements are reference observations only; operational thresholds are not hard quotas.
+- Focused offline suite: 87 passed; two external-payload tests deselected. No new evolution or output. Full details and remaining conditions: INT1C report.
+
 Current priority: INT-1B has defined one evidence experiment using the existing provider-backed pair-5:11 normal continental boundary and a finer integration rung. Decision: `INT1B_NEXT_EVIDENCE_EXPERIMENT_DEFINED__EXECUTION_NOT_AUTHORIZED`. No new evolution was run. Full report: `docs/arcana/INT1B_EVIDENCE_DENSITY_AND_DISTINCT_REGIME_DESIGN.md`.
 
 ## CURRENT CHECKPOINT — INT-1B experiment design (2026-10-13)

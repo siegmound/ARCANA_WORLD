@@ -102,6 +102,66 @@ def test_pair_plan_binds_two_support_profiles_and_euler_forcing_to_existing_kern
     assert all(item["duration_s"] == 31_557_600.0 for item in diagnostics)
 
 
+def test_int1c_resolution_configuration_samples_explicit_fine_rung_only():
+    factors, diagnostic = _RUNNER._resolve_resolution_configuration(0.000125, 0.000125)
+    assert factors == (0.001, 0.0005, 0.00025, 0.000125)
+    assert diagnostic == 0.000125
+    plan = build_fixture_pair_plan(_assessment())
+    profiles = list(plan.profiles)
+    results, samples = _RUNNER._run_resolution_sweep(
+        plan, profiles, duration_s=0.01 * SECONDS_PER_YEAR, width_m=plan.initial_width_m,
+        resolution_factors=factors, diagnostic_factor=diagnostic)
+    assert [row["maximum_kinematic_fraction_per_substep"] for row in results] == list(factors)
+    assert all(len(rows) > 1 for rows in samples.values())
+    sample_doc = _RUNNER._diagnostic_samples_document(plan, samples, diagnostic)
+    assert sample_doc["selected_boundary_id"] == "TEST-EDGE-5-11"
+    assert sample_doc["support_ids"] == list(plan.support_ids)
+    assert sample_doc["resolution_fraction"] == 0.000125
+    assert sample_doc["resolution_role"] == "EXPLICITLY_CONFIGURED_DIAGNOSTIC_FACTOR"
+    assert sample_doc["sampling"] == "INITIAL_AND_EVERY_CONFIGURED_RESOLUTION_NUMERICAL_SUBSTEP"
+    for index, (support_id, result) in enumerate(zip(plan.support_ids, results[-1]["final_states"])):
+        _RUNNER._validate_diagnostic_sample_sequence(support_id, samples[support_id], result, index)
+
+
+def test_int1c_candidate_manifest_records_selection_and_separate_resolution_roles(tmp_path):
+    assessment = _assessment()
+    assessment.update(selection_mode="EXPLICIT_ELIGIBLE_BOUNDARY_ID",
+                      requested_boundary_id="TEST-EDGE-5-11")
+    plan = build_fixture_pair_plan(assessment)
+    result = {"numerical_configuration": {
+        "resolution_factors": [0.001, 0.0005, 0.00025, 0.000125],
+        "reference_resolution_factor": 0.0005,
+        "diagnostic_resolution_factor": 0.000125}}
+    _RUNNER._write_candidate_output_bundle(tmp_path / "candidate", {"DATA.json": {"ok": True}},
+                                           result, plan)
+    manifest = json.loads((tmp_path / "candidate" / "CANDIDATE_MANIFEST.json").read_bytes())
+    assert manifest["selection"] == {
+        "mode": "EXPLICIT_ELIGIBLE_BOUNDARY_ID",
+        "requested_boundary_id": "TEST-EDGE-5-11",
+        "selected_boundary_id": "TEST-EDGE-5-11",
+    }
+    assert manifest["numerical_configuration"]["reference_resolution_factor"] == 0.0005
+    assert manifest["numerical_configuration"]["diagnostic_resolution_factor"] == 0.000125
+
+
+@pytest.mark.parametrize("additional,diagnostic", [
+    (None, None), (0.000125, 0.000125), (0.0005, 0.0005),
+    (-0.1, 0.0001), (float("nan"), 0.000125), (0.000125, None),
+    (0.000125, 0.00025), (None, 0.0001),
+])
+def test_resolution_configuration_preserves_defaults_and_rejects_invalid_overrides(
+        additional, diagnostic):
+    if (additional in (0.001, 0.0005, 0.00025, -0.1)
+            or (isinstance(additional, float) and additional != additional)
+            or diagnostic == 0.0001 or (additional is not None and diagnostic != additional)):
+        with pytest.raises(ValueError):
+            _RUNNER._resolve_resolution_configuration(additional, diagnostic)
+    else:
+        factors, selected = _RUNNER._resolve_resolution_configuration(additional, diagnostic)
+        assert factors[:3] == (0.001, 0.0005, 0.00025)
+        assert selected == (0.0005 if diagnostic is None else diagnostic)
+
+
 def test_upstream_forcing_and_profile_changes_change_downstream_kernel_input_or_output():
     base = build_fixture_pair_plan(_assessment(ux=0.02))
     more_forcing = build_fixture_pair_plan(_assessment(ux=0.04))
