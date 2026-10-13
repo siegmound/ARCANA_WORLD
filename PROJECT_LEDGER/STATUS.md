@@ -1,6 +1,12 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-13
 
-Current priority: INT-1C distinct-regime code preparation is complete, but execution is not authorized. Decision: `INT1C_DISTINCT_REGIME_CODE_READY__EXECUTION_PENDING_AUTHORIZATION`. Report: `docs/arcana/INT1C_DISTINCT_REGIME_EXECUTION_PREPARATION.md`. The exact candidate boundary and both qualified T0 support profiles were checked using preserved R4 evidence and local binding materialization; complete current-HEAD provider audit remains pending because `ARCANA_EXTERNAL_ROOT` is unavailable. No evolution was run.
+Current priority: INT-1D conditional execution authorization remains unconsumed because its mandatory provider preflight is blocked. On source commit `ffeb02e90abc4c3a542ac9a794c57ee8496b211b`, `ARCANA_EXTERNAL_ROOT` was unset and the read-only audit failed with `KinematicsAuthorityError: governed payload unavailable: CANONICAL_T0_PHYSICAL_PAYLOAD`. No evolution or candidate output was created. Report: `docs/arcana/INT1D_PROVIDER_PREFLIGHT_BLOCKED.md`. Next: locate/restore governed inputs on Windows and rerun the complete source-bound audit before reconsidering execution.
+
+## CURRENT CHECKPOINT — INT-1D provider preflight blocked (2026-10-13)
+- Requested boundary `R6BND-T0-27e4d497530e681071fb`; branch/HEAD were `r6/si1-bandwidth-f2av` / `ffeb02e90abc4c3a542ac9a794c57ee8496b211b`.
+- Environment had Python 3.12.14 and NumPy 2.3.5, but no configured `ARCANA_EXTERNAL_ROOT`. The read-only provider audit stopped at missing `CANONICAL_T0_PHYSICAL_PAYLOAD`; provider hashes, boundary eligibility and HEAD-dependent source-composite identity were not verified.
+- No evolution, supervisor run, candidate directory creation or new numerical evidence. Existing R4 evidence was preserved. The conditional authorization is not consumed by a numerical run, but preflight failure means it cannot be exercised until governed inputs are found and revalidated.
+- Scientific/canonical gates are unchanged. No Solver, mechanics qualification, or `WORLD_HISTORY` production is authorized.
 
 ## CURRENT CHECKPOINT — INT-1C code-ready distinct-regime preparation (2026-10-13)
 - Added an exact boundary selector while preserving the prior lower-median default, and runner options for appending factor 0.000125 and explicitly sampling that rung. Checkpoint/trajectory/replay reference remains the original 0.0005 rung; 0.00025 remains in the ladder for same-resolution comparison with R4.
