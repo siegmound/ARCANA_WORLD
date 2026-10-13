@@ -1,10 +1,10 @@
-# NEXT — INT-2B minimal noncanonical B0 query adapter
+# NEXT — Resume INT-2B isolated B0 store/query verification on supported filesystem
 
-INT-2A is complete within its offline scope. The report `docs/arcana/INT2A_OFFLINE_HISTORICAL_QUERY_RECONSTRUCTION.md` and result bundle `outputs/r6_functional_development/INT2A_HISTORICAL_QUERY_20261014_07/` record verified queries and reconstructions over the immutable R4 and INT-1D bundles. The read-only evaluator does not register candidate rows in `HistoryStore`.
+INT-2A is complete within its offline scope. INT-2B implemented record construction from those same immutable bundles, but actual B0 store publication/query did not run because the Windows NTFS environment denied the hard-link operation required by the existing atomic `HistoryStore` writer. See `docs/arcana/INT2B_NONCANONICAL_B0_HISTORYSTORE_BINDING.md` and its output result bundle. The current decision is `INT2B_BLOCKED_STORE_ATOMIC_PUBLICATION_UNAVAILABLE`.
 
 ## Current action
 
-Prepare a bounded INT-2B adapter/prototype that exposes manifest-verified engineering samples through existing B0 query types using only an isolated, noncanonical test store or a deliberately read-only adapter. Define exact `DomainStateEnvelope` support/time/provenance bindings, stable history/branch identities, and fail-closed behavior before implementation. Reuse `HistoryStore.find_states()`; do not duplicate it. Keep descriptor-only replay unregistered and non-executable until B0 replay inputs plus an authorized deterministic runner are actually bound. No `WORLD_HISTORY` write or canonical publication.
+Run the existing isolated-store INT-2B registration/readback/query tests in an already available, qualified Linux environment whose filesystem supports the B0 hard-link atomic-publication contract (the repository procedure lists Fair Conda `arcana-r6-linux` as an existing candidate environment). First publish/fetch the exact source commit through the ordinary verified fast-forward workflow; then record the tested commit, filesystem and full test result. Do not monkeypatch `os.link`, weaken immutable-write semantics, or modify B0 storage. If that environment cannot be used, retain the blocked status. Keep checkpoint deserialization distinct from executable replay; do not register or execute a replay. No canonical store write or `WORLD_HISTORY` access.
 
 ## Inputs and constraints
 
@@ -12,6 +12,7 @@ Prepare a bounded INT-2B adapter/prototype that exposes manifest-verified engine
 - INT-1D source bundle: `outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/`, manifest SHA256 `0cf3faedc6984bed7f479312a2038385ec03040c2fead5cee5b150def39bc571`.
 - INT-2A report/result: `docs/arcana/INT2A_OFFLINE_HISTORICAL_QUERY_RECONSTRUCTION.md`; final result manifest SHA256 `b613c94c95c41df503abf0a83ed26f817e00ea6de52822b436152cdc1d84b33d`.
 - Windows B0 store tests could not complete because the managed environment denied `os.link`; test B0 writes only in an isolated writable store on a supported environment. Do not change B0 immutable-write semantics merely to bypass the platform limitation.
+- INT-2B adapter tests: 6 passed, 1 skipped; the skipped actual store/query test was gated by an observed `WinError 5` hard-link failure. Related INT-2A/core/B0 tests: 16 passed, 9 failed during existing store manifest initialization for the same reason. No B0 query test is claimed as passed on Windows.
 - Preserve earlier failed attempts and all existing output directories. No provider evolution, Fair, MPI, ShellSet, Solver, DGBSV, post-rift evolution, or `WORLD_HISTORY` modification. Preserve `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
