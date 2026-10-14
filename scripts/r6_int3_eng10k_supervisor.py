@@ -24,44 +24,86 @@ RSS_LIMIT_BYTES = 2_147_483_648
 OUTPUT_LIMIT_BYTES = 536_870_912
 POLL_INTERVAL_S = 0.1
 TERM_GRACE_S = 5.0
+_TERMINAL_PROC_STATES = {"Z", "X", "x"}
 
 
 class SupervisionError(RuntimeError):
     pass
 
 
-def _parse_stat(data: str) -> tuple[int, int, int]:
-    """Return ppid, process group and start ticks from /proc/PID/stat."""
+def _parse_stat(data: str) -> tuple[str, int, int, int]:
+    """Return state, ppid, process group and start ticks from /proc/PID/stat."""
     close = data.rfind(")")
     if close < 0:
         raise SupervisionError("PROC_STAT_FORMAT_INVALID")
     fields = data[close + 1:].strip().split()
     if len(fields) < 20:
         raise SupervisionError("PROC_STAT_FIELDS_MISSING")
+    if len(fields[0]) != 1 or fields[0] not in "RSDZTWtXxKWPIN":
+        raise SupervisionError("PROC_STAT_STATE_INVALID")
     try:
-        return int(fields[1]), int(fields[2]), int(fields[19])
+        return fields[0], int(fields[1]), int(fields[2]), int(fields[19])
     except ValueError as exc:
         raise SupervisionError("PROC_STAT_NUMERIC_FIELD_INVALID") from exc
 
 
-def _proc_group_snapshot(proc_root: Path, group_id: int) -> tuple[int, list[int]]:
+def _proc_group_snapshot(proc_root: Path, group_id: int, *,
+                         expected_leader_start_ticks: int | None = None) -> tuple[int, list[int]]:
+    """Sample live members only; tolerate exit races but reject unverifiable live RSS."""
     members: list[int] = []
     total_rss = 0
     for entry in proc_root.iterdir():
         if not entry.name.isdigit():
             continue
+        pid = int(entry.name)
         try:
-            _, pgrp, _ = _parse_stat((entry / "stat").read_text())
-            if pgrp != group_id:
-                continue
-            status = (entry / "status").read_text()
-            rss_line = next(line for line in status.splitlines() if line.startswith("VmRSS:"))
-            rss_kib = int(rss_line.split()[1])
+            first = _parse_stat((entry / "stat").read_text())
         except (FileNotFoundError, ProcessLookupError):
             continue
+        except (OSError, SupervisionError) as exc:
+            raise SupervisionError(f"PROC_STAT_UNVERIFIABLE:{entry.name}") from exc
+        state, _, pgrp, start_ticks = first
+        if pgrp != group_id:
+            continue
+        if (pid == group_id and expected_leader_start_ticks is not None
+                and start_ticks != expected_leader_start_ticks):
+            raise SupervisionError(f"PROC_LEADER_IDENTITY_CHANGED:{entry.name}")
+        if state in _TERMINAL_PROC_STATES:
+            continue
+        try:
+            status = (entry / "status").read_text()
+            rss_line = next(line for line in status.splitlines() if line.startswith("VmRSS:"))
+            fields = rss_line.split()
+            if len(fields) < 2 or (len(fields) >= 3 and fields[2] != "kB"):
+                raise ValueError("invalid VmRSS fields")
+            rss_kib = int(fields[1])
+            if rss_kib < 0:
+                raise ValueError("negative VmRSS")
         except (OSError, StopIteration, ValueError) as exc:
+            # /proc may lose a process between stat and status. Recheck identity/state
+            # before failing: only a vanished or now-terminal process is ignorable.
+            try:
+                current = _parse_stat((entry / "stat").read_text())
+            except (FileNotFoundError, ProcessLookupError):
+                continue
+            except (OSError, SupervisionError) as stat_exc:
+                raise SupervisionError(f"PROC_RESOURCE_SNAPSHOT_UNVERIFIABLE:{entry.name}") from stat_exc
+            if current[3] != start_ticks:
+                raise SupervisionError(f"PROC_PID_IDENTITY_CHANGED:{entry.name}") from exc
+            if current[2] != group_id or current[0] in _TERMINAL_PROC_STATES:
+                continue
             raise SupervisionError(f"PROC_RESOURCE_SNAPSHOT_UNVERIFIABLE:{entry.name}") from exc
-        members.append(int(entry.name))
+        try:
+            current = _parse_stat((entry / "stat").read_text())
+        except (FileNotFoundError, ProcessLookupError):
+            continue
+        except (OSError, SupervisionError) as exc:
+            raise SupervisionError(f"PROC_STAT_UNVERIFIABLE:{entry.name}") from exc
+        if current[3] != start_ticks or current[2] != group_id:
+            raise SupervisionError(f"PROC_PID_IDENTITY_CHANGED:{entry.name}")
+        if current[0] in _TERMINAL_PROC_STATES:
+            continue
+        members.append(pid)
         total_rss += rss_kib * 1024
     return total_rss, sorted(members)
 
@@ -157,7 +199,7 @@ def supervise(command: list[str], *, evidence_root: Path,
         pgid = process.pid
         try:
             root_stat = (proc_root / str(process.pid) / "stat").read_text()
-            _, root_group, root_start_ticks = _parse_stat(root_stat)
+            _, _, root_group, root_start_ticks = _parse_stat(root_stat)
             root_exe = os.readlink(proc_root / str(process.pid) / "exe")
             if root_group != pgid or Path(root_exe).resolve() != Path(command[0]).resolve():
                 raise SupervisionError("CHILD_PROCESS_IDENTITY_MISMATCH")
@@ -171,7 +213,8 @@ def supervise(command: list[str], *, evidence_root: Path,
         while True:
             elapsed = time.monotonic() - start
             try:
-                rss, members = _proc_group_snapshot(proc_root, pgid)
+                rss, members = _proc_group_snapshot(
+                    proc_root, pgid, expected_leader_start_ticks=root_start_ticks)
                 output_bytes = _tree_bytes(output_dir) + stdout_path.stat().st_size + stderr_path.stat().st_size
             except (OSError, SupervisionError) as exc:
                 reason = f"MONITORING_FAILURE:{exc}"

@@ -472,3 +472,19 @@ synthetic children, never the ENG10K runner/kernel. Windows: 28 PASS, 3 SKIP (on
 symlink policy, two Linux-only), 0 FAIL. Next: after manual publication, run only
 the focused fixture suite on the exact Fair commit; require both Linux probes PASS.
 No ENG10K numerical execution authorized; scientific/canonical gates unchanged.
+
+## INT3-ENG10K-D — Linux process-state reconciliation (2026-10-15)
+
+Report: `docs/arcana/INT3_ENG10K_D_LINUX_PROCESS_STATE_RECONCILIATION.md`. The
+Fair natural-exit failure and timeout pass are operator-reported; the original log
+was not transferred and remains immutable on Fair. The failed natural result is
+retained as FAIL, not reclassified. A terminal-process race is plausible but not
+proven. Windows-only correction handles terminal Z/X/x states and `/proc` races,
+rechecks missing/malformed VmRSS, and fails closed for live unverifiable processes
+or PID identity changes. Synthetic fixtures cover PID disappearance/reuse and
+leader/zombie plus live-descendant census. Tests: 37 passed, 4 skipped (one Windows
+symlink restriction and three Linux-only tests), 0 failed. No Linux runtime,
+production supervisor, ENG10K evolution or canonical operation was run. Next: after
+manual publication, repeat the focused test suite on Fair in a new immutable
+evidence directory; no numerical execution is authorized. All scientific, Solver,
+mechanics and WORLD_HISTORY gates remain unchanged.

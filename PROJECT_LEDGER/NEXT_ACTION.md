@@ -1,20 +1,17 @@
-# NEXT — INT3-ENG10K-C Linux synthetic supervisor test (no evolution)
+# NEXT — INT3-ENG10K-D Fair synthetic supervisor regression only
 
-Fair preflight on source `f072c46c77ee73e45b4ad5d7230451b19f35a692` is reported
-PASS without numerical evolution. Windows did not independently verify Fair logs
-or external provider bytes. Read `docs/arcana/INT3_ENG10K_C_FAIR_PREFLIGHT_CLOSURE.md`.
+After review and manual publication, run only `python -m pytest -q -rs
+tests/test_r6_int3_eng10k.py` on the exact clean published HEAD in the approved Fair
+Conda environment, with a new unique external evidence/basetemp directory. Preserve
+the prior failed Fair log immutably. Require natural child exit, leader-exited/live
+descendant handling, and process-group timeout tests to execute and pass (not skip),
+and the full suite to have no failures. Record command, runtime, exit, log hash and
+resulting evidence identities. Exact handoff and criteria are in
+`docs/arcana/INT3_ENG10K_D_LINUX_PROCESS_STATE_RECONCILIATION.md`.
 
-Next bounded action after manual publication: run only
-`python -m pytest -q -rs tests/test_r6_int3_eng10k.py` in the existing Fair Conda
-runtime, on the exact clean published branch/HEAD. The two new Linux tests must
-exercise natural exit and timeout termination of fixed synthetic Python children.
-They do not call the ENG10K runner, kernel, provider audit, supervisor execute CLI,
-or Fair numerical mode. Require both Linux tests to run and pass; preserve and
-report the full suite's actual skips and logs. Exact preconditions and PASS/FAIL
-criteria are in the report.
-
-Do not run `--mode execute`, the ENG10K supervisor CLI, or numerical evolution.
-Preserve INT-2C STOP and all scientific, Solver, mechanics and WORLD_HISTORY gates.
+Do not run the supervisor CLI, `--mode execute`, ENG10K kernel/evolution, or
+canonical operations. Preserve INT-2C STOP and all scientific, Solver, mechanics
+and WORLD_HISTORY gates.
 
 ## Archived — INT-2C closed: STOP, no further replay authorized
 

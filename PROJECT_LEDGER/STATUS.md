@@ -1,31 +1,23 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-15
 
-## INT3-ENG10K-C — Fair preflight reported PASS; Linux supervisor probes pending
+## INT3-ENG10K-D — Windows process-state correction ready; Fair retest pending
 
-Decision: `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION` (operator-reported
-from Fair on `f072c46c77ee73e45b4ad5d7230451b19f35a692`). Report:
-`docs/arcana/INT3_ENG10K_C_FAIR_PREFLIGHT_CLOSURE.md`. The reported environment
-was Python 3.12.10 / NumPy 2.3.5; the R4 manifest SHA256 was
-`191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`; the reported
-source composite was
-`0737c2922b6ba694d432c1bc21b0a6895f44e66be0096c6566573734d7a9eb63`; provider
-identities reportedly matched R4. The 29-test result and all Fair identities are
-operator-reported; no Fair transcript/result was imported or rehashed on Windows.
-The preflight did not execute numerical evolution or publish canonical data.
+Decision: `INT3_ENG10K_D_WINDOWS_FIX_READY__FAIR_RETEST_PENDING`. Report:
+`docs/arcana/INT3_ENG10K_D_LINUX_PROCESS_STATE_RECONCILIATION.md`. The prior Fair
+natural-exit probe is operator-reported FAIL (child exit 0, but fail-closed
+`PROC_RESOURCE_SNAPSHOT_UNVERIFIABLE:1632066`); its original evidence remains on Fair
+and was not imported or changed. A terminal-process `/proc` race is plausible but
+not proven from the transferred details. The timeout-with-descendant probe was
+operator-reported PASS.
 
-The Fair operator reports reusing the existing worktree after verified
-fast-forward and preserving historical evidence/R4. This is recorded as an
-operational exception to the ENG10K-B fresh-clone handoff; it does not amend the
-general procedure. A Git LFS warning was reported without its raw text. No LFS or
-repository configuration was changed; see the report for the bounded local check
-and tooling limitation.
-
-The original suite did not execute the Linux `supervise()` loop with a real child.
-Two Linux-only synthetic process tests now exercise natural exit and timeout/group
-termination without invoking the ENG10K runner. Windows result: 28 PASS, 3 SKIP
-(one existing symlink test and two Linux-only tests), 0 FAIL. Next: manually publish
-this test/report/ledger update, then run only the focused synthetic suite on Fair.
-No ENG10K numerical execution is authorized.
+Windows correction validates `/proc/PID/stat` state, excludes terminal Z/X/x
+processes, rechecks state when VmRSS is missing/malformed, binds repeated reads to
+start ticks/process group, and retains fail-closed behavior for live unverifiable
+RSS. Snapshot accounting includes live descendants, and natural exit requires no
+live group member. Focused Windows suite: 37 PASS, 4 SKIP, 0 FAIL; skips are one
+symlink-policy test and three Linux-only process-group tests. Fair rerun of the full
+focused suite is pending after manual publication in a new immutable evidence path.
+No supervisor production invocation or ENG10K numerical evolution is authorized.
 
 Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
 `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,

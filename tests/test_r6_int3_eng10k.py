@@ -445,7 +445,7 @@ def test_supervisor_command_is_bound_to_runtime_root_and_attempt_paths(tmp_path)
 
 def test_linux_proc_stat_parser_handles_parentheses_in_process_name():
     fields = ["S", "1", "77", "77"] + ["0"] * 15 + ["1234"]
-    assert _parse_stat(f"42 (python (worker)) {' '.join(fields)}") == (1, 77, 1234)
+    assert _parse_stat(f"42 (python (worker)) {' '.join(fields)}") == ("S", 1, 77, 1234)
 
 
 def test_linux_proc_group_snapshot_sums_only_requested_group(tmp_path):
@@ -456,6 +456,88 @@ def test_linux_proc_group_snapshot_sums_only_requested_group(tmp_path):
         (proc / "stat").write_text(f"{pid} (python {pid}) {' '.join(fields)}")
         (proc / "status").write_text(f"Name:\tpython\nVmRSS:\t{rss} kB\n")
     assert _proc_group_snapshot(tmp_path, 10) == (300 * 1024, [10, 11])
+
+
+@pytest.mark.parametrize("state", ["Z", "X", "x"])
+def test_linux_proc_group_snapshot_ignores_terminal_process_without_vmrss(tmp_path, state):
+    proc = tmp_path / "10"
+    proc.mkdir()
+    fields = [state, "1", "10", "10"] + ["0"] * 15 + ["101"]
+    (proc / "stat").write_text(f"10 (python (zombie)) {' '.join(fields)}")
+    (proc / "status").write_text("Name:\tpython\n")
+    assert _proc_group_snapshot(tmp_path, 10) == (0, [])
+
+
+def test_linux_proc_stat_parser_rejects_invalid_state():
+    fields = ["?", "1", "77", "77"] + ["0"] * 15 + ["1234"]
+    with pytest.raises(supervisor.SupervisionError, match="PROC_STAT_STATE_INVALID"):
+        _parse_stat(f"42 (python) {' '.join(fields)}")
+
+
+@pytest.mark.parametrize("status", ["Name:\tpython\n", "Name:\tpython\nVmRSS:\tbad kB\n"])
+def test_linux_proc_group_snapshot_fails_closed_for_live_unverifiable_rss(tmp_path, status):
+    proc = tmp_path / "10"
+    proc.mkdir()
+    fields = ["S", "1", "10", "10"] + ["0"] * 15 + ["101"]
+    (proc / "stat").write_text(f"10 (python) {' '.join(fields)}")
+    (proc / "status").write_text(status)
+    with pytest.raises(supervisor.SupervisionError, match="PROC_RESOURCE_SNAPSHOT_UNVERIFIABLE:10"):
+        _proc_group_snapshot(tmp_path, 10)
+
+
+def test_linux_proc_group_snapshot_skips_pid_that_disappears_mid_read(tmp_path, monkeypatch):
+    proc = tmp_path / "10"
+    proc.mkdir()
+    fields = ["S", "1", "10", "10"] + ["0"] * 15 + ["101"]
+    (proc / "stat").write_text(f"10 (python) {' '.join(fields)}")
+    (proc / "status").write_text("Name:\tpython\nVmRSS:\t100 kB\n")
+    original = Path.read_text
+    reads = 0
+
+    def disappear_after_first_stat(path, *args, **kwargs):
+        nonlocal reads
+        if path == proc / "stat":
+            reads += 1
+            if reads == 2:
+                raise FileNotFoundError(str(path))
+        return original(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", disappear_after_first_stat)
+    assert _proc_group_snapshot(tmp_path, 10) == (0, [])
+
+
+def test_linux_proc_group_snapshot_fails_closed_on_pid_reuse(tmp_path, monkeypatch):
+    proc = tmp_path / "10"
+    proc.mkdir()
+    fields = ["S", "1", "10", "10"] + ["0"] * 15 + ["101"]
+    changed = ["S", "1", "10", "10"] + ["0"] * 15 + ["999"]
+    (proc / "stat").write_text(f"10 (python) {' '.join(fields)}")
+    (proc / "status").write_text("Name:\tpython\nVmRSS:\t100 kB\n")
+    original = Path.read_text
+    reads = 0
+
+    def reuse_after_status(path, *args, **kwargs):
+        nonlocal reads
+        if path == proc / "stat":
+            reads += 1
+            if reads == 2:
+                return f"10 (reused) {' '.join(changed)}"
+        return original(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", reuse_after_status)
+    with pytest.raises(supervisor.SupervisionError, match="PROC_PID_IDENTITY_CHANGED:10"):
+        _proc_group_snapshot(tmp_path, 10)
+
+
+def test_linux_proc_group_snapshot_keeps_live_descendant_after_zombie_leader(tmp_path):
+    for pid, state, ppid, rss in ((10, "Z", 1, None), (11, "S", 1, 250)):
+        proc = tmp_path / str(pid)
+        proc.mkdir()
+        fields = [state, str(ppid), "10", "10"] + ["0"] * 15 + [str(pid * 10)]
+        (proc / "stat").write_text(f"{pid} (python) {' '.join(fields)}")
+        status = "Name:\tpython\n" if rss is None else f"Name:\tpython\nVmRSS:\t{rss} kB\n"
+        (proc / "status").write_text(status)
+    assert _proc_group_snapshot(tmp_path, 10, expected_leader_start_ticks=100) == (250 * 1024, [11])
 
 
 def test_supervisor_termination_uses_term_then_kill_when_group_disappears(monkeypatch):
@@ -583,4 +665,45 @@ def test_linux_supervise_wall_timeout_terminates_synthetic_process_group(tmp_pat
     assert not proc_entry.exists() or state == "Z"
     time.sleep(0.1)
     assert not marker.exists()
+    assert not Path(result["output_absolute"]).exists()
+
+
+@pytest.mark.skipif(not sys.platform.startswith("linux"), reason="requires Linux /proc and process groups")
+def test_linux_supervise_waits_for_live_descendant_after_leader_exits(tmp_path, monkeypatch):
+    """A successful leader exit is not natural group exit while a child remains."""
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    r4 = tmp_path / "r4-input"
+    r4.mkdir()
+    authorization = tmp_path / "invalid-authorization.json"
+    authorization.write_text("{}", encoding="utf-8")
+    finished = tmp_path / "descendant-finished.txt"
+    monkeypatch.setattr(supervisor, "ROOT", checkout)
+    descendant = (
+        "import pathlib,time; time.sleep(0.45); "
+        f"pathlib.Path({str(finished)!r}).write_text('DONE')"
+    )
+    command = [sys.executable, "-c",
+        "import subprocess,sys; "
+        f"subprocess.Popen([sys.executable,'-c',{descendant!r}])"]
+
+    def allow_only_this_fixture(actual, **_kwargs):
+        assert actual == command
+        assert "r6_int3_eng10k" not in " ".join(actual)
+        return actual
+
+    monkeypatch.setattr(supervisor, "_expected_child_command", allow_only_this_fixture)
+    result = supervisor.supervise(
+        command, evidence_root=root,
+        output_relative=Path("R6/INT3_ENG10K/probe-descendant/candidate"),
+        supervision_relative=Path("R6/INT3_ENG10K/probe-descendant/supervision"),
+        r4_bundle=r4, expected_head="f072c46c77ee73e45b4ad5d7230451b19f35a692",
+        authorization_json=authorization,
+    )
+    assert result["stop_reason"] == "NATURAL_EXIT"
+    assert result["natural_exit_code"] == 0
+    assert result["elapsed_seconds"] >= 0.35
+    assert finished.read_text(encoding="utf-8") == "DONE"
     assert not Path(result["output_absolute"]).exists()

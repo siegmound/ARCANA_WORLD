@@ -1,17 +1,14 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-15)
 
-## INT3-ENG10K-C — reported preflight complete; monitor runtime test pending
+## INT3-ENG10K-D — process-state correction; Fair recheck pending
 
-Decision: `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION` reported by the
-Fair operator on `f072c46c77ee73e45b4ad5d7230451b19f35a692`. Windows added bounded
-Linux-only integration tests for the real supervisor monitor using synthetic
-children only. Next dependency is their execution on Fair's Linux `/proc` and
-process groups after manual publication. No ENG10K numerical execution is
-authorized. Details and limits:
-`docs/arcana/INT3_ENG10K_C_FAIR_PREFLIGHT_CLOSURE.md`.
-
-All scientific, Solver, mechanics and WORLD_HISTORY gates remain closed.
-
+The operator-reported Fair natural-exit test failed closed on a resource-snapshot
+race; timeout process-group test passed. Windows added bounded `/proc` fixture
+coverage and corrected terminal/disappearing process handling without relaxing
+checks for live processes. Windows suite is 37 PASS / 4 SKIP / 0 FAIL. Next is the
+focused synthetic supervisor suite on Fair after review/publication, using new
+immutable evidence. No production supervisor invocation or ENG10K evolution is
+authorized. See `docs/arcana/INT3_ENG10K_D_LINUX_PROCESS_STATE_RECONCILIATION.md`.
 
 ## INT3-ENG10K-A — bounded engineering preparation
 
