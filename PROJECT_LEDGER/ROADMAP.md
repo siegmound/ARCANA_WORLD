@@ -1,6 +1,21 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-14)
 
-## INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
+## Current dependency — INT-2C-C3 pending final authorization/preflight
+
+C1/C2 Fair prerequisites are now recorded as OPERATOR_REPORTED: isolated Python
+3.12.10 / NumPy 2.3.5, technical-only checkpoint attestation, atomic registration
+of 11 records, reopened-store/readback and validate_replay_inputs PASS. No real
+kernel execution. Decision `INT2C_C1_C2_FAIR_PREFLIGHT_REPORTED__C3_PENDING_AUTHORIZATION`.
+Report `docs/arcana/INT2C_C1_C2_FAIR_EVIDENCE_RECONCILIATION.md`, SHA256 `df21e291f3b4779fbee90235db0566f34a206261fb92ea67a88e30d64d97a75d`. Untransferred Fair files/hashes are not
+independently Windows verified; bind actual source/runtime/store identities at
+C3 final preflight. Next is one separately authorized supervised R4 replay with
+unchanged numerical configuration and full-state/per-support hash acceptance.
+The historical INT-2C-B mismatch remains a valid earlier observation; no runtime
+check was relaxed. Scientific qualification and canonical publication remain blocked.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## Historical INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
 
 Decision: `INT2CB_BLOCKED_FAIR_RUNTIME_IDENTITY_MISMATCH`. Entry source
 `f49de047ff560f707428b395b7373d46301fdee9`. Report `docs/arcana/INT2C_B_TECHNICAL_CHECKPOINT_RUNTIME_PREFLIGHT.md`,

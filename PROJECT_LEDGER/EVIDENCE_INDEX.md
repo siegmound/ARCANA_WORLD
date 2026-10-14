@@ -1,6 +1,20 @@
 ## INT-1B — evidence density and distinct-regime design (2026-10-13)
 
-## INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
+## INT-2C-C1/C2 — operator-reported Fair evidence (2026-10-14)
+
+Report `docs/arcana/INT2C_C1_C2_FAIR_EVIDENCE_RECONCILIATION.md`, SHA256 `df21e291f3b4779fbee90235db0566f34a206261fb92ea67a88e30d64d97a75d`. Evidence identifiers
+`INT2C_RUNTIME_CHECK_BXFon4Yd`, `INT2C_C1_zC7ONJo8`, `INT2C_C2_ljWdyPsq`.
+C2 result SHA256 `ae1e99c652a064fb60d691590c76c4150981b11ce42e1bc6d9381a9719c28932`;
+C2 log SHA256 `3392ebf60061734e5a86f7061281ba6f3c2befa545af7b18688eeeb93451064a`.
+Both are OPERATOR_REPORTED; no imported C1/C2 files or independent Windows rehash.
+C1 reports exact runtime/technical closure; C2 reports 11 atomic registrations,
+reopened/readback/input-validation PASS, 16 files / 78,945 bytes and no kernel run.
+Local technical manifest `8b172002968c9fcd7620d78b456054ac7ca0e7a9afa49f2f9e91ca81e9b1731d`
+and its three members were independently verified, separately from Fair claims.
+Full Fair paths/source commit/runtime binary hashes remain UNKNOWN. C3 is pending
+final authorization and preflight. No historical outputs were changed or staged.
+
+## Historical INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
 
 Implementation byte SHA256: `scripts/r6_int2c_checkpoint_attest.py` =
 `9f8388fbcbc32c0099a64f232493eb83926ecfd987f6e11c971e64b8d2b2b65f`;

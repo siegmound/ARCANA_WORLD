@@ -1,4 +1,33 @@
-# NEXT — resolve the explicitly incompatible Fair replay runtime
+# NEXT — INT-2C-C3: supervised real R4 B0 replay, pending authorization
+
+C1/C2 are recorded as OPERATOR_REPORTED prerequisites, not independently imported
+Fair evidence. Report `docs/arcana/INT2C_C1_C2_FAIR_EVIDENCE_RECONCILIATION.md`, SHA256 `df21e291f3b4779fbee90235db0566f34a206261fb92ea67a88e30d64d97a75d`. No numerical execution is
+authorized by the consolidation. No new scenario, physics or automatic retry.
+
+Before the one proposed replay: obtain final bounded authorization; verify the
+actual source commit and unchanged adapter/kernel/configuration, acquire/bind
+C1/C2 checkpoint/recipe/store identities and exact isolated Python 3.12.10 /
+NumPy 2.3.5 runtime, reopen the isolated store and run validate_replay_inputs.
+Full remote paths and tested Fair commit are not supplied and remain UNKNOWN
+until bound at preflight. Verify fresh evidence paths and an active supervisor
+with process-tree identity, termination capability and approved resource limits.
+
+Use genuine current execute_replay and DeterministicKernelAdapter to recompute
+both 73-node R4 states from initial states/forcing/configuration: 1,000 engineering
+years, reference fraction 0.0005. Expected output is an oracle only. Require full
+B0 expected-state identity and original per-support payload digests, preserve any
+discrepancy, and stop without automatic retry. No real replay has yet been evidenced.
+
+Operator reports C1 exact runtime/install exit 0/technical-only attestation PASS,
+eleven records and checkpoint/recipe IDs matching Windows. C2 reports atomic
+11-record registration, reopened-store/readback/input-validation PASS, 16 files /
+78,945 bytes and no real kernel execution. Hashes and locators are in EVIDENCE_INDEX;
+no Fair files were independently imported or rehashed in this consolidation.
+Local Windows technical records and unchanged nine-file R4 bundle were verified.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## Archived INT-2C-B next action — superseded by reported C1/C2 prerequisites
 
 ## INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
 

@@ -1,5 +1,36 @@
 # Bitacora cronologica — append-only
 
+## INT-2C-C1/C2 — Fair prerequisites reported; C3 pending authorization (2026-10-14)
+
+Current decision: `INT2C_C1_C2_FAIR_PREFLIGHT_REPORTED__C3_PENDING_AUTHORIZATION`.
+Consolidation entry Windows/GitHub HEAD `3d53ed80ea170d7b0b3d20b3fb4e40ff103a4daa`;
+tracked worktree/index clean, no pending commits, remote divergence 0/0.
+Report `docs/arcana/INT2C_C1_C2_FAIR_EVIDENCE_RECONCILIATION.md`, SHA256 `df21e291f3b4779fbee90235db0566f34a206261fb92ea67a88e30d64d97a75d`.
+
+Operator-reported C1: isolated Fair Python 3.12.10 / NumPy 2.3.5, Conda install
+exit 0, technical attestation PASS and eleven typed records; original checkpoint
+remains CANDIDATE_NONCANONICAL, new checkpoint VALIDATED only for
+TECHNICAL_ENGINEERING_INPUT_CLOSURE_ONLY; checkpoint/recipe IDs reportedly match
+Windows. Evidence locators: `INT2C_RUNTIME_CHECK_BXFon4Yd`, `INT2C_C1_zC7ONJo8`.
+Operator-reported C2: atomic registration of 11 records, reopened-store and typed
+readback PASS, validate_replay_inputs PASS; 16 files / 78,945 bytes; no real
+numerical kernel execution. Evidence locator: `INT2C_C2_ljWdyPsq`.
+
+C1/C2 files were not identified in the inspected local task paths. Fair outcomes
+and hashes are OPERATOR_REPORTED, not independently imported/rehashed on Windows.
+Local Windows technical records/manifest and all nine unchanged R4 bytes were
+independently rechecked; this does not verify untransferred Fair content.
+The historical INT-2C-B runtime blocker and report remain preserved. Full Fair
+paths, tested commit, runtime binary identities and C1 digests remain UNKNOWN.
+29 local focused INT-2C-A/B tests PASS, 0 FAIL, 0 SKIP; no new numerical execution.
+
+Next: INT-2C-C3, one supervised real R4 B0 replay pending separate final
+authorization/preflight, exact source/runtime/store binding and fresh evidence
+paths. Persisted input closure does not demonstrate predicted numerical output,
+physical validity or canonical authority.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
 
 Decision: `INT2CB_BLOCKED_FAIR_RUNTIME_IDENTITY_MISMATCH`. Entry source
