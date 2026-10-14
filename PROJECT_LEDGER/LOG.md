@@ -1,5 +1,13 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-14 — post-INT2C Git/ledger audit; obsolete bootstrap actions corrected
+
+- Entry/verified code remote `ef55666586b4cbaccf0eb3bfbd82220c5f707f84`, clean tracked index/worktree, divergence 0/0. Five INT-2C reports and all five operational ledgers are published; their report references exist and are tracked. No missing source/test/script files found.
+- Full active-checkout Git inventory: 649 untracked entries (one RO6 document, 648 output/worktree entries); 195 ignored files (120 Python caches, five pytest cache files, 70 historical output logs). Outputs, B0 stores, test fixtures/transcripts and historical bundles remain excluded from the code commit; no deletion or blanket ignore change.
+- Untracked `docs/arcana/SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_RECOVERY_ATTESTATION.md`, SHA256 `7e2b228fcb24722f13fb4a52fcdc5f9e8e729f74da96181432e9cb320900223b`, is a superseded local draft/duplicate concerning the same RO6 input/decision. The published and indexed authority is `SI1_BW1_F2B_D3D_RO6_FAIR_EVIDENCE_CONSOLIDATION.md`, SHA256 `1b9c46b43079fbc5002d3719bc935175cd6f1bea5489f6026abe7d870e1a4579`, commit `dece4ac8c2279b0c30643a5166b77f02f3dfadd2`. Draft retained unchanged and not staged; no new independent evidence needs promotion from it.
+- Evidence branch is already published at `25d3abbbdcec192e11ddbb7772e072e00f50a934`. Its stale remote-tracking ref was updated by explicit normal fetch; divergence 0/0. The RO6 publication worktree is clean. W3-A recovery report matches the published report byte-for-byte; recovery refs are retained history, not pending code publication. Four evidence-branch archives use Git LFS; active code branch has no LFS payload. `.gitignore`/`.gitattributes` remain unchanged.
+- Necessary correction only: README still named INT-1 and NEW_CHAT still named INT-0A as current work. Both bootstrap entrypoints now defer to the completed INT-2C outcome and STOP, preventing accidental reactivation of historical tasks. Current STATUS/NEXT_ACTION, scientific gates, reports, source and original evidence unchanged. No new development/replay or canonical operation; documentation/reference/hash/diff checks only.
+
 ## INT-2C-C3 — real R4 B0 executable replay closed (2026-10-14)
 
 Decision: `INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`.
