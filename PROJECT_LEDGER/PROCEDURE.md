@@ -48,6 +48,15 @@ Il percorso predefinito per sviluppo e prove Linux è **Windows Codex → GitHub
 ### G3. Fair — worktree Linux separato
 - Operatore: `jlpfritas`. Worktree di sviluppo/test: `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_F2AV`. Non alterare checkout storici per i test N2B.
 - Per ricevere codice: ispezionare prima worktree e file presenti; `git fetch origin r6/si1-bandwidth-f2av`; verificare lo SHA effettivamente recuperato; solo se sicuro usare `git switch --detach <SHA_VERIFICATO>`. Non fare merge fra branch storici divergenti, reset hard o pull non controllati.
+- **Eccezione lane INT3-ENG10K (richiede branch attivo):** il provider audit lega
+  l'identità sorgente al nome del branch attivo. Usare una clone directory nuova
+  per questa lane, recuperare e ispezionare `origin/r6/si1-bandwidth-f2av`, poi
+  raggiungere il full SHA revisionato soltanto con fast-forward verificato,
+  mantenendo attivo il branch locale `r6/si1-bandwidth-f2av`. Prima del provider
+  preflight richiedere status pulito, branch esatto e HEAD esatto. Non alterare
+  worktree Fair esistenti e non usare reset, clean o aggiornamenti forzati.
+  L'eccezione mantiene sia il controllo branch del provider sia il controllo
+  esatto del full HEAD del runner.
 - Codex non è installato su Fair: il lavoro di review e modifica del ledger resta su Windows.
 
 ### G4. Ambiente Python Conda su Fair

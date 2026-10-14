@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import sys
 
 import pytest
 
@@ -10,7 +11,7 @@ from arcana_worldsim.r6.functional_development import NodeMaterial, ReducedState
 from arcana_worldsim.r6 import int3_eng10k as eng
 from r6_int3_eng10k import (
     CONFIG_SHA256, EXECUTION_DECISION, _diagnostic_summary,
-    _validate_execution_authorization, _write_bundle,
+    _validate_checkout_identity, _validate_execution_authorization, _write_bundle,
 )
 import r6_int3_eng10k_supervisor as supervisor
 from r6_int3_eng10k_supervisor import _parse_stat, _proc_group_snapshot
@@ -253,21 +254,193 @@ def test_immutable_case_configuration_digest_and_output_projection():
 def test_execution_authorization_is_bound_to_source_config_paths_and_budgets():
     from r6_int3_eng10k import _validate_execution_authorization
     args = {"decision": EXECUTION_DECISION, "source_head": "a" * 40,
-        "configuration_sha256": CONFIG_SHA256, "output_relative": "outputs/r6_functional_development/new",
-        "supervision_relative": "outputs/r6_functional_development/sup",
+        "configuration_sha256": CONFIG_SHA256,
+        "output_relative": "R6/INT3_ENG10K/run/candidate",
+        "evidence_root_absolute": "F:/ARCANA_WORLD_EVIDENCE",
+        "output_absolute": "F:/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/run/candidate",
+        "supervision_relative": "R6/INT3_ENG10K/run/supervision",
+        "supervision_absolute": "F:/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/run/supervision",
         "one_attempt_only": True, "noncanonical": True,
         "limits": {"wall_seconds": 900, "process_group_rss_bytes": 2_147_483_648,
                    "cumulative_output_bytes": 536_870_912}}
     _validate_execution_authorization(args, source_head="a" * 40,
-        configuration_sha256=CONFIG_SHA256,
+        configuration_sha256=CONFIG_SHA256, evidence_root_absolute=args["evidence_root_absolute"],
         output_relative=Path(args["output_relative"]),
-        supervision_relative=Path(args["supervision_relative"]))
+        output_absolute=args["output_absolute"],
+        supervision_relative=Path(args["supervision_relative"]),
+        supervision_absolute=args["supervision_absolute"])
     args["limits"]["wall_seconds"] = 901
     with pytest.raises(eng.Eng10kContractError, match="AUTHORIZATION_MISMATCH"):
         _validate_execution_authorization(args, source_head="a" * 40,
-            configuration_sha256=CONFIG_SHA256,
-            output_relative=Path("outputs/r6_functional_development/new"),
-            supervision_relative=Path("outputs/r6_functional_development/sup"))
+            configuration_sha256=CONFIG_SHA256, evidence_root_absolute=args["evidence_root_absolute"],
+            output_relative=Path(args["output_relative"]), output_absolute=args["output_absolute"],
+            supervision_relative=Path(args["supervision_relative"]),
+            supervision_absolute=args["supervision_absolute"])
+
+
+def test_evidence_root_and_destinations_are_external_existing_and_read_only_preflight(tmp_path):
+    from arcana_worldsim.r6.int3_eng10k import resolve_evidence_destinations
+
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    output_rel = Path("R6/INT3_ENG10K/attempt-01/candidate")
+    supervision_rel = Path("R6/INT3_ENG10K/attempt-01/supervision")
+    resolved_root, output, supervision = resolve_evidence_destinations(
+        root, output_rel, supervision_rel, repo_root=checkout)
+    assert resolved_root == root.absolute()
+    assert output == root / output_rel
+    assert supervision == root / supervision_rel
+    assert root.is_dir()
+    assert not (root / "R6").exists()
+
+
+def test_evidence_root_missing_or_inside_checkout_fails_closed(tmp_path):
+    from arcana_worldsim.r6.int3_eng10k import resolve_evidence_destinations
+
+    missing = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    with pytest.raises(eng.Eng10kContractError, match="EVIDENCE_ROOT_UNAVAILABLE"):
+        resolve_evidence_destinations(missing, "R6/INT3_ENG10K/a/candidate",
+            "R6/INT3_ENG10K/a/supervision", repo_root=eng.Path(__file__).resolve().parents[1])
+    fake_checkout = tmp_path / "checkout"
+    fake_checkout.mkdir()
+    checkout_root = fake_checkout / "ARCANA_WORLD_EVIDENCE"
+    checkout_root.mkdir()
+    try:
+        with pytest.raises(eng.Eng10kContractError):
+            resolve_evidence_destinations(checkout_root, "R6/INT3_ENG10K/a/candidate",
+                "R6/INT3_ENG10K/a/supervision", repo_root=fake_checkout)
+    finally:
+        checkout_root.rmdir()
+
+
+@pytest.mark.parametrize("bad_path", [
+    "R6/INT3_ENG10K/../escape/candidate",
+    "R6/INT3_ENG10K/a/../candidate",
+    "/tmp/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/a/candidate",
+    "C:/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/a/candidate",
+])
+def test_evidence_destination_rejects_traversal_and_absolute_paths(tmp_path, bad_path):
+    from arcana_worldsim.r6.int3_eng10k import resolve_evidence_destinations
+
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    with pytest.raises(eng.Eng10kContractError):
+        resolve_evidence_destinations(root, bad_path, "R6/INT3_ENG10K/a/supervision",
+            repo_root=checkout)
+
+
+def test_evidence_destination_rejects_symlink_and_attempt_collision(tmp_path):
+    from arcana_worldsim.r6.int3_eng10k import resolve_evidence_destinations
+
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    attempt = root / "R6" / "INT3_ENG10K" / "attempt-01"
+    attempt.mkdir(parents=True)
+    (attempt / "preexisting.txt").write_text("preserve")
+    with pytest.raises(eng.Eng10kContractError, match="ATTEMPT_DIRECTORY_COLLISION"):
+        resolve_evidence_destinations(root, "R6/INT3_ENG10K/attempt-01/candidate",
+            "R6/INT3_ENG10K/attempt-01/supervision", repo_root=checkout)
+    link = root / "R6" / "INT3_ENG10K" / "linked-attempt"
+    try:
+        link.symlink_to(attempt, target_is_directory=True)
+    except (OSError, NotImplementedError):
+        pytest.skip("Windows policy does not permit creating symlinks in this test environment")
+    with pytest.raises(eng.Eng10kContractError, match="SYMLINK|JUNCTION|LINK"):
+        resolve_evidence_destinations(root, "R6/INT3_ENG10K/linked-attempt/candidate",
+            "R6/INT3_ENG10K/linked-attempt/supervision", repo_root=checkout)
+
+
+def test_evidence_targets_cannot_overlap_world_history_or_r4_bundle(tmp_path):
+    from arcana_worldsim.r6.int3_eng10k import resolve_evidence_destinations
+
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    history = root / "R6" / "INT3_ENG10K" / "attempt"
+    with pytest.raises(eng.Eng10kContractError, match="WORLD_HISTORY"):
+        resolve_evidence_destinations(root, "R6/INT3_ENG10K/attempt/candidate",
+            "R6/INT3_ENG10K/attempt/supervision", repo_root=checkout,
+            world_history_roots=(history,))
+    r4 = root / "R6" / "INT3_ENG10K" / "attempt" / "input"
+    r4.mkdir(parents=True)
+    with pytest.raises(eng.Eng10kContractError, match="R4_INPUT"):
+        resolve_evidence_destinations(root, "R6/INT3_ENG10K/attempt/candidate",
+            "R6/INT3_ENG10K/attempt/supervision", repo_root=checkout,
+            r4_bundle=r4)
+
+
+def test_incomplete_output_marker_target_is_unsealed_and_same_attempt(tmp_path):
+    from arcana_worldsim.r6.int3_eng10k import resolve_incomplete_evidence_output
+
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    attempt = root / "R6" / "INT3_ENG10K" / "attempt"
+    output = attempt / "candidate"
+    supervision = attempt / "supervision"
+    output.mkdir(parents=True)
+    supervision.mkdir()
+    (output / "RUN_STARTED.json").write_text("{}")
+    (supervision / "child.stdout").write_bytes(b"")
+    (supervision / "child.stderr").write_bytes(b"")
+    assert resolve_incomplete_evidence_output(root, "R6/INT3_ENG10K/attempt/candidate",
+        "R6/INT3_ENG10K/attempt/supervision", repo_root=checkout) == output.absolute()
+    (output / "ARTIFACT_MANIFEST.json").write_text("{}")
+    with pytest.raises(eng.Eng10kContractError, match="ALREADY_SEALED"):
+        resolve_incomplete_evidence_output(root, "R6/INT3_ENG10K/attempt/candidate",
+            "R6/INT3_ENG10K/attempt/supervision", repo_root=checkout)
+
+
+def test_checkout_branch_and_exact_head_are_both_required():
+    _validate_checkout_identity("r6/si1-bandwidth-f2av", "a" * 40, "a" * 40)
+    with pytest.raises(eng.Eng10kContractError, match="BRANCH_MISMATCH"):
+        _validate_checkout_identity("detached", "a" * 40, "a" * 40)
+    with pytest.raises(eng.Eng10kContractError, match="HEAD_EXPECTATION"):
+        _validate_checkout_identity("r6/si1-bandwidth-f2av", "a" * 40, "b" * 40)
+    with pytest.raises(eng.Eng10kContractError, match="HEAD_EXPECTATION"):
+        _validate_checkout_identity("r6/si1-bandwidth-f2av", "a" * 40, None)
+
+
+def test_execution_contract_is_pinned_and_keeps_execution_disabled():
+    from r6_int3_eng10k import _verify_execution_contract
+
+    contract = _verify_execution_contract()
+    assert contract["execution_authorized"] is False
+    assert contract["canonical_publication_authorized"] is False
+    assert contract["fair_evidence_root"] == "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE"
+
+
+def test_supervisor_command_is_bound_to_runtime_root_and_attempt_paths(tmp_path):
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    bundle = tmp_path / "authenticated-r4"
+    bundle.mkdir()
+    authorization = tmp_path / "authorization.json"
+    authorization.write_text("{}")
+    out = Path("R6/INT3_ENG10K/attempt/candidate")
+    sup = Path("R6/INT3_ENG10K/attempt/supervision")
+    expected_head = "a" * 40
+    cmd = [sys.executable, str(Path(__file__).resolve().parents[1] / "scripts/r6_int3_eng10k.py"),
+        "--mode", "execute", "--evidence-root", str(root.absolute()),
+        "--output-relative", out.as_posix(), "--supervision-relative", sup.as_posix(),
+        "--r4-bundle", str(bundle.absolute()), "--expected-head", expected_head,
+        "--authorization-json", str(authorization.absolute())]
+    supervisor._expected_child_command(cmd, root=root.absolute(), output_relative=out,
+        supervision_relative=sup, r4_bundle=bundle, expected_head=expected_head,
+        authorization_json=authorization)
+    cmd[5] = str(tmp_path / "other-root")
+    with pytest.raises(supervisor.SupervisionError, match="EXACT_BOUND"):
+        supervisor._expected_child_command(cmd, root=root.absolute(), output_relative=out,
+            supervision_relative=sup, r4_bundle=bundle, expected_head=expected_head,
+            authorization_json=authorization)
 
 
 def test_linux_proc_stat_parser_handles_parentheses_in_process_name():

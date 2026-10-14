@@ -1,4 +1,17 @@
-# ARCANA R6 — Roadmap operativa corrente (2026-10-14)
+# ARCANA R6 — Roadmap operativa corrente (2026-10-15)
+
+## INT3-ENG10K-B — Fair integration implementation
+
+Decision: `INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
+The Windows implementation accepts only a pre-existing governed external
+evidence root, requires an exact active branch/HEAD and read-only authenticated
+R4 input, and keeps candidate/supervision paths outside the checkout. Fair Linux
+runtime/provider/root/supervisor preflight is pending and numerical evolution is
+not authorized. Next is manual review/publication followed by Fair `--mode
+preflight` only. See `docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`.
+
+All scientific, Solver, mechanics and WORLD_HISTORY gates remain closed.
+
 
 ## INT3-ENG10K-A — bounded engineering preparation
 

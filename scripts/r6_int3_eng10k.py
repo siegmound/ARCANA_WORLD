@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import re
 import subprocess
 import sys
 
@@ -20,21 +21,26 @@ from arcana_worldsim.r6.functional_development import (  # noqa: E402
 from arcana_worldsim.r6.int0a_pipeline import prepare_pair_5_11  # noqa: E402
 from arcana_worldsim.r6.int3_eng10k import (  # noqa: E402
     MAX_PROJECTED_OUTPUT_BYTES, R4_KERNEL_SHA256, R4_SUPPORT_IDS,
-    RESOLUTION_FACTORS, SECONDS_PER_YEAR, Eng10kContractError,
+    R4_MANIFEST_SHA256, RESOLUTION_FACTORS, SECONDS_PER_YEAR, Eng10kContractError,
     advance_with_bounded_samples, canonical_bytes, compare_reduced_states,
-    load_r4_continuation_bundle, provider_component_bindings_match, sha256_bytes,
+    create_evidence_attempt_parent, load_r4_continuation_bundle,
+    provider_component_bindings_match, resolve_evidence_destinations,
+    resolve_incomplete_evidence_output, sha256_bytes,
 )
 
 CONFIG_PATH = ROOT / "configs/r6_int3_eng10k/engineering_case.json"
+EXECUTION_CONTRACT_PATH = ROOT / "configs/r6_int3_eng10k/INT3_ENG10K_EXECUTION_CONTRACT.json"
 R4_BUNDLE = ROOT / "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04"
-OUTPUT_RELATIVE = Path("outputs/r6_functional_development/INT3_ENG10K_5_11_DIRECT_RESTART_20261014_01")
-SUPERVISION_RELATIVE = Path("outputs/r6_functional_development/INT3_ENG10K_SUPERVISION_20261014_01")
+OUTPUT_RELATIVE = Path("R6/INT3_ENG10K/INT3_ENG10K_5_11_DIRECT_RESTART_20261014_01/candidate")
+SUPERVISION_RELATIVE = Path("R6/INT3_ENG10K/INT3_ENG10K_5_11_DIRECT_RESTART_20261014_01/supervision")
 EXPECTED_EXTERNAL_ROOT_SUFFIX = "_ARCANA_EXTERNAL_SOURCES"
 EXPECTED_KERNEL_SHA256 = R4_KERNEL_SHA256
 EXECUTION_DECISION = "CONDITIONAL_GO_INT3_ENG10K_NONCANONICAL_RUN"
 CONFIG_SHA256 = "3f3d3dc6d6ad28a31fdb7f350eedfe971a63708ad0f0f63f2d97e49b4e474f3e"
+EXECUTION_CONTRACT_SHA256 = "6ce5e12de99f422827b66a530ac4590b3c7e40b788a7013b622edefc700b63f8"
 EXECUTION_SOURCE_PATHS = (
     "configs/r6_int3_eng10k/engineering_case.json",
+    "configs/r6_int3_eng10k/INT3_ENG10K_EXECUTION_CONTRACT.json",
     "scripts/r6_int3_eng10k.py",
     "scripts/r6_int3_eng10k_supervisor.py",
     "src/arcana_worldsim/r6/int3_eng10k.py",
@@ -56,6 +62,14 @@ def _git(root: Path, *args: str) -> str:
 def _text_hash(path: Path) -> str:
     data = path.read_bytes().decode("utf-8").replace("\r\n", "\n").replace("\r", "\n").encode()
     return hashlib.sha256(data).hexdigest()
+
+
+def _validate_checkout_identity(branch: str, head: str, expected_head: str | None) -> None:
+    if branch != "r6/si1-bandwidth-f2av":
+        raise Eng10kContractError("SOURCE_BRANCH_MISMATCH")
+    if (not isinstance(expected_head, str) or not re.fullmatch(r"[0-9a-f]{40}", expected_head)
+            or head != expected_head):
+        raise Eng10kContractError("SOURCE_HEAD_EXPECTATION_MISSING_OR_MISMATCH")
 
 
 def _verify_current_kernel() -> dict[str, str]:
@@ -99,9 +113,43 @@ def _configuration() -> tuple[dict[str, object], bytes, str]:
     return config, raw, actual_sha
 
 
+def _verify_execution_contract() -> dict[str, object]:
+    raw = EXECUTION_CONTRACT_PATH.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != EXECUTION_CONTRACT_SHA256:
+        raise Eng10kContractError("EXECUTION_CONTRACT_IDENTITY_MISMATCH")
+    try:
+        contract = json.loads(raw)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise Eng10kContractError("EXECUTION_CONTRACT_INVALID") from exc
+    if not isinstance(contract, dict):
+        raise Eng10kContractError("EXECUTION_CONTRACT_INVALID")
+    r4_reference = contract.get("r4_reference")
+    if not isinstance(r4_reference, dict):
+        raise Eng10kContractError("EXECUTION_CONTRACT_INVALID")
+    if (contract.get("schema") != "ARCANA_R6_INT3_ENG10K_EXECUTION_CONTRACT_V1"
+            or contract.get("source_branch") != "r6/si1-bandwidth-f2av"
+            or contract.get("experiment_id") != "R6-INT3-ENG10K-A"
+            or contract.get("engineering_case_sha256") != CONFIG_SHA256
+            or contract.get("evidence_layout") !=
+               "R6/INT3_ENG10K/<attempt_id>/{candidate,supervision}"
+            or contract.get("evidence_root_must_preexist") is not True
+            or contract.get("preflight_must_not_create_paths") is not True
+            or contract.get("execution_requires_exact_expected_head") is not True
+            or contract.get("execution_authorized") is not False
+            or contract.get("canonical_publication_authorized") is not False
+            or contract.get("fair_evidence_root") !=
+               "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE"
+            or r4_reference.get("manifest_sha256") != R4_MANIFEST_SHA256):
+        raise Eng10kContractError("EXECUTION_CONTRACT_SCOPE_OR_GATE_MISMATCH")
+    return contract
+
+
 def _preflight(output_relative: Path = OUTPUT_RELATIVE,
                supervision_relative: Path = SUPERVISION_RELATIVE,
-               r4_bundle: Path = R4_BUNDLE, *, allow_existing_supervision: bool = False) -> dict[str, object]:
+               r4_bundle: Path = R4_BUNDLE, *, evidence_root: Path | None = None,
+               expected_head: str | None = None,
+               allow_existing_supervision: bool = False) -> dict[str, object]:
+    _verify_execution_contract()
     if platform.python_version() != "3.12.10":
         raise Eng10kContractError("PYTHON_RUNTIME_IDENTITY_MISMATCH")
     import numpy as np
@@ -115,20 +163,19 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
         raise Eng10kContractError("INVALID_GIT_OBJECT_ENVIRONMENT")
     branch = _git(ROOT, "branch", "--show-current")
     head = _git(ROOT, "rev-parse", "HEAD")
-    if branch != "r6/si1-bandwidth-f2av":
-        raise Eng10kContractError("SOURCE_BRANCH_MISMATCH")
+    _validate_checkout_identity(branch, head, expected_head)
     changed = _git(ROOT, "status", "--porcelain=v1", "--", *EXECUTION_SOURCE_PATHS)
     if changed:
         raise Eng10kContractError("ENG10K_SOURCE_OR_CONFIGURATION_NOT_COMMITTED_CLEAN")
-    output = (ROOT / output_relative).resolve()
-    supervision = (ROOT / supervision_relative).resolve()
-    allowed = (ROOT / "outputs/r6_functional_development").resolve()
-    if any(allowed not in path.parents for path in (output, supervision)) or output == supervision:
-        raise Eng10kContractError("OUTPUT_PATH_OUTSIDE_ISOLATED_ROOT")
-    if output.exists() or (supervision.exists() and not allow_existing_supervision):
-        raise Eng10kContractError("OUTPUT_OR_SUPERVISION_PATH_ALREADY_EXISTS")
-    if allow_existing_supervision and not supervision.is_dir():
-        raise Eng10kContractError("SUPERVISION_EVIDENCE_DIRECTORY_UNAVAILABLE")
+    if evidence_root is None:
+        raise Eng10kContractError("ARCANA_EVIDENCE_ROOT_REQUIRED")
+    world_roots = tuple(Path(value) for value in (os.environ.get("ARCANA_WORLD_HISTORY_ROOT"),)
+                        if value)
+    world_roots += (ROOT / "WORLD_HISTORY",)
+    evidence_root_resolved, output, supervision = resolve_evidence_destinations(
+        evidence_root, output_relative, supervision_relative, repo_root=ROOT,
+        world_history_roots=world_roots, r4_bundle=r4_bundle,
+        allow_existing_supervision=allow_existing_supervision)
     config, config_raw, config_sha = _configuration()
     kernel = _verify_current_kernel()
     r4 = load_r4_continuation_bundle(r4_bundle)
@@ -148,9 +195,13 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
     return {
         "decision": "INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION",
         "repository_branch": branch, "source_head": head,
+        "expected_source_head": expected_head,
         "source_worktree_cleanliness": "ENG10K_SOURCE_AND_CONFIGURATION_CLEAN_AT_PREFLIGHT",
         "kernel_identity": kernel, "runtime": {"python": platform.python_version(), "numpy": np.__version__},
         "external_root": str(Path(external_root).resolve()),
+        "evidence_root_absolute": str(evidence_root_resolved),
+        "output_absolute": str(output), "supervision_absolute": str(supervision),
+        "r4_bundle_absolute": str(Path(r4_bundle).resolve(strict=True)),
         "r4_manifest_sha256": r4.manifest_sha256,
         "r4_historical_source_composite_sha256":
             r4.source_identity.get("r4_source_composite_sha256"),
@@ -225,14 +276,20 @@ def _diagnostic_summary(diagnostics: dict[str, Any]) -> dict[str, Any]:
 
 def _validate_execution_authorization(authorization: object, *, source_head: str,
                                       configuration_sha256: str,
+                                      evidence_root_absolute: str,
                                       output_relative: Path,
-                                      supervision_relative: Path) -> None:
+                                      output_absolute: str,
+                                      supervision_relative: Path,
+                                      supervision_absolute: str) -> None:
     if not isinstance(authorization, dict):
         raise Eng10kContractError("SEPARATE_EXECUTION_AUTHORIZATION_INVALID")
     required = {"decision": EXECUTION_DECISION, "source_head": source_head,
         "configuration_sha256": configuration_sha256,
+        "evidence_root_absolute": evidence_root_absolute,
         "output_relative": output_relative.as_posix(),
+        "output_absolute": output_absolute,
         "supervision_relative": supervision_relative.as_posix(),
+        "supervision_absolute": supervision_absolute,
         "one_attempt_only": True, "noncanonical": True,
         "limits": {"wall_seconds": 900, "process_group_rss_bytes": 2_147_483_648,
                    "cumulative_output_bytes": 536_870_912}}
@@ -241,16 +298,21 @@ def _validate_execution_authorization(authorization: object, *, source_head: str
 
 
 def _execute(output_relative: Path, supervision_relative: Path,
-             authorization_path: Path, r4_bundle: Path) -> int:
+             authorization_path: Path, r4_bundle: Path, evidence_root: Path,
+             expected_head: str) -> int:
     preflight = _preflight(output_relative, supervision_relative, r4_bundle,
+                           evidence_root=evidence_root, expected_head=expected_head,
                            allow_existing_supervision=True)
     config, config_raw, config_sha = _configuration()
     authorization = json.loads(authorization_path.read_bytes())
     _validate_execution_authorization(authorization,
         source_head=str(preflight["source_head"]), configuration_sha256=config_sha,
-        output_relative=output_relative, supervision_relative=supervision_relative)
+        evidence_root_absolute=str(preflight["evidence_root_absolute"]),
+        output_relative=output_relative, output_absolute=str(preflight["output_absolute"]),
+        supervision_relative=supervision_relative,
+        supervision_absolute=str(preflight["supervision_absolute"]))
     r4 = load_r4_continuation_bundle(r4_bundle)
-    output_path = (ROOT / output_relative).resolve()
+    output_path = Path(str(preflight["output_absolute"]))
     output_path.mkdir(parents=True, exist_ok=False)
     started = {"status": "RUN_STARTED_NONCANONICAL", "source_head": preflight["source_head"],
                "configuration_sha256": config_sha, "r4_manifest_sha256": r4.manifest_sha256,
@@ -337,8 +399,9 @@ def _execute(output_relative: Path, supervision_relative: Path,
                             "direct_refinement_only": convergence,
                             "acceptance_threshold": "THRESHOLD_UNJUSTIFIED"},
     }
-    _write_bundle((ROOT / output_relative).resolve(), artifacts, config_raw, preflight, result)
-    print(json.dumps({"decision": result["decision"], "output": output_relative.as_posix()}, sort_keys=True))
+    _write_bundle(Path(str(preflight["output_absolute"])), artifacts, config_raw, preflight, result)
+    print(json.dumps({"decision": result["decision"],
+                      "output": str(preflight["output_absolute"])}, sort_keys=True))
     return 0
 
 
@@ -349,24 +412,37 @@ def main() -> int:
     parser.add_argument("--supervision-relative", type=Path, default=SUPERVISION_RELATIVE)
     parser.add_argument("--authorization-json", type=Path)
     parser.add_argument("--r4-bundle", type=Path, default=R4_BUNDLE)
+    parser.add_argument("--evidence-root", type=Path,
+                        default=Path(os.environ["ARCANA_EVIDENCE_ROOT"])
+                        if os.environ.get("ARCANA_EVIDENCE_ROOT") else None)
+    parser.add_argument("--expected-head", default=os.environ.get("ARCANA_EXPECTED_SOURCE_HEAD"))
     args = parser.parse_args()
     try:
         if args.mode == "preflight":
             print(json.dumps(_preflight(args.output_relative, args.supervision_relative,
-                                        args.r4_bundle), sort_keys=True))
+                                        args.r4_bundle, evidence_root=args.evidence_root,
+                                        expected_head=args.expected_head), sort_keys=True))
             return 0
         if args.authorization_json is None:
             raise Eng10kContractError("SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED")
         return _execute(args.output_relative, args.supervision_relative,
-                        args.authorization_json, args.r4_bundle)
+                        args.authorization_json, args.r4_bundle,
+                        args.evidence_root, args.expected_head)
     except (Eng10kContractError, OSError, ValueError) as exc:
         if args.mode == "execute":
-            partial = (ROOT / args.output_relative).resolve()
-            if partial.is_dir() and not (partial / "ARTIFACT_MANIFEST.json").exists():
+            partial = None
+            try:
+                partial = resolve_incomplete_evidence_output(
+                    args.evidence_root, args.output_relative, args.supervision_relative,
+                    repo_root=ROOT, world_history_roots=(ROOT / "WORLD_HISTORY",))
+            except (Eng10kContractError, OSError, TypeError):
+                pass
+            if partial is not None:
                 marker = {"status": "INCOMPLETE_NONAUTHORITATIVE", "error": str(exc),
                           "canonical_publication": False}
                 try:
-                    (partial / "INCOMPLETE.json").write_bytes(canonical_bytes(marker))
+                    with (partial / "INCOMPLETE.json").open("xb") as stream:
+                        stream.write(canonical_bytes(marker))
                 except OSError:
                     pass
         print(f"INT3_ENG10K_BLOCKED: {exc}", file=sys.stderr)

@@ -434,3 +434,25 @@ identity and absent output destinations. The current source composite was
 HEAD-dependent and distinct from the R4 composite. `ARCANA_EXTERNAL_ROOT` was
 set explicitly for the process because bootstrap left it unset. No evolution
 or output artifact was created. FAIR and its Linux supervisor remain pending.
+
+# 2026-10-15 — INT3-ENG10K-B Fair integration implementation
+
+- Starting branch/HEAD: `r6/si1-bandwidth-f2av` /
+  `16e4fa94bab659879a871222bd96ec72c561dfc3`. Windows-only implementation;
+  no commit, push, Fair access or numerical evolution.
+- Added governed external root validation and shared candidate/supervision path
+  resolution; exact source branch/full HEAD enforcement; pinned execution
+  contract; supervisor/child binding of external root and absolute+relative
+  targets; external read-only R4 input handling; and Fair fresh-clone active
+  branch handoff. Detailed report:
+  `docs/arcana/INT3_ENG10K_FAIR_INTEGRATION_REPORT.md`.
+- Verification: focused tests 28 PASS, 1 SKIP (Windows symlink creation), 0 FAIL;
+  `py_compile`, JSON/pinned-contract check and `git diff --check` PASS. Tests used
+  Python 3.12.10 / NumPy 2.5.1 / pytest 9.1.1, not the required Fair runtime.
+  First pytest attempt failed at default basetemp creation; explicit unique
+  basetemp run passed. Test scratch directories are not commit candidates.
+- Decision: `INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
+  No Fair provider/source-composite check, Linux supervisor execution or numeric
+  evolution. User to review and manually commit/push; next Fair action is exact
+  read-only preflight only.
+- Existing scientific gates and INT-2C STOP remain unchanged.

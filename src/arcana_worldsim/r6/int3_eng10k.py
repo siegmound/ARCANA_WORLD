@@ -5,7 +5,9 @@ from dataclasses import dataclass
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
+import re
 from typing import Any, Callable, Mapping
 
 from .functional_development import ReducedState, state_from_payload
@@ -24,10 +26,194 @@ MAX_PROJECTED_OUTPUT_BYTES = (
     4 * MAX_RETAINED_SAMPLES_PER_SUPPORT * MAX_SAMPLE_RECORD_BYTES
     + MAX_FIXED_OUTPUT_BYTES
 )
+EVIDENCE_ROOT_NAME = "ARCANA_WORLD_EVIDENCE"
+EVIDENCE_RELATIVE_PREFIX = ("R6", "INT3_ENG10K")
 
 
 class Eng10kContractError(ValueError):
     """A source, input, checkpoint or execution contract is incomplete."""
+
+
+def _path_component_is_link(path: Path) -> bool:
+    try:
+        if path.is_symlink():
+            return True
+        is_junction = getattr(path, "is_junction", None)
+        return bool(is_junction and is_junction())
+    except OSError as exc:
+        raise Eng10kContractError("EVIDENCE_PATH_COMPONENT_UNVERIFIABLE") from exc
+
+
+def _reject_linked_path(path: Path) -> None:
+    for component in (path, *path.parents):
+        if _path_component_is_link(component):
+            raise Eng10kContractError("EVIDENCE_PATH_SYMLINK_OR_JUNCTION_FORBIDDEN")
+
+
+def _resolve_checked_path(path: Path, *, strict: bool) -> Path:
+    """Resolve normally; on Windows use lexical absolute paths after reparse checks.
+
+    Some restricted Windows workspaces deny GetFinalPathNameByHandle for newly
+    created fixture directories. Reparse components are checked separately, so
+    lexical normalization is usable for overlap tests, but it cannot provide
+    race-free filesystem identity against concurrent path replacement.
+    """
+    candidate = Path(path).expanduser()
+    if os.name == "nt":
+        _reject_linked_path(candidate)
+        if strict and not candidate.exists():
+            raise Eng10kContractError("PATH_UNAVAILABLE")
+        return Path(os.path.abspath(candidate))
+    return candidate.resolve(strict=strict)
+
+
+def _paths_overlap(first: Path, second: Path) -> bool:
+    return first == second or first in second.parents or second in first.parents
+
+
+def validate_evidence_root(
+    evidence_root: Path, *, repo_root: Path, world_history_roots: tuple[Path, ...] = (),
+) -> Path:
+    """Resolve an already-existing governed evidence root without creating it."""
+    requested = Path(evidence_root).expanduser()
+    if not requested.is_absolute():
+        raise Eng10kContractError("EVIDENCE_ROOT_MUST_BE_ABSOLUTE")
+    _reject_linked_path(requested)
+    if not requested.exists() or not requested.is_dir():
+        raise Eng10kContractError("EVIDENCE_ROOT_UNAVAILABLE")
+    try:
+        resolved = _resolve_checked_path(requested, strict=True)
+        checkout = _resolve_checked_path(Path(repo_root), strict=True)
+        protected = tuple(_resolve_checked_path(Path(value), strict=False)
+                          for value in world_history_roots)
+    except OSError as exc:
+        raise Eng10kContractError("EVIDENCE_ROOT_RESOLUTION_FAILED") from exc
+    if resolved.name != EVIDENCE_ROOT_NAME:
+        raise Eng10kContractError("EVIDENCE_ROOT_NAME_NOT_GOVERNED")
+    if _paths_overlap(resolved, checkout):
+        raise Eng10kContractError("EVIDENCE_ROOT_MUST_BE_OUTSIDE_CHECKOUT")
+    if any(_paths_overlap(resolved, path) for path in protected):
+        raise Eng10kContractError("EVIDENCE_ROOT_OVERLAPS_WORLD_HISTORY")
+    if not os.access(resolved, os.W_OK | os.X_OK):
+        raise Eng10kContractError("EVIDENCE_ROOT_NOT_ACCESSIBLE")
+    return resolved
+
+
+def _safe_relative_parts(value: Path | str) -> tuple[str, ...]:
+    raw = str(value)
+    if not raw or "\x00" in raw or ":" in raw:
+        raise Eng10kContractError("EVIDENCE_RELATIVE_PATH_INVALID")
+    # Treat either separator as a separator on every host.
+    parts = tuple(raw.replace("\\", "/").split("/"))
+    if (not parts or any(part in ("", ".", "..") for part in parts)
+            or parts[:2] != EVIDENCE_RELATIVE_PREFIX):
+        raise Eng10kContractError("EVIDENCE_RELATIVE_PATH_UNSAFE")
+    return parts
+
+
+def resolve_evidence_destinations(
+    evidence_root: Path, output_relative: Path | str, supervision_relative: Path | str, *,
+    repo_root: Path, world_history_roots: tuple[Path, ...] = (), r4_bundle: Path | None = None,
+    allow_existing_supervision: bool = False,
+) -> tuple[Path, Path, Path]:
+    """Validate the root and same-attempt output locations; never create paths."""
+    root = validate_evidence_root(evidence_root, repo_root=repo_root,
+                                  world_history_roots=world_history_roots)
+    output_parts = _safe_relative_parts(output_relative)
+    supervision_parts = _safe_relative_parts(supervision_relative)
+    if (output_parts[:-1] != supervision_parts[:-1]
+            or output_parts[-1] == supervision_parts[-1]):
+        raise Eng10kContractError("EVIDENCE_TARGETS_MUST_BE_DISTINCT_SAME_ATTEMPT")
+    output = root.joinpath(*output_parts)
+    supervision = root.joinpath(*supervision_parts)
+    attempt = output.parent
+    if r4_bundle is not None:
+        bundle = Path(r4_bundle).expanduser()
+        _reject_linked_path(bundle)
+        try:
+            bundle = _resolve_checked_path(bundle, strict=True)
+        except (OSError, Eng10kContractError) as exc:
+            raise Eng10kContractError("R4_BUNDLE_UNAVAILABLE") from exc
+        if not bundle.is_dir() or _paths_overlap(attempt, bundle):
+            raise Eng10kContractError("EVIDENCE_TARGET_OVERLAPS_R4_INPUT")
+    _reject_linked_path(attempt)
+    if output.exists() or _path_component_is_link(output):
+        raise Eng10kContractError("EVIDENCE_OUTPUT_COLLISION_OR_LINK")
+    if allow_existing_supervision:
+        if (not supervision.is_dir() or _path_component_is_link(supervision)
+                or {p.name for p in supervision.iterdir()} != {"child.stdout", "child.stderr"}
+                or any(p.is_symlink() or not p.is_file() for p in supervision.iterdir())):
+            raise Eng10kContractError("SUPERVISION_EVIDENCE_DIRECTORY_INVALID")
+        if not attempt.is_dir():
+            raise Eng10kContractError("EVIDENCE_ATTEMPT_DIRECTORY_MISSING")
+        if {p.name for p in attempt.iterdir()} != {supervision.name}:
+            raise Eng10kContractError("EVIDENCE_ATTEMPT_MEMBERSHIP_MISMATCH")
+    elif attempt.exists():
+        raise Eng10kContractError("EVIDENCE_ATTEMPT_DIRECTORY_COLLISION")
+    if _path_component_is_link(supervision):
+        raise Eng10kContractError("EVIDENCE_SUPERVISION_LINK_FORBIDDEN")
+    for protected in world_history_roots:
+        protected_path = _resolve_checked_path(Path(protected), strict=False)
+        if _paths_overlap(output, protected_path) or _paths_overlap(supervision, protected_path):
+            raise Eng10kContractError("EVIDENCE_TARGET_OVERLAPS_WORLD_HISTORY")
+    return root, output, supervision
+
+
+def create_evidence_attempt_parent(
+    evidence_root: Path, attempt_relative: Path | str, *, repo_root: Path,
+    world_history_roots: tuple[Path, ...] = (),
+) -> Path:
+    """Create safe parent directories only after execution authorization."""
+    root = validate_evidence_root(evidence_root, repo_root=repo_root,
+                                  world_history_roots=world_history_roots)
+    parts = _safe_relative_parts(attempt_relative)
+    current = root
+    for index, part in enumerate(parts):
+        current = current / part
+        if _path_component_is_link(current):
+            raise Eng10kContractError("EVIDENCE_PATH_SYMLINK_OR_JUNCTION_FORBIDDEN")
+        if index == len(parts) - 1:
+            try:
+                current.mkdir()
+            except FileExistsError as exc:
+                raise Eng10kContractError("EVIDENCE_ATTEMPT_DIRECTORY_COLLISION") from exc
+        elif current.exists():
+            if not current.is_dir():
+                raise Eng10kContractError("EVIDENCE_PARENT_NOT_DIRECTORY")
+        else:
+            current.mkdir()
+    return current
+
+
+def resolve_incomplete_evidence_output(
+    evidence_root: Path, output_relative: Path | str, supervision_relative: Path | str, *,
+    repo_root: Path, world_history_roots: tuple[Path, ...] = (),
+) -> Path:
+    """Return only an existing, unsealed candidate directory for a failure marker."""
+    root = validate_evidence_root(evidence_root, repo_root=repo_root,
+                                  world_history_roots=world_history_roots)
+    output_parts = _safe_relative_parts(output_relative)
+    supervision_parts = _safe_relative_parts(supervision_relative)
+    if (output_parts[:-1] != supervision_parts[:-1]
+            or output_parts[-1] == supervision_parts[-1]):
+        raise Eng10kContractError("EVIDENCE_TARGETS_MUST_BE_DISTINCT_SAME_ATTEMPT")
+    output = root.joinpath(*output_parts)
+    supervision = root.joinpath(*supervision_parts)
+    attempt = output.parent
+    for path in (attempt, output, supervision):
+        _reject_linked_path(path)
+    if (not output.is_dir() or not supervision.is_dir()
+            or (output / "ARTIFACT_MANIFEST.json").exists()
+            or (output / "INCOMPLETE.json").exists()
+            or {p.name for p in supervision.iterdir()} != {"child.stdout", "child.stderr"}
+            or any(p.is_symlink() or not p.is_file() for p in supervision.iterdir())
+            or {p.name for p in attempt.iterdir()} != {output.name, supervision.name}):
+        raise Eng10kContractError("INCOMPLETE_EVIDENCE_TARGET_INVALID_OR_ALREADY_SEALED")
+    for protected in world_history_roots:
+        protected_path = _resolve_checked_path(Path(protected), strict=False)
+        if _paths_overlap(output, protected_path) or _paths_overlap(supervision, protected_path):
+            raise Eng10kContractError("EVIDENCE_TARGET_OVERLAPS_WORLD_HISTORY")
+    return output
 
 
 def canonical_bytes(value: Any) -> bytes:

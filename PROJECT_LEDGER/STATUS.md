@@ -1,4 +1,33 @@
-# CURRENT — ARCANA WorldSim R6, 2026-10-14
+# CURRENT — ARCANA WorldSim R6, 2026-10-15
+
+## INT3-ENG10K-B — Fair integration code ready, Fair preflight pending
+
+Decision: `INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
+Report: `docs/arcana/INT3_ENG10K_FAIR_INTEGRATION_REPORT.md`. Implementation is
+WINDOWS_WORKTREE_ONLY on starting HEAD `16e4fa94bab659879a871222bd96ec72c561dfc3`;
+the worktree remains uncommitted by instruction. The execution contract pins the
+external Fair evidence root and SHA256
+`6ce5e12de99f422827b66a530ac4590b3c7e40b788a7013b622edefc700b63f8`. Preflight
+requires the already-existing root, an explicit authenticated read-only R4 bundle,
+an active `r6/si1-bandwidth-f2av` branch and exact expected full HEAD; it creates
+no candidate or supervision path. Output layout is
+`ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/<attempt_id>/{candidate,supervision}`.
+
+Focused tests: 28 PASS, 1 SKIP (Windows symlink creation unavailable), 0 FAIL;
+`py_compile`, contract JSON/hash and `git diff --check` PASS. Test runtime was
+Windows Python 3.12.10 / NumPy 2.5.1 / pytest 9.1.1, not Fair's required
+3.12.10/2.3.5 runtime. No Fair access, provider audit, source-composite refresh,
+Linux supervisor test, numerical evolution or new scientific evidence occurred.
+The Fair checkout procedure now has a lane-specific active-branch fresh-clone
+and fast-forward-only exception; exact branch and HEAD checks are retained.
+
+All gates remain unchanged: `BLOCKED_F2AV_QUALIFICATION`,
+`OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`,
+`RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`,
+`ARCANA_SI1_MECHANICS_QUALIFIED=false`,
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. Next: manual source/membership review
+and commit/push by the user, followed by Fair read-only preflight only.
+
 
 ## INT3-ENG10K-A — Windows implementation checkpoint (2026-10-14)
 

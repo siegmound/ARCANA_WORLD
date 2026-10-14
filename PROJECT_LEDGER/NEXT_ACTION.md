@@ -1,4 +1,27 @@
-# NEXT — INT-2C closed: STOP, no further replay authorized
+# NEXT — INT3-ENG10K-B Fair preflight handoff pending (2026-10-15)
+
+`INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
+Review the Windows-only candidate and exact changed-file membership in
+`docs/arcana/INT3_ENG10K_FAIR_INTEGRATION_REPORT.md`; no commit or push was made.
+After the user manually publishes the reviewed commit, an already authorized
+Fair operator may perform only the read-only checks in
+`docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`: new clean checkout with active
+`r6/si1-bandwidth-f2av`, verified fetched ancestry and exact full HEAD; exact
+existing runtime and R4 bundle; existing external evidence/provider roots; tests;
+then `--mode preflight`. No numerical evolution is authorized by this gate.
+
+The Fair root must preexist at
+`/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE`; the code will not create
+it during preflight. Set `ARCANA_EVIDENCE_ROOT`, `ARCANA_EXTERNAL_ROOT`,
+`ARCANA_EXPECTED_SOURCE_HEAD`; pass the absolute authenticated `--r4-bundle`.
+Fresh output layout is `R6/INT3_ENG10K/<attempt_id>/{candidate,supervision}`.
+The task report contains exact non-evolution commands and failure conditions.
+
+Preserve all existing gates and the INT-2C STOP. Do not run ENG10K evolution,
+Fair supervisor execute mode, Solver, mechanics qualification or canonical
+WORLD_HISTORY publication.
+
+## Archived — INT-2C closed: STOP, no further replay authorized
 
 ## Separate bounded lane — INT3-ENG10K-A Windows preparation (2026-10-14)
 

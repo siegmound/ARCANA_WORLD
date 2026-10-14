@@ -1,10 +1,15 @@
 {
   "schema": "ARCANA_R6_INT3_ENG10K_EXECUTION_CONTRACT_V1",
-  "decision": "WINDOWS_CODE_READY_FAIR_PREFLIGHT_PENDING",
+  "decision": "INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING",
   "execution_authorized": false,
   "canonical_publication_authorized": false,
   "experiment_id": "R6-INT3-ENG10K-A",
   "source_branch": "r6/si1-bandwidth-f2av",
+  "fair_evidence_root": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE",
+  "evidence_layout": "R6/INT3_ENG10K/<attempt_id>/{candidate,supervision}",
+  "evidence_root_must_preexist": true,
+  "preflight_must_not_create_paths": true,
+  "execution_requires_exact_expected_head": true,
   "source_baseline_head": "8c75c439ab45a9d4e79930bd506e686e088e151d",
   "engineering_case_sha256": "3f3d3dc6d6ad28a31fdb7f350eedfe971a63708ad0f0f63f2d97e49b4e474f3e",
   "r4_reference": {

@@ -12,6 +12,13 @@ import sys
 import time
 from typing import Any
 
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+from arcana_worldsim.r6.int3_eng10k import (  # noqa: E402
+    Eng10kContractError, _resolve_checked_path, create_evidence_attempt_parent,
+    resolve_evidence_destinations,
+)
+
 WALL_LIMIT_S = 900.0
 RSS_LIMIT_BYTES = 2_147_483_648
 OUTPUT_LIMIT_BYTES = 536_870_912
@@ -91,38 +98,61 @@ def _terminate_group(pgid: int, process: subprocess.Popen[bytes]) -> None:
     process.wait()
 
 
-def supervise(command: list[str], *, output_dir: Path, evidence_dir: Path,
+def _expected_child_command(command: list[str], *, root: Path, output_relative: Path,
+                            supervision_relative: Path, r4_bundle: Path,
+                            expected_head: str, authorization_json: Path) -> list[str]:
+    runner = (ROOT / "scripts/r6_int3_eng10k.py").resolve()
+    required = ["--mode", "execute", "--evidence-root", str(root),
+        "--output-relative", output_relative.as_posix(),
+        "--supervision-relative", supervision_relative.as_posix(),
+        "--r4-bundle", str(_resolve_checked_path(r4_bundle, strict=True)),
+        "--expected-head", expected_head,
+        "--authorization-json", str(_resolve_checked_path(authorization_json, strict=True))]
+    if (len(command) != 2 + len(required)
+            or Path(command[0]).resolve() != Path(sys.executable).resolve()
+            or Path(command[1]).resolve() != runner
+            or command[2:] != required):
+        raise SupervisionError("ONLY_EXACT_BOUND_INT3_ENG10K_COMMAND_ALLOWED")
+    return required
+
+
+def supervise(command: list[str], *, evidence_root: Path,
+              output_relative: Path, supervision_relative: Path,
+              r4_bundle: Path, expected_head: str, authorization_json: Path,
               proc_root: Path = Path("/proc")) -> dict[str, Any]:
     if not sys.platform.startswith("linux"):
         raise SupervisionError("LINUX_PROC_SUPERVISION_REQUIRED")
-    if output_dir.exists() or evidence_dir.exists():
-        raise SupervisionError("OUTPUT_OR_EVIDENCE_COLLISION")
-    repo = Path.cwd().resolve()
-    allowed_root = (repo / "outputs/r6_functional_development").resolve()
-    resolved_output, resolved_evidence = output_dir.resolve(), evidence_dir.resolve()
-    if (allowed_root not in resolved_output.parents or allowed_root not in resolved_evidence.parents
-            or resolved_output == resolved_evidence):
-        raise SupervisionError("SUPERVISION_PATH_OUTSIDE_NONCANONICAL_OUTPUT_ROOT")
-    for path in (resolved_output, resolved_evidence):
-        for parent in (path, *path.parents):
-            if parent.is_symlink():
-                raise SupervisionError("SUPERVISION_PATH_SYMLINK_FORBIDDEN")
-    expected_runner = (repo / "scripts/r6_int3_eng10k.py").resolve()
-    if (len(command) < 4 or Path(command[0]).resolve() != Path(sys.executable).resolve()
-            or Path(command[1]).resolve() != expected_runner
-            or command[2:4] != ["--mode", "execute"]):
-        raise SupervisionError("ONLY_INT3_ENG10K_EXECUTION_COMMAND_ALLOWED")
+    world_roots = tuple(Path(value) for value in (os.environ.get("ARCANA_WORLD_HISTORY_ROOT"),)
+                        if value) + (ROOT / "WORLD_HISTORY",)
+    try:
+        root, output_dir, evidence_dir = resolve_evidence_destinations(
+            evidence_root, output_relative, supervision_relative, repo_root=ROOT,
+            world_history_roots=world_roots, r4_bundle=r4_bundle)
+    except Eng10kContractError as exc:
+        raise SupervisionError(str(exc)) from exc
+    if (not isinstance(expected_head, str) or len(expected_head) != 40
+            or any(ch not in "0123456789abcdef" for ch in expected_head)):
+        raise SupervisionError("EXPECTED_SOURCE_HEAD_INVALID")
+    _expected_child_command(command, root=root,
+        output_relative=output_relative, supervision_relative=supervision_relative,
+        r4_bundle=r4_bundle, expected_head=expected_head,
+        authorization_json=authorization_json)
     if not Path(command[0]).is_file():
         raise SupervisionError("EXECUTABLE_PATH_INVALID")
-    output_dir.resolve().parent.mkdir(parents=True, exist_ok=True)
-    evidence_dir.mkdir(parents=True, exist_ok=False)
+    try:
+        attempt = create_evidence_attempt_parent(root, output_relative.parent,
+            repo_root=ROOT, world_history_roots=world_roots)
+        evidence_dir = attempt / supervision_relative.name
+        evidence_dir.mkdir(exist_ok=False)
+    except (OSError, Eng10kContractError) as exc:
+        raise SupervisionError(f"EVIDENCE_ATTEMPT_CREATION_FAILED:{exc}") from exc
     stdout_path, stderr_path = evidence_dir / "child.stdout", evidence_dir / "child.stderr"
     clean_env = dict(os.environ)
     clean_env.pop("GIT_OBJECT_DIRECTORY", None)
     clean_env.pop("GIT_ALTERNATE_OBJECT_DIRECTORIES", None)
     start = time.monotonic()
     with stdout_path.open("xb") as stdout, stderr_path.open("xb") as stderr:
-        process = subprocess.Popen(command, cwd=Path.cwd(), env=clean_env,
+        process = subprocess.Popen(command, cwd=ROOT, env=clean_env,
                                    stdout=stdout, stderr=stderr, start_new_session=True)
         pgid = process.pid
         try:
@@ -171,7 +201,10 @@ def supervise(command: list[str], *, output_dir: Path, evidence_dir: Path,
             time.sleep(POLL_INTERVAL_S)
     elapsed = time.monotonic() - start
     result = {"schema": "ARCANA_R6_INT3_ENG10K_SUPERVISION_V1",
-        "command": command, "root_pid": process.pid, "root_start_ticks": root_start_ticks,
+        "command": command, "evidence_root_absolute": str(root),
+        "output_absolute": str(output_dir), "supervision_absolute": str(evidence_dir),
+        "expected_source_head": expected_head,
+        "root_pid": process.pid, "root_start_ticks": root_start_ticks,
         "root_executable": root_exe, "process_group_id": pgid,
         "last_observed_group_members": last_members, "natural_exit_code": process.returncode,
         "stop_reason": reason, "elapsed_seconds": elapsed, "poll_interval_seconds": POLL_INTERVAL_S,
@@ -189,13 +222,24 @@ def supervise(command: list[str], *, output_dir: Path, evidence_dir: Path,
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--evidence-dir", type=Path, required=True)
+    parser.add_argument("--evidence-root", type=Path,
+                        default=Path(os.environ["ARCANA_EVIDENCE_ROOT"])
+                        if os.environ.get("ARCANA_EVIDENCE_ROOT") else None)
+    parser.add_argument("--output-relative", type=Path, required=True)
+    parser.add_argument("--supervision-relative", type=Path, required=True)
+    parser.add_argument("--r4-bundle", type=Path, required=True)
+    parser.add_argument("--expected-head", required=True)
+    parser.add_argument("--authorization-json", type=Path, required=True)
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     try:
         command = args.command[1:] if args.command and args.command[0] == "--" else args.command
-        result = supervise(command, output_dir=args.output_dir, evidence_dir=args.evidence_dir)
+        if args.evidence_root is None:
+            raise SupervisionError("ARCANA_EVIDENCE_ROOT_REQUIRED")
+        result = supervise(command, evidence_root=args.evidence_root,
+            output_relative=args.output_relative, supervision_relative=args.supervision_relative,
+            r4_bundle=args.r4_bundle, expected_head=args.expected_head,
+            authorization_json=args.authorization_json)
         print(json.dumps(result, sort_keys=True))
         return 0 if result["stop_reason"] == "NATURAL_EXIT" and result["natural_exit_code"] == 0 else 1
     except (OSError, SupervisionError) as exc:

@@ -465,3 +465,17 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
   set `ARCANA_EXTERNAL_ROOT`. It wrote no artifacts and performed no evolution.
 - This is a Windows no-evolution preflight only. Linux supervisor/runtime and
   FAIR preflight remain pending; no numerical execution is authorized.
+
+## INT3-ENG10K-B — Fair integration handoff (2026-10-15)
+
+- Report: `docs/arcana/INT3_ENG10K_FAIR_INTEGRATION_REPORT.md`.
+- Preflight instructions: `docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`.
+- Contract: `configs/r6_int3_eng10k/INT3_ENG10K_EXECUTION_CONTRACT.json`, SHA256
+  `6ce5e12de99f422827b66a530ac4590b3c7e40b788a7013b622edefc700b63f8`.
+- Fair evidence root configured as
+  `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE`; no Fair access or
+  output created in this task. No new scientific evidence acquired.
+- Windows focused test result: 28 PASS, 1 SKIP, 0 FAIL. The skip is the
+  environment-dependent symlink creation case; full report records test runtime
+  and limitations. Do not treat as Fair Linux supervisor verification.
+- Current verdict: `INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
