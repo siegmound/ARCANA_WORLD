@@ -456,3 +456,19 @@ or output artifact was created. FAIR and its Linux supervisor remain pending.
   evolution. User to review and manually commit/push; next Fair action is exact
   read-only preflight only.
 - Existing scientific gates and INT-2C STOP remain unchanged.
+
+## 2026-10-15 — INT3-ENG10K-C Fair preflight closure and supervisor test preparation
+
+Fair operator reported no-evolution preflight PASS on `f072c46c77ee73e45b4ad5d7230451b19f35a692`,
+exit 0, 29/29 tests passed, Python 3.12.10 / NumPy 2.3.5, R4 manifest SHA256
+`191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`, source
+composite `0737c2922b6ba694d432c1bc21b0a6895f44e66be0096c6566573734d7a9eb63`,
+and matching provider identities. No raw Fair result/log imported or rehashed on
+Windows; no numerical evolution or canonical publication. Operator reports using
+the existing Fair worktree after fast-forward verification (exception to handoff's
+new-clone route) and a Git LFS warning with raw text unavailable. No Git/LFS config
+changed. Added two Linux-only tests that call the real supervisor loop with fixed
+synthetic children, never the ENG10K runner/kernel. Windows: 28 PASS, 3 SKIP (one
+symlink policy, two Linux-only), 0 FAIL. Next: after manual publication, run only
+the focused fixture suite on the exact Fair commit; require both Linux probes PASS.
+No ENG10K numerical execution authorized; scientific/canonical gates unchanged.

@@ -480,3 +480,107 @@ def test_supervisor_termination_uses_term_then_kill_when_group_disappears(monkey
     supervisor._terminate_group(44, process)
     assert calls == [(44, supervisor.signal.SIGTERM), (44, 0), (44, supervisor.signal.SIGKILL)]
     assert process.returncode == -15
+
+
+@pytest.mark.skipif(not sys.platform.startswith("linux"), reason="requires Linux /proc and process groups")
+def test_linux_supervise_runs_only_a_synthetic_child_and_records_natural_exit(tmp_path, monkeypatch):
+    """Exercise the real supervisor loop without invoking the ENG10K runner."""
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    r4 = tmp_path / "r4-input"
+    r4.mkdir()
+    authorization = tmp_path / "invalid-authorization.json"
+    authorization.write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(supervisor, "ROOT", checkout)
+    command = [sys.executable, "-c", "import time; print('SYNTHETIC_ONLY', flush=True); time.sleep(0.25)"]
+
+    def allow_only_this_fixture(actual, **_kwargs):
+        assert actual == command
+        assert "r6_int3_eng10k" not in " ".join(actual)
+        return actual
+
+    monkeypatch.setattr(supervisor, "_expected_child_command", allow_only_this_fixture)
+    result = supervisor.supervise(
+        command, evidence_root=root,
+        output_relative=Path("R6/INT3_ENG10K/probe-natural/candidate"),
+        supervision_relative=Path("R6/INT3_ENG10K/probe-natural/supervision"),
+        r4_bundle=r4, expected_head="f072c46c77ee73e45b4ad5d7230451b19f35a692",
+        authorization_json=authorization,
+    )
+
+    assert result["stop_reason"] == "NATURAL_EXIT"
+    assert result["natural_exit_code"] == 0
+    assert result["root_pid"] > 0
+    assert result["sample_count"] >= 1
+    assert result["peak_sampled_process_group_rss_bytes"] > 0
+    streams = Path(result["supervision_absolute"])
+    assert (streams / "child.stdout").read_text(encoding="utf-8").strip() == "SYNTHETIC_ONLY"
+    assert json.loads((streams / "SUPERVISION.json").read_text(encoding="utf-8")) == result
+    assert not Path(result["output_absolute"]).exists()
+
+
+@pytest.mark.skipif(not sys.platform.startswith("linux"), reason="requires Linux /proc and process groups")
+def test_linux_supervise_wall_timeout_terminates_synthetic_process_group(tmp_path, monkeypatch):
+    """Exercise sampled timeout and group termination using a harmless child tree."""
+    import time
+
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    r4 = tmp_path / "r4-input"
+    r4.mkdir()
+    authorization = tmp_path / "invalid-authorization.json"
+    authorization.write_text("{}", encoding="utf-8")
+    marker = tmp_path / "descendant-survived.txt"
+    monkeypatch.setattr(supervisor, "ROOT", checkout)
+    monkeypatch.setattr(supervisor, "WALL_LIMIT_S", 0.35)
+    monkeypatch.setattr(supervisor, "POLL_INTERVAL_S", 0.025)
+    monkeypatch.setattr(supervisor, "TERM_GRACE_S", 0.2)
+    monkeypatch.setattr(supervisor, "RSS_LIMIT_BYTES", 1_000_000_000)
+    monkeypatch.setattr(supervisor, "OUTPUT_LIMIT_BYTES", 1_000_000)
+    descendant = (
+        "import pathlib,time; time.sleep(30); "
+        f"pathlib.Path({str(marker)!r}).write_text('SURVIVED')"
+    )
+    command = [sys.executable, "-c",
+        "import subprocess,sys,time; "
+        f"p=subprocess.Popen([sys.executable,'-c',{descendant!r}]); "
+        "print('DESCENDANT_PID='+str(p.pid), flush=True); time.sleep(30)"]
+
+    def allow_only_this_fixture(actual, **_kwargs):
+        assert actual == command
+        assert "r6_int3_eng10k" not in " ".join(actual)
+        return actual
+
+    monkeypatch.setattr(supervisor, "_expected_child_command", allow_only_this_fixture)
+    result = supervisor.supervise(
+        command, evidence_root=root,
+        output_relative=Path("R6/INT3_ENG10K/probe-timeout/candidate"),
+        supervision_relative=Path("R6/INT3_ENG10K/probe-timeout/supervision"),
+        r4_bundle=r4, expected_head="f072c46c77ee73e45b4ad5d7230451b19f35a692",
+        authorization_json=authorization,
+    )
+
+    assert result["stop_reason"] == "WALL_TIME_LIMIT"
+    assert result["natural_exit_code"] not in (None, 0)
+    assert result["sample_count"] >= 1
+    assert result["peak_sampled_process_group_rss_bytes"] > 0
+    stdout = (Path(result["supervision_absolute"]) / "child.stdout").read_text(encoding="utf-8")
+    assert stdout.startswith("DESCENDANT_PID=")
+    descendant_pid = int(stdout.partition("=")[2].strip())
+    proc_entry = Path("/proc") / str(descendant_pid)
+    deadline = time.monotonic() + 2.0
+    while proc_entry.exists() and time.monotonic() < deadline:
+        stat = (proc_entry / "stat").read_text(encoding="utf-8", errors="replace")
+        close = stat.rfind(")")
+        state = stat[close + 1:].strip().split()[0] if close >= 0 else "?"
+        if state == "Z":
+            break
+        time.sleep(0.02)
+    assert not proc_entry.exists() or state == "Z"
+    time.sleep(0.1)
+    assert not marker.exists()
+    assert not Path(result["output_absolute"]).exists()

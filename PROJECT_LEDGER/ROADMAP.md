@@ -1,14 +1,14 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-15)
 
-## INT3-ENG10K-B — Fair integration implementation
+## INT3-ENG10K-C — reported preflight complete; monitor runtime test pending
 
-Decision: `INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
-The Windows implementation accepts only a pre-existing governed external
-evidence root, requires an exact active branch/HEAD and read-only authenticated
-R4 input, and keeps candidate/supervision paths outside the checkout. Fair Linux
-runtime/provider/root/supervisor preflight is pending and numerical evolution is
-not authorized. Next is manual review/publication followed by Fair `--mode
-preflight` only. See `docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`.
+Decision: `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION` reported by the
+Fair operator on `f072c46c77ee73e45b4ad5d7230451b19f35a692`. Windows added bounded
+Linux-only integration tests for the real supervisor monitor using synthetic
+children only. Next dependency is their execution on Fair's Linux `/proc` and
+process groups after manual publication. No ENG10K numerical execution is
+authorized. Details and limits:
+`docs/arcana/INT3_ENG10K_C_FAIR_PREFLIGHT_CLOSURE.md`.
 
 All scientific, Solver, mechanics and WORLD_HISTORY gates remain closed.
 

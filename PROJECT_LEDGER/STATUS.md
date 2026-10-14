@@ -1,33 +1,36 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-15
 
-## INT3-ENG10K-B — Fair integration code ready, Fair preflight pending
+## INT3-ENG10K-C — Fair preflight reported PASS; Linux supervisor probes pending
 
-Decision: `INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
-Report: `docs/arcana/INT3_ENG10K_FAIR_INTEGRATION_REPORT.md`. Implementation is
-WINDOWS_WORKTREE_ONLY on starting HEAD `16e4fa94bab659879a871222bd96ec72c561dfc3`;
-the worktree remains uncommitted by instruction. The execution contract pins the
-external Fair evidence root and SHA256
-`6ce5e12de99f422827b66a530ac4590b3c7e40b788a7013b622edefc700b63f8`. Preflight
-requires the already-existing root, an explicit authenticated read-only R4 bundle,
-an active `r6/si1-bandwidth-f2av` branch and exact expected full HEAD; it creates
-no candidate or supervision path. Output layout is
-`ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/<attempt_id>/{candidate,supervision}`.
+Decision: `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION` (operator-reported
+from Fair on `f072c46c77ee73e45b4ad5d7230451b19f35a692`). Report:
+`docs/arcana/INT3_ENG10K_C_FAIR_PREFLIGHT_CLOSURE.md`. The reported environment
+was Python 3.12.10 / NumPy 2.3.5; the R4 manifest SHA256 was
+`191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`; the reported
+source composite was
+`0737c2922b6ba694d432c1bc21b0a6895f44e66be0096c6566573734d7a9eb63`; provider
+identities reportedly matched R4. The 29-test result and all Fair identities are
+operator-reported; no Fair transcript/result was imported or rehashed on Windows.
+The preflight did not execute numerical evolution or publish canonical data.
 
-Focused tests: 28 PASS, 1 SKIP (Windows symlink creation unavailable), 0 FAIL;
-`py_compile`, contract JSON/hash and `git diff --check` PASS. Test runtime was
-Windows Python 3.12.10 / NumPy 2.5.1 / pytest 9.1.1, not Fair's required
-3.12.10/2.3.5 runtime. No Fair access, provider audit, source-composite refresh,
-Linux supervisor test, numerical evolution or new scientific evidence occurred.
-The Fair checkout procedure now has a lane-specific active-branch fresh-clone
-and fast-forward-only exception; exact branch and HEAD checks are retained.
+The Fair operator reports reusing the existing worktree after verified
+fast-forward and preserving historical evidence/R4. This is recorded as an
+operational exception to the ENG10K-B fresh-clone handoff; it does not amend the
+general procedure. A Git LFS warning was reported without its raw text. No LFS or
+repository configuration was changed; see the report for the bounded local check
+and tooling limitation.
 
-All gates remain unchanged: `BLOCKED_F2AV_QUALIFICATION`,
-`OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`,
-`RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`,
-`ARCANA_SI1_MECHANICS_QUALIFIED=false`,
-`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`. Next: manual source/membership review
-and commit/push by the user, followed by Fair read-only preflight only.
+The original suite did not execute the Linux `supervise()` loop with a real child.
+Two Linux-only synthetic process tests now exercise natural exit and timeout/group
+termination without invoking the ENG10K runner. Windows result: 28 PASS, 3 SKIP
+(one existing symlink test and two Linux-only tests), 0 FAIL. Next: manually publish
+this test/report/ledger update, then run only the focused synthetic suite on Fair.
+No ENG10K numerical execution is authorized.
 
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
+`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
+`F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`,
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ## INT3-ENG10K-A — Windows implementation checkpoint (2026-10-14)
 

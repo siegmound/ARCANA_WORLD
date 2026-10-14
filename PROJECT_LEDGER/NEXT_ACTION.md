@@ -1,25 +1,20 @@
-# NEXT — INT3-ENG10K-B Fair preflight handoff pending (2026-10-15)
+# NEXT — INT3-ENG10K-C Linux synthetic supervisor test (no evolution)
 
-`INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
-Review the Windows-only candidate and exact changed-file membership in
-`docs/arcana/INT3_ENG10K_FAIR_INTEGRATION_REPORT.md`; no commit or push was made.
-After the user manually publishes the reviewed commit, an already authorized
-Fair operator may perform only the read-only checks in
-`docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`: new clean checkout with active
-`r6/si1-bandwidth-f2av`, verified fetched ancestry and exact full HEAD; exact
-existing runtime and R4 bundle; existing external evidence/provider roots; tests;
-then `--mode preflight`. No numerical evolution is authorized by this gate.
+Fair preflight on source `f072c46c77ee73e45b4ad5d7230451b19f35a692` is reported
+PASS without numerical evolution. Windows did not independently verify Fair logs
+or external provider bytes. Read `docs/arcana/INT3_ENG10K_C_FAIR_PREFLIGHT_CLOSURE.md`.
 
-The Fair root must preexist at
-`/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE`; the code will not create
-it during preflight. Set `ARCANA_EVIDENCE_ROOT`, `ARCANA_EXTERNAL_ROOT`,
-`ARCANA_EXPECTED_SOURCE_HEAD`; pass the absolute authenticated `--r4-bundle`.
-Fresh output layout is `R6/INT3_ENG10K/<attempt_id>/{candidate,supervision}`.
-The task report contains exact non-evolution commands and failure conditions.
+Next bounded action after manual publication: run only
+`python -m pytest -q -rs tests/test_r6_int3_eng10k.py` in the existing Fair Conda
+runtime, on the exact clean published branch/HEAD. The two new Linux tests must
+exercise natural exit and timeout termination of fixed synthetic Python children.
+They do not call the ENG10K runner, kernel, provider audit, supervisor execute CLI,
+or Fair numerical mode. Require both Linux tests to run and pass; preserve and
+report the full suite's actual skips and logs. Exact preconditions and PASS/FAIL
+criteria are in the report.
 
-Preserve all existing gates and the INT-2C STOP. Do not run ENG10K evolution,
-Fair supervisor execute mode, Solver, mechanics qualification or canonical
-WORLD_HISTORY publication.
+Do not run `--mode execute`, the ENG10K supervisor CLI, or numerical evolution.
+Preserve INT-2C STOP and all scientific, Solver, mechanics and WORLD_HISTORY gates.
 
 ## Archived — INT-2C closed: STOP, no further replay authorized
 

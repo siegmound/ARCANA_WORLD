@@ -479,3 +479,22 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
   environment-dependent symlink creation case; full report records test runtime
   and limitations. Do not treat as Fair Linux supervisor verification.
 - Current verdict: `INT3_ENG10K_FAIR_INTEGRATION_CODE_READY__FAIR_RUNTIME_PREFLIGHT_PENDING`.
+
+## INT3-ENG10K-C — Fair no-evolution preflight (2026-10-15)
+
+Report: `docs/arcana/INT3_ENG10K_C_FAIR_PREFLIGHT_CLOSURE.md`.
+Fair result is operator-reported: source commit `f072c46c77ee73e45b4ad5d7230451b19f35a692`,
+preflight marker `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`, exit 0,
+29 passed / 0 failed / 0 skipped, Python 3.12.10 / NumPy 2.3.5, R4 manifest
+`191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`, and current
+source composite `0737c2922b6ba694d432c1bc21b0a6895f44e66be0096c6566573734d7a9eb63`.
+Provider identities reportedly match R4. No Fair transcript/result was transferred
+for independent Windows hashing. No numerical evolution or canonical publication.
+
+Fair reused the existing worktree after reported fast-forward verification; this
+is an operational exception to the ENG10K-B new-clone handoff. A Git LFS warning
+was reported, but raw text is unavailable; no configuration changed. The original
+29-test suite lacked a real `supervise()` child-launch test. Two Linux-only synthetic
+monitor tests were added locally; Windows skipped these and symlink fixture per
+platform/policy (28 PASS, 3 SKIP, 0 FAIL). Fair execution of these new probes remains
+pending. Detailed authority limits and commands are in the report.
