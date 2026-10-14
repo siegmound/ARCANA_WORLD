@@ -406,3 +406,19 @@ Ogni nuova riga deve indicare un preciso *scope*; se un risultato rimane blocked
 - Focused tests: 6 passed, 1 skipped. The skipped actual store/query test first probed same-directory hard links and received `PermissionError [WinError 5]`. Related INT-2A/core/B0 tests: 16 passed, 9 failed at the same existing `HistoryStore` manifest-install `os.link` operation. No storage behavior was bypassed. File-creation/readback and probe cleanup succeeded; WSL POSIX execution was unavailable due `Wsl/E_ACCESSDENIED`.
 - The run wrote only a fresh noncanonical result bundle at `outputs/r6_functional_development/INT2B_B0_BINDING_20261014_01/`; result/manifest/sidecar identities are in STATUS and EVIDENCE_INDEX. The bundle identities and 26-row record construction are verified; no B0 store or query was executed, and no store-size/latency result exists. Four checkpoint payloads deserialize as reduced state only; executable B0 replay remains unqualified.
 - Next: after normal source publication/fetch, repeat the existing isolated B0 storage/query tests in an already available supported Linux filesystem (Fair Conda `arcana-r6-linux` is only a candidate based on prior fixture work). Do not weaken atomic publication or access canonical `WORLD_HISTORY`. All scientific/Solver/canonical gates remain unchanged.
+
+## INT3-ENG10K-A — isolated implementation checkpoint (2026-10-14)
+
+Implemented a separate ENG10K config, runner, read-only R4 continuation closure,
+Linux process-group supervisor, focused tests and Gate-2 handoff. R4's nine-member
+manifest and complete 73-node initial/checkpoint state bindings were reverified
+locally. Current provider inputs reproduced the historical supports, boundary,
+forcing and initial states, while the current source composite differed from
+the historical R4 composite (`6d277b08…` vs `b3aff732…`). Source inspection
+confirmed the composite includes checkout HEAD; the implementation records both
+identities separately and compares non-source provider components. Focused tests
+17 PASS; related regressions 113 PASS;
+py_compile/JSON checks PASS. One earlier regression run failed only because its
+pytest basetemp was inside the protected repository; external-basetemp rerun
+passed. No numerical evolution or FAIR action occurred. Next: provenance review,
+publication and non-numerical FAIR preflight on the exact published commit.

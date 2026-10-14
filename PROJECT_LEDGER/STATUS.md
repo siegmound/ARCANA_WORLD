@@ -1,5 +1,32 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-14
 
+## INT3-ENG10K-A — Windows implementation checkpoint (2026-10-14)
+
+Decision: `INT3_ENG10K_CODE_READY__FAIR_PREFLIGHT_PENDING__NO_NUMERICAL_EVOLUTION`.
+Implementation baseline `8c75c439ab45a9d4e79930bd506e686e088e151d`, branch
+`r6/si1-bandwidth-f2av`; report `docs/arcana/INT3_ENG10K_READINESS_REPORT.md`.
+R4's exact nine-member bundle was reverified against manifest SHA256
+`191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`.
+The current provider audit reproduced pair 5:11, boundary, supports, frozen Ux
+and both complete T0 profiles. Current source-composite `6d277b08…` differs from
+R4 historical `b3aff732…` because the composite definition includes checkout
+HEAD. Both identities remain separately recorded; non-source provider identity
+components match the R4 forcing references. No 10,000-year evolution or FAIR job ran.
+
+Offline ENG10K tests: 17 PASS; existing functional development/INT-0A/INT-1A/
+INT-2C regressions: 113 PASS; py_compile and JSON parsing PASS. Linux supervisor
+runtime, Fair resource observations and physical applicability over 10,000 years
+remain UNKNOWN/FAIR_PENDING. Next: review and publish the implementation, then
+run only the no-evolution FAIR preflight with the exact commit and R4 bundle. A
+separate authorization is required before any numerical execution.
+
+All prior gates remain: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
+`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
+`F2B_SOLVER_EXECUTION_AUTHORIZED=false`,
+`ARCANA_SI1_MECHANICS_QUALIFIED=false`,
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+
 ## INT-2C-C3 — real R4 B0 executable replay closed (2026-10-14)
 
 Decision: `INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`.

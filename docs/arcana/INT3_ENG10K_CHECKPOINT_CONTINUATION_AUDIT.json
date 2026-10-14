@@ -1,0 +1,50 @@
+{
+  "schema": "ARCANA_R6_INT3_ENG10K_R4_CHECKPOINT_AUDIT_V1",
+  "audit_mode": "READ_ONLY_WINDOWS",
+  "audit_status": "R4_INPUT_CLOSURE_VERIFIED__10K_CONTINUATION_AUTHORITY_NOT_ESTABLISHED",
+  "r4_bundle_relative": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04",
+  "r4_manifest_sha256": "191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236",
+  "expected_manifest_members": 9,
+  "verified_scope": [
+    "exact bundle membership",
+    "manifest-pinned byte sizes and SHA256 values",
+    "JSON parsing of the same acquired byte snapshots",
+    "R4 noncanonical run decision and source/kernel identity records",
+    "ordered pair 5:11, boundary and two support IDs",
+    "complete initial and candidate ReducedState payloads on both 73-node supports",
+    "candidate state binding to typed trajectory and declared 0.0005 configuration",
+    "frozen forcing record and R4 elapsed endpoint"
+  ],
+  "historical_identity": {
+    "execution_commit": "91fc83d50ec15d8bb9b826926ac2f2dc859281e8",
+    "source_composite_sha256": "b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca",
+    "kernel_sha256": "bddedfd7439b328951389012b2af371d106d042018ac4be928325a6395666542"
+  },
+  "observed_binding": {
+    "boundary_id": "R6BND-T0-3eb57747e6f0a3f3305f",
+    "support_ids": ["R6G1D-R091-C029", "R6G1D-R091-C028"],
+    "forcing_m_per_year": 0.11467052868814648,
+    "initial_state_times_s": [0.0, 0.0],
+    "candidate_state_times_s": [31557600000.0, 31557600000.0],
+    "node_counts": [73, 73],
+    "original_checkpoint_status": "CANDIDATE_NONCANONICAL"
+  },
+  "current_provider_reaudit": {
+    "source_composite_sha256": "6d277b085383cdba98d38fe970d625d0af0f2d6ab9abdf788e4536194b725582",
+    "source_composite_matches_r4": false,
+    "boundary_support_forcing_and_initial_payloads_match": true,
+    "seven_non_source_set_provider_identities_match_r4_forcing_source_refs": true,
+    "mismatch_cause": "SOURCE_COMPOSITE_DEFINITION_INCLUDES_CURRENT_GIT_HEAD; DISTINCT_CHECKOUT_IDENTITIES",
+    "provider_component_comparison": "ALL_NON_SOURCE_SET_IDENTITIES_MATCH_R4_SOURCE_REFS"
+  },
+  "unverified_or_not_authorized": [
+    "whether the source-composite mismatch is benign or semantically relevant",
+    "scientific validity of the reduced model over 10000 years",
+    "physical applicability of frozen Euler forcing over that interval",
+    "Fair runtime, memory/RSS and Linux supervisor behavior for this candidate",
+    "numerical direct-versus-restart agreement for the 10000-year interval",
+    "scientific or canonical checkpoint authority"
+  ],
+  "original_artifacts_modified": false,
+  "numerical_evolution_executed": false
+}

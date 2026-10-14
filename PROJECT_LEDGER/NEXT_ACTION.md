@@ -1,5 +1,26 @@
 # NEXT — INT-2C closed: STOP, no further replay authorized
 
+## Separate bounded lane — INT3-ENG10K-A Windows preparation (2026-10-14)
+
+The new user-authorized scope prepared a distinct noncanonical 10,000-year
+engineering candidate; it does not reopen INT-2C replay or alter its verdict.
+Windows code/tests and R4 read-only input closure are ready. Current source
+composite `6d277b08…` differs from R4-bound `b3aff732…` because the identity
+definition includes checkout HEAD; the distinct hashes are separately retained,
+and non-source provider components are checked against historical source
+references. Report:
+`docs/arcana/INT3_ENG10K_READINESS_REPORT.md`.
+
+Next: review and publish the exact candidate commit, then run only the
+non-numerical FAIR preflight in
+`docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`. Numerical mode, FAIR evolution and
+canonical publication remain unauthorized; a separate bounded authorization
+is required after preflight.
+
+INT-2C's historical STOP remains applicable to further B0 replay. All scientific,
+Solver and WORLD_HISTORY gates remain unchanged.
+
+
 `INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`.
 Report `docs/arcana/INT2C_C3_EXECUTABLE_R4_REPLAY_CLOSURE.md`, SHA256 `462dff6628bed482b23b9e8be815239ba53008b5ef11853f59a073e4f6538c6d`.
 The one Fair real R4 replay is complete; imported manifest/all members, full

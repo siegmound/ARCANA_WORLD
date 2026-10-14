@@ -1,0 +1,49 @@
+{
+  "schema": "ARCANA_R6_INT3_ENG10K_EXECUTION_CONTRACT_V1",
+  "decision": "WINDOWS_CODE_READY_FAIR_PREFLIGHT_PENDING",
+  "execution_authorized": false,
+  "canonical_publication_authorized": false,
+  "experiment_id": "R6-INT3-ENG10K-A",
+  "source_branch": "r6/si1-bandwidth-f2av",
+  "source_baseline_head": "8c75c439ab45a9d4e79930bd506e686e088e151d",
+  "engineering_case_sha256": "3f3d3dc6d6ad28a31fdb7f350eedfe971a63708ad0f0f63f2d97e49b4e474f3e",
+  "r4_reference": {
+    "manifest_sha256": "191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236",
+    "execution_commit": "91fc83d50ec15d8bb9b826926ac2f2dc859281e8",
+    "source_composite_sha256": "b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca",
+    "kernel_sha256": "bddedfd7439b328951389012b2af371d106d042018ac4be928325a6395666542"
+  },
+  "engineering_case": {
+    "ordered_plate_pair": [5, 11],
+    "boundary_id": "R6BND-T0-3eb57747e6f0a3f3305f",
+    "support_ids": ["R6G1D-R091-C029", "R6G1D-R091-C028"],
+    "initial_age_ma": 210.0,
+    "direct_duration_years": 10000.0,
+    "restart_start_elapsed_years": 1000.0,
+    "restart_additional_duration_years": 9000.0,
+    "frozen_euler_extension_m_per_year": 0.11467052868814648,
+    "resolution_factors": [0.001, 0.0005, 0.00025],
+    "restart_reference_factor": 0.0005,
+    "kernel": "arcana_worldsim.r6.functional_development.pure_shear_thermal_step",
+    "diagnostic_interval_years": 10.0,
+    "diagnostic_sampling": "first actual state at or after scheduled targets; no interpolation"
+  },
+  "operational_thresholds_are_sampled_not_os_quotas": {
+    "wall_seconds": 900,
+    "process_group_rss_bytes": 2147483648,
+    "cumulative_output_bytes": 536870912
+  },
+  "projected_output_upper_bound_bytes": 66715648,
+  "source_composite_reconciliation": {
+    "historical_r4_sha256": "b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca",
+    "current_windows_provider_audit_sha256": "6d277b085383cdba98d38fe970d625d0af0f2d6ab9abdf788e4536194b725582",
+    "status": "DISTINCT_HEAD_BOUND_IDENTITIES__COMPONENT_BINDINGS_MATCH",
+    "current_identity_binds_current_checkout_head": true,
+    "historical_identity_remains_unchanged": true,
+    "preflight_must_compare_non_source_provider_components": true
+  },
+  "physical_temporal_validity": "UNKNOWN_NOT_ESTABLISHED",
+  "solver_f2b_authorized": false,
+  "mechanics_qualified": false,
+  "world_history_production_authorized": false
+}

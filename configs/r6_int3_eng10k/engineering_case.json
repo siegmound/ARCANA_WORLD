@@ -1,0 +1,29 @@
+{
+  "schema": "ARCANA_R6_INT3_ENG10K_CASE_V1",
+  "experiment_id": "R6-INT3-ENG10K-A",
+  "scope": "NONCANONICAL_ENGINEERING_STRESS_TEST",
+  "ordered_plate_pair": [5, 11],
+  "r4_boundary_id": "R6BND-T0-3eb57747e6f0a3f3305f",
+  "r4_support_ids": ["R6G1D-R091-C029", "R6G1D-R091-C028"],
+  "initial_age_ma": 210.0,
+  "elapsed_duration_years": 10000.0,
+  "r4_checkpoint_elapsed_years": 1000.0,
+  "restart_additional_duration_years": 9000.0,
+  "frozen_euler_extension_m_per_year": 0.11467052868814648,
+  "forcing_mode": "FROZEN_INSTANTANEOUS_ENGINEERING_DRIVER",
+  "kernel": "arcana_worldsim.r6.functional_development.pure_shear_thermal_step",
+  "resolution_factors": [0.001, 0.0005, 0.00025],
+  "reference_resolution_factor": 0.0005,
+  "diagnostic_resolution_factor": 0.0005,
+  "diagnostic_retention": {
+    "schedule_interval_years": 10.0,
+    "sampling": "FIRST_ACTUAL_NUMERICAL_STATE_AT_OR_AFTER_EACH_SCHEDULE_TARGET",
+    "interpolation": "NONE",
+    "record_omitted_integration_substeps": true,
+    "maximum_retained_samples_per_support": 1002
+  },
+  "temperature_boundary_conditions": "EXISTING_TF1_COLUMN_CONTRACT_FIXED_SURFACE_AND_MODEL_BASE",
+  "lateral_thermal_coupling": "NOT_MODELED_IN_REDUCED_1D_COLUMN_PAIR",
+  "canonical_publication": false,
+  "physical_temporal_validity": "UNKNOWN_NOT_ESTABLISHED"
+}

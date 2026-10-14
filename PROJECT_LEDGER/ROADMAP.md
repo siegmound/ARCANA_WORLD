@@ -1,5 +1,17 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-14)
 
+## INT3-ENG10K-A — bounded engineering preparation
+
+Windows implementation and offline qualification are prepared in
+`docs/arcana/INT3_ENG10K_READINESS_REPORT.md`. The authenticated R4 bundle and
+current provider inputs agree on data/support/forcing. The source-composite hashes
+differ because each binds a distinct checkout HEAD; historical R4 and current
+candidate identities remain separate, while non-source components match. Next
+gate is non-numerical FAIR preflight on the exact published commit. A
+10,000-year numerical run remains separately unauthorized. This lane does not
+qualify physical validity, SI1/Solver, mechanics or canonical history.
+
+
 ## INT-2C-C3 — real R4 B0 executable replay closed (2026-10-14)
 
 Decision: `INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`.

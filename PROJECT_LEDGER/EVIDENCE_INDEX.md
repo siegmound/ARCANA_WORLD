@@ -440,3 +440,14 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 - Output `outputs/r6_functional_development/INT2B_B0_BINDING_20261014_01/`: result 4,284 bytes SHA256 `b11a6d1b057a1676f8da6afb6598a682a9f7255458a37055866f3e481d33006f`; manifest 553 bytes SHA256 `b85216bafd82836f72a0720ef970c84137e5d98acc0092256ca8c562d9290440`; sidecar SHA256 `9b4c497b4bd8f7acd2060cdcd262d623201c23d79d33876f4c1c55a5480a83e1`. Manifest/member readback verified. It records the blocker and no store/query measurement.
 - Four checkpoint candidate payloads deserialize via `state_from_payload()` into reduced states, but no B0 checkpoint envelope, closed runner/configuration, forcing binding or deterministic engine adapter is present; executable replay remains unqualified. No canonical `WORLD_HISTORY` access/write, provider evolution, Fair, MPI, ShellSet, Solver or replay execution.
 - Decision: `INT2B_BLOCKED_STORE_ATOMIC_PUBLICATION_UNAVAILABLE`. Scientific gates remain `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## INT3-ENG10K-A — Windows implementation and read-only R4 audit (2026-10-14)
+
+- Readiness report: `docs/arcana/INT3_ENG10K_READINESS_REPORT.md`.
+- Execution contract: `configs/r6_int3_eng10k/INT3_ENG10K_EXECUTION_CONTRACT.json`.
+- Continuation audit: `docs/arcana/INT3_ENG10K_CHECKPOINT_CONTINUATION_AUDIT.json`.
+- FAIR preflight handoff: `docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`.
+- R4 manifest independently checked locally: `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`.
+- Historical R4 source composite: `b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca`.
+- Current provider audit source composite at baseline HEAD: `6d277b085383cdba98d38fe970d625d0af0f2d6ab9abdf788e4536194b725582`; it is head-bound and distinct from the historical R4 identity. All seven non-source-set provider identities match R4 source references.
+- No new scientific/evolution evidence or Fair output was created. Existing outputs were preserved.
