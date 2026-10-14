@@ -1,6 +1,38 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-14
 
-## INT-2C-C3 — supervised Linux launcher ready, real replay pending (2026-10-14)
+## INT-2C-C3 — real R4 B0 executable replay closed (2026-10-14)
+
+Decision: `INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`.
+Fair-tested source/Windows entry `9fb4fc0286cc09bcb6b8eef07bb92a19f4ca5963`;
+tracked worktree initially clean, remote divergence 0/0. Report
+`docs/arcana/INT2C_C3_EXECUTABLE_R4_REPLAY_CLOSURE.md`, SHA256 `462dff6628bed482b23b9e8be815239ba53008b5ef11853f59a073e4f6538c6d`.
+
+Imported `outputs/r6_functional_development/INT2C_C3_REPLAY_20261014_01/` verified
+independently on Windows: exact 21 manifest members + manifest, 22 files / 143,807
+bytes; manifest `da913ccef5850ae943afadfd90672853db9d1b625eed2ebcc2d508fc599a2852`.
+Complete computed state and both original per-support payload digests match R4
+exactly; B0 result VERIFIED, zero mismatches. Both supports have 73 nodes and
+finite payloads. Eleven typed records, 16-file/78,945-byte C2 read copy, committed
+view membership, recorded configuration, twelve source hashes and original R4
+inventory reconcile. No HistoryStore constructor or real kernel was run locally.
+
+Authenticated SUPERVISION record: natural child exit 0, 0.7619832679629326 s,
+39,845,888 peak sampled process-tree RSS bytes, two samples, zero recorded
+overshoot. Linux Python 3.12.10 / NumPy 2.3.5, original 1,000 years/fraction 0.0005.
+One authorized genuine real-kernel replay/no retry is operator-reported and
+consistent with the imported command/result. Parent log digest and Linux
+28 PASS / 1 expected SKIP are OPERATOR_REPORTED, not independently rehashed.
+Local focused regressions: 52 PASS, 6 Linux SKIP/NOT_TESTED_WINDOWS; no repeat replay.
+
+This closes only the existing R4 engineering trajectory, forcing, kernel/source
+binding and tested Linux runtime. Original C2/R4/INT-1D/history and checkpoint
+statuses preserved. No general scientific validity, universal cross-platform
+identity, physical refinement, INT-1D executable replay or canonical readiness.
+STOP after closure; no further execution or workstream is authorized.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## Historical INT-2C-C3 — supervised Linux launcher ready, real replay pending (2026-10-14)
 
 Decision: `INT2C_C3_SUPERVISED_LAUNCHER_READY__REAL_REPLAY_PENDING`.
 Entry `7ebbccfa136056b2467ece43fbb7fde51748c531`, clean tracked worktree/index.

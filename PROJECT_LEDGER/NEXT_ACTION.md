@@ -1,4 +1,25 @@
-# NEXT — INT-2C-C3 launcher: Fair self-test and nonnumerical preflight
+# NEXT — INT-2C closed: STOP, no further replay authorized
+
+`INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`.
+Report `docs/arcana/INT2C_C3_EXECUTABLE_R4_REPLAY_CLOSURE.md`, SHA256 `462dff6628bed482b23b9e8be815239ba53008b5ef11853f59a073e4f6538c6d`.
+The one Fair real R4 replay is complete; imported manifest/all members, full
+computed state, both historical payload digests and typed closure independently
+verified on Windows. Do not repeat the replay or prior preflight instructions.
+
+Preserve the imported C3 evidence, original C2/R4/INT-1D and all historical
+verdicts. The parent log digest and Linux 28 PASS / 1 SKIP remain operator-reported;
+no independent local log verification is claimed. Local checks were offline
+52 PASS / 6 Linux SKIP, with no actual numerical kernel execution.
+
+There is no new executable task authorized by this closure. Any future independent
+case (including INT-1D executable replay), retention experiment or broader
+qualification needs its own bounded scope and authorization. R4 exact replay
+is not universal cross-platform/scientific validity, physical refinement or
+canonical WORLD_HISTORY readiness. Await the next separately specified task.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## Archived next action — C3 launcher preflight before the completed replay
 
 `INT2C_C3_SUPERVISED_LAUNCHER_READY__REAL_REPLAY_PENDING`. Report
 `docs/arcana/INT2C_C3_SUPERVISED_REPLAY_LAUNCHER_PREFLIGHT.md`, SHA256 `ec49f8e894692c79467f44f32bdd73d109ed9af705ca7cfd93c106ecbcb4c2a6`, contains exact offline handoff commands.

@@ -1,5 +1,24 @@
 ## INT-1B — evidence density and distinct-regime design (2026-10-13)
 
+## INT-2C-C3 — imported executable replay verified (2026-10-14)
+
+Report `docs/arcana/INT2C_C3_EXECUTABLE_R4_REPLAY_CLOSURE.md`, SHA256 `462dff6628bed482b23b9e8be815239ba53008b5ef11853f59a073e4f6538c6d`.
+Source `9fb4fc0286cc09bcb6b8eef07bb92a19f4ca5963`. Local imported bundle:
+`outputs/r6_functional_development/INT2C_C3_REPLAY_20261014_01/`.
+WINDOWS_REHASH_VERIFIED: manifest `da913ccef5850ae943afadfd90672853db9d1b625eed2ebcc2d508fc599a2852`;
+result `d55e9302ff85c9007679c916124aa1c163304aa88e84b86da62291675901fd4e`;
+computed-state file `def81afa18361d7961e9bd777cc03c6ec536be9d587c952f007f69efe2ec2108`;
+supervision `2c709d8a3d1a3872e63bbb176006c1912a9d64fb7c5ee05bb1e2a39585f22682`.
+All 21 members + manifest verified, 22 files / 143,807 bytes. Full state ID and
+both historical per-support payload digests match unchanged R4. Eleven typed
+records and 16 copied-store files / 78,945 bytes reconcile; no original mutation.
+OPERATOR_REPORTED parent log SHA256
+`4f8b0f778e2c476d1335dd033cc3bc47af8b8e6ca0200e9faea9b3f067ed6c30`;
+Linux supervisor 28 PASS / 1 expected SKIP (parent/test logs not imported).
+Local offline 52 PASS / 6 Linux SKIP. No outputs staged or new replay executed.
+Decision `INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`;
+engineering R4 only, no broader physical/canonical qualification. STOP.
+
 ## INT-2C-C3 — launcher source and offline tests (2026-10-14)
 
 Report `docs/arcana/INT2C_C3_SUPERVISED_REPLAY_LAUNCHER_PREFLIGHT.md`, SHA256 `ec49f8e894692c79467f44f32bdd73d109ed9af705ca7cfd93c106ecbcb4c2a6`.
