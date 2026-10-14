@@ -1,4 +1,40 @@
-# NEXT — INT-2C-B: review the prepared R4 closure and authorize bounded B0 replay separately
+# NEXT — resolve the explicitly incompatible Fair replay runtime
+
+## INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
+
+Decision: `INT2CB_BLOCKED_FAIR_RUNTIME_IDENTITY_MISMATCH`. Entry source
+`f49de047ff560f707428b395b7373d46301fdee9`. Report `docs/arcana/INT2C_B_TECHNICAL_CHECKPOINT_RUNTIME_PREFLIGHT.md`,
+SHA256 `35defa80a702d3adea30e3c307c8eb2666bb8b4c8b8023dc1c05780b75db025c`. R4's nine files and original identities were reauthenticated
+and retained unchanged. New checkpoint/recipe are VALIDATED only in
+`TECHNICAL_ENGINEERING_INPUT_CLOSURE_ONLY`; no numerical validation or physical
+promotion. Existing adapter/kernel/B0 contract unchanged.
+
+Direct read-only SSH observation on Fair: Miniforge base Python 3.14.7 without
+NumPy; existing `arcana-r6-linux` Python 3.12.14 / NumPy 2.5.3. Required Python
+3.12.10 / NumPy 2.3.5 was not found in the inspected existing environment roots.
+No installation, environment recreation, job or numerical replay occurred.
+Do not infer global absence of another runtime or historical binary identity.
+
+Final local attestation: `outputs/r6_functional_development/INT2CB_TECHNICAL_ATTESTATION_20261014_02/`,
+three-member manifest SHA256 `8b172002968c9fcd7620d78b456054ac7ca0e7a9afa49f2f9e91ca81e9b1731d`.
+The `_01` provisional preparation remains preserved. No outputs are committed.
+63 offline tests PASS, 0 FAIL, 0 SKIP, 1 actual Windows store-publication test
+deselected. Typed `validate_replay_inputs()` passed through a test reader only;
+real transactional publication/reopened-store readback and numerical replay
+remain unexecuted. Exact runtime check rejects both alternate Fair versions.
+
+Next decision: either separately authorize exact-runtime provisioning, or
+review an explicitly new binding for Fair 3.12.14 / 2.5.3 with its own source,
+configuration, checkpoint/recipe identities and future numerical equivalence
+against the unchanged R4 full-state and per-support payload oracles. No relaxed
+runtime check, store-contract weakening, new scenario or execution authorization.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
+`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
+`F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`,
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## Archived INT-2C-A next-action proposal — addressed by INT-2C-B
 
 INT-2C-A decision: `INT2C_EXECUTABLE_REPLAY_BINDING_CODE_READY__NUMERICAL_VALIDATION_PENDING`.
 Code: `scripts/r6_int2c_replay_adapter.py`; tests: `tests/test_r6_int2c_replay_adapter.py`;

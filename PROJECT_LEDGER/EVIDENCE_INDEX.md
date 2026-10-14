@@ -1,4 +1,44 @@
 ## INT-1B — evidence density and distinct-regime design (2026-10-13)
+
+## INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
+
+Implementation byte SHA256: `scripts/r6_int2c_checkpoint_attest.py` =
+`9f8388fbcbc32c0099a64f232493eb83926ecfd987f6e11c971e64b8d2b2b65f`;
+`tests/test_r6_int2c_checkpoint_attest.py` =
+`b4ada2dca311f360022490e6ba8b7cee41621e18df98d920e81514af75f9a5cc`.
+
+Decision: `INT2CB_BLOCKED_FAIR_RUNTIME_IDENTITY_MISMATCH`. Entry source
+`f49de047ff560f707428b395b7373d46301fdee9`. Report `docs/arcana/INT2C_B_TECHNICAL_CHECKPOINT_RUNTIME_PREFLIGHT.md`,
+SHA256 `35defa80a702d3adea30e3c307c8eb2666bb8b4c8b8023dc1c05780b75db025c`. R4's nine files and original identities were reauthenticated
+and retained unchanged. New checkpoint/recipe are VALIDATED only in
+`TECHNICAL_ENGINEERING_INPUT_CLOSURE_ONLY`; no numerical validation or physical
+promotion. Existing adapter/kernel/B0 contract unchanged.
+
+Direct read-only SSH observation on Fair: Miniforge base Python 3.14.7 without
+NumPy; existing `arcana-r6-linux` Python 3.12.14 / NumPy 2.5.3. Required Python
+3.12.10 / NumPy 2.3.5 was not found in the inspected existing environment roots.
+No installation, environment recreation, job or numerical replay occurred.
+Do not infer global absence of another runtime or historical binary identity.
+
+Final local attestation: `outputs/r6_functional_development/INT2CB_TECHNICAL_ATTESTATION_20261014_02/`,
+three-member manifest SHA256 `8b172002968c9fcd7620d78b456054ac7ca0e7a9afa49f2f9e91ca81e9b1731d`.
+The `_01` provisional preparation remains preserved. No outputs are committed.
+63 offline tests PASS, 0 FAIL, 0 SKIP, 1 actual Windows store-publication test
+deselected. Typed `validate_replay_inputs()` passed through a test reader only;
+real transactional publication/reopened-store readback and numerical replay
+remain unexecuted. Exact runtime check rejects both alternate Fair versions.
+
+Next decision: either separately authorize exact-runtime provisioning, or
+review an explicitly new binding for Fair 3.12.14 / 2.5.3 with its own source,
+configuration, checkpoint/recipe identities and future numerical equivalence
+against the unchanged R4 full-state and per-support payload oracles. No relaxed
+runtime check, store-contract weakening, new scenario or execution authorization.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
+`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
+`F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`,
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 - Report: `docs/arcana/INT1B_EVIDENCE_DENSITY_AND_DISTINCT_REGIME_DESIGN.md`; decision `INT1B_NEXT_EVIDENCE_EXPERIMENT_DEFINED__EXECUTION_NOT_AUTHORIZED`. The R4 bundle was rechecked locally using `scripts/r6_int1a_retention_audit.py`: manifest SHA256 `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`; sample JSON SHA256 `ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad`; provenance validation PASS. INT-1A regression: 12 passed.
 - Existing edge evidence: R4 `EDGE_AUDIT_MATRIX.json`, member SHA256 `d89bd4d9cca8928f8e6b913ad6bf1955c429ac2e2e1bb4dc6b6263f7165a59c7`. Proposed boundary `R6BND-T0-27e4d497530e681071fb` is eligible, admitted normal-continent support on both sides and nonjunction; support IDs `R6G1D-R094-C026` / `R6G1D-R094-C025`. Artifact provides geometric/thermal class and edge kinematics but not full candidate materialized profiles.
 - No new execution or output. Future run requires separate authorization, exact validated boundary selection, full profile/material re-materialization, provider preflight, new absent destinations and active monitoring. `RESOURCE_2GB_SCOPE_UNRESOLVED` and all scientific/Solver gates remain open/blocked.

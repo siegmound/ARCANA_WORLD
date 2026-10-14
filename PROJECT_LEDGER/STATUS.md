@@ -1,8 +1,42 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-14
 
-Current priority: INT-2C-A prepared a closed typed R4 replay binding and deterministic kernel adapter. Decision: `INT2C_EXECUTABLE_REPLAY_BINDING_CODE_READY__NUMERICAL_VALIDATION_PENDING`. The real derived checkpoint remains `CANDIDATE_NONCANONICAL`; no numerical replay or store publication was executed. Report: `docs/arcana/INT2C_A_EXECUTABLE_REPLAY_BINDING_PREPARATION.md`. INT-2B closure remains evidenced and was published by verified fast-forward to `6a719da728baa11c4a972195d357fde7c32d21b3`.
+## INT-2C-B — technical input closure; Fair runtime blocked (2026-10-14)
 
-## CURRENT CHECKPOINT — INT-2C-A R4 replay binding preparation (2026-10-14)
+Decision: `INT2CB_BLOCKED_FAIR_RUNTIME_IDENTITY_MISMATCH`. Entry source
+`f49de047ff560f707428b395b7373d46301fdee9`. Report `docs/arcana/INT2C_B_TECHNICAL_CHECKPOINT_RUNTIME_PREFLIGHT.md`,
+SHA256 `35defa80a702d3adea30e3c307c8eb2666bb8b4c8b8023dc1c05780b75db025c`. R4's nine files and original identities were reauthenticated
+and retained unchanged. New checkpoint/recipe are VALIDATED only in
+`TECHNICAL_ENGINEERING_INPUT_CLOSURE_ONLY`; no numerical validation or physical
+promotion. Existing adapter/kernel/B0 contract unchanged.
+
+Direct read-only SSH observation on Fair: Miniforge base Python 3.14.7 without
+NumPy; existing `arcana-r6-linux` Python 3.12.14 / NumPy 2.5.3. Required Python
+3.12.10 / NumPy 2.3.5 was not found in the inspected existing environment roots.
+No installation, environment recreation, job or numerical replay occurred.
+Do not infer global absence of another runtime or historical binary identity.
+
+Final local attestation: `outputs/r6_functional_development/INT2CB_TECHNICAL_ATTESTATION_20261014_02/`,
+three-member manifest SHA256 `8b172002968c9fcd7620d78b456054ac7ca0e7a9afa49f2f9e91ca81e9b1731d`.
+The `_01` provisional preparation remains preserved. No outputs are committed.
+63 offline tests PASS, 0 FAIL, 0 SKIP, 1 actual Windows store-publication test
+deselected. Typed `validate_replay_inputs()` passed through a test reader only;
+real transactional publication/reopened-store readback and numerical replay
+remain unexecuted. Exact runtime check rejects both alternate Fair versions.
+
+Next decision: either separately authorize exact-runtime provisioning, or
+review an explicitly new binding for Fair 3.12.14 / 2.5.3 with its own source,
+configuration, checkpoint/recipe identities and future numerical equivalence
+against the unchanged R4 full-state and per-support payload oracles. No relaxed
+runtime check, store-contract weakening, new scenario or execution authorization.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
+`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
+`F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`,
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+Historical INT-2C-A priority: prepared a closed typed R4 replay binding and deterministic kernel adapter. Decision: `INT2C_EXECUTABLE_REPLAY_BINDING_CODE_READY__NUMERICAL_VALIDATION_PENDING`. The real derived checkpoint remains `CANDIDATE_NONCANONICAL`; no numerical replay or store publication was executed. Report: `docs/arcana/INT2C_A_EXECUTABLE_REPLAY_BINDING_PREPARATION.md`. INT-2B closure remains evidenced and was published by verified fast-forward to `6a719da728baa11c4a972195d357fde7c32d21b3`.
+
+## COMPLETED PREPARATION — INT-2C-A R4 replay binding preparation (2026-10-14)
 - Entry HEAD `6a719da728baa11c4a972195d357fde7c32d21b3`, parent `14208a1e4c4462414e571477a662ba3e06ca4a09`; tracked worktree initially clean. Preserved all pre-existing untracked evidence. Sandbox DNS failure was followed by an authorized network retry: remote `14208a1e` verified and INT-2B closure pushed normally.
 - R4 nine-member bundle authenticated through the existing loader, manifest `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`. Exact original states, forcing, two checkpoints and recipe retained. The original checkpoint is not validated; original checkpoint/recipe dependencies differ and raw provider digests are not typed B0 dependencies. A new candidate checkpoint/recipe/provenance closes the typed inputs without changing B0 protections.
 - Historical/current `functional_development.py` normalized SHA256 independently matches `bddedfd7439b328951389012b2af371d106d042018ac4be928325a6395666542` at R4 execution commit `91fc83d50ec15d8bb9b826926ac2f2dc859281e8`. Adapter binds complete initial states, source bytes, configuration, declared forcing and Python 3.12.10/NumPy 2.3.5. Historical runtime binary identity and cross-runtime equivalence remain UNKNOWN; known Fair Python 3.12.14 will fail the declared numerical runtime check.
