@@ -422,3 +422,15 @@ py_compile/JSON checks PASS. One earlier regression run failed only because its
 pytest basetemp was inside the protected repository; external-basetemp rerun
 passed. No numerical evolution or FAIR action occurred. Next: provenance review,
 publication and non-numerical FAIR preflight on the exact published commit.
+
+### Post-commit Windows preflight (2026-10-14)
+
+On code commit `1b7f3e967050915d1ffa3d7b058f2571c036ee47`, the read-only CLI
+preflight returned `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION` with
+Python 3.12.10 / NumPy 2.3.5. It verified the R4 manifest, current governed
+provider bindings, pair 5:11, boundary, supports, forcing, profiles, kernel
+identity and absent output destinations. The current source composite was
+`cae5ef5c1b95034474031f716b68dcc0dc54fd9f0a56f97dbec26310f241526f`; it is
+HEAD-dependent and distinct from the R4 composite. `ARCANA_EXTERNAL_ROOT` was
+set explicitly for the process because bootstrap left it unset. No evolution
+or output artifact was created. FAIR and its Linux supervisor remain pending.

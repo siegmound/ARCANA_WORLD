@@ -4,15 +4,18 @@
 
 The new user-authorized scope prepared a distinct noncanonical 10,000-year
 engineering candidate; it does not reopen INT-2C replay or alter its verdict.
-Windows code/tests and R4 read-only input closure are ready. Current source
+Windows code/tests, R4 read-only input closure and the no-evolution Windows
+provider-backed preflight are ready. The latter passed on code commit
+`1b7f3e967050915d1ffa3d7b058f2571c036ee47` with source composite
+`cae5ef5c1b95034474031f716b68dcc0dc54fd9f0a56f97dbec26310f241526f`. Current source
 composite `6d277b08…` differs from R4-bound `b3aff732…` because the identity
 definition includes checkout HEAD; the distinct hashes are separately retained,
 and non-source provider components are checked against historical source
 references. Report:
 `docs/arcana/INT3_ENG10K_READINESS_REPORT.md`.
 
-Next: review and publish the exact candidate commit, then run only the
-non-numerical FAIR preflight in
+Next: publish the reviewed candidate commit, then run only the non-numerical
+FAIR preflight in
 `docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md`. Numerical mode, FAIR evolution and
 canonical publication remain unauthorized; a separate bounded authorization
 is required after preflight.

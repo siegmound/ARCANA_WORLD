@@ -7,8 +7,11 @@ Windows implementation and offline qualification are prepared in
 current provider inputs agree on data/support/forcing. The source-composite hashes
 differ because each binds a distinct checkout HEAD; historical R4 and current
 candidate identities remain separate, while non-source components match. Next
-gate is non-numerical FAIR preflight on the exact published commit. A
-10,000-year numerical run remains separately unauthorized. This lane does not
+Windows no-evolution provider-backed preflight passed on code commit
+`1b7f3e967050915d1ffa3d7b058f2571c036ee47` (source composite
+`cae5ef5c1b95034474031f716b68dcc0dc54fd9f0a56f97dbec26310f241526f`). Next
+gate is publication followed by non-numerical FAIR preflight on the exact
+published commit. A 10,000-year numerical run remains separately unauthorized. This lane does not
 qualify physical validity, SI1/Solver, mechanics or canonical history.
 
 

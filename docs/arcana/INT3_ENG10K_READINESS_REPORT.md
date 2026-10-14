@@ -6,7 +6,7 @@ Implementation baseline: `8c75c439ab45a9d4e79930bd506e686e088e151d`
 
 ## Decision
 
-`INT3_ENG10K_CODE_READY__FAIR_PREFLIGHT_PENDING__NO_NUMERICAL_EVOLUTION`
+`INT3_ENG10K_CODE_READY__WINDOWS_PREFLIGHT_PASS__FAIR_PREFLIGHT_PENDING__NO_NUMERICAL_EVOLUTION`
 
 The isolated runner, bounded observation path, R4 continuation reader, manifest writer, Linux supervisor and offline tests are implemented. The authenticated Windows R4 bundle and current provider audit agree on boundary, supports, forcing and initial profiles. The current provider source-composite identity is `6d277b085383cdba98d38fe970d625d0af0f2d6ab9abdf788e4536194b725582`, whereas the R4 historical bundle binds `b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca`. Source inspection established that `plate_support_adapter.py` builds this composite with the current Git HEAD as an input. The two composites therefore identify different source checkouts and must not be compared as if they were the same identity. The corrected preflight preserves both hashes, verifies the current source head, and compares each non-source-set provider component identity against the independently R4-bound `source_refs`; it does not rewrite or equate the historical identity.
 
@@ -16,7 +16,7 @@ No 10,000-year numerical evolution, FAIR access, or canonical write was performe
 
 The local bundle `outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/` was read-only verified against its independently pinned manifest SHA256 `191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`. The loader checks exact membership of nine artifacts, file sizes and member SHA256 values, parsing from the acquired bytes, the R4 run decision, source/kernel identities, two ordered 73-node supports, forcing and initial/checkpoint state payloads. It binds the candidate checkpoint to the typed candidate state and its declared numerical configuration; the original B0 record remains `CANDIDATE_NONCANONICAL`.
 
-Observed input binding: boundary `R6BND-T0-3eb57747e6f0a3f3305f`; supports `R6G1D-R091-C029` and `R6G1D-R091-C028`; frozen `Ux=0.11467052868814648 m/year`; initial states at `time_s=0`; candidate restart states at 1,000 engineering years (`31,557,600,000 s`); 73 nodes per support. Current provider re-audit reproduced the boundary, ordered supports, velocity and both initial state payloads. Seven non-source-set provider identities are also recorded by the current audit; the historical and current source-composite values remain distinct and unresolved.
+Observed input binding: boundary `R6BND-T0-3eb57747e6f0a3f3305f`; supports `R6G1D-R091-C029` and `R6G1D-R091-C028`; frozen `Ux=0.11467052868814648 m/year`; initial states at `time_s=0`; candidate restart states at 1,000 engineering years (`31,557,600,000 s`); 73 nodes per support. Current provider re-audit reproduced the boundary, ordered supports, velocity and both initial state payloads. Seven non-source-set provider identities match the R4 forcing source references. The current source composite is intentionally distinct from historical R4 because its identity includes the current checkout HEAD.
 
 This is input integrity and technical restart-shape evidence only. It does not attest that 10,000-year forcing is physically applicable or that the candidate checkpoint has scientific/canonical authority.
 
@@ -43,9 +43,10 @@ The Linux supervisor starts the authorized Python runner in a new process group,
 - Python 3.12.10, NumPy 2.3.5 and pytest 8.4.2 available from the configured workspace runtime; no packages installed.
 - `py_compile` passed for ENG10K modules, runner, supervisor and tests.
 - Real R4 manifest and provider audit were checked read-only as described above.
+- After commit `1b7f3e967050915d1ffa3d7b058f2571c036ee47`, Windows `--mode preflight` returned `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`. It verified Python 3.12.10 / NumPy 2.3.5, the exact current kernel hash, R4 manifest, provider components, boundary/supports/forcing/profiles and both absent candidate directories. Current source composite for that checkout: `cae5ef5c1b95034474031f716b68dcc0dc54fd9f0a56f97dbec26310f241526f`; historical R4 source composite remains `b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca`. The preflight created no output and executed no kernel evolution.
 - No Linux supervisor runtime test, FAIR preflight, execution-mode run, 10,000-year evolution or canonical operation occurred.
 
-The environment bootstrap left `ARCANA_EXTERNAL_ROOT` unset. The read-only provider comparison was run after pointing the current process to the already present Windows `_ARCANA_EXTERNAL_SOURCES` directory. The CLI preflight was not run to a pass because the checked-out implementation files are uncommitted and its source-cleanliness gate correctly rejects them. A clean exact commit and a current externally configured root are prerequisites for the FAIR no-evolution preflight.
+The environment bootstrap left `ARCANA_EXTERNAL_ROOT` unset. For the successful Windows preflight, the process was explicitly pointed to the already present Windows `_ARCANA_EXTERNAL_SOURCES` directory. An earlier pre-commit CLI attempt correctly failed its source-cleanliness gate; the post-commit preflight above passed. FAIR still needs its own exact-commit, runtime, bundle and Linux-supervisor checks.
 
 ## FAIR preflight and next decision
 

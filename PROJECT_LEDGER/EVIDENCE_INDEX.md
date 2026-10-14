@@ -451,3 +451,17 @@ Questa pagina NON è un manifest sostitutivo. Le identità precise dei payload s
 - Historical R4 source composite: `b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca`.
 - Current provider audit source composite at baseline HEAD: `6d277b085383cdba98d38fe970d625d0af0f2d6ab9abdf788e4536194b725582`; it is head-bound and distinct from the historical R4 identity. All seven non-source-set provider identities match R4 source references.
 - No new scientific/evolution evidence or Fair output was created. Existing outputs were preserved.
+
+### INT3-ENG10K post-commit Windows preflight
+
+- On committed code HEAD `1b7f3e967050915d1ffa3d7b058f2571c036ee47`, the CLI
+  returned `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`. Current
+  source-composite SHA256: `cae5ef5c1b95034474031f716b68dcc0dc54fd9f0a56f97dbec26310f241526f`;
+  historical R4 composite remains `b3aff732b22d8a4ecc8426c5b54bfaca5490cb59a37679cff4d1dd78f713f8ca`.
+- Windows Python 3.12.10 / NumPy 2.3.5; R4 nine-member manifest and governed
+  provider components, pair/boundary/supports/Ux/profiles and exact kernel were
+  checked. Both candidate and supervisor destinations were absent. The process
+  used the explicit Windows external-provider root because bootstrap did not
+  set `ARCANA_EXTERNAL_ROOT`. It wrote no artifacts and performed no evolution.
+- This is a Windows no-evolution preflight only. Linux supervisor/runtime and
+  FAIR preflight remain pending; no numerical execution is authorized.

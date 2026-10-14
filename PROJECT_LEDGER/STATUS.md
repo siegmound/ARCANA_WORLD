@@ -2,7 +2,7 @@
 
 ## INT3-ENG10K-A — Windows implementation checkpoint (2026-10-14)
 
-Decision: `INT3_ENG10K_CODE_READY__FAIR_PREFLIGHT_PENDING__NO_NUMERICAL_EVOLUTION`.
+Decision: `INT3_ENG10K_CODE_READY__WINDOWS_PREFLIGHT_PASS__FAIR_PREFLIGHT_PENDING__NO_NUMERICAL_EVOLUTION`.
 Implementation baseline `8c75c439ab45a9d4e79930bd506e686e088e151d`, branch
 `r6/si1-bandwidth-f2av`; report `docs/arcana/INT3_ENG10K_READINESS_REPORT.md`.
 R4's exact nine-member bundle was reverified against manifest SHA256
@@ -19,6 +19,14 @@ runtime, Fair resource observations and physical applicability over 10,000 years
 remain UNKNOWN/FAIR_PENDING. Next: review and publish the implementation, then
 run only the no-evolution FAIR preflight with the exact commit and R4 bundle. A
 separate authorization is required before any numerical execution.
+
+Post-commit Windows no-evolution preflight passed on code commit
+`1b7f3e967050915d1ffa3d7b058f2571c036ee47`; current source-composite was
+`cae5ef5c1b95034474031f716b68dcc0dc54fd9f0a56f97dbec26310f241526f`. Python
+3.12.10/NumPy 2.3.5, the R4 bundle, seven non-source provider identities,
+boundary/supports/forcing/profiles and absent output paths were verified. No
+candidate output or numerical evolution was produced. FAIR preflight and Linux
+supervisor runtime remain pending.
 
 All prior gates remain: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
 `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
