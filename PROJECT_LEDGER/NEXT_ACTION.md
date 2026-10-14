@@ -1,4 +1,30 @@
-# NEXT — INT-2B closed; executable replay remains unqualified
+# NEXT — INT-2C-B: review the prepared R4 closure and authorize bounded B0 replay separately
+
+INT-2C-A decision: `INT2C_EXECUTABLE_REPLAY_BINDING_CODE_READY__NUMERICAL_VALIDATION_PENDING`.
+Code: `scripts/r6_int2c_replay_adapter.py`; tests: `tests/test_r6_int2c_replay_adapter.py`;
+report: `docs/arcana/INT2C_A_EXECUTABLE_REPLAY_BINDING_PREPARATION.md`.
+The nine-member R4 bundle and historical kernel identity were verified read-only.
+The adapter consumes declared initial checkpoint values, forcing and configuration;
+expected output values are used only by verification. No real replay was executed.
+
+Next bounded work: review the new typed dependency closure and issue a new
+technically validated noncanonical checkpoint/recipe only after its required checks.
+Preserve the original candidate records/IDs. Resolve the exact replay environment:
+Python 3.12.10 and NumPy 2.3.5 are currently required; Fair's known Python 3.12.14
+is not silently interchangeable. Actual atomic registration/readback and reopened
+B0 closure validation require a supported filesystem and the existing HistoryStore
+contract. The actual R4 numerical replay requires separate bounded authorization,
+new isolated output/store, runtime identity and supervision, then comparison of
+the complete state ID and original per-side payload hashes. Do not use an expected
+state as prediction or weaken B0's `VALIDATED` gate. No new scenario/physics.
+
+The 58 offline tests passed (one real-store test deselected); all new adapter
+dispatch tests used a synthetic mock kernel. Historical interpreter/library binary
+identities and numerical determinism under a candidate runtime remain unproven.
+No Fair job, store publication, physical replay, Solver or WORLD_HISTORY access is
+authorized by this preparation. All existing scientific/execution gates remain.
+
+## Completed INT-2B context (historical next question now addressed by INT-2C-A preparation)
 
 INT-2B isolated noncanonical B0 registration, readback and query binding is evidenced by the Fair-reported run on source commit `14208a1e4c4462414e571477a662ba3e06ca4a09`, imported at `outputs/r6_functional_development/INT2B_B0_BINDING_FAIR_20261014_01/`. Decision: `INT2B_NONCANONICAL_B0_STATE_QUERY_BINDING_EVIDENCED__EXECUTABLE_REPLAY_NOT_QUALIFIED`. Report `docs/arcana/INT2B_NONCANONICAL_B0_HISTORYSTORE_BINDING.md`, SHA256 `c49a9530abcfb3006c3baa201efca5715aee20606f838a1dc192a8d71a9daa22`, contains locally recalculated artifact hashes, full store inventory, Fair-reported results, authority limits and the stale limitation token disclosed in the imported JSON.
 
