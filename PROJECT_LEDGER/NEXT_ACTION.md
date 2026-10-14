@@ -1,4 +1,29 @@
-# NEXT — INT-2C-C3: supervised real R4 B0 replay, pending authorization
+# NEXT — INT-2C-C3 launcher: Fair self-test and nonnumerical preflight
+
+`INT2C_C3_SUPERVISED_LAUNCHER_READY__REAL_REPLAY_PENDING`. Report
+`docs/arcana/INT2C_C3_SUPERVISED_REPLAY_LAUNCHER_PREFLIGHT.md`, SHA256 `ec49f8e894692c79467f44f32bdd73d109ed9af705ca7cfd93c106ecbcb4c2a6`, contains exact offline handoff commands.
+Fetch the published launcher commit on Fair with verified ancestry/source hashes,
+using the existing `arcana-r6-replay-r4-py31210` Python 3.12.10 / NumPy 2.3.5 runtime.
+No installation or interpreter/package fallback. Run the targeted offline test
+module: all six Linux supervision scenarios must PASS; Windows does not attest
+these runtime guarantees. No real kernel is used in those tests.
+
+Then check the unchanged R4 bundle locator, existing C2 isolated store and new
+external evidence path, and run the CLI WITHOUT --execute-authorized. Require
+exact source/runtime/typed records, natural exit 0, PREFLIGHT_PASS_NO_NUMERICAL_EXECUTION,
+unchanged original C2/R4 bytes and verified manifest. HistoryStore opens a verified
+working copy because its constructor can recover/write metadata; original C2 is
+never modified or republished. Preserve any failure, no automatic retry.
+
+STOP after preflight for separate bounded authorization of one supervised genuine
+R4 B0 replay. Future numerical mode uses real execute_replay/DeterministicKernelAdapter,
+1,000 engineering years and fraction 0.0005, unchanged expected full-state identity
+and two historical payload digests. Do not substitute expected values or normalize
+mismatches. No real replay, Fair job, Solver or canonical publication is currently authorized.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## Archived next action — INT-2C-C1/C2 reconciliation
 
 C1/C2 are recorded as OPERATOR_REPORTED prerequisites, not independently imported
 Fair evidence. Report `docs/arcana/INT2C_C1_C2_FAIR_EVIDENCE_RECONCILIATION.md`, SHA256 `df21e291f3b4779fbee90235db0566f34a206261fb92ea67a88e30d64d97a75d`. No numerical execution is

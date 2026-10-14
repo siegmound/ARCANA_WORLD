@@ -1,5 +1,38 @@
 # Bitacora cronologica — append-only
 
+## INT-2C-C3 — supervised Linux launcher ready, real replay pending (2026-10-14)
+
+Decision: `INT2C_C3_SUPERVISED_LAUNCHER_READY__REAL_REPLAY_PENDING`.
+Entry `7ebbccfa136056b2467ece43fbb7fde51748c531`, clean tracked worktree/index.
+Report `docs/arcana/INT2C_C3_SUPERVISED_REPLAY_LAUNCHER_PREFLIGHT.md`, SHA256 `ec49f8e894692c79467f44f32bdd73d109ed9af705ca7cfd93c106ecbcb4c2a6`.
+Added one CLI and targeted tests; no changes to adapter, attestor, B0 or kernel.
+Default preflight never dispatches the kernel. Numerical CLI mode additionally
+requires --execute-authorized, which acknowledges separate operator approval;
+it does not grant authority. No real R4 kernel or Fair command executed here.
+
+The existing C2 store is read and byte-copied to fresh evidence before current
+HistoryStore is opened, protecting the original from constructor metadata/recovery.
+All eleven typed records and fixed checkpoint/recipe IDs must match authenticated
+R4 preparation; validate_replay_inputs precedes genuine execute_replay. A transparent
+wrapper retains independently computed values; full B0 state and both historical
+per-support payload hashes are fixed acceptance targets. Mismatches remain evidence.
+
+Linux monitoring uses /proc PID/executable/start ticks and process-tree RSS,
+900 s / 2 GiB / 512 MiB sampled thresholds, SIGTERM/SIGKILL termination, stdout/stderr,
+exit status and manifest. These are monitored thresholds, not hard quotas.
+Exact isolated Python 3.12.10 / NumPy 2.3.5 prefix required; no fallback. Source
+commit/cleanliness and twelve loaded code files are checked against Git blobs.
+
+Windows verification: 86 PASS, 6 Linux runtime tests SKIP/NOT_TESTED_WINDOWS,
+1 existing Windows store-publication test deselected; py_compile PASS. Six
+Linux supervisor cases must pass on Fair before final preflight/authorization.
+C1/C2 remain OPERATOR_REPORTED; no independent Fair import/rehash performed.
+Next: operator self-test and provider-free supervised B0 preflight with new paths,
+then STOP for separate bounded authorization of one real R4 replay. Full candidate
+runtime execution and Linux monitor proof remain pending; all historical evidence preserved.
+
+Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
 ## INT-2C-C1/C2 — Fair prerequisites reported; C3 pending authorization (2026-10-14)
 
 Current decision: `INT2C_C1_C2_FAIR_PREFLIGHT_REPORTED__C3_PENDING_AUTHORIZATION`.

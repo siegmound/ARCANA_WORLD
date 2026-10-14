@@ -1,5 +1,20 @@
 ## INT-1B — evidence density and distinct-regime design (2026-10-13)
 
+## INT-2C-C3 — launcher source and offline tests (2026-10-14)
+
+Report `docs/arcana/INT2C_C3_SUPERVISED_REPLAY_LAUNCHER_PREFLIGHT.md`, SHA256 `ec49f8e894692c79467f44f32bdd73d109ed9af705ca7cfd93c106ecbcb4c2a6`.
+Launcher `scripts/r6_int2c_replay_launcher.py` byte SHA256
+`bbc05c19795a2c2bb4630c6c429491b06b317d77ec2dd294a1301ab367c33e06`.
+Tests `tests/test_r6_int2c_replay_launcher.py` byte SHA256
+`cbe13bdc0655e1d938591ff0fee2655b4a889fd3fda6bb56bb8b7ed4983e7e69`.
+86 local offline PASS, 6 Linux supervision SKIP/NOT_TESTED_WINDOWS, 1 real Windows
+store-publication test deselected. No new numerical trajectory or Fair execution.
+C2 store path and isolated runtime prefix are supplied by the operator; historical
+C1/C2 result/log hashes remain OPERATOR_REPORTED. No outputs staged. Original
+R4/technical records, source and historical reports remain unchanged. Current
+decision is launcher CODE_READY only; Linux self-test/preflight and authorized
+real numerical execution remain separate prerequisites.
+
 ## INT-2C-C1/C2 — operator-reported Fair evidence (2026-10-14)
 
 Report `docs/arcana/INT2C_C1_C2_FAIR_EVIDENCE_RECONCILIATION.md`, SHA256 `df21e291f3b4779fbee90235db0566f34a206261fb92ea67a88e30d64d97a75d`. Evidence identifiers
