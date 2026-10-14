@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+import r6_int2b_history_adapter as adapter
 from r6_int2a_historical_query import load_sources
 from r6_int2b_history_adapter import (
     AdapterError, DOMAIN, build_observation_records, exact_time_key,
@@ -80,6 +81,19 @@ def test_real_filesystem_probe_cleans_only_its_probe_files(tmp_path):
     assert isinstance(supported, bool)
     assert (reason is None) is supported
     assert list(tmp_path.iterdir()) == []
+
+
+def test_filesystem_capability_reports_detected_type_not_a_platform_constant(tmp_path, monkeypatch):
+    monkeypatch.setattr(adapter, "_filesystem_type", lambda path: "SYNTHETIC_FS_TYPE")
+    capability = adapter._filesystem_capability(tmp_path, True, None)
+    assert capability == {
+        "volume": "SYNTHETIC_FS_TYPE",
+        "hardlink_probe_pass": True,
+        "reason": None,
+    }
+    monkeypatch.undo()
+    detected = adapter._filesystem_type(tmp_path)
+    assert isinstance(detected, str) and detected
 
 
 def test_b0_store_registration_queries_provenance_and_semantics_when_supported(tmp_path, sources):

@@ -6,10 +6,13 @@ This adapter never opens WORLD_HISTORY and never registers reconstructed rows.
 from __future__ import annotations
 
 import argparse
+import ctypes
 import hashlib
 import json
 import math
 import os
+import re
+import sys
 import tempfile
 import time
 from pathlib import Path
@@ -234,6 +237,66 @@ def probe_hardlink_capability(directory: Path) -> tuple[bool, str | None]:
     return failure is None, failure
 
 
+def _filesystem_type(path: Path) -> str:
+    """Return the detected filesystem type, or UNKNOWN when unavailable."""
+    path = Path(os.path.realpath(os.path.abspath(path)))
+    if os.name == "nt":
+        try:
+            from ctypes import wintypes
+
+            kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+            volume_path = ctypes.create_unicode_buffer(32768)
+            filesystem = ctypes.create_unicode_buffer(256)
+            kernel.GetVolumePathNameW.argtypes = [wintypes.LPCWSTR, wintypes.LPWSTR, wintypes.DWORD]
+            kernel.GetVolumePathNameW.restype = wintypes.BOOL
+            if not kernel.GetVolumePathNameW(str(path), volume_path, len(volume_path)):
+                return "UNKNOWN"
+            kernel.GetVolumeInformationW.argtypes = [
+                wintypes.LPCWSTR, wintypes.LPWSTR, wintypes.DWORD,
+                ctypes.POINTER(wintypes.DWORD), ctypes.POINTER(wintypes.DWORD),
+                ctypes.POINTER(wintypes.DWORD), wintypes.LPWSTR, wintypes.DWORD,
+            ]
+            kernel.GetVolumeInformationW.restype = wintypes.BOOL
+            if not kernel.GetVolumeInformationW(
+                    volume_path.value, None, 0, None, None, None,
+                    filesystem, len(filesystem)):
+                return "UNKNOWN"
+            return filesystem.value or "UNKNOWN"
+        except (AttributeError, OSError, TypeError, ValueError):
+            return "UNKNOWN"
+    if sys.platform.startswith("linux"):
+        try:
+            candidates: list[tuple[int, str]] = []
+            for line in Path("/proc/self/mountinfo").read_text(encoding="utf-8").splitlines():
+                left, separator, right = line.partition(" - ")
+                if not separator:
+                    continue
+                fields = left.split()
+                filesystem_fields = right.split()
+                if len(fields) < 5 or not filesystem_fields:
+                    continue
+                mountpoint = re.sub(
+                    r"\\([0-7]{3})",
+                    lambda match: chr(int(match.group(1), 8)),
+                    fields[4],
+                )
+                try:
+                    if os.path.commonpath((str(path), mountpoint)) == mountpoint:
+                        candidates.append((len(mountpoint), filesystem_fields[0]))
+                except ValueError:
+                    continue
+            if candidates:
+                return max(candidates)[1]
+        except (OSError, UnicodeError):
+            pass
+    return "UNKNOWN"
+
+
+def _filesystem_capability(path: Path, hardlink_ok: bool, reason: str | None) -> dict[str, Any]:
+    return {"volume": _filesystem_type(path), "hardlink_probe_pass": hardlink_ok,
+            "reason": reason}
+
+
 def query_and_measure(
     store: HistoryStore,
     records: tuple[ProvenanceRecord | DomainStateEnvelope, ...],
@@ -369,8 +432,7 @@ def run_int2b(r4_root: Path, int1d_root: Path, output_dir: Path) -> dict[str, An
                                   "provenance_count": len(summary),
                                   "records_built_from_verified_observed_samples": True},
         "checkpoint_assessment": checkpoint_status,
-        "filesystem_capability": {"volume": "NTFS", "hardlink_probe_pass": link_ok,
-                                  "reason": link_reason},
+        "filesystem_capability": _filesystem_capability(output_dir, link_ok, link_reason),
         "history_store": {"created": False, "registration": "NOT_ATTEMPTED_AFTER_HARDLINK_PROBE_FAILURE",
                           "queries_executed": False, "store_bytes": None,
                           "query_latency": None},
