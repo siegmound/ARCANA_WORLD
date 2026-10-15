@@ -541,3 +541,16 @@ it is not reassigned to the latest run. Fixture correction and cross-platform
 source syntax regression are prepared locally. Windows full-suite attempt did not
 collect because NumPy is unavailable in the selected Python; no package was
 installed. Fair test-only retest remains pending; no new runtime evidence exists.
+
+## INT3-ENG10K-E — final fixture stdout assertion retest (2026-10-15)
+
+Operator-reported Fair focused suite on baseline `9059eb9f1ce5f64408a037b33750ec4941874eb6`:
+43 collected, 42 PASS, 1 FAIL, 0 SKIP. Sole failure: stale expected stdout
+`CHILD_READY={pid} {pgrp}` versus emitted protocol marker `CHILD_READY=READY`.
+The natural-exit result, exit code, duration, and PID/process-group checks from
+`ready` and `finished` files passed. Log
+`R6/INT3_ENG10K_E_FIXTURE_RETESTS/9059eb9f_20261015_01/pytest.log`, SHA256
+`fbf2f8e05e086a380975e81eb1ef9c948ba3954daa6c239b0cd84e3e57d2e861` as reported
+by Fair operator; not imported/rehashed locally. The suite outcome remains FAIL.
+Windows correction is limited to the assertion; a new Fair test-only retest is
+pending. No numerical ENG10K run or new output evidence.

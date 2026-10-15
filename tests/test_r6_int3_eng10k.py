@@ -725,7 +725,7 @@ def test_linux_supervise_waits_for_live_descendant_after_leader_exits(tmp_path, 
     child_pid, child_pgrp = map(int, ready.read_text(encoding="utf-8").split())
     assert child_pid > 0 and child_pgrp == result["process_group_id"]
     assert finished.read_text(encoding="utf-8").split() == [str(child_pid), str(child_pgrp)]
-    assert f"CHILD_READY={child_pid} {child_pgrp}" in (
+    assert "CHILD_READY=READY" in (
         Path(result["supervision_absolute"]) / "child.stdout").read_text(encoding="utf-8")
     assert not Path(result["output_absolute"]).exists()
 

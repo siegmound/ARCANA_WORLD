@@ -1,5 +1,32 @@
 # INT3-ENG10K-E — descendant fixture interpolation hotfix
 
+## Final assertion correction — 2026-10-15
+
+Starting HEAD: `9059eb9f1ce5f64408a037b33750ec4941874eb6`, branch
+`r6/si1-bandwidth-f2av`. The subsequent operator-reported Fair retest collected
+43 tests: 42 passed, 1 failed, 0 skipped. Its only failure was the final
+`child.stdout` assertion: the test expected `CHILD_READY={pid} {pgrp}`, while
+the fixture protocol intentionally prints `CHILD_READY=READY`. The reported
+`NATURAL_EXIT`, exit code, elapsed-duration, ready-file PID/process-group, and
+finished-file PID/process-group assertions had already passed. Fair log path:
+`R6/INT3_ENG10K_E_FIXTURE_RETESTS/9059eb9f_20261015_01/pytest.log`; operator-
+reported SHA256 `fbf2f8e05e086a380975e81eb1ef9c948ba3954daa6c239b0cd84e3e57d2e861`.
+The log was not transferred or independently rehashed on Windows. This remains a
+42 PASS / 1 FAIL run and is not retroactively reclassified.
+
+The focused correction changes only the stdout assertion to `CHILD_READY=READY`.
+The separate PID and process-group checks through the `ready` and `finished`
+files remain intact. On Windows, `python -m pytest -q -rs
+tests/test_r6_int3_eng10k.py` stopped during collection with
+`ModuleNotFoundError: No module named 'numpy'`; zero pytest tests were collected.
+`py_compile` passed, and an AST-isolated call to the fixture builder confirmed
+the emitted child source compiles and retains `os.getpid()` / `os.getpgrp()`,
+the `CHILD_READY=READY` assertion, and the file-backed PID/group checks. Both
+`git diff --check` and `git diff --cached --check` pass for the prepared change.
+No supervisor, ENG10K runner, kernel, forcing, R4 input, contract, or authorization
+changed. A new Fair test-only run in a fresh immutable evidence directory remains
+necessary. No numerical ENG10K execution is authorized.
+
 Date: 2026-10-15
 Repository: `siegmound/ARCANA_WORLD`
 Branch / starting HEAD: `r6/si1-bandwidth-f2av` / `5ea8f6604bc4583a01b600f12f68eff3f9cd14f2`

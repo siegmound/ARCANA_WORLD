@@ -1,5 +1,18 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-15 — INT3-ENG10K-E final fixture assertion correction
+
+On branch `r6/si1-bandwidth-f2av`, starting HEAD
+`9059eb9f1ce5f64408a037b33750ec4941874eb6`, Fair operator reported 43 collected,
+42 PASS / 1 FAIL / 0 SKIP. The sole failure compared the protocol stdout marker
+`CHILD_READY=READY` against a stale PID/PGRP string. Natural exit, exit code,
+duration and ready/finished PID+process-group checks passed. Reported log SHA256
+`fbf2f8e05e086a380975e81eb1ef9c948ba3954daa6c239b0cd84e3e57d2e861`; log remains
+external and was not independently rehashed on Windows. The local test change is
+only the final marker assertion; Fair retest remains pending and the 42/1 result
+is preserved as FAIL. No ENG10K evolution, production supervisor run, commit or
+push. Next: reviewed test-only Fair rerun in a fresh evidence directory.
+
 ## 2026-10-14 — post-INT2C Git/ledger audit; obsolete bootstrap actions corrected
 
 - Entry/verified code remote `ef55666586b4cbaccf0eb3bfbd82220c5f707f84`, clean tracked index/worktree, divergence 0/0. Five INT-2C reports and all five operational ledgers are published; their report references exist and are tracked. No missing source/test/script files found.

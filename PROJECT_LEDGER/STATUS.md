@@ -1,23 +1,28 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-15
 
-## INT3-ENG10K-E — fixture hotfix prepared; Fair retest pending
+## INT3-ENG10K-E — final fixture assertion correction; Fair retest pending
 
-Decision: `INT3_ENG10K_E_FIXTURE_HOTFIX_READY__FAIR_RETEST_PENDING`.
-Report: `docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`. The latest operator-reported
-Fair test-only attempt collected 42 tests: 41 PASS, 1 FAIL, 0 SKIP. The
-leader-exited/live-descendant fixture raised `NameError: name 'os' is not defined`
-while constructing child source, before `supervisor.supervise()`; no supervisor
-regression was exercised by that failure. No log digest for this latest attempt
-was supplied. The earlier INT3-E 41 PASS / 1 FAIL log SHA256
-`f33b3c9d49b230c782018941b198e0bda4e951623c7f13aa316a6356f3194b1f` and the first
-collection-error attempt remain preserved separately.
+Decision: `INT3_ENG10K_E_FINAL_ASSERTION_FIX_READY__FAIR_RETEST_PENDING`.
+Report: `docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`. Starting HEAD
+`9059eb9f1ce5f64408a037b33750ec4941874eb6`. Operator-reported Fair retest
+collected 43 tests: 42 PASS, 1 FAIL, 0 SKIP. Its sole failure expected
+`CHILD_READY={pid} {pgrp}` instead of protocol output `CHILD_READY=READY`.
+Natural exit, exit code, duration and PID/process-group checks through `ready` and
+`finished` had passed. Log path
+`R6/INT3_ENG10K_E_FIXTURE_RETESTS/9059eb9f_20261015_01/pytest.log`, operator-
+reported SHA256 `fbf2f8e05e086a380975e81eb1ef9c948ba3954daa6c239b0cd84e3e57d2e861`;
+not transferred/rehashed on Windows. This stays a 42 PASS / 1 FAIL result.
 
-The fixture now uses one helper with escaped child f-string braces for both
-readiness and completion PID/process-group markers, plus a cross-platform source
-syntax regression. Windows full-suite collection is currently blocked because the
-available Python lacks NumPy; no packages were installed. A bounded standalone
-helper check and `py_compile` are recorded in the hotfix report. Fair Linux retest
-of the focused module is pending; no production supervisor or ENG10K evolution ran.
+The correction updates only the final stdout assertion to the actual READY marker;
+the separate PID and group assertions remain. Windows pytest collection was
+attempted but stopped before collecting tests because the available Python lacks
+NumPy (`ModuleNotFoundError`); no packages were installed. Syntax/whitespace checks
+are recorded in the task result. No production supervisor or ENG10K evolution ran.
+
+Historical prior INT3-E 42-test attempt (41 PASS / 1 FAIL) was the earlier fixture
+`NameError` before `supervisor.supervise()`. The earlier 41 PASS / 1 FAIL log SHA256
+`f33b3c9d49b230c782018941b198e0bda4e951623c7f13aa316a6356f3194b1f` and first
+collection-error attempt remain separately preserved.
 
 Historical INT3-D result remains `INT3_ENG10K_D_WINDOWS_FIX_READY__FAIR_RETEST_PENDING`;
 its Fair failure, timeout pass, original evidence and report are preserved. All

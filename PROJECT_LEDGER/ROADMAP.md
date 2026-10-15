@@ -1,15 +1,14 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-15)
 
-## INT3-ENG10K-E — child-source fixture hotfix; Fair regression pending
+## INT3-ENG10K-E — final fixture assertion correction; Fair regression pending
 
-A reported 0.033-second `NATURAL_EXIT` after the leader-exited/live-descendant
-fixture is corrected by polling the leader before a snapshot and requiring 0.5
-seconds of repeated empty post-exit process-group samples. The fixture now confirms
-child startup and same-group membership. Windows: 38 PASS / 4 SKIP / 0 FAIL; Linux
-`/proc` and process-group execution remains unverified. Next: focused Fair test-only
-rerun in a fresh immutable evidence directory after review/publication. No production
-supervisor or numerical evolution is authorized. The INT3-D failure evidence is
-preserved and not reclassified.
+Latest operator-reported Fair suite: 43 collected, 42 PASS, 1 FAIL, 0 SKIP. The
+only failure expected the wrong child stdout text (`CHILD_READY={pid} {pgrp}`;
+protocol is `CHILD_READY=READY`). Natural exit, exit code, duration and ready /
+finished PID and process-group checks passed. The final assertion is corrected in
+the Windows worktree; preserve the Fair result and its log digest as FAIL until a
+new focused Linux retest passes. Prior NameError and collection-failure attempts
+remain immutable. No production supervisor run or ENG10K evolution is authorized.
 
 ## INT3-ENG10K-A — bounded engineering preparation
 
