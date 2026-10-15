@@ -1,6 +1,6 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-15)
 
-## INT3-ENG10K-E — natural-exit confirmation; Fair regression pending
+## INT3-ENG10K-E — child-source fixture hotfix; Fair regression pending
 
 A reported 0.033-second `NATURAL_EXIT` after the leader-exited/live-descendant
 fixture is corrected by polling the leader before a snapshot and requiring 0.5

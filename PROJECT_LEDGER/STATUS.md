@@ -1,20 +1,23 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-15
 
-## INT3-ENG10K-E — natural-exit confirmation prepared; Fair retest pending
+## INT3-ENG10K-E — fixture hotfix prepared; Fair retest pending
 
-Decision: `INT3_ENG10K_E_WINDOWS_CORRECTION_READY__FAIR_LINUX_RETEST_PENDING`.
-Report: `docs/arcana/INT3_ENG10K_E_NATURAL_EXIT_CONFIRMATION.md`. The INT3-D Fair
-suite result is operator-reported (40 PASS, 1 FAIL, 0 SKIP); the leader-exited/live-
-descendant test returned `NATURAL_EXIT` after 0.033428873866796494 seconds. The
-original log remains immutable on Fair and was not independently inspected here.
-The reported timing does not prove that the descendant was observed alive.
+Decision: `INT3_ENG10K_E_FIXTURE_HOTFIX_READY__FAIR_RETEST_PENDING`.
+Report: `docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`. The latest operator-reported
+Fair test-only attempt collected 42 tests: 41 PASS, 1 FAIL, 0 SKIP. The
+leader-exited/live-descendant fixture raised `NameError: name 'os' is not defined`
+while constructing child source, before `supervisor.supervise()`; no supervisor
+regression was exercised by that failure. No log digest for this latest attempt
+was supplied. The earlier INT3-E 41 PASS / 1 FAIL log SHA256
+`f33b3c9d49b230c782018941b198e0bda4e951623c7f13aa316a6356f3194b1f` and the first
+collection-error attempt remain preserved separately.
 
-The supervisor now polls the leader before its process-group snapshot and requires
-repeated empty post-exit snapshots spanning a finite 0.5-second confirmation
-window. The deterministic fixture confirms child startup and process-group
-membership before the leader exits. Windows focused tests: 38 PASS, 4 SKIP, 0 FAIL;
-three Linux process tests remain unexecuted on Windows. Fair Linux regression is
-pending; no production supervisor or ENG10K evolution ran.
+The fixture now uses one helper with escaped child f-string braces for both
+readiness and completion PID/process-group markers, plus a cross-platform source
+syntax regression. Windows full-suite collection is currently blocked because the
+available Python lacks NumPy; no packages were installed. A bounded standalone
+helper check and `py_compile` are recorded in the hotfix report. Fair Linux retest
+of the focused module is pending; no production supervisor or ENG10K evolution ran.
 
 Historical INT3-D result remains `INT3_ENG10K_D_WINDOWS_FIX_READY__FAIR_RETEST_PENDING`;
 its Fair failure, timeout pass, original evidence and report are preserved. All

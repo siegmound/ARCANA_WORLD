@@ -503,3 +503,22 @@ before leader exit. Windows: 38 passed, 4 skipped, 0 failed; three Linux process
 cases and one symlink case are skipped. No Linux runtime retest or production run
 occurred. Preserve the INT3-C/D evidence and all scientific gates. Next: reviewed,
 published test-only Linux retest under a new evidence directory.
+
+## INT3-ENG10K-E fixture hotfix prepared (2026-10-15)
+
+On branch `r6/si1-bandwidth-f2av`, starting HEAD
+`5ea8f6604bc4583a01b600f12f68eff3f9cd14f2`, operator reported a Fair focused-suite
+result of 42 collected / 41 passed / 1 failed / 0 skipped. The descendant fixture
+raised `NameError: name 'os' is not defined` during child-source string construction,
+before `supervisor.supervise()`; this is not evidence of supervisor regression.
+The latest run's log digest was not supplied. Earlier INT3-C/D failures, INT3-E
+collection exit 2, and the distinct earlier INT3-E 41/1 log SHA256
+`f33b3c9d49b230c782018941b198e0bda4e951623c7f13aa316a6356f3194b1f` remain
+unchanged.
+
+Prepared a test-only fix using escaped f-string braces for both child markers and
+a cross-platform syntax regression. Focused Windows pytest collection was blocked
+by missing NumPy in the selected interpreter; no install was attempted. Record
+actual syntax/helper/whitespace checks in `docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`.
+Next: after review and publication, run the focused test module on Fair in a new
+immutable evidence directory. No supervisor production mode or ENG10K evolution.

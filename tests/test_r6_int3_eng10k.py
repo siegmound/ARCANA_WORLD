@@ -699,12 +699,7 @@ def test_linux_supervise_waits_for_live_descendant_after_leader_exits(tmp_path, 
     finished = tmp_path / "descendant-finished.txt"
     ready = tmp_path / "descendant-ready.txt"
     monkeypatch.setattr(supervisor, "ROOT", checkout)
-    descendant = (
-        "import os,pathlib,time; "
-        f"pathlib.Path({str(ready)!r}).write_text(f'{os.getpid()} {{os.getpgrp()}}'); "
-        "print('READY',flush=True); time.sleep(0.45); "
-        f"pathlib.Path({str(finished)!r}).write_text(f'{os.getpid()} {{os.getpgrp()}}')"
-    )
+    descendant = _live_descendant_fixture_source(ready, finished)
     command = [sys.executable, "-c",
         "import subprocess,sys; "
         f"p=subprocess.Popen([sys.executable,'-c',{descendant!r}],stdout=subprocess.PIPE,text=True); "
@@ -733,3 +728,24 @@ def test_linux_supervise_waits_for_live_descendant_after_leader_exits(tmp_path, 
     assert f"CHILD_READY={child_pid} {child_pgrp}" in (
         Path(result["supervision_absolute"]) / "child.stdout").read_text(encoding="utf-8")
     assert not Path(result["output_absolute"]).exists()
+
+
+def _live_descendant_fixture_source(ready: Path, finished: Path) -> str:
+    """Build child-only Python source; PID and process-group calls run in child."""
+    return (
+        "import os,pathlib,time; "
+        f"pathlib.Path({str(ready)!r}).write_text(f'{{os.getpid()}} {{os.getpgrp()}}'); "
+        "print('READY',flush=True); time.sleep(0.45); "
+        f"pathlib.Path({str(finished)!r}).write_text(f'{{os.getpid()}} {{os.getpgrp()}}')"
+    )
+
+
+def test_live_descendant_fixture_source_is_valid_without_running_supervisor(tmp_path):
+    ready = tmp_path / "ready.txt"
+    finished = tmp_path / "finished.txt"
+    source = _live_descendant_fixture_source(ready, finished)
+
+    assert source.count("os.getpid()") == 2
+    assert source.count("os.getpgrp()") == 2
+    assert "import os" in source
+    compile(source, "<live-descendant-fixture>", "exec")

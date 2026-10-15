@@ -1,12 +1,13 @@
-# NEXT — INT3-ENG10K-E Fair Linux natural-exit regression only
+# NEXT — INT3-ENG10K-E Fair fixture hotfix retest only
 
 After review and manual publication, use a new immutable Fair evidence directory
-and run only the focused test module, as specified in
-`docs/arcana/INT3_ENG10K_E_NATURAL_EXIT_CONFIRMATION.md`. Require the single-child
-natural exit, leader-exited/live-descendant and process-group timeout tests to run
-(not skip) and pass, with zero failures in the full suite. Record exact commit,
-runtime, collected/pass/fail/skip counts, exit code and log SHA256. Preserve the
-INT3-C/D failed logs unchanged.
+and run only `python -m pytest -q -rs tests/test_r6_int3_eng10k.py`, as specified in
+`docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`. Require the natural single-child,
+leader-exited/live-descendant and process-group-timeout tests to execute (not skip)
+and pass, with zero failures in the full suite. Record the exact commit, runtime,
+collected/pass/fail/skip counts, exit code and log SHA256. Preserve all INT3-C/D/E
+failed logs unchanged; the latest supplied 42-test run failed in fixture source
+construction before entering `supervisor.supervise()`.
 
 Do not run the supervisor production CLI, `--mode execute`, ENG10K kernel/evolution,
 Fair production supervision, or canonical operations. Preserve INT-2C STOP and all

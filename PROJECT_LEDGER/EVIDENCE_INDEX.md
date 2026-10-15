@@ -529,3 +529,15 @@ before leader exit. Windows: 38 passed, 4 skipped, 0 failed; three Linux process
 cases and one symlink case are skipped. No Linux runtime retest or production run
 occurred. Preserve the INT3-C/D evidence and all scientific gates. Next: reviewed,
 published test-only Linux retest under a new evidence directory.
+
+## INT3-ENG10K-E fixture hotfix (2026-10-15)
+
+Report: `docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`. Latest Fair suite result is
+operator-reported 42 collected / 41 passed / 1 failed / 0 skipped; failure was
+`NameError: os is not defined` while building the synthetic child source, before
+supervisor entry. No digest for that latest log was supplied. Earlier INT3-E
+41-pass/1-fail log SHA256 remains `f33b3c9d49b230c782018941b198e0bda4e951623c7f13aa316a6356f3194b1f`;
+it is not reassigned to the latest run. Fixture correction and cross-platform
+source syntax regression are prepared locally. Windows full-suite attempt did not
+collect because NumPy is unavailable in the selected Python; no package was
+installed. Fair test-only retest remains pending; no new runtime evidence exists.
