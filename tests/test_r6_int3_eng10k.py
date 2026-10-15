@@ -540,6 +540,23 @@ def test_linux_proc_group_snapshot_keeps_live_descendant_after_zombie_leader(tmp
     assert _proc_group_snapshot(tmp_path, 10, expected_leader_start_ticks=100) == (250 * 1024, [11])
 
 
+def test_natural_exit_requires_bounded_repeated_empty_group_confirmation():
+    complete, since = supervisor._update_empty_group_confirmation(0, [], 10.0, None)
+    assert not complete and since == 10.0
+    complete, since = supervisor._update_empty_group_confirmation(0, [], 10.0 +
+        supervisor.NATURAL_EXIT_CONFIRMATION_S - 0.001, since)
+    assert not complete and since == 10.0
+    complete, since = supervisor._update_empty_group_confirmation(0, [], 10.0 +
+        supervisor.NATURAL_EXIT_CONFIRMATION_S, since)
+    assert complete and since == 10.0
+
+    # A live member restarts the interval; a still-running leader cannot confirm it.
+    complete, since = supervisor._update_empty_group_confirmation(0, [123], 11.0, since)
+    assert not complete and since is None
+    complete, since = supervisor._update_empty_group_confirmation(None, [], 12.0, since)
+    assert not complete and since is None
+
+
 def test_supervisor_termination_uses_term_then_kill_when_group_disappears(monkeypatch):
     calls = []
 
@@ -670,7 +687,7 @@ def test_linux_supervise_wall_timeout_terminates_synthetic_process_group(tmp_pat
 
 @pytest.mark.skipif(not sys.platform.startswith("linux"), reason="requires Linux /proc and process groups")
 def test_linux_supervise_waits_for_live_descendant_after_leader_exits(tmp_path, monkeypatch):
-    """A successful leader exit is not natural group exit while a child remains."""
+    """A ready child in the same group prevents premature leader natural-exit."""
     root = tmp_path / "ARCANA_WORLD_EVIDENCE"
     root.mkdir()
     checkout = tmp_path / "checkout"
@@ -680,14 +697,19 @@ def test_linux_supervise_waits_for_live_descendant_after_leader_exits(tmp_path, 
     authorization = tmp_path / "invalid-authorization.json"
     authorization.write_text("{}", encoding="utf-8")
     finished = tmp_path / "descendant-finished.txt"
+    ready = tmp_path / "descendant-ready.txt"
     monkeypatch.setattr(supervisor, "ROOT", checkout)
     descendant = (
-        "import pathlib,time; time.sleep(0.45); "
-        f"pathlib.Path({str(finished)!r}).write_text('DONE')"
+        "import os,pathlib,time; "
+        f"pathlib.Path({str(ready)!r}).write_text(f'{os.getpid()} {{os.getpgrp()}}'); "
+        "print('READY',flush=True); time.sleep(0.45); "
+        f"pathlib.Path({str(finished)!r}).write_text(f'{os.getpid()} {{os.getpgrp()}}')"
     )
     command = [sys.executable, "-c",
         "import subprocess,sys; "
-        f"subprocess.Popen([sys.executable,'-c',{descendant!r}])"]
+        f"p=subprocess.Popen([sys.executable,'-c',{descendant!r}],stdout=subprocess.PIPE,text=True); "
+        "line=p.stdout.readline(); "
+        "print('CHILD_READY='+line.strip(),flush=True) if line.strip() == 'READY' else sys.exit(91)"]
 
     def allow_only_this_fixture(actual, **_kwargs):
         assert actual == command
@@ -705,5 +727,9 @@ def test_linux_supervise_waits_for_live_descendant_after_leader_exits(tmp_path, 
     assert result["stop_reason"] == "NATURAL_EXIT"
     assert result["natural_exit_code"] == 0
     assert result["elapsed_seconds"] >= 0.35
-    assert finished.read_text(encoding="utf-8") == "DONE"
+    child_pid, child_pgrp = map(int, ready.read_text(encoding="utf-8").split())
+    assert child_pid > 0 and child_pgrp == result["process_group_id"]
+    assert finished.read_text(encoding="utf-8").split() == [str(child_pid), str(child_pgrp)]
+    assert f"CHILD_READY={child_pid} {child_pgrp}" in (
+        Path(result["supervision_absolute"]) / "child.stdout").read_text(encoding="utf-8")
     assert not Path(result["output_absolute"]).exists()

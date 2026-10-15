@@ -1,14 +1,15 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-15)
 
-## INT3-ENG10K-D — process-state correction; Fair recheck pending
+## INT3-ENG10K-E — natural-exit confirmation; Fair regression pending
 
-The operator-reported Fair natural-exit test failed closed on a resource-snapshot
-race; timeout process-group test passed. Windows added bounded `/proc` fixture
-coverage and corrected terminal/disappearing process handling without relaxing
-checks for live processes. Windows suite is 37 PASS / 4 SKIP / 0 FAIL. Next is the
-focused synthetic supervisor suite on Fair after review/publication, using new
-immutable evidence. No production supervisor invocation or ENG10K evolution is
-authorized. See `docs/arcana/INT3_ENG10K_D_LINUX_PROCESS_STATE_RECONCILIATION.md`.
+A reported 0.033-second `NATURAL_EXIT` after the leader-exited/live-descendant
+fixture is corrected by polling the leader before a snapshot and requiring 0.5
+seconds of repeated empty post-exit process-group samples. The fixture now confirms
+child startup and same-group membership. Windows: 38 PASS / 4 SKIP / 0 FAIL; Linux
+`/proc` and process-group execution remains unverified. Next: focused Fair test-only
+rerun in a fresh immutable evidence directory after review/publication. No production
+supervisor or numerical evolution is authorized. The INT3-D failure evidence is
+preserved and not reclassified.
 
 ## INT3-ENG10K-A — bounded engineering preparation
 

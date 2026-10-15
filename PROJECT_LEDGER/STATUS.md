@@ -1,23 +1,24 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-15
 
-## INT3-ENG10K-D — Windows process-state correction ready; Fair retest pending
+## INT3-ENG10K-E — natural-exit confirmation prepared; Fair retest pending
 
-Decision: `INT3_ENG10K_D_WINDOWS_FIX_READY__FAIR_RETEST_PENDING`. Report:
-`docs/arcana/INT3_ENG10K_D_LINUX_PROCESS_STATE_RECONCILIATION.md`. The prior Fair
-natural-exit probe is operator-reported FAIL (child exit 0, but fail-closed
-`PROC_RESOURCE_SNAPSHOT_UNVERIFIABLE:1632066`); its original evidence remains on Fair
-and was not imported or changed. A terminal-process `/proc` race is plausible but
-not proven from the transferred details. The timeout-with-descendant probe was
-operator-reported PASS.
+Decision: `INT3_ENG10K_E_WINDOWS_CORRECTION_READY__FAIR_LINUX_RETEST_PENDING`.
+Report: `docs/arcana/INT3_ENG10K_E_NATURAL_EXIT_CONFIRMATION.md`. The INT3-D Fair
+suite result is operator-reported (40 PASS, 1 FAIL, 0 SKIP); the leader-exited/live-
+descendant test returned `NATURAL_EXIT` after 0.033428873866796494 seconds. The
+original log remains immutable on Fair and was not independently inspected here.
+The reported timing does not prove that the descendant was observed alive.
 
-Windows correction validates `/proc/PID/stat` state, excludes terminal Z/X/x
-processes, rechecks state when VmRSS is missing/malformed, binds repeated reads to
-start ticks/process group, and retains fail-closed behavior for live unverifiable
-RSS. Snapshot accounting includes live descendants, and natural exit requires no
-live group member. Focused Windows suite: 37 PASS, 4 SKIP, 0 FAIL; skips are one
-symlink-policy test and three Linux-only process-group tests. Fair rerun of the full
-focused suite is pending after manual publication in a new immutable evidence path.
-No supervisor production invocation or ENG10K numerical evolution is authorized.
+The supervisor now polls the leader before its process-group snapshot and requires
+repeated empty post-exit snapshots spanning a finite 0.5-second confirmation
+window. The deterministic fixture confirms child startup and process-group
+membership before the leader exits. Windows focused tests: 38 PASS, 4 SKIP, 0 FAIL;
+three Linux process tests remain unexecuted on Windows. Fair Linux regression is
+pending; no production supervisor or ENG10K evolution ran.
+
+Historical INT3-D result remains `INT3_ENG10K_D_WINDOWS_FIX_READY__FAIR_RETEST_PENDING`;
+its Fair failure, timeout pass, original evidence and report are preserved. All
+scientific, Solver, mechanics and WORLD_HISTORY gates remain unchanged.
 
 Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
 `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,

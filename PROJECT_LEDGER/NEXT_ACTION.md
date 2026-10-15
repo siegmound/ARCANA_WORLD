@@ -1,17 +1,16 @@
-# NEXT — INT3-ENG10K-D Fair synthetic supervisor regression only
+# NEXT — INT3-ENG10K-E Fair Linux natural-exit regression only
 
-After review and manual publication, run only `python -m pytest -q -rs
-tests/test_r6_int3_eng10k.py` on the exact clean published HEAD in the approved Fair
-Conda environment, with a new unique external evidence/basetemp directory. Preserve
-the prior failed Fair log immutably. Require natural child exit, leader-exited/live
-descendant handling, and process-group timeout tests to execute and pass (not skip),
-and the full suite to have no failures. Record command, runtime, exit, log hash and
-resulting evidence identities. Exact handoff and criteria are in
-`docs/arcana/INT3_ENG10K_D_LINUX_PROCESS_STATE_RECONCILIATION.md`.
+After review and manual publication, use a new immutable Fair evidence directory
+and run only the focused test module, as specified in
+`docs/arcana/INT3_ENG10K_E_NATURAL_EXIT_CONFIRMATION.md`. Require the single-child
+natural exit, leader-exited/live-descendant and process-group timeout tests to run
+(not skip) and pass, with zero failures in the full suite. Record exact commit,
+runtime, collected/pass/fail/skip counts, exit code and log SHA256. Preserve the
+INT3-C/D failed logs unchanged.
 
-Do not run the supervisor CLI, `--mode execute`, ENG10K kernel/evolution, or
-canonical operations. Preserve INT-2C STOP and all scientific, Solver, mechanics
-and WORLD_HISTORY gates.
+Do not run the supervisor production CLI, `--mode execute`, ENG10K kernel/evolution,
+Fair production supervision, or canonical operations. Preserve INT-2C STOP and all
+scientific, Solver, mechanics and WORLD_HISTORY gates.
 
 ## Archived — INT-2C closed: STOP, no further replay authorized
 

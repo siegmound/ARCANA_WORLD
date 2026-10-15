@@ -488,3 +488,18 @@ production supervisor, ENG10K evolution or canonical operation was run. Next: af
 manual publication, repeat the focused test suite on Fair in a new immutable
 evidence directory; no numerical execution is authorized. All scientific, Solver,
 mechanics and WORLD_HISTORY gates remain unchanged.
+
+## INT3-ENG10K-E — Natural Exit Confirmation (2026-10-15)
+
+Report: `docs/arcana/INT3_ENG10K_E_NATURAL_EXIT_CONFIRMATION.md`. The INT3-D Fair
+suite summary and pytest log SHA256 `a9fa5713ab91799a1301619a617ba7b86165dda5719d498425f2eaeb3de377a1` are
+operator-reported; no original Fair log was transferred or rehashed. It reports 40
+passed, one failed, no skips; the leader-exited/live-descendant test returned
+`NATURAL_EXIT` at 0.033428873866796494 seconds. The evidence does not establish
+that the descendant was seen alive. A code-level sample-before-poll race path was
+identified; correction polls first and requires repeated empty post-exit group
+samples for 0.5 seconds. The fixture now proves child startup and group membership
+before leader exit. Windows: 38 passed, 4 skipped, 0 failed; three Linux process
+cases and one symlink case are skipped. No Linux runtime retest or production run
+occurred. Preserve the INT3-C/D evidence and all scientific gates. Next: reviewed,
+published test-only Linux retest under a new evidence directory.

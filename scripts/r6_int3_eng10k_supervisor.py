@@ -23,12 +23,24 @@ WALL_LIMIT_S = 900.0
 RSS_LIMIT_BYTES = 2_147_483_648
 OUTPUT_LIMIT_BYTES = 536_870_912
 POLL_INTERVAL_S = 0.1
+NATURAL_EXIT_CONFIRMATION_S = 0.5
 TERM_GRACE_S = 5.0
 _TERMINAL_PROC_STATES = {"Z", "X", "x"}
 
 
 class SupervisionError(RuntimeError):
     pass
+
+
+def _update_empty_group_confirmation(return_code: int | None, members: list[int],
+                                     now: float, empty_since: float | None
+                                     ) -> tuple[bool, float | None]:
+    """Confirm repeated empty snapshots only after the leader has exited."""
+    if return_code is None or members:
+        return False, None
+    if empty_since is None:
+        return False, now
+    return now - empty_since >= NATURAL_EXIT_CONFIRMATION_S, empty_since
 
 
 def _parse_stat(data: str) -> tuple[str, int, int, int]:
@@ -210,8 +222,12 @@ def supervise(command: list[str], *, evidence_root: Path,
         samples = 0
         reason = "UNKNOWN"
         last_members: list[int] = []
+        empty_group_since: float | None = None
         while True:
-            elapsed = time.monotonic() - start
+            # Observe the leader first. A group snapshot taken before poll() can
+            # predate leader exit and miss a child that is still being scheduled
+            # or reparented into the same process group.
+            return_code = process.poll()
             try:
                 rss, members = _proc_group_snapshot(
                     proc_root, pgid, expected_leader_start_ticks=root_start_ticks)
@@ -224,20 +240,20 @@ def supervise(command: list[str], *, evidence_root: Path,
             last_members = members
             peaks["rss_bytes"] = max(peaks["rss_bytes"], rss)
             peaks["output_bytes"] = max(peaks["output_bytes"], output_bytes)
-            return_code = process.poll()
+            # Include polling and /proc scan time in the wall-time decision.
+            elapsed = time.monotonic() - start
             if elapsed >= WALL_LIMIT_S:
                 reason = "WALL_TIME_LIMIT"
             elif rss > RSS_LIMIT_BYTES:
                 reason = "PROCESS_GROUP_RSS_LIMIT"
             elif output_bytes > OUTPUT_LIMIT_BYTES:
                 reason = "CUMULATIVE_OUTPUT_LIMIT"
-            elif return_code is not None and not members:
-                reason = "NATURAL_EXIT"
-                break
-            elif return_code is not None:
-                # A leader may exit while descendants remain; keep supervising the group.
-                if elapsed >= WALL_LIMIT_S:
-                    reason = "WALL_TIME_LIMIT"
+            else:
+                confirmed, empty_group_since = _update_empty_group_confirmation(
+                    return_code, members, time.monotonic(), empty_group_since)
+                if confirmed:
+                    reason = "NATURAL_EXIT"
+                    break
             if reason != "UNKNOWN":
                 _terminate_group(pgid, process)
                 break
