@@ -30,6 +30,9 @@ from arcana_worldsim.r6.int3_eng10k import (  # noqa: E402
     provider_component_bindings_match, resolve_evidence_destinations,
     resolve_incomplete_evidence_output, sha256_bytes,
 )
+from arcana_worldsim.r6.segment_archive import (  # noqa: E402
+    SegmentArchiveWriter, validate_segment_archive,
+)
 
 CONFIG_PATH = ROOT / "configs/r6_int3_eng10k/engineering_case.json"
 EXECUTION_CONTRACT_PATH = ROOT / "configs/r6_int3_eng10k/INT3_ENG10K_EXECUTION_CONTRACT.json"
@@ -230,6 +233,8 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
         "maximum_retained_samples_per_support": config["diagnostic_retention"][
             "maximum_retained_samples_per_support"],
         "projected_output_upper_bound_bytes": MAX_PROJECTED_OUTPUT_BYTES,
+        "projected_output_bound_scope": "PREEXISTING_RUN_ARTIFACTS_EXCLUDES_SEGMENT_ARCHIVE",
+        "segment_archive_size_projection": "UNKNOWN_UNTIL_ACTUAL_INTEGRATOR_SUBSTEP_COUNTS",
         "output_relative": output_relative.as_posix(),
         "supervision_relative": supervision_relative.as_posix(),
         "numerical_evolution_executed": False,
@@ -249,30 +254,45 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
 def _write_bundle(output: Path, artifacts: dict[str, object], config_raw: bytes,
                   preflight: dict[str, object], result: dict[str, object], *,
                   supervision_mode: str = "MONITORED_BUDGETS") -> dict[str, object]:
-    if not output.is_dir() or set(p.name for p in output.iterdir()) != {"RUN_STARTED.json"}:
+    if (not output.is_dir()
+            or set(p.name for p in output.iterdir()) != {"RUN_STARTED.json", "SEGMENT_ARCHIVE_V1"}):
         raise Eng10kContractError("OUTPUT_COLLISION_OR_UNEXPECTED_PARTIAL_CONTENT")
     manifest_files: dict[str, dict[str, object]] = {}
     try:
+        segment_root = output / "SEGMENT_ARCHIVE_V1"
+        segment_identity = validate_segment_archive(segment_root)
         values: dict[str, bytes] = {"engineering_case.json": config_raw,
                                     "RUN_STARTED.json": (output / "RUN_STARTED.json").read_bytes()}
         values.update({name: canonical_bytes(value) for name, value in artifacts.items()})
         values["RUN_RESULT.json"] = canonical_bytes(result)
+        for member in sorted(segment_root.iterdir(), key=lambda item: item.name):
+            if not member.is_file() or member.is_symlink():
+                raise Eng10kContractError("SEGMENT_ARCHIVE_MEMBER_NOT_REGULAR_FILE")
+            values[f"SEGMENT_ARCHIVE_V1/{member.name}"] = member.read_bytes()
         manifest_files = {name: {"bytes": len(raw), "sha256": sha256_bytes(raw)}
                           for name, raw in values.items()}
         manifest = {"schema": "ARCANA_R6_INT3_ENG10K_MANIFEST_V1",
             "canonical_publication": False, "files": manifest_files,
+            "segment_archive": segment_identity,
             "preflight_identity_sha256": sha256_bytes(canonical_bytes(preflight)),
             "run_result_sha256": sha256_bytes(values["RUN_RESULT.json"]),
             "manifest_is_self_excluded": True}
         manifest_raw = canonical_bytes(manifest)
         projected_total = sum(len(value) for value in values.values()) + len(manifest_raw)
-        if (projected_total > MAX_PROJECTED_OUTPUT_BYTES
+        existing_artifacts_total = sum(
+            len(value) for name, value in values.items()
+            if not name.startswith("SEGMENT_ARCHIVE_V1/")
+        ) + len(manifest_raw)
+        if (existing_artifacts_total > MAX_PROJECTED_OUTPUT_BYTES
                 or (supervision_mode == "MONITORED_BUDGETS"
                     and projected_total > 536_870_912)):
             raise Eng10kContractError("OUTPUT_SIZE_EXCEEDS_PREFLIGHT_BOUNDS")
         for name, raw in values.items():
             path = output / name
-            if path.write_bytes(raw) != len(raw) or path.read_bytes() != raw:
+            if name.startswith("SEGMENT_ARCHIVE_V1/"):
+                if path.read_bytes() != raw:
+                    raise Eng10kContractError(f"OUTPUT_READBACK_FAILED:{name}")
+            elif path.write_bytes(raw) != len(raw) or path.read_bytes() != raw:
                 raise Eng10kContractError(f"OUTPUT_READBACK_FAILED:{name}")
         if (output / "ARTIFACT_MANIFEST.json").write_bytes(manifest_raw) != len(manifest_raw):
             raise Eng10kContractError("MANIFEST_WRITE_FAILED")
@@ -371,13 +391,38 @@ def _run_profiled_trajectory(markers: _TrajectoryMarkerWriter, *,
                              trajectory_kind: str, support_id: str,
                              resolution_factor: float, duration_years: float,
                              starting_simulated_years: float = 0.0,
-                             compute: Callable[[], tuple[Any, Any]]) -> tuple[Any, Any]:
+                             compute: Callable[..., tuple[Any, Any]],
+                             archive_writer: SegmentArchiveWriter | None = None,
+                             initial_state: Any | None = None) -> tuple[Any, Any]:
+    if archive_writer is not None and initial_state is None:
+        raise Eng10kContractError("ARCHIVE_INITIAL_STATE_REQUIRED")
+    if markers.path is not None:
+        markers.trajectories_started += 1
+        marker_id = f"trajectory-{markers.trajectories_started:02d}"
+    else:
+        marker_id = f"{trajectory_kind}-f{resolution_factor:g}-{support_id}"
+
+    def run() -> tuple[Any, Any]:
+        if archive_writer is None:
+            return compute()
+        trajectory_id = f"{trajectory_kind}-f{resolution_factor:g}-{support_id}"
+        with archive_writer.trajectory(
+            trajectory_id=trajectory_id, support_id=support_id,
+            trajectory_kind=trajectory_kind, resolution_factor=resolution_factor,
+            start_time_s=initial_state.time_s,
+            requested_duration_s=duration_years * SECONDS_PER_YEAR,
+        ):
+            final, diagnostics = compute(archive_writer.observe)
+            substeps = (diagnostics.get("integration_substeps")
+                        if isinstance(diagnostics, dict)
+                        else getattr(diagnostics, "substeps", None))
+            archive_writer.complete_trajectory(final, integration_substeps=substeps)
+        return final, diagnostics
+
     if markers.path is None:
-        return compute()
-    markers.trajectories_started += 1
-    trajectory_id = f"trajectory-{markers.trajectories_started:02d}"
+        return run()
     started = time.monotonic()
-    common = {"trajectory_id": trajectory_id,
+    common = {"trajectory_id": marker_id,
               "trajectory_kind": trajectory_kind, "support_id": support_id,
               "resolution_factor": resolution_factor,
               "requested_simulated_years": duration_years,
@@ -386,7 +431,7 @@ def _run_profiled_trajectory(markers: _TrajectoryMarkerWriter, *,
     markers.write({**common, "event": "START", "status": "RUNNING",
                    "simulated_years_completed": 0.0, "substeps_completed": 0})
     try:
-        final, diagnostics = compute()
+        final, diagnostics = run()
     except BaseException as exc:
         markers.write({**common, "event": "END", "status": "FAILED",
                        "simulated_years_completed": None, "substeps_completed": None,
@@ -439,6 +484,26 @@ def _execute(output_relative: Path, supervision_relative: Path,
         started["supervision_mode"] = "OBSERVE_ONLY"
         started["active_supervisor_thresholds"] = []
     (output_path / "RUN_STARTED.json").write_bytes(canonical_bytes(started))
+    attempt_identity = sha256_bytes(str(output_path).encode("utf-8"))
+    archive_writer = SegmentArchiveWriter(
+        output_path / "SEGMENT_ARCHIVE_V1",
+        segment_id=f"INT3-ENG10K-A-{attempt_identity[:16]}",
+        provenance={
+            "identity_status": "CALLER_ASSERTED_UNVERIFIED",
+            "source_commit": str(preflight["source_head"]),
+            "source_composite_sha256": preflight["current_source_composite_sha256"],
+            "configuration_sha256": config_sha,
+            "provider_identities": preflight["provider_identity"],
+            "input_identities": {
+                "r4_manifest": r4.manifest_sha256,
+                "engineering_case": config_sha,
+                "execution_contract": EXECUTION_CONTRACT_SHA256,
+                "candidate_destination": attempt_identity,
+            },
+        },
+        expected_trajectory_count=8,
+        forbidden_roots=(ROOT / "WORLD_HISTORY",),
+    )
     direct_finals: dict[float, tuple] = {}
     direct_diags: dict[str, Any] = {}
     reference_samples: dict[str, Any] = {}
@@ -446,26 +511,30 @@ def _execute(output_relative: Path, supervision_relative: Path,
         rows = []
         for support, initial in zip(r4.support_ids, r4.initial_states):
             if factor == config["diagnostic_resolution_factor"]:
-                compute = lambda: advance_with_bounded_samples(initial, support_id=support,
+                compute = lambda observer=None: advance_with_bounded_samples(initial, support_id=support,
                     duration_years=float(config["elapsed_duration_years"]),
                     extension_velocity_m_per_year=r4.forcing_m_per_year,
                     resolution_factor=factor,
-                    sample_interval_years=float(config["diagnostic_retention"]["schedule_interval_years"]))
+                    sample_interval_years=float(config["diagnostic_retention"]["schedule_interval_years"]),
+                    state_observer=observer)
                 final, diagnostics = _run_profiled_trajectory(trajectory_markers,
                     trajectory_kind="DIRECT", support_id=support,
                     resolution_factor=factor,
-                    duration_years=float(config["elapsed_duration_years"]), compute=compute)
+                    duration_years=float(config["elapsed_duration_years"]), compute=compute,
+                    archive_writer=archive_writer, initial_state=initial)
                 reference_samples[support] = diagnostics
                 rows.append(final)
             else:
-                compute = lambda: pure_shear_thermal_step(initial,
+                compute = lambda observer=None: pure_shear_thermal_step(initial,
                     duration_s=float(config["elapsed_duration_years"]) * SECONDS_PER_YEAR,
                     extension_velocity_m_s=r4.forcing_m_per_year / SECONDS_PER_YEAR,
-                    maximum_kinematic_fraction_per_substep=factor)
+                    maximum_kinematic_fraction_per_substep=factor,
+                    state_observer=observer)
                 final, diag = _run_profiled_trajectory(trajectory_markers,
                     trajectory_kind="DIRECT", support_id=support,
                     resolution_factor=factor,
-                    duration_years=float(config["elapsed_duration_years"]), compute=compute)
+                    duration_years=float(config["elapsed_duration_years"]), compute=compute,
+                    archive_writer=archive_writer, initial_state=initial)
                 rows.append(final)
                 direct_diags[f"{support}:{factor}"] = {
                     "substeps": diag.substeps, "area_relative_error": diag.area_relative_error,
@@ -476,17 +545,18 @@ def _execute(output_relative: Path, supervision_relative: Path,
     ref = direct_finals[0.0005]
     restart_finals, restart_samples = [], {}
     for support, state in zip(r4.support_ids, r4.checkpoint_states):
-        compute = lambda: advance_with_bounded_samples(state, support_id=support,
+        compute = lambda observer=None: advance_with_bounded_samples(state, support_id=support,
             duration_years=float(config["restart_additional_duration_years"]),
             extension_velocity_m_per_year=r4.forcing_m_per_year,
             resolution_factor=0.0005,
-            sample_interval_years=float(config["diagnostic_retention"]["schedule_interval_years"]))
+            sample_interval_years=float(config["diagnostic_retention"]["schedule_interval_years"]),
+            state_observer=observer)
         final, diagnostics = _run_profiled_trajectory(trajectory_markers,
             trajectory_kind="RESTART", support_id=support,
             resolution_factor=0.0005,
             duration_years=float(config["restart_additional_duration_years"]),
             starting_simulated_years=float(config["r4_checkpoint_elapsed_years"]),
-            compute=compute)
+            compute=compute, archive_writer=archive_writer, initial_state=state)
         restart_finals.append(final)
         restart_samples[support] = diagnostics
     restart_finals_t = tuple(restart_finals)
@@ -516,6 +586,7 @@ def _execute(output_relative: Path, supervision_relative: Path,
         "restart_diagnostics": restart_summary,
         "direct_vs_restart": comparison, "direct_refinement_metrics": convergence,
         "canonical_publication": False, "physical_temporal_validity": "NOT_ESTABLISHED"}
+    result["segment_archive"] = archive_writer.finalize()
     if supervision_mode == "OBSERVE_ONLY":
         result["supervision_mode"] = "OBSERVE_ONLY"
         result["trajectory_marker_status"] = trajectory_markers.summary()

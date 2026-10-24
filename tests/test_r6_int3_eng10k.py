@@ -9,6 +9,7 @@ import pytest
 
 from arcana_worldsim.r6.functional_development import NodeMaterial, ReducedState, pure_shear_thermal_step
 from arcana_worldsim.r6 import int3_eng10k as eng
+from arcana_worldsim.r6.segment_archive import SegmentArchiveWriter
 from r6_int3_eng10k import (
     CONFIG_SHA256, EXECUTION_DECISION, _diagnostic_summary,
     _TrajectoryMarkerWriter, _run_profiled_trajectory, _validate_checkout_identity,
@@ -198,6 +199,22 @@ def test_output_projection_fails_before_writing_artifact_members(tmp_path, monke
     output = tmp_path / "candidate"
     output.mkdir()
     (output / "RUN_STARTED.json").write_bytes(b"{}\n")
+    digest = hashlib.sha256(b"synthetic archive").hexdigest()
+    archive = SegmentArchiveWriter(output / "SEGMENT_ARCHIVE_V1",
+        segment_id="synthetic-run", expected_trajectory_count=1,
+        provenance={"identity_status": "SYNTHETIC_TEST_ONLY", "source_commit": "TEST_ONLY",
+            "source_composite_sha256": digest, "configuration_sha256": digest,
+            "provider_identities": {"fixture": digest}, "input_identities": {"fixture": digest}})
+    initial = _state()
+    final, diagnostics = pure_shear_thermal_step(initial, duration_s=1.0,
+        extension_velocity_m_s=0.0, maximum_kinematic_fraction_per_substep=0.0005)
+    with archive.trajectory(trajectory_id="synthetic-trajectory", support_id=SUPPORTS[0],
+            trajectory_kind="DIRECT", resolution_factor=0.0005,
+            start_time_s=initial.time_s, requested_duration_s=1.0):
+        archive.observe(initial)
+        archive.observe(final)
+        archive.complete_trajectory(final, integration_substeps=diagnostics.substeps)
+    archive.finalize()
     monkeypatch.setattr(runner, "MAX_PROJECTED_OUTPUT_BYTES", 1)
     with pytest.raises(eng.Eng10kContractError, match="OUTPUT_SIZE_EXCEEDS_PREFLIGHT_BOUNDS"):
         _write_bundle(output, {"payload.json": {"x": "y"}}, b"{}\n", {}, {})

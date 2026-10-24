@@ -437,8 +437,14 @@ def advance_with_bounded_samples(
     state: ReducedState, *, support_id: str, duration_years: float,
     extension_velocity_m_per_year: float, resolution_factor: float,
     sample_interval_years: float = 10.0,
+    state_observer: Callable[[ReducedState], None] | None = None,
 ) -> tuple[ReducedState, dict[str, Any]]:
-    """Call the existing kernel; retain scheduled observations, never interpolate."""
+    """Call the existing kernel; retain scheduled observations, never interpolate.
+
+    ``state_observer`` receives the exact immutable initial state and each state
+    emitted after a numerical substep. It is optional so the established runner
+    path and its numerical behavior remain unchanged when archive capture is off.
+    """
     from .functional_development import pure_shear_thermal_step
     for value, label in ((duration_years, "duration"),
                          (extension_velocity_m_per_year, "velocity"),
@@ -465,11 +471,16 @@ def advance_with_bounded_samples(
             missed_schedule_targets += max(0, crossed - 1)
             next_target += crossed * sample_interval_years
 
+    def observe_integrator_state(current: ReducedState) -> None:
+        if state_observer is not None:
+            state_observer(current)
+        observe(current)
+
     final, diagnostics = pure_shear_thermal_step(
         state, duration_s=duration_years * SECONDS_PER_YEAR,
         extension_velocity_m_s=extension_velocity_m_per_year / SECONDS_PER_YEAR,
         maximum_kinematic_fraction_per_substep=resolution_factor,
-        state_observer=observe,
+        state_observer=observe_integrator_state,
     )
     final_time_expected = state.time_s + duration_years * SECONDS_PER_YEAR
     time_roundoff_bound_s = max(1, diagnostics.substeps + 1) * math.ulp(final_time_expected)
