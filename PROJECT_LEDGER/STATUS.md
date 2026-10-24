@@ -1,21 +1,21 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-24
 
-## INT3-ENG10K-E — FAIR synthetic supervisor evidence closed
+## INT3-ENG10K-F — execution authorization review blocked (2026-10-24)
 
-Decision: `INT3_E_FAIR_SUPERVISOR_SYNTHETIC_RUNTIME_PASS` on exact FAIR-tested
-commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`. Operator-reported Linux suite:
-43 collected, 43 PASS, 0 FAIL, 0 SKIP; 2.83 seconds; exit 0. Runtime Python
-3.12.10 / NumPy 2.3.5 / pytest 9.1.1. The preflight passed as
-`INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`. All three Linux end-to-end
-synthetic supervisor paths passed: child natural exit, process-group timeout, and
-leader exit with a live descendant. FAIR evidence path and log SHA256 are indexed
-in `EVIDENCE_INDEX.md`; the original logs/checksums remain operator-reported and
-were not transferred/rehashed on Windows.
+Decision: `INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED`.
+Report: `docs/arcana/INT3_ENG10K_F_EXECUTION_AUTHORIZATION_REVIEW.md`. R4's pinned
+manifest and members, kernel and engineering-case hashes were reverified locally;
+the source execution files are unchanged from FAIR-tested commit
+`cb9bd8373eeb028b83c8bc1abb376624e3553adb` through this documentation-only HEAD
+`52a73104cdf56fd3db020868a441889a89286ce5`. The FAIR 43/43 synthetic supervisor
+result remains operator-reported and scoped to that tested commit.
 
-This is synthetic supervisor runtime evidence only. Sampled resource monitoring
-is not an OS-enforced quota. No ENG10K numerical evolution occurred or is
-authorized by this result. A separate decision is needed before any proposed
-noncanonical ENG10K run. R4 checkpoint, manifest, and outputs remain unchanged.
+The current provider audit and HEAD-bound source-composite identity were not
+recomputed: `ARCANA_EXTERNAL_ROOT` is unset and the available Python 3.12.10 lacks
+NumPy. Exact diffusion-limited steps, ENG10K runtime/RSS, Fair available memory,
+disk quota and OS-enforced limits remain UNKNOWN. The 66,715,648-byte output figure
+is a serializer projection, not RSS or a disk guarantee. No ENG10K evolution or
+Fair access occurred. No execution authorization is issued.
 
 Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
 `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,

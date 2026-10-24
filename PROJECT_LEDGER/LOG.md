@@ -1,5 +1,21 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-24 — INT3-ENG10K-F authorization review blocked
+
+Decision `INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED`;
+report `docs/arcana/INT3_ENG10K_F_EXECUTION_AUTHORIZATION_REVIEW.md`. On branch
+`r6/si1-bandwidth-f2av`, review HEAD `52a73104cdf56fd3db020868a441889a89286ce5`;
+FAIR synthetic supervisor tests remain operator-reported for
+`cb9bd8373eeb028b83c8bc1abb376624e3553adb`. Locally rehashed the R4 manifest and
+all listed members; kernel/config hashes match their pins. Source execution files
+are unchanged between `cb9bd837` and review HEAD, but a HEAD-bound provider
+composite was not recomputed: `ARCANA_EXTERNAL_ROOT` is unset and available Python
+3.12.10 has no NumPy. Dynamic diffusion-limited steps, ENG10K runtime, Fair memory,
+disk quota and OS enforcement remain UNKNOWN; 900 s/2 GiB/512 MiB are sampled
+thresholds. No Fair access or numerical evolution. Next: read-only exact-commit
+Fair preflight/resource facts, followed by a separate authorization decision.
+All historical outcomes and scientific gates remain unchanged.
+
 ## 2026-10-24 — INT3-ENG10K-E FAIR synthetic supervisor evidence closed
 
 Operator-reported FAIR result for tested commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`:

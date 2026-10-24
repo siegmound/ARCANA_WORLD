@@ -571,3 +571,23 @@ No original evidence was transferred or independently rehashed on Windows.
 These checks do not imply hard OS quotas: resource bounds were sampled monitoring.
 No ENG10K numerical evolution occurred. Earlier C/D/E failures remain unchanged.
 See `docs/arcana/INT3_ENG10K_E_FAIR_EVIDENCE_CLOSURE.md` for authority and limits.
+
+## INT3-ENG10K-F — execution authorization review (2026-10-24)
+
+Decision `INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED`.
+Report `docs/arcana/INT3_ENG10K_F_EXECUTION_AUTHORIZATION_REVIEW.md`.
+Static checks only; no Fair access, preflight, supervisor execute mode, or ENG10K
+evolution occurred. R4 manifest SHA256
+`191ee97af186705fe75bacc627013158c69b97041a43f4633e95dd2abbd8e236`, all seven
+manifest-listed payload members and their byte counts/SHA256 values verified
+locally. Kernel SHA256 `bddedfd7439b328951389012b2af371d106d042018ac4be928325a6395666542`;
+engineering case SHA256 `3f3d3dc6d6ad28a31fdb7f350eedfe971a63708ad0f0f63f2d97e49b4e474f3e`.
+The FAIR INT3-E 43/43 synthetic supervisor outcome and pytest SHA256
+`a6513d0baf2d382f4338d38e250e6c3c1e186881f966f6395e92f2191f29ade1` remain
+operator-reported; original FAIR files were not imported or rehashed on Windows.
+The current source-composite/provider audit could not be recomputed because
+`ARCANA_EXTERNAL_ROOT` is unset and the available Python lacks NumPy. Fair memory,
+disk/quota, OS enforcement, actual diffusion-limited step counts and ENG10K runtime
+remain UNKNOWN. Output projection: 66,715,648 bytes, not RSS/disk assurance.
+No new numerical evidence; no execution authorization. Preserve all scientific,
+Solver, mechanics and WORLD_HISTORY gates.

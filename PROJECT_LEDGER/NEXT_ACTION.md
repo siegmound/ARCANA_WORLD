@@ -1,17 +1,22 @@
-# NEXT — separate ENG10K execution decision
+# NEXT — close INT3-F identity and resource blockers before any authorization proposal
 
-Review whether the INT3-ENG10K engineering preconditions justify proposing one
-bounded, noncanonical numerical authorization. This is a decision/review step,
-not execution authority. The INT3-E Fair result qualifies only the reported
-synthetic supervisor paths on commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`.
-No ENG10K run is authorized. Preserve the R4 checkpoint/manifest and all prior
-INT3-C/D/E outcomes. Keep sampled monitoring distinct from OS-enforced limits.
-Any future execution requires a separate explicit authorization and its own
-preflight/evidence directory.
+INT3-F is blocked: `INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED`.
+An already-authorized Fair operator must first perform a read-only final preflight
+for the exact reviewed candidate commit: verify branch/HEAD, Python 3.12.10 and
+NumPy 2.3.5, governed `ARCANA_EXTERNAL_ROOT` and provider hashes, R4 bundle and
+checkpoint, recomputed HEAD-bound source composite, a fresh absent evidence path,
+available disk space/quota, and available memory plus any effective scheduler or
+cgroup limits. Preserve reported versus independently acquired evidence.
 
-Do not run the supervisor production CLI, `--mode execute`, ENG10K kernel/evolution,
-Fair production supervision, or canonical operations. Preserve INT-2C STOP and all
-scientific, Solver, mechanics and WORLD_HISTORY gates.
+Return that preflight for a separate authorization decision. Do not invoke the
+supervisor production CLI or `--mode execute` as part of preflight. If Fair memory
+or enforcement facts are unavailable without a job, retain UNKNOWN; sampled RSS
+and wall/output thresholds are not OS quotas. No numerical acceptance threshold
+is defined; direct/restart comparisons remain descriptive and
+`THRESHOLD_UNJUSTIFIED`.
+
+No ENG10K run is authorized. Preserve R4, all INT3-C/D/E outcomes, INT-2C STOP,
+and all scientific, Solver, mechanics and WORLD_HISTORY gates.
 
 ## Archived — INT-2C closed: STOP, no further replay authorized
 

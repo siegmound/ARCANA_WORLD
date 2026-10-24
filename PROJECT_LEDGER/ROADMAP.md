@@ -1,14 +1,17 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-24)
 
-## INT3-ENG10K-E — synthetic FAIR supervisor test scope closed
+## INT3-ENG10K-F — authorization proposal blocked by unresolved identity/resources
 
-The operator reports PASS on tested commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`:
-43 collected, 43 passed, 0 failed, 0 skipped; Python 3.12.10, NumPy 2.3.5,
-pytest 9.1.1. Natural child exit, process-group timeout and leader-exited/live-
-descendant Linux tests passed. This is synthetic supervisor evidence; monitored
-resource thresholds are sampled, not OS-enforced. It does not qualify ENG10K
-numerics or authorize execution. Previous failures remain immutable. Next is a
-separate decision on whether to propose one bounded noncanonical execution.
+Review report `docs/arcana/INT3_ENG10K_F_EXECUTION_AUTHORIZATION_REVIEW.md`:
+`INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED`. Local R4
+manifest/member and kernel/configuration pins pass, and execution source is
+unchanged from the FAIR-tested INT3-E commit. However, final provider/runtime
+identity was not re-attested for the current HEAD; Fair available memory, disk
+capacity/quota, effective OS enforcement, exact diffusion-limited step counts and
+ENG10K workload timing remain UNKNOWN. No authorization or evolution occurred.
+Next is a read-only Fair preflight and resource-fact acquisition for the exact
+candidate commit, then a distinct authorization review. Sampled thresholds remain
+distinct from OS quotas; the scientific gates remain blocked.
 
 ## INT3-ENG10K-A — bounded engineering preparation
 
