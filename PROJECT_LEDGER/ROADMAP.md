@@ -1,5 +1,18 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-24)
 
+## INT3-ENG10K-F1/F2 — read-only preflight closed; separate authorization decision pending
+
+F1 report `docs/arcana/INT3_ENG10K_F1_FAIR_RESOURCE_PREFLIGHT_CLOSURE.md` records
+operator-reported read-only Fair preflight/resource audit PASS at source HEAD
+`1bf06ef0e624723c3722a351496ae3b7c2544f40`; original Fair files were not imported
+or independently rehashed on Windows. The observed host had large available
+memory/disk, while the visible cgroup limits were `max`; future allocation, quota,
+ENG10K RSS and runtime remain UNKNOWN. F2 report
+`docs/arcana/INT3_ENG10K_F2_DECISION_PREPARATION.md` recommends only considering
+option B through separate explicit authorization, with sampled limits and their
+residual risk stated. No execution authorized; no evolution occurred. The earlier
+F blocked review and all scientific/canonical gates remain preserved.
+
 ## INT3-ENG10K-F — authorization proposal blocked by unresolved identity/resources
 
 Review report `docs/arcana/INT3_ENG10K_F_EXECUTION_AUTHORIZATION_REVIEW.md`:

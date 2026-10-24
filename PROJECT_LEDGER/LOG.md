@@ -559,3 +559,9 @@ by missing NumPy in the selected interpreter; no install was attempted. Record
 actual syntax/helper/whitespace checks in `docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`.
 Next: after review and publication, run the focused test module on Fair in a new
 immutable evidence directory. No supervisor production mode or ENG10K evolution.
+
+## 2026-10-24 — INT3-ENG10K-F1 read-only Fair resource preflight and F2 decision preparation
+
+- Fair operator reports a read-only preflight and resource audit at source HEAD `1bf06ef0e624723c3722a351496ae3b7c2544f40`: both exit codes 0, preflight marker `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`, source composite `ab19e887113a045ebfa2db3ba30c724d6685e828e6e8eb20b76476ae3f9fa9ef`, Python 3.12.10 / NumPy 2.3.5, and matching R4/provider identities. Evidence path and operator-reported hashes are indexed in EVIDENCE_INDEX. Original Fair logs were not imported or rehashed on Windows.
+- Current-session resource values were reported at 2026-10-24T21:26:09Z. Visible cgroup limits were `max`; no OS-enforced 2 GiB limit or future job allocation was demonstrated. Personal quota, workload RSS, actual thermal step count and wall time remain UNKNOWN. No benchmark, supervisor production invocation or numerical evolution occurred.
+- F2 recommends only an option-B risk-acceptance proposal for a separate authorization decision. Sampled RSS/output/wall thresholds remain non-enforced monitoring/stop thresholds. `INT3_ENG10K_EXECUTION_AUTHORIZED=false`; all scientific and canonical gates remain unchanged.

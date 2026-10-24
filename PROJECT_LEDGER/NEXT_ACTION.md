@@ -1,22 +1,22 @@
-# NEXT — close INT3-F identity and resource blockers before any authorization proposal
+# NEXT — decide separately whether to authorize one sampled-supervised INT3 attempt
 
-INT3-F is blocked: `INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED`.
-An already-authorized Fair operator must first perform a read-only final preflight
-for the exact reviewed candidate commit: verify branch/HEAD, Python 3.12.10 and
-NumPy 2.3.5, governed `ARCANA_EXTERNAL_ROOT` and provider hashes, R4 bundle and
-checkpoint, recomputed HEAD-bound source composite, a fresh absent evidence path,
-available disk space/quota, and available memory plus any effective scheduler or
-cgroup limits. Preserve reported versus independently acquired evidence.
+INT3-F1 completed the reported no-evolution Fair identity/resource reconnaissance;
+INT3-F2 recommends only a proposal under option B (explicit acceptance of sampled
+monitoring risk). No execution is authorized. A separate authorization must bind
+the exact final candidate commit, recompute the HEAD-bound source composite and
+provider hashes, repeat runtime/R4/configuration checks, confirm fresh evidence
+paths, and record current memory/disk/quota facts. It must explicitly acknowledge
+that 900 s is a stop threshold and 2 GiB RSS / 512 MiB output are sampled monitor
+thresholds, not OS quotas; actual workload duration, peak RSS, substep count and
+personal quota remain UNKNOWN. Option A is not established: the visible cgroup
+limits were reported `max`, and no scheduler enforcement was demonstrated.
 
-Return that preflight for a separate authorization decision. Do not invoke the
-supervisor production CLI or `--mode execute` as part of preflight. If Fair memory
-or enforcement facts are unavailable without a job, retain UNKNOWN; sampled RSS
-and wall/output thresholds are not OS quotas. No numerical acceptance threshold
-is defined; direct/restart comparisons remain descriptive and
-`THRESHOLD_UNJUSTIFIED`.
-
-No ENG10K run is authorized. Preserve R4, all INT3-C/D/E outcomes, INT-2C STOP,
-and all scientific, Solver, mechanics and WORLD_HISTORY gates.
+Only a distinct explicit decision may authorize one noncanonical engineering run.
+No supervisor production invocation or numerical evolution is authorized now.
+Preserve all earlier INT3-C/D/E failures and the prior F blocked verdict, R4 and
+INT-2C STOP. Keep direct/restart comparisons descriptive and
+`THRESHOLD_UNJUSTIFIED`; preserve all scientific, Solver, mechanics and
+WORLD_HISTORY gates.
 
 ## Archived — INT-2C closed: STOP, no further replay authorized
 

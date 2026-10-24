@@ -1,3 +1,11 @@
+## INT3-ENG10K-F1/F2 — Fair read-only resource reconnaissance and decision preparation (2026-10-24)
+
+- Reports: `docs/arcana/INT3_ENG10K_F1_FAIR_RESOURCE_PREFLIGHT_CLOSURE.md` and `docs/arcana/INT3_ENG10K_F2_DECISION_PREPARATION.md`.
+- Fair operator reports source HEAD `1bf06ef0e624723c3722a351496ae3b7c2544f40`, preflight/resource exit codes 0, marker `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`, source composite `ab19e887113a045ebfa2db3ba30c724d6685e828e6e8eb20b76476ae3f9fa9ef`, Python 3.12.10 / NumPy 2.3.5, and matching R4/provider identities. These Fair artifacts were not transferred or rehashed on Windows; reported only.
+- Evidence locator: `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT3F1_RESOURCE_PREFLIGHT/1bf06ef0_20261024_01`. Reported `preflight.log` SHA256 `db5c15a0555c00753711007342362cc91d3eb7e48c9f46895573a51f9d67c0e8`; `resources.log` SHA256 `cd960de86593eb38241981d67f07b26df71dfc37e2d12754132486c375c3eaf5`. Procedure reports checksum OK on six control files; no independent Windows verification.
+- Current-session observations at 2026-10-24T21:26:09Z: host `fair`; MemTotal 1,056,486,536 kB; MemAvailable 1,030,996,348 kB; `/home` available 16,550,992,183,296 bytes; 361,730,941 free inodes. Visible cgroup v2 session/ancestor `memory.max` and `memory.high` reported `max`. No future allocation or enforcement demonstrated. Personal quota UNKNOWN (`quota` unavailable); scheduler variables unset in session, not proof of scheduler absence.
+- F2 recommends only a separate option-B authorization proposal that explicitly accepts sampled monitoring risk; no execution authorization. 900 s is a stop threshold; 2 GiB RSS/512 MiB output remain sampled thresholds, not OS quotas. Workload RSS, duration, thermal step count and quota remain UNKNOWN. Scientific/canonical gates unchanged.
+
 ## INT-1B — evidence density and distinct-regime design (2026-10-13)
 
 ## INT-2C-C3 — imported executable replay verified (2026-10-14)
