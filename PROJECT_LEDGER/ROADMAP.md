@@ -1,5 +1,15 @@
 # ARCANA R6 — Roadmap operativa corrente (2026-10-24)
 
+## INT3-ENG10K-F3 — Option B decision sheet prepared; no operator selection
+
+Report `docs/arcana/INT3_ENG10K_F3_OPTION_B_AUTHORIZATION_DECISION.md` presents
+APPROVE-for-preparation and REJECT/DEFER alternatives. Selection remains pending.
+Even approval permits only exact-commit binding preparation and fresh read-only
+preflight; a distinct execution authorization is still required. No numerical
+evolution authorized. F1 resource observations remain historical/operator-reported;
+sampled thresholds are not enforced quotas and workload resource values remain
+UNKNOWN. All scientific/canonical gates remain closed.
+
 ## INT3-ENG10K-F1/F2 — read-only preflight closed; separate authorization decision pending
 
 F1 report `docs/arcana/INT3_ENG10K_F1_FAIR_RESOURCE_PREFLIGHT_CLOSURE.md` records

@@ -1,3 +1,11 @@
+## INT3-ENG10K-F3 — Option B decision preparation (2026-10-24)
+
+- Report: `docs/arcana/INT3_ENG10K_F3_OPTION_B_AUTHORIZATION_DECISION.md`.
+- This is a decision worksheet only. Operator selection is `PENDING_OPERATOR_DECISION`; no authorization artifact or execution permission was created.
+- F1 inputs remain operator-reported for source HEAD `1bf06ef0e624723c3722a351496ae3b7c2544f40`; original Fair files were not transferred/rehashed on Windows. The F1 values are not new F3 measurements.
+- F3 keeps sampled 900 s / 2 GiB process-group RSS / 512 MiB output thresholds distinct from OS-enforced limits and preserves UNKNOWN for workload RSS, duration, thermal step count, and personal quota.
+- `INT3_ENG10K_EXECUTION_AUTHORIZED=false`; all scientific/canonical gates unchanged.
+
 ## INT3-ENG10K-F1/F2 — Fair read-only resource reconnaissance and decision preparation (2026-10-24)
 
 - Reports: `docs/arcana/INT3_ENG10K_F1_FAIR_RESOURCE_PREFLIGHT_CLOSURE.md` and `docs/arcana/INT3_ENG10K_F2_DECISION_PREPARATION.md`.

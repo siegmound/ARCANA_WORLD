@@ -1,30 +1,14 @@
 # CURRENT — ARCANA WorldSim R6, 2026-10-24
 
-## INT3-ENG10K-F2 — decision preparation; execution remains unauthorized
+## INT3-ENG10K-F3 — Option B decision prepared; operator selection pending
 
-Decision: `INT3F_ENGINEERING_AUTHORIZATION_PROPOSAL_READY__EXECUTION_NOT_AUTHORIZED`.
-Reports: `docs/arcana/INT3_ENG10K_F1_FAIR_RESOURCE_PREFLIGHT_CLOSURE.md` and
-`docs/arcana/INT3_ENG10K_F2_DECISION_PREPARATION.md`. Fair operator reports a
-read-only exact-HEAD provider/runtime preflight PASS at
-`1bf06ef0e624723c3722a351496ae3b7c2544f40`, source-composite
-`ab19e887113a045ebfa2db3ba30c724d6685e828e6e8eb20b76476ae3f9fa9ef`, and current
-session host/cgroup/filesystem observations. Original Fair files were not
-transferred or independently rehashed on Windows. Visible cgroup limits were
-reported `max`; personal quota, future job allocation, ENG10K RSS, substep count
-and runtime remain UNKNOWN. The 2 GiB RSS and 512 MiB output limits remain sampled
-supervisor thresholds, not OS-enforced quotas; 900 seconds remains a stop limit,
-not a runtime estimate.
-
-F2 recommends only a future separate authorization decision that may explicitly
-accept these sampled-monitoring risks (option B). This is not execution approval.
-No ENG10K evolution or production supervisor invocation occurred. The previous
-`INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED` review remains
-an immutable historical decision for its earlier evidence set.
-
-Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
-`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
-`F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`,
-`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+Decision: `F3_OPTION_B_DECISION_PENDING_OPERATOR_SELECTION`.
+Report: `docs/arcana/INT3_ENG10K_F3_OPTION_B_AUTHORIZATION_DECISION.md`. F3 presents
+the two choices and required risk acknowledgements; neither is selected. F1 remains
+operator-reported read-only evidence for HEAD `1bf06ef0e624723c3722a351496ae3b7c2544f40`,
+not a current measurement. Option B, if chosen, permits only preparation of a later
+exact-commit binding; it does not authorize preflight commands or ENG10K evolution.
+`INT3_ENG10K_EXECUTION_AUTHORIZED=false` remains in force.
 
 ## INT3-ENG10K-F — execution authorization review blocked (2026-10-24)
 
