@@ -115,8 +115,11 @@ def resolve_evidence_destinations(
     evidence_root: Path, output_relative: Path | str, supervision_relative: Path | str, *,
     repo_root: Path, world_history_roots: tuple[Path, ...] = (), r4_bundle: Path | None = None,
     allow_existing_supervision: bool = False,
+    allowed_supervision_members: frozenset[str] = frozenset(),
 ) -> tuple[Path, Path, Path]:
     """Validate the root and same-attempt output locations; never create paths."""
+    if set(allowed_supervision_members) - {"resource_samples.jsonl", "TRAJECTORY_MARKERS.jsonl"}:
+        raise Eng10kContractError("SUPERVISION_MEMBER_ALLOWLIST_INVALID")
     root = validate_evidence_root(evidence_root, repo_root=repo_root,
                                   world_history_roots=world_history_roots)
     output_parts = _safe_relative_parts(output_relative)
@@ -140,8 +143,9 @@ def resolve_evidence_destinations(
     if output.exists() or _path_component_is_link(output):
         raise Eng10kContractError("EVIDENCE_OUTPUT_COLLISION_OR_LINK")
     if allow_existing_supervision:
+        expected_supervision_members = {"child.stdout", "child.stderr"} | set(allowed_supervision_members)
         if (not supervision.is_dir() or _path_component_is_link(supervision)
-                or {p.name for p in supervision.iterdir()} != {"child.stdout", "child.stderr"}
+                or {p.name for p in supervision.iterdir()} != expected_supervision_members
                 or any(p.is_symlink() or not p.is_file() for p in supervision.iterdir())):
             raise Eng10kContractError("SUPERVISION_EVIDENCE_DIRECTORY_INVALID")
         if not attempt.is_dir():

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -23,6 +25,7 @@ WALL_LIMIT_S = 900.0
 RSS_LIMIT_BYTES = 2_147_483_648
 OUTPUT_LIMIT_BYTES = 536_870_912
 POLL_INTERVAL_S = 0.1
+OBSERVE_POLL_INTERVAL_S = 1.0
 NATURAL_EXIT_CONFIRMATION_S = 0.5
 TERM_GRACE_S = 5.0
 _TERMINAL_PROC_STATES = {"Z", "X", "x"}
@@ -170,10 +173,290 @@ def _expected_child_command(command: list[str], *, root: Path, output_relative: 
     return required
 
 
+def _validate_observe_authorization(path: Path, *, source_head: str,
+                                    evidence_root: Path, output_relative: Path,
+                                    output_absolute: Path, supervision_relative: Path,
+                                    supervision_absolute: Path) -> None:
+    """Require an explicit observe-only record with no legacy budget fields."""
+    try:
+        value = json.loads(path.read_bytes())
+    except (OSError, json.JSONDecodeError) as exc:
+        raise SupervisionError("OBSERVE_ONLY_AUTHORIZATION_UNREADABLE") from exc
+    expected = {
+        "decision": "CONDITIONAL_GO_INT3_ENG10K_NONCANONICAL_RUN",
+        "supervision_mode": "OBSERVE_ONLY",
+        "resource_enforcement": "OBSERVE_ONLY_NO_THRESHOLDS",
+        "source_head": source_head,
+        "evidence_root_absolute": str(evidence_root),
+        "output_relative": output_relative.as_posix(),
+        "output_absolute": str(output_absolute),
+        "supervision_relative": supervision_relative.as_posix(),
+        "supervision_absolute": str(supervision_absolute),
+        "one_attempt_only": True,
+        "noncanonical": True,
+    }
+    config_path = ROOT / "configs/r6_int3_eng10k/engineering_case.json"
+    try:
+        config_sha = hashlib.sha256(config_path.read_bytes()).hexdigest()
+    except OSError as exc:
+        raise SupervisionError("OBSERVE_ONLY_CONFIGURATION_UNAVAILABLE") from exc
+    expected["configuration_sha256"] = config_sha
+    if (not isinstance(value, dict) or "limits" in value
+            or any(value.get(key) != expected_value for key, expected_value in expected.items())):
+        raise SupervisionError("OBSERVE_ONLY_AUTHORIZATION_MISMATCH")
+
+
+def _proc_telemetry(proc_root: Path, group_id: int, members: list[int], *,
+                    expected_leader_start_ticks: int) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    """Collect best-effort CPU/I/O details for already identity-checked live PIDs."""
+    rows: list[dict[str, Any]] = []
+    errors: list[dict[str, str]] = []
+    ticks_per_second = os.sysconf("SC_CLK_TCK")
+    for pid in members:
+        entry = proc_root / str(pid)
+        try:
+            stat_text = (entry / "stat").read_text()
+            stat_before = _parse_stat(stat_text)
+            raw_fields = stat_text.rsplit(")", 1)[1].strip().split()
+            if stat_before[2] != group_id:
+                raise SupervisionError("PROC_GROUP_CHANGED")
+            if stat_before[0] in _TERMINAL_PROC_STATES:
+                continue
+            if pid == group_id and stat_before[3] != expected_leader_start_ticks:
+                raise SupervisionError("PROC_LEADER_IDENTITY_CHANGED")
+            utime_ticks, stime_ticks = int(raw_fields[11]), int(raw_fields[12])
+            status = (entry / "status").read_text()
+            rss_line = next(line for line in status.splitlines() if line.startswith("VmRSS:"))
+            rss_kib = int(rss_line.split()[1])
+            row: dict[str, Any] = {
+                "pid": pid, "ppid": stat_before[1], "process_group_id": stat_before[2],
+                "start_ticks": stat_before[3], "state": stat_before[0],
+                "rss_bytes": rss_kib * 1024,
+                "user_cpu_seconds": utime_ticks / ticks_per_second,
+                "system_cpu_seconds": stime_ticks / ticks_per_second,
+            }
+            try:
+                io_values: dict[str, int] = {}
+                for line in (entry / "io").read_text().splitlines():
+                    key, sep, value = line.partition(":")
+                    if sep and key in {"read_bytes", "write_bytes"}:
+                        io_values[key] = int(value.strip())
+                if set(io_values) != {"read_bytes", "write_bytes"}:
+                    raise ValueError("I/O counters incomplete")
+                row.update({"read_bytes": io_values["read_bytes"],
+                            "write_bytes": io_values["write_bytes"]})
+            except (OSError, ValueError) as exc:
+                errors.append({"pid": str(pid), "metric": "io_bytes",
+                               "error": f"{type(exc).__name__}:{exc}"})
+            stat_after = _parse_stat((entry / "stat").read_text())
+            if stat_after[3] != stat_before[3] or stat_after[2] != group_id:
+                raise SupervisionError("PROC_PID_IDENTITY_CHANGED")
+            rows.append(row)
+        except (FileNotFoundError, ProcessLookupError):
+            errors.append({"pid": str(pid), "metric": "process_detail",
+                           "error": "PID_DISAPPEARED_DURING_TELEMETRY"})
+        except SupervisionError:
+            raise
+        except (OSError, ValueError, IndexError) as exc:
+            errors.append({"pid": str(pid), "metric": "process_detail",
+                           "error": f"{type(exc).__name__}:{exc}"})
+    return rows, errors
+
+
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def _supervise_observe_only(command: list[str], *, root: Path, output_dir: Path,
+                            evidence_dir: Path, expected_head: str,
+                            proc_root: Path) -> dict[str, Any]:
+    stdout_path, stderr_path = evidence_dir / "child.stdout", evidence_dir / "child.stderr"
+    samples_path = evidence_dir / "resource_samples.jsonl"
+    markers_path = evidence_dir / "TRAJECTORY_MARKERS.jsonl"
+    samples_path.touch(exist_ok=False)
+    markers_path.touch(exist_ok=False)
+    clean_env = dict(os.environ)
+    clean_env.pop("GIT_OBJECT_DIRECTORY", None)
+    clean_env.pop("GIT_ALTERNATE_OBJECT_DIRECTORIES", None)
+    clean_env["ARCANA_INT3_TRAJECTORY_MARKERS"] = str(markers_path.resolve())
+    started = time.monotonic()
+    start_utc = _utc_now()
+    with stdout_path.open("xb") as stdout, stderr_path.open("xb") as stderr, \
+            samples_path.open("ab", buffering=0) as samples_stream:
+        process = subprocess.Popen(command, cwd=ROOT, env=clean_env,
+                                   stdout=stdout, stderr=stderr, start_new_session=True)
+        pgid = process.pid
+        try:
+            _, root_ppid, root_group, root_start_ticks = _parse_stat(
+                (proc_root / str(process.pid) / "stat").read_text())
+            root_exe = os.readlink(proc_root / str(process.pid) / "exe")
+            if (root_group != pgid or Path(root_exe).resolve() != Path(command[0]).resolve()):
+                raise SupervisionError("CHILD_PROCESS_IDENTITY_MISMATCH")
+        except BaseException:
+            _terminate_group(pgid, process)
+            raise
+
+        previous_handlers: dict[int, Any] = {}
+        stop_signal: int | None = None
+
+        def on_signal(signum, _frame):
+            nonlocal stop_signal
+            stop_signal = signum
+
+        for signum in (signal.SIGINT, signal.SIGTERM):
+            previous_handlers[signum] = signal.signal(signum, on_signal)
+
+        sample_count = 0
+        lost_samples = 0
+        telemetry_errors: list[dict[str, str]] = []
+        per_identity_totals: dict[str, dict[str, float]] = {}
+        per_identity_peaks: dict[str, dict[str, float]] = {}
+        previous_counters: dict[str, tuple[float, float, int, int]] = {}
+        peaks = {"process_group_rss_bytes": 0, "cumulative_output_bytes": 0,
+                 "sampled_group_cpu_seconds": 0.0, "sampled_group_read_bytes": 0,
+                 "sampled_group_write_bytes": 0}
+        last_members: list[int] = []
+        empty_since: float | None = None
+        reason = "UNKNOWN"
+        final_group: dict[str, Any] | None = None
+        try:
+            while True:
+                return_code = process.poll()
+                try:
+                    rss, members = _proc_group_snapshot(
+                        proc_root, pgid, expected_leader_start_ticks=root_start_ticks)
+                    output_bytes = (_tree_bytes(output_dir) + stdout_path.stat().st_size
+                                    + stderr_path.stat().st_size + samples_path.stat().st_size
+                                    + markers_path.stat().st_size)
+                    details, detail_errors = _proc_telemetry(
+                        proc_root, pgid, members,
+                        expected_leader_start_ticks=root_start_ticks)
+                except (OSError, SupervisionError) as exc:
+                    reason = f"MONITORING_FAILURE:{exc}"
+                    _terminate_group(pgid, process)
+                    break
+                now = time.monotonic()
+                elapsed = now - started
+                aggregate_cpu = sum(float(row["user_cpu_seconds"])
+                                     + float(row["system_cpu_seconds"]) for row in details)
+                aggregate_read = sum(int(row.get("read_bytes", 0)) for row in details)
+                aggregate_write = sum(int(row.get("write_bytes", 0)) for row in details)
+                for row in details:
+                    identity = f"{row['pid']}:{row['start_ticks']}"
+                    counters = (float(row["user_cpu_seconds"]), float(row["system_cpu_seconds"]),
+                                int(row.get("read_bytes", 0)), int(row.get("write_bytes", 0)))
+                    previous = previous_counters.get(identity)
+                    totals = per_identity_totals.setdefault(identity, {
+                        "user_cpu_seconds_delta": 0.0, "system_cpu_seconds_delta": 0.0,
+                        "read_bytes_delta": 0, "write_bytes_delta": 0})
+                    individual_peak = per_identity_peaks.setdefault(identity, {
+                        "rss_bytes": 0, "user_cpu_seconds": 0.0,
+                        "system_cpu_seconds": 0.0, "read_bytes": 0, "write_bytes": 0})
+                    for metric in individual_peak:
+                        individual_peak[metric] = max(individual_peak[metric], row.get(metric, 0))
+                    if previous is not None:
+                        totals["user_cpu_seconds_delta"] += max(0.0, counters[0] - previous[0])
+                        totals["system_cpu_seconds_delta"] += max(0.0, counters[1] - previous[1])
+                        totals["read_bytes_delta"] += max(0, counters[2] - previous[2])
+                        totals["write_bytes_delta"] += max(0, counters[3] - previous[3])
+                    previous_counters[identity] = counters
+                row = {
+                    "schema": "ARCANA_R6_INT3_RESOURCE_SAMPLE_V1",
+                    "timestamp_utc": _utc_now(), "elapsed_seconds": elapsed,
+                    "root_pid": process.pid, "root_start_ticks": root_start_ticks,
+                    "process_group_id": pgid, "live_processes": details,
+                    "aggregate_sampled": {"process_group_rss_bytes": rss,
+                        "user_plus_system_cpu_seconds": aggregate_cpu,
+                        "read_bytes": aggregate_read, "write_bytes": aggregate_write,
+                        "cumulative_output_bytes": output_bytes},
+                    "metric_errors": detail_errors,
+                }
+                try:
+                    samples_stream.write((json.dumps(row, sort_keys=True, allow_nan=False) + "\n").encode())
+                    samples_stream.flush()
+                except (OSError, TypeError, ValueError) as exc:
+                    lost_samples += 1
+                    reason = f"TELEMETRY_WRITE_FAILURE:{type(exc).__name__}:{exc}"
+                    _terminate_group(pgid, process)
+                    break
+                sample_count += 1
+                telemetry_errors.extend(detail_errors)
+                last_members = members
+                peaks["process_group_rss_bytes"] = max(peaks["process_group_rss_bytes"], rss)
+                peaks["cumulative_output_bytes"] = max(peaks["cumulative_output_bytes"], output_bytes)
+                peaks["sampled_group_cpu_seconds"] = max(peaks["sampled_group_cpu_seconds"], aggregate_cpu)
+                peaks["sampled_group_read_bytes"] = max(peaks["sampled_group_read_bytes"], aggregate_read)
+                peaks["sampled_group_write_bytes"] = max(peaks["sampled_group_write_bytes"], aggregate_write)
+                final_group = row["aggregate_sampled"]
+                if stop_signal is not None:
+                    reason = f"SUPERVISOR_SIGNAL:{stop_signal}"
+                    _terminate_group(pgid, process)
+                    break
+                confirmed, empty_since = _update_empty_group_confirmation(
+                    return_code, members, now, empty_since)
+                if confirmed:
+                    reason = "NATURAL_EXIT"
+                    break
+                time.sleep(OBSERVE_POLL_INTERVAL_S)
+        finally:
+            for signum, handler in previous_handlers.items():
+                signal.signal(signum, handler)
+
+    elapsed = time.monotonic() - started
+    try:
+        final_output_bytes: int | None = (
+            _tree_bytes(output_dir) + stdout_path.stat().st_size + stderr_path.stat().st_size
+            + samples_path.stat().st_size + markers_path.stat().st_size)
+    except (OSError, SupervisionError) as exc:
+        final_output_bytes = None
+        telemetry_errors.append({"pid": "supervisor", "metric": "final_output_bytes",
+                                 "error": f"{type(exc).__name__}:{exc}"})
+    process_lifetime_totals = {
+        "user_plus_system_cpu_seconds": sum(value[0] + value[1]
+                                              for value in previous_counters.values()),
+        "read_bytes": sum(value[2] for value in previous_counters.values()),
+        "write_bytes": sum(value[3] for value in previous_counters.values()),
+        "scope": "sum_of_last_observed_cumulative_counters_per_pid_start_identity",
+    }
+    result = {"schema": "ARCANA_R6_INT3_ENG10K_SUPERVISION_V2",
+        "supervision_mode": "OBSERVE_ONLY", "active_thresholds": [],
+        "termination_conditions": ["NATURAL_CHILD_EXIT", "SUPERVISOR_SIGNAL",
+                                    "PROCESS_IDENTITY_OR_TELEMETRY_FAILURE"],
+        "command": command, "evidence_root_absolute": str(root),
+        "output_absolute": str(output_dir), "supervision_absolute": str(evidence_dir),
+        "expected_source_head": expected_head,
+        "root_pid": process.pid, "root_start_ticks": root_start_ticks,
+        "root_parent_pid": root_ppid, "root_executable": root_exe,
+        "process_group_id": pgid, "last_observed_group_members": last_members,
+        "natural_exit_code": process.returncode, "stop_reason": reason,
+        "started_at_utc": start_utc, "elapsed_seconds": elapsed,
+        "sample_interval_seconds": OBSERVE_POLL_INTERVAL_S,
+        "sample_count": sample_count, "lost_sample_count": lost_samples,
+        "telemetry_status": "PARTIAL" if telemetry_errors or lost_samples or final_output_bytes is None else "COMPLETE",
+        "telemetry_errors": telemetry_errors,
+        "peak_sampled_aggregate": peaks, "final_sampled_aggregate": final_group,
+        "last_observed_process_lifetime_counters": process_lifetime_totals,
+        "per_process_sampled_totals": per_identity_totals,
+        "per_process_sampled_peaks": per_identity_peaks,
+        "sampling_limitations": ["short_lived_processes_between_samples_may_be_missed",
+                                 "CPU_and_IO_deltas_cover_observed_intervals_only"],
+        "resource_samples": {"path": samples_path.name, "bytes": samples_path.stat().st_size},
+        "final_cumulative_output_bytes": final_output_bytes,
+        "final_output_byte_scope": "candidate_tree_child_logs_and_telemetry_jsonl_excludes_SUPERVISION_json",
+        "trajectory_markers": {"path": markers_path.name, "bytes": markers_path.stat().st_size},
+        "stdout": {"path": stdout_path.name, "bytes": stdout_path.stat().st_size},
+        "stderr": {"path": stderr_path.name, "bytes": stderr_path.stat().st_size},
+        "automatic_retry": False,
+        "operational_note": "No historical wall/RSS/output thresholds are active in observe-only mode; telemetry incompleteness is not a numerical-result classification."}
+    (evidence_dir / "SUPERVISION.json").write_text(
+        json.dumps(result, sort_keys=True, indent=2) + "\n", encoding="utf-8", newline="\n")
+    return result
+
+
 def supervise(command: list[str], *, evidence_root: Path,
               output_relative: Path, supervision_relative: Path,
               r4_bundle: Path, expected_head: str, authorization_json: Path,
-              proc_root: Path = Path("/proc")) -> dict[str, Any]:
+              proc_root: Path = Path("/proc"), observe_only: bool = False) -> dict[str, Any]:
     if not sys.platform.startswith("linux"):
         raise SupervisionError("LINUX_PROC_SUPERVISION_REQUIRED")
     world_roots = tuple(Path(value) for value in (os.environ.get("ARCANA_WORLD_HISTORY_ROOT"),)
@@ -193,6 +476,18 @@ def supervise(command: list[str], *, evidence_root: Path,
         authorization_json=authorization_json)
     if not Path(command[0]).is_file():
         raise SupervisionError("EXECUTABLE_PATH_INVALID")
+    if observe_only:
+        _validate_observe_authorization(authorization_json, source_head=expected_head,
+            evidence_root=root, output_relative=output_relative,
+            output_absolute=output_dir, supervision_relative=supervision_relative,
+            supervision_absolute=evidence_dir)
+    else:
+        try:
+            declared_auth = json.loads(authorization_json.read_bytes())
+        except (OSError, json.JSONDecodeError):
+            declared_auth = None  # Preserve legacy child-side validation behavior.
+        if isinstance(declared_auth, dict) and declared_auth.get("supervision_mode") == "OBSERVE_ONLY":
+            raise SupervisionError("OBSERVE_ONLY_AUTHORIZATION_REQUIRES_OBSERVE_ONLY_SUPERVISOR")
     try:
         attempt = create_evidence_attempt_parent(root, output_relative.parent,
             repo_root=ROOT, world_history_roots=world_roots)
@@ -200,6 +495,9 @@ def supervise(command: list[str], *, evidence_root: Path,
         evidence_dir.mkdir(exist_ok=False)
     except (OSError, Eng10kContractError) as exc:
         raise SupervisionError(f"EVIDENCE_ATTEMPT_CREATION_FAILED:{exc}") from exc
+    if observe_only:
+        return _supervise_observe_only(command, root=root, output_dir=output_dir,
+            evidence_dir=evidence_dir, expected_head=expected_head, proc_root=proc_root)
     stdout_path, stderr_path = evidence_dir / "child.stdout", evidence_dir / "child.stderr"
     clean_env = dict(os.environ)
     clean_env.pop("GIT_OBJECT_DIRECTORY", None)
@@ -289,6 +587,8 @@ def main() -> int:
     parser.add_argument("--r4-bundle", type=Path, required=True)
     parser.add_argument("--expected-head", required=True)
     parser.add_argument("--authorization-json", type=Path, required=True)
+    parser.add_argument("--observe-only", action="store_true",
+                        help="Sample resources without applying legacy budget thresholds")
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     try:
@@ -298,7 +598,7 @@ def main() -> int:
         result = supervise(command, evidence_root=args.evidence_root,
             output_relative=args.output_relative, supervision_relative=args.supervision_relative,
             r4_bundle=args.r4_bundle, expected_head=args.expected_head,
-            authorization_json=args.authorization_json)
+            authorization_json=args.authorization_json, observe_only=args.observe_only)
         print(json.dumps(result, sort_keys=True))
         return 0 if result["stop_reason"] == "NATURAL_EXIT" and result["natural_exit_code"] == 0 else 1
     except (OSError, SupervisionError) as exc:

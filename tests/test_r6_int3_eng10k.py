@@ -11,7 +11,8 @@ from arcana_worldsim.r6.functional_development import NodeMaterial, ReducedState
 from arcana_worldsim.r6 import int3_eng10k as eng
 from r6_int3_eng10k import (
     CONFIG_SHA256, EXECUTION_DECISION, _diagnostic_summary,
-    _validate_checkout_identity, _validate_execution_authorization, _write_bundle,
+    _TrajectoryMarkerWriter, _run_profiled_trajectory, _validate_checkout_identity,
+    _validate_execution_authorization, _write_bundle,
 )
 import r6_int3_eng10k_supervisor as supervisor
 from r6_int3_eng10k_supervisor import _parse_stat, _proc_group_snapshot
@@ -278,6 +279,53 @@ def test_execution_authorization_is_bound_to_source_config_paths_and_budgets():
             supervision_absolute=args["supervision_absolute"])
 
 
+def test_observe_only_authorization_is_explicit_and_has_no_legacy_limits():
+    args = {"decision": EXECUTION_DECISION, "source_head": "a" * 40,
+        "configuration_sha256": CONFIG_SHA256,
+        "evidence_root_absolute": "F:/ARCANA_WORLD_EVIDENCE",
+        "output_relative": "R6/INT3_ENG10K/run/candidate",
+        "output_absolute": "F:/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/run/candidate",
+        "supervision_relative": "R6/INT3_ENG10K/run/supervision",
+        "supervision_absolute": "F:/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/run/supervision",
+        "one_attempt_only": True, "noncanonical": True,
+        "supervision_mode": "OBSERVE_ONLY",
+        "resource_enforcement": "OBSERVE_ONLY_NO_THRESHOLDS"}
+    mode = _validate_execution_authorization(args, source_head="a" * 40,
+        configuration_sha256=CONFIG_SHA256,
+        evidence_root_absolute=args["evidence_root_absolute"],
+        output_relative=Path(args["output_relative"]), output_absolute=args["output_absolute"],
+        supervision_relative=Path(args["supervision_relative"]),
+        supervision_absolute=args["supervision_absolute"])
+    assert mode == "OBSERVE_ONLY"
+    args["limits"] = {"wall_seconds": 900}
+    with pytest.raises(eng.Eng10kContractError, match="MUST_NOT_DECLARE_ACTIVE_LIMITS"):
+        _validate_execution_authorization(args, source_head="a" * 40,
+            configuration_sha256=CONFIG_SHA256,
+            evidence_root_absolute=args["evidence_root_absolute"],
+            output_relative=Path(args["output_relative"]), output_absolute=args["output_absolute"],
+            supervision_relative=Path(args["supervision_relative"]),
+            supervision_absolute=args["supervision_absolute"])
+
+
+def test_trajectory_markers_record_boundaries_and_substeps(tmp_path):
+    path = tmp_path / "TRAJECTORY_MARKERS.jsonl"
+    markers = _TrajectoryMarkerWriter(path, expected_trajectories=1)
+    final, diagnostics = _run_profiled_trajectory(markers,
+        trajectory_kind="DIRECT", support_id=SUPPORTS[0], resolution_factor=0.0005,
+        duration_years=10000.0, compute=lambda: ("state", {"integration_substeps": 123}))
+    assert final == "state"
+    assert diagnostics == {"integration_substeps": 123}
+    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+    assert [row["event"] for row in rows] == ["START", "END"]
+    assert rows[0]["support_id"] == SUPPORTS[0]
+    assert rows[1]["trajectory_kind"] == "DIRECT"
+    assert rows[1]["resolution_factor"] == 0.0005
+    assert rows[1]["simulated_years_completed"] == 10000.0
+    assert rows[1]["substeps_completed"] == 123
+    assert rows[1]["elapsed_real_seconds"] >= 0.0
+    assert markers.summary()["status"] == "COMPLETE"
+
+
 def test_evidence_root_and_destinations_are_external_existing_and_read_only_preflight(tmp_path):
     from arcana_worldsim.r6.int3_eng10k import resolve_evidence_destinations
 
@@ -441,6 +489,35 @@ def test_supervisor_command_is_bound_to_runtime_root_and_attempt_paths(tmp_path)
         supervisor._expected_child_command(cmd, root=root.absolute(), output_relative=out,
             supervision_relative=sup, r4_bundle=bundle, expected_head=expected_head,
             authorization_json=authorization)
+
+
+def test_supervisor_observe_authorization_rejects_legacy_limit_claims(tmp_path):
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    output_rel = Path("R6/INT3_ENG10K/run/candidate")
+    supervision_rel = Path("R6/INT3_ENG10K/run/supervision")
+    output_abs = root / output_rel
+    supervision_abs = root / supervision_rel
+    auth = tmp_path / "observe.json"
+    value = {"decision": EXECUTION_DECISION, "supervision_mode": "OBSERVE_ONLY",
+        "resource_enforcement": "OBSERVE_ONLY_NO_THRESHOLDS", "source_head": "a" * 40,
+        "configuration_sha256": CONFIG_SHA256,
+        "evidence_root_absolute": str(root.absolute()),
+        "output_relative": output_rel.as_posix(), "output_absolute": str(output_abs),
+        "supervision_relative": supervision_rel.as_posix(),
+        "supervision_absolute": str(supervision_abs),
+        "one_attempt_only": True, "noncanonical": True}
+    auth.write_text(json.dumps(value), encoding="utf-8")
+    supervisor._validate_observe_authorization(auth, source_head="a" * 40,
+        evidence_root=root.absolute(), output_relative=output_rel, output_absolute=output_abs,
+        supervision_relative=supervision_rel, supervision_absolute=supervision_abs)
+    value["limits"] = {"wall_seconds": 900, "process_group_rss_bytes": 2_147_483_648,
+                       "cumulative_output_bytes": 536_870_912}
+    auth.write_text(json.dumps(value), encoding="utf-8")
+    with pytest.raises(supervisor.SupervisionError, match="OBSERVE_ONLY_AUTHORIZATION_MISMATCH"):
+        supervisor._validate_observe_authorization(auth, source_head="a" * 40,
+            evidence_root=root.absolute(), output_relative=output_rel, output_absolute=output_abs,
+            supervision_relative=supervision_rel, supervision_absolute=supervision_abs)
 
 
 def test_linux_proc_stat_parser_handles_parentheses_in_process_name():
@@ -618,6 +695,82 @@ def test_linux_supervise_runs_only_a_synthetic_child_and_records_natural_exit(tm
     assert (streams / "child.stdout").read_text(encoding="utf-8").strip() == "SYNTHETIC_ONLY"
     assert json.loads((streams / "SUPERVISION.json").read_text(encoding="utf-8")) == result
     assert not Path(result["output_absolute"]).exists()
+
+
+@pytest.mark.skipif(not sys.platform.startswith("linux"), reason="requires Linux /proc and process groups")
+def test_linux_observe_only_records_telemetry_and_ignores_legacy_thresholds(tmp_path, monkeypatch):
+    """Exceed synthetic zero thresholds yet preserve natural child completion."""
+    import time
+
+    root = tmp_path / "ARCANA_WORLD_EVIDENCE"
+    root.mkdir()
+    checkout = tmp_path / "checkout"
+    checkout.mkdir()
+    config_path = checkout / "configs/r6_int3_eng10k/engineering_case.json"
+    config_path.parent.mkdir(parents=True)
+    config_path.write_bytes((Path(__file__).resolve().parents[1]
+                             / "configs/r6_int3_eng10k/engineering_case.json").read_bytes())
+    r4 = tmp_path / "r4-input"
+    r4.mkdir()
+    output_relative = Path("R6/INT3_ENG10K/probe-observe/candidate")
+    supervision_relative = Path("R6/INT3_ENG10K/probe-observe/supervision")
+    output_absolute = root / output_relative
+    supervision_absolute = root / supervision_relative
+    authorization = tmp_path / "authorization.json"
+    authorization.write_text(json.dumps({
+        "decision": EXECUTION_DECISION,
+        "source_head": "f" * 40,
+        "configuration_sha256": CONFIG_SHA256,
+        "evidence_root_absolute": str(root.absolute()),
+        "output_relative": output_relative.as_posix(),
+        "output_absolute": str(output_absolute),
+        "supervision_relative": supervision_relative.as_posix(),
+        "supervision_absolute": str(supervision_absolute),
+        "one_attempt_only": True,
+        "noncanonical": True,
+        "supervision_mode": "OBSERVE_ONLY",
+        "resource_enforcement": "OBSERVE_ONLY_NO_THRESHOLDS",
+    }), encoding="utf-8")
+    monkeypatch.setattr(supervisor, "ROOT", checkout)
+    monkeypatch.setattr(supervisor, "WALL_LIMIT_S", 0.0)
+    monkeypatch.setattr(supervisor, "RSS_LIMIT_BYTES", 0)
+    monkeypatch.setattr(supervisor, "OUTPUT_LIMIT_BYTES", 0)
+    monkeypatch.setattr(supervisor, "OBSERVE_POLL_INTERVAL_S", 0.1)
+    command = [sys.executable, "-c",
+        "import time; print('OBSERVE_SYNTHETIC_OUTPUT',flush=True); time.sleep(1.15)"]
+
+    def allow_only_fixture(actual, **_kwargs):
+        assert actual == command
+        assert "r6_int3_eng10k.py" not in " ".join(actual)
+        return actual
+
+    monkeypatch.setattr(supervisor, "_expected_child_command", allow_only_fixture)
+    before = time.monotonic()
+    result = supervisor.supervise(command, evidence_root=root,
+        output_relative=output_relative, supervision_relative=supervision_relative,
+        r4_bundle=r4, expected_head="f" * 40, authorization_json=authorization,
+        observe_only=True)
+    assert result["supervision_mode"] == "OBSERVE_ONLY"
+    assert result["active_thresholds"] == []
+    assert result["stop_reason"] == "NATURAL_EXIT"
+    assert result["natural_exit_code"] == 0
+    assert result["elapsed_seconds"] >= 1.0
+    assert result["elapsed_seconds"] >= time.monotonic() - before - 0.1
+    assert result["peak_sampled_aggregate"]["process_group_rss_bytes"] > 0
+    assert result["peak_sampled_aggregate"]["cumulative_output_bytes"] > 0
+    assert result["sample_count"] >= 3
+    supervision = Path(result["supervision_absolute"])
+    samples = [json.loads(line) for line in
+               (supervision / "resource_samples.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert len(samples) == result["sample_count"]
+    assert all(row["schema"] == "ARCANA_R6_INT3_RESOURCE_SAMPLE_V1" for row in samples)
+    assert all("process_group_rss_bytes" in row["aggregate_sampled"] for row in samples)
+    assert any(row["live_processes"] for row in samples)
+    assert all("pid" in proc and "start_ticks" in proc for row in samples
+               for proc in row["live_processes"])
+    saved = json.loads((supervision / "SUPERVISION.json").read_text(encoding="utf-8"))
+    assert saved == result
+    assert not output_absolute.exists()
 
 
 @pytest.mark.skipif(not sys.platform.startswith("linux"), reason="requires Linux /proc and process groups")

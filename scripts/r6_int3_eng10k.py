@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
@@ -11,6 +12,8 @@ import platform
 import re
 import subprocess
 import sys
+import time
+from typing import Any, Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -148,8 +151,11 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
                supervision_relative: Path = SUPERVISION_RELATIVE,
                r4_bundle: Path = R4_BUNDLE, *, evidence_root: Path | None = None,
                expected_head: str | None = None,
-               allow_existing_supervision: bool = False) -> dict[str, object]:
+               allow_existing_supervision: bool = False,
+               supervision_mode: str = "MONITORED_BUDGETS") -> dict[str, object]:
     _verify_execution_contract()
+    if supervision_mode not in {"MONITORED_BUDGETS", "OBSERVE_ONLY"}:
+        raise Eng10kContractError("SUPERVISION_MODE_INVALID")
     if platform.python_version() != "3.12.10":
         raise Eng10kContractError("PYTHON_RUNTIME_IDENTITY_MISMATCH")
     import numpy as np
@@ -175,7 +181,10 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
     evidence_root_resolved, output, supervision = resolve_evidence_destinations(
         evidence_root, output_relative, supervision_relative, repo_root=ROOT,
         world_history_roots=world_roots, r4_bundle=r4_bundle,
-        allow_existing_supervision=allow_existing_supervision)
+        allow_existing_supervision=allow_existing_supervision,
+        allowed_supervision_members=(frozenset({"resource_samples.jsonl",
+            "TRAJECTORY_MARKERS.jsonl"}) if supervision_mode == "OBSERVE_ONLY"
+            and allow_existing_supervision else frozenset()))
     config, config_raw, config_sha = _configuration()
     kernel = _verify_current_kernel()
     r4 = load_r4_continuation_bundle(r4_bundle)
@@ -190,9 +199,10 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
                             for p in plan.profiles)
     if tuple(s.payload() for s in derived_initial) != tuple(s.payload() for s in r4.initial_states):
         raise Eng10kContractError("CURRENT_PROVIDER_PROFILE_DIFFERS_FROM_R4_INITIAL_STATE")
-    if MAX_PROJECTED_OUTPUT_BYTES > 512 * 1024 * 1024:
+    if (supervision_mode == "MONITORED_BUDGETS"
+            and MAX_PROJECTED_OUTPUT_BYTES > 512 * 1024 * 1024):
         raise Eng10kContractError("PROJECTED_OUTPUT_EXCEEDS_MONITORED_BUDGET")
-    return {
+    result = {
         "decision": "INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION",
         "repository_branch": branch, "source_head": head,
         "expected_source_head": expected_head,
@@ -222,15 +232,23 @@ def _preflight(output_relative: Path = OUTPUT_RELATIVE,
         "projected_output_upper_bound_bytes": MAX_PROJECTED_OUTPUT_BYTES,
         "output_relative": output_relative.as_posix(),
         "supervision_relative": supervision_relative.as_posix(),
-        "monitored_limits_not_os_quotas": {"wall_seconds": 900,
-            "process_tree_rss_bytes": 2_147_483_648, "cumulative_output_bytes": 536_870_912},
         "numerical_evolution_executed": False,
         "canonical_publication": False,
     }
+    if supervision_mode == "OBSERVE_ONLY":
+        result["supervision_mode"] = "OBSERVE_ONLY"
+        result["active_supervisor_thresholds"] = []
+        result["resource_observation"] = "SAMPLED_ONLY_NO_THRESHOLD_TERMINATION"
+    else:
+        result["monitored_limits_not_os_quotas"] = {"wall_seconds": 900,
+            "process_tree_rss_bytes": 2_147_483_648,
+            "cumulative_output_bytes": 536_870_912}
+    return result
 
 
 def _write_bundle(output: Path, artifacts: dict[str, object], config_raw: bytes,
-                  preflight: dict[str, object], result: dict[str, object]) -> dict[str, object]:
+                  preflight: dict[str, object], result: dict[str, object], *,
+                  supervision_mode: str = "MONITORED_BUDGETS") -> dict[str, object]:
     if not output.is_dir() or set(p.name for p in output.iterdir()) != {"RUN_STARTED.json"}:
         raise Eng10kContractError("OUTPUT_COLLISION_OR_UNEXPECTED_PARTIAL_CONTENT")
     manifest_files: dict[str, dict[str, object]] = {}
@@ -248,7 +266,9 @@ def _write_bundle(output: Path, artifacts: dict[str, object], config_raw: bytes,
             "manifest_is_self_excluded": True}
         manifest_raw = canonical_bytes(manifest)
         projected_total = sum(len(value) for value in values.values()) + len(manifest_raw)
-        if projected_total > MAX_PROJECTED_OUTPUT_BYTES or projected_total > 536_870_912:
+        if (projected_total > MAX_PROJECTED_OUTPUT_BYTES
+                or (supervision_mode == "MONITORED_BUDGETS"
+                    and projected_total > 536_870_912)):
             raise Eng10kContractError("OUTPUT_SIZE_EXCEEDS_PREFLIGHT_BOUNDS")
         for name, raw in values.items():
             path = output / name
@@ -280,7 +300,7 @@ def _validate_execution_authorization(authorization: object, *, source_head: str
                                       output_relative: Path,
                                       output_absolute: str,
                                       supervision_relative: Path,
-                                      supervision_absolute: str) -> None:
+                                      supervision_absolute: str) -> str:
     if not isinstance(authorization, dict):
         raise Eng10kContractError("SEPARATE_EXECUTION_AUTHORIZATION_INVALID")
     required = {"decision": EXECUTION_DECISION, "source_head": source_head,
@@ -290,33 +310,134 @@ def _validate_execution_authorization(authorization: object, *, source_head: str
         "output_absolute": output_absolute,
         "supervision_relative": supervision_relative.as_posix(),
         "supervision_absolute": supervision_absolute,
-        "one_attempt_only": True, "noncanonical": True,
-        "limits": {"wall_seconds": 900, "process_group_rss_bytes": 2_147_483_648,
-                   "cumulative_output_bytes": 536_870_912}}
+        "one_attempt_only": True, "noncanonical": True}
     if any(authorization.get(k) != v for k, v in required.items()):
         raise Eng10kContractError("SEPARATE_EXECUTION_AUTHORIZATION_MISMATCH")
+    mode = authorization.get("supervision_mode")
+    if mode is None:
+        mode = "MONITORED_BUDGETS"  # Backward-compatible legacy authorization.
+    if mode == "OBSERVE_ONLY":
+        if ("limits" in authorization
+                or authorization.get("resource_enforcement") != "OBSERVE_ONLY_NO_THRESHOLDS"):
+            raise Eng10kContractError("OBSERVE_ONLY_AUTHORIZATION_MUST_NOT_DECLARE_ACTIVE_LIMITS")
+    elif mode == "MONITORED_BUDGETS":
+        if authorization.get("limits") != {
+                "wall_seconds": 900, "process_group_rss_bytes": 2_147_483_648,
+                "cumulative_output_bytes": 536_870_912}:
+            raise Eng10kContractError("MONITORED_BUDGET_AUTHORIZATION_MISMATCH")
+    else:
+        raise Eng10kContractError("SUPERVISION_MODE_INVALID")
+    return mode
+
+
+class _TrajectoryMarkerWriter:
+    """Append boundary telemetry without changing kernel inputs or state."""
+
+    def __init__(self, path: Path | None, *, expected_trajectories: int = 8) -> None:
+        self.path = path
+        if expected_trajectories <= 0:
+            raise ValueError("expected_trajectories must be positive")
+        self.expected_events = expected_trajectories * 2
+        self.events = 0
+        self.trajectories_started = 0
+        self.errors: list[str] = []
+
+    @staticmethod
+    def _utc_now() -> str:
+        return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+    def write(self, record: dict[str, object]) -> None:
+        if self.path is None:
+            return
+        value = {"schema": "ARCANA_R6_INT3_ENG10K_TRAJECTORY_MARKER_V1",
+                 "timestamp_utc": self._utc_now(), **record}
+        try:
+            with self.path.open("a", encoding="utf-8", newline="\n") as stream:
+                stream.write(json.dumps(value, sort_keys=True, allow_nan=False) + "\n")
+                stream.flush()
+            self.events += 1
+        except (OSError, TypeError, ValueError) as exc:
+            self.errors.append(f"{type(exc).__name__}:{exc}")
+
+    def summary(self) -> dict[str, object]:
+        status = ("NOT_REQUESTED" if self.path is None else
+                  "COMPLETE" if not self.errors and self.events == self.expected_events else "PARTIAL")
+        return {"status": status, "events_written": self.events,
+                "expected_events": self.expected_events, "write_errors": list(self.errors),
+                "path": self.path.name if self.path is not None else None}
+
+
+def _run_profiled_trajectory(markers: _TrajectoryMarkerWriter, *,
+                             trajectory_kind: str, support_id: str,
+                             resolution_factor: float, duration_years: float,
+                             starting_simulated_years: float = 0.0,
+                             compute: Callable[[], tuple[Any, Any]]) -> tuple[Any, Any]:
+    if markers.path is None:
+        return compute()
+    markers.trajectories_started += 1
+    trajectory_id = f"trajectory-{markers.trajectories_started:02d}"
+    started = time.monotonic()
+    common = {"trajectory_id": trajectory_id,
+              "trajectory_kind": trajectory_kind, "support_id": support_id,
+              "resolution_factor": resolution_factor,
+              "requested_simulated_years": duration_years,
+              "simulation_start_years": starting_simulated_years,
+              "simulation_end_years": starting_simulated_years + duration_years}
+    markers.write({**common, "event": "START", "status": "RUNNING",
+                   "simulated_years_completed": 0.0, "substeps_completed": 0})
+    try:
+        final, diagnostics = compute()
+    except BaseException as exc:
+        markers.write({**common, "event": "END", "status": "FAILED",
+                       "simulated_years_completed": None, "substeps_completed": None,
+                       "simulation_end_years": None,
+                       "elapsed_real_seconds": time.monotonic() - started,
+                       "failure_type": type(exc).__name__})
+        raise
+    substeps = (diagnostics.get("integration_substeps") if isinstance(diagnostics, dict)
+                else getattr(diagnostics, "substeps", None))
+    markers.write({**common, "event": "END", "status": "COMPLETED",
+                   "simulated_years_completed": duration_years,
+                   "substeps_completed": substeps,
+                   "elapsed_real_seconds": time.monotonic() - started})
+    return final, diagnostics
 
 
 def _execute(output_relative: Path, supervision_relative: Path,
              authorization_path: Path, r4_bundle: Path, evidence_root: Path,
              expected_head: str) -> int:
+    authorization = json.loads(authorization_path.read_bytes())
+    if not isinstance(authorization, dict):
+        raise Eng10kContractError("SEPARATE_EXECUTION_AUTHORIZATION_INVALID")
+    requested_mode = authorization.get("supervision_mode", "MONITORED_BUDGETS")
     preflight = _preflight(output_relative, supervision_relative, r4_bundle,
                            evidence_root=evidence_root, expected_head=expected_head,
-                           allow_existing_supervision=True)
+                           allow_existing_supervision=True,
+                           supervision_mode=requested_mode)
     config, config_raw, config_sha = _configuration()
-    authorization = json.loads(authorization_path.read_bytes())
-    _validate_execution_authorization(authorization,
+    supervision_mode = _validate_execution_authorization(authorization,
         source_head=str(preflight["source_head"]), configuration_sha256=config_sha,
         evidence_root_absolute=str(preflight["evidence_root_absolute"]),
         output_relative=output_relative, output_absolute=str(preflight["output_absolute"]),
         supervision_relative=supervision_relative,
         supervision_absolute=str(preflight["supervision_absolute"]))
+    marker_path: Path | None = None
+    if supervision_mode == "OBSERVE_ONLY":
+        marker_path = Path(str(preflight["supervision_absolute"])) / "TRAJECTORY_MARKERS.jsonl"
+        inherited_marker = os.environ.get("ARCANA_INT3_TRAJECTORY_MARKERS")
+        if (inherited_marker is None or Path(inherited_marker).resolve() != marker_path.resolve()
+                or not marker_path.is_file()):
+            raise Eng10kContractError("OBSERVE_ONLY_TRAJECTORY_MARKER_PATH_UNBOUND")
+    trajectory_markers = _TrajectoryMarkerWriter(marker_path)
     r4 = load_r4_continuation_bundle(r4_bundle)
     output_path = Path(str(preflight["output_absolute"]))
     output_path.mkdir(parents=True, exist_ok=False)
     started = {"status": "RUN_STARTED_NONCANONICAL", "source_head": preflight["source_head"],
                "configuration_sha256": config_sha, "r4_manifest_sha256": r4.manifest_sha256,
                "numerical_execution_may_follow": True, "canonical_publication": False}
+    if supervision_mode == "OBSERVE_ONLY":
+        started["supervision_mode"] = "OBSERVE_ONLY"
+        started["active_supervisor_thresholds"] = []
     (output_path / "RUN_STARTED.json").write_bytes(canonical_bytes(started))
     direct_finals: dict[float, tuple] = {}
     direct_diags: dict[str, Any] = {}
@@ -325,18 +446,26 @@ def _execute(output_relative: Path, supervision_relative: Path,
         rows = []
         for support, initial in zip(r4.support_ids, r4.initial_states):
             if factor == config["diagnostic_resolution_factor"]:
-                final, diagnostics = advance_with_bounded_samples(initial, support_id=support,
+                compute = lambda: advance_with_bounded_samples(initial, support_id=support,
                     duration_years=float(config["elapsed_duration_years"]),
                     extension_velocity_m_per_year=r4.forcing_m_per_year,
                     resolution_factor=factor,
                     sample_interval_years=float(config["diagnostic_retention"]["schedule_interval_years"]))
+                final, diagnostics = _run_profiled_trajectory(trajectory_markers,
+                    trajectory_kind="DIRECT", support_id=support,
+                    resolution_factor=factor,
+                    duration_years=float(config["elapsed_duration_years"]), compute=compute)
                 reference_samples[support] = diagnostics
                 rows.append(final)
             else:
-                final, diag = pure_shear_thermal_step(initial,
+                compute = lambda: pure_shear_thermal_step(initial,
                     duration_s=float(config["elapsed_duration_years"]) * SECONDS_PER_YEAR,
                     extension_velocity_m_s=r4.forcing_m_per_year / SECONDS_PER_YEAR,
                     maximum_kinematic_fraction_per_substep=factor)
+                final, diag = _run_profiled_trajectory(trajectory_markers,
+                    trajectory_kind="DIRECT", support_id=support,
+                    resolution_factor=factor,
+                    duration_years=float(config["elapsed_duration_years"]), compute=compute)
                 rows.append(final)
                 direct_diags[f"{support}:{factor}"] = {
                     "substeps": diag.substeps, "area_relative_error": diag.area_relative_error,
@@ -347,11 +476,17 @@ def _execute(output_relative: Path, supervision_relative: Path,
     ref = direct_finals[0.0005]
     restart_finals, restart_samples = [], {}
     for support, state in zip(r4.support_ids, r4.checkpoint_states):
-        final, diagnostics = advance_with_bounded_samples(state, support_id=support,
+        compute = lambda: advance_with_bounded_samples(state, support_id=support,
             duration_years=float(config["restart_additional_duration_years"]),
             extension_velocity_m_per_year=r4.forcing_m_per_year,
             resolution_factor=0.0005,
             sample_interval_years=float(config["diagnostic_retention"]["schedule_interval_years"]))
+        final, diagnostics = _run_profiled_trajectory(trajectory_markers,
+            trajectory_kind="RESTART", support_id=support,
+            resolution_factor=0.0005,
+            duration_years=float(config["restart_additional_duration_years"]),
+            starting_simulated_years=float(config["r4_checkpoint_elapsed_years"]),
+            compute=compute)
         restart_finals.append(final)
         restart_samples[support] = diagnostics
     restart_finals_t = tuple(restart_finals)
@@ -381,6 +516,9 @@ def _execute(output_relative: Path, supervision_relative: Path,
         "restart_diagnostics": restart_summary,
         "direct_vs_restart": comparison, "direct_refinement_metrics": convergence,
         "canonical_publication": False, "physical_temporal_validity": "NOT_ESTABLISHED"}
+    if supervision_mode == "OBSERVE_ONLY":
+        result["supervision_mode"] = "OBSERVE_ONLY"
+        result["trajectory_marker_status"] = trajectory_markers.summary()
     artifacts = {
         "PREFLIGHT.json": preflight,
         "R4_INPUT_BINDING.json": {"manifest_sha256": r4.manifest_sha256,
@@ -399,7 +537,8 @@ def _execute(output_relative: Path, supervision_relative: Path,
                             "direct_refinement_only": convergence,
                             "acceptance_threshold": "THRESHOLD_UNJUSTIFIED"},
     }
-    _write_bundle(Path(str(preflight["output_absolute"])), artifacts, config_raw, preflight, result)
+    _write_bundle(Path(str(preflight["output_absolute"])), artifacts, config_raw,
+                  preflight, result, supervision_mode=supervision_mode)
     print(json.dumps({"decision": result["decision"],
                       "output": str(preflight["output_absolute"])}, sort_keys=True))
     return 0
@@ -411,6 +550,8 @@ def main() -> int:
     parser.add_argument("--output-relative", type=Path, default=OUTPUT_RELATIVE)
     parser.add_argument("--supervision-relative", type=Path, default=SUPERVISION_RELATIVE)
     parser.add_argument("--authorization-json", type=Path)
+    parser.add_argument("--supervision-mode", choices=("MONITORED_BUDGETS", "OBSERVE_ONLY"),
+                        default="MONITORED_BUDGETS")
     parser.add_argument("--r4-bundle", type=Path, default=R4_BUNDLE)
     parser.add_argument("--evidence-root", type=Path,
                         default=Path(os.environ["ARCANA_EVIDENCE_ROOT"])
@@ -421,7 +562,8 @@ def main() -> int:
         if args.mode == "preflight":
             print(json.dumps(_preflight(args.output_relative, args.supervision_relative,
                                         args.r4_bundle, evidence_root=args.evidence_root,
-                                        expected_head=args.expected_head), sort_keys=True))
+                                        expected_head=args.expected_head,
+                                        supervision_mode=args.supervision_mode), sort_keys=True))
             return 0
         if args.authorization_json is None:
             raise Eng10kContractError("SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED")
