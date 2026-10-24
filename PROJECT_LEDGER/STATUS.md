@@ -1,37 +1,26 @@
-# CURRENT — ARCANA WorldSim R6, 2026-10-15
+# CURRENT — ARCANA WorldSim R6, 2026-10-24
 
-## INT3-ENG10K-E — final fixture assertion correction; Fair retest pending
+## INT3-ENG10K-E — FAIR synthetic supervisor evidence closed
 
-Decision: `INT3_ENG10K_E_FINAL_ASSERTION_FIX_READY__FAIR_RETEST_PENDING`.
-Report: `docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`. Starting HEAD
-`9059eb9f1ce5f64408a037b33750ec4941874eb6`. Operator-reported Fair retest
-collected 43 tests: 42 PASS, 1 FAIL, 0 SKIP. Its sole failure expected
-`CHILD_READY={pid} {pgrp}` instead of protocol output `CHILD_READY=READY`.
-Natural exit, exit code, duration and PID/process-group checks through `ready` and
-`finished` had passed. Log path
-`R6/INT3_ENG10K_E_FIXTURE_RETESTS/9059eb9f_20261015_01/pytest.log`, operator-
-reported SHA256 `fbf2f8e05e086a380975e81eb1ef9c948ba3954daa6c239b0cd84e3e57d2e861`;
-not transferred/rehashed on Windows. This stays a 42 PASS / 1 FAIL result.
+Decision: `INT3_E_FAIR_SUPERVISOR_SYNTHETIC_RUNTIME_PASS` on exact FAIR-tested
+commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`. Operator-reported Linux suite:
+43 collected, 43 PASS, 0 FAIL, 0 SKIP; 2.83 seconds; exit 0. Runtime Python
+3.12.10 / NumPy 2.3.5 / pytest 9.1.1. The preflight passed as
+`INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`. All three Linux end-to-end
+synthetic supervisor paths passed: child natural exit, process-group timeout, and
+leader exit with a live descendant. FAIR evidence path and log SHA256 are indexed
+in `EVIDENCE_INDEX.md`; the original logs/checksums remain operator-reported and
+were not transferred/rehashed on Windows.
 
-The correction updates only the final stdout assertion to the actual READY marker;
-the separate PID and group assertions remain. Windows pytest collection was
-attempted but stopped before collecting tests because the available Python lacks
-NumPy (`ModuleNotFoundError`); no packages were installed. Syntax/whitespace checks
-are recorded in the task result. No production supervisor or ENG10K evolution ran.
+This is synthetic supervisor runtime evidence only. Sampled resource monitoring
+is not an OS-enforced quota. No ENG10K numerical evolution occurred or is
+authorized by this result. A separate decision is needed before any proposed
+noncanonical ENG10K run. R4 checkpoint, manifest, and outputs remain unchanged.
 
-Historical prior INT3-E 42-test attempt (41 PASS / 1 FAIL) was the earlier fixture
-`NameError` before `supervisor.supervise()`. The earlier 41 PASS / 1 FAIL log SHA256
-`f33b3c9d49b230c782018941b198e0bda4e951623c7f13aa316a6356f3194b1f` and first
-collection-error attempt remain separately preserved.
-
-Historical INT3-D result remains `INT3_ENG10K_D_WINDOWS_FIX_READY__FAIR_RETEST_PENDING`;
-its Fair failure, timeout pass, original evidence and report are preserved. All
-scientific, Solver, mechanics and WORLD_HISTORY gates remain unchanged.
-
-Preserved: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
+Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
 `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
 `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`,
-`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
 
 ## INT3-ENG10K-A — Windows implementation checkpoint (2026-10-14)
 

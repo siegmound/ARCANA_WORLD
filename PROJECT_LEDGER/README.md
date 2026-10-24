@@ -1,10 +1,10 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point, updated 2026-10-15. INT-0B-R4 and the single authorized INT-1D distinct-boundary attempt produced verified noncanonical pair-5:11 engineering trajectories. INT-1D sampled two normal-continental supports at nine times each and was compared offline with the preserved R4 hot-extended case using the INT-1A evaluator. Both runs remain engineering evidence only; general retention, scientific mechanics and canonical promotion are not qualified. Earlier failed attempts remain immutable. INT-2C closed the one real R4 B0 replay: `INT2C_B0_EXECUTABLE_R4_REPLAY_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED`; the INT-2C STOP remains in force. INT3-ENG10K-C Fair preflight remains operator-reported PASS without numerical evolution. INT3-D preserved a Fair natural-exit failure. INT3-E latest Fair retest was 42 PASS / 1 FAIL: a stale child stdout assertion failed after natural-exit and PID/process-group checks passed; the assertion correction and new Fair retest are pending. No ENG10K numerical execution is authorized. The active action is only the one recorded at the opening of STATUS.md and NEXT_ACTION.md.
+Single continuity point, updated 2026-10-24. INT-0B-R4 and the single authorized INT-1D distinct-boundary attempt remain noncanonical engineering evidence; general retention, scientific mechanics and canonical promotion are not qualified. INT-2C closed one R4 B0 replay and remains STOP. INT3-ENG10K-E has operator-reported synthetic FAIR supervisor PASS on commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`; this is not numerical evolution or execution authority. Previous INT3 failures remain immutable. The next action is only the separate decision recorded at the opening of STATUS.md and NEXT_ACTION.md.
 
 ## Leggere in questo ordine
 1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
-2. NEXT_ACTION.md - current execution boundary: INT3-E focused Fair fixture retest only; INT-2C STOP remains in force. Historical proposals below are not active authorization.
+2. NEXT_ACTION.md - current action: separate review of whether to propose one bounded noncanonical ENG10K execution; no execution is authorized. INT-2C STOP remains in force.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

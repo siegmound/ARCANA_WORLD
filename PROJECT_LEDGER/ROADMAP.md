@@ -1,14 +1,14 @@
-# ARCANA R6 — Roadmap operativa corrente (2026-10-15)
+# ARCANA R6 — Roadmap operativa corrente (2026-10-24)
 
-## INT3-ENG10K-E — final fixture assertion correction; Fair regression pending
+## INT3-ENG10K-E — synthetic FAIR supervisor test scope closed
 
-Latest operator-reported Fair suite: 43 collected, 42 PASS, 1 FAIL, 0 SKIP. The
-only failure expected the wrong child stdout text (`CHILD_READY={pid} {pgrp}`;
-protocol is `CHILD_READY=READY`). Natural exit, exit code, duration and ready /
-finished PID and process-group checks passed. The final assertion is corrected in
-the Windows worktree; preserve the Fair result and its log digest as FAIL until a
-new focused Linux retest passes. Prior NameError and collection-failure attempts
-remain immutable. No production supervisor run or ENG10K evolution is authorized.
+The operator reports PASS on tested commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`:
+43 collected, 43 passed, 0 failed, 0 skipped; Python 3.12.10, NumPy 2.3.5,
+pytest 9.1.1. Natural child exit, process-group timeout and leader-exited/live-
+descendant Linux tests passed. This is synthetic supervisor evidence; monitored
+resource thresholds are sampled, not OS-enforced. It does not qualify ENG10K
+numerics or authorize execution. Previous failures remain immutable. Next is a
+separate decision on whether to propose one bounded noncanonical execution.
 
 ## INT3-ENG10K-A — bounded engineering preparation
 

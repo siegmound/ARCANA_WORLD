@@ -1,15 +1,13 @@
-# NEXT — INT3-ENG10K-E final assertion Fair retest only
+# NEXT — separate ENG10K execution decision
 
-After review and manual publication, use a new immutable Fair evidence directory
-and run only `python -m pytest -q -rs tests/test_r6_int3_eng10k.py`, as specified in
-`docs/arcana/INT3_ENG10K_E_FIXTURE_HOTFIX.md`. Latest Fair result: 43 collected,
-42 PASS, 1 FAIL, 0 SKIP; the sole failure was a stale stdout assertion
-(`CHILD_READY={pid} {pgrp}` vs `CHILD_READY=READY`), after natural-exit, duration,
-PID and process-group checks passed. The assertion is corrected locally; rerun
-the focused suite on the reviewed commit in a fresh immutable evidence directory.
-Require all three Linux process tests to execute and pass and zero suite failures.
-Record commit, runtime, counts, exit, and log SHA256. Preserve all historical
-INT3-C/D/E failed logs unchanged.
+Review whether the INT3-ENG10K engineering preconditions justify proposing one
+bounded, noncanonical numerical authorization. This is a decision/review step,
+not execution authority. The INT3-E Fair result qualifies only the reported
+synthetic supervisor paths on commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`.
+No ENG10K run is authorized. Preserve the R4 checkpoint/manifest and all prior
+INT3-C/D/E outcomes. Keep sampled monitoring distinct from OS-enforced limits.
+Any future execution requires a separate explicit authorization and its own
+preflight/evidence directory.
 
 Do not run the supervisor production CLI, `--mode execute`, ENG10K kernel/evolution,
 Fair production supervision, or canonical operations. Preserve INT-2C STOP and all

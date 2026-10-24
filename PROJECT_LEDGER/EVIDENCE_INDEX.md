@@ -554,3 +554,20 @@ The natural-exit result, exit code, duration, and PID/process-group checks from
 by Fair operator; not imported/rehashed locally. The suite outcome remains FAIL.
 Windows correction is limited to the assertion; a new Fair test-only retest is
 pending. No numerical ENG10K run or new output evidence.
+
+## INT3-ENG10K-E — FAIR synthetic supervisor closure (2026-10-24)
+
+Decision `INT3_E_FAIR_SUPERVISOR_SYNTHETIC_RUNTIME_PASS`, operator-reported for
+commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`. Preflight
+`INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`. Python 3.12.10, NumPy 2.3.5,
+pytest 9.1.1. Linux suite 43 collected / 43 passed / 0 failed / 0 skipped, 2.83 s,
+exit 0. Natural exit, process-group timeout, and live descendant after leader exit
+all passed end-to-end. Evidence directory:
+`/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K_E_FINAL_ASSERTION_RETESTS/cb9bd837_20261015_01`.
+`pytest.log` SHA256 reported `a6513d0baf2d382f4338d38e250e6c3c1e186881f966f6395e92f2191f29ade1`.
+FAIR procedure reported checksum OK for `source_commit.txt`, `runtime.txt`,
+`preflight.log`, `preflight.exitcode`, `pytest.log`, and `pytest.exitcode`.
+No original evidence was transferred or independently rehashed on Windows.
+These checks do not imply hard OS quotas: resource bounds were sampled monitoring.
+No ENG10K numerical evolution occurred. Earlier C/D/E failures remain unchanged.
+See `docs/arcana/INT3_ENG10K_E_FAIR_EVIDENCE_CLOSURE.md` for authority and limits.

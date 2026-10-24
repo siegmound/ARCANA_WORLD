@@ -1,5 +1,13 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-24 — INT3-ENG10K-E FAIR synthetic supervisor evidence closed
+
+Operator-reported FAIR result for tested commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`:
+preflight `INT3_ENG10K_PREFLIGHT_PASS_NO_NUMERICAL_EVOLUTION`; Linux tests 43/43
+passed, 0 failed/skipped, 2.83 s, exit 0, Python 3.12.10 / NumPy 2.3.5 / pytest
+9.1.1. Natural exit, group timeout, and leader-exited/live-descendant paths passed.
+Evidence path and pytest digest `a6513d0baf2d382f4338d38e250e6c3c1e186881f966f6395e92f2191f29ade1` are operator-reported; source/runtime/preflight/test/exit checksums were reported OK, not independently rehashed on Windows. Earlier failures remain historical. No numerical evolution or authorization change. Next: separate review/decision on proposing one noncanonical ENG10K run.
+
 ## 2026-10-15 — INT3-ENG10K-E final fixture assertion correction
 
 On branch `r6/si1-bandwidth-f2av`, starting HEAD
