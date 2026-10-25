@@ -1,3 +1,30 @@
+# CURRENT — ARCANA WorldSim R6, 2026-10-25
+
+Decision: PROTOTYPE_FIRST_MULTIPHYSICS_INTEGRATION__ENG10K_ARCHIVE_AND_SEGMENT_EXPERIMENT_EVIDENCED__PRODUCTION_NOT_AUTHORIZED.
+
+### Current numerical engineering state
+- Published source baseline on the active R6 branch before this ledger-only update: ec79bf8954a4922f84249fbe23e2657bc5beee23. The previously sealed ENG10K without archive is not overwritten.
+- Operator-supplied FAIR retest: Python 3.12.10 / NumPy 2.3.5, 57 PASS / 0 SKIP, OBSERVE_ONLY preflight PASS on ec79bf89. Subsequently one independently authorized, noncanonical 10,000-year archive attempt ended NATURAL_EXIT, code 0. Supervisor: 9.30124842748046 s, sampled RSS peak 127025152 bytes, cumulative output 3587499 bytes; 10 samples, telemetry COMPLETE.
+- ENG10K archive validator: SEGMENT_ARCHIVE_VALID, 194 actual states from 186 substeps + 8 initial states over 8 complete trajectories. STATES.jsonl 2671282 bytes (SHA256 17293a6b8090083451d4205523a147728034524eb8db146af731d45ab0405012); segment manifest SHA256 754b73597fc8cc353431bc726c3e998df2ac6bd3730a90347342df06c3a11e5b; outer manifest 12 members verified. Four numerical outputs byte-identical to the earlier direct ENG10K. Checkpoint capability of raw archive remains NOT_QUALIFIED_AS_RESTARTABLE.
+- Codex Windows continuation experiment reported on uncommitted changes: restored segment checkpoints payload-identical; 5k+5k max thermal endpoint difference 3.9375e-5 K, 5x2k 6.2539e-5 K, both endpoint time +61.0 microseconds. A split on an actual archived substep boundary rejoined the direct endpoint exactly; that raw record is NOT by itself a qualified checkpoint. Windows ordinary tests 9 PASS / 2 NumPy-dependent SKIP; scoped import-shim path 5 PASS. No supported FAIR/Linux verification of those uncommitted changes yet.
+- The Windows worktree contains the pre-existing five locally dirty ledger files and uncommitted code/output for segment_continuation and test/streaming-manifest changes. Those bytes were not published by this update. No additional downstream tectonic consumer for the 73-node profile was demonstrated.
+
+### Current project priority
+- Finish the already started Codex local prototype: actual short numerical coupling of the existing thermal/tectonic kernel and Deep operators; synthetic inputs allowed when explicitly engineering-only; check exchanges, reservoirs/balances, stability, elapsed/RSS/output, and keep the original archive immutable. No separate legacy recovery/audit as a prerequisite for this prototype.
+- Extend one real tool at a time across geology, material/surface processes, hydrology/erosion and necessary climate forcing; classify direct coupling/feedback versus offline historical consumer. Do not invent effects just to make integration appear bidirectional.
+- Deep is a physical domain, not merely a later biological modifier: geological inventory/transport/accessibility, mode-resolved energy, independent stellar +5% E/th candidate, and future CHA-1 event have distinct ledgers. Deep-biological energy and viability coupling belongs to the later coupled biology phase when populations are present.
+- Only after the integrated prototype functions: benchmark representative spatial/time resolution and numerical cost, close essential scientific driver/physical gaps, then select and authorize a genuine 210 Ma -> present physical history run. Make resulting states, fluxes, events, checkpoints and provenance reusable for climate, vegetation, fauna, resources and civilizations.
+
+### Authority and execution boundaries
+- ENG10K is a reduced two-support/73-node, 10,000-year fixed-Euler-forcing engineering slice, not global geology or geological-time authority.
+- B4/B5 T0 kinematics/topology do not yet provide qualified positive-duration forcing or event transitions; spatial mapping from the reduced column to a globe is unresolved. ShellSet mechanics/Solver are not authorized; no canonical WORLD_HISTORY publication.
+- Development-mode smoke tests may be lightweight and synthetic/noncanonical. Preserve minimum numerical sanity, energy/material balances, input/output identity, new output destinations and measured runtime; formal scientific requalification is deferred to the candidate production model, not erased.
+- Preserved blockers: BLOCKED_F2AV_QUALIFICATION; OPERATOR_CLASS_UNVERIFIED; THRESHOLD_UNJUSTIFIED; RESOURCE_2GB_SCOPE_UNRESOLVED; F2B_SOLVER_EXECUTION_AUTHORIZED=false; ARCANA_SI1_MECHANICS_QUALIFIED=false; WORLD_HISTORY_PRODUCTION_AUTHORIZED=false.
+
+The next section is the retained 2026-10-24 historical checkpoint; its F3 pending action is superseded and must not be followed as current.
+
+---
+
 # CURRENT — ARCANA WorldSim R6, 2026-10-24
 
 ## INT3-ENG10K-F3 — Option B decision prepared; operator selection pending

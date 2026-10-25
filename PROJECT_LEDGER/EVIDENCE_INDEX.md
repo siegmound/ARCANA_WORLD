@@ -1,3 +1,16 @@
+## 2026-10-25 — ENG10K Segment Archive V1 and Codex continuation evidence
+
+Evidence for this entry was supplied by the operator in conversation; no FAIR archive or Windows Codex worktree bytes were imported by this documentation update.
+
+- FAIR source for full ENG10K archive: ec79bf8954a4922f84249fbe23e2657bc5beee23. No-evolution Linux preflight source composite 6e729d3662af349b10c85d54f964513270b7e32595ba0f160fa442996348a8fe; targeted pytest 57 PASS / 0 SKIP.
+- FAIR run: /home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT3_ENG10K/ENG10K_ARCHIVE_ec79bf89_01; supervisor NATURAL_EXIT 0 / OBSERVE_ONLY, 9.30124842748046 s, peak RSS sampled 127025152 bytes, cumulative output 3587499 bytes; telemetry COMPLETE.
+- Archive segment ID INT3-ENG10K-A-ce13fd3da0ad25c9; segment manifest SHA256 754b73597fc8cc353431bc726c3e998df2ac6bd3730a90347342df06c3a11e5b; STATES.jsonl SHA256 17293a6b8090083451d4205523a147728034524eb8db146af731d45ab0405012, 2671282 bytes; 194 states, 8 trajectories, 186 substeps; outer ARTIFACT_MANIFEST covers 12 verified files, original four numerical output files identical.
+- FAIR preexecution authorization SHA256 317629cb98db3220b548f92cdf499309e6c0a9b49c70952599c7bda5f1b6a1da; no-evolution preflight SHA256 a4796c483bf6484ef7de38e8ca1cc1eab539a2b9f8f06635a878e7af47741764. Prior ENG10K output remains untouched.
+- Windows Codex continuation output, LOCAL_UNCOMMITTED: outputs/r6_segment_continuation_v1_20261025_01/SEGMENT_CONTINUITY_TEST.json, SHA256 a25c1320c9634e5caca036ede2de0e255d76ee64428ee872ff132d55199e6ed2; TECTONIC_CONSUMER_MATRIX.md, SHA256 ea0699ab1882187f034aa2e388549e99a9fc597c0740ed7d5ae4e16d98146ef2; ARCHIVE_INPUT_GAPS.md, SHA256 2010eac6cfc34aa2254f237b0583b77182ae705558368bdc89474522ff6ba1c8. These hashes are operator/Codex-reported, not independently recalculated here.
+- Windows tests 9 PASS / 2 NumPy SKIP; separately 5 shim-limited path tests PASS, no supported Linux verification of local continuation code yet. No other consumer demonstrated. Codex multiphysics prototype is IN PROGRESS; no result available at this checkpoint.
+
+---
+
 ## INT3-ENG10K-F3 — Option B decision preparation (2026-10-24)
 
 - Report: `docs/arcana/INT3_ENG10K_F3_OPTION_B_AUTHORIZATION_DECISION.md`.

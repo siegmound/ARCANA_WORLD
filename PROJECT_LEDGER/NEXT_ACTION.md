@@ -1,3 +1,20 @@
+# NEXT — complete the already-started Codex experimental multiphysics prototype (2026-10-25)
+
+No new Codex task is needed: the operator reports that Codex has already started the experimental integration work on Windows. Do not interrupt or reinterpret its in-progress work as complete.
+
+1. Finish the smallest executable noncanonical tectonics/thermal + Deep coupling. Reuse existing R6 reduced kernel, stored ENG10K reference states, and historic Deep operator code as appropriate. For missing historical Deep payloads, allow expressly SYNTHETIC_ENGINEERING_ONLY inputs instead of blocking on legacy-data recovery, while preserving separated geological energy, resource inventory/accessibility, modal E/th/p/I/N and external photo-Deep pump accounting.
+2. Run short tests with actual numerical calls, not only schema/manifest checks. Require reproducible state transfer, nonnegative finite reservoirs, checked energy/source/sink closure, declared input units and mapping, no interpolation labeled as simulated state. Measure time/RSS/output and report unsupported physical assumptions explicitly.
+3. After a working first coupling, identify the next genuine feedback requiring a tool (geology/topography/materials or hydrology/erosion), implement one minimal runnable integration at a time. Consumers that need only stored states should operate read-only without rerunning upstream simulation.
+4. Before a real long-range 210 Ma -> present run, select spatial/temporal resolution through benchmark evidence and qualify actual positive-duration tectonic forcing, global mapping/topology/event response, needed lithology/surface/climate inputs and Deep transport laws. Defer broad requalification of already-completed legacy runs until it matters for production authority.
+
+Current completion state: FAIR ENG10K Segment Archive V1 194/194 and 57/57 complete; Windows segment continuation test reported but new code is UNCOMMITTED and the NumPy-supported Linux retest is pending. No commit/push of Codex changes is implied.
+
+Safety/scope: no overwrite of sealed evidence, dirty ledger, Luna outputs or WORLD_HISTORY; no forced Git operations; no new long FAIR run, MPI/Solver or canonical promotion without explicit operator authorization. An experimental DEV test does not confer historical physical authority.
+
+The following former INT3-F3 action is retained as historical instruction only, and has been superseded for the present priority.
+
+---
+
 # NEXT — obtain explicit operator selection on INT3-F3 Option B
 
 The F3 decision sheet is prepared, not approved. Record either

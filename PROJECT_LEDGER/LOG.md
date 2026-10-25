@@ -1,5 +1,17 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-25 — ENG10K archive closure, continuation test, and operator pivot to experimental multiphysics
+
+Operator-reported FAIR Linux runtime Python 3.12.10 / NumPy 2.3.5: 57/57 targeted tests, no skipped tests, PASS observe-only preflight for published implementation ec79bf8954a4922f84249fbe23e2657bc5beee23. One separately bound engineering ENG10K archive run reported natural exit 0, elapsed 9.30124842748046 s, peak sampled RSS 127025152 bytes and cumulative output 3587499 bytes; validated 194 states, 8 complete trajectories, 186 substeps, 2671282-byte stream, 12-member outer manifest and exact byte parity of four numerical outputs with preceding ENG10K. All data remain noncanonical; FAIR evidence external, not imported and independently rehashed by this ledger commit.
+
+Subsequent Codex Windows uncommitted continuation experiment: 5k+5k error 3.9375e-5 K, 5x2k error 6.2539e-5 K versus archived direct 10k; +61.0 microseconds time error, checkpoint payload restoration exact; split at actual substep boundary reproduces original endpoint exactly but does not upgrade a raw observation to qualified checkpoint. Windows tests 9 PASS / 2 NumPy SKIP plus 5 shim-gated paths PASS, not supported-runtime qualification. Consumer inventory found no new downstream tectonic tool directly bound to the 73-node reduction.
+
+Operator design decision: stop iterative requalification of historical experiments during development. Codex has already started a short, actual numeric tectonics/thermal + Deep prototype; later add relevant geology, materials/surface, hydrology and physical feedback tools one at a time. Use synthetic engineering inputs when necessary, record limits and ledger/balances, reuse existing archived states, and measure performance; then select suitable resolution and qualify the final historical model. Deep geological distribution/transport, accessible resources, solar E/th +5% candidate, CHA-1 and Deep-biological exchange are separate coupled concerns. No new long geological run or canonical publication approved.
+
+Ledger-only publication on active R6 branch from parent ec79bf89; no local Codex worktree files, source, historical evidence or original checkpoints were modified. Source commit of this ledger update is not the original ENG10K numerical source identity.
+
+
+
 ## 2026-10-24 — INT3-ENG10K-F authorization review blocked
 
 Decision `INT3F_ENGINEERING_AUTHORIZATION_BLOCKED__REQUIREMENTS_UNRESOLVED`;

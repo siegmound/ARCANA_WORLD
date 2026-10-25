@@ -1,3 +1,19 @@
+# CURRENT — prototype-first integrated physical roadmap (2026-10-25)
+
+Decision: develop and execute small working numerical tool integrations before repeated legacy requalification and before selecting the production-scale model. The full objective remains an independently reproducible/queryable 210 Ma -> 0 ka history of tectonics, geology, materials/resources, Deep, climate/hydrology, flora/fauna, populations and civilizations. Do not treat an ENG10K engineering slice as global physics.
+
+1. COMPLETED ENGINEERING BASE: T-F2B/R4 1k; one reduced ENG10K fixed-forcing run + Segment Archive V1; 194 archived states/8 trajectories/186 substeps; byte-for-byte parity of four numerical artifacts, Linux 57/57 tests.
+2. CONTINUATION IN DEVELOPMENT: Windows-only short segment test 5k+5k and 5x2k showed small measured endpoint differences; exact archived-substep split reproduces reference. Qualified endpoint/chain code and streaming outer-manifest refactor are local uncommitted work; repeat supported-runtime tests before relying on them beyond prototype.
+3. ACTIVE CODEX TASK: smallest executable coupling of existing R6 tectonics/thermal with Deep, using short noncanonical simulation and explicit synthetic inputs where historic data are missing. No legacy Deep full-history asset audit as blocking prerequisite.
+4. NEXT ADDITIONS: test one concrete tool at a time for lithology/geology, physical topography, erosion/sediment/hydrology and climate boundary forcing wherever actual state feedback demands co-evolution; otherwise consume persistent prior states offline. Record missing spatial/temporal coupling variables before large runs. ShellSet/pyGPlates remain bounded candidates, not presumed compatible consumers.
+5. ARCHIVE DESIGN: modular domain states plus flux/exchange/event records; exact spatial/time/material identities; cross-segment checkpoints, chain manifests and query/replay for downstream climate, Deep, ecosystem/resources. Avoid forcing all arrays into the reduced 73-node state.
+6. MODEL SELECTION: benchmark cost, accuracy and multiresolution/spatial/time choices on integrated small cases; qualify missing positive-duration geodynamic driver and geological/Deep equations and providers; authorize the true long simulation only after physical model integration and readiness.
+7. LATER BIOLOGY AND SOCIETY: vegetation, fauna and ecology use stored environmental history, with explicit Deep uptake/return and physiological/demographic feedback where actual bidirectional coupling exists; then populations and civilizations.
+
+Prototypes are noncanonical engineering products. Existing F2A-V, mechanics, Solver and WORLD_HISTORY production gates remain CLOSED. Old roadmap text below documents earlier checkpoints, not the present execution priority.
+
+---
+
 # ARCANA R6 — Roadmap operativa corrente (2026-10-24)
 
 ## INT3-ENG10K-F3 — Option B decision sheet prepared; no operator selection

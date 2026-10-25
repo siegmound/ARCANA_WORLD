@@ -1,10 +1,18 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point, updated 2026-10-24. INT-0B-R4 and the single authorized INT-1D distinct-boundary attempt remain noncanonical engineering evidence; general retention, scientific mechanics and canonical promotion are not qualified. INT-2C closed one R4 B0 replay and remains STOP. INT3-ENG10K-E has operator-reported synthetic FAIR supervisor PASS on commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`; this is not numerical evolution or execution authority. INT3-F1 read-only Fair identity/resource reconnaissance is complete as operator-reported at exact HEAD `1bf06ef0e624723c3722a351496ae3b7c2544f40`; F2 prepared an option-B proposal. F3 records the operator choice as pending; no execution authorization exists. `INT3_ENG10K_EXECUTION_AUTHORIZED=false`. Previous INT3 failures remain immutable. See current STATUS/NEXT_ACTION and F1/F2/F3 reports.
+Single continuity point. Current development update: 2026-10-25. The older INT3-F3 narrative below is an archived checkpoint, not the active instruction. INT-0B-R4 and the single authorized INT-1D distinct-boundary attempt remain noncanonical engineering evidence; general retention, scientific mechanics and canonical promotion are not qualified. INT-2C closed one R4 B0 replay and remains STOP. INT3-ENG10K-E has operator-reported synthetic FAIR supervisor PASS on commit `cb9bd8373eeb028b83c8bc1abb376624e3553adb`; this is not numerical evolution or execution authority. INT3-F1 read-only Fair identity/resource reconnaissance is complete as operator-reported at exact HEAD `1bf06ef0e624723c3722a351496ae3b7c2544f40`; F2 prepared an option-B proposal. F3 records the operator choice as pending; no execution authorization exists. `INT3_ENG10K_EXECUTION_AUTHORIZED=false`. Previous INT3 failures remain immutable. See current STATUS/NEXT_ACTION and F1/F2/F3 reports.
+
+## Current decision — 2026-10-25
+
+Development mode is PROTOTYPE_FIRST_MULTIPHYSICS_INTEGRATION. FAIR ENG10K with Segment Archive V1 completed (194 actual states, 8 trajectories, 186 numerical substeps, Linux 57/57 focused tests). A separate Windows engineering continuation test reports 5k+5k and 5x2k successful checkpoint restoration with small endpoint differences; its uncommitted implementation remains pending supported-runtime testing. These are NOT scientific or canonical history qualifications.
+
+Operator priority: run small, inexpensive, noncanonical numerical integrations between genuinely interdependent physical tools (geodynamics, geology/surface, hydrology where required, Deep energy/transport), then measure integration and scaling before selecting the historical simulation model and resolution. Do not repeatedly requalify legacy runs during prototyping; retain a lightweight evidence trace and scientific gates for production. The previous INT3-F3 pending Option-B instruction was superseded operationally by the later separately bound and completed ENG10K attempt; the F3 decision artifact itself remains historical and unmodified.
+
+Codex is already working on the first experimental tectonics/Deep prototype in a Windows worktree with local dirty ledger files; that work has not been committed or pushed. This documentation-only remote update must not be mistaken for publication of Codex code.
 
 ## Leggere in questo ordine
 1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
-2. NEXT_ACTION.md - current action: record an explicit operator choice on F3 Option B; approval would authorize only preparation of a later exact-commit binding, not numerical execution. INT-2C STOP remains in force.
+2. NEXT_ACTION.md - current action: finish the already-started local Codex experimental multiphysics prototype (tectonics/thermal + Deep), inspect runnable results, then extend coupling incrementally. No historical production run is authorized.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.
