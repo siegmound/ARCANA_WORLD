@@ -8,11 +8,11 @@ Development mode is PROTOTYPE_FIRST_MULTIPHYSICS_INTEGRATION. FAIR ENG10K with S
 
 Operator priority: run small, inexpensive, noncanonical numerical integrations between genuinely interdependent physical tools (geodynamics, geology/surface, hydrology where required, Deep energy/transport), then measure integration and scaling before selecting the historical simulation model and resolution. Do not repeatedly requalify legacy runs during prototyping; retain a lightweight evidence trace and scientific gates for production. The previous INT3-F3 pending Option-B instruction was superseded operationally by the later separately bound and completed ENG10K attempt; the F3 decision artifact itself remains historical and unmodified.
 
-Codex is already working on the first experimental tectonics/Deep prototype in a Windows worktree with local dirty ledger files; that work has not been committed or pushed. This documentation-only remote update must not be mistaken for publication of Codex code.
+The local tectonics/Deep, continuation, material, surface/hydrology and regional prototypes were consolidated in the published R6 branch at HEAD `788a312329c61c4f751b63791284a50d6653fd4d`. Their tests and reports remain bounded engineering evidence; the Windows checks do not imply Fair/Linux qualification or scientific/canonical promotion.
 
 ## Leggere in questo ordine
 1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
-2. NEXT_ACTION.md - current action: finish the already-started local Codex experimental multiphysics prototype (tectonics/thermal + Deep), inspect runnable results, then extend coupling incrementally. No historical production run is authorized.
+2. NEXT_ACTION.md - current action: bound the first geodynamic forward-driver experiment using actual time-dependent inputs, material/reology, spatial support and boundary conditions. T0 kinematics remain diagnostic; no long historical run is authorized.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

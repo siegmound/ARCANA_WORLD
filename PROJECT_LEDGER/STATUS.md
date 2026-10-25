@@ -37,6 +37,10 @@ Decision: PROTOTYPE_FIRST_MULTIPHYSICS_INTEGRATION__ENG10K_ARCHIVE_AND_SEGMENT_E
 
 The next section is the retained 2026-10-24 historical checkpoint; its F3 pending action is superseded and must not be followed as current.
 
+## Historical presentation milestones — VIEW-1A/B, VIEW-2A/2T
+
+These display-only outcomes were originally tested on their recorded Windows worktrees and remain distinct from scientific qualification. Their reports and static/viewer assets are now included in the consolidated R6 branch. Current regression on this branch: viewer tests 16/16 PASS and strict TypeScript typecheck PASS. The historical report hashes and original test scope are indexed in `EVIDENCE_INDEX.md`; no new epoch, physical simulation or WORLD_HISTORY publication is claimed.
+
 ---
 
 # CURRENT — ARCANA WorldSim R6, 2026-10-24

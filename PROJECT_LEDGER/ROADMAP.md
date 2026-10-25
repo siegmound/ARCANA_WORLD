@@ -4,6 +4,8 @@ The prototype-first consolidation is recorded in `docs/arcana/R6_LOCAL_WORK_CONS
 
 Next bounded step: establish time-dependent forcing, material/reology, spatial support and boundary-condition inputs for a geodynamic forward-driver experiment. Use ASPECT only as a candidate reference until a specific, runnable and suitably scoped integration exists. Do not turn T0 kinematics into positive-duration forcing. No long historical run or canonical publication is authorized.
 
+VIEW-1A/B and VIEW-2A/2T are now present as ancillary, read-only presentation capabilities with reports and source/export provenance. They do not add physical evolution, time-dependent states, or scientific authority; the separately bounded geodynamic-driver gap above remains the active physical roadmap.
+
 ---
 
 # Archived CURRENT — prototype-first integrated physical roadmap (2026-10-25)

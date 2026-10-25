@@ -627,3 +627,13 @@ Solver, mechanics and WORLD_HISTORY gates.
 - Segment continuation output remains local under `outputs/r6_segment_continuation_v1_20261025_01`; manifest/result digests and the exact final-state comparison are listed in the consolidation report. Raw archived ENG10K substep records are not qualified restart checkpoints.
 - D3D-RO6 source evidence JSON SHA256 `320344b6cfb74042e450bac4347f5a8b820e5702fa4b15c3bf4ff240ec764ec0` was verified locally; the report is a bounded provenance attestation, not a claim that Fair originals were imported.
 - Local Python result: 134 passed / 6 skipped / 2 deselected; the two provider-dependent checks remained unrun because `ARCANA_EXTERNAL_ROOT` was unset and canonical payload `CANONICAL_T0_PHYSICAL_PAYLOAD` unavailable. Viewer test result: 16 passed; TypeScript typecheck passed. These are Windows-local checks only.
+## 2026-10-26 — reconciled VIEW history and current regression
+
+The following report digests were recalculated from files present on the consolidated branch and match their recorded hashes:
+
+- VIEW-1A: `visualization/VIEW_1A_REPORT.md`, SHA256 `aff1f8835cc83be7138079d5b766cf5c8bc3611575ed22f6ac1001ea678878dd`; original report scope says Windows-only, 11 focused tests.
+- VIEW-1B: `visualization/VIEW_1B_REPORT.md`, SHA256 `e19283ab7578d3bffefbde68374747f067f7b7d1dbd880cbebfd2361df201a73`; original report records 23 focused regressions and Windows-only execution.
+- VIEW-2A: `visualization/VIEW_2A_REPORT.md`, SHA256 `01adc6d4fd00babb25deed9031cdd6d9f644d02b64633212386637487867bef9`; original report records 8 focused tests and manual Windows browser inspection.
+- VIEW-2T: `visualization/VIEW_2T_REPORT.md`, SHA256 `cd260f2e6ab1077196983d1e3de70820d550959a97f3a1ebdfcca7b0f5f7546b`; original report records 16 tests and TypeScript checks on Windows.
+
+Current branch regression, run during residue review: `tests/test_r6_unified_multiphysics_microdomain.py`, `tests/test_r6_hydrology_surface_coupling.py`, and `tests/test_r6_integrated_geological_microdomain.py`: 18 passed. Current `visualization/viewer` suite: 16 passed, 0 failed/skipped; `npm run typecheck` passed. These reruns verify the current checked-out code, while historical browser observations remain tied to their reports and Windows environment.

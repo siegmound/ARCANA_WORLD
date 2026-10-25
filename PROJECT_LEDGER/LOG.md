@@ -1,5 +1,11 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-26 — residue review after multiphysics consolidation
+
+At branch `r6/multiphysics-integration-20261026`, HEAD `788a312329c61c4f751b63791284a50d6653fd4d`, the worktree initially had 11 tracked modifications. Eight ledger files were stale pre-consolidation snapshots: they included historical VIEW-1A/B/2A/2T records but also old F3 current-action text, omitted published D-015/D-016, or removed newer current sections. Those stale copies were not allowed to replace HEAD. Their valid VIEW records were checked against the committed reports and selectively reconciled into STATUS, EVIDENCE_INDEX, ROADMAP, and this log; current README text was corrected to reflect the already published consolidation and forward-driver next action. DECISIONS, NEW_CHAT, and NEXT_ACTION remain at HEAD, preserving the current forward-driver action and stable decisions.
+
+The other three initial diffs (`unified_multiphysics_microdomain.py`, `test_r6_hydrology_surface_coupling.py`, and `test_r6_integrated_geological_microdomain.py`) were solely one extra blank line at EOF each; no code/test behavior was new. The redundant whitespace was removed. Focused regressions: 18 passed; VIEW tests 16 passed; TypeScript typecheck passed. No numerical output was modified or staged; no scientific/canonical gate changed.
+
 ## 2026-10-25 — ENG10K archive closure, continuation test, and operator pivot to experimental multiphysics
 
 Operator-reported FAIR Linux runtime Python 3.12.10 / NumPy 2.3.5: 57/57 targeted tests, no skipped tests, PASS observe-only preflight for published implementation ec79bf8954a4922f84249fbe23e2657bc5beee23. One separately bound engineering ENG10K archive run reported natural exit 0, elapsed 9.30124842748046 s, peak sampled RSS 127025152 bytes and cumulative output 3587499 bytes; validated 194 states, 8 complete trajectories, 186 substeps, 2671282-byte stream, 12-member outer manifest and exact byte parity of four numerical outputs with preceding ENG10K. All data remain noncanonical; FAIR evidence external, not imported and independently rehashed by this ledger commit.
