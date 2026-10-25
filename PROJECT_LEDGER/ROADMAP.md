@@ -1,4 +1,12 @@
-# CURRENT — prototype-first integrated physical roadmap (2026-10-25)
+# CURRENT — integrated prototypes and geodynamic driver gap (2026-10-26)
+
+The prototype-first consolidation is recorded in `docs/arcana/R6_LOCAL_WORK_CONSOLIDATION_20261025.md`. Segment continuation, tectonic/Deep, constitutive, surface, hydrology and regional routing V2 code/tests are present as bounded engineering work. A synthetic 3×3 case exercises topographic routing feedback and continuity; it does not provide regional geological authority. The surface vertical response remains UNKNOWN.
+
+Next bounded step: establish time-dependent forcing, material/reology, spatial support and boundary-condition inputs for a geodynamic forward-driver experiment. Use ASPECT only as a candidate reference until a specific, runnable and suitably scoped integration exists. Do not turn T0 kinematics into positive-duration forcing. No long historical run or canonical publication is authorized.
+
+---
+
+# Archived CURRENT — prototype-first integrated physical roadmap (2026-10-25)
 
 Decision: develop and execute small working numerical tool integrations before repeated legacy requalification and before selecting the production-scale model. The full objective remains an independently reproducible/queryable 210 Ma -> 0 ka history of tectonics, geology, materials/resources, Deep, climate/hydrology, flora/fauna, populations and civilizations. Do not treat an ENG10K engineering slice as global physics.
 

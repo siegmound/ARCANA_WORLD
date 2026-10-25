@@ -1,3 +1,17 @@
+# CURRENT — ARCANA WorldSim R6, 2026-10-26 consolidation
+
+Decision: `R6_LOCAL_WORK_CONSOLIDATED__PROTOTYPE_ENGINEERING_ONLY__SCIENTIFIC_AND_CANONICAL_PROMOTION_NOT_AUTHORIZED`.
+
+Report: `docs/arcana/R6_LOCAL_WORK_CONSOLIDATION_20261025.md`. Local code/tests commit `d723f9d160e1e90cdb679a68ab9ac2596c6b9a6d` and VIEW commit `ec4c8264c7440def7e4da7a88ecd4b06a10169ef` descend from remote ledger commit `ed0140ea962315f8993c1adfceeef23855f93b8b`; documentation closure follows them. The original Windows worktree, its dirty ledger changes, untracked evidence, outputs and ignored caches were preserved; no `outputs/` bundle is part of the source publication.
+
+Local Windows validation used Python 3.12.10 / NumPy 2.5.1: 134 passed, 6 skipped, 2 provider-dependent tests deselected. `ARCANA_EXTERNAL_ROOT` was unset; the two tests could not verify `CANONICAL_T0_PHYSICAL_PAYLOAD`. `compileall` passed. Viewer tests: 16 passed; viewer typecheck passed. No Fair/Linux result is inferred from these checks. Regional V2 results remain synthetic engineering evidence; vertical geodynamic response, qualified positive-duration forcing, and physical/global mapping remain UNKNOWN. The ASPECT-style law is a benchmark adapter; no ASPECT solver was integrated or run.
+
+Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+
+Next: define a bounded geodynamic forward-driver experiment from existing, actually time-dependent inputs and conditions; do not start a long historical simulation or substitute benchmark properties for ARCANA data.
+
+---
+
 # CURRENT — ARCANA WorldSim R6, 2026-10-25
 
 Decision: PROTOTYPE_FIRST_MULTIPHYSICS_INTEGRATION__ENG10K_ARCHIVE_AND_SEGMENT_EXPERIMENT_EVIDENCED__PRODUCTION_NOT_AUTHORIZED.

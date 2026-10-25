@@ -583,3 +583,10 @@ immutable evidence directory. No supervisor production mode or ENG10K evolution.
 - Prepared `docs/arcana/INT3_ENG10K_F3_OPTION_B_AUTHORIZATION_DECISION.md` with explicit approve-for-preparation and reject/defer alternatives, risk register, future exact-commit preflight checklist and STOP criteria.
 - No operator choice has been supplied. No execution authorization, Fair access, supervisor invocation or numerical evolution occurred. `INT3_ENG10K_EXECUTION_AUTHORIZED=false` remains unchanged.
 - VIEW worktree changes were preserved outside the INT3-F3 staged content; all scientific and canonical gates remain unchanged.
+## 2026-10-25 — local R6 prototype consolidation on fetched remote ledger
+
+- Preserved remote ledger commit `ed0140ea962315f8993c1adfceeef23855f93b8b` as the integration base after the successful fetch. Code/tests commit `d723f9d160e1e90cdb679a68ab9ac2596c6b9a6d` and viewer commit `ec4c8264c7440def7e4da7a88ecd4b06a10169ef` were created on the separate integration branch. Original local worktree stayed untouched; a pre-integration external backup and hashes are recorded in the consolidation report.
+- Reconciled local segment-continuation, tectonic/Deep, mechanics, surface/hydrology, regional V2, and VIEW-only code/tests into a separate integration worktree. No `outputs/` artifacts were staged. D3D recovery and Deep integration reports are included as documentation; numerical bundles remain external/untracked evidence.
+- Windows focused suite: 134 passed, 6 skipped, 2 provider-dependent tests deselected; `ARCANA_EXTERNAL_ROOT` absent and governed payload unavailable. `compileall` passed. Viewer tests 16/16 passed; typecheck passed. No Fair/Linux runtime claim.
+- Regional V2 manifests and listed files were rehashed; continuous and segmented final state identity matched. The synthetic routing change is not a geological event. Deep/hydrology closure was checked within the experimental model only.
+- ASPECT remains an unevaluated candidate reference, not an integrated solver. All scientific and canonical gates remain unchanged.

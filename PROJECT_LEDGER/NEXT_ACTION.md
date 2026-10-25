@@ -1,4 +1,12 @@
-# NEXT — complete the already-started Codex experimental multiphysics prototype (2026-10-25)
+# NEXT — bound the first geodynamic forward-driver experiment (2026-10-26)
+
+The local tectonics/Deep, material, surface/hydrology, continuation and regional V2 prototypes have been consolidated as noncanonical engineering work. Before applying any benchmark operator to ARCANA states, identify an actual time-dependent forcing, material/reology inputs, spatial support and boundary conditions that satisfy the operator's contract. The current T0 B5 kinematics remain diagnostic only, and vertical response remains UNKNOWN. ASPECT is a candidate reference, not an integrated or executed solver. Select one bounded benchmark or adapter test only when its inputs can be named and verified; no long historical run, new Fair job or scientific promotion is authorized by this next action.
+
+Preserve all archived INT3 results and failures; `INT3_ENG10K_EXECUTION_AUTHORIZED=false`. Preserve `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+# Archived NEXT — complete the already-started Codex experimental multiphysics prototype (2026-10-25)
 
 No new Codex task is needed: the operator reports that Codex has already started the experimental integration work on Windows. Do not interrupt or reinterpret its in-progress work as complete.
 
