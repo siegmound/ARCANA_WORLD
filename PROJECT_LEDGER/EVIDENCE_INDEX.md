@@ -620,7 +620,7 @@ disk/quota, OS enforcement, actual diffusion-limited step counts and ENG10K runt
 remain UNKNOWN. Output projection: 66,715,648 bytes, not RSS/disk assurance.
 No new numerical evidence; no execution authorization. Preserve all scientific,
 Solver, mechanics and WORLD_HISTORY gates.
-# 2026-10-25 — local work consolidation
+# 2026-10-26 — local work consolidation
 
 - `docs/arcana/R6_LOCAL_WORK_CONSOLIDATION_20261025.md`: records code and viewer checks, exact current provider-dependent test limitation, output-only experiment identities and bounded conclusions. The source-side backup manifest and diffs are preserved outside the repository at `C:\Users\jose_\.codex\visualizations\2026\09\26\01a0ddea-8b8e-7b90-bf29-4eb3eb90ee8f\ARCANA_R6_CONSOLIDATION_BACKUP_20261025_01\backup-manifest.json`.
 - Regional V2 output bundles remain local under `outputs/r6_experimental_multiphysics/REGIONAL_GEOLOGICAL_EVOLUTION_V2_20261025_01`, `_02`, and `_03`; their manifests and listed members were independently rehashed. Manifest SHA256: `55ce95c85de39fb5d1ecb75c756da8cfd573d7f69afaa52c871de81a3f69bdf3`, `130549b01f093924c3452efb45d84696d8159dbd985b8f7eb74a32b2b2c29f50`, `51736a4500d4526d4f05127916b8daeec67d257380b835334efc8aa442a293ba`.
