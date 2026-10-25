@@ -1,0 +1,141 @@
+{
+  "schema": "ARCANA_VIEW2A_VERIFICATION_V1",
+  "decision": "VIEW2A_T0_BROWSER_GLOBE_VERIFIED__SCIENTIFIC_AUTHORITY_UNCHANGED",
+  "closed_date": "2026-10-15 Europe/Rome",
+  "entryHead": "8c75c439ab45a9d4e79930bd506e686e088e151d",
+  "currentHead": "16e4fa94bab659879a871222bd96ec72c561dfc3",
+  "tests": {
+    "command": "npm test",
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typecheck": {
+    "command": "npm run typecheck (also part of build)",
+    "result": "PASS; strict TypeScript 5.9.3; skipLibCheck=false"
+  },
+  "build": {
+    "command": "npm run build",
+    "result": "PASS",
+    "js_bytes_kb": 4176.77,
+    "gzip_kb": 1122.3,
+    "warning": "Vite >500 kB chunk warning retained"
+  },
+  "browser": {
+    "method": "Manual agent-driven browser interaction; not an automated browser test suite",
+    "development": "VERIFIED on localhost:5173",
+    "production": "VERIFIED on localhost:4173",
+    "finalDOM": {
+      "camera": "{\"position\":{\"x\":6524763.3052086625,\"y\":-17926639.8483469,\"z\":5111702.022679295},\"heading\":6.283185307179586,\"pitch\":-1.5707963267948966}",
+      "exportId": "viewexport_b0ff6b261de6640dce02256a94340b4c1d1f390e85914ddb48ada08493ba6df1",
+      "externalResources": "[]",
+      "magnification": "9728",
+      "minification": "9728",
+      "pixelVerification": "64800_SOURCE_CELLS_EXACT",
+      "radius": "{\"x\":6371000,\"y\":6371000,\"z\":6371000}",
+      "renderFrames": "19",
+      "renderStatus": "VERIFIED",
+      "resourceOrigins": "[\"http://127.0.0.1:4173\"]"
+    },
+    "controlledErrorReceipt": "UNAVAILABLE -> neutral globe/error; restored to VERIFIED",
+    "manualInteractions": [
+      "rotation button",
+      "canvas pointer input",
+      "zoom button",
+      "tilt button",
+      "visibility off/on/reset"
+    ],
+    "screenshots": [
+      "VIEW_2A_BROWSER/globe.jpg",
+      "VIEW_2A_BROWSER/neutral-error.jpg",
+      "VIEW_2A_BROWSER/production-globe.jpg"
+    ]
+  },
+  "sourceIntegrity": {
+    "view1bFilesUnchanged": 62,
+    "originalAuditedSourcesUnchanged": 59
+  },
+  "sharedWorktree": {
+    "initialUntracked": 1183,
+    "unrelatedNewUntracked": [
+      "outputs/_pytest_int3_eng10k_20261014_12/test_linux_proc_group_snapshot0/10/stat",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_linux_proc_group_snapshot0/10/status",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_linux_proc_group_snapshot0/11/stat",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_linux_proc_group_snapshot0/11/status",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_linux_proc_group_snapshot0/12/stat",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_linux_proc_group_snapshot0/12/status",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_output_projection_fails_b0/candidate/INCOMPLETE.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_output_projection_fails_b0/candidate/RUN_STARTED.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/CANDIDATE_CHECKPOINT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/CANDIDATE_MANIFEST.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/CANDIDATE_TRAJECTORY.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/EDGE_AUDIT_MATRIX.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/REPLAY_RESTART.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/RUN_RESULT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/SELECTED_SECTION_AND_PROFILES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_authenti0/bundle/THERMAL_CONVERGENCE.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/CANDIDATE_CHECKPOINT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/CANDIDATE_MANIFEST.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/CANDIDATE_TRAJECTORY.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/EDGE_AUDIT_MATRIX.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/REPLAY_RESTART.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/RUN_RESULT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/SELECTED_SECTION_AND_PROFILES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_0/bundle/THERMAL_CONVERGENCE.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/CANDIDATE_CHECKPOINT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/CANDIDATE_MANIFEST.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/CANDIDATE_TRAJECTORY.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/EDGE_AUDIT_MATRIX.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/REPLAY_RESTART.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/RUN_RESULT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/SELECTED_SECTION_AND_PROFILES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/THERMAL_CONVERGENCE.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_1/bundle/unexpected.bin",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/CANDIDATE_CHECKPOINT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/CANDIDATE_MANIFEST.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/CANDIDATE_TRAJECTORY.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/EDGE_AUDIT_MATRIX.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/REPLAY_RESTART.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/RUN_RESULT.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/SELECTED_SECTION_AND_PROFILES.json",
+      "outputs/_pytest_int3_eng10k_20261014_12/test_r4_input_closure_rejects_2/bundle/THERMAL_CONVERGENCE.json",
+      "outputs/_worktrees/int3_eng10k_b/"
+    ],
+    "concurrentlyCommittedPaths": [
+      "configs/r6_int3_eng10k/INT3_ENG10K_EXECUTION_CONTRACT.json",
+      "configs/r6_int3_eng10k/engineering_case.json",
+      "docs/arcana/INT3_ENG10K_CHECKPOINT_CONTINUATION_AUDIT.json",
+      "docs/arcana/INT3_ENG10K_FAIR_PREFLIGHT.md",
+      "docs/arcana/INT3_ENG10K_READINESS_REPORT.md",
+      "scripts/r6_int3_eng10k.py",
+      "scripts/r6_int3_eng10k_supervisor.py",
+      "src/arcana_worldsim/r6/int3_eng10k.py",
+      "tests/test_r6_int3_eng10k.py"
+    ],
+    "concurrentTrackedEditsAtClosure": [
+      "scripts/r6_int3_eng10k.py",
+      "scripts/r6_int3_eng10k_supervisor.py",
+      "src/arcana_worldsim/r6/int3_eng10k.py",
+      "tests/test_r6_int3_eng10k.py"
+    ]
+  },
+  "artifactHashes": {
+    "VIEW_2A_BROWSER/globe.jpg": "a67dd1121f00338e96db8a9fa9f62f92dd2c4bc6bae444657d9b7f480bf0c44e",
+    "VIEW_2A_BROWSER/neutral-error.jpg": "e148d0f77aaf2d3a5042b90b94d58fee949cfb5f2d947c956e4f12d776527a37",
+    "VIEW_2A_BROWSER/production-globe.jpg": "974deb553e5ea1addab40692e965e02fdf86c41ef7a4c5b0c31718c6432fbcc5",
+    "VIEW_2A_BROWSER/runtime-observations.json": "4addb8f125179601f4532319ba7eda2f1cc8ca58ab4efff2388377055d960ed8",
+    "viewer/public/arcana-t0/manifest.json": "6b008eea5035a3749cb58de275a5c2f2f033dc62724c475ef72fb56f299b87f5",
+    "viewer/public/arcana-t0/t0-display.png": "a8558c0123241f9ec6cfe3cb687a30c84af9c71f2b8b81966c4a666570b31761",
+    "viewer/public/arcana-t0/texture-provenance.json": "29389c5cc67114245cafa3c1a6fa1607d419a296e4fa2bcaee41663454466820",
+    "viewer/public/arcana-t0/arrays/t0__coastline_mask.npy": "27ee898132aecb577a2ce2bd335f9d189dd216ff18f1a213b9038d28c3f1b663",
+    "viewer/public/arcana-t0/arrays/t0__land_ocean_mask.npy": "a220bc6c9b356968f17e965954f4a93ec9b58480102a43ef088895744829de5b"
+  },
+  "noScientificEvolution": true,
+  "noWorldHistoryWrites": true,
+  "noCanonicalPromotion": true,
+  "noCommitOrPushByVIEW2A": true
+}

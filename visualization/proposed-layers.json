@@ -1,0 +1,3440 @@
+{
+  "schema": "ARCANA_VIEW_EXPORT_DATASET_V1",
+  "version": 1,
+  "baseline": {
+    "repository": "siegmound/ARCANA_WORLD",
+    "branch": "r6/si1-bandwidth-f2av",
+    "head": "8c75c439ab45a9d4e79930bd506e686e088e151d"
+  },
+  "geometry": {
+    "type": "SPHERE",
+    "radiusM": 6371000,
+    "shape": [
+      180,
+      360
+    ],
+    "rowOrder": "SOUTH_TO_NORTH",
+    "columnOrder": "WEST_TO_EAST",
+    "periodicLongitude": true
+  },
+  "layers": [
+    {
+      "id": "t0/land_ocean_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "land_ocean_mask",
+      "stateId": "r6state_adda238a77c2d088cf49205c97ff1764906869cd1fab54e4122be055c86273c8",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "categorical",
+      "dtype": "uint8",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "NONE_DECLARED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/coastline_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "coastline_mask",
+      "stateId": "r6state_adda238a77c2d088cf49205c97ff1764906869cd1fab54e4122be055c86273c8",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "categorical",
+      "dtype": "uint8",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "NONE_DECLARED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/plate_id",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "plate_id",
+      "stateId": "r6state_a9d04cb6b94395e7bcaa98161c7472b0765facab821ac31f0617981ceeb5f4c3",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "categorical",
+      "dtype": "int16",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "NONE_DECLARED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/crust_class",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "crust_class",
+      "stateId": "r6state_a9d04cb6b94395e7bcaa98161c7472b0765facab821ac31f0617981ceeb5f4c3",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "categorical",
+      "dtype": "int8",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "NONE_DECLARED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/boundary_class",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "boundary_class",
+      "stateId": "r6state_a9d04cb6b94395e7bcaa98161c7472b0765facab821ac31f0617981ceeb5f4c3",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "categorical",
+      "dtype": "int8",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "boundary_class == 0; 1 is INTERIOR; no boundary process classification",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/province_class",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "province_class",
+      "stateId": "r6state_a9d04cb6b94395e7bcaa98161c7472b0765facab821ac31f0617981ceeb5f4c3",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "categorical",
+      "dtype": "int8",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "NONE_DECLARED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "province_class == -2; NOT_APPLICABLE on ocean",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/land_surface_elevation_m",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "land_surface_elevation_m",
+      "stateId": "r6state_2c6e3cdb7b066b5fd2b0ec86c40ab5cca9d16ae010203dcc99c9c3d5cc1ff421",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "m relative to authorial R6 z=0",
+      "dtype": "float32",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "elevation_support_mask == true",
+        "unknownRule": "NONE on supported land; ocean bathymetry UNKNOWN",
+        "invalidRule": "Nonfinite supported land INVALID; ocean NaN preserved as UNSUPPORTED",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/elevation_support_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "elevation_support_mask",
+      "stateId": "r6state_2c6e3cdb7b066b5fd2b0ec86c40ab5cca9d16ae010203dcc99c9c3d5cc1ff421",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "boolean",
+      "dtype": "bool",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "NONE_DECLARED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/synthetic_uncertainty_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "synthetic_uncertainty_mask",
+      "stateId": "r6state_2c6e3cdb7b066b5fd2b0ec86c40ab5cca9d16ae010203dcc99c9c3d5cc1ff421",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+      "sourceAuthority": "DERIVED_AUTHORITY",
+      "units": "boolean",
+      "dtype": "bool",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "All source cells",
+        "unknownRule": "NONE_DECLARED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/bathymetry_unknown_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "bathymetry_unknown_mask",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONE",
+      "sourceAuthority": "NONE",
+      "units": "boolean",
+      "dtype": "bool",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Mask observations only; no domain numerical values",
+        "unknownRule": "bathymetry_unknown_mask == true",
+        "invalidRule": "NOT_APPLICABLE_TO_BOOLEAN_MASK",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/plate_motion_unknown_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "plate_motion_unknown_mask",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONE",
+      "sourceAuthority": "NONE",
+      "units": "boolean",
+      "dtype": "bool",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Mask observations only; no domain numerical values",
+        "unknownRule": "plate_motion_unknown_mask == true",
+        "invalidRule": "NOT_APPLICABLE_TO_BOOLEAN_MASK",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/deep_unknown_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "deep_unknown_mask",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONE",
+      "sourceAuthority": "NONE",
+      "units": "boolean",
+      "dtype": "bool",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Mask observations only; no domain numerical values",
+        "unknownRule": "deep_unknown_mask == true",
+        "invalidRule": "NOT_APPLICABLE_TO_BOOLEAN_MASK",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/climate_unknown_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "climate_unknown_mask",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONE",
+      "sourceAuthority": "NONE",
+      "units": "boolean",
+      "dtype": "bool",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Mask observations only; no domain numerical values",
+        "unknownRule": "climate_unknown_mask == true",
+        "invalidRule": "NOT_APPLICABLE_TO_BOOLEAN_MASK",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "t0/hydrology_unknown_mask",
+      "source": {
+        "path": "external://R6_INITIAL_PHYSICAL_GEOGRAPHY.npz",
+        "sha256": "a6edad24f639bd6283dc3dbd2a16306af5cda8e01152df2512231c9d5462506c",
+        "bytes": 1169900
+      },
+      "field": "hydrology_unknown_mask",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONE",
+      "sourceAuthority": "NONE",
+      "units": "boolean",
+      "dtype": "bool",
+      "shape": [
+        180,
+        360
+      ],
+      "spatial": {
+        "kind": "R6_GRID_CELL",
+        "support": "DERIVED_SUPPORTED; nominal 1 degree finite-volume cell",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Mask observations only; no domain numerical values",
+        "unknownRule": "hydrology_unknown_mask == true",
+        "invalidRule": "NOT_APPLICABLE_TO_BOOLEAN_MASK",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_crust_a",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_crust_a",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int8",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_crust_b",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_crust_b",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int8",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_edge_axis",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_edge_axis",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical: 0=EAST meridian edge, 1=NORTH parallel edge",
+      "dtype": "uint8",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_edge_col",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_edge_col",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "uint16",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_edge_row",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_edge_row",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "uint8",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_length_m",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_length_m",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "m",
+      "dtype": "float64",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_plate_a",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_plate_a",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int16",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_plate_b",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_plate_b",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int16",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_support_a",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_support_a",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int8",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/boundary_support_b",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "boundary_support_b",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int8",
+      "shape": [
+        1983
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_EDGE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/face_boundary_class",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "face_boundary_class",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int8",
+      "shape": [
+        64800
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_FACE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/face_col",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "face_col",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "uint16",
+      "shape": [
+        64800
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_FACE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/face_crust_class",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "face_crust_class",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int8",
+      "shape": [
+        64800
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_FACE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/face_plate_id",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "face_plate_id",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "int16",
+      "shape": [
+        64800
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_FACE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/face_row",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "face_row",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "categorical/index",
+      "dtype": "uint8",
+      "shape": [
+        64800
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_FACE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "partition/face_vertex_latlon_deg",
+      "source": {
+        "path": "external://R6_T0_VECTOR_PLATE_PARTITION.npz",
+        "sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab",
+        "bytes": 5681184
+      },
+      "field": "face_vertex_latlon_deg",
+      "stateId": "r6state_be4671303ca6dbb5c3aa9d7f0b87ad6467387f38b0854793dad033bd23131fb1",
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "sourceAuthority": "MODEL_DERIVED_FROM_CANONICAL_T0",
+      "units": "degrees (latitude, longitude)",
+      "dtype": "float64",
+      "shape": [
+        64800,
+        5,
+        2
+      ],
+      "spatial": {
+        "kind": "PARENT_CELL_FACE",
+        "support": "COARSE_SUPPORT_ON_FINE_GRID",
+        "supportIds": [],
+        "coordinateConvention": "R6 radius 6371000 m; latitude then longitude degrees; row-major south-to-north/west-to-east"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "COARSE_SUPPORT_ON_FINE_GRID; one exact parent face; boundary edges have no subcell physical semantics",
+        "unknownRule": "face_boundary_class == 0; boundary_support_a/b == 0; all 1983 edges UNKNOWN for physical process classification",
+        "invalidRule": "Nonfinite coordinates or nonpositive boundary lengths INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "AUTHORIAL_SYNTHETIC; not observational uncertainty"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "kinematics/euler_vector_rad_per_year",
+      "source": {
+        "path": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+        "sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2",
+        "bytes": 13742
+      },
+      "field": "plates[].euler_vector_rad_per_year",
+      "stateId": "r6state_af51189ebff68dda55fcac1cb4d0caa73a8a9d7cb3ebd874ac681945b374caa0",
+      "semanticIdentity": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+      "availability": "VERIFIED",
+      "authority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "sourceAuthority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "units": "rad/year",
+      "dtype": "JSON number",
+      "shape": [
+        12,
+        3
+      ],
+      "spatial": {
+        "kind": "PLATE_RECORD",
+        "support": "T0 per-plate records; representative velocity is not a grid field",
+        "supportIds": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "coordinateConvention": "source XYZ kinematic gauge"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "12 plate records",
+        "unknownRule": "Grid-level motion remains UNKNOWN",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "MODEL_UNCERTAINTY; ONE_CANONICAL_MEMBER_OF_EXPLICIT_SYNTHETIC_PRIOR"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "kinematics/euler_pole_unit_xyz",
+      "source": {
+        "path": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+        "sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2",
+        "bytes": 13742
+      },
+      "field": "plates[].euler_pole_unit_xyz",
+      "stateId": "r6state_af51189ebff68dda55fcac1cb4d0caa73a8a9d7cb3ebd874ac681945b374caa0",
+      "semanticIdentity": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+      "availability": "VERIFIED",
+      "authority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "sourceAuthority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        12,
+        3
+      ],
+      "spatial": {
+        "kind": "PLATE_RECORD",
+        "support": "T0 per-plate records; representative velocity is not a grid field",
+        "supportIds": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "coordinateConvention": "source XYZ kinematic gauge"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "12 plate records",
+        "unknownRule": "Grid-level motion remains UNKNOWN",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "MODEL_UNCERTAINTY; ONE_CANONICAL_MEMBER_OF_EXPLICIT_SYNTHETIC_PRIOR"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "kinematics/angular_speed_rad_per_year",
+      "source": {
+        "path": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+        "sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2",
+        "bytes": 13742
+      },
+      "field": "plates[].angular_speed_rad_per_year",
+      "stateId": "r6state_af51189ebff68dda55fcac1cb4d0caa73a8a9d7cb3ebd874ac681945b374caa0",
+      "semanticIdentity": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+      "availability": "VERIFIED",
+      "authority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "sourceAuthority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "units": "rad/year",
+      "dtype": "JSON number",
+      "shape": [
+        12
+      ],
+      "spatial": {
+        "kind": "PLATE_RECORD",
+        "support": "T0 per-plate records; representative velocity is not a grid field",
+        "supportIds": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "coordinateConvention": "source XYZ kinematic gauge"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "12 plate records",
+        "unknownRule": "Grid-level motion remains UNKNOWN",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "MODEL_UNCERTAINTY; ONE_CANONICAL_MEMBER_OF_EXPLICIT_SYNTHETIC_PRIOR"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "kinematics/representative_surface_velocity_m_per_year_xyz",
+      "source": {
+        "path": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+        "sha256": "0f598c86b397a293b5983ace21cef18540fc47ad56fd5dc58d483220789bc6d2",
+        "bytes": 13742
+      },
+      "field": "plates[].representative_surface_velocity_m_per_year_xyz",
+      "stateId": "r6state_af51189ebff68dda55fcac1cb4d0caa73a8a9d7cb3ebd874ac681945b374caa0",
+      "semanticIdentity": "50878031eb67ac699fe29ecc5d3ad7bc7851d653f3b73116376caba29725dcf4",
+      "availability": "VERIFIED",
+      "authority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "sourceAuthority": "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+      "units": "m/year",
+      "dtype": "JSON number",
+      "shape": [
+        12,
+        3
+      ],
+      "spatial": {
+        "kind": "PLATE_RECORD",
+        "support": "T0 per-plate records; representative velocity is not a grid field",
+        "supportIds": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "coordinateConvention": "source XYZ kinematic gauge"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "12 plate records",
+        "unknownRule": "Grid-level motion remains UNKNOWN",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "MODEL_UNCERTAINTY; ONE_CANONICAL_MEMBER_OF_EXPLICIT_SYNTHETIC_PRIOR"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/accumulated_strain",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].accumulated_strain",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/beta",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].beta",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/crust_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].crust_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/elapsed_years",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].elapsed_years",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "year",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/lithosphere_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].lithosphere_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/material_coordinate",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].material_coordinate",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        4,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/temperature_k",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].temperature_k",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "K",
+      "dtype": "JSON number",
+      "shape": [
+        4,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/time_s",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].time_s",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "s",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/width_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].width_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C028/z_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C028[].z_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C028"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/accumulated_strain",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].accumulated_strain",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/beta",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].beta",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/crust_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].crust_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/elapsed_years",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].elapsed_years",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "year",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/lithosphere_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].lithosphere_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/material_coordinate",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].material_coordinate",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        4,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/temperature_k",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].temperature_k",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "K",
+      "dtype": "JSON number",
+      "shape": [
+        4,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/time_s",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].time_s",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "s",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/width_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].width_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT0B_TF2B_5_11_R4_20261013_04/R6G1D-R091-C029/z_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT0B_TF2B_5_11_R4_20261013_04/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "ca9c5a4bc6ff4441b198219183e4e564a391d239dfda6e2f87598b7bd14bebad",
+        "bytes": 85583
+      },
+      "field": "samples_by_support.R6G1D-R091-C029[].z_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        4,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.0005",
+        "supportIds": [
+          "R6G1D-R091-C029"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          484.6791203689449,
+          969.6005802980742,
+          1000.0
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/accumulated_strain",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].accumulated_strain",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/beta",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].beta",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/crust_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].crust_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/elapsed_years",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].elapsed_years",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "year",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/lithosphere_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].lithosphere_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/material_coordinate",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].material_coordinate",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        9,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/temperature_k",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].temperature_k",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "K",
+      "dtype": "JSON number",
+      "shape": [
+        9,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/time_s",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].time_s",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "s",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/width_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].width_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C025/z_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C025[].z_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C025"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/accumulated_strain",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].accumulated_strain",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/beta",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].beta",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/crust_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].crust_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/elapsed_years",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].elapsed_years",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "year",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/lithosphere_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].lithosphere_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/material_coordinate",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].material_coordinate",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "1",
+      "dtype": "JSON number",
+      "shape": [
+        9,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/temperature_k",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].temperature_k",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "K",
+      "dtype": "JSON number",
+      "shape": [
+        9,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/time_s",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].time_s",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "s",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/width_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].width_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    },
+    {
+      "id": "INT1D_TF2B_5_11_R094C025_C026_20261014_02/R6G1D-R094-C026/z_m",
+      "source": {
+        "path": "outputs/r6_functional_development/INT1D_TF2B_5_11_R094C025_C026_20261014_02/DIAGNOSTIC_NUMERICAL_SAMPLES.json",
+        "sha256": "540c668b7e0e186e7c0efe36e5fc94d1afe09550a2f5b235ef3485e8b77b1916",
+        "bytes": 157705
+      },
+      "field": "samples_by_support.R6G1D-R094-C026[].z_m",
+      "stateId": null,
+      "semanticIdentity": null,
+      "availability": "VERIFIED",
+      "authority": "NONCANONICAL_ENGINEERING",
+      "sourceAuthority": "NONCANONICAL_ENGINEERING",
+      "units": "m",
+      "dtype": "JSON number",
+      "shape": [
+        9,
+        73
+      ],
+      "spatial": {
+        "kind": "ENGINEERING_PROFILE",
+        "support": "Exact stored two-support diagnostic; diagnostic rung 0.000125",
+        "supportIds": [
+          "R6G1D-R094-C026"
+        ],
+        "coordinateConvention": "source material_coordinate and positive z_m profile depth"
+      },
+      "temporal": {
+        "originMa": 210.0,
+        "elapsedYears": [
+          0.0,
+          129.57192262500018,
+          259.1600417403285,
+          388.7643593705462,
+          518.3848775404676,
+          648.0215982751603,
+          777.6745235999448,
+          907.3436555403949,
+          999.9999999999998
+        ],
+        "interpolation": "NONE"
+      },
+      "validity": {
+        "supportRule": "Recorded profile samples only",
+        "unknownRule": "All unrecorded locations/times UNKNOWN/UNSUPPORTED",
+        "invalidRule": "Nonfinite supported values are INVALID",
+        "notApplicableRule": "NONE_DECLARED",
+        "uncertaintyRule": "ENGINEERING_ONLY; scientific validity unqualified"
+      },
+      "numeric": null,
+      "imagery": null
+    }
+  ],
+  "scientificAuthorityPromoted": false
+}

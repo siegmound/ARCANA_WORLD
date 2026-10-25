@@ -1,0 +1,32 @@
+{
+  "name": "arcana-world-viewer",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "stage": "tsx scripts/stage-cli.ts",
+    "dev": "tsx scripts/stage-cli.ts --allow-unavailable && vite --host 127.0.0.1 --port 5173 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/raster.test.ts tests/staging.test.ts tests/temporal.test.ts",
+    "build": "npm run stage && npm run typecheck && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort"
+  },
+  "dependencies": {
+    "@cesium/core": "0.1.0",
+    "@cesium/engine": "26.4.0",
+    "cesium": "1.146.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.12",
+    "@types/pngjs": "6.0.5",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "ajv": "8.17.1",
+    "pngjs": "7.0.0",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vite": "7.1.12"
+  }
+}

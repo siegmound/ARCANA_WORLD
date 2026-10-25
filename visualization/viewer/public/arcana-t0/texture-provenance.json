@@ -1,0 +1,67 @@
+{
+  "schema": "ARCANA_VIEW_T0_TEXTURE_V1",
+  "status": "DISPLAY_ONLY",
+  "manifestSha256": "6b008eea5035a3749cb58de275a5c2f2f033dc62724c475ef72fb56f299b87f5",
+  "exportId": "viewexport_b0ff6b261de6640dce02256a94340b4c1d1f390e85914ddb48ada08493ba6df1",
+  "sourceArrays": [
+    {
+      "bytes": 64928,
+      "path": "arrays/t0__land_ocean_mask.npy",
+      "sha256": "a220bc6c9b356968f17e965954f4a93ec9b58480102a43ef088895744829de5b"
+    },
+    {
+      "bytes": 64928,
+      "path": "arrays/t0__coastline_mask.npy",
+      "sha256": "27ee898132aecb577a2ce2bd335f9d189dd216ff18f1a213b9038d28c3f1b663"
+    }
+  ],
+  "transform": {
+    "sourceShape": [
+      180,
+      360
+    ],
+    "sourceOrder": "C; SOUTH_TO_NORTH; WEST_TO_EAST",
+    "displayShape": [
+      180,
+      360
+    ],
+    "displayRow": "179 - sourceRow",
+    "displayColumn": "sourceColumn",
+    "boundsDegrees": [
+      -180,
+      -90,
+      180,
+      90
+    ],
+    "periodicLongitude": true,
+    "seam": "+180 == -180; columns wrap modulo 360; no duplicate column",
+    "sampling": "NEAREST; no resampling or interpolation",
+    "semantics": "land_ocean_mask: 0=OCEAN,1=LAND; coastline_mask: 0=false,1=true; coastline color overrides base color",
+    "palette": {
+      "ocean": [
+        21,
+        52,
+        74,
+        255
+      ],
+      "land": [
+        107,
+        181,
+        151,
+        255
+      ],
+      "coast": [
+        235,
+        211,
+        151,
+        255
+      ]
+    }
+  },
+  "texture": {
+    "path": "t0-display.png",
+    "bytes": 2882,
+    "sha256": "a8558c0123241f9ec6cfe3cb687a30c84af9c71f2b8b81966c4a666570b31761"
+  },
+  "rgbaSha256": "c93619c54604206f5a7b3f540edaa6d205c55b2be35493591187d3f9fb30fdea"
+}

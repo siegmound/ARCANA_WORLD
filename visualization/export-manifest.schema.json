@@ -1,0 +1,529 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "version",
+    "exportId",
+    "dataset",
+    "arrays",
+    "runtime",
+    "provenance",
+    "governance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ARCANA_VIEW_STATIC_T0_EXPORT_V1"
+    },
+    "version": {
+      "const": 1
+    },
+    "exportId": {
+      "type": "string",
+      "pattern": "^viewexport_[0-9a-f]{64}$"
+    },
+    "dataset": {
+      "$ref": "#/$defs/dataset"
+    },
+    "arrays": {
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "layerId",
+          "file",
+          "npyVersion",
+          "dtypeDescr",
+          "order",
+          "shape",
+          "dataSha256",
+          "sourceStateId",
+          "exportArrayId"
+        ],
+        "properties": {
+          "layerId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "file": {
+            "$ref": "#/$defs/fileIdentity"
+          },
+          "npyVersion": {
+            "const": [
+              2,
+              0
+            ]
+          },
+          "dtypeDescr": {
+            "enum": [
+              "|b1",
+              "|u1",
+              "|i1",
+              "<i2",
+              "<u2",
+              "<f4",
+              "<f8"
+            ]
+          },
+          "order": {
+            "const": "C"
+          },
+          "shape": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "dataSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "sourceStateId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "exportArrayId": {
+            "type": "string",
+            "pattern": "^viewarray_[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python",
+        "numpy",
+        "jsonschema",
+        "platform",
+        "implementation",
+        "machine",
+        "serialization"
+      ],
+      "properties": {
+        "python": {
+          "type": "string",
+          "minLength": 1
+        },
+        "numpy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jsonschema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "platform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "implementation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "machine": {
+          "type": "string",
+          "minLength": 1
+        },
+        "serialization": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputs",
+        "sourceBaseline",
+        "scope",
+        "excluded"
+      ],
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "minItems": 11,
+          "items": {
+            "$ref": "#/$defs/fileIdentity"
+          }
+        },
+        "sourceBaseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repository",
+            "branch",
+            "head"
+          ],
+          "properties": {
+            "repository": {
+              "type": "string",
+              "minLength": 1
+            },
+            "branch": {
+              "type": "string",
+              "minLength": 1
+            },
+            "head": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "scope": {
+          "const": "VIEW1B_STATIC_T0_ONLY"
+        },
+        "excluded": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scientificAuthorityPromoted",
+        "worldHistoryWritten",
+        "numericalEvolutionExecuted",
+        "temporalInterpolation"
+      ],
+      "properties": {
+        "scientificAuthorityPromoted": {
+          "const": false
+        },
+        "worldHistoryWritten": {
+          "const": false
+        },
+        "numericalEvolutionExecuted": {
+          "const": false
+        },
+        "temporalInterpolation": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcana:view:static-t0-export:v1",
+  "$defs": {
+    "fileIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "field",
+        "stateId",
+        "semanticIdentity",
+        "availability",
+        "authority",
+        "sourceAuthority",
+        "units",
+        "dtype",
+        "shape",
+        "spatial",
+        "temporal",
+        "validity",
+        "numeric",
+        "imagery"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/fileIdentity"
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stateId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "semanticIdentity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "availability": {
+          "enum": [
+            "VERIFIED",
+            "INPUT_UNAVAILABLE",
+            "UNSUPPORTED"
+          ]
+        },
+        "authority": {
+          "enum": [
+            "AUTHORIAL_SYNTHETIC_INITIALIZATION",
+            "MODEL_DERIVED_FROM_CANONICAL_T0",
+            "STOCHASTIC_CANONICAL_MODEL_REALIZATION",
+            "NONCANONICAL_ENGINEERING",
+            "NONE"
+          ]
+        },
+        "sourceAuthority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "units": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dtype": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shape": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "spatial": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "support",
+            "supportIds",
+            "coordinateConvention"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "R6_GRID_CELL",
+                "PARENT_CELL_FACE",
+                "PARENT_CELL_EDGE",
+                "PLATE_RECORD",
+                "ENGINEERING_PROFILE"
+              ]
+            },
+            "support": {
+              "type": "string",
+              "minLength": 1
+            },
+            "supportIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "coordinateConvention": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "temporal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "originMa",
+            "elapsedYears",
+            "interpolation"
+          ],
+          "properties": {
+            "originMa": {
+              "type": "number"
+            },
+            "elapsedYears": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "number"
+              }
+            },
+            "interpolation": {
+              "const": "NONE"
+            }
+          }
+        },
+        "validity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "supportRule",
+            "unknownRule",
+            "invalidRule",
+            "notApplicableRule",
+            "uncertaintyRule"
+          ],
+          "properties": {
+            "supportRule": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unknownRule": {
+              "type": "string",
+              "minLength": 1
+            },
+            "invalidRule": {
+              "type": "string",
+              "minLength": 1
+            },
+            "notApplicableRule": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uncertaintyRule": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "numeric": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/fileIdentity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "imagery": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/fileIdentity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "version",
+        "baseline",
+        "geometry",
+        "layers",
+        "scientificAuthorityPromoted"
+      ],
+      "properties": {
+        "schema": {
+          "const": "ARCANA_VIEW_EXPORT_DATASET_V1"
+        },
+        "version": {
+          "const": 1
+        },
+        "baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repository",
+            "branch",
+            "head"
+          ],
+          "properties": {
+            "repository": {
+              "type": "string",
+              "minLength": 1
+            },
+            "branch": {
+              "type": "string",
+              "minLength": 1
+            },
+            "head": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "radiusM",
+            "shape",
+            "rowOrder",
+            "columnOrder",
+            "periodicLongitude"
+          ],
+          "properties": {
+            "type": {
+              "const": "SPHERE"
+            },
+            "radiusM": {
+              "const": 6371000
+            },
+            "shape": {
+              "const": [
+                180,
+                360
+              ]
+            },
+            "rowOrder": {
+              "const": "SOUTH_TO_NORTH"
+            },
+            "columnOrder": {
+              "const": "WEST_TO_EAST"
+            },
+            "periodicLongitude": {
+              "const": true
+            }
+          }
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer"
+          }
+        },
+        "scientificAuthorityPromoted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
