@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import platform
 import re
+import stat
 import subprocess
 import sys
 import time
@@ -265,12 +266,16 @@ def _write_bundle(output: Path, artifacts: dict[str, object], config_raw: bytes,
                                     "RUN_STARTED.json": (output / "RUN_STARTED.json").read_bytes()}
         values.update({name: canonical_bytes(value) for name, value in artifacts.items()})
         values["RUN_RESULT.json"] = canonical_bytes(result)
+        archive_members: dict[str, dict[str, object]] = {}
         for member in sorted(segment_root.iterdir(), key=lambda item: item.name):
             if not member.is_file() or member.is_symlink():
                 raise Eng10kContractError("SEGMENT_ARCHIVE_MEMBER_NOT_REGULAR_FILE")
-            values[f"SEGMENT_ARCHIVE_V1/{member.name}"] = member.read_bytes()
+            size, digest = _stream_file_identity(member)
+            archive_members[f"SEGMENT_ARCHIVE_V1/{member.name}"] = {
+                "bytes": size, "sha256": digest}
         manifest_files = {name: {"bytes": len(raw), "sha256": sha256_bytes(raw)}
                           for name, raw in values.items()}
+        manifest_files.update(archive_members)
         manifest = {"schema": "ARCANA_R6_INT3_ENG10K_MANIFEST_V1",
             "canonical_publication": False, "files": manifest_files,
             "segment_archive": segment_identity,
@@ -278,7 +283,9 @@ def _write_bundle(output: Path, artifacts: dict[str, object], config_raw: bytes,
             "run_result_sha256": sha256_bytes(values["RUN_RESULT.json"]),
             "manifest_is_self_excluded": True}
         manifest_raw = canonical_bytes(manifest)
-        projected_total = sum(len(value) for value in values.values()) + len(manifest_raw)
+        projected_total = (sum(len(value) for value in values.values())
+                           + sum(int(row["bytes"]) for row in archive_members.values())
+                           + len(manifest_raw))
         existing_artifacts_total = sum(
             len(value) for name, value in values.items()
             if not name.startswith("SEGMENT_ARCHIVE_V1/")
@@ -289,10 +296,11 @@ def _write_bundle(output: Path, artifacts: dict[str, object], config_raw: bytes,
             raise Eng10kContractError("OUTPUT_SIZE_EXCEEDS_PREFLIGHT_BOUNDS")
         for name, raw in values.items():
             path = output / name
-            if name.startswith("SEGMENT_ARCHIVE_V1/"):
-                if path.read_bytes() != raw:
-                    raise Eng10kContractError(f"OUTPUT_READBACK_FAILED:{name}")
-            elif path.write_bytes(raw) != len(raw) or path.read_bytes() != raw:
+            if path.write_bytes(raw) != len(raw) or path.read_bytes() != raw:
+                raise Eng10kContractError(f"OUTPUT_READBACK_FAILED:{name}")
+        for name, expected in archive_members.items():
+            path = output / name
+            if _stream_file_identity(path) != (expected["bytes"], expected["sha256"]):
                 raise Eng10kContractError(f"OUTPUT_READBACK_FAILED:{name}")
         if (output / "ARTIFACT_MANIFEST.json").write_bytes(manifest_raw) != len(manifest_raw):
             raise Eng10kContractError("MANIFEST_WRITE_FAILED")
@@ -307,6 +315,36 @@ def _write_bundle(output: Path, artifacts: dict[str, object], config_raw: bytes,
         except OSError:
             pass
         raise
+
+
+def _stream_file_identity(path: Path, *, chunk_size: int = 1024 * 1024) -> tuple[int, str]:
+    """Return byte count and SHA256 without retaining the file contents."""
+    if isinstance(chunk_size, bool) or not isinstance(chunk_size, int) or chunk_size <= 0:
+        raise Eng10kContractError("SEGMENT_ARCHIVE_HASH_CHUNK_SIZE_INVALID")
+    digest = hashlib.sha256()
+    byte_count = 0
+    try:
+        path_before = path.lstat()
+        if not stat.S_ISREG(path_before.st_mode):
+            raise Eng10kContractError(f"SEGMENT_ARCHIVE_MEMBER_NOT_REGULAR_FILE:{path.name}")
+        with path.open("rb") as stream:
+            before = os.fstat(stream.fileno())
+            for chunk in iter(lambda: stream.read(chunk_size), b""):
+                byte_count += len(chunk)
+                digest.update(chunk)
+            after = os.fstat(stream.fileno())
+        path_after = path.lstat()
+    except OSError as exc:
+        raise Eng10kContractError(f"SEGMENT_ARCHIVE_MEMBER_READ_FAILED:{path.name}") from exc
+    if (not stat.S_ISREG(before.st_mode) or not stat.S_ISREG(after.st_mode)
+            or not stat.S_ISREG(path_after.st_mode)
+            or before.st_size != byte_count or after.st_size != byte_count
+            or before.st_ino != after.st_ino or before.st_mtime_ns != after.st_mtime_ns
+            or path_before.st_ino != before.st_ino or path_after.st_ino != after.st_ino
+            or path_before.st_size != path_after.st_size
+            or path_before.st_mtime_ns != path_after.st_mtime_ns):
+        raise Eng10kContractError(f"SEGMENT_ARCHIVE_MEMBER_CHANGED_DURING_READ:{path.name}")
+    return byte_count, digest.hexdigest()
 
 
 def _diagnostic_summary(diagnostics: dict[str, Any]) -> dict[str, Any]:

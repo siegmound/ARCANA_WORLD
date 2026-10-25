@@ -153,7 +153,9 @@ def test_runner_archive_does_not_publish_until_every_declared_trajectory_complet
         validate_segment_archive(root)
 
 
-def test_outer_runner_manifest_covers_archive_members_without_replacing_diagnostics(tmp_path, runner):
+def test_outer_runner_manifest_covers_archive_members_without_replacing_diagnostics(
+    tmp_path, runner, monkeypatch
+):
     output = tmp_path / "candidate"
     output.mkdir()
     (output / "RUN_STARTED.json").write_bytes(b"{}\n")
@@ -165,9 +167,18 @@ def test_outer_runner_manifest_covers_archive_members_without_replacing_diagnost
     writer.finalize()
     diagnostic = {"samples": [{"time_s": 0.0}, {"time_s": 2.0}],
                   "all_substeps_retained": False}
+    original_read_bytes = Path.read_bytes
+
+    def reject_bulk_archive_state_read(path):
+        if path == archive_root / "STATES.jsonl":
+            raise AssertionError("archive state stream must be hashed incrementally")
+        return original_read_bytes(path)
+
+    monkeypatch.setattr(Path, "read_bytes", reject_bulk_archive_state_read)
     runner._write_bundle(output, {"DIAGNOSTIC_SAMPLES.json": diagnostic},
                          b"synthetic-config\n", {"preflight": "fixture"},
                          {"segment_archive": validate_segment_archive(archive_root)})
+    monkeypatch.setattr(Path, "read_bytes", original_read_bytes)
 
     manifest = json.loads((output / "ARTIFACT_MANIFEST.json").read_text(encoding="utf-8"))
     files = manifest["files"]

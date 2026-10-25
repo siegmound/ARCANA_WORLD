@@ -255,10 +255,16 @@ def _select_pair_5_11_section(
 
 def audit_pair_5_11(repository_root: str | Path, *,
                     expected_branch: str,
-                    requested_boundary_id: str | None = None) -> dict[str, Any]:
+                    requested_boundary_id: str | None = None,
+                    verified_sources: Any | None = None) -> dict[str, Any]:
     """Verify payloads, exact cell/plate join, two-sided B6N8-N support and T0 kinematics."""
     root = Path(repository_root).resolve()
-    source, inventory = load_b5_sources(root, expected_branch=expected_branch)
+    if verified_sources is None:
+        source, _inventory = load_b5_sources(root, expected_branch=expected_branch)
+    else:
+        source = verified_sources
+        if source.branch != expected_branch:
+            raise SpatialSupportError("PRELOADED_B5_SOURCE_BRANCH_MISMATCH")
     preflight = preflight_admitted_bindings(root)
     if (preflight.admitted_count != 63_620 or preflight.continental_count != 14_258
             or preflight.production_execution_authorized):
