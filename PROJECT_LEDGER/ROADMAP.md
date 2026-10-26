@@ -1,15 +1,12 @@
-# CURRENT — integrated prototypes and geodynamic-driver readiness (2026-10-26)
+# CURRENT — integrated prototypes and GEODYN-1B runtime readiness (2026-10-26)
 
-SURF-2 remains a conservative coupling demonstration on a synthetic domain only. R6 owns orchestration, explicit material/hydrology ledgers and history; Fastscapelib is an optional surface incision/routing method. No geographic ARCANA remap or scientific qualification is implied.
+SURF-2 remains a synthetic-only conservative Fastscapelib/R6 coupling. It does not provide a verified ARCANA geographic/material mapping.
 
-GEODYN-1A reviewed R6 inputs and ASPECT capabilities. ASPECT is a complementary candidate for coupled continuum Stokes/energy/composition, not selected as primary. The immediate solver verification is the official ASPECT 3.1.0 Blankenbach 1a benchmark on an independent Cartesian domain, after an authorized environment/build is identified. The current Windows host has no `aspect` executable and WSL is inaccessible. No solver run occurred.
+GEODYN-1A found ASPECT complementary, not selected as the ARCANA primary. GEODYN-1B prepared a strictly read-only Fair runtime probe and version-matched Blankenbach plan. The probe has not run on Fair; no ASPECT runtime, source/plugin compatibility, scheduler allocation or job resource limit is established. Blankenbach requires a release-matched plugin build per the official 3.1.0 benchmark documentation; the binary alone does not make the benchmark ready. Build and solver execution need separate authorization.
 
-ARCANA forward evolution remains blocked by missing positive-duration forcing, volume geometry and conservative support mapping, full initial T/composition/density/EOS, material rheology, boundary conditions and temporal topology changes. Euler B5 is an instantaneous T0 diagnostic only. Keep Deep independent until a physical exchange law exists; surface/hydrology can consume archived geodynamic snapshots one-way, with same-window coupling required if their loads/BC feed back.
-
-Do not begin a long history or canonical publication. All scientific, mechanics, resource and execution gates remain closed.
+ARCANA forward evolution remains blocked by positive-duration forcing, complete volume fields and spatial mapping, EOS/reology and boundary conditions. Euler B5 is T0-only. Deep stays independent absent an exchange law. All scientific/execution/canonical gates remain closed.
 
 ---
-
 # Archived CURRENT — prototype-first integrated physical roadmap (2026-10-25)
 
 Decision: develop and execute small working numerical tool integrations before repeated legacy requalification and before selecting the production-scale model. The full objective remains an independently reproducible/queryable 210 Ma -> 0 ka history of tectonics, geology, materials/resources, Deep, climate/hydrology, flora/fauna, populations and civilizations. Do not treat an ENG10K engineering slice as global physics.

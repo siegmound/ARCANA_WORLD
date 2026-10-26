@@ -1,13 +1,14 @@
-# NEXT — authorize and qualify an independent ASPECT benchmark; close ARCANA forward inputs (2026-10-26)
+# NEXT — run the read-only GEODYN-1B runtime preflight on Fair (2026-10-26)
 
-The GEODYN-1A review selected ASPECT only as a complementary candidate. The exact next solver experiment is the official, unmodified ASPECT 3.1.0 Blankenbach 1a 2D benchmark at coarse level 3 and one MPI rank, in a specifically authorized environment with version-pinned ASPECT/deal.II/MPI and a new external evidence directory. Verify benchmark files against the pinned release before execution; record solver residuals, benchmark reference statistics, energy/mass checks, restart, runtime, RSS and output size. No benchmark was run in this preparation because ASPECT is unavailable locally.
+After this exact commit is transferred through the prescribed workflow, an operator may manually run `bash scripts/r6_geodyn1b_fair_runtime_preflight.sh` on Fair. Save the output and exit code in a new external evidence directory. The script probes only the current shell/session; it does not prove a future job's allocation. Report the ASPECT executable/version/hash, source tag/revision, whether the matching Blankenbach plugin and reference files are available, dependency/toolchain/MPI identities, scheduler and cgroup values, filesystem/quota observations, and hashes of script/log. Do not install, load modules, compile, or run the solver in this preflight.
 
-Before any ARCANA T0→T1 model, obtain a supported 2D/3D spatial field mapping, initial temperature/composition/density/EOS, ARCANA rheology, complete mechanical/thermal boundary conditions, and an authorized positive-duration forcing law. Do not extend instantaneous B5 Euler velocities through time. Keep geodynamic temperature/composition co-evolving inside the selected solver when they affect Stokes properties; let hydrology/surface consume archived snapshots unless true same-window feedback is implemented; keep Deep uncoupled absent a physical exchange law.
+If version and source match, prepare a separate exact-commit authorization for the version-matched official Blankenbach 1a benchmark, including its required plugin build if applicable. If absent/incompatible, first investigate a pre-existing supported runtime; any isolated user-space installation/build requires a separate approval. Do not mix release inputs. No benchmark, ASPECT/ShellSet/MPI, Fair numerical job, provider evolution, or canonical write is authorized by GEODYN-1B.
 
-No ASPECT/ShellSet/Fair/MPI/evolution, provider access or canonical history publication is authorized here. Preserve all gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+Before any ARCANA T0→T1 model, close spatial support/remapping, full initial thermal/compositional/density state, EOS/reology, complete BCs and authorized positive-duration forcing. Never extend T0 Euler kinematics without an explicit temporal law.
+
+Preserve all gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
 
 ---
-
 # Archived NEXT — complete the already-started Codex experimental multiphysics prototype (2026-10-25)
 
 No new Codex task is needed: the operator reports that Codex has already started the experimental integration work on Windows. Do not interrupt or reinterpret its in-progress work as complete.

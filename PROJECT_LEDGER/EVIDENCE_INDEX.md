@@ -670,3 +670,9 @@ Current branch regression, run during residue review: `tests/test_r6_unified_mul
 - Report: `docs/arcana/GEODYN_1A_FORWARD_DRIVER_PREPARATION.md`. Static source/contract review only; no new numerical evidence or output bundle.
 - Local checks: `aspect` absent from PATH; WSL status returned `E_ACCESSDENIED`; `ARCANA_EXTERNAL_ROOT` unset. Official ASPECT 3.1.0 benchmark documentation identifies Blankenbach 1a as the next independent solver-verification candidate, not as ARCANA evidence.
 - Decision: ASPECT complementary candidate; ARCANA positive-duration forcing, complete spatial/material state, rheology and boundary conditions remain UNKNOWN. Existing gates unchanged.
+
+## GEODYN-1B — Fair ASPECT runtime readiness package (2026-10-26)
+
+- Read-only probe: `scripts/r6_geodyn1b_fair_runtime_preflight.sh`; operator instructions/acceptance: `docs/arcana/GEODYN_1B_FAIR_ASPECT_READINESS.md`.
+- No Fair preflight output exists yet. The script passed `bash -n` on Windows Git Bash; it has not run on Fair. No ASPECT version, matching source/plugin, scheduler allocation or runtime evidence is claimed. It has no install/build/solver actions and creates no files.
+- No new numerical evidence. Official ASPECT 3.1.0 benchmark docs report a required Blankenbach plugin; keep plugin build and solver run behind separate authorization.

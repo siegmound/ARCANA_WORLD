@@ -1,17 +1,18 @@
-# CURRENT — ARCANA WorldSim R6, GEODYN-1A (2026-10-26)
+# CURRENT — ARCANA WorldSim R6, GEODYN-1B (2026-10-26)
 
-Decision: `GEODYN-1A_PREPARATION_COMPLETE__ASPECT_RUNTIME_UNAVAILABLE__ARCANA_FORWARD_PHYSICS_UNRESOLVED`. ASPECT is a complementary solver candidate, not selected as the ARCANA primary geodynamic engine.
+Decision: `GEODYN1B_READ_ONLY_PREFLIGHT_PACKAGE_READY__FAIR_RUNTIME_UNVERIFIED`.
 
-Report: `docs/arcana/GEODYN_1A_FORWARD_DRIVER_PREPARATION.md`. Static review covered B4/B5 T0 topology/instantaneous Euler, R6 reduced thermal/material state, gFlex and surface/hydrology prototypes. The current process has no `ARCANA_EXTERNAL_ROOT`; ASPECT is absent from Windows PATH and WSL reports `E_ACCESSDENIED`. No provider payload or ASPECT solver was run. T0 Euler has no authorized positive-duration law. 3D support, density/EOS, rheology, complete initial thermal/compositional fields, loads, boundary conditions and temporal forcing remain UNKNOWN.
+Package: `scripts/r6_geodyn1b_fair_runtime_preflight.sh` and `docs/arcana/GEODYN_1B_FAIR_ASPECT_READINESS.md`. The script is designed to report-only probe host, ASPECT binary/version/hash, relevant modules/toolchain/libraries, source identity and current-shell resource/cgroup observations. It does not install, compile or execute ASPECT. It has not yet been run on Fair.
 
-Next: in an explicitly authorized environment, run the unmodified official ASPECT 3.1.0 Blankenbach 1a benchmark at its coarse level-3 configuration (one rank) as an independent solver verification, after pinning build/dependencies and checking the release's exact benchmark files. This does not generate ARCANA history. Separately close the spatial and time-dependent physical inputs before any ARCANA forward window.
+The official ASPECT 3.1.0 Blankenbach 1a case requires its matching benchmark plugin build; an ASPECT executable alone is insufficient. If Fair has another version, benchmark inputs/plugin/reference values must come from that exact matching source. Any plugin build and numerical benchmark require separate explicit authorization. Windows lacks `aspect`; WSL is inaccessible (`E_ACCESSDENIED`).
 
-No ASPECT, ShellSet, MPI, Fair, geologic evolution, provider read, output or canonical operation occurred. No code/tests changed; no numerical suite was run. Existing VIEW deletions and untracked outputs were preserved.
+Next: transfer this exact source commit to the prescribed Fair worktree and manually run the read-only preflight, saving stdout/stderr to a fresh external evidence directory. Return version/build/source/plugin availability, actual runtime/toolchain, current-shell and scheduler resource records, and hashes. Based on the result, either prepare a separate benchmark authorization package or a separately approved isolated-runtime plan. No installation, compilation or solver run is authorized here.
+
+No ASPECT, ShellSet, MPI, Fair, geological evolution, provider read, output or canonical operation occurred in this preparation. The 62 pre-existing VIEW export deletions and untracked outputs were preserved and excluded from staging.
 
 Gates unchanged: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
 
 ---
-
 ## Previous current checkpoint — R6 local prototype consolidation
 
 Decision: `R6_LOCAL_WORK_CONSOLIDATED__PROTOTYPE_ENGINEERING_ONLY__SCIENTIFIC_AND_CANONICAL_PROMOTION_NOT_AUTHORIZED`.
