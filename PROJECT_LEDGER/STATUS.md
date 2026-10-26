@@ -1,16 +1,12 @@
-# CURRENT — ARCANA WorldSim R6, GEODYN-1B (2026-10-26)
+# CURRENT — ARCANA WorldSim R6, GEODYN-1G / GEODYN-2 (2026-10-27)
 
-Decision: `GEODYN1B_READ_ONLY_PREFLIGHT_PACKAGE_READY__FAIR_RUNTIME_UNVERIFIED`.
+Decision: `GEODYN_1G_FAIR_BLANKENBACH_INDEPENDENT_BENCHMARK_QUALIFIED__ARCANA_FORWARD_NOT_AUTHORIZED`.
 
-Package: `scripts/r6_geodyn1b_fair_runtime_preflight.sh` and `docs/arcana/GEODYN_1B_FAIR_ASPECT_READINESS.md`. The script is designed to report-only probe host, ASPECT binary/version/hash, relevant modules/toolchain/libraries, source identity and current-shell resource/cgroup observations. It does not install, compile or execute ASPECT. It has not yet been run on Fair.
+Report: `docs/arcana/GEODYN_1G_FAIR_CLOSURE_GEODYN_2_PREPARATION.md`. FAIR operator-reported ASPECT 3.2.0-pre Blankenbach 1a results passed at levels 3 and 4; metric errors, provenance limits and unresolved risks are recorded there. Original FAIR run files were not imported or rehashed on Windows. No further Blankenbach run is planned absent a demonstrated scientific or correctness need.
 
-The official ASPECT 3.1.0 Blankenbach 1a case requires its matching benchmark plugin build; an ASPECT executable alone is insufficient. If Fair has another version, benchmark inputs/plugin/reference values must come from that exact matching source. Any plugin build and numerical benchmark require separate explicit authorization. Windows lacks `aspect`; WSL is inaccessible (`E_ACCESSDENIED`).
+GEODYN-2 is prepared, not authorized. A synthetic positive-time ASPECT engineering smoke test and an ARCANA forward window are distinct scopes. The ARCANA window remains blocked by source-backed spatial/initial-state closure, EOS/rheology and positive-time forcing/boundary conditions. Do not extrapolate B5 T0 Euler. Any R6 exchange requires mesh/support identity, explicit units/remapping and conservation checks; Deep remains disconnected without an exchange law.
 
-Next: transfer this exact source commit to the prescribed Fair worktree and manually run the read-only preflight, saving stdout/stderr to a fresh external evidence directory. Return version/build/source/plugin availability, actual runtime/toolchain, current-shell and scheduler resource records, and hashes. Based on the result, either prepare a separate benchmark authorization package or a separately approved isolated-runtime plan. No installation, compilation or solver run is authorized here.
-
-No ASPECT, ShellSet, MPI, Fair, geological evolution, provider read, output or canonical operation occurred in this preparation. The 62 pre-existing VIEW export deletions and untracked outputs were preserved and excluded from staging.
-
-Gates unchanged: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+No numerical evolution, ASPECT, MPI, ShellSet or provider read occurred in this closure. Gates remain unchanged: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
 
 ---
 ## Previous current checkpoint — R6 local prototype consolidation

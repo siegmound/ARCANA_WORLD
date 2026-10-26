@@ -1,10 +1,8 @@
-# CURRENT — integrated prototypes and GEODYN-1B runtime readiness (2026-10-26)
+# CURRENT — GEODYN-1G closed; GEODYN-2 prepared, not authorized (2026-10-27)
 
-SURF-2 remains a synthetic-only conservative Fastscapelib/R6 coupling. It does not provide a verified ARCANA geographic/material mapping.
+GEODYN-1G verdict: `GEODYN_1G_FAIR_BLANKENBACH_INDEPENDENT_BENCHMARK_QUALIFIED__ARCANA_FORWARD_NOT_AUTHORIZED`. FAIR operator-reported ASPECT 3.2.0-pre Blankenbach 1a results at levels 3 and 4 and the limited refinement comparison are recorded in `docs/arcana/GEODYN_1G_FAIR_CLOSURE_GEODYN_2_PREPARATION.md`. The original FAIR artifacts were not imported/rehashed on Windows.
 
-GEODYN-1A found ASPECT complementary, not selected as the ARCANA primary. GEODYN-1B prepared a strictly read-only Fair runtime probe and version-matched Blankenbach plan. The probe has not run on Fair; no ASPECT runtime, source/plugin compatibility, scheduler allocation or job resource limit is established. Blankenbach requires a release-matched plugin build per the official 3.1.0 benchmark documentation; the binary alone does not make the benchmark ready. Build and solver execution need separate authorization.
-
-ARCANA forward evolution remains blocked by positive-duration forcing, complete volume fields and spatial mapping, EOS/reology and boundary conditions. Euler B5 is T0-only. Deep stays independent absent an exchange law. All scientific/execution/canonical gates remain closed.
+GEODYN-2 is preparation only. A short synthetic positive-time solver smoke test can test a future adapter but is not an ARCANA geological trajectory. ARCANA forward evolution remains blocked by source-backed initial fields/support mapping, rheology/EOS, complete boundary conditions and authorized positive-time forcing. No repeated Blankenbach run absent demonstrated need. All production and scientific gates remain closed.
 
 ---
 # Archived CURRENT — prototype-first integrated physical roadmap (2026-10-25)
