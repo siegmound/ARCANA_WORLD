@@ -145,6 +145,7 @@ def create_synthetic_region(config: RegionalConfig = RegionalConfig(), *,
             "cumulative_deposited_kg": 0.0,
             "cumulative_exported_kg": 0.0,
             "cumulative_uplift_m": 0.0,
+            "cumulative_vertical_flexure_m": 0.0,
         })
     drainage: dict[str, int | None]
     source = dict(source_identity or {"status": "SYNTHETIC_FIXTURE_ONLY"})
@@ -301,7 +302,9 @@ def _geologic_load(cell: Mapping[str, Any]) -> dict[str, float | str]:
         (float(row["density_kg_m3"]) * float(cell["area_m2"]))
         for row in cell["deposits"])
     expected_elevation = (float(cell["initial_elevation_m"])
-        + float(cell["cumulative_uplift_m"]) - erosion_thickness + deposition_thickness)
+        + float(cell["cumulative_uplift_m"])
+        + float(cell.get("cumulative_vertical_flexure_m", 0.0))
+        - erosion_thickness + deposition_thickness)
     geometry_residual = float(cell["elevation_m"]) - expected_elevation
     area = float(cell["area_m2"])
     return {"cell_id": cell["cell_id"], "area_m2": area,
@@ -315,6 +318,8 @@ def _geologic_load(cell: Mapping[str, Any]) -> dict[str, float | str]:
         "surface_load_change_kg": delta_mass,
         "surface_elevation_m": float(cell["elevation_m"]),
         "elevation_change_due_to_uplift_m": float(cell["cumulative_uplift_m"]),
+        "elevation_change_due_to_vertical_flexure_m": float(
+            cell.get("cumulative_vertical_flexure_m", 0.0)),
         "elevation_change_due_to_bedrock_erosion_m": -erosion_thickness,
         "elevation_change_due_to_deposition_m": deposition_thickness,
         "geometry_balance_residual_m": geometry_residual,
