@@ -1,10 +1,11 @@
-# NEXT — establish a verified ARCANA support and material mapping for optional SPL (2026-10-26)
+# NEXT — authorize and qualify an independent ASPECT benchmark; close ARCANA forward inputs (2026-10-26)
 
-SURF-2 demonstrated a conservative SPL-to-R6 mass-transfer path only on an explicit synthetic 6×6-to-3×3 mapping. Before using the adapter on regional ARCANA states, establish a verifiable geographic coordinate/area mapping, substrate identity/density/thickness, and a cover-aware incision rule. Qualify SPL coefficients and timestep sensitivity; keep drainage area distinct from R6-calculated water discharge. Consider spatial resolution and boundary-condition adequacy. Fastscapelib remains optional until GPL-3.0 distribution implications are reviewed. Do not transfer the synthetic result to C028/C029 or apply its load diagnostic to gFlex without verified mass and grid bindings.
+The GEODYN-1A review selected ASPECT only as a complementary candidate. The exact next solver experiment is the official, unmodified ASPECT 3.1.0 Blankenbach 1a 2D benchmark at coarse level 3 and one MPI rank, in a specifically authorized environment with version-pinned ASPECT/deal.II/MPI and a new external evidence directory. Verify benchmark files against the pinned release before execution; record solver residuals, benchmark reference statistics, energy/mass checks, restart, runtime, RSS and output size. No benchmark was run in this preparation because ASPECT is unavailable locally.
 
-No FAIR/Linux, long run, ASPECT, ShellSet, Solver or canonical publication is authorized. Do not modify the kernel, forcing or prior evidence as part of this next bounded mapping task.
+Before any ARCANA T0→T1 model, obtain a supported 2D/3D spatial field mapping, initial temperature/composition/density/EOS, ARCANA rheology, complete mechanical/thermal boundary conditions, and an authorized positive-duration forcing law. Do not extend instantaneous B5 Euler velocities through time. Keep geodynamic temperature/composition co-evolving inside the selected solver when they affect Stokes properties; let hydrology/surface consume archived snapshots unless true same-window feedback is implemented; keep Deep uncoupled absent a physical exchange law.
 
-Preserve all scientific and canonical gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, and `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+No ASPECT/ShellSet/Fair/MPI/evolution, provider access or canonical history publication is authorized here. Preserve all gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+
 ---
 
 # Archived NEXT — complete the already-started Codex experimental multiphysics prototype (2026-10-25)

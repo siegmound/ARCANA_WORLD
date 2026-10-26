@@ -1,14 +1,13 @@
-# CURRENT — integrated prototypes, R6-SURF-2 (2026-10-26)
+# CURRENT — integrated prototypes and geodynamic-driver readiness (2026-10-26)
 
-SURF-2 adds a tested synthetic-only coupling: Fastscapelib SPL incision transfers volume-derived synthetic rock mass into the existing R6 material ledger; R6 then transports/deposits/exports sediment and recomputes annual drainage. The mass, water and geometry balances and 1+1 continuation passed. This advances implementation feasibility only. The real ARCANA support/area/material mapping, cover shielding, coefficient justification and Fastscapelib GPL-3.0 distribution decision remain prerequisites. No scientific or canonical gate changes.
+SURF-2 remains a conservative coupling demonstration on a synthetic domain only. R6 owns orchestration, explicit material/hydrology ledgers and history; Fastscapelib is an optional surface incision/routing method. No geographic ARCANA remap or scientific qualification is implied.
 
-Decision: `RETAIN_R6_SURFACE_ENGINE_WITH_SELECTED_FASTSCAPE_METHODS`. R6 remains the owner for explicit water balance, material identities, substrate, sediment transport/deposition/export and regional history. Fastscapelib Python 0.3.0 is retained as an optional candidate for its distinct 2-D SPL bedrock-incision and routing method. Its Python API does not replace the R6 material ledger or hydrology; no deposition is provided by the selected API. The synthetic benchmark is not an ARCANA geology result and showed parameter sensitivity only.
+GEODYN-1A reviewed R6 inputs and ASPECT capabilities. ASPECT is a complementary candidate for coupled continuum Stokes/energy/composition, not selected as primary. The immediate solver verification is the official ASPECT 3.1.0 Blankenbach 1a benchmark on an independent Cartesian domain, after an authorized environment/build is identified. The current Windows host has no `aspect` executable and WSL is inaccessible. No solver run occurred.
 
-Report: `docs/arcana/R6_LAND_1_FASTSCAPELIB_EXPERIMENTAL_EVALUATION.md`. Benchmark source/test and report were reviewed with 29 focused tests passing. Evidence bundle `_02` remains under local `outputs/`, outside Git. No Fastscapelib-to-R6 or Fastscapelib-to-gFlex coupling was executed. Any later adapter must bind stable spatial IDs/areas and map incision to an explicit material balance before deriving load; avoid double-counting topographic changes.
+ARCANA forward evolution remains blocked by missing positive-duration forcing, volume geometry and conservative support mapping, full initial T/composition/density/EOS, material rheology, boundary conditions and temporal topology changes. Euler B5 is an instantaneous T0 diagnostic only. Keep Deep independent until a physical exchange law exists; surface/hydrology can consume archived geodynamic snapshots one-way, with same-window coupling required if their loads/BC feed back.
 
-Next bounded dependency: define a verified surface support and conservative area mapping plus a substrate/sediment accounting contract suitable for the selected SPL operator. Do not infer sediment mass or load from elevation lowering alone. The region 3×3 is not presumed physically adequate. Geodynamic positive-duration forcing, ARCANA material/reology, spatial support, and boundary conditions remain unresolved; ASPECT remains a candidate only. No long historical run or canonical publication is authorized.
+Do not begin a long history or canonical publication. All scientific, mechanics, resource and execution gates remain closed.
 
-VIEW-1A/B and VIEW-2A/2T remain read-only presentation capabilities and add no physical evolution or authority. Preserve all scientific/execution gates.
 ---
 
 # Archived CURRENT — prototype-first integrated physical roadmap (2026-10-25)

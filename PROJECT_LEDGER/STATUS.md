@@ -1,33 +1,16 @@
-# CURRENT — ARCANA WorldSim R6, SURF-2 (2026-10-26)
+# CURRENT — ARCANA WorldSim R6, GEODYN-1A (2026-10-26)
 
-Decision: `SURF2_CONSERVATIVE_COUPLING_DEMONSTRATED`, scoped to a synthetic
-engineering experiment. Fastscapelib Python 0.3.0 SPL incision was coupled by
-explicit synthetic node-area mapping and volume-to-mass transfer to the R6
-regional material/hydrology ledger. The corrected two-year run changes R6
-routing, closes solid/water/geometric balances within their stated numerical
-limits, and reproduces exactly under 1+1-year continuation. This does not
-demonstrate ARCANA geographic mapping, calibrated geology, cover-shielded
-incision, flexure, Deep exchange or scientific qualification.
+Decision: `GEODYN-1A_PREPARATION_COMPLETE__ASPECT_RUNTIME_UNAVAILABLE__ARCANA_FORWARD_PHYSICS_UNRESOLVED`. ASPECT is a complementary solver candidate, not selected as the ARCANA primary geodynamic engine.
 
-Report: `docs/arcana/R6_SURF_2_FASTSCAPELIB_R6_CONSERVATIVE_COUPLING.md`.
-Final local bundle (untracked):
-`outputs/r6_surf2_fastscapelib_20261026_03/`; manifest SHA256
-`810eab2b9c12521231858f7c64a64e8087b711bd49ca2753b79f9de9c4da86d1`.
-Focused coupling plus relevant regressions: 40 passed, 0 failed, 0 skipped;
-py_compile passed. No FAIR/Linux, long simulation, ASPECT, ShellSet, Solver,
-Deep-energy update or canonical operation occurred. Fastscapelib remains
-optional pending GPL-3.0 distribution review.
+Report: `docs/arcana/GEODYN_1A_FORWARD_DRIVER_PREPARATION.md`. Static review covered B4/B5 T0 topology/instantaneous Euler, R6 reduced thermal/material state, gFlex and surface/hydrology prototypes. The current process has no `ARCANA_EXTERNAL_ROOT`; ASPECT is absent from Windows PATH and WSL reports `E_ACCESSDENIED`. No provider payload or ASPECT solver was run. T0 Euler has no authorized positive-duration law. 3D support, density/EOS, rheology, complete initial thermal/compositional fields, loads, boundary conditions and temporal forcing remain UNKNOWN.
 
-Next: qualify an actual ARCANA spatial/area/material mapping and a cover-aware
-material handoff before any regional Fastscapelib run. Keep all noncanonical
-and scientific gates unchanged.
+Next: in an explicitly authorized environment, run the unmodified official ASPECT 3.1.0 Blankenbach 1a benchmark at its coarse level-3 configuration (one rank) as an independent solver verification, after pinning build/dependencies and checking the release's exact benchmark files. This does not generate ARCANA history. Separately close the spatial and time-dependent physical inputs before any ARCANA forward window.
 
-Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
-`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
-`F2B_SOLVER_EXECUTION_AUTHORIZED=false`,
-`ARCANA_SI1_MECHANICS_QUALIFIED=false`,
-`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`,
-`INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+No ASPECT, ShellSet, MPI, Fair, geologic evolution, provider read, output or canonical operation occurred. No code/tests changed; no numerical suite was run. Existing VIEW deletions and untracked outputs were preserved.
+
+Gates unchanged: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+
+---
 
 ## Previous current checkpoint — R6 local prototype consolidation
 

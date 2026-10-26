@@ -663,3 +663,10 @@ The following report digests were recalculated from files present on the consoli
 - VIEW-2T: `visualization/VIEW_2T_REPORT.md`, SHA256 `cd260f2e6ab1077196983d1e3de70820d550959a97f3a1ebdfcca7b0f5f7546b`; original report records 16 tests and TypeScript checks on Windows.
 
 Current branch regression, run during residue review: `tests/test_r6_unified_multiphysics_microdomain.py`, `tests/test_r6_hydrology_surface_coupling.py`, and `tests/test_r6_integrated_geological_microdomain.py`: 18 passed. Current `visualization/viewer` suite: 16 passed, 0 failed/skipped; `npm run typecheck` passed. These reruns verify the current checked-out code, while historical browser observations remain tied to their reports and Windows environment.
+
+
+## GEODYN-1A — forward-driver preparation (2026-10-26)
+
+- Report: `docs/arcana/GEODYN_1A_FORWARD_DRIVER_PREPARATION.md`. Static source/contract review only; no new numerical evidence or output bundle.
+- Local checks: `aspect` absent from PATH; WSL status returned `E_ACCESSDENIED`; `ARCANA_EXTERNAL_ROOT` unset. Official ASPECT 3.1.0 benchmark documentation identifies Blankenbach 1a as the next independent solver-verification candidate, not as ARCANA evidence.
+- Decision: ASPECT complementary candidate; ARCANA positive-duration forcing, complete spatial/material state, rheology and boundary conditions remain UNKNOWN. Existing gates unchanged.

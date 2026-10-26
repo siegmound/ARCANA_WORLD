@@ -623,3 +623,11 @@ immutable evidence directory. No supervisor production mode or ENG10K evolution.
 - Focused tests: 29 passed. Benchmark 0.13322 s; process-lifetime peak working set 43,520,000 bytes; Python tracemalloc peak 1,949,192 bytes; sealed bundle 401,605 bytes. Bundle `_02` member hashes and sidecar were independently rechecked. Output remains untracked under `outputs/`; `_01` preserved as historical same-task output with earlier row/column identity labeling.
 - Report `docs/arcana/R6_LAND_1_FASTSCAPELIB_EXPERIMENTAL_EVALUATION.md`; manifest SHA256 `d94424355f50b42367060a0310a00ed0e05c2e55fccfe5a15434ed52692d198f`. No coupling, ARCANA geology claim, Fair/ASPECT/Solver run, or canonical modification.
 - Next: define explicit support/area remapping and substrate/sediment accounting before any optional SPL handoff; retain R6 hydrology/material ownership. Scientific, mechanics, F2AV and WORLD_HISTORY gates remain unchanged.
+
+
+## 2026-10-26 — GEODYN-1A forward-driver preparation
+
+- Report: `docs/arcana/GEODYN_1A_FORWARD_DRIVER_PREPARATION.md`; decision `GEODYN-1A_PREPARATION_COMPLETE__ASPECT_RUNTIME_UNAVAILABLE__ARCANA_FORWARD_PHYSICS_UNRESOLVED`.
+- Reviewed B4/B5 T0 fields, reduced thermal/material contracts, prior R6 surface/gFlex prototypes and official ASPECT equations/benchmark documentation. The currently available R6 state is not a global geodynamic initial/boundary-value problem. Euler remains T0 diagnostic only; rheology, 3D fields, loads and time-dependent BC/forcing are UNKNOWN.
+- `aspect` was not present in PATH; WSL returned `Wsl/EnumerateDistros/Service/E_ACCESSDENIED`; `ARCANA_EXTERNAL_ROOT` was unset. No provider, ASPECT, ShellSet, MPI, Fair or numerical evolution executed. No tests were run (documentation-only).
+- ASPECT is recommended as a complementary candidate, not selected as ARCANA's primary engine. Proposed next solver verification is the pinned official Blankenbach 1a coarse 2D benchmark under separate authorization. Gates remain unchanged; no canonical modification.
