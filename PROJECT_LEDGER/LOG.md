@@ -1,5 +1,15 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-26 — R6-FLEX-1 experimental gFlex integration
+
+- Added an optional adapter for gFlex 1.3.0 F1D/F2D, mass-change-to-pressure conversion, configuration/mesh/result identities, and delta-deflection application to the existing synthetic regional elevation/routing code. Regional geometry diagnostics now account separately for cumulative vertical-flexure displacement. No R6 geographic integration or Deep coupling was added.
+- Actual Windows runtime: Python 3.12.10, NumPy 2.5.4, SciPy 1.18.1, gFlex 1.3.0 in a temporary environment. The 1-D center response was -6.7265967194 m versus analytic -6.7238470850 m (0.0409% relative); 2x load scaled exactly; Te 30 km reduced center magnitude from 6.7265967194 m to 4.9941425670 m. Free-west BC maximum difference was 0.000148416 m on the tested finite domain.
+- The actual 2-D solve used a synthetic 75x75 grid with a central 3x3 mapping, 1 km cells, 36 km halo, clamped boundaries and an imposed load of 9.81 MPa. Routing changed in the synthetic nearly-flat basin; one zero-precipitation regional step consumed those targets. This is software-interface evidence only; boundary influence remains a major physical limitation. Deep was untouched.
+- Focused test suite: 41 PASS. Final output bundle `outputs/r6_flex1_gflex_20261026_05/`, manifest SHA256 `7b6435f2880ed3f9b7c98d7ea1b9066726611774803e8ca1c5f1955d26526ceb`, 660,111 bytes. Runtime 8.0950 s; process-lifetime peak working set 148,623,360 bytes; Python tracemalloc 48,270,223 bytes, excluding native NumPy/SciPy allocation. The final rerun captures the current source hashes; member hashes are in the report/bundle.
+- No Fair/Linux, ASPECT, long simulation, ShellSet/Solver, MPI, Deep, provider evolution or WORLD_HISTORY access occurred. R6 Te, elastic constants, load history, spatial support and defensible flexural boundary conditions remain unknown. Vertical response remains UNKNOWN and all existing gates remain closed.
+
+---
+
 ## 2026-10-26 — residue review after multiphysics consolidation
 
 At branch `r6/multiphysics-integration-20261026`, HEAD `788a312329c61c4f751b63791284a50d6653fd4d`, the worktree initially had 11 tracked modifications. Eight ledger files were stale pre-consolidation snapshots: they included historical VIEW-1A/B/2A/2T records but also old F3 current-action text, omitted published D-015/D-016, or removed newer current sections. Those stale copies were not allowed to replace HEAD. Their valid VIEW records were checked against the committed reports and selectively reconciled into STATUS, EVIDENCE_INDEX, ROADMAP, and this log; current README text was corrected to reflect the already published consolidation and forward-driver next action. DECISIONS, NEW_CHAT, and NEXT_ACTION remain at HEAD, preserving the current forward-driver action and stable decisions.

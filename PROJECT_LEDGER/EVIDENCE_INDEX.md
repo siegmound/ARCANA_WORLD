@@ -1,3 +1,12 @@
+## 2026-10-26 — R6-FLEX-1 gFlex synthetic benchmark
+
+- Report: `docs/arcana/R6_FLEX_1_GFLEx_EXPERIMENTAL_INTEGRATION.md`. Actual gFlex 1.3.0 F1D/F2D solvers ran in an isolated Windows environment. Final bundle `outputs/r6_flex1_gflex_20261026_05/`: manifest SHA256 `7b6435f2880ed3f9b7c98d7ea1b9066726611774803e8ca1c5f1955d26526ceb`; `RESULT.json` 659,682 bytes, SHA256 `36e6a86973fb2dcc36b4d54a1f4ccde8ed8ba837ddbb5ed686f7a27a13d7de48`; sidecar 78 bytes, SHA256 `bb897de79296fbd75c655c6fb9b0248ec033aed9724324b90849289408e99d21`; manifest 351 bytes; 660,111 total output bytes. Member count/size/hash and sidecar content were independently recalculated locally; manifest has no self-hash. The final rerun captures the current adapter source hash.
+- Synthetic F1D analytic strip-load center relative error 0.0409%; 2x load scaling residual zero; increased `Te` reduced deflection. F2D values were passed by total-deflection increments into the synthetic regional elevation/routing path. No R6 geographic surface data, actual water flow, Deep state, or ARCANA flexural parameters were consumed.
+- Windows run metrics: 8.0950 s end-to-end; individual gFlex solves approximately 2 ms (1-D) and 58/70 ms (2-D); process-lifetime peak working set 148,623,360 bytes; Python tracemalloc peak 48,270,223 bytes (excludes native NumPy/SciPy allocations). These are local benchmark figures, not a resource qualification.
+- Focused gFlex/regional/surface/hydrology/rheology/unified regression suite: 41 PASS. Earlier same-task `_01`–`_04` paths remain preserved; `_01` has no sealed result after telemetry collection failure, and `_02`–`_04` are earlier/intermediate runs. Use `_05` as the final bundle.
+
+---
+
 ## 2026-10-25 — ENG10K Segment Archive V1 and Codex continuation evidence
 
 Evidence for this entry was supplied by the operator in conversation; no FAIR archive or Windows Codex worktree bytes were imported by this documentation update.

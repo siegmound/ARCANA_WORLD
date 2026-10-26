@@ -1,6 +1,6 @@
 # CURRENT — integrated prototypes and geodynamic driver gap (2026-10-26)
 
-The prototype-first consolidation is recorded in `docs/arcana/R6_LOCAL_WORK_CONSOLIDATION_20261025.md`. Segment continuation, tectonic/Deep, constitutive, surface, hydrology and regional routing V2 code/tests are present as bounded engineering work. A synthetic 3×3 case exercises topographic routing feedback and continuity; it does not provide regional geological authority. The surface vertical response remains UNKNOWN.
+The prototype-first consolidation is recorded in `docs/arcana/R6_LOCAL_WORK_CONSOLIDATION_20261025.md`. Segment continuation, tectonic/Deep, constitutive, surface, hydrology and regional routing V2 code/tests are present as bounded engineering work. R6-FLEX-1 adds a tested optional gFlex 1.3.0 adapter, a genuine analytic-cross-checked 1-D benchmark and a synthetic 2-D surface-routing software handoff. Neither the synthetic 3×3 case nor the benchmark establishes regional geological authority; the surface vertical response for R6 remains UNKNOWN.
 
 Next bounded step: establish time-dependent forcing, material/reology, spatial support and boundary-condition inputs for a geodynamic forward-driver experiment. Use ASPECT only as a candidate reference until a specific, runnable and suitably scoped integration exists. Do not turn T0 kinematics into positive-duration forcing. No long historical run or canonical publication is authorized.
 
