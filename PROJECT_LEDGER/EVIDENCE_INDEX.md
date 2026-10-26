@@ -1,3 +1,12 @@
+## 2026-10-26 — R6-LAND-1 Fastscapelib synthetic SPL benchmark
+
+- Report: `docs/arcana/R6_LAND_1_FASTSCAPELIB_EXPERIMENTAL_EVALUATION.md`; source/test: `scripts/r6_fastscapelib_landscape_benchmark.py`, `tests/test_r6_fastscapelib_landscape_benchmark.py`.
+- Final local bundle: `outputs/r6_land1_fastscapelib_20261026_02/` (not committed). Manifest SHA256 `d94424355f50b42367060a0310a00ed0e05c2e55fccfe5a15434ed52692d198f`; RESULT SHA256 `a9052346888c1fab06de97b1130c15056212048aaf8af6ae60ba98ebbfbf3213`; sidecar SHA256 `3ef431a46c14e5bc42141986993bb026557060b7223f0bc1bade48a24016d515`. Windows independently verified manifest member lengths/hashes and sidecar digest. Manifest has no self-hash. Bundle records source HEAD `0d88ef6c770734a6b5924058dc358116eaac562c` and input/source file identities.
+- Fastscapelib 0.3.0, Python 3.12.10 / NumPy 2.5.4 isolated environment. 61×61 synthetic raster, 1 km spacing, 20×500-year steps, K=1e-5/2e-5/4e-5 yr⁻¹. Baseline diagnostic lowering integral 40,549,500,486.13 m³; half/double K 20,377,265,969.32 / 81,766,468,457.63 m³. 29 focused tests passed; bitwise repeat and elevation-only 10+10 restart were exact. Elapsed benchmark 0.13322 s; process-lifetime peak working set 43,520,000 bytes; tracemalloc peak 1,949,192 bytes; output 401,605 bytes.
+- Verdict: `RETAIN_R6_SURFACE_ENGINE_WITH_SELECTED_FASTSCAPE_METHODS`. No deposition, sediment inventory, ARCANA spatial/material input, gFlex coupling, or scientific/canonical qualification is evidenced. Earlier `_01` output is preserved; `_02` corrects synthetic row/column identity metadata.
+
+---
+
 ## 2026-10-26 — R6-FLEX-1 gFlex synthetic benchmark
 
 - Report: `docs/arcana/R6_FLEX_1_GFLEx_EXPERIMENTAL_INTEGRATION.md`. Actual gFlex 1.3.0 F1D/F2D solvers ran in an isolated Windows environment. Final bundle `outputs/r6_flex1_gflex_20261026_05/`: manifest SHA256 `7b6435f2880ed3f9b7c98d7ea1b9066726611774803e8ca1c5f1955d26526ceb`; `RESULT.json` 659,682 bytes, SHA256 `36e6a86973fb2dcc36b4d54a1f4ccde8ed8ba837ddbb5ed686f7a27a13d7de48`; sidecar 78 bytes, SHA256 `bb897de79296fbd75c655c6fb9b0248ec033aed9724324b90849289408e99d21`; manifest 351 bytes; 660,111 total output bytes. Member count/size/hash and sidecar content were independently recalculated locally; manifest has no self-hash. The final rerun captures the current adapter source hash.

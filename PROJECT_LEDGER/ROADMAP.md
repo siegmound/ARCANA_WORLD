@@ -1,11 +1,12 @@
-# CURRENT — integrated prototypes and geodynamic driver gap (2026-10-26)
+# CURRENT — integrated prototypes, R6-LAND-1 (2026-10-26)
 
-The prototype-first consolidation is recorded in `docs/arcana/R6_LOCAL_WORK_CONSOLIDATION_20261025.md`. Segment continuation, tectonic/Deep, constitutive, surface, hydrology and regional routing V2 code/tests are present as bounded engineering work. R6-FLEX-1 adds a tested optional gFlex 1.3.0 adapter, a genuine analytic-cross-checked 1-D benchmark and a synthetic 2-D surface-routing software handoff. Neither the synthetic 3×3 case nor the benchmark establishes regional geological authority; the surface vertical response for R6 remains UNKNOWN.
+Decision: `RETAIN_R6_SURFACE_ENGINE_WITH_SELECTED_FASTSCAPE_METHODS`. R6 remains the owner for explicit water balance, material identities, substrate, sediment transport/deposition/export and regional history. Fastscapelib Python 0.3.0 is retained as an optional candidate for its distinct 2-D SPL bedrock-incision and routing method. Its Python API does not replace the R6 material ledger or hydrology; no deposition is provided by the selected API. The synthetic benchmark is not an ARCANA geology result and showed parameter sensitivity only.
 
-Next bounded step: establish time-dependent forcing, material/reology, spatial support and boundary-condition inputs for a geodynamic forward-driver experiment. Use ASPECT only as a candidate reference until a specific, runnable and suitably scoped integration exists. Do not turn T0 kinematics into positive-duration forcing. No long historical run or canonical publication is authorized.
+Report: `docs/arcana/R6_LAND_1_FASTSCAPELIB_EXPERIMENTAL_EVALUATION.md`. Benchmark source/test and report were reviewed with 29 focused tests passing. Evidence bundle `_02` remains under local `outputs/`, outside Git. No Fastscapelib-to-R6 or Fastscapelib-to-gFlex coupling was executed. Any later adapter must bind stable spatial IDs/areas and map incision to an explicit material balance before deriving load; avoid double-counting topographic changes.
 
-VIEW-1A/B and VIEW-2A/2T are now present as ancillary, read-only presentation capabilities with reports and source/export provenance. They do not add physical evolution, time-dependent states, or scientific authority; the separately bounded geodynamic-driver gap above remains the active physical roadmap.
+Next bounded dependency: define a verified surface support and conservative area mapping plus a substrate/sediment accounting contract suitable for the selected SPL operator. Do not infer sediment mass or load from elevation lowering alone. The region 3×3 is not presumed physically adequate. Geodynamic positive-duration forcing, ARCANA material/reology, spatial support, and boundary conditions remain unresolved; ASPECT remains a candidate only. No long historical run or canonical publication is authorized.
 
+VIEW-1A/B and VIEW-2A/2T remain read-only presentation capabilities and add no physical evolution or authority. Preserve all scientific/execution gates.
 ---
 
 # Archived CURRENT — prototype-first integrated physical roadmap (2026-10-25)

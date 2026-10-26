@@ -606,3 +606,12 @@ immutable evidence directory. No supervisor production mode or ENG10K evolution.
 - Windows focused suite: 134 passed, 6 skipped, 2 provider-dependent tests deselected; `ARCANA_EXTERNAL_ROOT` absent and governed payload unavailable. `compileall` passed. Viewer tests 16/16 passed; typecheck passed. No Fair/Linux runtime claim.
 - Regional V2 manifests and listed files were rehashed; continuous and segmented final state identity matched. The synthetic routing change is not a geological event. Deep/hydrology closure was checked within the experimental model only.
 - ASPECT remains an unevaluated candidate reference, not an integrated solver. All scientific and canonical gates remain unchanged.
+
+
+## 2026-10-26 — R6-LAND-1 Fastscapelib experimental benchmark
+
+- Evaluated existing R6 surface, regional hydrology/material accounting and gFlex capabilities against Fastscapelib Python 0.3.0. The tested Python API adds 2-D SPL bedrock incision/routing, but not R6 water storage, substrate/material inventory, sediment transport/deposition/export. Decision: `RETAIN_R6_SURFACE_ENGINE_WITH_SELECTED_FASTSCAPE_METHODS`.
+- Ran a real synthetic 61×61, 1 km raster experiment (20×500 years) at K=1e-5, 2e-5, 4e-5 yr⁻¹ in isolated Python 3.12.10 / NumPy 2.5.4. Diagnostic lowering integrals were 20.377, 40.550, 81.766 billion m³. Baseline repeat was bitwise equal; elevation-only 10+10 restart had 0 m maximum difference. This integral is not sediment mass or conserved export.
+- Focused tests: 29 passed. Benchmark 0.13322 s; process-lifetime peak working set 43,520,000 bytes; Python tracemalloc peak 1,949,192 bytes; sealed bundle 401,605 bytes. Bundle `_02` member hashes and sidecar were independently rechecked. Output remains untracked under `outputs/`; `_01` preserved as historical same-task output with earlier row/column identity labeling.
+- Report `docs/arcana/R6_LAND_1_FASTSCAPELIB_EXPERIMENTAL_EVALUATION.md`; manifest SHA256 `d94424355f50b42367060a0310a00ed0e05c2e55fccfe5a15434ed52692d198f`. No coupling, ARCANA geology claim, Fair/ASPECT/Solver run, or canonical modification.
+- Next: define explicit support/area remapping and substrate/sediment accounting before any optional SPL handoff; retain R6 hydrology/material ownership. Scientific, mechanics, F2AV and WORLD_HISTORY gates remain unchanged.
