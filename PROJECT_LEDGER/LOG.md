@@ -1,5 +1,13 @@
 # Bitacora cronologica — append-only
 
+## 2026-10-26 — R6-SURF-2 Fastscapelib SPL + R6 material/hydrology coupling
+
+- Added an optional Fastscapelib SPL adapter with explicit synthetic 6×6 raster to R6 3×3 node-area mapping, SPL bedrock-volume to synthetic-material-mass transfer, R6 annual hydrology/sediment transport, a zero-erosion control, and combined checkpoint continuation. R6 bedrock detachment is disabled in this run to prevent double counting. Deep is unchanged; gFlex received no load.
+- Review found and corrected a geometry bug before final evidence: after the first annual R6 deposition, a subsequent SPL handoff reset the regional elevation to bare bedrock. The adapter now reconstructs the surface as mapped bedrock plus existing deposit thickness; the test enforces an ULP-scaled geometric residual.
+- Final synthetic run is preserved at `outputs/r6_surf2_fastscapelib_20261026_03/`, manifest SHA256 `810eab2b9c12521231858f7c64a64e8087b711bd49ca2753b79f9de9c4da86d1`; its members and sidecar were independently rehashed. Two years removed 83,805.11207073482 m³, converted to 226,273,802.59098403 kg using synthetic 2700 kg/m³. Global solid/water residuals were zero; max geometric residual was 1.42e-14 m. R6 routing changed during the coupled case; the Fastscapelib basin map did not change. Continuous and 1+1 restart matched exactly.
+- Focused coupling, LAND-1, regional geology, surface, hydrology and unified-multiphysics regressions: 40 passed; py_compile passed. Runtime/resource figures and limits are in the report. No output bundle was added to Git and prior `_01`/`_02` bundles remain preserved.
+- Decision `SURF2_CONSERVATIVE_COUPLING_DEMONSTRATED`, synthetic scope only. Next: verify an ARCANA geographic support/area/material mapping and cover-aware SPL interface. Fastscapelib stays optional pending GPL-3.0 distribution review. All scientific and canonical gates remain unchanged.
+
 ## 2026-10-26 — R6-FLEX-1 experimental gFlex integration
 
 - Added an optional adapter for gFlex 1.3.0 F1D/F2D, mass-change-to-pressure conversion, configuration/mesh/result identities, and delta-deflection application to the existing synthetic regional elevation/routing code. Regional geometry diagnostics now account separately for cumulative vertical-flexure displacement. No R6 geographic integration or Deep coupling was added.

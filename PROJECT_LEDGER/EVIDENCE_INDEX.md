@@ -1,3 +1,11 @@
+## 2026-10-26 — R6-SURF-2 synthetic Fastscapelib/R6 coupling
+
+- Report: `docs/arcana/R6_SURF_2_FASTSCAPELIB_R6_CONSERVATIVE_COUPLING.md`.
+- Code/tests: `src/arcana_worldsim/r6/fastscapelib_surface_coupling.py`, `scripts/r6_surf2_fastscapelib_r6_coupling.py`, `tests/test_r6_surf2_fastscapelib_r6_coupling.py`.
+- Final local bundle, not committed: `outputs/r6_surf2_fastscapelib_20261026_03/`. Manifest SHA256 `810eab2b9c12521231858f7c64a64e8087b711bd49ca2753b79f9de9c4da86d1`; RESULT SHA256 `02f87bad8dc59f6e748990f34888847fb33be99783c205164c0446661d63abbd`; sidecar SHA256 `17065abdd11c615fdd9878326a038375736318f8868cfc2fee53bfc4f4fe77e0`. Manifest members, lengths and hashes and sidecar payload were recalculated locally. The manifest has no self-hash.
+- Python 3.12.10 / NumPy 2.5.4 / Fastscapelib 0.3.0 isolated environment; 40 relevant tests PASS, py_compile PASS. Two-year synthetic run: 0.4321873 s; process-lifetime peak working set 46,497,792 bytes; Python tracemalloc peak 2,659,295 bytes; bundle 537,621 bytes. Solid residuals `[0,0] kg`; water residuals `[0,0] m³`; maximum recorded geometric residual `1.4210854715202004e-14 m`; continuous vs 1+1 continuation identical.
+- Decision `SURF2_CONSERVATIVE_COUPLING_DEMONSTRATED` means only the synthetic volume→mass→R6 material/hydrology path. No ARCANA spatial mapping, geologic parameter qualification, Deep exchange, gFlex solve, FAIR/Linux run, or canonical authority.
+
 ## 2026-10-26 — R6-LAND-1 Fastscapelib synthetic SPL benchmark
 
 - Report: `docs/arcana/R6_LAND_1_FASTSCAPELIB_EXPERIMENTAL_EVALUATION.md`; source/test: `scripts/r6_fastscapelib_landscape_benchmark.py`, `tests/test_r6_fastscapelib_landscape_benchmark.py`.

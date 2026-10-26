@@ -1,4 +1,6 @@
-# CURRENT — integrated prototypes, R6-LAND-1 (2026-10-26)
+# CURRENT — integrated prototypes, R6-SURF-2 (2026-10-26)
+
+SURF-2 adds a tested synthetic-only coupling: Fastscapelib SPL incision transfers volume-derived synthetic rock mass into the existing R6 material ledger; R6 then transports/deposits/exports sediment and recomputes annual drainage. The mass, water and geometry balances and 1+1 continuation passed. This advances implementation feasibility only. The real ARCANA support/area/material mapping, cover shielding, coefficient justification and Fastscapelib GPL-3.0 distribution decision remain prerequisites. No scientific or canonical gate changes.
 
 Decision: `RETAIN_R6_SURFACE_ENGINE_WITH_SELECTED_FASTSCAPE_METHODS`. R6 remains the owner for explicit water balance, material identities, substrate, sediment transport/deposition/export and regional history. Fastscapelib Python 0.3.0 is retained as an optional candidate for its distinct 2-D SPL bedrock-incision and routing method. Its Python API does not replace the R6 material ledger or hydrology; no deposition is provided by the selected API. The synthetic benchmark is not an ARCANA geology result and showed parameter sensitivity only.
 

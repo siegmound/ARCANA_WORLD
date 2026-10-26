@@ -1,4 +1,35 @@
-# CURRENT — ARCANA WorldSim R6, 2026-10-26 consolidation
+# CURRENT — ARCANA WorldSim R6, SURF-2 (2026-10-26)
+
+Decision: `SURF2_CONSERVATIVE_COUPLING_DEMONSTRATED`, scoped to a synthetic
+engineering experiment. Fastscapelib Python 0.3.0 SPL incision was coupled by
+explicit synthetic node-area mapping and volume-to-mass transfer to the R6
+regional material/hydrology ledger. The corrected two-year run changes R6
+routing, closes solid/water/geometric balances within their stated numerical
+limits, and reproduces exactly under 1+1-year continuation. This does not
+demonstrate ARCANA geographic mapping, calibrated geology, cover-shielded
+incision, flexure, Deep exchange or scientific qualification.
+
+Report: `docs/arcana/R6_SURF_2_FASTSCAPELIB_R6_CONSERVATIVE_COUPLING.md`.
+Final local bundle (untracked):
+`outputs/r6_surf2_fastscapelib_20261026_03/`; manifest SHA256
+`810eab2b9c12521231858f7c64a64e8087b711bd49ca2753b79f9de9c4da86d1`.
+Focused coupling plus relevant regressions: 40 passed, 0 failed, 0 skipped;
+py_compile passed. No FAIR/Linux, long simulation, ASPECT, ShellSet, Solver,
+Deep-energy update or canonical operation occurred. Fastscapelib remains
+optional pending GPL-3.0 distribution review.
+
+Next: qualify an actual ARCANA spatial/area/material mapping and a cover-aware
+material handoff before any regional Fastscapelib run. Keep all noncanonical
+and scientific gates unchanged.
+
+Preserved gates: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`,
+`THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`,
+`F2B_SOLVER_EXECUTION_AUTHORIZED=false`,
+`ARCANA_SI1_MECHANICS_QUALIFIED=false`,
+`WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`,
+`INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+
+## Previous current checkpoint — R6 local prototype consolidation
 
 Decision: `R6_LOCAL_WORK_CONSOLIDATED__PROTOTYPE_ENGINEERING_ONLY__SCIENTIFIC_AND_CANONICAL_PROMOTION_NOT_AUTHORIZED`.
 
