@@ -1,8 +1,14 @@
-# NEXT — GEODYN-3 experimental trajectory archive contract (2026-10-27)
+# NEXT — implement authorized GEODYN-3B experimental index/query MVP (2026-10-27)
 
-Specify a bounded, noncanonical archive for querying the existing ASPECT experimental trajectory and future experiments. Preserve exact solver model time and declared units, stable mesh identity, field identity/association/type/components, declared scientific meaning and units (or `UNKNOWN`), immutable payload references and SHA256, exact source/build/configuration hashes, and explicit run completion/incompleteness. Queries return stored snapshots and payload references only; they do not interpolate or manufacture states.
+Implement only the ratified GEODYN-3B scope in §8 of `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`: read-only registration/index of the existing R1 ASPECT series, bounded exact metadata/payload-reference queries, on-demand reads through the qualified adapter, and integrity/path checks. Reuse compatible `identity.py` primitives; hash original files incrementally and store no VTU copies or arrays in JSON. Test synthetic failures and verify the existing 11 snapshots only when their original files are available. Do not implement remapping, interpolation, replay/restart, forward physics, canonical records or WORLD_HISTORY access.
 
-This is a contract/design step only. Do not create canonical state records, convert solver time to geological time, infer resource generation, or couple surface processes or Deep. Keep the prior GEODYN-2A probe failure immutable and FAIR closure results identified as operator-reported unless source evidence is transferred and independently verified. ARCANA forward evolution remains blocked by adequate initial conditions, constitutive laws, boundary conditions, spatial mapping, and time-dependent forcing. No solver or MPI run without separate authorization. All scientific and production gates remain unchanged.
+GEODYN-3C, only after review of GEODYN-3B, may validate the index against the existing R1 snapshots and independent audit on the exact implementation revision. Keep the original probe failure immutable and FAIR evidence operator-reported unless transferred and independently verified. No ASPECT/MPI run, ARCANA remapping, geological-time conversion, resources, surface/Deep coupling, or canonical promotion. ARCANA forward remains blocked by initial conditions, constitutive laws, boundaries, support mapping and time-dependent forcing; all scientific/production gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+# Completed — GEODYN-3A contract ratification (2026-10-27)
+
+Ratified `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`; bounded GEODYN-3B MVP development is authorized. No storage implementation, payload import or solver execution occurred. The R1 fixture remains `SYNTHETIC_ENGINEERING_ONLY`, with FAIR results operator-reported on Windows.
 ---
 
 # Archived NEXT — bind a bounded GEODYN-2 candidate; no execution authorized (2026-10-27)

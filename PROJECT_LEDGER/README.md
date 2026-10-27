@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. Current development update: 2026-10-27. GEODYN-2A-R1 read-only ASPECT snapshot parsing is numerically validated on FAIR for the reported ASPECT 3.2.0-pre snapshot series. Linux test and numeric comparison results are operator-reported and were not independently rehashed on Windows; the first real-VTU failure remains immutable and its parser repair is documented. Current priority: prepare the bounded GEODYN-3 experimental trajectory archive contract. No ARCANA forward evolution, canonical state creation, geological-time conversion, surface/Deep coupling or WORLD_HISTORY publication is authorized. The older INT3-F3 narrative below is an archived checkpoint; `INT3_ENG10K_EXECUTION_AUTHORIZED=false`. See current STATUS/NEXT_ACTION and `docs/arcana/GEODYN_2A_R1_FAIR_QUALIFICATION_CLOSURE.md`.
+Single continuity point. Current development update: 2026-10-27. GEODYN-2A-R1 read-only ASPECT snapshot parsing is numerically validated on FAIR for the reported ASPECT 3.2.0-pre series; its Linux results remain operator-reported, not independently rehashed on Windows. The first real-VTU failure remains immutable. GEODYN-3A has ratified the solver-neutral experimental trajectory archive contract and authorized only the bounded GEODYN-3B index/query MVP. GEODYN-3C validation against existing R1 evidence remains a later gate. No ASPECT execution, ARCANA forward evolution, canonical state creation, geological-time conversion, surface/Deep coupling or WORLD_HISTORY publication is authorized. See current STATUS/NEXT_ACTION and `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`.
 
 ## Current decision — 2026-10-25
 
@@ -12,7 +12,7 @@ The local tectonics/Deep, continuation, material, surface/hydrology and regional
 
 ## Leggere in questo ordine
 1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
-2. NEXT_ACTION.md - current action: define the bounded GEODYN-3 experimental trajectory archive contract. ARCANA forward inputs remain unresolved; T0 kinematics remain diagnostic and no geological evolution run is authorized.
+2. NEXT_ACTION.md - current action: implement only the ratified noncanonical GEODYN-3B archive index/query MVP. ARCANA forward inputs remain unresolved; T0 kinematics remain diagnostic and no geological evolution run is authorized.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.
@@ -21,6 +21,6 @@ The local tectonics/Deep, continuation, material, surface/hydrology and regional
 
 **Distinguere:** software già testato ≠ integrazione ARCANA ≠ simulazione fisica globale ≠ promozione canonica. R3/R4/R5 sono legacy non-target. Ogni gate aggiorna `STATUS`, `NEXT_ACTION`, `LOG`, `EVIDENCE_INDEX` e `ROADMAP` quando serve, nello stesso commit. `DECISIONS` append-only; risultati `BLOCKED`, hash, source lock, output e report storici rimangono immutati.
 
-## Current decision — GEODYN-2A-R1 FAIR closure (2026-10-27)
+## Current decision — GEODYN-3A contract ratified (2026-10-27)
 
-Decision: `GEODYN_2A_R1_ASPECT_READONLY_ADAPTER_FAIR_NUMERICALLY_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED`. Closure report: `docs/arcana/GEODYN_2A_R1_FAIR_QUALIFICATION_CLOSURE.md`. FAIR reports 32 Linux tests passed, adapter and independent NumPy comparison exit 0, 11/11 numeric mesh hashes and 99/99 typed field hashes matched for the exact implementation commit. These results are operator-reported; the original FAIR logs and VTU bundle were not transferred or rehashed on Windows. No raw solver outputs are committed. Next is the GEODYN-3 experimental trajectory archive contract, not ARCANA forward evolution.
+Decision: `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_RATIFIED__GEODYN_3B_MVP_AUTHORIZED`. Contract: `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`. This authorizes only the read-only experimental GEODYN-3B MVP; no implementation, solver execution or new runtime evidence is claimed. The R1 FAIR qualification remains operator-reported in the Windows record; see STATUS and EVIDENCE_INDEX. GEODYN-3C remains a separate later validation gate.

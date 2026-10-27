@@ -29,9 +29,9 @@ Prototypes are noncanonical engineering products. Existing F2A-V, mechanics, Sol
 
 # ARCANA R6 — Roadmap operativa corrente (2026-10-27)
 
-## GEODYN-2A-R1 — read-only ASPECT snapshot adapter validated; GEODYN-3 contract next
+## GEODYN-3A — experimental trajectory archive contract ratified
 
-Decision: `GEODYN_2A_R1_ASPECT_READONLY_ADAPTER_FAIR_NUMERICALLY_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED`. The FAIR operator reports 32 Linux tests PASS, adapter/reference exit 0, 11 mesh numeric-hash matches and 99 typed-field-hash matches on implementation commit `1fd5e8d8f21e28876da9ef89423755615efc6162`. The original failure and R1 parser repair remain separately recorded. FAIR artifacts were not imported/rehashed on Windows; no raw VTU files enter Git. The adapter supports only its documented single-rank/single-piece inline ASCII/Base64 uncompressed/zlib formats. Next define an experimental archive contract preserving actual model time, mesh/field identities, units/meaning, immutable payload refs/hashes, provenance, completion state and read-only queries. No canonical state, geological-time conversion, resource, surface, Deep or ARCANA forward coupling. All production/scientific gates remain closed.
+Decision: `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_RATIFIED__GEODYN_3B_MVP_AUTHORIZED`; contract at `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`. Existing R6 components provide reusable identity/hash, partial streaming/finalization and query/accounting patterns, but no solver-neutral experimental snapshot/payload index; canonical HistoryStore and query contracts remain separate. Only the bounded, read-only GEODYN-3B manifest/index/query MVP is authorized; GEODYN-3C may validate the existing R1 bundle only after review. No ASPECT execution, ARCANA remapping, geological-time conversion or canonical promotion. ARCANA forward remains blocked by initial conditions, constitutive laws, boundary conditions, support mapping and time-dependent forcing; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

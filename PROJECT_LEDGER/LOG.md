@@ -658,6 +658,19 @@ immutable evidence directory. No supervisor production mode or ENG10K evolution.
 - Windows Python 3.12.10: 31 focused tests passed, 1 expected platform skip for external symlink creation; `py_compile` and `git diff --check` passed. Typed endian-aware SHA256 values are available for coordinates and fields in the adapter audit. Evidence output: `outputs/_pytest_aspect_snapshot_reader_r1_20261027_15/` (not for commit). Verdict `GEODYN_2A_R1_REAL_VTK_FORMAT_REPAIR_LOCAL_PASS__FAIR_PENDING`.
 - Linux retest and execution against the 11 original snapshots with comparison to the independent numeric audit are pending on the exact committed source. No ASPECT solver, MPI, remapping, forward evolution or canonical write occurred; all scientific and canonical gates remain unchanged.
 
+## 2026-10-27 — GEODYN-3A experimental trajectory archive contract
+
+- Prepared `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`; decision `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_PREPARED__NO_CANONICAL_PROMOTION`.
+- Reviewed the six requested R6 interfaces. Reuse is limited to path-independent content identity/payload verification, incomplete/finalization patterns, retention concepts, query statuses and ASPECT parsing. No existing module implements the solver-neutral experimental index, external immutable payload references, mesh-per-snapshot relation or payload query contract; canonical HistoryStore/query and ReducedState archive semantics remain unchanged.
+- Documentation/design only: no code, storage, solver, payload transfer, archive, new numerical evidence or canonical operation. GEODYN-2A FAIR results remain operator-reported as recorded in the closure. Next: bounded GEODYN-3B index/query implementation; later GEODYN-3C validation against existing R1 data after review.
+- Scientific and canonical gates unchanged; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+## 2026-10-27 — GEODYN-3A final contract review and ratification
+
+- Audited the contract against the six named R6 interfaces. Closed demonstrable specification gaps for deterministic archive identity, decreasing-time failure, payload availability, immutable incomplete-attempt recovery, parser time-order limits, and the exact GEODYN-3B MVP API/acceptance boundary.
+- Decision: `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_RATIFIED__GEODYN_3B_MVP_AUTHORIZED`. The authorization is only for offline/read-only implementation of the experimental index/query MVP; no GEODYN-3B code, payload import, ASPECT run, ARCANA forward model or new runtime evidence is included in this gate.
+- GEODYN-2A-R1 qualification and its original real-VTU failure remain unchanged; FAIR outcomes remain operator-reported on Windows. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` and `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` remain in force.
+
 ## 2026-10-27 — GEODYN-2A-R1 FAIR numeric validation closure
 
 - Closure report: `docs/arcana/GEODYN_2A_R1_FAIR_QUALIFICATION_CLOSURE.md`; decision `GEODYN_2A_R1_ASPECT_READONLY_ADAPTER_FAIR_NUMERICALLY_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED`.

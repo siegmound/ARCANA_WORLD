@@ -1,14 +1,12 @@
-# CURRENT — GEODYN-2A-R1 FAIR numeric validation closed (2026-10-27)
+# CURRENT — GEODYN-3A contract ratified; GEODYN-3B MVP authorized (2026-10-27)
 
-Decision: `GEODYN_2A_R1_ASPECT_READONLY_ADAPTER_FAIR_NUMERICALLY_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED`.
+Decision: `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_RATIFIED__GEODYN_3B_MVP_AUTHORIZED`.
 
-Closure: `docs/arcana/GEODYN_2A_R1_FAIR_QUALIFICATION_CLOSURE.md`. On implementation commit `1fd5e8d8f21e28876da9ef89423755615efc6162` (parent `60e13475ce04d005ebdd8e0152738611eb5e8943`), FAIR operator reports Linux pytest 32/32 PASS, adapter and independent NumPy comparison exit 0, 11/11 numeric mesh hashes and 99/99 typed field hashes matching. FAIR evidence remains operator-reported: runner, comparison report, manifest and raw bundle were not imported or rehashed on Windows.
+Contract: `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`. Final review specified deterministic archive identity, source-time failure semantics, payload availability, immutable partial recovery, parser limitations, and the bounded GEODYN-3B public API/acceptance tests. R6 primitives are reused only where compatible; canonical HistoryStore and ReducedState archive contracts remain separate. This ratification authorizes only the read-only experimental index/query MVP in §8, not ASPECT execution, ARCANA forward physics, remapping, replay/restart or canonical records.
 
-The earlier real-VTU probe failure remains preserved as a FAIL. R1 fixed unnamed coordinate `Points/DataArray` handling and separately Base64-encoded VTK headers/payloads; the exact supported formats and rejected layouts are listed in the closure. Windows R1 tests were 31 PASS / 1 platform SKIP. This qualifies only read-only numeric parsing/comparison for the reported ASPECT 3.2.0-pre series, not physical meaning or ARCANA forward evolution. No VTU outputs were added to Git.
+GEODYN-2A-R1 remains `GEODYN_2A_R1_ASPECT_READONLY_ADAPTER_FAIR_NUMERICALLY_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED`; its Linux test/comparison outcome is operator-reported only on Windows. The earlier real-VTU failure remains immutable. Next: implement the authorized bounded GEODYN-3B MVP; validation against existing R1 evidence remains a later GEODYN-3C gate. No solver run, remapping, geological-time conversion, resource generation, surface/Deep coupling or canonical state creation is authorized.
 
-Next: prepare the bounded GEODYN-3 experimental trajectory archive contract. Preserve actual model time, stable mesh and field identities, immutable payload references, declared meaning/units, source hashes and read-only queryability. Do not create canonical states, convert to geological time, infer resources, or couple surface/Deep. ARCANA forward remains blocked by initial conditions, constitutive laws, boundaries, spatial mapping and time-dependent forcing. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` remains unchanged.
-
-All scientific and execution gates remain unchanged, including `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, and `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+ARCANA forward evolution remains blocked because adequate initial conditions, constitutive laws, boundary conditions, spatial mapping and time-dependent forcing are not established. Gates remain: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, and `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
 
 ---
 

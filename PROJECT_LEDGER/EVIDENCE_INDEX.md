@@ -1,4 +1,16 @@
-# CURRENT — GEODYN-2A-R1 FAIR numeric validation closure (2026-10-27)
+# CURRENT — GEODYN-3A contract ratification (2026-10-27)
+
+## GEODYN-3A ratified contract — no new execution evidence
+
+- Contract: `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`.
+- Decision: `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_RATIFIED__GEODYN_3B_MVP_AUTHORIZED`.
+- Ratification authorizes only the read-only experimental GEODYN-3B index/query MVP in the contract. No implementation, payload transfer, solver, numerical run or new external evidence was produced; this index has no new execution evidence. Existing outputs remain untracked and untouched.
+- The GEODYN-2A-R1 FAIR qualification remains operator-reported and is preserved below as prior evidence; no original FAIR bytes were newly imported or hashed.
+- Next: implement GEODYN-3B within the ratified boundary; GEODYN-3C validation of existing R1 data follows only after implementation review.
+
+---
+
+# Archived — GEODYN-2A-R1 FAIR numeric validation closure (2026-10-27)
 
 ## GEODYN-2A-R1 FAIR qualification (operator-reported)
 
