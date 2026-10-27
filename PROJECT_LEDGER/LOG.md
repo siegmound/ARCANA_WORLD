@@ -1,3 +1,10 @@
+## 2026-10-27 — GEODYN-2A read-only ASPECT snapshot adapter (local tests only)
+
+- Added a bounded standard-library PVD/PVTU/VTU reader and synthetic tests; report `docs/arcana/GEODYN_2A_ASPECT_READONLY_SNAPSHOT_ADAPTER.md`. Branch `r6/multiphysics-integration-20261026`, implementation baseline HEAD `af3f526a46d1638247f9cfa004be3e49dc82770b`.
+- Windows Python 3.12.10: 21 passed, 1 expected platform skip (cannot create external symlink), py_compile PASS, diff-check PASS. No ASPECT installation needed.
+- FAIR rigid-shear bundle and numeric-audit values remain operator-reported and were not imported/rehashed on Windows. Reader-on-FAIR validation pending. It records no synthetic terminal field; reported T-zero invariance discrepancy remains unexplained.
+- No solver, MPI, provider, physical evolution, ARCANA remapping or WORLD_HISTORY operation. All gates unchanged. Next: transfer reviewed source and perform read-only comparison on the original FAIR files.
+
 # Bitacora cronologica — append-only
 
 ## 2026-10-26 — R6-SURF-2 Fastscapelib SPL + R6 material/hydrology coupling

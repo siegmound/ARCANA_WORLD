@@ -1,3 +1,9 @@
+# CURRENT — GEODYN-2A parser implemented locally; FAIR evidence validation pending (2026-10-27)
+
+The read-only ASPECT PVD/PVTU/VTU adapter is implemented and passes its local synthetic test suite. This is a software/parser result only. It does not validate the original FAIR files, solver provenance, physical interpretation, or an ARCANA model. Next dependency: run the adapter against the existing FAIR bundle after source transfer and compare against the reported GEODYN-2C audit. A later solver smoke test requires separate authorization. The ARCANA forward window remains blocked by unresolved initial fields/support mapping, EOS/rheology, boundary conditions and positive-duration forcing. No ASPECT/MPI/ShellSet run or canonical publication is authorized.
+
+---
+
 # CURRENT — GEODYN-1G closed; GEODYN-2 prepared, not authorized (2026-10-27)
 
 GEODYN-1G verdict: `GEODYN_1G_FAIR_BLANKENBACH_INDEPENDENT_BENCHMARK_QUALIFIED__ARCANA_FORWARD_NOT_AUTHORIZED`. FAIR operator-reported ASPECT 3.2.0-pre Blankenbach 1a results at levels 3 and 4 and the limited refinement comparison are recorded in `docs/arcana/GEODYN_1G_FAIR_CLOSURE_GEODYN_2_PREPARATION.md`. The original FAIR artifacts were not imported/rehashed on Windows.

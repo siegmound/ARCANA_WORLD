@@ -1,3 +1,11 @@
+# NEXT — validate the GEODYN-2A reader on the existing FAIR snapshot bundle (2026-10-27)
+
+First review and publish/transfer the read-only adapter and tests from the Windows worktree. On FAIR, verify the exact source revision and existing bundle location, identify the actual PVD filename, then run only the CLI command template in `docs/arcana/GEODYN_2A_ASPECT_READONLY_SNAPSHOT_ADAPTER.md`. Compare parsed snapshot count/times, hashes, mesh/schema, field behavior and missing final snapshot to the existing operator-reported numeric audit. Record original-file hashes only where actually computed. Do not invoke ASPECT or MPI, alter the bundle, create a final snapshot, remap to ARCANA, or write WORLD_HISTORY.
+
+If reader compatibility passes, the next GEODYN-2 question is still an explicitly bounded synthetic positive-time solver experiment under separate authorization; it is not an ARCANA geological trajectory. ARCANA forward evolution remains blocked by source-backed spatial/initial-state closure, EOS/rheology, complete boundary conditions and authorized positive-time forcing. Keep all gates unchanged.
+
+---
+
 # NEXT — bind a bounded GEODYN-2 candidate; no execution authorized (2026-10-27)
 
 GEODYN-1G closes only the FAIR-reported independent ASPECT 3.2.0-pre Blankenbach 1a benchmark at mesh levels 3 and 4. Reported run files were not imported/rehashed on Windows; see `docs/arcana/GEODYN_1G_FAIR_CLOSURE_GEODYN_2_PREPARATION.md`. Do not repeat Blankenbach without a specific unresolved numerical/correctness question.

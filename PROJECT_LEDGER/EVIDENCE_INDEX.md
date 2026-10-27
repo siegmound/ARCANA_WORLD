@@ -1,3 +1,13 @@
+# CURRENT — GEODYN-2A local reader implementation (2026-10-27)
+
+- Report: `docs/arcana/GEODYN_2A_ASPECT_READONLY_SNAPSHOT_ADAPTER.md`.
+- New local files: `src/arcana_worldsim/r6/adapters/aspect_snapshot_reader.py` and `tests/test_r6_aspect_snapshot_reader.py`.
+- Windows Python 3.12.10: py_compile PASS; focused suite 21 passed / 1 skipped (external symlink fixture unavailable on this Windows setup); `git diff --check` PASS. Test basetemp `outputs/_pytest_aspect_snapshot_reader_20261027_10/` is a local test artifact, not for source publication.
+- No new runtime/evolution evidence. The FAIR bundle and GEODYN-2C audit remain operator-reported at `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2_RIGID_SHEAR/20261026T234423Z_transient_rank1` and `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2C_NUMERIC_AUDIT/20261027T000139Z_numeric_audit`; original files have not been imported or independently hashed on Windows. Adapter execution on FAIR is pending.
+- Local decision: `GEODYN_2A_ASPECT_READONLY_ADAPTER_LOCAL_TESTS_PASS__FAIR_VALIDATION_PENDING`; caller-declared MPI/provenance fields are not authenticated. No solver, MPI, remapping, ARCANA trajectory or canonical write occurred.
+
+---
+
 ## 2026-10-26 — R6-SURF-2 synthetic Fastscapelib/R6 coupling
 
 - Report: `docs/arcana/R6_SURF_2_FASTSCAPELIB_R6_CONSERVATIVE_COUPLING.md`.

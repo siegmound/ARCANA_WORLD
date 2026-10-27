@@ -1,3 +1,15 @@
+# CURRENT — GEODYN-2A read-only ASPECT snapshot adapter (2026-10-27)
+
+Decision: `GEODYN_2A_ASPECT_READONLY_ADAPTER_LOCAL_TESTS_PASS__FAIR_VALIDATION_PENDING`.
+
+Report: `docs/arcana/GEODYN_2A_ASPECT_READONLY_SNAPSHOT_ADAPTER.md`. A bounded read-only PVD/PVTU/VTU reader and synthetic tests are present in the Windows worktree. It handles only one-rank/single-Piece inline ASCII or Base64 binary (uncompressed/zlib) datasets; the single-rank value and caller provenance are declarations, not authenticated by VTK. Outputs remain `SYNTHETIC_ENGINEERING_ONLY`, never `DomainStateEnvelope`; no ARCANA remap or canonical write is available.
+
+Windows Python 3.12.10: focused suite 21 passed, 1 skipped (Windows could not create the external symlink fixture); py_compile and `git diff --check` pass. FAIR original files were not read or rehashed. The operator-reported 11 snapshots end at 1.0142299266 s, before reported solver completion at 1.098612289 s. `T` was reported constant zero; its discrepancy with the initial expression is unresolved. No field is inferred for solver completion. FAIR validation remains pending.
+
+Next: review and publish/transfer the adapter source, then run the read-only CLI on the existing FAIR evidence directory and compare hashes/schema/timing with the original numeric audit. No ASPECT solver, MPI, remapping, ARCANA forward run or canonical publication is authorized. All scientific and operational gates remain unchanged, including `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
 # CURRENT — ARCANA WorldSim R6, GEODYN-1G / GEODYN-2 (2026-10-27)
 
 Decision: `GEODYN_1G_FAIR_BLANKENBACH_INDEPENDENT_BENCHMARK_QUALIFIED__ARCANA_FORWARD_NOT_AUTHORIZED`.
