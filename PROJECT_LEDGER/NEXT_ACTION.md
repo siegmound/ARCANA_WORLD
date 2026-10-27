@@ -1,6 +1,6 @@
-# NEXT — GEODYN-3C qualification only after exact evidence recovery (2026-10-27)
+# NEXT — GEODYN-3C-R1 FAIR syntax/tests, then qualification only after evidence recovery (2026-10-27)
 
-The GEODYN-3B-R1 identity compatibility repair is locally tested and the handoff now uses the exact typed Git commit fields; see `docs/arcana/GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY.md`. Before FAIR qualification, recover the original source inventory, `configuration_sha256`, each `input_identities` SHA256, original attempt ID and time-unit source from preserved records. The FAIR evidence paths named in prior reports are operator-reported; those files have not been imported here. If any value is unavailable, stop as BLOCKED; do not synthesize or replace it. Once recovered, review the exact handoff commit and run only the existing-output GEODYN-3C qualification. No ASPECT solver or ARCANA forward run. Gates remain `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+On the exact committed R1 candidate, first verify that the remote R6 ref and commit parent match the launcher input, run `bash -n`, then execute its 85-test Linux preflight with zero skips. Do not change or check out the existing FAIR worktree. Before the read-only archive qualification, recover the original source inventory, `configuration_sha256`, every `input_identities` SHA256, attempt ID and time-unit source from preserved records. These records remain operator-reported and were not imported to Windows. If a required value is unavailable, stop BLOCKED; never synthesize it. No ASPECT solver or ARCANA forward run. Gates remain `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

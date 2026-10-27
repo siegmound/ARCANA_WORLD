@@ -1,10 +1,10 @@
-# CURRENT — GEODYN-3B-R1 Git identity compatibility repaired locally (2026-10-27)
+# CURRENT — GEODYN-3C-R1 launcher repair prepared locally (2026-10-27)
 
-Decision: `GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY_LOCAL_PASS__GEODYN_3C_FAIR_PENDING`.
+Decision: `GEODYN_3C_R1_LAUNCHER_REPAIR_LOCAL_TESTS_PASS__FAIR_PENDING`.
 
-Report: `docs/arcana/GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY.md`. `RunIdentityClaim` now preserves exact lowercase 40- or 64-hex Git IDs for its three commit fields; configuration and input SHA256 constraints remain 64 hex. The schema and identity formula are unchanged. The FAIR handoff binds real IDs to the exact new commit and parent, and blocks if historical configuration/input hashes or source inventory/claims cannot be recovered. Focused Windows archive + reader suite: 69 passed, 2 symlink privilege skips; py_compile and diff-check passed. No FAIR data or solver was accessed.
+Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. The launcher checks the exact remote branch ref, candidate commit object and parent, while preserving a differently checked-out FAIR branch/HEAD and extracting the candidate with `git archive`. The audit comparator now strictly consumes GEODYN-2C `snapshots[].point_fields[]`, checks 99 field digests and 11 mesh digests with the documented numeric serialization. Launcher, archive-module origin/source revision, reader provenance and historical run claims are recorded separately. Combined Windows suite: 82 passed, 3 skipped (two symlink privilege skips; one NumPy-dependent mesh serialization test because NumPy is unavailable). Python compilation and diff-check pass. Bash syntax was not verified locally; FAIR `bash -n` remains pending. Linux handoff expects 85 pass / 0 skip.
 
-GEODYN-3C remains pending: transfer and execute the handoff on the exact committed source only if preserved inputs are available. No fabricated IDs/hashes. Gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+GEODYN-3C remains blocked pending recovery of the original source inventory, configuration/input SHA256s, attempt ID and time-unit source. No FAIR data or solver was accessed and no evidence was fabricated. Gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

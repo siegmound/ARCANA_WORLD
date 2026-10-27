@@ -9,14 +9,16 @@ IFS=$'\n\t'
 
 EXPECTED_BRANCH='r6/multiphysics-integration-20261026'
 EXPECTED_COMMIT=${GEODYN3C_EXPECTED_COMMIT:-}
-EXPECTED_PARENT='e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa'
+EXPECTED_PARENT='ab8fad9282b45c30f1df3653ce447cf5e13c6be4'
+GEODYN3B_MODULE_ORIGIN_COMMIT='e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa'
+GEODYN3B_MODULE_SOURCE_COMMIT='ab8fad9282b45c30f1df3653ce447cf5e13c6be4'
+ASPECT_READER_PROVENANCE_COMMIT='1fd5e8d8f21e28876da9ef89423755615efc6162'
 ASPECT_COMMIT='30eb77ee5da186137d436dbad35c6cb3cab64b69'
-R1_ADAPTER_COMMIT='1fd5e8d8f21e28876da9ef89423755615efc6162'
 EXPECTED_TIMES_COUNT=11
 EXPECTED_POINTS=1152
 EXPECTED_CELLS=512
 EXPECTED_POINT_FIELDS=9
-EXPECTED_TESTS=71
+EXPECTED_TESTS=85
 
 fail() { printf 'BLOCKED: %s\n' "$*" >&2; exit 2; }
 [[ $# -eq 7 ]] || fail 'expected exactly seven arguments; see usage in script header'
@@ -39,21 +41,38 @@ REPO=$(realpath -e -- "$REPO")
 case "$EVIDENCE_PARENT/" in "$REPO/"*) fail 'evidence parent must be outside the Git checkout';; esac
 [[ -d "$EVIDENCE_PARENT" && ! -L "$EVIDENCE_PARENT" ]] || fail 'evidence parent must pre-exist and must not be a symlink'
 
-branch=$(git -C "$REPO" branch --show-current)
-head=$(git -C "$REPO" rev-parse HEAD)
-parent=$(git -C "$REPO" rev-parse 'HEAD^')
-[[ "$branch" == "$EXPECTED_BRANCH" ]] || fail "wrong branch: $branch"
-[[ "$head" == "$EXPECTED_COMMIT" ]] || fail "wrong HEAD: $head"
-[[ "$parent" == "$EXPECTED_PARENT" ]] || fail "wrong parent: $parent"
+remote_ref="refs/heads/$EXPECTED_BRANCH"
+remote_line=$(git -C "$REPO" ls-remote --exit-code origin "$remote_ref") || fail "cannot resolve origin/$remote_ref"
+remote_commit=${remote_line%%$'\t'*}
+remote_reported_ref=${remote_line#*$'\t'}
+[[ "$remote_reported_ref" == "$remote_ref" && "$remote_commit" == "$EXPECTED_COMMIT" ]] || \
+  fail "origin/$remote_ref does not point to the exact qualified commit"
+if ! git -C "$REPO" cat-file -e "$EXPECTED_COMMIT^{commit}" 2>/dev/null; then
+  git -C "$REPO" fetch --no-tags --no-write-fetch-head origin "$remote_ref:" || fail 'cannot retrieve exact verified commit object without checkout/ref update'
+fi
 git -C "$REPO" cat-file -e "$EXPECTED_COMMIT^{commit}" || fail 'expected commit object is unavailable'
-git -C "$REPO" diff --quiet "$EXPECTED_COMMIT" -- || fail 'tracked worktree has modifications; use a clean/read-only checkout'
-git -C "$REPO" diff --cached --quiet || fail 'index has staged changes; use a clean/read-only checkout'
+parent=$(git -C "$REPO" rev-parse "$EXPECTED_COMMIT^") || fail 'qualified commit parent is unavailable'
+[[ "$parent" == "$EXPECTED_PARENT" ]] || fail "qualified commit parent mismatch: $parent"
+for provenance_commit in "$GEODYN3B_MODULE_ORIGIN_COMMIT" "$GEODYN3B_MODULE_SOURCE_COMMIT" "$ASPECT_READER_PROVENANCE_COMMIT"; do
+  git -C "$REPO" cat-file -e "$provenance_commit^{commit}" || fail "provenance commit object unavailable: $provenance_commit"
+  git -C "$REPO" merge-base --is-ancestor "$provenance_commit" "$EXPECTED_COMMIT" || fail "provenance commit is not an ancestor: $provenance_commit"
+done
+launcher_file_commit=$(git -C "$REPO" log -1 --format=%H "$EXPECTED_COMMIT" -- scripts/r6_geodyn3c_fair_qualification.sh)
+module_file_commit=$(git -C "$REPO" log -1 --format=%H "$EXPECTED_COMMIT" -- src/arcana_worldsim/r6/experimental_trajectory_archive.py)
+reader_file_commit=$(git -C "$REPO" log -1 --format=%H "$EXPECTED_COMMIT" -- src/arcana_worldsim/r6/adapters/aspect_snapshot_reader.py)
+[[ "$launcher_file_commit" == "$EXPECTED_COMMIT" ]] || fail 'launcher provenance does not resolve to qualified commit'
+[[ "$module_file_commit" == "$GEODYN3B_MODULE_SOURCE_COMMIT" ]] || fail "unexpected archive module source commit: $module_file_commit"
+[[ "$reader_file_commit" == "$ASPECT_READER_PROVENANCE_COMMIT" ]] || fail "unexpected reader source provenance: $reader_file_commit"
+checkout_branch_before=$(git -C "$REPO" branch --show-current)
+checkout_head_before=$(git -C "$REPO" rev-parse HEAD)
 tracked_status_before=$(git -C "$REPO" status --porcelain --untracked-files=no)
+tracked_diff_before=$(git -C "$REPO" diff --binary HEAD | sha256sum)
+index_diff_before=$(git -C "$REPO" diff --cached --binary | sha256sum)
 
 run_stamp=$(date -u +%Y%m%dT%H%M%SZ)
 RUN_DIR="$EVIDENCE_PARENT/GEODYN3C_${run_stamp}"
 mkdir -- "$RUN_DIR" || fail "evidence destination exists or cannot be created: $RUN_DIR"
-trap 'rc=$?; post=$(git -C "$REPO" status --porcelain --untracked-files=no 2>&1); printf "%s\n" "$post" > "$RUN_DIR/tracked_status_after.txt"; if [[ "$post" != "$tracked_status_before" ]] || ! git -C "$REPO" diff --quiet "$EXPECTED_COMMIT" -- || ! git -C "$REPO" diff --cached --quiet; then printf "FAIL: tracked checkout/index changed during launcher\n" > "$RUN_DIR/checkout_immutability.txt"; rc=91; else printf "PASS: tracked checkout/index unchanged\n" > "$RUN_DIR/checkout_immutability.txt"; fi; printf "%s\n" "$rc" > "$RUN_DIR/launcher.exitcode"; exit "$rc"' EXIT
+trap 'rc=$?; post=$(git -C "$REPO" status --porcelain --untracked-files=no 2>&1); post_branch=$(git -C "$REPO" branch --show-current 2>&1); post_head=$(git -C "$REPO" rev-parse HEAD 2>&1); post_diff=$(git -C "$REPO" diff --binary HEAD | sha256sum 2>&1); post_index=$(git -C "$REPO" diff --cached --binary | sha256sum 2>&1); printf "%s\n" "$post" > "$RUN_DIR/tracked_status_after.txt"; if [[ "$post" != "$tracked_status_before" || "$post_branch" != "$checkout_branch_before" || "$post_head" != "$checkout_head_before" || "$post_diff" != "$tracked_diff_before" || "$post_index" != "$index_diff_before" ]]; then printf "FAIL: existing checkout/index changed during launcher\n" > "$RUN_DIR/checkout_immutability.txt"; rc=91; else printf "PASS: existing checkout/index unchanged\n" > "$RUN_DIR/checkout_immutability.txt"; fi; printf "%s\n" "$rc" > "$RUN_DIR/launcher.exitcode"; exit "$rc"' EXIT
 mkdir -- "$RUN_DIR/source-extract"
 script_path=$(realpath -e -- "$0") || fail 'cannot resolve qualification launcher path'
 cp -- "$script_path" "$RUN_DIR/qualification_launcher.sh"
@@ -61,7 +80,15 @@ sha256sum "$RUN_DIR/qualification_launcher.sh" > "$RUN_DIR/qualification_launche
 
 printf '%s\n' "$EXPECTED_COMMIT" > "$RUN_DIR/source_commit.txt"
 printf '%s\n' "$EXPECTED_PARENT" > "$RUN_DIR/source_parent.txt"
-printf '%s\n' "$branch" > "$RUN_DIR/source_branch.txt"
+printf '%s\n' "$remote_ref" > "$RUN_DIR/remote_ref.txt"
+printf '%s\n' "$remote_commit" > "$RUN_DIR/remote_commit.txt"
+printf '%s\n' "$checkout_branch_before" > "$RUN_DIR/checkout_branch_before.txt"
+printf '%s\n' "$checkout_head_before" > "$RUN_DIR/checkout_head_before.txt"
+printf '%s\n' "$GEODYN3B_MODULE_ORIGIN_COMMIT" > "$RUN_DIR/geodyn3b_module_origin_commit.txt"
+printf '%s\n' "$GEODYN3B_MODULE_SOURCE_COMMIT" > "$RUN_DIR/geodyn3b_module_source_commit.txt"
+printf '%s\n' "$module_file_commit" > "$RUN_DIR/geodyn3b_module_last_source_change_commit.txt"
+printf '%s\n' "$launcher_file_commit" > "$RUN_DIR/qualification_launcher_commit.txt"
+printf '%s\n' "$reader_file_commit" > "$RUN_DIR/aspect_reader_provenance_commit.txt"
 git -C "$REPO" archive --format=tar "$EXPECTED_COMMIT" > "$RUN_DIR/source.tar"
 sha256sum "$RUN_DIR/source.tar" > "$RUN_DIR/source.tar.sha256"
 tar -xf "$RUN_DIR/source.tar" -C "$RUN_DIR/source-extract"
@@ -77,7 +104,8 @@ set +e
 (cd "$RUN_DIR/source-extract" && PYTHONPATH="$RUN_DIR/source-extract/src" \
   python -m pytest -q -rs --basetemp="$RUN_DIR/pytest-tmp" \
   tests/test_r6_experimental_trajectory_archive.py \
-  tests/test_r6_aspect_snapshot_reader.py) 2>&1 | tee "$RUN_DIR/pytest.log"
+  tests/test_r6_aspect_snapshot_reader.py \
+  tests/test_r6_geodyn3c_qualification.py) 2>&1 | tee "$RUN_DIR/pytest.log"
 pytest_rc=${PIPESTATUS[0]}
 set -e
 printf '%s\n' "$pytest_rc" > "$RUN_DIR/pytest.exitcode"
@@ -103,22 +131,22 @@ PY
 
 cat > "$RUN_DIR/run_geodyn3c.py" <<'PY'
 from __future__ import annotations
-import hashlib, json, math, shutil, sys
-from collections import Counter
+import hashlib, json, math, shutil, subprocess, sys
 from pathlib import Path
 
-source_tree, source_root_s, pvd_ref, audit_s, inventory_s, claims_s, evidence_s = sys.argv[1:]
+repo_s, source_tree, source_root_s, pvd_ref, audit_s, inventory_s, claims_s, evidence_s, \
+    qualified_commit, expected_parent, module_origin_commit, module_source_commit, reader_provenance_commit = sys.argv[1:]
 sys.path.insert(0, str(Path(source_tree) / "src"))
 from arcana_worldsim.r6.experimental_trajectory_archive import (
     ArchiveError, ExperimentalTrajectoryArchive, NativeTime, RunIdentityClaim,
     SourceDigest, index_existing_aspect_series,
 )
 from arcana_worldsim.r6.adapters.aspect_snapshot_reader import AspectSnapshotSeries
+from arcana_worldsim.r6.geodyn3c_qualification import (
+    compare_numeric_audit, mesh_sha256_from_vtk, parse_geodyn2c_audit,
+    validate_geodyn3c_run_claim, validate_source_inventory, verify_git_candidate,
+)
 
-EXPECTED_COMMIT = "e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa"
-EXPECTED_PARENT = "0256458553f5ee856739cd0abff7561d90ad1198"
-EXPECTED_ASPECT_COMMIT = "30eb77ee5da186137d436dbad35c6cb3cab64b69"
-EXPECTED_R1_ADAPTER_COMMIT = "1fd5e8d8f21e28876da9ef89423755615efc6162"
 EXPECTED_COMPLETION = 1.098612289
 EXPECTED_LAST = 1.0142299266
 EXPECTED_TIMES = 11
@@ -136,60 +164,6 @@ def sha256(path: Path) -> str:
 def dump(path: Path, value) -> None:
     path.write_text(json.dumps(value, sort_keys=True, indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
-def find_snapshot_rows(node):
-    """Extract only explicit auditor snapshot records; fail closed on unknown schema."""
-    found = []
-    def visit(value):
-        if isinstance(value, dict):
-            for key, child in value.items():
-                if key in ("snapshots", "snapshot_audits", "snapshot_records") and isinstance(child, list):
-                    for row in child:
-                        if isinstance(row, dict) and any(k in row for k in ("time", "time_value", "timestep", "time_s")):
-                            found.append(row)
-                visit(child)
-        elif isinstance(value, list):
-            for child in value:
-                visit(child)
-    visit(node)
-    # The same rows can be reached through nested summary branches.
-    unique = {}
-    for row in found:
-        marker = json.dumps(row, sort_keys=True, separators=(",", ":"))
-        unique[marker] = row
-    return list(unique.values())
-
-def row_time(row):
-    for key in ("time_value", "timestep", "time_s", "time"):
-        if key in row:
-            value = row[key]
-            if isinstance(value, dict):
-                value = value.get("value")
-            if isinstance(value, (int, float)) and math.isfinite(float(value)):
-                return float(value)
-    raise ValueError("independent audit snapshot lacks a numeric native-time field")
-
-def field_hashes(row):
-    fields = row.get("fields")
-    if fields is None:
-        fields = row.get("field_arrays")
-    hashes = {}
-    def collect(value, hint=None):
-        if isinstance(value, dict):
-            digest = value.get("sha256_bytes")
-            if isinstance(digest, str) and len(digest) == 64:
-                name = (value.get("source_name") or value.get("name") or value.get("field_name")
-                        or value.get("source_key") or value.get("field") or value.get("key") or hint)
-                if isinstance(name, str):
-                    name = name.removeprefix("point:").removeprefix("cell:")
-                    if name in hashes: raise ValueError(f"duplicate audit field identity {name}")
-                    hashes[name] = digest.lower()
-            else:
-                for key, child in value.items(): collect(child, key if isinstance(key, str) else hint)
-        elif isinstance(value, list):
-            for child in value: collect(child, hint)
-    collect(fields)
-    return hashes
-
 def require(condition, message):
     if not condition: raise ValueError(message)
 
@@ -199,6 +173,17 @@ comparison_doc = {"status": "PENDING", "records": []}
 query_doc = {"status": "PENDING", "records": []}
 negative_doc = {"status": "PENDING", "checks": []}
 try:
+    git_identity = verify_git_candidate(
+        repo_s, branch_ref="refs/heads/r6/multiphysics-integration-20261026",
+        expected_commit=qualified_commit, expected_parent=expected_parent,
+    )
+    git_identity.update({
+        "qualified_launcher_commit": qualified_commit,
+        "archive_module_source_commit": module_source_commit,
+        "archive_module_origin_commit": module_origin_commit,
+        "aspect_snapshot_reader_provenance_commit": reader_provenance_commit,
+    })
+    dump(evidence / "GIT_PROVENANCE.json", git_identity)
     source_root = Path(source_root_s).resolve(strict=True)
     audit_path = Path(audit_s)
     inventory_path = Path(inventory_s)
@@ -206,31 +191,9 @@ try:
     audit = json.loads(audit_path.read_text(encoding="utf-8"))
     inventory_doc = json.loads(inventory_path.read_text(encoding="utf-8"))
     claims_doc = json.loads(claims_path.read_text(encoding="utf-8"))
-    require(isinstance(inventory_doc, dict) and isinstance(inventory_doc.get("files"), list),
-            "SOURCE_INVENTORY_SCHEMA: expected {files:[{relative_ref,byte_length,sha256}]} from prior evidence")
     require(isinstance(claims_doc, dict) and isinstance(claims_doc.get("run_identity"), dict),
             "RUN_CLAIMS_SCHEMA: expected {run_identity:{...RunIdentityClaim fields...}}")
-    claim_values = claims_doc["run_identity"]
-    claim = RunIdentityClaim(**claim_values)
-    require(claim.solver_name == "ASPECT" and claim.solver_version == "3.2.0-pre",
-            "run claim does not bind the reported ASPECT 3.2.0-pre runtime")
-    # Exact commit strings are retained in typed fields. The archive validates
-    # syntax only; this explicit algorithm map is still an operator claim, not
-    # authentication. Do not derive identities by padding, hashing, or truncation.
-    provenance = claim.declared_provenance
-    require(claim.solver_source_commit == EXPECTED_ASPECT_COMMIT,
-            "solver_source_commit must retain the exact reported ASPECT Git object ID")
-    require(claim.repository_commit == EXPECTED_R1_ADAPTER_COMMIT,
-            "repository_commit must retain the exact GEODYN-2A-R1 source Git object ID")
-    require(claim.adapter_commit == EXPECTED_COMMIT,
-            "adapter_commit must retain the exact GEODYN-3B implementation Git object ID")
-    require({key: provenance.get(key) for key in (
-        "solver_source_commit_algorithm", "repository_commit_algorithm", "adapter_commit_algorithm"
-    )} == {"solver_source_commit_algorithm": "sha1", "repository_commit_algorithm": "sha1",
-          "adapter_commit_algorithm": "sha1"},
-        "run claims must declare the three known Git object ID algorithms explicitly")
-    require(claim.solver_completed_time == EXPECTED_COMPLETION,
-            "run claim solver completion time differs from the reported R1 value")
+    claim = validate_geodyn3c_run_claim(claims_doc["run_identity"])
     require(claim.time_unit == "s", "native solver time unit must be seconds for this R1 comparison")
     qualification["stage"] = "SOURCE_PREHASH"
 
@@ -244,7 +207,7 @@ try:
     refs = {pvd_ref}
     for row in source_rows:
         refs.update(row.file_sha256.keys())
-    declared = {item["relative_ref"]: SourceDigest(**item) for item in inventory_doc["files"]}
+    declared = validate_source_inventory(inventory_doc)
     require(set(declared) == refs, "independent source inventory membership differs from PVD-referenced source files")
     before = {ref: {"byte_length": (source_root / ref).stat().st_size, "sha256": sha256(source_root / ref)} for ref in sorted(refs)}
     require(all(before[ref]["byte_length"] == declared[ref].byte_length and before[ref]["sha256"] == declared[ref].sha256 for ref in refs),
@@ -330,42 +293,40 @@ try:
     ]})
     dump(evidence / "QUERY_RESULTS.json", query_doc)
 
-    audit_rows = find_snapshot_rows(audit)
-    require(len(audit_rows) == EXPECTED_TIMES,
-            "NUMERIC_AUDIT_SCHEMA: could not identify exactly 11 snapshot records; inspect schema, do not bypass comparison")
-    audit_by_time = {}
-    for audit_row in audit_rows:
-        t = row_time(audit_row)
-        require(t not in audit_by_time, f"duplicate independent audit time {t}")
-        audit_by_time[t] = field_hashes(audit_row)
-    require(set(audit_by_time) == set(times), "archive and independent audit native times differ")
-    compared_fields = 0
-    comparison_doc.update({"status": "RUNNING", "method": "per-native-time, per-field SHA256 of typed numeric values",
-                           "independent_audit_sha256": sha256(audit_path), "records": []})
-    for row in rows:
-        expected = audit_by_time[row["time"]["value"]]
-        indexed_by_name = {definition["source_name"]: row["typed_field_sha256"][definition["field_id"]]
-                           for definition in fields if definition["field_id"] in row["typed_field_sha256"]}
+    audit_snapshots = parse_geodyn2c_audit(audit)
+    require(len(audit_snapshots) == EXPECTED_TIMES,
+            f"NUMERIC_AUDIT_SCHEMA: expected {EXPECTED_TIMES} snapshots, got {len(audit_snapshots)}")
+    require([item.time_s for item in audit_snapshots] == times,
+            "archive and independent audit native times differ")
+    comparison_doc.update({"status": "RUNNING",
+        "method": "exact GEODYN-2C point_fields metadata and sha256_bytes plus numeric mesh serialization",
+        "mesh_serialization": "for coordinates/connectivity/offsets/types in source order: NumPy dtype.str bytes then C-order array bytes",
+        "independent_audit_sha256": sha256(audit_path), "records": []})
+    observed_snapshots = []
+    for index, row in enumerate(rows):
         on_demand = archive.get_snapshot(row["snapshot_id"])
         require(on_demand.status == "FOUND", f"on-demand snapshot read failed at {row['time']['value']}: {on_demand.status}")
-        observed_by_name = {array.metadata.source_name: array.metadata.sha256_bytes
-                            for array in on_demand.value["fields"].values()}
-        require(len(expected) == EXPECTED_FIELDS, f"auditor field digest count is not {EXPECTED_FIELDS} at {row['time']['value']}")
-        require(set(observed_by_name) == set(expected) == set(indexed_by_name),
-                f"field names mismatch at native time {row['time']['value']}")
-        field_results = [{"field": name, "index_sha256": indexed_by_name[name],
-                          "queried_sha256": observed_by_name[name], "audit_sha256": expected[name],
-                          "match": indexed_by_name[name] == observed_by_name[name] == expected[name]}
-                         for name in sorted(expected)]
-        comparison_doc["records"].append({"native_time_s": row["time"]["value"],
-                                           "field_count": len(field_results), "fields": field_results})
-        dump(evidence / "NUMERIC_COMPARISON.json", comparison_doc)
-        require(indexed_by_name == observed_by_name == expected,
-                f"typed field SHA256 mismatch at native time {row['time']['value']}")
-        compared_fields += len(observed_by_name)
-    require(compared_fields == 99, f"expected 99 typed field comparisons, got {compared_fields}")
-    comparison_doc["status"] = "PASS"
+        native_snapshot = series.read_snapshot(index)
+        mesh_digest = mesh_sha256_from_vtk(native_snapshot.mesh, source_root / row["vtu_relative_ref"])
+        point_fields = []
+        for array in on_demand.value["fields"].values():
+            metadata = array.metadata
+            require(metadata.association == "point" and metadata.source_name,
+                    f"unexpected unnamed/non-point field at {row['time']['value']}")
+            point_fields.append({"name": metadata.source_name, "type": metadata.vtk_type,
+                "components": metadata.components, "tuples": metadata.tuples,
+                "sha256_bytes": metadata.sha256_bytes})
+        observed_snapshots.append({"time_s": row["time"]["value"],
+            "mesh_sha256_numeric": mesh_digest, "point_fields": point_fields})
+    compared = compare_numeric_audit(audit_snapshots, observed_snapshots)
+    require(compared["mesh_comparisons"] == EXPECTED_TIMES,
+            f"expected {EXPECTED_TIMES} numeric mesh comparisons, got {compared['mesh_comparisons']}")
+    require(compared["field_comparisons"] == EXPECTED_TIMES * EXPECTED_FIELDS,
+            f"expected {EXPECTED_TIMES * EXPECTED_FIELDS} typed field comparisons, got {compared['field_comparisons']}")
+    comparison_doc.update(compared)
+    comparison_doc["independent_audit_sha256"] = sha256(audit_path)
     dump(evidence / "NUMERIC_COMPARISON.json", comparison_doc)
+    compared_fields = compared["field_comparisons"]
 
     qualification["stage"] = "NEGATIVE_AND_PORTABILITY_CHECKS"
     # Incomplete archive behavior is tested on a copy, never on the finalized index.
@@ -473,11 +434,13 @@ try:
     after = {ref: {"byte_length": (source_root / ref).stat().st_size, "sha256": sha256(source_root / ref)} for ref in sorted(refs)}
     dump(evidence / "originals_post_hashes.json", after)
     require(before == after, "original ASPECT source bytes changed during qualification")
-    qualification.update({"status": "PASS", "stage": "COMPLETE", "commit": EXPECTED_COMMIT,
-        "parent": EXPECTED_PARENT, "classification": manifest["classification"], "authority": manifest["authority"],
+    qualification.update({"status": "PASS", "stage": "COMPLETE", "commit": qualified_commit,
+        "parent": expected_parent, "git_provenance": "GIT_PROVENANCE.json",
+        "classification": manifest["classification"], "authority": manifest["authority"],
         "archive_id": manifest["archive_id"], "snapshot_count": len(rows), "times_native_seconds": times,
         "point_count": meshes[0]["point_count"], "cell_count": meshes[0]["cell_count"],
-        "point_field_count": len(fields), "typed_field_sha256_comparisons": compared_fields,
+        "point_field_count": len(fields), "numeric_mesh_sha256_comparisons": EXPECTED_TIMES,
+        "typed_field_sha256_comparisons": compared_fields,
         "manifest_sha256": sha256(index_root / "manifest.json"), "manifest_sidecar": (index_root / "manifest.sha256").read_text().strip(),
         "source_files_unchanged": True, "solver_executed": False, "restart": "NOT_AVAILABLE",
         "numeric_comparison": "NUMERIC_COMPARISON.json", "query_results": "QUERY_RESULTS.json",
@@ -499,16 +462,22 @@ PY
 
 set +e
 PYTHONPATH="$RUN_DIR/source-extract/src" python "$RUN_DIR/run_geodyn3c.py" \
-  "$RUN_DIR/source-extract" "$SOURCE_ROOT" "$PVD_REF" \
+  "$REPO" "$RUN_DIR/source-extract" "$SOURCE_ROOT" "$PVD_REF" \
   "$RUN_DIR/NUMERIC_AUDIT.json" "$RUN_DIR/SOURCE_INVENTORY.json" \
-  "$RUN_DIR/RUN_IDENTITY_CLAIMS.json" "$RUN_DIR" 2>&1 | tee "$RUN_DIR/qualification.log"
+  "$RUN_DIR/RUN_IDENTITY_CLAIMS.json" "$RUN_DIR" \
+  "$EXPECTED_COMMIT" "$EXPECTED_PARENT" "$GEODYN3B_MODULE_ORIGIN_COMMIT" "$GEODYN3B_MODULE_SOURCE_COMMIT" \
+  "$ASPECT_READER_PROVENANCE_COMMIT" 2>&1 | tee "$RUN_DIR/qualification.log"
 qualification_rc=${PIPESTATUS[0]}
 set -e
 printf '%s\n' "$qualification_rc" > "$RUN_DIR/qualification.exitcode"
 [[ $qualification_rc -eq 0 ]] || fail "archive/query qualification failed (exit $qualification_rc); preserve $RUN_DIR"
 
+remote_after_line=$(git -C "$REPO" ls-remote --exit-code origin "$remote_ref") || fail 'remote ref unavailable at post-check'
+[[ "${remote_after_line%%$'\t'*}" == "$EXPECTED_COMMIT" && "${remote_after_line#*$'\t'}" == "$remote_ref" ]] || fail 'remote ref moved during qualification'
 tracked_status_after=$(git -C "$REPO" status --porcelain --untracked-files=no)
-[[ "$tracked_status_after" == "$tracked_status_before" ]] || fail 'tracked checkout state changed during read-only qualification'
-git -C "$REPO" diff --quiet "$EXPECTED_COMMIT" -- || fail 'tracked checkout content changed during qualification'
-git -C "$REPO" diff --cached --quiet || fail 'Git index changed during qualification'
+[[ "$tracked_status_after" == "$tracked_status_before" ]] || fail 'tracked checkout/index status changed during read-only qualification'
+[[ "$(git -C "$REPO" branch --show-current)" == "$checkout_branch_before" ]] || fail 'checkout branch changed during qualification'
+[[ "$(git -C "$REPO" rev-parse HEAD)" == "$checkout_head_before" ]] || fail 'checkout HEAD changed during qualification'
+[[ "$(git -C "$REPO" diff --binary HEAD | sha256sum)" == "$tracked_diff_before" ]] || fail 'tracked checkout content changed during qualification'
+[[ "$(git -C "$REPO" diff --cached --binary | sha256sum)" == "$index_diff_before" ]] || fail 'Git index content changed during qualification'
 printf 'PASS: GEODYN-3C existing-output qualification complete. Evidence: %s\n' "$RUN_DIR"

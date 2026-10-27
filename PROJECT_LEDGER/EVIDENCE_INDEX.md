@@ -1,6 +1,6 @@
-# CURRENT — GEODYN-3B-R1 local compatibility repair (2026-10-27)
+# CURRENT — GEODYN-3C-R1 launcher repair (2026-10-27)
 
-Report: `docs/arcana/GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY.md`. Windows archive + qualified ASPECT-reader tests: 69 passed, 2 skipped solely because Windows symlink creation was denied (WinError 1314); py_compile and diff-check passed. This repair creates no external/numerical evidence and accesses no FAIR files. Existing operator-reported GEODYN-2A-R1 evidence remains unimported/unhashed on Windows. GEODYN-3C requires exact original configuration/input SHA256s, source inventory and attempt metadata; otherwise BLOCKED. No solver execution.
+Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. Combined Windows archive, reader and GEODYN-3C helper tests: 82 passed, 3 skipped (two Windows symlink-privilege skips and one NumPy-dependent mesh serializer test; NumPy unavailable). py_compile and `git diff --check` passed. Bash syntax, Linux tests and FAIR data were not verified; Linux handoff expects 85 PASS and zero skips. This code-only repair creates no external/numerical evidence. Historic operator-reported GEODYN-2A-R1 evidence remains unimported/unhashed on Windows; missing inventory/config/input/attempt provenance continues to block qualification. No solver execution.
 
 ---
 
