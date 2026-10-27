@@ -1,4 +1,16 @@
-# CURRENT — GEODYN-3A contract ratification (2026-10-27)
+# CURRENT — GEODYN-3B local MVP (2026-10-27)
+
+## GEODYN-3B synthetic implementation — no FAIR payload run
+
+- Report: `docs/arcana/GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP.md`.
+- Source/test: `src/arcana_worldsim/r6/experimental_trajectory_archive.py`, `tests/test_r6_experimental_trajectory_archive.py`.
+- Windows Python 3.12.10 focused suite including the existing ASPECT reader: 42 passed, 2 skipped because Windows symlink creation lacked privilege (WinError 1314); `py_compile` passed.
+- No authentic R1 PVD/PVTU/VTU files or independent numeric audit were imported/rehashed or indexed during this step. No new execution evidence bundle was generated. Existing FAIR GEODYN-2A-R1 results remain operator-reported; the original real-VTU probe failure remains preserved.
+- Next GEODYN-3C validates the index against the original source files and independent audit on the exact reviewed implementation commit; no ASPECT execution is required or authorized.
+
+---
+
+# PREVIOUS CURRENT — GEODYN-3A contract ratification (2026-10-27)
 
 ## GEODYN-3A ratified contract — no new execution evidence
 

@@ -1,4 +1,14 @@
-# CURRENT — GEODYN-3A contract ratified; GEODYN-3B MVP authorized (2026-10-27)
+# CURRENT — GEODYN-3B experimental archive MVP implemented locally (2026-10-27)
+
+Decision: `GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP_LOCAL_PASS__FAIR_QUALIFICATION_PENDING`.
+
+Report: `docs/arcana/GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP.md`. The new read-only index/query module reuses the ASPECT snapshot reader and R6 identity primitives. It records external payload references and incremental source hashes without copying VTU files; it creates no canonical records and claims no reconstruction or restart capability. Focused Windows verification: 42 passed, 2 symlink tests skipped because Windows denied symlink creation (WinError 1314); py_compile passed. No FAIR payload validation or ASPECT execution occurred. The original R1 FAIR results remain operator-reported and the real-VTU probe failure remains immutable.
+
+GEODYN-3C is next: qualify the index against the original 11 R1 snapshots and independent numeric audit on the exact implementation revision, without running ASPECT. This MVP remains `SYNTHETIC_ENGINEERING_ONLY`; caller provenance claims are unauthenticated. Gates remain unchanged: `BLOCKED_F2AV_QUALIFICATION`, `OPERATOR_CLASS_UNVERIFIED`, `THRESHOLD_UNJUSTIFIED`, `RESOURCE_2GB_SCOPE_UNRESOLVED`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`, `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, and `INT3_ENG10K_EXECUTION_AUTHORIZED=false`.
+
+---
+
+# PREVIOUS CURRENT — GEODYN-3A contract ratified; GEODYN-3B MVP authorized (2026-10-27)
 
 Decision: `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_RATIFIED__GEODYN_3B_MVP_AUTHORIZED`.
 

@@ -29,6 +29,10 @@ Prototypes are noncanonical engineering products. Existing F2A-V, mechanics, Sol
 
 # ARCANA R6 — Roadmap operativa corrente (2026-10-27)
 
+## GEODYN-3B — experimental trajectory archive MVP implemented locally
+
+Decision: `GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP_LOCAL_PASS__FAIR_QUALIFICATION_PENDING`; report `docs/arcana/GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP.md`. The bounded index/query implementation reuses the qualified ASPECT reader and compatible R6 identity primitives, stores only metadata/references and a manifest seal, and claims no restart/reconstruction. Focused Windows tests passed 42 with 2 symlink-privilege skips. GEODYN-3C must qualify it against existing FAIR R1 payloads and the independent audit; no solver run. This does not alter canonical or scientific gates.
+
 ## GEODYN-3A — experimental trajectory archive contract ratified
 
 Decision: `GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT_RATIFIED__GEODYN_3B_MVP_AUTHORIZED`; contract at `docs/arcana/GEODYN_3A_EXPERIMENTAL_TRAJECTORY_ARCHIVE_CONTRACT.md`. Existing R6 components provide reusable identity/hash, partial streaming/finalization and query/accounting patterns, but no solver-neutral experimental snapshot/payload index; canonical HistoryStore and query contracts remain separate. Only the bounded, read-only GEODYN-3B manifest/index/query MVP is authorized; GEODYN-3C may validate the existing R1 bundle only after review. No ASPECT execution, ARCANA remapping, geological-time conversion or canonical promotion. ARCANA forward remains blocked by initial conditions, constitutive laws, boundary conditions, support mapping and time-dependent forcing; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.

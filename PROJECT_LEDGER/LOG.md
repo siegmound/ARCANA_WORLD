@@ -7,6 +7,13 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-27 — GEODYN-3B experimental trajectory archive MVP (local synthetic validation)
+
+- Implemented `src/arcana_worldsim/r6/experimental_trajectory_archive.py` and focused tests under the previously ratified GEODYN-3A scope. The index references original solver payloads without copying them, records incremental SHA256/length identities, and exposes exact native-time metadata queries plus explicit on-demand numerical reads through the existing ASPECT adapter. Canonical HistoryStore/DomainStateEnvelope/segment archive contracts were not changed.
+- Windows Python 3.12.10 focused archive + reader suite: 42 passed, 2 skipped because symlink creation was denied by Windows policy (WinError 1314). `py_compile` passed. These are synthetic software tests only; no original FAIR series was available, no FAIR/Linux qualification was run, and no ASPECT solver was executed.
+- Report: `docs/arcana/GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP.md`. Operator-provided R1 FAIR evidence remains unauthenticated in this Windows record; earlier real-format probe failure remains immutable. No new numerical evidence bundle was created.
+- Result: `GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP_LOCAL_PASS__FAIR_QUALIFICATION_PENDING`. Next: GEODYN-3C read-only qualification on the exact implementation commit against the original R1 files and independent numeric audit. Scientific/canonical gates remain unchanged.
+
 ## 2026-10-26 — R6-SURF-2 Fastscapelib SPL + R6 material/hydrology coupling
 
 - Added an optional Fastscapelib SPL adapter with explicit synthetic 6×6 raster to R6 3×3 node-area mapping, SPL bedrock-volume to synthetic-material-mass transfer, R6 annual hydrology/sediment transport, a zero-erosion control, and combined checkpoint continuation. R6 bedrock detachment is disabled in this run to prevent double counting. Deep is unchanged; gFlex received no load.
