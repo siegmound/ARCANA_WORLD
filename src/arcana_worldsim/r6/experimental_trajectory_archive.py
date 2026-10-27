@@ -28,6 +28,7 @@ from .adapters.aspect_snapshot_reader import (
 SCHEMA = "ARCANA_GEODYN_EXPERIMENTAL_TRAJECTORY_V1"
 AUTHORITY = "OPERATOR_REPORTED_UNAUTHENTICATED"
 _HEX = re.compile(r"^[0-9a-f]{64}$")
+_GIT_OBJECT_ID = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 _ID_TOKEN = re.compile(r"^[A-Za-z0-9_.:-]{1,160}$")
 
 
@@ -53,7 +54,12 @@ class SourceDigest:
 
 @dataclass(frozen=True)
 class RunIdentityClaim:
-    """Caller-supplied provenance claims; validation does not authenticate them."""
+    """Caller-supplied provenance claims; validation does not authenticate them.
+
+    Git object IDs retain their exact lowercase spelling (SHA-1 or SHA-256).
+    Optional algorithm declarations belong in ``declared_provenance``; the
+    implementation does not infer/authenticate an algorithm from ID length.
+    """
 
     attempt_id: str
     solver_name: str
@@ -77,9 +83,11 @@ class RunIdentityClaim:
                 raise ValueError(f"{name} must be declared")
         if not _ID_TOKEN.fullmatch(self.attempt_id):
             raise ValueError("attempt_id must be a stable safe token")
-        for name in ("solver_source_commit", "repository_commit", "adapter_commit", "configuration_sha256"):
-            if not _HEX.fullmatch(getattr(self, name)):
-                raise ValueError(f"{name} must be a lowercase SHA256/commit identity")
+        for name in ("solver_source_commit", "repository_commit", "adapter_commit"):
+            if not _GIT_OBJECT_ID.fullmatch(getattr(self, name)):
+                raise ValueError(f"{name} must be an exact lowercase 40- or 64-hex Git object ID")
+        if not _HEX.fullmatch(self.configuration_sha256):
+            raise ValueError("configuration_sha256 must be exactly 64 lowercase hexadecimal characters")
         if not self.input_identities or any(not _HEX.fullmatch(v) for v in self.input_identities):
             raise ValueError("input_identities must contain lowercase SHA256 identities")
         if not self.time_unit_source.strip() or not math.isfinite(self.solver_completed_time):

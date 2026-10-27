@@ -1,4 +1,14 @@
-# CURRENT — GEODYN-3B experimental archive MVP implemented locally (2026-10-27)
+# CURRENT — GEODYN-3B-R1 Git identity compatibility repaired locally (2026-10-27)
+
+Decision: `GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY_LOCAL_PASS__GEODYN_3C_FAIR_PENDING`.
+
+Report: `docs/arcana/GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY.md`. `RunIdentityClaim` now preserves exact lowercase 40- or 64-hex Git IDs for its three commit fields; configuration and input SHA256 constraints remain 64 hex. The schema and identity formula are unchanged. The FAIR handoff binds real IDs to the exact new commit and parent, and blocks if historical configuration/input hashes or source inventory/claims cannot be recovered. Focused Windows archive + reader suite: 69 passed, 2 symlink privilege skips; py_compile and diff-check passed. No FAIR data or solver was accessed.
+
+GEODYN-3C remains pending: transfer and execute the handoff on the exact committed source only if preserved inputs are available. No fabricated IDs/hashes. Gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+# PREVIOUS CURRENT — GEODYN-3B experimental archive MVP implemented locally (2026-10-27)
 
 Decision: `GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP_LOCAL_PASS__FAIR_QUALIFICATION_PENDING`.
 

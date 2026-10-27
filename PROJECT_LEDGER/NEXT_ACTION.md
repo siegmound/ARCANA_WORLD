@@ -1,4 +1,10 @@
-# NEXT — GEODYN-3C validation of the GEODYN-3B index against existing FAIR data (2026-10-27)
+# NEXT — GEODYN-3C qualification only after exact evidence recovery (2026-10-27)
+
+The GEODYN-3B-R1 identity compatibility repair is locally tested and the handoff now uses the exact typed Git commit fields; see `docs/arcana/GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY.md`. Before FAIR qualification, recover the original source inventory, `configuration_sha256`, each `input_identities` SHA256, original attempt ID and time-unit source from preserved records. The FAIR evidence paths named in prior reports are operator-reported; those files have not been imported here. If any value is unavailable, stop as BLOCKED; do not synthesize or replace it. Once recovered, review the exact handoff commit and run only the existing-output GEODYN-3C qualification. No ASPECT solver or ARCANA forward run. Gates remain `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+
+---
+
+# PREVIOUS NEXT — GEODYN-3C validation of the GEODYN-3B index against existing FAIR data (2026-10-27)
 
 After review/transfer of the exact GEODYN-3B implementation commit, run only the read-only indexer and integrity/query checks against the original GEODYN-2A-R1 source series and independent `NUMERIC_AUDIT.json`. Use a new external evidence directory and an independently preserved expected source inventory. Verify the 11 actual snapshots, native times, 1152 points/512 quadrilaterals, nine-field schema, typed numeric digests, stability/duplicate observations, and the gap between last snapshot (1.0142299266 s) and solver completion (1.098612289 s). Do not fabricate a terminal snapshot. Preserve existing source bytes and historical failure evidence. No ASPECT solve, MPI, remapping, interpolation, geological-time conversion, restart, ARCANA forward evolution or canonical records.
 

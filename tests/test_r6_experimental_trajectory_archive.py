@@ -4,6 +4,7 @@ import hashlib
 import json
 import shutil
 import sys
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -60,15 +61,62 @@ def _inventory(root: Path) -> dict[str, SourceDigest]:
 
 
 def _claim() -> RunIdentityClaim:
-    digest = "a" * 64
     return RunIdentityClaim(
         attempt_id="fixture-attempt-01", solver_name="ASPECT", solver_version="fixture",
-        solver_source_commit="b" * 64, repository_commit="c" * 64, adapter_commit="d" * 64,
+        solver_source_commit="30eb77ee5da186137d436dbad35c6cb3cab64b69",
+        repository_commit="1fd5e8d8f21e28876da9ef89423755615efc6162",
+        adapter_commit="e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa",
         configuration_sha256="e" * 64, input_identities=("f" * 64,), time_basis_id="native-seconds-v1",
         time_unit="s", time_unit_source="synthetic test declaration", solver_completed_time=2.5,
         availability_checked_at_utc="2026-01-01T00:00:00Z",
-        declared_provenance={"fixture": "TEST_ONLY"}, build_identity="TEST_ONLY",
+        declared_provenance={"fixture": "TEST_ONLY", "solver_source_commit_algorithm": "sha1",
+                             "repository_commit_algorithm": "sha1", "adapter_commit_algorithm": "sha1"},
+        build_identity="TEST_ONLY",
     )
+
+
+def test_run_identity_accepts_real_sha1_ids_and_preserves_algorithm_provenance():
+    claim = _claim()
+    assert claim.solver_source_commit == "30eb77ee5da186137d436dbad35c6cb3cab64b69"
+    assert claim.repository_commit == "1fd5e8d8f21e28876da9ef89423755615efc6162"
+    assert claim.adapter_commit == "e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa"
+    assert {key: claim.declared_provenance[key] for key in (
+        "solver_source_commit_algorithm", "repository_commit_algorithm", "adapter_commit_algorithm"
+    )} == {"solver_source_commit_algorithm": "sha1", "repository_commit_algorithm": "sha1",
+          "adapter_commit_algorithm": "sha1"}
+    # The exact strings survive in the deterministic identity payload/manifest.
+    assert claim.solver_source_commit in json.dumps(claim.__dict__, sort_keys=True)
+
+
+def test_run_identity_accepts_sha256_git_object_ids_without_rewriting_them():
+    claim = replace(_claim(), solver_source_commit="a" * 64,
+                    repository_commit="b" * 64, adapter_commit="c" * 64,
+                    declared_provenance={"fixture": "TEST_ONLY", "solver_source_commit_algorithm": "sha256",
+                                         "repository_commit_algorithm": "sha256",
+                                         "adapter_commit_algorithm": "sha256"})
+    assert (claim.solver_source_commit, claim.repository_commit, claim.adapter_commit) == (
+        "a" * 64, "b" * 64, "c" * 64)
+
+
+@pytest.mark.parametrize("length", (39, 41, 63, 65))
+@pytest.mark.parametrize("field", ("solver_source_commit", "repository_commit", "adapter_commit"))
+def test_run_identity_rejects_unsupported_git_object_id_lengths(field, length):
+    with pytest.raises(ValueError, match="40- or 64-hex"):
+        replace(_claim(), **{field: "a" * length})
+
+
+@pytest.mark.parametrize("bad_id", ("g" * 40, "A" * 40, "G" * 64, "A" * 64))
+@pytest.mark.parametrize("field", ("solver_source_commit", "repository_commit", "adapter_commit"))
+def test_run_identity_rejects_nonhex_or_uppercase_git_object_ids(field, bad_id):
+    with pytest.raises(ValueError, match="40- or 64-hex"):
+        replace(_claim(), **{field: bad_id})
+
+
+def test_run_identity_keeps_configuration_and_inputs_strictly_sha256():
+    with pytest.raises(ValueError, match="configuration_sha256 must be exactly 64"):
+        replace(_claim(), configuration_sha256="a" * 40)
+    with pytest.raises(ValueError, match="input_identities"):
+        replace(_claim(), input_identities=("a" * 40,))
 
 
 def _build(source: Path, output: Path, *, inventory=None, variable_mesh=False):
@@ -97,7 +145,12 @@ def test_manifest_and_ids_are_deterministic_across_relocated_source_roots(tmp_pa
     manifest_a = (out_a / "manifest.json").read_bytes()
     manifest_b = (out_b / "manifest.json").read_bytes()
     assert manifest_a == manifest_b
-    assert json.loads(manifest_a)["archive_id"] == first.archive_id
+    manifest_doc = json.loads(manifest_a)
+    assert manifest_doc["archive_id"] == first.archive_id
+    assert manifest_doc["run"]["identity_payload"]["solver"]["source_commit"] == _claim().solver_source_commit
+    assert manifest_doc["run"]["identity_payload"]["source"] == {
+        "repository_commit": _claim().repository_commit, "adapter_commit": _claim().adapter_commit}
+    assert manifest_doc["run"]["source"]["provenance_claims"]["solver_source_commit_algorithm"] == "sha1"
     assert not any(path.suffix == ".vtu" for path in out_a.iterdir())
     assert sorted(path.name for path in out_a.iterdir()) == ["manifest.json", "manifest.sha256"]
 

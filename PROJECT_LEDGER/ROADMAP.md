@@ -31,7 +31,7 @@ Prototypes are noncanonical engineering products. Existing F2A-V, mechanics, Sol
 
 ## GEODYN-3B — experimental trajectory archive MVP implemented locally
 
-Decision: `GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP_LOCAL_PASS__FAIR_QUALIFICATION_PENDING`; report `docs/arcana/GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP.md`. The bounded index/query implementation reuses the qualified ASPECT reader and compatible R6 identity primitives, stores only metadata/references and a manifest seal, and claims no restart/reconstruction. Focused Windows tests passed 42 with 2 symlink-privilege skips. GEODYN-3C must qualify it against existing FAIR R1 payloads and the independent audit; no solver run. This does not alter canonical or scientific gates.
+Decision: `GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP_LOCAL_PASS__FAIR_QUALIFICATION_PENDING`; report `docs/arcana/GEODYN_3B_EXPERIMENTAL_TRAJECTORY_ARCHIVE_MVP.md`. The bounded index/query implementation reuses the qualified ASPECT reader and compatible R6 identity primitives, stores only metadata/references and a manifest seal, and claims no restart/reconstruction. The R1 compatibility repair is locally verified in `docs/arcana/GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY.md`: exact 40/64 lowercase Git object IDs are retained; config/input SHA256 remain 64. Combined Windows suite: 69 passed, 2 symlink-privilege skips. GEODYN-3C still requires exact original run/config/input/inventory evidence; absent values block qualification. No FAIR files or solver execution. This does not alter canonical or scientific gates.
 
 ## GEODYN-3A — experimental trajectory archive contract ratified
 

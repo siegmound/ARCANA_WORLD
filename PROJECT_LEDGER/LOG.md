@@ -685,3 +685,10 @@ immutable evidence directory. No supervisor production mode or ENG10K evolution.
 - Evidence locator: `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2A_R1_FAIR_QUALIFICATION/20261027T105033Z_exact_commit`. The runner, comparison report, manifest and raw files were not transferred/rehashed on Windows; all FAIR run details remain operator-reported here.
 - Preserved earlier FAIL at `.../GEODYN_2A_REAL_VTU_PROBE/20261027T100741Z_probe`; R1 corrected valid unnamed coordinate arrays and split Base64 header/payload framing. No failure was reclassified. No VTU outputs were copied to Git and no solver, MPI, remapping, ARCANA forward run or WORLD_HISTORY operation occurred.
 - Next bounded work: define GEODYN-3 experimental trajectory archive/query contract. Scientific ARCANA forward problem remains blocked; production and canonical gates remain unchanged.
+
+## 2026-10-27 — GEODYN-3B-R1 Git identity compatibility repair (local only)
+
+- Corrected `RunIdentityClaim`: the three Git commit fields accept exact lowercase 40- or 64-hex object IDs; configuration and input digests remain SHA256-64. Identity serialization/schema were not changed. Algorithm declarations are retained as flat string-valued caller provenance fields and are not authenticated.
+- Updated GEODYN-3C launcher to bind its exact implementation commit through `GEODYN3C_EXPECTED_COMMIT`, require the known parent, and check the exact ASPECT, GEODYN-2A-R1 and GEODYN-3B IDs in their typed fields. Missing historical configuration/input hashes, source inventory or attempt metadata remain a hard BLOCKED condition.
+- Windows combined archive + reader suite: 69 passed, 2 symlink-privilege skips; py_compile and `git diff --check` passed. Linux must run all 71 tests without skips. No FAIR data, ASPECT or numerical solver was accessed; no new evidence bundle exists.
+- Report: `docs/arcana/GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY.md`. Decision: `GEODYN_3B_R1_GIT_IDENTITY_COMPATIBILITY_LOCAL_PASS__GEODYN_3C_FAIR_PENDING`. Scientific/canonical gates unchanged.
