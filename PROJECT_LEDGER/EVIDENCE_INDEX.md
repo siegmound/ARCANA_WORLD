@@ -2,9 +2,10 @@
 
 - Report: `docs/arcana/GEODYN_2A_ASPECT_READONLY_SNAPSHOT_ADAPTER.md`.
 - New local files: `src/arcana_worldsim/r6/adapters/aspect_snapshot_reader.py` and `tests/test_r6_aspect_snapshot_reader.py`.
-- Windows Python 3.12.10: py_compile PASS; focused suite 21 passed / 1 skipped (external symlink fixture unavailable on this Windows setup); `git diff --check` PASS. Test basetemp `outputs/_pytest_aspect_snapshot_reader_20261027_10/` is a local test artifact, not for source publication.
+- Original GEODYN-2A adapter baseline: Windows Python 3.12.10, 21 passed / 1 skipped; prior test output under `outputs/_pytest_aspect_snapshot_reader_20261027_10/` is local and not for source publication. GEODYN-2A-R1 repair: 31 passed / 1 skipped, `py_compile` and `git diff --check` PASS; local test output under `outputs/_pytest_aspect_snapshot_reader_r1_20261027_15/` is a local test artifact. Typed endian-aware SHA256 values are exposed for coordinates and fields for comparison with the audit where serialization matches. The Windows-only skip is external symlink creation unavailable; corresponding security test remains in the suite for Linux.
 - No new runtime/evolution evidence. The FAIR bundle and GEODYN-2C audit remain operator-reported at `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2_RIGID_SHEAR/20261026T234423Z_transient_rank1` and `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2C_NUMERIC_AUDIT/20261027T000139Z_numeric_audit`; original files have not been imported or independently hashed on Windows. Adapter execution on FAIR is pending.
 - Local decision: `GEODYN_2A_ASPECT_READONLY_ADAPTER_LOCAL_TESTS_PASS__FAIR_VALIDATION_PENDING`; caller-declared MPI/provenance fields are not authenticated. No solver, MPI, remapping, ARCANA trajectory or canonical write occurred.
+- R1 outcome: `GEODYN_2A_R1_REAL_VTK_FORMAT_REPAIR_LOCAL_PASS__FAIR_PENDING`. The first FAIR probe failure remains an operator-reported FAIL at `ARCANA_WORLD_EVIDENCE/R6/GEODYN_2A_REAL_VTU_PROBE/20261027T100741Z_probe`; no original FAIR file or log was imported/rehashed on Windows. Linux rerun and independent numeric audit comparison remain pending; no new solver or numerical evolution occurred.
 
 ---
 

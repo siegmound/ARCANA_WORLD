@@ -1,12 +1,12 @@
 # CURRENT — GEODYN-2A read-only ASPECT snapshot adapter (2026-10-27)
 
-Decision: `GEODYN_2A_ASPECT_READONLY_ADAPTER_LOCAL_TESTS_PASS__FAIR_VALIDATION_PENDING`.
+Decision: `GEODYN_2A_R1_REAL_VTK_FORMAT_REPAIR_LOCAL_PASS__FAIR_PENDING` (the earlier GEODYN-2A baseline verdict and first FAIR probe failure remain historical and unchanged).
 
 Report: `docs/arcana/GEODYN_2A_ASPECT_READONLY_SNAPSHOT_ADAPTER.md`. A bounded read-only PVD/PVTU/VTU reader and synthetic tests are present in the Windows worktree. It handles only one-rank/single-Piece inline ASCII or Base64 binary (uncompressed/zlib) datasets; the single-rank value and caller provenance are declarations, not authenticated by VTK. Outputs remain `SYNTHETIC_ENGINEERING_ONLY`, never `DomainStateEnvelope`; no ARCANA remap or canonical write is available.
 
-Windows Python 3.12.10: focused suite 21 passed, 1 skipped (Windows could not create the external symlink fixture); py_compile and `git diff --check` pass. FAIR original files were not read or rehashed. The operator-reported 11 snapshots end at 1.0142299266 s, before reported solver completion at 1.098612289 s. `T` was reported constant zero; its discrepancy with the initial expression is unresolved. No field is inferred for solver completion. FAIR validation remains pending.
+Windows Python 3.12.10: after the GEODYN-2A-R1 repair, focused suite 31 passed, 1 skipped (Windows could not create the external symlink fixture); py_compile and `git diff --check` pass. Regression coverage now includes unnamed coordinate arrays, segmented Base64 framing, compressed connectivity, UInt64/BigEndian headers, and malformed/truncated streams. The first FAIR end-to-end probe remains an immutable FAIL with the operator-reported unnamed-Points error; the original FAIR files were not read or rehashed on Windows. The operator-reported 11 snapshots end at 1.0142299266 s, before reported solver completion at 1.098612289 s. `T` was reported constant zero; its discrepancy with the initial expression is unresolved. No field is inferred for solver completion. FAIR validation remains pending.
 
-Next: review and publish/transfer the adapter source, then run the read-only CLI on the existing FAIR evidence directory and compare hashes/schema/timing with the original numeric audit. No ASPECT solver, MPI, remapping, ARCANA forward run or canonical publication is authorized. All scientific and operational gates remain unchanged, including `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+Next: review and publish/transfer the R1 adapter, tests and report, then run the Linux suite and read-only CLI on the existing FAIR evidence directory. Compare numeric values and field bytes against the independent audit using matching type/endian serialization; file hashes and unlike mesh fingerprints alone are insufficient. No ASPECT solver, MPI, remapping, ARCANA forward run or canonical publication is authorized. All scientific and operational gates remain unchanged, including `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

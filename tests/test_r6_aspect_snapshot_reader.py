@@ -34,70 +34,132 @@ def _raw(kind: str, values: tuple[int | float, ...], endian: str = "<") -> bytes
     return struct.pack(endian + str(len(values)) + fmt, *values)
 
 
-def _binary_text(kind: str, values: tuple[int | float, ...], compressed: bool, endian: str = "<") -> str:
+def _binary_text(kind: str, values: tuple[int | float, ...], compressed: bool,
+                 endian: str = "<", header_type: str = "UInt32", segmented: bool = False,
+                 multi_block: bool = False,
+                 header_override: tuple[int, ...] | None = None,
+                 data_override: bytes | None = None) -> str:
     raw = _raw(kind, values, endian)
     if compressed:
-        packed = zlib.compress(raw)
-        blob = struct.pack(endian + "IIII", 1, len(raw), len(raw), len(packed)) + packed
+        if multi_block and len(raw) > 1 and data_override is None:
+            split = len(raw) // 2
+            raw_blocks = (raw[:split], raw[split:])
+            packed_blocks = tuple(zlib.compress(block) for block in raw_blocks)
+            header_values = (2, split, len(raw_blocks[-1]), *(len(block) for block in packed_blocks))
+            data = b"".join(packed_blocks)
+        else:
+            packed = zlib.compress(raw) if data_override is None else data_override
+            header_values = (1, len(raw), len(raw), len(packed))
+            data = packed
     else:
-        blob = struct.pack(endian + "I", len(raw)) + raw
-    return base64.b64encode(blob).decode("ascii")
+        header_values = (len(raw),)
+        data = raw
+    if header_override is not None:
+        header_values = header_override
+    header_code = "I" if header_type == "UInt32" else "Q"
+    header = struct.pack(endian + str(len(header_values)) + header_code, *header_values)
+    if segmented:
+        return (base64.b64encode(header) + base64.b64encode(data)).decode("ascii")
+    return base64.b64encode(header + data).decode("ascii")
 
 
-def _da(name: str, kind: str, values: tuple[int | float, ...], components: int = 1,
+def _da(name: str | None, kind: str, values: tuple[int | float, ...], components: int = 1,
         mode: str = "ascii", compressed: bool = False, units: str | None = None,
-        endian: str = "<") -> str:
-    attrs = f'Name="{name}" type="{kind}" NumberOfComponents="{components}" format="{mode}"'
+        endian: str = "<", header_type: str = "UInt32", segmented: bool = False,
+        multi_block: bool = False,
+        header_override: tuple[int, ...] | None = None, data_override: bytes | None = None) -> str:
+    attrs = f'type="{kind}" NumberOfComponents="{components}" format="{mode}"'
+    if name is not None:
+        attrs = f'Name="{name}" ' + attrs
     if units is not None:
         attrs += f' Units="{units}"'
     if mode == "ascii":
         body = " ".join(str(v) for v in values)
     else:
-        body = _binary_text(kind, values, compressed, endian)
+        body = _binary_text(kind, values, compressed, endian, header_type, segmented,
+                            multi_block, header_override, data_override)
     return f"<DataArray {attrs}>{body}</DataArray>"
 
 
 def _write_vtu(path: Path, *, mode: str = "ascii", compressed: bool = False,
+               segmented: bool = False, header_type: str = "UInt32",
+               multi_block_connectivity: bool = False,
                time_state: int = 0, corrupt: str | None = None,
                byte_order: str = "LittleEndian") -> None:
     endian = "<" if byte_order == "LittleEndian" else ">"
-    points = _da("Points", "Float32", POINTS, 3, mode, compressed, endian=endian)
-    connectivity = _da("connectivity", "Int32", CONNECTIVITY, 1, mode, compressed, endian=endian)
-    offsets = _da("offsets", "Int32", OFFSETS, 1, mode, compressed, endian=endian)
-    cell_types = _da("types", "UInt8", CELL_TYPES, 1, mode, compressed, endian=endian)
+    points = _da("Points", "Float32", POINTS, 3, mode, compressed, endian=endian,
+                 header_type=header_type, segmented=segmented)
+    connectivity = _da("connectivity", "Int32", CONNECTIVITY, 1, mode, compressed, endian=endian,
+                       header_type=header_type, segmented=segmented,
+                       multi_block=multi_block_connectivity)
+    offsets = _da("offsets", "Int32", OFFSETS, 1, mode, compressed, endian=endian,
+                  header_type=header_type, segmented=segmented)
+    cell_types = _da("types", "UInt8", CELL_TYPES, 1, mode, compressed, endian=endian,
+                     header_type=header_type, segmented=segmented)
     velocity = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) if time_state == 0 else (1, 0, 0) * 4
     temperature = (0, 0, 0, 0)
     if corrupt == "nan":
         temperature = (0, float("nan"), 0, 0)
     if corrupt == "bad_connection":
-        connectivity = _da("connectivity", "Int32", (0, 1, 2, 99), 1, mode, compressed, endian=endian)
+        connectivity = _da("connectivity", "Int32", (0, 1, 2, 99), 1, mode, compressed,
+                           endian=endian, header_type=header_type, segmented=segmented)
     point_fields = "".join((
-        _da("velocity", "Float32", velocity, 3, mode, compressed, "m/s", endian),
-        _da("p", "Float32", (2, 2, 2, 2) if time_state == 0 else (3, 3, 3, 3), 1, mode, compressed, "Pa", endian),
-        _da("density", "Float32", (3300, 3300, 3300, 3300), 1, mode, compressed, "kg/m^3", endian),
-        _da("density_comp", "Float32", (3300, 3300, 3300, 3300), 1, mode, compressed, "kg/m^3", endian),
-        _da("T", "Float32", temperature, 1, mode, compressed, "K", endian),
-        _da("viscosity", "Float32", (1, 1, 1, 1), 1, mode, compressed, "Pa s", endian),
-        _da("stress", "Float64", (1, 2, 3, 4) if time_state else (0, 0, 0, 0), 1, mode, compressed, "Pa", endian),
+        _da("velocity", "Float32", velocity, 3, mode, compressed, "m/s", endian,
+            header_type, segmented),
+        _da("p", "Float32", (2, 2, 2, 2) if time_state == 0 else (3, 3, 3, 3), 1, mode, compressed,
+            "Pa", endian, header_type, segmented),
+        _da("density", "Float32", (3300, 3300, 3300, 3300), 1, mode, compressed,
+            "kg/m^3", endian, header_type, segmented),
+        _da("density_comp", "Float32", (3300, 3300, 3300, 3300), 1, mode, compressed,
+            "kg/m^3", endian, header_type, segmented),
+        _da("T", "Float32", temperature, 1, mode, compressed, "K", endian, header_type, segmented),
+        _da("viscosity", "Float32", (1, 1, 1, 1), 1, mode, compressed,
+            "Pa s", endian, header_type, segmented),
+        _da("stress", "Float64", (1, 2, 3, 4) if time_state else (0, 0, 0, 0), 1, mode, compressed,
+            "Pa", endian, header_type, segmented),
     ))
     if corrupt == "appended":
         points = _da("Points", "Float32", POINTS, 3, "appended")
-    if corrupt == "bad_zlib":
-        raw = _raw("Float32", POINTS)
+    if corrupt in {"bad_zlib", "bad_header", "bad_block_size", "bad_block_count", "bad_padding",
+                    "truncated", "zlib_truncated", "zlib_trailing"}:
+        raw = _raw("Float32", POINTS, endian)
         packed = zlib.compress(raw)
-        damaged = packed[:-1] + bytes((packed[-1] ^ 0xFF,))
-        bad_blob = struct.pack("<IIII", 1, len(raw), len(raw), len(packed)) + damaged
-        points = points.replace(_binary_text("Float32", POINTS, True), base64.b64encode(bad_blob).decode("ascii"))
-    xml = (f'<VTKFile type="UnstructuredGrid" version="1.0" byte_order="{byte_order}"'
-           f'{" compressor=\"vtkZLibDataCompressor\"" if compressed else ""}>'
+        header = (1, len(raw), len(raw), len(packed))
+        if corrupt == "bad_zlib":
+            packed = packed[:-1] + bytes((packed[-1] ^ 0xFF,))
+        elif corrupt == "zlib_truncated":
+            packed = packed[:-1]
+        elif corrupt == "zlib_trailing":
+            packed += b"unexpected trailing byte"
+        elif corrupt == "bad_header":
+            header = (1, len(raw), len(raw) + 1, len(packed))
+        elif corrupt == "bad_block_size":
+            header = (1, len(raw), len(raw), len(packed) + 1)
+        elif corrupt == "bad_block_count":
+            header = (2**32 - 1, len(raw), len(raw), len(packed))
+        binary = _binary_text("Float32", POINTS, True, endian, header_type, segmented,
+                              header_override=header, data_override=packed)
+        if corrupt == "bad_padding":
+            if "=" not in binary[:-2]:
+                raise AssertionError("fixture requires separately padded header")
+            binary = binary.replace("=", "A", 1)
+        elif corrupt == "truncated":
+            binary = binary[:-2]
+        points = f'<DataArray Name="Points" type="Float32" NumberOfComponents="3" format="binary">{binary}</DataArray>'
+    if corrupt == "unnamed_points":
+        points = points.replace('Name="Points" ', "", 1)
+    if corrupt == "unnamed_field":
+        point_fields = point_fields.replace('Name="p" ', "", 1)
+    header_attr = f' header_type="{header_type}"'
+    xml = (f'<VTKFile type="UnstructuredGrid" version="1.0" byte_order="{byte_order}"{header_attr}'
+           f'{" compressor=\"vtkZLibDataCompressor\"" if compressed or corrupt in {"bad_zlib", "bad_header", "bad_block_size", "bad_padding", "truncated"} else ""}>'
            f'<UnstructuredGrid><Piece NumberOfPoints="4" NumberOfCells="1">'
-           f'<PointData>{point_fields}</PointData><CellData>{_da("material_id", "Int32", (1,), 1, mode, compressed, endian=endian)}</CellData>'
+           f'<PointData>{point_fields}</PointData><CellData>{_da("material_id", "Int32", (1,), 1, mode, compressed, endian=endian, header_type=header_type, segmented=segmented)}</CellData>'
            f'<Points>{points}</Points><Cells>{connectivity}{offsets}{cell_types}</Cells>'
            f'</Piece></UnstructuredGrid></VTKFile>')
     if corrupt == "appended_root":
-        xml = xml.replace("version=\"1.0\"", "version=\"1.0\"" + " AppendedData=\"raw\"")
+        xml = xml.replace("version=\"1.0\"", "version=\"1.0\" AppendedData=\"raw\"")
     path.write_text(xml, encoding="utf-8")
-
 
 def _write_pvd(path: Path, entries: list[tuple[float, str]]) -> None:
     datasets = "".join(f'<DataSet timestep="{time}" group="" part="0" file="{name}"/>'
@@ -158,6 +220,61 @@ def test_big_endian_inline_binary_decodes_numeric_values(tmp_path):
                                     time_unit_source="fixture input", mpi_rank_count=1).read_snapshot(0)
     assert snapshot.mesh.connectivity == CONNECTIVITY
     assert snapshot.fields["point:p"].values == (3.0, 3.0, 3.0, 3.0)
+
+
+@pytest.mark.parametrize(
+    "header_type,byte_order,compressed",
+    [("UInt32", "LittleEndian", False), ("UInt64", "BigEndian", True)],
+)
+def test_segmented_base64_and_unnamed_points_decode_without_fabricating_metadata(
+    tmp_path, header_type, byte_order, compressed
+):
+    _write_vtu(tmp_path / "segmented.vtu", mode="binary", compressed=compressed,
+               segmented=True, header_type=header_type, byte_order=byte_order,
+               multi_block_connectivity=compressed,
+               corrupt="unnamed_points", time_state=1)
+    _write_pvd(tmp_path / "series.pvd", [(0.0, "segmented.vtu")])
+    series = AspectSnapshotSeries(tmp_path / "series.pvd", run_id="segmented", time_unit="s",
+                                  time_unit_source="fixture", mpi_rank_count=1)
+    snapshot = series.read_snapshot(0)
+    assert snapshot.mesh.coordinates == POINTS
+    assert snapshot.mesh.coordinate_source_name is None
+    assert snapshot.mesh.connectivity == CONNECTIVITY
+    assert snapshot.fields["point:velocity"].values[:3] == (1.0, 0.0, 0.0)
+    endian = "<" if byte_order == "LittleEndian" else ">"
+    assert snapshot.mesh.coordinate_sha256_bytes == hashlib.sha256(
+        _raw("Float32", POINTS, endian)
+    ).hexdigest()
+    assert snapshot.fields["point:velocity"].metadata.sha256_bytes == hashlib.sha256(
+        _raw("Float32", (1, 0, 0) * 4, endian)
+    ).hexdigest()
+    audit_row = series.audit().snapshots[0]
+    assert audit_row.coordinate_source_name is None
+    assert audit_row.coordinate_vtk_type == "Float32"
+    assert audit_row.coordinate_sha256_bytes == snapshot.mesh.coordinate_sha256_bytes
+    velocity_metadata = next(item for item in audit_row.field_metadata if item.name == "velocity")
+    assert velocity_metadata.sha256_bytes == snapshot.fields["point:velocity"].metadata.sha256_bytes
+
+
+@pytest.mark.parametrize("corrupt", ["bad_header", "bad_block_size", "bad_block_count", "bad_padding",
+                                     "truncated", "zlib_truncated", "zlib_trailing"])
+def test_segmented_base64_rejects_corrupt_header_padding_and_payload(tmp_path, corrupt):
+    _write_vtu(tmp_path / "bad.vtu", mode="binary", compressed=True, segmented=True,
+               header_type="UInt64", byte_order="BigEndian", corrupt=corrupt)
+    _write_pvd(tmp_path / "bad.pvd", [(0.0, "bad.vtu")])
+    series = AspectSnapshotSeries(tmp_path / "bad.pvd", run_id="bad", time_unit="s",
+                                  time_unit_source="fixture", mpi_rank_count=1)
+    with pytest.raises(SnapshotFormatError):
+        series.read_snapshot(0)
+
+
+def test_physical_array_without_name_remains_rejected(tmp_path):
+    _write_vtu(tmp_path / "bad.vtu", corrupt="unnamed_field")
+    _write_pvd(tmp_path / "bad.pvd", [(0.0, "bad.vtu")])
+    series = AspectSnapshotSeries(tmp_path / "bad.pvd", run_id="bad", time_unit="s",
+                                  time_unit_source="fixture", mpi_rank_count=1)
+    with pytest.raises(SnapshotFormatError, match="Name"):
+        series.read_snapshot(0)
 
 
 def test_series_reports_stable_mesh_schema_invariants_duplicates_and_no_completion_snapshot(tmp_path):

@@ -58,6 +58,8 @@ class ReaderLimits:
 @dataclass(frozen=True)
 class ArrayMetadata:
     name: str
+    source_name: str | None
+    sha256_bytes: str
     association: str
     vtk_type: str
     components: int
@@ -91,6 +93,9 @@ class AspectSnapshotRecord:
 class MeshValues:
     point_count: int
     cell_count: int
+    coordinate_source_name: str | None
+    coordinate_vtk_type: str
+    coordinate_sha256_bytes: str
     coordinates: tuple[float, ...]
     connectivity: tuple[int, ...]
     offsets: tuple[int, ...]
@@ -115,6 +120,9 @@ class SnapshotMetadata:
     point_count: int
     cell_count: int
     cell_type_counts: Mapping[str, int]
+    coordinate_source_name: str | None
+    coordinate_vtk_type: str
+    coordinate_sha256_bytes: str
     coordinate_bounds: tuple[tuple[float, float], tuple[float, float], tuple[float, float]]
     file_sha256: Mapping[str, str]
     declared_provenance: Mapping[str, str]
@@ -206,80 +214,174 @@ def _unpack_values(raw: bytes, vtk_type: str, byte_order: str) -> list[int | flo
     return values
 
 
-def _decode_binary(text: str, vtk_type: str, byte_order: str, header_type: str,
-                   compressor: str | None, expected_bytes: int, limits: ReaderLimits) -> bytes:
-    encoded = "".join(text.split())
-    if len(encoded) > 2 * (limits.max_array_bytes + 1024 * 1024):
-        raise SnapshotFormatError("base64 array text exceeds configured limit")
-    try:
-        payload = base64.b64decode(encoded, validate=True)
-    except (ValueError, binascii.Error) as exc:
-        raise SnapshotFormatError("invalid base64 VTK array") from exc
-    code, header_size, _ = _DTYPES[header_type]
+def _numeric_values_sha256(values: list[int | float], vtk_type: str, byte_order: str) -> str:
+    code, _, _ = _DTYPES[vtk_type]
     prefix = "<" if byte_order == "LittleEndian" else ">"
+    digest = hashlib.sha256()
+    try:
+        for start in range(0, len(values), 8192):
+            chunk = values[start:start + 8192]
+            digest.update(struct.pack(f"{prefix}{len(chunk)}{code}", *chunk))
+    except (OverflowError, struct.error) as exc:
+        raise SnapshotFormatError(f"could not serialize decoded {vtk_type} values") from exc
+    return digest.hexdigest()
 
-    def read_header(offset: int) -> tuple[int, int]:
-        if offset + header_size > len(payload):
-            raise SnapshotFormatError("truncated VTK binary header")
-        return struct.unpack_from(f"{prefix}{code}", payload, offset)[0], offset + header_size
 
+def _decode_base64_segment(text: str, label: str) -> bytes:
+    try:
+        return base64.b64decode(text, validate=True)
+    except (ValueError, binascii.Error) as exc:
+        raise SnapshotFormatError(f"invalid Base64 {label} segment or padding") from exc
+
+
+def _inline_binary_parts(text: str, byte_order: str, header_type: str,
+                         compressor: str | None, limits: ReaderLimits) -> tuple[tuple[int, ...], bytes]:
+    """Decode VTK's inline binary framing, including separately padded header/data."""
+    encoded = "".join(text.split())
+    if not encoded or len(encoded) > 2 * (limits.max_array_bytes + 1024 * 1024):
+        raise SnapshotFormatError("base64 array text is empty or exceeds configured limit")
+    if header_type not in ("UInt32", "UInt64"):
+        raise SnapshotFormatError("unsupported VTK header integer type")
+    if byte_order not in ("LittleEndian", "BigEndian"):
+        raise SnapshotFormatError("unsupported VTK header byte order")
+    code, word_size, _ = _DTYPES[header_type]
+    endian = "<" if byte_order == "LittleEndian" else ">"
+    initial_word_count = 1 if compressor is None else 3
+    initial_bytes = initial_word_count * word_size
+    initial_chars = ((initial_bytes + 2) // 3) * 4
+    if len(encoded) < initial_chars:
+        raise SnapshotFormatError("truncated VTK binary header")
+
+    segmented = "=" in encoded[:-2]
+    if segmented:
+        # The first compressed-header section has 3*word_size bytes, divisible
+        # by three for both supported header widths; the uncompressed header is
+        # decoded separately below using its exact encoded length.
+        if compressor is None:
+            header_bytes = word_size
+            header_chars = ((header_bytes + 2) // 3) * 4
+            header_raw = _decode_base64_segment(encoded[:header_chars], "header")
+            if len(header_raw) != header_bytes:
+                raise SnapshotFormatError("separately encoded VTK header has an invalid size")
+            header = tuple(int(value) for value in struct.unpack(f"{endian}{code}", header_raw))
+        else:
+            if compressor != "vtkZLibDataCompressor":
+                raise SnapshotFormatError(f"unsupported VTK compressor {compressor!r}")
+            prefix_raw = _decode_base64_segment(encoded[:initial_chars], "header prefix")
+            if len(prefix_raw) != initial_bytes:
+                raise SnapshotFormatError("VTK binary header prefix has an invalid decoded size")
+            prefix_values = struct.unpack(f"{endian}{initial_word_count}{code}", prefix_raw)
+            blocks = prefix_values[0]
+            if blocks < 1 or blocks > limits.max_materialized_values:
+                raise SnapshotFormatError("invalid or excessive zlib block count")
+            header_bytes = (3 + blocks) * word_size
+            header_chars = ((header_bytes + 2) // 3) * 4
+            if len(encoded) < header_chars:
+                raise SnapshotFormatError("truncated VTK binary header or block-size table")
+            header_raw = _decode_base64_segment(encoded[:header_chars], "header")
+            if len(header_raw) != header_bytes:
+                raise SnapshotFormatError("separately encoded VTK header has an invalid size")
+            header = tuple(int(value) for value in struct.unpack(f"{endian}{3 + blocks}{code}", header_raw))
+        data_raw = _decode_base64_segment(encoded[header_chars:], "data")
+        return header, data_raw
+
+    # A continuous stream has no internal padding. Decode it as one payload;
+    # splitting the first Base64 quartets would include bytes from the payload
+    # whenever the header length is not divisible by three.
+    whole = _decode_base64_segment(encoded, "array")
+    if len(whole) < initial_bytes:
+        raise SnapshotFormatError("truncated VTK binary header")
+    initial_values = struct.unpack(f"{endian}{initial_word_count}{code}", whole[:initial_bytes])
     if compressor is None:
-        length, data_offset = read_header(0)
-        if length != expected_bytes or length > limits.max_array_bytes:
-            raise SnapshotFormatError("VTK binary payload length disagrees with its declared shape")
-        raw = payload[data_offset:]
-        if len(raw) != length:
-            raise SnapshotFormatError("truncated or trailing bytes in VTK binary array")
-        return raw
+        header_words = 1
+    else:
+        if compressor != "vtkZLibDataCompressor":
+            raise SnapshotFormatError(f"unsupported VTK compressor {compressor!r}")
+        blocks = initial_values[0]
+        if blocks < 1 or blocks > limits.max_materialized_values:
+            raise SnapshotFormatError("invalid or excessive zlib block count")
+        header_words = 3 + blocks
+    header_bytes = header_words * word_size
+    if len(whole) < header_bytes:
+        raise SnapshotFormatError("truncated VTK binary header or block-size table")
+    header = tuple(int(value) for value in struct.unpack(f"{endian}{header_words}{code}", whole[:header_bytes]))
+    return header, whole[header_bytes:]
 
-    if compressor != "vtkZLibDataCompressor":
-        raise SnapshotFormatError(f"unsupported VTK compressor {compressor!r}")
-    blocks, offset = read_header(0)
-    block_size, offset = read_header(offset)
-    last_block_size, offset = read_header(offset)
-    if blocks < 1 or blocks > limits.max_materialized_values or block_size < 1:
-        raise SnapshotFormatError("invalid or excessive zlib block header")
+def _compressed_layout(header: tuple[int, ...], data_length: int,
+                       limits: ReaderLimits) -> tuple[int, int, int, tuple[int, ...], int]:
+    if len(header) < 4:
+        raise SnapshotFormatError("truncated zlib block header")
+    blocks, block_size, last_block_size = header[:3]
+    if blocks < 1 or blocks > limits.max_materialized_values:
+        raise SnapshotFormatError("invalid or excessive zlib block count")
+    if block_size < 1 or block_size > limits.max_array_bytes:
+        raise SnapshotFormatError("invalid or excessive zlib block size")
     if last_block_size < 1 or last_block_size > block_size:
         raise SnapshotFormatError("invalid zlib last-block size")
-    if (blocks - 1) * block_size + last_block_size != expected_bytes:
+    if len(header) != 3 + blocks:
+        raise SnapshotFormatError("zlib header block-size table has the wrong number of entries")
+    sizes = tuple(header[3:])
+    if any(size <= 0 or size > limits.max_file_bytes for size in sizes):
+        raise SnapshotFormatError("invalid compressed zlib block length")
+    if sum(sizes) != data_length:
+        raise SnapshotFormatError("zlib compressed-size table disagrees with payload length")
+    uncompressed_length = (blocks - 1) * block_size + last_block_size
+    if uncompressed_length > limits.max_array_bytes:
+        raise SnapshotFormatError("zlib decoded payload exceeds configured array limit")
+    return blocks, block_size, last_block_size, sizes, uncompressed_length
+
+
+def _decode_binary(text: str, vtk_type: str, byte_order: str, header_type: str,
+                   compressor: str | None, expected_bytes: int, limits: ReaderLimits) -> bytes:
+    header, data = _inline_binary_parts(text, byte_order, header_type, compressor, limits)
+    if compressor is None:
+        if len(header) != 1:
+            raise SnapshotFormatError("invalid uncompressed VTK header")
+        declared_length = header[0]
+        if declared_length != expected_bytes or declared_length > limits.max_array_bytes:
+            raise SnapshotFormatError("VTK binary payload length disagrees with its declared shape")
+        if len(data) != declared_length:
+            raise SnapshotFormatError("truncated or trailing bytes in VTK binary array")
+        return data
+
+    _, _, _, compressed_sizes, uncompressed_length = _compressed_layout(header, len(data), limits)
+    if uncompressed_length != expected_bytes:
         raise SnapshotFormatError("zlib block sizes disagree with declared array shape")
-    compressed_sizes: list[int] = []
-    for _ in range(blocks):
-        size, offset = read_header(offset)
-        if size <= 0 or size > limits.max_file_bytes:
-            raise SnapshotFormatError("invalid compressed block size")
-        compressed_sizes.append(size)
-    if sum(compressed_sizes) != len(payload) - offset:
-        raise SnapshotFormatError("compressed block table disagrees with payload length")
     output = bytearray()
+    offset = 0
     for index, compressed_size in enumerate(compressed_sizes):
-        expected_block = last_block_size if index == blocks - 1 else block_size
-        compressed = payload[offset:offset + compressed_size]
+        expected_block = header[2] if index == len(compressed_sizes) - 1 else header[1]
+        compressed = data[offset:offset + compressed_size]
         offset += compressed_size
         decoder = zlib.decompressobj()
         try:
             block = decoder.decompress(compressed, expected_block + 1)
-            if len(block) > expected_block or decoder.unconsumed_tail:
-                raise SnapshotFormatError("zlib block expands beyond its declared size")
         except zlib.error as exc:
             raise SnapshotFormatError("invalid zlib-compressed VTK block") from exc
+        if len(block) > expected_block or decoder.unconsumed_tail:
+            raise SnapshotFormatError("zlib block expands beyond its declared size")
         if len(block) != expected_block or not decoder.eof or decoder.unused_data:
-            raise SnapshotFormatError("zlib block has an invalid decoded length or stream")
+            raise SnapshotFormatError("zlib block is truncated, has trailing bytes, or has an invalid decoded length")
         if len(output) + len(block) > limits.max_array_bytes:
             raise SnapshotFormatError("decoded array exceeds configured limit")
         output.extend(block)
-    if len(output) != expected_bytes:
-        raise SnapshotFormatError("decoded zlib payload length mismatch")
+    if offset != len(data) or len(output) != expected_bytes:
+        raise SnapshotFormatError("decoded zlib payload length mismatch or trailing data")
     return bytes(output)
-
 
 def _decode_array(element: ET.Element, *, association: str, tuple_count: int,
                   byte_order: str, header_type: str, compressor: str | None,
                   limits: ReaderLimits, budget: list[int]) -> NumericArray:
-    name = element.attrib.get("Name")
+    source_name = element.attrib.get("Name")
+    if source_name is None and association == "points":
+        # Stable internal coordinate-array key; source_name remains None so
+        # serialized metadata never claims the VTU supplied a Name attribute.
+        name = "__coordinates__"
+    else:
+        name = source_name
     vtk_type = element.attrib.get("type")
     if not name or not _SAFE_ID.fullmatch(name):
-        raise SnapshotFormatError("every numeric array needs a safe, non-empty Name")
+        raise SnapshotFormatError("every physical numeric array needs a safe, non-empty Name")
     if vtk_type not in _DTYPES:
         raise SnapshotFormatError(f"unsupported VTK numeric type {vtk_type!r}")
     components = _required_int(element, "NumberOfComponents", minimum=1) if "NumberOfComponents" in element.attrib else 1
@@ -321,13 +423,15 @@ def _decode_array(element: ET.Element, *, association: str, tuple_count: int,
             maximum = (1 << (bits - (1 if signed else 0))) - 1
             if any(value < minimum or value > maximum for value in values):
                 raise SnapshotFormatError(f"array {name!r} contains a value outside {vtk_type} range")
+        values_sha256 = _numeric_values_sha256(values, vtk_type, byte_order)
     elif fmt == "binary":
         raw = _decode_binary(text, vtk_type, byte_order, header_type, compressor,
                              expected_bytes, limits)
         values = _unpack_values(raw, vtk_type, byte_order)
+        values_sha256 = hashlib.sha256(raw).hexdigest()
     else:
         raise SnapshotFormatError(f"unsupported DataArray format {fmt!r}")
-    metadata = ArrayMetadata(name, association, vtk_type, components, tuple_count,
+    metadata = ArrayMetadata(name, source_name, values_sha256, association, vtk_type, components, tuple_count,
                              element.attrib.get("Units") or element.attrib.get("units"))
     return NumericArray(metadata, tuple(values))
 
@@ -428,7 +532,9 @@ def _parse_vtu(path: Path, limits: ReaderLimits) -> tuple[MeshValues, dict[str, 
         raise SnapshotFormatError("connectivity contains an out-of-range point index")
     if any(cell_type <= 0 or cell_type > 255 for cell_type in cell_types):
         raise SnapshotFormatError("invalid VTK cell type")
-    mesh = MeshValues(point_count, cell_count, coordinates, connectivity, offsets, cell_types)
+    mesh = MeshValues(point_count, cell_count, point_array.metadata.source_name,
+                      point_array.metadata.vtk_type, point_array.metadata.sha256_bytes,
+                      coordinates, connectivity, offsets, cell_types)
 
     fields: dict[str, NumericArray] = {}
     for association, count in (("point", point_count), ("cell", cell_count)):
@@ -449,7 +555,7 @@ def _parse_vtu(path: Path, limits: ReaderLimits) -> tuple[MeshValues, dict[str, 
 
 def _array_tuple_count(element: ET.Element, limits: ReaderLimits, byte_order: str,
                        header_type: str, compressor: str | None) -> int:
-    """Infer flat connectivity tuple count from its bounded payload shape."""
+    """Infer the bounded flat connectivity count using the common VTK decoder."""
     vtk_type = element.attrib.get("type")
     if vtk_type not in _DTYPES:
         raise SnapshotFormatError("unsupported connectivity numeric type")
@@ -458,15 +564,10 @@ def _array_tuple_count(element: ET.Element, limits: ReaderLimits, byte_order: st
     if fmt == "ascii":
         count = len((element.text or "").split())
     elif fmt == "binary":
-        # The expected decoded byte length is not stored separately for a flat
-        # connectivity array; decode its single base64 header to obtain it.
-        # Re-encoding/decoding is bounded by the source file-size limit.
-        encoded = "".join((element.text or "").split())
-        try:
-            payload = base64.b64decode(encoded, validate=True)
-        except (ValueError, binascii.Error) as exc:
-            raise SnapshotFormatError("invalid base64 connectivity array") from exc
-        count = _binary_payload_length(payload, byte_order, header_type, compressor, limits) // size
+        payload_bytes = _binary_payload_length(element.text or "", byte_order, header_type, compressor, limits)
+        if payload_bytes % size:
+            raise SnapshotFormatError("connectivity byte length is not aligned to its VTK numeric type")
+        count = payload_bytes // size
     else:
         raise SnapshotFormatError(f"unsupported DataArray format {fmt!r}")
     if count <= 0 or count * size > limits.max_array_bytes:
@@ -474,26 +575,16 @@ def _array_tuple_count(element: ET.Element, limits: ReaderLimits, byte_order: st
     return count
 
 
-def _binary_payload_length(payload: bytes, byte_order: str, header_type: str,
+def _binary_payload_length(text: str, byte_order: str, header_type: str,
                            compressor: str | None, limits: ReaderLimits) -> int:
-    # Cell arrays are decoded again by _decode_binary; this helper reads only
-    # the binary header to derive the number of connectivity entries.
-    code, size, _ = _DTYPES[header_type]
-    endian = "<" if byte_order == "LittleEndian" else ">"
-    if len(payload) < size:
-        raise SnapshotFormatError("truncated connectivity header")
-    first = struct.unpack_from(f"{endian}{code}", payload, 0)[0]
+    """Return decoded byte length after validating framing (zlib is checked later)."""
+    header, data = _inline_binary_parts(text, byte_order, header_type, compressor, limits)
     if compressor is None:
-        return first
-    if compressor != "vtkZLibDataCompressor" or len(payload) < size * 3:
-        raise SnapshotFormatError("unsupported or truncated compressed connectivity header")
-    blocks = first
-    block_size = struct.unpack_from(f"{endian}{code}", payload, size)[0]
-    last_size = struct.unpack_from(f"{endian}{code}", payload, size * 2)[0]
-    if blocks < 1 or blocks > limits.max_materialized_values or block_size < 1 or last_size < 1 or last_size > block_size:
-        raise SnapshotFormatError("invalid compressed connectivity header")
-    return (blocks - 1) * block_size + last_size
-
+        if len(header) != 1 or header[0] != len(data) or header[0] > limits.max_array_bytes:
+            raise SnapshotFormatError("uncompressed VTK payload length disagrees with its header")
+        return header[0]
+    _, _, _, _, uncompressed_length = _compressed_layout(header, len(data), limits)
+    return uncompressed_length
 
 def _parse_pvtu(path: Path, root_dir: Path, limits: ReaderLimits) -> tuple[Path, tuple[tuple[str, str, int], ...], tuple[str, int]]:
     root = _read_xml(path)
@@ -671,7 +762,9 @@ class AspectSnapshotSeries:
             rows.append(SnapshotMetadata(
                 ordinal, time_value, self.time_unit, vtu_path.relative_to(self.root_dir).as_posix(),
                 snapshot.record.snapshot_id, snapshot.record.mesh_fingerprint,
-                snapshot.mesh.point_count, snapshot.mesh.cell_count, type_counts, bounds,
+                snapshot.mesh.point_count, snapshot.mesh.cell_count, type_counts,
+                snapshot.mesh.coordinate_source_name, snapshot.mesh.coordinate_vtk_type,
+                snapshot.mesh.coordinate_sha256_bytes, bounds,
                 hashes, dict(self.experiment_provenance), snapshot.record.field_metadata,
             ))
         return tuple(rows)
@@ -693,7 +786,9 @@ class AspectSnapshotSeries:
             rows.append(SnapshotMetadata(
                 ordinal, time_value, self.time_unit, vtu_path.relative_to(self.root_dir).as_posix(),
                 snap.record.snapshot_id, snap.record.mesh_fingerprint,
-                snap.mesh.point_count, snap.mesh.cell_count, type_counts, bounds,
+                snap.mesh.point_count, snap.mesh.cell_count, type_counts,
+                snap.mesh.coordinate_source_name, snap.mesh.coordinate_vtk_type,
+                snap.mesh.coordinate_sha256_bytes, bounds,
                 file_hashes, dict(self.experiment_provenance), snap.record.field_metadata,
             ))
             fingerprints.add(snap.record.mesh_fingerprint)
