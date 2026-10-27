@@ -7,6 +7,12 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-27 — GEODYN-3C-R2 real-evidence compatibility repair (local only)
+
+- Corrected the GEODYN-2C comparator to parse the original `snapshots[].point_fields[]` schema with NumPy dtype names, required `min`/`max`, optional velocity `norm_max`, and explicit normalization against reader VTK dtype names. Numeric bytes and source dtype spelling are preserved. The numeric mesh SHA256 again uses the original auditor algorithm: `str(dtype).encode()` plus C-order bytes for coordinates/connectivity/offsets/types in order.
+- Replaced pytest summary scraping with JUnit XML and exact 85 total/pass, 0 failed/error/skipped enforcement. The focused Windows suite collected 85: 82 passed, 3 skipped (two Windows symlink privilege restrictions, one NumPy-dependent mesh digest test because NumPy is unavailable). `py_compile`, embedded Python AST parsing, and `git diff --check` passed. No Bash parser, FAIR Linux run, authentic payload comparison, or solver was executed locally.
+- Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R1 remains preserved as the previous attempt. No external evidence or FAIR PASS is claimed; missing historical inventory/config/input/attempt records remain a qualification blocker. Gates unchanged: `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
 ## 2026-10-27 — GEODYN-3B experimental trajectory archive MVP (local synthetic validation)
 
 - Implemented `src/arcana_worldsim/r6/experimental_trajectory_archive.py` and focused tests under the previously ratified GEODYN-3A scope. The index references original solver payloads without copying them, records incremental SHA256/length identities, and exposes exact native-time metadata queries plus explicit on-demand numerical reads through the existing ASPECT adapter. Canonical HistoryStore/DomainStateEnvelope/segment archive contracts were not changed.

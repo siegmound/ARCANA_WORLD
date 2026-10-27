@@ -1,6 +1,6 @@
-# CURRENT — GEODYN-3C-R1 launcher repair (2026-10-27)
+# CURRENT — GEODYN-3C-R2 local evidence compatibility (2026-10-27)
 
-Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. Combined Windows archive, reader and GEODYN-3C helper tests: 82 passed, 3 skipped (two Windows symlink-privilege skips and one NumPy-dependent mesh serializer test; NumPy unavailable). py_compile and `git diff --check` passed. Bash syntax, Linux tests and FAIR data were not verified; Linux handoff expects 85 PASS and zero skips. This code-only repair creates no external/numerical evidence. Historic operator-reported GEODYN-2A-R1 evidence remains unimported/unhashed on Windows; missing inventory/config/input/attempt provenance continues to block qualification. No solver execution.
+Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R2 Windows combined archive/reader/qualification suite: 85 collected, 82 passed, 3 skipped (two symlink-creation restrictions and one NumPy-dependent mesh digest test; NumPy unavailable). The FAIR launcher now requires JUnit-reported 85 passed, 0 failed/error/skipped. Helper/test `py_compile` and `git diff --check` passed; embedded Python syntax was checked locally. Bash syntax, Linux execution and authentic FAIR data comparison remain unverified. No external/numerical evidence was created. Historical FAIR evidence remains unimported/unhashed on Windows; missing inventory/config/input/attempt provenance continues to block qualification. No solver execution.
 
 ---
 

@@ -1,6 +1,6 @@
-# NEXT — GEODYN-3C-R1 FAIR syntax/tests, then qualification only after evidence recovery (2026-10-27)
+# NEXT — GEODYN-3C-R2 exact-commit FAIR validation, only after evidence recovery (2026-10-27)
 
-On the exact committed R1 candidate, first verify that the remote R6 ref and commit parent match the launcher input, run `bash -n`, then execute its 85-test Linux preflight with zero skips. Do not change or check out the existing FAIR worktree. Before the read-only archive qualification, recover the original source inventory, `configuration_sha256`, every `input_identities` SHA256, attempt ID and time-unit source from preserved records. These records remain operator-reported and were not imported to Windows. If a required value is unavailable, stop BLOCKED; never synthesize it. No ASPECT solver or ARCANA forward run. Gates remain `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+Review and commit the bounded R2 compatibility correction locally. On FAIR, verify `bash -n` and run the JUnit-enforced Linux preflight against the exact committed candidate; acceptance is exactly 85 passed, 0 failed/error/skipped. Do not change or check out the existing FAIR worktree. Before archive qualification, recover the original source inventory, `configuration_sha256`, every `input_identities` SHA256, attempt ID and time-unit source from preserved records. These records remain operator-reported and were not imported to Windows. If a required value is unavailable, stop BLOCKED; never synthesize it. No ASPECT solver or ARCANA forward run. Gates remain `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

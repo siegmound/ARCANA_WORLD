@@ -103,6 +103,7 @@ sha256sum "$RUN_DIR/NUMERIC_AUDIT.json" "$RUN_DIR/SOURCE_INVENTORY.json" "$RUN_D
 set +e
 (cd "$RUN_DIR/source-extract" && PYTHONPATH="$RUN_DIR/source-extract/src" \
   python -m pytest -q -rs --basetemp="$RUN_DIR/pytest-tmp" \
+  --junitxml="$RUN_DIR/pytest.xml" \
   tests/test_r6_experimental_trajectory_archive.py \
   tests/test_r6_aspect_snapshot_reader.py \
   tests/test_r6_geodyn3c_qualification.py) 2>&1 | tee "$RUN_DIR/pytest.log"
@@ -110,24 +111,12 @@ pytest_rc=${PIPESTATUS[0]}
 set -e
 printf '%s\n' "$pytest_rc" > "$RUN_DIR/pytest.exitcode"
 [[ $pytest_rc -eq 0 ]] || fail "Linux focused pytest failed (exit $pytest_rc)"
-python - "$RUN_DIR/pytest.log" "$EXPECTED_TESTS" <<'PY'
-import re, sys
-text = open(sys.argv[1], encoding="utf-8").read()
-expected = int(sys.argv[2])
-matches = re.findall(r"(?m)^=+\s*(.*?)\s+in\s+[0-9.]+s\s*=+$", text)
-if not matches:
-    raise SystemExit("pytest summary line not found")
-summary = matches[-1]
-passed = re.search(r"(\d+) passed", summary)
-failed = re.search(r"(\d+) failed", summary)
-skipped = re.search(r"(\d+) skipped", summary)
-counts = (int(passed.group(1)) if passed else 0,
-          int(failed.group(1)) if failed else 0,
-          int(skipped.group(1)) if skipped else 0)
-print(f"pytest summary: passed={counts[0]} failed={counts[1]} skipped={counts[2]}")
-if counts != (expected, 0, 0):
-    raise SystemExit(f"expected {expected} PASS, 0 FAIL, 0 SKIP; got {counts}")
+PYTHONPATH="$RUN_DIR/source-extract/src" python - "$RUN_DIR/pytest.xml" "$EXPECTED_TESTS" <<'PY'
+import json, sys
+from arcana_worldsim.r6.geodyn3c_qualification import validate_pytest_junit
+print(json.dumps(validate_pytest_junit(sys.argv[1], expected_cases=int(sys.argv[2])), sort_keys=True))
 PY
+sha256sum "$RUN_DIR/pytest.xml" > "$RUN_DIR/pytest.xml.sha256"
 
 cat > "$RUN_DIR/run_geodyn3c.py" <<'PY'
 from __future__ import annotations
@@ -144,7 +133,8 @@ from arcana_worldsim.r6.experimental_trajectory_archive import (
 from arcana_worldsim.r6.adapters.aspect_snapshot_reader import AspectSnapshotSeries
 from arcana_worldsim.r6.geodyn3c_qualification import (
     compare_numeric_audit, mesh_sha256_from_vtk, parse_geodyn2c_audit,
-    validate_geodyn3c_run_claim, validate_source_inventory, verify_git_candidate,
+    summarize_numeric_field, validate_geodyn3c_run_claim, validate_source_inventory,
+    verify_git_candidate,
 )
 
 EXPECTED_COMPLETION = 1.098612289
@@ -299,8 +289,8 @@ try:
     require([item.time_s for item in audit_snapshots] == times,
             "archive and independent audit native times differ")
     comparison_doc.update({"status": "RUNNING",
-        "method": "exact GEODYN-2C point_fields metadata and sha256_bytes plus numeric mesh serialization",
-        "mesh_serialization": "for coordinates/connectivity/offsets/types in source order: NumPy dtype.str bytes then C-order array bytes",
+        "method": "GEODYN-2C point_fields metadata, typed-value SHA256, min/max/norm_max, and numeric mesh serialization",
+        "mesh_serialization": "for coordinates/connectivity/offsets/types in source order: str(dtype) bytes then NumPy C-order array bytes",
         "independent_audit_sha256": sha256(audit_path), "records": []})
     observed_snapshots = []
     for index, row in enumerate(rows):
@@ -309,13 +299,20 @@ try:
         native_snapshot = series.read_snapshot(index)
         mesh_digest = mesh_sha256_from_vtk(native_snapshot.mesh, source_root / row["vtu_relative_ref"])
         point_fields = []
+        expected_by_name = {item.name: item for item in audit_snapshots[index].point_fields}
         for array in on_demand.value["fields"].values():
             metadata = array.metadata
             require(metadata.association == "point" and metadata.source_name,
                     f"unexpected unnamed/non-point field at {row['time']['value']}")
+            expected_field = expected_by_name.get(metadata.source_name)
+            require(expected_field is not None, f"field absent from independent audit: {metadata.source_name}")
+            stats = summarize_numeric_field(
+                array.values, components=metadata.components,
+                include_norm=expected_field.norm_max is not None,
+            )
             point_fields.append({"name": metadata.source_name, "type": metadata.vtk_type,
                 "components": metadata.components, "tuples": metadata.tuples,
-                "sha256_bytes": metadata.sha256_bytes})
+                **stats, "sha256_bytes": metadata.sha256_bytes})
         observed_snapshots.append({"time_s": row["time"]["value"],
             "mesh_sha256_numeric": mesh_digest, "point_fields": point_fields})
     compared = compare_numeric_audit(audit_snapshots, observed_snapshots)

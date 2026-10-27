@@ -19,6 +19,11 @@ _VTK_TYPES = {
     "Int8": "i1", "UInt8": "u1", "Int16": "i2", "UInt16": "u2",
     "Int32": "i4", "UInt32": "u4", "Int64": "i8", "UInt64": "u8",
 }
+_NUMPY_TO_VTK = {
+    "float32": "Float32", "float64": "Float64",
+    "int8": "Int8", "uint8": "UInt8", "int16": "Int16", "uint16": "UInt16",
+    "int32": "Int32", "uint32": "UInt32", "int64": "Int64", "uint64": "UInt64",
+}
 _TIME_KEYS = ("time_s", "time_value", "time", "timestep")
 _ASPECT_COMMIT = "30eb77ee5da186137d436dbad35c6cb3cab64b69"
 _R1_REPOSITORY_COMMIT = "1fd5e8d8f21e28876da9ef89423755615efc6162"
@@ -32,10 +37,14 @@ class QualificationInputError(ValueError):
 @dataclass(frozen=True)
 class AuditPointField:
     name: str
+    numpy_dtype: str
     vtk_type: str
     components: int
     tuples: int
+    minimum: float | int
+    maximum: float | int
     sha256_bytes: str
+    norm_max: float | None = None
 
 
 @dataclass(frozen=True)
@@ -185,30 +194,44 @@ def parse_geodyn2c_audit(document: Any) -> tuple[AuditSnapshot, ...]:
         for field_index, item in enumerate(field_rows):
             if not isinstance(item, Mapping):
                 raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: point_fields[{field_index}] must be an object")
-            expected_keys = {"name", "type", "components", "tuples", "sha256_bytes"}
-            missing_keys = expected_keys - set(item)
+            required_keys = {"name", "type", "components", "tuples", "min", "max", "sha256_bytes"}
+            allowed_keys = required_keys | {"norm_max"}
+            missing_keys = required_keys - set(item)
             if missing_keys:
                 raise QualificationInputError(
                     f"NUMERIC_AUDIT_SCHEMA: missing point_fields[{field_index}] keys {sorted(missing_keys)}"
                 )
-            if set(item) - expected_keys:
+            if set(item) - allowed_keys:
                 raise QualificationInputError(
                     f"NUMERIC_AUDIT_SCHEMA: unsupported point_fields[{field_index}] record shape"
                 )
-            name, vtk_type = item.get("name"), item.get("type")
-            components, tuples, digest = item.get("components"), item.get("tuples"), item.get("sha256_bytes")
+            name, numpy_dtype = item.get("name"), item.get("type")
+            components, tuples = item.get("components"), item.get("tuples")
+            minimum, maximum, digest = item.get("min"), item.get("max"), item.get("sha256_bytes")
             if not isinstance(name, str) or not name or name in names:
                 raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: missing or duplicate field name at snapshot {index}")
-            if vtk_type not in _VTK_TYPES:
-                raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: unsupported numeric type {vtk_type!r}")
+            if not isinstance(numpy_dtype, str) or numpy_dtype not in _NUMPY_TO_VTK:
+                raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: unsupported NumPy dtype {numpy_dtype!r}")
             if isinstance(components, bool) or not isinstance(components, int) or components < 1:
                 raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: invalid components for {name}")
             if isinstance(tuples, bool) or not isinstance(tuples, int) or tuples < 0:
                 raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: invalid tuples for {name}")
+            if any(isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value)
+                   for value in (minimum, maximum)) or minimum > maximum:
+                raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: invalid min/max for {name}")
             if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
                 raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: invalid sha256_bytes for {name}")
+            norm_max = item.get("norm_max")
+            if "norm_max" in item and (
+                name != "velocity" or isinstance(norm_max, bool) or not isinstance(norm_max, (int, float))
+                or not math.isfinite(norm_max) or norm_max < 0
+            ):
+                raise QualificationInputError(f"NUMERIC_AUDIT_SCHEMA: invalid norm_max for {name}")
             names.add(name)
-            fields.append(AuditPointField(name, vtk_type, components, tuples, digest))
+            fields.append(AuditPointField(
+                name, numpy_dtype, _NUMPY_TO_VTK[numpy_dtype], components, tuples,
+                minimum, maximum, digest, norm_max,
+            ))
         parsed.append(AuditSnapshot(time_s, mesh_digest, tuple(fields)))
     return tuple(parsed)
 
@@ -256,19 +279,111 @@ def compare_numeric_audit(
             actual = actual_by_name[expected.name]
             checks = {
                 "type": actual.get("type") == expected.vtk_type,
+                "numpy_dtype_normalization": _NUMPY_TO_VTK.get(expected.numpy_dtype) == actual.get("type"),
                 "components": actual.get("components") == expected.components,
                 "tuples": actual.get("tuples") == expected.tuples,
                 "sha256_bytes": actual.get("sha256_bytes") == expected.sha256_bytes,
+                "min": _numeric_close(actual.get("min"), expected.minimum, expected.numpy_dtype),
+                "max": _numeric_close(actual.get("max"), expected.maximum, expected.numpy_dtype),
             }
+            if expected.norm_max is not None:
+                checks["norm_max"] = _numeric_close(
+                    actual.get("norm_max"), expected.norm_max, expected.numpy_dtype
+                )
             if not all(checks.values()):
                 raise QualificationInputError(f"numeric field mismatch at {audit.time_s}: {expected.name} {checks}")
             field_comparisons += 1
-            field_rows.append({"name": expected.name, "checks": checks, "sha256_bytes": expected.sha256_bytes})
+            field_rows.append({
+                "name": expected.name, "checks": checks, "numpy_dtype": expected.numpy_dtype,
+                "vtk_type": expected.vtk_type, "min": expected.minimum, "max": expected.maximum,
+                "norm_max": expected.norm_max, "sha256_bytes": expected.sha256_bytes,
+            })
         mesh_comparisons += 1
         records.append({"time_s": audit.time_s, "mesh_sha256_numeric": audit.mesh_sha256_numeric,
                         "point_fields": field_rows})
     return {"status": "PASS", "mesh_comparisons": mesh_comparisons,
             "field_comparisons": field_comparisons, "records": records}
+
+
+def _numeric_close(actual: Any, expected: int | float, numpy_dtype: str) -> bool:
+    if isinstance(actual, bool) or not isinstance(actual, (int, float)) or not math.isfinite(actual):
+        return False
+    if numpy_dtype.startswith(("int", "uint")):
+        return actual == expected
+    epsilon = 1.1920928955078125e-7 if numpy_dtype == "float32" else 2.220446049250313e-16
+    tolerance = 8 * epsilon * max(1.0, abs(float(expected)))
+    return math.isclose(float(actual), float(expected), rel_tol=8 * epsilon, abs_tol=tolerance)
+
+
+def summarize_numeric_field(
+    values: Sequence[int | float], *, components: int, include_norm: bool = False,
+) -> dict[str, int | float | None]:
+    if not values or components < 1 or len(values) % components:
+        raise QualificationInputError("numeric field values do not match the declared component count")
+    if any(isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value)
+           for value in values):
+        raise QualificationInputError("numeric field values must be finite numbers")
+    result: dict[str, int | float | None] = {"min": min(values), "max": max(values)}
+    if include_norm:
+        if components < 2:
+            raise QualificationInputError("norm_max requires vector components")
+        squared_norms = (
+            sum(float(value) * float(value) for value in values[offset:offset + components])
+            for offset in range(0, len(values), components)
+        )
+        result["norm_max"] = math.sqrt(max(squared_norms))
+    else:
+        result["norm_max"] = None
+    return result
+
+
+def validate_pytest_junit(path: str | Path, *, expected_cases: int = 85) -> dict[str, int | str]:
+    try:
+        root = ET.parse(path).getroot()
+    except (OSError, ET.ParseError) as exc:
+        raise QualificationInputError(f"PYTEST_JUNIT_INVALID: {exc}") from exc
+    if root.tag not in {"testsuite", "testsuites"}:
+        raise QualificationInputError(f"PYTEST_JUNIT_INVALID: unexpected root element {root.tag!r}")
+    cases = root.findall(".//testcase")
+    if not cases:
+        raise QualificationInputError("PYTEST_JUNIT_INVALID: no testcase entries")
+    passed = failed = errors = skipped = 0
+    for index, case in enumerate(cases):
+        outcomes = [child.tag for child in case if child.tag in {"failure", "error", "skipped"}]
+        if len(outcomes) > 1:
+            raise QualificationInputError(f"PYTEST_JUNIT_INVALID: conflicting outcomes in testcase {index}")
+        if not outcomes:
+            passed += 1
+        elif outcomes[0] == "failure":
+            failed += 1
+        elif outcomes[0] == "error":
+            errors += 1
+        else:
+            skipped += 1
+
+    totals = {
+        "tests": len(cases), "passed": passed, "failed": failed,
+        "errors": errors, "skipped": skipped,
+    }
+    # Validate suite-level counters when emitted by pytest; don't trust them as
+    # the sole source because nested suites can carry overlapping totals.
+    expected_attributes = {
+        "tests": totals["tests"], "failures": totals["failed"],
+        "errors": totals["errors"], "skipped": totals["skipped"],
+    }
+    for key, actual in expected_attributes.items():
+        if key in root.attrib and int(root.attrib[key]) != actual:
+            raise QualificationInputError(f"PYTEST_JUNIT_INVALID: suite {key} counter disagrees with testcases")
+    if totals["tests"] != expected_cases or totals["passed"] != expected_cases or any(
+        totals[key] for key in ("failed", "errors", "skipped")
+    ):
+        raise QualificationInputError(
+            "PYTEST_JUNIT_COUNTS: expected "
+            f"{expected_cases} total/pass, 0 failed/error/skipped; got "
+            f"{totals['tests']} total, {totals['passed']} pass, {failed} failed, "
+            f"{errors} errors, {skipped} skipped"
+        )
+    return totals
 
 
 def _mesh_dtype(vtk_type: str, byte_order: str):
@@ -292,7 +407,7 @@ def mesh_sha256_numeric(coordinates, connectivity, offsets, types) -> str:
         if value.dtype.kind not in "fiu" or value.dtype.hasobject:
             raise QualificationInputError("mesh hash accepts only typed numeric NumPy arrays")
         value = np.ascontiguousarray(value)
-        digest.update(value.dtype.str.encode("ascii"))
+        digest.update(str(value.dtype).encode("ascii"))
         digest.update(value.tobytes(order="C"))
     return digest.hexdigest()
 

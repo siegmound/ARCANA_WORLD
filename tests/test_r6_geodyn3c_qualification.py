@@ -1,4 +1,5 @@
 import hashlib
+import struct
 import subprocess
 from pathlib import Path
 
@@ -10,6 +11,7 @@ from arcana_worldsim.r6.geodyn3c_qualification import (
     compare_numeric_audit,
     mesh_sha256_numeric,
     parse_geodyn2c_audit,
+    validate_pytest_junit,
     validate_geodyn3c_run_claim,
     validate_source_inventory,
     verify_git_candidate,
@@ -35,18 +37,39 @@ def _audit_pair():
         for field_index in range(9):
             name = f"field_{field_index}"
             digest = hashlib.sha256(f"{snapshot_index}:{field_index}".encode()).hexdigest()
-            field_type = "Float32" if field_index % 2 == 0 else "Float64"
+            numpy_dtype = "float32" if field_index % 2 == 0 else "float64"
+            field_type = "Float32" if numpy_dtype == "float32" else "Float64"
             components = 2 if field_index == 0 else 1
             tuples = 3
-            fields.append({"name": name, "type": field_type, "components": components,
-                           "tuples": tuples, "sha256_bytes": digest})
+            minimum = -1.25 if field_index == 0 else float(field_index)
+            maximum = 2.5 if field_index == 0 else float(field_index + 2)
+            stats = {"min": minimum, "max": maximum}
+            name = "velocity" if field_index == 0 else name
+            if field_index == 0:
+                stats["norm_max"] = 2.75
+            fields.append({"name": name, "type": numpy_dtype, "components": components,
+                           "tuples": tuples, **stats, "sha256_bytes": digest})
             actual_fields.append({"name": name, "type": field_type, "components": components,
-                                  "tuples": tuples, "sha256_bytes": digest})
-        mesh_hash = hashlib.sha256(f"mesh:{snapshot_index}".encode()).hexdigest()
+                                  "tuples": tuples, **stats, "sha256_bytes": digest})
+        mesh_hash = _original_mesh_digest(snapshot_index)
         time_s = snapshot_index / 10
         snapshots.append({"time_s": time_s, "mesh_sha256_numeric": mesh_hash, "point_fields": fields})
         observed.append({"time_s": time_s, "mesh_sha256_numeric": mesh_hash, "point_fields": actual_fields})
     return {"snapshots": snapshots}, observed
+
+
+def _original_mesh_digest(index):
+    digest = hashlib.sha256()
+    arrays = (
+        ("float32", struct.pack("<9f", index, 0, 0, 1, 0, 0, 0, 1, 0)),
+        ("int32", struct.pack("<3i", 0, 1, 2)),
+        ("int32", struct.pack("<i", 3)),
+        ("uint8", struct.pack("<B", 5)),
+    )
+    for dtype_name, payload in arrays:
+        digest.update(dtype_name.encode())
+        digest.update(payload)
+    return digest.hexdigest()
 
 
 def test_exact_geodyn2c_point_fields_schema_matches_99_fields_and_11_meshes():
@@ -56,6 +79,10 @@ def test_exact_geodyn2c_point_fields_schema_matches_99_fields_and_11_meshes():
     assert result["status"] == "PASS"
     assert result["mesh_comparisons"] == 11
     assert result["field_comparisons"] == 99
+    first_velocity = parsed[0].point_fields[0]
+    assert first_velocity.numpy_dtype == "float32"
+    assert first_velocity.vtk_type == "Float32"
+    assert (first_velocity.minimum, first_velocity.maximum, first_velocity.norm_max) == (-1.25, 2.5, 2.75)
 
 
 def test_numeric_comparison_rejects_reordered_snapshot_times():
@@ -69,22 +96,65 @@ def test_numeric_mesh_serialization_uses_declared_dtype_and_source_order():
     expected = hashlib.sha256()
     for array in _mesh_arrays(0):
         value = np.ascontiguousarray(array)
-        expected.update(value.dtype.str.encode("ascii"))
+        expected.update(str(value.dtype).encode("ascii"))
         expected.update(value.tobytes(order="C"))
     assert mesh_sha256_numeric(*_mesh_arrays(0)) == expected.hexdigest()
+    assert mesh_sha256_numeric(*_mesh_arrays(0)) == _original_mesh_digest(0)
 
 
-def test_geodyn2c_parser_rejects_unknown_or_incomplete_schema():
+def test_geodyn2c_parser_rejects_unknown_or_incomplete_schema(tmp_path):
     with pytest.raises(QualificationInputError, match="top-level snapshots list"):
         parse_geodyn2c_audit({"snapshot_audits": []})
     document, _ = _audit_pair()
-    del document["snapshots"][0]["point_fields"][0]["sha256_bytes"]
-    with pytest.raises(QualificationInputError, match="sha256_bytes"):
+    del document["snapshots"][0]["point_fields"][0]["max"]
+    with pytest.raises(QualificationInputError, match="missing point_fields"):
         parse_geodyn2c_audit(document)
     document, _ = _audit_pair()
     document["snapshots"][0]["point_fields"][0]["unexpected"] = "unknown schema extension"
     with pytest.raises(QualificationInputError, match="unsupported point_fields"):
         parse_geodyn2c_audit(document)
+    document, _ = _audit_pair()
+    document["snapshots"][0]["point_fields"][1]["type"] = "Float32"
+    with pytest.raises(QualificationInputError, match="unsupported NumPy dtype"):
+        parse_geodyn2c_audit(document)
+    document, _ = _audit_pair()
+    document["snapshots"][0]["point_fields"][1]["norm_max"] = 1.0
+    with pytest.raises(QualificationInputError, match="invalid norm_max"):
+        parse_geodyn2c_audit(document)
+    report = tmp_path / "pytest.xml"
+    _write_junit(report)
+    assert validate_pytest_junit(report) == {
+        "tests": 85, "passed": 85, "failed": 0, "errors": 0, "skipped": 0,
+    }
+    for count, outcome, bad_root_count, message in (
+        (85, "skipped", False, "85 total/pass"),
+        (85, "failure", False, "85 total/pass"),
+        (85, "error", False, "85 total/pass"),
+        (84, None, False, "85 total/pass"),
+        (85, None, True, "suite tests counter"),
+    ):
+        _write_junit(report, count=count, outcome=outcome, bad_root_count=bad_root_count)
+        with pytest.raises(QualificationInputError, match=message):
+            validate_pytest_junit(report)
+
+
+def _write_junit(path, *, count=85, outcome=None, bad_root_count=False):
+    import xml.etree.ElementTree as ET
+
+    failures = int(outcome == "failure")
+    errors = int(outcome == "error")
+    skipped = int(outcome == "skipped")
+    root = ET.Element("testsuites", tests=str(count), failures=str(failures),
+                      errors=str(errors), skipped=str(skipped))
+    suite = ET.SubElement(root, "testsuite", tests=str(count),
+                          failures=str(failures), errors=str(errors), skipped=str(skipped))
+    for index in range(count):
+        case = ET.SubElement(suite, "testcase", classname="fixture", name=f"test_{index}")
+        if index == 0 and outcome:
+            ET.SubElement(case, outcome).text = "fixture outcome"
+    if bad_root_count:
+        root.set("tests", str(count + 1))
+    ET.ElementTree(root).write(path, encoding="utf-8", xml_declaration=True)
 
 
 def test_geodyn3c_historical_run_claim_preserves_real_commit_identities():
@@ -158,19 +228,30 @@ def test_source_inventory_requires_nonempty_unique_valid_records():
         validate_source_inventory({"files": [{**row, "sha256": "A" * 64}]})
 
 
-@pytest.mark.parametrize("damage", ("mesh", "field_type", "field_components", "field_tuples", "field_hash"))
+@pytest.mark.parametrize("damage", (
+    "mesh", "field_type", "field_components", "field_tuples", "field_hash",
+))
 def test_geodyn2c_comparison_rejects_mesh_and_typed_field_mismatches(damage):
     document, observed = _audit_pair()
     if damage == "mesh":
         observed[0]["mesh_sha256_numeric"] = "0" * 64
     else:
         key = {"field_type": "type", "field_components": "components",
-               "field_tuples": "tuples", "field_hash": "sha256_bytes"}[damage]
-        observed[0]["point_fields"][0][key] = {
-            "type": "Float64", "components": 7, "tuples": 4, "sha256_bytes": "0" * 64
-        }[key]
+               "field_tuples": "tuples", "field_hash": "sha256_bytes",
+               "field_min": "min", "field_max": "max", "field_norm": "norm_max"}[damage]
+        replacements = {"type": "Float64", "components": 7, "tuples": 4,
+                        "sha256_bytes": "0" * 64, "min": 99.0, "max": 99.0, "norm_max": 99.0}
+        observed[0]["point_fields"][0][key] = replacements[key]
     with pytest.raises(QualificationInputError, match="mismatch"):
         compare_numeric_audit(parse_geodyn2c_audit(document), observed)
+
+    # Exercise the three additional auditor statistics without changing the
+    # fixed 85-test FAIR acceptance count (one test covers the related cases).
+    for key in ("min", "max", "norm_max"):
+        document, observed = _audit_pair()
+        observed[0]["point_fields"][0][key] = 99.0
+        with pytest.raises(QualificationInputError, match="mismatch"):
+            compare_numeric_audit(parse_geodyn2c_audit(document), observed)
 
 
 def _git(cwd: Path, *args: str) -> str:
