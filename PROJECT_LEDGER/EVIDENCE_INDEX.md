@@ -1,4 +1,19 @@
-# CURRENT — GEODYN-2A local reader implementation (2026-10-27)
+# CURRENT — GEODYN-2A-R1 FAIR numeric validation closure (2026-10-27)
+
+## GEODYN-2A-R1 FAIR qualification (operator-reported)
+
+- Closure report: `docs/arcana/GEODYN_2A_R1_FAIR_QUALIFICATION_CLOSURE.md`.
+- Decision: `GEODYN_2A_R1_ASPECT_READONLY_ADAPTER_FAIR_NUMERICALLY_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED`.
+- Exact implementation commit/parent reported on FAIR: `1fd5e8d8f21e28876da9ef89423755615efc6162` / `60e13475ce04d005ebdd8e0152738611eb5e8943`. ASPECT `3.2.0-pre`, source commit `30eb77ee5da186137d436dbad35c6cb3cab64b69`.
+- Operator-reported evidence path: `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2A_R1_FAIR_QUALIFICATION/20261027T105033Z_exact_commit`. Reported Linux pytest 32 passed, 0 failed, 0 skipped; adapter exit 0; independent NumPy-reference comparison exit 0; mesh numeric SHA256 11/11 and typed numeric field SHA256 99/99 matched; five dynamic fields each had 11 distinct states. Original ASPECT outputs and FAIR worktree reported unchanged; no solver-completion snapshot fabricated.
+- Provenance status: operator-reported only. Runner, comparison report, manifest and raw FAIR evidence were not transferred or independently rehashed on Windows. Do not cite these results as Windows verification.
+- Historical failure preserved: `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2A_REAL_VTU_PROBE/20261027T100741Z_probe`; initial real-file parse failed on valid unnamed `Points/DataArray`; R1 repaired the parser. Earlier failure remains FAIL.
+- Adapter boundary: documented one-rank/single-Piece inline ASCII/Base64, uncompressed/zlib, UInt32/UInt64 and declared endian support. Appended data, multipiece/multirank and unsupported encodings/compressors remain rejected. No ARCANA remap, canonical state, geology interpretation or WORLD_HISTORY write.
+- Next: bounded GEODYN-3 experimental trajectory archive contract; no solver execution or ARCANA forward authorization.
+
+---
+
+# Archived — GEODYN-2A local reader implementation (2026-10-27)
 
 - Report: `docs/arcana/GEODYN_2A_ASPECT_READONLY_SNAPSHOT_ADAPTER.md`.
 - New local files: `src/arcana_worldsim/r6/adapters/aspect_snapshot_reader.py` and `tests/test_r6_aspect_snapshot_reader.py`.

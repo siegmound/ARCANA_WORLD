@@ -1,12 +1,11 @@
-# NEXT — validate the GEODYN-2A reader on the existing FAIR snapshot bundle (2026-10-27)
+# NEXT — GEODYN-3 experimental trajectory archive contract (2026-10-27)
 
-Review and commit only the R1 adapter, regression tests, report and required ledger updates. Then on FAIR verify that exact commit and the existing evidence paths, run the full Linux test module and the read-only CLI from the report. Compare all 11 snapshots against `NUMERIC_AUDIT.json`, including times, dimensions, coordinates, schema, components, ranges and numeric field-byte digests where type/endian reconstruction matches. Do not treat different mesh fingerprints as comparable or use matching file hashes as numeric equivalence. Preserve the first probe FAIL and all original VTK inputs. Do not invoke ASPECT or MPI, alter the bundle, create a final snapshot, remap to ARCANA, or write WORLD_HISTORY.
+Specify a bounded, noncanonical archive for querying the existing ASPECT experimental trajectory and future experiments. Preserve exact solver model time and declared units, stable mesh identity, field identity/association/type/components, declared scientific meaning and units (or `UNKNOWN`), immutable payload references and SHA256, exact source/build/configuration hashes, and explicit run completion/incompleteness. Queries return stored snapshots and payload references only; they do not interpolate or manufacture states.
 
-If reader compatibility passes, the next GEODYN-2 question is still an explicitly bounded synthetic positive-time solver experiment under separate authorization; it is not an ARCANA geological trajectory. ARCANA forward evolution remains blocked by source-backed spatial/initial-state closure, EOS/rheology, complete boundary conditions and authorized positive-time forcing. Keep all gates unchanged.
-
+This is a contract/design step only. Do not create canonical state records, convert solver time to geological time, infer resource generation, or couple surface processes or Deep. Keep the prior GEODYN-2A probe failure immutable and FAIR closure results identified as operator-reported unless source evidence is transferred and independently verified. ARCANA forward evolution remains blocked by adequate initial conditions, constitutive laws, boundary conditions, spatial mapping, and time-dependent forcing. No solver or MPI run without separate authorization. All scientific and production gates remain unchanged.
 ---
 
-# NEXT — bind a bounded GEODYN-2 candidate; no execution authorized (2026-10-27)
+# Archived NEXT — bind a bounded GEODYN-2 candidate; no execution authorized (2026-10-27)
 
 GEODYN-1G closes only the FAIR-reported independent ASPECT 3.2.0-pre Blankenbach 1a benchmark at mesh levels 3 and 4. Reported run files were not imported/rehashed on Windows; see `docs/arcana/GEODYN_1G_FAIR_CLOSURE_GEODYN_2_PREPARATION.md`. Do not repeat Blankenbach without a specific unresolved numerical/correctness question.
 
