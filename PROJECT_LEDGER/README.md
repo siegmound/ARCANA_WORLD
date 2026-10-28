@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. 2026-10-28 update: `R6_INT10K_E0_WINDOWS_INPUT_TRIADS_FOUND__MANIFEST_SIDECAR_PASS__LOADER_FAIR_PENDING`. Three original Windows material/rheology bundles found with manifest/sidecar integrity PASS; selected _03 pending source-loader semantic verification and transfer to FAIR. Original ENG10K archive SHA matches expected code identity. Report `docs/arcana/R6_INT10K_E0_WINDOWS_INPUT_RECOVERY_20261028.md`. No new engine run and no physics/production promotion.
+Single continuity point. Current 2026-10-28 input gate: `R6_INT10K_E0_WINDOWS_LOADER_PASS__TRANSFER_BUNDLE_SEALED__FAIR_IDENTITY_PENDING`. Windows original material/rheology _03 loader PASS, 73-node C028/C029 bindings and transfer package SHA256 verified by operator; FAIR byte transfer and pinned-source loader comparison pending. Report `docs/arcana/R6_INT10K_E0_WINDOWS_SEMANTIC_LOADER_20261028.md`, exact source identity `docs/arcana/qualifications/R6_INT10K_E0_WINDOWS_INPUT_OPERATOR_REPORT.json`. No engine run/authorization change.
 
 ## Current decision — 2026-10-25
 

@@ -1,0 +1,75 @@
+{
+  "schema": "ARCANA_R6_INT10K_E0_WINDOWS_SOURCE_LOADER_OPERATOR_REPORT_V1",
+  "date": "2026-10-28",
+  "decision": "R6_INT10K_E0_WINDOWS_LOADER_PASS__TRANSFER_BUNDLE_SEALED__FAIR_IDENTITY_PENDING",
+  "qualification": "WINDOWS_SEMANTIC_LOADER_PASS_OPERATOR_REPORTED",
+  "fair_loader_qualification": "PENDING",
+  "no_numerical_simulation": true,
+  "windows": {
+    "source_directory": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD_R6_UBUNTU_PORT/ARCANA_WORLD_R6_BW0/outputs/r6_experimental_multiphysics/MATERIAL_RHEOLOGY_PROVIDER_20261025_03",
+    "repository_head": "3c566ea61c79b8dad96274a5d68d845704aeae96",
+    "module": "src/arcana_worldsim/r6/geological_surface_microdomain.py",
+    "loader_module_sha256": "612d59415e25909a593914d627ea40253d44c3e352039a765c717879793d23fa",
+    "input_files_sha256": {
+      "RESULT.json": "24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5",
+      "MANIFEST.json": "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21",
+      "RESULT.json.sha256": "8eab8b24f21088e3de82254f3d4929c61a7ed8a341593e3a4cbbafcc4bca2ce0"
+    },
+    "archive_bundle": "F:/corsiiiuu/Magistrale/Arcana/INT10K_E0_WINDOWS_TRANSFER_20261028/MATERIAL_RHEOLOGY_PROVIDER_20261025_03.tar.gz",
+    "archive_bundle_sha256": "fc5cda6e543f5f96673ba71e60c085566659672abff9728eb5ed74c2ab47c8b0",
+    "python_exit": 0,
+    "original_loader_status": "PASS",
+    "source_identity": {
+      "source_archive_sha256": "7dda60c8fa1f535d9e257eb2d04fdfde4643a92765eca8631bd766058240d8cb",
+      "source_branch": "r6/si1-bandwidth-f2av",
+      "source_head": "ec79bf8954a4922f84249fbe23e2657bc5beee23",
+      "source_identity_sha256": "6e729d3662af349b10c85d54f964513270b7e32595ba0f160fa442996348a8fe",
+      "source_manifest_schema": "ARCANA_CONSTITUTIVE_MECHANICS_MANIFEST_V1",
+      "source_manifest_sha256": "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21",
+      "source_result_scope": "NONCANONICAL_SYNTHETIC_LAYERED_CONTINUUM_ENGINEERING_EXPERIMENT",
+      "source_result_sha256": "24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5",
+      "support_cells": [
+        {
+          "grid_cell": [
+            91,
+            28
+          ],
+          "plate_id": 11,
+          "support_id": "R6G1D-R091-C028"
+        },
+        {
+          "grid_cell": [
+            91,
+            29
+          ],
+          "plate_id": 5,
+          "support_id": "R6G1D-R091-C029"
+        }
+      ],
+      "support_state_sha256": {
+        "R6G1D-R091-C028": "2507efbde9b9e98dccfc9e4cd7bb0eac59a7307b8adcc91955e7a5feb10914ec",
+        "R6G1D-R091-C029": "2507efbde9b9e98dccfc9e4cd7bb0eac59a7307b8adcc91955e7a5feb10914ec"
+      },
+      "t0_boundary_id": "R6BND-T0-3eb57747e6f0a3f3305f",
+      "t0_boundary_length_m": 111194.92664455874,
+      "vector_partition_payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+    }
+  },
+  "upstream": {
+    "historical_eng10k_branch": "r6/si1-bandwidth-f2av",
+    "historical_eng10k_head": "ec79bf8954a4922f84249fbe23e2657bc5beee23",
+    "reviewed_repository_documentation_head": "65e53357a9ef5d2c6bdf5a66d195558037add494"
+  },
+  "notes": [
+    "Both supports have identical T0 source-state SHA256; the loader accepts this. It is not proof of distinct material/geological initial profiles.",
+    "The source identity's historical source_head is the origin of source data, not the Windows working-tree HEAD or the next FAIR code checkout.",
+    "SHA256 of the archive is a content-transfer check; tar member names, types and bytes must still be verified on FAIR.",
+    "The bundle was created on Windows but was not transferred to FAIR or rehashed by this documentation update."
+  ],
+  "preserved_gates": {
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "GEODYN_2B_ARCANA_FORWARD_AUTHORIZED": false,
+    "F2B_SOLVER_EXECUTION_AUTHORIZED": false,
+    "ARCANA_SI1_MECHANICS_QUALIFIED": false
+  }
+}

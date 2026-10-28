@@ -7,6 +7,10 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — R6-INT10K E0 original Windows semantic loader PASS and bundle sealed
+
+`R6_INT10K_E0_WINDOWS_LOADER_PASS__TRANSFER_BUNDLE_SEALED__FAIR_IDENTITY_PENDING`: Windows operator reports exact original `_03` triad SHA256 PASS and `load_verified_r6_initial_columns` PASS (code HEAD `3c566ea61c79b8dad96274a5d68d845704aeae96`, loader-module SHA256 `612d59415e25909a593914d627ea40253d44c3e352039a765c717879793d23fa`). C028/C029 each have 73 T0 nodes and identical T0 digest `2507efbde9b9e98dccfc9e4cd7bb0eac59a7307b8adcc91955e7a5feb10914ec`, distinct plate/grid bindings. Transfer bundle `MATERIAL_RHEOLOGY_PROVIDER_20261025_03.tar.gz`, SHA256 `fc5cda6e543f5f96673ba71e60c085566659672abff9728eb5ed74c2ab47c8b0`, created on Windows; **no FAIR transfer/loader comparison yet**. Historical source identity `ec79bf89…` is distinct from Windows code HEAD. Windows source identity and SHA table saved in `docs/arcana/qualifications/R6_INT10K_E0_WINDOWS_INPUT_OPERATOR_REPORT.json`, provenance/transfer boundary `docs/arcana/R6_INT10K_E0_WINDOWS_SEMANTIC_LOADER_20261028.md`. No FAIR transport yet, no numerical run, no scientific promotion. Next verified pinned-code FAIR transfer and identity parity.
+
 ## 2026-10-28 — R6-INT10K E0 Windows source triads located
 
 `R6_INT10K_E0_WINDOWS_INPUT_TRIADS_FOUND__MANIFEST_SIDECAR_PASS__LOADER_FAIR_PENDING`. Operator reports all three Windows material/rheology input triads `_01/_02/_03` found, all with manifest/sidecar hash/content PASS; selected `_03` has result SHA `24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5` and manifest SHA `a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21`. Original ENG10K archive SHA `7dda60c8fa1f535d9e257eb2d04fdfde4643a92765eca8631bd766058240d8cb` matches source constant. Source-loader 73-node/boundary semantic check and FAIR transfer still PENDING. No engine executed. Follow-up: full semantic loader then provenance-preserving transfer. No new numerical or solver execution, no gate promotion. `docs/arcana/R6_INT10K_E0_WINDOWS_INPUT_RECOVERY_20261028.md`.
