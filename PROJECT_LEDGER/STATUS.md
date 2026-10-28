@@ -1,10 +1,10 @@
-# CURRENT — GEODYN-3C-R3 Git gate repair prepared locally (2026-10-28)
+# CURRENT — GEODYN-3C-R4 payload integrity semantics repaired locally (2026-10-28)
 
-Decision: `GEODYN_3C_R3_GIT_GATE_LOCAL_PASS__FAIR_PENDING`.
+Decision: `GEODYN_3C_R4_MISSING_PAYLOAD_SEMANTICS_LOCAL_PASS__FAIR_PENDING`.
 
-Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R3 replaces the `.git` directory check with `git rev-parse` worktree-root validation, accepts linked worktrees, and requires explicit `GEODYN3C_EXPECTED_COMMIT` plus `GEODYN3C_EXPECTED_PARENT`; the actual parent is compared with the independently supplied expected parent. Module source provenance (`ab8fad...`) and reader provenance (`1fd5...`) remain independent checks. The helper suite passed 13 tests with 1 NumPy-dependent skip; the combined 85-test suite passed 82 with 3 skips (two Windows symlink restrictions and NumPy unavailable). HEAD, branch and index were unchanged by the linked-worktree validation test. Local `bash -n` could not run because Windows resolved bash to a non-runnable WindowsApps stub. No FAIR or numerical run occurred.
+Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. `verify_integrity()` now checks source availability and digests before PVD semantics; missing files remain `MISSING_PAYLOAD`, actual or raced replacements remain `CORRUPT_PAYLOAD`, and on-demand missing reads agree with integrity verification. The launcher preserves historical module source `ab8fad...` and separately records/checks the latest module-changing commit as an ancestor of the candidate; it remains distinct from launcher parent and ASPECT reader provenance. Combined Windows suite: 86 collected, 83 passed, 3 skipped (two Windows symlink restrictions; one NumPy-dependent mesh digest). Python compilation and diff-check passed. Bash syntax and Linux/FAIR checks remain pending.
 
-FAIR qualification remains pending this exact-commit Linux gate retest and recovery of original source inventory, configuration/input SHA256s, attempt ID and time-unit source. No FAIR data or solver was accessed and no evidence was fabricated. Gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+The operator-reported `GEODYN3C_20261028T164610Z` attempt passed its 85 Linux tests and positive archive/query/numeric-comparison phases, then failed the negative missing-payload check. Preserve that result unchanged; source inventory, configuration/input SHA256s, attempt ID and time-unit source remain unresolved. No FAIR data or solver was accessed in R4 and no evidence was fabricated. Gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

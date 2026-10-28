@@ -124,21 +124,21 @@ def test_geodyn2c_parser_rejects_unknown_or_incomplete_schema(tmp_path):
     report = tmp_path / "pytest.xml"
     _write_junit(report)
     assert validate_pytest_junit(report) == {
-        "tests": 85, "passed": 85, "failed": 0, "errors": 0, "skipped": 0,
+        "tests": 86, "passed": 86, "failed": 0, "errors": 0, "skipped": 0,
     }
     for count, outcome, bad_root_count, message in (
-        (85, "skipped", False, "85 total/pass"),
-        (85, "failure", False, "85 total/pass"),
-        (85, "error", False, "85 total/pass"),
-        (84, None, False, "85 total/pass"),
-        (85, None, True, "suite tests counter"),
+        (86, "skipped", False, "86 total/pass"),
+        (86, "failure", False, "86 total/pass"),
+        (86, "error", False, "86 total/pass"),
+        (85, None, False, "86 total/pass"),
+        (86, None, True, "suite tests counter"),
     ):
         _write_junit(report, count=count, outcome=outcome, bad_root_count=bad_root_count)
         with pytest.raises(QualificationInputError, match=message):
             validate_pytest_junit(report)
 
 
-def _write_junit(path, *, count=85, outcome=None, bad_root_count=False):
+def _write_junit(path, *, count=86, outcome=None, bad_root_count=False):
     import xml.etree.ElementTree as ET
 
     failures = int(outcome == "failure")

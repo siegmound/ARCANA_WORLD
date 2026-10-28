@@ -214,7 +214,26 @@ def test_metadata_stays_readable_when_original_payload_root_is_not_provided(tmp_
     assert archive.query_snapshots(run_id).status == "FOUND"
     assert archive.verify_integrity().status == "MISSING_PAYLOAD"
     field = archive.manifest["field_catalog"][0]
-    assert archive.get_field(archive.manifest["snapshots"][0]["snapshot_id"], field["field_id"]).status == "MISSING_PAYLOAD"
+    row = archive.manifest["snapshots"][0]
+    assert archive.get_field(row["snapshot_id"], field["field_id"]).status == "MISSING_PAYLOAD"
+    assert archive.get_snapshot(row["snapshot_id"]).status == "MISSING_PAYLOAD"
+
+    empty_root = tmp_path / "empty_source"
+    empty_root.mkdir()
+    missing_roots = [empty_root]
+    pvd_missing_root = tmp_path / "pvd_missing_source"
+    shutil.copytree(source, pvd_missing_root)
+    (pvd_missing_root / "series.pvd").unlink()
+    missing_roots.append(pvd_missing_root)
+    vtu_missing_root = tmp_path / "vtu_missing_source"
+    shutil.copytree(source, vtu_missing_root)
+    (vtu_missing_root / "state_0.vtu").unlink()
+    missing_roots.append(vtu_missing_root)
+    for root in missing_roots:
+        configured = _open(output, root)
+        assert configured.verify_integrity().status == "MISSING_PAYLOAD"
+        assert configured.get_snapshot(row["snapshot_id"]).status == "MISSING_PAYLOAD"
+        assert configured.get_field(row["snapshot_id"], field["field_id"]).status == "MISSING_PAYLOAD"
 
 
 def test_modified_payload_and_wrong_inventory_fail_closed(tmp_path):
@@ -234,6 +253,59 @@ def test_modified_payload_and_wrong_inventory_fail_closed(tmp_path):
     (source / "state_0.vtu").write_text("tampered", encoding="utf-8")
     archive = _open(good_output, source)
     assert archive.verify_integrity().status == "CORRUPT_PAYLOAD"
+    row = archive.manifest["snapshots"][0]
+    assert archive.get_snapshot(row["snapshot_id"]).status == "CORRUPT_PAYLOAD"
+
+
+def test_pvd_disappearance_or_replacement_during_semantic_read_keeps_payload_status(tmp_path, monkeypatch):
+    import arcana_worldsim.r6.experimental_trajectory_archive as archive_module
+
+    source, output = tmp_path / "vanishing_source", tmp_path / "vanishing_index"
+    _build(source, output)
+    archive = _open(output, source)
+    pvd = source / "series.pvd"
+    original_reader = archive_module._pvd_time_tokens
+
+    def remove_pvd_before_read(path):
+        path.unlink()
+        return original_reader(path)
+
+    monkeypatch.setattr(archive_module, "_pvd_time_tokens", remove_pvd_before_read)
+    missing = archive.verify_integrity()
+    assert missing.status == "MISSING_PAYLOAD"
+    assert missing.missing_files == ("source:series.pvd",)
+
+    monkeypatch.setattr(archive_module, "_pvd_time_tokens", original_reader)
+    changed_source, changed_output = tmp_path / "changed_source", tmp_path / "changed_index"
+    _build(changed_source, changed_output)
+    changed_archive = _open(changed_output, changed_source)
+    changed_pvd = changed_source / "series.pvd"
+
+    def replace_pvd_before_read(path):
+        path.write_text(path.read_text(encoding="utf-8").replace('timestep="0.0"', 'timestep="0.25"', 1),
+                        encoding="utf-8", newline="\n")
+        return original_reader(path)
+
+    monkeypatch.setattr(archive_module, "_pvd_time_tokens", replace_pvd_before_read)
+    corrupt = changed_archive.verify_integrity()
+    assert corrupt.status == "CORRUPT_PAYLOAD"
+    assert corrupt.corrupt_files == ("source:series.pvd",)
+
+    # A source can also disappear after verification but before the on-demand read.
+    monkeypatch.setattr(archive_module, "_pvd_time_tokens", original_reader)
+    on_demand_source, on_demand_output = tmp_path / "ondemand_source", tmp_path / "ondemand_index"
+    _build(on_demand_source, on_demand_output)
+    on_demand = _open(on_demand_output, on_demand_source)
+    actual_series = on_demand._series
+
+    def remove_pvd_after_integrity(root):
+        (root / "series.pvd").unlink()
+        return actual_series(root)
+
+    monkeypatch.setattr(on_demand, "_series", remove_pvd_after_integrity)
+    snapshot_id = on_demand.manifest["snapshots"][0]["snapshot_id"]
+    assert on_demand.verify_integrity().status == "PASS"
+    assert on_demand.get_snapshot(snapshot_id).status == "MISSING_PAYLOAD"
 
 
 def test_interrupted_finalization_leaves_index_incomplete(tmp_path, monkeypatch):

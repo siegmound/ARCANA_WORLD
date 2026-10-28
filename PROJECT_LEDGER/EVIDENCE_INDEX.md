@@ -1,6 +1,6 @@
-# CURRENT — GEODYN-3C-R3 local Git-gate repair (2026-10-28)
+# CURRENT — GEODYN-3C-R4 local payload-status repair (2026-10-28)
 
-Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R3 local gate regression: combined suite 85 collected, 82 passed, 3 skipped (Windows symlink privilege and missing NumPy). Test covers normal repository and linked worktree, parent mismatch and missing parent; launcher accepts `.git` file worktrees using Git introspection and requires explicit commit/parent SHA environment values. Windows Bash syntax could not run; Linux/FAIR and data comparison remain unverified. No external/numerical evidence was created. Historical FAIR evidence remains unimported/unhashed on Windows; source inventory/config/input/attempt provenance remains unresolved. No solver execution.
+Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R4 Windows combined suite: 86 collected, 83 passed, 3 skipped (Windows symlink privilege and NumPy unavailable). Regressions cover unconfigured/empty source roots, missing PVD/VTU, altered payload, intact payload, on-demand missing-source status, and PVD disappearance/replacement during semantic reading. The launcher records historical module source revision separately from its latest source-changing commit and checks ancestry. No new external/numerical evidence was created. FAIR attempt `GEODYN3C_20261028T164610Z` remains operator-reported: its 85 Linux tests and positive archive/query/numeric-comparison phases passed, but the negative missing-payload check blocked qualification. Original files remain unimported/unhashed on Windows; historical inventory/config/input/attempt provenance remains unresolved. No solver execution.
 
 ---
 

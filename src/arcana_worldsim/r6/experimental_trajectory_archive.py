@@ -617,29 +617,67 @@ class ExperimentalTrajectoryArchive:
         checked = 0
         missing: list[str] = []
         corrupt: list[str] = []
-        for item in self.manifest["source_files"]:
+
+        def source_status(item: Mapping[str, Any]) -> tuple[str, bool]:
+            """Return payload availability/integrity without confusing absence with corruption."""
             alias, ref = "source", item["relative_ref"]
             root = self.source_roots.get(alias)
             if root is None:
-                missing.append(f"{alias}:{ref}")
-                continue
+                return "MISSING_PAYLOAD", False
             try:
                 path = _safe_join(root, ref)
                 actual = _stream_digest(path, self.limits.max_file_bytes, ref)
-                checked += 1
-                if actual.byte_length != item["byte_length"] or actual.sha256 != item["sha256"]:
-                    corrupt.append(f"{alias}:{ref}")
             except ArchiveError as exc:
-                if exc.status == "UNSAFE_PATH":
-                    corrupt.append(f"{alias}:{ref}")
-                else:
-                    missing.append(f"{alias}:{ref}")
+                return ("MISSING_PAYLOAD" if exc.status == "MISSING_PAYLOAD" else "CORRUPT_PAYLOAD"), False
+            except FileNotFoundError:
+                return "MISSING_PAYLOAD", False
+            except OSError:
+                return "CORRUPT_PAYLOAD", False
+            matches = actual.byte_length == item["byte_length"] and actual.sha256 == item["sha256"]
+            return ("PASS" if matches else "CORRUPT_PAYLOAD"), True
+
+        for item in self.manifest["source_files"]:
+            alias, ref = "source", item["relative_ref"]
+            status, was_checked = source_status(item)
+            checked += int(was_checked)
+            if status == "MISSING_PAYLOAD":
+                missing.append(f"{alias}:{ref}")
+            elif status != "PASS":
+                corrupt.append(f"{alias}:{ref}")
         status = "CORRUPT_PAYLOAD" if corrupt else "MISSING_PAYLOAD" if missing else "PASS"
+        if status != "PASS":
+            return IntegrityReport(status, checked, tuple(missing), tuple(corrupt))
+
         source_root = self.source_roots.get("source")
         if source_root is not None:
+            pvd_item = next(item for item in self.manifest["source_files"]
+                            if item["relative_ref"] == self.manifest["source_pvd_ref"])
+            pvd_status, _ = source_status(pvd_item)
+            if pvd_status != "PASS":
+                ref = pvd_item["relative_ref"]
+                return IntegrityReport(pvd_status, checked,
+                                       (f"source:{ref}",) if pvd_status == "MISSING_PAYLOAD" else (),
+                                       (f"source:{ref}",) if pvd_status != "MISSING_PAYLOAD" else ())
             try:
                 pvd = _safe_join(source_root, self.manifest["source_pvd_ref"])
                 tokens = _pvd_time_tokens(pvd)
+            except (ArchiveError, ValueError, OSError):
+                pvd_status, _ = source_status(pvd_item)
+                if pvd_status == "MISSING_PAYLOAD":
+                    ref = pvd_item["relative_ref"]
+                    return IntegrityReport("MISSING_PAYLOAD", checked, (f"source:{ref}",), ())
+                ref = pvd_item["relative_ref"]
+                return IntegrityReport("CORRUPT_PAYLOAD", checked, (), (f"source:{ref}",))
+
+            # Detect disappearance or replacement between the initial inventory
+            # pass and the semantic PVD read, including a concurrent valid-XML edit.
+            pvd_status, _ = source_status(pvd_item)
+            if pvd_status != "PASS":
+                ref = pvd_item["relative_ref"]
+                return IntegrityReport(pvd_status, checked,
+                                       (f"source:{ref}",) if pvd_status == "MISSING_PAYLOAD" else (),
+                                       (f"source:{ref}",) if pvd_status != "MISSING_PAYLOAD" else ())
+            try:
                 snapshots = self.manifest["snapshots"]
                 if len(tokens) != len(snapshots):
                     return IntegrityReport("CORRUPT_MANIFEST", checked, (), (),
@@ -740,6 +778,14 @@ class ExperimentalTrajectoryArchive:
         try:
             snapshot = self._series(root).read_snapshot(row["source_ordinal"])
         except (ArchiveError, SnapshotFormatError, OSError, ValueError) as exc:
+            if isinstance(exc, ArchiveError) and exc.status == "MISSING_PAYLOAD":
+                return ArchiveResult("MISSING_PAYLOAD", message=str(exc))
+            if isinstance(exc, FileNotFoundError):
+                return ArchiveResult("MISSING_PAYLOAD", message=str(exc))
+            integrity = self.verify_integrity()
+            if integrity.status != "PASS":
+                message = integrity.message or ",".join(integrity.missing_files + integrity.corrupt_files)
+                return ArchiveResult(integrity.status, message=message)
             return ArchiveResult("CORRUPT_PAYLOAD", message=str(exc))
         mesh_record = next((item for item in self.manifest["mesh_catalog"]
                             if item["mesh_id"] == row["mesh_id"]), None)

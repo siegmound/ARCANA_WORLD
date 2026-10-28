@@ -1,6 +1,6 @@
-# NEXT — GEODYN-3C-R3 exact-commit FAIR validation, only after evidence recovery (2026-10-28)
+# NEXT — GEODYN-3C-R4 exact-commit Linux retest, then evidence-gated qualification (2026-10-28)
 
-Commit the bounded R3 Git-gate repair locally. On FAIR, verify `bash -n`, provide both the exact candidate commit and its independently known parent through `GEODYN3C_EXPECTED_COMMIT` and `GEODYN3C_EXPECTED_PARENT`, then run the JUnit-enforced preflight (85 passed, zero failures/errors/skips). The launcher must preserve the existing linked worktree's HEAD, branch, and index. Before archive qualification, recover the original source inventory, `configuration_sha256`, each `input_identities` SHA256, attempt ID and time-unit source from preserved records. These remain operator-reported and were not imported to Windows. Missing values are BLOCKED; never synthesize them. No ASPECT solver or ARCANA forward run. Gates remain `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+On FAIR, verify the exact R4 candidate and parent, run `bash -n`, then execute the launcher test phase with its JUnit gate set to 86 passed, zero failures/errors/skips. Preserve the linked worktree HEAD, branch and index. Only then repeat archive/query/integrity/numeric comparison against the existing original files if the historical source inventory, `configuration_sha256`, every `input_identities` SHA256, attempt ID and time-unit source are recovered from preserved evidence. These values remain operator-reported and were not imported to Windows; missing values are BLOCKED and must not be synthesized. No ASPECT solver or ARCANA forward run. Gates remain `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

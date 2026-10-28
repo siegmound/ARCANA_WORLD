@@ -7,6 +7,14 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — GEODYN-3C-R4 missing-payload integrity semantics repair (local only)
+
+- Fixed `ExperimentalTrajectoryArchive.verify_integrity()` to perform semantic PVD validation only after all declared source payloads pass availability and digest checks. Missing root/PVD/VTU is `MISSING_PAYLOAD`; altered bytes and a detected PVD replacement are `CORRUPT_PAYLOAD`, preserving corruption precedence. On-demand snapshot reads report a missing source consistently with integrity verification.
+- Added missing/empty-root, PVD/VTU absence, altered payload, intact payload, on-demand status and PVD race regressions. Combined Windows suite: 86 collected, 83 passed, 3 skipped (two symlink privilege restrictions and NumPy unavailable for mesh digest). Python compilation and `git diff --check` passed. Bash syntax unavailable locally because the WindowsApps `bash.exe` stub cannot run; Linux/FAIR retest pending.
+- Updated launcher provenance: historical GEODYN-3B source `ab8fad...` is retained; the latest archive-module source-change commit is resolved independently, recorded and required to be a real ancestor of the candidate. It is not conflated with direct launcher parent or reader pin. JUnit acceptance is updated to 86 tests.
+- FAIR evidence `GEODYN3C_20261028T164610Z` remains operator-reported and immutable: 85/85 Linux tests and positive archive/query/numeric comparison passed, but `payload_missing` failed for an existing empty alternate source directory. R4 did not access FAIR or original ASPECT files and creates no new runtime evidence. Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`.
+- Decision: `GEODYN_3C_R4_MISSING_PAYLOAD_SEMANTICS_LOCAL_PASS__FAIR_PENDING`. Gates unchanged: `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
 ## 2026-10-28 — GEODYN-3C-R3 Git qualification gate repair (local only)
 
 - Replaced the launcher's `.git`-directory assumption with `git rev-parse` worktree-root validation, covering linked worktrees while preserving checkout state. `GEODYN3C_EXPECTED_COMMIT` and `GEODYN3C_EXPECTED_PARENT` are both mandatory, explicit 40-hex SHA-1 inputs; the parent relation is checked against Git. Module/archive and reader provenance commits remain independent from launcher ancestry.

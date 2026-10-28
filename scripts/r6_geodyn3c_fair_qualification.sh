@@ -18,7 +18,7 @@ EXPECTED_TIMES_COUNT=11
 EXPECTED_POINTS=1152
 EXPECTED_CELLS=512
 EXPECTED_POINT_FIELDS=9
-EXPECTED_TESTS=85
+EXPECTED_TESTS=86
 
 fail() { printf 'BLOCKED: %s\n' "$*" >&2; exit 2; }
 [[ $# -eq 7 ]] || fail 'expected exactly seven arguments; see usage in script header'
@@ -64,7 +64,10 @@ launcher_file_commit=$(git -C "$REPO" log -1 --format=%H "$EXPECTED_COMMIT" -- s
 module_file_commit=$(git -C "$REPO" log -1 --format=%H "$EXPECTED_COMMIT" -- src/arcana_worldsim/r6/experimental_trajectory_archive.py)
 reader_file_commit=$(git -C "$REPO" log -1 --format=%H "$EXPECTED_COMMIT" -- src/arcana_worldsim/r6/adapters/aspect_snapshot_reader.py)
 [[ "$launcher_file_commit" == "$EXPECTED_COMMIT" ]] || fail 'launcher provenance does not resolve to qualified commit'
-[[ "$module_file_commit" == "$GEODYN3B_MODULE_SOURCE_COMMIT" ]] || fail "unexpected archive module source commit: $module_file_commit"
+[[ "$module_file_commit" =~ ^[0-9a-f]{40}$ ]] || fail 'latest archive module source change is not a full Git SHA-1'
+git -C "$REPO" cat-file -e "$module_file_commit^{commit}" || fail 'latest archive module source commit object is unavailable'
+git -C "$REPO" merge-base --is-ancestor "$module_file_commit" "$EXPECTED_COMMIT" || \
+  fail 'latest archive module source change is not an ancestor of the qualified candidate'
 [[ "$reader_file_commit" == "$ASPECT_READER_PROVENANCE_COMMIT" ]] || fail "unexpected reader source provenance: $reader_file_commit"
 checkout_branch_before=$(git -C "$REPO" branch --show-current)
 checkout_head_before=$(git -C "$REPO" rev-parse HEAD)
@@ -127,7 +130,8 @@ import hashlib, json, math, shutil, subprocess, sys
 from pathlib import Path
 
 repo_s, source_tree, source_root_s, pvd_ref, audit_s, inventory_s, claims_s, evidence_s, \
-    qualified_commit, expected_parent, module_origin_commit, module_source_commit, reader_provenance_commit = sys.argv[1:]
+    qualified_commit, expected_parent, module_origin_commit, module_source_commit, \
+    module_last_change_commit, reader_provenance_commit = sys.argv[1:]
 sys.path.insert(0, str(Path(source_tree) / "src"))
 from arcana_worldsim.r6.experimental_trajectory_archive import (
     ArchiveError, ExperimentalTrajectoryArchive, NativeTime, RunIdentityClaim,
@@ -173,6 +177,7 @@ try:
     git_identity.update({
         "qualified_launcher_commit": qualified_commit,
         "archive_module_source_commit": module_source_commit,
+        "archive_module_last_change_commit": module_last_change_commit,
         "archive_module_origin_commit": module_origin_commit,
         "aspect_snapshot_reader_provenance_commit": reader_provenance_commit,
     })
@@ -466,7 +471,7 @@ PYTHONPATH="$RUN_DIR/source-extract/src" python "$RUN_DIR/run_geodyn3c.py" \
   "$RUN_DIR/NUMERIC_AUDIT.json" "$RUN_DIR/SOURCE_INVENTORY.json" \
   "$RUN_DIR/RUN_IDENTITY_CLAIMS.json" "$RUN_DIR" \
   "$EXPECTED_COMMIT" "$EXPECTED_PARENT" "$GEODYN3B_MODULE_ORIGIN_COMMIT" "$GEODYN3B_MODULE_SOURCE_COMMIT" \
-  "$ASPECT_READER_PROVENANCE_COMMIT" 2>&1 | tee "$RUN_DIR/qualification.log"
+  "$module_file_commit" "$ASPECT_READER_PROVENANCE_COMMIT" 2>&1 | tee "$RUN_DIR/qualification.log"
 qualification_rc=${PIPESTATUS[0]}
 set -e
 printf '%s\n' "$qualification_rc" > "$RUN_DIR/qualification.exitcode"

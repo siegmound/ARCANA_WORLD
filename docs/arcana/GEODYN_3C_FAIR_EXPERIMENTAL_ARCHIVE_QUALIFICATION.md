@@ -1,5 +1,45 @@
 # GEODYN-3C — FAIR experimental archive qualification handoff
 
+## R4 — missing-payload semantics repair (2026-10-28, local; FAIR pending)
+
+The operator-reported FAIR attempt `GEODYN3C_20261028T164610Z` completed the
+85-test Linux suite, archive construction, queries and independent numeric
+comparison, then stopped at the negative `payload_missing` case. The reported
+source was an existing but empty alternate directory. This is preserved as a
+qualification failure; its original evidence has not been imported or
+independently rehashed on Windows.
+
+The repair changes `ExperimentalTrajectoryArchive.verify_integrity()` so it
+returns before semantic PVD parsing unless every declared source file is
+available and has the expected byte length and SHA256. Corrupt-file precedence
+over missing-file status is retained. The PVD is rechecked around semantic
+reading so disappearance reports `MISSING_PAYLOAD` and replacement reports
+`CORRUPT_PAYLOAD`; on-demand snapshot reads use the same integrity status when
+the payload disappears. The manifest, archive format, numeric hashes, ASPECT
+inputs, audit parser and original files are unchanged.
+
+The R3 launcher now keeps the historical GEODYN-3B source revision
+`ab8fad9282b45c30f1df3653ce447cf5e13c6be4` as provenance, while separately
+resolving and recording the latest commit that changed the archive module. It
+requires that source-change commit to exist and be an ancestor of the exact
+candidate. This is independent of the launcher's direct parent and the pinned
+ASPECT reader revision `1fd5e8d8f21e28876da9ef89423755615efc6162`. The expected
+Linux JUnit total is now 86 (all pass, zero failures/errors/skips).
+
+Windows combined tests: 83 passed, 3 skipped. Two skips are Windows symlink
+creation privilege restrictions; one mesh-digest test skips because NumPy is
+unavailable in this environment. Python compilation and `git diff --check`
+passed. Bash syntax could not be checked: the available `bash.exe` is a
+non-runnable WindowsApps stub. These checks do not establish Linux/FAIR
+qualification. No ASPECT solver ran and no original FAIR output was modified.
+
+Next: run Bash syntax validation and the 86-test zero-skip suite on Linux, then
+repeat GEODYN-3C against the preserved original files only if the historical
+inventory, configuration/input SHA256s, attempt identity and time-unit source
+are recovered from existing evidence. Missing identity inputs remain BLOCKED;
+do not synthesize them. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` and
+`GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` remain unchanged.
+
 **Date:** 2026-10-27
 **Branch:** `r6/multiphysics-integration-20261026`
 **GEODYN-3B module origin:** `e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa`
@@ -58,18 +98,18 @@ bash /path/outside/checkout/r6_geodyn3c_fair_qualification.sh \
 
 `SOURCE_INVENTORY.json` and `RUN_IDENTITY_CLAIMS.json` are required input schemas, not claims that files with those names already exist in the historic directory. Recover values from preserved records; never fabricate them. The inventory must cover exactly the PVD-referenced source files. The run's solver/repository/adapter commit values are historical caller claims, distinct from the launcher candidate, its parent, the GEODYN-3B module source revision, and reader provenance. The script records those code identities separately. Git algorithm declarations remain caller-supplied unauthenticated metadata. `configuration_sha256` and every `input_identities` entry require the original exact 64-character SHA256 values. The time-unit source and attempt token must also come from evidence. If any required inventory, claim, or digest is unavailable, stop as BLOCKED.
 
-The repaired script does not require a particular current branch or HEAD. It captures and rechecks the checkout branch, HEAD, tracked status, staged diff, and worktree diff. It verifies the exact remote R6 ref, exact candidate commit object and parent, then uses `git archive`; it never checks out the candidate. The R2 script requires exactly 85 Linux tests with zero skips; any nonzero exit, count mismatch, or skip stops qualification. Pytest JUnit XML is retained and its testcase results are independently counted.
+The repaired script does not require a particular current branch or HEAD. It captures and rechecks the checkout branch, HEAD, tracked status, staged diff, and worktree diff. It verifies the exact remote R6 ref, exact candidate commit object and parent, then uses `git archive`; it never checks out the candidate. Current R4 launcher acceptance requires exactly 86 Linux tests with zero skips; any nonzero exit, count mismatch, or skip stops qualification. Pytest JUnit XML is retained and its testcase results are independently counted.
 
 If the PVD filename/location or the historical inventory/claim files differ from the example, pass the actual relative PVD reference and exact existing evidence paths as arguments. Do not select a guessed PVD or use a newly calculated inventory as if it were an independently preserved historical digest. The script prehashes every declared original, the indexer independently hashes the PVD-referenced files, and the script rehashes the same originals afterward; pre/post mismatch is FAIL. These checks establish byte preservation during this qualification, not source authorship.
 
 ## Qualification performed by the script
 
 1. Verifies the remote branch ref, exact candidate commit object, parent, and source-file provenance. It captures checkout identity/state before and after without requiring the checkout to match the candidate.
-2. Runs the archive, reader, and qualification helper test modules from the extracted commit and requires all 85 Linux tests to pass with no skips.
+2. Runs the archive, reader, and qualification helper test modules from the extracted commit and requires all 86 Linux tests to pass with no skips.
 3. Builds a new metadata-only index with the externally supplied source inventory and claims. The original PVD/PVTU/VTU files remain in place; numeric arrays are not copied into the index.
 4. Requires 11 strictly increasing native times from 0 through 1.0142299266 s, a stable 1152-point/512-cell single quadrilateral mesh, nine point fields, and the separate 1.098612289 s solver-completion time. It asserts `SYNTHETIC_ENGINEERING_ONLY`, unauthenticated provenance, `restart=NOT_AVAILABLE`, and `reconstruction=NOT_CLAIMED`.
 5. Exercises exact-time, inclusive interval, mesh/field catalog and on-demand snapshot/field queries. A query at solver completion and a point in the unarchived tail must return `MISSING_SNAPSHOT`; no interpolation or synthesized terminal state is accepted.
-6. Parses only the original GEODYN-2C `snapshots[].point_fields[]` schema (`type` is a NumPy dtype name, with `min`, `max`, optional velocity `norm_max`) and compares 99 typed field hashes/metadata plus 11 numeric mesh digests. Mesh digest serialization follows the auditor: coordinates, connectivity, offsets, types; each array contributes `str(dtype)` bytes followed by C-order bytes. JUnit acceptance requires exactly 85 passed and zero failed/error/skipped. Unknown/incomplete schema fails closed.
+6. Parses only the original GEODYN-2C `snapshots[].point_fields[]` schema (`type` is a NumPy dtype name, with `min`, `max`, optional velocity `norm_max`) and compares 99 typed field hashes/metadata plus 11 numeric mesh digests. Mesh digest serialization follows the auditor: coordinates, connectivity, offsets, types; each array contributes `str(dtype)` bytes followed by C-order bytes. JUnit acceptance requires exactly 86 passed and zero failed/error/skipped. Unknown/incomplete schema fails closed.
 7. Tests incomplete-index status, missing payload status, altered payload on an isolated copy, external symlink rejection, traversal rejection, output collision preservation, invalid sealed-manifest rejection, and archive relocation. Relocation must preserve `archive_id`; payload resolution becomes available only after explicitly supplying the source-root mapping.
 8. Records pre/post hashes of all original referenced files, source commit/parent, test log and exit code, generated manifest and sidecar, integrity report, query outcomes, per-field numeric comparison, negative checks, and qualification result. A failed phase remains in the new run directory with a nonzero exit and is not overwritten or retried.
 

@@ -337,7 +337,7 @@ def summarize_numeric_field(
     return result
 
 
-def validate_pytest_junit(path: str | Path, *, expected_cases: int = 85) -> dict[str, int | str]:
+def validate_pytest_junit(path: str | Path, *, expected_cases: int = 86) -> dict[str, int | str]:
     try:
         root = ET.parse(path).getroot()
     except (OSError, ET.ParseError) as exc:
