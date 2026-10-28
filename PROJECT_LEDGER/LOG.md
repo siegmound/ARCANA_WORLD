@@ -7,6 +7,10 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — INT10K E0 FAIR original input semantic/byte identity PASS
+
+`R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` — FAIR operator output confirms exact tar/member SHA256, original pinned loader SHA, C028/C029 T0 semantic load, full Windows/FAIR source identity parity and unchanged linked checkout. Evidence `INT10K_E0_WINDOWS_TRANSFER_20261028_01/FAIR_INPUT_QUALIFICATION.json`. Original FAIR bytes not independently downloaded for this doc commit; source input classification stays noncanonical synthetic engineering. No new numerical evolution run. Closed only the input-transfer/loader stage, not physical or long-running engine validation. New scoped E1 3/10-year regression lane next; `docs/arcana/R6_INT10K_E0_FAIR_INPUT_IDENTITY_CLOSURE_20261028.md`.
+
 ## 2026-10-28 — R6-INT10K FAIR sealed transfer SHA256 PASS
 
 `R6_INT10K_E0_FAIR_TRANSFER_SHA256_PASS__MEMBERS_AND_LOADER_PENDING` (operator-reported). The Windows sealed tarball was transferred to FAIR evidence `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E0_WINDOWS_TRANSFER_20261028_01`; `sha256sum -c BUNDLE.sha256` and independent supplied-expected-digest command both returned `OK` against `fc5cda6e543f5f96673ba71e60c085566659672abff9728eb5ed74c2ab47c8b0`. The SHA256 checks are redundant consistency checks of the *archive*, not proof of its three members or source-loader semantic agreement; no numerical run, tar extraction, FAIR loader invocation or checkout modification is reported. Original Windows semantic loader PASS stays intact. Recorded in `docs/arcana/R6_INT10K_E0_FAIR_TRANSFER_RECEIPT_20261028.md`. Next validate three original members and exact Windows loader on FAIR. No new solver, runtime benchmark or production authorization.

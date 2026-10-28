@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. 2026-10-28: `R6_INT10K_E0_FAIR_TRANSFER_SHA256_PASS__MEMBERS_AND_LOADER_PENDING` (Windows sealed original input archive transferred to FAIR and both SHA256 checks passed). Member hashes, pinned original loader and full Windows/FAIR identity remain unverified; no new numerical run or forward authorization. Receipt `docs/arcana/R6_INT10K_E0_FAIR_TRANSFER_RECEIPT_20261028.md`; next `PROJECT_LEDGER/NEXT_ACTION.md`.
+Single continuity point. 2026-10-28: `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` operator-reported; full Windows/FAIR original byte, pinned loader and T0 source identity match, historical checkout intact. Report `docs/arcana/R6_INT10K_E0_FAIR_INPUT_IDENTITY_CLOSURE_20261028.md`. Next E1 isolated 3/10-year baseline with unchanged regional+unified operators; not a 10k PASS or a streaming implementation. Scientific/production gate closures remain.
 
 ## Current decision — 2026-10-25
 
