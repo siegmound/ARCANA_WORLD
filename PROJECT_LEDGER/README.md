@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. Current 2026-10-28 input gate: `R6_INT10K_E0_WINDOWS_LOADER_PASS__TRANSFER_BUNDLE_SEALED__FAIR_IDENTITY_PENDING`. Windows original material/rheology _03 loader PASS, 73-node C028/C029 bindings and transfer package SHA256 verified by operator; FAIR byte transfer and pinned-source loader comparison pending. Report `docs/arcana/R6_INT10K_E0_WINDOWS_SEMANTIC_LOADER_20261028.md`, exact source identity `docs/arcana/qualifications/R6_INT10K_E0_WINDOWS_INPUT_OPERATOR_REPORT.json`. No engine run/authorization change.
+Single continuity point. 2026-10-28: `R6_INT10K_E0_FAIR_TRANSFER_SHA256_PASS__MEMBERS_AND_LOADER_PENDING` (Windows sealed original input archive transferred to FAIR and both SHA256 checks passed). Member hashes, pinned original loader and full Windows/FAIR identity remain unverified; no new numerical run or forward authorization. Receipt `docs/arcana/R6_INT10K_E0_FAIR_TRANSFER_RECEIPT_20261028.md`; next `PROJECT_LEDGER/NEXT_ACTION.md`.
 
 ## Current decision — 2026-10-25
 
