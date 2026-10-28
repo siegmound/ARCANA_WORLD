@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. Current update: 2026-10-28. GEODYN-3C-R4 repairs missing-payload status semantics and separates the historical GEODYN-3B module source revision from its latest source-change commit in launcher provenance. Combined Windows suite: 86 collected, 83 passed, 3 skipped (two Windows symlink restrictions and NumPy unavailable for the mesh digest test). Linux/FAIR validation and original-data comparison remain pending; Windows Bash resolves to a non-runnable WindowsApps stub. Historical inventory/config/input/attempt evidence remains a blocker; no solver ran. Prior failures and operator-reported results remain immutable. No ARCANA forward evolution or WORLD_HISTORY publication is authorized. See current STATUS/NEXT_ACTION and `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`.
+Single continuity point. Current update: 2026-10-28. Decision `GEODYN_3C_EXPERIMENTAL_TRAJECTORY_ARCHIVE_FAIR_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED` — **PASS_OPERATOR_REPORTED** for the existing synthetic engineering ASPECT trajectory archive, **not** ARCANA physical evolution. Qualified code `3c566ea61c79b8dad96274a5d68d845704aeae96` (parent `02fa91cf39f4f79885d033ad3485c0d0f86c4de9`), FAIR evidence `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN3C_20261028T171846Z`. Operator reports: JUnit **86/86 PASS** (no skip/failure/error), independent **11/11 mesh** + **99/99 typed field** comparisons, 11 snapshots/23 source files, query/integrity/negative/path/relocation tests PASS, launcher exit 0, manifest SHA256 `56bfc4789618d149fc402af2319c088fe0bbc9cabc9b1b73622393af9accd54f`; original source files and checkout unchanged, ASPECT not rerun. This report did not independently rehash the FAIR bundle or authenticate caller-declared run identity: `SYNTHETIC_ENGINEERING_ONLY`, `OPERATOR_REPORTED_UNAUTHENTICATED`. Historic R3 `GEODYN3C_20261028T164610Z` remains FAIL. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` and `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`. See `docs/arcana/GEODYN3C_R4_FAIR_QUALIFICATION_CLOSURE.md`, `docs/arcana/qualifications/GEODYN3C_R4_FAIR_QUALIFICATION_ATTESTATION.json`, STATUS and NEXT_ACTION.
 
 ## Current decision — 2026-10-25
 
@@ -12,7 +12,7 @@ The local tectonics/Deep, continuation, material, surface/hydrology and regional
 
 ## Leggere in questo ordine
 1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
-2. NEXT_ACTION.md - current action: qualify the GEODYN-3B read-only index against existing FAIR R1 evidence. ARCANA forward inputs remain unresolved; T0 kinematics remain diagnostic and no geological evolution run is authorized.
+2. NEXT_ACTION.md - current action: read-only R6 physical/environmental provider gap matrix; GEODYN-3C archived-output qualification is complete in its bounded experimental scope.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

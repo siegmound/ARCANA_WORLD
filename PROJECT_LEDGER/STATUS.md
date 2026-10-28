@@ -1,3 +1,13 @@
+# CURRENT — GEODYN-3C-R4 FAIR archive qualification complete (2026-10-28)
+
+Decision `GEODYN_3C_EXPERIMENTAL_TRAJECTORY_ARCHIVE_FAIR_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED` — **PASS_OPERATOR_REPORTED** for the existing synthetic engineering ASPECT trajectory archive, **not** ARCANA physical evolution. Qualified code `3c566ea61c79b8dad96274a5d68d845704aeae96` (parent `02fa91cf39f4f79885d033ad3485c0d0f86c4de9`), FAIR evidence `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN3C_20261028T171846Z`. Operator reports: JUnit **86/86 PASS** (no skip/failure/error), independent **11/11 mesh** + **99/99 typed field** comparisons, 11 snapshots/23 source files, query/integrity/negative/path/relocation tests PASS, launcher exit 0, manifest SHA256 `56bfc4789618d149fc402af2319c088fe0bbc9cabc9b1b73622393af9accd54f`; original source files and checkout unchanged, ASPECT not rerun. This report did not independently rehash the FAIR bundle or authenticate caller-declared run identity: `SYNTHETIC_ENGINEERING_ONLY`, `OPERATOR_REPORTED_UNAUTHENTICATED`. Historic R3 `GEODYN3C_20261028T164610Z` remains FAIL. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` and `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
+**NEXT: R6_PHYSICAL_ENVIRONMENTAL_PROVIDER_GAP_MATRIX** — DESIGN_AND_READ_ONLY_EVIDENCE_AUDIT. Inventory scientifically source-backed and missing initial/boundary/forcing inputs, material/rheology/lithology, resource distributions, Deep geological stores and transport/exchange, surface/erosion, climate/hydrology and flora/fauna dependencies; include provenance, units, spatial-temporal coverage, uncertainty, provider authority, validation requirements and unresolved blockers. Target: an independently reproducible, spatiotemporally queryable **210 Ma → present** world history with selective high-resolution refinement. Unknown science is not fixed by finer resolution. No new Solver, ASPECT/MPI, ARCANA forward run or canonical writes authorized.
+
+[Closure](../docs/arcana/GEODYN3C_R4_FAIR_QUALIFICATION_CLOSURE.md) | [Attestation](../docs/arcana/qualifications/GEODYN3C_R4_FAIR_QUALIFICATION_ATTESTATION.json).
+
+---
+
 # CURRENT — GEODYN-3C-R4 payload integrity semantics repaired locally (2026-10-28)
 
 Decision: `GEODYN_3C_R4_MISSING_PAYLOAD_SEMANTICS_LOCAL_PASS__FAIR_PENDING`.

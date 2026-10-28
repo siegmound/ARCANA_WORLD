@@ -1,0 +1,117 @@
+{
+  "schema": "ARCANA_R6_GEODYN3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION_V1",
+  "stage": "GEODYN-3C-R4",
+  "date": "2026-10-28",
+  "qualification_status": "PASS_OPERATOR_REPORTED",
+  "qualification_verdict": "GEODYN_3C_EXPERIMENTAL_TRAJECTORY_ARCHIVE_FAIR_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED",
+  "classification": "SYNTHETIC_ENGINEERING_ONLY",
+  "authority": "OPERATOR_REPORTED_UNAUTHENTICATED",
+  "source_scope": "EXISTING_GEODYN_2A_R1_ASPECT_RIGID_SHEAR_OUTPUT_READ_ONLY",
+  "qualified_code": {
+    "repository": "siegmound/ARCANA_WORLD",
+    "branch_at_qualification": "r6/multiphysics-integration-20261026",
+    "commit": "3c566ea61c79b8dad96274a5d68d845704aeae96",
+    "direct_parent": "02fa91cf39f4f79885d033ad3485c0d0f86c4de9",
+    "historical_archive_module_origin": "e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa",
+    "historical_archive_module_source_revision": "ab8fad9282b45c30f1df3653ce447cf5e13c6be4",
+    "aspect_reader_provenance_commit": "1fd5e8d8f21e28876da9ef89423755615efc6162",
+    "aspect_solver_source_commit": "30eb77ee5da186137d436dbad35c6cb3cab64b69"
+  },
+  "fair_evidence": {
+    "directory": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN3C_20261028T171846Z",
+    "launcher_log": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN3C_R4_FULL_otwX2rIa.log",
+    "launcher_exit": 0,
+    "status": "PASS",
+    "stage": "COMPLETE",
+    "failures": [],
+    "junit": {
+      "tests": 86,
+      "passed": 86,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "archive_id": "geodyn3archive_8003eca560d2bde09feec70900ddbaf414198e541dc46aee2a493951a09ac1ac",
+    "manifest_sha256": "56bfc4789618d149fc402af2319c088fe0bbc9cabc9b1b73622393af9accd54f",
+    "manifest_sidecar_matches": true,
+    "snapshot_count": 11,
+    "point_count": 1152,
+    "cell_count": 512,
+    "point_field_count": 9,
+    "referenced_original_files": 23,
+    "native_times_seconds": [
+      0,
+      0.122226848215,
+      0.208939018973,
+      0.318447477566,
+      0.421392071419,
+      0.518314995896,
+      0.609666521225,
+      0.716706634299,
+      0.816550981444,
+      0.90987934334,
+      1.0142299266
+    ],
+    "solver_completed_time_seconds": 1.098612289,
+    "mesh_numeric_sha256_comparisons": 11,
+    "point_field_typed_sha256_comparisons": 99,
+    "numeric_comparison_status": "PASS",
+    "integrity_report_status": "PASS",
+    "query_report_status": "PASS",
+    "negative_tests_and_relocation": "PASS_BY_LAUNCHER_ZERO_EXIT",
+    "source_files_unchanged": true,
+    "checkout_unchanged": "PASS_BY_LAUNCHER_ZERO_EXIT",
+    "solver_executed": false
+  },
+  "historic_recovery": {
+    "source_inventory": "GEODYN3C_INPUT_RECOVERY_tab08olq/SOURCE_INVENTORY.json",
+    "inventory_recovery": "PASS",
+    "run_identity_claim": "GEODYN3C_RUN_CLAIM_RECOVERY_c7vgohek/RUN_IDENTITY_CLAIMS.json",
+    "claim_recovery": "PASS",
+    "numeric_independent_audit": "GEODYN_2C_NUMERIC_AUDIT/20261027T000139Z_numeric_audit/NUMERIC_AUDIT.json",
+    "claim_authority": "OPERATOR_REPORTED_UNAUTHENTICATED"
+  },
+  "historical_failures_unchanged": [
+    {
+      "attempt": "GEODYN3C_20261028T164610Z",
+      "original_verdict": "FAIL_NEGATIVE_MISSING_PAYLOAD_STATUS",
+      "reclassified": false
+    },
+    {
+      "attempt": "GEODYN_2A_REAL_VTU_PROBE/20261027T100741Z_probe",
+      "original_verdict": "FAIL_VTU_PARSER",
+      "reclassified": false
+    }
+  ],
+  "capability_boundary": {
+    "metadata_only_index": true,
+    "exact_native_time_query": true,
+    "on_demand_source_read": true,
+    "payload_integrity_verification": true,
+    "archive_relocation_with_explicit_source_mapping": true,
+    "interpolation": false,
+    "restart": "NOT_AVAILABLE",
+    "reconstruction": "NOT_CLAIMED",
+    "scientific_geodynamics_validation": false,
+    "arcana_spatial_mapping_qualified": false,
+    "physical_geological_history_generated": false,
+    "resource_or_deep_transport_generated": false,
+    "flora_fauna_or_population_history_generated": false,
+    "canonical_state_written": false
+  },
+  "preserved_gates": {
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "GEODYN_2B_ARCANA_FORWARD_AUTHORIZED": false,
+    "F2B_SOLVER_EXECUTION_AUTHORIZED": false,
+    "ARCANA_SI1_MECHANICS_QUALIFIED": false
+  },
+  "provenance_caveat": "Operator-reported FAIR terminal output; raw FAIR evidence not independently transferred/rehashed for documentation commit.",
+  "next_action": {
+    "stage": "R6_PHYSICAL_ENVIRONMENTAL_PROVIDER_GAP_MATRIX",
+    "execution_mode": "DESIGN_AND_READ_ONLY_EVIDENCE_AUDIT",
+    "history_horizon": "210_Ma_TO_PRESENT",
+    "queryability": "SPATIOTEMPORAL_AND_SELECTIVE_REFINEMENT_WITH_PROVENANCE",
+    "must_retain_unknown": true,
+    "no_new_solver_or_canonical_authorization": true
+  }
+}
