@@ -1,3 +1,9 @@
+# CURRENT — INT10K E0 FAIR inputs PASS; E1 short-reference source staged, Linux tests pending (2026-10-28)
+
+`R6_INT10K_E1_SHORT_REFERENCE_CODE_STAGED__LINUX_TEST_PENDING` after E0 `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` operator-report. New bounded **3/10-year** legacy regional+unified direct-vs-checkpoint reference, scoped CLI and synthetic tests created; not yet run on Linux, **not** a compact streaming implementation or 10k validation. Source changes only add three new files; no physical kernel alterations. See `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Next exact-commit isolated FAIR pytest and py_compile; no numerical benchmark yet. Gates `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
+---
+
 # CURRENT — INT10K E0 FAIR source identity qualified (2026-10-28)
 
 `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` — FAIR operator output confirms exact tar/member SHA256, original pinned loader SHA, C028/C029 T0 semantic load, full Windows/FAIR source identity parity and unchanged linked checkout. Evidence `INT10K_E0_WINDOWS_TRANSFER_20261028_01/FAIR_INPUT_QUALIFICATION.json`. Original FAIR bytes not independently downloaded for this doc commit; source input classification stays noncanonical synthetic engineering. No new numerical evolution run. Report `docs/arcana/R6_INT10K_E0_FAIR_INPUT_IDENTITY_CLOSURE_20261028.md`. Next E1 independently versioned bounded 3/10-year regional+unified continuous-vs-restart reference and Linux regression, then compact-stream design after evidence. No 10k run or science promotion. Gates false.

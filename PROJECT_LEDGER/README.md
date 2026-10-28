@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. 2026-10-28: `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` operator-reported; full Windows/FAIR original byte, pinned loader and T0 source identity match, historical checkout intact. Report `docs/arcana/R6_INT10K_E0_FAIR_INPUT_IDENTITY_CLOSURE_20261028.md`. Next E1 isolated 3/10-year baseline with unchanged regional+unified operators; not a 10k PASS or a streaming implementation. Scientific/production gate closures remain.
+Single continuity point. E0 operator-reported original Windows/FAIR byte and loader identity PASS. E1 `R6_INT10K_E1_SHORT_REFERENCE_CODE_STAGED__LINUX_TEST_PENDING`: short 3/10-year existing regional+unified direct/checkpoint reference source/CLI/tests added but Linux tests pending; NOT streaming or 10k qualification. See `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Scientific, solver and WORLD_HISTORY production gates unchanged.
 
 ## Current decision — 2026-10-25
 
