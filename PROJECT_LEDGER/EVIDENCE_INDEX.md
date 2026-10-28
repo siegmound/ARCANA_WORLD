@@ -1,6 +1,6 @@
-# CURRENT — INT10K E1 source staged, no Linux runtime evidence (2026-10-28)
+# CURRENT — INT10K E1 first FAIR regression FAIL preserved; Windows correction tested (2026-10-28)
 
-`R6_INT10K_E1_SHORT_REFERENCE_CODE_STAGED__LINUX_TEST_PENDING` after E0 `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` operator-report. New bounded **3/10-year** legacy regional+unified direct-vs-checkpoint reference, scoped CLI and synthetic tests created; not yet run on Linux, **not** a compact streaming implementation or 10k validation. Source changes only add three new files; no physical kernel alterations. See `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. New source/tests UNEXECUTED; 3y/10y output, runtime timing and memory not measured. E0 actual original FAIR evidence unchanged. Earlier ENG10K and GEODYN-3C outputs remain separate and not rewritten.
+Original FAIR result is operator-reported, not independently imported/rehashed on Windows: evidence directory `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E1_TEST_dMJckvUN`; 24 passed, 2 failed, exit 1, compile PASS reported. Both failures were direct/checkpoint coverage cases `[3-1]` and `[10-5]` with `SHORT_REFERENCE_COVERAGE_INVALID`. Failure preserved; no original artifacts changed. Local correction requires records years 1..N, snapshots 0..N and terminal time N. Windows E1+regional+unified tests: 35 PASS, 0 SKIP under Python 3.11.15 / NumPy 2.4.6 / pytest 8.4.2. No FAIR qualification or original-input run after correction yet. See `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`; prior E0, ENG10K and GEODYN-3C evidence remains untouched.
 
 ---
 

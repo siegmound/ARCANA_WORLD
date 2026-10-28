@@ -7,6 +7,13 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — R6-INT10K E1 coverage validation correction (Windows local)
+
+- Preserved the first FAIR test outcome as an operator-reported FAIL: evidence `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E1_TEST_dMJckvUN`, compilation PASS reported, pytest 24 passed / 2 failed, exit 1. Both failures were `test_reference_direct_equals_checkpoint_split` (`[3-1]`, `[10-5]`) with `SHORT_REFERENCE_COVERAGE_INVALID`. Original FAIR files were not transferred or independently rehashed on Windows; the failed attempt was not altered or reclassified.
+- Corrected the final coverage validator to check exact records years 1..N, snapshots years 0..N (including initial year 0), and `time_years == N`; added positive and negative sequence regressions for missing, duplicate, out-of-order years and inconsistent end time. No kernel, E0 input or historical output changed.
+- Local focused E1 + regional + unified tests: **35 passed, 0 skipped** in 3.87 s using Python 3.11.15 / NumPy 2.4.6 / pytest 8.4.2. This is Windows-only local verification, not Linux/Fair qualification. No E0 input execution, E1 original-input reference run, or 10,000-year benchmark occurred.
+- Report `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Next: commit the bounded correction and qualify that exact commit with the focused Linux suite in a new external evidence directory; do not run the E1 original-input reference or 10k benchmark yet. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
 ## 2026-10-28 — INT10K E1 bounded 3/10-year short-reference source added
 
 `R6_INT10K_E1_SHORT_REFERENCE_CODE_STAGED__LINUX_TEST_PENDING` after E0 `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` operator-report. New bounded **3/10-year** legacy regional+unified direct-vs-checkpoint reference, scoped CLI and synthetic tests created; not yet run on Linux, **not** a compact streaming implementation or 10k validation. Source changes only add three new files; no physical kernel alterations. See `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Next exact-source FAIR Linux tests before any numerical trial; no 10k execution or authorization.

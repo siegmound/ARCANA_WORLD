@@ -64,6 +64,28 @@ def compare_reference(left: Any, right: Any, *, path: str = "root",
         raise ShortReferenceError(f"REFERENCE_MISMATCH:{path}")
 
 
+def _validate_regional_coverage(state: Mapping[str, Any], years: int) -> None:
+    """Require annual records and snapshots including the initial year-zero state."""
+    if type(state.get("time_years")) is not int or state["time_years"] != years:
+        raise ShortReferenceError("SHORT_REFERENCE_COVERAGE_INVALID")
+
+    def sequence(rows: Any) -> list[int]:
+        if not isinstance(rows, (list, tuple)):
+            raise ShortReferenceError("SHORT_REFERENCE_COVERAGE_INVALID")
+        values: list[int] = []
+        for row in rows:
+            if not isinstance(row, Mapping) or type(row.get("time_year")) is not int:
+                raise ShortReferenceError("SHORT_REFERENCE_COVERAGE_INVALID")
+            values.append(row["time_year"])
+        return values
+
+    expected_records = list(range(1, years + 1))
+    expected_snapshots = list(range(0, years + 1))
+    if (sequence(state.get("records")) != expected_records or
+            sequence(state.get("snapshots")) != expected_snapshots):
+        raise ShortReferenceError("SHORT_REFERENCE_COVERAGE_INVALID")
+
+
 def run_short_reference(states_by_support: Mapping[str, Any],
                         source_identity: Mapping[str, Any], *,
                         config: ShortReferenceConfig,
@@ -104,11 +126,7 @@ def run_short_reference(states_by_support: Mapping[str, Any],
     compare_reference(direct_ref, split_ref,
                       abs_tol=config.abs_tol, rel_tol=config.rel_tol)
     for value in (direct_ref, split_ref):
-        state = value["regional_state"]
-        if (state["time_years"] != config.years or
-                len(state["records"]) != config.years or
-                len(state["snapshots"]) != config.years):
-            raise ShortReferenceError("SHORT_REFERENCE_COVERAGE_INVALID")
+        _validate_regional_coverage(value["regional_state"], config.years)
 
     return {
         "schema": "ARCANA_R6_INT10K_SHORT_REFERENCE_V1",

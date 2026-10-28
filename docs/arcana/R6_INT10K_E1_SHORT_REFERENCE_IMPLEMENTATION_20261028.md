@@ -1,7 +1,15 @@
 # R6-INT10K E1 — Short direct/checkpoint reference implementation (2026-10-28)
 
-**Status:** `R6_INT10K_E1_SHORT_REFERENCE_CODE_STAGED__LINUX_TEST_PENDING`  
-**Parent source baseline:** `33600f05714168051970c79703bd06d30526f73f` (E0 input qualified by operator-reported FAIR log); this implementation is new and **not yet Linux-tested**. No new engine execution occurred in this GitHub update.
+**Status:** `R6_INT10K_E1_COVERAGE_VALIDATOR_FIXED__WINDOWS_REGRESSIONS_PASS__LINUX_RETEST_PENDING`
+**Source baseline:** `a33d505611d1a0d772af7503f7388cd8f4d29abb` (E1 implementation source; this report records the local correction and its verification separately from the first FAIR failure).
+
+## First FAIR test result and correction
+
+The operator-reported first Linux run at `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E1_TEST_dMJckvUN` compiled successfully but the test suite exited 1: **24 passed, 2 failed**. Both failures were `test_reference_direct_equals_checkpoint_split` cases `[3-1]` and `[10-5]`, reporting `SHORT_REFERENCE_COVERAGE_INVALID`. This is preserved as a FAIL; its original log was not imported or independently rehashed on Windows.
+
+The defect was the final coverage check treating `snapshots` as one record per simulated year. The regional runner includes the initial state at year 0 and then one snapshot per year. The validator now requires `records` at years `1..years`, `snapshots` at years `0..years`, and `time_years == years`, with exact ordered sequences and fail-closed handling of malformed/missing/duplicate/out-of-order times.
+
+Locally verified on Windows using the available Python 3.11.15 / NumPy 2.4.6 / pytest 8.4.2 environment: the E1, regional and unified focused suites passed **35/35**, zero skips, in 3.87 s. This runtime differs from the planned FAIR runtime and does not qualify Linux. No E0 input execution, E1 original-input run, or 10,000-year benchmark was performed. The corrected source requires a new exact-commit Linux qualification; no FAIR PASS is claimed.
 
 ## Implementation artifacts
 

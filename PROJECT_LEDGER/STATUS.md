@@ -1,6 +1,6 @@
-# CURRENT — INT10K E0 FAIR inputs PASS; E1 short-reference source staged, Linux tests pending (2026-10-28)
+# CURRENT — INT10K E1 coverage validator corrected; Windows regressions PASS, Linux retest pending (2026-10-28)
 
-`R6_INT10K_E1_SHORT_REFERENCE_CODE_STAGED__LINUX_TEST_PENDING` after E0 `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` operator-report. New bounded **3/10-year** legacy regional+unified direct-vs-checkpoint reference, scoped CLI and synthetic tests created; not yet run on Linux, **not** a compact streaming implementation or 10k validation. Source changes only add three new files; no physical kernel alterations. See `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Next exact-commit isolated FAIR pytest and py_compile; no numerical benchmark yet. Gates `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+`R6_INT10K_E1_COVERAGE_VALIDATOR_FIXED__WINDOWS_REGRESSIONS_PASS__LINUX_RETEST_PENDING`. The first FAIR suite result remains operator-reported FAIL (24 passed, 2 failed) at `INT10K_E1_TEST_dMJckvUN`; both direct/checkpoint cases exposed the initial-snapshot coverage off-by-one. Exact sequence validation is repaired. Local Windows focused E1 + regional + unified suites: 35 passed, 0 skipped using Python 3.11.15 / NumPy 2.4.6 / pytest 8.4.2. This is not Linux qualification; corrected exact commit must be retested on FAIR. No E0 input execution, numerical E1 run, or 10k benchmark. Report: `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Gates remain `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
 
 ---
 

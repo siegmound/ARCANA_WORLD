@@ -6,7 +6,8 @@ import pytest
 from arcana_worldsim.r6.functional_development import NodeMaterial, ReducedState
 from arcana_worldsim.r6.geological_surface_microdomain import SUPPORTS
 from arcana_worldsim.r6.int10k_short_reference import (
-    ShortReferenceConfig, ShortReferenceError, compare_reference, run_short_reference,
+    ShortReferenceConfig, ShortReferenceError, _validate_regional_coverage,
+    compare_reference, run_short_reference,
 )
 from arcana_worldsim.r6.regional_geological_evolution import RegionalConfig
 
@@ -47,7 +48,49 @@ def test_reference_direct_equals_checkpoint_split(years, split):
                               config=ShortReferenceConfig(years, split))
     assert out["status"] == "PASS_SHORT_REFERENCE_IN_MEMORY_PARITY"
     assert out["direct"]["regional_state"]["time_years"] == years
-    assert len(out["split"]["regional_state"]["records"]) == years
+    for trajectory in (out["direct"], out["split"]):
+        state = trajectory["regional_state"]
+        assert [row["time_year"] for row in state["records"]] == list(range(1, years + 1))
+        assert [row["time_year"] for row in state["snapshots"]] == list(range(0, years + 1))
+
+
+def test_regional_coverage_accepts_records_and_snapshots_with_initial_state():
+    state = {
+        "time_years": 3,
+        "records": [{"time_year": year} for year in (1, 2, 3)],
+        "snapshots": [{"time_year": year} for year in (0, 1, 2, 3)],
+    }
+    _validate_regional_coverage(state, 3)
+
+
+@pytest.mark.parametrize("field,years", [
+    ("records", [1, 3]),                  # missing annual record
+    ("records", [1, 2, 2, 3]),            # duplicate annual record
+    ("records", [2, 1, 3]),               # out-of-order annual record
+    ("snapshots", [1, 2, 3]),             # missing year-zero initial snapshot
+    ("snapshots", [0, 1, 1, 2, 3]),       # duplicate snapshot
+    ("snapshots", [0, 2, 1, 3]),           # out-of-order snapshot
+])
+def test_regional_coverage_rejects_missing_duplicate_or_out_of_order_years(field, years):
+    state = {
+        "time_years": 3,
+        "records": [{"time_year": year} for year in (1, 2, 3)],
+        "snapshots": [{"time_year": year} for year in (0, 1, 2, 3)],
+    }
+    state[field] = [{"time_year": year} for year in years]
+    with pytest.raises(ShortReferenceError, match="SHORT_REFERENCE_COVERAGE_INVALID"):
+        _validate_regional_coverage(state, 3)
+
+
+@pytest.mark.parametrize("time_years", [2, 4])
+def test_regional_coverage_rejects_wrong_terminal_year(time_years):
+    state = {
+        "time_years": time_years,
+        "records": [{"time_year": year} for year in (1, 2, 3)],
+        "snapshots": [{"time_year": year} for year in (0, 1, 2, 3)],
+    }
+    with pytest.raises(ShortReferenceError, match="SHORT_REFERENCE_COVERAGE_INVALID"):
+        _validate_regional_coverage(state, 3)
 
 
 @pytest.mark.parametrize("years,split", [(2, 1), (11, 1), (3, 0), (3, 3)])
