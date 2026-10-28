@@ -1,3 +1,9 @@
+# CURRENT — R6-INT10K E0 code audit complete, physical inputs/runtime pending (2026-10-28)
+
+`R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION`: read-only code review on `d3bb38756d71f39d0e4756c19040068dfa1d5673`; regional+unified path is partially coupled with annual regional surface and separate synthetic Deep, and checkpoint/full-history memory cost is unresolved. Next host source and resource binding, then new compact frontier/streamed archive and 3y/10y parity tests, and separately authorized staged 10/100/1000/10000. Parallel provider-science gap matrix open. See `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
+---
+
 # CURRENT — R6-INT10K integrated engine engineering benchmark plan (2026-10-28)
 
 Source `736bdd1e28f5d0b2d5611c4fb22ebb692f706724`; `R6_INT10K_MULTIPHYSICS_ENGINEERING_BENCHMARK_PREPARATION` (DESIGN_ONLY__NOT_EXECUTED). Candidate: existing regional 3×3 synthetic geology/surface/hydrology runner plus unified 2-column thermal/rheology/mechanics/Deep, subject to input/streaming preflight. The older INT3-ENG10K qualified *reduced* 10k run is not evidence of 10k multiphysics stability. Stage E0 source/identity/actual coupling and safe streaming plan; later distinct authorized and supervised E1 10 years, E2 100, E3 1000, E4 10000 years. No full model without measured resource growth and validated fixed-plan checkpoints. Tuning follows baseline and identifies real numerical limitations rather than patching unproven physics. Full plan: `docs/arcana/R6_INT10K_INTEGRATED_MULTIPHYSICS_BENCHMARK_PLAN.md`.

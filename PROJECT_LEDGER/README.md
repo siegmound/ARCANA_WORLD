@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. Current update: 2026-10-28. Active engineering lane: `R6_INT10K_MULTIPHYSICS_ENGINEERING_BENCHMARK_PREPARATION` (`DESIGN_ONLY__NOT_EXECUTED`): first audit real source/provider call graph and streamed fixed-plan regional/unified coupling, then independently authorized staged 10/100/1000/10000-model-year diagnostics. Full plan: `docs/arcana/R6_INT10K_INTEGRATED_MULTIPHYSICS_BENCHMARK_PLAN.md`. The old ENG10K and GEODYN-3C FAIR PASS remain bounded separate results, not physical ARCANA history. Parallel scientific-readiness matrix remains open. Production/Solver authorizations unchanged.
+Single continuity point. Current update: 2026-10-28. R6-INT10K E0 static source/coupling review complete but FAIR input/runtime verification pending: `R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION`. Report `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`. Next: read-only input SHA256/source-loader check and resource facts, then versioned compact checkpoint + streaming runner with small-case parity tests. Old ENG10K/GEODYN-3C outcomes unchanged, no long simulation executed, no scientific or production authorization.
 
 ## Current decision — 2026-10-25
 

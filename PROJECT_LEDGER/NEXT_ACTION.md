@@ -1,3 +1,9 @@
+# NEXT — R6-INT10K E0 host input/runtime verification then isolated streaming-runner development (2026-10-28)
+
+`R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION`. See `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`. Next: find and SHA256-verify the actual `MATERIAL_RHEOLOGY_PROVIDER_20261025_03` result+manifest+sidecar and run a read-only source-loader/runtime/resource preflight on the intended host. Then implement a new identity-preserving compact-state checkpoint + streamed segment archive runner, with 3-year/10-year direct-versus-resume parity and fail-closed tests. 10→100→1000→10000 year experiments are separately gated by measured runtime/resources and numerical integrity; no new long run authorized. All scientific and WORLD_HISTORY gates remain closed.
+
+---
+
 # NEXT — R6-INT10K E0 input, coupling, runtime and streaming preflight (2026-10-28)
 
 `R6_INT10K_MULTIPHYSICS_ENGINEERING_BENCHMARK_PREPARATION`; source baseline `736bdd1e28f5d0b2d5611c4fb22ebb692f706724`; governed plan `docs/arcana/R6_INT10K_INTEGRATED_MULTIPHYSICS_BENCHMARK_PLAN.md`.

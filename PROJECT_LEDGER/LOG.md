@@ -7,6 +7,10 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — R6-INT10K E0 read-only source/coupling audit
+
+`R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION`, source `d3bb38756d71f39d0e4756c19040068dfa1d5673`, report `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`. Source-level E0 review on `d3bb38756d71f39d0e4756c19040068dfa1d5673` confirms actual calls from regional 3×3 surface/hydrology/erosion into the unified 2-support mechanics→thermal→hydrology→synthetic-Deep orchestrator; the regional surface model is advanced independently and does not feed computed mass/topography back into thermomechanics or Deep. The input provenance is two 73-node T0 columns C028/C029; all other regional terrain is synthetic. Old ENG10K and GEODYN-3C are separate bounded results. No FAIR host or actual input bytes were accessed, no numerical job or performance benchmark executed. Next: find and SHA256-verify the actual `MATERIAL_RHEOLOGY_PROVIDER_20261025_03` result+manifest+sidecar and run a read-only source-loader/runtime/resource preflight on the intended host. Then implement a new identity-preserving compact-state checkpoint + streamed segment archive runner, with 3-year/10-year direct-versus-resume parity and fail-closed tests. 10→100→1000→10000 year experiments are separately gated by measured runtime/resources and numerical integrity; no new long run authorized. All scientific and WORLD_HISTORY gates remain closed. Earlier PASS/FAIL and all science/production gates unchanged.
+
 ## 2026-10-28 — R6-INT10K integrated multiphysics engineering benchmark proposed (design only)
 
 - Operator requested a 10,000-model-year experiment with already-integrated R6 tools, behavior/precision/resource diagnostics and subsequent evidence-driven tuning. Reviewed source `736bdd1e28f5d0b2d5611c4fb22ebb692f706724`; primary candidate regional 3x3 + unified two-column time evolution, separate from old reduced ENG10K and synthetic ASPECT archive.
