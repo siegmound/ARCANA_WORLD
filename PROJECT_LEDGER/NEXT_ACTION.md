@@ -1,3 +1,11 @@
+# NEXT — R6-INT10K E0 original source discovery and exact source pin (2026-10-28)
+
+Decision `R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE`. FAIR operator output: working-tree HEAD `ec79bf8954a4922f84249fbe23e2657bc5beee23` while reviewed current R6 source is `2c8a087e5544678ae5f66b6ad693e901a6d97301`; required `MATERIAL_RHEOLOGY_PROVIDER_20261025_03` `RESULT.json`/`MANIFEST.json`/sidecar all absent from one default F2AV `outputs/` path. Search bounded FAIR project/evidence directories and Windows-origin path; this is a **location gap**, not proof of lost data. Preserve any historical hashes and no unqualified replacement.
+
+Do not checkout/reset stale linked worktree. Acquire exact remote branch/commit by safe fetch, then use git archive extracted to new external source evidence only after source/input binding and review. Verify source loader against real three-file bundle and SHA256, and independently check scheduler/cgroup/personal quotas and process limits before any simulation. No new numerical execution authorized. See `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`. `R6_PHYSICAL_ENVIRONMENTAL_PROVIDER_GAP_MATRIX` remains a parallel read-only science lane; production/forward gates unchanged.
+
+---
+
 # NEXT — R6-INT10K E0 host input/runtime verification then isolated streaming-runner development (2026-10-28)
 
 `R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION`. See `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`. Next: find and SHA256-verify the actual `MATERIAL_RHEOLOGY_PROVIDER_20261025_03` result+manifest+sidecar and run a read-only source-loader/runtime/resource preflight on the intended host. Then implement a new identity-preserving compact-state checkpoint + streamed segment archive runner, with 3-year/10-year direct-versus-resume parity and fail-closed tests. 10→100→1000→10000 year experiments are separately gated by measured runtime/resources and numerical integrity; no new long run authorized. All scientific and WORLD_HISTORY gates remain closed.

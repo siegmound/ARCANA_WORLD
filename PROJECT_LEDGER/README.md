@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. Current update: 2026-10-28. R6-INT10K E0 static source/coupling review complete but FAIR input/runtime verification pending: `R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION`. Report `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`. Next: read-only input SHA256/source-loader check and resource facts, then versioned compact checkpoint + streaming runner with small-case parity tests. Old ENG10K/GEODYN-3C outcomes unchanged, no long simulation executed, no scientific or production authorization.
+Single continuity point. Current update: 2026-10-28. R6-INT10K E0 FAIR host diagnostic `R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE`: local F2AV HEAD is old `ec79bf89`, three source material/rheology files not present at the default output location, Python/numpy/pytest available, node resource figures measured but job quotas unknown. Next: find original inputs and bind exact source revision without checkout mutation; then plan streaming runner/short tests. Report `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`. No model run or production authority.
 
 ## Current decision — 2026-10-25
 

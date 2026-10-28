@@ -1,3 +1,11 @@
+# CURRENT — R6-INT10K E0 FAIR host diagnostic: input location unresolved (2026-10-28)
+
+`R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE` (operator-reported). FAIR checked-out HEAD `ec79bf8954a4922f84249fbe23e2657bc5beee23` predates current reviewed integration source `2c8a087e5544678ae5f66b6ad693e901a6d97301`; no automatic checkout/HEAD move authorized. Three required T0 material/rheology files were NOT_FOUND only under the checked default F2AV output directory; their existence elsewhere is UNKNOWN, not disproved. Python 3.12.14, NumPy 2.5.3, pytest 9.1.1; host-reported RAM available 972 GiB and mounted /home free 15 TiB, **not proven process/job quotas**. No engine run performed. See `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`.
+
+Next read-only search for original `MATERIAL_RHEOLOGY_PROVIDER_*` bundle and exact three-file SHA/source-identity checks, plus fetching exact source Git objects without moving the working tree. Only then implement/qualify a separate streaming runner and staged engineering tests; no long 10k execution authorized. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
+---
+
 # CURRENT — R6-INT10K E0 source/coupling audit completed, FAIR inputs pending (2026-10-28)
 
 Decision `R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION` on source `d3bb38756d71f39d0e4756c19040068dfa1d5673`; static actual regional+unified call graph, hydrology cadence distinction and checkpoint/retention blockers documented in `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`. Source-level E0 review on `d3bb38756d71f39d0e4756c19040068dfa1d5673` confirms actual calls from regional 3×3 surface/hydrology/erosion into the unified 2-support mechanics→thermal→hydrology→synthetic-Deep orchestrator; the regional surface model is advanced independently and does not feed computed mass/topography back into thermomechanics or Deep. The input provenance is two 73-node T0 columns C028/C029; all other regional terrain is synthetic. Old ENG10K and GEODYN-3C are separate bounded results. No FAIR host or actual input bytes were accessed, no numerical job or performance benchmark executed.

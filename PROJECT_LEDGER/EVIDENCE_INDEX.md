@@ -1,3 +1,9 @@
+# CURRENT — R6-INT10K FAIR E0 host input diagnostic (operator-reported; 2026-10-28)
+
+`R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE`. Exact FAIR diagnostic output supplied by operator: checkout ec79bf8954a4922f84249fbe23e2657bc5beee23; three named files NOT_FOUND in default `ARCANA_WORLD_F2AV/outputs/r6_experimental_multiphysics/MATERIAL_RHEOLOGY_PROVIDER_20261025_03` path, not globally; arcana-r6-linux Python 3.12.14, NumPy 2.5.3, pytest 9.1.1; 972 GiB host-reported available memory and 15 TiB filesystem free, not process permissions/quotas. Remote reviewed source `2c8a087e5544678ae5f66b6ad693e901a6d97301`. No run, no new payload, no numeric evidence. Report `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`. Historical experimental ENG10K and GEODYN-3C remain untouched.
+
+---
+
 # CURRENT — R6-INT10K E0 static source review; no new runtime evidence (2026-10-28)
 
 `R6_INT10K_E0_STATIC_SOURCE_AUDIT_PASS__FAIR_INPUT_RUNTIME_PENDING__NO_EXECUTION`. Report `docs/arcana/R6_INT10K_E0_SOURCE_AND_COUPLING_AUDIT_20261028.md`; source `d3bb38756d71f39d0e4756c19040068dfa1d5673`. Source-level E0 review on `d3bb38756d71f39d0e4756c19040068dfa1d5673` confirms actual calls from regional 3×3 surface/hydrology/erosion into the unified 2-support mechanics→thermal→hydrology→synthetic-Deep orchestrator; the regional surface model is advanced independently and does not feed computed mass/topography back into thermomechanics or Deep. The input provenance is two 73-node T0 columns C028/C029; all other regional terrain is synthetic. Old ENG10K and GEODYN-3C are separate bounded results. No FAIR host or actual input bytes were accessed, no numerical job or performance benchmark executed. Actual T0 input files and host resources have not been acquired; no simulation, test log, runtime output or solver evidence created. Earlier ENG10K and GEODYN-3C FAIR records remain unchanged.
