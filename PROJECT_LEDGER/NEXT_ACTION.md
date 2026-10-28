@@ -1,3 +1,15 @@
+# NEXT — R6-INT10K E0 input, coupling, runtime and streaming preflight (2026-10-28)
+
+`R6_INT10K_MULTIPHYSICS_ENGINEERING_BENCHMARK_PREPARATION`; source baseline `736bdd1e28f5d0b2d5611c4fb22ebb692f706724`; governed plan `docs/arcana/R6_INT10K_INTEGRATED_MULTIPHYSICS_BENCHMARK_PLAN.md`.
+
+**Single immediate action (DESIGN/READ-ONLY):** inventory actual numerical call graph and existing verified T0 source inputs for the regional 3x3 + unified two-support path. Check run/config/source and output identities; measure a bounded representative step/output footprint only after a separately reviewed exact-commit short-run scope; design a new independent runner with `planned_years` distinct from `segment_years`, stable restart configuration, bounded streamed state/event/flux retention and measured peak RSS/bytes. Do not silently use `--years 10000` on the existing regional CLI or `--segment-years 10000` on the current 3-year unified CLI. Existing high-cadence unified hydrology is not equivalent to annual regional hydrology.
+
+After E0 and runner regressions, require separate bounded authorization and resource/output/stop policy for E1 (10 years), then evidence-gated 100/1000 years, and only after stable cost/conservation/continuation measurements for the proposed 10,000-year test. Benchmark **engineering behavior**, not geological validity; do not infer missing Deep/thermal or climate feedback. No new ASPECT/ShellSet/MPI/Solver execution or WORLD_HISTORY access. Historic GEODYN-3C and ENG10K outputs immutable.
+
+`R6_PHYSICAL_ENVIRONMENTAL_PROVIDER_GAP_MATRIX` remains a **parallel read-only scientific dependency audit** for 210 Ma→present history and selective resolution. Gates: `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; all other science/execution gates unchanged.
+
+---
+
 # NEXT — R6_PHYSICAL_ENVIRONMENTAL_PROVIDER_GAP_MATRIX (2026-10-28)
 
 Decision `GEODYN_3C_EXPERIMENTAL_TRAJECTORY_ARCHIVE_FAIR_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED` — **PASS_OPERATOR_REPORTED** for the existing synthetic engineering ASPECT trajectory archive, **not** ARCANA physical evolution. Qualified code `3c566ea61c79b8dad96274a5d68d845704aeae96` (parent `02fa91cf39f4f79885d033ad3485c0d0f86c4de9`), FAIR evidence `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN3C_20261028T171846Z`. Operator reports: JUnit **86/86 PASS** (no skip/failure/error), independent **11/11 mesh** + **99/99 typed field** comparisons, 11 snapshots/23 source files, query/integrity/negative/path/relocation tests PASS, launcher exit 0, manifest SHA256 `56bfc4789618d149fc402af2319c088fe0bbc9cabc9b1b73622393af9accd54f`; original source files and checkout unchanged, ASPECT not rerun. This report did not independently rehash the FAIR bundle or authenticate caller-declared run identity: `SYNTHETIC_ENGINEERING_ONLY`, `OPERATOR_REPORTED_UNAUTHENTICATED`. Historic R3 `GEODYN3C_20261028T164610Z` remains FAIL. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` and `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.

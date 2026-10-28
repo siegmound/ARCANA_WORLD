@@ -7,6 +7,12 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — R6-INT10K integrated multiphysics engineering benchmark proposed (design only)
+
+- Operator requested a 10,000-model-year experiment with already-integrated R6 tools, behavior/precision/resource diagnostics and subsequent evidence-driven tuning. Reviewed source `736bdd1e28f5d0b2d5611c4fb22ebb692f706724`; primary candidate regional 3x3 + unified two-column time evolution, separate from old reduced ENG10K and synthetic ASPECT archive.
+- Created `docs/arcana/R6_INT10K_INTEGRATED_MULTIPHYSICS_BENCHMARK_PLAN.md` defining E0 read-only source/runtime/coupling inventory, an identity-safe stream/continuation runner, staged 10/100/1000/10000 model-year gates, mandatory balances/performance/query/actual exchange checks and stop conditions. No numerical execution, new evidence or source mutation; `R6_INT10K_MULTIPHYSICS_ENGINEERING_BENCHMARK_PREPARATION`.
+- Kept parallel physical/environmental provider gap matrix open; all synthetic assumptions explicit and previous GEODYN-3C qualification/failed historical attempts unchanged. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
 ## 2026-10-28 — GEODYN-3C-R4 FAIR qualification reported PASS
 
 Decision `GEODYN_3C_EXPERIMENTAL_TRAJECTORY_ARCHIVE_FAIR_VALIDATED__ARCANA_FORWARD_NOT_AUTHORIZED` — **PASS_OPERATOR_REPORTED** for the existing synthetic engineering ASPECT trajectory archive, **not** ARCANA physical evolution. Qualified code `3c566ea61c79b8dad96274a5d68d845704aeae96` (parent `02fa91cf39f4f79885d033ad3485c0d0f86c4de9`), FAIR evidence `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN3C_20261028T171846Z`. Operator reports: JUnit **86/86 PASS** (no skip/failure/error), independent **11/11 mesh** + **99/99 typed field** comparisons, 11 snapshots/23 source files, query/integrity/negative/path/relocation tests PASS, launcher exit 0, manifest SHA256 `56bfc4789618d149fc402af2319c088fe0bbc9cabc9b1b73622393af9accd54f`; original source files and checkout unchanged, ASPECT not rerun. This report did not independently rehash the FAIR bundle or authenticate caller-declared run identity: `SYNTHETIC_ENGINEERING_ONLY`, `OPERATOR_REPORTED_UNAUTHENTICATED`. Historic R3 `GEODYN3C_20261028T164610Z` remains FAIL. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false` and `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
