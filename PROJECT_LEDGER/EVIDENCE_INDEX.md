@@ -1,3 +1,9 @@
+# CURRENT — R6-INT10K Windows source artifact discovery (reported 2026-10-28)
+
+`R6_INT10K_E0_WINDOWS_INPUT_TRIADS_FOUND__MANIFEST_SIDECAR_PASS__LOADER_FAIR_PENDING`. Operator reports all three Windows material/rheology input triads `_01/_02/_03` found, all with manifest/sidecar hash/content PASS; selected `_03` has result SHA `24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5` and manifest SHA `a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21`. Original ENG10K archive SHA `7dda60c8fa1f535d9e257eb2d04fdfde4643a92765eca8631bd766058240d8cb` matches source constant. Source-loader 73-node/boundary semantic check and FAIR transfer still PENDING. No engine executed. Full three-candidate SHA table and exact relative origins: `docs/arcana/R6_INT10K_E0_WINDOWS_INPUT_RECOVERY_20261028.md`. Previous FAIR default-path NOT_FOUND result remains intact; no evidence that the Windows inputs were ever on FAIR. This is operator-reported integrity only; semantic loader and FAIR bytes remain unverified.
+
+---
+
 # CURRENT — R6-INT10K FAIR E0 host input diagnostic (operator-reported; 2026-10-28)
 
 `R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE`. Exact FAIR diagnostic output supplied by operator: checkout ec79bf8954a4922f84249fbe23e2657bc5beee23; three named files NOT_FOUND in default `ARCANA_WORLD_F2AV/outputs/r6_experimental_multiphysics/MATERIAL_RHEOLOGY_PROVIDER_20261025_03` path, not globally; arcana-r6-linux Python 3.12.14, NumPy 2.5.3, pytest 9.1.1; 972 GiB host-reported available memory and 15 TiB filesystem free, not process permissions/quotas. Remote reviewed source `2c8a087e5544678ae5f66b6ad693e901a6d97301`. No run, no new payload, no numeric evidence. Report `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`. Historical experimental ENG10K and GEODYN-3C remain untouched.

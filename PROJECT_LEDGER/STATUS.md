@@ -1,3 +1,9 @@
+# CURRENT — R6-INT10K E0 Windows sources found, semantic loader and FAIR transfer pending (2026-10-28)
+
+`R6_INT10K_E0_WINDOWS_INPUT_TRIADS_FOUND__MANIFEST_SIDECAR_PASS__LOADER_FAIR_PENDING`. Operator reports all three Windows material/rheology input triads `_01/_02/_03` found, all with manifest/sidecar hash/content PASS; selected `_03` has result SHA `24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5` and manifest SHA `a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21`. Original ENG10K archive SHA `7dda60c8fa1f535d9e257eb2d04fdfde4643a92765eca8631bd766058240d8cb` matches source constant. Source-loader 73-node/boundary semantic check and FAIR transfer still PENDING. No engine executed. Report: `docs/arcana/R6_INT10K_E0_WINDOWS_INPUT_RECOVERY_20261028.md`. Next: original loader on exact _03, then source-byte-preserving SHA-checked transfer; do not move stale FAIR checkout or synthesize source data. WORLD_HISTORY and ARCANA forward authorizations remain false.
+
+---
+
 # CURRENT — R6-INT10K E0 FAIR host diagnostic: input location unresolved (2026-10-28)
 
 `R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE` (operator-reported). FAIR checked-out HEAD `ec79bf8954a4922f84249fbe23e2657bc5beee23` predates current reviewed integration source `2c8a087e5544678ae5f66b6ad693e901a6d97301`; no automatic checkout/HEAD move authorized. Three required T0 material/rheology files were NOT_FOUND only under the checked default F2AV output directory; their existence elsewhere is UNKNOWN, not disproved. Python 3.12.14, NumPy 2.5.3, pytest 9.1.1; host-reported RAM available 972 GiB and mounted /home free 15 TiB, **not proven process/job quotas**. No engine run performed. See `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`.

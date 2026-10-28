@@ -7,6 +7,10 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — R6-INT10K E0 Windows source triads located
+
+`R6_INT10K_E0_WINDOWS_INPUT_TRIADS_FOUND__MANIFEST_SIDECAR_PASS__LOADER_FAIR_PENDING`. Operator reports all three Windows material/rheology input triads `_01/_02/_03` found, all with manifest/sidecar hash/content PASS; selected `_03` has result SHA `24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5` and manifest SHA `a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21`. Original ENG10K archive SHA `7dda60c8fa1f535d9e257eb2d04fdfde4643a92765eca8631bd766058240d8cb` matches source constant. Source-loader 73-node/boundary semantic check and FAIR transfer still PENDING. No engine executed. Follow-up: full semantic loader then provenance-preserving transfer. No new numerical or solver execution, no gate promotion. `docs/arcana/R6_INT10K_E0_WINDOWS_INPUT_RECOVERY_20261028.md`.
+
 ## 2026-10-28 — R6-INT10K E0 FAIR host diagnostics; default source missing
 
 Operator reports FAIR HEAD `ec79bf8954a4922f84249fbe23e2657bc5beee23` (older than reviewed R6 source `2c8a087e5544678ae5f66b6ad693e901a6d97301`); exact named `MATERIAL_RHEOLOGY_PROVIDER_20261025_03` triad NOT_FOUND at single default F2AV output path. Python 3.12.14, NumPy 2.5.3, pytest 9.1.1; available node RAM 972 GiB, /home 15 TiB free; not user/job quotas. No input bytes or simulation ran. Recorded as `R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE`; report `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`. Next limited input source discovery/exact source pin, not unapproved 10k run. Scientific and canonical gates unchanged.

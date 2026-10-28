@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. Current update: 2026-10-28. R6-INT10K E0 FAIR host diagnostic `R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE`: local F2AV HEAD is old `ec79bf89`, three source material/rheology files not present at the default output location, Python/numpy/pytest available, node resource figures measured but job quotas unknown. Next: find original inputs and bind exact source revision without checkout mutation; then plan streaming runner/short tests. Report `docs/arcana/R6_INT10K_E0_FAIR_HOST_INPUT_PREFLIGHT_20261028.md`. No model run or production authority.
+Single continuity point. 2026-10-28 update: `R6_INT10K_E0_WINDOWS_INPUT_TRIADS_FOUND__MANIFEST_SIDECAR_PASS__LOADER_FAIR_PENDING`. Three original Windows material/rheology bundles found with manifest/sidecar integrity PASS; selected _03 pending source-loader semantic verification and transfer to FAIR. Original ENG10K archive SHA matches expected code identity. Report `docs/arcana/R6_INT10K_E0_WINDOWS_INPUT_RECOVERY_20261028.md`. No new engine run and no physics/production promotion.
 
 ## Current decision — 2026-10-25
 

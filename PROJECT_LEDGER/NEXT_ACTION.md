@@ -1,3 +1,9 @@
+# NEXT — R6-INT10K E0 Windows _03 semantic loader and FAIR transfer (2026-10-28)
+
+`R6_INT10K_E0_WINDOWS_INPUT_TRIADS_FOUND__MANIFEST_SIDECAR_PASS__LOADER_FAIR_PENDING`. Operator reports all three Windows material/rheology input triads `_01/_02/_03` found, all with manifest/sidecar hash/content PASS; selected `_03` has result SHA `24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5` and manifest SHA `a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21`. Original ENG10K archive SHA `7dda60c8fa1f535d9e257eb2d04fdfde4643a92765eca8631bd766058240d8cb` matches source constant. Source-loader 73-node/boundary semantic check and FAIR transfer still PENDING. No engine executed. Verify original `load_verified_r6_initial_columns` and full source identity (73-node C028/C029, B5 boundary mapping). Package exact 3 files and SHA256-verify both sides, test pinned-source loader on FAIR; stop on mismatch, no solver run. See `docs/arcana/R6_INT10K_E0_WINDOWS_INPUT_RECOVERY_20261028.md`. Parallel science gap matrix remains open. No production/forward authorization.
+
+---
+
 # NEXT — R6-INT10K E0 original source discovery and exact source pin (2026-10-28)
 
 Decision `R6_INT10K_E0_FAIR_HOST_RESOURCES_OBSERVED__INPUT_PATH_UNRESOLVED__SOURCE_CHECKOUT_STALE`. FAIR operator output: working-tree HEAD `ec79bf8954a4922f84249fbe23e2657bc5beee23` while reviewed current R6 source is `2c8a087e5544678ae5f66b6ad693e901a6d97301`; required `MATERIAL_RHEOLOGY_PROVIDER_20261025_03` `RESULT.json`/`MANIFEST.json`/sidecar all absent from one default F2AV `outputs/` path. Search bounded FAIR project/evidence directories and Windows-origin path; this is a **location gap**, not proof of lost data. Preserve any historical hashes and no unqualified replacement.
