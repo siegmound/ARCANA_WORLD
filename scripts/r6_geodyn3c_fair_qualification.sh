@@ -9,7 +9,7 @@ IFS=$'\n\t'
 
 EXPECTED_BRANCH='r6/multiphysics-integration-20261026'
 EXPECTED_COMMIT=${GEODYN3C_EXPECTED_COMMIT:-}
-EXPECTED_PARENT='ab8fad9282b45c30f1df3653ce447cf5e13c6be4'
+EXPECTED_PARENT=${GEODYN3C_EXPECTED_PARENT:-}
 GEODYN3B_MODULE_ORIGIN_COMMIT='e3946add3fe63d2f5fc4c710d0e1d87e01f83ffa'
 GEODYN3B_MODULE_SOURCE_COMMIT='ab8fad9282b45c30f1df3653ce447cf5e13c6be4'
 ASPECT_READER_PROVENANCE_COMMIT='1fd5e8d8f21e28876da9ef89423755615efc6162'
@@ -23,6 +23,7 @@ EXPECTED_TESTS=85
 fail() { printf 'BLOCKED: %s\n' "$*" >&2; exit 2; }
 [[ $# -eq 7 ]] || fail 'expected exactly seven arguments; see usage in script header'
 [[ "$EXPECTED_COMMIT" =~ ^[0-9a-f]{40}$ ]] || fail 'set GEODYN3C_EXPECTED_COMMIT to the exact reviewed 40-hex Git SHA-1 commit'
+[[ "$EXPECTED_PARENT" =~ ^[0-9a-f]{40}$ ]] || fail 'set GEODYN3C_EXPECTED_PARENT to the exact reviewed 40-hex Git SHA-1 parent'
 REPO=$(realpath -e -- "$1") || fail 'repository path does not exist'
 SOURCE_ROOT=$(realpath -e -- "$2") || fail 'source root does not exist'
 PVD_REF=$3
@@ -31,7 +32,9 @@ INVENTORY=$(realpath -e -- "$5") || fail 'independent source inventory JSON is u
 CLAIMS=$(realpath -e -- "$6") || fail 'run identity claims JSON is unavailable'
 EVIDENCE_PARENT=$(realpath -e -- "$7") || fail 'evidence parent must already exist'
 
-[[ -d "$REPO/.git" ]] || fail 'REPO must be a normal Git worktree root'
+repo_top=$(git -C "$REPO" rev-parse --show-toplevel 2>/dev/null) || fail 'REPO is not a valid Git worktree'
+[[ "$(realpath -e -- "$repo_top")" == "$REPO" ]] || fail 'REPO must be the Git worktree root'
+[[ "$(git -C "$REPO" rev-parse --is-inside-work-tree 2>/dev/null)" == true ]] || fail 'REPO is not a valid Git worktree'
 [[ -d "$SOURCE_ROOT" ]] || fail 'source root must be a directory'
 [[ -f "$AUDIT" && -f "$INVENTORY" && -f "$CLAIMS" ]] || fail 'audit, inventory and claim inputs must be files'
 [[ -f "$SOURCE_ROOT/$PVD_REF" ]] || fail 'PVD relative reference is absent from source root'

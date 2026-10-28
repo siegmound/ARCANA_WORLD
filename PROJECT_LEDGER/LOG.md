@@ -7,6 +7,12 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-28 — GEODYN-3C-R3 Git qualification gate repair (local only)
+
+- Replaced the launcher's `.git`-directory assumption with `git rev-parse` worktree-root validation, covering linked worktrees while preserving checkout state. `GEODYN3C_EXPECTED_COMMIT` and `GEODYN3C_EXPECTED_PARENT` are both mandatory, explicit 40-hex SHA-1 inputs; the parent relation is checked against Git. Module/archive and reader provenance commits remain independent from launcher ancestry.
+- Regression uses a normal repository and a linked worktree, verifies HEAD/branch/index unchanged, and rejects a wrong or missing parent. The test count remains 85. Combined suite: 82 passed, 3 skipped (two Windows symlink restrictions and NumPy unavailable for the mesh digest test). Windows Bash syntax could not run because `bash.exe` resolves to the non-runnable WindowsApps stub. No FAIR/Linux test, solver, or original evidence was accessed in this step.
+- Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R3 outcome is local only; FAIR validation pending. Gates unchanged: `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.
+
 ## 2026-10-27 — GEODYN-3C-R2 real-evidence compatibility repair (local only)
 
 - Corrected the GEODYN-2C comparator to parse the original `snapshots[].point_fields[]` schema with NumPy dtype names, required `min`/`max`, optional velocity `norm_max`, and explicit normalization against reader VTK dtype names. Numeric bytes and source dtype spelling are preserved. The numeric mesh SHA256 again uses the original auditor algorithm: `str(dtype).encode()` plus C-order bytes for coordinates/connectivity/offsets/types in order.

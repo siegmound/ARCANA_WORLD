@@ -1,6 +1,6 @@
-# CURRENT — GEODYN-3C-R2 local evidence compatibility (2026-10-27)
+# CURRENT — GEODYN-3C-R3 local Git-gate repair (2026-10-28)
 
-Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R2 Windows combined archive/reader/qualification suite: 85 collected, 82 passed, 3 skipped (two symlink-creation restrictions and one NumPy-dependent mesh digest test; NumPy unavailable). The FAIR launcher now requires JUnit-reported 85 passed, 0 failed/error/skipped. Helper/test `py_compile` and `git diff --check` passed; embedded Python syntax was checked locally. Bash syntax, Linux execution and authentic FAIR data comparison remain unverified. No external/numerical evidence was created. Historical FAIR evidence remains unimported/unhashed on Windows; missing inventory/config/input/attempt provenance continues to block qualification. No solver execution.
+Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R3 local gate regression: combined suite 85 collected, 82 passed, 3 skipped (Windows symlink privilege and missing NumPy). Test covers normal repository and linked worktree, parent mismatch and missing parent; launcher accepts `.git` file worktrees using Git introspection and requires explicit commit/parent SHA environment values. Windows Bash syntax could not run; Linux/FAIR and data comparison remain unverified. No external/numerical evidence was created. Historical FAIR evidence remains unimported/unhashed on Windows; source inventory/config/input/attempt provenance remains unresolved. No solver execution.
 
 ---
 

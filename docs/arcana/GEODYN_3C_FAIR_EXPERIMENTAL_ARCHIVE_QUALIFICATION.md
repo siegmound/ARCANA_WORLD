@@ -7,6 +7,12 @@
 **R1 repair baseline / parent:** `ab8fad9282b45c30f1df3653ce447cf5e13c6be4`
 **R1 local result:** `GEODYN_3C_R1_LAUNCHER_REPAIR_LOCAL_TESTS_PASS__FAIR_PENDING`
 
+## R3 Git-gate repair — local preparation
+
+R3 replaces the launcher's `.git`-directory assumption with `git rev-parse` worktree validation, so linked worktrees whose `.git` entry is a file are accepted without checkout changes. The candidate and its parent are both required as explicit `GEODYN3C_EXPECTED_COMMIT` and `GEODYN3C_EXPECTED_PARENT` SHA-1 environment values. The launcher resolves the candidate's actual parent and compares it with the supplied parent; it never infers the expected value. The R2 commit `cd573f9328f856078218edb5273f0b55460f403a` has parent `8ab6218be5c389d5682e85d281b7ab582d9950d5`.
+
+Archive-module origin/source revisions (`e3946add...` / `ab8fad...`) and ASPECT reader provenance (`1fd5e8d...`) remain independent provenance checks and are not launcher-parent values. Regression coverage exercises a normal repository, linked worktree, incorrect parent, and omitted parent without changing HEAD, branch, or index. The focused suite remains at 85 collected tests; no test case is added. Windows combined suite: 82 passed, 3 skipped (two symlink-privilege restrictions and NumPy unavailable for the mesh digest test). The Windows `bash` command resolves to an unavailable WindowsApps stub, so shell syntax was not checked locally. R3 has not been run on FAIR; `bash -n`, Linux test results and remote-object checks remain pending.
+
 ## R2 compatibility addendum — local Windows verification
 
 R2 corrects three verified compatibility defects without changing the ASPECT reader, archive schema, or scientific gates. The comparator now accepts the original GEODYN-2C `snapshots[].point_fields[]` record: NumPy dtype names such as `float32`, required `min`/`max`, and optional `norm_max` for `velocity`. It preserves the source dtype spelling and explicitly maps it to the reader's VTK type for comparison. Numeric values and typed field digests are not rewritten. Extrema and vector norm are compared using dtype-specific floating-point tolerances; integer extrema compare exactly.
@@ -35,10 +41,12 @@ Authoritative implementation/API references are [the ratified GEODYN-3A contract
 
 Script: `scripts/r6_geodyn3c_fair_qualification.sh`. It uses only the APIs actually implemented: `RunIdentityClaim`, `SourceDigest`, `index_existing_aspect_series`, `ExperimentalTrajectoryArchive.open`, `verify_integrity`, metadata/query methods, `get_snapshot`, and `get_field`, plus `AspectSnapshotSeries.audit/read_snapshot`.
 
-Transfer this reviewed script outside the FAIR checkout (for example to a controlled temporary location), verify its SHA256 from the Windows handoff, and invoke it there. This avoids adding an untracked file to the existing checkout. After finalizing the R1 repair commit, set `GEODYN3C_EXPECTED_COMMIT` to that exact full SHA-1 before invocation:
+Transfer this reviewed script outside the FAIR checkout (for example to a controlled temporary location), verify its SHA256 from the Windows handoff, and invoke it there. This avoids adding an untracked file to the existing checkout. After finalizing the current launcher repair commit, set both `GEODYN3C_EXPECTED_COMMIT` and `GEODYN3C_EXPECTED_PARENT` to their exact full SHA-1 values before invocation. The expected parent is an independently reviewed input, not inferred from the candidate:
 
 ```bash
-GEODYN3C_EXPECTED_COMMIT='<R1 full commit SHA>' bash /path/outside/checkout/r6_geodyn3c_fair_qualification.sh \
+GEODYN3C_EXPECTED_COMMIT='<R3 full commit SHA>' \
+GEODYN3C_EXPECTED_PARENT='<R3 parent SHA>' \
+bash /path/outside/checkout/r6_geodyn3c_fair_qualification.sh \
   /home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_F2AV \
   /home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GEODYN_2_RIGID_SHEAR/20261026T234423Z_transient_rank1 \
   '<PVD relative path, identified in that directory>' \

@@ -1,10 +1,10 @@
-# CURRENT — GEODYN-3C-R2 evidence compatibility repair prepared locally (2026-10-27)
+# CURRENT — GEODYN-3C-R3 Git gate repair prepared locally (2026-10-28)
 
-Decision: `GEODYN_3C_R2_REAL_EVIDENCE_COMPATIBILITY_LOCAL_PASS__FAIR_PENDING`.
+Decision: `GEODYN_3C_R3_GIT_GATE_LOCAL_PASS__FAIR_PENDING`.
 
-Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R2 accepts the original `point_fields[]` NumPy dtype/min/max/optional velocity `norm_max` schema, compares normalized VTK names without altering numeric bytes, restores mesh SHA serialization to `str(dtype)` plus C-order bytes, and validates pytest JUnit outcomes exactly (85 total/pass, no failure/error/skip). Combined Windows suite collected 85 tests: 82 passed, 3 skipped (two Windows symlink-creation restrictions; one NumPy-dependent mesh digest test because NumPy is unavailable). `py_compile` passed for the helper/test; `git diff --check` passed. Bash syntax and Linux zero-skip execution remain pending FAIR. This is local compatibility evidence only; no authentic FAIR payload was imported or compared.
+Report: `docs/arcana/GEODYN_3C_FAIR_EXPERIMENTAL_ARCHIVE_QUALIFICATION.md`. R3 replaces the `.git` directory check with `git rev-parse` worktree-root validation, accepts linked worktrees, and requires explicit `GEODYN3C_EXPECTED_COMMIT` plus `GEODYN3C_EXPECTED_PARENT`; the actual parent is compared with the independently supplied expected parent. Module source provenance (`ab8fad...`) and reader provenance (`1fd5...`) remain independent checks. The helper suite passed 13 tests with 1 NumPy-dependent skip; the combined 85-test suite passed 82 with 3 skips (two Windows symlink restrictions and NumPy unavailable). HEAD, branch and index were unchanged by the linked-worktree validation test. Local `bash -n` could not run because Windows resolved bash to a non-runnable WindowsApps stub. No FAIR or numerical run occurred.
 
-The FAIR run remains blocked pending recovery of the original source inventory, configuration/input SHA256s, attempt ID and time-unit source. No FAIR data or solver was accessed and no evidence was fabricated. Gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
+FAIR qualification remains pending this exact-commit Linux gate retest and recovery of original source inventory, configuration/input SHA256s, attempt ID and time-unit source. No FAIR data or solver was accessed and no evidence was fabricated. Gates remain unchanged, including `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false` and `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.
 
 ---
 

@@ -296,6 +296,32 @@ def test_git_candidate_checks_exact_remote_commit_and_parent_without_checkout_sw
     assert result["checkout_head"] == before_head == parent
     assert _git(work, "rev-parse", "HEAD") == before_head
 
+    # A linked worktree has a .git file rather than a .git directory. The gate
+    # must inspect it through Git without changing the worktree/index identity.
+    linked = tmp_path / "linked-worktree"
+    _git(work, "worktree", "add", "--detach", str(linked), candidate)
+    git_dir = _git(linked, "rev-parse", "--git-dir")
+    assert (linked / ".git").is_file()
+    assert Path(git_dir).exists() or (linked / git_dir).exists()
+    linked_head = _git(linked, "rev-parse", "HEAD")
+    linked_branch = _git(linked, "branch", "--show-current")
+    index_path_text = _git(linked, "rev-parse", "--git-path", "index")
+    index_path = Path(index_path_text)
+    if not index_path.is_absolute():
+        index_path = linked / index_path
+    index_before = hashlib.sha256(index_path.read_bytes()).hexdigest()
+    linked_result = verify_git_candidate(
+        linked, branch_ref="refs/heads/r6/multiphysics-integration-20261026",
+        expected_commit=candidate, expected_parent=parent,
+    )
+    assert linked_result["qualified_commit"] == candidate
+    assert linked_result["qualified_parent"] == parent
+    assert linked_result["checkout_head"] == linked_head == candidate
+    assert linked_result["checkout_branch"] == linked_branch
+    assert _git(linked, "rev-parse", "HEAD") == linked_head
+    assert _git(linked, "branch", "--show-current") == linked_branch
+    assert hashlib.sha256(index_path.read_bytes()).hexdigest() == index_before
+
 
 def test_git_candidate_fails_closed_on_parent_or_remote_mismatch(tmp_path, monkeypatch):
     work = tmp_path / "repo"
@@ -323,6 +349,9 @@ def test_git_candidate_fails_closed_on_parent_or_remote_mismatch(tmp_path, monke
     with pytest.raises(QualificationInputError, match="parent mismatch"):
         verify_git_candidate(work, branch_ref="refs/heads/r6/multiphysics-integration-20261026",
                              expected_commit=candidate, expected_parent="0" * 40)
+    with pytest.raises(QualificationInputError, match="commit and parent"):
+        verify_git_candidate(work, branch_ref="refs/heads/r6/multiphysics-integration-20261026",
+                             expected_commit=candidate, expected_parent="")
     with pytest.raises(QualificationInputError, match="remote ref points"):
         verify_git_candidate(work, branch_ref="refs/heads/other-branch",
                              expected_commit=candidate, expected_parent=parent)
