@@ -1,5 +1,9 @@
 # CURRENT — INT10K E2-A1 FAIR report + E2-B local frontier evidence (2026-10-29)
 
+## INT10K E2-B2-R1 — source-provenance correction (2026-10-29)
+
+Windows Python 3.12.10 / NumPy 2.5.1, based on published parent `5f78927f1c06aeda30b3b375f4bacf873f55c6d2` plus uncommitted R1 source changes. Final-code diagnostic 3Y 1+2 and 10Y 5+5 parity runs passed against preserved local E2-A1 oracles and original E0 bundle. Exact-commit qualification was not requested; reports captured actual dirty state for the runner and provenance helper. Manifest SHA256s: 3Y `4cbb926d4a092e6967885c44c7995389b93b94799a04340675b9d59bf29e13e9`, 10Y `59b0134b1e3bf19d96b2654e39e4b1d3fe85a9a8973d26c844e6b601f75a393e`. All four members per bundle were independently rehashed/length-checked locally. A dirty exact-commit preflight returned exit 3 without evolution; gate-only manifest SHA256 `751e38ee9744c0e2d3ca69b2337b167d99387a31097efb9ad6b6164dc49d5a6e`. Evidence: `F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD_R6_UBUNTU_PORT/INT10K_E2_B2_R1_WINDOWS_20261029_02`. `_01` evidence is preserved. These are local diagnostic results, not exact-commit Linux qualification. Full details: `docs/arcana/R6_INT10K_E2_B2_HISTORY_INDEPENDENT_CONTINUATION.md`.
+
 ## INT10K E2-B2 — local Windows history-independent continuation (2026-10-29)
 
 Source base `4910c2c4e4b1a00f2999b95937f07cea233a006c` plus uncommitted E2-B2 files; Python 3.12.10 / NumPy 2.5.1. E0 `RESULT.json`, `MANIFEST.json`, and sidecar were reverified before/after each run with the pinned SHA256 set recorded in the E2-B2 report. The local E2-A1 bundles and all manifest members were independently rehashed; FAIR E2-A1 artifacts remain operator-reported and were not imported. The `_06` recapture followed event-stream reconciliation; `_01`–`_05` remain preserved exploratory outputs.

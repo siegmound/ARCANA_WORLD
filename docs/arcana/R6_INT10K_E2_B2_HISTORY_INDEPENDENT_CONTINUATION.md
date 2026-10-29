@@ -129,3 +129,73 @@ remains active; actual FAIR allocation and site rules bind, and unknown quotas
 remain UNKNOWN. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`,
 `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`, and
 `INT10K_LONG_RUN_AUTHORIZED=false`.
+
+## E2-B2-R1 — measured-source Git provenance correction (2026-10-29)
+
+The published E2-B2 base is `5f78927f1c06aeda30b3b375f4bacf873f55c6d2`.
+R1 replaces the unconditional dirty marker with Git-derived, path-scoped
+provenance for the runner, history module, provenance helper, and the regional
+and unified engine modules. It records the effective `HEAD`, SHA256 for each
+measured file, start/end source hashes, dirty status (`CLEAN`, `DIRTY`, or
+`UNKNOWN`), and relevant dirty paths. Git command failure leaves the commit
+and dirty state unknown (`null`); it is never interpreted as clean. Git status
+is limited to those measured files and includes staged, unstaged, deleted, and
+untracked entries.
+
+Normal diagnostic runs do not require a clean checkout and still produce a
+manifest-backed evidence bundle. Supplying
+`--qualification-expected-commit <full-git-object-id>` requests the exact-source
+gate. If the preflight finds an unexpected commit, dirty measured source, or
+unavailable Git, it writes a small diagnostic gate report/manifest, performs no
+numerical execution, and exits nonzero. Diagnostic numerical evidence remains
+available by running without the exact-commit option. If source bytes change
+during an otherwise passing exact-gate execution, the completed bundle records
+the mismatch and exits nonzero.
+
+Windows Python 3.12.10 / NumPy 2.5.1: the focused combined suite including the
+new Git-provenance cases passed **74 tests, 0 failures, 0 skips**; Python
+compilation and `git diff --check` passed. Local 3Y 1+2 and 10Y 5+5 captures
+were rerun against the preserved E2-A1 Windows oracles and original E0 input
+bundle. Both retained full record/checkpoint/query parity. They were diagnostic
+runs from base HEAD `5f78927f1c06aeda30b3b375f4bacf873f55c6d2` with the runner and
+provenance helper dirty; no exact-commit gate was requested, and the report
+truthfully records `DIRTY` and those paths. The output manifest SHA256 values
+are 3Y `f28471efbe7d9d53464ac405fefadbb7128eee22cb37dc07a55574a71955a011` and
+10Y `65794bd1799e96578c8af060a5dde88f55cef073e23f04ce70e6d3143f16042a`;
+all four listed members in each bundle were independently rehashed and
+length-checked locally. Source-file SHA256 values and measurements are retained
+inside the immutable reports under
+`INT10K_E2_B2_R1_WINDOWS_20261029_01`.
+
+These results are Windows-only and do not qualify the R1 commit on FAIR/Linux.
+No long-duration benchmark, new E0 input, scientific/canonical promotion,
+append-only archive, or history transaction was added. Next: publish the
+reviewed R1 child commit by verified fast-forward, then run the previous 67
+regressions plus R1 provenance tests and the E0-backed 3Y/10Y captures on FAIR
+at that exact commit. All scientific and production gates remain false.
+
+### R1 final runner and exact-gate verification addendum
+
+After adding the preflight no-evolution rejection path, the final runner was
+rerun diagnostically against the same local E2-A1 oracles and E0 bundle. These
+are the final-code local captures under
+`INT10K_E2_B2_R1_WINDOWS_20261029_02`; both reports record base commit
+`5f78927f1c06aeda30b3b375f4bacf873f55c6d2`, `DIRTY`, and the modified runner
+and provenance-helper paths, with exact qualification `NOT_REQUESTED`. The 3Y
+manifest SHA256 is
+`4cbb926d4a092e6967885c44c7995389b93b94799a04340675b9d59bf29e13e9`; the 10Y
+manifest SHA256 is
+`59b0134b1e3bf19d96b2654e39e4b1d3fe85a9a8973d26c844e6b601f75a393e`. All four
+members per bundle were independently rehashed and length-checked locally.
+3Y/10Y parity passed; RSS remains phase-boundary Windows process working set,
+not a continuous peak.
+
+An explicit exact-commit invocation with expected commit equal to the current
+base but dirty measured sources returned exit 3 before oracle/input loading or
+numerical evolution. It wrote a gate-only report with
+`BLOCKED_EXACT_SOURCE_PREFLIGHT`, `numerical_execution_performed=false`, and
+`MEASURED_SOURCES_DIRTY`. Its manifest SHA256 is
+`751e38ee9744c0e2d3ca69b2337b167d99387a31097efb9ad6b6164dc49d5a6e`; its
+single report member hash/length were independently verified locally. This
+demonstrates the exact-run gate and separate diagnostic path on Windows only;
+the new R1 commit still requires FAIR/Linux qualification.

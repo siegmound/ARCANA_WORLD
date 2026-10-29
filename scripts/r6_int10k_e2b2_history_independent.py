@@ -12,7 +12,6 @@ import json
 import os
 from pathlib import Path
 import platform
-import subprocess
 import sys
 import time
 import tracemalloc
@@ -29,6 +28,9 @@ from arcana_worldsim.r6.int10k_full_history_oracle import (  # noqa: E402
 from arcana_worldsim.r6.int10k_history_independent import (  # noqa: E402
     HistoryCollector, HistoryContinuationError, HistoryReader,
     verify_history_independent_checkpoint,
+)
+from arcana_worldsim.r6.int10k_source_provenance import (  # noqa: E402
+    inspect_measured_sources_git, qualification_exit_code, qualification_may_execute,
 )
 from arcana_worldsim.r6.int10k_short_reference import (  # noqa: E402
     verify_source_bundle,
@@ -200,6 +202,10 @@ def main() -> int:
     parser.add_argument("--oracle-dir", required=True, type=Path)
     parser.add_argument("--input-dir", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument(
+        "--qualification-expected-commit",
+        help="require exact clean measured-source provenance; failed runs still emit diagnostic evidence",
+    )
     args = parser.parse_args()
     oracle_dir = args.oracle_dir.resolve(strict=True)
     input_dir = args.input_dir.resolve(strict=True)
@@ -208,6 +214,56 @@ def main() -> int:
             or output_dir == oracle_dir or oracle_dir in output_dir.parents
             or output_dir == input_dir or input_dir in output_dir.parents):
         parser.error("OUTPUT_MUST_BE_NEW_EXTERNAL_EVIDENCE_DIRECTORY")
+
+    source_paths = (
+        "scripts/r6_int10k_e2b2_history_independent.py",
+        "src/arcana_worldsim/r6/int10k_history_independent.py",
+        "src/arcana_worldsim/r6/int10k_source_provenance.py",
+        "src/arcana_worldsim/r6/regional_geological_evolution.py",
+        "src/arcana_worldsim/r6/unified_multiphysics_microdomain.py",
+    )
+    try:
+        git_provenance = inspect_measured_sources_git(
+            REPOSITORY, source_paths,
+            expected_commit=args.qualification_expected_commit)
+    except ValueError as exc:
+        parser.error(str(exc))
+    source_hashes_before = {
+        name: _sha((REPOSITORY / name).read_bytes()) for name in source_paths}
+    if not qualification_may_execute(git_provenance):
+        output_dir.mkdir(parents=True, exist_ok=False)
+        gate_report = {
+            "schema": "INT10K_E2_B2_HISTORY_INDEPENDENT_REPORT_V1",
+            "status": "BLOCKED_EXACT_SOURCE_PREFLIGHT",
+            "classification": "NONCANONICAL_SYNTHETIC_ENGINEERING_ONLY",
+            "evidence_scope": "DIAGNOSTIC_ONLY_EXACT_COMMIT_QUALIFICATION_REJECTED",
+            "numerical_execution_performed": False,
+            "implementation_source_commit": git_provenance["commit"],
+            "implementation_expected_commit": git_provenance["expected_commit"],
+            "implementation_source_sha256": source_hashes_before,
+            "implementation_measured_sources_git_status": git_provenance["status"],
+            "implementation_measured_sources_dirty_paths": git_provenance["dirty_paths"],
+            "implementation_worktree_dirty_for_measured_sources": git_provenance["dirty"],
+            "exact_commit_qualification": git_provenance,
+            "world_history_production_authorized": False,
+            "geodyn_2b_arcana_forward_authorized": False,
+            "int10k_long_run_authorized": False,
+        }
+        report_bytes = _canonical(gate_report)
+        _write_new(output_dir / "REPORT.json", report_bytes)
+        manifest_bytes = _canonical({
+            "schema": "INT10K_E2_B2_MANIFEST_V1",
+            "completion": "EXACT_SOURCE_GATE_REJECTED_NO_NUMERICAL_EXECUTION",
+            "classification": gate_report["classification"],
+            "members": [{"path": "REPORT.json", "sha256": _sha(report_bytes),
+                         "byte_length": len(report_bytes)}],
+        })
+        _write_new(output_dir / "MANIFEST.json", manifest_bytes)
+        print(json.dumps({"status": gate_report["status"],
+                          "output_dir": str(output_dir),
+                          "manifest_sha256": _sha(manifest_bytes),
+                          "exact_commit_qualification": git_provenance}, indent=2))
+        return qualification_exit_code(git_provenance)
 
     oracle = _read_oracle(oracle_dir)
     oracle_manifest_bytes = (oracle_dir / "MANIFEST.json").read_bytes()
@@ -411,21 +467,27 @@ def main() -> int:
         "runtime": {"python": sys.version, "numpy": _numpy_version(),
                     "platform": platform.platform(), "pid": os.getpid()},
     }
-    try:
-        report["implementation_source_commit"] = subprocess.run(
-            ["git", "rev-parse", "HEAD"], cwd=REPOSITORY, check=True,
-            capture_output=True, text=True).stdout.strip()
-    except (OSError, subprocess.CalledProcessError):
-        report["implementation_source_commit"] = None
-    source_paths = (
-        "scripts/r6_int10k_e2b2_history_independent.py",
-        "src/arcana_worldsim/r6/int10k_history_independent.py",
-        "src/arcana_worldsim/r6/regional_geological_evolution.py",
-        "src/arcana_worldsim/r6/unified_multiphysics_microdomain.py",
-    )
-    report["implementation_source_sha256"] = {
+    source_hashes_after = {
         name: _sha((REPOSITORY / name).read_bytes()) for name in source_paths}
-    report["implementation_worktree_dirty_for_measured_sources"] = True
+    sources_unchanged = source_hashes_before == source_hashes_after
+    report["implementation_source_commit"] = git_provenance["commit"]
+    report["implementation_expected_commit"] = git_provenance["expected_commit"]
+    report["implementation_source_sha256"] = source_hashes_after
+    report["implementation_source_sha256_at_start"] = source_hashes_before
+    report["implementation_measured_sources_git_status"] = git_provenance["status"]
+    report["implementation_measured_sources_dirty_paths"] = git_provenance["dirty_paths"]
+    report["implementation_worktree_dirty_for_measured_sources"] = git_provenance["dirty"]
+    report["implementation_measured_sources_unchanged_during_run"] = sources_unchanged
+    qualification = dict(git_provenance)
+    if not sources_unchanged and qualification["expected_commit"] is not None:
+        qualification["qualification_status"] = "FAIL"
+        qualification["qualification_reasons"] = [
+            *qualification["qualification_reasons"], "MEASURED_SOURCE_CHANGED_DURING_RUN"]
+    report["exact_commit_qualification"] = qualification
+    if qualification["expected_commit"] is not None and qualification["qualification_status"] != "PASS":
+        report["evidence_scope"] = "DIAGNOSTIC_ONLY_EXACT_COMMIT_QUALIFICATION_REJECTED"
+    else:
+        report["evidence_scope"] = "LOCAL_PARITY_DIAGNOSTIC"
     report_bytes = _canonical(report)
     _write_new(output_dir / "REPORT.json", report_bytes)
     members.append({"path": "REPORT.json", "sha256": _sha(report_bytes),
@@ -436,8 +498,9 @@ def main() -> int:
     manifest_bytes = _canonical(manifest)
     _write_new(output_dir / "MANIFEST.json", manifest_bytes)
     print(json.dumps({"status": report["status"], "output_dir": str(output_dir),
-                      "manifest_sha256": _sha(manifest_bytes), "measurements": measurements}, indent=2))
-    return 0
+                      "manifest_sha256": _sha(manifest_bytes), "measurements": measurements,
+                      "exact_commit_qualification": qualification}, indent=2))
+    return qualification_exit_code(qualification)
 
 
 if __name__ == "__main__":
