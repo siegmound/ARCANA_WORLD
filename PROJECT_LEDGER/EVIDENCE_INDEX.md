@@ -1,3 +1,11 @@
+# CURRENT — INT10K E2-A1 FAIR report + E2-B local frontier evidence (2026-10-29)
+
+**E2-A1 FAIR operator-reported only** at `57768923a4a8478381d9153c6f910fba811613d2`; evidence path `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E2_A1_FAIR_kjB2nxDO`. Reported tests: 60/60, zero skip/error; exit 0; Python 3.12.14 / NumPy 2.5.3 / pytest 9.1.1. Oracle/manifest pairs: 3Y `6052e8cd222141a41276bf1b041aeec89fd6a7aac52b8628a5d263867098eeb1` / `a6ca3b7db7e9aa1d08569e79bb0215aa8679217de5523ebdc7caf15da9744040`; 10Y `7f060bd5d2b920abf18685a38d4eb25eb8792733fb50ac128775842014ca8798` / `0ff8b1e4a8eec93960a3551fbc8b0145c5561e1740c723fdb2641b6ed54e9c02`. FAIR files/checksums have not been independently imported or rehashed on Windows.
+
+**E2-B local Windows evidence**, Python 3.12.10 / NumPy 2.5.1, based on preserved local E2-A1 oracle and reverified E0 input bundle: `F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD_R6_UBUNTU_PORT/INT10K_E2_B_WINDOWS_57768923_04`. 3Y manifest SHA256 `317455655b14ce133997d2553708ec70c5afbb3681618370570d6c0ad19c77e4`; 10Y manifest SHA256 `9e3f7468108b9f15e06223f7f36ae4dc42a013505f8f79b8993bbeac74e23599`. Both bundles' member lengths and hashes verified locally (745,059 bytes 3Y; 821,068 bytes 10Y); reports and size tables are in `docs/arcana/R6_INT10K_E2_B_FRONTIER_CHECKPOINT_IMPLEMENTATION.md`. The FAIR E2-A1 files were not used in this local comparison. Frontier omits history arrays but resume currently requires separately supplied full history.
+
+---
+
 # CURRENT — INT10K E2-A1 full-history oracle, local Windows evidence (2026-10-29)
 
 **Implementation baseline:** `662bed019bdd83832a8170bb1638cc1fc783295b`; implementation files were untracked at capture and are source-hashed in the reports. **Runtime:** Windows Python 3.12.10 / NumPy 2.5.1. **Inputs:** E0 triplet revalidated before and after each run; transfer bundle SHA256 `fc5cda6e543f5f96673ba71e60c085566659672abff9728eb5ed74c2ab47c8b0`. **Classification:** `NONCANONICAL_SYNTHETIC_ENGINEERING_ONLY`.

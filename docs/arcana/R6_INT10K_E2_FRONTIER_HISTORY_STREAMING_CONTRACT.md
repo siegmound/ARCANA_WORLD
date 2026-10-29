@@ -215,3 +215,32 @@ The synthetic adversarial and pertinent regressions passed locally. The exact
 implementation commit still requires Linux qualification. E2-B through E2-G
 and all resource progression gates remain pending; no long-run authorization
 or scientific/canonical promotion follows.
+
+## 12. E2-A1 FAIR report and E2-B frontier projection (2026-10-29)
+
+The operator reports E2-A1 qualification on exact source commit
+`57768923a4a8478381d9153c6f910fba811613d2`, with Python 3.12.14, NumPy 2.5.3,
+pytest 9.1.1, 60/60 Linux tests, original 3Y and 10Y oracle/checkpoint/query
+checks PASS and `FINAL_EXIT=0`. Reported FAIR oracle/manifest SHA256 pairs are
+3Y `6052e8cd222141a41276bf1b041aeec89fd6a7aac52b8628a5d263867098eeb1` /
+`a6ca3b7db7e9aa1d08569e79bb0215aa8679217de5523ebdc7caf15da9744040`, and 10Y
+`7f060bd5d2b920abf18685a38d4eb25eb8792733fb50ac128775842014ca8798` /
+`0ff8b1e4a8eec93960a3551fbc8b0145c5561e1740c723fdb2641b6ed54e9c02`. These are
+operator-reported; FAIR files were not imported/rehashed on Windows. See the
+E2-A1 report for provenance separation.
+
+E2-B local projection work is recorded in
+`docs/arcana/R6_INT10K_E2_B_FRONTIER_CHECKPOINT_IMPLEMENTATION.md`. It removes
+duration-growing regional histories and unified step records from the v2
+frontier/checkpoint envelope and records a high-water mark, E0/source/config
+identities, SHA256 integrity and an explicit not-implemented commit-chain
+reference. A compatibility restore must receive the complete separate history
+prefix because the existing continuation runner consumes it. Actual local 3Y
+and 10Y restored continuations matched the complete E2-A1 Windows reference.
+Dynamic stratified deposits also grow and remain state-bearing frontier data;
+the observed sizes are reported without claiming history-independent size.
+No append-only transaction chain, streaming, recovery, indexed on-disk query,
+or Linux qualification is implemented. E2-B remains partial until the engine
+can resume from a frontier without loading the full prior history and that
+change passes exact-commit Linux tests. Scientific, canonical and long-run
+gates remain false.

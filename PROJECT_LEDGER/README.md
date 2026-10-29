@@ -1,5 +1,9 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
+# CURRENT — E2-A1 FAIR qualification reported; E2-B frontier projection locally partial (2026-10-29)
+
+Operator reports E2-A1 exact-commit FAIR qualification on `57768923a4a8478381d9153c6f910fba811613d2`: Linux 60/60, 3Y/10Y oracle and manifest hashes recorded in `docs/arcana/R6_INT10K_E2_A1_FULL_HISTORY_ORACLE_IMPLEMENTATION.md`; original FAIR files are not locally imported or independently rehashed. E2-B now serializes history-free frontier/checkpoint envelopes and restores against separately supplied history, with local 3Y/10Y reference parity. Existing continuation still requires full prior history; E2-B, append-only transactions and streaming are not qualified. See `docs/arcana/R6_INT10K_E2_B_FRONTIER_CHECKPOINT_IMPLEMENTATION.md`. Next exact-commit Linux qualification and resolve the legacy-history dependency. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; `INT10K_LONG_RUN_AUTHORIZED=false`.
+
 Single continuity point. E1-R2 Linux results remain operator-reported at exact commit `5faf619875af86caa2ee824dff4b0a833f4227f1`; FAIR files were not imported or rehashed on Windows. E2-A1 now has a separate `FULL_HISTORY_ORACLE_V1` implementation and locally verified 3-year 1+2 / 10-year 5+5 direct/restart full-history captures on Python 3.12.10 / NumPy 2.5.1. These are Windows engineering results, not FAIR qualification or comparison to the unimported E1 files. E2 streaming/frontier/transaction implementation remains pending. The observe-only policy `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS` remains in force; actual FAIR allocations/site policy bind, unknown quotas remain UNKNOWN. See `docs/arcana/R6_INT10K_E2_A1_FULL_HISTORY_ORACLE_IMPLEMENTATION.md` and `docs/arcana/R6_INT10K_E2_FRONTIER_HISTORY_STREAMING_CONTRACT.md`. Scientific and WORLD_HISTORY gates remain false.
 
 ## Current decision — 2026-10-25

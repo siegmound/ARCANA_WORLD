@@ -63,3 +63,16 @@ RSS is Windows process working-set measurement at the capture phase boundaries; 
 This milestone creates a complete *reference oracle*, not the E2 frontier/history streaming system. Histories are still assembled in memory and serialized together; queries validate and inspect the in-memory oracle; there is no append-only transaction/commit chain, recovery protocol, streaming writer, bounded frontier or independent indexed on-disk reader. The E1 FAIR reference bundle was not imported, so comparison to its serialized numerical bytes remains unavailable. Local NumPy differs from FAIR's reported E1 version. Linux qualification and exact committed-source retest are pending.
 
 Next: commit the scoped implementation and report; run the combined Linux suite on that exact commit and independently inspect the new oracle bundle through its manifest/query APIs. Only then proceed to E2-B frontier/checkpoint design and streaming implementation. No 100-, 1,000- or 10,000-year run is authorized. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; `INT10K_LONG_RUN_AUTHORIZED=false`.
+
+## E2-A1 FAIR qualification closure — operator-reported (2026-10-29)
+
+The operator reports that exact source commit `57768923a4a8478381d9153c6f910fba811613d2` passed on FAIR using Python 3.12.14, NumPy 2.5.3 and pytest 9.1.1: 60/60 Linux regressions, zero skips/errors, both original 3Y 1+2 and 10Y 5+5 oracle captures, checkpoint/query/manifest/source/input identity checks, unchanged checkout/HEAD/input/snapshot and `FINAL_EXIT=0`. FAIR evidence path: `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E2_A1_FAIR_kjB2nxDO`.
+
+Operator-reported FAIR oracle/manifest SHA256 and sizes:
+
+| Case | Oracle SHA256 | Manifest SHA256 | Reported bytes |
+|---|---|---|---:|
+| 3Y 1+2 | `6052e8cd222141a41276bf1b041aeec89fd6a7aac52b8628a5d263867098eeb1` | `a6ca3b7db7e9aa1d08569e79bb0215aa8679217de5523ebdc7caf15da9744040` | 3,984,264 |
+| 10Y 5+5 | `7f060bd5d2b920abf18685a38d4eb25eb8792733fb50ac128775842014ca8798` | `0ff8b1e4a8eec93960a3551fbc8b0145c5561e1740c723fdb2641b6ed54e9c02` | 11,202,014 |
+
+These values and the operator's checksum-success statement are recorded as reported provenance. FAIR artifacts were not transferred to Windows or independently rehashed here; no cross-runtime byte comparison is claimed. The earlier Windows bundle hashes and sizes above remain their separate evidence and are not replaced. This FAIR result qualifies E2-A1's oracle capture/testing scope only; it does not qualify the E2-B frontier implementation below, an append-only stream, or any scientific/canonical history.

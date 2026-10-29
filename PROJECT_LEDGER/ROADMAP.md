@@ -1,3 +1,9 @@
+# CURRENT — E2-B v2 frontier projection is local/partial; legacy runner remains history-dependent (2026-10-29)
+
+E2-A1 FAIR qualification on source `57768923a4a8478381d9153c6f910fba811613d2` is operator-reported; oracle/manifest checksums and provenance status are in the E2-A1 report. E2-B adds a canonical versioned projection and explicit history-prefix restore bridge. Local 3Y/10Y full continuation comparisons pass against Windows E2-A1 references, but the restore path supplies the entire prior history to existing runners. Dynamic deposit strata also grow with the actual model state. Do not claim streaming, append-only commit semantics, recovery, or history-independent checkpoint size. Next exact-commit Linux tests, then E2-B follow-up to move legacy consumers to archived-history APIs without dropping records/events/balances; E2-C/D/E remain separate gates. No long-run or canonical authorization.
+
+---
+
 # CURRENT — R6-INT10K E2-A1 complete in Windows engineering scope (2026-10-29)
 
 `FULL_HISTORY_ORACLE_V1` now preserves the raw direct result, actual split-prefix result and checkpoint, and resumed full result for 3y 1+2 and 10y 5+5. Windows combined tests passed 60/60 and both local bundles passed manifest/hash/oracle verification. This is a full-history reference and adversarial test gate only; it is not a streaming archive, bounded frontier, transaction chain, Linux/FAIR qualification, or E1 serialized-byte comparison. Next exact-commit Linux validation, then E2-B checkpoint/frontier and E2-C+ history writer/query/transaction stages. The progression to 100/1,000/10,000 years remains future, separately reviewed and not authorized. Full report: `docs/arcana/R6_INT10K_E2_A1_FULL_HISTORY_ORACLE_IMPLEMENTATION.md`. Preserve `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`; all scientific and canonical gates remain closed.

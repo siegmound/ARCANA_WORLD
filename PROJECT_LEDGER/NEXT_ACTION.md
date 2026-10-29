@@ -1,4 +1,10 @@
-# NEXT — INT10K E2-A1 exact-commit Linux qualification (2026-10-29)
+# NEXT — INT10K E2-B exact-commit Linux qualification and history-dependency follow-up (2026-10-29)
+
+Verify the local commit containing `int10k_frontier_checkpoint.py`, its CLI/tests and ledger/report, then qualify that exact commit on Linux using the preserved 3Y/10Y local reference artifacts and the unchanged E0 inputs. Do not use the operator-reported FAIR oracle files unless transferred and independently verified. Run the focused suite and test checkpoint corruption, identity/config/E0 mismatch, missing history and unsupported schema. Preserve the existing FAIR checkout and all E2-A1/E1 evidence. The new restore bridge still reattaches full regional/unified history because the legacy continuation path consumes `records` and regional queries consume events; do not claim history-independent resume. Next engineering gate is a source-grounded frontier/consumer refactor plus append-only commit protocol, with exact E2-A1 parity and no arbitrary resource caps. No 100/1,000/10,000-year run. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; `INT10K_LONG_RUN_AUTHORIZED=false`.
+
+---
+
+# PREVIOUS NEXT — INT10K E2-A1 exact-commit Linux qualification (2026-10-29)
 
 Run the combined E2-A1/E1/regional/unified suite and verify both full-history bundles on FAIR/Linux against the exact implementation commit produced by this work. Preserve the existing FAIR checkout and E1 evidence. Confirm source hashes, `FULL_HISTORY_ORACLE_V1` integrity, query results and the actual year-1/year-5 prefix checkpoint; report that E1's earlier FAIR files were not imported to Windows. No ASPECT/Solver/MPI and no 100-, 1,000- or 10,000-year run. After Linux qualification, proceed to E2-B: bounded continuation frontier and versioned checkpoint design/implementation; do not claim streaming until transaction, append-only history, recovery and parity gates pass. Respect `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`; actual FAIR/site allocations bind and unknown quotas remain UNKNOWN. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; `INT10K_LONG_RUN_AUTHORIZED=false`.
 
