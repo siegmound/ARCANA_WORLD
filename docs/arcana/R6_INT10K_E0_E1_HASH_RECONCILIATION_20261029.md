@@ -2,9 +2,9 @@
 
 ## Decision
 
-`R6_INT10K_E0_WINDOWS_HASH_RECONCILIATION_PASS__E1_R1_LINUX_TESTS_PASS_REPORTED__E1_INPUT_RECHECK_PENDING`
+`R6_INT10K_E0_WINDOWS_HASH_RECONCILIATION_PASS__E1_R2_INPUT_AND_SHORT_REFERENCES_PASS_OPERATOR_REPORTED__E2_STREAMING_PENDING`
 
-This closes the Windows-side byte reconciliation only. It does not independently authenticate FAIR files, rerun the original E0 loader on FAIR, execute the E1 reference, or authorize a numerical run.
+This report's original scope was Windows-side byte reconciliation; it did not itself authenticate FAIR files or execute an E1 reference. The later E1-R2 loader and short-reference results are recorded separately below as operator-reported evidence, not as part of the Windows byte verification.
 
 ## Windows byte verification
 
@@ -25,7 +25,7 @@ The complete SHA256 of the Windows `MANIFEST.json` is 64 hexadecimal characters:
 
 Inspection of the current tracked E1 CLI and Windows attestations found that they already contain the complete 64-character digest; the 52-character string is absent from tracked files. Accordingly, no digest literal needed correction in this checkout. The historic discrepancy reported by the operator is preserved here rather than rewriting the original E0 attestation or FAIR evidence. The E1 verifier has been strengthened to reject malformed pins and to validate all three file identities plus manifest/sidecar closure before and after a reference call.
 
-The complete `source_identity` object from the prior Windows loader operator report is recorded in [the corrective machine attestation](qualifications/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.json). Its loader-derived fields remain provenance from that earlier operator-reported run; this reconciliation independently verifies the input bytes but does not rerun that loader. Existing E0 PASS decisions therefore remain historical and are not silently revised. The next FAIR gate must rerun the original pinned loader against the complete input triplet and record the full identity.
+The complete `source_identity` object from the prior Windows loader operator report is recorded in [the corrective machine attestation](qualifications/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.json). Its loader-derived fields remain provenance from that earlier operator-reported run; this Windows reconciliation independently verifies the input bytes but does not rerun that loader. The operator now reports E1-R2's original loader, full input and source identity checks PASS at source commit `5faf619875af86caa2ee824dff4b0a833f4227f1`. FAIR artifacts were not imported or independently rehashed here. The earlier E0 PASS decisions remain historical and are not silently revised.
 
 ## E1-R1 and failed first test attempt
 
@@ -33,10 +33,14 @@ The operator reports E1-R1 commit `a7b7d4d58d3cc545781778a985529c269a81b9b9` pas
 
 The earlier first E1 Linux suite result remains an immutable operator-reported FAIL: 24 passed, 2 failed, exit 1, at `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E1_TEST_dMJckvUN`. Both failures were direct/checkpoint coverage cases `[3-1]` and `[10-5]`; the original E1 coverage defect was corrected separately. No failed evidence was overwritten or reclassified.
 
+## E1-R2 and bounded original-input references (operator-reported)
+
+For commit `5faf619875af86caa2ee824dff4b0a833f4227f1`, the operator reports 45/45 Linux regressions PASS, E0 loader/input/source identity PASS, unchanged historical checkout and inputs, and `FINAL_EXIT=0` for both bounded references. The 3-year 1+2 result is under `INT10K_E1_ORIGINAL_3Y_tSMeQrAp`: output 407,197 bytes, RSS 47,239,168 bytes, internal wall 0.0927017 s. The 10-year 5+5 result is under `INT10K_E1_ORIGINAL_10Y_pyPsEG4V`: manifest SHA256 `29f30841735848482676a7dad01a377774d591eeaf7b667e89310e87e01b73c7`, output 1,316,936 bytes, RSS 57,716,736 bytes, internal wall 0.2426114 s and process wall 0.46 s. At 10 years water balances PASS; max absolute solid residual 0.00048828125 kg against tolerance 0.03125 kg; Deep total residual 0 J and gross internal transport 38,795,203,049.11111 J. FAIR artifacts were not imported/rehashed on Windows; these remain operator-reported, not independent local verification. E1 evidence is short-run engineering only and does not qualify streaming or longer runs.
+
 ## Local validation and next gate
 
 Windows focused tests cover the full E1 hash-pin format, malformed SHA256s (including 52-character input), all three member identities, manifest/sidecar consistency, and the existing direct/checkpoint coverage/regressions. Run the combined E1, regional and unified suite plus `py_compile` and `git diff --check` on the reviewed source before committing.
 
-On FAIR, first revalidate the original loader and complete E0 triplet against the exact source commit. Then run the corrected commit's test suite and preserve it in a new evidence directory. Only after both pass may a distinct supervised three-year reference be considered. No E0 loader invocation or numerical evolution was performed during this reconciliation. The E1 runner remains limited to 3/10 years; do not run 10,000 years.
+Next implement E2 in bounded stages under the separate frontier/history contract. Before asserting full unified-history parity, preserve or create a qualified golden capture for unified per-step records and the internal 1+2/5+5 checkpoint state; those objects are not included in the currently described serialized E1 direct/split reference. This update performs no E0 loader invocation or numerical evolution. E1 remains limited to 3/10 years; no 100, 1,000 or 10,000-year run is authorized.
 
 `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`.

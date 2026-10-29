@@ -1,6 +1,6 @@
 # R6-INT10K E1 — Short direct/checkpoint reference implementation (2026-10-28)
 
-**Status:** `R6_INT10K_E1_R1_FAIR_TESTS_PASS_OPERATOR_REPORTED__E0_HASH_RECONCILED_ON_WINDOWS__NEXT_FAIR_RETEST_PENDING`
+**Status:** `R6_INT10K_E1_3_AND_10_YEAR_FAIR_REFERENCE_PASS_OPERATOR_REPORTED__E2_STREAMING_CONTRACT_PREPARED`
 **Source baseline:** `a33d505611d1a0d772af7503f7388cd8f4d29abb` (E1 implementation source; this report records the local correction and its verification separately from the first FAIR failure).
 
 ## First FAIR test result and correction
@@ -15,7 +15,21 @@ Locally verified on Windows using the available Python 3.11.15 / NumPy 2.4.6 / p
 
 The operator reports E1-R1 commit `a7b7d4d58d3cc545781778a985529c269a81b9b9` passed 35 Linux tests, compilation, checkout-integrity checks and hash verification of its log/JUnit in FAIR evidence `INT10K_E1_R1_TEST_3MXk3VwX`. These FAIR files were not imported or independently hashed on Windows; this is an operator-reported PASS limited to those checks.
 
-The current Windows source pin in `scripts/r6_int10k_short_reference.py` already contains the complete manifest SHA256. Independent local hashing of the original Windows E0 triplet and transfer bundle confirmed the full identities and byte-for-byte archive-member equality; the manifest and sidecar agree with the result. The 52-character value reported as historical does not occur in the current tracked source or attestations. See `docs/arcana/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.md` and its machine attestation. The original E0 FAIR decision is retained as historical operator-reported evidence; a fresh FAIR check of the original loader and full input triplet is required before the later supervised three-year reference. No E0 input or simulation was executed in this reconciliation.
+The current Windows source pin in `scripts/r6_int10k_short_reference.py` already contains the complete manifest SHA256. Independent local hashing of the original Windows E0 triplet and transfer bundle confirmed the full identities and byte-for-byte archive-member equality; the manifest and sidecar agree with the result. The 52-character value reported as historical does not occur in the current tracked source or attestations. See `docs/arcana/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.md` and its machine attestation. The original E0 FAIR decision remains historical. At the time of the Windows reconciliation, a fresh FAIR loader/input check was pending; the operator now reports that E1-R2 completed the loader, full input and source-identity checks at `5faf619875af86caa2ee824dff4b0a833f4227f1`. Those FAIR artifacts were not imported or independently rehashed on Windows. No E0 input or simulation was executed during the Windows reconciliation itself.
+
+## E1-R2 FAIR results (operator-reported, 2026-10-29)
+
+All results below were supplied by the operator and have not been imported or independently rehashed on Windows. They are bound to exact source commit `5faf619875af86caa2ee824dff4b0a833f4227f1`.
+
+| Gate | Reported outcome | Runtime/output measurements |
+|---|---|---|
+| E1-R2 Linux regressions and E0 loader/source identity | 45/45 PASS; loader, input and source identity PASS | Evidence locator and test-log digest were not supplied for E1-R2 |
+| Original-input reference, 3 years split 1+2 | PASS; `FINAL_EXIT=0`; historical checkout and inputs unchanged | Evidence `INT10K_E1_ORIGINAL_3Y_tSMeQrAp`; 407,197 output bytes; RSS 47,239,168 bytes; internal wall 0.0927017 s |
+| Original-input reference, 10 years split 5+5 | PASS; `FINAL_EXIT=0`; historical checkout and inputs unchanged | Evidence `INT10K_E1_ORIGINAL_10Y_pyPsEG4V`; manifest SHA256 `29f30841735848482676a7dad01a377774d591eeaf7b667e89310e87e01b73c7`; 1,316,936 output bytes; RSS 57,716,736 bytes; internal wall 0.2426114 s; process wall 0.46 s |
+
+At 10 years, the reported water balances passed. Maximum absolute solid residual was 0.00048828125 kg against the reported 0.03125 kg tolerance. Deep total residual was 0 J; gross internal transport was 38,795,203,049.11111 J. These are engineering-run observations, not a physical or scientific qualification. Detailed 3-year balance values and the 3-year manifest digest were not supplied and remain UNKNOWN here.
+
+E1-R2 closes the operator-reported 3/10-year baseline stage. It does not qualify 100-, 1,000- or 10,000-year execution, streaming, bounded long-run memory, scientific representativeness or canonical history. The earlier first-run E1 FAIL (24 passed, 2 failed) and its exact evidence remain preserved.
 
 ## Implementation artifacts
 
@@ -27,13 +41,10 @@ The current Windows source pin in `scripts/r6_int10k_short_reference.py` already
 
 **This is a numerical baseline, NOT the streaming engine.** The legacy algorithms retain full year/step history in RAM and full checkpoint; the 10k memory growth issue is intentionally not addressed in this commit. The short baseline provides an oracle for future compact frontier+immutable history comparison. No scientific coefficients, feedback links or original kernel files were edited. No ASPECT/ShellSet/Fastscapelib/gFlex runtime is implied. C028/C029 T0 source columns have identical input payload hashes; synthetic regional 3x3 cells do not imply independently calibrated geographical variability.
 
-The new code and tests have **not been executed on FAIR**, and no PASS beyond E0 is claimed. Do not run `--years 10000`, do not use `--years 10` before isolated source tests and short reference 3y validation, do not move the historical F2AV checkout.
+E1-R2 FAIR PASS is operator-reported as above. Its output bundles and logs are not independently available in this Windows worktree. No streaming implementation exists; the legacy path retains history in memory. Do not run `--years 10000`, do not alter the historical F2AV checkout, and do not infer future resource behavior from the 3- and 10-year measurements.
 
-## Next validation on FAIR
+## Next step — E2 frontier/history streaming contract
 
-1. Fetch the *exact new commit*, then use a fresh external `git archive`-extracted source snapshot, **not** the stale F2AV checkout as interpreter import root.
-2. Use Python 3.12 in `arcana-r6-linux`; run `python -m py_compile` on both new Python modules and tests; `python -m pytest -q tests/test_r6_int10k_short_reference.py tests/test_r6_regional_geological_evolution.py tests/test_r6_unified_multiphysics_microdomain.py`. Capture complete terminal log and pytest JUnit into new evidence; any nonzero/skip in scoped qualifying tests BLOCKED until adjudicated.
-3. Only on Linux test PASS propose bounded 3-year original-input run under external `ARCANA_WORLD_EVIDENCE` with new unique output directory, a strict supervisor runtime/output/RSS limit based on actual host/job quotas. Do not assume node `free -h` is a process entitlement.
-4. Validate recorded SHA256/manifest, regional/unit/time/deep balances, direct-vs-split full history, input+worktree immutability and resource telemetry. Reassess before 10-year short reference; after both short PASS start separate `R6_INT10K_E2_FRONTIER_STREAMED_HISTORY` design. No 10k execution authorized by this implementation.
+The source review and proposed contract are in `docs/arcana/R6_INT10K_E2_FRONTIER_HISTORY_STREAMING_CONTRACT.md`. Before implementation acceptance can claim complete E1 history parity, preserve or produce an authorized reference that includes unified per-step records and the internal split checkpoint: the current E1 result serializes full regional history, unified final state, and aggregate balances, but not unified `steps` or the intermediate checkpoint object. The E2 contract requires coverage of those fields, events, residuals and exact historical queries, plus fault/recovery cases. No simulation was executed for this document update and no 100/1,000/10,000-year run is authorized.
 
 **All gates unchanged**: `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`, plus all experiment-specific execution prohibitions. The scientific provider gap matrix remains parallel and open.

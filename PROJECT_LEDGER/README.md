@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. E0 original Windows input triplet and bundle have now been independently rehashed locally and reconcile to the complete SHA256s; FAIR-side matches remain operator-reported. E1-R1 Linux 35/35 and compile PASS are operator-reported for `a7b7d4d58d3cc545781778a985529c269a81b9b9`; a fresh FAIR recheck of the original loader/inputs and corrected source tests remains pending. The E1 reference remains a bounded 3/10-year direct/checkpoint engineering tool, NOT streaming or 10k qualification. See `docs/arcana/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.md` and `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Scientific, solver and WORLD_HISTORY production gates unchanged.
+Single continuity point. E1-R2 45/45 Linux tests, original E0 loader/input/source identity, and the 3-year 1+2 and 10-year 5+5 references are operator-reported PASS at exact commit `5faf619875af86caa2ee824dff4b0a833f4227f1`; FAIR artifacts were not imported or rehashed on Windows. E1 remains bounded engineering evidence, not streaming, long-run or scientific qualification. The E2 frontier/history streaming contract is prepared at `docs/arcana/R6_INT10K_E2_FRONTIER_HISTORY_STREAMING_CONTRACT.md`; implementation and complete-history parity remain pending, including capture of unified per-step records and split-boundary checkpoint references. See the E1 and E0/E1 reports below. Scientific, solver and WORLD_HISTORY gates remain unchanged and false.
 
 ## Current decision — 2026-10-25
 
@@ -12,7 +12,7 @@ The local tectonics/Deep, continuation, material, surface/hydrology and regional
 
 ## Leggere in questo ordine
 1. STATUS.md - only the opening CURRENT section contains present priority; historical checkpoints follow.
-2. NEXT_ACTION.md - current action: read-only R6 physical/environmental provider gap matrix; GEODYN-3C archived-output qualification is complete in its bounded experimental scope.
+2. NEXT_ACTION.md - current action: implement the bounded E2 frontier/history stream in stages; E1-R2's 3/10-year PASS is operator-reported and full-history parity remains pending.
 3. `ROADMAP.md` — dipendenze e filoni paralleli.
 4. `PROCEDURE.md` — workflow Git/Windows/Fair e preservazione dei gate.
 5. `EVIDENCE_INDEX.md`, `VISION.md`, `ARCHITECTURE.md`, `SHELLSET_HISTORY.md`, `DECISIONS.md`, `LOG.md` e fonti specialistiche secondo la domanda.

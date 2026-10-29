@@ -4,6 +4,16 @@ E0 original Windows bundle `F:/corsiiiuu/Magistrale/Arcana/INT10K_E0_WINDOWS_TRA
 
 ---
 
+# CURRENT — INT10K E1-R2 bounded FAIR references (operator-reported, 2026-10-29)
+
+- Tested source: `5faf619875af86caa2ee824dff4b0a833f4227f1`.
+- E1-R2 Linux regression suite: 45/45 PASS; E0 loader/input/source identity PASS (operator-reported). E1-R2 test evidence locator and log digest were not supplied.
+- 3-year split 1+2: PASS, natural `FINAL_EXIT=0`, evidence `INT10K_E1_ORIGINAL_3Y_tSMeQrAp`; output 407,197 bytes, RSS 47,239,168 bytes, internal wall 0.0927017 s. Detailed 3-year balance values and manifest SHA256 not supplied.
+- 10-year split 5+5: PASS, natural `FINAL_EXIT=0`, evidence `INT10K_E1_ORIGINAL_10Y_pyPsEG4V`; manifest SHA256 `29f30841735848482676a7dad01a377774d591eeaf7b667e89310e87e01b73c7`; output 1,316,936 bytes, RSS 57,716,736 bytes, internal wall 0.2426114 s, process wall 0.46 s.
+- 10-year reported checks: water balance PASS; max absolute solid residual 0.00048828125 kg against tolerance 0.03125 kg; Deep total residual 0 J; gross internal Deep transport 38,795,203,049.11111 J. Historical checkout and E0 inputs reported unchanged.
+- Authority boundary: operator-reported FAIR results only; FAIR files/logs were not imported or independently hashed on Windows. These are short engineering references, not streaming, long-run, physical/scientific or canonical qualification. Previous E1 FAIL history remains in the reports.
+- Design report: `docs/arcana/R6_INT10K_E2_FRONTIER_HISTORY_STREAMING_CONTRACT.md`; no new numerical evidence was generated for E2.
+
 # CURRENT — INT10K E0 cross-platform original-input semantic identity PASS (reported 2026-10-28)
 
 `R6_INT10K_E0_FAIR_INPUT_IDENTITY_PASS` — FAIR operator output confirms exact tar/member SHA256, original pinned loader SHA, C028/C029 T0 semantic load, full Windows/FAIR source identity parity and unchanged linked checkout. Evidence `INT10K_E0_WINDOWS_TRANSFER_20261028_01/FAIR_INPUT_QUALIFICATION.json`. Original FAIR bytes not independently downloaded for this doc commit; source input classification stays noncanonical synthetic engineering. No new numerical evolution run. Original qualification JSON remains on FAIR, not copied into repository. Report `docs/arcana/R6_INT10K_E0_FAIR_INPUT_IDENTITY_CLOSURE_20261028.md`. Historic failed/passed experiments unaffected; E1 numerical baseline not yet executed.
