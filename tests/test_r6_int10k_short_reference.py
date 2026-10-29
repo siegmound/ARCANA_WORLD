@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 from dataclasses import replace
+import ast
+import hashlib
+import json
+from pathlib import Path
 import pytest
 
 from arcana_worldsim.r6.functional_development import NodeMaterial, ReducedState
 from arcana_worldsim.r6.geological_surface_microdomain import SUPPORTS
 from arcana_worldsim.r6.int10k_short_reference import (
     ShortReferenceConfig, ShortReferenceError, _validate_regional_coverage,
-    compare_reference, run_short_reference,
+    compare_reference, run_short_reference, verify_source_bundle,
 )
 from arcana_worldsim.r6.regional_geological_evolution import RegionalConfig
 
@@ -40,6 +44,77 @@ def _identity():
             {"support_id": SUPPORTS[1], "grid_cell": [91, 29], "plate_id": 5},
         ],
     }
+
+
+def _source_bundle(tmp_path):
+    result = b'{"sample":"E0 fixture"}\n'
+    result_hash = hashlib.sha256(result).hexdigest()
+    sidecar = f"{result_hash}  RESULT.json\n".encode("ascii")
+    sidecar_hash = hashlib.sha256(sidecar).hexdigest()
+    manifest = {
+        "schema": "ARCANA_CONSTITUTIVE_MECHANICS_MANIFEST_V1",
+        "manifest_self_hash": None,
+        "result": {"path": "RESULT.json", "sha256": result_hash,
+                   "size_bytes": len(result)},
+        "sidecar": {"path": "RESULT.json.sha256", "sha256": sidecar_hash,
+                    "size_bytes": len(sidecar)},
+    }
+    manifest_bytes = json.dumps(manifest, sort_keys=True).encode("utf-8")
+    members = {"RESULT.json": result, "MANIFEST.json": manifest_bytes,
+               "RESULT.json.sha256": sidecar}
+    for name, payload in members.items():
+        (tmp_path / name).write_bytes(payload)
+    expected = {name: hashlib.sha256(payload).hexdigest()
+                for name, payload in members.items()}
+    return members, expected
+
+
+def test_source_bundle_hashes_and_manifest_sidecar_closure(tmp_path):
+    members, expected = _source_bundle(tmp_path)
+    assert verify_source_bundle(tmp_path, expected) == expected
+    assert all((tmp_path / name).read_bytes() == data
+               for name, data in members.items())
+
+
+@pytest.mark.parametrize("bad_digest", ["a" * 52, "a" * 63, "A" * 64, "g" * 64])
+def test_source_bundle_rejects_malformed_sha256_pins(tmp_path, bad_digest):
+    _, expected = _source_bundle(tmp_path)
+    expected["MANIFEST.json"] = bad_digest
+    with pytest.raises(ShortReferenceError, match="SOURCE_HASH_MALFORMED"):
+        verify_source_bundle(tmp_path, expected)
+
+
+@pytest.mark.parametrize("member", ["RESULT.json", "MANIFEST.json", "RESULT.json.sha256"])
+def test_source_bundle_rejects_member_identity_mismatch(tmp_path, member):
+    _, expected = _source_bundle(tmp_path)
+    expected[member] = "0" * 64
+    with pytest.raises(ShortReferenceError, match="SOURCE_MEMBER_HASH_MISMATCH"):
+        verify_source_bundle(tmp_path, expected)
+
+
+def test_source_bundle_rejects_manifest_sidecar_disagreement(tmp_path):
+    _, expected = _source_bundle(tmp_path)
+    manifest_path = tmp_path / "MANIFEST.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["result"]["sha256"] = "f" * 64
+    manifest_path.write_text(json.dumps(manifest, sort_keys=True), encoding="utf-8")
+    expected["MANIFEST.json"] = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+    with pytest.raises(ShortReferenceError, match="SOURCE_MANIFEST_CLOSURE_INVALID"):
+        verify_source_bundle(tmp_path, expected)
+
+
+def test_e1_cli_manifest_pin_is_full_sha256():
+    cli = Path(__file__).parents[1] / "scripts" / "r6_int10k_short_reference.py"
+    tree = ast.parse(cli.read_text(encoding="utf-8"))
+    assignment = next(node for node in tree.body
+                      if isinstance(node, ast.Assign) and
+                      any(isinstance(target, ast.Name) and target.id == "SOURCE_HASHES"
+                          for target in node.targets))
+    hashes = ast.literal_eval(assignment.value)
+    assert hashes["MANIFEST.json"] == (
+        "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21")
+    assert all(len(digest) == 64 and all(char in "0123456789abcdef" for char in digest)
+               for digest in hashes.values())
 
 
 @pytest.mark.parametrize("years,split", [(3, 1), (10, 5)])

@@ -1,6 +1,6 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-Single continuity point. E0 operator-reported original Windows/FAIR byte and loader identity PASS. E1 `R6_INT10K_E1_SHORT_REFERENCE_CODE_STAGED__LINUX_TEST_PENDING`: short 3/10-year existing regional+unified direct/checkpoint reference source/CLI/tests added but Linux tests pending; NOT streaming or 10k qualification. See `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Scientific, solver and WORLD_HISTORY production gates unchanged.
+Single continuity point. E0 original Windows input triplet and bundle have now been independently rehashed locally and reconcile to the complete SHA256s; FAIR-side matches remain operator-reported. E1-R1 Linux 35/35 and compile PASS are operator-reported for `a7b7d4d58d3cc545781778a985529c269a81b9b9`; a fresh FAIR recheck of the original loader/inputs and corrected source tests remains pending. The E1 reference remains a bounded 3/10-year direct/checkpoint engineering tool, NOT streaming or 10k qualification. See `docs/arcana/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.md` and `docs/arcana/R6_INT10K_E1_SHORT_REFERENCE_IMPLEMENTATION_20261028.md`. Scientific, solver and WORLD_HISTORY production gates unchanged.
 
 ## Current decision — 2026-10-25
 

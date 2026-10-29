@@ -1,6 +1,6 @@
 # R6-INT10K E1 — Short direct/checkpoint reference implementation (2026-10-28)
 
-**Status:** `R6_INT10K_E1_COVERAGE_VALIDATOR_FIXED__WINDOWS_REGRESSIONS_PASS__LINUX_RETEST_PENDING`
+**Status:** `R6_INT10K_E1_R1_FAIR_TESTS_PASS_OPERATOR_REPORTED__E0_HASH_RECONCILED_ON_WINDOWS__NEXT_FAIR_RETEST_PENDING`
 **Source baseline:** `a33d505611d1a0d772af7503f7388cd8f4d29abb` (E1 implementation source; this report records the local correction and its verification separately from the first FAIR failure).
 
 ## First FAIR test result and correction
@@ -10,6 +10,12 @@ The operator-reported first Linux run at `/home/jlpfritas/HPC-POMDP/Arcana/ARCAN
 The defect was the final coverage check treating `snapshots` as one record per simulated year. The regional runner includes the initial state at year 0 and then one snapshot per year. The validator now requires `records` at years `1..years`, `snapshots` at years `0..years`, and `time_years == years`, with exact ordered sequences and fail-closed handling of malformed/missing/duplicate/out-of-order times.
 
 Locally verified on Windows using the available Python 3.11.15 / NumPy 2.4.6 / pytest 8.4.2 environment: the E1, regional and unified focused suites passed **35/35**, zero skips, in 3.87 s. This runtime differs from the planned FAIR runtime and does not qualify Linux. No E0 input execution, E1 original-input run, or 10,000-year benchmark was performed. The corrected source requires a new exact-commit Linux qualification; no FAIR PASS is claimed.
+
+## E1-R1 and E0 hash reconciliation update (2026-10-29)
+
+The operator reports E1-R1 commit `a7b7d4d58d3cc545781778a985529c269a81b9b9` passed 35 Linux tests, compilation, checkout-integrity checks and hash verification of its log/JUnit in FAIR evidence `INT10K_E1_R1_TEST_3MXk3VwX`. These FAIR files were not imported or independently hashed on Windows; this is an operator-reported PASS limited to those checks.
+
+The current Windows source pin in `scripts/r6_int10k_short_reference.py` already contains the complete manifest SHA256. Independent local hashing of the original Windows E0 triplet and transfer bundle confirmed the full identities and byte-for-byte archive-member equality; the manifest and sidecar agree with the result. The 52-character value reported as historical does not occur in the current tracked source or attestations. See `docs/arcana/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.md` and its machine attestation. The original E0 FAIR decision is retained as historical operator-reported evidence; a fresh FAIR check of the original loader and full input triplet is required before the later supervised three-year reference. No E0 input or simulation was executed in this reconciliation.
 
 ## Implementation artifacts
 

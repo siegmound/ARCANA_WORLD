@@ -13,7 +13,7 @@ from arcana_worldsim.r6.geological_surface_microdomain import (
     SUPPORTS, load_verified_r6_initial_columns,
 )
 from arcana_worldsim.r6.int10k_short_reference import (
-    ShortReferenceConfig, run_short_reference,
+    ShortReferenceConfig, run_short_reference, verify_source_bundle,
 )
 from arcana_worldsim.r6.unified_multiphysics_microdomain import _state_from_payload
 
@@ -60,16 +60,17 @@ def main() -> int:
     if (out.exists() or out == src or src in out.parents or
             "ARCANA_WORLD_EVIDENCE" not in out.parts):
         ap.error("OUTPUT_NOT_NEW_EXTERNAL_EVIDENCE_DIRECTORY")
-    input_before = {name: _digest(src / name) for name in SOURCE_HASHES}
-    if input_before != SOURCE_HASHES:
-        ap.error("ORIGINAL_INPUT_HASH_MISMATCH")
+    try:
+        input_before = verify_source_bundle(src, SOURCE_HASHES)
+    except ValueError as exc:
+        ap.error(str(exc))
     payloads, identity = load_verified_r6_initial_columns(src)
     states = {support: _state_from_payload(payloads[support]) for support in SUPPORTS}
 
     started = perf_counter()
     result = run_short_reference(states, identity, config=case)
     elapsed = perf_counter() - started
-    if {name: _digest(src / name) for name in SOURCE_HASHES} != input_before:
+    if verify_source_bundle(src, SOURCE_HASHES) != input_before:
         ap.error("ORIGINAL_INPUTS_CHANGED_DURING_REFERENCE")
     # No evidence directory is created until all numerical/identity comparisons PASS.
     out.mkdir(parents=True, exist_ok=False)

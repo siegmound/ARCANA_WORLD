@@ -1,0 +1,93 @@
+{
+  "schema": "ARCANA_R6_INT10K_E0_E1_HASH_RECONCILIATION_V1",
+  "date": "2026-10-29",
+  "decision": "R6_INT10K_E0_WINDOWS_HASH_RECONCILIATION_PASS__E1_R1_LINUX_TESTS_PASS_REPORTED__E1_INPUT_RECHECK_PENDING",
+  "authority": "WINDOWS_INPUT_BYTES_INDEPENDENTLY_VERIFIED__FAIR_EVIDENCE_OPERATOR_REPORTED",
+  "historical_reported_bad_manifest_sha256": "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc21",
+  "complete_manifest_sha256": "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21",
+  "windows_verification": {
+    "input_directory": "F:/corsiiiuu/Magistrale/Arcana/ArcanaWorld/ARCANA_WORLD_R6_UBUNTU_PORT/ARCANA_WORLD_R6_BW0/outputs/r6_experimental_multiphysics/MATERIAL_RHEOLOGY_PROVIDER_20261025_03",
+    "bundle_path": "F:/corsiiiuu/Magistrale/Arcana/INT10K_E0_WINDOWS_TRANSFER_20261028/MATERIAL_RHEOLOGY_PROVIDER_20261025_03.tar.gz",
+    "bundle_bytes": 113004,
+    "bundle_sha256": "fc5cda6e543f5f96673ba71e60c085566659672abff9728eb5ed74c2ab47c8b0",
+    "archive_member_check": "PASS_EXACTLY_THREE_ROOT_REGULAR_FILES_BYTE_IDENTICAL_TO_WINDOWS_ORIGINALS",
+    "members": {
+      "RESULT.json": {
+        "bytes": 1653469,
+        "sha256": "24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5"
+      },
+      "MANIFEST.json": {
+        "bytes": 969,
+        "sha256": "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21"
+      },
+      "RESULT.json.sha256": {
+        "bytes": 78,
+        "sha256": "8eab8b24f21088e3de82254f3d4929c61a7ed8a341593e3a4cbbafcc4bca2ce0"
+      }
+    },
+    "manifest_result_sidecar_closure": "PASS",
+    "fair_input_files_imported_to_windows": false
+  },
+  "current_source_review": {
+    "e1_cli": "scripts/r6_int10k_short_reference.py",
+    "e1_cli_manifest_pin": "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21",
+    "e1_cli_pin_is_full_sha256": true,
+    "historical_52_character_value_found_in_current_tracked_files": false,
+    "literal_pin_correction_needed": false,
+    "input_bundle_closure_validation_added": true
+  },
+  "prior_windows_loader_operator_report": {
+    "path": "docs/arcana/qualifications/R6_INT10K_E0_WINDOWS_INPUT_OPERATOR_REPORT.json",
+    "reported_code_head": "3c566ea61c79b8dad96274a5d68d845704aeae96",
+    "loader_module_sha256": "612d59415e25909a593914d627ea40253d44c3e352039a765c717879793d23fa",
+    "source_identity": {
+      "source_archive_sha256": "7dda60c8fa1f535d9e257eb2d04fdfde4643a92765eca8631bd766058240d8cb",
+      "source_branch": "r6/si1-bandwidth-f2av",
+      "source_head": "ec79bf8954a4922f84249fbe23e2657bc5beee23",
+      "source_identity_sha256": "6e729d3662af349b10c85d54f964513270b7e32595ba0f160fa442996348a8fe",
+      "source_manifest_schema": "ARCANA_CONSTITUTIVE_MECHANICS_MANIFEST_V1",
+      "source_manifest_sha256": "a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21",
+      "source_result_scope": "NONCANONICAL_SYNTHETIC_LAYERED_CONTINUUM_ENGINEERING_EXPERIMENT",
+      "source_result_sha256": "24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5",
+      "support_cells": [
+        {"grid_cell": [91, 28], "plate_id": 11, "support_id": "R6G1D-R091-C028"},
+        {"grid_cell": [91, 29], "plate_id": 5, "support_id": "R6G1D-R091-C029"}
+      ],
+      "support_state_sha256": {
+        "R6G1D-R091-C028": "2507efbde9b9e98dccfc9e4cd7bb0eac59a7307b8adcc91955e7a5feb10914ec",
+        "R6G1D-R091-C029": "2507efbde9b9e98dccfc9e4cd7bb0eac59a7307b8adcc91955e7a5feb10914ec"
+      },
+      "t0_boundary_id": "R6BND-T0-3eb57747e6f0a3f3305f",
+      "t0_boundary_length_m": 111194.92664455874,
+      "vector_partition_payload_sha256": "a3768b82598fb13a780c9c363f7031a437f952e75223d4400bfb5909461275ab"
+    },
+    "identity_provenance": "COPIED_FROM_PRIOR_OPERATOR_REPORT_NOT_RECOMPUTED_BY_THIS_RECONCILIATION"
+  },
+  "e1_r1_fair_operator_report": {
+    "commit": "a7b7d4d58d3cc545781778a985529c269a81b9b9",
+    "evidence_directory": "INT10K_E1_R1_TEST_3MXk3VwX",
+    "linux_tests": {"passed": 35, "failed": 0, "skipped": 0},
+    "compile": "PASS_OPERATOR_REPORTED",
+    "checkout_integrity": "PASS_OPERATOR_REPORTED",
+    "log_junit_hash_checks": "PASS_OPERATOR_REPORTED",
+    "windows_import_or_rehash_of_fair_evidence": false
+  },
+  "historical_first_e1_fair_failure": {
+    "evidence_directory": "INT10K_E1_TEST_dMJckvUN",
+    "tests_passed": 24,
+    "tests_failed": 2,
+    "exit_code": 1,
+    "classification": "FAIL_OPERATOR_REPORTED_PRESERVED"
+  },
+  "execution_in_this_reconciliation": {
+    "original_loader_invoked": false,
+    "numerical_reference_run": false,
+    "ten_thousand_year_run": false,
+    "world_history_modified": false
+  },
+  "next_gate": "FAIR_REVERIFY_ORIGINAL_LOADER_AND_INPUTS_THEN_RUN_CORRECTED_COMMIT_TESTS_BEFORE_SEPARATELY_AUTHORIZED_SUPERVISED_3_YEAR_REFERENCE",
+  "gates": {
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "GEODYN_2B_ARCANA_FORWARD_AUTHORIZED": false
+  }
+}

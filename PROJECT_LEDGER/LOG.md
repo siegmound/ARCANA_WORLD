@@ -7,6 +7,13 @@
 
 # Bitacora cronologica — append-only
 
+## 2026-10-29 — R6-INT10K E0/E1 hash reconciliation and E1-R1 FAIR test record
+
+- Independently hashed on Windows the original E0 input triplet and sealed transfer bundle. Bundle SHA256 `fc5cda6e543f5f96673ba71e60c085566659672abff9728eb5ed74c2ab47c8b0`; all three root regular-file tar members are byte-identical to the Windows source files. RESULT, MANIFEST and sidecar SHA256s are `24f492ad9861a25369af42b513eb1a971007ef11571f6dc5ab5140729cc10fd5`, `a1e72a3f541d1c75809cc724c9723332303e90aa775a2c92bc0acc11a240bc21`, and `8eab8b24f21088e3de82254f3d4929c61a7ed8a341593e3a4cbbafcc4bca2ce0`. Manifest references, byte lengths, and sidecar digest text agree.
+- The current E1 CLI pin and checked-in Windows attestations already contain the complete 64-character MANIFEST SHA256. The 52-character value supplied as historical does not occur in current tracked records. Therefore no digest literal change was needed; the source now validates lowercase SHA256 syntax, all three pinned member identities, manifest references/sizes, and sidecar agreement before and after the reference call. Original E0 records and FAIR evidence were not overwritten.
+- E1-R1 Linux 35/35 PASS, compilation PASS, unchanged checkout and FAIR log/JUnit checksum checks are operator-reported for `a7b7d4d58d3cc545781778a985529c269a81b9b9`, evidence `INT10K_E1_R1_TEST_3MXk3VwX`; FAIR files were not imported/rehashed on Windows. The original first-run E1 24 passed/2 failed outcome remains an immutable FAIL at `INT10K_E1_TEST_dMJckvUN`.
+- Windows tests for this reconciliation, E0 loader/input recheck on FAIR and numerical 3-year reference remain distinct gates. No input or numerical evolution executed. Next FAIR step: rerun the original loader and complete E0 identity check, then exact-commit E1 suite; only later consider a separate bounded 3-year authorization. Reports and machine record: `docs/arcana/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.md`, `docs/arcana/qualifications/R6_INT10K_E0_E1_HASH_RECONCILIATION_20261029.json`.
+
 ## 2026-10-28 — R6-INT10K E1 coverage validation correction (Windows local)
 
 - Preserved the first FAIR test outcome as an operator-reported FAIL: evidence `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_E1_TEST_dMJckvUN`, compilation PASS reported, pytest 24 passed / 2 failed, exit 1. Both failures were `test_reference_direct_equals_checkpoint_split` (`[3-1]`, `[10-5]`) with `SHORT_REFERENCE_COVERAGE_INVALID`. Original FAIR files were not transferred or independently rehashed on Windows; the failed attempt was not altered or reclassified.

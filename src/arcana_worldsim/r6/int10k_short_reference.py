@@ -6,7 +6,10 @@ records. This is NOT a streaming runtime or 10,000-year implementation.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import json
 import math
+from pathlib import Path
 from time import perf_counter
 from typing import Any, Mapping
 
@@ -16,6 +19,63 @@ from .regional_geological_evolution import RegionalConfig, run_regional_segment
 
 class ShortReferenceError(ValueError):
     pass
+
+
+_SOURCE_MEMBER_NAMES = ("RESULT.json", "MANIFEST.json", "RESULT.json.sha256")
+
+
+def verify_source_bundle(input_dir: str | Path,
+                         expected_sha256: Mapping[str, str]) -> dict[str, str]:
+    """Verify the pinned E0 triplet and its manifest/sidecar closure, read-only."""
+    if set(expected_sha256) != set(_SOURCE_MEMBER_NAMES):
+        raise ShortReferenceError("SOURCE_HASH_SET_INVALID")
+    for name, digest in expected_sha256.items():
+        if (not isinstance(digest, str) or len(digest) != 64 or
+                any(char not in "0123456789abcdef" for char in digest)):
+            raise ShortReferenceError(f"SOURCE_HASH_MALFORMED:{name}")
+
+    root = Path(input_dir)
+    actual: dict[str, str] = {}
+    for name in _SOURCE_MEMBER_NAMES:
+        path = root / name
+        try:
+            digest = hashlib.sha256()
+            with path.open("rb") as stream:
+                for chunk in iter(lambda: stream.read(1 << 20), b""):
+                    digest.update(chunk)
+        except OSError as exc:
+            raise ShortReferenceError(f"SOURCE_MEMBER_UNAVAILABLE:{name}") from exc
+        actual[name] = digest.hexdigest()
+    if actual != dict(expected_sha256):
+        raise ShortReferenceError("SOURCE_MEMBER_HASH_MISMATCH")
+
+    try:
+        manifest_bytes = (root / "MANIFEST.json").read_bytes()
+        result_bytes = (root / "RESULT.json").read_bytes()
+        sidecar_bytes = (root / "RESULT.json.sha256").read_bytes()
+        manifest = json.loads(manifest_bytes.decode("utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ShortReferenceError("SOURCE_MANIFEST_CLOSURE_INVALID") from exc
+    if (hashlib.sha256(manifest_bytes).hexdigest() != actual["MANIFEST.json"] or
+            hashlib.sha256(result_bytes).hexdigest() != actual["RESULT.json"] or
+            hashlib.sha256(sidecar_bytes).hexdigest() != actual["RESULT.json.sha256"]):
+        raise ShortReferenceError("SOURCE_MEMBER_CHANGED_DURING_VERIFY")
+    result_record = manifest.get("result") if isinstance(manifest, dict) else None
+    sidecar_record = manifest.get("sidecar") if isinstance(manifest, dict) else None
+    expected_result = {
+        "path": "RESULT.json", "sha256": actual["RESULT.json"],
+        "size_bytes": len(result_bytes),
+    }
+    expected_sidecar = {
+        "path": "RESULT.json.sha256", "sha256": actual["RESULT.json.sha256"],
+        "size_bytes": len(sidecar_bytes),
+    }
+    if (not isinstance(manifest, dict) or
+            manifest.get("schema") != "ARCANA_CONSTITUTIVE_MECHANICS_MANIFEST_V1" or
+            result_record != expected_result or sidecar_record != expected_sidecar or
+            sidecar_bytes != f'{actual["RESULT.json"]}  RESULT.json\n'.encode("ascii")):
+        raise ShortReferenceError("SOURCE_MANIFEST_CLOSURE_INVALID")
+    return actual
 
 
 @dataclass(frozen=True)
