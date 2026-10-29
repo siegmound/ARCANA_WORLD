@@ -1,12 +1,15 @@
 # R6-INT10K E2 — Frontier and Historical Stream Contract
 
 **Status:** `CONTRACT_PREPARED__IMPLEMENTATION_AND_RUNTIME_PARITY_PENDING`
+**Scaling policy:** `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`
 **Prepared:** 2026-10-29
 **Reference:** E1 short-reference source commit `5faf619875af86caa2ee824dff4b0a833f4227f1`; reported 3- and 10-year FAIR outcomes were not imported or independently hashed on Windows.
 
 ## 1. Purpose and boundary
 
-E2 separates bounded continuation state from queryable history so retained execution memory does not grow with elapsed history. This is a storage/continuation contract, not a new physical model. Existing kernels, forcing, parameters, annual regional step, unified external timestep, E0 source identity and input bytes remain unchanged. This document prepares design and implementation only; it does not authorize 100-, 1,000- or 10,000-year runs, scientific promotion, or canonical writes.
+E2 separates bounded continuation state from queryable history so retained execution memory need not grow with elapsed history. This is a storage/continuation contract, not a new physical model. Existing kernels, forcing, parameters, annual regional step, unified external timestep, E0 source identity and input bytes remain unchanged. This document prepares design and implementation only; it does not authorize numerical runs, scientific promotion, or canonical writes.
+
+Scaling measurements are observational. E2 code MUST NOT impose arbitrary wall-time, RAM, output-size, checkpoint-size, record-count, or history-truncation caps on benchmarks. It records actual scaling and allows the process to complete naturally unless an actual FAIR administrator, scheduler, OS allocation, or site policy acts. This does not declare unknown allocations unlimited, bypass site rules, or relax fail-closed numerical, integrity, and state invariants. The execution configuration must state `OBSERVE_ONLY` and identify actual environment allocations/policies as known or `UNKNOWN`; legacy budget fields cannot silently imply enforcement or be reused without an explicit mode.
 
 All artifacts remain `NONCANONICAL_SYNTHETIC_ENGINEERING_ONLY`. Hashes establish byte integrity and linkage, not producer authenticity or scientific authority.
 
@@ -29,6 +32,12 @@ Existing histories have live consumers and cannot be discarded until those consu
 ### E1 reference coverage gap
 
 The serialized E1 reference includes the full regional state, unified final state and aggregate domain balances for direct and split paths. It does not serialize unified per-step `steps` or the internal checkpoint/frontier at the split boundary. Therefore the reported endpoint/direct-split PASS is not full-history parity. Before E2 claims full parity, obtain a bounded reference containing those missing objects, or compare against a deterministic rerun with the same source/config/input identity under separate authorization. This is an evidence requirement, not permission for longer runs.
+
+### Required E1 oracle extension
+
+Extend the reference artifact to a versioned oracle bundle without changing E1's numerical configuration or source pins. For each direct and split case, record: exact run/source/config/input identities; all unified step records in execution order; all regional snapshots, annual records, events and per-cell/global balances; final states and cumulative summaries; and the complete restart checkpoint/frontier immediately after year 1 (3-year split) or year 5 (10-year split). Store payloads with explicit schemas, units, sizes and hashes; a compact index may point to immutable payload files. The direct run has no artificial split checkpoint; record that absence explicitly. Verify exact temporal coverage and query results. The checkpoint oracle must be captured from the genuine E1 implementation, not reconstructed from the final state. Keep the original E1 outputs immutable; this is a separate bounded reference capture requiring its own execution authorization if existing FAIR evidence does not already contain these objects.
+
+The E2 comparison consumes this oracle symmetrically for continuous and resumed runs. Compare record types/order/counts, each field with the declared E1 numeric policy where already applicable, exact metadata/event/material IDs, checkpoint restoration inputs, final accumulators, water/solid/geometry/Deep/mechanical balances, and exact-time/range/spatial query responses. A final-state-only digest is insufficient.
 
 ## 3. Logical products and records
 
@@ -53,7 +62,7 @@ Each object binds run/attempt IDs, exact source identity, E0 input identities, c
 
 ### 3.1 Continuation frontier
 
-The frontier contains only data required to continue without hidden reinitialization:
+The frontier contains only data required to continue without hidden reinitialization. “Bounded” means independent of prior history length, not subject to an arbitrary byte limit:
 
 - Run/attempt, source/config/input identities and schema versions.
 - Current time, external-step ordinal, planned-step count and next regional/unified record sequences.
@@ -79,6 +88,10 @@ Preserve all current externally observable records:
 
 Each record carries monotonic sequence, record schema/type, native time and interval, support/cell/material identities, source/config identity and payload SHA256. Coverage metadata must be queryable without loading all record bodies.
 
+The archive is intended to support a reconstructible WorldSim history across geology, hydrology, natural resources, Deep, materials, fauna, flora and later civilizations. These are domain categories for future records, not a claim that current E1/E2 inputs or kernels provide them. Each domain declares spatial/temporal coverage, resolution, units, provenance, authority, and `UNKNOWN`/unavailable fields. No domain is fabricated to fill a gap.
+
+Lossless compression is permitted only when decoding reproduces the exact logical bytes/typed values required by the declared representation. Record both the uncompressed logical payload digest and stored-object digest, codec/version/parameters, and uncompressed/stored byte counts. Lossy compression, silent downsampling, omitted reconstruction state, or implicit interpolation is prohibited. A query must disclose whether data are full-resolution, compressed losslessly, unavailable, or covered only at a coarser declared resolution.
+
 ## 4. Checkpoint and atomic commit
 
 A checkpoint is restorable only when its version is supported, digest verifies, source/config/input/run identities match, dynamic-state invariants pass, and its high-water mark names a complete valid commit-chain prefix. A snapshot is not automatically a restart point.
@@ -103,12 +116,13 @@ archive.coverage() -> Coverage
 archive.query_snapshot(time_year, *, cell_id=None) -> SnapshotResult
 archive.query_records(start_sequence, end_sequence, *, record_type=None) -> Iterator[HistoryRecord]
 archive.query_time_range(start_time, end_time, *, record_type=None) -> Iterator[HistoryRecord]
+archive.query_spatial_time(start_time, end_time, *, support_ids=None, cell_ids=None, domain=None) -> Iterator[HistoryRecord]
 archive.query_events(start_time, end_time, *, material_id=None) -> Iterator[Event]
 archive.audit_integrity() -> IntegrityReport
 archive.load_checkpoint(checkpoint_id, *, expected_source, expected_config) -> ContinuationFrontier
 ```
 
-Regional time is the exact integer year; unified time is its existing numeric value with declared unit. No geological-age conversion is defined. Queries never interpolate/extrapolate and report actual coverage and missing spans. Explicit outcomes include `NOT_ARCHIVED`, `COVERAGE_GAP`, `FIELD_NOT_RECORDED`, `CORRUPT_PAYLOAD`, `INCOMPATIBLE_IDENTITY` and `CHECKPOINT_UNAVAILABLE`.
+Regional time is the exact integer year; unified time is its existing numeric value with declared unit. No geological-age conversion is defined. Spatial queries require stable support/cell/mesh IDs and declared coordinate frames; no remapping is implied. Queries never interpolate/extrapolate and report actual temporal and spatial coverage, resolution, and missing spans. Explicit outcomes include `NOT_ARCHIVED`, `COVERAGE_GAP`, `FIELD_NOT_RECORDED`, `CORRUPT_PAYLOAD`, `INCOMPATIBLE_IDENTITY` and `CHECKPOINT_UNAVAILABLE`.
 
 Replay means rerunning unchanged operators from an eligible checkpoint with exact bound source/config/input identity, then comparing emitted history and frontier. It cannot return archived expected values as computed output. Diagnostic snapshots are not implicitly restartable.
 
@@ -126,7 +140,29 @@ Replay means rerunning unchanged operators from an eligible checkpoint with exac
 
 E1-R2 operator-reported 10-year diagnostics: water balance PASS; maximum absolute solid residual `0.00048828125 kg` within `0.03125 kg`; Deep total residual `0 J`; gross internal transport `38,795,203,049.11111 J`. These observations do not set new tolerances. Detailed 3-year residuals were not supplied.
 
-## 7. Acceptance criteria
+## 7. Scaling observability policy
+
+The benchmark policy is `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`. The harness collects measurements and does not kill, truncate, or reject a run because an internally selected wall-time, RAM, output-byte, checkpoint-size, sample-count or record-count threshold was crossed. Natural completion, a solver/invariant failure, an observed system/site termination, and incomplete telemetry are distinct outcomes. Actual FAIR policy and allocated resources remain binding; absence of a reported quota is `UNKNOWN`, never “unlimited.” Before a future run, read-only preflight records what allocation/scheduler/cgroup/quota information is available and its scope. Do not install monitors or request privileged changes as part of E2.
+
+Telemetry requirements:
+
+| Metric | Collection and interpretation |
+|---|---|
+| Wall time | Monotonic start/end and per-phase durations; report process and internal kernel timings separately. |
+| CPU time | Per-process user/system CPU and process-tree totals where available, keyed by PID plus process start identity; report collection gaps. |
+| RSS/memory | Sample each second by default; save timestamp and process identity for each live process, per-process RSS and sampled summed process-tree RSS/peak. Summed RSS can double-count shared pages and is not unique physical memory. Record OS peak/available memory separately when supported. |
+| Allocated memory | Optional Python `tracemalloc` current/peak and allocator/native-memory counters when available. Identify that NumPy/native allocations may not be visible to `tracemalloc`; record whether telemetry was enabled and its overhead. RSS remains the process observation, not a quota. |
+| Process tree | PID, parent PID, process group/session, start ticks or platform identity, state and exit status. PID reuse must not join unrelated process samples. |
+| I/O and storage | Sample process-tree read/write byte counters when exposed; record bytes/files written by transaction and final output-tree logical bytes. Record allocated filesystem blocks/free space/quota only if the system exposes them and scope is clear. |
+| Checkpoint | Serialize and restore wall durations, payload bytes, component sizes, record high-water mark and hash-verification duration for each checkpoint. No size ceiling is imposed by this contract. |
+| History/throughput | Per transaction and total counts of records, events, snapshots and years; bytes/sec, records/sec, events/sec, snapshots/sec, simulated years/sec, wall seconds per simulated year, and mean/median step cost. Preserve exact observed sample interval and missing-sample count. |
+| Telemetry overhead | Record sampling cadence (initial default 1 s), monitoring thread/process CPU and bytes if measurable, and any dropped/error samples. Keep data collection lightweight; compare instrumented overhead in a bounded diagnostic check before interpreting small timing differences. |
+
+Resource snapshots are observational, not active limits. A sampling error does not stop healthy numerical computation by an invented resource threshold, but the run's resource report becomes `OBSERVABILITY_INCOMPLETE` and cannot claim complete telemetry. A real scheduler/OS termination leaves an incomplete run with partial committed evidence preserved; no final-complete marker is written. Conservation, non-finite values, identity mismatch, data corruption and violated state invariants remain fail-closed regardless of resource policy.
+
+Progression after archive and short-parity qualification is a sequence of separately reviewed measurements at 100, 1,000 and 10,000 years. At each scale, record actual resources and integrity; do not extrapolate completion, memory, output size, or scientific validity from the preceding scale. No such execution is part of this document task.
+
+## 8. Acceptance criteria
 
 No criterion here is claimed passed.
 
@@ -135,12 +171,12 @@ No criterion here is claimed passed.
 3. Query every regional year including 0, material provenance chain, unified elapsed step/Deep inventory and balance; compare to reference. Missing times and gaps return explicit statuses.
 4. Fault-inject interruption during chunk write, after chunk/checkpoint, during commit publication, and after commit before index refresh; corrupt/remove/truncate/reorder/duplicate objects. Only the last valid committed prefix is visible or resumable.
 5. Reject changed E0/source/config/run identity, unsupported schema, frontier/high-water mismatch and resume from diagnostic-only snapshots. Keep historical E1 outputs readable.
-6. Demonstrate frontier/checkpoint serialized size independent of history length up to bounded accumulators and stream/query history without loading every body into RAM. This does not imply a hard OS resource quota.
+6. Demonstrate frontier/checkpoint serialized size independent of history length up to bounded accumulators and stream/query history without loading every body into RAM. Record actual growth rather than enforcing an arbitrary resource ceiling.
 7. Verify manifest inventory, byte counts, SHA256, coverage, counts and provenance; preserve E1 evidence unchanged.
 
 Full-history parity is blocked until unified-step and split-checkpoint reference objects are preserved or regenerated under the same identity with separate bounded-run authorization.
 
-## 8. Incremental roadmap
+## 9. Incremental roadmap
 
 - **E2-A — this document:** source consumer audit and contract. Prepared; no code or simulation.
 - **E2-B:** bounded typed frontier v2, canonical identity and versioned checkpoint serializer; fail-closed restore tests.
@@ -148,11 +184,11 @@ Full-history parity is blocked until unified-step and split-checkpoint reference
 - **E2-D:** stream unified step records and add online accumulators cross-checked against legacy summaries.
 - **E2-E:** transaction/commit chain, atomic visibility, recovery and corruption fault injection.
 - **E2-F:** join regional and unified streams under one run/source/config commit.
-- **E2-G:** separately authorized 3/10-year parity and resource measurement. No 100/1,000/10,000-year run in this phase.
+- **E2-G:** separately authorized 3/10-year parity and resource measurement. After qualification, plan and review distinct 100-, 1,000- and 10,000-year observe-only measurements; no automatic extrapolation or execution authorization.
 
 Reuse R6 source/config identity and canonicalization primitives, Segment Archive V1 patterns when compatible, and existing query/error semantics. Do not create a second canonical `HistoryStore`, weaken checkpoint validation, or rewrite historical evidence.
 
-## 9. Decision and gates
+## 10. Decision and gates
 
 E1-R2 results are operator-reported at exact source commit `5faf619875af86caa2ee824dff4b0a833f4227f1`: 45/45 Linux regressions, E0 loader/input/source identity, and 3-/10-year references PASS. FAIR artifacts were not imported or independently hashed on Windows. The earlier E1 24-pass/2-fail attempt and prior R1 results remain unchanged. E2 is a contract only: no streaming implementation or numerical evolution was performed for it.
 

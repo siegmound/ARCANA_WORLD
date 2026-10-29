@@ -6,6 +6,8 @@ E0 original Windows bundle `F:/corsiiiuu/Magistrale/Arcana/INT10K_E0_WINDOWS_TRA
 
 # CURRENT — INT10K E1-R2 bounded FAIR references (operator-reported, 2026-10-29)
 
+E2 contract update 2026-10-29: `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS` and expanded WorldSim history/query/oracle requirements are documented in `docs/arcana/R6_INT10K_E2_FRONTIER_HISTORY_STREAMING_CONTRACT.md`. No new numerical run or evidence bundle was created. The prior E1-R2 evidence remains operator-reported and FAIR files remain unavailable for independent Windows rehash.
+
 - Tested source: `5faf619875af86caa2ee824dff4b0a833f4227f1`.
 - E1-R2 Linux regression suite: 45/45 PASS; E0 loader/input/source identity PASS (operator-reported). E1-R2 test evidence locator and log digest were not supplied.
 - 3-year split 1+2: PASS, natural `FINAL_EXIT=0`, evidence `INT10K_E1_ORIGINAL_3Y_tSMeQrAp`; output 407,197 bytes, RSS 47,239,168 bytes, internal wall 0.0927017 s. Detailed 3-year balance values and manifest SHA256 not supplied.
