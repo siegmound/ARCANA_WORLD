@@ -1,3 +1,9 @@
+# CURRENT — R6-INT10K E2-A1 complete in Windows engineering scope (2026-10-29)
+
+`FULL_HISTORY_ORACLE_V1` now preserves the raw direct result, actual split-prefix result and checkpoint, and resumed full result for 3y 1+2 and 10y 5+5. Windows combined tests passed 60/60 and both local bundles passed manifest/hash/oracle verification. This is a full-history reference and adversarial test gate only; it is not a streaming archive, bounded frontier, transaction chain, Linux/FAIR qualification, or E1 serialized-byte comparison. Next exact-commit Linux validation, then E2-B checkpoint/frontier and E2-C+ history writer/query/transaction stages. The progression to 100/1,000/10,000 years remains future, separately reviewed and not authorized. Full report: `docs/arcana/R6_INT10K_E2_A1_FULL_HISTORY_ORACLE_IMPLEMENTATION.md`. Preserve `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`; all scientific and canonical gates remain closed.
+
+---
+
 # CURRENT — R6-INT10K E1-R2 short references reported PASS; E2 streaming contract prepared (2026-10-29)
 
 At exact source `5faf619875af86caa2ee824dff4b0a833f4227f1`, E1-R2 test/input and 3-/10-year outcomes are operator-reported PASS; FAIR evidence has not been imported/rehashed on Windows. E2 adopts `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`: telemetry observes actual wall/CPU, process-tree memory/I/O, storage, checkpoint cost and history throughput; code does not impose arbitrary benchmark budgets. Actual FAIR allocation/site policy remains binding and unknown quotas remain UNKNOWN. Before parity claims, extend the E1 oracle with all unified steps and true split checkpoints. After qualification, sequence separate 100 → 1,000 → 10,000-year measurements, each reviewed on observed resource and integrity results; no extrapolation or run is authorized here. No scientific qualification follows. See `docs/arcana/R6_INT10K_E2_FRONTIER_HISTORY_STREAMING_CONTRACT.md`.

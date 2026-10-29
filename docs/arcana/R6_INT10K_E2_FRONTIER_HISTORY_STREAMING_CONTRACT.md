@@ -1,6 +1,6 @@
 # R6-INT10K E2 — Frontier and Historical Stream Contract
 
-**Status:** `CONTRACT_PREPARED__IMPLEMENTATION_AND_RUNTIME_PARITY_PENDING`
+**Status:** `E2_A1_FULL_HISTORY_ORACLE_WINDOWS_PASS__STREAMING_AND_LINUX_FAIR_PENDING`
 **Scaling policy:** `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`
 **Prepared:** 2026-10-29
 **Reference:** E1 short-reference source commit `5faf619875af86caa2ee824dff4b0a833f4227f1`; reported 3- and 10-year FAIR outcomes were not imported or independently hashed on Windows.
@@ -199,3 +199,19 @@ Next: close the reference-coverage gap, then implement E2-B onward in bounded st
 `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`
 
 `INT10K_LONG_RUN_AUTHORIZED=false`
+
+## 11. E2-A1 full-history oracle implementation addendum (2026-10-29)
+
+The separate `FULL_HISTORY_ORACLE_V1` implementation is recorded in
+`docs/arcana/R6_INT10K_E2_A1_FULL_HISTORY_ORACLE_IMPLEMENTATION.md`. It captures
+the complete raw direct result, actual split-prefix result/checkpoint, and
+resumed full result from existing regional/unified operators. Its local 3-year
+1+2 and 10-year 5+5 captures passed full direct/resumed comparison and manifest
+verification on Python 3.12.10 / NumPy 2.5.1; FAIR E1 used reported NumPy 2.3.5,
+and its serialized result was not imported for byte comparison. The oracle is
+still an in-memory reference with duplicated histories: it is not an E2
+streaming archive, bounded continuation frontier, or Linux-qualified runtime.
+The synthetic adversarial and pertinent regressions passed locally. The exact
+implementation commit still requires Linux qualification. E2-B through E2-G
+and all resource progression gates remain pending; no long-run authorization
+or scientific/canonical promotion follows.
