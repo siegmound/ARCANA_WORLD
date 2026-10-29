@@ -200,6 +200,38 @@ Next: close the reference-coverage gap, then implement E2-B onward in bounded st
 
 `INT10K_LONG_RUN_AUTHORIZED=false`
 
+## 13. E2-B2 history-independent continuation implementation status (2026-10-29)
+
+The local Windows implementation and 3Y 1+2 / 10Y 5+5 tests are recorded in
+`R6_INT10K_E2_B2_HISTORY_INDEPENDENT_CONTINUATION.md`. The HI checkpoint path
+contains no regional `records`, `snapshots`, routing/initial event lists or
+unified step `records`; it carries a versioned current-state frontier, source
+and configuration identity, ordinals/high-water mark, and cumulative
+accumulators. The engine resumed each split run without receiving the prior
+history collector/prefix. The separate consumer captured new records; joined
+direct/split histories, dynamic checkpoints, balances, events and queryable
+rows matched the preserved local E2-A1 oracle under the existing E1 tolerance
+policy. The E0 source triplet was rechecked before and after each run.
+
+Windows Python 3.12.10 / NumPy 2.5.1 focused regression: 67 passed, no skips.
+The final recapture under `INT10K_E2_B2_WINDOWS_20261029_06` has 3Y manifest
+SHA256 `a24f46d051f2dea81f49183ed320f920c7d815ac68f9613542b5e4248df26fb4` and
+10Y manifest SHA256
+`e58e774623b3b0e53d488f36eb8667b7dfc074dd45c03f7222778308e7c59870`. Every
+listed member was independently rehashed and length-checked locally. Earlier
+`_01`–`_05` captures remain preserved; `_06` followed event-stream
+reconciliation.
+These local checks do not qualify Linux/FAIR behavior. The current invocation
+still returns the rows it creates for compatibility, and the qualification
+collector is in memory before preservation in test evidence. No durable
+append-only writer, transaction chain, crash recovery or indexed on-disk query
+is implemented. Dynamic stratigraphic deposits can grow with actual state; the
+measured frontier sizes are recorded, without claiming duration-independent
+total size or imposing any size/resource cap. E2-B2 local pass is not E2
+streaming qualification. E2-C through E2-F remain pending, as do all 100Y,
+1,000Y and 10,000Y progression gates. Scientific, canonical and long-run
+authorizations remain false.
+
 ## 11. E2-A1 full-history oracle implementation addendum (2026-10-29)
 
 The separate `FULL_HISTORY_ORACLE_V1` implementation is recorded in

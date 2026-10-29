@@ -10,7 +10,7 @@ from dataclasses import asdict, dataclass
 import hashlib
 import json
 import math
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from .constitutive_mechanics_microdomain import solve_layered_interface_increment
 from .deep_geological_physics_pilot import (
@@ -109,24 +109,92 @@ def _canonical_sha(value: Any) -> str:
 
 
 CHECKPOINT_SCHEMA = "ARCANA_R6_UNIFIED_MULTIPHYSICS_CHECKPOINT_V1"
+CHECKPOINT_SCHEMA_HISTORY_INDEPENDENT = "ARCANA_R6_UNIFIED_MULTIPHYSICS_CHECKPOINT_V2"
+
+
+def _empty_history_accumulators(initial_deep: tuple[float, ...] | list[float]) -> dict[str, Any]:
+    return {
+        "material_flows": {
+            "bedrock_detachment_kg_by_material_id": {},
+            "outlet_export_kg_by_material_id": {},
+            "deposition_kg_by_material_id": {},
+            "internal_transfer_kg_by_material_id": {},
+            "mobile_cover_erosion_kg_by_material_id": {},
+        },
+        "mechanical": {"external_work_j": 0.0, "viscous_dissipation_j": 0.0,
+                       "algorithmic_energy_increment_j": 0.0},
+        "deep": {"gross_internal_transport_j": 0.0, "net_transport_0_to_1_j": 0.0,
+                 "minimum_reservoir_stock_j": min(float(x) for x in initial_deep)},
+    }
+
+
+def _accumulate_history_record(accumulators: dict[str, Any], row: Mapping[str, Any]) -> None:
+    flows = row.get("material_flows", {})
+    for name in accumulators["material_flows"]:
+        target = accumulators["material_flows"][name]
+        for material_id, value in flows.get(name, {}).items():
+            target[material_id] = target.get(material_id, 0.0) + float(value)
+    mechanics = row["mechanics"]
+    for source, target in (("external_work_increment_j", "external_work_j"),
+                           ("viscous_dissipation_increment_j", "viscous_dissipation_j"),
+                           ("algorithmic_energy_increment_j", "algorithmic_energy_increment_j")):
+        accumulators["mechanical"][target] += float(mechanics[source])
+    deep = row["deep"]
+    transport = float(deep.get("transport_flux_0_to_1_j", 0.0))
+    accumulators["deep"]["gross_internal_transport_j"] += abs(transport)
+    accumulators["deep"]["net_transport_0_to_1_j"] += transport
+    stocks = deep.get("inventory_j_by_material_volume", {}).values()
+    if stocks:
+        accumulators["deep"]["minimum_reservoir_stock_j"] = min(
+            accumulators["deep"]["minimum_reservoir_stock_j"],
+            *(float(value) for value in stocks))
+
+
+def _validate_history_accumulators(value: Any) -> None:
+    expected = {
+        "material_flows": {"bedrock_detachment_kg_by_material_id", "outlet_export_kg_by_material_id",
+                           "deposition_kg_by_material_id", "internal_transfer_kg_by_material_id",
+                           "mobile_cover_erosion_kg_by_material_id"},
+        "mechanical": {"external_work_j", "viscous_dissipation_j", "algorithmic_energy_increment_j"},
+        "deep": {"gross_internal_transport_j", "net_transport_0_to_1_j", "minimum_reservoir_stock_j"},
+    }
+    if not isinstance(value, Mapping) or set(value) != set(expected):
+        raise SurfaceMicrodomainError("UNIFIED_FRONTIER_ACCUMULATORS_INVALID")
+    for group, keys in expected.items():
+        row = value[group]
+        if not isinstance(row, Mapping) or set(row) != keys:
+            raise SurfaceMicrodomainError("UNIFIED_FRONTIER_ACCUMULATORS_INVALID")
+        for item in row.values():
+            values = item.values() if isinstance(item, Mapping) else (item,)
+            for number in values:
+                if (not isinstance(number, (int, float)) or isinstance(number, bool)
+                        or not math.isfinite(float(number))):
+                    raise SurfaceMicrodomainError("UNIFIED_FRONTIER_ACCUMULATORS_NONFINITE")
 
 
 def seal_unified_checkpoint(state: Mapping[str, Any]) -> dict[str, Any]:
     """Add corruption detection to a portable JSON checkpoint (not authentication)."""
     body = json.loads(json.dumps(state, sort_keys=True, separators=(",", ":"), allow_nan=False))
-    envelope = {"schema": CHECKPOINT_SCHEMA, "state": body}
+    schema = (CHECKPOINT_SCHEMA_HISTORY_INDEPENDENT
+              if body.get("history_independent_continuation") is True else CHECKPOINT_SCHEMA)
+    envelope = {"schema": schema, "state": body}
     envelope["state_sha256"] = _canonical_sha(envelope)
     return envelope
 
 
 def verify_unified_checkpoint(checkpoint: Mapping[str, Any]) -> dict[str, Any]:
-    if checkpoint.get("schema") != CHECKPOINT_SCHEMA or not isinstance(checkpoint.get("state"), Mapping):
+    if checkpoint.get("schema") not in {CHECKPOINT_SCHEMA, CHECKPOINT_SCHEMA_HISTORY_INDEPENDENT} or not isinstance(checkpoint.get("state"), Mapping):
         raise SurfaceMicrodomainError("UNIFIED_CHECKPOINT_SCHEMA_INVALID")
     expected = checkpoint.get("state_sha256")
     unsigned = {"schema": checkpoint["schema"], "state": checkpoint["state"]}
     if not isinstance(expected, str) or _canonical_sha(unsigned) != expected:
         raise SurfaceMicrodomainError("UNIFIED_CHECKPOINT_DIGEST_MISMATCH")
-    return json.loads(json.dumps(checkpoint["state"], sort_keys=True, allow_nan=False))
+    state = json.loads(json.dumps(checkpoint["state"], sort_keys=True, allow_nan=False))
+    if checkpoint["schema"] == CHECKPOINT_SCHEMA_HISTORY_INDEPENDENT:
+        if state.get("history_independent_continuation") is not True or "records" in state:
+            raise SurfaceMicrodomainError("UNIFIED_FRONTIER_HISTORY_INVALID")
+        _validate_history_accumulators(state.get("history_accumulators"))
+    return state
 
 
 def serialize_unified_checkpoint(checkpoint: Mapping[str, Any]) -> bytes:
@@ -248,8 +316,12 @@ def run_unified_microdomain(
     uplift_scale: float = 1.0,
     checkpoint: Mapping[str, Any] | None = None,
     segment_years: float | None = None,
+    history_independent_continuation: bool = False,
+    history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     """Advance all included domains on one external clock and report each handoff."""
+    if history_independent_continuation and history_consumer is None:
+        raise SurfaceMicrodomainError("UNIFIED_HISTORY_CONSUMER_REQUIRED")
     planned_steps = config.validate()
     if set(initial_states_by_support) != set(SUPPORTS):
         raise SurfaceMicrodomainError("UNIFIED_SUPPORT_SET_MISMATCH")
@@ -341,6 +413,7 @@ def run_unified_microdomain(
         total_substrate_erosion = 0.0
         water_roundoff_tolerance = sediment_roundoff_tolerance = geometry_roundoff_tolerance = 0.0
         records: list[dict[str, Any]] = []
+        history_accumulators = _empty_history_accumulators(deep_stocks)
     else:
         saved = verify_unified_checkpoint(checkpoint)
         if (saved.get("run_identity_sha256") != identity_sha
@@ -379,7 +452,22 @@ def run_unified_microdomain(
         water_roundoff_tolerance, sediment_roundoff_tolerance = (
             float(saved["water_roundoff_tolerance_m3"]), float(saved["sediment_roundoff_tolerance_kg"]))
         geometry_roundoff_tolerance = float(saved["geometry_roundoff_tolerance_m3"])
-        records = list(saved["records"])
+        is_history_free = saved.get("history_independent_continuation") is True
+        if history_independent_continuation and not is_history_free:
+            raise SurfaceMicrodomainError("UNIFIED_HISTORY_INDEPENDENT_FRONTIER_REQUIRED")
+        if is_history_free:
+            if "records" in saved or not isinstance(saved.get("history_accumulators"), Mapping):
+                raise SurfaceMicrodomainError("UNIFIED_FRONTIER_HISTORY_OR_ACCUMULATORS_INVALID")
+            records = []
+            history_accumulators = json.loads(json.dumps(saved["history_accumulators"], allow_nan=False))
+        else:
+            records = list(saved["records"])
+            history_accumulators = json.loads(json.dumps(
+                saved.get("history_accumulators", _empty_history_accumulators(config.deep_initial_inventory_j_by_support)),
+                allow_nan=False))
+            if "history_accumulators" not in saved:
+                for old_record in records:
+                    _accumulate_history_record(history_accumulators, old_record)
         if offset + run_steps > planned_steps:
             raise SurfaceMicrodomainError("UNIFIED_CHECKPOINT_EXCEEDS_PLANNED_DURATION")
 
@@ -519,7 +607,7 @@ def run_unified_microdomain(
                 "thermal_energy_transfer_j": 0.0, "mechanical_work_transfer_j": 0.0,
             }
         surface_state = hydrology
-        records.append({
+        record = {
             "step": step_index + 1,
             "time_start_s": t0,
             "time_end_s": next(iter(states.values())).time_s,
@@ -591,7 +679,11 @@ def run_unified_microdomain(
                 "lithification": "NOT_MODELED",
             },
             "deep": deep_ledger,
-        })
+        }
+        _accumulate_history_record(history_accumulators, record)
+        records.append(record)
+        if history_consumer is not None:
+            history_consumer("UNIFIED_STEP", record)
 
     final_states = {support: state.payload() for support, state in states.items()}
     final_surface = {cell["support_id"]: cell for cell in surface_state["cells"]}
@@ -617,23 +709,12 @@ def run_unified_microdomain(
         * initial_geometry[support][2] for i, support in enumerate(SUPPORTS))
     sediment_export_volume = total_sediment["outlet_sediment_export_kg"] / config.sediment_density_kg_m3
     final_suspension_volume = final_suspended / config.sediment_density_kg_m3
-    eroded_by_material: dict[str, float] = {}
-    exported_by_material: dict[str, float] = {}
-    deposited_by_material: dict[str, float] = {}
-    internal_by_material: dict[str, float] = {}
-    mobile_erosion_by_material: dict[str, float] = {}
-    for row in records:
-        flows = row.get("material_flows", {})
-        for key, value in flows.get("bedrock_detachment_kg_by_material_id", {}).items():
-            eroded_by_material[key] = eroded_by_material.get(key, 0.0) + float(value)
-        for key, value in flows.get("outlet_export_kg_by_material_id", {}).items():
-            exported_by_material[key] = exported_by_material.get(key, 0.0) + float(value)
-        for key, value in flows.get("deposition_kg_by_material_id", {}).items():
-            deposited_by_material[key] = deposited_by_material.get(key, 0.0) + float(value)
-        for key, value in flows.get("internal_transfer_kg_by_material_id", {}).items():
-            internal_by_material[key] = internal_by_material.get(key, 0.0) + float(value)
-        for key, value in flows.get("mobile_cover_erosion_kg_by_material_id", {}).items():
-            mobile_erosion_by_material[key] = mobile_erosion_by_material.get(key, 0.0) + float(value)
+    flow_accumulators = history_accumulators["material_flows"]
+    eroded_by_material = flow_accumulators["bedrock_detachment_kg_by_material_id"]
+    exported_by_material = flow_accumulators["outlet_export_kg_by_material_id"]
+    deposited_by_material = flow_accumulators["deposition_kg_by_material_id"]
+    internal_by_material = flow_accumulators["internal_transfer_kg_by_material_id"]
+    mobile_erosion_by_material = flow_accumulators["mobile_cover_erosion_kg_by_material_id"]
     substrate_bulk_expansion = sum(
         eroded_by_material.get(config.substrate_material_id_by_support[i], 0.0)
         * (1.0 / config.sediment_density_kg_m3 - 1.0 / config.substrate_density_kg_m3_by_support[i])
@@ -641,10 +722,10 @@ def run_unified_microdomain(
     geometry_residual = (final_surface_volume - initial_surface_volume - prescribed_uplift_volume
                          + sediment_export_volume + final_suspension_volume - substrate_bulk_expansion)
     deep_residual = sum(deep_stocks) - initial_deep
-    mechanical_work = sum(row["mechanics"]["external_work_increment_j"] for row in records)
-    mechanical_stored = records[-1]["mechanics"]["stored_energy_j"] if records else 0.0
-    mechanical_viscous = sum(row["mechanics"]["viscous_dissipation_increment_j"] for row in records)
-    mechanical_algorithmic = sum(row["mechanics"]["algorithmic_energy_increment_j"] for row in records)
+    mechanical_work = history_accumulators["mechanical"]["external_work_j"]
+    mechanical_stored = previous_energy
+    mechanical_viscous = history_accumulators["mechanical"]["viscous_dissipation_j"]
+    mechanical_algorithmic = history_accumulators["mechanical"]["algorithmic_energy_increment_j"]
     mechanical_energy_residual = (mechanical_work - mechanical_stored
                                   - mechanical_viscous - mechanical_algorithmic)
     substrate_roundoff_tolerance = max(1e-6, 256.0 * math.ulp(max(initial_substrate_mass, 1.0)))
@@ -698,8 +779,12 @@ def run_unified_microdomain(
         "water_roundoff_tolerance_m3": water_roundoff_tolerance,
         "sediment_roundoff_tolerance_kg": sediment_roundoff_tolerance,
         "geometry_roundoff_tolerance_m3": geometry_roundoff_tolerance,
-        "records": records,
     }
+    if history_independent_continuation:
+        checkpoint_state["history_independent_continuation"] = True
+        checkpoint_state["history_accumulators"] = history_accumulators
+    else:
+        checkpoint_state["records"] = records
     checkpoint_result = seal_unified_checkpoint(checkpoint_state)
     return {
         "schema": "ARCANA_R6_UNIFIED_MULTIPHYSICS_MICRODOMAIN_V1",
@@ -780,6 +865,9 @@ def run_unified_microdomain(
             "material_inventory_by_support": initial_material_inventory,
         },
         "steps": records,
+        **({"history_output_coverage": {
+            "mode": "EXTERNAL_CONSUMER", "step_ordinals": [row["step"] for row in records],
+        }} if history_independent_continuation else {}),
         "final": {
             "time_s_by_support": {support: state.time_s for support, state in states.items()},
             "thermal_states": final_states,
@@ -828,14 +916,9 @@ def run_unified_microdomain(
                          "roundoff_tolerance_m3": geometry_roundoff_tolerance},
             "deep": {"initial_inventory_j": initial_deep,
                      "final_inventory_j": sum(deep_stocks), "residual_j": deep_residual,
-                      "gross_internal_transport_j": sum(
-                          abs(float(row["deep"].get("transport_flux_0_to_1_j", 0.0))) for row in records),
-                      "net_transport_0_to_1_j": sum(
-                          float(row["deep"].get("transport_flux_0_to_1_j", 0.0)) for row in records),
-                      "minimum_reservoir_stock_j": min(
-                          [min(config.deep_initial_inventory_j_by_support)]
-                          + [min(row["deep"]["inventory_j_by_material_volume"].values())
-                             for row in records]),
+                      "gross_internal_transport_j": history_accumulators["deep"]["gross_internal_transport_j"],
+                      "net_transport_0_to_1_j": history_accumulators["deep"]["net_transport_0_to_1_j"],
+                      "minimum_reservoir_stock_j": history_accumulators["deep"]["minimum_reservoir_stock_j"],
                      "source_j": 0.0, "loss_j": 0.0,
                      "thermal_transfer_j": 0.0, "mechanical_work_transfer_j": 0.0},
             "mechanical": {
@@ -867,6 +950,8 @@ def continue_unified_microdomain(
     deep_mode: str = "ACTIVE_SYNTHETIC_TRANSPORT",
     precipitation_m_year_by_support: tuple[float, float] | None = None,
     uplift_scale: float = 1.0,
+    history_independent_continuation: bool = False,
+    history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     """Continue a sealed noncanonical checkpoint under its original run identity."""
     state = verify_unified_checkpoint(checkpoint)
@@ -875,7 +960,9 @@ def continue_unified_microdomain(
     return run_unified_microdomain(
         unified_states_from_checkpoint(checkpoint), source_identity, config=config,
         deep_mode=deep_mode, precipitation_m_year_by_support=precipitation_m_year_by_support,
-        uplift_scale=uplift_scale, checkpoint=checkpoint, segment_years=segment_years)
+        uplift_scale=uplift_scale, checkpoint=checkpoint, segment_years=segment_years,
+        history_independent_continuation=history_independent_continuation,
+        history_consumer=history_consumer)
 
 
 def run_experiment_matrix(

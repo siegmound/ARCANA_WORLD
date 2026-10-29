@@ -1,6 +1,12 @@
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
-# CURRENT — E2-A1 FAIR qualification reported; E2-B frontier projection locally partial (2026-10-29)
+# CURRENT — INT10K E2-B2 local history-independent continuation PASS; FAIR pending (2026-10-29)
+
+Windows Python 3.12.10 / NumPy 2.5.1: 67 focused E2-B2/E2-B/E2-A1/E1/regional/unified tests passed. The 3Y 1+2 and 10Y 5+5 HI resumes did not receive the prior history prefix; full histories, checkpoint dynamic state, balances and queries match the local E2-A1 oracle. E0 hashes passed before/after. Final local evidence is `_06` under `INT10K_E2_B2_WINDOWS_20261029_06`; manifest SHA256 3Y `a24f46d051f2dea81f49183ed320f920c7d815ac68f9613542b5e4248df26fb4`, 10Y `e58e774623b3b0e53d488f36eb8667b7dfc074dd45c03f7222778308e7c59870`. Worktree-based run started at `4910c2c4e4b1a00f2999b95937f07cea233a006c`; it is not a committed or Linux qualification. No durable append-only history, transaction/recovery chain, indexed on-disk query, or all-duration constant-size claim. Next exact-commit Linux qualification, then separate E2-C/D/E/F gates. No 100/1,000/10,000-year run. See `docs/arcana/R6_INT10K_E2_B2_HISTORY_INDEPENDENT_CONTINUATION.md`; all science/canonical gates remain false.
+
+---
+
+# PREVIOUS CURRENT — E2-A1 FAIR qualification reported; E2-B frontier projection locally partial (2026-10-29)
 
 Operator reports E2-A1 exact-commit FAIR qualification on `57768923a4a8478381d9153c6f910fba811613d2`: Linux 60/60, 3Y/10Y oracle and manifest hashes recorded in `docs/arcana/R6_INT10K_E2_A1_FULL_HISTORY_ORACLE_IMPLEMENTATION.md`; original FAIR files are not locally imported or independently rehashed. E2-B now serializes history-free frontier/checkpoint envelopes and restores against separately supplied history, with local 3Y/10Y reference parity. Existing continuation still requires full prior history; E2-B, append-only transactions and streaming are not qualified. See `docs/arcana/R6_INT10K_E2_B_FRONTIER_CHECKPOINT_IMPLEMENTATION.md`. Next exact-commit Linux qualification and resolve the legacy-history dependency. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; `INT10K_LONG_RUN_AUTHORIZED=false`.
 

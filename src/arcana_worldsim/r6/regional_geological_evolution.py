@@ -10,12 +10,13 @@ from dataclasses import asdict, dataclass, replace
 import hashlib
 import json
 import math
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from .geological_surface_microdomain import SUPPORTS
 
 
 SCHEMA = "ARCANA_R6_REGIONAL_GEOLOGICAL_STATE_V2"
+FRONTIER_CHECKPOINT_SCHEMA = "ARCANA_R6_REGIONAL_FRONTIER_CHECKPOINT_V1"
 GRAVITY_M_S2 = 9.80665
 
 
@@ -356,7 +357,8 @@ def _routing_order(targets: Mapping[str, int | None]) -> list[int]:
 
 def advance_region(state: Mapping[str, Any], *, years: int,
                    config: RegionalConfig | None = None,
-                   precipitation_m_year_by_cell: list[float] | None = None) -> dict[str, Any]:
+                   precipitation_m_year_by_cell: list[float] | None = None,
+                   history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None) -> dict[str, Any]:
     """Advance annual routing; material flows are mass-conservative and ID preserving."""
     cfg = config or RegionalConfig(**state["config"])
     cfg.validate()
@@ -370,6 +372,10 @@ def advance_region(state: Mapping[str, Any], *, years: int,
         raise RegionalModelError("PRECIPITATION_VECTOR_INVALID")
     out = json.loads(_canonical(dict(state)))
     cells = out["cells"]
+    out.setdefault("records", [])
+    out.setdefault("snapshots", [])
+    out.setdefault("routing_events", [])
+    out.setdefault("initial_condition_events", [])
     all_events = []
     for _ in range(years):
         year = out["time_years"] + 1
@@ -396,6 +402,8 @@ def advance_region(state: Mapping[str, Any], *, years: int,
                 "updated_targets": dict(out["drainage_targets"]),
                 "cause": "TOPOGRAPHY_UPDATED_OR_REEVALUATED"}
             out["routing_events"].append(route_event)
+            if history_consumer is not None:
+                history_consumer("REGIONAL_EVENT", route_event)
         step_elevation = [float(cell["elevation_m"]) for cell in cells]
         water_before = sum(c["water_storage_m3"] for c in cells)
         water_in = et_total = infiltration_total = water_export = 0.0
@@ -626,25 +634,49 @@ def advance_region(state: Mapping[str, Any], *, years: int,
         all_events.extend(year_events)
         out["records"].append(record)
         out["time_years"] = year
-        out["snapshots"].append({"time_year": year, "cells": json.loads(_canonical(cells))})
+        snapshot = {"time_year": year, "cells": json.loads(_canonical(cells))}
+        out["snapshots"].append(snapshot)
+        if history_consumer is not None:
+            history_consumer("REGIONAL_YEAR_RECORD", record)
+            for event in year_events:
+                if event is not route_event:
+                    history_consumer("REGIONAL_EVENT", event)
+            history_consumer("REGIONAL_SNAPSHOT", snapshot)
     return out
 
 
 def seal_regional_checkpoint(state: Mapping[str, Any], *, unified_checkpoint: Mapping[str, Any] | None = None) -> dict[str, Any]:
-    payload = {"schema": SCHEMA, "regional_state": dict(state),
+    schema = FRONTIER_CHECKPOINT_SCHEMA if state.get("history_independent_continuation") is True else SCHEMA
+    payload = {"schema": schema, "regional_state": dict(state),
                "unified_checkpoint": dict(unified_checkpoint) if unified_checkpoint else None}
     return {**payload, "checkpoint_sha256": _sha(payload)}
 
 
 def verify_regional_checkpoint(checkpoint: Mapping[str, Any]) -> dict[str, Any]:
     payload = {k: v for k, v in checkpoint.items() if k != "checkpoint_sha256"}
-    if checkpoint.get("schema") != SCHEMA or checkpoint.get("checkpoint_sha256") != _sha(payload):
+    schema = checkpoint.get("schema")
+    if schema not in {SCHEMA, FRONTIER_CHECKPOINT_SCHEMA} or checkpoint.get("checkpoint_sha256") != _sha(payload):
         raise RegionalModelError("CHECKPOINT_DIGEST_OR_SCHEMA_INVALID")
     state = checkpoint.get("regional_state")
     if not isinstance(state, dict) or state.get("schema") != SCHEMA:
         raise RegionalModelError("CHECKPOINT_REGION_INVALID")
     if state.get("source_identity_sha256") != _sha(state.get("source_identity")):
         raise RegionalModelError("CHECKPOINT_SOURCE_BINDING_INVALID")
+    if schema == FRONTIER_CHECKPOINT_SCHEMA:
+        if state.get("history_independent_continuation") is not True:
+            raise RegionalModelError("CHECKPOINT_FRONTIER_MODE_INVALID")
+        if {"records", "snapshots", "routing_events", "initial_condition_events"}.intersection(state):
+            raise RegionalModelError("CHECKPOINT_FRONTIER_CONTAINS_HISTORY")
+        unified_cp = checkpoint.get("unified_checkpoint")
+        if not isinstance(unified_cp, Mapping) or unified_cp.get("schema") != "ARCANA_R6_UNIFIED_MULTIPHYSICS_CHECKPOINT_V2":
+            raise RegionalModelError("CHECKPOINT_UNIFIED_FRONTIER_REQUIRED")
+        try:
+            from .unified_multiphysics_microdomain import verify_unified_checkpoint
+            unified_state = verify_unified_checkpoint(unified_cp)
+        except (ValueError, TypeError, KeyError) as exc:
+            raise RegionalModelError("CHECKPOINT_UNIFIED_FRONTIER_INVALID") from exc
+        if unified_state.get("elapsed_external_steps") != state.get("time_years"):
+            raise RegionalModelError("CHECKPOINT_FRONTIER_TIME_MISMATCH")
     return state
 
 
@@ -706,7 +738,9 @@ def run_regional_segment(initial_states_by_support: Mapping[str, Any],
                          source_identity: Mapping[str, Any], *,
                          config: RegionalConfig = RegionalConfig(),
                          segment_years: int,
-                         checkpoint: Mapping[str, Any] | None = None) -> dict[str, Any]:
+                         checkpoint: Mapping[str, Any] | None = None,
+                         history_independent_continuation: bool = False,
+                         history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None) -> dict[str, Any]:
     """Advance surface network and the compatible R6 columns on the same clock.
 
     The existing unified orchestrator advances C028/C029 thermomechanics and
@@ -720,6 +754,8 @@ def run_regional_segment(initial_states_by_support: Mapping[str, Any],
     config.validate()
     if segment_years < 1 or segment_years > config.duration_years:
         raise RegionalModelError("SEGMENT_DURATION_INVALID")
+    if history_independent_continuation and history_consumer is None:
+        raise RegionalModelError("REGIONAL_HISTORY_CONSUMER_REQUIRED")
     unified_config = UnifiedConfig(
         duration_years=float(config.duration_years), external_step_years=1.0,
         hydrology_dt_seconds=31_557_600.0,
@@ -730,13 +766,34 @@ def run_regional_segment(initial_states_by_support: Mapping[str, Any],
         infiltration_capacity_m_year_by_support=(0.0, 0.0),
         substrate_erosion_enabled=False,
     )
+    history_configuration = {"regional_config": asdict(config),
+                             "unified_config": asdict(unified_config)}
+    from .int10k_history_independent import (
+        CHECKPOINT_SCHEMA as HISTORY_FREE_SCHEMA,
+        seal_history_independent_checkpoint, verify_history_independent_checkpoint,
+    )
+    history_free_checkpoint = False
+    if checkpoint is not None and checkpoint.get("schema") == HISTORY_FREE_SCHEMA:
+        if not history_independent_continuation:
+            raise RegionalModelError("HISTORY_FREE_CHECKPOINT_REQUIRES_HISTORY_INDEPENDENT_MODE")
+        checkpoint = verify_history_independent_checkpoint(
+            checkpoint, source_identity=source_identity, configuration=history_configuration)
+        history_free_checkpoint = True
     if checkpoint is None:
         region = create_synthetic_region(config, source_identity=source_identity)
+        if history_independent_continuation and history_consumer is not None:
+            history_consumer("REGIONAL_SNAPSHOT", region["snapshots"][0])
+            for event in region["initial_condition_events"]:
+                history_consumer("REGIONAL_EVENT", event)
         unified = run_unified_microdomain(
             initial_states_by_support, source_identity,
-            config=unified_config, segment_years=float(segment_years))
+            config=unified_config, segment_years=float(segment_years),
+            history_independent_continuation=history_independent_continuation,
+            history_consumer=history_consumer)
     else:
         region = verify_regional_checkpoint(checkpoint)
+        if region.get("history_independent_continuation") is True and not history_independent_continuation:
+            raise RegionalModelError("REGIONAL_HISTORY_INDEPENDENT_MODE_REQUIRED")
         if region["source_identity_sha256"] != _sha(dict(source_identity)):
             raise RegionalModelError("REGIONAL_CHECKPOINT_SOURCE_MISMATCH")
         if _canonical(region["config"]) != _canonical(asdict(config)):
@@ -748,8 +805,11 @@ def run_regional_segment(initial_states_by_support: Mapping[str, Any],
             raise RegionalModelError("UNIFIED_SUBSURFACE_CHECKPOINT_MISSING")
         unified = continue_unified_microdomain(
             prior_unified, source_identity, config=unified_config,
-            segment_years=float(segment_years))
-    region = advance_region(region, years=segment_years, config=config)
+            segment_years=float(segment_years),
+            history_independent_continuation=history_independent_continuation,
+            history_consumer=history_consumer)
+    region = advance_region(region, years=segment_years, config=config,
+                            history_consumer=history_consumer)
     final = unified["final"]
     subsurface_by_support = {}
     for support in SUPPORTS:
@@ -761,10 +821,28 @@ def run_regional_segment(initial_states_by_support: Mapping[str, Any],
             "deep_volume_id": volume_id,
             "deep_inventory_j": final["deep_inventory_j_by_volume"][volume_id],
         }
-    combined = seal_regional_checkpoint(region, unified_checkpoint=unified["continuation"])
+    if history_independent_continuation:
+        checkpoint_region = json.loads(_canonical(region))
+        checkpoint_region["history_independent_continuation"] = True
+        for key in ("records", "snapshots", "routing_events", "initial_condition_events"):
+            checkpoint_region.pop(key, None)
+        engine_checkpoint = seal_regional_checkpoint(
+            checkpoint_region, unified_checkpoint=unified["continuation"])
+        combined = seal_history_independent_checkpoint(
+            engine_checkpoint, time_year=int(region["time_years"]),
+            source_identity=source_identity, configuration=history_configuration)
+    else:
+        combined = seal_regional_checkpoint(region, unified_checkpoint=unified["continuation"])
     return {
         "schema": "ARCANA_R6_REGIONAL_GEOLOGICAL_RESULT_V2",
         "authority": "NONCANONICAL_EXPERIMENTAL; SURFACE FORCING SYNTHETIC",
+        **({"history_output_coverage": {
+            "mode": "EXTERNAL_CONSUMER" if history_independent_continuation else "LEGACY_IN_MEMORY",
+            "history_free_checkpoint_input": history_free_checkpoint,
+            "regional_records": [row["time_year"] for row in region.get("records", [])],
+            "regional_snapshots": [row["time_year"] for row in region.get("snapshots", [])],
+            "unified_steps": [row["step"] for row in unified.get("steps", [])],
+        }} if history_independent_continuation else {}),
         "source_identity": dict(source_identity), "state": region,
         "subsurface_by_support": subsurface_by_support,
         "checkpoint": combined, "subsurface_unified_result": unified,

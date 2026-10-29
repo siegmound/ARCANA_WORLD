@@ -1,4 +1,10 @@
-# NEXT — INT10K E2-B exact-commit Linux qualification and history-dependency follow-up (2026-10-29)
+# NEXT — INT10K E2-B2 exact-commit Linux qualification (2026-10-29)
+
+After publishing the reviewed E2-B2 commit by verified fast-forward, qualify that exact commit on FAIR/Linux. First preserve and inspect the existing FAIR checkout; use a new external evidence directory without altering the checkout, E0 inputs, or historical evidence. Verify source and parent, run the focused combined suite including E2-B2 checkpoint corruption/identity/config/ordinal/accumulator tests, then run the 3Y 1+2 and 10Y 5+5 history-independent parity harness against the preserved E2-A1 references only if those references are transferred and independently verified on FAIR. No skipped regressions; preserve exact logs and hashes. Do not run 100, 1,000, or 10,000 years. E2-C/D durable history writing/query, E2-E transactions/recovery and E2-F joined-domain semantics remain separate gates. Keep `OBSERVE_REAL_SCALING_NO_ARBITRARY_RESOURCE_CAPS`; respect actual site rules and unknown quotas remain UNKNOWN. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; `INT10K_LONG_RUN_AUTHORIZED=false`.
+
+---
+
+# PREVIOUS NEXT — INT10K E2-B exact-commit Linux qualification and history-dependency follow-up (2026-10-29)
 
 Verify the local commit containing `int10k_frontier_checkpoint.py`, its CLI/tests and ledger/report, then qualify that exact commit on Linux using the preserved 3Y/10Y local reference artifacts and the unchanged E0 inputs. Do not use the operator-reported FAIR oracle files unless transferred and independently verified. Run the focused suite and test checkpoint corruption, identity/config/E0 mismatch, missing history and unsupported schema. Preserve the existing FAIR checkout and all E2-A1/E1 evidence. The new restore bridge still reattaches full regional/unified history because the legacy continuation path consumes `records` and regional queries consume events; do not claim history-independent resume. Next engineering gate is a source-grounded frontier/consumer refactor plus append-only commit protocol, with exact E2-A1 parity and no arbitrary resource caps. No 100/1,000/10,000-year run. `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`; `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`; `INT10K_LONG_RUN_AUTHORIZED=false`.
 

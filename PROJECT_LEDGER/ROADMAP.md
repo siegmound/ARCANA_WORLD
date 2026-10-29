@@ -1,4 +1,10 @@
-# CURRENT — E2-B v2 frontier projection is local/partial; legacy runner remains history-dependent (2026-10-29)
+# CURRENT — E2-B2 history-independent resume implemented locally; Linux qualification pending (2026-10-29)
+
+Windows short-run qualification now demonstrates restoration from a versioned frontier without the previous records/snapshots/events/unified-step prefix. The exact legacy E2-A1 direct and split histories, dynamic checkpoint fields, balances and queries match at 3Y 1+2 and 10Y 5+5. The `_06` recapture followed event-stream reconciliation; its manifest members were independently rehashed and length-checked locally. The frontier carries current physical state and cumulative material/mechanical/Deep summaries; dynamic deposit strata and records returned by each invocation remain explicit state/output and were measured without caps. This does not implement a durable append-only archive, transaction chain, atomic recovery, or an on-disk query store. Next: exact-commit FAIR qualification of this local implementation. Then E2-C/D archive and query, E2-E transaction/recovery, E2-F integrated commit semantics. Later 100/1,000/10,000 year scaling requires separate evidence-gated decisions; none authorized. Report: `docs/arcana/R6_INT10K_E2_B2_HISTORY_INDEPENDENT_CONTINUATION.md`. Keep scientific, canonical and long-run gates closed.
+
+---
+
+# PREVIOUS CURRENT — E2-B v2 frontier projection is local/partial; legacy runner remains history-dependent (2026-10-29)
 
 E2-A1 FAIR qualification on source `57768923a4a8478381d9153c6f910fba811613d2` is operator-reported; oracle/manifest checksums and provenance status are in the E2-A1 report. E2-B adds a canonical versioned projection and explicit history-prefix restore bridge. Local 3Y/10Y full continuation comparisons pass against Windows E2-A1 references, but the restore path supplies the entire prior history to existing runners. Dynamic deposit strata also grow with the actual model state. Do not claim streaming, append-only commit semantics, recovery, or history-independent checkpoint size. Next exact-commit Linux tests, then E2-B follow-up to move legacy consumers to archived-history APIs without dropping records/events/balances; E2-C/D/E remain separate gates. No long-run or canonical authorization.
 
