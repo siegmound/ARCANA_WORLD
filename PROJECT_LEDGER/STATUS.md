@@ -1,3 +1,9 @@
+## CURRENT — 2026-10-30 R3 committed locally, R4 original runner blocked due to wrong manifest shape
+
+FAIR source commit `2c71370eb9a959c78121ce1c88ec8e9e37187787` (3 exact files, parent geometry 9dce77b5...), not pushed. R4 did not run numerical 3Y/10Y: V1 preflight TypeError interpreting oracle MANIFEST.json members list as keyed dict; output `INT10K_E2C1_R4_3Y10Y_lpvnnze4` BLOCKED. Corrected runner V2 SHA256 `f0a1aa14f1908841154ed7da9e36c975de28077dbe4ef58f0cafe8554e268ec2` created and locally mock/syntax tested, pending FAIR execution. E2-C1 R3 104 tests/fail-closed/3×7 positive oracle remain PASS; R4 3Y/10Y NOT QUALIFIED. Detail `PROJECT_LEDGER/R6_INT10K_E2C1_R4_MANIFEST_SCHEMA_BUG_AND_V2_RUNNER_20261030.md`. All production/forward/solver permissions unchanged.
+
+---
+
 ## CURRENT — 2026-10-30 E2-C1 R3 independent audit PASS, R4 NOT YET RUN
 
 Operator audit confirms `E2C1_R3_INDEPENDENT_EVIDENCE_AUDIT=PASS`, 15 manifest members, 3 file SHA and length checks, original 1000Y source oracle unchanged. R3 104 tests and exact checkpoint/stream one-year parity PASS; scope-injected historical NaN rejected. Source diff 24 additions/4 deletions contains only history-free frontier projection helper and call replacement, no physics changes. Next local commit limited to regional source plus 2 tests, then new R4 3Y/10Y history-independent qualification; no commit/push on behalf of FAIR user, no automatic promotion. Read `PROJECT_LEDGER/R6_INT10K_E2C1_R3_INDEPENDENT_AUDIT_AND_R4_3Y10Y_GATE_20261030.md`. Engineering only.
