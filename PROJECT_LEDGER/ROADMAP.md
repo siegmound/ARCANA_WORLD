@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 B2B0 read-only source API PASS, supports typed HistoryStore records and atomic read-view structural contract. NEXT B2B1 in-memory sampled typed roundtrips, no store creation, source original event null time/sequence and 3Y sample / 174 events; source SHA 539e18d5..., FAIR PENDING. Then B2B2 comparative scratch 3/10/100 year atomic bundles (options per-event vs per-year), explicit read-view publication/size/O(N) manifests, source chronology adapter and fail-closed negative tests. B2B3 all-kind exact 61001 source reconstruction, Deep/provenance query, file size. No production or scientific authority. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B0_FAIR_SOURCE_API_PASS_B2B1_TYPED_DRYRUN_GATE_20261030.md.
+
+---
+
 CURRENT 2026-10-30 E2-C2-B2-A FAIR PASS complete original HISTORY SHA and 58000 external events, 1000 UNIFIED Deep, yearrecord event parities. Combined A3 and B1 proved 1001 lossless reconstructed regional snapshots and snapshot-only 0.005103 virtual size ratio. Next B2-B0 read-only source/API preflight, script SHA 609aec03..., FAIR pending; B2-B1 typed grammar no store write; B2-B2 compare 3/10/100Y scratch per-event vs yearly bundle, source sequence and null-time preserved; later 1000Y all-kind query/size, transactional fault negatives, actual total archive bytes. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B_TYPED_HISTORYSTORE_ADAPTER_CONTRACT_DRAFT_20261030.md. No production authorization.
 
 ---
