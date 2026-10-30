@@ -1,3 +1,13 @@
+# CURRENT NEXT — E2-C1-R3 fail-closed remediation test (2026-10-30)
+
+**R2 reproduced a real semantic regression:** `E2C1_R2_EXCLUDED_HISTORY_SEMANTIC_GAP=REPRODUCED` in FAIR evidence `INT10K_E2C1_R2_NEGATIVE_bBw3W4k1`; original source and 1000Y oracle unchanged. The R1 optimization passes all 76 positive tests and exact checkpoint/history parity, but can silently accept a `NaN` injected into excluded emitted snapshot through mutable history_consumer. **Do not commit R1 yet.**
+
+**One next gate:** run the guarded R3 remediation script from the chat attachment on FAIR, only after verifying its SHA256 `8ccd9ac76ec3a47390dc77f8db1f835fa58f51c32ead56f92e401ed777006641`. It requires existing branch `r6/e2c1-frontier-projection-r1-fair` at HEAD `9dce77b5...` and exactly the two documented uncommitted R1 files. It preserves originals, validates excluded history JSON without redundant decoding before sealing a detached frontier, adds new fail-closed tests, runs 3×7 replay/parity and compares performance vs original/R1. No commit, push, fresh clone, 1000Y rerun, 64-core/GPU or production work. The candidate R3 performance may worsen—measure, do not assume.
+
+Read detailed contract `PROJECT_LEDGER/R6_INT10K_E2C1_R2_NEGATIVE_AND_R3_FAILCLOSED_GATE_20261030.md`. Status `E2C1_R2_BUG_CONFIRMED__R3_PREPARED_NOT_EXECUTED`. On PASS, review source diff and evidence manifest before deciding source commit; on BLOCKED do not patch-stack. World History production/GEODYN-2B forward/F2-B solver remain closed.
+
+---
+
 # CURRENT NEXT — E2-C1-R2 diagnostic of excluded-history validation (2026-10-30)
 
 User independently checked E2-C1 output integrity: `PYTHON_IMPORT=PASS`, `E2C1_EVIDENCE_INTEGRITY=PASS`, `E2C1_PARITY_REPORT=PASS`, ten file-manifest members matched SHA256+byte length; FAIR source remains uncommitted (regional source M; E2-C1 test ??). Read `PROJECT_LEDGER/R6_INT10K_E2C1_EVIDENCE_INTEGRITY_VERIFIED_20261030.md`.
