@@ -1,3 +1,10 @@
+## E2-C2-A1 concrete read-only FAIR probe prepared (not run)
+
+- Python runner `arcana_e2c2_a1_readonly_schema_probe.py`, SHA256 `d6807f1734d074c5b44472770e4c0a8233277a5430d184b882f95abf239698f8`; current conversation ZIP package `ARCANA_E2C2_A1_READONLY_FAIR_PACKAGE.zip`, SHA256 `9373560ef0d9e88efae2a3de7a87b4ca8833764f53bf4fb35c5b76b3991061ac`. These are **chat artifacts not GitHub source files**, and have **not run on FAIR**.
+- Syntax compile and simulated 61001-index-entry list-manifest local fixture PASS. FAIR script only reads original pinned `MANIFEST.json`, verifies original manifest SHA and `INDEX.jsonl` digest/length, checks `HISTORY.jsonl` length, scans 61,001 index records and reads five first history JSONL envelopes; prints key shapes/kinds and bounded samples. It never writes or mutates archival data, Git state or code.
+- Operator transfers script to `~/HPC-POMDP/Arcana`, checks SHA256 and runs `python arcana_e2c2_a1_readonly_schema_probe.py`. Expected only on FAIR: `E2C2_A1=PASS_READ_ONLY_SCHEMA_CENSUS`; use actual index metadata to design A2 targeted SHA-verified snapshots. Any schema failure should block and be diagnosed, not silently adapted.
+
+---
 # ARCANA R6 INT10K E2-C2-A — READ-ONLY SOURCE / B0 API INVENTORY (stage 1)
 
 **Date** 2026-10-30. Status: `E2C2_A_SOURCE_API_RECONNAISSANCE_COMPLETE__FAIR_ARCHIVE_FIELD_INVENTORY_PENDING`. This GitHub document audits source at remotely available geometry parent `9d9a2512d5e2aca5cc3fd04010d53ac467fe9839`; the FAIR-local R3 child `2c71370eb9a959c78121ce1c88ec8e9e37187787` was independently proven to alter only the history-free projection plus tests, so material/event and HistoryStore API observations remain relevant, but its source was **not remotely fetched**. Not a new simulation, archive rewrite or code patch.
