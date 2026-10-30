@@ -1,3 +1,8 @@
+# CURRENT NEXT — E2-C0-B isolate saved JSON callsites, no rerun
+
+Read PROJECT_LEDGER/R6_INT10K_E2C0_CPROFILE_PARITY_20261030.md and 1000Y handoff. On FAIR existing worktree (no clone), inspect PROFILE_YEAR_101/501/751.pstats from INT10K_E2C0_PROFILE_Piy2PjHo using pstats caller edges for json.dumps, json.loads, regional _canonical, checkpoint seal/verify. Determine direct source of the 110 encode and 12 decode calls; separate inclusive from exclusive timings and avoid double counting. Confirm original 1000Y manifest SHA and code HEAD 9dce77b5...; audit existing B0 HistoryStore/retention/replay transaction and query contract before proposing E2-C1 lossless delta+checkpoint/reader implementation. No modification of original results, source or scientific gate; no costly 1000Y rerun. Report exactly the measured caller contributions and remaining UNKNOWN then update ledger.
+
+---
 # CURRENT NEXT — 2026-10-30: E2-C0 phase profiling and B0 store audit (read-only first)
 
 **Read before any action:** `PROJECT_LEDGER/R6_INT10K_1000Y_FAIR_PERFORMANCE_E2C_E2D_HANDOFF_20261030.md`, `PROJECT_LEDGER/STATUS.md`, `PROJECT_LEDGER/PROCEDURE.md`, original FAIR manifest. Previous "NO long run" passages below are earlier dated gates, **not** an instruction to retroactively invalidate the 1000Y one-off engineering PASS.

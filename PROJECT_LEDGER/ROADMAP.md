@@ -1,3 +1,8 @@
+## CURRENT — 2026-10-30 E2-C0 single-year CPU profile and oracle parity PASS
+
+FAIR engineering-only evidence E2_C0_REFERENCE_PARITY=PASS for years 101/501/751 (61 record kind+payload hashes/year), resumed from existing checkpoints. Profile root INT10K_E2C0_PROFILE_Piy2PjHo. Profiled wall ~0.080/0.203/0.279 s; json.dumps 110 calls/year and json.loads 12 calls/year, encode+decode ~79%,86%,87% of profiled time with growing data; unified numerical inner execution ~20 ms/year stable. Important: cProfile and hash-only consumer do not reproduce full JSONL I/O costs. Full source/limits/next in PROJECT_LEDGER/R6_INT10K_E2C0_CPROFILE_PARITY_20261030.md. NEXT E2-C0-B direct callers from saved pstats, no rerun; then B0-store-aware lossless E2-C1 schema. Engine SHA 9dce77b5... FAIR-local, separate from GitHub documentation; production/canonical authority unchanged.
+
+---
 ## CURRENT — 2026-10-30: INT10K 1000Y benchmark changes E2-C/D priorities
 
 - `E2-B2-R1`: Linux exact-commit history-independent frontier / 3Y+10Y oracle gate evidenced at baseline `9d9a2512d5e2aca5cc3fd04010d53ac467fe9839` (operator reported; originals on FAIR).
