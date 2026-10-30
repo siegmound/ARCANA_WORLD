@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 B2B2 FAIR 3Y10Y real scratch transaction comparison PASS; B annual bundle leads A per-event on small fixture (10Y B 1.59MB vs A 2.32MB, ~6.68x faster writes, ~8.72x faster query, 36 vs 626 files), all query/source checks exact. Phase B2B3F NEXT process crash injection six points before/after committed read-view switch (2Y scratch, no source edits) and exact reopen retry. Runner SHA 3596da70... local selftest PASS, FAIR pending. After that isolate 100Y B-only profile, more complete temporal/material/Deep event query adapter and all 61k original source envelope reconstruction. Do not commit to B permanent schema before proving 100Y and negative integrity; no 1000Y physics rerun. Report PROJECT_LEDGER/R6_INT10K_E2C2_B2B2_FAIR_SCRATCH_COMPARISON_PASS_B2B3F_CRASH_GATE_20261030.md.
+
+---
+
 2026-10-30: B2B1 typed source data dryrun PASS FAIR (174 events/24 null), no store initialized. B2B2 next: create four ephemeral scratch HistoryStores 3Y/10Y, compare option A individual events to option B annual ordered bundle; each annual transaction uses parent-view guard; test pinned-reader view isolation, reopening and query reconstruction, source event order and Deep accuracy, disk bytes and view metadata overhead. Script SHA 70ba607096e2477faff4f879f6471a1e252900944f4f47f0c270072168d3c9ba prepared and local pure selftest PASS, FAIR not run. B2B3 subsequent fault recovery and 100Y scale then 1000Y source oracle qualification; no production. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B1_FAIR_TYPED_DRYRUN_PASS_B2B2_SCRATCH_COMPARISON_GATE_20261030.md.
 
 ---
