@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 original 1000Y HISTORY raw SHA verified completely by FAIR B2-A, 61001 rows; 58000 standalone regional event payload SHA PASS, 1000 Unified Deep PASS, 1000 annual multiset exact; all 8000 null-time HYDRAULIC_DIAGNOSTIC remain null. See PROJECT_LEDGER/R6_INT10K_E2C2_B2A_FAIR_FULL_HISTORY_PASS_20261030.md. B2-B0 source-only typed store contract preflight SHA 609aec03... prepared, not executed FAIR. Immutable original unchanged.
+
+---
+
 CURRENT 2026-10-30 FAIR E2-C2-B1 V2 positive result: all 1001 original regional snapshot canonical bytes and SHA reconstructed EXACT from y0 +1000 virtual full-value deltas; 1000 annual record hashes and 11000 deposits nested DEPOSITION matches; delta chain 590691b9929c84a0a6416e27c53ef41ebe2f954bbb92d7256e2a5009dfc8fe4f, virtual 9055299B vs 1774346125 snapshot payload bytes. No external standalone events/Unified full SHA or total file SHA in B1, no persisted journal. See PROJECT_LEDGER/R6_INT10K_E2C2_B1_V2_FAIR_EXACT_VIRTUAL_DELTA_PASS_20261030.md. B2-A to verify full original 1.916GB HISTORY SHA, 58000 external events, 1000 Unified Deep, annum vs external parity is PREPARED NOT FAIR RUN, artifact checksum ac53f0d..., see PROJECT_LEDGER/R6_INT10K_E2C2_B2A_FULL_HISTORY_EVENT_UNIFIED_AUDIT_GATE_20261030.md. Original archive unchanged.
 
 ---
