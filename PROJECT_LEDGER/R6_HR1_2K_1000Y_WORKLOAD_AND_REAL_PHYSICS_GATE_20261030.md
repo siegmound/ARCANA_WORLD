@@ -1,0 +1,17 @@
+# ARCANA R6 HR1 — 2K / 1000Y capability and cost benchmark
+
+2026-10-30. User proposes a 1000-model-year experiment at HD/2K spatial detail to measure actual compute, storage and metadata overhead. This is a new engineering goal, **not proof the current 9-cell R2 source supports a physical global simulation**.
+
+Define candidate engineering raster as a **2048×1024 (2:1) global latitude-longitude mesh**, 2,097,152 cells, about 19.55 km angular scale at the equator and variable cell area by latitude. 1000 annual records imply about 2.097 billion cell-years. This grid selection is an explicit proposed interpretation of "2K", not an existing qualified geodynamic mesh. If a real geometry/provider cannot support the grid, do not upsample the old nine cells and pretend to simulate independent physics.
+
+POST10K-A0 PASS reported: 9 synthetic 1 km² regional cells not georeferenced; two distinct 1-degree C028/C029 support columns with 73 thermal nodes each; 20000 one-year thermal calls with only one substep; regional hydrology annual and no subannual observations; 10k runtime regional operator 924.328156s with five O(D) deposit scans and 2,750,275,000 deposit-row reads. No full-resolution global source, complete climate/ecology and global Deep transport has been qualified.
+
+**HR1-0 source and capability audit**: inspect actual FAIR dirty source and immutable A0/10k reports and manifest; identify which kernels genuinely support a global 2-D mesh, boundary metrics, forcing, cross-support flux and time-step refinement, versus history only. Declare missing domains UNKNOWN. Do not invent mineral, fauna, Deep spatial, climatological or tectonic values.
+
+**HR1-1 metadata and streaming load test**: separately implement/benchmark an explicitly synthetic 2K spatial workload, with real per-cell geometry, typed fields and units, sparse events and NULL times, source/provider/hash/causal provenance, lossless spatial tiles, ordered append-only history, B0 paired checkpoint and restart. Do not allocate billions of Python dictionaries. Test 128×64, 512×256, 1024×512, 2048×1024 grids in bounded windows; capture real wall/CPU/process RSS/disk logical+allocated, field/metadata size, write/query/replay, per-cell-year throughput and conservation where a numerical operator exists. Scenarios only: one binary64 scalar annually costs 16.78 GB / 1000Y uncompressed; 64/256/1024 bytes per cell-year costs about 134/537/2147 GB before overhead. Not actual predictions.
+
+**HR1-2 conditional true numerical 1000Y run**: user requests **one** 1000Y 2K experiment. After source/physics/forcing/grid and proven bounded numerical/resource/restart qualification, launch exactly one new 1000Y 2K run in fresh output/evidence roots if actual FAIR site policy and required provider capabilities permit. Otherwise return `HR1_2K_1000Y=BLOCKED_TRUE_2K_PHYSICS_OR_INPUTS_NOT_AVAILABLE` and retain measurable workload results. A 2K output rendering or history writer is NOT the physical simulation. Do not change original solver law, original archives, commit/push, or run 10k/100k; no automatic retry.
+
+Markers: `HR1_2K_WORKLOAD=PASS_MEASURED_2K_METADATA_AND_STREAMING` only with real measured full-grid writer/workload, and `HR1_2K_1000Y=PASS_REAL_NUMERICAL_1000Y_AT_2048x1024` only after real verified solver advancement. Continue to separate scientific and production authority.
+
+A more detailed handoff with exact measurement and provenance requirements is available in the conversation: `ARCANA_R6_HR1_2K_1000Y_HIGH_RES_SCALING_GATE_20261030.md`.
