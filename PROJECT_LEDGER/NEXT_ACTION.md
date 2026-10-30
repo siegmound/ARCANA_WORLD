@@ -1,3 +1,11 @@
+# CURRENT NEXT — R3 independent evidence/source audit, then commit qualification decision (2026-10-30)
+
+R3 operator reports `E2C1_R3_GATE=PASS_PARITY_AND_FAIL_CLOSED_SOURCE_UNCOMMITTED`, `104 passed`, exact 3×7 one-year oracle replay and checkpoint parity, negative NaN injection rejected for REGIONAL_SNAPSHOT/YEAR_RECORD/EVENT. FAIR output `INT10K_E2C1_R3_FAILCLOSED_FFTmihHU`; source branch `r6/e2c1-frontier-projection-r1-fair` and HEAD `9dce77b5...` still intentionally UNCOMMITTED with three file changes. Net wall reductions vs original 3.84%/3.45%/5.98% at y101/501/751; smaller than R1 but restored scoped fail-closed validation. Read `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`.
+
+**Next step strictly read-only:** independently rehash all members and source files listed in `FILE_MANIFEST_R3.json`, verify `PARITY_R3.json` and original 1000Y oracle manifest unchanged, inspect `git diff --check`, precise code diff and status. Do not rerun R3 on dirty worktree or commit automatically. After audit, review preserved semantics and authorize local commit only deliberately, then bounded exact 3Y/10Y segmented qualification before E2-C2. Entire benchmark remains synthetic; scientific/production/solver gates false.
+
+---
+
 # CURRENT NEXT — E2-C1-R3 fail-closed remediation test (2026-10-30)
 
 **R2 reproduced a real semantic regression:** `E2C1_R2_EXCLUDED_HISTORY_SEMANTIC_GAP=REPRODUCED` in FAIR evidence `INT10K_E2C1_R2_NEGATIVE_bBw3W4k1`; original source and 1000Y oracle unchanged. The R1 optimization passes all 76 positive tests and exact checkpoint/history parity, but can silently accept a `NaN` injected into excluded emitted snapshot through mutable history_consumer. **Do not commit R1 yet.**
