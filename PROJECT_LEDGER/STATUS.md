@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 — E2-C2-A1=PASS_READ_ONLY_SCHEMA_CENSUS by FAIR operator. Original pinned MANIFEST.json SHA PASS; INDEX.jsonl full digest/length PASS. 61,001 homogeneous rows: 58,000 REGIONAL_EVENT, 1,001 REGIONAL_SNAPSHOT, 1,000 REGIONAL_YEAR_RECORD, 1,000 UNIFIED_STEP; offsets/lengths enable random access. Original HISTORY.jsonl (1,916,080,917 bytes) length checked only, not full new SHA. Initial snapshot 7,908 bytes, final y1000 3,540,152 bytes. Source/archive unmodified. E2-C2-A2 authenticated 40-envelope sampling prepared, SHA b4a16a1f..., not yet run on FAIR. Report PROJECT_LEDGER/R6_INT10K_E2C2_A1_FAIR_SCHEMA_PASS_A2_AUTHENTICATED_SAMPLE_GATE_20261030.md. E2-C1 synthetic scope sealed; scientific and production gates unchanged.
+
+---
+
 CURRENT (2026-10-30) E2-C1_QUALIFIED_SYNTHETIC_SCOPE=PASS; E2-C2-A1 ACTIVE. Operator independently verified R4 four-manifest-members SHA/bytes, source commit, clean worktree and unchanged 1000Y original; 104 regressions and exact per-kind 3Y/10Y oracle. FAIR engine local commit 2c71370e... not pushed; GitHub documentation branch separate. Closed gate report PROJECT_LEDGER/R6_INT10K_E2C1_R4_INDEPENDENT_AUDIT_SEALED_20261030.md. E2-C2-A source and B0 API inventory PROJECT_LEDGER/R6_INT10K_E2C2_A_SOURCE_API_INVENTORY_20261030.md; next original archive INDEX/HISTORY schema discovery on FAIR, not source implementation. No scientific/canonical/solver/forward authority.
 
 ---
