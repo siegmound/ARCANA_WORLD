@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 — E2-C2-A2 FAIR PASS. Read PROJECT_LEDGER/R6_INT10K_E2C2_A2_AUTHENTICATED_SAMPLES_PASS_A3_ALLYEAR_GATE_20261030.md and NEXT_ACTION.md. Index 61,001 records; A2 SHA-authenticated 40 envelopes and sampled deposit prefix in 9 adjacent year pairs with +11 records per year; y1000 total 11,000, source/original unchanged. Next A3 all-year read-only 1,001 snapshots and 1,000 annual records, SHA-pinned script 388d1731a8891bc9c2d17df05a172e825c3947c6c2ef6c8d642dcb8c210faeb0, mock-tested but not run on FAIR. All scientific, production and forward gates remain closed.
+
+---
+
 CURRENT BOOTSTRAP 2026-10-30: E2-C1 SEALED synthetic scope; E2-C2-A1 ACTIVE. FAIR worktree source branch r6/e2c1-frontier-projection-r1-fair local SHA 2c71370eb9a959c78121ce1c88ec8e9e37187787, not pushed, clean from operator audit. R4 independent four-member SHA+bytes audit PASS, 104 tests, 3Y direct/1+2 and 10Y direct/5+5 exact immutable 1000Y per-kind oracle, checkpoint, balances. Read PROJECT_LEDGER/R6_INT10K_E2C1_R4_INDEPENDENT_AUDIT_SEALED_20261030.md and PROJECT_LEDGER/R6_INT10K_E2C2_A_SOURCE_API_INVENTORY_20261030.md and NEXT_ACTION.md. Next read-only scan original MANIFEST and INDEX.jsonl, sample bounded HISTORY.jsonl envelope to learn unknown index schema before any delta/reconstruction implementation. B0 HistoryStore typed transactions and retention/query/replay required; no blanket skip of resources/Deep/flora/fauna/population time-space query aims. No physics rerun/automatic push or production.
 
 ---
