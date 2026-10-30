@@ -1,3 +1,7 @@
+CURRENT (2026-10-30): E2-C1 final FAIR independent PASS. INT10K_E2C1_R4_3Y10Y_tqei5685 FILE_MANIFEST_R4 four members SHA+length verified, 3Y 1+2/10Y 5+5 exact per-kind oracle and checkpoint/balances, source local commit 2c71370e... matched and clean, original 1000Y manifest e56f02c7... unchanged. E2-C1 synthetic scope SEALED. See PROJECT_LEDGER/R6_INT10K_E2C1_R4_INDEPENDENT_AUDIT_SEALED_20261030.md. E2-C2 source/API inventory PROJECT_LEDGER/R6_INT10K_E2C2_A_SOURCE_API_INVENTORY_20261030.md; index field schema not yet proven by A1. No new numerical run.
+
+---
+
 ## CURRENT 2026-10-30 — E2-C1 R4 PASS original-prefix oracle, operator report
 
 FAIR V2 `INT10K_E2C1_R4_3Y10Y_tqei5685` yielded 104 tests PASS, exact 3Y 1+2 (184 records) and 10Y 5+5 (611 records) history-independent per-kind payload SHA oracle and frontier/balances. `E2C1_R4_EVIDENCE_MANIFEST=PASS` means manifest generated; independent post-audit still pending. Files include `FILE_MANIFEST_R4.json` (list of `members`), `PARITY_R4.json`, `SOURCE_COMMIT.txt`, `SOURCE_SHA256.json`, `PYTEST_R4.log`. FAIR source local SHA 2c71370e..., original 1000Y manifest SHA e56f02c7..., no source push. Detail `PROJECT_LEDGER/R6_INT10K_E2C1_R4_FAIR_3Y10Y_OPERATOR_PASS_20261030.md`. Full future archival design `PROJECT_LEDGER/R6_INT10K_E2C2_LOSSLESS_ARCHIVAL_DESIGN_GATE_20261030.md`.
