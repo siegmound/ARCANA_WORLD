@@ -1,3 +1,9 @@
+## CURRENT 2026-10-30 — E2-C1 FAIR gate operator result (not independently rehashed)
+
+Source SHA runner `388668c0741b6ad45d475091284965df7db46abb0b13f50b562b8ef55be55991`. Initial BLOCKED evidence `INT10K_E2C1_FRONTIER_PROJECTION_I4rtb1Fb` (NumPy environment absent); completed PASS `INT10K_E2C1_FRONTIER_PROJECTION_qLSPnKHS`, 3×7 baseline/candidate exact history/checkpoint parity, 76 tests PASS; code remains uncommitted FAIR local. Check `FILE_MANIFEST.json` and original 1000Y manifest on FAIR before independent integrity claim. See PROJECT_LEDGER/R6_INT10K_E2C1_FAIR_GATE_OPERATOR_RESULT_20261030.md. Excluded-invalid-history acceptance gap remains open. No canonical authority.
+
+---
+
 ## CURRENT 2026-10-30: E2-C0-C operator FAIR caller-edge report
 
 `E2_C0_NESTED_CALLERS=COMPLETE` via existing `INT10K_E2C0_PROFILE_Piy2PjHo/PROFILE_YEAR_{101,501,751}.pstats`; exact tables PROJECT_LEDGER/R6_INT10K_E2C0_C_NESTED_CALLERS_20261030.md. Original 1000Y SHA256 `e56f02c726856fd976a3a49b037b95be506b15a2b691d7a308d9ad6d4ad3a59a`, FAIR local code SHA `9dce77b5...`; originals not mounted/rehashed in this documentation session. Prior one-year parity PASS, no new run or authority.
