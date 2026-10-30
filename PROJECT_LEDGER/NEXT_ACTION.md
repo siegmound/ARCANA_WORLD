@@ -1,3 +1,11 @@
+# CURRENT NEXT — 2026-10-30 E2-C2-A3 exhaustive annual deposit audit (read-only)
+
+**E2-C2-A2 FAIR PASS:** 40 SHA-authenticated indexed record envelopes over 14 years, source/index manifest and offsets PASS; 9 sample adjacent transitions preserve deposit prefix and add 11 new deposits; at Y1000 11000 deposits, 9 known cells, nine exact fields, no duplicate event IDs. Non-deposit geology/material states also change; Deep, mechanics/thermal/hydrology preserved in UNIFIED_STEP. Sampled nested annual events 58 vs indexed externally *dated* events 50 — do not infer 8 missing; index can have null event time_year. Details `PROJECT_LEDGER/R6_INT10K_E2C2_A2_AUTHENTICATED_SAMPLES_PASS_A3_ALLYEAR_GATE_20261030.md`.
+
+**Next operator gate:** transfer `arcana_e2c2_a3_all_year_deposit_proof.py` SHA256 `388d1731a8891bc9c2d17df05a172e825c3947c6c2ef6c8d642dcb8c210faeb0` (ZIP `ARCANA_E2C2_A3_READONLY_FAIR_PACKAGE.zip`, SHA256 `af4483a922da708e3b90d9ee274ec64115a886e916fef8cbdc7289c546234e6e`). Run `python script.py --self-test` then `python script.py` from ~/HPC-POMDP/Arcana; syntax/selftest and 61,001-index-row mock end-to-end PASS **locally only**. Script performs pinned-original **1001 snapshot + 1000 annual record canonical SHA** checks, 1000 adjacent deposit prefix invariant and new-deposit-to-nested-DEPOSITION event multiset. Records null/datetime event index counts. ~1.8GB snapshot read; no solver rerun or archive writes. **A3 NOT YET RUN on FAIR.** After actual PASS, A3 only seals lossless deposit append law for synthetic 3x3; full typed B0 HistoryStore/E2-C2-B archive and Deep/UNIFIED external event reconstruction are separate. Do not patch-stack on BLOCKED. Production/science/forward gates remain false.
+
+---
+
 CURRENT 2026-10-30 — E2-C2-A1 FAIR PASS. Original INDEX.jsonl 61,001 rows, SHA verified, record schema determined. Next run prepared E2-C2-A2 read-only targeted samples; script SHA256 b4a16a1fb52038d74444cadec8034410444dcc174446cbe65005bf57d3b64141. A2 has NOT run on FAIR. It checks 40 SHA-authenticated envelopes over 14 selected years and reports complete deposit fields, per-cell counts, Deep keys and adjacent-year deposit prefix behavior without changing original archive. See PROJECT_LEDGER/R6_INT10K_E2C2_A1_FAIR_SCHEMA_PASS_A2_AUTHENTICATED_SAMPLE_GATE_20261030.md. No simulation or science/production authorization.
 
 ---
