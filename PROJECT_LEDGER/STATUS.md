@@ -1,3 +1,9 @@
+## CURRENT — 2026-10-30 E2-C1 FAIR exact-history/checkpoint PARITY PASS, source UNCOMMITTED
+
+Operator-run result: E2C1_GATE=PASS_PARITY_SOURCE_UNCOMMITTED at FAIR evidence INT10K_E2C1_FRONTIER_PROJECTION_qLSPnKHS. Baseline y101/501/751 median 68.076/180.835/257.135 ms, candidate 63.457/163.911/227.452 ms (6.8/9.4/11.5% reduction), 7 repetitions each, identical oracle 61-record streams and checkpoint/state/snapshot digest; 76 tests PASS. A first run lacking NumPy failed BLOCKED_EXIT_1 before source mutation; preserved separately at I4rtb1Fb. Later standalone python import failed because runner's PYTHONPATH did not persist in parent shell; outside PASS scope. FAIR local branch r6/e2c1-frontier-projection-r1-fair uncommitted: M regional_geological_evolution.py; ?? test_r6_int10k_e2c1_frontier_projection.py. **Open:** file manifest verification and previously excluded history fail-closed validation; do not commit yet. Report PROJECT_LEDGER/R6_INT10K_E2C1_FAIR_GATE_OPERATOR_RESULT_20261030.md. Noncanonical synthetic only; source and science authorities unchanged.
+
+---
+
 ## CURRENT 2026-10-30 — E2-C0/B/C profiling COMPLETE, E2-C1 design NEXT
 
 E2_C0_NESTED_CALLERS=COMPLETE, FAIR read-only `.pstats` source-attributed at years 101/501/751 after exact oracle hash parity (61 records/year). Regional `_canonical` 21.362/81.727/119.907ms; history-free `_canonical` 7.656/24.559/35.149ms; regional JSON decodes 6.497/34.222/49.645ms, most growth from state/snapshot/checkpoint copies. Parent and nested inclusive times overlap; no proof all could be removed. Ref PROJECT_LEDGER/R6_INT10K_E2C0_C_NESTED_CALLERS_20261030.md. Immediate gate is E2-C1 read-only design: avoid full regional clone before stripping history when projecting frontier; B0 HistoryStore adapter + exhaustive lossless reconstruction tests. FAIR engine commit 9dce77b5... **not confirmed pushed**, GitHub documentation commits separate. All canonical/solver/forward gates false.
