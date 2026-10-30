@@ -1,3 +1,9 @@
+## CURRENT — 2026-10-30 E2-C1 R4 3Y/10Y history-independent oracle PASS, manifest independent audit pending
+
+Operator verified V2 runner SHA f0a1aa14... and reported R4 PASS: 104 pytest; direct & segmented 3Y 1+2 and 10Y 5+5 exact per-kind 1000Y archive payload-hash prefix (184/611 records), terminal checkpoint, subsurface and balances. Source FAIR commit 2c71370eb9a959c78121ce1c88ec8e9e37187787 published **only locally**, R3 fail-closed positive+negative and manifest audits already PASS. Success evidence `INT10K_E2C1_R4_3Y10Y_tqei5685`; R4 manifest created, independent 4-member check still needed. Ref `PROJECT_LEDGER/R6_INT10K_E2C1_R4_FAIR_3Y10Y_OPERATOR_PASS_20261030.md`. E2-C2 lossless B0 HistoryStore architectural scope `PROJECT_LEDGER/R6_INT10K_E2C2_LOSSLESS_ARCHIVAL_DESIGN_GATE_20261030.md`. No science/forward/canonical production authorization.
+
+---
+
 ## CURRENT — 2026-10-30 R3 committed locally, R4 original runner blocked due to wrong manifest shape
 
 FAIR source commit `2c71370eb9a959c78121ce1c88ec8e9e37187787` (3 exact files, parent geometry 9dce77b5...), not pushed. R4 did not run numerical 3Y/10Y: V1 preflight TypeError interpreting oracle MANIFEST.json members list as keyed dict; output `INT10K_E2C1_R4_3Y10Y_lpvnnze4` BLOCKED. Corrected runner V2 SHA256 `f0a1aa14f1908841154ed7da9e36c975de28077dbe4ef58f0cafe8554e268ec2` created and locally mock/syntax tested, pending FAIR execution. E2-C1 R3 104 tests/fail-closed/3×7 positive oracle remain PASS; R4 3Y/10Y NOT QUALIFIED. Detail `PROJECT_LEDGER/R6_INT10K_E2C1_R4_MANIFEST_SCHEMA_BUG_AND_V2_RUNNER_20261030.md`. All production/forward/solver permissions unchanged.
