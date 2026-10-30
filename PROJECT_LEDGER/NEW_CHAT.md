@@ -1,3 +1,9 @@
+# CURRENT CHAT BOOTSTRAP — 2026-10-30 E2-C1-R3 PASS, source audit pending
+
+Read `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`, `PROJECT_LEDGER/NEXT_ACTION.md`, `PROJECT_LEDGER/STATUS.md` and prior 1000Y handoff. FAIR current local worktree `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_R6_GEOMETRY_R1_WORK` branch `r6/e2c1-frontier-projection-r1-fair`, HEAD `9dce77b5d65d4301d2145f9ad527b8efee0fe96d`, uncommitted modified regional source + two new tests. R3 output `INT10K_E2C1_R3_FAILCLOSED_FFTmihHU` operator PASS: 104 tests, negative invalid excluded records fail-closed, exact 3×7 checkpoint+archive oracle, medians 3.84%/3.45%/5.98% faster than original at 101/501/751. **NEXT:** independently hash R3 manifest and review source diff before local source commit decision; do NOT rerun R3 blindly on dirty worktree or touch immutable 1000Y. All science/production permissions false. GitHub ledger/docs branch is separate from local FAIR engine source SHA.
+
+---
+
 # CURRENT BOOTSTRAP — 2026-10-30 (ARCANA R6 INT10K 1000Y)
 
 **The single current operational ledger lives on branch `r6/multiphysics-integration-20261026`**; verify GitHub ref and the FAIR worktree separately. Read `PROJECT_LEDGER/README.md`, then `STATUS.md`, `NEXT_ACTION.md`, and **`PROJECT_LEDGER/R6_INT10K_1000Y_FAIR_PERFORMANCE_E2C_E2D_HANDOFF_20261030.md`**; `EVIDENCE_INDEX.md`, `DECISIONS.md`, `PROCEDURE.md` are required for implementation. Earlier "CURRENT" passages below are archived historical instructions, not the active task.
