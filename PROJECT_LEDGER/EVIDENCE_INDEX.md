@@ -1,3 +1,9 @@
+## CURRENT 2026-10-30 — E2-C1 R4 PASS original-prefix oracle, operator report
+
+FAIR V2 `INT10K_E2C1_R4_3Y10Y_tqei5685` yielded 104 tests PASS, exact 3Y 1+2 (184 records) and 10Y 5+5 (611 records) history-independent per-kind payload SHA oracle and frontier/balances. `E2C1_R4_EVIDENCE_MANIFEST=PASS` means manifest generated; independent post-audit still pending. Files include `FILE_MANIFEST_R4.json` (list of `members`), `PARITY_R4.json`, `SOURCE_COMMIT.txt`, `SOURCE_SHA256.json`, `PYTEST_R4.log`. FAIR source local SHA 2c71370e..., original 1000Y manifest SHA e56f02c7..., no source push. Detail `PROJECT_LEDGER/R6_INT10K_E2C1_R4_FAIR_3Y10Y_OPERATOR_PASS_20261030.md`. Full future archival design `PROJECT_LEDGER/R6_INT10K_E2C2_LOSSLESS_ARCHIVAL_DESIGN_GATE_20261030.md`.
+
+---
+
 ## CURRENT — E2-C1-R3 FAIR success evidence, operator output 2026-10-30
 
 `INT10K_E2C1_R3_FAILCLOSED_FFTmihHU` contains `FILE_MANIFEST_R3.json`, `PARITY_R3.json`, `PYTEST_R3.log`, `NEGATIVE_R3.log`, `R3_SOURCE_DIFF.patch`, `R1_BASELINE_RESULT.json`, `R3_CANDIDATE_RESULT.json` and supporting artifacts from guarded R3 script. Operator marker E2C1_R3_EVIDENCE_MANIFEST=PASS; **independent rehash on FAIR still pending**, and files not downloaded into ledger writer. The output original 1000Y manifest SHA is `e56f02c726856fd976a3a49b037b95be506b15a2b691d7a308d9ad6d4ad3a59a`. Full operator-reported details `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`. Engine source uncommitted, gates not promoted.
