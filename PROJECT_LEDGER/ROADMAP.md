@@ -1,3 +1,9 @@
+## CURRENT 2026-10-30 — E2-C0 COMPLETED; E2-C1 proof-first design next
+
+E2-C0, E2-C0-B, E2-C0-C single-year cProfile and direct nested caller attribution PASS (operator logs, exact original 61-record/year hash parity at 101/501/751). ~73.3% of profiled Y751 wall is regional encode/decode plus history-independent canonical encode; includes integrity operations and cannot be assumed removable. Next design lossless frontier projection without copying soon-discarded annual history, reuse B0 HistoryStore/retention/replay/query, then exhaustive 0..1000 historical snapshot parity and bounded implementation benchmarks. See `PROJECT_LEDGER/R6_INT10K_E2C0_C_NESTED_CALLERS_20261030.md` and `NEXT_ACTION.md`. E2-D1 optimized runtime JSON/checkpoint clones after correctness; E2-D2 controlled parallelism later. World History production/solver/forward authority unchanged.
+
+---
+
 ## CURRENT — 2026-10-30 E2-C0 single-year CPU profile and oracle parity PASS
 
 FAIR engineering-only evidence E2_C0_REFERENCE_PARITY=PASS for years 101/501/751 (61 record kind+payload hashes/year), resumed from existing checkpoints. Profile root INT10K_E2C0_PROFILE_Piy2PjHo. Profiled wall ~0.080/0.203/0.279 s; json.dumps 110 calls/year and json.loads 12 calls/year, encode+decode ~79%,86%,87% of profiled time with growing data; unified numerical inner execution ~20 ms/year stable. Important: cProfile and hash-only consumer do not reproduce full JSONL I/O costs. Full source/limits/next in PROJECT_LEDGER/R6_INT10K_E2C0_CPROFILE_PARITY_20261030.md. NEXT E2-C0-B direct callers from saved pstats, no rerun; then B0-store-aware lossless E2-C1 schema. Engine SHA 9dce77b5... FAIR-local, separate from GitHub documentation; production/canonical authority unchanged.
