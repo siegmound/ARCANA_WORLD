@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 E2-C2-B1_V2=PASS_EXACT_VIRTUAL_REGIONAL_SNAPSHOT_DELTA_RECONSTRUCTION from FAIR operator. 1001 exact reconstructed snapshots, 1000 annual records, 11000 appended deposits/matched nested events. Virtual 9055299 bytes vs original regional snapshot payload 1774346125 bytes (0.5103% retained); snapshot ONLY, no persistent archive, external events/Unified/Deep not yet all verified, B0 store not integrated. Full history not yet rehashed. B1 report PROJECT_LEDGER/R6_INT10K_E2C2_B1_V2_FAIR_EXACT_VIRTUAL_DELTA_PASS_20261030.md. B2-A full original-history SHA + standalone event and Unified Deep read-only audit prepared SHA ac53f0d..., local synthetic PASS, FAIR NOT RUN. B2 gate PROJECT_LEDGER/R6_INT10K_E2C2_B2A_FULL_HISTORY_EVENT_UNIFIED_AUDIT_GATE_20261030.md. All canonical, scientific, solver and production authorizations remain FALSE.
+
+---
+
 CURRENT 2026-10-30 E2-C2-B1 blocked on runner/API signature mismatch. V1 B1 self-test PASS but full script raises TypeError missing `root` at first a3.original_index() call; zero historical reconstruction verdict. V2 script prepared SHA fc86a84c46339781c1e1f135728644261f7664b0223757e8a26aa0a8a56aaa1f and validated Python compile + actual A3 selftest + bounded mock integration; not run on FAIR. A3 1001 snapshot/1000 record append-only deposit oracle PASS remains valid. See PROJECT_LEDGER/R6_INT10K_E2C2_B1_V1_API_MISMATCH_AND_V2_FAIR_RECOVERY_20261030.md. E2-C2 delta architecture not yet qualified, scientific/production gates false.
 
 ---
