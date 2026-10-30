@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 B2B2 FAIR scratch 3Y10Y PASS source SHA 70ba6070..., A/B two implementation layouts with real HistoryStore per-year commits and source exact reconstruction. At 10Y A 2316406B/626 files, B 1591834B/36 files; views A 257672B vs B 13647B. Full figures and scope in PROJECT_LEDGER/R6_INT10K_E2C2_B2B2_FAIR_SCRATCH_COMPARISON_PASS_B2B3F_CRASH_GATE_20261030.md. All 4 temporary stores automatically removed, original 1000Y untouched. B2B3F six-stage killed-child scratch recovery script SHA 3596da70... prepared, not FAIR executed. Subsequent 100Y growth test separate.
+
+---
+
 2026-10-30: B2B1 FAIR 174 typed EventRecord samples Y1/Y2/Y10, source global sequence exact, 24 source null years retained, 4 states and 9 temporal validated; no store writes. Script 539e18d5...; E2C2_B2B1 PASS. Next B2B2 scratch 3Y/10Y script SHA 70ba6070..., ZIP fa1ccf7..., local selftest PASS but no FAIR runtime yet. Documentation: PROJECT_LEDGER/R6_INT10K_E2C2_B2B1_FAIR_TYPED_DRYRUN_PASS_B2B2_SCRATCH_COMPARISON_GATE_20261030.md.
 
 ---
