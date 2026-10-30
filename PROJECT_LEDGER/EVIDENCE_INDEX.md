@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 B2B3F FAIR six-stage subprocess crash fault recovery PASS. All six child os._exit(79) boundaries verified rollback-before / idempotent commit-after, pinned old readers preserved, source exact 3 snapshot and 116 events, zero active journals, scratch auto removed. No power-loss qualification. Next B2B3S 100Y B annual bundle scratch read-view growth/query runner SHA cf58191d62fd41091ea1cc217dc45182509457bdc07886cc9e62352f33fa3324, local compile/pure tests PASS, FAIR not run. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B3F_FAIR_SIX_STAGE_CRASH_PASS_B2B3S_100Y_GATE_20261030.md.
+
+---
+
 CURRENT 2026-10-30 B2B2 FAIR scratch 3Y10Y PASS source SHA 70ba6070..., A/B two implementation layouts with real HistoryStore per-year commits and source exact reconstruction. At 10Y A 2316406B/626 files, B 1591834B/36 files; views A 257672B vs B 13647B. Full figures and scope in PROJECT_LEDGER/R6_INT10K_E2C2_B2B2_FAIR_SCRATCH_COMPARISON_PASS_B2B3F_CRASH_GATE_20261030.md. All 4 temporary stores automatically removed, original 1000Y untouched. B2B3F six-stage killed-child scratch recovery script SHA 3596da70... prepared, not FAIR executed. Subsequent 100Y growth test separate.
 
 ---
