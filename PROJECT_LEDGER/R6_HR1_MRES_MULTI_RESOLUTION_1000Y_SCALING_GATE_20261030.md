@@ -21,7 +21,7 @@ At the 2K tier, one uncompressed 8-byte scalar per cell per 1000 annual records 
 
 - **HR1-MRES-A read-only capability audit:** inspect local FAIR dirty R1/R2/REC1/L1 source SHA, POST10K-A0 and synthetic 10k evidence, actual approved providers. Existing nine-cell unlocated regional 1 km² basin and C028/C029 1° support columns with 73 nodes each are NOT a genuine 2K global numerical solver. Do not upsample/copy these as if independent source states; missing physical climate, chemistry, species/populations and Deep global fields are UNKNOWN.
 - **HR1-MRES-B actual measured metadata and array workload on each of all six tiers:** use the same deterministic, explicitly SYNTHETIC_WORKLOAD_ONLY data generator; tiled numeric arrays, actual geometries, typed fields/masks/units and source provenance, lossless compact journal, sparse events and NULL, content hashes, index, atomic B0 paired checkpoint, exact queries/reopen. Never allocate billions of Python dictionaries. Include **common baseline payload profile 64 bytes/cell-year**, plus separate sensitivities 256/1024 bytes and explicitly declared changed-cell/event sparsity where useful. Test actual 1-year, 10-year, 100-year windows, and progress to full 1000Y metadata workload at each resolution where qualified and permissible. **A 1000Y estimate is not a measured 1000Y test**. No fake PASS for unexecuted horizons.
-- **HR1-MRES-C conditional real 1000Y planetary-grid physics:** only if an independently qualified spatial numerical provider, compatible georeferenced inputs/forcing, conservative global boundaries/fluxes, stability and recovery exist. The prior owner request is to attempt one true high-resolution 1000Y target if these are established. Otherwise explicitly `HR1_MRES_PHYSICS_1000Y=BLOCKED_TRUE_GLOBAL_GRID_PHYSICS_OR_INPUTS_UNAVAILABLE`; a synthetic writer is not planetary physics. No unreviewed operator-law changes, long 10k/100k, or automatic retry.
+- **HR1-MRES-C conditional real 1000Y planetary-grid physics:** only if an independently qualified spatial numerical provider, compatible georeferenced inputs/forcing, conservative global boundaries/fluxes, stability and recovery exist. The revised owner request is a six-tier comparison: if those capabilities are genuinely qualified across all six meshes, execute one authentic 1000Y physical trajectory per tier in increasing resolution with isolated results, consistent declared physics and timestep-validation per mesh. A blocker at a tier stops progression and preserves measured lower-tier results; do not auto-retry. Otherwise explicitly `HR1_MRES_PHYSICS_1000Y=BLOCKED_TRUE_GLOBAL_GRID_PHYSICS_OR_INPUTS_UNAVAILABLE`; a synthetic writer is not planetary physics. No unreviewed operator-law changes, long 10k/100k, or automatic retry.
 - Record source/test SHA and new exclusive evidence roots; preserve original FAIR dirty source and all previous archives without reset/pull/merge/auto-commit/push.
 
 ## Required measured comparison
@@ -33,7 +33,7 @@ Per tier x actual years x payload/event profile: wall launch-to-exit; CPU user/s
 ```yaml
 HR1_MRES_POLICY: USER_REQUESTED_SIX_LEVEL_RESOLUTION_LADDER
 HR1_MRES_WORKLOAD: NOT_EXECUTED
-HR1_MRES_PHYSICS_1000Y: CONDITIONALLY_AUTHORIZED_IF_GENUINE_QUALIFIED_PROVIDER_EXISTS
+HR1_MRES_PHYSICS_1000Y: CONDITIONAL_SIX_TIER_SUITE_IF_GENUINE_QUALIFIED_GLOBAL_PROVIDER_EXISTS
 ORIGINAL_10K_AND_A0_EVIDENCE: IMMUTABLE
 AUTO_COMMIT_OR_PUSH: false
 WORLD_HISTORY_PRODUCTION_AUTHORIZED: false
