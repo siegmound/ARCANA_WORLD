@@ -1,3 +1,9 @@
+# CURRENT NEXT — E2-C1 R3 local commit, then R4 bounded 3Y/10Y qualification (2026-10-30)
+
+**R3 independent audit PASS**: 15 manifest members verified, 3 source files exact, original 1000Y oracle unchanged, focused diff reviewed, 104 PASS and R2 fail-closed remediated in 3 negative paths. Assistant review authorizes ONLY a local 3-file R3 source commit on existing FAIR worktree `r6/e2c1-frontier-projection-r1-fair` (HEAD 9dce77b5...), subject to staged diff and tests; no merge/push/science authority. Run prepared R4 Python short qualification (`arcana_e2c1_r4_3y10y_committed_gate.py` SHA256 `eb9ed93973c9c61911b3f56b455396fa59fd595a0f02c8de211eba84f0a1a177`) only **after** clean one-child local commit. 3Y direct vs1+2 and 10Y direct vs5+5 with `history_independent_continuation=True`, original 1000Y INDEX SHA by kind, exact checkpoint/deep/material balance. On BLOCKED diagnose rather than patch-stack. Do not re-run 1000Y. Plan and caveats: `PROJECT_LEDGER/R6_INT10K_E2C1_R3_INDEPENDENT_AUDIT_AND_R4_3Y10Y_GATE_20261030.md`. R4 is PREPARED_NOT_EXECUTED; local commit SHA unknown. All production/forward/solver gates remain closed.
+
+---
+
 # CURRENT NEXT — R3 independent evidence/source audit, then commit qualification decision (2026-10-30)
 
 R3 operator reports `E2C1_R3_GATE=PASS_PARITY_AND_FAIL_CLOSED_SOURCE_UNCOMMITTED`, `104 passed`, exact 3×7 one-year oracle replay and checkpoint parity, negative NaN injection rejected for REGIONAL_SNAPSHOT/YEAR_RECORD/EVENT. FAIR output `INT10K_E2C1_R3_FAILCLOSED_FFTmihHU`; source branch `r6/e2c1-frontier-projection-r1-fair` and HEAD `9dce77b5...` still intentionally UNCOMMITTED with three file changes. Net wall reductions vs original 3.84%/3.45%/5.98% at y101/501/751; smaller than R1 but restored scoped fail-closed validation. Read `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`.
