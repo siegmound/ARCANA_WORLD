@@ -1,3 +1,9 @@
+## CURRENT 2026-10-30: E2-C0-C operator FAIR caller-edge report
+
+`E2_C0_NESTED_CALLERS=COMPLETE` via existing `INT10K_E2C0_PROFILE_Piy2PjHo/PROFILE_YEAR_{101,501,751}.pstats`; exact tables PROJECT_LEDGER/R6_INT10K_E2C0_C_NESTED_CALLERS_20261030.md. Original 1000Y SHA256 `e56f02c726856fd976a3a49b037b95be506b15a2b691d7a308d9ad6d4ad3a59a`, FAIR local code SHA `9dce77b5...`; originals not mounted/rehashed in this documentation session. Prior one-year parity PASS, no new run or authority.
+
+---
+
 ## CURRENT — 2026-10-30 E2-C0 single-year CPU profile and oracle parity PASS
 
 FAIR engineering-only evidence E2_C0_REFERENCE_PARITY=PASS for years 101/501/751 (61 record kind+payload hashes/year), resumed from existing checkpoints. Profile root INT10K_E2C0_PROFILE_Piy2PjHo. Profiled wall ~0.080/0.203/0.279 s; json.dumps 110 calls/year and json.loads 12 calls/year, encode+decode ~79%,86%,87% of profiled time with growing data; unified numerical inner execution ~20 ms/year stable. Important: cProfile and hash-only consumer do not reproduce full JSONL I/O costs. Full source/limits/next in PROJECT_LEDGER/R6_INT10K_E2C0_CPROFILE_PARITY_20261030.md. NEXT E2-C0-B direct callers from saved pstats, no rerun; then B0-store-aware lossless E2-C1 schema. Engine SHA 9dce77b5... FAIR-local, separate from GitHub documentation; production/canonical authority unchanged.
