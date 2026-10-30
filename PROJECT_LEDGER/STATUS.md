@@ -1,3 +1,7 @@
+CURRENT 2026-10-30: E2-C2-B2A FAIR full original 1.916GB HISTORY SHA PASS, 58000 external event envelope SHA PASS, 1000 UNIFIED_STEP Deep envelope SHA PASS, annual event multiset exact for all 1000 years. Source event time: 50000 dated, 8000 null HYDRAULIC_DIAGNOSTIC retained as null. No new archive written. B2-B draft typed HistoryStore adapters and tradeoffs; B2-B0 read-only API preflight script SHA 609aec03... locally compiled/selftested, FAIR pending. Refer to PROJECT_LEDGER/R6_INT10K_E2C2_B2A_FAIR_FULL_HISTORY_PASS_20261030.md and PROJECT_LEDGER/R6_INT10K_E2C2_B2B_TYPED_HISTORYSTORE_ADAPTER_CONTRACT_DRAFT_20261030.md. No physics or canonical authorizations.
+
+---
+
 CURRENT 2026-10-30 E2-C2-B1_V2=PASS_EXACT_VIRTUAL_REGIONAL_SNAPSHOT_DELTA_RECONSTRUCTION from FAIR operator. 1001 exact reconstructed snapshots, 1000 annual records, 11000 appended deposits/matched nested events. Virtual 9055299 bytes vs original regional snapshot payload 1774346125 bytes (0.5103% retained); snapshot ONLY, no persistent archive, external events/Unified/Deep not yet all verified, B0 store not integrated. Full history not yet rehashed. B1 report PROJECT_LEDGER/R6_INT10K_E2C2_B1_V2_FAIR_EXACT_VIRTUAL_DELTA_PASS_20261030.md. B2-A full original-history SHA + standalone event and Unified Deep read-only audit prepared SHA ac53f0d..., local synthetic PASS, FAIR NOT RUN. B2 gate PROJECT_LEDGER/R6_INT10K_E2C2_B2A_FULL_HISTORY_EVENT_UNIFIED_AUDIT_GATE_20261030.md. All canonical, scientific, solver and production authorizations remain FALSE.
 
 ---
