@@ -1,3 +1,9 @@
+## CURRENT — 2026-10-30 E2-C1-R3 PASS scoped fail-closed/parity, source not committed
+
+R2 regression reproducibly accepted mutated excluded NaN; R3 remediation operator PASS: 104 tests, negative consumer mutations to REGIONAL_SNAPSHOT, REGIONAL_YEAR_RECORD, REGIONAL_EVENT rejected ValueError; 3×7 y101/501/751 stream, snapshot, checkpoint hashes exact to immutable 1000Y oracle. R3 median 65.459/174.597/241.754ms versus original 68.076/180.835/257.135ms (3.84/3.45/5.98% faster), but slower than R1, a measured correctness/performance tradeoff. Evidence root `INT10K_E2C1_R3_FAILCLOSED_FFTmihHU`. All from operator stdout; rehash manifest independently before source promotion. 3 local files dirty/untracked, source HEAD unchanged. `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`. Next read-only final audit and bounded 3Y/10Y contract; no scientific/canonical authorization.
+
+---
+
 ## CURRENT — 2026-10-30 R2 excluded-history acceptance BUG REPRODUCED; R3 pending
 
 FAIR operator `INT10K_E2C1_R2_NEGATIVE_bBw3W4k1` reports `E2C1_R2_EXCLUDED_HISTORY_SEMANTIC_GAP=REPRODUCED` and `E2C1_R2_SOURCE_AND_ORACLE_UNCHANGED=PASS`. Positive R1 (76 tests, 3x7 exact 61-record/year replay, 6.8/9.4/11.5% median speedup) remains independently recorded but generalized semantic acceptance is **BLOCKED**: `history_consumer` can mutate archived snapshot after its prior JSON validation, so selective projection no longer rejects NaN from excluded history. **No R1 commit.** E2-C1-R3 source-hardening script prepared SHA256 8ccd9ac76ec3a47390dc77f8db1f835fa58f51c32ead56f92e401ed777006641, not yet executed on FAIR. It validates excluded history without JSON decode and reruns fail-closed plus oracle parity before speed claims. Full contract `PROJECT_LEDGER/R6_INT10K_E2C1_R2_NEGATIVE_AND_R3_FAILCLOSED_GATE_20261030.md` and `NEXT_ACTION.md`. All science/canonical/forward gates remain false.
