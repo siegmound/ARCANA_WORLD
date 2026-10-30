@@ -1,3 +1,7 @@
+CURRENT (2026-10-30) E2-C1_QUALIFIED_SYNTHETIC_SCOPE=PASS; E2-C2-A1 ACTIVE. Operator independently verified R4 four-manifest-members SHA/bytes, source commit, clean worktree and unchanged 1000Y original; 104 regressions and exact per-kind 3Y/10Y oracle. FAIR engine local commit 2c71370e... not pushed; GitHub documentation branch separate. Closed gate report PROJECT_LEDGER/R6_INT10K_E2C1_R4_INDEPENDENT_AUDIT_SEALED_20261030.md. E2-C2-A source and B0 API inventory PROJECT_LEDGER/R6_INT10K_E2C2_A_SOURCE_API_INVENTORY_20261030.md; next original archive INDEX/HISTORY schema discovery on FAIR, not source implementation. No scientific/canonical/solver/forward authority.
+
+---
+
 ## CURRENT — 2026-10-30 E2-C1 R4 3Y/10Y history-independent oracle PASS, manifest independent audit pending
 
 Operator verified V2 runner SHA f0a1aa14... and reported R4 PASS: 104 pytest; direct & segmented 3Y 1+2 and 10Y 5+5 exact per-kind 1000Y archive payload-hash prefix (184/611 records), terminal checkpoint, subsurface and balances. Source FAIR commit 2c71370eb9a959c78121ce1c88ec8e9e37187787 published **only locally**, R3 fail-closed positive+negative and manifest audits already PASS. Success evidence `INT10K_E2C1_R4_3Y10Y_tqei5685`; R4 manifest created, independent 4-member check still needed. Ref `PROJECT_LEDGER/R6_INT10K_E2C1_R4_FAIR_3Y10Y_OPERATOR_PASS_20261030.md`. E2-C2 lossless B0 HistoryStore architectural scope `PROJECT_LEDGER/R6_INT10K_E2C2_LOSSLESS_ARCHIVAL_DESIGN_GATE_20261030.md`. No science/forward/canonical production authorization.
