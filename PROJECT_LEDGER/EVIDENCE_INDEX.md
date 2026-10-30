@@ -1,3 +1,7 @@
+2026-10-30: B2B1 FAIR 174 typed EventRecord samples Y1/Y2/Y10, source global sequence exact, 24 source null years retained, 4 states and 9 temporal validated; no store writes. Script 539e18d5...; E2C2_B2B1 PASS. Next B2B2 scratch 3Y/10Y script SHA 70ba6070..., ZIP fa1ccf7..., local selftest PASS but no FAIR runtime yet. Documentation: PROJECT_LEDGER/R6_INT10K_E2C2_B2B1_FAIR_TYPED_DRYRUN_PASS_B2B2_SCRATCH_COMPARISON_GATE_20261030.md.
+
+---
+
 CURRENT 2026-10-30 B2B0 FAIR typed source API preflight PASS with source sha 609aec03..., no writes, original manifest and seven B0 module hashes unchanged. Source git 2c71370e... FAIR local. Next B2B1 artifact script 539e18d5..., ZIP 7193765d..., local selftest PASS, actual typed/original 174-event FAIR test NOT RUN. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B0_FAIR_SOURCE_API_PASS_B2B1_TYPED_DRYRUN_GATE_20261030.md.
 
 ---
