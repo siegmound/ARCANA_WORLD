@@ -1,3 +1,9 @@
+## CURRENT 2026-10-30 — E2-C1 qualified by runner 3Y/10Y, independent manifest audit next; E2-C2 design opened
+
+FAIR R4 synthetic 3Y direct/1+2, 10Y direct/5+5 history-independent by-kind exact oracle: PASS 104 tests, records 184/611; source local commit 2c71370e... unpushed. Short-run gate result `PROJECT_LEDGER/R6_INT10K_E2C1_R4_FAIR_3Y10Y_OPERATOR_PASS_20261030.md`; immutable 1000Y original retained. Independent manifest audit before final formal E2-C1 scope seal. E2-C2-A source/schema inventory, E2-C2-B event/deposit delta grammar, E2-C2-C adapter to B0 HistoryStore with transaction/committed view, E2-C2-D deterministic queries/refinement and E2-C2-E exhaustive 0..1000 oracle and performance. **Do not assume DEPOSITION events contain full deposit object/provenance; need lossless supplemental delta**. Design `PROJECT_LEDGER/R6_INT10K_E2C2_LOSSLESS_ARCHIVAL_DESIGN_GATE_20261030.md`; engineering only and authority flags unchanged.
+
+---
+
 ## CURRENT 2026-10-30 — E2-C1-R3 PASS, E2-C1 promotion still gated
 
 R2 negative bug (mutated excluded history accepted) reproduced; R3 fail-closed validation and 104 regression tests PASS, exact 3×7 historic checkpoint/oracle parity PASS, local source uncommitted. 7-repeat median wall vs original reduced ~3.84%/3.45%/5.98% at 101/501/751, slower than R1 because full excluded-history canonical JSON validation added; 3×3 engineering-only, no full writer benchmark. **Next:** audit R3 manifest and local diff, then deliberate source commit decision plus bounded 3Y/10Y oracle. Then E2-C2 event/deposit delta + B0 HistoryStore adapter to avoid O(T²) archived snapshots; E2-D1 and D2 after correctness. Full report `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`. Science/solver/production authority unchanged.
