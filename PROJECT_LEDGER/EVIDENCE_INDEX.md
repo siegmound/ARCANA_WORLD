@@ -1,3 +1,9 @@
+## CURRENT — E2-C1-R3 FAIR success evidence, operator output 2026-10-30
+
+`INT10K_E2C1_R3_FAILCLOSED_FFTmihHU` contains `FILE_MANIFEST_R3.json`, `PARITY_R3.json`, `PYTEST_R3.log`, `NEGATIVE_R3.log`, `R3_SOURCE_DIFF.patch`, `R1_BASELINE_RESULT.json`, `R3_CANDIDATE_RESULT.json` and supporting artifacts from guarded R3 script. Operator marker E2C1_R3_EVIDENCE_MANIFEST=PASS; **independent rehash on FAIR still pending**, and files not downloaded into ledger writer. The output original 1000Y manifest SHA is `e56f02c726856fd976a3a49b037b95be506b15a2b691d7a308d9ad6d4ad3a59a`. Full operator-reported details `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`. Engine source uncommitted, gates not promoted.
+
+---
+
 ## CURRENT 2026-10-30 — E2-C1 FAIR gate operator result (not independently rehashed)
 
 Source SHA runner `388668c0741b6ad45d475091284965df7db46abb0b13f50b562b8ef55be55991`. Initial BLOCKED evidence `INT10K_E2C1_FRONTIER_PROJECTION_I4rtb1Fb` (NumPy environment absent); completed PASS `INT10K_E2C1_FRONTIER_PROJECTION_qLSPnKHS`, 3×7 baseline/candidate exact history/checkpoint parity, 76 tests PASS; code remains uncommitted FAIR local. Check `FILE_MANIFEST.json` and original 1000Y manifest on FAIR before independent integrity claim. See PROJECT_LEDGER/R6_INT10K_E2C1_FAIR_GATE_OPERATOR_RESULT_20261030.md. Excluded-invalid-history acceptance gap remains open. No canonical authority.
