@@ -54,3 +54,12 @@ ARCANA_SI1_MECHANICS_QUALIFIED: false
 ```
 
 Sources: FAIR `docs/arcana/R6_RUNTIME_R2_STRUCTURAL_FAIR_20261030.md` and `docs/arcana/R6_RUNTIME_COPY_R1_FAIR_20261030.md`; GitHub ledger `PROJECT_LEDGER/R6_INT10K_RUNTIME_R2_BOUNDED_PASS_1000Y_RUN_GATE_20261030.md`.
+
+
+## Addendum — operator permission for session-58727 (2026-10-30)
+
+Following the previously established user authorization for a **single new R2 synthetic 1000Y trajectory**, Codex reported current FAIR interactive `session-58727` while previous interactive attestation concerned `session-58509`. The user has now explicitly clarified: **"ti dico io che puoi fare la esecuzione"**. Interpret as **ACCOUNT_HOLDER_EXECUTION_PERMISSION_CONFIRMED_FOR_CURRENT_SESSION_58727** for exactly that already approved benchmark. Do not ask this user for an additional authorization, repeat the same question, or incorrectly treat the prior session ID as an immutable numerical oracle.
+
+**Important distinction:** user permission does not constitute an independently verified FAIR site scheduling policy, allocation, administrator attestation, or reserved CPU quota. The previous session-58509 attestation **must not** be relabeled as site certification for session-58727. P0.2 requires an operational assessment of the current environment: check hostname, scheduler/job/allocation variables, cgroup/cpuset/quota, local cluster documentation/terms where available, node role (login or compute), and actual file/job quotas. Run in the current session if execution is permitted by verified local policy or established authorized allocation; if the site requires scheduled compute jobs, submit/use the proper allocated compute job instead. Do not invent a requirement for separate administrator approval unless an actual rule calls for it.
+
+If local site permission **cannot be established**, mark `P0_2=BLOCKED_SITE_EXECUTION_CONTEXT_UNVERIFIED` with the exact missing evidence; do not claim the user permission alone resolves site rules or silently bypass scheduler policy. If the required allocation is present/verified, mark `P0_2=PASS_VERIFIED_EXECUTION_CONTEXT` and proceed without further user confirmation to the one approved R2 1000Y experiment, subject to all other gates. `R2_10K_EXECUTION_AUTHORIZED=false` remains unchanged. Never run a second 1000Y job on failure without authorization.
