@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 B2B0 FAIR typed source API preflight PASS with source sha 609aec03..., no writes, original manifest and seven B0 module hashes unchanged. Source git 2c71370e... FAIR local. Next B2B1 artifact script 539e18d5..., ZIP 7193765d..., local selftest PASS, actual typed/original 174-event FAIR test NOT RUN. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B0_FAIR_SOURCE_API_PASS_B2B1_TYPED_DRYRUN_GATE_20261030.md.
+
+---
+
 CURRENT 2026-10-30 original 1000Y HISTORY raw SHA verified completely by FAIR B2-A, 61001 rows; 58000 standalone regional event payload SHA PASS, 1000 Unified Deep PASS, 1000 annual multiset exact; all 8000 null-time HYDRAULIC_DIAGNOSTIC remain null. See PROJECT_LEDGER/R6_INT10K_E2C2_B2A_FAIR_FULL_HISTORY_PASS_20261030.md. B2-B0 source-only typed store contract preflight SHA 609aec03... prepared, not executed FAIR. Immutable original unchanged.
 
 ---
