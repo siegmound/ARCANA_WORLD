@@ -1,3 +1,9 @@
+## CURRENT 2026-10-30 — E2-C1 scoped performance PASS / promotion pending
+
+Guarded FAIR test at local source branch r6/e2c1-frontier-projection-r1-fair: 76 regressions PASS, exact 3×7 single-year history/checkpoint oracle parity PASS, ~6.8/9.4/11.5% median speedup at 101/501/751; no full 1000Y rerun. Source uncommitted. Separate unresolved fail-closed behavior for malformed excluded history requires negative-case contract review, then manifest audit and decision about commit. E2-C2 event/delta HistoryStore adapter is later and distinct. Ref PROJECT_LEDGER/R6_INT10K_E2C1_FAIR_GATE_OPERATOR_RESULT_20261030.md.
+
+---
+
 ## CURRENT 2026-10-30 — E2-C0 COMPLETED; E2-C1 proof-first design next
 
 E2-C0, E2-C0-B, E2-C0-C single-year cProfile and direct nested caller attribution PASS (operator logs, exact original 61-record/year hash parity at 101/501/751). ~73.3% of profiled Y751 wall is regional encode/decode plus history-independent canonical encode; includes integrity operations and cannot be assumed removable. Next design lossless frontier projection without copying soon-discarded annual history, reuse B0 HistoryStore/retention/replay/query, then exhaustive 0..1000 historical snapshot parity and bounded implementation benchmarks. See `PROJECT_LEDGER/R6_INT10K_E2C0_C_NESTED_CALLERS_20261030.md` and `NEXT_ACTION.md`. E2-D1 optimized runtime JSON/checkpoint clones after correctness; E2-D2 controlled parallelism later. World History production/solver/forward authority unchanged.
