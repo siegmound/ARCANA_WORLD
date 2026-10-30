@@ -1,3 +1,9 @@
+## CURRENT — 2026-10-30 E2-C1 R3 independent audit PASS, R4 NOT YET RUN
+
+Operator audit confirms `E2C1_R3_INDEPENDENT_EVIDENCE_AUDIT=PASS`, 15 manifest members, 3 file SHA and length checks, original 1000Y source oracle unchanged. R3 104 tests and exact checkpoint/stream one-year parity PASS; scope-injected historical NaN rejected. Source diff 24 additions/4 deletions contains only history-free frontier projection helper and call replacement, no physics changes. Next local commit limited to regional source plus 2 tests, then new R4 3Y/10Y history-independent qualification; no commit/push on behalf of FAIR user, no automatic promotion. Read `PROJECT_LEDGER/R6_INT10K_E2C1_R3_INDEPENDENT_AUDIT_AND_R4_3Y10Y_GATE_20261030.md`. Engineering only.
+
+---
+
 ## CURRENT — 2026-10-30 E2-C1-R3 PASS scoped fail-closed/parity, source not committed
 
 R2 regression reproducibly accepted mutated excluded NaN; R3 remediation operator PASS: 104 tests, negative consumer mutations to REGIONAL_SNAPSHOT, REGIONAL_YEAR_RECORD, REGIONAL_EVENT rejected ValueError; 3×7 y101/501/751 stream, snapshot, checkpoint hashes exact to immutable 1000Y oracle. R3 median 65.459/174.597/241.754ms versus original 68.076/180.835/257.135ms (3.84/3.45/5.98% faster), but slower than R1, a measured correctness/performance tradeoff. Evidence root `INT10K_E2C1_R3_FAILCLOSED_FFTmihHU`. All from operator stdout; rehash manifest independently before source promotion. 3 local files dirty/untracked, source HEAD unchanged. `PROJECT_LEDGER/R6_INT10K_E2C1_R3_FAIR_FAILCLOSED_PARITY_PERF_RESULT_20261030.md`. Next read-only final audit and bounded 3Y/10Y contract; no scientific/canonical authorization.
