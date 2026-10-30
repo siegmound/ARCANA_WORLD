@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 A3 FAIR exhaustive authenticated 1001 REGIONAL_SNAPSHOT plus 1000 REGIONAL_YEAR_RECORD, 1000 adjacent year transitions, deposit prefix append only, 11000 additions matched to nested DEPOSITION events: PASS. Snapshot indexed bytes 1774502989, annual indexed bytes 28217835, original INDEX + MANIFEST SHA PASS, full HISTORY SHA and external 58000 event/1000 UNIFIED payloads not rehashed. External event index time_year: 50000 dated, 8000 null. Detailed evidence PROJECT_LEDGER/R6_INT10K_E2C2_A3_EXHAUSTIVE_DEPOSIT_HISTORY_PASS_20261030.md. Next read-only B1 virtual reconstruction script SHA 12a669a5193f5945c3174ede7a6d7ca5bdf9837a8121a1ab59c9fccce17dfbb9 prepared, not yet run FAIR. B1 concept PROJECT_LEDGER/R6_INT10K_E2C2_B1_VIRTUAL_LOSSLESS_DELTA_GATE_20261030.md.
+
+---
+
 CURRENT 2026-10-30 E2-C2-A2 FAIR sampled archived history PASS: original INDEX full SHA and contiguous offset PASS, 40 selected canonical envelope and payload SHA PASS at 14 years, 9 sampled adjacent years deposit prefix exact (11 new each), all 9 cell IDs and deposit keys verified in sample anchors, final y1000 deposit 11000. HISTORY original total length checked, not all 1.916GB rehashed. See PROJECT_LEDGER/R6_INT10K_E2C2_A2_AUTHENTICATED_SAMPLES_PASS_A3_ALLYEAR_GATE_20261030.md. E2-C2-A3 exhaustive audit prepared SHA 388d1731... and mock-tested, NOT FAIR run. All original evidence immutable.
 
 ---
