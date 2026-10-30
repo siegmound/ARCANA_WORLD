@@ -59,3 +59,17 @@ HistoryStore does not currently transactionally publish arbitrary content-addres
 ## Invariant public marker
 
 `E2C2_B2B=DESIGN_DRAFT__STORAGE_AND_QUERY_SHAPE_UNSELECTED`; no guarantee of query correctness or disk compression is granted. Operators must not merge docs branch into FAIR source branch, upload/push engine source, rewrite historical reference, or rerun solver.
+
+## Concrete B2-B0 non-writing FAIR preflight prepared (as of 2026-10-30)
+
+A separate standard-library AST-only script has been created and local Python compiled/self-tested (but **not executed against FAIR source yet**):
+
+- `arcana_e2c2_b2b0_readonly_api_preflight.py` SHA256 `609aec03aa7c0c82ba2f56b21d3247089a7d44a1f3c102b4660ee337d8fa456b`.
+- Package `ARCANA_E2C2_B2B0_READONLY_FAIR_PACKAGE.zip` SHA256 `353b86fc47eca941ab1581c463014c769e61b2b8536d1734dc9d39467fd220e9`.
+- README `ARCANA_E2C2_B2B0_README.md` SHA256 `4533f70f010e4f2e68b33dcc5cc2f30576918f366fb8d4088859b601a7fc0a89`.
+- These are current chat sandbox artifacts only and are **not** source Git commits or remote FAIR files. Python compile and `--self-test` PASS locally; ZIP integrity PASS.
+- Operator copies just the script beside other probes into `~/HPC-POMDP/Arcana`, checks its SHA, runs `python arcana_e2c2_b2b0_readonly_api_preflight.py --self-test` then `python arcana_e2c2_b2b0_readonly_api_preflight.py`.
+- Script verifies FAIR exact child HEAD `2c71370eb9a959c78121ce1c88ec8e9e37187787`, parent and source branch/clean status; pins original 1000Y manifest SHA; AST-inspects seven real B0 modules without importing/instantiating a store, verifies exact typed transaction acceptance, `expected_parent_view_id`, read-view and temporal/causal fields, and confirms native event ordering is by record_id rather than source sequence. Prints source module SHA256.
+- Expected actual FAIR success marker, **not observed yet**: `E2C2_B2B0=PASS_READ_ONLY_TYPED_HISTORYSTORE_API_PREFLIGHT`.
+- Script does not certify runtime transaction atomics or persistent size; B2-B1/B2 scratch store work remains unauthorized until this preflight and contract adjudication.
+
