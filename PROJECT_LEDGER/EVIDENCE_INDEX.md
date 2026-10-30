@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 E2-C2-A2 FAIR sampled archived history PASS: original INDEX full SHA and contiguous offset PASS, 40 selected canonical envelope and payload SHA PASS at 14 years, 9 sampled adjacent years deposit prefix exact (11 new each), all 9 cell IDs and deposit keys verified in sample anchors, final y1000 deposit 11000. HISTORY original total length checked, not all 1.916GB rehashed. See PROJECT_LEDGER/R6_INT10K_E2C2_A2_AUTHENTICATED_SAMPLES_PASS_A3_ALLYEAR_GATE_20261030.md. E2-C2-A3 exhaustive audit prepared SHA 388d1731... and mock-tested, NOT FAIR run. All original evidence immutable.
+
+---
+
 CURRENT (2026-10-30): E2-C1 final FAIR independent PASS. INT10K_E2C1_R4_3Y10Y_tqei5685 FILE_MANIFEST_R4 four members SHA+length verified, 3Y 1+2/10Y 5+5 exact per-kind oracle and checkpoint/balances, source local commit 2c71370e... matched and clean, original 1000Y manifest e56f02c7... unchanged. E2-C1 synthetic scope SEALED. See PROJECT_LEDGER/R6_INT10K_E2C1_R4_INDEPENDENT_AUDIT_SEALED_20261030.md. E2-C2 source/API inventory PROJECT_LEDGER/R6_INT10K_E2C2_A_SOURCE_API_INVENTORY_20261030.md; index field schema not yet proven by A1. No new numerical run.
 
 ---
