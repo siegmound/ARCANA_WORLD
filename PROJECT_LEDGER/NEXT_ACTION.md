@@ -1,3 +1,9 @@
+# CURRENT NEXT — Execute guarded E2-C1 FAIR test package, then review (2026-10-30)
+
+**Status:** `E2C1_GATE_PREPARED__FAIR_EXECUTION_PENDING`. Read `PROJECT_LEDGER/R6_INT10K_E2C1_FRONTIER_PROJECTION_GATE_PLAN_20261030.md` before touching source. Runner `arcana_e2c1_fair_gate.sh` SHA256 `388668c0741b6ad45d475091284965df7db46abb0b13f50b562b8ef55be55991` delivered as conversation artifact, not on FAIR/GitHub. On clean FAIR base branch `r6/geometry-ulp-r1-fair` at `9dce77b5...`, run only after source SHA and 1000Y original manifest have been verified; script compares baseline and candidate 3×7 one-year exact-replay hashes before/after localized history-free checkpoint projection, runs targeted regressions, opens `r6/e2c1-frontier-projection-r1-fair` without commit or push. Collect output marker `E2C1_GATE=PASS_PARITY_SOURCE_UNCOMMITTED` or BLOCKED and diff/log paths; no blanket canonical authority or 1000Y repeat. **Open review item:** behavior for invalid excluded historical fields and custom collectors must be contractually fail-closed before general replacement. Preserve all source/evidence immutable. Next after PASS: decide FAIR local commit and broader E2-B2 oracle cross-check; no source change was performed by the documentation update.
+
+---
+
 # CURRENT NEXT — E2-C1 checkpoint-frontier lossless representation (design/test-first, 2026-10-30)
 
 All FAIR E2-C0/B/C read-only profile gates completed with exact 61-record oracle parity at years 101,501,751. Diagnostic: growing JSON canonicalization/state copies dominate; see `PROJECT_LEDGER/R6_INT10K_E2C0_C_NESTED_CALLERS_20261030.md` (commit `52c4df685059abf79cd3d2eacfb496cf0ae6b3d1`). The source SHA `9dce77b5...` remains FAIR-local as observed; GitHub documentation HEAD does NOT mean the engine fix is pushed.
