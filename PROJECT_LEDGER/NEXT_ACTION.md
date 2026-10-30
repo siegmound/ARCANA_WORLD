@@ -1,3 +1,7 @@
+CURRENT 2026-10-30 — E2-C2-A1 FAIR PASS. Original INDEX.jsonl 61,001 rows, SHA verified, record schema determined. Next run prepared E2-C2-A2 read-only targeted samples; script SHA256 b4a16a1fb52038d74444cadec8034410444dcc174446cbe65005bf57d3b64141. A2 has NOT run on FAIR. It checks 40 SHA-authenticated envelopes over 14 selected years and reports complete deposit fields, per-cell counts, Deep keys and adjacent-year deposit prefix behavior without changing original archive. See PROJECT_LEDGER/R6_INT10K_E2C2_A1_FAIR_SCHEMA_PASS_A2_AUTHENTICATED_SAMPLE_GATE_20261030.md. No simulation or science/production authorization.
+
+---
+
 CURRENT E2-C2-A1 executable read-only FAIR probe prepared (NOT RUN), 2026-10-30: conversation artifact arcana_e2c2_a1_readonly_schema_probe.py SHA256 d6807f1734d074c5b44472770e4c0a8233277a5430d184b882f95abf239698f8 (ZIP SHA256 9373560ef0d9e88efae2a3de7a87b4ca8833764f53bf4fb35c5b76b3991061ac). Transfer to ~/HPC-POMDP/Arcana, run `sha256sum arcana_e2c2_a1_readonly_schema_probe.py` then `python arcana_e2c2_a1_readonly_schema_probe.py`; no Conda needed. It verifies immutable manifest/index, scans INDEX only and inspects first 5 HISTORY envelopes, emits E2C2_A1=PASS_READ_ONLY_SCHEMA_CENSUS if actual format matches. No archive/source writes or physics simulation. Use observed output to design A2 y0/y1/y100/y500/y750/y1000 authenticated samples. Read PROJECT_LEDGER/R6_INT10K_E2C2_A_SOURCE_API_INVENTORY_20261030.md.
 
 ---
