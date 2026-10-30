@@ -825,3 +825,7 @@ Windows Python 3.12.10 / NumPy 2.5.1: **74 focused tests passed**, including cle
 
 ## 2026-10-30 — INT10K E2-C0 cProfile parity: 3 one-year resumes PASS
 Operator FAIR log confirms E2_C0_REFERENCE_PARITY=PASS at y101,501,751 (61 record kinds/payload hashes each, ordered, against original indexed 1000Y archive). Profile root INT10K_E2C0_PROFILE_Piy2PjHo. json.dumps 110/year and json.loads 12/year, combined ~79-87% profiled time and growing; no-write SHA callback included. Report PROJECT_LEDGER/R6_INT10K_E2C0_CPROFILE_PARITY_20261030.md. Next attribution of JSON caller edges from saved .pstats and B0 store reuse audit. No new authority or science seal.
+
+## 2026-10-30 — INT10K E2-C0-C nested callers COMPLETE
+
+Operator FAIR read-only `.pstats` (profile root `INT10K_E2C0_PROFILE_Piy2PjHo`) shows at year 751: regional canonical 119.907ms (53.090ms SHA preprocessing, 34.725ms `run_regional_segment`, 32.093ms `advance_region`); history-free canonical 35.149ms (35.098ms through `_sha`); regional JSON loads 49.645ms. These JSON components are disjoint call edges; enclosing `_sha`/verify timings overlap. Prior 61-record hash parity y101/501/751 remains PASS; no new numerical run. Root and exact tables PROJECT_LEDGER/R6_INT10K_E2C0_C_NESTED_CALLERS_20261030.md. E2-C1 next: review lossless frontier selection, preserve hash semantics and use B0. No scientific/canonical gate modified.
