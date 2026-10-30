@@ -1,3 +1,7 @@
+2026-10-30: B2B1 typed source data dryrun PASS FAIR (174 events/24 null), no store initialized. B2B2 next: create four ephemeral scratch HistoryStores 3Y/10Y, compare option A individual events to option B annual ordered bundle; each annual transaction uses parent-view guard; test pinned-reader view isolation, reopening and query reconstruction, source event order and Deep accuracy, disk bytes and view metadata overhead. Script SHA 70ba607096e2477faff4f879f6471a1e252900944f4f47f0c270072168d3c9ba prepared and local pure selftest PASS, FAIR not run. B2B3 subsequent fault recovery and 100Y scale then 1000Y source oracle qualification; no production. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B1_FAIR_TYPED_DRYRUN_PASS_B2B2_SCRATCH_COMPARISON_GATE_20261030.md.
+
+---
+
 CURRENT 2026-10-30 B2B0 read-only source API PASS, supports typed HistoryStore records and atomic read-view structural contract. NEXT B2B1 in-memory sampled typed roundtrips, no store creation, source original event null time/sequence and 3Y sample / 174 events; source SHA 539e18d5..., FAIR PENDING. Then B2B2 comparative scratch 3/10/100 year atomic bundles (options per-event vs per-year), explicit read-view publication/size/O(N) manifests, source chronology adapter and fail-closed negative tests. B2B3 all-kind exact 61001 source reconstruction, Deep/provenance query, file size. No production or scientific authority. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B0_FAIR_SOURCE_API_PASS_B2B1_TYPED_DRYRUN_GATE_20261030.md.
 
 ---
