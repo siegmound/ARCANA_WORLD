@@ -1,3 +1,13 @@
+## CURRENT — 2026-10-30: INT10K 1000Y benchmark changes E2-C/D priorities
+
+- `E2-B2-R1`: Linux exact-commit history-independent frontier / 3Y+10Y oracle gate evidenced at baseline `9d9a2512d5e2aca5cc3fd04010d53ac467fe9839` (operator reported; originals on FAIR).
+- `1000Y`: one-off synthetic engineering PASS after ULP surface-geometry correction at FAIR-local `9dce77b5d65d4301d2145f9ad527b8efee0fe96d`; **not** scientific or production authority. 244.781 s engine loop, ~270.512 s full estimated, 1.916 GB history, peak 98.5 MiB RSS. Ref: `PROJECT_LEDGER/R6_INT10K_1000Y_FAIR_PERFORMANCE_E2C_E2D_HANDOFF_20261030.md`.
+- **Priority E2-C0**: read-only phase profiling of nonlinear snapshot/deposit duplication; B0 HistoryStore reuse audit; archive/index temporal semantics. 1000Y itself already measured, do not repeat routinely.
+- **E2-C1/C2**: lossless append-only event+delta material provenance + sparse sufficient-state checkpoints + deterministic exact temporal rehydration/query and history oracle parity. **E2-D1**: remove redundant JSON deep cloning/re-hash with identical physics; **E2-D2**: controlled CPU/NUMA and optional GPU/MPI parallelism only on causally separable workloads with measured speedup. **E2-E/F** transactional crash recovery, provider/config/source seal, scaling and eventual historical scientific qualification are separate gates.
+- Scope: synthetic 3×3 regional basin, C028/C029 actual E0 hash-verified initial columns, synthetic environmental physics/Deep, no world-scale performance extrapolation. Other F2-B/GEODYN/provider authority gaps remain unresolved. All production/forward/solver/science qualification flags remain false.
+
+---
+
 # CURRENT — E2-B2-R1 source provenance corrected locally; FAIR/Linux pending (2026-10-29)
 
 E2-B2-R1 now derives the measured-source dirty state from path-scoped Git status, records source hashes and commit separately, and fails an explicit exact-commit gate on mismatch/dirty/UNKNOWN while retaining diagnostic bundles. Local 3Y/10Y diagnostic runs passed against the local E2-A1 oracle and original E0 inputs; reports captured the dirty runner/helper state. Next: publish as a child of the E2-B2 commit by verified fast-forward, then exact-commit FAIR/Linux regression and capture. The history-free frontier still does not implement durable append-only storage, transactions, recovery or on-disk query. Later 100/1,000/10,000-year scaling requires separate evidence-gated decisions; none authorized. Report: `docs/arcana/R6_INT10K_E2_B2_HISTORY_INDEPENDENT_CONTINUATION.md`. Keep scientific, canonical and long-run gates closed.

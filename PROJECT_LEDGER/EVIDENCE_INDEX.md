@@ -1,3 +1,16 @@
+# CURRENT — 2026-10-30 INT10K 1000Y FAIR evidence (operator logs, not fetched from FAIR)
+
+- **Immutable original source baseline:** `9d9a2512d5e2aca5cc3fd04010d53ac467fe9839` on `r6/multiphysics-integration-20261026` (published). Geometry repair worktree local FAIR branch `r6/geometry-ulp-r1-fair`, commit `9dce77b5d65d4301d2145f9ad527b8efee0fe96d`, **not confirmed pushed**.
+- **Original failure:** FAIR `$HOME/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/INT10K_1000Y_OBSERVE_sNc82fLw` `RUN_EXIT=1`, `SURFACE_GEOMETRY_VOLUME_BALANCE_FAILED`. Must not overwrite.
+- **Precision diagnosis:** FAIR `INT10K_1000Y_GEOMETRY_DIAG_Ewx1utQY`, 1e-5 m³ residual, ULP-bound 0.00012207 m³; `DIAG_SOURCE_UNMODIFIED=PASS`.
+- **Completed engineering 1000Y:** FAIR `INT10K_1000Y_GEOMETRY_R1_YJBeAKT4/1000y`, `RUN_EXIT=0`, `PASS_1000Y_ENGINEERING_EXECUTION_COMPLETE`, source `9dce77b5d65d4301d2145f9ad527b8efee0fe96d`, `MANIFEST.json` SHA256 **`e56f02c726856fd976a3a49b037b95be506b15a2b691d7a308d9ad6d4ad3a59a`**, 1000 annual records, 1001 snapshots, 61,001 indexed envelopes, HISTORY `1,916,080,917` bytes; CPU/wall and memory in detailed handoff. Original files remain on FAIR, **not copied/read in this documentation session**.
+- **Derived read-only cost audit:** FAIR `INT10K_1000Y_COST_ANALYSIS_Kaw8pV2x`, `COST_ANALYSIS=PASS`, 1000 metric rows, original manifest+YEAR_METRICS hashes checked, 10×100y bins, `sum_annual_step_wall_s=231.733`, `loop_nonstep_unattributed_s=13.048`, `postloop_approx_s=25.731`.
+- **Derived record decomposition:** FAIR `INT10K_1000Y_RECORD_AUDIT_AyVB7iSW`, `RECORD_KIND_COST_AUDIT=PASS`, INDEX SHA checked, offsets/lengths reconcile `1,916,080,917` history bytes, 61,001 envelopes. REGIONAL_SNAPSHOT ~92.6% HISTORY. Snapshot deposit sample y100=1100/97.31%, y500=5500/99.46%, y1000=11000/99.73%. REGIONAL_EVENT ~3.126MB indexed as UNKNOWN temporal key, needs further semantic audit.
+- **Short-run references:** `INT10K_E2_A1_FAIR_kjB2nxDO` (3Y/10Y immutable oracle); `INT10K_E2_B2_R1_FAIR_YhQ4gPTE` (79 Linux tests + exact-source parity previously operator-reported). Exact 1000Y rerun's 3Y/10Y parity logs were not copied to this documentation session, hence do not silently mark independently reverified.
+- **Handoff/source crosswalk:** `PROJECT_LEDGER/R6_INT10K_1000Y_FAIR_PERFORMANCE_E2C_E2D_HANDOFF_20261030.md`. All this is `NONCANONICAL_SYNTHETIC_ENGINEERING_ONLY`. Never substitute these for original manifests, or promote solver/forward/canonical flags.
+
+---
+
 # CURRENT — INT10K E2-A1 FAIR report + E2-B local frontier evidence (2026-10-29)
 
 ## INT10K E2-B2-R1 — source-provenance correction (2026-10-29)

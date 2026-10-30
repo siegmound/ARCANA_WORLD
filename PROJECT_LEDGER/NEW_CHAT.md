@@ -1,3 +1,13 @@
+# CURRENT BOOTSTRAP — 2026-10-30 (ARCANA R6 INT10K 1000Y)
+
+**The single current operational ledger lives on branch `r6/multiphysics-integration-20261026`**; verify GitHub ref and the FAIR worktree separately. Read `PROJECT_LEDGER/README.md`, then `STATUS.md`, `NEXT_ACTION.md`, and **`PROJECT_LEDGER/R6_INT10K_1000Y_FAIR_PERFORMANCE_E2C_E2D_HANDOFF_20261030.md`**; `EVIDENCE_INDEX.md`, `DECISIONS.md`, `PROCEDURE.md` are required for implementation. Earlier "CURRENT" passages below are archived historical instructions, not the active task.
+
+**Latest governed task = E2-C0 read-only profiling/B0 HistoryStore audit**, followed by deterministic lossless E2-C historical event/delta+checkpoint+replay and later NUMA/GPU experiments. The 1000Y FAIR microdomain benchmark is **engineering PASS**, not WORLD_HISTORY. `HISTORY.jsonl` 1.916 GB, 1000y loop 244.78 sec, ~270.51 sec with estimated post-processing, ~98.5 MiB RSS; 92.6% snapshots, year-1000 snapshot 99.73% deposits duplicated. Current geometry patch commit `9dce77b5...` exists **FAIR-local only as observed**; source baseline `9d9a2512d5e2aca5cc3fd04010d53ac467fe9839` is published. Historical previous failure still FAIL. Do not clone anew, rerun 1000Y blindly, or overwrite evidence. The GitHub ledger-only documentation commit and FAIR local fix descend separately from the baseline: inspect and merge without rewriting SHA or losing worktree changes.
+
+**Authorization:** `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`, `GEODYN_2B_ARCANA_FORWARD_AUTHORIZED=false`, `F2B_SOLVER_EXECUTION_AUTHORIZED=false`, `ARCANA_SI1_MECHANICS_QUALIFIED=false`. Causal history goals include resources/Deep/fauna/flora/peoples; refinement ≠ interpolation. Ask for source files only when necessary, use immutable evidence and exact manifest hashes. No execution without operator site authorization.
+
+---
+
 # Bootstrap corrente — ARCANA WorldSim R6 (2026-10-25)
 
 Repo siegmound/ARCANA_WORLD, branch r6/si1-bandwidth-f2av. This GitHub ledger update is documentation-only on top of baseline ec79bf8954a4922f84249fbe23e2657bc5beee23; verify current HEAD and any Windows Codex dirty worktree before acting. Read PROJECT_LEDGER/README.md, STATUS.md CURRENT 2026-10-25, NEXT_ACTION.md and ROADMAP.md. Older F3 Option B and INT-2C STOP passages are historical decisions, not the present development instruction.
