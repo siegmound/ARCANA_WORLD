@@ -1,3 +1,7 @@
+CURRENT STRATEGIC POLICY 2026-11-03 — D-024 minimum physically interdependent tool-set startup; docs-only decision and no new runtime verdict. Current Codex geo-temporal task continues as scheduled. This preface does NOT change previous engine/production authorization flags. See DECISIONS.md D-024 and current NEXT_ACTION.md.
+
+---
+
 CURRENT 2026-10-30 E2C2_B2B3F=PASS_SUBPROCESS_CRASH_RECOVERY_AND_SOURCE_ORACLE_6_STAGES on FAIR. Six os._exit(79) child process kills: before_publication, after_publication, before_commit, before_visibility_switch rolled back; after_visibility_switch, during_cleanup committed and reopened idempotently. All old pinned views, exact source 3 snapshots/116 events, zero active journals; 2Y scratch only and auto-removed; NOT actual power-loss durability. B annual bundle leading candidate, NOT production selected. Next 100Y B-only scratch/query/growth script SHA cf58191d62fd41091ea1cc217dc45182509457bdc07886cc9e62352f33fa3324, local compile/selftest PASS, FAIR not run. See PROJECT_LEDGER/R6_INT10K_E2C2_B2B3F_FAIR_SIX_STAGE_CRASH_PASS_B2B3S_100Y_GATE_20261030.md. No World History scientific or production authority.
 
 ---

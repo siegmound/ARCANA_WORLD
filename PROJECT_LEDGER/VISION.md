@@ -14,3 +14,7 @@ ARCANA orchestra **tool scientifici specializzati**, ne governa input/output, se
 **Criterio di successo architetturale:** per ogni finestra simulata, output dei provider + closure causale + stati/eventi selezionati + ricostruzione entro criteri dichiarati + provenance verificabile. **Criterio finale:** WORLD_HISTORY mondiale fino al presente, interrogabile e raffinabile selettivamente.
 
 Fonti primarie: `docs/arcana/WORLD_HISTORY_ARCHITECTURE.md`, `docs/arcana/B6N6_ADAPTIVE_PROPAGATION_STATE_EXTRACTION_ARCHITECTURE.md`, `contracts/R6_ADAPTIVE_PROPAGATION_CANDIDATE_TRAJECTORY_V1.json`, `contracts/R6_SIGNIFICANT_STATE_EXTRACTION_RECONSTRUCTION_V1.json`.
+
+## Strategia permanente di avvio — rinvio a D-024 (2026-11-03)
+
+Il WorldSim non deve attendere la disponibilità contemporanea di tutti i provider: partire con il minimo sottoinsieme fisicamente interdipendente che può evolvere dal T0 autoriale usando forcing/leggi/BC qualificati, costruire e conservare la storia, poi aggiungere in modo causale processi e tool. Non reimplementare un tool specialistico già verificato se un adapter fisicamente coerente basta. I benchmark 3x3 sintetici e i test upstream non autorizzano da soli evoluzione planetaria; la crescita a risoluzione mondiale richiede dati e operatori sferici adatti. Per sequenza, limiti, strumenti e handoff autorevoli consultare `PROJECT_LEDGER/DECISIONS.md` D-024. L'obiettivo completo flora/fauna/Deep/civiltà resta invariato.

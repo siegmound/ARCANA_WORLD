@@ -1,7 +1,7 @@
 # Procedura obbligatoria per sviluppo e handoff
 
 ## A. Apertura sessione (operazioni read-only)
-1. Aprire `PROJECT_LEDGER/README.md`, `STATUS.md`, `NEXT_ACTION.md`, `ROADMAP.md`, `EVIDENCE_INDEX.md`.
+1. Aprire `PROJECT_LEDGER/README.md`, `STATUS.md`, `NEXT_ACTION.md`, `ROADMAP.md`, `EVIDENCE_INDEX.md` e **`DECISIONS.md` D-024** per la strategia permanente di avvio progressivo (nessun gate di tutti i tool).
 2. Identificare repo/worktree/branch/HEAD e `git status --short`; NON dare per scontato che questo ledger sia già mergeato nel branch di esecuzione.
 3. Confrontare gli SHA/gates dello status con codice, contratti e manifest *relativi al task*, e recuperare le evidenze esterne solo se necessario. Non scandagliare automaticamente 48k+ file né rileggere vecchie chat.
 4. Ricontrollare se esiste prova precedente della stessa capacità con lo **stesso scope**; evitare qualifiche duplicate.
