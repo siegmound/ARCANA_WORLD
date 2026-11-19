@@ -1,0 +1,70 @@
+{
+  "schema": "ARCANA_R6_G2_FULL_COLUMN_EXPLICIT_HYPOTHESIS_TEMPLATE_V1",
+  "authority": "ENGINEERING_CANDIDATE_NOT_AUTHOR_RATIFIED",
+  "source_identifier": null,
+  "gravity_m_s2": null,
+  "strain_rate_s_inv": null,
+  "layer_stress_basis": "SHEAR_STRESS_SCALE_Pa__NO_AUTOMATIC_SHELLS_LR_PROMOTION",
+  "layers": {
+    "crust": {
+      "brittle": {
+        "mode": "BYERLEE_1978_REFERENCE",
+        "source_reference": "BYERLEE_1978_REFERENCE__NOT_R6_MATERIAL",
+        "normal_stress_over_lithostatic": null,
+        "biot_coefficient": null,
+        "pore_pressure_over_lithostatic": null,
+        "valid_effective_normal_pressure_pa": null
+      },
+      "ductile": {
+        "source_reference": null,
+        "stress_convention": "ASPECT_2ETA_EPS_INVARIANT_SCALE",
+        "A_pa_minus_n_s_inv": null,
+        "n": null,
+        "E_j_mol": null,
+        "V_m3_mol": null,
+        "fugacity_exponent": null,
+        "water_fugacity_pa": null,
+        "reference_fugacity_pa": null,
+        "invariant_to_friction_shear_factor": null,
+        "shear_conversion_reference": null,
+        "valid_temperature_k": null,
+        "valid_pressure_pa": null,
+        "valid_strain_rate_s_inv": null
+      }
+    },
+    "mantle": {
+      "brittle": {
+        "mode": null,
+        "source_reference": null,
+        "normal_stress_over_lithostatic": null,
+        "biot_coefficient": null,
+        "pore_pressure_over_lithostatic": null,
+        "valid_effective_normal_pressure_pa": null,
+        "rationale": null
+      },
+      "ductile": {
+        "source_reference": null,
+        "stress_convention": "ASPECT_2ETA_EPS_INVARIANT_SCALE",
+        "A_pa_minus_n_s_inv": null,
+        "n": null,
+        "E_j_mol": null,
+        "V_m3_mol": null,
+        "fugacity_exponent": null,
+        "water_fugacity_pa": null,
+        "reference_fugacity_pa": null,
+        "invariant_to_friction_shear_factor": null,
+        "shear_conversion_reference": null,
+        "valid_temperature_k": null,
+        "valid_pressure_pa": null,
+        "valid_strain_rate_s_inv": null
+      }
+    }
+  },
+  "integration": {
+    "subintervals_per_layer": null,
+    "max_relative_discretization_error": null
+  },
+  "unbound_fields_mean": "NO_SOURCE_OR_AUTHORIAL_CALIBRATION; MUST_NOT_IMPUTE",
+  "mechanical_solve_authorized": false,
+  "canonical_promotion": false
+}

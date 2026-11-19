@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — source G2/G3_A coupling FAIR PASS 9/9. New **substantive** G2 full-column strength evaluator and 25-column source-binder published, but only synthetic tests locally; run FAIR tests/test_r6_g2_whole_column_provider.py (do NOT run candidate on actual 25 PRE with synthetic params). Need now select scientifically defensible full-column G2 reference/water alternatives and pressure assumptions with empirical P/T/strain/fugacity support, plus reconcile ASPECT stress invariant with ShellSet LR and brittle law; continue actual G3 A exterior mesh assembly, far-boundary and basal GPE forcing. NO invented SQUEEZ/FIXED force, no physical solve/T1, no micro-PT overlap screens. See experiments/plate58_deforming_explore_v1/README_G2_WHOLE_COLUMN_ENGINE.md. D-024.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR clean isolated checkout: run only tests/test_r6_g2_g3_A_coupling.py then source-bound coupling_A module with STAGE=.../PLATE58_STAGE_NEW_01 HALO=.../PLATE58_NEIGHBOR_16_NEW_01 OUTPUT=.../PLATE58_G2_G3_A_COUPLING_NEW_01. Inspect actual 8 interface parent nodes/16 ext-only/24 ext triangles and 25 PRE columns; source continuity/sha and no physical K/f. Then proceed to physics SUBSTANTIVELY: authorial G2 effective full-column law (cold brittle+warm ductile water/pore pressure, mantle) and G3 A larger exterior plus far-boundary/base loads, assemble actual tangent from ShellSet and transfer; do not confuse synthetic Schur unit tests with geological validation. No new T1. D-024.
 
 ---
