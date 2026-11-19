@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — Run focused FAIR tests/test_r6_g3_spherical_exterior.py, then source SHA-bound read-only spherical_exterior.py audit with MULTISCALE prior and MECHANICAL interface prior, exclusive OUTPUT spherical audit. Read true element facet/geodesic area deficits and 5/8/11 triple source node parent ID; avoid interpreting geometric audit as physical ShellSet parity. Main work then stop geometry variants and complete physically validated G2 constitutive input, shared-eCreep tensor/OneBar/Mohr issue, G3 A external and basal forces/GPE nonduplication and source mesh material field for first noncanonical bounded solve; D-024 remains.
+
+---
+
 CURRENT NEXT — 2026-11-19 — Focused FAIR verification tests/test_r6_g3_exterior_variational.py after clean detached checkout. Source G3 multi interface topology already PASS, 16x16 has one 5/8/11 triple node, no need more topology gates. The new exterior variational kernel is *linear Newtonian planar synthetic*, actual source G2 viscosity and G3 body/basal/N/S forces NULL; do not generate a physical K from default invented viscosity or declare full ShellSet parity. Next genuine advancement: implement tested constitutive tangent linked to sourced full-column P,T,water,pressure and realistic ductile+brittle rate response (shared eCreep nonlinear layers), then source-bound 5/8/11 G3 A variational assembly using spherical metric, force/work balance, far boundary/basal GPE, and physical engineering simulation authorization. D-024 T1 blocked.
 
 ---
