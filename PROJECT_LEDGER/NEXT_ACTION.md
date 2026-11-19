@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — Run focused FAIR tests/test_r6_g2_g3_nonlinear_layered.py in clean isolated checkout after latest fetch, expect 11 synthetic test cases. NO real 5/8/11 solve; material PRE_to_element projection accepts ONLY explicitly marked artificial engineering fixture, coefficients and water not ratified. Validated spherical geometry/audit is complete; do not proliferate geometric screens. Main closure: authorial full-column G2 ductile+BRITTLE with source-applicable lab P/T/rate and water/pore pressure; independent PRE parent-to-element source mapping; true G3 external basal/GPE/NS forces incl plate11; spherical ShellSet parity and noncanonical solve approval. See docs/arcana/R6_G3_SPHERICAL_FAIR_PASS_NONLINEAR_G2_G3_20261119.md. D-024.
+
+---
+
 CURRENT NEXT — 2026-11-19 — Run focused FAIR tests/test_r6_g3_spherical_exterior.py, then source SHA-bound read-only spherical_exterior.py audit with MULTISCALE prior and MECHANICAL interface prior, exclusive OUTPUT spherical audit. Read true element facet/geodesic area deficits and 5/8/11 triple source node parent ID; avoid interpreting geometric audit as physical ShellSet parity. Main work then stop geometry variants and complete physically validated G2 constitutive input, shared-eCreep tensor/OneBar/Mohr issue, G3 A external and basal forces/GPE nonduplication and source mesh material field for first noncanonical bounded solve; D-024 remains.
 
 ---
