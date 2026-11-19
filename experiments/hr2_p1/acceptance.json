@@ -1,0 +1,52 @@
+{
+  "schema": "ARCANA_HR2_P1_ACCEPTANCE_V1",
+  "status_at_preparation": "CREATED_NOT_RUN",
+  "scope": "MANUFACTURED_METHOD_TEST_ONLY",
+  "R6_global_T0_inputs_used": false,
+  "radius_m": 6371000.0,
+  "kappa_m2_year": 405896410000.0,
+  "mean_cover_height_m": 8.0,
+  "harmonic_amplitude_m": 1.0,
+  "optional_uniform_test_density_kg_m3": 2500.0,
+  "equation": "dh/dt=kappa*Laplace_Beltrami(h); no sources; fixed flat bedrock",
+  "state_authority": "V_i=A_i*h_i is authoritative binary64 numerical state",
+  "physical_parameter_authority": "DECLARED_ARTIFICIAL_TEST_VALUES_NOT_CALIBRATED_GEOLOGY",
+  "explicit_guard_fraction": 0.5,
+  "spatial_study": {
+    "meshes_wh": [[16,8],[32,16],[64,32],[128,64],[256,128]],
+    "fixed_physical_end_year": 0.0001,
+    "oracle": "area-averaged continuum degree-one harmonics",
+    "required_modes": ["latitude:sin(phi)", "longitude:cos(phi)*cos(lambda)"],
+    "polar_consistency": "not assumed from conservation; non-axisymmetric mode must also meet all criteria",
+    "minimum_L1_and_L2_order_each_refinement": 1.5,
+    "minimum_Linf_order_each_refinement": 1.5,
+    "time_error_control": "repeat with half dt; L2 difference <=0.05*continuum L2 error",
+    "claim_limit": "short fixed-time manufactured convergence, not annual256x128 or geological simulation"
+  },
+  "temporal_study": {
+    "mesh_wh": [16,8], "fixed_end_year": 1.0,
+    "substeps": "N,2N,4N where N=ceil(T/CFL_guard)",
+    "oracle": "exact-in-time same-mesh latitude harmonic with rate2*kappa/R^2*sin(dphi)/dphi",
+    "minimum_L2_order": 0.9, "maximum_L2_order": 1.2,
+    "separation": "continuum spatial error is not counted as temporal truncation error"
+  },
+  "roundoff": {
+    "epsilon": "binary64 eps",
+    "operation_count_bound": "m=2*max_vertex_degree+6; gamma=m*eps/(1-m*eps)",
+    "step_volume_allowance_m3": "8*gamma*(sum(abs(V_old))+sum(abs(V_new))+2*sum(abs(face_transfers)))",
+    "cumulative_allowance": "sum of actual accepted-step bounds; no clipping, correction or renormalization"
+  },
+  "required_checks": [
+    "independent rational2x2 local patch oracle, unequal areas, exact expected transfers",
+    "spherical16x8 area, face uniqueness, seam, poles, zero external flux",
+    "constant-state invariance, nonnegative stocks, declared optional mass closure",
+    "unstable dt and malformed input rejected before accepted-state mutation",
+    "spatial and temporal studies satisfy predeclared criteria without adjustment",
+    "3Y/10Y native direct/split and separate-process resume; mid-window schedule roundtrip",
+    "B0 full native checkpoint/prefix binding and stale/wrong-source/corruption negatives",
+    "all source/config/mesh/runtime identities unchanged and independently pinned"
+  ],
+  "independent_future_gate": "real SIGKILL, linked-tail continuation and production recovery controller",
+  "scientific_authority": false,
+  "production_authority": false
+}
