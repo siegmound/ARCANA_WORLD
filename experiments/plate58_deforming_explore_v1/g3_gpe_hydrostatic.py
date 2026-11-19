@@ -266,6 +266,9 @@ def build(multiscale:Path, interface:Path, nodal:Path,
                 policy.get("reference_normal_pressure_pa"),
             "isostatic_normal_balance_verified":False,
             "FEG_elevation_source_physically_qualified":False,
+            "GPE_force_owner":OWNER,
+            "mechanical_solve_authorized":False,
+            "physical_T1":None,
             "physical_force_vector":None})
     need([x["source_3plate_junction_parent_ids"] for x in result]
          ==[[],[34587]],"GPE_TRIPLE_JUNCTION_SOURCE_DRIFT")

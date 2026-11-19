@@ -131,3 +131,15 @@ def test_dp_pressure_convention_cannot_be_silent():
     del s["layers"]["mantle"]["brittle"]["drucker_prager_pressure_convention"]
     with pytest.raises(ValueError,match="DP_PRESSURE_CONVENTION_UNDECLARED"):
         potential_gradient_tangent(pre(),s,[2e-14,-1e-14,1e-14])
+
+def test_cubic_interior_temperature_maximum_cannot_escape_gauss_points():
+    p=pre()
+    L=p["crust_thickness_m"]
+    p["layer1_c0_k"]=800.
+    p["layer1_c1_k_m"]=200./L
+    p["layer1_c2_k_m2"]=-200./L**2
+    s=candidate()
+    # True mid-layer maximum = 850 K, but 12-point Gauss max < 849.5 K.
+    s["layers"]["crust"]["ductile"]["valid_temperature_k"]=[250.,849.5]
+    with pytest.raises(ValueError,match="CREEP_LAB_PT_RATE_OUTSIDE_VALIDITY"):
+        potential_gradient_tangent(p,s,[2e-14,-1e-14,1e-14])

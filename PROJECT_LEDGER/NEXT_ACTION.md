@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR verify G2 exact source-cubic laboratory range and new G3 exclusive GPE force-composition math in isolated clean checkout using four focused tests: test_r6_g2_exact_thermal_validity.py, test_r6_g3_gpe_force_accounting.py, test_r6_g2_viscoplastic_explore.py, test_r6_g3_gpe_hydrostatic.py. Do not run a mechanical solve or recycle old GPE output; physical inputs remain insufficient: T0 rock identity/creep+fluid/pressure coverage, 5:8:11 real far-field and basal tractions, normal reference/isostasy, parity of full experimental vs SHELLS. D-024 active, T1 null.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR clean detached HEAD verification of updated G2 DP pressure convention tests/test_r6_g2_viscoplastic_explore.py (now 9 test funcs) and source canonical-gravity -200km GPE sensitivity once in new exclusive evidence, not overwrite old g=9.80665 result; compare predicted ||F|| 8x8 1.68327892298e18N,16x16 5.15333890565e18N. Source FEG elevation NUMERICAL_DERIVED_SUPPORT, not physical topology. The actual hinge remains authorial+scientific parameterization: cold crust legitimate brittle/creep coverage + lithology/water/pore; deep mantle basal support/traction + GPE exclusive owner and full ShellSet/experimental nonlinear solver consistency. NO physical T1, do not run mechanics, D-024. Docs/arcana/R6_G2_G3_FAIR_PHYSICS_AUTHORITY_AND_DP_20261119.md.
 
 ---

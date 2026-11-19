@@ -16,6 +16,9 @@ from experiments.plate58_deforming_explore_v1.full_column import (
 from experiments.plate58_deforming_explore_v1.nonlinear_layered_g3 import (
     Q_3D_PLANE_STRESS_KINEMATIC as Q,
 )
+from experiments.plate58_deforming_explore_v1.g2_exact_thermal_validity import (
+    require_laboratory_temperature_coverage,
+)
 
 STATUS = "CANDIDATE_G2_PRESSURE_AWARE_TWO_LAYER_VISCOPLASTIC_CONTINUUM__R6_MATERIAL_OPEN"
 # BOTH formulas appear in published ASPECT documentation. Do not silently
@@ -169,6 +172,8 @@ def potential_gradient_tangent(pre,scenario,strain):
         layers=scenario.get("layers")
         need(isinstance(layers,dict) and isinstance(layers.get(name),dict),
              "G2_VP_LAYER_LAW_MISSING")
+        # Gauss nodes alone cannot certify the cubic PRE laboratory T domain.
+        require_laboratory_temperature_coverage(pre,index,layers[name]["ductile"])
         alpha,C,y=layer_material(layers[name],T,P,r)
         sv=C*r**alpha
         sigma=sv*y/(sv+y)
