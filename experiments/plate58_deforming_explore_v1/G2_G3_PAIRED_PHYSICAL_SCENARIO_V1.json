@@ -1,0 +1,231 @@
+{
+  "schema": "ARCANA_R6_G2_G3_REGIONAL_PAIRED_PHYSICAL_SCENARIO_V1",
+  "decision": "G2_G3_COUPLED_REGIONAL_EXPERIMENT_FAMILY_SELECTED__PHYSICAL_PARAMETERIZATION_OPEN",
+  "authority": "ENGINEERING_EXPERIMENT_ARCHITECTURE_ONLY__NOT_AUTHOR_RATIFIED_GEOLOGY",
+  "parent_head": "df3776ce10a4f4b14daedbffd4bd351fe2ac5529",
+  "scope": {
+    "epoch": "T0_210_Ma",
+    "experiment": "plate58_deforming_explore_v1",
+    "regional_domain_reference": {
+      "cells_per_side": 8,
+      "source_plates": [
+        5,
+        8
+      ],
+      "source_nodes": 81,
+      "total_triangles": 128,
+      "exterior_triangles": 120,
+      "outer_cut_edges": 32
+    },
+    "regional_domain_sensitivity": {
+      "cells_per_side": 16,
+      "source_plates": [
+        5,
+        8,
+        11
+      ],
+      "source_nodes": 289,
+      "total_triangles": 512,
+      "exterior_triangles": 504,
+      "outer_cut_edges": 64,
+      "triple_junction_parent_node_id": 34587
+    },
+    "comparison_policy": "DOMAIN_EXTENT_SENSITIVITY_NOT_MESH_CONVERGENCE"
+  },
+  "authority_vocabulary": {
+    "SOURCE_AUTHENTIC": "source-bound numeric/kinematic data, not necessarily physically validated geological truth",
+    "CANONICAL_PARAMETER": "explicit canonical R6 planet parameter with matching authority",
+    "LITERATURE_ANALOGUE_EXPERIMENT": "terrestrial empirical reference with restricted material and test domain, not ARCANA geology",
+    "ENGINEERING_CANDIDATE": "mathematical form and implementation without source physical calibration",
+    "AUTHOR_RATIFIED": "explicit author approval for scoped physical meaning, with ratification record",
+    "UNKNOWN": "no defensible source value, represented by null"
+  },
+  "selected_model": {
+    "family": "REGIONAL_THIN_LITHOSPHERE_SPHERICAL_P1_FACET_VISCO_PLASTIC_EXPLORE",
+    "why": "retain source 5:8:11 topology and independent crust/mantle creep exponents rather than alter original SHELLS shared eCreep silently",
+    "implementation": "ISOLATED_NONCANONICAL_G2_G3_A_EXPERIMENT",
+    "not_equivalent_to": "SHELLS_DIAMND_MOHR_ONEBAR_OR_SQUEEZ_FIXED",
+    "physics_assumptions_open": [
+      "full_tensor_smooth_sphere_covariance",
+      "fault_slip_damage",
+      "nonassociated_plastic_return",
+      "water_and_pressure_fields",
+      "global_to_regional_force_transfer",
+      "force_and_torque_balance"
+    ],
+    "original_shells_source_modified": false,
+    "physical_execution_authorized": false
+  },
+  "g2": {
+    "pre_fields": {
+      "authority": "SOURCE_AUTHENTIC",
+      "artifact": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.json",
+      "field_count": 51,
+      "consumed": [
+        "crust_thickness_m",
+        "mantle_lithosphere_thickness_m",
+        "crust_density_kg_m3",
+        "mantle_density_kg_m3",
+        "layer1_c0_k..layer1_c3_k_m3",
+        "layer2_c0_k..layer2_c3_k_m3"
+      ],
+      "thermal_min_max_crust_k_reported": [
+        280,
+        1051.5581968311126
+      ],
+      "material_configuration_code_is_mineralogy": false,
+      "zero_present_flag_is_known_dry_or_zero_pore": false,
+      "whole_layer_thermal_extrema_guard": "g2_exact_thermal_validity.py"
+    },
+    "reference_constitutive": {
+      "authority": "ENGINEERING_CANDIDATE",
+      "ductile": "TWO_LAYER_INDEPENDENT_N_POWER_LAW_WITH_P_T_RATE_VALIDITY_AND_OPTIONAL_EXPLICIT_WATER_FUGACITY",
+      "brittle": "PRESSURE_AWARE_3D_DRUCKER_PRAGER_SMOOTH_HARMONIC_CAP",
+      "dp_pressure_convention_candidate": "ASPECT_RHEOLOGY_DP_3D_6P",
+      "dp_legacy_variant_retained_for_sensitivity": "ASPECT_LEGACY_VISCOPLASTIC_3D_2P",
+      "effective_pressure_relation": "P_eff = P_lith - Biot*p_pore",
+      "fully_return_mapped_plasticity": false,
+      "fault_specific_friction_or_weakening_implemented": false,
+      "applicable_full_column_law_available": false,
+      "full_shells_parity": false
+    },
+    "literature_references": {
+      "quartzite_GT95": {
+        "authority": "LITERATURE_ANALOGUE_EXPERIMENT",
+        "doi": "10.1016/0040-1951(95)00011-B",
+        "valid_temperature_k": [
+          1173.15,
+          1373.15
+        ],
+        "n_approx": 4,
+        "pressure_about_gpa": 1.5,
+        "wet_quartzite_not_dry": true,
+        "valid_for_actual_T0_crust": false,
+        "arcana_rock_identity_ratified": false
+      },
+      "dry_olivine_benchmark": {
+        "authority": "LITERATURE_ANALOGUE_EXPERIMENT",
+        "source": "R6 material_rheology_provider DEFAULT_BENCHMARK, Hirth/Kohlstedt/ASPECT analogue",
+        "n_approx": 3.5,
+        "A_pa_minus_n_s_inv": 1.1e-16,
+        "E_j_mol": 530000,
+        "V_m3_mol": 0.000014,
+        "valid_for_actual_T0_mantle": null,
+        "arcana_rock_identity_ratified": false
+      },
+      "byerlee_fault_friction": {
+        "authority": "LITERATURE_ANALOGUE_EXPERIMENT",
+        "doi": "10.1007/BF00876528",
+        "is_fault_sliding_reference_not_continuum_DP": true,
+        "arcana_fault_planes_ratified": false
+      }
+    },
+    "material_authority_requirements": {
+      "crust_mineralogy": null,
+      "mantle_mineralogy": null,
+      "regional_material_facies_by_plate": null,
+      "crust_dry_or_hydrated_state": null,
+      "mantle_water_fugacity_field_pa": null,
+      "pore_pressure_field_pa": null,
+      "biot_field": null,
+      "cohesion_field_pa": null,
+      "friction_angle_field_deg": null,
+      "creep_prefactor_by_material": null,
+      "creep_exponent_by_material": null,
+      "creep_activation_energy_by_material": null,
+      "creep_activation_volume_by_material": null,
+      "creep_validity_temperature_pressure_rate_by_material": null,
+      "brittle_to_ductile_transition_rule": null,
+      "damage_and_fault_law": null,
+      "heterogeneous_element_mixing_rule": null
+    },
+    "candidate_sensitivity_branches": [
+      "FRICTIONAL_COLD_CRUST_ONLY_WITH_NO_DUCTILE_EXTRAPOLATION",
+      "PHYSICALLY_QUALIFIED_WARM_CREEP_IF_AVAILABLE",
+      "DRY_REFERENCE_ONLY_IF_SUPPORTED",
+      "HYDRATED_SENSITIVITY_WITH_EXPLICIT_FUGACITY"
+    ],
+    "branch_policy": "NO_BRANCH_PROMOTED_WITHOUT_APPLICABILITY_AND_SOURCE_PROVENANCE"
+  },
+  "g3": {
+    "source": {
+      "authority": "SOURCE_AUTHENTIC",
+      "plates": [
+        5,
+        8,
+        11
+      ],
+      "outer_cut_edges_by_extent": {
+        "8": 32,
+        "16": 64
+      },
+      "basal_exterior_triangles_by_extent": {
+        "8": 120,
+        "16": 504
+      },
+      "source_triplenode": 34587,
+      "far_field_Euler_priors": "AVAILABLE_KINEMATIC_ONLY",
+      "joint_interface_mechanical_dofs": "ONE_EAST_NORTH_PAIR_PER_SOURCE_NODE"
+    },
+    "gpe": {
+      "gravity_m_s2": 9.82,
+      "gravity_authority": "CANONICAL_PARAMETER",
+      "FEG_elevation_authority": "NUMERICAL_DERIVED_SUPPORT_NOT_PHYSICALLY_QUALIFIED",
+      "reference_compensation_elevation_m": -200000,
+      "reference_compensation_authority": "LITERATURE_ANALOGUE_EXPERIMENT",
+      "baseline_GPE_owner": "EXPERIMENTAL_EXTERNAL_GPE_ONLY__ORIGINAL_SHELLS_GPE_NOT_COMBINED",
+      "original_shells_internal_gpe_composed": false,
+      "basal_normal_reference_pressure_pa": null,
+      "vertical_isostasy_qualified": false,
+      "candidate_source_gpe_force_norm_N_by_extent": {
+        "8": 1683278922982610200,
+        "16": 5153338905650720000
+      },
+      "force_norm_note": "DISCRETE_L2_OVER_DIFFERENT_DOF_COUNTS_NOT_NET_FORCE_OR_DOMAIN_CONVERGENCE"
+    },
+    "regional_mechanics": {
+      "weak_form": "INTEGRATED_MEMBRANE_STRESS_DIVERGENCE_PLUS_ONE_EXTERNAL_GPE_PLUS_EXPLICIT_LATERAL_AND_BASAL_TRACTION",
+      "lateral_north_south_traction_xyz_N_per_m": null,
+      "lateral_east_west_traction_xyz_N_per_m": null,
+      "global_continuum_transfer_law": null,
+      "basal_tangential_traction_xyz_N_per_m2": null,
+      "basal_normal_reference_and_dynamic_pressure_pa": null,
+      "asthenosphere_viscosity_pa_s": null,
+      "asthenosphere_coupling_depth_m": null,
+      "deep_mantle_flow_xyz_m_per_s": null,
+      "kinematic_priors_may_be_imposed_as_all_shared_Dirichlet": false,
+      "zero_traction_if_missing": false,
+      "compute_loads_by": "g3_force_budget.py and g3_gpe_force_accounting.py only after explicit physical providers",
+      "force_torque_virtual_work_balance_qualified": false,
+      "rigid_gauge_and_rank_qualified": false
+    }
+  },
+  "required_gates": {
+    "G2_ROCK_IDENTITY_AUTHOR_RATIFIED": false,
+    "G2_P_T_RATE_DOMAIN_FULL_SOURCE_COVERAGE": false,
+    "G2_HYDRATION_AND_EFFECTIVE_PRESSURE_SOURCE_QUALIFIED": false,
+    "G2_FULL_BRITTLE_DUCTILE_DAMAGE_SOLVER_COMPATIBILITY": false,
+    "G3_FAR_FIELD_5_8_11_REAL_TRACTIONS_SOURCE_QUALIFIED": false,
+    "G3_BASAL_SHEAR_AND_NORMAL_SOURCE_QUALIFIED": false,
+    "G3_GPE_NO_DOUBLE_COUNT_AND_VERTICAL_SUPPORT_QUALIFIED": false,
+    "G3_BALANCE_RANK_GAUGE_SENSITIVITY_QUALIFIED": false,
+    "EXPLICIT_MECHANICS_AUTHORIZATION": false
+  },
+  "stop_conditions": [
+    "NO_GT95_EXTRAPOLATION_TO_COLD_T0",
+    "NO_SILENT_DRY_OR_ZERO_PORE_DEFAULT",
+    "NO_GPE_SQUEEZ_FIXED_DOUBLE_COUNT",
+    "NO_UNJUSTIFIED_ZERO_OR_BALANCED_BOUNDARY_FORCE",
+    "NO_T0_TO_T1_PROMOTION",
+    "NO_UNQUALIFIED_SHELLS_PARITY"
+  ],
+  "readiness": {
+    "model_family_selected": true,
+    "source_model_g2_g3_code_verified_by_operator_32_tests": true,
+    "physical_scenario_ratified": false,
+    "mechanical_solve_authorized": false,
+    "solver_runs": 0,
+    "physical_T1": null,
+    "decision_D_024": "ACTIVE"
+  }
+}
