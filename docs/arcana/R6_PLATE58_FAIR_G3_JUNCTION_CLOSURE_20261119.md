@@ -1,3 +1,5 @@
+> **Conferma successiva FAIR (2026-11-19):** l'operatore ha eseguito il modulo pubblicato al commit `f0af63c1`: **6/6 test PASS**, stato `PASS_G3_EXIT_NODE_INCOMPATIBILITY_IDENTIFIED__SOLVE_BLOCKED`, entrambi i nodi (nord 36744, sud 35306) con salti non nulli. Il controllo è concluso; il precedente testo sottostante descrive lo stato *prima* dell'esecuzione. Decisione fisica successiva: [G2/G3 closure](R6_PLATE58_G2_G3_MECHANICAL_CLOSURE_DECISION_20261119.md). Nessun solve/T1.
+
 # ARCANA R6 — Contatto 5:8: FAIR G3 PASS e incompatibilità ai nodi di uscita
 
 **Data:** 2026-11-19. **Stato:** diagnostica FAIR confermata dall'operatore; nuovo audit statico di compatibilità non ancora eseguito su FAIR. **D-024 invariata.**
