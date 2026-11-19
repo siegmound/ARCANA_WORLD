@@ -1,0 +1,94 @@
+{
+  "schema": "ARCANA_R6_PLATE58_G3_A_AUTHORIAL_ARCHITECTURE_RATIFICATION_V1",
+  "decision_id": "R6_PLATE58_G3_EXTERNAL_ARCH_A_20261119",
+  "date": "2026-11-19",
+  "approval_basis": "USER_EXPLICIT_AGREEMENT_IN_CURRENT_CHAT_TO_PROPOSED_ARCHITECTURE_A_WITH_SOLVE_BLOCKED",
+  "decision": "RATIFY_EXPERIMENTAL_G3_ARCHITECTURE_A_ONLY",
+  "scope": "NONCANONICAL_EXPLORE_MODEL_ARCHITECTURE_NOT_PHYSICAL_PARAMETERS_OR_MECHANICAL_RUN",
+  "branch": "r6/multiphysics-integration-20261026",
+  "prior_source_commit": "cdf7594dff903c9d8f88f9afe84d91df05fa0a68",
+  "prior_proposal_path": "experiments/plate58_deforming_explore_v1/PHYSICAL_EXPERIMENT_DECISION_PROPOSAL.json",
+  "selected": {
+    "mechanical_domain": "SINGLE_CONTINUOUS_FEG_PLATE5_8_SOURCE_BOUND",
+    "G3_external_continuation_architecture": "OUTER_CONTINUUM_MECHANICAL_TRANSFER_A",
+    "G3_N_S_policy": "PROVIDER_DERIVED_COMPATIBLE_CONTINUUM_BOUNDARY_STATE",
+    "G3_W_E_policy": "SOURCE_PLATE8_WEST_PLATE5_EAST_EULER_AS_FAR_FIELD_KINEMATIC_PRIOR__NOT_INNER_N_S_DOF_BC",
+    "G3_contact_policy": "PRESERVE_SHARED_PARENT_NODES_NO_IMPLICIT_FAULTS",
+    "numerical_alternative_B": "ONLY_BOUNDED_UNQUALIFIED_SENSITIVITY_NOT_SELECTED_ARCHITECTURE",
+    "material_and_mass_policy": "G2_PARAMETERS_AND_G4_TRANSPORT_MUST_BE_CLOSED_BEFORE_PHYSICAL_T1"
+  },
+  "external_provider_contract": {
+    "name": "ARCANA_R6_G3_OUTER_CONTINUUM_PROVIDER_V1",
+    "binding_status": "INTERFACE_SELECTED__NO_PHYSICAL_PROVIDER_AVAILABLE_YET",
+    "required_source_lineage": [
+      "T0_CANONICAL_MESH",
+      "PLATE5_8_CONTACT_CENSUS",
+      "R6_PRE_SOURCE_NODES",
+      "T0_EULER_PRIORS"
+    ],
+    "required_geometry": {
+      "outer_domain_extent_and_physical_basis": null,
+      "cut_vertex_identity_and_orientation": null,
+      "outer_internal_mesh_continuity_and_interpolation": null,
+      "convergence_sequence": null
+    },
+    "required_physics": {
+      "constitutive_reference_G2": null,
+      "north_south_traction_or_domain_solution": null,
+      "normal_and_tangential_reaction_closure": null,
+      "basal_normal_equilibrium_with_existing_GPE": null,
+      "basal_tangential_coupling": null,
+      "external_boundary_far_field_support": null,
+      "valid_spatial_temporal_region": null
+    },
+    "required_numerics": {
+      "frame_and_SI_units": null,
+      "traction_sign_and_transfer_operator": null,
+      "shared_node_single_velocity_compatibility": null,
+      "rigid_modes_rank_and_gauge": null,
+      "force_work_and_reaction_residuals": null,
+      "energy_mass_flux_checks": null,
+      "domain_size_mesh_convergence": null
+    },
+    "forbidden": [
+      "DUAL_PLATE_EULER_DIRICHLET_AT_SINGLE_SHARED_NODE",
+      "ARBITRARY_NORTH_SOUTH_ZERO_OR_FREE_TRACTION",
+      "AVERAGE_UNRELATED_EULER_VELOCITIES_TO_CREATE_BC",
+      "SILENT_DUPLICATE_INTERFACE_NODES_OR_FORCED_FAULT_OPENING",
+      "REINTERPRET_DIAGNOSTIC_100_KM_AS_SOURCE_RESOLVED_GEOLOGY",
+      "AUTOMATIC_CANONICAL_HISTORY_T1_PROMOTION"
+    ]
+  },
+  "unratified_G2": {
+    "actual_crustal_rheology": null,
+    "water_fugacity": null,
+    "effective_pore_pressure_Biot": null,
+    "brittle_frictional_strength": null,
+    "whole_column_ductile_fit": null,
+    "mantle_effective_lithology": null,
+    "SHELLS_LR_coefficients": null
+  },
+  "unratified_G3": {
+    "physical_domain_width_and_refinement": null,
+    "outer_continuum_provider": null,
+    "north_south_numerical_tractions": null,
+    "basal_normal_and_tangential_laws": null,
+    "time_validity": null
+  },
+  "unratified_G4": {
+    "conservative_mass_transport": null,
+    "thermo_mechanical_update": null,
+    "HistoryStore_replay": null
+  },
+  "guardrails": {
+    "architecture_ratified": true,
+    "full_experiment_scenario_ratified": false,
+    "mechanical_solve_authorized": false,
+    "shellset_run_authorized": false,
+    "physical_deforming_T1_authorized": false,
+    "history_canonical_promotion_authorized": false
+  },
+  "solver_runs": 0,
+  "first_deforming_T1": null,
+  "next_action": "RESEARCH_AND_DEFINE_G2_EFFECTIVE_LAWS_AND_G3_A_OUTER_AND_BASAL_PHYSICS_TOGETHER; NO_MORE_SCREENING_MICROGATES"
+}

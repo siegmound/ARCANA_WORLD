@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — G3_CONTINUUM_ARCH_A=AUTHOR_RATIFIED_FOR_EXPLORE; no more G2 screening or boundary microgates. Proceed with substantial G2+G3 physical closure jointly: proposed full-column brittle/ductile law incl pore water/Biot/visMax/creep and integral errors + G3 A external continuum provider with physically defensible loads, normal/tangential basal balance including existing GPE, mesh/domain/time convergence. All source-unbound parameters remain null; authorial approval of A is NOT approval of coefficients, forces, ShellSet solve, G4, HistoryStore or T1. Follow docs/arcana/R6_PLATE58_G3_A_AUTHORIAL_RATIFICATION_20261119.md. D-024 blocks deforming T1.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR wet-quartz G2 PASS 14/14; do not repeat any previous FAIR tests or fabricate another screening gate. NEXT ACTUAL PHYSICAL HINGE: choose/ratify explicit EXPLORE-only G2 crust/mantle water/pressure/fragile/creep effective model, plus G3 external continuation A (recommended) or explicitly unqualified halo B and basal support, domain resolution/time and G4 mass/thermal constraints. See docs/arcana/R6_PLATE58_G2_G3_AUTHORIAL_EXPERIMENT_DECISION_20261119.md and the fail-closed JSON. After explicit bounded physical choice build one real ShellSet regional case; no solve or T1 while model approval/coefficients are null. D-024 unchanged.
 
 ---
