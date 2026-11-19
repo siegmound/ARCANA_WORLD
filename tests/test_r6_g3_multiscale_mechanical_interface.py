@@ -41,7 +41,7 @@ def toy_region(width, with_third=False):
         def __getitem__(self,index):
             return coords[index]
     mesh=SimpleNamespace(vertices_lat_lon=FakeArray())
-    reg=summarize_region(width,list(range(1,n*n)),tris,plates,mesh,source)
+    reg=summarize_region(width,list(range(1,n*n+1)),tris,plates,mesh,source)
     reg["parent_triangle_ids"]=list(range(1,len(tris)+1))
     reg["parent_triangle_plate_ids"]=plates
     return reg,SimpleNamespace(nodes=[SimpleNamespace(node_id=i+1)
@@ -54,9 +54,10 @@ def core_ids(width):
     center=width//2
     nodes=[1+i*n+j for i in range(center-1,center+2)
                          for j in range(center-1,center+2)]
-    interface=sorted(n for n in nodes
-                     if n !=1+center*n+center)
-    center_node=[1+center*n+center]
+    # The core center has a unique source node ID; never shadow grid width.
+    center_id=1+center*n+center
+    interface=sorted(parent_id for parent_id in nodes if parent_id!=center_id)
+    center_node=[center_id]
     # Two triangles per source cell, indexed by (i*ncell+j)*2.
     tids=[]
     for i in (center-1,center):
@@ -121,3 +122,19 @@ def test_fabricated_outer_traction_rejected():
     reg["outer_cut_edges"]["north"][0]["physical_traction"]=[1.,2.]
     with pytest.raises(ValueError,match="UNAUTHORIZED_OR_MISMATCHED_EXTERNAL_CUT"):
         derive_external_interface(reg,feg,ids,edges,interface,center)
+
+
+@pytest.mark.parametrize("width,third",[(8,False),(16,True)])
+def test_fixture_parent_inventory_and_exact_core_perimeter(width,third):
+    """Prevent range exclusive-end and shadowed-center errors in test fixtures."""
+    reg,feg=toy_region(width,third)
+    tids,edges,interface,center=core_ids(width)
+    assert len(reg["parent_node_ids"])==(width+1)**2
+    assert reg["parent_node_ids"]==list(range(1,(width+1)**2+1))
+    assert len(feg.nodes)==(width+1)**2
+    assert len(tids)==8
+    assert len(edges)==8
+    assert len(interface)==8
+    assert len(center)==1
+    assert center[0] not in interface
+    assert len(set(interface+center))==9

@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR isolated clean checkout fetch most recent branch SHA then test only tests/test_r6_g3_multiscale_mechanical_interface.py (new regression included). User last reported FAIL 5/5 from 2 synthetic test fixture bugs at a6cc6603, now patched; no source or physical model was faulty in that traceback. If tests PASS, run preexisting g3_multiscale_interface.py with the unchanged MULTISCALE, COUPLING paths and a NEW exclusive OUTPUT; determine actual plate pair graph/triple-plate junction, do NOT infer from plate 11 presence. Then focus substantive G2 physical rheology and G3 external K/f/basal, no more topology loops. See docs/arcana/R6_G3_A_MULTISCALE_INTERFACE_FAIR_FIXTURE_FAILURE_20261119.md; D-024.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR run tests/test_r6_g3_multiscale_mechanical_interface.py and one new source-SHA-bound g3_multiscale_interface.py using prior MULTISCALE + COUPLING FAIR evidence paths, inspect exact contact pairs and whether true 3+-plate junction exists; do NOT infer triple junction from plate11 presence. After this, no more topology-only expansion loops. MAIN next work full physically sourced G2 water/P_eff/friction/ductile (shared eCreep OneBar/Mohr implications), G3 A real tangent/load from external continuum including plate11 when 16x16 and valid outer/basal BC/GPE no double-count. D-024 no ShellSet/T1. See docs/arcana/R6_G3_A_MULTISCALE_FAIR_PASS_INTERFACE_CONTRACT_20261119.md.
 
 ---
