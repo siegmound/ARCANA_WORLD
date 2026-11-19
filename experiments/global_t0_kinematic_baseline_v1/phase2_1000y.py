@@ -158,10 +158,12 @@ def execute(output: Path, prior100: Path, root: Path=ROOT):
     window100 = []
     mid500 = None
     check100_exact = False
+    tick = time.perf_counter()
     checkpoint0, readback = save_checkpoint(output, 0, views, positions)
     require(all(np.array_equal(readback[p], positions[p]) for p in PLATES),
             "PHASE2_CHECKPOINT_ZERO_READBACK_INVALID")
     checkpoints.append(checkpoint0)
+    checkpoint_io_wall += time.perf_counter()-tick
     tick = time.perf_counter()
     milestones = {"0":compare_geometry(views,positions,omegas,0,pairs)}
     diagnostic_wall += time.perf_counter()-tick
