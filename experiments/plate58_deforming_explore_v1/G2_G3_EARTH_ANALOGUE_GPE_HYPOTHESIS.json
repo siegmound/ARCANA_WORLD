@@ -1,0 +1,67 @@
+{
+  "schema": "ARCANA_R6_G2_G3_HYDROSTATIC_REFERENCE_HYPOTHESIS_V1",
+  "authority": "EARTH_ANALOGUE_HYDROSTATIC_SOURCE_TEST_NOT_AUTHOR_RATIFIED",
+  "reference_elevation_m": -200000,
+  "reference_elevation_description": "Explicit Earth-analogue compensation-plane sensitivity value; not T0 historical/canonical source",
+  "gravity_m_s2": 9.80665,
+  "gravity_source": "src/arcana_worldsim/r6/material_rheology_provider.py GRAVITY_M_S2; benchmark convention not established source planetary gravity",
+  "reference_normal_pressure_pa": null,
+  "FEG_elevation_source_physically_qualified": false,
+  "FEG_elevation_source": "R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.feg has elevation_m; need verify geology/height lineage before physical use",
+  "GPE_force_owner": "EXPERIMENTAL_EXTERNAL_GPE_ONLY__ORIGINAL_SHELLS_GPE_NOT_COMBINED",
+  "physical_solve_authorized": false,
+  "reality": "EXPLORATORY_HYDROSTATIC_HYPOTHESIS__NO_MATERIAL_OR_BOUNDARY_RATIFICATION",
+  "prohibited": [
+    "AUTOMATIC_PHYSICAL_T1",
+    "SILENT_SHELLS_SQUEEZ_FIXED_DOUBLE_COUNT",
+    "TREAT_FEg_ELEVATION_AS_AUTHOR_RATIFIED_GEOLOGY",
+    "ASSUME_REFERENCE_NORMAL_PRESSURE_OR_ISOSTASY",
+    "ASSUME_WATER_FUGACITY_OR_PORE_PRESSURE",
+    "ASSIGN_PLATE5_8_11_EULER_TO_ONE_SHARED_DOF"
+  ],
+  "G2_earth_analogue_reference": {
+    "crust": {
+      "reference": "Gleason and Tullis (1995) DOI 10.1016/0040-1951(95)00011-B",
+      "n": 4,
+      "activation_energy_j_mol": 223000,
+      "temperature_interval_k": [
+        1173.15,
+        1373.15
+      ],
+      "source_T0_crust_temperature_range_k": [
+        280,
+        1051.5581968311126
+      ],
+      "completely_outside_calibration_range": true,
+      "creep_prefactor_in_pa_units": null,
+      "physical_crust_material_identity": null,
+      "water_fugacity_pa": null,
+      "pore_pressure_pa": null,
+      "biot": null,
+      "brittle_continuum_yield": null,
+      "ratified": false
+    },
+    "mantle": {
+      "reference": "R6 material_rheology_provider DEFAULT_BENCHMARK; source ASPECT/Hirth & Kohlstedt",
+      "A_pa_minus_n_s_inv": 1.1e-16,
+      "n": 3.5,
+      "activation_energy_j_mol": 530000,
+      "activation_volume_m3_mol": 0.000014,
+      "hypothesis": "DRY_OLIVINE_BENCHMARK_NOT_R6_LITHOLOGY",
+      "field_water_content": null,
+      "valid_source_PT_field": null,
+      "ratified": false
+    }
+  },
+  "G3_earth_analogue_requirements": {
+    "north_south_far_field_traction": null,
+    "west_east_source_euler_priors": "AVAILABLE_NOT_IMPOSED_AS_SHARED_NODE_DIRICHLET",
+    "basal_normal_reference_pressure": null,
+    "basal_tangential_law": null,
+    "mantle_reference_velocity": null,
+    "gpe_exclusive_owner": "ENGINEERING_EXTERNAL_GPE_ONLY__NO_SHELLS_INTERNAL_DUPLICATE",
+    "physical_force_balance_and_gauge": null,
+    "time_validity_years": null,
+    "rheology_validated_source_coverage": false
+  }
+}
