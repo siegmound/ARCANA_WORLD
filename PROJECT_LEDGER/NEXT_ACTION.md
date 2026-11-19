@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR run tests/test_r6_g3_force_budget.py then SHA-bound source_force_requirements with prior MULTISCALE, MECHANICAL, NODAL evidence and NEW OUTPUT exclusive, expected cuts32/64 and basal exterior120/504; no physical tractions are computed. Main scientific closure remains full-depth G2 material hydration+effective pore pressure/brittle and actual G3 N/S+basal+GPE force budget including plate11, not more geometry loops. Net torque/virtual work & gauge are to be tested on real force provider once sourced; no physical T1 or ShellSet solve, D-024. See docs/arcana/R6_G2_NODAL_BINDING_FAIR_PASS_G3_FORCE_BUDGET_20261119.md.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR clean checkout test tests/test_r6_g2_nodal_source_bridge.py then SHA-bound g2_nodal_source_bridge runner with MULTISCALE, MECHANICAL, SPHERICAL authentic prior dirs and exclusive OUTPUT; inspect mixed material codes and exact node34587 column, refuse absent nonphysical fields. No candidate law supplied: it binds source data only, no solves. NEXT genuine closure work authorial/empirical G2 full-column P/T/lab validity water/creep fragile etc, develop external/basal G3 A stress force balance and GPE nonduplication; only then explicit bounded EXPLORE solve authorization. D-024 remains.
 
 ---
