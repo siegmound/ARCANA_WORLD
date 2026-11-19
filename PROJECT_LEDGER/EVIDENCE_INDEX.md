@@ -1,3 +1,7 @@
+CURRENT SOURCE (NOT FAIR EVIDENCE YET): 2026-11-19 PLATE58 EXPLORE staging code branch r6/multiphysics-integration-20261026 GitHub commit d7e87b8c701333054187c1ac8282ceb99f9a0f0a, four paths experiments/plate58_deforming_explore_v1/prepare.py,check.py,README.md and tests/test_r6_plate58_deformation_prepare.py. Only static readback checked; **no FAIR execution or empirical test output** yet. Future output exclusive ARCANA_WORLD_EVIDENCE/R6/PLATE58_STAGE_NEW_01 if operator chooses new directory; this path NOT currently proven to exist. Source current base from merged PR#2; G2/G3 authorial inputs remain NULL, no T1. D-024 unchanged.
+
+---
+
 NEW FAIR EVIDENCE (operator-reported, not independently rehashed) — G2_G3_PHYSICAL_CLOSURE_20261119_01: /home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/G2_G3_PHYSICAL_CLOSURE_20261119_01/{DECISION.md,CANDIDATE.json,RESULT.json,MANIFEST.json}. 9node/8triangle contact5:8, 3 shared nodes, six W/E distal Euler velocities, 16-cell alternative border geometry, 218km regional width,100km hypothesis, rates~1.66e-14..4.99e-13/s, common eCreep0.267857 exponent-only fit error~3.1%, quartzite scenario stress405/98MPa at10km pivot before brittle. Status DECISION_PENDING, no solve/T1/G2/G3 authority. GitHub PR#2 merged, integration source HEAD93f8159... before ledger update. D-024 unaffected.
 
 ---
