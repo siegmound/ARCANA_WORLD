@@ -1,3 +1,7 @@
+CURRENT — 2026-11-19 — FAIR operator verified HEAD 3efc07b3b573fae11d5cc91ce05dfc21a365a5de; four focused test files (test_r6_g2_exact_thermal_validity.py, test_r6_g3_gpe_force_accounting.py, test_r6_g2_viscoplastic_explore.py, test_r6_g3_gpe_hydrostatic.py) 32/32 PASS in 0.25 s, clean detached HEAD after fetch. Numerical G2 exact thermal applicability gate and G3 one-owner GPE accounting validated; this is source/code mathematical test evidence, NOT authorial physical/material/force ratification or real T0 force balance. No physical solver run reported. D-024 BLOCKS, physical_T1=null. FAIR raw artifacts not independently inspected in GitHub authoring context; operator terminal is evidence. See docs/arcana/R6_G2_G3_FAIR_32_PASS_NEXT_PHYSICAL_DECISION_20261119.md.
+
+---
+
 CURRENT — 2026-11-19 — G2/G3 physical closure software improvement CANDIDATE: G2 cubic PRE full-layer exact temperature-extrema guard before ASPECT-style pressure-aware creep (prevents Gauss-sampled false lab validity); G3 source-order-keyed external line + basal tangential + EXCLUSIVE external GPE candidate force, torque and virtual-work partition implemented. New self-contained synthetic 15/15 local PASS; integrated FAIR retest PENDING. No new actual line/basal force sources, rock/mineral law, fluid, pressure closure, or SHELLS parity. Old FAIR canonical GPE 8x8/16x16 preserved. NO solve, D-024, physical_T1=null. See docs/arcana/R6_G2_G3_NUMERICAL_ACCOUNTING_AND_PHYSICAL_BLOCKERS_20261119.md.
 
 ---

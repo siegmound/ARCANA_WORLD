@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — STOP rerunning G2/G3 geometry/accounting microtests: FAIR 32/32 PASS at 3efc07b3. Proceed to ONE joint, source-led G2/G3 physical parameter scenario contract (G2 crust lithology/fragile-damage/creep valid across true PRE 280..1051.558K, mantle law and water/pore/Biot; G3 5:8:11 lateral traction, normal reference, basal shear, deep mantle flow, exclusive GPE, conservation and gauge), explicitly identify each missing source/authorial decision. Evaluate alternative original SHELLS common eCreep fit vs separate validated 2-exponent EXPLORE. Do not treat g=9.82 as basal reference ratification, -200km as true compensation, FEG derived height as paleo observation or force L2 norm as vector equilibrium. D-024 remains, solver_runs=0 from existing source outputs, physical_T1=null; no automatic mechanics.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR verify G2 exact source-cubic laboratory range and new G3 exclusive GPE force-composition math in isolated clean checkout using four focused tests: test_r6_g2_exact_thermal_validity.py, test_r6_g3_gpe_force_accounting.py, test_r6_g2_viscoplastic_explore.py, test_r6_g3_gpe_hydrostatic.py. Do not run a mechanical solve or recycle old GPE output; physical inputs remain insufficient: T0 rock identity/creep+fluid/pressure coverage, 5:8:11 real far-field and basal tractions, normal reference/isostasy, parity of full experimental vs SHELLS. D-024 active, T1 null.
 
 ---
