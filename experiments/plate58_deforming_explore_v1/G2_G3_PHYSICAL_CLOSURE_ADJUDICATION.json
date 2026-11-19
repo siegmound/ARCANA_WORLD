@@ -1,0 +1,77 @@
+{
+  "schema": "ARCANA_R6_G2_G3_A_PHYSICAL_CLOSURE_ADJUDICATION_V1",
+  "date": "2026-11-19",
+  "decision": "G2_G3_A_SOURCE_AND_ENGINEERING_ASSEMBLY_PASS__PHYSICAL_PARAMETERS_UNRATIFIED",
+  "source_commit_before_decision": "239f9d1a04e79fb816110306de5ba50ec26eb25b",
+  "evidence_provenance": "USER_REPORTED_FAIR_TERMINAL__RAW_FILES_NOT_IMPORTED",
+  "latest_fair": {
+    "git_sha": "239f9d1a04e79fb816110306de5ba50ec26eb25b",
+    "focused_tests_passed": 9,
+    "focused_tests_total": 9,
+    "wall_s": 0.13,
+    "status": "PASS_G3_A_FORCE_SOURCE_INVENTORY__LOAD_PHYSICS_UNRESOLVED",
+    "scales": [
+      {
+        "width_cells": 8,
+        "cut_edges": 32,
+        "basal_exterior_triangles": 120,
+        "plates": [
+          5,
+          8
+        ],
+        "triple_junctions": 0
+      },
+      {
+        "width_cells": 16,
+        "cut_edges": 64,
+        "basal_exterior_triangles": 504,
+        "plates": [
+          5,
+          8,
+          11
+        ],
+        "triple_junctions": 1
+      }
+    ],
+    "triple_source_parent_node_id": 34587
+  },
+  "known_source_components": [
+    "T0_PRESERVED_PARENTS",
+    "PRE_51_FIELD_NODAL_SOURCE_BOUND",
+    "G3_A_MULTISCALE_SURFACE_GEOMETRY",
+    "G3_A_CONTINUOUS_INTERFACE_DOF",
+    "G3_A_EXPLICIT_LOAD_WEAK_FORM_SYNTHETIC_TESTED",
+    "G2_NONLINEAR_TWO_LAYER_ENGINEERING_OPERATOR_SYNTHETIC_TESTED"
+  ],
+  "physical_parameters": {
+    "G2_crust_material": null,
+    "G2_mantle_material": null,
+    "G2_water_fugacity": null,
+    "G2_pore_pressure_Biot": null,
+    "G2_brittle_fault_law": null,
+    "G2_validated_spatial_mixture": null,
+    "G2_common_exponent_SHELLS_resolution": null,
+    "G3_far_field_north_south": null,
+    "G3_west_east_support": null,
+    "G3_basal_normal_support": null,
+    "G3_basal_tangential_support": null,
+    "G3_GPE_unique_owner": null,
+    "G3_deep_mantle_reference": null,
+    "G3_physically_assembled_K": null,
+    "G3_physically_assembled_f": null
+  },
+  "recommended_next_work": "ONE_PAIRED_AUTHORIAL_G2_MATERIAL_AND_G3_LOAD_SCENARIO_WITH_LITERATURE_SCOPE; NO_GEOMETRY_ONLY_MICROGATES",
+  "source_literature_dois": [
+    "10.1016/0040-1951(95)00011-B",
+    "10.1007/s005310000152",
+    "10.1029/JB085iB11p06248",
+    "10.1016/S0098-3004(98)00142-3",
+    "10.1029/2007JB005460"
+  ],
+  "G3_architecture_author_ratified": true,
+  "full_scenario_author_ratified": false,
+  "mechanical_solve_authorized": false,
+  "solver_runs": 0,
+  "physical_T1": null,
+  "history_promotion": false
+}

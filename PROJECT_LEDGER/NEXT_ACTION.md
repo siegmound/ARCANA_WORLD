@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — STOP geometry/source-only loops. FAIR confirmed G3 A 9/9 and inventory 32/64 edges,120/504 basal elements, physical tractions null. NEXT single science-led integration: obtain paired G2 crust+mantle physically source-calibrated material law with water/fugacity/P_eff/Byerlee creep+fragile coverage and G3 A actual boundary/basal/GPE one-owner force channels for plates5,8,11, using docs/arcana/R6_G2_G3_A_PHYSICAL_CLOSURE_ADJUDICATION_20261119.md decision. Original SHELLS common eCreep constraint must be either consciously fitted with quantified error or separate complete nonlinear EXPLORE fork, no silent two-exponent patch. Don't ask FAIR to run unqualified physical values. NO T1, D-024.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR run tests/test_r6_g3_force_budget.py then SHA-bound source_force_requirements with prior MULTISCALE, MECHANICAL, NODAL evidence and NEW OUTPUT exclusive, expected cuts32/64 and basal exterior120/504; no physical tractions are computed. Main scientific closure remains full-depth G2 material hydration+effective pore pressure/brittle and actual G3 N/S+basal+GPE force budget including plate11, not more geometry loops. Net torque/virtual work & gauge are to be tested on real force provider once sourced; no physical T1 or ShellSet solve, D-024. See docs/arcana/R6_G2_NODAL_BINDING_FAIR_PASS_G3_FORCE_BUDGET_20261119.md.
 
 ---
