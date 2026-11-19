@@ -93,8 +93,7 @@ def derive_external_interface(region: dict, feg, core_triangles,
     exterior_edge_uses=Counter(edge for face in external.values()
                                for edge in _edges(face))
     require(all(exterior_edge_uses[edge]==1 for edge in core_edges)
-            and all(len(incidence[edge])==2 for edge in core_edges)
-            and not any(n in external_edge_uses for n in ()),
+            and all(len(incidence[edge])==2 for edge in core_edges),
             "G3_A_OUTER_NOT_CONNECTED_TO_CORE")
     outer_nodes={n for face in external.values() for n in face}
     require(outer_nodes==set(nodes)-center and interface.issubset(outer_nodes),
@@ -128,8 +127,7 @@ def derive_external_interface(region: dict, feg, core_triangles,
         for n,owners in sorted(node_owner.items()) if len(owners)>=3]
     # A plate's inclusion alone is not proof of an exact triple junction.
     if width==16:
-        require(11 in node_owner[next(iter(node_owner))] or 11 in plates,
-                "G3_A_PLATE_11_MISSING_IN_16X16")
+        require(11 in set(plates), "G3_A_PLATE_11_MISSING_IN_16X16")
     for side in SIDES:
         entries=region["outer_cut_edges"][side]
         require(len(entries)==width, "G3_A_CUT_EDGE_INVENTORY_CHANGED")
