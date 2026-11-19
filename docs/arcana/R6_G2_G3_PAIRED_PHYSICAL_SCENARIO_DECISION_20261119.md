@@ -111,3 +111,24 @@ EXPLORE authorization. No automatic T1.
 | Mechanical solve authorized | NO |
 | D-024 | ACTIVE |
 | physical_T1 | null |
+
+## Additional source authority — basal geometry
+
+Repository source `docs/arcana/research/B6N8J_LAB_BASAL_BOUNDARY_DECISION.json`
+explicitly selects a **model-specific thermal base** matched to an
+adiabatic or reduced-column rule; it **does not** identify the
+mechanical, rheological, seismic, or compositional lithosphere–
+asthenosphere boundary. Therefore the PRE thermal-lithosphere thickness
+and this B6N8J base **cannot** be used as a mechanical basal shear/
+normal boundary depth, dynamic pressure datum, or `H_coupling`
+without an additional source-bound physical decision. Both
+`mechanical_LAB_depth_field_m` and
+`rheological_LAB_depth_field_m` remain null.
+
+A repository-wide file-name inventory was inspected for likely
+mineralogy/hydration/mantle-flow providers, but the Git tree response
+was **truncated**, so absence of a matching filename is not proof of
+absence across ARCANA. The physical blockers above are grounded in the
+actual PRE and earlier closure adjudications; the next source
+investigation must remain targeted, not claim exhaustive repository
+nonexistence.

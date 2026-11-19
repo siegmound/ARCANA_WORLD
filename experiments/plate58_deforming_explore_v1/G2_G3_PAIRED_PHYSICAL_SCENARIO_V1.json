@@ -197,7 +197,12 @@
       "zero_traction_if_missing": false,
       "compute_loads_by": "g3_force_budget.py and g3_gpe_force_accounting.py only after explicit physical providers",
       "force_torque_virtual_work_balance_qualified": false,
-      "rigid_gauge_and_rank_qualified": false
+      "rigid_gauge_and_rank_qualified": false,
+      "thermal_LAB_cannot_be_assumed_mechanical_base": true,
+      "thermal_LAB_authority": "docs/arcana/research/B6N8J_LAB_BASAL_BOUNDARY_DECISION.json::selected_initializer_base; only model-specific thermal reference",
+      "mechanical_LAB_depth_field_m": null,
+      "rheological_LAB_depth_field_m": null,
+      "basal_dynamic_pressure_must_not_be_derived_from_thermal_LAB": true
     }
   },
   "required_gates": {
@@ -217,7 +222,8 @@
     "NO_GPE_SQUEEZ_FIXED_DOUBLE_COUNT",
     "NO_UNJUSTIFIED_ZERO_OR_BALANCED_BOUNDARY_FORCE",
     "NO_T0_TO_T1_PROMOTION",
-    "NO_UNQUALIFIED_SHELLS_PARITY"
+    "NO_UNQUALIFIED_SHELLS_PARITY",
+    "NO_THERMAL_LAB_AS_MECHANICAL_LAB"
   ],
   "readiness": {
     "model_family_selected": true,
