@@ -201,7 +201,7 @@ def validate_source_fortran(root: Path=ROOT) -> dict:
     a,b=p1.read_text(),p2.read_text()
     need("visInf = 0.5D0 * aCreep" in a and
          "cCreep * (zOfTop + z)" in a and
-         "aCreep(1:2)" in b and
+         "DIMENSION aCreep(2)" in b and
          "'nent for creep (1/n).  (Same for crust and mantle!)'" in b and
          "Byerlee coefficient (0. to 0.999)" in b,
          "G2_SHELLS_SOURCE_CONVENTIONS_CHANGED")
