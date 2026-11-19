@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR clean checkout test tests/test_r6_g2_nodal_source_bridge.py then SHA-bound g2_nodal_source_bridge runner with MULTISCALE, MECHANICAL, SPHERICAL authentic prior dirs and exclusive OUTPUT; inspect mixed material codes and exact node34587 column, refuse absent nonphysical fields. No candidate law supplied: it binds source data only, no solves. NEXT genuine closure work authorial/empirical G2 full-column P/T/lab validity water/creep fragile etc, develop external/basal G3 A stress force balance and GPE nonduplication; only then explicit bounded EXPLORE solve authorization. D-024 remains.
+
+---
+
 CURRENT NEXT — 2026-11-19 — Run focused FAIR tests/test_r6_g2_g3_nonlinear_layered.py in clean isolated checkout after latest fetch, expect 11 synthetic test cases. NO real 5/8/11 solve; material PRE_to_element projection accepts ONLY explicitly marked artificial engineering fixture, coefficients and water not ratified. Validated spherical geometry/audit is complete; do not proliferate geometric screens. Main closure: authorial full-column G2 ductile+BRITTLE with source-applicable lab P/T/rate and water/pore pressure; independent PRE parent-to-element source mapping; true G3 external basal/GPE/NS forces incl plate11; spherical ShellSet parity and noncanonical solve approval. See docs/arcana/R6_G3_SPHERICAL_FAIR_PASS_NONLINEAR_G2_G3_20261119.md. D-024.
 
 ---
