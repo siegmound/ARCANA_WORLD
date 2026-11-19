@@ -58,8 +58,10 @@ def test_one_line_edge_exact_consistent_nodal_virtual_forces():
     xyz,unit,e,n=frames_and_cartesian([args[1][i] for i in args[0]])
     chord=np.linalg.norm(xyz[1]-xyz[0])
     f=r["candidate_external_line_force_N"].reshape(4,2)
-    assert f[0,0]==pytest.approx(0.001*chord,rel=1e-4)
-    assert f[1,0]==pytest.approx(0.001*chord,rel=1e-4)
+    # Consistent linear-endpoint load: each endpoint receives L*t/2,
+    # with a small spherical tangent-basis projection correction.
+    assert f[0,0]==pytest.approx(0.0005*chord,rel=1e-4)
+    assert f[1,0]==pytest.approx(0.0005*chord,rel=1e-4)
     assert np.allclose(f[2:],0)
     assert np.allclose(r["candidate_basal_tangential_force_N"],0)
     assert r["physical_traction_laws_source_qualified"] is False
