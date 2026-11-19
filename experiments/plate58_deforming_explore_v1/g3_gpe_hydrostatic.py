@@ -15,7 +15,7 @@ from pathlib import Path
 import numpy as np
 
 from arcana_worldsim.r6.shellset_mesh.feg import parse_feg
-from experiments.plate58_deforming_explore_v1.prepare import _json, sha
+from experiments.plate58_deforming_explore_v1.prepare import _json, sha, ROOT
 from experiments.plate58_deforming_explore_v1.spherical_exterior import frames_and_cartesian
 from experiments.plate58_deforming_explore_v1.exterior_variational import triangle_B
 
@@ -157,6 +157,31 @@ def build(multiscale:Path, interface:Path, nodal:Path,
          "GPE_UNAUTHORIZED_HYPOTHESIS")
     zr = float(policy["reference_elevation_m"])
     g = positive(policy["gravity_m_s2"],"GRAVITY")
+    # The source FEG metadata explicitly classifies elevation as derived
+    # numerical support, not automatically approved physical paleotopography.
+    source_feg_meta_path = ROOT/"R6_PRE_ORBDATA_SHELLSET_T0_FEG_V1.json"
+    source_feg_meta = json.loads(source_feg_meta_path.read_text())
+    elevation_authority = source_feg_meta["nodal_fields"]["elevation_m"]
+    need(elevation_authority["authority"] == "NUMERICAL_DERIVED_SUPPORT"
+         and elevation_authority["source_field"]=="total_surface_elevation_m"
+         and source_feg_meta["source_authorities"]["surface_closed_package"]["authority"]==
+             "GOVERNED_T0_FIELD_NUMERICAL_DERIVED_SUPPORT",
+         "GPE_SOURCE_ELEVATION_AUTHORITY_CHANGED")
+    gravity_authority=policy.get("gravity_authority_kind")
+    if gravity_authority=="CANONICAL_R6_PLANET":
+        gravity_reference_path=ROOT/"R6_PRE_ORBDATA_MATERIAL_REFERENCE_COLUMN_AUTHORITY.json"
+        reference=json.loads(gravity_reference_path.read_text())
+        gravity_matches=[item for item in
+            reference["existing_authority_audit"]["canonical_planet"]
+            if item["quantity"]=="gravity" and
+            item["authority"]=="canonical R6"]
+        need(len(gravity_matches)==1 and
+             math.isclose(g,float(gravity_matches[0]["value"]),
+                          rel_tol=0,abs_tol=1e-12),
+             "GPE_CANONICAL_GRAVITY_SOURCE_MISMATCH")
+    else:
+        need(gravity_authority is None,
+             "GPE_GRAVITY_AUTHORITY_UNKNOWN")
     sources = []
     for folder,name,status in (
         (multiscale,"CONTINUATION_A.json",
@@ -251,6 +276,11 @@ def build(multiscale:Path, interface:Path, nodal:Path,
         "source_interface_manifest_sha256":sha(interface/"MANIFEST.json"),
         "source_g2_binding_manifest_sha256":sha(nodal/"MANIFEST.json"),
         "numerical_radius_m":6371000.0,
+        "gravity_m_s2":g,
+        "gravity_authority_kind":gravity_authority or "EARTH_ANALOGUE_ONLY",
+        "FEG_elevation_source_authority":elevation_authority["authority"],
+        "FEG_elevation_source_field":elevation_authority["source_field"],
+        "FEG_elevation_metadata_sha256":sha(source_feg_meta_path),
         "assumption":SCENARIO,"scales":result,
         "G2_physical_constitutive_law":None,
         "G3_physical_load_or_normal_support":None,

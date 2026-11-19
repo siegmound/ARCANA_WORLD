@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR clean detached HEAD verification of updated G2 DP pressure convention tests/test_r6_g2_viscoplastic_explore.py (now 9 test funcs) and source canonical-gravity -200km GPE sensitivity once in new exclusive evidence, not overwrite old g=9.80665 result; compare predicted ||F|| 8x8 1.68327892298e18N,16x16 5.15333890565e18N. Source FEG elevation NUMERICAL_DERIVED_SUPPORT, not physical topology. The actual hinge remains authorial+scientific parameterization: cold crust legitimate brittle/creep coverage + lithology/water/pore; deep mantle basal support/traction + GPE exclusive owner and full ShellSet/experimental nonlinear solver consistency. NO physical T1, do not run mechanics, D-024. Docs/arcana/R6_G2_G3_FAIR_PHYSICS_AUTHORITY_AND_DP_20261119.md.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR verify both new physically motivated modules in isolated clean checkout with tests/test_r6_g3_gpe_hydrostatic.py and tests/test_r6_g2_viscoplastic_explore.py. If PASS, run only source-authenticated GPE hypothesis using explicit EXPLORE Earth-analogue reference in new exclusive evidence, inspect source FEG elevation, basal normal pressure spread and candidate lateral force. NO GT95 applied to cold true crust; do not assign dummy water/pore/Byerlee parameters to real source G2. Then require coupled physical G2 valid temperature coverage and G3 basal/lateral/GPE one-owner with true source heritage. Continue D-024 physical T1 blocked. See docs/arcana/R6_G2_PRESSURE_AWARE_VISCOPLASTIC_EXPLORE_20261119.md.
 
 ---

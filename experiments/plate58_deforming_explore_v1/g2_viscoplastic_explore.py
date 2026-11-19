@@ -18,6 +18,16 @@ from experiments.plate58_deforming_explore_v1.nonlinear_layered_g3 import (
 )
 
 STATUS = "CANDIDATE_G2_PRESSURE_AWARE_TWO_LAYER_VISCOPLASTIC_CONTINUUM__R6_MATERIAL_OPEN"
+# BOTH formulas appear in published ASPECT documentation. Do not silently
+# mix their pressure coefficients; they are different constitutive conventions.
+# Modern ASPECT Rheology::DruckerPrager describes 6*P*sin(phi); legacy
+# MaterialModel::ViscoPlastic documentation describes 2*P*sin(phi).
+# https://aspect.geodynamics.org/doc/doxygen/classaspect_1_1MaterialModel_1_1Rheology_1_1DruckerPrager.html
+# https://aspect.geodynamics.org/doc/doxygen/classaspect_1_1MaterialModel_1_1ViscoPlastic.html
+DRUCKER_PRAGER_PRESSURE_TERMS = {
+    "ASPECT_RHEOLOGY_DP_3D_6P": 6.0,
+    "ASPECT_LEGACY_VISCOPLASTIC_3D_2P": 2.0,
+}
 
 
 def need(ok, code):
@@ -88,7 +98,12 @@ def layer_material(law, temperature_k, lith_pressure_pa, rate_s_inv):
                    "PORE_PRESSURE_RATIO",minimum=0,maximum=1)
     p_eff=lith_pressure_pa*(1-biot*pore_ratio)
     need(np.all(p_eff>=0),"G2_VP_NEGATIVE_EFFECTIVE_PRESSURE")
-    yield_stress=(6*cohesion*math.cos(phi)+2*p_eff*math.sin(phi))/(
+    variant = brittle.get("drucker_prager_pressure_convention")
+    need(variant in DRUCKER_PRAGER_PRESSURE_TERMS,
+         "G2_VP_DP_PRESSURE_CONVENTION_UNDECLARED")
+    pressure_term = DRUCKER_PRAGER_PRESSURE_TERMS[variant]
+    yield_stress=(6*cohesion*math.cos(phi)+
+                  pressure_term*p_eff*math.sin(phi))/(
         math.sqrt(3)*(3+math.sin(phi)))
     need(np.all(yield_stress>0),"G2_VP_ZERO_YIELD_STRESS")
     alpha=1.0/n

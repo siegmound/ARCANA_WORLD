@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 from experiments.plate58_deforming_explore_v1.g2_viscoplastic_explore import (
-    potential_gradient_tangent,
+    potential_gradient_tangent, layer_material, DRUCKER_PRAGER_PRESSURE_TERMS,
 )
 
 
@@ -34,6 +34,7 @@ def candidate(n1=4.,n2=3.5):
           "brittle":{
               "source_reference":"SYNTHETIC_DRUCKER_PRAGER_NO_ARCANA",
               "criterion":"DRUCKER_PRAGER_3D_CONTINUUM",
+              "drucker_prager_pressure_convention":"ASPECT_RHEOLOGY_DP_3D_6P",
               "cohesion_pa":5e6,"friction_angle_deg":30.,
               "biot_coefficient":1.,
               "pore_pressure_over_lithostatic":0.3}}
@@ -99,3 +100,34 @@ def test_source_lithology_and_brittle_yield_not_promoted():
     assert state["layers"][0]["effective_3D_DP_yield_min_max_Pa"][0]>0
     assert state["smooth_cap_not_ideal_Drucker_Prager_plasticity"]
     assert state["physical_material_G2_authorized"] is False
+
+
+def test_dp_pressure_conventions_are_explicit_and_not_equivalent():
+    """Both first-party ASPECT descriptions exist; require exact model ID."""
+    import math
+    source = candidate()["layers"]["crust"]
+    pressure = np.array([1.e8, 3.e8])
+    temperature = np.array([850., 950.])
+    y = {}
+    for variant in DRUCKER_PRAGER_PRESSURE_TERMS:
+        law = {**source, "brittle":{**source["brittle"],
+                "drucker_prager_pressure_convention":variant}}
+        alpha, coeff, yield_stress = layer_material(
+            law,temperature,pressure,1e-14)
+        assert alpha == pytest.approx(0.25)
+        assert np.all(coeff>0)
+        y[variant]=yield_stress
+    y6=y["ASPECT_RHEOLOGY_DP_3D_6P"]
+    y2=y["ASPECT_LEGACY_VISCOPLASTIC_3D_2P"]
+    phi=math.radians(30.)
+    cohesion_term=(6*5e6*math.cos(phi))/(
+                    math.sqrt(3)*(3+math.sin(phi)))
+    assert np.all(y6>y2)
+    assert np.allclose(y6-cohesion_term,3*(y2-cohesion_term),rtol=1e-12)
+
+
+def test_dp_pressure_convention_cannot_be_silent():
+    s=candidate()
+    del s["layers"]["mantle"]["brittle"]["drucker_prager_pressure_convention"]
+    with pytest.raises(ValueError,match="DP_PRESSURE_CONVENTION_UNDECLARED"):
+        potential_gradient_tangent(pre(),s,[2e-14,-1e-14,1e-14])
