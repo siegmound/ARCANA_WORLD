@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR 100Y global T0 kinematic PASS already; do NOT rerun. Execute ONLY dedicated Phase2 tests/test_r6_global_1000y_kinematic.py and phase2_1000y.py in same isolated FAIR clean verification worktree. Pass --prior100 /home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GLOBAL_T0_KINEMATIC_100Y_NEW_01 and exclusive --years 1000 OUTPUT .../GLOBAL_T0_KINEMATIC_1000Y_NEW_01. Runner enforces byte SHA prior evidence, 100Y prefix bit-exact and 500+500 replay, no T1/G2/G3. Return numerical acceptance + contact gap at 1000 + memory, CPU, IO; compare with 100Y after actual run. See experiments/global_t0_kinematic_baseline_v1/README_PHASE2_1000Y.md. D-024/G3_A_EXPLORE unchanged.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR Phase1 global T0 100Y only, using isolated clean ARCANA_WORLD_R6_PLATE58_VERIFY checkout. Fetch current integration, conda arcana-r6-linux, env PYTHONPATH=src:. + PYTHONDONTWRITEBYTECODE=1 + BLAS threads1. Run tests/test_r6_global_100y_kinematic.py then python -m experiments.global_t0_kinematic_baseline_v1.benchmark /home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/GLOBAL_T0_KINEMATIC_100Y_NEW_01 --years 100 (exclusive new path). Inspect REPORT.json/MANIFEST checkpoints, CPU/RSS/IO, triangle/norm/replay accuracy, cross-plate source gaps; NO 1000Y yet. This is KINEMATIC_AND_PASSIVE_PRE_ONLY, not G2/G3, physical T1 or canonical history. See experiments/global_t0_kinematic_baseline_v1/README.md. D-024.
 
 ---

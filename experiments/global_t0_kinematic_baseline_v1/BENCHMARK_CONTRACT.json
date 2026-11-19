@@ -47,11 +47,29 @@
   "canonical_world_history_writes": false,
   "weather_hydrology_tectonic_deformation": false,
   "T0_PRE_is_passive_reference_only": true,
-  "planned_implementation_status": "NOT_IMPLEMENTED",
-  "observed_100y_result": null,
+  "planned_implementation_status": "100Y_FAIR_PASS__1000Y_CODE_PUBLISHED_FAIR_PENDING",
+  "observed_100y_result": {
+    "provenance": "USER_REPORTED_FAIR_TERMINAL__FILES_NOT_IMPORTED",
+    "source_commit": "716a1ba770331cd759ee4703545893235b7696bc",
+    "status": "PASS_GLOBAL_T0_100Y_KINEMATIC_BASELINE__CONTACTS_UNRESOLVED",
+    "tests_passed": 7,
+    "model_years": 100,
+    "source_nodes": 64442,
+    "triangles": 128880,
+    "max_xyz_drift_unit": 5.329070518200751e-15,
+    "max_radial_norm_error": 5.10702591327572e-15,
+    "max_triangle_area_change_sr": 7.3075226425523e-17,
+    "restart_error": 0,
+    "source_load_wall_s": 0.7793337851762772,
+    "step_wall_sum_s": 0.12856468930840492,
+    "total_until_report_wall_s": 1.0948201455175877,
+    "peak_rss_kib": 169476
+  },
   "observed_1000y_result": null,
   "G3_A_prior_authorial_ratification": "R6_PLATE58_G3_EXTERNAL_ARCH_A_20261119",
   "G3_A_still_selected": true,
   "mechanical_solve_authorized": false,
-  "physical_deforming_T1": null
+  "physical_deforming_T1": null,
+  "phase2_module": "experiments/global_t0_kinematic_baseline_v1/phase2_1000y.py",
+  "phase2_conditions": "MUST_MATCH_PRIOR100_MANIFEST_HASHES_SOURCE_PINS_AND_BIT_EXACT_YEAR100_PREFIX"
 }
