@@ -1,0 +1,57 @@
+{
+  "schema": "ARCANA_R6_GLOBAL_T0_KINEMATIC_BASELINE_PLAN_V1",
+  "date": "2026-11-19",
+  "approval_interpretation": "USER_PROPOSED_GLOBAL_100_OR_1000Y_BENCHMARK_BEFORE_G2_G3",
+  "scope": "KINEMATIC_ONLY_SOURCE_BOUND_GLOBAL_T0_WITH_PASSIVE_PRE_REFERENCE",
+  "input_authorities": {
+    "canonical_mesh": "R6_T0_VECTOR_PLATE_PARTITION_MANIFEST.json",
+    "plate_euler": "R6_T0_CANONICAL_PLATE_KINEMATICS.json",
+    "passive_pre_t0": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat",
+    "passive_pre_metadata": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.json",
+    "temporal_first_segment": "R6_RIFT_INITIATION_AND_EVENT_GUARD_LAW_BINDING.json",
+    "numerical_motion": "src/arcana_worldsim/r6/finite_rotation.py"
+  },
+  "expected_t0_inventory": {
+    "parent_faces": 64800,
+    "nodes": 64442,
+    "triangles": 128880,
+    "plate_count": 12
+  },
+  "years_modes": [
+    100,
+    1000
+  ],
+  "year_100_required_before_1000": true,
+  "kinematic_event_horizon_source_check_required": true,
+  "numerical_semantics": "PER_PLATE_TEMPORARY_VERTEX_VIEWS__DO_NOT_MUTATE_SHARED_FEG_NODES",
+  "diagnostics": [
+    "source_hashes",
+    "load_wall_cpu_rss",
+    "advance_p50_p95_max_cpu_wall",
+    "direct_vs_composed_euler_xyz",
+    "radial_norm_drift",
+    "per_plate_triangle_signed_area_and_orientation",
+    "restart_replay_equivalence",
+    "cross_plate_node_separation_not_numeric_error",
+    "checkpoint_io_sha_size_and_rss",
+    "full_100_vs_1000_resource_growth"
+  ],
+  "checkpoint_years": [
+    0,
+    1,
+    10,
+    100,
+    500,
+    1000
+  ],
+  "canonical_world_history_writes": false,
+  "weather_hydrology_tectonic_deformation": false,
+  "T0_PRE_is_passive_reference_only": true,
+  "planned_implementation_status": "NOT_IMPLEMENTED",
+  "observed_100y_result": null,
+  "observed_1000y_result": null,
+  "G3_A_prior_authorial_ratification": "R6_PLATE58_G3_EXTERNAL_ARCH_A_20261119",
+  "G3_A_still_selected": true,
+  "mechanical_solve_authorized": false,
+  "physical_deforming_T1": null
+}

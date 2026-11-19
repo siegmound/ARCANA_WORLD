@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FIRST implement independent global T0 passive PRE/kinematic diagnostic benchmark and unit tests using authenticated 64,442-node/128,880-triangle global mesh and12 source Euler plates; preserve per-plate material-coordinate views at shared boundary nodes (no assignment of two Euler BC to one FEG DOF), direct vs composed rotation, triangle area and restart, boundary separation, time/RSS/CPU/IO; bounded output only. See docs/arcana/R6_GLOBAL_T0_PRE_G2G3_BENCHMARK_PLAN_20261119.md and experiments/global_t0_kinematic_baseline_v1/BENCHMARK_CONTRACT.json. Then FAIR 100Y and inspect before 1000Y. NO global mechanics, T1, canonical history or G2/G3 material assumptions. Existing G3_A_RATIFIED_EXPLORE remains chosen for later physically closed work. D-024.
+
+---
+
 CURRENT NEXT — 2026-11-19 — G3_CONTINUUM_ARCH_A=AUTHOR_RATIFIED_FOR_EXPLORE; no more G2 screening or boundary microgates. Proceed with substantial G2+G3 physical closure jointly: proposed full-column brittle/ductile law incl pore water/Biot/visMax/creep and integral errors + G3 A external continuum provider with physically defensible loads, normal/tangential basal balance including existing GPE, mesh/domain/time convergence. All source-unbound parameters remain null; authorial approval of A is NOT approval of coefficients, forces, ShellSet solve, G4, HistoryStore or T1. Follow docs/arcana/R6_PLATE58_G3_A_AUTHORIAL_RATIFICATION_20261119.md. D-024 blocks deforming T1.
 
 ---
