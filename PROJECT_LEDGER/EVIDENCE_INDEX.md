@@ -1,3 +1,7 @@
+NEW SOURCE (NOT NEW FAIR EVIDENCE): 2026-11-19 G3_16CELL_DIAGNOSTIC commit2c30e2f5fb564bf6422cdbe5726055755bc2db4b, 4 new paths experiments/plate58_deforming_explore_v1/{envelope.py,check_envelope.py,README_ENVELOPE.md}, tests/test_r6_plate58_envelope.py. Future exclusive evidences PLATE58_NEIGHBOR_16_NEW_01 only if generated on FAIR; no FAIR outputs exist per current independent verification. Previous FAIR four-cell staging passed9/9. Source-bound diagnostic 16cell planned, not solver closure. D-024 unchanged.
+
+---
+
 CURRENT SOURCE (NOT FAIR EVIDENCE YET): 2026-11-19 PLATE58 EXPLORE staging code branch r6/multiphysics-integration-20261026 GitHub commit d7e87b8c701333054187c1ac8282ceb99f9a0f0a, four paths experiments/plate58_deforming_explore_v1/prepare.py,check.py,README.md and tests/test_r6_plate58_deformation_prepare.py. Only static readback checked; **no FAIR execution or empirical test output** yet. Future output exclusive ARCANA_WORLD_EVIDENCE/R6/PLATE58_STAGE_NEW_01 if operator chooses new directory; this path NOT currently proven to exist. Source current base from merged PR#2; G2/G3 authorial inputs remain NULL, no T1. D-024 unchanged.
 
 ---
