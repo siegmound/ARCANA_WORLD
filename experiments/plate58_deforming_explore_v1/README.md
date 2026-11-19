@@ -64,3 +64,4 @@ differisce ~3,1% sulle curve testate, non sull'incertezza geologica reale.
 
 Lo scopo della prova è localizzare gli input mancanti, **non**
 costruire un forcing artificiale per far convergere SHELLS.
+I due ID di segmento dal report dell'operatore sono conservati come **riferimenti non associati individualmente** ai segmenti FEG: l'abbinamento puntuale richiede la fonte originale del censimento e non viene dedotto dall'ordine arbitrario dei due edge.

@@ -222,8 +222,6 @@ def prepare(output):
     require(all(0.15 < r["opening_east_m_year"] < 0.165 and
                 0.004 < abs(r["tangential_north_m_year"]) < 0.01
                 for r in contact), "SOURCE_PLATE58_RELATIVE_SPEED_MISMATCH")
-    for name, edge in zip(SOURCE_CONTACT_IDS, contact, strict=True):
-        edge["operator_source_segment_id"] = name
     opening = sum(row["opening_east_m_year"] for row in contact)/len(contact)
     with (ROOT/(PRE+".dat")).open() as stream:
         header = next(stream).split()
@@ -280,6 +278,7 @@ def prepare(output):
         "plate_by_parent_triangle":dict(zip(map(str,parent_ids),plate_ids)),
         "local_contact_edges":[list(x) for x in interface],
         "contact_diagnostics":contact, "mean_opening_m_year":opening,
+        "operator_reported_segment_ids_not_bound_to_mesh_edges": list(SOURCE_CONTACT_IDS),
         "continuum_cut_nodes":{"west":west,"east":east,"north":north,"south":south},
         "prescribed_distal_node_velocity":velocities,
         "parent_node_PRE":pre_nodes, "runtime_lat_lon_deg":runtime_pos.tolist(),
