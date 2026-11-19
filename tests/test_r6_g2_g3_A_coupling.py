@@ -98,7 +98,7 @@ def test_bad_duplicate_interface_degree_of_freedom_rejected():
 def test_source_ownership_failure_blocks_interface():
     args=list(fixture_geometry())
     args[0][0]=999
-    with pytest.raises(ValueError,match="G3_TRIANGLE_TO_PARENT_NODE_BINDING_CHANGED"):
+    with pytest.raises(ValueError,match="G2_G3_SOURCE_INVENTORY_CHANGED"):
         exterior_interface(*args)
 
 
