@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR run tests/test_r6_g3_multiscale_mechanical_interface.py and one new source-SHA-bound g3_multiscale_interface.py using prior MULTISCALE + COUPLING FAIR evidence paths, inspect exact contact pairs and whether true 3+-plate junction exists; do NOT infer triple junction from plate11 presence. After this, no more topology-only expansion loops. MAIN next work full physically sourced G2 water/P_eff/friction/ductile (shared eCreep OneBar/Mohr implications), G3 A real tangent/load from external continuum including plate11 when 16x16 and valid outer/basal BC/GPE no double-count. D-024 no ShellSet/T1. See docs/arcana/R6_G3_A_MULTISCALE_FAIR_PASS_INTERFACE_CONTRACT_20261119.md.
+
+---
+
 CURRENT NEXT — 2026-11-19 — FAIR clean isolated verification of tests/test_r6_g3_A_multiscale_source_continuation.py then one source-bound run continuation_A.py STAGE=.../PLATE58_STAGE_NEW_01 HALO=.../PLATE58_NEIGHBOR_16_NEW_01 COUPLING=.../PLATE58_G2_G3_A_COUPLING_NEW_01 OUTPUT=.../PLATE58_G3_A_OUTER_MULTISCALE_NEW_01 exclusive. Inspect true 8x8/16x16 plate inventory and source contact/boundary IDs; no need to repeat G2 eCreep screening. Main physical next task: tensor-consistent G2 material and experimental alternative for shared-eCreep OneBar/Mohr nonlinearities, with genuine provenance/water/P_eff and G3 A external/basal conditions/source GPE nonduplication. NO mechanics/T1. See docs/arcana/R6_G2_SHELLS_FAIR_PASS_G3_A_MULTISCALE_20261119.md, D-024.
 
 ---
