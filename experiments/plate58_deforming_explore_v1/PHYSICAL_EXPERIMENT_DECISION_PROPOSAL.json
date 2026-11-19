@@ -1,0 +1,89 @@
+{
+  "schema": "ARCANA_R6_PLATE58_AUTHORIAL_PHYSICAL_EXPERIMENT_DECISION_V1",
+  "date": "2026-11-19",
+  "authority": "PROPOSAL_ONLY_NOT_RATIFIED",
+  "description": "Single integrated authorial experiment decision after FAIR G2/G3. Explicitly fail closed.",
+  "terminal_fair_report": {
+    "source_git_commit": "cee4e84f63c17ca0ee63814aff1c8366febdc131",
+    "source": "USER_REPORTED_FAIR_TERMINAL_NOT_IMPORTED",
+    "status": "PASS_G2_ALTERNATE_WET_QUARTZ_PT_SCREEN__WATER_UNRESOLVED",
+    "tests_passed": 14,
+    "tests_total": 14,
+    "crust_sample_count": 81,
+    "crust_sample_temperature_min_k": 280,
+    "crust_sample_temperature_max_k": 1051.5581968311126,
+    "sample_count_wet_experiment_T": 18,
+    "sample_count_outside_wet_experiment_T": 63,
+    "cross_study_pt_overlap_count": 9,
+    "pressure_group_counts": {
+      "low_less_560_mpa": 54,
+      "between_560_700_mpa": 18,
+      "high_700_1600_mpa": 9
+    },
+    "physical_validation_of_wet_quartz": false
+  },
+  "scientific_interpretation": {
+    "original_gt95_whole_crust_validated": false,
+    "wet_quartz_flow_law_validated": false,
+    "source_field_water_fugacity_known": false,
+    "mantle_benchmark_authorial_mineralogy": false,
+    "source_assigned_brittle_cap": false,
+    "numerical_mesh_convergence_100km": false,
+    "contact_topology": "SINGLE_CONTINUUM_SHARED_NODES_T0_NO_EXPLICIT_FAULTS",
+    "G3_dual_euler_same_dof_allowed": false
+  },
+  "scenario": {
+    "model": "R6_PLATE58_NONCANONICAL_CONTINUUM_MASS_CONSERVING_V1",
+    "selected_by_author": false,
+    "scenario_approval_reference": null,
+    "G2": {
+      "crust_law_family": null,
+      "crust_law_variant_parameters": null,
+      "full_crust_brittle_ductile_transition": null,
+      "creep_fit_full_depth_validation": null,
+      "pore_pressure_model": null,
+      "biot": null,
+      "water_fugacity_model": null,
+      "continuum_friction_params": null,
+      "mantle_benchmark_approval": null,
+      "mantle_effective_lithology": null,
+      "original_shellset_a_b_c_d_e_by_layer": null,
+      "original_shellset_viscosity_limits": null,
+      "alternative_sensitivity_cases": null
+    },
+    "G3": {
+      "preferred_external_model": "OUTER_CONTINUUM_MECHANICAL_TRANSFER_A",
+      "selected_external_model": null,
+      "north_south_continuation_law": null,
+      "exterior_source_traction_or_velocity_provider": null,
+      "west_east_far_field_source": "SOURCE_PLATE8_WEST_PLATE5_EAST_EULER_ONLY",
+      "basal_tangential_model": null,
+      "basal_normal_support_and_duplicate_force_check": null,
+      "material_accommodation_width_km": null,
+      "numerical_mesh_convergence": null,
+      "valid_Euler_window_years": null,
+      "bound_time_step_years": null,
+      "numerical_force_work_reactions_acceptance": null
+    },
+    "G4": {
+      "flux_mass_layers_consistency": null,
+      "thermal_splitting_error": null,
+      "T0_T1_restart_and_history_replay": null
+    }
+  },
+  "boundary_policy": {
+    "native_north_south_euler_from_T0": "KINEMATIC_SAMPLES_ONLY",
+    "dual_dirichlet_on_shared_dof": "FORBIDDEN",
+    "average_two_plate_euler_at_shared_node": "FORBIDDEN",
+    "free_N_S": "OPTION_B_NONCANONICAL_SENSITIVITY_ONLY_NOT_ZERO_TRACTION",
+    "periodic_N_S": "UNSUPPORTED_WITHOUT_EXTERNAL_CONTINUATION",
+    "no_silent_node_duplication": true
+  },
+  "readiness": {
+    "mechanical_solve_authorized": false,
+    "reason": "REQUIRES_EXPLICIT_AUTHORIAL_G2_G3_PHYSICAL_SCENARIO_AND_VALIDATION"
+  },
+  "solver_runs": 0,
+  "first_deforming_T1": null,
+  "canonical_material_promotion": false
+}

@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR wet-quartz G2 PASS 14/14; do not repeat any previous FAIR tests or fabricate another screening gate. NEXT ACTUAL PHYSICAL HINGE: choose/ratify explicit EXPLORE-only G2 crust/mantle water/pressure/fragile/creep effective model, plus G3 external continuation A (recommended) or explicitly unqualified halo B and basal support, domain resolution/time and G4 mass/thermal constraints. See docs/arcana/R6_PLATE58_G2_G3_AUTHORIAL_EXPERIMENT_DECISION_20261119.md and the fail-closed JSON. After explicit bounded physical choice build one real ShellSet regional case; no solve or T1 while model approval/coefficients are null. D-024 unchanged.
+
+---
+
 CURRENT NEXT — 2026-11-19 — From clean isolated FAIR checkout fetch branch; run only tests/test_r6_plate58_wet_quartz_screen.py then python -m experiments.plate58_deforming_explore_v1.wet_quartz_screen "$STAGE" "$PRIOR" "$OUTPUT" with STAGE=.../PLATE58_STAGE_NEW_01, PRIOR=.../PLATE58_G2_PT_ENVELOPE_NEW_01 and new OUTPUT=.../PLATE58_WET_QUARTZ_SCREEN_NEW_01. No repeat prior 12 PASS or 6/9 PASS. Interpret 2021 pressure groups and 2019 wet-quartz T range as independent eligibility windows, not joint physical calibration. Then STOP further G2 microdiagnostics: actual authorial selection of effective water/friction/creep G2 and physically closed G3 exterior/basal model needed before short ShellSet EXPLORE. D-024 blocks T1.
 
 ---
