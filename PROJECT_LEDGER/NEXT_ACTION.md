@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — On FAIR run focused tests/test_r6_shells_lr_creep_bridge.py in clean isolated checkout; no real25-column scenario until fully source-calibrated. Then scientific/architectural decision: SHELLS eCreep shared crust+mantle: select scientifically defensible common exponent, implement isolated experiment-only separate exponents with parity against SHELLS, OR document multi-P/T/rate fit tolerance; do NOT silently average GT95 (n4) with dry-olivine (n3.5). In parallel choose valid full-depth brittle+ductile laws/water/fugacity and G3 A larger exterior + basal GPE closure, real operator assembly. Full LR and NS force remain null; no solve or T1. See experiments/plate58_deforming_explore_v1/README_SHELLS_LR_CREEP_BRIDGE.md. D-024.
+
+---
+
 CURRENT NEXT — 2026-11-19 — source G2/G3_A coupling FAIR PASS 9/9. New **substantive** G2 full-column strength evaluator and 25-column source-binder published, but only synthetic tests locally; run FAIR tests/test_r6_g2_whole_column_provider.py (do NOT run candidate on actual 25 PRE with synthetic params). Need now select scientifically defensible full-column G2 reference/water alternatives and pressure assumptions with empirical P/T/strain/fugacity support, plus reconcile ASPECT stress invariant with ShellSet LR and brittle law; continue actual G3 A exterior mesh assembly, far-boundary and basal GPE forcing. NO invented SQUEEZ/FIXED force, no physical solve/T1, no micro-PT overlap screens. See experiments/plate58_deforming_explore_v1/README_G2_WHOLE_COLUMN_ENGINE.md. D-024.
 
 ---
