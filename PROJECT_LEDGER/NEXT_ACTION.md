@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — FAIR clean isolated verification of tests/test_r6_g3_A_multiscale_source_continuation.py then one source-bound run continuation_A.py STAGE=.../PLATE58_STAGE_NEW_01 HALO=.../PLATE58_NEIGHBOR_16_NEW_01 COUPLING=.../PLATE58_G2_G3_A_COUPLING_NEW_01 OUTPUT=.../PLATE58_G3_A_OUTER_MULTISCALE_NEW_01 exclusive. Inspect true 8x8/16x16 plate inventory and source contact/boundary IDs; no need to repeat G2 eCreep screening. Main physical next task: tensor-consistent G2 material and experimental alternative for shared-eCreep OneBar/Mohr nonlinearities, with genuine provenance/water/P_eff and G3 A external/basal conditions/source GPE nonduplication. NO mechanics/T1. See docs/arcana/R6_G2_SHELLS_FAIR_PASS_G3_A_MULTISCALE_20261119.md, D-024.
+
+---
+
 CURRENT NEXT — 2026-11-19 — On FAIR run focused tests/test_r6_shells_lr_creep_bridge.py in clean isolated checkout; no real25-column scenario until fully source-calibrated. Then scientific/architectural decision: SHELLS eCreep shared crust+mantle: select scientifically defensible common exponent, implement isolated experiment-only separate exponents with parity against SHELLS, OR document multi-P/T/rate fit tolerance; do NOT silently average GT95 (n4) with dry-olivine (n3.5). In parallel choose valid full-depth brittle+ductile laws/water/fugacity and G3 A larger exterior + basal GPE closure, real operator assembly. Full LR and NS force remain null; no solve or T1. See experiments/plate58_deforming_explore_v1/README_SHELLS_LR_CREEP_BRIDGE.md. D-024.
 
 ---
