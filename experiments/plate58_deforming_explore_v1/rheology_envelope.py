@@ -15,7 +15,7 @@ from experiments.plate58_deforming_explore_v1.check import verify as verify_stag
 from experiments.plate58_deforming_explore_v1.prepare import (
     PRE, ROOT, SECONDS_YEAR, _json, require, sha,
 )
-from arcana_worldsim.r6.material_rheology_provider import DEFAULT_BENCHMARK
+from arcana_worldsim.r6.material_rheology_provider import (DEFAULT_BENCHMARK, evaluate_dislocation_creep)
 
 STATUS = "PASS_G2_SOURCE_PT_PROXY_SENSITIVITY__NO_CONSTITUTIVE_CLOSURE"
 SCHEMA = "ARCANA_R6_PLATE58_G2_PT_PROXY_ENVELOPE_V1"
@@ -152,17 +152,17 @@ def evaluate_column(pre, rates):
             eps_s=eps,temperature_k=t,a_pa_n_s=a_gt,
             exponent_n=GT_N,q_j_mol=GT_Q_J_MOL))
             for t in crust_t]
-        mantle=[nominal_flow_stress_pa(log_triaxial_differential_stress_pa(
-            eps_s=eps,temperature_k=t,
-            a_pa_n_s=b.prefactor_pa_n_s,exponent_n=b.stress_exponent,
-            q_j_mol=b.activation_energy_j_mol,
-            p_pa=lithostatic_proxy_pa(pre,z),
-            activation_volume_m3_mol=b.activation_volume_m3_mol))
+        # Preserve the ASPECT shear-viscosity convention of the existing
+        # R6 olivine benchmark; DO NOT relabel as laboratory axial Delta sigma.
+        mantle=[2.0*eps*evaluate_dislocation_creep(
+            temperature_k=t, strain_rate_s=eps,
+            pressure_pa=lithostatic_proxy_pa(pre,z)
+        )["effective_shear_viscosity_pa_s"]
             for z,t in zip(mantle_z,mantle_t,strict=True)]
         curves[str(w)]={
             "kinematic_only_epsilon_s_inv":eps,
             "GT_crust_uncapped_triaxial_differential_stress_pa":crust,
-            "dry_olivine_mantle_uncapped_triaxial_differential_stress_pa":mantle,
+            "dry_olivine_mantle_uncapped_ASPECT_invariant_stress_scale_pa":mantle,
         }
     return {
         "crust_thickness_m":zc,"lab_depth_m":zl,
@@ -220,6 +220,7 @@ def analyze(stage_dir:Path, output:Path):
             "E_j_mol":DEFAULT_BENCHMARK.activation_energy_j_mol,
             "V_m3_mol":DEFAULT_BENCHMARK.activation_volume_m3_mol,
             "valid_PT_window":"UNKNOWN; NOT CLAIMED",
+            "stress_convention":"2 * eta_ASPECT * nominal_strain_rate; not triaxial axial stress",
         },
         "alternative_water_sensitive_quartzite":{
             "reference":HTD_PROVENANCE,
@@ -241,7 +242,8 @@ def analyze(stage_dir:Path, output:Path):
         "solver_runs":0,"first_deforming_T1":None,
         "limitations":[
             "lab curves are not authorial ARCANA materials",
-            "computed differential stresses are uncapped triaxial benchmarks, NOT SHELLS stresses",
+            "GT crust stresses are uncapped triaxial laboratory benchmarks, NOT SHELLS stresses",
+            "mantle stress scale uses the original ASPECT shear-invariant viscosity convention, not triaxial Delta sigma",
             "source width/rate scales are kinematic only; actual strain is unknown",
             "no pressure activation for GT source law; cannot infer V=0 physically",
             "no water/fugacity/fragile law or integrated column strength",

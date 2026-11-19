@@ -19,7 +19,7 @@ I valori `GT_Q`, `GT_A`, `GT_n` sono **benchmark documentati**, non costitutivi 
 3. Valida la continuità dei polinomi termici esistenti a superficie/Moho/LAB e ottiene T(z) a 9 punti per strato.
 4. Calcola la **sola pressione litostatica di confronto** integrando le densità PRE e g=9.82 m/s² (stessa scala analitica già usata in FAIR, non pressione efficace/poro).
 5. Per le tre larghezze **diagnostiche** 10/100/300 km usa i tassi `opening / width` già contenuti nel `CASE`, non tassi di deformazione osservati.
-6. Valuta gli stress differenziali **triassiali, creep-only, senza cap fragile** per due leggi di laboratorio; non li spaccia per stress verticale-integrato di ShellSet.
+6. Valuta gli stress differenziali **triassiali, creep-only** della quarzite e, **separatamente**, lo sforzo scalare dal benchmark viscoso ASPECT del mantello \`2ηε̇\`, senza cap fragile; non li equipara tra loro né agli stress verticale-integrati di ShellSet.
 7. Misura il confronto con la finestra T di laboratorio della quarzite e l'**errore di sola pendenza** del candidato comune `eCreep=0.267857` dopo ancoraggio degli stress alla fascia 100 km. Non lo interpreta come accuratezza del fit completo.
 8. Stampa gli elementi ancora ignoti: fugacità, acqua, pressione di poro, Biot, attrito e resistenza limite, legge P crostale, fit integrato, trazioni N/S, sostegno basale.
 
