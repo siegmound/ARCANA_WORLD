@@ -20,8 +20,10 @@ PRE ha marker e schema propri e richiede la ricompilazione isolata con
 `MOD_ArcanaRuntime.regional.f90`. In una futura directory privata del caso,
 lo staging esistente di ShellSet cerca il payload regionale sotto il nome
 `INPUT/R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat`. Usare quel nome solo
-nella directory privata. Il test compila il solo lettore con un programma
-di prova. L'integrazione con il binario ShellSet completo è ancora da verificare.
+nella directory privata. Questa prima fase ha verificato il lettore PRE con
+un programma di prova. Il successivo smoke con il modulo SHELLS completo è
+passato in modalità `ENGINEERING_ONLY`, come documentato sotto. Le condizioni
+meccaniche e i parametri fisici G2/G3 del caso ARCANA restano da definire.
 
 `solution_mapping.bind_solution` prende i campi estratti da un risultato
 convergente, già associati a questa FEG e in unità SI. Il chiamante deve
