@@ -1,0 +1,3 @@
+# Thermal 1D EXPLORE v1
+Original E0 state_initial C028/C029 only, 10 model years with original fixed top/base temperatures. run.py compares unchanged public/private provider with a separate material-interface-integrated Euler adapter. Independent affine expm and PRE polynomial checks. Source/provider/R1 unchanged. No general validation or automatic run.
+Run from Arcana with PYTHONPATH=ARCANA_WORLD_R6_GEOMETRY_R1_WORK/src, selected arcana-r6-linux Python, BLAS/OMP/MKL=1, argument a NEW output directory whose parent contains BEFORE.json from this evidence snapshot. Original evidence must not be overwritten.

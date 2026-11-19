@@ -33,6 +33,52 @@ def _sha(value: Any) -> str:
     return hashlib.sha256(_canonical(value)).hexdigest()
 
 
+class _CanonicalCloneFallback(Exception):
+    pass
+
+
+def _clone_canonical_json(value: Any) -> Any:
+    """Detach ordinary JSON without encoding floats and decoding them again.
+
+    Sorted string keys preserve the original roundtrip's iteration/reduction
+    order. Unusual Python objects, deep nesting, cycles and invalid JSON use
+    the reference roundtrip, retaining its normalization and failure behavior.
+    No mutable container is shared, including repeated references in the input.
+    """
+    def clone(row: Any, depth: int = 0) -> Any:
+        kind = type(row)
+        if kind is str:
+            if not row.isascii():
+                row.encode("utf-8")  # Preserve rejection of surrogate strings.
+            return row
+        if kind is float:
+            if not math.isfinite(row):
+                raise _CanonicalCloneFallback
+            return row
+        if kind is bool or row is None:
+            return row
+        if kind is int:
+            # Below Python's smallest configurable integer string limit.
+            if row.bit_length() > 2000:
+                raise _CanonicalCloneFallback
+            return row
+        if depth >= 64:
+            raise _CanonicalCloneFallback
+        if kind is list:
+            return [clone(item, depth + 1) for item in row]
+        if kind is dict:
+            if any(type(key) is not str for key in row):
+                raise _CanonicalCloneFallback
+            return {clone(key, depth + 1): clone(row[key], depth + 1)
+                    for key in sorted(row)}
+        raise _CanonicalCloneFallback
+
+    try:
+        return clone(value)
+    except _CanonicalCloneFallback:
+        return json.loads(_canonical(value))
+
+
 @dataclass(frozen=True)
 class RegionalConfig:
     rows: int = 3
@@ -358,7 +404,9 @@ def _routing_order(targets: Mapping[str, int | None]) -> list[int]:
 def advance_region(state: Mapping[str, Any], *, years: int,
                    config: RegionalConfig | None = None,
                    precipitation_m_year_by_cell: list[float] | None = None,
-                   history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None) -> dict[str, Any]:
+                   history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None,
+                   runtime_copy_optimization: bool = False,
+                   _runtime_owner: Any = None) -> dict[str, Any]:
     """Advance annual routing; material flows are mass-conservative and ID preserving."""
     cfg = config or RegionalConfig(**state["config"])
     cfg.validate()
@@ -370,7 +418,14 @@ def advance_region(state: Mapping[str, Any], *, years: int,
               else [cfg.precipitation_m_year] * 9)
     if len(precip) != 9 or any(not math.isfinite(x) or x < 0 for x in precip):
         raise RegionalModelError("PRECIPITATION_VECTOR_INVALID")
-    out = json.loads(_canonical(dict(state)))
+    detached_copy = _clone_canonical_json if runtime_copy_optimization else lambda value: json.loads(_canonical(value))
+    if _runtime_owner is None:
+        out = detached_copy(dict(state))
+    else:
+        from .int10k_runtime_compact import _CompactOwner
+        if type(_runtime_owner) is not _CompactOwner:
+            raise RegionalModelError("COMPACT_OWNER_INVALID")
+        out = _runtime_owner.begin(state)
     cells = out["cells"]
     out.setdefault("records", [])
     out.setdefault("snapshots", [])
@@ -634,14 +689,18 @@ def advance_region(state: Mapping[str, Any], *, years: int,
         all_events.extend(year_events)
         out["records"].append(record)
         out["time_years"] = year
-        snapshot = {"time_year": year, "cells": json.loads(_canonical(cells))}
-        out["snapshots"].append(snapshot)
+        if _runtime_owner is None:
+            snapshot = {"time_year": year, "cells": detached_copy(cells)}
+            out["snapshots"].append(snapshot)
         if history_consumer is not None:
             history_consumer("REGIONAL_YEAR_RECORD", record)
             for event in year_events:
                 if event is not route_event:
                     history_consumer("REGIONAL_EVENT", event)
-            history_consumer("REGIONAL_SNAPSHOT", snapshot)
+            if _runtime_owner is None:
+                history_consumer("REGIONAL_SNAPSHOT", snapshot)
+            else:
+                history_consumer("REGIONAL_DELTA", _runtime_owner.frame(year))
     return out
 
 
@@ -734,13 +793,41 @@ def query_deep_inventory(result: Mapping[str, Any], *, cell_id: str,
             "authority": "UNIFIED_ORCHESTRATOR_SYNTHETIC_DEEP_DIAGNOSTIC"}
 
 
+_HISTORY_EXCLUDED_FROM_FRONTIER = frozenset((
+    "records", "snapshots", "routing_events", "initial_condition_events",
+))
+
+
+def _project_validated_history_free_frontier(
+    region: Mapping[str, Any], *, runtime_copy_optimization: bool = False,
+) -> dict[str, Any]:
+    """Validate excluded history and detach only the restart-sufficient state.
+
+    Even an external history_consumer can mutate an emitted dict after its
+    initial validation. Preserve the previous fail-closed whole-state JSON
+    validity, without decoding the historical lists that will be discarded.
+    """
+    excluded = {key: value for key, value in region.items()
+                if key in _HISTORY_EXCLUDED_FROM_FRONTIER}
+    _canonical(excluded)
+    retained = {
+        key: value for key, value in region.items()
+        if key not in _HISTORY_EXCLUDED_FROM_FRONTIER
+    }
+    frontier = (_clone_canonical_json(retained) if runtime_copy_optimization
+                else json.loads(_canonical(retained)))
+    frontier["history_independent_continuation"] = True
+    return frontier
+
+
 def run_regional_segment(initial_states_by_support: Mapping[str, Any],
                          source_identity: Mapping[str, Any], *,
                          config: RegionalConfig = RegionalConfig(),
                          segment_years: int,
                          checkpoint: Mapping[str, Any] | None = None,
                          history_independent_continuation: bool = False,
-                         history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None) -> dict[str, Any]:
+                         history_consumer: Callable[[str, Mapping[str, Any]], None] | None = None,
+                         runtime_copy_optimization: bool = False) -> dict[str, Any]:
     """Advance surface network and the compatible R6 columns on the same clock.
 
     The existing unified orchestrator advances C028/C029 thermomechanics and
@@ -809,7 +896,8 @@ def run_regional_segment(initial_states_by_support: Mapping[str, Any],
             history_independent_continuation=history_independent_continuation,
             history_consumer=history_consumer)
     region = advance_region(region, years=segment_years, config=config,
-                            history_consumer=history_consumer)
+                            history_consumer=history_consumer,
+                            runtime_copy_optimization=runtime_copy_optimization)
     final = unified["final"]
     subsurface_by_support = {}
     for support in SUPPORTS:
@@ -822,10 +910,8 @@ def run_regional_segment(initial_states_by_support: Mapping[str, Any],
             "deep_inventory_j": final["deep_inventory_j_by_volume"][volume_id],
         }
     if history_independent_continuation:
-        checkpoint_region = json.loads(_canonical(region))
-        checkpoint_region["history_independent_continuation"] = True
-        for key in ("records", "snapshots", "routing_events", "initial_condition_events"):
-            checkpoint_region.pop(key, None)
+        checkpoint_region = _project_validated_history_free_frontier(
+            region, runtime_copy_optimization=runtime_copy_optimization)
         engine_checkpoint = seal_regional_checkpoint(
             checkpoint_region, unified_checkpoint=unified["continuation"])
         combined = seal_history_independent_checkpoint(

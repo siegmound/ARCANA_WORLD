@@ -1,0 +1,23 @@
+{
+  "version":"R1_REDUCED_VALIDATE_V1",
+  "grids":[[16,8],[32,16],[128,64],[256,128]],
+  "fields":["x","y","z","q","exp_rotated"],
+  "R_m":6371000.0,"kappa_m2_year":405896410000.0,"end_year":0.0001,
+  "main_steps":128,"half_steps":256,"extra_finest_steps":512,
+  "spatial_order_min":1.5,"spatial_norms":["L1","L2","Linf"],
+  "main_half_fraction_max":0.05,
+  "main_half_definition":"L2(h128-h256) / L2(h128-continuum_reference), area weighted; unchanged goal and denominator",
+  "finest_temporal_order_range":[0.9,1.2],
+  "smooth_limiter_required":"inactive for linear semidiscrete temporal attribution",
+  "nonharmonic_reference_order":32,"comparison_reference_order":48,
+  "reference_quadrature_Linf_m_max":2e-15,
+  "full_space_Fourier_reference_Linf_m_max":2e-15,
+  "zero_reference_flux_error_over_kappa_max":2e-12,
+  "nonzero_flux_errors":"decrease across requested refinements; both polar EW and NS, nonzero seam y and exp_rotated",
+  "positivity":"physical hi-correction >=0; no clipping or mass normalization",
+  "range":"existing128eps-scaled kernel guard unchanged",
+  "conservation":"existing8gamma magnitude bound every step; record represented-volume sums",
+  "restart":"separate process; both state arrays bitwise; wrong source/geometry/corruption must reject",
+  "original_Q1_complete":false,"real_input_scientific_admission":false,
+  "formal_interval_certificates_required":false
+}

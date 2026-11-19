@@ -304,8 +304,17 @@ def run_surface_microdomain(
         raise SurfaceMicrodomainError("SURFACE_MASS_NOT_CONSERVED")
     if any(cell["cover_mass_kg"] < 0 or cell["cover_thickness_m"] < 0 for cell in cells):
         raise SurfaceMicrodomainError("SURFACE_COVER_NEGATIVE")
+    # Account for floating-point cancellation when subtracting
+    # large surface-volume totals after a small prescribed uplift.
+    # Preserve the conservation equation and relative tolerance.
+    geometry_roundoff_abs_tol_m3 = max(
+        1e-6,
+        math.fsum(math.ulp(v) for v in (
+            initial_surface_volume, final_surface_volume, uplift_volume)),
+    )
     if not math.isclose(final_surface_volume - initial_surface_volume,
-                        uplift_volume, rel_tol=1e-12, abs_tol=1e-6):
+                        uplift_volume, rel_tol=1e-12,
+                        abs_tol=geometry_roundoff_abs_tol_m3):
         raise SurfaceMicrodomainError("SURFACE_GEOMETRY_VOLUME_BALANCE_FAILED")
 
     deep_before = dict(deep_inventory_j_by_support or {})
