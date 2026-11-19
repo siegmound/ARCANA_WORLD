@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-19 — From clean isolated FAIR checkout fetch branch; run only tests/test_r6_plate58_wet_quartz_screen.py then python -m experiments.plate58_deforming_explore_v1.wet_quartz_screen "$STAGE" "$PRIOR" "$OUTPUT" with STAGE=.../PLATE58_STAGE_NEW_01, PRIOR=.../PLATE58_G2_PT_ENVELOPE_NEW_01 and new OUTPUT=.../PLATE58_WET_QUARTZ_SCREEN_NEW_01. No repeat prior 12 PASS or 6/9 PASS. Interpret 2021 pressure groups and 2019 wet-quartz T range as independent eligibility windows, not joint physical calibration. Then STOP further G2 microdiagnostics: actual authorial selection of effective water/friction/creep G2 and physically closed G3 exterior/basal model needed before short ShellSet EXPLORE. D-024 blocks T1.
+
+---
+
 CURRENT NEXT — 2026-11-19 — From clean isolated FAIR verification worktree, fetch updated R6 integration, run only tests/test_r6_plate58_rheology_envelope.py then python -m experiments.plate58_deforming_explore_v1.rheology_envelope "$PRIOR" "$OUTPUT" with PRIOR=.../PLATE58_STAGE_NEW_01 and NEW output=.../PLATE58_G2_PT_ENVELOPE_NEW_01. See experiments/plate58_deforming_explore_v1/README_G2_ENVELOPE.md. Evaluate actual PRE crust lab window validity + uncapped laboratory proxy stresses, and error of eCreep slope-only on diagnostic widths. Do not coerce result to source FAIR 405/98MPa; no water cap or full SHELLS LR. Report FAIR results, then identify remaining G2 physical parameter choices and G3 external/basal support (A preferred) for authorial decision. No solve/T1; D-024.
 
 ---
