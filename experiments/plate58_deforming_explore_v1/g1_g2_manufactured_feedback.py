@@ -263,9 +263,11 @@ def run_scale(region,omegas):
         "max_implicit_balance_relative":f1["max_balance_relative"],
         "max_energy_identity_relative":f1["max_backward_euler_energy_identity_relative"],
         "restart_500_plus_500_max_modal_displacement_error_m":restart,
-        "engineering_linear_step_solutions":
+        "engineering_primary_linear_step_solutions":
             int(f1["linear_solve_count"]+f5["linear_solve_count"]+
                 f10["linear_solve_count"]),
+        "engineering_restart_replay_linear_step_solutions":1300,
+        "physical_solver_runs":0,
         "results":by_year,
         "physical_g2_material_rheology":None,
         "physical_g3_force_provider":None,
@@ -312,6 +314,16 @@ def run(multiscale_dir:Path,nodal_dir:Path,g1_audit_dir:Path,
     nodal={int(v["extent_cells"]):v for v in n["scales"]}
     need(set(regions)==set(nodal)=={8,16},
          "COUPLED_NESTED_SCALE_INVENTORY_CHANGED")
+    pinned_sources={
+        "multiscale_manifest":sha(multiscale_dir/"MANIFEST.json"),
+        "multiscale_context":sha(multiscale_dir/"CONTINUATION_A.json"),
+        "nodal_manifest":sha(nodal_dir/"MANIFEST.json"),
+        "nodal_binding":sha(nodal_dir/"SOURCE_NODAL_ELEMENT_G2.json"),
+        "g1_audit_manifest":sha(g1_audit_dir/"MANIFEST.json"),
+        "g1_audit_report":sha(g1_audit_dir/"REPORT.json"),
+        "global_pre":sha(root/"R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat"),
+        "global_euler":sha(root/"R6_T0_CANONICAL_PLATE_KINEMATICS.json"),
+    }
     outputs=[]
     for width in (8,16):
         region=regions[width];bound=nodal[width]
@@ -341,6 +353,16 @@ def run(multiscale_dir:Path,nodal_dir:Path,g1_audit_dir:Path,
     need(outputs[0]["source_nodes"]==81 and outputs[1]["source_nodes"]==289
          and outputs[1]["triple_node_34587_present"],
          "COUPLED_SOURCE_TRIPLE_NODE_OR_WIDTH_INVALID")
+    need(pinned_sources=={
+        "multiscale_manifest":sha(multiscale_dir/"MANIFEST.json"),
+        "multiscale_context":sha(multiscale_dir/"CONTINUATION_A.json"),
+        "nodal_manifest":sha(nodal_dir/"MANIFEST.json"),
+        "nodal_binding":sha(nodal_dir/"SOURCE_NODAL_ELEMENT_G2.json"),
+        "g1_audit_manifest":sha(g1_audit_dir/"MANIFEST.json"),
+        "g1_audit_report":sha(g1_audit_dir/"REPORT.json"),
+        "global_pre":sha(root/"R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1.dat"),
+        "global_euler":sha(root/"R6_T0_CANONICAL_PLATE_KINEMATICS.json"),
+    }, "COUPLED_SOURCE_CHANGED_DURING_ENGINEERING_TEST")
     report={
         "schema":"ARCANA_R6_G1_G2_MANUFACTURED_FEEDBACK_100_1000Y_V1",
         "status":STATUS,
