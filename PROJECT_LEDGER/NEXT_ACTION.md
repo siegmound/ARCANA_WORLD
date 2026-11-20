@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-20 — FAIR G2/G3 calibration 10/10 PASS at 2a6bd6500cb453959e7d2bf44d94e8c241162c05; stop repeat unit-test loops. NEXT substantive work is independent, traceable laboratory stress–rate–P/T–water dataset acquisition for authorially selected ARCANA analogue lithology and physical applicability to cold 280..1051.558K crust; distinguish laboratory measurements from published coefficients and cross-study PT screening. In parallel seek actual deep-mantle velocity/traction, basal normal and outer-cut 5:8:11 boundary provider. If no sources, document nonidentifiability: do not infer beta from Euler or invent pore state, thermal-mechanical LAB equivalence or normal force balance. D-024 mechanical solve blocked, T1 null.
+
+---
+
 CURRENT NEXT — 2026-11-20 — FAIR isolated clean-checkout focused pytest tests/test_r6_g2_g3_empirical_calibration.py for new estimator (10 synthetic local PASS, FAIR unverified). DO NOT run G2 candidate on real PRE without individual source-backed lab measurements. Next substantive physical step: source and review laboratory tables for actual relevant ARCANA-authorially assigned crust/mantle mineralogy and water, with P/T/rate coverage of 280..1051.558K T0 crust; use independent training/holdout and qualified invariant conversion. In parallel find independent 5:8:11 mantle reference flow/traction and mechanical base normal source. If unavailable, publish honest non-identifiability, no arbitrary fitted physical beta or force cancellation. Preserve GPE owner, no SHELLS duplicate, D-024, T1 null.
 
 ---
