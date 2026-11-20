@@ -1,0 +1,111 @@
+{
+  "schema": "ARCANA_R6_G2_GLOBAL_SPARSE_P1_STATIC_FAIR_OPERATOR_PASS_RECEIPT_V1",
+  "report_date": "2026-11-20",
+  "tested_commit": "313b2f40ed7066cbd1b424b7237551d4d2b39d78",
+  "evidence_type": "FAIR_OPERATOR_TERMINAL_PASTED_IN_CONVERSATION",
+  "raw_report_independently_fetched": false,
+  "tests": {
+    "status": "PASS",
+    "passed": 28,
+    "failed": 0,
+    "seconds": 0.41
+  },
+  "result_status": "PASS_REGIONAL_DENSE_SPARSE_P1_PARITY_AND_12_PLATE_GLOBAL_STATIC_ENGINEERING__PHYSICS_OPEN",
+  "regional_dense_sparse_parity": [
+    {
+      "extent": 8,
+      "nodes": 81,
+      "triangles": 128,
+      "dofs": 162,
+      "relative_Kx_error": 1.6363342437298538e-16,
+      "relative_xKy_symmetry_error": 1.0870632738612268e-16,
+      "relative_max_matrix_entry_error": 1.8188823171182822e-16,
+      "nnz": 1988,
+      "csr_bytes": 24508,
+      "maximum_relative_symmetry_defect": 4.547205792795707e-17,
+      "facet_area_m2": 776105893923.0912,
+      "geodesic_area_m2": 776163883029.8982,
+      "max_facet_spherical_area_deficit": 0.00007558776317639904
+    },
+    {
+      "extent": 16,
+      "nodes": 289,
+      "triangles": 512,
+      "dofs": 578,
+      "relative_Kx_error": 2.056827514811535e-16,
+      "relative_xKy_symmetry_error": 5.233091205951177e-16,
+      "relative_max_matrix_entry_error": 3.3110155069960594e-16,
+      "nnz": 7556,
+      "csr_bytes": 92988,
+      "maximum_relative_symmetry_defect": 4.138769383745074e-17,
+      "facet_area_m2": 3096860868799.725,
+      "geodesic_area_m2": 3097091773076.159,
+      "max_facet_spherical_area_deficit": 0.00007604907147884532
+    }
+  ],
+  "global": {
+    "plate_count": 12,
+    "distinct_parent_nodes": 64442,
+    "plate_local_source_views": 66435,
+    "triangles": 128880,
+    "east_north_dofs": 132870,
+    "nnz": 1828144,
+    "csr_bytes": 22469212,
+    "matrix_max_relative_symmetry_defect": 4.245971308495533e-18,
+    "facet_area_m2": 510032102866499.2,
+    "geodesic_area_m2": 510064471909832.7,
+    "worst_facet_area_deficit": 0.00007615338797883897,
+    "area_facet_vs_geodesic_fraction": 0.00006346069000316901,
+    "static_solve": {
+      "status": "PASS",
+      "solver": "SciPy preconditioned CG",
+      "cg_info": 0,
+      "iterations": 66,
+      "relative_residual": 8.972450618882282e-9,
+      "reciprocal_work_balance_relative": 4.518189319573849e-16,
+      "plate_rigid_Euler_K_action_relative": 1.2767850120272625e-17,
+      "nonrigid_synthetic_K_action_relative": 0.00019057136036085815,
+      "g1_target_rms_speed_m_per_model_year": 0.05376418193655341,
+      "synthetic_coupled_rms_speed_m_per_model_year": 0.053763970659344976,
+      "relative_velocity_correction": 0.00027974002653868363,
+      "A_csr_bytes": 22469212,
+      "diagonal_preconditioner": true
+    },
+    "timings_seconds": {
+      "regional_parity": 0.30234531313180923,
+      "global_assembly": 22.938787207007408,
+      "static_solve": 0.105581134557724,
+      "total": 23.40235911682248
+    },
+    "peak_process_RSS_from_user_terminal": null,
+    "exclusive_source_file_provenance_in_original_report_not_independently_inspected": true
+  },
+  "qualification": {
+    "actual_source_element_function_used": "spherical_element_tangent",
+    "regional_dense_sparse_parity_pass": true,
+    "source_global_sparse_P1_tangent_pass": true,
+    "synthetic_static_g1_g2_force_work_pass": true,
+    "separate_plate_views_no_contact_welding": true,
+    "original_g1_rigid_modes_are_global_material_nulls": true,
+    "physical_G2_rheology_validated": false,
+    "real_fault_slip_opening_or_closure": false,
+    "calibrated_mantle_basement_normal_and_G3_forces": false,
+    "full_global_manufactured_100_1000_year_time_evolution": false,
+    "true_physical_T1": null,
+    "physical_solver_runs": 0,
+    "mechanical_solve_authorized": false,
+    "D_024": "ACTIVE"
+  },
+  "next_gate": {
+    "priority": "GLOBAL_MANUFACTURED_TANGENT_TIME_INTEGRATION_WITH_EXPLICIT_CONTACT_POLICY",
+    "pre_gate": "ASSESS_INTERFACIAL_SOURCE_CONSTRAINTS_AND_FRAME_CONSISTENCY",
+    "implementation_scope": "GLOBAL_P1_K_FIXED_AT_T0_UNCHANGED_G1_EULER_MATERIAL_FRAME_WITH_INDEPENDENT_PLATES_ENGINEERING_ONLY",
+    "checkpoints_years": [
+      100,
+      500,
+      1000
+    ],
+    "include": "Force/work, temporal dt convergence, restart, memory and source SHA; later separate contact alternatives",
+    "prohibit": "NO_REAL_PHYSICAL_G3_FORCE_NO_CANONICAL_HISTORY_NO_PHYSICAL_T1"
+  }
+}
