@@ -1,0 +1,87 @@
+{
+  "schema": "ARCANA_R6_G1_G2_ROBUSTNESS_GLOBAL_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "tested_commit": "d07ae8038a5ddbcb8b4601e7b54582dc2420818a",
+  "evidence_kind": "FAIR_OPERATOR_TERMINAL_POSTED_IN_CONVERSATION",
+  "raw_FAIR_ROBUSTNESS_GLOBAL_REPORT_independently_inspected": false,
+  "source_report_path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/G1_G2_ROBUSTNESS_GLOBAL_SPARSE_NEW_01/ROBUSTNESS_GLOBAL_REPORT.json",
+  "python_environment": {
+    "scipy": "1.18.1",
+    "pytest_status": "PASS",
+    "pytest_passed": 20,
+    "pytest_failures": 0,
+    "pytest_duration_seconds": 0.67
+  },
+  "status": "PASS_REGIONAL_ENGINEERING_PARAMETER_ROBUSTNESS_AND_GLOBAL_SPARSE_GRAPH_PROBE__PHYSICS_OPEN",
+  "regional": {
+    "scenario_names": [
+      "baseline",
+      "uniform_viscosity_x10",
+      "crust_viscosity_x10",
+      "mantle_viscosity_x10",
+      "relaxation_half",
+      "relaxation_double",
+      "drive_dashpot_half",
+      "drive_dashpot_double"
+    ],
+    "scenario_count": 8,
+    "source_region_extents_cells": [
+      8,
+      16
+    ],
+    "horizons_years": [
+      100,
+      1000
+    ],
+    "uniform_viscosity_scale_x10_max_displacement_difference_m": 6.252776074688882e-13,
+    "uniform_viscosity_scale_is_unidentifiable_in_this_manufactured_model": true,
+    "exact_independent_two_mode_backward_euler_order": [
+      0.9993294386688701,
+      0.9996643894463283
+    ],
+    "exact_two_mode_dt_years": [
+      1,
+      0.5,
+      0.25
+    ],
+    "separate_sensitivity_results_by_scenario_not_present_in_terminal_summary": true,
+    "source_manifest_per_scenario_not_independently_inspected": true,
+    "real_crust_mantle_creep_material_law": null
+  },
+  "global_sparse": {
+    "original_planet_node_count": 64442,
+    "original_planet_triangle_count": 128880,
+    "plate_count": 12,
+    "source_plate_local_material_views": 66435,
+    "possible_EN_mechanical_dofs": 132870,
+    "equivalent_dense_EN_matrix_GiB": 131.53580501675606,
+    "sparse_graph_scalar_component_CSR_bytes": 5750236,
+    "sparse_graph_nnz": 457041,
+    "manufactured_graph_equation": "(I+0.05*L)*x=b",
+    "solver": "scipy.sparse.linalg.cg",
+    "cg_iterations": 14,
+    "cg_relative_residual": 2.1357722144717512e-10,
+    "measured_total_process_peak_RSS_not_in_terminal_summary": true,
+    "genuine_global_G2_P1_FEM_assembled": false,
+    "genuine_global_1000y_mechanical_time_integration": false,
+    "source_plate_contact_slip_opening_solved": false,
+    "natural_G3_mantle_outer_and_basal_loads_calibrated": false
+  },
+  "authorization": {
+    "experiment_type": "NONCANONICAL_ENGINEERING_ONLY",
+    "numerical_robustness_and_global_sparse_probe": "PASS_OPERATOR_REPORTED",
+    "physical_solver_runs": 0,
+    "mechanical_solve_authorized": false,
+    "physical_T1": null,
+    "HistoryStore_modified": false,
+    "D_024": "ACTIVE"
+  },
+  "next_action": {
+    "priority_1": "INSPECT_DETAILED_FAIR_PER_SCENARIO_REPORT_AND_SOURCE_SHA_RECEIPT",
+    "priority_2": "IMPLEMENT_REAL_SOURCE_BOUND_GLOBAL_SPARSE_OR_MATRIX_FREE_P1_G2_TANGENT_WITH_SAME_CONVENTIONS_AS_REGIONAL",
+    "priority_3": "DO_SMALL_GLOBAL_MANUFACTURED_FORCE_TORQUE_AND_VIRTUAL_WORK_PARITY_TEST_BEFORE_1000_YEAR_RUN",
+    "priority_4": "ESTABLISH_CONTACT_BOUNDARY_ALTERNATIVES_AND_FIXED_EXTENT_MESH_REFINEMENT",
+    "priority_5": "ONLY_THEN_EVALUATE_100_AND_1000_YEAR_GLOBAL_MANUFACTURED_TIME_INTEGRATION",
+    "explicit_non_go": "NO_CALIBRATED_GEOLOGICAL_T1_NO_UNSOURCED_G3_FORCE_NO_HISTORYSTORE"
+  }
+}
