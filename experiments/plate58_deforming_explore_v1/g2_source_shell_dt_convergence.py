@@ -266,6 +266,40 @@ def source_position_and_velocity(state,time_year,source,omegas):
         state["velocity"],time_year)[:2]
 
 
+def advance_source_restart_state(K,J,drive,dt,previous_state):
+    """One old T0-KKT step without integer-only checkpoint recording.
+
+    The original integrator stores fractional-step state in 'state', but
+    snapshots only at integral model years. Recover its actual endpoint
+    velocity via the same u_next = u_previous + dt*v update it uses.
+    """
+    need(dt in STEP_SIZES,"DTC_UNAUTHORIZED_LOCAL_STEP")
+    before=np.asarray(previous_state["displacement"],dtype=float)
+    gap_before=np.asarray(previous_state["gap"],dtype=float)
+    need(before.shape==np.asarray(drive).shape
+         and gap_before.shape==(J.shape[0],)
+         and np.all(np.isfinite(before)) and np.all(np.isfinite(gap_before)),
+         "DTC_LOCAL_RESTART_INPUT_INVALID")
+    result=integrate(K,J,drive,dt,1,initial=previous_state,checkpoints=())
+    need(result["steps"]==1
+         and result["max_scaled_complementarity"]<1e-8,
+         "DTC_SOURCE_LOCAL_RESTART_FAILED")
+    state=result["state"]
+    after=np.asarray(state["displacement"],dtype=float)
+    gap_after=np.asarray(state["gap"],dtype=float)
+    velocity=(after-before)/dt
+    need(after.shape==before.shape and gap_after.shape==gap_before.shape
+         and np.all(np.isfinite(after))
+         and np.all(np.isfinite(gap_after))
+         and np.all(np.isfinite(velocity)),
+         "DTC_LOCAL_RESTART_OUTPUT_INVALID")
+    return {
+        "displacement":after,
+        "gap":gap_after,
+        "velocity":velocity,
+    },state
+
+
 def collect_dt(dt,source,omegas,prior_25,events,source_zero):
     need(dt in STEP_SIZES,"DTC_UNAUTHORIZED_DT")
     checkpoint_years=tuple(sorted(set(YEARS[1:]).union(
@@ -319,14 +353,8 @@ def collect_dt(dt,source,omegas,prior_25,events,source_zero):
         need(count in (2,4),"DTC_WRONG_LOCAL_SUBSTEPS")
         for step in range(1,count+1):
             year=begin+dt*step
-            sub=integrate(
-                source["K"],source["J"],source["drive"],dt,1,
-                initial=cur,start_year=begin+dt*(step-1),
-                checkpoints=(year,))
-            need(len(sub["snapshots"])==1 and
-                 sub["max_scaled_complementarity"]<1e-8,
-                 "DTC_SOURCE_LOCAL_RESTART_FAILED")
-            snapshot=next(iter(sub["snapshots"].values()))
+            snapshot,next_state=advance_source_restart_state(
+                source["K"],source["J"],source["drive"],dt,cur)
             pos,vel=source_position_and_velocity(snapshot,year,source,omegas)
             # Include the entire authentic source edge set to preserve
             # original paired IDs under restarted local stepping.
@@ -335,7 +363,7 @@ def collect_dt(dt,source,omegas,prior_25,events,source_zero):
                 "model_year":float(year),
                 "signed_shell_midpoint_gap_m":gap[bid],
             })
-            cur=sub["state"]
+            cur=next_state
         end_err=abs(samples[-1]["signed_shell_midpoint_gap_m"]-
                     all_gap[end][bid])
         local_replay_max=max(local_replay_max,end_err)
