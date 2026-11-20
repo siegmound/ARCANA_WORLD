@@ -1,3 +1,7 @@
+CURRENT — 2026-11-20 — Following FAIR 32/32 PASS G1→G2 passive global 100/1000 test, implemented NEW bounded two-way ENGINEERING_ONLY manufactured Kelvin–Voigt feedback driver with authentic 5:8 8×8 and 5:8:11 16×16 source FEG/PRE and original G1 Euler drivers. Uses existing spherical facet P1 viscous K, invented 2-layer eta thickness model, relaxation memory 200y and explicitly synthetic dashpot; outputs numerical 100/1000y corrected velocity/area/J/mass proxy, implicit force/work, 500+500 restart, 1/5/10y timestep sensitivity. Pure manufactured math preliminary 5 tests local PASS; new FAIR source execution and all new 11 tests PENDING. No geological material/traction assignment or physical T1, D-024 active. See docs/arcana/R6_G1_G2_MANUFACTURED_TWO_WAY_100_1000Y_20261120.md.
+
+---
+
 CURRENT — 2026-11-20 — FAIR VERIFIED operator HEAD babeab3842e46a62f03ab42def90c1c1f85e49c6, 32/32 PASS in 0.72s. Source-preserving global G1→G2 100/1000y passive audit PASS, 64442/64442 source columns valid, no structural/thermal gaps, 66435 plate-local material views. At y100 edge relative error 3.437765383336205e-13, radial 5.10702591327572e-15; y1000 edge 3.126793434125025e-12 radial 4.2743586448068527e-14 (both <1e-10). NO constitutive G2 stress/creep, NO G2→G1 feedback, NO mechanical solve (solver_runs=0), no real T1 (null), D-024 active. Raw FAIR reports not independently pulled. See docs/arcana/R6_G1_G2_FAIR_PASS_100_1000Y_20261120.md.
 
 ---
