@@ -62,7 +62,7 @@ def test_synthetic_open_facets_are_two_topological_sides():
     p,q,ep,eq=sample()
     r=triangle_patch_metrics(p,q,ep,eq)
     assert r["facet_p_area_m2"]==pytest.approx(1_000_000.)
-    assert r["facet_q_area_m2"]==pytest.approx(1.)
+    assert r["facet_q_area_m2"]==pytest.approx(1_000_000.)
     assert r["facet_p_radially_outward_by_source_winding"] is True
     assert r["facet_q_radially_outward_by_source_winding"] is True
     assert r["raw_source_facet_normal_alignment"]==pytest.approx(1.)
