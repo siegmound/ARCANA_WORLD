@@ -1,0 +1,125 @@
+{
+  "schema": "ARCANA_R6_G2_G3_EMPIRICAL_CALIBRATION_ASSESSMENT_V1",
+  "date": "2026-11-20",
+  "parent_source_head": "dd769427440316201acbef0b0dbaff30328e9427",
+  "decision": "CALIBRATION_MATH_IMPLEMENTED_AND_SYNTHETICALLY_TESTED__ARCANA_PHYSICAL_PARAMETERS_NOT_IDENTIFIABLE",
+  "scope": "T0_210_MA_PLATE_5_8_11_EXPLORE_NONCANONICAL",
+  "source_records": {
+    "mechanical_G2_T0_PRE": "R6_PRE_ORBDATA_SHELLSET_RUNTIME_PACKAGE_V1, 51 fields/node",
+    "G2_source_temperature_range_crust_K": [
+      280,
+      1051.5581968311126
+    ],
+    "G2_source_temperature_range_mantle_K": [
+      1051.5581968311126,
+      1671.77
+    ],
+    "source_moho_pressure_proxy_GPa": 0.754,
+    "source_thermal_LAB_pressure_proxy_GPa": 2.368,
+    "reference_opening_5_8_m_per_year": 0.1575,
+    "opening_kind": "KINEMATIC_PRIOR_NOT_STRAIN_MEASUREMENT",
+    "sensitivity_widths_km": [
+      10,
+      100,
+      300
+    ],
+    "kinematic_rate_proxies_s_inv": {
+      "10": 4.99087383070956e-13,
+      "100": 4.99087383070956e-14,
+      "300": 1.66362461023652e-14
+    },
+    "measured_ARCANA_stress_state": null,
+    "crust_lithology_and_fabric": null,
+    "mantle_mineralogy": null,
+    "pore_pressure_pa": null,
+    "water_fugacity_pa": null,
+    "real_mechanical_LAB_depth_m": null,
+    "basal_tangential_traction_pa": null,
+    "deep_mantle_velocity_en_m_s": null,
+    "outer_cut_continuum_traction_N_per_m": null
+  },
+  "g2_calibration": {
+    "model": "LAB_TRIAXIAL_LOG_LINEAR_DISLOCATION_CREEP_ONLY__NONCANONICAL",
+    "estimator": "experiments/plate58_deforming_explore_v1/g2_g3_empirical_calibration.py::fit_g2_dislocation_laboratory",
+    "fitted_parameters": [
+      "A_pa_minus_n_s_inv",
+      "n",
+      "E_j_mol",
+      "V_m3_mol",
+      "water_fugacity_exponent_when_measured"
+    ],
+    "measurement_kind": "LAB_MEASURED_TRIAXIAL",
+    "requires": [
+      "distinct_train_holdout_experiment_groups",
+      "independent_stress_strain_rate_temperature_pressure_per_sample",
+      "fugacity_samples_for_water_fits",
+      "design_matrix_full_rank_and_condition_number",
+      "source_reference_and_measurement_id"
+    ],
+    "require_full_T0_field_applicability": true,
+    "GT95_1995": {
+      "status": "LITERATURE_ANALOGUE_INVALID_AS_FULL_T0_CRUST",
+      "experimental_temperature_K": [
+        1173.15,
+        1373.15
+      ],
+      "T0_crust_temperature_K": [
+        280,
+        1051.5581968311126
+      ],
+      "T0_81_sample_support_count": 0,
+      "DOI": "10.1016/0040-1951(95)00011-B"
+    },
+    "wet_quartz_2019_cross_study_screen": {
+      "status": "PARTIAL_SCREEN_ONLY_NOT_SINGLE_CALIBRATED_LAW",
+      "temperature_samples_in_2019_window_out_of_81": 18,
+      "different_study_pressure_T_overlap_samples_out_of_81": 9,
+      "measured_water_field": null
+    },
+    "mantle_olivine_benchmark": {
+      "status": "LITERATURE_ANALOGUE_NOT_R6_MINERALOGY",
+      "n": 3.5,
+      "E_j_mol": 530000,
+      "V_m3_mol": 0.000014,
+      "material_identity_ratified": false,
+      "P_T_rate_full_source_validity": null
+    },
+    "train_observations_available": 0,
+    "holdout_observations_available": 0,
+    "fit_result": null,
+    "fit_authority": "UNKNOWN",
+    "SHELLS_LR_stress_conversion_qualified": false
+  },
+  "g3_calibration": {
+    "model": "TAU_BETA_TIMES_DEEP_MINUS_LITHO_EN_VELOCITY",
+    "estimator": "experiments/plate58_deforming_explore_v1/g2_g3_empirical_calibration.py::fit_g3_linear_basal_drag",
+    "fitted_parameter": "basal_drag_beta_pa_s_per_m",
+    "requires": [
+      "independently_observed_basal_traction_en_pa",
+      "mantle_relative_velocity_en_m_s",
+      "common_reference_frame",
+      "independent_train_holdout_groups",
+      "real_mechanical_basal_boundary"
+    ],
+    "measured_traction_records_available": 0,
+    "measured_deep_mantle_flow_records_available": 0,
+    "fit_result": null,
+    "basal_normal_support_pa": null,
+    "GPE_owner": "EXPERIMENTAL_EXTERNAL_GPE_ONLY__ORIGINAL_SHELLS_GPE_NOT_COMBINED",
+    "canonical_gravity_m_s2": 9.82,
+    "compensation_plane_m": -200000,
+    "compensation_plane_physically_qualified": false,
+    "force_balance_physically_qualified": false
+  },
+  "software_verification": {
+    "local_synthetic_test_file": "tests/test_r6_g2_g3_empirical_calibration.py",
+    "local_results": "10 passed in 0.05s",
+    "FAIR_status": "PENDING",
+    "test_results_are_real_world_calibration": false
+  },
+  "next_scientific_action": "OBTAIN_SOURCE_MEASUREMENTS_OR_AUTHORIAL_HYPOTHESES_WITH_VALIDITY_DOMAINS; CALIBRATE_ONLY_SUPPORTED_MECHANISMS; DO_NOT_FIT_G3_DRAG_TO_EULER_VELOCITY_ALONE",
+  "mechanical_solve_authorized": false,
+  "solver_runs": 0,
+  "physical_T1": null,
+  "D_024": "ACTIVE"
+}
