@@ -1,0 +1,51 @@
+{
+  "schema": "ARCANA_R6_G2_G3_EXPLICIT_FULL_PARENT_ENGINEERING_INPUT_V1",
+  "authority": "ENGINEERING_CANDIDATE_NOT_AUTHOR_RATIFIED",
+  "scope_extent_cells": null,
+  "source_manifest_sha256": {
+    "multiscale": null,
+    "interface": null,
+    "nodal": null,
+    "force": null
+  },
+  "source_expected_full_parent_nodes_by_extent": {
+    "8": 81,
+    "16": 289
+  },
+  "source_expected_core_triangles": 8,
+  "source_expected_interface_parent_nodes": 8,
+  "source_expected_core_only_parent_nodes": 1,
+  "source_expected_exterior_triangles_by_extent": {
+    "8": 120,
+    "16": 504
+  },
+  "physical_source_authority_ratified": false,
+  "mechanical_solve_authorized": false,
+  "core_external_force_provider_qualified": false,
+  "fault_interface_physics_authorized": false,
+  "candidate_material_by_parent_node": null,
+  "velocity_en_by_parent_node": null,
+  "line_tractions_by_edge": null,
+  "basal_tractions_by_triangle": null,
+  "external_gpe": null,
+  "missing_core_external": {
+    "source_core_basal_traction_xyz_N_per_m2": null,
+    "source_core_GPE_force_by_parent_node_N": null,
+    "owner_and_vertical_support": null,
+    "note": "MISSING, NOT A DEFAULT ZERO: stitched residual is a partial engineering inventory, never physical equilibrium."
+  },
+  "source_rules": {
+    "material_law_authority": "ENGINEERING_CANDIDATE_NOT_AUTHOR_RATIFIED",
+    "expected_full_dof_parent_order": "SOURCE FEG original parent IDs",
+    "shared_core_exterior_interface": "exact same eight original parent IDs and East/North pairs; one owner, summed internal contributions",
+    "source_3plate_triple": "original parent node 34587 retained in source, DOF only according to actual FEG ownership",
+    "external_GPE_owner": "EXPERIMENTAL_EXTERNAL_GPE_ONLY__ORIGINAL_SHELLS_GPE_NOT_COMBINED",
+    "no_double_count_of_core_exterior_triangles": true,
+    "no_stress_resultant_from_unsourced_material": true,
+    "no_physical_core_external_force_inference": true
+  },
+  "physical_T1": null,
+  "D_024": "ACTIVE",
+  "canonical_promotion": false,
+  "HistoryStore_modified": false
+}
