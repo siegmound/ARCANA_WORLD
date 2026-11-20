@@ -1,0 +1,50 @@
+{
+  "schema": "ARCANA_R6_G2_G3_COUPLED_WEAK_FORM_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "tested_commit": "72168a5ef1f9f302370b2d1b41e8ef3cb7ff26bc",
+  "operator_test_environment": "FAIR Linux arcana-r6-linux",
+  "targeted": {
+    "test_modules": [
+      "tests/test_r6_g2_g3_coupled_weak_form.py",
+      "tests/test_r6_g2_g3_source_coupled_runner.py"
+    ],
+    "passed": 19,
+    "failed": 0,
+    "duration_seconds": 0.19,
+    "exit_code": 0
+  },
+  "regression": {
+    "passed": 96,
+    "failed": 0,
+    "duration_seconds": 0.53,
+    "exit_code": 0,
+    "components": [
+      "G2 viscoplastic",
+      "G2 source PRE bridge",
+      "G2/G3 nonlinear layered",
+      "G2 exact thermal validity",
+      "G2/G3 empirical calibration",
+      "G3 force budget",
+      "G3 GPE accounting",
+      "G3 GPE hydrostatic",
+      "G3 spherical exterior",
+      "new coupled modules"
+    ]
+  },
+  "driver_executed": false,
+  "source_8_16_real_mesh_force_assembly_executed": false,
+  "source_rock_material_fitted": false,
+  "source_basal_or_cut_loads_fitted": false,
+  "mathematical_software_candidate_pass": true,
+  "physical_mechanics_authorized": false,
+  "physical_T1": null,
+  "D_024": "ACTIVE",
+  "canonical_promotion": false,
+  "limitations": [
+    "Tests synthetic mathematical engineering fixtures, not actual 8x8/16x16 source numerical run with physically supplied material/traction fields",
+    "G3 exterior excludes original core-only node; complete core/exterior residual and Schur source transfer not yet assembled in this new API",
+    "No source-authorized 3D contact or thin-shell fault slip physics",
+    "Absent authoritative G2 rock identity, water/rheological laboratory coverage and G3 traction/basal normal/mantle provider"
+  ],
+  "reported_by": "USER_FAIR_TERMINAL_LOG"
+}
