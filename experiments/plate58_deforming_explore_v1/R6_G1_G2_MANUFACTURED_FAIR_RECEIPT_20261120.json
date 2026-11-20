@@ -1,0 +1,154 @@
+{
+  "schema": "ARCANA_R6_G1_G2_MANUFACTURED_TWO_WAY_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "source_commit_tested": "ea908ad3387892911d866e4836f586f6b6b3c4a7",
+  "report_evidence_origin": "FAIR_OPERATOR_TERMINAL_POSTED_2026_11_20",
+  "raw_fair_report_and_manifest_independently_inspected": false,
+  "reported_test_status": "PASS",
+  "pytest_pass": 39,
+  "pytest_failed": 0,
+  "pytest_wall_s": 0.39,
+  "run_status": "PASS_G1_G2_MANUFACTURED_TWO_WAY_FEEDBACK__REAL_PHYSICS_OPEN",
+  "source_mode": "G1_EULER_SOURCE_PLUS_P1_MEMBRANE_PLUS_SYNTHETIC_KELVIN_VOIGT_C_AND_TAU__ENGINEERING_ONLY",
+  "physical_solver_runs": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "D_024": "ACTIVE",
+  "protocol": {
+    "horizons_years": [
+      100,
+      1000
+    ],
+    "timesteps_years": [
+      1,
+      5,
+      10
+    ],
+    "manufactured_viscosities_pa_s": {
+      "crust": 100000000000000000000,
+      "mantle": 1e+21
+    },
+    "manufactured_relaxation_time_years": 200,
+    "synthetic_dashpot_to_mean_diagonal_K": 0.5,
+    "shared_contact_DOF": "ONE_SHARED_EN_PAIR_WITH_INCIDENT_TRIANGLE_WEIGHTED_SYNTHETIC_WELD",
+    "G3_natural_outer_basal_and_normal_tractions": null
+  },
+  "scales": [
+    {
+      "extent_cells": 8,
+      "parent_plates": [
+        5,
+        8
+      ],
+      "nodes": 81,
+      "triangles": 128,
+      "dofs": 162,
+      "triple_source_node_34587_present": true,
+      "max_implicit_balance_relative": 5.801227875145141e-17,
+      "max_backward_euler_energy_identity_relative": 5.02069083470578e-14,
+      "restart_500_plus_500_modal_displacement_m": 0,
+      "engineering_primary_modal_step_updates": 1300,
+      "engineering_restart_modal_step_updates": 1300,
+      "years": {
+        "100": {
+          "max_displacement_m": 11.018358221458136,
+          "g1_target_rms_speed_m_per_year": 0.06527641551768604,
+          "coupled_rms_speed_m_per_year": 0.05887774644699526,
+          "coupled_minus_g1_velocity_rms_m_per_year": 0.011887962123291358,
+          "manufactured_internal_force_balance_relative": 1.2064755767818902e-14,
+          "stored_elastic_energy_normalized": 0.949456396938592,
+          "area_jacobian_min": 1.000000519465848,
+          "area_jacobian_max": 1.000051360427106,
+          "max_absolute_area_ratio_minus_one": 0.000051360427105962,
+          "manufactured_mass_relative_residual": 0,
+          "dt5_minus_dt1_max_displacement_m": 0.01170211877846699,
+          "dt10_minus_dt1_max_displacement_m": 0.026151360828413146
+        },
+        "1000": {
+          "max_displacement_m": 104.6758848839379,
+          "g1_target_rms_speed_m_per_year": 0.0652764162767963,
+          "coupled_rms_speed_m_per_year": 0.04998021590000296,
+          "coupled_minus_g1_velocity_rms_m_per_year": 0.026184343655315995,
+          "manufactured_internal_force_balance_relative": 2.034327993675432e-14,
+          "stored_elastic_energy_normalized": 51.809407973049275,
+          "area_jacobian_min": 1.000014844028011,
+          "area_jacobian_max": 1.0003118934694004,
+          "max_absolute_area_ratio_minus_one": 0.00031189346940041496,
+          "manufactured_mass_relative_residual": 0,
+          "dt5_minus_dt1_max_displacement_m": 0.054111439575243385,
+          "dt10_minus_dt1_max_displacement_m": 0.12156346332663039
+        }
+      }
+    },
+    {
+      "extent_cells": 16,
+      "parent_plates": [
+        5,
+        8,
+        11
+      ],
+      "nodes": 289,
+      "triangles": 512,
+      "dofs": 578,
+      "triple_source_node_34587_present": true,
+      "max_implicit_balance_relative": 5.3241995444963355e-17,
+      "max_backward_euler_energy_identity_relative": 2.5579467656932228e-14,
+      "restart_500_plus_500_modal_displacement_m": 6.938893903907228e-18,
+      "engineering_primary_modal_step_updates": 1300,
+      "engineering_restart_modal_step_updates": 1300,
+      "years": {
+        "100": {
+          "max_displacement_m": 12.129215668850822,
+          "g1_target_rms_speed_m_per_year": 0.0648443646572709,
+          "coupled_rms_speed_m_per_year": 0.061995028657842954,
+          "coupled_minus_g1_velocity_rms_m_per_year": 0.0075741156488216095,
+          "manufactured_internal_force_balance_relative": 6.391045196370086e-14,
+          "stored_elastic_energy_normalized": 1.5606666754172278,
+          "area_jacobian_min": 0.999997485288649,
+          "area_jacobian_max": 1.0000475809249747,
+          "max_absolute_area_ratio_minus_one": 0.00004758092497469946,
+          "manufactured_mass_relative_residual": 0,
+          "dt5_minus_dt1_max_displacement_m": 0.012421931146403402,
+          "dt10_minus_dt1_max_displacement_m": 0.027788261928990306
+        },
+        "1000": {
+          "max_displacement_m": 117.31209624229774,
+          "g1_target_rms_speed_m_per_year": 0.06484436267152435,
+          "coupled_rms_speed_m_per_year": 0.057454060021857906,
+          "coupled_minus_g1_velocity_rms_m_per_year": 0.015996538158562185,
+          "manufactured_internal_force_balance_relative": 1.1680734565293823e-13,
+          "stored_elastic_energy_normalized": 97.64170257226739,
+          "area_jacobian_min": 1.0000002429454518,
+          "area_jacobian_max": 1.0003122886519837,
+          "max_absolute_area_ratio_minus_one": 0.0003122886519837387,
+          "manufactured_mass_relative_residual": 1.559951742962607e-16,
+          "dt5_minus_dt1_max_displacement_m": 0.04284066823037831,
+          "dt10_minus_dt1_max_displacement_m": 0.09620544632632214
+        }
+      }
+    }
+  ],
+  "qualification": {
+    "what_passed": "ENGINEERING_SOLVER_INTERNAL_FORCE_WORK_RESTART_DT_FEEDBACK_SOURCE_REGIONAL_FEEDBACK",
+    "physical_rheology_validated": false,
+    "natural_G3_outer_basal_support_validated": false,
+    "GPE_included": false,
+    "fault_mechanics_implemented": false,
+    "full_strain_temperature_evolution_implemented": false,
+    "material_mass_balance_is_manufactured_h_over_J_identity": true,
+    "spatial_mesh_convergence_demonstrated": false,
+    "domains_8_16_are_different_geographic_extents": true,
+    "exact_1000yr_reference_existence": false,
+    "time_step_order_from_only_3_steps_proved": false,
+    "physical_210Ma_to_T1_promotion_authorized": false
+  },
+  "next_mechanical_engineering_gates": [
+    "PARAMETER_SWEEPS_CONSTIUTIVE_VISCOSITY_RATIO_RELAXATION_DASHPOT_WITH_NONCANONICAL_PROVENANCE",
+    "FIXED_PHYSICAL_EXTENT_MESH_REFINEMENT_8_TO_16_SUBDIVISIONS_NOT_NESTED_EXTENT_COMPARISON",
+    "CONTACT_OPENING_SLIDING_ALTERNATIVES_TO_SYNTHETIC_SHARED_NODE_WELD",
+    "MANUFACTURED_FORCE_TORQUE_AND_OBJECTIVITY_CHECKS_IN_ONE_FRAME",
+    "STEP_HALVING_1_TO_0_5_TO_0_25_YEARS_AND_INDEPENDENT_TIME_REFERENCE",
+    "MEANINGFUL_G4_LAYER_MASS_AND_ENERGY_TRANSPORT_CHECKS",
+    "PHYSICAL_MATERIAL_AND_G3_BASAL_LATERAL_SOURCE_AUTHORITY_REMAINS_SEPARATE"
+  ]
+}
