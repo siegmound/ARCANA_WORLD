@@ -1,0 +1,105 @@
+{
+  "schema": "ARCANA_R6_G2_SHELL_DIFFERENTIAL_KINEMATICS_OPERATOR_FAIR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "tested_commit": "8a7a116a1ba0f1a045146120ed3c68d23b70dfe6",
+  "environment": "FAIR / arcana-r6-linux",
+  "pytest": {
+    "collected": 107,
+    "passed": 107,
+    "failed": 0,
+    "seconds": 0.8,
+    "exit_code": 0
+  },
+  "driver": {
+    "exit_code": 0,
+    "manifest_schema": "ARCANA_R6_SHELL_DIFFERENTIAL_KINEMATICS_MANIFEST_V1",
+    "manifest_status": "PASS_SOURCE_SHELL_DIFFERENTIAL_KINEMATICS_AND_TRIPLE_AUDIT__SOLID_CONTACT_OPEN",
+    "report_sha256_listed_in_manifest": "29ce93ffed7dae94be7cff16f92b3bb8a4f82020140a2adc0d6056270f38c1d5",
+    "physical_T1": null,
+    "no_canonical_promotion": true
+  },
+  "report_bytes_sha_independently_verified": false,
+  "log_file": "/tmp/arcana_r6_differential_as04JR.log",
+  "regions": [
+    {
+      "extent": 8,
+      "initial_T0_zero_departures": 12,
+      "opposite_sign_brackets": 0,
+      "ambiguous_brackets": 0,
+      "checkpoint_rates": {
+        "100": [
+          0.006760614604468714,
+          0.1574711119583875
+        ],
+        "500": [
+          0.006759670562568649,
+          0.1574711527652263
+        ],
+        "1000": [
+          0.006758490508766572,
+          0.15747120375811446
+        ]
+      }
+    },
+    {
+      "extent": 16,
+      "initial_T0_zero_departures": 36,
+      "opposite_sign_brackets": 4,
+      "ambiguous_brackets": 0,
+      "brackets": [
+        {
+          "id": "R6BND-T0-f679f4c97f1e7445d8d9",
+          "t0": 175,
+          "t1": 200,
+          "from": "NEGATIVE",
+          "to": "POSITIVE"
+        },
+        {
+          "id": "R6BND-T0-4d168aac7492e7c418de",
+          "t0": 475,
+          "t1": 500,
+          "from": "POSITIVE",
+          "to": "NEGATIVE"
+        },
+        {
+          "id": "R6BND-T0-1569360d5844c75db0d3",
+          "t0": 625,
+          "t1": 650,
+          "from": "NEGATIVE",
+          "to": "POSITIVE"
+        },
+        {
+          "id": "R6BND-T0-16d7dc72630ecb414c04",
+          "t0": 875,
+          "t1": 900,
+          "from": "NEGATIVE",
+          "to": "POSITIVE"
+        }
+      ],
+      "checkpoint_rates": {
+        "100": [
+          -0.011325095177769704,
+          0.15746527329740231
+        ],
+        "500": [
+          -0.008344282049347708,
+          0.15743629018334107
+        ],
+        "1000": [
+          -0.008110768204836756,
+          0.15744141204283596
+        ]
+      },
+      "triple_parent_node": 34587
+    }
+  ],
+  "limitations": [
+    "Brackets at 25-year sampling; exact event times unknown",
+    "No guarantee no additional events inside intervals",
+    "Rates from original old fixed-T0 KKT reconstructed motion, not updated-geometry KKT",
+    "Triple vector closure is an algebraic identity, not dynamic force balance",
+    "Shell signed midpoint gap not physical solid non-penetration"
+  ],
+  "physical_solver_runs": 0,
+  "D_024": "ACTIVE"
+}
