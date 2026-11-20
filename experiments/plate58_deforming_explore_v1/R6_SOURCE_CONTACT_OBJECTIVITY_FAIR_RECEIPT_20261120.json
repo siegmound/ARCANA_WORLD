@@ -1,0 +1,210 @@
+{
+  "schema": "ARCANA_R6_SOURCE_CONTACT_OBJECTIVITY_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "tested_git_head": "2da20adf7637fc4a325bd2d3239143f41c6027ca",
+  "evidence_origin": "FAIR_OPERATOR_TERMINAL_TRANSCRIPT",
+  "full_FAIR_report_and_manifest_independently_read": false,
+  "pytest": {
+    "passed": 32,
+    "failed": 0,
+    "elapsed_seconds": 0.88,
+    "status": "PASS"
+  },
+  "run_status": "PASS_SOURCE_REGIONAL_CONTACT_POLICY_AND_FINITE_ROTATION_OBJECTIVITY__PHYSICS_OPEN",
+  "scales": [
+    {
+      "extent_cells": 8,
+      "source_parent_nodes": 81,
+      "source_triangles": 128,
+      "plates": [
+        5,
+        8
+      ],
+      "source_contact_edges": 12,
+      "contact_plate_pairs": [
+        [
+          5,
+          8
+        ]
+      ],
+      "contact_parent_nodes": 13,
+      "plate_pair_node_links": 13,
+      "triple_junction_parent_node_ids": [],
+      "plate_local_views": 94,
+      "EN_dofs": 188,
+      "K_nnz": 2136,
+      "Euler_predicted": {
+        "closing_links": 0,
+        "opening_links": 13
+      },
+      "SO3": {
+        "max_relative_P1_tangent_parity_error": 4.354764094313804e-14,
+        "test_instances": 18,
+        "large_rotvec_angle_rad": 0.7349149610669251
+      },
+      "policies": {
+        "UNWELDED": {
+          "active_links": 0,
+          "cg_iterations": 32,
+          "force_residual": 7.358411792762188e-11,
+          "virtual_work_residual": 3.378335734038165e-16,
+          "drag_work": 1.4592637273767541e+26,
+          "P1_internal_work": 2240779596.173828,
+          "contact_work": 0,
+          "max_relative_speed_m_per_y": 0.15766437892086343,
+          "max_abs_normal_speed": 0.1438332944239341,
+          "max_abs_tangential_speed": 0.10692047635393642,
+          "closing_links_after_solve": 0,
+          "relative_velocity_to_G1_norm": 3.5254965614712956e-11
+        },
+        "PENALTY_WELDED": {
+          "active_links": 13,
+          "cg_iterations": 75,
+          "force_residual": 6.172540510481335e-11,
+          "virtual_work_residual": 2.4747692425274842e-15,
+          "drag_work": 1.0169358089011376e+26,
+          "P1_internal_work": 7.022294400510204e+24,
+          "contact_work": 8.376967762026556e+23,
+          "max_relative_speed_m_per_y": 0.004101673266076797,
+          "max_abs_normal_speed": 0.0037537428367253973,
+          "max_abs_tangential_speed": 0.0022153466201126357,
+          "closing_links_after_solve": 0,
+          "relative_velocity_to_G1_norm": 0.4420313914800044
+        },
+        "CLOSING_NORMAL_ONLY": {
+          "active_links": 0,
+          "cg_iterations": 32,
+          "force_residual": 7.358411792762188e-11,
+          "virtual_work_residual": 3.378335734038165e-16,
+          "drag_work": 1.4592637273767541e+26,
+          "P1_internal_work": 2240779596.173828,
+          "contact_work": 0,
+          "max_relative_speed_m_per_y": 0.15766437892086343,
+          "max_abs_normal_speed": 0.1438332944239341,
+          "max_abs_tangential_speed": 0.10692047635393642,
+          "closing_links_after_solve": 0,
+          "relative_velocity_to_G1_norm": 3.5254965614712956e-11
+        }
+      }
+    },
+    {
+      "extent_cells": 16,
+      "source_parent_nodes": 289,
+      "source_triangles": 512,
+      "plates": [
+        5,
+        8,
+        11
+      ],
+      "source_contact_edges": 36,
+      "contact_plate_pairs": [
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "contact_parent_nodes": 37,
+      "plate_pair_node_links": 39,
+      "triple_junction_parent_node_ids": [
+        34587
+      ],
+      "plate_local_views": 327,
+      "EN_dofs": 654,
+      "K_nnz": 7996,
+      "Euler_predicted": {
+        "closing_links": 4,
+        "opening_links": 35
+      },
+      "SO3": {
+        "max_relative_P1_tangent_parity_error": 4.7497799392329336e-14,
+        "test_instances": 18,
+        "large_rotvec_angle_rad": 0.7349149610669251
+      },
+      "policies": {
+        "UNWELDED": {
+          "active_links": 0,
+          "cg_iterations": 35,
+          "force_residual": 5.1739528157109715e-11,
+          "virtual_work_residual": 4.144497141114119e-16,
+          "drag_work": 6.537358637311986e+26,
+          "P1_internal_work": 3937265116.2276974,
+          "contact_work": 0,
+          "max_relative_speed_m_per_y": 0.15766437891832702,
+          "max_abs_normal_speed": 0.1438332944270229,
+          "max_abs_tangential_speed": 0.10692047635047645,
+          "closing_links_after_solve": 4,
+          "relative_velocity_to_G1_norm": 2.681080015621768e-11
+        },
+        "PENALTY_WELDED": {
+          "active_links": 39,
+          "cg_iterations": 92,
+          "force_residual": 8.446016264396269e-11,
+          "virtual_work_residual": 9.797111211638614e-16,
+          "drag_work": 5.454532015269535e+26,
+          "P1_internal_work": 1.6179255650090586e+25,
+          "contact_work": 1.974223469838172e+24,
+          "max_relative_speed_m_per_y": 0.0043425800136393305,
+          "max_abs_normal_speed": 0.003973679411297219,
+          "max_abs_tangential_speed": 0.0022196528283179025,
+          "closing_links_after_solve": 4,
+          "relative_velocity_to_G1_norm": 0.3318117837198664
+        },
+        "CLOSING_NORMAL_ONLY": {
+          "active_links": 4,
+          "cg_iterations": 63,
+          "force_residual": 8.048270604782638e-11,
+          "virtual_work_residual": 2.2790489490162782e-15,
+          "drag_work": 6.511241356482843e+26,
+          "P1_internal_work": 6.537377003406586e+23,
+          "contact_work": 5.707613116605821e+22,
+          "max_relative_speed_m_per_y": 0.1576638026659743,
+          "max_abs_normal_speed": 0.14383292472199943,
+          "max_abs_tangential_speed": 0.11062263671368762,
+          "closing_links_after_solve": 4,
+          "relative_velocity_to_G1_norm": 0.042666856655442884
+        }
+      }
+    }
+  ],
+  "interpretation": {
+    "source_contact_edge_provenance_validated": true,
+    "small_region_no_closing_so_normal_policy_equals_unwelded": true,
+    "large_region_triple_junction_parent_node_34587": true,
+    "large_region_pairs_3": true,
+    "welded_reduces_relative_speed_factor_8": 38.43903906847938,
+    "welded_reduces_relative_speed_factor_16": 36.306614598494235,
+    "welding_is_penalty_not_exact_constraint": true,
+    "unilateral_rule_is_frozen_source_Euler_closing_selector_not_true_gap_complementarity": true,
+    "large_region_all_4_closing_links_still_have_negative_normal_velocity_after_solve": true,
+    "does_not_prove_nonpenetration": true,
+    "does_not_quantify_per_active_link_postsolve_gap_or_velocity": true,
+    "SO3_only_local_element_frame_equivariance": true,
+    "no_time_evolved_contact_or_geometry": true,
+    "artificial_drag_and_material_coefficients_used": true,
+    "synthetic_contact_work_not_physical_energy": true,
+    "numerical_static_contact_work_pass": true,
+    "physical_solver_runs": 0,
+    "physical_T1": null,
+    "D_024": "ACTIVE"
+  },
+  "next_gate": {
+    "scope": "REGIONAL_SOURCE_CONTACT_COMPLEMENTARITY_AND_MOVING_FRAME_ENGINEERING_ONLY",
+    "must_test": [
+      "per-link normal and tangent velocities plus source edge IDs and plate pair IDs, especially all 4 active links in 16x16",
+      "computed contact gaps over controlled dt, geometry and local normal updates in an objective 3D frame",
+      "actual unilateral normal condition g_n >= 0, pressure lambda_n >= 0, complementarity g_n*lambda_n=0 with regularization accounting, no force on opening links",
+      "energy and traction pairwise action-reaction, torque/work in global Cartesian frame",
+      "restart and timestep checks first in 5:8 and 5:8:11 then global 12-plate only if gates pass",
+      "treat artificial welded penalty separately and never call it exact",
+      "physics G2 materials and G3 basal shear/normal still unresolved and production T1 not authorized"
+    ]
+  }
+}
