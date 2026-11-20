@@ -1,0 +1,134 @@
+{
+  "schema": "ARCANA_R6_SOURCE_SHELL_DT_BOUNDED_FAIR_OPERATOR_ADJUDICATION_V1",
+  "date": "2026-11-20",
+  "source_commit": "4c1afe2a14cef0899412fe017e6821425f6ae413",
+  "environment": "FAIR Linux arcana-r6-linux",
+  "evidence_origin": "USER_SUPPLIED_FAIR_OPERATOR_TERMINAL",
+  "source_report_files_independently_retrieved": false,
+  "tests": {
+    "targeted_passed": 17,
+    "combined_passed": 135,
+    "combined_duration_seconds": 0.87,
+    "pytest_exit_code": 0
+  },
+  "driver_exit_code": 0,
+  "status": "PASS_SOURCE_SHELL_ORIGINAL_DT_COMPARISON_INVENTORY__PHYSICAL_CONTACT_OPEN",
+  "manifest_schema": "ARCANA_R6_SOURCE_SHELL_DT_CONVERGENCE_MANIFEST_V1",
+  "report_sha256_from_manifest": "d89664fd0cf5adf7ee7d1ed6920d410d3887e44d8a45d12f41f680cf69611fec",
+  "report_sha256_from_FAIR_sha256sum": "d89664fd0cf5adf7ee7d1ed6920d410d3887e44d8a45d12f41f680cf69611fec",
+  "source_region_extent": 16,
+  "source_pair_count_at_common_time": 1476,
+  "original_source_edges": 36,
+  "original_source_pair_links": 39,
+  "triple_node_parent": 34587,
+  "time_steps_model_years": [
+    1,
+    0.5,
+    0.25
+  ],
+  "steps_for_dt05": 2000,
+  "steps_for_dt025": 4000,
+  "gap_max_abs_difference_m": {
+    "dt1_to_dt05": 0.0015894768067912235,
+    "dt05_to_dt025": 0.0007949563024012285
+  },
+  "successive_difference_ratio": 0.5001370885090526,
+  "observed_difference_contraction": true,
+  "observed_order_consistent_with_first_order_but_not_proven": true,
+  "numerical_convergence_order_qualified": false,
+  "original_dt1_1year_bracket_sign_robustness": [
+    {
+      "id": "R6BND-T0-1569360d5844c75db0d3",
+      "dt1": [
+        642,
+        643
+      ],
+      "dt05": {
+        "status": "OUTSIDE_PRIOR_1Y_BRACKET_OR_SIGN_DRIFT",
+        "intervals": []
+      },
+      "dt025": {
+        "status": "OUTSIDE_PRIOR_1Y_BRACKET_OR_SIGN_DRIFT",
+        "intervals": []
+      }
+    },
+    {
+      "id": "R6BND-T0-16d7dc72630ecb414c04",
+      "dt1": [
+        892,
+        893
+      ],
+      "dt05": {
+        "status": "SAMPLED_DEFINITE_BRACKETS",
+        "intervals": [
+          [
+            892.5,
+            893,
+            "NEGATIVE",
+            "POSITIVE"
+          ]
+        ]
+      },
+      "dt025": {
+        "status": "OUTSIDE_PRIOR_1Y_BRACKET_OR_SIGN_DRIFT",
+        "intervals": []
+      }
+    },
+    {
+      "id": "R6BND-T0-4d168aac7492e7c418de",
+      "dt1": [
+        477,
+        478
+      ],
+      "dt05": {
+        "status": "OUTSIDE_PRIOR_1Y_BRACKET_OR_SIGN_DRIFT",
+        "intervals": []
+      },
+      "dt025": {
+        "status": "OUTSIDE_PRIOR_1Y_BRACKET_OR_SIGN_DRIFT",
+        "intervals": []
+      }
+    },
+    {
+      "id": "R6BND-T0-f679f4c97f1e7445d8d9",
+      "dt1": [
+        197,
+        198
+      ],
+      "dt05": {
+        "status": "SAMPLED_DEFINITE_BRACKETS",
+        "intervals": [
+          [
+            197.5,
+            198,
+            "NEGATIVE",
+            "POSITIVE"
+          ]
+        ]
+      },
+      "dt025": {
+        "status": "OUTSIDE_PRIOR_1Y_BRACKET_OR_SIGN_DRIFT",
+        "intervals": []
+      }
+    }
+  ],
+  "dt05_inside_prior_window": 2,
+  "dt05_outside_prior_window": 2,
+  "dt025_inside_prior_window": 0,
+  "dt025_outside_prior_window": 4,
+  "max_local_restart_replay_error_m": {
+    "dt05": 0,
+    "dt025": 0
+  },
+  "source_event_times_promoted_to_geological_history": false,
+  "out_of_window_meaning": "Endpoints of previous dt=1 annual intervals do not retain expected opposite signs at tested dt; event might move outside tested window; absence of event NOT proven.",
+  "source_physically_closed_solid_surface_qualified": false,
+  "source_shell_midpoint_proxy_signed_gap_valid_as_rock_solid_nonpenetration": false,
+  "original_T0_fixed_normal_KKT_only": true,
+  "updated_geometry_KKT_executed": false,
+  "physical_solver_runs": 0,
+  "physical_T1": null,
+  "D_024": "ACTIVE",
+  "canonical_promotion": false,
+  "decision": "ENGINEERING_DT_INVENTORY_PASS__ORIGINAL_DT1_EVENT_TIME_NOT_ROBUST__PHYSICAL_CONTACT_SOURCE_AUTHORITY_GAP_REMAINS"
+}
