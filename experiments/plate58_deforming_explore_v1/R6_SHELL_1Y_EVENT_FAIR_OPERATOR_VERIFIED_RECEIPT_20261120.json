@@ -1,0 +1,87 @@
+{
+  "schema": "ARCANA_R6_SHELL_1YEAR_FAIR_OPERATOR_REPORT_SHA_VERIFIED_V1",
+  "date": "2026-11-20",
+  "source_commit": "1bd6332fef2ed9ba5e326dc43e33645fdce589fd",
+  "reported_tests": {
+    "passed": 118,
+    "failed": 0,
+    "seconds": 0.84,
+    "exit_code": 0
+  },
+  "reported_driver_exit_code": 0,
+  "manifest_schema": "ARCANA_R6_SHELL_1YEAR_EVENT_REFINEMENT_MANIFEST_V1",
+  "status": "PASS_SOURCE_SHELL_1Y_EVENT_BRACKET_REFINEMENT__PHYSICAL_SOLID_CONTACT_OPEN",
+  "report_sha256_according_to_manifest": "3a122e0ddccd0944b2478dda41abf452e00ec6f230edcb9313c0e8d3961b220c",
+  "report_sha256_directly_checked_on_FAIR_by_operator": "3a122e0ddccd0944b2478dda41abf452e00ec6f230edcb9313c0e8d3961b220c",
+  "report_bytes_independently_retrieved_by_assistant": false,
+  "original_25y_source_gap_replay_max_abs_error_m": 0,
+  "brackets": [
+    {
+      "source_boundary_id": "R6BND-T0-f679f4c97f1e7445d8d9",
+      "prior_25y_interval": [
+        175,
+        200
+      ],
+      "refined_1y_interval": [
+        197,
+        198
+      ],
+      "from": "NEGATIVE",
+      "to": "POSITIVE",
+      "max_temporal_rate_difference_m_per_model_year": 0.0000036725691531460823
+    },
+    {
+      "source_boundary_id": "R6BND-T0-4d168aac7492e7c418de",
+      "prior_25y_interval": [
+        475,
+        500
+      ],
+      "refined_1y_interval": [
+        477,
+        478
+      ],
+      "from": "POSITIVE",
+      "to": "NEGATIVE",
+      "max_temporal_rate_difference_m_per_model_year": 0.0000049646104225459405
+    },
+    {
+      "source_boundary_id": "R6BND-T0-1569360d5844c75db0d3",
+      "prior_25y_interval": [
+        625,
+        650
+      ],
+      "refined_1y_interval": [
+        642,
+        643
+      ],
+      "from": "NEGATIVE",
+      "to": "POSITIVE",
+      "max_temporal_rate_difference_m_per_model_year": 0.0000031105237017401387
+    },
+    {
+      "source_boundary_id": "R6BND-T0-16d7dc72630ecb414c04",
+      "prior_25y_interval": [
+        875,
+        900
+      ],
+      "refined_1y_interval": [
+        892,
+        893
+      ],
+      "from": "NEGATIVE",
+      "to": "POSITIVE",
+      "max_temporal_rate_difference_m_per_model_year": 0.0000028612153186212755
+    }
+  ],
+  "all_four_brackets_definite_one_year": true,
+  "near_zero_integer_samples": 0,
+  "global_observed_max_temporal_rate_discrepancy_m_per_model_year": 0.0000049646104225459405,
+  "interpretation": "time-difference vs instantaneous geometric rate discrepancy measured, no preset temporal-parity PASS threshold",
+  "numerical_time_step_convergence_proven": false,
+  "exact_continuous_zero_crossing_times_known": false,
+  "physical_signed_solid_clearance_qualified": false,
+  "physical_solver_runs": 0,
+  "physical_T1": null,
+  "D_024": "ACTIVE",
+  "no_canonical_promotion": true
+}
