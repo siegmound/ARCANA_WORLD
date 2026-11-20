@@ -200,10 +200,10 @@ def run_scale(region,omegas):
              "COUPLED_DT_MUST_DIVIDE_CHECKPOINTS")
         times=np.arange(0,1000,dt,dtype=float)+dt/2
         drives=np.stack([euler_driver(ll,ordered,omegas,float(t)) for t in times])
-        full=evolve_modes(lam,Q,drives,dt,checkpoints=(100,500,1000))
-        first=evolve_modes(lam,Q,drives[:500//dt],dt,checkpoints=(500,))
+        full=evolve_modes(lam,Q,drives,dt,tau_years=TAU_YEARS,checkpoints=(100,500,1000))
+        first=evolve_modes(lam,Q,drives[:500//dt],dt,tau_years=TAU_YEARS,checkpoints=(500,))
         second=evolve_modes(lam,Q,drives[500//dt:],dt,
-                            initial=first["final_modes"],years_start=500,
+                            initial=first["final_modes"],years_start=500,tau_years=TAU_YEARS,
                             checkpoints=(1000,))
         restart=float(np.max(np.abs(full["final_modes"]-second["final_modes"])))
         need(restart<=1e-8,"COUPLED_RESTART_DIVERGENCE")
