@@ -1,0 +1,265 @@
+{
+  "schema": "ARCANA_R6_G2_G3_INDEPENDENT_EVIDENCE_SELECTION_V1",
+  "assessed_on": "2026-11-20",
+  "source_parent_commit": "18695cf43e18906065c6c5dd01559166e217bf98",
+  "decision": "G2_MECHANISM_SPLIT_SOURCE_DISCOVERY_PASS__RAW_LAB_MEASUREMENTS_NOT_INGESTED__G3_EARTH_BENCHMARK_ONLY",
+  "authority": "NONCANONICAL_RESEARCH_SELECTION_NOT_AUTHOR_RATIFIED",
+  "t0_region": {
+    "epoch": "210_Ma",
+    "source": "docs/arcana/R6_FIRST_DEFORMATION_MODEL_DECISION_FAIR_20261118.md",
+    "plates": [
+      5,
+      8,
+      11
+    ],
+    "source_crust_temperature_range_K": [
+      280,
+      1051.5581968311126
+    ],
+    "source_mantle_lithosphere_temperature_range_K": [
+      1051.5581968311126,
+      1671.77
+    ],
+    "source_crust_pressure_proxy_GPa": [
+      0,
+      0.754
+    ],
+    "lithosphere_thermal_base_is_mechanical_base": false,
+    "mineral_identity_by_node": null,
+    "water_fugacity_field": null,
+    "pore_pressure_field": null,
+    "physical_G2_law": null,
+    "physical_G3_traction": null
+  },
+  "mechanisms": {
+    "brittle_friction": {
+      "scope": "preexisting interface friction, not continuum Drucker-Prager by identity",
+      "candidate_source_id": "MENDELEY_WANG_2024",
+      "continuum_calibration_compatible_without_conversion": false
+    },
+    "low_temperature_plasticity": {
+      "scope": "Peierls/glide hardness stress conversion model dependent",
+      "candidate_source_ids": [
+        "WUSTL_STROZEWSKI_2021",
+        "WUSTL_SLY_2023",
+        "DRYAD_QUARTZ_DDIA_2026"
+      ],
+      "existing_loglinear_dislocation_creep_estimator_suitable": false
+    },
+    "high_temperature_dislocation_creep": {
+      "scope": "lab-measured or digitized stress-strain-rate-P-T-with-water only",
+      "candidate_source_ids": [
+        "ZENODO_MASUTI_2023",
+        "WET_QUARTZ_CROSS_STUDY_2021"
+      ],
+      "currently_calibrated_on_ARCANA": false
+    },
+    "brittle_ductile_transition": {
+      "scope": "requires rheology/microstructure/phase/fluid and independent source validity",
+      "candidate_source_ids": [
+        "WANG_2020_QUARTZ_FELDSPAR",
+        "HPHT_HAN_2026"
+      ],
+      "transition_temperature_authorized": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ZENODO_MASUTI_2023",
+      "role": "G2_HOT_CREEP_DIGITIZED_EXPERIMENTAL_CURVES",
+      "citation": "Masuti, Muto, Rybacki (2023), transient creep of quartz and granulite under wet conditions; data digitized from Gleason & Tullis 1995 and Zhou et al. 2017",
+      "doi": "10.5281/zenodo.8304793",
+      "url": "https://zenodo.org/records/8304793",
+      "raw_file_url": "https://zenodo.org/records/8304793/files/data.zip?download=1",
+      "upstream_named_file": "data.zip",
+      "published_file_size_description": "13.2 kB",
+      "upstream_md5": "fbb1734ffce3eb94e4ef974f5b2cb7be",
+      "license": "CC_BY_4_0",
+      "measurement_type": "DIGITIZED_PUBLISHED_CURVES_NOT_ORIGINAL_LAB_INSTRUMENT_LOG",
+      "materials": [
+        "QUARTZ_AGGREGATES",
+        "PARTIALLY_MOLTEN_GRANULITE"
+      ],
+      "raw_bytes_retrieved": false,
+      "archive_contents_inspected": false,
+      "strain_rate_pressure_water_per_record_verified": false,
+      "legitimate_direct_T0_crust_full_column_calibration": false,
+      "use": "first small source-integrity acquisition; review curve digitization units and depth/P-T mechanism before any fit"
+    },
+    {
+      "id": "WUSTL_STROZEWSKI_2021",
+      "role": "G2_LOW_T_QUARTZ_PLASTICITY_HARDNESS",
+      "citation": "Strozewski et al. (2021), Viscoplastic Rheology of alpha-Quartz Investigated by Nanoindentation",
+      "doi": "10.1029/2021JB022229",
+      "data_doi": "10.7936/av98-vn87",
+      "url": "https://repository.library.washu.edu/data/86/",
+      "material": "QUARTZ",
+      "experimental_temperature_C": [
+        23,
+        500
+      ],
+      "original_measurement": "NANOINDENTATION_HARDNESS",
+      "reported_strain_rate_type": "INDENTATION_NOT_TRIAXIAL_CREEP",
+      "water_condition": "VARIED_BETWEEN_SAMPLES_NOT_ARCANA_FIELD",
+      "direct_fit_current_triaxial_regressor": false,
+      "raw_bytes_retrieved": false,
+      "use": "candidate low-T plasticity benchmark only with explicit hardness-to-yield and strain-rate model"
+    },
+    {
+      "id": "WUSTL_SLY_2023",
+      "role": "G2_LOW_T_QUARTZ_FELDSPAR_PLASTICITY",
+      "citation": "Sly et al. (2023), Low-temperature plastic rheology of granitic feldspar and quartz",
+      "doi": "10.1016/j.tecto.2023.229850",
+      "url": "https://repository.library.washu.edu/data/93/",
+      "experimental_temperature_C": [
+        23,
+        500
+      ],
+      "measured_type": "NANOINDENTATION_HARDNESS_NOT_CONTINUUM_CREEP",
+      "specimen_minerals": [
+        "QUARTZ",
+        "ORTHOCLASE",
+        "PLAGIOCLASE"
+      ],
+      "reference_rate_description": "approximately 1e-2 per second in nanoindentation",
+      "direct_fit_current_triaxial_regressor": false,
+      "raw_bytes_retrieved": false,
+      "use": "grain-scale sensitivity not direct DP law or rock aggregate flow law"
+    },
+    {
+      "id": "MENDELEY_WANG_2024",
+      "role": "G2_PREEXISTING_FAULT_FRICTION_AND_PORE",
+      "citation": "Lei Wang (2024), Experimental data for rock friction tests at varying confining pressure and load point velocity",
+      "doi": "10.17632/vkhs4y4sjv.1",
+      "url": "https://data.mendeley.com/datasets/vkhs4y4sjv/1",
+      "lithology": "BENTHEIM_POROUS_QUARTZ_RICH_SANDSTONE_SAW_CUT",
+      "confining_pressure_MPa": [
+        35,
+        75
+      ],
+      "controlled_pore_pressure_MPa": 5,
+      "load_point_velocity_um_per_second": [
+        1,
+        10
+      ],
+      "deposited_format": ".mat",
+      "license": "CC_BY_4_0",
+      "data_class": "FAULT_SLIP_AND_HYDRAULIC_TEST_NOT_TRIAXIAL_CREEP",
+      "direct_fit_current_triaxial_regressor": false,
+      "raw_bytes_retrieved": false,
+      "readme_units_inspected": false,
+      "use": "fault friction and effective pressure sensitivity, not continuum DP parameter assignment"
+    },
+    {
+      "id": "DRYAD_QUARTZ_DDIA_2026",
+      "role": "G2_QUARTZ_STRENGTH_HIGH_PRESSURE_2026",
+      "citation": "Medina, Kaboli, Patterson, Burnley (2026), Strength of alpha quartz: new high-pressure in-situ deformation experiments",
+      "doi": "10.5061/dryad.rbnzs7hqv",
+      "url": "https://datadryad.org/dataset/doi:10.5061/dryad.rbnzs7hqv",
+      "reported_temperature_C": [
+        25,
+        1199
+      ],
+      "reported_pressure_GPa": [
+        1.39,
+        3.1
+      ],
+      "reported_strain_rate_s_inv": [
+        0.000001,
+        0.00001
+      ],
+      "data_type": "DIFFRACTION_IMAGES_AND_INSTRUMENT_LOGS_REQUIRING_STRESS_RECONSTRUCTION",
+      "pressure_intersection_with_T0_crust_proxy": false,
+      "published_archive_size": "~1.06GB",
+      "raw_bytes_retrieved": false,
+      "direct_fit_current_triaxial_regressor": false,
+      "use": "independent high-P method benchmark not direct regional crust calibration"
+    },
+    {
+      "id": "HPHT_HAN_2026",
+      "role": "G2_HPHT_STRENGTH_FAILURE_MODE_STATISTICAL",
+      "citation": "Han, Huang, Santamarina (2026), Rocks at High Pressure and Temperature: Bridging Index and Engineering Properties Using Physics-Guided Machine Learning",
+      "doi": "10.1007/s00603-026-06047-0",
+      "url": "https://link.springer.com/article/10.1007/s00603-026-06047-0",
+      "published_date": "2026-11-04",
+      "compiled_datapoints": 1711,
+      "source_studies": 156,
+      "rock_types_count": 8,
+      "data_availability": "CURATED_DATABASE_AVAILABLE_ON_REQUEST_FROM_CORRESPONDING_AUTHOR",
+      "strain_rate_per_entry_complete": false,
+      "raw_bytes_retrieved": false,
+      "use": "brittle stiffness/strength and failure-class reference; not ready for powerlaw creep regression"
+    },
+    {
+      "id": "WET_QUARTZ_CROSS_STUDY_2021",
+      "role": "G2_WET_QUARTZ_COMPILED_FLOW_LAW",
+      "citation": "Natural and Experimental Constraints on a Flow Law for Dislocation-Dominated Creep in Wet Quartz (2021)",
+      "doi": "10.1029/2020JB021302",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020JB021302",
+      "published_parameter_estimates_only_in_current_research": true,
+      "original_measurement_records_retrieved": false,
+      "separate_low_and_high_pressure_fits": true,
+      "source_R6_cross_study_TP_screen_not_calibrated_joint_domain": true,
+      "use": "parameter-prior comparator only until individual measurements and water-model provenance are checked"
+    },
+    {
+      "id": "DRYAD_BIRD_2025_EARTH5",
+      "role": "G3_EARTH_MODEL_FORCE_INVERSION_BENCHMARK",
+      "citation": "Peter Bird (2025), Kinematic and dynamic modeling of lithosphere deformation: Tools and results",
+      "doi": "10.5061/dryad.cnp5hqcjb",
+      "url": "https://datadryad.org/dataset/doi:10.5061/dryad.cnp5hqcjb",
+      "raw_named_archive": "Bird_archive_for_Dryad.zip",
+      "published_archive_size_MB": 415.64,
+      "archive_includes": [
+        "Earth5-049 inputs outputs",
+        "Earth5_update model workflow",
+        "Shells tools and global input files"
+      ],
+      "independent_arcana_mantle_flow_provider": false,
+      "independent_arcana_plate_5_8_11_traction_provider": false,
+      "raw_bytes_retrieved": false,
+      "use": "external benchmark of traction inversion and Shells conventions, not source physical forcing for ARCANA"
+    },
+    {
+      "id": "BIRD_2026_EARTH5_PAPER",
+      "role": "G3_EARTH5_CONTEMPORARY_MODEL_STUDY",
+      "citation": "May, Bird et al. (2026), Fault Friction, Plate Rheology, and Mantle Torques From a Global Dynamic Model of Neotectonics",
+      "doi": "10.1029/2025JB032949",
+      "url": "https://doi.org/10.1029/2025JB032949",
+      "explicitly_reported_dependency": "Bird 2025 Dryad Earth5_update input/output archive",
+      "arcana_physical_source": false,
+      "use": "physical model design and benchmark only"
+    }
+  ],
+  "adjudication": {
+    "real_G2_ARCANA_rock_identity": null,
+    "raw_external_lab_data_safely_ingested": false,
+    "eligible_G2_rows_for_current_A_n_E_V_fugacity_estimator": 0,
+    "single_flow_law_validated_from_280_to_1051_558_K": false,
+    "low_T_peierls_parameter_fit_available": false,
+    "brittle_friction_to_continuum_DP_mapping_qualified": false,
+    "G3_real_deep_mantle_velocity_field": null,
+    "G3_real_basal_shear_and_normal_traction": null,
+    "G3_earth5_output_can_be_arcana_calibration_target": false,
+    "physical_G2_fit": null,
+    "physical_G3_fit": null,
+    "mechanical_solve_authorized": false,
+    "physical_T1": null,
+    "D_024": "ACTIVE"
+  },
+  "preferred_next_external_intake": {
+    "dataset_id": "ZENODO_MASUTI_2023",
+    "reason": "small explicit digitized experiment source with published filename, checksum and reuse license",
+    "verify_md5": "fbb1734ffce3eb94e4ef974f5b2cb7be",
+    "raw_archive_location_class": "FAIR_EXTERNAL_EVIDENCE_NEW_DIRECTORY_ONLY_NOT_GIT",
+    "extract_into_production": false,
+    "parse_units_and_experiment_groups_before_fit": true,
+    "verify_reconstructed_measurements_are_digitized_not_primary": true
+  },
+  "next_dependency": {
+    "G2": "inspect genuine raw experimental fields and classify mechanisms with T0 full-source temperature pressure and rate coverage; determine authorial lithology/water scenario",
+    "G3": "use Earth5 as benchmark methodology only; determine/implement independent ARCANA mantle-flow and normal-support provider rather than borrow Earth traction values",
+    "source_files_not_downloaded_due_to_execution_environment": true,
+    "no_canonical_history_or_resource_distribution_changes": true
+  }
+}

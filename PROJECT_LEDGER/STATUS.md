@@ -1,3 +1,7 @@
+CURRENT — 2026-11-20 — G2/G3 external evidence discovery completed, 9 cited source categories registered (including 2023 Zenodo 13.2kB digitized quartz/granulite data, 2021/2023 quartz/feldspar nanoindentation, 2024 controlled-pore saw-cut friction, 2026 high-P quartz and HPHT 1711-point publication, 2025 Earth5 Dryad plus 2026 inversion model). CRITICAL: cold T0 crust 280–1051.558K requires brittle/frictional, low-T glide/Peierls and warm creep mechanisms, NOT a universal GT95 dislocation law. Earth5 is a REPLAY/BENCHMARK, never ARCANA traction provider. Original experimental archives NOT downloaded or parsed in this environment (Zenodo URL accessible as metadata only); no real G2/G3 physical fit, D-024 active, T1 null. See docs/arcana/R6_G2_G3_INDEPENDENT_EVIDENCE_DISCOVERY_20261120.md and experiments/plate58_deforming_explore_v1/R6_G2_G3_EXTERNAL_EVIDENCE_REGISTER_20261120.json.
+
+---
+
 CURRENT — 2026-11-20 — FAIR operator verified HEAD 2a6bd6500cb453959e7d2bf44d94e8c241162c05, tests/test_r6_g2_g3_empirical_calibration.py 10/10 PASS (0.14 s). This validates synthetic regression/identifiability tests only, NOT real material or mantle physics; measured ARCANA calibration records remain absent and A/n/E/V/water and beta_basal remain unratified. No new physical solve; D-024 ACTIVE, physical_T1=null. Raw FAIR artifacts were not independently read. See docs/arcana/R6_G2_G3_EMPIRICAL_CALIBRATION_FAIR_PASS_20261120.md.
 
 ---
