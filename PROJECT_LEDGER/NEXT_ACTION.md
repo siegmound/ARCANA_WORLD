@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-20 — STOP treating 555 digitized Zenodo stress–strain points as independent power-law creep rate/stress measurements. NEXT real scientific unit: source-ground and reconcile each digitized Gleason/Tullis and Zhou curve with original figure/panel and test T, confining P, imposed epsdot, wet/partial-melt state, stress/strain axis scale and rate-step changes. If reproducing transients, use Masuti 2023 nonlinear Burgers framework and its published source code Zenodo 8304760 as separate noncanonical laboratory REPLAY with held-out *physical experiments* (not file fragments). Do not infer ARCANA warm crust from experiment at >=1173.15K; T0 crust 280..1051.558K needs independent low-T brittle/plastic transition source. G3 mantle provider still absent. No G2/G3 real fit or mechanical solve; D-024, T1 null.
+
+---
+
 CURRENT NEXT — 2026-11-20 — FAIR checkout new GitHub HEAD and run tests/test_r6_g2_zenodo_raw_dat_inspector.py, then run source inspector module over previously verified $BASE/R6_G2_ZENODO_8304793_RAW_NEW_01/data.zip into NEW $BASE/R6_G2_ZENODO_8304793_INSPECT_NEW_01, never overwrite raw archive/sealed outputs. Return per-family examples of first raw lines, column counts and unlabelled ranges; cross-verify actual chart axes with GT95/Zhou/Masuti paper and do not misclassify digitized curves as independent lab creep stress/rate/P/T observations. Physical G2/G3 parameters and drag remain unknown, D-024 blocks solve and T1.
 
 ---

@@ -1,0 +1,212 @@
+{
+  "schema": "ARCANA_R6_ZENODO_8304793_FAIR_RAW_CURVES_AND_PAPER_AXIS_ADJUDICATION_V1",
+  "record_date": "2026-11-20",
+  "repo_source_head": "65f72f63dd1db693cdf53e5225ed93a8fd557a68",
+  "status": "PASS_FAIR_RAW_SOURCE_INTEGRITY_AND_TWO_COLUMN_DATA_SHAPE__PAPER_SUPPORTS_STRESS_STRAIN__G2_CALIBRATION_BLOCKED",
+  "authority": "FAIR_OPERATOR_TERMINAL_PLUS_PUBLISHED_LITERATURE__NO_AUTHOR_RATIFIED_ARCANA_MATERIAL",
+  "raw_archive": {
+    "source_record": "https://zenodo.org/records/8304793",
+    "canonical_archive": "data.zip",
+    "zip_md5": "fbb1734ffce3eb94e4ef974f5b2cb7be",
+    "zip_sha256": "1af973f4e96afe615d0f3eee94020b8a2186422392d3bcfa85699fd01f41327d",
+    "fair_path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_G2_ZENODO_8304793_RAW_NEW_01/data.zip",
+    "fair_inspection_path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_G2_ZENODO_8304793_INSPECT_NEW_01",
+    "source_zip_verified_by_fair": true,
+    "dat_file_count": 39,
+    "total_numeric_points": 555,
+    "gleason_tullis_fig_series_count": 18,
+    "zhou_fig_series_count": 21,
+    "all_sampled_columns_count": 2,
+    "all_39_records_two_column_verified_from_full_FAIR_json": false,
+    "source_files_group_labels_not_independent_experiment_counts": true,
+    "raw_fair_inspection_manifest_independently_inspected_in_authoring_environment": false,
+    "example_curves": [
+      {
+        "name": "data/gleason_tullis_fig3a_1.dat",
+        "n": 19,
+        "raw_x_unlabelled_range": [
+          0.00025,
+          0.05627
+        ],
+        "raw_y_unlabelled_range": [
+          0.57436,
+          85.63143
+        ],
+        "first_three_raw": [
+          "0.00025 0.57436",
+          "0.00149 15.48736",
+          "0.00299 27.53438"
+        ]
+      },
+      {
+        "name": "data/gleason_tullis_fig3a_2.dat",
+        "n": 10,
+        "raw_x_unlabelled_range": [
+          0.00025,
+          0.09406
+        ],
+        "raw_y_unlabelled_range": [
+          0.00097,
+          131.63043
+        ],
+        "first_three_raw": [
+          "0.00025 0.00097",
+          "0.00750 60.80850",
+          "0.01188 95.22891"
+        ]
+      },
+      {
+        "name": "data/gleason_tullis_fig3a_3.dat",
+        "n": 13,
+        "raw_x_unlabelled_range": [
+          0,
+          0.0724
+        ],
+        "raw_y_unlabelled_range": [
+          0,
+          154.51987
+        ],
+        "first_three_raw": [
+          "0.00000 0.00000",
+          "0.00097 24.65966",
+          "0.00240 71.68347"
+        ]
+      },
+      {
+        "name": "data/zhou_16_1050_1.dat",
+        "n": 25,
+        "raw_x_unlabelled_range": [
+          0.00012,
+          0.08934
+        ],
+        "raw_y_unlabelled_range": [
+          0.88437,
+          451.38301
+        ],
+        "first_three_raw": [
+          "0.00012 0.88437",
+          "0.00162 21.21117",
+          "0.00371 45.95981"
+        ]
+      },
+      {
+        "name": "data/zhou_16_1050_2.dat",
+        "n": 10,
+        "raw_x_unlabelled_range": [
+          0.08981,
+          0.10181
+        ],
+        "raw_y_unlabelled_range": [
+          407.32504,
+          451.38845
+        ],
+        "first_three_raw": [
+          "0.08981 451.38845",
+          "0.09073 439.03727",
+          "0.09165 428.45209"
+        ]
+      },
+      {
+        "name": "data/zhou_16_1050_3.dat",
+        "n": 9,
+        "raw_x_unlabelled_range": [
+          0.10158,
+          0.11104
+        ],
+        "raw_y_unlabelled_range": [
+          363.33828,
+          409.14298
+        ],
+        "first_three_raw": [
+          "0.10158 409.14298",
+          "0.10227 398.55508",
+          "0.10319 387.96990"
+        ]
+      }
+    ]
+  },
+  "source_paper": {
+    "doi": "10.1029/2023JB027762",
+    "title": "Transient Creep of Quartz and Granulite at High Temperature Under Wet Conditions",
+    "pdf": "https://gfzpublic.gfz.de/pubman/item/item_5022762_2/component/file_5022844/5022762.pdf",
+    "journal_figures_stress_vs_strain_axes": {
+      "x": "Strain (%)",
+      "y": "Stress (MPa)"
+    },
+    "raw_zip_probable_x_encoding": "STRAIN_FRACTION__PROVISIONAL_BASED_ON_NUMERIC_MAGNITUDES__NEEDS_EXPLICIT_FILE_OR_FIGURE_MAPPING",
+    "raw_zip_probable_y_encoding": "STRESS_MPA__PROVISIONAL_NEEDS_ORIGINAL_FIGURE_BINDING",
+    "per_file_experiment_temperature_rate_mapping_verified": false,
+    "independent_experiment_count_verified": false,
+    "gleason_tullis": {
+      "source": "Gleason and Tullis 1995, as summarized by Masuti et al. 2023, section 2",
+      "quartzite": "Black Hills quartzite; average water 0.15 wt%",
+      "experiment_temperature_C": [
+        900,
+        1100
+      ],
+      "confining_pressure_GPa": [
+        1.5,
+        1.7
+      ],
+      "imposed_strain_rate_s_inv_approx": [
+        0.0000015,
+        0.000075
+      ],
+      "individual_fig_file_rate_mapping": null
+    },
+    "zhou": {
+      "source": "Zhou et al. 2017, as summarized by Masuti et al. 2023, section 2",
+      "rock": "wet granulite ~52% plagioclase and ~40% pyroxene",
+      "experiment_temperature_C": [
+        900,
+        1150
+      ],
+      "experiment_confining_pressure_MPa": 300,
+      "experiment_water_wt_percent_mean": 0.17,
+      "water_wt_percent_sd": 0.05,
+      "experiment_imposed_strain_rate_s_inv_range_approx": [
+        0.0000033,
+        0.00005
+      ],
+      "rates_changed_by_steps": true,
+      "individual_file_step_boundaries_verified": false,
+      "high_T_partial_melt_possible": true
+    },
+    "mathematical_framework": "NONLINEAR_BURGERS_MODEL_2_VISCOUS_BRANCHES_AND_ELASTIC_COMPONENT_FOR_TRANSIENT_CREEP",
+    "paper_parameterization_may_depend_on_steady_state_prior": true
+  },
+  "t0_applicability": {
+    "source_t0_crust_temperature_K": [
+      280,
+      1051.5581968311126
+    ],
+    "source_t0_crust_pressure_proxy_GPa": [
+      0,
+      0.754
+    ],
+    "gleason_min_temperature_K": 1173.15,
+    "zhou_min_temperature_K": 1173.15,
+    "minimum_temperature_gap_K": 121.5918031688874,
+    "gleason_PT_overlap_with_T0_crust": false,
+    "zhou_T_overlap_with_T0_crust": false,
+    "zhou_pressure_overlap_possible_but_T_excludes": true,
+    "T0_mantle_more_temperature_overlap_does_not_qualify_material_identity": true
+  },
+  "adjudication": {
+    "fair_inspector_tests": "7 passed in 0.06s",
+    "fair_raw_inspection_status": "PASS_SOURCE_ARCHIVE_INTEGRITY_AND_RAW_SHAPE__EXPERIMENTAL_COLUMN_SEMANTICS_UNQUALIFIED",
+    "current_steady_dislocation_creep_regressor_can_fit_all_555_rows": false,
+    "treat_555_curve_points_as_independent_experiments": false,
+    "train_holdout_must_group_by_real_experiment_not_file_fragments": true,
+    "if_transient_fit_reproduce_Burgers_framework_before_using_curve_points": true,
+    "per_file_axes_and_conditions_require_original_figure_mapping": true,
+    "physical_G2_fit": null,
+    "physical_G3_fit": null,
+    "new_mechanical_solve": false,
+    "mechanical_solve_authorized": false,
+    "solver_runs": 0,
+    "physical_T1": null,
+    "D_024": "ACTIVE"
+  },
+  "next_action": "PUBLISH_PAPER_GROUNDED_PER_SERIES_FIGURE_AXIS_AND_TEST_METADATA; IF_AUTHENTIC_MASUTI_BURGERS_REPLAY_DESIRED_ACQUIRE_CODE_8304760_AND_COMPARE_CURVE_PREDICTIONS_NONCANONICAL; SEEK_T0_VALID_LOW_T_BRITTLE_PLASTICITY_LAWS_SEPARATELY"
+}

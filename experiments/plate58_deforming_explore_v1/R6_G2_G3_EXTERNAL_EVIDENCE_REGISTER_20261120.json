@@ -80,11 +80,16 @@
         "QUARTZ_AGGREGATES",
         "PARTIALLY_MOLTEN_GRANULITE"
       ],
-      "raw_bytes_retrieved": false,
-      "archive_contents_inspected": false,
+      "raw_bytes_retrieved": "FAIR_OPERATOR_DOWNLOADED_ONLY; NOT_IN_ASSISTANT_CONTAINER",
+      "archive_contents_inspected": "FAIR_OPERATOR_SOURCE_INSPECTOR_39_DAT_555_POINTS; FIRST_6_EXAMPLES_REVIEWED",
       "strain_rate_pressure_water_per_record_verified": false,
       "legitimate_direct_T0_crust_full_column_calibration": false,
-      "use": "first small source-integrity acquisition; review curve digitization units and depth/P-T mechanism before any fit"
+      "use": "first small source-integrity acquisition; review curve digitization units and depth/P-T mechanism before any fit",
+      "fair_md5_verified": true,
+      "fair_sha256": "1af973f4e96afe615d0f3eee94020b8a2186422392d3bcfa85699fd01f41327d",
+      "stress_strain_axis_interpretation": "PAPER_STRESS_MPA_VS_STRAIN_PERCENT; RAW_X_FRACTION_PROVISIONAL",
+      "available_numeric_point_count": 555,
+      "physical_fit_eligible": false
     },
     {
       "id": "WUSTL_STROZEWSKI_2021",
@@ -245,11 +250,13 @@
     "physical_G3_fit": null,
     "mechanical_solve_authorized": false,
     "physical_T1": null,
-    "D_024": "ACTIVE"
+    "D_024": "ACTIVE",
+    "zenodo_fair_verified_dat_inspection": true,
+    "zenodo_curve_rows_are_regressor_training_observations": false
   },
   "preferred_next_external_intake": {
-    "dataset_id": "ZENODO_MASUTI_2023",
-    "reason": "small explicit digitized experiment source with published filename, checksum and reuse license",
+    "dataset_id": "MASUTI_BURGERS_REPLAY_OR_T0_COLD_RHEOLOGY_DATA",
+    "reason": "ZENDO raw archived and inspected: 555 stress–strain digitization points are transient correlated curve samples, cannot fit simple steady-state creep; original figures and model conditions must be mapped",
     "verify_md5": "fbb1734ffce3eb94e4ef974f5b2cb7be",
     "raw_archive_location_class": "FAIR_EXTERNAL_EVIDENCE_NEW_DIRECTORY_ONLY_NOT_GIT",
     "extract_into_production": false,
