@@ -1,0 +1,151 @@
+{
+  "schema": "ARCANA_R6_REGIONAL_UNILATERAL_CONTACT_TIME_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "source_commit_tested": "4ec52f3a3e8815ccf495a8611b17bef994f6f592",
+  "evidence_origin": "FAIR_OPERATOR_TERMINAL_TRANSCRIPT",
+  "original_FAIR_REPORT_and_MANIFEST_independently_retrieved": false,
+  "original_FAIR_report_path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/G2_REGIONAL_UNILATERAL_CONTACT_TIME_NEW_01/REPORT.json",
+  "source_test_status": "PASS_SOURCE_REGIONAL_UNILATERAL_COMPLEMENTARITY_TIME__MOVING_GEOMETRY_OPEN",
+  "pytest": {
+    "passed": 36,
+    "failed": 0,
+    "seconds": 1.34
+  },
+  "source_model": {
+    "true_source_parent_contacts": true,
+    "source_original_region_boundaries": true,
+    "input_sealed_contact_objectivity_gate": "PASS_FAIR_32_OF_32",
+    "plate_material_view_separation": true,
+    "source_G2_P1_tangent": "FIXED_T0_MANUFACTURED_K",
+    "source_normal_frame": "FIXED_SOURCE_T0_EN_NOT_OBJECTIVE_MOVING_GEOMETRY",
+    "gap": "INITIAL_ZERO_PLUS_TIME_INTEGRAL_SOURCE_NORMAL_RELATIVE_VELOCITY",
+    "solver": "NORMALIZED_LINEAR_KKT_NNLS_QP",
+    "moving_3D_surface_gap_tested": false,
+    "objective_contact_normal_transport_tested": false,
+    "true_physical_materials_calibrated": false,
+    "real_G3_forcing_qualified": false,
+    "model_year_horizons": [
+      100,
+      1000
+    ],
+    "model_year_step_sizes": [
+      1,
+      5,
+      10
+    ],
+    "restart": "500_PLUS_500_WITH_DT_1",
+    "real_contact_source_gap_at_T0_measured": false
+  },
+  "scales": [
+    {
+      "extent": 8,
+      "real_source_nodes": 81,
+      "source_plates": [
+        5,
+        8
+      ],
+      "source_contact_edges": 12,
+      "source_contact_pair_links": 13,
+      "source_triple_junction_ids": [],
+      "source_plate_local_views": 94,
+      "source_mechanical_dofs": 188,
+      "Euler_initial_closing_link_count": 0,
+      "horizons": {
+        "100": {
+          "max_source_tangent_displacement_m": 11.965066080837044,
+          "min_normal_contact_gap_m": 11.537141890493,
+          "max_normal_contact_gap_m": 14.383329442790162,
+          "active_contact_links": 0,
+          "negative_normal_rate_links_at_checkpoint": 0,
+          "max_abs_displacement_dt5_minus_dt1_m": 2.6645352591003757e-14,
+          "max_abs_displacement_dt10_minus_dt1_m": 2.842170943040401e-14
+        },
+        "1000": {
+          "max_source_tangent_displacement_m": 119.65066080836878,
+          "min_normal_contact_gap_m": 115.37141890492894,
+          "max_normal_contact_gap_m": 143.83329442790426,
+          "active_contact_links": 0,
+          "negative_normal_rate_links_at_checkpoint": 0,
+          "max_abs_displacement_dt5_minus_dt1_m": 1.5489831639570184e-12,
+          "max_abs_displacement_dt10_minus_dt1_m": 1.6626700016786344e-12
+        }
+      },
+      "dt1_max_force_residual": 6.884280594676643e-16,
+      "dt1_max_scaled_complementarity": 0,
+      "dt1_min_normal_gap_m": 0.11537141890493016,
+      "dt1_max_normalized_contact_reaction": 0,
+      "restart_500_plus_500_m": 0
+    },
+    {
+      "extent": 16,
+      "real_source_nodes": 289,
+      "source_plates": [
+        5,
+        8,
+        11
+      ],
+      "source_contact_edges": 36,
+      "source_contact_pair_links": 39,
+      "source_triple_junction_ids": [
+        34587
+      ],
+      "source_plate_local_views": 327,
+      "source_mechanical_dofs": 654,
+      "Euler_initial_closing_link_count": 4,
+      "horizons": {
+        "100": {
+          "max_source_tangent_displacement_m": 12.352645799847593,
+          "min_normal_contact_gap_m": -2.4216739724636227e-15,
+          "max_normal_contact_gap_m": 14.383239340032066,
+          "active_contact_links": 4,
+          "negative_normal_rate_links_at_checkpoint": 0,
+          "max_abs_displacement_dt5_minus_dt1_m": 0.004683121918702682,
+          "max_abs_displacement_dt10_minus_dt1_m": 0.01048111104067262
+        },
+        "1000": {
+          "max_source_tangent_displacement_m": 123.52645799847467,
+          "min_normal_contact_gap_m": -3.674838211509268e-14,
+          "max_normal_contact_gap_m": 143.8155199659242,
+          "active_contact_links": 4,
+          "negative_normal_rate_links_at_checkpoint": 0,
+          "max_abs_displacement_dt5_minus_dt1_m": 0.021571291058407382,
+          "max_abs_displacement_dt10_minus_dt1_m": 0.04847480200064069
+        }
+      },
+      "dt1_max_force_residual": 7.103269307344319e-16,
+      "dt1_max_scaled_complementarity": 4.436305020138318e-17,
+      "dt1_min_normal_gap_m": -4.8253068207770866e-14,
+      "dt1_max_normalized_contact_reaction": 0.1190766823562935,
+      "restart_500_plus_500_m": 0
+    }
+  ],
+  "validations": {
+    "rank_deficient_contact_constraints_fail_closed": true,
+    "KKT_constraints_enforced_each_step": true,
+    "reported_negative_gaps_within_floating_point_scale": true,
+    "source_junction_34587_present_in_large_region": true,
+    "exact_zero_restart_displacement_error": true,
+    "step_refinement_16_1000_error_ratio_10_to_5": 2.247190577021476,
+    "step_refinement_16_1000_dt10_error_percent_of_max_displacement": 0.03924244472486961,
+    "opening_only_8x8_zero_contact_reaction": true,
+    "proof_of_actual_3D_nonpenetration": false,
+    "proof_of_3D_force_torque_and_objective_contact_work": false,
+    "proof_of_true_global_dynamic_contact": false,
+    "true_geologic_T1": false,
+    "physical_solver_runs": 0,
+    "physical_T1": null,
+    "D_024": "ACTIVE"
+  },
+  "next_gate": {
+    "priority": "OBJECTIVE_MOVING_3D_CONTACT_GEOMETRY_WITH_SOURCE_EDGE_FACE_PROVENANCE",
+    "steps": [
+      "Establish geometric contact surfaces from source boundary edges and parent triangle owners, without inventing faults",
+      "Build moving 3D plate-material views under exact source Euler rotation plus manufactured tangential displacement",
+      "Define and independently verify signed geometric normal gap and updated normals under SO(3), including source triple node 34587",
+      "Compare fixed-T0 integrated gap vs actual updated geometric gap with quantified discrepancy at 100 and 1000 years",
+      "Check pairwise action/reaction, frame-objective force and torque work, gap and reaction complementarity on updated geometry",
+      "Verify dt1/5/10, restart, contact activation and no artificial energy injection in manufactured regional model",
+      "Only then consider moving global contacts; never authorize physical T1 from synthetic G2/G3 data"
+    ]
+  }
+}
