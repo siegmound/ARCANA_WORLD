@@ -1,0 +1,65 @@
+{
+  "schema": "ARCANA_R6_G2_CONTACT_FEATURE_ADMISSIBILITY_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "source_tested_commit": "a51c84ec1cca9775e825924566f3d7e2832cbbd7",
+  "provenance": "USER_SUPPLIED_FAIR_TERMINAL_TAIL_EXCERPT",
+  "excerpt_lines": 1024,
+  "raw_FAIR_REPORT_MANIFEST_independently_retrieved": false,
+  "pytest_summary_visible": false,
+  "reported_driver_exit_code": 0,
+  "reported_manifest": {
+    "schema": "ARCANA_R6_CONTACT_FEATURE_ADMISSIBILITY_MANIFEST_V1",
+    "status": "PASS_SOURCE_EDGE_FEATURE_ADMISSIBILITY_INVENTORY__PHYSICAL_CONTACT_OPEN",
+    "files": {
+      "REPORT.json": "e7b8f9c47bcd9f46a35f9edb06ee52ba641747f006482a1efc766f25b5b1fc21"
+    },
+    "physical_T1": null,
+    "no_canonical_promotion": true
+  },
+  "reported_total_wall_seconds": 2.6370461210608482,
+  "region_16": {
+    "extent": 16,
+    "source_contact_edges": 36,
+    "T0_feature_classification_counts": {
+      "AMBIGUOUS": 36
+    },
+    "source_feature_classification_or_reason_transition_count": 8,
+    "full_transition_details_not_visible": true,
+    "checkpoint_model_years": [
+      100,
+      500,
+      1000
+    ],
+    "old_T0_KKT_active_links_each_checkpoint": 4,
+    "min_3D_gap_on_old_active_links_m": {
+      "100": 1.0739293264826548,
+      "500": 5.415396432546457,
+      "1000": 10.908884806199438
+    },
+    "signed_nearest_segment_projection_negative_count_below_minus_1um": {
+      "100": 6,
+      "500": 7,
+      "1000": 5
+    },
+    "min_signed_nearest_segment_projection_m": {
+      "100": -0.6687749707068595,
+      "500": -3.037951440045529,
+      "1000": -5.6015321405876195
+    }
+  },
+  "region_8": {
+    "visible_500_source_edge_count": 12,
+    "visible_1000_source_edge_count": 12,
+    "T0_admissibility_counts_not_visible": true
+  },
+  "SO3_numerical_regression_visible": {
+    "tolerance_m": 1e-7,
+    "max_node_pair_gap_error_m": 9.160103786598484e-10,
+    "max_unsigned_segment_distance_error_m": 1.0627863589185438e-9,
+    "max_signed_segment_projection_error_m": 9.509192322454396e-10
+  },
+  "gate_interpretation": "ENGINEERING_INVENTORY_PASS_ONLY__SURFACE_CONTACT_PHYSICS_NOT_QUALIFIED",
+  "physical_solver_runs": 0,
+  "physical_T1": null,
+  "D_024": "ACTIVE"
+}
