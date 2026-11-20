@@ -1,0 +1,118 @@
+{
+  "schema": "ARCANA_R6_GLOBAL_G1_G2_SPARSE_P1_MANUFACTURED_TIME_FAIR_OPERATOR_RECEIPT_V1",
+  "recorded_date": "2026-11-20",
+  "tested_source_commit": "a57fdbac0216c0d7b240681a0222a5fe6aa0fa45",
+  "evidence_type": "FAIR_OPERATOR_TERMINAL_TRANSCRIPT_NOT_INDEPENDENT_RAW_ARTIFACT_RETRIEVAL",
+  "operator_checkout": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_R6_PLATE58_VERIFY",
+  "report_path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/G2_GLOBAL_SPARSE_P1_TIME_100_1000Y_NEW_01/REPORT.json",
+  "report_manifest_path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/G2_GLOBAL_SPARSE_P1_TIME_100_1000Y_NEW_01/MANIFEST.json",
+  "raw_FAIR_REPORT_and_MANIFEST_independently_inspected": false,
+  "pytest": {
+    "status": "PASS",
+    "passed": 29,
+    "failed": 0,
+    "elapsed_seconds": 0.63
+  },
+  "driver_status": "PASS_SOURCE_GLOBAL_SPARSE_P1_G1_G2_MANUFACTURED_100_1000Y__PHYSICS_OPEN",
+  "source_scope": {
+    "original_parent_nodes": 64442,
+    "plate_local_material_views": 66435,
+    "triangles": 128880,
+    "plates": 12,
+    "EN_dofs": 132870,
+    "global_P1_sparse_matrix_nnz": 1828144,
+    "original_global_static_P1_gate": "PASS_FAIR_28_OF_28",
+    "source_geometric_frame": "T0_FIXED_PLATE_MATERIAL_FRAME",
+    "original_P1_synthetic_internal_tangent": "CONSTANT_T0",
+    "plate_contacts": "INDEPENDENT_UNWELDED_NO_REAL_FAULT_LAW",
+    "manufactured_nonrigid_target_applied": true
+  },
+  "temporal_scheme": {
+    "method": "IMPLICIT_EULER",
+    "dt_model_years": [
+      1,
+      5,
+      10
+    ],
+    "horizons_model_years": [
+      100,
+      1000
+    ],
+    "restart_split_model_year": 500,
+    "primary_steps": 1300,
+    "restart_extra_steps": 500,
+    "total_engineering_linear_time_steps": 1800
+  },
+  "horizons": {
+    "100": {
+      "year": 100,
+      "max_nodal_material_displacement_m": 15.025221782306831,
+      "G1_plus_manufactured_target_RMS_m_per_year": 0.05376418193655341,
+      "coupled_RMS_m_per_year": 0.05376386854243191,
+      "coupled_minus_target_RMS_m_per_year": 0.00002111419026950393,
+      "relative_feedback_norm": 0.00039271852577280145,
+      "max_displacement_dt5_vs_dt1_m": 0.0007778331504737501,
+      "max_displacement_dt10_vs_dt1_m": 0.0017387808551485584,
+      "energy_normalized": 0.037054511957343356,
+      "minimum_signed_area_J": 0.9999867403485484,
+      "maximum_signed_area_J": 1.0000135912780335,
+      "maximum_absolute_area_ratio_minus_one": 0.000013591278033464604,
+      "sum_signed_plate_local_area_ratio": 0.9999999995546689,
+      "maximum_angular_material_shift_rad": 0.000002358341210292684,
+      "no_triangle_inversions": true
+    },
+    "1000": {
+      "year": 1000,
+      "max_nodal_material_displacement_m": 150.22014195248983,
+      "G1_plus_manufactured_target_RMS_m_per_year": 0.05376418193655341,
+      "coupled_RMS_m_per_year": 0.05376300292357609,
+      "coupled_minus_target_RMS_m_per_year": 0.00006835697632784933,
+      "relative_feedback_norm": 0.001271422234388626,
+      "max_displacement_dt5_vs_dt1_m": 0.0014150378499662164,
+      "max_displacement_dt10_vs_dt1_m": 0.0031801085245288796,
+      "energy_normalized": 3.4943635325165148,
+      "minimum_signed_area_J": 0.9998919112639771,
+      "maximum_signed_area_J": 1.0001110530370412,
+      "maximum_absolute_area_ratio_minus_one": 0.00011105303704117553,
+      "sum_signed_plate_local_area_ratio": 0.9999999900435214,
+      "maximum_angular_material_shift_rad": 0.00002357874165840684,
+      "no_triangle_inversions": true
+    }
+  },
+  "numerical_cost": {
+    "dt1_total_cg_iterations": 23102,
+    "dt5_total_cg_iterations": 5712,
+    "dt1_average_CG_iterations_per_step": 23.102,
+    "dt5_average_CG_iterations_per_step": 28.56,
+    "total_wall_seconds": 87.5943544022739,
+    "global_CSR_total_RAM_or_process_RSS_unavailable_in_summary": true,
+    "dt10_total_cg_iterations_unavailable_in_summary": true,
+    "maximum_force_energy_residuals_unavailable_in_summary": true
+  },
+  "conclusions": {
+    "time_dependent_manufactured_global_P1_update_pass": true,
+    "numerical_restart_identical_operator_reported": true,
+    "global_full_physical_G2_creep_or_mantle_forcing_validated": false,
+    "time_step_error_decreases_when_refining_from_10_to_5_to_1_year": true,
+    "small_feedback_expected_from_synthetic_nonrigid_target_and_unwelded_rigid_euler_modes": true,
+    "geodesic_area_test_not_full_layer_mass_or_energy_evolution": true,
+    "history_store_modified": false,
+    "calibrated_G2_material": false,
+    "calibrated_G3_forces": false,
+    "physical_solver_runs": 0,
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "D_024": "ACTIVE"
+  },
+  "next_gate": {
+    "priority": "EXPLICIT_MANUFACTURED_GLOBAL_CONTACT_AND_OBJECTIVE_FRAME_GATES",
+    "before_material_physics": [
+      "check source-mapped shared-node contact ownership and gap kinematics across all plates",
+      "compare independent/welded/slip/open synthetic contact policies at 100 and 1000 years",
+      "validate frame objective transport under full rigid Euler rotation and moving local tangents",
+      "verify nontrivial force and torque balance, power and matrix action with contact penalties",
+      "compare fixed-geographic-extent mesh refinement and timestep error on each policy",
+      "keep G2/G3 physical material, stress, ocean/deep resources and HistoryStore gated"
+    ]
+  }
+}
