@@ -1,0 +1,77 @@
+{
+  "schema": "ARCANA_R6_G1_G2_PASSIVE_100_1000Y_FAIR_OPERATOR_RECEIPT_V1",
+  "reported_date": "2026-11-20",
+  "FAIR_tested_source_commit": "babeab3842e46a62f03ab42def90c1c1f85e49c6",
+  "FAIR_checkout": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_R6_PLATE58_VERIFY",
+  "FAIR_result_dir": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/G1_G2_PASSIVE_100_1000Y_NEW_01",
+  "source": "OPERATOR_TERMINAL_POSTED_IN_CHAT__RAW_REPORT_MANIFEST_NOT_FETCHED",
+  "pytest": {
+    "status": "PASS",
+    "passed": 32,
+    "failed": 0,
+    "wall_seconds": 0.72,
+    "files": [
+      "tests/test_r6_g1_g2_passive_100_1000y.py",
+      "tests/test_r6_global_100y_kinematic.py",
+      "tests/test_r6_global_1000y_kinematic.py",
+      "tests/test_r6_g2_exact_thermal_validity.py"
+    ]
+  },
+  "audit": {
+    "status": "PASS_G1_G2_100_1000Y_PASSIVE_SOURCE_COUPLING__REAL_G2_PHYSICS_OPEN",
+    "G2_columns_eligible": 64442,
+    "G2_source_gaps": {},
+    "G1_plate_material_views": 66435,
+    "metrics": {
+      "100": {
+        "year": 100,
+        "max_within_plate_relative_edge_length_change": 3.437765383336205e-13,
+        "max_unit_sphere_radial_error": 5.10702591327572e-15
+      },
+      "1000": {
+        "year": 1000,
+        "max_within_plate_relative_edge_length_change": 3.126793434125025e-12,
+        "max_unit_sphere_radial_error": 4.2743586448068527e-14
+      }
+    },
+    "numerical_acceptance_tolerances": {
+      "relative_edge_metric": 1e-10,
+      "unit_sphere_radial": 1e-10
+    },
+    "ratio_1000_to_100": {
+      "relative_edge": 9.095424165015604,
+      "radial": 8.369565217391305
+    },
+    "counts": "G2_source_validity_only_not_material_constitutive_law",
+    "all_64k_P_T_rock_id_physically_ratified": false,
+    "strain_across_5_8_11_contact_computed": false,
+    "G2_stress_or_creep_solution": null,
+    "solver_runs": 0,
+    "physical_T1": null
+  },
+  "scientific_interpretation": {
+    "G1_kine_and_G2_source_binding_numeric_pass": true,
+    "error_1000_less_than_absolute_metric_tolerance": true,
+    "error_growth_consistent_with_roundoff_not_proof_of_asymptotic_convergence": true,
+    "mechanics_two_way_test_executed": false,
+    "external_forces_G3_calibrated": false,
+    "physical_T1_authorized": false,
+    "history_store_modified": false,
+    "D_024": "ACTIVE"
+  },
+  "next_target": {
+    "name": "REGIONAL_SYNTHETIC_TWO_WAY_ENGINEERING_100_1000Y_COUPLING",
+    "authorized_scope": "TEST_DESIGN_ONLY__NO_REAL_MATERIAL_PARAMETER_ADOPTION",
+    "preferred_source_domain": "plate_5_8 regional 8x8 then 5_8_11 regional 16x16",
+    "requirements": [
+      "define explicit manufactured viscoplastic material response and independently check tangent/virtual work",
+      "separate G1 prescribed Euler far field from shared-node contact DOFs; no independently conflicting contact Euler velocities",
+      "solve bounded manufactured mechanics at each 100/1000 horizon only if source and solver authority allows ENGINEERING_ONLY",
+      "compare timesteps and nonlinear convergence; include 100y prefix and restart",
+      "track physically noncanonical finite-strain, area/Jacobian, separate crust/mantle mass and thermal advection limitations",
+      "boundary and basal terms must be explicitly manufactured with balance, not assumed physical",
+      "never promote to geological history or real physical T1"
+    ]
+  },
+  "raw_FAIR_artifacts_independently_inspected": false
+}

@@ -1,3 +1,7 @@
+CURRENT — 2026-11-20 — FAIR VERIFIED operator HEAD babeab3842e46a62f03ab42def90c1c1f85e49c6, 32/32 PASS in 0.72s. Source-preserving global G1→G2 100/1000y passive audit PASS, 64442/64442 source columns valid, no structural/thermal gaps, 66435 plate-local material views. At y100 edge relative error 3.437765383336205e-13, radial 5.10702591327572e-15; y1000 edge 3.126793434125025e-12 radial 4.2743586448068527e-14 (both <1e-10). NO constitutive G2 stress/creep, NO G2→G1 feedback, NO mechanical solve (solver_runs=0), no real T1 (null), D-024 active. Raw FAIR reports not independently pulled. See docs/arcana/R6_G1_G2_FAIR_PASS_100_1000Y_20261120.md.
+
+---
+
 CURRENT — 2026-11-20 — User requested complete G1+G2 100-year and 1000-year numerical integration to locate errors. Implemented source-qualified ONE-WAY global integration audit: reuse existing G1 full-planet FAIR 100/1000 checkpoint source, validate SHA and 100-year bit exact, bind full 51-field G2 source PRE per 64,442 parent nodes / plate-local material views, evaluate exact cubic thermal bounds and T_surface/Moho/LAB anchors, eligible/thickness/density source checks, separately measure within-plate edge metric/radial numerical errors at 100/1000; report G1 1000 restart and T0 source gaps. No new physical temperature/creep/stress dynamics, no G3 forcing, no canonical T1; D-024 active. New tests and FAIR audit PENDING. See docs/arcana/R6_G1_G2_100_1000Y_PASSIVE_INTEGRATION_TEST_20261120.md.
 
 ---
