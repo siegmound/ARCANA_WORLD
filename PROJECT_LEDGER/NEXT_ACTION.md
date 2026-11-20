@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-20 — FAIR checkout new GitHub HEAD and run tests/test_r6_g2_zenodo_raw_dat_inspector.py, then run source inspector module over previously verified $BASE/R6_G2_ZENODO_8304793_RAW_NEW_01/data.zip into NEW $BASE/R6_G2_ZENODO_8304793_INSPECT_NEW_01, never overwrite raw archive/sealed outputs. Return per-family examples of first raw lines, column counts and unlabelled ranges; cross-verify actual chart axes with GT95/Zhou/Masuti paper and do not misclassify digitized curves as independent lab creep stress/rate/P/T observations. Physical G2/G3 parameters and drag remain unknown, D-024 blocks solve and T1.
+
+---
+
 CURRENT NEXT — 2026-11-20 — First real independent-source acquisition: on FAIR fetch Zenodo 8304793 data.zip (~13.2 kB) via published URL into NEW exclusive external evidence folder, verify upstream md5 fbb1734ffce3eb94e4ef974f5b2cb7be, record SHA256 and archive member list; inspect curve columns and provenance before any fitting. It is DIGITIZED hot creep data, not an applicable full T0 cold crust flow law; low-T quartz/feldspar indentation needs separate Peierls/hardness conversion, saw-cut sandstone friction needs different interface/DP mapping. G3: Earth5 2025 Dryad ~415 MB archive is only a methodological benchmark; independently derive ARCANA mantle flow/base and plate 5/8/11 force provider, never copy Earth torque values. NO new geometry tests, NO G2 fabricated stress or G3 beta inversion from Euler, D-024 stays and physical_T1=null.
 
 ---
