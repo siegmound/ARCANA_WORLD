@@ -121,7 +121,10 @@ def edge_indices(face,edge_ids):
 def from_six_vertices(x,ids):
     # x=(p0,p1,p2,q0,q1,q2), ids=((ip0,ip1),(iq0,iq1))
     x=np.asarray(x,dtype=float).reshape(2,3,3)
-    return matched_shell_gap(x[0],x[1],x[0][ids[0]],x[1][ids[1]])
+    # Select two VERTEX ROWS, not an (i,j) multi-axis scalar index.
+    edge_p=np.take(x[0],ids[0],axis=0)
+    edge_q=np.take(x[1],ids[1],axis=0)
+    return matched_shell_gap(x[0],x[1],edge_p,edge_q)
 
 
 def source_shell_consistency(x,ids,step=.5):
