@@ -1,0 +1,67 @@
+{
+  "schema": "ARCANA_R6_T0_NORMAL_SEGMENT_JACOBIAN_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "source_tested_commit": "28bc02c49d86b15dc9dae3388b66202ae4d8beb4",
+  "evidence_origin": "FAIR_OPERATOR_PASTED_TERMINAL_EXCERPT",
+  "raw_REPORT_MANIFEST_independently_retrieved": false,
+  "terminal_stdout_partial": true,
+  "pytest_45_45_not_visible_in_supplied_excerpt": true,
+  "reported_driver_exit_code": 0,
+  "reported_status": "PASS_SOURCE_T0_CONTACT_NORMAL_AND_MOVING_3D_EDGE_JACOBIAN_DIAGNOSTIC__GEOMETRIC_KKT_OPEN",
+  "reported_manifest_schema": "ARCANA_R6_T0_NORMAL_NEAREST_SEGMENT_JACOBIAN_MANIFEST_V1",
+  "reported_report_sha256": "f8747af7f62df89039c7ec641b8c64917cf7c52cb30001058b17d6fed89a2a04",
+  "reported_total_wall_seconds": 2.4125025160610676,
+  "original_source_domain_extents": [
+    8,
+    16
+  ],
+  "checkpoint_model_years": [
+    100,
+    500,
+    1000
+  ],
+  "T0_normal_definition": {
+    "region16_max_centroid_vs_edge_angle_rad": 0.4852154177400637,
+    "T0_discrepancy_already_present": true
+  },
+  "SO3_max_errors_m_visible": {
+    "node_pair_signed_gap": 9.160103786598484e-10,
+    "unsigned_closest_segment_distance": 1.0627863589185438e-9,
+    "signed_segment_projection": 9.509192322454396e-10,
+    "unchanged_gate_threshold": 1e-7
+  },
+  "max_visible_fd_refinement_discrepancy": 2.8362592274788767e-9,
+  "region16": {
+    "source_contact_edges": 36,
+    "source_triple_node_id": 34587,
+    "old_T0_KKT_active_links": 4,
+    "checkpoints": {
+      "100": {
+        "min_3D_gap_on_old_active_m": 1.0739293264826548,
+        "min_signed_nearest_feature_projection_m": -0.6687749707068595,
+        "negative_feature_projection_count_below_minus_1um": 6,
+        "min_unsigned_segment_distance_m": 0.0008652885232162664
+      },
+      "500": {
+        "min_3D_gap_on_old_active_m": 5.415396432546457,
+        "min_signed_nearest_feature_projection_m": -3.037951440045529,
+        "negative_feature_projection_count_below_minus_1um": 7,
+        "min_unsigned_segment_distance_m": 0.003136198787735657
+      },
+      "1000": {
+        "min_3D_gap_on_old_active_m": 10.908884806199438,
+        "min_signed_nearest_feature_projection_m": -5.6015321405876195,
+        "negative_feature_projection_count_below_minus_1um": 5,
+        "min_unsigned_segment_distance_m": 0.01678936009714802
+      }
+    }
+  },
+  "scientific_limits": {
+    "source_signed_nearest_segment_projection_is_rigorous_surface_nonpenetration": false,
+    "updated_geometry_KKT_solver_tested": false,
+    "physical_solver_runs": 0,
+    "physical_T1": null,
+    "D_024": "ACTIVE",
+    "canonical_promotion": false
+  }
+}
