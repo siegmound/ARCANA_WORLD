@@ -1,0 +1,96 @@
+{
+  "schema": "ARCANA_R6_CONTACT_FEATURE_FAIR_SHA_VERIFIED_OPERATOR_SUMMARY_V1",
+  "date": "2026-11-20",
+  "source_commit": "a51c84ec1cca9775e825924566f3d7e2832cbbd7",
+  "report_sha256_from_operator": "e7b8f9c47bcd9f46a35f9edb06ee52ba641747f006482a1efc766f25b5b1fc21",
+  "operator_verified_report_sha_against_manifest": true,
+  "assistant_independently_retrieved_raw_fair_report": false,
+  "status": "PASS_SOURCE_EDGE_FEATURE_ADMISSIBILITY_INVENTORY__PHYSICAL_CONTACT_OPEN",
+  "counts_by_region": [
+    {
+      "extent": 8,
+      "original_edges": 12,
+      "contact_links": 13,
+      "triple_nodes": [],
+      "T0": {
+        "AMBIGUOUS": 12
+      },
+      "year100": {
+        "AMBIGUOUS": 12
+      },
+      "year500": {
+        "AMBIGUOUS": 12
+      },
+      "year1000": {
+        "AMBIGUOUS": 12
+      },
+      "engineering_eligible_each_checkpoint": 0,
+      "physical_surface_contact_each_checkpoint": 0,
+      "reasons_by_year": {
+        "0": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 12
+        },
+        "100": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 12
+        },
+        "500": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 12
+        },
+        "1000": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 12
+        }
+      },
+      "total_transitions": 0,
+      "class_switches": 0,
+      "reason_only_switches": 0
+    },
+    {
+      "extent": 16,
+      "original_edges": 36,
+      "contact_links": 39,
+      "triple_nodes": [
+        34587
+      ],
+      "T0": {
+        "AMBIGUOUS": 36
+      },
+      "year100": {
+        "AMBIGUOUS": 36
+      },
+      "year500": {
+        "AMBIGUOUS": 36
+      },
+      "year1000": {
+        "AMBIGUOUS": 36
+      },
+      "engineering_eligible_each_checkpoint": 0,
+      "physical_surface_contact_each_checkpoint": 0,
+      "reasons_by_year": {
+        "0": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 36
+        },
+        "100": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 36
+        },
+        "500": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 29,
+          "UNSUPPORTED_SOURCE_NORMAL_ORIENTATION": 7
+        },
+        "1000": {
+          "PARALLEL_OR_NEAR_PARALLEL_NONUNIQUE_WITNESS": 28,
+          "UNSUPPORTED_SOURCE_NORMAL_ORIENTATION": 7,
+          "BOUNDARY_ENDPOINT_OR_FEATURE_SWITCH": 1
+        }
+      },
+      "total_transitions": 8,
+      "class_switches": 0,
+      "reason_only_switches": 8
+    }
+  ],
+  "physical_T1": null,
+  "D_024": "ACTIVE",
+  "engineered_contact_solver_runs": 0,
+  "physical_surface_contact_count_total": 0,
+  "decision": "SOURCE_EDGE_SKETCH_ONLY__MUST_AUDIT_ORIGINAL_FACE_TOPOLOGY_BEFORE_SIGNED_SOLID_GAP",
+  "new_model_authority": false
+}
