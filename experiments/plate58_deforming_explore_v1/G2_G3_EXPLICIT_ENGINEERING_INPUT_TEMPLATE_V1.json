@@ -1,0 +1,75 @@
+{
+  "schema": "ARCANA_R6_G2_G3_EXPLICIT_ENGINEERING_INPUT_V1",
+  "authority": "ENGINEERING_CANDIDATE_NOT_AUTHOR_RATIFIED",
+  "scope_extent_cells": null,
+  "source_manifest_sha256": {
+    "multiscale": null,
+    "interface": null,
+    "nodal": null,
+    "force": null
+  },
+  "source_scope_policy": {
+    "8": "SOURCE_ORIGINAL_8x8_5_8; 80 mechanical exterior nodes, 120 P1 triangles, 32 exterior cut edges",
+    "16": "SOURCE_ORIGINAL_16x16_5_8_11; 288 mechanical exterior nodes, 504 P1 triangles, 64 exterior cut edges, original triple parent 34587",
+    "parent_original_source_nodes": "81 or 289 (including one core-only node excluded from G3 exterior mechanical DOFs)"
+  },
+  "physical_source_authority_ratified": false,
+  "mechanical_solve_authorized": false,
+  "candidate_material_by_parent_node": null,
+  "velocity_en_by_parent_node": null,
+  "line_tractions_by_edge": null,
+  "basal_tractions_by_triangle": null,
+  "external_gpe": {
+    "source_interface_node_order": null,
+    "candidate_GPE_force_vector_N": null,
+    "GPE_force_owner": "EXPERIMENTAL_EXTERNAL_GPE_ONLY__ORIGINAL_SHELLS_GPE_NOT_COMBINED",
+    "mechanical_solve_authorized": false,
+    "physical_T1": null
+  },
+  "explicit_units": {
+    "candidate_velocity_en_by_original_parent_node": "m/s",
+    "external_cut_traction_nodal_xyz": "N/m",
+    "basal_traction_nodal_xyz": "N/m2",
+    "GPE_nodal_force": "N",
+    "creep_A": "Pa^-n s^-1",
+    "temperature": "K",
+    "lithostatic_pressure": "Pa",
+    "coupled_nodal_weak_form_residual": "N",
+    "coupled_consistent_tangent": "N s/m"
+  },
+  "G2_laboratory_and_material_identification": {
+    "source_canonical_PRE_material_code_defines_rock_identity": false,
+    "crust_mineralogy": null,
+    "mantle_mineralogy": null,
+    "water_fugacity_field": null,
+    "pore_pressure_field": null,
+    "creep_experimental_data_source": null,
+    "valid_pressure_temperature_rate_coverage_ratified": false,
+    "source_node_to_material_law_ratified": false,
+    "full_brittle_ductile_fault_transition_ratified": false,
+    "G2_3D_Drucker_Prager_cap_is_return_mapping": false
+  },
+  "G3_physical_load_authority": {
+    "external_cut_force_provider": null,
+    "basal_tangential_and_normal_physical_support_provider": null,
+    "deep_mantle_reference_flow_provider": null,
+    "vertical_reference_and_isostasy_qualified": false,
+    "GPE_single_external_owner": true,
+    "original_SHELLS_internal_GPE_must_not_be_composed": true,
+    "force_torque_rank_and_virtual_work_closure_qualified": false
+  },
+  "contact_and_solver": {
+    "reference_geometry": "SOURCE_AUTHENTIC_ORIGINAL_2D_P1_PLATE_SHEET",
+    "physical_contact_choice": null,
+    "qualified_3D_or_thin_shell_fault_law_provider": null,
+    "moving_interface_nonpenetration_source_qualified": false,
+    "ShellSet_equivalence_qualified": false,
+    "updated_geometry_KKT_authorized": false,
+    "solver_iterations_authorized": 0
+  },
+  "status": "INPUT_TEMPLATE_NOT_EXPLICITLY_POPULATED__NO_MECHANICAL_SOLVE",
+  "D_024": "ACTIVE",
+  "physical_T1": null,
+  "HistoryStore_modified": false,
+  "canonical_promotion": false
+}
