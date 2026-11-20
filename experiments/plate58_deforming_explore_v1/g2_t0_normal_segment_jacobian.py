@@ -54,9 +54,14 @@ def closest_segments(a, b, c, d):
     need(ee>1e-10 and ff>1e-10,
          "T0NORMAL_SEGMENT_DEGENERATE")
     ef=float(e@f); er=float(e@r); fr=float(f@r)
-    denominator=ee*ff-ef*ef
+    # Avoid cancellation of nearly equal Gram products on near-parallel
+    # source edges. The equivalent cross-product expressions are much
+    # better conditioned under finite SO(3) rotations.
+    cross_ef=np.cross(e,f)
+    denominator=float(cross_ef@cross_ef)
     if denominator > 1e-14*ee*ff:
-        s=float(np.clip((ef*fr-er*ff)/denominator,0.,1.))
+        numerator=float(np.cross(c-a,f)@cross_ef)
+        s=float(np.clip(numerator/denominator,0.,1.))
     else:
         s=0.
     t=(ef*s+fr)/ff

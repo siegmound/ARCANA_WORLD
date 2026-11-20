@@ -208,3 +208,39 @@ def test_t0_centroid_vs_edge_rejects_fabricated_plate_pair():
     with pytest.raises(SparseP1Error,match="EDGE_TRIANGLE_OWNERSHIP_INVALID"):
         t0_source_centroid_edge_normal_audit(
             [(11,12,13),(11,13,14)],[5,8],ll,src)
+
+@pytest.mark.parametrize("theta",[2.5e-6,-2.5e-6])
+def test_geocentric_nearly_parallel_segment_so3_objectivity(theta):
+    """Stable original finite-edge nearest points under global SO(3).
+
+    Source-like 150 km edges at Earth radius, ~2.5e-6 rad skew,
+    interior minimizers and nonzero radial separation. The old
+    subtractive Gram determinant loses significant precision here.
+    """
+    radial=np.array([.6,.2,math.sqrt(.6)],dtype=float)
+    radial/=np.linalg.norm(radial)
+    tangent=np.cross(radial,[0.,0.,1.])
+    tangent/=np.linalg.norm(tangent)
+    normal=np.cross(radial,tangent)
+    length=150_000.
+    s_expected=.6713070863881774
+    t_expected=.6714497948225195
+    tangent_q=math.cos(theta)*tangent+math.sin(theta)*normal
+    a=6_371_000.*radial-.5*length*tangent
+    b=a+length*tangent
+    c=(a+s_expected*length*tangent-
+       t_expected*length*tangent_q+10.*radial)
+    d=c+length*tangent_q
+    pa,pb,s0,t0,dist=closest_segments(a,b,c,d)
+    assert abs(s0-s_expected)<1e-6
+    assert abs(t0-t_expected)<1e-6
+
+    Q=Rotation.from_rotvec([.4,-.7,.2]).as_matrix()
+    ra,rb,rc,rd=(Q@x for x in (a,b,c,d))
+    qa,qb,s1,t1,dist1=closest_segments(ra,rb,rc,rd)
+    assert abs(s0-s1)<1e-6
+    assert abs(t0-t1)<1e-6
+    assert abs(dist-dist1)<1e-7
+    signed0=float((pb-pa)@normal)
+    signed1=float((qb-qa)@(Q@normal))
+    assert abs(signed0-signed1)<1e-7

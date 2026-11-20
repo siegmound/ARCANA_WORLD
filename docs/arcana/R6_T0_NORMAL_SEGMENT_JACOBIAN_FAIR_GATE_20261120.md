@@ -210,3 +210,11 @@ G2_G3_CALIBRATED_PHYSICS=NOT_QUALIFIED
 physical_T1=null
 D_024=ACTIVE
 ```
+
+## 2026-11-20 FAIR near-parallel SO(3) numeric failure and correction candidate
+
+The first source FAIR run of this gate on commit `3f9269c44eb960ca63d301b2f869e0bd6ed6b304` failed closed at region 8x8, model year 100: `T0NORMAL_GEOMETRIC_FEATURE_SO3_OBJECTIVITY_FAILED`. The new source-free regression collection had 18 tests, and combined t0/moving3D/KKT pytest had 43/43 PASS. The source driver wrote no REPORT/MANIFEST.
+
+Isolated source metrics after rigid SO(3): paired-node normal gap error `5.7046634e-10 m`; nearest-segment unsigned distance error `5.9140781e-10 m`; signed nearest-segment projection error `4.8760363e-7 m` (exceeds unchanged `1e-7 m` tolerance). Original boundary `R6BND-T0-4d168aac7492e7c418de` shows quasi-parallel ratio `6.1129633e-12`; nearest-segment parameters s/t drift `3.6716e-5`, while current normal rotates as expected (vector error `3.62e-16`). This pinpoints an unstable nearest-point minimizer, not erroneous normal rotation.
+
+Correction candidate (engineering only): replace `(e·e)(f·f)-(e·f)^2` and its subtractive scalar numerator with algebraically equivalent `||e×f||²` and `((c-a)×f)·(e×f)`; retain original bounded [0,1] parameters, output semantics, fail-closed checks and `1e-7 m` objective gate. Add two large-geocentric-edge tests with ~2.5e-6rad skew and opposite signs, each requiring rigid-rotation signed-distance invariance <1e-7m. Standalone reproduction passed both candidate tests locally, but FULL source FAIR outcome is still **PENDING**. No full moving-surface collision/Signorini law is authorized; `physical_T1=null`, `D-024=ACTIVE`.
