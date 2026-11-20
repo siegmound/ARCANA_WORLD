@@ -1,0 +1,165 @@
+{
+  "schema": "ARCANA_R6_MOVING_3D_CONTACT_PARALLEL_FAIR_OPERATOR_RECEIPT_V1",
+  "date": "2026-11-20",
+  "source_tested_commit": "d510a13d60157b86ddd53165c248a6072c65f265",
+  "evidence_origin": "FAIR_OPERATOR_TERMINAL_TRANSCRIPT",
+  "raw_REPORT_MANIFEST_independently_retrieved": false,
+  "reported_status": "PASS_SOURCE_MOVING_3D_CONTACT_GEOMETRY_DIAGNOSTIC__CONTACT_PHYSICS_OPEN",
+  "pytest": {
+    "passed": 40,
+    "failed": 0,
+    "seconds": 0.7
+  },
+  "experiment": {
+    "workers": 2,
+    "source_domains": [
+      8,
+      16
+    ],
+    "checkpoints": [
+      100,
+      500,
+      1000
+    ],
+    "source_original_contact_provenance": true,
+    "original_unilateral_KKT_reconstructed": true,
+    "source_Euler_rotation_exact_SO3_no_double_count": true,
+    "source_edge_derived_current_3D_normals": true,
+    "geometric_gap_definition": "ORIENTED_SOURCE_PAIRED_MATERIAL_POINT_DIFFERENCE_DOT_CURRENT_EDGE_NORMAL",
+    "physical_face_face_or_edge_edge_minimum_clearance": false,
+    "updated_geometry_3D_contact_reaction_enforced": false
+  },
+  "regional": [
+    {
+      "extent": 8,
+      "plates": [
+        5,
+        8
+      ],
+      "source_contact_links": 13,
+      "triple_junction_source_parent_ids": [],
+      "worker_wall_s": 0.17218679189682007,
+      "checkpoints": {
+        "100": {
+          "geometric_min_gap_m": 11.576716185948088,
+          "geometric_max_gap_m": 15.746174170496028,
+          "negative_gap_links_threshold_minus_1um": 0,
+          "max_abs_gap_difference_3D_vs_T0_m": 1.3895798248233557,
+          "active_T0_KKT_links": 0,
+          "max_current_normal_angle_from_transport_rad": 0.47673246109258866,
+          "synthetic_separated_point_force_couple_norm": 0
+        },
+        "500": {
+          "geometric_min_gap_m": 57.883416643246,
+          "geometric_max_gap_m": 78.73087994163757,
+          "negative_gap_links_threshold_minus_1um": 0,
+          "max_abs_gap_difference_3D_vs_T0_m": 6.947898225141273,
+          "active_T0_KKT_links": 0,
+          "max_current_normal_angle_from_transport_rad": 0.47673246109840517,
+          "synthetic_separated_point_force_couple_norm": 0
+        },
+        "1000": {
+          "geometric_min_gap_m": 115.76642256811618,
+          "geometric_max_gap_m": 157.46178259760475,
+          "negative_gap_links_threshold_minus_1um": 0,
+          "max_abs_gap_difference_3D_vs_T0_m": 13.895794202378909,
+          "active_T0_KKT_links": 0,
+          "max_current_normal_angle_from_transport_rad": 0.4767324611165882,
+          "synthetic_separated_point_force_couple_norm": 0
+        }
+      }
+    },
+    {
+      "extent": 16,
+      "plates": [
+        5,
+        8,
+        11
+      ],
+      "source_contact_links": 39,
+      "triple_junction_source_parent_ids": [
+        34587
+      ],
+      "worker_wall_s": 0.32227905094623566,
+      "checkpoints": {
+        "100": {
+          "geometric_min_gap_m": 0.528169673612088,
+          "geometric_max_gap_m": 15.745884846813839,
+          "negative_gap_links_threshold_minus_1um": 0,
+          "max_abs_gap_difference_3D_vs_T0_m": 2.165436337149975,
+          "active_T0_KKT_links": 4,
+          "min_active_geometric_gap_m": 1.0739293264826548,
+          "max_active_abs_gap_difference_3D_vs_T0_m": 1.7618441001664262,
+          "max_current_normal_angle_from_transport_rad": 0.4852154177401404,
+          "synthetic_separated_point_force_couple_norm": 0.5475133809688757
+        },
+        "500": {
+          "geometric_min_gap_m": 3.1816483317287583,
+          "geometric_max_gap_m": 78.72219285092933,
+          "negative_gap_links_threshold_minus_1um": 0,
+          "max_abs_gap_difference_3D_vs_T0_m": 10.993728128282633,
+          "active_T0_KKT_links": 4,
+          "min_active_geometric_gap_m": 5.415396432546457,
+          "max_active_abs_gap_difference_3D_vs_T0_m": 8.665427537167547,
+          "max_current_normal_angle_from_transport_rad": 0.48521541776265864,
+          "synthetic_separated_point_force_couple_norm": 3.956439911853284
+        },
+        "1000": {
+          "geometric_min_gap_m": 7.74442863767898,
+          "geometric_max_gap_m": 157.41645938980074,
+          "negative_gap_links_threshold_minus_1um": 0,
+          "max_abs_gap_difference_3D_vs_T0_m": 22.360011140392544,
+          "active_T0_KKT_links": 4,
+          "min_active_geometric_gap_m": 10.908884806199438,
+          "max_active_abs_gap_difference_3D_vs_T0_m": 17.106264647741842,
+          "max_current_normal_angle_from_transport_rad": 0.4852154181237593,
+          "synthetic_separated_point_force_couple_norm": 10.112359142765653
+        }
+      }
+    }
+  ],
+  "parallel_performance": {
+    "serial_wall_s": 0.5073307603597641,
+    "parallel_wall_s": 0.6903865225613117,
+    "actual_speedup_serial_div_parallel": 0.7348503248261327,
+    "parallel_elapsed_over_serial_factor": 1.360821334925044,
+    "parallel_slower_percentage": 36.0821334925044,
+    "exact_serial_parallel_SHA256_parity": "PASS",
+    "serial_parallel_scales": [
+      8,
+      16
+    ],
+    "benchmark_trials_in_terminal_summary": 1,
+    "worker_startup_overhead_significant_likely_but_not_isolated": true,
+    "total_wall_s": 2.0959337949752808,
+    "preferred_next_default": "SERIAL_FOR_THIS_SMALL_TWO_REGION_SCOPE",
+    "future_parallelism_candidate": "GLOBAL_PLATE_LOCAL_P1_ASSEMBLY_AND_INDEPENDENT_BENCHMARK_SCENARIOS",
+    "not_parallelize": "DEPENDENT_STEPS_OF_ONE_GLOBAL_CONTACT_TIME_TRAJECTORY",
+    "GPU_speedup_not_tested": true
+  },
+  "adjudication": {
+    "reconstruction_and_parallel_hash_gates": "PASS_FAIR_OPERATOR",
+    "geometry_physical_contact_closure": "NOT_QUALIFIED_POINT_PAIR_DIAGNOSTIC_ONLY",
+    "geometric_negative_point_gaps_below_minus_one_microm_at_sampled_checkpoints": false,
+    "updated_normals_are_source_edge_based_not_face_to_face_contact_normals": true,
+    "nonzero_KKT_reactions_with_positive_updated_geometry_gaps_in_16x16": true,
+    "moving_geometry_signorini_complementarity_not_satisfied": true,
+    "active_link_gap_mismatch_increases_over_time": true,
+    "contact_normal_angle_approximately_constant_over_checkpoints_rad": 0.4852154177401404,
+    "baseline_T0_normal_agreement_not_yet_checked": true,
+    "moment_due_to_separated_force_application_points_reported_in_nonphysical_normalization": true,
+    "physical_solver_runs": 0,
+    "physical_T1": null,
+    "D_024": "ACTIVE",
+    "HistoryStore_modified": false
+  },
+  "next_gate": [
+    "Check source contact normals at t=0 before any Euler rotation or displacement, compare triangle-centroid normal and source-edge-derived normal on each source boundary segment; investigate nearly constant 0.48 rad discrepancy",
+    "Define signed edge-edge/point-segment and, where physically justified, face-face geometric contact gap in a common Cartesian frame, with valid source owner and nearest-feature mapping",
+    "Test objective SO3 invariance and smooth gap Jacobian (finite differences) for updated geometry and force couple balance including lever arm",
+    "Solve nonlinear geometric contact constraints with consistent normal force Jacobian and complementarity, rather than applying T0 reaction to updated positions",
+    "Verify 100/500/1000-year regional manufactured dt and restart and topology triple node 34587 before global",
+    "Benchmark genuine larger independent plate-local FEM assembly with deterministic sparse reductions; avoid oversubscription and GPU claims without benchmarks",
+    "No physical T1, G2/G3 calibrated force or G4 transport until source qualification"
+  ]
+}
