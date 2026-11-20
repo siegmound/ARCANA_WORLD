@@ -1,0 +1,173 @@
+{
+  "schema": "ARCANA_R6_G2_G3_INTEGRATED_PHYSICAL_PROVIDER_MATRIX_V1",
+  "date": "2026-11-21",
+  "source_branch": "r6/multiphysics-integration-20261026",
+  "tested_source_commit": "7002f3a8373f629cf7d59245f42af221a56aaa2d",
+  "software_test_evidence": {
+    "origin": "USER_PROVIDED_FAIR_TERMINAL_NOT_INDEPENDENTLY_REHASHED",
+    "targeted": {
+      "passed": 24,
+      "total": 24,
+      "seconds": 0.2,
+      "exit_code": 0
+    },
+    "regression": {
+      "passed": 120,
+      "total": 120,
+      "seconds": 0.61,
+      "exit_code": 0
+    },
+    "note": "targeted suite included in regression, not additive"
+  },
+  "decision": "G2_G3_SOURCE_INTERNAL_SOFTWARE_CLOSURE_FAIR_PASS__PHYSICAL_SOLVE_BLOCKED_SOURCE_AUTHORITY_GAPS",
+  "proposed_noncanonical_engineering_route": "SPHERICAL_THIN_LITHOSPHERE_FAULT_TRANSMISSION_PENDING_PHYSICAL_RATIFICATION",
+  "source_scopes": [
+    {
+      "extent_cells": 8,
+      "original_parent_nodes": 81,
+      "EN_dof": 162,
+      "core_facets": 8,
+      "exterior_facets": 120,
+      "original_basal_facets_required": 128,
+      "shared_parent_nodes": 8,
+      "cut_edge_inputs_required": 32
+    },
+    {
+      "extent_cells": 16,
+      "original_parent_nodes": 289,
+      "EN_dof": 578,
+      "core_facets": 8,
+      "exterior_facets": 504,
+      "original_basal_facets_required": 512,
+      "shared_parent_nodes": 8,
+      "cut_edge_inputs_required": 64
+    }
+  ],
+  "authority": {
+    "G2_source_PRE_and_FEG": "SOURCE_ORIGINAL",
+    "G2_constitutive_physics_ratified": false,
+    "G3_exterior_forces_physics_qualified": false,
+    "G3_core_forces_physics_qualified": false,
+    "physical_fault_law_ratified": false,
+    "full_domain_physical_residual_available": false,
+    "mechanical_solve_authorized": false,
+    "physical_T1": null,
+    "D_024": "ACTIVE",
+    "HistoryStore_modified": false,
+    "canonical_promotion": false
+  },
+  "groups": [
+    {
+      "id": "g2_material_and_phases",
+      "kind": "MATERIAL",
+      "present": "PRE thermal density layer metadata only",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "selected_original_T0_crust_rock_phase_per_parent_node",
+        "selected_original_T0_lithospheric_mantle_rock_phase_per_parent_node",
+        "mineral_fractions_or_explicit_homogeneous_authorial_model",
+        "lithology_authority_and_uncertainty"
+      ]
+    },
+    {
+      "id": "g2_pressure_water",
+      "kind": "MATERIAL",
+      "present": "lithostatic proxies; no real water/effective stress",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "pore_pressure_pa_with_support",
+        "biot_or_effective_pressure_law",
+        "water_fugacity_with_units_and_reference",
+        "hydration_state_by_phase"
+      ]
+    },
+    {
+      "id": "g2_lab_law_and_coverage",
+      "kind": "CONSTITUTIVE",
+      "present": "candidate two-exponent code; 39 digitized high-T stress-strain curves not admissible to full cold crust",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "per_mechanism_laboratory_rows_stress_pa_strain_rate_s_inv_temperature_k_pressure_pa",
+        "experiment_identity_and_independent_holdout",
+        "law_parameters_A_n_E_V_and_units_as_applicable",
+        "P_T_rate_water_support_mask_by_node",
+        "brittle_and_low_temperature_mechanism",
+        "source_lab_stress_invariant_conversion"
+      ]
+    },
+    {
+      "id": "g3_outer_cut",
+      "kind": "FORCE",
+      "present": "edge inventory only",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "source_edge_id_and_plate_owner",
+        "traction_N_per_m_for_all_outer_cut_edges",
+        "frame_and_boundary_velocity_or_traction_policy",
+        "global_to_regional_force_transfer"
+      ]
+    },
+    {
+      "id": "g3_full_basal",
+      "kind": "FORCE",
+      "present": "exterior 120/504 triangle inventory; eight core basal facets missing",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "source_original_basal_triangle_id_all_including_eight_core",
+        "tangential_traction_pa_by_triangle",
+        "basal_normal_pressure_pa_and_support",
+        "mechanical_LAB_geometry_and_reference_mantle_flow",
+        "independent_mantle_coupling_law_and_coefficients"
+      ]
+    },
+    {
+      "id": "g3_gpe",
+      "kind": "FORCE",
+      "present": "exclusive external GPE engineering prototype, exterior only",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "physically_validated_210Ma_elevation_pressure_reference",
+        "one_owner_GPE_force_over_full_original_domain",
+        "core_plus_exterior_pressure_traction_accounting",
+        "no_internal_shells_GPE_double_count"
+      ]
+    },
+    {
+      "id": "interface_fault",
+      "kind": "CONTACT",
+      "present": "2D source FEG and engineering shell gap; no actual slip element",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "explicit_fault_side_trace_and_ownership",
+        "fault_traction_effective_normal_stress_and_friction_law",
+        "correct_independent_slip_DOF_or_continuous_transmission_policy",
+        "source_triple_34587_treatment",
+        "contact_state_and_validity"
+      ]
+    },
+    {
+      "id": "solver_compatibility",
+      "kind": "SOLVER",
+      "present": "symmetric candidate internal tangent and partial external residual, no solve",
+      "status": "SOURCE_AUTHORITY_GAP",
+      "required": [
+        "selected_versioned_SHELLS_common_exponent_or_EXPLORE_two_exponent",
+        "constitutive_and_fault_tangent_and_residual",
+        "rank_gauge_BC_and_virtual_work_tests",
+        "force_torque_energy_conservation",
+        "restart_mesh_timestep_sensitivity"
+      ]
+    }
+  ],
+  "must_not": [
+    "use_high_T_GT95_or_Zhou_for_cold_T0_crust",
+    "interpret_digitized_strain_stress_rows_as_independent_creep_rate_samples",
+    "assign_unsourced_core_basal_GPE_loads_to_zero",
+    "infer_3D_collision_from_2D_source_P1_sheet",
+    "assume_thermal_LAB_equals_mechanical_LAB",
+    "infer_mantle_traction_from_Euler_velocities",
+    "infer_slip_DOF_from_source_triple_parent",
+    "run_on_null_template_or_publish_world_history"
+  ],
+  "release_criteria": "Only explicit source-identified physical evidence + authorial scenario ratification + one integrated force/material/fault/solver validation may change mechanical_solve_authorized."
+}
