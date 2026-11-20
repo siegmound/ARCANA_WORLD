@@ -1,0 +1,199 @@
+{
+  "schema": "ARCANA_R6_G1_G2_REGIONAL_ROBUSTNESS_DETAILED_FAIR_EXTRACTION_V1",
+  "date": "2026-11-20",
+  "source_executed_commit": "d07ae8038a5ddbcb8b4601e7b54582dc2420818a",
+  "source_register_commit": "220f1e4676753061cd9530b5fd4150f70be15b1e",
+  "source_kind": "OPERATOR_PRINTED_SELECTED_FIELDS_FROM_SHA_MANIFESTED_FAIR_ROBUSTNESS_GLOBAL_REPORT",
+  "source_fair_report": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/G1_G2_ROBUSTNESS_GLOBAL_SPARSE_NEW_01/ROBUSTNESS_GLOBAL_REPORT.json",
+  "raw_full_report_independently_inspected": false,
+  "scenario_values_precision": {
+    "max_displacement_m": "5_DECIMAL_PLACES_OPERATOR_PRINT",
+    "delta_m": "5_DECIMAL_PLACES_OPERATOR_PRINT",
+    "rms_velocity_m_per_year": "6_DECIMAL_PLACES_OPERATOR_PRINT",
+    "percentage": "DERIVED_FROM_PRINTED_ROUNDED_VALUES"
+  },
+  "original_uniform_x10_exact_invariance_error_m_from_FAIR_summary": 6.252776074688882e-13,
+  "scenarios": [
+    {
+      "scenario": "baseline",
+      "scales": {
+        "8": {
+          "max_displacement_m": 104.67588,
+          "delta_max_displacement_vs_baseline_m_user_printed": 0,
+          "rms_feedback_speed_m_per_year": 0.026184,
+          "displacement_percent_vs_baseline_from_rounded_values": 0,
+          "feedback_percent_vs_baseline_from_rounded_values": 0
+        },
+        "16": {
+          "max_displacement_m": 117.3121,
+          "delta_max_displacement_vs_baseline_m_user_printed": 0,
+          "rms_feedback_speed_m_per_year": 0.015997,
+          "displacement_percent_vs_baseline_from_rounded_values": 0,
+          "feedback_percent_vs_baseline_from_rounded_values": 0
+        }
+      }
+    },
+    {
+      "scenario": "uniform_viscosity_x10",
+      "scales": {
+        "8": {
+          "max_displacement_m": 104.67588,
+          "delta_max_displacement_vs_baseline_m_user_printed": 0,
+          "rms_feedback_speed_m_per_year": 0.026184,
+          "displacement_percent_vs_baseline_from_rounded_values": 0,
+          "feedback_percent_vs_baseline_from_rounded_values": 0
+        },
+        "16": {
+          "max_displacement_m": 117.3121,
+          "delta_max_displacement_vs_baseline_m_user_printed": 0,
+          "rms_feedback_speed_m_per_year": 0.015997,
+          "displacement_percent_vs_baseline_from_rounded_values": 0,
+          "feedback_percent_vs_baseline_from_rounded_values": 0
+        }
+      }
+    },
+    {
+      "scenario": "crust_viscosity_x10",
+      "scales": {
+        "8": {
+          "max_displacement_m": 104.56475,
+          "delta_max_displacement_vs_baseline_m_user_printed": -0.11113,
+          "rms_feedback_speed_m_per_year": 0.026338,
+          "displacement_percent_vs_baseline_from_rounded_values": -0.10616581393918334,
+          "feedback_percent_vs_baseline_from_rounded_values": 0.5881454323250892
+        },
+        "16": {
+          "max_displacement_m": 116.79583,
+          "delta_max_displacement_vs_baseline_m_user_printed": -0.51627,
+          "rms_feedback_speed_m_per_year": 0.016044,
+          "displacement_percent_vs_baseline_from_rounded_values": -0.4400824808353152,
+          "feedback_percent_vs_baseline_from_rounded_values": 0.2938050884540753
+        }
+      }
+    },
+    {
+      "scenario": "mantle_viscosity_x10",
+      "scales": {
+        "8": {
+          "max_displacement_m": 104.69247,
+          "delta_max_displacement_vs_baseline_m_user_printed": 0.01658,
+          "rms_feedback_speed_m_per_year": 0.026161,
+          "displacement_percent_vs_baseline_from_rounded_values": 0.01584892336228142,
+          "feedback_percent_vs_baseline_from_rounded_values": -0.0878399022303648
+        },
+        "16": {
+          "max_displacement_m": 117.38462,
+          "delta_max_displacement_vs_baseline_m_user_printed": 0.07253,
+          "rms_feedback_speed_m_per_year": 0.015987,
+          "displacement_percent_vs_baseline_from_rounded_values": 0.061818005133312974,
+          "feedback_percent_vs_baseline_from_rounded_values": -0.06251172094767514
+        }
+      }
+    },
+    {
+      "scenario": "relaxation_half",
+      "scales": {
+        "8": {
+          "max_displacement_m": 101.90856,
+          "delta_max_displacement_vs_baseline_m_user_printed": -2.76733,
+          "rms_feedback_speed_m_per_year": 0.034627,
+          "displacement_percent_vs_baseline_from_rounded_values": -2.6437035924608536,
+          "feedback_percent_vs_baseline_from_rounded_values": 32.24488237091354
+        },
+        "16": {
+          "max_displacement_m": 112.04699,
+          "delta_max_displacement_vs_baseline_m_user_printed": -5.26511,
+          "rms_feedback_speed_m_per_year": 0.020917,
+          "displacement_percent_vs_baseline_from_rounded_values": -4.4881218561427225,
+          "feedback_percent_vs_baseline_from_rounded_values": 30.75576670625743
+        }
+      }
+    },
+    {
+      "scenario": "relaxation_double",
+      "scales": {
+        "8": {
+          "max_displacement_m": 107.00192,
+          "delta_max_displacement_vs_baseline_m_user_printed": 2.32603,
+          "rms_feedback_speed_m_per_year": 0.019613,
+          "displacement_percent_vs_baseline_from_rounded_values": 2.2221356056428583,
+          "feedback_percent_vs_baseline_from_rounded_values": -25.09547815459823
+        },
+        "16": {
+          "max_displacement_m": 119.7153,
+          "delta_max_displacement_vs_baseline_m_user_printed": 2.40321,
+          "rms_feedback_speed_m_per_year": 0.012233,
+          "displacement_percent_vs_baseline_from_rounded_values": 2.0485525363538786,
+          "feedback_percent_vs_baseline_from_rounded_values": -23.52941176470588
+        }
+      }
+    },
+    {
+      "scenario": "drive_dashpot_half",
+      "scales": {
+        "8": {
+          "max_displacement_m": 100.61054,
+          "delta_max_displacement_vs_baseline_m_user_printed": -4.06535,
+          "rms_feedback_speed_m_per_year": 0.03459,
+          "displacement_percent_vs_baseline_from_rounded_values": -3.883740934396736,
+          "feedback_percent_vs_baseline_from_rounded_values": 32.10357470210817
+        },
+        "16": {
+          "max_displacement_m": 110.06622,
+          "delta_max_displacement_vs_baseline_m_user_printed": -7.24588,
+          "rms_feedback_speed_m_per_year": 0.021085,
+          "displacement_percent_vs_baseline_from_rounded_values": -6.176583660168047,
+          "feedback_percent_vs_baseline_from_rounded_values": 31.805963618178403
+        }
+      }
+    },
+    {
+      "scenario": "drive_dashpot_double",
+      "scales": {
+        "8": {
+          "max_displacement_m": 108.57146,
+          "delta_max_displacement_vs_baseline_m_user_printed": 3.89557,
+          "rms_feedback_speed_m_per_year": 0.018904,
+          "displacement_percent_vs_baseline_from_rounded_values": 3.7215641272850966,
+          "feedback_percent_vs_baseline_from_rounded_values": -27.803238619003967
+        },
+        "16": {
+          "max_displacement_m": 120.67741,
+          "delta_max_displacement_vs_baseline_m_user_printed": 3.36532,
+          "rms_feedback_speed_m_per_year": 0.011893,
+          "displacement_percent_vs_baseline_from_rounded_values": 2.8686810652950494,
+          "feedback_percent_vs_baseline_from_rounded_values": -25.65481027692692
+        }
+      }
+    }
+  ],
+  "adjudication": {
+    "all_eight_scenarios_completed_in_FAIR": true,
+    "baseline_experiment_real_rheology": false,
+    "uniform_scale_viscosity_identifiable_from_this_feedback_model": false,
+    "relative_one_parameter_variation_cannot_identify_real_viscosities": true,
+    "max_absolute_displacement_change_m_among_user_printed_cases": {
+      "extent_8": 4.06535,
+      "extent_16": 7.24588,
+      "parameter_case": "drive_dashpot_half"
+    },
+    "stronger_effects": "manufactured_tau_and_dashpot_multiplier_vs_individual_eta_x10_among_tested_cases",
+    "energy_balance_and_force_residual_by_scenario_not_in_user_printout": true,
+    "spatial_convergence_proved": false,
+    "domains_are_identical_geographic_extent": false,
+    "local_stress_and_slip_distributions_observed": false,
+    "thermal_rock_and_mantle_physics_calibrated": false,
+    "global_G2_sparse_FEM_tested": false,
+    "physical_solver_runs": 0,
+    "physical_T1": null,
+    "D_024": "ACTIVE"
+  },
+  "next_gate": {
+    "mandatory": "GLOBAL_SOURCE_KEYED_SPARSE_P1_G2_TANGENT_ASSEMBLY_AND_REGIONAL_DENSE_PARITY",
+    "independent_plate_views_contact_policy": "KEEP_SPLIT_PLATE_VIEWS; DO_NOT_WELD_WITHOUT_DECLARED_TEST",
+    "locality": "VALIDATE_LOCAL_ELEMENT_6X6_TANGENT_AND_STRESS_WORK_BEFORE_PLANET_RUN",
+    "numerical_acceptance": "ACTION_PARITY_ENERGY_WORK_RESIDUAL_EIGEN_NULL_MODES_PRECONDITIONER_MESH_FIXED_EXTENT_TEST",
+    "global_program": "ONE_STATIC_ENGINEERING_GLOBAL_SPARSITY_AND_RESPONSE_THEN_BOUNDED_100_AND_1000_YEAR_MODEL_IF_ACCEPTANCE_PASS",
+    "forbidden": "NO_PRODUCTION_GLOBAL_T1_OR_UNSOURCED_ARCANA_MANTLE"
+  }
+}
