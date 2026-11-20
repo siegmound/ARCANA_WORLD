@@ -173,3 +173,56 @@ def test_timestep_ordinal_contract_is_frozen():
     assert STEP_SIZES==(.5,.25)
     assert SOURCE_BOUNDARY_REPLAY_MAX_ABS_M==1e-7
     assert len(SAMPLE_YEARS)==41
+
+
+@pytest.mark.parametrize("dt",[.5,.25])
+def test_fractional_local_restart_uses_returned_state_without_int_checkpoint(dt,monkeypatch):
+    """Regression: original integrate rounds checkpoint years to int.
+
+    A fractional restart cannot require an integer-keyed snapshot.
+    """
+    import numpy as np
+    import experiments.plate58_deforming_explore_v1.g2_source_shell_dt_convergence as mod
+    calls=[]
+    def fake_integrate(K,J,drive,step,steps,*,initial=None,checkpoints=None):
+        calls.append((step,steps,checkpoints))
+        assert step==dt and steps==1 and checkpoints==()
+        assert initial is not None
+        next_u=np.asarray(initial["displacement"])+dt*np.array([2.,-3.,4.])
+        return {
+            "state":{
+                "displacement":next_u,
+                "gap":np.asarray(initial["gap"]).copy(),
+            },
+            "snapshots":{},
+            "steps":1,
+            "max_scaled_complementarity":0.,
+        }
+    monkeypatch.setattr(mod,"integrate",fake_integrate)
+    initial={"displacement":np.array([1.,2.,3.]),
+             "gap":np.array([.5,-0.0])}
+    snap,state=mod.advance_source_restart_state(
+        np.eye(3),np.zeros((2,3)),np.zeros(3),dt,initial)
+    assert len(calls)==1
+    assert np.allclose(snap["velocity"],[2.,-3.,4.])
+    assert np.allclose(snap["displacement"],
+                       initial["displacement"]+dt*np.array([2.,-3.,4.]))
+    assert np.allclose(snap["gap"],initial["gap"])
+    assert state is not initial
+
+
+def test_fractional_local_restart_does_not_hide_complementarity_failure(monkeypatch):
+    import numpy as np
+    import experiments.plate58_deforming_explore_v1.g2_source_shell_dt_convergence as mod
+    def fake_integrate(K,J,drive,dt,steps,*,initial=None,checkpoints=None):
+        return {
+            "state":initial,
+            "snapshots":{},
+            "steps":1,
+            "max_scaled_complementarity":2e-8,
+        }
+    monkeypatch.setattr(mod,"integrate",fake_integrate)
+    initial={"displacement":np.zeros(3),"gap":np.zeros(2)}
+    with pytest.raises(SparseP1Error,match="DTC_SOURCE_LOCAL_RESTART_FAILED"):
+        mod.advance_source_restart_state(
+            np.eye(3),np.zeros((2,3)),np.zeros(3),.5,initial)
