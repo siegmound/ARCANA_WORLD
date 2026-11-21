@@ -1,3 +1,7 @@
+CURRENT — 2026-11-21 — FAIR-tested source `e48f4c30d0a5550875472f8a9263c7c6cb5a0317`: **24/24** new authorial bulk-composition tests and **224/224** defined extended R6 regression PASS. Empty template and empty report compiled successfully; no canonical geology invented: recipes=0, mixtures=0, candidate placements=0, T0 ratified chemistry=0, mineral assemblage=fault gouge=resources=Deep=null. FAIR source-native placement with original binary NPZ and recovered admitted membership is still PENDING. Source contract ledger `docs/arcana/R6_T0_AUTHORIAL_BULK_COMPOSITION_FAIR_224_RECEIPT_20261121.md`. D-024 ACTIVE physical_T1=null; no mechanical solve or historical production.
+
+---
+
 CURRENT — 2026-11-21 — DEV only, `r6/t0-authorial-bulk-composition-provider-20261121` from FAIR main 200/200 PASS source `083a6a68`: source-validated original 64,800-cell plate face mapping and authorially configurable bulk-oxide hypotheses with conservation + explicit uncertainty, two-endmember mixtures and SHA-enforced native placement interface. This is not a natural mineral map or a new geological resource process; no physical chemistry/phase/fault/ore/Deep/T1 generated. No new tests run on FAIR yet (24 targeted, 224 expanded expected). Original B6N8N index blob pinned, external source NPZ/plate and admitted membership must be supplied before any hypothesis placement, actual T0 assignments remain ZERO. See `docs/arcana/R6_T0_EXPLICIT_BULK_ROCK_COMPOSITION_HYPOTHESIS_PROVIDER_20261121.md`. D-024 ACTIVE physical_T1=null.
 
 ---
