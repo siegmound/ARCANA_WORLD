@@ -207,3 +207,25 @@ def test_synthetic_full_native_placement_source_validated_but_never_physical(tmp
     with pytest.raises(p.SourceAuthorityError,match="CELL_NOT_PROVEN_ADMITTED"):
         p.compile_scenario(s,ROOT,field_package=fields,
             plate_partition=plates,admitted_membership=members)
+
+def test_nonempty_hypothesis_requires_declared_scenario_identity():
+    s=scenario()
+    s["scenario_id"]=None
+    with pytest.raises(p.SourceAuthorityError,match="INVALID_ID:SCENARIO"):
+        p.compile_scenario(s,ROOT)
+
+
+def test_fictitious_published_literature_reference_cannot_be_self_certified():
+    s=scenario()
+    s["recipes"][0]["source"]["kind"]="PUBLISHED_EARTH_ANALOGUE_AS_HYPOTHESIS"
+    with pytest.raises(p.SourceAuthorityError,match="RECIPE_PROVENANCE_MISSING"):
+        p.compile_scenario(s,ROOT)
+
+
+def test_template_without_selected_chemistry_can_compile_no_assignments():
+    t=p.make_template(ROOT)
+    result=p.compile_scenario(t,ROOT)
+    assert result["hypothetical_native_cell_assignment_count"]==0
+    assert result["physically_ratified_T0_composition_cell_count"]==0
+    assert result["physical_T1"] is None
+    assert result["experimental_recipe_records"]==[]

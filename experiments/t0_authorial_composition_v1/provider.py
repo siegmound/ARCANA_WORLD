@@ -274,6 +274,8 @@ def compile_scenario(sc,root,*,field_package=None,plate_partition=None,
     require(all(type(sc.get(k)) is list for k in
                 ("recipes","mixtures","placements")),
             "COMPOSITION_SCENARIO_COLLECTIONS_MISSING")
+    if sc["recipes"] or sc["mixtures"] or sc["placements"]:
+        identity(sc.get("scenario_id"),"SCENARIO")
     rec={}
     for row in sc["recipes"]:
         x=oxide_recipe(row)
