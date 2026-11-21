@@ -1,3 +1,7 @@
+CURRENT — 2026-11-21 — DEV only, `r6/t0-authorial-bulk-composition-provider-20261121` from FAIR main 200/200 PASS source `083a6a68`: source-validated original 64,800-cell plate face mapping and authorially configurable bulk-oxide hypotheses with conservation + explicit uncertainty, two-endmember mixtures and SHA-enforced native placement interface. This is not a natural mineral map or a new geological resource process; no physical chemistry/phase/fault/ore/Deep/T1 generated. No new tests run on FAIR yet (24 targeted, 224 expanded expected). Original B6N8N index blob pinned, external source NPZ/plate and admitted membership must be supplied before any hypothesis placement, actual T0 assignments remain ZERO. See `docs/arcana/R6_T0_EXPLICIT_BULK_ROCK_COMPOSITION_HYPOTHESIS_PROVIDER_20261121.md`. D-024 ACTIVE physical_T1=null.
+
+---
+
 CURRENT — 2026-11-21 — FAIR at source SHA `9b1ddd456121fb0df7d437480b1344149a6884d3`: Earth reference chemistry compiler and 6 published reference records PASS, 17/17 targeted and 200/200 defined expanded R6 G2/G3+T0 geology regression PASS. 64,800 original cells, 63,620 thermophysical eligible **not mineralogy**, no per-cell original T0 geochemical source assignment, no rocks, gouge, mineral phases, deposits or Deep spatial access generated. `physical_T1=null`, D-024 ACTIVE, no mechanical solve or WORLD_HISTORY. Receipt `docs/arcana/R6_T0_EARTH_GEOCHEM_FAIR_200_REGRESSION_SOURCE_RECEIPT_20261121.md`. Next source-bound authorial chemical/lithological hypothesis without Earth-to-ARCANA promotion.
 
 ---
