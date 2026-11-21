@@ -1,3 +1,7 @@
+CURRENT — 2026-11-21 — FAIR at source SHA `9b1ddd456121fb0df7d437480b1344149a6884d3`: Earth reference chemistry compiler and 6 published reference records PASS, 17/17 targeted and 200/200 defined expanded R6 G2/G3+T0 geology regression PASS. 64,800 original cells, 63,620 thermophysical eligible **not mineralogy**, no per-cell original T0 geochemical source assignment, no rocks, gouge, mineral phases, deposits or Deep spatial access generated. `physical_T1=null`, D-024 ACTIVE, no mechanical solve or WORLD_HISTORY. Receipt `docs/arcana/R6_T0_EARTH_GEOCHEM_FAIR_200_REGRESSION_SOURCE_RECEIPT_20261121.md`. Next source-bound authorial chemical/lithological hypothesis without Earth-to-ARCANA promotion.
+
+---
+
 CURRENT — 2026-11-21 — DEV SCIENCE only: T0 source-geochemistry identifiability audited against user uploaded Canon 12/53/57 + R6 B6N8L/N (63,620 thermal eligible native cells, 0 actual compositional assignments). Genuine published terrestrial bulk/reference model chemical tables vendor-pinned in dev for four continental reservoirs + one depleted MORB mantle, plus unit-null N-type MORB trace analogue, **not** assigned to plate 5:8:11 or 180×360 world. Oxide-equivalent element mass balance without normalization/redox speciation; no mineral assemblage, fluid source, fault law, ore deposit, Deep accessibility or T1. FAIR tests not yet run; branch `r6/t0-earth-geochemical-reference-library-20261121`; parent last FAIR full baseline 183/183 PASS. D-024 ACTIVE physical_T1=null.
 
 ---
