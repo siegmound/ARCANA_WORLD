@@ -1,3 +1,7 @@
+CURRENT — 2026-11-21 — DEVELOPMENT ONLY: geological coarse-state research plus deterministic on-demand local geometric refinement. No global expensive precomputation of rock species/mineral chemistry; use original R6 parent IDs/child geometry and sparse hypothetical event anchors; density query compares declared ranges without material identification. Original R6 64,800 cells and 63,620 limited thermophysical support, 0 canonical material assignments. Parent/child mass/density NOT imputed. `r6/geological-coarse-state-on-demand-refinement-20261121`, 30 new expected test cases, 254 expected combined; FAIR NOT RUN; main remains 224/224 tested. `docs/arcana/R6_GEOLOGICAL_COARSE_STATE_ON_DEMAND_REFINEMENT_SCIENCE_20261121.md`. D-024 ACTIVE physical_T1=null; production HistoryStore/physical mechanics prohibited.
+
+---
+
 CURRENT — 2026-11-21 — FAIR-tested source `e48f4c30d0a5550875472f8a9263c7c6cb5a0317`: **24/24** new authorial bulk-composition tests and **224/224** defined extended R6 regression PASS. Empty template and empty report compiled successfully; no canonical geology invented: recipes=0, mixtures=0, candidate placements=0, T0 ratified chemistry=0, mineral assemblage=fault gouge=resources=Deep=null. FAIR source-native placement with original binary NPZ and recovered admitted membership is still PENDING. Source contract ledger `docs/arcana/R6_T0_AUTHORIAL_BULK_COMPOSITION_FAIR_224_RECEIPT_20261121.md`. D-024 ACTIVE physical_T1=null; no mechanical solve or historical production.
 
 ---
