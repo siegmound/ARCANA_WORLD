@@ -182,8 +182,13 @@ def survey_contact_face_source(region:dict, pre:dict, faces:list,
             "actual_fault_shear_traction_pa":None,
             "physical_contact_force_derived":False,
         })
-    triple=(34587 in nodes) if width==16 else False
-    need(triple==(width==16),"T0_CONTACT_TRIPLE_PARENT_ID_DRIFT")
+    node_plate_owners={}
+    for face,plate in zip(faces,plates,strict=True):
+        for pid in face:
+            node_plate_owners.setdefault(pid,set()).add(int(plate))
+    triple=(34587 in node_plate_owners and
+            len(node_plate_owners[34587])>=3)
+    need(triple==(width==16),"T0_CONTACT_TRIPLE_PARENT_3PLATE_INCIDENCE_DRIFT")
     return {
         "extent_cells":width,"source_original_nodes":len(nodes),
         "source_original_facets":len(faces),

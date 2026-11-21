@@ -103,6 +103,7 @@ def test_original_source_two_owner_faces_preserved_no_mineralogy_inferred():
     assert out["source_owner_face_sides"]==24
     assert out["contacts_with_both_side_nodewise_isotherm"]==12
     assert out["all_mathematically_crossed_isotherm_depths_min_max_m"]==pytest.approx([657.5,657.5])
+    assert out["triple_parent_node_34587_present"] is False
     assert out["source_PRE_role_codes_cannot_identify_gouge_or_hydration"]
     assert out["arcana_friction_materials_assigned"]==0
     assert out["physical_T1"] is None
