@@ -207,6 +207,25 @@ def main():
     report=read_source(args.source)
     need(report["source_sha256"]==source_sha,
          "RSF_SOURCE_CHANGED_DURING_READ")
+    # Compute each fitted row's conditional rate-and-state response. This is
+    # not a fit to original instrument data, and theta(v0)=Dc/v0 is an
+    # explicit assumed initial steady state, not observed sample history.
+    predictions=[]
+    for row in report["fitted_model_rows"]:
+        initial=steady_reference_states(row)
+        immediate=relative_friction_response(row,row["v1_m_s"],initial)
+        final=[s["Dc_m"]/row["v1_m_s"] for s in row["states"]]
+        stationary=relative_friction_response(row,row["v1_m_s"],final)
+        predictions.append({
+            "source_line":row["source_line"],
+            "assumed_initial_state":"STEADY_AT_PUBLISHED_V0_NOT_OBSERVED",
+            "immediate_delta_mu":immediate["delta_mu"],
+            "steady_delta_mu":stationary["delta_mu"],
+            "immediate_delta_tau_pa_at_lab_10MPa":immediate["delta_tau_pa"],
+            "steady_delta_tau_pa_at_lab_10MPa":stationary["delta_tau_pa"],
+            "absolute_traction_pa":None,
+            "arcana_fault_source_bound":False})
+    report["conditional_lab_velocity_step_predictions"]=predictions
     # Do not repackage source, and never emit an inferred absolute traction.
     args.output.mkdir(parents=True,exist_ok=False)
     rp=args.output/"REPORT.json"

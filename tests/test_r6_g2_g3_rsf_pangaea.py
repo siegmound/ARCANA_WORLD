@@ -87,5 +87,10 @@ def test_cli_immutable_provenance_and_manifest(tmp_path,monkeypatch):
     assert payload["doi"]=="10.1594/PANGAEA.921284"
     assert manifest["source_sha256"]==payload["source_sha256"]
     assert manifest["no_physical_solve"]
+    rows=payload["conditional_lab_velocity_step_predictions"]
+    assert len(rows)==1
+    assert rows[0]["immediate_delta_mu"]==pytest.approx(0.012*math.log(10))
+    assert rows[0]["steady_delta_mu"]==pytest.approx(0.002*math.log(10))
+    assert rows[0]["absolute_traction_pa"] is None
     with pytest.raises(RSFSourceError,match="RSF_OUTPUT_EXISTS_NO_OVERWRITE"):
         main()
