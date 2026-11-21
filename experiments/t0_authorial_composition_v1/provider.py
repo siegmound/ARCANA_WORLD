@@ -95,8 +95,7 @@ def oxide_recipe(row):
             "COMPOSITION_OXIDE_BASIS_MISSING")
     source=row.get("source")
     require(type(source) is dict and
-            source.get("kind") in ("AUTHORIAL_EXPLICIT_HYPOTHESIS",
-                                   "PUBLISHED_EARTH_ANALOGUE_AS_HYPOTHESIS")
+            source.get("kind")=="AUTHORIAL_EXPLICIT_HYPOTHESIS"
             and type(source.get("reference")) is str and
             len(source["reference"].strip())>=5,
             "COMPOSITION_RECIPE_PROVENANCE_MISSING")
