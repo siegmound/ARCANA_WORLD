@@ -51,3 +51,23 @@ Then run the existing **full G2/G3 regression command** used for the `7002f3a8` 
 No rocks, water state, real creep law, mantle traction or fault friction are calibrated in this task. The physical G2/G3/FAULT solve still requires one authorially selected regional scenario with data-valid lithology/rheology, effective pressure, **core+exterior** basal normal and tangential source, outer-cut traction, global GPE ownership, and a genuinely discontinuous fault/triple law. Reject a full physical T1 until that separate coupled scenario is ratified and validated.
 
 **`D-024=ACTIVE`; `MECHANICAL_SOLVE_AUTHORIZED=false`; `physical_T1=null`; `WORLD_HISTORY_PRODUCTION_AUTHORIZED=false`.**
+
+## Canon cross-check (not a source of T0 lithology)
+
+The uploaded `ARCANA_UNIVERSE_CANON_v0_3_73` archive, SHA-256
+`58ce3ccdef7a1e395877446948b5e4a06c1316bc1b5a79e9af679b66448778fd`,
+contains `CANON/12_DEEP_ENERGY_GEOGRAPHY_EXTRACTION_AND_TRANSPORT.md`.
+It establishes geology, mineralogy, crystals, metals, thermal gradients and
+tectonics as relevant to geographic Deep accessibility, but **does not
+assign rock/mineral phases, water fugacity, or effective pressure to original
+R6 T0 parent nodes**. `CANON/165_GEOMECHANICAL_G0_G3_TRIGGERING_CALIBRATION_v0_3_59.md`
+treats triggered geomechanical activity, not an ARCANA plate-specific
+constitutive or mantle traction law. This is a targeted source cross-check,
+not a claim that the entire canon establishes no geological rules.
+
+The separate, bounded real-Earth method references remain
+Bird (1999), https://doi.org/10.1016/S0098-3004(98)00142-3 ,
+and the ASPECT viscoplastic documentation at
+https://aspect.geodynamics.org/doc/doxygen/classaspect_1_1MaterialModel_1_1ViscoPlastic.html .
+They support a class of equations, NOT the current planet-specific traction
+values or mineral identity.
