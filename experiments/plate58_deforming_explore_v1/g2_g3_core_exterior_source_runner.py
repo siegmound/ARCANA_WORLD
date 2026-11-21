@@ -22,6 +22,10 @@ from experiments.plate58_deforming_explore_v1.g2_g3_source_core_exterior_stitch 
     source_core_contribution,stitch_source_core_exterior,need,
 )
 
+from experiments.plate58_deforming_explore_v1.g2_g3_full_external_candidate import (
+    assemble_full_candidate_external,
+)
+
 INPUT_FULL="ARCANA_R6_G2_G3_EXPLICIT_FULL_PARENT_ENGINEERING_INPUT_V1"
 SCHEMA="ARCANA_R6_G2_G3_SOURCE_FULL_CORE_EXTERIOR_PARTIAL_FORCE_RUNNER_V1"
 
@@ -42,6 +46,17 @@ def validate_full_scenario(scenario,expected_ids,extent):
          and scenario.get("core_external_force_provider_qualified") is False
          and scenario.get("fault_interface_physics_authorized") is False,
          "CORE_SOURCE_EXPLICIT_FULL_CANDIDATE_AUTHORITY_INVALID")
+    # A core external candidate is either explicit in BOTH channels or absent.
+    # A missing core load must never become an implicit zero.
+    paired=("core_basal_tractions_by_triangle",
+            "core_gpe_increment_by_parent_node")
+    submitted=[isinstance(scenario.get(key),dict) and
+               bool(scenario.get(key)) for key in paired]
+    need(all(submitted) or not any(submitted),
+         "CORE_SOURCE_CORE_G3_BASAL_AND_GPE_MUST_BE_PAIRED")
+    if any(submitted):
+        need(scenario.get("core_external_force_provider_qualified") is False,
+             "CORE_SOURCE_CANDIDATE_CORE_LOAD_NOT_PHYSICALLY_QUALIFIED")
     for key in ("candidate_material_by_parent_node",
                 "velocity_en_by_parent_node"):
         candidate=scenario.get(key)
@@ -197,6 +212,34 @@ def execute(*,multiscale,interface,nodal,force,scenario_path,extent,output):
          and stitched["physical_T1"] is None
          and stitched["physical_solver_runs"]==0,
          "CORE_SOURCE_STITCHED_UNAUTHORIZED_PHYSICAL_PROMOTION")
+    core_candidates=(
+        isinstance(scenario.get("core_basal_tractions_by_triangle"),dict)
+        and bool(scenario["core_basal_tractions_by_triangle"])
+        and isinstance(scenario.get("core_gpe_increment_by_parent_node"),dict)
+        and bool(scenario["core_gpe_increment_by_parent_node"])
+    )
+    if core_candidates:
+        full_channels=assemble_full_candidate_external(
+            stitched=stitched,exterior=ext_result,
+            original_parent_node_order=core[
+                "source_original_full_parent_node_order"],
+            source_core_triangles=core["source_core_triangles"],
+            source_exterior_triangles=ext["parent_triangle_nodes"],
+            source_cut_edges=ext["source_cut_edges"],
+            node_lat_lon_deg=core["source_lat_lon_deg"],
+            line_tractions_by_edge=ext["line_tractions_by_edge"],
+            exterior_basal_tractions_by_triangle=ext[
+                "basal_tractions_by_triangle"],
+            core_basal_tractions_by_triangle=scenario[
+                "core_basal_tractions_by_triangle"],
+            exterior_gpe=ext["gpe"],
+            core_gpe_increment_by_parent_node=scenario[
+                "core_gpe_increment_by_parent_node"],
+            velocity_en_by_parent_node={
+                n:velocity[str(n)] for n in core[
+                    "source_original_full_parent_node_order"]},
+        )
+        stitched["candidate_complete_external_channels"]=full_channels
     stitched.update({
         "runner_schema":SCHEMA,
         "verified_provider_manifest_SHA256":manifest_shas,
@@ -205,7 +248,8 @@ def execute(*,multiscale,interface,nodal,force,scenario_path,extent,output):
         "source_original_PRE_SHA256":core["source_PRE_sha256"],
         "source_original_core_triangle_ids":core[
             "source_original_core_triangle_ids"],
-        "CORE_EXTERNAL_GPE_NOT_SPECIFIED_OR_APPLIED":True,
+        "CORE_EXTERNAL_GPE_NOT_SPECIFIED_OR_APPLIED":not core_candidates,
+        "core_external_candidate_channels_submitted":bool(core_candidates),
         "source_explicit_g2_g3_not_yet_physical":True,
     })
     for n,p in (

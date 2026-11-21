@@ -42,10 +42,16 @@
     "external_GPE_owner": "EXPERIMENTAL_EXTERNAL_GPE_ONLY__ORIGINAL_SHELLS_GPE_NOT_COMBINED",
     "no_double_count_of_core_exterior_triangles": true,
     "no_stress_resultant_from_unsourced_material": true,
-    "no_physical_core_external_force_inference": true
+    "no_physical_core_external_force_inference": true,
+    "core_basal_traction_requirements": "All exact eight source original core triangle IDs; nonzero or explicit benchmark zero, never defaults; vertex xyz tangential Pa and source provenance",
+    "core_GPE_increment_requirements": "Nine source parent node IDs with core-only GPE EN Newton contributions, one-owner EXTERNAL GPE, no duplicate ext GPE",
+    "full_candidate_force_is_not_equilibrium": true
   },
   "physical_T1": null,
   "D_024": "ACTIVE",
   "canonical_promotion": false,
-  "HistoryStore_modified": false
+  "HistoryStore_modified": false,
+  "core_basal_tractions_by_triangle": null,
+  "core_gpe_increment_by_parent_node": null,
+  "core_external_channel_candidate_complete": false
 }
