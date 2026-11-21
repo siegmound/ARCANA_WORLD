@@ -322,14 +322,55 @@ def build(multiscale:Path,nodal:Path,rsf_stability:Path,out:Path):
             "physical_T1":None,"mechanical_solve_authorized":False}
 
 
+def discover_fair_sources(root:Path) -> tuple[Path,Path]:
+    """Read-only find of SHA-chained multis and nodal providers in FAIR evidence.
+
+    Several byte-identical copies may coexist; different valid provider SHA
+    pairs are ambiguous and MUST NOT be selected by file date.
+    """
+    need(root.is_dir(),"T0_CONTACT_EVIDENCE_ROOT_MISSING")
+    multis={}
+    for target in sorted(root.rglob("CONTINUATION_A.json")):
+        try:
+            row,digest=read_pinned("multiscale",target.parent)
+        except (OSError,ValueError,KeyError,TypeError,json.JSONDecodeError):
+            continue
+        if {int(x["cell_extent_per_side"]) for x in
+            row.get("topological_comparative_extents",[])}==set(SCALES):
+            multis.setdefault(digest,[]).append(target.parent)
+    candidates={}
+    for target in sorted(root.rglob("SOURCE_NODAL_ELEMENT_G2.json")):
+        try:
+            row,digest=read_pinned("nodal",target.parent)
+        except (OSError,ValueError,KeyError,TypeError,json.JSONDecodeError):
+            continue
+        parent=row.get("source_multiscale_manifest_sha256")
+        if (parent in multis and
+            {int(x["extent_cells"]) for x in row.get("scales",[])}==set(SCALES)):
+            candidates.setdefault((parent,digest),[]).append(
+                (multis[parent][0],target.parent))
+    need(len(candidates)==1,"T0_CONTACT_SOURCE_PROVIDER_MISSING_OR_AMBIGUOUS")
+    return candidates[next(iter(candidates))][0]
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--multiscale",type=Path,required=True)
-    p.add_argument("--nodal",type=Path,required=True)
+    p.add_argument("--multiscale",type=Path)
+    p.add_argument("--nodal",type=Path)
+    p.add_argument("--evidence-root",type=Path,
+                   help="Discover one unambiguous SHA-chained pair under FAIR R6")
     p.add_argument("--rsf-stability",type=Path,required=True)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    print(json.dumps(build(a.multiscale,a.nodal,a.rsf_stability,a.output),indent=2))
+    if a.evidence_root is not None:
+        need(a.multiscale is None and a.nodal is None,
+             "T0_CONTACT_DISCOVERY_AND_EXPLICIT_PATHS_CONFLICT")
+        multiscale,nodal=discover_fair_sources(a.evidence_root)
+    else:
+        need(a.multiscale is not None and a.nodal is not None,
+             "T0_CONTACT_BOTH_EXPLICIT_SOURCE_DIRECTORIES_REQUIRED")
+        multiscale,nodal=a.multiscale,a.nodal
+    print(json.dumps(build(multiscale,nodal,a.rsf_stability,a.output),indent=2))
 
 
 if __name__=="__main__":

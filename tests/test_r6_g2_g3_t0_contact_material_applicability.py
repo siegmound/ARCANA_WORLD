@@ -5,7 +5,7 @@ from collections import defaultdict
 import pytest
 from experiments.plate58_deforming_explore_v1.g2_g3_t0_contact_material_applicability import (
     ApplicabilityInputError, isotherm_depths_m, survey_contact_face_source,
-    _validate_lab_stability_report, build, LAB_T_K,
+    _validate_lab_stability_report, discover_fair_sources, build, LAB_T_K,
 )
 from experiments.plate58_deforming_explore_v1.g2_g3_source_coupled_runner import sha
 
@@ -198,3 +198,13 @@ def test_preexisting_output_directory_is_never_overwritten(tmp_path):
     output=tmp_path/"EXISTING";output.mkdir()
     with pytest.raises(ApplicabilityInputError,match="OUTPUT_EXISTS_NO_OVERWRITE"):
         build(tmp_path/"MISSING",tmp_path/"MISSING",tmp_path/"MISSING",output)
+
+
+def test_source_discovery_fails_closed_when_missing(tmp_path):
+    with pytest.raises(ApplicabilityInputError,match="SOURCE_PROVIDER_MISSING_OR_AMBIGUOUS"):
+        discover_fair_sources(tmp_path)
+
+
+def test_source_discovery_requires_real_evidence_directory(tmp_path):
+    with pytest.raises(ApplicabilityInputError,match="EVIDENCE_ROOT_MISSING"):
+        discover_fair_sources(tmp_path/"absent")
