@@ -65,7 +65,7 @@ All outputs are fail-closed, immutable and include the source-scenario SHA and r
 
 ## 3. Validation gates
 
-The development test module defines **21 expected cases** (12 test functions, with one ten-way parametrized check: 12+9=21). Targets include original B6N8N index SHA/count, no-selection template, elemental budget mass balance, 60/40 **synthetic** endmember mixture and uncertainty linearity, negative/NaN/non-matching chemistry, no silent FeO/FeO* co-use, missing author approval, source binary hashes, admitted membership SHA, original plate and domain match, native support boundary, and report write-once SHA. None of the 60/40 numbers is an ARCANA rock composition.
+The development test module defines **24 expected cases** (15 test functions, with one ten-way parametrized check: 15+9=24). Targets include original B6N8N index SHA/count, no-selection template, elemental budget mass balance, 60/40 **synthetic** endmember mixture and uncertainty linearity, negative/NaN/non-matching chemistry, no silent FeO/FeO* co-use, missing author approval, source binary hashes, admitted membership SHA, original plate and domain match, native support boundary, and report write-once SHA. None of the 60/40 numbers is an ARCANA rock composition.
 
 **Current status: TESTS NOT YET RUN ON FAIR**, and no genuine user-authored recipe or cell selection. Engineering R6 main remains on 200/200 tested stable baseline.
 
@@ -82,7 +82,7 @@ python -m experiments.t0_authorial_composition_v1.provider \
   --output "$BASE/R6_T0_AUTHORIAL_BULK_COMPOSITION_EMPTY_COMPILATION_NEW_01"
 ```
 
-The empty compile should produce `candidate_recipes=0`, `candidate_mixtures=0`, `hypothetical_native_assignments=0` and `physical_T1=null`. The last full defined G2/G3+RSF+thermal+geochemistry regression was **200/200**; after adding 21 cases, **221 expected** if test collection unchanged. The source code has not yet been tested at FAIR, so no 221/221 or new experimental SHA PASS may be asserted.
+The empty compile should produce `candidate_recipes=0`, `candidate_mixtures=0`, `hypothetical_native_assignments=0` and `physical_T1=null`. The last full defined G2/G3+RSF+thermal+geochemistry regression was **200/200**; after adding 21 cases, **224 expected** if test collection unchanged. The source code has not yet been tested at FAIR, so no 221/221 or new experimental SHA PASS may be asserted.
 
 ## 4. Next physically substantive step
 
@@ -101,3 +101,8 @@ physical_T1=null
 D_024=ACTIVE
 WORLD_HISTORY_PRODUCTION_AUTHORIZED=false
 ```
+
+
+### Reproducible Git SHA and original cell-face interpretation
+
+The source-format cross-check against `src/arcana_worldsim/r6/plate_support_adapter.py` established that `R6_T0_VECTOR_PLATE_PARTITION.npz` contains three original one-dimensional arrays `face_row`, `face_col` and `face_plate_id`, each covering 64,800 native faces. The provider now reconstructs the cell grid from these three arrays under an exact one-to-one coverage and integer 12-plate identity check. No non-existent pre-gridded plate array name is presumed. Without a physically sourced *exact admitted-support member list*, no candidate can enter native spatial placement regardless of plausible lithological chemistry. The tests also forbid recipe provenance claims that cannot be numerically reconciled with a pinned published data table.
