@@ -122,8 +122,7 @@ def test_refuse_native_placement_even_with_source_files_but_no_author_approval(t
     with pytest.raises(p.SourceAuthorityError,match="AUTHORIAL_SELECTION_UNCONFIRMED"):
         p.compile_scenario(s,ROOT,field_package=tmp_path/"a",
                            plate_partition=tmp_path/"b",
-                           admitted_membership=tmp_path/"c",
-                           plate_array_key="synthetic_plate_grid")
+                           admitted_membership=tmp_path/"c")
 
 
 def test_original_binary_must_have_exact_source_sha(tmp_path):
@@ -176,7 +175,12 @@ def test_synthetic_full_native_placement_source_validated_but_never_physical(tmp
     plates=tmp_path/"plates.npz"
     members=tmp_path/"members.txt"
     np.savez(fields,physical_crust_domain_id=np.full((180,360),4,dtype=np.int16))
-    np.savez(plates,synthetic_plate_grid=np.full((180,360),5,dtype=np.int16))
+    rr,cc=np.indices((180,360))
+    lab=np.tile(np.arange(1,13,dtype=np.int16),5400)
+    lab[0]=5
+    np.savez(plates,face_row=rr.reshape(-1).astype(np.int16),
+             face_col=cc.reshape(-1).astype(np.int16),
+             face_plate_id=lab)
     # Only a synthetic membership fixture; never a real authoritative R6 index.
     ids=[f"R6G1D-R{r:03d}-C{c:03d}"
          for r in range(180) for c in range(360)][:63620]
@@ -190,19 +194,16 @@ def test_synthetic_full_native_placement_source_validated_but_never_physical(tmp
     s["field_package_sha256"]=p.FIELD_SHA
     s["plate_partition_sha256"]=p.PLATE_SHA
     result=p.compile_scenario(s,ROOT,field_package=fields,
-        plate_partition=plates,admitted_membership=members,
-        plate_array_key="synthetic_plate_grid")
+        plate_partition=plates,admitted_membership=members)
     assert result["hypothetical_native_cell_assignment_count"]==1
     assert result["physically_ratified_T0_composition_cell_count"]==0
     assert result["physical_T0_bulk_chemistry"] is None
     s["placements"][0]["plate_id"]=8
     with pytest.raises(p.SourceAuthorityError,match="PLATE_OR_CRUST_SOURCE_BINDING_MISMATCH"):
         p.compile_scenario(s,ROOT,field_package=fields,
-            plate_partition=plates,admitted_membership=members,
-            plate_array_key="synthetic_plate_grid")
+            plate_partition=plates,admitted_membership=members)
     s["placements"][0]["plate_id"]=5
     s["placements"][0]["cell_id"]="R6G1D-R179-C359"
     with pytest.raises(p.SourceAuthorityError,match="CELL_NOT_PROVEN_ADMITTED"):
         p.compile_scenario(s,ROOT,field_package=fields,
-            plate_partition=plates,admitted_membership=members,
-            plate_array_key="synthetic_plate_grid")
+            plate_partition=plates,admitted_membership=members)

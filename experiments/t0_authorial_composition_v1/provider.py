@@ -195,11 +195,10 @@ def pinned_npz(path,expected_sha):
 
 def source_placements(placements,sc,idx,recipes,mixtures,
                       *,field_package=None,plate_partition=None,
-                      admitted_membership=None,plate_array_key=None):
+                      admitted_membership=None):
     if not placements:return []
     require(all(x is not None for x in
-                (field_package,plate_partition,admitted_membership,
-                 plate_array_key)),
+                (field_package,plate_partition,admitted_membership)),
             "COMPOSITION_SPATIAL_SOURCE_PROVIDERS_REQUIRED")
     require(sc.get("authorial_selection_confirmed") is True and
             type(sc.get("authorial_selection_id")) is str and
@@ -211,14 +210,23 @@ def source_placements(placements,sc,idx,recipes,mixtures,
     p=pinned_npz(plate_partition,PLATE_SHA)
     require("physical_crust_domain_id" in f and
             f["physical_crust_domain_id"].shape==(180,360) and
-            plate_array_key in p and p[plate_array_key].shape==(180,360),
+            {"face_row","face_col","face_plate_id"}.issubset(p),
             "COMPOSITION_ORIGINAL_SOURCE_GRID_FIELD_MISSING")
     domain=f["physical_crust_domain_id"]
-    grid=p[plate_array_key]
-    require(np.issubdtype(domain.dtype,np.integer) and
-            np.issubdtype(grid.dtype,np.integer) and
-            np.all((grid>=1)&(grid<=12)),
-            "COMPOSITION_PLATE_GRID_NOT_INTEGER_1_TO_12")
+    rr,cc,pp=(p[k] for k in ("face_row","face_col","face_plate_id"))
+    require(all(z.shape==(64800,) and np.issubdtype(z.dtype,np.integer)
+                for z in (rr,cc,pp)) and
+            np.issubdtype(domain.dtype,np.integer) and
+            np.all((rr>=0)&(rr<180)) and
+            np.all((cc>=0)&(cc<360)) and
+            np.all((pp>=1)&(pp<=12)) and
+            len(np.unique(pp))==12,
+            "COMPOSITION_CANONICAL_FACE_GRID_SHAPE_OR_PLATE_IDS_INVALID")
+    flat=rr.astype(np.int64)*360+cc.astype(np.int64)
+    require(np.unique(flat).size==64800,
+            "COMPOSITION_CANONICAL_FACE_GRID_DUPLICATED_OR_INCOMPLETE")
+    grid=np.empty((180,360),dtype=np.int64)
+    grid[rr,cc]=pp
     out=[];seen=set()
     for item in placements:
         require(type(item) is dict and
@@ -252,7 +260,7 @@ def source_placements(placements,sc,idx,recipes,mixtures,
 
 
 def compile_scenario(sc,root,*,field_package=None,plate_partition=None,
-                     admitted_membership=None,plate_array_key=None):
+                     admitted_membership=None):
     idx=source_index(root)
     require(type(sc) is dict and sc.get("schema")==SCHEMA and
             sc.get("authority")==AUTHORITY and
@@ -279,7 +287,7 @@ def compile_scenario(sc,root,*,field_package=None,plate_partition=None,
         mixtures[x["id"]]=x
     sites=source_placements(sc["placements"],sc,idx,rec,mixtures,
          field_package=field_package,plate_partition=plate_partition,
-         admitted_membership=admitted_membership,plate_array_key=plate_array_key)
+         admitted_membership=admitted_membership)
     return {"schema":RESULT_SCHEMA,
         "decision":"AUTHORIAL_BULK_OXIDE_HYPOTHESES_ONLY_NO_CANONICAL_GEOLOGY",
         "scenario_id":sc.get("scenario_id"),
@@ -338,7 +346,6 @@ def main():
     ap.add_argument("--field-package",type=Path)
     ap.add_argument("--plate-partition",type=Path)
     ap.add_argument("--admitted-membership",type=Path)
-    ap.add_argument("--plate-array-key")
     a=ap.parse_args()
     if a.template_out is not None:
         require(a.output is None,"COMPOSITION_TEMPLATE_REPORT_CONFLICT")
@@ -349,8 +356,7 @@ def main():
         raw=a.scenario.read_bytes()
         result=compile_scenario(json.loads(raw),a.repo_root,
             field_package=a.field_package,plate_partition=a.plate_partition,
-            admitted_membership=a.admitted_membership,
-            plate_array_key=a.plate_array_key)
+            admitted_membership=a.admitted_membership)
         write_report(a.output,result,raw)
         print(json.dumps({"decision":result["decision"],
               "candidate_recipes":len(result["experimental_recipe_records"]),
