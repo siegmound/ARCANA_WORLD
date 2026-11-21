@@ -66,3 +66,21 @@ physical_T1=null
 D_024=ACTIVE
 HISTORYSTORE_PRODUCTION_AUTHORIZED=false
 ```
+
+
+## FAIR exact-source procedure
+
+The new CLI accepts either explicitly supplied `--multiscale` and `--nodal` source artifact paths, or `--evidence-root` pointing to the existing FAIR `R6` evidence root. In discovery mode it accepts **only a unique pair of manifest-SHA-linked providers**; multiple byte-identical path copies with the same manifest SHA are equivalent aliases. Distinct valid source pairs are an error and cannot be chosen by file timestamp. The PANGAEA already validated real stability input is the existing immutable `R6_G2_G3_PANGAEA921284_STABILITY_NEW_01` directory.
+
+Run the focused new suite on exact development Git SHA, then the previous 166-test G2/G3+RSF list with this new test file appended (expected combined `183`, only if collection unchanged). Finally execute, in a previously unused output directory:
+
+```bash
+python -m experiments.plate58_deforming_explore_v1.g2_g3_t0_contact_material_applicability \
+  --evidence-root "$BASE" \
+  --rsf-stability "$BASE/R6_G2_G3_PANGAEA921284_STABILITY_NEW_01" \
+  --output "$BASE/R6_G2_G3_T0_CONTACT_THERMAL_MATERIAL_NEW_01"
+```
+
+Expected *source topology* is exactly 12 and 36 original contact edges, **not** an invented thermal applicability count. The code will report actual source crustal 293.15 K root/face counts, which remain unknown until run. The script does not use any source-relative path or source geometry guess that could silently select the wrong physical region.
+
+If the upstream manifest chain cannot be discovered uniquely, or a thermal polynomial is malformed or publisher evidence was changed, **fail and diagnose**; no guessed geology, automatic parameter defaults or synthetic substitutions.
