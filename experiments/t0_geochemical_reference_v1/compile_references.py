@@ -24,6 +24,8 @@ SOURCES = {
         "4127120d7499e3d9b62a22384465c39b8806aaf0",
     "DM__Salters_Stracke__2004.csv":
         "262447b687f5cae36fde836ffd12c7d439a9f16b",
+    "Sun_McDonough__1989.csv":
+        "10e8fce96afa6ddd2b50f0f8a43d783f60d5c34c",
 }
 R6_SOURCES = {
     "docs/arcana/research/B6N8N_ADMITTED_SUPPORT_BINDING_INDEX.json":
@@ -198,6 +200,44 @@ def depleted_mantle_reference(raw:bytes) -> dict:
     }
 
 
+def oceanic_morb_trace_reference(raw:bytes) -> dict:
+    """Noncanonical Earth N-type MORB trace proxy, NOT bulk ocean crust.
+
+    This particular upstream source CSV has no units column. We preserve
+    published numeric values with a NULL unit; no ppm/ppb conversion or
+    elemental mass budget may be derived from this subset.
+    """
+    text=raw.decode("utf-8-sig")
+    need("Sun, S. S., and McDonough, W. F. (1989)" in text,
+         "GEOCHEM_MORB_SOURCE_IDENTITY_INVALID")
+    lines=[x for x in text.splitlines() if x.strip()
+           and not x.lstrip().startswith("#")]
+    rows=list(csv.DictReader(io.StringIO("\n".join(lines))))
+    expected={"Element","C1 chondrite","Primitive mantle",
+              "N-type MORB","E-type MORB","OIB"}
+    need(bool(rows) and set(rows[0])==expected,
+         "GEOCHEM_MORB_TRACE_SOURCE_SCHEMA_DRIFT")
+    trace={}
+    for row in rows:
+        key=row["Element"].strip()
+        need(key and key not in trace,"GEOCHEM_MORB_DUPLICATE_SOURCE_ELEMENT")
+        trace[key]=positive_number(row["N-type MORB"],"MORB_"+key)
+    need(all(k in trace for k in ("U","Th","Nb","La","Ce","Yb")),
+         "GEOCHEM_MORB_REQUIRED_SOURCE_TRACE_MISSING")
+    return {"reference_id":"EARTH_SUN_MCDONOUGH_1989_N_TYPE_MORB_TRACE",
+        "reference_scope":"N-type mid-ocean ridge basalt trace-element analogue",
+        "doi":"10.1144/GSL.SP.1989.042.01.19",
+        "authority":"PUBLISHED_EARTH_BASALTIC_MELT_TRACE_PROXY",
+        "source_trace_values_units_unverified":dict(sorted(trace.items())),
+        "source_trace_unit":None,
+        "major_oxide_mass_budget":None,
+        "bulk_oceanic_crust_composition":None,
+        "oceanic_lava_not_equivalent_to_full_oceanic_crust_column":True,
+        "no_automatic_oxide_or_element_mass_conversion":True,
+        "physical_mineral_phase_assemblage":None,
+        "arcana_cell_assignments":0,"arcana_fault_assignments":0}
+
+
 def read_r6_support(repo_root:Path) -> dict:
     docs={}
     for filename,git_sha in R6_SOURCES.items():
@@ -258,10 +298,13 @@ def build(repo_root:Path,out:Path):
     mantle=depleted_mantle_reference((repo_root/"experiments"/
         "t0_geochemical_reference_v1"/"data"/
         "DM__Salters_Stracke__2004.csv").read_bytes())
+    morb=oceanic_morb_trace_reference((repo_root/"experiments"/
+        "t0_geochemical_reference_v1"/"data"/
+        "Sun_McDonough__1989.csv").read_bytes())
     support=read_r6_support(repo_root)
     report={"schema":SCHEMA,"decision":DECISION,
-       "Earth_reference_analogues":[*cont,mantle],
-       "reference_records":5,
+       "Earth_reference_analogues":[*cont,mantle,morb],
+       "reference_records":6,
        "source_artifact_manifest":files,
        "R6_T0_spatial_material_support":support,
        "canon_read_only_source_sha256":CANON_SOURCE_SHAS,
@@ -292,7 +335,7 @@ def build(repo_root:Path,out:Path):
        "pinned_earth_data_files":files,
        "no_canonical_promotion":True,"no_solver_run":True,"no_T1":True
     },indent=2)+"\n")
-    return {"decision":DECISION,"earth_reference_records":len(cont)+1,
+    return {"decision":DECISION,"earth_reference_records":len(cont)+2,
        "native_T0_cells":support["native_cells"],
        "thermal_support_cells":support["thermal_support_admitted"],
        "T0_composition_assignments":0,"T0_mineral_phase_assignments":0,
