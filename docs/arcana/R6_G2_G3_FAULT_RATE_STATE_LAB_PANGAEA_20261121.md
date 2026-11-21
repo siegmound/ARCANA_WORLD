@@ -47,7 +47,7 @@ Use a clean isolated checkout and activate the existing `arcana-r6-linux` enviro
 set +e
 cd /home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_R6_PLATE58_VERIFY
 git fetch origin r6/g2g3-lab-fault-rate-state-20261121
-git switch --detach <EXACT_BRANCH_HEAD_FROM_GITHUB>
+git switch --detach 9c567c4424419c431a76cb6303d58451cc312b60
 conda activate arcana-r6-linux
 export PYTHONPATH=src:.
 export PYTHONDONTWRITEBYTECODE=1
@@ -61,16 +61,24 @@ Only if PASS, run empirical source ingestion:
 set +e
 BASE=/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6
 E="$BASE/R6_G2_G3_PANGAEA921284_RAW_NEW_01"
-mkdir "$E" || exit 1
-curl --fail --location --retry 3 --silent --show-error \
-  -H 'Accept: text/tab-separated-values' \
-  'https://doi.org/10.1594/PANGAEA.921284' \
-  -o "$E/pangaea_921284.tab"
-sha256sum "$E/pangaea_921284.tab"
-python -m experiments.plate58_deforming_explore_v1.g2_g3_rsf_pangaea \
-  --source "$E/pangaea_921284.tab" \
-  --output "$E/INGEST_NEW_01"
-echo "RSF_INGEST_EXIT_CODE=$?"
+if mkdir "$E"; then
+  curl --fail --location --retry 3 --silent --show-error \
+    -H 'Accept: text/tab-separated-values' \
+    'https://doi.org/10.1594/PANGAEA.921284' \
+    -o "$E/pangaea_921284.tab"
+  RC=$?
+  if [ "$RC" -eq 0 ]; then
+    sha256sum "$E/pangaea_921284.tab"
+    python -m experiments.plate58_deforming_explore_v1.g2_g3_rsf_pangaea \
+      --source "$E/pangaea_921284.tab" \
+      --output "$E/INGEST_NEW_01"
+    echo "RSF_INGEST_EXIT_CODE=$?"
+  else
+    echo "PANGAEA_DOWNLOAD_FAILED_EXIT_CODE=$RC"
+  fi
+else
+  echo "EVIDENCE_FOLDER_EXISTS_OR_CANNOT_CREATE: $E"
+fi
 ```
 
 Do not alter existing evidence directories or replace publisher metadata with guessed headers. A failed data parse is a **real source compatibility issue**, not permission to fabricate a fit.
