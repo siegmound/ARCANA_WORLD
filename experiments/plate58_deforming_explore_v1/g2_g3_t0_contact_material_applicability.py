@@ -195,7 +195,7 @@ def survey_contact_face_source(region:dict, pre:dict, faces:list,
         "source_exact_contact_edges":len(records),
         "source_owner_face_sides":sum(len(x["source_original_faces"]) for x in records),
         "source_plate_pairs":sorted({tuple(r["source_plate_pair"]) for r in records}),
-        "triple_parent_node_34587_present":triple,
+        "triple_parent_node_34587_is_3plate_junction":triple,
         "contact_sides_with_nodewise_isotherm":side_full,
         "contacts_with_both_side_nodewise_isotherm":both_full,
         "all_mathematically_crossed_isotherm_depths_min_max_m":
