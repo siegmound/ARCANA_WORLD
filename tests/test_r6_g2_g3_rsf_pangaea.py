@@ -26,6 +26,9 @@ def test_valid_model_extracted_source_has_provenance_and_no_arcana_authority():
     assert len(doc["fitted_model_rows"])==1
     assert len(doc["source_sha256"])==64
     assert doc["lab_temperature_k"]==293.15
+    assert doc["lab_effective_normal_stress_pa"] is None
+    assert doc["lab_nominal_effective_normal_stress_pa"]==1e7
+    assert doc["per_experiment_effective_normal_stress_qualified"] is False
     assert not doc["arcana_fault_bound"]
     assert doc["physical_T1"] is None
 
@@ -41,7 +44,8 @@ def test_two_state_velocity_step_exact_aging_and_steady_limits():
     after=relative_friction_response(row,v1,long_term)
     assert after["delta_mu"]==pytest.approx((row["a"]-sum(s["b"] for s in row["states"]))*math.log(v1/v0))
     assert after["absolute_shear_traction_pa"] is None
-    assert after["steady_delta_tau_pa"]==pytest.approx(after["steady_delta_mu"]*1e7)
+    assert after["steady_delta_tau_pa"] is None
+    assert after["delta_tau_pa"] is None
 
 def test_time_step_semigroup():
     row=fit();th=steady_reference_states(row);v=row["v1_m_s"]
@@ -91,6 +95,11 @@ def test_cli_immutable_provenance_and_manifest(tmp_path,monkeypatch):
     assert len(rows)==1
     assert rows[0]["immediate_delta_mu"]==pytest.approx(0.012*math.log(10))
     assert rows[0]["steady_delta_mu"]==pytest.approx(0.002*math.log(10))
+    assert rows[0]["immediate_delta_tau_pa"] is None
+    assert rows[0]["steady_delta_tau_pa"] is None
     assert rows[0]["absolute_traction_pa"] is None
+    inventory=payload["dataset_fit_inventory"]
+    assert inventory["rows"]==1 and inventory["two_state_rows"]==1
+    assert inventory["unique_experiment_ids"]==1
     with pytest.raises(RSFSourceError,match="RSF_OUTPUT_EXISTS_NO_OVERWRITE"):
         main()

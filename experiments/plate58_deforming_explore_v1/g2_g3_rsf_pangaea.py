@@ -117,7 +117,14 @@ def ingest_pangaea_table2(data: bytes) -> dict:
     return {"schema":SCHEMA,"authority":AUTHORITY,"doi":DOI,
        "source_sha256":raw_sha,"raw_file_bytes":len(data),
        "fitted_model_rows":records,"model_extracted_not_instrument_raw":True,
-       "lab_temperature_k":293.15,"lab_effective_normal_stress_pa":1e7,
+       "lab_temperature_k":293.15,
+       "lab_nominal_effective_normal_stress_pa":1e7,
+       "lab_effective_normal_stress_pa":None,
+       "per_experiment_effective_normal_stress_qualified":False,
+       "normal_stress_source_exception_note":(
+           "The 2017 publication reports prior Tohoku sample tests at "
+           "7 MPa rather than nominal 10 MPa. This Table 2 file has no "
+           "per-row effective normal stress field."),
        "brine_nacl_mass_percent":3.5,
        "arcana_lithology_bound":False,"arcana_fault_bound":False,
        "physical_T1":None,"mechanical_solve_authorized":False}
@@ -152,19 +159,19 @@ def advance_aging_states(row: dict, theta: list[float], velocity_m_s: float,
 
 def relative_friction_response(row: dict, velocity_m_s: float,
                                theta: list[float], *,
-                               effective_normal_pa: float=1e7) -> dict:
-    """Return delta(mu), delta(tau) w.r.t. v0 steady. Never absolute traction.
+                               effective_normal_pa: float | None=None) -> dict:
+    """Return delta(mu) w.r.t. v0 steady. No pressure-qualified stress here.
 
-    Only allow the two explicitly model-fit velocity endpoints and their
-    inclusive interval; off-range prediction requires separate scientific
-    acceptance and is rejected even though the equation is mathematically valid.
+    Only allow each source model-fit velocity step. The original paper
+    reports 7 MPa Tohoku tests alongside nominal 10 MPa tests; the fitted
+    parameter table has no per-row pressure column. Stress conversion is
+    blocked until an independent experiment-level pressure source exists.
     """
     v=number(velocity_m_s,"V",positive=True)
     v0=number(row["v0_m_s"],"V0",positive=True)
     v1=number(row["v1_m_s"],"V1",positive=True)
-    sigma=number(effective_normal_pa,"EFFECTIVE_NORMAL",positive=True)
-    need(math.isclose(sigma,1e7,rel_tol=0,abs_tol=1e-6),
-         "RSF_PRESSURE_OUTSIDE_PUBLISHED_LAB_SUPPORT")
+    need(effective_normal_pa is None,
+         "RSF_PER_EXPERIMENT_EFFECTIVE_NORMAL_NOT_YET_BOUND")
     need(min(v0,v1)*(1-1e-12)<=v<=max(v0,v1)*(1+1e-12),
          "RSF_VELOCITY_OUTSIDE_SOURCE_STEP_SUPPORT")
     states=row["states"]
@@ -182,8 +189,10 @@ def relative_friction_response(row: dict, velocity_m_s: float,
     ss=(a-bsum)*math.log(v/v0)
     need(math.isfinite(delta_mu) and math.isfinite(ss),
          "RSF_RELATIVE_STRESS_NUMERIC_INVALID")
-    return {"delta_mu":delta_mu,"delta_tau_pa":sigma*delta_mu,
-        "steady_delta_mu":ss,"steady_delta_tau_pa":sigma*ss,
+    return {"delta_mu":delta_mu,"delta_tau_pa":None,
+        "steady_delta_mu":ss,"steady_delta_tau_pa":None,
+        "per_experiment_effective_normal_stress_pa":None,
+        "source_pressure_qualification_missing":True,
         "direct_effect_a":a,"state_effect_b_total":bsum,
         "source_lab_only":True,"absolute_mu_known":False,
         "absolute_shear_traction_pa":None,"fault_normal_direction":None,
@@ -221,11 +230,29 @@ def main():
             "assumed_initial_state":"STEADY_AT_PUBLISHED_V0_NOT_OBSERVED",
             "immediate_delta_mu":immediate["delta_mu"],
             "steady_delta_mu":stationary["delta_mu"],
-            "immediate_delta_tau_pa_at_lab_10MPa":immediate["delta_tau_pa"],
-            "steady_delta_tau_pa_at_lab_10MPa":stationary["delta_tau_pa"],
+            "immediate_delta_tau_pa":None,
+            "steady_delta_tau_pa":None,
+            "per_experiment_effective_normal_stress_pa":None,
             "absolute_traction_pa":None,
             "arcana_fault_source_bound":False})
     report["conditional_lab_velocity_step_predictions"]=predictions
+    fitted=report["fitted_model_rows"]
+    report["dataset_fit_inventory"]={
+        "rows":len(fitted),
+        "unique_source_events":len(set(x["event"] for x in fitted)),
+        "unique_sample_labels":len(set(x["sample_label"] for x in fitted)),
+        "unique_experiment_ids":len(set(
+            (x["event"],x["sample_label"],x["experiment"]) for x in fitted)),
+        "one_state_rows":sum(len(x["states"])==1 for x in fitted),
+        "two_state_rows":sum(len(x["states"])==2 for x in fitted),
+        "negative_a_minus_b_rows":sum(
+            x["published_a_minus_b"]<0 for x in fitted),
+        "zero_a_minus_b_rows":sum(
+            x["published_a_minus_b"]==0 for x in fitted),
+        "positive_a_minus_b_rows":sum(
+            x["published_a_minus_b"]>0 for x in fitted),
+        "independent_test_count_from_model_fit_rows":None,
+        "all_pressure_stress_deltas_unqualified":True}
     # Do not repackage source, and never emit an inferred absolute traction.
     args.output.mkdir(parents=True,exist_ok=False)
     rp=args.output/"REPORT.json"
