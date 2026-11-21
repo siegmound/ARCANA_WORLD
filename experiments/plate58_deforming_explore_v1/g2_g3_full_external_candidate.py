@@ -105,7 +105,7 @@ def assemble_full_candidate_external(*,stitched,exterior,
              and stitched["source_G3_exterior_triangle_count"]==len(ext),
              "FULL_G3_ORIGINAL_SOURCE_SCOPE_COUNTS_INVALID")
     else:
-        need(n==11 and len(ext)==2 and len(source_cut_edges)==4
+        need(n==11 and len(ext)==4 and len(source_cut_edges)==4
              and stitched.get("fixture_only") is True,
              "FULL_G3_FIXTURE_SCOPE_MUST_BE_EXPLICIT")
     core_tractions=_ids(core_basal_tractions_by_triangle,

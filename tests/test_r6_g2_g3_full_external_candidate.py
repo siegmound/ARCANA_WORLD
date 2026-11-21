@@ -43,7 +43,7 @@ def synthetic_full_candidate():
         np.asarray([coords[n] for n in ids]))
     unit_east={n:east[i] for i,n in enumerate(ids)}
     core={100+i:(9,1+i,1+((i+1)%8)) for i in range(8)}
-    exterior={200:(1,2,10),201:(3,4,11)}
+    exterior={200:(1,2,10),201:(3,4,11),202:(5,6,10),203:(7,8,11)}
     cuts=[
         {"source_parent_node_ids":[1,10],"side":"north","adjacent_plate_id":5},
         {"source_parent_node_ids":[2,10],"side":"east","adjacent_plate_id":5},
@@ -104,8 +104,8 @@ def synthetic_full_candidate():
         "source_interface_node_ids":list(range(1,9)),
         "source_core_only_node_id":9,
         "source_G2_core_triangle_count":8,
-        "source_G3_exterior_triangle_count":2,
-        "source_original_full_domain_triangle_count":10,
+        "source_G3_exterior_triangle_count":4,
+        "source_original_full_domain_triangle_count":12,
         "candidate_whole_domain_internal_force_N":internal.ravel().tolist(),
         "known_exterior_external_and_GPE_force_N":known.ravel().tolist(),
         "known_PARTIAL_residual_N_NOT_EQUILIBRIUM":
@@ -144,8 +144,8 @@ def test_full_core_and_exterior_have_no_unowned_loads_and_partition():
     r=assemble_full_candidate_external(**a)
     assert r["status"]==STATUS
     assert r["source_original_core_triangles"]==8
-    assert r["source_original_exterior_triangles"]==2
-    assert r["source_original_basal_triangles"]==10
+    assert r["source_original_exterior_triangles"]==4
+    assert r["source_original_basal_triangles"]==12
     assert r["source_external_cut_edges"]==4
     assert len(r["candidate_full_channel_external_N"])==22
     old=np.asarray(r["original_external_known_N"])
@@ -243,3 +243,17 @@ def test_runner_does_not_accept_core_basal_without_core_gpe():
     s["core_basal_tractions_by_triangle"]=None
     with pytest.raises(StitchedCandidateError):
         validate_full_scenario(s,ids,8)
+
+
+def test_fixture_outer_facet_node_coverage_is_exact():
+    a=synthetic_full_candidate()
+    ext_nodes={node for tri in a["source_exterior_triangles"].values()
+               for node in tri}
+    assert ext_nodes==set(a["exterior"]["source_node_order"])
+    core_nodes={node for tri in a["source_core_triangles"].values()
+                for node in tri}
+    assert len(core_nodes)==9
+    assert core_nodes & ext_nodes == set(range(1,9))
+    assert core_nodes - ext_nodes == {9}
+    assert len(a["source_exterior_triangles"])==4
+    assert len(a["source_core_triangles"])==8
