@@ -1,3 +1,7 @@
+CURRENT NEXT — 2026-11-21 — OPERATOR FAIR PASS on exact code `f4524ec2`: new full-core/exterior G3 candidate channel suite + previous G2/G3 suites `134 passed in 0.67s`, `FULL_REGRESSION_EXIT_CODE=0`. Prior targeted `38/38 PASS` at `1f7af785`. Both test gates conclude only the source-indexed engineering **candidate** external load integration; not a physical equilibrium. Physical work MUST select true source lithology/hydration/pressure + valid lab laws, full normal/tangential core+exterior mantle/base and external cut forces, consistent one-owner GPE, real thin-sheet fault slip/transmission, compatible nonlinear solver before physical T1. Do not run null-template or assume missing physics equals zero. FAIR evidence record docs/arcana/R6_G2_G3_FULL_EXTERNAL_CANDIDATE_FAIR_134_REGRESSION_RATIFICATION_20261121.md. `D-024=ACTIVE`; `physical_T1=null`; `MECHANICAL_SOLVE_AUTHORIZED=false`.
+
+---
+
 CURRENT NEXT — 2026-11-21 — Targeted FAIR G2/G3 full core external candidate PASS reported from operator terminal: 38/38 in 0.28s, exit code 0 on exact source 1f7af785; 3 test files (14 new candidate, 10 runner, 14 stitch). The new dev branch remains UNMERGED and broader G2/G3 regression still PENDING at this SHA. Preserve `targeted.log` on FAIR and run full prior G2/G3 regression with tee/PIPESTATUS (no `set -e`). Do not infer physical equilibrium, material laws, basal-normal support, slip mechanics or T1. Evidence: docs/arcana/R6_G2_G3_FULL_EXTERNAL_CANDIDATE_FAIR_TARGETED_RECEIPT_20261121.md. D-024 ACTIVE; physical_T1=null.
 
 ---
