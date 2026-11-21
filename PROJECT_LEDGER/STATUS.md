@@ -1,3 +1,7 @@
+CURRENT — 2026-11-21 — DEV SCIENCE only: T0 source-geochemistry identifiability audited against user uploaded Canon 12/53/57 + R6 B6N8L/N (63,620 thermal eligible native cells, 0 actual compositional assignments). Genuine published terrestrial bulk/reference model chemical tables vendor-pinned in dev for four continental reservoirs + one depleted MORB mantle, plus unit-null N-type MORB trace analogue, **not** assigned to plate 5:8:11 or 180×360 world. Oxide-equivalent element mass balance without normalization/redox speciation; no mineral assemblage, fluid source, fault law, ore deposit, Deep accessibility or T1. FAIR tests not yet run; branch `r6/t0-earth-geochemical-reference-library-20261121`; parent last FAIR full baseline 183/183 PASS. D-024 ACTIVE physical_T1=null.
+
+---
+
 CURRENT — 2026-11-21 — FAIR original T0 plate5:8:11 geological/source contact thermal applicability PASSED: **17/17 targeted, 183/183 defined regression**, exact tested `3b9908a6abefca61e1080d607f55535b8d36a448`. Original 8x8 contact faces 12/12 and 16x16 36/36 have source nodal crust 293.15K root reachability on both owner faces (not necessarily shared depth); T0 gouge mineralogy, water, fault sidedness, normal pressure, mechanical equilibrium **not qualified**, Earth PANGAEA model rows physically assigned 0/66. No source PRE material ID is a mineral classification. See `docs/arcana/R6_G2_G3_T0_CONTACT_MATERIAL_THERMAL_FAIR_183_RECEIPT_20261121.md`. D-024 ACTIVE; physical_T1=null; HistoryStore unauthorized.
 
 ---
