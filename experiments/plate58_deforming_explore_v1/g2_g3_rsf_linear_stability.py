@@ -80,6 +80,8 @@ def critical_normalized_stiffness(row):
         return {**baseline,"qualification":"EXCLUDED_NONPOSITIVE_DIRECT_EFFECT_OR_NEGATIVE_STATE_WEIGHT"}
     if published==0.:
         return {**baseline,"qualification":"EXCLUDED_SOURCE_ROUNDED_ZERO_A_MINUS_B"}
+    if published*effective<0:
+        return {**baseline,"qualification":"EXCLUDED_PUBLISHED_AND_DERIVED_SIGN_CONFLICT"}
     if effective>=0:
         # For a>0 and b_i>=0, the aging slider is asymptotically stable
         # at every strictly positive normalized elastic stiffness.
@@ -109,7 +111,8 @@ def critical_normalized_stiffness(row):
     eligible=[float(z.real) for z in roots
               if abs(float(z.imag))<=1e-8*max(1.,abs(float(z.real)))
               and float(z.real)>floor*(1+1e-9)+1e-14]
-    need(len(eligible)==1, "RSF_STABILITY_TWO_STATE_RH_THRESHOLD_NOT_IDENTIFIABLE")
+    if len(eligible)!=1:
+        return {**baseline,"qualification":"EXCLUDED_TWO_STATE_RH_THRESHOLD_NOT_IDENTIFIABLE"}
     q=eligible[0]
     need((c2_slope*q+c2_const)>0 and (c1_slope*q+c1_const)>0,
          "RSF_STABILITY_TWO_STATE_MARGINAL_WRONG_BRANCH")

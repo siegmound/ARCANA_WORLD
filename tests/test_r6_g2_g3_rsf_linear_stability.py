@@ -158,3 +158,9 @@ def test_complete_sha_bound_66_fitted_row_pipeline_and_immutability(tmp_path,mon
     with pytest.raises(StabilityInputError,match="REPORT_MANIFEST_NOT_SOURCE_BOUND"):
         build_source_bound_evidence(raw,ingest_dir,tmp_path/"NEW_NEVER_CREATED")
     assert not (tmp_path/"NEW_NEVER_CREATED").exists()
+
+def test_conflicting_rounded_and_derived_friction_signs_are_unqualified():
+    r=row(a=.01,b1=.0102,published=.0001)
+    out=critical_normalized_stiffness(r)
+    assert out["qualification"]=="EXCLUDED_PUBLISHED_AND_DERIVED_SIGN_CONFLICT"
+    assert out["critical_K_over_sigma_effective_m_inv"] is None
