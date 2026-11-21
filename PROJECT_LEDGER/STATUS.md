@@ -1,3 +1,7 @@
+CURRENT — 2026-11-21 — FAIR evidence: 19/19 normalized RSF targeted and 166/166 G2/G3 full regression PASS on `3c02bd0365fd0a399cd21ec957ef2187d2410ea0`, plus 66 SHA-pinned PANGAEA model-fit rows analyzed in Earth laboratory one/two-state spring-slider. 18 conditional positive Kcrit/sigma thresholds, interval 0.6352322759421543..298.85057471264366 m^-1; 33 mathematically stable in surrogate, 15 excluded; all per-fault pressure, absolute traction, stiffness, ARCANA lithology/fault mapping NULL. Correct SCIENCE gate is laboratory-only, *not* physical T0 solve. See `docs/arcana/R6_G2_G3_RSF_NORMALIZED_STABILITY_FAIR_166_SOURCE_ANALYSIS_20261121.md`. D-024 ACTIVE, physical_T1=null, no HistoryStore or canonical production.
+
+---
+
 CURRENT — 2026-11-21 — DEVELOPMENT ONLY: implemented quantitative laboratory `Kcrit/sigma_eff` [m^-1] and both one-/two-state aging slider linearized stability from 66 publisher-fitted RSF rows, preserving exact PANGAEA raw SHA b033466b212db38eff8f12e3119ff4b36188cdd80a5894e2c70dbc0e57463c7d and previous `INGEST_NEW_02` hashes. Local authoring 19/19 PASS, exact source/test Git blob hashes MATCH; FAIR tests and real-row output NOT YET RUN. No per-row sigma_eff, true K, mu_ref, source 5:8:11 gouge geology, pressure, fault sidedness, mantle G3 loads or T0 physical equilibrium are authorized. Branch `r6/g2g3-rsf-normalized-stability-20261121`. Reference `docs/arcana/R6_G2_G3_RSF_NORMALIZED_QUASISTATIC_STABILITY_SCIENCE_20261121.md`. D-024 ACTIVE physical_T1=null.
 
 ---
