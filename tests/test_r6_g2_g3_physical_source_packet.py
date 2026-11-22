@@ -31,10 +31,10 @@ def matrix():
     }
 
 
-def fixture(extent=8):
+def fixture(extent=8, *, parent_34587_in_8=False):
     size = extent+1
     ids = [100000+i for i in range(size*size)]
-    if extent==16:
+    if extent==16 or parent_34587_in_8:
         ids[len(ids)//2] = 34587
     tr = {}
     tid = 500000
@@ -79,7 +79,11 @@ def fixture(extent=8):
         "original_FEG_sha256","original_PRE_sha256")}
     return dict(extent=extent,parent_ids=ids,core_triangles=core,
                 exterior_triangles=ext,source_cut_edges=cut,
-                pre_by_node=pre,source_hashes=hashes,matrix=matrix())
+                pre_by_node=pre,
+                source_3plus_plate_junctions=(
+                    [{"parent_node_id":34587,"incident_plates":[5,8,11]}]
+                    if extent==16 else []),
+                source_hashes=hashes,matrix=matrix())
 
 
 @pytest.mark.parametrize("extent",[8,16])
@@ -96,11 +100,27 @@ def test_full_source_original_support_compiles_with_explicit_null_physics(extent
     assert all(len(c)==16 for c in
                index["source_original_PRE_model_T0_thermal_profiles_by_parent_node"].values())
     assert len(proposal["full_basal_tangential_normal_load_Pa"])==expected[1]
+    assert index["source_actual_3plus_plate_junctions"] == (
+        [] if extent==8 else
+        [{"parent_node_id":34587,"incident_plates":[5,8,11]}])
+    assert index["source_parent_34587_present_in_footprint"] == (extent==16)
     assert all(v is None for v in proposal["outer_cut_physical_traction_N_per_m"].values())
     assert proposal["sided_fault_transmission_and_triple_junction"] is None
     assert proposal["physical_T1"] is None
     assert json.loads(json.dumps([index,proposal],allow_nan=False))==[index,proposal]
     m.verify_unselected(index,proposal)
+
+
+def test_parent_34587_can_be_in_8x8_without_three_plate_junction():
+    # Regresses the original FAIR NEW01 8x8 readback failure. A parent-node
+    # identifier is not an assertion of local three-plate topology.
+    index, proposal = m.create_packet(**fixture(8, parent_34587_in_8=True))
+    assert index["source_parent_34587_present_in_footprint"] is True
+    assert index["source_actual_3plus_plate_junctions"] == []
+    assert len(index["original_parent_node_order"]) == 81
+    assert proposal["sided_fault_transmission_and_triple_junction"] is None
+    assert proposal["physical_T1"] is None
+    m.verify_unselected(index, proposal)
 
 
 def test_repeat_is_bitwise_deterministic():
@@ -127,10 +147,13 @@ def test_source_matrix_pin_and_authority_from_real_repository():
     "invalid_triangle_owner","triangle_repeated_vertex","missing_pre",
     "fake_pre_owner","cut_missing","cut_duplicate","cut_invented_id",
     "cut_outside_parent","source_sha_absent","source_sha_nonhex",
-    "fake_triple_8","missing_triple_16","extent_unsupported",
+    "invented_three_plate_junction_8","missing_triple_junction_16",
+    "malformed_junction_record","wrong_junction_plates",
+    "extent_unsupported",
 ])
 def test_source_integrity_fail_closed(attack):
-    x=fixture(16 if attack=="missing_triple_16" else 8)
+    x=fixture(16 if attack in (
+        "missing_triple_junction_16","wrong_junction_plates") else 8)
     if attack=="node_count":x["parent_ids"].pop()
     if attack=="duplicate_node":x["parent_ids"][0]=x["parent_ids"][1]
     if attack=="missing_basal":x["exterior_triangles"].pop(next(iter(x["exterior_triangles"])))
@@ -154,8 +177,16 @@ def test_source_integrity_fail_closed(attack):
     if attack=="cut_outside_parent":x["source_cut_edges"][0]["source_parent_node_ids"]=[99999,100000]
     if attack=="source_sha_absent":x["source_hashes"].pop("original_FEG_sha256")
     if attack=="source_sha_nonhex":x["source_hashes"]["original_FEG_sha256"]="z"*64
-    if attack=="fake_triple_8":x["parent_ids"][0]=34587
-    if attack=="missing_triple_16": x["parent_ids"][len(x["parent_ids"])//2]=55555
+    if attack=="invented_three_plate_junction_8":
+        x["source_3plus_plate_junctions"]=[{
+            "parent_node_id":x["parent_ids"][0],"incident_plates":[5,8,11]}]
+    if attack=="missing_triple_junction_16":
+        x["source_3plus_plate_junctions"]=[]
+    if attack=="malformed_junction_record":
+        x["source_3plus_plate_junctions"]=[{
+            "parent_node_id":x["parent_ids"][0],"incident_plates":[5,8]}]
+    if attack=="wrong_junction_plates":
+        x["source_3plus_plate_junctions"][0]["incident_plates"]=[5,8,12]
     if attack=="extent_unsupported":x["extent"]=9
     with pytest.raises(m.PhysicalSourcePacketError):
         m.create_packet(**x)
