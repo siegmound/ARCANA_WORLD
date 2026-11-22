@@ -1,3 +1,7 @@
+CURRENT — 2026-11-22 — DEV ONLY R6 research query bridge and 100/1000-year physical time-step readiness audit, `r6/geological-research-query-dt-feasibility-20261122`; main `34bdfd884a418cd54ba41c24ef79b1f51f9d41da` FAIR 275/275. New 29 expected tests, 304 combined expected, FAIR PENDING. Source-only query protects original T0 and natural vs reference density distinction; user sample declared unverified, no geologic ore/Deep inference. Old matrix explicit T0 thermal/evolution blocked => 100-year and 1000-year T1 NO-GO; arithmetic age only; no physical dt or HistoryStore produced. Doc `docs/arcana/R6_GEOLOGICAL_RESEARCH_QUERY_AND_T0_SHORT_DT_FEASIBILITY_20261122.md`. D-024 ACTIVE.
+
+---
+
 CURRENT — 2026-11-22 — FAIR source-extraction engineering accepted: `21/21` targeted PASS, `275/275` selected R6 G2/G3+geochemistry+geology regression PASS, first true original T0 source cell plate 8 oceanic reference (6500m crust, rho reference 2890 kg/m3) with 4 child geometries and no physical child materials. Original 2 binary NPZ SHA check exercised on FAIR through adapter; raw logs not independently fetched. New source extraction software, not physical world history. B6N8N thermophysical eligibility is distinct and not per-cell attested here; original geochemical placement 1..12 remains outdated. Receipt `docs/arcana/R6_SPARSE_NATIVE_T0_SOURCE_JOIN_FAIR_275_RECEIPT_20261122.md`. D-024 ACTIVE, T1 null and HistoryStore generation unauthorized.
 
 ---
