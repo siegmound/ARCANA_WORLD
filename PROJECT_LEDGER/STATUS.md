@@ -1,3 +1,7 @@
+CURRENT — 2026-11-22 — FAIR scientific/engineering evidence on source HEAD `041704f5e37c28ce7cccbe2f72b0a2ea56df33b5`: 29/29 research-query targeted PASS, 304/304 defined R6 extended regression PASS; native T0 read-only query plate 8/4 geometry-only children PASS; separate 100/1000 y physical readiness gate correctly reports NO-GO with exit 0, zero T1 and zero WorldHistory. Reference rho is not measured cell density; no mineral/ore/Deep claimed. Old B6N8H blockers plus ongoing D-024 remain; no thermo-mechanical production. Receipt `docs/arcana/R6_GEOLOGICAL_RESEARCH_QUERY_DT_GATE_FAIR_304_RECEIPT_20261122.md`. Next potential isolated *noncanonical* thermal-only 100-year feasibility pilot with explicit qualified or synthetic input authority. D-024 ACTIVE physical_T1=null.
+
+---
+
 CURRENT — 2026-11-22 — DEV ONLY R6 research query bridge and 100/1000-year physical time-step readiness audit, `r6/geological-research-query-dt-feasibility-20261122`; main `34bdfd884a418cd54ba41c24ef79b1f51f9d41da` FAIR 275/275. New 29 expected tests, 304 combined expected, FAIR PENDING. Source-only query protects original T0 and natural vs reference density distinction; user sample declared unverified, no geologic ore/Deep inference. Old matrix explicit T0 thermal/evolution blocked => 100-year and 1000-year T1 NO-GO; arithmetic age only; no physical dt or HistoryStore produced. Doc `docs/arcana/R6_GEOLOGICAL_RESEARCH_QUERY_AND_T0_SHORT_DT_FEASIBILITY_20261122.md`. D-024 ACTIVE.
 
 ---
