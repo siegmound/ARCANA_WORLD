@@ -324,6 +324,45 @@ def verify_unselected(index: dict, proposal: dict) -> None:
             "PHYSICAL_PACKET_UNQUALIFIED_GROUP_PROMOTION")
 
 
+def verify_cross_extent_provider_chain(index8: dict, index16: dict) -> None:
+    """Both extents share four upstream manifests, NOT their FEG/PRE files.
+
+    The 8x8 and 16x16 original geometry and passive PRE datasets differ in
+    node and triangle counts. Their hashes must remain individually bound,
+    never mistakenly compared as if the two regional source files were equal.
+    """
+    require(type(index8) is dict and type(index16) is dict
+            and index8.get("schema") == SCHEMA
+            and index16.get("schema") == SCHEMA
+            and index8.get("extent_cells") == 8
+            and index16.get("extent_cells") == 16
+            and index8.get("physical_T1") is None
+            and index16.get("physical_T1") is None
+            and index8.get("history_store_mutations") == 0
+            and index16.get("history_store_mutations") == 0,
+            "PHYSICAL_PACKET_CROSS_EXTENT_SCOPE_INVALID")
+    a, b = index8.get("source_hashes"), index16.get("source_hashes")
+    require(isinstance(a, dict) and isinstance(b, dict)
+            and set(a) == set(b) == {
+                "multiscale_manifest_sha256", "interface_manifest_sha256",
+                "nodal_manifest_sha256", "force_manifest_sha256",
+                "original_FEG_sha256", "original_PRE_sha256"},
+            "PHYSICAL_PACKET_CROSS_EXTENT_SOURCE_HASH_KEYS_INVALID")
+    shared = ("multiscale_manifest_sha256", "interface_manifest_sha256",
+              "nodal_manifest_sha256", "force_manifest_sha256")
+    require(all(type(a[k]) is str and len(a[k]) == 64 and a[k] == b[k]
+                for k in shared),
+            "PHYSICAL_PACKET_CROSS_EXTENT_UPSTREAM_MANIFEST_DRIFT")
+    require(all(type(a[k]) is str and type(b[k]) is str
+                and len(a[k]) == len(b[k]) == 64 and a[k] != b[k]
+                for k in ("original_FEG_sha256", "original_PRE_sha256")),
+            "PHYSICAL_PACKET_CROSS_EXTENT_REGIONAL_FEG_PRE_NOT_DISTINCT")
+    require(index8.get("source_actual_3plus_plate_junctions") == []
+            and index16.get("source_actual_3plus_plate_junctions") == [
+                {"parent_node_id": 34587, "incident_plates": [5, 8, 11]}],
+            "PHYSICAL_PACKET_CROSS_EXTENT_JUNCTION_SOURCE_DRIFT")
+
+
 def compile_from_authentic_sources(root: Path, *, multiscale: Path,
                                    interface: Path, nodal: Path, force: Path,
                                    extent: int) -> tuple[dict, dict]:
