@@ -131,6 +131,10 @@ def test_1000y_dirichlet_manufactured_exact_and_energy(n, dt):
         n_cells=n, step_years=dt, years=1000,
         material=material(), manufactured=True)
     assert r["energy_balance_pass"]
+    assert type(r["energy_balance_pass"]) is bool
+    assert type(r["boundary_heat_into_column_j_m2"]) is float
+    assert type(r["energy_balance_residual_j_m2"]) is float
+    assert json.loads(json.dumps(r, allow_nan=False)) == r
     assert abs(r["energy_balance_residual_j_m2"]) <= 1
     assert r["max_abs_error_against_synthetic_exact_k"] < 0.001
     assert r["physical_T1"] is None
@@ -152,6 +156,8 @@ def test_matched_initial_dirichlet_has_no_fake_exact_claim():
         n_cells=100, step_years=0.25, years=1000,
         material=material(), manufactured=False)
     assert r["max_abs_error_against_synthetic_exact_k"] is None
+    assert type(r["energy_balance_pass"]) is bool
+    assert json.loads(json.dumps(r, allow_nan=False)) == r
     assert r["energy_balance_pass"]
     assert r["physical_T1"] is None
 
@@ -188,6 +194,10 @@ def test_full_noncanonical_study_with_existing_100y_oracle(monkeypatch):
     assert result["automatic_promotion_authorized"] is False
     assert result["history_store_mutations"] == 0
     assert result["physical_T1"] is None
+    # Entire nested experiment report, not only a manufactured-case fragment,
+    # must be strict JSON with no NumPy bool or floating NaN placeholders.
+    payload = json.dumps(result, allow_nan=False)
+    assert json.loads(payload) == result
     assert result == m.run(ROOT, config())
 
 
