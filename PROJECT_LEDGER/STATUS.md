@@ -1,3 +1,7 @@
+CURRENT — 2026-11-22 — DEV branch `r6/experimental-thermal-column-100y-noncanonical-20261122` adds pinned experiment noncanon governance + explicit 100yr synthetic insulated-source thermal finite-volume benchmark + `scripts/r6_experimental_thermal_100y_fair_gate.sh` (immutable evidence, 34 new cases / expected selected regression 338, then source bound run); **FAIR NOT YET RUN**, no true ARCANA T0 thermal profile or full planetary T0→T1 simulated, no physical history. Main remains last tested 304/304 `2ecabde7f86f052ecd25eaa34a6e4042dd7f13e7`. D-024 ACTIVE physical_T1=null.
+
+---
+
 CURRENT — 2026-11-22 — DEV ONLY: strict NO-AUTO-CANON experimental policy (remains even after future simulator completion) + synthetic 100-year thermal-column numeric pilot on source T0 geometry/authorial reference properties. Isolated `r6/experimental-thermal-column-100y-noncanonical-20261122`; source model cell plate8 thickness6500m, experiment 1000m cosine thermal profile insulated top/base, reference rho/Cp/k/Q, conservative finite volume, three-level convergence, exact analytic benchmark and energy gate. NEVER physical historical T1 or natural mineral/Deep/ore assignments; CLI blocks evidence paths inside source repo. Last main FAIR 304/304 PASS; new 34 expected tests, 338 total expected, **FAIR PENDING**, branch not integrated. Doc `docs/arcana/R6_EXPERIMENTAL_NONCANONICAL_100Y_THERMAL_COLUMN_PILOT_20261122.md`. D-024 ACTIVE physical_T1=null.
 
 ---
