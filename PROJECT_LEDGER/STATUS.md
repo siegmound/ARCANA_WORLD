@@ -1,3 +1,7 @@
+CURRENT — 2026-11-22 — FAIR source-extraction engineering accepted: `21/21` targeted PASS, `275/275` selected R6 G2/G3+geochemistry+geology regression PASS, first true original T0 source cell plate 8 oceanic reference (6500m crust, rho reference 2890 kg/m3) with 4 child geometries and no physical child materials. Original 2 binary NPZ SHA check exercised on FAIR through adapter; raw logs not independently fetched. New source extraction software, not physical world history. B6N8N thermophysical eligibility is distinct and not per-cell attested here; original geochemical placement 1..12 remains outdated. Receipt `docs/arcana/R6_SPARSE_NATIVE_T0_SOURCE_JOIN_FAIR_275_RECEIPT_20261122.md`. D-024 ACTIVE, T1 null and HistoryStore generation unauthorized.
+
+---
+
 CURRENT — 2026-11-22 — DEV ONLY `r6/geology-sparse-source-backed-native-t0-20261122`: new sparse source-driven 210 Ma native T0 research adapter, zero global mineral precomputation, source NPZ and manifest content authenticity pins; only selected <=8 cells, exact 0..11 plate joins, authored reference model rho never measured local rock rho; geometry-only on-demand request (<=256 child bounds) no T1. Engineering FAIR last main 254/254 PASS; new 21 targeted / 275 selected extended tests **NOT EXECUTED YET**. Natural density/mode/ore/Deep = null, no HistoryStore mutation, no mechanical solve. Older authorial chemistry experiment plate 1..12 guard must not be used as real plate source. Doc `docs/arcana/R6_SPARSE_NATIVE_T0_SOURCE_GEOLOGICAL_ADAPTER_20261122.md`. D-024 ACTIVE physical_T1=null.
 
 ---
