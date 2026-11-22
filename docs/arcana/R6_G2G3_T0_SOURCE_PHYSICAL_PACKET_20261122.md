@@ -59,3 +59,49 @@ D_024 = ACTIVE
 physical_T1 = null
 WORLD_HISTORY_PRODUCTION_AUTHORIZED = FALSE
 ```
+
+
+## FAIR NEW01 source-readback incident and NEW02 corrective scope (2026-11-22)
+
+**The first FAIR test suite PASS was not a successful source packet.** Operator terminal at exact SHA `ef285fa05eb278143a2700f73aacf3abcdfbb571`:
+
+```text
+PHYSICAL_SOURCE_PACKET_SHA=ef285fa05eb278143a2700f73aacf3abcdfbb571
+38 passed in 0.13s
+406 passed in 3.26s
+--- Read ORIGINAL FAIR FEG/PRE + four source manifest chain (8x8) ---
+PhysicalSourcePacketError: PHYSICAL_PACKET_ORIGINAL_TRIPLE_NODE_DRIFT
+```
+
+The error was raised inside `create_packet` while attempting the source-authenticated 8×8 readback, before source index/manifest publication; the 16×16 readback was not reached. Preserve `TARGET_38_NEW01` and `SELECTED_406_NEW01` logs as first-attempt evidence, **not** as evidence of a published source packet.
+
+### Root cause and scientifically correct interpretation
+
+The original guard `(34587 in parent_ids) == (extent == 16)` incorrectly equated **global parent-node membership in a footprint** with **a locally incident triple-plate junction**. The FAIL at 8×8 implies the original selected 8×8 parent-node list includes `34587`; that does **not** imply three plates in that 8×8 source region. The existing SHA-chained interface provider, `g3_multiscale_interface.py`, instead computes `actual_3plus_plate_junctions` from source incident plate ownership. The source-inventory decision maintains *zero* original 3+-plate junctions for 8×8 and one original `34587` junction with plates `[5,8,11]` for 16×16. The new compiler requires that provider's verified incidence records and its matching boolean; it no longer infers a junction from a node ID alone.
+
+**No scientific state or physical rock/force/fault authority changed.** Genuine original source index retains parent ID `34587` wherever present and reports `source_parent_34587_present_in_footprint` separately from `source_actual_3plus_plate_junctions`.
+
+### Second preventative correction before NEW02
+
+The old runner's final cross-extent check compared the *entire* `source_hashes` dictionaries as equal, including two hashes which **must be different** between 8×8 and 16×16: `original_FEG_sha256` and `original_PRE_sha256`. They are different files with different node/element support. The new `verify_cross_extent_provider_chain` function requires identity of the **four common SHA-verified upstream provider manifests**, while demanding **distinct valid source FEG and PRE hashes** and the correct regional junction identities. It rejects swapped/missing providers and pseudo-equal regional file hashes; never reuses an 8×8 FEG/PRE as the 16×16 source.
+
+New deterministic test cases cover 8×8 with parent 34587 but **no** actual triple, missing/spoofed/incorrect 3-plate incidence, and cross-extent source hash rules. The original science source-matrix pin and no-T1 tests are unchanged.
+
+**NEW02 planned gate**: **42 targeted tests**, **410 selected** (the 42 are included in 410). Locally, **40/40 portable tests PASS**; two repository-native matrix-pin tests cannot execute in the isolated local fixture environment, although both passed in the original FAIR NEW01 38/38. The updated bash runner syntax check passed. The original 100/1000-year numerical pilots and old evidence are untouched.
+
+Only a **fresh FAIR checkout of the exact new patch SHA** and successful 42/410 + BOTH authentic source readbacks under `NEW02` can qualify this engineering source packet. It still will **not** authorize mechanical T1, geological mineral/ore/Deep assignments, or canonical history.
+
+```text
+SOURCE_PACKET_NEW01_TARGETED=38/38_FAIR_OPERATOR_PASS
+SOURCE_PACKET_NEW01_SELECTED=406/406_FAIR_OPERATOR_PASS
+SOURCE_PACKET_NEW01_SOURCE_READBACK=FAIL_ORIGINAL_TRIPLE_NODE_GUARD
+SOURCE_PACKET_NEW02_TARGETED=FAIR_PENDING_EXPECTED_42
+SOURCE_PACKET_NEW02_SELECTED=FAIR_PENDING_EXPECTED_410
+SOURCE_PACKET_NEW02_SOURCE_8X8=FAIR_PENDING
+SOURCE_PACKET_NEW02_SOURCE_16X16=FAIR_PENDING
+PHYSICAL_T1=null
+D_024=ACTIVE
+WORLD_HISTORY_PRODUCTION_AUTHORIZED=false
+```
+
+Note for downstream work: the older `g2_g3_source_coupled_runner.source_inputs` also contains a 34587-by-extent guard. This packet calls `source_core_geometry`, not that full candidate runner; the older candidate path must have its own independently scoped source-incidence correction before an actual coupled source-run, rather than silently inheriting this package's qualification.
