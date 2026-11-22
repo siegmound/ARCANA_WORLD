@@ -67,6 +67,9 @@ The report describes only a **synthetic experimental trajectory**. It preserves 
 
 ## 5. FAIR validation — pending
 
+A fail-closed, evidence-preserving FAIR gate script is included at **scripts/r6_experimental_thermal_100y_fair_gate.sh**. It executes 34 targeted cases, 338 selected R6 regression cases, real source-verified synthetic 100-year numerical evolution and independent SHA/energy/analytic/no-canon assertions, in that order. Launch with **bash scripts/r6_experimental_thermal_100y_fair_gate.sh** from the checkout root in arcana-r6-linux. It refuses pre-existing log and report paths, without modifying or deleting earlier evidence. If a test fails, do not reinterpret a later result as qualified; create a distinct evidence name for any new FAIR attempt.
+
+
 No new FAIR 100-year benchmark result is claimed in this development stage. A previously validated selected R6 suite of 304 tests is the parent baseline. New tests in tests/test_r6_experimental_thermal_column_100y.py are **34 expected pytest cases**, targeting governance source SHA, reference-coefficient identity, synthetic input authority, 1000-year rejection, CFL, exact analytical benchmark, convergence, energy conservation, source adapter no-T1 rule, write-once report and exclusion of repository output. Therefore selected extended suite expectation is 304+34 = **338**, contingent on unchanged collection.
 
 After source/test checks PASS, execute this explicitly noncanonical experiment on FAIR:
