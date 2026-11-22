@@ -17,6 +17,9 @@ from experiments.plate58_deforming_explore_v1.g2_g3_coupled_weak_form import (
     MODEL_FAMILY,integrate_coupled_candidate,CoupledAssemblyError,need,
 )
 from experiments.plate58_deforming_explore_v1.g3_force_budget import edge_key
+from experiments.plate58_deforming_explore_v1.g2_g3_junction_source_guard import (
+    certify_regional_junction, SourceJunctionError,
+)
 
 SCHEMA="ARCANA_R6_G2_G3_SOURCE_CONNECTED_EXPLICIT_CANDIDATE_RUNNER_V1"
 INPUT_SCHEMA="ARCANA_R6_G2_G3_EXPLICIT_ENGINEERING_INPUT_V1"
@@ -123,8 +126,14 @@ def source_inputs(multiscale,interface,nodal,force,extent,scenario):
         local_nodes[i]:[float(n.latitude_deg),float(n.longitude_deg)]
         for i,n in enumerate(feg.nodes)
     }
-    need((34587 in set(map(int,reg["parent_node_ids"])))==(extent==16),
-         "G2_G3_COUPLED_ORIGINAL_TRIPLE_PROVENANCE_CHANGED")
+    # The global parent node 34587 can be present in the original 8x8
+    # footprint WITHOUT a locally incident three-plate junction. Use the
+    # source-authenticated interface provider to classify actual plate owners.
+    try:
+        junction=certify_regional_junction(local_nodes,iface,extent)
+    except SourceJunctionError as exc:
+        raise CoupledAssemblyError(
+            "G2_G3_COUPLED_SOURCE_JUNCTION_TOPOLOGY_INVALID:"+str(exc)) from exc
     source_order=list(map(int,iface["mechanical_node_order_interface_first"]))
     valid_nd={int(n):v for n,v in
               nd["source_PRE_by_parent_node"].items()}
@@ -153,7 +162,12 @@ def source_inputs(multiscale,interface,nodal,force,extent,scenario):
         "scope":{
             "model_family":MODEL_FAMILY,
             "source_scope":SOURCE_TYPES[extent],
-            "source_triple_parent_node_id":34587 if extent==16 else None,
+            "source_triple_parent_node_id":junction["local_triple_parent_id"],
+            "source_parent_34587_present_in_footprint":
+                junction["source_parent_34587_in_footprint"],
+            "source_actual_3plus_plate_junctions":
+                junction["source_actual_3plus_plate_junctions"],
+            "junction_source_is_not_a_fault_slip_law":True,
             "physical_source_authority_ratified":False,
             "mechanical_solve_authorized":False,
             "interface_contact_authority":"UNQUALIFIED",
