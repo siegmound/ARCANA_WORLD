@@ -20,10 +20,10 @@ export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 
 BASE="/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6"
-TARGET="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_TARGET_38_NEW01.log"
-FULL="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_SELECTED_406_NEW01.log"
-OUT8="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_8X8_NEW01"
-OUT16="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_16X16_NEW01"
+TARGET="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_TARGET_41_NEW02.log"
+FULL="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_SELECTED_409_NEW02.log"
+OUT8="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_8X8_NEW02"
+OUT16="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_16X16_NEW02"
 mkdir -p "$BASE"
 for path in "$TARGET" "$FULL" "$OUT8" "$OUT16"; do
   if [ -e "$path" ]; then
@@ -47,14 +47,14 @@ fi
 
 echo "PHYSICAL_SOURCE_PACKET_SHA=$(git rev-parse HEAD)"
 echo "PHYSICAL_SOURCE_PACKET_AUTHORITY=SOURCE_MODEL_REFERENCE_NOT_PHYSICAL_RATIFICATION"
-echo "--- 38 new source-packet targeted tests ---"
+echo "--- 41 new source-packet targeted tests ---"
 python -m pytest -q -ra --tb=short \
   tests/test_r6_g2_g3_physical_source_packet.py 2>&1 | tee "$TARGET"
-grep -Eq '(^|[[:space:]])38 passed in ' "$TARGET" || {
+grep -Eq '(^|[[:space:]])41 passed in ' "$TARGET" || {
   echo "FAIL: expected 38 new cases" >&2; exit 4;
 }
 
-echo "--- 406 selected R6 regression tests including 38 targeted ---"
+echo "--- 409 selected R6 regression tests including 41 targeted ---"
 python -m pytest -q -ra --tb=short \
   tests/test_r6_g2_g3_full_external_candidate.py \
   tests/test_r6_g2_g3_source_core_exterior_stitch.py \
@@ -82,7 +82,7 @@ python -m pytest -q -ra --tb=short \
   tests/test_r6_experimental_thermal_column_1000y.py \
   tests/test_r6_g2_g3_physical_source_packet.py \
   2>&1 | tee "$FULL"
-grep -Eq '(^|[[:space:]])406 passed in ' "$FULL" || {
+grep -Eq '(^|[[:space:]])409 passed in ' "$FULL" || {
   echo "FAIL: expected 406 selected cases" >&2; exit 4;
 }
 
@@ -105,7 +105,18 @@ for d,extent in zip((Path(p) for p in sys.argv[1:]),(8,16)):
         'original_parent_nodes','source_original_full_basal_triangles',
         'source_core_basal_triangles','source_exterior_basal_triangles',
         'original_external_cut_edges'))==expect
-    assert (34587 in i['original_parent_node_order'])==(extent==16)
+    # Source parent ID is not synonymous with incident plate count.
+    # 34587 may be present in the 8x8 footprint without a three-plate
+    # junction inside it; the SHA-chained interface owns local incidence.
+    assert i['source_parent_34587_present_in_footprint'] == (
+        34587 in i['original_parent_node_order'])
+    junctions=i['source_actual_3plus_plate_junctions']
+    if extent==8:
+        assert junctions==[]
+    else:
+        assert junctions==[{'parent_node_id':34587,
+                            'incident_plates':[5,8,11]}]
+        assert 34587 in i['original_parent_node_order']
     assert len(i['source_original_PRE_model_T0_thermal_profiles_by_parent_node'])==expect[0]
     assert all(len(v)==16 for v in i['source_original_PRE_model_T0_thermal_profiles_by_parent_node'].values())
     assert i['source_PRE_is_authored_thermal_material_model_not_natural_mineralogy']
@@ -138,6 +149,6 @@ print('MECHANICAL_SOLVE_AUTHORIZED=FALSE')
 print('CANONICAL_PHYSICAL_T1=NULL')
 PY
 
-echo "FAIR_G2G3_SOURCE_PACKET_TARGET_38=PASS"
-echo "FAIR_G2G3_SOURCE_PACKET_SELECTED_406=PASS"
+echo "FAIR_G2G3_SOURCE_PACKET_TARGET_41=PASS"
+echo "FAIR_G2G3_SOURCE_PACKET_SELECTED_409=PASS"
 echo "FAIR_G2G3_SOURCE_PACKET_REAL_T0_READBACK=PASS"
