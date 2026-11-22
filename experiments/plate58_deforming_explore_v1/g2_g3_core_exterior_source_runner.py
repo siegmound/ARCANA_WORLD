@@ -32,6 +32,8 @@ SCHEMA="ARCANA_R6_G2_G3_SOURCE_FULL_CORE_EXTERIOR_PARTIAL_FORCE_RUNNER_V1"
 
 def validate_full_scenario(scenario,expected_ids,extent):
     """Cannot silently fill missing core-only material/velocity from exterior."""
+    need(scenario.get("authoring_template_unselected") is not True,
+         "CORE_SOURCE_UNSELECTED_AUTHORING_TEMPLATE_NOT_EXECUTABLE")
     ids=list(map(int,expected_ids))
     need(len(ids)==(extent+1)**2 and len(set(ids))==len(ids)
          and all(i>0 for i in ids),
