@@ -20,8 +20,8 @@ export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 
 BASE="/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6"
-TARGET="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_TARGET_41_NEW02.log"
-FULL="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_SELECTED_409_NEW02.log"
+TARGET="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_TARGET_42_NEW02.log"
+FULL="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_SELECTED_410_NEW02.log"
 OUT8="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_8X8_NEW02"
 OUT16="$BASE/R6_G2G3_PHYSICAL_SOURCE_PACKET_16X16_NEW02"
 mkdir -p "$BASE"
@@ -47,14 +47,14 @@ fi
 
 echo "PHYSICAL_SOURCE_PACKET_SHA=$(git rev-parse HEAD)"
 echo "PHYSICAL_SOURCE_PACKET_AUTHORITY=SOURCE_MODEL_REFERENCE_NOT_PHYSICAL_RATIFICATION"
-echo "--- 41 new source-packet targeted tests ---"
+echo "--- 42 new source-packet targeted tests ---"
 python -m pytest -q -ra --tb=short \
   tests/test_r6_g2_g3_physical_source_packet.py 2>&1 | tee "$TARGET"
-grep -Eq '(^|[[:space:]])41 passed in ' "$TARGET" || {
+grep -Eq '(^|[[:space:]])42 passed in ' "$TARGET" || {
   echo "FAIL: expected 38 new cases" >&2; exit 4;
 }
 
-echo "--- 409 selected R6 regression tests including 41 targeted ---"
+echo "--- 410 selected R6 regression tests including 42 targeted ---"
 python -m pytest -q -ra --tb=short \
   tests/test_r6_g2_g3_full_external_candidate.py \
   tests/test_r6_g2_g3_source_core_exterior_stitch.py \
@@ -82,7 +82,7 @@ python -m pytest -q -ra --tb=short \
   tests/test_r6_experimental_thermal_column_1000y.py \
   tests/test_r6_g2_g3_physical_source_packet.py \
   2>&1 | tee "$FULL"
-grep -Eq '(^|[[:space:]])409 passed in ' "$FULL" || {
+grep -Eq '(^|[[:space:]])410 passed in ' "$FULL" || {
   echo "FAIL: expected 406 selected cases" >&2; exit 4;
 }
 
@@ -141,14 +141,17 @@ for d,extent in zip((Path(p) for p in sys.argv[1:]),(8,16)):
         assert hashlib.sha256((d/file).read_bytes()).hexdigest()==digest
     print(f'FAIR_ORIGINAL_T0_G2G3_{extent}X{extent}_SOURCE_INDEX=PASS')
     print(f'FAIR_ORIGINAL_T0_G2G3_{extent}X{extent}_PHYSICAL_INPUTS=UNKNOWN')
-assert json.loads((Path(sys.argv[1])/'SOURCE_INDEX.json').read_text())[
-    'source_hashes']==json.loads((Path(sys.argv[2])/'SOURCE_INDEX.json').read_text())[
-    'source_hashes']
+from experiments.plate58_deforming_explore_v1.g2_g3_physical_source_packet import (
+    verify_cross_extent_provider_chain,
+)
+index8=json.loads((Path(sys.argv[1])/'SOURCE_INDEX.json').read_text())
+index16=json.loads((Path(sys.argv[2])/'SOURCE_INDEX.json').read_text())
+verify_cross_extent_provider_chain(index8,index16)
 print('FAIR_G2G3_SOURCE_SHA_CHAIN=PASS')
 print('MECHANICAL_SOLVE_AUTHORIZED=FALSE')
 print('CANONICAL_PHYSICAL_T1=NULL')
 PY
 
-echo "FAIR_G2G3_SOURCE_PACKET_TARGET_41=PASS"
-echo "FAIR_G2G3_SOURCE_PACKET_SELECTED_409=PASS"
+echo "FAIR_G2G3_SOURCE_PACKET_TARGET_42=PASS"
+echo "FAIR_G2G3_SOURCE_PACKET_SELECTED_410=PASS"
 echo "FAIR_G2G3_SOURCE_PACKET_REAL_T0_READBACK=PASS"
