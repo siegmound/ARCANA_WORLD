@@ -168,8 +168,7 @@ def test_public_extractor_rejects_missing_genuine_binary_not_faux_original(tmp_p
 
 
 def test_public_extractor_requires_selected_cells_even_before_original_npz(tmp_path):
-    with pytest.raises((g.GeologicalSourceError,GeologicalContractError),
-                       match="MAX_EIGHT_SELECTED_CELLS|PARENT_CELL_COLLECTION_INVALID"):
+    with pytest.raises(g.GeologicalSourceError,match="INVALID_CELL_SELECTION"):
         g.extract(ROOT,[],field_package=tmp_path/"irrelevant.npz")
     with pytest.raises(g.GeologicalSourceError,match="MAX_EIGHT_SELECTED_CELLS"):
         g.extract(ROOT,[f"R6G1D-R001-C{i:03d}" for i in range(9)],
