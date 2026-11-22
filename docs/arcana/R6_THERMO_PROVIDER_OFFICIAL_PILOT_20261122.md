@@ -1,3 +1,14 @@
+> **FAIR shared-HPC installation update (2026-11-22): NO SUDO / CONDA ONLY.**
+> User's FAIR workstation has no `julia` command and no system package installation permission.
+> Julia 1.10.4 is available as a conda-forge `linux-64` package; create separate
+> `arcana-thermo` Conda env, install user-space MAGEMin_C.jl and Perple_X
+> inside that environment prefix, then run the original FAIR gate from the
+> **unchanged** `arcana-r6-linux` Python environment and exact tested SHA
+> `393ee8c1bf245758cfa2b1ca7864a7bd3a98d8c2`. Do NOT attempt `sudo`,
+> `apt` or `snap`. Exact documented procedure:
+> [R6_THERMO_PROVIDER_FAIR_NO_SUDO_CONDA_RUNBOOK_20261122.md](R6_THERMO_PROVIDER_FAIR_NO_SUDO_CONDA_RUNBOOK_20261122.md).
+> The preflight 35/640 has already passed; do NOT rerun the write-once NEW01 preflight.
+
 # ARCANA R6 — First replaceable thermodynamics-provider pilot
 
 **Date:** 2026-11-22. **Scope:** external Earth scientific-tool benchmark **stage 0 (official upstream fixtures)**.  
