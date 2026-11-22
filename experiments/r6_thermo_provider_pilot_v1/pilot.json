@@ -1,0 +1,82 @@
+{
+  "schema": "ARCANA_R6_THERMO_PROVIDER_PILOT_V1",
+  "epoch": "EARTH_OFFICIAL_REFERENCE_ONLY_NOT_ARCANA_T0",
+  "source_8x8_physical_rock_selection": null,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "D_024": "ACTIVE",
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+  "providers": {
+    "MAGEMin_C.jl": {
+      "repository": "ComputationalThermodynamics/MAGEMin_C.jl",
+      "version": "v2.4.5",
+      "commit_sha": "f4fd5ce3670b73693d046e65585e2b79d45c8e3a",
+      "repository_license_metadata": "GPL-3.0",
+      "project_toml_git_blob_sha": "d75b3a13e95e217ddff656dce2a0e26cda6e0db3",
+      "thermodynamic_database": "ig",
+      "database_equivalence_to_Perple_X": false
+    },
+    "Perple_X": {
+      "repository": "jadconnolly/Perple_X",
+      "version": "v7.3.3",
+      "commit_sha": "950d882bb6a9325a627109aa7154f7b526aa3087",
+      "repository_license_metadata": "GPL-3.0",
+      "linux_release_asset": "Perple_X_v7.3.3_Linux_64_gfortran.tar.gz",
+      "linux_release_sha256": "ace6f81064c25709b401c3c49bc88410badad95fd7a876831c120eeed45f28e7",
+      "official_fast_fixture": "test/bl691_MEEMUM",
+      "official_expected_report_git_blob_sha": "27f357afdeeee6501e9b70459efa26cb6eb2b65f",
+      "thermodynamic_database": "hp62ver.dat",
+      "database_equivalence_to_MAGEMin": false
+    },
+    "GeoParams.jl": {
+      "repository": "JuliaGeodynamics/GeoParams.jl",
+      "version": "v0.10.0",
+      "annotated_tag_sha": "95aee41f8d582363e9abf1b962f0ba01f5a22464",
+      "commit_sha": "5be510f50614774a20eb98856c1ca7c197984a4a",
+      "repository_license_metadata": "MIT",
+      "phase_1_execute": false,
+      "breaking_note": "Creep law parameters updated; water fugacity input now Pa (some constant-C_OH exceptions)"
+    }
+  },
+  "fixtures": {
+    "MAGEMIN_PREDEFINED_KLB1": {
+      "provider": "MAGEMin_C.jl",
+      "fixture_origin": "UPSTREAM_README_EXAMPLE_1",
+      "database": "ig",
+      "bulk_source": "PREDEFINED_UPSTREAM_KLB1_INDEX_0",
+      "pressure_kbar": 8.0,
+      "temperature_c": 800.0,
+      "bulk_composition": null,
+      "not_eligible_for_direct_cross_solver_comparison": true
+    },
+    "MAGEMIN_CUSTOM_IG": {
+      "provider": "MAGEMin_C.jl",
+      "fixture_origin": "UPSTREAM_README_EXAMPLE_2",
+      "database": "ig",
+      "bulk_source": "UPSTREAM_DEMONSTRATION_COMPOSITION_NOT_FIELD_MEASUREMENT",
+      "pressure_kbar": 10.0,
+      "temperature_c": 1100.0,
+      "oxide_basis": "AS_REPORTED_WT_PERCENT_NO_NORMALIZATION",
+      "oxides": ["SiO2", "Al2O3", "CaO", "MgO", "FeO", "Fe2O3", "K2O", "Na2O", "TiO2", "Cr2O3", "H2O"],
+      "amounts_wt_percent": [48.43, 15.19, 11.57, 10.13, 6.65, 1.64, 0.59, 1.87, 0.68, 0.0, 3.0],
+      "as_reported_sum_wt_percent": 99.75,
+      "not_eligible_for_direct_cross_solver_comparison": true
+    },
+    "PERPLEX_BL691_MEEMUM": {
+      "provider": "Perple_X",
+      "fixture_origin": "UPSTREAM_TEST_BL691_MEEMUM",
+      "source_path": "test/bl691_MEEMUM",
+      "input_file": "bl691_MEEMUM_input.txt",
+      "expected_report": "output/bl691_MEEMUM.prn",
+      "pressure_bar": 4000.0,
+      "temperature_k": 1050.0,
+      "bulk_source": "UPSTREAM_BL478_OFFICIAL_TEST_MOLAR_COMPONENTS",
+      "not_eligible_for_direct_cross_solver_comparison": true
+    }
+  },
+  "cross_provider_equivalence_qualified": false,
+  "cross_provider_scientific_comparison_authorized": false,
+  "input_chemistry_and_database_equivalence_missing": true,
+  "original_rock_phase_assignments": 0,
+  "HistoryStore_modified": false
+}
