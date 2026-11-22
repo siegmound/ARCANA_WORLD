@@ -1,7 +1,6 @@
 """Negative authority, numerical, and source-contract tests for 1000y experiment."""
 from __future__ import annotations
 
-import copy
 import hashlib
 import json
 from pathlib import Path
@@ -231,3 +230,11 @@ def test_write_once_rejects_canonicalization(monkeypatch, tmp_path):
     with pytest.raises(old.ExperimentalColumnError,
                        match="REPORT_GOVERNANCE_INVALID"):
         m.write_once(tmp_path/"forbidden", report, repository_root=ROOT)
+
+
+def test_original_100y_pilot_still_rejects_1000y_extension():
+    previous = json.loads((ROOT/m.BASELINE_CONFIG).read_text(encoding="utf-8"))
+    previous["requested_duration_years"] = 1000
+    with pytest.raises(old.ExperimentalColumnError,
+                       match="EXPERIMENTAL_100Y_ONLY_1000Y_NOT_YET_QUALIFIED"):
+        old.validate_config(previous)
