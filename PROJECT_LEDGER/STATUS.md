@@ -1,3 +1,7 @@
+CURRENT — 2026-11-22 — Synthetic 100y regional thermal-column bench FAIR success: 34/34 new, 338/338 selected extended PASS, 3-resolution FV/analytic/energy model checked (errors ~7.31e-5,1.83e-5,4.57e-6 K), noncanonical and history-free. Original source model cell plate8 anchors only reference parameters, not natural T0 profile. Current physical T1 null, no HistoryStore, no canon or experimental auto-promotion allowed. Receipt `docs/arcana/R6_EXPERIMENTAL_NONCANONICAL_THERMAL_100Y_FAIR_338_RECEIPT_20261122.md`; next optional independent 1000-year numerical benchmark under unchanged noncanon rule, never physical world T1. D-024 ACTIVE.
+
+---
+
 CURRENT — 2026-11-22 — DEV branch `r6/experimental-thermal-column-100y-noncanonical-20261122` adds pinned experiment noncanon governance + explicit 100yr synthetic insulated-source thermal finite-volume benchmark + `scripts/r6_experimental_thermal_100y_fair_gate.sh` (immutable evidence, 34 new cases / expected selected regression 338, then source bound run); **FAIR NOT YET RUN**, no true ARCANA T0 thermal profile or full planetary T0→T1 simulated, no physical history. Main remains last tested 304/304 `2ecabde7f86f052ecd25eaa34a6e4042dd7f13e7`. D-024 ACTIVE physical_T1=null.
 
 ---
