@@ -86,3 +86,21 @@ WORLD_HISTORY_PRODUCTION_AUTHORIZED = FALSE
 ## 6. After this study
 
 This tests only the reduced homogeneous 1D heat equation under narrowly defined conditions. It does not close actual source T0 thermal profile, material phases/fluids, 3D thermal domains, global G2/G3 force balance and fault law, topography or tectonic boundary histories. **D-024 still prioritizes a genuinely coupled, small regional physical T0→T1 when its physical input gaps are closed.**
+
+
+## 7. First FAIR gate: 29/30 FAIL, JSON boundary scalar — retained
+
+On the initial FAIR checked-out SHA `b19d2bc90982f2172322efed933f3db38efb7d21`, the operator reported **29 passed, 1 failed** in the new targeted suite. The failed case was `test_write_once_sha_and_no_overwrite`, at `json.dumps(result, allow_nan=False)`. The terminal error was `TypeError: Object of type bool is not JSON serializable`. This first attempt stopped before the selected 368-case regression and before the source-anchored 1000y report/manifest. **Do not call it a 1000y FAIR pass.** The original `R6_EXP_THERMAL_1000Y_TARGET_30_NEW01.log` is preserved; no evidence overwrite or retroactive correction.
+
+Cause independently reproduced: in `dirichlet_fv` the boundary-flux accumulator becomes `numpy.float64` after adding the first NumPy-computed face flux; its energy residual therefore becomes NumPy float and `abs(residual) <= 1.0` returns `numpy.bool_`, which standard-library `json.dumps` rejects. This is a **report-serialization type issue**, not a demonstrated failure of the thermal PDE/flux calculations. Do not infer broader numerical qualification from the other 29 passing tests alone.
+
+Bounded change in same experimental branch:
+- Cast accumulated boundary energy and energy-balance residual to built-in Python `float` *after* numerical stepping; cast pass predicate to Python `bool`; retain strict JSON serialization `allow_nan=False`. No change to FV equations, grids, physical/reference coefficients, source/authority or 100-year baseline.
+- Extend existing tests to assert native `float`/`bool`, strict JSON roundtrip for manufactured and matched boundary cases, and full nested report. **Test count remains 30 targeted and 368 selected**.
+- Use dedicated `NEW02` paths in the fail-closed FAIR runner:
+  `R6_EXP_THERMAL_1000Y_TARGET_30_NEW02.log`,
+  `R6_EXP_THERMAL_1000Y_FULL_368_NEW02.log`,
+  `R6_EXP_THERMAL_1000Y_NONCANONICAL_NEW_02/`.
+- **Status after patch: FAIR RETEST PENDING**. A local scalar-type reproduction is not the complete FAIR run. Freeze a new exact Git SHA and revalidate before considering integration.
+
+Permanent scope unchanged: `EXPERIMENTAL_NONCANONICAL_ONLY=true`; `physical_T1=null`; no `WORLD_HISTORY` or `HistoryStore` writes, no mineral/ore/Deep claims; `D-024=ACTIVE`.
