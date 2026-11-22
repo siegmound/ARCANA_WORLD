@@ -92,6 +92,7 @@ def _map_with_int_ids(mapping, label: str):
 def create_packet(*, extent: int, parent_ids: list[int],
                   core_triangles: dict, exterior_triangles: dict,
                   source_cut_edges: list[dict], pre_by_node: dict,
+                  source_3plus_plate_junctions: list[dict],
                   source_hashes: dict, matrix: dict) -> tuple[dict, dict]:
     """Pure compiler; the calling source adapter authenticates FEG/PRE first.
 
@@ -105,8 +106,33 @@ def create_packet(*, extent: int, parent_ids: list[int],
                   if s["extent_cells"] == extent), None)
     require(scope is not None and len(ids) == scope["original_parent_nodes"],
             "PHYSICAL_PACKET_PARENT_COUNT_INVALID")
-    require((34587 in ids) == (extent == 16),
-            "PHYSICAL_PACKET_ORIGINAL_TRIPLE_NODE_DRIFT")
+    # Parent-node membership alone is NOT a junction classification.
+    # The original 8x8 footprint can contain parent 34587 without any
+    # three-plate incidence inside that regional footprint. Only the
+    # original SHA-authenticated interface provider owns that incidence.
+    require(type(source_3plus_plate_junctions) is list,
+            "PHYSICAL_PACKET_SOURCE_JUNCTION_INVENTORY_REQUIRED")
+    junctions = []
+    for item in source_3plus_plate_junctions:
+        require(type(item) is dict and set(item) == {
+            "parent_node_id", "incident_plates"},
+            "PHYSICAL_PACKET_SOURCE_JUNCTION_RECORD_INVALID")
+        node, plates = item["parent_node_id"], item["incident_plates"]
+        require(type(node) is int and node in ids
+                and type(plates) is list and len(plates) >= 3
+                and all(type(p) is int and p >= 0 for p in plates)
+                and plates == sorted(set(plates)),
+                "PHYSICAL_PACKET_SOURCE_JUNCTION_INCIDENCE_INVALID")
+        junctions.append({"parent_node_id": node,
+                          "incident_plates": list(plates)})
+    require(len({j["parent_node_id"] for j in junctions}) == len(junctions),
+            "PHYSICAL_PACKET_DUPLICATE_SOURCE_JUNCTION")
+    # These are original region-specific *incidences*, not a requirement
+    # that the node be absent from every other regional extraction.
+    require((extent == 8 and junctions == []) or
+            (extent == 16 and junctions == [
+                {"parent_node_id": 34587, "incident_plates": [5, 8, 11]}]),
+            "PHYSICAL_PACKET_SOURCE_JUNCTION_SCOPE_DRIFT")
     core = _map_with_int_ids(core_triangles, "core_triangles")
     exterior = _map_with_int_ids(exterior_triangles, "exterior_triangles")
     require(len(core) == scope["core_facets"]
@@ -192,6 +218,8 @@ def create_packet(*, extent: int, parent_ids: list[int],
         "source_hashes": source_hashes,
         "physical_provider_matrix_git_blob": MATRIX_GIT_BLOB,
         "counts": counts, "original_parent_node_order": ids,
+        "source_parent_34587_present_in_footprint": 34587 in ids,
+        "source_actual_3plus_plate_junctions": junctions,
         "source_original_core_triangle_ids": sorted(core),
         "source_original_exterior_triangle_ids": sorted(exterior),
         "source_original_full_basal_triangle_nodes": {
@@ -336,6 +364,11 @@ def compile_from_authentic_sources(root: Path, *, multiscale: Path,
     parent_ids = core["source_original_full_parent_node_order"]
     require(parent_ids == list(map(int, region["parent_node_ids"])),
             "PHYSICAL_PACKET_PARENT_ORDER_DRIFT")
+    require(type(iface.get("triple_plate_junction_exists")) is bool
+            and type(iface.get("actual_3plus_plate_junctions")) is list
+            and iface["triple_plate_junction_exists"] ==
+                bool(iface["actual_3plus_plate_junctions"]),
+            "PHYSICAL_PACKET_SOURCE_INTERFACE_JUNCTION_FLAG_DRIFT")
     exterior = {
         int(tid): list(map(int, row["parent_node_ids"]))
         for tid, row in ns["exterior_triangles"].items()}
@@ -361,6 +394,7 @@ def compile_from_authentic_sources(root: Path, *, multiscale: Path,
         core_triangles=core["source_core_triangles"],
         exterior_triangles=exterior, source_cut_edges=cuts,
         pre_by_node=core["source_PRE"],
+        source_3plus_plate_junctions=iface["actual_3plus_plate_junctions"],
         source_hashes=hashes, matrix=matrix)
     verify_unselected(index, proposal)
     for name, path in (("multiscale", multiscale), ("interface", interface),
