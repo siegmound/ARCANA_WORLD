@@ -1,0 +1,21 @@
+{
+  "schema": "ARCANA_R6_EXPERIMENTAL_100Y_THERMAL_COLUMN_CONFIG_V1",
+  "authority": "EXPERIMENTAL_NONCANONICAL_ONLY",
+  "source_parent_cell_id": "R6G1D-R089-C359",
+  "requested_duration_years": 100,
+  "synthetic_column_depth_m": 1000,
+  "initial_temperature_k": {
+    "kind": "CELL_CENTERED_COSINE_MODE",
+    "base_k": 300,
+    "cosine_amplitude_k": 15,
+    "authority": "DECLARED_SYNTHETIC_NOT_PHYSICAL_T0"
+  },
+  "adiabatic_boundary_conditions": {
+    "top": "ZERO_HEAT_FLUX",
+    "bottom": "ZERO_HEAT_FLUX",
+    "authority": "SYNTHETIC_EXPERIMENT_BOUNDARY_ONLY"
+  },
+  "material_property_mode": "AUTHORED_SPECIALIST_OCEANIC_CRUST_BULK_REFERENCE_NOT_CELL_OBSERVED",
+  "heat_production_mode": "AUTHORED_SPECIALIST_OCEANIC_BULK_REFERENCE_NOT_CELL_OBSERVED",
+  "experimental_run_label": "synthetic_ocean_column_100y_validation"
+}
