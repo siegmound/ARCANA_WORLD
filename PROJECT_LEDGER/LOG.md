@@ -1,3 +1,10 @@
+## 2026-11-22 — FAIR V2 thermodynamic source regression check: 48/48 PASS
+
+- Operator reported successful `git fetch origin r6/thermo-s1-scopefix-real-gate-v2-20261122`; clean separate detached linked worktree created at `/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_R6_THERMO_S1_V2_VERIFY`, HEAD `f8d659042a739789e7a131dfc926cda1ceca30a4`, explicit `SOURCE_SHA_PASS`. Historical checkout/old evidence untouched.
+- FAIR Python `arcana-r6-linux` command `python -m pytest -q -ra --tb=short tests/test_r6_thermo_provider_pilot.py tests/test_r6_thermo_s1_v2.py` returned exactly `48 passed in 0.13s`, `THERMO_S1_V2_TARGETED_TESTS_PASS`, `FAIR_TEST_EXIT=0`; composed of 35 original + 13 V2 tests. **Source/software-only validation, not actual Julia V2 or Perple_X V2 runtime execution**; do not promote scientific authority.
+- Separate prior full engine REAL S1 standalone diagnostic outputs remain recorded at `R6_THERMO_S1_STANDALONE_DIAGNOSTICS_NEW01` with 17-file manifest SHA256 `3a4559c2397ea3a1a56a3cc5cba95077bd48511f7fd7f7188c84e68ae2548298`, operator-reported, original Julia diagnostic-only patched copy. Old first MAGEMin source scope failure retained.
+- NEXT: verify read-only checks for exact `f8d659` source clean checkout + original manifest hash; then first write-once V2 software preflight NEW02, request results before separate NEW02 real engine run. Docs-only ledger commit advances remote isolated branch, not already-tested detached FAIR source. All D-024/T1/history gates unchanged.
+
 ## 2026-11-22 — R6 THERMO S1 corrected-scope runner and separate NEW02 gate code published
 
 - Branch `r6/thermo-s1-scopefix-real-gate-v2-20261122`, based on verified integrated R6 prior status/doc commit `9071e1b3d492f815f0b27a423670208f9047def9`. Source code commit `909f618b6ec47e4020d570247c91b3a4c5a8e591` refactors the Julia soft-scope crash to `run_predefined_case`/`run_custom_case` local functions with finalization and numerical assertions; adds Python S1 V2 result validator and fail-closed contract tests. Separate scripts commit `f4f0d3477b2b97e213183b594cba0ad716b06548` adds two *not executed* NEW02 write-once FAIR scripts.
