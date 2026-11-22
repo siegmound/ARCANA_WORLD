@@ -77,6 +77,9 @@ def fixture(extent=8, *, parent_34587_in_8=False):
         "multiscale_manifest_sha256","interface_manifest_sha256",
         "nodal_manifest_sha256","force_manifest_sha256",
         "original_FEG_sha256","original_PRE_sha256")}
+    if extent==16:
+        hashes["original_FEG_sha256"]="b"*64
+        hashes["original_PRE_sha256"]="c"*64
     return dict(extent=extent,parent_ids=ids,core_triangles=core,
                 exterior_triangles=ext,source_cut_edges=cut,
                 pre_by_node=pre,
@@ -121,6 +124,30 @@ def test_parent_34587_can_be_in_8x8_without_three_plate_junction():
     assert proposal["sided_fault_transmission_and_triple_junction"] is None
     assert proposal["physical_T1"] is None
     m.verify_unselected(index, proposal)
+
+
+def test_cross_extent_shared_manifests_and_distinct_regional_feg_pre():
+    index8, _ = m.create_packet(**fixture(8, parent_34587_in_8=True))
+    index16, _ = m.create_packet(**fixture(16))
+    m.verify_cross_extent_provider_chain(index8, index16)
+    assert index8["source_hashes"]["original_FEG_sha256"] != (
+        index16["source_hashes"]["original_FEG_sha256"])
+    assert index8["source_hashes"]["original_PRE_sha256"] != (
+        index16["source_hashes"]["original_PRE_sha256"])
+    # A mismatched upstream source chain cannot masquerade as a single T0.
+    changed = copy.deepcopy(index16)
+    changed["source_hashes"]["interface_manifest_sha256"] = "f"*64
+    with pytest.raises(m.PhysicalSourcePacketError,
+                       match="UPSTREAM_MANIFEST_DRIFT"):
+        m.verify_cross_extent_provider_chain(index8, changed)
+    # Likewise a reused geometry/PRE hash between distinct extents is not
+    # acceptable; those artifacts have different source support sizes.
+    changed = copy.deepcopy(index16)
+    changed["source_hashes"]["original_PRE_sha256"] = (
+        index8["source_hashes"]["original_PRE_sha256"])
+    with pytest.raises(m.PhysicalSourcePacketError,
+                       match="REGIONAL_FEG_PRE_NOT_DISTINCT"):
+        m.verify_cross_extent_provider_chain(index8, changed)
 
 
 def test_repeat_is_bitwise_deterministic():
