@@ -366,6 +366,11 @@ def synthetic_original_fair_context(monkeypatch,tmp_path):
     mod_h.load_packet=lambda path,n:({},None,{'evidence_manifest_sha256':str(n)*64})
     mod_i.verify_cross_extent_provider_chain=lambda a,b:None
     for mod in (mod_c,mod_p,mod_h,mod_i):monkeypatch.setitem(sys.modules,mod.__name__,mod)
+    # In the combined FAIR regression the real cold/P-T modules may already
+    # be cached as package attributes: replace both import lookup paths.
+    import experiments.plate58_deforming_explore_v1 as package
+    monkeypatch.setattr(package,'g2_g3_t0_cold_crust_regime',mod_c,raising=False)
+    monkeypatch.setattr(package,'g2_g3_t0_lithostatic_pt_reference',mod_p,raising=False)
     return {'repo_root':root,'packet8':tmp_path/'packet8',
             'packet16':tmp_path/'packet16','handoff':tmp_path/'handoff',
             'pt_folder':pt_folder,'cold_folder':cold_folder}
