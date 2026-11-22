@@ -219,7 +219,7 @@ def test_write_once_no_fake_canon_and_hash_manifest(tmp_path,monkeypatch):
     monkeypatch.setattr(m,"extract_original_t0",fake_original)
     result=m.run(ROOT,config())
     target=tmp_path/"experiment"
-    m.write_once(target,result)
+    m.write_once(target,result,repository_root=ROOT)
     manifest=json.loads((target/"MANIFEST.json").read_text())
     assert manifest["report_sha256"]==hashlib.sha256(
         (target/"REPORT.json").read_bytes()).hexdigest()
@@ -227,4 +227,10 @@ def test_write_once_no_fake_canon_and_hash_manifest(tmp_path,monkeypatch):
     assert manifest["physical_T1"] is None
     assert manifest["no_history_store_writes"] is True
     with pytest.raises(m.ExperimentalColumnError,match="EVIDENCE_ALREADY_EXISTS"):
-        m.write_once(target,result)
+        m.write_once(target,result,repository_root=ROOT)
+
+def test_evidence_cannot_write_inside_canonical_or_source_repository():
+    with pytest.raises(m.ExperimentalColumnError,match="EVIDENCE_MUST_BE_OUTSIDE_REPOSITORY"):
+        m.write_once(
+            ROOT/"PROJECT_LEDGER"/"R6_EXPERIMENTAL_NOT_ALLOWED",
+            {"physical_T1":None},repository_root=ROOT)
