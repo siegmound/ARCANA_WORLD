@@ -136,7 +136,11 @@ def dirichlet_fv(*, n_cells: int, step_years: float, years: int,
     e0 = float(np.sum(initial) * dz * c)
     e1 = float(np.sum(temperature) * dz * c)
     source_energy = q * L * elapsed_s
-    residual = (e1-e0) - (source_energy+boundary_energy)
+    # The boundary-flux accumulator has NumPy scalar type after the first
+    # update. Explicitly normalize the report scalars rather than weakening
+    # JSON strictness or installing a serializer that silently coerces data.
+    boundary_energy = float(boundary_energy)
+    residual = float((e1-e0) - (source_energy+boundary_energy))
     error = None if exact is None else float(np.max(np.abs(temperature-exact)))
     return {
         "n_cells": n_cells, "step_years": step_years, "time_steps": steps,
@@ -149,7 +153,7 @@ def dirichlet_fv(*, n_cells: int, step_years: float, years: int,
         "volumetric_source_energy_j_m2": source_energy,
         "boundary_heat_into_column_j_m2": boundary_energy,
         "energy_balance_residual_j_m2": residual,
-        "energy_balance_pass": abs(residual) <= 1.0,
+        "energy_balance_pass": bool(abs(residual) <= 1.0),
         "mean_final_temperature_k": float(np.mean(temperature)),
         "temperature_k_five_sampled_centres": [
             {"z_m": float(z[j]), "synthetic_temperature_k": float(temperature[j])}
