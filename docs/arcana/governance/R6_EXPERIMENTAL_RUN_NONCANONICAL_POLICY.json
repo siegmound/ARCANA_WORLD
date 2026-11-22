@@ -1,0 +1,29 @@
+{
+  "schema": "ARCANA_R6_EXPERIMENTAL_SIMULATION_GOVERNANCE_V1",
+  "status": "ACTIVE",
+  "scope": "ALL_EXPERIMENTAL_ARCANA_WORLDSIM_RUNS",
+  "rule": "EXPERIMENTAL_RUNS_ARE_ALWAYS_NONCANONICAL_AND_NEVER_AUTO_PROMOTE",
+  "experimental_authority": "EXPERIMENTAL_NONCANONICAL_ONLY",
+  "canonical_world_history_write_authorized": false,
+  "physical_t1_authorized": false,
+  "history_store_mutations_authorized": false,
+  "automatic_promotion_after_simulator_completion": false,
+  "canonicalization_requires": [
+    "SIMULATOR_COMPLETION_WITH_EXPLICIT_PRODUCTION_RELEASE",
+    "INDEPENDENT_SCIENTIFIC_AND_NUMERICAL_VALIDATION",
+    "AUTHORIZED_INPUT_PROVENANCE_AND_CAUSAL_HISTORICAL_REPLAY",
+    "EXPLICIT_AUTHORIAL_RATIFICATION_OF_PRODUCTION_HISTORY"
+  ],
+  "new_production_runs_required_after_ratification": true,
+  "experiment_output_namespace": "experiments_and_Fair_evidence_only",
+  "output_prohibitions": [
+    "CANONICAL_T1",
+    "CANONICAL_HISTORYSTORE_CHECKPOINT",
+    "NATURAL_MINERAL_RESOURCE_DEEP_ASSIGNMENTS_FROM_SYNTHETIC_INPUT"
+  ],
+  "T0_reference_parameters_are_not_cellwise_natural_observations": true,
+  "target_initial_pilot_duration_years": 100,
+  "horizons_longer_than_100_years_require_separate_qualification": true,
+  "D_024": "ACTIVE",
+  "physical_T1": null
+}
