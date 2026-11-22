@@ -307,7 +307,12 @@ def run(root: Path, config: dict, *,
     }
 
 
-def write_once(out: Path, result: dict):
+def write_once(out: Path, result: dict, *, repository_root: Path):
+    # Even operator-selected evidence must stay OUTSIDE the source repository.
+    # This prevents accidentally writing the experimental report into a
+    # canonical WorldSim working tree or an in-repo history directory.
+    must(not out.resolve().is_relative_to(Path(repository_root).resolve()),
+         "EXPERIMENTAL_EVIDENCE_MUST_BE_OUTSIDE_REPOSITORY")
     must(not out.exists(), "EXPERIMENTAL_EVIDENCE_ALREADY_EXISTS")
     out.mkdir(parents=True, exist_ok=False)
     payload = (json.dumps(result, indent=2, allow_nan=False,
@@ -337,7 +342,7 @@ def main():
         args.config.read_text(encoding="utf-8")),
         field_package=args.field_package,
         plate_partition=args.plate_partition)
-    write_once(args.output, result)
+    write_once(args.output, result, repository_root=args.repo_root)
     print(json.dumps({
        "decision":result["decision"],
        "synthetic_numerical_run_executed":True,
