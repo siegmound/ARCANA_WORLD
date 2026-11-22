@@ -84,6 +84,9 @@ def source_inputs(multiscale,interface,nodal,force,extent,scenario):
          and providers["force"]["parent_G2_binding_manifest_sha256"]==
          manifest_shas["nodal"],
          "G2_G3_COUPLED_UPSTREAM_SOURCE_CHAIN_BROKEN")
+    need(isinstance(scenario,dict)
+         and scenario.get("authoring_template_unselected") is not True,
+         "G2_G3_COUPLED_UNSELECTED_AUTHORING_TEMPLATE_NOT_EXECUTABLE")
     need(isinstance(scenario,dict) and
          scenario.get("schema")==INPUT_SCHEMA
          and scenario.get("authority")==
