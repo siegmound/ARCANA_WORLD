@@ -142,7 +142,7 @@ function main()
         "physical_T1_is_null"=>true,
         "WORLD_HISTORY_PRODUCTION_AUTHORIZED"=>false
     )
-    open(file,"x") do io
+    open(file,"w") do io
         TOML.print(io,report)
     end
     println("S2_MAGEMIN_NATIVE_TWO_CASES_COMPLETE")
