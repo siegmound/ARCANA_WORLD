@@ -21,7 +21,7 @@ def test_policy_contract():
     (("magemin_tolerances","native_oxide_component_closure_abs"),0.1),
     (("magemin_tolerances","phase_fraction_abs"),0.1),
     (("perplex_tolerances","phase_percent_abs_pp"),2.0),
-    (("magemin_c_version",),"1.0"),
+    (("pins","magemin_c_version"),"1.0"),
     (("per_run_fields_magemin",),[]),
     (("per_run_fields_perplex",),[]),
 ])
