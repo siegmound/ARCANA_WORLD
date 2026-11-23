@@ -1,3 +1,7 @@
+2026-11-23 — NEW S2 RUNNER SOURCE ONLY, NOT FAIR EVIDENCE: `run_magemin_s2_native.jl`, `validate_s2_native.py`, `run_s2_fair.py`, and `test_r6_thermo_s2_native_v1.py` on branch `r6/thermo-s2-repeatability-protocol-20261123`; predeclared `s2_repeatability_protocol_v1.json` from prior 66/66 PASS unchanged. New source NOT yet tested on FAIR; no S2 write-once `R6_THERMO_S2_SOFTWARE_PREFLIGHT_NEW01` or `R6_THERMO_S2_REPEATABILITY_NEW01` created. Candidate source and design trace in `docs/arcana/R6_THERMO_S2_NATIVE_RUNNER_CANDIDATE_V1_20261123.md`. No S1 changes and no ARCANA T1.
+
+---
+
 2026-11-23 — OPERATOR-REPORTED FAIR S2 CANDIDATE PROTOCOL SOURCE TESTS: SHA `71e49c3bb7648211c9dbdfc6bc247307a1066ce8`, separate detached FAIR worktree, `tests/test_r6_thermo_provider_pilot.py tests/test_r6_thermo_s1_v2.py tests/test_r6_thermo_s2_protocol_v1.py` => 66/66 PASS in 0.17s, exit0; no external numerical engine S2 invocation. No independent native S2 write-once evidence produced by this software-only step. Prior S1 2-engine genuine official runtime PASS and all its evidence remain distinct. User console is source; GitHub record does not independently rehash FAIR Python output. `D-024=ACTIVE`, T1 null.
 
 ---

@@ -1,3 +1,10 @@
+## 2026-11-23 — S2 native-chemistry and 5+5 process runner candidate published (not executed)
+
+- After FAIR operator's 66/66 candidate policy PASS at SHA `71e49c3bb7648211c9dbdfc6bc247307a1066ce8`, added independently versioned `run_magemin_s2_native.jl`: both original Earth ig `MAGEMIN_PREDEFINED_KLB1` and `MAGEMIN_CUSTOM_IG` in a fresh Julia process, captures per-phase native oxide Comp_wt and source normalizations, status, bulk_res_norm, G/density/phase names; only native source basis, no canon rock assignment.
+- Added `validate_s2_native.py`: separate Python per-process matrix residual, original pinned source atomic/molar-mass convention check, Perple_X PRN Decimal printed mole closure, five-run pairwise observable stability by stable name with predeclared tolerances; no cross-provider matching.
+- Added explicit `run_s2_fair.py` with independently named write-once `R6_THERMO_S2_SOFTWARE_PREFLIGHT_NEW01` and `R6_THERMO_S2_REPEATABILITY_NEW01`, exact current code/head/manifest hash checks, Julia and Perple_X pin validation, five fresh process launches for each provider, raw PRN and native reports, per-launch stdout/exit/PID, evaluation and SHA manifest, preserving partial failure evidence. Added synthetic/negative module `test_r6_thermo_s2_native_v1.py`.
+- **No new provider actual run, no new S2 software test on this changed source has been performed or confirmed.** Next separate clean worktree FAIR tests four modules, followed by controlled bounded native smoke, review and only then fresh S2 preflight. Source SHA will be frozen on PASS, not set retroactively by the earlier 66/66 policy-only tests. S1 NEW02 immutable; D-024 ACTIVE.
+
 ## 2026-11-23 — FAIR S2 repeatability protocol V1 contract/source regression 66/66 PASS
 
 - Operator fetched `r6/thermo-s2-repeatability-protocol-20261123` into new separate clean detached worktree `ARCANA_WORLD_R6_THERMO_S2_PROTOCOL_VERIFY`; exact source SHA `71e49c3bb7648211c9dbdfc6bc247307a1066ce8`; explicit `S2_PROTOCOL_SOURCE_PASS`.
