@@ -1,0 +1,164 @@
+{
+  "schema": "ARCANA_R6_THERMO_S3_PT_DESIGN_CANDIDATE_V1",
+  "date": "2026-11-23",
+  "state": "DRAFT_NOT_SCIENTIFICALLY_RATIFIED",
+  "scope": "UPSTREAM_EARTH_PROVIDER_NATIVE_PT_SENSITIVITY_ONLY",
+  "engine_executions_authorized": 0,
+  "executable": false,
+  "evidence": {
+    "qualified_s2_code_sha": "632c4a570f876e3963b1dcd8a1f411a143fc8a59",
+    "s1_manifest_sha256": "538c1b61f801c9902f8aa9b1b189b07ba38357eec339eb2b0211713f83299227",
+    "s2_preflight_manifest_sha256": "e96b52635d9755acd36ae9473c7a75c23eb8d1f0a2d80d384a6e09807a77f08b",
+    "s2_real_manifest_sha256": "74871bd46fdb67a2828566a12e11140e52a505e828ded81751b239bf20b5b604",
+    "s2_audited_members": 68,
+    "s2_audited_julia_processes": 5,
+    "s2_audited_perplex_processes": 5
+  },
+  "candidate_tracks": [
+    {
+      "id": "S3A_MAGEMIN_CUSTOM_IG",
+      "provider": "MAGEMin_C.jl",
+      "version": "2.4.5",
+      "database": "ig",
+      "dataset": "tc_ds636",
+      "fixture": "MAGEMIN_CUSTOM_IG",
+      "fixed_original_chemistry": "S2_CUSTOM_IG_ORIGINAL_11_OXIDES_99.75_WT_INPUT",
+      "pressure_unit": "kbar",
+      "temperature_unit": "degC",
+      "P": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "T": [
+        1000,
+        1050,
+        1100,
+        1150,
+        1200
+      ],
+      "anchor": {
+        "P": 10,
+        "T": 1100
+      },
+      "calibrated_domain": "UNKNOWN_NEEDS_SOURCE",
+      "run_allowed": false
+    },
+    {
+      "id": "S3B_PERPLEX_BL691",
+      "provider": "Perple_X",
+      "version": "v7.3.3",
+      "fixture": "PERPLEX_BL691_MEEMUM",
+      "fixed_original_chemistry": "BL691_MEEMUM_DAT_ORIGINAL_MOLAR_BULK",
+      "source_commit": "950d882bb6a9325a627109aa7154f7b526aa3087",
+      "source_problem_definition": "test/bl691_MEEMUM/bl691_MEEMUM.dat",
+      "source_definition_git_blob": "3954964480612264838636fd394043aa0fef6324",
+      "database": "hp62ver.dat",
+      "solution_model": "solution_model.dat",
+      "pressure_unit": "bar",
+      "temperature_unit": "K",
+      "P": [
+        2000,
+        3000,
+        4000,
+        5000,
+        6000
+      ],
+      "T": [
+        950,
+        1000,
+        1050,
+        1100,
+        1150
+      ],
+      "anchor": {
+        "P": 4000,
+        "T": 1050
+      },
+      "input_declared_bounds": {
+        "P_bar": [
+          500,
+          10000
+        ],
+        "T_K": [
+          873,
+          1323
+        ]
+      },
+      "input_bounds_are_calibration_proof": false,
+      "option_file_referenced": "bl691_MEEMUM_perplex_option.dat",
+      "option_file_present_in_pinned_test_directory": false,
+      "effective_default_options_verified": false,
+      "calibrated_domain": "UNKNOWN_NEEDS_SOURCE",
+      "run_allowed": false
+    }
+  ],
+  "grid": {
+    "cartesian_points_each": 25,
+    "candidate_total_two_providers": 50,
+    "point_order": "PRESSURE_MAJOR_TEMPERATURE_MINOR",
+    "selected_same_point_rechecks_index_pairs": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "rechecks_require_fresh_process": true,
+    "reverse_order_alone_is_not_warm_start": true,
+    "approved_values": []
+  },
+  "units": {
+    "bar_to_pa": 100000,
+    "kbar_to_pa": 100000000,
+    "kelvin_from_celsius_offset": 273.15
+  },
+  "science_rules": {
+    "fixed_original_provider_chemistry": true,
+    "phase_set_may_change_across_distinct_points": true,
+    "phase_identical_at_different_points_required": false,
+    "check_solver_residual_and_native_component_chemical_closure": true,
+    "perplex_printed_bulk_component_interval_only": true,
+    "native_gibbs_or_density_missing": "NOT_AVAILABLE",
+    "new_s3_phase_agnostic_validator_required": true,
+    "no_s2_fixed_phase_or_pt_validator_reuse": true,
+    "numeric_acceptance_require_predeclared_tolerance": true,
+    "cross_provider_same_chemistry_database_qualified": false,
+    "shared_original_25_point_cross_provider_comparison_authorized": false,
+    "source_model_and_chemistry_crosswalk_pending": true,
+    "per_run_full_native_logs_hashes_write_once": true
+  },
+  "blocking_gates": [
+    "MAGEMIN_IG_TCDS636_CALIBRATION_DOMAIN_AND_COMPOSITION",
+    "PERPLEX_BL691_HP62VER_VALIDITY_AND_EFFECTIVE_OPTIONS",
+    "PHASE_AGNOSTIC_S3_PARSER_AND_NEGATIVE_TESTS",
+    "RECHECK_AND_PREDECLARED_NUMERIC_THRESHOLDS",
+    "PER_RUN_TIME_MEMORY_IO_BUDGET_FROM_S2",
+    "SOURCE_LOCKED_WRITE_ONCE_S3_PREFLIGHT_AND_EVIDENCE",
+    "SEPARATE_S3_REAL_RUN_AUTHORIZATION"
+  ],
+  "authority": {
+    "D_024": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "arcana_original_materials_assigned": 0
+  }
+}
