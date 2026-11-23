@@ -1,3 +1,7 @@
+2026-11-23 — FAIR S2 native runner **software-only** checkpoint: exact detached source SHA `19a704fc47b3646c745dae8db023f44dd76ed917`, `S2_RUNNER_SOURCE_PASS`, four suites `84 passed in 0.20s`, `S2_RUNNER_SOFTWARE_TESTS_PASS`, `S2_RUNNER_TEST_EXIT=0`. Current GitHub docs-only ledger commit advances S2 remote branch but is NOT the tested source checkout on FAIR. No actual MAGEMin S2 native smoke/MEEMUM run or five-run campaign; no official preflight/evidence archive yet. Original S1 write-once manifest `538c1b61f801c9902f8aa9b1b189b07ba38357eec339eb2b0211713f83299227` preserved. D-024 ACTIVE and physical T1 null.
+
+---
+
 2026-11-23 — NEW S2 RUNNER SOURCE ONLY, NOT FAIR EVIDENCE: `run_magemin_s2_native.jl`, `validate_s2_native.py`, `run_s2_fair.py`, and `test_r6_thermo_s2_native_v1.py` on branch `r6/thermo-s2-repeatability-protocol-20261123`; predeclared `s2_repeatability_protocol_v1.json` from prior 66/66 PASS unchanged. New source NOT yet tested on FAIR; no S2 write-once `R6_THERMO_S2_SOFTWARE_PREFLIGHT_NEW01` or `R6_THERMO_S2_REPEATABILITY_NEW01` created. Candidate source and design trace in `docs/arcana/R6_THERMO_S2_NATIVE_RUNNER_CANDIDATE_V1_20261123.md`. No S1 changes and no ARCANA T1.
 
 ---

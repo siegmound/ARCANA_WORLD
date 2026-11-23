@@ -1,3 +1,9 @@
+## 2026-11-23 — FAIR S2 native runner V1 source software regression 84/84 PASS
+
+- FAIR operator fetched and created isolated clean detached worktree `ARCANA_WORLD_R6_THERMO_S2_RUNNER_VERIFY` at source SHA `19a704fc47b3646c745dae8db023f44dd76ed917`, explicit `S2_RUNNER_SOURCE_PASS`. Earlier 66/66 original S2 protocol worktree `71e49c3bb7648211c9dbdfc6bc247307a1066ce8` and original S1 checkout preserved.
+- Targeted tests of S1 pilot + S1 V2 + S2 protocol + S2 native runner validation yielded `84 passed in 0.20s`, `S2_RUNNER_SOFTWARE_TESTS_PASS`, `S2_RUNNER_TEST_EXIT=0`. Net new S2 runner 18 tests (synthetic and negative output cases); no real MAGEMin or Perple_X invoked in pytest. Scientific source fields exist in pinned upstream MAGEMin output docs, but the new native KLB1 phase-type/index mapping has yet to be observed in real Julia runtime, as do all S2 outputs.
+- New source has not yet passed one real numeric smoke; no S2 preflight or official five+five run was attempted. NEXT single Julia 2-case real upstream diagnostic only outside R6 official evidence root and independent read-only Python validator. Preserve stdout/stderr/nonzero and unique temp diagnosis; on failure patch code in new versioned commit and re-run source tests rather than consuming S2 write-once ID. No T1 or Canon promotion.
+
 ## 2026-11-23 — S2 native-chemistry and 5+5 process runner candidate published (not executed)
 
 - After FAIR operator's 66/66 candidate policy PASS at SHA `71e49c3bb7648211c9dbdfc6bc247307a1066ce8`, added independently versioned `run_magemin_s2_native.jl`: both original Earth ig `MAGEMIN_PREDEFINED_KLB1` and `MAGEMIN_CUSTOM_IG` in a fresh Julia process, captures per-phase native oxide Comp_wt and source normalizations, status, bulk_res_norm, G/density/phase names; only native source basis, no canon rock assignment.
