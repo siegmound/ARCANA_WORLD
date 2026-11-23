@@ -35,13 +35,25 @@ def input_basis():
     return {k:v/total for k,v in x.items()}
 
 
+def within_float64_roundoff(observed, expected):
+    """Serialization tolerance only: <=16 ULP of the fixed P/T setpoint.
+
+    This is NOT a repeatability or physical P/T uncertainty threshold.
+    Reject nonfinite readings, type coercion and meaningful P/T drift.
+    """
+    if not finite(observed) or not finite(expected):
+        return False
+    return abs(observed - expected) <= 16 * math.ulp(float(expected))
+
+
 def check_magemin_case(c, case_id, policy):
     tol = policy["magemin_tolerances"]
     check(c.get("status") == 0 and c.get("database")=="ig"
           and c.get("dataset")=="tc_ds636",
           "S2_MAGEMIN_STATUS_OR_DATASET_DRIFT")
     p,t = EXPECTED_CASES[case_id]
-    check(c.get("P_kbar")==p and c.get("T_C")==t,
+    check(within_float64_roundoff(c.get("P_kbar"), p)
+          and within_float64_roundoff(c.get("T_C"), t),
           "S2_MAGEMIN_PT_DRIFT")
     check(finite(c.get("G_system")) and finite(c.get("rho_kg_m3"))
           and c["rho_kg_m3"]>0 and type(c.get("iterations")) is int

@@ -48,6 +48,35 @@ def native_report():
     }
 
 
+@pytest.mark.parametrize(("case", "field", "value"), [
+    ("MAGEMIN_PREDEFINED_KLB1", "T_C", 800.0000000000001),
+    ("MAGEMIN_CUSTOM_IG", "T_C", 1100.0000000000002),
+    ("MAGEMIN_PREDEFINED_KLB1", "P_kbar", 8.000000000000002),
+])
+def test_roundoff_in_native_pt_passes(native_report, case, field, value):
+    c = copy.deepcopy(native_report)
+    c["cases"][case][field] = value
+    assert set(check_magemin_report(c)) == {
+        "MAGEMIN_PREDEFINED_KLB1", "MAGEMIN_CUSTOM_IG"
+    }
+
+
+@pytest.mark.parametrize(("case", "field", "value"), [
+    ("MAGEMIN_PREDEFINED_KLB1", "T_C", 800.000001),
+    ("MAGEMIN_PREDEFINED_KLB1", "P_kbar", 8.00000001),
+    ("MAGEMIN_CUSTOM_IG", "T_C", 1100.000001),
+    ("MAGEMIN_CUSTOM_IG", "P_kbar", 10.00000001),
+    ("MAGEMIN_PREDEFINED_KLB1", "T_C", float("nan")),
+    ("MAGEMIN_PREDEFINED_KLB1", "T_C", float("inf")),
+    ("MAGEMIN_CUSTOM_IG", "P_kbar", "10.0"),
+])
+def test_real_pt_drift_or_nonfinite_rejected(native_report, case, field, value):
+    c = copy.deepcopy(native_report)
+    c["cases"][case][field] = value
+    with pytest.raises(S2ProtocolError, match="S2_MAGEMIN_PT_DRIFT"):
+        check_magemin_report(c)
+
+
 def test_native_report_chemistry_pass(native_report):
     obs=check_magemin_report(native_report)
     assert set(obs)=={"MAGEMIN_PREDEFINED_KLB1","MAGEMIN_CUSTOM_IG"}
