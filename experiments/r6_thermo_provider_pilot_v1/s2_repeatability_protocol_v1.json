@@ -1,0 +1,103 @@
+{
+  "schema": "ARCANA_R6_THERMO_S2_REPEATABILITY_PROTOCOL_V1",
+  "status": "CANDIDATE_NOT_FAIR_TESTED__NO_REAL_S2_RUNS",
+  "scope": "EARTH_UPSTREAM_FIXTURES_ONLY",
+  "s1_source_sha": "f8d659042a739789e7a131dfc926cda1ceca30a4",
+  "s1_evidence_manifest_sha256": "538c1b61f801c9902f8aa9b1b189b07ba38357eec339eb2b0211713f83299227",
+  "runs_per_case": 5,
+  "new_process_each_run": true,
+  "threads": 1,
+  "cases": [
+    {
+      "id": "MAGEMIN_PREDEFINED_KLB1",
+      "provider": "MAGEMin_C.jl",
+      "pressure_kbar": 8,
+      "temperature_c": 800,
+      "database": "ig",
+      "backend_dataset": "tc_ds636"
+    },
+    {
+      "id": "MAGEMIN_CUSTOM_IG",
+      "provider": "MAGEMin_C.jl",
+      "pressure_kbar": 10,
+      "temperature_c": 1100,
+      "database": "ig",
+      "backend_dataset": "tc_ds636",
+      "original_oxide_input_sum_wt_percent": 99.75
+    },
+    {
+      "id": "PERPLEX_BL691_MEEMUM",
+      "provider": "Perple_X",
+      "pressure_bar": 4000,
+      "temperature_k": 1050
+    }
+  ],
+  "pins": {
+    "julia_version": "1.10.4",
+    "magemin_c_version": "2.4.5",
+    "magemin_jll_version": "2.1.0+0",
+    "magemin_c_upstream_commit": "f4fd5ce3670b73693d046e65585e2b79d45c8e3a",
+    "perplex_version": "v7.3.3",
+    "perplex_source_commit": "950d882bb6a9325a627109aa7154f7b526aa3087",
+    "perplex_linux_archive_sha256": "ace6f81064c25709b401c3c49bc88410badad95fd7a876831c120eeed45f28e7"
+  },
+  "magemin_tolerances": {
+    "phase_fraction_abs": 0.0001,
+    "phase_fraction_rel": 0.001,
+    "rho_abs_kg_per_m3": 0.01,
+    "rho_rel": 0.000001,
+    "g_system_abs_kj_per_mol": 0.001,
+    "g_system_rel": 0.000001,
+    "native_oxide_component_closure_abs": 1e-10,
+    "source_to_native_component_closure_abs": 1e-12,
+    "bulk_res_norm_max": 1e-9,
+    "phase_fraction_sum_abs": 1e-8
+  },
+  "perplex_tolerances": {
+    "phase_percent_abs_pp": 0.02,
+    "phase_percent_rel": 0.001,
+    "pressure_abs_bar": 0.1,
+    "temperature_abs_kelvin": 0.1,
+    "printed_molar_component_closure": "EACH_COMPONENT_DECIMAL_ROUNDING_INTERVAL_OVERLAP"
+  },
+  "per_run_fields_magemin": [
+    "status",
+    "P_kbar",
+    "T_C",
+    "G_system",
+    "rho_kg_m3",
+    "phases",
+    "phase_mass_fractions",
+    "oxides",
+    "bulk_wt",
+    "phase_comp_wt",
+    "bulk_res_norm",
+    "iterations",
+    "source_native_basis_closure_custom"
+  ],
+  "per_run_fields_perplex": [
+    "status",
+    "official_P_bar",
+    "official_T_K",
+    "phase_wt_percent",
+    "raw_prn_sha256",
+    "raw_stdout_sha256",
+    "printed_molar_component_rounding_audit"
+  ],
+  "rules": {
+    "compare_phase_sets_by_name": true,
+    "no_phase_alias_without_reviewer_crosswalk": true,
+    "scalar_stability_comparison": "ABS_DELTA_LE_ABS_TOL_PLUS_REL_TOL_TIMES_MAX_ABS",
+    "report_max_observed_absolute_and_relative_deltas": true,
+    "times_are_descriptive_not_acceptance": true,
+    "all_raw_runs_write_once": true,
+    "preserve_partial_evidence_on_failure": true,
+    "no_same_database_or_chemistry_cross_provider_equivalence": true,
+    "no_oxide_basis_conversion_without_documented_stoichiometry": true,
+    "absolute_tolerances_are_engineering_repeatability_screens_not_physical_uncertainties": true,
+    "D_024": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
