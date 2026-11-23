@@ -1,3 +1,10 @@
+## 2026-11-23 — FAIR S2 repeatability protocol V1 contract/source regression 66/66 PASS
+
+- Operator fetched `r6/thermo-s2-repeatability-protocol-20261123` into new separate clean detached worktree `ARCANA_WORLD_R6_THERMO_S2_PROTOCOL_VERIFY`; exact source SHA `71e49c3bb7648211c9dbdfc6bc247307a1066ce8`; explicit `S2_PROTOCOL_SOURCE_PASS`.
+- Existing `arcana-r6-linux` executed three targeted pytest modules `tests/test_r6_thermo_provider_pilot.py`, `tests/test_r6_thermo_s1_v2.py`, and `tests/test_r6_thermo_s2_protocol_v1.py` → `66 passed in 0.17s`, `S2_PROTOCOL_SOFTWARE_TESTS_PASS`, exit0. Prior 48 S1 contract tests + 18 S2 guard tests; this is a Python *policy validation* and not any fresh numerical process or chemistry repeatability measurement.
+- The fixed JSON engineering stability tolerance and process-independent 5+5 design is now software-checked; no distinct S2 native engine runner, trial evidentiary work, or official write-once S2 outputs have been qualified. Prior S1 real-engine 2/2 provider and 13-file archive remain fully distinct.
+- NEXT implement and independently test actual S2 per-run native chemical extraction, rounding-interval Perple_X audit, distinct fresh-process scheduling, physical-source runtime pinning, write-once manifest and failure preservation. Return tests before running real jobs; no T1/Canon/history promotion.
+
 ## 2026-11-23 — Isolated S2 repeatability protocol V1 candidate published (software policy only)
 
 - Began new branch `r6/thermo-s2-repeatability-protocol-20261123` at S1 documentation/closure commit `908cd1e78c9d1c89c0a5b8473359cc323da6c947`, deliberately not altering the FAIR S1 detached source or official NEW02 evidence.
