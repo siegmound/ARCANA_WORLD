@@ -44,7 +44,38 @@
         "T": 1100
       },
       "calibrated_domain": "UNKNOWN_NEEDS_SOURCE",
-      "run_allowed": false
+      "run_allowed": false,
+      "source_registry_git_blob": "37b958b0137f878a3a3010593ce22fed2cf37a6c",
+      "fixed_original_oxide_input": {
+        "names": [
+          "SiO2",
+          "Al2O3",
+          "CaO",
+          "MgO",
+          "FeO",
+          "Fe2O3",
+          "K2O",
+          "Na2O",
+          "TiO2",
+          "Cr2O3",
+          "H2O"
+        ],
+        "amounts_wt_percent": [
+          48.43,
+          15.19,
+          11.57,
+          10.13,
+          6.65,
+          1.64,
+          0.59,
+          1.87,
+          0.68,
+          0,
+          3
+        ],
+        "as_reported_sum_wt_percent": 99.75,
+        "oxide_basis": "AS_REPORTED_WT_PERCENT_NO_NORMALIZATION"
+      }
     },
     {
       "id": "S3B_PERPLEX_BL691",
@@ -92,7 +123,46 @@
       "option_file_present_in_pinned_test_directory": false,
       "effective_default_options_verified": false,
       "calibrated_domain": "UNKNOWN_NEEDS_SOURCE",
-      "run_allowed": false
+      "run_allowed": false,
+      "fixed_original_molar_input": {
+        "names": [
+          "Na2O",
+          "MgO",
+          "Al2O3",
+          "K2O",
+          "CaO",
+          "TiO2",
+          "FeO",
+          "O2",
+          "H2O",
+          "SiO2"
+        ],
+        "amount_tokens": [
+          "2.5416",
+          "8.110",
+          "9.2646",
+          "0.1054",
+          "10.146",
+          "1.346",
+          "10.1382",
+          "0.488",
+          "3.4162",
+          "53.9559"
+        ],
+        "component_flags": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "basis": "ORIGINAL_PERPLEX_INPUT_MOLAR_AMOUNTS_NO_RENORMALIZATION"
+      }
     }
   ],
   "grid": {

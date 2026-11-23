@@ -36,3 +36,10 @@ Checked references:
 - MAGEMin native P/T input: https://computationalthermodynamics.github.io/MAGEMin_C.jl/stable/MAGEMin_C/examples
 - Pinned Perple_X problem: https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/test/bl691_MEEMUM/bl691_MEEMUM.dat
 - Perple_X default options: https://www.perplex.ethz.ch/perplex_options_body.html
+
+
+## Exact original chemistry binding (source-only)
+
+S3-A copies the **11 oxide names and original unnormalized weight inputs** byte-logically from `experiments/r6_thermo_provider_pilot_v1/pilot.json` at the exact S2 tested source `632c4a570f876e3963b1dcd8a1f411a143fc8a59`, Git blob `37b958b0137f878a3a3010593ce22fed2cf37a6c`: `SiO2, Al2O3, CaO, MgO, FeO, Fe2O3, K2O, Na2O, TiO2, Cr2O3, H2O`; weights `48.43, 15.19, 11.57, 10.13, 6.65, 1.64, 0.59, 1.87, 0.68, 0, 3`, input sum `99.75` wt%. The already-qualified Fe2O3→2FeO+O native basis crosswalk must remain source-validated; do not silently normalize original reported inputs as a new chemical case.
+
+S3-B copies the **10 original thermodynamic component molar amounts** from pinned Perple_X BL691 `.dat`, Git blob `3954964480612264838636fd394043aa0fef6324`: `Na2O=2.5416`; `MgO=8.110`; `Al2O3=9.2646`; `K2O=0.1054`; `CaO=10.146`; `TiO2=1.346`; `FeO=10.1382`; `O2=0.488`; `H2O=3.4162`; `SiO2=53.9559`. Input components `O2` and `H2O` are not interchangeable with MAGEMin's `O`/Fe2O3 convention. Keep the original printed numerical tokens, component flags and order, with no chemical renormalization or invented redox crosswalk. These explicit source-bound arrays are **provisional identity controls**, not authorization to apply them to ARCANA.
