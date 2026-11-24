@@ -1,0 +1,189 @@
+{
+  "schema": "r6_thermo_s3_d4_c_hgp_4tr_source_audit_v1",
+  "date": "2026-11-24",
+  "status": "SOURCE_PARAMETER_AND_ENTROPY_REVIEW_COMPLETE__HGP_EXPLORATORY_CANDIDATE__SCIENCE_NOT_APPROVED",
+  "sources": {
+    "paper": "https://doi.org/10.1111/jmg.12639",
+    "cam": "https://api.repository.cam.ac.uk/server/api/core/bitstreams/55519c2c-6d9a-4bd6-a641-e05f88d1e88c/content",
+    "mel": "https://minerva-access.unimelb.edu.au/server/api/core/bitstreams/57693947-5122-5e9d-889f-387e0966a0ab/content",
+    "erratum": "https://hpxeosandthermocalc.org/2022/01/27/a-new-x-eos-for-ternary-feldspars/",
+    "metabasite": "https://hpxeosandthermocalc.org/the-hpx-eos/the-hpx-eos-families/metabasite-set/",
+    "descriptions": "https://hpxeosandthermocalc.org/wp-content/uploads/2022/01/metabasite_set_full_descriptions-1.txt",
+    "endmembers": "https://hpxeosandthermocalc.org/wp-content/uploads/2019/12/metabasite_set_end-member_thermo.txt_.zip",
+    "model": "https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/test/bl691_MEEMUM/solution_model.dat",
+    "fortran": "https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/src/rlib.f",
+    "database": "https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/test/bl691_MEEMUM/hp62ver.dat"
+  },
+  "upstream_commit": "950d882bb6a9325a627109aa7154f7b526aa3087",
+  "blobs": {
+    "solution_model": "564742a569998a768c2d8e15d2b9599ee90438d1",
+    "database": "34ab165fe8e5856294d7a967c63e07dfc04d701b",
+    "rlib_f": "d9cf25af82bba61f60d7c9b29c510ca9fe9eedaa",
+    "bl691_input": "3954964480612264838636fd394043aa0fef6324"
+  },
+  "parameter_comparison": {
+    "units": "J, bar, K; coefficients converted from paper kJ, kbar, K",
+    "interaction_order": [
+      "Ab-An",
+      "Ab-Or",
+      "An-Or"
+    ],
+    "paper_W": [
+      [
+        14600,
+        -9.35,
+        -0.04
+      ],
+      [
+        24100,
+        -9.57,
+        0.338
+      ],
+      [
+        48500,
+        0,
+        -0.13
+      ]
+    ],
+    "implementation_W": [
+      [
+        14600,
+        -9.35,
+        -0.04
+      ],
+      [
+        24100,
+        -9.57,
+        0.338
+      ],
+      [
+        48500,
+        0,
+        -0.13
+      ]
+    ],
+    "alpha_order": [
+      "Ab",
+      "An",
+      "Or"
+    ],
+    "paper_alpha": [
+      0.674,
+      0.55,
+      1
+    ],
+    "implementation_alpha": [
+      0.674,
+      0.555,
+      1
+    ],
+    "alpha_an_origin": "UNKNOWN",
+    "explicit_terms_matching": 10,
+    "explicit_terms_differing": 1,
+    "low_ab_parameter_matches": {
+      "W_J": 3400,
+      "alpha_ab": 0.64,
+      "alpha_an": 1,
+      "dqf_ab_J_constant": -1746,
+      "dqf_ab_J_per_K": 2,
+      "dqf_an_J": 10000
+    }
+  },
+  "normalization": {
+    "source_functions": [
+      "omega",
+      "snorm0",
+      "gmodel",
+      "setw",
+      "gex"
+    ],
+    "anorthite_factor": 2,
+    "source_consistent": true,
+    "binary_verified": false
+  },
+  "analytic_fixed_composition": {
+    "P_bar": 4000,
+    "T_K": 1050,
+    "phase_x_ab_an_or": [
+      0.4490155098449015,
+      0.5427445725542743,
+      0.008239917600823992
+    ],
+    "W_J_mol": [
+      4622.5,
+      15403.5,
+      47980
+    ],
+    "ideal_activities": [
+      0.43085549444778626,
+      0.5283694008695634,
+      0.007906661783995721
+    ],
+    "G_ideal_J_mol": -6671.555064494895,
+    "G_ex_alpha_0550_J_mol": 1444.925787081866,
+    "G_ex_alpha_0555_J_mol": 1445.5319318262511,
+    "delta_Gex_J_mol": 0.6061447443851193,
+    "RTln2_J_mol": 6051.303637726178,
+    "not_equilibrium_run": true
+  },
+  "dataset": {
+    "family": "TC-DS62 2012-02-06",
+    "official_metabasite_family_supported": true,
+    "exact_endmember_parity": "UNKNOWN",
+    "official_descriptions_access": "HTTP_403",
+    "official_endmember_archive_access": "CACHE_MISS",
+    "pdf_screenshot_access": "CACHE_MISS_TEXT_READABLE"
+  },
+  "pilot_candidate": {
+    "authorized": false,
+    "executable": false,
+    "design_scope": "EARTH_ONLY_BL691_ANCHOR_SENSITIVITY",
+    "cases": [
+      {
+        "id": "HGP_UPSTREAM",
+        "replace": "Fsp(C1)",
+        "with": [
+          "Fsp(HGP)"
+        ],
+        "alpha_an": 0.555
+      },
+      {
+        "id": "HGP_PAPER_ALPHA",
+        "replace": "Fsp(C1)",
+        "with": [
+          "Fsp(HGP)"
+        ],
+        "alpha_an": 0.55,
+        "change_scope": "ISOLATED_COPY_SINGLE_PARAMETER"
+      },
+      {
+        "id": "HGP_LOW_ALBITE",
+        "replace": "Fsp(C1)",
+        "with": [
+          "Fsp(HGP)",
+          "lAb(HGP)"
+        ],
+        "alpha_an": 0.555,
+        "conditional": true
+      }
+    ],
+    "fresh_processes_per_case": 2,
+    "max_processes": 6,
+    "walltime_cap_s_candidate": 150,
+    "peak_rss_budget": null,
+    "io_budget": null,
+    "repeat_screen": "EXACT_PRINTED_PHASE_MEMBERSHIP_AND_NATIVE_COMPOSITION_TOKENS__REVIEW_IF_DIFFERENT",
+    "historical_S2_reused": true,
+    "legacy_I1_optional_not_priority": true
+  },
+  "authority": {
+    "S2": "SEALED",
+    "S3_engine_runs": 0,
+    "approved_cells": 0,
+    "not_approved_cells": 50,
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "D_024": "ACTIVE"
+  }
+}
