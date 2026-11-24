@@ -1,0 +1,470 @@
+{
+  "schema": "ARCANA_R6_THERMO_S3_D4_SCIENCE_BUDGET_TRIAGE_V1",
+  "date": "2026-11-24",
+  "state": "DRAFT_EARTH_PROVIDER_SCIENCE_NOT_RATIFIED",
+  "executable": false,
+  "engine_executions_authorized": 0,
+  "source_candidate_design_git_blob": "1a69ac7be3d9970c94f91fe7e7213a8037af8286",
+  "source_candidate_design_commit": "b4437ad62b259a27cb2976f3d48ecddec9d1f628",
+  "D_024": "ACTIVE",
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+  "S2_runtime_baseline": {
+    "source": "FAIR_OPERATOR_REPORTED_MANIFEST_SHA_BOUND_S2_LAUNCH_JSON_READ_ONLY",
+    "scope": "S2_REFERENCE_PROCESS_LAUNCHES_ONLY_NOT_S3_POINT_COST",
+    "original_s2_manifest_sha256": "74871bd46fdb67a2828566a12e11140e52a505e828ded81751b239bf20b5b604",
+    "original_s2_code_sha": "632c4a570f876e3963b1dcd8a1f411a143fc8a59",
+    "read_only_audit_marker": "S3_D4_S2_RUNTIME_BASELINE_READONLY_PASS",
+    "audit_exit": 0,
+    "engine_runs_s3": 0,
+    "magemin": {
+      "count": 5,
+      "cases_per_process": 2,
+      "case_ids": [
+        "MAGEMIN_PREDEFINED_KLB1",
+        "MAGEMIN_CUSTOM_IG"
+      ],
+      "min_elapsed_s": 6.281932055950165,
+      "median_elapsed_s": 6.380358584225178,
+      "max_elapsed_s": 6.3818054385483265,
+      "sum_elapsed_s": 31.75680620968342,
+      "display_rounding_s": [
+        6.381,
+        6.282,
+        6.382,
+        6.332,
+        6.38
+      ]
+    },
+    "perplex": {
+      "count": 5,
+      "cases_per_process": 1,
+      "case_ids": [
+        "PERPLEX_BL691_MEEMUM"
+      ],
+      "min_elapsed_s": 1.117596622556448,
+      "median_elapsed_s": 1.1679270006716251,
+      "max_elapsed_s": 1.1679777540266514,
+      "sum_elapsed_s": 5.788513708859682,
+      "display_rounding_s": [
+        1.168,
+        1.167,
+        1.168,
+        1.168,
+        1.118
+      ]
+    },
+    "total_elapsed_s": 37.5453199185431,
+    "processes_serial_s2": true,
+    "representative_single_s3_point_runtime": false,
+    "peak_rss_bytes": null,
+    "per_point_s3_total_io_bytes": null,
+    "S3_walltime_projection_approved": false
+  },
+  "science_sources": {
+    "magemin_g25": "https://hpxeosandthermocalc.org/the-hpx-eos/the-hpx-eos-families/hpx-eos-igneous-sets/",
+    "g25_corrigendum": "https://academic.oup.com/petrology/article/66/1/egae079/7989477",
+    "magemin_database": "https://computationalthermodynamics.github.io/MAGEMin_C.jl/stable/database",
+    "perplex_hp62ver": "https://www.perplex.ethz.ch/perplex_thermodynamic_data_file_body.html",
+    "green_2016_calibration": "https://doi.org/10.1111/jmg.12211",
+    "perplex_solution_model_selection": "https://www.perplex.ethz.ch/perplex_66_build_prompts.html"
+  },
+  "science_disposition": {
+    "g25": "G25_CORRECTED_AFTER_H18_APPLICATION_TO_HYDROUS_OR_ANHYDROUS_SUBALKALINE_SYSTEMS__EXACT_SOURCE_PT_X_COMBINATION_UNCONFIRMED",
+    "perplex": "HP62VER_TC620_SUPPORTED_MODEL_IDENTITY__G16_COMPONENT_CALIBRATION_AT_LE_13KBAR_IS_NOT_BL691_WHOLE_SOLVER_PT_X_CALIBRATION",
+    "cross_provider": "UNQUALIFIED_NO_COMMON_COMPOSITION_THERMODYNAMIC_DATASET_REDOX_MODEL_CROSSWALK",
+    "unsupported_cell_claims": 0,
+    "approved_cell_count": 0,
+    "unknown_scientific_cell_count": 50,
+    "separate_provider_native_sensitivity_only": true
+  },
+  "tracks": [
+    {
+      "id": "S3A_MAGEMIN_CUSTOM_IG",
+      "provider": "MAGEMin_C.jl",
+      "unit_P": "kbar",
+      "unit_T": "degC",
+      "anchor": {
+        "P": 10,
+        "T": 1100
+      },
+      "model": "ig/tc_ds636 G25",
+      "input_problem_rectangle_status": "NO_INDEPENDENTLY_ASSESSED_GLOBAL_INPUT_RECTANGLE",
+      "scientific_model_validity_status": "UNKNOWN_NOT_APPROVED",
+      "cells": [
+        {
+          "P": 8,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 8,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 8,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 8,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 8,
+          "T": 1200,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 9,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 9,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 9,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 9,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 9,
+          "T": 1200,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 10,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 10,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 10,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 10,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 10,
+          "T": 1200,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 11,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 11,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 11,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 11,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 11,
+          "T": 1200,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 12,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 12,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 12,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 12,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 12,
+          "T": 1200,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        }
+      ]
+    },
+    {
+      "id": "S3B_PERPLEX_BL691",
+      "provider": "Perple_X",
+      "unit_P": "bar",
+      "unit_T": "K",
+      "anchor": {
+        "P": 4000,
+        "T": 1050
+      },
+      "model": "hp62ver.dat TC620 BL691",
+      "input_problem_rectangle_status": "ALL_25_WITHIN_SOURCE_DECLARED_INPUT_PROBLEM_ONLY",
+      "scientific_model_validity_status": "UNKNOWN_NOT_APPROVED",
+      "cells": [
+        {
+          "P": 2000,
+          "T": 950,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 2000,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 2000,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 2000,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 2000,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 3000,
+          "T": 950,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 3000,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 3000,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 3000,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 3000,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 4000,
+          "T": 950,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 4000,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 4000,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 4000,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 4000,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 5000,
+          "T": 950,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 5000,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 5000,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 5000,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 5000,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 6000,
+          "T": 950,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 6000,
+          "T": 1000,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 6000,
+          "T": 1050,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 6000,
+          "T": 1100,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        },
+        {
+          "P": 6000,
+          "T": 1150,
+          "scientific_ptx_applicability": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "real_run_count": 0
+        }
+      ]
+    }
+  ],
+  "threshold_policy": "PENDING_S3_PREREGISTRATION__OLD_S2_NUMERIC_SANITY_CHECKS_NOT_S3_VALIDITY_THRESHOLDS",
+  "full_new_run_prohibited": true,
+  "memory_budget_status": "UNKNOWN_NOT_MEASURED",
+  "io_budget_status": "UNKNOWN_NOT_MEASURED",
+  "future_engine_budget_status": "BLOCKED_UNTIL_PER_POINT_TELEMETRY_AND_SCIENCE_REVIEW",
+  "immutable_evidence_root": "PROPOSE_SEPARATE_NEW_S3_ID_ONLY_FUTURE_WITH_AUTHORIZATION"
+}
