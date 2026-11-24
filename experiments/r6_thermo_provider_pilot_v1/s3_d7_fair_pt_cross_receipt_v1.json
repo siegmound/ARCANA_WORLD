@@ -1,0 +1,127 @@
+{
+  "schema": "R6_S3_D7_FAIR_PT_CROSS_RECEIPT_V1",
+  "date": "2026-11-24",
+  "provenance": "OPERATOR_TERMINAL_TRANSCRIPT",
+  "source_sha": "9f84b79ffcc8f598789ac055f5d2fd2ad830b088",
+  "tests": {
+    "passed": 14,
+    "failed": 0,
+    "elapsed_s": 0.08
+  },
+  "evidence_id": "R6_THERMO_S3_D7_HGP_PT_CROSS_NEW01",
+  "manifest_sha256": "5f029ba0122410a67396dc3fb46975ebd89761fda8ea9b84aa12b26d089611f7",
+  "state": "D7_PT_CROSS_CAPTURED_REVIEW_REQUIRED",
+  "exit": 0,
+  "model": "HGP_LOW_ALBITE",
+  "fixed_X": "BL691",
+  "points": {
+    "P3000_T1050": {
+      "prn": "ecc37eea1f218607704b51d9afe4deb4a562df457946d27acca18510fde0db27",
+      "pids": [
+        1285798,
+        1285799
+      ],
+      "wall_s": [
+        0.6682771667838097,
+        0.669189840555191
+      ],
+      "phases": {
+        "Augite(G)": 3.66,
+        "Fsp(HGP)": 35.54,
+        "Ilm(WPH)": 2.79,
+        "Opx(W)": 1.5,
+        "cAmph(G)": 44.6,
+        "melt(G)": 2.65,
+        "q": 9.26
+      },
+      "rho": 2920,
+      "cp": 1185.15,
+      "alpha": 0.000031984,
+      "beta": 1.6116e-11,
+      "G_total": -86101748,
+      "shear": null
+    },
+    "P4000_T1000": {
+      "prn": "1030060ed5a0a765746d84aac69f896df504e455428018926a592121dbfa8b4e",
+      "pids": [
+        1285772,
+        1285777
+      ],
+      "wall_s": [
+        0.7674414850771427,
+        0.7697138674557209
+      ],
+      "readback_review": "S3_PERPLEX_NATIVE_BULK_ROW_INVALID",
+      "phases": null,
+      "layout_hypothesis": "SINGLE_AGGREGATE_SOURCE_BRANCH_NOT_CONFIRMED"
+    },
+    "P4000_T1100": {
+      "prn": "7510cf29f8edc249f7f36de10986db3f3c2e6f67774b4023e6623358ff0707c3",
+      "pids": [
+        1285789,
+        1285790
+      ],
+      "wall_s": [
+        0.6682927124202251,
+        0.66829539462924
+      ],
+      "phases": {
+        "Augite(G)": 13.6,
+        "Fsp(HGP)": 39.56,
+        "Ilm(WPH)": 4.22,
+        "Opx(W)": 16.45,
+        "Sp(WPC)": 0.11,
+        "cAmph(G)": 9.94,
+        "melt(G)": 12.98,
+        "q": 3.13
+      },
+      "rho": 2887.8,
+      "cp": 1213.99,
+      "alpha": 0.000041585,
+      "beta": 2.1742e-11,
+      "G_total": -86533217,
+      "shear": 8239700000,
+      "shear_status": "NATIVE_UNVALIDATED_FALLBACK_AND_WARNING_SUPPRESSION"
+    },
+    "P5000_T1050": {
+      "prn": "9d903e6e9e4185f6c7d59b20e98435dafa4ec52f133bc17e211c2c1726c7cf70",
+      "pids": [
+        1285811,
+        1285817
+      ],
+      "wall_s": [
+        0.7184603624045849,
+        0.7182638719677925
+      ],
+      "phases": {
+        "Augite(G)": 3.01,
+        "Fsp(HGP)": 31.4,
+        "Ilm(WPH)": 2.42,
+        "cAmph(G)": 50.55,
+        "melt(G)": 0.75,
+        "q": 11.86
+      },
+      "rho": 2946.8,
+      "cp": 1177.78,
+      "alpha": 0.000029623,
+      "beta": 1.4503e-11,
+      "G_total": -85681714,
+      "shear": null
+    }
+  },
+  "all_pairs_byte_identical": true,
+  "successful_engine_runs": 8,
+  "readback_complete_points": 3,
+  "solver_wall_s": 5.647934701293707,
+  "children_cumulative_maxrss_KiB": 58368,
+  "du_reported": "7.2M",
+  "S3_total_runs": 14,
+  "authority": {
+    "D_024": "ACTIVE",
+    "D_025": "ACTIVE",
+    "scientifically_approved_S3_cells": 0,
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
