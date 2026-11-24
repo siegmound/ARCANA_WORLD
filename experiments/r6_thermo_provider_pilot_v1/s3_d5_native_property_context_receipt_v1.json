@@ -1,0 +1,128 @@
+{
+  "schema": "R6_S3_D5_NATIVE_PROPERTY_CONTEXT_RECEIPT_V1",
+  "date": "2026-11-24",
+  "provenance": "OPERATOR_TRANSCRIPT__HEAD_TRUNCATED__FINAL_MARKER_PRESENT",
+  "read_only_exit": 0,
+  "additional_engine_runs": 0,
+  "manifest_check_stdout_prefix_missing": true,
+  "source_sha_inferred_from_prior_command": "eaefbabc1383203551b527c986e952ed0df213c2",
+  "C_model_admission": {
+    "HGP_pseudocompounds": 18,
+    "lAb_pseudocompounds": 4,
+    "total_A_B": 58352,
+    "total_C": 58356,
+    "included": true,
+    "printed_stable_phase_absent": true
+  },
+  "P_bar": 4000,
+  "T_K": 1050,
+  "thermal_units": {
+    "density": "kg/m3",
+    "cp": "J/kg/K",
+    "alpha": "1/K",
+    "beta": "1/Pa",
+    "G_total": "J per reported assemblage",
+    "mass": "g"
+  },
+  "thermal_A_C": {
+    "density": 2934.7,
+    "solid_density": 2946.9,
+    "melt_density": 2203.8,
+    "cp": 1180.29,
+    "solid_cp": 1180.42,
+    "alpha": 0.000030365,
+    "beta": 1.5015e-11,
+    "G_total": -85891278,
+    "mass": 6162.82
+  },
+  "thermal_B": {
+    "density": 2934.7,
+    "solid_density": 2946.9,
+    "melt_density": 2203.9,
+    "cp": 1180.29,
+    "solid_cp": 1180.42,
+    "alpha": 0.000030364,
+    "beta": 1.5015e-11,
+    "G_total": -85891282,
+    "mass": 6162.82
+  },
+  "reference_C1": {
+    "provenance": "PINNED_UPSTREAM_PRN_NOT_FULL_S2_TRANSCRIPT",
+    "density": 2941.5,
+    "solid_density": 2949.7,
+    "melt_density": 2207.9,
+    "cp": 1158.73,
+    "solid_cp": 1158.58,
+    "alpha": 0.000028228,
+    "beta": 1.4633e-11,
+    "G_total": -85883540,
+    "mass": 6162.82
+  },
+  "native_sites": {
+    "A_C": {
+      "Augite_M2_Na": 0.0343,
+      "Augite_M2_Ca": 0.8649,
+      "cAmph_M2_Fe3": 0.2457,
+      "cAmph_M2_Ti": 0.0639,
+      "cAmph_A_Na": 0.4354,
+      "cAmph_A_K": 0.0389,
+      "cAmph_OH_OH": 0.9361
+    },
+    "B": {
+      "Augite_M2_Na": 0.0343,
+      "Augite_M2_Ca": 0.8651,
+      "cAmph_M2_Fe3": 0.2457,
+      "cAmph_M2_Ti": 0.0639,
+      "cAmph_A_Na": 0.4354,
+      "cAmph_A_K": 0.0389,
+      "cAmph_OH_OH": 0.9361
+    }
+  },
+  "warning_context": {
+    "ver178": [
+      "cAmph(G)",
+      "Augite(G)",
+      "Ilm(WPH)",
+      "Fsp(HGP)"
+    ],
+    "poisson_ratio": 0.35,
+    "ver177": "q",
+    "ver212": "non-equimolar O/D",
+    "ver114": {
+      "Gt(W)": [
+        "spss",
+        "fmn_i"
+      ],
+      "Opx(W)": [
+        "mnopx"
+      ],
+      "Bi(W)": [
+        "mnbi"
+      ],
+      "Ilm(WPH)": [
+        "pnt",
+        "geik"
+      ]
+    },
+    "option_file": "missing; default values",
+    "quartz_thermal_alpha_zero_and_cp_cv_zero": "NATIVE_ZERO_UNADJUDICATED",
+    "melt_shear_zero": "NATIVE_FLUID_ZERO_NOT_MISSING"
+  },
+  "decision": {
+    "HGP_C": "CANDIDATE_FOR_FUTURE_EXPLORE",
+    "thermal": "NATIVE_READBACK_AVAILABLE_NOT_VALIDATED",
+    "aggregate_elastic": "UNKNOWN_NO_EXPORT",
+    "rheology": "UNKNOWN",
+    "G25": "SEPARATE_MAGEMIN_DOMAIN",
+    "phase_site_validity": "UNRATIFIED"
+  },
+  "authority": {
+    "D_024": "ACTIVE",
+    "D_025": "ACTIVE",
+    "S3_engine_runs": 6,
+    "approved_S3_cells": 0,
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
