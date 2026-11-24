@@ -1,0 +1,230 @@
+{
+  "schema": "ARCANA_R6_THERMO_S3_D4_C_S2_ORIGINAL_PHASE_CHEMISTRY_OPERATOR_READBACK_V1",
+  "date": "2026-11-24",
+  "evidence_provenance": "FAIR_OPERATOR_REPORTED_CONSOLE; original S2 bytes not directly rehashed by Github assistant",
+  "command_source_sha": "fbb1e77c54e3545ea2e7e7b52226ed0576f1993e",
+  "operator_marker": "S3_D4_C_ORIGINAL_S2_PHASE_CHEMISTRY_READONLY_PASS",
+  "exit_code": 0,
+  "manifest_sha256_verified_by_operator": "74871bd46fdb67a2828566a12e11140e52a505e828ded81751b239bf20b5b604",
+  "member_paths_verified_by_operator": [
+    "MAGEMIN_01/NATIVE.toml",
+    "PERPLEX_01/BL691_MEEMUM/bl691_MEEMUM.prn"
+  ],
+  "readback_scope": "TWO_HISTORIC_UPSTREAM_S2_ANCHORS_ONLY",
+  "magemin": {
+    "P_kbar": 10,
+    "T_C": 1100,
+    "oxide_basis": "NATIVE_MASS_FRACTION_AFTER_FE2O3_TO_2FEO_PLUS_O",
+    "phases": [
+      {
+        "name": "liq",
+        "phase_mass_fraction": 0.7313343478373275,
+        "component_mass_fractions": {
+          "Al2O3": 0.18654128411336054,
+          "CaO": 0.09115961896311271,
+          "Cr2O3": 0,
+          "FeO": 0.08495645882015888,
+          "H2O": 0.04112367632475054,
+          "K2O": 0.007983224557701845,
+          "MgO": 0.07673903358261036,
+          "Na2O": 0.024429217054533683,
+          "O": 0.0016819664283446582,
+          "SiO2": 0.4768381871381018,
+          "TiO2": 0.008547333017325012
+        }
+      },
+      {
+        "name": "cpx",
+        "phase_mass_fraction": 0.2489167968690463,
+        "component_mass_fractions": {
+          "Al2O3": 0.05778490312203881,
+          "CaO": 0.19690474551964915,
+          "Cr2O3": 0,
+          "FeO": 0.06807801365238422,
+          "H2O": 0,
+          "K2O": 0.0003068276355380902,
+          "MgO": 0.1608134411183714,
+          "Na2O": 0.0035179992389416164,
+          "O": 0.0015368452155485777,
+          "SiO2": 0.5088116649292095,
+          "TiO2": 0.002245559568318645
+        }
+      },
+      {
+        "name": "opx",
+        "phase_mass_fraction": 0.019748855293626123,
+        "component_mass_fractions": {
+          "Al2O3": 0.07457969566626878,
+          "CaO": 0.015636171679485614,
+          "Cr2O3": 0,
+          "FeO": 0.12071969020809394,
+          "H2O": 0,
+          "K2O": 0,
+          "MgO": 0.2735714217299274,
+          "Na2O": 0.0002649896446609558,
+          "O": 0.0017557381100637888,
+          "SiO2": 0.5131117720634666,
+          "TiO2": 0.00036052089803291693
+        }
+      }
+    ]
+  },
+  "perplex": {
+    "P_bar": 4000,
+    "T_K": 1050,
+    "chemical_basis": "PRINTED_NATIVE_OXIDE_MOLAR_COMPONENT_TOKENS_NOT_CRYSTALLOGRAPHIC_SITE_FRACTIONS",
+    "phases": [
+      {
+        "name": "cAmph(G)",
+        "phase_mol_printed": "3.48",
+        "phase_wt_percent_printed": "50.80",
+        "native_oxide_molar_proportion_tokens": {
+          "Al2O3": "1.06727",
+          "CaO": "1.60128",
+          "FeO": "2.47675",
+          "H2O": "0.92948",
+          "K2O": "0.01782",
+          "MgO": "2.21200",
+          "Na2O": "0.26221",
+          "O2": "0.12131",
+          "SiO2": "6.38698",
+          "TiO2": "0.14105"
+        }
+      },
+      {
+        "name": "Augite(G)",
+        "phase_mol_printed": "0.817",
+        "phase_wt_percent_printed": "3.09",
+        "native_oxide_molar_proportion_tokens": {
+          "Al2O3": "0.04942",
+          "CaO": "0.88092",
+          "FeO": "0.57615",
+          "H2O": "0.00000",
+          "K2O": "0.00000",
+          "MgO": "0.49852",
+          "Na2O": "0.01463",
+          "O2": "0.02445",
+          "SiO2": "1.91631",
+          "TiO2": "0.00000"
+        }
+      },
+      {
+        "name": "melt(G)",
+        "phase_mol_printed": "0.369",
+        "phase_wt_percent_printed": "0.82",
+        "native_oxide_molar_proportion_tokens": {
+          "Al2O3": "0.16927",
+          "CaO": "0.05194",
+          "FeO": "0.01881",
+          "H2O": "0.48902",
+          "K2O": "0.03877",
+          "MgO": "0.00450",
+          "Na2O": "0.08599",
+          "O2": "0.00000",
+          "SiO2": "1.63518",
+          "TiO2": "0.00000"
+        }
+      },
+      {
+        "name": "Ilm(WPH)",
+        "phase_mol_printed": "0.946",
+        "phase_wt_percent_printed": "2.34",
+        "native_oxide_molar_proportion_tokens": {
+          "Al2O3": "0.00000",
+          "CaO": "0.00000",
+          "FeO": "1.09658",
+          "H2O": "0.00000",
+          "K2O": "0.00000",
+          "MgO": "0.00000",
+          "Na2O": "0.00000",
+          "O2": "0.04829",
+          "SiO2": "0.00000",
+          "TiO2": "0.90342"
+        }
+      },
+      {
+        "name": "Fsp(C1)",
+        "phase_mol_printed": "7.06",
+        "phase_wt_percent_printed": "31.05",
+        "native_oxide_molar_proportion_tokens": {
+          "Al2O3": "0.77138",
+          "CaO": "0.54275",
+          "FeO": "0.00000",
+          "H2O": "0.00000",
+          "K2O": "0.00412",
+          "MgO": "0.00000",
+          "Na2O": "0.22451",
+          "O2": "0.00000",
+          "SiO2": "2.45725",
+          "TiO2": "0.00000"
+        }
+      },
+      {
+        "name": "q",
+        "phase_mol_printed": "12.2",
+        "phase_wt_percent_printed": "11.90",
+        "native_oxide_molar_proportion_tokens": {
+          "Al2O3": "0.00000",
+          "CaO": "0.00000",
+          "FeO": "0.00000",
+          "H2O": "0.00000",
+          "K2O": "0.00000",
+          "MgO": "0.00000",
+          "Na2O": "0.00000",
+          "O2": "0.00000",
+          "SiO2": "1.00000",
+          "TiO2": "0.00000"
+        }
+      }
+    ],
+    "problem_source_git_blob": "3954964480612264838636fd394043aa0fef6324",
+    "solution_model_source_git_blob": "564742a569998a768c2d8e15d2b9599ee90438d1",
+    "upstream_source_commit": "950d882bb6a9325a627109aa7154f7b526aa3087"
+  },
+  "derived_diagnostic": {
+    "feldspar": {
+      "Na_cations_from_2Na2O": 0.44902,
+      "Ca_cations_from_CaO": 0.54275,
+      "K_cations_from_2K2O": 0.00824,
+      "total_alkali_plus_alkaline_earth_site_cations": 1.0000099999999998,
+      "x_Ab": 0.4490155098449016,
+      "x_An": 0.5427445725542746,
+      "x_Or": 0.008239917600823994,
+      "T_K": 1050,
+      "upstream_heuristic_C1_XAb_strictly_gt": 0.481,
+      "xAb_minus_heuristic_cutoff": -0.03198449015509841,
+      "estimated_printing_rounding_xAb_lower": 0.44900326495102566,
+      "estimated_printing_rounding_xAb_upper": 0.44902775486122576,
+      "tetrahedral_cation_sum_from_SiO2_and_2Al2O3": 4.00001,
+      "candidate_flag": "SOURCE_HEURISTIC_C1_THRESHOLD_NOT_MET__STRUCTURAL_STABILITY_UNKNOWN"
+    },
+    "augite": {
+      "Na_cations_from_2Na2O": 0.02926,
+      "Ca_cations_from_CaO": 0.88092,
+      "na_over_na_plus_ca_proxy": 0.03214748731020238,
+      "applicability": "UNKNOWN_NO_SCIENTIFIC_NA_RICH_CRITERION_ESTABLISHED"
+    },
+    "amphibole": {
+      "TiO2_printed_token": "0.14105",
+      "O2_printed_token": "0.12131",
+      "FeO_printed_token": "2.47675",
+      "caveat": "MOLAR_O2_REPORT_NOT_A_DIRECT_FERRIC_SITE_FRACTION"
+    },
+    "scope": {
+      "three_model_warning_phases_original_wt_percent_sum": 84.94,
+      "fractional_weight_sum_magemin": 1,
+      "percent_weight_sum_perplex": 100,
+      "caveat": "SUM_OF_PHASES_WITH_SOURCE_MODEL_WARNINGS_IS_NOT_A_PERCENTAGE_OF_INCORRECT_PHYSICS"
+    }
+  },
+  "governance": {
+    "D_024": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "s3_new_engines": 0,
+    "scientific_points_approved": 0,
+    "scientific_points_unknown": 50,
+    "sourceS2_immutable": true
+  }
+}
