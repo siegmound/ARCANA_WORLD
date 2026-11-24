@@ -1,0 +1,163 @@
+{
+  "schema": "R6_S3_D5_HGP_AB_FAIR_RECEIPT_V1",
+  "date": "2026-11-24",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_OUTPUT__FAIR_NATIVE_BYTES_NOT_INDEPENDENTLY_REHASHED",
+  "source_sha": "eaefbabc1383203551b527c986e952ed0df213c2",
+  "evidence_id": "R6_THERMO_S3_D5_HGP_AB_NEW01",
+  "manifest_sha256": "b05ac30520a92755b6fe5131b9c101cd404b00fb9ede9848f51d7ba96daa9fe2",
+  "exit": 0,
+  "marker": "HGP_AB_DIAGNOSTIC_COMPLETE",
+  "P_bar": 4000,
+  "T_K": 1050,
+  "phases_order": [
+    "cAmph(G)",
+    "feldspar_model_specific",
+    "q",
+    "Augite(G)",
+    "Ilm(WPH)",
+    "melt(G)"
+  ],
+  "reference": {
+    "phase_wt_pct": [
+      50.8,
+      31.05,
+      11.9,
+      3.09,
+      2.34,
+      0.82
+    ],
+    "feldspar": "Fsp(C1)",
+    "x_Ab_An_Or": [
+      0.4490155098449015,
+      0.5427445725542743,
+      0.008239917600823992
+    ]
+  },
+  "cases": {
+    "HGP_UPSTREAM": {
+      "alpha_an": 0.555,
+      "phase_wt_pct": [
+        49.01,
+        33.41,
+        10.81,
+        2.99,
+        2.55,
+        1.23
+      ],
+      "feldspar": "Fsp(HGP)",
+      "x_Ab_An_Or": [
+        0.4387243872438724,
+        0.5570355703557035,
+        0.004240042400424004
+      ],
+      "printed_feldspar_tokens": {
+        "Na2O": "0.21936",
+        "CaO": "0.55703",
+        "K2O": "0.00212"
+      },
+      "phase_sum_wt_pct": 100,
+      "PRN_sha256": "653bf79e5ae48cef6437a0d204a329f4e841af0c956e0ce959c1ab27fcda74df",
+      "replicas": 2,
+      "printed_rows_identical": true,
+      "raw_bytes_identical": true,
+      "components_closure_printed_interval": 10,
+      "wall_s": [
+        0.7681956216692924,
+        0.7191426530480385
+      ],
+      "pids": [
+        1275425,
+        1275447
+      ]
+    },
+    "HGP_PAPER_ALPHA": {
+      "alpha_an": 0.55,
+      "phase_wt_pct": [
+        49.01,
+        33.41,
+        10.81,
+        2.98,
+        2.55,
+        1.23
+      ],
+      "feldspar": "Fsp(HGP)",
+      "x_Ab_An_Or": [
+        0.4388,
+        0.55696,
+        0.00424
+      ],
+      "printed_feldspar_tokens": {
+        "Na2O": "0.21940",
+        "CaO": "0.55696",
+        "K2O": "0.00212"
+      },
+      "phase_sum_wt_pct": 99.99,
+      "PRN_sha256": "757b82f81e08f3d6e8f9c7409ee2cbdf6241d93cd46a3525a29bcb446fce3e66",
+      "replicas": 2,
+      "printed_rows_identical": true,
+      "raw_bytes_identical": true,
+      "components_closure_printed_interval": 10,
+      "wall_s": [
+        0.7185875177383423,
+        0.7186266668140888
+      ],
+      "pids": [
+        1275455,
+        1275461
+      ]
+    }
+  },
+  "telemetry": {
+    "fresh_processes": 4,
+    "all_exit_zero": true,
+    "all_timeout_false": true,
+    "total_solver_wall_s": 2.924552459269762,
+    "children_cumulative_maxrss_KiB": 58368,
+    "du_h_reported": "3.5M",
+    "per_process_rss_unknown": true
+  },
+  "comparisons": {
+    "A_to_B_max_printed_mass_fraction_delta_pp": 0.01,
+    "S2_to_A_delta_pp": [
+      -1.79,
+      2.36,
+      -1.09,
+      -0.1,
+      0.21,
+      0.41
+    ],
+    "melt_relative_change_from_printed_mass_fraction": 0.5,
+    "model_sensitivity_not_validation": true
+  },
+  "operator_policy": {
+    "decision": "D-025",
+    "scope": "FAIR ordinary user-space EXPLORE tests",
+    "threshold_GB": 100,
+    "threshold_unit_interpretation": "conservative decimal GB for warnings",
+    "operator_reported": true,
+    "no_repeated_interactive_cli_confirmation": true,
+    "prefer_arcana_workspace": true,
+    "warn_before_estimated_ge_threshold_or_uncertain_peak": true
+  },
+  "next": {
+    "case": "HGP_LOW_ALBITE",
+    "alpha_an": 0.555,
+    "processes": 2,
+    "AB_manifest_required": true,
+    "scope": "EARTH_BL691_ONLY",
+    "separate_manifest_bound_authorization": true,
+    "interactive_prompt_required": false
+  },
+  "authority": {
+    "S2": "SEALED",
+    "S3_engine_runs": 4,
+    "science": "UNKNOWN",
+    "numeric_acceptance": "NOT_RATIFIED",
+    "approved_S3_cells": 0,
+    "not_approved_S3_cells": 50,
+    "physical_T1": null,
+    "D_024": "ACTIVE",
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}

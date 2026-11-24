@@ -47,3 +47,8 @@ Questo registro contiene **decisioni architetturali del progetto e governance op
 
 **Regola per futuri handoff e roadmap:** consultare D-024 prima di proporre nuove installazioni, solver alternativi o sequenze di gate. Etichettare ogni strumento `TESTED_UPSTREAM`, `R6_ADAPTER_TESTED`, `R6_PHYSICAL_RUN_TESTED`, `GLOBAL_PHYSICS_READY` secondo evidenza specifica; non confondere test passato, adapter R6 e simulazione scientifica globale. Se una strategia cambia, aggiungere una nuova decisione numerata senza riscrivere D-024.
 
+
+
+## D-025 — FAIR: autorizzazione operativa ordinaria senza prompt CLI (2026-11-24)
+
+L'operatore conferma che carichi ordinari inferiori a 100 GB alla volta nella propria area utente sono permessi, preferibilmente sotto Arcana. L'operatore richiede esplicitamente di non ripetere la conferma interattiva nella CLI. Usare tale dichiarazione come base operativa (non come policy del sito verificata indipendentemente), generare automaticamente autorizzazioni di scope limitato per gli esperimenti ordinari, con evidenze esterne al repository e percorsi utente Arcana. Avvertire prima di proporre un carico che possa raggiungere/superare 100 GB simultanei, o il cui picco non possa essere prudentemente delimitato; rispettare eventuali policy locali/scheduler più restrittive. Interpretazione prudenziale per warning: 100 GB decimali; non è un cap universale al World History 500 GB. Conservare budget per esperimento, hash, write-once e separazione EXPLORE/VALIDATE/PRODUCTION. Nessuna autorizzazione scientifica/canonica o simulazione lunga implicita; D-024 resta attiva. Non usare /tmp per nuovi artefatti operativi quando è disponibile Arcana. Non chiedere nuovamente la stessa policy per carichi ordinari sotto soglia.
