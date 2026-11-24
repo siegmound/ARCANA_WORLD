@@ -1,0 +1,77 @@
+{
+  "schema": "R6_S3_D6_FAIR_READBACK_RECEIPT_V1",
+  "provenance": "OPERATOR_TERMINAL_TRANSCRIPT",
+  "date": "2026-11-24",
+  "source_sha": "c3e76906ffd47803923be252945be5e429f40a4c",
+  "parser_git_blob": "7e31b55ed62a91609df9fd5c48db6992adc0ccd3",
+  "tests": {
+    "passed": 13,
+    "failed": 0,
+    "wall_s": 0.07
+  },
+  "readback_exit": 0,
+  "marker": "S3_D6_NATIVE_MATERIAL_READBACK_PASS",
+  "manifest_members_verified_by_reported_execution": true,
+  "additional_engine_runs": 0,
+  "S3_engine_runs": 6,
+  "cases": {
+    "S2_C1": {
+      "prn": "d942bfa0e73e0d0fcb4ca06fe2a074ea7883d4116ca632638f343e2a23f02c90",
+      "rho": "2941.5",
+      "cp": "1158.73",
+      "alpha": "0.000028228",
+      "beta": "1.4633E-11",
+      "solid_rho": "2949.7",
+      "solid_cp_native": "1158.58",
+      "solid_cp_derived": "1155.379072712458401641355886"
+    },
+    "A": {
+      "prn": "653bf79e5ae48cef6437a0d204a329f4e841af0c956e0ce959c1ab27fcda74df",
+      "rho": "2934.7",
+      "cp": "1180.29",
+      "alpha": "0.000030365",
+      "beta": "1.5015E-11",
+      "solid_rho": "2946.9",
+      "solid_cp_native": "1180.42",
+      "solid_cp_derived": "1175.534143276078759949727692"
+    },
+    "B": {
+      "prn": "757b82f81e08f3d6e8f9c7409ee2cbdf6241d93cd46a3525a29bcb446fce3e66",
+      "rho": "2934.7",
+      "cp": "1180.29",
+      "alpha": "0.000030364",
+      "beta": "1.5015E-11",
+      "solid_rho": "2946.9",
+      "solid_cp_native": "1180.42",
+      "solid_cp_derived": "1175.535121974460031575851866"
+    },
+    "C": {
+      "prn": "653bf79e5ae48cef6437a0d204a329f4e841af0c956e0ce959c1ab27fcda74df",
+      "rho": "2934.7",
+      "cp": "1180.29",
+      "alpha": "0.000030365",
+      "beta": "1.5015E-11",
+      "solid_rho": "2946.9",
+      "solid_cp_native": "1180.42",
+      "solid_cp_derived": "1175.534143276078759949727692"
+    }
+  },
+  "all_four": {
+    "total_density_interval_overlap": true,
+    "total_cp_mass_interval_overlap": true,
+    "solid_density_interval_overlap": true,
+    "solid_cp_mass_interval_overlap": false,
+    "solid_cp_upstream_total_density_formula_overlap": true,
+    "aggregate_shear": null,
+    "science": "UNKNOWN",
+    "elastic_export_authorized": false
+  },
+  "authority": {
+    "D_024": "ACTIVE",
+    "D_025": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "approved_S3_cells": 0
+  }
+}
