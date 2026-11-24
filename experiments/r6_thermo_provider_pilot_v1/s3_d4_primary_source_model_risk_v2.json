@@ -1,0 +1,544 @@
+{
+  "schema": "ARCANA_R6_THERMO_S3_D4_PRIMARY_MODEL_SOURCE_RISK_REVIEW_V2",
+  "date": "2026-11-24",
+  "state": "SOURCE_REVIEW_DONE__FULL_PT_X_NOT_SCIENTIFICALLY_RATIFIED",
+  "executable": false,
+  "engine_executions_authorized": 0,
+  "pins": {
+    "source_last_fair_software_pass": "9a9c996b909d7752114165f7f036ebf2b00fb966",
+    "perplex_upstream_commit": "950d882bb6a9325a627109aa7154f7b526aa3087",
+    "perplex_BL691_dat_git_blob": "3954964480612264838636fd394043aa0fef6324",
+    "perplex_solution_model_git_blob": "564742a569998a768c2d8e15d2b9599ee90438d1"
+  },
+  "science_findings": [
+    {
+      "id": "G25_PHASE_BOUNDARY_UNCERTAINTY",
+      "source": "https://academic.oup.com/petrology/article/66/1/egae079/7989477",
+      "claim": "Corrigendum authors provide loosely illustrative uncertainty around ±1 kbar or ±50°C for substantial phase-in boundaries, with much greater uncertainty for accessory phase presence.",
+      "impact": "Candidate MAGEMin grid spacing equals those indicative scales; not an engine numerical acceptance tolerance or calibrated actual input-specific error."
+    },
+    {
+      "id": "G25_MULTI_PHASE_DATASET",
+      "source": "https://hpxeosandthermocalc.org/the-hpx-eos/the-hpx-eos-families/hpx-eos-igneous-sets/",
+      "claim": "G25 correction to H18 supports hydrous and anhydrous subalkaline composition family; x-eos phase components include liq_G25w, fl_G25, cpx_W24, opx_W24, fsp_H22, amp_G16, and tc_ds636.",
+      "impact": "Original demonstration bulk is unclassified as field sample and exact P/T-X application remains unqualified."
+    },
+    {
+      "id": "G25_DIFFERENT_CALIBRATION_EXPERIMENTAL_BULKS",
+      "source": "https://academic.oup.com/petrology/article/66/1/egae079/7989477",
+      "claim": "Corrected G25 modeled with experimental comparisons including Ti-rich lunar glass at 10kbar/1435°C, basalt SC1 near 1 atm/1075-1110°C and Icelandic basalt analogues at 3kbar.",
+      "impact": "These are not an exact match to ARCANA upstream original demonstration bulk at 10kbar/1100°C."
+    },
+    {
+      "id": "BL691_FSP_C1_STRUCTURAL_STATE",
+      "source": "https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/test/bl691_MEEMUM/solution_model.dat",
+      "claim": "Exact pinned BL691 model selects Fsp(C1) and model comments warn I1/C1 structural state and solvus cannot be automatically judged by selecting a single model.",
+      "impact": "Need prior structural-state applicability justification; preserve original S2 reference unchanged."
+    },
+    {
+      "id": "BL691_AUGITE_NA_RICH",
+      "source": "https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/test/bl691_MEEMUM/solution_model.dat",
+      "claim": "Exact pinned Augite(G) comments warn against Na-rich compositions.",
+      "impact": "Whole-rock original Na2O 2.5416 source molar components cannot determine Augite phase Na-richness."
+    },
+    {
+      "id": "BL691_CAMPH_SIMPLIFICATION",
+      "source": "https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/test/bl691_MEEMUM/solution_model.dat",
+      "claim": "Exact pinned cAmph(G) comments document model simplification with some MFe3 and MTi pargasitic exchanges commented out for computational cost.",
+      "impact": "Potential sensitivity for redox/Ti chemistry requires checking; not proof baseline invalid."
+    },
+    {
+      "id": "BL691_G16_MODELS_VALIDITY",
+      "source": "https://doi.org/10.1111/jmg.12211",
+      "claim": "Green et al 2016 metabasic partial-melting activity-composition models calibrated to selected experimental phase boundaries up to 13kbar.",
+      "impact": "Bounded pressure alone is not joint T/composition/phase validity for original BL691 25-point grid."
+    },
+    {
+      "id": "CONNOLLY_FSP_CONFIRMATION",
+      "source": "https://groups.io/g/PerpleX/topic/64123068",
+      "claim": "Developer specifically advises that Fsp(C1) and Pl(I1) need prior knowledge of stable feldspar branch.",
+      "impact": "Independent author caution supports pinned model comments, not a verdict that S2 calculation was invalid."
+    }
+  ],
+  "grids": [
+    {
+      "id": "S3A_MAGEMIN_CUSTOM_IG",
+      "P_unit": "kbar",
+      "T_unit": "degC",
+      "anchor": [
+        10,
+        1100
+      ],
+      "original_chemistry": {
+        "H2O_wt_percent": 3,
+        "FeO_wt_percent": 6.65,
+        "Fe2O3_wt_percent": 1.64,
+        "reported_sum_wt_percent": 99.75
+      },
+      "grid_P": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "grid_T": [
+        1000,
+        1050,
+        1100,
+        1150,
+        1200
+      ],
+      "cells": [
+        {
+          "P": 8,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 8,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 8,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 8,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 8,
+          "T": 1200,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 9,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 9,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 9,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 9,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 9,
+          "T": 1200,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 10,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 10,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 10,
+          "T": 1100,
+          "engine_origin_anchor": true,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 10,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 10,
+          "T": 1200,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 11,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 11,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 11,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 11,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 11,
+          "T": 1200,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 12,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 12,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 12,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 12,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 12,
+          "T": 1200,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        }
+      ]
+    },
+    {
+      "id": "S3B_PERPLEX_BL691",
+      "P_unit": "bar",
+      "T_unit": "K",
+      "anchor": [
+        4000,
+        1050
+      ],
+      "original_chemistry": {
+        "Na2O_molar_source_token": "2.5416",
+        "O2_molar_source_token": "0.488",
+        "H2O_molar_source_token": "3.4162"
+      },
+      "grid_P": [
+        2000,
+        3000,
+        4000,
+        5000,
+        6000
+      ],
+      "grid_T": [
+        950,
+        1000,
+        1050,
+        1100,
+        1150
+      ],
+      "cells": [
+        {
+          "P": 2000,
+          "T": 950,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 2000,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 2000,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 2000,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 2000,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 3000,
+          "T": 950,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 3000,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 3000,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 3000,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 3000,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 4000,
+          "T": 950,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 4000,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 4000,
+          "T": 1050,
+          "engine_origin_anchor": true,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 4000,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 4000,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 5000,
+          "T": 950,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 5000,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 5000,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 5000,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 5000,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 6000,
+          "T": 950,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 6000,
+          "T": 1000,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 6000,
+          "T": 1050,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 6000,
+          "T": 1100,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        },
+        {
+          "P": 6000,
+          "T": 1150,
+          "engine_origin_anchor": false,
+          "PT_X_scientific_domain": "UNKNOWN",
+          "authority": "NOT_APPROVED",
+          "S3_engine_runs": 0
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "candidate_cells": 50,
+    "scientifically_approved": 0,
+    "unknown": 50,
+    "source_engine_anchors": 2,
+    "engine_runs_S3": 0
+  },
+  "uncertainty_policy": {
+    "physical_model_boundary_uncertainty_is_not_numerical_repeatability": true,
+    "accessory_phase_presence_requires_separate_caution": true,
+    "source_specific_chemistry_domain_unknown": true
+  },
+  "authority": {
+    "D_024": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
