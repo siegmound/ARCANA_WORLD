@@ -1,0 +1,46 @@
+{
+  "schema": "R6_S3_D5_HGP_LAUNCHER_FAIR_TEST_RECEIPT_V1",
+  "date": "2026-11-24",
+  "provenance": "OPERATOR_SUPPLIED_FAIR_TERMINAL_TRANSCRIPT",
+  "tested_source_sha": "eaefbabc1383203551b527c986e952ed0df213c2",
+  "launcher_git_blob": "5e58071db354664563645e10508045f553dc3e70",
+  "preparation_receipt_git_blob": "3d7d9c6b0e73ca2f10561a0f828e7490ab95f790",
+  "tests": {
+    "path": "tests/test_r6_thermo_s3_d5_hgp_launcher_v1.py",
+    "passed": 22,
+    "failed": 0,
+    "elapsed_seconds": 0.14,
+    "exit": 0,
+    "marker": "S3_D5_HGP_LAUNCHER_SOFTWARE_PASS",
+    "scope": "AUTHORIZATION_RECEIPT_PARITY_INVENTORY_UNIT_TESTS__NO_ENGINE_OR_LAUNCH_INTEGRATION"
+  },
+  "prior_preparation_tests": {
+    "source_sha": "e85fe9d454167c3b7a916cc5f14d47a085a2023e",
+    "passed": 153,
+    "elapsed_seconds": 0.28
+  },
+  "proposed_AB_limits": {
+    "operator_confirmed": false,
+    "stage": "AB",
+    "processes_max": 4,
+    "sequential": true,
+    "walltime_s_per_process": 150,
+    "address_space_limit_bytes": 4294967296,
+    "file_size_limit_bytes": 16777216,
+    "retained_bytes_stop_threshold": 67108864,
+    "scope": "WORKLOAD_SPECIFIC_PROPOSAL_NOT_MEASURED_OR_SITE_APPROVED",
+    "site_policy_basis": null,
+    "hard_peak_RSS_cap": false,
+    "hard_aggregate_IO_cap": false
+  },
+  "authority": {
+    "run_authorized": false,
+    "S3_engine_runs": 0,
+    "scientifically_approved_S3_cells": 0,
+    "not_approved_S3_cells": 50,
+    "physical_T1": null,
+    "D_024": "ACTIVE",
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
