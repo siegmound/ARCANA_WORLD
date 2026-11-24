@@ -1,0 +1,115 @@
+{
+  "schema": "R6_S3_D5_HGP_C_FAIR_RECEIPT_V1",
+  "date": "2026-11-24",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT__NOT_INDEPENDENTLY_REHASHED_FAIR_NATIVE_BYTES",
+  "source_sha": "eaefbabc1383203551b527c986e952ed0df213c2",
+  "evidence_id": "R6_THERMO_S3_D5_HGP_C_NEW01",
+  "manifest_sha256": "693bd12bc34ecfc41b170295eeab5d4772c57ab004f1f84e211abc370480aeb8",
+  "AB_manifest_sha256": "b05ac30520a92755b6fe5131b9c101cd404b00fb9ede9848f51d7ba96daa9fe2",
+  "AB_manifest_and_member_check": "PASS_REPORTED_BY_SUCCESSFUL_C_LAUNCHER",
+  "exit": 0,
+  "marker": "HGP_C_DIAGNOSTIC_COMPLETE",
+  "P_bar": 4000,
+  "T_K": 1050,
+  "phase_wt_pct": {
+    "Augite(G)": 2.99,
+    "Fsp(HGP)": 33.41,
+    "Ilm(WPH)": 2.55,
+    "cAmph(G)": 49.01,
+    "melt(G)": 1.23,
+    "q": 10.81
+  },
+  "phase_sum": 100,
+  "phase_component_coverage": 10,
+  "PRN_sha256": "653bf79e5ae48cef6437a0d204a329f4e841af0c956e0ce959c1ab27fcda74df",
+  "replicas": 2,
+  "printed_rows_identical": true,
+  "raw_bytes_identical": true,
+  "A_to_C_identical_printed_and_raw": true,
+  "low_albite_printed_phase_absent": true,
+  "low_albite_model_loaded_context_pending": true,
+  "telemetry": {
+    "pids": [
+      1277167,
+      1277175
+    ],
+    "wall_s": [
+      0.7182887196540833,
+      0.7188459038734436
+    ],
+    "total_wall_s": 1.4371346235275269,
+    "children_cumulative_maxrss_KiB": 57344,
+    "all_exit_zero": true,
+    "all_timeout_false": true,
+    "du_h_reported": "1.8M"
+  },
+  "ABC": {
+    "processes": 6,
+    "identical_replica_pairs": 3,
+    "unique_prn_sha256_count": 2,
+    "total_wall_s": 4.361687082797289,
+    "max_children_cumulative_maxrss_KiB": 58368,
+    "du_h_reported_sum_approx": "5.3M"
+  },
+  "warning_counts_all_six": {
+    "114": 24,
+    "177": 6,
+    "178": 24,
+    "212": 6,
+    "016": 6,
+    "099": 6,
+    "050": 6
+  },
+  "warning_counts_per_run": {
+    "114": 4,
+    "177": 1,
+    "178": 4,
+    "212": 1,
+    "016": 1,
+    "099": 1,
+    "050": 1
+  },
+  "source_review": {
+    "upstream_commit": "950d882bb6a9325a627109aa7154f7b526aa3087",
+    "olib_blob": "b0c3dee70534a89a829c18145e8140311e39ec40",
+    "rlib_blob": "d9cf25af82bba61f60d7c9b29c510ca9fe9eedaa",
+    "ver178": "MISSING_OR_INVALID_SHEAR_MODULUS_ESTIMATED_USING_POISSON_RATIO_OPTION",
+    "ver177": "AGGREGATE_SEISMIC_PROPERTIES_CANNOT_BE_COMPUTED_MISSING_OR_INVALID_SHEAR_OR_OTHER_PHASE_PROPERTIES",
+    "ver212": "MINFRC_ANALYTIC_DERIVATIVES_UNAVAILABLE_FOR_MELT__EXACT_REASON_CONTEXT_PENDING",
+    "ver114": "MISSING_ENDMEMBERS_Gt(W)_Opx(W)_Bi(W)_Ilm(WPH)__EXACT_NAMES_PENDING",
+    "ver050": "Gt(W)_REFORMULATED",
+    "ver016": "O2_PURE_PHASE_REJECTED_NO_VOLUMETRIC_EOS__NOT_PROOF_BULK_O2_COMPONENT_REMOVED",
+    "ver099": "AQUEOUS_SPECIATION_DISABLED",
+    "default_option_file_warning": true,
+    "unknown_fields": [
+      "exact warning continuation lines",
+      "phase labels for ver178",
+      "ver177 branch and phase",
+      "MINFRC derivative reason",
+      "actual native property values and missing sentinels",
+      "whether lAb(HGP) admitted by model reader"
+    ]
+  },
+  "decision": {
+    "feldspar_anchor_sensitivity": "COMPLETE_EXPLORATORY",
+    "candidate_for_future_explore": "Fsp(HGP)+lAb(HGP), alpha=.555 upstream unmodified, conditional on verifying admitted model",
+    "A_B_C_reruns_required": false,
+    "aggregate_seismic_export": "BLOCKED",
+    "elastic_shear_export": "BLOCKED_PENDING_EXPLICIT_VALIDITY",
+    "thermal_properties": "UNADJUDICATED_READ_NATIVE_PROPERTY_SECTIONS",
+    "mechanics_history_authorized": false
+  },
+  "authority": {
+    "S2": "SEALED",
+    "S3_engine_runs": 6,
+    "approved_S3_cells": 0,
+    "not_approved_S3_cells": 50,
+    "science": "UNKNOWN",
+    "numeric_acceptance": "NOT_RATIFIED",
+    "D_024": "ACTIVE",
+    "D_025": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
