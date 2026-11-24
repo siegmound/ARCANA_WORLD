@@ -1,0 +1,80 @@
+{
+  "schema": "ARCANA_R6_THERMO_S3_D4_NUMERICAL_GATES_CANDIDATE_V1",
+  "date": "2026-11-24",
+  "state": "SOURCE_ONLY_SCREENING_DESIGN__NOT_NUMERICALLY_OR_SCIENTIFICALLY_RATIFIED",
+  "executable": false,
+  "run_allowed": false,
+  "engine_executions_authorized": 0,
+  "authority": {
+    "D_024": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "arcana_original_materials_assigned": 0
+  },
+  "immutable_inputs": {
+    "candidate_file": "s3_pt_design_candidate_v1.json",
+    "candidate_git_blob": "1a69ac7be3d9970c94f91fe7e7213a8037af8286",
+    "source_risk_file": "s3_d4_primary_source_model_risk_v2.json",
+    "source_risk_git_blob": "708830146ecb18287e6c6800be83f6c160a11003",
+    "source_original_S2_manifest_sha256": "74871bd46fdb67a2828566a12e11140e52a505e828ded81751b239bf20b5b604",
+    "last_S3_Python_FAIR_tested_sha": "9a9c996b909d7752114165f7f036ebf2b00fb966",
+    "pinned_Perple_X_solution_model_git_blob": "564742a569998a768c2d8e15d2b9599ee90438d1"
+  },
+  "engineering_screen_only": {
+    "mag_P_T_serialization_max_ulp": 16,
+    "per_P_T_native_printed_abs_source_units_max": 0.1,
+    "magemin_phase_weight_sum_abs_fraction_max": 1e-8,
+    "magemin_native_component_closure_abs_max": 1e-10,
+    "magemin_source_bulk_component_closure_abs_max": 1e-12,
+    "magemin_bulk_residual_norm_max": 1e-9,
+    "perplex_phase_weight_sum_abs_pct_max": 0.05,
+    "perplex_native_component_check": "DECIMAL_PRINTED_INTERVAL_INTERSECTION_ONLY",
+    "magemin_gibbs_density": "REQUIRE_FINITE_GIBBS_AND_POSITIVE_FINITE_DENSITY_WHEN_NATIVE",
+    "perplex_native_gibbs_density": "NOT_AVAILABLE_DO_NOT_SYNTHESIZE"
+  },
+  "science_context": {
+    "g25_phase_boundary_illustrative_uncertainty_P_kbar": 1,
+    "g25_phase_boundary_illustrative_uncertainty_T_C": 50,
+    "not_numerical_threshold": true,
+    "accessory_phase_presence": "WARNING_SCIENCE_UNCERTAINTY",
+    "Fsp_C1_structural_state": "UNADJUDICATED",
+    "Augite_G_phase_Na_richness": "UNADJUDICATED",
+    "cAmph_G_Fe3_Ti_simplification": "DOCUMENTED_NOT_CALIBRATED_FOR_ORIGINAL_BULK",
+    "full_50_cell_P_T_X_calibration": "UNKNOWN_NOT_APPROVED",
+    "cross_provider_bulk_equivalence": false
+  },
+  "same_point_repeatability": {
+    "fresh_independent_processes_required": true,
+    "numeric_phase_mass_fraction_abs_max": null,
+    "numeric_gibbs_absolute_max": null,
+    "numeric_density_relative_max": null,
+    "same_pt_phase_membership_changes": "REVIEW_NOT_AUTOMATIC_PASS",
+    "even_identical_printed_values": "NOT_SCIENTIFIC_CALIBRATION",
+    "no_missing_as_zero": true
+  },
+  "cross_point": {
+    "different_P_T_phase_set_change": "OBSERVATION_ONLY",
+    "no_boundary_location_claim_at_grid_resolution": true,
+    "no_precognition_of_absent_phase": true,
+    "no_shared_cross_provider_comparison": true
+  },
+  "future_run_evidence": {
+    "write_once_S3_evidence_id_required": true,
+    "new_source_locked_manifest_required": true,
+    "manifest_SHA256_verification_required": true,
+    "failed_runs_and_logs_preserved": true,
+    "peak_rss_memory_bytes_budget": null,
+    "per_run_walltime_budget_s": null,
+    "per_run_IO_bytes_budget": null,
+    "no_default_interpretation_of_null_as_unlimited": true,
+    "pilot_authorized": false,
+    "full_grid_authorized": false
+  },
+  "status_outcome": {
+    "software_screen": "DIAGNOSTIC_ONLY",
+    "science": "UNKNOWN",
+    "S3_numeric_repetition_acceptance": "BLOCKED_NO_PREREGISTERED_THRESHOLDS",
+    "S3_executable_promotion": "BLOCKED"
+  }
+}
