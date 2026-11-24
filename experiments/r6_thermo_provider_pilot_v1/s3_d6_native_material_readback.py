@@ -174,8 +174,31 @@ def parse_properties(prn, stdout, phases):
             "cp_mass_printed_interval_overlap": ratio_overlap(row["cp_J_K"],
                 row["mass_g"], "1000", cp[cp_label]),
         }
-        need(all(checks[name].values()), "D6_AGGREGATE_PRINTED_IDENTITY_REVIEW:" + name)
-        thermal[name]["cp_J_kg_K"] = reading(cp[cp_label])
+        need(checks[name]["density_printed_interval_overlap"],
+             "D6_AGGREGATE_DENSITY_IDENTITY_REVIEW:" + name)
+        if name == "System":
+            need(checks[name]["cp_mass_printed_interval_overlap"],
+                 "D6_AGGREGATE_CP_IDENTITY_REVIEW")
+            thermal[name]["cp_J_kg_K"] = reading(cp[cp_label])
+        else:
+            # Pinned upstream olib.f:693-701 uses TOTAL density psys(10)
+            # in the solid Cp line; its enthalpy/entropy use psys1(10).
+            # Preserve the native token, do not promote it as solid mass Cp.
+            vl, vh = interval(row["volume_J_bar"])
+            cl, ch = interval(row["cp_J_K"])
+            dl, dh = interval(molar["System"]["density_kg_m3"])
+            rl, rh = interval(cp[cp_label])
+            checks[name]["cp_upstream_total_density_formula_overlap"] = (
+                cl / vh * Decimal(100000) / dh <= rh
+                and ch / vl * Decimal(100000) / dl >= rl)
+            need(checks[name]["cp_upstream_total_density_formula_overlap"],
+                 "D6_SOLID_CP_UPSTREAM_FORMULA_REVIEW")
+            thermal[name]["cp_J_kg_K"] = reading(
+                cp[cp_label], status="NATIVE_SOLID_CP_USES_TOTAL_DENSITY__DO_NOT_EXPORT_AS_SOLID_MASS_CP")
+            derived = number(row["cp_J_K"]) / number(row["mass_g"]) * Decimal(1000)
+            thermal[name]["cp_mass_normalized_derived_J_kg_K"] = {
+                "value_si": str(derived), "status": "DERIVED_FROM_PRINTED_TOTALS_UNVALIDATED",
+                "native_token": None, "formula": "1000*solid_cp_J_K/solid_mass_g"}
     return {"thermal_native": thermal, "elastic_native": elastic,
             "printed_identity_checks": checks, "estimated_shear_phases": estimated,
             "aggregate_seismic_warning": missing_aggregate,

@@ -124,5 +124,15 @@
     "physical_T1": null,
     "mechanical_solve_authorized": false,
     "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  },
+  "solid_cp_source_discrepancy": {
+    "source": "https://github.com/jadconnolly/Perple_X/blob/950d882bb6a9325a627109aa7154f7b526aa3087/src/olib.f#L693-L701",
+    "native_A_C": 1180.42,
+    "derived_A_C": 1175.5341432760788,
+    "derived_B": 1175.53512197446,
+    "upstream_C1_derived": 1155.3790727124583,
+    "decision": "NATIVE_SOLID_CP_NOT_EXPORTABLE_AS_MASS_SPECIFIC_SOLID_CP",
+    "source_formula": "psys1(12)/psys1(1)*1d5/psys(10)",
+    "correct_solid_mass_basis_diagnostic": "1000*solid_cp_J_K/solid_mass_g"
   }
 }

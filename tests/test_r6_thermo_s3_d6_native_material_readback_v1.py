@@ -71,3 +71,18 @@ def test_fluid_zero_not_nan():
         "",{"melt(G)":100})
     assert x["elastic_native"]["melt(G)"]["mu_bar"]["status"] == "NATIVE_FLUID_ZERO"
     assert x["elastic_native"]["System"]["mu_bar"]["value_si"] is None
+
+
+def test_solid_cp_upstream_denominator_discrepancy():
+    native = PRN.replace(
+        "System - Fluid 1000 -20 4 40.00 1000.0 0.3E-4 0.1E-5 1.1 2500.0",
+        "System - Fluid 900 -20 4 30.00 600.0 0.3E-4 0.1E-5 1.1 3000.0"
+    ).replace("Solid Heat Capacity (J/K/kg) = 1000.0",
+              "Solid Heat Capacity (J/K/kg) = 800.0")
+    out = d.parse_properties(native,LOG,{"p":100})
+    checks = out["printed_identity_checks"]["System - Fluid"]
+    assert checks["cp_mass_printed_interval_overlap"] is False
+    assert checks["cp_upstream_total_density_formula_overlap"] is True
+    solid = out["thermal_native"]["System - Fluid"]
+    assert "DO_NOT_EXPORT" in solid["cp_J_kg_K"]["status"]
+    assert abs(float(solid["cp_mass_normalized_derived_J_kg_K"]["value_si"])-666.6666667)<1e-6
