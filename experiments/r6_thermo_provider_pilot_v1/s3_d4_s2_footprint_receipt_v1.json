@@ -1,0 +1,65 @@
+{
+  "schema": "ARCANA_R6_THERMO_S3_D4_HISTORIC_S2_FOOTPRINT_READONLY_RECEIPT_V1",
+  "date": "2026-11-24",
+  "scope": "HISTORICAL_S2_IMMUTABLE_MANIFEST_MEMBER_FILE_SIZE_AUDIT_ONLY",
+  "evidence_level": "USER_OPERATED_FAIR_COMMAND_OUTPUT_MANIFEST_SHA_AND_MEMBER_SHA_GUARDED__GITHUB_HAS_NOT_READ_RAW_FAIR_BYTES",
+  "audit_marker": "S3_D4_S2_FOOTPRINT_READONLY_PASS",
+  "audit_exit": 0,
+  "original_s2_real_manifest_sha256": "74871bd46fdb67a2828566a12e11140e52a505e828ded81751b239bf20b5b604",
+  "original_s2_qualified_source_sha": "632c4a570f876e3963b1dcd8a1f411a143fc8a59",
+  "members": {
+    "MAGEMIN": {
+      "files": 15,
+      "bytes": 19995
+    },
+    "PERPLEX": {
+      "files": 50,
+      "bytes": 4319903
+    },
+    "ROOT_METADATA": {
+      "files": 3,
+      "bytes": 5196
+    },
+    "total_files": 68,
+    "total_bytes": 4345094,
+    "total_mib_exact": 4.143804550170898,
+    "scope_excludes_manifest_json_itself": true,
+    "unmanifested_file_footprint": "NOT_MEASURED",
+    "filesystem_allocated_blocks": "NOT_MEASURED",
+    "disk_file_compression": "NOT_MEASURED"
+  },
+  "five_largest_members": {
+    "paths": [
+      "PERPLEX_01/BL691_MEEMUM/solution_model.dat",
+      "PERPLEX_02/BL691_MEEMUM/solution_model.dat",
+      "PERPLEX_03/BL691_MEEMUM/solution_model.dat",
+      "PERPLEX_04/BL691_MEEMUM/solution_model.dat",
+      "PERPLEX_05/BL691_MEEMUM/solution_model.dat"
+    ],
+    "bytes_each": 731947,
+    "total_bytes": 3659735,
+    "fraction_of_manifest_member_bytes": 0.8422683145635054,
+    "size_equal": true,
+    "contents_identical_by_equal_sha256": "NOT_YET_ATTESTED_FROM_OPERATOR_OUTPUT",
+    "content_sha256_list": [],
+    "deduplication_not_authorized": true,
+    "conditional_only_four_extra_copies_bytes": 2927788,
+    "conditional_after_single_copy_member_sum_bytes": 1417306,
+    "warning": "IDENTICAL_SIZE_DOES_NOT_PROVE_IDENTICAL_CONTENT. No modification or dedup of immutable S2; storage footprint and provenance of a future S3 layout need separate contract."
+  },
+  "budget": {
+    "s3_real_run_count": 0,
+    "s3_preflight_count": 0,
+    "s3_per_point_IO_cost": "UNKNOWN",
+    "s3_peak_rss": "UNKNOWN",
+    "s3_walltime_per_point": "UNKNOWN",
+    "s3_resource_budget_ratifed": false,
+    "s3_run_authorized": false
+  },
+  "governance": {
+    "D_024": "ACTIVE",
+    "physical_T1": null,
+    "mechanical_solve_authorized": false,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
