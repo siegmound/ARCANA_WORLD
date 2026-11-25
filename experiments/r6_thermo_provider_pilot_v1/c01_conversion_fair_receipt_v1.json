@@ -1,0 +1,75 @@
+{
+  "schema": "R6_C01_MB_PREFLIGHT_FAIR_RECEIPT_V1",
+  "date": "2026-11-25",
+  "source_sha": "84893f9ceed1d0b2b12d6c4e06e179fc9267af96",
+  "provenance": "OPERATOR_TERMINAL_TRANSCRIPT",
+  "manifest_sha256": "f28e4def7b3bb25daa55fdce0fc273fa2276bde60c3602ea94934837e8f38a9e",
+  "tests": {
+    "passed": 41,
+    "total": 41,
+    "wall_s": 0.29
+  },
+  "exit": 0,
+  "conversion_processes": 6,
+  "additional_engine_runs": 0,
+  "cases": {
+    "C01_LCC_BASE": {
+      "native_mol_delta": 1.1102230246251565e-16,
+      "reduced_input_sum": 100.07536137787056,
+      "source_oxide_sum": 99.98,
+      "omitted_source_oxides_wt": {
+        "MnO": 0.1,
+        "P2O5": 0.1
+      }
+    },
+    "C01_LCC_WET": {
+      "native_mol_delta": 1.1102230246251565e-16,
+      "reduced_input_sum": 100.87536137787056,
+      "source_oxide_sum": 99.98,
+      "omitted_source_oxides_wt": {
+        "MnO": 0.1,
+        "P2O5": 0.1
+      }
+    },
+    "C01_LCC_OXIDIZED": {
+      "native_mol_delta": 1.1102230246251565e-16,
+      "reduced_input_sum": 100.17072275574112,
+      "source_oxide_sum": 99.98,
+      "omitted_source_oxides_wt": {
+        "MnO": 0.1,
+        "P2O5": 0.1
+      }
+    },
+    "C01_MORB_BASE": {
+      "native_mol_delta": 1.3877787807814457e-17,
+      "reduced_input_sum": 99.27915929018789,
+      "source_oxide_sum": 99.305,
+      "omitted_source_oxides_wt": {
+        "MnO": 0.171,
+        "P2O5": 0.164
+      }
+    },
+    "C01_MORB_WET": {
+      "native_mol_delta": 1.3877787807814457e-17,
+      "reduced_input_sum": 100.07915929018789,
+      "source_oxide_sum": 99.305,
+      "omitted_source_oxides_wt": {
+        "MnO": 0.171,
+        "P2O5": 0.164
+      }
+    },
+    "C01_MORB_OXIDIZED": {
+      "native_mol_delta": 1.1102230246251565e-16,
+      "reduced_input_sum": 99.38831858037578,
+      "source_oxide_sum": 99.305,
+      "omitted_source_oxides_wt": {
+        "MnO": 0.171,
+        "P2O5": 0.164
+      }
+    }
+  },
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
