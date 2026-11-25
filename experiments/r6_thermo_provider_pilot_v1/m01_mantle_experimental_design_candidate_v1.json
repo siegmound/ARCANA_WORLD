@@ -1,0 +1,235 @@
+{
+  "schema": "R6_M01_MANTLE_EXPERIMENTAL_DESIGN_CANDIDATE_V1",
+  "date": "2026-11-25",
+  "status": "PROPOSED_FOR_AUTHOR_REVIEW_NOT_EXECUTABLE",
+  "authorial_selection": null,
+  "scope": "NONCANONICAL_PROJECT_RESEARCH_ONLY",
+  "provider_candidate": {
+    "name": "MAGEMin_C.jl",
+    "version": "2.4.5",
+    "commit": "f4fd5ce3670b73693d046e65585e2b79d45c8e3a",
+    "database": "ig",
+    "dataset": "tc_ds636",
+    "model_scope_references": [
+      "https://doi.org/10.1093/petrology/egy048",
+      "https://doi.org/10.1093/petrology/egae079"
+    ],
+    "applicability": "PLAUSIBLE_MODEL_FAMILY_NOT_QUALIFIED_AT_SELECTED_X_PT"
+  },
+  "source_reference": {
+    "path": "experiments/t0_geochemical_reference_v1/data/DM__Salters_Stracke__2004.csv",
+    "git_blob": "262447b687f5cae36fde836ffd12c7d439a9f16b",
+    "doi": "10.1029/2003GC000597",
+    "records": {
+      "SiO2": {
+        "value": 44.9,
+        "unit": "wt%",
+        "constraint": "MMM",
+        "reported_uncertainty_percent": 1
+      },
+      "Al2O3": {
+        "value": 4.28,
+        "unit": "wt%",
+        "constraint": "MMM",
+        "reported_uncertainty_percent": 2
+      },
+      "CaO": {
+        "value": 3.5,
+        "unit": "wt%",
+        "constraint": "MMM",
+        "reported_uncertainty_percent": 1
+      },
+      "MgO": {
+        "value": 38.22,
+        "unit": "wt%",
+        "constraint": "MMM",
+        "reported_uncertainty_percent": 1
+      },
+      "FeO": {
+        "value": 8.07,
+        "unit": "wt%",
+        "constraint": "MMM",
+        "reported_uncertainty_percent": 2
+      },
+      "Na2O": {
+        "value": 0.29,
+        "unit": "wt%",
+        "constraint": "MMM",
+        "reported_uncertainty_percent": 10
+      },
+      "K": {
+        "value": 60,
+        "unit": "ppm",
+        "constraint": "K/U",
+        "reported_uncertainty_percent": 28
+      },
+      "Ti": {
+        "value": 798,
+        "unit": "ppm",
+        "constraint": "Ti/Gd",
+        "reported_uncertainty_percent": 12
+      },
+      "Cr": {
+        "value": 2500,
+        "unit": "ppm",
+        "constraint": "CaO-Cr",
+        "reported_uncertainty_percent": 40
+      },
+      "H2O": {
+        "value": 116,
+        "unit": "ppm",
+        "constraint": "H2O/Ce",
+        "reported_uncertainty_percent": 50
+      },
+      "Mn": {
+        "value": 1045,
+        "unit": "ppm",
+        "constraint": "Fe/Mn",
+        "reported_uncertainty_percent": 17
+      },
+      "CO2": {
+        "value": 50.3,
+        "unit": "ppm",
+        "constraint": "CO2/Nb",
+        "reported_uncertainty_percent": 24
+      }
+    }
+  },
+  "source_state": {
+    "epoch": "T0_210_Ma",
+    "extent": 8,
+    "parent_node_id": 36025,
+    "depth_m": 54000,
+    "T_K": 1414.525818001164,
+    "conditional_delta_P_bar": 16124.44,
+    "absolute_pressure_pa": null
+  },
+  "experimental_PT_choice": {
+    "P_kbar": 16.12444,
+    "T_C": 1141.375818001164,
+    "pressure_semantics": "INDEPENDENT_HYPOTHETICAL_SOLVER_PRESSURE_NUMERICALLY_EQUAL_TO_SOURCE_DELTA_NOT_ACTUAL_ABSOLUTE_PRESSURE"
+  },
+  "conventions": {
+    "source_FeO_interpreted_as_total_FeO_equivalent_for_trial_only": true,
+    "iron_atom_conserved": "FeO=(1-f)*nFe*71.85; Fe2O3=f*nFe*159.69/2",
+    "Fe_molar_masses_g_mol": {
+      "FeO": 71.85,
+      "Fe2O3": 159.69
+    },
+    "element_oxide_equivalent_atomic_weights": {
+      "O": 15.999,
+      "K": 39.0983,
+      "Ti": 47.867,
+      "Cr": 51.9961
+    },
+    "minor_oxide_hypothesis": "K Ti Cr reported elemental ppm converted to K2O TiO2 Cr2O3 stoichiometric equivalents; not measured oxidation state",
+    "water": "58/116/174 ppm uses reported 50% source uncertainty as deterministic sensitivity, not statistical confidence",
+    "redox": "0.03 and 0.053 literature motivated independent scenario values; not Salters redox data or canonical Arcana",
+    "redox_source": "https://doi.org/10.1007/s00410-021-01823-3",
+    "omitted": "Mn CO2 and all other unsupported components stay outside reduced model; residual not silently filled",
+    "normalization": "no pre-normalization; future native normalized supported-component vector must be explicitly reconciled against input; not mass conservation of entire real rock"
+  },
+  "proposed_cases": [
+    {
+      "id": "M01_BASE",
+      "ferric_atom_fraction": 0.03,
+      "water_source_ppm": 116,
+      "input_wt_amounts_unscaled": {
+        "SiO2": 44.9,
+        "Al2O3": 4.28,
+        "CaO": 3.5,
+        "MgO": 38.22,
+        "FeO": 7.8279000000000005,
+        "Na2O": 0.29,
+        "Fe2O3": 0.2690393110647182,
+        "K2O": 0.007227598130865025,
+        "TiO2": 0.133144483673512,
+        "Cr2O3": 0.36538605780048883,
+        "H2O": 0.0116
+      },
+      "input_sum": 99.80429745066961,
+      "iron_atom_moles_per_100g_reference": 0.11231732776617956,
+      "extra_oxygen_equivalent_mass_g": 0.02693931106471818,
+      "not_engine_input_qualified": true
+    },
+    {
+      "id": "M01_LOW_H2O",
+      "ferric_atom_fraction": 0.03,
+      "water_source_ppm": 58,
+      "input_wt_amounts_unscaled": {
+        "SiO2": 44.9,
+        "Al2O3": 4.28,
+        "CaO": 3.5,
+        "MgO": 38.22,
+        "FeO": 7.8279000000000005,
+        "Na2O": 0.29,
+        "Fe2O3": 0.2690393110647182,
+        "K2O": 0.007227598130865025,
+        "TiO2": 0.133144483673512,
+        "Cr2O3": 0.36538605780048883,
+        "H2O": 0.0058
+      },
+      "input_sum": 99.7984974506696,
+      "iron_atom_moles_per_100g_reference": 0.11231732776617956,
+      "extra_oxygen_equivalent_mass_g": 0.02693931106471818,
+      "not_engine_input_qualified": true
+    },
+    {
+      "id": "M01_HIGH_H2O",
+      "ferric_atom_fraction": 0.03,
+      "water_source_ppm": 174,
+      "input_wt_amounts_unscaled": {
+        "SiO2": 44.9,
+        "Al2O3": 4.28,
+        "CaO": 3.5,
+        "MgO": 38.22,
+        "FeO": 7.8279000000000005,
+        "Na2O": 0.29,
+        "Fe2O3": 0.2690393110647182,
+        "K2O": 0.007227598130865025,
+        "TiO2": 0.133144483673512,
+        "Cr2O3": 0.36538605780048883,
+        "H2O": 0.0174
+      },
+      "input_sum": 99.8100974506696,
+      "iron_atom_moles_per_100g_reference": 0.11231732776617956,
+      "extra_oxygen_equivalent_mass_g": 0.02693931106471818,
+      "not_engine_input_qualified": true
+    },
+    {
+      "id": "M01_HIGH_FERRIC",
+      "ferric_atom_fraction": 0.053,
+      "water_source_ppm": 116,
+      "input_wt_amounts_unscaled": {
+        "SiO2": 44.9,
+        "Al2O3": 4.28,
+        "CaO": 3.5,
+        "MgO": 38.22,
+        "FeO": 7.64229,
+        "Na2O": 0.29,
+        "Fe2O3": 0.4753027828810022,
+        "K2O": 0.007227598130865025,
+        "TiO2": 0.133144483673512,
+        "Cr2O3": 0.36538605780048883,
+        "H2O": 0.0116
+      },
+      "input_sum": 99.8249509224859,
+      "iron_atom_moles_per_100g_reference": 0.11231732776617956,
+      "extra_oxygen_equivalent_mass_g": 0.047592782881002126,
+      "not_engine_input_qualified": true
+    }
+  ],
+  "engine_executions_authorized": 0,
+  "proposed_distinct_cases": 4,
+  "proposed_repeatability": "two independent fresh processes per case if approved, at most 8 runs, runtime limits to be pinned before execution",
+  "blockers": [
+    "AUTHORIAL_RESEARCH_SELECTION_PENDING",
+    "EXACT_PINNED_PROVIDER_BASIS_AND_LOW_CONCENTRATION_BEHAVIOR_REVIEW",
+    "INDEPENDENT_NATIVE_RUNNER_AND_OUTPUT_VALIDATION_PENDING",
+    "ACTUAL_PRESSURE_AND_MATERIAL_SPATIAL_AUTHORITY_UNKNOWN"
+  ],
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
