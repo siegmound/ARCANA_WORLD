@@ -45,12 +45,14 @@ def recipes(d):
             delta_o=v["FeO"]+v["Fe2O3"]-ox[iron_key]
             need(set(mol)==NATIVE and m.close(n["FeO"],iron)
                 and m.close(sum(v.values()),total-sum(omitted.values())+water+delta_o)
-                and m.close(delta_o,16*ferric,1e-12),"C01_CHEMICAL_LEDGER")
+                and m.close(delta_o,(m.MASS["Fe2O3"]-2*m.MASS["FeO"])*ferric,1e-12),"C01_CHEMICAL_LEDGER")
             result[name]={"case":name,"names":list(NAMES),"wt_amounts":[v[k] for k in NAMES],
                 "P_kbar":d["experimental_PT"]["P_kbar"],"T_C":d["experimental_PT"]["T_C"],
                 "wrapper_git_blob":WRAPPER,"expected_native_mol":mol,"expected_native_wt":wt,
                 "source_major_oxide_sum":total,"omitted_source_oxides_wt":omitted,
                 "added_H2O_wt_amount":water,"added_oxygen_from_ferric_split_wt_amount":delta_o,
+                "native_oxygen_equivalent_wt_amount":m.MASS["O"]*ferric,
+                "native_minus_input_mass_rounding_wt_amount":(m.MASS["O"]-(m.MASS["Fe2O3"]-2*m.MASS["FeO"]))*ferric,
                 "ferric_atom_fraction_hypothesis":f,"reduced_input_sum":sum(v.values()),
                 "unaccounted_source_mass":None,"source_trace_partition":None}
     return result
