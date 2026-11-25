@@ -1,0 +1,68 @@
+{
+  "schema": "R6_C02_IG_CAMPAIGN_FAIR_RECEIPT_V1",
+  "date": "2026-11-25",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT_NOT_INDEPENDENT_FAIR_BYTE_AUDIT",
+  "source_sha": "4dd92dcc8b449c548402c7e4d82c107e09f51cc9",
+  "tests": {
+    "passed": 65,
+    "total": 65,
+    "wall_s": 0.43
+  },
+  "exit": 0,
+  "marker": "C02_IG_NUMERICAL_RESEARCH_SCREEN_PASS",
+  "preflight_manifest_sha256": "1fddd5ffaacee41387e01ab4312e43fff2468ca3b68ec99744f564253e8ece37",
+  "manifest_sha256": "60fe095a91a7fc2c4a2900512380b40a2e9f5ea8b7accec03c6e2a2df4306558",
+  "archive": "R6_THERMO_C02_IG_FELSIC_CAMPAIGN_NEW01",
+  "fresh_processes_completed": 8,
+  "reported_equal_pairs": 4,
+  "selected_observations": {
+    "C02_UCC_BASE": {
+      "rho_kg_m3": 2715.3507184677305,
+      "G_system": -992.7619216691039,
+      "residual": 2.7419521861761637e-13,
+      "phase_component_closure": 6.116634976294222e-15,
+      "melt_mass_fraction": 0,
+      "Cp_fixed_phase_J_kg_K": [
+        1197.3430339663676
+      ],
+      "algebraic_identity_status": "PASS"
+    },
+    "C02_UCC_WET": {
+      "rho_kg_m3": 2675.9135480255572,
+      "G_system": -976.0500917414448,
+      "residual": 9.413801373277245e-16,
+      "phase_component_closure": 2.7755575615628914e-17,
+      "melt_mass_fraction": 0.05524913502145036,
+      "Cp_fixed_phase_J_kg_K": [
+        1216.4930906609252
+      ],
+      "algebraic_identity_status": "PASS"
+    },
+    "C02_MCC_BASE": {
+      "rho_kg_m3": 2775.97386617315,
+      "G_system": -976.889737646633,
+      "residual": 8.55247630291866e-15,
+      "phase_component_closure": 1.1102230246251565e-16,
+      "melt_mass_fraction": 0,
+      "Cp_fixed_phase_J_kg_K": [
+        1194.9576761622097
+      ],
+      "algebraic_identity_status": "PASS"
+    },
+    "C02_MCC_WET": {
+      "rho_kg_m3": 2736.4162628654394,
+      "G_system": -960.7393310419108,
+      "residual": 1.826180855548808e-15,
+      "phase_component_closure": 2.7755575615628914e-17,
+      "melt_mass_fraction": 0.05332933775858658,
+      "Cp_fixed_phase_J_kg_K": [
+        1213.6084164715128
+      ],
+      "algebraic_identity_status": "PASS"
+    }
+  },
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
