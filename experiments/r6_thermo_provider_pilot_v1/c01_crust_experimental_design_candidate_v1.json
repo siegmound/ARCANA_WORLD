@@ -1,0 +1,153 @@
+{
+  "schema": "R6_C01_CRUST_EXPERIMENTAL_DESIGN_CANDIDATE_V1",
+  "date": "2026-11-25",
+  "status": "PROPOSED_NOT_EXECUTABLE",
+  "authorial_selection": null,
+  "m04_manifest_sha256": "9a4cba29ed0535b8f25b2608329aaa40ab11344bc22b2460c50d2694c4c8ba57",
+  "provider": {
+    "name": "MAGEMin_C.jl",
+    "version": "2.4.5",
+    "commit": "f4fd5ce3670b73693d046e65585e2b79d45c8e3a",
+    "database": "mb",
+    "dataset_candidate": "tc_ds62",
+    "registry_git_blob": "887cba5331efcf8adff81555f8a58dcd07e59c90",
+    "generated_info_git_blob": "a4e89099410933577ebd182732705ab472d090cb",
+    "qualification": "NEW_DATABASE_NOT_QUALIFIED_BY_IG_RUNS",
+    "model_reference": "https://doi.org/10.1111/jmg.12211",
+    "companion_reference": "https://research-portal.st-andrews.ac.uk/en/publications/high-grade-metamorphism-and-partial-melting-of-basic-and-intermed/",
+    "calibration_summary": "Green 2016 calibration targeted amphibolite-granulite transitions at <=13 kbar; companion applications 2-12 kbar and 600-1050 C, not certification at selected X",
+    "mbCpx": null,
+    "mbIlm": null
+  },
+  "references": {
+    "continental_lower": {
+      "doi": "10.1016/B978-0-08-095975-7.00301-6",
+      "path": "experiments/t0_geochemical_reference_v1/data/CC__Rudnick_Gao__2014.csv",
+      "git_blob": "4127120d7499e3d9b62a22384465c39b8806aaf0",
+      "source_major_oxides_wt": {
+        "SiO2": 53.4,
+        "TiO2": 0.82,
+        "Al2O3": 16.9,
+        "FeO*": 8.57,
+        "MnO": 0.1,
+        "MgO": 7.24,
+        "CaO": 9.59,
+        "Na2O": 2.65,
+        "K2O": 0.61,
+        "P2O5": 0.1
+      }
+    },
+    "basalt_nmorb": {
+      "doi": "10.1029/2012GC004334",
+      "source_url": "https://solidearth.fas.harvard.edu/sites/g/files/omnuum9046/files/solidearth/files/gale_2013.pdf",
+      "table": 3,
+      "printed_page": 506,
+      "source_column": "N-MORB",
+      "transcription": "PUBLISHED_TABLE_TEXT_READBACK__PDF_SCREENSHOT_UNAVAILABLE__NOT_RAW_SOURCE_BYTE_PINNED",
+      "fields": [
+        "mean_wt_percent",
+        "95_percent_confidence_half_width",
+        "n"
+      ],
+      "rows": {
+        "MgO": [
+          7.76,
+          0.09,
+          304
+        ],
+        "SiO2": [
+          50.42,
+          0.08,
+          304
+        ],
+        "FeO": [
+          9.81,
+          0.15,
+          304
+        ],
+        "CaO": [
+          11.35,
+          0.08,
+          304
+        ],
+        "Na2O": [
+          2.83,
+          0.05,
+          304
+        ],
+        "Al2O3": [
+          15.13,
+          0.12,
+          304
+        ],
+        "TiO2": [
+          1.53,
+          0.04,
+          304
+        ],
+        "K2O": [
+          0.14,
+          0.011,
+          304
+        ],
+        "P2O5": [
+          0.164,
+          0.009,
+          298
+        ],
+        "MnO": [
+          0.171,
+          0.004,
+          272
+        ]
+      },
+      "source_semantics": "length-weighted log-normal typical ridge basalt away from plumes; not whole ocean crust"
+    }
+  },
+  "source_state": {
+    "extent": 8,
+    "parent_node_id": 36748,
+    "layer": "crust",
+    "depth_m": 21000,
+    "T_K": 892.5014857175009,
+    "conditional_delta_P_bar": 5774.16,
+    "absolute_pressure_pa": null
+  },
+  "experimental_PT": {
+    "P_kbar": 5.77416,
+    "T_C": 619.3514857175009,
+    "semantics": "COMMON_HYPOTHETICAL_COMPARATIVE_PT_NOT_LITHOLOGY_OR_OCEANIC_ASSIGNMENT"
+  },
+  "scenarios": [
+    {
+      "suffix": "BASE",
+      "water_wt_amount": 0.2,
+      "ferric_atom_fraction": 0.1
+    },
+    {
+      "suffix": "WET",
+      "water_wt_amount": 1,
+      "ferric_atom_fraction": 0.1
+    },
+    {
+      "suffix": "OXIDIZED",
+      "water_wt_amount": 0.2,
+      "ferric_atom_fraction": 0.2
+    }
+  ],
+  "scenario_semantics": "Explicit proposed research choices only, neither source-derived nor confidence bounds; H2O added to reported dry major-oxide inventory, no fill or pre-normalization; FeO* / FeO interpreted as total FeO equivalent for trial, iron conserved in FeO + Fe2O3 split; MnO/P2O5 and all components unsupported by chosen database retained outside reduced model, exact native basis review pending",
+  "max_distinct_cases": 6,
+  "max_fresh_processes_if_approved": 12,
+  "engine_executions_authorized": 0,
+  "blockers": [
+    "AUTHORIAL_RESEARCH_SELECTION_PENDING",
+    "EXACT_MB_NATIVE_COMPONENT_AND_PHASE_OPTIONS_REVIEW",
+    "SOURCE_MORB_RAW_BYTES_OR_VISUAL_TABLE_RECHECK_PENDING",
+    "NEW_MB_ADAPTER_AND_NATIVE_VALIDATION_PENDING",
+    "ABSOLUTE_PRESSURE_AND_SPATIAL_CHEMISTRY_UNKNOWN"
+  ],
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
