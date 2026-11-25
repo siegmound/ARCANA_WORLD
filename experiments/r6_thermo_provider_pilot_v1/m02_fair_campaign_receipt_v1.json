@@ -1,0 +1,93 @@
+{
+  "schema": "R6_M02_FAIR_CAMPAIGN_RECEIPT_V1",
+  "date": "2026-11-25",
+  "source_sha": "8e5a37e1cbf71d8bfcb89fc7addcc3d9c6f985a9",
+  "provenance": "OPERATOR_TERMINAL_TRANSCRIPT_NOT_INDEPENDENT_FAIR_BYTE_AUDIT",
+  "manifest_sha256": "da9a0c30b13ee11e3408e2068dfef5015c10233e3c7cdc3924907fe4f10277ab",
+  "tests": {
+    "passed": 19,
+    "total": 19,
+    "wall_s": 0.16
+  },
+  "exit": 0,
+  "marker": "M02_NUMERICAL_RESEARCH_SCREEN_PASS",
+  "m01_independent_readonly_replay_pass": true,
+  "fresh_processes": 12,
+  "distinct_cases": 6,
+  "reported_pair_equal": true,
+  "selected_observations": {
+    "M02_T_MINUS": {
+      "rho_kg_m3": 3266.3877404729865,
+      "G_system": -829.145003968323,
+      "garnet_mass_fraction": 0.001556401403040562,
+      "melt_mass_fraction": 0,
+      "residual": 5.081986348537819e-12,
+      "phase_component_closure": 1.905420266012925e-14
+    },
+    "M02_T_PLUS": {
+      "rho_kg_m3": 3263.4779703402464,
+      "G_system": -831.6057105785744,
+      "garnet_mass_fraction": 0,
+      "melt_mass_fraction": 0,
+      "residual": 5.285703768950219e-14,
+      "phase_component_closure": 1.6653345369377348e-16
+    },
+    "M02_P_MINUS": {
+      "rho_kg_m3": 3263.9934273082076,
+      "G_system": -830.7703460427563,
+      "garnet_mass_fraction": 0,
+      "melt_mass_fraction": 0,
+      "residual": 4.837704616312132e-15,
+      "phase_component_closure": 1.1102230246251565e-16
+    },
+    "M02_P_PLUS": {
+      "rho_kg_m3": 3267.5160636886444,
+      "G_system": -829.9757944865459,
+      "garnet_mass_fraction": 0.00961353050811591,
+      "melt_mass_fraction": 0,
+      "residual": 2.481729409255477e-12,
+      "phase_component_closure": 1.0304257447302234e-14
+    },
+    "M02_REGIONAL_41KM": {
+      "rho_kg_m3": 3273.427885328119,
+      "G_system": -817.026184977438,
+      "garnet_mass_fraction": 0,
+      "melt_mass_fraction": 0,
+      "residual": 3.559644154590382e-14,
+      "phase_component_closure": 5.551115123125783e-17
+    },
+    "M02_REGIONAL_67KM": {
+      "rho_kg_m3": 3276.069521006274,
+      "G_system": -841.5808185288032,
+      "garnet_mass_fraction": 0.08882608530262025,
+      "melt_mass_fraction": 0.004291909088247417,
+      "residual": 2.012327008258557e-12,
+      "phase_component_closure": 1.1657341758564144e-15
+    }
+  },
+  "response": {
+    "central_alpha_secant_per_K": 0.0000445609520042467,
+    "central_beta_secant_per_GPa": 0.021573185964705033,
+    "central_equilibrium_path_Cp_secant_J_kg_K": 1291.8658007889055,
+    "left_right_Cp_secants_J_kg_K": [
+      1294.0041048614307,
+      1289.72749671638
+    ],
+    "left_right_alpha_secants_per_K": [
+      0.0000493919522629227,
+      0.0000397299517455707
+    ],
+    "left_right_beta_secants_per_GPa": [
+      0.0095745945297665,
+      0.033571777399643565
+    ],
+    "minus_dG_dT_kJ_mol_K_secant": 0.12303533051257318,
+    "dG_dP_volume_equivalent_cm3_per_mol_secant": 15.891031124208439,
+    "anchor_S_kJ_per_mol_K": 0.12303585409374743,
+    "anchor_V_cm3_per_mol": 15.892228731677617
+  },
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
