@@ -219,7 +219,7 @@ def source_placements(placements,sc,idx,recipes,mixtures,
             np.issubdtype(domain.dtype,np.integer) and
             np.all((rr>=0)&(rr<180)) and
             np.all((cc>=0)&(cc<360)) and
-            np.all((pp>=1)&(pp<=12)) and
+            np.all((pp>=0)&(pp<=11)) and
             len(np.unique(pp))==12,
             "COMPOSITION_CANONICAL_FACE_GRID_SHAPE_OR_PLATE_IDS_INVALID")
     flat=rr.astype(np.int64)*360+cc.astype(np.int64)

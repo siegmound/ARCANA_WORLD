@@ -164,11 +164,12 @@ def test_exact_63620_line_id_membership_sha_required(tmp_path):
         p.exact_member_ids(x,"0"*64)
 
 
-def test_synthetic_full_native_placement_source_validated_but_never_physical(tmp_path,monkeypatch):
+@pytest.mark.parametrize("plate_id",[0,5,11])
+def test_synthetic_full_native_placement_source_validated_but_never_physical(tmp_path,monkeypatch,plate_id):
     """Synthetic 180x360 original-style data; no real ARCANA selection is claimed."""
     s=scenario()
     s["placements"]=[{"cell_id":"R6G1D-R000-C000",
-        "plate_id":5,"crust_domain_id":4,"recipe_or_mixture_id":"MX1"}]
+        "plate_id":plate_id,"crust_domain_id":4,"recipe_or_mixture_id":"MX1"}]
     s["authorial_selection_confirmed"]=True
     s["authorial_selection_id"]="SYNTHETIC_FAKE_AUTHOR_APPROVAL"
     fields=tmp_path/"field.npz"
@@ -176,8 +177,8 @@ def test_synthetic_full_native_placement_source_validated_but_never_physical(tmp
     members=tmp_path/"members.txt"
     np.savez(fields,physical_crust_domain_id=np.full((180,360),4,dtype=np.int16))
     rr,cc=np.indices((180,360))
-    lab=np.tile(np.arange(1,13,dtype=np.int16),5400)
-    lab[0]=5
+    lab=np.tile(np.arange(0,12,dtype=np.int16),5400)
+    lab[0]=plate_id
     np.savez(plates,face_row=rr.reshape(-1).astype(np.int16),
              face_col=cc.reshape(-1).astype(np.int16),
              face_plate_id=lab)
@@ -198,11 +199,11 @@ def test_synthetic_full_native_placement_source_validated_but_never_physical(tmp
     assert result["hypothetical_native_cell_assignment_count"]==1
     assert result["physically_ratified_T0_composition_cell_count"]==0
     assert result["physical_T0_bulk_chemistry"] is None
-    s["placements"][0]["plate_id"]=8
+    s["placements"][0]["plate_id"]=(plate_id+1)%12
     with pytest.raises(p.SourceAuthorityError,match="PLATE_OR_CRUST_SOURCE_BINDING_MISMATCH"):
         p.compile_scenario(s,ROOT,field_package=fields,
             plate_partition=plates,admitted_membership=members)
-    s["placements"][0]["plate_id"]=5
+    s["placements"][0]["plate_id"]=plate_id
     s["placements"][0]["cell_id"]="R6G1D-R179-C359"
     with pytest.raises(p.SourceAuthorityError,match="CELL_NOT_PROVEN_ADMITTED"):
         p.compile_scenario(s,ROOT,field_package=fields,
