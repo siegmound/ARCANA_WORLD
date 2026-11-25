@@ -1,0 +1,187 @@
+{
+  "schema": "R6_M01_FAIR_CAMPAIGN_RECEIPT_V1",
+  "date": "2026-11-25",
+  "source_sha": "6bc36c6b1edfefdd86ba31261163a31f68105311",
+  "provenance": "OPERATOR_TERMINAL_TRANSCRIPT_NOT_INDEPENDENT_FAIR_BYTE_AUDIT",
+  "manifest_sha256": "0da41455541a05413b347ea4519185e4332d78b4509de43daef9192177f38581",
+  "tests": {
+    "passed": 11,
+    "total": 11,
+    "wall_s": 0.13
+  },
+  "exit": 0,
+  "marker": "M01_NUMERICAL_RESEARCH_SCREEN_PASS",
+  "fresh_processes": 8,
+  "distinct_cases": 4,
+  "reported_pair_equal": true,
+  "cases": {
+    "M01_BASE": {
+      "case": "M01_BASE",
+      "G_system": -830.3729927817693,
+      "rho_kg_m3": 3264.774806162158,
+      "aggregate_mass_fractions": [
+        1,
+        0,
+        0
+      ],
+      "phases": {
+        "amp": 0.006179615026497115,
+        "cpx": 0.18093271273701717,
+        "ol": 0.5481835990329157,
+        "opx": 0.23819657094554425,
+        "spl": 0.02650750225802579
+      },
+      "native_input_mole_delta": 5.551115123125783e-17,
+      "native_input_weight_delta": 5.551115123125783e-17,
+      "phase_component_closure": 3.885780586188048e-16,
+      "residual": 2.880711238434786e-13,
+      "native_diagnostics": {
+        "Cp_fixed_phase_J_kg_K": [
+          1257.431483886461
+        ],
+        "M_sys_g_mol_oxide": 51.88454797694747,
+        "alpha_fixed_phase_per_K": [
+          0.000037883551573117946
+        ],
+        "beta_per_GPa": 0.009386553000974525,
+        "enthalpy_kJ_mol_oxide": [
+          -656.3356006263394
+        ],
+        "entropy_kJ_mol_oxide_K": [
+          0.12303585409374743
+        ],
+        "native_aH2O_unqualified": 0.1395819964101212,
+        "native_dQFM_unqualified": -0.9224168527143886,
+        "native_fO2_unqualified": -8.871070013231039,
+        "volume_cm3_mol_oxide": 15.892228731677617
+      }
+    },
+    "M01_LOW_H2O": {
+      "case": "M01_LOW_H2O",
+      "G_system": -830.4380819688735,
+      "rho_kg_m3": 3265.5149947104082,
+      "aggregate_mass_fractions": [
+        1,
+        0,
+        0
+      ],
+      "phases": {
+        "amp": 0.0030990441585997557,
+        "cpx": 0.1843085915899025,
+        "ol": 0.5484615390230052,
+        "opx": 0.2369713651657412,
+        "spl": 0.027159460062751436
+      },
+      "native_input_mole_delta": 5.551115123125783e-17,
+      "native_input_weight_delta": 5.551115123125783e-17,
+      "phase_component_closure": 1.1102230246251565e-16,
+      "residual": 7.847887464438671e-14,
+      "native_diagnostics": {
+        "Cp_fixed_phase_J_kg_K": [
+          1257.249432416527
+        ],
+        "M_sys_g_mol_oxide": 51.89021773523811,
+        "alpha_fixed_phase_per_K": [
+          0.00003787440446803896
+        ],
+        "beta_per_GPa": 0.00937444726109891,
+        "enthalpy_kJ_mol_oxide": [
+          -656.4042244496866
+        ],
+        "entropy_kJ_mol_oxide_K": [
+          0.1230333552802242
+        ],
+        "native_aH2O_unqualified": 0.134580856778582,
+        "native_dQFM_unqualified": -0.9183067903185473,
+        "native_fO2_unqualified": -8.866959950835199,
+        "volume_cm3_mol_oxide": 15.890362720517786
+      }
+    },
+    "M01_HIGH_H2O": {
+      "case": "M01_HIGH_H2O",
+      "G_system": -830.307851955415,
+      "rho_kg_m3": 3264.0351235779794,
+      "aggregate_mass_fractions": [
+        1,
+        0,
+        0
+      ],
+      "phases": {
+        "amp": 0.009241947119286931,
+        "cpx": 0.17760652901058518,
+        "ol": 0.5479007154834512,
+        "opx": 0.23938822895197115,
+        "spl": 0.02586257943470552
+      },
+      "native_input_mole_delta": 1.1102230246251565e-16,
+      "native_input_weight_delta": 1.1102230246251565e-16,
+      "phase_component_closure": 1.6653345369377348e-16,
+      "residual": 1.0876414564845384e-13,
+      "native_diagnostics": {
+        "Cp_fixed_phase_J_kg_K": [
+          1257.6120340062494
+        ],
+        "M_sys_g_mol_oxide": 51.87888011625521,
+        "alpha_fixed_phase_per_K": [
+          0.00003789260675862528
+        ],
+        "beta_per_GPa": 0.009398591791673266,
+        "enthalpy_kJ_mol_oxide": [
+          -656.2669744895347
+        ],
+        "entropy_kJ_mol_oxide_K": [
+          0.12303831803636765
+        ],
+        "native_aH2O_unqualified": 0.14500864947181244,
+        "native_dQFM_unqualified": -0.9262231317013414,
+        "native_fO2_unqualified": -8.874876292217992,
+        "volume_cm3_mol_oxide": 15.894093706744941
+      }
+    },
+    "M01_HIGH_FERRIC": {
+      "case": "M01_HIGH_FERRIC",
+      "G_system": -830.0003506398879,
+      "rho_kg_m3": 3264.2202410998884,
+      "aggregate_mass_fractions": [
+        1,
+        0,
+        0
+      ],
+      "phases": {
+        "amp": 0.006220247908062832,
+        "cpx": 0.1770123996370919,
+        "ol": 0.5440103758311869,
+        "opx": 0.24643033677633855,
+        "spl": 0.02632663984731986
+      },
+      "native_input_mole_delta": 1.1102230246251565e-16,
+      "native_input_weight_delta": 5.551115123125783e-17,
+      "phase_component_closure": 5.2735593669694936e-15,
+      "residual": 1.3684551711998027e-12,
+      "native_diagnostics": {
+        "Cp_fixed_phase_J_kg_K": [
+          1257.771702492489
+        ],
+        "M_sys_g_mol_oxide": 51.86046837616175,
+        "alpha_fixed_phase_per_K": [
+          0.00003785096054157907
+        ],
+        "beta_per_GPa": 0.0094031045393255,
+        "enthalpy_kJ_mol_oxide": [
+          -656.0085197790513
+        ],
+        "entropy_kJ_mol_oxide_K": [
+          0.12300364450519587
+        ],
+        "native_aH2O_unqualified": 0.13764319165680675,
+        "native_dQFM_unqualified": 0.0731820109853106,
+        "native_fO2_unqualified": -7.875471149531339,
+        "volume_cm3_mol_oxide": 15.88755186405168
+      }
+    }
+  },
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}

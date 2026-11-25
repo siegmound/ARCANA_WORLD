@@ -161,7 +161,7 @@ def basis_delta(names,values,expected):
 
 def validate(c,inp):
     require(c["case"]==inp["case"] and c["status"]==0 and c["database"]=="ig" and c["dataset"]=="tc_ds636","M01_NATIVE_STATUS")
-    require(within_float64_roundoff(c["P_kbar"],P) and within_float64_roundoff(c["T_C"],T),"M01_NATIVE_PT")
+    require(within_float64_roundoff(c["P_kbar"],inp["P_kbar"]) and within_float64_roundoff(c["T_C"],inp["T_C"]),"M01_NATIVE_PT")
     ox=c["oxides"];bulk=c["bulk_wt"];ph=c["phases"];frac=c["phase_mass_fractions"];comp=c["phase_comp_wt"]
     wd=basis_delta(ox,bulk,inp["expected_native_wt"])
     md=basis_delta(ox,c["bulk_mol"],inp["expected_native_mol"])
