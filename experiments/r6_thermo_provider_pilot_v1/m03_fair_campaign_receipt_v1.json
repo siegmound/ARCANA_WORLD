@@ -1,0 +1,125 @@
+{
+  "schema": "R6_M03_FAIR_CAMPAIGN_RECEIPT_V1",
+  "date": "2026-11-25",
+  "source_sha": "531464e19c5504dd2d682182e18483bff33ade65",
+  "provenance": "OPERATOR_TERMINAL_TRANSCRIPT_NOT_INDEPENDENT_FAIR_BYTE_AUDIT",
+  "manifest_sha256": "52e046832eda04171b739425d32f28e177af199e6650a0b42a0f5fca564196af",
+  "tests": {
+    "passed": 26,
+    "total": 26,
+    "wall_s": 0.19
+  },
+  "exit": 0,
+  "m02_independent_readonly_replay_pass": true,
+  "fresh_processes": 22,
+  "distinct_cases": 11,
+  "reported_pair_equal": true,
+  "selected_observations": {
+    "M03_G_P_01": {
+      "rho_kg_m3": 3265.165133897516,
+      "G_system": -830.1743517980557,
+      "garnet_mass_fraction": 0,
+      "melt_mass_fraction": 0,
+      "residual": 2.892912399733292e-14,
+      "phase_component_closure": 1.1102230246251565e-16
+    },
+    "M03_G_P_02": {
+      "rho_kg_m3": 3266.354117105422,
+      "G_system": -830.0750551161439,
+      "garnet_mass_fraction": 0.0048726772198809006,
+      "melt_mass_fraction": 0,
+      "residual": 9.40210443210696e-15,
+      "phase_component_closure": 1.1102230246251565e-16
+    },
+    "M03_G_P_03": {
+      "rho_kg_m3": 3265.7548145971004,
+      "G_system": -830.1246988567756,
+      "garnet_mass_fraction": 0.002412674677444914,
+      "melt_mass_fraction": 0,
+      "residual": 3.0049740167742896e-12,
+      "phase_component_closure": 3.615163723935666e-15
+    },
+    "M03_G_T_01": {
+      "rho_kg_m3": 3265.4226101378663,
+      "G_system": -829.7584050071463,
+      "garnet_mass_fraction": 0,
+      "melt_mass_fraction": 0,
+      "residual": 1.4266805998811073e-14,
+      "phase_component_closure": 2.0816681711721685e-17
+    },
+    "M03_G_T_02": {
+      "rho_kg_m3": 3265.746355219664,
+      "G_system": -829.4515553768082,
+      "garnet_mass_fraction": 0,
+      "melt_mass_fraction": 0,
+      "residual": 1.9385474732199789e-13,
+      "phase_component_closure": 5.551115123125783e-16
+    },
+    "M03_G_T_03": {
+      "rho_kg_m3": 3265.926729416488,
+      "G_system": -829.2982418166686,
+      "garnet_mass_fraction": 0.00009082853779882642,
+      "melt_mass_fraction": 0,
+      "residual": 2.5856612855960742e-14,
+      "phase_component_closure": 2.7755575615628914e-17
+    },
+    "M03_MELT_COLD_50": {
+      "rho_kg_m3": 3288.2046705357543,
+      "G_system": -835.1807994541664,
+      "garnet_mass_fraction": 0.1136666278679354,
+      "melt_mass_fraction": 0.0027767816805966965,
+      "residual": 5.08931423580685e-14,
+      "phase_component_closure": 5.551115123125783e-17
+    },
+    "M03_MELT_COLD_100": {
+      "rho_kg_m3": 3297.600792387483,
+      "G_system": -828.895059889698,
+      "garnet_mass_fraction": 0.12529663505117394,
+      "melt_mass_fraction": 0,
+      "residual": 3.5202981631322943e-13,
+      "phase_component_closure": 8.604228440844963e-16
+    },
+    "M03_MELT_T_01": {
+      "rho_kg_m3": 3293.42103256913,
+      "G_system": -832.0234514986917,
+      "garnet_mass_fraction": 0.12244423549636241,
+      "melt_mass_fraction": 0.0023126969677923904,
+      "residual": 1.0821284576806548e-14,
+      "phase_component_closure": 1.1102230246251565e-16
+    },
+    "M03_MELT_T_02": {
+      "rho_kg_m3": 3295.8762723115124,
+      "G_system": -830.4555226511022,
+      "garnet_mass_fraction": 0.12617233486814589,
+      "melt_mass_fraction": 0.0021240205119181363,
+      "residual": 2.2108641557586439e-13,
+      "phase_component_closure": 8.881784197001252e-16
+    },
+    "M03_MELT_T_03": {
+      "rho_kg_m3": 3296.473237445253,
+      "G_system": -829.6743248266089,
+      "garnet_mass_fraction": 0.12370824405074811,
+      "melt_mass_fraction": 0,
+      "residual": 1.407944163774356e-13,
+      "phase_component_closure": 3.400058012914542e-16
+    }
+  },
+  "bracket_endpoints": {
+    "garnet_pressure_kbar": [
+      16.24944,
+      16.28069
+    ],
+    "garnet_temperature_C": [
+      1132.625818001164,
+      1133.875818001164
+    ],
+    "melt_temperature_C": [
+      1189.4638705347943,
+      1195.7138705347943
+    ]
+  },
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
