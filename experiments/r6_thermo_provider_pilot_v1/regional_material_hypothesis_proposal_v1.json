@@ -1,0 +1,36 @@
+{
+  "schema": "R6_REGIONAL_GEOLOGICAL_HYPOTHESIS_PROPOSAL_V1",
+  "status": "PROPOSED_NOT_SELECTED_NOT_EXECUTABLE",
+  "domain": "original 8x8 T0 210 Ma; 16x16 sensitivity only",
+  "source_c05_manifest_sha256": "7224fb290672ba483f7dee69e34129e9e48029f4acf43a20de910be83d1d41a2",
+  "scope": "noncanonical research scenario, not initial geology authority",
+  "alternatives": [
+    {
+      "role": "oceanic crust",
+      "candidate": "C01_MORB_BASE / WET; homogeneous basaltic proxy only, not total oceanic crust",
+      "condition": "original source role and mixed support explicitly resolved; no assignment from density, PT or thermal configuration code"
+    },
+    {
+      "role": "continental crust",
+      "candidate": "Rudnick-Gao UCC/MCC/LCC as separate endmember scenarios; do not impose stratigraphy; cold felsic provider unqualified",
+      "condition": "choose homogeneous proxy or independently authored layering before placement"
+    },
+    {
+      "role": "lithospheric mantle",
+      "candidate": "M01_BASE depleted mantle proxy with LOW_H2O/HIGH_H2O/HIGH_FERRIC sensitivity",
+      "condition": "source mantle geometry support; no claim of natural composition or mechanical LAB"
+    }
+  ],
+  "pressure": {
+    "absolute_surface_pressure_pa": null,
+    "rule": "original conditional delta is not absolute; select atmosphere/water column loading and independent fluid state before physical pressure, retain unknown otherwise"
+  },
+  "near_surface": "test inherited assemblage and phase/property model validity rather than force equilibrium at zero absolute pressure and 280 K",
+  "selection_id": null,
+  "authorial_selection_confirmed": false,
+  "placements": [],
+  "material_assignments": 0,
+  "mechanical_solve_authorized": false,
+  "physical_T1": null,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
