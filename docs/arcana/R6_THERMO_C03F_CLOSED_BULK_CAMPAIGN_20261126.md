@@ -1,0 +1,9 @@
+# C03F closed-bulk research campaign — 2026-11-26
+
+Operator FAIR receipt: c7a93562867df6877a51f0424b50a84c4af916f7, 185/185 in 0.92s, exit 0, manifest ea0782292000ac40a2551aa41d41d7a3d4f45df5e7e7c1ac0fb69ccd065b44d9. BASE replay and WET native acquisition both 17 models / 1123 pseudocompounds. Zero equilibrium requests; no native bulk verification or scientific promotion yet.
+
+C03F campaign replays the entire pinned parent chain and both preflights, reuses exact design input bytes and the original four conditional points (BASE/WET at nodes 35304/36026; 506.7223873/710.8895492 K and 1924.72/3849.44 bar). ACT default solver, closed H2O/O2, no saturation/buffer; nine nonwater PMELT exclusions only. Each fresh initialization must match the archived warning profile/model details before any nonzero P-T. Maximum two processes / four nonzero requests, 180s per process, existing memory/file/retention guards. Fail closed on every new native point diagnostic, unexpected prompt, P-T mismatch, incomplete output or balance failure. Preserve partial results and native diagnostic tails; write-once NEW01.
+
+Audit every point at native printed precision: 10-component input and phase-to-bulk and phase-to-input closure (including H2O and O2), three modal closures, positive finite system properties and density consistency. No terrestrial target-phase requirement; no scientific promotion. A failure in audit stops before the next point. Four captured/audited points still require independent scientific review including phase admissibility, chemistry/redox limits and BASE/WET property comparison. No cold felsic qualification, material assignment, mechanical solve or physical T1. D024/D025 active. Ten new regression cases authored, FAIR execution pending.
+
+Run module `experiments.r6_thermo_provider_pilot_v1.run_c03f_closed_bulk_campaign --expected-sha <commit> --research-four-only`. 
