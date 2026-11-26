@@ -17,7 +17,12 @@ SCOPE=c.SCOPE
 hgp=c.b.d.hgp
 PIN="a040ef1577d2122822f695a584b205fcdfa254b6fc7e1e177afc88c3983d02a8"
 PARENT="88b698ce98460bdc75ed989b02c7844e829cee60"
-OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW01"
+FAILED_OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW01"
+FAILED_PIN="eb882ecaf4fc85271b3c057a3b966ad8a8074ff96ceedf2e3327fdfc8e217161"
+FAILED_SOURCE="724c60dcdc14f02a12dd875b7c5777c49701a768"
+OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW02"
+TLIB_BLOB="a825163285c7a524c1ebc2980394b030fe9c7e04"
+BUILD_BLOB="23f0a59ed5d1773e6e7e6d45c35462502f164579"
 OPTION_BLOB="fba52ca4471749b84a930c6126cade7ed8d0efa0"
 MEEMUM_SOURCE_BLOB="f2809f9b6e89a16f24ac89660650848150ac2334"
 LIMITS={"address_space_limit_bytes":4*1024**3,"file_size_limit_bytes":16*1024**2,
@@ -60,6 +65,11 @@ def audit_parent():
          "C03D_NATIVE_SOURCE_DRIFT")
     need(b"if (v(1).eq.0d0) exit" in meemum and meemum.index(b"if (v(1).eq.0d0) exit")<meemum.index(b"call meemum (bad)"),
          "C03D_ZERO_PRESSURE_EXIT_SOURCE_DRIFT")
+    tlib=(source/"src/tlib.f").read_bytes()
+    build=(source/"src/build.f").read_bytes()
+    need(hgp.blob(tlib)==TLIB_BLOB and hgp.blob(build)==BUILD_BLOB,"C03D_FIXED_WIDTH_SOURCE_DRIFT")
+    need(b"rname*5" in tlib and b"read (n1,'(a,a)') rname,strg" in tlib
+        and b"3000  format (a,1x,i1," in build,"C03D_FIXED_WIDTH_SOURCE_CONTRACT")
     return report,runtime,inputs["bl691_MEEMUM.dat"],hp,models,options
 
 
@@ -93,6 +103,60 @@ def recipe_basis(cases,name):
     return group[0]["candidate_basis"],group[0]["source_chemistry_sha256"]
 
 
+
+def component_row(name,amount):
+    # INPUT1 reads CHARACTER*5 rname then strg; BUILD writes a,1x,i1.
+    need(name in ORDER and 1<=len(name)<=5 and m.finite(amount) and amount>0,
+         "C03D_COMPONENT_ROW")
+    return f"{name:<5} 1 {amount:.17g} 0.0 0.0"
+
+
+def fixed_width_readback(project,expected):
+    """Mirror the relevant native record boundary, not the full Fortran parser."""
+    text=project.decode("ascii")
+    rows=text.split("begin thermodynamic component list\n",1)[1].split("\nend thermodynamic component list",1)[0].splitlines()
+    actual={}
+    for row in rows:
+        name=row[:5].strip()
+        fields=row[5:].split()
+        need(name in expected and name not in actual and len(fields)==4 and fields[0]=="1",
+             "C03D_FIXED_WIDTH_COMPONENT:"+name)
+        value=float(fields[1])
+        need(m.finite(value) and value==expected[name] and fields[2:]==["0.0","0.0"],
+             "C03D_COMPONENT_READBACK:"+name)
+        actual[name]=value
+    need(tuple(actual)==ORDER and actual==expected,"C03D_COMPONENT_ROUNDTRIP")
+    return actual
+
+
+def audit_failed_attempt():
+    receipt=json.loads((m.HERE/"c03d_failed_fair_receipt_v1.json").read_text())
+    need(hgp.file_sha(FAILED_OUT/"MANIFEST.json")==FAILED_PIN==receipt["manifest_sha256"],
+         "C03D_FAILED_MANIFEST_DRIFT")
+    man=json.loads((FAILED_OUT/"MANIFEST.json").read_text())
+    members=launcher.inventory(FAILED_OUT)
+    members.pop("MANIFEST.json")
+    need(members==man["files"] and man["source_sha"]==receipt["source_sha"]==FAILED_SOURCE
+        and man["status"]=="NATIVE_INITIALIZATION_FAILED_PRESERVED"
+        and man["C03C_manifest_sha256"]==PIN and man["native_initialization_attempts"]==1
+        and man["requested_equilibrium_points"]==man["authorized_equilibrium_solver_calls"]==0
+        and all(man[k]==v for k,v in SCOPE.items()),"C03D_FAILED_ARCHIVE_DRIFT")
+    failure=json.loads((FAILED_OUT/"FAILURE.json").read_text())
+    work=FAILED_OUT/"C01_MORB_BASE"
+    launch=json.loads((work/"LAUNCH.json").read_text())
+    log=(work/"RUN_STDOUT.log").read_bytes()
+    need(failure["message"]==receipt["failure"]=="C03D_NATIVE_PT_PROMPT_MISSING"
+        and failure["native_initialization_attempts"]==1 and failure["requested_equilibrium_points"]==0
+        and launch["exit_code"]==0 and launch["timeout"] is False
+        and len(log)==receipt["stdout_bytes"] and receipt["native_error"].encode() in log,
+        "C03D_FAILED_DIAGNOSTIC_DRIFT")
+    bad=(work/"c03d.dat").read_text()
+    row=next(x for x in bad.splitlines() if x.startswith("MGO "))
+    need(row[:5]=="MGO 1" and "." in row[5:].split()[0],"C03D_FAILED_FIXED_WIDTH_EVIDENCE")
+    return {"failed_manifest_sha256":FAILED_PIN,"native_error":"ver027",
+            "observed_bad_name_field":row[:5],"observed_bad_flag_token":row[5:].split()[0]}
+
+
 def project_input(template,basis,masses,roster):
     text=template.decode("ascii").replace("\r\n","\n")
     lines=text.splitlines()
@@ -114,7 +178,7 @@ def project_input(template,basis,masses,roster):
     need(set(vals)==set(ORDER) and all(m.finite(v) and v>0 for v in vals.values()),"C03D_BULK_COMPONENTS")
     total=sum(vals.values())
     normalized={k:100*vals[k]/total for k in ORDER}
-    rows=[f"{k} 1 {normalized[k]:.17g} 0.0 0.0" for k in ORDER]
+    rows=[component_row(k,normalized[k]) for k in ORDER]
     text=replace_section(text,"begin thermodynamic component list","end thermodynamic component list",rows)
     for start,end in (("begin saturated component list","end saturated component list"),
                       ("begin saturated phase component list","end saturated phase component list"),
@@ -133,7 +197,9 @@ def project_input(template,basis,masses,roster):
     text,n=re.subn(r"(?m)^\s*500\.0\s+873\.00[^\n]*min p, t, xco2, u1, u2$",
         " 1000.0 423.15 0.0 0.0 0.0 min p, t, xco2, u1, u2",text)
     need(n==1,"C03D_PT_MIN")
-    return text.encode("ascii"),normalized
+    raw=text.encode("ascii")
+    fixed_width_readback(raw,normalized)
+    return raw,normalized
 
 
 def summary_section(text,heading,roster):
@@ -157,6 +223,8 @@ def summary_section(text,heading,roster):
 
 def observe(stdout,prn,roster):
     text=stdout.decode("utf-8",errors="replace")
+    fatal=re.search(r"\*\*error ver\d+\*\*[^\n]*",text,re.I)
+    need(fatal is None,"C03D_NATIVE_FATAL:"+ (fatal.group(0) if fatal else ""))
     # The zero-P sentinel is not a physical pressure sample.
     need("Enter (T = 0 to quit)" in text,"C03D_NATIVE_PT_PROMPT_MISSING")
     need("Interactively enter bulk compositions (y/n)?" in text,"C03D_NATIVE_BULK_PROMPT_MISSING")
@@ -197,6 +265,8 @@ def main():
     need(not OUT.exists() and not OUT.is_symlink(),"C03D_OUTPUT_EXISTS")
     report,runtime,template,hp,models,options=audit_parent()
     print("C03D_INDEPENDENT_C03C_REPLAY_PASS",PIN,flush=True)
+    failed=audit_failed_attempt()
+    print("C03D_R1_FAILED_ARCHIVE_VERIFIED",FAILED_PIN,flush=True)
     roster=list(c.VERTICES)
     masses=c.b.components(hp)
     opts=options_candidate(options)
@@ -205,12 +275,14 @@ def main():
         basis,chem=recipe_basis(report["candidate_cases"],name)
         project,normalized=project_input(template,basis,masses,roster)
         plans[name]=(project,normalized,chem)
+    print("C03D_R1_FIXED_WIDTH_ROUNDTRIP_PASS",len(plans),len(ORDER),flush=True)
     need(shutil.disk_usage(s2.BASE).free>=LIMITS["retained_bytes_stop_threshold"],"C03D_DISK")
     OUT.mkdir(parents=False,exist_ok=False)
     attempts=0
     try:
         s2.write_json(OUT/"PROVENANCE.json",{"source_sha":head,"runtime":runtime,"limits":LIMITS,
             "C03C_manifest_sha256":PIN,"meemum_source_git_blob":MEEMUM_SOURCE_BLOB,
+            "failed_attempt":failed,"fixed_width_parser_git_blob":TLIB_BLOB,"build_writer_git_blob":BUILD_BLOB,
             "input_option_git_blob":OPTION_BLOB,"fluid_eos_ifug":5,"hybrid_water_eos":2,
             "fluid_boundary":"CLOSED_BULK_NO_BUFFER_NO_SATURATION",
             "pure_phase_selection":"NATIVE_DEFAULT_COMPONENT_FILTERING_NO_EXCLUSIONS",
@@ -225,14 +297,16 @@ def main():
             for k,raw in files.items():
                 with (work/k).open("xb") as f: f.write(raw)
             s2.write_json(work/"INPUT.json",{"source_chemistry_sha256":chem,
-                "normalized_native_molar_amounts":normalized,"files_sha256":{k:hgp.sha(v) for k,v in files.items()},
+                "normalized_native_molar_amounts":normalized,"fixed_width_input_roundtrip":fixed_width_readback(project,normalized),"files_sha256":{k:hgp.sha(v) for k,v in files.items()},
                 "requested_equilibrium_points":0})
             need(launcher.retained_bytes(OUT)<LIMITS["retained_bytes_stop_threshold"]
                 and hgp.file_sha(runtime["binary"])==runtime["binary_sha256"],"C03D_LAUNCH_GUARD")
             attempts+=1
             launcher.launch(Path(runtime["binary"]),work,LIMITS)
             prn=work/"c03d.prn"
-            obs=observe((work/"RUN_STDOUT.log").read_bytes(),prn.read_bytes() if prn.is_file() else b"",roster)
+            rawlog=(work/"RUN_STDOUT.log").read_bytes()
+            print("C03D_NATIVE_LOG_TAIL",name,rawlog[-6000:].decode("utf-8",errors="replace"),flush=True)
+            obs=observe(rawlog,prn.read_bytes() if prn.is_file() else b"",roster)
             s2.write_json(work/"READBACK.json",obs)
             results[name]=obs
             print("C03D_NATIVE_MODEL_DISPOSITIONS",name,json.dumps(obs["native_model_dispositions"],sort_keys=True),flush=True)

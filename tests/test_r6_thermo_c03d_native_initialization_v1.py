@@ -39,3 +39,32 @@ def test_observe_requires_native_prompt():
 def test_duplicate_summary_rejected():
     with pytest.raises(ValueError,match="C03D_DUPLICATE_NATIVE_SUMMARY"):
         c.summary_section("Summary of included solution models:\n A\n\nSummary of included solution models:\n B\n",c.HEADINGS["included"],["A","B"])
+
+
+def test_component_rows_use_exact_native_name_width():
+    for name in c.ORDER:
+        row=c.component_row(name,12.035486633767736)
+        assert row[:5]==name.ljust(5)
+        assert row[5:].split()==["1","12.035486633767736","0.0","0.0"]
+
+
+def test_fixed_width_roundtrip_all_components():
+    vals={k:float(i+1) for i,k in enumerate(c.ORDER)}
+    rows=[c.component_row(k,vals[k]) for k in c.ORDER]
+    raw=("begin thermodynamic component list\n"+"\n".join(rows)+"\nend thermodynamic component list\n").encode()
+    assert c.fixed_width_readback(raw,vals)==vals
+
+
+def test_fixed_width_rejects_actual_failed_mgo_record():
+    vals={k:float(i+1) for i,k in enumerate(c.ORDER)}
+    rows=[c.component_row(k,vals[k]) for k in c.ORDER]
+    rows[1]="MGO 1 12.035486633767736 0.0 0.0"
+    raw=("begin thermodynamic component list\n"+"\n".join(rows)+"\nend thermodynamic component list\n").encode()
+    with pytest.raises(ValueError,match="C03D_FIXED_WIDTH_COMPONENT"):
+        c.fixed_width_readback(raw,vals)
+
+
+def test_native_ver027_is_fatal_even_with_prompt():
+    raw=b"**error ver027** Error reading the problem definition file:\nInteractively enter bulk compositions (y/n)?\nEnter (T = 0 to quit)\n"
+    with pytest.raises(ValueError,match="C03D_NATIVE_FATAL:.*ver027"):
+        c.observe(raw,b"",[])
