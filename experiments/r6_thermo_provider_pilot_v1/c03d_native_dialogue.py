@@ -89,7 +89,7 @@ class Dialogue:
         return response
 
 
-def launch_dialogue(command,work,limits,*,allow_si013=False,allow_gl017=False):
+def launch_dialogue(command,work,limits,*,allow_si013=False,allow_gl017=False,protocol_factory=None):
     def set_limits():
         resource.setrlimit(resource.RLIMIT_AS,(limits["address_space_limit_bytes"],)*2)
         resource.setrlimit(resource.RLIMIT_FSIZE,(limits["file_size_limit_bytes"],)*2)
@@ -99,7 +99,8 @@ def launch_dialogue(command,work,limits,*,allow_si013=False,allow_gl017=False):
              BLIS_NUM_THREADS="1",LC_ALL="C",GFORTRAN_UNBUFFERED_ALL="1")
     start=time.monotonic()
     deadline=start+limits["walltime_s"]
-    protocol=Dialogue(allow_si013=allow_si013,allow_gl017=allow_gl017)
+    protocol=(Dialogue(allow_si013=allow_si013,allow_gl017=allow_gl017)
+              if protocol_factory is None else protocol_factory())
     raw=bytearray()
     proc=None
     error=None
@@ -166,7 +167,7 @@ def launch_dialogue(command,work,limits,*,allow_si013=False,allow_gl017=False):
                    "address_space_limit_bytes":limits["address_space_limit_bytes"],
                    "individual_file_size_limit_bytes":limits["file_size_limit_bytes"]}
         for name,obj in (("LAUNCH.json",telemetry),("DIALOGUE.json",{
-            "policy":R4_POLICY if protocol.allow_gl017 else R3_POLICY if protocol.allow_si013 else POLICY,"state":protocol.state,"events":protocol.events,
+            "policy":getattr(protocol,"policy",R4_POLICY if protocol.allow_gl017 else R3_POLICY if protocol.allow_si013 else POLICY),"state":protocol.state,"events":protocol.events,
             "acknowledged_warning_codes":protocol.acknowledged,"requested_equilibrium_points":0,
             "scientific_warning_acceptance":False,"error":error})):
             with (work/name).open("x") as f:
