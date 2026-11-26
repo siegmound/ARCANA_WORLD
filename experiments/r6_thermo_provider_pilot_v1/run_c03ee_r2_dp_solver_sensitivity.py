@@ -168,14 +168,14 @@ def verify_archive(parent):
 
 def solver_option(raw):
     text=raw.decode("utf-8")
-    # Preserve every byte except one explicit solver value (or append one if default implicit).
-    pat=re.compile(r"(?im)^([ \t]*minfxc_solver[ \t]+)([-+]?\d+)([ \t]*(?:\|[^\r\n]*)?)(\r?)$")
+    # Preserve every byte except the solver token (including native explicit default).
+    pat=re.compile(r"(?im)^([ \t]*minfxc_solver[ \t]+)(default|[-+]?\d+)([ \t]*(?:\|[^\r\n]*)?)(\r?)$")
     matches=list(pat.finditer(text))
     active=[line for line in text.splitlines() if re.match(r"^\s*minfxc_solver\b",line,re.I)]
     need(len(matches)==len(active)<=1,"C03EE_R2_SOLVER_OPTION_FORMAT")
     if matches:
         m=matches[0]
-        need(m[2]=="0","C03EE_R2_SOLVER_BASE_NOT_ZERO")
+        need(m[2] in ("0","default"),"C03EE_R2_SOLVER_BASE_NOT_ZERO")
         out=text[:m.start(2)]+"-1"+text[m.end(2):]
     else:
         out=text+("" if text.endswith("\n") else "\n")+"MINFXC_solver -1\n"
@@ -193,7 +193,9 @@ def verify_source(runtime):
     tt=t.decode().lower()
     need(re.search(r"if \(iopt\(37\)\.lt\.0\) then\s*(?:c[^\n]*\n\s*)*call minfxc \(g,id,minfx\)",rr)
          and "call spewrn (id,102,itic,iwarn,.true.,'speci2')" in rr
-         and "key.eq.'minfxc_solver'" in tt and "read (strg,*) iopt(37)" in tt,
+         and "key.eq.'minfxc_solver'" in tt and "read (strg,*) iopt(37)" in tt
+         and re.search(r"(?m)^\s*iopt\(37\)\s*=\s*0\s*$",tt)
+         and "if (strg.eq.'default') cycle" in tt,
          "C03EE_R2_SOLVER_SOURCE")
     return {"rlib_sha256":hgp.sha(r),"tlib_sha256":hgp.sha(t),
             "option":"MINFXC_solver","candidate":-1,"classification":"ALTERNATE_NUMERICAL_SOLVER_SENSITIVITY"}
@@ -221,7 +223,13 @@ def main():
     work_old=r1.OUT/"DP_DS5_ONLY"
     inputs={k:(work_old/k).read_bytes() for k in ("c03d.dat","hp02ver.dat","solution_model.dat","perplex_option.dat")}
     original_opt=inputs["perplex_option.dat"]
+    print("C03EE_R2_ORIGINAL_SOLVER_OPTION",
+          [line for line in original_opt.decode("utf-8").splitlines()
+           if re.match(r"^\s*minfxc_solver\b",line,re.I)],flush=True)
     inputs["perplex_option.dat"]=solver_option(original_opt)
+    print("C03EE_R2_CANDIDATE_SOLVER_OPTION",
+          [line for line in inputs["perplex_option.dat"].decode("utf-8").splitlines()
+           if re.match(r"^\s*minfxc_solver\b",line,re.I)],flush=True)
     roster=contract["arms"]["DP_DS5_ONLY"]["solution_models"]
     norm=c.read(work_old/"INPUT.json")["normalized_conserved_moles"]
     need(shutil.disk_usage(s2.BASE).free>=r1.LIMITS["retained_bytes_stop_threshold"],"C03EE_R2_DISK")

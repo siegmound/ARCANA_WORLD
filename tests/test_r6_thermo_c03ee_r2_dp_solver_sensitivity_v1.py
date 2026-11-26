@@ -29,3 +29,22 @@ def test_option_guard(raw):
 
 def test_archive_distinct():
     assert r.OUT!=r.r1.OUT and len(r.prior.POINTS)==3
+
+
+@pytest.mark.parametrize("eol",[b"\n",b"\r\n"])
+def test_native_explicit_default(eol):
+    raw=eol.join([b"function_tolerance_exp    default | [0.8]",
+                  b"MINFXC_solver             default | [0] -1 -> 3, controls use of the specis/mifxc o/d solvers",
+                  b"speciation_max_it         default | [100]",b""])
+    expected=raw.replace(b"MINFXC_solver             default",b"MINFXC_solver             -1")
+    assert r.solver_option(raw)==expected
+
+
+def test_native_duplicate_default_guard():
+    with pytest.raises(ValueError,match="SOLVER_OPTION_FORMAT"):
+        r.solver_option(b"MINFXC_solver default\nMINFXC_solver 0\n")
+
+
+def test_uppercase_default_not_native_token():
+    with pytest.raises(ValueError,match="SOLVER_BASE_NOT_ZERO"):
+        r.solver_option(b"MINFXC_solver DEFAULT\n")
