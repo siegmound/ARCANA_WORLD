@@ -1,0 +1,88 @@
+{
+  "schema": "R6_C03B_FAIR_RECEIPT_V1",
+  "date": "2026-11-26",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT_NOT_INDEPENDENT_FAIR_BYTE_AUDIT",
+  "source_sha": "49fe02bcd5eff9829e9a6d1359c1e95d60245b28",
+  "tests": {
+    "passed": 86,
+    "total": 86,
+    "wall_s": 0.66
+  },
+  "exit": 0,
+  "marker": "C03B_LOW_GRADE_MORB_READINESS_COMPLETE__PHASE_ROSTER_PENDING",
+  "manifest_sha256": "5a887ca1fa9405d7d97d4b09aee6d02517fb82ad40a9704d81e22d1d07be1c38",
+  "parent_manifest_sha256": "0b05bfc715352d960cae08f0049e494c38d69796f38f622916fbcd2ea8c69f18",
+  "model_headers": {
+    "Act(M)": 10407,
+    "Bio(TCC)": 5125,
+    "Chl(HP)": 15507,
+    "Chl(W)": 2782,
+    "Cpx(HP)": 9380,
+    "Ep(HP11)": 2913,
+    "Fsp(HGP)": 17694,
+    "Kf": 6964,
+    "Mica(M)": 10466,
+    "Mica(W)": 3919,
+    "Opx(HP)": 5030,
+    "Pl(h)": 6938,
+    "Pu(M)": 10382,
+    "Stlp(M)": 10441,
+    "lAb(HGP)": 17746
+  },
+  "core_endmember_inventory": {
+    "Act(M)": {
+      "hp02_missing": [],
+      "hp62_missing": [
+        "acti",
+        "mrie"
+      ],
+      "required_named_endmembers": [
+        "tr",
+        "acti",
+        "gl",
+        "mrie"
+      ]
+    },
+    "Mica(M)": {
+      "hp02_missing": [],
+      "hp62_missing": [],
+      "required_named_endmembers": [
+        "ma",
+        "mu",
+        "pa"
+      ]
+    },
+    "Pu(M)": {
+      "hp02_missing": [],
+      "hp62_missing": [
+        "ffpu",
+        "fpum",
+        "pump"
+      ],
+      "required_named_endmembers": [
+        "pump",
+        "fpum",
+        "ffpu"
+      ]
+    },
+    "Stlp(M)": {
+      "hp02_missing": [],
+      "hp62_missing": [
+        "mnsp",
+        "mstl",
+        "stlp"
+      ],
+      "required_named_endmembers": [
+        "stlp",
+        "mstl",
+        "mnsp"
+      ]
+    }
+  },
+  "candidate_cases": 4,
+  "additional_engine_runs": 0,
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
