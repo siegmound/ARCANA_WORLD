@@ -17,7 +17,11 @@ SCOPE=b.SCOPE
 dialogue=d.dialogue
 PIN="8d48410dbcd2c2057016d07198aa0c369ccbe4dbf10da387ecca0f09428673cb"
 PARENT="67e2a73a9f5e1232a0e07cd225fd1fdef774b9d1"
-OUT=s2.BASE/"R6_THERMO_C03EC_NATIVE_PREFLIGHT_NEW01"
+FAILED_OUT=s2.BASE/"R6_THERMO_C03EC_NATIVE_PREFLIGHT_NEW01"
+FAILED_PIN="71255a4880ace0d7e79e095db939143efcaf53ee53ba50a889ad7774ce678654"
+FAILED_SOURCE="7ac75927d65e617fd0f68c09a2924ce3747db575"
+OUT=s2.BASE/"R6_THERMO_C03EC_NATIVE_PREFLIGHT_NEW02"
+MAX_SI013_ACKNOWLEDGEMENTS=2
 LIMITS=d.LIMITS
 ORDER=tuple(k for k in d.ORDER if k!="H2O")
 EXCLUDED=tuple(b.EXCLUSIONS.values())+("O2",)
@@ -25,7 +29,7 @@ STATUS="C03EC_NATIVE_PREFLIGHT_CAPTURED__SCIENTIFIC_REVIEW_REQUIRED"
 
 
 class PreflightDialogue(dialogue.Dialogue):
-    policy="C03EC_SATURATED_WATER_O2_SPECIES_EXCLUDED_ZERO_PT_ONLY"
+    policy="C03EC_R1_SATURATED_WATER_EXACT_SI013_MAX_TWO_ZERO_PT_ONLY"
 
     def __init__(self):
         super().__init__()
@@ -41,12 +45,16 @@ class PreflightDialogue(dialogue.Dialogue):
             if prompt==dialogue.WARNING:
                 marks=list(re.finditer(rb"\*\*warning ver(\d+)\*\*",tail[:pos],re.I))
                 flat=b" ".join(tail[marks[-1].start():pos].split()) if marks else b""
-                need(self.state=="INITIALIZING" and not self.acknowledged and flat==dialogue.SI013,
+                need(self.state=="INITIALIZING" and flat==dialogue.SI013
+                     and all(code=="013" for code in self.acknowledged),
                      "C03EC_UNAPPROVED_INTERACTIVE_WARNING:"+repr(flat))
+                need(len(self.acknowledged)<MAX_SI013_ACKNOWLEDGEMENTS,
+                     "C03EC_SI013_REPEAT_LIMIT")
                 self.cursor+=pos+len(prompt)
                 self.acknowledged.append("013")
                 self.events.append({"prompt":"HP02_SI_REJECTION_VER013","response":"y",
-                                    "stdout_byte_offset_after_prompt":self.cursor})
+                                    "stdout_byte_offset_after_prompt":self.cursor,
+                                    "occurrence":len(self.acknowledged)})
                 return b"y\n"
         return super().next_response(raw)
 
@@ -81,6 +89,54 @@ def parent():
     report,runtime,template,hp,models,options=d.audit_parent()
     need(models==original,"C03EC_SOURCE_LIBRARY_DRIFT")
     return report,runtime,template,hp,original,derived,options,contract,records
+
+
+def audit_failed_attempt():
+    """Verify the immutable NEW01 failure before any retry process."""
+    receipt=read(d.m.HERE/"c03ec_failed_fair_receipt_v1.json")
+    need(not FAILED_OUT.is_symlink() and FAILED_OUT.is_dir()
+         and not (FAILED_OUT/"MANIFEST.json").is_symlink()
+         and hgp.file_sha(FAILED_OUT/"MANIFEST.json")==FAILED_PIN==receipt["manifest_sha256"],
+         "C03EC_R1_FAILED_MANIFEST_PIN")
+    man=read(FAILED_OUT/"MANIFEST.json")
+    members=d.launcher.inventory(FAILED_OUT)
+    members.pop("MANIFEST.json")
+    need(members==man["files"] and man["source_sha"]==FAILED_SOURCE==receipt["source_sha"]
+         and man["schema"]=="R6_C03EC_NATIVE_PREFLIGHT_MANIFEST_V1"
+         and man["status"]=="NATIVE_PREFLIGHT_FAILED_PRESERVED"
+         and man["native_initialization_attempts"]==1
+         and man["requested_equilibrium_points"]==man["authorized_equilibrium_solver_calls"]==0
+         and man["scientific_promotion"] is False
+         and man["C03EB_manifest_sha256"]==PIN
+         and all(man[k]==v for k,v in SCOPE.items()),"C03EC_R1_FAILED_INVENTORY")
+    work=FAILED_OUT/"ACT_ONLY"
+    failure=read(FAILED_OUT/"FAILURE.json")
+    dia=read(work/"DIALOGUE.json")
+    launch=read(work/"LAUNCH.json")
+    raw=(work/"RUN_STDOUT.log").read_bytes()
+    sent=(work/"DIALOGUE_STDIN.log").read_bytes()
+    expected="C03EC_UNAPPROVED_INTERACTIVE_WARNING:"+repr(dialogue.SI013)
+    need(failure["error"]=="ValueError" and failure["message"]==expected
+         and failure["native_initialization_attempts"]==1
+         and failure["requested_equilibrium_points"]==0
+         and dia["error"]==launch["error"]=="ValueError: "+expected
+         and dia["state"]=="INITIALIZING" and dia["acknowledged_warning_codes"]==["013"]
+         and dia["requested_equilibrium_points"]==0
+         and dia["scientific_warning_acceptance"] is False
+         and sent==b"c03d\\ny\\n"
+         and raw.count(dialogue.WARNING)==2 and dialogue.PT not in raw
+         and not (FAILED_OUT/"DP_DS5_ONLY").exists(),
+         "C03EC_R1_FAILED_DIAGNOSTIC_DRIFT")
+    # Replay only the archived stdout through the bounded candidate protocol:
+    # two exact acknowledgements, then no further response. No process launched.
+    replay=PreflightDialogue()
+    responses=[replay.next_response(raw) for _ in range(4)]
+    need(responses==[b"c03d\\n",b"y\\n",b"y\\n",None]
+         and replay.state=="INITIALIZING" and replay.acknowledged==["013","013"],
+         "C03EC_R1_FAILED_TRANSCRIPT_REPLAY")
+    return {"manifest_sha256":FAILED_PIN,"source_sha":FAILED_SOURCE,
+            "observed_exact_si013_prompts":2,"archived_acknowledgements":1,
+            "candidate_replay_acknowledgements":2,"requested_equilibrium_points":0}
 
 
 def section_rows(text,name,end=None):
@@ -189,6 +245,8 @@ def main():
     root,head=s2.verify_checkout()
     need(head==args.expected_sha and not s2.git(root,"status","--porcelain"),"C03EC_CHECKOUT")
     need(not OUT.exists() and not OUT.is_symlink(),"C03EC_OUTPUT_EXISTS")
+    failed_attempt=audit_failed_attempt()
+    print("C03EC_R1_FAILED_REPLAY_PASS",FAILED_PIN,flush=True)
     report,runtime,template,hp,original,derived,options,contract,records=parent()
     masses=d.c.b.components(hp)
     need(all(k in records for k in EXCLUDED),"C03EC_EXCLUSION_IDS")
@@ -207,7 +265,8 @@ def main():
         s2.write_json(OUT/"PROVENANCE.json",{"source_sha":head,"C03EB_manifest_sha256":PIN,
             "runtime":runtime,"limits":LIMITS,"excluded_species_candidate":list(EXCLUDED),
             "water_boundary":"PURE_WATER_SATURATED_PHASE","O2_component_retained":True,
-            "native_policy":PreflightDialogue.policy,"requested_equilibrium_points":0,
+            "native_policy":PreflightDialogue.policy,"failed_attempt":failed_attempt,
+            "max_si013_acknowledgements":MAX_SI013_ACKNOWLEDGEMENTS,"requested_equilibrium_points":0,
             "scientific_warning_acceptance":False,**SCOPE})
         for arm,(project,norm) in plans.items():
             work=OUT/arm
@@ -255,6 +314,7 @@ def main():
         members=d.launcher.inventory(OUT)
         s2.write_json(OUT/"MANIFEST.json",{"schema":"R6_C03EC_NATIVE_PREFLIGHT_MANIFEST_V1",
             "status":state,"source_sha":head,"C03EB_manifest_sha256":PIN,"files":members,
+            "failed_manifest_sha256":FAILED_PIN,"max_si013_acknowledgements":MAX_SI013_ACKNOWLEDGEMENTS,
             "native_initialization_attempts":attempts,"requested_equilibrium_points":0,
             "authorized_equilibrium_solver_calls":0,"scientific_promotion":False,**SCOPE})
         print("C03EC_MANIFEST_SHA256",s2.sha(OUT/"MANIFEST.json"),flush=True)
