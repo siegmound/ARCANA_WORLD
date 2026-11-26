@@ -1,0 +1,63 @@
+{
+  "schema": "R6_C03_DESIGN_FAIR_RECEIPT_V1",
+  "date": "2026-11-26",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT_NOT_INDEPENDENT_FAIR_BYTE_AUDIT",
+  "source_sha": "0d1ed77353952018f7908f6d9a1855d4a66852fd",
+  "tests": {
+    "passed": 80,
+    "total": 80,
+    "wall_s": 0.61
+  },
+  "exit": 0,
+  "marker": "C03_COLD_CRUST_DESIGN_COMPLETE__PROVIDER_SELECTION_PENDING",
+  "manifest_sha256": "0b05bfc715352d960cae08f0049e494c38d69796f38f622916fbcd2ea8c69f18",
+  "parent_manifest_sha256": "7d0db630d22320f86a928915426aa81b3ce98e3462542a830101e3ec1bae87db",
+  "cohort": {
+    "8": {
+      "samples": 405,
+      "below_prior_design_filter": 335,
+      "unique_exact_cold_PT_coordinates": 10,
+      "zero_conditional_overburden": 81
+    },
+    "16": {
+      "samples": 1445,
+      "below_prior_design_filter": 1262,
+      "unique_exact_cold_PT_coordinates": 181,
+      "zero_conditional_overburden": 289
+    }
+  },
+  "source_points": [
+    {
+      "T_C": 233.57238730194456,
+      "T_K": 506.72238730194454,
+      "absolute_pressure_pa": null,
+      "conditional_delta_P_kbar": 1.92472,
+      "depth_m": 7000,
+      "parent_node_id": 35304,
+      "pressure_semantics": "HYPOTHETICAL_COMPARATIVE_ONLY"
+    },
+    {
+      "T_C": 437.73954920777817,
+      "T_K": 710.8895492077781,
+      "absolute_pressure_pa": null,
+      "conditional_delta_P_kbar": 3.84944,
+      "depth_m": 14000,
+      "parent_node_id": 36026,
+      "pressure_semantics": "HYPOTHETICAL_COMPARATIVE_ONLY"
+    }
+  ],
+  "original_header_sightings": {
+    "Chl(HP)": 0,
+    "Chl(W)": 0,
+    "Ep(HP11)": 0,
+    "Fsp(HGP)": 1,
+    "Mica(W)": 0,
+    "Pu(M)": 0,
+    "lAb(HGP)": 1
+  },
+  "additional_engine_runs": 0,
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}
