@@ -123,7 +123,7 @@ def audit_failed_attempt():
          and dia["state"]=="INITIALIZING" and dia["acknowledged_warning_codes"]==["013"]
          and dia["requested_equilibrium_points"]==0
          and dia["scientific_warning_acceptance"] is False
-         and sent==b"c03d\\ny\\n"
+         and sent==b"c03d\ny\n"
          and raw.count(dialogue.WARNING)==2 and dialogue.PT not in raw
          and not (FAILED_OUT/"DP_DS5_ONLY").exists(),
          "C03EC_R1_FAILED_DIAGNOSTIC_DRIFT")
@@ -131,7 +131,7 @@ def audit_failed_attempt():
     # two exact acknowledgements, then no further response. No process launched.
     replay=PreflightDialogue()
     responses=[replay.next_response(raw) for _ in range(4)]
-    need(responses==[b"c03d\\n",b"y\\n",b"y\\n",None]
+    need(responses==[b"c03d\n",b"y\n",b"y\n",None]
          and replay.state=="INITIALIZING" and replay.acknowledged==["013","013"],
          "C03EC_R1_FAILED_TRANSCRIPT_REPLAY")
     return {"manifest_sha256":FAILED_PIN,"source_sha":FAILED_SOURCE,
