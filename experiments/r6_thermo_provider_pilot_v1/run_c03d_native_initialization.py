@@ -11,6 +11,7 @@ from experiments.r6_thermo_provider_pilot_v1 import run_c03c_morb_roster_audit a
 from experiments.r6_thermo_provider_pilot_v1 import run_s3_d5_hgp_fair as launcher
 from experiments.r6_thermo_provider_pilot_v1 import c03d_native_dialogue as dialogue
 from experiments.r6_thermo_provider_pilot_v1 import c03d_r3_composition_audit as composition_audit
+from experiments.r6_thermo_provider_pilot_v1 import c03d_r4_model_audit as model_audit
 
 m=c.m
 s2=c.s2
@@ -28,7 +29,10 @@ R1_FAILED_SOURCE="5e393e3f1abcdd86460d4054f45adc0255a8c308"
 R2_FAILED_OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW03"
 R2_FAILED_PIN="2ec231196c4f738993a982842905af1ab40fba066931c68b9e763b8878f4e2e1"
 R2_FAILED_SOURCE="37167a279f33be6c8ba3d5dba87a5ed33cc5e116"
-OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW04"
+R3_FAILED_OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW04"
+R3_FAILED_PIN="d863620fad202747ef5cd46570c7b4670b757c06c3539d627bd310f186a4618d"
+R3_FAILED_SOURCE="793a1e9e83e323da22bebe6a876131076dd4d107"
+OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW05"
 RLIB_BLOB="d9cf25af82bba61f60d7c9b29c510ca9fe9eedaa"
 TLIB_BLOB="a825163285c7a524c1ebc2980394b030fe9c7e04"
 BUILD_BLOB="23f0a59ed5d1773e6e7e6d45c35462502f164579"
@@ -82,6 +86,9 @@ def audit_parent():
     rlib=(source/"src/rlib.f").read_bytes()
     need(hgp.blob(rlib)==RLIB_BLOB and b"**warning ver966**" in rlib and b"**warning ver968**" in rlib
         and b"Continue execution despite this warning (Y/N)?" in tlib,"C03D_DIALOGUE_SOURCE_DRIFT")
+    need(b"key.eq.'site_check_override'" in rlib and b"stck = .false." in rlib
+         and b"if (.not.stck.and..not.refine.and.iam.lt.3) then" in rlib
+         and b"call warn (17,r,i,tname)" in rlib,"C03D_R4_LEGACY_MODEL_SOURCE_DRIFT")
     return report,runtime,inputs["bl691_MEEMUM.dat"],hp,models,options
 
 
@@ -222,6 +229,41 @@ def audit_r2_failed_attempt():
             "unknown_warning_fail_closed":True}
 
 
+def audit_r3_failed_attempt(composition,roster):
+    receipt=json.loads((m.HERE/"c03d_r3_failed_fair_receipt_v1.json").read_text())
+    need(hgp.file_sha(R3_FAILED_OUT/"MANIFEST.json")==R3_FAILED_PIN==receipt["manifest_sha256"],
+         "C03D_R3_FAILED_MANIFEST_DRIFT")
+    man=json.loads((R3_FAILED_OUT/"MANIFEST.json").read_text())
+    members=launcher.inventory(R3_FAILED_OUT)
+    members.pop("MANIFEST.json")
+    need(members==man["files"] and man["source_sha"]==receipt["source_sha"]==R3_FAILED_SOURCE
+        and man["status"]=="NATIVE_INITIALIZATION_FAILED_PRESERVED"
+        and man["C03C_manifest_sha256"]==PIN and man["native_initialization_attempts"]==1
+        and man["requested_equilibrium_points"]==man["authorized_equilibrium_solver_calls"]==0
+        and man["scientific_promotion"] is False and all(man[k]==v for k,v in SCOPE.items())
+        and json.loads((R3_FAILED_OUT/"DIRECT_EOS_AUDIT.json").read_text())==composition,
+        "C03D_R3_FAILED_ARCHIVE_DRIFT")
+    failure=json.loads((R3_FAILED_OUT/"FAILURE.json").read_text())
+    work=R3_FAILED_OUT/"C01_MORB_BASE"
+    log=(work/"RUN_STDOUT.log").read_bytes()
+    dia=json.loads((work/"DIALOGUE.json").read_text())
+    need(failure["message"]==receipt["failure"] and failure["native_initialization_attempts"]==1
+        and failure["requested_equilibrium_points"]==0 and dialogue.GL017 in b" ".join(log.split())
+        and dialogue.PT not in log and dialogue.BULK not in log
+        and (work/"DIALOGUE_STDIN.log").read_bytes()==b"c03d\ny\ny\ny\n"
+        and dia["policy"]==dialogue.R3_POLICY and dia["state"]=="INITIALIZING"
+        and dia["acknowledged_warning_codes"]==["966","968","013"]
+        and [e["prompt"] for e in dia["events"]]==["PROJECT","HP02_O2_VER966","HP02_O2_VER968","HP02_SI_REJECTION_VER013"]
+        and dia["requested_equilibrium_points"]==0 and dia["scientific_warning_acceptance"] is False
+        and dia["error"]=="ValueError: "+receipt["failure"],"C03D_R3_FAILED_DIAGNOSTIC_DRIFT")
+    details=model_audit.native_model_details(log,roster,composition["records"])
+    observed={(x["model"],v["endmember"]) for x in details["missing_endmember_reports"] for v in x["endmembers"]}
+    need({("O(HP)","teph"),("O(HP)","fran"),("IlGkPy","pnt"),("Cpx(HP)","esn"),
+          ("Cpx(HP)","ccrts"),("Stlp(M)","mnsp")}<=observed,"C03D_R3_MISSING_READBACK_DRIFT")
+    return {"manifest_sha256":R3_FAILED_PIN,"warning":"ver017","model":"GlTrTsPg",
+            "partial_native_model_details":details}
+
+
 def project_input(template,basis,masses,roster):
     text=template.decode("ascii").replace("\r\n","\n")
     lines=text.splitlines()
@@ -340,6 +382,10 @@ def main():
     masses=c.b.components(hp)
     composition=composition_audit.audit(hp,masses,ORDER,c.b.model_blocks(models,tuple(roster)),c.PURE.values())
     print("C03D_R3_DIRECT_EOS_AUDIT",composition["direct_eos_count"],composition["active_basis_compatible_count"],composition["nonpositive_compatible"],flush=True)
+    failed_r3=audit_r3_failed_attempt(composition,roster)
+    print("C03D_R4_FAILED_ARCHIVE_VERIFIED",R3_FAILED_PIN,flush=True)
+    legacy=model_audit.model_audit(c.b.model_blocks(models,tuple(roster)))
+    print("C03D_R4_MODEL_AUDIT",legacy["allowed_diagnostic_warning_models"],flush=True)
     opts=options_candidate(options)
     plans={}
     for name in c.b.MORB:
@@ -352,10 +398,12 @@ def main():
     attempts=0
     try:
         s2.write_json(OUT/"DIRECT_EOS_AUDIT.json",composition)
+        s2.write_json(OUT/"MODEL_AUDIT.json",legacy)
         s2.write_json(OUT/"PROVENANCE.json",{"source_sha":head,"runtime":runtime,"limits":LIMITS,
             "C03C_manifest_sha256":PIN,"meemum_source_git_blob":MEEMUM_SOURCE_BLOB,
             "failed_attempt":failed,"failed_r1_attempt":failed_r1,"failed_r2_attempt":failed_r2,
-            "direct_eos_audit_sha256":s2.sha(OUT/"DIRECT_EOS_AUDIT.json"),"dialogue_policy":dialogue.R3_POLICY,
+            "failed_r3_attempt":failed_r3,"model_audit_sha256":s2.sha(OUT/"MODEL_AUDIT.json"),
+            "direct_eos_audit_sha256":s2.sha(OUT/"DIRECT_EOS_AUDIT.json"),"dialogue_policy":dialogue.R4_POLICY,
             "rlib_git_blob":RLIB_BLOB,"fixed_width_parser_git_blob":TLIB_BLOB,"build_writer_git_blob":BUILD_BLOB,
             "input_option_git_blob":OPTION_BLOB,"fluid_eos_ifug":5,"hybrid_water_eos":2,
             "fluid_boundary":"CLOSED_BULK_NO_BUFFER_NO_SATURATION",
@@ -378,16 +426,21 @@ def main():
             attempts+=1
             try:
                 dialogue.launch_dialogue([Path(runtime["binary"])],work,LIMITS,
-                    allow_si013=composition["allowed_diagnostic_warning_species"]==["Si(s)"])
+                    allow_si013=composition["allowed_diagnostic_warning_species"]==["Si(s)"],
+                    allow_gl017=legacy["allowed_diagnostic_warning_models"]==["GlTrTsPg"])
             finally:
                 if (work/"RUN_STDOUT.log").is_file():
                     rawlog=(work/"RUN_STDOUT.log").read_bytes()
                     print("C03D_NATIVE_LOG_TAIL",name,rawlog[-6000:].decode("utf-8",errors="replace"),flush=True)
+                    details=model_audit.native_model_details(rawlog,roster,composition["records"])
+                    s2.write_json(work/"NATIVE_MODEL_DETAILS.json",details)
+                    print("C03D_NATIVE_MODEL_DETAILS",name,json.dumps(details,sort_keys=True),flush=True)
                 if (work/"DIALOGUE.json").is_file():
                     print("C03D_NATIVE_DIALOGUE",name,(work/"DIALOGUE.json").read_text(),flush=True)
             prn=work/"c03d.prn"
             obs=observe(rawlog,prn.read_bytes() if prn.is_file() else b"",roster)
             obs["dialogue"]=json.loads((work/"DIALOGUE.json").read_text())
+            obs["native_model_details"]=details
             s2.write_json(work/"READBACK.json",obs)
             results[name]=obs
             print("C03D_NATIVE_MODEL_DISPOSITIONS",name,json.dumps(obs["native_model_dispositions"],sort_keys=True),flush=True)

@@ -1,5 +1,5 @@
 """Bounded, prompt-driven MEEMUM initialization; never request a nonzero PT.
-Only pinned HP02 O2 warnings and an audit-bound Si(s) rejection may be acknowledged.
+Only pinned HP02 O2, Si(s) and the audit-bound legacy model warning may be acknowledged.
 No global warning override. Raw stdout and actual stdin are retained.
 """
 from __future__ import annotations
@@ -19,6 +19,8 @@ PT=b"Enter (T = 0 to quit)"
 PROMPTS=(PROJECT,WARNING,BULK,PT)
 POLICY="HP02_O2_VER966_AND_CONDITIONAL_VER968_INITIALIZATION_ONLY"
 R3_POLICY=POLICY+"_AUDITED_SILICON_VER013"
+R4_POLICY=R3_POLICY+"_AUDITED_GLTRTSPG_VER017"
+GL017=b"**warning ver017** GlTrTsPg is a relict equipartition solution model. The use of such models in Perple_X 6.9.1+ may result in erratic, though formally correct, phase field geometries, to avoid this problem replace GlTrTsPg with an up-to-date model."
 SI013=(b"**warning ver013** because the total amount of the commponents in Si(s) is <= 0 "
        b"it will be rejected from this calculation although it is a legitimate phase. "
        b"To prevent this rejection transform the data base components (e.g., using CTRANSF) "
@@ -26,8 +28,9 @@ SI013=(b"**warning ver013** because the total amount of the commponents in Si(s)
 
 
 class Dialogue:
-    def __init__(self, *, allow_si013=False):
+    def __init__(self, *, allow_si013=False, allow_gl017=False):
         self.allow_si013=allow_si013 is True
+        self.allow_gl017=allow_gl017 is True
         self.state="PROJECT"
         self.cursor=0
         self.acknowledged=[]
@@ -62,11 +65,14 @@ class Dialogue:
                 and b"activity or fugacity of O2" in flat)
             valid013=(self.allow_si013 and self.acknowledged==["966","968"]
                       and code=="013" and flat==SI013)
-            if not (valid966 or valid968 or valid013):
+            valid017=(self.allow_gl017 and self.acknowledged==["966","968","013"]
+                      and code=="017" and flat==GL017)
+            if not (valid966 or valid968 or valid013 or valid017):
                 raise ValueError("C03D_UNAPPROVED_INTERACTIVE_WARNING:"+flat[-500:].decode("ascii",errors="replace"))
             self.acknowledged.append(code)
             response=b"y\n"
-            kind="HP02_SI_REJECTION_VER013" if valid013 else "HP02_O2_VER"+code
+            kind=("GLTRTSPG_LEGACY_VER017" if valid017 else
+                  "HP02_SI_REJECTION_VER013" if valid013 else "HP02_O2_VER"+code)
         elif prompt==BULK and self.state=="INITIALIZING":
             response=b"n\n"
             self.state="AWAIT_PT"
@@ -83,7 +89,7 @@ class Dialogue:
         return response
 
 
-def launch_dialogue(command,work,limits,*,allow_si013=False):
+def launch_dialogue(command,work,limits,*,allow_si013=False,allow_gl017=False):
     def set_limits():
         resource.setrlimit(resource.RLIMIT_AS,(limits["address_space_limit_bytes"],)*2)
         resource.setrlimit(resource.RLIMIT_FSIZE,(limits["file_size_limit_bytes"],)*2)
@@ -93,7 +99,7 @@ def launch_dialogue(command,work,limits,*,allow_si013=False):
              BLIS_NUM_THREADS="1",LC_ALL="C",GFORTRAN_UNBUFFERED_ALL="1")
     start=time.monotonic()
     deadline=start+limits["walltime_s"]
-    protocol=Dialogue(allow_si013=allow_si013)
+    protocol=Dialogue(allow_si013=allow_si013,allow_gl017=allow_gl017)
     raw=bytearray()
     proc=None
     error=None
@@ -160,7 +166,7 @@ def launch_dialogue(command,work,limits,*,allow_si013=False):
                    "address_space_limit_bytes":limits["address_space_limit_bytes"],
                    "individual_file_size_limit_bytes":limits["file_size_limit_bytes"]}
         for name,obj in (("LAUNCH.json",telemetry),("DIALOGUE.json",{
-            "policy":R3_POLICY if protocol.allow_si013 else POLICY,"state":protocol.state,"events":protocol.events,
+            "policy":R4_POLICY if protocol.allow_gl017 else R3_POLICY if protocol.allow_si013 else POLICY,"state":protocol.state,"events":protocol.events,
             "acknowledged_warning_codes":protocol.acknowledged,"requested_equilibrium_points":0,
             "scientific_warning_acceptance":False,"error":error})):
             with (work/name).open("x") as f:
