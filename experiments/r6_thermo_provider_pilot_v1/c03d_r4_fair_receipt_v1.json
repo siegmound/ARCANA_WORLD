@@ -1,0 +1,76 @@
+{
+  "schema": "R6_C03D_R4_FAIR_RECEIPT_V1",
+  "source_sha": "deb7f4e919e53157662dc32bdf1bc6c2737817ab",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT",
+  "date": "2026-11-26",
+  "tests": {
+    "passed": 128,
+    "total": 128,
+    "wall_s": 0.95
+  },
+  "manifest_sha256": "5a64f2e9ba0d753a3183bef295ce6771529b3ba178928012909d378e8a1891af",
+  "exit": 0,
+  "recipes": [
+    "C01_MORB_BASE",
+    "C01_MORB_WET"
+  ],
+  "native_initialization_attempts": 2,
+  "requested_equilibrium_points": 0,
+  "model_counts": {
+    "Chl(W)": 331,
+    "Ep(HP11)": 18,
+    "Opx(HP)": 122,
+    "Bio(TCC)": 331,
+    "Pl(h)": 4,
+    "Kf": 4,
+    "O(HP)": 4,
+    "IlGkPy": 4,
+    "B(F)": 4,
+    "Cpx(HP)": 121,
+    "Sp(WPC)": 52,
+    "Pu(M)": 18,
+    "Act(M)": 52,
+    "Stlp(M)": 4,
+    "Mica(M)": 18,
+    "T(F)": 18,
+    "Atg(PN)": 18,
+    "GlTrTsPg": 331
+  },
+  "total_pseudocompounds_per_recipe": 1454,
+  "missing_by_model": {
+    "Chl(W)": [
+      "mnchl"
+    ],
+    "Bio(TCC)": [
+      "mnbi"
+    ],
+    "O(HP)": [
+      "teph",
+      "fran"
+    ],
+    "IlGkPy": [
+      "pnt"
+    ],
+    "Cpx(HP)": [
+      "esn",
+      "ccrts"
+    ],
+    "Stlp(M)": [
+      "mnsp"
+    ]
+  },
+  "invalid_site_populations": {
+    "GlTrTsPg": [
+      "fparg_i",
+      "fts_i",
+      "fgl_i"
+    ]
+  },
+  "acknowledged_warning_codes": [
+    "966",
+    "968",
+    "013",
+    "017"
+  ],
+  "scientific_warning_acceptance": false
+}
