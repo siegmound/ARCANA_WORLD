@@ -9,6 +9,7 @@ import shutil
 from pathlib import Path
 from experiments.r6_thermo_provider_pilot_v1 import run_c03c_morb_roster_audit as c
 from experiments.r6_thermo_provider_pilot_v1 import run_s3_d5_hgp_fair as launcher
+from experiments.r6_thermo_provider_pilot_v1 import c03d_native_dialogue as dialogue
 
 m=c.m
 s2=c.s2
@@ -20,7 +21,11 @@ PARENT="88b698ce98460bdc75ed989b02c7844e829cee60"
 FAILED_OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW01"
 FAILED_PIN="eb882ecaf4fc85271b3c057a3b966ad8a8074ff96ceedf2e3327fdfc8e217161"
 FAILED_SOURCE="724c60dcdc14f02a12dd875b7c5777c49701a768"
-OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW02"
+R1_FAILED_OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW02"
+R1_FAILED_PIN="99f64a5056c881f721d7b72e4ff795e2b6a330fac62e4929a131bc53111797a1"
+R1_FAILED_SOURCE="5e393e3f1abcdd86460d4054f45adc0255a8c308"
+OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW03"
+RLIB_BLOB="d9cf25af82bba61f60d7c9b29c510ca9fe9eedaa"
 TLIB_BLOB="a825163285c7a524c1ebc2980394b030fe9c7e04"
 BUILD_BLOB="23f0a59ed5d1773e6e7e6d45c35462502f164579"
 OPTION_BLOB="fba52ca4471749b84a930c6126cade7ed8d0efa0"
@@ -70,6 +75,9 @@ def audit_parent():
     need(hgp.blob(tlib)==TLIB_BLOB and hgp.blob(build)==BUILD_BLOB,"C03D_FIXED_WIDTH_SOURCE_DRIFT")
     need(b"rname*5" in tlib and b"read (n1,'(a,a)') rname,strg" in tlib
         and b"3000  format (a,1x,i1," in build,"C03D_FIXED_WIDTH_SOURCE_CONTRACT")
+    rlib=(source/"src/rlib.f").read_bytes()
+    need(hgp.blob(rlib)==RLIB_BLOB and b"**warning ver966**" in rlib and b"**warning ver968**" in rlib
+        and b"Continue execution despite this warning (Y/N)?" in tlib,"C03D_DIALOGUE_SOURCE_DRIFT")
     return report,runtime,inputs["bl691_MEEMUM.dat"],hp,models,options
 
 
@@ -155,6 +163,29 @@ def audit_failed_attempt():
     need(row[:5]=="MGO 1" and "." in row[5:].split()[0],"C03D_FAILED_FIXED_WIDTH_EVIDENCE")
     return {"failed_manifest_sha256":FAILED_PIN,"native_error":"ver027",
             "observed_bad_name_field":row[:5],"observed_bad_flag_token":row[5:].split()[0]}
+
+
+
+def audit_r1_failed_attempt():
+    receipt=json.loads((m.HERE/"c03d_r1_failed_fair_receipt_v1.json").read_text())
+    need(hgp.file_sha(R1_FAILED_OUT/"MANIFEST.json")==R1_FAILED_PIN==receipt["manifest_sha256"],
+         "C03D_R1_FAILED_MANIFEST_DRIFT")
+    man=json.loads((R1_FAILED_OUT/"MANIFEST.json").read_text())
+    members=launcher.inventory(R1_FAILED_OUT)
+    members.pop("MANIFEST.json")
+    need(members==man["files"] and man["source_sha"]==receipt["source_sha"]==R1_FAILED_SOURCE
+        and man["status"]=="NATIVE_INITIALIZATION_FAILED_PRESERVED"
+        and man["C03C_manifest_sha256"]==PIN and man["native_initialization_attempts"]==1
+        and man["requested_equilibrium_points"]==man["authorized_equilibrium_solver_calls"]==0
+        and all(man[k]==v for k,v in SCOPE.items()),"C03D_R1_FAILED_ARCHIVE_DRIFT")
+    failure=json.loads((R1_FAILED_OUT/"FAILURE.json").read_text())
+    work=R1_FAILED_OUT/"C01_MORB_BASE"
+    log=(work/"RUN_STDOUT.log").read_bytes()
+    need(failure["message"]==receipt["failure"] and failure["native_initialization_attempts"]==1
+        and failure["requested_equilibrium_points"]==0 and receipt["warning"].encode() in log
+        and receipt["prompt"].encode() in log and dialogue.PT not in log
+        and (work/"bl691_MEEMUM_input.txt").read_bytes()==STDIN,"C03D_R1_FAILED_DIAGNOSTIC_DRIFT")
+    return {"manifest_sha256":R1_FAILED_PIN,"warning":"ver966","fixed_width_input_reached_database":True}
 
 
 def project_input(template,basis,masses,roster):
@@ -267,6 +298,8 @@ def main():
     print("C03D_INDEPENDENT_C03C_REPLAY_PASS",PIN,flush=True)
     failed=audit_failed_attempt()
     print("C03D_R1_FAILED_ARCHIVE_VERIFIED",FAILED_PIN,flush=True)
+    failed_r1=audit_r1_failed_attempt()
+    print("C03D_R2_FAILED_ARCHIVE_VERIFIED",R1_FAILED_PIN,flush=True)
     roster=list(c.VERTICES)
     masses=c.b.components(hp)
     opts=options_candidate(options)
@@ -282,7 +315,8 @@ def main():
     try:
         s2.write_json(OUT/"PROVENANCE.json",{"source_sha":head,"runtime":runtime,"limits":LIMITS,
             "C03C_manifest_sha256":PIN,"meemum_source_git_blob":MEEMUM_SOURCE_BLOB,
-            "failed_attempt":failed,"fixed_width_parser_git_blob":TLIB_BLOB,"build_writer_git_blob":BUILD_BLOB,
+            "failed_attempt":failed,"failed_r1_attempt":failed_r1,"dialogue_policy":dialogue.POLICY,
+            "rlib_git_blob":RLIB_BLOB,"fixed_width_parser_git_blob":TLIB_BLOB,"build_writer_git_blob":BUILD_BLOB,
             "input_option_git_blob":OPTION_BLOB,"fluid_eos_ifug":5,"hybrid_water_eos":2,
             "fluid_boundary":"CLOSED_BULK_NO_BUFFER_NO_SATURATION",
             "pure_phase_selection":"NATIVE_DEFAULT_COMPONENT_FILTERING_NO_EXCLUSIONS",
@@ -293,7 +327,7 @@ def main():
             work=OUT/name
             work.mkdir()
             files={"c03d.dat":project,"hp02ver.dat":hp,"solution_model.dat":models,
-                   "perplex_option.dat":opts,"bl691_MEEMUM_input.txt":STDIN}
+                   "perplex_option.dat":opts}
             for k,raw in files.items():
                 with (work/k).open("xb") as f: f.write(raw)
             s2.write_json(work/"INPUT.json",{"source_chemistry_sha256":chem,
@@ -302,11 +336,17 @@ def main():
             need(launcher.retained_bytes(OUT)<LIMITS["retained_bytes_stop_threshold"]
                 and hgp.file_sha(runtime["binary"])==runtime["binary_sha256"],"C03D_LAUNCH_GUARD")
             attempts+=1
-            launcher.launch(Path(runtime["binary"]),work,LIMITS)
+            try:
+                dialogue.launch_dialogue([Path(runtime["binary"])],work,LIMITS)
+            finally:
+                if (work/"RUN_STDOUT.log").is_file():
+                    rawlog=(work/"RUN_STDOUT.log").read_bytes()
+                    print("C03D_NATIVE_LOG_TAIL",name,rawlog[-6000:].decode("utf-8",errors="replace"),flush=True)
+                if (work/"DIALOGUE.json").is_file():
+                    print("C03D_NATIVE_DIALOGUE",name,(work/"DIALOGUE.json").read_text(),flush=True)
             prn=work/"c03d.prn"
-            rawlog=(work/"RUN_STDOUT.log").read_bytes()
-            print("C03D_NATIVE_LOG_TAIL",name,rawlog[-6000:].decode("utf-8",errors="replace"),flush=True)
             obs=observe(rawlog,prn.read_bytes() if prn.is_file() else b"",roster)
+            obs["dialogue"]=json.loads((work/"DIALOGUE.json").read_text())
             s2.write_json(work/"READBACK.json",obs)
             results[name]=obs
             print("C03D_NATIVE_MODEL_DISPOSITIONS",name,json.dumps(obs["native_model_dispositions"],sort_keys=True),flush=True)
