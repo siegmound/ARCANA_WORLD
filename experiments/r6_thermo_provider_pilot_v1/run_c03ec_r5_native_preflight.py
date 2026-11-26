@@ -6,10 +6,14 @@ import re
 import shutil
 from pathlib import Path
 from experiments.r6_thermo_provider_pilot_v1 import run_c03ec_r4_native_preflight as r4
+from experiments.r6_thermo_provider_pilot_v1 import run_c03ec_r3_native_preflight as r3
+from experiments.r6_thermo_provider_pilot_v1 import run_c03ec_r2_phase_policy_audit as r2
+from experiments.r6_thermo_provider_pilot_v1.run_c03ec_native_preflight import (
+    d,s2,hgp,need,SCOPE,dialogue,PIN,FAILED_PIN,LIMITS,EXCLUDED,
+    read,parent,audit_failed_attempt,make_project,inspect_native,
+)
 from experiments.r6_thermo_provider_pilot_v1.run_c03ec_r4_native_preflight import (
-    r2,r3,d,s2,hgp,need,SCOPE,dialogue,PIN,FAILED_PIN,LIMITS,ORDER,EXCLUDED,
-    R2_PIN,R3_PIN,MAX_EXACT_ACKNOWLEDGEMENTS,read,parent,audit_failed_attempt,
-    make_project,inspect_native,verify_r3_failure,verify_warning_source,
+    R2_PIN,R3_PIN,MAX_EXACT_ACKNOWLEDGEMENTS,verify_r3_failure,verify_warning_source,
 )
 
 R4_PIN="a4c3ba1456ce785082540d6fe7a82d3567f10b9262e493335fa508d2313258c1"
