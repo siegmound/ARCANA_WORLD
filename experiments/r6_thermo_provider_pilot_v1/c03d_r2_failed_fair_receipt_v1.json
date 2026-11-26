@@ -1,0 +1,29 @@
+{
+  "schema": "R6_C03D_R2_FAILED_FAIR_RECEIPT_V1",
+  "source_sha": "37167a279f33be6c8ba3d5dba87a5ed33cc5e116",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT",
+  "date": "2026-11-26",
+  "tests": {
+    "passed": 112,
+    "total": 112,
+    "wall_s": 0.83
+  },
+  "manifest_sha256": "2ec231196c4f738993a982842905af1ab40fba066931c68b9e763b8878f4e2e1",
+  "previous_failed_manifest_sha256": "99f64a5056c881f721d7b72e4ff795e2b6a330fac62e4929a131bc53111797a1",
+  "parent_manifest_sha256": "a040ef1577d2122822f695a584b205fcdfa254b6fc7e1e177afc88c3983d02a8",
+  "exit": 1,
+  "native_initialization_attempts": 1,
+  "requested_equilibrium_points": 0,
+  "failure": "C03D_UNAPPROVED_INTERACTIVE_WARNING:**warning ver013** because the total amount of the commponents in Si(s) is <= 0 it will be rejected from this calculation although it is a legitimate phase. To prevent this rejection transform the data base components (e.g., using CTRANSF) so that the total amount of the components in Si(s) is > 0.",
+  "warning": "ver013",
+  "species": "Si(s)",
+  "acknowledged_warning_codes": [
+    "966",
+    "968"
+  ],
+  "scientific_warning_acceptance": false,
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}

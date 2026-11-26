@@ -10,6 +10,7 @@ from pathlib import Path
 from experiments.r6_thermo_provider_pilot_v1 import run_c03c_morb_roster_audit as c
 from experiments.r6_thermo_provider_pilot_v1 import run_s3_d5_hgp_fair as launcher
 from experiments.r6_thermo_provider_pilot_v1 import c03d_native_dialogue as dialogue
+from experiments.r6_thermo_provider_pilot_v1 import c03d_r3_composition_audit as composition_audit
 
 m=c.m
 s2=c.s2
@@ -24,7 +25,10 @@ FAILED_SOURCE="724c60dcdc14f02a12dd875b7c5777c49701a768"
 R1_FAILED_OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW02"
 R1_FAILED_PIN="99f64a5056c881f721d7b72e4ff795e2b6a330fac62e4929a131bc53111797a1"
 R1_FAILED_SOURCE="5e393e3f1abcdd86460d4054f45adc0255a8c308"
-OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW03"
+R2_FAILED_OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW03"
+R2_FAILED_PIN="2ec231196c4f738993a982842905af1ab40fba066931c68b9e763b8878f4e2e1"
+R2_FAILED_SOURCE="37167a279f33be6c8ba3d5dba87a5ed33cc5e116"
+OUT=s2.BASE/"R6_THERMO_C03D_NATIVE_INITIALIZATION_NEW04"
 RLIB_BLOB="d9cf25af82bba61f60d7c9b29c510ca9fe9eedaa"
 TLIB_BLOB="a825163285c7a524c1ebc2980394b030fe9c7e04"
 BUILD_BLOB="23f0a59ed5d1773e6e7e6d45c35462502f164579"
@@ -188,6 +192,36 @@ def audit_r1_failed_attempt():
     return {"manifest_sha256":R1_FAILED_PIN,"warning":"ver966","fixed_width_input_reached_database":True}
 
 
+def audit_r2_failed_attempt():
+    receipt=json.loads((m.HERE/"c03d_r2_failed_fair_receipt_v1.json").read_text())
+    need(hgp.file_sha(R2_FAILED_OUT/"MANIFEST.json")==R2_FAILED_PIN==receipt["manifest_sha256"],
+         "C03D_R2_FAILED_MANIFEST_DRIFT")
+    man=json.loads((R2_FAILED_OUT/"MANIFEST.json").read_text())
+    members=launcher.inventory(R2_FAILED_OUT)
+    members.pop("MANIFEST.json")
+    need(members==man["files"] and man["source_sha"]==receipt["source_sha"]==R2_FAILED_SOURCE
+        and man["status"]=="NATIVE_INITIALIZATION_FAILED_PRESERVED"
+        and man["C03C_manifest_sha256"]==PIN and man["native_initialization_attempts"]==1
+        and man["requested_equilibrium_points"]==man["authorized_equilibrium_solver_calls"]==0
+        and man["scientific_promotion"] is False and all(man[k]==v for k,v in SCOPE.items()),
+        "C03D_R2_FAILED_ARCHIVE_DRIFT")
+    failure=json.loads((R2_FAILED_OUT/"FAILURE.json").read_text())
+    work=R2_FAILED_OUT/"C01_MORB_BASE"
+    log=(work/"RUN_STDOUT.log").read_bytes()
+    dia=json.loads((work/"DIALOGUE.json").read_text())
+    need(failure["message"]==receipt["failure"] and failure["native_initialization_attempts"]==1
+        and failure["requested_equilibrium_points"]==0 and dialogue.SI013 in b" ".join(log.split())
+        and dialogue.PT not in log and dialogue.BULK not in log
+        and (work/"DIALOGUE_STDIN.log").read_bytes()==b"c03d\ny\ny\n"
+        and dia["policy"]==dialogue.POLICY and dia["state"]=="INITIALIZING"
+        and dia["acknowledged_warning_codes"]==["966","968"]
+        and [e["prompt"] for e in dia["events"]]==["PROJECT","HP02_O2_VER966","HP02_O2_VER968"]
+        and dia["requested_equilibrium_points"]==0 and dia["scientific_warning_acceptance"] is False
+        and dia["error"]=="ValueError: "+receipt["failure"],"C03D_R2_FAILED_DIAGNOSTIC_DRIFT")
+    return {"manifest_sha256":R2_FAILED_PIN,"warning":"ver013","species":"Si(s)",
+            "unknown_warning_fail_closed":True}
+
+
 def project_input(template,basis,masses,roster):
     text=template.decode("ascii").replace("\r\n","\n")
     lines=text.splitlines()
@@ -300,8 +334,12 @@ def main():
     print("C03D_R1_FAILED_ARCHIVE_VERIFIED",FAILED_PIN,flush=True)
     failed_r1=audit_r1_failed_attempt()
     print("C03D_R2_FAILED_ARCHIVE_VERIFIED",R1_FAILED_PIN,flush=True)
+    failed_r2=audit_r2_failed_attempt()
+    print("C03D_R3_FAILED_ARCHIVE_VERIFIED",R2_FAILED_PIN,flush=True)
     roster=list(c.VERTICES)
     masses=c.b.components(hp)
+    composition=composition_audit.audit(hp,masses,ORDER,c.b.model_blocks(models,tuple(roster)),c.PURE.values())
+    print("C03D_R3_DIRECT_EOS_AUDIT",composition["direct_eos_count"],composition["active_basis_compatible_count"],composition["nonpositive_compatible"],flush=True)
     opts=options_candidate(options)
     plans={}
     for name in c.b.MORB:
@@ -313,9 +351,11 @@ def main():
     OUT.mkdir(parents=False,exist_ok=False)
     attempts=0
     try:
+        s2.write_json(OUT/"DIRECT_EOS_AUDIT.json",composition)
         s2.write_json(OUT/"PROVENANCE.json",{"source_sha":head,"runtime":runtime,"limits":LIMITS,
             "C03C_manifest_sha256":PIN,"meemum_source_git_blob":MEEMUM_SOURCE_BLOB,
-            "failed_attempt":failed,"failed_r1_attempt":failed_r1,"dialogue_policy":dialogue.POLICY,
+            "failed_attempt":failed,"failed_r1_attempt":failed_r1,"failed_r2_attempt":failed_r2,
+            "direct_eos_audit_sha256":s2.sha(OUT/"DIRECT_EOS_AUDIT.json"),"dialogue_policy":dialogue.R3_POLICY,
             "rlib_git_blob":RLIB_BLOB,"fixed_width_parser_git_blob":TLIB_BLOB,"build_writer_git_blob":BUILD_BLOB,
             "input_option_git_blob":OPTION_BLOB,"fluid_eos_ifug":5,"hybrid_water_eos":2,
             "fluid_boundary":"CLOSED_BULK_NO_BUFFER_NO_SATURATION",
@@ -337,7 +377,8 @@ def main():
                 and hgp.file_sha(runtime["binary"])==runtime["binary_sha256"],"C03D_LAUNCH_GUARD")
             attempts+=1
             try:
-                dialogue.launch_dialogue([Path(runtime["binary"])],work,LIMITS)
+                dialogue.launch_dialogue([Path(runtime["binary"])],work,LIMITS,
+                    allow_si013=composition["allowed_diagnostic_warning_species"]==["Si(s)"])
             finally:
                 if (work/"RUN_STDOUT.log").is_file():
                     rawlog=(work/"RUN_STDOUT.log").read_bytes()

@@ -1,5 +1,5 @@
 """Bounded, prompt-driven MEEMUM initialization; never request a nonzero PT.
-Only two explicitly identified HP02 O2 EoS warnings may be acknowledged.
+Only pinned HP02 O2 warnings and an audit-bound Si(s) rejection may be acknowledged.
 No global warning override. Raw stdout and actual stdin are retained.
 """
 from __future__ import annotations
@@ -18,10 +18,16 @@ BULK=b"Interactively enter bulk compositions (y/n)?"
 PT=b"Enter (T = 0 to quit)"
 PROMPTS=(PROJECT,WARNING,BULK,PT)
 POLICY="HP02_O2_VER966_AND_CONDITIONAL_VER968_INITIALIZATION_ONLY"
+R3_POLICY=POLICY+"_AUDITED_SILICON_VER013"
+SI013=(b"**warning ver013** because the total amount of the commponents in Si(s) is <= 0 "
+       b"it will be rejected from this calculation although it is a legitimate phase. "
+       b"To prevent this rejection transform the data base components (e.g., using CTRANSF) "
+       b"so that the total amount of the components in Si(s) is > 0.")
 
 
 class Dialogue:
-    def __init__(self):
+    def __init__(self, *, allow_si013=False):
+        self.allow_si013=allow_si013 is True
         self.state="PROJECT"
         self.cursor=0
         self.acknowledged=[]
@@ -54,11 +60,13 @@ class Dialogue:
                 and b"O2 is a name reserved for fluid" in flat
                 and b"hp02ver.dat" in flat and b"G(Pr,T)" in flat
                 and b"activity or fugacity of O2" in flat)
-            if not (valid966 or valid968):
+            valid013=(self.allow_si013 and self.acknowledged==["966","968"]
+                      and code=="013" and flat==SI013)
+            if not (valid966 or valid968 or valid013):
                 raise ValueError("C03D_UNAPPROVED_INTERACTIVE_WARNING:"+flat[-500:].decode("ascii",errors="replace"))
             self.acknowledged.append(code)
             response=b"y\n"
-            kind="HP02_O2_VER"+code
+            kind="HP02_SI_REJECTION_VER013" if valid013 else "HP02_O2_VER"+code
         elif prompt==BULK and self.state=="INITIALIZING":
             response=b"n\n"
             self.state="AWAIT_PT"
@@ -75,7 +83,7 @@ class Dialogue:
         return response
 
 
-def launch_dialogue(command,work,limits):
+def launch_dialogue(command,work,limits,*,allow_si013=False):
     def set_limits():
         resource.setrlimit(resource.RLIMIT_AS,(limits["address_space_limit_bytes"],)*2)
         resource.setrlimit(resource.RLIMIT_FSIZE,(limits["file_size_limit_bytes"],)*2)
@@ -85,7 +93,7 @@ def launch_dialogue(command,work,limits):
              BLIS_NUM_THREADS="1",LC_ALL="C",GFORTRAN_UNBUFFERED_ALL="1")
     start=time.monotonic()
     deadline=start+limits["walltime_s"]
-    protocol=Dialogue()
+    protocol=Dialogue(allow_si013=allow_si013)
     raw=bytearray()
     proc=None
     error=None
@@ -152,7 +160,7 @@ def launch_dialogue(command,work,limits):
                    "address_space_limit_bytes":limits["address_space_limit_bytes"],
                    "individual_file_size_limit_bytes":limits["file_size_limit_bytes"]}
         for name,obj in (("LAUNCH.json",telemetry),("DIALOGUE.json",{
-            "policy":POLICY,"state":protocol.state,"events":protocol.events,
+            "policy":R3_POLICY if protocol.allow_si013 else POLICY,"state":protocol.state,"events":protocol.events,
             "acknowledged_warning_codes":protocol.acknowledged,"requested_equilibrium_points":0,
             "scientific_warning_acceptance":False,"error":error})):
             with (work/name).open("x") as f:
