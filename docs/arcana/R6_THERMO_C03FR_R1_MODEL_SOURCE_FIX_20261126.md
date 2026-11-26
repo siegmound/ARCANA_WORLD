@@ -1,0 +1,5 @@
+# C03FR-R1 — source parser contract correction
+
+FAIR 4f8551aa66c0a0745cd909465b52d9255d15255d: 201/201 tests, campaign replay PASS, four review rows logged; 16/16 elastic and 28/28 printed site checks compatible. Review then exits 1 in source_evidence, TypeError because model_blocks returns a dictionary per model, not raw text. The exact parser is run_c03b_low_grade_morb_readiness.model_blocks: line/end_line/normalized_text_sha256/text. Failure occurred before OUT.mkdir; no review manifest reported. Do not delete any existing archive.
+
+R1 uses the text field explicitly, verifies source line bounds, exact normalized slice and hash, stores parser metadata, validates negative endmember identity in active model text. Four added regression cases use the real parser, absent models/members and comment-only member. No scientific criteria relaxed, no input/solver modification, zero native processes. Same write-once review archive, only if absent. Negative basis adjudication still pending; C04 not authorized.

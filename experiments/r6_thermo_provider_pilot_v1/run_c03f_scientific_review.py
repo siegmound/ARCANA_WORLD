@@ -194,17 +194,37 @@ def review_point(point,audit,plan,records):
             "scientific_promotion":False}
 
 
+def extract_model_blocks(library,neg):
+    names=tuple(sorted({x["model"] for x in neg}))
+    blocks=d.c.b.model_blocks(library,names)
+    need(set(blocks)==set(names),"C03FR_MODEL_SOURCE")
+    models={}
+    metadata={}
+    for name in names:
+        block=blocks[name]
+        need(isinstance(block,dict) and isinstance(block.get("text"),str)
+             and type(block.get("line")) is int and type(block.get("end_line")) is int,
+             "C03FR_MODEL_BLOCK_SCHEMA:"+name)
+        raw=block["text"]
+        lines=library.decode("utf-8",errors="strict").splitlines()
+        start,stop=block["line"],block["end_line"]
+        need(1<=start<=stop<=len(lines)
+             and raw=="\n".join(lines[start-1:stop])+"\n"
+             and hgp.sha(raw.encode("utf-8"))==block.get("normalized_text_sha256"),
+             "C03FR_MODEL_BLOCK_PROVENANCE:"+name)
+        models[name]=raw
+        metadata[name]={k:block[k] for k in ("line","end_line","normalized_text_sha256")}
+    for x in neg:
+        active=d.composition_audit.active_text(models[x["model"]])
+        need(re.search(r"(?<!\w)"+re.escape(x["endmember"])+r"(?!\w)",active),
+             "C03FR_NEGATIVE_SOURCE_IDENTITY")
+    return models,metadata
+
+
 def source_evidence(parent,neg):
     runtime=parent[1]
     library=parent[4]
-    blocks=d.c.b.model_blocks(library,tuple(sorted({x["model"] for x in neg})))
-    need(set(blocks)=={x["model"] for x in neg},"C03FR_MODEL_SOURCE")
-    def as_text(x):
-        return x.decode("utf-8") if isinstance(x,bytes) else x
-    models={k:as_text(v) for k,v in blocks.items()}
-    for x in neg:
-        need(re.search(r"(?<!\w)"+re.escape(x["endmember"])+r"(?!\w)",models[x["model"]]),
-             "C03FR_NEGATIVE_SOURCE_IDENTITY")
+    models,metadata=extract_model_blocks(library,neg)
     source=Path(runtime["source"])/"src"
     # The same source pins used by the parent preflight.
     f.r.corrected_reference({name:{"solution_models":parent[7]["arms"]["ACT_ONLY"]["solution_models"]}
@@ -220,7 +240,7 @@ def source_evidence(parent,neg):
         hits=[i for i,line in enumerate(lines) if pattern.search(line)]
         excerpts[name]={"sha256":hgp.sha(raw),"hits":[{"line":i+1,
              "context":"\n".join(lines[max(0,i-4):i+5])} for i in hits]}
-    return {"model_blocks":models,"library_sha256":hgp.sha(library),
+    return {"model_blocks":models,"model_block_metadata":metadata,"library_sha256":hgp.sha(library),
             "source_excerpts":excerpts,"adjudication":"NOT_AUTOMATICALLY_INFERRED_FROM_SIGN_OR_SITE_SUM"}
 
 

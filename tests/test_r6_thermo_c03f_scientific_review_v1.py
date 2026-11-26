@@ -45,3 +45,30 @@ def test_elastic_printed_intervals():
 
 def test_review_archive_is_distinct():
     assert r.OUT!=r.f.OUT
+
+
+def model_fixture():
+    return (b"header\nBio(TCC)\nabbreviation bi\nphl ann\nend_of_model\n"
+            b"Chl(W)\nabbreviation chl\noch2 clin\nend_of_model\n")
+
+
+def test_model_blocks_real_parser_contract():
+    raw=model_fixture()
+    neg=[{"model":"Bio(TCC)","endmember":"phl"},
+         {"model":"Chl(W)","endmember":"och2"}]
+    models,metadata=r.extract_model_blocks(raw,neg)
+    assert models["Bio(TCC)"].startswith("Bio(TCC)\n")
+    assert metadata["Chl(W)"]["line"]==6
+    assert metadata["Bio(TCC)"]["normalized_text_sha256"]==r.hgp.sha(models["Bio(TCC)"].encode())
+
+
+@pytest.mark.parametrize("model,member",[("missing","phl"),("Bio(TCC)","missing")])
+def test_model_blocks_missing_identity(model,member):
+    with pytest.raises(ValueError,match="C03FR"):
+        r.extract_model_blocks(model_fixture(),[{"model":model,"endmember":member}])
+
+
+def test_comment_only_endmember_not_evidence():
+    raw=model_fixture().replace(b"phl ann",b"ann | phl")
+    with pytest.raises(ValueError,match="NEGATIVE_SOURCE_IDENTITY"):
+        r.extract_model_blocks(raw,[{"model":"Bio(TCC)","endmember":"phl"}])
