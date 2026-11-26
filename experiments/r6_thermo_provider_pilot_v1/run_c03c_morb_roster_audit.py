@@ -102,6 +102,36 @@ def audit_parent():
     return ready,runtime
 
 
+
+def legacy_model_blocks(raw,names):
+    """Extract ASCII structural headers from byte-pinned historical input.
+    Latin-1 is a reversible byte projection for archival display, not a claim
+    about the original linguistic encoding. Never transcode provider files.
+    """
+    lines=raw.splitlines(keepends=True)
+    result={}
+    for name in names:
+        target=name.encode("ascii")
+        hits=[i for i,line in enumerate(lines[:-1])
+              if line.split(b"|",1)[0].strip()==target
+              and lines[i+1].strip().startswith(b"abbreviation ")]
+        need(len(hits)<=1,"C03C_LEGACY_AMBIGUOUS_MODEL:"+name)
+        if not hits:
+            result[name]=None
+            continue
+        i=hits[0]
+        stop=next((j for j in range(i+1,len(lines))
+                   if lines[j].split(b"|",1)[0].strip()==b"end_of_model"),None)
+        need(stop is not None,"C03C_LEGACY_UNTERMINATED_MODEL:"+name)
+        block=b"".join(lines[i:stop+1])
+        display="\n".join(line.rstrip(b"\r\n").decode("latin-1") for line in lines[i:stop+1])+"\n"
+        result[name]={"line":i+1,"end_line":stop+1,
+            "raw_block_sha256":b.d.hgp.sha(block),
+            "normalized_text_sha256":b.d.hgp.sha(display.encode("utf-8")),
+            "text":display,"text_encoding_policy":"LATIN1_REVERSIBLE_BYTE_PROJECTION"}
+    return result
+
+
 def audit_sources(hp,main,legacy):
     need(b.d.hgp.blob(hp)==b.HP02_BLOB and b.d.hgp.blob(main)==MAIN_BLOB
         and b.d.hgp.blob(legacy)==LEGACY_BLOB,"C03C_PINNED_SOURCES")
@@ -112,7 +142,7 @@ def audit_sources(hp,main,legacy):
     for name,deps in MAKES.items():
         check_equation(equations,name,deps)
     blocks=b.model_blocks(main,tuple(VERTICES))
-    legacy_blocks=b.model_blocks(legacy,("GlTrTsPg","Stlp(M)","T","IlGkPy","B"))
+    legacy_blocks=legacy_model_blocks(legacy,("GlTrTsPg","Stlp(M)","T","IlGkPy","B"))
     need(all(v is not None for v in blocks.values()) and all(v is not None for v in legacy_blocks.values()),
         "C03C_ROSTER_BLOCK_MISSING")
     result={}
@@ -132,6 +162,7 @@ def audit_sources(hp,main,legacy):
     need(pure["water"]["composition"].strip()=="H2O(1)","C03C_WATER_IDENTITY")
     return {"main_model_git_blob":MAIN_BLOB,"legacy_model_git_blob":LEGACY_BLOB,
         "hp02_git_blob":b.HP02_BLOB,"main_models":result,"legacy_alias_blocks":legacy_blocks,
+        "legacy_source_sha256":b.d.hgp.sha(legacy),"legacy_text_policy":"BYTE_STRUCTURAL_PARSE_LATIN1_DISPLAY_ONLY",
         "pure_phase_records":pure,"mag_is_magnesite_not_magnetite":True,
         "missing_by_model":{k:v["missing"] for k,v in result.items() if v["missing"]},
         "roster_crosswalk":CROSSWALK,"full_native_parser_or_phase_pruning_verified":False}

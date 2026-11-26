@@ -1,0 +1,23 @@
+{
+  "schema": "R6_C03C_FAIR_FAILED_ATTEMPT_RECEIPT_V1",
+  "date": "2026-11-26",
+  "source_sha": "7cc8fcbed2520858f1235f36391fd2ff02ddcba8",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT",
+  "tests": {
+    "passed": 92,
+    "total": 92,
+    "wall_s": 0.69
+  },
+  "parent_replay": "PASS",
+  "parent_manifest_sha256": "5a887ca1fa9405d7d97d4b09aee6d02517fb82ad40a9704d81e22d1d07be1c38",
+  "exit": 1,
+  "error": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0x96 in position 87290: invalid start byte",
+  "failure_stage": "legacy_model_header_decode_before_output_creation",
+  "legacy_git_blob": "88de95ee57acf527bd99954835d801be45714533",
+  "manifest_sha256": null,
+  "additional_engine_runs": 0,
+  "material_assignments": 0,
+  "physical_T1": null,
+  "mechanical_solve_authorized": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}

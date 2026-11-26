@@ -37,3 +37,28 @@ def test_reference_is_not_executable():
     assert z["O2_exact_MORB_input"] is None
     assert z["source_pdf_raw_sha256"] is None
     assert z["water_boundary"]=="WATER_SATURATED_FIGURE_1A_NOT_ARCANA_CLOSED_BULK"
+
+
+def test_legacy_non_utf8_preserves_block_bytes_and_lines():
+    import hashlib
+    block=b"T | old \x96 comment\r\nabbreviation Tlc\r\nend_of_model\r\n"
+    raw=b"header \x91 text\r\n"+block+b"trailer\r\n"
+    with pytest.raises(UnicodeDecodeError):
+        raw.decode("utf-8")
+    z=c.legacy_model_blocks(raw,("T","missing"))
+    assert z["T"]["line"]==2 and z["T"]["end_line"]==4
+    assert z["T"]["raw_block_sha256"]==hashlib.sha256(block).hexdigest()
+    assert "\x96" in z["T"]["text"]
+    assert z["T"]["text_encoding_policy"]=="LATIN1_REVERSIBLE_BYTE_PROJECTION"
+    assert z["missing"] is None
+
+
+def test_legacy_duplicate_header_rejected():
+    raw=b"T\nabbreviation Tlc\nend_of_model\n"*2
+    with pytest.raises(ValueError,match="C03C_LEGACY_AMBIGUOUS_MODEL"):
+        c.legacy_model_blocks(raw,("T",))
+
+
+def test_legacy_missing_end_rejected():
+    with pytest.raises(ValueError,match="C03C_LEGACY_UNTERMINATED_MODEL"):
+        c.legacy_model_blocks(b"T\nabbreviation Tlc\n",("T",))
