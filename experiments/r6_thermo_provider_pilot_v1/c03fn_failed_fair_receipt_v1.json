@@ -1,0 +1,31 @@
+{
+  "schema": "R6_C03FN_FAILED_FAIR_RECEIPT_V1",
+  "source_sha": "f540775cbe46264e8d321cf4737f9d1624eaa22f",
+  "date": "2026-11-26",
+  "provenance": "OPERATOR_SUPPLIED_TERMINAL_TRANSCRIPT",
+  "tests": {
+    "passed": 180,
+    "total": 180,
+    "wall_s": 0.9
+  },
+  "manifest_sha256": "b3bad907125b417bfebde43af91b9829643341f78204f8effda1caa9548a7bf5",
+  "exit": 1,
+  "design_replay": "PASS",
+  "base": {
+    "models": 17,
+    "pseudocompounds": 1123,
+    "dialogue_state": "SENTINEL_SENT",
+    "dialogue_error": null,
+    "warning_counts": {
+      "114": 6,
+      "966": 1,
+      "968": 1,
+      "013": 1,
+      "099": 1
+    }
+  },
+  "failure": "C03FN_WARNING_DRIFT",
+  "wet_executed": false,
+  "requested_equilibrium_points": 0,
+  "scientific_promotion": false
+}
