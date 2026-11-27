@@ -1,3 +1,15 @@
+CURRENT — 2026-11-27 — Independently verified FAIR bundles under ARCANA_WORLD_EVIDENCE/R6:
+
+- G36R2 `R6_THERMO_G36R2_INTERFACE_METRIC_REPAIR_NEW01`: manifest `4de04df65012846fb1b6319be08085d16b8e344f4c489f5cbfb461ae46280576`, exit0, runner commit c8a2f41916b0595eabd8525d7b4ae2c4be664f07.
+- ASPECT `R6_ASPECT_RUNTIME_RECOVERY_NEW01`: `2157bac10d69c9faba1f79a922fc2cc3ad05bef47acffad0ac18ab95e059678d`, exit0, no solver.
+- G18R4 `R6_G18R4_DOCUMENTARY_CLOSURE_NEW01`: `64539bd34dee9652a163aeee8eb1676c2b0f20fadeec2a99da89a5ad6cbbb593`, exit0, no factorization.
+- G37 final `R6_G37_COLUMN_RECONSTRUCTION_NEW02`: `5b324066945358dea2eeccc404d67b583b8ce5743aabee8f7fab6da00a350794`, exit0, physical normal reaction false. NEW01 also preserved.
+- Package/provider `R6_G36R2_HANDOFF_AND_PROVIDER_INVENTORY_NEW02`: `d736c02b5115fb6ad0799245d27b894b298dd3b03d5774898eb669b3716e41fd`, 19 ZIP entries, 48/48 historical benchmark hash comparisons. Failed inventory NEW01 preserved.
+
+Final command/code/test receipt: `R6_G36R2_DEVELOPMENT_DELIVERY_NEW01` (finalized separately after code commit to avoid circular identity). Full scope/commands: `docs/arcana/R6_G36R2_FAIR_REPAIR_AND_WORLD_HISTORY_ROADMAP_20261127.md`. No scientific/canonical promotion.
+
+---
+
 CURRENT — 2026-11-27 — G36-R2 CODE READY, FAIR REPLAY PENDING. Isolated development from 96a7d5c4; SOURCE remains 901cbb4a. Local action/reaction repair only; R0/R1 unchanged. Portable 24-test suite PASS in existing FAIR conda (0.11 s). New runner retains thresholds, all four R1 cases, raw force norms/vectors, legacy metric, wrong-sign gate tests and full residual replay. No physical acceptance, mantle-state/normal-reaction authority, global solve, time advance or material assignment. Handoff ZIP and actual FAIR evidence supersede stale C10 execution instructions below. Direct FAIR access confirmed; recover existing udocker/ASPECT without reinstall.
 
 CURRENT — 2026-11-27 — **C10 CONTROLLED REGIONAL CONFIGURATION COMPLETE; AUTHORIAL RATIFICATION REQUIRED.** Development archive `R6_THERMO_C10_CONTROLLED_REGIONAL_MECHANICAL_CONFIGURATION_DEVELOPMENT_NEW01` contains 11 reports, ten candidate native input files, linked pre-solve fixture and manifest. Independent C10 archive `R6_THERMO_C10_CONTROLLED_REGIONAL_MECHANICAL_CONFIGURATION_NEW01` is reserved for the operator. C09 operator and development identities are distinct and recorded. Report and operator command in `docs/arcana/R6_THERMO_C10_CONTROLLED_REGIONAL_MECHANICAL_CONFIGURATION_20261127.md`.

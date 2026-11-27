@@ -1,0 +1,42 @@
+{
+  "schema": "ARCANA_PHYSICAL_HISTORY_EXTENSION_DESIGN_V1",
+  "status": "DESIGN_ONLY_NOT_PRODUCTION_AUTHORIZED",
+  "extends": {
+    "state": "arcana_worldsim.r6.state.DomainStateEnvelope",
+    "store": "arcana_worldsim.r6.store.HistoryStore",
+    "snapshots": "arcana_worldsim.r6.temporal.HistoricalSnapshot",
+    "external_solver_archive": "arcana_worldsim.r6.experimental_trajectory_archive.ExperimentalTrajectoryArchive"
+  },
+  "goal": {"start_age_Ma": 210, "end_age_ka": 0, "late_interval_ka": [200, 0]},
+  "domains": ["geometry_tectonics", "topography_bathymetry", "geology_lithology", "natural_resources", "climate", "hydrology", "soil", "Deep", "flora", "fauna", "populations", "settlements_civilizations"],
+  "required_physical_metadata": ["run_id", "parent_state_ids", "solver_source_build_input_sha256", "coordinate_system_frame", "units", "age_and_native_time_mapping", "simulated_resolution", "spatial_support_and_masks", "uncertainty", "method_and_authority", "event_windows", "conserved_stocks_and_fluxes", "balance_residuals", "restart_complete_checkpoint", "material_identity", "causal_dependencies"],
+  "existing_envelope_fields_to_reuse": ["domain", "time_support", "spatial_support", "support_class", "authority_class", "value", "uncertainty", "provenance_ids", "parent_state_ids", "payload_ref", "model_derived", "applicability", "conflict_flags", "event_refs", "refinement_lineage"],
+  "persistence": {
+    "strategy": "independent domain and region adaptive retention with a global causally consistent restart catalog",
+    "no_duplicate_domain_payload_when_unchanged": true,
+    "unique_information_must_be_retained": true,
+    "chunking_compression_spatiotemporal_index": "TO_BE_BENCHMARKED_AGAINST_EXISTING_STORE",
+    "snapshot_interval_is_not_numeric_timestep": true,
+    "essential_checkpoints_must_not_be_pruned": true,
+    "world_history_budget_bytes": 500000000000
+  },
+  "query": {"exact_native_records": true, "missing_time_result": "NOT_AVAILABLE", "silent_interpolation": false, "cross_domain_queries_require_consistent_dependencies": true},
+  "refinement": {
+    "separate_operation_from_exact_query": true,
+    "requires": ["parent_checkpoint", "time_interval", "region_and_support", "boundary_conditions_with_provenance", "authorized_processes", "error_budget", "dependency_closure", "resource_budget"],
+    "output": "new derived branch and checkpoint lineage; never overwrite parent or hard anchor",
+    "acceptance": ["conservation", "restart", "time_and_space_convergence", "cross_resolution_consistency", "endpoint_residuals_and_uncertainty"]
+  },
+  "anchor_bridge": {
+    "hard_anchors_ka": [200, 125, 120, 20, 15, 14, 13, 12, 11, 10, 5, 0],
+    "direction": "FORWARD_OR_ENDPOINT_CONSTRAINED_ENSEMBLE",
+    "present_to_past_inversion": false,
+    "hard_anchor_mutation": false,
+    "intermediate_authority": "DERIVED_WITH_UNCERTAINTY"
+  },
+  "canonical_guards": {"CHA_1_age_Ma": 66, "H0_Deep_OFF_baseline_preserved": true, "R3_21_lineage_preserved": true, "R3_23_ensemble_preserved": true, "Deep_energy_not_inferred_from_ASPECT_work": true},
+  "required_qualification": ["exact_query", "payload_integrity", "transaction_recovery", "causal_time_indexing", "checkpoint_replay", "cross_domain_consistency", "authorized_mesh_mapping", "multi_rank_reader_if_needed", "region_epoch_refinement", "no_synthetic_terminal_snapshot"],
+  "physical_T1": null,
+  "scientific_promotion": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+}

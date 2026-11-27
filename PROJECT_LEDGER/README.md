@@ -1,3 +1,5 @@
+Latest independently verified FAIR continuation (2026-11-27): G36-R2 repair and ASPECT recovery. Read the opening STATUS/NEXT_ACTION and docs/arcana/R6_G36R2_FAIR_REPAIR_AND_WORLD_HISTORY_ROADMAP_20261127.md. Earlier historical headers below do not override primary evidence.
+
 # ARCANA WorldSim R6 — PROJECT_LEDGER
 
 ## CURRENT — 2026-10-30 E2-C0 single-year CPU profile and oracle parity PASS
