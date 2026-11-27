@@ -1,0 +1,71 @@
+{
+  "schema": "R6_C05R_FAIR_OPERATOR_RECEIPT_V1",
+  "source_sha": "e37d68092c140455dc97213200097ce5ef407a6a",
+  "provenance": "OPERATOR_PROVIDED_FAIR_TRANSCRIPT",
+  "independent_archive_replay": "PENDING_IN_RECEIPT_REPLAY_REPORTED_SEPARATELY",
+  "import_check": "PASS",
+  "regression_passed": 223,
+  "regression_total": 223,
+  "regression_wall_s": 1.38,
+  "exit": 0,
+  "additional_engine_runs": 0,
+  "manifest_sha256": "cc854bdd67132471f87c64beeb285550fc3e48b881b40ea69c2396472e058b1a",
+  "status": "C05_SOURCE_IDENTITY_RECONCILED__REGIONAL_HYPOTHESIS_REVIEW_REQUIRED",
+  "archive": "R6_THERMO_C05_SOURCE_IDENTITY_AND_HYPOTHESIS_DESIGN_NEW01",
+  "archive_schema": "R6_C05_SOURCE_IDENTITY_AND_HYPOTHESIS_DESIGN_MANIFEST_V1",
+  "members": [
+    "REGION_8X8_HYPOTHESIS_DESIGN.json",
+    "REGION_16X16_HYPOTHESIS_DESIGN.json",
+    "SOURCE_DESIGN_LINKS.json"
+  ],
+  "summaries": {
+    "8": {
+      "crust": {
+        "columns": 81,
+        "native_exact_depth_hits": 204,
+        "additional_source_link_depth_hits": 68,
+        "combined_depth_hits": 272,
+        "all_five_any_candidate_columns": 0,
+        "same_recipe_complete_columns": 0
+      },
+      "mantle_lithosphere": {
+        "columns": 81,
+        "native_exact_depth_hits": 68,
+        "additional_source_link_depth_hits": 68,
+        "combined_depth_hits": 136,
+        "all_five_any_candidate_columns": 0,
+        "same_recipe_complete_columns": 0
+      }
+    },
+    "16": {
+      "crust": {
+        "columns": 289,
+        "native_exact_depth_hits": 480,
+        "additional_source_link_depth_hits": 160,
+        "combined_depth_hits": 640,
+        "all_five_any_candidate_columns": 0,
+        "same_recipe_complete_columns": 0
+      },
+      "mantle_lithosphere": {
+        "columns": 289,
+        "native_exact_depth_hits": 160,
+        "additional_source_link_depth_hits": 160,
+        "combined_depth_hits": 320,
+        "all_five_any_candidate_columns": 0,
+        "same_recipe_complete_columns": 0
+      }
+    }
+  },
+  "aggregate": {
+    "regional_columns": 370,
+    "layer_profiles": 740,
+    "depth_samples": 3700,
+    "native_exact": 912,
+    "additional_source_coordinate": 456,
+    "combined": 1368,
+    "unmatched": 2332,
+    "complete_any_profiles": 0,
+    "complete_same_recipe_profiles": 0,
+    "physical_material_assignments": 0
+  }
+}

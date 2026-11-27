@@ -1,0 +1,25 @@
+{
+  "schema": "R6_C06_REGIONAL_MATERIAL_HYPOTHESIS_CONTRACT_V1",
+  "epoch_ma": 210,
+  "primary_extent": 8,
+  "sensitivity_extent": 16,
+  "selection_id": null,
+  "authorial_selection_confirmed": false,
+  "material_assignments": 0,
+  "proxies": [
+    {"id": "continental_ucc", "role": "CONTINENTAL", "layer": "crust", "cases": ["C02_UCC_BASE"], "qualification": "Cold felsic unqualified. One homogeneous endmember, no stratigraphy."},
+    {"id": "continental_mcc", "role": "CONTINENTAL", "layer": "crust", "cases": ["C02_MCC_BASE"], "qualification": "Cold felsic unqualified. Alternative homogeneous endmember; no stratigraphy."},
+    {"id": "continental_lcc", "role": "CONTINENTAL", "layer": "crust", "cases": ["C01_LCC_BASE"], "qualification": "Cold felsic unqualified. Alternative homogeneous endmember; no stratigraphy."},
+    {"id": "oceanic_morb", "role": "OCEANIC", "layer": "crust", "cases": ["C01_MORB_BASE", "C01_MORB_WET"], "qualification": "Basaltic proxy only. Base versus wet bulk inventory; oxygen unchanged within the applicable comparison."},
+    {"id": "mantle_dmm", "role": "LITHOSPHERIC_MANTLE", "layer": "mantle_lithosphere", "cases": ["M01_BASE", "M01_LOW_H2O", "M01_HIGH_H2O", "M01_HIGH_FERRIC"], "qualification": "DMM research analogue. Compare hydration and ferric variants independently against base."},
+    {"id": "homogeneous_engineering", "role": "ENGINEERING_ONLY", "layer": "crust", "cases": ["C02_MCC_BASE"], "qualification": "Conditional material for a noncanonical regional sensitivity study; author must explicitly approve support including any mixed nodes. No natural geology interpretation."}
+  ],
+  "governance": {
+    "D_024": "ACTIVE",
+    "D_025": "ACTIVE",
+    "additional_engine_runs": 0,
+    "mechanical_solve_authorized": false,
+    "physical_T1": null,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false
+  }
+}
