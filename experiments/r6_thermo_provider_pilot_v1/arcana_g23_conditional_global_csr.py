@@ -34,6 +34,15 @@ TIMEOUT=1200
 MODELS=('native_diorite2','native_legacy')
 AUTH='G23_GLOBAL_CONDITIONAL_ASSEMBLY_ONLY_V1'
 
+def c10_inventory(c10):
+    # C10 uses the original {sha256, bytes} inventory schema.
+    # Later G-series archives use a different, hash-only schema.
+    inv=c10.c09.c08.c07.c06.inventory(c10.OUT)
+    a.need('MANIFEST.json' in inv,'C10_MANIFEST_INVENTORY_ENTRY')
+    inv.pop('MANIFEST.json')
+    return inv
+
+
 def entry(stock,native):
     s=a.gen_entry(stock,native)
     s=g18.patch_entry(s)
@@ -216,7 +225,9 @@ def main():
     q=c10.OUT.with_name('R6_THERMO_G22_GLOBAL_CONSTITUTIVE_SCREEN_NEW01')
     pm=c.verified(p,G19_PIN,G19_STATUS); qm=c.verified(q,G22_PIN,G22_STATUS)
     cm=a.read(c10.OUT/'MANIFEST.json')
-    a.need(a.sha(c10.OUT/'MANIFEST.json')==a.PIN and c.inventory(c10.OUT)==cm['files'],'C10_INVENTORY')
+    a.need(a.sha(c10.OUT/'MANIFEST.json')==a.PIN,'C10_MANIFEST_PIN')
+    a.need(c10_inventory(c10)==cm['files'],'C10_INVENTORY')
+    print('G23_C10_NATIVE_INVENTORY_PASS',flush=True)
     a.need(qm['G19_manifest_sha256']==G19_PIN and all(m['source_sha']==a.SHA and
         all(m[k]==v for k,v in c.SCOPE.items()) for m in (pm,qm,cm)),'PARENT_SCOPE')
     a.need(a.read(q/'G22_REPORT.json')['screen_pass'],'G22_SCREEN')
@@ -283,8 +294,10 @@ def main():
             report['screen_pass']=True
     except Exception as exc:
         report['error']={'error':repr(exc),'traceback':traceback.format_exc()}
-    for path,m,pin in ((p,pm,G19_PIN),(q,qm,G22_PIN),(c10.OUT,cm,a.PIN)):
-        a.need(c.inventory(path)==m['files'] and a.sha(path/'MANIFEST.json')==pin,'PARENT_MUTATION')
+    for path,m,pin in ((p,pm,G19_PIN),(q,qm,G22_PIN)):
+        a.need(c.inventory(path)==m['files'] and a.sha(path/'MANIFEST.json')==pin,'PARENT_MUTATION:'+path.name)
+    a.need(a.sha(c10.OUT/'MANIFEST.json')==a.PIN and c10_inventory(c10)==cm['files'],'PARENT_MUTATION:C10')
+    print('G23_C10_NATIVE_INVENTORY_POSTCHECK_PASS',flush=True)
     status='G23_CONDITIONAL_GLOBAL_CSR_ASSEMBLY_PASS__OPERATOR_AND_PHYSICAL_AUTHORITY_REQUIRED' if report['screen_pass'] else 'G23_CONDITIONAL_GLOBAL_ASSEMBLY_BLOCKED'
     report.update(status=status,limitations=[
         'Assembly-only engineering alternatives: uniform effective analogue parameters on all original numerical PRE nodes, including D12 exclusions; not material or contact admission.',
