@@ -32,7 +32,15 @@ def scan(tag,key=KEY):
             if marker not in (p/'environ').read_bytes().split(b'\0'):continue
             found.append({'pid':int(p.name),'starttime':int(fields[19]),'state':fields[0]})
         except OSError as e:
-            if e.errno not in (errno.ENOENT,errno.ESRCH):errors.append({'pid':int(p.name),'errno':e.errno})
+            if e.errno not in (errno.ENOENT,errno.ESRCH):
+                # Linux can revoke environ access during the exit transition.
+                # Recheck disappearance/zombie state; persistent live denial blocks.
+                try:
+                    now=(p/'stat').read_text();state=now[now.rfind(')')+2:].split()[0]
+                    if state in ('Z','X'):continue
+                except OSError as gone:
+                    if gone.errno in (errno.ENOENT,errno.ESRCH):continue
+                errors.append({'pid':int(p.name),'errno':e.errno})
     if errors:raise RuntimeError('UNRELIABLE_PROC_SCAN:'+json.dumps(errors))
     return found
 
