@@ -253,9 +253,11 @@ def main():
                 print('G14_ACCEPT',year,flush=True)
             else:
                 print('G14_REJECT',r['reason'],flush=True); dt/=2
-        report['screen_pass']=year==TARGET
-        if report['screen_pass']: g11.load(cur,pin)
+        if year==TARGET:
+            g11.load(cur,pin)
+            report['screen_pass']=True
     except Exception as exc:
+        report['screen_pass']=False
         report['error']={'error':repr(exc),'traceback':traceback.format_exc()}
     for key,_,pin0,_ in refs:
         a.need(c.inventory(parents[key])==manifests[key]['files'] and a.sha(parents[key]/'MANIFEST.json')==pin0,'PARENT_MUTATION:'+key)
