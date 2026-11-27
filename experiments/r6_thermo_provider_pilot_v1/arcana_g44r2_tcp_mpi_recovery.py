@@ -158,13 +158,13 @@ def launch(case,state,root,args,label,timeout,profile=None):
     initial=tagged(tag)
     recovery=cleanup(tag) if initial else {'tag':tag,'signals':[],'remaining_tagged_pids':[]}
     remaining=recovery['remaining_tagged_pids']
-    result={'exit_code':rc,'wall_s':time.monotonic()-start,'remaining_tagged_pids':remaining,
+    # A nominal successful launcher exit with forcibly cleaned children
+    # is not a clean MPI success. Persist the adjudicated and native codes.
+    result={'exit_code':125 if initial and rc==0 else rc,'launcher_exit_code':rc,
+            'wall_s':time.monotonic()-start,'remaining_tagged_pids':remaining,
             'initial_tagged_pids_after_exit':initial,'cleanup':recovery}
     write(case/(label+'_EXIT.json'),result)
     need(not remaining,'TAGGED_PROCESSES_REMAIN:'+str(remaining))
-    # A nominal successful launcher exit with forcibly cleaned children
-    # is not a clean MPI success.
-    if initial and rc==0:result['exit_code']=125
     return result
 
 def mpi(n,exe):
@@ -201,7 +201,7 @@ def probe(out,state,root,binary,profile,n,h):
         r['rank_affinity']=affinity(s,n,h)
         r['screen_pass']=r['exit_code']==0 and all(v==list(range(n)) for v in r['stage_ranks'].values())
     except Exception as e:r.update(screen_pass=False,error=repr(e))
-    write(case/'CASE_REPORT.json',r);print('G44R1_PROBE',json.dumps(r),flush=True)
+    write(case/'CASE_REPORT.json',r);print('G44R2_PROBE',json.dumps(r),flush=True)
     return r
 
 def solve(out,state,root,prm,lib,profile,n,h,baseline):
@@ -228,7 +228,7 @@ def solve(out,state,root,prm,lib,profile,n,h,baseline):
         need((case/'input.prm').read_text()==txt and sha(case/lib.name)==sha(lib),'INPUT_MUTATION')
         r['screen_pass']=True
     except Exception as e:r['error']=repr(e)
-    write(case/'CASE_REPORT.json',r);print('G44R1_ASPECT',json.dumps(r),flush=True)
+    write(case/'CASE_REPORT.json',r);print('G44R2_ASPECT',json.dumps(r),flush=True)
     return r
 
 def main():
