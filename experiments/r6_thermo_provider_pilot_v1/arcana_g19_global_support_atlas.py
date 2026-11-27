@@ -199,7 +199,13 @@ def main():
         diagnostic=p/'G17_REFERENCE_DIAGNOSTIC.json'
         if diagnostic.exists():
             d=a.read(diagnostic); report['regional_adjudication_retained']['G17_checks']=d['strict_coverage']['checks']
-            report['regional_adjudication_retained']['G17_marker_diagnostic']=d['embedded_marker_diagnostic']
+            a.write(out/'G17_REFERENCE_DIAGNOSTIC_RETAINED.json',d)
+            m=d['embedded_marker_diagnostic']
+            report['regional_adjudication_retained']['G17_marker_summary']={
+                'literal_count':m['literal_count'],'token_count':m['token_count'],
+                'parsed_marker_count':len(m['parsed_ids']),
+                'nonstandalone_lines_count':len(m['nonstandalone_lines']),
+                'screen_pass':m['screen_pass']}
         a.write(out/'REGIONAL_BLOCKER_RECEIPT.json',report['regional_adjudication_retained'])
         print('G19_REGIONAL_BLOCKER',json.dumps(report['regional_adjudication_retained']),flush=True)
         global_report=c09case.global_route(root)
