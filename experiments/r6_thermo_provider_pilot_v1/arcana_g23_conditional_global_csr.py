@@ -46,6 +46,14 @@ def c10_inventory(c10):
 def entry(stock,native):
     s=a.gen_entry(stock,native)
     s=g18.patch_entry(s)
+    # C11A preserves the C10 regional pre-Pure geometry guard. Replace
+    # that exact guard in the generated G23 source, never in frozen C10.
+    regional_guard='       if (sphere .or. numNod/=81 .or. numEl/=128 .or. nCond/=32) stop 26'
+    s=a.replace1(s,regional_guard,"""       print '(A,1X,L1,5(1X,I12))','G23_GLOBAL_GEOMETRY_CHECK',sphere,numNod,numEl,nCond,nFl,nRank
+       if (.not.sphere .or. numNod/=64442 .or. numEl/=128880 .or. nCond/=0 .or. nFl/=0) stop 93
+       if (nRank/=128884 .or. nDOF/=128884) stop 93
+       print '(A)','G23_GLOBAL_GEOMETRY_GUARD_PASS'""")
+    a.need(not re.search(r'(?im)^\\s*if\\s*\\([^\\n]*\\)\\s*stop\\s+26\\b',s),'G23_STALE_REGIONAL_GUARD')
     # The C10 source generator added a regional ReadBC guard. Remove that
     # guard and the whole actual ReadBC call, only for a closed fault-free sphere.
     start=s.index("       read(iUnitB,'(A)',iostat=ios) title2")
