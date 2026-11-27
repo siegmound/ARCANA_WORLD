@@ -400,6 +400,7 @@ def main():
             rc,log=g7.run(exe,work,env)
             fatal=work/'FatalError.txt'
             fatal_text=fatal.read_text(errors='replace') if fatal.exists() else ''
+            fatal_text+='\n'.join(p.read_text(errors='replace') for p in sorted((work/'Error').glob('FatalError_*.txt')))
             probes[key]={'exit_code':rc,'log_tail':log[-2000:],'fatal_tail':fatal_text[-2000:]}
             report['probe_progress']=probes
             if key in ('missing','bad'):
