@@ -1,0 +1,20 @@
+from pathlib import Path
+import sys
+import pytest
+sys.path.insert(0,str(Path(__file__).parents[1]/'experiments/r6_thermo_provider_pilot_v1'))
+import arcana_g44_hpc_campaign as c
+
+def test_refinement_scope():
+    raw='set Initial global refinement = 4\nset Linear solver tolerance = 1e-6\nset End time = 0\n'
+    for level in (2,3,4,5,6):
+        actual=c.candidate(raw,level)
+        assert actual.replace('refinement = '+str(level),'refinement = 4')==raw
+    with pytest.raises(RuntimeError):c.candidate(raw,7)
+
+def test_explicit_cpu_mapping():
+    a=c.cpus(64,'spread');b=c.cpus(128,'spread')
+    assert len(set(a))==64 and len(set(b))==128 and b[:64]==a
+    h=c.read(c.ROOT/'HARDWARE_BEFORE.json')
+    topology={r['cpu']:(r['socket'],r['core']) for r in h['topology']}
+    assert len({topology[i] for i in a})==64
+    assert all(topology[b[i]]==topology[b[i+64]] for i in range(64))

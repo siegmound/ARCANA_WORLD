@@ -1,3 +1,7 @@
+CURRENT — 2026-11-28 — G44 full HPC campaign IN PROGRESS, architecture A_FULL_MANTLE_ADAPTIVE. Conda Python lacks pidfd APIs; system Python supports tested pidfds. New isolated supervisor preserves scientific interpreter, safe exact-token cleanup and sampled aggregate PSS/RSS. Six pinned parents verified, historic legacy tag has no live process. TCP ASPECT 2/4 and subsequent scaling pending. No physical ARCANA solve or history advance authorized. Earlier entries are historical.
+
+---
+
 CURRENT — 2026-11-27 — G36-R2 FAIR ALGEBRA PASS; ASPECT RECOVERED; G18 DOCUMENTARY CLOSED; G37 COLUMN PROVENANCE PASS. Direct FAIR execution, not operator-only claims. Four cases pass; action/reaction 0, legacy 1; 116 R1 replay checks exact. 41 focused tests PASS. G36/R1, source 901cbb4a and parent evidence unchanged. Existing ASPECT 3.2.0-pre / 30eb77ee5 DEBUG+OPTIMIZED version probes exit0, no install/solve; 48 historical checksum comparisons PASS. G18R4 validates G17/G18 258 and G31 264 iterations from retained artifacts, original historical failures preserved. Independent G37 902160-IP column integration reproduces anomaly at 2.8625e-14; normal-reaction physical authority still absent. Full report: `docs/arcana/R6_G36R2_FAIR_REPAIR_AND_WORLD_HISTORY_ROADMAP_20261127.md`. Scope: physical_T1=null, physical_acceptance=false, global_solve_authorized=false, WORLD_HISTORY_PRODUCTION_AUTHORIZED=false; no new material assignment or physical time advance. Earlier CURRENT blocks below are historical.
 
 ---

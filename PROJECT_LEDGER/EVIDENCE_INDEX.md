@@ -1,3 +1,7 @@
+CURRENT — 2026-11-28 — R6_G44_HPC_FULL_MANTLE_20261128_NEW01 contains original handoff, six-parent preflight, runtime/hardware identity and legacy cleanup no-op; campaign not yet sealed. SOURCE 901cbb4a and historical runtime protected.
+
+---
+
 CURRENT — 2026-11-27 — Independently verified FAIR bundles under ARCANA_WORLD_EVIDENCE/R6:
 
 - G36R2 `R6_THERMO_G36R2_INTERFACE_METRIC_REPAIR_NEW01`: manifest `4de04df65012846fb1b6319be08085d16b8e344f4c489f5cbfb461ae46280576`, exit0, runner commit c8a2f41916b0595eabd8525d7b4ae2c4be664f07.
