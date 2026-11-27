@@ -140,7 +140,7 @@ exec "$@"
     if probe:
         binary=EV/PINNED[-1][0]/'probe_build/mpi_probe';shutil.copyfile(binary,case/'mpi_probe');exe=['/tmp/mpi_probe',str(n)]
     else:
-        (case/'input.prm').write_text(candidate(prm.read_text(),level,visualization));shutil.copyfile(lib,case/'libhollow_sphere.so')
+        (case/'input.prm').write_text(candidate(prm.read_text(),level,visualization));shutil.copyfile(lib,case/lib.name)
         exe=['/home/dealii/aspect/bin/aspect-release','input.prm']
     env={'HOME':'/home/dealii','USER':'dealii','PATH':'/usr/bin:/bin','TMPDIR':'/tmp','HWLOC_HIDE_ERRORS':'2',
         'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','MKL_NUM_THREADS':'1','PYTHONDONTWRITEBYTECODE':'1',
@@ -170,7 +170,7 @@ exec "$@"
             need(row['execution']['exit_code']==0 and all(v==list(range(n)) for v in stages.values()),'PROBE_STAGES')
             row.update(stage_ranks=stages,screen_pass=True)
         else:row.update(parse_case(case,n,level,selected,selected,baseline))
-        if not probe:need(sha(case/'libhollow_sphere.so')==sha(lib) and (case/'input.prm').read_text()==candidate(prm.read_text(),level,visualization),'INPUT_MUTATION')
+        if not probe:need(sha(case/lib.name)==sha(lib) and (case/'input.prm').read_text()==candidate(prm.read_text(),level,visualization),'INPUT_MUTATION')
     except Exception as e:row.update(error=repr(e),traceback=traceback.format_exc())
     (case/'HOST_AFTER.txt').write_text(Path('/proc/loadavg').read_text()+Path('/proc/meminfo').read_text())
     source_check();write(case/'CASE_REPORT.json',row)

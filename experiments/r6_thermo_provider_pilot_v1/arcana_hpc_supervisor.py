@@ -109,7 +109,7 @@ def metrics(rows):
             d={**row,**vals,'cpu_s':(int(parts[11])+int(parts[12]))/os.sysconf('SC_CLK_TCK'),
                'read_bytes':io.get('read_bytes',0),'write_bytes':io.get('write_bytes',0),
                'cpu_allowed':re.search(r'^Cpus_allowed_list:\s*(.+)$',status,re.M)[1],
-               'numa_resident_pages':pages,'role':'rank' if '/bin/aspect-release' in cmd else 'launcher_or_trace'}
+               'numa_resident_pages':pages,'role':'rank' if Path(os.readlink(p/'exe')).name=='aspect-release' else 'launcher_or_trace'}
             details.append(d);rss+=vals.get('Rss',0);pss+=vals.get('Pss',0);swap+=vals.get('Swap',0)
             readb+=d['read_bytes'];writeb+=d['write_bytes'];cpu+=d['cpu_s']
         except OSError as e:
