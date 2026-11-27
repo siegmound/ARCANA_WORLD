@@ -53,7 +53,7 @@ def entry(stock,native):
        if (.not.sphere .or. numNod/=64442 .or. numEl/=128880 .or. nCond/=0 .or. nFl/=0) stop 93
        if (nRank/=128884 .or. nDOF/=128884) stop 93
        print '(A)','G23_GLOBAL_GEOMETRY_GUARD_PASS'""")
-    a.need(not re.search(r'(?im)^\\s*if\\s*\\([^\\n]*\\)\\s*stop\\s+26\\b',s),'G23_STALE_REGIONAL_GUARD')
+    a.need(regional_guard not in s,'G23_STALE_REGIONAL_GUARD')
     # The C10 source generator added a regional ReadBC guard. Remove that
     # guard and the whole actual ReadBC call, only for a closed fault-free sphere.
     start=s.index("       read(iUnitB,'(A)',iostat=ios) title2")
