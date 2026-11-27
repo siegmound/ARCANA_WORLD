@@ -123,10 +123,11 @@ def material_moments(coeff,rho,alpha,cp):
     return analytic,numeric,tracer
 
 def initial(package,mapped,pretext,state,manifest):
-    from arcana_worldsim.r6.pre_orbdata_runtime_package import FIELDS, MODE, SCHEMA as PRE_SCHEMA
+    from arcana_worldsim.r6.pre_orbdata_runtime_package import FIELDS
+    from experiments.shellset_regional_explore_v1.build_case import MARKER, SCHEMA as PRE_SCHEMA
     from arcana_worldsim.r6.shellset_mesh.coordinates import rotation_matrices
     lines=pretext.splitlines()
-    a.need(lines[0].split()==[MODE,PRE_SCHEMA,'81'] and len(lines)==82,'PRE_HEADER')
+    a.need(lines[0].split()==[MARKER,PRE_SCHEMA,'81'] and len(lines)==82,'PRE_HEADER')
     rows=[]
     for i,line in enumerate(lines[1:],1):
         fields=line.split()
@@ -243,6 +244,33 @@ def advance(s,years):
                 area_m2=new.tolist(),thickness_m=newh.tolist())
     return result,report
 
+def owner_budgets(s):
+    from arcana_worldsim.r6.pre_orbdata_runtime_package import FIELDS
+    t=np.asarray(s['transport_triangles_zero_based'])
+    area=np.asarray(s['area_m2'])
+    h=np.asarray(s['thickness_m'])
+    coeff=np.asarray(s['normalized_depth_temperature_coefficients_K'])
+    rho=np.asarray(s['rho_reference_kg_m3']); alpha=np.asarray(s['alpha_K_inverse']); cp=np.asarray(s['cp_J_kg_K'])
+    _,density,_=material_moments(coeff,rho,alpha,cp)
+    observed=area[:,None,None]/3*h*density
+    rows=[dict(zip(FIELDS,x,strict=True)) for x in s['original_PRE_rows_tokens']]
+    before=np.asarray(s['layer_mass_kg'])
+    groups=defaultdict(lambda:[0.,0.])
+    for i,tri in enumerate(t):
+        for j,n in enumerate(tri):
+            row=rows[n]
+            for k,role in enumerate(('crust','mantle')):
+                key=(int(float(row['owner_row'])),int(float(row['owner_column'])),
+                     int(float(row['owner_domain_id'])),role,
+                     int(float(row[role+'_material_code'])))
+                groups[key][0]+=float(before[i,j,k])
+                groups[key][1]+=float(observed[i,j,k])
+    return [{'source_owner_row':k[0],'source_owner_column':k[1],'source_domain_id':k[2],
+             'layer':k[3],'reference_material_code':k[4],
+             'initial_mass_kg':v[0],'reintegrated_mass_kg':v[1],
+             'relative_mass_error':abs(v[1]-v[0])/v[0]}
+            for k,v in sorted(groups.items())]
+
 def selftest():
     p=np.array([[1.,0,0],[1,.01,0],[1,0,.01]])
     p/=np.linalg.norm(p,axis=1)[:,None]
@@ -329,13 +357,18 @@ def main():
     identities=all(one[k]==s[k]==two[k] for k in ('node_parent_ids','element_parent_ids',
         'transport_triangles_zero_based','original_PRE_rows_tokens','layer_mass_kg',
         'normalized_depth_temperature_coefficients_K','passive_sensible_heat_tracer_J'))
-    success=all(x['screen_pass'] for x in (rep1,reph,rep2)) and result.returncode==0 and exact and identities and \
+    budgets=owner_budgets(one)
+    budget_error=max(x['relative_mass_error'] for x in budgets)
+    a.write(out/'OWNER_LAYER_MASS_BUDGETS.json',{'owner_layer_group_count':len(budgets),
+        'max_relative_mass_error':budget_error,'groups':budgets})
+    success=budget_error<=TOL['mass_relative'] and all(x['screen_pass'] for x in (rep1,reph,rep2)) and result.returncode==0 and exact and identities and \
         position<=TOL['halfstep_position_m'] and thickness<=TOL['halfstep_thickness_relative']
     status='G4_CONTROLLED_MOVING_COLUMN_TRANSPORT_PASS__PHYSICAL_ACCEPTANCE_PENDING' if success else 'G4_CONTROLLED_TRANSPORT_BLOCKED'
     report={'status':status,'screen_pass':success,'one_year':rep1,'first_half':reph,'second_half':rep2,
         'separate_process_restart_exact':exact,'restart_exit':result.returncode,'parent_and_material_identity_preserved':identities,
         'one_vs_two_half_max_position_difference_m':position,'one_vs_two_half_relative_thickness_difference':thickness,
-        'tolerances':TOL,'additional_native_solves':0,'physical_acceptance':False,
+        'tolerances':TOL,'owner_layer_group_count':len(budgets),'max_owner_layer_relative_mass_error':budget_error,
+        'additional_native_solves':0,'physical_acceptance':False,
         'limitations':['Moving material control volume, not fixed geographic patch; natural exterior flux unresolved.',
             'Three equal-area corner parcels per triangle, thin-shell column mass; no deep spherical volume correction.',
             'Temperature carried as passive normalized-depth profile; no thermal PDE, pressure re-equilibration or rheology update.',
