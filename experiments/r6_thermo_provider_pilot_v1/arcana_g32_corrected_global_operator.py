@@ -146,7 +146,7 @@ def main():
     before=[fn(x) for x,fn in parents]
     need(before[1]['G23_manifest_sha256']==g25.PINS[0] and before[3]['G28_manifest_sha256']==g29.PIN
          and before[4]['G30_manifest_sha256']==P30,'LINEAGE')
-    need(read(h/'G24_REPORT.json')['screen_pass'] and read(s/'G31_REPORT.json')['screen_pass'],'PARENT_SCREEN')
+    need(read(h/'G24_REPORT.json')['spectrum']['positive_complement_screen'] and read(s/'G31_REPORT.json')['screen_pass'],'PARENT_SCREEN')
     need(not out.exists() and not any(out.is_relative_to(x) for x in (root,p,h,q,r,s)),'OUTPUT')
     out.mkdir()
     report={'source_sha':SOURCE,'G23_manifest_sha256':g25.PINS[0],'G24_manifest_sha256':g25.PINS[1],
