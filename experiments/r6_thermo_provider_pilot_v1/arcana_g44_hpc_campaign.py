@@ -97,6 +97,10 @@ def candidate(text,level,visualization=True):
     if not visualization:text=text.replace('visualization, velocity statistics','velocity statistics')
     return text
 
+def numeric_or_text(value):
+    try:return float(value)
+    except ValueError:return value
+
 def parse_case(case,n,level,selected,expected_cpus,baseline):
     s=(case/'STDOUT.txt').read_text();exit=read(case/'RUN_EXIT.json')
     need(exit['exit_code']==0 and not exit['remaining'],'NATIVE_EXIT_OR_LEFTOVERS')
@@ -123,7 +127,7 @@ def parse_case(case,n,level,selected,expected_cpus,baseline):
        'aspect_wall_s':float(total[1])*{'ms':.001,'s':1.,'h':3600.}[total[2]],'section_times_s':timings,
        'stokes_iterations':re.findall(r'Solving Stokes system \(GMG\)\.\.\.\s*([^\n]+)',s),
        'nonlinear_residuals':[float(x) for x in re.findall(r'after nonlinear iteration \d+:\s*([\d.e+-]+)',s)],
-       'statistics':{k:float(statrow[i]) for i,k in cols.items()},'screen_pass':True}
+       'statistics':{k:numeric_or_text(statrow[i]) for i,k in cols.items()},'screen_pass':True}
 
 def execute(name,n,level,profile='tcp',layout='spread',probe=False,baseline=None,timeout=240,visualization=True):
     source_check();case=ROOT/name;case.mkdir();(case/'output').mkdir()

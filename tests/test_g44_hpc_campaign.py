@@ -18,3 +18,7 @@ def test_explicit_cpu_mapping():
     topology={r['cpu']:(r['socket'],r['core']) for r in h['topology']}
     assert len({topology[i] for i in a})==64
     assert all(topology[b[i]]==topology[b[i+64]] for i in range(64))
+
+def test_mixed_native_statistics():
+    assert c.numeric_or_text('4.2e-6')==4.2e-6
+    assert c.numeric_or_text('output/solution/solution-00000')=='output/solution/solution-00000'
