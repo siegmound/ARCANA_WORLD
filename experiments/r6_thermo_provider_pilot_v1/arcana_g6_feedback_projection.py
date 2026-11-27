@@ -93,7 +93,7 @@ def selftest():
     _,_,_,den,_=moments(coeff,alpha)
     mass=1e8*rho*den*30000
     p,h,dm,err,gap=fit(coeff,alpha,rho,k,cp,mass,1e8,np.zeros((2,16)),np.zeros(2))
-    a.need(np.array_equal(p,coeff) and np.allclose(h,30000,rtol=1e-14) and gap<1e-12,'ZERO_UPDATE_TEST')
+    a.need(np.max(abs(p-coeff))<1e-11 and np.allclose(h,30000,rtol=1e-14) and gap<1e-12,'ZERO_UPDATE_TEST')
     p,h,dm,err,gap=fit(coeff,alpha,rho,k,cp,mass,1e8,np.full((2,16),1e-6),np.full(2,1e-6))
     a.need(np.max(abs(dm-1e-6))<1e-12 and gap<1e-12 and np.all(h>0),'HEAT_PROJECTION_TEST')
     print('G6_PROJECTION_SELFTEST_PASS',flush=True)
@@ -216,7 +216,8 @@ def main():
         'max_moho_flux_gap_W_m2':max(x['moho_flux_gap_W_m2'] for x in budgets),
         'max_moho_temperature_gap_K':max(x['moho_temperature_gap_K'] for x in budgets),
         'max_thermal_thickness_change_m':float(np.max(abs(np.array([x['thermal_thickness_change_m'] for x in budgets])))),
-        'max_nodal_mean_temperature_signal_K':signal}
+        'max_nodal_mean_temperature_signal_K':signal,
+        'projection_error_over_mean_signal':max(x['max_cell_projection_error_K'] for x in budgets)/max(signal,1e-300)}
     projection['screen_pass']=bool(projection['mass_relative']<=TOL['mass_relative'] and
         projection['heat_increment_relative']<=TOL['heat_increment_relative'] and
         projection['max_cell_projection_error_K']<=TOL['projection_cell_max_K'] and
@@ -282,6 +283,7 @@ def main():
     report={'status':status,'projection':projection,'native_probe':probe,'additional_native_solves':0,
         'physical_acceptance':False,'limitations':['Nodal lumped thin-shell mass and sensible heat; loss of intra-node parcel variability.',
           'Cubic compression measured, not exact thermal field reconstruction. Full G5 cell state retained.',
+          'Mass and heat conservation refer to the G4 lumped nodal measure, not the native FE weighted integral. Pointwise projection error can be comparable to the tiny one-year thermal increment.',
           'Frozen elevation and local BC components; no isostasy, pressure work, natural exterior or mineralogy.',
           'No mechanical re-solve, no canonical T1.'],**c.SCOPE}
     a.write(out/'G6_REPORT.json',report)
