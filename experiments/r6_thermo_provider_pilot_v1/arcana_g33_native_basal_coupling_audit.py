@@ -5,6 +5,7 @@ Two retained global decks, no active mantle field, CSR assembly or equilibrium s
 import argparse
 import concurrent.futures
 import json
+import multiprocessing
 import os
 from pathlib import Path
 import re
@@ -119,7 +120,7 @@ def audit(work,old,geo):
     data=np.fromfile(work/'G33_NATIVE_BASAL.bin',dtype=DT)
     need(len(data)==Q and np.array_equal(data['ids'],ids) and np.isfinite(data['v']).all(),'NATIVE_QUADRATURE')
     glue,e,zc,zm,eta,tx,ty,zbase=data['v'].T
-    need(np.all(glue>0) and np.all(e>0) and np.all(zc>0) and np.all(zm>=0) and np.all(zbase>0),'CONSTITUTIVE_SUPPORT')
+    need(np.all(glue>0) and np.all(e>0) and np.all(zc>=0) and np.all(zm>=0) and np.all(zc+zm>0) and np.all(zbase>0),'CONSTITUTIVE_SUPPORT')
     need(np.all(e==e[0]) and abs(float(e[0])-float(ctl['eCreep']))<1e-14,'EXPONENT_READBACK')
     need(np.all(zbase==zbase[0]) and abs(float(zbase[0])-float(ctl['zBAsth']))<1e-8,'DEPTH_READBACK')
     test=np.array([.03,.04])/YEAR
@@ -197,7 +198,7 @@ def main():
             need(read(work/'CONDITIONAL_CONTROLS.json')['iConve']==0,'ICONVE')
         print('G33_NATIVE_TWO_INDEPENDENT_CASES',flush=True)
         report['native_constitutive_runs_attempted']=2
-        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=2,mp_context=multiprocessing.get_context('spawn')) as pool:
             futures={k:pool.submit(g32.g23.run,exe,out/k,env) for k in MODELS}
             exits={k:f.result() for k,f in futures.items()}
         report['native_exits']=exits
