@@ -28,6 +28,7 @@ def test_timeout_and_detached_child(tmp_path):
     code='import subprocess,time; subprocess.Popen(["/usr/bin/python3","-c","import time;time.sleep(60)"],start_new_session=True); time.sleep(60)'
     r=run_job(tmp_path,code,.4)
     assert r['exit_code']==124 and r['cleanup']['signals'] and not r['remaining']
+    assert r['retained_pidfd_count']>=2 and 'first reliable observation' in r['pidfd_lifetime']
 
 def test_orphan_is_not_false_success(tmp_path):
     code='import subprocess; subprocess.Popen(["/usr/bin/python3","-c","import time;time.sleep(60)"],start_new_session=True)'
@@ -64,3 +65,24 @@ def test_transient_access_denial_is_retried(monkeypatch):
         return b'owned'
     assert m.proc_read(read)==b'owned' and len(calls)==4
     with pytest.raises(PermissionError):m.proc_read(lambda: (_ for _ in ()).throw(PermissionError('persistent')))
+
+
+def test_wrong_starttime_or_tag_never_acquires_ownership():
+    code='''
+import importlib.util, os, pathlib, subprocess
+spec=importlib.util.spec_from_file_location('s',__import__('sys').argv[1])
+s=importlib.util.module_from_spec(spec);spec.loader.exec_module(s)
+tag='c'*64
+p=subprocess.Popen(['/usr/bin/python3','-c','import time;time.sleep(20)'],env={**os.environ,s.KEY:tag})
+try:
+ raw=pathlib.Path('/proc',str(p.pid),'stat').read_text()
+ start=int(raw[raw.rfind(')')+2:].split()[19])
+ assert s.open_owned({'pid':p.pid,'starttime':start+1},tag) is None
+ assert s.open_owned({'pid':p.pid,'starttime':start},'d'*64) is None
+ fd=s.held_fd({'pid':p.pid,'starttime':start},tag)
+ assert fd is not None and s.held_fd({'pid':p.pid,'starttime':start},tag)==fd
+ assert p.poll() is None
+finally:
+ s.close_held();p.terminate();p.wait()
+'''
+    subprocess.run([SYSTEM,'-c',code,str(SCRIPT)],check=True,timeout=20)

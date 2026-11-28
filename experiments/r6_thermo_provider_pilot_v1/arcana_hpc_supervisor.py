@@ -16,6 +16,7 @@ import time
 KEY='ARCANA_HPC_JOB'
 SCAN_FLOOR_TICKS=0
 DESCENDANT_ROOT=None
+HELD_PIDFDS={}
 
 def write(p,d):
     with p.open('x') as f:json.dump(d,f,indent=2,sort_keys=True);f.write('\n')
@@ -73,12 +74,31 @@ def open_owned(row,tag,key=KEY):
     # after opening before any signal; a raced new process is never signalled.
     fd=os.pidfd_open(row['pid'])
     try:
-        again=next((x for x in scan(tag,key) if x['pid']==row['pid']),None)
-        if again is None or again['starttime']!=row['starttime']:
+        p=Path('/proc')/str(row['pid'])
+        raw=proc_read((p/'stat').read_text);fields=raw[raw.rfind(')')+2:].split()
+        owned=(p.stat().st_uid==os.getuid() and int(fields[19])==row['starttime']
+               and fields[0] not in ('Z','X')
+               and (key+'='+tag).encode() in proc_read((p/'environ').read_bytes).split(b'\0'))
+        if not owned:
             os.close(fd);return None
         return fd
+    except OSError as e:
+        os.close(fd)
+        if e.errno in (errno.ENOENT,errno.ESRCH):return None
+        raise
     except BaseException:
         os.close(fd);raise
+
+def held_fd(row,tag,key=KEY):
+    identity=(row['pid'],row['starttime'],key,tag)
+    if identity not in HELD_PIDFDS:
+        fd=open_owned(row,tag,key)
+        if fd is not None:HELD_PIDFDS[identity]=fd
+    return HELD_PIDFDS.get(identity)
+
+def close_held():
+    for fd in HELD_PIDFDS.values():os.close(fd)
+    HELD_PIDFDS.clear()
 
 def capability():
     result={'python':os.sys.executable,'pidfd_open':hasattr(os,'pidfd_open'),
@@ -95,14 +115,13 @@ def cleanup(tag,key=KEY,grace=3.):
     events=[]
     for sig in (signal.SIGTERM,signal.SIGKILL):
         for row in scan(tag,key):
-            try:fd=open_owned(row,tag,key)
+            try:fd=held_fd(row,tag,key)
             except ProcessLookupError:continue
             if fd is None:continue
             try:
                 signal.pidfd_send_signal(fd,sig)
                 events.append({**row,'signal':sig.name})
             except ProcessLookupError:pass
-            finally:os.close(fd)
         until=time.monotonic()+grace
         while scan(tag,key) and time.monotonic()<until:time.sleep(.05)
         if not scan(tag,key):break
@@ -160,7 +179,12 @@ def run(config):
         proc=subprocess.Popen(['/usr/bin/time','-v','-o',str(case/'TIME.txt'),*config['argv']],
                     cwd=case,env=env,stdout=so,stderr=se,start_new_session=True)
         while True:
-            rc=proc.poll();rows=scan(tag);m=metrics(rows)
+            rc=proc.poll();rows=scan(tag)
+            for row in rows:
+                try:held_fd(row,tag)
+                except ProcessLookupError:continue
+                except FileNotFoundError:continue
+            m=metrics(rows)
             m['elapsed_s']=time.monotonic()-start;samples.write(json.dumps(m)+'\n');samples.flush();sample_count+=1
             peak_rss=max(peak_rss,m['rss_bytes']);peak_pss=max(peak_pss,m['pss_bytes']);peak_swap=max(peak_swap,m['swap_bytes'])
             for d in m['processes']:
@@ -193,6 +217,8 @@ def run(config):
             'peak_aggregate_swap_observed_bytes':peak_swap,'per_process_peak_pss_samples':peak_by_pid,
             'memory_metric':'sampled PSS sum, not a cgroup limit; short peaks may be missed; RSS double-counts shared pages',
             'supervisor_capability':capability()}
+    result['retained_pidfd_count']=len(HELD_PIDFDS)
+    result['pidfd_lifetime']='first reliable observation through final cleanup; descriptors closed at supervisor exit'
     write(case/'RUN_EXIT.json',result)
     if remaining:raise RuntimeError('JOB_REMAINS_LIVE')
     return result
@@ -215,4 +241,6 @@ def main():
         result=cleanup(a.cleanup_tag,a.key)
         if a.output:write(a.output,result)
     print(json.dumps(result));return 0 if not result.get('remaining') else 2
-if __name__=='__main__':raise SystemExit(main())
+if __name__=='__main__':
+    try:raise SystemExit(main())
+    finally:close_held()
