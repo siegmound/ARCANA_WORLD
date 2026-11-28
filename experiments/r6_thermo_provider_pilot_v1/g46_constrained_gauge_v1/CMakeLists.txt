@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.13.4)
+find_package(Aspect 2.4.0 REQUIRED HINTS /home/dealii/aspect)
+DEAL_II_INITIALIZE_CACHED_VARIABLES()
+project(arcana_g46)
+add_library(arcana_g46 SHARED arcana_g46.cc)
+ASPECT_SETUP_PLUGIN(arcana_g46)
