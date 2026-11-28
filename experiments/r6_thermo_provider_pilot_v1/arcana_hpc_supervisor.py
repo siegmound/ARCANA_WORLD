@@ -15,6 +15,7 @@ import time
 
 KEY='ARCANA_HPC_JOB'
 SCAN_FLOOR_TICKS=0
+DESCENDANT_ROOT=None
 
 def write(p,d):
     with p.open('x') as f:json.dump(d,f,indent=2,sort_keys=True);f.write('\n')
@@ -22,8 +23,23 @@ def write(p,d):
 def scan(tag,key=KEY):
     if not re.fullmatch(r'[a-f0-9]{64}',tag):raise ValueError('INVALID_JOB_TOKEN')
     marker=(key+'='+tag).encode();found=[];errors=[]
+    parent_map={}
+    if DESCENDANT_ROOT is not None:
+        for item in Path('/proc').iterdir():
+            if not item.name.isdigit():continue
+            try:
+                raw=(item/'stat').read_text();fields=raw[raw.rfind(')')+2:].split()
+                parent_map[int(item.name)]=int(fields[1])
+            except OSError:continue
+    def in_job(pid):
+        if DESCENDANT_ROOT is None:return True
+        seen=set()
+        while pid>1 and pid not in seen:
+            if pid==DESCENDANT_ROOT:return True
+            seen.add(pid);pid=parent_map.get(pid,0)
+        return False
     for p in Path('/proc').iterdir():
-        if not p.name.isdigit():continue
+        if not p.name.isdigit() or not in_job(int(p.name)):continue
         try:
             if p.stat().st_uid!=os.getuid():continue
             text=(p/'stat').read_text();fields=text[text.rfind(')')+2:].split()
@@ -119,7 +135,8 @@ def metrics(rows):
             'read_bytes':readb,'write_bytes':writeb,'processes':details}
 
 def run(config):
-    global SCAN_FLOOR_TICKS
+    global SCAN_FLOOR_TICKS,DESCENDANT_ROOT
+    DESCENDANT_ROOT=os.getpid()
     case=Path(config['case']);tag=config['tag']
     # Tokens are assigned to children launched after this dedicated supervisor.
     st=Path('/proc/self/stat').read_text();SCAN_FLOOR_TICKS=int(st[st.rfind(')')+2:].split()[19])

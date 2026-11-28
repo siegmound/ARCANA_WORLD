@@ -22,7 +22,8 @@ def main():
         case('tcp_probe_p4',4,2,probe=True,timeout=45)
         b2=c.read(c.EV/'R6_G38_ASPECT_HOLLOW_SPHERE_NEW01/level_2/CASE_REPORT.json')
         case('tcp_aspect_l2_p4',4,2,baseline=b2,timeout=120)
-        c.write(root/'G44R3_RECOVERY_GATE.json',{'screen_pass':True,'ranks':[2,4],'historical_failures_preserved':True,**c.SCOPE})
+        if not (root/'G44R3_RECOVERY_GATE.json').exists():
+            c.write(root/'G44R3_RECOVERY_GATE.json',{'screen_pass':True,'ranks':[2,4],'historical_failures_preserved':True,**c.SCOPE})
         b3=None
         for n in (1,2,4,8):
             row=case(f'tcp_l3_p{n}_spread_r1',n,3,baseline=b3)
