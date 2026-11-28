@@ -142,6 +142,9 @@ def evaluate(case,step=0):
             tang=tr[m]-np.sum(tr[m]*normal[m],axis=1)[:,None]*normal[m]
             reactions[name]['sides'][label]={'area':area_value,'force':(w[m]@tr[m]).tolist(),'moment':(w[m]@np.cross(x[m],tr[m])).tolist(),'work':float(w[m]@np.sum(tr[m]*u[m],axis=1)),
                 'tangential_traction_rms':float(np.sqrt(w[m]@np.sum(tang*tang,axis=1)/area_value))}
+    for label in ('hydro_reference','dynamic'):
+        reactions[label]['force_balance_relative']=None;reactions[label]['moment_balance_relative']=None
+        reactions[label]['split_scope']='traction decomposition only; total-body balance is not a separate split balance'
     equilibrium_pass=(reactions['constrained']['force_balance_relative']<T['force_absolute_load_scaled'] and reactions['constrained']['moment_balance_relative']<T['moment_absolute_load_length_scaled'])
     mesh=sorted((k,[float(v) for v in np.round(row[:26],12)]) for k,row in zip(data['cellkeys'],cells))
     field_order=sorted(range(N),key=stable.get);field_payload={'keys':[stable[j] for j in field_order],'values':d[field_order][:,[5,6,7,9,13,15]].tolist()}
@@ -157,5 +160,5 @@ def datum(base,shifted):
     def ordered(d):return sorted(zip(d['facekeys'],d['faces']),key=lambda x:(x[0],x[1][0],x[1][1]))
     oa,ob=ordered(a),ordered(b);require([k for k,v in oa]==[k for k,v in ob],'DATUM_MESH')
     fa=np.array([v for k,v in oa]);fb=np.array([v for k,v in ob]);require(np.allclose(fa[:,:10],fb[:,:10],rtol=0,atol=1e-12),'DATUM_FACE_IDENTITY')
-    error=relative(fb[:,22:25]-fa[:,22:25],-10*fa[:,7:10]);velocity=relative(fb[:,10:13],fa[:,10:13]);require(error<T['datum_relative_projected_minus10n'] and velocity<T['same_mesh_rank_relative'],'DATUM_GAUGE_SHIFT')
-    return {'screen_pass':True,'datum_minus10n_relative':error,'velocity_relative':velocity}
+    error=relative(fb[:,22:25]-fa[:,22:25],-10*fa[:,7:10]);velocity=relative(fb[:,10:13],fa[:,10:13]);dissipation=abs(b['cells'][:,27].sum()/a['cells'][:,27].sum()-1);require(error<T['datum_relative_projected_minus10n'] and velocity<T['same_mesh_rank_relative'] and dissipation<T['same_mesh_rank_relative'],'DATUM_GAUGE_SHIFT')
+    return {'screen_pass':True,'datum_minus10n_relative':error,'velocity_relative':velocity,'dissipation_relative':float(dissipation)}
