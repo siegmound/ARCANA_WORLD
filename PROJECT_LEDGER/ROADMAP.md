@@ -10,3 +10,5 @@
 6. D-024 minimo sottosistema fisicamente chiuso→Physical T1→WORLD_HISTORY 210 Ma→0 ka (ultimi 200 ka), risorse/Deep, clima/acqua/suoli, flora/fauna, popolazioni/civiltà. HistoryStore causale con query/raffinamento regione-epoca-processo,12 anchor/CHA-1/H0,budget 500 GB. Nessun gate universale di tutti i tool.
 
 A_FULL_MANTLE_ADAPTIVE; D-024/D-025 ACTIVE; physical_T1=null; scientific_promotion=false; physical_acceptance=false; mantle_initial_state_admitted=false; mantle_provider_qualified=false; global_solve_authorized=false; WORLD_HISTORY_PRODUCTION_AUTHORIZED=false; material_assignments=0; ARCANA_solves=0; additional_time_advance_years=0.
+
+G46 authorized: gauge/datum diagnosis and bounded native synthetic restart; executable G15 proposal and source/author T0 decision matrix. Existing G45 blockers remain until new scoped evidence.

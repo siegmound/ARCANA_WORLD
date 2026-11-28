@@ -1,0 +1,163 @@
+{
+  "authority": "explicit user G46 prompt incl positive synthetic restart time, maximum two accepted physical-time steps per lineage; no ARCANA physics",
+  "budgets": {
+    "case_timeout_s": 600,
+    "compile_jobs": 1,
+    "compile_timeout_s": 600,
+    "host_reserve": "max(64GiB,25% initial MemAvailable)",
+    "job_swap_abort_MiB": 64,
+    "max_ranks": 8,
+    "native_case_budget": 28,
+    "no_G44_scaling": true,
+    "offline_sparse_GiB": 8,
+    "offline_timeout_s": 600,
+    "sample_interval_s": 0.5,
+    "sampled_PSS_GiB": 16
+  },
+  "fail_policy": "preserve every failed artifact; gate dependent extensions NOT_RUN; independent datum/restart/G15-design continue; quotient-space diagnostics never satisfy full velocity criterion",
+  "id": "G46_CONSTRAINED_GAUGE_DATUM_RESTART_V1",
+  "negative_datum": [
+    "wrong_sign",
+    "nonconstant_shift",
+    "dropped_face",
+    "mismatched_quadrature"
+  ],
+  "negative_gauge": [
+    "unconstrained_rigid_candidate",
+    "incompatible_forcing",
+    "broken_C_H",
+    "non_null_gauge",
+    "omitted_MPI_contribution",
+    "rank_identity_mismatch"
+  ],
+  "normalization": "operator action ||Kz||/(||K||F ||z||), divergence ||Bz||/(||B||F ||z||), energy zTKz/(||K||F||z||^2), C/H defect ||z-Cz||/max(||z||,1); strain/div/boundary and original residual separate; fixed thresholds 1e-10 resolve ~1e-14 rounding with 1e4 margin, energy 1e-12; no post-outcome setting",
+  "parents": {
+    "R6_ASPECT_RUNTIME_RECOVERY_NEW01": "2157bac10d69c9faba1f79a922fc2cc3ad05bef47acffad0ac18ab95e059678d",
+    "R6_G36R2_HANDOFF_AND_PROVIDER_INVENTORY_NEW02": "d736c02b5115fb6ad0799245d27b894b298dd3b03d5774898eb669b3716e41fd",
+    "R6_G39_ASPECT_FREE_SLIP_NEW01": "07ba543a44e841fb5d0397cef86154c3eed818a3473160cb8d529068d4d1399b",
+    "R6_G41_NATIVE_QUADRATURE_NEW01": "a7c95cf40aebf36f037d92b8553058e1f4916eaee53929d2d4c6df71bd11b9e6",
+    "R6_G42_CONSISTENT_BOUNDARY_FLUX_NEW01": "f50077b527e8cabe8b4f294a07ec1221bbf6168a91809bb5607074d4bcf8494f",
+    "R6_G43_T0_MANTLE_HANDOFF_NEW01": "44bac8b010a6fbdcf31ba1bcb1ab4dd7cada7148d0f7960b4a8135a561d43a62",
+    "R6_G44_HPC_DELIVERY_VALIDATION_NEW01": "1438fd8dc15d8bd562d5dc96a396843c47fffc7935fc2bdb1574e4bc63fd36d4",
+    "R6_G44_HPC_FULL_MANTLE_20261128_NEW01": "8ef9676aa03875ea09452286e82edb20f755ab785f7a4f6d2b11d746a0322422",
+    "R6_G45_DELIVERY_VALIDATION_NEW01": "db63a6fa6937d9288386869e20be832cac3b58fce8c6a4e03fb7ae8f56a490dd",
+    "R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01": "440c7366c47519a87124f6b6ccaf43939ef63740b3b54a7791cba8e1d26e6074",
+    "R6_G45_UNIFORM_LEGACY_REPLAY_VALIDATION_NEW01": "4cf9aead330cbadfb4866a88376b6f46654e4cf558ad638442f03065a6033691"
+  },
+  "scope": {
+    "ARCANA_solves": 0,
+    "D_024": "ACTIVE",
+    "D_025": "ACTIVE",
+    "M01_engine_executions": 0,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "additional_time_advance_years": 0,
+    "architecture": "A_FULL_MANTLE_ADAPTIVE",
+    "global_solve_authorized": false,
+    "mantle_initial_state_admitted": false,
+    "mantle_provider_qualified": false,
+    "material_assignments": 0,
+    "physical_T1": null,
+    "physical_acceptance": false,
+    "scientific_promotion": false
+  },
+  "stages": [
+    {
+      "before_after": "call native remove_nullspace on a COPY only in original-gauge diagnostic, export deltas and residual actions; never change live solution",
+      "id": "A",
+      "initial_cases": [
+        "operator_l1_p1_unremoved",
+        "forced_l2_a1_p1_unremoved",
+        "hydro_l2_a1_p1_original",
+        "forced_l2_a1_p4_original"
+      ],
+      "meshes": "uniform L1 small spectrum oracle, real AMR L2 coarse; optional L3 only after early gates",
+      "mode_test": "raw coordinate rotations, H rotations, homogeneous-C rotations; all diagnostic only; no state correction",
+      "operator": "native mapping/FE/introspection quadrature and actual current_constraints C; H remains topology only for reactions",
+      "type": "retained_g45_only_then_minimal_instrumentation"
+    },
+    {
+      "candidate": "mass weighted representative only if exact nullity proven; near-null constrained saddle candidate separately report multiplier/work/ungauged residual, no physical promotion",
+      "early_gate": "exact admissible K/B kernel and compatible forcing, no non-null velocity correction; otherwise BLOCKED, no 1/2/4/8 or fine solve expansion",
+      "extension": [
+        "coarse hydro/forced p1,p4",
+        "p2,p8 only after early gate",
+        "fine forced p1,p4,p8 and datum ranks only after preceding gates",
+        "one analytical prescribed-velocity control independent of free-slip gauge"
+      ],
+      "id": "B",
+      "type": "conditional_gauge"
+    },
+    {
+      "compare_G45_actual_pairs": true,
+      "constant_Pa": 10,
+      "id": "C",
+      "native_operator_quadrature_unchanged": true,
+      "pressure_only_fixed_u": true,
+      "same_mesh_mapping_H_trace_mass": true,
+      "surface_rules": [
+        "GLL3",
+        "Gauss3",
+        "Gauss5",
+        "Gauss7"
+      ],
+      "type": "datum_oracle",
+      "volume_Gauss_orders": [
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      "checkpoint": "native writer and Resume computation, solution+old+old_old, mesh, clock/history; no fabrication",
+      "checkpoint_after_accepted_steps": 1,
+      "clock_guard": "pre-run lineage receipt checked against immutable native checkpoint metadata; runtime timestep guard abort before >2 accepted positive steps",
+      "dt_s": 0.001,
+      "end_s": 0.002,
+      "id": "D",
+      "manufactured_case": "prescribed analytical hollow-sphere Stokes velocity, nonconstant thermal and composition initial fields, native advection/diffusion, fixed deterministic mesh; restart independent of free-slip gauge",
+      "max_accepted_positive_steps_per_lineage": 2,
+      "max_terminal_time_s": 0.002,
+      "negatives": [
+        "missing_checkpoint",
+        "corrupted_checkpoint",
+        "incompatible_fields",
+        "inconsistent_clock"
+      ],
+      "ranks": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "strategy": "two-step baseline p1; first-step checkpoint p1; copy native checkpoint into fresh same-rank and 2/4/8-rank processes, next accepted step only",
+      "type": "independent_native_restart",
+      "units": "synthetic seconds, metre shell; no ARCANA years",
+      "zero_time_initialization_not_accepted_positive_step": true
+    }
+  ],
+  "tolerances": {
+    "C_H_constraint_relative": 1e-12,
+    "adjoint_relative": 1e-08,
+    "datum_projected_minus10n": 0.005,
+    "divergence_null_relative": 1e-10,
+    "force_scaled": 0.0001,
+    "forcing_compatibility_relative": 1e-10,
+    "full_velocity_rank_relative": 0.0001,
+    "gauge_added_work_relative": 1e-10,
+    "gauge_multiplier_torque_relative": 1e-10,
+    "gauge_original_residual_increment_relative": 1e-10,
+    "ghost_relative": 1e-12,
+    "moment_scaled": 0.0001,
+    "native_CBF_parity": 1e-10,
+    "native_linear": 1e-07,
+    "native_nonlinear": 1e-06,
+    "null_energy_relative": 1e-12,
+    "operator_null_relative": 1e-10,
+    "pressure_discrete_oracle_relative": 1e-10,
+    "restart_clock_absolute_s": 1e-14,
+    "restart_full_fields_relative": 1e-08,
+    "restart_integral_relative": 1e-08,
+    "restart_rank_fields_relative": 0.0001,
+    "work_replay_relative_D": 1e-06
+  }
+}
