@@ -22,3 +22,9 @@ def test_explicit_cpu_mapping():
 def test_mixed_native_statistics():
     assert c.numeric_or_text('4.2e-6')==4.2e-6
     assert c.numeric_or_text('output/solution/solution-00000')=='output/solution/solution-00000'
+
+def test_throughput_uses_disjoint_physical_cores():
+    all_cpus=c.cpus(64,'spread');a=c.validate_cpu_ids(32,all_cpus[:32]);b=c.validate_cpu_ids(32,all_cpus[32:])
+    assert not set(a)&set(b) and set(a+b)==set(all_cpus)
+    with pytest.raises(RuntimeError):c.validate_cpu_ids(32,[a[0]]*32)
+    with pytest.raises(RuntimeError):c.validate_cpu_ids(32,c.cpus(128,'spread')[64:96])

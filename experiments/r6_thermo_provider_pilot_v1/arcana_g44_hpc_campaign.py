@@ -129,10 +129,16 @@ def parse_case(case,n,level,selected,expected_cpus,baseline):
        'nonlinear_residuals':[float(x) for x in re.findall(r'after nonlinear iteration \d+:\s*([\d.e+-]+)',s)],
        'statistics':{k:numeric_or_text(statrow[i]) for i,k in cols.items()},'screen_pass':True}
 
-def execute(name,n,level,profile='tcp',layout='spread',probe=False,baseline=None,timeout=240,visualization=True,backend='proot',pss_budget_gib=80):
+def validate_cpu_ids(n,ids):
+    need(len(ids)==n and len(set(ids))==n,'CPU_MAPPING_COUNT')
+    need(set(ids)<=set(cpus(64 if n<=64 else 128,'spread')),'CPU_MAPPING_PHYSICAL_SCOPE')
+    return list(ids)
+
+def execute(name,n,level,profile='tcp',layout='spread',probe=False,baseline=None,timeout=240,visualization=True,backend='proot',pss_budget_gib=80,cpu_ids=None):
     source_check();case=ROOT/name;case.mkdir();(case/'output').mkdir()
     state,container,root,src,hs,prm,lib,identity=runtime()
-    selected=cpus(n,layout);(case/'cpus.txt').write_text('\n'.join(map(str,selected))+'\n')
+    selected=validate_cpu_ids(n,cpus(n,layout) if cpu_ids is None else cpu_ids)
+    (case/'cpus.txt').write_text('\n'.join(map(str,selected))+'\n')
     wrapper='''#!/bin/bash
 set -eu
 mapfile -t CPUS < /tmp/cpus.txt
