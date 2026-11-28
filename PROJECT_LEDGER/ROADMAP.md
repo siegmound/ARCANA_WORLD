@@ -12,3 +12,5 @@
 A_FULL_MANTLE_ADAPTIVE; D-024/D-025 ACTIVE; physical_T1=null; scientific_promotion=false; physical_acceptance=false; mantle_initial_state_admitted=false; mantle_provider_qualified=false; global_solve_authorized=false; WORLD_HISTORY_PRODUCTION_AUTHORIZED=false; material_assignments=0; ARCANA_solves=0; additional_time_advance_years=0.
 
 G46 authorized: gauge/datum diagnosis and bounded native synthetic restart; executable G15 proposal and source/author T0 decision matrix. Existing G45 blockers remain until new scoped evidence.
+
+G46 native manufactured restart1/2/4/8qualified in bounded synthetic scope; rotational exact-kernel proof fails and datum remains mesh/quadrature-dependent. Next coupled numerical variant needs geometric AMR conformity, no-normal and divergence consistency; no arbitrary projection. Independent G15 proposal executable-preflight only; T0 decision DAG source/author choices unselected.

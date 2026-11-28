@@ -1,3 +1,5 @@
-# CURRENT — G46 retained-data diagnosis and minimal instrumentation
+# CURRENT — G46 finish qualification evidence delivery
 
-Verificare integralmente parent e runtime read-only; analizzare G45 con identità CellId/local-basis; esportare C meccanico, H e azioni K/B prima di qualificare qualsiasi gauge. Contratto in `experiments/r6_thermo_provider_pilot_v1/g46_constrained_gauge_v1/contract.json`. Restart nativo indipendente con massimo due passi positivi sintetici, nessun G15/M01/solve fisico/storia.
+Finish two predeclared native FE norm probes of retained G45 fields; no fitted gauge. Verify guards, seal and independently validate evidence; publish full evidence on separate Git LFS branch and code/test/contracts/receipt on development branch. Preserve G45 and all G46 failures.
+
+Next numerical research: geometrically conforming AMR, mechanical no-normal and pressure/divergence compatibility must be formulated together under a new explicit variant; simple rotational subtraction is unsupported by exact-null proof. Restart qualified only in the declared manufactured configuration. G15 proposal validation is executable; actual corrected trajectory adapter and any trajectory require separate author authorization. T0 matrix choices remain null; no M01/material/global physical solve/history.
