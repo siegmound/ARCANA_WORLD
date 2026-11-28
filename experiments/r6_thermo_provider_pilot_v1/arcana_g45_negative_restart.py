@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import traceback
+import time
 import numpy as np
 import arcana_g45_distributed_amr_cbf as c
 sys.path.insert(0,str(c.CODE));import audit
@@ -42,6 +43,8 @@ def mutate_numeric(path,columns,operation):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--plugin',type=Path,required=True);a=p.parse_args();c.check();source_restart_gate()
+    allocation=os.sched_getaffinity(0);c.need(63 in allocation,'NEGATIVE_AUDIT_CPU_UNAVAILABLE');os.sched_setaffinity(0,{63})
+    c.write(c.ROOT/'NEGATIVE_DRIVER_COMMAND.json',{'argv':sys.argv,'driver_sha256':c.sha(Path(__file__)),'coordinator_analysis_cpu':63,'native_worker_policy':'restore original allocation and wait until G45R1 matrix completes before invalid-restart native launch','environment_overrides':{'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','MKL_NUM_THREADS':'1'}})
     baseline=c.ROOT/'G45R1_forced_l2_a1_p4_unremoved_NEW01';c.need(c.read(baseline/'G45R1_AUDIT_REPORT.json')['screen_pass'] and c.native_convergence(baseline)['screen_pass'],'NEGATIVE_BASELINE_NOT_QUALIFIED')
     out=c.ROOT/'NEGATIVE_TESTS_NEW01';out.mkdir();results=[]
     baseline_hashes={p.name:c.sha(p) for p in (baseline/'output').glob('G45_s0_r*')}
@@ -87,6 +90,10 @@ def main():
     try:c.old.g38.verified_bundle(case,'8ef9676aa03875ea09452286e82edb20f755ab785f7a4f6d2b11d746a0322422');rejected=False;error=None
     except RuntimeError as e:rejected=True;error=str(e)
     row={'negative':'tampered_parent','production_gate_rejected':rejected,'error':error};c.write(case/'NEGATIVE_REPORT.json',row);results.append(row);c.need(rejected,'NEGATIVE_PARENT_FALSE_ACCEPT')
+    start=time.monotonic()
+    while not (c.ROOT/'GAUGE_R1_PHASE_REPORT.json').exists():
+        c.need(time.monotonic()-start<1800,'WAIT_FOR_GAUGE_MATRIX_EXPIRED');time.sleep(2)
+    os.sched_setaffinity(0,allocation)
     spec=next(s for s in c.read(c.CODE/'contract.json')['cases'] if s['name']=='forced_l2_a0_p1');row=c.case(spec,'negative_invalid_restart_NEW01',a.plugin,extra_prm='\nset Resume computation = true\n')
     text=(c.ROOT/'negative_invalid_restart_NEW01/STDERR.txt').read_text();rejected=row['execution']['exit_code']!=0 and not row['execution']['remaining'] and 'no matching written checkpoint has been found' in text
     results.append({'negative':'invalid_native_restart','production_gate_rejected':rejected,'native_exit':row['execution']['exit_code'],'rejection':'ASPECT actual missing-checkpoint rejection'});c.need(rejected,'INVALID_NATIVE_RESTART_NOT_REJECTED')
