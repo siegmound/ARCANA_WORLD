@@ -11,14 +11,22 @@ import arcana_g45_distributed_amr_cbf as c
 sys.path.insert(0,str(c.CODE));import audit
 
 
+def needs_retry(case):
+    if not c.read(case/'EXECUTION_REPORT.json')['screen_pass']:return True
+    failed=case/'AUDIT_V2_FAILURE.json'
+    if failed.exists():
+        c.need('NO_BOUNDARY_HANGING_NODES' in c.read(failed)['error'],'UNRESOLVED_AUDIT_FAILURE:'+case.name)
+        return True
+    return False
+
 def execute(spec,plugin):
     label=spec['name']+'_NEW01';case=c.ROOT/label
-    if case.exists() and not c.read(case/'EXECUTION_REPORT.json')['screen_pass']:
+    if case.exists() and needs_retry(case):
         failed=c.read(case/'RUN_EXIT.json');c.need(not failed['remaining'],'UNSAFE_RETRY')
         retry=2
         while (c.ROOT/(label+'_RETRY'+str(retry))).exists():
             candidate=c.ROOT/(label+'_RETRY'+str(retry))
-            if c.read(candidate/'EXECUTION_REPORT.json')['screen_pass']:break
+            if not needs_retry(candidate):break
             c.need(not c.read(candidate/'RUN_EXIT.json')['remaining'],'UNSAFE_RETRY');retry+=1
         label=label+'_RETRY'+str(retry);case=c.ROOT/label
     if not case.exists():c.case(spec,label,plugin)

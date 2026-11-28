@@ -7,7 +7,7 @@ def test_refinement_strategy_is_unique_and_solver_unchanged():
     original='subsection Mesh refinement\n  set Initial global refinement = 2\n  set Initial adaptive refinement = 1\n  set Strategy = velocity\n  set Refinement fraction = 0.2\nend\nset Linear solver tolerance = 1e-6\n'
     text=c.refinement_settings(original)
     assert text.count('set Strategy')==1 and 'Strategy = arcana g45 deterministic' in text
-    assert text.count('set Refinement fraction')==1 and 'Refinement fraction = 0\n' in text
+    assert text.count('set Refinement fraction')==1 and 'Refinement fraction = 1\n' in text
     assert 'Initial adaptive refinement = 1' in text and 'Linear solver tolerance = 1e-6' in text
 
 def test_analytic_postprocessors_are_unique(monkeypatch,tmp_path):

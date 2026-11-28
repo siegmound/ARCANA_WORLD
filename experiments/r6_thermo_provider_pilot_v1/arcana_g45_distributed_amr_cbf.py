@@ -91,7 +91,7 @@ def prm_for(spec):
 def refinement_settings(text):
     def patch(m):
         body=re.sub(r'(?m)^\s*set (?:Strategy|Refinement fraction|Coarsening fraction|Run postprocessors on initial refinement)\s*=.*$', '',m[2])
-        return m[1]+body+'\n  set Strategy = arcana g45 deterministic\n  set Refinement fraction = 0\n  set Coarsening fraction = 0\n  set Run postprocessors on initial refinement = false'+m[3]
+        return m[1]+body+'\n  set Strategy = arcana g45 deterministic\n  set Refinement fraction = 1\n  set Coarsening fraction = 0\n  set Run postprocessors on initial refinement = false'+m[3]
     text,count=re.subn(r'(subsection Mesh refinement\n)(.*?)(\nend)',patch,text,flags=re.S)
     need(count==1,'MESH_SUBSECTION_SCOPE')
     return text
