@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 1,
+      "family": "forced",
+      "gauge": "unremoved",
+      "matrix": true,
+      "name": "forced_l1_a1_p1_small_matrix_NEW01",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "forced",
+      "gauge": "unremoved",
+      "matrix": false,
+      "name": "forced_l2_a1_p1_interior_flux_NEW01",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "analytic",
+      "matrix": false,
+      "name": "analytic_l2_a1_p1_control_NEW01",
+      "ranks": 1,
+      "synthetic_time": 0
+    }
+  ],
+  "frozen_before_additional_runs": true,
+  "id": "G46_SMALL_AMR_OPERATOR_AND_INTERIOR_FLUX_V1",
+  "justification": "G45 lacks C/K/B and all-cell-face flux. Uniform L1 saddle forcing happens already to satisfy rotational constraint; its negligible multiplier is not evidence a near-null mode is exact. Add smaller sparse AMR with asymmetry, one coarse flux-only repeat and one prescribed analytic control; no fine/rank free-slip qualification expansion.",
+  "native_equations_tolerances_unchanged": true,
+  "no_new_physical_authority": true,
+  "offline_limits": {
+    "core": 62,
+    "memory_GiB": 8,
+    "timeout_s": 600
+  },
+  "parent_contract_sha256": "a4be9d965d14dca982ad1d2d3607cdc6814e196c51d2813ceeeacdaae3c5b2fd",
+  "same_gates_and_original_tolerances": true
+}

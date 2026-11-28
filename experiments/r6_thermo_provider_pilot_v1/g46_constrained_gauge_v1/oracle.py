@@ -24,15 +24,23 @@ def constraint(rows,ids):
   for b,w in slaves.get(a,[(a,1.)]):c.need(b in col,'C_NOT_CLOSED');r.append(pos[a]);s.append(col[b]);v.append(w)
  return sparse.coo_matrix((v,(r,s)),shape=(len(ids),len(independent))).tocsr(),np.array([pos[k] for k in independent]),np.array([inh.get(int(k),0.) for k in ids])
 
+def exact_gauge_admission(mode):
+ required=['C_defect','H_defect','operator_relative','divergence_operator_relative','energy_relative','forcing_compatibility_relative']
+ c.need(all(k in mode and np.isfinite(mode[k]) for k in required),'GAUGE_MISSING_FINITE_PROOF')
+ c.need(mode['C_defect']<=T['C_H_constraint_relative'] and mode['H_defect']<=T['C_H_constraint_relative'],'GAUGE_UNCONSTRAINED_MODE')
+ c.need(mode['operator_relative']<=T['operator_null_relative'] and mode['divergence_operator_relative']<=T['divergence_null_relative'] and mode['energy_relative']<=T['null_energy_relative'],'GAUGE_NON_NULL_MODE')
+ c.need(mode['forcing_compatibility_relative']<=T['forcing_compatibility_relative'],'GAUGE_INCOMPATIBLE_FORCING')
+ return True
+
 def load(case):
  spec=c.read(case/'CASE_SPEC.json');states=[];modes=[];acts=[];cr=[];hr=[];summ=[];bounds=[]
  for rank in range(spec['ranks']):
   p=case/'output'/f'G46_s0_r{rank}'
   states.append(numeric(Path(str(p)+'_STATE.dat'),8));modes.append(numeric(Path(str(p)+'_MODES.dat'),11));acts.append(numeric(Path(str(p)+'_ACTION.dat'),13));cr.append(numeric(Path(str(p)+'_C.dat'),3));hr.append(numeric(Path(str(p)+'_H.dat'),3));summ.append(np.loadtxt(str(p)+'_SUMMARY.dat',ndmin=2)[0]);bounds.append(np.array([[float(v) for v in line.split()[1:]] for line in Path(str(p)+'_BOUNDARY.dat').read_text().splitlines()]).reshape(-1,14))
- allstate=np.vstack(states);a=allstate[allstate[:,1]<3];a=a[np.argsort(a[:,0])];ids=a[:,0].astype(int);c.need(len(set(ids))==len(ids),'OWNERSHIP')
+ allstate=np.vstack(states);c.need(len(set(allstate[:,0]))==len(allstate) and len(allstate)==int(summ[0][5]),'GLOBAL_STATE_COVERAGE');c.need(np.array_equal(np.array(summ)[:,0],np.arange(spec['ranks'])),'RANK_IDENTITY');a=allstate[allstate[:,1]<3];a=a[np.argsort(a[:,0])];ids=a[:,0].astype(int);c.need(len(set(ids))==len(ids),'OWNERSHIP')
  def align(arr):
   v=np.vstack(arr);v=v[np.argsort(v[:,0])];c.need(np.array_equal(v[:,0],ids),'ID_MISMATCH');return v[:,1:]
- C,ci,clift=constraint(np.vstack(cr),ids);H,hi,hlift=constraint(np.vstack(hr),ids);return a,align(modes),align(acts),C,ci,H,hi,np.vstack(summ),np.vstack(bounds),allstate
+ C,ci,clift=constraint(np.vstack(cr),ids);H,hi,hlift=constraint(np.vstack(hr),ids);c.need(np.max(abs(H@np.ones(H.shape[1])-1))<=T['C_H_constraint_relative'],'H_PARTITION_OF_UNITY');c.need(np.linalg.norm(align(modes)[:,6:9]-C@align(modes)[ci,6:9])/max(np.linalg.norm(align(modes)[:,6:9]),1.)<=T['C_H_constraint_relative'],'EXPORTED_C_MODE_VIOLATION');return a,align(modes),align(acts),C,ci,H,hi,np.vstack(summ),np.vstack(bounds),allstate
 
 def evaluate(case):
  a,Z,actions,C,ci,H,hi,summary,faces,allstate=load(case);ids=a[:,0].astype(int);u=a[:,5];stateC=float(np.linalg.norm(u-C@u[ci])/max(np.linalg.norm(u),1.));stateH=float(np.linalg.norm(u-H@u[hi])/max(np.linalg.norm(u),1.))
@@ -51,7 +59,8 @@ def evaluate(case):
   if K is not None:
    c.need(np.linalg.norm(K@z-actions[:,2+j])/max(np.linalg.norm(actions[:,2+j]),1.)<1e-10,'NATIVE_K_ORACLE')
    r.update(operator_relative=float(np.linalg.norm(kr)/max(normK*np.linalg.norm(z[ci]),1e-300)),divergence_operator_relative=float(np.linalg.norm(B@z)/max(normB*np.linalg.norm(z),1e-300)),energy_relative=energy/max(normK*float(z[ci]@z[ci]),1e-300),forcing_compatibility_relative=abs(float(z[ci]@force))/max(np.linalg.norm(z[ci])*np.linalg.norm(force),1e-300))
-   r['exact_kernel_admitted']=bool(j<9 and mass>1e-20 and Cdef<=T['C_H_constraint_relative'] and Hdef<=T['C_H_constraint_relative'] and r['operator_relative']<=T['operator_null_relative'] and r['divergence_operator_relative']<=T['divergence_null_relative'] and r['energy_relative']<=T['null_energy_relative'])
+   try:r['exact_kernel_admitted']=bool(j<9 and mass>1e-20 and exact_gauge_admission(r))
+   except RuntimeError as error:r['exact_kernel_admitted']=False;r['gauge_rejection']=str(error)
   else:r['exact_kernel_admitted']=False;r['exact_kernel_scope']='NOT_PROVEN_WITHOUT_FULL_OPERATOR_NORM; positive strain and normal velocity remain independent counterevidence'
   rows.append(r)
  result={'case':case.name,'native_convergence':c.read(case/'EXECUTION_REPORT.json')['native_convergence'],'live_solution_C_defect':stateC,'live_solution_H_defect':stateH,'modes':rows,'spectrum':spectrum,'full_operator_exported':K is not None,'gauge_status':'BLOCKED_NON_NULL_OR_UNPROVEN_ROTATIONS','saddle_or_velocity_correction_performed':False,'volume_quadrature_points':summary[:,3].tolist(),'pressure_scaling':summary[:,4].tolist(),'live_volume_norm_sq':float(total[121]),'live_D':float(total[122]),'live_divergence_sq':float(total[123]),**c.SCOPE}
