@@ -20,6 +20,14 @@ DESCENDANT_ROOT=None
 def write(p,d):
     with p.open('x') as f:json.dump(d,f,indent=2,sort_keys=True);f.write('\n')
 
+def proc_read(reader):
+    """Retry transient Linux exit/exec dumpability transitions; persistent denial blocks."""
+    for attempt in range(20):
+        try:return reader()
+        except PermissionError:
+            if attempt==19:raise
+            time.sleep(.01)
+
 def scan(tag,key=KEY):
     if not re.fullmatch(r'[a-f0-9]{64}',tag):raise ValueError('INVALID_JOB_TOKEN')
     marker=(key+'='+tag).encode();found=[];errors=[]
@@ -45,7 +53,7 @@ def scan(tag,key=KEY):
             text=(p/'stat').read_text();fields=text[text.rfind(')')+2:].split()
             if int(fields[19])<SCAN_FLOOR_TICKS:continue
             if fields[0] in ('Z','X'):continue
-            if marker not in (p/'environ').read_bytes().split(b'\0'):continue
+            if marker not in proc_read((p/'environ').read_bytes).split(b'\0'):continue
             found.append({'pid':int(p.name),'starttime':int(fields[19]),'state':fields[0]})
         except OSError as e:
             if e.errno not in (errno.ENOENT,errno.ESRCH):
@@ -115,17 +123,17 @@ def metrics(rows):
         try:
             st=(p/'stat').read_text();parts=st[st.rfind(')')+2:].split()
             if int(parts[19])!=row['starttime']:continue
-            sm=(p/'smaps_rollup').read_text()
+            sm=proc_read((p/'smaps_rollup').read_text)
             vals={k:int(v)*1024 for k,v in re.findall(r'^(Rss|Pss|Swap):\s+(\d+) kB$',sm,re.M)}
-            io={k:int(v) for k,v in re.findall(r'^(read_bytes|write_bytes):\s+(\d+)',(p/'io').read_text(),re.M)}
-            cmd=(p/'cmdline').read_bytes().replace(b'\0',b' ').decode(errors='replace')
+            io={k:int(v) for k,v in re.findall(r'^(read_bytes|write_bytes):\s+(\d+)',proc_read((p/'io').read_text),re.M)}
+            cmd=proc_read((p/'cmdline').read_bytes).replace(b'\0',b' ').decode(errors='replace')
             status=(p/'status').read_text()
             numa=(p/'numa_maps').read_text()
             pages={int(k):sum(int(n) for kk,n in re.findall(r'\bN(\d+)=(\d+)',numa) if kk==k) for k in set(re.findall(r'\bN(\d+)=',numa))}
             d={**row,**vals,'cpu_s':(int(parts[11])+int(parts[12]))/os.sysconf('SC_CLK_TCK'),
                'read_bytes':io.get('read_bytes',0),'write_bytes':io.get('write_bytes',0),
                'cpu_allowed':re.search(r'^Cpus_allowed_list:\s*(.+)$',status,re.M)[1],
-               'numa_resident_pages':pages,'role':'rank' if Path(os.readlink(p/'exe')).name=='aspect-release' else 'launcher_or_trace'}
+               'numa_resident_pages':pages,'role':'rank' if Path(proc_read(lambda:os.readlink(p/'exe'))).name=='aspect-release' else 'launcher_or_trace'}
             details.append(d);rss+=vals.get('Rss',0);pss+=vals.get('Pss',0);swap+=vals.get('Swap',0)
             readb+=d['read_bytes'];writeb+=d['write_bytes'];cpu+=d['cpu_s']
         except OSError as e:

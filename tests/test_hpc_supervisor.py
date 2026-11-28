@@ -52,3 +52,15 @@ def test_live_match_without_support_is_blocked(monkeypatch):
     monkeypatch.setattr(m,'scan',lambda *args:[{'pid':123,'starttime':456}])
     monkeypatch.setattr(m,'capability',lambda:{'self_pidfd':False})
     with pytest.raises(RuntimeError,match='PIDFD_REQUIRED'):m.cleanup('b'*64)
+
+
+def test_transient_access_denial_is_retried(monkeypatch):
+    spec=importlib.util.spec_from_file_location('supervisor3',SCRIPT);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+    monkeypatch.setattr(m.time,'sleep',lambda seconds:None)
+    calls=[]
+    def read():
+        calls.append(1)
+        if len(calls)<4:raise PermissionError('exit transition')
+        return b'owned'
+    assert m.proc_read(read)==b'owned' and len(calls)==4
+    with pytest.raises(PermissionError):m.proc_read(lambda: (_ for _ in ()).throw(PermissionError('persistent')))
