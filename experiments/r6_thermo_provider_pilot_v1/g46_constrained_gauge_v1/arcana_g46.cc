@@ -2,6 +2,7 @@
 // G46 read-only diagnostics. No live velocity, force or pressure correction.
 #include <aspect/postprocess/interface.h>
 #include <aspect/simulator_access.h>
+#include <aspect/simulator_signals.h>
 #include <aspect/material_model/interface.h>
 #include <aspect/gravity_model/interface.h>
 #include <aspect/termination_criteria/interface.h>
