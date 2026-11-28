@@ -82,7 +82,10 @@ def reproduce_private_runtime():
     case=c.ROOT/'native_reproducibility_version';case.mkdir()
     conf={'case':str(case),'tag':hashlib.sha256(str(case).encode()).hexdigest(),
         'argv':['/usr/bin/env','LD_LIBRARY_PATH='+str(out/'lib'),str(out/'bin/aspect-release'),'--version'],
-        'environment':{'OPAL_PREFIX':str(out),'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1'},
+        'environment':{'OPAL_PREFIX':str(out),'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1',
+            'OMPI_MCA_mca_base_component_path':str(c.runtime()[2]/'usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3'),
+            'OMPI_MCA_pml':'ob1','OMPI_MCA_btl':'self,tcp','OMPI_MCA_btl_tcp_if_include':'lo',
+            'OMPI_MCA_oob_tcp_if_include':'lo','HWLOC_HIDE_ERRORS':'2'},
         'timeout_s':60,'aggregate_pss_abort_bytes':4*2**30,'host_available_floor_bytes':64*2**30,'sample_interval_s':.25}
     c.write(case/'config.json',conf)
     with (case/'SUPERVISOR.stdout').open('x') as so,(case/'SUPERVISOR.stderr').open('x') as se:
