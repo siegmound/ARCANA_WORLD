@@ -129,7 +129,7 @@ def parse_case(case,n,level,selected,expected_cpus,baseline):
        'nonlinear_residuals':[float(x) for x in re.findall(r'after nonlinear iteration \d+:\s*([\d.e+-]+)',s)],
        'statistics':{k:numeric_or_text(statrow[i]) for i,k in cols.items()},'screen_pass':True}
 
-def execute(name,n,level,profile='tcp',layout='spread',probe=False,baseline=None,timeout=240,visualization=True):
+def execute(name,n,level,profile='tcp',layout='spread',probe=False,baseline=None,timeout=240,visualization=True,backend='proot'):
     source_check();case=ROOT/name;case.mkdir();(case/'output').mkdir()
     state,container,root,src,hs,prm,lib,identity=runtime()
     selected=cpus(n,layout);(case/'cpus.txt').write_text('\n'.join(map(str,selected))+'\n')
@@ -140,6 +140,10 @@ mapfile -t CPUS < /tmp/cpus.txt
 printf 'HPC_RANK=%s CPU=%s\\n' "$OMPI_COMM_WORLD_RANK" "$(grep Cpus_allowed_list /proc/self/status | cut -f2)"
 exec "$@"
 '''
+    if backend=='native':
+        private=ROOT/'native_candidate2'
+        need(read(private/'ENV_PROBE.json')['rc']==0,'NATIVE_VERSION_UNQUALIFIED')
+        wrapper=wrapper.replace('/tmp/cpus.txt',str(case/'cpus.txt')).replace('/usr/bin/taskset',str(private/'bin/taskset'))
     (case/'rank.sh').write_text(wrapper)
     if probe:
         binary=EV/PINNED[-1][0]/'probe_build/mpi_probe';shutil.copy2(binary,case/'mpi_probe');need(os.access(case/'mpi_probe',os.X_OK) and sha(case/'mpi_probe')==sha(binary),'PROBE_EXECUTABLE_IDENTITY');exe=['/tmp/mpi_probe',str(n)]
@@ -156,6 +160,16 @@ exec "$@"
           '--nooversubscribe','--bind-to','none','--map-by','slot']
     if n==128:argv+=['--use-hwthread-cpus']
     argv+=['/bin/bash','/tmp/rank.sh',*exe]
+    if backend=='native':
+        need(not probe,'NATIVE_PROBE_NEEDS_SEPARATE_ELF_IDENTITY')
+        (case/'tmp').mkdir()
+        env.update(OPAL_PREFIX=str(private),
+            OMPI_MCA_mca_base_component_path=str(root/'usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3'),
+            PATH=str(private/'bin')+':/usr/bin:/bin',TMPDIR=str(case/'tmp'))
+        argv=['/usr/bin/env','LD_LIBRARY_PATH='+str(private/'lib'),str(private/'bin/orterun'),
+             '-np',str(n),'--nooversubscribe','--bind-to','none','--map-by','slot']
+        if n==128:argv+=['--use-hwthread-cpus']
+        argv+=[str(private/'bin/bash'),str(case/'rank.sh'),str(private/'bin/aspect-release'),'input.prm']
     tag=hashlib.sha256(str(case).encode()).hexdigest()
     config={'case':str(case),'tag':tag,'argv':argv,'environment':env,'timeout_s':timeout,
        'aggregate_pss_abort_bytes':80*1024**3,'host_available_floor_bytes':max(64*1024**3,int(read(ROOT/'HARDWARE_BEFORE.json')['memavailable_bytes']*.25)),
@@ -165,7 +179,7 @@ exec "$@"
     print('START',name,'ranks',n,'level',level,flush=True)
     with (case/'SUPERVISOR.stdout').open('x') as so,(case/'SUPERVISOR.stderr').open('x') as se:
         run=subprocess.run(['/usr/bin/python3',str(Path(__file__).with_name('arcana_hpc_supervisor.py')),'--run',str(case/'config.json')],stdout=so,stderr=se)
-    row={'name':name,'ranks':n,'level':level,'transport':profile,'layout':layout,'visualization':visualization,'probe':probe,'screen_pass':False,**SCOPE}
+    row={'name':name,'ranks':n,'level':level,'transport':profile,'layout':layout,'visualization':visualization,'probe':probe,'backend':backend,'screen_pass':False,**SCOPE}
     try:
         need(run.returncode==0,'SUPERVISOR_FAILURE')
         row['execution']=read(case/'RUN_EXIT.json')
@@ -183,8 +197,8 @@ exec "$@"
     return row
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['prepare','case']);ap.add_argument('--name');ap.add_argument('--ranks',type=int);ap.add_argument('--level',type=int,default=2);ap.add_argument('--profile',default='tcp',choices=['tcp','vader']);ap.add_argument('--layout',default='spread',choices=['spread','compact']);ap.add_argument('--probe',action='store_true');ap.add_argument('--baseline',type=Path);ap.add_argument('--timeout',type=int,default=240)
+    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['prepare','case']);ap.add_argument('--name');ap.add_argument('--ranks',type=int);ap.add_argument('--level',type=int,default=2);ap.add_argument('--profile',default='tcp',choices=['tcp','vader']);ap.add_argument('--layout',default='spread',choices=['spread','compact']);ap.add_argument('--probe',action='store_true');ap.add_argument('--baseline',type=Path);ap.add_argument('--timeout',type=int,default=240);ap.add_argument('--backend',choices=['proot','native'],default='proot')
     a=ap.parse_args()
     if a.action=='prepare':prepare()
-    else:execute(a.name,a.ranks,a.level,a.profile,a.layout,a.probe,read(a.baseline) if a.baseline else None,a.timeout)
+    else:execute(a.name,a.ranks,a.level,a.profile,a.layout,a.probe,read(a.baseline) if a.baseline else None,a.timeout,backend=a.backend)
 if __name__=='__main__':main()

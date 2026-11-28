@@ -8,12 +8,18 @@ def main():
     root=c.ROOT
     with (root/'SEQUENCE.log').open('a') as log:
         def case(name,n,l,**kw):
-            original=root/name
-            if original.exists():
+            candidates=[root/name]+sorted(root.glob(name+'_retry*'))
+            for original in candidates:
                 report=original/'CASE_REPORT.json'
                 if report.exists() and c.read(report)['screen_pass']:
-                    return c.read(report)
-                name=name+'_retry2'
+                    row=c.read(report)
+                    c.need(row['ranks']==n and row['level']==l,'REUSED_CASE_SCOPE')
+                    log.write(json.dumps({'reuse':original.name,'report_sha256':c.sha(report)})+'\n');log.flush()
+                    return row
+            if (root/name).exists():
+                index=2
+                while (root/(name+'_retry'+str(index))).exists():index+=1
+                name=name+'_retry'+str(index)
             log.write(json.dumps({'start':name,'ranks':n,'level':l})+'\n');log.flush()
             row=c.execute(name,n,l,**kw)
             log.write(json.dumps({'complete':name,'aspect_s':row.get('aspect_wall_s'),'wall_s':row['execution']['wall_s']})+'\n');log.flush()
@@ -58,7 +64,7 @@ def main():
              'level6_wall_projection_s':8*p64['execution']['wall_s'],
              'method':'conservative screening extrapolation x8, not a guaranteed peak or scaling prediction',
              'start_allowed':8*p64['execution']['peak_aggregate_pss_observed_bytes']<60*1024**3 and 8*p64['execution']['wall_s']<480}
-        c.write(root/'LEVEL6_RESOURCE_GATE.json',projection)
+        if not (root/'LEVEL6_RESOURCE_GATE.json').exists():c.write(root/'LEVEL6_RESOURCE_GATE.json',projection)
         if projection['start_allowed']:
             first=case('tcp_l6_p32_spread_r1',32,6,timeout=600)
             c.need(all(first['errors'][k]<b5['errors'][k] for k in c.g38.LABELS),'L6_REFINEMENT')
