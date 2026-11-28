@@ -162,3 +162,25 @@ def datum(base,shifted):
     fa=np.array([v for k,v in oa]);fb=np.array([v for k,v in ob]);require(np.allclose(fa[:,:10],fb[:,:10],rtol=0,atol=1e-12),'DATUM_FACE_IDENTITY')
     error=relative(fb[:,22:25]-fa[:,22:25],-10*fa[:,7:10]);velocity=relative(fb[:,10:13],fa[:,10:13]);dissipation=abs(b['cells'][:,27].sum()/a['cells'][:,27].sum()-1);require(error<T['datum_relative_projected_minus10n'] and velocity<T['same_mesh_rank_relative'] and dissipation<T['same_mesh_rank_relative'],'DATUM_GAUGE_SHIFT')
     return {'screen_pass':True,'datum_minus10n_relative':error,'velocity_relative':velocity,'dissipation_relative':float(dissipation)}
+
+# Contract reference is projected -10*n on the constrained trace. Retain the
+# old pointwise diagnostic separately; it is not the AMR acceptance operator.
+datum_pointwise_diagnostic=datum
+
+def datum(base,shifted):
+    a=load(base);b=load(shifted);d=a['dofs'];ids=d[:,0].astype(np.int64);position={int(i):j for j,i in enumerate(ids)};N=len(ids)
+    rr=[];cc=[];vv=[];slaves=set()
+    for slave,master,value in a['H_entries']:
+        slaves.add(int(slave));rr.append(position[int(slave)]);cc.append(position[int(master)]);vv.append(value)
+    for i in ids:
+        if int(i) not in slaves:rr.append(position[int(i)]);cc.append(position[int(i)]);vv.append(1.)
+    H=sparse.coo_matrix((vv,(rr,cc)),shape=(N,N)).tocsr();f=a['faces'];node=np.array([[position[int(v)] for v in row] for row in f[:,34:37]])
+    target=-10*f[:,7:10];load_vector=np.zeros(N)
+    for k in range(3):np.add.at(load_vector,node[:,k],f[:,3]*target[:,k])
+    active,M,rhs=trace_operator(H,d[:,9],load_vector);projected=(H[:,active]@spsolve(M,rhs))[node]
+    ia=sorted(range(len(f)),key=lambda i:(a['facekeys'][i],f[i,0],f[i,1]));fb=b['faces'];ib=sorted(range(len(fb)),key=lambda i:(b['facekeys'][i],fb[i,0],fb[i,1]))
+    require([(a['facekeys'][i],f[i,0],f[i,1]) for i in ia]==[(b['facekeys'][i],fb[i,0],fb[i,1]) for i in ib],'DATUM_MESH')
+    fa=f[ia];fb=fb[ib];require(np.allclose(fa[:,:10],fb[:,:10],rtol=0,atol=1e-12),'DATUM_FACE_IDENTITY')
+    delta=fb[:,22:25]-fa[:,22:25];error=relative(delta,projected[ia]);pointwise=relative(delta,-10*fa[:,7:10]);velocity=relative(fb[:,10:13],fa[:,10:13]);dissipation=float(abs(b['cells'][:,27].sum()/a['cells'][:,27].sum()-1))
+    require(error<T['datum_relative_projected_minus10n'] and velocity<T['same_mesh_rank_relative'] and dissipation<T['same_mesh_rank_relative'],'DATUM_GAUGE_SHIFT')
+    return {'screen_pass':True,'datum_projected_minus10n_relative':error,'datum_pointwise_minus10n_diagnostic':pointwise,'velocity_relative':velocity,'dissipation_relative':dissipation,'reference':'H_trace (H_trace^T M_GLL H_trace)^-1 H_trace^T integral(phi*(-10*n)); no RHS balancing or fitted correction'}
