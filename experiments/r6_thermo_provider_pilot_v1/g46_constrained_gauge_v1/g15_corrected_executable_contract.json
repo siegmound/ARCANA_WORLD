@@ -1,0 +1,341 @@
+{
+  "ARCANA_solves": 0,
+  "CSR_band_assembly_relative": 1e-12,
+  "CSR_band_field_relative": 1e-10,
+  "D12_mask_policy": "PRESERVE_RIDGE_CONTACT_UNKNOWN_NO_IMPUTATION",
+  "D_024": "ACTIVE",
+  "D_025": "ACTIVE",
+  "M01_engine_executions": 0,
+  "WORLD_HISTORY": "independent qualification branch; G46 not prerequisite, physical admission remains separate",
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+  "accepted_endpoint_years": [
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    7.0,
+    12.0,
+    24.5,
+    37.0,
+    49.5,
+    62.0,
+    74.5,
+    87.0,
+    99.5,
+    112.0,
+    137.0,
+    162.0
+  ],
+  "additional_time_advance_years": 0,
+  "algorithm": "original G15 explicit mechanical midpoint predictor then corrector from original state, full8 thermal CN updates vs half4; additionally double temporal resolution with independent midpoint recomputation; retry half macrostep only on failed frozen gate, never relax threshold",
+  "architecture": "A_FULL_MANTLE_ADAPTIVE",
+  "budget_proposed_not_granted": {
+    "max_build_jobs": 1,
+    "max_native_job_GiB": 8,
+    "max_total_native_solves": 288,
+    "max_trial_backoffs_per_macro": 1,
+    "terminal_years": 162
+  },
+  "checkpoint_fields": [
+    "geometry",
+    "material_mass",
+    "thermal_energy",
+    "thermal_temperature",
+    "heat_capacity",
+    "stress",
+    "dissipation",
+    "velocity",
+    "pressure_or_relative_reference",
+    "boundary_contact_masks",
+    "gauge",
+    "accepted_clock",
+    "provider_and_source_ids",
+    "parent_lineage",
+    "predictor_exclusion"
+  ],
+  "execution_authorized": false,
+  "execution_graph": [
+    {
+      "call": "validate_g15(contract)",
+      "requires_authorization": false,
+      "stage": "verify"
+    },
+    {
+      "call": "build isolated actual G30/G31 sources and solve t0 with original controls; independent band/CSR comparison",
+      "requires_authorization": true,
+      "stage": "initial_corrected_mechanics"
+    },
+    {
+      "call": "G15 midpoint step/trial adapted to corrected per-state FB2 assembly and matched band/CSR; no reused legacy endpoints",
+      "requires_authorization": true,
+      "stage": "matched_trajectory"
+    },
+    {
+      "call": "compare full/two halves/doubled thermal resolution; serialize all fields and fresh-process continue at selected accepted half checkpoints",
+      "requires_authorization": true,
+      "stage": "halving_and_restart"
+    },
+    {
+      "call": "mass/heat/energy/stress/dissipation plus mask and event-horizon gates; stop before unqualified contact transitions",
+      "requires_authorization": true,
+      "stage": "close"
+    }
+  ],
+  "file_bindings": [
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G4_CONTROLLED_TRANSPORT_NEW01/INITIAL_CHECKPOINT.json",
+      "role": "unevolved t0 geometry/material source; no legacy evolved mechanical state",
+      "sha256": "eaa03c751bbea2f4e9aac3d16b3a0cfdeb69ee76ae5cdd70d17be5f4a429263b"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G5_COLUMN_HEAT_NEW01/columns_64.npz",
+      "role": "select initial fields ONLY; no evolved two_half fields",
+      "sha256": "9604575bbe8c87bb6c6f43f93eb057bf7c784a672acf871f9a117971da7f2032"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G15_MIDPOINT_COUPLING_NEW01/POLICY.json",
+      "role": "preserve frozen original tolerance policy",
+      "sha256": "0dd76af453c71c85353955075e1629b916558db9c5a60f3e5b303042e4bfa485"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G15_MIDPOINT_COUPLING_NEW01/ACCEPTED_CHECKPOINT_INDEX.json",
+      "role": "historic time partition only; all mechanical endpoints barred as corrected seeds",
+      "sha256": "3468a8373d8b397b99aa00713d57d260c94b2a129b0adc4f9a3d77f13ec6d6a9"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G30_REGIONAL_METRIC_REGRESSION_NEW01/build/MOD_Shells.f90",
+      "role": "actual corrected band FB2 source",
+      "sha256": "588606a726a3d168d54a41452434feab66b36dc2422f8aa98074321c264ddef0"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G30_REGIONAL_METRIC_REGRESSION_NEW01/build/BUILD_IDENTITY.json",
+      "role": "compiler/library/ABI pins, no rebuild now",
+      "sha256": "98a01915adbea665324a674982623d3c62b7debdf11bd0dffe2101b21903c655"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G31_CORRECTED_DIRECT_CSR_NEW01/build/MOD_Shells.f90",
+      "role": "actual corrected direct CSR FB2 source",
+      "sha256": "4b84f6037b02f138938041a9fc0e6aba77560d7897db920be9c3545ab151698f"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G31_CORRECTED_DIRECT_CSR_NEW01/build/BUILD_IDENTITY.json",
+      "role": "compiler/library/ABI pins, no rebuild now",
+      "sha256": "0f488cdcfc018b5318626b6720f683860d03544f6d9e40219bff91fe1b54c069"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_G36R2_DEV/experiments/r6_thermo_provider_pilot_v1/arcana_g15_midpoint_coupling.py",
+      "role": "existing method/library source; do not invoke old runner on corrected trajectory",
+      "sha256": "32ba4e906e14be7e5be9c318c6aaa809aedf1d3a672018d929abe56fbe49cd5c"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_G36R2_DEV/experiments/r6_thermo_provider_pilot_v1/arcana_g14_adaptive_trajectory.py",
+      "role": "existing method/library source; do not invoke old runner on corrected trajectory",
+      "sha256": "b62d36327242a16dc1175cc0e8457034f758f72c28b7c077e75f428819e49242"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_G36R2_DEV/experiments/r6_thermo_provider_pilot_v1/arcana_g13_cn_multiscale.py",
+      "role": "existing method/library source; do not invoke old runner on corrected trajectory",
+      "sha256": "1cfdf26d48044668f66e0a42d8d80bd8d7e2c4e7a975f404f79ff83be525a94c"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_G36R2_DEV/experiments/r6_thermo_provider_pilot_v1/arcana_g12_joint_profile_extended.py",
+      "role": "existing method/library source; do not invoke old runner on corrected trajectory",
+      "sha256": "388041a6f1f7a0e95976f71e4e37fcf20d1386aeb65cca0e206719422691a54c"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_G36R2_DEV/experiments/r6_thermo_provider_pilot_v1/arcana_g11_adaptive_pilot.py",
+      "role": "existing method/library source; do not invoke old runner on corrected trajectory",
+      "sha256": "46d5506da8f08befdad8bfc804c9c57898b38c8bb899221656b3aaca6211d52b"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_G36R2_DEV/experiments/r6_thermo_provider_pilot_v1/arcana_g30_regional_metric_regression.py",
+      "role": "existing method/library source; do not invoke old runner on corrected trajectory",
+      "sha256": "4e7c4011f4e38f43071b5ac52bba9fbe6c6f283aeb531d80fe566ecfe76e648f"
+    },
+    {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_G36R2_DEV/experiments/r6_thermo_provider_pilot_v1/arcana_g31_corrected_direct_csr.py",
+      "role": "existing method/library source; do not invoke old runner on corrected trajectory",
+      "sha256": "72bc97866bc5296c4c899c5b48b4b5129a1587614aae90e7ec41234ed6a5f1e6"
+    }
+  ],
+  "global_solve_authorized": false,
+  "id": "G15_CORRECTED_162YR_EXECUTABLE_PROPOSAL_V1",
+  "macrostep_years": [
+    1.0,
+    1.0,
+    10.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    50.0
+  ],
+  "mantle_initial_state_admitted": false,
+  "mantle_provider_qualified": false,
+  "material_assignments": 0,
+  "mechanical_fields": [
+    "velocity",
+    "strain_rate",
+    "tau_relative",
+    "reaction"
+  ],
+  "metric": "FB2_slopey_divided_by_sinA",
+  "negative_gates": [
+    "legacy112_or162_seed",
+    "predictor_energy_counted",
+    "wrong_FB2_metric",
+    "CSR_band_mismatch",
+    "mask_dropped",
+    "restart_missing_field_or_clock"
+  ],
+  "new_trajectory_runs": 0,
+  "parents": [
+    {
+      "manifest_sha256": "9207eefd69425a013a32e117a8f515b40682a269a0cf5495b238a87898af3747",
+      "members": 13,
+      "path": "R6_THERMO_G4_CONTROLLED_TRANSPORT_NEW01"
+    },
+    {
+      "manifest_sha256": "48fbfb6d452840c0086517d557acb6d1cc76850d500c4225aae007f75aeeec14",
+      "members": 5,
+      "path": "R6_THERMO_G5_COLUMN_HEAT_NEW01"
+    },
+    {
+      "manifest_sha256": "4308c734eeee3bcac48410b160ae4e2bec4dbde809ad2f327067f1bc4f02a09c",
+      "members": 2610,
+      "path": "R6_THERMO_G11_ADAPTIVE_PILOT_NEW01"
+    },
+    {
+      "manifest_sha256": "38e77544e72253ea83c7b7260c83fccb54519288099f08a35dc4eaaeb1215059",
+      "members": 3400,
+      "path": "R6_THERMO_G12_JOINT_PROFILE_EXTENDED_NEW01"
+    },
+    {
+      "manifest_sha256": "db1da82d2845805f90557f7b9a1c18bb784fb2c200b9e7dc45ce8d190b4876ec",
+      "members": 2552,
+      "path": "R6_THERMO_G13_CN_MULTISCALE_NEW01"
+    },
+    {
+      "manifest_sha256": "cd1f3637b194107309af51e0658986eba3d976beb25b1bfec6004d941f5fbd4d",
+      "members": 7652,
+      "path": "R6_THERMO_G14_ADAPTIVE_TRAJECTORY_NEW01"
+    },
+    {
+      "manifest_sha256": "5dc476169e04a2bc31f79addfb04ee8804209e677efa2ee4c4ce5de0edc7d619",
+      "members": 5062,
+      "path": "R6_THERMO_G15_MIDPOINT_COUPLING_NEW01"
+    },
+    {
+      "manifest_sha256": "3298f0b7ef41083068ada52e71d62a0238a96076372625cc8fa42dd210d7cee2",
+      "members": 1362,
+      "path": "R6_THERMO_G30_REGIONAL_METRIC_REGRESSION_NEW01"
+    },
+    {
+      "manifest_sha256": "28ebbee110fa1e3e96f1842e7542deef6c26277cac9ee0ec535b3a267f9ee7fb",
+      "members": 1365,
+      "path": "R6_THERMO_G31_CORRECTED_DIRECT_CSR_NEW01"
+    }
+  ],
+  "physical_T1": null,
+  "physical_acceptance": false,
+  "predictor_in_accepted_energy_ledger": false,
+  "provider_adapter_status": "DESIGN_BINDINGS_VERIFIED; future trajectory adapter must be reviewed/tested before execution; old G15 runner is NOT directly authorized or metric-safe",
+  "providers": [
+    "corrected_band",
+    "corrected_direct_CSR"
+  ],
+  "restart_same_process_vs_fresh_relative": 1e-12,
+  "schedule_provenance": "historical group boundaries0,1,2,12,37,62,87,112,162; G14 accepted25+25, rejected50 retained. Requalification uses explicit midpoint consistently from t0, so old state bytes not reused. Both providers use matched full/two-half trajectories.",
+  "scientific_promotion": false,
+  "seed": {
+    "elapsed_years": 0,
+    "geometry": {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G4_CONTROLLED_TRANSPORT_NEW01/INITIAL_CHECKPOINT.json",
+      "role": "unevolved t0 geometry/material source; no legacy evolved mechanical state",
+      "sha256": "eaa03c751bbea2f4e9aac3d16b3a0cfdeb69ee76ae5cdd70d17be5f4a429263b"
+    },
+    "increment_zero_at_T0": "definition of initial accumulated increment, never imputation of unknown physical fields",
+    "kind": "UNEVOLVED_GEOMETRY_THERMAL_PLUS_NEW_CORRECTED_T0_MECHANICS",
+    "mechanical_checkpoint_admitted": false,
+    "mechanical_initialization": "new corrected band/CSR T0 stationary solve with original controls before ANY evolution; never inherit uncorrected velocity/stress/reaction",
+    "no_legacy_evolved_thermal_arrays": true,
+    "thermal_file": {
+      "path": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_THERMO_G5_COLUMN_HEAT_NEW01/columns_64.npz",
+      "role": "select initial fields ONLY; no evolved two_half fields",
+      "sha256": "9604575bbe8c87bb6c6f43f93eb057bf7c784a672acf871f9a117971da7f2032"
+    },
+    "thermal_initial_arrays": {
+      "element_parent_ids": {
+        "array_sha256": "704e6853de7ae2725b8371f41b77c44287e4db04aa1355b3438b84d556b9fbef",
+        "dtype": "int64",
+        "shape": [
+          128
+        ]
+      },
+      "heat_capacity_J_K": {
+        "array_sha256": "570ab8a3317f069cbc6be15b9e3096396eb288633a59508682f7a21bddc950d3",
+        "dtype": "float64",
+        "shape": [
+          384,
+          2,
+          64
+        ]
+      },
+      "initial_energy_J": {
+        "array_sha256": "a50a2f9ca4519832ef4b2c0e4ea223e35aedbf24840adba0aea96f4ac7da828c",
+        "dtype": "float64",
+        "shape": [
+          384,
+          2,
+          64
+        ]
+      },
+      "initial_temperature_K": {
+        "array_sha256": "d3e189ecc2c1cc6cd22d9dce4b31993263baf83a12a8921ec36afa31b1ee1371",
+        "dtype": "float64",
+        "shape": [
+          384,
+          2,
+          64
+        ]
+      },
+      "mass_kg": {
+        "array_sha256": "292593e2a3c3b8cdec9cfcd2e79857699ad592c3f1f6d4caff737df2f8e9bdb7",
+        "dtype": "float64",
+        "shape": [
+          384,
+          2,
+          64
+        ]
+      },
+      "parcel_node_local_ids": {
+        "array_sha256": "54959f3296369479db3f1119c4944fdcf42d7c4c58a0a2ebd86c145de36a2f30",
+        "dtype": "int64",
+        "shape": [
+          128,
+          3
+        ]
+      }
+    }
+  },
+  "status": "PROPOSED_NOT_EXECUTION_AUTHORIZED",
+  "thermal_tolerances": {
+    "absolute_energy_relative": 1e-12,
+    "energy_transfer_relative": 1e-11,
+    "explicit_cfl": 0.45,
+    "initial_inventory_relative": 1e-12,
+    "interface_flux_relative": 1e-10,
+    "temperature_absolute_K": 1e-07,
+    "temperature_signal_floor_K": 1e-08,
+    "temperature_signal_relative": 0.01
+  },
+  "tolerances": {
+    "corrected_cell_absolute_K": 1e-05,
+    "energy_budget_relative": 1e-11,
+    "energy_increment_relative": 0.01,
+    "macro_geometry_fraction": 0.0001,
+    "mechanical_increment_fraction": 0.1,
+    "position_m": 1e-05,
+    "thickness_relative": 1e-10
+  }
+}

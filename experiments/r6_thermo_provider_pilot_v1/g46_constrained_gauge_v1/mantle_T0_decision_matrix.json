@@ -1,0 +1,245 @@
+{
+  "ARCANA_solves": 0,
+  "D_024": "ACTIVE",
+  "D_025": "ACTIVE",
+  "M01_engine_executions": 0,
+  "M01_selected": false,
+  "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+  "additional_time_advance_years": 0,
+  "admission_algorithm": "topologically validate dependency DAG; require selected source/value/units/domain/uncertainty per field and executable closure checks before any initializer; missing field blocks only dependent physical subsystem under D024",
+  "architecture": "A_FULL_MANTLE_ADAPTIVE",
+  "author_choice_count": 0,
+  "global_solve_authorized": false,
+  "mantle_initial_state_admitted": false,
+  "mantle_provider_qualified": false,
+  "material_assignments": 0,
+  "physical_T1": null,
+  "physical_acceptance": false,
+  "rows": [
+    {
+      "admissibility_checks": "positive mantle thickness, source domain, radial monotonicity, volume closure",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "choose source-supported interior reference model or author-declared fictional interior with explicit uncertainty",
+      "depends_on": [
+        "outer_geometry"
+      ],
+      "field": "CMB/core geometry and deep radial interfaces",
+      "id": "T0-01",
+      "physical_admission": false,
+      "reviewable_options": [
+        "source-calibrated full-mantle reference",
+        "author-defined interior plus uncertainty"
+      ],
+      "source_bound": "outer radius6371000m only; no Earth CMB inference",
+      "uncertainty_sensitivity_plan": "vary interior interfaces within approved interval; volume/mass/gravity response",
+      "units": "m"
+    },
+    {
+      "admissibility_checks": "dm/dr=4pi*r\u00b2*rho; g=Gm/r\u00b2; dP/dr=-rho*g; pressure units/reference bound",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "choose EOS/reference mass/composition and source-consistent pressure/gravity solution",
+      "depends_on": [
+        "T0-01",
+        "T0-04"
+      ],
+      "field": "EOS, mass and radial gravity",
+      "id": "T0-02",
+      "physical_admission": false,
+      "reviewable_options": [
+        "self-consistent radial EOS reference",
+        "tabulated source profile with closure audit"
+      ],
+      "source_bound": "surface9.82m/s\u00b2 only; no radial profile",
+      "uncertainty_sensitivity_plan": "coupled EOS/gravity/hydrostatic residual and uncertainty propagation",
+      "units": "kg,m,s,Pa,K"
+    },
+    {
+      "admissibility_checks": "enthalpy/EOS phase consistency, integral heat budget, masks/validity",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "approve deep radial reference, top/basal thermal conditions and 3D anomaly policy",
+      "depends_on": [
+        "T0-01",
+        "T0-02"
+      ],
+      "field": "full-volume temperature/enthalpy",
+      "id": "T0-03",
+      "physical_admission": false,
+      "reviewable_options": [
+        "source-derived adiabat with bounded anomalies",
+        "author-defined reference with declared uncertainty"
+      ],
+      "source_bound": "G43 conditional0\u2013300km, zero admitted mantle nodes",
+      "uncertainty_sensitivity_plan": "profile/boundary/anomaly ensemble only after selected bounds",
+      "units": "K,J/kg"
+    },
+    {
+      "admissibility_checks": "sum fractions1, finite nonnegative stocks, source applicability; UNKNOWN preserved",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "select spatial material authority and mixtures, water/redox budget, phase/EOS package",
+      "depends_on": [
+        "T0-01"
+      ],
+      "field": "composition, water, redox and phases",
+      "id": "T0-04",
+      "physical_admission": false,
+      "reviewable_options": [
+        "source-calibrated reference inventory",
+        "author-approved heterogeneous inventory"
+      ],
+      "source_bound": "DM/CC libraries are source references, M01 unselected",
+      "uncertainty_sensitivity_plan": "approved endmember/water/partition ranges; correlated EOS/rheology/heat",
+      "units": "mass_fraction,kg,mol"
+    },
+    {
+      "admissibility_checks": "reference source, hydrostatic and EOS consistency, no deltaP relabeling",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "bind pressure reference and equation coupling before compressible admission",
+      "depends_on": [
+        "T0-01",
+        "T0-02",
+        "T0-04"
+      ],
+      "field": "absolute pressure/reference",
+      "id": "T0-05",
+      "physical_admission": false,
+      "reviewable_options": [
+        "source-bound reference integrated consistently",
+        "author-bound reference with source-supported EOS"
+      ],
+      "source_bound": "synthetic datum10Pa is not absolute P",
+      "uncertainty_sensitivity_plan": "propagate reference/EOS uncertainties; never add arbitrary physical offset",
+      "units": "Pa"
+    },
+    {
+      "admissibility_checks": "positive finite dissipation, source validity, uncertainty and numerical cutoffs explicit",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "choose valid deep temperature/composition/water/phase/stress dependence and bounds",
+      "depends_on": [
+        "T0-02",
+        "T0-03",
+        "T0-04",
+        "T0-05"
+      ],
+      "field": "rheology and dissipation",
+      "id": "T0-06",
+      "physical_admission": false,
+      "reviewable_options": [
+        "source-based composite rheology",
+        "explicit bounded reference rheology for first closed subsystem"
+      ],
+      "source_bound": "existing lithosphere envelopes not automatically full-mantle laws",
+      "uncertainty_sensitivity_plan": "approved viscosity/activation/phase ranges; nonlinear convergence and heat effects",
+      "units": "Pa*s,Pa,1/s"
+    },
+    {
+      "admissibility_checks": "energy closure, no overlap/double count, source lineage",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "choose sources and boundary conditions; separate unresolved lithospheric OneBar column from resolved mantle",
+      "depends_on": [
+        "T0-01",
+        "T0-03",
+        "T0-04"
+      ],
+      "field": "heat flux, radiogenic inventory and core/top coupling",
+      "id": "T0-07",
+      "physical_admission": false,
+      "reviewable_options": [
+        "flux-based thermal boundaries",
+        "temperature-based boundaries with diagnosed flux"
+      ],
+      "source_bound": "no bound full-mantle heat budget",
+      "uncertainty_sensitivity_plan": "correlated basal/internal/top flux budget across approved cases",
+      "units": "W,W/m\u00b2,kg"
+    },
+    {
+      "admissibility_checks": "no artificial immobilization, causal forcing, coupled common gauge, transient separated",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "approve deterministic generation, seed/spectrum/amplitude and relaxation budget after source choices",
+      "depends_on": [
+        "T0-03",
+        "T0-04",
+        "T0-06",
+        "T0-07"
+      ],
+      "field": "initial velocity, perturbations and relaxation",
+      "id": "T0-08",
+      "physical_admission": false,
+      "reviewable_options": [
+        "source-supported perturbed reference",
+        "source-conditioned spatial reconstruction"
+      ],
+      "source_bound": "no authorized imposed stagnant mantle or manufactured anomalies",
+      "uncertainty_sensitivity_plan": "ensemble over author-approved seeds/spectra, convergence/stationarity and memory tests",
+      "units": "m/s,K,s"
+    },
+    {
+      "admissibility_checks": "adjoint force/moment/work, normal/radial partition, no torque projection or arbitrary pin",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "approve physical stress partition/coupling only after real mesh transfer qualification",
+      "depends_on": [
+        "T0-01",
+        "T0-06"
+      ],
+      "field": "mechanical interface and common-mode gauge",
+      "id": "T0-09",
+      "physical_admission": false,
+      "reviewable_options": [
+        "minimal physically closed isolated subsystem",
+        "coupled lithosphere/mantle after map qualification"
+      ],
+      "source_bound": "G36/G45 synthetic adjoint/kernel only; normal physical reaction unresolved",
+      "uncertainty_sensitivity_plan": "interface resolution, noncoincident transfer/refinement, torque/work budgets",
+      "units": "Pa,N,N*m,W"
+    },
+    {
+      "admissibility_checks": "UNKNOWN and exclusions, causal checkpoints, anchor invariance, derived queries distinguished",
+      "assigned_value": null,
+      "author_choice": null,
+      "author_decision_required": "approve uncertainty and storage allocation without losing essential restart information",
+      "depends_on": [
+        "T0-01",
+        "T0-03",
+        "T0-04"
+      ],
+      "field": "masks, anchors, archive/query refinement",
+      "id": "T0-10",
+      "physical_admission": false,
+      "reviewable_options": [
+        "sparse causal checkpoint/event archive",
+        "approved local derived refinement branches"
+      ],
+      "source_bound": "D12,12anchors,CHA-1/H0 and provisional500000000000bytes",
+      "uncertainty_sensitivity_plan": "refinement/uncertainty per region-epoch-process; preserve lineage",
+      "units": "bytes,m,s"
+    }
+  ],
+  "scientific_promotion": false,
+  "source_vs_author_rule": "bibliographic/source values and numerical applicability require explicit binding; author choices stay null until provided; no default Earth CMB",
+  "sources": {
+    "R6_GEODYNAMIC_LAW_AUTHORITY_MATRIX.json": {
+      "authority": "SOURCE_BYTES_VERIFIED_SCOPE_SEPARATELY_ADJUDICATED",
+      "bytes": 3500,
+      "sha256": "ce34a5022dbd23ef30e31bf93b8814c86314ac3ce8f8f709604015260198b10b"
+    },
+    "R6_INITIAL_WORLD_MATERIALIZATION_MANIFEST.json": {
+      "authority": "SOURCE_BYTES_VERIFIED_SCOPE_SEPARATELY_ADJUDICATED",
+      "bytes": 22769,
+      "sha256": "6aaf918775514eb86362133526a08af295f5df7caf74773da9262076288e830f"
+    },
+    "experiments/r6_thermo_provider_pilot_v1/m01_mantle_experimental_design_candidate_v1.json": {
+      "authority": "SOURCE_BYTES_VERIFIED_SCOPE_SEPARATELY_ADJUDICATED",
+      "bytes": 7488,
+      "sha256": "efce01eb62310988d56c852300b9b777be91cca71067b9ed8d7d98c7e9268417"
+    }
+  },
+  "status": "DECISION_READY_NOT_MATERIAL_ASSIGNMENTS"
+}
