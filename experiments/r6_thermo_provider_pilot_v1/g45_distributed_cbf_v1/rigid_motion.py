@@ -1,5 +1,6 @@
 """Independent component-wise rigid-motion/virtual-trace audit of retained data."""
 import json
+import hashlib
 from pathlib import Path
 import sys
 import numpy as np
@@ -17,7 +18,7 @@ def translations(H,components):
 
 
 def main():
-    rows=[]
+    rows=[];graph_references={}
     paths=set(c.ROOT.glob('*/G45R1_AUDIT_REPORT.json'))|set(c.ROOT.glob('*/AUDIT_V2_REPORT.json'))
     for report in sorted(paths):
         case=report.parent;old=c.read(report)
@@ -30,6 +31,13 @@ def main():
             i,j=idx[int(slave)],idx[int(master)];audit.require(components[i]==components[j],'HANGING_COMPONENT_MIX');rr.append(i);cc.append(j);vv.append(w);slaves.add(i)
         for i in range(N):
             if i not in slaves:rr.append(i);cc.append(i);vv.append(1.)
+        support=[(int(components[i]),*(int(round(v*1e12)) for v in d[i,2:5])) for i in range(N)]
+        audit.require(len(set(support))==N,'COINCIDENT_SUPPORT_IDENTITY')
+        triples=sorted((support[idx[int(a)]],support[idx[int(b)]],float(v).hex()) for a,b,v in h)
+        graph=hashlib.sha256(json.dumps({'support':sorted(support),'constraints':triples},separators=(',',':')).encode()).hexdigest()
+        group=(spec['base_refinement'],spec['adaptive_cycles'])
+        if group in graph_references:audit.require(graph_references[group]==graph,'RANK_CONSTRAINT_GRAPH_PARITY')
+        else:graph_references[group]=graph
         H=sparse.coo_matrix((vv,(rr,cc)),shape=(N,N)).tocsr();terr=translations(H,components);active=np.flatnonzero(d[:,11]>1e-20);node=np.array([[idx[int(v)] for v in row] for row in f[:,34:37]]);motions=[]
         for axis in range(3):
             motions.append(('translation_'+str(axis),(components==axis).astype(float)))
@@ -41,7 +49,7 @@ def main():
             audit.require(error<audit.T['adjoint_virtual_relative_absolute_power'],'RIGID_TRACE_ADJOINT')
             audit.require(reproduction<(audit.T['rigid_rotation_reproduction_relative'] if name.startswith('rotation') else audit.T['rigid_translation_reproduction_relative']),'RIGID_FIELD_REPRODUCTION')
             checks.append({'motion':name,'full_field_reproduction_relative':reproduction,'boundary_work':work_face,'all_cell_residual_work':work_volume,'absolute_power_scale':scale,'adjoint_relative':error})
-        rows.append({'case':case.name,'screen_pass':True,'translation_component_max_errors':terr,'motions':checks})
+        rows.append({'case':case.name,'screen_pass':True,'translation_component_max_errors':terr,'constraint_structure_sha256':graph,'motions':checks})
     c.need(len(rows)>=16,'RIGID_AUDIT_COVERAGE')
-    c.write(c.ROOT/'RIGID_MOTION_AND_VIRTUAL_WORK.json',{'screen_pass':True,'cases':rows,'scope':'component-wise global topology reproduction; rigid boundary traces with zero independent-interior extension for adjoint identity; full physical geometric force/moment separately screened','limits':'curved AMR rotation reproduction has measured discretization error, not claimed exact; no velocity or RHS correction',**c.SCOPE});print('RIGID_MOTION_PASS',len(rows),flush=True)
+    c.write(c.ROOT/'RIGID_MOTION_AND_VIRTUAL_WORK.json',{'screen_pass':True,'cases':rows,'constraint_graph_rank_parity_pass':True,'scope':'component-wise global topology reproduction; rigid boundary traces with zero independent-interior extension for adjoint identity; full physical geometric force/moment separately screened','limits':'curved AMR rotation reproduction has measured discretization error, not claimed exact; no velocity or RHS correction',**c.SCOPE});print('RIGID_MOTION_PASS',len(rows),flush=True)
 if __name__=='__main__':main()
