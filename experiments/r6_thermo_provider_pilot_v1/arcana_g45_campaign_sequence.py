@@ -13,6 +13,14 @@ sys.path.insert(0,str(c.CODE));import audit
 
 def execute(spec,plugin):
     label=spec['name']+'_NEW01';case=c.ROOT/label
+    if case.exists() and not c.read(case/'EXECUTION_REPORT.json')['screen_pass']:
+        failed=c.read(case/'RUN_EXIT.json');c.need(not failed['remaining'],'UNSAFE_RETRY')
+        retry=2
+        while (c.ROOT/(label+'_RETRY'+str(retry))).exists():
+            candidate=c.ROOT/(label+'_RETRY'+str(retry))
+            if c.read(candidate/'EXECUTION_REPORT.json')['screen_pass']:break
+            c.need(not c.read(candidate/'RUN_EXIT.json')['remaining'],'UNSAFE_RETRY');retry+=1
+        label=label+'_RETRY'+str(retry);case=c.ROOT/label
     if not case.exists():c.case(spec,label,plugin)
     execution=c.read(case/'EXECUTION_REPORT.json');c.need(execution['screen_pass'],'REUSE_FAILED_EXECUTION:'+label)
     c.need(execution['case_spec']==spec and execution['plugin_sha256']==c.sha(plugin),'REUSE_IDENTITY')

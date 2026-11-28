@@ -80,13 +80,20 @@ def prm_for(spec):
     if family=='analytic':
         raw=old.runtime()[5].read_text();text=old.candidate(raw,level)
         text=text.replace('./libhollow_sphere.so','./libhollow_sphere.so, ./libarcana_g45.so')
-        text=re.sub(r'(set List of postprocessors\s*=)([^\n]+)',lambda m:m[1]+m[2]+', dynamic topography, arcana g45 distributed cbf',text)
+        text=re.sub(r'(set List of postprocessors\s*=)([^\n]+)',lambda m:m[1]+' '+', '.join(dict.fromkeys([x.strip() for x in m[2].split(',')]+['dynamic topography','arcana g45 distributed cbf'])),text)
     else:
         text='set Additional shared libraries = ./libarcana_g45.so\n'+g39.PRM.format(level=level,gauge='net rotation',datum=10 if family=='datum' else 0,
              temperature='1000' if family=='hydro' else '1000+100*(x*y+0.3*z)')
         text=text.replace('viscous dissipation statistics','viscous dissipation statistics, dynamic topography, arcana g45 distributed cbf')
     text,count=re.subn(r'(set Initial adaptive refinement\s*=\s*)0\b',lambda m:m[1]+str(amr),text);need(count==1,'ADAPTIVE_PRM')
-    text=text.replace('subsection Mesh refinement\n','subsection Mesh refinement\n  set Strategy = arcana g45 deterministic\n  set Refinement fraction = 0\n  set Coarsening fraction = 0\n  set Run postprocessors on initial refinement = false\n',1)
+    return refinement_settings(text)
+
+def refinement_settings(text):
+    def patch(m):
+        body=re.sub(r'(?m)^\s*set (?:Strategy|Refinement fraction|Coarsening fraction|Run postprocessors on initial refinement)\s*=.*$', '',m[2])
+        return m[1]+body+'\n  set Strategy = arcana g45 deterministic\n  set Refinement fraction = 0\n  set Coarsening fraction = 0\n  set Run postprocessors on initial refinement = false'+m[3]
+    text,count=re.subn(r'(subsection Mesh refinement\n)(.*?)(\nend)',patch,text,flags=re.S)
+    need(count==1,'MESH_SUBSECTION_SCOPE')
     return text
 
 def case(spec,label,plugin,extra_prm=''):
