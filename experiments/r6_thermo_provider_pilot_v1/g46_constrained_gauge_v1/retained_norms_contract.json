@@ -1,0 +1,50 @@
+{
+  "budgets": "same16GiB sampled native PSS,8GiB offline,600s/case,max1rank; two native cases within original28case cap",
+  "cases": [
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "forced",
+      "fields": [
+        "forced_p1_reference",
+        "forced_p4_minus_p1",
+        "datum_p1_reference",
+        "datum_p1_minus_forced_p1"
+      ],
+      "gauge": "unremoved",
+      "name": "retained_norms_l2_p1_NEW01",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "forced",
+      "fields": [
+        "forced_p1_reference",
+        "forced_p8_minus_p1",
+        "datum_p1_reference",
+        "datum_p4_minus_p1",
+        "datum_p4_minus_forced_p4"
+      ],
+      "gauge": "unremoved",
+      "name": "retained_norms_l3_p1_NEW01",
+      "ranks": 1,
+      "synthetic_time": 0
+    }
+  ],
+  "diagnostics": [
+    "volume velocity mass L2 raw and relative",
+    "L2 divergence and strain energy of raw differences",
+    "angular momentum and inertia",
+    "surface normal velocity L2",
+    "H/C admissibility of retained fields"
+  ],
+  "fit_policy": "no fitting/subtraction; every absolute velocity gate remains raw",
+  "frozen_before_compile_and_runs": true,
+  "id": "G46_RETAINED_FIELD_VOLUME_NORMS_V1",
+  "join": "stable minimum CellId/localbasis; case-local DOF ids never cross-run identity",
+  "native_changes": "postprocessor/input additional library only; same equations/RHS/BC/native tolerances; visualization and old duplicate trace dumps disabled; no solver correction",
+  "parent_contract": "a4be9d965d14dca982ad1d2d3607cdc6814e196c51d2813ceeeacdaae3c5b2fd",
+  "purpose": "G45 did not export volume mass matrices/quadrature fields. Integrate retained raw rank/datum velocity differences with actual native FE mapping and material on same meshes; no fitted correction, no fine/rank qualification expansion"
+}

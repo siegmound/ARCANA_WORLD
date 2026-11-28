@@ -44,9 +44,9 @@ def env(case,extra=None):
  e={'HOME':'/home/dealii','USER':'dealii','PATH':str(rt/'bin')+':/usr/bin:/bin','TMPDIR':str(case/'tmp'),'OPAL_PREFIX':str(rt),'OMPI_MCA_mca_base_component_path':str(root/'usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3'),'OMPI_MCA_pml':'ob1','OMPI_MCA_btl':'self,vader','OMPI_MCA_btl_vader_single_copy_mechanism':'none','OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','MKL_NUM_THREADS':'1','HWLOC_HIDE_ERRORS':'2','PYTHONDONTWRITEBYTECODE':'1'}
  e.update(extra or {});return e
 
-def build(label):
+def build(label,norms=False):
  check();work=ROOT/label;work.mkdir()
- for name in ('arcana_g46.cc','CMakeLists.txt'):shutil.copy2(CODE/name,work/name)
+ for name in ('arcana_g46.cc','CMakeLists.txt'):shutil.copy2(CODE/('retained_norms.cc' if norms and name=='arcana_g46.cc' else name),work/name)
  state,container,root,src,*_=prior.old.runtime()
  prefix=[str(state/'bin/proot-x86_64-4_8_0'),'-r',str(root),'-b','/proc','-b','/dev','-b',str(work)+':/tmp','-w','/tmp']
  for stage,args in [('configure',['/usr/bin/cmake','-S','/tmp','-B','/tmp/build','-DAspect_DIR=/home/dealii/aspect']),('compile',['/usr/bin/cmake','--build','/tmp/build','--target','arcana_g46.release','--parallel','1'])]:
@@ -84,7 +84,7 @@ exec "$@"
  row={'exit_code':r['exit_code'],'native_convergence':conv,'spec':spec,'execution':r,'screen_pass':r['exit_code']==0 and (conv is None or conv['screen_pass']),**SCOPE};write(case/'EXECUTION_REPORT.json',row);print('G46_NATIVE_EXIT',label,r['exit_code'],row['screen_pass'],flush=True);return case,row
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('action',choices=['preflight','build','case']);p.add_argument('--label');p.add_argument('--plugin',type=Path);p.add_argument('--family',choices=['forced','hydro','analytic'],default='forced');p.add_argument('--level',type=int,default=2);p.add_argument('--ranks',type=int,default=1);p.add_argument('--amr',type=int,default=1);p.add_argument('--gauge',choices=['original','unremoved'],default='unremoved');p.add_argument('--matrix',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['preflight','build','case']);p.add_argument('--label');p.add_argument('--plugin',type=Path);p.add_argument('--family',choices=['forced','hydro','analytic'],default='forced');p.add_argument('--level',type=int,default=2);p.add_argument('--ranks',type=int,default=1);p.add_argument('--amr',type=int,default=1);p.add_argument('--gauge',choices=['original','unremoved'],default='unremoved');p.add_argument('--matrix',action='store_true');p.add_argument('--norms',action='store_true');a=p.parse_args()
  if a.action=='preflight':preflight()
- elif a.action=='build':build(a.label)
+ elif a.action=='build':build(a.label,a.norms)
  else:execute(a.label,{'name':a.label,'family':a.family,'base_refinement':a.level,'ranks':a.ranks,'adaptive_cycles':a.amr,'gauge':a.gauge,'synthetic_time':0},a.plugin,extra_env={'ARCANA_G46_MATRIX':'1'} if a.matrix else {})

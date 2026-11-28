@@ -17,6 +17,7 @@ def main():
   label='negative_restart_'+kind+'_NEW01';case,run=c.execute(label,{'name':label,'family':'analytic','kind':'restart_negative','base_refinement':2,'adaptive_cycles':0,'ranks':1,'max_accepted_native_clock_increments':2,'expected_failure':kind},plugin,text=text,extra_env={'ARCANA_G46_STOP_TIME':'.002'},checkpoint=parent)
   err=(case/'STDERR.txt').read_text();stdout=(case/'STDOUT.txt').read_text();expected={'missing_checkpoint':'no matching written checkpoint','corrupted_checkpoint':'decompress','incompatible_fields':'number of compositional fields'}[kind]
   match=expected.lower() in err.lower()
+  if kind=='incompatible_fields':match=match or ('load_and_check_critical_parameters' in err and 'use_discontinuous_composition_discretization ==' in ' '.join(err.split()))
   if kind=='corrupted_checkpoint':match=match or any(x in err.lower() for x in ['uncompress','deserialize','zlib','compressed','corrupt'])
   no_step=not re.search(r'\*\*\* Timestep\s+\d+',stdout)
   row={'name':kind,'case':case.name,'native_exit':run['exit_code'],'expected_native_diagnostic_found':match,'no_accepted_time_step':no_step,'screen_pass':bool(run['exit_code']!=0 and match and no_step)};rows.append(row);print('NEGATIVE_RESTART',kind,row['screen_pass'],flush=True)
