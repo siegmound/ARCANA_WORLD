@@ -1,0 +1,255 @@
+{
+  "acceptance": "all parent tolerances unchanged PLUS native nonlinear convergence to configured1e-6 and no native solver-failure warnings; report unremoved rotation, never claim qualified rotation-removal policy",
+  "allowed_change": "only disable post-hoc Remove nullspace for forced/datum; no equation/RHS/boundary/linear or nonlinear tolerance modification, no added pins or torque fit",
+  "cases": [
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "forced",
+        "name": "forced_l2_a1_p1",
+        "ranks": 1,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "forced",
+        "name": "forced_l2_a1_p2",
+        "ranks": 2,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "forced",
+        "name": "forced_l2_a1_p4",
+        "ranks": 4,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "forced",
+        "name": "forced_l2_a1_p8",
+        "ranks": 8,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "forced",
+        "name": "forced_l3_a1_p1",
+        "ranks": 1,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "forced",
+        "name": "forced_l3_a1_p2",
+        "ranks": 2,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "forced",
+        "name": "forced_l3_a1_p4",
+        "ranks": 4,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "forced",
+        "name": "forced_l3_a1_p8",
+        "ranks": 8,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "hydro",
+        "name": "hydro_l2_a1_p1",
+        "ranks": 1,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "hydro",
+        "name": "hydro_l2_a1_p2",
+        "ranks": 2,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "hydro",
+        "name": "hydro_l2_a1_p4",
+        "ranks": 4,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "hydro",
+        "name": "hydro_l2_a1_p8",
+        "ranks": 8,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "datum",
+        "name": "datum_l2_a1_p1",
+        "ranks": 1,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "datum",
+        "name": "datum_l2_a1_p2",
+        "ranks": 2,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "datum",
+        "name": "datum_l2_a1_p4",
+        "ranks": 4,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "datum",
+        "name": "datum_l2_a1_p8",
+        "ranks": 8,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "datum",
+        "name": "datum_l3_a1_p1",
+        "ranks": 1,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unremoved",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "datum",
+        "name": "datum_l3_a1_p4",
+        "ranks": 4,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "analytic",
+        "name": "analytic_l2_a1_p1",
+        "ranks": 1,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 2,
+        "family": "analytic",
+        "name": "analytic_l2_a1_p4",
+        "ranks": 4,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "analytic",
+        "name": "analytic_l3_a1_p1",
+        "ranks": 1,
+        "synthetic_time": 0
+      }
+    },
+    {
+      "gauge_variant": "unchanged",
+      "original_case": {
+        "adaptive_cycles": 1,
+        "base_refinement": 3,
+        "family": "analytic",
+        "name": "analytic_l3_a1_p4",
+        "ranks": 4,
+        "synthetic_time": 0
+      }
+    }
+  ],
+  "contract": "G45R1_POSTHOC_GAUGE_DIAGNOSTIC_V1",
+  "hypothesis": "post-solve rotational subtraction on curved AMR preserves H but may reintroduce normal-boundary error; correlation is not proof",
+  "parent_contract_sha256": "9b3214d51e986e7317b04c57ccf3ecdc1bf6729861c3e1dfb00472d65ca548c7",
+  "physical_promotion": false,
+  "restart": "no positive-time checkpoint authorized; native zero-time checkpoint blocked by upstream strictly-positive step before checkpoint",
+  "scope": "separate predeclared numerical gauge control; original net-rotation failures remain failed",
+  "stop_rule": "first unremoved forced coarse rank1 must converge and pass independent audit before larger dependent runs; if not, stop that branch and retain precise blocker"
+}

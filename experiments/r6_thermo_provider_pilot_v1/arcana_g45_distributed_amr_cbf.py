@@ -96,10 +96,18 @@ def refinement_settings(text):
     need(count==1,'MESH_SUBSECTION_SCOPE')
     return text
 
-def case(spec,label,plugin,extra_prm=''):
+def case(spec,label,plugin,extra_prm='',gauge_variant=None):
     check();need(spec in read(CODE/'contract.json')['cases'],'CASE_NOT_FROZEN')
     work=ROOT/label;work.mkdir();(work/'output').mkdir();n=spec['ranks'];selected=cpus(n);rt=ROOT/'native_runtime'
-    write(work/'CASE_SPEC.json',spec);shutil.copy2(plugin,work/plugin.name);(work/'input.prm').write_text(prm_for(spec)+extra_prm)
+    write(work/'CASE_SPEC.json',spec);shutil.copy2(plugin,work/plugin.name);text=prm_for(spec)+extra_prm
+    if gauge_variant is not None:
+        need(gauge_variant=='unremoved' and spec['family'] in ('forced','datum') and spec['adaptive_cycles']==1,'GAUGE_VARIANT_SCOPE')
+        pin='4da69affd756263029c7b9d0888ef1e9addb2ed71a230254e1212b1dab8e9d6f'
+        need(sha(CODE/'gauge_diagnostic_contract_v1.json')==pin and sha(ROOT/'GAUGE_DIAGNOSTIC_FROZEN_CONTRACT.json')==pin,'GAUGE_CONTRACT_DRIFT')
+        need(text.count('set Remove nullspace = net rotation')==1,'GAUGE_PARAMETER')
+        text=text.replace('set Remove nullspace = net rotation','set Remove nullspace = ')
+        write(work/'CASE_VARIANT.json',{'gauge_variant':gauge_variant,'contract_sha256':pin,'no_equation_RHS_BC_tolerance_change':True})
+    (work/'input.prm').write_text(text)
     if spec['family']=='analytic':lib=old.runtime()[6];shutil.copy2(lib,work/lib.name)
     wrapper='''#!/bin/bash
 set -eu
@@ -116,9 +124,21 @@ exec "$@"
         need('30eb77ee5' in text and 'OPTIMIZED' in text and re.search(r'running with '+str(n)+r' MPI process',text,re.I),'RUNTIME_IDENTITY')
         marks=re.findall(r'HPC_RANK=(\d+) CPU=([\d,-]+)',text);need(len(marks)==n and all(old.r2.cpuset(cpu)=={selected[int(rank)]} for rank,cpu in marks),'RANK_AFFINITY')
         need(len(list((work/'output').glob('G45_s0_r*_SUMMARY.dat')))==n,'SHARD_COUNT')
-        row.update(screen_pass=True,rank_affinity=marks,statistics=old.g38.statistics(work/'output/statistics'))
+        row.update(screen_pass=True,rank_affinity=marks,statistics=old.g38.statistics(work/'output/statistics'),native_convergence=native_convergence(work))
     write(work/'EXECUTION_REPORT.json',row);print('G45_NATIVE_EXIT',label,result['exit_code'],flush=True)
     return row
+
+def native_convergence(case):
+    text=(case/'STDOUT.txt').read_text()
+    residuals=list(map(float,re.findall(r'Relative nonlinear residual \(Stokes system\) after nonlinear iteration \d+:\s*([0-9.eE+-]+)',text)))
+    parameters=case/'output/parameters.prm'
+    data=parameters.read_text() if parameters.exists() else (case/'input.prm').read_text()
+    tolerance=re.search(r'(?m)^\s*set Nonlinear solver tolerance\s*=\s*([0-9.eE+-]+)',data)
+    tol=float(tolerance[1]) if tolerance else 1e-6
+    warnings=re.findall(r'WARNING:.*(?:nonlinear|linear) solver failures occurred!',text)
+    return {'screen_pass':bool(residuals and residuals[-1]<=tol and not warnings),'configured_nonlinear_tolerance':tol,
+        'last_residual':residuals[-1] if residuals else None,'solver_failure_warnings':warnings}
+
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('action',choices=['build','case','version']);p.add_argument('--label',required=True);p.add_argument('--spec');p.add_argument('--plugin',type=Path)
