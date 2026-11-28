@@ -19,7 +19,6 @@ set Maximum time step = 0.001
 set Nonlinear solver tolerance = 1e-6
 subsection Time stepping
  set List of model names = function
- set Checkpoint on termination = true
  subsection Function
   set Function expression = 0.001
  end
@@ -78,7 +77,7 @@ def compare(ref,case):
  integ=sa[:,5:].sum(axis=0);other=sb[:,5:].sum(axis=0);delta=(abs(integ-other)/np.maximum(abs(integ),1.));limit=1e-8 if len(sb)==1 else 1e-4
  return {'reference':ref.name,'case':case.name,'fields_relative':fields,'integrals_relative':delta.tolist(),'serialized_clock_s':.002,'next_pending_step_not_executed':True,'field_limit':limit,'screen_pass':max(fields.values())<=limit and max(delta)<=1e-8,'rank_count':len(sb)}
 
-def run():
+def run(suffix='NEW02'):
  c.check();c.need(c.sha(c.CODE/'restart_realization_contract.json')==REALIZATION_PIN and c.sha(c.ROOT/'FROZEN_RESTART_REALIZATION_CONTRACT.json')==REALIZATION_PIN,'RESTART_REALIZATION_DRIFT')
  plugin=c.ROOT/'plugin_build_NEW03/build/libarcana_g46.release.so';attempt=[]
  def execute(label,n,stop,resume=False,checkpoint=None):
@@ -89,19 +88,19 @@ def run():
   clocks=re.findall(r'\*\*\* Timestep (\d+):\s*t=([\d.eE+-]+)',text);c.need(clocks and max(int(i) for i,t in clocks)<=1 and max(float(t) for i,t in clocks)<=.001+1e-14,'RESTART_ACCEPTED_STEP_BUDGET')
   c.write(case/'RESTART_NATIVE_GATE.json',{'screen_pass':True,'solve_clocks':clocks,'stop_s':stop,'accepted_clock_cap':2,**c.SCOPE});return case
  try:
-  ref=execute('restart_reference_p1_NEW01',1,.002)
-  first=execute('restart_first_p1_NEW01',1,.001)
+  ref=execute('restart_reference_p1_'+suffix,1,.002)
+  first=execute('restart_first_p1_'+suffix,1,.001)
   _,_,sumfirst=load(first,step=1);c.need(np.all(sumfirst[:,1]==.001),'CHECKPOINT_FIRST_CLOCK')
   inv=c.prior.old.g25.inventory(first/'output/restart');receipt={'contract_sha256':c.PIN,'realization_sha256':REALIZATION_PIN,'serialized_time_s':.001,'next_step_s':.001,'accepted_native_clock_increments':1,'files':inv};c.write(first/'CHECKPOINT_LINEAGE.json',receipt);clock_gate(receipt,inv)
   results=[]
   for n in [1,2,4,8]:
    clock_gate(c.read(first/'CHECKPOINT_LINEAGE.json'),c.prior.old.g25.inventory(first/'output/restart'))
-   case=execute(f'restart_resume_p{n}_NEW01',n,.002,True,first/'output');result=compare(ref,case);c.write(case/'RESTART_COMPARISON.json',result);results.append(result);print('G46_RESTART',n,result['screen_pass'],max(result['fields_relative'].values()),flush=True)
+   case=execute(f'restart_resume_p{n}_'+suffix,n,.002,True,first/'output');result=compare(ref,case);c.write(case/'RESTART_COMPARISON.json',result);results.append(result);print('G46_RESTART',n,result['screen_pass'],max(result['fields_relative'].values()),flush=True)
   # A genuine state change excludes a vacuous state-only restart test.
   k,a,s=load(ref);k0,b,s0=load(first,step=1);c.need(k==k0,'FIRST_FINAL_SUPPORT');change={str(comp):float(np.linalg.norm(a[a[:,0]==comp,1]-b[b[:,0]==comp,1])) for comp in [4,5]};c.need(all(v>1e-10 for v in change.values()),'VACUOUS_THERMAL_OR_COMPOSITION_RESTART')
   report={'status':'PASS_NATIVE_RESTART_ONLY' if all(r['screen_pass'] for r in results) else 'FAIL_NATIVE_RESTART_COMPARISON','results':results,'attempts':attempt,'nontrivial_field_change':change,'accepted_native_clock_increments_per_lineage':2,'serialized_clock_s':.002,'last_computed_transport_field_time_s':.001,'synthetic_only':True,**c.SCOPE}
  except Exception as e:
   import traceback
   report={'status':'BLOCKED_NATIVE_RESTART','attempts':attempt,'error':repr(e),'traceback':traceback.format_exc(),**c.SCOPE};print(report['traceback'],flush=True)
- c.write(c.ROOT/'RESTART_PHASE_REPORT.json',report)
+ c.write(c.ROOT/('RESTART_PHASE_REPORT_'+suffix+'.json'),report)
 if __name__=='__main__':run()
