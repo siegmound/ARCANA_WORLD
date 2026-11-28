@@ -142,7 +142,7 @@ exec "$@"
 '''
     (case/'rank.sh').write_text(wrapper)
     if probe:
-        binary=EV/PINNED[-1][0]/'probe_build/mpi_probe';shutil.copyfile(binary,case/'mpi_probe');exe=['/tmp/mpi_probe',str(n)]
+        binary=EV/PINNED[-1][0]/'probe_build/mpi_probe';shutil.copy2(binary,case/'mpi_probe');need(os.access(case/'mpi_probe',os.X_OK) and sha(case/'mpi_probe')==sha(binary),'PROBE_EXECUTABLE_IDENTITY');exe=['/tmp/mpi_probe',str(n)]
     else:
         (case/'input.prm').write_text(candidate(prm.read_text(),level,visualization));shutil.copyfile(lib,case/lib.name)
         exe=['/home/dealii/aspect/bin/aspect-release','input.prm']

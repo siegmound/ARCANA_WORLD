@@ -6,8 +6,14 @@ import arcana_g44_hpc_campaign as c
 
 def main():
     root=c.ROOT
-    with (root/'SEQUENCE.log').open('x') as log:
+    with (root/'SEQUENCE.log').open('a') as log:
         def case(name,n,l,**kw):
+            original=root/name
+            if original.exists():
+                report=original/'CASE_REPORT.json'
+                if report.exists() and c.read(report)['screen_pass']:
+                    return c.read(report)
+                name=name+'_retry2'
             log.write(json.dumps({'start':name,'ranks':n,'level':l})+'\n');log.flush()
             row=c.execute(name,n,l,**kw)
             log.write(json.dumps({'complete':name,'aspect_s':row.get('aspect_wall_s'),'wall_s':row['execution']['wall_s']})+'\n');log.flush()
