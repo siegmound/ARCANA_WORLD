@@ -75,7 +75,7 @@ def compare(ref,case):
   mask=a[:,0]==comp
   for j,name in enumerate(['current','old','old_old'],1):fields[f'component{comp}_{name}']=float(np.linalg.norm(a[mask,j]-b[mask,j])/max(np.linalg.norm(a[mask,j]),1.))
  integ=sa[:,5:].sum(axis=0);other=sb[:,5:].sum(axis=0);delta=(abs(integ-other)/np.maximum(abs(integ),1.));limit=1e-8 if len(sb)==1 else 1e-4
- return {'reference':ref.name,'case':case.name,'fields_relative':fields,'integrals_relative':delta.tolist(),'serialized_clock_s':.002,'next_pending_step_not_executed':True,'field_limit':limit,'screen_pass':max(fields.values())<=limit and max(delta)<=1e-8,'rank_count':len(sb)}
+ return {'reference':ref.name,'case':case.name,'fields_relative':fields,'integrals_relative':delta.tolist(),'serialized_clock_s':.002,'next_pending_step_not_executed':True,'field_limit':limit,'screen_pass':bool(max(fields.values())<=limit and max(delta)<=1e-8),'rank_count':len(sb)}
 
 def run(suffix='NEW03'):
  c.check();c.need(c.sha(c.CODE/'restart_realization_contract.json')==REALIZATION_PIN and c.sha(c.ROOT/'FROZEN_RESTART_REALIZATION_CONTRACT.json')==REALIZATION_PIN,'RESTART_REALIZATION_DRIFT')
