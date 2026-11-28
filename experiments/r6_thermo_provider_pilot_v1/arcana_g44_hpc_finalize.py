@@ -53,6 +53,13 @@ def final_guards():
         d=c.read(p);c.need(not d['remaining'],'CASE_LEFTOVERS:'+str(p))
         cases.append({'case':str(p.parent.relative_to(c.ROOT)),'exit_code':d['exit_code'],'launcher_exit_code':d['launcher_exit_code']})
         for x in d.get('per_process_peak_pss_samples',{}).values():observed.add((x['pid'],x['starttime']))
+    failed_cleanup=[]
+    for p in sorted(c.ROOT.rglob('SUPERVISOR_FAILURE.json')):
+        d=c.read(p);c.need('cleanup' in d and not d['cleanup']['remaining'],'FAILED_SUPERVISOR_LEFTOVERS')
+        failed_cleanup.append(str(p.relative_to(c.ROOT)))
+    for p in c.ROOT.rglob('PROCESS_SAMPLES.jsonl'):
+        for line in p.open():
+            for x in json.loads(line)['processes']:observed.add((x['pid'],x['starttime']))
     for pid,start in observed:
         try:
             raw=Path('/proc',str(pid),'stat').read_text();v=raw[raw.rfind(')')+2:].split()
@@ -63,6 +70,7 @@ def final_guards():
         'historical_container_metadata_equal':True,'historical_metadata_entries':len(metadata),
         'parents':parents,'private_binary_identities_unchanged':True,
         'execution_cases':cases,'observed_process_identities_checked':len(observed),'observed_live_remaining':live,
+        'failed_supervisor_cleanup_reports_checked':failed_cleanup,
         'process_scope':'per-job exact-token descendant scans and observed PID/starttime recheck, not a claim about unrelated node jobs',
         'R2_output_exists':(c.EV/'R6_G44R2_TCP_MPI_RECOVERY_NEW01').exists(),**c.SCOPE}
 
