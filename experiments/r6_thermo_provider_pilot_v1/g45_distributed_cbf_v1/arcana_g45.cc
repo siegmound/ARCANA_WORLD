@@ -84,7 +84,7 @@ template <int dim> class ArcanaG45 : public Interface<dim>, public SimulatorAcce
    for(unsigned q=0;q<vq.size();++q){const double w=fe.JxW(q);AssertThrow(w>0,ExcMessage("G45 positive volume Jacobian"));
     const auto gravity=this->get_gravity_model().gravity_vector(in.position[q]);const auto body=out.densities[q]*gravity;
     const double ph=1000*(1-in.position[q].norm());
-    volume+=w;D+=w*2*out.viscosities[q]*in.strain_rate[q].norm_square();B+=w*(body*in.velocity[q]);P+=w*in.pressure[q]*trace(in.strain_rate[q]);
+    volume+=w;D+=w*2*out.viscosities[q]*(in.strain_rate[q]*in.strain_rate[q]);B+=w*(body*in.velocity[q]);P+=w*in.pressure[q]*trace(in.strain_rate[q]);
     force+=w*body;if constexpr(dim==3)torque+=w*cross_product_3d(Tensor<1,dim>(in.position[q]),body);Fabs+=w*body.norm();Wabs+=w*std::abs(body*in.velocity[q]);
     for(auto i:active){lr[i]+=w*(2*out.viscosities[q]*(fe[vel].symmetric_gradient(i,q)*in.strain_rate[q])-in.pressure[q]*fe[vel].divergence(i,q)-body*fe[vel].value(i,q));
      lh[i]+=w*(-ph*fe[vel].divergence(i,q)-1000*gravity*fe[vel].value(i,q));}
