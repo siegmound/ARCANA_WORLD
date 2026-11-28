@@ -7,8 +7,15 @@ sys.path.insert(0,str(Path(__file__).parents[1]));import arcana_g46_campaign as 
 sys.path.insert(0,str(c.CODE));import oracle
 sys.path.insert(0,str(c.prior.CODE));import audit
 
+def pressure_preflight(case,ids,act):
+ spec=c.read(case/'CASE_SPEC.json');c.need(spec.get('pressure_increment_expression','10')=='10','DATUM_NONCONSTANT_SHIFT')
+ v=np.vstack([oracle.numeric(p,2) for p in sorted((case/'output').glob('G46_s0_r*_PV3.dat'))]);v=v[np.argsort(v[:,0])]
+ c.need(np.array_equal(v[:,0],ids),'DATUM_OWNER_IDENTITY')
+ c.need(np.linalg.norm(v[:,1]-act[:,1])/max(np.linalg.norm(act[:,1]),1.)<=1e-10,'DATUM_NATIVE_PRESSURE_LOAD')
+ return True
+
 def evaluate(case):
- a,Z,act,C,ci,H,hi,summary,faces,allstate=oracle.load(case);ids=a[:,0].astype(int)
+ a,Z,act,C,ci,H,hi,summary,faces,allstate=oracle.load(case);ids=a[:,0].astype(int);pressure_preflight(case,ids,act)
  def vector(suffix):
   x=np.vstack([oracle.numeric(p,2) for p in sorted((case/'output').glob('G46_s0_r*_'+suffix+'.dat'))]);x=x[np.argsort(x[:,0])];c.need(np.array_equal(ids,x[:,0]),'DATUM_OWNER_IDENTITY');return x[:,1]
  data=audit.load(case);d=data['dofs'];d=d[np.argsort(d[:,0])];c.need(np.array_equal(d[:,0],ids),'G45_G46_SAME_RUN_IDENTITY')

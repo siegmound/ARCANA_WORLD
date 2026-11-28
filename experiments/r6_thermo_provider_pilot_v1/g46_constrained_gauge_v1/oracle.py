@@ -32,6 +32,13 @@ def exact_gauge_admission(mode):
  c.need(mode['forcing_compatibility_relative']<=T['forcing_compatibility_relative'],'GAUGE_INCOMPATIBLE_FORCING')
  return True
 
+def action_work_gate(Z,actions,summary):
+ total=summary[:,6:].sum(axis=0)
+ for j in range(10):
+  energy=float(total[12*j+1]);work=float(Z[:,j]@actions[:,2+j])
+  c.need(abs(energy-work)/max(abs(energy),1.)<=1e-10,'OMITTED_OR_WRONG_OPERATOR_CONTRIBUTION')
+ return True
+
 def load(case):
  spec=c.read(case/'CASE_SPEC.json');states=[];modes=[];acts=[];cr=[];hr=[];summ=[];bounds=[]
  for rank in range(spec['ranks']):
@@ -40,7 +47,7 @@ def load(case):
  allstate=np.vstack(states);c.need(len(set(allstate[:,0]))==len(allstate) and len(allstate)==int(summ[0][5]),'GLOBAL_STATE_COVERAGE');c.need(np.array_equal(np.array(summ)[:,0],np.arange(spec['ranks'])),'RANK_IDENTITY');a=allstate[allstate[:,1]<3];a=a[np.argsort(a[:,0])];ids=a[:,0].astype(int);c.need(len(set(ids))==len(ids),'OWNERSHIP')
  def align(arr):
   v=np.vstack(arr);v=v[np.argsort(v[:,0])];c.need(np.array_equal(v[:,0],ids),'ID_MISMATCH');return v[:,1:]
- C,ci,clift=constraint(np.vstack(cr),ids);H,hi,hlift=constraint(np.vstack(hr),ids);c.need(np.max(abs(H@np.ones(H.shape[1])-1))<=T['C_H_constraint_relative'],'H_PARTITION_OF_UNITY');c.need(np.linalg.norm(align(modes)[:,6:9]-C@align(modes)[ci,6:9])/max(np.linalg.norm(align(modes)[:,6:9]),1.)<=T['C_H_constraint_relative'],'EXPORTED_C_MODE_VIOLATION');return a,align(modes),align(acts),C,ci,H,hi,np.vstack(summ),np.vstack(bounds),allstate
+ action_work_gate(align(modes),align(acts),np.vstack(summ));C,ci,clift=constraint(np.vstack(cr),ids);H,hi,hlift=constraint(np.vstack(hr),ids);c.need(np.max(abs(H@np.ones(H.shape[1])-1))<=T['C_H_constraint_relative'],'H_PARTITION_OF_UNITY');c.need(np.linalg.norm(align(modes)[:,6:9]-C@align(modes)[ci,6:9])/max(np.linalg.norm(align(modes)[:,6:9]),1.)<=T['C_H_constraint_relative'],'EXPORTED_C_MODE_VIOLATION');return a,align(modes),align(acts),C,ci,H,hi,np.vstack(summ),np.vstack(bounds),allstate
 
 def evaluate(case):
  a,Z,actions,C,ci,H,hi,summary,faces,allstate=load(case);ids=a[:,0].astype(int);u=a[:,5];stateC=float(np.linalg.norm(u-C@u[ci])/max(np.linalg.norm(u),1.));stateH=float(np.linalg.norm(u-H@u[hi])/max(np.linalg.norm(u),1.))
