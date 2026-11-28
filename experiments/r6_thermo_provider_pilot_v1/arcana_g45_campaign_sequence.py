@@ -44,7 +44,7 @@ def execute(spec,plugin):
             old=c.EV/'R6_G41_NATIVE_QUADRATURE_NEW01'/oldname/'CASE_REPORT.json'
             if old.exists():
                 reference=c.read(old)['native'];stats=c.g39.parse_stats(case/'output/statistics')
-                row['G41_archive_replay_relative']={k:abs(stats[k]-reference[k])/max(abs(reference[k]),1.) for k in ('rms','dissipation','pmean')}
+                row['G41_archive_replay_relative']={k:abs(stats[k]-reference[k])/max(abs(reference[k]),1e-10) for k in ('rms','dissipation','pmean')}
                 c.need(max(row['G41_archive_replay_relative'].values())<1e-6,'G41_REPLAY')
         c.write(report,row);c.write(case/'STABLE_FIELDS_V2.json',fields)
         if not row['screen_pass']:print('G45_RETAINED_EQUILIBRIUM_FAILURE',spec['name'],flush=True)

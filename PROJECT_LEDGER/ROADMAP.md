@@ -1,14 +1,12 @@
-# CURRENT — roadmap dopo G44, 2026-11-28
+# CURRENT — roadmap dopo G45, 2026-11-28
 
-[Handoff completo](../docs/arcana/R6_G44_FAIR_HPC_QUALIFICATION_CLOSURE_20261128.md)
+[Handoff G45](../docs/arcana/R6_G45_DISTRIBUTED_AMR_CBF_CLOSURE_20261128.md); [inventario T0/G15](../docs/arcana/R6_G45_T0_G15_AUTHORITY_INVENTORY_20261128.md).
 
-1. HPC infrastrutturale: PASS sintetico MPI fino64fisici/128logici, native/shared-memory e throughput misurati; AMR/MPI CBF e vero rebuild SIMD ancora da qualificare.
-2. A — interfaccia: G36-R2 corretto, conservazione/lavoro su supporti reali e reazione normale fisica ancora aperti.
-3. B — full mantle adaptive: ASPECT candidato volumetrico; G43 condizionale non stato3D, M01 e autorità CMB/EOS/acqua/reologia/BC aperte. G45 uniforme distribuito PASS; contratto congelato, AMR/MPI CBF in esecuzione; nessun parametro inventato.
-4. C — G15corretto162anni: FB2 slopey/sinA, CSR/band, halving/restart, bilanci e termomeccanica da riqualificare separatamente.
-5. Primo T0→T1 su sottoinsieme minimo fisicamente chiuso, poi storia210Ma→0ka: geodinamica, rilievo, idrologia, materiali e risorse naturali/Deep; clima/suoli, flora/fauna, popolazioni/civiltà. D-024 evita un gate universale di tutti gli engine.
-6. HistoryStore comune: scheduler e dt adattivi distinti da archiviazione/query; checkpoint/B0 e replay causale, query per regione/epoca/processo, raffinamento con lineage,12anchor/CHA-1/H0, limite500GB. Nessuna equivalenza tra benchmark temporale sintetico e storia fisica.
+1. HPC G44 PASS sintetico; G45 uniforme MPI PASS e traccia AMR verificata nel ramo condizionale, gauge/datum/velocità/restart ancora bloccati. Non confondere kernel con provider fisico globale.
+2. Risolvere prima in un contratto sintetico il gauge compatibile e i difetti datum/parità8rank; restart nativo con scope temporale esplicito.
+3. A interfaccia: G36-R2/G37/G37B→trasferimento su mesh reali, lavoro/risultanti/momenti e reazione normale fisica.
+4. B mantello completo: G43 condizionale e B6K geometrico non inizializzatori3D; fonte/autore per CMB,EOS,T/X/H2O/P/reologia/flussi/perturbazioni/spin-up. M01 non selezionato.
+5. C G15 corretto a 162 anni: source-bound inizializzazione non contaminata, FB2 slopey/sinA e CSR/band, halving/restart, massa/energia/feedback. Nessuna nuova traiettoria autorizzata.
+6. D-024 minimo sottosistema fisicamente chiuso→Physical T1→WORLD_HISTORY 210 Ma→0 ka (ultimi 200 ka), risorse/Deep, clima/acqua/suoli, flora/fauna, popolazioni/civiltà. HistoryStore causale con query/raffinamento regione-epoca-processo,12 anchor/CHA-1/H0,budget 500 GB. Nessun gate universale di tutti i tool.
 
-Architecture A_FULL_MANTLE_ADAPTIVE; physical_T1=null; scientific_promotion=false; physical_acceptance=false; mantle_initial_state_admitted=false; mantle_provider_qualified=false; global_solve_authorized=false; WORLD_HISTORY_PRODUCTION_AUTHORIZED=false. Material assignments=0, ARCANA solves=0, additional time=0 years. D-024/D-025 ACTIVE.
-
-[Roadmap storica integrale](archive/G44_20261128_PRE_CLOSURE_NEW01/ROADMAP.md).
+A_FULL_MANTLE_ADAPTIVE; D-024/D-025 ACTIVE; physical_T1=null; scientific_promotion=false; physical_acceptance=false; mantle_initial_state_admitted=false; mantle_provider_qualified=false; global_solve_authorized=false; WORLD_HISTORY_PRODUCTION_AUTHORIZED=false; material_assignments=0; ARCANA_solves=0; additional_time_advance_years=0.
