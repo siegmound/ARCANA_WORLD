@@ -10,4 +10,4 @@ Architecture A_FULL_MANTLE_ADAPTIVE; physical_T1=null; scientific_promotion=fals
 
 Audit successivo: `R6_G44_HPC_DELIVERY_VALIDATION_NEW01`, manifest `1438fd8dc15d8bd562d5dc96a396843c47fffc7935fc2bdb1574e4bc63fd36d4`, 31 file. Inventario principale integralmente ricalcolato con il verificatore originale; artefatti reali dei test positivi/negativi conservati fuori da /tmp.
 
-G45 active root `R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01`, not sealed. Original full handoff, parent preflight, hardware/runtime metadata and frozen contract `9b3214d51e986e7317b04c57ccf3ecdc1bf6729861c3e1dfb00472d65ca548c7` retained. No numerical results yet.
+G45 active root `R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01`, not sealed. Original full handoff, parent preflight, hardware/runtime metadata and frozen contract `9b3214d51e986e7317b04c57ccf3ecdc1bf6729861c3e1dfb00472d65ca548c7` retained. UNIFORM_PHASE_REPORT.json records16accepted uniform cases, rank parity, datum and analytic refinement. Plugin buildNEW01 and analytic setupNEW01 failures retained; buildNEW02 and analytic retry2 PASS. Five targeted tests PASS.

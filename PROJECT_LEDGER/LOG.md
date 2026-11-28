@@ -1555,3 +1555,8 @@ Delivery integrity audit: original g38 verifier independently rehashed all 7121 
 ## 2026-11-28 — G45 authorization and pre-run acceptance freeze
 
 Author authorized synthetic AMR/distributed CBF, code/build/tests/FAIR execution and publication.38-case contract SHA256 `9b3214d51e986e7317b04c57ccf3ecdc1bf6729861c3e1dfb00472d65ca548c7` frozen before build/solve. Native parity, constrained-trace equilibrium and restart distinct; max8ranks16GiBsampled ordinary guard. New root `R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01`. SOURCE/historical runtime/G44 protected. T0/G15 documentary preparation only. No physical assignments/ARCANA solve/history advance. Next implement plugin and independent sparse audit.
+
+
+## 2026-11-28 — G45 uniform distributed gate PASS
+
+16uniform synthetic cases completed,1/2/4/8rank ownership/ghost/native and independent trace/force/work audits PASS; +10Pa gauge, velocity/dissipation invariance and analytic L2→L3 convergence PASS. Five targeted tests PASS. Failed buildNEW01 and analytic duplicate-postprocessor setupNEW01 preserved; compile/API and input assembly repaired without physics/tolerance changes. Contract9b3214d5 unchanged. Next22AMR cases and genuine negatives; restart constrained to synthetic t0. Documentary authority inventory sources/B6K/G15 inspected, no trajectory/model run.

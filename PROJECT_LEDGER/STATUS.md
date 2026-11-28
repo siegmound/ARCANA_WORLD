@@ -1,6 +1,6 @@
-# CURRENT — 2026-11-28 — G45 authorized, criteria frozen, implementation pending
+# CURRENT — 2026-11-28 — G45 uniform distributed PASS; AMR in progress
 
-Author explicitly authorizes synthetic distributed AMR/CBF only, max8ranks, no physical assignments or ARCANA time. Contract `experiments/r6_thermo_provider_pilot_v1/g45_distributed_cbf_v1/contract.json`, SHA256 `9b3214d51e986e7317b04c57ccf3ecdc1bf6729861c3e1dfb00472d65ca548c7`,38planned cases; separate native parity and topology-condensed trace correctness. Parent inventories and new private native deployment in `R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01`; no G45 solve yet. T0/G15 inventory documentary only.
+Author explicitly authorizes synthetic distributed AMR/CBF only, max8ranks, no physical assignments or ARCANA time. Contract `experiments/r6_thermo_provider_pilot_v1/g45_distributed_cbf_v1/contract.json`, SHA256 `9b3214d51e986e7317b04c57ccf3ecdc1bf6729861c3e1dfb00472d65ca548c7`,38planned cases; separate native parity and topology-condensed trace correctness. Parent inventories and new private native deployment in `R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01`; 16uniform cases PASS at1/2/4/8ranks, native CBF parity and independent trace/force/work tests, +10Pa gauge and analytic L2→L3 convergence PASS; AMR/restart/negative gates pending. T0/G15 inventory documentary only.
 
 # Historical checkpoint — G44 synthetic HPC qualification PASS
 

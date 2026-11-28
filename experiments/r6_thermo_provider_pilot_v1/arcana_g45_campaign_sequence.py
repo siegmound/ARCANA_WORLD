@@ -48,6 +48,8 @@ def execute(spec,plugin):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--phase',choices=['uniform','amr'],required=True);p.add_argument('--plugin',type=Path,required=True);a=p.parse_args();c.check()
+    if a.phase=='amr':
+        uniform=c.read(c.ROOT/'UNIFORM_PHASE_REPORT.json');c.need(uniform['execution_and_algebra_pass'] and uniform['equilibrium_pass'],'UNIFORM_GATE_REQUIRED')
     plan=c.read(c.CODE/'contract.json')['cases'];rows=[];refs={};parities=[];cases={}
     for spec in plan:
         if bool(spec['adaptive_cycles'])!=(a.phase=='amr'):continue
