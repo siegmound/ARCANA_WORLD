@@ -62,7 +62,8 @@ def snapshots():
 def prepare():
     uniform=c.read(c.ROOT/'UNIFORM_PHASE_REPORT.json');adaptive=c.read(c.ROOT/'GAUGE_R1_PHASE_REPORT.json');neg=c.read(c.ROOT/'NEGATIVE_TESTS_NEW01/REPORT.json');restart=c.read(c.ROOT/'RESTART_GATE.json')
     c.need(uniform['execution_and_algebra_pass'] and uniform['equilibrium_pass'] and adaptive['completed_matrix'] and adaptive['execution_and_trace_algebra_pass'] and neg['screen_pass'],'FINAL_PHASE_GATE')
-    snapshots();guard=guards();c.write(c.ROOT/'FINAL_GUARDS.json',guard);c.write(c.ROOT/'HARDWARE_AFTER.json',c.old.g44.host())
+    c.need(c.read(c.ROOT/'RIGID_MOTION_AND_VIRTUAL_WORK.json')['screen_pass'],'RIGID_MOTION_GATE')
+    guard=guards();snapshots();c.write(c.ROOT/'FINAL_GUARDS.json',guard);c.write(c.ROOT/'HARDWARE_AFTER.json',c.old.g44.host())
     rows=[];fields=['case','variant','cells','velocity_dofs','boundary_hanging_dofs','trace_dofs','native_converged','last_native_residual','native_cbf_relative','trace_sparse_solve_relative','virtual_adjoint_relative','native_force_relative','constrained_force_relative','constrained_moment_relative','PSS_GiB','RSS_GiB','wall_s','sample_gap_max_s']
     for case in sorted(c.ROOT.glob('*/CASE_SPEC.json')):
         folder=case.parent;spec=c.read(case);run=folder/'RUN_EXIT.json'
