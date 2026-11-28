@@ -129,7 +129,7 @@ def parse_case(case,n,level,selected,expected_cpus,baseline):
        'nonlinear_residuals':[float(x) for x in re.findall(r'after nonlinear iteration \d+:\s*([\d.e+-]+)',s)],
        'statistics':{k:numeric_or_text(statrow[i]) for i,k in cols.items()},'screen_pass':True}
 
-def execute(name,n,level,profile='tcp',layout='spread',probe=False,baseline=None,timeout=240,visualization=True,backend='proot'):
+def execute(name,n,level,profile='tcp',layout='spread',probe=False,baseline=None,timeout=240,visualization=True,backend='proot',pss_budget_gib=80):
     source_check();case=ROOT/name;case.mkdir();(case/'output').mkdir()
     state,container,root,src,hs,prm,lib,identity=runtime()
     selected=cpus(n,layout);(case/'cpus.txt').write_text('\n'.join(map(str,selected))+'\n')
@@ -172,7 +172,7 @@ exec "$@"
         argv+=[str(private/'bin/bash'),str(case/'rank.sh'),str(private/'bin/aspect-release'),'input.prm']
     tag=hashlib.sha256(str(case).encode()).hexdigest()
     config={'case':str(case),'tag':tag,'argv':argv,'environment':env,'timeout_s':timeout,
-       'aggregate_pss_abort_bytes':80*1024**3,'host_available_floor_bytes':max(64*1024**3,int(read(ROOT/'HARDWARE_BEFORE.json')['memavailable_bytes']*.25)),
+       'aggregate_pss_abort_bytes':pss_budget_gib*1024**3,'host_available_floor_bytes':max(64*1024**3,int(read(ROOT/'HARDWARE_BEFORE.json')['memavailable_bytes']*.25)),
        'sample_interval_s':.25}
     write(case/'config.json',config)
     (case/'HOST_BEFORE.txt').write_text(Path('/proc/loadavg').read_text()+Path('/proc/meminfo').read_text())
