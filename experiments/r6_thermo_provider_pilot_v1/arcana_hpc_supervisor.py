@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import re
+import select
 import signal
 import subprocess
 import time
@@ -17,6 +18,14 @@ KEY='ARCANA_HPC_JOB'
 SCAN_FLOOR_TICKS=0
 DESCENDANT_ROOT=None
 HELD_PIDFDS={}
+
+def held_exited(pid,starttime,wait_ms=0):
+    """Kernel-confirmed termination, independent of proc exit/dumpability races."""
+    for identity,fd in HELD_PIDFDS.items():
+        if identity[:2]!=(pid,starttime):continue
+        poll=select.poll();poll.register(fd,select.POLLIN)
+        return any(events & select.POLLIN for _,events in poll.poll(wait_ms))
+    return False
 
 def write(p,d):
     with p.open('x') as f:json.dump(d,f,indent=2,sort_keys=True);f.write('\n')
@@ -49,9 +58,11 @@ def scan(tag,key=KEY):
         return False
     for p in Path('/proc').iterdir():
         if not p.name.isdigit() or not in_job(int(p.name)):continue
+        known_start=None
         try:
             if p.stat().st_uid!=os.getuid():continue
             text=(p/'stat').read_text();fields=text[text.rfind(')')+2:].split()
+            known_start=int(fields[19])
             if int(fields[19])<SCAN_FLOOR_TICKS:continue
             if fields[0] in ('Z','X'):continue
             if marker not in proc_read((p/'environ').read_bytes).split(b'\0'):continue
@@ -65,6 +76,9 @@ def scan(tag,key=KEY):
                     if state in ('Z','X'):continue
                 except OSError as gone:
                     if gone.errno in (errno.ENOENT,errno.ESRCH):continue
+                # A retained pidfd can prove death even before proc has reached
+                # its final zombie/disappearance state. Never infer from EACCES.
+                if e.errno==errno.EACCES and known_start is not None and held_exited(int(p.name),known_start,500):continue
                 errors.append({'pid':int(p.name),'errno':e.errno})
     if errors:raise RuntimeError('UNRELIABLE_PROC_SCAN:'+json.dumps(errors))
     return found

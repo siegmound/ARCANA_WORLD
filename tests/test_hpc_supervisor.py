@@ -82,6 +82,9 @@ try:
  fd=s.held_fd({'pid':p.pid,'starttime':start},tag)
  assert fd is not None and s.held_fd({'pid':p.pid,'starttime':start},tag)==fd
  assert p.poll() is None
+ assert not s.held_exited(p.pid,start)
+ p.terminate();p.wait()
+ assert s.held_exited(p.pid,start) and not s.held_exited(p.pid,start+1)
 finally:
  s.close_held();p.terminate();p.wait()
 '''
