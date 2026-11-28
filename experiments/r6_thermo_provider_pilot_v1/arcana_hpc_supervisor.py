@@ -150,6 +150,9 @@ def metrics(rows):
             numa=(p/'numa_maps').read_text()
             pages={int(k):sum(int(n) for kk,n in re.findall(r'\bN(\d+)=(\d+)',numa) if kk==k) for k in set(re.findall(r'\bN(\d+)=',numa))}
             d={**row,**vals,'cpu_s':(int(parts[11])+int(parts[12]))/os.sysconf('SC_CLK_TCK'),
+               'cpu_user_s':int(parts[11])/os.sysconf('SC_CLK_TCK'),
+               'cpu_system_s':int(parts[12])/os.sysconf('SC_CLK_TCK'),
+               'threads':int(re.search(r'^Threads:\s*(\d+)',status,re.M)[1]),
                'read_bytes':io.get('read_bytes',0),'write_bytes':io.get('write_bytes',0),
                'cpu_allowed':re.search(r'^Cpus_allowed_list:\s*(.+)$',status,re.M)[1],
                'numa_resident_pages':pages,'role':'rank' if Path(proc_read(lambda:os.readlink(p/'exe'))).name=='aspect-release' else 'launcher_or_trace'}
