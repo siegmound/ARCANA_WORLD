@@ -1,0 +1,384 @@
+{
+  "architecture": "A_FULL_MANTLE_ADAPTIVE",
+  "budgets": {
+    "compile_timeout_s": 600,
+    "host_reserve": "max(64GiB,25% initial MemAvailable)",
+    "job_swap_abort_MiB": 64,
+    "max_build_parallelism": 1,
+    "max_ranks": 8,
+    "per_case_timeout_s": 600,
+    "sampled_aggregate_pss_abort_GiB": 16,
+    "target_sample_interval_s": 0.5
+  },
+  "cases": [
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "hydro",
+      "name": "hydro_l3_a0_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "hydro",
+      "name": "hydro_l3_a0_p2",
+      "ranks": 2,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "hydro",
+      "name": "hydro_l3_a0_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "hydro",
+      "name": "hydro_l3_a0_p8",
+      "ranks": 8,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a0_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a0_p2",
+      "ranks": 2,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a0_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a0_p8",
+      "ranks": 8,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "datum",
+      "name": "datum_l3_a0_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "datum",
+      "name": "datum_l3_a0_p2",
+      "ranks": 2,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "datum",
+      "name": "datum_l3_a0_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "datum",
+      "name": "datum_l3_a0_p8",
+      "ranks": 8,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 2,
+      "family": "forced",
+      "name": "forced_l2_a0_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 2,
+      "family": "forced",
+      "name": "forced_l2_a0_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "forced",
+      "name": "forced_l2_a1_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "forced",
+      "name": "forced_l2_a1_p2",
+      "ranks": 2,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "forced",
+      "name": "forced_l2_a1_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "forced",
+      "name": "forced_l2_a1_p8",
+      "ranks": 8,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a1_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a1_p2",
+      "ranks": 2,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a1_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "forced",
+      "name": "forced_l3_a1_p8",
+      "ranks": 8,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "hydro",
+      "name": "hydro_l2_a1_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "hydro",
+      "name": "hydro_l2_a1_p2",
+      "ranks": 2,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "hydro",
+      "name": "hydro_l2_a1_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "hydro",
+      "name": "hydro_l2_a1_p8",
+      "ranks": 8,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "datum",
+      "name": "datum_l2_a1_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "datum",
+      "name": "datum_l2_a1_p2",
+      "ranks": 2,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "datum",
+      "name": "datum_l2_a1_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "datum",
+      "name": "datum_l2_a1_p8",
+      "ranks": 8,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "datum",
+      "name": "datum_l3_a1_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "datum",
+      "name": "datum_l3_a1_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 2,
+      "family": "analytic",
+      "name": "analytic_l2_a0_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "analytic",
+      "name": "analytic_l2_a1_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 2,
+      "family": "analytic",
+      "name": "analytic_l2_a1_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 0,
+      "base_refinement": 3,
+      "family": "analytic",
+      "name": "analytic_l3_a0_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "analytic",
+      "name": "analytic_l3_a1_p1",
+      "ranks": 1,
+      "synthetic_time": 0
+    },
+    {
+      "adaptive_cycles": 1,
+      "base_refinement": 3,
+      "family": "analytic",
+      "name": "analytic_l3_a1_p4",
+      "ranks": 4,
+      "synthetic_time": 0
+    }
+  ],
+  "contract": "ARCANA_G45_DISTRIBUTED_AMR_CBF_V1",
+  "gate_semantics": {
+    "conservative_AMR": "requires topology, coverage, adjoint, CG/SPD and force/moment/weak tests; no torque fit or physical BC condensation",
+    "native_AMR_parity": "implementation parity only, distinct from weak equilibrium",
+    "negative": "same production evaluator must reject mutated retained artifacts; parent/restart use the production verifier/provider",
+    "stop": "infrastructure/ownership/invalid geometry/cleanup failures stop dependent launches; preserved native-algorithm failures do not promote or disqualify a separately verified constrained path"
+  },
+  "negative_cases": [
+    "inverted_orientation",
+    "duplicate_face",
+    "dropped_face",
+    "wrong_sign",
+    "omitted_constraint",
+    "stale_ghost",
+    "wrong_datum",
+    "tampered_parent",
+    "invalid_native_restart"
+  ],
+  "normalizations": {
+    "force": "F_abs=integral_volume |rho*g| + integral_boundary |t|; floor=1N for zero manufactured load",
+    "legacy_solution_work": "native D for forced cases; separate hydro absolute-power test, never divide by cancelling resultant",
+    "moment": "F_abs*L_ref, L_ref=outer synthetic radius=1m",
+    "random_virtual_work": "max(integral |body dot v|+integral |traction dot v|,F_abs*U_ref),U_ref=max nodal virtual speed or1m/s"
+  },
+  "operator": "H topology-only homogeneous hanging-node map; b=P_trace H^T r_all_cells; M=H_trace^T diag(m_GLL) H_trace; distributed matrix-free CG, independent sparse audit",
+  "refinement_rule": "after initial global refinement, clear flags and refine owned cells with center.x>0.1 and center.y>-0.2, one adaptive cycle; validate identical CellId/vertices across ranks",
+  "restart": "attempt native t=0 checkpoint/restore only; block positive gate if it needs nonzero time; export/readback never counts",
+  "scientific_scope": "synthetic incompressible Q2, no ARCANA assignment/solve/history",
+  "scope_flags": {
+    "ARCANA_solves": 0,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "additional_time_advance_years": 0,
+    "global_solve_authorized": false,
+    "mantle_initial_state_admitted": false,
+    "mantle_provider_qualified": false,
+    "material_assignments": 0,
+    "physical_T1": null,
+    "physical_acceptance": false,
+    "scientific_promotion": false
+  },
+  "synthetic_time_advance_authorized": false,
+  "tolerances": {
+    "adjoint_solution_relative_D": 1e-08,
+    "adjoint_virtual_relative_absolute_power": 1e-08,
+    "amr_boundary_hanging_nodes_required": true,
+    "analytic_refinement_all_errors_decrease": true,
+    "area_relative": 0.005,
+    "datum_relative_projected_minus10n": 0.005,
+    "finite_and_positive_jacobians": true,
+    "force_absolute_load_scaled": 0.0001,
+    "forced_weak_balance_relative_D": 0.0001,
+    "ghost_relative": 1e-12,
+    "moment_absolute_load_length_scaled": 0.0001,
+    "native_dof_relative": 1e-10,
+    "native_face_relative": 1e-10,
+    "rigid_rotation_reproduction_relative": 0.005,
+    "rigid_translation_reproduction_relative": 1e-12,
+    "same_mesh_rank_relative": 0.0001,
+    "topological_constraint_relative": 1e-12,
+    "trace_CG_relative_residual": 1e-12,
+    "trace_independent_solve_relative": 1e-10,
+    "trace_symmetry_relative": 1e-12,
+    "unique_owned_cell_face_coverage": true,
+    "work_replay_relative_D": 1e-06
+  }
+}

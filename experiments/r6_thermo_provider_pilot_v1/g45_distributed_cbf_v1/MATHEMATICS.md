@@ -1,0 +1,11 @@
+# G45 synthetic trace contract
+
+Only homogeneous topology constraints enter H. Physical Dirichlet, no-normal and rotational gauge constraints remain in the ASPECT solution but are excluded from H, so reactions are retained. Affine topology rows are rejected rather than silently dropped.
+
+The raw FE residual r is assembled on every owned volume cell. GLL boundary quadrature gives diagonal full-space mass m; native parity separately reproduces the upstream boundary-cell residual. Define S as the independent indices with positive diagonal in H^T diag(m) H. The trace unknown x solves M_S x = (H^T r)_S. Off-trace independent coefficients are zero; full traction t=H x is evaluated on the original face quadrature. Condensed mass is not replaced by its diagonal: Jacobi is only a CG preconditioner. Every matrix-vector product expands H on ghost-readable input, applies owned face mass contributions and scatters by H^T with compress(add). Owned independent trace rows define CG dot products; all other rows carry an identity with zero RHS.
+
+Export only owned DOFs/constraints, owned cells/faces, and explicit ghost snapshots by rank. Independent coordinator consolidation derives stable support identities from component/physical support and incident CellId/local basis index; global DOF IDs are case-local joins only. The independent SciPy audit constructs sparse H and M, solves on the same independent trace, and compares the plugin result. This coordinator audit is intentionally bounded and is not a claim of distributed postprocessing scalability.
+
+Virtual-work checks use random admissible fields H v and rigid translations/rotations as discretely represented fields. Geometry approximation error for rotations is measured separately. Work for nonzero prescribed boundary velocity is reported, never forced to zero. Force/moment normalization uses absolute load magnitude and explicit length; hydro/dynamic pressure and +10Pa datum effects are reported separately. No residual projection, torque fit or altered Stokes tolerance is permitted.
+
+The contract and its SHA are committed before compilation/solves; failures remain under original code/contract identity. A gate may close BLOCKED with a precise counterexample. Static export/readback is not a checkpoint/restart. No synthetic nonzero time is currently authorized.

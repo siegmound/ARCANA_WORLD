@@ -1,4 +1,8 @@
-# CURRENT — 2026-11-28 — G44 synthetic HPC qualification PASS
+# CURRENT — 2026-11-28 — G45 authorized, criteria frozen, implementation pending
+
+Author explicitly authorizes synthetic distributed AMR/CBF only, max8ranks, no physical assignments or ARCANA time. Contract `experiments/r6_thermo_provider_pilot_v1/g45_distributed_cbf_v1/contract.json`, SHA256 `9b3214d51e986e7317b04c57ccf3ecdc1bf6729861c3e1dfb00472d65ca548c7`,38planned cases; separate native parity and topology-condensed trace correctness. Parent inventories and new private native deployment in `R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01`; no G45 solve yet. T0/G15 inventory documentary only.
+
+# Historical checkpoint — G44 synthetic HPC qualification PASS
 
 Esecuzione diretta FAIR: bug pidfd dell'interprete Conda risolto con supervisore Python di sistema, pidfd mantenuti, subreaper e cleanup di job identificati. MPI2/4,8/16/32/64fisici e128SMT eseguiti; native same-code e shared-memory qualificati nei benchmark sintetici; scaling forte/debole, NUMA, PSS/RSS, throughput e microkernel SIMD misurati. 15 test finali PASS.
 

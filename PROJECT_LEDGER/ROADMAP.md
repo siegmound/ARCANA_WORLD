@@ -4,7 +4,7 @@
 
 1. HPC infrastrutturale: PASS sintetico MPI fino64fisici/128logici, native/shared-memory e throughput misurati; AMR/MPI CBF e vero rebuild SIMD ancora da qualificare.
 2. A — interfaccia: G36-R2 corretto, conservazione/lavoro su supporti reali e reazione normale fisica ancora aperti.
-3. B — full mantle adaptive: ASPECT candidato volumetrico; G43 condizionale non stato3D, M01 e autorità CMB/EOS/acqua/reologia/BC aperte. Prossimo contratto tecnico AMR/MPI CBF; nessun parametro inventato.
+3. B — full mantle adaptive: ASPECT candidato volumetrico; G43 condizionale non stato3D, M01 e autorità CMB/EOS/acqua/reologia/BC aperte. G45 sintetico autorizzato, contratto congelato; implementazione AMR/MPI CBF; nessun parametro inventato.
 4. C — G15corretto162anni: FB2 slopey/sinA, CSR/band, halving/restart, bilanci e termomeccanica da riqualificare separatamente.
 5. Primo T0→T1 su sottoinsieme minimo fisicamente chiuso, poi storia210Ma→0ka: geodinamica, rilievo, idrologia, materiali e risorse naturali/Deep; clima/suoli, flora/fauna, popolazioni/civiltà. D-024 evita un gate universale di tutti gli engine.
 6. HistoryStore comune: scheduler e dt adattivi distinti da archiviazione/query; checkpoint/B0 e replay causale, query per regione/epoca/processo, raffinamento con lineage,12anchor/CHA-1/H0, limite500GB. Nessuna equivalenza tra benchmark temporale sintetico e storia fisica.
