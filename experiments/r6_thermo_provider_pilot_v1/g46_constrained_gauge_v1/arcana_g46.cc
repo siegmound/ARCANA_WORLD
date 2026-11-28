@@ -25,7 +25,42 @@ template<int dim> class G46Bound : public Interface<dim>, public SimulatorAccess
 };
 ASPECT_REGISTER_TERMINATION_CRITERION(G46Bound,"arcana g46 bound","Author-authorized synthetic two-step clock bound, no ARCANA evolution.")
 }
+namespace MaterialModel {
+template<int dim> class G46Thermal : public Interface<dim>, public SimulatorAccess<dim> {
+ std::unique_ptr<Interface<dim>> base;
+ public:
+ void parse_parameters(ParameterHandler &p) override {
+  base=create_material_model<dim>("HollowSphereMaterial");
+  if(auto *s=dynamic_cast<SimulatorAccess<dim>*>(base.get()))s->initialize_simulator(this->get_simulator());
+  base->parse_parameters(p);this->model_dependence=base->get_model_dependence();
+ }
+ void initialize() override {base->initialize();}
+ bool is_compressible() const override {return base->is_compressible();}
+ void evaluate(const MaterialModelInputs<dim> &in,MaterialModelOutputs<dim> &out) const override {
+  base->evaluate(in,out);for(unsigned i=0;i<in.n_evaluation_points();++i){out.specific_heat[i]=1.;out.thermal_conductivities[i]=.001;for(unsigned j=0;j<in.composition[i].size();++j)out.reaction_terms[i][j]=0.;}
+ }
+};
+ASPECT_REGISTER_MATERIAL_MODEL(G46Thermal,"arcana g46 thermal hollow","Synthetic cp/conductivity wrapper only; native hollow sphere mechanics unchanged.")
+}
 namespace Postprocess {
+template<int dim> class G46Restart : public Interface<dim>, public SimulatorAccess<dim> {
+ void dump(std::string kind) const {
+  const auto &dh=this->get_dof_handler();const auto &el=this->get_fe();const auto &intro=this->introspection();const auto owned=dh.locally_owned_dofs();unsigned rank=Utilities::MPI::this_mpi_process(this->get_mpi_communicator());
+  std::string prefix=this->get_output_directory()+"G46R_"+kind+"_s"+std::to_string(this->get_timestep_number())+"_r"+std::to_string(rank);
+  auto stream=[&](std::string suffix){std::ofstream f(prefix+suffix);AssertThrow(f.good(),ExcMessage("G46R write"));f<<std::scientific<<std::setprecision(17);return f;};
+  std::vector<types::global_dof_index> ids(el.dofs_per_cell);std::map<types::global_dof_index,unsigned> comp;
+  auto basis=stream("_BASIS.dat");for(const auto &cell:dh.active_cell_iterators())if(!cell->is_artificial()){
+   cell->get_dof_indices(ids);for(unsigned i=0;i<ids.size();++i){comp[ids[i]]=el.system_to_component_index(i).first;if(cell->is_locally_owned())basis<<cell->id().to_string()<<' '<<i<<' '<<ids[i]<<' '<<comp[ids[i]]<<'\n';}}
+  auto state=stream("_STATE.dat");for(auto id:owned)state<<id<<' '<<comp.at(id)<<' '<<this->get_solution()[id]<<' '<<this->get_old_solution()[id]<<' '<<this->get_old_old_solution()[id]<<'\n';
+  std::vector<double> sum(2+intro.n_components,0.);FEValues<dim> fe(this->get_mapping(),el,intro.quadratures.system,update_values|update_JxW_values);std::vector<Vector<double>> v(fe.n_quadrature_points,Vector<double>(intro.n_components));
+  for(const auto &cell:dh.active_cell_iterators())if(cell->is_locally_owned()){fe.reinit(cell);fe.get_function_values(this->get_solution(),v);MaterialModel::MaterialModelInputs<dim> in(fe.n_quadrature_points,this->n_compositional_fields());MaterialModel::MaterialModelOutputs<dim> out(fe.n_quadrature_points,this->n_compositional_fields());in.reinit(fe,cell,intro,this->get_solution());this->get_material_model().evaluate(in,out);for(unsigned q=0;q<fe.n_quadrature_points;++q){sum[0]+=fe.JxW(q)*out.densities[q];sum[1]+=fe.JxW(q)*out.densities[q]*out.specific_heat[q]*in.temperature[q];for(unsigned k=0;k<intro.n_components;++k)sum[2+k]+=fe.JxW(q)*v[q][k];}}
+  auto summary=stream("_SUMMARY.dat");summary<<rank<<' '<<this->get_time()<<' '<<this->get_timestep_number()<<' '<<this->get_timestep()<<' '<<dh.n_dofs();for(auto x:sum)summary<<' '<<x;summary<<'\n';
+ }
+ public:void initialize() override {this->get_signals().pre_checkpoint_store_user_data.connect([this](parallel::distributed::Triangulation<dim> &){dump("checkpoint");});}
+ std::pair<std::string,std::string> execute(TableHandler &) override {dump("postprocess");return {"G46R snapshot:",std::to_string(this->get_timestep_number())};}
+};
+ASPECT_REGISTER_POSTPROCESSOR(G46Restart,"arcana g46 restart state","All solution histories and integrals at actual native pre-checkpoint signal and postprocess.")
+
 template<int dim> class G46 : public Interface<dim>, public SimulatorAccess<dim> {
  using BV=LinearAlgebra::BlockVector;using I=types::global_dof_index;
  public:std::pair<std::string,std::string> execute(TableHandler &) override {

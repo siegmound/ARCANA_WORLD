@@ -1,0 +1,31 @@
+{
+  "clock_cap": "isolated termination plugin at time>=stop, hard_assert time<=.002 and timestep_number<=2; native EndTime strict > would otherwise advance past .002",
+  "composition_boundary": "native no prescribed inflow unless required, report if blocked",
+  "composition_fields": [
+    "synthetic_marker"
+  ],
+  "composition_initial": "0.5+0.1*x*y+0.05*z",
+  "dt_s": 0.001,
+  "field_gate": "all current, old, old_old coefficients by CellId/localbasis+component, same-rank1e-8 and changed-rank1e-4; mass/thermal/composition integrals1e-8; compare physical computed field time and serialized clock separately",
+  "frozen_before_restart_build_and_runs": true,
+  "heating": "none",
+  "id": "G46_NATIVE_RESTART_REALIZATION_V1",
+  "mechanical_case": "native HollowSphereMaterial and HollowSphereBoundary unchanged; wrapper delegates native material and changes only cp=1, conductivity=.001 for synthetic nontrivial heat transport",
+  "mesh": "uniform L2, Q2 velocity/temp/composition native Q1 pressure; no temporal refinement",
+  "native_checkpoint_metadata": "both primary checkpoint and immutable sidecar pin; no fabrication; clock-negative rejected by actual lineage gate before launching, missing/corrupt/schema rejected natively",
+  "native_semantics": "native advance_time precedes checkpoint; initial t0 mechanical initialization shifts old vectors and increments clock to .001; restart reads this pending-next-solve state, computes at t=.001 then advances to .002. Exactly two accepted native clock increments per lineage, one nonzero transport solve; no third increment or solved .002 claimed. Compare pre_checkpoint state at .002 including old/old_old.",
+  "parent_contract_sha256": "a4be9d965d14dca982ad1d2d3607cdc6814e196c51d2813ceeeacdaae3c5b2fd",
+  "restart_rank_order": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "scope": "synthetic only, no ARCANA/G15/M01 history",
+  "stop_s": [
+    0.001,
+    0.002
+  ],
+  "thermal_boundary": "insulating",
+  "thermal_initial": "1000+20*x*y+10*z"
+}
