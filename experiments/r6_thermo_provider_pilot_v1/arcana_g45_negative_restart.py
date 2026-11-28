@@ -44,6 +44,7 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--plugin',type=Path,required=True);a=p.parse_args();c.check();source_restart_gate()
     baseline=c.ROOT/'G45R1_forced_l2_a1_p4_unremoved_NEW01';c.need(c.read(baseline/'G45R1_AUDIT_REPORT.json')['screen_pass'] and c.native_convergence(baseline)['screen_pass'],'NEGATIVE_BASELINE_NOT_QUALIFIED')
     out=c.ROOT/'NEGATIVE_TESTS_NEW01';out.mkdir();results=[]
+    baseline_hashes={p.name:c.sha(p) for p in (baseline/'output').glob('G45_s0_r*')}
     for kind in ('inverted_orientation','duplicate_face','dropped_face','wrong_sign','omitted_constraint','stale_ghost'):
         case=out/kind;overlay(baseline,case);face=next((case/'output').glob('*_FACES.dat'))
         if kind=='inverted_orientation':
@@ -89,6 +90,8 @@ def main():
     spec=next(s for s in c.read(c.CODE/'contract.json')['cases'] if s['name']=='forced_l2_a0_p1');row=c.case(spec,'negative_invalid_restart_NEW01',a.plugin,extra_prm='\nset Resume computation = true\n')
     text=(c.ROOT/'negative_invalid_restart_NEW01/STDERR.txt').read_text();rejected=row['execution']['exit_code']!=0 and not row['execution']['remaining'] and 'no matching written checkpoint has been found' in text
     results.append({'negative':'invalid_native_restart','production_gate_rejected':rejected,'native_exit':row['execution']['exit_code'],'rejection':'ASPECT actual missing-checkpoint rejection'});c.need(rejected,'INVALID_NATIVE_RESTART_NOT_REJECTED')
+    c.need(baseline_hashes=={p.name:c.sha(p) for p in (baseline/'output').glob('G45_s0_r*')},'NEGATIVE_BASELINE_MUTATION')
+    c.write(out/'BASELINE_IMMUTABILITY.json',{'screen_pass':True,'case':str(baseline),'files':baseline_hashes})
     c.write(out/'REPORT.json',{'screen_pass':True,'tests':results,'scope':'mutated retained raw shards through same production auditor; parent uses original verifier, restart uses actual ASPECT',**c.SCOPE})
     gate=c.read(c.ROOT/'RESTART_SOURCE_AUDIT.json');gate.update(invalid_restart_negative_pass=True,same_rank_restart='BLOCKED_NO_AUTHORIZED_NATIVE_T0_CHECKPOINT',rank_change_restart='UNQUALIFIED');c.write(c.ROOT/'RESTART_GATE.json',gate)
     print('NEGATIVE_GATES_PASS',len(results),flush=True)
