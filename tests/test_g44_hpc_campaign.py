@@ -4,6 +4,17 @@ import pytest
 sys.path.insert(0,str(Path(__file__).parents[1]/'experiments/r6_thermo_provider_pilot_v1'))
 import arcana_g44_hpc_campaign as c
 
+@pytest.fixture(autouse=True)
+def topology_fixture(monkeypatch):
+    # Synthetic machine contract: no dependency on FAIR's external evidence.
+    h={'topology':[{'cpu':i+64*smt,'socket':i//32,'core':i%32}
+                   for smt in (0,1) for i in range(64)],
+       'numa_nodes':{str(i):{'cpulist':f'{16*i}-{16*i+15},{64+16*i}-{79+16*i}'} for i in range(4)}}
+    def read(path):
+        assert path.name=='HARDWARE_BEFORE.json'
+        return h
+    monkeypatch.setattr(c,'read',read)
+
 def test_refinement_scope():
     raw='set Initial global refinement = 4\nset Linear solver tolerance = 1e-6\nset End time = 0\n'
     for level in (2,3,4,5,6):
