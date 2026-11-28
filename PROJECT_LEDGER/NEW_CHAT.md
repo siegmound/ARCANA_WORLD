@@ -1,11 +1,9 @@
-# CURRENT — bootstrap dopo G45, 2026-11-28
+# CURRENT — bootstrap after G46, 2026-11-28
 
-Leggere README/STATUS/NEXT_ACTION/ROADMAP/PROCEDURE/EVIDENCE_INDEX e D-024/D-025; verificare repo/branch/HEAD/status e scope attuale. Branch `r6/g36r2-fair-repair-20261127`; sorgente congelato901cbb4a. [Handoff](../docs/arcana/R6_G45_DISTRIBUTED_AMR_CBF_CLOSURE_20261128.md).
+Read README/STATUS/NEXT_ACTION/ROADMAP/PROCEDURE/EVIDENCE_INDEX and D-024/D-025; verify branch/HEAD/worktree and current user scope. Branch r6/g36r2-fair-repair-20261127, frozen SOURCE901cbb4a. [Full G46 handoff](../docs/arcana/R6_G46_GAUGE_DATUM_NATIVE_RESTART_CLOSURE_20261128.md).
 
-G45 conclusa con blocker, non tutto PASS:16 uniformi,18campi AMR convergenti con traccia verificata; gauge originale/idrostatici, parità8rank/datum e restart non qualificati.9 negativi e9 unitari PASS. Bundle write-once `R6_G45_DISTRIBUTED_AMR_CBF_20261128_NEW01`, manifest `440c7366c47519a87124f6b6ccaf43939ef63740b3b54a7791cba8e1d26e6074`: non rilanciare in quella root. Runtime storico/G41/G42/source intatti.
+G46 complete with remaining blockers: native true restart1→1/2/4/8PASS, two clock increments to0.002s, actual transport at0.001s. Gauge modes near-null, not exact; AMR saddle original residual1.1383e-6>1e-10; datum has quadrature plus internal geometric flux defects. Raw fine rank velocity parity remainsFAIL including native volume norms. No fitted correction.17focused tests,11operator/datum+4restart negatives reject. Scientific all_gates_pass=false.
 
-Prossimo task proposto: gauge discreto compatibile e datum/velocità, poi autorità fisiche e G15. Nessuna autorizzazione a spin-up, M01, assegnazioni o traiettorie desumibile dai PASS sintetici. UNKNOWN resta UNKNOWN; niente torque fitting/RHS projection/pin arbitrari. Nuove prove in root nuove con criteri congelati; log e ledger nello stesso commit ai gate.
+Main bundle R6_G46_CONSTRAINED_GAUGE_DATUM_NEW01 sealed2267files, manifest0beac13818951c0d28c366d8bed6741b506e8e4d69190d2c9699e5d4135fa96f; independent validation095b24bd1de73d01f71db5185e9b01bbfdf0f17f5963a279f2071cb86a471e0e. Do not write into sealed roots or rerun old campaign drivers. Final g46_fair_receipt_v1.json binds GitHub LFS archive and delivery commits. All G45/G44 parents/runtime preserved.
 
-A_FULL_MANTLE_ADAPTIVE; D-024/D-025 ACTIVE; physical_T1=null; scientific_promotion=false; physical_acceptance=false; mantle_initial_state_admitted=false; mantle_provider_qualified=false; global_solve_authorized=false; WORLD_HISTORY_PRODUCTION_AUTHORIZED=false; material_assignments=0; ARCANA_solves=0; additional_time_advance_years=0.
-
-Obiettivo completo WORLD_HISTORY con risorse/Deep e biosfera/popolazioni, query e raffinamento selettivo, non soltanto Physical T1.
+G15 executable JSON proposal + validator and10-row T0 decision matrix ready, not a trajectory engine or material initializer. No G15 trajectory, M01, physical material assignment/global ARCANA solve/WORLD_HISTORY advancement authorized by this closure. A_FULL_MANTLE_ADAPTIVE; physical_T1=null, all scientific/production flags false, material_assignments=M01_engine_executions=ARCANA_solves=additional_time_advance_years=0.

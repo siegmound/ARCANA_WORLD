@@ -1,5 +1,7 @@
-# CURRENT — G46 finish qualification evidence delivery
+# CURRENT — next: geometrically compatible AMR gauge/datum variant
 
-Finish two predeclared native FE norm probes of retained G45 fields; no fitted gauge. Verify guards, seal and independently validate evidence; publish full evidence on separate Git LFS branch and code/test/contracts/receipt on development branch. Preserve G45 and all G46 failures.
+Formulate an isolated synthetic variant jointly satisfying coarse/fine geometric conformity, rigid-mode reproduction, homogeneous mechanical tangency and volume/boundary divergence identity. Freeze exact variant and acceptance before any new run; preserve G46 positive strain/near-null evidence and original G45 failures. Simple subtraction, point pin, C projection or torque/RHS fitting is not an admitted repair. Use measured small operator before rank/fine expansion; no G44 scaling repetition. [G46 handoff](../docs/arcana/R6_G46_GAUGE_DATUM_NATIVE_RESTART_CLOSURE_20261128.md).
 
-Next numerical research: geometrically conforming AMR, mechanical no-normal and pressure/divergence compatibility must be formulated together under a new explicit variant; simple rotational subtraction is unsupported by exact-null proof. Restart qualified only in the declared manufactured configuration. G15 proposal validation is executable; actual corrected trajectory adapter and any trajectory require separate author authorization. T0 matrix choices remain null; no M01/material/global physical solve/history.
+Independent G15: executable proposal preflight ready, corrected T0 mechanical seed and trajectory adapter must still be implemented/qualified; no new trajectory without separate author authorization. T0 matrix has10unselected choices with sources/units/dependencies/admission; no assignment, M01 or physical global solve. Native restart qualified only in declared two-clock-increment manufactured configuration, not physical mantle or mature BDF2.
+
+WORLD_HISTORY remains final goal: resources/Deep, flora/fauna and populations plus regional/epoch queries/refinement. Physical T1 is a milestone. D-024/D-025 and all scientific/canonical flags unchanged.

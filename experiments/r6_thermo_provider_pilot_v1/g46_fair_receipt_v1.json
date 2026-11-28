@@ -1,0 +1,106 @@
+{
+  "G15": {
+    "corrected_T0_mechanical_seed_admitted": false,
+    "executable_preflight_verified": true,
+    "new_trajectory_adapter_qualified": false,
+    "new_trajectory_runs": 0,
+    "proposal_contract": "experiments/r6_thermo_provider_pilot_v1/g46_constrained_gauge_v1/g15_corrected_executable_contract.json"
+  },
+  "T0_decision_matrix": {
+    "choices_selected": 0,
+    "path": "experiments/r6_thermo_provider_pilot_v1/g46_constrained_gauge_v1/mantle_T0_decision_matrix.json",
+    "rows": 10,
+    "values_assigned": 0
+  },
+  "all_gates_pass": false,
+  "branch": "r6/g36r2-fair-repair-20261127",
+  "completed_authorized_campaign": true,
+  "delivery_commit_resolution": "git log -1 -- experiments/r6_thermo_provider_pilot_v1/g46_fair_receipt_v1.json",
+  "documentation": "docs/arcana/R6_G46_GAUGE_DATUM_NATIVE_RESTART_CLOSURE_20261128.md",
+  "documentation_sha256": "301f8b7825d637e8b053589f0d36ac47b4270543fefbabf9bb147b84d3a9b4cb",
+  "failed_packaging_preserved_on_FAIR": {
+    "all_failed_scientific_attempts_in_main_bundle": true,
+    "materialized_file_symlinks": 409,
+    "portable_directory_aliases": 6,
+    "prior_failed_archive_preserved_on_FAIR": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_G46_DELIVERY_FAILED_ARCHIVES_NEW01/DEREFERENCED_DIRECTORY_ALIASES_NEW01.tar.zst",
+    "prior_failed_archive_sha256": "815bbf712306002266f7965e00214177c7cb3b741108a45b6b1de67e333fc8db",
+    "regular_members_including_manifests": 2270,
+    "scientific_main_manifest_unchanged": "0beac13818951c0d28c366d8bed6741b506e8e4d69190d2c9699e5d4135fa96f"
+  },
+  "final_delivery_generator_sha256": "4e28f2c4838110b80626dceea3ecf086e8b71eb2488e042dd3fd586744090404",
+  "github_evidence": {
+    "archive_bytes": 438568344,
+    "archive_name": "G46_FULL_EVIDENCE.tar.zst",
+    "archive_sha256": "c091fc6e6b1916fc97bcfda21a1ec4a676ac258b310dfcb56f8d72d90250c7f6",
+    "branch": "evidence/g46-20261128-new01",
+    "commit": "a7de1364637fb4f1de1f6cf0f61d753fcee0b735",
+    "extracted_full_inventory_verified": true,
+    "fresh_clone": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_G46_GITHUB_DOWNLOAD_VERIFY_NEW01",
+    "fresh_clone_download_all_seven_hashes_verified": true,
+    "portable_materialization": {
+      "file_symlinks": 409,
+      "relative_directory_aliases": 6
+    },
+    "upload_confirmed": true,
+    "url": "https://github.com/siegmound/ARCANA_WORLD/tree/a7de1364637fb4f1de1f6cf0f61d753fcee0b735"
+  },
+  "independent_full_inventory_validation": {
+    "manifest_sha256": "095b24bd1de73d01f71db5185e9b01bbfdf0f17f5963a279f2071cb86a471e0e",
+    "root": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_G46_DELIVERY_VALIDATION_NEW01"
+  },
+  "main_evidence_root": "/home/jlpfritas/HPC-POMDP/Arcana/ARCANA_WORLD_EVIDENCE/R6/R6_G46_CONSTRAINED_GAUGE_DATUM_NEW01",
+  "main_manifest_sha256": "0beac13818951c0d28c366d8bed6741b506e8e4d69190d2c9699e5d4135fa96f",
+  "main_members": 2267,
+  "native_cases": 20,
+  "native_restart": {
+    "changed_rank_1_to": [
+      2,
+      4,
+      8
+    ],
+    "last_computed_nonzero_transport_time_s": 0.001,
+    "mature_multistep_BDF2_qualified": false,
+    "max_full_state_relative": 6.501908406110292e-12,
+    "max_integrals_relative": 7.075977107357548e-14,
+    "max_native_clock_increments_per_lineage": 2,
+    "same_rank": true,
+    "serialized_clock_s": 0.002
+  },
+  "negative_operator_datum": {
+    "exact_kernel_algebraic_forcing_fixture": 1,
+    "native_artifact_rejections": 10
+  },
+  "negative_restart": {
+    "native_rejections": 3,
+    "production_pre_run_clock_guard": 1
+  },
+  "remaining_blockers": [
+    "exact rotational kernel not established; measured modes are positive near-null",
+    "AMR saddle original momentum residual1.1382749704e-6 exceeds frozen1e-10",
+    "original coarse datum screen0.0062731828 exceeds0.005",
+    "internal AMR face flux under H remains~1.017e-5 at high quadrature",
+    "full raw velocity rank parity not recovered; fine volume errors~1.26497e-4 and1.65932e-4"
+  ],
+  "scientific_closure_code_commit": "e19faa3c79cd4069ccb43c6c3e7d1fae0cf1db18",
+  "scientific_decision_document": "docs/arcana/R6_G46_T0_DECISIONS_G15_EXECUTABLE_CONTRACT_20261128.md",
+  "scientific_decision_document_sha256": "aa21d3b6d49912bedbf85be4da8b7af18e4fca837254b137ddcd563cda5a3d1d",
+  "scope": {
+    "ARCANA_solves": 0,
+    "D_024": "ACTIVE",
+    "D_025": "ACTIVE",
+    "M01_engine_executions": 0,
+    "WORLD_HISTORY_PRODUCTION_AUTHORIZED": false,
+    "additional_time_advance_years": 0,
+    "architecture": "A_FULL_MANTLE_ADAPTIVE",
+    "global_solve_authorized": false,
+    "mantle_initial_state_admitted": false,
+    "mantle_provider_qualified": false,
+    "material_assignments": 0,
+    "physical_T1": null,
+    "physical_acceptance": false,
+    "scientific_promotion": false
+  },
+  "status": "G46_DELIVERY_COMPLETE_WITH_SCIENTIFIC_BLOCKERS",
+  "test_warning": "SciPy sparse block_diag deprecation in unchanged G45 fixture",
+  "tests_passed": 17
+}
