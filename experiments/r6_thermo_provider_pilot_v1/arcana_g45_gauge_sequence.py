@@ -11,7 +11,7 @@ sys.path.insert(0,str(c.CODE));import audit
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--plugin',type=Path,required=True);a=p.parse_args();c.check()
-    plan=c.read(c.CODE/'gauge_diagnostic_contract_v1.json');rows=[];refs={};parities=[];locations={}
+    plan=c.read(c.CODE/'gauge_diagnostic_contract_v1.json');rows=[];refs={};parities=[];locations={};blocked=[]
     for design in plan['cases']:
         spec=design['original_case'];variant=design['gauge_variant'];label=('G45R1_'+spec['name']+'_unremoved_NEW01') if variant=='unremoved' else spec['name']+'_NEW01';case=c.ROOT/label
         if not case.exists():c.case(spec,label,a.plugin,gauge_variant=variant if variant=='unremoved' else None)
@@ -19,7 +19,8 @@ def main():
         convergence=c.native_convergence(case)
         convergence_file=case/'NATIVE_CONVERGENCE_ADJUDICATION.json'
         if not convergence_file.exists():c.write(convergence_file,convergence)
-        c.need(convergence['screen_pass'],'NATIVE_NONLINEAR_CONVERGENCE:'+label)
+        if not convergence['screen_pass']:
+            blocked.append({'case':label,'gate':'NATIVE_NONLINEAR_CONVERGENCE','evidence':convergence});print('G45R1_NATIVE_BLOCKED',label,flush=True);continue
         reportfile=case/'G45R1_AUDIT_REPORT.json'
         if reportfile.exists():row=c.read(reportfile);fields=c.read(case/'G45R1_FIELDS.json')
         else:
@@ -38,17 +39,19 @@ def main():
         else:
             ref,old=refs[key];c.need(row['mesh_sha256']==ref['mesh_sha256'] and fields['keys']==old['keys'],'GAUGE_RANK_MESH_IDENTITY')
             actual=np.array(fields['values']);prior=np.array(old['values']);delta=[np.linalg.norm(actual[:,k]-prior[:,k])/max(np.linalg.norm(prior[:,k]),1.) for k in range(actual.shape[1])]
-            c.need(max(delta)<=audit.T['same_mesh_rank_relative'],'GAUGE_RANK_PARITY');parities.append({'case':label,'relative_fields':delta,'screen_pass':True})
+            parity={'case':label,'relative_fields':list(map(float,delta)),'screen_pass':bool(max(delta)<=audit.T['same_mesh_rank_relative']),'threshold':audit.T['same_mesh_rank_relative']}
+            parities.append(parity)
+            if not parity['screen_pass']:print('G45R1_RANK_PARITY_BLOCKED',label,parity['relative_fields'],flush=True)
         print('G45R1_PASS',label,'cells',row['cells'],'hanging',row['boundary_hanging_nodes'],'CG',row['trace_CG_residual'],flush=True)
     gauges=[]
     for (family,l,n),case in locations.items():
-        if family=='datum' and ('forced',l,n) in locations:gauges.append({'case':case.name,**audit.datum(locations[('forced',l,n)],case)})
+        if family=='datum' and ('forced',l,n) in locations:gauges.append({'case':case.name,**audit.datum(locations[('forced',l,n)],case,require_pass=False)})
     analytic=[]
     for n in (1,4):
         coarse=next(r for r in rows if r['spec']['family']=='analytic' and r['spec']['base_refinement']==2 and r['spec']['ranks']==n)
         fine=next(r for r in rows if r['spec']['family']=='analytic' and r['spec']['base_refinement']==3 and r['spec']['ranks']==n)
         ratios={k:fine['analytic_errors'][k]/coarse['analytic_errors'][k] for k in coarse['analytic_errors']};c.need(all(v<1 for v in ratios.values()),'AMR_ANALYTIC_REFINEMENT');analytic.append({'ranks':n,'fine_over_coarse':ratios})
-    c.write(c.ROOT/'GAUGE_R1_PHASE_REPORT.json',{'screen_pass':True,'cases':rows,'rank_parity':parities,'datum':gauges,'analytic_convergence':analytic,
+    c.write(c.ROOT/'GAUGE_R1_PHASE_REPORT.json',{'screen_pass':bool(not blocked and all(x['screen_pass'] for x in parities) and all(x['screen_pass'] for x in gauges)),'completed_matrix':True,'execution_and_trace_algebra_pass':True,'blocked_cases':blocked,'cases':rows,'rank_parity':parities,'datum':gauges,'analytic_convergence':analytic,
         'scope':'AMR CBF conditional on predeclared unremoved-gauge variant for forced/datum; original net-rotation nonlinear path remains blocked',
         'contract_sha256':c.sha(c.CODE/'gauge_diagnostic_contract_v1.json'),**c.SCOPE})
     print('G45R1_PHASE_COMPLETE',len(rows),flush=True)

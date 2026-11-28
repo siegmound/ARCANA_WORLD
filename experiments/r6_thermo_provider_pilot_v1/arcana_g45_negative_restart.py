@@ -28,7 +28,7 @@ def overlay(base,dest):
     dest.mkdir();(dest/'output').mkdir();shutil.copy2(base/'CASE_SPEC.json',dest/'CASE_SPEC.json')
     for p in (base/'output').glob('G45_s0_r*'):
         q=dest/'output'/p.name;q.symlink_to(os.path.relpath(p,q.parent))
-    c.write(dest/'BASE_REFERENCE.json',{'case':str(base),'audited_source':'G45R1_AUDIT_REPORT.json','audited_sha256':c.sha(base/'G45R1_AUDIT_REPORT.json'),
+    c.write(dest/'BASE_REFERENCE.json',{'case':str(base),'audited_source':('G45R1_AUDIT_REPORT.json' if (base/'G45R1_AUDIT_REPORT.json').exists() else 'AUDIT_V2_REPORT.json'),'audited_sha256':c.sha(base/('G45R1_AUDIT_REPORT.json' if (base/'G45R1_AUDIT_REPORT.json').exists() else 'AUDIT_V2_REPORT.json')),
         'layout':'unmodified shards referenced inside same evidence bundle; each mutation atomically replaces local link, never writes through it'})
 
 
@@ -75,7 +75,7 @@ def main():
         except audit.Rejected as e:rejected=True;error=str(e)
         row={'negative':kind,'expected_rejection':True,'production_gate_rejected':rejected,'error':error};c.write(case/'NEGATIVE_REPORT.json',row);results.append(row);c.need(rejected,'NEGATIVE_FALSE_ACCEPT:'+kind);print('NEGATIVE_REJECTED',kind,error,flush=True)
     # Gauge negative goes through the same projected-datum production gate.
-    base=c.ROOT/'G45R1_forced_l2_a1_p4_unremoved_NEW01';shifted=c.ROOT/'G45R1_datum_l2_a1_p4_unremoved_NEW01';c.need(c.read(shifted/'G45R1_AUDIT_REPORT.json')['screen_pass'],'DATUM_BASELINE')
+    base=c.ROOT/'forced_l3_a0_p4_NEW01';shifted=c.ROOT/'datum_l3_a0_p4_NEW01';c.need(c.read(shifted/'AUDIT_V2_REPORT.json')['screen_pass'],'DATUM_BASELINE')
     positive=audit.datum(base,shifted);case=out/'wrong_datum';overlay(shifted,case)
     for q in (case/'output').glob('*_FACES.dat'):
         def op(k,v):v[:,22:25]+=20*v[:,7:10];return k,v

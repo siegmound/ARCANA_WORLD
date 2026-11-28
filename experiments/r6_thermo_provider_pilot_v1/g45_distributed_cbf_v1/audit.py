@@ -167,7 +167,7 @@ def datum(base,shifted):
 # old pointwise diagnostic separately; it is not the AMR acceptance operator.
 datum_pointwise_diagnostic=datum
 
-def datum(base,shifted):
+def datum(base,shifted,require_pass=True):
     a=load(base);b=load(shifted);d=a['dofs'];ids=d[:,0].astype(np.int64);position={int(i):j for j,i in enumerate(ids)};N=len(ids)
     rr=[];cc=[];vv=[];slaves=set()
     for slave,master,value in a['H_entries']:
@@ -182,5 +182,6 @@ def datum(base,shifted):
     require([(a['facekeys'][i],f[i,0],f[i,1]) for i in ia]==[(b['facekeys'][i],fb[i,0],fb[i,1]) for i in ib],'DATUM_MESH')
     fa=f[ia];fb=fb[ib];require(np.allclose(fa[:,:10],fb[:,:10],rtol=0,atol=1e-12),'DATUM_FACE_IDENTITY')
     delta=fb[:,22:25]-fa[:,22:25];error=relative(delta,projected[ia]);pointwise=relative(delta,-10*fa[:,7:10]);velocity=relative(fb[:,10:13],fa[:,10:13]);dissipation=float(abs(b['cells'][:,27].sum()/a['cells'][:,27].sum()-1))
-    require(error<T['datum_relative_projected_minus10n'] and velocity<T['same_mesh_rank_relative'] and dissipation<T['same_mesh_rank_relative'],'DATUM_GAUGE_SHIFT')
-    return {'screen_pass':True,'datum_projected_minus10n_relative':error,'datum_pointwise_minus10n_diagnostic':pointwise,'velocity_relative':velocity,'dissipation_relative':dissipation,'reference':'H_trace (H_trace^T M_GLL H_trace)^-1 H_trace^T integral(phi*(-10*n)); no RHS balancing or fitted correction'}
+    passed=bool(error<T['datum_relative_projected_minus10n'] and velocity<T['same_mesh_rank_relative'] and dissipation<T['same_mesh_rank_relative'])
+    if require_pass:require(passed,'DATUM_GAUGE_SHIFT')
+    return {'screen_pass':passed,'datum_projected_minus10n_relative':error,'datum_pointwise_minus10n_diagnostic':pointwise,'velocity_relative':velocity,'dissipation_relative':dissipation,'reference':'H_trace (H_trace^T M_GLL H_trace)^-1 H_trace^T integral(phi*(-10*n)); no RHS balancing or fitted correction'}
